@@ -32,35 +32,36 @@ val MAXSPEED_TYPE_KEYS = setOf(
 
 const val SURVEY_MARK_KEY = "check_date"
 
+// generated from https://github.com/mnalis/StreetComplete-taginfo-categorize/
 val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
-    "shop", "craft", "amenity", "shop_1", "old_shop", "craft_1",
+    "shop_?[1-9]?(:.*)?", "craft_?[1-9]?", "amenity_?[1-9]?", "old_amenity", "old_shop", "information", "leisure", "office", "tourism",
     // obsoleted information
-    "disused:.*", "was:.*", "damage", "source:damage", "created_by", "check_date",
+    "abandoned(:.*)?", "disused(:.*)?", "was:.*", "damage", "source:damage", "created_by", "check_date", "last_checked", "checked_exists:date",
     // classifications / links to external databases
-    "fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "winkelnummer",
+    "fhrs:.*", "old_fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "winkelnummer", "type:FR:FINESS", "type:FR:APE", "kvl_hro:amenity", "ref:DK:cvr(:.*)?",
     // names and identifications
-    "name(:.*)?", "name_1", ".*_name(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?", "network", "operator(:.*)?", "ref", "ref:vatin", "designation",
+    "name_?[1-9]?(:.*)?", ".*_name(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?", "network", "operator(:.*)?", "ref", "ref:vatin", "designation",
     // contacts
-    "contact:.*", "website", "facebook", "email", "phone(:.*)?", "phone_1", "mobile", "fax", "url", "source_ref:url", "owner",
+    "contact:.*", "phone(:.*)?", "phone_?[1-9]?", "mobile", "fax", "facebook", "instagram", "twitter", "youtube", "telegram", "email", "website_?[1-9]?", "url", "source_ref:url", "owner",
     // payments
-    "payment:.*", "currency:.*", "cash_withdrawal(:.*)?", "fee",
+    "payment(:.*)?", "currency:.*", "cash_withdrawal(:.*)?", "fee", "money_transfer",
     // generic shop/craft attributes
-    "opening_hours(:.*)?", "check_date:opening_hours", "internet_access(:.*)?", "second_hand", "self_service", "license:.*", "bulk_purchase", ".*:covid19", "description(:.*)?",
-    "min_age", "supermarket(:.*)?", "operational_status", "trade", "wholesale", "sale", "smoking", "origin", "attraction", "strapline", "dog",
+    "seasonal", "time", "opening_hours(:.*)?", "check_date:opening_hours", "wifi", "internet", "internet_access(:.*)?", "second_hand", "self_service", "automated", "license:.*", "bulk_purchase", ".*:covid19", "language:.*", "baby_feeding",
+    "description(:.*)?", "min_age", "max_age", "supermarket(:.*)?", "social_facility(:.*)?", "operational_status", "functional", "trade", "wholesale", "sale", "smoking", "zero_waste", "origin", "attraction", "strapline", "dog", "showroom",
     // food and drink details
-    "bar", "cafe", "microbrewery", "brewery", "real_ale", "distillery", "drink:.*", "cocktails", "alcohol", "wine:region", "wine_region", "diet:.*", "cuisine",
-    "organic", "produced_on_site", "food", "pastry", "product", "produce", "chocolate", "fair_trade", "butcher", "reservation", "takeaway(:.*)?", "delivery", "caterer",
-    // fuel stations and boatbuilders
-    "fuel:.*", "compressed_air", "hgv:lanes", "seamark:.*", "waterway",
+    "bar", "cafe", "coffee", "microroasting", "microbrewery", "brewery", "real_ale", "taproom", "training", "distillery", "drink(:.*)?", "cocktails", "alcohol", "wine([:_].*)?", "happy_hours", "diet:.*", "cuisine", "tasting", "breakfast", "lunch",
+    "organic", "produced_on_site", "restaurant", "food", "pastry", "pastry_shop", "product", "produce", "chocolate", "fair_trade", "butcher", "reservation", "takeaway(:.*)?", "delivery(:.*)?", "caterer", "real_fire",
     // related to repair shops/crafts
     "service(:.*)?", "motorcycle:.*", "repair", ".*:repair", "electronics_repair(:.*)?",
-    // hairdresser
-    "unisex", "male", "female",
+    // shop=hairdresser, shop=clothes
+    "unisex", "male", "female", "gender",
+    // healthcare like optician
+    "healthcare(:.*)?", "health_.*", "medical_.*",
     // accomodation & layout
     "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "tourism", "laundry_service",
     // misc specific attributes
-    "clothes", "beauty", "tobacco", "carpenter", "furniture", "lottery", "sport", "leisure", "dispensing", "tailor:.*",
-    "books", "agrarian", "musical_instrument", "massage", "parts", "post_office(:.*)?", "religion", "rental", "tickets:.*", "goods_supply",
+    "clothes", "shoes", "tailor", "beauty", "tobacco", "carpenter", "furniture", "lottery", "sport", "leisure", "dispensing", "tailor:.*", "gambling", "material", "raw_material", "stonemason", "studio", "scuba_diving(:.*)?", "polling_station",
+    "club", "collector", "books", "agrarian", "musical_instrument", "massage", "parts", "post_office(:.*)?", "religion", "denomination", "rental", ".*:rental", "tickets:.*", "public_transport", "goods_supply", "pet", "appliance", "artwork_type", "charity", "company", "crop", "dry_cleaning", "factory", "feature",
 ).map { it.toRegex() }
 
 /** ~ tenant of a normal retail shop area.
