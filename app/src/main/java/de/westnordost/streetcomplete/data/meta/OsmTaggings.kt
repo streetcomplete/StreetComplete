@@ -74,6 +74,9 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *    of workshops (most craft=* other than those where people go to have something repaired or so)
  *
  *  It is possible to specify a prefix for the keys here, e.g. "disused", to find disused shops etc.
+ *
+ *  Note: When this function is modified, please update and rerun this too:
+ *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/Makefile
  *  */
 fun isKindOfShopExpression(prefix: String? = null): String {
     val p = if(prefix != null) "$prefix:" else ""
