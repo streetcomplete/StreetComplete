@@ -147,6 +147,9 @@ class CheckShopTypeTest {
                 "fee" to "yes",
                 "nycdoitt:bin" to "22222",
                 "barrier" to "wall",
+                "office" to "it",
+                "tourism" to "information",
+                "information" to "office",
                 "name" to "Juppiebude"
             ),
             ShopType(mapOf("shop" to "ice_cream")),
@@ -156,6 +159,9 @@ class CheckShopTypeTest {
             StringMapEntryDelete("name", "Juppiebude"),
             StringMapEntryDelete("ref", "1111"),
             StringMapEntryDelete("fee", "yes"),
+            StringMapEntryDelete("office", "it"),
+            StringMapEntryDelete("tourism", "information"),
+            StringMapEntryDelete("information", "office"),
         )
     }
 }

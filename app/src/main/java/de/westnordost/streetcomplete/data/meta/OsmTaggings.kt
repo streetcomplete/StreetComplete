@@ -58,7 +58,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     // healthcare like optician
     "healthcare(:.*)?", "health_.*", "medical_.*",
     // accomodation & layout
-    "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "tourism", "laundry_service",
+    "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "laundry_service",
     // misc specific attributes
     "clothes", "shoes", "tailor", "beauty", "tobacco", "carpenter", "furniture", "lottery", "sport", "leisure", "dispensing", "tailor:.*", "gambling", "material", "raw_material", "stonemason", "studio", "scuba_diving(:.*)?", "polling_station",
     "club", "collector", "books", "agrarian", "musical_instrument", "massage", "parts", "post_office(:.*)?", "religion", "denomination", "rental", ".*:rental", "tickets:.*", "public_transport", "goods_supply", "pet", "appliance", "artwork_type", "charity", "company", "crop", "dry_cleaning", "factory", "feature",
