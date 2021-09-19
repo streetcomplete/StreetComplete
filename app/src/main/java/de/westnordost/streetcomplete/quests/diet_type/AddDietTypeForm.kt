@@ -5,28 +5,30 @@ import android.view.View
 import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestDietTypeExplanationBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
-import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no_only.*
-import kotlinx.android.synthetic.main.quest_diet_type_explanation.*
 
 class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailability>() {
 
     override val contentLayoutResId = R.layout.quest_diet_type_explanation
-    override val buttonsResId = R.layout.quest_buttonpanel_yes_no_only
+    private val binding by contentViewBinding(QuestDietTypeExplanationBinding::bind)
+
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(DIET_NO) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(DIET_YES) },
+        AnswerItem(R.string.quest_hasFeature_only) { applyAnswer(DIET_ONLY) },
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        yesButton.setOnClickListener { applyAnswer(DIET_YES) }
-        noButton.setOnClickListener { applyAnswer(DIET_NO) }
-        onlyButton.setOnClickListener { applyAnswer(DIET_ONLY) }
-
         val resId = arguments?.getInt(ARG_DIET) ?: 0
         if (resId > 0) {
-            descriptionLabel.setText(resId)
+            binding.descriptionLabel.setText(resId)
         } else {
-            descriptionLabel.visibility = View.GONE
+            binding.descriptionLabel.visibility = View.GONE
         }
     }
 

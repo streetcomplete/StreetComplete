@@ -4,15 +4,16 @@ import android.content.Context
 import android.text.format.DateFormat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.view.isInvisible
 
 import java.util.Locale
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.databinding.QuestTimesMonthRowBinding
+import de.westnordost.streetcomplete.databinding.QuestTimesOffdayRowBinding
+import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
@@ -49,9 +50,9 @@ class RegularOpeningHoursAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            MONTHS   -> MonthsViewHolder(inflater.inflate(R.layout.quest_times_month_row, parent, false))
-            WEEKDAYS -> WeekdayViewHolder(inflater.inflate(R.layout.quest_times_weekday_row, parent, false))
-            OFFDAYS  -> OffDaysViewHolder(inflater.inflate(R.layout.quest_times_offday_row, parent, false))
+            MONTHS   -> MonthsViewHolder(QuestTimesMonthRowBinding.inflate(inflater, parent, false))
+            WEEKDAYS -> WeekdayViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater, parent, false))
+            OFFDAYS  -> OffDaysViewHolder(QuestTimesOffdayRowBinding.inflate(inflater, parent, false))
             else     -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
@@ -179,20 +180,21 @@ class RegularOpeningHoursAdapter(
 
     /* -------------------------------------- months select --------------------------------------*/
 
-    private inner class MonthsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val monthsLabel: TextView = itemView.findViewById(R.id.monthsLabel)
+    private inner class MonthsViewHolder(
+        private val binding: QuestTimesMonthRowBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun update(row: OpeningMonthsRow, isEnabled: Boolean) {
-            monthsLabel.text =
+            binding.monthsLabel.text =
                 if (row.months.isSelectionEmpty()) "("+context.resources.getString(R.string.quest_openingHours_unspecified_range)+")"
                 else row.months.toLocalizedString()
-            monthsLabel.setOnClickListener {
+            binding.monthsLabel.setOnClickListener {
                 openSetMonthsRangeDialog(row.months) { months ->
                     row.months = months
                     notifyItemChanged(adapterPosition)
                 }
             }
-            monthsLabel.isClickable = isEnabled
+            binding.monthsLabel.isClickable = isEnabled
         }
     }
 
@@ -218,61 +220,60 @@ class RegularOpeningHoursAdapter(
 
     /* ------------------------------------ weekdays select --------------------------------------*/
 
-    private inner class WeekdayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val weekdaysLabel: TextView = itemView.findViewById(R.id.weekdaysLabel)
-        private val hoursLabel: TextView = itemView.findViewById(R.id.hoursLabel)
-        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
+    private inner class WeekdayViewHolder(
+        private val binding: QuestTimesWeekdayRowBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            deleteButton.setOnClickListener {
+            binding.deleteButton.setOnClickListener {
                 val index = adapterPosition
                 if (index != RecyclerView.NO_POSITION) remove(index)
             }
         }
 
         fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
-            weekdaysLabel.text =
+            binding.weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
                 else if (row.weekdays.isSelectionEmpty()) "("+context.resources.getString(R.string.quest_openingHours_unspecified_range)+")"
                 else row.weekdays.toLocalizedString(context.resources)
-            weekdaysLabel.setOnClickListener {
+            binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     row.weekdays = weekdays
                     notifyItemChanged(adapterPosition)
                 }
             }
 
-            hoursLabel.text = row.timeRange.toStringUsing(Locale.getDefault(), "–")
-            hoursLabel.setOnClickListener {
+            binding.hoursLabel.text = row.timeRange.toStringUsing(Locale.getDefault(), "–")
+            binding.hoursLabel.setOnClickListener {
                 openSetTimeRangeDialog(row.timeRange) { timeRange ->
                     row.timeRange = timeRange
                     notifyItemChanged(adapterPosition)
                 }
             }
 
-            deleteButton.isInvisible = !isEnabled
-            deleteButton.isClickable = isEnabled
-            weekdaysLabel.isClickable = isEnabled
-            hoursLabel.isClickable = isEnabled
+            binding.deleteButton.isInvisible = !isEnabled
+            binding.deleteButton.isClickable = isEnabled
+            binding.weekdaysLabel.isClickable = isEnabled
+            binding.hoursLabel.isClickable = isEnabled
         }
     }
 
     /* ------------------------------------ offdays select --------------------------------------*/
 
-    private inner class OffDaysViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val weekdaysLabel: TextView = itemView.findViewById(R.id.weekdaysLabel)
-        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
+    private inner class OffDaysViewHolder(
+        private val binding: QuestTimesOffdayRowBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            deleteButton.setOnClickListener {
+            binding.deleteButton.setOnClickListener {
                 val index = adapterPosition
                 if (index != RecyclerView.NO_POSITION) remove(index)
             }
         }
 
         fun update(row: OffDaysRow, isEnabled: Boolean) {
-            weekdaysLabel.text = row.weekdays.toLocalizedString(context.resources)
-            weekdaysLabel.setOnClickListener {
+            binding.weekdaysLabel.text = row.weekdays.toLocalizedString(context.resources)
+            binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     if (!weekdays.isSelectionEmpty()) {
                         row.weekdays = weekdays
@@ -281,9 +282,9 @@ class RegularOpeningHoursAdapter(
                 }
             }
 
-            deleteButton.isInvisible = !isEnabled
-            deleteButton.isClickable = isEnabled
-            weekdaysLabel.isClickable = isEnabled
+            binding.deleteButton.isInvisible = !isEnabled
+            binding.deleteButton.isClickable = isEnabled
+            binding.weekdaysLabel.isClickable = isEnabled
         }
     }
 

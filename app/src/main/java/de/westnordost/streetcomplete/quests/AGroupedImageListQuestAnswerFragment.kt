@@ -12,10 +12,9 @@ import androidx.preference.PreferenceManager
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_generic_list.*
 import java.util.LinkedList
 import kotlin.math.max
 
@@ -26,7 +25,9 @@ import kotlin.math.max
  */
 abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
-    override val contentLayoutResId = R.layout.quest_generic_list
+    final override val contentLayoutResId = R.layout.quest_generic_list
+    private val binding by contentViewBinding(QuestGenericListBinding::bind)
+
     override val defaultExpanded = false
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter<I>
@@ -53,15 +54,15 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        list.layoutManager = imageSelector.gridLayoutManager
-        list.isNestedScrollingEnabled = false
+        binding.list.layoutManager = imageSelector.gridLayoutManager
+        binding.list.isNestedScrollingEnabled = false
 
-        showMoreButton.setOnClickListener {
+        binding.showMoreButton.setOnClickListener {
             imageSelector.items = allItems
-            showMoreButton.visibility = View.GONE
+            binding.showMoreButton.visibility = View.GONE
         }
 
-        selectHintLabel.setText(R.string.quest_select_hint_most_specific)
+        binding.selectHintLabel.setText(R.string.quest_select_hint_most_specific)
 
         imageSelector.listeners.add { checkIsFormComplete() }
         imageSelector.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
@@ -73,7 +74,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         checkIsFormComplete()
 
         imageSelector.items = getInitialItems()
-        list.adapter = imageSelector
+        binding.list.adapter = imageSelector
     }
 
     private fun scrollTo(index: Int) {
