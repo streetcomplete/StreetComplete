@@ -2,6 +2,7 @@ v34.2: |
   <h3>Fixes</h3>
   <ul>
   <li>Fix sometimes notes would be created at wrong positions if the follow-me mode was on (#3284), thanks @smichel17</li>
+  <li>Fix sometimes one would be notified of all achievements one ever achieved on logging out and in again (#3282)</li>
   </ul>
   <h3>Quest Enhancements</h3>
   <ul>
