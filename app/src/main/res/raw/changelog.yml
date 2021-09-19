@@ -1,3 +1,8 @@
+v34.2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix sometimes notes would be created at wrong positions if the follow-me mode was on (#3284), thanks @smichel17</li>
+  </ul>
 v34.1: |
   <h3>Enhancements</h3>
   <ul>

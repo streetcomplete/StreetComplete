@@ -462,8 +462,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point) {
-        closeBottomSheet()
-
         val mapFragment = mapFragment ?: return
         val mapView = mapFragment.view ?: return
 
@@ -471,6 +469,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val notePosition = PointF(screenPosition)
         notePosition.offset(-mapPosition.x, -mapPosition.y)
         val position = mapFragment.getPositionAt(notePosition) ?: throw NullPointerException()
+
+        /* closing the bottom sheet must happen after getting the position because on closing the
+           bottom sheet, the view will immediately follow the user's location again (if that setting
+           is on) #3284
+         */
+        closeBottomSheet()
 
         lifecycleScope.launch { questController.createNote(note, imagePaths, position) }
 
