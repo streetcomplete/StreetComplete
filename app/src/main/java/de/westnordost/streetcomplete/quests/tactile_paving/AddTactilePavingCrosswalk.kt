@@ -28,6 +28,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
     private val excludedWaysFilter by lazy { """
         ways with
           highway = cycleway and foot !~ yes|designated
+          or highway = service and service = driveway
           or highway and access ~ private|no
     """.toElementFilterExpression() }
 
