@@ -161,16 +161,16 @@ surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Woodchips_surface.jpg (10992-osm)
-surface_asphalt_bad.jpg        ???               20201129_114019.jpg (rhhsm)
+surface_asphalt_bad.jpg        CC0               20201129_114019.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Mala_Hrastice_2020-06-16_Ulice_z_navsi_na_nadrazi_obr05.jpg (Miloš Hlávka)
 surface_asphalt_good.jpg       public domain     helium314
 surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Nids-de-poule_sur_une_route_communale.jpg (Mathis Brancquart)
 surface_asphalt_very_bad.jpg   CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Potholes_at_the_Level_Crossing,_Barrow_Haven_-_geograph.org.uk_-_1621073.jpg (David Wright)
 surface_compacted_bad.jpg      public domain     helium314
 surface_compacted_intermedi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Saviselk%C3%A4_2.JPG (Htm)
-surface_compacted_very_bad.jpg ???               IMG_20210530_151614010.jpg (rhhsm)
+surface_compacted_very_bad.jpg CC0               IMG_20210530_151614010.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
-surface_gravel_horrible.jpg    ???               IMG_20210530_151832190.jpg (rhhsm)
+surface_gravel_horrible.jpg    CC0               IMG_20210530_151832190.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_intermediate... public domain     https://commons.wikimedia.org/wiki/File:Tamsa.JPG (Ingvar Pärnamäe)
 surface_gravel_very_bad.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:%C5%A0t%C4%9Brkov%C3%A1_cesta_u_Pl%C3%A1%C5%A1t%C3%ADku.jpg (ŠJů)
 surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)

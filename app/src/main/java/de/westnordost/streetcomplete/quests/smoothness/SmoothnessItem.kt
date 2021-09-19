@@ -36,6 +36,7 @@ fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (thi
     }
     GOOD -> when (surface) {
         "paving_stones" -> R.string.quest_smoothness_description_good_paving_stones
+        "sett" -> R.string.quest_smoothness_description_good_sett
         "asphalt" -> R.string.quest_smoothness_description_good
         else -> null
     }
@@ -92,6 +93,7 @@ fun Smoothness.getAsphaltImageResId() = when (this) {
 }
 
 fun Smoothness.getSettImageResId() = when (this) {
+    GOOD -> R.drawable.surface_sett_good
     INTERMEDIATE -> R.drawable.surface_sett_intermediate
     BAD -> R.drawable.surface_sett_bad
     VERY_BAD -> R.drawable.surface_sett_very_bad
