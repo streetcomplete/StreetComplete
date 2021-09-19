@@ -10,8 +10,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.databinding.FragmentEditHistoryListBinding
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import kotlinx.android.synthetic.main.fragment_edit_history_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,6 +32,8 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         fun onEditHistoryIsEmpty()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    private val binding by viewBinding(FragmentEditHistoryListBinding::bind)
 
     private val adapter = EditHistoryAdapter(this::onSelected, this::onSelectionDeleted, this::onUndo)
 
@@ -70,11 +73,11 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editHistoryList.respectSystemInsets { updatePadding(left = it.left, top = it.top, bottom = it.bottom) }
+        binding.editHistoryList.respectSystemInsets { updatePadding(left = it.left, top = it.top, bottom = it.bottom) }
         lifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)
-            editHistoryList.adapter = adapter
+            binding.editHistoryList.adapter = adapter
         }
     }
 

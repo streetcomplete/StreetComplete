@@ -5,7 +5,7 @@ import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -14,10 +14,10 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 class AddRecyclingContainerMaterialsForm
     : AImageListQuestAnswerFragment<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_recycling_materials
+    override val descriptionResId = R.string.quest_recycling_materials_note
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
+        AnswerItem(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
     override val items get() = listOf(

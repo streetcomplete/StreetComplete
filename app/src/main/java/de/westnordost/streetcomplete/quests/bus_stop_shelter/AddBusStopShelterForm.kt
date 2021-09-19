@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.quests.bus_stop_shelter
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
 
-class AddBusStopShelterForm : AYesNoQuestAnswerFragment<BusStopShelterAnswer>() {
+class AddBusStopShelterForm : AbstractQuestAnswerFragment<BusStopShelterAnswer>() {
 
-    override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_busStopShelter_covered) { applyAnswer(COVERED) }
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO_SHELTER) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(SHELTER) }
     )
 
-    override fun onClick(answer: Boolean) { applyAnswer(if(answer) SHELTER else NO_SHELTER) }
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_busStopShelter_covered) { applyAnswer(COVERED) }
+    )
 }
