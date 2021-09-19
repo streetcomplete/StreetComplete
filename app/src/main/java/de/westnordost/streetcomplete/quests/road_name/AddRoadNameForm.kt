@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AddLocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.LocalizedName
@@ -32,8 +32,8 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
-        OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+        AnswerItem(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
+        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale

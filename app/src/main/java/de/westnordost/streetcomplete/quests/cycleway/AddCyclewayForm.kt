@@ -8,10 +8,9 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.databinding.QuestButtonpanelYesNoBinding
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -21,19 +20,27 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
 
+    override val buttonPanelAnswers get() =
+        if(isDisplayingPreviousCycleway) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+            AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
+        )
+        else emptyList()
+
+    override val otherAnswers: List<AnswerItem> get() {
+        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
+        val result = mutableListOf<AnswerItem>()
+        if (!isDefiningBothSides && isNoRoundabout) {
+            result.add(AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
+        }
+        result.add(AnswerItem(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noCyclewayHereHint() })
+        return result
+    }
+
+
     override val contentPadding = false
 
     private var isDisplayingPreviousCycleway: Boolean = false
-
-    override val otherAnswers: List<OtherAnswer> get() {
-        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
-        val result = mutableListOf<OtherAnswer>()
-        if (!isDefiningBothSides && isNoRoundabout) {
-            result.add(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
-        }
-        result.add(OtherAnswer(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noCyclewayHereHint() })
-        return result
-    }
 
     private fun noCyclewayHereHint() {
         activity?.let { AlertDialog.Builder(it)
@@ -145,14 +152,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private fun setAsResurvey(resurvey: Boolean) {
         isDisplayingPreviousCycleway = resurvey
         binding.puzzleView.isEnabled = !resurvey
-        if (resurvey) {
-            setButtonsView(R.layout.quest_buttonpanel_yes_no)
-            val buttonsBinding = QuestButtonpanelYesNoBinding.bind(requireView())
-            buttonsBinding.noButton.setOnClickListener { setAsResurvey(false) }
-            buttonsBinding.yesButton.setOnClickListener { onClickOk() }
-        } else {
-            removeButtonsView()
-        }
+        updateButtonPanel()
     }
 
     @AnyThread

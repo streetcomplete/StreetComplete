@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ktx
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle.Event
@@ -55,12 +56,14 @@ class ActivityBindingPropertyDelegate<T : ViewBinding>(
 }
 
 inline fun <reified T : ViewBinding> Fragment.viewBinding(
-    noinline viewBinder: (View) -> T
-) = FragmentViewBindingPropertyDelegate(this, viewBinder)
+    noinline viewBinder: (View) -> T,
+    rootViewId: Int? = null
+) = FragmentViewBindingPropertyDelegate(this, viewBinder, rootViewId)
 
 class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
     private val fragment: Fragment,
-    private val viewBinder: (View) -> T
+    private val viewBinder: (View) -> T,
+    private val rootViewId: Int? = null
 ) : ReadOnlyProperty<Fragment, T>, LifecycleEventObserver {
 
     private var binding: T? = null
@@ -74,7 +77,12 @@ class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
 
     override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
         if (binding == null) {
-            binding = viewBinder(thisRef.requireView())
+            val rootView = if (rootViewId != null) {
+                thisRef.requireView().findViewById<ViewGroup>(rootViewId)!!.getChildAt(0)
+            } else {
+                thisRef.requireView()
+            }
+            binding = viewBinder(rootView)
             fragment.viewLifecycleOwner.lifecycle.addObserver(this)
         }
         return binding!!

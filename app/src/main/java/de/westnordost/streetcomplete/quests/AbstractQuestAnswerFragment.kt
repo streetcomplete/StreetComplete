@@ -5,7 +5,6 @@ import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -15,12 +14,8 @@ import android.widget.TextView
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
@@ -33,12 +28,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
-import de.westnordost.streetcomplete.databinding.QuestButtonpanelOtherAnswersBinding
-import de.westnordost.streetcomplete.ktx.geometryType
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -47,14 +39,14 @@ import java.lang.ref.WeakReference
 import java.util.Locale
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
-import kotlin.properties.ReadOnlyProperty
-import kotlin.reflect.KProperty
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> :
     AbstractBottomSheetFragment(), IsShowingQuestDetails, IsLockable {
 
-    private val binding by viewBinding(FragmentQuestAnswerBinding::bind)
+    private var _binding: FragmentQuestAnswerBinding? = null
+    private val binding get() = _binding!!
+
     protected lateinit var otherAnswersButton: TextView
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
@@ -114,8 +106,8 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
-    open val buttonsResId: Int? = null
-    open val otherAnswers = listOf<OtherAnswer>()
+    open val buttonPanelAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<AnswerItem>()
     open val contentPadding = true
 
     interface Listener {
@@ -162,20 +154,24 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_quest_answer, container, false)
+        _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
+
+        /* content and buttons panel should be inflated in onCreateView because in onViewCreated,
+        *  subclasses may already want to access the content. */
+        otherAnswersButton = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
+
+        contentLayoutResId?.let { setContentView(it) }
+        updateButtonPanel()
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        contentLayoutResId?.let { setContentView(it) }
-
-        otherAnswersButton = QuestButtonpanelOtherAnswersBinding.inflate(layoutInflater, binding.buttonPanel).otherAnswersButton
-        buttonsResId?.let { setButtonsView(it) }
-
         binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
-        val levelLabelText = getLocationLabelText()
+        val levelLabelText = osmElement?.let { resources.getLocationLabelString(it.tags) }
         binding.titleHintLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
             binding.titleHintLabel.text = levelLabelText
@@ -187,10 +183,15 @@ abstract class AbstractQuestAnswerFragment<T> :
         }
     }
 
-    private fun assembleOtherAnswers() : List<OtherAnswer> {
-        val answers = mutableListOf<OtherAnswer>()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-        val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
+    private fun assembleOtherAnswers() : List<AnswerItem> {
+        val answers = mutableListOf<AnswerItem>()
+
+        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
         createSplitWayAnswer()?.let { answers.add(it) }
@@ -200,7 +201,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         return answers
     }
 
-    private fun createSplitWayAnswer(): OtherAnswer? {
+    private fun createSplitWayAnswer(): AnswerItem? {
         val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
         if (!isSplitWayEnabled) return null
 
@@ -216,12 +217,12 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         if (way.isArea()) return null
 
-        return OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+        return AnswerItem(R.string.quest_generic_answer_differs_along_the_way) {
             onClickSplitWayAnswer()
         }
     }
 
-    private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
+    private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
         val isDeletePoiEnabled =
             (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
                 && osmElement?.type == ElementType.NODE
@@ -231,7 +232,7 @@ abstract class AbstractQuestAnswerFragment<T> :
             "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
         }
 
-        return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
+        return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
             if (isDeletePoiEnabled) deletePoiNode()
             else if (isReplaceShopEnabled) replaceShopElement()
         }
@@ -251,53 +252,6 @@ abstract class AbstractQuestAnswerFragment<T> :
             answers[item.itemId].action()
             true
         }
-    }
-
-    private fun getLocationLabelText(): CharSequence? {
-        // prefer to show the level if both are present because it is a more precise indication
-        // where it is supposed to be
-        return getLevelLabelText() ?: getHouseNumberLabelText()
-    }
-
-    private fun getLevelLabelText(): CharSequence? {
-        val tags = osmElement?.tags ?: return null
-        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
-           denominated in the building and thus may (sometimes) not coincide with it. E.g.
-           addr:floor may be "M" while level is "2" */
-        val level = tags["addr:floor"] ?: tags["level:ref"] ?: tags["level"]
-        if (level != null) {
-            return resources.getString(R.string.on_level, level)
-        }
-        val tunnel = tags["tunnel"]
-        if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
-            return resources.getString(R.string.underground)
-        }
-        return null
-    }
-
-    private fun getHouseNumberLabelText(): CharSequence? {
-        val tags = osmElement?.tags ?: return null
-
-        val houseName = tags["addr:housename"]
-        val conscriptionNumber = tags["addr:conscriptionnumber"]
-        val streetNumber = tags["addr:streetnumber"]
-        val houseNumber = tags["addr:housenumber"]
-
-        if (houseName != null) {
-            return resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>")
-                .parseAsHtml()
-        }
-        if (conscriptionNumber != null) {
-            if (streetNumber != null) {
-                return resources.getString(R.string.at_conscription_and_street_number, conscriptionNumber, streetNumber)
-            } else {
-                return resources.getString(R.string.at_conscription_number, conscriptionNumber)
-            }
-        }
-        if (houseNumber != null) {
-            return resources.getString(R.string.at_housenumber, houseNumber)
-        }
-        return null
     }
 
     override fun onStart() {
@@ -412,13 +366,15 @@ abstract class AbstractQuestAnswerFragment<T> :
             }.show()
     }
 
+    /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
         if (binding.content.childCount > 0) {
             binding.content.removeAllViews()
         }
         binding.content.visibility = View.VISIBLE
         updateContentPadding()
-        return layoutInflater.inflate(resourceId, binding.content)
+        layoutInflater.inflate(resourceId, binding.content)
+        return binding.content.getChildAt(0)
     }
 
     private fun updateContentPadding() {
@@ -431,14 +387,16 @@ abstract class AbstractQuestAnswerFragment<T> :
         }
     }
 
-    protected fun setButtonsView(resourceId: Int) {
-        removeButtonsView()
-        layoutInflater.inflate(resourceId, binding.buttonPanel)
-    }
-
-    protected fun removeButtonsView() {
+    protected fun updateButtonPanel() {
+        // the other answers button is never removed/replaced
         if (binding.buttonPanel.childCount > 1) {
             binding.buttonPanel.removeViews(1, binding.buttonPanel.childCount - 1)
+        }
+
+        for (buttonPanelAnswer in buttonPanelAnswers) {
+            val button = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
+            button.setText(buttonPanelAnswer.titleResourceId)
+            button.setOnClickListener { buttonPanelAnswer.action() }
         }
     }
 
@@ -452,33 +410,9 @@ abstract class AbstractQuestAnswerFragment<T> :
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
     }
 
-    inline fun <reified T : ViewBinding> contentViewBinding(
+    protected inline fun <reified T : ViewBinding> contentViewBinding(
         noinline viewBinder: (View) -> T
-    ) = ContentViewBindingPropertyDelegate(this, viewBinder)
-
-    class ContentViewBindingPropertyDelegate<T : ViewBinding>(
-        private val fragment: AbstractQuestAnswerFragment<*>,
-        private val viewBinder: (View) -> T
-    ) : ReadOnlyProperty<AbstractQuestAnswerFragment<*>, T>, LifecycleEventObserver {
-
-        private var binding: T? = null
-
-        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-            if (event == Lifecycle.Event.ON_DESTROY) {
-                binding = null
-                source.lifecycle.removeObserver(this)
-            }
-        }
-
-        override fun getValue(thisRef: AbstractQuestAnswerFragment<*>, property: KProperty<*>): T {
-            if (binding == null) {
-                binding = viewBinder(thisRef.binding.content.getChildAt(0))
-                fragment.viewLifecycleOwner.lifecycle.addObserver(this)
-            }
-            return binding!!
-        }
-    }
-
+    ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
 
     companion object {
         private const val ARG_QUEST_KEY = "quest_key"
@@ -499,4 +433,4 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 }
 
-data class OtherAnswer(val titleResourceId: Int, val action: () -> Unit)
+data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)

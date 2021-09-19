@@ -68,6 +68,6 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

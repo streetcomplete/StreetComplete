@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.databinding.QuestPlacenameBinding
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.toTypedArray
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.shop_type.SearchAdapter
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
@@ -22,7 +22,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     private val binding by contentViewBinding(QuestPlacenameBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoName() }
+        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoName() }
     )
 
     private val placeName get() = binding.nameInput.text?.toString().orEmpty().trim()

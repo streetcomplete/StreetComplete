@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.quests
 import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
+import androidx.core.view.isGone
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
@@ -21,20 +24,21 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 /** Bottom sheet fragment with which the user can create a new note, including moving the note */
 class CreateNoteFragment : AbstractCreateNoteFragment() {
 
-    override val layoutResId = R.layout.fragment_create_note
+    private var _binding: FragmentCreateNoteBinding? = null
+    private val binding: FragmentCreateNoteBinding get() = _binding!!
 
-    private val binding by viewBinding(FragmentCreateNoteBinding::bind)
+    private val bottomSheetBinding get() = binding.questAnswerLayout
 
-    override val bottomSheetContainer get() = binding.questAnswerLayout.bottomSheetContainer
-    override val bottomSheet get() = binding.questAnswerLayout.bottomSheet
-    override val scrollViewChild get() = binding.questAnswerLayout.scrollViewChild
-    override val bottomSheetTitle get() = binding.questAnswerLayout.speechBubbleTitleContainer
-    override val bottomSheetContent get() = binding.questAnswerLayout.speechbubbleContentContainer
-    override val floatingBottomView get() = binding.questAnswerLayout.okButton
-    override val backButton get() = binding.questAnswerLayout.closeButton
-    override val buttonPanel get() = binding.questAnswerLayout.buttonPanel
+    override val bottomSheetContainer get() = bottomSheetBinding.bottomSheetContainer
+    override val bottomSheet get() = bottomSheetBinding.bottomSheet
+    override val scrollViewChild get() = bottomSheetBinding.scrollViewChild
+    override val bottomSheetTitle get() = bottomSheetBinding.speechBubbleTitleContainer
+    override val bottomSheetContent get() = bottomSheetBinding.speechbubbleContentContainer
+    override val floatingBottomView get() = bottomSheetBinding.okButton
+    override val backButton get() = bottomSheetBinding.closeButton
+    override val okButton get() = bottomSheetBinding.okButton
 
-    private val contentBinding by viewBinding(FormLeaveNoteBinding::bind)
+    private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 
     override val noteInput get() = contentBinding.noteInput
 
@@ -42,18 +46,30 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         /** Called when the user wants to leave a note which is not related to a quest  */
         fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point)
     }
-    private val listener: Listener? get() = parentFragment as? Listener
-            ?: activity as? Listener
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
+        inflater.inflate(R.layout.form_leave_note, bottomSheetBinding.content)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bottomSheetBinding.buttonPanel.isGone = true
 
         if (savedInstanceState == null) {
             binding.markerCreateLayout.markerLayoutContainer.startAnimation(createFallDownAnimation())
         }
 
-        binding.questAnswerLayout.titleLabel.text = getString(R.string.map_btn_create_note)
+        bottomSheetBinding.titleLabel.text = getString(R.string.map_btn_create_note)
         contentBinding.descriptionLabel.text = getString(R.string.create_new_note_description)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -94,7 +110,10 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         if (contentBinding.noteInput.hideKeyboard() == true) return
 
         val screenPos = binding.markerCreateLayout.createNoteMarker.getLocationInWindow()
-        screenPos.offset(binding.markerCreateLayout.createNoteMarker.width / 2, binding.markerCreateLayout.createNoteMarker.height / 2)
+        screenPos.offset(
+            binding.markerCreateLayout.createNoteMarker.width / 2,
+            binding.markerCreateLayout.createNoteMarker.height / 2
+        )
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 

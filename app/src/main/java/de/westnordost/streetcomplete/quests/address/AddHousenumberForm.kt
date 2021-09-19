@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -24,9 +24,9 @@ import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
-        OtherAnswer(R.string.quest_address_answer_house_name) { switchToHouseName() },
-        OtherAnswer(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
+        AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
+        AnswerItem(R.string.quest_address_answer_house_name) { switchToHouseName() },
+        AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
     )
 
     private var houseNumberInput: EditText? = null
@@ -48,10 +48,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-
         isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
         setLayout(if(isHousename) R.layout.quest_housename else R.layout.quest_housenumber)
-
         return view
     }
 

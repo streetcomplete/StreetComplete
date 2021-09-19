@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
@@ -15,7 +15,7 @@ class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
     private val binding by contentViewBinding(QuestRefBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_ref_answer_noRef) { confirmNoRef() }
+        AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() }
     )
 
     private val ref get() = binding.refInput.text?.toString().orEmpty().trim()

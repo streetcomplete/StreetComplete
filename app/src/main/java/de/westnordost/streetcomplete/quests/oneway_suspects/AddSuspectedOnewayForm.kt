@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
-import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.view.ResImage
@@ -20,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>() {
+class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
@@ -34,6 +34,11 @@ class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>(
     init {
         Injector.applicationComponent.inject(this)
     }
+
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(true) }
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,7 +61,7 @@ class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>(
         )
     }
 
-    override fun onClick(answer: Boolean) {
+    private fun applyAnswer(answer: Boolean) {
         // the quest needs the way ID of the element to find out the direction of the oneway
         applyAnswer(SuspectedOnewayAnswer(answer, osmElement!!.id))
     }

@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneCo
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.*
@@ -29,10 +29,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     override val contentLayoutResId = R.layout.quest_maxspeed
     private val binding by contentViewBinding(QuestMaxspeedBinding::bind)
 
-    override val otherAnswers: List<OtherAnswer> get() {
-        val result = mutableListOf<OtherAnswer>()
+    override val otherAnswers: List<AnswerItem> get() {
+        val result = mutableListOf<AnswerItem>()
         if (countryInfo.isAdvisorySpeedLimitKnown) {
-            result.add(OtherAnswer(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
+            result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
         }
         return result
     }

@@ -13,10 +13,9 @@ import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import android.view.Menu.NONE
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.databinding.QuestButtonpanelYesNoBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
@@ -29,11 +28,20 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     override val contentLayoutResId = R.layout.quest_opening_hours
     private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
 
+    override val buttonPanelAnswers get() =
+        if(isDisplayingPreviousOpeningHours) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+            AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                applyAnswer(RegularOpeningHours(osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!))
+            }
+        )
+        else emptyList()
+
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_openingHours_no_sign) { confirmNoSign() },
-        OtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
-        OtherAnswer(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
-        OtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours) {
+        AnswerItem(R.string.quest_openingHours_no_sign) { confirmNoSign() },
+        AnswerItem(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
+        AnswerItem(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
+        AnswerItem(R.string.quest_openingHours_answer_seasonal_opening_hours) {
             setAsResurvey(false)
             openingHoursAdapter.changeToMonthsMode()
         }
@@ -147,27 +155,16 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         openingHoursAdapter.isEnabled = !resurvey
         isDisplayingPreviousOpeningHours = resurvey
         binding.addTimesButton.isGone = resurvey
-        if (resurvey) {
-            setButtonsView(R.layout.quest_buttonpanel_yes_no)
-            val buttonsBinding = QuestButtonpanelYesNoBinding.bind(requireView())
-            buttonsBinding.noButton.setOnClickListener { setAsResurvey(false) }
-            buttonsBinding.yesButton.setOnClickListener {
-                applyAnswer(RegularOpeningHours(
-                    osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!
-                ))
-            }
-        } else {
-            removeButtonsView()
-        }
+        updateButtonPanel()
     }
 
     private fun showConfirm24_7Dialog() {
         AlertDialog.Builder(requireContext())
             .setMessage(R.string.quest_openingHours_24_7_confirmation)
-            .setPositiveButton(android.R.string.yes) { _, _ ->
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
                 applyAnswer(AlwaysOpen)
             }
-            .setNegativeButton(android.R.string.no, null)
+            .setNegativeButton(R.string.quest_generic_hasFeature_no, null)
             .show()
     }
 

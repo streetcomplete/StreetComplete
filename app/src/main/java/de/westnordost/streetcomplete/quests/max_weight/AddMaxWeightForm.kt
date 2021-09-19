@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
@@ -24,8 +24,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private val binding by contentViewBinding(QuestMaxweightBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
-        OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoSign() }
+        AnswerItem(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
+        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
     private var sign: MaxWeightSign? = null

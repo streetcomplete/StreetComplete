@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBoardTypeBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 
 class AddBoardTypeForm : AbstractQuestFormAnswerFragment<BoardType>() {
@@ -17,7 +17,7 @@ class AddBoardTypeForm : AbstractQuestFormAnswerFragment<BoardType>() {
     override val defaultExpanded = false
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_board_type_map) { confirmOnMap() }
+        AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
     )
 
     private fun confirmOnMap() {

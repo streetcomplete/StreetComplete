@@ -4,7 +4,7 @@ import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.LocalizedName
 
@@ -18,8 +18,8 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() },
-        OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+        AnswerItem(R.string.quest_name_answer_noName) { confirmNoName() },
+        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
     override fun onClickOk(names: List<LocalizedName>) {

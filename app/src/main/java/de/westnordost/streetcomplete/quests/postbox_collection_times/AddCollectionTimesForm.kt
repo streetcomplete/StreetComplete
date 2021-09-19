@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -24,7 +24,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
+        AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
     )
 
     private lateinit var collectionTimesAdapter: CollectionTimesAdapter

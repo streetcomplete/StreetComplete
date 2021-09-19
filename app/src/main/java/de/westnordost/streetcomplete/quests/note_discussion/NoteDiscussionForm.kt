@@ -21,8 +21,8 @@ import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.databinding.*
 import de.westnordost.streetcomplete.ktx.createBitmap
-import de.westnordost.streetcomplete.ktx.viewBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -31,13 +31,10 @@ import java.io.File
 import java.time.Instant
 import javax.inject.Inject
 
-class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
+class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
-    override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
-
     private val binding by contentViewBinding(QuestNoteDiscussionContentBinding::bind)
-    private val buttonsBinding by viewBinding(QuestButtonpanelNoteDiscussionBinding::bind)
 
     override val defaultExpanded = false
 
@@ -50,6 +47,10 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     private val noteText: String get() = binding.noteInput.text?.toString().orEmpty().trim()
 
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_noteDiscussion_no) { skipQuest() }
+    )
+
     init {
         Injector.applicationComponent.inject(this)
     }
@@ -57,14 +58,9 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonsBinding.doneButton.setOnClickListener { onClickOk() }
-        buttonsBinding.noButton.setOnClickListener { skipQuest() }
-
-        binding.noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
+        binding.noteInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         otherAnswersButton.visibility = View.GONE
-
-        updateDoneButtonEnablement()
 
         anonAvatar = requireContext().getDrawable(R.drawable.ic_osm_anon_avatar)!!.createBitmap()
 
@@ -90,7 +86,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         scrollViewChild.addView(discussionView, 0)
     }
 
-    private fun onClickOk() {
+    override fun onClickOk() {
         applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths.orEmpty()))
     }
 
@@ -103,11 +99,6 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         val hasPhotos = f != null && f.imagePaths.isNotEmpty()
         return hasPhotos || noteText.isNotEmpty()
     }
-
-    private fun updateDoneButtonEnablement() {
-        buttonsBinding.doneButton.isEnabled = noteText.isNotEmpty()
-    }
-
 
     private inner class NoteCommentListAdapter(list: List<NoteComment>) : ListAdapter<NoteComment>(list) {
 
@@ -171,4 +162,6 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
             else -> 0
         }
     }
+
+    override fun isFormComplete(): Boolean = noteText.isNotEmpty()
 }
