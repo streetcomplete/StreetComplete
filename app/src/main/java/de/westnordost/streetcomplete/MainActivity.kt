@@ -302,7 +302,7 @@ class MainActivity : AppCompatActivity(),
     /* ------------------------------------ Location listener ----------------------------------- */
 
     private fun updateLocationAvailability() {
-        if (isLocationEnabled(this)) {
+        if (isLocationEnabled) {
             questAutoSyncer.startPositionTracking()
         } else {
             questAutoSyncer.stopPositionTracking()
