@@ -22,6 +22,7 @@ v34.2: |
   <ul>
   <li>Don't ask for the building type of airport buildings (#3233), by @matkoniecz</li>
   <li>Don't ask if a marina is wheelchair-accessible (#3270), by @matkoniecz</li>
+  <li>Never ask whether there is tactile paving where the sidewalk crosses a driveway (#3301), by @smichel17</li>
   </ul>
 
 v34.1: |
