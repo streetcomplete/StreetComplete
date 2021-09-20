@@ -1,51 +1,34 @@
 package de.westnordost.streetcomplete.quests.board_type
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestBoardTypeBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 
-class AddBoardTypeForm : AbstractQuestFormAnswerFragment<BoardType>() {
-
-    override val contentLayoutResId = R.layout.quest_board_type
-    private val binding by contentViewBinding(QuestBoardTypeBinding::bind)
-
-    override val defaultExpanded = false
+class AddBoardTypeForm : AListQuestAnswerFragment<BoardType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
     )
 
+    override val items = listOf(
+        TextItem(HISTORY, R.string.quest_board_type_history),
+        TextItem(GEOLOGY, R.string.quest_board_type_geology),
+        TextItem(PLANTS, R.string.quest_board_type_plants),
+        TextItem(WILDLIFE, R.string.quest_board_type_wildlife),
+        TextItem(NATURE, R.string.quest_board_type_nature),
+        TextItem(PUBLIC_TRANSPORT, R.string.quest_board_type_public_transport),
+        TextItem(NOTICE, R.string.quest_board_type_notice_board),
+    )
+
     private fun confirmOnMap() {
         AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_board_type_map_title)
-                .setMessage(R.string.quest_board_type_map_description)
-                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(MAP) }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
+            .setTitle(R.string.quest_board_type_map_title)
+            .setMessage(R.string.quest_board_type_map_description)
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(MAP) }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
-    }
-
-    override fun onClickOk() {
-        applyAnswer(when (binding.radioButtonGroup.checkedRadioButtonId) {
-            R.id.history -> HISTORY
-            R.id.geology -> GEOLOGY
-            R.id.plants -> PLANTS
-            R.id.wildlife -> WILDLIFE
-            R.id.nature -> NATURE
-            R.id.public_transport -> PUBLIC_TRANSPORT
-            R.id.notice -> NOTICE
-            else -> throw NullPointerException()
-        })
-    }
-
-    override fun isFormComplete() = binding.radioButtonGroup.checkedRadioButtonId != -1
 }
