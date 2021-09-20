@@ -450,7 +450,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
     <string name="quest_existence_title">Is this still here? (%s)</string>
     <string name="quest_existence_name_title">Is %1$s (%2$s) still here?</string>
-    <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
+    <string name="quest_powerPolesMaterial_title">What is the material of this power or utility pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
