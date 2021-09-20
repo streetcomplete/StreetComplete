@@ -72,11 +72,11 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private fun setTeamMode(enabled: Boolean) {
         if (enabled) {
             context?.toast(R.string.team_mode_active)
-            binding.teamModeColorCircle?.popIn()
-            binding.teamModeColorCircle?.setIndexInTeam(teamModeQuestFilter.indexInTeam)
+            binding.teamModeColorCircle.popIn()
+            binding.teamModeColorCircle.setIndexInTeam(teamModeQuestFilter.indexInTeam)
         } else {
             context?.toast(R.string.team_mode_deactivated)
-            binding.teamModeColorCircle?.popOut()
+            binding.teamModeColorCircle.popOut()
         }
     }
 

@@ -115,11 +115,11 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
     private suspend fun continueAuthentication() {
         try {
             if (authorizeUrl == null) {
-                binding.progressView?.visibility = View.VISIBLE
+                binding.progressView.visibility = View.VISIBLE
                 authorizeUrl = withContext(Dispatchers.IO) {
                     provider.retrieveRequestToken(consumer, callbackUrl)
                 }
-                binding.progressView?.visibility = View.INVISIBLE
+                binding.progressView.visibility = View.INVISIBLE
             }
             val authorizeUrl = authorizeUrl
             if (authorizeUrl != null && oAuthVerifier == null) {
@@ -132,12 +132,12 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
                 binding.webView.visibility = View.INVISIBLE
             }
             if (oAuthVerifier != null) {
-                binding.progressView?.visibility = View.VISIBLE
+                binding.progressView.visibility = View.VISIBLE
                 withContext(Dispatchers.IO) {
                     provider.retrieveAccessToken(consumer, oAuthVerifier)
                 }
                 listener?.onOAuthSuccess(consumer)
-                binding.progressView?.visibility = View.INVISIBLE
+                binding.progressView.visibility = View.INVISIBLE
             }
         }
         catch (e: Exception) {
@@ -184,11 +184,11 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         }
 
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-            binding.progressView?.visibility = View.VISIBLE
+            binding.progressView.visibility = View.VISIBLE
         }
 
         override fun onPageFinished(view: WebView?, url: String?) {
-            binding.progressView?.visibility = View.INVISIBLE
+            binding.progressView.visibility = View.INVISIBLE
         }
     }
 }

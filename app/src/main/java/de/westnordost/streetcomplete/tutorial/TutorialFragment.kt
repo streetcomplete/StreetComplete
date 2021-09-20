@@ -136,7 +136,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(1400)
 
         // ...and after a few seconds, stops flashing
-        binding.tutorialGpsButton?.state = LocationState.UPDATING
+        binding.tutorialGpsButton.state = LocationState.UPDATING
 
         delay(800)
 

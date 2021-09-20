@@ -4,9 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.animation.DecelerateInterpolator
 import androidx.core.net.toUri
@@ -90,17 +88,17 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
             .alpha(1f)
             .translationX(0f).translationY(0f)
             .withEndAction {
-                (binding.mailOpenImageView?.drawable as? AnimatedVectorDrawable)?.start()
+                (binding.mailOpenImageView.drawable as? AnimatedVectorDrawable)?.start()
 
-                binding.mailFrontImageView?.animate()?.run {
+                binding.mailFrontImageView.animate().run {
                     duration = 100
                     startDelay = 100
                     alpha(1f)
                     start()
                 }
 
-                binding.speechbubbleContentContainer?.animate()?.run {
-                    withStartAction { binding.speechbubbleContentContainer?.alpha = 0.4f }
+                binding.speechbubbleContentContainer.animate().run {
+                    withStartAction { binding.speechbubbleContentContainer.alpha = 0.4f }
                     startDelay = 200
                     duration = 300
                     scaleX(1f)

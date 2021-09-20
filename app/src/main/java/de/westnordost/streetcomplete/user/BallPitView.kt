@@ -217,7 +217,7 @@ class BallPitView @JvmOverloads constructor(
     /* ---------------------------- Interaction with quest bubbles  ----------------------------- */
 
     private fun onFlingBubbleBody(body: Body, velocityX: Float, velocityY: Float) {
-        val pixelsPerMeter = binding.physicsView.pixelsPerMeter ?: return
+        val pixelsPerMeter = binding.physicsView.pixelsPerMeter
         val vx = FLING_SPEED_FACTOR * velocityX / pixelsPerMeter
         val vy = FLING_SPEED_FACTOR * -velocityY / pixelsPerMeter
         body.linearVelocity = Vec2(vx, vy).addLocal(body.linearVelocity)
