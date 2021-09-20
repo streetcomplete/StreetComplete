@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜寻并以搜寻取代？"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"搜寻任务"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"处已关闭。到设定中开启它？"</string>
 
     <!-- Fuzzy -->
@@ -669,9 +666,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"在 &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; 上浏览完整列表。"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 项目页&lt;/a&gt; 上浏览完整列表。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻译"</string>
@@ -1501,7 +1495,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"速度限制是由什么决定的？"</string>
-    <string name="notification_channel_download">"下载"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"这个游乐设施对公衆开放吗？"</string>
@@ -1714,6 +1707,10 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_postboxRef_name_title">"邮箱 %s 的参考编号是多少？"</string>
 
+    <!-- Whats the "number" means -->
+    <string name="quest_ref_answer_noRef">"看不到参考数字"</string>
+    <string name="quest_street_side_puzzle_tutorial">"图中道路的旋转与地图上指示位置一致。"</string>
+
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"这里可以回收哪些资源？"</string>
 
@@ -1797,12 +1794,16 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_tourism_information_name_title">"%s的旅游服务中心的类型是什么？"</string>
     <string name="quest_tourism_information_office">"游客中心"</string>
     <string name="quest_tourism_information_board">"告示板"</string>
+    <string name="quest_tourism_information_terminal">"信息终端"</string>
+    <string name="quest_tourism_information_map">"地图"</string>
+    <string name="quest_tourism_information_guidepost">"路标"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"这是通用垃圾回收设施"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"所以，这是一个回收任何垃圾的设施，比如袋装的生活垃圾？"</string>
+    <string name="quest_accepts_cash_title">"%s 支持现金支付吗？"</string>
     <string name="user_profile">"我的资料"</string>
     <string name="user_login">"登录"</string>
     <string name="user_logout">"登出"</string>
@@ -1824,28 +1825,103 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="links_empty">"你还没有链接"</string>
     <string name="quests_empty">"你还没有发布任何任务的答案"</string>
     <string name="unsynced_quests_description">"还要 %d 个未推送的变更。"</string>
+    <string name="unsynced_quests_not_logged_in_description">"你有%d处改变尚未发布。你需要登录以上传它们。"</string>
+    <string name="user_quests_title">"已解决任务"</string>
+    <string name="user_achievements_title">"成就"</string>
+    <string name="user_links_title">"链接集合"</string>
+    <string name="user_profile_title">"信息"</string>
+    <string name="user_statistics_quest_wiki_link">"文档"</string>
     <string name="achievements_unlocked_link">"解锁连接"</string>
     <string name="achievements_unlocked_links">"解锁连接"</string>
+    <string name="link_category_intro_title">"介绍"</string>
+    <string name="link_category_intro_description">"了解OSM及其社区"</string>
     <string name="link_category_editors_title">"贡献"</string>
+    <string name="link_category_editors_description">"编辑器和其他贡献OpenStreetMap的方法"</string>
+    <string name="link_category_maps_title">"地图"</string>
+    <string name="link_category_maps_description">"基于OpenStreetMap的地图"</string>
+    <string name="link_category_showcase_title">"案例"</string>
+    <string name="link_category_showcase_description">"基于OpenStreetMap的服务和应用"</string>
+    <string name="link_category_goodies_title">"好东西"</string>
+    <string name="link_category_goodies_description">"一些有趣的地图相关供你尝试"</string>
     <string name="link_cyclosm_description">"骑自行车地图"</string>
+    <string name="link_wheelmap_description">"供查找轮椅可通行地点的地图"</string>
     <string name="link_osm_buildings_description">"三维建筑地图"</string>
+    <string name="link_openvegemap_description">"查找你的城市中素食主义者和素食餐厅"</string>
+    <string name="link_josm_description">"功能全面的桌面OSM编辑器。长期贡献者的强大工具。"</string>
     <string name="link_vespucci_description">"面向Android的OSM高级编辑应用"</string>
+    <string name="link_ideditor_description">"简单的浏览器OSM编辑器。为桌面和大平板做了优化。"</string>
+    <string name="link_umap_description">"迅速利用自定义数据创建地图并将其嵌入你的网站。"</string>
+    <string name="link_opnvkarte_description">"公共交通路线和站点的地图"</string>
+    <string name="link_pic4review_description">"简单地通过查看你的城市照片来贡献OSM"</string>
+    <string name="link_wiki_description">"该维基是一切与OpenStreetMap相关事情的起点"</string>
     <string name="link_learnosm_description">"刚刚接触OpenStreetMap?这里是初学者指南"</string>
+    <string name="link_neis_one_description">"超大OpenStreetMap贡献者数据统计集，如你在哪里和如何作出贡献，你周边的贡献者，以及排行榜"</string>
+    <string name="link_brouter_description">"可能是骑手的最佳路线规划引擎"</string>
     <string name="link_show_me_the_way_description">"实时观看OSM改动"</string>
+    <string name="link_osrm_description">"最快的路线规划引擎"</string>
+    <string name="link_openrouteservice_description">"为各类车辆和步行做路线规划。还可以显示等时圈（从一点出发X分钟能到达的区域）。"</string>
+    <string name="link_osm_haiku_description">"使用OSM的数据生成一首俳句（一种日本诗歌）"</string>
+    <string name="link_openinframap_description">"显示电力、电讯、燃气和石油设施"</string>
+    <string name="link_openorienteeringmap_description">"专为野外定向运动生成可打印地图"</string>
+    <string name="achievement_first_edit_title">"完成第一个任务"</string>
+    <string name="achievement_first_edit_description">"欢迎来到OpenStreetMap社区！在你的资料页面，可以看到更多关于每一种你所完成任务的信息。"</string>
+    <string name="achievement_surveyor_solved_X">"你完成了%d个任务！完成更多以解锁更多成就，包括OSM和其它地图相关应用和项目的链接！"</string>
+    <string name="achievement_regular_description">"你已经使用这个应用向OSM贡献共%d天！长期贡献者是OSM的中流砥柱，谢谢你的贡献！❤"</string>
     <string name="achievement_bicyclist_title">"骑自行车的人"</string>
+    <string name="achievement_bicyclist_solved_X">"你完成了%d项可以帮助骑手任务！"</string>
+    <string name="achievement_wheelchair_title">"机动性"</string>
+    <string name="achievement_wheelchair_solved_X">"你完成了%d项任务，帮助了轮椅用户的出行！"</string>
+    <string name="achievement_postman_title">"邮差"</string>
+    <string name="achievement_postman_solved_X">"你帮助定位了%d个地址！这些数据对邮递员和任何导航系统都很重要。"</string>
     <string name="achievement_building_title">"高楼"</string>
+    <string name="achievement_building_solved_X">"你完成了%d项建筑相关的任务。
+本应用仅在确定了建筑类型后才会询问门牌号。"</string>
     <string name="achievement_blind_title">"盲人"</string>
+    <string name="achievement_blind_solved_X">"你完成了%d项与视障人群相关的任务。"</string>
     <string name="achievement_pedestrian_title">"跑步者"</string>
+    <string name="achievement_pedestrian_solved_X">"你完成了%d项与步行人群相关的任务。"</string>
     <string name="achievement_veg_title">"素食者"</string>
+    <string name="achievement_veg_solved_X">"你完成了%d项与素食人群相关的任务。"</string>
+    <string name="achievement_car_title">"在路上"</string>
+    <string name="achievement_car_solved_X">"你完成了%d项任务，改进了街道设施的细节。"</string>
+    <string name="unread_messages_message">"你的收件箱中有%d条未读消息"</string>
+    <string name="unread_messages_button">"打开收件箱"</string>
     <string name="action_about2">"关于"</string>
     <string name="map_btn_menu">"菜单"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;你的资料页面所展示数据是获取公开的OpenStreetMap贡献历史，随后托管在我的服务器上的&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"您还可以之后在个人资料页面做"</string>
+    <string name="credits_art_contributors_title">"艺术贡献者"</string>
+    <string name="credits_main_contributors_title">"主要贡献者"</string>
+    <string name="stats_are_syncing">"你的统计数据还在同步。稍后查看。"</string>
+    <string name="user_statistics_country_rank">"在%2$s排行: %1$d"</string>
+    <string name="user_statistics_filter_by_country">"依据国家"</string>
+    <string name="user_statistics_filter_by_quest_type">"依据任务类型"</string>
+    <string name="user_profile_global_rank">"全球排名"</string>
+    <string name="user_profile_local_rank">"在%s排名"</string>
+    <string name="user_profile_days_active">"活跃天数"</string>
+    <string name="user_profile_achievement_levels">"成就等级"</string>
+    <string name="quest_address_street_title">"%s（房屋）号码属于那条街道？"</string>
+    <string name="quest_address_street_no_named_streets">"它不属于某个以命名街道"</string>
+    <string name="quest_address_street_place_name_label">"地点名称："</string>
+    <string name="quest_address_street_description">"在地图上点击它所属的道路，或者在下面输入不带缩写的名称"</string>
+    <string name="quest_recycling_type_cooking_oil">"食用油"</string>
+    <string name="quest_recycling_type_engine_oil">"机油"</string>
     <string name="about_title_sponsors">"赞助者"</string>
+    <string name="quest_board_type_history">"历史"</string>
+    <string name="quest_board_type_geology">"地质"</string>
     <string name="quest_board_type_plants">"植物"</string>
+    <string name="quest_board_type_wildlife">"野生动物"</string>
+    <string name="quest_board_type_nature">"自然（多项主题）"</string>
     <string name="quest_board_type_notice_board">"公告板"</string>
     <string name="quest_board_type_public_transport">"公共交通"</string>
+    <string name="quest_board_type_title">"该信息板的主题是什么？"</string>
+    <string name="quest_sidewalk_separately_mapped">"是的，在地图上分别展示"</string>
+    <string name="quest_board_type_map">"它是一张地图"</string>
+    <string name="quest_board_type_map_title">"它是且仅是一张地图吗？"</string>
+    <string name="quest_surface_detailed_answer_impossible">"多种表面"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"国际"</string>
     <string name="quest_buildingType_terrace2">"排屋"</string>
     <string name="at_housename">"房屋名称 %s："</string>
     <string name="at_conscription_and_street_number">"征兵（Conscription）号码 %1$s, 定位号码 %2$s:"</string>
@@ -1854,13 +1930,48 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="at_conscription_number">"征兵（Conscription）号码 %s:"</string>
     <string name="at_housenumber">"房屋数量 %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的开放时间/营业时间是？"</string>
+    <string name="quest_openingHours_add_off_days">"增加关门日期"</string>
+    <string name="quest_openingHours_off_day">"关门日期"</string>
+    <string name="quest_openingHours_unspecified_range">"未指定"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否可以轮椅无障碍通行？"</string>
+    <string name="resurvey_intervals_less_often">"减少询问次数"</string>
+    <string name="resurvey_intervals_default">"默认"</string>
+    <string name="resurvey_intervals_more_often">"增加询问次数"</string>
+    <string name="quest_accepts_cash_type_title">"%1$s（%2$s）支持现金支付吗？"</string>
+    <string name="quest_busStopBench_tram_name_title">"有轨电车站 %s 有长椅吗？"</string>
+    <string name="quest_busStopBench_tram_title">"该有轨电车站有长椅吗？"</string>
+    <string name="quest_busStopBench_title">"该汽车站有长椅吗？"</string>
+    <string name="quest_busStopBench_name_title">"汽车站 %s 有长椅吗？"</string>
     <string name="about_title_translate">"帮助翻译应用"</string>
+    <string name="about_description_translate">"%1$s 已翻译 %2$d%%"</string>
+    <string name="quest_oneway2_title">"这是单项路吗？沿什么方向？"</string>
+    <string name="quest_oneway2_dir">"这个方向的单项路"</string>
+    <string name="quest_oneway2_no_oneway">"不是单向路"</string>
+    <string name="quest_maxweight_select_sign">"选择标识"</string>
+    <string name="quest_step_count_title">"有多少步？"</string>
     <string name="quest_traffic_signals_sound_title">"这个交通灯带有声音，供盲人使用吗？"</string>
+    <string name="quest_steps_ramp_title">"该阶梯有坡道吗？什么类型？"</string>
+    <string name="quest_steps_ramp_none">"无坡道"</string>
+    <string name="quest_steps_ramp_bicycle">"自行车坡道"</string>
+    <string name="quest_steps_ramp_stroller">"婴儿车坡道"</string>
+    <string name="quest_steps_ramp_wheelchair">"轮椅坡道"</string>
+    <string name="quest_atm_operator_title">"该ATM所属银行名字是？"</string>
+    <string name="quest_clothes_container_operator_title">"谁接收该衣物箱的捐赠？"</string>
+    <string name="achievement_citizen_title">"市民"</string>
     <string name="achievement_outdoors_title">"户外"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"轮椅坡道在地图上是否单独标注？"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"单独"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"未单独"</string>
+    <string name="pref_title_sync2">"自动上传回答"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"描述地面"</string>
     <string name="open_url">"打开链接"</string>
     <string name="quest_buildingType_historic">"历史建筑"</string>
+    <string name="quest_buildingType_abandoned">"已废弃"</string>
     <string name="quest_buildingType_ruins">"废墟"</string>
+    <string name="quest_lanes_title">"该道路有多少车道？"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"有双向左转车道"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"正确吗？"</string>
+    <string name="quest_maxheight_below_bridge_title">"该桥的限高为多少？"</string>
     <string name="quest_generic_answer_does_not_exist">"不存在哦"</string>
     <string name="osm_element_gone_confirmation">"不存在"</string>
     <string name="no_camera_app">"没有相机APP可用"</string>

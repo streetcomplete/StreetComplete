@@ -72,7 +72,6 @@ That is not very clear to me. Any further explanations? -->
     <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place ?"</string>
-    <string name="notification_downloading">"Recherche de quêtes…"</string>
     <string name="turn_on_location_request">"La localisation est désactivée. Ouvrir les paramètres pour l'activer maintenant ?"</string>
 
     <!-- Fuzzy -->
@@ -337,7 +336,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_fireHydrant_type_wall">"Murale"</string>
     <string name="quest_fireHydrant_type_pond">"Bassin"</string>
     <string name="credits_contributors">"Voir la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;liste complète sur GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Voir le &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projet sur POEditor&lt;/a&gt; pour la liste complète."</string>
     <string name="credits_translations_title">"Traductions"</string>
     <string name="credits_contributors_title">"Contributeurs au code"</string>
     <string name="credits_author_title">"Auteur et mainteneur"</string>
@@ -420,6 +418,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_name_title">"Est-ce que %s dispose de toilettes ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"De quel matériau est fait ce poteau électrique ?"</string>
     <string name="quest_powerPolesMaterial_wood">"Bois"</string>
     <string name="quest_powerPolesMaterial_metal">"Acier"</string>
@@ -712,9 +712,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l'app store. Les claviers
     <string name="quest_buildingType_sports_centre">"Centre sportif"</string>
     <string name="quest_buildingType_toilets">"Toilettes"</string>
     <string name="quest_maxspeed_sign_question">"Qu'est-ce qui indique la limite de vitesse ?"</string>
-
-    <!-- Verbe "Télécharger" ou nom "Téléchargement" ? -->
-    <string name="notification_channel_download">"Téléchargement"</string>
     <string name="quest_playground_access_title">"Cette aire de jeu est-elle accessible au public ?"</string>
     <string name="quest_segregated_title">"Comment sont aménagées les voies piétonnes et cyclables ici ?"</string>
     <string name="dialog_tutorial_upload">"Pour envoyer vos modifications manuellement, utilisez le bouton de la barre d'outils qui ressemble à ceci."</string>
@@ -897,7 +894,7 @@ Découper maintenant ?"</string>
     <string name="tutorial_solving_quests">"Une fois trouvés, ces détails manquants apparaîtront sur la carte sous forme de quêtes. 
 
 Vous pouvez d'ores et déjà commencer à les résoudre, mais vous devrez vous connecter pour que vos réponses soient publiées."</string>
-    <string name="tutorial_stay_safe">"En cas de doute, vous pouvez toujours répondre Je ne sais pas » et laisser une note.
+    <string name="tutorial_stay_safe">"En cas de doute, vous pouvez toujours répondre « Je ne sais pas » et laisser une note.
 
 Enfin, n'oubliez pas de rester prudent : soyez attentifs à votre environnement et n'entrez pas dans les propriétés privées."</string>
     <string name="tutorial_happy_mapping">"Bonne cartographie !"</string>
@@ -1059,7 +1056,6 @@ Notez que StreetComplete vous demandera les numéros de rues après avoir indiqu
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
-    <string name="quest_streetName_menuItem_romanized">"en écriture Latine"</string>
     <string name="quest_buildingType_terrace2">"Maisons mitoyennes"</string>
     <string name="quest_oneway_tutorial">"La route en illustration est pivotée dans la même direction qu'indiquée sur la carte. La direction est indiquée. "</string>
     <string name="at_housename">"Nom de la maison %s :"</string>

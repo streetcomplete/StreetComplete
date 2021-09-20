@@ -53,7 +53,6 @@
     <string name="upload_error">"Грешка приликом слања одговора"</string>
     <string name="download_area_too_big">"Молимо вас да још увеличате"</string>
     <string name="confirmation_cancel_prev_download_title">"Заустави тренутну претрагу и покрени нову овде?"</string>
-    <string name="notification_downloading">"Тражим задатаке…"</string>
     <string name="turn_on_location_request">"Локација је искључена. Да отворим Поставке како би је укључили?"</string>
     <string name="no_location_permission_warning">"Неопходна је дозвола вашој локацији како би се тражили задаци у вашој непосредној близини."</string>
     <string name="about_title_authors">"Заслуге"</string>
@@ -254,7 +253,6 @@
     <string name="quest_fireHydrant_type_wall">"Зидни"</string>
     <string name="quest_fireHydrant_type_pond">"Језеро"</string>
     <string name="credits_contributors">"Погледајте &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;цео списак на GitHub-у&lt;/a&gt;."</string>
-    <string name="credits_translations">"Цео списак потражите у &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt; пројекту на POEditor-у&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Сарадници програмери"</string>
     <string name="credits_author_title">"Аутор"</string>
@@ -331,6 +329,8 @@
     <string name="quest_parkingType_underground">"Подземна гаража"</string>
     <string name="quest_parkingType_multiStorage">"Гаража на спрат"</string>
     <string name="quest_toiletAvailability_name_title">"Да ли %s има тоалет?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Од ког је материјала ова бандера?"</string>
     <string name="quest_powerPolesMaterial_wood">"Дрво"</string>
     <string name="quest_powerPolesMaterial_metal">"Челик"</string>
@@ -543,7 +543,6 @@
     <string name="quest_buildingType_sports_centre">"Спортски центар"</string>
     <string name="quest_buildingType_toilets">"Тоалети"</string>
     <string name="quest_maxspeed_sign_question">"Шта одређује ограничење брзине?"</string>
-    <string name="notification_channel_download">"Преузми"</string>
     <string name="quest_playground_access_title">"Да ли је ово игралиште јавно доступно?"</string>
     <string name="quest_segregated_title">"Како су овде постављене пешачка и бициклистичка стаза?"</string>
     <string name="dialog_tutorial_upload">"Да би ручно послали измене, користите дугме које изгледа овако."</string>
@@ -823,7 +822,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"међународна"</string>
-    <string name="quest_streetName_menuItem_romanized">"на латиници"</string>
     <string name="quest_buildingType_terrace2">"Куће у низу"</string>
     <string name="quest_oneway_tutorial">"Пут на илустрацији је окренут идентично путу на карти на месту ознаке. Обратите пажњу на означен смер."</string>
     <string name="at_housename">"име куће %s:"</string>

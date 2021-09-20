@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"現在の検索をキャンセルして、代わりにここでスキャンしますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"探索のスキャン中"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"位置情報がオフです。 設定に移動して今すぐオンにしますか?"</string>
 
     <!-- Fuzzy -->
@@ -671,9 +668,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻訳"</string>
@@ -1298,7 +1292,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_name_title2">"%s の速度制限は何ですか?"</string>
     <string name="quest_buildingType_sports_centre">"スポーツセンター"</string>
     <string name="quest_buildingType_toilets">"トイレ"</string>
-    <string name="notification_channel_download">"ダウンロード"</string>
     <string name="quest_playground_access_title">"この遊び場は誰でも利用できますか?"</string>
     <string name="quest_segregated_title">"歩道と自転車道はどのように割り当てられていますか?"</string>
     <string name="dialog_tutorial_upload">"手動で変更をアップロードするには、ツールバーにあるこのボタンを使ってください。"</string>

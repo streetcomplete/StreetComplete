@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"Se oprește căutarea curentă și se reia aici?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Se caută quest-uri..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Localizarea este dezactivată. Deschidem setările pentru a o activa acum?"</string>
 
     <!-- Fuzzy -->
@@ -424,7 +421,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_fireHydrant_type_wall">"Zid"</string>
     <string name="quest_fireHydrant_type_pond">"Iaz"</string>
     <string name="credits_contributors">"Accesează &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completă pe GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Accesează&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiectul în POEditor&lt;/a&gt; pentru o listă completă."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduceri"</string>
@@ -503,6 +499,8 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_parkingType_underground">"Garaj subteran"</string>
     <string name="quest_parkingType_multiStorage">"Garaj"</string>
     <string name="quest_toiletAvailability_name_title">"%s are toaletă?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Care este materialul acestui stâlp de tensiune?"</string>
     <string name="quest_powerPolesMaterial_wood">"Lemn"</string>
     <string name="quest_powerPolesMaterial_metal">"Oțel"</string>
@@ -743,7 +741,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Ce definește limita de viteză?"</string>
-    <string name="notification_channel_download">"Descarcă"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Este acest loc de joacă accesibil public?"</string>
@@ -1053,7 +1050,6 @@ de realizări"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internațional"</string>
-    <string name="quest_streetName_menuItem_romanized">"în grafie latină"</string>
     <string name="quest_buildingType_terrace2">"Case așezate pe rânduri"</string>
     <string name="quest_oneway_tutorial">"Drumul din ilustrație este poziționat la fel ca pe hartă la locația pinului. Rețineți direcția indicată."</string>
     <string name="at_housename">"numele casei %s:"</string>

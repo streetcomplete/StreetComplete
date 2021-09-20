@@ -109,9 +109,6 @@
     <string name="confirmation_cancel_prev_download_title">"지금 하는 탐색을 멈추고 대신 여기에서 찾을까요?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"과제를 찾는 중…"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"위치 탐색이 꺼져 있습니다. 설정 화면을 여시겠습니까?"</string>
 
     <!-- Fuzzy -->
@@ -603,9 +600,6 @@
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"번역"</string>
@@ -1410,7 +1404,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"속도 제한이 어떻게 정해져있나요?"</string>
-    <string name="notification_channel_download">"다운로드"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"이 놀이터는 공용인가요?"</string>
@@ -1891,7 +1884,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"국제 명칭"</string>
-    <string name="quest_streetName_menuItem_romanized">"라틴 문자로 쓰여 있음"</string>
     <string name="quest_buildingType_terrace2">"옆으로 나란한 연립 주택"</string>
 
     <!-- Fuzzy -->

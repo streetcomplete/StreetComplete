@@ -106,9 +106,6 @@
     <string name="confirmation_cancel_prev_download_title">"درعوض، جستجوی کنونی را لغو کنید و اینجا را جستجو کنید"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"پویش برای جُستارها..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"موقعیت مکانی خاموش است. آیا منوی تنظیمات را برای روشن‌کردن آن باز می‌کنید؟"</string>
 
     <!-- Fuzzy -->
@@ -617,9 +614,6 @@
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"این را بنگرید &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;سیاهه کامل روی GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"این را بنگرید &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; برای سیاهه کامل"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"ترجمه‌ها"</string>
@@ -1453,7 +1447,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"محدودیت سرعت چگونه مشخص شده است؟"</string>
-    <string name="notification_channel_download">"بارگیری"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"آیا این زمین بازی عمومی است؟"</string>
@@ -2162,7 +2155,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"بین‌المللی"</string>
-    <string name="quest_streetName_menuItem_romanized">"به لاتین"</string>
     <string name="quest_buildingType_terrace2">"خانه‌های ردیفی"</string>
     <string name="quest_oneway_tutorial">"جاده در تصویر همانند یک نقشه در مکان سنجاق چرخانده شده است. به جهت مشخص شده توجه کنید."</string>
     <string name="at_housename">"نام خانه %s:"</string>

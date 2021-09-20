@@ -85,9 +85,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Hentikan pencarian sekarang dan pindai di sini saja?"</string>
-
-    <!-- Fuzzy -->
-    <string name="notification_downloading">"Memindai pencarian..."</string>
     <string name="turn_on_location_request">"Lokasi nonaktif. Buka pengaturan untuk mengaktifkan?"</string>
 
     <!-- Fuzzy -->
@@ -368,9 +365,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="credits_contributors">"Lihat &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;daftar lengkap di Github&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"Terjemahan"</string>
 
     <!-- Fuzzy -->
@@ -529,6 +523,8 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_parkingType_underground">"Bawah tanah"</string>
     <string name="quest_parkingType_multiStorage">"Multi lantai"</string>
     <string name="quest_toiletAvailability_name_title">"Apa %s ada kamar kecilnya?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Apa material dari tiang listrik ini?"</string>
     <string name="quest_powerPolesMaterial_wood">"Kayu"</string>
     <string name="quest_powerPolesMaterial_metal">"Baja"</string>
@@ -755,7 +751,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_sports_centre">"Pusat olahraga"</string>
     <string name="quest_buildingType_toilets">"Toilet"</string>
     <string name="quest_maxspeed_sign_question">"Apa yang menandai batas kecepatan?"</string>
-    <string name="notification_channel_download">"Unduh"</string>
     <string name="quest_playground_access_title">"Apakah tempat bermain ini terbuka untuk umum?"</string>
     <string name="quest_segregated_title">"Bagaimana trotoar dan jalan sepeda ditata di sini?"</string>
     <string name="dialog_tutorial_upload">"Untuk mengunggah perubahanmu scr manual, gunakan tombol di toolbar yang terlihat seperti ini."</string>

@@ -130,9 +130,6 @@
     <string name="confirmation_cancel_prev_download_title">"Afbrud den nuværende søgning og søg her i stedet?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Søger efter opgaver"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Lokation er slået fra. Gå til indstillinger og tænd nu?"</string>
 
     <!-- Fuzzy -->
@@ -647,9 +644,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;den fulde liste på GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekt på POEditor&lt;/a&gt; for en komplet liste."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Oversættelser"</string>
@@ -1481,7 +1475,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Hvad definerer hastighedsgrænsen?"</string>
-    <string name="notification_channel_download">"Download"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Er der offentlig adgang til denne legeplads?"</string>
@@ -1978,7 +1971,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
-    <string name="quest_streetName_menuItem_romanized">"i latiniseret tegn"</string>
     <string name="quest_buildingType_terrace2">"Rækkehuse"</string>
     <string name="quest_oneway_tutorial">"Vejen på illustrationen er roteret så den vender på samme måde som på kortet"</string>
     <string name="at_housename">"Husnavn %s:"</string>

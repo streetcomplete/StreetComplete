@@ -58,7 +58,6 @@
     <string name="upload_error">"Greška tokom uploadanja odgovora"</string>
     <string name="download_area_too_big">"Molimo da dodatno uvećate"</string>
     <string name="confirmation_cancel_prev_download_title">"Zaustavi trenutnu potragu i traži ovdje"</string>
-    <string name="notification_downloading">"Traženje zadataka..."</string>
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li otvoriti postavke i sada je uključiti?"</string>
 
     <!-- Fuzzy -->
@@ -265,7 +264,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_fireHydrant_type_wall">"Na zidu"</string>
     <string name="quest_fireHydrant_type_pond">"Jezero"</string>
     <string name="credits_contributors">"Pogledajte &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;kompletan popis na GitHubu&lt;/a&gt;."</string>
-    <string name="credits_translations">"Kompletan popis potražite u &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt; projektu na POEditoru&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
     <string name="credits_author_title">"Autor i održavatelj"</string>
@@ -342,6 +340,8 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_parkingType_underground">"Podzemna garaža"</string>
     <string name="quest_parkingType_multiStorage">"Garaže na sprat"</string>
     <string name="quest_toiletAvailability_name_title">"Ima li %s toalet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Od kojeg je materijala ovaj naponski stub?"</string>
     <string name="quest_powerPolesMaterial_wood">"Drvo"</string>
     <string name="quest_powerPolesMaterial_metal">"Čelik"</string>
@@ -559,7 +559,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_sports_centre">"Sportski centar"</string>
     <string name="quest_buildingType_toilets">"Toaleti"</string>
     <string name="quest_maxspeed_sign_question">"Čime je definirano ograničenje brzine?"</string>
-    <string name="notification_channel_download">"Preuzmi"</string>
     <string name="quest_playground_access_title">"Je li ovo igralište javno dostupno?"</string>
     <string name="quest_segregated_title">"Kako su ovdje postavljene pješačka i biciklistička staza?"</string>
     <string name="dialog_tutorial_upload">"Da biste ručno poslali odgovore, upotrijebite gumb na alatnoj traci koji izgleda ovako."</string>
@@ -843,7 +842,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"međunarodni"</string>
-    <string name="quest_streetName_menuItem_romanized">"na latinici"</string>
     <string name="quest_buildingType_terrace2">"Kuće u nizu"</string>
     <string name="quest_oneway_tutorial">"Cesta na ilustraciji rotirana je isto kao na karti na mjestu pina. Obratite pažnju na naznačeni smjer."</string>
     <string name="at_housename">"ime kuće %s:"</string>

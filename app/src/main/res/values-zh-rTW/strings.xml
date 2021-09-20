@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜尋並以搜尋這裡取代？"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"正在搜尋任務"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"定位已關閉。到設定中開啟它？"</string>
 
     <!-- Fuzzy -->
@@ -669,9 +666,6 @@
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"翻譯"</string>
@@ -1501,7 +1495,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"速度限制是由什麼介定的？"</string>
-    <string name="notification_channel_download">"下載"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"這個遊樂設施對公衆開放嗎？"</string>
@@ -1979,7 +1972,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"國際"</string>
-    <string name="quest_streetName_menuItem_romanized">"拉丁字母化"</string>
     <string name="quest_buildingType_terrace2">"排屋"</string>
     <string name="quest_oneway_tutorial">"此道路在繪製圖面上，倒轉成地圖中錨點的相同方向。須注意相對應的方向。"</string>
     <string name="at_housename">"房屋名稱 %s："</string>

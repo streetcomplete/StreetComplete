@@ -53,7 +53,6 @@
     <string name="upload_error">"Fel vid sändning av svar"</string>
     <string name="download_area_too_big">"Vänligen zooma in ytterligare"</string>
     <string name="confirmation_cancel_prev_download_title">"Avbryt den aktuella sökningen och sök här i stället?"</string>
-    <string name="notification_downloading">"Söker efter uppdrag…"</string>
     <string name="turn_on_location_request">"Plats är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Platsbehörighet är nödvändigt för att visa din position på kartan och söka efter uppdrag i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
@@ -107,8 +106,7 @@ Appen delar inte din GPS-position med någon. Det används för att automatiskt 
 
 &lt;p&gt;&lt;b&gt;Dataanvändning&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Som nämnts kommunicerar appen direkt med OSM-infrastruktur.
-&lt;br/&gt;
+Som nämnts kommunicerar appen direkt med OSM-infrastruktur.&lt;br/&gt;
 Men innan du skickar dina ändringar kontrollerar appen med en &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;enkel textfil&lt;/a&gt; på min server om den har förbjudits att skicka några ändringar. Detta är en försiktighetsåtgärd för att kunna behålla versioner av appen som visar sig ha kritiska fel från att eventuellt korrumpera OSM-data.&lt;/p&gt;"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Endast på Wi-Fi"</string>
@@ -263,7 +261,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_fireHydrant_type_wall">"Väggmonterad"</string>
     <string name="quest_fireHydrant_type_pond">"Damm"</string>
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;hela listan på GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Se &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekt på POEditor&lt;/a&gt; för en fullständig lista."</string>
     <string name="credits_translations_title">"Översättningar"</string>
     <string name="credits_contributors_title">"Kodbidragsgivare"</string>
     <string name="credits_author_title">"Författare och underhållare"</string>
@@ -342,6 +339,8 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_parkingType_underground">"Underjordisk parkering"</string>
     <string name="quest_parkingType_multiStorage">"Parkeringshus"</string>
     <string name="quest_toiletAvailability_name_title">"Finns det en toalett på %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Vad är den här ledningsstolpen gjord av?"</string>
     <string name="quest_powerPolesMaterial_wood">"Trä"</string>
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
@@ -558,7 +557,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_sports_centre">"Idrottsanläggning"</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
     <string name="quest_maxspeed_sign_question">"Vad bestämmer hastighetsbegränsningen?"</string>
-    <string name="notification_channel_download">"Hämta"</string>
     <string name="quest_playground_access_title">"Är den här lekplatsen tillgänglig för allmänheten?"</string>
     <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformad här?"</string>
     <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, använd knappen som ser ut så här."</string>
@@ -569,7 +567,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_maxheight_height_restrictor_title">"Vilken är höjdbegränsningen?"</string>
     <string name="quest_maxheight_tunnel_title">"Vad är maxhöjden för denna tunnel?"</string>
     <string name="quest_maxheight_answer_noSign">"Det finns ingen skylt…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Är det tillräckligt med utrymme för att även de högsta lastbilarna (minst 4,5 meter) enkelt ska ta sig under?"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Är det tillräckligt med utrymme för att även de högsta lastbilarna (minst 4.5 meter) enkelt ska ta sig under?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Angiven höjd verkar osannolik. Är du säker på att den är korrekt?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Stängd av %1$s, %2$s"</string>
@@ -854,7 +852,6 @@ nivåer"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internationell"</string>
-    <string name="quest_streetName_menuItem_romanized">"med latinska tecken"</string>
     <string name="quest_buildingType_terrace2">"Radhus"</string>
     <string name="quest_oneway_tutorial">"Vägen i illustrationen roteras på samma sätt som på kartan på stiftets plats. Notera den angivna riktningen."</string>
     <string name="at_housename">"husnamn %s:"</string>

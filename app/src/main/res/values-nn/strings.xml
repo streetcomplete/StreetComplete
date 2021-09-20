@@ -57,7 +57,6 @@
     <string name="upload_error">"Feil ved opplasting av svar"</string>
     <string name="download_area_too_big">"Zoom lenger inn"</string>
     <string name="confirmation_cancel_prev_download_title">"Vil du avbryta søket som pågår og heller søkja her?"</string>
-    <string name="notification_downloading">"Søkjer etter oppdrag …"</string>
     <string name="turn_on_location_request">"Posisjonsinnhenting er slått av. Ønskjer du å endra innstillingane og slå det på no?"</string>
 
     <!-- Fuzzy -->
@@ -253,7 +252,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_fireHydrant_type_wall">"Veggmontert"</string>
     <string name="quest_fireHydrant_type_pond">"Røyr i innsjø"</string>
     <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Sjå &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for ei fullstendig oversikt."</string>
     <string name="credits_translations_title">"Omsetjingar"</string>
     <string name="credits_contributors_title">"Kodebidrag"</string>
     <string name="credits_author_title">"Opphavsperson og vedlikehaldar"</string>
@@ -330,6 +328,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_parkingType_underground">"Underjordisk parkering"</string>
     <string name="quest_parkingType_multiStorage">"Parkeringshus"</string>
     <string name="quest_toiletAvailability_name_title">"Finst det toalett på %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Kva er denne lysmasta laga av?"</string>
     <string name="quest_powerPolesMaterial_wood">"Tre"</string>
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
@@ -549,7 +549,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_buildingType_sports_centre">"Idrettshall"</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
     <string name="quest_maxspeed_sign_question">"Kva fastset fartsgrensa?"</string>
-    <string name="notification_channel_download">"Last ned"</string>
     <string name="quest_playground_access_title">"Er denne leikeplassen offentleg tilgjengeleg?"</string>
     <string name="quest_segregated_title">"Korleis er gang- og sykkelvegen utforma her?"</string>
     <string name="dialog_tutorial_upload">"For å lasta opp endringane manuelt kan du bruka verktøylinje­knappen som ser slik ut."</string>
@@ -822,7 +821,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internasjonalt"</string>
-    <string name="quest_streetName_menuItem_romanized">"latinsk alfabet"</string>
     <string name="quest_buildingType_terrace2">"Rekkjehus"</string>
     <string name="quest_oneway_tutorial">"Vegen i illustrasjonen er orientert likt som den på kartet på staden der oppdrags­merket vert vist. Legg merke til den markerte retninga."</string>
     <string name="at_housename">"husnamn %s:"</string>

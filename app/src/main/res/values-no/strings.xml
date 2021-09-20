@@ -53,7 +53,6 @@
     <string name="upload_error">"Feil ved opplasting av svar"</string>
     <string name="download_area_too_big">"Forstørr ytterligere"</string>
     <string name="confirmation_cancel_prev_download_title">"Avbryt det nåværende søket og let her i stedet?"</string>
-    <string name="notification_downloading">"Leter etter oppdrag…"</string>
     <string name="turn_on_location_request">"Posisjonsdeling er av. Gå til innstillinger og skru det på nå?"</string>
 
     <!-- Fuzzy -->
@@ -464,9 +463,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Se &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Se på  &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;prosjektet på POEditor&lt;/a&gt; for en komplett liste."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Oversettelser"</string>
@@ -1279,7 +1275,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Hva definerer fartsgrensen?"</string>
-    <string name="notification_channel_download">"Last ned"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Er lekeplassen offentlig tilgjengelig?"</string>
@@ -1693,7 +1688,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internasjonal"</string>
-    <string name="quest_streetName_menuItem_romanized">"latinsk alfabet"</string>
     <string name="quest_buildingType_terrace2">"Rekkehus"</string>
     <string name="quest_oneway_tutorial">"Veien i illustrasjonen er rotert likt som på kartet på stedet der oppdragsmerket står. Legg merke til retningen!"</string>
     <string name="at_housename">"Husnavn %s:"</string>

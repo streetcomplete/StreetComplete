@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"Utzi abian dagoen bilaketa eta bilatu hemen ordez?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Erronkak bilatzen…"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Kokapena itzalita dago. Ezarpenak ireki orain pizteko?"</string>
 
     <!-- Fuzzy -->
@@ -669,9 +666,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Itzulpenak"</string>
@@ -1502,7 +1496,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Zerk definitzen du abiadura-muga?"</string>
-    <string name="notification_channel_download">"Jaitsi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Jolasleku hau irisgarria al da publikoari begira?"</string>
@@ -2195,7 +2188,6 @@ mailak"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internazionala"</string>
-    <string name="quest_streetName_menuItem_romanized">"latindar alfabetoan"</string>
     <string name="quest_buildingType_terrace2">"Etxe elkarri atxikiak"</string>
     <string name="at_housename">"Etxearen izena %s:"</string>
     <string name="at_conscription_and_street_number">"Konskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
@@ -2232,4 +2224,14 @@ mailak"</string>
     <string name="quest_is_defibrillator_inside_title">"Desfibriladore hau (AED) eraikin baten barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
     <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
+    <string name="quest_busStopLit_title">"argia dago bus geltoki honetan?"</string>
+    <string name="quest_busStopBin_title">"zakarrontzirik badago bus geltoki honetan?"</string>
+    <string name="quest_bollard_type_title">"zein motako bolardoa da hau?"</string>
+    <string name="quest_religion_animist">"animista"</string>
+    <string name="action_search">"bilatu"</string>
+    <string name="team_mode_team_size_label2">"zenbat pertsona daude kartografiatzen? Sartu zenbaki berdina denon mugikorretan."</string>
+    <string name="team_mode_choose_color2">"Hurrengoa, pertsona bakoitza kolore bat aukeratu behar du. Aukera ezazu zurea:"</string>
+    <string name="link_organic_maps_description">"Mapa aplikazioak konexiorik gabe bidaiarientzako, mendizaleentzako eta txirrindularientzako"</string>
+    <string name="no_search_results">"ez da ezer aurkitu"</string>
+    <string name="quest_selection_hint_title">"Gehiegi egiteko?"</string>
 </resources>
