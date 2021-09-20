@@ -1,4 +1,3 @@
-
 v35.0-beta1: |
   <h3>App maintenance</h3>
   <ul>
@@ -10,6 +9,7 @@ v35.0-beta1: |
   <h3>Quest Enhancements</h3>
   <ul>
   <li>Clearer illustrations for the bridge structure quest (#2867), by @TurnrDev</li>
+  <li>Other small enhancements (#3185, #3171)</li>
   </ul>
 
 v34.2: |

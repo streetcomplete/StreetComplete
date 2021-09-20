@@ -42,17 +42,17 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override fun createForm() = ShopTypeForm()
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, changes: StringMapChangesBuilder) {
-        changes.deleteOtherCheckDates()
+
         when (answer) {
             is IsShopVacant -> {
-                changes.addOrModifyCheckDate()
+                changes.updateCheckDate()
             }
             is ShopType -> {
+                changes.deleteCheckDates()
+
                 if (!answer.tags.containsKey("shop")) {
                     changes.deleteIfExists("shop")
                 }
-
-                changes.deleteIfExists(SURVEY_MARK_KEY)
 
                 for ((key, _) in changes.getPreviousEntries()) {
                     // also deletes all "disused:" keys
