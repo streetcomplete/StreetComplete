@@ -36,7 +36,7 @@ const val SURVEY_MARK_KEY = "check_date"
 val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "shop_?[1-9]?(:.*)?", "craft_?[1-9]?", "amenity_?[1-9]?", "old_amenity", "old_shop", "information", "leisure", "office", "tourism",
     // "popular" shop=* / craft=* subkeys
-    "video", "water", "wood", "swimming_pool", "model", "insurance", "motorcycle", "builder", "sculptor", "golf", "communication", "fuel", "photo", "bicycle",
+    "marketplace", "household", "swimming_pool", "telecommunication", "laundry", "golf", "sports", "ice_cream", "scooter", "music", "retail", "yes", "ticket", "health", "newsagent", "lighting", "truck", "car_repair", "video", "fuel", "farm", "car", "ski", "sculptor", "hearing_aids", "surf", "photo", "boat", "gas", "kitchen", "anime", "builder", "hairdresser", "security", "bakery", "fishing", "doors", "kiosk", "market", "bathroom", "lamps", "vacant", "insurance", "caravan", "gift", "bicycle", "insulation", "communication", "mall", "model", "empty", "wood", "hunting", "motorcycle", "trailer", "camera", "water", "fireplace", "outdoor",
     // obsoleted information
     "abandoned(:.*)?", "disused(:.*)?", "was:.*", "damage", "source:damage", "created_by", "check_date", "last_checked", "checked_exists:date",
     // classifications / links to external databases
