@@ -74,8 +74,8 @@ class AboutFragment : PreferenceFragmentCompat() {
             openUrl("https://github.com/streetcomplete/StreetComplete/issues/")
         }
 
-        findPreference<Preference>("email_feedback")?.setOnPreferenceClickListener {
-            sendFeedbackEmail()
+        findPreference<Preference>("email")?.setOnPreferenceClickListener {
+            openUrl("https://github.com/streetcomplete/StreetComplete/discussions/")
         }
 
         findPreference<Preference>("rate")?.isVisible = isInstalledViaGooglePlay()
@@ -103,11 +103,6 @@ class AboutFragment : PreferenceFragmentCompat() {
     private fun openUrl(url: String): Boolean {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         tryStartActivity(intent)
-        return true
-    }
-
-    private fun sendFeedbackEmail(): Boolean {
-        sendEmail(requireActivity(), "osm@westnordost.de", "Feedback")
         return true
     }
 
