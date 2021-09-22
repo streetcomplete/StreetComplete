@@ -27,10 +27,7 @@ fun Smoothness.getTitleResId() = when (this) {
 fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (this) {
     EXCELLENT -> when (surface) {
         // no "excellent" for roads with paving stones
-        "paving_stones" -> if (highway in ALL_PATHS_EXCEPT_STEPS)
-                R.string.quest_smoothness_description_excellent_paving_stones
-            else
-                null
+        "paving_stones" -> R.string.quest_smoothness_description_excellent_paving_stones
         "asphalt" -> R.string.quest_smoothness_description_excellent
         else -> null
     }
