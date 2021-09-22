@@ -54,9 +54,9 @@ suspend fun View.awaitPreDraw() = suspendCancellableCoroutine<Unit> { cont ->
 }
 
 fun View.getLocationInWindow(): Point {
-    val mapPosition = IntArray(2)
-    getLocationInWindow(mapPosition)
-    return Point(mapPosition[0], mapPosition[1])
+    val pos = IntArray(2)
+    getLocationInWindow(pos)
+    return Point(pos[0], pos[1])
 }
 
 fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
