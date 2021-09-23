@@ -96,11 +96,11 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
             val roads = roadsByNodeId.getValue(nodeId)
             val neighbouringRoadPositions = roads
                 .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
-                .map { mapData.getNode(it)!!.position }
+                .mapNotNull { mapData.getNode(it)?.position }
 
             val neighbouringFootwayPositions = footways
                 .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
-                .map { mapData.getNode(it)!!.position }
+                .mapNotNull { mapData.getNode(it)?.position }
 
             /* So, surrounding the shared node X, in the simple case, we have
              *
