@@ -29,27 +29,23 @@ data class OsmQuest(
         if (geometry is ElementPolylinesGeometry) {
             val polyline = geometry.polylines[0]
             val length = polyline.measuredLength()
-            when {
-                // when very short, always have a single marker in the middle
-                length < MARKER_FROM_END_DISTANCE * 4 -> {
-                    return listOf(position)
-                }
-                // when `hasMarkersAtEnds` or very long, put markers at ends and space markers
-                // evenly between such that no markers are more than `MAXIMUM_MARKER_DISTANCE` apart
-                osmElementQuestType.hasMarkersAtEnds || (length > MAXIMUM_MARKER_DISTANCE) -> {
-                    val count = 2 + (length / MAXIMUM_MARKER_DISTANCE).toInt()
-                    val between = (length - (2 * MARKER_FROM_END_DISTANCE)) / (count - 1)
-                    // space markers `between` apart, starting with `MARKER_FROM_END_DISTANCE` (the
-                    // final marker will end up at `MARKER_FROM_END_DISTANCE` from the other end)
-                    return (0 until count).map {
-                        polyline.pointOnPolylineFromStart(
-                            MARKER_FROM_END_DISTANCE + (it * between)
-                        )!!
-                    }
+            // a polyline will have multiple markers if it is over a certain length
+            val minLengthForMultiMarkers =
+                if (osmElementQuestType.hasMarkersAtEnds) 4 * MARKER_FROM_END_DISTANCE
+                else MAXIMUM_MARKER_DISTANCE + 2 * MARKER_FROM_END_DISTANCE
+            if (length > minLengthForMultiMarkers) {
+                val count = 2 + (length / MAXIMUM_MARKER_DISTANCE).toInt()
+                val between = (length - (2 * MARKER_FROM_END_DISTANCE)) / (count - 1)
+                // space markers `between` apart, starting with `MARKER_FROM_END_DISTANCE` (the
+                // final marker will end up at `MARKER_FROM_END_DISTANCE` from the other end)
+                return (0 until count).map {
+                    polyline.pointOnPolylineFromStart(
+                        MARKER_FROM_END_DISTANCE + (it * between)
+                    )!!
                 }
             }
         }
-        // all other cases will fall through to a single marker in the middle
+        // fall through to a single marker in the middle
         return listOf(position)
     }
 }
