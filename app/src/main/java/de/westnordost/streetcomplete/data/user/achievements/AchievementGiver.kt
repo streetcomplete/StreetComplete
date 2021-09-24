@@ -52,7 +52,9 @@ class AchievementGiver @Inject constructor(
                 val unlockedLinkIds = mutableListOf<String>()
                 for (level in (currentLevel + 1)..achievedLevel) {
                     achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
-                    if (!silent) newUserAchievementsDao.push(achievement.id to level)
+                    if (!silent && !userStore.isSynchronizingStatistics) {
+                        newUserAchievementsDao.push(achievement.id to level)
+                    }
                 }
                 if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
             }

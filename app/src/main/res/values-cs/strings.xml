@@ -102,7 +102,6 @@
     <!-- Fuzzy -->
     <string name="download_area_too_big">"Přibližte, prosím, více mapu"</string>
     <string name="confirmation_cancel_prev_download_title">"Zrušit aktuální vyhledávání a hledat místo toho zde?"</string>
-    <string name="notification_downloading">"Vyhledávám úkoly..."</string>
     <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
 
     <!-- Fuzzy -->
@@ -574,9 +573,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Přečtěte si &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;úplný seznam na GitHubu&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Úplný seznam najdete v &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projektu na POEditor.com&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Překladatelé"</string>
@@ -1410,7 +1406,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <!-- Pls post to github screenshots with maxspeed quest new edition. And paste links for correspondent string in comments. Its necessary to see the output in app for proper translation. -->
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Jakým způsobem je maximální rychlost určena?"</string>
-    <string name="notification_channel_download">"Stahování"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Je toto hřiště veřejně přístupné?"</string>
@@ -2152,7 +2147,6 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"mezinárodní"</string>
-    <string name="quest_streetName_menuItem_romanized">"latinkou"</string>
     <string name="quest_buildingType_terrace2">"Řadové domy"</string>
     <string name="quest_oneway_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě špendlíku. Všimněte si uvedeného směru. "</string>
     <string name="at_housename">"Jméno budovy %s:"</string>

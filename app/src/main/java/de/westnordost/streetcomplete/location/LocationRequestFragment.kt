@@ -88,7 +88,7 @@ class LocationRequestFragment : Fragment() {
     /* Step 1: Ask for permission */
 
     private fun checkLocationPermissions() {
-        if (hasLocationPermission(requireContext())) {
+        if (requireContext().hasLocationPermission) {
             state = LocationState.ALLOWED
             nextStep()
         } else {
@@ -124,7 +124,7 @@ class LocationRequestFragment : Fragment() {
     /* Step 1: Ask for location to be turned on */
 
     private fun checkLocationSettings() {
-        if (isLocationEnabled(requireContext())) {
+        if (requireContext().isLocationEnabled) {
             state = LocationState.ENABLED
             nextStep()
         } else {

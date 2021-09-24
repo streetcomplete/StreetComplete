@@ -51,6 +51,10 @@ import javax.inject.Singleton
         }
     }
 
+    fun clear() {
+        db.delete(NAME)
+    }
+
     fun addListener(listener: Listener) {
         listeners.add(listener)
     }

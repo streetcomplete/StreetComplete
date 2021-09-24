@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"Σταμάτημα της τρέχουσας αναζήτησης και αντ' αυτού σάρωση εδώ;"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Σάρωση για αναζητήσεις..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Η τοποθεσία είναι κλειστή. Άνοιγμα των Ρυθμίσεων για ενεργοποίηση τώρα;"</string>
 
     <!-- Fuzzy -->
@@ -669,9 +666,6 @@
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Δείτε την &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;πλήρη λίστα στο GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Δείτε την &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;εργασία στο POEditor&lt;/a&gt; για μια πλήρη λίστα."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Μεταφράσεις"</string>
@@ -1508,7 +1502,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Τι καθορίζει το όριο ταχύτητας;"</string>
-    <string name="notification_channel_download">"Λήψη"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Αυτή η παιδική χαρά είναι προσιτή στο κοινό;"</string>
@@ -1996,7 +1989,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"διεθνές"</string>
-    <string name="quest_streetName_menuItem_romanized">"σε λατινική γραφή"</string>
     <string name="quest_buildingType_terrace2">"Σειρά σπιτιών"</string>
     <string name="quest_oneway_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση του πείρου. Σημειώστε την υποδεικνυόμενη κατεύθυνση."</string>
     <string name="at_housename">"Όνομα οικίας %s:"</string>
@@ -2204,8 +2196,10 @@
     <string name="quest_barrier_type_stile_squeezer">"Στενό πέρασμα"</string>
     <string name="quest_barrier_type_stile_ladder">"Πέρασμα με σκάλα"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Εμπόδιο ποδηλάτων"</string>
+    <string name="quest_barrier_type_kissing_gate">"Στρογγυλή πύλη"</string>
     <string name="quest_barrier_type_swing_gate">"Οριζόντια μπάρα"</string>
     <string name="quest_policeType_title">"Τι είδους αστυνομικό τμήμα είναι αυτό;"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Μετατράπηκε σε στρογγυλή πύλη"</string>
 
     <!-- Fuzzy -->
     <string name="quest_stile_type_title">"Τι είδους πέρασμα φράχτη είναι αυτό;"</string>
@@ -2240,6 +2234,7 @@
     <string name="quest_camera_type_title">"Τί είδους κάμερα παρακολούθησης είναι αυτή;"</string>
     <string name="quest_camera_type_dome">"Θόλου"</string>
     <string name="quest_camera_type_fixed">"Σταθερή"</string>
+    <string name="quest_camera_type_panning">"Μετακίνηση"</string>
     <string name="about_title_faq">"Συχνές ερωτήσεις"</string>
     <string name="quest_buildingLevels_title2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το κτίριο;"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;"</string>

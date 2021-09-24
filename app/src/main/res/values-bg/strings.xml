@@ -57,7 +57,6 @@
     <string name="upload_error">"Грешка при качването на отговори"</string>
     <string name="download_area_too_big">"Моля, мащабирай по-близо"</string>
     <string name="confirmation_cancel_prev_download_title">"Спри търсенето и сканирай тук?"</string>
-    <string name="notification_downloading">"Сканиране за въпроси..."</string>
     <string name="turn_on_location_request">"Местоположението е изключено. Да се отворят ли Настройки, за включване?"</string>
 
     <!-- Fuzzy -->
@@ -267,8 +266,6 @@
     <string name="quest_fireHydrant_type_wall">"На сграда"</string>
     <string name="quest_fireHydrant_type_pond">"Резервоар"</string>
     <string name="credits_contributors">"Вижте &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;целия списък в GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Вижте &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;проекта в POEditor&lt;/a&gt; за целия списък.
-"</string>
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Програмисти"</string>
     <string name="credits_author_title">"Автор на проекта"</string>
@@ -345,6 +342,8 @@
     <string name="quest_parkingType_underground">"Подземен гараж"</string>
     <string name="quest_parkingType_multiStorage">"Наземен гараж"</string>
     <string name="quest_toiletAvailability_name_title">"%s има ли тоалетна?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"От какъв материал е направен този електрически стълб?"</string>
     <string name="quest_powerPolesMaterial_wood">"Дърво"</string>
     <string name="quest_powerPolesMaterial_metal">"Стомана"</string>
@@ -560,7 +559,6 @@
     <string name="quest_buildingType_sports_centre">"Спортен център"</string>
     <string name="quest_buildingType_toilets">"Тоалетни"</string>
     <string name="quest_maxspeed_sign_question">"Кое определя ограничението на скоростта?"</string>
-    <string name="notification_channel_download">"Изтегляне"</string>
     <string name="quest_playground_access_title">"Тази детска площадка обществена ли е?"</string>
     <string name="quest_segregated_title">"Как са разположени пешеходната пътека и велоалеята?"</string>
     <string name="dialog_tutorial_upload">"За да качите вашите промени ръчно, използвайте бутона който изглежда като посочения."</string>
@@ -842,7 +840,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международен"</string>
-    <string name="quest_streetName_menuItem_romanized">"на латиница"</string>
     <string name="quest_buildingType_terrace2">"Редица от къщи"</string>
     <string name="quest_oneway_tutorial">"Пътят на картинката е завъртян така, както е на картата на отбелязаното място. Обърнете внимание на посоката. "</string>
     <string name="at_housename">"име на къща: %s"</string>

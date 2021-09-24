@@ -75,7 +75,6 @@
     <!-- Fuzzy -->
     <string name="download_area_too_big">"Приблизьте ещё"</string>
     <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
-    <string name="notification_downloading">"Поиск квестов…"</string>
     <string name="turn_on_location_request">"Определение местоположения выключено. Перейти в настройки, чтобы включить?"</string>
     <string name="no_location_permission_warning">"Местоположение нужно для отображения вашей позиции и поиска квестов поблизости."</string>
     <string name="about_title_authors">"Участники"</string>
@@ -386,7 +385,6 @@
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Пожарный пруд"</string>
     <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
     <string name="credits_translations_title">"Переводы"</string>
     <string name="credits_contributors_title">"Вклад в код внесли"</string>
     <string name="credits_author_title">"Автор и сопровождающий"</string>
@@ -888,7 +886,6 @@
     <string name="quest_buildingType_sports_centre">"Спортивный центр"</string>
     <string name="quest_buildingType_toilets">"Туалеты"</string>
     <string name="quest_maxspeed_sign_question">"Чем установлено ограничение скорости?"</string>
-    <string name="notification_channel_download">"Скачать"</string>
     <string name="quest_playground_access_title">"Это общедоступная детская площадка?"</string>
 
     <!-- Fuzzy -->
@@ -1333,7 +1330,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>
-    <string name="quest_streetName_menuItem_romanized">"Латиницей"</string>
     <string name="quest_buildingType_terrace2">"Ряд домов"</string>
     <string name="quest_oneway_tutorial">"Дорога на картинке повёрнута так же, как на карте в месте расположения булавки. Обратите внимание на указанное направление."</string>
     <string name="at_housename">"Название дома %s:"</string>

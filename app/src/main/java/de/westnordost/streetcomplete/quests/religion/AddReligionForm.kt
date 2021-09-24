@@ -4,15 +4,14 @@ import android.os.Bundle
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.sortedBy
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
+        AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
     )
 
     override val items get() = listOf(

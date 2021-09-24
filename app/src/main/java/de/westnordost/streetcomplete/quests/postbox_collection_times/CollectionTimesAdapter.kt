@@ -4,12 +4,10 @@ import android.content.Context
 import android.text.format.DateFormat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
@@ -45,7 +43,7 @@ class CollectionTimesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.quest_times_weekday_row, parent, false))
+        return ViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -90,14 +88,12 @@ class CollectionTimesAdapter(
 
     /* ------------------------------------ weekdays select --------------------------------------*/
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val weekdaysLabel: TextView = itemView.findViewById(R.id.weekdaysLabel)
-        private val hoursLabel: TextView = itemView.findViewById(R.id.hoursLabel)
-        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
+    inner class ViewHolder(
+        private val binding: QuestTimesWeekdayRowBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            deleteButton.setOnClickListener {
+            binding.deleteButton.setOnClickListener {
                 val index = adapterPosition
                 if (index != RecyclerView.NO_POSITION) remove(adapterPosition)
             }
@@ -105,19 +101,19 @@ class CollectionTimesAdapter(
 
         fun update(times: WeekdaysTimesRow, previousTimes: WeekdaysTimesRow?) {
             if (previousTimes != null && times.weekdays == previousTimes.weekdays) {
-                weekdaysLabel.text = ""
+                binding.weekdaysLabel.text = ""
             } else {
-                weekdaysLabel.text = times.weekdays.toLocalizedString(context.resources)
+                binding.weekdaysLabel.text = times.weekdays.toLocalizedString(context.resources)
             }
 
-            weekdaysLabel.setOnClickListener {
+            binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(times.weekdays) { weekdays ->
                     times.weekdays = weekdays
                     notifyItemChanged(adapterPosition)
                 }
             }
-            hoursLabel.text = "%02d:%02d".format(times.minutes / 60, times.minutes % 60)
-            hoursLabel.setOnClickListener {
+            binding.hoursLabel.text = "%02d:%02d".format(times.minutes / 60, times.minutes % 60)
+            binding.hoursLabel.setOnClickListener {
                 openSetTimeDialog(times.minutes) { minutes ->
                     times.minutes = minutes
                     notifyItemChanged(adapterPosition)

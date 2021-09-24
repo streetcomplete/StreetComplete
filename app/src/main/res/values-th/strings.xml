@@ -57,7 +57,6 @@
     <string name="upload_error">"เกิดข้อผิดพลาดขณะอัปโหลดคำตอบ"</string>
     <string name="download_area_too_big">"โปรดซูมเข้าไปอีก"</string>
     <string name="confirmation_cancel_prev_download_title">"ยกเลิกการค้นหาปัจจุบัน และสแกนตรงนี้แทนไหม?"</string>
-    <string name="notification_downloading">"กำลังสแกนภารกิจ…"</string>
     <string name="turn_on_location_request">"การตั้งค่าตำแหน่งที่ตั้งปิดอยู่ เข้าไปเปิดในการตั้งค่าตอนนี้เลยไหม?"</string>
 
     <!-- Fuzzy -->
@@ -264,7 +263,6 @@
     <string name="quest_fireHydrant_type_wall">"กำแพง"</string>
     <string name="quest_fireHydrant_type_pond">"บ่อ"</string>
     <string name="credits_contributors">"ให้ดู &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;รายการทั้งหมดใน GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"ให้ดู&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;โปรเจ็กต์ใน POEditor&lt;/a&gt; สำหรับรายการทั้งหมด"</string>
     <string name="credits_translations_title">"การแปลภาษา"</string>
     <string name="credits_contributors_title">"ผู้สมทบด้านโค้ด"</string>
     <string name="credits_author_title">"ผู้สร้างและผู้ดูแลรักษา"</string>
@@ -341,6 +339,8 @@
     <string name="quest_parkingType_underground">"โรงจอดรถใต้ดิน"</string>
     <string name="quest_parkingType_multiStorage">"โรงจอดรถ"</string>
     <string name="quest_toiletAvailability_name_title">"%s มีห้องสุขาหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"เสาไฟนี้ทำมาจากวัสดุอะไร?"</string>
     <string name="quest_powerPolesMaterial_wood">"ไม้"</string>
     <string name="quest_powerPolesMaterial_metal">"เหล็ก"</string>
@@ -557,7 +557,6 @@
     <string name="quest_buildingType_sports_centre">"ศูนย์กีฬา"</string>
     <string name="quest_buildingType_toilets">"ห้องน้ำ"</string>
     <string name="quest_maxspeed_sign_question">"ความเร็วจำกัดถูกกำหนดโดยอะไร?"</string>
-    <string name="notification_channel_download">"ดาวน์โหลด"</string>
     <string name="quest_playground_access_title">"สนามเด็กเล่นนี้ สาธารณะเข้าถึงได้โหรือไม่?"</string>
     <string name="quest_segregated_title">"ที่นี่มีการวางทางเท้าและทางจักรยานไว้อย่างไรบ้าง?"</string>
     <string name="dialog_tutorial_upload">"ถ้าจะอัปโหลดการเปลี่ยนแปลงด้วยตนเอง ใช้ปุ่มในแถบเครื่องมือที่มีหน้าตาแบบนี้"</string>
@@ -838,7 +837,6 @@
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"สากล"</string>
-    <string name="quest_streetName_menuItem_romanized">"ตัวอักษรลาติน"</string>
     <string name="quest_buildingType_terrace2">"บ้านแถว"</string>
     <string name="quest_oneway_tutorial">"ถนนในภาพประกอบจะหมุนไปในทิศเดียวกับแผนที่แผนที่ที่ตำแหน่งของหมุด สังเกตทิศทางที่ระบุเอาไว้"</string>
     <string name="at_housename">"ชื่อบ้าน %s:"</string>

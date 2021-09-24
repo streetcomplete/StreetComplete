@@ -1,13 +1,28 @@
 v35.0-beta1: |
-  <h3>Enhancements</h3>
-  <ul>
-  <li>Clearer illustrations for the bridge structure quest (#2867), by @TurnrDev</li>
-  </ul>
   <h3>App maintenance</h3>
   <ul>
   <li>Android 4.x support has been dropped. As a consequence, the app's download size is reduced by 40%! (#2031), thanks @Isira-Seneviratne</li>
   <li>Translator credits are now generated automatically (#3214)</li>
-  <li>Various code maintenance and refactorings (#3274, #3223, #3259, #3273, ...), thanks @Isira-Seneviratne, @peternewman, @smichel17</li>
+  <li>The uploading of changes will now never be cancelled by the Android system after the app has been sent to the background for a while (#3279)</li>
+  <li>Various code maintenance and refactorings (#3274, #3223, #3259, #3273, #3296, #2894, ...), thanks @sumanabhi, @Isira-Seneviratne, @peternewman, @smichel17</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Clearer illustrations for the bridge structure quest (#2867), by @TurnrDev</li>
+  <li>Other small enhancements (#3185, #3171)</li>
+  </ul>
+
+v34.2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix sometimes notes would be created at wrong positions if the follow-me mode was on (#3284), thanks @smichel17</li>
+  <li>Fix sometimes one would be notified of all achievements one ever achieved on logging out and in again (#3282)</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Don't ask for the building type of airport buildings (#3233), by @matkoniecz</li>
+  <li>Don't ask if a marina is wheelchair-accessible (#3270), by @matkoniecz</li>
+  <li>Never ask whether there is tactile paving where the sidewalk crosses a driveway (#3301), by @smichel17</li>
   </ul>
 
 v34.1: |

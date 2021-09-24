@@ -93,7 +93,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Peruuta nykyinen haku ja hae tästä?"</string>
-    <string name="notification_downloading">"Haetaan tehtäviä…"</string>
 
     <!-- Fuzzy -->
     <string name="turn_on_location_request">"Sijainti on pois käytöstä. Haluatko laittaa päälle asetuksista?"</string>
@@ -460,9 +459,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
     <string name="credits_translations_title">"Käännökset"</string>
 
     <!-- Fuzzy -->
@@ -1168,7 +1164,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Mikä määrittää nopeusrajoituksen?"</string>
-    <string name="notification_channel_download">"Lataa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Onko tämä leikkikenttä julkisesti käytössä?"</string>
@@ -1815,7 +1810,6 @@ taso"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"kansainvälinen"</string>
-    <string name="quest_streetName_menuItem_romanized">"Latinalaisin aakkosin"</string>
     <string name="quest_buildingType_terrace2">"Rivitaloja"</string>
     <string name="quest_oneway_tutorial">"Kuvassa olevaa tietä kierretään samalla tavalla kuin kartalla on sijainnissa.  Huomaa ilmoitettu suunta."</string>
     <string name="at_housename">"Talon nimi %s:"</string>

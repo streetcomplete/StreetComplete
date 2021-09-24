@@ -53,7 +53,6 @@
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
-    <string name="notification_downloading">"Scanning for quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
@@ -260,7 +259,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fireHydrant_type_wall">"Wall"</string>
     <string name="quest_fireHydrant_type_pond">"Pond"</string>
     <string name="credits_contributors">"See the &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">"Translations"</string>
     <string name="credits_contributors_title">"Code contributors"</string>
     <string name="credits_author_title">"Author and maintainer"</string>
@@ -355,6 +353,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_underground">"Underground garage"</string>
     <string name="quest_parkingType_multiStorage">"Multistorey"</string>
     <string name="quest_toiletAvailability_name_title">"Does %s have a toilet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"What is the material of this electricity pole?"</string>
     <string name="quest_powerPolesMaterial_wood">"Wood"</string>
 
@@ -490,7 +490,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="pref_quests_reset">"Reset both quest enablement and order to the default?"</string>
     <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_generic_item_invalid_value">"Please select a more specific value."</string>
-    <string name="quest_buildingType_answer_multiple_types">"It was multiple purposes"</string>
+    <string name="quest_buildingType_answer_multiple_types">"It has multiple purposes"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with flats above it, it is still mainly flats."</string>
     <string name="quest_buildingType_answer_construction_site">"It is still being constructed"</string>
     <string name="quest_buildingType_residential">"Residential"</string>
@@ -571,7 +571,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_sports_centre">"Sports centre"</string>
     <string name="quest_buildingType_toilets">"Toilets"</string>
     <string name="quest_maxspeed_sign_question">"What defines the speed limit?"</string>
-    <string name="notification_channel_download">"Download"</string>
     <string name="quest_playground_access_title">"Is this playground publicly accessible?"</string>
     <string name="quest_segregated_title">"How is the footpath and bike path laid out here?"</string>
     <string name="dialog_tutorial_upload">"To upload your changes manually, use the button in the toolbar that looks like this."</string>
@@ -859,7 +858,6 @@ levels"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
-    <string name="quest_streetName_menuItem_romanized">"in Latin script"</string>
     <string name="quest_buildingType_terrace2">"Terraced houses"</string>
     <string name="quest_oneway_tutorial">"The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction."</string>
     <string name="at_housename">"house name %s:"</string>

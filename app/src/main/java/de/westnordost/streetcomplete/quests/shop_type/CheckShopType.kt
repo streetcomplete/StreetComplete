@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import java.time.LocalDate
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
@@ -43,20 +42,17 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override fun createForm() = ShopTypeForm()
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, changes: StringMapChangesBuilder) {
-        val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
-        for (otherCheckDateKey in otherCheckDateKeys) {
-            changes.deleteIfExists(otherCheckDateKey)
-        }
+
         when (answer) {
             is IsShopVacant -> {
-                changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
+                changes.updateCheckDate()
             }
             is ShopType -> {
+                changes.deleteCheckDates()
+
                 if (!answer.tags.containsKey("shop")) {
                     changes.deleteIfExists("shop")
                 }
-
-                changes.deleteIfExists(SURVEY_MARK_KEY)
 
                 for ((key, _) in changes.getPreviousEntries()) {
                     // also deletes all "disused:" keys

@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.CompoundButton
@@ -31,9 +30,12 @@ import androidx.recyclerview.widget.ItemTouchHelper.UP
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.*
+import de.westnordost.streetcomplete.data.quest.AllCountries
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
-import kotlinx.android.synthetic.main.row_quest_selection.view.*
 import kotlinx.coroutines.*
 import java.util.*
 
@@ -156,8 +158,8 @@ class QuestSelectionAdapter @Inject constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestVisibilityViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_quest_selection, parent, false)
-        return QuestVisibilityViewHolder(layout)
+        val inflater = LayoutInflater.from(parent.context)
+        return QuestVisibilityViewHolder(RowQuestSelectionBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: QuestVisibilityViewHolder, position: Int) {
@@ -236,14 +238,9 @@ class QuestSelectionAdapter @Inject constructor(
     }
 
     /** View Holder for a single quest type */
-    inner class QuestVisibilityViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView), CompoundButton.OnCheckedChangeListener {
+    inner class QuestVisibilityViewHolder(private val binding: RowQuestSelectionBinding) :
+        RecyclerView.ViewHolder(binding.root), CompoundButton.OnCheckedChangeListener {
 
-        private val dragHandle: ImageView = itemView.dragHandle
-        private val questIcon: ImageView = itemView.questIcon
-        private val questTitle: TextView = itemView.questTitle
-        private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
-        private val disabledText: TextView = itemView.disabledText
         lateinit var item: QuestVisibility
 
         private val isEnabledOnlyAtNight: Boolean
@@ -267,15 +264,15 @@ class QuestSelectionAdapter @Inject constructor(
             this.item = with
             val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
-            questIcon.setImageResource(item.questType.icon)
-            questTitle.text = genericQuestTitle(questTitle.resources, item.questType)
-            visibilityCheckBox.setOnCheckedChangeListener(null)
-            visibilityCheckBox.isChecked = item.visible
-            visibilityCheckBox.isEnabled = item.isInteractionEnabled
-            visibilityCheckBox.setOnCheckedChangeListener(this)
+            binding.questIcon.setImageResource(item.questType.icon)
+            binding.questTitle.text = genericQuestTitle(binding.questTitle.resources, item.questType)
+            binding.visibilityCheckBox.setOnCheckedChangeListener(null)
+            binding.visibilityCheckBox.isChecked = item.visible
+            binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
+            binding.visibilityCheckBox.setOnCheckedChangeListener(this)
 
-            dragHandle.isInvisible = !item.isInteractionEnabled
-            dragHandle.setOnTouchListener { v, event ->
+            binding.dragHandle.isInvisible = !item.isInteractionEnabled
+            binding.dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)
                     MotionEvent.ACTION_UP -> v.performClick()
@@ -283,14 +280,14 @@ class QuestSelectionAdapter @Inject constructor(
                 true
             }
 
-            disabledText.isGone = isEnabledInCurrentCountry && !isEnabledOnlyAtNight
+            binding.disabledText.isGone = isEnabledInCurrentCountry && !isEnabledOnlyAtNight
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                disabledText.text =  disabledText.resources.getString(
+                binding.disabledText.text =  binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
             } else if (isEnabledOnlyAtNight) {
-                disabledText.text = disabledText.resources.getString(R.string.questList_disabled_at_day)
+                binding.disabledText.text = binding.disabledText.resources.getString(R.string.questList_disabled_at_day)
             }
 
             updateSelectionStatus()
@@ -298,11 +295,11 @@ class QuestSelectionAdapter @Inject constructor(
 
         private fun updateSelectionStatus() {
             if (!item.visible) {
-                questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
+                binding.questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
             } else {
-                questIcon.clearColorFilter()
+                binding.questIcon.clearColorFilter()
             }
-            questTitle.isEnabled = item.visible
+            binding.questTitle.isEnabled = item.visible
         }
 
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {

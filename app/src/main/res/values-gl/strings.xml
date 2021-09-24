@@ -57,7 +57,6 @@
     <string name="upload_error">"Ocorreu un erro ó subi-las respostas"</string>
     <string name="download_area_too_big">"Achega un chisco máis o mapa"</string>
     <string name="confirmation_cancel_prev_download_title">"Desexas dete-la procura actual e comezar a procurar tarefas neste lugar?"</string>
-    <string name="notification_downloading">"Estanse a procurar tarefas…"</string>
     <string name="turn_on_location_request">"A ubicación non está activada. Desexas ir ós axustes para activala agora?"</string>
     <string name="no_location_permission_warning">"Precísase a túa ubicación para mostrar a túa posición no mapa e para procurar tarefas preto de ti."</string>
     <string name="about_title_authors">"Cretos"</string>
@@ -262,7 +261,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_fireHydrant_type_wall">"Muro (BIE)"</string>
     <string name="quest_fireHydrant_type_pond">"Lagoa"</string>
     <string name="credits_contributors">"Bótalle unha ollada á &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;listaxe enteira dos contribuíntes no GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Bótalle unha ollada ó &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proxecto no POEditor&lt;/a&gt; para obte-la listaxe completa."</string>
     <string name="credits_translations_title">"Traducións"</string>
     <string name="credits_contributors_title">"Colaboradores do código"</string>
     <string name="credits_author_title">"Autor e mantedor"</string>
@@ -339,6 +337,8 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_parkingType_underground">"Subterráneo"</string>
     <string name="quest_parkingType_multiStorage">"Multiplanta"</string>
     <string name="quest_toiletAvailability_name_title">"«%s» ten servizos?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"De que está feito este pau eléctrico?"</string>
     <string name="quest_powerPolesMaterial_wood">"Madeira"</string>
     <string name="quest_powerPolesMaterial_metal">"Aceiro"</string>
@@ -555,7 +555,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_sports_centre">"Complexo deportivo"</string>
     <string name="quest_buildingType_toilets">"Servizos"</string>
     <string name="quest_maxspeed_sign_question">"Que define o límite de velocidade?"</string>
-    <string name="notification_channel_download">"Descarga"</string>
     <string name="quest_playground_access_title">"Esta zona de lecer é accesíbel ó público?"</string>
     <string name="quest_segregated_title">"De que xeito están dispostos aquí a senda peonil e maila senda ciclista?"</string>
     <string name="dialog_tutorial_upload">"Para subi-las mudanzas de xeito manual, emprega o botón na barra das ferramentas semellante a este."</string>
@@ -838,7 +837,6 @@ logros"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
-    <string name="quest_streetName_menuItem_romanized">"en escrita latina"</string>
     <string name="quest_buildingType_terrace2">"Liña de casas (adosados)"</string>
     <string name="quest_oneway_tutorial">"A estrada na ilustración está orientada igual que no mapa na localización do pin. Ten en conta a dirección indicada."</string>
     <string name="at_housename">"Nome da casa %s:"</string>
@@ -1090,6 +1088,7 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="questList_disabled_at_day">"Só visible pola noite"</string>
     <string name="pref_quests_deselect_all">"Desmarcar tódalas peticións?"</string>
     <string name="quest_buildingType_boathouse">"Casa flotante"</string>
+    <string name="quest_buildingType_allotment_house">"Pequena horta ao carón do edificio"</string>
     <string name="quest_buildingType_grandstand">"Bancada"</string>
     <string name="action_search">"Buscar"</string>
     <string name="action_manage_presets">"Xestionar prestablecido"</string>
@@ -1104,6 +1103,9 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="no_search_results">"Non atopa nada"</string>
     <string name="quest_selection_hint_title">"Demasiadas tarefas?"</string>
     <string name="quest_selection_hint_message">"A colaboración debería ser divertida! Se sintes que recibes demasiadas preguntas sempre podes configurar o tipo de cuestións que che plantexamos e a súa orde."</string>
+    <string name="quest_presets_preset_add">"Engadir predefinido"</string>
+    <string name="quest_presets_preset_name">"Nome do predefinido"</string>
     <string name="quest_presets_default_name">"Por defecto"</string>
     <string name="quest_presets_selected">"Seleccionado"</string>
+    <string name="quest_presets_delete_message">"Eliminar o predefinido \"%s\"? A selección e a orde da tarefa serán perdidas de xeito irrevogábel."</string>
 </resources>

@@ -54,7 +54,6 @@
     <string name="upload_error">"S'ha produït un error en pujar les respostes"</string>
     <string name="download_area_too_big">"Apropeu-vos-hi més"</string>
     <string name="confirmation_cancel_prev_download_title">"Voleu cancel·lar la cerca actual i fer-la aquí?"</string>
-    <string name="notification_downloading">"S'estan cercant missions…"</string>
     <string name="turn_on_location_request">"La geolocalització està desactivada. Voleu anar a la configuració per a activar-la ara?"</string>
     <string name="no_location_permission_warning">"Cal la vostra ubicació per a cercar missions a prop vostre."</string>
     <string name="about_title_authors">"Crèdits"</string>
@@ -255,7 +254,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_fireHydrant_type_wall">"Paret"</string>
     <string name="quest_fireHydrant_type_pond">"Estany"</string>
     <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa de contribuïdors a GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Vegeu el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projecte a POEditor&lt;/a&gt; per la llista completa."</string>
     <string name="credits_translations_title">"Traduccions"</string>
     <string name="credits_contributors_title">"Contribuïdors al codi"</string>
     <string name="credits_author_title">"Autor i mantenidor"</string>
@@ -332,6 +330,8 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_parkingType_underground">"Aparcament subterrani"</string>
     <string name="quest_parkingType_multiStorage">"Aparcament en un garatge"</string>
     <string name="quest_toiletAvailability_name_title">"%s té un lavabo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Quin és el material d'aquest pal elèctric?"</string>
     <string name="quest_powerPolesMaterial_wood">"Fusta"</string>
     <string name="quest_powerPolesMaterial_metal">"Acer"</string>
@@ -546,7 +546,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_sports_centre">"Centre d'esports"</string>
     <string name="quest_buildingType_toilets">"Lavabos"</string>
     <string name="quest_maxspeed_sign_question">"Què defineix el límit de velocitat?"</string>
-    <string name="notification_channel_download">"Baixar"</string>
     <string name="quest_playground_access_title">"Aquest parc és d'accés públic?"</string>
     <string name="quest_segregated_title">"Com estan separats el carril bici i la vorera?"</string>
     <string name="dialog_tutorial_upload">"Per pujar els vostres canvis manualment, useu el botó a la barra d'eines que és així."</string>
@@ -823,7 +822,6 @@ d'acompliment"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
-    <string name="quest_streetName_menuItem_romanized">"en llatí"</string>
     <string name="quest_buildingType_terrace2">"Files de cases"</string>
     <string name="quest_oneway_tutorial">"La carretera de la il·lustració està rotada d'igual manera que al mapa a la localització del pin. Fixeu-vos en la direcció indicada."</string>
     <string name="at_housename">"Nom de la casa %s:"</string>

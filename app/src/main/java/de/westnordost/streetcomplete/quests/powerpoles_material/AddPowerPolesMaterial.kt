@@ -6,8 +6,12 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 
 class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
 
-    override val elementFilter = "nodes with power = pole and !material"
-    override val commitMessage = "Add powerpoles material type"
+    override val elementFilter = """
+        nodes with
+          (power = pole or man_made = utility_pole)
+          and !material
+    """
+    override val commitMessage = "Add power poles material type"
     override val wikiLink = "Tag:power=pole"
     override val icon = R.drawable.ic_quest_power
 

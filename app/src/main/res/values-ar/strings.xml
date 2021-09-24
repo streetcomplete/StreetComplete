@@ -53,7 +53,6 @@
     <string name="upload_error">"خطأ أثناء تحميل الإجابات"</string>
     <string name="download_area_too_big">"يرجى تكبير الخريطة للمزيد"</string>
     <string name="confirmation_cancel_prev_download_title">"أوقف البحث الحالي، ثم ابحث هنا بدلاً من ذلك؟"</string>
-    <string name="notification_downloading">"جاري البحث عن طلبات..."</string>
     <string name="turn_on_location_request">"خدمة تحديد الموقع متعطلة، فتح الإعدادات لتشغيل تحديد موقعك الحالي؟"</string>
     <string name="no_location_permission_warning">"موقعك الحالي مطلوب للمسح بحثا عن أسئلة في منطقتك والمناطق المجاورة."</string>
     <string name="about_title_authors">"فريق العمل"</string>
@@ -261,7 +260,6 @@
     <string name="quest_fireHydrant_type_wall">"على الحائط/الجدار"</string>
     <string name="quest_fireHydrant_type_pond">"من بركة ماء"</string>
     <string name="credits_contributors">"انظر &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;القائمة الكاملة على GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"انظر &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;المشروع على POEditor&lt;/a&gt; للقائمة الكاملة."</string>
     <string name="credits_translations_title">"الترجمة"</string>
     <string name="credits_contributors_title">"المساهمين في البرمجة"</string>
     <string name="credits_author_title">"المؤلف والمشرف"</string>
@@ -348,6 +346,8 @@
     <string name="quest_parkingType_underground">"موقف تحت الارض - مرآب تحت الأرض"</string>
     <string name="quest_parkingType_multiStorage">"مرآب للسيارات - موقف للسيارات"</string>
     <string name="quest_toiletAvailability_name_title">"هل لدى %s مرحاض؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"ما هي مادة عمود الطاقة/الكهرباء هذا؟"</string>
     <string name="quest_powerPolesMaterial_wood">"خشب"</string>
     <string name="quest_powerPolesMaterial_metal">"فولاذ"</string>
@@ -572,7 +572,6 @@
     <string name="quest_buildingType_sports_centre">"مركز الرياضة"</string>
     <string name="quest_buildingType_toilets">"مراحيض ودورات مياة"</string>
     <string name="quest_maxspeed_sign_question">"ما الذي يحدد السرعة القصوى؟"</string>
-    <string name="notification_channel_download">"تحميل"</string>
     <string name="quest_playground_access_title">"هل هذا الملعب متاح للجمهور؟"</string>
     <string name="quest_segregated_title">"كيف يتم ترتيب مسارات المشاة والدراجات هنا؟"</string>
     <string name="dialog_tutorial_upload">"لإرسال التغييرات يدويًا، استخدم زر شريط الأدوات الذي يشبه هذا."</string>
@@ -852,7 +851,6 @@
     <string name="quest_streetName_menuItem_language_with_script_native">"
 %1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"عالمي"</string>
-    <string name="quest_streetName_menuItem_romanized">"بأحرف لاتينية"</string>
     <string name="quest_buildingType_terrace2">"منازل متجاورة على شكل صف"</string>
     <string name="quest_oneway_tutorial">"يتم تدوير الطريق المعروضة في نفس الاتجاه كما هو موضح على الخريطة. لاحظ الاتجاه المشار إليه."</string>
     <string name="at_housename">"اسم المنزل %s:"</string>

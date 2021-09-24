@@ -1,30 +1,15 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
-import android.os.Bundle
-import android.view.View
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess.*
-import kotlinx.android.synthetic.main.quest_parking_access.*
 
-class AddParkingAccessForm : AbstractQuestFormAnswerFragment<ParkingAccess>() {
+class AddParkingAccessForm : AListQuestAnswerFragment<ParkingAccess>() {
 
-    override val contentLayoutResId = R.layout.quest_parking_access
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
-    }
-
-    override fun onClickOk() {
-        applyAnswer(when (radioButtonGroup.checkedRadioButtonId) {
-            R.id.yes            -> YES
-            R.id.customers      -> CUSTOMERS
-            R.id.private_access -> PRIVATE
-            else -> throw NullPointerException()
-        })
-    }
-
-    override fun isFormComplete() = radioButtonGroup.checkedRadioButtonId != -1
+    override val items = listOf(
+        TextItem(YES, R.string.quest_parking_access_yes),
+        TextItem(PRIVATE, R.string.quest_parking_access_private),
+        TextItem(CUSTOMERS, R.string.quest_parking_access_customers),
+    )
 }

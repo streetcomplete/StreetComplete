@@ -133,7 +133,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Geçerli arama durdurulup burada tarama yapılsın mı?"</string>
-    <string name="notification_downloading">"Görevler taranıyor…"</string>
     <string name="turn_on_location_request">"Konum kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
 
     <!-- Fuzzy -->
@@ -521,9 +520,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Tüm listeyi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub'da görebilirsin&lt;/a&gt;. "</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Çeviriler"</string>
@@ -1217,7 +1213,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Hız sınırını ne belirliyor?"</string>
-    <string name="notification_channel_download">"İndir"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Bu oyun alanı halka açık mı?"</string>

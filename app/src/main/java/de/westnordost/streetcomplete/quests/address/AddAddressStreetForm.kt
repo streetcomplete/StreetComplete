@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import java.util.Locale
@@ -33,7 +33,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private val placeName: String get() = placeNameInput?.text?.toString().orEmpty().trim()
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
+        AnswerItem(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
     )
 
     init {

@@ -6,26 +6,18 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quest_streetName_description"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/namesList"
-        android:background="@drawable/background_roadname_indented"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        tools:listitem="@layout/quest_localizedname_row"
-        />
+        android:background="@drawable/background_name_indented"
+        tools:listitem="@layout/quest_localizedname_row" />
 
     <ImageButton
         android:id="@+id/addLanguageButton"
-        android:src="@drawable/ic_add_24dp"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        tools:ignore="HardcodedText"/>
+        android:src="@drawable/ic_add_24dp"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

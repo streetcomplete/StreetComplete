@@ -22,7 +22,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         // once did a huge refactoring on the strings
         "Karl Ove Hufthammer" to listOf("nn"),
         // admin, changes strings etc
-        "matkoniecz" to listOf("pl")
+        "Mateusz Konieczny" to listOf("pl")
     )
 
     @TaskAction
@@ -37,7 +37,9 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         val users = queryUsersOnAllPages()
 
         // 2. for each user, query his contributions and add it to the result map
+        var i = 0
         for (user in users) {
+            println("user ${++i}/${users.size}")
             val translationsByName = queryTranslatorStats(user.id)
             translationsByName?.forEach { (languageName, count) ->
                 val tag = tagsByName[languageName]
@@ -69,6 +71,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         val result = mutableListOf<User>()
         var i = 1
         while (true) {
+            println("page $i")
             val users = queryUsers(i++)
             if (users.isEmpty()) break
             result += users

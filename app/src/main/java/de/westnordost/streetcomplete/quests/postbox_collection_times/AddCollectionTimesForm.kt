@@ -9,10 +9,10 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import kotlinx.android.synthetic.main.quest_collection_times.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -21,9 +21,10 @@ import kotlinx.serialization.json.Json
 class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
+    private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
+        AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
     )
 
     private lateinit var collectionTimesAdapter: CollectionTimesAdapter
@@ -39,12 +40,12 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        collectionTimesList.adapter = collectionTimesAdapter
-        collectionTimesList.isNestedScrollingEnabled = false
+        binding.collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.collectionTimesList.adapter = collectionTimesAdapter
+        binding.collectionTimesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
 
-        addTimesButton.setOnClickListener { onClickAddButton(it) }
+        binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
     }
 
     private fun onClickAddButton(v: View) {

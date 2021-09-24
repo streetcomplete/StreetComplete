@@ -158,9 +158,6 @@
     <string name="confirmation_cancel_prev_download_title">"നിലവിലുള്ള തിരയൽ റദ്ദാക്കി പകരം ഇവിടെ സ്കാൻ ചെയ്യുക"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"ലൊക്കേഷൻ ഓഫാണ്. അത് ഇപ്പോൾ ചെയ്യാനുള്ള ക്രമീകരണങ്ങളിൽ പോകണോ?"</string>
 
     <!-- Fuzzy -->
@@ -654,9 +651,6 @@
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;പ്രോജെക്ട് POEditor&lt;/a&gt; കാണുക"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"വിവർത്തനങ്ങൾ"</string>
@@ -1482,7 +1476,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"എങ്ങനെയാണ് വേഗ പരിധി നിശ്ചയിക്കുന്നത്?"</string>
-    <string name="notification_channel_download">"ഡൗൺലോഡ്"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"ഈ കളിസ്ഥലം പൊതുജനത്തിന് ഉപയോഗിക്കാൻ കഴിയുമോ?"</string>

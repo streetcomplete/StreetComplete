@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge><include layout="@layout/quest_maxspeed_advisory_white"/></merge>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/quest_maxspeed_advisory_white"/>
+
+</FrameLayout>
 <!-- https://en.wikipedia.org/wiki/Road_signs_in_South_Korea#/media/File:Korean_Traffic_sign_(Safe_Speed_30kph).svg -->

@@ -55,7 +55,6 @@
     <string name="upload_error">"Errore durante il caricamento delle risposte"</string>
     <string name="download_area_too_big">"È necessario ingrandire ancora di più"</string>
     <string name="confirmation_cancel_prev_download_title">"Annullo l'attuale ricerca e invece ripeto qui?"</string>
-    <string name="notification_downloading">"Ricerca di missioni…"</string>
     <string name="turn_on_location_request">"La localizzazione è spenta. Apro le Impostazioni per abilitarla?"</string>
     <string name="no_location_permission_warning">"L'accesso alla tua posizione è necessario per cercare le missioni vicine a te."</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
@@ -264,7 +263,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_fireHydrant_type_wall">"Muro"</string>
     <string name="quest_fireHydrant_type_pond">"Stagno"</string>
     <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;progetto su POEditor&lt;/a&gt; per la lista completa."</string>
     <string name="credits_translations_title">"Traduzioni"</string>
     <string name="credits_contributors_title">"Autori"</string>
     <string name="credits_author_title">"Autore e manutentore"</string>
@@ -347,6 +345,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_parkingType_underground">"Garage sotterraneo"</string>
     <string name="quest_parkingType_multiStorage">"Multi-piano"</string>
     <string name="quest_toiletAvailability_name_title">"%s ha un bagno?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Di che materiale è fatto questo palo della linea elettrica?"</string>
     <string name="quest_powerPolesMaterial_wood">"Legno"</string>
     <string name="quest_powerPolesMaterial_metal">"Acciaio"</string>
@@ -565,7 +565,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingType_sports_centre">"Centro sportivo"</string>
     <string name="quest_buildingType_toilets">"Servizi igienici"</string>
     <string name="quest_maxspeed_sign_question">"Cosa indica il limite di velocità?"</string>
-    <string name="notification_channel_download">"Scarica"</string>
     <string name="quest_playground_access_title">"Il parco giochi è accessibile a tutti?"</string>
     <string name="quest_segregated_title">"Come sono disposte  le corsie pedonali e ciclabili?"</string>
     <string name="dialog_tutorial_upload">"Per caricare manualmente le tue modifiche, usa il pulsante simile a questo nella barra degli strumenti."</string>
@@ -851,7 +850,6 @@ riconoscimento"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"Internazionale"</string>
-    <string name="quest_streetName_menuItem_romanized">"alfabeto latino"</string>
     <string name="quest_buildingType_terrace2">"Case a schiera"</string>
     <string name="quest_oneway_tutorial">"La strada è visualizzata con la stessa rotazione che hai nella mappa rispetto al puntatore. Fa attenzione alla direzione indicata."</string>
     <string name="at_housename">"Nome della casa %s:"</string>
@@ -1020,7 +1018,7 @@ riconoscimento"</string>
     <string name="pref_title_delete_cache">"Elimina cache"</string>
     <string name="pref_title_delete_cache_summary">"Se pensi che alcuni dati non siano aggiornati"</string>
     <string name="delete_confirmation">"Elimina"</string>
-    <string name="delete_cache_dialog_message">"Cancellare tutti i dai scaricati, missioni incluse?
+    <string name="delete_cache_dialog_message">"Cancellare tutti i dati scaricati, missioni incluse?
 I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancellati automaticamente dopo %2$s giorni."</string>
     <string name="quest_shop_type_title">"Che tipo di negozio è %s?"</string>
     <string name="quest_shop_type_title_no_name">"Che tipo di negozio è questo?"</string>

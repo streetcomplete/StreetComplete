@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.settings.questselection
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
@@ -14,7 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
-import kotlinx.android.synthetic.main.row_quest_preset.view.*
+import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -66,25 +65,27 @@ class QuestPresetsAdapter @Inject constructor(
     override fun getItemCount(): Int = presets.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestPresetViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_quest_preset, parent, false)
-        return QuestPresetViewHolder(layout)
+        val inflater = LayoutInflater.from(parent.context)
+        return QuestPresetViewHolder(RowQuestPresetBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: QuestPresetViewHolder, position: Int) {
         holder.onBind(presets[position])
     }
 
-    inner class QuestPresetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class QuestPresetViewHolder(private val binding: RowQuestPresetBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
         fun onBind(with: QuestPreset) {
-            itemView.presetTitleText.text = with.name
-            itemView.selectionRadioButton.setOnCheckedChangeListener(null)
-            itemView.selectionRadioButton.isChecked = questPresetsController.selectedQuestPresetId == with.id
-            itemView.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
+            binding.presetTitleText.text = with.name
+            binding.selectionRadioButton.setOnCheckedChangeListener(null)
+            binding.selectionRadioButton.isChecked = questPresetsController.selectedQuestPresetId == with.id
+            binding.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) onSelectQuestPreset(with.id)
             }
-            itemView.deleteButton.isEnabled = true
-            itemView.deleteButton.isInvisible = with.id == 0L
-            itemView.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
+            binding.deleteButton.isEnabled = true
+            binding.deleteButton.isInvisible = with.id == 0L
+            binding.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
         }
 
         fun onSelectQuestPreset(presetId: Long) {
@@ -102,7 +103,7 @@ class QuestPresetsAdapter @Inject constructor(
         }
 
         fun deleteQuestPreset(presetId: Long) {
-            itemView.deleteButton.isEnabled = false
+            binding.deleteButton.isEnabled = false
             lifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.deleteQuestPreset(presetId)
             }
