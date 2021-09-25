@@ -57,7 +57,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
                 for ((key, _) in changes.getPreviousEntries()) {
                     // also deletes all "disused:" keys
                     val isOkToRemove =
-                        KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
+                        KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }
                     if (isOkToRemove && !answer.tags.containsKey(key)) {
                         changes.delete(key)
                     }
