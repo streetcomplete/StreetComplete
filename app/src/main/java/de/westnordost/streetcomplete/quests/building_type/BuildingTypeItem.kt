@@ -62,6 +62,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     BOATHOUSE -> Item(this, R.drawable.ic_building_boathouse, R.string.quest_buildingType_boathouse)
     ALLOTMENT_HOUSE -> Item(this, R.drawable.ic_building_allotment_house, R.string.quest_buildingType_allotment_house)
     ROOF -> Item(this, R.drawable.ic_building_roof, R.string.quest_buildingType_roof)
+    BRIDGE -> Item(this, R.drawable.ic_building_bridge, R.string.quest_buildingType_bridge)
     TOILETS -> Item(this, R.drawable.ic_building_toilets, R.string.quest_buildingType_toilets)
     SERVICE -> Item(this, R.drawable.ic_building_service, R.string.quest_buildingType_service, R.string.quest_buildingType_service_description)
     HANGAR -> Item(this, R.drawable.ic_building_hangar, R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description)

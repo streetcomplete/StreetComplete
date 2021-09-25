@@ -686,6 +686,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_hut">Hut</string>
     <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
     <string name="quest_buildingType_roof">Roof</string>
+    <string name="quest_buildingType_bridge">Bridge between buildings (skyway)</string>
     <string name="quest_buildingType_service">Service building</string>
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
     <string name="quest_buildingType_hangar">Hangar</string>
