@@ -227,13 +227,6 @@ import javax.inject.Singleton
         val countries = questType.enabledInCountries
         if (!countryBoundariesFuture.get().isInAny(pos, countries))  return false
 
-        // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
-        if (geometry is ElementPolylinesGeometry) {
-            val totalLength = geometry.polylines.sumOf { it.measuredLength() }
-            if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
-                return false
-            }
-        }
         return true
     }
 
@@ -399,5 +392,3 @@ import javax.inject.Singleton
 private fun LatLon.truncateTo5Decimals() = LatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
 
 private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
-
-const val MAX_GEOMETRY_LENGTH_IN_METERS = 600
