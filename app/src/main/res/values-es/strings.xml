@@ -2440,4 +2440,5 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_presets_default_name">"De serie"</string>
     <string name="quest_presets_selected">"Elegido"</string>
     <string name="quest_presets_delete_message">"¿Quieres borrar el preajuste «%s»? La selección de las tareas elegidas y su orden se perderán."</string>
+    <string name="quest_board_type_sport">"Deporte, Ejercicios"</string>
 </resources>

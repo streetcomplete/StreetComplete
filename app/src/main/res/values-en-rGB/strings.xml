@@ -1116,4 +1116,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_presets_default_name">"Default"</string>
     <string name="quest_presets_selected">"Selected"</string>
     <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="notification_syncing">"Syncing data…"</string>
+    <string name="notification_channel_sync">"Sync Data"</string>
+    <string name="quest_board_type_sport">"Sport, Exercises"</string>
 </resources>
