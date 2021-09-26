@@ -24,6 +24,16 @@ open class LocationAwareMapFragment : MapFragment() {
     private lateinit var locationManager: FineLocationManager
 
     private var locationMapComponent: CurrentLocationMapComponent? = null
+    
+    var isFrozen = false
+        set(value) {
+            field = value
+            if (!value) {
+                endFocusQuest()
+                show3DBuildings = true
+                pinMode = QuestsMapFragment.PinMode.QUESTS
+            }
+        }   
 
     var displayedLocation: Location? = null
         private set
@@ -31,6 +41,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /** Whether the view should automatically center on the GPS location */
     var isFollowingPosition = true
+        get() = field && !isFrozen
         set(value) {
             field = value
             centerCurrentPositionIfFollowing()
@@ -44,6 +55,7 @@ open class LocationAwareMapFragment : MapFragment() {
     // animation abruptly and slide out, rather than sliding in and out (the default interpolator)
     private val interpolator = DecelerateInterpolator()
     var isCompassMode: Boolean = false
+        get() = field && !isFrozen
         set(value) {
             if (field != value) {
                 field = value
