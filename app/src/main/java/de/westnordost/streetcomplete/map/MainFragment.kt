@@ -837,11 +837,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun freezeMap() {
         val mapFragment = mapFragment ?: return
-
-        wasFollowingPosition = mapFragment.isFollowingPosition
-        wasCompassMode = mapFragment.isCompassMode
-        mapFragment.isFollowingPosition = false
-        mapFragment.isCompassMode = false
+        mapFragment.isFrozen = true
     }
 
     private fun resetFreezeMap() {
@@ -854,12 +850,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     private fun unfreezeMap() {
         val mapFragment = mapFragment ?: return
-
-        mapFragment.isFollowingPosition = wasFollowingPosition
-        mapFragment.isCompassMode = wasCompassMode
-        mapFragment.endFocusQuest()
-        mapFragment.show3DBuildings = true
-        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
+        mapFragment.isFrozen = false
     }
 
     //endregion
