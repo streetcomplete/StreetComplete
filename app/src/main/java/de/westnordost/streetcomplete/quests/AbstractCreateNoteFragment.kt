@@ -37,9 +37,15 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         }
 
         noteInput.addTextChangedListener(TextChangedWatcher { updateOkButtonEnablement() })
+        okButton.isEnabled = false
         okButton.setOnClickListener { onClickOk() }
 
         updateOkButtonEnablement()
+    }
+    
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(onViewStateRestored)
+        okButton.isEnabled = true
     }
 
     private fun onClickOk() {
