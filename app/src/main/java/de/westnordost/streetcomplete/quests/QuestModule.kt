@@ -65,6 +65,7 @@ import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargin
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
+import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
@@ -329,6 +330,7 @@ import javax.inject.Singleton
         AddVegetarian(),
         AddVegan(),
         AddKosher(),
+        AddHalal(),
         AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddInternetAccess(), // used by OsmAnd
 
