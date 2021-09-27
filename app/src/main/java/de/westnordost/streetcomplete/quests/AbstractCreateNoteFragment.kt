@@ -44,7 +44,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     }
     
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(onViewStateRestored)
+        super.onViewStateRestored(savedInstanceState)
         okButton.isEnabled = true
     }
 
