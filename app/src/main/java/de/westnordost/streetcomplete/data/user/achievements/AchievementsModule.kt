@@ -3,6 +3,111 @@ package de.westnordost.streetcomplete.data.user.achievements
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
+import de.westnordost.streetcomplete.quests.address.AddAddressStreet
+import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
+import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
+import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
+import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
+import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
+import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
+import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
+import de.westnordost.streetcomplete.quests.board_type.AddBoardType
+import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
+import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
+import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
+import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
+import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
+import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusStop
+import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
+import de.westnordost.streetcomplete.quests.bus_stop_lit.AddBusStopLit
+import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
+import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
+import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
+import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
+import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
+import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
+import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
+import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
+import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
+import de.westnordost.streetcomplete.quests.crossing.AddCrossing
+import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
+import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.quests.diet_type.AddKosher
+import de.westnordost.streetcomplete.quests.diet_type.AddVegan
+import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
+import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
+import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
+import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
+import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
+import de.westnordost.streetcomplete.quests.handrail.AddHandrail
+import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
+import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
+import de.westnordost.streetcomplete.quests.lanes.AddLanes
+import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
+import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
+import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
+import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
+import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
+import de.westnordost.streetcomplete.quests.oneway.AddOneway
+import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
+import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
+import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
+import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
+import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
+import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
+import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
+import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
+import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
+import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
+import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
+import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
+import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
+import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
+import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass
+import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
+import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
+import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
+import de.westnordost.streetcomplete.quests.road_name.AddRoadName
+import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
+import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
+import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
+import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
+import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
+import de.westnordost.streetcomplete.quests.sport.AddSport
+import de.westnordost.streetcomplete.quests.step_count.AddStepCount
+import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
+import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
+import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddPathSurface
+import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
+import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
+import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
+import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
+import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
+import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
+import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
+import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
+import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
+import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
+import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToiletsPart
 import javax.inject.Named
 
 @Module
@@ -14,13 +119,13 @@ object AchievementsModule {
 
     // list of quest synonyms (this alternate name is mentioned to aid searching for this code)
     private val questAliases = listOf(
-        "AddAccessibleForPedestrians"        to "AddProhibitedForPedestrians",
-        "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
-        "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
-        "AddSidewalks"                       to "AddSidewalk",
-        "DetailRoadSurface"                  to "AddRoadSurface",
-        "AddTrafficSignalsBlindFeatures"     to "AddTrafficSignalsVibration",
-        "AddSuspectedOneway"                 to "AddOneway"
+        "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
+        "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
+        "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
+        "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
+        "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
+        "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
+        "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
     )
 
     private val links = listOf(
@@ -413,13 +518,13 @@ object AchievementsModule {
             R.string.achievement_rare_title,
             R.string.achievement_rare_solved_X,
             SolvedQuestsOfTypes(listOf(
-                "AddSummitRegister", // 1
-                "AddWheelchairAccessToiletsPart", // 38
-                "AddWheelchairAccessOutside", // 154
-                "AddFerryAccessPedestrian", // 66
-                "AddFerryAccessMotorVehicle", // 103
-                "AddInformationToTourism", // 137
-                "AddBoardType" // 188
+                AddSummitRegister::class.simpleName!!, // 1
+                AddWheelchairAccessToiletsPart::class.simpleName!!, // 38
+                AddWheelchairAccessOutside::class.simpleName!!, // 154
+                AddFerryAccessPedestrian::class.simpleName!!, // 66
+                AddFerryAccessMotorVehicle::class.simpleName!!, // 103
+                AddInformationToTourism::class.simpleName!!, // 137
+                AddBoardType::class.simpleName!!, // 188
             )),
             // levels: 3, 9, 18, 30, 45, 63, ...
             { lvl -> (lvl + 1)*3 },
@@ -433,27 +538,27 @@ object AchievementsModule {
             R.string.achievement_car_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddRoadName",
-                    "AddOneway",
-                    "MarkCompletedHighwayConstruction",
-                    "AddTracktype",
-                    "AddRoadSurface",
-                    "AddMaxSpeed",
-                    "AddMaxHeight",
-                    "AddMaxWeight",
-                    "AddRailwayCrossingBarrier",
-                    "AddParkingAccess",
-                    "AddParkingFee",
-                    "AddParkingType",
-                    "AddMotorcycleParkingCapacity",
-                    "AddMotorcycleParkingCover",
-                    "AddFerryAccessMotorVehicle",
-                    "AddCarWashType",
-                    "AddChargingStationOperator",
-                    "AddChargingStationCapacity",
-                    "AddLanes",
-                    "AddBarrierType",
-                    "AddBollardType",
+                    AddRoadName::class.simpleName!!,
+                    AddOneway::class.simpleName!!,
+                    MarkCompletedHighwayConstruction::class.simpleName!!,
+                    AddTracktype::class.simpleName!!,
+                    AddRoadSurface::class.simpleName!!,
+                    AddMaxSpeed::class.simpleName!!,
+                    AddMaxHeight::class.simpleName!!,
+                    AddMaxWeight::class.simpleName!!,
+                    AddRailwayCrossingBarrier::class.simpleName!!,
+                    AddParkingAccess::class.simpleName!!,
+                    AddParkingFee::class.simpleName!!,
+                    AddParkingType::class.simpleName!!,
+                    AddMotorcycleParkingCapacity::class.simpleName!!,
+                    AddMotorcycleParkingCover::class.simpleName!!,
+                    AddFerryAccessMotorVehicle::class.simpleName!!,
+                    AddCarWashType::class.simpleName!!,
+                    AddChargingStationOperator::class.simpleName!!,
+                    AddChargingStationCapacity::class.simpleName!!,
+                    AddLanes::class.simpleName!!,
+                    AddBarrierType::class.simpleName!!,
+                    AddBollardType::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -476,8 +581,8 @@ object AchievementsModule {
             R.string.achievement_veg_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddVegetarian",
-                    "AddVegan"
+                    AddVegetarian::class.simpleName!!,
+                    AddVegan::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -494,28 +599,28 @@ object AchievementsModule {
             R.string.achievement_pedestrian_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddRoadName",
-                    "AddWayLit",
-                    "AddHandrail",
-                    "AddStepsIncline",
-                    "AddStepCount",
-                    "AddStepsRamp",
-                    "AddFootwayPartSurface",
-                    "AddBenchBackrest",
-                    "AddTrafficSignalsButton",
-                    "AddFerryAccessPedestrian",
-                    "AddPathSurface",
-                    "AddCrossingType",
-                    "AddProhibitedForPedestrians",
-                    "AddSidewalk",
-                    "AddBusStopName",
-                    "AddBusStopRef",
-                    "AddBusStopShelter",
-                    "AddBenchStatusOnBusStop",
-                    "AddBusStopLit",
-                    "AddCrossingIsland",
-                    "AddBarrierType",
-                    "AddCrossing"
+                    AddRoadName::class.simpleName!!,
+                    AddWayLit::class.simpleName!!,
+                    AddHandrail::class.simpleName!!,
+                    AddStepsIncline::class.simpleName!!,
+                    AddStepCount::class.simpleName!!,
+                    AddStepsRamp::class.simpleName!!,
+                    AddFootwayPartSurface::class.simpleName!!,
+                    AddBenchBackrest::class.simpleName!!,
+                    AddTrafficSignalsButton::class.simpleName!!,
+                    AddFerryAccessPedestrian::class.simpleName!!,
+                    AddPathSurface::class.simpleName!!,
+                    AddCrossingType::class.simpleName!!,
+                    AddProhibitedForPedestrians::class.simpleName!!,
+                    AddSidewalk::class.simpleName!!,
+                    AddBusStopName::class.simpleName!!,
+                    AddBusStopRef::class.simpleName!!,
+                    AddBusStopShelter::class.simpleName!!,
+                    AddBenchStatusOnBusStop::class.simpleName!!,
+                    AddBusStopLit::class.simpleName!!,
+                    AddCrossingIsland::class.simpleName!!,
+                    AddBarrierType::class.simpleName!!,
+                    AddCrossing::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -532,13 +637,13 @@ object AchievementsModule {
             R.string.achievement_building_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddIsBuildingUnderground",
-                    "AddBuildingType",
-                    "AddBuildingLevels",
-                    "MarkCompletedBuildingConstruction",
-                    "AddPowerPolesMaterial",
-                    "AddBridgeStructure",
-                    "AddRoofShape"
+                    AddIsBuildingUnderground::class.simpleName!!,
+                    AddBuildingType::class.simpleName!!,
+                    AddBuildingLevels::class.simpleName!!,
+                    MarkCompletedBuildingConstruction::class.simpleName!!,
+                    AddPowerPolesMaterial::class.simpleName!!,
+                    AddBridgeStructure::class.simpleName!!,
+                    AddRoofShape::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -556,12 +661,12 @@ object AchievementsModule {
             R.string.achievement_postman_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddHousenumber",
-                    "AddRoadName",
-                    "AddAddressStreet",
-                    "AddPostboxRef",
-                    "AddPostboxCollectionTimes",
-                    "AddPostboxRoyalCypher"
+                    AddHousenumber::class.simpleName!!,
+                    AddRoadName::class.simpleName!!,
+                    AddAddressStreet::class.simpleName!!,
+                    AddPostboxRef::class.simpleName!!,
+                    AddPostboxCollectionTimes::class.simpleName!!,
+                    AddPostboxRoyalCypher::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -581,14 +686,14 @@ object AchievementsModule {
             R.string.achievement_blind_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddTactilePavingCrosswalk",
-                    "AddTrafficSignalsSound",
-                    "AddTrafficSignalsVibration",
-                    "AddTactilePavingBusStop",
-                    "AddCrossingIsland",
-                    "AddKerbHeight",
-                    "AddTactilePavingKerb",
-                    "AddBarrierType"
+                    AddTactilePavingCrosswalk::class.simpleName!!,
+                    AddTrafficSignalsSound::class.simpleName!!,
+                    AddTrafficSignalsVibration::class.simpleName!!,
+                    AddTactilePavingBusStop::class.simpleName!!,
+                    AddCrossingIsland::class.simpleName!!,
+                    AddKerbHeight::class.simpleName!!,
+                    AddTactilePavingKerb::class.simpleName!!,
+                    AddBarrierType::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -606,17 +711,17 @@ object AchievementsModule {
             R.string.achievement_wheelchair_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddWheelchairAccessBusiness",
-                    "AddWheelchairAccessOutside",
-                    "AddWheelchairAccessPublicTransport",
-                    "AddWheelchairAccessToilets",
-                    "AddWheelchairAccessToiletsPart",
-                    "AddFootwayPartSurface",
-                    "AddPathSurface",
-                    "AddStepsRamp",
-                    "AddHandrail",
-                    "AddKerbHeight",
-                    "AddBarrierType"
+                    AddWheelchairAccessBusiness::class.simpleName!!,
+                    AddWheelchairAccessOutside::class.simpleName!!,
+                    AddWheelchairAccessPublicTransport::class.simpleName!!,
+                    AddWheelchairAccessToilets::class.simpleName!!,
+                    AddWheelchairAccessToiletsPart::class.simpleName!!,
+                    AddFootwayPartSurface::class.simpleName!!,
+                    AddPathSurface::class.simpleName!!,
+                    AddStepsRamp::class.simpleName!!,
+                    AddHandrail::class.simpleName!!,
+                    AddKerbHeight::class.simpleName!!,
+                    AddBarrierType::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -634,18 +739,18 @@ object AchievementsModule {
             R.string.achievement_bicyclist_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "AddCycleway",
-                    "AddCyclewayPartSurface",
-                    "AddBikeParkingCapacity",
-                    "AddBikeParkingCover",
-                    "AddBikeParkingType",
-                    "AddBikeParkingAccess",
-                    "AddBikeParkingFee",
-                    "AddCyclewaySegregation",
-                    "AddPathSurface",
-                    "AddStepsRamp",
-                    "AddKerbHeight",
-                    "AddBarrierType"
+                    AddCycleway::class.simpleName!!,
+                    AddCyclewayPartSurface::class.simpleName!!,
+                    AddBikeParkingCapacity::class.simpleName!!,
+                    AddBikeParkingCover::class.simpleName!!,
+                    AddBikeParkingType::class.simpleName!!,
+                    AddBikeParkingAccess::class.simpleName!!,
+                    AddBikeParkingFee::class.simpleName!!,
+                    AddCyclewaySegregation::class.simpleName!!,
+                    AddPathSurface::class.simpleName!!,
+                    AddStepsRamp::class.simpleName!!,
+                    AddKerbHeight::class.simpleName!!,
+                    AddBarrierType::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -663,33 +768,33 @@ object AchievementsModule {
             R.string.achievement_citizen_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "CheckExistence",
-                    "CheckShopType",
-                    "SpecifyShopType",
-                    "AddSelfServiceLaundry",
-                    "AddToiletAvailability",
-                    "AddToiletsFee",
-                    "AddPlaceName",
-                    "DetermineRecyclingGlass",
-                    "AddRecyclingContainerMaterials",
-                    "AddClothingBinOperator",
-                    "AddBinStatusOnBusStop",
-                    "AddBabyChangingTable",
-                    "AddOpeningHours",
-                    "AddAtmOperator",
-                    "AddPlaygroundAccess",
-                    "AddReligionToPlaceOfWorship",
-                    "AddRecyclingType",
-                    "AddAcceptsCash",
-                    "AddVegetarian",
-                    "AddVegan",
-                    "AddKosher",
-                    "AddPoliceType",
+                    CheckExistence::class.simpleName!!,
+                    CheckShopType::class.simpleName!!,
+                    SpecifyShopType::class.simpleName!!,
+                    AddSelfServiceLaundry::class.simpleName!!,
+                    AddToiletAvailability::class.simpleName!!,
+                    AddToiletsFee::class.simpleName!!,
+                    AddPlaceName::class.simpleName!!,
+                    DetermineRecyclingGlass::class.simpleName!!,
+                    AddRecyclingContainerMaterials::class.simpleName!!,
+                    AddClothingBinOperator::class.simpleName!!,
+                    AddBinStatusOnBusStop::class.simpleName!!,
+                    AddBabyChangingTable::class.simpleName!!,
+                    AddOpeningHours::class.simpleName!!,
+                    AddAtmOperator::class.simpleName!!,
+                    AddPlaygroundAccess::class.simpleName!!,
+                    AddReligionToPlaceOfWorship::class.simpleName!!,
+                    AddRecyclingType::class.simpleName!!,
+                    AddAcceptsCash::class.simpleName!!,
+                    AddVegetarian::class.simpleName!!,
+                    AddVegan::class.simpleName!!,
+                    AddKosher::class.simpleName!!,
+                    AddPoliceType::class.simpleName!!,
                     // tourist related
-                    "AddInformationToTourism",
-                    "AddBoardType",
-                    "AddInternetAccess",
-                    "AddGeneralFee"
+                    AddInformationToTourism::class.simpleName!!,
+                    AddBoardType::class.simpleName!!,
+                    AddInternetAccess::class.simpleName!!,
+                    AddGeneralFee::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
@@ -709,24 +814,24 @@ object AchievementsModule {
             R.string.achievement_outdoors_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
-                    "CheckExistence",
-                    "AddSport",
-                    "AddPitchSurface",
-                    "AddPitchLit",
-                    "AddSummitRegister",
-                    "AddReligionToWaysideShrine",
-                    "AddDrinkingWater",
+                    CheckExistence::class.simpleName!!,
+                    AddSport::class.simpleName!!,
+                    AddPitchSurface::class.simpleName!!,
+                    AddPitchLit::class.simpleName!!,
+                    AddSummitRegister::class.simpleName!!,
+                    AddReligionToWaysideShrine::class.simpleName!!,
+                    AddDrinkingWater::class.simpleName!!,
                     // from pedestrian
-                    "AddPathSurface",
-                    "AddCyclewaySegregation",
-                    "AddCyclewayPartSurface",
-                    "AddFootwayPartSurface",
-                    "AddBenchBackrest",
-                    "AddBarrierType",
-                    "AddStileType",
+                    AddPathSurface::class.simpleName!!,
+                    AddCyclewaySegregation::class.simpleName!!,
+                    AddCyclewayPartSurface::class.simpleName!!,
+                    AddFootwayPartSurface::class.simpleName!!,
+                    AddBenchBackrest::class.simpleName!!,
+                    AddBarrierType::class.simpleName!!,
+                    AddStileType::class.simpleName!!,
                     // information boards
-                    "AddInformationToTourism",
-                    "AddBoardType"
+                    AddInformationToTourism::class.simpleName!!,
+                    AddBoardType::class.simpleName!!,
                 )
             ),
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
