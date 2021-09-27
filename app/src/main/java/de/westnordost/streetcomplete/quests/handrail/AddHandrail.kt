@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -26,6 +27,11 @@ class AddHandrail : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:handrail"
     override val icon = R.drawable.ic_quest_steps_handrail
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(
+        QuestTypeAchievements.PEDESTRIAN,
+        QuestTypeAchievements.WHEELCHAIR,
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_handrail_title
 

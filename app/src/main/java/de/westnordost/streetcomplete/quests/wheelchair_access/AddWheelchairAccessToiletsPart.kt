@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
 
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
 
@@ -20,6 +21,11 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+
+    override val questTypeAchievements = listOf(
+        QuestTypeAchievements.RARE,
+        QuestTypeAchievements.WHEELCHAIR,
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title
 

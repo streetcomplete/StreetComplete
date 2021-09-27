@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
 
 class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
@@ -25,6 +26,8 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
     override val commitMessage = "Add type of barrier for railway crossing"
     override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.ic_quest_railway
+
+    override val questTypeAchievements = listOf(QuestTypeAchievements.CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2
 

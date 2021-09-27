@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
 
 import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.util.isNearAndAligned
@@ -51,6 +52,8 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
     )
 
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(QuestTypeAchievements.BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) : Int =
         if (createCyclewaySides(tags, false) != null)

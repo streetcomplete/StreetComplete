@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
@@ -80,6 +81,11 @@ class CheckExistence(
     override val commitMessage = "Check if element still exists"
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
+
+    override val questTypeAchievements = listOf(
+        QuestTypeAchievements.CITIZEN,
+        QuestTypeAchievements.OUTDOORS,
+    )
 
     override fun getTitle(tags: Map<String, String>): Int =
         if (tags.containsAnyKey("name", "brand", "ref", "operator"))

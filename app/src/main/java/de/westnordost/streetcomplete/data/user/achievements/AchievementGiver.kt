@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
@@ -23,10 +24,10 @@ class AchievementGiver @Inject constructor(
     }
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
-    fun updateQuestTypeAchievements(questType: String) {
-        return updateAchievements(allAchievements.filter {
-            when (it.condition) {
-                is SolvedQuestsOfTypes -> it.condition.questTypes.contains(questType)
+    fun updateQuestTypeAchievements(questType: QuestType<*>) {
+        return updateAchievements(allAchievements.filter { achievement ->
+            when (achievement.condition) {
+                is SolvedQuestsOfTypes -> questType.questTypeAchievements.any { it.id == achievement.id }
                 is TotalSolvedQuests -> true
                 else -> false
             }

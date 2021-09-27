@@ -50,9 +50,9 @@ class ElementEditsUploader @Inject constructor(
             mapDataController.updateAll(updates)
 
             if (edit.action is IsRevertAction) {
-                statisticsUpdater.subtractOne(questTypeName, edit.position)
+                statisticsUpdater.subtractOne(edit.questType, edit.position)
             } else {
-                statisticsUpdater.addOne(questTypeName, edit.position)
+                statisticsUpdater.addOne(edit.questType, edit.position)
             }
 
         } catch (e: ConflictException) {
