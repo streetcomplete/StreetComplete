@@ -121,7 +121,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:textColor">@color/title_text_below_image</item>
+        <item name="android:textColor">@color/label_text_below_image</item>
     </style>
 
     <style name="TitleNextToImage">
