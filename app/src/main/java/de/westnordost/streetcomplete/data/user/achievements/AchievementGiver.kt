@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
@@ -10,12 +11,13 @@ import javax.inject.Named
 /** Grants achievements based on solved quests (or other things) and puts the links contained in
  * these in the link collection */
 class AchievementGiver @Inject constructor(
-        private val userAchievementsDao: UserAchievementsDao,
-        private val newUserAchievementsDao: NewUserAchievementsDao,
-        private val userLinksDao: UserLinksDao,
-        private val questStatisticsDao: QuestStatisticsDao,
-        @Named("Achievements") private val allAchievements: List<Achievement>,
-        private val userStore: UserStore
+    private val userAchievementsDao: UserAchievementsDao,
+    private val newUserAchievementsDao: NewUserAchievementsDao,
+    private val userLinksDao: UserLinksDao,
+    private val questStatisticsDao: QuestStatisticsDao,
+    @Named("Achievements") private val allAchievements: List<Achievement>,
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val userStore: UserStore
 ) {
 
     /** Look at and grant all achievements */
@@ -86,15 +88,21 @@ class AchievementGiver @Inject constructor(
             threshold += func(level)
             level++
             if (achievement.maxLevel != -1 && level > achievement.maxLevel) break
-        } while (isAchieved(threshold, achievement.condition))
+        } while (isAchieved(threshold, achievement))
         return level - 1
     }
 
-    private fun isAchieved(threshold: Int, condition: AchievementCondition): Boolean {
-        return threshold <= when (condition) {
-            is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(condition.questTypes) // TODO: how to get quest types for this achievement
+    private fun isAchieved(threshold: Int, achievement: Achievement): Boolean {
+        return threshold <= when (achievement.condition) {
+            is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(getAchievementQuestTypes(achievement.id))
             is TotalSolvedQuests -> questStatisticsDao.getTotalAmount()
             is DaysActive -> userStore.daysActive
         }
+    }
+
+    private fun getAchievementQuestTypes(achievementId: String): List<String> {
+        return questTypeRegistry
+            .filter { questType -> questType.questTypeAchievements.any { it.id == achievementId } }
+            .map { it::class.simpleName!! }
     }
 }
