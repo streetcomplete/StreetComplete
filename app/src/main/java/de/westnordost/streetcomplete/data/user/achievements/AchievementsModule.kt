@@ -590,9 +590,9 @@ object AchievementsModule {
     private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
         linksKeys.map { linksById.getValue(it) }
 
-    // Quests not mentioned in any achievements:
+    // Achievement suggestions:
 
     // maybe "emergency"
-    // AddFireHydrantType AddIsDefibrillatorIndoor
+    // AddFireHydrantType AddIsDefibrillatorIndoor AddBollardType
     //
 }

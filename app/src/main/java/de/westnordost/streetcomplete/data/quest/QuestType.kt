@@ -25,5 +25,5 @@ interface QuestType<T> {
     val dayNightVisibility: DayNightCycle get() = DayNightCycle.DAY_AND_NIGHT
 
     /** towards which achievements the quest should count */
-    val questTypeAchievements: List<QuestTypeAchievements> get() = listOf()
+    val questTypeAchievements: List<QuestTypeAchievements>
 }
