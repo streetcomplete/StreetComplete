@@ -27,6 +27,8 @@
     <color name="indicator_dot_selected">@color/accent</color>
 
     <color name="hint_text">#555</color>
+    <color name="icon_selection_title_text">#000</color>
+    <color name="icon_selection_description_text">#000</color>
 
     <color name="disabled_text">#6666</color>
 
