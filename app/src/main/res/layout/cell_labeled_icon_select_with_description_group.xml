@@ -36,12 +36,12 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/ImageSelectTitle"
+                style="@style/TitleNextToImage"
                 tools:text="@string/quest_buildingType_residential" />
 
             <TextView
                 android:id="@+id/descriptionView"
-                style="@style/ImageSelectDescription"
+                style="@style/DescriptionNextToImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/quest_buildingType_residential_description" />
