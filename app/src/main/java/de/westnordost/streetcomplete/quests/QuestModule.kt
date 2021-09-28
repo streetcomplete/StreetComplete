@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.barrier_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
@@ -229,6 +230,7 @@ import javax.inject.Singleton
         AddTrafficSignalsButton(),
 
         /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
+        AddTrafficCalmingType(),
 
         AddInformationToTourism(), // OSM Carto
 

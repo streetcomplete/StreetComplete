@@ -1038,6 +1038,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_background_type_select">Select background type</string>
     <string name="background_type_map">Map</string>
     <string name="background_type_aerial_esri">Aerial (by Esri)</string>
+    <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_barrier_type_title">What type of barrier is this?</string>
     <string name="quest_barrier_type_gate">Gate</string>
     <string name="quest_barrier_type_lift_gate">Boom barrier</string>
@@ -1085,4 +1086,12 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
+    <string name="quest_traffic_calming_type_hump">Hump (wider)</string>
+    <string name="quest_traffic_calming_type_table">Raised road with flat section</string>
+    <string name="quest_traffic_calming_type_cushion">Cushion (free pass for buses)</string>
+    <string name="quest_traffic_calming_type_choker">Narrowed road</string>
+    <string name="quest_traffic_calming_type_island">Island</string>
+    <string name="quest_traffic_calming_type_chicane">Deliberate curve(s)</string>
+    <string name="quest_traffic_calming_type_rumble_strip">Rumble strip(s)</string>
 </resources>
