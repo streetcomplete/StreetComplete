@@ -4,7 +4,6 @@ import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.getIds
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import de.westnordost.streetcomplete.ktx.toLocalDate
 import java.time.Instant
@@ -23,18 +22,18 @@ class StatisticsUpdater @Inject constructor(
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
 ) {
-    fun addOne(questType: QuestType<*>, position: LatLon) {
+    fun addOne(questType: String, position: LatLon) {
         updateDaysActive()
 
-        questStatisticsDao.addOne(questType::class.simpleName!!)
+        questStatisticsDao.addOne(questType)
         getRealCountryCode(position)?.let { countryStatisticsDao.addOne(it) }
 
         achievementGiver.updateQuestTypeAchievements(questType)
     }
 
-    fun subtractOne(questType: QuestType<*>, position: LatLon) {
+    fun subtractOne(questType: String, position: LatLon) {
         updateDaysActive()
-        questStatisticsDao.subtractOne(questType::class.simpleName!!)
+        questStatisticsDao.subtractOne(questType)
         getRealCountryCode(position)?.let { countryStatisticsDao.subtractOne(it) }
     }
 
