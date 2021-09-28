@@ -92,7 +92,7 @@ class AchievementGiver @Inject constructor(
 
     private fun isAchieved(threshold: Int, condition: AchievementCondition): Boolean {
         return threshold <= when (condition) {
-            is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(condition.questTypes)
+            is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(condition.questTypes) // TODO: how to get quest types for this achievement
             is TotalSolvedQuests -> questStatisticsDao.getTotalAmount()
             is DaysActive -> userStore.daysActive
         }
