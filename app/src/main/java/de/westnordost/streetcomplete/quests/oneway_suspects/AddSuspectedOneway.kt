@@ -40,7 +40,7 @@ class AddSuspectedOneway(
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
 
-    override val questTypeAchievements = emptyList<QuestTypeAchievements>()
+    override val questTypeAchievements = listOf(QuestTypeAchievements.CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 

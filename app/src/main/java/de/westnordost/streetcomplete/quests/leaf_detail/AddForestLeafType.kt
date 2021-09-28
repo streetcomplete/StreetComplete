@@ -24,7 +24,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
 
-    override val questTypeAchievements = emptyList<QuestTypeAchievements>()
+    override val questTypeAchievements = listOf(QuestTypeAchievements.OUTDOORS)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val forests = mapData

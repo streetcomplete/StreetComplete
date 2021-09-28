@@ -16,7 +16,7 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
     override val wikiLink = "Tag:landuse=orchard"
     override val icon = R.drawable.ic_quest_apple
 
-    override val questTypeAchievements = emptyList<QuestTypeAchievements>()
+    override val questTypeAchievements = listOf(QuestTypeAchievements.OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_orchard_produce_title
 
