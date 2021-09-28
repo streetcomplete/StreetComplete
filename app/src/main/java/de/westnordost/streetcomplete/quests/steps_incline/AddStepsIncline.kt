@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.steps_incline
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.*
 
 class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
@@ -21,7 +21,7 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
     override val icon = R.drawable.ic_quest_steps
     override val isSplitWayEnabled = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.PEDESTRIAN)
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title
 

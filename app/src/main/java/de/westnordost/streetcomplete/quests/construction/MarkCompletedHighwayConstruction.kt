@@ -6,8 +6,7 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
-import java.time.LocalDate
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
@@ -21,7 +20,7 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override val icon = R.drawable.ic_quest_road_construction
     override val hasMarkersAtEnds = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.CAR)
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isRoad = ALL_ROADS.contains(tags["construction"])

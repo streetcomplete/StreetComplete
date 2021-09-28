@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
@@ -28,11 +30,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
     override val icon = R.drawable.ic_quest_steps_ramp
     override val isSplitWayEnabled = true
 
-    override val questTypeAchievements = listOf(
-        QuestTypeAchievements.PEDESTRIAN,
-        QuestTypeAchievements.WHEELCHAIR,
-        QuestTypeAchievements.BICYCLIST,
-    )
+    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_ramp_title
 

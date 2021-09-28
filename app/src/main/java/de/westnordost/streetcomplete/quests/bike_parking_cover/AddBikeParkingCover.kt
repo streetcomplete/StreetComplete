@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.bike_parking_cover
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -21,7 +21,7 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_bicycle_parking_cover
     override val isDeleteElementEnabled = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.BICYCLIST)
+    override val questTypeAchievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_bicycleParkingCoveredStatus_title

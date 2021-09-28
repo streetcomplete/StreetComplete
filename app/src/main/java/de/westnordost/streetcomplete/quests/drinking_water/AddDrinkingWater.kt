@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.drinking_water
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
@@ -22,7 +22,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
     override val icon = R.drawable.ic_quest_drinking_water
     override val isDeleteElementEnabled = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.OUTDOORS)
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title
 

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
 import javax.inject.Named
 
-enum class QuestTypeAchievements(val id: String) {
+enum class QuestTypeAchievement(val id: String) {
     RARE("rare"),
     CAR("car"),
     VEG("veg"),
@@ -429,7 +429,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.RARE.id,
+            QuestTypeAchievement.RARE.id,
             R.drawable.ic_achievement_rare,
             R.string.achievement_rare_title,
             R.string.achievement_rare_solved_X,
@@ -440,7 +440,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.CAR.id,
+            QuestTypeAchievement.CAR.id,
             R.drawable.ic_achievement_car,
             R.string.achievement_car_title,
             R.string.achievement_car_solved_X,
@@ -459,7 +459,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.VEG.id,
+            QuestTypeAchievement.VEG.id,
             R.drawable.ic_achievement_veg,
             R.string.achievement_veg_title,
             R.string.achievement_veg_solved_X,
@@ -472,7 +472,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.PEDESTRIAN.id,
+            QuestTypeAchievement.PEDESTRIAN.id,
             R.drawable.ic_achievement_pedestrian,
             R.string.achievement_pedestrian_title,
             R.string.achievement_pedestrian_solved_X,
@@ -485,7 +485,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.BUILDING.id,
+            QuestTypeAchievement.BUILDING.id,
             R.drawable.ic_achievement_building,
             R.string.achievement_building_title,
             R.string.achievement_building_solved_X,
@@ -499,7 +499,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.POSTMAN.id,
+            QuestTypeAchievement.POSTMAN.id,
             R.drawable.ic_achievement_postman,
             R.string.achievement_postman_title,
             R.string.achievement_postman_solved_X,
@@ -515,7 +515,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.BLIND.id,
+            QuestTypeAchievement.BLIND.id,
             R.drawable.ic_achievement_blind,
             R.string.achievement_blind_title,
             R.string.achievement_blind_solved_X,
@@ -529,7 +529,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.WHEELCHAIR.id,
+            QuestTypeAchievement.WHEELCHAIR.id,
             R.drawable.ic_achievement_wheelchair,
             R.string.achievement_wheelchair_title,
             R.string.achievement_wheelchair_solved_X,
@@ -543,7 +543,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.BICYCLIST.id,
+            QuestTypeAchievement.BICYCLIST.id,
             R.drawable.ic_achievement_bicyclist,
             R.string.achievement_bicyclist_title,
             R.string.achievement_bicyclist_solved_X,
@@ -557,7 +557,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.CITIZEN.id,
+            QuestTypeAchievement.CITIZEN.id,
             R.drawable.ic_achievement_citizen,
             R.string.achievement_citizen_title,
             R.string.achievement_citizen_solved_X,
@@ -573,7 +573,7 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievements.OUTDOORS.id,
+            QuestTypeAchievement.OUTDOORS.id,
             R.drawable.ic_achievement_outdoors,
             R.string.achievement_outdoors_title,
             R.string.achievement_outdoors_solved_X,

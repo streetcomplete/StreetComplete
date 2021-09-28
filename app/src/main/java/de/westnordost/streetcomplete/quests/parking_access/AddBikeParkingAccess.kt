@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.parking_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 
 class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
@@ -19,7 +19,7 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_access
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.BICYCLIST)
+    override val questTypeAchievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_parking_access_title
 

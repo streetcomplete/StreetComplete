@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
@@ -15,7 +15,7 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
     override val wikiLink = "Key:building:levels"
     override val icon = R.drawable.ic_quest_building_levels
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.BUILDING)
+    override val questTypeAchievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("building:part"))

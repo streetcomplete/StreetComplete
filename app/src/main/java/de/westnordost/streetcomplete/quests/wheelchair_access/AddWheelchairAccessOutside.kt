@@ -4,7 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
 class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
@@ -16,10 +17,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
 
-    override val questTypeAchievements = listOf(
-        QuestTypeAchievements.RARE,
-        QuestTypeAchievements.WHEELCHAIR,
-    )
+    override val questTypeAchievements = listOf(RARE, WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 

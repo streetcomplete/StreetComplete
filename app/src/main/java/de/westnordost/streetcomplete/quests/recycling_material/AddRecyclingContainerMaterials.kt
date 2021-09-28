@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
@@ -31,7 +31,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override val icon = R.drawable.ic_quest_recycling_container
     override val isDeleteElementEnabled = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.CITIZEN)
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return emptyList()

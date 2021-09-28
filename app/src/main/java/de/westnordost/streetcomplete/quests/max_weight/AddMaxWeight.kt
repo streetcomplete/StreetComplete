@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.*
 
 class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
@@ -13,7 +13,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.CAR)
+    override val questTypeAchievements = listOf(CAR)
 
     override val elementFilter = """
         ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service

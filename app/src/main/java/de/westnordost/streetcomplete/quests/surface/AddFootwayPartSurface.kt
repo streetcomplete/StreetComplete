@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
 class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -30,11 +32,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val icon = R.drawable.ic_quest_footway_surface
     override val isSplitWayEnabled = true
 
-    override val questTypeAchievements = listOf(
-        QuestTypeAchievements.PEDESTRIAN,
-        QuestTypeAchievements.WHEELCHAIR,
-        QuestTypeAchievements.OUTDOORS,
-    )
+    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_footwayPartSurface_title
 

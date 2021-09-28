@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 
 class AddWayLit : OsmFilterQuestType<WayLit>() {
 
@@ -48,7 +48,7 @@ class AddWayLit : OsmFilterQuestType<WayLit>() {
     override val isSplitWayEnabled = true
     override val dayNightVisibility = ONLY_NIGHT
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.PEDESTRIAN)
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val type = tags["highway"]

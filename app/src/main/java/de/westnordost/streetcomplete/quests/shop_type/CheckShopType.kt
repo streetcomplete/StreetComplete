@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
@@ -32,7 +32,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.CITIZEN)
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_vacant_type_title
 

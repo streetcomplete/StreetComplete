@@ -6,7 +6,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -33,10 +34,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     override val wikiLink = "Key:crossing:island"
     override val icon = R.drawable.ic_quest_pedestrian_crossing_island
 
-    override val questTypeAchievements = listOf(
-        QuestTypeAchievements.PEDESTRIAN,
-        QuestTypeAchievements.BLIND,
-    )
+    override val questTypeAchievements = listOf(PEDESTRIAN, BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_island
 

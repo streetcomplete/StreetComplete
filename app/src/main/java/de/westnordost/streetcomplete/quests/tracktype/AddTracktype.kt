@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievements
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
@@ -26,7 +26,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
     override val icon = R.drawable.ic_quest_tractor
     override val isSplitWayEnabled = true
 
-    override val questTypeAchievements = listOf(QuestTypeAchievements.CAR)
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tracktype_title
 
