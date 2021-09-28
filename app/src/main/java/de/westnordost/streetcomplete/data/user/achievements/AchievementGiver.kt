@@ -82,18 +82,19 @@ class AchievementGiver @Inject constructor(
 
     private fun getAchievedLevel(achievement: Achievement): Int {
         val func = achievement.pointsNeededToAdvanceFunction
+        val achievedPoints = getAchievedPoints(achievement)
         var level = 0
         var threshold = 0
         do {
             threshold += func(level)
             level++
             if (achievement.maxLevel != -1 && level > achievement.maxLevel) break
-        } while (isAchieved(threshold, achievement))
+        } while (threshold <= achievedPoints)
         return level - 1
     }
 
-    private fun isAchieved(threshold: Int, achievement: Achievement): Boolean {
-        return threshold <= when (achievement.condition) {
+    private fun getAchievedPoints(achievement: Achievement): Int {
+        return when (achievement.condition) {
             is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(getAchievementQuestTypes(achievement.id))
             is TotalSolvedQuests -> questStatisticsDao.getTotalAmount()
             is DaysActive -> userStore.daysActive
