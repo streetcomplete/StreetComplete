@@ -29,7 +29,7 @@ class AchievementGiver @Inject constructor(
     fun updateQuestTypeAchievements(questType: QuestType<*>) {
         return updateAchievements(allAchievements.filter { achievement ->
             when (achievement.condition) {
-                is SolvedQuestsOfTypes -> questType.questTypeAchievements.any { it.id == achievement.id }
+                is SolvedQuestsOfTypes -> questType.questTypeAchievements.has(achievement.id)
                 is TotalSolvedQuests -> true
                 else -> false
             }
@@ -103,7 +103,9 @@ class AchievementGiver @Inject constructor(
 
     private fun getAchievementQuestTypes(achievementId: String): List<String> {
         return questTypeRegistry
-            .filter { questType -> questType.questTypeAchievements.any { it.id == achievementId } }
+            .filter { it.questTypeAchievements.has(achievementId) }
             .map { it::class.simpleName!! }
     }
 }
+
+private fun List<QuestTypeAchievement>.has(achievementId: String) = any { it.id == achievementId }
