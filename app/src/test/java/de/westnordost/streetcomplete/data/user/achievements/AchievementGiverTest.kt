@@ -193,8 +193,6 @@ class AchievementGiverTest {
         }
 
     private fun initQuestTypeRegistry() {
-        questTypeRegistry = mock()
-
         class ThisQuest : QuestType<Int> {
             override val icon = 0
             override val title = 0
@@ -211,10 +209,6 @@ class AchievementGiverTest {
                 questTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
         }
 
-        val thisQuest = ThisQuest()
-        val otherQuest = OtherQuest()
-        on(questTypeRegistry.iterator()).thenReturn(listOf(thisQuest, otherQuest).listIterator())
-        on(questTypeRegistry.getByName("ThisQuest")).thenReturn(thisQuest)
-        on(questTypeRegistry.getByName("OtherQuest")).thenReturn(otherQuest)
+        questTypeRegistry = QuestTypeRegistry(listOf(ThisQuest(), OtherQuest()))
     }
 }
