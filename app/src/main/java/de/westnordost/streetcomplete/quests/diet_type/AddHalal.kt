@@ -18,7 +18,7 @@ class AddHalal : OsmFilterQuestType<DietAvailability>() {
           or diet:halal != only and diet:halal older today -4 years
         )
     """
-    override val commitMessage = "Add halal status"
+    override val commitMessage = "Add Halal status"
     override val wikiLink = "Key:diet:halal"
     override val icon = R.drawable.ic_quest_halal
     override val isReplaceShopEnabled = true
