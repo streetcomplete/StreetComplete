@@ -374,11 +374,11 @@ open class MapFragment : Fragment(),
     fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())
 
     companion object {
-        const val PREF_ROTATION = "map_rotation"
-        const val PREF_TILT = "map_tilt"
-        const val PREF_ZOOM = "map_zoom"
-        const val PREF_LAT = "map_lat"
-        const val PREF_LON = "map_lon"
+        private const val PREF_ROTATION = "map_rotation"
+        private const val PREF_TILT = "map_tilt"
+        private const val PREF_ZOOM = "map_zoom"
+        private const val PREF_LAT = "map_lat"
+        private const val PREF_LON = "map_lon"
     }
 
 }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.map.tangram
 
 import android.graphics.PointF
 import android.graphics.RectF
+import android.location.Location
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.geometry.Geometry
 import com.mapzen.tangram.geometry.Point
@@ -12,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.distanceTo
 
 fun ElementGeometry.toTangramGeometry(): List<Geometry> = when(this) {
     is ElementPolylinesGeometry -> {
@@ -38,6 +40,8 @@ fun LngLat.toLatLon(): LatLon = LatLon(latitude, longitude)
 
 fun LatLon.toLngLat(): LngLat = LngLat(longitude, latitude)
 
+fun Location.toLngLat(): LngLat = LngLat(longitude, latitude)
+
 fun KtMapController.screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
     val p = PointF()
     val mapView = glViewHolder!!.view
@@ -52,4 +56,15 @@ fun KtMapController.screenAreaContains(g: ElementGeometry, offset: RectF): Boole
             && p.y >= offset.top
             && p.y <= mapView.height - offset.bottom
     }
+}
+
+fun KtMapController.screenBottomToCenterDistance(): Double? {
+    val view = glViewHolder?.view ?: return null
+    val w = view.width
+    val h = view.height
+    if (w == 0 || h == 0) return null
+
+    val center = screenPositionToLatLon(PointF(w/2f, h/2f)) ?: return null
+    val bottom = screenPositionToLatLon(PointF(w/2f, h*1f)) ?: return null
+    return center.distanceTo(bottom)
 }

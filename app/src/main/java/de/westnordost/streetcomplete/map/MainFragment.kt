@@ -97,7 +97,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private val binding by viewBinding(FragmentMainBinding::bind)
 
     private var wasFollowingPosition = true
-    private var wasCompassMode = false
+    private var wasNavigationMode = false
 
     private var locationWhenOpenedQuest: Location? = null
 
@@ -218,7 +218,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onStop() {
         super.onStop()
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
-        wasCompassMode = mapFragment?.isCompassMode ?: false
+        wasNavigationMode = mapFragment?.isNavigationMode ?: false
         visibleQuestsSource.removeListener(this)
         requireContext().unregisterReceiver(locationAvailabilityReceiver)
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(locationRequestFinishedReceiver)
@@ -282,7 +282,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ---------------------------- LocationAwareMapFragment.Listener --------------------------- */
 
-    override fun onLocationDidChange() {
+    override fun onDisplayedLocationDidChange() {
         updateLocationPointerPin()
     }
 
@@ -563,7 +563,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         binding.gpsTrackingButton.state = if (requireContext().hasLocationPermission)
             LocationState.ALLOWED else LocationState.DENIED
         binding.locationPointerPin.visibility = View.GONE
-        mapFragment!!.stopPositionTracking()
+        mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
     }
 
@@ -613,11 +613,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val isFlat = mapFragment.cameraPosition?.tilt?.let { it <= margin } ?: false
 
         if (mapFragment.isFollowingPosition && mapFragment.displayedLocation != null) {
-            setIsCompassMode(!mapFragment.isCompassMode)
+            setIsNavigationMode(!mapFragment.isNavigationMode)
         } else {
             if (isNorthUp) {
                 mapFragment.updateCameraPosition(300) {
-                    tilt = if (isFlat) PI.toFloat() / 5f else 0f
+                    tilt = if (isFlat) PI.toFloat() / 6f else 0f
                 }
             } else {
                 mapFragment.updateCameraPosition(300) {
@@ -628,9 +628,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    private fun setIsCompassMode(compassMode: Boolean) {
+    private fun setIsNavigationMode(compassMode: Boolean) {
         val mapFragment = mapFragment ?: return
-        mapFragment.isCompassMode = compassMode
+        mapFragment.isNavigationMode = compassMode
     }
 
     private fun onClickTrackingButton() {
@@ -650,7 +650,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         binding.gpsTrackingButton.isActivated = follow
         val isPositionKnown = mapFragment.displayedLocation != null
         binding.gpsTrackingButton.visibility = if (isPositionKnown && follow) View.INVISIBLE else View.VISIBLE
-        if (!follow) setIsCompassMode(false)
+        if (!follow) setIsNavigationMode(false)
     }
 
     /* -------------------------------------- Context Menu -------------------------------------- */
@@ -839,9 +839,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapFragment = mapFragment ?: return
 
         wasFollowingPosition = mapFragment.isFollowingPosition
-        wasCompassMode = mapFragment.isCompassMode
+        wasNavigationMode = mapFragment.isNavigationMode
         mapFragment.isFollowingPosition = false
-        mapFragment.isCompassMode = false
+        mapFragment.isNavigationMode = false
     }
 
     private fun resetFreezeMap() {
@@ -856,7 +856,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapFragment = mapFragment ?: return
 
         mapFragment.isFollowingPosition = wasFollowingPosition
-        mapFragment.isCompassMode = wasCompassMode
+        mapFragment.isNavigationMode = wasNavigationMode
         mapFragment.endFocusQuest()
         mapFragment.show3DBuildings = true
         mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
@@ -931,7 +931,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false
-        mapFragment?.isCompassMode = false
+        mapFragment?.isNavigationMode = false
         mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
         setIsFollowingPosition(false)
     }
