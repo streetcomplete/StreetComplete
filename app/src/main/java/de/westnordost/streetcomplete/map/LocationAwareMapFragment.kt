@@ -43,15 +43,21 @@ open class LocationAwareMapFragment : MapFragment() {
     var isFollowingPosition = true
         set(value) {
             field = value
-            centerCurrentPositionIfFollowing()
+            if (field != value && !value) {
+                _isNavigationMode = false
+            }
         }
 
     /** Whether the view should automatically rotate with bearing (like during navigation) */
-    var isNavigationMode: Boolean = false
+    private var _isNavigationMode: Boolean = false
+    var isNavigationMode: Boolean
         set(value) {
-            field = value
-            centerCurrentPositionIfFollowing()
+            if (_isNavigationMode != value && !value) {
+                updateCameraPosition(300) { tilt = 0f }
+            }
+            _isNavigationMode = value
         }
+        get() = _isNavigationMode
 
     /** When the view follows the GPS position, whether the view already zoomed to the location once*/
     private var zoomedYet = false
@@ -152,21 +158,19 @@ open class LocationAwareMapFragment : MapFragment() {
         val displayedPosition = displayedLocation?.toLatLon() ?: return
         var centerPosition = displayedPosition
 
-        updateCameraPosition(1000) {
+        updateCameraPosition(600) {
             if (isNavigationMode) {
                 val bearing = getTrackBearing(tracks.last())
                 if (bearing != null) {
                     rotation = -(bearing * PI / 180.0).toFloat()
-                    // move center position down a bit, so there is more space in front of than
-                    // behind user
+                    /* move center position down a bit, so there is more space in front of than
+                       behind user */
                     val distance = controller?.screenBottomToCenterDistance()
                     if (distance != null) {
-                        centerPosition = centerPosition.translate(distance * 0.5, bearing)
+                        centerPosition = centerPosition.translate(distance * 0.4, bearing)
                     }
                 }
                 tilt = PI.toFloat() / 6f
-            } else {
-                tilt = 0f
             }
 
             position = centerPosition
@@ -178,7 +182,7 @@ open class LocationAwareMapFragment : MapFragment() {
         }
     }
 
-    protected fun centerCurrentPositionIfFollowing() {
+    fun centerCurrentPositionIfFollowing() {
         if (shouldCenterCurrentPosition()) centerCurrentPosition()
     }
 
@@ -205,9 +209,9 @@ open class LocationAwareMapFragment : MapFragment() {
         }
 
         tracks.last().add(location)
-        // delay update by 1 second because the animation to the new location takes 1 second
+        // delay update by 600 ms because the animation to the new location takes that long
         lifecycleScope.launch {
-            delay(1000)
+            delay(600)
             tracksMapComponent?.addToCurrentTrack(location)
         }
     }
