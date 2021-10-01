@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddStileType : OsmElementQuestType<BarrierType> {
 
@@ -36,6 +37,8 @@ class AddStileType : OsmElementQuestType<BarrierType> {
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.ic_quest_cow
     override val isDeleteElementEnabled = true
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title
 

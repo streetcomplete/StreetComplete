@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddBollardType : OsmElementQuestType<BollardType> {
 
@@ -25,6 +26,8 @@ class AddBollardType : OsmElementQuestType<BollardType> {
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.ic_quest_no_cars
     override val isDeleteElementEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bollard_type_title
 

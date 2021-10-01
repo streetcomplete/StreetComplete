@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -41,6 +42,8 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val commitMessage = "Add pitch surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_pitch_surface
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.get("leisure") == "track")

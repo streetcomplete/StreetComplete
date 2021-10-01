@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 interface QuestType<T> {
@@ -22,4 +23,7 @@ interface QuestType<T> {
 
     /** if the quest should only be shown during day-light or night-time hours */
     val dayNightVisibility: DayNightCycle get() = DayNightCycle.DAY_AND_NIGHT
+
+    /** towards which achievements the quest should count */
+    val questTypeAchievements: List<QuestTypeAchievement>
 }
