@@ -1,7 +1,7 @@
 global:
     geometry_color: '#44D14000' # accent color + alpha
-    track_color: '#66536dfe'
-    old_track_color: '#33536dfe'
+    track_color: '#44536dfe'
+    old_track_color: '#22536dfe'
 
 textures:
     pins:
