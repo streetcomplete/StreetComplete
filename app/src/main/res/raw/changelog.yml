@@ -1,3 +1,18 @@
+v36.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this picnic table covered (protected from rain)?</i> (#3311, #3142), by @FloEdelmann</li>
+  <li><i>Does ... offer halal products?</i> (#2990, #3331), by @SMUsamaShah</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
+  </ul>
+  <h3>Other enhancements / maintenance</h3>
+  <ul>
+  <li>(#3327) by @FloEdelmann, (#3208) by @matkoniecz</li>
+  </ul>
+
 v35.0: |
   <h3>App maintenance</h3>
   <ul>
