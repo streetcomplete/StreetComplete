@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
@@ -26,6 +27,8 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title
 

@@ -472,7 +472,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapView = mapFragment.view ?: return
 
         val mapPosition = mapView.getLocationInWindow().toPointF()
-        val notePosition = PointF(screenPosition)
+        val notePosition = screenPosition.toPointF()
         notePosition.offset(-mapPosition.x, -mapPosition.y)
         val position = mapFragment.getPositionAt(notePosition) ?: throw NullPointerException()
 

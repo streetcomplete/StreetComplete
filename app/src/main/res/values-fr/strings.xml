@@ -1371,4 +1371,13 @@ Notez que StreetComplete vous demandera les numéros de rues après avoir indiqu
     <string name="quest_presets_default_name">"Par défaut"</string>
     <string name="quest_presets_selected">"Sélectionné"</string>
     <string name="quest_presets_delete_message">"Supprimer le préréglage « %s » ? Les quêtes sélectionnées et leur ordre sera perdu."</string>
+
+    <!-- Fuzzy -->
+    <string name="notification_syncing">"Synchronisation des données..."</string>
+
+    <!-- Fuzzy -->
+    <string name="notification_channel_sync">"Synchroniser les données"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_board_type_sport">"Sport, Exercices"</string>
 </resources>

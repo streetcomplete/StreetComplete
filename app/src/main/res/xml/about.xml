@@ -64,10 +64,10 @@
             android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
         <Preference
-            android:key="email_feedback"
+            android:key="feedback"
             android:title="@string/about_title_feedback"
-            android:summary="Email osm@westnordost.de"
-            android:widgetLayout="@layout/widget_image_email"
+            android:summary="@string/about_summary_repository"
+            android:widgetLayout="@layout/widget_image_open_in_browser"
             />
 
     </PreferenceCategory>

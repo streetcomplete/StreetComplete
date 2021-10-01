@@ -24,6 +24,6 @@ data class Achievement(
 
 sealed class AchievementCondition
 
-data class SolvedQuestsOfTypes(val questTypes: List<String>) : AchievementCondition()
+object SolvedQuestsOfTypes : AchievementCondition()
 object TotalSolvedQuests : AchievementCondition()
 object DaysActive : AchievementCondition()

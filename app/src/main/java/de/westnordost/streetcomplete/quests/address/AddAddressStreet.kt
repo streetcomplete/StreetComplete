@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
@@ -30,6 +31,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
+
+    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
 

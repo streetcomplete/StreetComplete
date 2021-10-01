@@ -1,4 +1,4 @@
-v35.0-beta1: |
+v35.0: |
   <h3>App maintenance</h3>
   <ul>
   <li>Android 4.x support has been dropped. As a consequence, the app's download size is reduced by 40%! (#2031), thanks @Isira-Seneviratne</li>
@@ -9,6 +9,8 @@ v35.0-beta1: |
   <h3>Quest Enhancements</h3>
   <ul>
   <li>Clearer illustrations for the bridge structure quest (#2867), by @TurnrDev</li>
+  <li>Quests are now shown for arbitrarily long ways too, you can split them up if you only surveyed a part of it (#3280, #3234), by @dbdean</li>
+  <li>Now only known tags are cleared when answering that a place doesn't exist and there is something new now (#3244, #3278), by @mnalis</li>
   <li>Other small enhancements (#3185, #3171)</li>
   </ul>
 

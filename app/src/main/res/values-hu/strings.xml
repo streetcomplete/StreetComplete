@@ -2420,4 +2420,7 @@ megállóban?"</string>
     <string name="quest_presets_default_name">"Alapértelmezett"</string>
     <string name="quest_presets_selected">"Kijelölve"</string>
     <string name="quest_presets_delete_message">"Törlöd ezt az előre beállított értéket: „%s”? A kérdésválasztás és a sorrend visszavonhatatlanul elveszik."</string>
+    <string name="notification_syncing">"Adatok szinkronizálása…"</string>
+    <string name="notification_channel_sync">"Adatok szinkronizálása"</string>
+    <string name="quest_board_type_sport">"Sport, gyakorlatok"</string>
 </resources>

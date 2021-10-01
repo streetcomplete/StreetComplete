@@ -2432,4 +2432,7 @@
     <string name="quest_presets_default_name">"پیشفرض"</string>
     <string name="quest_presets_selected">"انتخابی"</string>
     <string name="quest_presets_delete_message">"\"%s\" پیشفرض حذف شود؟ انتخاب جُستار و سفارش برای آن به طور برگشت ناپذیری از بین می رود."</string>
+    <string name="notification_syncing">"همگام سازی داده ها…"</string>
+    <string name="notification_channel_sync">"همگام سازی داده"</string>
+    <string name="quest_board_type_sport">"ورزش، تمرینات"</string>
 </resources>

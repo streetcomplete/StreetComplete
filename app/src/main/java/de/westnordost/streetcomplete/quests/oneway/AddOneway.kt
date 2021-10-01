@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.quests.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.cycleway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.quests.parking_lanes.*
 
@@ -33,6 +34,8 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 

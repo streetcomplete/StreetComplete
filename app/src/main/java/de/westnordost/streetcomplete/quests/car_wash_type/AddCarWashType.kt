@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.car_wash_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.*
 
@@ -12,6 +13,8 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
     override val commitMessage = "Add car wash type"
     override val wikiLink = "Tag:amenity=car_wash"
     override val icon = R.drawable.ic_quest_car_wash
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_carWashType_title
 

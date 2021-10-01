@@ -4,6 +4,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
@@ -88,6 +89,8 @@ class AddWheelchairAccessBusiness(
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+
+    override val questTypeAchievements = listOf(WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) =
         if (hasFeatureName(tags))

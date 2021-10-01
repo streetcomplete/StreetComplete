@@ -2259,4 +2259,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_presets_default_name">"Padrão"</string>
     <string name="quest_presets_selected">"Selecionado"</string>
     <string name="quest_presets_delete_message">"Apagar a predefinição \"%s\"? A seleção e ordem da missão será totalmente perdida."</string>
+    <string name="notification_syncing">"Sincronizando dados... "</string>
+    <string name="notification_channel_sync">"Sincronizar dados "</string>
+    <string name="quest_board_type_sport">"Esporte, Exercícios"</string>
 </resources>

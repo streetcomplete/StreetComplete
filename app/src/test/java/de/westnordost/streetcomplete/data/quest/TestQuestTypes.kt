@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 open class TestQuestTypeA : OsmElementQuestType<String> {
@@ -17,6 +18,7 @@ open class TestQuestTypeA : OsmElementQuestType<String> {
     override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }
     override val wikiLink: String? = null
     override val icon = 0
+    override val questTypeAchievements = emptyList<QuestTypeAchievement>()
 }
 
 class TestQuestTypeB : TestQuestTypeA()

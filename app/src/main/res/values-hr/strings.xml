@@ -349,7 +349,7 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_toiletAvailability_name_title">"Ima li %s toalet?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_powerPolesMaterial_title">"Od kojeg je materijala ovaj energetski stup?"</string>
+    <string name="quest_powerPolesMaterial_title">"Od kojeg je materijala ovaj energetski ili komunalni stup?"</string>
     <string name="quest_powerPolesMaterial_wood">"Drvo"</string>
     <string name="quest_powerPolesMaterial_metal">"Čelik"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
@@ -1273,4 +1273,7 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Obrisati grupu zadataka \"%s\"? Odabir i redoslijed zadataka za nju će biti nepovratno izgubljen."</string>
+    <string name="notification_syncing">"Sinkroniziram…"</string>
+    <string name="notification_channel_sync">"Sinkronizacija podataka"</string>
+    <string name="quest_board_type_sport">"Sport i vježbanje"</string>
 </resources>

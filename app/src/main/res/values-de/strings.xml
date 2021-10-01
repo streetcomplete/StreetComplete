@@ -346,9 +346,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_parkingType_underground">"Tiefgarage"</string>
     <string name="quest_parkingType_multiStorage">"Parkhaus"</string>
     <string name="quest_toiletAvailability_name_title">"Hat %s eine Toilette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_powerPolesMaterial_title">"Aus welchem Material ist der Strommast?"</string>
+    <string name="quest_powerPolesMaterial_title">"Aus welchem Material ist dieser Telefon- oder Strommast?"</string>
     <string name="quest_powerPolesMaterial_wood">"Holz"</string>
     <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
@@ -417,7 +415,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_internet_access_terminal">"einen Computer mit Internetanschluss"</string>
     <string name="quest_internet_access_no">"keinen Internetanschluss"</string>
     <string name="quest_busStopShelter_tram_name_title">"Gibt es bei der Straßenbahnhaltestelle %s einen Unterstand?"</string>
-    <string name="quest_busStopShelter_tram_title">"Gibt es bei der Straßenbahnhaltestelle einen Unterstand?"</string>
+    <string name="quest_busStopShelter_tram_title">"Gibt es bei dieser Straßenbahnhaltestelle einen Unterstand?"</string>
     <string name="quest_bench_backrest_title">"Hat diese Bank eine Rückenlehne?"</string>
     <string name="quest_bench_answer_picnic_table">"Das ist ein Picknicktisch"</string>
     <string name="quest_religion_for_place_of_worship_title">"Welcher Religion ist dieser Ort gewidmet?"</string>
@@ -1114,4 +1112,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Ausgewählt"</string>
     <string name="quest_presets_delete_message">"Voreinstellung „%s“ löschen? Die eingestellte Auswahl und Reihenfolge der Aufgaben geht dabei unwiderruflich verloren."</string>
+    <string name="notification_syncing">"Synchronisiere Daten…"</string>
+    <string name="notification_channel_sync">"Daten synchronisieren"</string>
+    <string name="quest_board_type_sport">"Sport, Training"</string>
 </resources>

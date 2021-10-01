@@ -2467,4 +2467,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_presets_default_name">"Standaardnaam"</string>
     <string name="quest_presets_selected">"Gekozen"</string>
     <string name="quest_presets_delete_message">"Voorinstelling \"%s\" verwijderen? De vraagkeuze en -volgorde zal voorgoed verloren gaan."</string>
+    <string name="notification_syncing">"Gegevens synchronizeren..."</string>
+    <string name="notification_channel_sync">"Synchronizeer gegevens"</string>
+    <string name="quest_board_type_sport">"Sport, Oefeningen"</string>
 </resources>
