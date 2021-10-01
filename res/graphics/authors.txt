@@ -55,6 +55,7 @@ bridge structure graphics/
 building icons/
     apartments.svg
     barn.svg
+    bridge.svg                  Kai Michael Poppe, License: CC-BY-SA 4.0
     bungalow.svg
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
