@@ -30,22 +30,22 @@ fun getTrackBearing(track: List<Location>): Double? {
  *  close to each other */
 private fun getRelevantBearings(track: List<Location>): List<Float> {
     var current = track.lastOrNull() ?: return emptyList()
-    val last = current
     val result = ArrayList<Float>()
     for(i in track.lastIndex downTo 0) {
         val pos = track[i]
         // ignore if too close to last position
         if (pos.distanceTo(current) < MIN_TRACK_DISTANCE_FOR_BEARING) continue
-        // break when too old
-        if (last.time - pos.time > MAX_TRACK_AGE_FOR_BEARING) break
 
         result.add(pos.bearingTo(current))
 
         current = pos
+
+        // break when found enough
+        if (result.size > MAX_TRACK_POINTS_FOR_BEARING) break
     }
     return result
 }
 
-private const val MIN_TRACK_DISTANCE_FOR_BEARING = 10f // 10 meters
-private const val MAX_TRACK_AGE_FOR_BEARING = 20L * 1000 // 20 seconds
+private const val MIN_TRACK_DISTANCE_FOR_BEARING = 15f // 15 meters
+private const val MAX_TRACK_POINTS_FOR_BEARING = 6
 private const val BEARING_SMOOTHING = 0.5 // (0..1) the lower the value, the less smoothing
