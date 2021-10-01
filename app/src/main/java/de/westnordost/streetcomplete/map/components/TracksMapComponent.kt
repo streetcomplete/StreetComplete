@@ -17,8 +17,8 @@ class TracksMapComponent(ctrl: KtMapController) {
 
        So, the list of points updated ~per second doesn't grow too long.
      */
-    private val activeLayer = ctrl.addDataLayer(LAYER1)
-    private val oldLayer = ctrl.addDataLayer(LAYER2)
+    private val layer1 = ctrl.addDataLayer(LAYER1)
+    private val layer2 = ctrl.addDataLayer(LAYER2)
 
     private var index = 0
     private var tracks: MutableList<MutableList<LngLat>>
@@ -37,7 +37,7 @@ class TracksMapComponent(ctrl: KtMapController) {
         if (track.size - index > 100) {
             putAllTracksInOldLayer()
         } else {
-            activeLayer.setFeatures(listOf(track.subList(index, track.size).toPolyline()))
+            layer1.setFeatures(listOf(track.subList(index, track.size).toPolyline(false)))
         }
     }
 
@@ -55,8 +55,8 @@ class TracksMapComponent(ctrl: KtMapController) {
 
     private fun putAllTracksInOldLayer() {
         index = max(0, tracks.last().lastIndex)
-        activeLayer.clear()
-        oldLayer.setFeatures(tracks.map { it.toPolyline() })
+        layer1.clear()
+        layer2.setFeatures(tracks.map { it.toPolyline(true) })
     }
 
     fun clear() {
@@ -72,4 +72,5 @@ class TracksMapComponent(ctrl: KtMapController) {
     }
 }
 
-private fun List<LngLat>.toPolyline() = Polyline(this, mapOf("type" to "line"))
+private fun List<LngLat>.toPolyline(old: Boolean) =
+    Polyline(this, mapOf("type" to "line", "old" to old.toString()))
