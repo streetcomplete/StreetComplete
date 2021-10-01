@@ -31,6 +31,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
     override val isSplitWayEnabled = true
+    override val isConvertToStepsEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = when {
         tags["area"] == "yes"          -> R.string.quest_streetSurface_square_title
