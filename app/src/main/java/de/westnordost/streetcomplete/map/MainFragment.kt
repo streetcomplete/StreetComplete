@@ -470,6 +470,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point) {
         val mapFragment = mapFragment ?: return
         val mapView = mapFragment.view ?: return
+        if (!mapFragment.isMapInitialized) return
 
         val mapPosition = mapView.getLocationInWindow().toPointF()
         val notePosition = screenPosition.toPointF()

@@ -61,6 +61,9 @@ open class MapFragment : Fragment(),
 
     private var previousCameraPosition: CameraPosition? = null
 
+    var isMapInitialized: Boolean = false
+    private set
+
     var show3DBuildings: Boolean = true
     set(value) {
         if (field == value) return
@@ -112,6 +115,7 @@ open class MapFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isMapInitialized = false
         mapView = binding.map
         mapView.onCreate(savedInstanceState)
 
@@ -194,6 +198,7 @@ open class MapFragment : Fragment(),
 
         onMapReady()
 
+        isMapInitialized = true
         listener?.onMapInitialized()
     }
 
