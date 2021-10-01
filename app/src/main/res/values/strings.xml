@@ -1082,4 +1082,5 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
 </resources>

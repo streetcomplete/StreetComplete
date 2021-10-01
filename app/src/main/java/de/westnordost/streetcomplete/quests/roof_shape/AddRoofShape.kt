@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType<RoofShape> {
 
@@ -20,6 +21,8 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     override val wikiLink = "Key:roof:shape"
     override val icon = R.drawable.ic_quest_roof_shape
     override val defaultDisabledMessage = R.string.default_disabled_msg_roofShape
+
+    override val questTypeAchievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title
 

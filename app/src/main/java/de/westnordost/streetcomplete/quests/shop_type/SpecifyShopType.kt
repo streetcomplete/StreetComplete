@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.deleteCheckDates
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.containsAny
-import java.time.LocalDate
 
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
@@ -28,6 +28,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.ic_quest_check_shop
     override val isReplaceShopEnabled = true
+
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = when {
         hasProperName(tags)  -> R.string.quest_shop_type_title

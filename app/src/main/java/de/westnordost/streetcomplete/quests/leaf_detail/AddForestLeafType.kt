@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
@@ -22,6 +23,8 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val forests = mapData

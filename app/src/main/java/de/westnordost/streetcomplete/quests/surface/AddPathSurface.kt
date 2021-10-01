@@ -5,6 +5,10 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
 class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -31,6 +35,8 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = when {
         tags["area"] == "yes"          -> R.string.quest_streetSurface_square_title

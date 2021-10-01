@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.kerb_height.couldBeAKerb
 import de.westnordost.streetcomplete.quests.kerb_height.findAllKerbNodes
@@ -26,6 +27,8 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_kerb_tactile_paving
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
+
+    override val questTypeAchievements = listOf(BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactile_paving_kerb_title
 
