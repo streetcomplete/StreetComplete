@@ -545,6 +545,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_hut">"Hütte"</string>
     <string name="quest_buildingType_hut_description">"kleine Behausung oder Unterstand"</string>
     <string name="quest_buildingType_roof">"Dach"</string>
+    <string name="quest_buildingType_bridge">Gebäudebrücke</string>
     <string name="quest_buildingType_service">"Betriebsgebäude"</string>
     <string name="quest_buildingType_service_description">"Gebäude für Maschinen wie Pumpen oder Transformatoren"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
