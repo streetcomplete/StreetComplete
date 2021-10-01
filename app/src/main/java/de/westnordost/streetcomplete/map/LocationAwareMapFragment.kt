@@ -167,7 +167,7 @@ open class LocationAwareMapFragment : MapFragment() {
                        behind user */
                     val distance = controller?.screenBottomToCenterDistance()
                     if (distance != null) {
-                        centerPosition = centerPosition.translate(distance * 0.4, bearing)
+                        centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }
                 }
                 tilt = PI.toFloat() / 6f
