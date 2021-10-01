@@ -245,7 +245,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     companion object {
         private const val PREF_FOLLOWING = "map_following"
-        private const val PREF_NAVIGATION_MODE = "map_navigation_mode"
+        private const val PREF_NAVIGATION_MODE = "map_compass_mode"
 
         private const val DISPLAYED_LOCATION = "displayed_location"
         private const val TRACKS = "tracks"
