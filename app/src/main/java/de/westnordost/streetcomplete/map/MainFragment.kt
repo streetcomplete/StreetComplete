@@ -25,6 +25,7 @@ import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
@@ -60,10 +61,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.math.sqrt
+import kotlin.math.*
 import kotlin.random.Random
 
 /** Contains the quests map and the controls for it.
@@ -97,7 +95,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private val binding by viewBinding(FragmentMainBinding::bind)
 
     private var wasFollowingPosition = true
-    private var wasCompassMode = false
+    private var wasNavigationMode = false
 
     private var locationWhenOpenedQuest: Location? = null
 
@@ -218,7 +216,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onStop() {
         super.onStop()
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
-        wasCompassMode = mapFragment?.isCompassMode ?: false
+        wasNavigationMode = mapFragment?.isNavigationMode ?: false
         visibleQuestsSource.removeListener(this)
         requireContext().unregisterReceiver(locationAvailabilityReceiver)
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(locationRequestFinishedReceiver)
@@ -242,15 +240,16 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onMapInitialized() {
         val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
-        val isPositionKnown = mapFragment?.displayedLocation != null
         binding.gpsTrackingButton.isActivated = isFollowingPosition
-        binding.gpsTrackingButton.visibility = if (isFollowingPosition && isPositionKnown) View.INVISIBLE else View.VISIBLE
         updateLocationPointerPin()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
-        binding.compassNeedleView.rotation = (180 * rotation / Math.PI).toFloat()
-        binding.compassNeedleView.rotationX = (180 * tilt / Math.PI).toFloat()
+        binding.compassView.rotation = (180 * rotation / PI).toFloat()
+        binding.compassView.rotationX = (180 * tilt / PI).toFloat()
+
+        val margin = 2 * PI / 180
+        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
 
         updateLocationPointerPin()
 
@@ -282,7 +281,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ---------------------------- LocationAwareMapFragment.Listener --------------------------- */
 
-    override fun onLocationDidChange() {
+    override fun onDisplayedLocationDidChange() {
         updateLocationPointerPin()
     }
 
@@ -550,7 +549,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
-        binding.gpsTrackingButton.visibility = View.VISIBLE
         binding.gpsTrackingButton.state = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
 
@@ -559,17 +557,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onLocationIsDisabled() {
-        binding.gpsTrackingButton.visibility = View.VISIBLE
         binding.gpsTrackingButton.state = if (requireContext().hasLocationPermission)
             LocationState.ALLOWED else LocationState.DENIED
         binding.locationPointerPin.visibility = View.GONE
-        mapFragment!!.stopPositionTracking()
+        mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
     }
 
     private fun onLocationRequestFinished(state: LocationState) {
         if (activity == null) return
-        binding.gpsTrackingButton.visibility = View.VISIBLE
         binding.gpsTrackingButton.state = state
         if (state.isEnabled) {
             updateLocationAvailability()
@@ -577,8 +573,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onLocationChanged(location: Location) {
-        val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
-        binding.gpsTrackingButton.visibility = if (isFollowingPosition) View.INVISIBLE else View.VISIBLE
         binding.gpsTrackingButton.state = LocationState.UPDATING
         updateLocationPointerPin()
     }
@@ -600,57 +594,53 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onClickCompassButton() {
+        /* Clicking the compass button will always rotate the map back to north and remove tilt */
         val mapFragment = mapFragment ?: return
-        // Allow a small margin of error around north/flat. This both matches
-        // UX expectations ("it looks straight..") and works around a bug where
-        // the rotation/tilt are not set to perfectly 0 during animation
-        val margin = 0.025f // About 4%
-        // 2PI radians = full circle of rotation = also north
-        val isNorthUp = mapFragment.cameraPosition?.rotation?.let {
-            it <= margin || 2f*PI.toFloat()-it <= margin
-        } ?: false
-        // Camera cannot rotate upside down => full circle check not needed
-        val isFlat = mapFragment.cameraPosition?.tilt?.let { it <= margin } ?: false
+        val camera = mapFragment.cameraPosition ?: return
 
-        if (mapFragment.isFollowingPosition && mapFragment.displayedLocation != null) {
-            setIsCompassMode(!mapFragment.isCompassMode)
+        // if the user wants to rotate back north, it means he also doesn't want to use nav mode anymore
+        if (mapFragment.isNavigationMode) {
+            mapFragment.updateCameraPosition(300) { rotation = 0f }
+            setIsNavigationMode(false)
         } else {
-            if (isNorthUp) {
-                mapFragment.updateCameraPosition(300) {
-                    tilt = if (isFlat) PI.toFloat() / 5f else 0f
-                }
-            } else {
-                mapFragment.updateCameraPosition(300) {
-                    rotation = 0f
-                    tilt = 0f
-                }
+            mapFragment.updateCameraPosition(300) {
+                rotation = 0f
+                tilt = 0f
             }
         }
     }
 
-    private fun setIsCompassMode(compassMode: Boolean) {
-        val mapFragment = mapFragment ?: return
-        mapFragment.isCompassMode = compassMode
-    }
-
     private fun onClickTrackingButton() {
         val mapFragment = mapFragment ?: return
-        if (binding.gpsTrackingButton.state.isEnabled) {
-            setIsFollowingPosition(!mapFragment.isFollowingPosition)
-        } else {
-            val tag = LocationRequestFragment::class.java.simpleName
-            val locationRequestFragment = activity?.supportFragmentManager?.findFragmentByTag(tag) as LocationRequestFragment?
-            locationRequestFragment?.startRequest()
+
+        when {
+            !binding.gpsTrackingButton.state.isEnabled -> {
+                val tag = LocationRequestFragment::class.java.simpleName
+                val locationRequestFragment = activity?.supportFragmentManager?.findFragmentByTag(tag) as LocationRequestFragment?
+                locationRequestFragment?.startRequest()
+            }
+            !mapFragment.isFollowingPosition -> {
+                setIsFollowingPosition(true)
+            }
+            else -> {
+                setIsNavigationMode(!mapFragment.isNavigationMode)
+            }
         }
+    }
+
+    private fun setIsNavigationMode(navigation: Boolean) {
+        val mapFragment = mapFragment ?: return
+        mapFragment.isNavigationMode = navigation
+        binding.gpsTrackingButton.isNavigation = navigation
+        // always re-center position because navigation mode shifts the center position
+        mapFragment.centerCurrentPositionIfFollowing()
     }
 
     private fun setIsFollowingPosition(follow: Boolean) {
         val mapFragment = mapFragment ?: return
         mapFragment.isFollowingPosition = follow
         binding.gpsTrackingButton.isActivated = follow
-        val isPositionKnown = mapFragment.displayedLocation != null
-        binding.gpsTrackingButton.visibility = if (isPositionKnown && follow) View.INVISIBLE else View.VISIBLE
-        if (!follow) setIsCompassMode(false)
+        if (follow) mapFragment.centerCurrentPositionIfFollowing()
     }
 
     /* -------------------------------------- Context Menu -------------------------------------- */
@@ -742,7 +732,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onClickLocationPointer() {
-        mapFragment?.centerCurrentPosition()
+        setIsFollowingPosition(true)
     }
 
     //endregion
@@ -839,9 +829,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapFragment = mapFragment ?: return
 
         wasFollowingPosition = mapFragment.isFollowingPosition
-        wasCompassMode = mapFragment.isCompassMode
+        wasNavigationMode = mapFragment.isNavigationMode
         mapFragment.isFollowingPosition = false
-        mapFragment.isCompassMode = false
+        mapFragment.isNavigationMode = false
     }
 
     private fun resetFreezeMap() {
@@ -856,7 +846,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val mapFragment = mapFragment ?: return
 
         mapFragment.isFollowingPosition = wasFollowingPosition
-        mapFragment.isCompassMode = wasCompassMode
+        mapFragment.isNavigationMode = wasNavigationMode
         mapFragment.endFocusQuest()
         mapFragment.show3DBuildings = true
         mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
@@ -931,7 +921,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false
-        mapFragment?.isCompassMode = false
+        mapFragment?.isNavigationMode = false
         mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
         setIsFollowingPosition(false)
     }

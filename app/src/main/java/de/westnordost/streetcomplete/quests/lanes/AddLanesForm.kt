@@ -201,7 +201,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
         streetSideRotater = StreetSideRotater(
             streetLanesPuzzleBinding.puzzleViewRotateContainer,
-            streetLanesPuzzleBinding.littleCompass.compassNeedleView,
+            streetLanesPuzzleBinding.littleCompass.root,
             elementGeometry as ElementPolylinesGeometry
         )
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)

@@ -118,11 +118,11 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
         val pos = location?.toLatLon() ?: return
 
         accuracyMarker.isVisible = true
-        accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
+        accuracyMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         locationMarker.isVisible = true
-        locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
+        locationMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         directionMarker.isVisible = rotation != null
-        directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
+        directionMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
 
         updateAccuracy()
     }

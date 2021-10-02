@@ -1,5 +1,7 @@
 global:
     geometry_color: '#44D14000' # accent color + alpha
+    track_color: '#44536dfe'
+    old_track_color: '#22536dfe'
 
 textures:
     pins:
@@ -39,6 +41,9 @@ styles:
         blend: overlay
     geometry-points:
         base: points
+        blend: overlay
+    track-lines:
+        base: lines
         blend: overlay
 
 layers:
@@ -113,4 +118,46 @@ layers:
                     color: global.geometry_color
                     size: 32px
                     collide: false
+                    order: 1000
+    # streetcomplete_track and streetcomplete_track2 layers are exactly the same except the source.
+    #  It is not possible in tangram to define a layer for several sources.
+    streetcomplete_track:
+        data: { source: streetcomplete_track }
+        current:
+            filter: { old: [false] }
+            draw:
+                track-lines:
+                    color: global.track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
+        old:
+            filter: { old: [true] }
+            draw:
+                track-lines:
+                    color: global.old_track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
+    streetcomplete_track2:
+        data: { source: streetcomplete_track2 }
+        current:
+            filter: { old: [false] }
+            draw:
+                track-lines:
+                    color: global.track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
+        old:
+            filter: { old: [true] }
+            draw:
+                track-lines:
+                    color: global.old_track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
                     order: 1000
