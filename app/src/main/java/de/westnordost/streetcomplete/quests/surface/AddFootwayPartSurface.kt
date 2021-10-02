@@ -48,6 +48,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
                 changes.updateWithCheckDate("footway:surface", answer.value.osmValue)
                 changes.addOrModify("footway:surface:note", answer.note)
             }
+            IsActuallyStepsSurfaceAnswer -> throw IllegalStateException()
         }
         changes.deleteIfExists("source:footway:surface")
     }

@@ -382,16 +382,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    override fun onConvertToSteps(osmQuestKey: OsmQuestKey) {
-        lifecycleScope.launch {
-            solveQuest(osmQuestKey) { quest ->
-                if (questController.convertWayToSteps(quest as OsmQuest, "survey")) {
-                    onQuestSolved(quest, "survey")
-                }
-            }
-        }
-    }
-
     override fun onSkippedQuest(questKey: QuestKey) {
         lifecycleScope.launch {
             closeBottomSheet()

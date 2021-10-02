@@ -48,6 +48,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
                 changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
                 changes.addOrModify("cycleway:surface:note", answer.note)
             }
+            IsActuallyStepsSurfaceAnswer -> throw IllegalStateException()
         }
         changes.deleteIfExists("source:cycleway:surface")
     }

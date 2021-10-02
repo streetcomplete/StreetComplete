@@ -29,9 +29,6 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the user should be able to split the way instead */
     val isSplitWayEnabled: Boolean get() = false
 
-    /** returns whether the user should be able to convert the way into steps instead */
-    val isConvertToStepsEnabled: Boolean get() = false
-
     /** returns whether the user should be able to delete this element instead. Only elements that
      *  are not expected...
      *  - to be part of a relation

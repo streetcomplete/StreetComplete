@@ -91,30 +91,6 @@ import kotlin.collections.ArrayList
         return@withContext true
     }
 
-    /** Convert a way to steps for the given OSM Quest.
-     * @return true if successful
-     */
-    suspend fun convertWayToSteps(
-        quest: OsmQuest,
-        source: String
-    ): Boolean = withContext(Dispatchers.IO) {
-        val way = getOsmElement(quest) as? Way ?: return@withContext false
-
-        val changes = StringMapChanges(listOf(
-            StringMapEntryModify("highway", way.tags["highway"]!!, "steps")
-        ))
-        Log.d(TAG, "Convert way #${quest.elementId} in frame of quest ${quest.type::class.simpleName!!} to steps")
-
-        elementEditsController.add(
-            quest.osmElementQuestType,
-            way,
-            quest.geometry,
-            source,
-            UpdateElementTagsAction(changes)
-        )
-        return@withContext true
-    }
-
     /** Delete the element referred to by the given OSM quest id.
      * @return true if successful
      */

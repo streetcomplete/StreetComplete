@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.quests.way_lit.WayLit.IS_ACTUALLY_STEPS
 
 class AddWayLit : OsmFilterQuestType<WayLit>() {
 
@@ -46,7 +47,6 @@ class AddWayLit : OsmFilterQuestType<WayLit>() {
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
     override val isSplitWayEnabled = true
-    override val isConvertToStepsEnabled = true
     override val dayNightVisibility = ONLY_NIGHT
 
     override val questTypeAchievements = listOf(PEDESTRIAN)
@@ -66,7 +66,8 @@ class AddWayLit : OsmFilterQuestType<WayLit>() {
     override fun createForm() = WayLitForm()
 
     override fun applyAnswerTo(answer: WayLit, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("lit", answer.osmValue)
+        if (answer == IS_ACTUALLY_STEPS) changes.modify("highway", "steps")
+        else changes.updateWithCheckDate("lit", answer.osmValue)
     }
 
     companion object {

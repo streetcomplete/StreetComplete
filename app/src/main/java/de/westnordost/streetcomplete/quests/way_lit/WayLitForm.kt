@@ -12,8 +12,9 @@ class WayLitForm : AbstractQuestAnswerFragment<WayLit>() {
         AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) }
     )
 
-    override val otherAnswers = listOf(
+    override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_way_lit_24_7) { applyAnswer(NIGHT_AND_DAY) },
-        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(AUTOMATIC) }
+        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(AUTOMATIC) },
+        createConvertToStepsAnswer(IS_ACTUALLY_STEPS),
     )
 }

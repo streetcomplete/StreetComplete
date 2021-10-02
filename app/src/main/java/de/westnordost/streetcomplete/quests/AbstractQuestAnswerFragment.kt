@@ -112,7 +112,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
-         * the dialog with which the quest was answered  */
+         * the dialog with which the quest was answered */
         fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
         /** Called when the user chose to leave a note instead */
@@ -120,9 +120,6 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         /** Called when the user chose to split the way */
         fun onSplitWay(osmQuestKey: OsmQuestKey)
-
-        /** Called when the user chose to convert the way to steps */
-        fun onConvertToSteps(osmQuestKey: OsmQuestKey)
 
         /** Called when the user chose to skip the quest */
         fun onSkippedQuest(questKey: QuestKey)
@@ -198,7 +195,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         answers.add(cantSay)
 
         createSplitWayAnswer()?.let { answers.add(it) }
-        createConvertToStepsAnswer()?.let { answers.add(it) }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
 
         answers.addAll(otherAnswers)
@@ -226,10 +222,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         }
     }
 
-    private fun createConvertToStepsAnswer(): AnswerItem? {
-        val isConvertToStepsEnabled = (questType as? OsmElementQuestType)?.isConvertToStepsEnabled == true
-        if (!isConvertToStepsEnabled) return null
-
+    protected fun createConvertToStepsAnswer(answer: T): AnswerItem? {
         val way = osmElement as? Way ?: return null
 
         if (way.isArea()) return null
@@ -237,7 +230,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         if (!way.tags.containsKey("highway") || way.tags["highway"] == "steps") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            onClickConvertToStepsAnswer()
+            applyAnswer(answer)
         }
     }
 
@@ -341,10 +334,6 @@ abstract class AbstractQuestAnswerFragment<T> :
             }
             .show()
         }
-    }
-
-    private fun onClickConvertToStepsAnswer() {
-        listener?.onConvertToSteps(questKey as OsmQuestKey)
     }
 
     protected fun applyAnswer(data: T) {

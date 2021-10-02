@@ -9,6 +9,10 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>
     override val items: List<Item<Surface>>
         get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_SURFACES).toItems()
 
+    override val otherAnswers get() = listOfNotNull(
+        createConvertToStepsAnswer(IsActuallyStepsSurfaceAnswer),
+    )
+
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {

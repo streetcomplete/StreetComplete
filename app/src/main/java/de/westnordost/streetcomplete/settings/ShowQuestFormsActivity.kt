@@ -153,9 +153,6 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     override fun onSplitWay(osmQuestKey: OsmQuestKey) {
         popQuestForm("Splitting way")
     }
-    override fun onConvertToSteps(osmQuestKey: OsmQuestKey) {
-        popQuestForm("Converting way to steps")
-    }
     override fun onSkippedQuest(questKey: QuestKey) {
         popQuestForm("Skipping quest")
     }

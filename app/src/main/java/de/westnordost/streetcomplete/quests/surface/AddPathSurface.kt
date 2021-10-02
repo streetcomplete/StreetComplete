@@ -35,7 +35,6 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
     override val isSplitWayEnabled = true
-    override val isConvertToStepsEnabled = true
 
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
@@ -58,6 +57,9 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
             is GenericSurfaceAnswer -> {
                 changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.addOrModify("surface:note", answer.note)
+            }
+            is IsActuallyStepsSurfaceAnswer -> {
+                changes.modify("highway", "steps")
             }
         }
         changes.deleteIfExists("source:surface")

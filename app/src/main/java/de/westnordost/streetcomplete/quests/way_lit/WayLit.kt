@@ -5,4 +5,5 @@ enum class WayLit(val osmValue: String) {
     AUTOMATIC("automatic"),
     YES("yes"),
     NO("no"),
+    IS_ACTUALLY_STEPS(""),
 }
