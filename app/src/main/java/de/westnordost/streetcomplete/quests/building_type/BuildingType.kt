@@ -57,6 +57,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     SHED          ("building", "shed"),
     ALLOTMENT_HOUSE("building", "allotment_house"),
     ROOF          ("building", "roof"),
+    BRIDGE        ("building", "bridge"),
     TOILETS       ("building", "toilets"),
     SERVICE       ("building", "service"),
     HANGAR        ("building", "hangar"),
@@ -89,7 +90,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         STATIC_CARAVAN, DORMITORY
     )),
     COMMERCIAL(BuildingType.COMMERCIAL, listOf(
-        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
+        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK, BRIDGE
     )),
     CIVIC(BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
@@ -105,7 +106,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED, ALLOTMENT_HOUSE
     )),
     OTHER(null, listOf(
-        SHED, ROOF, ALLOTMENT_HOUSE, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, BOATHOUSE,
+        SHED, ROOF, BRIDGE, ALLOTMENT_HOUSE, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, BOATHOUSE,
         ABANDONED, RUINS
     )),
 }

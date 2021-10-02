@@ -59,7 +59,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
         streetSideRotater = StreetSideRotater(
             binding.puzzleView,
-            binding.littleCompass.compassNeedleView,
+            binding.littleCompass.root,
             elementGeometry as ElementPolylinesGeometry
         )
     }

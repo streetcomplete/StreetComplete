@@ -1,3 +1,29 @@
+v36.0-beta1: |
+  <h3>Easier orientation</h3>
+  <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
+  <p>The location button (lower right corner) also has a new behavior:</p>
+  <ul>
+  <li>🛰️ Tap it once to let the view follow your position on the map (icon turns orange)</li>
+  <li>🚴 Tap it again to let the view rotate with the direction you are going (icon turns into an
+      arrow). Very helpful for cyclists! (#1040, #2191, #3335)</li>
+  </ul>
+  <p>Furthermore, the only thing the compass button now does is to rotate the view back to north-up
+     and it is only displayed if the map is not displayed north-up.
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is this picnic table covered (protected from rain)?</i> (#3311, #3142), by @FloEdelmann</li>
+  <li><i>Does ... offer halal products?</i> (#2990, #3331), by @SMUsamaShah</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
+  </ul>
+  <h3>Other enhancements / maintenance</h3>
+  <ul>
+  <li>(#3327) by @FloEdelmann, (#3208) by @matkoniecz</li>
+  </ul>
+
 v35.0: |
   <h3>App maintenance</h3>
   <ul>

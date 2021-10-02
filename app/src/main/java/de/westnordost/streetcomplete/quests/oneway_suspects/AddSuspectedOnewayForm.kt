@@ -56,7 +56,7 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
 
         streetSideRotater = StreetSideRotater(
             binding.puzzleView,
-            binding.littleCompass.compassNeedleView,
+            binding.littleCompass.root,
             elementGeometry as ElementPolylinesGeometry
         )
     }
