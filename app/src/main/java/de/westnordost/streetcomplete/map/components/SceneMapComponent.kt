@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.map.components
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.mapzen.tangram.SceneUpdate
+import de.westnordost.streetcomplete.ktx.isApril1st
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import kotlinx.coroutines.sync.Mutex
@@ -70,7 +71,8 @@ class SceneMapComponent (
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val scene = when {
+        val april1 = if (isApril1st()) "wonky-" else ""
+        val scene = april1 + when {
             isAerialView -> "scene-satellite.yaml"
             isNightMode -> "scene-dark.yaml"
             else -> "scene-light.yaml"
