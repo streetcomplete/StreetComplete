@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom">
+
+    <EditText
+        android:id="@+id/diameterInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_hydrant_diameter"
+        android:inputType="number"
+        android:maxLines="1"
+        android:minEms="3"
+        android:padding="20dp"
+        android:textColor="@color/traffic_black"
+        android:textSize="56dp" />
+
+</RelativeLayout>
