@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom">
@@ -12,7 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/ic_hydrant_diameter"
+        android:gravity="center_horizontal"
         android:inputType="number"
+        android:maxLength="3"
         android:maxLines="1"
         android:minEms="3"
         android:padding="20dp"
