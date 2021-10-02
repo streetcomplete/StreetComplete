@@ -40,8 +40,7 @@ fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (thi
     INTERMEDIATE -> when (surface) {
         "paving_stones" -> R.string.quest_smoothness_description_intermediate_paving_stones
         "sett" -> R.string.quest_smoothness_description_intermediate_sett
-        "compacted" -> R.string.quest_smoothness_description_intermediate_compacted
-        "gravel" -> R.string.quest_smoothness_description_intermediate_gravel
+        "compacted", "gravel" -> R.string.quest_smoothness_description_intermediate_compacted_gravel
         "asphalt" -> when (highway) {
             in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_intermediate_path
             else -> R.string.quest_smoothness_description_intermediate_road
