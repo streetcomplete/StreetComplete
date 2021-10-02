@@ -12,7 +12,7 @@
     <string name="tutorial_welcome_to_osm_subtitle">the free wiki world map</string>
     <string name="tutorial_intro">StreetComplete makes it easy to contribute to OpenStreetMap.\nIt automatically looks for missing details in your vicinity: bicycle lanes, house numbers, opening hours and much more…</string>
     <string name="tutorial_solving_quests">Once found, the missing details will appear on your map as quests.\n\nYou can start solving them right away and later login to publish your answers.</string>
-    <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply \"Can’t Say\" and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don’t enter private property.</string>
+    <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply “Can’t Say” and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don’t enter private property.</string>
     <string name="tutorial_happy_mapping">Happy Mapping!</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
@@ -715,7 +715,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
     <string name="quest_maxheight_below_bridge_title">What is the height limit below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
-    <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering \"%s\".</string>
+    <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering “%s”.</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
     <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don’t fit"</string>
@@ -753,7 +753,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s:</string>
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <!-- as in: “Where is the metro station?” - “It is underground” -->
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
@@ -763,7 +763,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer “sidewalk”.</string>
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
@@ -961,7 +961,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_veg_title">Kind to Animals</string>
     <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
-    <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
+    <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the “street” in OpenStreetMap!</string>
     <string name="achievement_rare_title">Treasure Hunt</string>
     <string name="achievement_rare_solved_X">You found and solved %d quests that are completed really rarely, congratulations!</string>
     <string name="achievement_citizen_title">Citizen</string>
@@ -986,8 +986,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
     <string name="quest_surface_detailed_answer_impossible">Multiple surfaces…</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the \"Differs along the way\" answer option that allows you to cut the way where the surface changes. Please use \"Can’t say\" if there is a single surface but it is not available as an answer.</string>
-    <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example \"sandy with patches of cobblestone\". The text length is limited to 255 characters.</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer.</string>
+    <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters.</string>
     <string name="at_housename">house name %s:</string>
     <string name="at_conscription_and_street_number">conscription number %1$s, orientation number %2$s:</string>
     <string name="at_conscription_number">conscription number %s:</string>
@@ -1082,6 +1082,6 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_preset_name">Preset name</string>
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
-    <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
 </resources>
