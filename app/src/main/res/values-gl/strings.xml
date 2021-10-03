@@ -93,6 +93,8 @@
     <string name="quest_roofShape_answer_many">"Ten varias formas diferentes"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Achegar"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Vaites, por fin alguén que se preocupa pola privacidade! Semella que daquí en adiante van ser todo boas novas:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribución directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -324,7 +326,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="cannot_find_bbox_or_reduce_tilt">"Non se puido buscar aquí. Achega o mapa un chisco máis ou non o inclines tanto."</string>
     <string name="quest_crossing_type_title">"Que tipo de cruzamento é?"</string>
     <string name="quest_crossing_type_unmarked">"Cruzamento sen sinalizar"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Desfacer"</string>
     <string name="produce_mangosteen">"Mangostán"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -643,7 +644,6 @@ Queres dividila agora?"</string>
     <string name="quest_maxweight_answer_other_sign">"O sinal semella diferente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Gustaríache deixar unha nota? Unha nota cunha foto permitirá que outros cartógrafos se ocupen disto."</string>
     <string name="quest_generalFee_title">"Hai que pagar por entrar en %s?"</string>
-    <string name="quest_laundrySelfService_title">"Esta lavandaría é de autoservizo?"</string>
     <string name="quest_handrail_title">"Estas escaleiras teñen pasamáns?"</string>
     <string name="quest_openingHours_no_name_title">"Cales son os horarios de apertura deste lugar? (%s)"</string>
     <string name="about_summary_current_version">"Versión actual: %s"</string>

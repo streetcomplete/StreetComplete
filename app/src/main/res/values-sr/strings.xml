@@ -89,6 +89,8 @@
     <string name="quest_roofShape_answer_many">"Неколико различитих облика"</string>
     <string name="map_btn_zoom_out">"Умањи"</string>
     <string name="map_btn_zoom_in">"Увеличај"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Напокон неко ко брине о приватности! Мислим да имамо само добре вести за вас:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Директан допринос&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -316,7 +318,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Не могу тражити овде. Покушајте још увеличати или мање нагните карту."</string>
     <string name="quest_crossing_type_title">"Какав је ово прелаз?"</string>
     <string name="quest_crossing_type_unmarked">"Прелаз без икаквих ознака"</string>
-    <string name="compass_north_one_letter">"С"</string>
     <string name="action_undo">"Поништи"</string>
     <string name="produce_mangosteen">"Мангостан"</string>
     <string name="produce_tomatoes">"Парадајз"</string>
@@ -628,7 +629,6 @@
     <string name="quest_maxweight_answer_other_sign">"Знак изгледа другачије…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Желите ли да оставите напомену? Напомена са фотографијом ће омогућити другима да се побрину за њу."</string>
     <string name="quest_generalFee_title">"Да ли се наплаћује улаз у %s?"</string>
-    <string name="quest_laundrySelfService_title">"Да ли је ово самоуслужна перионица веша?"</string>
     <string name="quest_handrail_title">"Да ли ове степенице имају рукохват?"</string>
     <string name="quest_openingHours_no_name_title">"Које је радно време овог места? (%s)"</string>
     <string name="about_summary_current_version">"Тренутна верзија: %s"</string>

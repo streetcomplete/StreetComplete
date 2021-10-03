@@ -817,7 +817,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Overgang uden markering på vejen"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Fortryd"</string>
@@ -1709,9 +1708,6 @@ Del vejen nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Koster det entré for at komme ind her hos %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Er dette vaskeri et møntvaskeri?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Har denne trappe et gelænder?"</string>

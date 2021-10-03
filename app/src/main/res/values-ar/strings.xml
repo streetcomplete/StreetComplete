@@ -90,6 +90,8 @@
     <string name="quest_roofShape_answer_many">"لديه العديد من الأشكال المختلفة"</string>
     <string name="map_btn_zoom_out">"تصغير"</string>
     <string name="map_btn_zoom_in">"تكبير"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;أها، شخص ما مهتم بالخصوصية، رائع! أعتقد أن لدي أخبارًا جيدة بالنسبة لك:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;المساهمة المباشرة&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -333,7 +335,6 @@
 
     <!-- علامات الوقوف و التوقف - اشارات السّير -->
     <string name="quest_crossing_type_unmarked">"معبر بدون علامات أو إشارات مرورية"</string>
-    <string name="compass_north_one_letter">"ش"</string>
     <string name="action_undo">"تراجع"</string>
     <string name="produce_mangosteen">"جوز جندم/مانغوستين"</string>
     <string name="produce_tomatoes">"طماطم - بندورة"</string>
@@ -346,8 +347,6 @@
     <string name="quest_parkingType_underground">"موقف تحت الارض - مرآب تحت الأرض"</string>
     <string name="quest_parkingType_multiStorage">"مرآب للسيارات - موقف للسيارات"</string>
     <string name="quest_toiletAvailability_name_title">"هل لدى %s مرحاض؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"ما هي مادة عمود الطاقة/الكهرباء هذا؟"</string>
     <string name="quest_powerPolesMaterial_wood">"خشب"</string>
     <string name="quest_powerPolesMaterial_metal">"فولاذ"</string>
@@ -658,7 +657,6 @@
     <string name="quest_maxweight_answer_other_sign">"اللافتة تبدو مختلفة ..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"هل تود ترك ملاحظة؟ ستسمح ملاحظة مع صورة لرسامي الخرائط الآخرين بالعناية بها."</string>
     <string name="quest_generalFee_title">"هل يجب عليك الدفع للدخول إلى %s؟"</string>
-    <string name="quest_laundrySelfService_title">"هل مغسلة الملابس هذه تعمل بنظام الخدمة الذاتية (اخدم نفسك نفسك)؟"</string>
     <string name="quest_handrail_title">"هل هذه السلالم لها درابزين؟"</string>
     <string name="quest_openingHours_no_name_title">"ما هي ساعات عمل هذا المكان؟ (%s)"</string>
     <string name="about_summary_current_version">"الإصدار الحالي: %s"</string>
@@ -1107,4 +1105,7 @@
     <string name="quest_presets_default_name">"الافتراضي"</string>
     <string name="quest_presets_selected">"محدد"</string>
     <string name="quest_presets_delete_message">"هل تريد حذف القالب \"%s\" ؟  اختيار المهمة وترتيبها سيضيعان بشكل نهائي."</string>
+    <string name="notification_syncing">"جار مزامنة البيانات"</string>
+    <string name="notification_channel_sync">"قُم بمزامنة البيانات"</string>
+    <string name="quest_board_type_sport">"رياضة، تمارين"</string>
 </resources>

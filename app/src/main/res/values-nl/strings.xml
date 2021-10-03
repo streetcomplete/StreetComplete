@@ -817,7 +817,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Kruispunt zonder wegmarkeringen"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Ongedaan maken"</string>
@@ -1707,9 +1706,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Kost het geld om %s binnen te gaan?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Is deze wasserij een zelfbediening?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Heeft deze trap een leuning?"</string>

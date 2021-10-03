@@ -333,7 +333,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Не можу знайти квести. Спробуйте наблизити або зменшити нахил мапи."</string>
     <string name="quest_crossing_type_title">"Якого типу цей перехід?"</string>
     <string name="quest_crossing_type_unmarked">"Перехід без дорожньої розмітки"</string>
-    <string name="compass_north_one_letter">"П"</string>
     <string name="action_undo">"Скасувати"</string>
     <string name="produce_mangosteen">"Мангостан"</string>
     <string name="produce_tomatoes">"Томати"</string>
@@ -663,7 +662,6 @@
     <string name="quest_maxweight_answer_other_sign">"Знак виглядє дещо інакше..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Бажаєте залишити нотатку? Нотатка з фото дозволить іншим маперам розібратись із цим."</string>
     <string name="quest_generalFee_title">"Чи потрібно заплатити за вхід до %s?"</string>
-    <string name="quest_laundrySelfService_title">"Це пральня - пральня самообслуговування?"</string>
     <string name="quest_handrail_title">"Чи мають ці сходи поручні?"</string>
     <string name="quest_openingHours_no_name_title">"Які години роботи цього місця? (%s)"</string>
     <string name="about_summary_current_version">"Поточна версія: %s"</string>

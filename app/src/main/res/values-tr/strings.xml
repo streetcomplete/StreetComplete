@@ -641,7 +641,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Yol işaretleri olmayan geçiş"</string>
-    <string name="compass_north_one_letter">"K"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Geri al"</string>
@@ -1399,9 +1398,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"%s giriş ücretli mi?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Bu çamaşırhane self servis mi?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Bu basamaklarda parmaklık var mı?"</string>

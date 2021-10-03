@@ -839,7 +839,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
-    <string name="compass_north_one_letter">"I"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desegin"</string>
@@ -1731,9 +1730,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"%s(e)n sartzeko ordaindu beharra al dago?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Garbileku honetan norberak erabiltzen ditu garbigailuak?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Eskailera hauek heldulekua daukate?"</string>

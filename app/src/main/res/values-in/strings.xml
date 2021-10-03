@@ -496,7 +496,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
-    <string name="compass_north_one_letter">"U"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Urungkan"</string>
@@ -847,7 +846,6 @@ Pisah sekarang?"</string>
     <string name="quest_maxweight_answer_other_sign">"Tanda terlihat beda..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Apa kamu ingin meninggalkan catatan? Catatan dengan foto akan memudahkan pemeta lain mengurusnya."</string>
     <string name="quest_generalFee_title">"Apa masuk %s harus bayar?"</string>
-    <string name="quest_laundrySelfService_title">"Apa penatu ini swalayan?"</string>
     <string name="quest_handrail_title">"Apa tangga ini punya susur tangan?"</string>
     <string name="quest_openingHours_no_name_title">"Apa jam buka tempat ini? (%s)"</string>
     <string name="about_summary_current_version">"Versi sekarang: %s"</string>

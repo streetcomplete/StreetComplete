@@ -458,7 +458,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
     <string name="quest_crossing_type_title">"Какого типа этот пешеходный переход?"</string>
     <string name="quest_crossing_type_unmarked">"Переход без дорожной разметки"</string>
-    <string name="compass_north_one_letter">"С"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Отменить"</string>
@@ -1032,9 +1031,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Нужно ли платить за вход в %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Это прачечная самообслуживания?"</string>
     <string name="quest_handrail_title">"Есть ли у этой лестницы поручень?"</string>
 
     <!-- Fuzzy -->

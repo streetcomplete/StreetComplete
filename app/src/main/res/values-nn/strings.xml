@@ -95,6 +95,8 @@
     <string name="quest_roofShape_answer_many">"Det har fleire ulike former"</string>
     <string name="map_btn_zoom_out">"Zoom ut"</string>
     <string name="map_btn_zoom_in">"Zoom inn"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -315,7 +317,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
     <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
     <string name="quest_crossing_type_unmarked">"Overgang utan vegmarkering"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Angra"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomatar"</string>
@@ -636,7 +637,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_maxweight_answer_other_sign">"Skilet ser annleis ut …"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du leggja att ein merknad? Ein merknad med foto gjer at andre kart­leggjarar kan løysa problemet."</string>
     <string name="quest_generalFee_title">"Kostar det noko å komma inn på %s?"</string>
-    <string name="quest_laundrySelfService_title">"Er dette vaskeriet sjølvbetent?"</string>
     <string name="quest_handrail_title">"Har denne trappa rekkverk?"</string>
     <string name="quest_openingHours_no_name_title">"Når er denne plassen open? (%s)"</string>
     <string name="about_summary_current_version">"Gjeldande versjon: %s"</string>

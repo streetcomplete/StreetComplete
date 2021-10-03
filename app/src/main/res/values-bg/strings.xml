@@ -95,6 +95,8 @@
     <string name="quest_roofShape_answer_many">"Има няколко различни форми"</string>
     <string name="map_btn_zoom_out">"Отдалечи се"</string>
     <string name="map_btn_zoom_in">"Приближи се"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; А, някой, който се грижи за поверителността, браво! Мисля, че имам само добри новини за вас: &lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Приноси&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -329,7 +331,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Невъзможно сканирането. Опитайте се да приближите повече или наклонете леко картата."</string>
     <string name="quest_crossing_type_title">"Какъв тип кръстовище е това?"</string>
     <string name="quest_crossing_type_unmarked">"Необозначено кръстовище"</string>
-    <string name="compass_north_one_letter">"С"</string>
     <string name="action_undo">"Отмяна"</string>
     <string name="produce_mangosteen">"Мангостин"</string>
     <string name="produce_tomatoes">"Домати"</string>
@@ -646,7 +647,6 @@
     <string name="quest_maxweight_answer_other_sign">"Знакът изглежда различно..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ще оставите ли бележка? Бележка със снимка ще помогне на други картографи да се погрижат за това."</string>
     <string name="quest_generalFee_title">"Трябва ли да платите за да влезете в %s?"</string>
-    <string name="quest_laundrySelfService_title">"Тази пералня на самообслужване ли е?"</string>
     <string name="quest_handrail_title">"Тези стъпала имат ли перила?"</string>
     <string name="quest_openingHours_no_name_title">"Какво е работното време на това място? (%s)"</string>
     <string name="about_summary_current_version">"Текуща версия: %s"</string>

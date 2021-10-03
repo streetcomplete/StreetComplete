@@ -837,7 +837,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce ensin señalizar"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfacer"</string>

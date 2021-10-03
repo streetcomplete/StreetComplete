@@ -839,7 +839,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
-    <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"復原"</string>
@@ -1721,9 +1720,6 @@
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下有照片的註解，能夠讓其他圖客接手處理。"</string>
     <string name="quest_generalFee_title">"進入 %s 需要支付費用嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"這個洗衣店是自助服務嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>

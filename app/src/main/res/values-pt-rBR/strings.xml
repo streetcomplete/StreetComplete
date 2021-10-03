@@ -817,7 +817,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruzamento sem marcação na pista"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfazer"</string>
@@ -1712,9 +1711,6 @@ Dividir agora?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"É cobrada uma taxa para entrar em %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Esta roupa é uma lavanderia self-service?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Esta escada tem corrimão?"</string>

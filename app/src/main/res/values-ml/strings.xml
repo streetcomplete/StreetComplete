@@ -824,7 +824,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"റോഡ് അടയാളങ്ങളില്ലാതെയുള്ള ക്രോസിംഗ്"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"പഴയരീതിയിലാക്കുക"</string>
@@ -1708,9 +1707,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"ഒരു കുറിപ്പ് ഇടാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ? ഒരു ഫോട്ടോയുള്ള കുറിപ്പ് മറ്റ് മാപ്പർമാരെ പരിപാലിക്കാൻ പ്രാപ്തമാക്കും."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"ഈ അലക്കൽ ഒരു സ്വയം സേവന അലക്കുമാണോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"ഈ പടികൾക്ക് കൈവരി ഉണ്ടോ?"</string>
