@@ -18,9 +18,11 @@ v36.0-beta1: |
   <h3>Quest Enhancements</h3>
   <ul>
   <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
+  <li>Self-service laundry: Add answer option to say self-service is optional (#3309)</li>
   </ul>
-  <h3>Other enhancements / maintenance</h3>
+  <h3>Other enhancements, fixes, maintenance</h3>
   <ul>
+  <li>Fix sometimes notes would be created at wrong positions when tapping OK too fast after taking a photo (#3312), thanks @mnalis</li>
   <li>(#3327) by @FloEdelmann, (#3208) by @matkoniecz</li>
   </ul>
 
