@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- Transparent Rectangle -->
+    <item
+    android:width="564dp"
+    android:height="455dp">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="14dp"
+                />
+                <solid
+                    android:color="@color/button_white"
+                    />
+
+                <stroke
+                android:width="40dp"
+                android:color="#BA2726"
+                />
+        </shape>
+    </item>
+
+    <!-- Left Half-Circle
+    <item
+        android:left="72.343dp"
+        android:top="49.295dp"
+        android:width="66dp"
+        android:height="99dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffe1e8ff" />
+        </shape>
+    </item>
+
+    <item
+        android:left="142.815dp"
+        android:top="49.295dp"
+        android:width="66dp"
+        android:height="99dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffe1e8ff" />
+        </shape>
+    </item>
+
+    <item
+        android:left="213.288dp"
+        android:top="49.295dp"
+        android:width="66dp"
+        android:height="99dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffe1e8ff" />
+        </shape>
+    </item>
+
+    <item
+        android:left="283.760dp"
+        android:top="49.295dp"
+        android:width="66dp"
+        android:height="99dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffe1e8ff" />
+        </shape>
+    </item>
+
+    <item
+        android:left="354.090dp"
+        android:top="49.295dp"
+        android:width="66dp"
+        android:height="99dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffe1e8ff" />
+        </shape>
+    </item>-->
+
+    <!-- Left Half-Circle -->
+    <item
+        android:left="98.562dp"
+        android:top="153.725dp"
+        android:width="354.766dp"
+        android:height="14.776dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#f000" />
+        </shape>
+    </item>
+
+    <!-- Left Half-Circle -->
+    <item
+        android:left="275.730dp"
+        android:top="165.089dp"
+        android:width="11.762dp"
+        android:height="106.532dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#f000" />
+        </shape>
+    </item>
+
+</layer-list>

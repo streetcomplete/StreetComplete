@@ -12,6 +12,9 @@
     <solid
         android:color="@color/button_white"
         />
+
+
+
     <stroke
     android:width="20dp"
     android:color="#ffff0000"
