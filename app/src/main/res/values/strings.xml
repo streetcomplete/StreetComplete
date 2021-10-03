@@ -283,6 +283,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_generic_hasFeature_optional">"Optionally"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
@@ -795,7 +796,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
     <string name="quest_generalFee_title">Do you need to pay to enter %s?</string>
-    <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
+    <string name="quest_laundrySelfService_title2">Does this laundry provide a self-service?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
     <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
