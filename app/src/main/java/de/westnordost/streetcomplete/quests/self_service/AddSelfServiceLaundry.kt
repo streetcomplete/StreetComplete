@@ -16,7 +16,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title2
 
     override fun createForm() = AddSelfServiceLaundryFragment()
 
