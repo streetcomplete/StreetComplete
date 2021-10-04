@@ -839,7 +839,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Διασταύρωση χωρίς οδικές σημάνσεις"</string>
-    <string name="compass_north_one_letter">"Ν"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Αναίρεση"</string>
@@ -1734,9 +1733,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Υπάρχει κόστος για την είσοδο %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Λειτουργεί αυτό το πλυντήριο με αυτοεξυπηρέτηση;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Έχουν αυτά τα σκαλιά κουπαστή;"</string>

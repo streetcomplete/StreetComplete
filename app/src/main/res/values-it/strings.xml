@@ -91,6 +91,8 @@
     <string name="quest_roofShape_answer_many">"Ha diverse forme"</string>
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
     <string name="map_btn_zoom_in">"Ingrandisci"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy. Bello! Penso di avere solo buone notizie per te:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Prima di tutto, va detto che con questa applicazione, tu dai dei contributi effettivi e diretti a OpenStreetMap.&lt;br/&gt;
@@ -328,7 +330,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="cannot_find_bbox_or_reduce_tilt">"Non riesco ad esplorare la zona. Prova ad aumentare lo zoom o a tenere la mappa meno inclinata."</string>
     <string name="quest_crossing_type_title">"Che tipo di attraversamento pedonale è questo?"</string>
     <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Annulla"</string>
     <string name="produce_mangosteen">"Mangostano"</string>
     <string name="produce_tomatoes">"Pomodori"</string>
@@ -651,7 +652,6 @@ Suddividere?"</string>
     <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vorresti lasciare una nota? Una nota con una foto permetterà ad altri mappatori di occuparsene."</string>
     <string name="quest_generalFee_title">"L'ingresso a %s è a pagamento?"</string>
-    <string name="quest_laundrySelfService_title">"Questa lavanderia è self service?"</string>
     <string name="quest_handrail_title">"Queste scale hanno un corrimano?"</string>
     <string name="quest_openingHours_no_name_title">"Quali sono gli orari di apertura di questo luogo? (%s)"</string>
     <string name="about_summary_current_version">"Versione corrente: %s"</string>

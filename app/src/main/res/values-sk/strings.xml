@@ -835,7 +835,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
-    <string name="compass_north_one_letter">"S"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Späť"</string>
@@ -1722,9 +1721,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Je tu poplatok pre vstup do %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Je táto práčovňa samoobslužná?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Majú tieto schody zábradlie?"</string>

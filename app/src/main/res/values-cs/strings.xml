@@ -746,7 +746,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Přechod bez označení na cestě"</string>
-    <string name="compass_north_one_letter">"S"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Zpět"</string>
@@ -1645,9 +1644,6 @@ Chcete cestu rozdělit?"</string>
     <string name="quest_generalFee_title">"Je zde poplatek pro vstup do  %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Je tato prádelna samoobslužná?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Mají tyto schody zábradlí?"</string>
 
     <!-- Fuzzy -->
@@ -2431,4 +2427,7 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_presets_default_name">"Výchozí"</string>
     <string name="quest_presets_selected">"Vybráno"</string>
     <string name="quest_presets_delete_message">"Smazat předvolbu „%s“? Výběr úkolů a jejich pořadí budou nenávratně ztraceny."</string>
+    <string name="notification_syncing">"Synchronizace dat…"</string>
+    <string name="notification_channel_sync">"Synchronizovat data"</string>
+    <string name="quest_board_type_sport">"Sport, cvičení"</string>
 </resources>

@@ -787,7 +787,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌ کشی"</string>
-    <string name="compass_north_one_letter">"شمال"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"برگشت"</string>
@@ -1684,9 +1683,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"آیا برای ورود به %s هزینه پرداخت می‌شود؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"آیا این خشکشویی یک خشکشویی مشتری محور (کار بوسیله شخص) است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"آیا این راه‌پله نرده جان‌پناه دارد؟"</string>

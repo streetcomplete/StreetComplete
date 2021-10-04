@@ -102,6 +102,8 @@
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Aproximar"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acho que tenho apenas boas notícias para si:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -390,7 +392,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Passadeira sem qualquer tipo de marcação"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Desfazer"</string>
     <string name="produce_mangosteen">"Mangostim"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -790,7 +791,6 @@ Dividir agora?"</string>
     <string name="quest_maxweight_answer_other_sign">"O sinal parece diferente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Gostaria de deixar uma nota? Uma nota com uma fotografia permitirá a outros mapeadores corrigirem o problema."</string>
     <string name="quest_generalFee_title">"É preciso pagar para entrar em %s?"</string>
-    <string name="quest_laundrySelfService_title">"Esta lavandaria é self-service?"</string>
     <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
     <string name="quest_openingHours_no_name_title">"Qual é o horário de abertura deste local? (%s)"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
@@ -1237,4 +1237,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_presets_default_name">"Padrão"</string>
     <string name="quest_presets_selected">"Selecionado"</string>
     <string name="quest_presets_delete_message">"Eliminar a predefinição \"%s\"? A seleção e ordenação das missões serão irrevogavelmente perdidas."</string>
+    <string name="notification_syncing">"A sincronizar dados…"</string>
+    <string name="notification_channel_sync">"Sincronizar dados"</string>
+    <string name="quest_board_type_sport">"Desporto, exercícios"</string>
 </resources>

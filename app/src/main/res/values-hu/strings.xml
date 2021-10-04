@@ -216,6 +216,8 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Nagyít"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Juhú, végre valakit érdekel az adatvédelem, remek! Szerintem csupa jó híreim vannak számodra:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Közvetlen közreműködések&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -787,7 +789,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
-    <string name="compass_north_one_letter">"É"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Visszavonás"</string>
@@ -1652,9 +1653,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Fizetni kell ahhoz, hogy ide belépj: %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Ez a mosoda önkiszolgáló?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Ez a lépcső rendelkezik korláttal?"</string>

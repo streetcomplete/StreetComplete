@@ -90,6 +90,8 @@
     <string name="quest_roofShape_answer_many">"በርካታ የተለያዩ ቅርጾች አሉት"</string>
     <string name="map_btn_zoom_out">"አሳንሱ"</string>
     <string name="map_btn_zoom_in">"አቅርብ"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; አህ ፣ ስለ ግላዊነት የሚያስብ ሰው ፣ ጥሩ! እኔ ለእርስዎ ጥሩ ዜና ብቻ ይመስለኛል &lt;/ p&gt;
 &lt;p&gt; &lt;b&gt; ቀጥተኛ አስተዋፅዖዎች &lt;/ b&gt; &lt;/ p&gt;
 &lt;p&gt;
@@ -321,7 +323,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"እዚህ ማንበብ አይቻልም። የበለጠ ለማጉላት ይሞክሩ ወይም ካርታውን በትንሹ ያዘንብሉት።"</string>
     <string name="quest_crossing_type_title">"ይህ ምን ዓይነት መሻገሪያ ነው?"</string>
     <string name="quest_crossing_type_unmarked">"ያለ የመንገድ ምልክቶች መሻገሪያ "</string>
-    <string name="compass_north_one_letter">"ኤን"</string>
     <string name="action_undo">"ቀልብስ"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"ቲማቲም"</string>
@@ -640,7 +641,6 @@
     <string name="quest_maxweight_answer_other_sign">"ምልክት የተለየ ይመስላል…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"ማስታወሻ መተው ይፈልጋሉ? ፎቶ ያለው ማስታወሻ ሌሎች ካርታዎችን እንዲንከባከቡ ያስችላቸዋል።"</string>
     <string name="quest_generalFee_title">"%s ለመግባት መክፈል ያስፈልግዎታል?"</string>
-    <string name="quest_laundrySelfService_title">"ይህ የልብስ ማጠቢያ የራስ አገልግሎት ልብስ ማጠቢያ ነው?"</string>
     <string name="quest_handrail_title">"እነዚህ ደረጃዎች የእጅ መወጣጫ አላቸውን?"</string>
     <string name="quest_openingHours_no_name_title">"የዚህ ቦታ መክፈቻ ሰዓቶች ምንድናቸው? (%s)"</string>
     <string name="about_summary_current_version">"የአሁኑ ስሪት:%s"</string>

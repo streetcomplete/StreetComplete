@@ -205,6 +205,8 @@
     <string name="quest_roofShape_answer_many">"Are câteva forme distincte"</string>
     <string name="map_btn_zoom_out">"Depărtează"</string>
     <string name="map_btn_zoom_in">"Mareste"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; Ah, cineva căruia îi pasă de intimitate, drăguț! Cred că am doar vești bune pentru tine: &lt;/p&gt;
 &lt;p&gt; &lt;b&gt; Contribuții directe &lt;/b&gt; &lt;/p&gt;
 &lt;p&gt;
@@ -486,7 +488,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="cannot_find_bbox_or_reduce_tilt">"Nu pot scana aici. Încercați să apropiați mai puțin sau înclinați mai puțin harta."</string>
     <string name="quest_crossing_type_title">"Ce fel de trecere este aceasta?"</string>
     <string name="quest_crossing_type_unmarked">"Trecerea de pietoni nemarcată"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Înapoi"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Roșii"</string>
@@ -857,7 +858,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_maxweight_answer_other_sign">"Semnul arată diferit..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Doriți să lăsați o notă? O notă cu o fotografie va permite altor cartografi să se ocupe de ea."</string>
     <string name="quest_generalFee_title">"Trebuie să plătești pentru a intra la %s?"</string>
-    <string name="quest_laundrySelfService_title">"Este această spălătorie o spălătorie cu autoservire?"</string>
     <string name="quest_handrail_title">"Au aceste scări o balustradă?"</string>
     <string name="quest_openingHours_no_name_title">"Care este programul de funcționare a acestui loc? (%s)"</string>
     <string name="about_summary_current_version">"Versiunea curentă: %s"</string>

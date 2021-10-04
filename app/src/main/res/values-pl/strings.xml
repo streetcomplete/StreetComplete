@@ -233,6 +233,8 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Przybliż"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;O, dbasz o swoją prywatność, fajnie! Mam dla Ciebie tylko dobre wiadomości:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Bezpośrednie zmiany&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -804,7 +806,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Przejście nieoznaczone"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Cofnij"</string>
@@ -1653,9 +1654,6 @@ Podzielić?"</string>
     <string name="quest_generalFee_title">"Czy trzeba płacić by wejść do %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Czy jest to pralnia samoobsługowa?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Czy te schody mają poręcz?"</string>
 
     <!-- Fuzzy -->
@@ -2396,4 +2394,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_presets_default_name">"Domyślny"</string>
     <string name="quest_presets_selected">"Wybrany"</string>
     <string name="quest_presets_delete_message">"Usunąć zestaw „%s”? Wybór zadań i ich kolejność zostaną bezpowrotnie utracone."</string>
+    <string name="notification_syncing">"Synchronizuję dane…"</string>
+    <string name="notification_channel_sync">"Zsynchronizuj dane"</string>
+    <string name="quest_board_type_sport">"Sport, ćwiczenia"</string>
 </resources>

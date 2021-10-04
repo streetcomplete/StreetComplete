@@ -594,7 +594,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
-    <string name="compass_north_one_letter">"P"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Kumoa"</string>
@@ -1390,9 +1389,6 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Onko tänne %s sisäänpääsymaksua?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Toimiiko tämä pesula itsepalveluna?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Onko näissä portaissa kaidetta?"</string>

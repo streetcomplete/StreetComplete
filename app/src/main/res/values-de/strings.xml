@@ -93,6 +93,8 @@
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, jemand, dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte Mitwirkung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -331,9 +333,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht suchen. Zoome weiter hinein oder kippe die Karte weniger."</string>
     <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
     <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
-
-    <!-- Shouldn't this be translatable="false"? -->
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Rückgängig machen"</string>
     <string name="produce_mangosteen">"Mangostane"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
@@ -545,7 +544,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_hut">"Hütte"</string>
     <string name="quest_buildingType_hut_description">"kleine Behausung oder Unterstand"</string>
     <string name="quest_buildingType_roof">"Dach"</string>
-    <string name="quest_buildingType_bridge">Gebäudebrücke</string>
     <string name="quest_buildingType_service">"Betriebsgebäude"</string>
     <string name="quest_buildingType_service_description">"Gebäude für Maschinen wie Pumpen oder Transformatoren"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
@@ -653,7 +651,6 @@ Jetzt aufspalten?"</string>
     <string name="quest_maxweight_answer_other_sign">"Schild sieht anders aus…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Willst du stattdessen eine Notiz hinterlassen? Mit Hilfe eines Fotos können andere Mapper sich darum kümmern, es einzutragen."</string>
     <string name="quest_generalFee_title">"Kostet %s Eintritt?"</string>
-    <string name="quest_laundrySelfService_title">"Ist diese Wäscherei ein Waschsalon?"</string>
     <string name="quest_handrail_title">"Gibt es an dieser Treppe ein Geländer?"</string>
     <string name="quest_openingHours_no_name_title">"Was sind die Öffnungszeiten von diesem Ort? (%s)"</string>
     <string name="about_summary_current_version">"Aktuelle Version: %s"</string>
@@ -765,7 +762,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_show_me_the_way_description">"OSM-Editierungen in Echtzeit verfolgen"</string>
     <string name="link_osrm_description">"Die derzeit schnellste Routing-Engine"</string>
     <string name="link_openrouteservice_description">"Einstellbarer Routendienst für diverse Fahrzeuge und Fußgänger inklusive Erreichbarkeitskarte (Fläche, die in X Minuten von einem Punkt aus erreicht werden kann)."</string>
-    <string name="link_osm_haiku_description">"Verwende OSM-Daten um ein Haiku (jap. Gedicht) zu generieren"</string>
+    <string name="link_osm_haiku_description">"Verwende OSM-Daten, um ein Haiku (jap. Gedicht) zu generieren"</string>
     <string name="link_openinframap_description">"Spezialkarte zu Kraftwerken, Telekommunikation und fossiler Energie"</string>
     <string name="link_openorienteeringmap_description">"Ausdruckbare Karten für Orientierungsläufe"</string>
     <string name="link_openstreetbrowser_description">"OpenStreetMap-Kartenmerkmale erkunden"</string>
@@ -794,9 +791,9 @@ Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits
 
     <!-- Wäre hier nicht "Pedestrian"/"Fußgänger" passender als "Runner"/"Läufer"? -->
     <string name="achievement_pedestrian_title">"Fußgänger"</string>
-    <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind."</string>
+    <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind!"</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
-    <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganen am Herzen liegen."</string>
+    <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganen am Herzen liegen!"</string>
 
     <!-- Hier sollte nicht ein bestimmtes Fahrzeug suggeriert werden sondern man sollte das offen lassen.
 
@@ -977,7 +974,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_dietType_kosher_name_title">"Bietet %s koschere Produkte an?"</string>
     <string name="quest_dietType_explanation_kosher">"Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Kein Radweg vorhanden"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Wie üblich, tippe auf eine Seite der Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite. Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtlich, z.B eine Einbahnstraße, die für Fahrradfahrer beidseitig befahrbar ist!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Wie üblich, tippe auf eine Seite der Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite. Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtlich, z.B. eine Einbahnstraße, die für Fahrradfahrer beidseitig befahrbar ist!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Auswählen, dass kein Radweg existiert"</string>
     <string name="quest_construction_completed_at_known_date">"Wird zum folgenden Datum fertiggestellt…"</string>
     <string name="quest_construction_completion_date_title">"Wann wird es fertig?"</string>
@@ -1116,4 +1113,9 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="notification_syncing">"Synchronisiere Daten…"</string>
     <string name="notification_channel_sync">"Daten synchronisieren"</string>
     <string name="quest_board_type_sport">"Sport, Training"</string>
+    <string name="quest_generic_hasFeature_optional">"Optional"</string>
+    <string name="quest_buildingType_bridge">"Verbindungsbrücke zwischen Gebäuden"</string>
+    <string name="quest_dietType_halal_name_title">"Bietet %s halale Produkte an?"</string>
+    <string name="quest_dietType_explanation_halal">"Halale Produkte werden nach den muslimischen Speisegesetzen hergestellt, wobei spezielle Halal-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
+    <string name="quest_picnicTableCover_title">"Ist dieser Picknicktisch überdacht (vor Regen geschützt)?"</string>
 </resources>

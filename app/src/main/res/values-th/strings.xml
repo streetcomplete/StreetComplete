@@ -97,6 +97,8 @@
     <string name="quest_roofShape_answer_many">"มีหลายรูปทรงที่แตกต่างกัน"</string>
     <string name="map_btn_zoom_out">"ซูมออก"</string>
     <string name="map_btn_zoom_in">"ซูมเข้า"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;อ่า คนที่ใส่ใจเรื่องความเป็นส่วนตัว เยี่ยมเลย! ฉันคิดว่าฉันมีแต่ข่าวดีสำหรับคุณ:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;การสมทบโดยตรง&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -326,7 +328,6 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"ไม่สามารถสแกนที่นี่ ลองซูมเข้ามาอีกหรือปรับให้มุมเอียงของแผนที่น้อยลง"</string>
     <string name="quest_crossing_type_title">"นี่คือทางข้ามประเภทใด?"</string>
     <string name="quest_crossing_type_unmarked">"ทางข้ามโดยไม่มีเครื่องหมายจราจร"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"เลิกทำ"</string>
     <string name="produce_mangosteen">"มังคุด"</string>
     <string name="produce_tomatoes">"มะเขือเทศ"</string>
@@ -645,7 +646,6 @@
     <string name="quest_maxweight_answer_other_sign">"ป้ายดูแตกต่าง…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"คุณต้องการที่จะสร้างหมายเหตุหรือเปล่า? หมายเหตุพร้อมรูปถ่ายจะช่วยให้ผู้ทำแผนที่รายอื่นมาช่วยดูแลได้"</string>
     <string name="quest_generalFee_title">"คุณต้องจ่ายเงินเพื่อเข้า %s หรือไม่?"</string>
-    <string name="quest_laundrySelfService_title">"บริการซักรีดนี้เป็นบริการซักรีดแบบบริการตนเองหรือไม่"</string>
     <string name="quest_handrail_title">"ขั้นบันไดตรงนี้มีราวจับหรือไม่?"</string>
     <string name="quest_openingHours_no_name_title">"สถานที่นี้เปิดทำการกี่โมง (%s)"</string>
     <string name="about_summary_current_version">"เวอร์ชั่นปัจจุบัน: %s"</string>

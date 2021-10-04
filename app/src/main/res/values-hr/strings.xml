@@ -95,6 +95,8 @@
     <string name="quest_roofShape_answer_many">"Ima nekoliko različitih oblika"</string>
     <string name="map_btn_zoom_out">"Udalji"</string>
     <string name="map_btn_zoom_in">"Približi"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, netko kome je stalo do privatnosti, lijepo! Mislim da za vas imam samo dobre vijesti:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Izravni doprinosi&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -332,7 +334,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="cannot_find_bbox_or_reduce_tilt">"Ovdje se ne može skenirati. Pokušajte dodatno približiti ili manje naginjati kartu."</string>
     <string name="quest_crossing_type_title">"Kakav je ovo pješački prijelaz?"</string>
     <string name="quest_crossing_type_unmarked">"Prijelaz bez ikakvih oznaka"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Poništi"</string>
     <string name="produce_mangosteen">"(Mangosteen)"</string>
     <string name="produce_tomatoes">"Rajčice"</string>
@@ -689,7 +690,6 @@ Razdvojiti put sada?"</string>
     <string name="quest_maxweight_answer_other_sign">"Znak izgleda drugačije ..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Želite li ostaviti bilješku? Bilješka s fotografijom omogućit će ostalim kartografima da se pobrinu za nju."</string>
     <string name="quest_generalFee_title">"Naplaćuje li se ulazak u %s?"</string>
-    <string name="quest_laundrySelfService_title">"Je li ova praonica rublja samoposlužna?"</string>
     <string name="quest_handrail_title">"Imaju li ove stepenice rukohvat?"</string>
     <string name="quest_openingHours_no_name_title">"Koje je radno vrijeme ovog mjesta? (%s)"</string>
     <string name="about_summary_current_version">"Trenutna verzija: %s"</string>

@@ -90,6 +90,8 @@
     <string name="quest_roofShape_answer_many">"Té diferents formes"</string>
     <string name="map_btn_zoom_out">"Allunya't"</string>
     <string name="map_btn_zoom_in">"Apropa't"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, algú que es preocupa per la privadesa, bé! Crec que només us tinc bones notícies:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribucions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -317,7 +319,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="cannot_find_bbox_or_reduce_tilt">"No pot escanejar aquí. Proveu d'ampliar més o d'inclinar menys el mapa."</string>
     <string name="quest_crossing_type_title">"Quina classe d’encreuament és aquest?"</string>
     <string name="quest_crossing_type_unmarked">"Encreuament sense senyals horitzontals"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Desfés"</string>
     <string name="produce_mangosteen">"Mangostà"</string>
     <string name="produce_tomatoes">"Tomàquets"</string>
@@ -631,7 +632,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_maxweight_answer_other_sign">"El senyal sembla diferent..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
     <string name="quest_generalFee_title">"Cal pagar per a entrar a %s?"</string>
-    <string name="quest_laundrySelfService_title">"Aquesta bugaderia és d'autoservei?"</string>
     <string name="quest_handrail_title">"Aquestes escales tenen barana?"</string>
     <string name="quest_openingHours_no_name_title">"Quin és l'horari d'obertura d'aquest lloc? (%s)"</string>
     <string name="about_summary_current_version">"Versió actual: %s"</string>

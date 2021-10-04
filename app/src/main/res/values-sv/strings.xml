@@ -89,6 +89,8 @@
     <string name="quest_roofShape_answer_many">"Det har flera olika former"</string>
     <string name="map_btn_zoom_out">"Zooma ut"</string>
     <string name="map_btn_zoom_in">"Zooma in"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Härligt, någon som bryr sig om sekretess! Jag har bara goda nyheter till dig:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkta bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -326,7 +328,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan inte söka här. Försök att zooma in ytterligare eller minska kartans lutning."</string>
     <string name="quest_crossing_type_title">"Vilken typ av övergångsställe är det här?"</string>
     <string name="quest_crossing_type_unmarked">"Gång-/cykelpassage utan vägmarkeringar"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Ångra"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomater"</string>
@@ -643,7 +644,6 @@ Dela den nu?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skylten ser annorlunda ut…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vill du lämna en anteckning? En anteckning med ett foto gör att andra kartläggare kan ta hand om det."</string>
     <string name="quest_generalFee_title">"Kostar inträde till %s?"</string>
-    <string name="quest_laundrySelfService_title">"Är denna tvätt en självbetjäningstvätt?"</string>
     <string name="quest_handrail_title">"Har trappan ett räcke?"</string>
     <string name="quest_openingHours_no_name_title">"Vad har det här stället för öppettider? (%s)"</string>
     <string name="about_summary_current_version">"Aktuell version: %s"</string>
@@ -1129,4 +1129,7 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Markerad"</string>
     <string name="quest_presets_delete_message">"Ta bort gruppen \"%s\"? Uppdragsvalet och -ordningen kommer att gå förlorad för evigt."</string>
+    <string name="notification_syncing">"Synkroniserar data..."</string>
+    <string name="notification_channel_sync">"Synkronisera data"</string>
+    <string name="quest_board_type_sport">"Sport, Övning"</string>
 </resources>

@@ -826,7 +826,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Deshacer"</string>
@@ -1696,9 +1695,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"¿Tiene coste entrar en «%s»?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"¿Esta lavandería es de autoservicio?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"¿Estas escaleras tienen barandilla?"</string>

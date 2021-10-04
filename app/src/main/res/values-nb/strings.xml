@@ -99,6 +99,8 @@
     <string name="quest_roofShape_answer_many">"Det har flere forskjellige former"</string>
     <string name="map_btn_zoom_out">"Forminsk"</string>
     <string name="map_btn_zoom_in">"Forstørr"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -630,7 +632,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Angre"</string>
@@ -1492,7 +1493,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_maxweight_answer_other_sign">"Skiltet ser annerledes ut..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du legge til en merknad? En merknad med foto gjør at andre kartleggere kan løse problemet."</string>
     <string name="quest_generalFee_title">"Koster det noe å komme inn på %s?"</string>
-    <string name="quest_laundrySelfService_title">"Er dette vaskeriet selvbetjent?"</string>
     <string name="quest_handrail_title">"Har trappen rekkverk?"</string>
     <string name="quest_openingHours_no_name_title">"Når er denne plassen åpen? (%s)"</string>
     <string name="about_summary_current_version">"Gjeldene versjon: %s"</string>

@@ -206,6 +206,8 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"확대"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;아, 개인정보 보호에 관심이 많으시군요! 걱정하지 않으셔도 될 것 같습니다:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -763,7 +765,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
-    <string name="compass_north_one_letter">"북"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"되돌리기"</string>
@@ -1624,9 +1625,6 @@
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"참고를 남기고 싶으신가요? 사진과 함께 참고를 남기면 다른 매퍼가 이를 대신 처리해 줄 수 있습니다."</string>
     <string name="quest_generalFee_title">"%s에 입장료가 있나요?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"이 세탁소는 셀프 빨래방인가요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"이 계단에 난간이 있나요?"</string>
