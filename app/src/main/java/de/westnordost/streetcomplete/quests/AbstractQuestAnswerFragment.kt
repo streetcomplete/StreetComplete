@@ -113,16 +113,16 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
-         * the dialog with which the quest was answered  */
+         * the dialog with which the quest was answered */
         fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
-        /** Called when the user chose to leave a note instead  */
+        /** Called when the user chose to leave a note instead */
         fun onComposeNote(questKey: QuestKey, questTitle: String)
 
-        /** Called when the user chose to split the way  */
+        /** Called when the user chose to split the way */
         fun onSplitWay(osmQuestKey: OsmQuestKey)
 
-        /** Called when the user chose to skip the quest  */
+        /** Called when the user chose to skip the quest */
         fun onSkippedQuest(questKey: QuestKey)
 
         /** Called when the node shall be deleted */

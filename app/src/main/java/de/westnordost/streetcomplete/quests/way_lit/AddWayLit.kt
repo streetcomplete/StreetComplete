@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 
-class AddWayLit : OsmFilterQuestType<WayLit>() {
+class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     /* Using sidewalk, source:maxspeed=*urban etc and a urban-like maxspeed as tell-tale tags for
        (urban) streets which reached a certain level of development. I.e. non-urban streets will
@@ -64,8 +64,11 @@ class AddWayLit : OsmFilterQuestType<WayLit>() {
 
     override fun createForm() = WayLitForm()
 
-    override fun applyAnswerTo(answer: WayLit, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("lit", answer.osmValue)
+    override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, changes: StringMapChangesBuilder) {
+        when (answer) {
+            is IsActuallyStepsAnswer -> changes.modify("highway", "steps")
+            is WayLit -> changes.updateWithCheckDate("lit", answer.osmValue)
+        }
     }
 
     companion object {

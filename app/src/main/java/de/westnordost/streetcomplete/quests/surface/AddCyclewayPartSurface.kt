@@ -36,7 +36,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title
 
-    override fun createForm() = AddPathSurfaceForm()
+    override fun createForm() = AddPathPartSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
