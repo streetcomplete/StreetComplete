@@ -222,18 +222,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         }
     }
 
-    protected fun createConvertToStepsAnswer(answer: T): AnswerItem? {
-        val way = osmElement as? Way ?: return null
-
-        if (way.isArea()) return null
-
-        if (!way.tags.containsKey("highway") || way.tags["highway"] == "steps") return null
-
-        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(answer)
-        }
-    }
-
     private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
         val isDeletePoiEnabled =
             (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
