@@ -10,13 +10,13 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUnreadOsmMessageBinding
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -61,7 +61,7 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
     private fun startAnimation() {
         val ctx = requireContext()
 
-        lifecycleScope.launch { soundFx.play(R.raw.sliding_envelope) }
+        viewLifecycleScope.launch { soundFx.play(R.raw.sliding_envelope) }
 
         binding.mailFrontImageView.alpha = 0f
 

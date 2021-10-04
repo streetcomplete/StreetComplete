@@ -16,7 +16,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.mapzen.tangram.MapView
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
@@ -29,11 +28,7 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
-import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.containsAll
-import de.westnordost.streetcomplete.ktx.setMargins
-import de.westnordost.streetcomplete.ktx.tryStartActivity
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -71,7 +66,7 @@ open class MapFragment : Fragment(),
 
         val toggle = if (value) "true" else "false"
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             sceneMapComponent?.putSceneUpdates(listOf(
                 "layers.buildings.draw.buildings-style.extrude" to toggle,
                 "layers.buildings.draw.buildings-outline-style.extrude" to toggle
@@ -125,7 +120,7 @@ open class MapFragment : Fragment(),
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
-        lifecycleScope.launch { initMap() }
+        viewLifecycleScope.launch { initMap() }
     }
 
     private fun showOpenUrlDialog(url: String) {
@@ -152,7 +147,7 @@ open class MapFragment : Fragment(),
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch { sceneMapComponent?.loadScene() }
+        viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
     }
 
     override fun onResume() {

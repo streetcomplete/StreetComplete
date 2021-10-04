@@ -8,12 +8,12 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
 import de.westnordost.streetcomplete.databinding.RowCreditsTranslatorsBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -27,7 +27,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     private val binding by viewBinding(FragmentCreditsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             addContributorsTo(readMainContributors(), binding.mainCredits)
             addContributorsTo(readProjectsContributors(), binding.projectsCredits)
             addContributorsTo(readArtContributors(), binding.artCredits)

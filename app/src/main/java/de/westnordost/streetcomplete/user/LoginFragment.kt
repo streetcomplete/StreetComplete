@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmapi.user.Permission
 import de.westnordost.osmapi.user.PermissionsApi
 import de.westnordost.streetcomplete.BackPressedListener
@@ -23,6 +22,7 @@ import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.settings.OAuthFragment
 import kotlinx.coroutines.*
 import oauth.signpost.OAuthConsumer
@@ -62,7 +62,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onStart() {
         super.onStart()
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val unsyncedChanges = unsyncedChangesCountSource.getCount()
             binding.unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
             binding.unpublishedQuestsText.isGone = unsyncedChanges <= 0
@@ -85,7 +85,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
         binding.loginButton.visibility = View.INVISIBLE
         binding.loginProgress.visibility = View.VISIBLE
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             if (hasRequiredPermissions(consumer)) {
                 userController.logIn(consumer)
             } else {

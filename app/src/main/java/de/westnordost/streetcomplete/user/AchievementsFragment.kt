@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
@@ -20,6 +19,7 @@ import de.westnordost.streetcomplete.databinding.FragmentAchievementsBinding
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.coroutines.*
@@ -53,7 +53,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
         val minCellWidth = 144f.toPx(ctx)
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleScope.launch {
             view.awaitLayout()
 
             binding.emptyText.visibility = View.GONE
