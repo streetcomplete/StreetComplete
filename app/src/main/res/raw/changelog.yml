@@ -1,3 +1,10 @@
+v35.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix sometimes notes would be created at wrong positions when tapping OK too fast after taking a photo (#3312), thanks @mnalis</li>
+  <li>Fix rare abortion of download when handling corrupt/invalid OSM data</li>
+  </ul>
+
 v35.0: |
   <h3>App maintenance</h3>
   <ul>
