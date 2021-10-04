@@ -10,13 +10,13 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 class WayLitForm : AbstractQuestAnswerFragment<WayLitOrIsStepsAnswer>() {
 
     override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(WayLitAnswer(NO)) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(WayLitAnswer(YES)) }
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) }
     )
 
     override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_way_lit_24_7) { applyAnswer(WayLitAnswer(NIGHT_AND_DAY)) },
-        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(WayLitAnswer(AUTOMATIC)) },
+        AnswerItem(R.string.quest_way_lit_24_7) { applyAnswer(NIGHT_AND_DAY) },
+        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(AUTOMATIC) },
         createConvertToStepsAnswer(),
     )
 

@@ -67,7 +67,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
             is IsActuallyStepsAnswer -> changes.modify("highway", "steps")
-            is WayLitAnswer -> changes.updateWithCheckDate("lit", answer.value.osmValue)
+            is WayLit -> changes.updateWithCheckDate("lit", answer.osmValue)
         }
     }
 
