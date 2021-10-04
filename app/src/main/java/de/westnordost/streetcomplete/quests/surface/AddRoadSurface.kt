@@ -56,7 +56,6 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
                 changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.addOrModify("surface:note", answer.note)
             }
-            IsActuallyStepsSurfaceAnswer -> throw IllegalStateException()
         }
         changes.deleteIfExists("source:surface")
     }

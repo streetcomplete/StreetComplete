@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
+class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
     override val items: List<Item<Surface>>
         get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_SURFACES).toItems()
 
@@ -41,7 +41,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>
         if (way.isArea() || way.tags["highway"] == "steps") return null
 
         return AnswerItem(string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(IsActuallyStepsSurfaceAnswer)
+            applyAnswer(IsActuallyStepsAnswer)
         }
     }
 }
