@@ -33,11 +33,11 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questProfilesList.adapter = questPresetsAdapter
-        binding.addPresetButton.setOnClickListener { onClickAddProfile() }
+        binding.questPresetsList.adapter = questPresetsAdapter
+        binding.addPresetButton.setOnClickListener { onClickAddPreset() }
     }
 
-    private fun onClickAddProfile() {
+    private fun onClickAddPreset() {
         val ctx = context ?: return
 
         val dialogBinding = DialogInputTextBinding.inflate(layoutInflater)
@@ -49,7 +49,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             .setPositiveButton(android.R.string.ok) { _,_ ->
                 val name = dialogBinding.editText.text.toString().trim()
                 lifecycleScope.launch(Dispatchers.IO) {
-                    questPresetsController.addQuestProfile(name)
+                    questPresetsController.addQuestPreset(name)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)

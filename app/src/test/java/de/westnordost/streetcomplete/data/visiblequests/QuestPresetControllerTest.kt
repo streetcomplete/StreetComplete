@@ -39,7 +39,7 @@ class QuestPresetControllerTest {
 
     @Test fun add() {
         on(questPresetsDao.add(any())).thenReturn(123)
-        ctrl.addQuestProfile("test")
+        ctrl.addQuestPreset("test")
         verify(questPresetsDao).add("test")
         verify(listener).onAddedQuestPreset(QuestPreset(123, "test"))
     }
