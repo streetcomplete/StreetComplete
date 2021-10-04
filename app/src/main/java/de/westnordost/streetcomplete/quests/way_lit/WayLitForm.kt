@@ -7,16 +7,16 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.way_lit.WayLit.*
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class WayLitForm : AbstractQuestAnswerFragment<WayLit>() {
+class WayLitForm : AbstractQuestAnswerFragment<WayLitOrIsStepsAnswer>() {
 
     override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) }
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(WayLitAnswer(NO)) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(WayLitAnswer(YES)) }
     )
 
     override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_way_lit_24_7) { applyAnswer(NIGHT_AND_DAY) },
-        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(AUTOMATIC) },
+        AnswerItem(R.string.quest_way_lit_24_7) { applyAnswer(WayLitAnswer(NIGHT_AND_DAY)) },
+        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(WayLitAnswer(AUTOMATIC)) },
         createConvertToStepsAnswer(),
     )
 
@@ -25,7 +25,7 @@ class WayLitForm : AbstractQuestAnswerFragment<WayLit>() {
         if (way.isArea() || way.tags["highway"] == "steps") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-            applyAnswer(IS_ACTUALLY_STEPS)
+            applyAnswer(IsActuallyStepsAnswer)
         }
     }
 }
