@@ -36,7 +36,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_footwayPartSurface_title
 
-    override fun createForm() = AddPathSurfaceForm()
+    override fun createForm() = AddPathPartSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
@@ -48,7 +48,6 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
                 changes.updateWithCheckDate("footway:surface", answer.value.osmValue)
                 changes.addOrModify("footway:surface:note", answer.note)
             }
-            IsActuallyStepsSurfaceAnswer -> throw IllegalStateException()
         }
         changes.deleteIfExists("source:footway:surface")
     }
