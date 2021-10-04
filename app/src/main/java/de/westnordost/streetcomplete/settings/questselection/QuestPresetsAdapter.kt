@@ -24,19 +24,19 @@ class QuestPresetsAdapter @Inject constructor(
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() { lifecycleScope.launch {
+        override fun onSelectedQuestPresetChanged() { viewLifecycleScope.launch {
             notifyDataSetChanged()
         }}
 
-        override fun onAddedQuestPreset(preset: QuestPreset) { lifecycleScope.launch {
+        override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
             presets.add(preset)
             notifyItemInserted(presets.size - 1)
         }}
 
-        override fun onDeletedQuestPreset(presetId: Long) { lifecycleScope.launch {
+        override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
             val deleteIndex = presets.indexOfFirst { it.id == presetId }
             presets.removeAt(deleteIndex)
             notifyItemRemoved(deleteIndex)
@@ -59,7 +59,7 @@ class QuestPresetsAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        lifecycleScope.cancel()
+        viewLifecycleScope.cancel()
     }
 
     override fun getItemCount(): Int = presets.size
@@ -89,7 +89,7 @@ class QuestPresetsAdapter @Inject constructor(
         }
 
         fun onSelectQuestPreset(presetId: Long) {
-            lifecycleScope.launch(Dispatchers.IO) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.selectedQuestPresetId = presetId
             }
         }
@@ -104,7 +104,7 @@ class QuestPresetsAdapter @Inject constructor(
 
         fun deleteQuestPreset(presetId: Long) {
             binding.deleteButton.isEnabled = false
-            lifecycleScope.launch(Dispatchers.IO) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.deleteQuestPreset(presetId)
             }
         }

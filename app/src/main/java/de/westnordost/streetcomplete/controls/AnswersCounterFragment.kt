@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,19 +24,19 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     private val answersCounterView get() = view as AnswersCounterView
 
     private val uploadProgressListener = object : UploadProgressListener {
-        override fun onStarted() { lifecycleScope.launch { updateProgress(true) } }
-        override fun onFinished() { lifecycleScope.launch { updateProgress(false) } }
+        override fun onStarted() { viewLifecycleScope.launch { updateProgress(true) } }
+        override fun onFinished() { viewLifecycleScope.launch { updateProgress(false) } }
     }
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
-        override fun onIncreased() { lifecycleScope.launch { updateCount(true) }}
-        override fun onDecreased() { lifecycleScope.launch { updateCount(true) }}
+        override fun onIncreased() { viewLifecycleScope.launch { updateCount(true) }}
+        override fun onDecreased() { viewLifecycleScope.launch { updateCount(true) }}
     }
 
     private val questStatisticsListener = object : QuestStatisticsDao.Listener {
-        override fun onAddedOne(questType: String) { lifecycleScope.launch { addCount(+1,true) }}
-        override fun onSubtractedOne(questType: String) { lifecycleScope.launch { addCount(-1,true) }}
-        override fun onReplacedAll() { lifecycleScope.launch { updateCount(false) }}
+        override fun onAddedOne(questType: String) { viewLifecycleScope.launch { addCount(+1,true) }}
+        override fun onSubtractedOne(questType: String) { viewLifecycleScope.launch { addCount(-1,true) }}
+        override fun onReplacedAll() { viewLifecycleScope.launch { updateCount(false) }}
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
@@ -51,7 +51,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
          *  upload button, and shows the uploaded + uploadable amount of quests.
          */
         updateProgress(uploadProgressSource.isUploadInProgress)
-        lifecycleScope.launch { updateCount(false) }
+        viewLifecycleScope.launch { updateCount(false) }
         if (isAutosync) {
             uploadProgressSource.addUploadProgressListener(uploadProgressListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
