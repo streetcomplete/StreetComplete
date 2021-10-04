@@ -3,14 +3,12 @@ package de.westnordost.streetcomplete.quests.oneway_suspects
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
-import androidx.lifecycle.lifecycleScope
-
 import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -45,7 +43,7 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
 
         binding.puzzleView.showOnlyRightSide()
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val isForward = withContext(Dispatchers.IO) { db.isForward(osmElement!!.id)!! }
 
             binding.puzzleView.setRightSideImage(ResImage(

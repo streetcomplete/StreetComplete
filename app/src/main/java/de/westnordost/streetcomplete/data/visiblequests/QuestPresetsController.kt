@@ -21,7 +21,7 @@ import javax.inject.Singleton
     override val selectedQuestPresetName: String? get() =
         questPresetsDao.getName(selectedQuestPresetId)
 
-    fun addQuestProfile(presetName: String): Long {
+    fun addQuestPreset(presetName: String): Long {
         val presetId = questPresetsDao.add(presetName)
         onAddedQuestProfile(presetId, presetName)
         return presetId

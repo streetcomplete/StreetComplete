@@ -52,7 +52,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private var mapChangingListener: MapChangingListener? = null
 
@@ -102,7 +102,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
             override fun onRegionWillChange(animated: Boolean) {
                 // could be called not on the ui thread, see https://github.com/tangrams/tangram-es/issues/2157
-                lifecycleScope.launch {
+                viewLifecycleScope.launch {
                     calledOnMapIsChangingOnce = false
                     if (!cameraManager.isAnimating) {
                         mapChangingListener?.onMapWillChange()
@@ -112,14 +112,14 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             }
 
             override fun onRegionIsChanging() {
-                lifecycleScope.launch {
+                viewLifecycleScope.launch {
                     if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
                     calledOnMapIsChangingOnce = true
                 }
             }
 
             override fun onRegionDidChange(animated: Boolean) {
-                lifecycleScope.launch {
+                viewLifecycleScope.launch {
                     if (!cameraManager.isAnimating) {
                         if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
                         mapChangingListener?.onMapDidChange()
@@ -131,7 +131,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        lifecycleScope.cancel()
+        viewLifecycleScope.cancel()
         cameraManager.cancelAllCameraAnimations()
     }
 

@@ -10,11 +10,11 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -82,7 +82,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         binding.webView.settings.allowContentAccess = true
         binding.webView.settings.setSupportZoom(false)
         binding.webView.webViewClient = webViewClient
-        lifecycleScope.launch { continueAuthentication() }
+        viewLifecycleScope.launch { continueAuthentication() }
     }
 
     override fun onPause() {

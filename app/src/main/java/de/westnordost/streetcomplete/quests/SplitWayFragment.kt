@@ -15,7 +15,6 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
@@ -147,7 +146,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         if (splits.isNotEmpty()) {
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
-            lifecycleScope.launch { soundFx.play(R.raw.plop2) }
+            viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
             listener?.onRemoveSplit(item.second)
         }
     }
@@ -195,7 +194,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         animator.setTarget(binding.scissors)
         animator.start()
 
-        lifecycleScope.launch { soundFx.play(R.raw.snip) }
+        viewLifecycleScope.launch { soundFx.play(R.raw.snip) }
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {

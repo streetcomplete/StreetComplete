@@ -11,6 +11,7 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent

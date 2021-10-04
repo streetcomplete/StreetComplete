@@ -8,7 +8,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
-import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -29,6 +28,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
@@ -75,14 +75,14 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() }}
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> viewLifecycleScope.launch { deleteCache() }}
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             true
         }
 
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
-            lifecycleScope.launch {
+            viewLifecycleScope.launch {
                 val hidden = questController.unhideAll()
                 context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
             }

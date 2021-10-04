@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.CountryStatisticsDao
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -37,7 +37,7 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
 
         lifecycle.addObserver(binding.ballPitView)
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val countriesStatistics = withContext(Dispatchers.IO) { countryStatisticsDao.getAll() }
 
             binding.ballPitView.setViews(countriesStatistics.map {
