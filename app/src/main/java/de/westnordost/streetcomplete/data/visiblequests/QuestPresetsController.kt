@@ -15,7 +15,7 @@ import javax.inject.Singleton
         get() = selectedQuestPresetStore.get()
         set(value) {
             selectedQuestPresetStore.set(value)
-            onSelectedQuestProfileChanged()
+            onSelectedQuestPresetChanged()
         }
 
     override val selectedQuestPresetName: String? get() =
@@ -23,7 +23,7 @@ import javax.inject.Singleton
 
     fun addQuestPreset(presetName: String): Long {
         val presetId = questPresetsDao.add(presetName)
-        onAddedQuestProfile(presetId, presetName)
+        onAddedQuestPreset(presetId, presetName)
         return presetId
     }
 
@@ -32,7 +32,7 @@ import javax.inject.Singleton
             selectedQuestPresetId = 0
         }
         questPresetsDao.delete(presetId)
-        onDeletedQuestProfile(presetId)
+        onDeletedQuestPreset(presetId)
     }
 
     override fun getAllQuestPresets(): List<QuestPreset> =
@@ -46,13 +46,13 @@ import javax.inject.Singleton
     override fun removeListener(listener: QuestPresetsSource.Listener) {
         listeners.remove(listener)
     }
-    private fun onSelectedQuestProfileChanged() {
+    private fun onSelectedQuestPresetChanged() {
         listeners.forEach { it.onSelectedQuestPresetChanged() }
     }
-    private fun onAddedQuestProfile(presetId: Long, presetName: String) {
+    private fun onAddedQuestPreset(presetId: Long, presetName: String) {
         listeners.forEach { it.onAddedQuestPreset(QuestPreset(presetId, presetName)) }
     }
-    private fun onDeletedQuestProfile(presetId: Long) {
+    private fun onDeletedQuestPreset(presetId: Long) {
         listeners.forEach { it.onDeletedQuestPreset(presetId) }
     }
 }

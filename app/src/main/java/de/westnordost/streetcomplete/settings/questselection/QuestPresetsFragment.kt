@@ -33,7 +33,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questProfilesList.adapter = questPresetsAdapter
+        binding.questPresetsList.adapter = questPresetsAdapter
         binding.addPresetButton.setOnClickListener { onClickAddPreset() }
     }
 
