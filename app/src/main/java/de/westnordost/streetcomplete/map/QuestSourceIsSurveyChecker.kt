@@ -38,10 +38,14 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
                     dontShowAgain = dialogBinding.checkBoxDontShowAgain.isChecked
-                    cont.resume(true)
+                    if(cont.isActive) cont.resume(true)
                 }
-                .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
-                .setOnCancelListener { cont.resume(false) }
+                .setNegativeButton(android.R.string.cancel) { _, _ ->
+                    if(cont.isActive) cont.resume(false)
+                }
+                .setOnCancelListener {
+                    if(cont.isActive) cont.resume(false)
+                }
                 .show()
         }
     }
