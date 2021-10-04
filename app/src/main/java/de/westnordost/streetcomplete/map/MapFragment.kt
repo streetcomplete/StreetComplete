@@ -16,7 +16,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import com.mapzen.tangram.MapView
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
@@ -43,9 +42,6 @@ import javax.inject.Inject
 open class MapFragment : Fragment(),
     TapResponder, DoubleTapResponder, LongPressResponder,
     PanResponder, ScaleResponder, ShoveResponder, RotateResponder, SharedPreferences.OnSharedPreferenceChangeListener {
-
-    protected lateinit var mapView: MapView
-    private set
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
@@ -111,8 +107,7 @@ open class MapFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isMapInitialized = false
-        mapView = binding.map
-        mapView.onCreate(savedInstanceState)
+        binding.map.onCreate(savedInstanceState)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
         binding.mapTileProviderLink.text = vectorTileProvider.copyrightText
@@ -152,31 +147,35 @@ open class MapFragment : Fragment(),
 
     override fun onResume() {
         super.onResume()
-        mapView.onResume()
+        binding.map.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        mapView.onPause()
+        binding.map.onPause()
         saveMapState()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.map.onDestroy()
+        controller = null
     }
 
     override fun onDestroy() {
         super.onDestroy()
         sharedPrefs.unregisterOnSharedPreferenceChangeListener(this)
-        mapView.onDestroy()
-        controller = null
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mapView.onLowMemory()
+        binding.map.onLowMemory()
     }
 
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap() {
-        val ctrl = mapView.initMap(createHttpHandler())
+        val ctrl = binding.map.initMap(createHttpHandler())
         controller = ctrl
         if (ctrl == null) return
         lifecycle.addObserver(ctrl)
