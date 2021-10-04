@@ -47,7 +47,8 @@ abstract class AbstractQuestAnswerFragment<T> :
     private var _binding: FragmentQuestAnswerBinding? = null
     private val binding get() = _binding!!
 
-    protected lateinit var otherAnswersButton: TextView
+    protected var otherAnswersButton: TextView? = null
+    private set
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
     override val bottomSheet get() = binding.bottomSheet
@@ -186,6 +187,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        otherAnswersButton = null
     }
 
     private fun assembleOtherAnswers() : List<AnswerItem> {
@@ -239,6 +241,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     private fun showOtherAnswers() {
+        val otherAnswersButton = otherAnswersButton ?: return
         val answers = assembleOtherAnswers()
         val popup = PopupMenu(requireContext(), otherAnswersButton)
         for (i in answers.indices) {
@@ -263,11 +266,11 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         val answers = assembleOtherAnswers()
         if (answers.size == 1) {
-            otherAnswersButton.setText(answers.first().titleResourceId)
-            otherAnswersButton.setOnClickListener { answers.first().action() }
+            otherAnswersButton?.setText(answers.first().titleResourceId)
+            otherAnswersButton?.setOnClickListener { answers.first().action() }
         } else {
-            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
-            otherAnswersButton.setOnClickListener { showOtherAnswers() }
+            otherAnswersButton?.setText(R.string.quest_generic_otherAnswers)
+            otherAnswersButton?.setOnClickListener { showOtherAnswers() }
         }
     }
 

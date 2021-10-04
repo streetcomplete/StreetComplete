@@ -62,7 +62,7 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
 
         binding.noteInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
-        otherAnswersButton.visibility = View.GONE
+        otherAnswersButton?.visibility = View.GONE
 
         anonAvatar = requireContext().getDrawable(R.drawable.ic_osm_anon_avatar)!!.createBitmap()
 

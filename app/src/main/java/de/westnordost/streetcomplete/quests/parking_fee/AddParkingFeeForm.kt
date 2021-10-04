@@ -37,13 +37,13 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
     private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
 
-    private lateinit var content: ViewGroup
+    private var content: ViewGroup? = null
 
     private var isDefiningHours: Boolean = false
     set(value) {
         field = value
 
-        content.isGone = !value
+        content?.isGone = !value
         updateButtonPanel()
     }
     private var isFeeOnlyAtHours: Boolean = false
@@ -85,6 +85,11 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        content = null
     }
 
     override fun onClickOk() {
