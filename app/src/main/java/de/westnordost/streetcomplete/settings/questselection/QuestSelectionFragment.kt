@@ -62,12 +62,12 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     init {
         Injector.applicationComponent.inject(this)
-        viewLifecycleOwner.lifecycle.addObserver(questSelectionAdapter)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        viewLifecycleOwner.lifecycle.addObserver(questSelectionAdapter)
         binding.questSelectionList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         binding.questSelectionList.layoutManager = LinearLayoutManager(context)
         binding.questSelectionList.adapter = questSelectionAdapter
