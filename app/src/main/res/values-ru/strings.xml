@@ -8,7 +8,7 @@
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
-    <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе (MB)"</string>
+    <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе в мегабайтах"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показывать все заметки"</string>
 
     <!-- Fuzzy -->
@@ -1617,4 +1617,11 @@
     <string name="quest_presets_default_name">"По умолчанию"</string>
     <string name="quest_presets_selected">"Выбранные"</string>
     <string name="quest_presets_delete_message">"Удалить предустановку \"%s\"? Выбор квестов и порядка их выполнения будут безвозвратно утеряны."</string>
+    <string name="notification_syncing">"Синхронизация…"</string>
+    <string name="notification_channel_sync">"Синхр. данных"</string>
+    <string name="quest_board_type_sport">"Спорт, Упражнения"</string>
+    <string name="quest_generic_hasFeature_optional">"Дополнительно"</string>
+    <string name="quest_buildingType_bridge">"Мост между зданиями (эстакада)"</string>
+    <string name="quest_laundrySelfService_title2">"Эта прачечная с самообслуживанием?"</string>
+    <string name="quest_picnicTableCover_title">"Столик для пикника под навесом (укрыт от дождя)?"</string>
 </resources>

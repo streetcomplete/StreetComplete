@@ -1041,7 +1041,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_pitchSurface_title">"Koju površinu ima ovo sportsko igralište?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Ova vrsta zadatka je inicijalno onemogućena jer u nekim regijama nije korisna i jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste."</string>
     <string name="quest_dietType_kosher_name_title">"Nudi li %s košer proizvode?"</string>
-    <string name="quest_dietType_explanation_kosher">"Košer proizvodi moraju se pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom."</string>
+    <string name="quest_dietType_explanation_kosher">"Košer proizvodi se moraju pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom."</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Uopće nema biciklističke staze"</string>
@@ -1276,4 +1276,12 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="notification_syncing">"Sinkroniziram…"</string>
     <string name="notification_channel_sync">"Sinkronizacija podataka"</string>
     <string name="quest_board_type_sport">"Sport i vježbanje"</string>
+    <string name="quest_generic_hasFeature_optional">"Opcionalno"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_bridge">"Most koji spaja zgrade (skyway)"</string>
+    <string name="quest_laundrySelfService_title2">"Je li ova praonica rublja samoposlužna?"</string>
+    <string name="quest_dietType_halal_name_title">"Nudi li %s Halal proizvode?"</string>
+    <string name="quest_dietType_explanation_halal">"Halal proizvodi se moraju pripremati prema posebnim pravilima, a Halal agencije za certificiranje moraju označavati proizvode u skladu s njima."</string>
+    <string name="quest_picnicTableCover_title">"Je li ovaj stol za piknik natkriven (zaštićen od kiše)?"</string>
 </resources>

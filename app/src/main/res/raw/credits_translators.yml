@@ -6,11 +6,11 @@ en-GB:
    arrival-spring: 806
    Daniel: 253
    Ferdi: 5
-   Flo Edelmann: 3808
+   Flo Edelmann: 5522
    Ian Rutson: 476
    james: 160
    James. mcmahon: 168
-   Jay Turner: 2150
+   Jay Turner: 2104
    John: 73
    Oliver Hawes: 9345
    Peter Newman: 3686
@@ -46,7 +46,7 @@ de:
    Claudius Henrichs: 173
    Daniel: 184
    DerDings: 120
-   Flo Edelmann: 11928
+   Flo Edelmann: 12166
    Github: 201
    Go4it.1: 14
    grafst: 22
@@ -158,7 +158,7 @@ nl:
    Robin: 737
    Youri Lima: 5
 ru: 
-   Alex: 4086
+   Alex: 4042
    Anton Shestakov: 3384
    argz: 407
    Artem: 149
@@ -186,6 +186,7 @@ ru:
    Van: 113
    Vano111ru: 94
    Vlad: 297
+   XnL: 221
    zetx16: 1856
    zimirrrr: 53
 am: 
@@ -216,6 +217,13 @@ ro:
    Fcsernik: 65
    Georgian Iosef: 32878
    maxxxiejazz: 110
+eu: 
+   alexgabi: 1211
+   Etzharai: 398
+   Gari Araolaza: 1832
+   obibon: 300
+   Osoitz: 19801
+   txintxo: 1791
 zh-TW: 
    alice: 55
    Kagami: 2959
@@ -256,7 +264,7 @@ fr:
    David Chionne: 5608
    Dettorer: 125
    fabrice: 6
-   Flo Edelmann: 17262
+   Flo Edelmann: 17577
    Florian Stosse: 2419
    Frédéric Bourgeon: 952
    gendy54: 162
@@ -347,12 +355,6 @@ it:
    pino: 355
    Ryu: 48
    Simone Saviolo: 306
-eu: 
-   Etzharai: 398
-   Gari Araolaza: 1832
-   obibon: 300
-   Osoitz: 20895
-   txintxo: 1883
 fa: 
    Goudarz Jafari: 609
    Iman: 175
@@ -364,7 +366,7 @@ lt:
    Tomas: 23848
 cs: 
    Jakub: 288
-   leschek: 26647
+   leschek: 26968
    Lukáš Jelínek: 1345
    Petr Kadlec: 832
    Stanislav Tichý: 4241
@@ -383,7 +385,7 @@ el:
    tinigrillion: 420
 hr: 
    Mario: 63
-   Matija Nalis: 36375
+   Matija Nalis: 36680
 zh: 
    Minecraftis1st: 11
    Mumulhl: 132

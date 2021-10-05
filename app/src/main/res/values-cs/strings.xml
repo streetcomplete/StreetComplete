@@ -2430,4 +2430,10 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="notification_syncing">"Synchronizace dat…"</string>
     <string name="notification_channel_sync">"Synchronizovat data"</string>
     <string name="quest_board_type_sport">"Sport, cvičení"</string>
+    <string name="quest_generic_hasFeature_optional">"Volitelné"</string>
+    <string name="quest_buildingType_bridge">"Most mezi budovami (spojovací lávka)"</string>
+    <string name="quest_laundrySelfService_title2">"Nabízí tato prádelna samoobslužné praní?"</string>
+    <string name="quest_dietType_halal_name_title">"Nabízí %s Halal výrobky?"</string>
+    <string name="quest_dietType_explanation_halal">"Halal výrobky se musí připravovat podle zvláštních pravidel. Speciální agentury dávají certifikáty těm Halal výrobkům, které jsou s těmito pravidly v souladu."</string>
+    <string name="quest_picnicTableCover_title">"Je tento stůl pro piknik krytý (chráněný před deštěm)?"</string>
 </resources>

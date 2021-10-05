@@ -89,8 +89,6 @@
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -98,7 +96,7 @@ First off, understand that with this app, you make actual and direct contributio
 Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
-Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
+Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.
 &lt;/p&gt;
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
@@ -220,8 +218,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sport_ice_skating">"Ice skating"</string>
     <string name="quest_sport_paddle_tennis">"Paddle tennis"</string>
     <string name="quest_sport_gaelic_games">"Gaelic games"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
     <string name="quest_wheelchairAccess_name_title">"Is %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_limited">"Partially"</string>
@@ -269,8 +265,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"So, there is a sign like this?"</string>
     <string name="quest_orchard_produce_title">"What is being cultivated here?"</string>
     <string name="produce_grapes">"Grapes"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"Agaves"</string>
     <string name="produce_almonds">"Almonds"</string>
     <string name="produce_apples">"Apples"</string>
@@ -278,8 +272,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_avocados">"Avocados"</string>
     <string name="produce_bananas">"Bananas"</string>
     <string name="produce_blueberries">"Blueberries"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"Cacao"</string>
     <string name="produce_cashew_nuts">"Cashew nuts"</string>
     <string name="produce_cherries">"Cherries"</string>
@@ -290,23 +282,17 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_dates">"Dates"</string>
     <string name="produce_figs">"Figs"</string>
     <string name="produce_grapefruits">"Grapefruits"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"Guavas"</string>
     <string name="produce_hazelnuts">"Hazelnuts"</string>
     <string name="produce_hops">"Hops"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kiwis"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Kola nuts"</string>
     <string name="produce_lemons">"Lemons"</string>
     <string name="produce_limes">"Limes"</string>
     <string name="produce_mangos">"Mangoes"</string>
     <string name="produce_mate">"Mate"</string>
     <string name="produce_nutmeg">"Nutmeg"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"Oil palms"</string>
     <string name="produce_olives">"Olives"</string>
     <string name="produce_oranges">"Oranges"</string>
@@ -314,8 +300,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_peaches">"Peaches"</string>
     <string name="produce_pears">"Pears"</string>
     <string name="produce_chili">"Chilli"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"Persimmons"</string>
     <string name="produce_pineapples">"Pineapples"</string>
     <string name="produce_pepper">"Peppers"</string>
@@ -337,26 +321,18 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
     <string name="quest_crossing_type_unmarked">"Crossing without road markings"</string>
     <string name="action_undo">"Undo"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomatoes"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"Areca nuts"</string>
     <string name="produce_sweet_peppers">"Sweet peppers"</string>
     <string name="produce_brazil_nuts">"Brazil nuts"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"Tung nuts"</string>
     <string name="quest_parkingType_title">"What kind of parking is this?"</string>
     <string name="quest_parkingType_surface">"Car park"</string>
     <string name="quest_parkingType_underground">"Underground garage"</string>
     <string name="quest_parkingType_multiStorage">"Multistorey"</string>
     <string name="quest_toiletAvailability_name_title">"Does %s have a toilet?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_powerPolesMaterial_title">"What is the material of this electricity pole?"</string>
+    <string name="quest_powerPolesMaterial_title">"What is the material of this power or utility pole?"</string>
     <string name="quest_powerPolesMaterial_wood">"Wood"</string>
 
     <!-- Metal is more generic than just steel. -->
@@ -853,7 +829,7 @@ levels"</string>
     <string name="quest_board_type_map_title">"Is it just a map and only a map?"</string>
     <string name="quest_board_type_map_description">"If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead."</string>
     <string name="quest_surface_detailed_answer_impossible">"Multiple surfaces…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Are you sure that it is impossible to specify the surface? Note the “ Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1119,4 +1095,10 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="notification_syncing">"Syncing data…"</string>
     <string name="notification_channel_sync">"Sync Data"</string>
     <string name="quest_board_type_sport">"Sport, Exercises"</string>
+    <string name="quest_generic_hasFeature_optional">"Optionally"</string>
+    <string name="quest_buildingType_bridge">"Bridge between buildings (skyway)"</string>
+    <string name="quest_laundrySelfService_title2">"Does this laundry provide self-service?"</string>
+    <string name="quest_dietType_halal_name_title">"Does %s offer Halal products?"</string>
+    <string name="quest_dietType_explanation_halal">"Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance."</string>
+    <string name="quest_picnicTableCover_title">"Is this picnic table covered (protected from rain)?"</string>
 </resources>
