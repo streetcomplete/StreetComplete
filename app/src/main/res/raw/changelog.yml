@@ -23,6 +23,7 @@ v36.0-beta1: |
   </ul>
   <h3>Other enhancements, fixes, maintenance</h3>
   <ul>
+  <li>More contrast on text (#3328), by @matkoniecz</li>
   <li>(#3327) by @FloEdelmann, (#3208) by @matkoniecz</li>
   </ul>
 
