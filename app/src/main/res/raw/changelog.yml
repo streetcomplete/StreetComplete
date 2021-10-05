@@ -17,7 +17,7 @@ v36.0-beta1: |
   </ul>
   <h3>Quest Enhancements</h3>
   <ul>
-  <li>Add answer option to state that at the are actually steps, not a footway (#3288, #3334), by @FloEdelmann</li>
+  <li>Add answer option to state that there are actually steps, not a footway (#3288, #3334), by @FloEdelmann</li>
   <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
   <li>Self-service laundry: Add answer option to say self-service is optional (#3309)</li>
   </ul>
