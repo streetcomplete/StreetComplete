@@ -22,7 +22,9 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         // once did a huge refactoring on the strings
         "Karl Ove Hufthammer" to listOf("nn"),
         // admin, changes strings etc
-        "Mateusz Konieczny" to listOf("pl")
+        "Mateusz Konieczny" to listOf("pl"),
+        // once did a huge refactoring on the strings (quotation marks), helps with "school-french"
+        "Flo Edelmann" to listOf("de"),
     )
 
     @TaskAction
