@@ -1,3 +1,6 @@
+v36.0-beta2: |
+  <p>Fix crash on entering quest selection screen</p>
+
 v36.0-beta1: |
   <h3>Easier orientation</h3>
   <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
@@ -26,6 +29,9 @@ v36.0-beta1: |
   <li>More contrast on text (#3328), by @matkoniecz</li>
   <li>(#3327) by @FloEdelmann, (#3208) by @matkoniecz</li>
   </ul>
+
+v35.2: |
+  <p>Fix crash on entering quest selection screen</p>
 
 v35.1: |
   <h3>Fixes</h3>
