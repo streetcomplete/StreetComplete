@@ -5,56 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/diameterInput"
+        android:layout_width="316dp"
+        android:layout_height="256dp"
+        android:background="@drawable/ic_fire_hydrant_sign"
+        android:ems="4"
+        android:gravity="top|left"
+        android:hapticFeedbackEnabled="false"
+        android:inputType="number"
+        android:maxLength="4"
+        android:paddingLeft="82dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/traffic_black"
+        android:textScaleX="1.04"
+        android:textSize="64sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_fire_hydrant_sign" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="H"
-            android:textColor="@color/traffic_black"
-            android:textSize="64sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/diameterInput"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="20dp"
-            android:background="@null"
-            android:ems="10"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            android:maxLength="3"
-            android:textColor="@color/traffic_black"
-            android:textSize="64sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

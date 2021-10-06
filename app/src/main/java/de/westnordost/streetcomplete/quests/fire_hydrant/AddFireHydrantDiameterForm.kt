@@ -16,7 +16,9 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.diameterInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.diameterInput.addTextChangedListener(TextChangedWatcher {
+            checkIsFormComplete()
+        })
     }
 
     override fun isFormComplete() = diameter.isNotEmpty() && diameter.toInt() > 0
