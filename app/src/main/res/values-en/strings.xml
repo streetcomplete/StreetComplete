@@ -1082,4 +1082,6 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="quest_fireHydrant_diameter_title">What diameter does this fire hydrant have?</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">This diameter looks implausible.</string>
 </resources>

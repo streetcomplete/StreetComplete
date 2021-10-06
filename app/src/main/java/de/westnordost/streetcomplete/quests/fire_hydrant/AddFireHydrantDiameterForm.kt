@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -24,6 +25,26 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<Int>() {
     override fun isFormComplete() = diameter.isNotEmpty() && diameter.toInt() > 0
 
     override fun onClickOk() {
-        applyAnswer(diameter.toInt())
+        if (userSelectedUnusualDiameter())
+            confirmUnusualInput { applyAnswer(diameter.toInt()) }
+        else
+            applyAnswer(diameter.toInt())
+
+    }
+
+    private fun userSelectedUnusualDiameter(): Boolean {
+        val diameter = diameter.toInt() ?: return false
+
+        return diameter > 600 || diameter < 50 || diameter % 10 != 0
+    }
+
+    private fun confirmUnusualInput(onConfirmed: () -> Unit) {
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
     }
 }

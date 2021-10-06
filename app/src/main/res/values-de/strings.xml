@@ -124,7 +124,7 @@ Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Erdboden"</string>
 
-    <!-- „Kies“ bezeichnet durch Erosion rundgewaschene und geglättete Körner. Ohne Bindemittel ergibt das eine wenig stabile Wegoberfläche. 
+    <!-- „Kies“ bezeichnet durch Erosion rundgewaschene und geglättete Körner. Ohne Bindemittel ergibt das eine wenig stabile Wegoberfläche.
 Die Beschreibung des Tags auf der englischen Wikiseite dagegen ist eine stabile Wetdecke. Die deutsche Wikiseite benutzt explizit das Wort „Splitt“, was gebrochene, kantige Steinchen bezeichnet. -->
     <string name="quest_surface_value_fine_gravel">"Feiner Splitt"</string>
     <string name="quest_surface_value_grass">"Gras"</string>
@@ -1116,4 +1116,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="notification_syncing">"Synchronisiere Daten…"</string>
     <string name="notification_channel_sync">"Daten synchronisieren"</string>
     <string name="quest_board_type_sport">"Sport, Training"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">Dieser Durchmesser sieht ungewöhnlich aus.</string>
+    <string name="quest_fireHydrant_diameter_title">Welchen Durchmesser hat dieser Hydrant?</string>
 </resources>
