@@ -68,6 +68,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
@@ -257,6 +258,7 @@ import javax.inject.Singleton
 
         AddCameraType(),
 
+        AddFireHydrantType(),
         AddFireHydrantDiameter(),
 
         /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
