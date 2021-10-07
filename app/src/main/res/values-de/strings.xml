@@ -1116,6 +1116,4 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="notification_syncing">"Synchronisiere Daten…"</string>
     <string name="notification_channel_sync">"Daten synchronisieren"</string>
     <string name="quest_board_type_sport">"Sport, Training"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">Dieser Durchmesser sieht ungewöhnlich aus.</string>
-    <string name="quest_fireHydrant_diameter_title">Welchen Durchmesser hat dieser Hydrant?</string>
 </resources>
