@@ -16,7 +16,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<Int>() {
 
     override val questTypeAchievements = emptyList<QuestTypeAchievement>()
 
-    override val enabledInCountries = NoCountriesExcept("DE","BE","GB")
+    override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
 
