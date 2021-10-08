@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
     private val listeners = CopyOnWriteArrayList<QuestPresetsSource.Listener>()
 
-    override var selectedQuestPresetId: Long
+    override var selectedId: Long
         get() = selectedQuestPresetStore.get()
         set(value) {
             selectedQuestPresetStore.set(value)
@@ -19,23 +19,23 @@ import javax.inject.Singleton
         }
 
     override val selectedQuestPresetName: String? get() =
-        questPresetsDao.getName(selectedQuestPresetId)
+        questPresetsDao.getName(selectedId)
 
-    fun addQuestPreset(presetName: String): Long {
+    fun add(presetName: String): Long {
         val presetId = questPresetsDao.add(presetName)
         onAddedQuestPreset(presetId, presetName)
         return presetId
     }
 
-    fun deleteQuestPreset(presetId: Long) {
-        if (presetId == selectedQuestPresetId) {
-            selectedQuestPresetId = 0
+    fun delete(presetId: Long) {
+        if (presetId == selectedId) {
+            selectedId = 0
         }
         questPresetsDao.delete(presetId)
         onDeletedQuestPreset(presetId)
     }
 
-    override fun getAllQuestPresets(): List<QuestPreset> =
+    override fun getAll(): List<QuestPreset> =
         questPresetsDao.getAll()
 
     /* listeners */
