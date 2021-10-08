@@ -61,7 +61,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).comment(1L, "abc")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
+        verify(noteEditsController).markSynced(edit, note)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -78,7 +78,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).create(pos, "abc")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
+        verify(noteEditsController).markSynced(edit, note)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -96,7 +96,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).comment(1L, "abc")
         verify(noteController).put(note)
-        verify(noteEditsController).syncFailed(edit)
+        verify(noteEditsController).markSyncFailed(edit)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onDiscarded("NOTE", pos)
     }
@@ -114,7 +114,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).comment(1L, "abc")
         verify(noteController).delete(note.id)
-        verify(noteEditsController).syncFailed(edit)
+        verify(noteEditsController).markSyncFailed(edit)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onDiscarded("NOTE", pos)
     }
@@ -127,7 +127,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi, times(2)).comment(anyLong(), any())
         verify(noteController, times(2)).put(any())
-        verify(noteEditsController, times(2)).synced(any(), any())
+        verify(noteEditsController, times(2)).markSynced(any(), any())
         verify(listener, times(2))!!.onUploaded(any(), any())
     }
 
@@ -150,8 +150,8 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).comment(1L, "test\n\nAttached photo(s):\nx\ny\nz")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
-        verify(noteEditsController).imagesActivated(1L)
+        verify(noteEditsController).markSynced(edit, note)
+        verify(noteEditsController).markImagesActivated(1L)
         verify(imageUploader).upload(listOf("a","b","c"))
         verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
@@ -176,8 +176,8 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).create(pos, "test\n\nAttached photo(s):\nx\ny\nz")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
-        verify(noteEditsController).imagesActivated(1L)
+        verify(noteEditsController).markSynced(edit, note)
+        verify(noteEditsController).markImagesActivated(1L)
         verify(imageUploader).upload(listOf("a","b","c"))
         verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
@@ -191,7 +191,7 @@ class NoteEditsUploaderTest {
         upload()
 
         verify(imageUploader).activate(3)
-        verify(noteEditsController).imagesActivated(1L)
+        verify(noteEditsController).markImagesActivated(1L)
     }
 
     private fun upload() = runBlocking {

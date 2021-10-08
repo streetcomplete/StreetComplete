@@ -63,7 +63,7 @@ class ElementEditsUploaderTest {
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onUploaded(any(), any())
-        verify(elementEditsController).synced(edit, updates)
+        verify(elementEditsController).markSynced(edit, updates)
         verify(mapDataController).updateAll(updates)
 
         verify(statisticsUpdater).addOne(any(), any())
@@ -84,7 +84,7 @@ class ElementEditsUploaderTest {
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
 
-        verify(elementEditsController).syncFailed(edit)
+        verify(elementEditsController).markSyncFailed(edit)
         verify(mapDataController).updateAll(eq(MapDataUpdates(
             updated = listOf(updatedNode)
         )))
@@ -106,7 +106,7 @@ class ElementEditsUploaderTest {
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
 
-        verify(elementEditsController).syncFailed(edit)
+        verify(elementEditsController).markSyncFailed(edit)
         verify(mapDataController).updateAll(eq(MapDataUpdates(
             deleted = listOf(ElementKey( ElementType.NODE, 1L))
         )))

@@ -33,7 +33,7 @@ class NoteEditsControllerTest {
 
     @Test fun syncFailed() {
         val edit = noteEdit(noteId = 1)
-        ctrl.syncFailed(edit)
+        ctrl.markSyncFailed(edit)
 
         verify(db).delete(1)
         verify(listener).onDeletedEdits(eq(listOf(edit)))
@@ -43,7 +43,7 @@ class NoteEditsControllerTest {
         val edit = noteEdit(id = 3, noteId = 1)
         val note = note(1)
 
-        ctrl.synced(edit, note)
+        ctrl.markSynced(edit, note)
 
         verify(db).markSynced(3)
         verify(db, never()).updateNoteId(anyLong(), anyLong())
@@ -54,7 +54,7 @@ class NoteEditsControllerTest {
         val edit = noteEdit(id = 3, noteId = -100)
         val note = note(123)
 
-        ctrl.synced(edit, note)
+        ctrl.markSynced(edit, note)
 
         verify(db).markSynced(3)
         verify(db).updateNoteId(-100L, 123L)
