@@ -77,6 +77,10 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         viewLifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)
+            val first = edits.firstOrNull { it.isUndoable }
+            if (first != null) {
+                adapter.select(first)
+            }
             binding.editHistoryList.adapter = adapter
         }
     }
