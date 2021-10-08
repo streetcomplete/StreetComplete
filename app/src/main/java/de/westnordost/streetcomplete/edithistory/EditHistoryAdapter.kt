@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.databinding.RowEditItemBinding
 import de.westnordost.streetcomplete.databinding.RowEditSyncedBinding
-import de.westnordost.streetcomplete.ktx.findPrevious
+import de.westnordost.streetcomplete.ktx.findNext
 import de.westnordost.streetcomplete.ktx.toast
 import java.lang.System.currentTimeMillis
 import java.text.DateFormat
@@ -114,7 +114,7 @@ class EditHistoryAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val row = rows[position]
-        val rowAbove = rows.findPrevious(position) { it is EditItem } as EditItem?
+        val rowAbove = rows.findNext(position+1) { it is EditItem } as EditItem?
         when(holder) {
             is EditViewHolder -> holder.onBind((row as EditItem).edit, rowAbove?.edit)
         }
