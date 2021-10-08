@@ -61,7 +61,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         super.onViewCreated(view, savedInstanceState)
 
         undoButton.setOnClickListener {
-            showUndoContextMenu()
+            showEditHistory()
         }
     }
 
@@ -80,24 +80,6 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
 
     /* ------------------------------------------------------------------------------------------ */
-
-    private fun showUndoContextMenu() {
-        val undo = 1
-        val showHistory = 2
-
-        val popup = PopupMenu(requireContext(), undoButton)
-        popup.menu.add(Menu.NONE, undo, 2, R.string.undo_last)
-        popup.menu.add(Menu.NONE, showHistory, 1, R.string.show_edit_history)
-        popup.show()
-
-        popup.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
-                undo -> viewLifecycleScope.launch { confirmUndo() }
-                showHistory -> showEditHistory()
-            }
-            true
-        }
-    }
 
     private fun showEditHistory() {
         listener?.onClickShowEditHistory()
