@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco Keve, Banco BIC Angola]
+atmOperators: [Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco BIC Angola, Banco Keve]
 centerLine: white
 isLivingStreetKnown: true
 mobileCountryCode: 631

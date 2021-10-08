@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BNI, BOA, BMOI, BFV-SG, MCB, BOA Madagascar]
+atmOperators: [BNI, BOA, BFV-SG, BMOI, BOA Madagascar, MCB]
 isLivingStreetKnown: true
 mobileCountryCode: 646
 officialLanguages: [mg, fr]

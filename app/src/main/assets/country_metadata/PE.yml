@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BCP, Scotiabank, Banco de la Nación, Caja Arequipa, Globalnet, Interbank, globalnet, Multired, BBVA, multiRed, GlobalNet, Banco de la Nacion, Banco de Crédito del Perú, BBVA Continental, banco de la nacion, Caja Piura, Banco Continental, 1, banco de la nación, MultiRed, Multi Red, Caja Cusco, Banco de Crédito, Banco de Credito, multired, max, Scotia Bank, Global Net, Continental, CODO DE POZUZO, Banco de la nación, Banco de La Nación]
+atmOperators: [BCP, Scotiabank, Banco de la Nación, Caja Arequipa, Interbank, Globalnet, BBVA, globalnet, Multired, GlobalNet, Banco de Crédito del Perú, Banco de la Nacion, BBVA Continental, multiRed, banco de la nacion, Banco Continental, MultiRed, Banco de Credito, Caja Piura, 1, Multi Red, Caja Cusco, banco de la nación, Banco de Crédito, Global Net, Continental, max, Scotia Bank, Banco de La Nación, CODO DE POZUZO, multired, Banco de la nación]
 centerLine: yellow
 chargingStationOperators: [La Puntilla]
 isSlowZoneKnown: true

@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [البنك الأهلي المصري, بنك مصر, CIB, بنك فيصل الإسلامي المصري, صيدلية شاهبور, HSBC, NBE, Commercial International Bank, Banque Misr, بنك القاهرة, بنك الإسكندرية, البنك التجاري الدولي CIB, البريد المصري, Bank of Egypt]
+atmOperators: [البنك الأهلي المصري, بنك مصر, CIB, HSBC, صيدلية شاهبور, بنك فيصل الإسلامي المصري, Commercial International Bank, Banque Misr, NBE, Bank of Egypt, بنك الإسكندرية, البريد المصري, بنك القاهرة, البنك التجاري الدولي CIB]
 firstDayOfWorkweek: Su
 mobileCountryCode: 602
 officialLanguages: [ar]

@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [KBZ, KBZ Bank, CB Bank, AYA Bank, AGD Bank, a, CB, MAB, AYA, AGD, KBZ BANK, UAB Bank, UAB, KBZ ATM, CB bank, CB Bank ATM, C B Bank, Aya Bank, AYA ATM, MAB Bank, KBZ bank, Ayeyarwaddy Bank, Aya Bank ATM, AYA bank, kbz, aa, MAB ATM, CB BANK, CB ATM, Aya, ATM, ယူနိုက်တက်အမရာဘဏ် UAB ATM, ကမ္ဘောဇဘဏ် KBZ Bank, kbz bank, atm, Myanma Apex Bank, MCB, 1]
+atmOperators: [KBZ, KBZ Bank, CB Bank, AGD Bank, AYA Bank, a, CB, MAB, AGD, AYA, KBZ BANK, C B Bank, Aya Bank, CB bank, UAB Bank, UAB, KBZ ATM, AYA ATM, CB Bank ATM, MAB Bank, KBZ bank, Aya Bank ATM, Ayeyarwaddy Bank, AYA bank, Aya, MAB ATM, CB BANK, kbz, aa, CB ATM, ATM, ကမ္ဘောဇဘဏ် KBZ Bank, Myanma Apex Bank, kbz bank, 1, MCB, atm, ယူနိုက်တက်အမရာဘဏ် UAB ATM]
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
 officialLanguages: [my]

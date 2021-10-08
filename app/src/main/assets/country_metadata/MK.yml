@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Охридска Банка, Шпаркасе, Шпаркасе Банка Македонија АД Скопје, Стопанска Банка АД - Скопје, Комерцијална Банка, Уни Банка, НЛБ - Тутунска Банка, Охридска банка, Комерцијална Банка АД Скопје, Stopanska Banka, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]
+atmOperators: [Охридска Банка, Шпаркасе, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, Комерцијална Банка, Уни Банка, НЛБ - Тутунска Банка, Stopanska Banka, Охридска банка, Комерцијална Банка АД Скопје, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]
 chargingStationOperators: [EVN]
 isSlowZoneKnown: true
 mobileCountryCode: 294

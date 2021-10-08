@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BKT, Raiffeisen, Fibank, Tirana Bank, Raiffeisen Bank, Raiffeisen BANK, Alpha Bank, donaldi, Raffeisen, Credins Bank, Credins, Bkt, Banka Kombetare Tregtare, Bank Gjirokastra]
+atmOperators: [BKT, Fibank, Tirana Bank, Raiffeisen Bank, Raiffeisen BANK, Credins Bank, Raiffeisenbank, Raiffeisen, Alpha Bank, Credins, Bank Gjirokastra, donaldi, Banka Kombetare Tregtare, Raffeisen, Bkt, ALPHA BANK]
 isLivingStreetKnown: true
 mobileCountryCode: 276
 officialLanguages: [sq]

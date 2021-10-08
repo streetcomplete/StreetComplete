@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BIBD, Baiduri Bank, Standard Chartered, TAIB]
+atmOperators: [BIBD, Baiduri Bank, Standard Chartered, TAIB, Maybank]
 centerLine: white
 isLeftHandTraffic: true
 mobileCountryCode: 528

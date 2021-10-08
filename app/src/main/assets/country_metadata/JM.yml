@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [NCB, Scotiabank, National Commercial Bank, Sagicor, Jamaica National, JNCB, JN, Bank of Nova Scotia Jamaica Limited]
+atmOperators: [NCB, Scotiabank, National Commercial Bank, Sagicor, JNCB, JN, Jamaica National, Bank of Nova Scotia Jamaica Limited]
 isLeftHandTraffic: true
 mobileCountryCode: 338
 officialLanguages: [en, jam]
