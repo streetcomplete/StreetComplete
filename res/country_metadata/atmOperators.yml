@@ -359,6 +359,35 @@ AZ:
   - Nikoil # 2
   - «Kapital Bank» ASC # 2
   - Nikoil Bank # 2
+BA:
+  - UniCredit Bank # 19
+  - Raiffeisen Bank # 11
+  - Raiffeisen # 8
+  - Nova Banka # 8
+  - NLB Banka # 7
+  - Sberbank # 6
+  - Unicredit # 5
+  - Unicredit bank # 5
+  - Raifefisen Bank dd BIH # 4
+  - NLB # 4
+  - Raiffeisen bank # 4
+  - Unicredit Bank # 4
+  - Raiffeisenbank # 4
+  - Sparkasse # 4
+  - Addiko Bank # 4
+  - Komercijalna Banka # 3
+  - Raiffeisen banka # 3
+  - Unicredit banka # 3
+  - UniCredit # 3
+  - Ziraat Bank # 3
+  - Sparkasse Bank # 3
+  - Raiffeisen Bank BiH # 3
+  - Raiffeisen Bank dd BIH # 2
+  - Bosna Bank International # 2
+  - BBI # 2
+  - Komercijalna banka # 2
+  - NLB banka # 2
+  - Intesa San Paolo # 2
 BB:
   - CIBC FirstCaribbean International Bank # 7
   - Scotiabank # 4
@@ -654,6 +683,16 @@ BR:
   - Caixas eletrônicos da Caixa Econômica Federal # 2
   - banco 24h # 2
   - Banco 24 horas. # 2
+BT:
+  - Bank of Bhutan # 19
+  - BOB # 4
+  - Bhutan National Bank # 3
+  - Druk PNB # 2
+  - Bank Of Bhutan # 2
+  - BNB # 2
+  - Tashi Bank # 2
+  - BOBL # 2
+  - BDBL # 2
 BW:
   - FNB # 18
   - First National Bank # 4
@@ -2158,6 +2197,25 @@ ET:
   - United Bank # 2
   - Commercial bank of Ethiopia # 2
   - Awash Bank # 2
+FI:
+  - Otto # 264
+  - Suomen Automatia Oy # 77
+  - Nosto # 57
+  - Otto. # 38
+  - Automatia Pankkiautomaatit Oy # 23
+  - OTTO # 9
+  - Osuuspankki # 6
+  - TalletusOtto # 6
+  - OttoPlus # 5
+  - Nordea # 5
+  - Nokas CMS Oy # 3
+  - Automatia # 3
+  - bittiraha.fi # 3
+  - OP # 2
+  - atm # 2
+  - Aktia # 2
+  - Ottopiste # 2
+  - Otto-automaatti # 2
 FJ:
   - ANZ # 19
   - BSP # 17
@@ -3815,6 +3873,71 @@ KW:
   - بنك بوبيان # 2
 KY:
   - Cayman National # 2
+KZ:
+  - Jusan Bank # 369
+  - Народный банк Казахстана # 49
+  - Казкоммерцбанк, АО # 35
+  - Народный банк # 28
+  - Казкоммерцбанк # 21
+  - "АО \"Казкоммерцбанк\"" # 21
+  - Kazkom # 17
+  - Halyk Bank # 17
+  - Сбербанк # 10
+  - Казком # 9
+  - Казкомерцбанк # 9
+  - Halyk bank # 8
+  - Народный Банк # 7
+  - Сбербанк России # 6
+  - КазКом # 6
+  - Халык банк # 6
+  - Qazkom # 6
+  - Казкоммерцбанк банкомат # 5
+  - HALYK BANK # 5
+  - KAZKOM # 5
+  - Халық банк # 5
+  - ForteBank # 5
+  - Альянс Банк # 4
+  - АТФ Банк # 4
+  - Народный банкомат # 4
+  - Альянс банк # 4
+  - КазКоммерцБанк # 4
+  - Евразийский банк # 4
+  - БТА банкомат # 3
+  - БТА # 3
+  - АТФ банк # 3
+  - БТА банк # 3
+  - Halyk # 3
+  - Kaspi bank # 3
+  - KAZ KOM # 3
+  - Халык Банк # 3
+  - Kaspi Bank # 3
+  - Bank RBK # 3
+  - Банк России # 3
+  - Centercredit # 3
+  - Банкомат Народный банк # 3
+  - АльянсБанк # 2
+  - Банкомат БТА банка # 2
+  - АТФ банкомат # 2
+  - Казпочта # 2
+  - Bank CenterCredit # 2
+  - KazCom # 2
+  - Народный банк казахстана # 2
+  - Нурбанк # 2
+  - Казкомерц банк # 2
+  - Халық банкі # 2
+  - Kazcom # 2
+  - АТФ # 2
+  - народный банк # 2
+  - HalykBank # 2
+  - halyk bank # 2
+  - QIWI # 2
+  - HALYK bank # 2
+  - Kaspi Bank терминал # 2
+  - АО Казкоммерцбанк # 2
+  - Qazkom банкомат # 2
+  - Kaspi # 2
+  - KaspiBank # 2
+  - Kaspi.kz # 2
 LA:
   - BCEL # 85
   - LDB # 21
@@ -4047,6 +4170,29 @@ MM:
   - MCB # 2
   - atm # 2
   - ယူနိုက်တက်အမရာဘဏ် UAB ATM # 2
+MN:
+  - Хаан банк # 14
+  - Хаан # 13
+  - Хаанбанк # 6
+  - хаан банк # 6
+  - Голомт # 5
+  - Golomt Bank # 3
+  - АТМ # 3
+  - Голомт банк # 3
+  - Төрийн банк # 3
+  - khaan bank # 3
+  - Khan Bank # 3
+  - Khaan bank # 3
+  - Khan bank # 3
+  - ХХБ # 2
+  - Худалдаа хөгжлийн банк # 2
+  - atm # 2
+  - Хаан банк АТМ # 2
+  - Хаан Банк # 2
+  - Ger # 2
+  - Aa # 2
+  - zam # 2
+  - khaanbank # 2
 MT:
   - BOV # 16
   - HSBC # 14
