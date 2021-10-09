@@ -18,6 +18,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
           highway = crossing
           and foot != no
           and crossing
+          and crossing != unmarked
           and crossing != island
           and !crossing:island
     """.toElementFilterExpression()}

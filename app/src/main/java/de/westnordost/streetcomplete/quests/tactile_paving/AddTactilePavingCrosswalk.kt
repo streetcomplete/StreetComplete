@@ -16,7 +16,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
         nodes with
           (
             highway = traffic_signals and crossing = traffic_signals and foot != no
-            or highway = crossing and foot != no
+            or highway = crossing and foot != no and crossing and crossing != unmarked
           )
           and (
             !tactile_paving
