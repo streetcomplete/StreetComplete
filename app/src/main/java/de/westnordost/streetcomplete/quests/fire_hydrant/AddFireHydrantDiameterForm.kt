@@ -6,9 +6,14 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<Int>() {
+class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameter>() {
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
+    )
 
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
@@ -26,9 +31,9 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onClickOk() {
         if (userSelectedUnusualDiameter())
-            confirmUnusualInput { applyAnswer(diameter.toInt()) }
+            confirmUnusualInput { applyAnswer(FireHydrantDiameter(true,diameter.toInt())) }
         else
-            applyAnswer(diameter.toInt())
+            applyAnswer(FireHydrantDiameter(true,diameter.toInt()))
 
     }
 
@@ -43,6 +48,15 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<Int>() {
             .setTitle(R.string.quest_generic_confirmation_title)
             .setMessage(R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
+    }
+
+    private fun confirmNoSign() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->  applyAnswer(FireHydrantDiameter(false,0)) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }
