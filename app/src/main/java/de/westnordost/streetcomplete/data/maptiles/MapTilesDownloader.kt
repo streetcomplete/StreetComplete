@@ -29,15 +29,9 @@ class MapTilesDownloader @Inject constructor(
     }
 
     private suspend fun downloadTiles(source: TileSource, bbox: BoundingBox) {
-        var tileCount = 0
-        var failureCount = 0
-        var downloadedSize = 0
-        var cachedSize = 0
         val time = currentTimeMillis()
-
         val tiles = getDownloadTileSequence(source, bbox)
         val results = arrayOfNulls<DownloadResult>(tiles.count())
-
         coroutineScope {
             tiles.forEachIndexed { i, tile ->
                 launch {
@@ -46,8 +40,11 @@ class MapTilesDownloader @Inject constructor(
             }
         }
 
+        val tileCount = results.size
+        var failureCount = 0
+        var downloadedSize = 0
+        var cachedSize = 0
         results.forEach { result ->
-            ++tileCount
             when (result) {
                 is DownloadFailure -> ++failureCount
                 is DownloadSuccess -> {
