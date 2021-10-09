@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fireHydrantSign"
         android:layout_width="367.5dp"
         android:layout_height="165dp"
         app:layout_constraintEnd_toEndOf="parent"

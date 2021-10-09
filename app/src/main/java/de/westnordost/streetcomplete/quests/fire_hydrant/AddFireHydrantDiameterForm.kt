@@ -33,7 +33,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<Int>() {
     }
 
     private fun userSelectedUnusualDiameter(): Boolean {
-        val diameter = diameter.toInt() 
+        val diameter = diameter.toInt()
 
         return diameter > 600 || diameter < 50 || diameter % 5 != 0
     }

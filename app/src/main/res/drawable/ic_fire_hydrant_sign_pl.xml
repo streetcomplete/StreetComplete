@@ -56,8 +56,8 @@
     android:pathData="M0,0 H 500 V 710 H 0 Z">
     <aapt:attr name="android:fillColor">
       <gradient
-          android:startColor="#00FFFFFF"
-          android:endColor="#FFFFFF"
+          android:startColor="@color/fade_out_transparent"
+          android:endColor="@color/fade_out"
           android:startX="0"
           android:endX="0"
           android:startY="360"

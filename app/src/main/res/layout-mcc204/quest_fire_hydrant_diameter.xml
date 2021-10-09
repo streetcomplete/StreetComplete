@@ -7,26 +7,25 @@
 
     <ImageView
         android:id="@+id/fireHydrantSign"
-        android:layout_width="367.5dp"
-        android:layout_height="165dp"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_fire_hydrant_sign_de" />
+        app:srcCompat="@drawable/ic_fire_hydrant_sign_nl" />
 
     <EditText
         android:id="@+id/diameterInput"
-        android:layout_width="367.5dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
         android:background="@null"
         android:fontFamily="monospace"
+        android:gravity="center_horizontal"
         android:inputType="number"
         android:maxLength="4"
-        android:paddingLeft="95dp"
-        android:paddingTop="20dp"
         android:textColor="@color/traffic_black"
-        android:textScaleX="1.105"
-        android:textSize="70dp"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
