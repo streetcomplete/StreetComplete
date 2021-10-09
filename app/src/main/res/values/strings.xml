@@ -1080,10 +1080,10 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
-    <string name="quest_smoothness_name_title">What is the surface quality of %s here?</string>
-    <string name="quest_smoothness_square_title">What is the surface quality of this square?</string>
-    <string name="quest_smoothness_path_title">What is the surface quality of this path here?</string>
-    <string name="quest_smoothness_road_title">What is the surface quality of this road here?</string>
+    <string name="quest_smoothness_name_title">What is the surface quality of %1$s here (%2$s)?</string>
+    <string name="quest_smoothness_square_title">What is the surface quality of this square (%s)?</string>
+    <string name="quest_smoothness_path_title">What is the surface quality of this path here (%s)?</string>
+    <string name="quest_smoothness_road_title">What is the surface quality of this road here (%s)?</string>
     <string name="quest_smoothness_title_excellent">Smooth and even</string>
     <string name="quest_smoothness_title_good">Mostly even</string>
     <string name="quest_smoothness_title_intermediate">Bumpy</string>
