@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
+import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -68,7 +69,6 @@ import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
-import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
