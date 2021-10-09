@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BIA]
+atmOperators: [BIA, Nita]
 mobileCountryCode: 614
 officialLanguages: [fr, ha]
 orchardProduces: [tomato, guava, mango, mangosteen, date, chilli_pepper, sweet_pepper, pepper]

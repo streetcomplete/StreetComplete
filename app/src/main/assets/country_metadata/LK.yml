@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [HNB, Commercial Bank, BOC, Bank of Ceylon, Sampath Bank, Hatton National Bank, People's Bank, NSB, BOC ATM, Union Bank, Peoples Bank, People’s Bank, Nations Trust Bank, HSBC, Commercial bank, Commercial, Seylan Bank, Sampath ATM, People‘s Bank, HNB ATM, Commercial Bank of Ceylon PLC, Commercial Bank ATM, Bank Of Ceylon, BOĆ]
+atmOperators: [Commercial Bank, HNB, BOC, Hatton National Bank, Bank of Ceylon, People's Bank, Sampath Bank, NSB, Peoples Bank, BOC ATM, Union Bank, People’s Bank, HSBC, Nations Trust Bank, Commercial bank, Commercial Bank of Ceylon PLC, Bank Of Ceylon, Sampath ATM, HNB ATM, Seylan Bank, Commercial, Commercial Bank ATM, BOĆ, People‘s Bank]
 chargingStationOperators: [Spark EV]
 isLeftHandTraffic: true
 mobileCountryCode: 413

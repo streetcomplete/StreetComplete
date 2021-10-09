@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Bank Hapoalim, בנק לאומי, לאומי, הפועלים, מזרחי טפחות, כספונט, הכניסה לחוף הבונים, בנק ירושלים, בנק הפועלים, Leumi, Hapoalim]
+atmOperators: [Bank Hapoalim, בנק לאומי, לאומי, הפועלים, בנק הפועלים, מזרחי טפחות, כספונט, דיסקונט, Bitcoin Change, Hapoalim, Leumi, בנק ירושלים]
 firstDayOfWorkweek: Su
 isLivingStreetKnown: true
 isSlowZoneKnown: true

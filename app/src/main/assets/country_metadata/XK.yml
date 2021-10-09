@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [TEB, Raiffeisen Bank, NLB Banka, BKT, TEB Bank, NLB, Pcb, BPB, ProCredit Bank, Banka Ekonomike]
 mobileCountryCode: 221
 officialLanguages: [sq, sr]
 popularReligions: [muslim]

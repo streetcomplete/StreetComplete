@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Absa Group Limited, SG-SSB, Stanbic Bank, Stanbic, Fidelity Bank, GCB, Access Bank, Republic Bank (Ghana) Limited, GCB Bank, Cal Bank, Barclays Bank, ADB, UBA, Societe Generale Ghana Limited, Republic Bank, Republic, Ecobank, Eco Bank, Calbank, Barclays]
+atmOperators: [Ecobank, Fidelity Bank, GCB Bank, Stanbic Bank, Absa Group Limited, Access Bank, Standard Chartered, SG-SSB, UBA, GCB, GT Bank, Stanbic, Barclays Bank, Republic Bank (Ghana) Limited, ADB, Zenith Bank, Eco Bank, Barclays, Republic, Societe Generale Ghana Limited, Cal Bank, Republic Bank, Calbank]
 mobileCountryCode: 620
 officialLanguages: [en, ak, ee]
 orchardProduces: [cacao, orange, pineapple, coconut, tomato, chilli_pepper, sweet_pepper, guava, mango, mangosteen, banana, cashew_nut, lemon, lime, kola_nut, rubber, avocado, papaya, pepper]

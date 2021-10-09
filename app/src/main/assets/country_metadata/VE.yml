@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco Mercantil, Banco Mercantil (Solo Personal), Mercantil, Banco de Venezuela, Banco del Tesoro (Solo Personal), Banco del Tesoro, Sofitasa, Provincial, Banco de Venezuela (Solo Personal), Banco Provincial, Banesco, BOD, Occidental de Descuento, Bicentenario, Banco Mercantil (Slo Personal), Banco Exterior, Banco Bicentenario del Pueblo, Banco Bicentenario, Bancaribe]
+atmOperators: [Mercantil, Banco Mercantil, Banco de Venezuela, Banco Mercantil (Solo Personal), Provincial, Sofitasa, Banco del Tesoro (Solo Personal), Banco del Tesoro, Banesco, Bicentenario, Banco Provincial, Banco Exterior, Banco Bicentenario del Pueblo, BOD]
 centerLine: white
 mobileCountryCode: 734
 officialLanguages: [es]

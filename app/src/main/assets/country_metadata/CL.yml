@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco de Chile, BancoEstado, Banco Estado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, RedBanc, Itaú, Bancoestado, banco chile, Transbank, Servipag, REDBANC]
+atmOperators: [Banco de Chile, Banco Estado, BancoEstado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, RedBanc, Itaú, Servipag, banco chile, Transbank, REDBANC, Bancoestado]
 centerLine: white
 chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
 mobileCountryCode: 730

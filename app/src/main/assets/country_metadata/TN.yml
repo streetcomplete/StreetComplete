@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [fr]
-atmOperators: [بنك تونس العربي الدولي, البنك الوطني الفلاحي, STB, Banque de Tunisie]
+atmOperators: [الاتحاد البنكي للتجارة والصناعة, بنك تونس العربي الدولي, البنك الوطني الفلاحي, Banque de Tunisie, STB]
 mobileCountryCode: 605
 officialLanguages: [ar]
 orchardProduces: [tomato, olive, date, grape, peach, apple, orange, grapefruit, almond, lemon, lime, apricot, fig, chilli_pepper, sweet_pepper, pear, plum]

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [UniCredit Bank, Raiffeisen, Unicredit bank, Raiffeisen Bank, Nova Banka, Unicredit Bank, Unicredit, Raiffeisenbank, Raiffeisen bank, Raifefisen Bank dd BIH, NLB, Unicredit banka, UniCredit, Raiffeisen Bank BiH, Komercijalna Banka, Sparkasse, Sberbank, Raiffeisen banka, Raiffeisen Bank dd BIH, NLB Banka, BBI]
+atmOperators: [UniCredit Bank, Raiffeisen Bank, Raiffeisen, Nova Banka, NLB Banka, Sberbank, Unicredit, Unicredit bank, Raifefisen Bank dd BIH, NLB, Raiffeisen bank, Unicredit Bank, Raiffeisenbank, Sparkasse, Addiko Bank, Komercijalna Banka, Raiffeisen banka, Unicredit banka, UniCredit, Ziraat Bank, Sparkasse Bank, Raiffeisen Bank BiH, Raiffeisen Bank dd BIH, Bosna Bank International, BBI, Komercijalna banka, NLB banka, Intesa San Paolo]
 chargingStationOperators: [City]
 isLivingStreetKnown: true
 isSlowZoneKnown: true

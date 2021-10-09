@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Republic Bank, First Citizens Bank, RBC, Scotiabank, First Citizens, Scotia Bank, RBC Royal Bank, Eastern Credit Union, Republic Bank Ltd., Republic Bank ATM, FCB]
+atmOperators: [Republic Bank, First Citizens Bank, RBC, Scotiabank, First Citizens, Scotia Bank, RBC Royal Bank, Eastern Credit Union, FCB, Republic Bank Ltd., Republic Bank ATM]
 isLeftHandTraffic: true
 mobileCountryCode: 374
 officialLanguages: [en]

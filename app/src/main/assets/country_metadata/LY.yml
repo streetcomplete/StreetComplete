@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [طريق الشجرة, مصرف الجمهورية, مصرف التجارة والتنمية, AMAN Bank, مصرف شمال افريقيا, مصرف الوحدة, المصرف التجاري الوطني, AL WAHDA Bank]
+atmOperators: [طريق الشجرة, مصرف الجمهورية, AMAN Bank, مصرف التجارة والتنمية, AL WAHDA Bank, المصرف التجاري الوطني, مصرف الوحدة, المتوكل 2 لمواد البناء ومعدات الورش]
 firstDayOfWorkweek: Su
 mobileCountryCode: 606
 officialLanguages: [ar]
