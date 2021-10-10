@@ -8,14 +8,14 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
-   sodipodi:docname="hydrant_uk.svg"
+   sodipodi:docname="fire_hydrant_sign_uk.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
      id="namedview7"
-     pagecolor="#f4e614"
+     pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageshadow="2"
@@ -26,7 +26,7 @@
      width="170pt"
      units="pt"
      inkscape:zoom="1.1759259"
-     inkscape:cx="78.661417"
+     inkscape:cx="78.661419"
      inkscape:cy="266.59843"
      inkscape:window-width="1920"
      inkscape:window-height="1021"
@@ -40,6 +40,13 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#f4e614;fill-opacity:0.99883479;stroke-width:3.55898"
+       id="rect846"
+       width="59.972221"
+       height="70.555557"
+       x="0"
+       y="0" />
     <rect
        style="fill:#000000;stroke-width:0.288697"
        id="rect1257"
