@@ -31,9 +31,7 @@
         android:pathData="M40,102.5 l15,-15"
         android:strokeColor="#FFFFFF"
         android:strokeWidth="2" />
-    <path
-        android:pathData="M65 87.5 h50 v17 h-50 v-17Z"
-        android:fillColor="#57FFFFFF"/>
+
 
     <path
     android:pathData="M0,0 H 150 V 200 H 0 Z">
