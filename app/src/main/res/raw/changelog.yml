@@ -1,7 +1,4 @@
-v36.0-beta2: |
-  <p>Fix crash on entering quest selection screen</p>
-
-v36.0-beta1: |
+v36.0: |
   <h3>Easier orientation</h3>
   <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
   <p>The location button (lower right corner) also has a new behavior:</p>
@@ -23,6 +20,7 @@ v36.0-beta1: |
   <li>Add answer option to state that there are actually steps, not a footway (#3288, #3334), by @FloEdelmann</li>
   <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
   <li>Self-service laundry: Add answer option to say self-service is optional (#3309)</li>
+  <li>Don't ask some of the quests for private things (#3356, #3357, #3358), by @dbdean</li>
   </ul>
   <h3>Other enhancements, fixes, maintenance</h3>
   <ul>
