@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
+import FireHydrantDiameter
+import FireHydrantDiameterAnswer
+import NoFireHydrantDiameterSign
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -9,7 +12,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameter>() {
+class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
@@ -18,7 +21,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
 
-    private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim()
+    private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim().toInt()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,18 +30,18 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
         })
     }
 
-    override fun isFormComplete() = diameter.isNotEmpty() && diameter.toInt() > 0
+    override fun isFormComplete() = diameter > 0
 
     override fun onClickOk() {
         if (userSelectedUnusualDiameter())
-            confirmUnusualInput { applyAnswer(FireHydrantDiameter(true,diameter.toInt())) }
+            confirmUnusualInput { applyAnswer(FireHydrantDiameter(diameter)) }
         else
-            applyAnswer(FireHydrantDiameter(true,diameter.toInt()))
+            applyAnswer(FireHydrantDiameter(diameter))
 
     }
 
     private fun userSelectedUnusualDiameter(): Boolean {
-        val diameter = diameter.toInt()
+        val diameter = diameter
 
         return diameter > 600 || diameter < 50 || diameter % 5 != 0
     }
@@ -56,7 +59,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->  applyAnswer(FireHydrantDiameter(false,0)) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->  applyAnswer(NoFireHydrantDiameterSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }

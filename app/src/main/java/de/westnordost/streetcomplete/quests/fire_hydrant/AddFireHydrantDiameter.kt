@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
+import FireHydrantDiameter
+import FireHydrantDiameterAnswer
+import NoFireHydrantDiameterSign
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
-class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameter>() {
+class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val elementFilter = "nodes with emergency = fire_hydrant and !fire_hydrant:diameter and fire_hydrant:diameter:signed!=no"
     override val commitMessage = "Add fire hydrant diameter"
@@ -22,12 +25,11 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameter>() {
 
     override fun createForm() = AddFireHydrantDiameterForm()
 
-    override fun applyAnswerTo(answer: FireHydrantDiameter, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
 
-        if (answer.hasSign) {
-            changes.add("fire_hydrant:diameter", answer.toString())
-        }else{
-            changes.add("fire_hydrant:diameter:signed", "no")
+        when (answer) {
+            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.diameter.toString())
+            is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
         }
     }
 
