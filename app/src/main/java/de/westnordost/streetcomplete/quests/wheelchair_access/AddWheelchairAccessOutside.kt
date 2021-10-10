@@ -11,7 +11,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with leisure = dog_park
-         amd access !~ no|private
+         and access !~ no|private
          and (!wheelchair or wheelchair older today -8 years)
     """
     override val commitMessage = "Add wheelchair access to outside places"
