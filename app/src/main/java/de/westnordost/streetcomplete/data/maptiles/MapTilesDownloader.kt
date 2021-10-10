@@ -47,10 +47,8 @@ class MapTilesDownloader @Inject constructor(
         results.forEach { result ->
             when (result) {
                 is DownloadFailure -> ++failureCount
-                is DownloadSuccess -> {
-                    if (result.alreadyCached) cachedSize += result.size
-                    else downloadedSize += result.size
-                }
+                is DownloadCached -> cachedSize += result.size
+                is DownloadFresh -> downloadedSize += result.size
             }
         }
         val seconds = (currentTimeMillis() - time) / 1000.0
@@ -101,7 +99,7 @@ class MapTilesDownloader @Inject constructor(
                 val alreadyCached = response.cacheResponse() != null
                 val logText = if (alreadyCached) "in cache" else "downloaded"
                 Log.v(TAG, "${source.title} tile $zoom/$x/$y $logText")
-                cont.resume(DownloadSuccess(alreadyCached, size))
+                cont.resume(if (alreadyCached) DownloadCached(size) else DownloadFresh(size))
             }
         }
         cont.invokeOnCancellation { call.cancel() }
@@ -114,5 +112,6 @@ class MapTilesDownloader @Inject constructor(
 }
 
 private sealed class DownloadResult
-private data class DownloadSuccess(val alreadyCached: Boolean, val size: Int) : DownloadResult()
+private data class DownloadFresh(val size: Int) : DownloadResult()
+private data class DownloadCached(val size: Int) : DownloadResult()
 private object DownloadFailure : DownloadResult()
