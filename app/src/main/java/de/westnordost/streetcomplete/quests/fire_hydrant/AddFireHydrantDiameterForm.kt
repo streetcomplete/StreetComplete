@@ -21,7 +21,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
 
-    private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim().toInt()
+    private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
