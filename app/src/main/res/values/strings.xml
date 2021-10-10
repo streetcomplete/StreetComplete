@@ -1085,4 +1085,9 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_fireHydrant_diameter_title">What diameter is on this fire hydrant’s sign?</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">This diameter looks implausible.</string>
+    <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
+    <string name="quest_fireHydrant_position_green">In a grassy area</string>
+    <string name="quest_fireHydrant_position_lane">On the side of a road lane</string>
+    <string name="quest_fireHydrant_position_sidewalk">On a sidewalk</string>
+    <string name="quest_fireHydrant_position_parking_lot">In a parking</string>
 </resources>
