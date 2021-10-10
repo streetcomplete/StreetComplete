@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
-import FireHydrantDiameter
-import FireHydrantDiameterAnswer
-import NoFireHydrantDiameterSign
+
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog

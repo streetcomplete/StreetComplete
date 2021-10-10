@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
-import FireHydrantDiameter
-import FireHydrantDiameterAnswer
-import NoFireHydrantDiameterSign
+
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -12,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val elementFilter = """
-        nodes with 
+        nodes with
          emergency = fire_hydrant
          and !fire_hydrant:diameter
          and fire_hydrant:diameter:signed != no
