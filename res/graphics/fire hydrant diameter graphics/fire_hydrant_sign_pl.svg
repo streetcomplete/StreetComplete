@@ -7,7 +7,7 @@
    inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
    width="496.06299"
    height="708.66138"
-   sodipodi:docname="Tablica_orientacyjna_dla_hydrantu.svg"
+   sodipodi:docname="fire_hydrant_sign_pl.svg"
    inkscape:export-filename="/home/muzzy/OSM/h2.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
@@ -57,13 +57,13 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="1021"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1.0668001"
-     inkscape:cx="243.25083"
-     inkscape:cy="318.24145"
-     inkscape:window-x="0"
+     inkscape:cx="243.25082"
+     inkscape:cy="318.24144"
+     inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
@@ -76,13 +76,13 @@
      inkscape:pagecheckerboard="0" />
   <path
      style="opacity:1;fill:#ca333a;fill-opacity:1;fill-rule:evenodd;stroke:none"
-     d="M 34.4375,0 C 15.352855,0 0,15.352855 0,34.4375 l 0,639.78125 c 0,19.08465 15.352855,34.4375 34.4375,34.4375 l 427.1875,0 c 19.08465,0 34.4375,-15.35285 34.4375,-34.4375 l 0,-639.78125 C 496.0625,15.352855 480.70965,0 461.625,0 z m 9.75,31.973681 c 5.525898,0 10,4.474102 10,10 0,5.525898 -4.474102,10 -10,10 -5.525898,0 -10,-4.474102 -10,-10 0,-5.525898 4.474102,-10 10,-10 z m 408.5625,0 c 5.5259,0 10,4.474102 10,10 0,5.525898 -4.4741,10 -10,10 -5.5259,0 -10,-4.474102 -10,-10 0,-5.525898 4.4741,-10 10,-10 z M 44.1875,657.40625 c 5.525898,0 10,4.4741 10,10 0,5.5259 -4.474102,10 -10,10 -5.525898,0 -10,-4.4741 -10,-10 0,-5.5259 4.474102,-10 10,-10 z m 408.5625,0 c 5.5259,0 10,4.4741 10,10 0,5.5259 -4.4741,10 -10,10 -5.5259,0 -10,-4.4741 -10,-10 0,-5.5259 4.4741,-10 10,-10 z"
+     d="M 34.4375,0 C 15.352855,0 0,15.352855 0,34.4375 v 639.78125 c 0,19.08465 15.352855,34.4375 34.4375,34.4375 H 461.625 c 19.08465,0 34.4375,-15.35285 34.4375,-34.4375 V 34.4375 C 496.0625,15.352855 480.70965,0 461.625,0 Z"
      id="rect3936"
      inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
      inkscape:export-xdpi="90"
      inkscape:export-ydpi="90"
      inkscape:connector-curvature="0"
-     sodipodi:nodetypes="sssssssssssssssssssssssssssss" />
+     sodipodi:nodetypes="sssssssss" />
   <rect
      style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
      id="rect3070"
