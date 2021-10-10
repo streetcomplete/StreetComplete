@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.user
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.databinding.RowLinkItemBinding
 import de.westnordost.streetcomplete.view.ListAdapter

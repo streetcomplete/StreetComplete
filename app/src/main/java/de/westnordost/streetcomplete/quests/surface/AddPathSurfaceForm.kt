@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.R.string
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
@@ -40,7 +39,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsSte
         val way = osmElement as? Way ?: return null
         if (way.isArea() || way.tags["highway"] == "steps") return null
 
-        return AnswerItem(string.quest_generic_answer_is_actually_steps) {
+        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
             applyAnswer(IsActuallyStepsAnswer)
         }
     }
