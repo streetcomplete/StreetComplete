@@ -16,11 +16,10 @@
 
     <EditText
         android:id="@+id/diameterInput"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="50dp"
         android:background="#25000000"
         android:fontFamily="monospace"
         android:gravity="center_horizontal"
