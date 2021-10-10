@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   id="svg2"
+   version="1.1"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   width="496.06299"
+   height="708.66138"
+   sodipodi:docname="Tablica_orientacyjna_dla_hydrantu.svg"
+   inkscape:export-filename="/home/muzzy/OSM/h2.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title3997">Tablica orientacyjna dla hydrantu</title>
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Tablica orientacyjna dla hydrantu</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:date>17.04.2012</dc:date>
+        <dc:language>pl-PL</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="1.0668001"
+     inkscape:cx="243.25083"
+     inkscape:cy="318.24145"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     units="mm"
+     inkscape:document-units="mm"
+     showborder="false"
+     inkscape:showpageshadow="false"
+     inkscape:pagecheckerboard="0" />
+  <path
+     style="opacity:1;fill:#ca333a;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     d="M 34.4375,0 C 15.352855,0 0,15.352855 0,34.4375 l 0,639.78125 c 0,19.08465 15.352855,34.4375 34.4375,34.4375 l 427.1875,0 c 19.08465,0 34.4375,-15.35285 34.4375,-34.4375 l 0,-639.78125 C 496.0625,15.352855 480.70965,0 461.625,0 z m 9.75,31.973681 c 5.525898,0 10,4.474102 10,10 0,5.525898 -4.474102,10 -10,10 -5.525898,0 -10,-4.474102 -10,-10 0,-5.525898 4.474102,-10 10,-10 z m 408.5625,0 c 5.5259,0 10,4.474102 10,10 0,5.525898 -4.4741,10 -10,10 -5.5259,0 -10,-4.474102 -10,-10 0,-5.525898 4.4741,-10 10,-10 z M 44.1875,657.40625 c 5.525898,0 10,4.4741 10,10 0,5.5259 -4.474102,10 -10,10 -5.525898,0 -10,-4.4741 -10,-10 0,-5.5259 4.474102,-10 10,-10 z m 408.5625,0 c 5.5259,0 10,4.4741 10,10 0,5.5259 -4.4741,10 -10,10 -5.5259,0 -10,-4.4741 -10,-10 0,-5.5259 4.4741,-10 10,-10 z"
+     id="rect3936"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="sssssssssssssssssssssssssssss" />
+  <rect
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="rect3070"
+     width="92.125984"
+     height="77.952759"
+     x="56.095863"
+     y="455.77017"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     y="455.77017"
+     x="166.14185"
+     height="77.952759"
+     width="46.062992"
+     id="rect3840"
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     y="455.77017"
+     x="283.5127"
+     height="77.952759"
+     width="92.125984"
+     id="rect3848"
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="rect3850"
+     width="46.062992"
+     height="77.952759"
+     x="393.40637"
+     y="455.77017"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     y="579.68689"
+     x="146.44699"
+     height="77.952759"
+     width="92.125984"
+     id="rect3858"
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="rect3860"
+     width="46.062992"
+     height="77.952759"
+     x="256.41858"
+     y="579.68689"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     id="rect3868"
+     width="265.74802"
+     height="109.84252"
+     x="177.52055"
+     y="70.757828"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     y="223.78532"
+     x="283.5127"
+     height="109.84252"
+     width="159.44882"
+     id="rect3870"
+     style="fill:#d7474d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:#f6f6f6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="m 87.668946,389.09887 0,22.06065 149.723244,0 0,149.13903 22.02849,0 0,-149.13903 149.51256,0 0,-22.06065 z"
+     id="path3888"
+     inkscape:connector-curvature="0"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:#f6f6f6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="m 64.913757,102.87776 -21.794149,0 0,186.77352 21.794149,0 0,-82.13817 85.301833,0 0,82.13817 21.79415,0 0,-186.77352 -21.79415,0 0,82.72403 -85.301833,0 z"
+     id="path3906"
+     inkscape:connector-curvature="0"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     id="path3910"
+     style="fill:#f6f6f6;stroke:none;stroke-width:0.20875165000000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1;fill-rule:evenodd"
+     d="m 232.875,261.75 c -9.4894,0 -17.1875,7.6981 -17.1875,17.1875 0,3.95617 1.34687,7.59564 3.59375,10.5 L 236,262.0625 c -1.02219,-0.1896 -2.04789,-0.3125 -3.125,-0.3125 z m 13.34375,6.375 -16.90625,27.625 c 1.14835,0.2419 2.34218,0.375 3.5625,0.375 9.4894,0 17.15625,-7.6981 17.15625,-17.1875 0,-4.09568 -1.4205,-7.86026 -3.8125,-10.8125 z m 5.21875,-31.34375 -8.46875,13.875 c -3.16,-1.13001 -6.54532,-1.75 -10.09375,-1.75 -16.58468,0 -30.03125,13.44657 -30.03125,30.03125 0,8.64047 3.62739,16.42763 9.46875,21.90625 l -8.59375,14.0625 10.125,6.1875 8.53125,-14 c 3.26343,1.21577 6.81294,1.875 10.5,1.875 16.58468,0 30,-13.44657 30,-30.03125 0,-8.77872 -3.74427,-16.66544 -9.75,-22.15625 l 8.4375,-13.8125 -10.125,-6.1875 z"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:#f6f6f6;stroke:none;stroke-width:0.17716534000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
+     d="m 381.27208,529.4488 -2.13348,18.89064 13.09089,-4.30839 -0.0439,-15.03084 z"
+     id="path3928"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     inkscape:connector-curvature="0"
+     id="path3930"
+     d="m 151.20983,529.4488 -2.13348,18.89064 13.09089,-4.30839 -0.0439,-15.03084 z"
+     style="fill:#f6f6f6;fill-opacity:1;stroke:none"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:#f6f6f6;fill-opacity:1;stroke:none"
+     d="m 241.98132,657.25066 -2.13348,18.89064 13.09089,-4.30839 -0.0439,-15.03084 z"
+     id="path3934"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc"
+     inkscape:export-filename="/home/muzzy/OSM/rect3938.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:#f6f6f6;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     d="m 42.4375,10.4375 c -16.77029,0 -30.28125,13.47971 -30.28125,30.25 l 0,627.28125 c 0,16.77029 13.51096,30.25 30.28125,30.25 l 411.1875,0 c 16.77029,0 30.28125,-13.47971 30.28125,-30.25 l 0,-627.28125 c 0,-16.77029 -13.51096,-30.25 -30.28125,-30.25 l -411.1875,0 z M 42.9375,26 453.125,26 c 8.7431,0 15.78125,7.038155 15.78125,15.78125 l 0,625.8125 c 0,8.7431 -7.03815,15.78125 -15.78125,15.78125 l -410.1875,0 c -8.743095,0 -15.78125,-7.03815 -15.78125,-15.78125 l 0,-625.8125 C 27.15625,33.038155 34.194405,26 42.9375,26 z"
+     id="rect3938"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90"
+     inkscape:connector-curvature="0" />
+</svg>

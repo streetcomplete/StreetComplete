@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="170pt"
+   height="200pt"
+   viewBox="0 0 59.972221 70.555555"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   sodipodi:docname="hydrant_uk.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#f4e614"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     width="170pt"
+     units="pt"
+     inkscape:zoom="1.1759259"
+     inkscape:cx="78.661417"
+     inkscape:cy="266.59843"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke-width:0.288697"
+       id="rect1257"
+       width="7.0555553"
+       height="59.972221"
+       x="7.0555553"
+       y="5.2916665" />
+    <rect
+       style="fill:#000000;stroke-width:0.259105"
+       id="rect1259"
+       width="7.0555553"
+       height="59.972221"
+       x="45.861111"
+       y="5.2916665" />
+    <rect
+       style="fill:#000000;stroke-width:0.313042"
+       id="rect1261"
+       width="31.75"
+       height="7.0555553"
+       x="14.111111"
+       y="31.75" />
+  </g>
+</svg>
