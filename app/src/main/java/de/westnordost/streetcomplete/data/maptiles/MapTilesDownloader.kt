@@ -91,11 +91,8 @@ class MapTilesDownloader @Inject constructor(
             }
 
             override fun onResponse(call: Call, response: Response) {
-                var size = 0
-                response.body()?.use { body ->
-                    // just get the bytes and let the cache magic do the rest...
-                    size = body.bytes().size
-                }
+                // just get the bytes and let the cache magic do the rest...
+                val size = response.body()?.use { it.bytes().size } ?: 0
                 val alreadyCached = response.cacheResponse() != null
                 val logText = if (alreadyCached) "in cache" else "downloaded"
                 Log.v(TAG, "${source.title} tile $zoom/$x/$y $logText")
