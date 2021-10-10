@@ -1,8 +1,8 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
     android:viewportWidth="150"
-    android:viewportHeight="150"
+    android:viewportHeight="130"
     android:width="150dp"
-    android:height="150dp">
+    android:height="130dp">
     <path
         android:pathData="M10,0 H 140 A 10,10  0,0 1,150 10 V 190 A 10,10 0,0 1,140 200 H 10 A 10 10 0 0 1 0 190 V 10 A 10,10 0,0 1,10 0Z"
         android:fillColor="#CB403B" />
@@ -23,20 +23,18 @@
             android:fillColor="#FFFFFF" />
     </group>
 
-    <group
-        android:translateX="37.5">
-        <path
-            android:pathData="M30,95 a7.5,7.5 0 1,0 0,-0.00001"
-            android:strokeColor="#FFFFFF"
-            android:strokeWidth="2" />
-        <path
-            android:pathData="M30,102.5 l15,-15"
-            android:strokeColor="#FFFFFF"
-            android:strokeWidth="2" />
-        <path
-            android:pathData="M22 110H54V127H22V110Z"
-            android:fillColor="#57FFFFFF"/>
-    </group>
+    <path
+        android:pathData="M40,95 a7.5,7.5 0 1,0 0,-0.00001"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2" />
+    <path
+        android:pathData="M40,102.5 l15,-15"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2" />
+    <path
+        android:pathData="M65 87.5 h50 v17 h-50 v-17Z"
+        android:fillColor="#57FFFFFF"/>
+
     <path
     android:pathData="M0,0 H 150 V 200 H 0 Z">
         <aapt:attr name="android:fillColor">
@@ -45,8 +43,8 @@
             android:endColor="@color/fade_out"
             android:startX="0"
             android:endX="0"
-            android:startY="130"
-            android:endY="150"
+            android:startY="110"
+            android:endY="130"
             android:type="linear" />
         </aapt:attr>
   </path>
