@@ -19,7 +19,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="76dp"
         android:background="#25000000"
         android:fontFamily="monospace"
         android:gravity="center_horizontal"
@@ -27,6 +27,7 @@
         android:maxLength="4"
         android:textColor="@color/traffic_black"
         android:textSize="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
