@@ -9,7 +9,7 @@
     <scale
         android:interpolator="@android:anim/overshoot_interpolator"
         android:fromXScale="100%"
-        android:fromYScale="00%"
+        android:fromYScale="50%"
         android:toXScale="100%"
         android:toYScale="100%"
         android:pivotX="50%"

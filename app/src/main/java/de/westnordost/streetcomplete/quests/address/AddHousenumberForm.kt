@@ -12,9 +12,10 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -23,9 +24,9 @@ import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
-        OtherAnswer(R.string.quest_address_answer_house_name) { switchToHouseName() },
-        OtherAnswer(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
+        AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
+        AnswerItem(R.string.quest_address_answer_house_name) { switchToHouseName() },
+        AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
     )
 
     private var houseNumberInput: EditText? = null
@@ -47,10 +48,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-
         isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
         setLayout(if(isHousename) R.layout.quest_housename else R.layout.quest_housenumber)
-
         return view
     }
 
@@ -99,14 +98,13 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun showNoHousenumberDialog(buildingType: BuildingType) {
-        val inflater = LayoutInflater.from(requireContext())
-        val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
-        ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.asItem())
+        val dialogBinding = DialogQuestAddressNoHousenumberBinding.inflate(layoutInflater)
+        ItemViewHolder(dialogBinding.root).bind(buildingType.asItem())
 
         AlertDialog.Builder(requireContext())
-            .setView(inner)
+            .setView(dialogBinding.root)
             .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> composeNote() }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongBuildingType) }
             .show()
     }
 
@@ -293,18 +291,20 @@ private fun String.addToHouseNumber(add: Int): String? {
     when {
         add == 0 -> return this
         add > 0  -> {
-            val last = when (val it = parsed.list.last()) {
-                is HouseNumbersPartsRange -> it.end
+            val max = when (val it = parsed.list.maxOrNull()) {
+                is HouseNumbersPartsRange -> maxOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single
+                null -> return null
             }
-            return (last.number + add).toString()
+            return (max.number + add).toString()
         }
         add < 0  -> {
-            val first = when (val it = parsed.list.first()) {
-                is HouseNumbersPartsRange -> it.start
+            val min = when (val it = parsed.list.minOrNull()) {
+                is HouseNumbersPartsRange -> minOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single
+                null -> return null
             }
-            val result = first.number + add
+            val result = min.number + add
             return if (result < 1) null else result.toString()
         }
         else -> return null

@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
@@ -16,14 +17,18 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
               or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
             )
           )
+          and area != yes
           and surface ~ ${ANYTHING_PAVED.joinToString("|")}
           and (!lanes or lanes = 0)
+          and (!lanes:backward or !lanes:forward)
           and lane_markings != no
     """
     override val commitMessage = "Add road lanes"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title
 

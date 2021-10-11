@@ -13,6 +13,7 @@
         <attr name="state_enabled" format="boolean"/>
         <attr name="state_searching" format="boolean"/>
         <attr name="state_updating" format="boolean"/>
+        <attr name="is_navigation" format="boolean"/>
     </declare-styleable>
     <declare-styleable name="CircularMaskFrameLayout">
         <attr name="circularity" format="float"/>

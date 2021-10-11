@@ -14,7 +14,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان پرسش تعریف نشده است"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
+    <string name="map_attribution_osm">"© مشارکت‌کنندگان در نقشه‌متن‌باز (osm)"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها..."</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
@@ -61,10 +61,10 @@
     <string name="quest_openingHours_chooseWeekdaysTitle">"انتخاب روزهای هفته"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_24_7_confirmation">"به عبارت دیگر، بصورت شبانه روزی باز است؟"</string>
+    <string name="quest_openingHours_24_7_confirmation">"به عبارت دیگر، آیا به صورت شبانه روزی باز است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_noteDiscussion_title">"آیا می توانید در این مورد یاداشتی بنویسید؟"</string>
+    <string name="quest_noteDiscussion_title">"آیا می توانید در این مورد یادداشتی بنویسید؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"نه، مخفی‌کن"</string>
@@ -106,9 +106,6 @@
     <string name="confirmation_cancel_prev_download_title">"درعوض، جستجوی کنونی را لغو کنید و اینجا را جستجو کنید"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"پویش برای جُستارها..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"موقعیت مکانی خاموش است. آیا منوی تنظیمات را برای روشن‌کردن آن باز می‌کنید؟"</string>
 
     <!-- Fuzzy -->
@@ -140,7 +137,7 @@
     <string name="offline">"شما متصل نیستید"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"برای اعمال تغییرات، نیازمند ورود با حساب کاربری خود در OSM دارید. آیا اکنون اجازه می‌دهید؟"</string>
+    <string name="confirmation_authorize_now">"برای ثبت پاسخ ها، نیازمند ورود به حساب کاربری OSM خود هستید. آیا اکنون وارد می شوید؟"</string>
 
     <!-- Fuzzy -->
     <string name="not_authorized">"مجاز نیست"</string>
@@ -191,12 +188,6 @@
     <string name="quest_openingHours_comment_description">"به صورت مختصر باشد، بهتر است از کلمات روی علائم استفاده کنید. مانند \"با تعیین وقت قبلی\". فقدان علائم لزوماً به این معنی نیست که ساعات کاری نامنظم می باشد."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"این ساختمان چند طبقه دارد؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"این قسمت از ساختمان چند طبقه دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
 
     <!-- Fuzzy -->
@@ -220,7 +211,7 @@
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا بدانید که شما با استفاده از این برنامه، بطور مستقیم به نقشه‌متن‌باز کمک می‌کنید. &lt;br/&gt;
-هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت اوپن‌استریت‌مپ وجود ندارد
+هر اقدامی که شما در این برنامه انجام می‌دهید به طور مستقیم به نقشه اضافه می‌شود و هیچ شخص سومی بین برنامه و زیرساخت osm وجود ندارد
 &lt;/p&gt;
 &lt;p&gt;
 ویرایش نقشه متن‌باز به صورت ناشناس امکان‌پذیر نیست، بنابراین هر تغییری که ایجاد می کنید با  حساب کاربری OSM شما ذخیره می شود. این بدان معنی است که تاریخ، محتوا و به طور کلی مکان تغییرات شما به طور عمومی در وبگاه OSM قابل مشاهده است و در حساب کاربری شما ذخیره می‌شود.
@@ -625,9 +616,6 @@
     <string name="credits_contributors">"این را بنگرید &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;سیاهه کامل روی GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"این را بنگرید &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;project on POEditor&lt;/a&gt; برای سیاهه کامل"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"ترجمه‌ها"</string>
 
     <!-- Fuzzy -->
@@ -799,7 +787,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌ کشی"</string>
-    <string name="compass_north_one_letter">"شمال"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"برگشت"</string>
@@ -923,9 +910,6 @@
     <string name="action_reset">"بازنشانی"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"لمس ممتد و حرکت برای تغییر منطقه جُستارها و نیز بارگیری و نمایش آنها روی نقشه."</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"برگشت"</string>
 
     <!-- Fuzzy -->
@@ -1028,7 +1012,7 @@
     <string name="quest_bridge_structure_title">"ساختار این پل چگونه است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"چه نوعی از اتصال به شبکه در %s ارائه می دشود؟"</string>
+    <string name="quest_internet_access_name_title">"روش اتصال به شبکه در %s چگونه است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"بی‌سیم(وایفای)"</string>
@@ -1462,7 +1446,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"محدودیت سرعت چگونه مشخص شده است؟"</string>
-    <string name="notification_channel_download">"بارگیری"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"آیا این زمین بازی عمومی است؟"</string>
@@ -1702,9 +1685,6 @@
     <string name="quest_generalFee_title">"آیا برای ورود به %s هزینه پرداخت می‌شود؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"آیا این خشکشویی یک خشکشویی مشتری محور (کار بوسیله شخص) است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"آیا این راه‌پله نرده جان‌پناه دارد؟"</string>
 
     <!-- Fuzzy -->
@@ -1933,13 +1913,13 @@
     <string name="link_category_editors_title">"مشارکت"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در اوپن‌استریت‌مپ"</string>
+    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در نقشه‌متن‌باز (osm)"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_maps_title">"نقشه‌ها"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_maps_description">"نقشه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
+    <string name="link_category_maps_description">"نقشه‌های مبتنی بر نقشه‌متن‌باز (osm)"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_showcase_title">"ويترين"</string>
@@ -2166,12 +2146,15 @@
     <string name="quest_board_type_map_title">"آیا این فقط یک نقشه است و تمام؟"</string>
     <string name="quest_board_type_map_description">"اگر تابلودر مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل و نقل عمومی می تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید."</string>
     <string name="quest_surface_detailed_answer_impossible">"چندین سطح ..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"آیا مطمئن هستید که تعیین جنس سطوح ناممکن است؟ گزینه \"اختلاف جنس سطوح در طول مسیر\" را مدنظر قرار دهید، تا بتوانید با جدا کردن مسیر اختلاف جنس سطح را مشخص کنید. لطفاً اگر جنس یکسان وجود دارد از پاسخ  \"نمی توان بیان کرد\" استفاده کنید اما به عنوان یک پاسخ در دسترس نیست."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"لطفاً به طور خلاصه ماهیت جنس سطح را در اینجا مشخص کنید ، به عنوان مثال \"ماسه ای با قطعات سنگفرش\". طول متن به 255 نویسه محدود شده است."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"بین‌المللی"</string>
-    <string name="quest_streetName_menuItem_romanized">"به لاتین"</string>
     <string name="quest_buildingType_terrace2">"خانه‌های ردیفی"</string>
     <string name="quest_oneway_tutorial">"جاده در تصویر همانند یک نقشه در مکان سنجاق چرخانده شده است. به جهت مشخص شده توجه کنید."</string>
     <string name="at_housename">"نام خانه %s:"</string>
@@ -2192,9 +2175,17 @@
     <string name="resurvey_intervals_default">"پیشفرض"</string>
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
     <string name="quest_accepts_cash_type_title">"آیا %1$s (%2$s) پرداخت نقدی را قبول می کند؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"آیا توقفگاه خودرو %s نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"آیا این توقفگاه خودرو نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"آیا این ایستگاه اتوبوس نیمکت دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"آیا ایستگاه اتوبوس %s نیمکت دارد؟"</string>
     <string name="quest_summit_register_title">"آیا قله‌ای در %s ثبت شده است؟"</string>
     <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
@@ -2208,6 +2199,8 @@
     <string name="quest_steps_incline_up">"این راه بالا"</string>
     <string name="quest_step_count_title">"چند پله اینجا است؟"</string>
     <string name="quest_traffic_signals_sound_title">"آیا در اینجا پارازیت برای امواج وجود دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"آیا این چراغ‌های راهنمایی برای افراد نابینا مجهز به دکمه لمسی برای عبور ایمن است؟"</string>
     <string name="quest_traffic_signals_vibrate_description">"نکته: اغلب این دکمه یک دکمه ارتعاشی یا یک مخروط چرخان در زیر بخش دکمه چراغ راهنمایی است."</string>
     <string name="quest_busStopRef_title">"شماره این ایستگاه اتوبوس چیست؟"</string>
@@ -2220,6 +2213,8 @@
     <string name="quest_steps_ramp_bicycle">"سطح شیب‌دار دوچرخه"</string>
     <string name="quest_steps_ramp_stroller">"سطح شیب دار کالسکه"</string>
     <string name="quest_steps_ramp_wheelchair">"سطح شیب دار صندلی چرخدار"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"نام بانک این خودپرداز چیست؟"</string>
     <string name="quest_clothes_container_operator_title">"چه کسی کمک های مالی برای این سطل پوشاک را پرداخت می کند؟"</string>
     <string name="quest_charging_station_operator_title">"متصدی این ایستگاه شارژ کیست؟"</string>
@@ -2255,6 +2250,8 @@
 "</string>
     <string name="quest_address_answer_no_housenumber_message2b">"آیا این درست است؟"</string>
     <string name="quest_maxheight_below_bridge_title">"حداکثر ارتفاع زیر پل چقدر است؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"اگر برای کل راه اعمال نمی شود، پاسخ \"%s\" را در نظر بگیرید."</string>
     <string name="quest_tactile_paving_kerb_title">"آیا اینجا جدول در کناره مسیر وجود دارد؟"</string>
     <string name="quest_kerb_height_title">"ارتفاع این جدول چقدر است؟"</string>
@@ -2262,15 +2259,20 @@
     <string name="quest_kerb_height_lowered">"کمی بالاتر از سطح جاده
 "</string>
     <string name="quest_kerb_height_raised">"جدول برجسته"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"در این سمت مسیرهیچ جدولی وجود ندارد"</string>
     <string name="quest_kerb_height_lowered_ramp">"جدول شیب‌دار
 "</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"تعداد کل خطوط تردد (هر دو جهت) قابل استفاده خودروها را مشخص کنید. خطوط دوچرخه و پارکینگ اختصاصی حساب نمی شوند.
 اگر خطوطی ویژه اتوبوس ها ایجاد شده است ، لطفاً یادداشت کنید."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"تعداد خطوط تردد قابل استفاده خودروها را در اینجا مشخص کنید. خطوط دوچرخه و پارکینگ اختصاصی حساب نمی شوند.
 اگر خطوطی ویژه اتوبوس ها ایجاد شده است، لطفاً یادداشت کنید."</string>
     <string name="quest_surface_value_rock">"سنگ"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"کامیون های مرتفع می توانند عبور کنند"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"برای عبور کامیون های مرتفع مناسب نیست"</string>
     <string name="quest_address_street_hint">"روی جاده در نقشه ضربه بزنید"</string>
     <string name="quest_crossing_type_marked">"خط عابر دارای خط‌ کشی"</string>
@@ -2284,11 +2286,19 @@
     <string name="osm_element_gone_description">"اطمینان دارید که وجود ندارد؟ شاید فقط موقعیت آن اندکی متفاوت باشد. اگر تردید دارید، بهتر است به جای این کار، یادداشتی بگذارید."</string>
     <string name="osm_element_gone_confirmation">"وجود ندارد"</string>
     <string name="leave_note">"درج یادداشت"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"چه چیز دیگری اینجاست؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"خالی است"</string>
     <string name="quest_shop_gone_replaced_answer">"یک..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"نوع مکان اینجا را وارد کنید"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"اگر نمی‌دانید چه عارضه‌ای اینجاست، یادداشتی بگذارید."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"این مغازه متروکه است. اکنون چه عارضه‌ای اینجاست؟"</string>
     <string name="quest_lanes_answer_lanes_odd2">"تعداد خطوط برای هر سمت متفاوت است"</string>
     <string name="quest_pitchSurface_title">"سطح این زمین ورزشی چه پوششی دارد؟"</string>
@@ -2322,9 +2332,7 @@
     <string name="team_mode">"حالت گروهی"</string>
     <string name="team_mode_exit">"خروج از حالت گروهی"</string>
     <string name="team_mode_description">"هنگام نقشه برداری از یک منطقه با هم در یک گروه می توانید برای تقسیم جُستارها بین همه اعضای گروه وارد حالت گروهی شوید."</string>
-    <string name="team_mode_team_size_label">"چند نفر آنجا هستند؟"</string>
     <string name="team_mode_team_size_hint">"حالت گروهی برای گروه های ۲ تا ۱۲ نفره استفاده می‌شود."</string>
-    <string name="team_mode_choose_color">"اکنون همه افراد گروه شما رنگ منحصر به فردی را انتخاب می‌کنند:"</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی عیرفعال است"</string>
     <string name="quest_pitchLit_title">"آیا این زمین ورزشی روشنایی دارد؟"</string>
@@ -2375,10 +2383,80 @@
     <string name="quest_barrier_type_stile_ladder">"نرده پلکان"</string>
     <string name="quest_barrier_type_bicycle_barrier">"مانع دوچرخه"</string>
     <string name="quest_barrier_type_kissing_gate">"دروازه لمسی"</string>
-    <string name="quest_barrier_type_stepover">"نرده قدم به قدم"</string>
     <string name="quest_barrier_type_swing_gate">"نوار افقی"</string>
     <string name="quest_policeType_title">"این چه نوع پاسگاهی است؟"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
     <string name="quest_stile_type_title">"این چه نوع نرده ای است؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"خانه (های) تک واحده"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_quests2">"انتخاب و اولویت جُستار"</string>
+    <string name="pref_subtitle_quests">"%1$d از %2$d فعال شده
+
+"</string>
+    <string name="quest_busStopLit_tram_name_title">"آیا ایستگاه واگن برقی %s روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_tram_title">"آیا این ایستگاه واگن برقی روشنایی دارد؟"</string>
+    <string name="quest_busStopLit_title">"آیا این ایستگاه اتوبوس روشنایی دار ؟"</string>
+    <string name="quest_busStopLit_name_title">"آیا این ایستگاه اتوبوس%s روشنایی دار ؟"</string>
+    <string name="no_location_permission_warning_title">"مجوز مکان"</string>
+    <string name="quest_surface_value_woodchips">"تراشه های چوبی"</string>
+    <string name="no_camera_app">"برنامه دوربین موجود نیست"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"آیا ایستگاه واگن برقی %s سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"آیا این ایستگاه واگن برقی سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"آیا این ایستگاه اتوبوس سطل زباله دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"آیا این ایستگاه اتوبوس %s سطل زباله دارد؟"</string>
+    <string name="quest_bollard_type_title">"این چه نوع مهاربندی است؟"</string>
+    <string name="quest_bollard_type_rising">"بالارونده"</string>
+    <string name="quest_bollard_type_flexible">"قابل انعطاف"</string>
+    <string name="quest_bollard_type_fixed">"ثابت (قابل جابجایی نیست)"</string>
+    <string name="quest_camera_type_title">"این چه نوع دوربین نظارتی است؟"</string>
+    <string name="quest_camera_type_dome">"خصوصی"</string>
+    <string name="quest_camera_type_fixed">"ثابت"</string>
+    <string name="quest_camera_type_panning">"کاذب"</string>
+    <string name="about_title_faq">"پرسش"</string>
+    <string name="quest_buildingLevels_title2">"این ساختمان چند طبقه از روی سطح زمین دارد؟"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"این بخش از ساختمان چند طبقه روی زمین دارد؟"</string>
+    <string name="quest_crossing_title">"آیا جداولی وجود دارد که این مسیر در اینجا به این جاده می رسد؟ از چه نوعی؟"</string>
+    <string name="pref_subtitle_quests_preset_name">"پیشفرض: %s"</string>
+    <string name="default_disabled_msg_roofShape">"این نوع جُستار به طور پیش فرض غیرفعال است زیرا شکل سقف،معمولاً از خیابان به راحتی قابل مشاهده نیست. این نوع جُستار نیز بسیار وقت گیر است. در بیشتر موارد ترسیم آن از تصاویر هوایی در خانه آسانتر و کارآمدتر است."</string>
+    <string name="quest_religion_animist">"متحرک"</string>
+    <string name="quest_construction_steps_title">"آیا این مراحل تکمیل شده است؟"</string>
+    <string name="questList_disabled_at_day">"فقط در شب نشان داده می شود"</string>
+    <string name="pref_quests_deselect_all">"عدم انتخاب تمام جُستارها؟"</string>
+    <string name="quest_buildingType_boathouse">"قایق سواری"</string>
+    <string name="quest_buildingType_allotment_house">"ساختمان پُشتی باغ"</string>
+    <string name="quest_buildingType_grandstand">"میز غرفه"</string>
+    <string name="action_search">"جُستجو"</string>
+    <string name="action_manage_presets">"مدیریت پیشفرض‌ها"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"چند نفر در حال نقشه‌کشی هستند؟ شماره یکسان را برای همه تلفن‌ها وارد کنید."</string>
+    <string name="team_mode_choose_color2">"در گام بعد، هر فرد باید رنگ متفاوتی را انتخاب کند. مورد خود را انتخاب کنید:"</string>
+    <string name="link_organic_maps_description">"برنامه نقشه برای مسافران، کوهنوردان و دوچرخه سواران که بصورت آفلاین کار می‌کند"</string>
+    <string name="quest_kerb_height_no">"اصلاً بدون محدودیت"</string>
+    <string name="quest_barrier_type_stepover_wooden">"چوبی پله ای روی پایه"</string>
+    <string name="quest_barrier_type_stepover_stone">"سنگ منقطع"</string>
+    <string name="quest_bollard_type_removable">"قابل جدا شدن (با یا بدون کلید)"</string>
+    <string name="quest_bollard_type_foldable2">"تاشو (با یا بدون کلید)"</string>
+    <string name="no_search_results">"موردی پیدا نشد"</string>
+    <string name="quest_selection_hint_title">"کار زیاد است؟"</string>
+    <string name="quest_selection_hint_message">"مشارکت در درجه اول باید سرگرم کننده باشد! اگر از تعداد جُستارها غافلگیر شده اید، همیشه می توانید در تنظیمات مشخص کنید که کدام جُستارها  و به چه ترتیب برای شما نمایش داده شوند."</string>
+    <string name="quest_presets_preset_add">"افزودن پیشفرض"</string>
+    <string name="quest_presets_preset_name">"نام پیشفرض"</string>
+    <string name="quest_presets_default_name">"پیشفرض"</string>
+    <string name="quest_presets_selected">"انتخابی"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_delete_message">"\"%s\" پیشفرض حذف شود؟ انتخاب جُستار و سفارش برای آن به طور برگشت ناپذیری از بین می رود."</string>
+    <string name="notification_syncing">"همگام سازی داده ها…"</string>
+    <string name="notification_channel_sync">"همگام سازی داده"</string>
+    <string name="quest_board_type_sport">"ورزش، تمرینات"</string>
 </resources>

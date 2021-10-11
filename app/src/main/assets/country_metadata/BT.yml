@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Bank of Bhutan, BOB, Bhutan National Bank, Tashi Bank, Druk PNB, Bank Of Bhutan, BOBL, BNB, BDBL]
+atmOperators: [Bank of Bhutan, BOB, Bhutan National Bank, Druk PNB, Bank Of Bhutan, BNB, Tashi Bank, BOBL, BDBL]
 isLeftHandTraffic: true
 mobileCountryCode: 402
 officialLanguages: [dz]

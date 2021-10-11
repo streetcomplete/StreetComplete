@@ -34,12 +34,12 @@ private fun getTemplateArguments(
     featureDictionaryFuture: FutureTask<FeatureDictionary>?
 ): Array<String> {
     val tags = element?.tags ?: emptyMap()
-    val typeName = lazy { findTypeName(tags, featureDictionaryFuture, localeList) }
+    val typeName = lazy { findTypeName(element, featureDictionaryFuture, localeList) }
     return ((questType as? OsmElementQuestType<*>)?.getTitleArgs(tags, typeName)) ?: emptyArray()
 }
 
 private fun findTypeName(
-    tags: Map<String, String>,
+    element: Element?,
     featureDictionaryFuture: FutureTask<FeatureDictionary>?,
     localeList: LocaleListCompat
 ): String? {
@@ -52,7 +52,9 @@ private fun findTypeName(
         locales.add(Locale.ENGLISH)
     }
     return dict
-        .byTags(tags)
+        .byTags(element?.tags ?: emptyMap())
+    // not for geometry because at this point we cannot tell apart points and vertices
+    //    .forGeometry(element?.geometryType)
         .isSuggestion(false)
         .forLocale(*locales.toTypedArray())
         .find()

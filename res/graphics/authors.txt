@@ -41,10 +41,21 @@ app icon/
     feature_graphic.xcf         parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
     launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
 
+bridge structure graphics/
+    arch.svg                    Jay Turner, License: CC0 1.0
+    beam.svg                    Jay Turner, License: CC0 1.0
+    cable-stayed.svg  	        Jay Turner, License: CC0 1.0
+    floating.svg                Tobias Zwick, License: CC0 1.0
+    humpback.svg                Tobias Zwick, License: CC0 1.0
+    simple-suspension.svg       Tobias Zwick, License: CC0 1.0
+    suspension.svg              Jay Turner, License: CC0 1.0
+    tied_arch.svg               Jay Turner, License: CC0 1.0
+    truss.svg                   Tobias Zwick, License: CC0 1.0
 
 building icons/
     apartments.svg
     barn.svg
+    bridge.svg                  Kai Michael Poppe, License: CC-BY-SA 4.0
     bungalow.svg
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
@@ -297,8 +308,10 @@ quest pin/
     quest_pin_pointer.svg
 
 railway crossing icons/
+    chicane.svg                      License: CC0
     double_half.svg                  (c) 2018 ServusWorld - License: CC0
     full.svg                         (c) 2018 ServusWorld - License: CC0
+    gate.svg                         License: CC0
     half.svg                         (c) 2018 ServusWorld - License: CC0
     none.svg                         (c) 2018 ServusWorld - License: CC0
 

@@ -10,20 +10,16 @@ import android.hardware.SensorManager
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.view.GestureDetector
-import android.view.MotionEvent
-import android.view.Surface
-import android.view.View
+import android.view.*
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.ViewBallPitBinding
 import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
-import kotlinx.android.synthetic.main.view_ball_pit.view.*
 import kotlinx.coroutines.*
 import org.jbox2d.collision.shapes.ChainShape
 import org.jbox2d.collision.shapes.CircleShape
@@ -41,6 +37,7 @@ class BallPitView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr),
     LifecycleObserver {
 
+    private val binding = ViewBallPitBinding.inflate(LayoutInflater.from(context), this)
     private val sensorManager: SensorManager
     private var accelerometer: Sensor? = null
 
@@ -53,7 +50,7 @@ class BallPitView @JvmOverloads constructor(
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val sensorEventListener = object : SensorEventListener {
         override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) { }
@@ -75,11 +72,9 @@ class BallPitView @JvmOverloads constructor(
     }
 
     init {
-        inflate(context, R.layout.view_ball_pit, this)
-
         physicsController.listener = object : PhysicsWorldController.Listener {
             override fun onWorldStep() {
-                physicsView?.postInvalidate()
+                binding.physicsView.postInvalidate()
             }
         }
 
@@ -104,7 +99,7 @@ class BallPitView @JvmOverloads constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         physicsController.destroy()
-        lifecycleScope.cancel()
+        viewLifecycleScope.cancel()
     }
 
     fun setViews(viewsAndSizes: List<Pair<View, Int>>) {
@@ -114,7 +109,7 @@ class BallPitView @JvmOverloads constructor(
         }
 
         val areaInMeters = max(1f, viewsAndSizes.map { it.second }.sumByFloat { getBubbleArea(it) })
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             setupScene(areaInMeters / BALLPIT_FILL_FACTOR)
             addBubblesToScene(viewsAndSizes)
         }
@@ -123,12 +118,12 @@ class BallPitView @JvmOverloads constructor(
     /* --------------------------------- Set up physics layout  --------------------------------- */
 
     private suspend fun setupScene(areaInMeters: Float) {
-        physicsView.awaitPreDraw()
+        binding.physicsView.awaitPreDraw()
 
-        val width = physicsView.width.toFloat()
-        val height = physicsView.height.toFloat()
+        val width = binding.physicsView.width.toFloat()
+        val height = binding.physicsView.height.toFloat()
         minPixelsPerMeter = sqrt(width * height / areaInMeters)
-        physicsView.pixelsPerMeter = minPixelsPerMeter
+        binding.physicsView.pixelsPerMeter = minPixelsPerMeter
 
         val widthInMeters = width / minPixelsPerMeter
         val heightInMeters = height / minPixelsPerMeter
@@ -185,7 +180,7 @@ class BallPitView @JvmOverloads constructor(
                 return true
             }
         })
-        physicsView.addView(view, body)
+        binding.physicsView.addView(view, body)
     }
 
     private suspend fun createBubbleBody(position: Vec2, radius: Float): Body {
@@ -222,7 +217,7 @@ class BallPitView @JvmOverloads constructor(
     /* ---------------------------- Interaction with quest bubbles  ----------------------------- */
 
     private fun onFlingBubbleBody(body: Body, velocityX: Float, velocityY: Float) {
-        val pixelsPerMeter = physicsView?.pixelsPerMeter ?: return
+        val pixelsPerMeter = binding.physicsView.pixelsPerMeter
         val vx = FLING_SPEED_FACTOR * velocityX / pixelsPerMeter
         val vy = FLING_SPEED_FACTOR * -velocityY / pixelsPerMeter
         body.linearVelocity = Vec2(vx, vy).addLocal(body.linearVelocity)

@@ -35,8 +35,12 @@
     <string name="quest_openingHours_end_time">"vrijeme zatvaranja"</string>
     <string name="quest_openingHours_add_months">"Dodaj mjesece"</string>
     <string name="quest_openingHours_add_hours">"Dodaj radne sate"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Dodaj radne dane"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Odaberi mjesece"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Odaberi dane"</string>
     <string name="quest_openingHours_24_7_confirmation">"Drugim riječima, je li otvoren cijeli dan, svaki dan?"</string>
     <string name="quest_noteDiscussion_title">"Možete li išta doprinijeti ovoj bilješci?"</string>
@@ -55,11 +59,8 @@
     <string name="upload_error">"Greška prilikom slanja odgovora"</string>
     <string name="download_area_too_big">"Molimo da dodatno približite kartu"</string>
     <string name="confirmation_cancel_prev_download_title">"Zaustavi trenutnu pretragu i pokreni novu ovdje?"</string>
-    <string name="notification_downloading">"Tražim zadatke..."</string>
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li sada otvoriti Postavke kako biste je uključili?"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Vaša  lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
+    <string name="no_location_permission_warning">"Lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
     <string name="about_title_authors">"Zasluge"</string>
     <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i suradnici"</string>
     <string name="about_title_repository">"Repozitorij izvornog koda"</string>
@@ -86,8 +87,6 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nema redovno radno vrijeme ..."</string>
     <string name="quest_openingHours_comment_title">"Opišite radno vrijeme"</string>
     <string name="quest_openingHours_comment_description">"Budite precizni, idealno upotrijebite formulaciju iz znaka, npr. \"Po dogovoru\". Odsutnost znaka ne znači nužno da ne postoji redovno radno vrijeme."</string>
-    <string name="quest_buildingLevels_title">"Koliko katova ima ova građevina?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Koliko katova ima ovaj dio građevine?"</string>
     <string name="quest_roofShape_title">"Kakav je osnovni oblik krova ove zgrade?"</string>
     <string name="quest_roofShape_select_one">"Odaberite jedno:"</string>
     <string name="quest_roofShape_show_more">"Prikaži više..."</string>
@@ -96,6 +95,8 @@
     <string name="quest_roofShape_answer_many">"Ima nekoliko različitih oblika"</string>
     <string name="map_btn_zoom_out">"Udalji"</string>
     <string name="map_btn_zoom_in">"Približi"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, netko kome je stalo do privatnosti, lijepo! Mislim da za vas imam samo dobre vijesti:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Izravni doprinosi&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -103,7 +104,7 @@ Prvo, shvatite da s ovom aplikacijom dajete stvarne i izravne doprinose OpenStre
 Sve što napravite u ovoj aplikaciji izravno se dodaje na kartu; između aplikacije i OSM infrastrukture ne postoji treća strana.
 &lt;/p&gt;
 &lt;p&gt;
-Anonimno uređivanje OpenStreetMapa nije moguće, pa se sve promjene koje napravite rade s vašim korisničkim računom OSM-a. To znači da su datum, sadržaj i (implicitno) lokacija vaših promjena javno vidljivi na openstreetmap web stranici i povezani s vašim računom.
+Anonimno uređivanje OpenStreetMapa nije moguće, pa se sve promjene koje napravite rade s vašim korisničkim računom OSM-a. To znači da su datum, sadržaj i lokacija vaših promjena (a time implicitno i vaša lokacija u danom trenu) javno vidljivi na openstreetmap web stranici i povezani s vašim računom.
 &lt;/p&gt;
 
 &lt;b&gt;Lokacija&lt;/b&gt;&lt;br/&gt;
@@ -119,11 +120,7 @@ Međutim, prije slanja promjena, aplikacija provjerava &lt;a href=\"https://www.
     <string name="autosync_only_on_wifi">"Samo na Wi-Fi"</string>
     <string name="autosync_off">"Isključeno"</string>
     <string name="quest_streetSurface_title">"Kakvu površinu ima ovaj dio ceste?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Popločano (općenito)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"Nepopločano (općenito)"</string>
     <string name="quest_surface_value_ground">"Tlo (općenito)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
@@ -167,6 +164,8 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="upload_server_error">"Greška u povezivanju prilikom slanja odgovora. Pokušajte ponovno kasnije."</string>
     <string name="quest_generic_hasFeature_yes">"Da"</string>
     <string name="quest_generic_hasFeature_no">"Ne"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Ima li ova autobusna stanica zaklon?"</string>
     <string name="quest_bikeParkingCapacity_title">"Koliko se bicikala može parkirati ovdje?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Taj kućni broj izgleda vrlo neobično."</string>
@@ -200,11 +199,11 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="quest_sport_rugby">"Ragbi"</string>
     <string name="quest_select_hint">"Odaberite:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Je li ovo sportsko igralište namijenjeno upravo tim sportovima (prisutne su oznake i oprema) ili kao sportsko igralište opće namjene za sve vrste igara?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_manySports_confirmation_specific">"Konkretno ove"</string>
+    <string name="quest_manySports_confirmation_specific">"Konkretno ovi"</string>
     <string name="quest_manySports_confirmation_generic">"Opće namjene"</string>
     <string name="quest_sport_manySports_confirmation_title">"Označili ste mnogo sportova"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Ima li autobusna stanica %s zaklon?"</string>
     <string name="quest_toiletsFee_title">"Plaća li se ovaj toalet?"</string>
     <string name="quest_tactilePaving_title_bus">"Ima li ova autobusna stanica trake vodilje za slijepe?"</string>
@@ -265,14 +264,11 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
 U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne tipkovnice koje podržavaju mnoge jezike su Google Gboard, SwiftKey Keyboard i Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(neodređeno)"</string>
     <string name="quest_fireHydrant_type_title">"Koja je ovo vrsta vatrogasnog hidranta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Stup"</string>
     <string name="quest_fireHydrant_type_underground">"Podzemni"</string>
     <string name="quest_fireHydrant_type_wall">"Na zidu"</string>
     <string name="quest_fireHydrant_type_pond">"Jezero"</string>
     <string name="credits_contributors">"Pogledajte &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;cjelovit popis na GitHubu&lt;/a&gt;."</string>
-    <string name="credits_translations">"Cjelovit popis potražite u &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt; projektu na POEditoru&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
     <string name="credits_author_title">"Autor i održavatelj"</string>
@@ -338,9 +334,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="cannot_find_bbox_or_reduce_tilt">"Ovdje se ne može skenirati. Pokušajte dodatno približiti ili manje naginjati kartu."</string>
     <string name="quest_crossing_type_title">"Kakav je ovo pješački prijelaz?"</string>
     <string name="quest_crossing_type_unmarked">"Prijelaz bez ikakvih oznaka"</string>
-
-    <!-- Fuzzy -->
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Poništi"</string>
     <string name="produce_mangosteen">"(Mangosteen)"</string>
     <string name="produce_tomatoes">"Rajčice"</string>
@@ -355,7 +348,9 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_parkingType_underground">"Podzemna garaža"</string>
     <string name="quest_parkingType_multiStorage">"Garaže na kat"</string>
     <string name="quest_toiletAvailability_name_title">"Ima li %s toalet?"</string>
-    <string name="quest_powerPolesMaterial_title">"Od kojeg je materijala ovaj energetski stup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_powerPolesMaterial_title">"Od kojeg je materijala ovaj energetski ili komunalni stup?"</string>
     <string name="quest_powerPolesMaterial_wood">"Drvo"</string>
     <string name="quest_powerPolesMaterial_metal">"Čelik"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
@@ -363,17 +358,13 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_address_answer_house_name">"Nema kućni broj nego naziv..."</string>
     <string name="quest_address_house_name_label">"Naziv kuće:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"katovi u potkrovlju"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"obični katovi (ne računajući potkrovlje)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Razlikuje se ovisno o dijelu zgrade"</string>
     <string name="quest_buildingLevels_answer_description">"U tom slučaju, jednostavno unesite vrijednosti za najviši dio zgrade."</string>
-
-    <!-- Fuzzy -->
     <string name="unglue_hint">"Dotaknite da biste odlijepili pogled od položaja"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jesu li smjerovi prometnice ovdje (tj. kroz barijeru) fizički odvojene? Pretpostavljena ograničenja brzine ovise o tome je li to slučaj ili nije."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jesu li smjerovi prometnice ovdje fizički odvojene (barijerom)? Pretpostavljena ograničenja brzine ovise o tome."</string>
     <string name="about_category_feedback">"Povratne informacije"</string>
     <string name="quest_leave_new_note_photo">"Dodaj sliku"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Želite li obrisati ovu sliku?"</string>
@@ -394,7 +385,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
 
     <!-- In what context is this "Reset"? -->
     <string name="action_reset">"Vrati u početno stanje"</string>
-    <string name="reorder_quest_priority_hint">"Dugo pritisnite i pomaknite zadatak da biste izmijenili njegov prioritet za prikaz na karti."</string>
     <string name="undo_confirm_positive">"Poništi"</string>
     <string name="undo_confirm_negative">"Nazad"</string>
     <string name="quest_dietType_vegetarian_name_title">"Ima li %s vegetarijanska jela na jelovniku?"</string>
@@ -510,13 +500,13 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="pref_quests_reset">"Želite li vratiti u početno stanje poredak i status omogućenosti svih vrsta zadataka?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Koja je bila inicijalna svrha ove zgrade?"</string>
+    <string name="quest_buildingType_title2">"U koju svrhu je ova građevina sagrađena?"</string>
     <string name="quest_generic_item_invalid_value">"Molim, odabirete precizniju vrijednost."</string>
     <string name="quest_buildingType_answer_multiple_types">"Ima više primjena"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Jednostavno odaberite glavnu svrhu ove zgrade. Npr. ako se u prizemlju nalazi trgovina s apartmanima iznad nje, to je još uvijek uglavnom stambena zgrada."</string>
     <string name="quest_buildingType_answer_construction_site">"Još nije dovršena"</string>
     <string name="quest_buildingType_residential">"Stanovanje"</string>
-    <string name="quest_buildingType_residential_description">"Zgrada gdje ljudi žive"</string>
+    <string name="quest_buildingType_residential_description">"Stambeni objekt u kojem ljudi žive"</string>
     <string name="quest_buildingType_house">"Kuća"</string>
     <string name="quest_buildingType_apartments_description">"zgrada za više obitelji, u prizemlju može imati prodajna mjesta"</string>
     <string name="quest_buildingType_apartments">"Stambena zgrada"</string>
@@ -550,7 +540,7 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_civic">"Zgrada za javnost"</string>
+    <string name="quest_buildingType_civic">"Zgrada za građanstvo"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"zgrada za javnost koja obično pruža neku uslugu"</string>
@@ -570,12 +560,8 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_garages">"Višestruke garaže"</string>
     <string name="quest_buildingType_parking">"Zgrada za parkiranje"</string>
     <string name="quest_buildingType_farm">"Na farmi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"Farmerska kuća"</string>
     <string name="quest_buildingType_farmhouse_description">"stambena zgrada na farmi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"Gospodarska zgrada"</string>
     <string name="quest_buildingType_farm_auxiliary_description">"bilo koja zgrada na farmi koja nije namijenjena za stanovanje"</string>
     <string name="quest_buildingType_greenhouse">"Staklenik"</string>
@@ -594,6 +580,8 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_shrine">"Svetište"</string>
     <string name="quest_maxspeed_title_short2">"Koje je ograničenje brzine za ovu ulicu?"</string>
     <string name="quest_maxspeed_answer_sign">"Prometnim znakom"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"Unutar je zone ograničene brzine"</string>
     <string name="quest_maxspeed_answer_noSign2">"Ne postoji znak, primjenjuju se pretpostavljene vrijednosti"</string>
     <string name="quest_openingHours_no_sign">"Nema naznačenog radnog vremena"</string>
@@ -601,7 +589,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_sports_centre">"Sportski centar"</string>
     <string name="quest_buildingType_toilets">"Toaleti"</string>
     <string name="quest_maxspeed_sign_question">"Čime je definirano ograničenje brzine?"</string>
-    <string name="notification_channel_download">"Preuzmi"</string>
     <string name="quest_playground_access_title">"Je li ovo igralište javno dostupno?"</string>
 
     <!-- Fuzzy -->
@@ -629,17 +616,13 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_noteDiscussion_hide2">"Sakrio korisnik %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Slike koje priložite bilješci prenose se na moj poslužitelj i brišu nekoliko dana nakon što je bilješka riješena. Njihovi se metapodaci uklanjaju prije prijenosa.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Isključi sve odabire"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"uključujući zgrade za restorane, kafiće, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Dalje"</string>
     <string name="quest_tracktype_title">"Kakva je čvrstoća podloge ove staze?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Popločana"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Uglavnom mekana"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Mekana"</string>
     <string name="quest_building_underground_name_title">"Je li %s potpuno pod zemljom?"</string>
     <string name="quest_building_underground_title">"Je li ova zgrada potpuno pod zemljom?"</string>
@@ -665,6 +648,7 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Je li pješacima zabranjeno hodati cestom ovdje?"</string>
 
     <!-- Where is this used? especially the part 'answer "sidewalk"`, what is ID of that "sidewalk" answer (as I need to translate it the same here)? -->
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ova je ulica označena da nema nogostupa niti s jedne strane. U slučaju da ipak postoji nogostup, ali se prikazuje zasebno, molimo odgovorite \"Ima nogostup\"."</string>
     <string name="quest_buildingType_title">"O kakvoj je zgradi riječ?"</string>
     <string name="pref_title_theme_select">"Odaberite temu"</string>
@@ -693,6 +677,8 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_leaf_type_needles">"Iglice"</string>
     <string name="quest_leaf_type_broadleaved">"Lišće"</string>
     <string name="quest_leaf_type_mixed">"Oboje je prisutno"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Kakvu površinu ima ovaj dio biciklističke staze?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Razlikuje se putem..."</string>
     <string name="quest_split_way_description">"Ako se razlikuje putem, prvi korak je razdvajanje puta. Nakon toga, na zadatak se može odgovoriti za svaki podijeljeni dio zasebno.
@@ -700,6 +686,8 @@ Razdvojiti put sada?"</string>
     <string name="quest_split_way_tutorial">"Dotaknite put da ga razdvojite na mjestu gdje se odgovor razlikuje. Pokušajte biti što precizniji, možete približiti kartu kao i obično."</string>
     <string name="quest_split_way_too_imprecise">"Molimo da dodatno približite kartu"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"To je poprilično mnogo podjela. Uvijek možete kasnije dodatno razdvojiti put."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Kakva je ovdje površina nogostupa?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Je li toalet u %s pristupačan za invalidska kolica?"</string>
     <string name="quest_tactilePaving_title_tram">"Ima li ova tramvajska stanica trake vodilje za slijepe?"</string>
@@ -709,7 +697,6 @@ Razdvojiti put sada?"</string>
     <string name="quest_maxweight_answer_other_sign">"Znak izgleda drugačije ..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Želite li ostaviti bilješku? Bilješka s fotografijom omogućit će ostalim kartografima da se pobrinu za nju."</string>
     <string name="quest_generalFee_title">"Naplaćuje li se ulazak u %s?"</string>
-    <string name="quest_laundrySelfService_title">"Je li ova praonica rublja samoposlužna?"</string>
     <string name="quest_handrail_title">"Imaju li ove stepenice rukohvat?"</string>
     <string name="quest_openingHours_no_name_title">"Koje je radno vrijeme ovog mjesta? (%s)"</string>
     <string name="about_summary_current_version">"Trenutna verzija: %s"</string>
@@ -737,6 +724,8 @@ Razdvojiti put sada?"</string>
     <string name="quest_recycling_glass_title">"Mogu li se ovdje ostaviti samo staklene boce i tegle, ili bilo koja vrsta stakla?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Primjeri stakla koje se često ne prihvaća: kaljeno staklo, prozorska stakla, stakleno posuđe, žarulje ili ogledala."</string>
     <string name="about_title_changelog">"Povijest verzija"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Što ima novog?"</string>
     <string name="about_title_rate">"Ocijenite ovu aplikaciju"</string>
     <string name="about_summary_rate">"na Trgovina Playu"</string>
@@ -764,6 +753,8 @@ Razdvojiti put sada?"</string>
     <string name="user_logout">"Odjava"</string>
     <string name="osm_profile">"OSM Profil"</string>
     <string name="next">"Dalje"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"Krenimo!"</string>
     <string name="tutorial_welcome_to_osm">"Dobrodošli u OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"slobodna wiki karta svijeta"</string>
@@ -772,6 +763,8 @@ Automatski traži nedostajuće detalje u vašoj blizini: biciklističke staze, k
     <string name="tutorial_solving_quests">"Jednom pronađeni, nedostajući detalji pojaviti će se na vašoj karti kao zadaci.
 
 Možete ih početi rješavati odmah, a kasnije se prijaviti da biste objavili svoje odgovore."</string>
+
+    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Kad god niste sigurni, uvijek možete odgovoriti \"Ne mogu reći\" i ostaviti bilješku.
 
 Konačno, ne zaboravite paziti na sigurnost: budite svjesni svoje okoline i ne ulazite na privatno vlasništvo."</string>
@@ -810,7 +803,11 @@ Konačno, ne zaboravite paziti na sigurnost: budite svjesni svoje okoline i ne u
     <string name="link_umap_description">"Brzo izradite karte s prilagođenim podacima i ugradite ih na svoje web stranice"</string>
     <string name="link_opnvkarte_description">"Karta javnog prijevoza sa rutama i stajalištima"</string>
     <string name="link_pic4review_description">"Doprinesite OSM-u jednostavno gledajući slike vašeg grada"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Wiki je vaše polazište za sve povezano OpenStreetMapom"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Novi ste u OpenStreetMapu? Ovo je vodič za početnike"</string>
     <string name="link_neis_one_description">"Ogromna zbirka statistika za suradnike OpenStreetMap-a; poput mjesta i načina na koji ste dali svoj doprinos, tko je još blizu vas, te rang liste"</string>
     <string name="link_welcome_mat_description">"Opće informacije o OpenStreetMap-u i kako kao organizacija raditi s OSM-om"</string>
@@ -832,6 +829,8 @@ Konačno, ne zaboravite paziti na sigurnost: budite svjesni svoje okoline i ne u
     <string name="link_openinframap_description">"Karta koja prikazuje električnu, telekomunikacijsku, plinsku i naftnu infrastrukturu"</string>
     <string name="link_openorienteeringmap_description">"Kreirajte i ispišite karte za orijentacijske sportove"</string>
     <string name="link_openstreetbrowser_description">"Karta za pregledavanje značajki karte OpenStreetMap po kategorijama"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Tjedne vijesti o događanjima u svijetu OpenStreetMapa"</string>
     <string name="link_figuregrounder_description">"Napravite plakate od pojednostavljenog plana grada ili četvrti"</string>
     <string name="achievement_first_edit_title">"Prvi zadatak riješen"</string>
@@ -857,6 +856,8 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="achievement_veg_title">"Ljubazni prema životinjama"</string>
     <string name="achievement_veg_solved_X">"Riješili ste %d zadataka koji su zanimljivi ljudima koji žive na prehrani bez mesa!"</string>
     <string name="achievement_car_title">"Na cesti"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Riješili ste %d zadataka koji poboljšavaju detalje na uličnoj infrastrukturi, stavljajući ulicu u OpenStreetMap!"</string>
     <string name="unread_messages_message">"Imate %d nepročitanih poruka u pristigloj pošti"</string>
     <string name="unread_messages_button">"Otvori dolaznu poštu"</string>
@@ -904,14 +905,17 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_board_type_map_title">"Je li to samo karta i jedino karta?"</string>
     <string name="quest_board_type_map_description">"Ako je ploča o određenoj temi, navedite je, bez obzira na to uključuje li i kartu. Na primjer, tabla javnog prijevoza može imati kartu autobusne rute. Ako tema nije navedena među dostupnim odgovorima, razmislite o tome da umjesto nje ostavite bilješku."</string>
     <string name="quest_surface_detailed_answer_impossible">"Višestruke površine..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Jeste li sigurni da je nemoguće odrediti površinu? Obratite pažnju na odgovor \"Razlikuje se putem\" koji vam omogućuje da označite mjesto na kojem se površina mijenja. Molimo da koristite \"Ne mogu reći\" ako postoji jedna površina, ali ona nije dostupna kao odgovor."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Molimo ukratko opišite vrstu površine ovdje, na primjer \"pjeskovita s kaldrmom mjestimice\". Duljina teksta ograničena je na 255 znakova."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_international">"međunarodni"</string>
-    <string name="quest_streetName_menuItem_romanized">"na latinici"</string>
     <string name="quest_buildingType_terrace2">"Kuće u nizu"</string>
     <string name="quest_oneway_tutorial">"Cesta na ilustraciji rotirana je isto kao na karti na mjestu pribadače. Obratite pažnju na naznačeni smjer."</string>
     <string name="at_housename">"ime kuće %s:"</string>
@@ -948,6 +952,8 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_steps_incline_up">"Ovaj smjer uzbrdo"</string>
     <string name="quest_step_count_title">"Koliko stepenica tu ima?"</string>
     <string name="quest_traffic_signals_sound_title">"Ima li ovdje zvučni signal za slijepe osobe?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Imaju li ovi semafori taktilnu indikaciju za slijepe osobe kada je sigurno prijeći ih?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Savjet: Često se radi o vibrirajućem gumbu ili rotirajućem konusu na donjoj strani kućišta gumba na semaforu."</string>
     <string name="quest_busStopRef_title">"Koji je referentni broj ove autobusne stanice?"</string>
@@ -960,6 +966,8 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_steps_ramp_bicycle">"Rampa za bicikle"</string>
     <string name="quest_steps_ramp_stroller">"Rampa za dječja kolica"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampa za invalidska kolica"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Naziv matične banke ovog bankomata?"</string>
     <string name="quest_clothes_container_operator_title">"Tko prima donacije iz ovog spremnika za odjeću?"</string>
     <string name="quest_charging_station_operator_title">"Tko je operater ove stanice za punjenje?"</string>
@@ -1004,7 +1012,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <!-- Fuzzy -->
     <string name="quest_kerb_height_lowered">"Malo viši nego površina ceste"</string>
     <string name="quest_kerb_height_raised">"Visoki rubnik"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Nema rubnika na ovoj strani prijelaza"</string>
 
     <!-- Fuzzy -->
     <string name="quest_kerb_height_lowered_ramp">"Sasvim spušteni rubnik"</string>
@@ -1018,22 +1025,16 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</string>
     <string name="quest_surface_value_rock">"Kamenje"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Visoki kamioni mogu proći"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Visoki kamioni ne mogu proći"</string>
     <string name="quest_address_street_hint">"Dotaknite cestu na karti"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označen zebrom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkiralište tik uz cestu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_lane">"Parkiralište na cesti"</string>
 
     <!-- Fuzzy -->
     <string name="quest_existence_title">"Je li to još uvijek ovdje? (%s)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_existence_name_title">"Je li %1$s (%2$s) još uvijek ovdje?"</string>
 
     <!-- Fuzzy -->
@@ -1071,7 +1072,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_pitchSurface_title">"Koju površinu ima ovo sportsko igralište?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Ova vrsta zadatka je inicijalno onemogućena jer u nekim regijama nije korisna i jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste."</string>
     <string name="quest_dietType_kosher_name_title">"Nudi li %s košer proizvode?"</string>
-    <string name="quest_dietType_explanation_kosher">"Košer proizvodi moraju se pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom."</string>
+    <string name="quest_dietType_explanation_kosher">"Košer proizvodi se moraju pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom."</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Uopće nema biciklističke staze"</string>
@@ -1091,7 +1092,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description2">"Obiteljska kuća (bez okućnice)"</string>
+    <string name="quest_buildingType_house_description2">"Obiteljska kuća"</string>
     <string name="quest_drinking_water_title">"Je li ova voda za piće? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Sigurno za piće (s oznakom)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Sigurno za piće (bez oznake)"</string>
@@ -1107,11 +1108,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="team_mode">"Timski način rada"</string>
     <string name="team_mode_exit">"Ugasi timski način rada"</string>
     <string name="team_mode_description">"Kada kartirate isto područje zajedno u grupi, možete ući u timski način rada da podijelite zadatke između svih članova tima."</string>
-    <string name="team_mode_team_size_label">"Koliko ima ljudi?"</string>
     <string name="team_mode_team_size_hint">"Timski način rada podržava grupe od 2 do 12 osoba."</string>
-
-    <!-- Fuzzy -->
-    <string name="team_mode_choose_color">"Neka svi u vašem timu odaberu jedinstvenu boju:"</string>
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
     <string name="quest_pitchLit_title">"Je li ovo sportsko igralište osvijetljeno?"</string>
@@ -1165,7 +1162,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 
     <!-- Fuzzy -->
     <string name="delete_cache_dialog_message">"Želite li počistiti svu predmemoriju karte, uključujući zadatke?
-Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se brišu nakon %2$s dana."</string>
+Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu nakon %2$s dana."</string>
     <string name="quest_shop_type_title">"Koja vrsta trgovine je %s?"</string>
     <string name="quest_shop_type_title_no_name">"Koja je ovo vrsta trgovine?"</string>
     <string name="pref_background_type_select">"Odaberite vrstu pozadine"</string>
@@ -1199,8 +1196,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_barrier_jersey_barrier">"Pomične barijere"</string>
     <string name="quest_barrier_type_log">"Balvan"</string>
     <string name="quest_barrier_type_kerb">"Rubnik"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_height_restrictor">"Graničnik visine"</string>
 
     <!-- Fuzzy -->
@@ -1216,19 +1211,14 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_barrier_type_debris_pile">"Gomila krša"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_barrier_type_stile_squeezer">"Provlačni prijelaz"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Provlačni prolaz"</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_ladder">"Prijelaz ljestvicama"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_bicycle_barrier">"Biciklistička barijera"</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_kissing_gate">"Cik-cak barijera"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_barrier_type_stepover">"Prekoračni prijelaz"</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_swing_gate">"Zakretna brklja"</string>
@@ -1236,16 +1226,96 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_kissing_gate_conversion">"Pretvoreno u cik-cak barijeru"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_stile_type_title">"Koja je ovo vrsta prolaza?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"Spojene obiteljske kuće"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description2">"Spojene obiteljske kuće"</string>
     <string name="pref_title_quests2">"Odabir i prioriteti zadataka"</string>
     <string name="pref_subtitle_quests">"%1$d od %2$d omogućeno"</string>
     <string name="quest_busStopLit_tram_name_title">"Je li tramvajska stanica %s osvjetljena?"</string>
     <string name="quest_busStopLit_tram_title">"Je li ova tramvajska stanica osvjetljena?"</string>
     <string name="quest_busStopLit_title">"Je li ova autobusna stanica osvjetljena?"</string>
     <string name="quest_busStopLit_name_title">"Je li autobusna stanica %s osvjetljena?"</string>
+    <string name="no_location_permission_warning_title">"Dopuštenje za lokaciju"</string>
+    <string name="quest_surface_value_woodchips">"Drvene Sječke"</string>
+    <string name="no_camera_app">"Nije dostupna niti jedna aplikacija za kameru"</string>
+    <string name="quest_busStopBin_tram_name_title">"Ima li tramvajska stanica %s koš za smeće?"</string>
+    <string name="quest_busStopBin_tram_title">"Ima li ova tramvajska stanica koš za smeće?"</string>
+    <string name="quest_busStopBin_title">"Ima li ova autobusna stanica koš za smeće?"</string>
+    <string name="quest_busStopBin_name_title">"Ima li autobusna stanica %s koš za smeće?"</string>
+    <string name="quest_bollard_type_title">"Kakva je ovo vrsta stupića?"</string>
+    <string name="quest_bollard_type_rising">"Automatski podižući"</string>
+    <string name="quest_bollard_type_flexible">"Savitljiv"</string>
+    <string name="quest_bollard_type_fixed">"Fiksni (ne može se ukloniti)"</string>
+    <string name="quest_camera_type_title">"Kakva je ovo vrsta nadzorne kamere?"</string>
+    <string name="quest_camera_type_dome">"Kupolasta"</string>
+    <string name="quest_camera_type_fixed">"Fiksna"</string>
+    <string name="quest_camera_type_panning">"Pomična"</string>
+    <string name="about_title_faq">"FAQ"</string>
+    <string name="quest_buildingLevels_title2">"Koliko katova iznad podruma ima ova građevina?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Koliko katova iznad podruma ima ovaj dio građevine?"</string>
+    <string name="quest_crossing_title">"Postoje li rubnici na ovom spoju puta i cesta? Koja vrsta?"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_subtitle_quests_preset_name">"Grupa zadataka: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Ova vrsta zadatka je inicijalno onemogućena jer se oblici krova često ne vide lako s ulice.  Ova vrsta zadatka također oduzima dosta vremena; u većini slučajeva je jednostavnije i učinkovitije krovove označiti iz zračnih snimaka kod kuće."</string>
+    <string name="quest_religion_animist">"Animizam"</string>
+    <string name="quest_construction_steps_title">"Jesu li ove stepenice dovršene?"</string>
+
+    <!-- Fuzzy -->
+    <string name="questList_disabled_at_day">"Prikazuje se samo noću"</string>
+    <string name="pref_quests_deselect_all">"Isključi sve zadatke?"</string>
+    <string name="quest_buildingType_boathouse">"Spremište za čamce"</string>
+
+    <!-- https://wiki.openstreetmap.org/wiki/Tag:building%3Dallotment_house -->
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_allotment_house">"Vrtna kućica"</string>
+    <string name="quest_buildingType_grandstand">"Tribina"</string>
+    <string name="action_search">"Traži"</string>
+
+    <!-- Fuzzy -->
+    <string name="action_manage_presets">"Uredi grupe zadataka"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"Koliko vas ima u grupi? Unesite isti broj na sve uređaje."</string>
+    <string name="team_mode_choose_color2">"Sada neka svatko odabere drugačiju boju. Odaberi svoju:"</string>
+    <string name="link_organic_maps_description">"Aplikacija sa kartom za putnike, planinare i bicikliste koja radi i bez interneta"</string>
+    <string name="quest_kerb_height_no">"Bez rubnika"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Drveni prekoračni prijelaz"</string>
+    <string name="quest_barrier_type_stepover_stone">"Kameni prekoračni prijelaz"</string>
+    <string name="quest_bollard_type_removable">"Uklonjiv (sa ili bez ključa)"</string>
+    <string name="quest_bollard_type_foldable2">"Sklopiv do zemlje (sa ili bez ključa)"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_search_results">"Nema rezultata"</string>
+    <string name="quest_selection_hint_title">"Previše zadataka?"</string>
+    <string name="quest_selection_hint_message">"Doprinos bi prvenstveno trebao biti zabavan! Ako ste preopterećeni brojem zadataka, u postavkama uvijek možete izmijeniti koji se zadaci prikazuju i njihov redoslijed."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_preset_add">"Dodaj grupu zadataka"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_preset_name">"Naziv grupe zadataka"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_default_name">"Default"</string>
+
+    <!-- where is this being used? -->
+    <!-- Fuzzy -->
+    <string name="quest_presets_selected">"Odabrano"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_delete_message">"Obrisati grupu zadataka \"%s\"? Odabir i redoslijed zadataka za nju će biti nepovratno izgubljen."</string>
+    <string name="notification_syncing">"Sinkroniziram…"</string>
+    <string name="notification_channel_sync">"Sinkronizacija podataka"</string>
+    <string name="quest_board_type_sport">"Sport i vježbanje"</string>
+    <string name="quest_generic_hasFeature_optional">"Opcionalno"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_bridge">"Most koji spaja zgrade (skyway)"</string>
+    <string name="quest_laundrySelfService_title2">"Je li ova praonica rublja samoposlužna?"</string>
+    <string name="quest_dietType_halal_name_title">"Nudi li %s Halal proizvode?"</string>
+    <string name="quest_dietType_explanation_halal">"Halal proizvodi se moraju pripremati prema posebnim pravilima, a Halal agencije za certificiranje moraju označavati proizvode u skladu s njima."</string>
+    <string name="quest_picnicTableCover_title">"Je li ovaj stol za piknik natkriven (zaštićen od kiše)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"To su stepenice"</string>
 </resources>

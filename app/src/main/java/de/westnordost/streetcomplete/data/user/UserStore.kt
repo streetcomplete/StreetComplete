@@ -70,6 +70,8 @@ import javax.inject.Singleton
             remove(Prefs.OSM_UNREAD_MESSAGES)
             remove(Prefs.USER_DAYS_ACTIVE)
             remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
+            remove(Prefs.USER_GLOBAL_RANK)
+            remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
         }
     }
 

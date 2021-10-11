@@ -107,11 +107,10 @@ class AddStepsRampTest {
         )
     }
 
-    @Test fun `ramp value is not set to no on updating all ramps to no if there is an unsupported rampnot tagged no`() {
+    @Test fun `ramp value is not set to no on updating all ramps to no if there is an unsupported ramp not tagged no`() {
         questType.verifyAnswer(
             mapOf(
                 "ramp:luggage" to "automatic",
-                "ramp:bicycle" to "yes",
                 "ramp" to "yes",
             ),
             StepsRampAnswer(
@@ -120,7 +119,9 @@ class AddStepsRampTest {
                 wheelchairRamp = WheelchairRampStatus.NO
             ),
             StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
-            StringMapEntryDelete("ramp:bicycle", "yes")
+            StringMapEntryAdd("ramp:bicycle", "no"),
+            StringMapEntryAdd("ramp:stroller", "no"),
+            StringMapEntryAdd("ramp:wheelchair", "no"),
         )
     }
 

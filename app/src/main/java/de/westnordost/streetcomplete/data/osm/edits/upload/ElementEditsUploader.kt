@@ -46,7 +46,7 @@ class ElementEditsUploader @Inject constructor(
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(questTypeName, edit.position)
 
-            elementEditsController.synced(edit, updates)
+            elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
 
             if (edit.action is IsRevertAction) {
@@ -59,7 +59,7 @@ class ElementEditsUploader @Inject constructor(
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
 
-            elementEditsController.syncFailed(edit)
+            elementEditsController.markSyncFailed(edit)
 
             val mapData = fetchElementComplete(edit.elementType, edit.elementId)
             if (mapData != null) {

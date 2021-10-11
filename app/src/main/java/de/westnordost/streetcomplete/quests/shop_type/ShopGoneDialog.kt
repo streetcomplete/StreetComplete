@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.ConfigurationCompat
@@ -15,9 +14,10 @@ import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
+import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toTypedArray
-import kotlinx.android.synthetic.main.view_shop_type.view.*
 
 class ShopGoneDialog(
     context: Context,
@@ -28,29 +28,25 @@ class ShopGoneDialog(
     private val onLeaveNote: () -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
-    private val presetsEditText: AutoCompleteTextView
-    private val vacantRadioButton: RadioButton
-    private val replaceRadioButton: RadioButton
-    private val leaveNoteRadioButton: RadioButton
+    private val binding: ViewShopTypeBinding
+
     private val radioButtons: List<RadioButton>
+
     private var selectedRadioButtonId: Int = 0
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.dialog_shop_gone, null)
+        val dialogBinding = DialogShopGoneBinding.inflate(LayoutInflater.from(context))
+        binding = dialogBinding.viewShopTypeLayout
 
-        presetsEditText = view.presetsEditText
-        vacantRadioButton = view.vacantRadioButton
-        replaceRadioButton = view.replaceRadioButton
-        leaveNoteRadioButton = view.leaveNoteRadioButton
-        radioButtons = listOf(vacantRadioButton, replaceRadioButton, leaveNoteRadioButton)
+        radioButtons = listOf(binding.vacantRadioButton, binding.replaceRadioButton, binding.leaveNoteRadioButton)
         for (radioButton in radioButtons) {
             radioButton.setOnClickListener { selectRadioButton(it) }
         }
 
-        presetsEditText.setAdapter(SearchAdapter(context, { term -> getFeatures(term) }, { it.name }))
-        presetsEditText.setOnClickListener { selectRadioButton(replaceRadioButton) }
-        presetsEditText.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) selectRadioButton(replaceRadioButton)
+        binding.presetsEditText.setAdapter(SearchAdapter(context, { term -> getFeatures(term) }, { it.name }))
+        binding.presetsEditText.setOnClickListener { selectRadioButton(binding.replaceRadioButton) }
+        binding.presetsEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) selectRadioButton(binding.replaceRadioButton)
         }
 
         setButton(
@@ -60,7 +56,7 @@ class ShopGoneDialog(
         )
 
         setTitle(context.getString(R.string.quest_shop_gone_title))
-        setView(view)
+        setView(dialogBinding.root)
     }
 
     override fun show() {
@@ -75,7 +71,7 @@ class ShopGoneDialog(
                 R.id.replaceRadioButton -> {
                     val feature = getSelectedFeature()
                     if (feature == null) {
-                        presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error)
+                        binding.presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error)
                     } else {
                         onSelectedFeature(feature.addTags)
                         dismiss()
@@ -97,14 +93,14 @@ class ShopGoneDialog(
     }
 
     private fun getSelectedFeature(): Feature? {
-        val input = presetsEditText.text.toString().trim()
+        val input = binding.presetsEditText.text.toString()
         return getFeatures(input).firstOrNull()?.takeIf { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
     private fun getFeatures(startsWith: String) : List<Feature> {
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
         return featureDictionary
-            .byTerm(startsWith)
+            .byTerm(startsWith.trim())
             .forGeometry(geometryType)
             .inCountry(countryCode)
             .forLocale(*localeList.toTypedArray())

@@ -157,9 +157,6 @@
     <string name="confirmation_cancel_prev_download_title">"現在の検索をキャンセルして、代わりにここでスキャンしますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"探索のスキャン中"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"位置情報がオフです。 設定に移動して今すぐオンにしますか?"</string>
 
     <!-- Fuzzy -->
@@ -240,12 +237,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"簡潔に、理想的には看板からの文言を使用してください。 例えば、\"予約で\"。 看板がない場合も、必ずしも定期的な営業時間がないわけではありません。"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"この建物は何階建てですか?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"この建物部分は何階建てですか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"この建物の屋根の基本形は何ですか?"</string>
@@ -679,9 +670,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"翻訳"</string>
 
     <!-- Fuzzy -->
@@ -853,7 +841,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"道路標示のない交差点"</string>
-    <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"元に戻す"</string>
@@ -975,9 +962,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="action_reset">"リセット"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"探求を長押しして移動すると、ダウンロードする優先順位と地図上の表示を並び替えします。"</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"元に戻す"</string>
@@ -1275,6 +1259,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_temple">"寺院"</string>
     <string name="quest_buildingType_synagogue">"シナゴーグ"</string>
     <string name="quest_buildingType_civic">"公共施設"</string>
+    <string name="quest_buildingType_school">"校舎"</string>
     <string name="quest_buildingType_hospital">"病院"</string>
     <string name="quest_buildingType_stadium">"スタジアム"</string>
     <string name="quest_buildingType_train_station">"鉄道の駅"</string>
@@ -1306,7 +1291,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_name_title2">"%s の速度制限は何ですか?"</string>
     <string name="quest_buildingType_sports_centre">"スポーツセンター"</string>
     <string name="quest_buildingType_toilets">"トイレ"</string>
-    <string name="notification_channel_download">"ダウンロード"</string>
     <string name="quest_playground_access_title">"この遊び場は誰でも利用できますか?"</string>
     <string name="quest_segregated_title">"歩道と自転車道はどのように割り当てられていますか?"</string>
     <string name="dialog_tutorial_upload">"手動で変更をアップロードするには、ツールバーにあるこのボタンを使ってください。"</string>
@@ -1322,6 +1306,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;ノートに添付した写真は開発者のサーバにアップロードされ、ノートが解決すればその数日後に削除されます。写真のメタデータはアップロードの前に除去されます。&lt;/p&gt;"</string>
     <string name="action_deselect_all">"全て選択解除"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"レストランやカフェなどの建物を含む"</string>
     <string name="quest_openingHours_timeSelect_next">"次"</string>
     <string name="quest_tracktype_title">"この農道の路面の硬さは?"</string>
@@ -1338,6 +1324,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="underground">"地下"</string>
     <string name="quest_sidewalk_value_yes">"歩道"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"この道路では歩行者の通行が禁止されていますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"この道には両脇に歩道が無いとタグ付けされています。もし実際には歩道があるものの別の道として表示されているなら、\"歩道\"と答えてください。"</string>
 
     <!-- Fuzzy -->
@@ -1357,8 +1345,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_leafType_title">"ここの樹木の葉の種類は何ですか?"</string>
     <string name="quest_leaf_type_broadleaved">"広葉樹"</string>
     <string name="quest_leaf_type_mixed">"広葉樹と針葉樹"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"この自転車道の路面は何ですか?"</string>
     <string name="quest_split_way_too_imprecise">"拡大してください"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"この歩道の路面は何ですか?"</string>
     <string name="quest_tactilePaving_title_tram">"この路面電車の駅には点字ブロックがありますか?"</string>
     <string name="quest_tactilePaving_title_name_tram">"路面電車の駅 %s には点字ブロックがありますか?"</string>
@@ -1387,6 +1379,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_recycling_glass_title">"リサイクルできるのはガラス瓶だけですか、それともあらゆるガラス製品を含みますか?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"たいていの場合、強化ガラス、窓ガラス、ガラス器具、電球、鏡は回収されません。"</string>
     <string name="about_title_changelog">"バージョン履歴"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"新着情報"</string>
     <string name="about_title_rate">"アプリを評価"</string>
     <string name="about_summary_rate">"Google Playで"</string>
@@ -1405,17 +1399,31 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="osm_profile">"OSM プロフィール"</string>
     <string name="tutorial_intro">"StreetComplete で簡単に OpenStreetMap に貢献できます。
 このアプリはあなたの周りで不足している情報(自転車レーン、住居表示、営業時間など...)を自動で探します。"</string>
+    <string name="user_achievements_title">"実績"</string>
     <string name="achievement_first_edit_description">"OpenStreetMap コミュニティへようこそ! プロフィール画面では解決した探索タイプについての詳しい情報を確認することが出来ます。"</string>
     <string name="achievement_bicyclist_solved_X">"サイクリストのための探索を %d 件解決しました!"</string>
     <string name="achievement_building_solved_X">"建物に関する探索を %d 件解決しました。このアプリは建物の種類が分かっている場合のみ住居番号について質問することを留意してください。"</string>
     <string name="achievement_blind_solved_X">"視覚障害者のための探索を %d 件解決しました。"</string>
     <string name="achievement_pedestrian_solved_X">"歩行者のための探索を %d 件解決しました!"</string>
     <string name="action_about2">"アプリについて"</string>
+    <string name="map_btn_menu">"メニュー"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;あなたのプロフィールに表示されている情報は、OpenStreetMap に公開されているあなたの貢献の履歴から集められ、私のサーバから提供されています。&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"後でプロフィール画面から行うことも出来ます。"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_achievement_levels">"実績
+レベル"</string>
+    <string name="quest_recycling_type_engine_oil">"エンジン油"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;地図を表示するためにベクタータイルを %1$s から取得します。詳しくは %1$s の &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; を参照してください。&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_board_type_history">"歴史"</string>
     <string name="quest_surface_detailed_answer_impossible">"複数の路面…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"表面を指定することができないことに間違いありませんか? \"区間によって異なる\" と回答すると、表面が変わる地点でウェイを分割できます。単一の表面であるが、回答を選ぶことができない場合に \"言えない\" と答えてください。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"簡潔に表面の特徴を記してください。例えば \"ところどころ丸石混じりの砂\" など。文の長さは255文字に制限されています。"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1447,6 +1455,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_steps_ramp_bicycle">"自転車用のスロープ"</string>
     <string name="quest_steps_ramp_stroller">"ベビーカー用のスロープ"</string>
     <string name="quest_steps_ramp_wheelchair">"車いす用のスロープ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"このATMを管理する銀行の名前は何ですか?"</string>
     <string name="quest_clothes_container_operator_title">"この衣類収集箱への寄付は誰が受け取りますか?"</string>
     <string name="quest_charging_station_operator_title">"この充電ステーションはどこが運営していますか?"</string>
@@ -1455,20 +1465,29 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"はい"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"いいえ"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"表面の説明"</string>
+    <string name="quest_buildingType_silo">"サイロ"</string>
     <string name="quest_charging_station_capacity_title">"この充電ステーションでは一度に何台の車を充電できますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactile_paving_kerb_title">"この縁石に点字ブロックはありますか?"</string>
     <string name="quest_kerb_height_flush">"路面と同じ高さ"</string>
     <string name="quest_kerb_height_lowered">"路面より少し高い"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"自動車が通行できる車線 (両方) の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
     <string name="quest_parkingType_street_side">"路傍の駐車用区画"</string>
     <string name="quest_parkingType_lane">"路面の駐車用区画"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"空き店舗です"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"以前は空き店舗でしたが、現在は何がありますか?"</string>
     <string name="quest_pitchSurface_title">"この競技場の表面は何ですか?"</string>
 
@@ -1487,13 +1506,15 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_drinking_water_potable_unsigned">"飲用 (表示はない)"</string>
     <string name="quest_drinking_water_not_potable_signed">"飲用ではない (水質検査を受けている)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"飲用ではない (表示はない)"</string>
+    <string name="quest_buildingType_fire_station">"消防署"</string>
     <string name="quest_charging_station_name_capacity_title">"この充電ステーション (%s) では一度に何台の車を充電できますか?"</string>
     <string name="team_mode">"チームモード"</string>
     <string name="team_mode_exit">"チームモードを終了"</string>
     <string name="team_mode_description">"同じ範囲を複数人で一緒にマッピングする場合、チームモードを使うことで探索を参加者全員で分担できます。"</string>
-    <string name="team_mode_team_size_label">"参加する人数"</string>
     <string name="team_mode_team_size_hint">"チームモードは2人から12人で利用できます。"</string>
-    <string name="team_mode_choose_color">"全員が異なる色を選ぶようにしてください:"</string>
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
+
+    <!-- Fuzzy -->
+    <string name="synced">"同期しました"</string>
 </resources>

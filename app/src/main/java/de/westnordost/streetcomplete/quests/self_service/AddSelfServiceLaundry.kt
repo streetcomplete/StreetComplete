@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.self_service
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.*
 
-class AddSelfServiceLaundry : OsmFilterQuestType<Boolean>() {
+class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
     override val elementFilter = "nodes, ways with shop = laundry and !self_service"
     override val commitMessage = "Add self service info"
@@ -14,11 +14,26 @@ class AddSelfServiceLaundry : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_laundry
     override val isReplaceShopEnabled = true
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title
+    override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title2
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("self_service", answer.toYesNo())
+    override fun createForm() = AddSelfServiceLaundryFragment()
+
+    override fun applyAnswerTo(answer: SelfServiceLaundry, changes: StringMapChangesBuilder) {
+        when(answer) {
+            NO -> {
+                changes.add("self_service", "no")
+                changes.addOrModify("laundry_service", "yes")
+            }
+            OPTIONAL -> {
+                changes.add("self_service", "yes")
+                changes.addOrModify("laundry_service", "yes")
+            }
+            ONLY -> {
+                changes.add("self_service", "yes")
+                changes.addOrModify("laundry_service", "no")
+            }
+        }
     }
 }

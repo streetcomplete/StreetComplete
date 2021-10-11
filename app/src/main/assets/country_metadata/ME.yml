@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [CKB, NLB, Erste Bank, Hipotekarna banka, Atlas Banka, Universal Capital Bank, Societe Generale, Prva Banka, ERSTE Bank, Addiko Bank]
+atmOperators: [CKB, Erste Bank, NLB, Atlas Banka, ERSTE Bank, Hipotekarna banka, NLB Banka, Addiko Bank, Societe Generale, Prva Banka, Universal Capital Bank]
 isSlowZoneKnown: true
 mobileCountryCode: 297
 officialLanguages: [sr, bs, sq, hr]

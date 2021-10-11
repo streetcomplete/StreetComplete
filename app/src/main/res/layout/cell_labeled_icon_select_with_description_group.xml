@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?android:attr/selectableItemBackground">
 
     <RelativeLayout
@@ -37,12 +36,12 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/ImageSelectTitle"
+                style="@style/TitleNextToImage"
                 tools:text="@string/quest_buildingType_residential" />
 
             <TextView
                 android:id="@+id/descriptionView"
-                style="@style/ImageSelectDescription"
+                style="@style/DescriptionNextToImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/quest_buildingType_residential_description" />
@@ -53,8 +52,7 @@
             android:id="@+id/dropDownArrowImageView"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:tint="@color/text"
-            android:src="@drawable/ic_arrow_right_white_96dp"
+            android:src="@drawable/ic_arrow_right_96dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"/>
 

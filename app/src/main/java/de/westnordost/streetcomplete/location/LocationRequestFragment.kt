@@ -88,7 +88,7 @@ class LocationRequestFragment : Fragment() {
     /* Step 1: Ask for permission */
 
     private fun checkLocationPermissions() {
-        if (LocationUtil.hasLocationPermission(requireContext())) {
+        if (requireContext().hasLocationPermission) {
             state = LocationState.ALLOWED
             nextStep()
         } else {
@@ -124,7 +124,7 @@ class LocationRequestFragment : Fragment() {
     /* Step 1: Ask for location to be turned on */
 
     private fun checkLocationSettings() {
-        if (LocationUtil.isLocationOn(context)) {
+        if (requireContext().isLocationEnabled) {
             state = LocationState.ENABLED
             nextStep()
         } else {
@@ -163,7 +163,7 @@ class LocationRequestFragment : Fragment() {
                 checkLocationSettings()
             }
         }
-        requireContext().registerReceiver(receiver, LocationUtil.createLocationAvailabilityIntentFilter())
+        requireContext().registerReceiver(receiver, createLocationAvailabilityIntentFilter())
         locationProviderChangedReceiver = receiver
     }
 

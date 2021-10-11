@@ -49,6 +49,5 @@
       android:strokeAlpha="0.50196"
       android:strokeLineJoin="round"
       android:strokeWidth="2"
-      android:fillColor="#00000000"
       android:strokeColor="#b82e2e"/>
 </vector>

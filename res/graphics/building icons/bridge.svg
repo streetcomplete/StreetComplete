@@ -1,0 +1,33 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 128 128"
+    id="vector">
+    <path
+        id="path"
+        d="M 26 30 L 102 30 L 102 36 L 26 36 Z"
+        fill="#acb4c2"/>
+    <path
+        id="path_1"
+        d="M 38 36 L 38 84 L 58 84 L 58 86.182 L 70 86.182 L 70 84 L 90 84 L 90 36 Z"
+        fill="#bacfef"/>
+    <path
+        id="path_2"
+        d="M 38 36 L 90 36 L 90 39.2 L 38 39.2 Z M 38 58.4 L 90 58.4 L 90 61.6 L 38 61.6 Z M 38 80.8 L 90 80.8 L 90 84 L 38 84 Z"
+        fill="#859dbf"/>
+    <path
+        id="path_3"
+        d="M 50 36 L 58 36 L 58 88.364 L 50 88.364 Z M 70 36 L 78 36 L 78 88.364 L 70 88.364 Z M 90 36 L 98 36 L 98 84 L 90 84 Z M 30 36 L 38 36 L 38 84 L 30 84 Z"
+        fill="#6f829f"/>
+    <path
+        id="path_4"
+        d="M 26 83.5 L 102 83.5 L 102 89.5 L 26 89.5 Z"
+        fill="#acb4c2"/>
+    <path
+        id="path_5"
+        d="M 22 15 L 30 15 L 30 105 L 22 105 Z"
+        fill="#859dbf"/>
+    <path
+        id="path_6"
+        d="M 98 15 L 106 15 L 106 105 L 98 105 Z"
+        fill="#859dbf"/>
+</svg>

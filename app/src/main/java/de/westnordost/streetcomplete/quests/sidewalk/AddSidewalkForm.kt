@@ -6,21 +6,23 @@ import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
-import kotlinx.android.synthetic.main.view_little_compass.*
 
 class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
-    override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }
-    )
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
+    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
+
+    override val otherAnswers = listOf(
+            AnswerItem(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }
+    )
+
     override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
@@ -40,20 +42,24 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        puzzleView.onClickSideListener = { isRight -> showSidewalkSelectionDialog(isRight) }
+        binding.puzzleView.onClickSideListener = { isRight -> showSidewalkSelectionDialog(isRight) }
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(
+            binding.puzzleView,
+            binding.littleCompass.root,
+            elementGeometry as ElementPolylinesGeometry
+        )
 
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
             else                   R.drawable.ic_sidewalk_unknown
 
-        puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
-        puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
+        binding.puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
+        binding.puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
 
         if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
-            if (leftSide == null) puzzleView.showLeftSideTapHint()
-            if (rightSide == null) puzzleView.showRightSideTapHint()
+            if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
+            if (rightSide == null) binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
 
@@ -96,12 +102,12 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val sidewalk = selected.value!!
             if (isRight) {
-                puzzleView.replaceRightSideImage(ResImage(sidewalk.puzzleResId))
-                puzzleView.setRightSideText(null)
+                binding.puzzleView.replaceRightSideImage(ResImage(sidewalk.puzzleResId))
+                binding.puzzleView.setRightSideText(null)
                 rightSide = sidewalk
             } else {
-                puzzleView.replaceLeftSideImage(ResImage(sidewalk.puzzleResId))
-                puzzleView.setLeftSideText(null)
+                binding.puzzleView.replaceLeftSideImage(ResImage(sidewalk.puzzleResId))
+                binding.puzzleView.setLeftSideText(null)
                 leftSide = sidewalk
             }
             checkIsFormComplete()

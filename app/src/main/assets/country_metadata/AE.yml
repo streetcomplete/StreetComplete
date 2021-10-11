@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, Al Hilal, FAB, Union National Bank, NBAD, mashreq, UNION NATIONAL BANK, RAKBANK, HSBC, RAK Bank, RAK BANK, al hilal bank, Sharjah Islamic Bank, Commercial Bank of Dubai, Rak Bank, Mashreq, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, union national bank, nbf, Mashreq Bank, FGB, Emirates Islamic Bank, Emirates Islamic, Dubai Islamic bank, City Bank, Bank of Sharjah, Al Masraf, Al Hilal Bank, Abu Dhabi Distribution Co.]
+atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, FAB, Al Hilal, NBAD, Union National Bank, HSBC, mashreq, UNION NATIONAL BANK, RAKBANK, RAK Bank, RAK BANK, Sharjah Islamic Bank, al hilal bank, Commercial Bank of Dubai, Mashreq Bank, Mashreq, Rak Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, Al Hilal Bank, City Bank, FGB, Bank of Sharjah, Abu Dhabi Distribution Co., union national bank, Dubai Islamic bank, Emirates Islamic Bank, nbf, Emirates Islamic, Standard Chartered, Al Masraf]
 centerLine: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 424

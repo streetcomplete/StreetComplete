@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -19,8 +18,9 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
@@ -35,8 +35,8 @@ import javax.inject.Inject
 class QuestsMapFragment : LocationAwareMapFragment() {
 
     @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
+    @Inject internal lateinit var questTypeOrderSource: QuestTypeOrderSource
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
     @Inject internal lateinit var editHistorySource: EditHistorySource
     @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
@@ -75,13 +75,13 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = ElementGeometryMapComponent(ctrl)
 
-        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeRegistry, questTypeOrderList, resources, visibleQuestsSource)
-        lifecycle.addObserver(questPinsManager!!)
-        questPinsManager!!.isActive = pinMode == PinMode.QUESTS
+        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
+        questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
-        lifecycle.addObserver(editHistoryPinsManager!!)
-        editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
+        viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
+        editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
         super.onMapReady()
     }
@@ -102,7 +102,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* -------------------------------- Picking quest pins -------------------------------------- */
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val props = controller?.pickLabel(x, y)?.properties
 
             val questKey = props?.let { questPinsManager?.getQuestKey(it) }
@@ -178,7 +178,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     fun endFocusQuest() {
         clearFocusQuest()
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             /* small delay to wait for other animations when ending focus on quest to be done first
                Most specifically, the map is being updated after a quest is solved, if the zoom
                out animation already starts while the map is being updated, there can be a little
@@ -213,16 +213,16 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         when (pinMode) {
             PinMode.QUESTS -> {
-                editHistoryPinsManager?.isActive = false
-                questPinsManager?.isActive = true
+                editHistoryPinsManager?.isVisible = false
+                questPinsManager?.isVisible = true
             }
             PinMode.EDITS -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = true
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = true
             }
             else -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = false
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = false
             }
         }
     }

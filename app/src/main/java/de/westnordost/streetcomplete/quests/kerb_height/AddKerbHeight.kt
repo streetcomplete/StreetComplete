@@ -8,6 +8,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
 class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
@@ -21,6 +24,8 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
     override val commitMessage = "Add kerb height info"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.ic_quest_kerb_type
+
+    override val questTypeAchievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_kerb_height_title
 

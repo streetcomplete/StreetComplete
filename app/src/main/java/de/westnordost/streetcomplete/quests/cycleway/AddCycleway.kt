@@ -12,11 +12,12 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 
 import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
-class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
@@ -32,7 +33,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             "NO", "SE", "FI", "IS", "DK",
             "GB", "IE", "NL", "BE", "FR", "LU",
             "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
-            "ES", "IT",
+            "ES", "IT", "HR",
             // East Asia
             "JP", "KR", "TW",
             // some of China (East Coast)
@@ -51,6 +52,8 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
     )
 
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) : Int =
         if (createCyclewaySides(tags, false) != null)
@@ -80,19 +83,28 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
 
             val minAngleToWays = 25.0
 
-            // filter out roads with missing sidewalks that are near footways
-            roadsWithMissingCycleway.removeAll { road ->
-                val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
-                val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
-                roadGeometry?.isNearAndAligned(minDistToWays, minAngleToWays, maybeSeparatelyMappedCyclewayGeometries) ?: true
+            if (maybeSeparatelyMappedCyclewayGeometries.isNotEmpty()) {
+                // filter out roads with missing cycleways that are near footways
+                roadsWithMissingCycleway.removeAll { road ->
+                    val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
+                    val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
+                    roadGeometry?.isNearAndAligned(
+                        minDistToWays,
+                        minAngleToWays,
+                        maybeSeparatelyMappedCyclewayGeometries
+                    ) ?: true
+                }
             }
         }
 
         /* For the second, nothing special. Filter out ways that have been checked less then 4
         *  years ago or have no known cycleway tags */
 
-        val oldRoadsWithKnownCycleways = eligibleRoads.filter {
-            OLDER_THAN_4_YEARS.matches(it) && it.hasOnlyKnownCyclewayTags()
+        val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
+            val countryCode = mapData.getWayGeometry(way.id)?.center?.let { p ->
+                countryInfos.get(p.longitude, p.latitude).countryCode
+            }
+            way.hasOldInvalidOrAmbiguousCyclewayTags(countryCode) == true
         }
 
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
@@ -113,9 +125,9 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
            surrounding geometry */
         if (untaggedRoadsFilter.matches(element)) return null
 
-        /* but if already tagged an old, we don't need to look at surrounding geometry to see if
-           it applicable or not */
-        return OLDER_THAN_4_YEARS.matches(element) && element.hasOnlyKnownCyclewayTags()
+        /* but if already tagged and old, we don't need to look at surrounding geometry to see if
+           it is applicable or not */
+        return element.hasOldInvalidOrAmbiguousCyclewayTags(null)
     }
 
     override fun createForm() = AddCyclewayForm()
@@ -266,7 +278,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
           - if not already tagged with a cycleway: streets with low speed or that are not paved, as
             they are very unlikely to have cycleway infrastructure
           - if not already tagged, roads that are close (15m) to foot or cycleways (see #718)
-          - if already tagged, if not older than 8 years or if the cycleway tag uses some unknown value
+          - if already tagged, if not older than 4 years or if the cycleway tag uses some unknown value
         */
 
         // streets that may have cycleway tagging
@@ -293,7 +305,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
                 or highway = residential and (
                   maxspeed > 30
                   or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
-                  or $NOT_IN_30_ZONE_OR_LESS
+                  or $notIn30ZoneOrLess
                 )
               )
               and !cycleway
@@ -308,7 +320,7 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
                 !maxspeed
                 or maxspeed > 20
                 or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-2]) mph")
-                or $NOT_IN_30_ZONE_OR_LESS
+                or $notIn30ZoneOrLess
               )
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
         """.toElementFilterExpression() }
@@ -317,71 +329,34 @@ class AddCycleway : OsmElementQuestType<CyclewayAnswer> {
             ways with highway ~ path|footway|cycleway
         """.toElementFilterExpression() }
 
-        private val NOT_IN_30_ZONE_OR_LESS = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
+        private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
             """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""
         }
 
-        private val OLDER_THAN_4_YEARS = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
+        private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 
-        private val KNOWN_CYCLEWAY_KEYS = setOf(
-            "cycleway", "cycleway:left", "cycleway:right", "cycleway:both"
-        )
-        private val KNOWN_CYCLEWAY_LANES_KEYS = setOf(
-            "cycleway:lane", "cycleway:left:lane", "cycleway:right:lane", "cycleway:both:lane"
-        )
-
-        private val KNOWN_CYCLEWAY_VALUES = setOf(
-            "lane",
-            "track",
-            "shared_lane",
-            "share_busway",
-            "no",
-            "none",
-            // synonymous for oneway:bicycle=no + cycleway:right=no (if right hand traffic and oneway=yes)
-            "opposite_lane",         // + cycleway:left=lane
-            "opposite_track",        // + cycleway:left=track
-            "opposite_share_busway", // + cycleway:left=share_busway
-            "opposite",              // + cycleway:left=no
-            // treat "separate" as unknown because we do not want to let users check that again
-            // ambiguous:
-            "yes",   // unclear what type
-            "left",  // unclear what type; wrong tagging scheme (sidewalk=left)
-            "right", // unclear what type; wrong tagging scheme
-            "both",  // unclear what type; wrong tagging scheme
-            "shared" // unclear if it is shared_lane or share_busway (or shared with pedestrians)
-        )
-        /* Treat the opposite_* taggings as simple synonyms which will be overwritten by the new tagging.
-           Community seems to be rather in consensus that both methods are equivalent or even the
-           one without opposite_* being better/newer.
-
-            https://forum.openstreetmap.org/viewtopic.php?id=65612
-            https://forum.openstreetmap.org/viewtopic.php?id=63464
-            https://forum.openstreetmap.org/viewtopic.php?id=62668
-            https://wiki.openstreetmap.org/w/index.php?title=Tag:cycleway%3Dopposite_lane&oldid=1820887
-            https://github.com/cyclosm/cyclosm-cartocss-style/issues/426
-        */
-
-        private val KNOWN_CYCLEWAY_LANE_VALUES = listOf(
-            "exclusive",
-            "advisory",
-            "pictogram",
-            "mandatory", "exclusive_lane",          // same as exclusive. Exclusive lanes are mandatory for bicyclists
-            "soft_lane", "advisory_lane", "dashed"  // synonym for advisory lane
-        )
-
-        private fun Element.hasOnlyKnownCyclewayTags(): Boolean {
-            val cyclewayTags = tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }
+        private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryCode: String?): Boolean? {
+            val sides = createCyclewaySides(tags, false)
             // has no cycleway tagging
-            if (cyclewayTags.isEmpty()) return false
-            // any cycleway tagging is not known
-            if (cyclewayTags.values.any { it !in KNOWN_CYCLEWAY_VALUES }) return false
-
-            // any cycleway lane tagging is not known
-            val cycleLaneTags = tags.filterKeys { it in KNOWN_CYCLEWAY_LANES_KEYS }
-            if (cycleLaneTags.values.any { it !in KNOWN_CYCLEWAY_LANE_VALUES }) return false
-
-            return true
+            if (sides == null) return false
+            // any cycleway tagging is not known: don't mess with that
+            if (sides.any { it.isUnknown }) return false
+            // has any invalid cycleway tags
+            if (sides.any { it == INVALID }) return true
+            // or it is older than x years
+            if (olderThan4Years.matches(this)) return true
+            // has any ambiguous cycleway tags
+            if (countryCode != null) {
+                if (sides.any { it.isAmbiguous(countryCode) }) return true
+            } else {
+                if (sides.any { it == UNSPECIFIED_SHARED_LANE }) return true
+                // for this, a countryCode is necessary, thus return null if no country code is available
+                if (sides.any { it == UNSPECIFIED_LANE }) return null
+            }
+            return false
         }
     }
 }
 
+private fun LeftAndRightCycleway.any(block: (cycleway: Cycleway) -> Boolean): Boolean =
+    left?.let(block) == true || right?.let(block) == true

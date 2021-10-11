@@ -2,24 +2,25 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.collections.ArrayList
@@ -47,7 +48,7 @@ import kotlin.collections.ArrayList
 
         var fullText = "Unable to answer \"$questTitle\""
         if (q is OsmQuest && q.elementId > 0) {
-            val lowercaseTypeName = q.elementType.name.toLowerCase(Locale.US)
+            val lowercaseTypeName = q.elementType.name.lowercase()
             val elementId = q.elementId
             fullText += " for https://osm.org/$lowercaseTypeName/$elementId"
         }
@@ -73,13 +74,12 @@ import kotlin.collections.ArrayList
      * @return true if successful
      */
     suspend fun splitWay(
-        osmQuestKey: OsmQuestKey,
+        q: OsmQuest,
         splits: List<SplitPolylineAtPosition>,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val w = mapDataSource.get(q.elementType, q.elementId) as? Way ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) as? ElementPolylinesGeometry ?: return@withContext false
+        val w = getOsmElement(q) as? Way ?: return@withContext false
+        val geom = q.geometry as? ElementPolylinesGeometry ?: return@withContext false
 
         elementEditsController.add(
             q.osmElementQuestType,
@@ -95,19 +95,17 @@ import kotlin.collections.ArrayList
      * @return true if successful
      */
     suspend fun deletePoiElement(
-        osmQuestKey: OsmQuestKey,
+        q: OsmQuest,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val e = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+        val e = getOsmElement(q) ?: return@withContext false
 
         Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
 
         elementEditsController.add(
             q.osmElementQuestType,
             e,
-            geom,
+            q.geometry,
             source,
             DeletePoiNodeAction
         )
@@ -119,21 +117,19 @@ import kotlin.collections.ArrayList
      *  @return true if successful
      */
     suspend fun replaceShopElement(
-        osmQuestKey: OsmQuestKey,
+        q: OsmQuest,
         tags: Map<String, String>,
         source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val element = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+        val e = getOsmElement(q) ?: return@withContext false
 
-        val changes = createReplaceShopChanges(element.tags, tags)
+        val changes = createReplaceShopChanges(e.tags, tags)
         Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
-            element,
-            geom,
+            e,
+            q.geometry,
             source,
             UpdateElementTagsAction(changes)
         )
@@ -146,7 +142,7 @@ import kotlin.collections.ArrayList
 
         // first remove old tags
         for ((key, value) in previousTags) {
-            val isOkToRemove = KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
+            val isOkToRemove = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }
             if (isOkToRemove && !newTags.containsKey(key)) {
                 changesList.add(StringMapEntryDelete(key, value))
             }
@@ -164,10 +160,11 @@ import kotlin.collections.ArrayList
     /** Apply the user's answer to the given quest.
      * @return true if successful
      */
-    suspend fun solve(questKey: QuestKey, answer: Any, source: String): Boolean {
-        return when(questKey) {
-            is OsmNoteQuestKey -> solveOsmNoteQuest(questKey.noteId, answer as NoteAnswer)
-            is OsmQuestKey -> solveOsmQuest(questKey, answer, source)
+    suspend fun solve(quest: Quest, answer: Any, source: String): Boolean {
+        return when(quest) {
+            is OsmNoteQuest -> solveOsmNoteQuest(quest, answer as NoteAnswer)
+            is OsmQuest -> solveOsmQuest(quest, answer, source)
+            else -> throw NotImplementedError()
         }
     }
 
@@ -175,35 +172,47 @@ import kotlin.collections.ArrayList
         mapDataSource.get(quest.elementType, quest.elementId)
     }
 
-    private suspend fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean = withContext(Dispatchers.IO) {
-        val q = osmNoteQuestController.get(questId) ?: return@withContext false
-
+    private suspend fun solveOsmNoteQuest(
+        q: OsmNoteQuest,
+        answer: NoteAnswer
+    ): Boolean = withContext(Dispatchers.IO) {
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
         // for note quests: questId == noteId
-        noteEditsController.add(questId, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
+        noteEditsController.add(q.id, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
         return@withContext true
     }
 
     private suspend fun solveOsmQuest(
-        osmQuestKey: OsmQuestKey,
-        answer: Any,
-        source: String
+        q: OsmQuest,
+        answer: Any, source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val q = osmQuestController.get(osmQuestKey) ?: return@withContext false
-        val element = mapDataSource.get(q.elementType, q.elementId) ?: return@withContext false
-        val geom = mapDataSource.getGeometry(q.elementType, q.elementId) ?: return@withContext false
+        val e = getOsmElement(q) ?: return@withContext false
 
-        val changes = createOsmQuestChanges(q, element, answer)
+        /** When OSM data is being updated (e.g. during download), first that data is persisted to
+         *  the database and after that, the quests are updated on the new data.
+         *
+         *  Depending on the volume of the data, this may take some seconds. So in this time, OSM
+         *  data and the quests are out of sync: If in this time, a quest is solved, the quest may
+         *  not be applicable to the element anymore. So we need to check that before trying to
+         *  apply the changes.
+         *
+         *  Why not synchronize the updating of OSM data and generated quests so that they never can
+         *  go out of sync? It was like this (since v32) initially, but it made using the app
+         *  (opening quests, solving quests) unusable and seemingly unresponsive while the app was
+         *  downloading/updating data. See issue #2876 */
+        if (q.osmElementQuestType.isApplicableTo(e) == false) return@withContext false
+
+        val changes = createOsmQuestChanges(q, e, answer)
         require(!changes.isEmpty()) {
-            "OsmQuest $osmQuestKey has been answered by the user but the changeset is empty!"
+            "OsmQuest ${q.key} has been answered by the user but there are no changes!"
         }
 
         Log.d(TAG, "Solved a ${q.type::class.simpleName!!} quest: $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
-            element,
-            geom,
+            e,
+            q.geometry,
             source,
             UpdateElementTagsAction(changes)
         )
@@ -242,17 +251,3 @@ import kotlin.collections.ArrayList
         private const val TAG = "QuestController"
     }
 }
-
-private val KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
-    "landuse", "historic",
-    // building/simple 3d building mapping
-    "building", "man_made", "building:.*", "roof:.*",
-    // any address
-    "addr:.*",
-    // shop can at the same time be an outline in indoor mapping
-    "level", "level:ref", "indoor", "room",
-    // geometry
-    "layer", "ele", "height", "area", "is_in",
-    // notes and fixmes
-    "FIXME", "fixme", "note"
-).map { it.toRegex() }

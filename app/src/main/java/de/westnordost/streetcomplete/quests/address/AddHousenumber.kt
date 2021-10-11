@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
@@ -28,6 +29,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
             "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
+
+    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
@@ -141,6 +144,9 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
                 changes.add("addr:housenumber", answer.houseNumber)
                 changes.addOrModify("addr:block_number", answer.blockNumber)
             }
+            WrongBuildingType -> {
+                changes.modify("building", "yes")
+            }
         }
     }
 }
@@ -181,7 +187,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
 private val buildingTypesThatShouldHaveAddresses = listOf(
     "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",
     "semidetached_house", "farm", "school", "civic", "college", "university", "public", "hospital",
-    "kindergarten", "train_station", "hotel", "retail", "commercial"
+    "kindergarten", "train_station", "hotel", "retail", "shop", "commercial", "office"
 )
 
 private fun Element.containsAnyNode(nodeIds: Set<Long>, mapData: MapDataWithGeometry): Boolean =

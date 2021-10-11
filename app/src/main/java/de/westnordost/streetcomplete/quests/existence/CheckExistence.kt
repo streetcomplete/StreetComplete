@@ -5,15 +5,15 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
-import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
-import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
 class CheckExistence(
@@ -28,7 +28,7 @@ class CheckExistence(
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = public_bookcase
           )
-          and (${lastChecked(2.0)})
+          and (${lastChecked(2.0)}) and (!seasonal or seasonal=no)
         ) or (
           (
             amenity = clock
@@ -48,17 +48,20 @@ class CheckExistence(
               and !highway
             )
           )
-          and (${lastChecked(4.0)})
+          and (${lastChecked(4.0)}) and (!seasonal or seasonal=no)
         ) or (
           (
             amenity = bench
+            or amenity = lounger
             or amenity = waste_basket
             or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
             or traffic_calming = table and !highway and !crossing
             or amenity = recycling and recycling_type = container
+            or amenity = toilets
+            or amenity = drinking_water
           )
           and (${lastChecked(6.0)})
-        )) and access !~ no|private
+        )) and access !~ no|private and (!seasonal or seasonal=no)
     """.toElementFilterExpression()
     }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
@@ -80,6 +83,8 @@ class CheckExistence(
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
 
+    override val questTypeAchievements = listOf(CITIZEN, OUTDOORS)
+
     override fun getTitle(tags: Map<String, String>): Int =
         if (tags.containsAnyKey("name", "brand", "ref", "operator"))
             R.string.quest_existence_name_title
@@ -100,11 +105,7 @@ class CheckExistence(
     override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
-        val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
-        for (otherCheckDateKey in otherCheckDateKeys) {
-            changes.deleteIfExists(otherCheckDateKey)
-        }
+        changes.updateCheckDate()
     }
 
     private fun lastChecked(yearsAgo: Double): String = """

@@ -3,7 +3,28 @@ package de.westnordost.streetcomplete.data.user.achievements
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
+import de.westnordost.streetcomplete.quests.oneway.AddOneway
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
+import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
 import javax.inject.Named
+
+enum class QuestTypeAchievement(val id: String) {
+    RARE("rare"),
+    CAR("car"),
+    VEG("veg"),
+    PEDESTRIAN("pedestrian"),
+    BUILDING("building"),
+    POSTMAN("postman"),
+    BLIND("blind"),
+    WHEELCHAIR("wheelchair"),
+    BICYCLIST("bicyclist"),
+    CITIZEN("citizen"),
+    OUTDOORS("outdoors"),
+}
 
 @Module
 object AchievementsModule {
@@ -14,13 +35,13 @@ object AchievementsModule {
 
     // list of quest synonyms (this alternate name is mentioned to aid searching for this code)
     private val questAliases = listOf(
-        "AddAccessibleForPedestrians"        to "AddProhibitedForPedestrians",
-        "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
-        "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
-        "AddSidewalks"                       to "AddSidewalk",
-        "DetailRoadSurface"                  to "AddRoadSurface",
-        "AddTrafficSignalsBlindFeatures"     to "AddTrafficSignalsVibration",
-        "AddSuspectedOneway"                 to "AddOneway"
+        "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
+        "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
+        "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
+        "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
+        "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
+        "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
+        "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
     )
 
     private val links = listOf(
@@ -146,6 +167,14 @@ object AchievementsModule {
             R.string.link_qwant_maps_description
         ),
         Link(
+            "organic_maps",
+            "https://organicmaps.app/",
+            "Organic Maps",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_organic_maps,
+            R.string.link_organic_maps_description
+        ),
+        Link(
             "cyclosm",
             "https://www.cyclosm.org",
             "CyclOSM",
@@ -246,7 +275,7 @@ object AchievementsModule {
         ),
         Link(
             "photon",
-            "http://photon.komoot.de/",
+            "https://photon.komoot.io",
             "Photon",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_photon,
@@ -400,54 +429,22 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "rare",
+            QuestTypeAchievement.RARE.id,
             R.drawable.ic_achievement_rare,
             R.string.achievement_rare_title,
             R.string.achievement_rare_solved_X,
-            SolvedQuestsOfTypes(listOf(
-                "AddSummitRegister", // 1
-                "AddWheelchairAccessToiletsPart", // 38
-                "AddWheelchairAccessOutside", // 154
-                "AddFerryAccessPedestrian", // 66
-                "AddFerryAccessMotorVehicle", // 103
-                "AddInformationToTourism", // 137
-                "AddBoardType" // 188
-            )),
+            SolvedQuestsOfTypes,
             // levels: 3, 9, 18, 30, 45, 63, ...
             { lvl -> (lvl + 1)*3 },
             mapOf()
         ),
 
         Achievement(
-            "car",
+            QuestTypeAchievement.CAR.id,
             R.drawable.ic_achievement_car,
             R.string.achievement_car_title,
             R.string.achievement_car_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddRoadName",
-                    "AddOneway",
-                    "MarkCompletedHighwayConstruction",
-                    "AddTracktype",
-                    "AddRoadSurface",
-                    "AddMaxSpeed",
-                    "AddMaxHeight",
-                    "AddMaxWeight",
-                    "AddRailwayCrossingBarrier",
-                    "AddParkingAccess",
-                    "AddParkingFee",
-                    "AddParkingType",
-                    "AddMotorcycleParkingCapacity",
-                    "AddMotorcycleParkingCover",
-                    "AddFerryAccessMotorVehicle",
-                    "AddCarWashType",
-                    "AddChargingStationOperator",
-                    "AddChargingStationCapacity",
-                    "AddLanes",
-                    "AddBarrierType",
-                    "AddBollardType",
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -462,16 +459,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "veg",
+            QuestTypeAchievement.VEG.id,
             R.drawable.ic_achievement_veg,
             R.string.achievement_veg_title,
             R.string.achievement_veg_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddVegetarian",
-                    "AddVegan"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -480,35 +472,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "pedestrian",
+            QuestTypeAchievement.PEDESTRIAN.id,
             R.drawable.ic_achievement_pedestrian,
             R.string.achievement_pedestrian_title,
             R.string.achievement_pedestrian_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddRoadName",
-                    "AddWayLit",
-                    "AddHandrail",
-                    "AddStepsIncline",
-                    "AddStepCount",
-                    "AddStepsRamp",
-                    "AddFootwayPartSurface",
-                    "AddBenchBackrest",
-                    "AddTrafficSignalsButton",
-                    "AddFerryAccessPedestrian",
-                    "AddPathSurface",
-                    "AddCrossingType",
-                    "AddProhibitedForPedestrians",
-                    "AddSidewalk",
-                    "AddBusStopName",
-                    "AddBusStopRef",
-                    "AddBusStopShelter",
-                    "AddBenchStatusOnBusStop",
-                    "AddBusStopLit",
-                    "AddCrossingIsland",
-                    "AddBarrierType"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -517,21 +485,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "building",
+            QuestTypeAchievement.BUILDING.id,
             R.drawable.ic_achievement_building,
             R.string.achievement_building_title,
             R.string.achievement_building_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddIsBuildingUnderground",
-                    "AddBuildingType",
-                    "AddBuildingLevels",
-                    "MarkCompletedBuildingConstruction",
-                    "AddPowerPolesMaterial",
-                    "AddBridgeStructure",
-                    "AddRoofShape"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -541,20 +499,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "postman",
+            QuestTypeAchievement.POSTMAN.id,
             R.drawable.ic_achievement_postman,
             R.string.achievement_postman_title,
             R.string.achievement_postman_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddHousenumber",
-                    "AddRoadName",
-                    "AddAddressStreet",
-                    "AddPostboxRef",
-                    "AddPostboxCollectionTimes",
-                    "AddPostboxRoyalCypher"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -566,22 +515,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "blind",
+            QuestTypeAchievement.BLIND.id,
             R.drawable.ic_achievement_blind,
             R.string.achievement_blind_title,
             R.string.achievement_blind_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddTactilePavingCrosswalk",
-                    "AddTrafficSignalsSound",
-                    "AddTrafficSignalsVibration",
-                    "AddTactilePavingBusStop",
-                    "AddCrossingIsland",
-                    "AddKerbHeight",
-                    "AddTactilePavingKerb",
-                    "AddBarrierType"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -591,25 +529,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "wheelchair",
+            QuestTypeAchievement.WHEELCHAIR.id,
             R.drawable.ic_achievement_wheelchair,
             R.string.achievement_wheelchair_title,
             R.string.achievement_wheelchair_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddWheelchairAccessBusiness",
-                    "AddWheelchairAccessOutside",
-                    "AddWheelchairAccessPublicTransport",
-                    "AddWheelchairAccessToilets",
-                    "AddWheelchairAccessToiletsPart",
-                    "AddFootwayPartSurface",
-                    "AddPathSurface",
-                    "AddStepsRamp",
-                    "AddHandrail",
-                    "AddKerbHeight",
-                    "AddBarrierType"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -619,26 +543,11 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "bicyclist",
+            QuestTypeAchievement.BICYCLIST.id,
             R.drawable.ic_achievement_bicyclist,
             R.string.achievement_bicyclist_title,
             R.string.achievement_bicyclist_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "AddCycleway",
-                    "AddCyclewayPartSurface",
-                    "AddBikeParkingCapacity",
-                    "AddBikeParkingCover",
-                    "AddBikeParkingType",
-                    "AddBikeParkingAccess",
-                    "AddBikeParkingFee",
-                    "AddCyclewaySegregation",
-                    "AddPathSurface",
-                    "AddStepsRamp",
-                    "AddKerbHeight",
-                    "AddBarrierType"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -648,77 +557,27 @@ object AchievementsModule {
         ),
 
         Achievement(
-            "citizen",
+            QuestTypeAchievement.CITIZEN.id,
             R.drawable.ic_achievement_citizen,
             R.string.achievement_citizen_title,
             R.string.achievement_citizen_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "CheckExistence",
-                    "CheckShopType",
-                    "SpecifyShopType",
-                    "AddSelfServiceLaundry",
-                    "AddToiletAvailability",
-                    "AddToiletsFee",
-                    "AddPlaceName",
-                    "DetermineRecyclingGlass",
-                    "AddRecyclingContainerMaterials",
-                    "AddClothingBinOperator",
-                    "AddBinStatusOnBusStop",
-                    "AddBabyChangingTable",
-                    "AddOpeningHours",
-                    "AddAtmOperator",
-                    "AddPlaygroundAccess",
-                    "AddReligionToPlaceOfWorship",
-                    "AddRecyclingType",
-                    "AddAcceptsCash",
-                    "AddVegetarian",
-                    "AddVegan",
-                    "AddKosher",
-                    "AddPoliceType",
-                    // tourist related
-                    "AddInformationToTourism",
-                    "AddBoardType",
-                    "AddInternetAccess",
-                    "AddGeneralFee"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
                 1 to links("openstreetbrowser"),
                 2 to links("qwant_maps"),
-                3 to links("indoorequal")
+                3 to links("organic_maps"),
+                4 to links("indoorequal")
             )
         ),
 
         Achievement(
-            "outdoors",
+            QuestTypeAchievement.OUTDOORS.id,
             R.drawable.ic_achievement_outdoors,
             R.string.achievement_outdoors_title,
             R.string.achievement_outdoors_solved_X,
-            SolvedQuestsOfTypes(
-                listOf(
-                    "CheckExistence",
-                    "AddSport",
-                    "AddPitchSurface",
-                    "AddPitchLit",
-                    "AddSummitRegister",
-                    "AddReligionToWaysideShrine",
-                    "AddDrinkingWater",
-                    // from pedestrian
-                    "AddPathSurface",
-                    "AddCyclewaySegregation",
-                    "AddCyclewayPartSurface",
-                    "AddFootwayPartSurface",
-                    "AddBenchBackrest",
-                    "AddBarrierType",
-                    "AddStileType",
-                    // information boards
-                    "AddInformationToTourism",
-                    "AddBoardType"
-                )
-            ),
+            SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
@@ -731,9 +590,9 @@ object AchievementsModule {
     private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
         linksKeys.map { linksById.getValue(it) }
 
-    // Quests not mentioned in any achievements:
+    // Achievement suggestions:
 
     // maybe "emergency"
-    // AddFireHydrantType AddIsDefibrillatorIndoor
+    // AddFireHydrantType AddIsDefibrillatorIndoor AddBollardType
     //
 }

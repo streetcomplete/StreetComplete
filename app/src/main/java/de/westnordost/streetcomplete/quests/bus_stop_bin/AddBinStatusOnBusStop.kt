@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.ktx.toYesNo
@@ -25,6 +26,8 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add whether a bus stop has a bin"
     override val wikiLink = "Key:bin"
     override val icon = R.drawable.ic_quest_bin_public_transport
+
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsAnyKey("name", "ref")

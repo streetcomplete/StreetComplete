@@ -1,1 +1,1 @@
-App para melhorar a informação existente no OpenStreetMap
+Aplicação de mapeamento no OpenStreetMap

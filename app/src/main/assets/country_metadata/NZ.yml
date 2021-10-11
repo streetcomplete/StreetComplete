@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, bnz, Quick Cash, Quickcash, KiwiBank, ANZ Bank, anz, TSB Bank, NZCU, NBS]
+atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, bnz, Quick Cash, Quickcash, KiwiBank, ANZ Bank, TSB Bank, NBS, NZCU, TSB]
 centerLine: white
 chargingStationOperators: [ChargeNet NZ, charge.net.nz, Vector, Orion, ChargeNet, Unison, Charge.net.nz, Vector Limited, Thundergrid, Tesla, Powerco, Network Waitaki, Network Tasman]
 isAdvisorySpeedLimitKnown: true

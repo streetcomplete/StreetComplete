@@ -4,15 +4,14 @@ import android.os.Bundle
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.sortedBy
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
+        AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
     )
 
     override val items get() = listOf(
@@ -28,6 +27,7 @@ class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
         // https://en.wikipedia.org/wiki/Chinese_folk_religion
         // sorting relatively far up because there are many Chinese expats around the world
         Item(CHINESE_FOLK, R.drawable.ic_religion_chinese_folk, R.string.quest_religion_chinese_folk),
+        Item(ANIMIST,      R.drawable.ic_religion_animist,   R.string.quest_religion_animist),
         Item(BAHAI,        R.drawable.ic_religion_bahai,     R.string.quest_religion_bahai),
         Item(SIKH,         R.drawable.ic_religion_sikh,      R.string.quest_religion_sikh),
 

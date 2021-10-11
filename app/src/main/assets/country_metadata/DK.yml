@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Danske Bank, Nordea, Euronet, Sydbank, Jyske Bank, Arbejdernes Landsbank, Spar Nord, Nykredit, Sparekassen Kronjylland, Nordjyske Bank, Andelskassen, Sparekassen Sjælland, Totalbanken, Lån & Spar, Handelsbanken, SparekassenThy, Danske bank, SparNord, Vestjysk Bank, Skjern Bank, DiBa, Sparekassen Vendsyssel, Jutlander Bank, Sparekassen Thy, Ringkøbing Landbobank, Frøs Herreds Sparekasse, Lån & Spar Bank, Bank Nordik, Djurslands Bank]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true

@@ -2,35 +2,33 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.core.view.isInvisible
-import de.westnordost.streetcomplete.R
-import kotlinx.android.synthetic.main.view_answers_counter.view.*
+import de.westnordost.streetcomplete.databinding.ViewAnswersCounterBinding
 
 /** View that displays the user's quest answer counter */
 class AnswersCounterView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr)  {
+) : RelativeLayout(context, attrs, defStyleAttr) {
+
+    private val binding = ViewAnswersCounterBinding.inflate(LayoutInflater.from(context), this)
 
     var uploadedCount: Int = 0
         set(value) {
             field = value
-            textView.text = value.toString()
+            binding.textView.text = value.toString()
         }
 
     var showProgress: Boolean = false
         set(value) {
             field = value
-            progressView.isInvisible = !value
+            binding.progressView.isInvisible = !value
         }
-
-    init {
-        inflate(context, R.layout.view_answers_counter, this)
-    }
 
     fun setUploadedCount(uploadedCount: Int, animate: Boolean) {
         if (this.uploadedCount < uploadedCount && animate) {
@@ -41,12 +39,12 @@ class AnswersCounterView @JvmOverloads constructor(
     }
 
     private fun animateChange() {
-        textView.animate()
+        binding.textView.animate()
             .scaleX(1.6f).scaleY(1.6f)
             .setInterpolator(DecelerateInterpolator(2f))
             .setDuration(100)
             .withEndAction {
-                textView.animate()
+                binding.textView.animate()
                     .scaleX(1f).scaleY(1f)
                     .setInterpolator(AccelerateDecelerateInterpolator()).duration = 100
             }

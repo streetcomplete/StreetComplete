@@ -4,17 +4,22 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.CheckBox
+import android.widget.FrameLayout
 import android.widget.TimePicker
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
+import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding
+import de.westnordost.streetcomplete.databinding.TimeRangePickerStartPickerBinding
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 
 class TimeRangePickerDialog(
@@ -29,7 +34,7 @@ class TimeRangePickerDialog(
     private val startPicker: TimePicker
     private val endPicker: TimePicker
     private val endPickerContainer: ViewGroup
-    private val viewPager: ViewPager
+    private val viewPager: ViewPager2
     private val tabLayout: TabLayout
 
     private val openEndCheckbox: CheckBox
@@ -40,8 +45,9 @@ class TimeRangePickerDialog(
 
     init {
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.dialog_time_range_picker, null)
-        setView(view)
+        val binding = DialogTimeRangePickerBinding.inflate(inflater)
+
+        setView(binding.root)
 
         setButton(
             DialogInterface.BUTTON_POSITIVE,
@@ -54,12 +60,14 @@ class TimeRangePickerDialog(
             null as DialogInterface.OnClickListener?
         )
 
-        startPicker = inflater.inflate(R.layout.time_range_picker_start_picker, null) as TimePicker
+        val startPickerBinding = TimeRangePickerStartPickerBinding.inflate(inflater)
+        startPicker = startPickerBinding.root
         startPicker.setIs24HourView(is24HourView)
 
-        endPickerContainer = inflater.inflate(R.layout.time_range_picker_end_picker, null) as ViewGroup
-        openEndCheckbox = endPickerContainer.findViewById(R.id.checkBox)
-        endPicker = endPickerContainer.findViewById(R.id.picker)
+        val endPickerBinding = TimeRangePickerEndPickerBinding.inflate(inflater)
+        endPickerContainer = endPickerBinding.root
+        openEndCheckbox = endPickerBinding.checkBox
+        endPicker = endPickerBinding.picker
         endPicker.setIs24HourView(is24HourView)
         if (timeRange != null) {
             startPicker.currentHour = timeRange.start / 60
@@ -70,11 +78,13 @@ class TimeRangePickerDialog(
             openEndCheckbox.isChecked = timeRange.isOpenEnded
         }
 
-        viewPager = view.findViewById(R.id.viewPager)
-        viewPager.adapter = CustomAdapter(startTimeLabel, endTimeLabel)
+        viewPager = binding.viewPager
+        viewPager.adapter = TimeRangePickerAdapter()
 
-        tabLayout = view.findViewById(R.id.tabLayout)
-        tabLayout.setupWithViewPager(viewPager)
+        tabLayout = binding.tabLayout
+        TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
+            tab.text = if(position == 0) startTimeLabel else endTimeLabel
+        }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab)   { setCurrentTab(tab.position) }
@@ -96,36 +106,25 @@ class TimeRangePickerDialog(
         getButton(DialogInterface.BUTTON_POSITIVE).setText(buttonResId)
     }
 
-    private inner class CustomAdapter(startTimeLabel: CharSequence, endTimeLabel: CharSequence) :
-        PagerAdapter() {
+    private inner class TimeRangePickerAdapter : RecyclerView.Adapter<TimeRangePickerAdapter.ViewHolder>() {
 
-        private val labels: Array<CharSequence> = arrayOf(startTimeLabel, endTimeLabel)
+        override fun getItemCount() = 2
 
-        override fun getCount() = labels.size
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            ViewHolder(FrameLayout(parent.context).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            })
 
-        override fun isViewFromObject(view: View, obj: Any) =
-            when(obj) {
-                START_TIME_TAB -> view === startPicker
-                END_TIME_TAB   -> view === endPickerContainer
-                else           -> false
+            override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+                val viewGroup = (holder.itemView as FrameLayout)
+                viewGroup.removeAllViews()
+                viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
             }
 
-        override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
-            when(position) {
-                START_TIME_TAB -> container.removeView(startPicker)
-                END_TIME_TAB -> container.removeView(endPickerContainer)
-            }
-        }
-
-        override fun instantiateItem(container: ViewGroup, position: Int): Any {
-            when(position) {
-                START_TIME_TAB -> container.addView(startPicker)
-                END_TIME_TAB -> container.addView(endPickerContainer)
-            }
-            return position
-        }
-
-        override fun getPageTitle(position: Int) = labels[position]
+            inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     }
 
     override fun show() {

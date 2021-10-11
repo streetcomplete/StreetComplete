@@ -1,18 +1,31 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.way_lit.WayLit.*
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 
-class WayLitForm : AYesNoQuestAnswerFragment<WayLit>() {
+class WayLitForm : AbstractQuestAnswerFragment<WayLitOrIsStepsAnswer>() {
 
-    override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_way_lit_24_7) { applyAnswer(NIGHT_AND_DAY) },
-        OtherAnswer(R.string.quest_way_lit_automatic) { applyAnswer(AUTOMATIC) }
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) }
     )
 
-    override fun onClick(answer: Boolean) {
-        applyAnswer(answer.toWayLit())
+    override val otherAnswers get() = listOfNotNull(
+        AnswerItem(R.string.quest_way_lit_24_7) { applyAnswer(NIGHT_AND_DAY) },
+        AnswerItem(R.string.quest_way_lit_automatic) { applyAnswer(AUTOMATIC) },
+        createConvertToStepsAnswer(),
+    )
+
+    private fun createConvertToStepsAnswer(): AnswerItem? {
+        val way = osmElement as? Way ?: return null
+        if (way.isArea() || way.tags["highway"] == "steps") return null
+
+        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
+            applyAnswer(IsActuallyStepsAnswer)
+        }
     }
 }

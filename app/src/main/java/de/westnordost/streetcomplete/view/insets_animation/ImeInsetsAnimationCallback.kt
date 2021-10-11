@@ -1,66 +1,54 @@
 package de.westnordost.streetcomplete.view.insets_animation
 
-import android.os.Build
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowInsetsAnimation
-import androidx.annotation.RequiresApi
+import androidx.core.graphics.Insets
+import androidx.core.view.OnApplyWindowInsetsListener
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsAnimationCompat
+import androidx.core.view.WindowInsetsCompat
+import de.westnordost.streetcomplete.ktx.setPadding
 
 /** Make the keyboard appear and disappear smoothly. Must be set on both
  *  setOnApplyWindowInsetsListener and setWindowInsetsAnimationCallback */
-@RequiresApi(Build.VERSION_CODES.R)
 class ImeInsetsAnimationCallback(
     private val view: View,
-    private val onNewInsets: View.(left: Int, top: Int, right: Int, bottom: Int) -> Unit
-) : WindowInsetsAnimation.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE), View.OnApplyWindowInsetsListener {
-
+    private val onNewInsets: View.(insets: Insets) -> Unit
+) : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE), OnApplyWindowInsetsListener {
     private var isAnimating = false
-    private var prevInsets: WindowInsets? = null
+    private var prevInsets: WindowInsetsCompat? = null
 
-    override fun onApplyWindowInsets(v: View, windowInsets: WindowInsets): WindowInsets {
+    override fun onApplyWindowInsets(v: View, windowInsets: WindowInsetsCompat): WindowInsetsCompat {
         prevInsets = windowInsets
         if (!isAnimating) applyNewInsets(windowInsets)
         return windowInsets
     }
 
-    override fun onPrepare(animation: WindowInsetsAnimation) {
-        if (animation.typeMask and WindowInsets.Type.ime() != 0) {
+    override fun onPrepare(animation: WindowInsetsAnimationCompat) {
+        if (animation.typeMask and WindowInsetsCompat.Type.ime() != 0) {
             isAnimating = true
         }
     }
 
-    override fun onProgress(insets: WindowInsets, runningAnims: List<WindowInsetsAnimation>): WindowInsets {
+    override fun onProgress(insets: WindowInsetsCompat, runningAnims: List<WindowInsetsAnimationCompat>): WindowInsetsCompat {
         applyNewInsets(insets)
         return insets
     }
 
-    override fun onEnd(animation: WindowInsetsAnimation) {
-        if (isAnimating && (animation.typeMask and WindowInsets.Type.ime()) != 0) {
+    override fun onEnd(animation: WindowInsetsAnimationCompat) {
+        if (isAnimating && (animation.typeMask and WindowInsetsCompat.Type.ime()) != 0) {
             isAnimating = false
-            prevInsets?.let { view.dispatchApplyWindowInsets(it) }
+            prevInsets?.let { view.dispatchApplyWindowInsets(it.toWindowInsets()) }
         }
     }
 
-    private fun applyNewInsets(insets: WindowInsets) {
-        val typeInsets = insets.getInsets(WindowInsets.Type.ime() or WindowInsets.Type.systemBars())
-        onNewInsets(view, typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom)
+    private fun applyNewInsets(insets: WindowInsetsCompat) {
+        val typeInsets = insets.getInsets(WindowInsetsCompat.Type.ime() or WindowInsetsCompat.Type.systemBars())
+        view.onNewInsets(typeInsets)
     }
 }
 
-fun View.respectSystemInsets(onNewInsets: View.(left: Int, top: Int, right: Int, bottom: Int) -> Unit = View::setPadding) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        val imeAnimationCallback = ImeInsetsAnimationCallback(this, onNewInsets)
-        setOnApplyWindowInsetsListener(imeAnimationCallback)
-        setWindowInsetsAnimationCallback(imeAnimationCallback)
-    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        setOnApplyWindowInsetsListener { v, windowInsets ->
-            onNewInsets(v,
-                windowInsets.systemWindowInsetLeft,
-                windowInsets.systemWindowInsetTop,
-                windowInsets.systemWindowInsetRight,
-                windowInsets.systemWindowInsetBottom
-            )
-            windowInsets
-        }
-    }
+fun View.respectSystemInsets(onNewInsets: View.(insets: Insets) -> Unit = View::setPadding) {
+    val imeAnimationCallback = ImeInsetsAnimationCallback(this, onNewInsets)
+    ViewCompat.setOnApplyWindowInsetsListener(this, imeAnimationCallback)
+    ViewCompat.setWindowInsetsAnimationCallback(this, imeAnimationCallback)
 }

@@ -17,6 +17,7 @@ import javax.inject.Singleton
 @Singleton class NotificationsSource @Inject constructor(
     private val userStore: UserStore,
     private val newUserAchievementsDao: NewUserAchievementsDao,
+    private val questSelectionHintController: QuestSelectionHintController,
     @Named("Achievements") achievements: List<Achievement>,
     private val prefs: SharedPreferences
 ) {
@@ -41,6 +42,11 @@ import javax.inject.Singleton
                 onNumberOfNotificationsUpdated()
             }
         })
+        questSelectionHintController.addListener(object : QuestSelectionHintController.Listener {
+            override fun onQuestSelectionHintStateChanged() {
+                onNumberOfNotificationsUpdated()
+            }
+        })
     }
 
     fun addListener(listener: UpdateListener) {
@@ -51,6 +57,7 @@ import javax.inject.Singleton
     }
 
     fun getNumberOfNotifications(): Int {
+        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
@@ -59,6 +66,7 @@ import javax.inject.Singleton
         }
 
         var notifications = 0
+        if (shouldShowQuestSelectionHint) notifications++
         if (hasUnreadMessages) notifications++
         if (hasNewVersion) notifications++
         notifications += newUserAchievementsDao.getCount()
@@ -74,6 +82,12 @@ import javax.inject.Singleton
                 onNumberOfNotificationsUpdated()
                 return NewVersionNotification("v$lastVersion")
             }
+        }
+
+        val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
+        if (shouldShowQuestSelectionHint) {
+            questSelectionHintController.state = QuestSelectionHintState.SHOWN
+            return QuestSelectionHintNotification
         }
 
         val newAchievement = newUserAchievementsDao.pop()

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
@@ -42,6 +43,9 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
           )
           and foot != no and access !~ private|no
           and foot != use_sidepath
+          and bicycle != use_sidepath
+          and bicycle:backward != use_sidepath
+          and bicycle:forward != use_sidepath
     """.toElementFilterExpression() }
 
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
@@ -52,6 +56,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -107,7 +113,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
                 answer.left && answer.right -> "both"
                 answer.left -> "left"
                 answer.right -> "right"
-                else -> "none"
+                else -> "no"
             }
         }
 }

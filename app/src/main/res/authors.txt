@@ -20,7 +20,8 @@ barrier_turnstile.jpg          CC-BY-SA 4.0      MelnikovArtyom https://commons.
 barrier_debris_pile.jpg        CC-BY 2.0         Oregon Department of Transportation https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg
 barrier_stile_squeezer.jpg     CC-BY-SA 2.0      Mike Fowkes https://en.wikipedia.org/wiki/File:Squeezer_stile._-_geograph.org.uk_-_110502.jpg
 barrier_stile_ladder.jpg       CC-BY-SA 2.0      David Gruar https://commons.wikimedia.org/wiki/File:Family_of_ladder_stiles_-_geograph.org.uk_-_42040.jpg
-barrier_stile_stepover.jpg     CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
+barrier_stile_stepover_wood... CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
+barrier_stile_stepover_ston... CC-BY-SA 2.0      Dave Pickersgill https://www.geograph.org.uk/photo/3634198
 barrier_kissing_gate.jpg       CC-BY-SA 2.0      David Anstiss https://commons.wikimedia.org/wiki/File:Kissing_gate_near_Trillinghurst_Farm_-_geograph.org.uk_-_1512534.jpg
 barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
 
@@ -33,19 +34,8 @@ bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/w
 bollard_fixed.jpg              CC-BY-SA 2.0      Chrisix https://wiki.openstreetmap.org/wiki/File:Bollard_in_residential_area.png
 bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
 bollard_foldable.jpg           CC-BY-SA 2.0      Hauke Stieler https://wiki.openstreetmap.org/wiki/File:Bollard_foldable.jpg
-bollard_removable_with_key.jpg CC0               Florian Edelmann https://commons.wikimedia.org/wiki/File:Traffic_bollard_removable_with_key_on_a_footway.jpg
-bollard_removable_without_key… CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Bollard_removable_without_key_(detail).jpg
+bollard_removable.jpg          CC0               Florian Edelmann https://commons.wikimedia.org/wiki/File:Traffic_bollard_removable_with_key_on_a_footway.jpg
 bollard_rising.jpg             CC-BY-SA 4.0      Stolbovsky https://commons.wikimedia.org/wiki/File:Rising_bollards_in_Moscow.jpg
-
-bridge_structure_arch.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:Wash_Br_Harlem_water_jeh.JPG
-bridge_structure_beam.jpg      CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Little_Bay_Bridges_02.jpg
-bridge_structure_cablestaye... CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Anzac_Bridge_5.jpg
-bridge_structure_floating.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Float_bridge.JPG
-bridge_structure_humpback.jpg  CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File:Gaoliang_Bridge.JPG
-bridge_structure_simple_sus... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Carrick-a-Rede_Rope_Bridge_(12298726585).jpg
-bridge_structure_suspension... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2012_Ben_Franklin_Bridge_and_Race_Street_Pier.jpg
-bridge_structure_tied_arch.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kovvur_rajamahendravaram_rail_bridge_002.jpg
-bridge_structure_truss.jpg     Public Domain     https://commons.wikimedia.org/wiki/File:Columbus_Loup_River_Bridge_from_NW_1.JPG
 
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
 car_wash_self_service.jpg      CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2015_K%C5%82odzko,_ul._Dusznicka,_myjnia_samochodowa_02.jpg
@@ -70,6 +60,7 @@ kerb_height_lowered_origina... CC0               Mateusz Konieczny
 kerb_height_flush.jpg          CC0               Mateusz Konieczny
 kerb_height_flush_original.jpg CC0               Mateusz Konieczny
 kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
+kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg

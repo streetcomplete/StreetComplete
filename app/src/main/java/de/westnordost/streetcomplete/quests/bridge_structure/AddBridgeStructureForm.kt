@@ -9,15 +9,15 @@ class AddBridgeStructureForm : AImageListQuestAnswerFragment<BridgeStructure, Br
 
     // structures sorted highest to lowest amount of values on taginfo, footbridge-types last
     override val items = listOf(
-        Item(BEAM, R.drawable.bridge_structure_beam),
-        Item(SUSPENSION, R.drawable.bridge_structure_suspension),
-        Item(ARCH, R.drawable.bridge_structure_arch),
-        Item(TIED_ARCH, R.drawable.bridge_structure_tied_arch),
-        Item(TRUSS, R.drawable.bridge_structure_truss),
-        Item(CABLE_STAYED, R.drawable.bridge_structure_cablestayed),
-        Item(HUMPBACK, R.drawable.bridge_structure_humpback),
-        Item(SIMPLE_SUSPENSION, R.drawable.bridge_structure_simple_suspension),
-        Item(FLOATING, R.drawable.bridge_structure_floating)
+        Item(BEAM, R.drawable.ic_bridge_structure_beam),
+        Item(SUSPENSION, R.drawable.ic_bridge_structure_suspension),
+        Item(ARCH, R.drawable.ic_bridge_structure_arch),
+        Item(TIED_ARCH, R.drawable.ic_bridge_structure_tied_arch),
+        Item(TRUSS, R.drawable.ic_bridge_structure_truss),
+        Item(CABLE_STAYED, R.drawable.ic_bridge_structure_cablestayed),
+        Item(HUMPBACK, R.drawable.ic_bridge_structure_humpback),
+        Item(SIMPLE_SUSPENSION, R.drawable.ic_bridge_structure_simple_suspension),
+        Item(FLOATING, R.drawable.ic_bridge_structure_floating)
     )
 
     override val itemsPerRow = 2

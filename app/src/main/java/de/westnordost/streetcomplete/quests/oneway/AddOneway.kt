@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.quests.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.quests.cycleway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.quests.parking_lanes.*
 
@@ -33,6 +34,8 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 
@@ -91,7 +94,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         /* left or right hand traffic is irrelevant here because we don't make a difference between
            left and right side */
         val sides = createCyclewaySides(tags, false) ?: return 0f
-        return (sides.left?.estimatedWidth ?: 0f) + (sides.left?.estimatedWidth ?: 0f)
+        return (sides.left?.estimatedWidth ?: 0f) + (sides.right?.estimatedWidth ?: 0f)
     }
 
     override fun createForm() = AddOnewayForm()

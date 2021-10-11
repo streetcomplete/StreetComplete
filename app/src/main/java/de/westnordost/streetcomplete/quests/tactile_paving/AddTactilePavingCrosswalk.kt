@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
@@ -28,6 +29,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
     private val excludedWaysFilter by lazy { """
         ways with
           highway = cycleway and foot !~ yes|designated
+          or highway = service and service = driveway
           or highway and access ~ private|no
     """.toElementFilterExpression() }
 
@@ -35,6 +37,8 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_pedestrian_crossing
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
+
+    override val questTypeAchievements = listOf(BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
 

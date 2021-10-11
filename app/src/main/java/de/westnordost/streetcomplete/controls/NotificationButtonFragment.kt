@@ -5,12 +5,12 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.notifications.*
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,7 +30,7 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     private var notificationsSourceUpdateListener = object : NotificationsSource.UpdateListener {
         override fun onNumberOfNotificationsUpdated(numberOfNotifications: Int) {
-            lifecycleScope.launch { updateButtonStateAnimated(numberOfNotifications) }
+            viewLifecycleScope.launch { updateButtonStateAnimated(numberOfNotifications) }
         }
     }
 
@@ -40,13 +40,13 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notificationButton.setOnClickListener { lifecycleScope.launch { onClickButton() } }
+        notificationButton.setOnClickListener { viewLifecycleScope.launch { onClickButton() } }
     }
 
     override fun onStart() {
         super.onStart()
         notificationsSource.addListener(notificationsSourceUpdateListener)
-        lifecycleScope.launch { initializeButtonState() }
+        viewLifecycleScope.launch { initializeButtonState() }
     }
 
     override fun onStop() {

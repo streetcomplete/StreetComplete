@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Alpha Bank, Εθνική Τράπεζα, Euronet, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Piraeus bank, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, Bank of Chania, ALPHA BANK, Attica Bank, Alpha bank, ATM, Τράπεζα Eurobank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, ΑΤΜ Τράπεζα Πειραιώς, piraeus bank, alpha bank, Piräus Bank, Pireus Bank, Piraeusbank, Piraeus, NBG, EuroNet, Ethniki Bank, Ethniki, EUROBANK, Cooperative Bank of Dodecanese, Citibank, Alphabank, Alpha, Alfa Bank]
+atmOperators: [Alpha Bank, Euronet, Εθνική Τράπεζα, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Εθνική, Piraeus bank, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, ALPHA BANK, Bank of Chania, alpha bank, ATM, Alpha bank, HSBC, Alpha, Ethniki Bank, Ethniki, Attica Bank, NBG, Piräus Bank, Alphabank, Cooperative Bank of Dodecanese, Citibank, Pireus Bank, Piraeusbank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, EuroNet, Τράπεζα Eurobank, piraeus bank, EUROBANK, NBG GROUP]
 chargingStationOperators: [blink, Δήμος Αλίμου, Fortizo, Peugeot, Δήμος Λαμιέων, 'https://mythicalpeloponnese.gr']
 clothesContainerOperators: [Texcycle]
 isAdvisorySpeedLimitKnown: true

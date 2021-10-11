@@ -6,13 +6,14 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import androidx.fragment.app.commit
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
-import kotlinx.android.synthetic.main.fragment_quest_statistics.*
+import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBinding
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -32,6 +33,8 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val binding by viewBinding(FragmentQuestStatisticsBinding::bind)
+
     init {
         Injector.applicationComponent.inject(this)
     }
@@ -39,14 +42,14 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            emptyText.isGone = withContext(Dispatchers.IO) { questStatisticsDao.getTotalAmount() != 0 }
+        viewLifecycleScope.launch {
+            binding.emptyText.isGone = withContext(Dispatchers.IO) { questStatisticsDao.getTotalAmount() != 0 }
         }
 
-        byQuestTypeButton.setOnClickListener { v -> selectorButton.check(v.id) }
-        byCountryButton.setOnClickListener { v -> selectorButton.check(v.id) }
+        binding.byQuestTypeButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
+        binding.byCountryButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
 
-        selectorButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
+        binding.selectorButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
                     R.id.byQuestTypeButton -> replaceFragment(QuestStatisticsByQuestTypeFragment())
@@ -60,9 +63,9 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
         super.onStart()
 
         if (userStore.isSynchronizingStatistics) {
-            emptyText.setText(R.string.stats_are_syncing)
+            binding.emptyText.setText(R.string.stats_are_syncing)
         } else {
-            emptyText.setText(R.string.quests_empty)
+            binding.emptyText.setText(R.string.quests_empty)
         }
     }
 

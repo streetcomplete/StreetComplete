@@ -206,7 +206,7 @@ private fun getRelationMemberReplacements(
 ): List<RelationMember> {
     val originalWayRole = relation.members[indexOfWayInRelation].role
 
-    /* for a from-to-relation (f.e. turn restriction, destination sign, ...) only the two ways
+    /* for a from-to-relation (e.g. turn restriction, destination sign, ...) only the two ways
       directly connecting with the via node/way should be kept in the relation. If one of these
       ways is split up, the correct way chunk must be selected to replace the old way. */
     if (originalWayRole == "from" || originalWayRole == "to") {

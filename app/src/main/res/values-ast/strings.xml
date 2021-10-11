@@ -155,9 +155,6 @@
     <string name="confirmation_cancel_prev_download_title">"¿Quies encaboxar la descarga y entamar a buscar xeres nesti llugar?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Buscando xeres..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"L'allugamientu ta apagáu. ¿Quies abrir la configuración p'activalu?"</string>
 
     <!-- Fuzzy -->
@@ -238,12 +235,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Sé precisu/a, meyor trescribe les pallabres del lletreru. Por exemplu; «con cita previa». L'ausencia de lletreru nun significa necesariamente que nun haya un horariu d'apertura habitual."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"¿Cuántos pisos tien esti edificiu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"¿Cuántos pisos tien esta parte del edificiu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"¿Qué forma básica tien el teyáu del edificiu?"</string>
@@ -675,9 +666,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="credits_contributors">"Ver la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa en GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"Ver el &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proyeutu en POEditor&lt;/a&gt; pa la llista completa."</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"Traducciones"</string>
 
     <!-- Fuzzy -->
@@ -849,7 +837,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruce ensin señalizar"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desfacer"</string>
@@ -971,9 +958,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="action_reset">"Reaniciar"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Calca de siguío p'arrastrar una xera y reordenala na llista, priorizando la so destacándola nel mapa."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Desfacer"</string>
@@ -1507,7 +1491,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"¿Qué establez la velocidá máxima?"</string>
-    <string name="notification_channel_download">"Descargar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"¿Esta zona d'espardimientu ye accesible al públicu?"</string>

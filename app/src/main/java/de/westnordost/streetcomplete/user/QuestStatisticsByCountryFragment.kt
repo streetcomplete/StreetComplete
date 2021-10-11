@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.user
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.CountryStatisticsDao
+import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
 import de.westnordost.streetcomplete.ktx.toPx
-import kotlinx.android.synthetic.main.fragment_quest_statistics_ball_pit.*
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -26,6 +26,8 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val binding by viewBinding(FragmentQuestStatisticsBallPitBinding::bind)
+
     init {
         Injector.applicationComponent.inject(this)
     }
@@ -33,12 +35,12 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycle.addObserver(ballPitView)
+        lifecycle.addObserver(binding.ballPitView)
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val countriesStatistics = withContext(Dispatchers.IO) { countryStatisticsDao.getAll() }
 
-            ballPitView.setViews(countriesStatistics.map {
+            binding.ballPitView.setViews(countriesStatistics.map {
                 createCountryBubbleView(it.countryCode, it.solvedCount, it.rank) to it.solvedCount
             })
         }
@@ -50,9 +52,7 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
         countryBubbleView.id = View.generateViewId()
         countryBubbleView.layoutParams = ViewGroup.LayoutParams(240,240)
         countryBubbleView.countryCode = countryCode
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            countryBubbleView.elevation = 6f.toPx(ctx)
-        }
+        countryBubbleView.elevation = 6f.toPx(ctx)
         countryBubbleView.setOnClickListener { v ->
             listener?.onClickedCountryFlag(countryCode, solvedCount, rank, v)
         }

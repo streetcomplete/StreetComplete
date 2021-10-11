@@ -32,6 +32,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     SPORTS_CENTRE -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_sports_centre)
     HOSPITAL -> Item(this, R.drawable.ic_building_hospital, R.string.quest_buildingType_hospital)
     STADIUM -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_stadium)
+    GRANDSTAND -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_grandstand)
     FIRE_STATION -> Item(this, R.drawable.ic_building_fire_truck, R.string.quest_buildingType_fire_station)
     TRAIN_STATION -> Item(this, R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station)
     TRANSPORTATION -> Item(this, R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation)
@@ -58,7 +59,10 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     GREENHOUSE -> Item(this, R.drawable.ic_building_greenhouse, R.string.quest_buildingType_greenhouse)
 
     SHED -> Item(this, R.drawable.ic_building_shed, R.string.quest_buildingType_shed)
+    BOATHOUSE -> Item(this, R.drawable.ic_building_boathouse, R.string.quest_buildingType_boathouse)
+    ALLOTMENT_HOUSE -> Item(this, R.drawable.ic_building_allotment_house, R.string.quest_buildingType_allotment_house)
     ROOF -> Item(this, R.drawable.ic_building_roof, R.string.quest_buildingType_roof)
+    BRIDGE -> Item(this, R.drawable.ic_building_bridge, R.string.quest_buildingType_bridge)
     TOILETS -> Item(this, R.drawable.ic_building_toilets, R.string.quest_buildingType_toilets)
     SERVICE -> Item(this, R.drawable.ic_building_service, R.string.quest_buildingType_service, R.string.quest_buildingType_service_description)
     HANGAR -> Item(this, R.drawable.ic_building_hangar, R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description)

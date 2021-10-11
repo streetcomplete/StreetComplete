@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddStileType : OsmElementQuestType<BarrierType> {
 
@@ -37,6 +38,8 @@ class AddStileType : OsmElementQuestType<BarrierType> {
     override val icon = R.drawable.ic_quest_cow
     override val isDeleteElementEnabled = true
 
+    override val questTypeAchievements = listOf(OUTDOORS)
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title
 
     override fun createForm() = AddStileTypeForm()
@@ -49,8 +52,13 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             BarrierType.STILE_LADDER -> {
                 changes.add("stile", "ladder")
             }
-            BarrierType.STILE_STEPOVER -> {
-                changes.add("stile", "stepover")
+            BarrierType.STILE_STEPOVER_WOODEN -> {
+                changes.addOrModify("stile", "stepover")
+                changes.addOrModify("material", "wood")
+            }
+            BarrierType.STILE_STEPOVER_STONE -> {
+                changes.addOrModify("stile", "stepover")
+                changes.addOrModify("material", "stone")
             }
             BarrierType.KISSING_GATE -> {
                 changes.modify("barrier", "kissing_gate")

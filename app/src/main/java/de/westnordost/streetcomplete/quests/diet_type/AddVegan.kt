@@ -4,14 +4,20 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.VEG
 
 class AddVegan : OsmFilterQuestType<DietAvailability>() {
 
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|fast_food and diet:vegetarian ~ yes|only
-          or amenity = ice_cream
+          amenity = ice_cream
+          or diet:vegetarian ~ yes|only and
+          (
+            amenity ~ restaurant|cafe|fast_food
+            or amenity = pub and food = yes
+          )
         )
         and name and (
           !diet:vegan
@@ -23,6 +29,8 @@ class AddVegan : OsmFilterQuestType<DietAvailability>() {
     override val icon = R.drawable.ic_quest_restaurant_vegan
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+
+    override val questTypeAchievements = listOf(VEG, CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegan_name_title
 

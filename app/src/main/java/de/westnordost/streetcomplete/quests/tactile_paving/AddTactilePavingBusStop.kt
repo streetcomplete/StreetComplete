@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
@@ -27,6 +28,8 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
+
+    override val questTypeAchievements = listOf(BLIND)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")

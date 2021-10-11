@@ -158,9 +158,6 @@
     <string name="confirmation_cancel_prev_download_title">"നിലവിലുള്ള തിരയൽ റദ്ദാക്കി പകരം ഇവിടെ സ്കാൻ ചെയ്യുക"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"ലൊക്കേഷൻ ഓഫാണ്. അത് ഇപ്പോൾ ചെയ്യാനുള്ള ക്രമീകരണങ്ങളിൽ പോകണോ?"</string>
 
     <!-- Fuzzy -->
@@ -241,12 +238,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"ചുരുക്കമായിരിക്കുക, ചിഹ്നങ്ങളിൽ നിന്ന് വാക്കുകളെ ഉപയോഗിക്കുക. അതായത് \"അപ്പോയ്ന്റ്മെന്റ് വഴി\". എന്ന ഒരു അടയാളം ഇല്ലെന്നത് തുറന്നിരിക്കുന്ന സമയമില്ലെന്ന് അർത്ഥമാക്കുന്നില്ല."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"ഈ കെട്ടിടത്തിന് എത്ര നിലകൾ ഉണ്ട് ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"ഈ കെട്ടിട ഭാഗത്തിന് എത്ര നില ഉണ്ട്?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"ഈ കെട്ടിടത്തിന്റെ മേൽക്കൂരയുടെ  ആകൃതി എന്താണ് ?"</string>
@@ -662,9 +653,6 @@
     <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_translations">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;പ്രോജെക്ട് POEditor&lt;/a&gt; കാണുക"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"വിവർത്തനങ്ങൾ"</string>
 
     <!-- Fuzzy -->
@@ -836,7 +824,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"റോഡ് അടയാളങ്ങളില്ലാതെയുള്ള ക്രോസിംഗ്"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"പഴയരീതിയിലാക്കുക"</string>
@@ -958,9 +945,6 @@
 
     <!-- Fuzzy -->
     <string name="action_reset">"പുനഃക്രമീകരിക്കുക"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"മാപ്പിൽ ഡൌൺലോഡ് ചെയ്യുവാനും ഡിസ്പ്ലേ ചെയുവാനും എന്നീ ആവശ്യങ്ങൾ ക്രമീകരിക്കുവാനായി ലോങ്ങ് പ്രെസ് ചെയ്ത ശേഷം തിരയുക"</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"പഴയതിലേക്ക് തിരിച്ച പോകുക"</string>
@@ -1491,7 +1475,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"എങ്ങനെയാണ് വേഗ പരിധി നിശ്ചയിക്കുന്നത്?"</string>
-    <string name="notification_channel_download">"ഡൗൺലോഡ്"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"ഈ കളിസ്ഥലം പൊതുജനത്തിന് ഉപയോഗിക്കാൻ കഴിയുമോ?"</string>
@@ -1726,9 +1709,6 @@
     <string name="quest_maxweight_unsupported_sign_request_photo">"ഒരു കുറിപ്പ് ഇടാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ? ഒരു ഫോട്ടോയുള്ള കുറിപ്പ് മറ്റ് മാപ്പർമാരെ പരിപാലിക്കാൻ പ്രാപ്തമാക്കും."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"ഈ അലക്കൽ ഒരു സ്വയം സേവന അലക്കുമാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"ഈ പടികൾക്ക് കൈവരി ഉണ്ടോ?"</string>
 
     <!-- Fuzzy -->
@@ -1831,5 +1811,11 @@
     <string name="at_conscription_number">"നിർബന്ധിത നമ്പർ %s:"</string>
     <string name="at_housenumber">"വീട്ട് നമ്പർ %s:"</string>
     <string name="quest_openingHours_name_type_title">"%1$s (%2$s) തുറക്കുന്ന  സമയം എപ്പോഴാണ് ?"</string>
+    <string name="quest_openingHours_resurvey_name_title">"തുറക്കുന്ന സമയം %s ഇപ്പോഴും ശരിയാണോ?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"തുറക്കുന്ന സമയം %1$s(%2$s) ഇപ്പോഴും ശരിയാണോ?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"തുറക്കുന്ന സമയം ഇപ്പോഴും ശരിയാണോ (%s)?"</string>
+    <string name="quest_openingHours_add_off_days">"ഒഴിവുദിനങ്ങൾ ചേർക്കുക"</string>
+    <string name="quest_openingHours_off_day">"ഒഴിവുദിനം"</string>
+    <string name="quest_openingHours_unspecified_range">"വ്യക്തമാക്കിയിട്ടില്ല"</string>
     <string name="quest_traffic_signals_sound_title">"ഇവിടെ അന്ധരായവർക്ക് വേണ്ടി ശബ്ദ സന്ദേശങ്ങൾ നൽകുന്നുണ്ടോ?\""</string>
 </resources>

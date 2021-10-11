@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Настройки"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Не удалось соединиться с сервером авторизации"</string>
     <string name="retry">"Повторить"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Авторизация не удалась: все указанные разрешения должны быть предоставлены"</string>
     <string name="title_activity_settings">"Настройки"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Связь"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
-    <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе (MB)"</string>
-
-    <!-- Fuzzy -->
+    <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе в мегабайтах"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показывать все заметки"</string>
 
     <!-- Fuzzy -->
@@ -27,23 +17,15 @@
     <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Скрывать заметки без вопросов"</string>
     <string name="pref_title_map_cache">"Размер кэша карты"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Следовать за мной"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Участники OpenStreetMap"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Другие варианты…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Не знаю…"</string>
     <string name="quest_generic_confirmation_title">"Вы уверены?"</string>
     <string name="quest_generic_confirmation_yes">"Да, точно"</string>
     <string name="quest_generic_confirmation_no">"Я проверю"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"Вы оставили это поле пустым"</string>
 
     <!-- Fuzzy -->
@@ -53,8 +35,6 @@
     <string name="quest_leave_new_note_description">"Можно оставить в этой точке заметку, которую увидят другие пользователи, либо просто скрыть этот квест для вас"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_title">"Как называется эта дорога?"</string>
 
     <!-- Fuzzy -->
@@ -65,107 +45,44 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Если название может быть написано без сокращений, так и следует его писать. Многие распространённые сокращения уже раскрываются в процессе ввода, но не все."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Нет сокращений"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Какое время работы у %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"Время открытия"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"Время закрытия"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Добавить месяцы"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Добавить часы"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_add_weekdays">"Добавить дни"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_openingHours_add_weekdays">"Добавить дни недели"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Выберите месяцы"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_chooseWeekdaysTitle">"Выберите дни работы"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Выберите рабочие дни"</string>
     <string name="quest_openingHours_24_7_confirmation">"Другими словами, работает круглосуточно в любой день недели?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"Можете что-то добавить к этой заметке?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"Нет, скрыть"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"Аноним"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Отказаться от изменений?"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Отказаться"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"Отмена"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Найти квесты здесь"</string>
 
     <!-- Fuzzy -->
     <string name="action_upload">"Отправить ответы"</string>
-
-    <!-- Fuzzy -->
     <string name="no_changes">"Вы оставили поле пустым"</string>
-
-    <!-- Fuzzy -->
     <string name="close">"закрыть"</string>
-
-    <!-- Fuzzy -->
-    <string name="download_error">"Не удалось найти квесты"</string>
-
-    <!-- Fuzzy -->
+    <string name="download_error">"Ошибка при поиске квестов"</string>
     <string name="upload_error">"Не удалось отправить ответы"</string>
 
     <!-- Fuzzy -->
     <string name="download_area_too_big">"Приблизьте ещё"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
-
-    <!-- Fuzzy -->
-    <string name="notification_downloading">"Поиск квестов…"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Определение местоположения выключено. Перейти в настройки, чтобы включить?"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Местоположение нужно для поиска квестов поблизости."</string>
-
-    <!-- Fuzzy -->
+    <string name="no_location_permission_warning">"Местоположение нужно для отображения вашей позиции и поиска квестов поблизости."</string>
     <string name="about_title_authors">"Участники"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2021 Тобиас Цвик и другие"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"Исходный код"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"на GitHub"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_report_error">"Сообщить об ошибке"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"Отправить отзыв"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"Лицензия"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
 
@@ -177,8 +94,6 @@
 
     <!-- Fuzzy -->
     <string name="not_authorized">"Не авторизовано"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"Эта версия StreetComplete устарела. Пожалуйста, обновите её!"</string>
 
     <!-- Fuzzy -->
@@ -189,17 +104,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"Это просто соединение двух дорог"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Что-то ещё (оставить заметку)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Заявление о конфиденциальности"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"и использование данных"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Праздничные дни"</string>
 
     <!-- Fuzzy -->
@@ -207,49 +114,26 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"может закрыться и позже"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"Открыто 24/7"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Зависит от месяца…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Плавающий график работы…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Опишите режим работы"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, «по записи»). Отсутствие табличек не обязательно означает особый режим работы."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Сколько этажей у этого здания?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Сколько этажей у этой части здания?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Какой формы крыша у этого здания?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Выберите один вариант:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Ещё…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Она имеет несколько разных форм"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Отдалить"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Приблизить"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ага, кто-то, кто заботится о конфиденциальности, отлично! У меня для вас только хорошие новости:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ага, кто-то, заботится о конфиденциальности, отлично! У меня для вас только хорошие новости:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Непосредственное внесение вклада&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Прежде всего, с помощью этого приложения вы отправляете все улучшения и заметки в OpenStreetMap напрямую.&lt;br/&gt;
@@ -261,24 +145,21 @@
 
 &lt;b&gt;Местоположение&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Ваше местоположение используется только для автоматического поиска квестов поблизости. Приложение никуда его не передаёт.
+Ваше местоположение используется только для автоматического поиска квестов поблизости (и их загрузки). Приложение никуда его не передаёт.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Как уже было сказано, приложение использует инфраструктуру OSM напрямую.&lt;br/&gt;Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможной порчи данных OSM версиями приложения, в которых обнаружены критические ошибки.
+Как уже было сказано, приложение использует инфраструктуру OSM напрямую.&lt;br/&gt;
+Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможной порчи данных OSM версиями приложения, в которых обнаружены критические ошибки.
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_on">"Включено"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Только по Wi-Fi"</string>
 
     <!-- Fuzzy -->
     <string name="autosync_off">"Отключено"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"Какое покрытие у данного участка дороги?"</string>
 
     <!-- Fuzzy -->
@@ -290,60 +171,26 @@
     <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Нет покрытия (без конкретики)"</string>
     <string name="quest_surface_value_asphalt">"Асфальт"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"Уплотнённое"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Бетон"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Грязь"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"Мелкий гравий"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"Трава"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Газонная решётка"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Гравий"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Мощение плиткой"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"Галька"</string>
     <string name="quest_surface_value_sand">"Песок"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Брусчатка"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Дерево"</string>
 
     <!-- Fuzzy -->
     <string name="quest_placeName_title">"Как называется этот населённый пункт?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Какой тип у этого проезда?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Это односторонняя улица?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"Какой номер дома у этого здания?"</string>
 
     <!-- Fuzzy -->
@@ -355,29 +202,15 @@
 Данное приложение ищет неполные и потенциально уточняемые данные в округе и отображает их на карте в виде маркеров. Каждое из таких заданий можно решить, ответив на один простой вопрос.
 
 Данные, которые вы вводите, добавляются непосредственно в базу OpenStreetMap под вашим именем, без необходимости использования других редакторов."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Нет названия…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Действительно нет названия?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_name_noName_confirmation_positive">"Да, нет названия"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_name_noName_confirmation_positive">"Да, без названия"</string>
     <string name="quest_openingHours_add_times">"Добавить время работы"</string>
-
-    <!-- Fuzzy -->
-    <string name="crash_message">"Хотите отправить отчёт об ошибке разработчику?"</string>
-
-    <!-- Fuzzy -->
+    <string name="crash_message">"Хотите отправить разработчику отчёт об ошибке?"</string>
     <string name="crash_title">"О нет, в прошлый раз произошёл сбой StreetComplete!"</string>
 
     <!-- Fuzzy -->
     <string name="crash_compose_email">"Отправить письмо"</string>
-
-    <!-- Fuzzy -->
     <string name="no_email_client">"У вас не установлен почтовый клиент."</string>
 
     <!-- Fuzzy -->
@@ -388,20 +221,12 @@
 
     <!-- Fuzzy -->
     <string name="upload_server_error">"Ошибка сети при отправке ответов. Повторите попытку позже."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"Да"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Нет"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"Эта автобусная остановка имеет укрытие от дождя?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_title">"Эта автобусная остановка с укрытием от дождя?"</string>
     <string name="quest_bikeParkingCapacity_title">"Сколько велосипедов можно здесь припарковать?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"Номер дома выглядит очень необычно."</string>
 
     <!-- Fuzzy -->
@@ -409,25 +234,17 @@
 
     <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"Не для конкретного вида спорта"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"Футбол"</string>
     <string name="quest_sport_tennis">"Теннис"</string>
     <string name="quest_sport_baseball">"Бейсбол"</string>
     <string name="quest_sport_basketball">"Баскетбол"</string>
     <string name="quest_sport_golf">"Гольф"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"Конный спорт"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_athletics">"Атлетика"</string>
     <string name="quest_sport_volleyball">"Волейбол"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"Пляжный волейбол"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"Американский футбол"</string>
 
     <!-- Fuzzy -->
@@ -436,67 +253,33 @@
 
     <!-- Fuzzy -->
     <string name="quest_sport_boules">"Петанк, бочче и т.п."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"Пулевая стрельба"</string>
     <string name="quest_sport_cricket">"Крикет"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"Настольный теннис"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"Гимнастика"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_archery">"Стрельба из лука"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"Австралийский футбол"</string>
     <string name="quest_sport_badminton">"Бадминтон"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Канадский футбол"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Хоккей на траве"</string>
     <string name="quest_sport_handball">"Гандбол"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Хоккей с шайбой"</string>
     <string name="quest_sport_netball">"Нетбол"</string>
     <string name="quest_sport_rugby">"Регби"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint">"Выберите:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"Это поле предназначено именно для этих видов спорта (есть соответствующая разметка и снаряды) или это поле общего назначения для любых видов спорта?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"Именно для этих"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"Общего назначения"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Вы выбрали несколько видов спорта"</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Имеет ли автобусная остановка %s укрытие от дождя?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка с обеих сторон?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Вы точно проверили это на месте?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Есть ли на автобусной остановке %s тактильная разметка?"</string>
 
     <!-- Fuzzy -->
@@ -504,14 +287,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Эта велосипедная парковка крытая (защищена от дождя)?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Не показывать снова в текущей сессии"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
 
     <!-- Fuzzy -->
@@ -520,8 +297,6 @@
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили на обоих концах улицы?
 Если вдоль всей улицы нет ни одного знака, относящегося к выбранному участку дороги, укажите стандартное ограничение скорости."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
 
     <!-- Fuzzy -->
@@ -538,8 +313,6 @@
     <string name="quest_maxspeed_answer_noSign_info_zone">"Если на перекрёстке главной улицы есть такой знак, то других знаков внутри зоны не будет, так как ограничение скорости распространяется на всю зону."</string>
     <string name="quest_sport_softball">"Софтбол"</string>
     <string name="quest_sport_racquet">"Ракетбол"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Катание на коньках"</string>
 
     <!-- Fuzzy -->
@@ -553,35 +326,17 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Доступно ли %s для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"Частично"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"Учтите, что к большинству обычных стоек можно закрепить по велосипеду с каждой стороны."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Катание на роликах"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_title">"Доступна ли эта автобусная остановка для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_title">"Этот вход в метро оборудован для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_title">"Доступна ли эта железнодорожная станция для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_title">"Доступно ли это место для инвалидных колясок?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Доступна ли автобусная остановка %s для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро на станцию %s оборудован для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Доступна ли железнодорожная станция %s для инвалидных колясок?"</string>
 
     <!-- Fuzzy -->
@@ -592,56 +347,30 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частично» значит, что нужно преодолеть не более одной ступеньки."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"В названии %s есть сокращение?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_toilets_title">"В этом туалете есть пеленальный столик?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"В %s есть пеленальный столик?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"Какого типа этот пункт переработки отходов?"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"Центр"</string>
     <string name="overground_recycling_container">"Контейнер"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"Подземный контейнер"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_error_a_field_empty">"Поле не было заполнено"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Не могу ввести символы на знаке"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Нет нужной раскладки?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"Открыть настройки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Открыть магазин приложений"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Если у вас клавиатура по умолчанию, скорее всего, нужно лишь добавить раскладку клавиатуры для нужного языка в настройках ввода.
 
 Иначе, можно загрузить другую клавиатуру. Популярные клавиатуры, поддерживающие многоязычность: Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(не указано)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"Какого типа этот пожарный гидрант?"</string>
 
     <!-- Fuzzy -->
@@ -655,159 +384,64 @@
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Пожарный пруд"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"Переводы"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors_title">"Вклад в код внесли"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_author_title">"Автор и сопровождающий"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_and_more">"и другие…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Это жилая улица"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значит здесь есть такой знак?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Что здесь выращивают?"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapes">"Виноград"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"Агава"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_almonds">"Миндаль"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apples">"Яблоки"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apricots">"Абрикосы"</string>
     <string name="produce_avocados">"Авокадо"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_bananas">"Бананы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_blueberries">"Черника"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"Какао"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"Кешью"</string>
 
     <!-- Fuzzy -->
     <string name="produce_cherries">"Вишня (черешня)"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chestnuts">"Каштаны"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coconuts">"Кокосы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coffee">"Кофе"</string>
     <string name="produce_cranberries">"Клюква"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_dates">"Финики"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"Инжир"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapefruits">"Грейпфруты"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"Гуавы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"Фундук"</string>
 
     <!-- Fuzzy -->
     <string name="produce_hops">"Хмель"</string>
     <string name="produce_jojoba">"Жожоба"</string>
     <string name="produce_kiwis">"Киви"</string>
-
-    <!-- Fuzzy -->
-    <string name="produce_kola_nuts">"Орехи кола"</string>
-
-    <!-- Fuzzy -->
+    <string name="produce_kola_nuts">"Кольские орехи"</string>
     <string name="produce_lemons">"Лимоны"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_limes">"Лаймы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangos">"Манго"</string>
     <string name="produce_mate">"Мате"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"Мускатный орех"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"Масличные пальмы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_olives">"Оливки"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oranges">"Апельсины"</string>
     <string name="produce_papayas">"Папайя"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_peaches">"Персики"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pears">"Груши"</string>
     <string name="produce_chili">"Чили"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"Хурма"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pineapples">"Ананасы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pepper">"Перец"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pistachios">"Фисташки"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_plums">"Сливы"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_raspberries">"Малина"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_rubber">"Каучук"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_strawberries">"Клубника"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tea">"Чай"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_vanilla">"Ваниль"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_walnuts">"Грецкие орехи"</string>
     <string name="produce_sisal">"Сизаль"</string>
 
@@ -816,57 +450,28 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Освещается ли %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"Используется датчик движения"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Какого типа этот пешеходный переход?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Переход без дорожной разметки"</string>
-    <string name="compass_north_one_letter">"С"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Отменить"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Мангостан"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tomatoes">"Томаты"</string>
 
     <!-- Fuzzy -->
     <string name="produce_areca_nuts">"Орехи бетель"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Сладкий перец"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"Бразильские орехи"</string>
-
-    <!-- Fuzzy -->
-    <string name="produce_tung_nuts">"Орехи тунга"</string>
-
-    <!-- Fuzzy -->
+    <string name="produce_tung_nuts">"Тунговые орехи"</string>
     <string name="quest_parkingType_title">"Какого типа эта парковка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"Открытая парковка"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Подземный гараж"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Многоуровневый паркинг"</string>
 
     <!-- Fuzzy -->
@@ -874,36 +479,18 @@
 
     <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Из чего сделан этот столб ЛЭП?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"Дерево"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"Сталь"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Бетон"</string>
 
     <!-- https://wiki.openstreetmap.org/wiki/Proposed_features/recommended_speed ? -->
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Есть знак рекомендуемой скорости…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name">"Номера нет, есть название…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Название дома:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"этажи в составе крыши"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Отличается для разных частей здания"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
 
     <!-- s/position/location/ for consistency? -->
@@ -913,15 +500,10 @@
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
     <string name="about_category_feedback">"Обратная связь"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"Прикрепить фото"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"Удалить это изображение?"</string>
 
     <!-- Может лучше "выделанная велодорожка"? В нашем ПДД отсуствует термин полоса или дорожка. Всё - велосипедная дорожка. -->
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"велодорожка"</string>
 
     <!-- Fuzzy -->
@@ -947,8 +529,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"велодорожка, движение в обе стороны"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Расширенные"</string>
 
     <!-- Fuzzy -->
@@ -956,12 +536,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_type">"Тип квестов"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"Сбросить"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Долгое нажатие и перетаскивание квестов меняет их приоритет при отображении на карте."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Отменить"</string>
@@ -970,12 +545,10 @@
     <string name="undo_confirm_negative">"Оставить"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_vegetarian_name_title">"Если ли в \"%s\" вегетарианские блюда в меню?"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Есть ли в \"%s\" вегетарианские блюда в меню?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_vegan_name_title">"Если ли в \"%s\" веганские блюда в меню?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_dietType_vegan_name_title">"Есть ли в \"%s\" веганские блюда в меню?"</string>
     <string name="quest_hasFeature_only">"Только"</string>
 
     <!-- Fuzzy -->
@@ -986,20 +559,10 @@
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Отвечайте \"да\" только в том случае, если есть полноценные блюда, а не только овощные закуски и пр."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"Какого типа эта автомойка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"Автоматическая"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"Самообслуживание"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"Мытьё машины мойщиками"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"Включить этот тип квестов?"</string>
 
     <!-- Fuzzy -->
@@ -1010,27 +573,19 @@
     <string name="quest_housenumber_street_number_optional">"Ориентировочный номер (необязательно)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Также велосипедная дорожка с другой стороны…"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Также велосипедная дорожка на встречной полосе…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"Вам надо описать, что на вывеске. Если нет вывески, вы должны спросить о режиме работы внутри."</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"никаких, но велосипедисты могут ехать во всех направлениях"</string>
+    <string name="quest_streetName_answer_noName_question">"Почему у неё нет названия?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noName_question">"Почему у этой улицы нет названия?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noProperStreet_service2">"Это дворовый проезд или подъезд для парковки"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_streetName_answer_noProperStreet_service2">"Это дворовой или парковочный проезд"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Это полевая или лесная дорога"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noName_noname">"Ничего из выше перечисленных, просто у неё нет названия"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_streetName_answer_noName_noname">"Ничего из выше перечисленного, просто у неё нет названия"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Эти туалеты доступны для инвалидных колясок?"</string>
 
     <!-- Fuzzy -->
@@ -1038,82 +593,40 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Подобный знак инвалидной коляски означает, что туалет доступен для инвалидов-колясочников.
-\"Частично\" означает, что инвалид может вкатиться и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной."</string>
-
-    <!-- Fuzzy -->
+\"Частично\" означает, что инвалид может заехать и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной."</string>
     <string name="map_btn_create_note">"Создать новую заметку"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"Увеличьте масштаб для создания заметки"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Вы можете оставить заметку, указывающую картографам на ошибку в этой точке. Двигая карту, отрегулируйте точное размещение оставляемой заметки:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"Металл"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Здесь есть велодорожка? Какого типа?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bridge_structure_title">"Какая структура моста?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_bridge_structure_title">"Какая структура этого моста?"</string>
     <string name="quest_internet_access_name_title">"Какой тип Интернет соединения предлагается в %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"Проводной (ЛВС)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"Компьютер с доступом в Интернет"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Нет соединения"</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Имеет ли трамвайная остановка %s крышу от дождя?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"Имеет ли эта трамвайная остановка крышу от дождя?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_title">"Имеет ли эта трамвайная остановка укрытие от дождя?"</string>
     <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Это стол для пикника"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"К какой религии относится это место?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_christian">"Христианство"</string>
     <string name="quest_religion_muslim">"Ислам"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"Индуизм"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"Буддизм"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"Синтоизм"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"Иудаизм"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"Даосизм"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"место для использования любой религией"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"Сикхизм"</string>
 
     <!-- Fuzzy -->
@@ -1128,14 +641,10 @@
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"К какой религии относится этот храм?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"Эта парковка платная?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"велосипедная полоса (пунктирная разметка)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Необработанный булыжник"</string>
 
     <!-- Fuzzy -->
@@ -1143,23 +652,13 @@
 
     <!-- Fuzzy -->
     <string name="quest_parking_access_private">"Это частное"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_access_yes">"Открыта для всех (платно или бесплатно)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_access_customers">"Только для клиентов"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Как называется эта пешеходная улица?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_square_name_title">"Какой тип покрытия у площади %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Зависит от времени суток и дня…"</string>
 
     <!-- Fuzzy -->
@@ -1173,21 +672,15 @@
 
     <!-- Fuzzy -->
     <string name="quest_fee_hours_title">"в такие часы:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Какое название у автобусной остановки?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tramStopName_title">"Какое название у трамвайной остановки?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"У строения несколько номеров"</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Введите диапазон или несколько значений, разделённых запятой.
 Например: 1,3 или 2–6."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Стойка (для рам велосипедов)"</string>
 
     <!-- Fuzzy -->
@@ -1198,8 +691,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"Запирающиеся отсеки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"Здание"</string>
 
     <!-- Fuzzy -->
@@ -1232,17 +723,9 @@
 
     <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"Никогда не показываются в стране %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"В этой зоне отдыха есть туалеты?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_pathSurface_title_steps">"Какое покрытие у этих ступеней?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_pathSurface_title_bridleway">"Какое покрытие у этой конной тропы?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_pathSurface_title">"Какое покрытие у этой тропы?"</string>
     <string name="quest_select_hint_most_specific">"Выберите вариант, подходящий наиболее точно:"</string>
 
@@ -1251,14 +734,8 @@
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест \"эта улица односторонняя?\" запрашивает сервис westnordost.de на предмет вероятно односторонних улиц.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_quests_reset">"Сбросить выбор и приоритет квестов на дефолтные значения?"</string>
-
-    <!-- Fuzzy -->
+    <string name="pref_quests_reset">"Сбросить выбор и приоритет квестов на значения по умолчанию?"</string>
     <string name="quest_buildingType_title2">"Что за здание здесь построили?"</string>
 
     <!-- Fuzzy -->
@@ -1268,12 +745,8 @@
     <string name="quest_buildingType_answer_multiple_types">"Многоцелевое здание"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_answer_multiple_types_description">"Просто выберите основное назначение здания. Например, если в  доме на первом этаже есть магазин, а выше расположены жилые этажи, то всё равно это многоквартирный дом."</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_buildingType_answer_multiple_types_description">"Просто выберите основное назначение здания. Например, если в доме на первом этаже есть магазин, а выше расположены жилые этажи, то всё равно это многоквартирный дом."</string>
     <string name="quest_buildingType_answer_construction_site">"Он всё ещё строится"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"Жилой дом"</string>
 
     <!-- Fuzzy -->
@@ -1284,8 +757,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"многоквартирный жилой дом, иногда есть магазин на первом этаже"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Многоквартирный дом"</string>
 
     <!-- Fuzzy -->
@@ -1302,8 +773,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Гостиница"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Общежитие"</string>
 
     <!-- Fuzzy -->
@@ -1312,20 +781,12 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Трейлер на постоянной стоянке"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"Коммерческая недвижимость"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"здание где работают люди, магазины или любая другая коммерческая недвижимость"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Промышленное здание"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"например, завод, цех, автомастерская, …"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Офисное здание"</string>
 
     <!-- Fuzzy -->
@@ -1334,75 +795,35 @@
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Складское здание"</string>
     <string name="quest_buildingType_kiosk">"Киоск"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Резервуар"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Религиозное здание"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Церковь"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Часовня"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"Собор"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Мечеть"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Храм"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Пагода"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Синагога"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Общественное здание"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_civic_description">"Общественное здание: мэрия, библиотека, бассейн…"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_buildingType_civic_description">"общественное здание: мэрия, библиотека, бассейн…"</string>
     <string name="quest_buildingType_kindergarten">"Детский сад"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"Школа"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"Колледж"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Больница"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"Стадион"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Ж/д вокзал"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"Здание общественного транспорта"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"Университет"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_government">"Здание правительства"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_buildingType_government">"Правительственное здание"</string>
     <string name="quest_buildingType_cars">"Для автомобилей"</string>
     <string name="quest_buildingType_carport">"Автостоянка с навесом"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"навес для защиты автомобиля"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"Одиночный гараж"</string>
 
     <!-- Fuzzy -->
@@ -1413,9 +834,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_farm">"На ферме"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_farmhouse">"Жилое строение"</string>
+    <string name="quest_buildingType_farmhouse">"Деревенский дом"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse_description">"жилой дом на ферме"</string>
@@ -1425,8 +844,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary_description">"нежилые здания на ферме"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Теплица"</string>
 
     <!-- Fuzzy -->
@@ -1434,21 +851,13 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"Сарай"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Хижина"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"маленькое, простое жильё или укрытие"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"Навес"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"Служебная постройка"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_service_description">"здание с работающим оборудованием (насосы, трансформаторы и т.п.)"</string>
+    <string name="quest_buildingType_service_description">"здание с таким оборудованием как насосы или трансформаторы"</string>
     <string name="quest_buildingType_hangar">"Ангар"</string>
 
     <!-- Fuzzy -->
@@ -1460,14 +869,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Строению были добавлены теги:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_shrine">"Святилище"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_buildingType_shrine">"Святыня"</string>
     <string name="quest_maxspeed_title_short2">"Какая максимальная разрешённая скорость для этой улицы?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"Знак"</string>
 
     <!-- Fuzzy -->
@@ -1475,47 +878,28 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Нет знака, указываем скорость по умолчанию"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_no_sign">"Часы работы не обозначены"</string>
+    <string name="quest_openingHours_no_sign">"Часы работы не указаны"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_name_title2">"Какое ограничение скорости для дороги %s?"</string>
     <string name="quest_buildingType_sports_centre">"Спортивный центр"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Туалеты"</string>
     <string name="quest_maxspeed_sign_question">"Чем установлено ограничение скорости?"</string>
-    <string name="notification_channel_download">"Скачать"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Эта детская площадка доступна для всех?"</string>
+    <string name="quest_playground_access_title">"Это общедоступная детская площадка?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"Как здесь расположены пешеходная и велосипедная дорожки?"</string>
 
     <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"Чтобы отправить правки вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_separated">"Отделены друг от друга"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_segregated_mixed">"Велосипедисты и пешеходы движутся по одной дороге"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_segregated_mixed">"Велосипедисты и пешеходы передвигаются по одной дороге"</string>
     <string name="quest_maxheight_title">"Какое здесь ограничение по высоте?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_parking_entrance_title">"Какое ограничение по высоте на этом въезде в парковку?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Какое ограничение по высоте у этого въезда на парковку?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_height_restrictor_title">"Какая максимальная допустимая высота у этого ограничителя высоты?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_tunnel_title">"Какое ограничение по высоте у этого туннеля?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Здесь нет знака…"</string>
 
     <!-- Fuzzy -->
@@ -1524,15 +908,9 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Эта высота выглядит неправдоподобной. Вы уверены, что это верное число?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"Закрыл %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_reopen2">"Переоткрыл %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_noteDiscussion_hide2">"Скрыт с помощью %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Скрыл %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;Приложенные фотографии загружаются на мой сервер и удаляются через несколько дней после того, как заметка будет рассмотрена. Все метаданные фотографий удаляются.&lt;/p&gt;"</string>
@@ -1548,41 +926,21 @@
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_title">"Насколько мягкая поверхность этой колеи?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Твёрдая"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Преимущественно мягкая"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Мягкая"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_name_title">"Находится ли строение %s полностью под землёй?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Находится ли это строение полностью под землёй?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"«Частично» означает, что нужно преодолеть не более одной ступеньки для доступа в заведение."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"Доступно ли это место для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"Есть ли у этого светофора кнопка для запроса перехода?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"Сколько мотоциклов можно здесь припарковать?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Снабжена ли эта парковка для мотоциклов навесом от дождя?"</string>
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Это задание выключено по умолчанию, потому что обычно требует проверить всю улицу на знаки ограничения скорости, не только подсвеченный сегмент. Это может быть достаточно долгим для одного задания."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"Показать скрытые квесты"</string>
 
     <!-- Fuzzy -->
@@ -1592,17 +950,11 @@
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
-    <!-- Fuzzy -->
     <string name="on_level">"на уровне %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <!-- Fuzzy -->
-    <string name="underground">"Подземное:"</string>
-
-    <!-- Fuzzy -->
+    <string name="underground">"подземное:"</string>
     <string name="quest_sidewalk_value_yes">"тротуар"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"нет тротуара"</string>
 
     <!-- Fuzzy -->
@@ -1610,18 +962,10 @@
 
     <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Эта улица была отмечена как не имеющая тротуара с обеих сторон. В случае, если всё-таки тротуар есть, но он нарисован как отдельная дорога, пожалуйста, ответьте \"тротуар\"."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Какого типа это здание?"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_theme_select">"Выберите тему"</string>
+    <string name="pref_title_theme_select">"Выбор темы"</string>
     <string name="theme_automatic">"Автоматически"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_light">"Светлая"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_dark">"Тёмная"</string>
 
     <!-- Fuzzy -->
@@ -1629,50 +973,26 @@
 
     <!-- Fuzzy -->
     <string name="quest_placeName_title_name">"Как называется это место? (%s)"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"Посмотреть местоположение в другом приложении"</string>
-
-    <!-- Fuzzy -->
     <string name="map_application_missing">"Другие картографические приложения не установлены"</string>
-
-    <!-- Fuzzy -->
     <string name="label_housenumber">"номер дома"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"номер корпуса"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"У остановки есть навес"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_name_title">"Перевозит ли паром %s пешеходов?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"Этот паром перевозит пешеходов?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_name_title">"Перевозит ли паром %s механические транспортные средства?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Этот паром перевозит механические транспортные средства?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"Фото сделает вашу заметку более информативной."</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_name_title">"Когда из этого почтового ящика %s забирают корреспонденцию?"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_hint">"В заметке используйте либо местный язык этого региона, либо английский."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"Здесь растут хвойные деревья или лиственные?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"Хвойные"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"Лиственные"</string>
 
     <!-- Fuzzy -->
@@ -1690,8 +1010,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Нажмите на линию, чтобы разделить её в том месте, начиная с которого ответ будет отличаться. Постарайтесь указать место как можно точнее, если необходимо, увеличьте карту."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Пожалуйста, увеличьте масштаб"</string>
 
     <!-- Fuzzy -->
@@ -1702,20 +1020,12 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Этот туалет %s доступен для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"У этой остановки трамвая есть тактильное покрытие?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"У остановки трамвая %s есть тактильное покрытие?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_tram">"У этой трамвайной остановки есть тактильное покрытие?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"У трамвайной остановки %s есть тактильное покрытие?"</string>
     <string name="quest_maxweight_title">"Какое ограничение по весу установлено здесь?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Этот вес выглядит неправдоподобным. Вы уверены, что это правильно?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"Знак выглядит иначе…"</string>
 
     <!-- Fuzzy -->
@@ -1723,17 +1033,10 @@
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Нужно ли платить за вход в %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Это прачечная самообслуживания?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Есть ли у этой лестницы поручень?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_no_name_title">"Как работает это место (часы работы)? (%s)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_current_version">"Текущая версия: %s"</string>
 
     <!-- Fuzzy -->
@@ -1741,99 +1044,45 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxRef_name_title">"Какой номер у этого %s почтового ящика?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Номер не виден…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Изображённая дорога повернута так же, как и дорога в месте метки на карте."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"Если здесь можно оставить на переработку что-то, чего нет в нашем списке, тогда, пожалуйста, оставьте об этом заметку."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Батарейки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"Консервные банки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"Одежда"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"Садовые отходы"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"Стеклянные бутылки и банки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"Бутылки и банки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"Бумага"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"Пластик"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"Любой пластик"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"Обувь"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_recycling_type_electric_appliances">"Электротехника"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_recycling_type_electric_appliances">"Электроприборы"</string>
     <string name="quest_recycling_type_plastic_bottles">"Только пластиковые бутылки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"Только пластиковая упаковка"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"Металлолом"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"Любое стекло"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"Здесь можно оставлять на переработку только стеклянные бутылки и банки или принимают и любой другой вид стекла?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Примеры стекла, которые часто не принимаются: закалённое стекло, оконные стёкла, стеклянная посуда, лампочки или зеркала."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_changelog">"История версий"</string>
 
     <!-- Fuzzy -->
     <string name="title_whats_new">"Что нового?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_rate">"Оцените это приложение"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_rate">"на Google Play"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_donate">"Поддержать"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_donate">"Выразите свою признательность! ❤️"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести своё, выберите подходящую платформу:"</string>
+    <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести свои, выберите подходящую платформу:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_name_title">"К какой религии относится %s?"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"Сканировать здесь"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_cancel">"Продолжить текущее сканирование"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages_description">"У каждого владельца/арендатора отдельное помещение"</string>
 
     <!-- Fuzzy -->
@@ -1844,17 +1093,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"Туристско-информационный центр"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_board">"Информационная доска"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_terminal">"Информационный терминал"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_map">"Карта"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_guidepost">"Указатель"</string>
 
     <!-- Fuzzy -->
@@ -1865,17 +1106,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_accepts_cash_title">"Принимают ли в %s оплату наличными?"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile">"Мой Профиль"</string>
-
-    <!-- Fuzzy -->
     <string name="user_login">"Войти"</string>
-
-    <!-- Fuzzy -->
     <string name="user_logout">"Выйти"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_profile">"Профиль OSM"</string>
 
     <!-- Fuzzy -->
@@ -1883,16 +1116,10 @@
 
     <!-- Fuzzy -->
     <string name="letsgo">"Поехали!"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm">"Добро пожаловать в OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm_subtitle">"бесплатные карты всего мира на wiki-принципе"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_intro">"StreetComplete позволяет дополнять карты OpenStreetMap.
-Приложение  ищет пропуски в данных объектов рядом с вами: неотмеченные велосипедные дорожки, дома без номера, неуказанные часы работы и пр."</string>
+Приложение ищет пропуски в данных объектов рядом с вами: неотмеченные велосипедные дорожки, дома без номера, неуказанные часы работы и пр."</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Найденные пропуски в данных отображаются на карте в виде квестов.
@@ -1903,17 +1130,9 @@
     <string name="tutorial_stay_safe">"Если вы не уверены, то отвечайте \"Не знаю\" и оставьте комментарий.
 
 И наконец, всегда будьте осторожны на улице: смотрите по сторонам и не заходите на запрещённые территории."</string>
-
-    <!-- Fuzzy -->
-    <string name="tutorial_happy_mapping">"Удачи в картах!"</string>
-
-    <!-- Fuzzy -->
+    <string name="tutorial_happy_mapping">"Удачи в картографии!"</string>
     <string name="achievements_empty">"У вас пока нет достижений"</string>
-
-    <!-- Fuzzy -->
     <string name="links_empty">"У вас пока нет ссылок"</string>
-
-    <!-- Fuzzy -->
     <string name="quests_empty">"Вы не опубликовали ни одного ответа на квест"</string>
 
     <!-- Fuzzy -->
@@ -1921,20 +1140,10 @@
 
     <!-- Fuzzy -->
     <string name="unsynced_quests_not_logged_in_description">"У вас есть %d неопубликованных дополнений. Вам нужно залогиниться, чтобы их отправить."</string>
-
-    <!-- Fuzzy -->
     <string name="user_quests_title">"Решённые квесты"</string>
-
-    <!-- Fuzzy -->
     <string name="user_achievements_title">"Достижения"</string>
-
-    <!-- Fuzzy -->
     <string name="user_links_title">"Коллекция ссылок"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_title">"Профиль"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"Документация"</string>
 
     <!-- Fuzzy -->
@@ -1942,8 +1151,6 @@
 
     <!-- Fuzzy -->
     <string name="achievements_unlocked_links">"Открытые ссылки:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_title">"Введение"</string>
 
     <!-- Fuzzy -->
@@ -1954,27 +1161,17 @@
 
     <!-- Fuzzy -->
     <string name="link_category_editors_description">"Редакторы и другие способы помогать OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_title">"Карты"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_description">"Карты на основе OpenStreetMap"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_showcase_title">"Примеры применения"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_description">"Сервисы и приложения на основе OpenStreetMap"</string>
     <string name="link_category_goodies_title">"Полезности"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_goodies_description">"Интересные штуки про карты, которые вы можете попробовать"</string>
-
-    <!-- Fuzzy -->
     <string name="link_cyclosm_description">"Карта для велосипедистов"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"Карта мест, доступных на инвалидной коляске"</string>
 
     <!-- Fuzzy -->
@@ -1982,8 +1179,6 @@
 
     <!-- Fuzzy -->
     <string name="link_openvegemap_description">"Найти вегетарианские и веганские рестораны в вашем городе"</string>
-
-    <!-- Fuzzy -->
     <string name="link_touch_mapper_description">"Создание тактильных карт для любых адресов"</string>
 
     <!-- Fuzzy -->
@@ -1991,8 +1186,6 @@
 
     <!-- Fuzzy -->
     <string name="link_josm_description">"Полнофункциональный редактор OSM для компьютеров. Мощный инструмент для регулярных правок."</string>
-
-    <!-- Fuzzy -->
     <string name="link_vespucci_description">"Продвинутый редактор OSM для Android"</string>
 
     <!-- Fuzzy -->
@@ -2000,15 +1193,13 @@
 
     <!-- Fuzzy -->
     <string name="link_umap_description">"Быстрое создание карт на основе пользовательских данных с возможностью вставить их на веб-сайт"</string>
-
-    <!-- Fuzzy -->
     <string name="link_opnvkarte_description">"Карта общественного транспорта с остановками"</string>
 
     <!-- Fuzzy -->
     <string name="link_pic4review_description">"Вносите вклад в OSM, просматривая фотографии из вашего города"</string>
 
     <!-- Fuzzy -->
-    <string name="link_wiki_description">"Эта вики -- ваш портал во всё, что связано с OpenStreetMap"</string>
+    <string name="link_wiki_description">"Эта вики — ваш портал во всё, что связано с OpenStreetMap"</string>
 
     <!-- Fuzzy -->
     <string name="link_learnosm_description">"Вы новичок в OpenStreetMap? Эта инструкция для вас"</string>
@@ -2027,68 +1218,34 @@
 
     <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"Пошаговая навигация для передвигающихся на инвалидной коляске"</string>
-
-    <!-- Fuzzy -->
     <string name="link_nominatim_description">"Геокодер для данных OSM, используемый во многих других сервисах"</string>
-
-    <!-- Fuzzy -->
     <string name="link_city_roads_description">"Отрисовка схемы дорог города для печати на футболках, кружках и т.п."</string>
-
-    <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Простая генерация карты города для печати, в том числе с перечнем улиц"</string>
-
-    <!-- Fuzzy -->
     <string name="link_brouter_description">"Вероятно, лучший маршрутизатор для велосипедистов"</string>
-
-    <!-- Fuzzy -->
     <string name="link_show_me_the_way_description">"Наблюдайте за правками OSM в реальном времени"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osrm_description">"Самый быстрый маршрутизатор"</string>
 
     <!-- Fuzzy -->
     <string name="link_openrouteservice_description">"Маршрутизация с тонкими настройками для пешеходов и разных видов транспорта. Также может показывать изохроны (участки местности, до которых можно добраться за определённое время)."</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_haiku_description">"Создание хайку (жанр японской поэзии) на основе данных OSM"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openinframap_description">"Карта объектов электрической, коммуникационной, газовой и нефтяной инфраструктуры"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openorienteeringmap_description">"Создание бумажных карт для ориентирования на местности"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetbrowser_description">"Карта для просмотра объектов по категориям"</string>
 
     <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Еженедельные новости о происходящем в мире OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="link_figuregrounder_description">"Создание постеров с силуэтными диаграммами городов или районов"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_title">"Первый квест решён"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Добро пожаловать в сообщество OpenStreetMap! Вы сможете найти информацию про все решённые квесты на странице вашего профиля."</string>
-
-    <!-- Fuzzy -->
-    <string name="achievement_surveyor_title">"Геодезист"</string>
+    <string name="achievement_surveyor_title">"Топограф"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_surveyor_solved_X">"Вы решили %d квестов! Продолжайте в том же духе и сможете открыть новые достижения и ссылки на приложения и проекты, использующие OSM и другие карты!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_title">"Завсегдатай"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_description">"Вы отправляли правки в OSM %d дней! OSM держится на постоянных участниках. Спасибо за вашу приверженность! ❤"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"Велосипедист"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_solved_X">"Вы решили %d квестов для помощи велосипедистам!"</string>
 
     <!-- Fuzzy -->
@@ -2096,28 +1253,20 @@
 
     <!-- Fuzzy -->
     <string name="achievement_wheelchair_solved_X">"Вы решили %d квестов для помощи передвигающимся на инвалидных колясках!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_title">"Почтальон"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Вы помогли уточнить %d адресов!
 Эти данные необходимы не только почтальонам, но и системам навигации."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_title">"Высотка"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"Вы решили %d квестов про здания.
 Обратите внимание, что мы спрашиваем про номер дома только для зданий с известным типом."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_title">"Шестое чувство"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_blind_solved_X">"Вы решили %d квестов для помощи людям с ограничениями по зрению."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_title">"Бегун"</string>
 
     <!-- Fuzzy -->
@@ -2128,8 +1277,6 @@
 
     <!-- Fuzzy -->
     <string name="achievement_veg_solved_X">"Вы решили %d квестов, помогающих людям на не-мясной диете!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_title">"В пути"</string>
 
     <!-- Fuzzy -->
@@ -2140,20 +1287,14 @@
 
     <!-- Fuzzy -->
     <string name="unread_messages_button">"Перейти во Входящие"</string>
-
-    <!-- Fuzzy -->
     <string name="action_about2">"О приложении"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_menu">"Меню"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Данные, отображающиеся в вашем профиле, собираются из публично доступной истории правок OpenStreetMap и затем размещаются на моём сервере.&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Вы можете сделать это позже в окне профиля."</string>
     <string name="credits_art_contributors_title">"Иллюстраторы"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
     <string name="credits_main_contributors_title">"Основные участники"</string>
-    <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте её тут позднее."</string>
+    <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте её здесь позднее."</string>
     <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографический портал %s"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
@@ -2170,12 +1311,12 @@
     <string name="quest_address_street_no_named_streets">"Не принадлежит названной улице"</string>
     <string name="quest_address_street_place_name_label">"Название места:"</string>
     <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>
-    <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
-    <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
+    <string name="quest_recycling_type_cooking_oil">"Растительное масло"</string>
+    <string name="quest_recycling_type_engine_oil">"Моторное масло"</string>
     <string name="link_photon_description">"Автономное расширение для Nominatim с нечётким поиском и функцией поиска по мере ввода"</string>
-    <string name="link_graphhopper_description">"Гибкий механизм прокладывания пути"</string>
+    <string name="link_graphhopper_description">"Гибкий механизм построения маршрута"</string>
     <string name="link_qwant_maps_description">"Карта с доступными для поиска местами и направлениями"</string>
-    <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из  %1$s. Прочтите  &lt;a href=\"%2$s\"&gt;политику конфиденциальности &lt;/a&gt; для большей информации.&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из %1$s. Ознакомьтесь с &lt;a href=\"%2$s\"&gt;политикой конфиденциальности&lt;/a&gt; для получения дополнительной информации.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
     <string name="quest_board_type_history">"История"</string>
     <string name="quest_board_type_geology">"Геология"</string>
@@ -2190,19 +1331,22 @@
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_board_type_map_description">"Если доска посвящена определённой теме, укажите её, независимо от того, есть ли на ней карта. Например, на табло общественного транспорта может быть карта автобусных маршрутов. Если тема отсутствует в списке доступных ответов, оставьте вместо этого заметку."</string>
     <string name="quest_surface_detailed_answer_impossible">"Различные покрытия…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Вы уверены что указать тип покрытия невозможно? Опция \"Отличается на разных участках\" позволяет разделить участок в местах смены покрытия. Используйте \"Не знаю\" если покрытие однородно, но не доступно в качестве ответа."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Пожалуйста, кратко укажите тип поверхности, например, \"песчаная с вкраплениями булыжника\". Длина текста ограничена 255 символами."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>
-    <string name="quest_streetName_menuItem_romanized">"Латиницей"</string>
     <string name="quest_buildingType_terrace2">"Ряд домов"</string>
     <string name="quest_oneway_tutorial">"Дорога на картинке повёрнута так же, как на карте в месте расположения булавки. Обратите внимание на указанное направление."</string>
     <string name="at_housename">"Название дома %s:"</string>
-    <string name="at_conscription_and_street_number">"Сквозная нумерация %1$s, Ориентировочный номер %2$s:"</string>
+    <string name="at_conscription_and_street_number">"Сквозная нумерация %1$s, ориентировочный номер %2$s:"</string>
 
     <!-- Fuzzy -->
-    <string name="at_conscription_number">"Сквозная нумерация %s:"</string>
+    <string name="at_conscription_number">"сквозная нумерация %s:"</string>
     <string name="at_housenumber">"номер дома %s:"</string>
     <string name="quest_openingHours_name_type_title">"Какое время работы у %1$s (%2$s)?"</string>
     <string name="quest_openingHours_resurvey_name_title">"Время работы для %s корректное?"</string>
@@ -2218,8 +1362,8 @@
     <string name="resurvey_intervals_default">"По умолчанию"</string>
     <string name="resurvey_intervals_more_often">"Спрашивать чаще"</string>
     <string name="quest_accepts_cash_type_title">"Принимают ли в %1$s (%2$s) оплату наличными?"</string>
-    <string name="quest_busStopBench_tram_name_title">"Есть ли на остановке трамвая %s скамейка?"</string>
-    <string name="quest_busStopBench_tram_title">"На этой остановке трамвая есть скамейка?"</string>
+    <string name="quest_busStopBench_tram_name_title">"Есть ли на трамвайной остановке %s скамейка?"</string>
+    <string name="quest_busStopBench_tram_title">"На этой трамвайной остановке есть скамейка?"</string>
     <string name="quest_busStopBench_title">"На этой автобусной остановке есть скамейка?"</string>
     <string name="quest_busStopBench_name_title">"Есть ли на автобусной остановке %s скамейка?"</string>
     <string name="quest_summit_register_title">"Здесь есть книга записи посетителей на %s?"</string>
@@ -2234,6 +1378,8 @@
     <string name="quest_steps_incline_up">"Подъём в эту сторону"</string>
     <string name="quest_step_count_title">"Сколько здесь ступеней?"</string>
     <string name="quest_traffic_signals_sound_title">"Есть ли здесь звуковые сигналы для незрячих?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Имеет ли светофор тактильную индикацию для слепых людей?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Подсказка: обычно это вибрирующая кнопка или вращающийся конус под кнопкой светофора."</string>
     <string name="quest_busStopRef_title">"Какой номер у этой автобусной остановки?"</string>
@@ -2242,10 +1388,12 @@
     <string name="quest_railway_crossing_barrier_title2">"Какие заграждения используются на этом железнодорожном переезде?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Преград нет"</string>
     <string name="quest_steps_ramp_title">"Есть ли у этих ступеней пандус? Какой?"</string>
-    <string name="quest_steps_ramp_none">"Нет пандуса"</string>
+    <string name="quest_steps_ramp_none">"Нет пандуса (пригодного)"</string>
     <string name="quest_steps_ramp_bicycle">"Велосипедный пандус"</string>
     <string name="quest_steps_ramp_stroller">"Пандус для коляски"</string>
     <string name="quest_steps_ramp_wheelchair">"Пандус для инвалидных колясок"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Как называется банк этого банкомата?"</string>
     <string name="quest_clothes_container_operator_title">"Куда идёт пожертвованная здесь одежда?"</string>
     <string name="quest_charging_station_operator_title">"Кто является оператором этой зарядной станции?"</string>
@@ -2265,7 +1413,7 @@
     <string name="quest_surface_detailed_answer_impossible_title">"Опишите поверхность"</string>
     <string name="open_url">"Открыть URL"</string>
     <string name="quest_buildingType_silo">"Силос"</string>
-    <string name="quest_buildingType_historic">"Исторический"</string>
+    <string name="quest_buildingType_historic">"Историческое"</string>
     <string name="quest_buildingType_historic_description">"здание исторической ценности, построенное с неизвестной или неясной целью"</string>
     <string name="quest_buildingType_abandoned">"Заброшенное"</string>
     <string name="quest_buildingType_abandoned_description">"неиспользуемое здание, первоначальная функция или назначение которого неизвестны"</string>
@@ -2279,37 +1427,44 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Двусторонняя полоса левого поворота"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Это правильно?"</string>
     <string name="quest_maxheight_below_bridge_title">"Какое ограничение по высоте под этим мостом?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Если она отличается в разных местах, ответьте \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Есть ли здесь на этом бордюре тактильное покрытие?"</string>
     <string name="quest_kerb_height_title">"Какая высота у этого бордюра?"</string>
     <string name="quest_kerb_height_flush">"На одном уровне с дорожным покрытием"</string>
     <string name="quest_kerb_height_lowered">"Немного выше поверхности дороги"</string>
     <string name="quest_kerb_height_raised">"Высокий бордюр"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"На этой стороне перехода нет бордюра"</string>
     <string name="quest_kerb_height_lowered_ramp">"Рампа для въезда"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Укажите общее количество размеченных полос движения (в обоих направлениях), используемых автомобильным движением. Велосипедные дорожки и выделенные полосы для парковки не в счёт.
 Если какие-либо полосы используются для общественного транспорта, пожалуйста, оставьте комментарий."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Укажите здесь количество размеченных полос движения, используемых автомобильным движением. Велосипедные дорожки и выделенные полосы для парковки не в счёт.
 Если какие-либо полосы используются для общественного транспорта, пожалуйста, оставьте комментарий."</string>
     <string name="quest_surface_value_rock">"Камень"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Высокие грузовики могут проехать"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Высокие грузовики не могут проехать"</string>
     <string name="quest_address_street_hint">"Нажмите на дорогу на карте"</string>
     <string name="quest_crossing_type_marked">"Переход с разметкой/знаком"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Парковка на обочине"</string>
     <string name="quest_parkingType_lane">"Парковка на проезжей части"</string>
     <string name="quest_existence_title">"Находится ли здесь этот объект? (%s)"</string>
-    <string name="quest_existence_name_title">"Находится ли %1$s (%2$s) тут?"</string>
+    <string name="quest_existence_name_title">"Находится ли здесь %1$s (%2$s)?"</string>
     <string name="quest_tracktype_grade2a">"Твёрдое, но без покрытия"</string>
     <string name="quest_tracktype_grade3a">"Преимущественно твёрдое"</string>
     <string name="quest_generic_answer_does_not_exist">"Не существует…"</string>
 
     <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Вы уверены, что этого места не существует, даже в ближайшей окрестности? Если есть сомнения, лучше оставить заметку."</string>
-    <string name="osm_element_gone_confirmation">"Это не существует"</string>
+    <string name="osm_element_gone_confirmation">"Не существует"</string>
     <string name="leave_note">"Оставить заметку"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Что сейчас здесь находится вместо?"</string>
 
     <!-- Fuzzy -->
@@ -2318,15 +1473,21 @@
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Введите категорию точки здесь"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"Не знаю, что это. Советуем оставить заметку."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Магазин выехал. Что здесь сейчас расположено?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Количество полос различно у сторон"</string>
     <string name="quest_pitchSurface_title">"Какое покрытие у этого спортивного поля?"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Данный тип заданий отключён по - умолчанию, т.к. он бесполезен в некоторых регионах и скорее всего требует зайти в это место, чтобы решить  задания этого типа."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Данный тип заданий отключён по умолчанию, ибо он бесполезен в некоторых регионах и, скорее всего, требуется зайти в это место, чтобы решить задания этого типа."</string>
     <string name="quest_dietType_kosher_name_title">"Предлагаются ли в %s кошерные продукты?"</string>
-    <string name="quest_dietType_explanation_kosher">"Кошерные продукты должны быть приготовлены по специальный правилам, с маркировкой агентства по сертификации кашрута."</string>
+    <string name="quest_dietType_explanation_kosher">"Кошерные продукты должны быть приготовлены по специальным правилам, с маркировкой агентства по сертификации кашрута."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Велосипедная дорожка отсутствует"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Как обычно, коснитесь края иллюстрации, выберите правильный ответ и повторите для другой стороны. Обратите внимание на все доступные варианты: некоторые случаи неочевидны, как односторонняя дорога, позволяющая двигаться велосипедистам в обоих направлениях!"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Выбор отсутствия велодорожки"</string>
     <string name="quest_construction_completed_at_known_date">"Будет закончено…"</string>
     <string name="quest_construction_completion_date_title">"Когда строительство будет завершено?"</string>
@@ -2350,15 +1511,13 @@
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Только пластиковые бутылки и картон"</string>
     <string name="quest_charging_station_name_capacity_title">"Сколько машин можно одновременно заряжать на этой станции зарядки (%s)?"</string>
     <string name="team_mode">"Командный режим"</string>
-    <string name="team_mode_exit">"Отключить режим команды"</string>
-    <string name="team_mode_description">"Если вы обследуете местность вместе с группой, вы можете включить командный режим, чтобы распределить квесты между участниками."</string>
-    <string name="team_mode_team_size_label">"Сколько вас?"</string>
+    <string name="team_mode_exit">"Отключить командный режим"</string>
+    <string name="team_mode_description">"Если вы обследуете местность группой, вы можете включить командный режим, чтобы распределить квесты между всеми участниками."</string>
     <string name="team_mode_team_size_hint">"Командный режим работает для групп от 2 до 12 человек."</string>
-    <string name="team_mode_choose_color">"Теперь каждый участник группы должен выбрать себе цвет:"</string>
     <string name="team_mode_active">"Командный режим включён"</string>
     <string name="team_mode_deactivated">"Командный режим отключён"</string>
     <string name="quest_pitchLit_title">"Освещена ли эта спортивная площадка?"</string>
-    <string name="quest_pitchLit_title_track">"Освещена ли эта спортивная дорога?"</string>
+    <string name="quest_pitchLit_title_track">"Освещена ли эта спортивная дорожка?"</string>
     <string name="quest_crossing_type_signals_controlled">"Переход, регулируемый светофором"</string>
     <string name="undo_last">"Отменить правку"</string>
     <string name="show_edit_history">"История правок"</string>
@@ -2368,11 +1527,15 @@
     <string name="quest_cycleway_value_separate">"отображается на карте отдельно"</string>
     <string name="created_note_action_title">"Заметка создана"</string>
     <string name="commented_note_action_title">"Примечание с комментарием"</string>
-    <string name="hid_action_description">"Вы скрыли это"</string>
+
+    <!-- Fuzzy -->
+    <string name="hid_action_description">"Вы скрыли"</string>
 
     <!-- Fuzzy -->
     <string name="split_way_action_description">"Вы разделили путь"</string>
-    <string name="deleted_poi_action_description">"Вы удалили это"</string>
+
+    <!-- Fuzzy -->
+    <string name="deleted_poi_action_description">"Вы удалили"</string>
     <string name="added_tag_action_title">"Добавили %s"</string>
     <string name="removed_tag_action_title">"Убрали %s"</string>
     <string name="changed_tag_action_title">"Обновлено на %s"</string>
@@ -2389,7 +1552,7 @@
     <string name="quest_barrier_type_title">"Что это за барьер?"</string>
     <string name="quest_barrier_type_gate">"Ворота"</string>
     <string name="quest_barrier_type_lift_gate">"Шлагбаум"</string>
-    <string name="quest_barrier_type_bollard">"Столбик (и)"</string>
+    <string name="quest_barrier_type_bollard">"Столбик(и)"</string>
     <string name="quest_barrier_type_chain">"Цепь"</string>
     <string name="quest_barrier_type_rope">"Верёвка"</string>
     <string name="quest_barrier_type_wire_gate">"Съёмный участок провода"</string>
@@ -2407,18 +1570,94 @@
     <string name="quest_barrier_type_stile_ladder">"Лестничный перелаз"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Велосипедный барьер"</string>
     <string name="quest_barrier_type_kissing_gate">"Калитка-вертушка"</string>
-    <string name="quest_barrier_type_stepover">"Перелаз"</string>
     <string name="quest_barrier_type_swing_gate">"Горизонтальная перекладина"</string>
     <string name="quest_policeType_title">"Какой это полицейский участок?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Преобразовано в калитку-вертушку"</string>
-    <string name="quest_stile_type_title">"Что это за стиль?"</string>
+    <string name="quest_stile_type_title">"Какой тип?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached_description2">"примыкающий односемейный дом(а)"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Выбор и приоритет квеста"</string>
-    <string name="pref_subtitle_quests">"включено %1$d из %2$d"</string>
+    <string name="pref_subtitle_quests">"выбрано %1$d из %2$d"</string>
     <string name="quest_busStopLit_tram_name_title">"Освещена ли трамвайная остановка %s?"</string>
     <string name="quest_busStopLit_tram_title">"Освещена ли эта трамвайная остановка?"</string>
     <string name="quest_busStopLit_title">"Освещена ли эта автобусная остановка?"</string>
     <string name="quest_busStopLit_name_title">"Освещена ли остановка %s?"</string>
     <string name="no_location_permission_warning_title">"Разрешение определения местоположения"</string>
     <string name="quest_surface_value_woodchips">"Щепа"</string>
+    <string name="no_camera_app">"Приложение камеры недоступно"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"Есть ли у трамвайной остановки %s мусорное ведро?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"Есть ли у этой трамвайной остановки мусорное ведро?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"Есть ли мусорное ведро у этой автобусной остановки?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"Есть ли мусорное ведро у автобусной остановки %s?"</string>
+    <string name="quest_bollard_type_title">"Какого типа этот столбик?"</string>
+    <string name="quest_bollard_type_rising">"Выдвижной"</string>
+    <string name="quest_bollard_type_flexible">"Гибкий"</string>
+    <string name="quest_bollard_type_fixed">"Фиксированный (не съёмный)"</string>
+    <string name="quest_camera_type_title">"Какого типа эта камера видеонаблюдения?"</string>
+    <string name="quest_camera_type_dome">"Купольная"</string>
+    <string name="quest_camera_type_fixed">"Фиксированная"</string>
+    <string name="quest_camera_type_panning">"Панорамная"</string>
+    <string name="about_title_faq">"ЧаВо"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingLevels_title2">"Сколько этажей над подвалом у этого здания?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingLevels_title_buildingPart2">"Сколько этажей над подвалом у этой части здания?"</string>
+    <string name="quest_crossing_title">"Есть ли бордюры в месте пересечения этого пути с дорогой? Какого типа?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Преднастройка: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Этот тип квеста отключён по умолчанию, потому что форму крыши часто нелегко распознать с улицы. Этот тип задания также довольно трудоёмкий; в большинстве случаев проще и эффективнее сопоставить его с помощью аэрофотоснимков дома."</string>
+    <string name="quest_religion_animist">"Анимист"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_construction_steps_title">"Завершены ли эти шаги?"</string>
+    <string name="questList_disabled_at_day">"Отображается только ночью"</string>
+    <string name="pref_quests_deselect_all">"Отменить выбор всех заданий?"</string>
+    <string name="quest_buildingType_boathouse">"Эллинг"</string>
+    <string name="quest_buildingType_allotment_house">"Пристройка для садового участка"</string>
+    <string name="quest_buildingType_grandstand">"Трибуна"</string>
+    <string name="action_search">"Поиск"</string>
+    <string name="action_manage_presets">"Управление предустановками"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"Сколько людей редактируют карту? Введите один и тот же номер на всех телефонах."</string>
+    <string name="team_mode_choose_color2">"Затем каждый человек должен выбрать отличный цвет. Выбери свой:"</string>
+    <string name="link_organic_maps_description">"Картографическое приложение для путешественников, туристов и велосипедистов, которое работает в автономном режиме"</string>
+    <string name="quest_kerb_height_no">"Вообще никакого бордюра"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_stepover_wooden">"Деревянная перегородка с перекладиной"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_stepover_stone">"Каменная перегородка с перекладиной"</string>
+    <string name="quest_bollard_type_removable">"Съёмный (с ключом или без ключа)"</string>
+    <string name="quest_bollard_type_foldable2">"Складной (с ключом или без ключа)"</string>
+    <string name="no_search_results">"Ничего не найдено"</string>
+    <string name="quest_selection_hint_title">"Перебор?"</string>
+    <string name="quest_selection_hint_message">"Вносить свой вклад в первую очередь должно быть весело! Если вы перегружены количеством заданий, в настройках вы всегда можете точно настроить, какие задания и в каком порядке отображать."</string>
+    <string name="quest_presets_preset_add">"Добавить предустановку"</string>
+    <string name="quest_presets_preset_name">"Название предустановки"</string>
+    <string name="quest_presets_default_name">"По умолчанию"</string>
+    <string name="quest_presets_selected">"Выбранные"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_delete_message">"Удалить предустановку \"%s\"? Выбор квестов и порядка их выполнения будут безвозвратно утеряны."</string>
+    <string name="notification_syncing">"Синхронизация…"</string>
+    <string name="notification_channel_sync">"Синхр. данных"</string>
+    <string name="quest_board_type_sport">"Спорт, Упражнения"</string>
+    <string name="quest_generic_hasFeature_optional">"Дополнительно"</string>
+    <string name="quest_buildingType_bridge">"Мост между зданиями (эстакада)"</string>
+    <string name="quest_laundrySelfService_title2">"Эта прачечная с самообслуживанием?"</string>
+    <string name="quest_picnicTableCover_title">"Столик для пикника под навесом (укрыт от дождя)?"</string>
 </resources>

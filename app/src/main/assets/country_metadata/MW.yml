@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Standard Bank, National Bank, FDH, National Bank of Malawi, NBS Bank, FMB, FDH Bank, Ecobank]
+atmOperators: [Standard Bank, National Bank, FDH, NBS Bank, FMB, FDH Bank, National Bank of Malawi, Ecobank]
 centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true

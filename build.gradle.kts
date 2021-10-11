@@ -1,11 +1,11 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        val kotlinVersion = "1.4.30"
-        classpath("com.android.tools.build:gradle:4.2.1")
+        val kotlinVersion = "1.5.30"
+        classpath("com.android.tools.build:gradle:4.2.2")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
 }
@@ -13,7 +13,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -60,9 +60,11 @@ tasks.register("updateStreetCompleteData") {
         //"updateAtmOperators",
         "app:updatePresets",
         "app:updateNsiPresets",
+        "app:updateTranslatorCredits",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
-        "app:generateMetadataByCountry"
+        "app:generateMetadataByCountry",
+        "app:updateTranslatorCredits"
         )
 }

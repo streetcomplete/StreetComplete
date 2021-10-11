@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
@@ -9,12 +10,13 @@ import javax.inject.Named
 /** Grants achievements based on solved quests (or other things) and puts the links contained in
  * these in the link collection */
 class AchievementGiver @Inject constructor(
-        private val userAchievementsDao: UserAchievementsDao,
-        private val newUserAchievementsDao: NewUserAchievementsDao,
-        private val userLinksDao: UserLinksDao,
-        private val questStatisticsDao: QuestStatisticsDao,
-        @Named("Achievements") private val allAchievements: List<Achievement>,
-        private val userStore: UserStore
+    private val userAchievementsDao: UserAchievementsDao,
+    private val newUserAchievementsDao: NewUserAchievementsDao,
+    private val userLinksDao: UserLinksDao,
+    private val questStatisticsDao: QuestStatisticsDao,
+    @Named("Achievements") private val allAchievements: List<Achievement>,
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val userStore: UserStore
 ) {
 
     /** Look at and grant all achievements */
@@ -23,10 +25,11 @@ class AchievementGiver @Inject constructor(
     }
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
-    fun updateQuestTypeAchievements(questType: String) {
+    fun updateQuestTypeAchievements(questTypeName: String) {
+        val questType = questTypeRegistry.getByName(questTypeName)!!
         return updateAchievements(allAchievements.filter {
             when (it.condition) {
-                is SolvedQuestsOfTypes -> it.condition.questTypes.contains(questType)
+                is SolvedQuestsOfTypes -> questType.questTypeAchievements.anyHasId(it.id)
                 is TotalSolvedQuests -> true
                 else -> false
             }
@@ -52,7 +55,9 @@ class AchievementGiver @Inject constructor(
                 val unlockedLinkIds = mutableListOf<String>()
                 for (level in (currentLevel + 1)..achievedLevel) {
                     achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
-                    if (!silent) newUserAchievementsDao.push(achievement.id to level)
+                    if (!silent && !userStore.isSynchronizingStatistics) {
+                        newUserAchievementsDao.push(achievement.id to level)
+                    }
                 }
                 if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
             }
@@ -77,21 +82,30 @@ class AchievementGiver @Inject constructor(
 
     private fun getAchievedLevel(achievement: Achievement): Int {
         val func = achievement.pointsNeededToAdvanceFunction
+        val achievedPoints = getAchievedPoints(achievement)
         var level = 0
         var threshold = 0
         do {
             threshold += func(level)
             level++
             if (achievement.maxLevel != -1 && level > achievement.maxLevel) break
-        } while (isAchieved(threshold, achievement.condition))
+        } while (threshold <= achievedPoints)
         return level - 1
     }
 
-    private fun isAchieved(threshold: Int, condition: AchievementCondition): Boolean {
-        return threshold <= when (condition) {
-            is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(condition.questTypes)
+    private fun getAchievedPoints(achievement: Achievement): Int {
+        return when (achievement.condition) {
+            is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(getAchievementQuestTypes(achievement.id))
             is TotalSolvedQuests -> questStatisticsDao.getTotalAmount()
             is DaysActive -> userStore.daysActive
         }
     }
+
+    private fun getAchievementQuestTypes(achievementId: String): List<String> {
+        return questTypeRegistry
+            .filter { it.questTypeAchievements.anyHasId(achievementId) }
+            .map { it::class.simpleName!! }
+    }
 }
+
+private fun List<QuestTypeAchievement>.anyHasId(achievementId: String) = any { it.id == achievementId }

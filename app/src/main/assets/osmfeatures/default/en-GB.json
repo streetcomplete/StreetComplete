@@ -662,7 +662,7 @@
                     }
                 },
                 "horse_scale": {
-                    "label": "Horseback Riding Difficulty",
+                    "label": "Horse Riding Difficulty",
                     "options": {
                         "common": "Easy: No problems or difficulties. (default)",
                         "critical": "Borderline: Passable only for experienced riders and horses. Major obstacles. Bridges should be examined carefully.",
@@ -2198,7 +2198,8 @@
                     "name": "Clockmaker"
                 },
                 "craft/confectionery": {
-                    "name": "Candy Maker"
+                    "name": "Confectioner",
+                    "aliases": "Sweet Maker\nCandy Maker"
                 },
                 "craft/distillery": {
                     "name": "Distillery"
@@ -2786,7 +2787,7 @@
                     "name": "Hackerspace"
                 },
                 "leisure/horse_riding": {
-                    "name": "Horseback Riding Facility"
+                    "name": "Horse Riding Facility"
                 },
                 "leisure/ice_rink": {
                     "name": "Ice Rink"
@@ -3961,9 +3962,6 @@
                 },
                 "type/route/hiking": {
                     "name": "Hiking Route"
-                },
-                "type/route/horse": {
-                    "name": "Riding Route"
                 },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"

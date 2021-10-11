@@ -7,30 +7,31 @@ import androidx.core.os.ConfigurationCompat
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestPlacenameBinding
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.toTypedArray
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.shop_type.SearchAdapter
 import de.westnordost.streetcomplete.util.TextChangedWatcher
-import kotlinx.android.synthetic.main.quest_placename.*
 
 
 class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_placename
+    private val binding by contentViewBinding(QuestPlacenameBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoName() }
+        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoName() }
     )
 
-    private val placeName get() = nameInput?.text?.toString().orEmpty().trim()
+    private val placeName get() = binding.nameInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        nameInput.setAdapter(SearchAdapter(requireContext(), { term -> getFeatures(term) }, { it.name }))
-        nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.nameInput.setAdapter(SearchAdapter(requireContext(), { term -> getFeatures(term) }, { it.name }))
+        binding.nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
     override fun onClickOk() {
@@ -62,7 +63,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
         val elementFeature = getOsmElementFeature() ?: return emptyList()
         val localeList = ConfigurationCompat.getLocales(requireContext().resources.configuration)
         return featureDictionary
-            .byTerm(startsWith)
+            .byTerm(startsWith.trim())
             .forGeometry(osmElement!!.geometryType)
             .inCountry(countryInfo.countryCode)
             .forLocale(*localeList.toTypedArray())

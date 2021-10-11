@@ -7,7 +7,6 @@ import de.westnordost.countryboundaries.isInAny
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
@@ -17,7 +16,6 @@ import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.contains
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
-import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.*
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -50,7 +48,7 @@ import javax.inject.Singleton
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    private val allQuestTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
+    private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
 
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 
@@ -75,22 +73,12 @@ import javax.inject.Singleton
 
             val obsoleteQuestKeys: List<OsmQuestKey>
             synchronized(this) {
-                val previousQuests = mutableListOf<OsmQuestDaoEntry>()
-
-                var count = 0
-                for (element in updated) {
-                    previousQuests.addAll(db.getAllForElement(element.type, element.id))
-                    count++
-                }
-
-                val deleteQuestKeys = mutableListOf<OsmQuestKey>()
-                for (key in deleted) {
-                    // quests that refer to elements that have been deleted shall be deleted
-                    deleteQuestKeys.addAll(db.getAllForElement(key.type, key.id).map { it.key })
-                }
+                val previousQuests = db.getAllForElements(updated.map { ElementKey(it.type, it.id) })
+                // quests that refer to elements that have been deleted shall be deleted
+                val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
                 val seconds = (currentTimeMillis() - time) / 1000.0
-                Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
+                Log.i(TAG,"Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
                 updateQuests(quests, obsoleteQuestKeys)
@@ -237,13 +225,6 @@ import javax.inject.Singleton
         val countries = questType.enabledInCountries
         if (!countryBoundariesFuture.get().isInAny(pos, countries))  return false
 
-        // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
-        if (geometry is ElementPolylinesGeometry) {
-            val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
-            if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
-                return false
-            }
-        }
         return true
     }
 
@@ -409,5 +390,3 @@ import javax.inject.Singleton
 private fun LatLon.truncateTo5Decimals() = LatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())
 
 private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
-
-const val MAX_GEOMETRY_LENGTH_IN_METERS = 600

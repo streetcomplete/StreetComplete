@@ -4,13 +4,11 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
-import java.util.Locale
 import kotlin.math.min
 
 /** Show a flag of a country in a circle */
@@ -31,11 +29,9 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     init {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            outlineProvider = object : ViewOutlineProvider() {
-                override fun getOutline(view: View, outline: Outline) {
-                    outline.setOval(0,0,view.width,view.height)
-                }
+        outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                outline.setOval(0, 0, view.width, view.height)
             }
         }
     }
@@ -85,7 +81,7 @@ class CircularFlagView @JvmOverloads constructor(
             drawable = null
         } else {
             val resId = getFlagResIdWithFallback(countryCode)
-            drawable = if (resId != 0) resources.getDrawable(resId) else null
+            drawable = if (resId != 0) context.getDrawable(resId) else null
         }
         invalidate()
     }
@@ -131,7 +127,7 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     private fun getFlagResId(countryCode: String): Int {
-        val lowerCaseCountryCode = countryCode.toLowerCase(Locale.US).replace('-', '_')
+        val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
         return resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", context.packageName)
     }
 
@@ -152,7 +148,7 @@ class CircularFlagView @JvmOverloads constructor(
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
             resources.getYamlObject<HashMap<String, String>>(R.raw.flag_alignments).map {
-                it.key to FlagAlignment.valueOf(it.value.replace("-","_").toUpperCase(Locale.US))
+                it.key to FlagAlignment.valueOf(it.value.replace("-","_").uppercase())
             }.toMap()
     }
 

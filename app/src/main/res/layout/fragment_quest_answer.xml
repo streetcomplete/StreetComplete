@@ -2,10 +2,12 @@
 <de.westnordost.streetcomplete.view.SlidingRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_alignParentLeft="true"
     android:layout_width="@dimen/quest_form_width"
     android:layout_height="match_parent"
     android:id="@+id/bottomSheetContainer"
-    >
+    tools:ignore="RtlHardcoded">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -20,6 +22,7 @@
             android:id="@+id/bottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:orientation="vertical"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             android:clipChildren="true"
@@ -48,7 +51,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/locationLabel"
+                        android:id="@+id/titleHintLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"/>
@@ -92,19 +95,15 @@
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
-                    <FrameLayout
-                        android:id="@+id/speechbubbleContentContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/speech_bubble_none"
-                        android:layout_marginStart="-2.5dp"
-                        android:layout_marginEnd="-2.5dp"
-                        android:layout_marginBottom="4dp"
-                        android:elevation="@dimen/speech_bubble_elevation">
-
-                        <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+                    <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:id="@+id/speechbubbleContentContainer"
+                            android:background="@drawable/speech_bubble_none"
+                            android:layout_marginStart="-2.5dp"
+                            android:layout_marginEnd="-2.5dp"
+                            android:layout_marginBottom="4dp"
+                            android:elevation="@dimen/speech_bubble_elevation">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -136,22 +135,11 @@
                                     app:showDividerVertical="middle"
                                     app:dividerDrawableVertical="@drawable/button_bar_divider_with_vertical_padding"
                                     app:dividerDrawableHorizontal="@drawable/button_bar_divider_with_horizontal_padding"
-                                    >
-
-                                    <Button
-                                        android:id="@+id/otherAnswersButton"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/quest_generic_otherAnswers"
-                                        style="@style/BottomSheetButtonBarItem"/>
-
-                                </com.google.android.flexbox.FlexboxLayout>
+                                    />
 
                             </LinearLayout>
 
                         </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
-
-                    </FrameLayout>
 
                 </LinearLayout>
 
@@ -174,6 +162,15 @@
         android:scaleX="0.5"
         android:scaleY="0.5"
         android:alpha="0"/>
+
+    <View
+        android:id="@+id/glassPane"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        />
 
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 

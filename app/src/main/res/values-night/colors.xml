@@ -5,12 +5,19 @@
 
     <color name="attribution_text">#ccc</color>
 
-    <color name="hint_text">#999</color>
-
     <color name="inverted_background">#aaa</color>
     <color name="background">#000</color>
     <color name="background_transparent">#0000</color>
     <color name="text">#fff</color>
+    <color name="monochrome_icon">#ccc</color>
+
+    <color name="hint_text">#999</color>
+    <color name="label_text_below_image">#fff</color>
+    <color name="title_text_next_to_image">#fff</color>
+    <color name="description_text_next_to_image">#fff</color>
 
     <color name="quest_selection_frame">#bbFF5722</color>
+
+    <!-- because on dark background, normal blue doesn't work well -->
+    <color name="star_of_david">#44f</color>
 </resources>

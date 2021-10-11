@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco Ficohsa, Banco Atlántida, BAC Honduras, Banco de Occidente, Davivienda]
+atmOperators: [BAC Honduras, Banco Atlántida, Banco de Occidente, Ficohsa, Banco Ficohsa, Davivienda]
 centerLine: yellow
 mobileCountryCode: 708
 officialLanguages: [es]

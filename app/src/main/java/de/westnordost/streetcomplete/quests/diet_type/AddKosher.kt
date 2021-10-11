@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class AddKosher : OsmFilterQuestType<DietAvailability>() {
 
@@ -21,7 +22,10 @@ class AddKosher : OsmFilterQuestType<DietAvailability>() {
     override val commitMessage = "Add kosher status"
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.ic_quest_kosher
+    override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
+
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title
 

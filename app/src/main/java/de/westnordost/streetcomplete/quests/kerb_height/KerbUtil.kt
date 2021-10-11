@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.data.meta.*
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
 private val footwaysFilter by lazy {"""
@@ -37,16 +36,28 @@ private val allowedKeysOnKerbNode = setOf(
     "sloped_curb",
     "tactile_paving",
     "surface", "smoothness", "material",
-    "kerb:height", "height",
+    "kerb", "kerb:height", "height", "width",
     // access/eligibility-related
     "wheelchair", "bicycle", "foot", "stroller",
     // misc / meta info
     "source", "project", "note", "mapillary"
+    // check date
 ) + LAST_CHECK_DATE_KEYS
 
+/* separating regex-enabled keys and normal keys for performance reasons. No need to regex on
+   strings that are not regexes ... */
+private val allowedKeysOnKerbNodeRegexes = getLastCheckDateKeys(".*").map { it.toRegex() }
+
 /** Most nodes **could** be a kerb, depending on their location within a way. However, nodes that
- *  are already something else, f.e. shop=hairdresser are definitely NOT a kerb. */
-fun Node.couldBeAKerb(): Boolean = tags.keys.all { it in allowedKeysOnKerbNode }
+ *  are already something else, e.g. shop=hairdresser are definitely NOT a kerb.
+ *
+ *  If any node **could** be a kerb, this would lead to an unacceptable performance hit when any
+ *  node is updated due to an answered quest. See
+ *  https://github.com/streetcomplete/StreetComplete/pull/3104#issuecomment-889833381 for more
+ *  details ony why this function exists */
+fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
+    key in allowedKeysOnKerbNode || allowedKeysOnKerbNodeRegexes.any { regex -> regex.matches(key) }
+}
 
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
@@ -81,7 +92,7 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
 private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
-    /* using asSequence in this function so to not copy potentially huge amounts (f.e. almost all
+    /* using asSequence in this function so to not copy potentially huge amounts (e.g. almost all
        nodes of all ways in the data set) of data into temporary lists */
 
     val footways = ways.filter { footwaysFilter.matches(it) }
@@ -120,7 +131,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
 
     // skip nodes that share an end node with any node of a way that is not an end node
     ways.asSequence()
-        .flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
+        .flatMap { it.nodeIds.allExceptFirstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()
 

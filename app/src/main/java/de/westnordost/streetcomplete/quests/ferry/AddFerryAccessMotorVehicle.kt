@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.ferry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -13,6 +15,8 @@ class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry
     override val hasMarkersAtEnds = true
+
+    override val questTypeAchievements = listOf(RARE, CAR)
 
     override fun getTitle(tags: Map<String, String>): Int =
         if (tags.containsKey("name"))

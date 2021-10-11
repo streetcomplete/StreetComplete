@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -21,13 +22,15 @@ class Cleaner @Inject constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
-    private val questTypeRegistry: QuestTypeRegistry
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val newUserAchievementsDao: NewUserAchievementsDao
 ) {
     suspend fun clean() {
         val time = currentTimeMillis()
         coroutineScope {
             launch { deleteOldData() }
             launch { deleteUndoHistory() }
+            launch { clearNewUserAchievements() }
         }
         Log.i(TAG, "Cleaning took ${((currentTimeMillis() - time) / 1000.0).format(1)}s")
     }
@@ -38,7 +41,7 @@ class Cleaner @Inject constructor(
         mapDataController.deleteOlderThan(oldDataTimestamp)
         /* it makes sense to do this after cleaning map data and notes, because some metadata rely
            on map data */
-        for (questType in questTypeRegistry.all) {
+        for (questType in questTypeRegistry) {
             questType.deleteMetadataOlderThan(oldDataTimestamp)
         }
     }
@@ -47,6 +50,10 @@ class Cleaner @Inject constructor(
         val undoableChangesTimestamp = currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE
         elementEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
         noteEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
+    }
+
+    private suspend fun clearNewUserAchievements() = withContext(Dispatchers.IO) {
+        newUserAchievementsDao.clear()
     }
 
     companion object {

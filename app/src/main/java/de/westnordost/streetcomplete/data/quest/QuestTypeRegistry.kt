@@ -1,18 +1,17 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
-
 /** Every osm quest needs to be registered here.
  *
  * Could theoretically be done with Reflection, but that doesn't really work on Android
  */
 
-class QuestTypeRegistry(val all: List<QuestType<*>>) {
+class QuestTypeRegistry(private val quests: List<QuestType<*>>): List<QuestType<*>> by quests {
+
     private val typeMap: Map<String, QuestType<*>>
 
     init {
         val map = mutableMapOf<String, QuestType<*>>()
-        for (questType in all) {
+        for (questType in this) {
             val questTypeName = questType::class.simpleName!!
             require(!map.containsKey(questTypeName)) {
                 "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
@@ -26,6 +25,3 @@ class QuestTypeRegistry(val all: List<QuestType<*>>) {
         return typeMap[typeName]
     }
 }
-
-fun QuestTypeRegistry.getVisible(visibleQuestTypeSource: VisibleQuestTypeSource): List<QuestType<*>> =
-    all.filter { visibleQuestTypeSource.isVisible(it) }

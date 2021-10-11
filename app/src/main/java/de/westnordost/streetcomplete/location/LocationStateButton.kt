@@ -11,7 +11,7 @@ import android.view.View
 import androidx.annotation.Keep
 import androidx.appcompat.widget.AppCompatImageButton
 import de.westnordost.streetcomplete.R
-import java.util.Arrays
+import de.westnordost.streetcomplete.location.LocationState.*
 
 /**
  * An image button which shows the current location state
@@ -23,10 +23,10 @@ class LocationStateButton @JvmOverloads constructor(
 ) : AppCompatImageButton(context, attrs, defStyle) {
 
     var state: LocationState
-    get() = _state ?: LocationState.DENIED
+    get() = _state ?: DENIED
     set(value) { _state = value }
 
-    // this is necessary because state is accessed before it is initialized (in contructor of super)
+    // this is necessary because state is accessed before it is initialized (in constructor of super)
     private var _state: LocationState? = null
     set(value) {
         if (field != value) {
@@ -34,26 +34,33 @@ class LocationStateButton @JvmOverloads constructor(
             refreshDrawableState()
         }
     }
+
     private val tint: ColorStateList?
+
+    var isNavigation: Boolean = false
+    set(value) {
+        if (field != value) {
+            field = value
+            refreshDrawableState()
+        }
+    }
+
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.LocationStateButton)
         state = determineStateFrom(a)
         tint = a.getColorStateList(R.styleable.LocationStateButton_tint)
+        isNavigation = a.getBoolean(R.styleable.LocationStateButton_is_navigation, false)
+
         a.recycle()
     }
 
-    private fun determineStateFrom(a: TypedArray): LocationState {
-        if (a.getBoolean(R.styleable.LocationStateButton_state_updating,false))
-            return LocationState.UPDATING
-        if (a.getBoolean(R.styleable.LocationStateButton_state_searching,false))
-            return LocationState.SEARCHING
-        if (a.getBoolean(R.styleable.LocationStateButton_state_enabled,false))
-            return LocationState.ENABLED
-        if (a.getBoolean(R.styleable.LocationStateButton_state_allowed,false))
-            return LocationState.ALLOWED
-        else
-            return LocationState.DENIED
+    private fun determineStateFrom(a: TypedArray): LocationState = when {
+        a.getBoolean(R.styleable.LocationStateButton_state_updating,false) ->  UPDATING
+        a.getBoolean(R.styleable.LocationStateButton_state_searching,false) -> SEARCHING
+        a.getBoolean(R.styleable.LocationStateButton_state_enabled,false) ->   ENABLED
+        a.getBoolean(R.styleable.LocationStateButton_state_allowed,false) ->   ALLOWED
+        else -> DENIED
     }
 
     override fun drawableStateChanged() {
@@ -69,19 +76,22 @@ class LocationStateButton @JvmOverloads constructor(
     }
 
     override fun onCreateDrawableState(extraSpace: Int): IntArray {
-        val additionalLength = STATES.size + 1
-        val drawableState = super.onCreateDrawableState(extraSpace + additionalLength)
-        val arrPos = state.ordinal
-        val additionalArray = Arrays.copyOf(Arrays.copyOf(STATES, arrPos), additionalLength)
-        View.mergeDrawableStates(drawableState, additionalArray)
+        val attributes = ArrayList<Int>()
+        attributes += state.styleableAttributes
+        if (isNavigation) attributes += R.attr.is_navigation
+
+        val drawableState = super.onCreateDrawableState(extraSpace + attributes.size)
+
+        View.mergeDrawableStates(drawableState, attributes.toIntArray())
         return drawableState
     }
 
-    public override fun onSaveInstanceState(): Parcelable? {
+    public override fun onSaveInstanceState(): Parcelable {
         val superState = super.onSaveInstanceState()
         val ss = SavedState(superState)
         ss.state = state
         ss.activated = isActivated
+        ss.navigation = isNavigation
         return ss
     }
 
@@ -90,23 +100,27 @@ class LocationStateButton @JvmOverloads constructor(
         super.onRestoreInstanceState(ss.superState)
         state = ss.state
         isActivated = ss.activated
+        isNavigation = ss.navigation
         requestLayout()
     }
 
     internal class SavedState : BaseSavedState {
-        var state: LocationState = LocationState.DENIED
+        var state: LocationState = DENIED
         var activated = false
+        var navigation = false
 
         constructor(superState: Parcelable?) : super(superState)
         constructor(parcel: Parcel) : super(parcel) {
             state = LocationState.valueOf(parcel.readString()!!)
             activated = parcel.readInt() == 1
+            navigation = parcel.readInt() == 1
         }
 
         override fun writeToParcel(out: Parcel, flags: Int) {
             super.writeToParcel(out, flags)
             out.writeString(state.name)
             out.writeInt(if (activated) 1 else 0)
+            out.writeInt(if (navigation) 1 else 0)
         }
 
         companion object {
@@ -117,14 +131,12 @@ class LocationStateButton @JvmOverloads constructor(
             }
         }
     }
-
-    companion object {
-        // must be defined in the same order as the LocationState enum (but minus the first)
-        private val STATES = intArrayOf(
-            R.attr.state_allowed,
-            R.attr.state_enabled,
-            R.attr.state_searching,
-            R.attr.state_updating
-        )
-    }
 }
+
+private val LocationState.styleableAttributes: List<Int> get() =
+    listOf(
+        R.attr.state_allowed,
+        R.attr.state_enabled,
+        R.attr.state_searching,
+        R.attr.state_updating
+    ).subList(0, ordinal)

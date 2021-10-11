@@ -6,18 +6,15 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
-import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.toDp
-import de.westnordost.streetcomplete.ktx.tryStartActivity
+import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
-import kotlinx.android.synthetic.main.fragment_links.*
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -26,6 +23,8 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
 
     @Inject internal lateinit var userLinksSource: UserLinksSource
     @Inject internal lateinit var userStore: UserStore
+
+    private val binding by viewBinding(FragmentLinksBinding::bind)
 
     init {
         Injector.applicationComponent.inject(this)
@@ -37,10 +36,10 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
         val minCellWidth = 280f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleScope.launch {
             view.awaitLayout()
 
-            emptyText.visibility = View.GONE
+            binding.emptyText.visibility = View.GONE
 
             val viewWidth = view.width.toFloat().toDp(ctx)
             val spanCount = (viewWidth / minCellWidth).toInt()
@@ -58,12 +57,12 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
             val layoutManager = GridLayoutManager(ctx, spanCount, RecyclerView.VERTICAL, false)
             layoutManager.spanSizeLookup = spanSizeLookup
             // spacing *between* the items
-            linksList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
-            linksList.layoutManager = layoutManager
-            linksList.adapter = adapter
-            linksList.clipToPadding = false
+            binding.linksList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
+            binding.linksList.layoutManager = layoutManager
+            binding.linksList.adapter = adapter
+            binding.linksList.clipToPadding = false
 
-            emptyText.isGone = links.isNotEmpty()
+            binding.emptyText.isGone = links.isNotEmpty()
         }
     }
 
@@ -71,9 +70,9 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
         super.onStart()
 
         if (userStore.isSynchronizingStatistics) {
-            emptyText.setText(R.string.stats_are_syncing)
+            binding.emptyText.setText(R.string.stats_are_syncing)
         } else {
-            emptyText.setText(R.string.links_empty)
+            binding.emptyText.setText(R.string.links_empty)
         }
     }
 

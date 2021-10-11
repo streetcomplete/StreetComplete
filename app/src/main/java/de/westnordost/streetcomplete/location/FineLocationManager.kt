@@ -57,7 +57,7 @@ class FineLocationManager(private val mgr: LocationManager, private var location
 
 // taken from https://developer.android.com/guide/topics/location/strategies.html#kotlin
 
-private const val TWO_MINUTES: Long = 1000 * 60 * 2
+private const val TWO_MINUTES = 1000L * 60 * 2
 
 /** Determines whether one Location reading is better than the current Location fix
  * @param location The new Location that you want to evaluate
@@ -74,19 +74,19 @@ private fun isBetterLocation(location: Location, currentBestLocation: Location?)
     }
 
     // Check whether the new location fix is newer or older
-    val timeDelta: Long = location.time - currentBestLocation.time
-    val isSignificantlyNewer: Boolean = timeDelta > TWO_MINUTES
-    val isSignificantlyOlder:Boolean = timeDelta < -TWO_MINUTES
-    val isNewer: Boolean = timeDelta > 0L
+    val timeDelta = location.time - currentBestLocation.time
+    val isSignificantlyNewer = timeDelta > TWO_MINUTES
+    val isSignificantlyOlder = timeDelta < -TWO_MINUTES
+    val isNewer = timeDelta > 0L
 
     // Check whether the new location fix is more or less accurate
-    val accuracyDelta: Float = location.accuracy - currentBestLocation.accuracy
-    val isLessAccurate: Boolean = accuracyDelta > 0f
-    val isMoreAccurate: Boolean = accuracyDelta < 0f
-    val isSignificantlyLessAccurate: Boolean = accuracyDelta > 200f
+    val accuracyDelta = location.accuracy - currentBestLocation.accuracy
+    val isLessAccurate = accuracyDelta > 0f
+    val isMoreAccurate = accuracyDelta < 0f
+    val isSignificantlyLessAccurate = accuracyDelta > 200f
 
     // Check if the old and new location are from the same provider
-    val isFromSameProvider: Boolean = location.provider == currentBestLocation.provider
+    val isFromSameProvider = location.provider == currentBestLocation.provider
 
     // Determine location quality using a combination of timeliness and accuracy
     return when {

@@ -9,14 +9,12 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
-import kotlinx.android.synthetic.main.quest_fee_hours.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -24,23 +22,29 @@ import kotlinx.serialization.json.Json
 class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_fee_hours
-    override val buttonsResId = R.layout.quest_buttonpanel_yes_no
+    private val binding by contentViewBinding(QuestFeeHoursBinding::bind)
+
+    override val buttonPanelAnswers get() =
+        if(!isDefiningHours) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(HasNoFee) },
+            AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(HasFee) }
+        )
+        else emptyList()
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_fee_answer_hours) { isDefiningHours = true }
+        AnswerItem(R.string.quest_fee_answer_hours) { isDefiningHours = true }
     )
 
     private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
 
-    private lateinit var content: ViewGroup
+    private var content: ViewGroup? = null
 
     private var isDefiningHours: Boolean = false
     set(value) {
         field = value
 
-        content.isGone = !value
-        noButton?.isGone = value
-        yesButton?.isGone = value
+        content?.isGone = !value
+        updateButtonPanel()
     }
     private var isFeeOnlyAtHours: Boolean = false
 
@@ -61,24 +65,20 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
         isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
 
-        okButton.setOnClickListener { onClickOk() }
-        yesButton.setOnClickListener { onClickYesNo(true) }
-        noButton.setOnClickListener { onClickYesNo(false) }
-
-        openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        openingHoursList.adapter = openingHoursAdapter
-        openingHoursList.isNestedScrollingEnabled = false
+        binding.openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.openingHoursList.adapter = openingHoursAdapter
+        binding.openingHoursList.isNestedScrollingEnabled = false
         checkIsFormComplete()
 
-        addTimesButton.setOnClickListener { openingHoursAdapter.addNewWeekdays() }
+        binding.addTimesButton.setOnClickListener { openingHoursAdapter.addNewWeekdays() }
 
         val spinnerItems = listOf(
             getString(R.string.quest_fee_only_at_hours),
             getString(R.string.quest_fee_not_at_hours)
         )
-        selectFeeOnlyAtHours.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, spinnerItems)
-        selectFeeOnlyAtHours.setSelection(if (isFeeOnlyAtHours) 0 else 1)
-        selectFeeOnlyAtHours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.selectFeeOnlyAtHours.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, spinnerItems)
+        binding.selectFeeOnlyAtHours.setSelection(if (isFeeOnlyAtHours) 0 else 1)
+        binding.selectFeeOnlyAtHours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 isFeeOnlyAtHours = position == 0
             }
@@ -87,21 +87,14 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         }
     }
 
-    override fun onClickOk() {
-        val times = openingHoursAdapter.createOpeningHours()
-        if (times.rules.isNotEmpty()) {
-            if(isFeeOnlyAtHours) {
-                applyAnswer(HasFeeAtHours(times))
-            } else {
-                applyAnswer(HasFeeExceptAtHours(times))
-            }
-        } else {
-            onClickYesNo(!isFeeOnlyAtHours)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        content = null
     }
 
-    private fun onClickYesNo(answer: Boolean) {
-        applyAnswer(if(answer) HasFee else HasNoFee)
+    override fun onClickOk() {
+        val times = openingHoursAdapter.createOpeningHours()
+        applyAnswer(if(isFeeOnlyAtHours) HasFeeAtHours(times) else HasFeeExceptAtHours(times))
     }
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningHoursRow> =
@@ -113,6 +106,9 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours)
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
+
+    override fun isRejectingClose() =
+        isDefiningHours && openingHoursAdapter.rows.isEmpty()
 
     override fun isFormComplete() =
         isDefiningHours && openingHoursAdapter.rows.isNotEmpty()
