@@ -16,7 +16,7 @@
 
     <EditText
         android:id="@+id/diameterInput"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:background="#25000000"
@@ -25,7 +25,7 @@
         android:inputType="number"
         android:maxLength="4"
         android:textColor="@color/traffic_black"
-        android:textSize="70dp"
+        android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/fireHydrantSign"
         app:layout_constraintEnd_toEndOf="@+id/fireHydrantSign"
         app:layout_constraintStart_toStartOf="@+id/fireHydrantSign"
