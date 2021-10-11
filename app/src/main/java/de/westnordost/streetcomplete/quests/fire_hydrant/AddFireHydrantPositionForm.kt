@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantPosition.*
 class AddFireHydrantPositionForm : AImageListQuestAnswerFragment<FireHydrantPosition, FireHydrantPosition>() {
 
     override val items = listOf(
-        Item(GREEN, R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_position_green),
-        Item(LANE, R.drawable.fire_hydrant_underground, R.string.quest_fireHydrant_position_lane),
-        Item(SIDEWALK, R.drawable.fire_hydrant_wall, R.string.quest_fireHydrant_position_sidewalk),
+        Item(GREEN, R.drawable.fire_hydrant_position_green, R.string.quest_fireHydrant_position_green),
+        Item(LANE, R.drawable.fire_hydrant_position_lane, R.string.quest_fireHydrant_position_lane),
+        Item(SIDEWALK, R.drawable.fire_hydrant_position_sidwalk, R.string.quest_fireHydrant_position_sidewalk),
         Item(PARKING_LOT, R.drawable.fire_hydrant_pond, R.string.quest_fireHydrant_position_parking_lot)
     )
 
