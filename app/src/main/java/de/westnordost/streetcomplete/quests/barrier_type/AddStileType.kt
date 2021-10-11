@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -45,33 +46,45 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
+    private fun deleteDetailedTags(changes: StringMapChangesBuilder){
+        changes.deleteIfExists("step_count")
+        changes.deleteIfExists("wheelchair")
+        changes.deleteIfExists("bicycle")
+        changes.deleteIfExists("dog_gate")
+        changes.deleteIfExists("material")
+        changes.deleteIfExists("height")
+        changes.deleteIfExists("width")
+        changes.deleteIfExists("stroller")
+        changes.deleteIfExists("steps")
+    }
+
+    private fun updateToGivenStileType(changes: StringMapChangesBuilder, newStileType: String) {
+        if(changes.getPreviousValue("stile") != newStileType) {
+            deleteDetailedTags(changes)
+        }
+        changes.updateWithCheckDate("stile", newStileType)
+    }
+
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
         when (answer) {
             BarrierType.STILE_SQUEEZER -> {
-                changes.addOrModify("stile", "squeezer")
+                updateToGivenStileType(changes, "squeezer")
             }
             BarrierType.STILE_LADDER -> {
-                changes.addOrModify("stile", "ladder")
+                updateToGivenStileType(changes, "ladder")
             }
             BarrierType.STILE_STEPOVER_WOODEN -> {
-                changes.addOrModify("stile", "stepover")
+                updateToGivenStileType(changes, "stepover")
                 changes.addOrModify("material", "wood")
             }
             BarrierType.STILE_STEPOVER_STONE -> {
-                changes.addOrModify("stile", "stepover")
+                updateToGivenStileType(changes, "stepover")
                 changes.addOrModify("material", "stone")
             }
             BarrierType.KISSING_GATE -> {
+                deleteDetailedTags(changes)
+                changes.deleteIfExists("stile")
                 changes.modify("barrier", "kissing_gate")
-                changes.deleteIfExists("step_count")
-                changes.deleteIfExists("wheelchair")
-                changes.deleteIfExists("bicycle")
-                changes.deleteIfExists("dog_gate")
-                changes.deleteIfExists("material")
-                changes.deleteIfExists("height")
-                changes.deleteIfExists("width")
-                changes.deleteIfExists("stroller")
-                changes.deleteIfExists("steps")
             }
         }
 
