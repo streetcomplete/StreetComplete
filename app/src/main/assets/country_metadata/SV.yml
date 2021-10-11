@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco Agrícola, Banco Cuscatlan, Scotiabank, Davivienda, Banco de América Central]
+atmOperators: [Banco Agrícola, Banco de América Central, Banco Cuscatlan, Scotiabank, Caja de Crédito, Davivienda]
 centerLine: yellow
 mobileCountryCode: 706
 officialLanguages: [es]

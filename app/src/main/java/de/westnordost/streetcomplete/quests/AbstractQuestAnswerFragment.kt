@@ -47,7 +47,8 @@ abstract class AbstractQuestAnswerFragment<T> :
     private var _binding: FragmentQuestAnswerBinding? = null
     private val binding get() = _binding!!
 
-    protected lateinit var otherAnswersButton: TextView
+    protected var otherAnswersButton: TextView? = null
+    private set
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
     override val bottomSheet get() = binding.bottomSheet
@@ -112,16 +113,16 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
-         * the dialog with which the quest was answered  */
+         * the dialog with which the quest was answered */
         fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
-        /** Called when the user chose to leave a note instead  */
+        /** Called when the user chose to leave a note instead */
         fun onComposeNote(questKey: QuestKey, questTitle: String)
 
-        /** Called when the user chose to split the way  */
+        /** Called when the user chose to split the way */
         fun onSplitWay(osmQuestKey: OsmQuestKey)
 
-        /** Called when the user chose to skip the quest  */
+        /** Called when the user chose to skip the quest */
         fun onSkippedQuest(questKey: QuestKey)
 
         /** Called when the node shall be deleted */
@@ -186,6 +187,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        otherAnswersButton = null
     }
 
     private fun assembleOtherAnswers() : List<AnswerItem> {
@@ -239,6 +241,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     private fun showOtherAnswers() {
+        val otherAnswersButton = otherAnswersButton ?: return
         val answers = assembleOtherAnswers()
         val popup = PopupMenu(requireContext(), otherAnswersButton)
         for (i in answers.indices) {
@@ -263,11 +266,11 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         val answers = assembleOtherAnswers()
         if (answers.size == 1) {
-            otherAnswersButton.setText(answers.first().titleResourceId)
-            otherAnswersButton.setOnClickListener { answers.first().action() }
+            otherAnswersButton?.setText(answers.first().titleResourceId)
+            otherAnswersButton?.setOnClickListener { answers.first().action() }
         } else {
-            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
-            otherAnswersButton.setOnClickListener { showOtherAnswers() }
+            otherAnswersButton?.setText(R.string.quest_generic_otherAnswers)
+            otherAnswersButton?.setOnClickListener { showOtherAnswers() }
         }
     }
 

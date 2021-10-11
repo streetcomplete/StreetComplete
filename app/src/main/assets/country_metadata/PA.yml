@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco General, Banistmo, Global]
+atmOperators: [Banco General, Banistmo, Banco Nacional de Panama, Global]
 centerLine: yellow
 mobileCountryCode: 714
 officialLanguages: [es]

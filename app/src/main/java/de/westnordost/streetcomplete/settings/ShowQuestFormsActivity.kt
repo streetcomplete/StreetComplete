@@ -114,7 +114,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         val quest = object : Quest {
             override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
             override val position = firstPos
-            override val markerLocations = listOf<LatLon>(firstPos)
+            override val markerLocations = listOf(firstPos)
             override val geometry = elementGeometry
             override val type = questType
         }

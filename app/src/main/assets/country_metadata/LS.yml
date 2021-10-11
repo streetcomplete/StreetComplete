@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Standard Lesotho Bank, FNB, NedBank, Post Bank, NedBank ATM]
+atmOperators: [Standard Lesotho Bank, FNB, NedBank, NedBank ATM, Post Bank]
 centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true

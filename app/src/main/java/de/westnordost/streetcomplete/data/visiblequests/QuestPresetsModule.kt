@@ -8,5 +8,5 @@ import dagger.Provides
 
     @Provides fun questTypeOrderSource(ctrl: QuestTypeOrderController): QuestTypeOrderSource = ctrl
 
-    @Provides fun questProfilesSource(ctrl: QuestPresetsController): QuestPresetsSource = ctrl
+    @Provides fun questPresetsSource(ctrl: QuestPresetsController): QuestPresetsSource = ctrl
 }

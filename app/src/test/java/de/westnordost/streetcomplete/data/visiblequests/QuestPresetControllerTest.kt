@@ -34,32 +34,32 @@ class QuestPresetControllerTest {
 
     @Test fun getAll() {
         on(questPresetsDao.getAll()).thenReturn(listOf(preset))
-        assertEquals(listOf(preset), ctrl.getAllQuestPresets())
+        assertEquals(listOf(preset), ctrl.getAll())
     }
 
     @Test fun add() {
         on(questPresetsDao.add(any())).thenReturn(123)
-        ctrl.addQuestProfile("test")
+        ctrl.add("test")
         verify(questPresetsDao).add("test")
         verify(listener).onAddedQuestPreset(QuestPreset(123, "test"))
     }
 
     @Test fun delete() {
-        ctrl.deleteQuestPreset(123)
+        ctrl.delete(123)
         verify(questPresetsDao).delete(123)
         verify(listener).onDeletedQuestPreset(123)
     }
 
     @Test fun `delete current preset switches to preset 0`() {
-        on(ctrl.selectedQuestPresetId).thenReturn(55)
-        ctrl.deleteQuestPreset(55)
+        on(ctrl.selectedId).thenReturn(55)
+        ctrl.delete(55)
         verify(questPresetsDao).delete(55)
         verify(listener).onDeletedQuestPreset(55)
         verify(selectedQuestPresetStore).set(0)
     }
 
     @Test fun `change current preset`() {
-        ctrl.selectedQuestPresetId = 11
+        ctrl.selectedId = 11
         verify(selectedQuestPresetStore).set(11)
         verify(listener).onSelectedQuestPresetChanged()
     }

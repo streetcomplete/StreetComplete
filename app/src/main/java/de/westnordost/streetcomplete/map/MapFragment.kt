@@ -16,8 +16,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.mapzen.tangram.MapView
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
@@ -29,11 +27,7 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
-import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.containsAll
-import de.westnordost.streetcomplete.ktx.setMargins
-import de.westnordost.streetcomplete.ktx.tryStartActivity
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -49,9 +43,6 @@ open class MapFragment : Fragment(),
     TapResponder, DoubleTapResponder, LongPressResponder,
     PanResponder, ScaleResponder, ShoveResponder, RotateResponder, SharedPreferences.OnSharedPreferenceChangeListener {
 
-    protected lateinit var mapView: MapView
-    private set
-
     private val binding by viewBinding(FragmentMapBinding::bind)
 
     private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
@@ -61,6 +52,9 @@ open class MapFragment : Fragment(),
 
     private var previousCameraPosition: CameraPosition? = null
 
+    var isMapInitialized: Boolean = false
+    private set
+
     var show3DBuildings: Boolean = true
     set(value) {
         if (field == value) return
@@ -68,7 +62,7 @@ open class MapFragment : Fragment(),
 
         val toggle = if (value) "true" else "false"
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             sceneMapComponent?.putSceneUpdates(listOf(
                 "layers.buildings.draw.buildings-style.extrude" to toggle,
                 "layers.buildings.draw.buildings-outline-style.extrude" to toggle
@@ -112,8 +106,8 @@ open class MapFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mapView = binding.map
-        mapView.onCreate(savedInstanceState)
+        isMapInitialized = false
+        binding.map.onCreate(savedInstanceState)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
         binding.mapTileProviderLink.text = vectorTileProvider.copyrightText
@@ -121,7 +115,7 @@ open class MapFragment : Fragment(),
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
-        lifecycleScope.launch { initMap() }
+        viewLifecycleScope.launch { initMap() }
     }
 
     private fun showOpenUrlDialog(url: String) {
@@ -148,36 +142,40 @@ open class MapFragment : Fragment(),
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch { sceneMapComponent?.loadScene() }
+        viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
     }
 
     override fun onResume() {
         super.onResume()
-        mapView.onResume()
+        binding.map.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        mapView.onPause()
+        binding.map.onPause()
         saveMapState()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.map.onDestroy()
+        controller = null
     }
 
     override fun onDestroy() {
         super.onDestroy()
         sharedPrefs.unregisterOnSharedPreferenceChangeListener(this)
-        mapView.onDestroy()
-        controller = null
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        mapView.onLowMemory()
+        binding.map.onLowMemory()
     }
 
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap() {
-        val ctrl = mapView.initMap(createHttpHandler())
+        val ctrl = binding.map.initMap(createHttpHandler())
         controller = ctrl
         if (ctrl == null) return
         lifecycle.addObserver(ctrl)
@@ -194,6 +192,7 @@ open class MapFragment : Fragment(),
 
         onMapReady()
 
+        isMapInitialized = true
         listener?.onMapInitialized()
     }
 

@@ -29,6 +29,8 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_address_answer_no_housenumber">"It has no street address number…"</string>
     <string name="quest_sidewalk_value_yes">"footpath"</string>
     <string name="quest_sidewalk_value_no">"no footpath"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no footpath on either side. In the case that there is a footpath after all but it is displayed as a separate way, please answer \"footpath\"."</string>
     <string name="label_housenumber">"street address number"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Is the toilet at %s wheelchair accessible?"</string>

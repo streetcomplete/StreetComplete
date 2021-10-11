@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.user
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView

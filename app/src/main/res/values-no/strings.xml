@@ -99,6 +99,8 @@
     <string name="quest_roofShape_answer_many">"Det har flere forskjellige former"</string>
     <string name="map_btn_zoom_out">"Forminsk"</string>
     <string name="map_btn_zoom_in">"Forstørr"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -630,7 +632,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Angre"</string>
@@ -1492,7 +1493,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_maxweight_answer_other_sign">"Skiltet ser annerledes ut..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du legge til en merknad? En merknad med foto gjør at andre kartleggere kan løse problemet."</string>
     <string name="quest_generalFee_title">"Koster det noe å komme inn på %s?"</string>
-    <string name="quest_laundrySelfService_title">"Er dette vaskeriet selvbetjent?"</string>
     <string name="quest_handrail_title">"Har trappen rekkverk?"</string>
     <string name="quest_openingHours_no_name_title">"Når er denne plassen åpen? (%s)"</string>
     <string name="about_summary_current_version">"Gjeldene versjon: %s"</string>
@@ -1520,6 +1520,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_recycling_glass_title">"Kan bare glassembalasje resirkulerers her, eller alle typer glass?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Eksempler på glasstyper som ofte ikke tas imot: Herdet glass, vindusglass, ildfaste former, drikkeglass, lyspærer eller speil."</string>
     <string name="about_title_changelog">"Versjonslogg"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Nytt i denne utgaven"</string>
     <string name="about_title_rate">"Vurder denne appen"</string>
     <string name="about_summary_rate">"på Google Play"</string>
@@ -1537,6 +1539,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_tourism_information_terminal">"Informasjonsterminal"</string>
     <string name="quest_tourism_information_map">"Kart"</string>
     <string name="quest_tourism_information_guidepost">"Retningsskilt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Det er for restavfall"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Så, er dette en konteiner for alle typer avfall, som husholdningsavfall og forretningsavfall?"</string>
     <string name="quest_accepts_cash_title">"Tar %s imot betaling med kontanter?"</string>
@@ -1545,6 +1549,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="user_logout">"Logg ut"</string>
     <string name="osm_profile">"OSM-profil"</string>
     <string name="next">"Neste"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"Kom igjen!"</string>
     <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"det frie dugnadskartet"</string>
@@ -1552,6 +1558,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="tutorial_solving_quests">"Dette blir vist på kartet som oppdrag til deg.
 
 Du kan løse noen oppdrag med en gang, for senere og logge inn og sende inn informasjonen du registerer."</string>
+
+    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Hvis du er usikker kan du alltid svare «Vanskelig å si...» og legge igjen
 en merknad som andre kan løse.
 
@@ -1594,6 +1602,8 @@ Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene di
 
     <!-- Fuzzy -->
     <string name="link_wiki_description">"Wikien er et godt utgangspunkt for alt relatert til OpenStreetMap"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Uerfaren med OpenStreetMap? Her er en innføring."</string>
     <string name="link_neis_one_description">"En stor samling med statistikk over OpenStreetMap-bidragsytere, som hvor og hvordan du bidro, hvem andre som har kartlagt rundt deg, samt topplister."</string>
     <string name="link_welcome_mat_description">"Generell informasjon om OpenStreetMap og hvordan å samarbeide med OSM som en organisasjon"</string>
@@ -1611,6 +1621,8 @@ Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene di
     <string name="link_openinframap_description">"Et kart som viser strøm-, tele- og oljeinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Lag orienteringskart for utskrift"</string>
     <string name="link_openstreetbrowser_description">"Et kart for å finne OpenStreetMap-oppføringer basert på kategorier"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Ukentlig nyhetsblogg om hva som skjer i OpenStreetMap-verdenen"</string>
     <string name="link_figuregrounder_description">"Lag plakater med figur-grunn-diagram av byer og nabolag"</string>
     <string name="achievement_first_edit_title">"Første løste oppdrag"</string>
@@ -1636,6 +1648,8 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
     <string name="achievement_veg_title">"Dyrevenn"</string>
     <string name="achievement_veg_solved_X">"Du har løst %d oppdrag som er interessante for de som ikke spiser kjøtt."</string>
     <string name="achievement_car_title">"På veien"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Du har løst %d oppdrag som forbedrer detaljnivået på gateinformasjonen - slik at OpenStreetMap lever opp til navnet sitt!"</string>
     <string name="unread_messages_message">"Du har %d uleste meldinger i innboksen"</string>
     <string name="unread_messages_button">"Åpne innboks"</string>
@@ -1683,7 +1697,11 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
     <string name="quest_surface_detailed_answer_impossible">"Flere overflater..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umulig å spesifisere overflaten? Husk alternativet «Varierer...» som kan dele opp anlegget der overflaten endres. Vennligst bruk «Vanskelig å si...» hvis strekningen har samme overflate, men den ikke finnes blant alternativene."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Vennligst gi en kort beskrivelse av overflaten her, for eksempel: «Sand med områder med brostein». Teksten er begrenset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1734,6 +1752,8 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_steps_incline_up">"Denne veien er oppover"</string>
     <string name="quest_step_count_title">"Hvor mange trappetrinn er det her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er det lydsignal for synshemmede her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Har disse trafikklysene en taktil indikasjon for synshemmede når det er klart å krysse?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Hint: Ofte er dette en vibrerende knapp eller roterende kjegle under trafikklys-knappen."</string>
     <string name="quest_busStopRef_title">"Hva er referansenummeret til dette busstoppet?"</string>
@@ -1746,6 +1766,8 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_steps_ramp_bicycle">"Sykkelrampe"</string>
     <string name="quest_steps_ramp_stroller">"Barnevognrampe"</string>
     <string name="quest_steps_ramp_wheelchair">"Rullestolrampe"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Hva er navnet på banken til denne minibanken?"</string>
     <string name="quest_clothes_container_operator_title">"Hvilken organisasjon tar i mot donasjoner via denne kles-containeren."</string>
     <string name="quest_charging_station_operator_title">"Hvilket selskap opererer denne ladestasjonen?"</string>
@@ -1779,6 +1801,8 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en toveis venstrefelt"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette korrekt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Hva er høydebegrensningen under denne broen?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Hvis det ikke gjelder hele strekningen kan du svare «%s»."</string>
     <string name="quest_tactile_paving_kerb_title">"Er det ledelinjer for blinde på fortauskanten her?"</string>
     <string name="quest_kerb_height_title">"Hva er høyden på fortauskanten?"</string>
@@ -1786,10 +1810,16 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_kerb_height_lowered">"Litt høyere enn veien"</string>
     <string name="quest_kerb_height_raised">"Høy fortauskant"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampe til fortauskant"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Skriv inn antall oppmerkede kjørefelt (i begge regninger) som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med. Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn antall oppmerkede kjørefelt som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med. Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Høye lastebiler kan kjøre gjennom"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høye lastebiler får ikke plass"</string>
     <string name="quest_address_street_hint">"Trykk på gaten/veien i kartet"</string>
     <string name="quest_crossing_type_marked">"Overgang med oppmerking"</string>
@@ -1803,11 +1833,19 @@ forkortelser i feltet nedenfor:"</string>
     <string name="osm_element_gone_description">"Er du sikker på at det ikke finnes, ikke engang på en litt annen lokasjon? Bedre å legge igjen en merknad om man er usikker."</string>
     <string name="osm_element_gone_confirmation">"Den finnes ikke"</string>
     <string name="leave_note">"Opprett en merknad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Hva er her istedenfor?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Det er tomt"</string>
     <string name="quest_shop_gone_replaced_answer">"En/ei/et..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Hva slags sted er dette?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"Vet ikke hva dette er. Legg gjerne igjen en merknad."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Denne butikken er tom. Hva er her nå?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Antall felt varierer for hver side"</string>
     <string name="quest_pitchSurface_title">"Hvilken overflate har denne idrettsbanen?"</string>
@@ -1994,5 +2032,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_presets_preset_name">"Navn på oppdragsoppsett"</string>
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Valgt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Slette oppsettet «%s»? Oppdragsoppsettet vil slettes for alltid."</string>
 </resources>

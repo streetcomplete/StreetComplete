@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Heritage Bank, Belize Bank]
+atmOperators: [Belize Bank, Heritage Bank]
 centerLine: yellow
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 702

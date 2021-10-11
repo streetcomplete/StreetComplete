@@ -1,4 +1,4 @@
-v36.0-beta1: |
+v36.0: |
   <h3>Easier orientation</h3>
   <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
   <p>The location button (lower right corner) also has a new behavior:</p>
@@ -17,12 +17,28 @@ v36.0-beta1: |
   </ul>
   <h3>Quest Enhancements</h3>
   <ul>
+  <li>Add answer option to state that there are actually steps, not a footway (#3288, #3334), by @FloEdelmann</li>
   <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
+  <li>Self-service laundry: Add answer option to say self-service is optional (#3309)</li>
+  <li>Don't ask some of the quests for private things (#3356, #3357, #3358), by @dbdean</li>
   </ul>
-  <h3>Other enhancements / maintenance</h3>
+  <h3>Other enhancements, fixes, maintenance</h3>
   <ul>
+  <li>More contrast on text (#3328), by @matkoniecz</li>
   <li>(#3327) by @FloEdelmann, (#3208) by @matkoniecz</li>
   </ul>
+
+v35.2: |
+  <p>Fix crash on entering quest selection screen</p>
+
+v35.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix sometimes notes would be created at wrong positions when tapping OK too fast after taking a photo (#3312), thanks @mnalis</li>
+  <li>Fix rare abortion of download when handling corrupt/invalid OSM data</li>
+  <li>Fix some more rare crashes</li>
+  </ul>
+
 
 v35.0: |
   <h3>App maintenance</h3>

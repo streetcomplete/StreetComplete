@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BAC, Banpro, LAFISE, banpro, BDF, BANPRO, Bancentro, VISA ATM, La Fise - Bancentro, Banco de América Central, Bampro, ATM BAC]
+atmOperators: [BAC, Banpro, LAFISE, BDF, banpro, BANPRO, Bancentro, Banco de América Central, Bampro, La Fise - Bancentro, ATM BAC, BAC Credomatic, VISA ATM]
 centerLine: yellow
 mobileCountryCode: 710
 officialLanguages: [es]

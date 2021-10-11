@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -53,7 +50,7 @@ class QuestSelectionAdapter @Inject constructor(
     private val currentCountryCodes: List<String>
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
@@ -101,7 +98,7 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun onQuestTypeVisibilitiesChanged() {
             // all/many visibilities have changed - update the data and notify UI of changes
-            lifecycleScope.launch {
+            viewLifecycleScope.launch {
                 withContext(Dispatchers.IO) {
                     questTypes.forEach { it.visible = visibleQuestTypeController.isVisible(it.questType) }
                 }
@@ -123,7 +120,7 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun onQuestTypeOrdersChanged() {
             // all/many quest orders have been changed - reinit list
-            lifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
+            viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
         }
     }
 
@@ -135,7 +132,7 @@ class QuestSelectionAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
-        lifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
+        viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
 
         visibleQuestTypeController.addListener(visibleQuestsListener)
         questTypeOrderController.addListener(questTypeOrderListener)
@@ -149,7 +146,7 @@ class QuestSelectionAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        lifecycleScope.cancel()
+        viewLifecycleScope.cancel()
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -222,7 +219,7 @@ class QuestSelectionAdapter @Inject constructor(
                 val item = qt[draggedTo].questType
                 val toAfter = qt[draggedTo - 1].questType
 
-                lifecycleScope.launch(Dispatchers.IO) {
+                viewLifecycleScope.launch(Dispatchers.IO) {
                     questTypeOrderController.addOrderItem(item, toAfter)
                 }
             }
@@ -305,7 +302,7 @@ class QuestSelectionAdapter @Inject constructor(
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
             item.visible = b
             updateSelectionStatus()
-            lifecycleScope.launch(Dispatchers.IO) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
                 visibleQuestTypeController.setVisible(item.questType, item.visible)
             }
             if (b && item.questType.defaultDisabledMessage > 0) {

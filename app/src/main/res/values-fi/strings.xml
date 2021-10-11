@@ -594,7 +594,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
-    <string name="compass_north_one_letter">"P"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Kumoa"</string>
@@ -1392,9 +1391,6 @@ Jaetaanko nyt?"</string>
     <string name="quest_generalFee_title">"Onko tänne %s sisäänpääsymaksua?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Toimiiko tämä pesula itsepalveluna?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Onko näissä portaissa kaidetta?"</string>
 
     <!-- Fuzzy -->
@@ -1442,6 +1438,8 @@ Jaetaanko nyt?"</string>
     <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Esimerkkejä lasista, jota usein ei hyväksytä: karkaistu lasi, ikkunaikkunat, lasitavara, hehkulamput tai peilit."</string>
     <string name="about_title_changelog">"Versiohistoria"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Mitä uutta?"</string>
     <string name="about_title_rate">"Arvioi sovellus"</string>
 
@@ -1805,7 +1803,11 @@ taso"</string>
     <string name="quest_board_type_map_title">"Onko se vain ja ainoastaan kartta?"</string>
     <string name="quest_board_type_map_description">"Jos taululla on joku tietty aihe, niin tarkenna sitä huolimatta siitä sisältyykö tieto myös kartalle. Esimerkiksi julkisen liikenteen infossa voi olla mukana myös kartta. Jos taulun aihetta ei ole listattu, niin jätä ilmoitus valinnan sijasta."</string>
     <string name="quest_surface_detailed_answer_impossible">"Useita pintoja.."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Oletko varma, ettei pintaa pysty määrittelemään tarkemmin? Huomioi, että \"eroaa pitkin matkaa\" mahdollistaa tien katkaiseminen sieltä, missä pinta vaihtuu. Paina \"en osaa sanoa\", jos kyseessä on yksi pintamateriaali, mutta vaihtoehtoa ei ole valittavissa."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Määritä tässä lyhyesti pintamateriaali, esimerkiksi \"hiekkainen sisältäen mukulakiviä\".  Tekstin pituus on rajoitettu 255 merkkiin."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1856,6 +1858,8 @@ taso"</string>
     <string name="quest_steps_incline_up">"Tähän suuntaan ylös"</string>
     <string name="quest_step_count_title">"Kuinka monta askelmaa tässä on?"</string>
     <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Onko näissä liikennevaloissa tuntoindikaattori sokeille ihmisille kertomaan milloin on turvallista ylittää tie?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Vihje: Yleensä kyse on värisevästä painikeesta tai pyörivästä kartiosta liikennevalopainikkeen alapuolella."</string>
     <string name="quest_busStopRef_title">"Mikä on tämän linja-autopysäkin pysäkkinumero?"</string>
@@ -1870,6 +1874,8 @@ taso"</string>
     <string name="quest_steps_ramp_bicycle">"Polkupyöräramppi"</string>
     <string name="quest_steps_ramp_stroller">"Lastenrattaiden ramppi"</string>
     <string name="quest_steps_ramp_wheelchair">"Pyörätuoliramppi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Minkä pankin raha-automaatti tämä on?"</string>
     <string name="quest_clothes_container_operator_title">"Mikä taho vastaanottaa tämän vaatekeräyksen lahjoitukset?"</string>
     <string name="quest_charging_station_operator_title">"Kenen operoima latausasema tämä on?"</string>
@@ -1905,6 +1911,8 @@ taso"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Siinä on kaksisuuntainen kaista vasemmalle"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Onko tämä oikein?"</string>
     <string name="quest_maxheight_below_bridge_title">"Mikä on korkeusrajoitus sillan alla?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Jos tämä ei koske koko tietä, harkitse vastaamaan \"%s\""</string>
     <string name="quest_tactile_paving_kerb_title">"Onko täällä jalkakäytävässä kosketuspäällysteitä?"</string>
     <string name="quest_kerb_height_title">"Mikä on tämän reunakivetyksen korkeus?"</string>
@@ -1912,11 +1920,17 @@ taso"</string>
     <string name="quest_kerb_height_lowered">"Hieman tienpintaa korkeammalla"</string>
     <string name="quest_kerb_height_raised">"Korkea reunakiveys"</string>
     <string name="quest_kerb_height_lowered_ramp">"Ohitusramppi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Määritä autoliikenteelle merkittyjen kaistojen määrä (kumpaankin suuntaan). Pyöräväylät ja pysäköintikaistat ei lasketa mukaan. Jos löytyy bussikaistoja, jätä paikalle mieluiten ilmoitus."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Määritä täällä autoliikenteelle merkittyjen kaistojen määrä. Pyöräväylät ja pysäköintikaistat ei lasketa.
 Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_surface_value_rock">"Kivi"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Korkeat kuorma-autot mahtuvat"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Korkeat kuorma-autot eivät mahdu"</string>
     <string name="quest_address_street_hint">"Napauta tietä"</string>
     <string name="quest_crossing_type_marked">"Merkitty suojatie"</string>
@@ -1930,11 +1944,19 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="osm_element_gone_description">"Oletko varma ettei tätä ole, ei edes hieman eri paikassa? Jos et ole varma, jätä ilmoitus."</string>
     <string name="osm_element_gone_confirmation">"Se ei ole olemassa"</string>
     <string name="leave_note">"Jätä ilmoitus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Mitä täällä on nyt?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Se on tyhjillään"</string>
     <string name="quest_shop_gone_replaced_answer">"Siellä on..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Kirjoita paikka tänne"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"En tiedä mikä. Harkitse ilmoituksen jättämistä."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Kauppa on ollut tyhjillään. Mitä siellä on nyt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Kaistojen määrä vaihtelee"</string>
     <string name="quest_pitchSurface_title">"Mikä pinnoite tällä urheilukentällä on?"</string>
@@ -2071,6 +2093,8 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_buildingType_grandstand">"Katsomo"</string>
     <string name="action_search">"Hae"</string>
     <string name="action_manage_presets">"Hallitse esiasetuksia"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Kuinka monta henkilöä on kartoittamassa? Kirjoita sama numero kaikkien puhelimiin."</string>
     <string name="team_mode_choose_color2">"Seuraavaksi jokaisen tulee valita eri väri. Valitse omasi:"</string>
     <string name="link_organic_maps_description">"Ilman verkkoyhteyttä toimiva karttasovellus matkailijoille, retkeilijöille ja pyöräilijöille"</string>
@@ -2086,5 +2110,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_presets_preset_name">"Esiasetuksen nimi"</string>
     <string name="quest_presets_default_name">"Oletus"</string>
     <string name="quest_presets_selected">"Valitut"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Poista esiasetus \"%s\"? Sen kysymysten valinnat ja järjestys menetetään peruuttamattomasti."</string>
 </resources>

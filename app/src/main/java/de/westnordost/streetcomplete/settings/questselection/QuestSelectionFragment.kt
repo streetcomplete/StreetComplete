@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.DisplaysTitle
@@ -24,6 +23,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeControll
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestSelectionBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -56,18 +56,18 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     }
 
     private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) { lifecycleScope.launch { updateTitle() } }
-        override fun onQuestTypeVisibilitiesChanged() { lifecycleScope.launch { updateTitle() } }
+        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) { viewLifecycleScope.launch { updateTitle() } }
+        override fun onQuestTypeVisibilitiesChanged() { viewLifecycleScope.launch { updateTitle() } }
     }
 
     init {
         Injector.applicationComponent.inject(this)
-        lifecycle.addObserver(questSelectionAdapter)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        viewLifecycleOwner.lifecycle.addObserver(questSelectionAdapter)
         binding.questSelectionList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         binding.questSelectionList.layoutManager = LinearLayoutManager(context)
         binding.questSelectionList.adapter = questSelectionAdapter
@@ -124,14 +124,14 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     }
 
     private fun resetQuestVisibilitiesAndOrder() {
-        lifecycleScope.launch(Dispatchers.IO) {
+        viewLifecycleScope.launch(Dispatchers.IO) {
             visibleQuestTypeController.clear()
             questTypeOrderController.clear()
         }
     }
 
     private fun deselectAllQuests() {
-        lifecycleScope.launch(Dispatchers.IO) {
+        viewLifecycleScope.launch(Dispatchers.IO) {
             visibleQuestTypeController.setAllVisible(questTypeRegistry, false)
         }
     }

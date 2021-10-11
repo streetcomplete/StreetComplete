@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [POSB, OCBC, UOB, DBS, Citibank, OCBC Bank, UOB ATM, SAM, DBS/POSB, AXS]
+atmOperators: [UOB, POSB, OCBC, DBS, Citibank, OCBC Bank, HSBC, SAM, DBS/POSB, Standard Chartered, AXS, UOB ATM]
 centerLine: white
 chargingStationOperators: [Greenlots]
 isLeftHandTraffic: true

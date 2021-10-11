@@ -25,12 +25,12 @@ import javax.inject.Singleton
     }
 
     fun addOrderItem(item: QuestType<*>, toAfter: QuestType<*>) {
-        questTypeOrderDao.put(questPresetsSource.selectedQuestPresetId, item.name to toAfter.name)
+        questTypeOrderDao.put(questPresetsSource.selectedId, item.name to toAfter.name)
         onQuestTypeOrderAdded(item, toAfter)
     }
 
     override fun sort(questTypes: MutableList<QuestType<*>>) {
-        val orders = questTypeOrderDao.getAll(questPresetsSource.selectedQuestPresetId)
+        val orders = questTypeOrderDao.getAll(questPresetsSource.selectedId)
         for ((item, toAfter) in orders) {
             val itemIndex = questTypes.indexOfFirst { it.name == item }
             val toAfterIndex = questTypes.indexOfFirst { it.name == toAfter }
@@ -42,7 +42,7 @@ import javax.inject.Singleton
     }
 
     fun clear() {
-        questTypeOrderDao.clear(questPresetsSource.selectedQuestPresetId)
+        questTypeOrderDao.clear(questPresetsSource.selectedId)
         onQuestTypeOrderChanged()
     }
 

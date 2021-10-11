@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -12,6 +11,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.DialogInputTextBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestPresetsBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,11 +33,11 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questProfilesList.adapter = questPresetsAdapter
-        binding.addPresetButton.setOnClickListener { onClickAddProfile() }
+        binding.questPresetsList.adapter = questPresetsAdapter
+        binding.addPresetButton.setOnClickListener { onClickAddPreset() }
     }
 
-    private fun onClickAddProfile() {
+    private fun onClickAddPreset() {
         val ctx = context ?: return
 
         val dialogBinding = DialogInputTextBinding.inflate(layoutInflater)
@@ -48,8 +48,8 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _,_ ->
                 val name = dialogBinding.editText.text.toString().trim()
-                lifecycleScope.launch(Dispatchers.IO) {
-                    questPresetsController.addQuestProfile(name)
+                viewLifecycleScope.launch(Dispatchers.IO) {
+                    questPresetsController.add(name)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)

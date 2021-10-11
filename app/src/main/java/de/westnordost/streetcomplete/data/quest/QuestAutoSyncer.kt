@@ -21,7 +21,6 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
-import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -48,8 +47,6 @@ import javax.inject.Singleton
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
-
-    private val lifecycleScope = CoroutineScope(SupervisorJob())
 
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
@@ -137,7 +134,6 @@ import javax.inject.Singleton
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
-        lifecycleScope.cancel()
     }
 
     @SuppressLint("MissingPermission")
@@ -158,17 +154,15 @@ import javax.inject.Singleton
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
-        lifecycleScope.launch {
-            val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
-            val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
-            if (downloadBoundingBox != null) {
-                try {
-                    downloadController.download(downloadBoundingBox)
-                } catch (e: IllegalStateException) {
-                    // The Android 9 bug described here should not result in a hard crash of the app
-                    // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
-                    Log.e(TAG, "Cannot start download service", e)
-                }
+        val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
+        val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
+        if (downloadBoundingBox != null) {
+            try {
+                downloadController.download(downloadBoundingBox)
+            } catch (e: IllegalStateException) {
+                // The Android 9 bug described here should not result in a hard crash of the app
+                // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
+                Log.e(TAG, "Cannot start download service", e)
             }
         }
     }

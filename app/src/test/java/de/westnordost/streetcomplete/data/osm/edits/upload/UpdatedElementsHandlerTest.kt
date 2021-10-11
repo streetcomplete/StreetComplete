@@ -38,7 +38,7 @@ class UpdatedElementsHandlerTest {
     }
 
     @Test fun `updates node id and all ways containing this id`() {
-        val elements = listOf<Element>(
+        val elements = listOf(
             node(-1),
             way(1, listOf(3,2,-1)), // contains it once
             way(2, listOf(-1,2,-1,-1)), // contains it multiple times
@@ -62,7 +62,7 @@ class UpdatedElementsHandlerTest {
     }
 
     @Test fun `updates node id and all relations containing this id`() {
-        val elements = listOf<Element>(
+        val elements = listOf(
             node(-1),
             rel(1, listOf(member(NODE, 3), member(NODE, -1))), // contains it once
             rel(2, listOf(member(NODE, -1), member(NODE, 2), member(NODE, -1))), // contains it multiple times
@@ -96,7 +96,7 @@ class UpdatedElementsHandlerTest {
     }
 
     @Test fun `deletes node id and updates all ways containing this id`() {
-        val elements = listOf<Element>(
+        val elements = listOf(
             node(1),
             way(1, listOf(3,1)), // contains it once
             way(2, listOf(1,2,1)), // contains it multiple times
@@ -121,7 +121,7 @@ class UpdatedElementsHandlerTest {
     }
 
     @Test fun `deletes node id and updates all relations containing this id`() {
-        val elements = listOf<Element>(
+        val elements = listOf(
             node(1),
             rel(1, listOf(member(NODE, 3), member(NODE, 1))), // contains it once
             rel(2, listOf(member(NODE, 1), member(NODE, 2), member(NODE, 1))), // contains it multiple times
@@ -155,7 +155,7 @@ class UpdatedElementsHandlerTest {
     }
 
     @Test fun `relays element id updates of non-deleted elements`() {
-        val elements = listOf<Element>(
+        val elements = listOf(
             node(-1),
             node(-2),
             way(-3, listOf()),

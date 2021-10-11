@@ -7,12 +7,12 @@
     <string name="user_logout">Logout</string>
     <string name="osm_profile">OSM Profile</string>
     <string name="next">Next</string>
-    <string name="letsgo">Let\'s go!</string>
+    <string name="letsgo">Let’s go!</string>
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
     <string name="tutorial_welcome_to_osm_subtitle">the free wiki world map</string>
     <string name="tutorial_intro">StreetComplete makes it easy to contribute to OpenStreetMap.\nIt automatically looks for missing details in your vicinity: bicycle lanes, house numbers, opening hours and much more…</string>
     <string name="tutorial_solving_quests">Once found, the missing details will appear on your map as quests.\n\nYou can start solving them right away and later login to publish your answers.</string>
-    <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply \"Can\'t Say\" and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don\'t enter private property.</string>
+    <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply “Can’t Say” and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don’t enter private property.</string>
     <string name="tutorial_happy_mapping">Happy Mapping!</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
@@ -174,7 +174,7 @@ First off, understand that with this app, you make actual and direct contributio
 Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
-Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
+Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.
 &lt;/p&gt;
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
@@ -234,7 +234,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_maxspeed_title_short2">"What is the speed limit for this street?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>
-    <string name="quest_maxspeed_answer_zone2">"It's within a (slow) zone"</string>
+    <string name="quest_maxspeed_answer_zone2">"It’s within a (slow) zone"</string>
     <string name="quest_maxspeed_answer_noSign2">"No sign, defaults apply"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Are you sure no limit is posted?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Did you check at the ends of the street?
@@ -253,9 +253,9 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_lanes_title">"How many lanes for cars does this road have?"</string>
     <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Lane count differs for each side"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. So, bike and dedicated parking lanes don't count.
+    <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. So, bike and dedicated parking lanes don’t count.
 If any lanes are reserved for buses, please leave a note instead."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. So, bike and dedicated parking lanes don't count.
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. So, bike and dedicated parking lanes don’t count.
 If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
@@ -283,6 +283,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_generic_hasFeature_optional">"Optionally"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
@@ -373,7 +374,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
     <string name="quest_crossing_type_marked">Marked crossing</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
-    <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
     <string name="undo_last">Undo last edit</string>
     <string name="show_edit_history">Show edit history</string>
@@ -686,6 +686,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_hut">Hut</string>
     <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
     <string name="quest_buildingType_roof">Roof</string>
+    <string name="quest_buildingType_bridge">Bridge between buildings (skyway)</string>
     <string name="quest_buildingType_service">Service building</string>
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
     <string name="quest_buildingType_hangar">Hangar</string>
@@ -715,10 +716,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
     <string name="quest_maxheight_below_bridge_title">What is the height limit below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
-    <string name="quest_maxheight_split_way_hint">If it doesn\'t apply for the whole way, consider answering \"%s\".</string>
+    <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering “%s”.</string>
     <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
     <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don't fit"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don’t fit"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
@@ -743,7 +744,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_building_underground_title">Is this building completely underground?</string>
     <string name="quest_traffic_signals_sound_title">Are there sound signals for the blind here?</string>
     <string name="quest_traffic_signals_button_title">Do these traffic lights have a button to request a walk signal?</string>
-    <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it\'s safe to cross?</string>
+    <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it’s safe to cross?</string>
     <string name="quest_traffic_signals_vibrate_description">Hint: Often this is a vibrating button or rotating cone on the underside of the traffic light button case.</string>
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
@@ -753,7 +754,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s:</string>
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <!-- as in: “Where is the metro station?” - “It is underground” -->
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
@@ -763,7 +764,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer “sidewalk”.</string>
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
@@ -777,8 +778,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_leaf_type_broadleaved">Broadleaved</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
-    <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
-    <string name="quest_footwayPartSurface_title">What\'s the surface of the footway here?</string>
+    <string name="quest_cyclewayPartSurface_title">What’s the surface of the cycleway here?</string>
+    <string name="quest_footwayPartSurface_title">What’s the surface of the footway here?</string>
     <string name="quest_board_type_history">History</string>
     <string name="quest_board_type_geology">Geology</string>
     <string name="quest_board_type_plants">Plants</string>
@@ -793,9 +794,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
+    <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
     <string name="quest_generalFee_title">Do you need to pay to enter %s?</string>
-    <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
+    <string name="quest_laundrySelfService_title2">Does this laundry provide self-service?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
     <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
@@ -848,7 +850,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_tourism_information_guidepost">Guidepost</string>
 
     <string name="about_title_changelog">Version history</string>
-    <string name="title_whats_new">What\'s New?</string>
+    <string name="title_whats_new">What’s New?</string>
     <string name="about_title_rate">Rate this app</string>
     <string name="about_summary_rate">on Google Play</string>
     <string name="about_title_donate">Donate</string>
@@ -858,13 +860,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
 
-    <string name="quest_recycling_materials_answer_waste">It\'s for general waste</string>
+    <string name="quest_recycling_materials_answer_waste">It’s for general waste</string>
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
 
     <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
     <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
 
-    <string name="quest_atm_operator_title">"What's the name of the bank for this ATM?"</string>
+    <string name="quest_atm_operator_title">"What’s the name of the bank for this ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
     <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
     <string name="quest_charging_station_capacity_title">"How many cars can be charged at this charging station at the same time?"</string>
@@ -873,7 +875,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="team_mode">Team Mode</string>
     <string name="team_mode_exit">Exit Team Mode</string>
     <string name="team_mode_description">When mapping the same area together in a group, you can enter team mode to split up quests between all team members.</string>
-    <string name="team_mode_team_size_label2">How many people are mapping? Enter the same number on everyone\'s phone.</string>
+    <string name="team_mode_team_size_label2">How many people are mapping? Enter the same number on everyone’s phone.</string>
     <string name="team_mode_team_size_hint">Team mode works for groups of 2 to 12 people.</string>
     <string name="team_mode_choose_color2">Next, each person must pick a different color. Choose yours:</string>
     <string name="team_mode_active">Team mode is active</string>
@@ -914,7 +916,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related to OpenStreetMap</string>
-    <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
+    <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner’s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
@@ -936,7 +938,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
     <string name="link_qwant_maps_description">A map with searchable places and directions</string>
     <string name="link_organic_maps_description">Maps app for travelers, hikers and cyclists that works offline</string>
-    <string name="link_weeklyosm_description">The weekly news blog about what\'s happening in the OpenStreetMap world</string>
+    <string name="link_weeklyosm_description">The weekly news blog about what’s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
@@ -960,7 +962,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_veg_title">Kind to Animals</string>
     <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
-    <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
+    <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the “street” in OpenStreetMap!</string>
     <string name="achievement_rare_title">Treasure Hunt</string>
     <string name="achievement_rare_solved_X">You found and solved %d quests that are completed really rarely, congratulations!</string>
     <string name="achievement_citizen_title">Citizen</string>
@@ -985,8 +987,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
     <string name="quest_surface_detailed_answer_impossible">Multiple surfaces…</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the \"Differs along the way\" answer option that allows you to cut the way where the surface changes. Please use \"Can\'t say\" if there is a single surface but it is not available as an answer.</string>
-    <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example \"sandy with patches of cobblestone\". The text length is limited to 255 characters.</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer.</string>
+    <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters.</string>
     <string name="at_housename">house name %s:</string>
     <string name="at_conscription_and_street_number">conscription number %1$s, orientation number %2$s:</string>
     <string name="at_conscription_number">conscription number %s:</string>
@@ -998,7 +1000,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
     <string name="quest_dietType_kosher_name_title">Does %s offer kosher products?</string>
-    <string name="quest_dietType_halal_name_title">Does %s offer halal products?</string>
+    <string name="quest_dietType_halal_name_title">Does %s offer Halal products?</string>
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
     <string name="quest_tactile_paving_kerb_title">Is there tactile paving on this curb here?</string>
@@ -1012,12 +1014,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? When in doubt, better leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
-    <string name="quest_shop_gone_title">What\'s here now instead?</string>
-    <string name="quest_shop_gone_vacant_answer">It\'s vacant</string>
+    <string name="quest_shop_gone_title">What’s here now instead?</string>
+    <string name="quest_shop_gone_vacant_answer">It’s vacant</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Don't know what this is. Consider leaving a note."</string>
-    <string name="quest_shop_vacant_type_title">This shop has been vacant. What\'s here now?</string>
+    <string name="quest_shop_gone_replaced_answer_error">"Don’t know what this is. Consider leaving a note."</string>
+    <string name="quest_shop_vacant_type_title">This shop has been vacant. What’s here now?</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No cycleway at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side. Note all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecting that there is no cycleway</string>
@@ -1081,5 +1083,6 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_preset_name">Preset name</string>
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
-    <string name="quest_presets_delete_message">"Delete preset \"%s\"? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
+    <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
 </resources>

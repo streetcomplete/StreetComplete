@@ -39,7 +39,7 @@
             android:textSize="32dp"
             android:textAlignment="center"
             android:maxLines="1"
-            android:textColor="#fff"
+            android:textColor="@color/traffic_white"
             android:background="#000000ff"
             tools:text="Sesame Street"
             tools:ignore="RtlCompat,SpUsage" />

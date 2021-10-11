@@ -10,11 +10,11 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -82,7 +82,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         binding.webView.settings.allowContentAccess = true
         binding.webView.settings.setSupportZoom(false)
         binding.webView.webViewClient = webViewClient
-        lifecycleScope.launch { continueAuthentication() }
+        viewLifecycleScope.launch { continueAuthentication() }
     }
 
     override fun onPause() {
@@ -108,6 +108,11 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         outState.putString(AUTHORIZE_URL, authorizeUrl)
         outState.putString(OAUTH_VERIFIER, oAuthVerifier)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.webView.stopLoading()
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -159,8 +164,8 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
 
     private inner class OAuthWebViewClient : WebViewClient() {
 
-        private var continutation: Continuation<String>? = null
-        suspend fun awaitOAuthCallback(): String = suspendCoroutine { continutation = it }
+        private var continuation: Continuation<String>? = null
+        suspend fun awaitOAuthCallback(): String = suspendCoroutine { continuation = it }
 
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
             val uri = url?.toUri() ?: return false
@@ -168,9 +173,9 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
             if (uri.scheme != callbackScheme || uri.host != callbackHost) return false
             val verifier = uri.getQueryParameter(OAUTH_VERIFIER)
             if (verifier != null) {
-                continutation?.resume(verifier)
+                continuation?.resume(verifier)
             } else {
-                continutation?.resumeWithException(
+                continuation?.resumeWithException(
                     OAuthExpectationFailedException("oauth_verifier parameter not set by provider")
                 )
             }
@@ -178,7 +183,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         }
 
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
-            continutation?.resumeWithException(
+            continuation?.resumeWithException(
                 OAuthCommunicationException("Error for URL $url","$description")
             )
         }

@@ -7,7 +7,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.core.view.isInvisible
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewAnswersCounterBinding
 
 /** View that displays the user's quest answer counter */

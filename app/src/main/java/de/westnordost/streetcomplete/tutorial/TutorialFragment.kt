@@ -9,12 +9,12 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentTutorialBinding
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -68,7 +68,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 
-    private fun step1Transition() = lifecycleScope.launch {
+    private fun step1Transition() = viewLifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()
@@ -155,7 +155,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         }
     }
 
-    private fun step2Transition() = lifecycleScope.launch {
+    private fun step2Transition() = viewLifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()

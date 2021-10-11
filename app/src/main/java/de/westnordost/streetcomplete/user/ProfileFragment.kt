@@ -9,7 +9,6 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
@@ -20,6 +19,7 @@ import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.*
 import java.io.File
 import java.util.Locale
@@ -40,19 +40,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
-        override fun onIncreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
-        override fun onDecreased() { lifecycleScope.launch { updateUnpublishedQuestsText() } }
+        override fun onIncreased() { viewLifecycleScope.launch { updateUnpublishedQuestsText() } }
+        override fun onDecreased() { viewLifecycleScope.launch { updateUnpublishedQuestsText() } }
     }
     private val questStatisticsDaoListener = object : QuestStatisticsDao.Listener {
-        override fun onAddedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() }}
-        override fun onSubtractedOne(questType: String) { lifecycleScope.launch { updateSolvedQuestsText() } }
-        override fun onReplacedAll() { lifecycleScope.launch { updateSolvedQuestsText() } }
+        override fun onAddedOne(questType: String) { viewLifecycleScope.launch { updateSolvedQuestsText() }}
+        override fun onSubtractedOne(questType: String) { viewLifecycleScope.launch { updateSolvedQuestsText() } }
+        override fun onReplacedAll() { viewLifecycleScope.launch { updateSolvedQuestsText() } }
     }
     private val userStoreUpdateListener = object : UserStore.UpdateListener {
-        override fun onUserDataUpdated() { lifecycleScope.launch { updateUserName() } }
+        override fun onUserDataUpdated() { viewLifecycleScope.launch { updateUserName() } }
     }
     private val userAvatarListener = object : UserAvatarListener {
-        override fun onUserAvatarUpdated() { lifecycleScope.launch { updateAvatar() } }
+        override fun onUserAvatarUpdated() { viewLifecycleScope.launch { updateAvatar() } }
     }
 
     init {
@@ -78,7 +78,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onStart() {
         super.onStart()
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             userStore.addListener(userStoreUpdateListener)
             userController.addUserAvatarListener(userAvatarListener)
             questStatisticsDao.addListener(questStatisticsDaoListener)

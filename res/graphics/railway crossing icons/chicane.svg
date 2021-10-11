@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+ <path d="m75 19h-6l11 18v-11z" fill="#e1d9af"/>
+ <path d="m32-2e-8h16l19 64h-54z" fill="#d7d7d7"/>
+ <rect x="43" y="12" width="3" height="3" fill="#f00" fill-rule="evenodd"/>
+ <path d="m5 19h6l-11 18v-11z" fill="#e1d9af"/>
+ <path d="m16 19h6l-9 23h-9z" fill="#e1d9af"/>
+ <path d="m64 19h-6l9 23h9z" fill="#e1d9af"/>
+ <path d="m0 22h80v2h-80z" fill="#8c7570"/>
+ <path d="m0 35h80v3h-80z" fill="#8c7570"/>
+ <path d="m45 62v-13h20v13" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="2"/>
+ <path d="m45 56h20" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m17 54v-13h20v13" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="2"/>
+ <path d="m17 48h20" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m43 18v-6.5h10v6.5" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="1.2"/>
+ <rect x="46" y="12" width="4" height="3" fill="#fff" fill-rule="evenodd"/>
+ <rect x="50" y="12" width="3" height="3" fill="#f00" fill-rule="evenodd"/>
+ <path d="m43 15.369h10" fill="none" stroke="#727272" stroke-width="1.2"/>
+ <rect x="29" y="8" width="3" height="3" fill="#f00" fill-rule="evenodd"/>
+ <rect x="32" y="8" width="4" height="3" fill="#fff" fill-rule="evenodd"/>
+ <rect x="36" y="8" width="3" height="3" fill="#f00" fill-rule="evenodd"/>
+ <path d="m29 14v-6.5h10v6.5" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="1.2"/>
+ <path d="m29 11.431h10" fill="none" stroke="#727272" stroke-width="1.2"/>
+ <rect x="18" y="42" width="6" height="5" fill="#e40000" fill-rule="evenodd"/>
+ <rect x="30" y="42" width="6" height="5" fill="#e40000" fill-rule="evenodd"/>
+ <rect x="46" y="50" width="6" height="5" fill="#e40000" fill-rule="evenodd"/>
+ <rect x="58" y="50" width="6" height="5" fill="#e40000" fill-rule="evenodd"/>
+ <rect x="24" y="42" width="6" height="5" fill="#fff" fill-rule="evenodd"/>
+ <rect x="52" y="50" width="6" height="5" fill="#fff" fill-rule="evenodd"/>
+</svg>

@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, rediATM, BankWest, nab, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, westpac, anz, Newcastle Permanent, Greater Bank, bankwest, BitRocket, Bank SA, iCash, St.George, st.george, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, cashcard, Redi, St George Bank, DC ATM, Anz, Travelex, Bendigo]
 centerLine: white
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true

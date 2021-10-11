@@ -70,6 +70,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
                 changes.deleteIfExists("height")
                 changes.deleteIfExists("width")
                 changes.deleteIfExists("stroller")
+                changes.deleteIfExists("steps")
             }
         }
 

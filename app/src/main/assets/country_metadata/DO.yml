@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco Popular, Popular, BanReservas, Banreservas, Banco BHD Leon, BHD, Banco de Reservas, Banco BHD León, Banco BHD, Banca Popular, BPD]
+atmOperators: [Banco Popular, Popular, BanReservas, Banreservas, BHD, Banco BHD Leon, Banco BHD, Banco de Reservas, Banco BHD León, Banca Popular, BPD]
 centerLine: yellow
 mobileCountryCode: 370
 officialLanguages: [es]

@@ -36,7 +36,7 @@ class VisibleQuestTypeControllerTest {
             Unit
         }
 
-        on(questPresetsSource.selectedQuestPresetId).thenReturn(0)
+        on(questPresetsSource.selectedId).thenReturn(0)
 
         ctrl = VisibleQuestTypeController(visibleQuestTypeDao, questPresetsSource)
 

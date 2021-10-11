@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Royal Bank of Scotland, HSBC, Barclays Bank PLC]
+atmOperators: [HSBC, Barclays Bank PLC, Royal Bank of Scotland]
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [gv, en]

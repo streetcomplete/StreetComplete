@@ -6,7 +6,6 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
@@ -14,10 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
 import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
-import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.toDp
-import de.westnordost.streetcomplete.ktx.tryStartActivity
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -40,7 +36,7 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
         val minCellWidth = 280f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleScope.launch {
             view.awaitLayout()
 
             binding.emptyText.visibility = View.GONE

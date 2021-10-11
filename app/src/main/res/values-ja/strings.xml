@@ -841,7 +841,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"道路標示のない交差点"</string>
-    <string name="compass_north_one_letter">"北"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"元に戻す"</string>
@@ -1325,6 +1324,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="underground">"地下"</string>
     <string name="quest_sidewalk_value_yes">"歩道"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"この道路では歩行者の通行が禁止されていますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"この道には両脇に歩道が無いとタグ付けされています。もし実際には歩道があるものの別の道として表示されているなら、\"歩道\"と答えてください。"</string>
 
     <!-- Fuzzy -->
@@ -1344,8 +1345,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_leafType_title">"ここの樹木の葉の種類は何ですか?"</string>
     <string name="quest_leaf_type_broadleaved">"広葉樹"</string>
     <string name="quest_leaf_type_mixed">"広葉樹と針葉樹"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"この自転車道の路面は何ですか?"</string>
     <string name="quest_split_way_too_imprecise">"拡大してください"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"この歩道の路面は何ですか?"</string>
     <string name="quest_tactilePaving_title_tram">"この路面電車の駅には点字ブロックがありますか?"</string>
     <string name="quest_tactilePaving_title_name_tram">"路面電車の駅 %s には点字ブロックがありますか?"</string>
@@ -1374,6 +1379,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_recycling_glass_title">"リサイクルできるのはガラス瓶だけですか、それともあらゆるガラス製品を含みますか?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"たいていの場合、強化ガラス、窓ガラス、ガラス器具、電球、鏡は回収されません。"</string>
     <string name="about_title_changelog">"バージョン履歴"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"新着情報"</string>
     <string name="about_title_rate">"アプリを評価"</string>
     <string name="about_summary_rate">"Google Playで"</string>
@@ -1412,7 +1419,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="quest_board_type_history">"歴史"</string>
     <string name="quest_surface_detailed_answer_impossible">"複数の路面…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"表面を指定することができないことに間違いありませんか? \"区間によって異なる\" と回答すると、表面が変わる地点でウェイを分割できます。単一の表面であるが、回答を選ぶことができない場合に \"言えない\" と答えてください。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"簡潔に表面の特徴を記してください。例えば \"ところどころ丸石混じりの砂\" など。文の長さは255文字に制限されています。"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1444,6 +1455,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_steps_ramp_bicycle">"自転車用のスロープ"</string>
     <string name="quest_steps_ramp_stroller">"ベビーカー用のスロープ"</string>
     <string name="quest_steps_ramp_wheelchair">"車いす用のスロープ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"このATMを管理する銀行の名前は何ですか?"</string>
     <string name="quest_clothes_container_operator_title">"この衣類収集箱への寄付は誰が受け取りますか?"</string>
     <string name="quest_charging_station_operator_title">"この充電ステーションはどこが運営していますか?"</string>
@@ -1459,14 +1472,22 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_tactile_paving_kerb_title">"この縁石に点字ブロックはありますか?"</string>
     <string name="quest_kerb_height_flush">"路面と同じ高さ"</string>
     <string name="quest_kerb_height_lowered">"路面より少し高い"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"自動車が通行できる車線 (両方) の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
     <string name="quest_parkingType_street_side">"路傍の駐車用区画"</string>
     <string name="quest_parkingType_lane">"路面の駐車用区画"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"空き店舗です"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"以前は空き店舗でしたが、現在は何がありますか?"</string>
     <string name="quest_pitchSurface_title">"この競技場の表面は何ですか?"</string>
 

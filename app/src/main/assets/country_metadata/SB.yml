@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BSP, ANZ]
+atmOperators: [ANZ, BSP]
 isLeftHandTraffic: true
 mobileCountryCode: 540
 officialLanguages: [en]

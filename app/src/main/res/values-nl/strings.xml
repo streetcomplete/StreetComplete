@@ -817,7 +817,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Kruispunt zonder wegmarkeringen"</string>
-    <string name="compass_north_one_letter">"N"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Ongedaan maken"</string>
@@ -1709,9 +1708,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_generalFee_title">"Kost het geld om %s binnen te gaan?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Is deze wasserij een zelfbediening?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Heeft deze trap een leuning?"</string>
 
     <!-- Fuzzy -->
@@ -2187,7 +2183,11 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_board_type_map_title">"Is het echt alleen maar een kaart?"</string>
     <string name="quest_board_type_map_description">"Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten."</string>
     <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten bedekkingen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet je zeker dat het onmogelijk is om de bedekking te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee je de weg kunt splitsen waar de bedekking verandert. Gebruik alstublieft \"Weet ik niet\" als er één bedekking is maar die is niet beschikbaar als antwoord."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van de bedekking aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -2238,6 +2238,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_steps_incline_up">"Naar boven in deze richting"</string>
     <string name="quest_step_count_title">"Hoeveel treden zijn hier?"</string>
     <string name="quest_traffic_signals_sound_title">"Zijn er hier geluidssignalen voor blinden?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Hebben deze stoplichten een voelbare indicatie voor blinden voor wanneer ze veilig over kunnen steken?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Vaak is dit een trillende knop of ronddraaiende kegel aan de onderkant van de stoplichtknop."</string>
     <string name="quest_busStopRef_title">"Wat is het referentienummer van deze bushalte?"</string>
@@ -2250,6 +2252,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_steps_ramp_bicycle">"Helling voor fietsen"</string>
     <string name="quest_steps_ramp_stroller">"Helling voor wandelwagens"</string>
     <string name="quest_steps_ramp_wheelchair">"Helling voor rolstoelen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Van welke bank is deze geldautomaat?"</string>
     <string name="quest_clothes_container_operator_title">"Welke organisatie zamelt hier gebruikte kleding in?"</string>
     <string name="quest_charging_station_operator_title">"Welk bedrijf exploiteert dit oplaadpunt?"</string>
@@ -2287,6 +2291,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Het heeft een tweerichtingsstrook voor linksaf slaan"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Is dit correct?"</string>
     <string name="quest_maxheight_below_bridge_title">"Wat is de maximumhoogte onder deze brug?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Als het niet voor de hele weg geldt, overweeg dan \"%s\" te antwoorden."</string>
     <string name="quest_tactile_paving_kerb_title">"Is er voelbare bestrating bij deze stoeprand?"</string>
     <string name="quest_kerb_height_title">"Wat is de hoogte van deze stoeprand?"</string>
@@ -2294,10 +2300,16 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_kerb_height_lowered">"Iets hoger dan de weg"</string>
     <string name="quest_kerb_height_raised">"Hoge stoeprand"</string>
     <string name="quest_kerb_height_lowered_ramp">"Stoeprandhelling"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Geef het totaal aantal gemarkeerde rijstroken (beide richtingen) die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Geef het aantal gemarkeerde rijstroken die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter."</string>
     <string name="quest_surface_value_rock">"Rots"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Hoge vrachtwagens kunnen erdoor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
     <string name="quest_address_street_hint">"Tik de weg aan op de kaart"</string>
     <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
@@ -2311,11 +2323,19 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="osm_element_gone_description">"Weet je zeker dat het niet bestaat, zelfs niet op een iets andere plaats? Als je niet zeker bent kun je beter een notitie achterlaten."</string>
     <string name="osm_element_gone_confirmation">"Het bestaat niet"</string>
     <string name="leave_note">"Laat een notitie achter"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Wat is hier nu voor in de plaats?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Het staat leeg"</string>
     <string name="quest_shop_gone_replaced_answer">"Een..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Voer de soort winkel hier in"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"Ik weet niet wat dit is. Overweeg een notitie achter te laten."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Deze winkel stond leeg. Wat is hier nu?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Het aantal rijstroken verschilt per kant."</string>
     <string name="quest_pitchSurface_title">"Wat voor ondergrond heeft dit sportveld?"</string>
@@ -2451,6 +2471,8 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_buildingType_grandstand">"Tribune"</string>
     <string name="action_search">"Zoek"</string>
     <string name="action_manage_presets">"Voorinstellingen beheren"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Hoeveel mensen doen er mee? Voer hetzelfde getal in op ieders telefoon"</string>
     <string name="team_mode_choose_color2">"Nu moet ieder persoon een verschillende kleur kiezen. Kies de jouwe:"</string>
     <string name="link_organic_maps_description">"Kaart-app voor reizigers, wandelaars en fietsers die off-line werkt"</string>
@@ -2466,6 +2488,8 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_presets_preset_name">"Voorinstelling naam"</string>
     <string name="quest_presets_default_name">"Standaardnaam"</string>
     <string name="quest_presets_selected">"Gekozen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Voorinstelling \"%s\" verwijderen? De vraagkeuze en -volgorde zal voorgoed verloren gaan."</string>
     <string name="notification_syncing">"Gegevens synchronizeren..."</string>
     <string name="notification_channel_sync">"Synchronizeer gegevens"</string>

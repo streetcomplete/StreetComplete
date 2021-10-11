@@ -29,7 +29,6 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
-import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
@@ -291,9 +290,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         if (isQuestDetailsCurrentlyDisplayedFor(questKey)) return
         val f = bottomSheetFragment
         if (f is IsCloseableBottomSheet) f.onClickClose {
-            lifecycleScope.launch { showQuestDetails(questKey) }
+            viewLifecycleScope.launch { showQuestDetails(questKey) }
         }
-        else lifecycleScope.launch { showQuestDetails(questKey) }
+        else viewLifecycleScope.launch { showQuestDetails(questKey) }
     }
 
     override fun onClickedEdit(editKey: EditKey) {
@@ -356,7 +355,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
 
     override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             solveQuest(questKey) { quest ->
                 if (questController.solve(quest, answer, "survey")) {
                     onQuestSolved(quest, "survey")
@@ -370,7 +369,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onSplitWay(osmQuestKey: OsmQuestKey) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val quest = questController.get(osmQuestKey)!!
             val element = questController.getOsmElement(quest as OsmQuest)
             val geometry = quest.geometry
@@ -383,14 +382,14 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onSkippedQuest(questKey: QuestKey) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             closeBottomSheet()
             questController.hide(questKey)
         }
     }
 
     override fun onDeletePoiNode(osmQuestKey: OsmQuestKey) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             solveQuest(osmQuestKey) { quest ->
                 if (questController.deletePoiElement(quest as OsmQuest, "survey")) {
                     onQuestSolved(quest, "survey")
@@ -400,7 +399,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             solveQuest(osmQuestKey) { quest ->
                 if (questController.replaceShopElement(quest as OsmQuest, tags, "survey")) {
                     onQuestSolved(quest, "survey")
@@ -432,7 +431,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
     override fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             solveQuest(osmQuestKey) { quest ->
                 if (questController.splitWay(quest as OsmQuest, splits, "survey")) {
                     onQuestSolved(quest, "survey")
@@ -453,7 +452,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>) {
         // the quest is deleted from DB on creating a note, so need to fetch quest before
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null) {
                 closeBottomSheet()
@@ -469,6 +468,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point) {
         val mapFragment = mapFragment ?: return
         val mapView = mapFragment.view ?: return
+        if (!mapFragment.isMapInitialized) return
 
         val mapPosition = mapView.getLocationInWindow().toPointF()
         val notePosition = screenPosition.toPointF()
@@ -481,7 +481,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
          */
         closeBottomSheet()
 
-        lifecycleScope.launch { questController.createNote(note, imagePaths, position) }
+        viewLifecycleScope.launch { questController.createNote(note, imagePaths, position) }
 
         listener?.onCreatedNote(screenPosition)
         showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
@@ -494,7 +494,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val f = bottomSheetFragment
             if (f !is IsShowingQuestDetails) return@launch
 
@@ -506,7 +506,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     @AnyThread override fun onVisibleQuestsInvalidated() {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val f = bottomSheetFragment
             if (f !is IsShowingQuestDetails) return@launch
 
@@ -873,7 +873,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val activity = activity ?: return
         val view = view ?: return
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             soundFx.play(resources.getIdentifier("plop" + Random.nextInt(4), "raw", ctx.packageName))
         }
 

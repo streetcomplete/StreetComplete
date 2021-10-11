@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.*
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
 private val footwaysFilter by lazy {"""
@@ -130,7 +131,7 @@ private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
 
     // skip nodes that share an end node with any node of a way that is not an end node
     ways.asSequence()
-        .flatMap { it.nodeIds.subList(1, it.nodeIds.size - 1) }
+        .flatMap { it.nodeIds.allExceptFirstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()
 

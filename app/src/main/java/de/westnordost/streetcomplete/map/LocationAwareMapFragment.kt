@@ -10,8 +10,8 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent
@@ -210,7 +210,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
         tracks.last().add(location)
         // delay update by 600 ms because the animation to the new location takes that long
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             delay(600)
             tracksMapComponent?.addToCurrentTrack(location)
         }

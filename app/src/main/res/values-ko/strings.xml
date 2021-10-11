@@ -206,6 +206,8 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"확대"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;아, 개인정보 보호에 관심이 많으시군요! 걱정하지 않으셔도 될 것 같습니다:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -763,7 +765,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
-    <string name="compass_north_one_letter">"북"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"되돌리기"</string>
@@ -1626,9 +1627,6 @@
     <string name="quest_generalFee_title">"%s에 입장료가 있나요?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"이 세탁소는 셀프 빨래방인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"이 계단에 난간이 있나요?"</string>
 
     <!-- Fuzzy -->
@@ -1729,6 +1727,8 @@
     <string name="quest_tourism_information_terminal">"정보 안내기"</string>
     <string name="quest_tourism_information_map">"지도"</string>
     <string name="quest_tourism_information_guidepost">"이정표"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"일반 쓰레기용"</string>
     <string name="quest_recycling_materials_answer_waste_description">"그렇다면, 이 쓰레기통은 가정/상가에서 나오는 일반 쓰레기를 취급하나요?"</string>
     <string name="quest_accepts_cash_title">"%s은(는) 현금을 받나요?"</string>
@@ -1737,6 +1737,8 @@
     <string name="user_logout">"로그아웃"</string>
     <string name="osm_profile">"OSM 프로필"</string>
     <string name="next">"다음"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"시작합시다!"</string>
     <string name="tutorial_welcome_to_osm">"오픈스트리트맵에 오신 것을 환영합니다"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"자유로운 위키형 세계 지도"</string>
@@ -1788,6 +1790,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="link_wiki_description">"오픈스트리트맵과 관련된 모든 활동은 이 위키에서 시작됩니다"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"오픈스트리트맵이 처음이세요? 여기 초보자 가이드가 있습니다"</string>
     <string name="link_neis_one_description">"오픈스트리트맵 기여자들의 통계를 모은 사이트입니다. 여러분이 어디를 어떻게 기여했는지, 여러분 주변에 다른 사람이 있는지, 내 리더보드는 어떠한지 등을 볼 수 있습니다"</string>
     <string name="link_welcome_mat_description">"오픈스트리트맵에 관한 일반적인 정보와 단체로써 오픈스트리트맵에 기여하는 방법"</string>
@@ -1805,6 +1809,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="link_openinframap_description">"전력, 통신, 가스, 유류 인프라를 보여주는 지도"</string>
     <string name="link_openorienteeringmap_description">"오리엔티어링을 위한 인쇄용 지도를 제작합니다"</string>
     <string name="link_openstreetbrowser_description">"오픈스트리트맵의 지물들을 카테고리별로 보여주는 지도"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"오픈스트리트맵 세계에서 일어나는 소식이 매주 올라오는 블로그"</string>
     <string name="link_figuregrounder_description">"피겨 그라운드 지도(건물이 있는 부분과 없는 부분을 표현한 지도)를 생성합니다"</string>
     <string name="achievement_first_edit_title">"첫 과제 해결"</string>
@@ -1830,6 +1836,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="achievement_veg_title">"동물 애호가"</string>
     <string name="achievement_veg_solved_X">"고기를 먹지 않는 사람들을 위한 과제를 %d개 해결했습니다!"</string>
     <string name="achievement_car_title">"도로 위"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"도로와 도로 관련 시설을 위한 과제를 %d개 해결했습니다!"</string>
     <string name="unread_messages_message">"수신함에 읽지 않은 메시지가 %d개 있습니다"</string>
     <string name="unread_messages_button">"수신함 열기"</string>
@@ -1879,7 +1887,11 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_board_type_map_description">"만약 안내판이 특정 주제를 다루고 있다면, 해당 주제를 적어 주세요. 이때 안내판에 지도가 있는지 없는지 신경쓸 필요는 없습니다. 예를 들어 대중교통 안내판에는 버스 노선도가 있을 수 있습니다. 만약 답변 목록에서 주제를 찾을 수 없다면, 참고를 남겨 주세요."</string>
     <string name="quest_surface_detailed_answer_impossible">"여러 재질이 섞여 있음..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"정말 재질을 고를 수 없나요? 중간에 재질이 바뀐다면 \"부분별로 다름\"을 선택하여 재질이 바뀌는 곳을 기준으로 길을 분할할 수 있습니다. 단일 재질이나 선택지가 없는 경우 \"답할 수 없음\"을 선택하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"포장재의 특성을 간략하게 (예: \"조약돌 사이사이에 모래가 들어가 있음\") 적어 주세요. 최대 255자까지 적을 수 있습니다."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1932,6 +1944,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_steps_incline_up">"이 방향"</string>
     <string name="quest_step_count_title">"계단이 몇칸인가요?"</string>
     <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"이 신호등에 시각 장애인에게 횡단해도 좋음을 알려주는 촉각 알림이 있나요?"</string>
     <string name="quest_traffic_signals_vibrate_description">"힌트: 촉각 알림은 보통 신호등 버튼 아래쪽에 진동하는 버튼이나 회전하는 고깔입니다."</string>
     <string name="quest_busStopRef_title">"이 버스 정류장의 참조 번호는 무엇인가요?"</string>
@@ -1944,6 +1958,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_steps_ramp_bicycle">"자전거용 경사로"</string>
     <string name="quest_steps_ramp_stroller">"유모차용 경사로"</string>
     <string name="quest_steps_ramp_wheelchair">"휠체어용 경사로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"이 ATM은 어느 은행 소속인가요?"</string>
     <string name="quest_clothes_container_operator_title">"이 헌옷 수거함은 누가 운영하나요?"</string>
     <string name="quest_charging_station_operator_title">"이 충전소는 누가 운영하나요?"</string>
@@ -1977,6 +1993,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"양방향에서 사용하는 좌회전 차로 있음"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"위 내용이 맞나요?"</string>
     <string name="quest_maxheight_below_bridge_title">"다리 밑 도로의 통과 높이 제한이 얼마인가요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"만약 선 전체에 적용되는 답변을 찾을 수 없다면, \"%s\"라고 답변해 보세요."</string>
     <string name="quest_tactile_paving_kerb_title">"이 연석에 점자 타일이 있나요?"</string>
     <string name="quest_kerb_height_title">"이 연석의 높이가 얼마인가요?"</string>
@@ -1994,6 +2012,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 만약 버스 전용 차로가 있다면, 참고를 대신 남겨 주세요."</string>
     <string name="quest_surface_value_rock">"바위"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"큰 트럭이 통과할 수 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭이 통과할 수 없음"</string>
     <string name="quest_address_street_hint">"추가하려면 도로를 탭하세요"</string>
     <string name="quest_crossing_type_marked">"횡단보도가 그려져 있음"</string>
@@ -2013,13 +2033,19 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="leave_note">"참고 남기기"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"지금은 여기에 무엇이 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"비어 있습니다"</string>
     <string name="quest_shop_gone_replaced_answer">"새로 바뀐 상점명:"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"이 장소의 유형을 입력하세요"</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"여기 있는 게 무엇인지 알 수 없습니다. 참고를 남겨주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"이 가게는 비어 있었습니다. 지금 여기에 무엇이 있나요?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"차선 수가 방향에 따라 다름"</string>
     <string name="quest_pitchSurface_title">"이 운동장의 바닥 재질은 무엇인가요?"</string>
@@ -2169,6 +2195,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingType_grandstand">"관중석"</string>
     <string name="action_search">"검색"</string>
     <string name="action_manage_presets">"프리셋 관리"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"몇명이서 탐사하나요? 모든 사람의 폰에 같은 숫자를 입력하세요."</string>
     <string name="team_mode_choose_color2">"이제, 모두가 각자 다른 색깔을 골라야 합니다. 색을 골라주세요:"</string>
     <string name="link_organic_maps_description">"오프라인에서도 작동하는 여행객, 등산객, 자전거 이용자용 지도 앱"</string>
@@ -2184,5 +2212,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_presets_preset_name">"프리셋 이름"</string>
     <string name="quest_presets_default_name">"기본값"</string>
     <string name="quest_presets_selected">"선택됨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"프리셋 \"%s\"을(를) 지울까요? 해당되는 과제 목록과 순서가 지워지며 되돌릴 수 없습니다."</string>
 </resources>

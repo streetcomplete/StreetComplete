@@ -20,7 +20,7 @@ class AddBoardTypeForm : AListQuestAnswerFragment<BoardType>() {
         TextItem(WILDLIFE, R.string.quest_board_type_wildlife),
         TextItem(NATURE, R.string.quest_board_type_nature),
         TextItem(PUBLIC_TRANSPORT, R.string.quest_board_type_public_transport),
-        TextItem(SPORT, R.string.quest_board_type_public_transport),
+        TextItem(SPORT, R.string.quest_board_type_sport),
         TextItem(NOTICE, R.string.quest_board_type_notice_board),
     )
 

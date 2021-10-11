@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
-class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
+class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -48,7 +48,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is SpecificSurfaceAnswer -> {
                 changes.updateWithCheckDate("surface", answer.value.osmValue)
@@ -57,6 +57,9 @@ class AddPathSurface : OsmFilterQuestType<SurfaceAnswer>() {
             is GenericSurfaceAnswer -> {
                 changes.updateWithCheckDate("surface", answer.value.osmValue)
                 changes.addOrModify("surface:note", answer.note)
+            }
+            is IsActuallyStepsAnswer -> {
+                changes.modify("highway", "steps")
             }
         }
         changes.deleteIfExists("source:surface")

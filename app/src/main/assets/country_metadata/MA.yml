@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [fr, es]
-atmOperators: [BMCI, Banque Populaire, BMCE, Crédit du Maroc, Al Barid Bank, Crédit Agricole, Société Générale, Societe Generale, Cash Plus, CIH Bank, Attijariwafa Bank, banque populaire, BMCE BANK]
+atmOperators: [BMCI, BMCE, Al Barid Bank, Crédit du Maroc, Societe Generale, البنك الشعبي, سوسيتيه جنرال, Banque Populaire, Crédit Agricole, التجاري وفا بنك, Cash Plus, banque populaire, البنك المغربي للتجارة والصناعة, CIH Bank, BMCE BANK]
 firstDayOfWorkweek: Su
 mobileCountryCode: 604
 officialLanguages: [ar, ber]

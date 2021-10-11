@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/background_roadname_indented"
-        tools:listitem="@layout/quest_localizedname_row" />
+        tools:listitem="@layout/quest_roadname_row" />
 
     <ImageButton
         android:id="@+id/addLanguageButton"

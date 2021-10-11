@@ -11,6 +11,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with name and toilets = yes
+         and access !~ no|private
          and (
            !toilets:wheelchair
            or toilets:wheelchair != yes and toilets:wheelchair older today -4 years

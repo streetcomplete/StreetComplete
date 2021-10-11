@@ -641,7 +641,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Yol işaretleri olmayan geçiş"</string>
-    <string name="compass_north_one_letter">"K"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Geri al"</string>
@@ -1321,6 +1320,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"Kaldırım yok"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Yayaların bu yolda yürümesi yasak mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Bu caddenin iki tarafında da kaldırım olmadığı etiketlendi. Her şeye rağmen bir kaldırım olduğu halde ayrı bir yol olarak gösteriliyorsa, lütfen 'kaldırım' cevabını verin."</string>
 
     <!-- Fuzzy -->
@@ -1379,11 +1380,15 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Her ikisi de mevcuttur. "</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Buradaki bisiklet yolunun yüzey nasıldır?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Yol boyunca değişiyor."</string>
     <string name="quest_split_way_description">"Yol boyunca farklılık gösteriyorsa, ilk adım yolu bölmektir. Bundan sonra, her bölünmüş kısım için görev ayrı ayrı cevaplanabilir."</string>
     <string name="quest_split_way_tutorial">"Cevabın farklı olduğu noktalarda bölmek için yola dokunun. Mümkün olduğunca hassas olmaya çalışın, her zamanki gibi yakınlaştırabilirsiniz."</string>
     <string name="quest_split_way_too_imprecise">"Lütfen daha fazla yakınlaştırın"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Buradaki patikanın yüzeyi nedir?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"%s tuvalet tekerlekli sandalye erişimine uygun mu?"</string>
     <string name="quest_tactilePaving_title_tram">"Bu tramvay durağında kabartmalı/hisli kaldırımlar var mı?"</string>
@@ -1399,9 +1404,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"%s giriş ücretli mi?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Bu çamaşırhane self servis mi?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Bu basamaklarda parmaklık var mı?"</string>
@@ -1492,6 +1494,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_tourism_information_board">"Bilgi panosu"</string>
     <string name="quest_tourism_information_terminal">"Bilgi terminali"</string>
     <string name="quest_tourism_information_map">"Harita"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Genel atık için"</string>
     <string name="quest_accepts_cash_title">"%s nakit ödeme kabul ediyor mu?"</string>
     <string name="user_profile">"Profilim"</string>
@@ -1499,6 +1503,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="user_logout">"Çıkış Yap"</string>
     <string name="osm_profile">"OSM Profili"</string>
     <string name="next">"İleri"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"Hadi gidelim!"</string>
     <string name="tutorial_welcome_to_osm">"OpenStreetMap'e hoşgeldin"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"özgür dünya haritası wikisi."</string>
@@ -1534,10 +1540,14 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="link_wiki_description">"Wiki, OpenStreetMap ile ilgili her şey için başlangıç ​​noktanızdır"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"OpenStreetMapte yeni misiniz? Bu bir başlangıç ​​kılavuzu"</string>
     <string name="link_neis_one_description">"OpenStreetMap'e katkıda bulunanlar için, nerede ve nasıl katkıda bulunduğunuz, çevrenizde başka kimlerin olduğu ve liderlik tabloları gibi büyük bir istatistik koleksiyonu"</string>
     <string name="link_welcome_mat_description">"OpenStreetMap hakkında genel bilgiler ve organizasyon olarak OSM ile nasıl çalışılacağı"</string>
     <string name="link_openinframap_description">"Enerji, telekom, gaz ve petrol altyapısını gösteren bir harita"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"OpenStreetMap dünyasında olup bitenlerle ilgili haftalık haber blogu"</string>
     <string name="achievement_first_edit_title">"İlk Görev Çözüldü"</string>
     <string name="achievement_first_edit_description">"OpenStreetMap topluluğuna hoş geldiniz! Profil ekranınızda, çözdüğünüz her görev türü için daha fazla bilgi görebilirsiniz."</string>
@@ -1573,6 +1583,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_board_type_title">"Bu bilgi panosunun konusu nedir?"</string>
     <string name="quest_board_type_map">"Bu bir harita"</string>
     <string name="quest_board_type_map_description">"Pano belirli bir konu hakkındaysa, lütfen bir harita içerip içermediğine bakılmaksızın bunu belirtin. Örneğin, bir toplu taşıma panosunun bir otobüs güzergah haritası olabilir. Konu mevcut cevaplar arasında listelenmemişse, lütfen bunun yerine bir not bırakın."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Lütfen burada yüzeyin yapısını kısaca belirtin, örneğin \"arnavut kaldırımlı yer yer kumlu\". Metin uzunluğu 255 karakterle sınırlıdır."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1611,6 +1623,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_steps_ramp_none">"(Kullanılabilir) Rampa yok"</string>
     <string name="quest_steps_ramp_bicycle">"Bisiklet rampası"</string>
     <string name="quest_steps_ramp_wheelchair">"Tekerlekli sandalye rampası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Bu ATM'nin bankasının adı nedir?"</string>
     <string name="quest_clothes_container_operator_title">"Bu kıyafet kutusu için bağışları kim kabul ediyor?"</string>
     <string name="quest_charging_station_operator_title">"Bu şarj istasyonunun operatörü kimdir?"</string>
@@ -1637,17 +1651,25 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_lanes_answer_noLanes">"İşaretli şerit yok"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Bu doğru mu?"</string>
     <string name="quest_maxheight_below_bridge_title">"Köprünün altındaki yükseklik sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Tüm yol için geçerli değilse, \"%s\" yanıtını vermeyi düşünün."</string>
     <string name="quest_kerb_height_title">"Bu kaldırımın yüksekliği ne kadar?"</string>
     <string name="quest_kerb_height_flush">"Yol yüzeyi ile aynı seviyede"</string>
     <string name="quest_kerb_height_lowered">"Yol yüzeyinden biraz daha yüksek"</string>
     <string name="quest_kerb_height_lowered_ramp">"Kaldırım rampası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Araba trafiği için işaretli şeritlerin (her iki yönde) toplam sayısını belirtin. Yani bisiklet ve özel park şeritleri sayılmaz.
 Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not bırakın."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Burada araba trafiği için kullanılabilen işaretli şeritlerin sayısını belirtin. Yani bisiklet ve özel park şeritleri sayılmaz.
 Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not bırakın."</string>
     <string name="quest_surface_value_rock">"Kaya"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Uzun kamyonlar geçebilir"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Uzun kamyonlar sığmaz"</string>
     <string name="quest_address_street_hint">"Haritada yola dokunun"</string>
     <string name="quest_existence_title">"Bu hala burada mı? (%s)"</string>
@@ -1655,10 +1677,18 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_generic_answer_does_not_exist">"Böyle bir şey yok..."</string>
     <string name="osm_element_gone_confirmation">"Böyle bir şey yok"</string>
     <string name="leave_note">"Not bırak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Onun yerine şimdi burada ne var?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Boş"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Buraya bir tür yer yazın"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"Bunun ne olduğunu bilmiyorum. Bir not bırakmayı düşünün."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Bu dükkan boştu. Şimdi burada ne var?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Şerit sayısı iki taraf için farklı"</string>
     <string name="quest_pitchSurface_title">"Bu spor sahası nasıl bir yüzeyi sahip?"</string>

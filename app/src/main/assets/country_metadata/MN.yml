@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Хаан банк, Khan Bank, Голомт банк, Golomt Bank, Хаан банк АТМ, Хаан Банк, Хаан, ХХБ, Төрийн банк АТМ, Төрийн банк, Капитал банк АТМ, Голомт Банк, Голомт, zam, Ger, Aa]
+atmOperators: [Хаан банк, Хаан, Хаанбанк, хаан банк, Голомт, Golomt Bank, АТМ, Голомт банк, Төрийн банк, khaan bank, Khan Bank, Khaan bank, Khan bank, ХХБ, Худалдаа хөгжлийн банк, atm, Хаан банк АТМ, Хаан Банк, Ger, Aa, zam, khaanbank]
 isLivingStreetKnown: true
 mobileCountryCode: 428
 officialLanguages: [mn]
