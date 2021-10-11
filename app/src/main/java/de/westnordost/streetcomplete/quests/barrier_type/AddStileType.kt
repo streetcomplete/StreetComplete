@@ -47,6 +47,8 @@ class AddStileType : OsmElementQuestType<BarrierType> {
     override fun createForm() = AddStileTypeForm()
 
     private fun deleteDetailedTags(changes: StringMapChangesBuilder){
+        // result of looking through sample of stiles and
+        // noting which tags can be assumed to become invalid on stile type change
         changes.deleteIfExists("step_count")
         changes.deleteIfExists("wheelchair")
         changes.deleteIfExists("bicycle")
