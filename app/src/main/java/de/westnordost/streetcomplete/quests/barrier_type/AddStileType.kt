@@ -12,6 +12,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     private val stileNodeFilter by lazy { """
         nodes with barrier = stile and !stile
+        or stile older today -8 years
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
@@ -47,10 +48,10 @@ class AddStileType : OsmElementQuestType<BarrierType> {
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
         when (answer) {
             BarrierType.STILE_SQUEEZER -> {
-                changes.add("stile", "squeezer")
+                changes.addOrModify("stile", "squeezer")
             }
             BarrierType.STILE_LADDER -> {
-                changes.add("stile", "ladder")
+                changes.addOrModify("stile", "ladder")
             }
             BarrierType.STILE_STEPOVER_WOODEN -> {
                 changes.addOrModify("stile", "stepover")
