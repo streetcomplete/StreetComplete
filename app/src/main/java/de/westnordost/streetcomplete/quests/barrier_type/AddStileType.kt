@@ -60,28 +60,45 @@ class AddStileType : OsmElementQuestType<BarrierType> {
         changes.deleteIfExists("steps")
     }
 
-    private fun updateToGivenStileType(changes: StringMapChangesBuilder, newStileType: String) {
-        if(changes.getPreviousValue("stile") != newStileType) {
-            deleteDetailedTags(changes)
-        }
-        changes.updateWithCheckDate("stile", newStileType)
-    }
-
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
         when (answer) {
             BarrierType.STILE_SQUEEZER -> {
-                updateToGivenStileType(changes, "squeezer")
+                val newStileType = "squeezer"
+                if(changes.getPreviousValue("stile") != newStileType) {
+                    deleteDetailedTags(changes)
+                }
+                changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_LADDER -> {
-                updateToGivenStileType(changes, "ladder")
+                val newStileType = "ladder"
+                if(changes.getPreviousValue("stile") != newStileType) {
+                    deleteDetailedTags(changes)
+                }
+                changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_STEPOVER_WOODEN -> {
-                updateToGivenStileType(changes, "stepover")
-                changes.addOrModify("material", "wood")
+                val newStileType = "stepover"
+                val newStileMaterial = "wood"
+                if(changes.getPreviousValue("stile") != newStileType) {
+                    deleteDetailedTags(changes)
+                }
+                if(changes.getPreviousValue("material") != newStileMaterial) {
+                    deleteDetailedTags(changes)
+                }
+                changes.updateWithCheckDate("stile", newStileType)
+                changes.add("material", newStileMaterial)
             }
             BarrierType.STILE_STEPOVER_STONE -> {
-                updateToGivenStileType(changes, "stepover")
-                changes.addOrModify("material", "stone")
+                val newStileType = "stepover"
+                val newStileMaterial = "stone"
+                if(changes.getPreviousValue("stile") != newStileType) {
+                    deleteDetailedTags(changes)
+                }
+                if(changes.getPreviousValue("material") != newStileMaterial) {
+                    deleteDetailedTags(changes)
+                }
+                changes.updateWithCheckDate("stile", newStileType)
+                changes.add("material", newStileMaterial)
             }
             BarrierType.KISSING_GATE -> {
                 deleteDetailedTags(changes)
