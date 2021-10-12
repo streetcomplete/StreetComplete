@@ -46,18 +46,15 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
-    private fun deleteDetailedTags(changes: StringMapChangesBuilder){
+    private fun detailedTags(): MutableList<String> {
         // result of looking through sample of stiles and
         // noting which tags can be assumed to become invalid on stile type change
-        changes.deleteIfExists("step_count")
-        changes.deleteIfExists("wheelchair")
-        changes.deleteIfExists("bicycle")
-        changes.deleteIfExists("dog_gate")
-        changes.deleteIfExists("material")
-        changes.deleteIfExists("height")
-        changes.deleteIfExists("width")
-        changes.deleteIfExists("stroller")
-        changes.deleteIfExists("steps")
+        return mutableListOf("step_count", "wheelchair", "bicycle",
+        "dog_gate", "material", "height", "width", "stroller", "steps")
+    }
+
+    private fun StringMapChangesBuilder.deleteIfExistList(keys: List<String>) {
+        keys.forEach { deleteIfExists(it) }
     }
 
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
@@ -65,43 +62,45 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             BarrierType.STILE_SQUEEZER -> {
                 val newStileType = "squeezer"
                 if(changes.getPreviousValue("stile") != newStileType) {
-                    deleteDetailedTags(changes)
+                    changes.deleteIfExistList(detailedTags())
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_LADDER -> {
                 val newStileType = "ladder"
                 if(changes.getPreviousValue("stile") != newStileType) {
-                    deleteDetailedTags(changes)
+                    changes.deleteIfExistList(detailedTags())
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_STEPOVER_WOODEN -> {
                 val newStileType = "stepover"
                 val newStileMaterial = "wood"
-                if(changes.getPreviousValue("stile") != newStileType) {
-                    deleteDetailedTags(changes)
-                }
-                if(changes.getPreviousValue("material") != newStileMaterial) {
-                    deleteDetailedTags(changes)
+                if(changes.getPreviousValue("stile") != newStileType
+                    ||
+                    changes.getPreviousValue("material") != newStileMaterial) {
+                    val forRemoval = detailedTags()
+                    forRemoval.remove("material")
+                    changes.deleteIfExistList(forRemoval)
                 }
                 changes.updateWithCheckDate("stile", newStileType)
-                changes.add("material", newStileMaterial)
+                changes.addOrModify("material", newStileMaterial)
             }
             BarrierType.STILE_STEPOVER_STONE -> {
                 val newStileType = "stepover"
                 val newStileMaterial = "stone"
-                if(changes.getPreviousValue("stile") != newStileType) {
-                    deleteDetailedTags(changes)
-                }
-                if(changes.getPreviousValue("material") != newStileMaterial) {
-                    deleteDetailedTags(changes)
+                if(changes.getPreviousValue("stile") != newStileType
+                    ||
+                    changes.getPreviousValue("material") != newStileMaterial) {
+                    val forRemoval = detailedTags()
+                    forRemoval.remove("material")
+                    changes.deleteIfExistList(forRemoval)
                 }
                 changes.updateWithCheckDate("stile", newStileType)
-                changes.add("material", newStileMaterial)
+                changes.addOrModify("material", newStileMaterial)
             }
             BarrierType.KISSING_GATE -> {
-                deleteDetailedTags(changes)
+                changes.deleteIfExistList(detailedTags())
                 changes.deleteIfExists("stile")
                 changes.modify("barrier", "kissing_gate")
             }
