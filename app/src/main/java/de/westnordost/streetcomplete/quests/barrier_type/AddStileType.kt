@@ -99,7 +99,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             BarrierType.KISSING_GATE -> {
                 changes.deleteIfExistList(detailedTags())
                 changes.deleteIfExists("stile")
-                changes.modify("barrier", "kissing_gate")
+                changes.modify("barrier", answer.osmValue)
             }
         }
 
