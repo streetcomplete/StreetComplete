@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.data.notifications
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataController
+import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsController
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -14,7 +15,7 @@ import javax.inject.Singleton
  *  This class is to access user notifications, which are basically dialogs that pop up when
  *  clicking on the bell icon, such as "you have a new OSM message in your inbox" etc. */
 @Singleton class NotificationsSource @Inject constructor(
-    private val userStore: UserStore,
+    private val userDataController: UserDataController,
     private val achievementsController: AchievementsController,
     private val questSelectionHintController: QuestSelectionHintController,
     private val prefs: SharedPreferences
@@ -28,8 +29,8 @@ import javax.inject.Singleton
     private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
 
     init {
-        userStore.addListener(object : UserStore.UpdateListener {
-            override fun onUserDataUpdated() {
+        userDataController.addListener(object : UserDataSource.Listener {
+            override fun onUpdated() {
                 onNumberOfNotificationsUpdated()
             }
         })
@@ -54,7 +55,7 @@ import javax.inject.Singleton
 
     fun getNumberOfNotifications(): Int {
         val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
-        val hasUnreadMessages = userStore.unreadMessagesCount > 0
+        val hasUnreadMessages = userDataController.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
         if (lastVersion == null) {
@@ -92,9 +93,9 @@ import javax.inject.Singleton
             return NewAchievementNotification(newAchievement.first, newAchievement.second)
         }
 
-        val unreadOsmMessages = userStore.unreadMessagesCount
+        val unreadOsmMessages = userDataController.unreadMessagesCount
         if (unreadOsmMessages > 0) {
-            userStore.unreadMessagesCount = 0
+            userDataController.unreadMessagesCount = 0
             return OsmUnreadMessagesNotification(unreadOsmMessages)
         }
 

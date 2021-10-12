@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.ktx.toLocalDate
 import java.time.Instant
 import java.time.LocalDate
@@ -23,10 +24,18 @@ import javax.inject.Singleton
     private val countryStatisticsDao: CountryStatisticsDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val prefs: SharedPreferences
+    private val prefs: SharedPreferences,
+    userLoginStatusSource: UserLoginStatusSource
 ): StatisticsSource {
 
     private val listeners: MutableList<StatisticsSource.Listener> = CopyOnWriteArrayList()
+
+    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+        override fun onLoggedIn() {}
+        override fun onLoggedOut() {
+            clear()
+        }
+    }
 
     override var rank: Int
         get() = prefs.getInt(Prefs.USER_GLOBAL_RANK, -1)
@@ -52,6 +61,10 @@ import javax.inject.Singleton
         set(value) {
             prefs.edit(true) { putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, value) }
         }
+
+    init {
+        userLoginStatusSource.addListener(userLoginStatusListener)
+    }
 
     override fun getSolvedCount(): Int =
         questTypeStatisticsDao.getTotalAmount()
@@ -111,7 +124,7 @@ import javax.inject.Singleton
         listeners.forEach { it.onUpdatedAll() }
     }
 
-    fun clear() {
+    private fun clear() {
         questTypeStatisticsDao.clear()
         countryStatisticsDao.clear()
         prefs.edit(true) {

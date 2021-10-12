@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
@@ -22,6 +23,8 @@ class StatisticsControllerTest {
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var prefs: SharedPreferences
+    private lateinit var loginStatusSource: UserLoginStatusSource
+    private lateinit var loginStatusListener: UserLoginStatusSource.Listener
 
     private lateinit var statisticsController: StatisticsController
     private lateinit var listener: StatisticsSource.Listener
@@ -37,13 +40,19 @@ class StatisticsControllerTest {
         prefs = mock()
         on(prefs.edit()).thenReturn(mock())
         listener = mock()
+        loginStatusSource = mock()
 
         val ft = FutureTask({}, countryBoundaries)
         ft.run()
 
+        on(loginStatusSource.addListener(any())).then { invocation ->
+            loginStatusListener = invocation.getArgument(0)
+            Unit
+        }
+
         statisticsController = StatisticsController(
             questTypeStatisticsDao, countryStatisticsDao, ft, questTypeRegistry,
-            prefs
+            prefs, loginStatusSource
         )
         statisticsController.addListener(listener)
     }
@@ -98,7 +107,7 @@ class StatisticsControllerTest {
         val editor: SharedPreferences.Editor = mock()
         on(prefs.edit()).thenReturn(editor)
 
-        statisticsController.clear()
+        loginStatusListener.onLoggedOut()
 
         verify(questTypeStatisticsDao).clear()
         verify(countryStatisticsDao).clear()

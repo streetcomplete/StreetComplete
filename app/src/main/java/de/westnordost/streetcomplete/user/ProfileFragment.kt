@@ -30,8 +30,9 @@ import javax.inject.Inject
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    @Inject internal lateinit var userController: UserController
-    @Inject internal lateinit var userStore: UserStore
+    @Inject internal lateinit var userDataSource: UserDataSource
+    @Inject internal lateinit var userLoginStatusController: UserLoginStatusController
+    @Inject internal lateinit var userUpdater: UserUpdater
     @Inject internal lateinit var statisticsSource: StatisticsSource
     @Inject internal lateinit var achievementsSource: UserAchievementsSource
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
@@ -61,10 +62,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             viewLifecycleScope.launch { updateDaysActiveText() }
         }
     }
-    private val userStoreUpdateListener = object : UserStore.UpdateListener {
-        override fun onUserDataUpdated() { viewLifecycleScope.launch { updateUserName() } }
+    private val userListener = object : UserDataSource.Listener {
+        override fun onUpdated() { viewLifecycleScope.launch { updateUserName() } }
     }
-    private val userAvatarListener = object : UserAvatarListener {
+    private val userAvatarListener = object : UserUpdater.Listener {
         override fun onUserAvatarUpdated() { viewLifecycleScope.launch { updateAvatar() } }
     }
 
@@ -81,10 +82,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.logoutButton.setOnClickListener {
-            userController.logOut()
+            userLoginStatusController.logOut()
         }
         binding.profileButton.setOnClickListener {
-            openUrl("https://www.openstreetmap.org/user/" + userStore.userName)
+            openUrl("https://www.openstreetmap.org/user/" + userDataSource.userName)
         }
     }
 
@@ -92,8 +93,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onStart()
 
         viewLifecycleScope.launch {
-            userStore.addListener(userStoreUpdateListener)
-            userController.addUserAvatarListener(userAvatarListener)
+            userDataSource.addListener(userListener)
+            userUpdater.addUserAvatarListener(userAvatarListener)
             statisticsSource.addListener(questStatisticsDaoListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
 
@@ -112,17 +113,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onStop()
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
         statisticsSource.removeListener(questStatisticsDaoListener)
-        userStore.removeListener(userStoreUpdateListener)
-        userController.removeUserAvatarListener(userAvatarListener)
+        userDataSource.removeListener(userListener)
+        userUpdater.removeUserAvatarListener(userAvatarListener)
     }
 
     private fun updateUserName() {
-        binding.userNameTextView.text = userStore.userName
+        binding.userNameTextView.text = userDataSource.userName
     }
 
     private fun updateAvatar() {
         val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
-        val avatarFile = File(cacheDir.toString() + File.separator + userStore.userId)
+        val avatarFile = File(cacheDir.toString() + File.separator + userDataSource.userId)
         val avatar = if (avatarFile.exists()) BitmapFactory.decodeFile(avatarFile.path) else anonAvatar
         binding.userAvatarImageView.setImageBitmap(avatar)
     }

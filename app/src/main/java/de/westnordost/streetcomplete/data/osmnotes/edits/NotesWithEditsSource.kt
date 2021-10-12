@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
 import de.westnordost.streetcomplete.data.user.User
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Singleton class NotesWithEditsSource @Inject constructor(
     private val noteController: NoteController,
     private val noteEditsSource: NoteEditsSource,
-    private val userStore: UserStore
+    private val userDataSource: UserDataSource
 ) {
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
@@ -144,7 +144,7 @@ import javax.inject.Singleton
             createdTimestamp,
             action,
             commentText,
-            User(userStore.userId, userStore.userName ?: "")
+            User(userDataSource.userId, userDataSource.userName ?: "")
         )
     }
 
