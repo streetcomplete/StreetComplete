@@ -9,8 +9,7 @@ import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
@@ -24,8 +23,7 @@ import javax.inject.Inject
 class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
     QuestStatisticsByQuestTypeFragment.Listener,  QuestStatisticsByCountryFragment.Listener
 {
-    @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
-    @Inject internal lateinit var userStore: UserStore
+    @Inject internal lateinit var statisticsSource: StatisticsSource
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
@@ -43,7 +41,7 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleScope.launch {
-            binding.emptyText.isGone = withContext(Dispatchers.IO) { questStatisticsDao.getTotalAmount() != 0 }
+            binding.emptyText.isGone = withContext(Dispatchers.IO) { statisticsSource.getSolvedCount() != 0 }
         }
 
         binding.byQuestTypeButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
@@ -62,7 +60,7 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
     override fun onStart() {
         super.onStart()
 
-        if (userStore.isSynchronizingStatistics) {
+        if (statisticsSource.isSynchronizing) {
             binding.emptyText.setText(R.string.stats_are_syncing)
         } else {
             binding.emptyText.setText(R.string.quests_empty)

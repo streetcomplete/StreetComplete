@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class LinksFragment : Fragment(R.layout.fragment_links) {
 
     @Inject internal lateinit var userLinksSource: UserLinksSource
-    @Inject internal lateinit var userStore: UserStore
+    @Inject internal lateinit var statisticsSource: StatisticsSource
 
     private val binding by viewBinding(FragmentLinksBinding::bind)
 
@@ -69,7 +69,7 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
     override fun onStart() {
         super.onStart()
 
-        if (userStore.isSynchronizingStatistics) {
+        if (statisticsSource.isSynchronizing) {
             binding.emptyText.setText(R.string.stats_are_syncing)
         } else {
             binding.emptyText.setText(R.string.links_empty)

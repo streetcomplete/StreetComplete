@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -27,7 +27,7 @@ import javax.inject.Inject
  *  a QuestTypeInfoFragment that shows the quest's details. */
 class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit)
 {
-    @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
+    @Inject internal lateinit var statisticsSource: StatisticsSource
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
 
     interface Listener {
@@ -49,9 +49,9 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         lifecycle.addObserver(binding.ballPitView)
 
         viewLifecycleScope.launch {
-            val solvedQuestsByQuestType = getSolvedQuestsByQuestType()
-            binding.ballPitView.setViews(solvedQuestsByQuestType.map { (questType, amount) ->
-                createQuestTypeBubbleView(questType, amount) to amount
+            val statistics = withContext(Dispatchers.IO) { statisticsSource.getQuestStatistics() }
+            binding.ballPitView.setViews(statistics.map { statistic ->
+                createQuestTypeBubbleView(statistic.questType, statistic.solvedCount) to statistic.solvedCount
             })
         }
     }
@@ -75,12 +75,6 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         }
 
         return clickableContainer
-    }
-
-    private suspend fun getSolvedQuestsByQuestType() = withContext(Dispatchers.IO) {
-        questStatisticsDao.getAll()
-            .filterKeys { questTypeRegistry.getByName(it) != null }
-            .mapKeys { questTypeRegistry.getByName(it.key)!! }
     }
 }
 

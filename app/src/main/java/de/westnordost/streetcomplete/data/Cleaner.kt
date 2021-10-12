@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.data
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsController
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -23,7 +23,7 @@ class Cleaner @Inject constructor(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val newUserAchievementsDao: NewUserAchievementsDao
+    private val achievementsController: AchievementsController
 ) {
     suspend fun clean() {
         val time = currentTimeMillis()
@@ -53,7 +53,7 @@ class Cleaner @Inject constructor(
     }
 
     private suspend fun clearNewUserAchievements() = withContext(Dispatchers.IO) {
-        newUserAchievementsDao.clear()
+        achievementsController.clearNewAchievements()
     }
 
     companion object {

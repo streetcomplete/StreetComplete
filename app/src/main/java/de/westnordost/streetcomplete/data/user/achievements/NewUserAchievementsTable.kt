@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.notifications
+package de.westnordost.streetcomplete.data.user.achievements
 
 object NewUserAchievementsTable {
     const val NAME = "new_achievements"

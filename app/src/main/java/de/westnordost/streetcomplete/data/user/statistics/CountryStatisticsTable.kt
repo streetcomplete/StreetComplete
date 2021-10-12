@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.user
+package de.westnordost.streetcomplete.data.user.statistics
 
 object CountryStatisticsTable {
     const val NAME = "country_statistics"

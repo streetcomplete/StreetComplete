@@ -1,18 +1,16 @@
-package de.westnordost.streetcomplete.data.user
+package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.Columns.COUNTRY_CODE
-import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.Columns.RANK
-import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.Columns.SUCCEEDED
-import de.westnordost.streetcomplete.data.user.CountryStatisticsTable.NAME
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.Columns.COUNTRY_CODE
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.Columns.RANK
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.Columns.SUCCEEDED
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.NAME
 
 import javax.inject.Inject
 
-import javax.inject.Singleton
-
 /** Stores how many quests the user solved in which country */
-@Singleton class CountryStatisticsDao @Inject constructor(private val db: Database) {
+class CountryStatisticsDao @Inject constructor(private val db: Database) {
 
     fun getCountryWithBiggestSolvedCount(): CountryStatistics? =
         db.queryOne(NAME, orderBy = "$SUCCEEDED DESC") { it.toCountryStatistics() }

@@ -13,8 +13,10 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.*
-import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
+import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.ktx.tryStartActivity
@@ -30,9 +32,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var userStore: UserStore
-    @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
-    @Inject internal lateinit var countryStatisticsDao: CountryStatisticsDao
-    @Inject internal lateinit var userAchievementsDao: UserAchievementsDao
+    @Inject internal lateinit var statisticsSource: StatisticsSource
+    @Inject internal lateinit var achievementsSource: UserAchievementsSource
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
 
     private lateinit var anonAvatar: Bitmap
@@ -43,10 +44,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         override fun onIncreased() { viewLifecycleScope.launch { updateUnpublishedQuestsText() } }
         override fun onDecreased() { viewLifecycleScope.launch { updateUnpublishedQuestsText() } }
     }
-    private val questStatisticsDaoListener = object : QuestStatisticsDao.Listener {
-        override fun onAddedOne(questType: String) { viewLifecycleScope.launch { updateSolvedQuestsText() }}
-        override fun onSubtractedOne(questType: String) { viewLifecycleScope.launch { updateSolvedQuestsText() } }
-        override fun onReplacedAll() { viewLifecycleScope.launch { updateSolvedQuestsText() } }
+    private val questStatisticsDaoListener = object : StatisticsSource.Listener {
+        override fun onAddedOne(questType: QuestType<*>) {
+            viewLifecycleScope.launch { updateSolvedQuestsText() }
+        }
+        override fun onSubtractedOne(questType: QuestType<*>) {
+            viewLifecycleScope.launch { updateSolvedQuestsText() }
+        }
+        override fun onUpdatedAll() {
+            viewLifecycleScope.launch { updateStatisticsTexts() }
+        }
+        override fun onCleared() {
+            viewLifecycleScope.launch { updateStatisticsTexts() }
+        }
+        override fun onUpdatedDaysActive() {
+            viewLifecycleScope.launch { updateDaysActiveText() }
+        }
     }
     private val userStoreUpdateListener = object : UserStore.UpdateListener {
         override fun onUserDataUpdated() { viewLifecycleScope.launch { updateUserName() } }
@@ -81,7 +94,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewLifecycleScope.launch {
             userStore.addListener(userStoreUpdateListener)
             userController.addUserAvatarListener(userAvatarListener)
-            questStatisticsDao.addListener(questStatisticsDaoListener)
+            statisticsSource.addListener(questStatisticsDaoListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
 
             updateUserName()
@@ -98,7 +111,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onStop() {
         super.onStop()
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
-        questStatisticsDao.removeListener(questStatisticsDaoListener)
+        statisticsSource.removeListener(questStatisticsDaoListener)
         userStore.removeListener(userStoreUpdateListener)
         userController.removeUserAvatarListener(userAvatarListener)
     }
@@ -114,8 +127,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.userAvatarImageView.setImageBitmap(avatar)
     }
 
+    private suspend fun updateStatisticsTexts() {
+        updateSolvedQuestsText()
+        updateDaysActiveText()
+        updateGlobalRankText()
+        updateLocalRankText()
+    }
+
     private suspend fun updateSolvedQuestsText() {
-        binding.solvedQuestsText.text = withContext(Dispatchers.IO) { questStatisticsDao.getTotalAmount().toString() }
+        binding.solvedQuestsText.text = withContext(Dispatchers.IO) { statisticsSource.getSolvedCount().toString() }
     }
 
     private suspend fun updateUnpublishedQuestsText() {
@@ -125,20 +145,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updateDaysActiveText() {
-        val daysActive = userStore.daysActive
+        val daysActive = statisticsSource.daysActive
         binding.daysActiveContainer.isGone = daysActive <= 0
         binding.daysActiveText.text = daysActive.toString()
     }
 
     private fun updateGlobalRankText() {
-        val rank = userStore.rank
-        binding.globalRankContainer.isGone = rank <= 0 || questStatisticsDao.getTotalAmount() <= 100
+        val rank = statisticsSource.rank
+        binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getSolvedCount() <= 100
         binding.globalRankText.text = "#$rank"
     }
 
     private suspend fun updateLocalRankText() {
         val statistics = withContext(Dispatchers.IO) {
-            countryStatisticsDao.getCountryWithBiggestSolvedCount()
+            statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount()
         }
         if (statistics == null) binding.localRankContainer.isGone = true
         else {
@@ -151,7 +171,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private suspend fun updateAchievementLevelsText() {
-        val levels = withContext(Dispatchers.IO) { userAchievementsDao.getAll().values.sum() }
+        val levels = withContext(Dispatchers.IO) { achievementsSource.getAchievements().sumOf { it.second } }
         binding.achievementLevelsContainer.isGone = levels <= 0
         binding.achievementLevelsText.text = "$levels"
     }

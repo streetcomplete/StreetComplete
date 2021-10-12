@@ -4,7 +4,8 @@ import android.util.Log
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
-import de.westnordost.streetcomplete.data.user.achievements.*
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsDownloader
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -19,12 +20,9 @@ import javax.inject.Singleton
     private val userApi: UserApi,
     private val oAuthStore: OAuthStore,
     private val userStore: UserStore,
-    private val userAchievementsDao: UserAchievementsDao,
-    private val userLinksDao: UserLinksDao,
     private val avatarsDownloader: AvatarsDownloader,
-    private val statisticsUpdater: StatisticsUpdater,
-    private val statisticsDao: QuestStatisticsDao,
-    private val countryStatisticsDao: CountryStatisticsDao,
+    private val statisticsDownloader: StatisticsDownloader,
+    private val statisticsController: StatisticsController,
     private val osmConnection: OsmConnection
 ): LoginStatusSource, UserAvatarUpdateSource {
     private val loginStatusListeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
@@ -45,11 +43,7 @@ import javax.inject.Singleton
         userStore.clear()
         oAuthStore.oAuthConsumer = null
         osmConnection.oAuth = null
-        statisticsDao.clear()
-        countryStatisticsDao.clear()
-        userAchievementsDao.clear()
-        userLinksDao.clear()
-        userStore.clear()
+        statisticsController.clear()
         loginStatusListeners.forEach { it.onLoggedOut() }
     }
 
@@ -75,7 +69,12 @@ import javax.inject.Singleton
     }
 
     private fun updateStatistics(userId: Long) = scope.launch(Dispatchers.IO) {
-        statisticsUpdater.updateFromBackend(userId)
+        try {
+            val statistics = statisticsDownloader.download(userId)
+            statisticsController.updateAll(statistics)
+        }  catch (e: Exception) {
+            Log.w(TAG, "Unable to download statistics", e)
+        }
     }
 
     override fun addLoginStatusListener(listener: UserLoginStatusListener) {

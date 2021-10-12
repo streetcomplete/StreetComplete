@@ -1,25 +1,15 @@
-package de.westnordost.streetcomplete.data.user
+package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.Database
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.QUEST_TYPE
-import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.SUCCEEDED
-import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.NAME
-import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Singleton
+import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.Columns.QUEST_TYPE
+import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.Columns.SUCCEEDED
+import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.NAME
 
 /** Stores how many quests of which quest types the user solved */
-@Singleton class QuestStatisticsDao @Inject constructor(private val db: Database) {
-
-    interface Listener {
-        fun onAddedOne(questType: String)
-        fun onSubtractedOne(questType: String)
-        fun onReplacedAll()
-    }
-
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {
 
     fun getTotalAmount(): Int =
         db.queryOne(NAME, arrayOf("total($SUCCEEDED) as count")) { it.getInt("count") } ?: 0
@@ -29,7 +19,6 @@ import javax.inject.Singleton
 
     fun clear() {
         db.delete(NAME)
-        listeners.forEach { it.onReplacedAll() }
     }
 
     fun replaceAll(amounts: Map<String, Int>) {
@@ -42,7 +31,6 @@ import javax.inject.Singleton
                 )
             }
         }
-        listeners.forEach { it.onReplacedAll() }
     }
 
     fun addOne(questType: String) {
@@ -56,13 +44,10 @@ import javax.inject.Singleton
             // then increase by one
             db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
         }
-
-        listeners.forEach { it.onAddedOne(questType) }
     }
 
     fun subtractOne(questType: String) {
         db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
-        listeners.forEach { it.onSubtractedOne(questType) }
     }
 
     fun getAmount(questType: String): Int =
@@ -79,12 +64,5 @@ import javax.inject.Singleton
             where = "$QUEST_TYPE in ($questionMarks)",
             args = questTypes.toTypedArray()
         ) { it.getInt("count") } ?: 0
-    }
-
-    fun addListener(listener: Listener) {
-        listeners.add(listener)
-    }
-    fun removeListener(listener: Listener) {
-        listeners.remove(listener)
     }
 }

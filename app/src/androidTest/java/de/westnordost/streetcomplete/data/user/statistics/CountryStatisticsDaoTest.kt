@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.user
+package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import org.junit.Assert.*
