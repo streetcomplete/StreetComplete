@@ -15,20 +15,21 @@ import kotlin.math.min
 /** T must be a string or enum - something that distinctly converts toString. */
 class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPreferences) {
 
-    fun add(key: String, newValues: Iterable<T>, max: Int = -1) {
+    fun add(key: String, newValues: Iterable<T>, max: Int = -1, allowDuplicates: Boolean = false) {
         val values = get(key)
         for (value in newValues.map { it.toString() }) {
-            values.remove(value)
             values.addFirst(value)
         }
-        val lastValues = if (max != -1) values.subList(0, min(values.size, max)) else values
+        val unique = if (allowDuplicates) values else values.distinct()
+        val lastValues = if (max != -1) unique.subList(0, min(unique.size, max)) else unique
+        android.util.Log.d("FAV", "Pref ${key} value: ${lastValues.joinToString(",")}")
         prefs.edit {
             putString(getKey(key), lastValues.joinToString(","))
         }
     }
 
-    fun add(key: String, value: T, max: Int = -1) {
-        add(key, listOf(value), max)
+    fun add(key: String, value: T, max: Int = -1, allowDuplicates: Boolean = false) {
+        add(key, listOf(value), max, allowDuplicates)
     }
 
     fun get(key: String): LinkedList<String> {

@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import java.util.LinkedList
 import kotlin.math.max
+import kotlin.math.min
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
@@ -92,9 +93,11 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        val items = LinkedList(topItems)
-        favs.moveLastPickedGroupableDisplayItemToFront(javaClass.simpleName, items, allItems)
-        return items
+        val validValues = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
+        val recents = favs.get(javaClass.simpleName).mapNotNull { validStringsToItem.get(it) }
+        val counts = recents.subListOfFirst(30).groupingBy { it }.eachCount()
+        val sorted = counts.keys.sortedByDescending { counts.get(it) }
+        return (sorted + topItems).distinct().subList(0, 6)
     }
 
     override fun onClickOk() {
@@ -115,14 +118,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue)
+                            favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue)
+                favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
                 onClickOk(itemValue)
             }
         }
@@ -132,3 +135,5 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     override fun isFormComplete() = selectedItem != null
 }
+
+fun <T>List<T>.sublistOfFirst(max: Int) = subList(0, min(max, size))
