@@ -57,6 +57,19 @@ class AddStileType : OsmElementQuestType<BarrierType> {
         keys.forEach { deleteIfExists(it) }
     }
 
+    private fun applyStileAndMaterial(newStileType: String, newStileMaterial: String, changes: StringMapChangesBuilder) {
+        if(changes.getPreviousValue("stile") != newStileType
+            ||
+            changes.getPreviousValue("material") != newStileMaterial) {
+            // detailed tags should be removed as stile was rebuild
+            val forRemoval = detailedTags()
+            forRemoval.remove("material") // material will be set later
+            changes.deleteIfExistList(forRemoval)
+        }
+        changes.updateWithCheckDate("stile", newStileType)
+        changes.addOrModify("material", newStileMaterial)
+    }
+
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
         when (answer) {
             BarrierType.STILE_SQUEEZER -> {
@@ -76,28 +89,12 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             BarrierType.STILE_STEPOVER_WOODEN -> {
                 val newStileType = "stepover"
                 val newStileMaterial = "wood"
-                if(changes.getPreviousValue("stile") != newStileType
-                    ||
-                    changes.getPreviousValue("material") != newStileMaterial) {
-                    val forRemoval = detailedTags()
-                    forRemoval.remove("material")
-                    changes.deleteIfExistList(forRemoval)
-                }
-                changes.updateWithCheckDate("stile", newStileType)
-                changes.addOrModify("material", newStileMaterial)
+                applyStileAndMaterial(newStileType, newStileMaterial, changes)
             }
             BarrierType.STILE_STEPOVER_STONE -> {
                 val newStileType = "stepover"
                 val newStileMaterial = "stone"
-                if(changes.getPreviousValue("stile") != newStileType
-                    ||
-                    changes.getPreviousValue("material") != newStileMaterial) {
-                    val forRemoval = detailedTags()
-                    forRemoval.remove("material")
-                    changes.deleteIfExistList(forRemoval)
-                }
-                changes.updateWithCheckDate("stile", newStileType)
-                changes.addOrModify("material", newStileMaterial)
+                applyStileAndMaterial(newStileType, newStileMaterial, changes)
             }
             BarrierType.KISSING_GATE -> {
                 changes.deleteIfExistList(detailedTags())
