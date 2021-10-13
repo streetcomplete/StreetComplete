@@ -22,7 +22,7 @@
         android:layout_marginTop="64dp"
         android:background="#25000000"
         android:ems="4"
-        android:gravity="center_horizontal"
+        android:textAlignment="center"
         android:inputType="number"
         android:maxLength="4"
         tools:text="1500"
@@ -32,6 +32,7 @@
         android:textSize="58dp"
         app:layout_constraintEnd_toEndOf="@+id/fireHydrantSign"
         app:layout_constraintStart_toStartOf="@+id/fireHydrantSign"
-        app:layout_constraintTop_toTopOf="@+id/fireHydrantSign" />
+        app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
+        tools:ignore="SpUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

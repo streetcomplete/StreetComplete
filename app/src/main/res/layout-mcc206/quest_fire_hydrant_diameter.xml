@@ -27,6 +27,7 @@
         tools:text="1500"
         android:fontFamily="monospace"
         android:textColor="@color/traffic_black"
+        android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="52dp"
         app:layout_constraintLeft_toLeftOf="@+id/fireHydrantSign"

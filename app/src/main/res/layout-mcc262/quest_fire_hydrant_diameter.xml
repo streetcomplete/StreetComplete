@@ -29,6 +29,7 @@
         android:textColor="@color/traffic_black"
         android:textStyle="bold"
         android:textSize="52dp"
+        android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="@+id/fireHydrantSign"
         app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
         tools:ignore="RtlHardcoded,SpUsage" />

@@ -30,8 +30,10 @@
         android:textColor="@color/traffic_black"
         android:textStyle="bold"
         android:textSize="58dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/fireHydrantSign"
         app:layout_constraintStart_toStartOf="@+id/fireHydrantSign"
-        app:layout_constraintTop_toTopOf="@+id/fireHydrantSign" />
+        app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
+        tools:ignore="SpUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

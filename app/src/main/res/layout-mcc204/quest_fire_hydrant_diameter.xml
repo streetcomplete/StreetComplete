@@ -27,6 +27,7 @@
         android:fontFamily="monospace"
         android:textColor="@color/traffic_white"
         android:textStyle="bold"
+        android:textAlignment="center"
         android:textSize="52dp"
         app:layout_constraintLeft_toLeftOf="@+id/fireHydrantSign"
         app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
