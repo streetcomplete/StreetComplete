@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.user.User
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
@@ -19,12 +19,12 @@ class NotesWithEditsSourceTest {
     private lateinit var noteListener: NoteController.Listener
     private lateinit var noteEditsController: NoteEditsController
     private lateinit var noteEditsListener: NoteEditsSource.Listener
-    private lateinit var userStore: UserStore
+    private lateinit var userDataSource: UserDataSource
 
     @Before fun setUp() {
         noteController = mock()
         noteEditsController = mock()
-        userStore = mock()
+        userDataSource = mock()
 
         on(noteController.addListener(any())).then { invocation ->
             noteListener = invocation.getArgument(0)
@@ -36,7 +36,7 @@ class NotesWithEditsSourceTest {
             Unit
         }
 
-        src = NotesWithEditsSource(noteController, noteEditsController, userStore)
+        src = NotesWithEditsSource(noteController, noteEditsController, userDataSource)
     }
 
     //region get
@@ -68,7 +68,7 @@ class NotesWithEditsSourceTest {
             noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500)
         )
 
-        on(userStore.userId).thenReturn(-1)
+        on(userDataSource.userId).thenReturn(-1)
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
@@ -94,7 +94,7 @@ class NotesWithEditsSourceTest {
             timestamp = 500
         ))
 
-        on(userStore.userId).thenReturn(-1)
+        on(userDataSource.userId).thenReturn(-1)
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
@@ -111,8 +111,8 @@ class NotesWithEditsSourceTest {
             noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500)
         )
 
-        on(userStore.userId).thenReturn(23)
-        on(userStore.userName).thenReturn("test user")
+        on(userDataSource.userId).thenReturn(23)
+        on(userDataSource.userName).thenReturn("test user")
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
@@ -131,7 +131,7 @@ class NotesWithEditsSourceTest {
             noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test3", timestamp = 800),
         )
 
-        on(userStore.userId).thenReturn(-1)
+        on(userDataSource.userId).thenReturn(-1)
         on(noteController.get(1)).thenReturn(note)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
@@ -153,7 +153,7 @@ class NotesWithEditsSourceTest {
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123)
         )
 
-        on(userStore.userId).thenReturn(-1)
+        on(userDataSource.userId).thenReturn(-1)
         on(noteController.get(1)).thenReturn(null)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
@@ -177,7 +177,7 @@ class NotesWithEditsSourceTest {
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.COMMENT, text = "test34", timestamp = 234),
         )
 
-        on(userStore.userId).thenReturn(-1)
+        on(userDataSource.userId).thenReturn(-1)
         on(noteController.get(1)).thenReturn(null)
         on(noteEditsController.getAllUnsyncedForNote(1)).thenReturn(edits)
 
@@ -225,7 +225,7 @@ class NotesWithEditsSourceTest {
     @Test
     fun `getAll returns updated notes`() {
 
-        on(userStore.userId).thenReturn(-1)
+        on(userDataSource.userId).thenReturn(-1)
         on(noteController.getAll(any<BoundingBox>())).thenReturn(initialNotes1)
         on(noteEditsController.getAllUnsynced(any())).thenReturn(edits1)
 
