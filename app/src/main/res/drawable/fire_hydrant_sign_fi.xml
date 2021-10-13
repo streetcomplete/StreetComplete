@@ -1,33 +1,31 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
-    android:viewportWidth="150"
-    android:viewportHeight="80"
+<vector
+    android:height="170.66667dp"
+    android:viewportHeight="392"
+    android:viewportWidth="735"
     android:width="320dp"
-    android:height="171dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
     <path
-        android:pathData="M5,5 h 140 v 190 h -140 v -190Z"
-        android:fillColor="#FFFFFF"
-        android:strokeColor="#033D86"
-        android:strokeWidth="10" />
+        android:fillColor="#fff"
+        android:pathData="m24.5,24.5h686v931h-686v-931z"
+        android:strokeColor="#033d86"
+        android:strokeWidth="49"
+        />
     <path
-        android:pathData="M40,40 h 70 v 5 h -70 v -5 Z"
-        android:fillColor="#033D86" />
+        android:fillColor="#033d86"
+        android:pathData="m196,196v24.5h159.25v318.5h-19.6v73.5h63.699v-73.5h-19.6v-318.5h159.25v-24.5h-343z"
+        />
     <path
-        android:pathData="M72.5,45 h 5 v 65 h -5 v -65 Z"
-        android:fillColor="#033D86" />
-    <path
-        android:pathData="M68.5,110 h 13 v 15 h -13 v -15 Z"
-        android:fillColor="#033D86" />
-    <path
-    android:pathData="M0,0 H 150 V 200 H 0 Z">
-    <aapt:attr name="android:fillColor">
-      <gradient
-          android:startColor="@color/fade_out_transparent"
-          android:endColor="@color/fade_out"
-          android:startX="0"
-          android:endX="0"
-          android:startY="50"
-          android:endY="80"
-          android:type="linear" />
-    </aapt:attr>
-  </path>
+        android:pathData="M0,0 H 735 V 610 H 0 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startColor="@color/fade_out_transparent"
+                android:endColor="@color/fade_out"
+                android:startX="0"
+                android:endX="0"
+                android:startY="230"
+                android:endY="330"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
 </vector>

@@ -16,20 +16,22 @@
 
     <EditText
         android:id="@+id/diameterInput"
-        android:layout_width="100dp"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="60dp"
-        android:background="#25000000"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="140dp"
+        android:background="#25ffffff"
         android:ems="3"
         android:inputType="number"
         android:maxLength="3"
-        android:text="1324"
+        tools:text="132"
+        android:fontFamily="monospace"
         android:textColor="@color/traffic_white"
+        android:textStyle="bold"
         android:textSize="55dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fireHydrantSign"
-        app:layout_constraintEnd_toEndOf="@+id/fireHydrantSign"
-        app:layout_constraintStart_toStartOf="@+id/fireHydrantSign"
-        app:layout_constraintTop_toTopOf="@+id/fireHydrantSign" />
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="@+id/fireHydrantSign"
+        app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
+        tools:ignore="RtlHardcoded,SpUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
