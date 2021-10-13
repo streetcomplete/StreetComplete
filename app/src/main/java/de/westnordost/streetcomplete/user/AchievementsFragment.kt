@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.CellAchievementBinding
 import de.westnordost.streetcomplete.databinding.FragmentAchievementsBinding
@@ -29,7 +29,7 @@ import javax.inject.Inject
  *  details on click. */
 class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
 
-    @Inject internal lateinit var userAchievementsSource: UserAchievementsSource
+    @Inject internal lateinit var achievementsSource: AchievementsSource
     @Inject internal lateinit var statisticsSource: StatisticsSource
 
     private val binding by viewBinding(FragmentAchievementsBinding::bind)
@@ -67,7 +67,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
             binding.achievementsList.clipToPadding = false
 
             val achievements = withContext(Dispatchers.IO) {
-                userAchievementsSource.getAchievements()
+                achievementsSource.getAchievements()
             }
             binding.achievementsList.adapter = AchievementsAdapter(achievements)
 

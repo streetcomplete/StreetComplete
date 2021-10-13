@@ -10,13 +10,11 @@ import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyNoMoreInteractions
+import org.mockito.Mockito.*
 
 class AchievementsControllerTest {
 
     private lateinit var userAchievementsDao: UserAchievementsDao
-    private lateinit var newUserAchievementsDao: NewUserAchievementsDao
     private lateinit var userLinksDao: UserLinksDao
     private lateinit var statisticsSource: StatisticsSource
     private var allLinks: List<Link> = listOf()
@@ -24,12 +22,11 @@ class AchievementsControllerTest {
     private lateinit var questTypeRegistry: QuestTypeRegistry
 
     private lateinit var statisticsListener: StatisticsSource.Listener
-    private lateinit var listener: AchievementsController.Listener
+    private lateinit var listener: AchievementsSource.Listener
 
     @Before fun setUp() {
         userAchievementsDao = mock()
         on(userAchievementsDao.getAll()).thenReturn(mapOf())
-        newUserAchievementsDao = mock()
         userLinksDao = mock()
         statisticsSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(QuestOne, QuestTwo))
@@ -43,57 +40,54 @@ class AchievementsControllerTest {
             statisticsListener = invocation.getArgument(0)
             Unit
         }
-
-        // simulate that inserting a new achievement works
-        on(newUserAchievementsDao.push(any())).thenReturn(true)
     }
 
     private fun createAchievementsController(): AchievementsController =
         AchievementsController(
-            statisticsSource, userAchievementsDao, userLinksDao, newUserAchievementsDao,
+            statisticsSource, userAchievementsDao, userLinksDao,
             questTypeRegistry, allAchievements, allLinks
         ).also { it.addListener(listener) }
 
     @Test fun `unlocks DaysActive achievement`() {
         on(statisticsSource.daysActive).thenReturn(1)
-        allAchievements = listOf(achievement("daysActive", DaysActive))
+        val achievement = achievement("daysActive", DaysActive)
+        allAchievements = listOf(achievement)
 
         createAchievementsController()
         statisticsListener.onUpdatedDaysActive()
 
         verify(userAchievementsDao).put("daysActive", 1)
-        verify(newUserAchievementsDao).push("daysActive" to 1)
-        verify(listener).onNewAchievementsUpdated()
+        verify(listener).onAchievementUnlocked(achievement, 1)
     }
 
     @Test fun `unlocks TotalSolvedQuests achievement`() {
         on(statisticsSource.getSolvedCount()).thenReturn(1)
-        allAchievements = listOf(achievement("allQuests", TotalSolvedQuests))
+        val achievement = achievement("allQuests", TotalSolvedQuests)
+        allAchievements = listOf(achievement)
 
         createAchievementsController()
         statisticsListener.onAddedOne(QuestOne)
 
         verify(userAchievementsDao).put("allQuests", 1)
-        verify(newUserAchievementsDao).push("allQuests" to 1)
-        verify(listener).onNewAchievementsUpdated()
+        verify(listener).onAchievementUnlocked(achievement, 1)
     }
 
     @Test fun `unlocks QuestType achievement`() {
         on(statisticsSource.getSolvedCount(listOf(QuestOne, QuestTwo))).thenReturn(1)
-        allAchievements = listOf(achievement("mixedAchievement", SolvedQuestsOfTypes))
+        val achievement = achievement("mixedAchievement", SolvedQuestsOfTypes)
+        allAchievements = listOf(achievement)
 
         createAchievementsController()
         statisticsListener.onAddedOne(QuestTwo)
 
         verify(userAchievementsDao).put("mixedAchievement", 1)
-        verify(newUserAchievementsDao).push("mixedAchievement" to 1)
-        verify(listener).onNewAchievementsUpdated()
+        verify(listener).onAchievementUnlocked(achievement, 1)
     }
 
     @Test fun `unlocks multiple locked levels of an achievement and grants those links`() {
         on(userAchievementsDao.getAll()).thenReturn(mapOf("allQuests" to 2))
         on(statisticsSource.getSolvedCount()).thenReturn(5)
-        allAchievements = listOf(achievement(
+        val achievement = achievement(
             id = "allQuests",
             condition = TotalSolvedQuests,
             unlockedLinks = mapOf(
@@ -102,17 +96,17 @@ class AchievementsControllerTest {
                 3 to links("d"), // 3 has one link
                 // 4 has no links
                 5 to links("e","f") // 5 has two links
-            )))
+            ))
+        allAchievements = listOf(achievement)
 
         createAchievementsController()
         statisticsListener.onAddedOne(QuestOne)
 
         verify(userAchievementsDao).put("allQuests", 5)
-        verify(newUserAchievementsDao).push("allQuests" to 3)
-        verify(newUserAchievementsDao).push("allQuests" to 4)
-        verify(newUserAchievementsDao).push("allQuests" to 5)
         verify(userLinksDao).addAll(listOf("d","e","f"))
-        verify(listener).onNewAchievementsUpdated()
+        verify(listener).onAchievementUnlocked(achievement, 3)
+        verify(listener).onAchievementUnlocked(achievement, 4)
+        verify(listener).onAchievementUnlocked(achievement, 5)
     }
 
     @Test fun `unlocks links not yet unlocked`() {
@@ -134,22 +128,18 @@ class AchievementsControllerTest {
 
     @Test fun `no achievement level above maxLevel will be granted`() {
         on(statisticsSource.daysActive).thenReturn(100)
-        allAchievements = listOf(achievement(
+        val achievement = achievement(
             id = "daysActive",
             condition = DaysActive,
             maxLevel = 5
-        ))
+        )
+        allAchievements = listOf(achievement)
 
         createAchievementsController()
         statisticsListener.onUpdatedDaysActive()
 
         verify(userAchievementsDao).put("daysActive", 5)
-        verify(newUserAchievementsDao).push("daysActive" to 1)
-        verify(newUserAchievementsDao).push("daysActive" to 2)
-        verify(newUserAchievementsDao).push("daysActive" to 3)
-        verify(newUserAchievementsDao).push("daysActive" to 4)
-        verify(newUserAchievementsDao).push("daysActive" to 5)
-        verify(listener).onNewAchievementsUpdated()
+        verify(listener).onAchievementUnlocked(achievement, 5)
     }
 
     @Test fun `only updates achievements for given questType`() {
@@ -202,30 +192,7 @@ class AchievementsControllerTest {
         statisticsListener.onCleared()
 
         verify(userAchievementsDao).clear()
-        verify(newUserAchievementsDao).clear()
         verify(userLinksDao).clear()
-    }
-
-    @Test fun `pop new achievement`() {
-        on(newUserAchievementsDao.pop()).thenReturn("daysActive" to 123)
-        allAchievements = listOf(achievement("daysActive", DaysActive))
-
-        assertEquals(
-            achievement("daysActive", DaysActive) to 123,
-            createAchievementsController().popNewAchievement()
-        )
-        verify(listener).onNewAchievementsUpdated()
-    }
-
-    @Test fun `new achievement count`() {
-        on(newUserAchievementsDao.getCount()).thenReturn(111)
-        assertEquals(111, createAchievementsController().getNewAchievementsCount())
-    }
-
-    @Test fun `clear new achievements`() {
-        createAchievementsController().clearNewAchievements()
-        verify(newUserAchievementsDao).clear()
-        verify(listener).onNewAchievementsUpdated()
     }
 
     @Test fun `get all unlocked links`() {

@@ -36,6 +36,7 @@ class ElementEditsUploaderTest {
         mapDataController = mock()
         singleUploader = mock()
         mapDataApi = mock()
+        statisticsController = mock()
 
         listener = mock()
 

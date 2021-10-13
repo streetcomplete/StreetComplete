@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeC
+import java.time.OffsetDateTime
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -28,10 +29,11 @@ class StatisticsParserTest {
             ),
             2345,
             78,
-            99999999,
+            OffsetDateTime.parse("2007-12-03T10:15:30+01:00").toInstant().toEpochMilli(),
             false
         ),
         StatisticsParser(registry, listOf("TestQuestTypeCAlias" to "TestQuestTypeC")).parse("""
+        {
             "questTypes": {
                 "TestQuestTypeA": "11",
                 "TestQuestTypeB": "4",
@@ -42,13 +44,14 @@ class StatisticsParserTest {
                 "DE": "8",
                 "US": "7",
             },
-            "countriesRanks": {
+            "countryRanks": {
                 "US": "123",
             },
             "rank": "2345",
             "daysActive": "78",
-            "lastUpdate": "99999999",
+            "lastUpdate": "2007-12-03T10:15:30+01:00",
             "isAnalyzing": "false"
+        }
         """))
     }
 }

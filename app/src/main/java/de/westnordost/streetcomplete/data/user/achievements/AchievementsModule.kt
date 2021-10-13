@@ -29,8 +29,7 @@ enum class QuestTypeAchievement(val id: String) {
 @Module
 object AchievementsModule {
 
-    @Provides fun userAchievementsSource(achievementsController: AchievementsController): UserAchievementsSource = achievementsController
-    @Provides fun userLinksSource(achievementsController: AchievementsController): UserLinksSource = achievementsController
+    @Provides fun achievementsSource(controller: AchievementsController): AchievementsSource = controller
 
     @Provides @Named("Links") fun links(): List<Link> = links
     @Provides @Named("Achievements") fun achievements(): List<Achievement> = achievements

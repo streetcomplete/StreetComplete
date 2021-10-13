@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.*
-import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
@@ -34,7 +34,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     @Inject internal lateinit var userLoginStatusController: UserLoginStatusController
     @Inject internal lateinit var userUpdater: UserUpdater
     @Inject internal lateinit var statisticsSource: StatisticsSource
-    @Inject internal lateinit var achievementsSource: UserAchievementsSource
+    @Inject internal lateinit var achievementsSource: AchievementsSource
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
 
     private lateinit var anonAvatar: Bitmap

@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.user.achievements.AchievementsController
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -22,15 +21,13 @@ class Cleaner @Inject constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val achievementsController: AchievementsController
+    private val questTypeRegistry: QuestTypeRegistry
 ) {
     suspend fun clean() {
         val time = currentTimeMillis()
         coroutineScope {
             launch { deleteOldData() }
             launch { deleteUndoHistory() }
-            launch { clearNewUserAchievements() }
         }
         Log.i(TAG, "Cleaning took ${((currentTimeMillis() - time) / 1000.0).format(1)}s")
     }
@@ -50,10 +47,6 @@ class Cleaner @Inject constructor(
         val undoableChangesTimestamp = currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE
         elementEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
         noteEditsController.deleteSyncedOlderThan(undoableChangesTimestamp)
-    }
-
-    private suspend fun clearNewUserAchievements() = withContext(Dispatchers.IO) {
-        achievementsController.clearNewAchievements()
     }
 
     companion object {

@@ -14,16 +14,12 @@ import javax.inject.Singleton
     private val statisticsSource: StatisticsSource,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
-    private val newUserAchievementsDao: NewUserAchievementsDao,
     private val questTypeRegistry: QuestTypeRegistry,
     @Named("Achievements") private val allAchievements: List<Achievement>,
     @Named("Links") allLinks: List<Link>
-): UserAchievementsSource, UserLinksSource {
+): AchievementsSource {
 
-    interface Listener {
-        fun onNewAchievementsUpdated()
-    }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+    private val listeners: MutableList<AchievementsSource.Listener> = CopyOnWriteArrayList()
 
     private val achievementsById = allAchievements.associateBy { it.id }
     private val linksById = allLinks.associateBy { it.id }
@@ -38,7 +34,7 @@ import javax.inject.Singleton
         override fun onUpdatedAll() {
             // when syncing statistics from server, any granted achievements should be
             // granted silently (without notification) because no user action was involved
-            updateAllAchievements(silent = true)
+            updateAllAchievementsSilently()
             updateAchievementLinks()
         }
 
@@ -66,44 +62,23 @@ import javax.inject.Singleton
     override fun getLinks(): List<Link> =
         userLinksDao.getAll().mapNotNull { linksById[it] }
 
-    /** Clear info about any newly unlocked achievements */
-    fun clearNewAchievements() {
-        newUserAchievementsDao.clear()
-        listeners.forEach { it.onNewAchievementsUpdated() }
-    }
 
-    /** Get count how many newly unlocked achievements there are */
-    fun getNewAchievementsCount(): Int = newUserAchievementsDao.getCount()
-
-    /** Get info on the last newly unlocked achievement and forget it. Returns null if there
-     *  isn't any. */
-    fun popNewAchievement(): Pair<Achievement, Int>? {
-        val (achievementId, level) = newUserAchievementsDao.pop() ?: return null
-        listeners.forEach { it.onNewAchievementsUpdated() }
-        val achievement = achievementsById[achievementId] ?: return null
-        return achievement to level
-    }
-
-    private fun pushNewAchievement(achievement: Achievement, level: Int): Boolean {
-        return newUserAchievementsDao.push(achievement.id to level)
-    }
-
-    fun addListener(listener: Listener) {
+    override fun addListener(listener: AchievementsSource.Listener) {
         listeners.add(listener)
     }
-    fun removeListener(listener: Listener) {
+    override fun removeListener(listener: AchievementsSource.Listener) {
         listeners.remove(listener)
     }
 
     private fun clear() {
         userLinksDao.clear()
         userAchievementsDao.clear()
-        newUserAchievementsDao.clear()
     }
 
     /** Look at and grant all achievements */
-    private fun updateAllAchievements(silent: Boolean = false) {
-        updateAchievements(allAchievements, silent)
+    private fun updateAllAchievementsSilently() {
+        updateAchievements(allAchievements, silent = true)
+        listeners.forEach { it.onAllAchievementsUpdated() }
     }
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
@@ -124,7 +99,6 @@ import javax.inject.Singleton
 
 
     private fun updateAchievements(achievements: List<Achievement>, silent: Boolean = false) {
-        var unlockedNewAchievement = false
         val currentAchievementLevels = userAchievementsDao.getAll()
         // look at all defined achievements
         for (achievement in achievements) {
@@ -138,17 +112,14 @@ import javax.inject.Singleton
                 val unlockedLinkIds = mutableListOf<String>()
                 for (level in (currentLevel + 1)..achievedLevel) {
                     achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
+
+                    // one notification for each achievement level
                     if (!silent && !statisticsSource.isSynchronizing) {
-                        if (pushNewAchievement(achievement, level)) {
-                            unlockedNewAchievement = true
-                        }
+                        listeners.forEach { it.onAchievementUnlocked(achievement, level) }
                     }
                 }
-                if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
+                userLinksDao.addAll(unlockedLinkIds)
             }
-        }
-        if (unlockedNewAchievement) {
-            listeners.forEach { it.onNewAchievementsUpdated() }
         }
     }
 

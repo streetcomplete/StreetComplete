@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
 import de.westnordost.streetcomplete.ktx.*
@@ -21,7 +21,7 @@ import javax.inject.Inject
 /** Shows the user's unlocked links */
 class LinksFragment : Fragment(R.layout.fragment_links) {
 
-    @Inject internal lateinit var userLinksSource: UserLinksSource
+    @Inject internal lateinit var achievementsSource: AchievementsSource
     @Inject internal lateinit var statisticsSource: StatisticsSource
 
     private val binding by viewBinding(FragmentLinksBinding::bind)
@@ -44,7 +44,7 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
             val viewWidth = view.width.toFloat().toDp(ctx)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
-            val links = withContext(Dispatchers.IO) { userLinksSource.getLinks() }
+            val links = withContext(Dispatchers.IO) { achievementsSource.getLinks() }
             val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

@@ -10,10 +10,12 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.any
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.mockito.ArgumentMatchers.anyDouble
+import org.mockito.Mockito.verify
 import java.util.concurrent.FutureTask
 
 class StatisticsControllerTest {

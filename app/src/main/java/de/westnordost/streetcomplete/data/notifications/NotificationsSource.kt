@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserDataController
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.achievements.AchievementsController
+import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,7 +17,7 @@ import javax.inject.Singleton
  *  clicking on the bell icon, such as "you have a new OSM message in your inbox" etc. */
 @Singleton class NotificationsSource @Inject constructor(
     private val userDataController: UserDataController,
-    private val achievementsController: AchievementsController,
+    private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
     private val prefs: SharedPreferences
 ) {
@@ -28,15 +29,24 @@ import javax.inject.Singleton
     }
     private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
 
+    /** Achievement levels unlocked since application start. I.e. when restarting the app, the
+     *  notifications about new achievements unlocked are lost, this is deliberate */
+    private val newAchievements = ArrayList<Pair<Achievement, Int>>()
+
     init {
         userDataController.addListener(object : UserDataSource.Listener {
             override fun onUpdated() {
                 onNumberOfNotificationsUpdated()
             }
         })
-        achievementsController.addListener(object : AchievementsController.Listener {
-            override fun onNewAchievementsUpdated() {
+        achievementsSource.addListener(object : AchievementsSource.Listener {
+            override fun onAchievementUnlocked(achievement: Achievement, level: Int) {
+                newAchievements.add(achievement to level)
                 onNumberOfNotificationsUpdated()
+            }
+
+            override fun onAllAchievementsUpdated() {
+                // when all achievements have been updated, this doesn't spawn any notifications
             }
         })
         questSelectionHintController.addListener(object : QuestSelectionHintController.Listener {
@@ -66,7 +76,7 @@ import javax.inject.Singleton
         if (shouldShowQuestSelectionHint) notifications++
         if (hasUnreadMessages) notifications++
         if (hasNewVersion) notifications++
-        notifications += achievementsController.getNewAchievementsCount()
+        notifications += newAchievements.size
         return notifications
     }
 
@@ -87,7 +97,7 @@ import javax.inject.Singleton
             return QuestSelectionHintNotification
         }
 
-        val newAchievement = achievementsController.popNewAchievement()
+        val newAchievement = newAchievements.removeFirstOrNull()
         if (newAchievement != null) {
             onNumberOfNotificationsUpdated()
             return NewAchievementNotification(newAchievement.first, newAchievement.second)

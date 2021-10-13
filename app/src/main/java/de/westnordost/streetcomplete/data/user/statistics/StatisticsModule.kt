@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.user.statistics
 
 import dagger.Module
 import dagger.Provides
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 
 @Module
 object StatisticsModule {
