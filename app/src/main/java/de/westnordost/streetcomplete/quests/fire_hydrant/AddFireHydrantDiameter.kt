@@ -17,7 +17,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     """
     override val commitMessage = "Add fire hydrant diameter"
     override val wikiLink = "Tag:emergency=fire_hydrant"
-    override val icon = R.drawable.ic_quest_fire_hydrant
+    override val icon = R.drawable.ic_quest_fire_hydrant_diameter
     override val isDeleteElementEnabled = true
 
     override val questTypeAchievements = emptyList<QuestTypeAchievement>()
@@ -35,5 +35,4 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
             is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
         }
     }
-
 }

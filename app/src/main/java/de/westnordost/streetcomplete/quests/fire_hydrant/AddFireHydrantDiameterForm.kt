@@ -35,7 +35,6 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
             confirmUnusualInput { applyAnswer(FireHydrantDiameter(diameter)) }
         else
             applyAnswer(FireHydrantDiameter(diameter))
-
     }
 
     private fun userSelectedUnusualDiameter(): Boolean {
