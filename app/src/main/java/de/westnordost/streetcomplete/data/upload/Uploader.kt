@@ -53,9 +53,9 @@ class Uploader @Inject constructor(
         }
 
         // let's fail early in case of no authorization
-        if (!userLoginStatusSource.isLoggedIn) {
-            throw AuthorizationException("User is not authorized")
-        }
+        // if (!userLoginStatusSource.isLoggedIn) {
+        //     throw AuthorizationException("User is not authorized")
+        // }
 
         Log.i(TAG, "Starting upload")
 

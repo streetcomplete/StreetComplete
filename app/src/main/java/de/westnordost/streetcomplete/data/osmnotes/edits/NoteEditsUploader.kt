@@ -38,7 +38,7 @@ class NoteEditsUploader @Inject constructor(
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             /* see uploadEdits */
             withContext(scope.coroutineContext) {
-                imageUploader.activate(edit.noteId)
+                // imageUploader.activate(edit.noteId)
                 noteEditsController.markImagesActivated(edit.id)
             }
         }
@@ -57,43 +57,20 @@ class NoteEditsUploader @Inject constructor(
     private fun uploadEdit(edit: NoteEdit) {
         val text = edit.text.orEmpty() + uploadAndGetAttachedPhotosText(edit.imagePaths)
 
-        try {
-            val note = when(edit.action) {
-                CREATE -> notesApi.create(edit.position, text)
-                COMMENT -> notesApi.comment(edit.noteId, text)
-            }
+        Log.d(TAG,
+            "Dropped a ${edit.action.name} to ${edit.noteId}" +
+            " at ${edit.position.latitude}, ${edit.position.longitude}: Intentionally failed"
+        )
+        uploadedChangeListener?.onDiscarded(NOTE, edit.position)
 
-            Log.d(TAG,
-                "Uploaded a ${edit.action.name} to ${note.id}" +
-                " at ${edit.position.latitude}, ${edit.position.longitude}"
-            )
-            uploadedChangeListener?.onUploaded(NOTE, edit.position)
+        noteEditsController.markSyncFailed(edit)
 
-            noteEditsController.markSynced(edit, note)
-            noteController.put(note)
+        // should update the note if there was a conflict, so it doesn't happen again
+        val updatedNote = notesApi.get(edit.noteId)
+        if (updatedNote != null) noteController.put(updatedNote)
+        else noteController.delete(edit.noteId)
 
-            if (edit.imagePaths.isNotEmpty()) {
-                imageUploader.activate(note.id)
-                noteEditsController.markImagesActivated(note.id)
-            }
-            deleteImages(edit.imagePaths)
-
-        } catch (e: ConflictException) {
-            Log.d(TAG,
-                "Dropped a ${edit.action.name} to ${edit.noteId}" +
-                " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
-            )
-            uploadedChangeListener?.onDiscarded(NOTE, edit.position)
-
-            noteEditsController.markSyncFailed(edit)
-
-            // should update the note if there was a conflict, so it doesn't happen again
-            val updatedNote = notesApi.get(edit.noteId)
-            if (updatedNote != null) noteController.put(updatedNote)
-            else noteController.delete(edit.noteId)
-
-            deleteImages(edit.imagePaths)
-        }
+        deleteImages(edit.imagePaths)
     }
 
     private fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {

@@ -40,34 +40,17 @@ class ElementEditsUploader @Inject constructor(
         val questTypeName = edit.questType::class.simpleName!!
         val editActionClassName = edit.action::class.simpleName!!
 
-        try {
-            val updates = singleUploader.upload(edit, idProvider)
+        Log.d(TAG, "Dropped a $editActionClassName: Intentionally failed")
+        uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
 
-            Log.d(TAG, "Uploaded a $editActionClassName")
-            uploadedChangeListener?.onUploaded(questTypeName, edit.position)
+        elementEditsController.markSyncFailed(edit)
 
-            elementEditsController.markSynced(edit, updates)
-            mapDataController.updateAll(updates)
-
-            if (edit.action is IsRevertAction) {
-                statisticsController.subtractOne(edit.questType, edit.position)
-            } else {
-                statisticsController.addOne(edit.questType, edit.position)
-            }
-
-        } catch (e: ConflictException) {
-            Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
-            uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
-
-            elementEditsController.markSyncFailed(edit)
-
-            val mapData = fetchElementComplete(edit.elementType, edit.elementId)
-            if (mapData != null) {
-                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
-            } else {
-                val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
-            }
+        val mapData = fetchElementComplete(edit.elementType, edit.elementId)
+        if (mapData != null) {
+            mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
+        } else {
+            val elementKey = ElementKey(edit.elementType, edit.elementId)
+            mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
         }
     }
 
