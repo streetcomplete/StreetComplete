@@ -59,25 +59,24 @@ class AddStileTypeTest {
             ),
             BarrierType.STILE_SQUEEZER,
             StringMapEntryAdd("stile", "squeezer"),
-            StringMapEntryAdd("material", "stone"),
         )
     }
 
     @Test
-    fun `don't reset tags when adding a stile type tag to an existing enhanced metadata stile`() {
+    fun `handle adding stile tag where other values are present`() {
         questType.verifyAnswer(
             mapOf(
                 "barrier" to "stile",
+                "material" to "stone",
                 "steps" to "3",
                 "tag_not_in_list_for_removal" to "dummy_value",
             ),
-            BarrierType.STILE_STEPOVER_STONE,
-            StringMapEntryAdd("stile", "stepover"),
-            StringMapEntryAdd("material", "stone"),
+            BarrierType.STILE_SQUEEZER,
+            StringMapEntryAdd("stile", "squeezer"),
         )
     }
     @Test
-    fun `handle unmodified, fully tagged stepover`() {
+    fun `handle unmodified, well tagged stepover`() {
         questType.verifyAnswer(
             mapOf(
                 "barrier" to "stile",
