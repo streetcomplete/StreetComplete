@@ -46,13 +46,6 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
-    private fun detailedKeys(): MutableList<String> {
-        // result of looking through sample of stiles and
-        // noting which tags can be assumed to become invalid on stile type change
-        return mutableListOf("step_count", "wheelchair", "bicycle",
-        "dog_gate", "material", "height", "width", "stroller", "steps")
-    }
-
     private fun StringMapChangesBuilder.deleteIfExistList(keys: List<String>) {
         keys.forEach { deleteIfExists(it) }
     }
@@ -63,7 +56,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             changes.getPreviousValue("material") != newStileMaterial) {
             // detailed tags should be removed as stile was rebuilt
             // don't delete "material", it is set below
-            changes.deleteIfExistList(detailedKeys() - "material")
+            changes.deleteIfExistList(DETAILED_KEYS - "material")
         }
         changes.updateWithCheckDate("stile", newStileType)
         changes.addOrModify("material", newStileMaterial)
@@ -74,14 +67,14 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             BarrierType.STILE_SQUEEZER -> {
                 val newStileType = "squeezer"
                 if(changes.getPreviousValue("stile") != newStileType) {
-                    changes.deleteIfExistList(detailedKeys())
+                    changes.deleteIfExistList(DETAILED_KEYS)
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_LADDER -> {
                 val newStileType = "ladder"
                 if(changes.getPreviousValue("stile") != newStileType) {
-                    changes.deleteIfExistList(detailedKeys())
+                    changes.deleteIfExistList(DETAILED_KEYS)
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
@@ -96,11 +89,17 @@ class AddStileType : OsmElementQuestType<BarrierType> {
                 applyStileAndMaterial(newStileType, newStileMaterial, changes)
             }
             BarrierType.KISSING_GATE -> {
-                changes.deleteIfExistList(detailedKeys())
+                changes.deleteIfExistList(DETAILED_KEYS)
                 changes.deleteIfExists("stile")
                 changes.modify("barrier", answer.osmValue)
             }
         }
 
     }
+
+    companion object {
+        private val DETAILED_KEYS = listOf("step_count", "wheelchair", "bicycle",
+                "dog_gate", "material", "height", "width", "stroller", "steps")
+    }
 }
+
