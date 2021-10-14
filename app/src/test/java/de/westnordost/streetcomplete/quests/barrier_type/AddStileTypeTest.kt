@@ -35,7 +35,7 @@ class AddStileTypeTest {
     }
 
     @Test
-    fun `reset tags when marking stile as a rebuild stepover`() {
+    fun `reset tags when marking stile as a rebuilt stepover`() {
         questType.verifyAnswer(
             mapOf(
                 "barrier" to "stile",
