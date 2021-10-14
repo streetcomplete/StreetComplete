@@ -55,9 +55,13 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             // don't delete "material", it is set below
             changes.deleteIfExistList(DETAILED_KEYS - "material")
         }
-        changes.updateWithCheckDate("stile", newStileType)
         if(changes.getPreviousValue("material") != newStileMaterial) {
             changes.addOrModify("material", newStileMaterial)
+            if(changes.getPreviousValue("stile") != newStileType) {
+                changes.addOrModify("material", newStileType)
+            }
+        } else {
+            changes.updateWithCheckDate("stile", newStileType)
         }
     }
 

@@ -47,7 +47,6 @@ class AddStileTypeTest {
             BarrierType.STILE_STEPOVER_STONE,
             StringMapEntryDelete("steps", "5"),
             StringMapEntryModify("material", "wood", "stone"),
-            StringMapEntryAdd("check_date:stile", LocalDate.now().toCheckDateString()),
         )
     }
 }
