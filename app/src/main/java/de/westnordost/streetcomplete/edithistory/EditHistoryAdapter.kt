@@ -165,7 +165,7 @@ class EditHistoryAdapter(
 
             // Only show today's date if there is an above from a different day
             binding.todayTextContainer.isGone = !(edit.isToday && editAbove?.isToday == false)
-            binding.todayText.text = formatSameDayDate(edit.createdTimestamp)
+            binding.todayText.text = edit.formatDate()
 
             val res = itemView.context.resources
             val bgColor = res.getColor(if (edit.isSynced == true) R.color.slightly_greyed_out else R.color.background)
@@ -192,9 +192,7 @@ private fun formatSameDayTime(timestamp: Long) =
     DateUtils.formatSameDayTime(timestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
 )
 
-private fun formatSameDayDate(timestamp: Long) =
-    DateUtils.formatSameDayTime(timestamp, timestamp-DateUtils.DAY_IN_MILLIS, DateFormat.SHORT, DateFormat.SHORT
-)
+private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).format(createdTimestamp)
 
 private val Edit.isToday: Boolean get() = DateUtils.isToday(this.createdTimestamp)
 
