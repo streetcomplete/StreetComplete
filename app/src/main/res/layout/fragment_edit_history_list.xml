@@ -16,6 +16,7 @@
         android:paddingBottom="22dp"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:reverseLayout="true"
         android:orientation="vertical"
         tools:listitem="@layout/row_edit_item" />
 

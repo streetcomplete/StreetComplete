@@ -78,7 +78,6 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         binding.editHistoryList.respectSystemInsets {
             updatePadding(left = it.left, top = it.top, bottom = it.bottom + initialPaddingBottom)
         }
-        (binding.editHistoryList.layoutManager as LinearLayoutManager).reverseLayout = true
         viewLifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)
