@@ -97,11 +97,11 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     private fun uploadChanges() {
         // because the app should ask for permission even if there is nothing to upload right now
-        if (!userLoginStatusSource.isLoggedIn) {
-            context?.let { RequestLoginDialog(it).show() }
-        } else {
+        // if (!userLoginStatusSource.isLoggedIn) {
+        //     context?.let { RequestLoginDialog(it).show() }
+        // } else {
             uploadController.upload()
-        }
+        // }
     }
 
     /** Does not necessarily mean that the user has internet. But if he is not connected, he will
