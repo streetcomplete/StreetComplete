@@ -62,9 +62,8 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             ||
             changes.getPreviousValue("material") != newStileMaterial) {
             // detailed tags should be removed as stile was rebuilt
-            val forRemoval = detailedTags()
-            forRemoval.remove("material") // material will be set later
-            changes.deleteIfExistList(forRemoval)
+            // don't delete "material", it is set below
+            changes.deleteIfExistList(detailedTags() - "material")
         }
         changes.updateWithCheckDate("stile", newStileType)
         changes.addOrModify("material", newStileMaterial)
