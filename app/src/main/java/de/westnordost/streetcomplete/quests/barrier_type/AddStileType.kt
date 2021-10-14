@@ -47,10 +47,6 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
-    private fun StringMapChangesBuilder.deleteIfExistList(keys: List<String>) {
-        keys.forEach { deleteIfExists(it) }
-    }
-
     private fun applyStileAndMaterial(newStileType: String, newStileMaterial: String, changes: StringMapChangesBuilder) {
         if(changes.getPreviousValue("stile") != newStileType
             ||

@@ -17,6 +17,10 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
         }
     }
 
+    fun deleteIfExistList(keys: List<String>) {
+        keys.forEach { deleteIfExists(it) }
+    }
+
     fun deleteIfPreviously(key: String, valueBefore: String) {
         if (source[key] == valueBefore) {
             delete(key)
