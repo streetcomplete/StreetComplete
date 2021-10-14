@@ -42,6 +42,7 @@ class AddStileTypeTest {
                 "stile" to "stepover",
                 "material" to "wood",
                 "steps" to "5",
+                "tag_not_in_list_for_removal" to "dummy_value",
             ),
             BarrierType.STILE_STEPOVER_STONE,
             StringMapEntryDelete("steps", "5"),
