@@ -47,10 +47,20 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
+    private fun dataPresentAndChanged(key: String, value: String, changes: StringMapChangesBuilder): Boolean {
+        if(changes.getPreviousValue(key) == null) {
+            return false
+        }
+        if(changes.getPreviousValue(key) == value) {
+            return false
+        }
+        return true
+    }
+
     private fun applyStileAndMaterial(newStileType: String, newStileMaterial: String, changes: StringMapChangesBuilder) {
-        if(changes.getPreviousValue("stile") != newStileType
+        if(dataPresentAndChanged("stile", newStileType, changes)
             ||
-            changes.getPreviousValue("material") != newStileMaterial) {
+            dataPresentAndChanged("material", newStileMaterial, changes)){
             // detailed tags should be removed as stile was rebuilt
             // don't delete "material", it is set below
             changes.deleteIfExistList(DETAILED_KEYS - "material")
@@ -69,14 +79,14 @@ class AddStileType : OsmElementQuestType<BarrierType> {
         when (answer) {
             BarrierType.STILE_SQUEEZER -> {
                 val newStileType = "squeezer"
-                if(changes.getPreviousValue("stile") != newStileType) {
+                if(dataPresentAndChanged("stile", newStileType, changes)) {
                     changes.deleteIfExistList(DETAILED_KEYS)
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_LADDER -> {
                 val newStileType = "ladder"
-                if(changes.getPreviousValue("stile") != newStileType) {
+                if(dataPresentAndChanged("stile", newStileType, changes)) {
                     changes.deleteIfExistList(DETAILED_KEYS)
                 }
                 changes.updateWithCheckDate("stile", newStileType)
