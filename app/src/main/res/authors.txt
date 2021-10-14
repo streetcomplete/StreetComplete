@@ -166,7 +166,7 @@ tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/j
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
 
-traffic_calming_bump.jpg       PD                Goldfinger https://wiki.openstreetmap.org/wiki/File:Traffic_calming_example.jpg
+traffic_calming_bump.jpg       PD                Goldfinger https://commons.wikimedia.org/wiki/File%3ALe%C5%BEe%C4%87i%5Fpolicajac%5F016%2Ejpg
 traffic_calming_chicane.jpg    CC-BY-SA 2.0      Richard Drdul https://commons.wikimedia.org/wiki/File:One-lane_chicane_1.jpg
 traffic_calming_choker.jpg     CC-BY-SA 2.0      Mike Faherty https://www.geograph.ie/photo/2350574
 traffic_calming_cushion.jpg    CC-BY-SA 2.0      Zorro2212 https://commons.wikimedia.org/wiki/File%3ASpeed%5Fcushion%5F%2D%5Fberliner%5Fpillow%2C%5F%C5%81%C3%B3d%C5%BA%5FKarolewska%5FStreet%5F2015%5F02%2Ejpg
