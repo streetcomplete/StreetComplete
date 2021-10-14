@@ -13,7 +13,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     private val stileNodeFilter by lazy { """
         nodes with
-         barrier = stile 
+         barrier = stile
          and (!stile or stile older today -8 years)
     """.toElementFilterExpression() }
 
