@@ -50,6 +50,7 @@ class NoteEditsUploader @Inject constructor(
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. F.e. a note could be uploaded
              * twice  */
+            delay(550L)
             withContext(scope.coroutineContext) { uploadEdit(edit) }
         }
     }
