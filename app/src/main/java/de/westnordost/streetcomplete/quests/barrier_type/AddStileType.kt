@@ -60,7 +60,9 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             changes.deleteIfExistList(DETAILED_KEYS - "material")
         }
         changes.updateWithCheckDate("stile", newStileType)
-        changes.addOrModify("material", newStileMaterial)
+        if(changes.getPreviousValue("material") != newStileMaterial) {
+            changes.addOrModify("material", newStileMaterial)
+        }
     }
 
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
