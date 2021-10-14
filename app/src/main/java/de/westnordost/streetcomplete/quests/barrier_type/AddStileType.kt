@@ -58,7 +58,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
         if(changes.getPreviousValue("material") != newStileMaterial) {
             changes.addOrModify("material", newStileMaterial)
             if(changes.getPreviousValue("stile") != newStileType) {
-                changes.addOrModify("material", newStileType)
+                changes.addOrModify("stile", newStileType)
             }
         } else {
             changes.updateWithCheckDate("stile", newStileType)
