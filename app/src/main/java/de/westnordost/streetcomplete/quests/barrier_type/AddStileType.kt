@@ -12,8 +12,9 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddStileType : OsmElementQuestType<BarrierType> {
 
     private val stileNodeFilter by lazy { """
-        nodes with barrier = stile and !stile
-        or stile older today -8 years
+        nodes with
+         barrier = stile 
+         and (!stile or stile older today -8 years)
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
