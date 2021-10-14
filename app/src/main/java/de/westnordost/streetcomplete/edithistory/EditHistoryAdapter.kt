@@ -158,8 +158,8 @@ class EditHistoryAdapter(
             if (edit.overlayIcon != 0) binding.overlayIcon.setImageResource(edit.overlayIcon)
             else binding.overlayIcon.setImageDrawable(null)
 
-            val aboveTimeStr = editAbove?.let { formatSameDayTime(it.createdTimestamp) }
-            val timeStr = formatSameDayTime(edit.createdTimestamp)
+            val aboveTimeStr = editAbove?.formatSameDayTime()
+            val timeStr = edit.formatSameDayTime()
             binding.timeTextContainer.isGone = aboveTimeStr == timeStr
             binding.timeText.text = timeStr
 
@@ -188,8 +188,8 @@ class EditHistoryAdapter(
     private class SyncedViewHolder(binding: RowEditSyncedBinding) : RecyclerView.ViewHolder(binding.root)
 }
 
-private fun formatSameDayTime(timestamp: Long) =
-    DateUtils.formatSameDayTime(timestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
+private fun Edit.formatSameDayTime() = DateUtils.formatSameDayTime(
+    createdTimestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
 )
 
 private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).format(createdTimestamp)
