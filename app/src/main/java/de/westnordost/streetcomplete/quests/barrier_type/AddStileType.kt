@@ -46,7 +46,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
-    private fun detailedTags(): MutableList<String> {
+    private fun detailedKeys(): MutableList<String> {
         // result of looking through sample of stiles and
         // noting which tags can be assumed to become invalid on stile type change
         return mutableListOf("step_count", "wheelchair", "bicycle",
@@ -63,7 +63,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             changes.getPreviousValue("material") != newStileMaterial) {
             // detailed tags should be removed as stile was rebuilt
             // don't delete "material", it is set below
-            changes.deleteIfExistList(detailedTags() - "material")
+            changes.deleteIfExistList(detailedKeys() - "material")
         }
         changes.updateWithCheckDate("stile", newStileType)
         changes.addOrModify("material", newStileMaterial)
@@ -74,14 +74,14 @@ class AddStileType : OsmElementQuestType<BarrierType> {
             BarrierType.STILE_SQUEEZER -> {
                 val newStileType = "squeezer"
                 if(changes.getPreviousValue("stile") != newStileType) {
-                    changes.deleteIfExistList(detailedTags())
+                    changes.deleteIfExistList(detailedKeys())
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_LADDER -> {
                 val newStileType = "ladder"
                 if(changes.getPreviousValue("stile") != newStileType) {
-                    changes.deleteIfExistList(detailedTags())
+                    changes.deleteIfExistList(detailedKeys())
                 }
                 changes.updateWithCheckDate("stile", newStileType)
             }
@@ -96,7 +96,7 @@ class AddStileType : OsmElementQuestType<BarrierType> {
                 applyStileAndMaterial(newStileType, newStileMaterial, changes)
             }
             BarrierType.KISSING_GATE -> {
-                changes.deleteIfExistList(detailedTags())
+                changes.deleteIfExistList(detailedKeys())
                 changes.deleteIfExists("stile")
                 changes.modify("barrier", answer.osmValue)
             }
