@@ -7,14 +7,12 @@
     android:layout_alignParentLeft="true"
     android:background="@color/background"
     android:elevation="@dimen/speech_bubble_elevation"
-    android:clipChildren="false"
     tools:ignore="RtlHardcoded">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/editHistoryList"
         android:layout_width="80dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="22dp"
         android:paddingBottom="22dp"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
