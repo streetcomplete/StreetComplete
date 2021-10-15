@@ -1,7 +1,20 @@
-v36.0-beta2: |
-  <p>Fix crash on entering quest selection screen</p>
+v37.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What diameter is on this fire hydrant’s sign?</i> (#3342), by @thefeiter</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Ask again for the type of stile every 8 years (#3187, #3370), thanks @matkoniecz</li>
+  <li>More compact wording for crossing types (#3383), by @matkoniecz</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Edit history sidebar now appears immediately on tapping the undo button, last edit is at the
+      bottom and pre-selected (#3349), by @smichel17</li>
+  </ul>
 
-v36.0-beta1: |
+v36.0: |
   <h3>Easier orientation</h3>
   <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
   <p>The location button (lower right corner) also has a new behavior:</p>
@@ -23,6 +36,7 @@ v36.0-beta1: |
   <li>Add answer option to state that there are actually steps, not a footway (#3288, #3334), by @FloEdelmann</li>
   <li>Building type: Add building bridge (skyway) as answer option (#2630, #3320), by @kmpoppe</li>
   <li>Self-service laundry: Add answer option to say self-service is optional (#3309)</li>
+  <li>Don't ask some of the quests for private things (#3356, #3357, #3358), by @dbdean</li>
   </ul>
   <h3>Other enhancements, fixes, maintenance</h3>
   <ul>

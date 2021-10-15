@@ -47,7 +47,7 @@ class QuestPresetsAdapter @Inject constructor(
     fun onStart() {
         presets = mutableListOf()
         presets.add(QuestPreset(0, context.getString(R.string.quest_presets_default_name)))
-        presets.addAll(questPresetsController.getAllQuestPresets())
+        presets.addAll(questPresetsController.getAll())
 
         questPresetsController.addListener(questPresetsListener)
     }
@@ -79,7 +79,7 @@ class QuestPresetsAdapter @Inject constructor(
         fun onBind(with: QuestPreset) {
             binding.presetTitleText.text = with.name
             binding.selectionRadioButton.setOnCheckedChangeListener(null)
-            binding.selectionRadioButton.isChecked = questPresetsController.selectedQuestPresetId == with.id
+            binding.selectionRadioButton.isChecked = questPresetsController.selectedId == with.id
             binding.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) onSelectQuestPreset(with.id)
             }
@@ -90,7 +90,7 @@ class QuestPresetsAdapter @Inject constructor(
 
         fun onSelectQuestPreset(presetId: Long) {
             viewLifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.selectedQuestPresetId = presetId
+                questPresetsController.selectedId = presetId
             }
         }
 
@@ -105,7 +105,7 @@ class QuestPresetsAdapter @Inject constructor(
         fun deleteQuestPreset(presetId: Long) {
             binding.deleteButton.isEnabled = false
             viewLifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.deleteQuestPreset(presetId)
+                questPresetsController.delete(presetId)
             }
         }
     }

@@ -68,10 +68,10 @@ import javax.inject.Singleton
     fun getOldestNeedingImagesActivation(): NoteEdit? =
         editsDB.getOldestNeedingImagesActivation()
 
-    fun imagesActivated(id: Long): Boolean =
+    fun markImagesActivated(id: Long): Boolean =
         synchronized(this) { editsDB.markImagesActivated(id) }
 
-    fun synced(edit: NoteEdit, note: Note) {
+    fun markSynced(edit: NoteEdit, note: Note) {
         val markSyncedSuccess: Boolean
         synchronized(this) {
             if (edit.noteId != note.id) {
@@ -85,7 +85,7 @@ import javax.inject.Singleton
         }
     }
 
-    fun syncFailed(edit: NoteEdit): Boolean =
+    fun markSyncFailed(edit: NoteEdit): Boolean =
         delete(edit)
 
     fun undo(edit: NoteEdit): Boolean =

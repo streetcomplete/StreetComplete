@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ANZ Royal, FTB, ATM ABA Bank, Cathay United Bank, BRED Bank, ANZ, ACLEDA Bank, Mekong Bank, MB Bank, anz, Sacombank, RHB, QK4, CAB Bank, Acleda, Aba bank, ATZ, AMK]
+atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ATM ABA Bank, ANZ Royal, FTB, ANZ, ACLEDA Bank, Cathay United Bank, BRED Bank, Mekong Bank, MB Bank, CAB Bank, RHB, Acleda, Sacombank, ATZ, QK4, anz, AMK, Aba bank, Sathapana]
 centerLine: yellow
 chargingStationOperators: [Green E-Bike]
 mobileCountryCode: 456

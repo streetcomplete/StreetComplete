@@ -7,10 +7,10 @@ interface QuestPresetsSource {
         fun onDeletedQuestPreset(presetId: Long)
     }
 
-    val selectedQuestPresetId: Long
+    val selectedId: Long
     val selectedQuestPresetName: String?
 
-    fun getAllQuestPresets(): List<QuestPreset>
+    fun getAll(): List<QuestPreset>
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)

@@ -82,7 +82,7 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
                 r[1][0]*p.x + r[1][1]*p.y + r[1][2]*p.z,
                 r[2][0]*p.x + r[2][1]*p.y + r[2][2]*p.z,
         )
-        val p2 = Vector3d(rp[0], rp[1], rp[2]);
+        val p2 = Vector3d(rp[0], rp[1], rp[2])
 
         return p2
         // qv en.wikipedia.org/wiki/Rodrigues'_rotation_formula...

@@ -1553,6 +1553,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_sidewalk_value_yes">"人行道"</string>
     <string name="quest_sidewalk_value_no">"没有人行道"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"这里的路有禁止行人行走吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"这条街被标记为两边都没有人行道。如果只有一边有人行道，请回答“人行道”。"</string>
 
     <!-- Fuzzy -->
@@ -1763,6 +1765,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="user_logout">"登出"</string>
     <string name="osm_profile">"OSM 资料"</string>
     <string name="next">"继续"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"开始吧"</string>
     <string name="tutorial_welcome_to_osm">"欢迎来到 OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"免费的维基式世界地图"</string>
@@ -1771,6 +1775,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="tutorial_solving_quests">"一旦找到，缺失的细节会在你的地图上作为任务出现。
 
 你可以立刻解决它们，然后在登录后再发布你的答案。"</string>
+
+    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"当你无法确定的时候，你可以回复“不知道”并且留下一个注释。
 
 最后，安全第一：注意周围，不要进入私人领地"</string>
@@ -1812,6 +1818,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_opnvkarte_description">"公共交通路线和站点的地图"</string>
     <string name="link_pic4review_description">"简单地通过查看你的城市照片来贡献OSM"</string>
     <string name="link_wiki_description">"该维基是一切与OpenStreetMap相关事情的起点"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"刚刚接触OpenStreetMap?这里是初学者指南"</string>
     <string name="link_neis_one_description">"超大OpenStreetMap贡献者数据统计集，如你在哪里和如何作出贡献，你周边的贡献者，以及排行榜"</string>
 
@@ -1835,6 +1843,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_openinframap_description">"显示电力、电讯、燃气和石油设施"</string>
     <string name="link_openorienteeringmap_description">"专为野外定向运动生成可打印地图"</string>
     <string name="link_openstreetbrowser_description">"通过分类来浏览开放街图的地图"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"报道开放街图大小事的每周新闻论坛"</string>
     <string name="link_figuregrounder_description">"产生城市或是邻里的图底图（ Figure-ground diagram）海报。"</string>
     <string name="achievement_first_edit_title">"完成第一个任务"</string>
@@ -1863,6 +1873,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="achievement_veg_title">"素食者"</string>
     <string name="achievement_veg_solved_X">"你完成了%d项与素食人群相关的任务。"</string>
     <string name="achievement_car_title">"在路上"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"你完成了%d项任务，改进了街道设施的细节。"</string>
     <string name="unread_messages_message">"你的收件箱中有%d条未读消息"</string>
     <string name="unread_messages_button">"打开收件箱"</string>
@@ -1920,6 +1932,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"你确定描述此路面是不可能的吗？注记「沿途皆有不同」允许你切断铺面改变线段的答案选项。当这里只有一种路面但不可作为答案，请使用「无法说明」。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"在此请简述此地面的自然材质，例如：包括鹅卵石修补的砂铺面。此字串长度输入255个字节。"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -2000,6 +2014,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_steps_ramp_bicycle">"自行车坡道"</string>
     <string name="quest_steps_ramp_stroller">"婴儿车坡道"</string>
     <string name="quest_steps_ramp_wheelchair">"轮椅坡道"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"该ATM所属银行名字是？"</string>
     <string name="quest_clothes_container_operator_title">"谁接收该衣物箱的捐赠？"</string>
 
@@ -2045,6 +2061,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"有双向左转车道"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"正确吗？"</string>
     <string name="quest_maxheight_below_bridge_title">"该桥的限高为多少？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"如果不适用整条路，则考虑 “%s”。"</string>
 
     <!-- Fuzzy -->
@@ -2060,14 +2078,20 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_kerb_height_lowered_ramp">"路缘斜坡"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"具体说明所有汽车可通行车辆交通（所有方向），所以，单车和停车场交通不算。
 如果有车道给公车，请注明解。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"具体说明所有汽车可通行车辆交通（所有方向），所以，单车和停车场交通不算。
 如果有车道给公车，请注明解。 "</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_rock">"岩石"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"高的货车可通过"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"高的货车无法通过"</string>
 
     <!-- Fuzzy -->
@@ -2099,7 +2123,11 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"输入这个场所的类型"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_error">"并不知道这是什么，请考虑留下注解。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"这个商家已经不在，现在这边是做什么的？"</string>
     <string name="quest_lanes_answer_lanes_odd2">"每一侧的车道数不同"</string>
     <string name="quest_pitchSurface_title">"这个体育场的铺面是什么？"</string>

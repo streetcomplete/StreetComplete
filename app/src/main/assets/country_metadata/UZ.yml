@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Hamkorbank, Asia Alliance Bank, Kapitalbank, Xalq banki, Kapital Bank, HAMKORBANK, Xalqbanki, Xalq Bank, NBU, ALOQABANK, турон банк, капитал банк, ипотека банк, ипак йули банк, банк, Хамкор Банк, Халк Банки, Агробанк, Turon bank, Transbank, SQB, Orient Finans Bank, OFB, Milliy bank, Mikrokreditbank, Kapital24, Kapital Bank (VISA), Ipak yo`li bank, Asaka Bank, Agrobank]
+atmOperators: [Hamkorbank, Kapitalbank, Asia Alliance Bank, UZCARD;HUMO, Kapital Bank, UZCARD;HUMO - HAMKORBANK, Xalq banki, Agrobank, Xalq Bank, NBU, Агробанк, Xalqbanki, SQB, Хамкор Банк, ипотека банк, Milliy bank, Mikrokreditbank, Ipak yo`li bank, Kapital24, OFB, Orient Finans Bank, Asaka Bank, капитал банк, Халк Банки, ипак йули банк, турон банк, Kapital Bank (VISA), банк, UZCARD;HUMO - ALOQA BANK, UZCARD;HUMO - MILLIY BANK, Turon bank, Transbank, InfinBANK, QISHLOQQURILISHBANK, HUMO]
 mobileCountryCode: 434
 officialLanguages: [uz, ru]
 orchardProduces: [tomato, grape, apple, apricot, peach, cherry, plum, pear, persimmon, walnut, almond, strawberry, chilli_pepper, sweet_pepper, fig, hazelnut]

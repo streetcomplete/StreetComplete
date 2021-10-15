@@ -138,6 +138,13 @@ cycleway segregation icons/
     segregated_l.svg
     segregated_r.svg
 
+fire hydrant diameter graphics/
+    hydrant_sign_de.svg         modified from https://commons.wikimedia.org/wiki/File:Hydrantenschild_mit_Legende.svg, Marvin Feiter
+    hydrant_sign_fi.svg         Marvin Feiter
+    hydrant_sign_nl.svg         Marvin Feiter
+    hydrant_sign_pl.svg         modified from https://wiki.openstreetmap.org/w/images/3/3e/Tablica_orientacyjna_dla_hydrantu.svg, Marvin Feiter
+    hydrant_sign_uk.svg         Marvin Feiter
+
 housenumber graphics/
     town_silhouette.svg
 
@@ -211,6 +218,7 @@ quest icons/
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
     car.svg                          modified from Twemoji: U+1F698
+    car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
@@ -222,6 +230,7 @@ quest icons/
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire_hydrant.svg
+    fire_hydrant_diameter.svg
     fuel.svg
     guidepost.svg
     housenumber.svg

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [5B, Banco Industrial, Cajero 5B, Bancared, son, Cajero Automatico Bancared, veronica lopez, banco industrial, Cajero BI, Banrural, Banca Red, BI, BAC]
+atmOperators: [5B, Banco Industrial, Cajero 5B, Bancared, Cajero Automatico Bancared, son, Banca Red, banco industrial, Banrural, BI, veronica lopez, BAC, Cajero BI]
 centerLine: yellow
 mobileCountryCode: 704
 officialLanguages: [es, myn]

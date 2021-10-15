@@ -1,0 +1,36 @@
+<vector
+    android:height="277.33334dp"
+    android:viewportHeight="637"
+    android:viewportWidth="735"
+    android:width="320dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+<path
+    android:fillColor="#cb403b"
+    android:pathData="m49,0h637c12.991,0 25.462,5.166 34.648,14.352s14.352,21.657 14.352,34.648v882c0,12.991 -5.166,25.462 -14.352,34.648s-21.657,14.352 -34.648,14.352h-637c-12.991,0 -25.462,-5.166 -34.648,-14.352s-14.352,-21.657 -14.352,-34.648v-882c0,-12.991 5.166,-25.462 14.352,-34.648s21.657,-14.352 34.648,-14.352z"
+    />
+<path
+    android:fillColor="#fff"
+    android:pathData="m122.5,283h490v49h-490z"
+    />
+<path
+    android:fillColor="#fff"
+    android:pathData="m178.75,206.77q0,22.225 -13.154,34.578 -13.153,12.354 -36.58,12.354h-54.918v-166.57h49.157q47.621,0 47.621,40.43 0,14.777 -6.72,24.826 -6.721,10.049 -19.01,13.477 16.13,2.365 24.867,13.299 8.737,10.935 8.737,27.604zM152.443,130.283q0,-13.477 -7.489,-19.269 -7.489,-5.793 -21.698,-5.793h-30.819v52.725h30.819q14.69,0 21.938,-6.798 7.249,-6.797 7.249,-20.865zM160.22,204.996q0,-29.436 -33.604,-29.436h-34.18v60.054h35.62q16.802,0 24.483,-7.684 7.681,-7.684 7.681,-22.934zM318.06,253.701h-22.754l-54.054,-80.388 -17.666,16.55v63.837h-18.338v-166.57h18.338v83.461l65.191,-83.461h21.602l-57.606,72.349z" android:strokeWidth=".22264"
+    />
+    <path android:fillColor="#00000000"
+        android:pathData="m136,446.25 l73.5,-73.5m-73.5,36.75c0,9.743 3.875,19.097 10.764,25.986s16.243,10.764 25.986,10.764 19.097,-3.875 25.986,-10.764 10.764,-16.243 10.764,-25.986 -3.875,-19.097 -10.764,-25.986c-6.889,-6.89 -16.243,-10.764 -25.986,-10.764s-19.097,3.874 -25.986,10.764c-6.889,6.889 -10.764,16.243 -10.764,25.986"
+        android:strokeColor="#fff" android:strokeWidth="12"/>
+<path
+    android:pathData="M0,0 H 735 V 637 H 0 Z">
+    <aapt:attr name="android:fillColor">
+        <gradient
+            android:startColor="@color/fade_out_transparent"
+            android:endColor="@color/fade_out"
+            android:startX="0"
+            android:endX="0"
+            android:startY="500"
+            android:endY="637"
+            android:type="linear" />
+    </aapt:attr>
+</path>
+</vector>

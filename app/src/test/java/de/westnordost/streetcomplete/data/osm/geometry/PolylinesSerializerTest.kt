@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.geometry;
+package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import org.junit.Test
@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.testutils.p
 
 import org.junit.Assert.*
 
-public class PolylinesSerializerTest {
+class PolylinesSerializerTest {
 
     @Test fun `serialize and deserialize empty`() {
         check(listOf())

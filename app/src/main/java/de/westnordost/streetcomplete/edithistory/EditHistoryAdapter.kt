@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.databinding.RowEditItemBinding
 import de.westnordost.streetcomplete.databinding.RowEditSyncedBinding
-import de.westnordost.streetcomplete.ktx.findPrevious
+import de.westnordost.streetcomplete.ktx.findNext
 import de.westnordost.streetcomplete.ktx.toast
 import java.lang.System.currentTimeMillis
 import java.text.DateFormat
@@ -114,7 +114,7 @@ class EditHistoryAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val row = rows[position]
-        val rowAbove = rows.findPrevious(position) { it is EditItem } as EditItem?
+        val rowAbove = rows.findNext(position+1) { it is EditItem } as EditItem?
         when(holder) {
             is EditViewHolder -> holder.onBind((row as EditItem).edit, rowAbove?.edit)
         }
@@ -158,10 +158,14 @@ class EditHistoryAdapter(
             if (edit.overlayIcon != 0) binding.overlayIcon.setImageResource(edit.overlayIcon)
             else binding.overlayIcon.setImageDrawable(null)
 
-            val aboveTimeStr = editAbove?.let { formatSameDayTime(it.createdTimestamp) }
-            val timeStr = formatSameDayTime(edit.createdTimestamp)
+            val aboveTimeStr = editAbove?.formatSameDayTime()
+            val timeStr = edit.formatSameDayTime()
             binding.timeTextContainer.isGone = aboveTimeStr == timeStr
             binding.timeText.text = timeStr
+
+            // Only show today's date if there is an above from a different day
+            binding.todayTextContainer.isGone = !(edit.isToday && editAbove?.isToday == false)
+            binding.todayText.text = edit.formatDate()
 
             val res = itemView.context.resources
             val bgColor = res.getColor(if (edit.isSynced == true) R.color.slightly_greyed_out else R.color.background)
@@ -184,9 +188,13 @@ class EditHistoryAdapter(
     private class SyncedViewHolder(binding: RowEditSyncedBinding) : RecyclerView.ViewHolder(binding.root)
 }
 
-private fun formatSameDayTime(timestamp: Long) =
-    DateUtils.formatSameDayTime(timestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
+private fun Edit.formatSameDayTime() = DateUtils.formatSameDayTime(
+    createdTimestamp, currentTimeMillis(), DateFormat.SHORT, DateFormat.SHORT
 )
+
+private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).format(createdTimestamp)
+
+private val Edit.isToday: Boolean get() = DateUtils.isToday(this.createdTimestamp)
 
 private sealed class EditHistoryItem
 

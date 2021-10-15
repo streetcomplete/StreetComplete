@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.core.view.isInvisible
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewUploadButtonBinding
 
 /** A view that shows an upload-icon, with a counter at the top right and an (upload) progress view

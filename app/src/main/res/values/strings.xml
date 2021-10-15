@@ -371,12 +371,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
-    <string name="quest_crossing_type_marked">Marked crossing</string>
-    <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
+    <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
+    <string name="quest_crossing_type_marked">Marked</string>
+    <string name="quest_crossing_type_unmarked">Without road markings</string>
     <string name="action_undo">Undo</string>
-    <string name="undo_last">Undo last edit</string>
-    <string name="show_edit_history">Show edit history</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="synced">Synced</string>
     <string name="toast_undo_unavailable">This edit is already synced and cannot be undone</string>
@@ -794,7 +792,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
-    <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
+    <string name="quest_generic_answer_is_actually_steps">"This part is steps"</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
     <string name="quest_generalFee_title">Do you need to pay to enter %s?</string>
     <string name="quest_laundrySelfService_title2">Does this laundry provide self-service?</string>
@@ -1087,4 +1085,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_surface_value_concrete_plates">Concrete plates</string>
     <string name="quest_surface_value_concrete_lanes">Concrete lanes</string>
+    <string name="quest_fireHydrant_diameter_title">What diameter is on this fire hydrant’s sign?</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">This diameter looks implausible.</string>
+    <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
 </resources>

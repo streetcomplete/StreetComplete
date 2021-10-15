@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [ABSA, Standard Bank, FNB, Nedbank, First National Bank, Capitec, Absa, Standard, Standard bank, Standard Bank ATM, ABSA Atm, standard bank, nedbank, STANDARD BANK, Netbank, Nedbank ATM, NedBank, NEDBANK, Capitec Bank, Absa Bank, ABSA Bank]
+atmOperators: [ABSA, Standard Bank, FNB, Nedbank, First National Bank, Capitec, Absa, Standard, Standard bank, ABSA Atm, Standard Bank ATM, nedbank, Absa Bank, NEDBANK, STANDARD BANK, Capitec Bank, NedBank, Netbank, Nedbank ATM, Stanbic Bank]
 centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Zanaco, FNB, Ecobank, Absa Bank, Stanbic Bank, Stanbic, Barclay's]
+atmOperators: [FNB, Zanaco, Absa Bank, Stanbic Bank, Ecobank, Stanbic, Barclay's]
 centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true

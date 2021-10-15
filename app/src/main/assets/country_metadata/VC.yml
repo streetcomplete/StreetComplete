@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Bank of Saint Vincent & the Grenadines, FirstCaribbean International Bank Ltd., Bank of Nova Scotia]
+atmOperators: [Bank of Saint Vincent & the Grenadines, Bank of Nova Scotia, FirstCaribbean International Bank Ltd.]
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 360

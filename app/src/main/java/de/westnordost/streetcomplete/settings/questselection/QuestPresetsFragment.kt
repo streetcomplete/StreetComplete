@@ -49,7 +49,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             .setPositiveButton(android.R.string.ok) { _,_ ->
                 val name = dialogBinding.editText.text.toString().trim()
                 viewLifecycleScope.launch(Dispatchers.IO) {
-                    questPresetsController.addQuestPreset(name)
+                    questPresetsController.add(name)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)

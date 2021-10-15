@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.deleteIfExistList
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -11,7 +13,9 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddStileType : OsmElementQuestType<BarrierType> {
 
     private val stileNodeFilter by lazy { """
-        nodes with barrier = stile and !stile
+        nodes with
+         barrier = stile
+         and (!stile or stile older today -8 years)
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
@@ -44,34 +48,71 @@ class AddStileType : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddStileTypeForm()
 
+    private fun dataPresentAndChanged(key: String, value: String, changes: StringMapChangesBuilder): Boolean {
+        if(changes.getPreviousValue(key) == null) {
+            return false
+        }
+        if(changes.getPreviousValue(key) == value) {
+            return false
+        }
+        return true
+    }
+
+    private fun applyStileAndMaterial(newStileType: String, newStileMaterial: String, changes: StringMapChangesBuilder) {
+        if(dataPresentAndChanged("stile", newStileType, changes)
+            ||
+            dataPresentAndChanged("material", newStileMaterial, changes)){
+            // detailed tags should be removed as stile was rebuilt
+            // don't delete "material", it is set below
+            changes.deleteIfExistList(DETAILED_KEYS - "material")
+        }
+        if(changes.getPreviousValue("material") != newStileMaterial) {
+            changes.addOrModify("material", newStileMaterial)
+            if(changes.getPreviousValue("stile") != newStileType) {
+                changes.addOrModify("stile", newStileType)
+            }
+        } else {
+            changes.updateWithCheckDate("stile", newStileType)
+        }
+    }
+
     override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
         when (answer) {
             BarrierType.STILE_SQUEEZER -> {
-                changes.add("stile", "squeezer")
+                val newStileType = "squeezer"
+                if(dataPresentAndChanged("stile", newStileType, changes)) {
+                    changes.deleteIfExistList(DETAILED_KEYS)
+                }
+                changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_LADDER -> {
-                changes.add("stile", "ladder")
+                val newStileType = "ladder"
+                if(dataPresentAndChanged("stile", newStileType, changes)) {
+                    changes.deleteIfExistList(DETAILED_KEYS)
+                }
+                changes.updateWithCheckDate("stile", newStileType)
             }
             BarrierType.STILE_STEPOVER_WOODEN -> {
-                changes.addOrModify("stile", "stepover")
-                changes.addOrModify("material", "wood")
+                val newStileType = "stepover"
+                val newStileMaterial = "wood"
+                applyStileAndMaterial(newStileType, newStileMaterial, changes)
             }
             BarrierType.STILE_STEPOVER_STONE -> {
-                changes.addOrModify("stile", "stepover")
-                changes.addOrModify("material", "stone")
+                val newStileType = "stepover"
+                val newStileMaterial = "stone"
+                applyStileAndMaterial(newStileType, newStileMaterial, changes)
             }
             BarrierType.KISSING_GATE -> {
-                changes.modify("barrier", "kissing_gate")
-                changes.deleteIfExists("step_count")
-                changes.deleteIfExists("wheelchair")
-                changes.deleteIfExists("bicycle")
-                changes.deleteIfExists("dog_gate")
-                changes.deleteIfExists("material")
-                changes.deleteIfExists("height")
-                changes.deleteIfExists("width")
-                changes.deleteIfExists("stroller")
+                changes.deleteIfExistList(DETAILED_KEYS)
+                changes.deleteIfExists("stile")
+                changes.modify("barrier", answer.osmValue)
             }
         }
+    }
 
+    companion object {
+        private val DETAILED_KEYS = listOf("step_count", "wheelchair", "bicycle",
+                "dog_gate", "material", "height", "width", "stroller", "steps")
     }
 }
+

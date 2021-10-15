@@ -15,9 +15,8 @@ import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserController
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
+import de.westnordost.streetcomplete.data.user.UserDataController
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
@@ -36,9 +35,8 @@ import javax.inject.Singleton
     private val context: Context,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
-    private val loginStatusSource: LoginStatusSource,
+    private val userLoginStatusSource: UserLoginStatusSource,
     private val prefs: SharedPreferences,
-    private val userController: UserController,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesDao: DownloadedTilesDao
 ) : LifecycleObserver {
@@ -82,7 +80,7 @@ import javax.inject.Singleton
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusListener {
+    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {
             triggerAutoUpload()
         }
@@ -111,7 +109,7 @@ import javax.inject.Singleton
     init {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
-        loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
@@ -132,7 +130,7 @@ import javax.inject.Singleton
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
-        loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
     }
 
@@ -155,6 +153,7 @@ import javax.inject.Singleton
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
         val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
+        // TODO getDownloadBoundingBox accesses a database while this is executed on the main thread, this causes an ANR for some people
         val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
         if (downloadBoundingBox != null) {
             try {
@@ -170,7 +169,7 @@ import javax.inject.Singleton
     fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!userController.isLoggedIn) return
+        if (!userLoginStatusSource.isLoggedIn) return
 
         try {
             uploadController.upload()

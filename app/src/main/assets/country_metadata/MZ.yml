@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, StandardBank, Moza, Millennium bim, Millennium Bim]
+atmOperators: [BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, Millennium Bim, StandardBank, Millennium bim, Moza]
 centerLine: white
 isLeftHandTraffic: true
 isLivingStreetKnown: true

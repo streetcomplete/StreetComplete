@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco Metropolitano, BANDEC, BPA, Banco Popular de Ahorro, Cajeros Automáticos, Cajero automático, Cajero Automático, Bandec, BPP, BM, Cajeros, Banco metropolitano, Banco de Credito y Comercio, Banco Popular De Ahorro, Banco]
+atmOperators: [Banco Metropolitano, BANDEC, BPA, Banco Popular de Ahorro, Cajero automático, Cajeros Automáticos, BPP, Bandec, Cajero Automático, Banco de Credito y Comercio, Banco, Banco Popular De Ahorro, Banco Popular de ahorro, BM, Banco metropolitano, Cajeros]
 centerLine: yellow
 mobileCountryCode: 368
 officialLanguages: [es]

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, Demir bank, РСК, DemirBank, DEMiR Bank, Халык Банк, РСК банк, КБ Кыргызстан, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Коммерческий банк Кыргызстан, Демир банк, Демир Банк]
+atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, Demir bank, РСК, DemirBank, DEMiR Bank, КБ Кыргызстан, Халык Банк, Айыл Банк, РСК банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Демир Банк, Коммерческий банк Кыргызстан]
 isLivingStreetKnown: true
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
