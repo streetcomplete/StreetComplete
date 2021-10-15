@@ -24,6 +24,7 @@ achievements graphics/
     regular                     Judith Gastell, License: CC-BY-SA 4.0
     surveyor                    mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                 (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+    traffic_calming             mashup with https://commons.wikimedia.org/wiki/File:Belgian_road_sign_A14.svg (License: PD)
     tourist                     Judith Gastell, License: CC-BY-SA 4.0
     veg                         Florian Edelmann; mashup with
                                 https://github.com/twitter/twemoji/blob/v13.0.1/assets/svg/1f955.svg (License: CC-BY 4.0)
