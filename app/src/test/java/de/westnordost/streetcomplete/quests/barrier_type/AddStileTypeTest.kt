@@ -85,7 +85,7 @@ class AddStileTypeTest {
         questType.verifyAnswer(
             mapOf(
                 "barrier" to "stile",
-                "material" to "wooden",
+                "material" to "wood",
                 "tag_not_in_list_for_removal" to "dummy_value",
             ),
             StileType.STEPOVER_WOODEN,
