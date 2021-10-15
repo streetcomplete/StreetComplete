@@ -42,6 +42,42 @@ class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPref
     private fun getKey(key: String) = Prefs.LAST_PICKED_PREFIX + key
 }
 
+/* Returns `count` unique items, sorted by how often they appear in the last `historyCount` answers.
+ * If fewer than `count` unique items are found, look farther back in the history.
+ * Only returns items in `itemPool` ("valid"), although other answers count towards `historyCount`.
+ * If there are not enough unique items in the whole history, add unique `defaultItems` as needed.
+ * Always include the most recent answer, if it is in `itemPool`, but still sorted normally. So, if
+ * it is not one of the `count` most frequent items, it will replace the last of those.
+ *
+ * impl: null represents items not in the item pool
+ */
+fun <T> LastPickedValuesStore<T>.getWeighted(
+    key: String,
+    count: Int,
+    historyCount: Int,
+    defaultItems: List<GroupableDisplayItem<T>>,
+    itemPool: List<GroupableDisplayItem<T>>
+): List<GroupableDisplayItem<T>> {
+    val stringToItem = itemPool.associateBy { it.value.toString() }
+    val recents = get(key).asSequence().map { stringToItem.get(it) }
+    val counts = recents.countUniqueNonNull(historyCount, count)
+    val topRecent = counts.keys.sortedByDescending { counts.get(it) }
+    val first = recents.take(1).filterNotNull()
+    val items = (first + topRecent + defaultItems).distinct().take(count)
+    return items.sortedByDescending { counts.get(it) }.toList()
+}
+
+// Counts at least the first `minItems`, keeps going until it finds at least `target` unique values
+private fun <T> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int): Map<T, Int> {
+    val counts = mutableMapOf<T, Int>()
+    val items = takeAtLeastWhile(minItems) { counts.size < target }.filterNotNull()
+    return items.groupingBy { it }.eachCountTo(counts)
+}
+
+// Take at least `count` elements, then continue until `predicate` returns false
+private fun <T> Sequence<T>.takeAtLeastWhile(count: Int, predicate: (T) -> Boolean): Sequence<T> =
+    withIndex().takeWhile{ (i, t) -> i < count || predicate(t) }.map { it.value }
+
 fun <T> LastPickedValuesStore<T>.moveLastPickedGroupableDisplayItemToFront(
     key: String,
     items: LinkedList<GroupableDisplayItem<T>>,

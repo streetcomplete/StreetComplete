@@ -93,11 +93,8 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        val validValues = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
-        val recents = favs.get(javaClass.simpleName).mapNotNull { validStringsToItem.get(it) }
-        val counts = recents.subListOfFirst(30).groupingBy { it }.eachCount()
-        val sorted = counts.keys.sortedByDescending { counts.get(it) }
-        return (sorted + topItems).distinct().subList(0, 6)
+        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
+        return favs.getWeighted(javaClass.simpleName, 6, 30, topItems, validSuggestions)
     }
 
     override fun onClickOk() {
@@ -135,5 +132,3 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     override fun isFormComplete() = selectedItem != null
 }
-
-fun <T>List<T>.sublistOfFirst(max: Int) = subList(0, min(max, size))
