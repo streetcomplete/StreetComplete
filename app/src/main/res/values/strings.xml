@@ -1084,8 +1084,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
-    <string name="quest_traffic_calming_type_bump">Bump (narrower)</string>
-    <string name="quest_traffic_calming_type_hump">Hump (wider)</string>
+    <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
+    <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
     <string name="quest_traffic_calming_type_table">Table (flat top)</string>
     <string name="quest_traffic_calming_type_cushion">Cushion (not bumpy for buses)</string>
     <string name="quest_traffic_calming_type_choker">Narrowed road</string>
