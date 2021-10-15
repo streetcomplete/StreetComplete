@@ -333,8 +333,8 @@ import javax.inject.Singleton
         AddAcceptsCash(featureDictionaryFuture),
         AddVegetarian(),
         AddVegan(),
+        AddHalal(), // there are ~ 100 times more Muslims than Jews
         AddKosher(),
-        AddHalal(),
         AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddInternetAccess(), // used by OsmAnd
 
