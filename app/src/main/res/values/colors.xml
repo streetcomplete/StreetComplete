@@ -77,4 +77,8 @@
     <color name="team_11">#655555</color>
 
     <color name="star_of_david">#22f</color>
+
+    <!-- for fading out images -->
+    <color name="fade_out">#fff</color>
+    <color name="fade_out_transparent">#00FFFFFF</color>
 </resources>

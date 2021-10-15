@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.data.notifications
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataController
+import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
-import javax.inject.Named
 import javax.inject.Singleton
 
 /** This has nothing to do with Android notifications. Android reserves far too many keywords for
@@ -15,10 +16,9 @@ import javax.inject.Singleton
  *  This class is to access user notifications, which are basically dialogs that pop up when
  *  clicking on the bell icon, such as "you have a new OSM message in your inbox" etc. */
 @Singleton class NotificationsSource @Inject constructor(
-    private val userStore: UserStore,
-    private val newUserAchievementsDao: NewUserAchievementsDao,
+    private val userDataController: UserDataController,
+    private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
-    @Named("Achievements") achievements: List<Achievement>,
     private val prefs: SharedPreferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -29,17 +29,24 @@ import javax.inject.Singleton
     }
     private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
 
-    private val achievementsById = achievements.associateBy { it.id }
+    /** Achievement levels unlocked since application start. I.e. when restarting the app, the
+     *  notifications about new achievements unlocked are lost, this is deliberate */
+    private val newAchievements = ArrayList<Pair<Achievement, Int>>()
 
     init {
-        userStore.addListener(object : UserStore.UpdateListener {
-            override fun onUserDataUpdated() {
+        userDataController.addListener(object : UserDataSource.Listener {
+            override fun onUpdated() {
                 onNumberOfNotificationsUpdated()
             }
         })
-        newUserAchievementsDao.addListener(object : NewUserAchievementsDao.Listener {
-            override fun onNewUserAchievementsUpdated() {
+        achievementsSource.addListener(object : AchievementsSource.Listener {
+            override fun onAchievementUnlocked(achievement: Achievement, level: Int) {
+                newAchievements.add(achievement to level)
                 onNumberOfNotificationsUpdated()
+            }
+
+            override fun onAllAchievementsUpdated() {
+                // when all achievements have been updated, this doesn't spawn any notifications
             }
         })
         questSelectionHintController.addListener(object : QuestSelectionHintController.Listener {
@@ -58,7 +65,7 @@ import javax.inject.Singleton
 
     fun getNumberOfNotifications(): Int {
         val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
-        val hasUnreadMessages = userStore.unreadMessagesCount > 0
+        val hasUnreadMessages = userDataController.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
         if (lastVersion == null) {
@@ -69,7 +76,7 @@ import javax.inject.Singleton
         if (shouldShowQuestSelectionHint) notifications++
         if (hasUnreadMessages) notifications++
         if (hasNewVersion) notifications++
-        notifications += newUserAchievementsDao.getCount()
+        notifications += newAchievements.size
         return notifications
     }
 
@@ -90,18 +97,15 @@ import javax.inject.Singleton
             return QuestSelectionHintNotification
         }
 
-        val newAchievement = newUserAchievementsDao.pop()
+        val newAchievement = newAchievements.removeFirstOrNull()
         if (newAchievement != null) {
             onNumberOfNotificationsUpdated()
-            val achievement = achievementsById[newAchievement.first]
-            if (achievement != null) {
-                return NewAchievementNotification(achievement, newAchievement.second)
-            }
+            return NewAchievementNotification(newAchievement.first, newAchievement.second)
         }
 
-        val unreadOsmMessages = userStore.unreadMessagesCount
+        val unreadOsmMessages = userDataController.unreadMessagesCount
         if (unreadOsmMessages > 0) {
-            userStore.unreadMessagesCount = 0
+            userDataController.unreadMessagesCount = 0
             return OsmUnreadMessagesNotification(unreadOsmMessages)
         }
 

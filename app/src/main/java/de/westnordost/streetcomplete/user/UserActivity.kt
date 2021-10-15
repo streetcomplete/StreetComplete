@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.FragmentContainerActivity
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,7 +25,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
     AchievementsFragment.Listener,
     QuestStatisticsFragment.Listener {
 
-    @Inject internal lateinit var loginStatusSource: LoginStatusSource
+    @Inject internal lateinit var userLoginStatusSource: UserLoginStatusSource
 
     private val countryDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment?
@@ -37,7 +36,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
     private val achievementDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
 
-    private val loginStatusListener = object : UserLoginStatusListener {
+    private val loginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) }}
         override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) }}
     }
@@ -53,11 +52,11 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         if (savedInstanceState == null) {
             mainFragment = when {
                 intent.getBooleanExtra(EXTRA_LAUNCH_AUTH, false) -> LoginFragment.create(true)
-                loginStatusSource.isLoggedIn -> UserFragment()
+                userLoginStatusSource.isLoggedIn -> UserFragment()
                 else -> LoginFragment.create()
             }
         }
-        loginStatusSource.addLoginStatusListener(loginStatusListener)
+        userLoginStatusSource.addListener(loginStatusListener)
     }
 
     override fun onBackPressed() {
@@ -81,7 +80,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     override fun onDestroy() {
         super.onDestroy()
-        loginStatusSource.removeLoginStatusListener(loginStatusListener)
+        userLoginStatusSource.removeListener(loginStatusListener)
     }
 
     /* ---------------------------- AchievementsFragment.Listener ------------------------------- */
