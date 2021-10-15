@@ -371,9 +371,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
-    <string name="quest_crossing_type_marked">Marked crossing</string>
-    <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
+    <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
+    <string name="quest_crossing_type_marked">Marked</string>
+    <string name="quest_crossing_type_unmarked">Without road markings</string>
     <string name="action_undo">Undo</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="synced">Synced</string>
