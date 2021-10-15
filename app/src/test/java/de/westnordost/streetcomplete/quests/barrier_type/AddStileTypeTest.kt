@@ -110,6 +110,18 @@ class AddStileTypeTest {
     }
 
     @Test
+    fun `on stepover add material if everything else is tagged`() {
+        questType.verifyAnswer(
+            mapOf(
+                "barrier" to "stile",
+                "stile" to "stepover",
+            ),
+            StileType.STEPOVER_WOODEN,
+            StringMapEntryAdd("material", "wood"),
+        )
+    }
+
+    @Test
     fun `answering that it is now a kissing gate`() {
         questType.verifyAnswer(
             mapOf(

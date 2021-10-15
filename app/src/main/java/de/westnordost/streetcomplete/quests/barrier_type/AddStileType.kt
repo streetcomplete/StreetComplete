@@ -68,6 +68,10 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                     } else {
                         changes.deleteIfExists("material")
                     }
+                } else if (newMaterial != null && oldMaterial == null) {
+                    // not considered as rebuilt, but material info still
+                    // can be added where it was missing
+                    changes.add("material", newMaterial)
                 }
                 if (newType != oldType) {
                     changes.addOrModify("stile", newType)
