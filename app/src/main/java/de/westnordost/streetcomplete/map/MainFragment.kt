@@ -238,8 +238,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        val isFollowingPosition = mapFragment?.isFollowingPosition ?: false
-        binding.gpsTrackingButton.isActivated = isFollowingPosition
+        binding.gpsTrackingButton.isActivated =  mapFragment?.isFollowingPosition ?: false
+        binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         updateLocationPointerPin()
     }
 
@@ -559,6 +559,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun onLocationIsDisabled() {
         binding.gpsTrackingButton.state = if (requireContext().hasLocationPermission)
             LocationState.ALLOWED else LocationState.DENIED
+        binding.gpsTrackingButton.isNavigation = false
         binding.locationPointerPin.visibility = View.GONE
         mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
