@@ -61,6 +61,13 @@
             android:persistent="true"
             />
 
+        <SwitchPreference
+            android:key="display.showZoomButtons"
+            android:title="@string/pref_title_show_zoom_buttons"
+            android:defaultValue="true"
+            android:persistent="true"
+            />
+
     <!--
         <ListPreference
             android:key="theme.background_type"

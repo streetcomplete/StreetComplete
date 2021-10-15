@@ -26,6 +26,7 @@ import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
@@ -165,6 +166,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
 
         updateMapQuestOffsets()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val zoomButtonsVisible = prefs.getBoolean(Prefs.SHOW_ZOOM_BUTTONS, true)
+        binding.zoomInButton.isVisible = zoomButtonsVisible
+        binding.zoomOutButton.isVisible = zoomButtonsVisible
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
