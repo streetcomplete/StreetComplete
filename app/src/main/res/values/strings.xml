@@ -1083,6 +1083,15 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
+    <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
+    <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
+    <string name="quest_traffic_calming_type_table">Table (flat top)</string>
+    <string name="quest_traffic_calming_type_cushion">Cushion (not bumpy for buses)</string>
+    <string name="quest_traffic_calming_type_choker">Narrowed road</string>
+    <string name="quest_traffic_calming_type_island">Island</string>
+    <string name="quest_traffic_calming_type_chicane">Deliberate curve(s)</string>
+    <string name="quest_traffic_calming_type_rumble_strip">Rumble strip(s)</string>
     <string name="quest_surface_value_concrete_plates">Concrete plates</string>
     <string name="quest_surface_value_concrete_lanes">Concrete lanes</string>
     <string name="quest_fireHydrant_diameter_title">What diameter is on this fire hydrant’s sign?</string>
