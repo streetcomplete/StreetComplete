@@ -153,6 +153,7 @@ import javax.inject.Singleton
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
         val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
+        // TODO getDownloadBoundingBox accesses a database while this is executed on the main thread, this causes an ANR for some people
         val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
         if (downloadBoundingBox != null) {
             try {
