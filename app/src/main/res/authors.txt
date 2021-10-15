@@ -23,7 +23,8 @@ barrier_stile_ladder.jpg       CC-BY-SA 2.0      David Gruar https://commons.wik
 barrier_stile_stepover_wood... CC-BY-SA 2.0      Philip Halling https://commons.wikimedia.org/wiki/File:Daffodil_Way,_Dymock_-_geograph.org.uk_-_69563.jpg
 barrier_stile_stepover_ston... CC-BY-SA 2.0      Dave Pickersgill https://www.geograph.org.uk/photo/3634198
 barrier_kissing_gate.jpg       CC-BY-SA 2.0      David Anstiss https://commons.wikimedia.org/wiki/File:Kissing_gate_near_Trillinghurst_Farm_-_geograph.org.uk_-_1512534.jpg
-barrier_bicycle_barrier_dia... CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
+barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
+barrier_bicycle_barrier_dia... CC0               DerDings https://commons.wikimedia.org/wiki/File%3ABicycle%5Fbarrier%2EJPG
 barrier_bicycle_barrier_sin... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier2.jpg
 barrier_bicycle_barrier_dou... CC-BY-SA-4.0      SupapleX https://commons.wikimedia.org/wiki/File:Umlaufsperre_%C3%BCberlappt_Berlin_Thomash%C3%B6he.jpg
 barrier_bicycle_barrier_tri... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier1.jpg
