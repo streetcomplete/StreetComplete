@@ -1,3 +1,19 @@
+v37.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What diameter is on this fire hydrant’s sign?</i> (#3342), by @thefeiter</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Ask again for the type of stile every 8 years (#3187, #3370), thanks @matkoniecz</li>
+  <li>More compact wording for crossing types (#3383), by @matkoniecz</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Edit history sidebar now appears immediately on tapping the undo button, last edit is at the
+      bottom and pre-selected (#3349), by @smichel17</li>
+  </ul>
+
 v36.0: |
   <h3>Easier orientation</h3>
   <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
