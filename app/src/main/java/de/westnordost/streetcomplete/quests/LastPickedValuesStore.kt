@@ -15,20 +15,20 @@ import kotlin.math.min
 /** T must be a string or enum - something that distinctly converts toString. */
 class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPreferences) {
 
-    fun add(key: String, newValues: Iterable<T>, max: Int = -1, allowDuplicates: Boolean = false) {
+    fun add(key: String, newValues: Iterable<T>, max: Int? = null, allowDuplicates: Boolean = false) {
         val values = get(key)
         for (value in newValues.map { it.toString() }) {
             values.addFirst(value)
         }
         val unique = if (allowDuplicates) values else values.distinct()
-        val lastValues = if (max != -1) unique.subList(0, min(unique.size, max)) else unique
+        val lastValues = unique.subList(0, min(unique.size, max ?: MAX_ENTRIES))
         android.util.Log.d("FAV", "Pref ${key} value: ${lastValues.joinToString(",")}")
         prefs.edit {
             putString(getKey(key), lastValues.joinToString(","))
         }
     }
 
-    fun add(key: String, value: T, max: Int = -1, allowDuplicates: Boolean = false) {
+    fun add(key: String, value: T, max: Int? = null, allowDuplicates: Boolean = false) {
         add(key, listOf(value), max, allowDuplicates)
     }
 
@@ -41,6 +41,8 @@ class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPref
 
     private fun getKey(key: String) = Prefs.LAST_PICKED_PREFIX + key
 }
+
+private const val MAX_ENTRIES = 100
 
 /* Returns `count` unique items, sorted by how often they appear in the last `historyCount` answers.
  * If fewer than `count` unique items are found, look farther back in the history.
