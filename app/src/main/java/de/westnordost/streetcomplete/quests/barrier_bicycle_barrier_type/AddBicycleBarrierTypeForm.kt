@@ -8,11 +8,11 @@ import de.westnordost.streetcomplete.view.image_select.Item
 class AddBicycleBarrierTypeForm : AImageListQuestAnswerFragment<BicycleBarrierType, BicycleBarrierType>() {
 
     override val items = listOf(
-        Item(SINGLE, R.drawable.barrier_bicycle_barrier_single),
-        Item(DOUBLE, R.drawable.barrier_bicycle_barrier_double),
-        Item(TRIPLE, R.drawable.barrier_bicycle_barrier_triple),
-        Item(DIAGONAL, R.drawable.barrier_bicycle_barrier_diagonal),
-        Item(SQUEEZE, R.drawable.barrier_bicycle_barrier_squeeze),
+        Item(SINGLE, R.drawable.barrier_bicycle_barrier_single, R.string.quest_barrier_bicycle_type_single),
+        Item(DOUBLE, R.drawable.barrier_bicycle_barrier_double, R.string.quest_barrier_bicycle_type_double),
+        Item(TRIPLE, R.drawable.barrier_bicycle_barrier_triple, R.string.quest_barrier_bicycle_type_multiple),
+        Item(DIAGONAL, R.drawable.barrier_bicycle_barrier_diagonal, R.string.quest_barrier_bicycle_type_diagonal),
+        Item(SQUEEZE, R.drawable.barrier_bicycle_barrier_squeeze, R.string.quest_barrier_bicycle_type_squeeze),
     )
 
     override val itemsPerRow = 3
