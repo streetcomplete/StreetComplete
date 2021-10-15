@@ -1087,7 +1087,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_traffic_calming_type_bump">Bump (narrower)</string>
     <string name="quest_traffic_calming_type_hump">Hump (wider)</string>
     <string name="quest_traffic_calming_type_table">Table (flat top)</string>
-    <string name="quest_traffic_calming_type_cushion">Cushion (free pass for buses)</string>
+    <string name="quest_traffic_calming_type_cushion">Cushion (not bumpy for buses)</string>
     <string name="quest_traffic_calming_type_choker">Narrowed road</string>
     <string name="quest_traffic_calming_type_island">Island</string>
     <string name="quest_traffic_calming_type_chicane">Deliberate curve(s)</string>
