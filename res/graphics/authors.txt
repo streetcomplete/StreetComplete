@@ -218,6 +218,7 @@ quest icons/
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
     car.svg                          modified from Twemoji: U+1F698
+    car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
