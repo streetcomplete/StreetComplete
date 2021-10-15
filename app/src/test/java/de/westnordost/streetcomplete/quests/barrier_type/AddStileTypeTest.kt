@@ -81,6 +81,19 @@ class AddStileTypeTest {
     }
 
     @Test
+    fun `don't reset tags when adding a stile type tag to a stile where the chosen material is already tagged`() {
+        questType.verifyAnswer(
+            mapOf(
+                "barrier" to "stile",
+                "material" to "wooden",
+                "tag_not_in_list_for_removal" to "dummy_value",
+            ),
+            StileType.STEPOVER_WOODEN,
+            StringMapEntryAdd("stile", "stepover"),
+        )
+    }
+
+    @Test
     fun `handle adding stile tag where other values are present`() {
         questType.verifyAnswer(
             mapOf(
