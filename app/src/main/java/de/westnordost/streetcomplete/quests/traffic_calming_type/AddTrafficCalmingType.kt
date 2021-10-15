@@ -15,7 +15,7 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
     """
     override val commitMessage = "Add specific traffic calming type on a point"
     override val wikiLink = "Key:traffic_calming"
-    override val icon = R.drawable.ic_quest_traffic_calming
+    override val icon = R.drawable.ic_quest_car_bumpy
     override val isDeleteElementEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_calming_type_title
