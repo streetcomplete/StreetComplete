@@ -191,6 +191,8 @@ import javax.inject.Singleton
         AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
         AddParkingFee(), // used by OsmAnd
 
+        AddTrafficCalmingType(),
+
         // steps
         AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
         AddStepsRamp(),
@@ -231,8 +233,6 @@ import javax.inject.Singleton
         AddTrafficSignalsButton(),
 
         /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
-        AddTrafficCalmingType(),
-
         AddInformationToTourism(), // OSM Carto
 
         AddPoliceType(),
