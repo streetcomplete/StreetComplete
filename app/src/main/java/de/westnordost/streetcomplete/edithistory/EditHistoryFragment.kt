@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -73,10 +74,17 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.editHistoryList.respectSystemInsets { updatePadding(left = it.left, top = it.top, bottom = it.bottom) }
+        val initialPaddingBottom = binding.editHistoryList.paddingBottom
+        binding.editHistoryList.respectSystemInsets {
+            updatePadding(left = it.left, top = it.top, bottom = it.bottom + initialPaddingBottom)
+        }
         viewLifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)
+            val first = edits.firstOrNull { it.isUndoable }
+            if (first != null) {
+                adapter.select(first)
+            }
             binding.editHistoryList.adapter = adapter
         }
     }
