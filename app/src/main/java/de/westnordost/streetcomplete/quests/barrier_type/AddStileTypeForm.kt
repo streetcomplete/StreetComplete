@@ -13,9 +13,9 @@ class AddStileTypeForm : AImageListQuestAnswerFragment<StileTypeAnswer, StileTyp
         Item(LADDER, R.drawable.barrier_stile_ladder, R.string.quest_barrier_type_stile_ladder),
         Item(STEPOVER_WOODEN, R.drawable.barrier_stile_stepover_wooden, R.string.quest_barrier_type_stepover_wooden),
         Item(STEPOVER_STONE, R.drawable.barrier_stile_stepover_stone, R.string.quest_barrier_type_stepover_stone),
-        Item(IsKissingGate, R.drawable.barrier_kissing_gate, R.string.quest_barrier_type_kissing_gate_conversion),
+        Item(ConvertedStile.KISSING_GATE, R.drawable.barrier_kissing_gate, R.string.quest_barrier_type_kissing_gate_conversion),
+        Item(ConvertedStile.PASSAGE, R.drawable.barrier_passage, R.string.quest_barrier_type_passage_conversion),
     )
-
     override val itemsPerRow = 2
 
     override fun onClickOk(selectedItems: List<StileTypeAnswer>) {

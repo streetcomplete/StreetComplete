@@ -77,10 +77,10 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                     changes.addOrModify("stile", newType)
                 }
             }
-            IsKissingGate -> {
+            is ConvertedStile -> {
                 changes.deleteIfExistList(STILE_PROPERTIES)
                 changes.deleteIfExists("stile")
-                changes.modify("barrier", "kissing_gate")
+                changes.modify("barrier", answer.newBarrier)
             }
         }
         // policy is to not remove a check date if one is already there but update it instead
