@@ -52,7 +52,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
                 changes.deleteIfExists("disused")
             }
             if(answer == BuildingType.RUINS && changes.getPreviousValue("abandoned") == "no") {
-                changes.deleteIfExists("disused")
+                changes.deleteIfExists("abandoned")
             }
         } else {
             changes.modify("building", answer.osmValue)
