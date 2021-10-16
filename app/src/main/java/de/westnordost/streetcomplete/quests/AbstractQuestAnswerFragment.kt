@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
@@ -87,7 +86,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         private set
 
     private var currentContext = WeakReference<Context>(null)
-    private var currentCountryContext: ContextWrapper? = null
 
     private val englishResources: Resources
         get() {
@@ -133,6 +131,9 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val mccListener: RequireCountrySpecificResourcesListener? get() =
+        activity as? RequireCountrySpecificResourcesListener
+
     init {
         val fields = InjectedFields()
         Injector.applicationComponent.inject(fields)
@@ -152,6 +153,8 @@ abstract class AbstractQuestAnswerFragment<T> :
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
+
+        countryInfo.mobileCountryCode?.let { mccListener?.onRequireCountrySpecificResources(it) }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -271,33 +274,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         } else {
             otherAnswersButton?.setText(R.string.quest_generic_otherAnswers)
             otherAnswersButton?.setOnClickListener { showOtherAnswers() }
-        }
-    }
-
-    /** Note: Due to Android architecture limitations, a layout inflater based on this ContextWrapper
-     * will not resolve any resources specified in the XML according to MCC  */
-    override fun onGetLayoutInflater(savedInstanceState: Bundle?): LayoutInflater {
-        // will always return a layout inflater for the current country
-        return super.onGetLayoutInflater(savedInstanceState).cloneInContext(context)
-    }
-
-    override fun getContext(): Context? {
-        val context = super.getContext()
-        if (currentContext.get() !== context) {
-            currentContext = WeakReference<Context>(context)
-            currentCountryContext = if (context != null) createCurrentCountryContextWrapper(context) else null
-        }
-        return currentCountryContext
-    }
-
-    private fun createCurrentCountryContextWrapper(context: Context): ContextWrapper {
-        val conf = Configuration(context.resources.configuration)
-        conf.mcc = countryInfo.mobileCountryCode ?: 0
-        val res = context.createConfigurationContext(conf).resources
-        return object : ContextWrapper(context) {
-            override fun getResources(): Resources {
-                return res
-            }
         }
     }
 

@@ -22,12 +22,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.databinding.FragmentShowQuestFormsBinding
 import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
+import de.westnordost.streetcomplete.ktx.updateConfiguration
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.RequireCountrySpecificResourcesListener
 import de.westnordost.streetcomplete.view.ListAdapter
 
 /** activity only used in debug, to show all the different forms for the different quests. */
-class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
+class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener,
+    RequireCountrySpecificResourcesListener {
 
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var prefs: SharedPreferences
@@ -161,5 +164,9 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     }
     override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         popQuestForm("Replacing shop element")
+    }
+
+    override fun onRequireCountrySpecificResources(mobileCountryCode: Int) {
+        resources.updateConfiguration { mcc = mobileCountryCode }
     }
 }
