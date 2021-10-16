@@ -1061,6 +1061,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_stepover_stone">Stone step-over stile</string>
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
+    <string name="quest_barrier_type_passage_conversion">Converted into a passage in a wall/fence/etc.</string>
     <string name="quest_stile_type_title">What type of stile is this?</string>
     <string name="quest_bollard_type_title">What type of bollard is this?</string>
     <string name="quest_bollard_type_rising">Rising</string>

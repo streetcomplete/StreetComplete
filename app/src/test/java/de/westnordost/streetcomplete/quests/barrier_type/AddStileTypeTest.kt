@@ -140,7 +140,7 @@ class AddStileTypeTest {
             mapOf(
                 "barrier" to "stile"
             ),
-            IsKissingGate,
+            ConvertedStile.KISSING_GATE,
             StringMapEntryModify("barrier", "stile", "kissing_gate"),
         )
     }
@@ -154,10 +154,28 @@ class AddStileTypeTest {
                 "material" to "something else",
                 "ref" to "123",
             ),
-            IsKissingGate,
+            ConvertedStile.KISSING_GATE,
             StringMapEntryModify("barrier", "stile", "kissing_gate"),
             StringMapEntryDelete("stile", "something"),
             StringMapEntryDelete("material", "something else"),
+        )
+    }
+
+    @Test
+    fun `reset tags when marking stile as a passage`() {
+        questType.verifyAnswer(
+            mapOf(
+                "barrier" to "stile",
+                "stile" to "stepover",
+                "material" to "wood",
+                "steps" to "5",
+                "tag_not_in_list_for_removal" to "dummy_value",
+            ),
+            ConvertedStile.PASSAGE,
+            StringMapEntryDelete("steps", "5"),
+            StringMapEntryDelete("material", "wood"),
+            StringMapEntryDelete("stile", "stepover"),
+            StringMapEntryModify("barrier", "stile", "entrance"),
         )
     }
 }
