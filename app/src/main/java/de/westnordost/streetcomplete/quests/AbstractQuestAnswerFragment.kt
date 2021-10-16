@@ -131,9 +131,6 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val mccListener: RequireCountrySpecificResourcesListener? get() =
-        activity as? RequireCountrySpecificResourcesListener
-
     init {
         val fields = InjectedFields()
         Injector.applicationComponent.inject(fields)
@@ -154,7 +151,16 @@ abstract class AbstractQuestAnswerFragment<T> :
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
 
-        countryInfo.mobileCountryCode?.let { mccListener?.onRequireCountrySpecificResources(it) }
+        /* The Android resource system is not designed to offer different resources depending on the
+         * country (code). But what it can do is to offer different resources for different
+         * "mobile country codes" - i.e. in which country your mobile phone network provider
+         * operates.
+         *
+         * A few quest forms want to display different resources depending on the country.
+         *
+         * So what we do here is to override the parent activity's "mobile country code" resource
+         * configuration and use this mechanism to access our country-dependent resources */
+        countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

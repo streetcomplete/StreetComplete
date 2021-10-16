@@ -39,14 +39,12 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.updateConfiguration
 import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
 import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment
-import de.westnordost.streetcomplete.quests.RequireCountrySpecificResourcesListener
 import de.westnordost.streetcomplete.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.parseGeoUri
@@ -55,8 +53,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(),
-    MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener,
-    RequireCountrySpecificResourcesListener {
+    MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
 
 	@Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
 	@Inject lateinit var locationRequestFragment: LocationRequestFragment
@@ -286,12 +283,6 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreatedNote(screenPosition: Point) {
         lifecycleScope.launch { ensureLoggedIn() }
-    }
-
-    /* ------------------------ RequireCountrySpecificResourcesListener ------------------------ */
-
-    override fun onRequireCountrySpecificResources(mobileCountryCode: Int) {
-        resources.updateConfiguration { mcc = mobileCountryCode }
     }
 
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
