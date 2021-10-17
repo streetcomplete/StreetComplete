@@ -193,6 +193,7 @@ class AchievementsControllerTest {
 
         verify(userAchievementsDao).clear()
         verify(userLinksDao).clear()
+        verify(listener).onAllAchievementsUpdated()
     }
 
     @Test fun `get all unlocked links`() {
