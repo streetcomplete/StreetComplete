@@ -80,43 +80,6 @@ private fun <T> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int): Map
 private fun <T> Sequence<T>.takeAtLeastWhile(count: Int, predicate: (T) -> Boolean): Sequence<T> =
     withIndex().takeWhile{ (i, t) -> i < count || predicate(t) }.map { it.value }
 
-fun <T> LastPickedValuesStore<T>.moveLastPickedGroupableDisplayItemToFront(
-    key: String,
-    items: LinkedList<GroupableDisplayItem<T>>,
-    itemPool: List<GroupableDisplayItem<T>>)
-{
-    val lastPickedItems = find(get(key), itemPool)
-    val reverseIt = lastPickedItems.descendingIterator()
-    while (reverseIt.hasNext()) {
-        val lastPicked = reverseIt.next()
-        if (!items.remove(lastPicked)) items.removeLast()
-        items.addFirst(lastPicked)
-    }
-}
-
-private fun <T> find(values: List<String>, itemPool: Iterable<GroupableDisplayItem<T>>): LinkedList<GroupableDisplayItem<T>> {
-    val result = LinkedList<GroupableDisplayItem<T>>()
-    for (value in values) {
-        val item = find(value, itemPool)
-        if(item != null) result.add(item)
-    }
-    return result
-}
-
-private fun <T> find(value: String, itemPool: Iterable<GroupableDisplayItem<T>>): GroupableDisplayItem<T>? {
-    for (item in itemPool) {
-        val subItems = item.items
-        // returns only items which are not groups themselves
-        if (subItems != null) {
-            val subItem = find(value, subItems.asIterable())
-            if (subItem != null) return subItem
-        } else if (value == item.value.toString()) {
-            return item
-        }
-    }
-    return null
-}
-
 fun <T> LastPickedValuesStore<T>.moveLastPickedDisplayItemsToFront(
     key: String,
     items: LinkedList<DisplayItem<T>>,
