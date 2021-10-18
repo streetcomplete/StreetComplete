@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -23,3 +24,6 @@ fun Resources.getDrawable(image: Image): Drawable = when(image) {
     is ResImage -> getDrawable(image.resId)
     is DrawableImage -> image.drawable
 }
+
+fun Resources.updateConfiguration(block: Configuration.() -> Unit) =
+    updateConfiguration(Configuration(configuration).apply(block), displayMetrics)
