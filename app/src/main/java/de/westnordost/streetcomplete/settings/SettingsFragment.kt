@@ -146,9 +146,8 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
-        val now = System.currentTimeMillis()
-        noteController.deleteOlderThan(now)
-        mapDataController.deleteOlderThan(now)
+        mapDataController.clear()
+        noteController.clear()
     }
 
     private fun getQuestPreferenceSummary(): String {

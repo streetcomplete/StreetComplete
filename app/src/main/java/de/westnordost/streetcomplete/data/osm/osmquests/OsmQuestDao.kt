@@ -76,6 +76,10 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
             }
         }
     }
+
+    fun clear() {
+        db.delete(NAME)
+    }
 }
 
 private fun inBoundsSql(bbox: BoundingBox): String = """

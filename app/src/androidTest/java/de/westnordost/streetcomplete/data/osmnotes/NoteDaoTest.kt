@@ -108,6 +108,12 @@ class NoteDaoTest : ApplicationDbTestCase() {
         val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10, 2)
         assertEquals(2, unusedIds.size)
     }
+
+    @Test fun clear() {
+        dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
+        dao.clear()
+        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+    }
 }
 
 private fun createNote(id: Long = 5, position: LatLon = LatLon(1.0, 1.0),

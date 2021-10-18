@@ -116,6 +116,15 @@ class NoteControllerTest {
         verify(listener).onUpdated(eq(emptyList()), eq(emptyList()), eq(ids))
     }
 
+    @Test fun clear() {
+        val listener = mock<NoteController.Listener>()
+        noteController.addListener(listener)
+        noteController.clear()
+
+        verify(dao).clear()
+        verify(listener).onCleared()
+    }
+
     @Test fun `putAllForBBox when nothing was there before`() {
         val bbox = bbox()
         val notes = listOf(note(1), note(2), note(3))
