@@ -10,6 +10,18 @@
     android:padding="10dp"
     android:background="@drawable/background_rectangular_sign">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/maxspeed_zone_label"
+        tools:text="ZONE"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        android:layout_marginBottom="-4dp"
+        tools:ignore="HardcodedText"/>
+
     <LinearLayout
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -45,17 +57,5 @@
             />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/maxspeed_zone_label"
-        tools:text="ZONE"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        android:gravity="center"
-        android:textColor="@color/traffic_black"
-        android:layout_marginBottom="-4dp"
-        tools:ignore="HardcodedText"/>
 
 </LinearLayout>
