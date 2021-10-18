@@ -72,7 +72,7 @@ import javax.inject.Singleton
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)
         mapDataWithGeometry.boundingBox = mapData.boundingBox
 
-        onUpdateForBBox(bbox, mapDataWithGeometry)
+        onReplacedForBBox(bbox, mapDataWithGeometry)
     }
 
     fun updateAll(mapDataUpdates: MapDataUpdates) {
@@ -224,7 +224,7 @@ import javax.inject.Singleton
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
 
-    private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
+    private fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
         listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
     }
 
