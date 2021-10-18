@@ -31,6 +31,9 @@ import javax.inject.Singleton
         /** Called when all elements in the given bounding box should be replaced with the elements
          *  in the mapDataWithGeometry */
         fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry)
+
+        /** Called when all elements have been cleared */
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
@@ -179,7 +182,7 @@ import javax.inject.Singleton
     fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
     fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
 
-    fun deleteOlderThan(timestamp: Long, limit: Int?): Int {
+    fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val elements: List<ElementKey>
         val elementCount: Int
         val geometryCount: Int
@@ -196,6 +199,13 @@ import javax.inject.Singleton
         onUpdated(deleted = elements)
 
         return elementCount
+    }
+
+    fun clear() {
+        elementDB.clear()
+        geometryDB.clear()
+        createdElementsController.clear()
+        onCleared()
     }
 
     fun addListener(listener: Listener) {
@@ -215,8 +225,11 @@ import javax.inject.Singleton
     }
 
     private fun onUpdateForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
-
         listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
+    }
+
+    private fun onCleared() {
+        listeners.forEach { it.onCleared() }
     }
 
     companion object {

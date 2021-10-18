@@ -69,6 +69,10 @@ class NodeDao @Inject constructor(private val db: Database) {
         return db.delete(NAME, "$ID IN ($idsString)")
     }
 
+    fun clear() {
+        db.delete(NAME)
+    }
+
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
         if (limit != null && limit <= 0) return emptyList()
         return db.query(NAME,

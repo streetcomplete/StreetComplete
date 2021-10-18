@@ -78,6 +78,10 @@ class NoteDao @Inject constructor(private val db: Database) {
         return db.delete(NAME, "$ID IN (${ids.joinToString(",")})")
     }
 
+    fun clear() {
+        db.delete(NAME)
+    }
+
     private fun Note.toPairs() = listOf(
         ID to id,
         LATITUDE to position.latitude,

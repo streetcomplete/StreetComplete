@@ -20,6 +20,8 @@ import javax.inject.Singleton
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
@@ -34,6 +36,10 @@ import javax.inject.Singleton
                 editsAppliedToNotes(updated, noteCommentEdits),
                 deleted
             )
+        }
+
+        override fun onCleared() {
+            callOnCleared()
         }
     }
 
@@ -157,5 +163,9 @@ import javax.inject.Singleton
 
     private fun callOnUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
         listeners.forEach { it.onUpdated(added, updated, deleted) }
+    }
+
+    private fun callOnCleared() {
+        listeners.forEach { it.onCleared() }
     }
 }

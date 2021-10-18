@@ -107,6 +107,13 @@ class RelationDao @Inject constructor(private val db: Database) {
         }
     }
 
+    fun clear() {
+        db.transaction {
+            db.delete(NAME_MEMBERS)
+            db.delete(NAME)
+        }
+    }
+
     fun getAllForNode(nodeId: Long) : List<Relation> =
         getAllForElement(ElementType.NODE, nodeId)
 

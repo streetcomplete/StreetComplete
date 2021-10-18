@@ -95,6 +95,13 @@ class WayDao @Inject constructor(private val db: Database) {
         }
     }
 
+    fun clear() {
+        db.transaction {
+            db.delete(NAME_NODES)
+            db.delete(NAME)
+        }
+    }
+
     fun getAllForNode(nodeId: Long): List<Way> {
         return db.transaction {
             val ids = db.query(NAME_NODES,

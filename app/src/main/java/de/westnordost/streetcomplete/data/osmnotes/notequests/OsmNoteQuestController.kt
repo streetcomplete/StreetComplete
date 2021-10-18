@@ -52,6 +52,10 @@ import javax.inject.Singleton
             }
             onUpdated(quests, deletedQuestIds)
         }
+
+        override fun onCleared() {
+            listeners.forEach { it.onInvalidated() }
+        }
     }
 
     private val userLoginStatusListener = object : UserLoginStatusListener {

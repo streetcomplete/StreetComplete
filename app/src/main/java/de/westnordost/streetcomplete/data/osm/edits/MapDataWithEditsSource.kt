@@ -32,6 +32,9 @@ import javax.inject.Singleton
         /** Called when all elements in the given bounding box should be replaced with the elements
          *  in the mapDataWithGeometry */
         fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry)
+
+        /** Called when all map data has been cleared */
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
@@ -94,6 +97,15 @@ import javax.inject.Singleton
             }
 
             callOnReplacedForBBox(bbox, mapDataWithGeometry)
+        }
+
+        override fun onCleared() {
+            synchronized(this) {
+                deletedElements.clear()
+                updatedElements.clear()
+                updatedGeometries.clear()
+            }
+            callOnCleared()
         }
     }
 
@@ -410,5 +422,8 @@ import javax.inject.Singleton
     private fun callOnReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         if (mapDataWithGeometry.size == 0) return
         listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
+    }
+    private fun callOnCleared() {
+        listeners.forEach { it.onCleared() }
     }
 }

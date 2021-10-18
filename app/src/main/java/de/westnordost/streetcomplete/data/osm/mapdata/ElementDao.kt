@@ -62,6 +62,12 @@ class ElementDao @Inject constructor(
             nodeDao.deleteAll(elementIds.nodes)
     }
 
+    fun clear() {
+        relationDao.clear()
+        wayDao.clear()
+        nodeDao.clear()
+    }
+
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<ElementKey> {
         val result = mutableListOf<ElementKey>()
         result.addAll(nodeDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(NODE, it) })
