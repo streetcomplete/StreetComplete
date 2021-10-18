@@ -34,7 +34,7 @@ class Cleaner @Inject constructor(
 
     private suspend fun deleteOldData() = withContext(Dispatchers.IO) {
         val oldDataTimestamp = currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
-        noteController.deleteAllOlderThan(oldDataTimestamp)
+        noteController.deleteOlderThan(oldDataTimestamp)
         mapDataController.deleteOlderThan(oldDataTimestamp)
         /* it makes sense to do this after cleaning map data and notes, because some metadata rely
            on map data */
