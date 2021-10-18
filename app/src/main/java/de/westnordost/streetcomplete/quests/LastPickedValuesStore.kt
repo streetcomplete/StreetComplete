@@ -81,23 +81,10 @@ private fun <T> Sequence<T>.takeAtLeastWhile(count: Int, predicate: (T) -> Boole
 
 fun <T> LastPickedValuesStore<T>.moveLastPickedDisplayItemsToFront(
     key: String,
-    items: LinkedList<DisplayItem<T>>,
-    itemPool: List<DisplayItem<T>>)
-{
-    val lastPickedItems = findDisplayItems(get(key), itemPool)
-    val reverseIt = lastPickedItems.descendingIterator()
-    while (reverseIt.hasNext()) {
-        val lastPicked = reverseIt.next()
-        if (!items.remove(lastPicked)) items.removeLast()
-        items.addFirst(lastPicked)
-    }
-}
-
-private fun <T> findDisplayItems(values: List<String>, itemPool: Iterable<DisplayItem<T>>): LinkedList<DisplayItem<T>> {
-    val result = LinkedList<DisplayItem<T>>()
-    for (value in values) {
-        val item = itemPool.find { it.value.toString() == value }
-        if (item != null) result.add(item)
-    }
-    return result
+    defaultItems: List<DisplayItem<T>>,
+    itemPool: List<DisplayItem<T>>
+): List<DisplayItem<T>> {
+    val stringToItem = itemPool.associateBy { it.value.toString() }
+    val lastPickedItems = get(key).asSequence().mapNotNull { stringToItem.get(it) }
+    return (lastPickedItems + defaultItems).distinct().toList()
 }

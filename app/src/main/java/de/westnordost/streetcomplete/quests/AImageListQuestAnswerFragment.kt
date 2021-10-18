@@ -105,12 +105,11 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        val result: LinkedList<DisplayItem<I>> = LinkedList(originalList)
-
-        if (result.size > itemsPerRow && moveFavoritesToFront) {
-            favs.moveLastPickedDisplayItemsToFront(javaClass.simpleName, result, originalList)
+        return if (originalList.size > itemsPerRow && moveFavoritesToFront) {
+            favs.moveLastPickedDisplayItemsToFront(javaClass.simpleName, originalList, originalList)
+        } else {
+            originalList
         }
-        return result
     }
 
     companion object {
