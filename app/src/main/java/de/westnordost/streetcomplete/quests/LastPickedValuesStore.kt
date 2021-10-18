@@ -60,11 +60,11 @@ fun <T> LastPickedValuesStore<T>.getWeighted(
     itemPool: List<GroupableDisplayItem<T>>
 ): List<GroupableDisplayItem<T>> {
     val stringToItem = itemPool.associateBy { it.value.toString() }
-    val recents = get(key).asSequence().map { stringToItem.get(it) }
-    val counts = recents.countUniqueNonNull(historyCount, count)
+    val lastPickedItems = get(key).asSequence().map { stringToItem.get(it) }
+    val counts = lastPickedItems.countUniqueNonNull(historyCount, count)
     val topRecent = counts.keys.sortedByDescending { counts.get(it) }
-    val first = recents.take(1).filterNotNull()
-    val items = (first + topRecent + defaultItems).distinct().take(count)
+    val latest = lastPickedItems.take(1).filterNotNull()
+    val items = (latest + topRecent + defaultItems).distinct().take(count)
     return items.sortedByDescending { counts.get(it) }.toList()
 }
 
