@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.foot
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestMaxspeedLivingStreetConfirmationBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
@@ -30,12 +29,8 @@ class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedFo
 
     private fun confirmLivingStreet() {
         val ctx = context ?: return
-        val dialogBinding = QuestMaxspeedLivingStreetConfirmationBinding.inflate(layoutInflater)
-        // this is necessary because the inflated image view uses the activity context rather than
-        // the fragment / layout inflater context' resources to access it's drawable
-        dialogBinding.livingStreetImage.setImageDrawable(ctx.getDrawable(R.drawable.ic_living_street))
         AlertDialog.Builder(ctx)
-            .setView(dialogBinding.root)
+            .setView(R.layout.quest_maxspeed_living_street_confirmation)
             .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IS_LIVING_STREET) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
