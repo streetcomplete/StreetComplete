@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
-import java.util.LinkedList
-
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Prefs
@@ -16,12 +14,9 @@ import kotlin.math.min
 class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPreferences) {
 
     fun add(key: String, newValues: Iterable<T>, max: Int? = null, allowDuplicates: Boolean = false) {
-        val values = get(key)
-        for (value in newValues.map { it.toString() }) {
-            values.addFirst(value)
-        }
+        val values = newValues.asSequence().map { it.toString() } + get(key)
         val unique = if (allowDuplicates) values else values.distinct()
-        val lastValues = unique.subList(0, min(unique.size, max ?: MAX_ENTRIES))
+        val lastValues = unique.take(max ?: MAX_ENTRIES)
         prefs.edit {
             putString(getKey(key), lastValues.joinToString(","))
         }
@@ -31,12 +26,7 @@ class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPref
         add(key, listOf(value), max, allowDuplicates)
     }
 
-    fun get(key: String): LinkedList<String> {
-        val result = LinkedList<String>()
-        val values = prefs.getString(getKey(key), null)
-        if(values != null) result.addAll(values.split(","))
-        return result
-    }
+    fun get(key: String): Sequence<String> = prefs.getString(getKey(key), "")!!.splitToSequence(",")
 
     private fun getKey(key: String) = Prefs.LAST_PICKED_PREFIX + key
 }
@@ -60,7 +50,7 @@ fun <T> LastPickedValuesStore<T>.getWeighted(
     itemPool: List<GroupableDisplayItem<T>>
 ): List<GroupableDisplayItem<T>> {
     val stringToItem = itemPool.associateBy { it.value.toString() }
-    val lastPickedItems = get(key).asSequence().map { stringToItem.get(it) }
+    val lastPickedItems = get(key).map { stringToItem.get(it) }
     val counts = lastPickedItems.countUniqueNonNull(historyCount, count)
     val topRecent = counts.keys.sortedByDescending { counts.get(it) }
     val latest = lastPickedItems.take(1).filterNotNull()
@@ -85,6 +75,6 @@ fun <T> LastPickedValuesStore<T>.moveLastPickedDisplayItemsToFront(
     itemPool: List<DisplayItem<T>>
 ): List<DisplayItem<T>> {
     val stringToItem = itemPool.associateBy { it.value.toString() }
-    val lastPickedItems = get(key).asSequence().mapNotNull { stringToItem.get(it) }
+    val lastPickedItems = get(key).mapNotNull { stringToItem.get(it) }
     return (lastPickedItems + defaultItems).distinct().toList()
 }

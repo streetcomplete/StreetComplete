@@ -33,7 +33,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val lastPickedAnswers by lazy {
         favs.get(javaClass.simpleName).map { it.toBuildingLevelAnswer() }.sortedWith(
             compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels }
-        )
+        ).toList()
     }
 
     @Inject internal lateinit var favs: LastPickedValuesStore<String>
