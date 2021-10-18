@@ -71,11 +71,11 @@ import javax.inject.Singleton
         dao.put(note)
     }
 
-    fun deleteOlderThan(timestamp: Long): Int {
+    fun deleteOlderThan(timestamp: Long, limit: Int?): Int {
         val ids: List<Long>
         val deletedCount: Int
         synchronized(this) {
-            ids = dao.getIdsOlderThan(timestamp, MAX_DELETE_ELEMENTS)
+            ids = dao.getIdsOlderThan(timestamp, limit)
             if (ids.isEmpty()) return 0
 
             deletedCount = dao.deleteAll(ids)
@@ -109,9 +109,5 @@ import javax.inject.Singleton
 
     companion object {
         private const val TAG = "NoteController"
-
-        /* See comment in MapDataController. For notes, this is not really a problem as there are
-         * not that many notes as map data, but just for consistency. */
-        private const val MAX_DELETE_ELEMENTS = 10_000
     }
 }

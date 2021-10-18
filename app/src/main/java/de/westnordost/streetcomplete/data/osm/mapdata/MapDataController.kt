@@ -179,12 +179,12 @@ import javax.inject.Singleton
     fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
     fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
 
-    fun deleteOlderThan(timestamp: Long): Int {
+    fun deleteOlderThan(timestamp: Long, limit: Int?): Int {
         val elements: List<ElementKey>
         val elementCount: Int
         val geometryCount: Int
         synchronized(this) {
-            elements = elementDB.getIdsOlderThan(timestamp, MAX_DELETE_ELEMENTS)
+            elements = elementDB.getIdsOlderThan(timestamp, limit)
             if (elements.isEmpty()) return 0
 
             elementCount = elementDB.deleteAll(elements)
@@ -221,12 +221,5 @@ import javax.inject.Singleton
 
     companion object {
         private const val TAG = "MapDataController"
-        /* Why deleting at most that many elements? Because I got crash reports of an out of memory
-         * error in NodeDao.deleteAll: Some people managed to download so many OSM elements that
-         * Android is out of memory just joining all the ids that should be deleted to a string. 😐
-         *
-         * Also, the more is cleaned in one go, the longer it blocks any other operations, such as
-         * solving a quest, download,... */
-        private const val MAX_DELETE_ELEMENTS = 10_000
     }
 }
