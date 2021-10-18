@@ -102,14 +102,14 @@ class NoteControllerTest {
         verifyNoInteractions(listener)
     }
 
-    @Test fun deleteAllOlderThan() {
+    @Test fun deleteOlderThan() {
         val ids = listOf(1L,2L,3L)
-        on(dao.getAllIdsOlderThan(123L)).thenReturn(ids)
+        on(dao.getIdsOlderThan(123L)).thenReturn(ids)
         val listener = mock<NoteController.Listener>()
 
         noteController.addListener(listener)
 
-        assertEquals(3, noteController.deleteAllOlderThan(123L))
+        assertEquals(3, noteController.deleteOlderThan(123L))
         verify(dao).deleteAll(ids)
 
         sleep(100)
