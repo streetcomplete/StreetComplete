@@ -22,6 +22,12 @@ class LastPickedValuesStoreTest {
         favs = mock()
     }
 
+    @Test fun `weighted sort returns the default items when there is no history`() {
+        on(favs.get(key)).thenReturn(linkedListOf())
+        val returnedItems = favs.getWeighted(key, 4, 99, defaultItems, allItems)
+        assertEquals(defaultItems, returnedItems)
+    }
+
     @Test fun `weighted sort considers frequency first, then recency, then defaults`() {
         on(favs.get(key)).thenReturn(linkedListOf("A", "C", "B", "B", "C", "D"))
         val returnedItems = favs.getWeighted(key, 6, 99, defaultItems, allItems)
@@ -63,7 +69,6 @@ class LastPickedValuesStoreTest {
         val expectedItems = listOf(B, A, C).toItems()
         assertEquals(expectedItems, returnedItems)
     }
-
 }
 
 private enum class Letter { A, B, C, D, X, Y, Z }
