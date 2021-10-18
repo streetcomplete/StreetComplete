@@ -22,7 +22,6 @@ class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPref
         }
         val unique = if (allowDuplicates) values else values.distinct()
         val lastValues = unique.subList(0, min(unique.size, max ?: MAX_ENTRIES))
-        android.util.Log.d("FAV", "Pref ${key} value: ${lastValues.joinToString(",")}")
         prefs.edit {
             putString(getKey(key), lastValues.joinToString(","))
         }
