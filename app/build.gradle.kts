@@ -194,6 +194,7 @@ tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
     cookie = properties["POEditorCookie"] as String
+    phpsessid = properties["POEditorPHPSESSID"] as String
 }
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
