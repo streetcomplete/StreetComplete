@@ -3,6 +3,7 @@ File                           License / Source (if not given, follow link for l
 
 barrier_passage.jpg            CC-BY-SA 2.0      Meirion https://www.geograph.org.uk/photo/5401039
 barrier_gate.jpg               CC-BY-SA 4.0      Acabashi https://commons.wikimedia.org/wiki/File:Abbess_Roding_-_roadside_white_gate_-_Essex_England.jpg
+barrier_gate_pedestrian.jpg    CC-BY-SA 2.0      Eric Jones https://www.geograph.org.uk/photo/5858269
 barrier_lift_gate.jpg          CC-BY-SA 2.5      Wfm https://commons.wikimedia.org/wiki/File:Sluitlus.jpg
 barrier_swing_gate.jpg         CC-BY 3.0         Marek Ślusarczyk https://commons.wikimedia.org/wiki/File:21_Szlaban_le%C5%9Bny_ogranicza_wjazd_samochodem_do_lasu_-_Forest_area_barrier_in_Poland,_Creative_Commons_Attribution.jpg
 barrier_bollard.jpg            CC-BY-SA 3.0      JVJohannes https://commons.wikimedia.org/wiki/File:Stilpoller_Kugelkopf.jpg
