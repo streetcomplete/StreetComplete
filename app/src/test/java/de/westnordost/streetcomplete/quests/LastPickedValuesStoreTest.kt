@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.quests.Letter.* // For concisision (defined in this file)
+import de.westnordost.streetcomplete.quests.Letter.*
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.view.image_select.Item
