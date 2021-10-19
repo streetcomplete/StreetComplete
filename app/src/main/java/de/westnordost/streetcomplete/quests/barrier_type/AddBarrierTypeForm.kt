@@ -20,7 +20,7 @@ class AddBarrierTypeForm : AImageListQuestAnswerFragment<BarrierType, BarrierTyp
         Item(BLOCK, R.drawable.barrier_block, R.string.quest_barrier_type_block),
         Item(JERSEY_BARRIER, R.drawable.barrier_jersey_barrier, R.string.quest_barrier_jersey_barrier),
         Item(LOG, R.drawable.barrier_log, R.string.quest_barrier_type_log),
-        Item(KERB, R.drawable.kerb_height_raised, R.string.quest_barrier_type_kerb),
+        Item(KERB, R.drawable.barrier_kerb, R.string.quest_barrier_type_kerb),
         Item(HEIGHT_RESTRICTOR, R.drawable.barrier_height_restrictor, R.string.quest_barrier_type_height_restrictor),
         Item(FULL_HEIGHT_TURNSTILE, R.drawable.barrier_full_height_turnstile, R.string.quest_barrier_full_height_turnstile),
         Item(TURNSTILE, R.drawable.barrier_turnstile, R.string.quest_barrier_type_turnstile),
