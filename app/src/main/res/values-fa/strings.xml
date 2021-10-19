@@ -2459,4 +2459,11 @@
     <string name="notification_syncing">"همگام سازی داده ها…"</string>
     <string name="notification_channel_sync">"همگام سازی داده"</string>
     <string name="quest_board_type_sport">"ورزش، تمرینات"</string>
+    <string name="quest_generic_hasFeature_optional">"اختیاری"</string>
+    <string name="quest_buildingType_bridge">"پل بین بُرج‌ها (آسمان راه)"</string>
+    <string name="quest_laundrySelfService_title2">"آیا این لباسشویی خدمات ارائه می دهد؟"</string>
+    <string name="quest_dietType_halal_name_title">"آیا %s محصولات حلال ارائه می دهد؟"</string>
+    <string name="quest_dietType_explanation_halal">"محصولات حلال باید بر اساس قوانین ویژه ای تهیه شوند و بنگاه های صدور گواهینامه حلال محصولات را مطابق با آن نشانه‌گذاری می‌کنند."</string>
+    <string name="quest_picnicTableCover_title">"آیا این میز مسافرتی پوشیده شده است (از باران محافظت می شود)؟"</string>
+    <string name="quest_generic_answer_is_actually_steps">"این‌ها مراحل هستند"</string>
 </resources>

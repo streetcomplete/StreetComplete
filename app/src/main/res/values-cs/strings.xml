@@ -2460,4 +2460,5 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_dietType_halal_name_title">"Nabízí %s Halal výrobky?"</string>
     <string name="quest_dietType_explanation_halal">"Halal výrobky se musí připravovat podle zvláštních pravidel. Speciální agentury dávají certifikáty těm Halal výrobkům, které jsou s těmito pravidly v souladu."</string>
     <string name="quest_picnicTableCover_title">"Je tento stůl pro piknik krytý (chráněný před deštěm)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Toto jsou schody"</string>
 </resources>

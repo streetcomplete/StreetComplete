@@ -1134,11 +1134,51 @@
     <string name="quest_buildingLevels_title2">"Колко етажа над мазето има тази сграда?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Колко етажа над мазето има тази част от сградата?"</string>
     <string name="quest_crossing_title">"Има ли бордюр на мястото къде този път се среща с улицата? Какъв вид?"</string>
-    <string name="default_disabled_msg_roofShape">"Тази задача е изклучена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
+    <string name="default_disabled_msg_roofShape">"Тази задача е изключена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
+    <string name="quest_religion_animist">"Анимизъм"</string>
+    <string name="quest_construction_steps_title">"Завършени ли са тези стълби?"</string>
+    <string name="questList_disabled_at_day">"Показва се само през нощта"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_boathouse">"Къща лодка"</string>
+    <string name="quest_buildingType_allotment_house">"Градинска пристройка"</string>
+    <string name="quest_buildingType_grandstand">"Трибуна"</string>
     <string name="action_search">"Търсене"</string>
+    <string name="team_mode_team_size_label2">"Колко хора картографират? Въведете един и същ брой на всички телефони."</string>
+    <string name="team_mode_choose_color2">"Всеки човек трябва да избере цвят. Изберете вашия:"</string>
+    <string name="link_organic_maps_description">"Карти за пътешественици, туристи и велосипедисти, което работи офлайн"</string>
     <string name="quest_kerb_height_no">"Няма бордюр"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_stepover_wooden">"Дървена преграда с напречна греда"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_stepover_stone">"Каменна преграда с напречна греда"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bollard_type_removable">"Премахваем (с или без ключ)"</string>
+    <string name="quest_bollard_type_foldable2">"Сгъваем (с или без ключ)"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_search_results">"Нищо не е намерено"</string>
 
     <!-- Fuzzy -->
     <string name="quest_selection_hint_message">"Участието трябва да бъде преди всичко забавно! Ако броят на куестовете ви претоварва, винаги можете да настроите кои куестове да ви се показват и в какъв ред в настройките."</string>
     <string name="quest_presets_default_name">"По подразбиране"</string>
+    <string name="quest_presets_selected">"Избрано"</string>
+    <string name="notification_syncing">"Синхронизиране на информацията"</string>
+
+    <!-- Fuzzy -->
+    <string name="notification_channel_sync">"Синхронизирай информацията"</string>
+    <string name="quest_board_type_sport">"Спорт, Упражнения"</string>
+    <string name="quest_generic_hasFeature_optional">"По желание"</string>
+    <string name="quest_buildingType_bridge">"Мост между сгради (топла връзка)"</string>
+    <string name="quest_dietType_halal_name_title">"%s предлага ли Халал продукти?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_dietType_explanation_halal">"Халал продуктите трябва да се приготвят в съответствие със специални правила и да са маркирани от сертифицирани организации."</string>
+    <string name="quest_picnicTableCover_title">"Тази пикник маса покрита ли е (защитена ли е от дъжд)?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_generic_answer_is_actually_steps">"Това са стълби"</string>
 </resources>

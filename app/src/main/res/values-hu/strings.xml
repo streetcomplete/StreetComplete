@@ -2451,4 +2451,5 @@ megállóban?"</string>
     <string name="quest_dietType_halal_name_title">"Rendelkezik a hely halal termékekkel: %s?"</string>
     <string name="quest_dietType_explanation_halal">"A halal termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével."</string>
     <string name="quest_picnicTableCover_title">"Fedett (esőtől védett) ez a piknikezőasztal?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Ezek lépcsők"</string>
 </resources>

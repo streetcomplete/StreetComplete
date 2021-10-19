@@ -45,7 +45,7 @@ de:
    Claudius Henrichs: 173
    Daniel: 184
    DerDings: 120
-   Flo Edelmann: 12166
+   Flo Edelmann: 12196
    Github: 201
    Go4it.1: 14
    grafst: 22
@@ -70,9 +70,9 @@ hu:
    ursus: 680
    Gábor Babos: 11608
    Hungarian_user: 952
-   majdnemkocka: 882
+   majdnemkocka: 836
    Meskó Balázs: 76
-   Zachár Benjámin: 20954
+   Zachár Benjámin: 21283
 tr: 
    Ömer Faruk Çakmak: 1670
    Ümit Seyhan: 1058
@@ -111,7 +111,7 @@ es:
    Robot8A: 71
    rugk: 30
    sanchi: 5393
-   Swyter: 28430
+   Swyter: 28788
    Víctor Suárez: 289
 ar: 
    abdullah: 11783
@@ -132,12 +132,12 @@ id:
 sv: 
    Albin FL: 116
    Daniel: 2015
-   Erik: 1323
+   Erik: 1296
    Henrik: 300
    Jonatan Nyberg: 9113
    Landrash: 51
    Ntoonio: 301
-   riiga: 12726
+   riiga: 13037
    rindlerblabla: 7749
 nl: 
    Alert Bouterse: 6784
@@ -191,11 +191,19 @@ ru:
 am: 
    Alexander: 16550
    Anteneh Belayneh: 7197
+eu: 
+   Alexander Gabilondo: 1621
+   alexgabi: 1211
+   Etzharai: 398
+   Gari Araolaza: 1741
+   obibon: 300
+   Osoitz: 19546
+   txintxo: 1791
 pt-BR: 
    Alexandre de Menezes: 9355
    André Alvarenga: 828
    Diego Biavati: 572
-   Eduardo Addad de Oliviera: 10989
+   Eduardo Addad de Oliviera: 11307
    Patrick: 3600
    Rodrigo Tavares: 3317
    Rui: 1170
@@ -216,13 +224,6 @@ ro:
    Fcsernik: 65
    Georgian Iosef: 32878
    maxxxiejazz: 110
-eu: 
-   alexgabi: 1211
-   Etzharai: 398
-   Gari Araolaza: 1832
-   obibon: 300
-   Osoitz: 19801
-   txintxo: 1791
 zh-TW: 
    alice: 55
    Kagami: 2959
@@ -304,34 +305,34 @@ da:
    Soren: 7807
    Youri Lima: 13
 pl: 
-   Czapkofan: 573
+   Czapkofan: 562
    Damndog: 1875
    Daniel Koć: 446
-   Dominik Danelski: 1490
+   Dominik Danelski: 1485
    Garbulix: 623
    Jan: 508
    Konrad W: 286
-   Krystian Biesaga: 1460
-   Krzysztof Krasoń: 1571
+   Krystian Biesaga: 1436
+   Krzysztof Krasoń: 1511
    Marek: 39
    Marek-M: 2784
-   Mateusz Konieczny: 15053
+   Mateusz Konieczny: 16234
    Michal: 38
-   Michał 'kwiateusz' Kwiatek: 1320
+   Michał 'kwiateusz' Kwiatek: 1283
    Paba22: 375
    PoiuyPL: 97
    psokol: 98
    Saibamen: 172
-   Tomasz Maciejewski: 6458
+   Tomasz Maciejewski: 5912
 ko: 
    Depth221: 5562
    imsesaok: 11467
    Jin: 164
    Rkdclgh: 86
 bg: 
-   Dimitar: 1535
+   Dimitar: 1890
    Kalin: 1031
-   Plamen: 28295
+   Plamen: 28707
    Rhhsmits: 211
 it: 
    Enrico: 104
@@ -341,12 +342,12 @@ it:
    Giacomo Longo: 395
    hakuchi: 166
    Manfre: 36
-   Mannivu: 8992
-   Marco: 7840
+   Mannivu: 9212
+   Marco: 7752
    Martino: 122
    Massimo: 170
    Mirco Zorzo: 2951
-   mircozorzo: 424
+   mircozorzo: 683
    napo: 9831
    naposm: 655
    NonnEmilia: 1055
@@ -356,7 +357,8 @@ it:
 fa: 
    Goudarz Jafari: 609
    Iman: 175
-   Mohammad Mehdi Maliki: 31909
+   K. Dolatmanesh: 173
+   Mohammad Mehdi Maliki: 32043
    Mostafa Ahangarha: 391
 lt: 
    Ignas Kiela: 295
@@ -364,7 +366,7 @@ lt:
    Tomas: 23848
 cs: 
    Jakub: 288
-   leschek: 26968
+   leschek: 26984
    Lukáš Jelínek: 1345
    Petr Kadlec: 832
    Stanislav Tichý: 4241
@@ -383,7 +385,7 @@ el:
    tinigrillion: 420
 hr: 
    Mario: 63
-   Matija Nalis: 36680
+   Matija Nalis: 36696
 zh: 
    Minecraftis1st: 11
    Mumulhl: 132

@@ -2233,7 +2233,7 @@ mailak"</string>
     <string name="quest_summit_register_title">"Ba al dago gailurraren erregistroa %s-n?"</string>
     <string name="quest_is_defibrillator_inside_title">"(AED) desfibriladore hau eraikinaren barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
-    <string name="about_description_translate">"%1$s %2$d% itzuli da"</string>
+    <string name="about_description_translate">"%1$s %2$d%% itzuli da"</string>
     <string name="quest_oneway2_title">"Kale hau norabide bakarrekoa da? Zein norabidekoa?"</string>
     <string name="quest_oneway2_dir">"Norabide bakar hau"</string>
     <string name="quest_oneway2_no_oneway">"Ez da norabide bakarrekoa"</string>

@@ -1937,7 +1937,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_parkingType_street_side">"Pysäköinti tien varrella"</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
     <string name="quest_existence_title">"Onko tämä vielä täällä? (%s)"</string>
-    <string name="quest_existence_name_title">"Onko %1s (%2$s) vielä täällä?"</string>
+    <string name="quest_existence_name_title">"Onko %1$s (%2$s) vielä täällä?"</string>
     <string name="quest_tracktype_grade2a">"Kiinteä mutta päällystämätön"</string>
     <string name="quest_tracktype_grade3a">"Enimmäkseen kiinteä"</string>
     <string name="quest_generic_answer_does_not_exist">"Ei olemassa..."</string>

@@ -1,3 +1,13 @@
+v36.1: |
+  <ul>
+  <li>Faster startup and initial download when opening the app (#3337)</li>
+  <li>Faster clearing of quest cache (an option in the settings) (#3337)</li>
+  <li>Fix GPS button sometimes displays wrong mode (#3345)</li>
+  <li>Fix layout for profile screen on very small devices (#3388)</li>
+  <li>Fix a few causes for common crashes and application not responding</li>
+  <li>Updated translations</li>
+  </ul>
+
 v36.0: |
   <h3>Easier orientation</h3>
   <p>🖊️ The path you went today with the app is now marked on the map for better orientation! (#2209)</p>
