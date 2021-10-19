@@ -6,14 +6,26 @@ v37.0-beta1: |
   </ul>
   <h3>Quest Enhancements</h3>
   <ul>
-  <li>Ask again for the type of stile every 8 years (#3187, #3370), thanks @matkoniecz</li>
+  <li>Ask again for the type of stile every 8 years (#3187, #3370, #3391, #3188), thanks @matkoniecz, @peternewman</li>
   <li>More compact wording for crossing types (#3383), by @matkoniecz</li>
   <li>Add concrete lanes and concrete plates as answer options for surfaces (#2437, #3354), by @matkoniecz</li>
+  <li>More minor enhancements (#3386, #3390), by @matkoniecz</li>
   </ul>
-  <h3>Other enhancements</h3>
+  <h3>Other enhancements, fixes, etc.</h3>
   <ul>
   <li>Edit history sidebar now appears immediately on tapping the undo button, last edit is at the
       bottom and pre-selected (#3349), by @smichel17</li>
+  <li>Fix (speed limit, max height, max weight, ...) signs should have a yellow background in Sweden, Finland and Iceland (#3369, #3393)</li>
+  </ul>
+
+v36.1: |
+  <ul>
+  <li>Faster startup and initial download when opening the app (#3337)</li>
+  <li>Faster clearing of quest cache (an option in the settings) (#3337)</li>
+  <li>Fix GPS button sometimes displays wrong mode (#3345)</li>
+  <li>Fix layout for profile screen on very small devices (#3388)</li>
+  <li>Fix a few causes for common crashes and application not responding</li>
+  <li>Updated translations</li>
   </ul>
 
 v36.0: |
