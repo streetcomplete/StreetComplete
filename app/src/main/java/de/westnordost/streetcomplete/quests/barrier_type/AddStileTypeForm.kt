@@ -15,6 +15,7 @@ class AddStileTypeForm : AImageListQuestAnswerFragment<StileTypeAnswer, StileTyp
         Item(STEPOVER_STONE, R.drawable.barrier_stile_stepover_stone, R.string.quest_barrier_type_stepover_stone),
         Item(ConvertedStile.KISSING_GATE, R.drawable.barrier_kissing_gate, R.string.quest_barrier_type_kissing_gate_conversion),
         Item(ConvertedStile.PASSAGE, R.drawable.barrier_passage, R.string.quest_barrier_type_passage_conversion),
+        Item(ConvertedStile.GATE, R.drawable.barrier_gate_pedestrian, R.string.quest_barrier_type_gate_conversion),
     )
     override val itemsPerRow = 2
 
