@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlin.math.PI
 import kotlin.math.max
 import kotlin.math.min
@@ -23,7 +25,7 @@ abstract class AVariableRadiusStrategy(
     protected abstract val maxDownloadAreaInKm2: Double
     protected abstract val desiredScoredMapDataCountInVicinity: Int
 
-    override fun getDownloadBoundingBox(pos: LatLon): BoundingBox? {
+    override suspend fun getDownloadBoundingBox(pos: LatLon): BoundingBox? {
         val tileZoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
 
         val thisTile = pos.enclosingTilePos(tileZoom)
@@ -55,9 +57,9 @@ abstract class AVariableRadiusStrategy(
     }
 
     /** return the map data density in scored map data per m² for this given [boundingBox]*/
-    private fun getScoredMapDataDensityFor(boundingBox: BoundingBox): Double {
+    private suspend fun getScoredMapDataDensityFor(boundingBox: BoundingBox): Double {
         val areaInKm = boundingBox.area()
-        val elementCounts = mapDataController.getElementCounts(boundingBox)
+        val elementCounts = withContext(Dispatchers.IO) { mapDataController.getElementCounts(boundingBox) }
         /* score element types by assumed size in transmission:
          *
          * An average way has about 9 nodes. Ways in average have about 2.5 tags.
@@ -69,10 +71,11 @@ abstract class AVariableRadiusStrategy(
     }
 
     /** return if data in the given tiles rect that hasn't been downloaded yet */
-    private fun hasMissingDataFor(tilesRect: TilesRect): Boolean {
+    private suspend fun hasMissingDataFor(tilesRect: TilesRect): Boolean {
         val dataExpirationTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - dataExpirationTime)
-        return !downloadedTilesDao.get(tilesRect, ignoreOlderThan).contains(DownloadedTilesType.ALL)
+        val downloadedTiles = withContext(Dispatchers.IO) { downloadedTilesDao.get(tilesRect, ignoreOlderThan) }
+        return !downloadedTiles.contains(DownloadedTilesType.ALL)
     }
 
     companion object {
