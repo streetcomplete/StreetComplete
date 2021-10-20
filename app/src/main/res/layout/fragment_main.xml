@@ -5,7 +5,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
         android:name="de.westnordost.streetcomplete.map.QuestsMapFragment"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:elevation="4dp"
             android:visibility="gone" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/answers_counter_fragment"
             android:name="de.westnordost.streetcomplete.controls.AnswersCounterFragment"
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_alignParentLeft="true"
             />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/upload_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.UploadButtonFragment"
             android:layout_width="@dimen/map_button_size"
@@ -45,7 +45,7 @@
             android:layout_toLeftOf="@id/main_menu_button_fragment"
             />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_menu_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.MainMenuButtonFragment"
             android:layout_width="@dimen/map_button_size"
@@ -53,7 +53,7 @@
             tools:layout="@layout/fragment_main_menu_button"
             android:layout_alignParentRight="true" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/notification_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.NotificationButtonFragment"
             android:layout_width="@dimen/map_button_size"
@@ -125,7 +125,7 @@
             android:clipToPadding="false"
             tools:ignore="RtlHardcoded,RtlSymmetry">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/undo_button_fragment"
                 android:name="de.westnordost.streetcomplete.controls.UndoButtonFragment"
                 android:layout_width="@dimen/map_button_size"
@@ -135,7 +135,7 @@
 
         </LinearLayout>
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/quest_download_progress_fragment"
             android:name="de.westnordost.streetcomplete.controls.DownloadProgressFragment"
             android:layout_width="80dp"
