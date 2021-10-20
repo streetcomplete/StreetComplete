@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Eșec la autorizare: Trebuiesc acordate toate permisiunile listate"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Setări"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Comunicare"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"O să verific"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Ați lăsat acest câmp gol"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Alternativ, lăsați o notă?"</string>
@@ -256,10 +250,8 @@ Cu toate acestea, înainte de a încărca modificările, aplicația verifică cu
     <string name="quest_surface_value_sand">"Nisip"</string>
     <string name="quest_surface_value_sett">"Dungat"</string>
     <string name="quest_surface_value_wood">"Lemn"</string>
-    <string name="quest_placeName_title">"Care este denumirea acestui loc?"</string>
     <string name="quest_sidewalk_title">"Această stradă are un trotuar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Unde este această stradă?"</string>
-    <string name="quest_cyclewaySurface_title">"Ce tip de suprafață are această pistă de biciclete?"</string>
     <string name="quest_serviceType_title">"Ce fel de drum de serviciu este acesta?"</string>
     <string name="quest_oneway_title">"Este o stradă cu sens unic?"</string>
     <string name="quest_address_title">"Ce număr are această clădire?"</string>
@@ -487,6 +479,8 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_way_lit_24_7">"Este luminat și ziua și noaptea"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nu pot scana aici. Încercați să apropiați mai puțin sau înclinați mai puțin harta."</string>
     <string name="quest_crossing_type_title">"Ce fel de trecere este aceasta?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Trecerea de pietoni nemarcată"</string>
     <string name="action_undo">"Înapoi"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
@@ -513,7 +507,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_buildingLevels_levelsLabel2">"nivele normale (nenumarând acoperișul)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Diferă funcție de partea clădirii"</string>
     <string name="quest_buildingLevels_answer_description">"In această situație, introduceți valoarea pentru cea mai înaltă parte a clădirii."</string>
-    <string name="unglue_hint">"Atingeți pentru a dezlipi vizualizarea din poziție"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Benzile  acestui drum aici sunt separate fizic (adică printr-o barieră)? Limita de viteză implicită depinde de bandă."</string>
     <string name="about_category_feedback">"Contribuiți"</string>
     <string name="quest_leave_new_note_photo">"Atașați o fotografie"</string>
@@ -637,7 +630,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți. În special, misiunea oneway solicită un API, găzduit și pe westnordost.de, despre candidații probabili pentru oneways. &lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (lăsați comentariu)"</string>
     <string name="pref_quests_reset">"Resetați atât activarea misiunii, cât și comanda la valoarea implicită?"</string>
-    <string name="quest_buildingType_title2">"Cum a fost construită această clădire?"</string>
     <string name="quest_generic_item_invalid_value">"Vă rugăm să selectați o valoare mai exactă."</string>
     <string name="quest_buildingType_answer_multiple_types">"Are mai multe scopuri"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Pur și simplu selectați scopul principal al acestei clădiri. De exemplu. dacă există un magazin la parter cu apartamente deasupra acestuia, acesta este în continuare un bloc de apartamente."</string>
@@ -1190,6 +1182,8 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Camioanele înalte nu pot trece"</string>
     <string name="quest_address_street_hint">"Atingeți drumul pe hartă"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Trecere de pietoni marcată"</string>
     <string name="quest_parkingType_street_side">"Parcare chiar lângă drum"</string>
     <string name="quest_parkingType_lane">"Parcare pe carosabil"</string>
@@ -1221,6 +1215,8 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_dietType_kosher_name_title">"%s oferă produse kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Produsele Kosher trebuie să fie pregătite în conformitate cu reguli speciale, agențiile de certificare kashrut marcând produsele în conformitate."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nu există bandă de biciclete"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ca de obicei, atingeți o parte a ilustrației, selectați un răspuns adecvat și faceți același lucru pentru cealaltă parte. Rețineți toate opțiunile disponibile: unele cazuri nu sunt evidente, cum ar fi un drum cu sens unic care permite bicicliștilor în ambele direcții!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selectat că nu există  pistă de ciclism"</string>
     <string name="quest_construction_completed_at_known_date">"Va fi finalizată la data de..."</string>
@@ -1252,9 +1248,9 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="team_mode_deactivated">"Modul echipă este dezactivat"</string>
     <string name="quest_pitchLit_title">"Este iluminat acest teren de sport?"</string>
     <string name="quest_pitchLit_title_track">"Această pistă sportivă este iluminată?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Trecere controlată de semafoare"</string>
-    <string name="undo_last">"Anulați ultima modificare"</string>
-    <string name="show_edit_history">"Afișați istoricul editării"</string>
     <string name="undo_confirm_title2">"Anulați următoarea editare?"</string>
     <string name="synced">"Sincronizat"</string>
     <string name="toast_undo_unavailable">"Această editare este deja sincronizată și nu poate fi anulată"</string>

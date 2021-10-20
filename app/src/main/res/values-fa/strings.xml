@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"امکان دسترسی به شبکه وجود ندارد"</string>
     <string name="retry">"دوباره سعی کنید"</string>
     <string name="oauth_failed_permissions">"خطای مجوز: مجوز دسترسی‌های ذکر شده باید داده شود"</string>
-    <string name="title_activity_settings">"تنظیمات"</string>
     <string name="pref_category_communication">"ارتباطات"</string>
     <string name="pref_category_display">"نمایش"</string>
     <string name="pref_tilecache_size_summary">"%d مگابایت"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
     <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
-    <string name="quest_generic_error_field_empty">"شما این قسمت را خالی گذاشته‌اید"</string>
     <string name="quest_leave_new_note_title">"در عوض یک یاداشت می‌گذارید؟"</string>
 
     <!-- بهتر نیست به جای نقشه بردار نقشه کش یا یه عبارت دیگه به کار ببریم؟ به نظرم با توجه به معنی اصلی کلمه در اینجا مناسب نباشه -->
@@ -284,16 +282,10 @@
     <string name="quest_surface_value_wood">"چوبی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"نام این مکان چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"آیا در این خیابان پیاده رو وجود دارد؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"جنس سطح مسیر دوچرخه سواری در اینجا چیست؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"نوع این جاده خدماتی چیست؟"</string>
@@ -858,9 +850,6 @@
     <string name="quest_buildingLevels_answer_description">"در این بخش ، ارتفاع این قسمت از ساختمان را وارد نمایید"</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"یک نما را برای این مکان انتخاب کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"آیا مسیر پیاده روی این راه به صورت فیزیکی مجزا شده است (یعنی از طریق یک مانع)؟ محدودیت سرعت پیشفرض بستگی به این دارد که آیا این مورد وجود دارد یا خیر"</string>
     <string name="about_category_feedback">"بازخورد"</string>
 
@@ -1213,9 +1202,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"بازنشانی هر دو جستار فعال شده و سفارش به طور پیش فرض؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"این ساختمان چگونه ساخته شد؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"لطفا یک مقدار واضح‌تر را انتخاب کنید."</string>
@@ -2275,6 +2261,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"برای عبور کامیون های مرتفع مناسب نیست"</string>
     <string name="quest_address_street_hint">"روی جاده در نقشه ضربه بزنید"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"خط عابر دارای خط‌ کشی"</string>
     <string name="quest_parkingType_street_side">"پارکینگ فقط در کنار جاده است"</string>
     <string name="quest_parkingType_lane">"پارکینگ بخشی از مسیراست"</string>
@@ -2306,6 +2294,8 @@
     <string name="quest_dietType_kosher_name_title">"آیا %s محصولات حلال ارائه می دهد؟"</string>
     <string name="quest_dietType_explanation_kosher">"محصولات حلال مطابق با قوانین خاص تهیه می شود و مراکز صدور گواهینامه حلال محصولات، محصولات را مطابق با آن نشانه گذاری می‌کنند."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"اصلاً مسیر دوچرخه سواری وجود ندارد"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"طبق معمول ، روی یک سمت تصویر ضربه بزنید ، یک پاسخ مناسب را انتخاب نمایید و همین روش را برای سمت دیگر انجام دهید. به همه گزینه های موجود توجه داشته باشید: بعضی موارد واضح نیستند، مانند جاده یک طرفه ای که دوچرخه سواران می توانند در هر دو جهت حرکت کنند!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"انتخاب اینکه، هیچ مسیر دوچرخه ای وجود ندارد"</string>
     <string name="quest_construction_completed_at_known_date">"تمام می‌شود در تاریخ ..."</string>
@@ -2337,9 +2327,9 @@
     <string name="team_mode_deactivated">"حالت گروهی عیرفعال است"</string>
     <string name="quest_pitchLit_title">"آیا این زمین ورزشی روشنایی دارد؟"</string>
     <string name="quest_pitchLit_title_track">"آیا این محوطه ورزشی روشنایی دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"کنترل عبور و مرور با چراغ های راهنمایی"</string>
-    <string name="undo_last">"آخرین ویرایش را واگرد کنید"</string>
-    <string name="show_edit_history">"نمایش تاریخ ویرایش"</string>
     <string name="undo_confirm_title2">"ویرایش زیر را واگرد کنید؟"</string>
     <string name="synced">"همگام سازی شده"</string>
     <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
@@ -2459,4 +2449,13 @@
     <string name="notification_syncing">"همگام سازی داده ها…"</string>
     <string name="notification_channel_sync">"همگام سازی داده"</string>
     <string name="quest_board_type_sport">"ورزش، تمرینات"</string>
+    <string name="quest_generic_hasFeature_optional">"اختیاری"</string>
+    <string name="quest_buildingType_bridge">"پل بین بُرج‌ها (آسمان راه)"</string>
+    <string name="quest_laundrySelfService_title2">"آیا این لباسشویی خدمات ارائه می دهد؟"</string>
+    <string name="quest_dietType_halal_name_title">"آیا %s محصولات حلال ارائه می دهد؟"</string>
+    <string name="quest_dietType_explanation_halal">"محصولات حلال باید بر اساس قوانین ویژه ای تهیه شوند و بنگاه های صدور گواهینامه حلال محصولات را مطابق با آن نشانه‌گذاری می‌کنند."</string>
+    <string name="quest_picnicTableCover_title">"آیا این میز مسافرتی پوشیده شده است (از باران محافظت می شود)؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_generic_answer_is_actually_steps">"این‌ها مراحل هستند"</string>
 </resources>

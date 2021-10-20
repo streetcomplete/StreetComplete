@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Није успостављена веза са сервером за потврду идентитета"</string>
     <string name="retry">"Понови"</string>
     <string name="oauth_failed_permissions">"Није успела потврда идентитета: Потребно је одобрити сва побројана права"</string>
-    <string name="title_activity_settings">"Поставке"</string>
     <string name="pref_category_communication">"Комуникација"</string>
     <string name="pref_category_display">"Приказ"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"Сигурни сте?"</string>
     <string name="quest_generic_confirmation_yes">"Да, сигуран сам"</string>
     <string name="quest_generic_confirmation_no">"Проверићу"</string>
-    <string name="quest_generic_error_field_empty">"Ово поље је остало непопуњено"</string>
     <string name="quest_leave_new_note_title">"А да се ипак стави напомена?"</string>
     <string name="quest_leave_new_note_description">"Можете оставити јавну напомену на овој локацији како би други картографи могли да коментаришу и реше, или пак сакријте овај задатак од себе."</string>
     <string name="quest_leave_new_note_yes">"У реду"</string>
@@ -130,10 +128,8 @@
     <string name="quest_surface_value_sand">"Песак"</string>
     <string name="quest_surface_value_sett">"Калдрма"</string>
     <string name="quest_surface_value_wood">"Дрво"</string>
-    <string name="quest_placeName_title">"Како се зове ово место?"</string>
     <string name="quest_sidewalk_title">"Да ли ова улица има тротоар?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где је ова улица?"</string>
-    <string name="quest_cyclewaySurface_title">"Какву површину овде има бициклистичка стаза?"</string>
     <string name="quest_serviceType_title">"Која је ово врста приступног пута?"</string>
     <string name="quest_oneway_title">"Да ли је ово једносмерна улица?"</string>
     <string name="quest_address_title">"Који је кућни број овог објекта?"</string>
@@ -317,6 +313,8 @@
     <string name="quest_way_lit_24_7">"Осветљен је и ноћу и дању"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Не могу тражити овде. Покушајте још увеличати или мање нагните карту."</string>
     <string name="quest_crossing_type_title">"Какав је ово прелаз?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Прелаз без икаквих ознака"</string>
     <string name="action_undo">"Поништи"</string>
     <string name="produce_mangosteen">"Мангостан"</string>
@@ -343,7 +341,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"обични спратови (не рачунајући поткровље)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Различито по деловима објекта"</string>
     <string name="quest_buildingLevels_answer_description">"У овом случају, просто унесите вредност за највиши део грађевине."</string>
-    <string name="unglue_hint">"Додирните да одвојите поглед од положаја"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Да ли су овде траке пута физички одвојене (нпр. оградом)? У зависности од тога, зависи и претпостављено ограничење брзине."</string>
     <string name="about_category_feedback">"Повратне информације"</string>
     <string name="quest_leave_new_note_photo">"Приложите фотографију"</string>
@@ -463,7 +460,6 @@
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;За неке задатке се преузимају додатни подаци трећих страна. Конкретно, задатак једносмерне улице користи API, који је такође смештен на westnordost.de, о потенцијалним кандидатима за једносмерне улице.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Не (остави белешку)"</string>
     <string name="pref_quests_reset">"Желите да вратите редослед и омогућеност задатака у почетно стање?"</string>
-    <string name="quest_buildingType_title2">"Која је оригинална намена овог објекта?"</string>
     <string name="quest_generic_item_invalid_value">"Молимо одаберите прецизнију вредност."</string>
     <string name="quest_buildingType_answer_multiple_types">"Има више намена"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Одаберите главну намену овог објекта. На пример, ако се у приземљу налази продавница а изнад су станови, то је обично стамбена зграда."</string>
@@ -956,6 +952,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Високи камиони не могу проћи"</string>
     <string name="quest_address_street_hint">"Додир. пут на карти"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Обележени пешачки прелаз"</string>
     <string name="quest_parkingType_street_side">"Паркинг крај пута"</string>
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>
@@ -987,6 +985,8 @@
     <string name="quest_dietType_kosher_name_title">"Да ли %s нуди кошер производе?"</string>
     <string name="quest_dietType_explanation_kosher">"Кошер производи се морају припремати према посебним правилима, а производи у складу са кашрутом су означени сертификатом."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Уопште нема бициклистичке стазе"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Као и обично, додирните илустрације са једне од страна, обележите одговоре и урадите то са друге стране. Обратите пажњу на све опције: у неким случајевима то није очигледно, попут једносмерних улица где је бициклистима омогућен двосмерни саобраћај!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Нема бициклистичке инфраструктуре"</string>
     <string name="quest_construction_completed_at_known_date">"Биће завршено до…"</string>
@@ -1018,9 +1018,9 @@
     <string name="team_mode_deactivated">"Искључен је рад у тиму"</string>
     <string name="quest_pitchLit_title">"Да ли је игралиште осветљено?"</string>
     <string name="quest_pitchLit_title_track">"Да ли је стаза осветљена?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Укрштање се контролише семафорима"</string>
-    <string name="undo_last">"Опозови последњу промену"</string>
-    <string name="show_edit_history">"Прикажи историју промена"</string>
     <string name="undo_confirm_title2">"Опозвати следећу промену?"</string>
     <string name="synced">"Синхронизовано"</string>
     <string name="toast_undo_unavailable">"Ова промена је већ синхронизована и није могућ њен опозив"</string>

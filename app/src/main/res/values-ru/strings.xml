@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Не удалось соединиться с сервером авторизации"</string>
     <string name="retry">"Повторить"</string>
     <string name="oauth_failed_permissions">"Авторизация не удалась: все указанные разрешения должны быть предоставлены"</string>
-    <string name="title_activity_settings">"Настройки"</string>
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
@@ -26,7 +25,6 @@
     <string name="quest_generic_confirmation_title">"Вы уверены?"</string>
     <string name="quest_generic_confirmation_yes">"Да, точно"</string>
     <string name="quest_generic_confirmation_no">"Я проверю"</string>
-    <string name="quest_generic_error_field_empty">"Вы оставили это поле пустым"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Оставить заметку взамен?"</string>
@@ -183,12 +181,8 @@
     <string name="quest_surface_value_sand">"Песок"</string>
     <string name="quest_surface_value_sett">"Брусчатка"</string>
     <string name="quest_surface_value_wood">"Дерево"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Как называется этот населённый пункт?"</string>
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
-    <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
     <string name="quest_serviceType_title">"Какой тип у этого проезда?"</string>
     <string name="quest_oneway_title">"Это односторонняя улица?"</string>
     <string name="quest_address_title">"Какой номер дома у этого здания?"</string>
@@ -457,6 +451,8 @@
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
     <string name="quest_crossing_type_title">"Какого типа этот пешеходный переход?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Переход без дорожной разметки"</string>
 
     <!-- Fuzzy -->
@@ -492,10 +488,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Отличается для разных частей здания"</string>
     <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
-
-    <!-- s/position/location/ for consistency? -->
-    <!-- Fuzzy -->
-    <string name="unglue_hint">"Коснитесь чтобы отвязать карту от местоположения"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
@@ -736,7 +728,6 @@
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест \"эта улица односторонняя?\" запрашивает сервис westnordost.de на предмет вероятно односторонних улиц.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
     <string name="pref_quests_reset">"Сбросить выбор и приоритет квестов на значения по умолчанию?"</string>
-    <string name="quest_buildingType_title2">"Что за здание здесь построили?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Пожалуйста, выберите более конкретное значение."</string>
@@ -1450,6 +1441,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Высокие грузовики не могут проехать"</string>
     <string name="quest_address_street_hint">"Нажмите на дорогу на карте"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Переход с разметкой/знаком"</string>
     <string name="quest_parkingType_street_side">"Парковка на обочине"</string>
     <string name="quest_parkingType_lane">"Парковка на проезжей части"</string>
@@ -1485,6 +1478,8 @@
     <string name="quest_dietType_kosher_name_title">"Предлагаются ли в %s кошерные продукты?"</string>
     <string name="quest_dietType_explanation_kosher">"Кошерные продукты должны быть приготовлены по специальным правилам, с маркировкой агентства по сертификации кашрута."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Велосипедная дорожка отсутствует"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Как обычно, коснитесь края иллюстрации, выберите правильный ответ и повторите для другой стороны. Обратите внимание на все доступные варианты: некоторые случаи неочевидны, как односторонняя дорога, позволяющая двигаться велосипедистам в обоих направлениях!"</string>
 
     <!-- Fuzzy -->
@@ -1518,9 +1513,9 @@
     <string name="team_mode_deactivated">"Командный режим отключён"</string>
     <string name="quest_pitchLit_title">"Освещена ли эта спортивная площадка?"</string>
     <string name="quest_pitchLit_title_track">"Освещена ли эта спортивная дорожка?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Переход, регулируемый светофором"</string>
-    <string name="undo_last">"Отменить правку"</string>
-    <string name="show_edit_history">"История правок"</string>
     <string name="undo_confirm_title2">"Отменить эту правку?"</string>
     <string name="synced">"Синхронизировано"</string>
     <string name="toast_undo_unavailable">"Эта правка уже синхронизирована и не может быть отменена"</string>

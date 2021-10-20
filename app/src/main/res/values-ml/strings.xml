@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"അംഗീകാരം പരാജയപ്പെട്ടു: ലിസ്റ്റുചെയ്ത എല്ലാ അനുമതികളും നൽകേണ്ടതുണ്ട്"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"സജ്ജീകരണങ്ങള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"ആശയവിനിമയം"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"ഞാൻ പരിശോധിക്കും"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"ഈ ഫീൽഡ് ശൂന്യമാക്കി "</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"പകരം ഒരു കുറിപ്പ് ഇടൂ?"</string>
@@ -336,16 +330,10 @@
     <string name="quest_surface_value_wood">"മരം"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"ഈ സ്ഥലത്തിൻറെ പേരെന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"ഈ തെരുവിൽ ഒരു നടപ്പാത ഉണ്ടോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ഈ തെരുവ് എവിടെയാണ്?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"സൈക്കിൾ പാതയുടെ പ്രതലം എന്താണ് ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"എന്തുതരം സർവീസ് റോഡ് ആണ് ഇത് ?"</string>
@@ -895,9 +883,6 @@
     <string name="quest_buildingLevels_answer_description">"ഈ സാഹചര്യത്തിൽ, കെട്ടിടത്തിന്റെ ഉയർന്ന ഭാഗത്തെ മൂല്യങ്ങൾ നൽകുക."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"തൽസ്ഥാനത്ത് നിന്ന് കാഴ്ച മാറ്റാൻ ടാപ് ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"ഈ റോഡുകൾ പ്രത്യക്ഷമായി വേർതിരിക്കപ്പെട്ടിട്ടുണ്ടോ (അതായത് എന്തെങ്കിലും തടസ്സത്തിലൂടെ)? സ്ഥിരസ്ഥിതി വേഗത പരിധി ഇങ്ങനെയാണോ അല്ലയോ എന്നതിനെ ആശ്രയിച്ചിരിക്കുന്നു. "</string>
     <string name="about_category_feedback">"പ്രതികരണം"</string>
 
@@ -1242,9 +1227,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"രണ്ട് തിരയലുകളും പുനക്രമീകരിച്ചതിനു ശേഷം ഡിഫാൾട്ട് ക്രമം സജ്ജമാക്കണോ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"ഈ കെട്ടിടം എന്തിനാണ് നിർമ്മിച്ചത്?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"ദയവായി കൂടുതൽ വ്യക്തമായ മൂല്യം തിരെഞ്ഞെടുക്കുക"</string>

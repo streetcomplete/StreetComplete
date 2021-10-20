@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"No es pot accedir al servidor d'autoritzacions"</string>
     <string name="retry">"Reintenta"</string>
     <string name="oauth_failed_permissions">"L'autorització ha fallat: cal concedir tots els permisos llistats"</string>
-    <string name="title_activity_settings">"Configuració"</string>
     <string name="pref_category_communication">"Comunicació"</string>
     <string name="pref_category_display">"Mostra"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -21,7 +20,6 @@
 "</string>
     <string name="quest_generic_confirmation_yes">"Sí, n'estic segur"</string>
     <string name="quest_generic_confirmation_no">"Ho comprovaré"</string>
-    <string name="quest_generic_error_field_empty">"Has deixat aquest camp en blanc"</string>
     <string name="quest_leave_new_note_title">"Alternativament, vols deixar una nota?"</string>
     <string name="quest_leave_new_note_description">"Podeu deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre o alternativament amaga la missió només per a tu"</string>
     <string name="quest_leave_new_note_yes">"D'acord"</string>
@@ -131,10 +129,8 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_surface_value_sand">"Sorra"</string>
     <string name="quest_surface_value_sett">"Llambordes"</string>
     <string name="quest_surface_value_wood">"Fusta"</string>
-    <string name="quest_placeName_title">"Quin nom té aquest lloc?"</string>
     <string name="quest_sidewalk_title">"Aquest carrer té vorera?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
-    <string name="quest_cyclewaySurface_title">"Quin tipus de superfície té el carril bici aquí?"</string>
     <string name="quest_serviceType_title">"Quin tipus de via de servei és?"</string>
     <string name="quest_oneway_title">"És una via de sentit únic?"</string>
     <string name="quest_address_title">"Quin número de portal té aquest edifici?"</string>
@@ -318,6 +314,8 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_way_lit_24_7">"Està il·luminat de nit i de dia"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"No pot escanejar aquí. Proveu d'ampliar més o d'inclinar menys el mapa."</string>
     <string name="quest_crossing_type_title">"Quina classe d’encreuament és aquest?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Encreuament sense senyals horitzontals"</string>
     <string name="action_undo">"Desfés"</string>
     <string name="produce_mangosteen">"Mangostà"</string>
@@ -344,7 +342,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_buildingLevels_levelsLabel2">"nivells normals (sense comptar la teulada)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"És diferent a vàries parts de l'edifici"</string>
     <string name="quest_buildingLevels_answer_description">"En aquest cas, senzillament entreu els valors de la part de l'edifici més alta."</string>
-    <string name="unglue_hint">"Feu un toc per desenganxar la vista des de la posició"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Els carrils d'aquesta carretera  estan físicament separats (és a dir, a través d'una barrera)? El límit de velocitat per defecte depèn de si aquest és el cas o no."</string>
     <string name="about_category_feedback">"Comentaris"</string>
     <string name="quest_leave_new_note_photo">"Adjunta la foto"</string>
@@ -466,7 +463,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Per a algunes missions, es baixen dades addicionals de tercers. En concret, les missions de «sentit únic» consulten una API, també allotjada a westnordost.de, sobre possibles candidats per a sentit únic. &lt;/ P&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (deixeu una nota)"</string>
     <string name="pref_quests_reset">"Voleu restablir la selecció i ordre de les missions als valors predeterminats?"</string>
-    <string name="quest_buildingType_title2">"Quin tipus d'edifici era originalment aquesta construcció?"</string>
     <string name="quest_generic_item_invalid_value">"Seleccioneu un valor més específic"</string>
     <string name="quest_buildingType_answer_multiple_types">"Té usos múltiples"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Indiqueu el propòsit principal d'aquest edifici. P. ex. si hi ha una botiga en la planta baixa amb apartaments a sobre, segueix sent principalment un edifici d'apartaments."</string>
@@ -956,6 +952,8 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Els camions alts no hi caben"</string>
     <string name="quest_address_street_hint">"Feu un toc a una via del mapa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Pas de zebra"</string>
     <string name="quest_parkingType_street_side">"Aparcament en bateria"</string>
     <string name="quest_parkingType_lane">"Aparcament en fila"</string>
@@ -987,6 +985,8 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_dietType_kosher_name_title">"%s ofereix productes kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Els productes de Kosher han d'estar preparats d'acord amb normes especials, i les agències de certificació de kaixrut han de marcar els productes de conformitat."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Sense carril bici"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Com sempre, premeu a un costat de la il·lustració, seleccioneu una resposta adequada i feu el mateix per l'altre costat. Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una carretera de sentit únic que permet ciclistes en ambdues direccions!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"S'està seleccionant que no hi ha carril bici"</string>
     <string name="quest_construction_completed_at_known_date">"Estarà finalitzada a la data..."</string>
@@ -1024,9 +1024,9 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="team_mode_deactivated">"S'ha desactivat el mode d'equip"</string>
     <string name="quest_pitchLit_title">"Està il·luminat aquest camp esportiu?"</string>
     <string name="quest_pitchLit_title_track">"Està il·luminada aquesta pista esportiva?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Encreuament controlat per semàfor"</string>
-    <string name="undo_last">"Desfés la última edició"</string>
-    <string name="show_edit_history">"Mostra l'històric d'edicions"</string>
     <string name="undo_confirm_title2">"Desfer aquesta edició?"</string>
     <string name="synced">"Sincronitzat"</string>
     <string name="toast_undo_unavailable">"Aquesta edició ja està sincronitzada i no es pot desfer"</string>

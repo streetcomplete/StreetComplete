@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"ไม่สามารถเข้าถึงเซิร์ฟเวอร์เพื่อตรวจสอบสิทธิ์ได้"</string>
     <string name="retry">"ลองใหม่"</string>
     <string name="oauth_failed_permissions">"ตรวจสอบสิทธิ์ไม่ผ่าน: จำเป็นต้องได้รับอนุญาตสิทธิ์ทุกข้อในรายการ"</string>
-    <string name="title_activity_settings">"ตั้งค่า"</string>
     <string name="pref_category_communication">"การสื่อสาร"</string>
     <string name="pref_category_display">"แสดงผล"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"แน่ใจไหม?"</string>
     <string name="quest_generic_confirmation_yes">"ใช่ ฉันแน่ใจ"</string>
     <string name="quest_generic_confirmation_no">"ขอตรวจสอบก่อน"</string>
-    <string name="quest_generic_error_field_empty">"ไม่มีข้อมูลในช่องนี้"</string>
     <string name="quest_leave_new_note_title">"เขียนหมายเหตุไว้แทนไหม?"</string>
     <string name="quest_leave_new_note_description">"คุณสามารถบันทึกหมายเหตุแบบสาธารณะสำหรับสถานที่นี้ไว้ได้ ซึ่งนักทำแผนที่คนอื่นสามารถให้ความเห็นเพิ่มเติม และอาจนำไปสู่ข้อสรุป หรือคุณอาจซ่อนภารกิจนี้ไว้สำหรับตัวคุณเองก็ได้"</string>
     <string name="quest_leave_new_note_yes">"ตกลง"</string>
@@ -138,10 +136,8 @@
     <string name="quest_surface_value_sand">"ทราย"</string>
     <string name="quest_surface_value_sett">"บล็อกเบลเยี่ยม"</string>
     <string name="quest_surface_value_wood">"ไม้"</string>
-    <string name="quest_placeName_title">"สถานที่นี้ชื่ออะไร"</string>
     <string name="quest_sidewalk_title">"ถนนสายนี้มีทางเดินทางเท้าไหม"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ถนนเส้นนนี้อยู่ไหน"</string>
-    <string name="quest_cyclewaySurface_title">"ช่องจักรยานที่นี่มีพื้นผิวแบบไหน"</string>
     <string name="quest_serviceType_title">"นี่เป็นถนนโครงการประเภทไหน"</string>
     <string name="quest_oneway_title">"ถนนเส้นนี้รถวิ่งได้ทางเดียวหรือไม่"</string>
     <string name="quest_address_title">"อาคารนี้มีบ้านเลขที่เท่าไหร่?"</string>
@@ -327,6 +323,8 @@
     <string name="quest_way_lit_24_7">"ส่องสว่างทั้งตอนกลางวันและกลางคืน"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ไม่สามารถสแกนที่นี่ ลองซูมเข้ามาอีกหรือปรับให้มุมเอียงของแผนที่น้อยลง"</string>
     <string name="quest_crossing_type_title">"นี่คือทางข้ามประเภทใด?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"ทางข้ามโดยไม่มีเครื่องหมายจราจร"</string>
     <string name="action_undo">"เลิกทำ"</string>
     <string name="produce_mangosteen">"มังคุด"</string>
@@ -353,7 +351,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"ชั้นปกติ (ไม่นับหลังคา)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"แตกต่างกันไปตามแต่ละส่วนของอาคาร"</string>
     <string name="quest_buildingLevels_answer_description">"ในกรณีนี้ เพียงแค่ใส่ค่าของส่วนที่สูงที่สุดของสิ่งปลูกสร้าง"</string>
-    <string name="unglue_hint">"กดเพื่อที่จะปล่อยมุมมองจากตำแหน่ง"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"ถนนของถนนสายนี้แยกจากกัน (เช่น ผ่านสิ่งกีดขวาง) หรือไม่? ค่าความเร็วจำกัดเริ่มต้นขึ้นอยู่กับว่าเป็นกรณีนี้หรือไม่"</string>
     <string name="about_category_feedback">"ข้อเสนอแนะ"</string>
     <string name="quest_leave_new_note_photo">"แนบรูปภาพ"</string>
@@ -477,7 +474,6 @@
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;สำหรับบางภารกิจ จะมีการดาวน์โหลดข้อมูลเพิ่มเติมจากบุคคลที่สาม โดยเฉพาะอย่างยิ่ง ภารกิจทางเดียวจะค้นหา API ซึ่งโฮสต์บน westnordost.de ด้วย เกี่ยวกับตัวเลือกที่มีแนวโน้มจะเป็นทางเดียว&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"ไม่ (ใส่หมายเหตุ)"</string>
     <string name="pref_quests_reset">"รีเซ็ตทั้งการเปิดใช้งานภารกิจและลำดับเป็นค่าเริ่มต้น?"</string>
-    <string name="quest_buildingType_title2">"อาคารนี้สร้างมาเพื่ออะไร?"</string>
     <string name="quest_generic_item_invalid_value">"โปรดเลือกค่าที่เจาะจงกว่านี้"</string>
     <string name="quest_buildingType_answer_multiple_types">"มีวัตถุประสงค์หลายประการ"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"เพียงเลือกวัตถุประสงค์หลักของอาคารนี้ เช่น หากมีร้านค้าที่ชั้นล่างที่มีอพาร์ตเมนต์อยู่ด้านบน ถือว่าเป็นอาคารอพาร์ตเมนต์"</string>
@@ -979,6 +975,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"รถบรรทุกสูงผ่านไม่ได้"</string>
     <string name="quest_address_street_hint">"แตะถนนบนแผนที่"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"ทางข้ามที่มีเครื่องหมายจราจร"</string>
     <string name="quest_parkingType_street_side">"ที่จอดรถอยู่ริมถนน"</string>
     <string name="quest_parkingType_lane">"จุดจอดรถริมถนน"</string>
@@ -1010,6 +1008,8 @@
     <string name="quest_dietType_kosher_name_title">"%s มีผลิตภัณฑ์โคเชอร์หรือไม่"</string>
     <string name="quest_dietType_explanation_kosher">"ผลิตภัณฑ์โคเชอร์ต้องจัดทำขึ้นตามกฎพิเศษ โดยหน่วยงานรับรองของ kashrut จะทำเครื่องหมายผลิตภัณฑ์ว่าเป็นไปตามข้อกำหนด"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"ไม่มีช่องสำหรับจักรยานเลย"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"ตามปกติแล้ว ให้แตะที่ด้านหนึ่งของภาพประกอบ เลือกคำตอบที่ถูกต้อง และทำเช่นเดียวกันกับอีกด้านหนึ่ง ให้สังเกตุตัวเลือกที่มีทั้งหมด: บางกรณีอาจไม่ชัดเจน เช่น ถนนทางเดียวที่อนุญาตให้นักปั่นจักรยานทั้งสองทิศทาง!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"เลือกว่าไม่มีช่องจักรยาน"</string>
     <string name="quest_construction_completed_at_known_date">"น่าจะเสร็จในวันที่..."</string>
@@ -1041,9 +1041,9 @@
     <string name="team_mode_deactivated">"โหมดทีมปิดใช้งาน"</string>
     <string name="quest_pitchLit_title">"สนามกีฬาแห่งนี้มีไฟสว่างหรือไม่?"</string>
     <string name="quest_pitchLit_title_track">"สปอร์ตแทร็คนี้มีไฟสว่างหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"ทางข้ามที่มีไฟสัญญาณจราจรกำกับ"</string>
-    <string name="undo_last">"ยกเลิกการแก้ไขล่าสุด"</string>
-    <string name="show_edit_history">"แสดงประวัติการแก้ไข"</string>
     <string name="undo_confirm_title2">"ยกเลิกการแก้ไขต่อไปนี้ไหม?"</string>
     <string name="synced">"ซิงค์แล้ว"</string>
     <string name="toast_undo_unavailable">"การแก้ไขนี้ถูกซิงค์แล้วและจะยกเลิกไม่ได้"</string>

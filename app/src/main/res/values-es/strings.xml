@@ -8,7 +8,6 @@
     <!-- Fuzzy -->
     <string name="retry">"Reintentar"</string>
     <string name="oauth_failed_permissions">"Autorización fallida: debes conceder todos los permisos"</string>
-    <string name="title_activity_settings">"Ajustes"</string>
     <string name="pref_category_communication">"Conexión"</string>
 
     <!-- Fuzzy -->
@@ -50,9 +49,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Lo revisaré"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Has dejado este campo vacío"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"¿Quieres dejar una nota?"</string>
@@ -325,16 +321,10 @@ No obstante, antes de subir cualquier cambio, la aplicación comprueba si la ver
     <string name="quest_surface_value_wood">"Madera"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"¿Cuál es el nombre de este lugar?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"¿La calle tiene acera?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Dónde está la calle?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"¿Qué tipo de superficie tiene el carril bici?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"¿Qué tipo de vía de servicio es?"</string>
@@ -897,9 +887,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingLevels_answer_description">"En ese caso limítate a poner la planta de la parte más alta del edificio."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Toca la pantalla para soltar la vista de la posición"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"¿Sabes si las calzadas están separadas entre sí? (ejemplo: por una barrera) El límite de velocidad estándar es distinto si es el caso."</string>
     <string name="about_category_feedback">"Sugerencias"</string>
 
@@ -1243,9 +1230,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"¿Quieres establecer el orden de las tareas y su estado a los valores originales?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"¿Para qué se construyó este edificio?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Elige un valor más específico."</string>
@@ -2277,6 +2261,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Los camiones altos no caben"</string>
     <string name="quest_address_street_hint">"Toca la carretera en el mapa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Cruce marcado"</string>
     <string name="quest_parkingType_street_side">"Estacionamiento apartado, fuera de la vía"</string>
     <string name="quest_parkingType_lane">"Estacionamiento al borde de la vía"</string>
@@ -2308,6 +2294,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_dietType_kosher_name_title">"¿%s ofrece productos kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Los productos kosher deben prepararse de acuerdo con reglas especiales, y las agencias de certificación kashrut deben marcar los productos en cumplimiento."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Aquí no hay ningún carril bici"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Para completar la tarea, lo típico; toca un lado de la vía, elige tu respuesta y haz lo mismo con el otro lado. Ten en cuenta todas las opciones disponibles, a veces no está tan claro, como en vías de un solo sentido con dos direcciones de carril bici."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Marcando como que no hay carril bici"</string>
     <string name="quest_construction_completed_at_known_date">"Estará terminado en la fecha..."</string>
@@ -2341,9 +2329,9 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
     <string name="quest_pitchLit_title">"¿Esta cancha deportiva está iluminada?"</string>
     <string name="quest_pitchLit_title_track">"¿Esta pista deportiva está iluminada?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Cruce con semáforos"</string>
-    <string name="undo_last">"Deshacer la última edición"</string>
-    <string name="show_edit_history">"Mostrar historial de edición"</string>
     <string name="undo_confirm_title2">"¿Deshacer la siguiente edición?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edición ya está sincronizada y no se puede deshacer"</string>
@@ -2475,5 +2463,7 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_dietType_halal_name_title">"¿«%s» vende productos halal?"</string>
     <string name="quest_dietType_explanation_halal">"Los productos halal tienen que prepararse de una forma especial, hay agencias que los certifican y los marcan como tales."</string>
     <string name="quest_picnicTableCover_title">"¿Esta mesa de merendero está bajo cubierto? (protegida de la lluvia)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Son peldaños"</string>
 </resources>

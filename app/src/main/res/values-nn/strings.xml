@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Fekk ikkje kontakt med godkjenningstenaren"</string>
     <string name="retry">"Prøv på nytt"</string>
     <string name="oauth_failed_permissions">"Mislukka godkjenning: Du må godkjenna alle dei oppgjevne løyva"</string>
-    <string name="title_activity_settings">"Innstillingar"</string>
     <string name="pref_category_communication">"Kommunikasjon"</string>
     <string name="pref_category_display">"Skjerm"</string>
     <string name="pref_tilecache_size_summary">"%d MiB"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"Er du sikker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, eg er sikker"</string>
     <string name="quest_generic_confirmation_no">"Eg skal sjekka"</string>
-    <string name="quest_generic_error_field_empty">"Du lét feltet stå tomt"</string>
     <string name="quest_leave_new_note_title">"Vil du heller leggja att ein merknad?"</string>
     <string name="quest_leave_new_note_description">"Du kan leggja att ein offentleg merknad på denne staden. Andre kartleggjarar kan så kommentera på denne og forhåpentlegvis løysa problemet. Du kan òg gøyma oppdraget for deg sjølv."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -132,10 +130,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_surface_value_sand">"Sand"</string>
     <string name="quest_surface_value_sett">"Brustein"</string>
     <string name="quest_surface_value_wood">"Tredekke"</string>
-    <string name="quest_placeName_title">"Kva heiter denne staden?"</string>
     <string name="quest_sidewalk_title">"Har denne gata fortau?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kor er denne gata?"</string>
-    <string name="quest_cyclewaySurface_title">"Kva vegdekke har sykkelvegen her?"</string>
     <string name="quest_serviceType_title">"Kva slags småveg er dette?"</string>
     <string name="quest_oneway_title">"Er dette ei einvegskøyrd gate?"</string>
     <string name="quest_address_title">"Kva er husnummeret til denne bygningen?"</string>
@@ -316,6 +312,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_way_lit_24_7">"Lyset er på dag og natt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
     <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Overgang utan vegmarkering"</string>
     <string name="action_undo">"Angra"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
@@ -342,7 +340,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_buildingLevels_levelsLabel2">"vanlege etasjar (utanom taketasjar)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Forskjellig for ulike bygningsdelar"</string>
     <string name="quest_buildingLevels_answer_description">"Skriv i så fall inn talet på etasjar til den høgaste bygningsdelen."</string>
-    <string name="unglue_hint">"Trykk for å løysa visinga frå gjeldande posisjon"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er køyrebanene til vegen fysisk skilde (med midtrabatt)? Standardfartsgrensa avheng av dette."</string>
     <string name="about_category_feedback">"Tilbakemelding"</string>
     <string name="quest_leave_new_note_photo">"Legg ved bilete"</string>
@@ -469,7 +466,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For nokre oppdrag vert tilleggsdata frå tredjepartar lasta ned. Søket etter oppdrag om einvegskøyrde gater brukar eit API på westnordost.de for å finna kandidatar for einvegskøyring.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ingen (legg att ein merknad)"</string>
     <string name="pref_quests_reset">"Vil du nullstilla både type oppdrag og rekkjefølgje?"</string>
-    <string name="quest_buildingType_title2">"Kva er denne bygningen laga for?"</string>
     <string name="quest_generic_item_invalid_value">"Vel ein meir spesifikk verdi."</string>
     <string name="quest_buildingType_answer_multiple_types">"Han har fleire bruksområde"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Vel det bygningen hovudsakleg vert brukt til. Viss han for eksempel har ein butikk på gateplan og leilegheiter i etasjane over, er han hovudsakleg ei bustadblokk."</string>
@@ -961,6 +957,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høge vogntog får ikkje plass"</string>
     <string name="quest_address_street_hint">"Trykk på gata/vegen på kartet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Overgang med vegmarkering"</string>
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
@@ -992,6 +990,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_dietType_kosher_name_title">"Har %s koscher­produkt?"</string>
     <string name="quest_dietType_explanation_kosher">"Koscher­produkt må lagast etter særskilde religiøse reglar, og det finst eigne sertifiserings­instansar som godkjenner produkta."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Finst ikkje sykkelveg/-felt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanleg på éi side av teikninga, vel rett alternativ, og gjenta det same for den andre sida. Men merk at det er mange tilgjengelege alternativ her. Nokre tilfelle er ikkje openbare, for eksempel ein einvegskøyrd veg som likevel tillèt sykling i begge retningar."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vel at det ikkje finst nokon sykkelveg"</string>
     <string name="quest_construction_completed_at_known_date">"Vert ferdigstilt ein gitt dato …"</string>

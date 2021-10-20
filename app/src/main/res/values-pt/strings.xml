@@ -6,7 +6,6 @@
     <string name="oauth_communication_error">"Não foi possível contactar o servidor de autenticação"</string>
     <string name="retry">"Repetir"</string>
     <string name="oauth_failed_permissions">"A autenticação falhou: é preciso conceder todas as permissões listadas"</string>
-    <string name="title_activity_settings">"Preferências"</string>
     <string name="pref_category_communication">"Comunicação"</string>
     <string name="pref_category_display">"Visualização"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -22,7 +21,6 @@
     <string name="quest_generic_confirmation_title">"Tem a certeza?"</string>
     <string name="quest_generic_confirmation_yes">"Sim, tenho a certeza"</string>
     <string name="quest_generic_confirmation_no">"Vou verificar"</string>
-    <string name="quest_generic_error_field_empty">"Deixou este campo em branco"</string>
     <string name="quest_leave_new_note_title">"Deixar uma nota, alternativamente?"</string>
     <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores possam comentar e resolver a questão ou em alternativa simplesmente ocultar a missão apenas para si"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -157,10 +155,8 @@ Contudo, antes enviar as suas alterações, a aplicação confirma com &lt;a hre
     <string name="quest_surface_value_sand">"Areia"</string>
     <string name="quest_surface_value_sett">"Paralelos"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
-    <string name="quest_placeName_title">"Qual o nome deste local?"</string>
     <string name="quest_sidewalk_title">"Esta estrada tem passeio?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde fica esta rua?"</string>
-    <string name="quest_cyclewaySurface_title">"Que tipo de pavimento tem esta ciclovia aqui?"</string>
     <string name="quest_serviceType_title">"Que tipo de estrada de serviço é esta?"</string>
     <string name="quest_oneway_title">"É uma rua de sentido único?"</string>
     <string name="quest_address_title">"Qual o número de porta deste edifício?"</string>
@@ -425,7 +421,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingLevels_levelsLabel2">"nº de pisos (sem o telhado)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Difere em diferentes partes do edifício"</string>
     <string name="quest_buildingLevels_answer_description">"Neste caso, coloque o valor da parte mais alta do edifício"</string>
-    <string name="unglue_hint">"Tocar para deslocar a visualização"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Existe separação física entre as faixas de rodagem (ex: separador central)? A velocidade máxima por defeito, depende se esta situação se verificar ou não."</string>
@@ -588,7 +583,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Para algumas missões, são descarregados dados de terceiros. Em particular, a missão de sentido único faz consultas a uma API, também alojada em westnordost.de, sobre candidatos possíveis de sentido único.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Não (deixar nota)"</string>
     <string name="pref_quests_reset">"Repor as definições de fábrica da visibilidade e ordem das missões?"</string>
-    <string name="quest_buildingType_title2">"Qual a função principal deste edifício?"</string>
     <string name="quest_generic_item_invalid_value">"Por favor selecione um valor mais específico"</string>
     <string name="quest_buildingType_answer_multiple_types">"Tem várias finalidades"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Simplesmente selecione a utilização principal deste edifício. Por exemplo, se existir uma loja no rés-do-chão e apartamentos nos pisos superiores, o edifício é primordialmente um edifício de apartamentos."</string>
@@ -1118,6 +1112,8 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Camiões altos não cabem"</string>
     <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Passadeira com marcas (pintadas...)"</string>
     <string name="quest_parkingType_street_side">"Estacionamento perto da estrada"</string>
     <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
@@ -1149,6 +1145,8 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <string name="quest_dietType_kosher_name_title">"%s oferece produtos kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Produtos kashrut devem ser preparados de acordo com regras especiais, com agências de certificação kashrut marcando os produtos em conformidade."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Sem nenhuma ciclovia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Como normalmente, toque num lado da ilustração, selecione uma resposta adequada e faça o mesmo para o outro lado. Veja todas as opções disponíveis: alguns casos não são óbvios, como uma estrada de sentido único que permite ciclistas em ambas as direções!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecionando que não há ciclovia"</string>
     <string name="quest_construction_completed_at_known_date">"Será concluído em..."</string>
@@ -1180,9 +1178,9 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
     <string name="quest_pitchLit_title">"Este campo desportivo tem iluminação?"</string>
     <string name="quest_pitchLit_title_track">"Esta pista de desportos tem iluminação?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Passadeira controlada por semáforos"</string>
-    <string name="undo_last">"Desfazer última edição"</string>
-    <string name="show_edit_history">"Mostrar histórico de edições"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>

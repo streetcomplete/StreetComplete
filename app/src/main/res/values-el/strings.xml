@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Η εξουσιοδότηση απέτυχε: Πρέπει να παραχωρηθούν όλες οι καταχωρημένες άδειες"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Ρυθμίσεις"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Επικοινωνία"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Θα το ελέγξω"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Άφησες αυτό το πεδίο άδειο"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Θα αφήσετε σημείωμα αντ' αυτού;"</string>
@@ -335,16 +329,10 @@
     <string name="quest_surface_value_wood">"Ξύλο"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Ποιό είναι το όνομα αυτού του μέρους;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Αυτός ο δρόμος έχει πεζοδρόμιο;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Που είναι αυτός ο δρόμος;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Τι επιφάνεια έχει ο ποδηλατόδρομος εδώ;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Τι είδους δρόμος υπηρεσίας είναι αυτός;"</string>
@@ -911,9 +899,6 @@
     <string name="quest_buildingLevels_answer_description">"Σε αυτή την περίπτωση, απλώς εισάγετε τις τιμές του υψηλότερου μέρους του κτιρίου."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Πατήστε για απεμπλοκή προβολής από την τοποθεσία"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Είναι οι λωρίδες αυτού του δρόμου χωρισμένες φυσικά (π.χ. μέσα από ένα φράγμα); Το προεπιλεγμένο όριο ταχύτητας εξαρτάται από το αν αυτό συμβαίνει ή όχι."</string>
     <string name="about_category_feedback">"Αναφορά"</string>
 
@@ -1267,9 +1252,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Επαναφορά και την ενεργοποίηση αναζήτησης και την σειρά των προεπιλογών;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Πως ήταν κατασκευασμένο αυτό το κτίριο;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Επιλέξτε μια πιο συγκεκριμένη τιμή."</string>
@@ -2121,6 +2103,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Τα ψηλά φορτηγά δεν χωράνε"</string>
     <string name="quest_address_street_hint">"Χτυπήστε το δρόμο στον χάρτη"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Σηματοδοτημένες διαβάσεις"</string>
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
@@ -2152,6 +2136,8 @@
     <string name="quest_dietType_kosher_name_title">"Το %s προσφέρει προϊόντα Κοσέρ;"</string>
     <string name="quest_dietType_explanation_kosher">"Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Δεν υπάρχει καθόλου ποδηλατόδρομος"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ως συνήθως, χτυπήστε στη μία πλευρά της εικόνας, επιλέξτε μια σωστή απάντηση και κάντε το ίδιο για την άλλη πλευρά. Σημειώστε όλες τις διαθέσιμες επιλογές: ορισμένες περιπτώσεις δεν είναι προφανείς, όπως ένας μονόδρομος που επιτρέπει ποδηλάτες και στις δύο κατευθύνσεις!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Επιλέγοντας αυτό δεν υπάρχει ποδηλατόδρομος"</string>
     <string name="quest_construction_completed_at_known_date">"Θα ολοκληρωθεί στις…"</string>
@@ -2183,9 +2169,9 @@
     <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
     <string name="quest_pitchLit_title">"Είναι φωτισμένο αυτό το γήπεδο;"</string>
     <string name="quest_pitchLit_title_track">"Είναι φωτισμένος αυτός ο στίβος;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Η διέλευση ελέγχεται από φανάρια"</string>
-    <string name="undo_last">"Αναίρεση τελευταίας επεξεργασίας"</string>
-    <string name="show_edit_history">"Εμφάνιση ιστορικού επεξεργασίας"</string>
     <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
     <string name="synced">"Συγχρονισμένο"</string>
     <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>

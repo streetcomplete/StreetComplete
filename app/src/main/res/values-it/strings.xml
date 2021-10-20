@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autenticazione"</string>
     <string name="retry">"Riprova"</string>
     <string name="oauth_failed_permissions">"Autorizzazione negata: devi concedere tutti i permessi in elenco"</string>
-    <string name="title_activity_settings">"Impostazioni"</string>
     <string name="pref_category_communication">"Comunicazione"</string>
     <string name="pref_category_display">"Schermo"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -22,7 +21,6 @@
     <string name="quest_generic_confirmation_title">"Confermi?"</string>
     <string name="quest_generic_confirmation_yes">"Sì, confermo"</string>
     <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
-    <string name="quest_generic_error_field_empty">"Hai lasciato questa informazione vuota"</string>
     <string name="quest_leave_new_note_title">"Preferisci invece lasciare una nota?"</string>
     <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica qui in modo che altri possano commentare e auspicabilmente risolvere altrimenti puoi nascondere questa missione solo per te"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -132,12 +130,10 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_sand">"Sabbia"</string>
     <string name="quest_surface_value_sett">"Sampietrini / Pavè"</string>
     <string name="quest_surface_value_wood">"Legno"</string>
-    <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
 
     <!-- Ho modificato la traduzione italiana di "sidewalk" da "marciapiede" a "percorso pedonale", perché in OSM vengono considerati "sidewalk" anche i portici, che in italiano non rientrano nella definizione di "marciapiede". (vedi https://github.com/streetcomplete/StreetComplete/issues/2452) -->
     <string name="quest_sidewalk_title">"Questa strada ha un  marciapiede su almeno un lato?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Dove si trova questa strada?"</string>
-    <string name="quest_cyclewaySurface_title">"Qual è la superficie ha questa pista ciclabile?"</string>
     <string name="quest_serviceType_title">"Che genere di strada di servizio è questa?"</string>
     <string name="quest_oneway_title">"Si tratta di una strada a senso unico?"</string>
     <string name="quest_address_title">"Qual è il numero civico di questo edificio?"</string>
@@ -329,6 +325,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_way_lit_24_7">"È illuminato giorno e notte"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non riesco ad esplorare la zona. Prova ad aumentare lo zoom o a tenere la mappa meno inclinata."</string>
     <string name="quest_crossing_type_title">"Che tipo di attraversamento pedonale è questo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
     <string name="action_undo">"Annulla"</string>
     <string name="produce_mangosteen">"Mangostano"</string>
@@ -359,7 +357,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingLevels_levelsLabel2">"piani (senza contare il tetto)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Differisce per parte dell'edificio"</string>
     <string name="quest_buildingLevels_answer_description">"In questo caso, inserisci semplicemente i valori della parte più alta dell'edificio."</string>
-    <string name="unglue_hint">"Tocca per scollegare la vista dalla posizione"</string>
 
     <!-- non sono certo di questa traduzione -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"La strada è composta da una doppia carreggiata divisa fisicamente (es. da una barriera)? Da questo dipende il limite di velocità."</string>
@@ -485,7 +482,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Per alcune missioni, potrebbero venire scaricati ulteriori dati da terzi. In particolare, la missione dei sensi unici richiede un’API, anch’essa ospitata su westnordost.de, per i candidati probabili alle strade a senso unico.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (lascia una nota)"</string>
     <string name="pref_quests_reset">"Reimpostare sia le missioni abilitate che l’ordine al valore predefinito?"</string>
-    <string name="quest_buildingType_title2">"A che scopo d'uso è stato costruito questo edificio?"</string>
     <string name="quest_generic_item_invalid_value">"Selezionare un valore più specifico."</string>
     <string name="quest_buildingType_answer_multiple_types">"Ha più usi"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Seleziona lo scopo principale di questo edificio. Es. se c'è un negozio al piano terra con appartamenti sopra di esso, si tratta sempre di un condominio."</string>
@@ -916,7 +912,7 @@ riconoscimento"</string>
     <string name="quest_traffic_signals_sound_title">"Ci sono segnali sonori per i non vedenti?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_vibrate_title">"Questo semaforo ha un indicatore tattile che indica agli ipovedenti quando attraversare?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Questo semaforo ha un indicatore tattile che indica agli ipovedenti quando attraversare in sicurezza?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Consiglio: spesso si tratta di un pulsante che vibra o un cono che ruota nella parte inferiore del pulsante semaforico."</string>
     <string name="quest_busStopRef_title">"Qual è il numero identificativo di questa fermata del bus?"</string>
     <string name="quest_tramStopRef_title">"Qual è il numero identificativo di questa fermata del tram?"</string>
@@ -984,6 +980,8 @@ riconoscimento"</string>
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"I camion alti non passano"</string>
     <string name="quest_address_street_hint">"Premi la strada sulla mappa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Attraversamento indicato"</string>
     <string name="quest_parkingType_street_side">"Parcheggio poco fuori dalla carreggiata"</string>
     <string name="quest_parkingType_lane">"Parcheggio sulla carreggiata"</string>
@@ -1015,6 +1013,8 @@ riconoscimento"</string>
     <string name="quest_dietType_kosher_name_title">"%s vende prodotti kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna pista ciclabile"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Al solito, tocca sul lato della figura, seleziona la risposta corretta e ripeti per l'altro lato. Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio una strada a senso unico che permette il transito delle bici in entrambi i sensi!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selezionare che non è presente una pista ciclabile"</string>
     <string name="quest_construction_completed_at_known_date">"Sarà completato in data…"</string>
@@ -1046,9 +1046,9 @@ riconoscimento"</string>
     <string name="team_mode_deactivated">"Modalità squadra disattivata"</string>
     <string name="quest_pitchLit_title">"Questo campo da gioco è illuminato?"</string>
     <string name="quest_pitchLit_title_track">"Questa pista è illuminata?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Attraversamento controllato da semafori"</string>
-    <string name="undo_last">"Annulla l'ultima modifica"</string>
-    <string name="show_edit_history">"Mostra lo storico delle modifiche"</string>
     <string name="undo_confirm_title2">"Vuoi annullare questa modifica?"</string>
     <string name="synced">"Sincronizzato"</string>
     <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere annullata"</string>
@@ -1162,5 +1162,9 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_buildingType_bridge">"Ponte tra edifici"</string>
     <string name="quest_laundrySelfService_title2">"Questa lavanderia ha il servizio self service?"</string>
     <string name="quest_dietType_halal_name_title">"%s offre prodotti Halal?"</string>
+    <string name="quest_dietType_explanation_halal">"I prodotti Halal devono essere preparati in osservanza di speciali regole, con la certificazione Halal le agenzie le agenzie marchiano il prodotto in accordo."</string>
     <string name="quest_picnicTableCover_title">"Questo tavolo da picnic è coperto (riparato dalla pioggia)?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_generic_answer_is_actually_steps">"Questi sono scalini"</string>
 </resources>
