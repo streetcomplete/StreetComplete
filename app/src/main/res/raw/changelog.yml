@@ -17,6 +17,7 @@ v37.0-beta1: |
   <li>Edit history sidebar now appears immediately on tapping the undo button, last edit is at the
       bottom and pre-selected (#3349), by @smichel17</li>
   <li>Fix (speed limit, max height, max weight, ...) signs should have a yellow background in Sweden, Finland and Iceland (#3369, #3393)</li>
+  <li>Fix "public transport" was displayed twice in board type quest (#3365), by @kmpoppe</li>
   </ul>
 
 v36.1: |
