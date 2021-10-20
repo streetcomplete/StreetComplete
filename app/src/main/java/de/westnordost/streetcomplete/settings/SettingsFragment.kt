@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -112,6 +113,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
         prefs.unregisterOnSharedPreferenceChangeListener(this)
     }
 
+    @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
             Prefs.AUTOSYNC -> {
