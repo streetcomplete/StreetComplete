@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.traffic_calming_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
