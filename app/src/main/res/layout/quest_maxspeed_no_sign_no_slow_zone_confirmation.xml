@@ -29,17 +29,25 @@
                 android:paddingEnd="4dp"
                 android:text="@string/quest_maxspeed_answer_noSign_info_zone"
                 android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-                android:layout_toStartOf="@+id/slowZoneImage"
+                android:layout_toStartOf="@+id/signContainer"
                 />
 
-            <include
-                android:id="@+id/slowZoneImage"
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                layout="@layout/quest_maxspeed_zone_sign"
-                />
+                android:id="@+id/signContainer"
+                >
+                <!--
+                <include
+                    android:id="@+id/slowZoneImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    layout="@layout/quest_maxspeed_zone_sign"
+                    />
+                -->
+            </FrameLayout>
 
         </RelativeLayout>
 
