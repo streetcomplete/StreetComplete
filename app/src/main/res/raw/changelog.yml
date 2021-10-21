@@ -7,6 +7,7 @@ v37.0-beta1: |
   <h3>Quest Enhancements</h3>
   <ul>
   <li>Remember and offer to apply the last answer for the cycleway and sidewalk quest (#2542)</li>
+  <li>The top answers in the building type quest are sorted smarter (#1771, #3373), by @smichel17</li>
   <li>Ask again for the type of stile every 8 years (#3187, #3370), thanks @matkoniecz, @peternewman</li>
   <li>For stile type quest, add option to state that it is now something else than a stile (#3409, #3188, #3391), by @matkoniecz</li>
   <li>More compact wording for crossing types (#3383), by @matkoniecz</li>
