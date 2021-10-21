@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="112dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:layoutDirection="ltr"
+    android:paddingRight="0dp"
+    android:paddingLeft="0dp"
+    style="@style/Widget.AppCompat.Button.Small"
+    tools:ignore="RtlHardcoded">
+
+    <ImageView
+        android:id="@+id/leftSideImageView"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_cycleway_track_dual"
+        android:rotation="180"/>
+
+    <ImageView
+        android:id="@+id/rightSideImageView"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="-24dp"
+        android:src="@drawable/ic_cycleway_sidewalk"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>

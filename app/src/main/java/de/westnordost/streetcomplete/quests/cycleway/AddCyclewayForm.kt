@@ -4,21 +4,24 @@ import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
+import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
+import de.westnordost.streetcomplete.util.normalizeDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import kotlin.math.absoluteValue
 
 class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_street_side_puzzle
-    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
+    override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
+    private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     override val buttonPanelAnswers get() =
         if(isDisplayingPreviousCycleway) listOf(
@@ -114,6 +117,14 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             HAS_SHOWN_TAP_HINT = true
         }
 
+        updateLastAnswerButtonVisibility()
+
+        lastSelection?.let {
+            binding.lastAnswerButton.leftSideImageView.setImageResource(it.left.getDialogIconResId(isLeftHandTraffic))
+            binding.lastAnswerButton.rightSideImageView.setImageResource(it.right.getDialogIconResId(isLeftHandTraffic))
+        }
+
+        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
         checkIsFormComplete()
     }
 
@@ -186,11 +197,46 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
                     || (if(isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
         }
 
-        applyAnswer(CyclewayAnswer(
+        val answer = CyclewayAnswer(
             left = leftSide?.let { CyclewaySide(it, leftSideDir) },
             right = rightSide?.let { CyclewaySide(it, rightSideDir) },
             isOnewayNotForCyclists = isOnewayNotForCyclists
-        ))
+        )
+
+        applyAnswer(answer)
+
+        if (leftSide != null && rightSide != null) {
+            lastSelection =
+                if (isRoadDisplayedUpsideDown())
+                    LastCyclewaySelection(rightSide, leftSide)
+                else
+                    LastCyclewaySelection(leftSide, rightSide)
+        }
+    }
+
+    private fun applyLastSelection() {
+        val lastSelection = lastSelection ?: return
+        if (isRoadDisplayedUpsideDown()) {
+            onSelectedSide(lastSelection.right, false)
+            onSelectedSide(lastSelection.left, true)
+        } else {
+            onSelectedSide(lastSelection.left, false)
+            onSelectedSide(lastSelection.right, true)
+        }
+    }
+
+    private fun isRoadDisplayedUpsideDown(): Boolean {
+        val roadDisplayRotation = binding.puzzleView.streetRotation
+        return roadDisplayRotation.normalizeDegrees(-180f).absoluteValue > 90f
+    }
+
+    private fun updateLastAnswerButtonVisibility() {
+        val formIsPrefilled = leftSide != null || rightSide != null
+        val lastAnswerWasForBothSides = (lastSelection?.left != null && lastSelection?.right != null)
+        val isDefiningBothSides = isDefiningBothSides && lastAnswerWasForBothSides
+
+        binding.lastAnswerButton.root.isGone =
+            lastSelection == null || formIsPrefilled || !isDefiningBothSides
     }
 
     private fun Cycleway.isSingleTrackOrLane() =
@@ -210,22 +256,26 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
         val items = getCyclewayItems(isRight).map { it.asItem(isLeftHandTraffic) }
-        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
-            val cycleway = selected.value!!
-            val iconResId = cycleway.getIconResId(isLeftHandTraffic)
-            val titleResId = resources.getString(cycleway.getTitleResId())
-
-            if (isRight) {
-                binding.puzzleView.replaceRightSideImage(ResImage(iconResId))
-                binding.puzzleView.setRightSideText(titleResId)
-                rightSide = cycleway
-            } else {
-                binding.puzzleView.replaceLeftSideImage(ResImage(iconResId))
-                binding.puzzleView.setLeftSideText(titleResId)
-                leftSide = cycleway
-            }
-            checkIsFormComplete()
+        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) {
+            onSelectedSide(it.value!!, isRight)
         }.show()
+    }
+
+    private fun onSelectedSide(cycleway: Cycleway, isRight: Boolean) {
+        val iconResId = cycleway.getIconResId(isLeftHandTraffic)
+        val titleResId = resources.getString(cycleway.getTitleResId())
+
+        if (isRight) {
+            binding.puzzleView.replaceRightSideImage(ResImage(iconResId))
+            binding.puzzleView.setRightSideText(titleResId)
+            rightSide = cycleway
+        } else {
+            binding.puzzleView.replaceLeftSideImage(ResImage(iconResId))
+            binding.puzzleView.setLeftSideText(titleResId)
+            leftSide = cycleway
+        }
+        updateLastAnswerButtonVisibility()
+        checkIsFormComplete()
     }
 
     private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
@@ -242,6 +292,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private fun showBothSides() {
         isDefiningBothSides = true
         binding.puzzleView.showBothSides()
+        updateLastAnswerButtonVisibility()
         checkIsFormComplete()
     }
 
@@ -252,5 +303,12 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         private const val IS_DISPLAYING_PREVIOUS_CYCLEWAY = "is_displaying_previous_cycleway"
 
         private var HAS_SHOWN_TAP_HINT = false
+
+        private var lastSelection: LastCyclewaySelection? = null
     }
 }
+
+private data class LastCyclewaySelection(
+    val left: Cycleway,
+    val right: Cycleway
+)
