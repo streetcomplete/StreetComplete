@@ -13,9 +13,13 @@ import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 
 class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailabilityAnswer>() {
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_diet_answer_no_food) { confirmNoFood() },
-    )
+    override val otherAnswers: List<AnswerItem> get() {
+        val result = mutableListOf<AnswerItem>()
+        if (osmElement?.tags?.get("amenity") == "cafe") {
+            result.add(AnswerItem(R.string.quest_diet_answer_no_food) { confirmNoFood() })
+        }
+        return result;
+    }
 
     override val contentLayoutResId = R.layout.quest_diet_type_explanation
     private val binding by contentViewBinding(QuestDietTypeExplanationBinding::bind)
