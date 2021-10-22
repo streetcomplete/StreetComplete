@@ -41,7 +41,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
                     changes.deleteIfExists("diet:vegan")
                 }
             }
-            NoFood -> changes.add("food", "no")
+            NoFood -> changes.addOrModify("food", "no")
         }
     }
 }
