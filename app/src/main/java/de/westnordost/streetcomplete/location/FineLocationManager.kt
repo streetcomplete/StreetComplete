@@ -11,6 +11,7 @@ import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
+import androidx.core.os.CancellationSignal
 import androidx.core.util.Consumer
 
 /** Convenience wrapper around the location manager with easier API, making use of both the GPS
@@ -23,6 +24,7 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
             locationUpdateCallback(it)
         }
     }
+    private var cancellationSignal = CancellationSignal()
     private var lastLocation: Location? = null
 
     private val deviceHasGPS: Boolean get() = locationManager.allProviders.contains(GPS_PROVIDER)
@@ -47,14 +49,22 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun getCurrentLocation() {
-        if (deviceHasGPS)
-            LocationManagerCompat.getCurrentLocation(locationManager, GPS_PROVIDER, null, mainExecutor, currentLocationConsumer)
-        if (deviceHasNetworkLocationProvider)
-            LocationManagerCompat.getCurrentLocation(locationManager, NETWORK_PROVIDER, null, mainExecutor, currentLocationConsumer)
+        if (cancellationSignal.isCanceled) {
+            cancellationSignal = CancellationSignal()
+        }
+        if (deviceHasGPS) {
+            LocationManagerCompat.getCurrentLocation(locationManager, GPS_PROVIDER, cancellationSignal,
+                mainExecutor, currentLocationConsumer)
+        }
+        if (deviceHasNetworkLocationProvider) {
+            LocationManagerCompat.getCurrentLocation(locationManager, NETWORK_PROVIDER, cancellationSignal,
+                mainExecutor, currentLocationConsumer)
+        }
     }
 
     fun removeUpdates() {
         locationManager.removeUpdates(locationListener)
+        cancellationSignal.cancel()
     }
 }
 
