@@ -39,14 +39,6 @@
                 android:layout_alignParentEnd="true"
                 android:id="@+id/signContainer"
                 >
-                <!--
-                <include
-                    android:id="@+id/slowZoneImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    layout="@layout/quest_maxspeed_zone_sign"
-                    />
-                -->
             </FrameLayout>
 
         </RelativeLayout>
