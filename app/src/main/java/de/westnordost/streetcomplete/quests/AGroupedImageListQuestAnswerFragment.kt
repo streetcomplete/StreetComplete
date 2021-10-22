@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
-import java.util.LinkedList
 import kotlin.math.max
 import kotlin.math.min
 
