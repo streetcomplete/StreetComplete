@@ -66,7 +66,7 @@ kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/w
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_street_side.jpg   CC0               https://wiki.openstreetmap.org/wiki/File:20200925-parking-lined-perpendicular.jpg
-parking_type_surface.jpg       CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
+parking_type_surface.jpg       CC0               Mateusz Konieczny https://commons.wikimedia.org/wiki/File:20210916_151751_smudged_plates.jpg
 parking_type_underground.jpg   CC0               https://pixabay.com/de/tiefgarage-einfahrt-absch%C3%BCssig-273439/
 
 power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
