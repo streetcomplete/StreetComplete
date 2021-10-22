@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.VEG
 
-class AddVegan : OsmFilterQuestType<DietAvailability>() {
+class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -15,7 +15,7 @@ class AddVegan : OsmFilterQuestType<DietAvailability>() {
           amenity = ice_cream
           or diet:vegetarian ~ yes|only and
           (
-            amenity ~ restaurant|cafe|fast_food
+            amenity ~ restaurant|cafe|fast_food and food != no
             or amenity = pub and food = yes
           )
         )
@@ -36,7 +36,10 @@ class AddVegan : OsmFilterQuestType<DietAvailability>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegan)
 
-    override fun applyAnswerTo(answer: DietAvailability, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("diet:vegan", answer.osmValue)
+    override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is DietAvailability -> changes.updateWithCheckDate("diet:vegan", answer.osmValue)
+            NoFood -> changes.addOrModify("food", "no")
+        }
     }
 }
