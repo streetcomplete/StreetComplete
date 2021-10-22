@@ -8,7 +8,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"验证失败：必须允许所有列出的权限请求"</string>
-    <string name="title_activity_settings">"设置"</string>
     <string name="pref_category_communication">"通讯"</string>
     <string name="pref_category_display">"显示"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -34,9 +33,6 @@
     <string name="quest_generic_confirmation_title">"您确定吗？"</string>
     <string name="quest_generic_confirmation_yes">"是的，我确定"</string>
     <string name="quest_generic_confirmation_no">"我再看看"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"您未填写此栏"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"要不要留一条笔记？"</string>
@@ -303,16 +299,10 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_surface_value_wood">"木制路面"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"这个地方的地名是什么？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"这条街道有人行道吗?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"这条街道在哪里？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"此自行车道的路面材料是?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"此条联络道路的种类是?"</string>
@@ -866,9 +856,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingLevels_answer_description">"在这种情况下，简单填写建筑部分最高楼层的数值。"</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"从位置点取消界限视图"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"这条路的车道间是否有实体分隔（例如有障碍物）？这会决定采用哪种预设的速度限制。"</string>
     <string name="about_category_feedback">"反馈"</string>
 
@@ -1217,9 +1204,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"将任务启用和订单重置为预先值吗？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"这栋建筑的施工目的是？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"请选择更精确的数值。"</string>
@@ -2096,6 +2080,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_address_street_hint">"点选地图上的道路"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"标线行人穿越道"</string>
 
     <!-- Fuzzy -->
@@ -2180,8 +2166,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"由红绿灯控制的十字路口"</string>
-    <string name="undo_last">"恢复最后的编辑"</string>
-    <string name="show_edit_history">"显示编辑历史"</string>
     <string name="undo_confirm_title2">"要恢复接下来的编辑吗？"</string>
 
     <!-- Fuzzy -->

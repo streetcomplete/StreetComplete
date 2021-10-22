@@ -10,7 +10,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorizácia zlyhala: Všetky oprávnenia v zozname musia byť udelené"</string>
-    <string name="title_activity_settings">"Nastavenia"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_communication">"Komunikácia"</string>
@@ -54,9 +53,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Overím to"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Toto políčko ste nechali prázdne"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Radšej nechať poznámku?"</string>
@@ -331,16 +327,10 @@ Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou. P
     <string name="quest_surface_value_wood">"Drevo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Aký je názov tohto miesta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Je pri ceste chodník?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je táto ulica?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Aký povrch má cyklocesta v tomto mieste?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Aký druh servisnej cesty je toto?"</string>
@@ -906,9 +896,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingLevels_answer_description">"V tom prípade zadajte hodnoty pre najvyššiu časť budovy."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Ťapnutím odlepíte z pozície"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sú vozovky fyzicky oddelené (napr. bariérou)? Obmedzenie rýchlosti môže byť v každom prípade iné."</string>
     <string name="about_category_feedback">"Spätná väzba"</string>
 
@@ -1259,9 +1246,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Obnoviť povolenie úloh a poradie na prednastavené hodnoty?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Aký je pôvodný účel tejto budovy?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Vyberte prosím presnejšiu možnosť."</string>
@@ -2322,6 +2306,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Vysoký nákladiak sa nezmestí"</string>
     <string name="quest_address_street_hint">"Ťuknite na cestu na mape"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označený prechod"</string>
     <string name="quest_parkingType_street_side">"Parkuje sa priamo vedľa cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje sa na ceste"</string>
@@ -2353,6 +2339,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_dietType_kosher_name_title">"Ponúka %s kóšer produkty?"</string>
     <string name="quest_dietType_explanation_kosher">"Kóšer produkty sa musia pripravovať podľa osobitných pravidiel s označením kašrut od certifikačnej agentúry."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nie je tu žiadna cyklotrasa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ako obvykle ťuknite na jednu stranu ilustrácie, vyberte správnu odpoveď a urobte to isté na druhej strane. Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejmé: napr. jednosmerná cesta, na ktorej môžu cyklisti jazdiť v oboch smeroch!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vyberáte, že tu nie je žiadna cyklotrasa"</string>
     <string name="quest_construction_completed_at_known_date">"Stavba bude dokončená..."</string>
@@ -2383,9 +2371,9 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
     <string name="quest_pitchLit_title">"Je toto ihrisko osvetlené?"</string>
     <string name="quest_pitchLit_title_track">"Je táto športová dráha osvetlená?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Prejazd riadený semaformi"</string>
-    <string name="undo_last">"Vrátiť späť poslednú úpravu"</string>
-    <string name="show_edit_history">"Zobraziť históriu úprav"</string>
     <string name="undo_confirm_title2">"Chcete vrátiť nasledujúcu úpravu?"</string>
     <string name="synced">"Synchronizované"</string>
     <string name="toast_undo_unavailable">"Táto úprava je už synchronizovaná a nedá sa vrátiť späť"</string>

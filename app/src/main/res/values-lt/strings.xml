@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Autorizacija nepavyko: turi būti suteikti visi išvardinti leidimai"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Nustatymai"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Ryšys"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Aš patikrinsiu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Jūs palikote šį lauką tuščią"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Vietoje to palikti pastabą?"</string>
@@ -336,16 +330,10 @@ Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. 
     <string name="quest_surface_value_wood">"Medis"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Koks yra šios vietos pavadinimas?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Ar ši gatvė turi šaligatvį?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Kokia yra šio dviračių tako danga?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>
@@ -911,9 +899,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_buildingLevels_answer_description">"Tokiu atveju tiesiog įveskite aukščiausios pastato dalies reikšmę."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Spustelėkite, kad atklijuotumėte rodinį nuo pozicijos"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Ar šio kelio juostos yra fiziškai atskirtos (pavyzdžiui barjeru)? Nuo to priklauso numatytasis greičio apribojimas priklauso."</string>
     <string name="about_category_feedback">"Atsiliepimai"</string>
 
@@ -1264,9 +1249,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Atstatyti į pradinę būseną užduočių įjungimą ir rikiuotę?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Kokia buvo pradinė šio pastato paskirtis/forma?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Prašome parinkti tikslesnę reikšmę."</string>
@@ -2246,8 +2228,6 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="quest_construction_completion_date_title">"Kada bus užbaigtos?"</string>
     <string name="team_mode">"Komandinis režimas"</string>
     <string name="team_mode_exit">"Palikti komandinį režimą"</string>
-    <string name="undo_last">"Atšaukti paskutinį keitimą"</string>
-    <string name="show_edit_history">"Parodyti redagavimo istoriją"</string>
     <string name="delete_confirmation">"Ištrinti"</string>
     <string name="quest_shop_type_title_no_name">"Koks šios parduotuvės tipas?"</string>
     <string name="background_type_map">"Žemėlapis"</string>

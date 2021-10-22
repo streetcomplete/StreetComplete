@@ -5,7 +5,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Spinner
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog

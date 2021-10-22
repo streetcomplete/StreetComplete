@@ -4,20 +4,23 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
+import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
+import de.westnordost.streetcomplete.util.normalizeDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import kotlin.math.absoluteValue
 
 class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_street_side_puzzle
-    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
+    override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
+    private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     override val otherAnswers = listOf(
             AnswerItem(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }
@@ -54,14 +57,23 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
             else                   R.drawable.ic_sidewalk_unknown
 
-        binding.puzzleView.setLeftSideImage(ResImage(leftSide?.puzzleResId ?: defaultResId))
-        binding.puzzleView.setRightSideImage(ResImage(rightSide?.puzzleResId ?: defaultResId))
+        binding.puzzleView.setLeftSideImage(ResImage(leftSide?.iconResId ?: defaultResId))
+        binding.puzzleView.setRightSideImage(ResImage(rightSide?.iconResId ?: defaultResId))
 
         if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
             if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
             if (rightSide == null) binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
+
+        updateLastAnswerButtonVisibility()
+
+        lastSelection?.let {
+            binding.lastAnswerButton.leftSideImageView.setImageResource(it.left.dialogIconResId)
+            binding.lastAnswerButton.rightSideImageView.setImageResource(it.right.dialogIconResId)
+        }
+
+        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
 
         checkIsFormComplete()
     }
@@ -77,10 +89,23 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(SidewalkSides(
+        val leftSide = leftSide
+        val rightSide = rightSide
+
+        val answer = SidewalkSides(
             left = leftSide == Sidewalk.YES,
             right = rightSide == Sidewalk.YES
-        ))
+        )
+
+        applyAnswer(answer)
+
+        if (leftSide != null && rightSide != null) {
+            lastSelection =
+                if (isRoadDisplayedUpsideDown())
+                    LastSidewalkSelection(rightSide, leftSide)
+                else
+                    LastSidewalkSelection(leftSide, rightSide)
+        }
     }
 
     private fun confirmSeparatelyMappedSidewalk() {
@@ -99,26 +124,46 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         val ctx = context ?: return
 
         val items = Sidewalk.values().map { it.asItem() }
-        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
-            val sidewalk = selected.value!!
-            if (isRight) {
-                binding.puzzleView.replaceRightSideImage(ResImage(sidewalk.puzzleResId))
-                binding.puzzleView.setRightSideText(null)
-                rightSide = sidewalk
-            } else {
-                binding.puzzleView.replaceLeftSideImage(ResImage(sidewalk.puzzleResId))
-                binding.puzzleView.setLeftSideText(null)
-                leftSide = sidewalk
-            }
-            checkIsFormComplete()
+        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) {
+            onSelectedSide(it.value!!, isRight)
         }.show()
     }
 
-    private enum class Sidewalk(val iconResId: Int, val puzzleResId: Int, val nameResId: Int) {
-        NO(R.drawable.ic_sidewalk_no, R.drawable.ic_sidewalk_puzzle_no, R.string.quest_sidewalk_value_no),
-        YES(R.drawable.ic_sidewalk_yes, R.drawable.ic_sidewalk_puzzle_yes, R.string.quest_sidewalk_value_yes);
+    private fun applyLastSelection() {
+        val lastSelection = lastSelection ?: return
+        if (isRoadDisplayedUpsideDown()) {
+            onSelectedSide(lastSelection.right, false)
+            onSelectedSide(lastSelection.left, true)
+        } else {
+            onSelectedSide(lastSelection.left, false)
+            onSelectedSide(lastSelection.right, true)
+        }
+    }
 
-        fun asItem() = Item(this, iconResId, nameResId)
+
+    private fun isRoadDisplayedUpsideDown(): Boolean {
+        val roadDisplayRotation = binding.puzzleView.streetRotation
+        return roadDisplayRotation.normalizeDegrees(-180f).absoluteValue > 90f
+    }
+
+    private fun updateLastAnswerButtonVisibility() {
+        binding.lastAnswerButton.root.isGone =
+            lastSelection == null || leftSide != null || rightSide != null
+    }
+
+
+    private fun onSelectedSide(sidewalk: Sidewalk, isRight: Boolean) {
+        if (isRight) {
+            binding.puzzleView.replaceRightSideImage(ResImage(sidewalk.iconResId))
+            binding.puzzleView.setRightSideText(null)
+            rightSide = sidewalk
+        } else {
+            binding.puzzleView.replaceLeftSideImage(ResImage(sidewalk.iconResId))
+            binding.puzzleView.setLeftSideText(null)
+            leftSide = sidewalk
+        }
+        updateLastAnswerButtonVisibility()
+        checkIsFormComplete()
     }
 
     companion object {
@@ -126,5 +171,19 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         private const val SIDEWALK_RIGHT = "sidewalk_right"
 
         private var HAS_SHOWN_TAP_HINT = false
+
+        private var lastSelection: LastSidewalkSelection? = null
     }
 }
+
+private enum class Sidewalk(val dialogIconResId: Int, val iconResId: Int, val titleResId: Int) {
+    NO(R.drawable.ic_sidewalk_no, R.drawable.ic_sidewalk_puzzle_no, R.string.quest_sidewalk_value_no),
+    YES(R.drawable.ic_sidewalk_yes, R.drawable.ic_sidewalk_puzzle_yes, R.string.quest_sidewalk_value_yes);
+
+    fun asItem() = Item(this, dialogIconResId, titleResId)
+}
+
+private data class LastSidewalkSelection(
+    val left: Sidewalk,
+    val right: Sidewalk
+)

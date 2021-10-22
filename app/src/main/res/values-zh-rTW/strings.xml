@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"驗證失敗：所有列出的請求都須許可"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"設定"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"通訊"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"我會檢查"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"你留下空的欄位"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"以留下註記取代?"</string>
@@ -335,16 +329,10 @@
     <string name="quest_surface_value_wood">"木頭"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"這個地方叫做?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"這條道路有人行道嗎?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"此自行車道的鋪面是?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"此條聯絡道路的種類是?"</string>
@@ -910,9 +898,6 @@
     <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"從位置點取消界限視圖"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"這條路的車道是否實體分隔(例如有障礙物)？預設速限依照上述設定決定或為否。"</string>
     <string name="about_category_feedback">"回饋"</string>
 
@@ -1261,9 +1246,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"將任務啟用和訂單重置為預先值嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"這棟建築施工的目的是？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"請選擇更精確的數值。"</string>
@@ -2102,6 +2084,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"高的貨車無法通過"</string>
     <string name="quest_address_street_hint">"在地圖上按道路"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"標線行人穿越道"</string>
     <string name="quest_parkingType_street_side">"路外停車"</string>
     <string name="quest_parkingType_lane">"路邊停車"</string>
@@ -2133,6 +2117,8 @@
     <string name="quest_dietType_kosher_name_title">"%s 有提供猶太教潔食產品嗎？"</string>
     <string name="quest_dietType_explanation_kosher">"猶太教潔食產品必須依猶太飲食教規嚴格準備，並附上猶太飲食教規認證機構標章確保其循從飲食教規。"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"完全沒有自行車道"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"如同往常，在插圖一側按壓，選擇適當的答案，然後在另一側做一樣的事情。注意所有可用的選項：有些例子並不明顯，像是單行道但允許單車騎士雙向通行！"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"當無自行車道選擇此項"</string>
     <string name="quest_construction_completed_at_known_date">"預計在......"</string>
@@ -2164,9 +2150,9 @@
     <string name="team_mode_deactivated">"協作模式已停用"</string>
     <string name="quest_pitchLit_title">"這個運動場有照明嗎？"</string>
     <string name="quest_pitchLit_title_track">"這個運動跑道有照明嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"行人穿越由交通號誌控制"</string>
-    <string name="undo_last">"復原最後的編輯"</string>
-    <string name="show_edit_history">"顯示編輯歷史"</string>
     <string name="undo_confirm_title2">"要復原接下來的編輯嗎？"</string>
     <string name="synced">"已經同步了"</string>
     <string name="toast_undo_unavailable">"這筆編輯已經同步，因此無法復原"</string>

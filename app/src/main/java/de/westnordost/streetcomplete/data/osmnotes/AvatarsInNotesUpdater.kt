@@ -11,6 +11,8 @@ class AvatarsInNotesUpdater @Inject constructor(private val downloader: AvatarsD
         val noteCommentUserIds = (added + updated).flatMap { it.userIds }.toSet()
         downloader.download(noteCommentUserIds)
     }
+
+    override fun onCleared() {}
 }
 
 private val Note.userIds: List<Long> get() = comments.mapNotNull { it.user?.id }

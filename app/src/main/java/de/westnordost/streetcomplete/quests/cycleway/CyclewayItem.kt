@@ -10,10 +10,13 @@ fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
     (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
 
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
+    Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
+
+fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
     when(this) {
-        NONE -> Item(this, R.drawable.ic_cycleway_none_in_selection, getTitleResId())
-        SEPARATE -> Item(this, R.drawable.ic_cycleway_separate, getTitleResId())
-        else -> Item(this, getIconResId(isLeftHandTraffic), getTitleResId())
+        NONE -> R.drawable.ic_cycleway_none_in_selection
+        SEPARATE -> R.drawable.ic_cycleway_separate
+        else -> getIconResId(isLeftHandTraffic)
     }
 
 fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =

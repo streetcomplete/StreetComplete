@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
     <string name="user_profile">My Profile</string>
@@ -22,7 +22,6 @@
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
     <string name="unsynced_quests_description">plus %d not yet published changes.</string>
     <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
-    <string name="title_activity_settings">"Settings"</string>
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Display"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -38,7 +37,6 @@
     <string name="quest_generic_confirmation_title">"Are you sure?"</string>
     <string name="quest_generic_confirmation_yes">"Yes, I am sure"</string>
     <string name="quest_generic_confirmation_no">"I will check"</string>
-    <string name="quest_generic_error_field_empty">"You left this field empty"</string>
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
     <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve or alternatively just hide the quest for yourself only"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -224,7 +222,6 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_surface_value_woodchips">Woodchips</string>
-    <string name="quest_placeName_title">"What is the name of this place?"</string>
     <string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
@@ -246,7 +243,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Built-up area"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Rural"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the main street intersection, you won’t find individual signs within the zone because the speed limit posted there applies to the whole zone."</string>
-    <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title2">"Is there a cycleway here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycleway situation here?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
@@ -264,8 +260,8 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_oneway2_dir">"Oneway in this direction"</string>
     <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
     <string name="quest_address_title">"What is the house number of this building?"</string>
-    <string name="store_listing_short_description">"OpenStreetMap surveyor app"</string>
-    <string name="store_listing_full_description">"Help to improve the OpenStreetMap with StreetComplete!
+    <string name="store_listing_short_description" tools:ignore="UnusedResources">"OpenStreetMap surveyor app"</string>
+    <string name="store_listing_full_description" tools:ignore="UnusedResources">"Help to improve the OpenStreetMap with StreetComplete!
 
 This app finds incomplete and extendable data in your vicinity and displays it on a map as markers. Each of those is solvable by answering a simple question to complete the info on site.
 
@@ -371,12 +367,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_title">Are there curbs where this way meets this road here? What kind?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals_controlled">Crossing controlled by traffic lights</string>
-    <string name="quest_crossing_type_marked">Marked crossing</string>
-    <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
+    <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
+    <string name="quest_crossing_type_marked">Marked</string>
+    <string name="quest_crossing_type_unmarked">Without road markings</string>
     <string name="action_undo">Undo</string>
-    <string name="undo_last">Undo last edit</string>
-    <string name="show_edit_history">Show edit history</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="synced">Synced</string>
     <string name="toast_undo_unavailable">This edit is already synced and cannot be undone</string>
@@ -466,7 +460,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
-    <string name="unglue_hint">Tap to unglue view from position</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on map</string>
@@ -610,7 +603,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
     <string name="pref_quests_deselect_all">Deselect all quests?</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
-    <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
     <string name="quest_buildingType_answer_multiple_types_description">Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building.</string>
@@ -794,7 +786,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
-    <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
+    <string name="quest_generic_answer_is_actually_steps">"This part is steps"</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
     <string name="quest_generalFee_title">Do you need to pay to enter %s?</string>
     <string name="quest_laundrySelfService_title2">Does this laundry provide self-service?</string>
@@ -1021,7 +1013,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_shop_gone_replaced_answer_error">"Don’t know what this is. Consider leaving a note."</string>
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What’s here now?</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No cycleway at all</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side. Note all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecting that there is no cycleway</string>
     <string name="quest_construction_completed_at_known_date">Will be finished at date…</string>
     <string name="quest_construction_completion_date_title">When will it be complete?</string>
@@ -1063,6 +1055,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_barrier_type_stepover_stone">Stone step-over stile</string>
     <string name="quest_barrier_type_swing_gate">Horizontal bar</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Converted into a kissing gate</string>
+    <string name="quest_barrier_type_passage_conversion">Converted into a passage in a wall/fence/etc.</string>
+    <string name="quest_barrier_type_gate_conversion">Converted into a gate</string>
     <string name="quest_stile_type_title">What type of stile is this?</string>
     <string name="quest_bollard_type_title">What type of bollard is this?</string>
     <string name="quest_bollard_type_rising">Rising</string>
@@ -1085,4 +1079,18 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
+    <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
+    <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
+    <string name="quest_traffic_calming_type_table">Table (flat top)</string>
+    <string name="quest_traffic_calming_type_cushion">Cushion (not bumpy for wide vehicles)</string>
+    <string name="quest_traffic_calming_type_choker">Narrowed road</string>
+    <string name="quest_traffic_calming_type_island">Island</string>
+    <string name="quest_traffic_calming_type_chicane">Deliberate curve(s)</string>
+    <string name="quest_traffic_calming_type_rumble_strip">Rumble strip(s)</string>
+    <string name="quest_surface_value_concrete_plates">Concrete plates</string>
+    <string name="quest_surface_value_concrete_lanes">Concrete lanes</string>
+    <string name="quest_fireHydrant_diameter_title">What diameter is on this fire hydrant’s sign?</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">This diameter looks implausible.</string>
+    <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
 </resources>

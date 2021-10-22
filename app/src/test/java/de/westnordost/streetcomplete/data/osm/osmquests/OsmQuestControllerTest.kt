@@ -227,6 +227,12 @@ class OsmQuestControllerTest {
         )
     }
 
+    @Test fun `calls onInvalidated when cleared quests`() {
+        mapDataListener.onCleared()
+        verify(db).clear()
+        verify(listener).onInvalidated()
+    }
+
     @Test fun `updates quests on map data listener update for updated elements`() {
 
         val geom = pGeom(0.0,0.0)

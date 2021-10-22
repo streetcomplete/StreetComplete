@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"承認に失敗しました: リストのアクセス許可をすべて付与する必要があります"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"設定"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"通信"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"確認します"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"このフィールドを空のままにしました"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"代わりにメモを残しますか?"</string>
@@ -337,16 +331,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_surface_value_wood">"木"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"この場所の名前は何ですか?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"この通りに歩道がありますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"この通りはどこにありますか?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"ここの自転車道はどんな路面ですか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"これはどんな側道ですか?"</string>
@@ -910,9 +898,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"この場合、最も高い建物部分の値を入力するだけです。"</string>
-
-    <!-- Fuzzy -->
-    <string name="unglue_hint">"タップして位置から表示を解除"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"この道路の車道は物理的に分離されていますか (つまり分離帯で)? 既定の速度制限は、これが該当するかどうかによって異なります。"</string>

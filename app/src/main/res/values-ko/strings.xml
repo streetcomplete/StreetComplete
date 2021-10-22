@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"인증 서버에 접속할 수 없습니다"</string>
     <string name="retry">"재시도"</string>
     <string name="oauth_failed_permissions">"인증 실패: 목록에 있는 모든 권한을 허가해야 합니다"</string>
-    <string name="title_activity_settings">"설정"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_communication">"연결"</string>
@@ -30,7 +29,6 @@
     <string name="quest_generic_confirmation_title">"확실합니까?"</string>
     <string name="quest_generic_confirmation_yes">"네, 확실합니다"</string>
     <string name="quest_generic_confirmation_no">"확인해 보겠습니다"</string>
-    <string name="quest_generic_error_field_empty">"이 칸이 비었습니다"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"대신 참고를 남기시겠습니까?"</string>
@@ -281,16 +279,12 @@
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"목재"</string>
-    <string name="quest_placeName_title">"이 장소의 이름은 무엇인가요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"이 도로에 인도가 있나요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"이 도로는 어디에 있나요?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"자전거 도로의 포장재는 무엇인가요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"어떤 형태의 이면 도로인가요?"</string>
@@ -836,9 +830,6 @@
     <string name="quest_buildingLevels_answer_description">"부분별로 층수가 다르다면 가장 높은 부분의 값을 입력하세요."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"시점 고정을 해제하려면 탭하세요"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"이 도로의 중앙선이 물리적(장벽 등)으로 분리되어 있나요? 기본 속도 제한은 이 경우에 해당하는지 아닌지에 따라 다릅니다."</string>
     <string name="about_category_feedback">"피드백"</string>
 
@@ -1176,9 +1167,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"과제 활성화 여부를 초기화하고 기본값으로 되돌리시겠습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"어떤 용도로 지어진 건물인가요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"더 구체적인 값을 선택해 주세요."</string>
@@ -2016,6 +2004,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭이 통과할 수 없음"</string>
     <string name="quest_address_street_hint">"추가하려면 도로를 탭하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"횡단보도가 그려져 있음"</string>
     <string name="quest_parkingType_street_side">"도로변에 위치하지 않은 주차장"</string>
     <string name="quest_parkingType_lane">"도로변 주차장"</string>
@@ -2053,6 +2043,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_dietType_kosher_name_title">"%s에서 코셔 푸드를 판매하나요?"</string>
     <string name="quest_dietType_explanation_kosher">"코셔 푸드는 유대교에서 따르는 특별한 규칙에 의해 제작된 음식으로, 코셔 인증 위원회의 인증을 받은 음식만을 코셔 푸드로 칭할 수 있습니다."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"자전거 도로 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"평소와 마찬가지로, 그림에서 한 쪽을 탭한 후 적절한 답변을 고르고, 반대쪽도 동일하게 합니다. 모든 선택지를 꼼꼼히 확인하세요: 한눈에 알아보기 힘든 경우도 존재하는데, 예를 들어, 양방향 자전거 통행이 가능한 일방통행로 등이 있습니다."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"자전거 도로가 없음을 표시하기"</string>
     <string name="quest_construction_completed_at_known_date">"완공일자는..."</string>
@@ -2084,9 +2076,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
     <string name="quest_pitchLit_title">"이 운동장에 조명이 있나요?"</string>
     <string name="quest_pitchLit_title_track">"이 스포츠 트랙에 조명이 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"신호등이 있는 건널목"</string>
-    <string name="undo_last">"마지막 편집 되돌리기"</string>
-    <string name="show_edit_history">"편집 역사 보기"</string>
     <string name="undo_confirm_title2">"이 편집을 취소할까요?"</string>
     <string name="synced">"동기화됨"</string>
     <string name="toast_undo_unavailable">"이 편집은 이미 동기화되었으므로 되돌릴 수 없습니다"</string>

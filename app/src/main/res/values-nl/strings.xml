@@ -8,7 +8,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorisatie mislukt: Alle genoemde rechten moeten worden toegekend"</string>
-    <string name="title_activity_settings">"Instellingen"</string>
     <string name="pref_category_communication">"Communicatie"</string>
     <string name="pref_category_display">"Beeld"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -36,9 +35,6 @@
     <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, ik weet het zeker"</string>
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Je hebt dit veld leeg gelaten"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Maak in plaats hiervan een opmerking"</string>
@@ -313,16 +309,10 @@ Voor het uploaden van je wijzigingen zal de app een &lt;a href=\"https://www.wes
     <string name="quest_surface_value_wood">"Hout"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Wat is de naam van deze plek?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Heeft deze straat een trottoir?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Welke wegbedekking heeft dit fietspad?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
@@ -888,9 +878,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_buildingLevels_answer_description">"Vul in dit geval de waarde van het hoogste gebouwdeel in."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Tik hier om de kaart los te maken van je positie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Zijn de rijbanen van deze weg fysiek gescheiden (bv. door een vangrail of andere barrière)? De standaard maximum snelheid hangt hier van af."</string>
     <string name="about_category_feedback">"Feedback"</string>
 
@@ -1240,9 +1227,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Zeker dat je zowel keuze van vragen als de volgorde terug wilt instellen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Met welke functie werd dit gebouw gebouwd?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Gelieve iets specifieker te selecteren?"</string>
@@ -2312,6 +2296,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
     <string name="quest_address_street_hint">"Tik de weg aan op de kaart"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
     <string name="quest_parkingType_street_side">"Parkeren langs de weg"</string>
     <string name="quest_parkingType_lane">"Parkeren op de weg"</string>
@@ -2343,6 +2329,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_dietType_kosher_name_title">"Biedt %s koosjere producten aan?"</string>
     <string name="quest_dietType_explanation_kosher">"Koosjere producten moeten worden bereid volgens speciale regels, waarbij kasjroet-certificeringsinstanties de producten in overeenstemming certificeren."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Hier is geen fietspad."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant. Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecteer dat er geen fietspad is"</string>
     <string name="quest_construction_completed_at_known_date">"Dit zal gereed zijn op de datum..."</string>
@@ -2374,9 +2362,9 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
     <string name="quest_pitchLit_title">"Is dit sportveld verlicht?"</string>
     <string name="quest_pitchLit_title_track">"Is deze sportbaan verlicht?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Oversteekplaats bestuurd door verkeerslichten"</string>
-    <string name="undo_last">"Laatste wijziging ongedaan maken"</string>
-    <string name="show_edit_history">"Toon wijzigingsgeschiedenis"</string>
     <string name="undo_confirm_title2">"De volgende wijziging ongedaan maken?"</string>
     <string name="synced">"Gesynchroniseerd"</string>
     <string name="toast_undo_unavailable">"Deze wijziging is al gesynchroniseerd en kan niet ongedaan gemaakt worden"</string>

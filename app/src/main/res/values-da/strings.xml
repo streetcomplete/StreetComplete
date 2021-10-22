@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Kan ikke tilgå loginserver"</string>
     <string name="retry">"Prøv igen"</string>
     <string name="oauth_failed_permissions">"Login afbrudt: alle de beskrevne tilladelser skal gives"</string>
-    <string name="title_activity_settings">"Indstillinger"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visning"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -30,9 +29,6 @@
     <string name="quest_generic_confirmation_title">"Er du sikker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, jeg er sikker"</string>
     <string name="quest_generic_confirmation_no">"Det vil jeg undersøge"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Du efterlod dette felt tomt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Efterlad note i stedet?"</string>
@@ -311,16 +307,10 @@ Før ændringer indsendes tjekker appen dog en &lt;a href=\"https://www.westnord
     <string name="quest_surface_value_wood">"Træ"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Hvad hedder dette sted?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Er der fortov på denne vej?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne vej?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Hvilken overflade har cykelstien?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Hvilken slags servicevej er dette?"</string>
@@ -888,9 +878,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_buildingLevels_answer_description">"I dette tilfælde skal værdien for den højeste bygningsdel angives."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Tryk for at frigøre skærm fra position"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er vejbanerne på denne vej opdelt fysisk (f.eks. med en barriere)? hastighedsgrænsen kan afhænge af om dette er tilfældet eller ej."</string>
     <string name="about_category_feedback">"Feedback"</string>
 
@@ -1238,9 +1225,6 @@ Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndt
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Nulstil både opgaveindstillinger og rækkefølge til standard?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Hvad blev denne bygning bygget som?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Vælg venligt en mere specifik værdi."</string>
@@ -2097,6 +2081,8 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høje lastbiler kan ikke passere"</string>
     <string name="quest_address_street_hint">"Tryk på vejen på kortet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markeret fodgængerfelt"</string>
     <string name="quest_parkingType_street_side">"Parkering lige ved siden ad vejen"</string>
     <string name="quest_parkingType_lane">"Parkering på vejen"</string>
@@ -2128,6 +2114,8 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_dietType_kosher_name_title">"Tilbyder %s kosherprodukter?"</string>
     <string name="quest_dietType_explanation_kosher">"Kosherprodukter skal laves efter bestemte regler og med certifikatagenter der udsteder et kosher certifikat."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen cykelsti overhovedet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Som sædvanligt tap på den ene side af illustrationen vælg det korrekte svar og gør det samme på den anden side. Bemærk at alle svarmuligheder ikke altid er helt logiske fx ensrettet vej der tillader cyklister at køre i begge retninger!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vælg at der ingen cykelsti er"</string>
     <string name="quest_construction_completed_at_known_date">"Stedet vil blive færdigt den..."</string>
@@ -2159,9 +2147,9 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="team_mode_deactivated">"Holdtilstand er deaktiveret"</string>
     <string name="quest_pitchLit_title">"Er dette sportsområde oplyst?"</string>
     <string name="quest_pitchLit_title_track">"Er denne sportsbane oplyst?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Fodgængerovergang er styret af trafiklys"</string>
-    <string name="undo_last">"Fortryd sidste redigering"</string>
-    <string name="show_edit_history">"Vis redigeringshistorie"</string>
     <string name="undo_confirm_title2">"Fortryd denne redigering?"</string>
     <string name="synced">"Synkroniseret"</string>
     <string name="toast_undo_unavailable">"Denne redigering er allerede synkroniseret og kan ikke fortrydes"</string>

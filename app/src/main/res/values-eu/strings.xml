@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Baimenak huts egin du: Zerrendako baimen guztiak eman behar dira"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Ezarpenak"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Komunikazioa"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Egiaztatuko dut"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Eremu hau hutsik laga duzu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Laga ohar bat ordez?"</string>
@@ -335,16 +329,10 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_surface_value_wood">"Egurra"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Zein da toki honen izena?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Espaloia al dago kale honetan?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Non dago kale hau?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Zein da bidegorriaren zoladura?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Ze motako zerbitzu bide da hau?"</string>
@@ -910,9 +898,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingLevels_answer_description">"Kasu horretan, sartu eraikinaren alde altuenaren datuak."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Sakatu ikuspegia kokalekutik deslotzeko"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Errepide honetako galtzadak fisikoki banatuta daude (adib. langa baten bidez)? Lehenetsitako abiadura muga honen menpekoa da."</string>
     <string name="about_category_feedback">"Iruzkinak"</string>
 
@@ -1262,9 +1247,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Leheneratu gaitutako erronkak eta hauen ordena lehenetsitakora?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Zertarako egin zen eraikin hau?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Aukeratu balio zehatzago bat."</string>
@@ -2233,7 +2215,7 @@ mailak"</string>
     <string name="quest_summit_register_title">"Ba al dago gailurraren erregistroa %s-n?"</string>
     <string name="quest_is_defibrillator_inside_title">"(AED) desfibriladore hau eraikinaren barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
-    <string name="about_description_translate">"%1$s %2$d% itzuli da"</string>
+    <string name="about_description_translate">"%1$s %2$d%% itzuli da"</string>
     <string name="quest_oneway2_title">"Kale hau norabide bakarrekoa da? Zein norabidekoa?"</string>
     <string name="quest_oneway2_dir">"Norabide bakar hau"</string>
     <string name="quest_oneway2_no_oneway">"Ez da norabide bakarrekoa"</string>

@@ -135,6 +135,17 @@ class MapDataControllerTest {
         verify(listener).onUpdated(any(), eq(elementKeys))
     }
 
+    @Test fun clear() {
+        val listener = mock<MapDataController.Listener>()
+        controller.addListener(listener)
+        controller.clear()
+
+        verify(elementDB).clear()
+        verify(geometryDB).clear()
+        verify(createdElementsController).clear()
+        verify(listener).onCleared()
+    }
+
     @Test fun `putAllForBBox when nothing was there before`() {
         val bbox = bbox()
         val elements = listOf(

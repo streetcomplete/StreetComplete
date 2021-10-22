@@ -45,6 +45,13 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         assertEquals(q3, dao.get(q3.key))
     }
 
+    @Test fun clear() {
+        val q1 = entry(questTypeName = "a")
+        dao.put(q1)
+        dao.clear()
+        assertNull(dao.get(q1.key))
+    }
+
     @Test fun getAllForElements() {
         val q1 = entry(ElementType.NODE, 0, "a")
         val q2 = entry(ElementType.NODE, 0, "b")

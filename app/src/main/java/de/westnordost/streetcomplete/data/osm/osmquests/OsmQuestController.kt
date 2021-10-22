@@ -100,10 +100,19 @@ import javax.inject.Singleton
 
             onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
+
+        override fun onCleared() {
+            db.clear()
+            listeners.forEach { it.onInvalidated() }
+        }
     }
 
     private val notesSourceListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+            onInvalidated()
+        }
+
+        override fun onCleared() {
             onInvalidated()
         }
     }

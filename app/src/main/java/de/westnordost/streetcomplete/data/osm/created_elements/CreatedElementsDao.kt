@@ -36,6 +36,10 @@ class CreatedElementsDao @Inject constructor(private val db: Database) {
             }
         }
     }
+
+    fun clear() {
+        db.delete(NAME)
+    }
 }
 
 private fun CursorPosition.toElementKey() = ElementKey(

@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Yetkilendirme başarısız oldu: Listelenen tüm izinlerin verilmesi gerekiyor"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Ayarlar"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"İletişim"</string>
 
     <!-- Fuzzy -->
@@ -58,7 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Kontrol edeceğim"</string>
-    <string name="quest_generic_error_field_empty">"Bu alanı boş bıraktın"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Bunun yerine, bir not bırak?"</string>
@@ -241,14 +237,10 @@ Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Bun
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Ahşap"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Buranın adı ne?"</string>
     <string name="quest_sidewalk_title">"Bu caddede kaldırım var mı?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu sokak nerde?"</string>
-    <string name="quest_cyclewaySurface_title">"Buradaki bisiklet yolunun yüzeyi nasıl?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Burası nasıl bir servis yolu?"</string>
@@ -704,9 +696,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_buildingLevels_answer_description">"Bu durumda en yüksek bölümün değerlerini girin"</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Görüntüyü konumdan ayırmak için dokun"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Bu yolun şeritleri bariyer vb. bir şeyle fiziksel olarak ayrılmış mı? Varsayılan hız sınırı buna göre hesaplanır."</string>
     <string name="about_category_feedback">"Geri bildirim"</string>
     <string name="quest_leave_new_note_photo">"Fotoğraf ekle"</string>
@@ -1008,9 +997,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Hayır (not bırak)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Bu bina ne olarak inşa edilmişti ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Lütfen daha spesifik bir değer seçin."</string>
@@ -1699,8 +1685,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_surface_value_clay">"Kil"</string>
     <string name="quest_surface_value_artificial_turf">"Suni çim"</string>
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
-    <string name="undo_last">"Son düzenlemeyi geri al"</string>
-    <string name="show_edit_history">"Düzenleme geçmişini göster"</string>
     <string name="undo_confirm_title2">"Bu düzenleme geri alınsın mı?"</string>
     <string name="synced">"Senkron"</string>
     <string name="no_location_permission_warning_title">"Konum İzni"</string>

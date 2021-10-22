@@ -106,12 +106,14 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.rightSideContainer.isEnabled = enabled
     }
 
-    override fun setStreetRotation(rotation: Float) {
-        binding.rotateContainer.rotation = rotation
-        val scale = abs(cos(rotation * PI / 180)).toFloat()
-        binding.rotateContainer.scaleX = 1 + scale * 2 / 3f
-        binding.rotateContainer.scaleY = 1 + scale * 2 / 3f
-    }
+    override var streetRotation: Float
+        get() = binding.rotateContainer.rotation
+        set(value) {
+            binding.rotateContainer.rotation = value
+            val scale = abs(cos(rotation * PI / 180)).toFloat()
+            binding.rotateContainer.scaleX = 1 + scale * 2 / 3f
+            binding.rotateContainer.scaleY = 1 + scale * 2 / 3f
+        }
 
     fun setLeftSideImage(image: Image?) {
         leftImage = image
@@ -213,5 +215,5 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 }
 
 interface StreetRotateable {
-    fun setStreetRotation(rotation: Float)
+    var streetRotation: Float
 }

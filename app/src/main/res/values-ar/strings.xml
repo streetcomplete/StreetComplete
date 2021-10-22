@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"غير قادر على الوصول إلى خادم توثيق الدخول"</string>
     <string name="retry">"إعادة المحاولة"</string>
     <string name="oauth_failed_permissions">"فشل التصريح: جميع الصلاحيات المدرجة بحاجة للتأكيد"</string>
-    <string name="title_activity_settings">"الإعدادات"</string>
     <string name="pref_category_communication">"تواصل"</string>
     <string name="pref_category_display">"العرض"</string>
     <string name="pref_tilecache_size_summary">"%d ميغابايت"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"هل أنت متأكد؟"</string>
     <string name="quest_generic_confirmation_yes">"نعم، أنا متأكد"</string>
     <string name="quest_generic_confirmation_no">"سوف أتفقد ذلك"</string>
-    <string name="quest_generic_error_field_empty">"لقد تركت هذا الحقل فارغاً"</string>
     <string name="quest_leave_new_note_title">"ترك ملاحظة بدلًا من ذلك؟"</string>
     <string name="quest_leave_new_note_description">"يمكنك ترك ملاحظة عامة في هذا الموقع بحيث يمكن لمحرري الخرائط الآخرين التعليق عليها ونأمل في حلها أو القيام بإخفاء المهمة لنفسك فقط"</string>
     <string name="quest_leave_new_note_yes">"موافق"</string>
@@ -132,10 +130,8 @@
     <string name="quest_surface_value_sand">"رمل"</string>
     <string name="quest_surface_value_sett">"حجارة مرصوفة"</string>
     <string name="quest_surface_value_wood">"خشب"</string>
-    <string name="quest_placeName_title">"ما اسم هذا المكان؟"</string>
     <string name="quest_sidewalk_title">"هل يحتوي هذا الشارع على رصيف جانبي؟"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"أين يقع هذا الشارع؟"</string>
-    <string name="quest_cyclewaySurface_title">"ما نوع سطح طريق الدراجات هنا؟"</string>
     <string name="quest_serviceType_title">"أي نوع من طرق الخدمة هذا؟"</string>
     <string name="quest_oneway_title">"هل هذا شارع باتجاه واحد؟"</string>
     <string name="quest_address_title">"ما هو رقم العقار لهذا المبنى؟"</string>
@@ -334,6 +330,7 @@
     <string name="quest_crossing_type_title">"أي نوع من معابر المشاة هذا؟"</string>
 
     <!-- علامات الوقوف و التوقف - اشارات السّير -->
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"معبر بدون علامات أو إشارات مرورية"</string>
     <string name="action_undo">"تراجع"</string>
     <string name="produce_mangosteen">"جوز جندم/مانغوستين"</string>
@@ -358,7 +355,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"الطوابق (لا تحسب السطح)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"يختلف حسب جزء المبنى"</string>
     <string name="quest_buildingLevels_answer_description">"في هذه الحالة، يكفي إدخال قيم أعلى جزء من المبنى."</string>
-    <string name="unglue_hint">"انقر لفصل العرض عن الموضع"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"هل طرق هذا الطريق مفصولة ماديًا (بحاجز)؟ يعتمد حد السرعة الافتراضي على ذلك."</string>
 
     <!-- رد الفعل لشئ ما -->
@@ -488,7 +484,6 @@
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; بالنسبة لبعض الاستعلامات، يتم تنزيل بعض البيانات الإضافية من جهات خارجية. على وجه الخصوص، تستخدم الاستعلامات ذات الاتجاه الواحد إلى واجهة برمجة التطبيقات (الموجودة أيضًا في westnordost.de) على الطرق المرشحة المحتملة للطرق ذات الاتجاه الواحد. &lt;/ p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"لا (اترك ملاحظة)"</string>
     <string name="pref_quests_reset">"هل تريد إعادة تعيين الترتيب وتمكين حالة جميع أنواع المهام إلى الوضع الافتراضي؟"</string>
-    <string name="quest_buildingType_title2">"لماذا تم بناء هذا المبنى؟"</string>
     <string name="quest_generic_item_invalid_value">"حدد قيمة أكثر دقة"</string>
     <string name="quest_buildingType_answer_multiple_types">"له أغراض متعددة"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"ما عليك سوى تحديد الغرض الرئيسي من هذا المبنى. على سبيل المثال إذا كان هناك محل في الطابق الأرضي مع شقق فوقه، فهو لا يزال مبنى سكني بشكل أساسي."</string>
@@ -983,6 +978,8 @@
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"الشاحنات الطويلة لا يمكنها المرور"</string>
     <string name="quest_address_street_hint">"اضغط على الطريق على الخريطة"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"معبر مشاة بعلامات ولافتات مرورية"</string>
     <string name="quest_parkingType_street_side">"وقوف السيارات قبالة الطريق"</string>
     <string name="quest_parkingType_lane">"موقف سيارات على الطريق"</string>
@@ -1014,6 +1011,8 @@
     <string name="quest_dietType_kosher_name_title">"هل تقدم %s منتجات متوافقة مع الشريعة اليهودية؟"</string>
     <string name="quest_dietType_explanation_kosher">"يجب تحضير منتجات الكوشير وفقًا لقواعد خاصة، مع قيام وكالات اعتماد الكشروت بوضع علامة على المنتجات وفقًا للامتثال."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"لا يوجد مسار دراجات على الإطلاق"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"كالعادة، انقر فوق أحد جانبي الرسم التوضيحي، وحدد إجابة مناسبة وافعل الشيء نفسه بالنسبة للجانب الآخر. لاحظ جميع الخيارات المتاحة: بعض الحالات ليست واضحة، مثل طريق باتجاه واجد يسمح فيه لراكبي الدراجات بالقيادة في كلا الاتجاهين!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"اختر عدم وجود طريق للدراجات"</string>
     <string name="quest_construction_completed_at_known_date">"سينتهي في التاريخ ..."</string>
@@ -1045,9 +1044,9 @@
     <string name="team_mode_deactivated">"تم إيقاف وضع الفريق"</string>
     <string name="quest_pitchLit_title">"هل هذا المجال الرياضي مضاء؟"</string>
     <string name="quest_pitchLit_title_track">"هل هذا المسار الرياضي مضاء؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"معبر يتحكم به عبر الإشارات المرورية"</string>
-    <string name="undo_last">"تراجع عن التعديل الأخير"</string>
-    <string name="show_edit_history">"إظهار سجل التحرير"</string>
     <string name="undo_confirm_title2">"التراجع عن التعديل التالي؟"</string>
     <string name="synced">"متزامن"</string>
     <string name="toast_undo_unavailable">"تمت مزامنة هذا التعديل بالفعل ولا يمكن التراجع عنه"</string>

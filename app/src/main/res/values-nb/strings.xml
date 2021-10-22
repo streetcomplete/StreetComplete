@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Kunne ikke koble til godkjenningsserveren"</string>
     <string name="retry">"Prøv igjen"</string>
     <string name="oauth_failed_permissions">"Godkjennelsen mislyktes: Du må godkjenne alle de oppgitte tillatelsene"</string>
-    <string name="title_activity_settings">"Innstillinger"</string>
     <string name="pref_category_communication">"Kommunikasjon"</string>
     <string name="pref_category_display">"Skjerm"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"Er du sikker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, jeg er sikker"</string>
     <string name="quest_generic_confirmation_no">"Jeg skal sjekke"</string>
-    <string name="quest_generic_error_field_empty">"Du lot dette feltet stå tomt"</string>
     <string name="quest_leave_new_note_title">"Legg igjen et merknad i stedet?"</string>
     <string name="quest_leave_new_note_description">"Du kan opprette en offentlig merknad på dette stedet som andre kartleggere kan kommentere på, og forhåpentligvis løse. Alternativt kan du bare hoppe over oppdraget."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -156,16 +154,10 @@ Men før appen laster opp endringen dine sjekker den via &lt;a href=\"https://ww
     <string name="quest_surface_value_wood">"Tre"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Hva heter denne plassen?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Er det et fortau langs denne veien?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne veien?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Hva slags overflate har sykkelveien?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Hva slags privat vei er dette?"</string>
@@ -699,9 +691,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_buildingLevels_answer_description">"Skriv i så fall antall etasjer i den høyeste bygningsdelen."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Trykk for å løsne visningen fra gjeldende posisjon"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er kjørebanene fysisk adskilt (f.eks. med midtdeler)? Den generelle fartsgrenen er avhengig av dette."</string>
     <string name="about_category_feedback">"Tilbakemelding"</string>
 
@@ -1043,9 +1032,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Vil du nullstille både typen oppdag og rekkefølge?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Hva er bygningen laget for?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Velg en mer spesifikk verdi."</string>
@@ -1822,6 +1808,8 @@ forkortelser i feltet nedenfor:"</string>
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høye lastebiler får ikke plass"</string>
     <string name="quest_address_street_hint">"Trykk på gaten/veien i kartet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Overgang med oppmerking"</string>
     <string name="quest_parkingType_street_side">"Parkering ved siden av veien"</string>
     <string name="quest_parkingType_lane">"Parkering i veien"</string>
@@ -1853,6 +1841,8 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_dietType_kosher_name_title">"Har %s koscherprodukt?"</string>
     <string name="quest_dietType_explanation_kosher">"Koscherprodukt må lages etter bestemte religiøse regler, og det fins egne sertifiseringsinstanser som godkjenner produktene."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen sykkelvei"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanlig på en side av illustrasjonen, velg riktig alternativ og gjenta det samme for den andre siden. Legg merke til at det er mange tilgjengelige alternativer her. Noen tilfeller er ikke åpenbare, for eksempel en enveiskjørt vei som likevel tillater sykling i begge retninger."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Velg at det ikke finnes noen sykkelvei"</string>
     <string name="quest_construction_completed_at_known_date">"Blir fullført til dato..."</string>
@@ -1884,11 +1874,9 @@ forkortelser i feltet nedenfor:"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
     <string name="quest_pitchLit_title">"Er idrettsfeltet opplyst?"</string>
     <string name="quest_pitchLit_title_track">"Er idrettsbanen opplyst?"</string>
-    <string name="quest_crossing_type_signals_controlled">"Overgang kontrollert med trafikklys"</string>
 
     <!-- Fuzzy -->
-    <string name="undo_last">"Angre siste endring"</string>
-    <string name="show_edit_history">"Vis endringslogg"</string>
+    <string name="quest_crossing_type_signals_controlled">"Overgang kontrollert med trafikklys"</string>
     <string name="undo_confirm_title2">"Angre følgende endring?"</string>
     <string name="synced">"Opplastet"</string>
     <string name="toast_undo_unavailable">"Denne endringer er lastet opp og kan ikke angres"</string>

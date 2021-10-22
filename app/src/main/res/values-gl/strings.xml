@@ -4,7 +4,6 @@
     <string name="oauth_communication_error">"Non é posíbel contactar co servidor de autorización"</string>
     <string name="retry">"Retentar"</string>
     <string name="oauth_failed_permissions">"A autorización fallou: tes que fornecer tódolos permisos"</string>
-    <string name="title_activity_settings">"Axustes"</string>
     <string name="pref_category_communication">"Conexión"</string>
     <string name="pref_category_display">"Visualización"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -20,7 +19,6 @@
     <string name="quest_generic_confirmation_title">"Estás seguro?"</string>
     <string name="quest_generic_confirmation_yes">"Si, estou seguro"</string>
     <string name="quest_generic_confirmation_no">"Revisareino"</string>
-    <string name="quest_generic_error_field_empty">"Deixaches este campo baleiro"</string>
     <string name="quest_leave_new_note_title">"No canto disto deixar unha nota?"</string>
     <string name="quest_leave_new_note_description">"Podes deixar unha nota pública nesta ubicación para que a comunidade de cartógrafos a comenten e poidan chegar a resolvela, ou senón podes simplemente ocultar a tarefa só para ti"</string>
     <string name="quest_leave_new_note_yes">"Feito"</string>
@@ -134,10 +132,8 @@ Porén, antes de subir as túas mudanzas, a aplicación comproba, mediante un &l
     <string name="quest_surface_value_sand">"Area"</string>
     <string name="quest_surface_value_sett">"Lastra de pedra natural"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
-    <string name="quest_placeName_title">"Cal é o nome deste lugar?"</string>
     <string name="quest_sidewalk_title">"Esta rúa ten beirarrúa?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde está a rúa?"</string>
-    <string name="quest_cyclewaySurface_title">"Que tipo de superficie ten o carril bici?"</string>
     <string name="quest_serviceType_title">"Que tipo de estrada de servizo é?"</string>
     <string name="quest_oneway_title">"É unha rúa cun só sentido?"</string>
     <string name="quest_address_title">"Cal é o número da porta deste edificio?"</string>
@@ -325,6 +321,8 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_way_lit_24_7">"Está alumeada de día e de noite"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non se puido buscar aquí. Achega o mapa un chisco máis ou non o inclines tanto."</string>
     <string name="quest_crossing_type_title">"Que tipo de cruzamento é?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Cruzamento sen sinalizar"</string>
     <string name="action_undo">"Desfacer"</string>
     <string name="produce_mangosteen">"Mangostán"</string>
@@ -351,7 +349,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingLevels_levelsLabel2">"andares (sen conta-lo tellado)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"É distinto para cada parte do edificio"</string>
     <string name="quest_buildingLevels_answer_description">"Nese caso limítate a poñe-lo número de andares da parte máis alta do edificio."</string>
-    <string name="unglue_hint">"Preme na pantalla para solta-la vista da posición"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Esta estrada ten calzadas separadas fisicamente (por exemplo, por unha barreira)? O límite de velocidade xenérico é distinto dependendo de se é o caso ou non."</string>
     <string name="about_category_feedback">"Suxestións"</string>
     <string name="quest_leave_new_note_photo">"Anexar imaxe"</string>
@@ -475,7 +472,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Nalgunhas misións descarréganse datos adicionais de terceiros. No particular, a misión das rúas dun só sentido consulta unha API, que está aloxada tamén en westnordost.de, sobre posíbeis rúas dun só sentido.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Non (deixar nota)"</string>
     <string name="pref_quests_reset">"Restabelece-la activación de procuras e a orde ós valores predeterminados?"</string>
-    <string name="quest_buildingType_title2">"Para que se construíu este edificio?"</string>
     <string name="quest_generic_item_invalid_value">"Por favor, escolle un valor máis preciso."</string>
     <string name="quest_buildingType_answer_multiple_types">"Ten múltiples obxectivos"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Escolle soamente o obxectivo principal deste edificio. Por ex. se hai unha tenda no andar baixo con apartamentos enriba, segue sendo de xeito principal un edificio de apartamentos."</string>
@@ -979,6 +975,8 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Os camións altos non caben"</string>
     <string name="quest_address_street_hint">"Preme a estrada no mapa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Paso de peóns marcado"</string>
     <string name="quest_parkingType_street_side">"Aparcadoiro ao carón da estrada"</string>
     <string name="quest_parkingType_lane">"Liña de aparcadoiro"</string>
@@ -1010,6 +1008,8 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_dietType_kosher_name_title">"%s ofrece produtos kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Os produtos kosher teñen que prepararse dacordo coas regras especiais do xudaísmo, e as axencias de certificación kashrut deben marcar os produtos en cumprimento."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Non hai carril bici de ningún tipo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Como sempre, toca un lado da ilustración, selecciona unha resposta axeitada e fai o mesmo co outro lado. Ten en conta todas as opcións dispoñíbeis: algúns casos non son obvios, como unha estrada dun só sentido que permite aos ciclistas ir en ambas direccións."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Seleccionar que non hai carril bici"</string>
     <string name="quest_construction_completed_at_known_date">"Estará rematado na data..."</string>
@@ -1041,9 +1041,9 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="team_mode_deactivated">"Modo equipo desactivado"</string>
     <string name="quest_pitchLit_title">"Este campo deportivo está alumeado?"</string>
     <string name="quest_pitchLit_title_track">"Esta pista deportiva está alumeada?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Paso controlado por semáforos"</string>
-    <string name="undo_last">"Desfacer última edición"</string>
-    <string name="show_edit_history">"Amosar historial de edición"</string>
     <string name="undo_confirm_title2">"Desfacer a seguinte edición?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edición xa está sincronizada e non se pode desfacer"</string>
