@@ -1,21 +1,32 @@
 package de.westnordost.streetcomplete.location
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.content.Context
 import android.location.Location
 import android.location.LocationManager
 import android.location.LocationManager.GPS_PROVIDER
 import android.location.LocationManager.NETWORK_PROVIDER
 import android.os.Looper
 import androidx.annotation.RequiresPermission
+import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
+import androidx.core.location.LocationManagerCompat
+import androidx.core.util.Consumer
 
 /** Convenience wrapper around the location manager with easier API, making use of both the GPS
  *  and Network provider */
-class FineLocationManager(private val mgr: LocationManager, private var locationUpdateCallback: ((Location) -> Unit)) {
-
+class FineLocationManager(context: Context, locationUpdateCallback: (Location) -> Unit) {
+    private val locationManager = context.getSystemService<LocationManager>()!!
+    private val mainExecutor = ContextCompat.getMainExecutor(context)
+    private val currentLocationConsumer = Consumer<Location?> {
+        if (it != null) {
+            locationUpdateCallback(it)
+        }
+    }
     private var lastLocation: Location? = null
 
-    private val deviceHasGPS: Boolean get() = mgr.allProviders.contains(GPS_PROVIDER)
-    private val deviceHasNetworkLocationProvider: Boolean get() = mgr.allProviders.contains(NETWORK_PROVIDER)
+    private val deviceHasGPS: Boolean get() = locationManager.allProviders.contains(GPS_PROVIDER)
+    private val deviceHasNetworkLocationProvider: Boolean get() = locationManager.allProviders.contains(NETWORK_PROVIDER)
 
     private val locationListener = object : LocationUpdateListener {
         override fun onLocationChanged(location: Location) {
@@ -26,32 +37,24 @@ class FineLocationManager(private val mgr: LocationManager, private var location
         }
     }
 
-    private val singleLocationListener = object : LocationUpdateListener {
-        override fun onLocationChanged(location: Location) {
-            mgr.removeUpdates(this)
-            locationUpdateCallback(location)
-        }
-    }
-
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestUpdates(minTime: Long, minDistance: Float) {
         if (deviceHasGPS)
-            mgr.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
+            locationManager.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
         if (deviceHasNetworkLocationProvider)
-            mgr.requestLocationUpdates(NETWORK_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
+            locationManager.requestLocationUpdates(NETWORK_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
     }
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
-    fun requestSingleUpdate() {
+    fun getCurrentLocation() {
         if (deviceHasGPS)
-            mgr.requestSingleUpdate(GPS_PROVIDER,  singleLocationListener, Looper.getMainLooper())
+            LocationManagerCompat.getCurrentLocation(locationManager, GPS_PROVIDER, null, mainExecutor, currentLocationConsumer)
         if (deviceHasNetworkLocationProvider)
-            mgr.requestSingleUpdate(NETWORK_PROVIDER, singleLocationListener, Looper.getMainLooper())
+            LocationManagerCompat.getCurrentLocation(locationManager, NETWORK_PROVIDER, null, mainExecutor, currentLocationConsumer)
     }
 
     fun removeUpdates() {
-        mgr.removeUpdates(locationListener)
-        mgr.removeUpdates(singleLocationListener)
+        locationManager.removeUpdates(locationListener)
     }
 }
 

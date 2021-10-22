@@ -83,10 +83,7 @@ open class LocationAwareMapFragment : MapFragment() {
             this::onCompassRotationChanged
         )
         lifecycle.addObserver(compass)
-        locationManager = FineLocationManager(
-            context.getSystemService<LocationManager>()!!,
-            this::onLocationChanged
-        )
+        locationManager = FineLocationManager(context, this::onLocationChanged)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
