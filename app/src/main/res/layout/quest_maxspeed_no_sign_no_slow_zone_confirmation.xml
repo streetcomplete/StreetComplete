@@ -30,14 +30,14 @@
                 android:paddingEnd="4dp"
                 android:text="@string/quest_maxspeed_answer_noSign_info_zone"
                 android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-                android:layout_toStartOf="@+id/signContainer"
+                android:layout_toStartOf="@+id/slowZoneImage"
                 tools:ignore="RtlSymmetry" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/signContainer"
+                android:id="@+id/slowZoneImage"
             >
                 <include
                     layout="@layout/quest_maxspeed_zone_sign"
