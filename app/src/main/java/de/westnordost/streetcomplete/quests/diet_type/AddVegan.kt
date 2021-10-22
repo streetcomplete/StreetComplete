@@ -39,7 +39,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is DietAvailability -> changes.updateWithCheckDate("diet:vegan", answer.osmValue)
-            NoFood -> changes.add("food", "no")
+            NoFood -> changes.addOrModify("food", "no")
         }
     }
 }
