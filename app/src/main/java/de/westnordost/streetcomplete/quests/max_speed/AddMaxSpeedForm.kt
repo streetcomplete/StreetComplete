@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.get
 import androidx.core.view.isGone
+import com.google.android.material.textview.MaterialTextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
@@ -94,6 +95,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
         binding.rightSideContainer.removeAllViews()
         speedType?.layoutResId?.let { layoutInflater.inflate(it, binding.rightSideContainer, true) }
+
+        if(speedType == ZONE) {
+            val label : MaterialTextView = binding.rightSideContainer.findViewById(R.id.slowZoneLabel)
+            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
+        }
 
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
 
@@ -212,9 +218,12 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
             val view = layoutInflater.inflate(slowZoneLayout(), dialogBinding.signContainer, false)
             dialogBinding.signContainer.addView(view)
-            //val maxSpeedInput = dialogBinding.slowZoneImage.maxSpeedInput
-            //maxSpeedInput!!.setText("××")
-            //maxSpeedInput.inputType = EditorInfo.TYPE_NULL
+            val dialogSpeedInput : EditText = dialogBinding.signContainer.findViewById(R.id.maxSpeedInput)
+            dialogSpeedInput.setText("××")
+            dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
+
+            val label : MaterialTextView = dialogBinding.signContainer.findViewById(R.id.slowZoneLabel)
+            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
 
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)

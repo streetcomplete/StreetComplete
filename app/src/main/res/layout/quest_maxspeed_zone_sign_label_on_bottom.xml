@@ -47,6 +47,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/slowZoneLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/maxspeed_zone_label"
