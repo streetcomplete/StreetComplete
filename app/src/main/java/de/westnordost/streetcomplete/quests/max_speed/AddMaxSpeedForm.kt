@@ -5,11 +5,11 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.Spinner
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
-import androidx.core.view.get
 import androidx.core.view.isGone
 import com.google.android.material.textview.MaterialTextView
 import de.westnordost.streetcomplete.R
@@ -96,8 +96,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedType?.layoutResId?.let { layoutInflater.inflate(it, binding.rightSideContainer, true) }
 
         if(speedType == ZONE) {
-            val label : MaterialTextView = binding.rightSideContainer.findViewById(R.id.slowZoneLabel)
-            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
+            enableAppropriateLabelsForSlowZone(binding.rightSideContainer)
         }
 
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
@@ -128,15 +127,18 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         else -> null
     }
 
-    private fun slowZoneLayout() = when {
+    private fun enableAppropriateLabelsForSlowZone(layoutWithSign: FrameLayout) = when {
         countryInfo.slowZoneLabelText == null -> {
-            R.layout.quest_maxspeed_zone_sign_no_label
         }
         countryInfo.slowZoneLabelPosition == "bottom" -> {
-            R.layout.quest_maxspeed_zone_sign_label_on_bottom
+            val label : MaterialTextView = layoutWithSign.findViewById(R.id.slowZoneLabelBottom)
+            label.visibility = View.VISIBLE
+            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
         }
         countryInfo.slowZoneLabelPosition == "top" -> {
-            R.layout.quest_maxspeed_zone_sign_label_on_top
+            val label : MaterialTextView = layoutWithSign.findViewById(R.id.slowZoneLabelTop)
+            label.visibility = View.VISIBLE
+            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
         }
         else -> {
             throw Error("unexpected value in country metadata")
@@ -145,7 +147,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private val SpeedType.layoutResId get() = when (this) {
         SIGN          -> R.layout.quest_maxspeed_sign
-        ZONE          -> slowZoneLayout()
+        ZONE          -> R.layout.quest_maxspeed_zone_sign
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
         NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
         ADVISORY      -> R.layout.quest_maxspeed_advisory
@@ -215,13 +217,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
         activity?.let {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
-            layoutInflater.inflate(slowZoneLayout(), dialogBinding.signContainer)
+            enableAppropriateLabelsForSlowZone(dialogBinding.signContainer)
             val dialogSpeedInput : EditText = dialogBinding.signContainer.findViewById(R.id.maxSpeedInput)
             dialogSpeedInput.setText("××")
             dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
 
-            val label : MaterialTextView = dialogBinding.signContainer.findViewById(R.id.slowZoneLabel)
-            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
 
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)

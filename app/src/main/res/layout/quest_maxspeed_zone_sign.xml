@@ -11,7 +11,7 @@
     android:background="@drawable/background_rectangular_sign">
 
     <TextView
-        android:id="@+id/slowZoneLabel"
+        android:id="@+id/slowZoneLabelTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="ZONE"
@@ -20,6 +20,7 @@
         android:gravity="center"
         android:textColor="@color/traffic_black"
         android:layout_marginTop="-4dp"
+        android:visibility="gone"
         tools:ignore="HardcodedText"/>
 
     <LinearLayout
@@ -55,7 +56,20 @@
             android:visibility="gone"
             tools:visibility="visible"
             />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/slowZoneLabelBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="ZONE"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        android:layout_marginBottom="-4dp"
+        android:visibility="gone"
+        tools:ignore="HardcodedText"
+        />
 
 </LinearLayout>
