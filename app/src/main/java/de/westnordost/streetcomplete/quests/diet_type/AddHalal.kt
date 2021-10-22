@@ -34,7 +34,7 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is DietAvailability -> changes.updateWithCheckDate("diet:halal", answer.osmValue)
-            NoFood -> changes.add("food", "no")
+            NoFood -> changes.addOrModify("food", "no")
         }
     }
 }
