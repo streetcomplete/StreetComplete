@@ -1332,7 +1332,6 @@
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>
     <string name="quest_buildingType_terrace2">"Ряд домов"</string>
-    <string name="quest_oneway_tutorial">"Дорога на картинке повёрнута так же, как на карте в месте расположения булавки. Обратите внимание на указанное направление."</string>
     <string name="at_housename">"Название дома %s:"</string>
     <string name="at_conscription_and_street_number">"Сквозная нумерация %1$s, ориентировочный номер %2$s:"</string>
 

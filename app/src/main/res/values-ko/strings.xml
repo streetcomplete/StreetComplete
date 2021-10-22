@@ -1885,9 +1885,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"국제 명칭"</string>
     <string name="quest_buildingType_terrace2">"옆으로 나란한 연립 주택"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_oneway_tutorial">"아래 그림의 도로는 지도에서 핀이 가리키는 위치의 도로와 같은 방향으로 돌아가 있습니다. 화살표의 방향을 참고하세요."</string>
     <string name="at_housename">"건물 명칭 %s:"</string>
     <string name="at_conscription_and_street_number">"징병 지번 %1$s, 방위각 %2$s:"</string>
 

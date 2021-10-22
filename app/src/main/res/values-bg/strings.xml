@@ -863,7 +863,6 @@
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"международен"</string>
     <string name="quest_buildingType_terrace2">"Редица от къщи"</string>
-    <string name="quest_oneway_tutorial">"Пътят на картинката е завъртян така, както е на картата на отбелязаното място. Обърнете внимание на посоката. "</string>
     <string name="at_housename">"име на къща: %s"</string>
     <string name="at_conscription_and_street_number">"кадастрален номер %1$s, номер на сграда %2$s:"</string>
     <string name="at_conscription_number">"кадастрален номер %s:"</string>
@@ -1161,11 +1160,15 @@
 
     <!-- Fuzzy -->
     <string name="no_search_results">"Нищо не е намерено"</string>
+    <string name="quest_selection_hint_title">"Твърде много за задачи?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_selection_hint_message">"Участието трябва да бъде преди всичко забавно! Ако броят на куестовете ви претоварва, винаги можете да настроите кои куестове да ви се показват и в какъв ред в настройките."</string>
+    <string name="quest_presets_preset_add">"Добавете настройка"</string>
+    <string name="quest_presets_preset_name">"Име на настройката"</string>
     <string name="quest_presets_default_name">"По подразбиране"</string>
     <string name="quest_presets_selected">"Избрано"</string>
+    <string name="quest_presets_delete_message">"Да се изтрие ли настройката \"%s\"? Изборът на въпроси и тяхната подредба ще бъдат безвъзвратно изгубени."</string>
     <string name="notification_syncing">"Синхронизиране на информацията"</string>
 
     <!-- Fuzzy -->
@@ -1173,6 +1176,7 @@
     <string name="quest_board_type_sport">"Спорт, Упражнения"</string>
     <string name="quest_generic_hasFeature_optional">"По желание"</string>
     <string name="quest_buildingType_bridge">"Мост между сгради (топла връзка)"</string>
+    <string name="quest_laundrySelfService_title2">"Тази пералня работи ли на самообслужване?"</string>
     <string name="quest_dietType_halal_name_title">"%s предлага ли Халал продукти?"</string>
 
     <!-- Fuzzy -->
@@ -1181,4 +1185,27 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Това са стълби"</string>
+    <string name="quest_traffic_calming_type_title">"Какъв тип ограничител на скоростта е това?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_bump">"\"Легнал полицай\" (къс)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_hump">"
+\"Легнал полицай\""</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_table">"Повдигната настилка"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_cushion">"\"Легнал полицай\" (без широки МПС)"</string>
+    <string name="quest_traffic_calming_type_choker">"Стеснен път"</string>
+    <string name="quest_traffic_calming_type_island">"Остров"</string>
+    <string name="quest_traffic_calming_type_chicane">"Допълнителен завой(-и)"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Шумна маркировка"</string>
+    <string name="quest_surface_value_concrete_plates">"Бетонни плочи"</string>
+    <string name="quest_surface_value_concrete_lanes">"Бетонни ленти"</string>
+    <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Този размер изглежда нереален."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Сигурни ли сте? Твърде често диаметърът е посочен на самия хидрант."</string>
 </resources>

@@ -844,7 +844,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internasjonalt"</string>
     <string name="quest_buildingType_terrace2">"Rekkjehus"</string>
-    <string name="quest_oneway_tutorial">"Vegen i illustrasjonen er orientert likt som den på kartet på staden der oppdrags­merket vert vist. Legg merke til den markerte retninga."</string>
     <string name="at_housename">"husnamn %s:"</string>
     <string name="at_conscription_and_street_number">"konskripsjonsnummer %1$s, retnings­nummer %2$s:"</string>
     <string name="at_conscription_number">"konskripsjonsnummer %s:"</string>

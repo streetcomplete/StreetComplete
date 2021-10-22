@@ -871,7 +871,6 @@
 %1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"عالمي"</string>
     <string name="quest_buildingType_terrace2">"منازل متجاورة على شكل صف"</string>
-    <string name="quest_oneway_tutorial">"يتم تدوير الطريق المعروضة في نفس الاتجاه كما هو موضح على الخريطة. لاحظ الاتجاه المشار إليه."</string>
     <string name="at_housename">"اسم المنزل %s:"</string>
     <string name="at_conscription_and_street_number">"رقم الإشتراك %1$s، رقم التوجه %2$s:"</string>
     <string name="at_conscription_number">"رقم التجنيد %s:"</string>

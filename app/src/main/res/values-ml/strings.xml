@@ -489,6 +489,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"ഇത് നിങ്ങൾ നേരിട്ട് കണ്ട് ഉറപ്പ് വരുത്തിയത് ആണോ?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"ബസ്സ്റ്റോപ്പുകളിൽ%s കൃത്യമായ വഴികളുണ്ടോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"സർവേയിലൂടെ കണ്ടെത്തിയ വിവരങ്ങൾ മാത്രം എന്റർ ചെയ്യുക"</string>
@@ -539,6 +540,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"സെപക് തക്ര"</string>
+    <string name="quest_wheelchairAccess_name_title">"%s ചക്രക്കസേര ലഭ്യമാണോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"ഭാഗികമായി"</string>
@@ -584,6 +586,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_baby_changing_table_toilets_title">"ഈ വിശ്രമമുറിയിൽ കുഞ്ഞുങ്ങളുടെ വസ്ത്രവും മറ്റും മറ്റാനുള്ള മേശയുണ്ടോ?"</string>
+    <string name="quest_baby_changing_table_title">"%s കുഞ്ഞുങ്ങൾക്കുള്ള ചേഞ്ചിങ് ടേബിൾ ഉണ്ടോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"എന്ത് തരം പുനഃചംക്രമണ പ്രക്രിയ സൗകര്യം ആണ് ഇവിടെ?"</string>
@@ -1045,6 +1048,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_no">"കണക്ഷൻ ലഭ്യമല്ല"</string>
+    <string name="quest_busStopShelter_tram_name_title">"%s "</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"സ്ട്രീറ്റ് കാറുകൾ നിർത്തുന്നതിന് പ്രത്യേക സ്ഥലമുണ്ടോ?"</string>

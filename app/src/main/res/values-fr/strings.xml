@@ -1069,7 +1069,6 @@ accomplis"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Maisons mitoyennes"</string>
-    <string name="quest_oneway_tutorial">"La route en illustration est pivotée dans la même direction qu’indiquée sur la carte. La direction est indiquée."</string>
     <string name="at_housename">"Nom de la maison %s :"</string>
     <string name="at_conscription_and_street_number">"Numéro de conscription %1$s, numéro d’orientation %2$s :"</string>
 
@@ -1236,9 +1235,9 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_dietType_kosher_name_title">"%s propose-t-il des produits casher ?"</string>
     <string name="quest_dietType_explanation_kosher">"Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par un organisme de certification."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Aucune infrastructure cyclable"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Comme d’habitude, cliquez sur un côté de l’illustration, sélectionnez la bonne réponse, et faîtes de même pour l’autre côté.
 
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Comme d’habitude, cliquez sur un côté de l’illustration, sélectionnez la bonne réponse, et faîtes de même pour l’autre côté. Prenez garde de voire toutes les options, certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !"</string>
+Prenez garde de voire toutes les options, certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Renseignez qu’il n’y a pas de pistes cyclables"</string>
     <string name="quest_construction_completed_at_known_date">"Cela sera fini le …"</string>
     <string name="quest_construction_completion_date_title">"Quand cela sera-t’il fini ?"</string>
@@ -1323,7 +1322,9 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_type_kissing_gate">"Portillon anti-bétail"</string>
     <string name="quest_barrier_type_swing_gate">"Barre horizontale"</string>
     <string name="quest_policeType_title">"Quel type de poste de police est-ce ?"</string>
-    <string name="quest_barrier_type_kissing_gate_conversion">"Changer pour un portillon à chicane mobile"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_kissing_gate_conversion">"Changé en un portillon à chicane mobile"</string>
     <string name="quest_stile_type_title">"Quel type d’échalier est-ce ?"</string>
     <string name="quest_buildingType_semi_detached_description2">"maison(s) unifamiliale(s) contiguë(s)"</string>
 
@@ -1436,4 +1437,36 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"C’est un escalier"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_passage_conversion">"Changé en un passage dans un mur/une clôture/etc."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_gate_conversion">"Changé en porte"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_title">"Quel type de modération du trafic s'agit-il ?"</string>
+    <string name="quest_traffic_calming_type_bump">"Dos d'âne (court)"</string>
+    <string name="quest_traffic_calming_type_hump">"Dos d'âne (long)"</string>
+    <string name="quest_traffic_calming_type_table">"Ralentisseur trapézoïdal"</string>
+    <string name="quest_traffic_calming_type_cushion">"Coussin berlinois"</string>
+    <string name="quest_traffic_calming_type_choker">"Rétrécissement de la chaussée"</string>
+    <string name="quest_traffic_calming_type_island">"Ilot"</string>
+    <string name="quest_traffic_calming_type_chicane">"Chicane(s)"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Bande(s) rugueuse(s)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_value_concrete_plates">"Plaques de béton"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_value_concrete_lanes">"Voies en béton"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_diameter_title">"Quel est le diamètre indiqué sur le panneau de cette bouche d'incendie ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ce diamètre semble peu plausible."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_confirmation_title">"Êtes-vous sûr ? Parfois, le diamètre peut être trouvé sur la bouche d'incendie elle-même."</string>
 </resources>

@@ -2178,8 +2178,6 @@ mailak"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internazionala"</string>
     <string name="quest_buildingType_terrace2">"Etxe elkarri atxikiak"</string>
-    <string name="quest_oneway_tutorial">"Irudiko bidea biratuta dago mapako ikurraren kokapena bezala. Kontuan izan adierazitako norabidea.
-"</string>
     <string name="at_housename">"etxearen izena %s:"</string>
     <string name="at_conscription_and_street_number">"Inskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
 
