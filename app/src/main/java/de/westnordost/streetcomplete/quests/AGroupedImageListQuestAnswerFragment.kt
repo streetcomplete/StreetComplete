@@ -114,14 +114,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
+                            favs.add(javaClass.simpleName, itemValue)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
+                favs.add(javaClass.simpleName, itemValue)
                 onClickOk(itemValue)
             }
         }

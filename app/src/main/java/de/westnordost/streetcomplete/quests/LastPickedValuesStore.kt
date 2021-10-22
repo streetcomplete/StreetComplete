@@ -13,17 +13,14 @@ import kotlin.math.min
 /** T must be a string or enum - something that distinctly converts toString. */
 class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPreferences) {
 
-    fun add(key: String, newValues: Iterable<T>, max: Int = MAX_ENTRIES, allowDuplicates: Boolean = false) {
-        val values = newValues.asSequence().map { it.toString() } + get(key)
-        val lastValues = if (allowDuplicates) values else values.distinct()
+    fun add(key: String, newValues: Iterable<T>) {
+        val lastValues = newValues.asSequence().map { it.toString() } + get(key)
         prefs.edit {
-            putString(getKey(key), lastValues.take(max).joinToString(","))
+            putString(getKey(key), lastValues.take(MAX_ENTRIES).joinToString(","))
         }
     }
 
-    fun add(key: String, value: T, max: Int = MAX_ENTRIES, allowDuplicates: Boolean = false) {
-        add(key, listOf(value), max, allowDuplicates)
-    }
+    fun add(key: String, value: T) = add(key, listOf(value))
 
     fun get(key: String): Sequence<String> = prefs.getString(getKey(key), "")!!.splitToSequence(",")
 
