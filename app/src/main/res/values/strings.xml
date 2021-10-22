@@ -435,6 +435,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
+    <string name="quest_diet_answer_no_food">It has no food…</string>
     <string name="quest_dietType_vegetarian_name_title">Does %s have vegetarian meals on the menu?</string>
     <string name="quest_dietType_vegan_name_title">Does %s have vegan meals on the menu?</string>
     <string name="quest_hasFeature_only">Only</string>
