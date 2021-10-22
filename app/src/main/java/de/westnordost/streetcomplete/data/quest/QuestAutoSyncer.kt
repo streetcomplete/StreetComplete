@@ -50,7 +50,7 @@ import javax.inject.Singleton
 
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context) { location ->
-        if (location != null && location.accuracy <= 300) {
+        if (location.accuracy <= 300) {
             pos = location.toLatLon()
             triggerAutoDownload()
         }

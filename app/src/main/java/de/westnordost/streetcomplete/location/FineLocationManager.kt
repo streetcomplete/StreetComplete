@@ -15,9 +15,14 @@ import androidx.core.util.Consumer
 
 /** Convenience wrapper around the location manager with easier API, making use of both the GPS
  *  and Network provider */
-class FineLocationManager(context: Context, private val locationUpdateCallback: Consumer<Location?>) {
+class FineLocationManager(context: Context, locationUpdateCallback: (Location) -> Unit) {
     private val locationManager = context.getSystemService<LocationManager>()!!
     private val mainExecutor = ContextCompat.getMainExecutor(context)
+    private val currentLocationConsumer = Consumer<Location?> {
+        if (it != null) {
+            locationUpdateCallback(it)
+        }
+    }
     private var lastLocation: Location? = null
 
     private val deviceHasGPS: Boolean get() = locationManager.allProviders.contains(GPS_PROVIDER)
@@ -27,7 +32,7 @@ class FineLocationManager(context: Context, private val locationUpdateCallback: 
         override fun onLocationChanged(location: Location) {
             if (isBetterLocation(location, lastLocation)) {
                 lastLocation = location
-                locationUpdateCallback.accept(location)
+                locationUpdateCallback(location)
             }
         }
     }
@@ -43,9 +48,9 @@ class FineLocationManager(context: Context, private val locationUpdateCallback: 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun getCurrentLocation() {
         if (deviceHasGPS)
-            LocationManagerCompat.getCurrentLocation(locationManager, GPS_PROVIDER, null, mainExecutor, locationUpdateCallback)
+            LocationManagerCompat.getCurrentLocation(locationManager, GPS_PROVIDER, null, mainExecutor, currentLocationConsumer)
         if (deviceHasNetworkLocationProvider)
-            LocationManagerCompat.getCurrentLocation(locationManager, NETWORK_PROVIDER, null, mainExecutor, locationUpdateCallback)
+            LocationManagerCompat.getCurrentLocation(locationManager, NETWORK_PROVIDER, null, mainExecutor, currentLocationConsumer)
     }
 
     fun removeUpdates() {

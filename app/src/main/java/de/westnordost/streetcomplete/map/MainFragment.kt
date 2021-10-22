@@ -18,7 +18,6 @@ import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.content.getSystemService
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
@@ -572,11 +571,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    private fun onLocationChanged(location: Location?) {
-        if (location != null) {
-            binding.gpsTrackingButton.state = LocationState.UPDATING
-            updateLocationPointerPin()
-        }
+    private fun onLocationChanged(location: Location) {
+        binding.gpsTrackingButton.state = LocationState.UPDATING
+        updateLocationPointerPin()
     }
 
     //endregion

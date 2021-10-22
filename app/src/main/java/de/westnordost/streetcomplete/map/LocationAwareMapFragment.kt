@@ -183,15 +183,13 @@ open class LocationAwareMapFragment : MapFragment() {
         if (shouldCenterCurrentPosition()) centerCurrentPosition()
     }
 
-    private fun onLocationChanged(location: Location?) {
-        if (location != null) {
-            displayedLocation = location
-            locationMapComponent?.location = location
-            addTrackLocation(location)
-            compass.setLocation(location)
-            centerCurrentPositionIfFollowing()
-            listener?.onDisplayedLocationDidChange()
-        }
+    private fun onLocationChanged(location: Location) {
+        displayedLocation = location
+        locationMapComponent?.location = location
+        addTrackLocation(location)
+        compass.setLocation(location)
+        centerCurrentPositionIfFollowing()
+        listener?.onDisplayedLocationDidChange()
     }
 
     private fun addTrackLocation(location: Location) {
