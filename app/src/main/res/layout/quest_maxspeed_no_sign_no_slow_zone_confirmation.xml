@@ -34,10 +34,10 @@
                 tools:ignore="RtlSymmetry" />
 
             <FrameLayout
+                android:id="@+id/slowZoneImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/slowZoneImage"
             >
                 <include
                     layout="@layout/quest_maxspeed_zone_sign"
