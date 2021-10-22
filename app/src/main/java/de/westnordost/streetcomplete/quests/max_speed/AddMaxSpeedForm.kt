@@ -123,24 +123,24 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         else -> null
     }
 
+    private fun slowZoneLayout() = when {
+        countryInfo.slowZoneLabelText == null -> {
+            R.layout.quest_maxspeed_zone_sign_no_label
+        }
+        countryInfo.slowZoneLabelPosition == "bottom" -> {
+            R.layout.quest_maxspeed_zone_sign_label_on_bottom
+        }
+        countryInfo.slowZoneLabelPosition == "top" -> {
+            R.layout.quest_maxspeed_zone_sign_label_on_top
+        }
+        else -> {
+            throw Error("unexpected value in country metadata")
+        }
+    }
+
     private val SpeedType.layoutResId get() = when (this) {
         SIGN          -> R.layout.quest_maxspeed_sign
-        ZONE          -> {
-            when {
-                countryInfo.slowZoneLabelText == null -> {
-                    R.layout.quest_maxspeed_zone_sign_no_label
-                }
-                countryInfo.slowZoneLabelPosition == "bottom" -> {
-                    R.layout.quest_maxspeed_zone_sign_label_on_bottom
-                }
-                countryInfo.slowZoneLabelPosition == "top" -> {
-                    R.layout.quest_maxspeed_zone_sign_label_on_top
-                }
-                else -> {
-                    throw Error("unexpected value in country metadata")
-                }
-            }
-        }
+        ZONE          -> slowZoneLayout()
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
         NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
         ADVISORY      -> R.layout.quest_maxspeed_advisory
@@ -210,10 +210,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
         activity?.let {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
-            dialogBinding.signContainer.removeAllViews()
-            dialogBinding.root.removeView(dialogBinding.signContainer)
-            dialogBinding.signContainer.removeView(dialogBinding.signContainer)
-            dialogBinding.signContainer.addView(layoutInflater.inflate(R.layout.quest_maxspeed_zone_sign_label_on_top, dialogBinding.signContainer))
+            val view = layoutInflater.inflate(slowZoneLayout(), dialogBinding.signContainer, false)
+            dialogBinding.signContainer.addView(view)
             //val maxSpeedInput = dialogBinding.slowZoneImage.maxSpeedInput
             //maxSpeedInput!!.setText("××")
             //maxSpeedInput.inputType = EditorInfo.TYPE_NULL

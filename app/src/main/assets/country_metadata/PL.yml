@@ -10,3 +10,5 @@ officialLanguages: [pl]
 orchardProduces: [apple, tomato, strawberry, raspberry, cherry, plum, pear, blueberry, peach, walnut, hazelnut, hop, apricot, chestnut]
 popularSports: [soccer, athletics, volleyball, basketball, handball, tennis]
 regularShoppingDays: 5
+slowZoneLabelPosition: bottom
+slowZoneLabelText: PL
