@@ -55,11 +55,11 @@ ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
-kerb_height_raised_original... CC0               Mateusz Konieczny
+kerb_height_raised_original... CC0               Mateusz Konieczny (...)
 kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)
-kerb_height_lowered_origina... CC0               Mateusz Konieczny
+kerb_height_lowered_origina... CC0               Mateusz Konieczny (...)
 kerb_height_flush.jpg          CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_flush_original.jpg)
-kerb_height_flush_original.jpg CC0               Mateusz Konieczny
+kerb_height_flush_original.jpg CC0               Mateusz Konieczny (...)
 kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 
