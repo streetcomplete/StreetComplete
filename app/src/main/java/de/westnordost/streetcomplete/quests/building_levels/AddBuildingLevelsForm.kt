@@ -32,7 +32,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val roofLevels get() = binding.roofLevelsInput.text?.toString().orEmpty().trim()
 
     private val lastPickedAnswers by lazy {
-        favs.getWeighted(javaClass.simpleName, 5, 30, listOf()) { it.toBuildingLevelAnswer() }
+        favs.getWeighted(javaClass.simpleName, 5, 30) { it.toBuildingLevelAnswer() }
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }

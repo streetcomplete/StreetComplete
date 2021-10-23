@@ -46,22 +46,22 @@ fun <T> LastPickedValuesStore<T>.getWeighted(
     itemPool: List<GroupableDisplayItem<T>>
 ): List<GroupableDisplayItem<T>> {
     val stringToItem = itemPool.associateBy { it.value.toString() }
-    return getWeighted(key, count, historyCount, defaultItems, stringToItem::get)
+    val weightedItems = getWeighted(key, count, historyCount, stringToItem::get)
+    return weightedItems.padWith(defaultItems).toList()
 }
 
 fun <T, I> LastPickedValuesStore<T>.getWeighted(
     key: String,
     count: Int,
     historyCount: Int,
-    defaultItems: List<I>,
     deserialize: (String) -> I?
-): List<I> {
+): Sequence<I> {
     val lastPickedItems = get(key).map(deserialize)
     val counts = lastPickedItems.countUniqueNonNull(historyCount, count)
     val topRecent = counts.keys.sortedByDescending { counts.get(it) }
     val latest = lastPickedItems.take(1).filterNotNull()
-    val items = (latest + topRecent + defaultItems).distinct().take(count)
-    return items.sortedByDescending { counts.get(it) }.toList()
+    val items = (latest + topRecent).distinct().take(count)
+    return items.sortedByDescending { counts.get(it) }
 }
 
 // Counts at least the first `minItems`, keeps going until it finds at least `target` unique values
@@ -82,5 +82,8 @@ fun <T> LastPickedValuesStore<T>.moveLastPickedDisplayItemsToFront(
 ): List<DisplayItem<T>> {
     val stringToItem = itemPool.associateBy { it.value.toString() }
     val lastPickedItems = get(key).mapNotNull { stringToItem.get(it) }
-    return (lastPickedItems + defaultItems).distinct().toList()
+    return lastPickedItems.padWith(defaultItems).toList()
 }
+
+private fun <T> Sequence<T>.padWith(defaults: List<T>, count: Int = defaults.size) =
+    (this + defaults).distinct().take(count)
