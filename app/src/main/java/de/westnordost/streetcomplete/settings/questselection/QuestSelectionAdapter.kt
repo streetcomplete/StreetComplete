@@ -146,7 +146,8 @@ class QuestSelectionAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        viewLifecycleScope.cancel()
+        // not calling .cancel because the adapter can be re-used with a new view
+        viewLifecycleScope.coroutineContext.cancelChildren()
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
