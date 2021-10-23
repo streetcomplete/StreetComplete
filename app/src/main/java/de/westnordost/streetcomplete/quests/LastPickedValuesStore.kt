@@ -46,26 +46,20 @@ fun <T> LastPickedValuesStore<T>.getWeighted(
     itemPool: List<GroupableDisplayItem<T>>
 ): List<GroupableDisplayItem<T>> {
     val stringToItem = itemPool.associateBy { it.value.toString() }
-    val weightedItems = getWeighted(key, count, historyCount, stringToItem::get)
-    return weightedItems.padWith(defaultItems).toList()
+    val lastPickedItems = get(key).map { stringToItem.get(it) }
+    return lastPickedItems.mostCommonWithin(count, historyCount).padWith(defaultItems).toList()
 }
 
-fun <T, I> LastPickedValuesStore<T>.getWeighted(
-    key: String,
-    count: Int,
-    historyCount: Int,
-    deserialize: (String) -> I?
-): Sequence<I> {
-    val lastPickedItems = get(key).map(deserialize)
-    val counts = lastPickedItems.countUniqueNonNull(historyCount, count)
-    val topRecent = counts.keys.sortedByDescending { counts.get(it) }
-    val latest = lastPickedItems.take(1).filterNotNull()
-    val items = (latest + topRecent).distinct().take(count)
+fun <T : Any> Sequence<T?>.mostCommonWithin(count: Int, historyCount: Int): Sequence<T> {
+    val counts = this.countUniqueNonNull(historyCount, count)
+    val top = counts.keys.sortedByDescending { counts.get(it) }
+    val latest = this.take(1).filterNotNull()
+    val items = (latest + top).distinct().take(count)
     return items.sortedByDescending { counts.get(it) }
 }
 
 // Counts at least the first `minItems`, keeps going until it finds at least `target` unique values
-private fun <T> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int): Map<T, Int> {
+private fun <T : Any> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int): Map<T, Int> {
     val counts = mutableMapOf<T, Int>()
     val items = takeAtLeastWhile(minItems) { counts.size < target }.filterNotNull()
     return items.groupingBy { it }.eachCountTo(counts)

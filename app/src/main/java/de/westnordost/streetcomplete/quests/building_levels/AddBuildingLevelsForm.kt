@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedBu
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.getWeighted
+import de.westnordost.streetcomplete.quests.mostCommonWithin
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
@@ -32,7 +32,8 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val roofLevels get() = binding.roofLevelsInput.text?.toString().orEmpty().trim()
 
     private val lastPickedAnswers by lazy {
-        favs.getWeighted(javaClass.simpleName, 5, 30) { it.toBuildingLevelAnswer() }
+        favs.get(javaClass.simpleName).map { it.toBuildingLevelAnswer() }
+            .mostCommonWithin(5, 30)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
