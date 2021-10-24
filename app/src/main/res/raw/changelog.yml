@@ -1,3 +1,16 @@
+v37.0-beta2: |
+  <ul>
+  <li>Allow answering that a café sells no food at all when asked if they have vegan food etc. (#3408, #3422) by @matkoniecz</li>
+  <li>More minor (UX) improvements (#3443, #3396, #3427) by @matkoniecz</li>
+  <li>Ask for more places whether they have vegan food etc. (#3431) by @peternewman</li>
+  <li>Clarifiy hydrant diameter question</li>
+  <li>slight battery-usage optimization regarding access to location (#3420, #3424) by @Isira-Seneviratne</li>
+  <li>In Norway, all cycle lanes are exclusive, thus don't offer to distinguish between advisory and exclusive ones in cycleway quest (#3438)</li>
+  <li>Fix Serbian translators weren't listed in the credits screen</li>
+  <li>Fix quest selection screen didn't update when changing the preset (#3430)</li>
+  <li>Fix "give feedback" link in about screen didn't work. Now you can give us your feedback! 🙂</li>
+  </ul>
+
 v37.0-beta1: |
   <h3>New Quests</h3>
   <ul>
