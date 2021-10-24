@@ -156,7 +156,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
                         onDiscard()
                         onConfirmed()
                     }
-                    .setNegativeButton(R.string.confirmation_discard_negative, null)
+                    .setNegativeButton(R.string.short_no_answer_on_button, null)
                     .show()
             }
         }
