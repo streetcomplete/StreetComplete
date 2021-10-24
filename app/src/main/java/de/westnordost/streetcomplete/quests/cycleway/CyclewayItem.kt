@@ -4,11 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
 
-fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
-    !isUnknown && !isInvalid && !isAmbiguous(countryCode) &&
-    /* suggestion lanes are only known in Belgium and Netherlands */
-    (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
-
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
     Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
 
