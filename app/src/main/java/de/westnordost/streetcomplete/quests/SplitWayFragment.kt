@@ -242,7 +242,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
                         onConfirmed()
                     }
-                    .setNegativeButton(R.string.confirmation_discard_negative, null)
+                    .setNegativeButton(R.string.short_no_answer_on_button, null)
                     .show()
             }
         }
