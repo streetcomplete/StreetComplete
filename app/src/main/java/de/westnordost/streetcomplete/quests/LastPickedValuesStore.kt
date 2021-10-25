@@ -25,7 +25,8 @@ class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPref
         add(key, listOf(value), max, allowDuplicates)
     }
 
-    fun get(key: String): Sequence<String> = prefs.getString(getKey(key), "")!!.splitToSequence(",")
+    fun get(key: String): Sequence<String> =
+        prefs.getString(getKey(key), null)?.splitToSequence(",") ?: sequenceOf()
 
     private fun getKey(key: String) = Prefs.LAST_PICKED_PREFIX + key
 }
