@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.AnyThread
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -21,16 +22,18 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -62,6 +65,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     // dependencies
     private val countryInfos: CountryInfos
     private val questTypeRegistry: QuestTypeRegistry
+    private val mapDataWithEditsSource: MapDataWithEditsSource
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -131,12 +135,16 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val showsPointMarkersListener: ShowsPointMarkers? get() =
+        parentFragment as? ShowsPointMarkers ?: activity as? ShowsPointMarkers
+
     init {
         val fields = InjectedFields()
         Injector.applicationComponent.inject(fields)
         countryInfos = fields.countryInfos
         featureDictionaryFuture = fields.featureDictionaryFuture
         questTypeRegistry = fields.questTypeRegistry
+        mapDataWithEditsSource  = fields.mapDataWithEditsSource
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -351,6 +359,22 @@ abstract class AbstractQuestAnswerFragment<T> :
             }.show()
     }
 
+    /** Return the surrounding map data in the given radius.
+     *  25m is the default because this is about "across this large street". There shouldn't be
+     *  any mix-ups that far apart */
+    protected suspend fun getMapData(radius: Double = 25.0): MapDataWithGeometry {
+        val bbox = elementGeometry.center.enclosingBoundingBox(radius)
+        return withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
+    }
+
+    protected fun putMarker(position: LatLon, @DrawableRes drawableResId: Int) {
+        /* actually, ignore any marker for the position the quest is displayed as there is already
+           a pin */
+        if (elementGeometry.center != position) {
+            showsPointMarkersListener?.putMarkerForCurrentQuest(position, drawableResId)
+        }
+    }
+
     /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
         if (binding.content.childCount > 0) {
@@ -393,6 +417,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         @Inject internal lateinit var countryInfos: CountryInfos
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
+        @Inject internal lateinit var mapDataWithEditsSource: MapDataWithEditsSource
     }
 
     protected inline fun <reified T : ViewBinding> contentViewBinding(

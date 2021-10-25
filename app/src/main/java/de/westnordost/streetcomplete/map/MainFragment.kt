@@ -79,7 +79,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
     EditHistoryFragment.Listener,
-    HandlesOnBackPressed {
+    HandlesOnBackPressed,
+    ShowsPointMarkers {
 
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
@@ -438,12 +439,14 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
-    override fun onAddSplit(point: LatLon) {
-        mapFragment?.putMarkerForCurrentQuest(point, R.drawable.crosshair_marker)
+    /* ------------------------------- ShowsPointMarkers -------------------------------- */
+
+    override fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
+        mapFragment?.putMarkerForCurrentQuest(pos, drawableResId)
     }
 
-    override fun onRemoveSplit(point: LatLon) {
-        mapFragment?.deleteMarkerForCurrentQuest(point)
+    override fun deleteMarkerForCurrentQuest(pos: LatLon) {
+        mapFragment?.deleteMarkerForCurrentQuest(pos)
     }
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */

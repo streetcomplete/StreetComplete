@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
+import de.westnordost.streetcomplete.quests.ShowsPointMarkers
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -32,7 +33,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Manages a map that shows the quest pins, quest geometry */
-class QuestsMapFragment : LocationAwareMapFragment() {
+class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
 
     @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
     @Inject internal lateinit var questTypeOrderSource: QuestTypeOrderSource
@@ -71,7 +72,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     override suspend fun onMapReady() {
         val ctrl = controller ?: return
         ctrl.setPickRadius(1f)
-        pointMarkersMapComponent = PointMarkersMapComponent(ctrl)
+        pointMarkersMapComponent = PointMarkersMapComponent(resources, ctrl)
         pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = ElementGeometryMapComponent(ctrl)
 
@@ -190,13 +191,13 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         centerCurrentPositionIfFollowing()
     }
 
-    /* -------------------------  Markers for current quest (split way) ------------------------- */
+    /* -------------------------------  Markers for current quest ------------------------------- */
 
-    fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
+    override fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
         pointMarkersMapComponent?.put(pos, drawableResId)
     }
 
-    fun deleteMarkerForCurrentQuest(pos: LatLon) {
+    override fun deleteMarkerForCurrentQuest(pos: LatLon) {
         pointMarkersMapComponent?.delete(pos)
     }
 

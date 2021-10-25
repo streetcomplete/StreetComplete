@@ -61,11 +61,12 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     private val isFormComplete get() = splits.size >= if (way.isClosed) 2 else 1
 
     interface Listener {
-        fun onAddSplit(point: LatLon)
-        fun onRemoveSplit(point: LatLon)
         fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    private val showsPointMarkersListener: ShowsPointMarkers? get() =
+        parentFragment as? ShowsPointMarkers ?: activity as? ShowsPointMarkers
 
     init {
         Injector.applicationComponent.inject(this)
@@ -147,7 +148,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
             viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
-            listener?.onRemoveSplit(item.second)
+            showsPointMarkersListener?.deleteMarkerForCurrentQuest(item.second)
         }
     }
 
@@ -172,7 +173,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            listener?.onAddSplit(splitPosition)
+            showsPointMarkersListener?.putMarkerForCurrentQuest(splitPosition, R.drawable.crosshair_marker)
         }
 
         // always consume event. User should press the cancel button to exit
