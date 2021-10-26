@@ -144,8 +144,8 @@ fun prepareDietFilter(dietType: String): String {
     }
     val resurveyAge = (if (setOf("vegan","vegetarian").contains(dietType)) "-2" else "-4")
     val veganVegetarianFilter = when (dietType) {
-        "vegan" -> "and diet:vegetarian ~ yes|only" // vegan includes vegetarian
-        "vegetarian" -> "and diet:vegan != only" // but vegan only can not be vegetarian
+        "vegan" -> "and diet:vegetarian ~ yes|only" // if it's not (at least partly) vegetarian, it can't be vegan
+        "vegetarian" -> "and diet:vegan != only" // vegan only implies vegetarian
         else -> ""
     }
 
