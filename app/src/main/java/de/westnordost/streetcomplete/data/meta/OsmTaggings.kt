@@ -138,7 +138,7 @@ fun prepareDietFilter(dietType: String): String {
     val amenitiesProbablyWithFood = setOf("pub", "nightclub", "biergarten", "bar")
     // These shops sell food
     val shopsWithFood = mutableSetOf("supermarket", "ice_cream")
-    // Butchers are considered to be mutually exclusive with Vegan and Vegetarian
+    // Butchers are considered to never be vegan or vegetarian
     if (!setOf("vegan", "vegetarian").contains(dietType)) {
         shopsWithFood.add("butcher")
     }
