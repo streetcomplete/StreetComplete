@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.prepareDietFilter
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -8,17 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
-    override val elementFilter = """
-        nodes, ways with
-        (
-          amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
-          or shop ~ butcher|supermarket|ice_cream
-        )
-        and name and (
-          !diet:kosher
-          or diet:kosher != only and diet:kosher older today -4 years
-        )
-    """
+    override val elementFilter = prepareDietFilter("kosher")
     override val commitMessage = "Add kosher status"
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.ic_quest_kosher

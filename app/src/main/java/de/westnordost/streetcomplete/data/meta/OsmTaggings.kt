@@ -130,3 +130,36 @@ fun isKindOfShopExpression(prefix: String? = null): String {
         ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
         ).trimIndent()
 }
+
+fun prepareDietFilter(dietType: String): String {
+    // These amenities regularly supply food
+    val amenitiesRegularlyWithFood = setOf("restaurant", "cafe", "fast_food", "ice_cream")
+    // These amenities could supply food
+    val amenitiesProbablyWithFood = setOf("pub", "nightclub", "biergarten", "bar")
+    // These shops sell food
+    val shopsWithFood = setOf("supermarket", "ice_cream")
+    // Butchers are considered to be mutually exclusive with Vegan and Vegetarian
+    if (!setOf("vegan", "vegetarian").contains(dietType)) {
+        shopsWithFood.plus("butcher")
+    }
+    val resurveyAge = (if (setOf("vegan","vegetarian").contains(dietType)) "-2" else "-4")
+    return """
+        nodes, ways with
+        (
+          amenity ~ """ + amenitiesRegularlyWithFood.joinToString("|") + """ and food != no
+          or amenity ~ """ + amenitiesProbablyWithFood.joinToString("|") + """ and food = yes
+          or shop ~ """ + shopsWithFood.joinToString("|") + """
+        )
+        """ +
+            (if (dietType == "vegan") "and diet:vegetarian ~ yes|only" else "") + // vegan includes vegetarian
+            (if (dietType == "vegetarian") "and diet:vegan != only" else "") +    // but vegan only can not be vegetarian
+        """
+        and name and (
+          !diet:~~~dietType~~~
+          or diet:~~~dietType~~~ != only and diet:~~~dietType~~~ older today ~~~resurveyAge~~~ years
+        )
+    """
+        .replace("~~~dietType~~~", dietType)
+        .replace("~~~resurveyAge~~~", resurveyAge)
+    //return elementFilter
+}
