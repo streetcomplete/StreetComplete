@@ -6,7 +6,6 @@ import androidx.core.content.edit
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Prefs
-import kotlin.math.min
 
 class LastPickedValuesStore<T : Any> @Inject constructor(private val prefs: SharedPreferences) {
 

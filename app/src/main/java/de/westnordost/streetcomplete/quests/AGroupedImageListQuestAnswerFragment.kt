@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import kotlin.math.max
-import kotlin.math.min
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
