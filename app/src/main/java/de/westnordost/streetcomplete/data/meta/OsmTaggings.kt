@@ -137,10 +137,10 @@ fun prepareDietFilter(dietType: String): String {
     // These amenities could supply food
     val amenitiesProbablyWithFood = setOf("pub", "nightclub", "biergarten", "bar")
     // These shops sell food
-    val shopsWithFood = setOf("supermarket", "ice_cream")
+    val shopsWithFood = mutableSetOf("supermarket", "ice_cream")
     // Butchers are considered to be mutually exclusive with Vegan and Vegetarian
     if (!setOf("vegan", "vegetarian").contains(dietType)) {
-        shopsWithFood.plus("butcher")
+        shopsWithFood.add("butcher")
     }
     val resurveyAge = (if (setOf("vegan","vegetarian").contains(dietType)) "-2" else "-4")
     return """
