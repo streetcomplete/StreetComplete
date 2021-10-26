@@ -143,22 +143,23 @@ fun prepareDietFilter(dietType: String): String {
         shopsWithFood.add("butcher")
     }
     val resurveyAge = (if (setOf("vegan","vegetarian").contains(dietType)) "-2" else "-4")
+    val veganVegetarianFilter = when (dietType) {
+        "vegan" -> "and diet:vegetarian ~ yes|only" // vegan includes vegetarian
+        "vegetarian" -> "and diet:vegan != only" // but vegan only can not be vegetarian
+        else -> ""
+    }
+
     return """
         nodes, ways with
         (
-          amenity ~ """ + amenitiesRegularlyWithFood.joinToString("|") + """ and food != no
-          or amenity ~ """ + amenitiesProbablyWithFood.joinToString("|") + """ and food = yes
-          or shop ~ """ + shopsWithFood.joinToString("|") + """
+          amenity ~ ${amenitiesRegularlyWithFood.joinToString("|")} and food != no
+          or amenity ~ ${amenitiesProbablyWithFood.joinToString("|")} and food = yes
+          or shop ~ ${shopsWithFood.joinToString("|")}
         )
-        """ +
-            (if (dietType == "vegan") "and diet:vegetarian ~ yes|only" else "") + // vegan includes vegetarian
-            (if (dietType == "vegetarian") "and diet:vegan != only" else "") +    // but vegan only can not be vegetarian
-        """
+        ${veganVegetarianFilter}
         and name and (
-          !diet:~~~dietType~~~
-          or diet:~~~dietType~~~ != only and diet:~~~dietType~~~ older today ~~~resurveyAge~~~ years
+          !diet:${dietType}
+          or diet:${dietType} != only and diet:${dietType} older today ${resurveyAge} years
         )
     """
-        .replace("~~~dietType~~~", dietType)
-        .replace("~~~resurveyAge~~~", resurveyAge)
 }
