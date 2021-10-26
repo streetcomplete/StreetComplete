@@ -161,5 +161,4 @@ fun prepareDietFilter(dietType: String): String {
     """
         .replace("~~~dietType~~~", dietType)
         .replace("~~~resurveyAge~~~", resurveyAge)
-    //return elementFilter
 }
