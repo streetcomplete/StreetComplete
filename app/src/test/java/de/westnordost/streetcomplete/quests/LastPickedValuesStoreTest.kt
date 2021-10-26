@@ -1,25 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.quests.Letter.*
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import de.westnordost.streetcomplete.view.image_select.Item
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 
 class LastPickedValuesStoreTest {
-
-    @Test fun `weighted sort returns the default items when there is no history`() {
-        val allItems = Letter.values().toList().map { Item(it) }
-        val defaultItems = listOf(A, B, C).map { Item(it) }
-
-        val favs = mock<LastPickedValuesStore<Letter>>()
-        on(favs.get(javaClass.simpleName)).thenReturn(sequenceOf())
-
-        val returnedItems = favs.getWeighted(javaClass.simpleName, 4, 99, defaultItems, allItems)
-        assertEquals(defaultItems, returnedItems)
-    }
 
     @Test fun `mostCommonWithin sorts by frequency first, then recency`() {
         val items = sequenceOf(A, C, B, B, C, D)
@@ -49,6 +35,11 @@ class LastPickedValuesStoreTest {
     @Test fun `mostCommonWithin keeps counting until enough non-null items have been found`() {
         val items = sequenceOf(A, null, null, B, B, C, /* stops here */ D)
         assertEquals(items.mostCommonWithin(3, 4).toList(), listOf(B, A, C))
+    }
+
+    @Test fun `padWith doesn't include duplicates`() {
+        val items = sequenceOf(A, B).padWith(listOf(B, C, D, A))
+        assertEquals(items.toList(), listOf(A, B, C, D))
     }
 }
 
