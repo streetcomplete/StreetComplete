@@ -18,7 +18,11 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags.containsKey("shop"))
+            R.string.quest_dietType_kosher_name_title
+        else
+            R.string.quest_dietType_kosher_menu_name_title
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_kosher)
 
