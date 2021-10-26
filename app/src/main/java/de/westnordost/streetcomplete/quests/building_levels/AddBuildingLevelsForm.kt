@@ -38,7 +38,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
             .toList()
     }
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<String>
+    @Inject internal lateinit var favs: LastPickedValuesStore
 
     init {
         Injector.applicationComponent.inject(this)

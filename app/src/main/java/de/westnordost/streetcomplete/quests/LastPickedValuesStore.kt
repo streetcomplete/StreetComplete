@@ -11,16 +11,16 @@ import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import kotlin.math.min
 
 /** T must be a string or enum - something that distinctly converts toString. */
-class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPreferences) {
+class LastPickedValuesStore @Inject constructor(private val prefs: SharedPreferences) {
 
-    fun add(key: String, newValues: Iterable<T>) {
-        val lastValues = newValues.asSequence().map { it.toString() } + get(key)
+    fun add(key: String, newValues: Iterable<String>) {
+        val lastValues = newValues.asSequence() + get(key)
         prefs.edit {
             putString(getKey(key), lastValues.take(MAX_ENTRIES).joinToString(","))
         }
     }
 
-    fun add(key: String, value: T) = add(key, listOf(value))
+    fun add(key: String, value: String) = add(key, listOf(value))
 
     fun get(key: String): Sequence<String> =
         prefs.getString(getKey(key), null)?.splitToSequence(",") ?: sequenceOf()
@@ -39,7 +39,7 @@ private const val MAX_ENTRIES = 100
  *
  * impl: null represents items not in the item pool
  */
-fun <T> LastPickedValuesStore<T>.getWeighted(
+fun <T> LastPickedValuesStore.getWeighted(
     key: String,
     count: Int,
     historyCount: Int,
@@ -70,7 +70,7 @@ private fun <T : Any> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int
 private fun <T> Sequence<T>.takeAtLeastWhile(count: Int, predicate: (T) -> Boolean): Sequence<T> =
     withIndex().takeWhile{ (i, t) -> i < count || predicate(t) }.map { it.value }
 
-fun <T> LastPickedValuesStore<T>.moveLastPickedDisplayItemsToFront(
+fun <T> LastPickedValuesStore.moveLastPickedDisplayItemsToFront(
     key: String,
     defaultItems: List<DisplayItem<T>>,
     itemPool: List<DisplayItem<T>>

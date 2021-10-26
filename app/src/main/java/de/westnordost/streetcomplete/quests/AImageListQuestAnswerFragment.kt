@@ -34,7 +34,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
 
-    private lateinit var favs: LastPickedValuesStore<I>
+    private lateinit var favs: LastPickedValuesStore
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -89,7 +89,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     override fun onClickOk() {
         val values = imageSelector.selectedItems
         if (values.isNotEmpty()) {
-            favs.add(javaClass.simpleName, values)
+            favs.add(javaClass.simpleName, values.map { it.toString() })
             onClickOk(values)
         }
     }

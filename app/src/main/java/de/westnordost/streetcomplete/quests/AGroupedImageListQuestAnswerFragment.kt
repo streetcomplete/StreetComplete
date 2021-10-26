@@ -35,7 +35,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     protected abstract val allItems: List<GroupableDisplayItem<I>>
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<I>
+    @Inject internal lateinit var favs: LastPickedValuesStore
 
     private val selectedItem get() = imageSelector.selectedItem
 
@@ -114,14 +114,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue)
+                            favs.add(javaClass.simpleName, itemValue.toString())
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue)
+                favs.add(javaClass.simpleName, itemValue.toString())
                 onClickOk(itemValue)
             }
         }
