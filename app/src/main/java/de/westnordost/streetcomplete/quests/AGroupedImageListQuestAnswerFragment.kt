@@ -35,7 +35,17 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     protected abstract val allItems: List<GroupableDisplayItem<I>>
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
-    @Inject internal lateinit var favs: LastPickedValuesStore
+    @Inject internal lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
+
+    private val favsFactory = object : LastPickedValuesStore.Factory<GroupableDisplayItem<I>> {
+        private val stringToItem by lazy {
+            allItems.mapNotNull { it.items }.flatten().associateBy { serialize(it) }
+        }
+
+        override val key = javaClass.simpleName
+        override fun serialize(item: GroupableDisplayItem<I>) = item.value.toString()
+        override fun deserialize(value: String) = stringToItem[value]
+    }
 
     private val selectedItem get() = imageSelector.selectedItem
 
@@ -92,8 +102,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
-        return favs.getWeighted(javaClass.simpleName, 6, 30, topItems, validSuggestions)
+        return favs.get(favsFactory).mostCommonWithin(6, 30).padWith(topItems).toList()
     }
 
     override fun onClickOk() {
@@ -114,14 +123,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue.toString())
+                            favs.add(favsFactory, item)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue.toString())
+                favs.add(favsFactory, item)
                 onClickOk(itemValue)
             }
         }

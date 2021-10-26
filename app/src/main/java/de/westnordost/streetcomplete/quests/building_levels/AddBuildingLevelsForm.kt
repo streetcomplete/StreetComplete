@@ -32,13 +32,23 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val roofLevels get() = binding.roofLevelsInput.text?.toString().orEmpty().trim()
 
     private val lastPickedAnswers by lazy {
-        favs.get(javaClass.simpleName).map { it.toBuildingLevelAnswer() }
+        favs.get(favsFactory)
             .mostCommonWithin(5, 30)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
 
-    @Inject internal lateinit var favs: LastPickedValuesStore
+    @Inject internal lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
+
+    val favsFactory = object : LastPickedValuesStore.Factory<BuildingLevelsAnswer> {
+        override val key = javaClass.simpleName
+
+        override fun serialize(item: BuildingLevelsAnswer): String =
+            listOfNotNull(item.levels, item.roofLevels).joinToString("#")
+
+        override fun deserialize(value: String) =
+            value.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
+    }
 
     init {
         Injector.applicationComponent.inject(this)
@@ -66,7 +76,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     override fun onClickOk() {
         val roofLevelsNumber = if (roofLevels.isEmpty()) null else roofLevels.toInt()
         val answer = BuildingLevelsAnswer(levels.toInt(), roofLevelsNumber)
-        favs.add(javaClass.simpleName, answer.toSerializedString())
+        favs.add(favsFactory, answer)
         applyAnswer(answer)
     }
 
@@ -113,9 +123,3 @@ private class LastPickedAdapter(
 
     override fun getItemCount() = lastPickedAnswers.size
 }
-
-private fun BuildingLevelsAnswer.toSerializedString() =
-    listOfNotNull(levels, roofLevels).joinToString("#")
-
-private fun String.toBuildingLevelAnswer() =
-    this.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
