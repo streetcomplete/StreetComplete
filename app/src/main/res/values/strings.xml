@@ -993,8 +993,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
     <string name="open_url">Open URL</string>
-    <string name="quest_dietType_kosher_menu_name_title">Does %s have kosher meals of the menu?</string>
-    <string name="quest_dietType_halal_menu_name_title">Does %s have Halal meals of the menu?</string>
+    <string name="quest_dietType_kosher_menu_name_title">Does %s have kosher meals on the menu?</string>
+    <string name="quest_dietType_halal_menu_name_title">Does %s have Halal meals on the menu?</string>
     <string name="quest_dietType_kosher_name_title">Does %s offer kosher products?</string>
     <string name="quest_dietType_halal_name_title">Does %s offer Halal products?</string>
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
