@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
@@ -33,6 +34,7 @@ import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -79,6 +81,9 @@ abstract class AbstractQuestAnswerFragment<T> :
     protected val countryInfo get() = _countryInfo!!
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
+
+    // cache of queried map data by subclass
+    private val mapDataWithGeometry = MutableMapDataWithGeometry()
 
     // passed in parameters
     override lateinit var questKey: QuestKey
@@ -169,6 +174,10 @@ abstract class AbstractQuestAnswerFragment<T> :
          * So what we do here is to override the parent activity's "mobile country code" resource
          * configuration and use this mechanism to access our country-dependent resources */
         countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
+
+        if (savedInstanceState == null) {
+            lifecycleScope.launch { addInitialMapMarkers() }
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -359,20 +368,26 @@ abstract class AbstractQuestAnswerFragment<T> :
             }.show()
     }
 
-    /** Return the surrounding map data in the given radius.
-     *  25m is the default because this is about "across this large street". There shouldn't be
-     *  any mix-ups that far apart */
-    protected suspend fun getMapData(radius: Double = 25.0): MapDataWithGeometry {
-        val bbox = elementGeometry.center.enclosingBoundingBox(radius)
-        return withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
+    protected open suspend fun addInitialMapMarkers() { }
+
+    protected fun putMarker(element: Element, @DrawableRes drawabbleResId: Int) {
+        val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: return
+        showsPointMarkersListener?.putMarkerForCurrentQuest(geometry.center, drawabbleResId)
     }
 
-    protected fun putMarker(position: LatLon, @DrawableRes drawableResId: Int) {
-        /* actually, ignore any marker for the position the quest is displayed as there is already
-           a pin */
-        if (elementGeometry.center != position) {
-            showsPointMarkersListener?.putMarkerForCurrentQuest(position, drawableResId)
+    /** Return the surrounding map data in the given radius except the element for which the form
+     *  is shown.
+     *  25m is the default because this is about "across this large street". There shouldn't be
+     *  any mix-ups that far apart */
+    protected suspend fun getMapData(radius: Double = 25.0): MapData {
+        val bbox = elementGeometry.center.enclosingBoundingBox(radius)
+        val mapData = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
+        mapData.forEach {
+            if (it != osmElement) {
+                mapDataWithGeometry.put(it, mapData.getGeometry(it.type, it.id))
+            }
         }
+        return mapDataWithGeometry
     }
 
     /** Inflate given layout resource id into the content view and return the inflated view */
