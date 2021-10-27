@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -14,6 +15,12 @@ class AddRecyclingTypeForm : AImageListQuestAnswerFragment<RecyclingType, Recycl
     )
 
     override val itemsPerRow = 3
+
+    override suspend fun addInitialMapMarkers() {
+        getMapData().filter("nodes with amenity = recycling and recycling_type = container").forEach {
+            putMarker(it, R.drawable.ic_pin_recycling_container)
+        }
+    }
 
     override fun onClickOk(selectedItems: List<RecyclingType>) {
         applyAnswer(selectedItems.single())
