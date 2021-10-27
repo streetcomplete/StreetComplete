@@ -220,7 +220,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         activity?.let {
             val dialogBinding = QuestMaxspeedNoSignNoSlowZoneConfirmationBinding.inflate(layoutInflater)
             enableAppropriateLabelsForSlowZone(dialogBinding.slowZoneImage)
-            val dialogSpeedInput : EditText = dialogBinding.slowZoneImage.findViewById(R.id.maxSpeedInput)
+            val dialogSpeedInput: EditText = dialogBinding.slowZoneImage.findViewById(R.id.maxSpeedInput)
             dialogSpeedInput.setText("××")
             dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
 
