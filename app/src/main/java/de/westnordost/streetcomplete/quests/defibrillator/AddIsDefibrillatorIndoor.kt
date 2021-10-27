@@ -23,7 +23,7 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = AddIsDefibrillatorForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("indoor", answer.toYesNo())
