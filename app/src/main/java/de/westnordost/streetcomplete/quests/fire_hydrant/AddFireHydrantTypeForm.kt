@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.*
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -15,6 +16,12 @@ class AddFireHydrantTypeForm : AImageListQuestAnswerFragment<FireHydrantType, Fi
     )
 
     override val itemsPerRow = 2
+
+    override suspend fun addInitialMapMarkers() {
+        getMapData().filter("nodes with emergency = fire_hydrant").forEach {
+            putMarker(it, R.drawable.ic_pin_fire_hydrant)
+        }
+    }
 
     override fun onClickOk(selectedItems: List<FireHydrantType>) {
         applyAnswer(selectedItems.single())

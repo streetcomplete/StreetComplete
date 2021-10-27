@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -20,6 +21,12 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
 
     private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+
+    override suspend fun addInitialMapMarkers() {
+        getMapData().filter("nodes with emergency = fire_hydrant").forEach {
+            putMarker(it, R.drawable.ic_pin_fire_hydrant)
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
