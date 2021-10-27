@@ -7,29 +7,27 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Prefs
 
-class LastPickedValuesStore<T : Any> @Inject constructor(private val prefs: SharedPreferences) {
-
-    fun add(factory: Factory<T>, newValues: Iterable<T>) {
-        val lastValues = newValues.asSequence().map(factory::serialize) + getRaw(factory.key)
+class LastPickedValuesStore<T : Any>(
+    private val prefs: SharedPreferences,
+    private val key: String,
+    private val serialize: (T) -> String,
+    private val deserialize: (String) -> T? // null = invalid value
+) {
+    fun add(newValues: Iterable<T>) {
+        val lastValues = newValues.asSequence().map(serialize) + getRaw()
         prefs.edit {
-            putString(getKey(factory.key), lastValues.take(MAX_ENTRIES).joinToString(","))
+            putString(getKey(), lastValues.take(MAX_ENTRIES).joinToString(","))
         }
     }
 
-    fun add(factory: Factory<T>, value: T) = add(factory, listOf(value))
+    fun add(value: T) = add(listOf(value))
 
-    fun get(factory: Factory<T>): Sequence<T?> = getRaw(factory.key).map(factory::deserialize)
+    fun get(): Sequence<T?> = getRaw().map(deserialize)
 
-    private fun getRaw(key: String): Sequence<String> =
-        prefs.getString(getKey(key), null)?.splitToSequence(",") ?: sequenceOf()
+    private fun getRaw(): Sequence<String> =
+        prefs.getString(getKey(), null)?.splitToSequence(",") ?: sequenceOf()
 
-    private fun getKey(key: String) = Prefs.LAST_PICKED_PREFIX + key
-
-    interface Factory<T : Any> {
-        val key: String
-        fun serialize(item: T): String
-        fun deserialize(value: String): T? // null = invalid value
-    }
+    private fun getKey() = Prefs.LAST_PICKED_PREFIX + key
 }
 
 private const val MAX_ENTRIES = 100

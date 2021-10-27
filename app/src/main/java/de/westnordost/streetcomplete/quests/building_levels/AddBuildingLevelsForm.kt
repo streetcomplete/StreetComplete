@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.ViewGroup
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 
 import javax.inject.Inject
@@ -32,26 +34,24 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     private val roofLevels get() = binding.roofLevelsInput.text?.toString().orEmpty().trim()
 
     private val lastPickedAnswers by lazy {
-        favs.get(favsFactory)
+        favs.get()
             .mostCommonWithin(5, 30)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
+    internal lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
 
-    val favsFactory = object : LastPickedValuesStore.Factory<BuildingLevelsAnswer> {
-        override val key = javaClass.simpleName
-
-        override fun serialize(item: BuildingLevelsAnswer): String =
-            listOfNotNull(item.levels, item.roofLevels).joinToString("#")
-
-        override fun deserialize(value: String) =
-            value.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { item -> listOfNotNull(item.levels, item.roofLevels).joinToString("#") },
+            deserialize = { value ->
+                value.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
+            }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,7 +76,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     override fun onClickOk() {
         val roofLevelsNumber = if (roofLevels.isEmpty()) null else roofLevels.toInt()
         val answer = BuildingLevelsAnswer(levels.toInt(), roofLevelsNumber)
-        favs.add(favsFactory, answer)
+        favs.add(answer)
         applyAnswer(answer)
     }
 

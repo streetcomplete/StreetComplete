@@ -34,17 +34,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     protected abstract val allItems: List<GroupableDisplayItem<I>>
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
-
-    private val favsFactory = object : LastPickedValuesStore.Factory<GroupableDisplayItem<I>> {
-        private val stringToItem by lazy {
-            allItems.mapNotNull { it.items }.flatten().associateBy { serialize(it) }
-        }
-
-        override val key = javaClass.simpleName
-        override fun serialize(item: GroupableDisplayItem<I>) = item.value.toString()
-        override fun deserialize(value: String) = stringToItem[value]
-    }
+    internal lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
 
     private val selectedItem get() = imageSelector.selectedItem
 
@@ -52,7 +42,15 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
+        val stringToItem by lazy {
+            allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
+        }
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { item -> item.value.toString() },
+            deserialize = { value -> stringToItem[value] }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,7 +99,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        return favs.get(favsFactory).mostCommonWithin(6, 30).padWith(topItems).toList()
+        return favs.get().mostCommonWithin(6, 30).padWith(topItems).toList()
     }
 
     override fun onClickOk() {
@@ -122,14 +120,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(favsFactory, item)
+                            favs.add(item)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(favsFactory, item)
+                favs.add(item)
                 onClickOk(itemValue)
             }
         }
