@@ -1,3 +1,4 @@
+MO: ZONA
 # use app/generateCountryMetadata.py to generate files used by StreetComplete
 # see https://en.wikipedia.org/wiki/30_km/h_zone and extend
 default: false
@@ -33,6 +34,10 @@ ME: true
 MK: true
 MT: true
 MU: true # https://en.wikipedia.org/wiki/Road_signs_in_Mauritius
+AM: true # https://commons.wikimedia.org/wiki/File:5.31_Armenia_road_sign.svg
+AU: true # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
+AU-NSW: false # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
+AU-ACT: false # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
 NL: true
 'NO': true
 PL: true
@@ -52,5 +57,6 @@ US: false
 MX: true
 PE: true
 NZ: true
-# https://github.com/streetcomplete/StreetComplete/pull/3359#issuecomment-946369389
-JA: true
+JA: true # https://github.com/streetcomplete/StreetComplete/pull/3359#issuecomment-946369389
+CN: true # https://en.wikipedia.org/wiki/File:China_road_sign_%E7%A6%81_43.svg
+MO: true # https://commons.wikimedia.org/wiki/File:Macau_road_sign_22e.svg

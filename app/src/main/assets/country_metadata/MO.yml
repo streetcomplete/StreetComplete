@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 centerLine: white
 isLeftHandTraffic: true
+isSlowZoneKnown: true
 mobileCountryCode: 455
 officialLanguages: [zh, pt]
 orchardProduces: [pepper]
