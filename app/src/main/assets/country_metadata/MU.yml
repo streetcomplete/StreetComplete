@@ -9,3 +9,5 @@ officialLanguages: [en, fr, mfe]
 orchardProduces: [tomato, pineapple, banana, chilli_pepper, sweet_pepper, coconut, tea, pistachio]
 popularReligions: [hindu, christian, muslim]
 shoulderLine: short white dashes
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONE

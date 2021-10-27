@@ -9,3 +9,5 @@ mobileCountryCode: 206
 officialLanguages: [nl, fr, de]
 orchardProduces: [pear, tomato, apple, strawberry, chilli_pepper, sweet_pepper, cherry, raspberry, grape, walnut, hop, plum]
 popularSports: [soccer, tennis, basketball, equestrian, boules]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

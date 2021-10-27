@@ -7,3 +7,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 216
 officialLanguages: [hu]
 orchardProduces: [apple, grape, tomato, chilli_pepper, sweet_pepper, plum, peach, pear, apricot, cherry, walnut, strawberry, raspberry, chestnut, almond, hazelnut]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZÓNA

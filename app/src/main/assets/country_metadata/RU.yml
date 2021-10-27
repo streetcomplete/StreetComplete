@@ -9,3 +9,5 @@ mobileCountryCode: 250
 officialLanguages: [ru]
 orchardProduces: [tomato, apple, grape, cherry, strawberry, raspberry, plum, pear, apricot, peach, blueberry, tea, hop, orange]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
+slowZoneLabelPosition: top
+slowZoneLabelText: ЗОНА
