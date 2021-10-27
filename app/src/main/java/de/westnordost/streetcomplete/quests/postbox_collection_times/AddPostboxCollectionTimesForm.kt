@@ -9,6 +9,7 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -18,7 +19,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 
-class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
+class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
@@ -35,6 +36,12 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
         val viewData = loadCollectionTimesData(savedInstanceState)
         collectionTimesAdapter = CollectionTimesAdapter(viewData, requireContext(), countryInfo)
         collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+    }
+
+    override suspend fun addInitialMapMarkers() {
+        getMapData().filter("nodes with amenity = post_box").forEach {
+            putMarker(it, R.drawable.ic_pin_mail)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

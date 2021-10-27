@@ -14,9 +14,9 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
 
     override val elementFilter = """
         nodes with amenity = post_box
-        and access !~ private|no
-        and collection_times:signed != no
-        and (!collection_times or collection_times older today -2 years)
+          and access !~ private|no
+          and collection_times:signed != no
+          and (!collection_times or collection_times older today -2 years)
     """
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
@@ -58,7 +58,7 @@ class AddPostboxCollectionTimes : OsmFilterQuestType<CollectionTimesAnswer>() {
         else
             R.string.quest_postboxCollectionTimes_title
 
-    override fun createForm() = AddCollectionTimesForm()
+    override fun createForm() = AddPostboxCollectionTimesForm()
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
