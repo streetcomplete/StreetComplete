@@ -52,3 +52,5 @@ US: false
 MX: true
 PE: true
 NZ: true
+# https://github.com/streetcomplete/StreetComplete/pull/3359#issuecomment-946369389
+JA: true
