@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.camera_type
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.camera_type.CameraType.*
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -19,6 +20,12 @@ class AddCameraTypeForm : AImageListQuestAnswerFragment<CameraType, CameraType>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    }
+
+    override suspend fun addInitialMapMarkers() {
+        getMapData().filter("nodes with surveillance ~ public|outdoor|traffic and surveillance:type = camera").forEach {
+            putMarker(it, R.drawable.ic_pin_surveillance_camera)
+        }
     }
 
     override fun onClickOk(selectedItems: List<CameraType>) {
