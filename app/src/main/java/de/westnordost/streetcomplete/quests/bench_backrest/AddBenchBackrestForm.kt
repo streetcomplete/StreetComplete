@@ -18,7 +18,7 @@ class AddBenchBackrestForm : AbstractQuestAnswerFragment<BenchBackrestAnswer>() 
     )
 
     override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with amenity = bench").forEach {
+        getMapData().filter("nodes, ways with amenity = bench").forEach {
             putMarker(it, R.drawable.ic_pin_bench)
         }
     }
