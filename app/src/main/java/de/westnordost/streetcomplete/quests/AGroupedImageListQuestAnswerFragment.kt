@@ -42,9 +42,8 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        val stringToItem by lazy {
-            allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
-        }
+        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
+        val stringToItem = validSuggestions.associateBy { it.value.toString() }
         favs = LastPickedValuesStore(
             PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
             key = javaClass.simpleName,
