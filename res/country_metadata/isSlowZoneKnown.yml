@@ -1,12 +1,12 @@
 # use app/generateCountryMetadata.py to generate files used by StreetComplete
 # see https://en.wikipedia.org/wiki/30_km/h_zone and extend
 default: false
-# European countries
+# European countries, except Sweden and Bulgaria
 AD: true
 AT: true
 BA: true
 BE: true
-BG: true
+BG: false
 BY: true
 CH: true
 CZ: true
@@ -40,7 +40,7 @@ PT: true
 RO: true
 RS: true
 RU: true
-SE: true
+SE: false
 SI: true
 SM: true
 SK: true
