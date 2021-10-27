@@ -377,9 +377,9 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     /** Return the surrounding map data in the given radius except the element for which the form
      *  is shown.
-     *  25m is the default because this is about "across this large street". There shouldn't be
+     *  30m is the default because this is about "across this large street". There shouldn't be
      *  any mix-ups that far apart */
-    protected suspend fun getMapData(radius: Double = 25.0): MapData {
+    protected suspend fun getMapData(radius: Double = 30.0): MapData {
         val bbox = elementGeometry.center.enclosingBoundingBox(radius)
         val mapData = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
         mapData.forEach {
