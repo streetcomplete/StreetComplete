@@ -17,12 +17,12 @@ class AddDrinkingWaterForm : AListQuestAnswerFragment<DrinkingWater>() {
 
     override suspend fun addInitialMapMarkers() {
         getMapData().filter("""
-            nodes with (
+            nodes with
               man_made = water_tap
               or man_made = water_well
               or natural = spring
               or amenity = drinking_water
-            )"""
+            """
         ).forEach {
             putMarker(it, R.drawable.ic_pin_water)
         }

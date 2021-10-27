@@ -10,8 +10,8 @@ class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with leisure = picnic_table
-        and access !~ private|no
-        and !covered
+         and access !~ private|no
+         and !covered
     """
 
     override val commitMessage = "Add picnic table cover"
