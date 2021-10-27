@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
@@ -128,8 +129,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun enableAppropriateLabelsForSlowZone(layoutWithSign: FrameLayout) = when {
-        countryInfo.slowZoneLabelText == null -> {
-        }
         countryInfo.slowZoneLabelPosition == "bottom" -> {
             val label : MaterialTextView = layoutWithSign.findViewById(R.id.slowZoneLabelBottom)
             label.visibility = View.VISIBLE
@@ -141,7 +140,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             countryInfo.slowZoneLabelText?.let { text -> label.text = text }
         }
         else -> {
-            throw Error("unexpected value in country metadata")
+            if(countryInfo.slowZoneLabelPosition == null && countryInfo.slowZoneLabelText == null) {
+                // no label
+            } else {
+                throw Error("unexpected value in country metadata, countryInfo.slowZoneLabelPosition: " + countryInfo.slowZoneLabelPosition + " countryInfo.slowZoneLabelText: " + countryInfo.slowZoneLabelText)
+            }
         }
     }
 
