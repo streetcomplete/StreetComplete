@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
 
@@ -26,7 +25,7 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_bicycleParkingCoveredStatus_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = AddBikeParkingCoverForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("covered", answer.toYesNo())
