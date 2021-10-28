@@ -31,11 +31,6 @@ MD: true
 ME: true
 MK: true
 MT: true
-MU: true # https://en.wikipedia.org/wiki/Road_signs_in_Mauritius
-AM: true # https://commons.wikimedia.org/wiki/File:5.31_Armenia_road_sign.svg
-AU: true # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
-AU-NSW: false # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
-AU-ACT: false # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
 NL: true
 'NO': true
 PL: true
@@ -51,7 +46,12 @@ UA: true
 # according to research, there are only "school zones". This is a different concept
 CA: false
 US: false
-# according to wikipedia
+# according to Wikipedia and Wikimedia Commons and GitHub comments
+MU: true # https://en.wikipedia.org/wiki/Road_signs_in_Mauritius
+AM: true # https://commons.wikimedia.org/wiki/File:5.31_Armenia_road_sign.svg
+AU: true # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
+AU-NSW: false # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
+AU-ACT: false # https://commons.wikimedia.org/wiki/File:Australia_road_sign_R4-10_(20).svg
 MX: true
 PE: true
 NZ: true
