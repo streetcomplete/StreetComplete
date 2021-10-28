@@ -9,8 +9,6 @@ import android.view.View
 import androidx.core.view.postDelayed
 import androidx.preference.PreferenceManager
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem

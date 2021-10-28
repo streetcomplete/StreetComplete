@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Prefs
 
 class LastPickedValuesStore<T : Any>(

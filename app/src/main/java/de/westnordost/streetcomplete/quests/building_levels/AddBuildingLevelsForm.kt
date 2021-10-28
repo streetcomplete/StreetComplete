@@ -9,9 +9,6 @@ import android.view.ViewGroup
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 
-import javax.inject.Inject
-
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
