@@ -1,4 +1,3 @@
-# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # A mapping of additional languages that one can expect to find on a street sign that are not official languages.
 # "Latn" stands for romanization of the name in another script, see ISO 15924
 # Sources:
