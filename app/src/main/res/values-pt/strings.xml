@@ -1005,7 +1005,6 @@ conquista"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Casas em banda"</string>
-    <string name="quest_oneway_tutorial">"A estrada na ilustração é rodada da mesma forma que o mapa no local do alfinete. Observe a direção indicada."</string>
     <string name="at_housename">"nome do edifício %s:"</string>
     <string name="at_conscription_and_street_number">"número matricial %1$s, número de orientação %2$s:"</string>
     <string name="at_conscription_number">"número matricial %s:"</string>

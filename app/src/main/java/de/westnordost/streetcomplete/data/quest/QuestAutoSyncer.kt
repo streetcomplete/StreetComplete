@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.annotation.SuppressLint
 import android.content.*
-import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
@@ -19,6 +18,7 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.toLatLon
 import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -49,9 +49,9 @@ import javax.inject.Singleton
     private var isWifi: Boolean = false
 
     // new location is known -> check if downloading makes sense now
-    private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
+    private val locationManager = FineLocationManager(context) { location ->
         if (location.accuracy <= 300) {
-            pos = LatLon(location.latitude, location.longitude)
+            pos = location.toLatLon()
             triggerAutoDownload()
         }
     }

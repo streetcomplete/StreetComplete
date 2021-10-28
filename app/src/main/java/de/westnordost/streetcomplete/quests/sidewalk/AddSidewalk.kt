@@ -49,8 +49,9 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
     """.toElementFilterExpression() }
 
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
-        ways with highway ~ path|footway|cycleway
+        ways with highway ~ path|footway|cycleway|construction
     """.toElementFilterExpression() }
+    // highway=construction included, as situation often changes during and after construction
 
     override val commitMessage = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"

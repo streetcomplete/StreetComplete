@@ -62,13 +62,7 @@ enum class Cycleway {
         else -> false
     }
 
-    fun isAmbiguous(countryCode: String) = when(this) {
-        UNSPECIFIED_SHARED_LANE -> true
-        UNSPECIFIED_LANE -> countryCode != "BE"
-        EXCLUSIVE_LANE, DUAL_LANE, ADVISORY_LANE, UNKNOWN_LANE, SUGGESTION_LANE,
-        PICTOGRAMS, UNKNOWN_SHARED_LANE, TRACK, DUAL_TRACK, BUSWAY,
-        SIDEWALK_EXPLICIT, NONE, NONE_NO_ONEWAY, SEPARATE, UNKNOWN, INVALID -> false
-    }
+
 
     val isUnknown get() = when(this) {
         UNKNOWN, UNKNOWN_LANE, UNKNOWN_SHARED_LANE -> true
@@ -79,6 +73,24 @@ enum class Cycleway {
 
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
 }
+
+fun Cycleway.isAmbiguous(countryCode: String) = when(this) {
+    UNSPECIFIED_SHARED_LANE -> true
+    // all cycle lanes in Belgium and Norway are exclusive
+    UNSPECIFIED_LANE -> countryCode !in listOf("BE", "NO")
+    else -> false
+}
+
+fun Cycleway.isSuperfluous(countryCode: String) = when(this) {
+    // all cycle lanes in Belgium and Norway are exclusive
+    EXCLUSIVE_LANE, ADVISORY_LANE -> countryCode in listOf("BE", "NO")
+    else -> false
+}
+
+fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
+    !isUnknown && !isInvalid && !isAmbiguous(countryCode) && !isSuperfluous(countryCode) &&
+    /* suggestion lanes are only known in Belgium and Netherlands */
+    (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
 
 val Cycleway.estimatedWidth: Float get() = when(this) {
     EXCLUSIVE_LANE -> 1.5f

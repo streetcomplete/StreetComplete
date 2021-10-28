@@ -1,3 +1,16 @@
+v37.0-beta2: |
+  <ul>
+  <li>Allow answering that a café sells no food at all when asked if they have vegan food etc. (#3408, #3422) by @matkoniecz</li>
+  <li>More minor (UX) improvements (#3443, #3396, #3427) by @matkoniecz</li>
+  <li>Ask for more places whether they have vegan food etc. (#3431) by @peternewman</li>
+  <li>Clarify hydrant diameter question</li>
+  <li>Slight battery-usage optimization regarding access to location (#3420, #3424) by @Isira-Seneviratne</li>
+  <li>In Norway, all cycle lanes are exclusive, thus don't offer to distinguish between advisory and exclusive ones in cycleway quest (#3438)</li>
+  <li>Fix Serbian translators weren't listed in the credits screen</li>
+  <li>Fix quest selection screen didn't update when changing the preset (#3430)</li>
+  <li>Fix "give feedback" link in about screen didn't work. Now you can give us your feedback! 🙂</li>
+  </ul>
+
 v37.0-beta1: |
   <h3>New Quests</h3>
   <ul>
@@ -9,10 +22,9 @@ v37.0-beta1: |
   <li>Remember and offer to apply the last answer for the cycleway and sidewalk quest (#2542)</li>
   <li>The top answers in the building type quest are sorted smarter (#1771, #3373), by @smichel17</li>
   <li>Ask again for the type of stile every 8 years (#3187, #3370), thanks @matkoniecz, @peternewman</li>
-  <li>For stile type quest, add option to state that it is now something else than a stile (#3409, #3188, #3391), by @matkoniecz</li>
-  <li>More compact wording for crossing types (#3383), by @matkoniecz</li>
+  <li>For stile type quest, add option to state that it is now something other than a stile (#3409, #3188, #3391), by @matkoniecz</li>
   <li>Add concrete lanes and concrete plates as answer options for surfaces (#2437, #3354), by @matkoniecz</li>
-  <li>More minor enhancements (#3386, #3390), by @matkoniecz</li>
+  <li>More minor enhancements (#3386, #3390, #3421, #2897, #3383), by @matkoniecz</li>
   </ul>
   <h3>Other enhancements, fixes, etc.</h3>
   <ul>

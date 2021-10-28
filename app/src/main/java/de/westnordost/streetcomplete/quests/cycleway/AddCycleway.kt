@@ -326,8 +326,9 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         """.toElementFilterExpression() }
 
         private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
-            ways with highway ~ path|footway|cycleway
+            ways with highway ~ path|footway|cycleway|construction
         """.toElementFilterExpression() }
+        // highway=construction included, as situation often changes during and after construction
 
         private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
             """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""

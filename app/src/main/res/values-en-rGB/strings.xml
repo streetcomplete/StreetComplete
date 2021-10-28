@@ -315,9 +315,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
     <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_unmarked">"Crossing without road markings"</string>
+    <string name="quest_crossing_type_unmarked">"Without road markings"</string>
     <string name="action_undo">"Undo"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomatoes"</string>
@@ -778,9 +776,7 @@ Note that this app asks for the housenumber of a building only after its type ha
     <string name="achievement_veg_title">"Kind to Animals"</string>
     <string name="achievement_veg_solved_X">"You solved %d quests that are interesting for people living on a no-meat diet!"</string>
     <string name="achievement_car_title">"On the Road"</string>
-
-    <!-- Fuzzy -->
-    <string name="achievement_car_solved_X">"You solved %d quests that improve detail on the street infrastructure, putting the street in OpenStreetMap!"</string>
+    <string name="achievement_car_solved_X">"You solved %d quests that improve detail on the street infrastructure, putting the “street” in OpenStreetMap!"</string>
     <string name="unread_messages_message">"You have %d unread messages in your inbox"</string>
     <string name="unread_messages_button">"Open Inbox"</string>
     <string name="action_about2">"About"</string>
@@ -833,7 +829,6 @@ levels"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Terraced houses"</string>
-    <string name="quest_oneway_tutorial">"The road in the illustration is rotated the same as on the map at the location of the pin. Note the indicated direction."</string>
     <string name="at_housename">"house name %s:"</string>
     <string name="at_conscription_and_street_number">"Conscription number %1$s, orientation number %2$s:"</string>
     <string name="at_conscription_number">"conscription number %s:"</string>
@@ -928,9 +923,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Tall lorries can pass through"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Tall lorries don’t fit"</string>
     <string name="quest_address_street_hint">"Tap road on map"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_marked">"Marked crossing"</string>
+    <string name="quest_crossing_type_marked">"Marked"</string>
     <string name="quest_parkingType_street_side">"Parking just off the carriageway"</string>
     <string name="quest_parkingType_lane">"Parking on carriageway"</string>
     <string name="quest_existence_title">"Is this still here? (%s)"</string>
@@ -953,9 +946,9 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_dietType_kosher_name_title">"Does %s offer kosher products?"</string>
     <string name="quest_dietType_explanation_kosher">"Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"No bike path available"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.
 
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"As usual, tap on one side of the illustration, select a proper answer and do the same for the other side. Note all the available options: some cases are not obvious, like a one way road that allows cyclists in both directions!"</string>
+Note all the available options: some cases are not obvious, like a one way road that allows cyclists in both directions!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Select that there is no bike path here"</string>
     <string name="quest_construction_completed_at_known_date">"Will be finished at date…"</string>
     <string name="quest_construction_completion_date_title">"When will it be complete?"</string>
@@ -988,9 +981,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="team_mode_deactivated">"Team mode deactivated"</string>
     <string name="quest_pitchLit_title">"Is this sport field lit?"</string>
     <string name="quest_pitchLit_title_track">"Is this sport track lit?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals_controlled">"Crossing controlled by traffic lights"</string>
+    <string name="quest_crossing_type_signals_controlled">"Controlled by traffic lights"</string>
     <string name="undo_confirm_title2">"Undo the following edit?"</string>
     <string name="synced">"Synced"</string>
     <string name="toast_undo_unavailable">"This edit is already synced and cannot be undone"</string>
@@ -1025,7 +1016,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_barrier_type_wire_gate">"Removable wire section"</string>
 
     <!-- Should we just say "Cattle grid" here, or is that not well known enough? -->
-    <string name="quest_barrier_type_cattle_grid">"Grid blocking livestock from walking over"</string>
+    <string name="quest_barrier_type_cattle_grid">"Cattle grid"</string>
     <string name="quest_barrier_type_block">"Big immobile object"</string>
     <string name="quest_barrier_jersey_barrier">"Jersey barrier"</string>
     <string name="quest_barrier_type_log">"Log"</string>
@@ -1105,12 +1096,15 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_dietType_halal_name_title">"Does %s offer Halal products?"</string>
     <string name="quest_dietType_explanation_halal">"Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance."</string>
     <string name="quest_picnicTableCover_title">"Is this picnic table covered (protected from rain)?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"This part is steps"</string>
     <string name="quest_barrier_type_passage_conversion">"Converted into a passage in a wall/fence/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Converted into a gate"</string>
     <string name="quest_traffic_calming_type_title">"What type of traffic calming is this?"</string>
+    <string name="quest_traffic_calming_type_bump">"Bump (shorter)"</string>
+    <string name="quest_traffic_calming_type_hump">"Hump (longer)"</string>
+    <string name="quest_traffic_calming_type_table">"Table (flat top)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Cushion (not bumpy for wide vehicles)"</string>
+    <string name="quest_traffic_calming_type_choker">"Narrowed road"</string>
     <string name="quest_traffic_calming_type_island">"Island"</string>
     <string name="quest_traffic_calming_type_chicane">"Deliberate curve(s)"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rumble strip(s)"</string>

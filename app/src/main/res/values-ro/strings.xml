@@ -1067,7 +1067,6 @@ de realizări"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internațional"</string>
     <string name="quest_buildingType_terrace2">"Case așezate pe rânduri"</string>
-    <string name="quest_oneway_tutorial">"Drumul din ilustrație este poziționat la fel ca pe hartă la locația pinului. Rețineți direcția indicată."</string>
     <string name="at_housename">"numele casei %s:"</string>
     <string name="at_conscription_and_street_number">"numărul de recrutare %1$s, numărul de orientare %2$s:"</string>
     <string name="at_conscription_number">"numărul de recrutare %s:"</string>

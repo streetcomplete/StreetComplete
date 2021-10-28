@@ -8,7 +8,6 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.content.getSystemService
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
@@ -141,7 +139,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!, this::onLocationChanged)
+        locationManager = FineLocationManager(context, this::onLocationChanged)
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
             when (fragment) {
@@ -553,7 +551,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment!!.startPositionTracking()
 
         setIsFollowingPosition(wasFollowingPosition)
-        locationManager.requestSingleUpdate()
+        locationManager.getCurrentLocation()
     }
 
     private fun onLocationIsDisabled() {

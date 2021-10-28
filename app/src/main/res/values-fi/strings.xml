@@ -1803,7 +1803,6 @@ taso"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"kansainvälinen"</string>
     <string name="quest_buildingType_terrace2">"Rivitaloja"</string>
-    <string name="quest_oneway_tutorial">"Kuvassa olevaa tietä kierretään samalla tavalla kuin kartalla on sijainnissa.  Huomaa ilmoitettu suunta."</string>
     <string name="at_housename">"Talon nimi %s:"</string>
     <string name="at_conscription_and_street_number">"Rekisterinumero %1$s, suuntausnumero %2$s:"</string>
 
