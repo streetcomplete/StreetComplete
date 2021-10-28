@@ -134,24 +134,24 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         else -> null
     }
 
-    private fun enableAppropriateLabelsForSlowZone(layoutWithSign: FrameLayout) = when {
-        countryInfo.slowZoneLabelPosition == "bottom" -> {
-            val label : MaterialTextView = layoutWithSign.findViewById(R.id.slowZoneLabelBottom)
-            label.visibility = View.VISIBLE
-            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
-        }
-        countryInfo.slowZoneLabelPosition == "top" -> {
-            val label : MaterialTextView = layoutWithSign.findViewById(R.id.slowZoneLabelTop)
-            label.visibility = View.VISIBLE
-            countryInfo.slowZoneLabelText?.let { text -> label.text = text }
-        }
-        else -> {
-            if(countryInfo.slowZoneLabelPosition == null && countryInfo.slowZoneLabelText == null) {
-                // no label
-            } else {
-                throw Error("unexpected value in country metadata, countryInfo.slowZoneLabelPosition: " + countryInfo.slowZoneLabelPosition + " countryInfo.slowZoneLabelText: " + countryInfo.slowZoneLabelText)
-            }
-        }
+    private fun enableAppropriateLabelsForSlowZone(layoutWithSign: FrameLayout) {
+        val position = countryInfo.slowZoneLabelPosition
+        val text = countryInfo.slowZoneLabelText
+
+        // no label
+        if (position == null && text == null) return
+
+        val assertMessage = "unexpected value in country metadata, slowZoneLabelPosition: ${position}, slowZoneLabelText: ${text}"
+        assert(position == "bottom" || position == "top") { assertMessage }
+        assert(text != null) { assertMessage }
+
+        val label: MaterialTextView = layoutWithSign.findViewById(when (position) {
+            "bottom" -> R.id.slowZoneLabelBottom
+            "top" -> R.id.slowZoneLabelTop
+            else -> throw IllegalStateException()
+        })
+        label.visibility = View.VISIBLE
+        label.text = text
     }
 
     private val SpeedType.layoutResId get() = when (this) {
