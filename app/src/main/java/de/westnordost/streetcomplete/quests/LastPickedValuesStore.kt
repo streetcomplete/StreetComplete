@@ -11,7 +11,7 @@ class LastPickedValuesStore<T : Any>(
     private val prefs: SharedPreferences,
     private val key: String,
     private val serialize: (T) -> String,
-    private val deserialize: (String) -> T? // null = invalid value
+    private val deserialize: (String) -> T? // null = unwanted value, see mostCommonWithin
 ) {
     fun add(newValues: Iterable<T>) {
         val lastValues = newValues.asSequence().map(serialize) + getRaw()
