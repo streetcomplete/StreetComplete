@@ -1191,8 +1191,7 @@
     <string name="quest_traffic_calming_type_bump">"\"Легнал полицай\" (къс)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_calming_type_hump">"
-\"Легнал полицай\""</string>
+    <string name="quest_traffic_calming_type_hump">"\"Легнал полицай\""</string>
 
     <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_table">"Повдигната настилка"</string>
@@ -1205,6 +1204,8 @@
     <string name="quest_traffic_calming_type_rumble_strip">"Шумна маркировка"</string>
     <string name="quest_surface_value_concrete_plates">"Бетонни плочи"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонни ленти"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Този размер изглежда нереален."</string>
     <string name="quest_fireHydrant_confirmation_title">"Сигурни ли сте? Твърде често диаметърът е посочен на самия хидрант."</string>

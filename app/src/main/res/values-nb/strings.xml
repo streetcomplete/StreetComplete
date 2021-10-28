@@ -102,11 +102,11 @@
     <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Merk først at du med denne appen gir faktiske, dirkete bidrag til OpenStreetMap.&lt;br/&gt;
+Merk først at du med denne appen gir faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;
 Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen.
 &lt;/p&gt;
 &lt;p&gt;
-Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Dette medfører at tidspunktet, innholdet og implisitt stedet du var på blir synlig for alle på OpenStreetMap-nettstedet, og blir knyttet til brukerkontoen din.
+Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Fordi StreetComplete bør brukes kun når du er på stedet, dette medfører at tidspunktet, innholdet og implisitt stedet du var på blir synlig for alle på OpenStreetMap.org-nettstedet, og blir knyttet til brukerkontoen din.
 &lt;/p&gt;
 
 &lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;
@@ -117,7 +117,7 @@ Appen deler ikke GPS-posisjonen din med noen. Den blir bare brukt til å automat
 &lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Som nevnt kommuniserer appen direkte med OSM-infrastrukturen.&lt;br/&gt;
-Men før appen laster opp endringen dine sjekker den via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;en enkel tekstfil&lt;/a&gt; på webserveren min om den er utestengt fra å laste opp endringer. Dette er en «føre var»-funksjon for å hindre at versjoner av appen som har kristiske feil kan komme til å ødelegge OSM-data.&lt;/p&gt;"</string>
+Men før appen laster opp endringene dine sjekker den via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;en enkel tekstfil&lt;/a&gt; på webserveren min om den er utestengt fra å laste opp endringer. Dette er en «føre var»-funksjon for å hindre at versjoner av appen som har kristiske feil kan komme til å ødelegge OSM-data.&lt;/p&gt;"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Kun med Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
@@ -318,7 +318,8 @@ Informasjonen du legger til blir automatisk lastet opp til OpenStreetMap i ditt 
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikke fins noe fartsgrenseskilt?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Undersøkte du i begge ender av veien? Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen er del av, gjelder den generelle fartsgrensen."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Undersøkte du i begge ender av veien?
+Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen er del av, gjelder den generelle fartsgrensen."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, det fins ikke noe skilt"</string>
@@ -784,13 +785,13 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side..."</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"Du må gjengi det som står på skiltet. Hvis det ikke fins noe skilt kan du spørre betjeningen."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_none_but_no_oneway">"Ingen, men man kan sykle i begge retninger."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men man kan sykle i begge retninger"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Hvorfor har den ikke noe navn?"</string>
@@ -811,7 +812,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_wheelchairAccess_toilets_name_title">"Er toalettet %s tilgjengelig med rullestol?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Hvis toalettene er tilgjengelige for rullestolbrukere er det gjerne merket med et slikt skilt. «Delvis» betyr at en rullestolbruker kan komme seg inn på og bruke toalettet, men at det ikke er tilrettelagt med støttehåndtak eller tilpasset håndvask."</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Hvis toalettene er tilgjengelige for rullestolbrukere er det gjerne merket med et slikt skilt.
+«Delvis» betyr at en rullestolbruker kan komme seg inn på og bruke toalettet, men at det ikke er tilrettelagt med støttehåndtak eller tilpasset håndvask."</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_create_note">"Lag en ny merknad"</string>
@@ -932,16 +934,16 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_streetSurface_square_name_title">"Hva slags materiale er brukt på plassen %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_answer_hours">"Kommer an på ukedag og klokkeslett..."</string>
+    <string name="quest_fee_answer_hours">"Kommer an på ukedag og klokkeslett…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Legg til tider"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Ja, men bare..."</string>
+    <string name="quest_fee_only_at_hours">"Ja, men bare…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Ja, men ikke..."</string>
+    <string name="quest_fee_not_at_hours">"Ja, men ikke…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_hours_title">"på disse tidspunktene:"</string>
@@ -2022,4 +2024,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Slette oppsettet «%s»? Oppdragsoppsettet vil slettes for alltid."</string>
+    <string name="quest_laundrySelfService_title2">"Tilbyr dette vaskeriet selvbetjent vaskefasiliteter?"</string>
+    <string name="quest_barrier_type_gate_conversion">"Omgjort til en port"</string>
 </resources>

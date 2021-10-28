@@ -1092,6 +1092,8 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_board_type_sport">"Sport, Exercises"</string>
     <string name="quest_generic_hasFeature_optional">"Optionally"</string>
     <string name="quest_buildingType_bridge">"Bridge between buildings (skyway)"</string>
+
+    <!-- Would laundrette be a better word than laundry (and would this also apply to en-US or general en)? -->
     <string name="quest_laundrySelfService_title2">"Does this laundry provide self-service?"</string>
     <string name="quest_dietType_halal_name_title">"Does %s offer Halal products?"</string>
     <string name="quest_dietType_explanation_halal">"Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance."</string>
@@ -1110,6 +1112,8 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_traffic_calming_type_rumble_strip">"Rumble strip(s)"</string>
     <string name="quest_surface_value_concrete_plates">"Concrete plates"</string>
     <string name="quest_surface_value_concrete_lanes">"Concrete lanes"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"What diameter is on this fire hydrant’s sign?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"This diameter looks implausible."</string>
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>

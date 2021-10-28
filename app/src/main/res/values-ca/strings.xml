@@ -1000,7 +1000,7 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_bicycle_parking_fee_title">"S'ha de pagar per aparcar una bicicleta aquí?"</string>
     <string name="quest_buildingType_house_description2">"llar monofamília no desconectada"</string>
     <string name="quest_drinking_water_title">"És potable l'aigua aquí? (%s)"</string>
-    <string name="quest_drinking_water_potable_signed">"És segur veure (senyalat)"</string>
+    <string name="quest_drinking_water_potable_signed">"És segur beure (senyalat)"</string>
     <string name="quest_drinking_water_potable_unsigned">"És segur beure (sense senyalar)"</string>
     <string name="quest_drinking_water_not_potable_signed">"No és segur beure (senyalat)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"No és segur beure (sense senyalar)"</string>

@@ -1330,6 +1330,8 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="quest_traffic_calming_type_rumble_strip">"Vibracijske trake"</string>
     <string name="quest_surface_value_concrete_plates">"Betonske ploče"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonske trake"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Koji je promjer označen na ovom vatrogasnom hidrantu?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Toliki promjer izgleda nerealno."</string>
 
