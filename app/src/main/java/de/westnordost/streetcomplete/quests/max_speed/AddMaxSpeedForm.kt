@@ -51,13 +51,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
         val couldBeSlowZone = countryInfo.isSlowZoneKnown && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
         binding.zone.isGone = !couldBeSlowZone
-        Log.wtf("aaaaaaa", "__________________________________________")
-        Log.wtf("aaaaaaa", ""+couldBeSlowZone)
-        Log.wtf("aaaaaaa", ""+highwayTag)
-        Log.wtf("aaaaaaa", ""+countryInfo.isSlowZoneKnown)
-        Log.wtf("aaaaaaa", ""+countryInfo.countryCode)
-        Log.wtf("aaaaaaa", ""+countryInfo)
-        Log.wtf("aaaaaaa", "__________________________________________")
 
         val couldBeLivingStreet = countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)
         binding.livingStreet.isGone = !couldBeLivingStreet
