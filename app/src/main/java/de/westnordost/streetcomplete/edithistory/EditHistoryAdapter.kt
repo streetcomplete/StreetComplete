@@ -50,7 +50,8 @@ class EditHistoryAdapter(
         if (insertIndex == -1) insertIndex = rows.size
 
         rows.add(insertIndex, EditItem(edit))
-        if (insertIndex < rows.size) notifyItemChanged(insertIndex)
+        // Item below may no longer need to show a date header
+        if (insertIndex > 0) notifyItemChanged(insertIndex - 1)
         notifyItemInserted(insertIndex)
     }
 
@@ -84,7 +85,8 @@ class EditHistoryAdapter(
         for (index in editIndices) {
             rows.removeAt(index)
             notifyItemRemoved(index)
-            if (index < rows.size) notifyItemChanged(index)
+            // Item below may need to show a date header now
+            if (index > 0) notifyItemChanged(index - 1)
         }
     }
 

@@ -524,7 +524,9 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_religion_chinese_folk">"Religion traditionnelle chinoise"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Quelle religion est représentée dans ce sanctuaire ?"</string>
     <string name="quest_parking_fee_title">"Le stationnement est-il payant ici ?"</string>
-    <string name="quest_cycleway_value_lane_soft">"voie cyclable (ligne discontinue)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_value_lane_soft">"bande cyclable franchissable"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pavés non taillés"</string>
 
     <!-- Un peu long. -->

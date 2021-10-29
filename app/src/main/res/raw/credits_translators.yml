@@ -18,7 +18,7 @@ en-GB:
 ca: 
    Josep: 1914
    el_libre: 608
-   jmaspons: 14818
+   jmaspons: 14793
    Joan Montané: 11127
    JOAQUIN: 1020
    Jose Luis Infante: 1023
@@ -40,13 +40,13 @@ nn:
    Karl Ove Hufthammer: 29029
 de: 
    Markus Göllnitz: 47
-   Andre Thum: 279
+   Andre Thum: 229
    Brandtner_michael: 213
    calli: 68
    Claudius Henrichs: 173
    Daniel: 184
    DerDings: 120
-   Flo Edelmann: 12199
+   Flo Edelmann: 12261
    Github: 201
    Go4it.1: 14
    grafst: 22
@@ -277,7 +277,7 @@ fr:
    lvgx: 152
    Martin Constantino-Bodin: 34
    Misc: 45
-   Obny: 1561
+   Obny: 1528
    Paul: 571
    Pierre Rudloff: 141
    Po. gregoire: 37
@@ -289,9 +289,9 @@ fr:
    Violaine_Do: 140
    whatismoss: 382
 gl: 
-   ccpr1l: 13821
-   Iváns: 21838
-   Xose M.: 1509
+   ccpr1l: 14931
+   Iváns: 21438
+   Xose M.: 1471
 en: 
    Claudius Henrichs: 49
 da: 
@@ -317,7 +317,7 @@ pl:
    Krzysztof Krasoń: 1511
    Marek: 39
    Marek-M: 2784
-   Mateusz Konieczny: 16434
+   Mateusz Konieczny: 16471
    Michal: 38
    Michał 'kwiateusz' Kwiatek: 1283
    Paba22: 375
@@ -333,7 +333,7 @@ ko:
 bg: 
    Dimitar: 1890
    Kalin: 1031
-   Plamen: 28942
+   Plamen: 28941
    Rhhsmits: 202
 it: 
    Enrico: 104
@@ -343,17 +343,16 @@ it:
    Giacomo Longo: 395
    hakuchi: 166
    Manfre: 36
-   Mannivu: 9181
-   Marco: 7705
+   Mannivu: 9587
+   Marco: 7890
    Martino: 122
    Massimo: 170
    Mirco Zorzo: 2951
-   mircozorzo: 683
+   mircozorzo: 525
    napo: 9554
    naposm: 597
    NonnEmilia: 1055
    pino: 355
-   Ryu: 48
    Simone Saviolo: 306
 fa: 
    Goudarz Jafari: 609
@@ -386,7 +385,7 @@ el:
    tinigrillion: 420
 sr-cyrl: 
    Mario: 22939
-   Nemanja Bračko: 11029
+   Nemanja Bračko: 11469
 hr: 
    Mario: 63
    Matija Nalis: 36790
