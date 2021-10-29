@@ -20,9 +20,11 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew assembleDebug
+    - name: Rename APK
+      run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/StreetComplete-debug-$(git log -n 1 --format='%h').apk
     - name: Archive APK
       uses: actions/upload-artifact@v2
       with: 
         name: debug-apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: app/build/outputs/apk/debug/*.apk
         retention-days: 1
