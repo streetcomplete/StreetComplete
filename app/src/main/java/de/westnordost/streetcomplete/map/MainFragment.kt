@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -80,7 +81,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     UndoButtonFragment.Listener,
     EditHistoryFragment.Listener,
     HandlesOnBackPressed,
-    ShowsPointMarkers {
+    ShowsGeometryMarkers {
 
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
@@ -441,12 +442,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    override fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
-        mapFragment?.putMarkerForCurrentQuest(pos, drawableResId)
+    override fun putMarkerForCurrentQuest(geometry: ElementGeometry, @DrawableRes drawableResId: Int?) {
+        mapFragment?.putMarkerForCurrentQuest(geometry, drawableResId)
     }
 
-    override fun deleteMarkerForCurrentQuest(pos: LatLon) {
-        mapFragment?.deleteMarkerForCurrentQuest(pos)
+    override fun deleteMarkerForCurrentQuest(geometry: ElementGeometry) {
+        mapFragment?.deleteMarkerForCurrentQuest(geometry)
     }
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */

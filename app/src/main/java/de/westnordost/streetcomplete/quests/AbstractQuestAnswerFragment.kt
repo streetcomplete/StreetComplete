@@ -140,8 +140,8 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val showsPointMarkersListener: ShowsPointMarkers? get() =
-        parentFragment as? ShowsPointMarkers ?: activity as? ShowsPointMarkers
+    private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
+        parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
 
     init {
         val fields = InjectedFields()
@@ -370,9 +370,9 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     protected open suspend fun addInitialMapMarkers() { }
 
-    protected fun putMarker(element: Element, @DrawableRes drawabbleResId: Int) {
+    protected fun putMarker(element: Element, @DrawableRes drawableResId: Int?) {
         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: return
-        showsPointMarkersListener?.putMarkerForCurrentQuest(geometry.center, drawabbleResId)
+        showsGeometryMarkersListener?.putMarkerForCurrentQuest(geometry, drawableResId)
     }
 
     /** Return the surrounding map data in the given radius except the element for which the form

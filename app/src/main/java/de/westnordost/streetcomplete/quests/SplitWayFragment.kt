@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -65,8 +66,8 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val showsPointMarkersListener: ShowsPointMarkers? get() =
-        parentFragment as? ShowsPointMarkers ?: activity as? ShowsPointMarkers
+    private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
+        parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
 
     init {
         Injector.applicationComponent.inject(this)
@@ -148,7 +149,9 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
             viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
-            showsPointMarkersListener?.deleteMarkerForCurrentQuest(item.second)
+            showsGeometryMarkersListener?.deleteMarkerForCurrentQuest(
+                ElementPointGeometry(item.second)
+            )
         }
     }
 
@@ -173,7 +176,10 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            showsPointMarkersListener?.putMarkerForCurrentQuest(splitPosition, R.drawable.crosshair_marker)
+            showsGeometryMarkersListener?.putMarkerForCurrentQuest(
+                ElementPointGeometry(position),
+                R.drawable.crosshair_marker
+            )
         }
 
         // always consume event. User should press the cancel button to exit

@@ -23,8 +23,8 @@ import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
-import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
-import de.westnordost.streetcomplete.quests.ShowsPointMarkers
+import de.westnordost.streetcomplete.map.components.GeometryMarkersMapComponent
+import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -33,7 +33,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Manages a map that shows the quest pins, quest geometry */
-class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
+class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
     @Inject internal lateinit var questTypeOrderSource: QuestTypeOrderSource
@@ -42,7 +42,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
     @Inject internal lateinit var editHistorySource: EditHistorySource
     @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
 
-    private var pointMarkersMapComponent: PointMarkersMapComponent? = null
+    private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
     private var geometryMapComponent: ElementGeometryMapComponent? = null
     private var questPinsManager: QuestPinsManager? = null
@@ -72,7 +72,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
     override suspend fun onMapReady() {
         val ctrl = controller ?: return
         ctrl.setPickRadius(1f)
-        pointMarkersMapComponent = PointMarkersMapComponent(resources, ctrl)
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
         pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = ElementGeometryMapComponent(ctrl)
 
@@ -174,7 +174,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
     fun clearFocusQuest() {
         pinsMapComponent?.clearSelectedPins()
         geometryMapComponent?.clearGeometry()
-        pointMarkersMapComponent?.clear()
+        geometryMarkersMapComponent?.clear()
     }
 
     fun endFocusQuest() {
@@ -193,12 +193,12 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
 
     /* -------------------------------  Markers for current quest ------------------------------- */
 
-    override fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
-        pointMarkersMapComponent?.put(pos, drawableResId)
+    override fun putMarkerForCurrentQuest(geometry: ElementGeometry, @DrawableRes drawableResId: Int?) {
+        geometryMarkersMapComponent?.put(geometry, drawableResId)
     }
 
-    override fun deleteMarkerForCurrentQuest(pos: LatLon) {
-        pointMarkersMapComponent?.delete(pos)
+    override fun deleteMarkerForCurrentQuest(geometry: ElementGeometry) {
+        geometryMarkersMapComponent?.delete(geometry)
     }
 
     /* --------------------- Switching between quests and edit history pins --------------------- */
@@ -207,7 +207,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsPointMarkers {
         /* both managers use the same resource (PinsMapComponent), so the newly visible manager
            may only be activated after the old has been deactivated
          */
-        pointMarkersMapComponent?.clear()
+        geometryMarkersMapComponent?.clear()
         pinsMapComponent?.clearSelectedPins()
         geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
         geometryMapComponent?.clearGeometry()
