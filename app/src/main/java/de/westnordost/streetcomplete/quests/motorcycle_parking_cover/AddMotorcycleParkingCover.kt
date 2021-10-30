@@ -24,7 +24,7 @@ class AddMotorcycleParkingCover : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCoveredStatus_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = AddMotorcycleParkingCoverForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("covered", answer.toYesNo())
