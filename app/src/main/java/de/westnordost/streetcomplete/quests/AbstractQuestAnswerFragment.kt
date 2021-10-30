@@ -370,7 +370,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     protected open suspend fun addInitialMapMarkers() { }
 
-    protected fun putMarker(element: Element, @DrawableRes drawableResId: Int?) {
+    protected fun putMarker(element: Element, @DrawableRes drawableResId: Int? = null) {
         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: return
         showsGeometryMarkersListener?.putMarkerForCurrentQuest(geometry, drawableResId)
     }

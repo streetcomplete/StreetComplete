@@ -45,7 +45,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             }
             marker.setStylingFromString("""
             {
-                style: 'points',
+                style: 'geometry-points',
                 color: '$color',
                 size: ${size}px,
                 order: 2000,
@@ -60,7 +60,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             val marker = ctrl.addMarker()
             marker.setStylingFromString("""
             {
-                style: 'polygons',
+                style: 'geometry-polygons',
                 color: '$geometryColor',
                 order: 1800,
                 collide: false
@@ -75,7 +75,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             val marker = ctrl.addMarker()
             marker.setStylingFromString("""
             {
-                style: 'lines',
+                style: 'geometry-lines',
                 width: ${lineWidth}px,
                 color: '$geometryColor',
                 order: 1800,
@@ -114,8 +114,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
     }
 
     companion object {
-        private const val geometryColor = "#22D14000"
-        private const val lineWidth = 16
-        private const val pointSize = 32
+        private const val geometryColor = "#66D140D0"
+        private const val lineWidth = 8
+        private const val pointSize = 16
     }
 }

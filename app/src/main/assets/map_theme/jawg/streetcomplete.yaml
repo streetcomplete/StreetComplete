@@ -1,5 +1,5 @@
 global:
-    geometry_color: '#44D14000' # accent color + alpha
+    geometry_color: '#66D14000' # accent color + alpha
     track_color: '#44536dfe'
     old_track_color: '#22536dfe'
 
@@ -116,7 +116,7 @@ layers:
             draw:
                 geometry-points:
                     color: global.geometry_color
-                    size: 32px
+                    size: 24px
                     collide: false
                     order: 1000
     # streetcomplete_track and streetcomplete_track2 layers are exactly the same except the source.
