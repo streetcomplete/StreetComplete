@@ -30,7 +30,7 @@ class ImeInsetsAnimationCallback(
     }
 
     override fun onProgress(insets: WindowInsetsCompat, runningAnims: List<WindowInsetsAnimationCompat>): WindowInsetsCompat {
-        applyNewInsets(insets)
+        if (isAnimating) applyNewInsets(insets)
         return insets
     }
 
