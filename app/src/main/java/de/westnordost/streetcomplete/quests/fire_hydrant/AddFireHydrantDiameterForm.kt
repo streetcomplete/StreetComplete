@@ -22,12 +22,6 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
 
     private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
 
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with emergency = fire_hydrant").forEach {
-            putMarker(it, R.drawable.ic_pin_fire_hydrant)
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.diameterInput.addTextChangedListener(TextChangedWatcher {

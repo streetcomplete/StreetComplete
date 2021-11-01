@@ -9,7 +9,6 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -36,12 +35,6 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
         val viewData = loadCollectionTimesData(savedInstanceState)
         collectionTimesAdapter = CollectionTimesAdapter(viewData, requireContext(), countryInfo)
         collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
-    }
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with amenity = post_box").forEach {
-            putMarker(it, R.drawable.ic_pin_mail)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

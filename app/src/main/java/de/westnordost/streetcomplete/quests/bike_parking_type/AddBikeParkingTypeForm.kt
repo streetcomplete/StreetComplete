@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.*
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -17,12 +16,6 @@ class AddBikeParkingTypeForm : AImageListQuestAnswerFragment<BikeParkingType, Bi
     )
 
     override val itemsPerRow = 3
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes, ways with amenity = bicycle_parking").forEach {
-            putMarker(it, R.drawable.ic_pin_bicycle_parking)
-        }
-    }
 
     override fun onClickOk(selectedItems: List<BikeParkingType>) {
         applyAnswer(selectedItems.single())

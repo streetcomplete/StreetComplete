@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.bollard_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.*
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -17,12 +16,6 @@ class AddBollardTypeForm : AImageListQuestAnswerFragment<BollardType, BollardTyp
     )
 
     override val itemsPerRow = 3
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with barrier = bollard").forEach {
-            putMarker(it, R.drawable.ic_pin_bollard)
-        }
-    }
 
     override fun onClickOk(selectedItems: List<BollardType>) {
         applyAnswer(selectedItems.single())

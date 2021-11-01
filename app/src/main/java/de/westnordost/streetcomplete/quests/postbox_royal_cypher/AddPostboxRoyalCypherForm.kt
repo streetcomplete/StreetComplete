@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -29,12 +28,6 @@ class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCyph
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
-    }
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with amenity = post_box").forEach {
-            putMarker(it, R.drawable.ic_pin_mail)
-        }
     }
 
     override fun onClickOk(selectedItems: List<PostboxRoyalCypher>) {

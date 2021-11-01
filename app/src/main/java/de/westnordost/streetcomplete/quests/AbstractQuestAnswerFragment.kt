@@ -11,19 +11,16 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.AnyThread
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
-import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -32,10 +29,6 @@ import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -67,7 +60,6 @@ abstract class AbstractQuestAnswerFragment<T> :
     // dependencies
     private val countryInfos: CountryInfos
     private val questTypeRegistry: QuestTypeRegistry
-    private val mapDataWithEditsSource: MapDataWithEditsSource
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -81,9 +73,6 @@ abstract class AbstractQuestAnswerFragment<T> :
     protected val countryInfo get() = _countryInfo!!
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
-
-    // cache of queried map data by subclass
-    private val mapDataWithGeometry = MutableMapDataWithGeometry()
 
     // passed in parameters
     override lateinit var questKey: QuestKey
@@ -140,16 +129,12 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
-        parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
-
     init {
         val fields = InjectedFields()
         Injector.applicationComponent.inject(fields)
         countryInfos = fields.countryInfos
         featureDictionaryFuture = fields.featureDictionaryFuture
         questTypeRegistry = fields.questTypeRegistry
-        mapDataWithEditsSource  = fields.mapDataWithEditsSource
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -174,10 +159,6 @@ abstract class AbstractQuestAnswerFragment<T> :
          * So what we do here is to override the parent activity's "mobile country code" resource
          * configuration and use this mechanism to access our country-dependent resources */
         countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
-
-        if (savedInstanceState == null) {
-            lifecycleScope.launch { addInitialMapMarkers() }
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -368,28 +349,6 @@ abstract class AbstractQuestAnswerFragment<T> :
             }.show()
     }
 
-    protected open suspend fun addInitialMapMarkers() { }
-
-    protected fun putMarker(element: Element, @DrawableRes drawableResId: Int? = null) {
-        val geometry = mapDataWithGeometry.getGeometry(element.type, element.id) ?: return
-        showsGeometryMarkersListener?.putMarkerForCurrentQuest(geometry, drawableResId)
-    }
-
-    /** Return the surrounding map data in the given radius except the element for which the form
-     *  is shown.
-     *  30m is the default because this is about "across this large street". There shouldn't be
-     *  any mix-ups that far apart */
-    protected suspend fun getMapData(radius: Double = 30.0): MapData {
-        val bbox = elementGeometry.center.enclosingBoundingBox(radius)
-        val mapData = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
-        mapData.forEach {
-            if (it != osmElement) {
-                mapDataWithGeometry.put(it, mapData.getGeometry(it.type, it.id))
-            }
-        }
-        return mapDataWithGeometry
-    }
-
     /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
         if (binding.content.childCount > 0) {
@@ -432,7 +391,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         @Inject internal lateinit var countryInfos: CountryInfos
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
-        @Inject internal lateinit var mapDataWithEditsSource: MapDataWithEditsSource
     }
 
     protected inline fun <reified T : ViewBinding> contentViewBinding(

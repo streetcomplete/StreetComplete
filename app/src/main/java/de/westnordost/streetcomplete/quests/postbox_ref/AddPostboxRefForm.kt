@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -20,12 +19,6 @@ class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
     )
 
     private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with amenity = post_box").forEach {
-            putMarker(it, R.drawable.ic_pin_mail)
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

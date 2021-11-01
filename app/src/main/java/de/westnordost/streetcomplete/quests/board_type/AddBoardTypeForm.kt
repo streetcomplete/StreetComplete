@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.board_type
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TextItem
@@ -24,12 +23,6 @@ class AddBoardTypeForm : AListQuestAnswerFragment<BoardType>() {
         TextItem(SPORT, R.string.quest_board_type_sport),
         TextItem(NOTICE, R.string.quest_board_type_notice_board),
     )
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with information = board").forEach {
-            putMarker(it, R.drawable.ic_pin_information)
-        }
-    }
 
     private fun confirmOnMap() {
         AlertDialog.Builder(requireContext())

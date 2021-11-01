@@ -2,9 +2,13 @@ package de.westnordost.streetcomplete.quests.picnic_table_cover
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
 
@@ -23,7 +27,10 @@ class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_picnicTableCover_title
 
-    override fun createForm() = AddPicnicTableCoverFragment()
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with leisure = picnic_table")
+
+    override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("covered", answer.toYesNo())

@@ -33,12 +33,11 @@ import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -86,6 +85,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
+    @Inject internal lateinit var mapDataWithEditsSource: MapDataWithEditsSource
     @Inject internal lateinit var soundFx: SoundFx
     @Inject internal lateinit var prefs: SharedPreferences
 
@@ -811,6 +811,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
             f.arguments = args
         }
         showInBottomSheet(f)
+
+        if (quest is OsmQuest) {
+            showHighlightedElements(quest, element!!)
+        }
     }
 
     private fun showInBottomSheet(f: Fragment) {
@@ -820,6 +824,29 @@ class MainFragment : Fragment(R.layout.fragment_main),
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
             replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
+        }
+    }
+
+    private fun showHighlightedElements(quest: OsmQuest, element: Element) {
+        val questType = quest.osmElementQuestType
+        val bbox = quest.geometry.center.enclosingBoundingBox(questType.highlightedElementsRadius)
+        var mapData: MapDataWithGeometry? = null
+
+        fun getMapData(): MapDataWithGeometry {
+            val data = mapDataWithEditsSource.getMapDataWithGeometry(bbox)
+            mapData = data
+            return data
+        }
+
+        viewLifecycleScope.launch {
+            val elements = withContext(Dispatchers.IO) { questType.getHighlightedElements(element, ::getMapData) }
+            for (e in elements) {
+                // don't highlight "this" element
+                if (element == e) continue
+                val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
+                val icon = getPinIcon(e.tags)
+                putMarkerForCurrentQuest(geometry, icon)
+            }
         }
     }
 

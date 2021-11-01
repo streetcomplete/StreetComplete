@@ -17,22 +17,22 @@ styles:
     pin-selection:
         base: points
         blend: overlay
-        blend_order: 3
+        blend_order: 4
     selected-pin-icons:
         base: points
         texture: pins
         blend: overlay
-        blend_order: 2
+        blend_order: 3
     pin-icons:
         base: points
         texture: pins
         blend: overlay
-        blend_order: 1
+        blend_order: 2
     pin-dots:
         base: points
         texture: pin_dot
         blend: overlay
-        blend_order: 1
+        blend_order: 2
     geometry-lines:
         base: lines
         blend: overlay
@@ -42,6 +42,7 @@ styles:
     geometry-points:
         base: points
         blend: overlay
+        blend_order: 1
     track-lines:
         base: lines
         blend: overlay

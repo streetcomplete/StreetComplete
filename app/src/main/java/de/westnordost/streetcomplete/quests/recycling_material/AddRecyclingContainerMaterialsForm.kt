@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
@@ -66,12 +65,6 @@ class AddRecyclingContainerMaterialsForm
 
             override fun onIndexDeselected(index: Int) {}
         })
-    }
-
-    override suspend fun addInitialMapMarkers() {
-        getMapData().filter("nodes with amenity = recycling and recycling_type = container").forEach {
-            putMarker(it, R.drawable.ic_pin_recycling_container)
-        }
     }
 
     private fun showPickItemForItemAtIndexDialog(index: Int, items: List<Item<List<RecyclingMaterial>>>) {
