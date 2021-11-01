@@ -9,7 +9,7 @@ class AddParkingAccessForm : AListQuestAnswerFragment<ParkingAccess>() {
 
     override val items = listOf(
         TextItem(YES, R.string.quest_access_yes),
-        TextItem(PRIVATE, R.string.quest_access_private),
         TextItem(CUSTOMERS, R.string.quest_access_customers),
+        TextItem(PRIVATE, R.string.quest_access_private),
     )
 }
