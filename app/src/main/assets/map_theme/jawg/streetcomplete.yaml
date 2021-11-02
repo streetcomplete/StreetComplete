@@ -32,7 +32,7 @@ styles:
         base: points
         texture: pin_dot
         blend: overlay
-        blend_order: 2
+        blend_order: 1
     geometry-lines:
         base: lines
         blend: overlay
@@ -42,7 +42,7 @@ styles:
     geometry-points:
         base: points
         blend: overlay
-        blend_order: 1
+        blend_order: 2
     track-lines:
         base: lines
         blend: overlay
