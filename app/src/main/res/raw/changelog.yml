@@ -371,7 +371,7 @@ v31.1: |
   <h3>Enhancements</h3>
   <ul>
   <li>Always show notes on the map that contain "#surveyme" (#2641)</li>
-  <li>Do not ask if a foot+cycle path is segregated if it alreay has a sidewalk (#2644)</li>
+  <li>Do not ask if a foot+cycle path is segregated if it already has a sidewalk (#2644)</li>
   <li>Ask for opening hours and wheelchair eligibility for consulates and other diplomatic offices (#2645)</li>
   </ul>
 
@@ -531,7 +531,7 @@ v28.1: |
   <li>Cycleways: Improve visibility of "no cycleway" option, by @matkoniecz (#2385, #2404, #2285)</li>
   <li>Street address: Allow tapping on footways, paths, ... (#2411)</li>
   <li>Street address: Do not ask for vertices of an address interpolation line that already has a street set, by @matkoniecz (#2417)</li>
-  <li>Parking access: Do not ask for parking acces for street side and lane parking, by @jdhoek (#2408)</li>
+  <li>Parking access: Do not ask for parking access for street side and lane parking, by @jdhoek (#2408)</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
@@ -1722,7 +1722,7 @@ v3.6: |
   <ul>
   <li>fix country-detection of Arunchal Pradesh</li>
   <li>disable max-speed quest for the United States (#813)</li>
-  <li>fix undo not working when conflict arised during upload (#812)</li>
+  <li>fix undo not working when conflict arose during upload (#812)</li>
   <li>fix clearing quest changes on undo (bug had no adverse effect)</li>
   <li>updated translations</li>
   </ul>

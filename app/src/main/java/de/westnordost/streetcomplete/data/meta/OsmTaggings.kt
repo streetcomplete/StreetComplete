@@ -78,7 +78,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "unisex", "male", "female", "gender",
     // healthcare like optician
     "healthcare(:.*)?", "health_.*", "medical_.*",
-    // accomodation & layout
+    // accommodation & layout
     "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "laundry_service",
     // misc specific attributes
     "clothes", "shoes", "tailor", "beauty", "tobacco", "carpenter", "furniture", "lottery",
