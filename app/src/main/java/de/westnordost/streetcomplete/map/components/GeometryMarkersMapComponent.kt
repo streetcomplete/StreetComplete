@@ -63,7 +63,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             {
                 style: 'text',
                 text_source: "function() { return '$title'; }",
-                anchor: ${if (iconSize > 0) "bottom" else "center"},
+                anchor: "bottom",
                 priority: 1,
                 font: {
                     family: 'Roboto',
