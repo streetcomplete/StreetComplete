@@ -45,7 +45,7 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_clothes_container_operator_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = recycling and recycling_type = container")
+        getMapData().filter("nodes with amenity = recycling")
 
     override fun createForm() = AddClothingBinOperatorForm()
 
