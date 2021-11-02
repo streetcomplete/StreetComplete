@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
+import de.westnordost.streetcomplete.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
@@ -44,7 +44,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
-    private var geometryMapComponent: ElementGeometryMapComponent? = null
+    private var geometryMapComponent: FocusGeometryMapComponent? = null
     private var questPinsManager: QuestPinsManager? = null
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
 
@@ -74,7 +74,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         ctrl.setPickRadius(1f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
         pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
-        geometryMapComponent = ElementGeometryMapComponent(ctrl)
+        geometryMapComponent = FocusGeometryMapComponent(ctrl)
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
