@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.*
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
@@ -41,6 +42,9 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
     override fun isApplicableTo(element: Element): Boolean =
         disusedShops.matches(element) && !shops.matches(element)
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
 
     override fun createForm() = ShopTypeForm()
 
