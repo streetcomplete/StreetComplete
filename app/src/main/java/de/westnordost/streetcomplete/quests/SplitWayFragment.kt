@@ -178,7 +178,8 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             animateScissors()
             showsGeometryMarkersListener?.putMarkerForCurrentQuest(
                 ElementPointGeometry(position),
-                R.drawable.crosshair_marker
+                R.drawable.crosshair_marker,
+                null
             )
         }
 

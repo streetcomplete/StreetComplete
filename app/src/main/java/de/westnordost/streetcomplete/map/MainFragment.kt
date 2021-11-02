@@ -442,8 +442,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    override fun putMarkerForCurrentQuest(geometry: ElementGeometry, @DrawableRes drawableResId: Int?) {
-        mapFragment?.putMarkerForCurrentQuest(geometry, drawableResId)
+    override fun putMarkerForCurrentQuest(
+        geometry: ElementGeometry,
+        @DrawableRes drawableResId: Int?,
+        title: String?
+    ) {
+        mapFragment?.putMarkerForCurrentQuest(geometry, drawableResId, title)
     }
 
     override fun deleteMarkerForCurrentQuest(geometry: ElementGeometry) {
@@ -845,7 +849,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 if (element == e) continue
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
-                putMarkerForCurrentQuest(geometry, icon)
+                putMarkerForCurrentQuest(geometry, icon, e.tags["name"] ?: e.tags["brand"])
             }
         }
     }
