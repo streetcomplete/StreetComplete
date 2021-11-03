@@ -132,7 +132,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         val text = countryInfo.slowZoneLabelText
 
         // no label
-        if (position == null && text == null) {
+        if (text == null) {
             return
         }
 
