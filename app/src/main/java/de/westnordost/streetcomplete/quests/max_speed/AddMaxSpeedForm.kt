@@ -136,18 +136,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             return
         }
 
-        val assertMessage = "unexpected value in country metadata, slowZoneLabelPosition: ${position}, slowZoneLabelText: ${text}"
-        if (position != "bottom" && position != "top") {
-            throw Error(assertMessage)
-        }
-        if(text == null) {
-            throw Error(assertMessage)
-        }
-
         val label: MaterialTextView = layoutWithSign.findViewById(when (position) {
             "bottom" -> R.id.slowZoneLabelBottom
             "top" -> R.id.slowZoneLabelTop
-            else -> throw IllegalStateException()
+            else -> return // should never happen
         })
         label.visibility = View.VISIBLE
         label.text = text
