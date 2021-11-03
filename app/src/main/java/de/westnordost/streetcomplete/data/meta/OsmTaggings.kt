@@ -95,7 +95,9 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *  - no larger or purpose-built things like malls, cinemas, theatres, car washes, fuel stations,
  *    museums, galleries, zoos, aquariums, bowling alleys...
  *  - no things that are usually not found in normal retail shop areas but in offices:
- *    clinics, doctors, fitness centers, dental technicians...
+ *    clinics, fitness centers
+ *  - dentists, doctors are also included as they may appear in such places, depending
+ *    on location
  *  - nothing that is rather located in an industrial estate like car repair and other types
  *    of workshops (most craft=* other than those where people go to have something repaired or so)
  *
@@ -116,6 +118,7 @@ fun isKindOfShopExpression(prefix: String? = null): String {
                 "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
                 "pharmacy",
                 "driving_school",
+                "doctors", "dentist",
             ),
             "leisure" to arrayOf(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
@@ -126,6 +129,9 @@ fun isKindOfShopExpression(prefix: String? = null): String {
             "craft" to arrayOf(
                 "shoemaker", "tailor", "photographer", "watchmaker", "optician",
                 "electronics_repair", "key_cutter",
+            ),
+            "healthcare" to arrayOf(
+                "doctor",
             )
         ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
         ).trimIndent()
