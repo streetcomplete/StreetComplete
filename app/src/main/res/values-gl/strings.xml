@@ -850,9 +850,7 @@ logros"</string>
     <string name="quest_board_type_map_title">"É soamente un mapa?"</string>
     <string name="quest_board_type_map_description">"Se o taboleiro é sobre un tema en particular, especifícao, independentemente de se tamén inclúe un mapa. Por exemplo, un taboleiro de transporte público pode ter un mapa de rutas de autobús. Se o tema non figura entre as respostas dispoñíbeis, coida deixar unha nota."</string>
     <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo da vía\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non podo dicilo\" se hai unha soa superficie pero non está dispoñíbel como resposta."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo do camiño\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non sabería dicirche\" se hai unha soa superficie pero non está dispoñíbel como resposta."</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Especifica de xeito breve a natureza da superficie, por exemplo \"areoso con anacos de lastros\". A lonxitude do texto está limitada a 255 caracteres."</string>
@@ -1126,7 +1124,7 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_buildingLevels_title2">"Cantos pisos por enriba do soto ten este edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Cantos pisos por enriba do soto ten esta parte do edificio?"</string>
     <string name="quest_crossing_title">"Existe bordo aquí onde este camiño se atopa coa estrada? de que tipo?"</string>
-    <string name="pref_subtitle_quests_preset_name">"Por defecto: %s"</string>
+    <string name="pref_subtitle_quests_preset_name">"Preaxuste: %s"</string>
     <string name="default_disabled_msg_roofShape">"Este tipo de pregunta está desactivada por defecto porque as formas dos tellados normalmente non se distinguen desde a rúa. Esta pregunta tamén consume moito tempo, é máis doado respondela desde a casa vendo imaxe aéreas."</string>
     <string name="quest_religion_animist">"Animista"</string>
     <string name="quest_construction_steps_title">"Completaches estos pasos?"</string>
@@ -1136,7 +1134,7 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_buildingType_allotment_house">"Pequena horta ao carón do edificio"</string>
     <string name="quest_buildingType_grandstand">"Bancada"</string>
     <string name="action_search">"Buscar"</string>
-    <string name="action_manage_presets">"Xestionar prestablecido"</string>
+    <string name="action_manage_presets">"Xestionar preaxustes"</string>
 
     <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Cantas persoas están mapeando? Escribide o mesmo número en tódolos móbiles."</string>
@@ -1150,11 +1148,31 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="no_search_results">"Non atopa nada"</string>
     <string name="quest_selection_hint_title">"Demasiadas tarefas?"</string>
     <string name="quest_selection_hint_message">"A colaboración debería ser divertida! Se sintes que recibes demasiadas preguntas sempre podes configurar o tipo de cuestións que che plantexamos e a súa orde."</string>
-    <string name="quest_presets_preset_add">"Engadir predefinido"</string>
-    <string name="quest_presets_preset_name">"Nome do predefinido"</string>
+    <string name="quest_presets_preset_add">"Engadir preaxuste"</string>
+    <string name="quest_presets_preset_name">"Nome do preaxuste"</string>
     <string name="quest_presets_default_name">"Por defecto"</string>
     <string name="quest_presets_selected">"Seleccionado"</string>
+    <string name="quest_presets_delete_message">"Eliminar o preaxuste \"%s\"? A selección e a orde das tarefas serán perdidas de xeito irrevogábel."</string>
+    <string name="notification_syncing">"Sincronizando datos…"</string>
+    <string name="notification_channel_sync">"Sincronizar datos"</string>
+    <string name="quest_board_type_sport">"Deporte, exercicios"</string>
+    <string name="quest_generic_hasFeature_optional">"É opcional"</string>
+    <string name="quest_buildingType_bridge">"Ponte entre edificios (corredor elevado)"</string>
+    <string name="quest_laundrySelfService_title2">"Esta lavandería ten autoservizo?"</string>
+    <string name="quest_dietType_halal_name_title">"%s ofrece produtos Halal?"</string>
+    <string name="quest_dietType_explanation_halal">"Os produtos Halal deben prepararse segundo reglas especiais e ser marcadas por axencias de certificación Halal."</string>
+    <string name="quest_picnicTableCover_title">"Esta mesa de picnic está cuberta (protexida da chuvia)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Este tramo son escaleiras"</string>
+    <string name="quest_traffic_calming_type_title">"Que tipo de reductor de velocidade é este?"</string>
+    <string name="quest_traffic_calming_type_bump">"Badén (estreito)"</string>
+    <string name="quest_traffic_calming_type_hump">"Badén (largo)"</string>
+    <string name="quest_traffic_calming_type_table">"Paso de peóns sobreelevado"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Bandas sonoras"</string>
+    <string name="quest_surface_value_concrete_plates">"Placas de cemento"</string>
+    <string name="quest_surface_value_concrete_lanes">"Rodeiras de cemento"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_presets_delete_message">"Eliminar o predefinido \"%s\"? A selección e a orde da tarefa serán perdidas de xeito irrevogábel."</string>
+    <string name="quest_fireHydrant_diameter_title">"Que diametro aparece no letreiro desta boca de incendios?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diámetro non parece estar ben."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Seguro? Algunhas veces o díametro está especificado na propia boca de incendios."</string>
 </resources>

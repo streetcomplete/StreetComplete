@@ -1133,4 +1133,28 @@
     <string name="quest_dietType_halal_name_title">"Да ли %s нуди Халал производе?"</string>
     <string name="quest_dietType_explanation_halal">"Халал производи се спремају по посебној рецептури, уз одговарајуће сертификате за Халал производе."</string>
     <string name="quest_picnicTableCover_title">"Да ли је овај сто за пикник наткривен (пружа ли заштиту од кише)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Овај сегмент су степенице"</string>
+    <string name="quest_barrier_type_passage_conversion">"Конвертовано у пролаз кроз зид/ограду/итд."</string>
+    <string name="quest_barrier_type_gate_conversion">"Конвертовано у капију"</string>
+    <string name="quest_traffic_calming_type_title">"Ког типа је ово успорење?"</string>
+
+    <!-- Да ли ово превести као лежећи полицајац или избочина на путу? -->
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_bump">"Лежећи полицајац (кратак)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_hump">"Лежећи полицајац (дугачак)"</string>
+    <string name="quest_traffic_calming_type_table">"Pešačko ostrvo"</string>
+    <string name="quest_traffic_calming_type_cushion">"Лежећи полицајац унутар траке"</string>
+    <string name="quest_traffic_calming_type_choker">"Сужење на путу"</string>
+    <string name="quest_traffic_calming_type_island">"Острво"</string>
+    <string name="quest_traffic_calming_type_chicane">"Вештачке/намерне кривине"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Вибро-звучне траке"</string>
+    <string name="quest_surface_value_concrete_plates">"Плочасти бетон"</string>
+    <string name="quest_surface_value_concrete_lanes">"Бетонске саобраћ. траке"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_diameter_title">"Који је пречник на знаку хидранта?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Чини се да је пречник невероватан."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Да ли сте сигурни? Понекад се пречник може наћи на самом хидранту."</string>
 </resources>

@@ -591,7 +591,7 @@ class SphericalEarthMathTest {
     // The counting number algorithm in particular needs to handle a special case where the ray
     // intersects the polygon in a polygon vertex
 
-    @Test fun `point in polygon whose ray insersects a vertex is in polygon`() {
+    @Test fun `point in polygon whose ray intersects a vertex is in polygon`() {
         assertTrue(p(0.0, 0.0).isInPolygon(p(0.0, 0.0).createRhombus(1.0)))
     }
 

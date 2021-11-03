@@ -14,29 +14,29 @@ class ImeInsetsAnimationCallback(
     private val view: View,
     private val onNewInsets: View.(insets: Insets) -> Unit
 ) : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE), OnApplyWindowInsetsListener {
-    private var isAnimating = false
+    private var isKeyboardAnimating = false
     private var prevInsets: WindowInsetsCompat? = null
 
     override fun onApplyWindowInsets(v: View, windowInsets: WindowInsetsCompat): WindowInsetsCompat {
         prevInsets = windowInsets
-        if (!isAnimating) applyNewInsets(windowInsets)
+        if (!isKeyboardAnimating) applyNewInsets(windowInsets)
         return windowInsets
     }
 
     override fun onPrepare(animation: WindowInsetsAnimationCompat) {
         if (animation.typeMask and WindowInsetsCompat.Type.ime() != 0) {
-            isAnimating = true
+            isKeyboardAnimating = true
         }
     }
 
     override fun onProgress(insets: WindowInsetsCompat, runningAnims: List<WindowInsetsAnimationCompat>): WindowInsetsCompat {
-        applyNewInsets(insets)
+        if (isKeyboardAnimating) applyNewInsets(insets)
         return insets
     }
 
     override fun onEnd(animation: WindowInsetsAnimationCompat) {
-        if (isAnimating && (animation.typeMask and WindowInsetsCompat.Type.ime()) != 0) {
-            isAnimating = false
+        if (isKeyboardAnimating && (animation.typeMask and WindowInsetsCompat.Type.ime()) != 0) {
+            isKeyboardAnimating = false
             prevInsets?.let { view.dispatchApplyWindowInsets(it.toWindowInsets()) }
         }
     }
