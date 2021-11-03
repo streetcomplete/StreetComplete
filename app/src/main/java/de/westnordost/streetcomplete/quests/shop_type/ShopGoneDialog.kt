@@ -40,7 +40,10 @@ class ShopGoneDialog(
 
         radioButtons = listOf(binding.vacantRadioButton, binding.replaceRadioButton, binding.leaveNoteRadioButton)
         for (radioButton in radioButtons) {
-            radioButton.setOnClickListener { selectRadioButton(it) }
+            radioButton.setOnClickListener {
+                selectRadioButton(it)
+                binding.presetsEditText.error = null
+            }
         }
 
         binding.presetsEditText.setAdapter(SearchAdapter(context, { term -> getFeatures(term) }, { it.name }))
