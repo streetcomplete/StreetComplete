@@ -59,6 +59,7 @@ import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.barrier_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
@@ -191,6 +192,8 @@ import javax.inject.Singleton
         AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
         AddParkingFee(), // used by OsmAnd
 
+        AddTrafficCalmingType(),
+
         // steps
         AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
         AddStepsRamp(),
@@ -231,7 +234,6 @@ import javax.inject.Singleton
         AddTrafficSignalsButton(),
 
         /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
-
         AddInformationToTourism(), // OSM Carto
 
         AddPoliceType(),
@@ -334,8 +336,8 @@ import javax.inject.Singleton
         AddAcceptsCash(featureDictionaryFuture),
         AddVegetarian(),
         AddVegan(),
+        AddHalal(), // there are ~ 100 times more Muslims than Jews
         AddKosher(),
-        AddHalal(),
         AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddInternetAccess(), // used by OsmAnd
 

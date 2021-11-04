@@ -4,8 +4,8 @@ import android.graphics.Outline
 import android.view.View
 import android.view.ViewOutlineProvider
 
-/** Outline provider for a view thathas rounded courners. Used for casting the shadow of a view
- *  with rounded corners correctly. For example the speechbubble used for quest forms. */
+/** Outline provider for a view that has rounded corners. Used for casting the shadow of a view
+ *  with rounded corners correctly. For example the speech bubble used for quest forms. */
 class RoundRectOutlineProvider(
     private val radius: Float,
     private val marginLeft: Int = 0,

@@ -225,6 +225,11 @@ class OsmNoteQuestControllerTest {
         verify(listener).onInvalidated()
     }
 
+    @Test fun `calls onInvalidated when cleared notes`() {
+        noteUpdatesListener.onCleared()
+        verify(listener).onInvalidated()
+    }
+
     @Test fun `calls onUpdated when notes changed`() {
         // note 1 is added
         // note 2 is not eligible

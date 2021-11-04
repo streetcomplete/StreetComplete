@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.generateViewId
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericRadioListBinding
+import de.westnordost.streetcomplete.ktx.setMargins
 
 
 abstract class AListQuestAnswerFragment<T> : AbstractQuestFormAnswerFragment<T>() {
@@ -28,6 +30,10 @@ abstract class AListQuestAnswerFragment<T> : AbstractQuestFormAnswerFragment<T>(
             val radioButton = RadioButton(view.context)
             radioButton.setText(item.titleId)
             radioButton.id = viewId
+
+            val layoutParams = RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT)
+            layoutParams.setMargins(0, 16, 0, 16)
+            radioButton.layoutParams = layoutParams
             binding.radioButtonGroup.addView(radioButton)
         }
         binding.radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }

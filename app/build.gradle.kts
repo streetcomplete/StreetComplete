@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 30
-        versionCode = 3700
-        versionName = "37.0-beta1"
+        versionCode = 3701
+        versionName = "37.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -125,7 +125,7 @@ dependencies {
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.1")
     implementation("androidx.annotation:annotation:1.2.0")
     implementation("androidx.fragment:fragment-ktx:1.3.6")
     implementation("androidx.preference:preference-ktx:1.1.1")
@@ -142,7 +142,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxVersion")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.5.0")
+    implementation("androidx.work:work-runtime:2.6.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
@@ -194,6 +194,7 @@ tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     targetFile = "$projectDir/src/main/res/raw/credits_translators.yml"
     languageCodes = bcp47ExportLanguages
     cookie = properties["POEditorCookie"] as String
+    phpsessid = properties["POEditorPHPSESSID"] as String
 }
 
 tasks.register<UpdatePresetsTask>("updatePresets") {

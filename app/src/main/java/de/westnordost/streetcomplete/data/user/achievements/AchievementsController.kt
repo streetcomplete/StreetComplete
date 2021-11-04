@@ -29,7 +29,9 @@ import javax.inject.Singleton
             updateQuestTypeAchievements(questType)
         }
 
-        override fun onSubtractedOne(questType: QuestType<*>) {}
+        override fun onSubtractedOne(questType: QuestType<*>) {
+            // anything once granted is not removed, so nothing to do here
+        }
 
         override fun onUpdatedAll() {
             // when syncing statistics from server, any granted achievements should be
@@ -73,6 +75,7 @@ import javax.inject.Singleton
     private fun clear() {
         userLinksDao.clear()
         userAchievementsDao.clear()
+        listeners.forEach { it.onAllAchievementsUpdated() }
     }
 
     /** Look at and grant all achievements */

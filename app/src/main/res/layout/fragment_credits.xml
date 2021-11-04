@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,7 +37,8 @@
                 android:textAppearance="@style/TextAppearance.Body"
                 android:textStyle="bold"
                 android:textIsSelectable="true"
-                android:text="Tobias Zwick"/>
+                android:text="Tobias Zwick"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

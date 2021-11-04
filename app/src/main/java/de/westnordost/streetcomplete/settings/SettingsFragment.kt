@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -112,6 +113,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
         prefs.unregisterOnSharedPreferenceChangeListener(this)
     }
 
+    @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
             Prefs.AUTOSYNC -> {
@@ -146,9 +148,8 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         downloadedTilesDao.removeAll()
-        val now = System.currentTimeMillis()
-        noteController.deleteAllOlderThan(now)
-        mapDataController.deleteOlderThan(now)
+        mapDataController.clear()
+        noteController.clear()
     }
 
     private fun getQuestPreferenceSummary(): String {

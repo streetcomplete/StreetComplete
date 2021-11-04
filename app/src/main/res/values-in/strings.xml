@@ -6,7 +6,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Otorisasi gagal: Semua izin yang terdaftar harus diaktifkan"</string>
-    <string name="title_activity_settings">"Pengaturan"</string>
     <string name="pref_category_communication">"Komunikasi"</string>
     <string name="pref_category_display">"Tampilan"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -26,7 +25,6 @@
     <string name="quest_generic_confirmation_title">"Apa kamu yakin?"</string>
     <string name="quest_generic_confirmation_yes">"Ya, saya yakin"</string>
     <string name="quest_generic_confirmation_no">"Saya akan periksa"</string>
-    <string name="quest_generic_error_field_empty">"Kamu belum mengisi kolom ini"</string>
     <string name="quest_leave_new_note_title">"Tinggalkan catatan?"</string>
 
     <!-- Fuzzy -->
@@ -208,10 +206,8 @@ Tetapi, sebelum mengunggah perubahan, aplikasi mengecek &lt;a href=\"https://www
     <string name="quest_surface_value_sand">"Pasir"</string>
     <string name="quest_surface_value_sett">"Berangkal"</string>
     <string name="quest_surface_value_wood">"Kayu"</string>
-    <string name="quest_placeName_title">"Apa nama tempat ini?"</string>
     <string name="quest_sidewalk_title">"Apa jalan ini punya trotoar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Jalan ini ada di mana?"</string>
-    <string name="quest_cyclewaySurface_title">"Permukaan jalur sepeda disini terbuat dari apa?"</string>
     <string name="quest_serviceType_title">"Apa jenis jalan khusus ini?"</string>
     <string name="quest_oneway_title">"Apakah ini jalan satu arah?"</string>
     <string name="quest_address_title">"Nomor berapa bangunan ini?"</string>
@@ -495,6 +491,8 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
 
     <!-- Fuzzy -->
@@ -535,7 +533,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_buildingLevels_levelsLabel2">"Jumlah lantai (atap tidak dihitung)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Beda tiap bagian bangunan"</string>
     <string name="quest_buildingLevels_answer_description">"Kalau begitu, cukup masukkan nilai lantai paling tinggi."</string>
-    <string name="unglue_hint">"Sentuh untuk melepaskan tinjauan dari kunci posisi"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Apa jalan di sini terpisah secara fisik (ada penghalang)? Batas kecepatan awal tergantung dari ini atau tidak"</string>
     <string name="about_category_feedback">"Umpan balik"</string>
     <string name="quest_leave_new_note_photo">"Lampirkan foto"</string>
@@ -669,7 +666,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Reset pengaktifan pencarian dan urutan seperti semula?"</string>
-    <string name="quest_buildingType_title2">"Bangunan ini dibangun sebagai apa?"</string>
     <string name="quest_generic_item_invalid_value">"Harap isi nilai yang lebih spesifik."</string>
     <string name="quest_buildingType_answer_multiple_types">"Punya banyak fungsi"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Cukup pilih fungsi utama bangunan ini. Mis: jika ada toko di lantai dasar dengan apartemen di atasnya, maka fungsi utamanya tetap bangunan apartemen."</string>

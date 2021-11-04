@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.verify
 
 class NotesWithEditsSourceTest {
 
@@ -334,6 +335,14 @@ class NotesWithEditsSourceTest {
         noteListener.onUpdated(emptyList(), initialNotes1, emptyList())
 
         checkListenerCalledWith(listener, updated = expectedNotes1)
+    }
+
+    @Test fun `onCleared passes through call`() {
+        val listener = mock<NotesWithEditsSource.Listener>()
+        src.addListener(listener)
+
+        noteListener.onCleared()
+        verify(listener).onCleared()
     }
 
     //endregion

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Spinner
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
@@ -93,14 +92,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
         binding.rightSideContainer.removeAllViews()
         speedType?.layoutResId?.let { layoutInflater.inflate(it, binding.rightSideContainer, true) }
-
-        // this is necessary because the inflated image view uses the activity context rather than
-        // the fragment / layout inflater context' resources to access its drawable
-        val imgLiving = binding.rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
-        imgLiving?.setImageDrawable(context?.getDrawable(R.drawable.ic_living_street))
-
-        val imgNSL = binding.rightSideContainer.findViewById<ImageView>(R.id.nationalSpeedLimitImage)
-        imgNSL?.setImageDrawable(context?.getDrawable(R.drawable.ic_national_speed_limit))
 
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
 

@@ -6,12 +6,13 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
-class AddKosher : OsmFilterQuestType<DietAvailability>() {
+class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|fast_food|ice_cream
+          amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
+          or amenity ~ pub|nightclub|biergarten|bar and food = yes
           or shop ~ butcher|supermarket|ice_cream
         )
         and name and (
@@ -31,7 +32,10 @@ class AddKosher : OsmFilterQuestType<DietAvailability>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_kosher)
 
-    override fun applyAnswerTo(answer: DietAvailability, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("diet:kosher", answer.osmValue)
+    override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is DietAvailability -> changes.updateWithCheckDate("diet:kosher", answer.osmValue)
+            NoFood -> changes.addOrModify("food", "no")
+        }
     }
 }

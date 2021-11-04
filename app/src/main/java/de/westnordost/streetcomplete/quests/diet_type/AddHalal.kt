@@ -6,12 +6,12 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
-class AddHalal : OsmFilterQuestType<DietAvailability>() {
+class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|fast_food|ice_cream
+          amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
           or shop ~ butcher|supermarket|ice_cream
         )
         and name and (
@@ -31,7 +31,10 @@ class AddHalal : OsmFilterQuestType<DietAvailability>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_halal)
 
-    override fun applyAnswerTo(answer: DietAvailability, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("diet:halal", answer.osmValue)
+    override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is DietAvailability -> changes.updateWithCheckDate("diet:halal", answer.osmValue)
+            NoFood -> changes.addOrModify("food", "no")
+        }
     }
 }

@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
-import java.util.LinkedList
 import kotlin.math.max
+import kotlin.math.min
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
@@ -92,9 +92,8 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        val items = LinkedList(topItems)
-        favs.moveLastPickedGroupableDisplayItemToFront(javaClass.simpleName, items, allItems)
-        return items
+        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
+        return favs.getWeighted(javaClass.simpleName, 6, 30, topItems, validSuggestions)
     }
 
     override fun onClickOk() {
@@ -115,14 +114,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue)
+                            favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue)
+                favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
                 onClickOk(itemValue)
             }
         }
