@@ -6,3 +6,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 218
 officialLanguages: [bs, hr, sr]
 orchardProduces: [plum, apple, tomato, grape, chilli_pepper, sweet_pepper, raspberry, pear, strawberry, peach, cherry, walnut, chestnut, apricot, avocado, fig]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ЗОНА ZONA

@@ -8,3 +8,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, tomato, chilli_pepper, sweet_pepper, peach, strawberry, plum, pear, apricot, hop, cherry, raspberry, walnut, chestnut]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZÓNA

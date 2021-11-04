@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="112dp"
     android:layout_height="118dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="10dp"
     android:background="@drawable/background_rectangular_sign">
+
+    <TextView
+        android:id="@+id/slowZoneLabelTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="ZONE"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        android:layout_marginTop="-4dp"
+        android:visibility="gone"
+        tools:ignore="HardcodedText"/>
 
     <LinearLayout
         android:layout_width="80dp"
@@ -42,18 +56,20 @@
             android:visibility="gone"
             tools:visibility="visible"
             />
-
     </LinearLayout>
 
     <TextView
+        android:id="@+id/slowZoneLabelBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ZONE"
+        tools:text="ZONE"
         android:textStyle="bold"
         android:textSize="16dp"
         android:gravity="center"
         android:textColor="@color/traffic_black"
         android:layout_marginBottom="-4dp"
-        tools:ignore="HardcodedText"/>
+        android:visibility="gone"
+        tools:ignore="HardcodedText"
+        />
 
 </LinearLayout>

@@ -6,3 +6,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 247
 officialLanguages: [lv]
 orchardProduces: [apple, tomato, strawberry, pear, cranberry, blueberry, raspberry, plum, cherry]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONA

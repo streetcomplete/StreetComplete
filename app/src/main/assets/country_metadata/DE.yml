@@ -11,3 +11,5 @@ orchardProduces: [grape, apple, strawberry, tomato, hop, plum, pear, walnut, che
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian]
 regularShoppingDays: 5
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONE

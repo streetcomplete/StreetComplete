@@ -2,6 +2,9 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Ameriabank, Unibank, VTB, ACBA, ABB, HSBC, Ararat Bank, Ardshinbank, Armbusinessbank, ArmEconomBank, Areximbank, ArmBusinessBank, AEB, ВТБ, Araratbank, Ameria Bank, Հայբիզնեսբանկ, ASHIB, UniBank, Ակբա, AcbaCreditAgricole, VTB Bank, Converse Bank, VTB Armenia]
 isLivingStreetKnown: true
+isSlowZoneKnown: true
 mobileCountryCode: 283
 officialLanguages: [hy]
 orchardProduces: [tomato, grape, apple, apricot, peach, plum, pear, cherry, walnut, fig, hazelnut]
+slowZoneLabelPosition: top
+slowZoneLabelText: ԹՈՏՒ

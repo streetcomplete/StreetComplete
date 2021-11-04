@@ -4,3 +4,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 295
 officialLanguages: [de]
 orchardProduces: [grape]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

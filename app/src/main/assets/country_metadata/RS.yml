@@ -6,3 +6,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 220
 officialLanguages: [sr]
 orchardProduces: [plum, apple, chilli_pepper, sweet_pepper, tomato, grape, raspberry, peach, pear, apricot, strawberry, cherry, walnut, hazelnut, hop]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ЗОНА

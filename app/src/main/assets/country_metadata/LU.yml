@@ -7,3 +7,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
 orchardProduces: [grape, apple, pear, tomato, plum, strawberry, walnut, cherry, raspberry]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE
