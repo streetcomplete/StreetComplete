@@ -1081,8 +1081,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal</string>
-    <string name="quest_barrier_bicycle_type_squeeze">\????</string>
-    <string name="quest_barrier_bicycle_type_single">\???</string>
+    <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>
+    <string name="quest_barrier_bicycle_type_single">Passage between two barriers</string>
     <string name="quest_barrier_bicycle_type_double">Chicane - barrier on each side</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>

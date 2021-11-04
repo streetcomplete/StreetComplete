@@ -12,7 +12,7 @@ class AddBicycleBarrierTypeForm : AImageListQuestAnswerFragment<BicycleBarrierTy
         Item(DOUBLE, R.drawable.barrier_bicycle_barrier_double, R.string.quest_barrier_bicycle_type_double),
         Item(TRIPLE, R.drawable.barrier_bicycle_barrier_triple, R.string.quest_barrier_bicycle_type_multiple),
         Item(DIAGONAL, R.drawable.barrier_bicycle_barrier_diagonal, R.string.quest_barrier_bicycle_type_diagonal),
-        Item(SQUEEZE, R.drawable.barrier_bicycle_barrier_squeeze, R.string.quest_barrier_bicycle_type_squeeze),
+        Item(TILTED, R.drawable.barrier_bicycle_barrier_tilted, R.string.quest_barrier_bicycle_type_tilted),
     )
 
     override val itemsPerRow = 3
