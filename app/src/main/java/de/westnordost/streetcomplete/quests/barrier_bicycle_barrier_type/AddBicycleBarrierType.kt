@@ -26,6 +26,6 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
     override fun createForm() = AddBicycleBarrierTypeForm()
 
     override fun applyAnswerTo(answer: BicycleBarrierType, changes: StringMapChangesBuilder) {
-        changes.modify("cycle_barrier", answer.osmValue)
+        changes.add("cycle_barrier", answer.osmValue)
     }
 }
