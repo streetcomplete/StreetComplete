@@ -1094,7 +1094,6 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_traffic_calming_type_island">Island</string>
     <string name="quest_traffic_calming_type_chicane">Deliberate curve(s)</string>
     <string name="quest_traffic_calming_type_rumble_strip">Rumble strip(s)</string>
->>>>>>> master
     <string name="quest_surface_value_concrete_plates">Concrete plates</string>
     <string name="quest_surface_value_concrete_lanes">Concrete lanes</string>
     <string name="quest_fireHydrant_diameter_title">What diameter is specified on the sign for this fire hydrant?</string>
