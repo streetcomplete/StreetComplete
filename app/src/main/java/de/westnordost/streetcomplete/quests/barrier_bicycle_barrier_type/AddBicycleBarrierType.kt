@@ -19,7 +19,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
     override val icon = R.drawable.ic_quest_barrier // TODO
     override val isDeleteElementEnabled = true
 
-    override val questTypeAchievements = listOf(CAR, PEDESTRIAN, BLIND, WHEELCHAIR, BICYCLIST)
+    override val questTypeAchievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_barrier_type_title
 
