@@ -147,7 +147,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:2.1")
+    implementation("de.westnordost:osmfeatures-android:3.0")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
@@ -188,6 +188,8 @@ val bcp47ExportLanguages = setOf(
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
+val nsiVersion = "v6.0.20211103"
+val presetsVersion = "v3.1.0"
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
@@ -199,12 +201,14 @@ tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
 
 tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
+    version = presetsVersion
     languageCodes = bcp47ExportLanguages
     targetDir = "$projectDir/src/main/assets/osmfeatures/default"
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
+    version = nsiVersion
     targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
 }
 
