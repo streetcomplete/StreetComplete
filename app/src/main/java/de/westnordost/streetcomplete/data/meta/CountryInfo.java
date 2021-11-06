@@ -26,6 +26,8 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> officialLanguages;
 	List<String> additionalStreetsignLanguages;
 	Boolean isSlowZoneKnown;
+	String slowZoneLabelText;
+	String slowZoneLabelPosition;
 	Boolean isLivingStreetKnown;
 	List<String> orchardProduces;
 	Boolean isAdvisorySpeedLimitKnown;
@@ -110,6 +112,16 @@ public class CountryInfo implements Serializable, Cloneable
 	public boolean isSlowZoneKnown()
 	{
 		return isSlowZoneKnown;
+	}
+
+	public String getSlowZoneLabelText()
+	{
+		return slowZoneLabelText;
+	}
+
+	public String getSlowZoneLabelPosition()
+	{
+		return slowZoneLabelPosition;
 	}
 
 	public String getAdditionalValidHousenumberRegex()

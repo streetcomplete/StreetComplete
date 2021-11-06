@@ -4,8 +4,11 @@ centerLine: white
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+isSlowZoneKnown: true
 mobileCountryCode: 505
 officialLanguages: [en]
 orchardProduces: [grape, tomato, banana, apple, orange, pear, olive, peach, pineapple, almond, avocado, strawberry, lemon, lime, guava, mango, mangosteen, chilli_pepper, sweet_pepper]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: AREA

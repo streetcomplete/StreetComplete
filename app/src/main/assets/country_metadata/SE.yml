@@ -4,7 +4,7 @@ chargingStationOperators: [Fortum Charge & Drive, Tesla Motors Inc., Bee, Tesla,
 clothesContainerOperators: [Myrorna, Human Bridge, FTI]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
-isSlowZoneKnown: true
+isSlowZoneKnown: false
 mobileCountryCode: 240
 officialLanguages: [sv]
 orchardProduces: [apple, strawberry, tomato, pear, raspberry, plum, cherry, blueberry]

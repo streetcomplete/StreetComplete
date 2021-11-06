@@ -33,15 +33,16 @@
                 android:layout_toStartOf="@+id/slowZoneImage"
                 tools:ignore="RtlSymmetry" />
 
-            <include
+            <FrameLayout
                 android:id="@+id/slowZoneImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                layout="@layout/quest_maxspeed_zone_sign"
+            >
+                <include
+                    layout="@layout/quest_maxspeed_zone_sign"
                 />
-
+            </FrameLayout>
         </RelativeLayout>
 
 

@@ -5,8 +5,11 @@ centerLine: white
 chargingStationOperators: [EV Quick, 東光高岳, 浜松日産, Tesla Motors Inc.]
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
+isSlowZoneKnown: true
 mobileCountryCode: 440
 officialLanguages: [ja]
 orchardProduces: [apple, tomato, pear, persimmon, grape, strawberry, chilli_pepper, sweet_pepper, peach, apricot, tea, kiwi, plum, cherry, chestnut, fig]
 popularReligions: [shinto, buddhist, animism]
 popularSports: [tennis, baseball]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: 区域 ここあら
