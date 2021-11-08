@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import java.util.*
 import kotlin.collections.ArrayList
 
 /**
@@ -34,7 +33,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
 
-    private lateinit var favs: LastPickedValuesStore<I>
+    private lateinit var favs: LastPickedValuesStore<DisplayItem<I>>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -52,7 +51,13 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
+        val stringToItem = items.associateBy { it.value.toString() }
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { item -> item.value.toString() },
+            deserialize = { value -> stringToItem[value] }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,8 +94,8 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     override fun onClickOk() {
         val values = imageSelector.selectedItems
         if (values.isNotEmpty()) {
-            favs.add(javaClass.simpleName, values)
-            onClickOk(values)
+            favs.add(values)
+            onClickOk(values.map { it.value!! })
         }
     }
 
@@ -106,7 +111,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
         return if (originalList.size > itemsPerRow && moveFavoritesToFront) {
-            favs.moveLastPickedDisplayItemsToFront(javaClass.simpleName, originalList, originalList)
+            favs.get().filterNotNull().padWith(originalList).toList()
         } else {
             originalList
         }

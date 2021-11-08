@@ -9,14 +9,11 @@ import android.view.View
 import androidx.core.view.postDelayed
 import androidx.preference.PreferenceManager
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import kotlin.math.max
-import kotlin.math.min
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
@@ -35,7 +32,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     protected abstract val allItems: List<GroupableDisplayItem<I>>
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<I>
+    internal lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
 
     private val selectedItem get() = imageSelector.selectedItem
 
@@ -43,7 +40,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
+        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
+        val stringToItem = validSuggestions.associateBy { it.value.toString() }
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { item -> item.value.toString() },
+            deserialize = { value -> stringToItem[value] }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,8 +96,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
-        return favs.getWeighted(javaClass.simpleName, 6, 30, topItems, validSuggestions)
+        return favs.get().mostCommonWithin(6, 30).padWith(topItems).toList()
     }
 
     override fun onClickOk() {
@@ -114,14 +117,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
+                            favs.add(item)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue, allowDuplicates = true)
+                favs.add(item)
                 onClickOk(itemValue)
             }
         }
