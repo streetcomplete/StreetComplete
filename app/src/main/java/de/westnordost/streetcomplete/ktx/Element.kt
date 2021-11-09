@@ -4,6 +4,8 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.osm.Level
+import de.westnordost.streetcomplete.osm.toLevelsOrNull
 
 fun Element.copy(
     id: Long = this.id,
@@ -65,3 +67,15 @@ fun Element.isSomeKindOfShop(): Boolean = IS_SOME_KIND_OF_SHOP_EXPR.matches(this
 
 private val IS_SOME_KIND_OF_SHOP_EXPR =
     ("nodes, ways, relations with " + isKindOfShopExpression()).toElementFilterExpression()
+
+/** get for which level(s) the element is defined, if any.
+ *  repeat_on is interpreted the same way as level */
+fun Element.getLevelsOrNull(): List<Level>? {
+    val levels = tags["level"]?.toLevelsOrNull()
+    val repeatOns =  tags["repeat_on"]?.toLevelsOrNull()
+    return if (levels == null) {
+        if (repeatOns == null) null else repeatOns
+    } else {
+        if (repeatOns == null) levels else levels + repeatOns
+    }
+}

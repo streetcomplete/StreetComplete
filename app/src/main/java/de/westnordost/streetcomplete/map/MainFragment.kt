@@ -52,7 +52,6 @@ import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.levelsIntersect
-import de.westnordost.streetcomplete.osm.toLevelsOrNull
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -844,15 +843,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
             return data
         }
 
-        val levels = element.tags["level"]?.toLevelsOrNull()
+        val levels = element.getLevelsOrNull()
 
         viewLifecycleScope.launch {
             val elements = withContext(Dispatchers.IO) { questType.getHighlightedElements(element, ::getMapData) }
             for (e in elements) {
                 // don't highlight "this" element
                 if (element == e) continue
-                // include only elements with the same (=intersecting) level
-                val eLevels = e.tags["level"]?.toLevelsOrNull()
+                // include only elements with the same (=intersecting) level, if any
+                val eLevels = e.getLevelsOrNull()
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) continue
