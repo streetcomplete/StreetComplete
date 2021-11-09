@@ -68,17 +68,3 @@ fun KtMapController.screenBottomToCenterDistance(): Double? {
     val bottom = screenPositionToLatLon(PointF(w/2f, h*1f)) ?: return null
     return center.distanceTo(bottom)
 }
-
-fun Marker.setElementGeometry(geometry: ElementGeometry) {
-    when(geometry) {
-        is ElementPointGeometry -> setPoint(geometry.center)
-        is ElementPolygonsGeometry -> setPolygon(Polygon(
-            geometry.polygons.map { polygon -> polygon.map { it.toLngLat() }},
-            null
-        ))
-        is ElementPolylinesGeometry -> setPolyline(Polyline(
-            geometry.polylines.first().map { it.toLngLat() },
-            null
-        ))
-    }
-}
