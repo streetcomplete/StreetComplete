@@ -854,6 +854,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 // include only elements with the same (=intersecting) level
                 val eLevels = e.tags["level"]?.toLevelsOrNull()
                 if (!levels.levelsIntersect(eLevels)) continue
+                // include only elements with the same layer, if any
+                if (element.tags["layer"] != e.tags["layer"]) continue
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
