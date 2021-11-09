@@ -11,7 +11,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
-          amenity = bench
+          (amenity = bench or leisure = picnic_table)
           and (!area or area = no)
           and !backrest
           and !bench:type
