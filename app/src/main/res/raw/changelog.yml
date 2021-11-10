@@ -3,6 +3,7 @@ v37.1: |
   <li>Fix rare layout issue when creating a note with a photo (#3405, #3474), by @smichel17</li>
   <li>Fix entering brand names when asked what (shop) is here now (#3483)</li>
   <li>The "delete map cache" option in the settings now also deletes the background map (#3475)</li>
+  <li>Don't ask for type of crossing on driveways, even if it is tagged as a crossing</li>
   <li>Some stability fixes</li>
   <li>Translation updates</li>
   </ul>
