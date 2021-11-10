@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekday
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Companion.OSM_ABBR_WEEKDAYS
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
+import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 import java.io.ByteArrayInputStream
 
 /** Returns null if the opening hours string is invalid */
@@ -53,20 +54,13 @@ fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
     return result
 }
 
-/** returns null if the list of rules cannot be displayed by the opening hours widget */
-fun OpeningHoursRuleList.toCollectionTimesRows(): List<OpeningHoursRow>? {
+/** returns null if the list of rules cannot be displayed by the collection times widget */
+fun OpeningHoursRuleList.toCollectionTimesRows(): List<CollectionTimesRow>? {
     if (!isSupportedCollectionTimes()) {
         // parsable, but not supported by StreetComplete
         return null
     }
-
-    val result = mutableListOf<OpeningHoursRow>()
-
-    for (rule in rules) {
-        result.addAll(rule.createOpeningWeekdays())
-    }
-
-    return result
+    return rules.flatMap { it.createCollectionTimesWeekdays() }
 }
 
 /* ---------------------------------- Checks if it is supported --------------------------------- */
@@ -292,6 +286,12 @@ private fun Rule.createOpeningWeekdays(): List<OpeningWeekdaysRow> {
     return timeRanges.map { OpeningWeekdaysRow(weekdays, it) }
 }
 
+private fun Rule.createCollectionTimesWeekdays(): List<CollectionTimesRow> {
+    val weekdays = WeekDayRangesAndHolidays(days, holidays).toWeekdays()
+    val minutes = times!!.map { it.start }
+    return minutes.map { CollectionTimesRow(weekdays, it) }
+}
+
 private fun Rule.createOffDays(): OffDaysRow {
     val weekdays = WeekDayRangesAndHolidays(days, holidays).toWeekdays()
     return OffDaysRow(weekdays)
@@ -332,7 +332,7 @@ private fun List<DateRange>.toMonths(): Months {
 
 private fun TimeSpan.toTimeRange() = TimeRange(
     start,
-    if (end != TimeSpan.UNDEFINED_TIME) end % (24 * 60) else TimeRange.UNDEFINED_TIME,
+    if (end != TimeSpan.UNDEFINED_TIME) end % (24 * 60) else start,
     isOpenEnded
 )
 

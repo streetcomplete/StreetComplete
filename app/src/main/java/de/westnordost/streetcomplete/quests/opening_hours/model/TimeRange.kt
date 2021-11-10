@@ -6,7 +6,7 @@ import java.util.Locale
 
 /** A time range from [start,end). The times are specified in minutes. */
 @Serializable
-data class TimeRange(val start: Int, val end: Int = UNDEFINED_TIME, val isOpenEnded: Boolean = false) : Comparable<TimeRange> {
+data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = false) : Comparable<TimeRange> {
 
     fun intersects(other: TimeRange): Boolean =
         isOpenEnded && other.start >= start ||
@@ -31,7 +31,7 @@ data class TimeRange(val start: Int, val end: Int = UNDEFINED_TIME, val isOpenEn
     fun toStringUsing(locale: Locale, range: String): String {
         val sb = StringBuilder()
         sb.append(timeOfDayToString(locale, start))
-        if (end != UNDEFINED_TIME && (start != end || !isOpenEnded)) {
+        if (start != end || !isOpenEnded) {
             sb.append(range)
             var displayEnd = timeOfDayToString(locale, end)
             if (displayEnd == "00:00") displayEnd = "24:00"
@@ -42,8 +42,4 @@ data class TimeRange(val start: Int, val end: Int = UNDEFINED_TIME, val isOpenEn
     }
 
     override fun toString() = toStringUsing(Locale.GERMANY, "-")
-
-    companion object {
-        const val UNDEFINED_TIME = Int.MIN_VALUE
-    }
 }

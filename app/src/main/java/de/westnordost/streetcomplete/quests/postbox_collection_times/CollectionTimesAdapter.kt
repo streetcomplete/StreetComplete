@@ -13,18 +13,20 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
-import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.util.timeOfDayToString
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class CollectionTimesRow(var weekdays: Weekdays, var time: Int)
 
 class CollectionTimesAdapter(
     private val context: Context,
     private val countryInfo: CountryInfo
 ) : RecyclerView.Adapter<CollectionTimesAdapter.ViewHolder>() {
 
-    var collectionTimesRows: MutableList<OpeningHoursRow> = mutableListOf()
+    var collectionTimesRows: MutableList<CollectionTimesRow> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -45,8 +47,8 @@ class CollectionTimesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val times = collectionTimesRows[position]
-        val previousTimes = if (position > 0) collectionTimesRows[position - 1] as? OpeningWeekdaysRow else null
-        holder.update(times as OpeningWeekdaysRow, previousTimes, isEnabled)
+        val previousTimes = if (position > 0) collectionTimesRows[position - 1] else null
+        holder.update(times, previousTimes, isEnabled)
     }
 
     override fun getItemCount() = collectionTimesRows.size
@@ -72,8 +74,7 @@ class CollectionTimesAdapter(
     }
 
     fun addNewHours() {
-        val rowAbove = if (collectionTimesRows.size > 0) collectionTimesRows[collectionTimesRows.size - 1] else null
-        if (rowAbove !is OpeningWeekdaysRow) return
+        val rowAbove = if (collectionTimesRows.size > 0) collectionTimesRows[collectionTimesRows.size - 1] else return
         openSetTimeDialog(12 * 60) { minutes ->
             add(rowAbove.weekdays, minutes)
         }
@@ -81,8 +82,7 @@ class CollectionTimesAdapter(
 
     private fun add(weekdays: Weekdays, minutes: Int) {
         val insertIndex = itemCount
-        val timeRange = TimeRange(minutes)
-        collectionTimesRows.add(OpeningWeekdaysRow(weekdays, timeRange))
+        collectionTimesRows.add(CollectionTimesRow(weekdays, minutes))
         notifyItemInserted(insertIndex)
     }
 
@@ -99,7 +99,7 @@ class CollectionTimesAdapter(
             }
         }
 
-        fun update(times: OpeningWeekdaysRow, previousTimes: OpeningWeekdaysRow?, isEnabled: Boolean) {
+        fun update(times: CollectionTimesRow, previousTimes: CollectionTimesRow?, isEnabled: Boolean) {
             if (previousTimes != null && times.weekdays == previousTimes.weekdays) {
                 binding.weekdaysLabel.text = ""
             } else {
@@ -112,10 +112,10 @@ class CollectionTimesAdapter(
                     notifyItemChanged(adapterPosition)
                 }
             }
-            binding.hoursLabel.text = times.timeRange.toStringUsing(Locale.getDefault(), "–")
+            binding.hoursLabel.text = timeOfDayToString(Locale.getDefault(), times.time)
             binding.hoursLabel.setOnClickListener {
-                openSetTimeDialog(times.timeRange.start) { minutes ->
-                    times.timeRange = TimeRange(minutes)
+                openSetTimeDialog(times.time) { minutes ->
+                    times.time = minutes
                     notifyItemChanged(adapterPosition)
                 }
             }
