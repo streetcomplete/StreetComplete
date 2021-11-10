@@ -2472,4 +2472,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_fireHydrant_diameter_title">"Jaký průměr je uveden na značce tohoto hydrantu?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Tento průměr vypadá nevědohodně."</string>
     <string name="quest_fireHydrant_confirmation_title">"Opravdu? Někdy lze průměr najít přímo na samotném hydrantu."</string>
+    <string name="quest_diet_answer_no_food">"Nemá žádná jídla"</string>
+    <string name="short_no_answer_on_button">"Ne"</string>
 </resources>

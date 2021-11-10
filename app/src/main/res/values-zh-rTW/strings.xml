@@ -2231,4 +2231,20 @@
     <string name="quest_camera_type_dome">"拱頂"</string>
     <string name="quest_camera_type_fixed">"固定"</string>
     <string name="quest_camera_type_panning">"平移"</string>
+    <string name="about_title_faq">"常見問題"</string>
+    <string name="pref_subtitle_quests_preset_name">"預設組合：%s"</string>
+    <string name="questList_disabled_at_day">"只在晚上出現"</string>
+    <string name="pref_quests_deselect_all">"取消選擇所有任務？"</string>
+    <string name="quest_buildingType_boathouse">"船屋"</string>
+    <string name="action_search">"搜尋"</string>
+    <string name="action_manage_presets">"管理預設組合"</string>
+    <string name="team_mode_team_size_label2">"有多少人在畫地圖呢 ？請在每一個人的手機輸入相同的數字。"</string>
+    <string name="team_mode_choose_color2">"接下來，每一個人要挑選不同的顏色。請選擇你要顏色："</string>
+    <string name="link_organic_maps_description">"為了旅行者、登山客與單車騎士服務，而且能夠離線使用的地圖 app"</string>
+    <string name="quest_kerb_height_no">"完全沒有路緣"</string>
+    <string name="quest_traffic_calming_type_island">"分隔島"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"這直徑數值看來不可能。"</string>
+    <string name="quest_fireHydrant_confirmation_title">"你確定嗎？有時候能直接在消防栓找到直徑的資訊。"</string>
+    <string name="quest_diet_answer_no_food">"這裡沒有食物"</string>
+    <string name="short_no_answer_on_button">"沒有"</string>
 </resources>

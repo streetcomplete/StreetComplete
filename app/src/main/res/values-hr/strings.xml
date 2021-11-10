@@ -1337,4 +1337,10 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_confirmation_title">"Jeste li sigurni? Ponekad je promjer označen i na samom hidrantu."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_diet_answer_no_food">"Nema nikakve hrane"</string>
+
+    <!-- Fuzzy -->
+    <string name="short_no_answer_on_button">"Ne"</string>
 </resources>

@@ -566,7 +566,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_maxheight_height_restrictor_title">"Vilken är höjdbegränsningen?"</string>
     <string name="quest_maxheight_tunnel_title">"Vad är maxhöjden för denna tunnel?"</string>
     <string name="quest_maxheight_answer_noSign">"Det finns ingen skylt…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Är det tillräckligt med utrymme för att även de högsta lastbilarna (minst 4.5 meter) enkelt ska ta sig under?"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Är det tillräckligt med utrymme för att även de högsta lastbilarna (minst 4,5 meter) enkelt ska ta sig under?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Angiven höjd verkar osannolik. Är du säker på att den är korrekt?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Stängd av %1$s, %2$s"</string>
@@ -1025,7 +1025,7 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Vilket underlag har denna sportbana?"</string>
     <string name="quest_bicycle_parking_access_title">"Är det begränsat vem som får parkera en cykel här?"</string>
-    <string name="quest_bicycle_parking_fee_title">"Måste man betala för att parkera en cykel här?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Kostar det att parkera en cykel här?"</string>
     <string name="quest_buildingType_house_description2">"enfamiljsradhus"</string>
     <string name="quest_drinking_water_title">"Är vattnet drickbart här? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drickbart (skyltat)"</string>
@@ -1190,4 +1190,28 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Det är en trappa"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_passage_conversion">"Omvandlad till öppning i stängsel/mur/osv."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_type_gate_conversion">"Omvandlad till grind"</string>
+    <string name="quest_traffic_calming_type_title">"Vad är detta för slags farthinder?"</string>
+    <string name="quest_traffic_calming_type_bump">"Kort gupp"</string>
+    <string name="quest_traffic_calming_type_hump">"Långt gupp"</string>
+    <string name="quest_traffic_calming_type_table">"Förhöjd passage"</string>
+    <string name="quest_traffic_calming_type_cushion">"Vägkudde"</string>
+    <string name="quest_traffic_calming_type_choker">"Avsmalning"</string>
+    <string name="quest_traffic_calming_type_island">"Refug"</string>
+    <string name="quest_traffic_calming_type_chicane">"Sidoförskjutning (chikan)"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Räfflor"</string>
+    <string name="quest_surface_value_concrete_plates">"Betongplattor"</string>
+    <string name="quest_surface_value_concrete_lanes">"Betongkörspår"</string>
+    <string name="quest_fireHydrant_diameter_title">"Vilken diameter står angiven för denna brandpost?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Den diametern verkar osannolik."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Är du säker? Ibland kan diametern stå angiven på själva brandposten."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_diet_answer_no_food">"Ingen mat"</string>
+    <string name="short_no_answer_on_button">"Nej"</string>
 </resources>

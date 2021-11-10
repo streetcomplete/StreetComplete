@@ -44,7 +44,7 @@
     <string name="quest_noteDiscussion_anonymous">"Anonimo"</string>
     <string name="confirmation_discard_title">"Scartare l'input?"</string>
     <string name="confirmation_discard_positive">"Scarta"</string>
-    <string name="confirmation_discard_negative">"Cancella"</string>
+    <string name="confirmation_discard_negative">"Annulla"</string>
     <string name="action_download">"Trova le missioni in zona"</string>
     <string name="action_upload">"Carica risposte"</string>
     <string name="no_changes">"Non hai dato alcuna risposta"</string>
@@ -379,7 +379,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
 
     <!-- Ho modificato questa risposta positiva e quella negativa "Cancel" rispettivamente in "Annulla" e "Non annullare" così da essere simili a quelle usate dai traduttori francesi; esse sono le risposte che può dare l’utente alla domanda "Undo the following last answer?" che è stata tradotta in "Annullare quest'ultima riposta?". Vedi la nota in francese alla voce undo_confirm_negative. -->
     <string name="undo_confirm_positive">"Annulla"</string>
-    <string name="undo_confirm_negative">"Cancella"</string>
+    <string name="undo_confirm_negative">"Annulla"</string>
     <string name="quest_dietType_vegetarian_name_title">"%s ha cibo vegetariano nel menu?"</string>
     <string name="quest_dietType_vegan_name_title">"%s offre cibo vegano nel menu?"</string>
     <string name="quest_hasFeature_only">"Solo"</string>

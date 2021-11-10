@@ -1209,4 +1209,6 @@
     <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Този размер изглежда нереален."</string>
     <string name="quest_fireHydrant_confirmation_title">"Сигурни ли сте? Твърде често диаметърът е посочен на самия хидрант."</string>
+    <string name="quest_diet_answer_no_food">"Без храна"</string>
+    <string name="short_no_answer_on_button">"Не"</string>
 </resources>

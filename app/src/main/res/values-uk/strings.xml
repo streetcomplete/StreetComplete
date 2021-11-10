@@ -1180,4 +1180,19 @@
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Видалити заготовку \"%s\"? Вибір і параметри квесту будуть втрачені безповоротно."</string>
+    <string name="notification_syncing">"Синхронізація даних…"</string>
+    <string name="notification_channel_sync">"Синхронізувати дані"</string>
+    <string name="quest_board_type_sport">"Спорт, Вправи"</string>
+    <string name="quest_generic_hasFeature_optional">"За бажанням"</string>
+    <string name="quest_buildingType_bridge">"Міст між будівлями"</string>
+    <string name="quest_laundrySelfService_title2">"Чи надає ця пральня самообслуговування?"</string>
+    <string name="quest_traffic_calming_type_choker">"Звужена дорога"</string>
+    <string name="quest_traffic_calming_type_island">"Острів"</string>
+    <string name="quest_surface_value_concrete_plates">"Бетонні плити"</string>
+    <string name="quest_surface_value_concrete_lanes">"Бетонні доріжки"</string>
+    <string name="quest_fireHydrant_diameter_title">"Який діаметр вказаний на знаку для цього пожежного гідранта?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Цей діаметр виглядає неправдоподібним."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Ви впевнені?  Іноді діаметр можна знайти на самому гідранті."</string>
+    <string name="quest_diet_answer_no_food">"У ньому немає їжі"</string>
+    <string name="short_no_answer_on_button">"Ні"</string>
 </resources>
