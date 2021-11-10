@@ -133,7 +133,8 @@ fun Rule.isSupportedCollectionTimes(): Boolean =
     // all sub-elements must be supported if specified
     holidays?.all { it.isSupported() } ?: true &&
     days?.all { it.isSupported() } ?: true &&
-    // only time points are supported for collection times
+    // times must be defined, and may not be ranges or something that implies ranges
+    !times.isNullOrEmpty() &&
     times?.all { it.isSupportedCollectionTimes() } ?: true &&
     // months not supported
     dates == null
@@ -188,7 +189,8 @@ fun TimeSpan.isSupportedCollectionTimes(): Boolean =
     interval == 0 &&
     start != TimeSpan.UNDEFINED_TIME &&
     // only support time points
-    end == TimeSpan.UNDEFINED_TIME
+    end == TimeSpan.UNDEFINED_TIME &&
+    !isOpenEnded
 
 /* ------------------------------ Collision/Intersection checking ------------------------------- */
 
