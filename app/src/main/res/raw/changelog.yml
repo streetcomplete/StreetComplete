@@ -1,3 +1,12 @@
+v37.1: |
+  <ul>
+  <li>Fix rare layout issue when creating a note with a photo (#3405, #3474), by @smichel17</li>
+  <li>Fix entering brand names when asked what (shop) is here now (#3483)</li>
+  <li>The "delete map cache" option in the settings now also deletes the background map (#3475)</li>
+  <li>Some stability fixes</li>
+  <li>Translation updates</li>
+  </ul>
+
 v37.0: |
   <h3>New Quests</h3>
   <ul>
