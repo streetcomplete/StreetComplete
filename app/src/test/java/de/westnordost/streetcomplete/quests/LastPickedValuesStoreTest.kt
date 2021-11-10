@@ -1,74 +1,46 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.quests.Letter.*
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import de.westnordost.streetcomplete.view.image_select.Item
 import org.junit.Assert.assertEquals
-import org.junit.Before
 import org.junit.Test
 
 
 class LastPickedValuesStoreTest {
 
-    private lateinit var favs: LastPickedValuesStore<Letter>
-    private val key: String = javaClass.simpleName
-
-    private val allItems = Letter.values().toList().toItems()
-    private val defaultItems = listOf(X, Y, Z).toItems()
-
-    @Before fun setUp() {
-        favs = mock()
+    @Test fun `mostCommonWithin sorts by frequency first, then recency`() {
+        val items = sequenceOf(A, C, B, B, C, D)
+        assertEquals(items.mostCommonWithin(4, 99).toList(), listOf(C, B, A, D))
     }
 
-    @Test fun `weighted sort returns the default items when there is no history`() {
-        on(favs.get(key)).thenReturn(sequenceOf())
-        val returnedItems = favs.getWeighted(key, 4, 99, defaultItems, allItems)
-        assertEquals(defaultItems, returnedItems)
+    @Test fun `mostCommonWithin includes the most recent item even if it is not the most common`() {
+        val items = sequenceOf(A, B, B, B, C, C)
+        assertEquals(items.mostCommonWithin(2, 99).toList(), listOf(B, A))
     }
 
-    @Test fun `weighted sort considers frequency first, then recency, then defaults`() {
-        on(favs.get(key)).thenReturn(sequenceOf("A", "C", "B", "B", "C", "D"))
-        val returnedItems = favs.getWeighted(key, 6, 99, defaultItems, allItems)
-        val expectedItems = listOf(C, B, A, D, X, Y).toItems()
-        assertEquals(expectedItems, returnedItems)
+    @Test fun `mostCommonWithin doesn't return duplicates`() {
+        val items = sequenceOf(A, B, A, B)
+        assertEquals(items.mostCommonWithin(4, 99).toList(), listOf(A, B))
     }
 
-    @Test fun `weighted sort returns most recent item even if it is not the most picked`() {
-        on(favs.get(key)).thenReturn(sequenceOf("A", "B", "B", "B", "C", "C"))
-        val returnedItems = favs.getWeighted(key, 2, 99, defaultItems, allItems)
-        val expectedItems = listOf(B, A).toItems()
-        assertEquals(expectedItems, returnedItems)
+    @Test fun `mostCommonWithin doesn't include the first item if it's null`() {
+        val items = sequenceOf(null, B, null, C)
+        assertEquals(items.mostCommonWithin(2, 99).toList(), listOf(B, C))
     }
 
-    @Test fun `weighted sort doesn't return duplicates`() {
-        on(favs.get(key)).thenReturn(sequenceOf("X", "Y", "X", "A"))
-        val returnedItems = favs.getWeighted(key, 4, 99, defaultItems, allItems)
-        val expectedItems = listOf(X, Y, A, Z).toItems()
-        assertEquals(expectedItems, returnedItems)
+    @Test fun `mostCommonWithin includes nulls in the number of items to count`() {
+        val items = sequenceOf(A, null, null, B, /* stops here */ B, C, D)
+        assertEquals(items.mostCommonWithin(2, 4).toList(), listOf(A, B))
     }
 
-    @Test fun `weighted sort only returns items in itemPool (the most recent is not exempt)`() {
-        on(favs.get(key)).thenReturn(sequenceOf("p", "B", "q", "C"))
-        val returnedItems = favs.getWeighted(key, 2, 99, defaultItems, allItems)
-        val expectedItems = listOf(B, C).toItems()
-        assertEquals(expectedItems, returnedItems)
+    @Test fun `mostCommonWithin keeps counting until enough non-null items have been found`() {
+        val items = sequenceOf(A, null, null, B, B, C, /* stops here */ D)
+        assertEquals(items.mostCommonWithin(3, 4).toList(), listOf(B, A, C))
     }
 
-    @Test fun `weighted sort still counts non-itemPool values in the history window`() {
-        on(favs.get(key)).thenReturn(sequenceOf("A", "p", "q", "B", /**/ "B", "C", "D"))
-        val returnedItems = favs.getWeighted(key, 2, 4, defaultItems, allItems)
-        val expectedItems = listOf(A, B).toItems()
-        assertEquals(expectedItems, returnedItems)
-    }
-
-    @Test fun `weighted sort extends the history window (only) as needed to find enough items`() {
-        on(favs.get(key)).thenReturn(sequenceOf("A", "p", "q", "B", "B", "C", /**/ "D"))
-        val returnedItems = favs.getWeighted(key, 3, 4, defaultItems, allItems)
-        val expectedItems = listOf(B, A, C).toItems()
-        assertEquals(expectedItems, returnedItems)
+    @Test fun `padWith doesn't include duplicates`() {
+        val items = sequenceOf(A, B).padWith(listOf(B, C, D, A))
+        assertEquals(items.toList(), listOf(A, B, C, D))
     }
 }
 
-private enum class Letter { A, B, C, D, X, Y, Z }
-private fun List<Letter>.toItems(): List<Item<Letter>> = this.map(::Item)
+private enum class Letter { A, B, C, D }
