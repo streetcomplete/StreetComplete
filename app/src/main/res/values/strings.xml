@@ -1079,6 +1079,12 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
+    <string name="quest_barrier_bicycle_type_diagonal">Diagonal to the path</string>
+    <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>
+    <string name="quest_barrier_bicycle_type_single">Passage between two barriers</string>
+    <string name="quest_barrier_bicycle_type_double">Chicane - barrier on each side</string>
+    <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
     <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
