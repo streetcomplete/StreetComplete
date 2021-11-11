@@ -5,18 +5,14 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
 class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
 
-    override val elementFilter = """
-        nodes with barrier=cycle_barrier and !cycle_barrier
-    """
+    override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
     override val commitMessage = "Add specific cycle barrier type"
     override val wikiLink = "Key:cycle_barrier"
-    override val icon = R.drawable.ic_quest_barrier // TODO
+    override val icon = R.drawable.ic_quest_bicycle_barrier
     override val isDeleteElementEnabled = true
 
     override val questTypeAchievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
