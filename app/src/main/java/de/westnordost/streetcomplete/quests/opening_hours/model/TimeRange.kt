@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model
 
+import de.westnordost.streetcomplete.util.timeOfDayToString
 import kotlinx.serialization.Serializable
-import java.text.DateFormat
-import java.time.*
 import java.util.Locale
 
 /** A time range from [start,end). The times are specified in minutes. */
@@ -43,13 +42,4 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
     }
 
     override fun toString() = toStringUsing(Locale.GERMANY, "-")
-
-    private fun timeOfDayToString(locale: Locale, minutes: Int): String {
-        val seconds = (minutes % (24*60)) * 60L
-        val todayAt = LocalDateTime.of(LocalDate.now(), LocalTime.ofSecondOfDay(seconds))
-            .atZone(ZoneId.systemDefault())
-            .toInstant()
-            .toEpochMilli()
-        return DateFormat.getTimeInstance(DateFormat.SHORT, locale).format(todayAt)
-    }
 }
