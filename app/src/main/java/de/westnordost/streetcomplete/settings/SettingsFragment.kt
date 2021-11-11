@@ -85,10 +85,15 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
         }
 
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
-            viewLifecycleScope.launch {
-                val hidden = questController.unhideAll()
-                context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-            }
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.restore_dialog_message)
+                .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
+                    val hidden = questController.unhideAll()
+                    context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
+                }}
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+
             true
         }
 

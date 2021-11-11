@@ -510,6 +510,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
+    <string name="restore_confirmation">Restore</string>
+    <string name="restore_dialog_message">Restore all quests you hid before?</string>
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
