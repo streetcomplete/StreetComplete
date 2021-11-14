@@ -240,6 +240,7 @@ quest icons/
     lantern.svg
     laundry.svg
     leaf.svg
+    level.svg
     mail.svg
     mail_ref.svg
     max_width.svg

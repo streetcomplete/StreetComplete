@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
-import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.quests.createMapData
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
@@ -235,19 +234,3 @@ private val NODES2 = listOf<Long>(5,6,7,8,5)
 
 private val POSITIONS1 = ElementPolygonsGeometry(listOf(listOf(P1, P2, P3, P4, P1)), PC)
 private val POSITIONS2 = ElementPolygonsGeometry(listOf(listOf(P5, P6, P7, P8, P5)), PC)
-
-private fun createMapData(elements: Map<Element, ElementGeometry?>): TestMapDataWithGeometry {
-    val result = TestMapDataWithGeometry(elements.keys)
-    for((element, geometry) in elements) {
-        when(element) {
-            is Node ->
-                result.nodeGeometriesById[element.id] = geometry as ElementPointGeometry
-            is Way ->
-                result.wayGeometriesById[element.id] = geometry
-            is Relation ->
-                result.relationGeometriesById[element.id] = geometry
-        }
-    }
-    result.boundingBox = bbox()
-    return result
-}
