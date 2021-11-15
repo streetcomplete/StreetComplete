@@ -170,7 +170,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.16.2")
+    implementation("com.mapzen.tangram:tangram:0.17.0")
 
     // config files
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")

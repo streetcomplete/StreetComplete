@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Context
 import android.hardware.SensorManager
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
