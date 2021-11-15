@@ -11,11 +11,9 @@ import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.distanceTo
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
 
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
@@ -33,43 +31,25 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val bbox = mapData.boundingBox ?: return emptyList()
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.nodes.filter { isApplicableTo(it) }
 
-        val olderThan2Years = TagOlderThan("recycling", RelativeDate(-(365 * 2).toFloat()))
-
-        val containers = mapData.nodes.filter { filter.matches(it) }
-
+    override fun isApplicableTo(element: Element): Boolean =
         /* Only recycling containers that do either not have any recycling:* tag yet or
          * haven't been touched for 2 years and are exclusively recycling types selectable in
          * StreetComplete. */
-        val eligibleContainers = containers.filter {
-            !it.hasAnyRecyclingMaterials() ||
-            (olderThan2Years.matches(it) && !it.hasUnknownRecyclingMaterials())
-        }
-        /* Also, exclude recycling containers right next to another because the user can't know if
-         * certain materials are already recycled in that other container */
-        val containerPositions = LatLonRaster(bbox, 0.0005)
-        for (container in containers) {
-            containerPositions.insert(container.position)
-        }
-
-        val minDistance = 20.0
-        return eligibleContainers.filter { container ->
-            val nearbyBounds = container.position.enclosingBoundingBox(minDistance)
-            val nearbyContainerPositions = containerPositions.getAll(nearbyBounds)
-            // only finds one position = only found self -> no other container is near
-            nearbyContainerPositions.count { container.position.distanceTo(it) <= minDistance } == 1
-        }
-    }
-
-    // can't determine by tags alone because we need info about geometry surroundings
-    override fun isApplicableTo(element: Element): Boolean? =
-        if (!filter.matches(element)) false else null
+        filter.matches(element) &&
+        (
+            !element.hasAnyRecyclingMaterials() ||
+            recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
+        )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with amenity = recycling")
 
     override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, changes: StringMapChangesBuilder) {
         if (answer is RecyclingMaterials) {
@@ -154,6 +134,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         changes.deleteCheckDatesForKey("recycling")
     }
 }
+
+private val recyclingOlderThan2Years =
+    TagOlderThan("recycling", RelativeDate(-(365 * 2).toFloat()))
 
 private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
 

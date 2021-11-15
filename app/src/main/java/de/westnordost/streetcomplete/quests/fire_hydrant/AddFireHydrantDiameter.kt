@@ -4,6 +4,9 @@ package de.westnordost.streetcomplete.quests.fire_hydrant
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
@@ -25,6 +28,9 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with emergency = fire_hydrant")
 
     override fun createForm() = AddFireHydrantDiameterForm()
 

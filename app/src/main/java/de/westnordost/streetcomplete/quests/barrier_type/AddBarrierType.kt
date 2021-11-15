@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddBarrierType : OsmFilterQuestType<BarrierType>() {
 
     override val elementFilter = """
-        nodes with barrier=yes
+        nodes with barrier = yes
          and !man_made
          and !historic
          and !military
