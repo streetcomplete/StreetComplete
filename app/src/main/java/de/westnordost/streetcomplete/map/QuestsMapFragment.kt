@@ -212,6 +212,10 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.delete(geometry)
     }
 
+    override fun clearMarkersForCurrentQuest() {
+        geometryMarkersMapComponent?.clear()
+    }
+
     /* --------------------- Switching between quests and edit history pins --------------------- */
 
     private fun updatePinMode() {

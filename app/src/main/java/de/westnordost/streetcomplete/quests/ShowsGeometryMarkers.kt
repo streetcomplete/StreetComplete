@@ -10,4 +10,6 @@ interface ShowsGeometryMarkers {
         title: String?
     )
     fun deleteMarkerForCurrentQuest(geometry: ElementGeometry)
+
+    fun clearMarkersForCurrentQuest()
 }
