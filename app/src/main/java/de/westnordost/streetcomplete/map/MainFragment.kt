@@ -581,8 +581,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onLocationChanged(location: Location) {
-        binding.gpsTrackingButton.state = LocationState.UPDATING
-        updateLocationPointerPin()
+        viewLifecycleScope.launch {
+            binding.gpsTrackingButton.state = LocationState.UPDATING
+            updateLocationPointerPin()
+        }
     }
 
     //endregion

@@ -1,3 +1,25 @@
+v38.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What type of bicycle barrier is this?</i> (#3361, #3487), by @matkoniecz</li>
+  </ul>
+  <h3>Quest Enhancements</h3>
+  <ul>
+  <li>Also ask for the street address for buildings with no number but a name (#3457), by @arrival-spring</li>
+  <li>On resurveying postbox collection times, show current collection times (#2105, #2986), by @eginhard</li>
+  <li>Clarify some wordings (#3227, #3483, #3429), by @matkoniecz</li>
+  </ul>
+
+v37.1: |
+  <ul>
+  <li>Fix rare layout issue when creating a note with a photo (#3405, #3474), by @smichel17</li>
+  <li>Fix entering brand names when asked what (shop) is here now (#3483)</li>
+  <li>The "delete map cache" option in the settings now also deletes the background map (#3475)</li>
+  <li>Don't ask for type of crossing on driveways, even if it is tagged as a crossing</li>
+  <li>Some stability fixes</li>
+  <li>Translation updates</li>
+  </ul>
+
 v37.0: |
   <h3>New Quests</h3>
   <ul>
@@ -371,7 +393,7 @@ v31.1: |
   <h3>Enhancements</h3>
   <ul>
   <li>Always show notes on the map that contain "#surveyme" (#2641)</li>
-  <li>Do not ask if a foot+cycle path is segregated if it alreay has a sidewalk (#2644)</li>
+  <li>Do not ask if a foot+cycle path is segregated if it already has a sidewalk (#2644)</li>
   <li>Ask for opening hours and wheelchair eligibility for consulates and other diplomatic offices (#2645)</li>
   </ul>
 
@@ -531,7 +553,7 @@ v28.1: |
   <li>Cycleways: Improve visibility of "no cycleway" option, by @matkoniecz (#2385, #2404, #2285)</li>
   <li>Street address: Allow tapping on footways, paths, ... (#2411)</li>
   <li>Street address: Do not ask for vertices of an address interpolation line that already has a street set, by @matkoniecz (#2417)</li>
-  <li>Parking access: Do not ask for parking acces for street side and lane parking, by @jdhoek (#2408)</li>
+  <li>Parking access: Do not ask for parking access for street side and lane parking, by @jdhoek (#2408)</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
@@ -1722,7 +1744,7 @@ v3.6: |
   <ul>
   <li>fix country-detection of Arunchal Pradesh</li>
   <li>disable max-speed quest for the United States (#813)</li>
-  <li>fix undo not working when conflict arised during upload (#812)</li>
+  <li>fix undo not working when conflict arose during upload (#812)</li>
   <li>fix clearing quest changes on undo (bug had no adverse effect)</li>
   <li>updated translations</li>
   </ul>

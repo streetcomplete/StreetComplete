@@ -9,3 +9,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 202
 officialLanguages: [el]
 orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry, chestnut, walnut, almond, plum]
+slowZoneLabelPosition: top
+slowZoneLabelText: ΠΕΡΙΟΧΗ

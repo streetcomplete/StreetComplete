@@ -2477,4 +2477,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Chcete odstrániť predvoľbu „%s“? Výber úlohy a poradie pre ňu budú nenávratne stratené."</string>
+    <string name="notification_syncing">"Synchronizácia údajov…"</string>
+    <string name="quest_generic_hasFeature_optional">"Voliteľne"</string>
 </resources>

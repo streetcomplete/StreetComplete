@@ -4,7 +4,7 @@ atmOperators: [Банка ДСК, ОББ, Fibank, ДСК, УниКредит Б�
 chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
 clothesContainerOperators: [БЧК, texcycle]
 isLivingStreetKnown: true
-isSlowZoneKnown: true
+isSlowZoneKnown: false
 mobileCountryCode: 284
 officialLanguages: [bg]
 orchardProduces: [grape, tomato, pepper, plum, apple, peach, apricot, raspberry, strawberry, walnut, cherry, pear, chilli_pepper, sweet_pepper, almond, chestnut]

@@ -6,12 +6,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.opening_hours.parser.toCollectionTimesRows
+import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -23,22 +26,39 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
     override val contentLayoutResId = R.layout.quest_collection_times
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
 
+    override val buttonPanelAnswers get() =
+        if(isDisplayingPreviousCollectionTimes) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+            AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                applyAnswer(CollectionTimes(osmElement!!.tags["collection_times"]!!.toOpeningHoursRules()!!))
+            }
+        )
+        else emptyList()
+
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }
     )
 
     private lateinit var collectionTimesAdapter: CollectionTimesAdapter
 
+    private var isDisplayingPreviousCollectionTimes: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewData = loadCollectionTimesData(savedInstanceState)
-        collectionTimesAdapter = CollectionTimesAdapter(viewData, requireContext(), countryInfo)
-        collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+        collectionTimesAdapter = CollectionTimesAdapter(requireContext(), countryInfo)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (savedInstanceState != null) {
+            onLoadInstanceState(savedInstanceState)
+        } else {
+            initStateFromTags()
+        }
+
+        collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
 
         binding.collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.collectionTimesList.adapter = collectionTimesAdapter
@@ -70,8 +90,21 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
         }
     }
 
-    private fun loadCollectionTimesData(savedInstanceState: Bundle?): List<WeekdaysTimesRow> =
-        savedInstanceState?.let { Json.decodeFromString(it.getString(TIMES_DATA)!!) } ?: listOf()
+    private fun initStateFromTags() {
+        val ct = osmElement!!.tags["collection_times"]
+        val rows = ct?.toOpeningHoursRules()?.toCollectionTimesRows()
+        if (rows != null) {
+            collectionTimesAdapter.collectionTimesRows = rows.toMutableList()
+            setAsResurvey(true)
+        } else {
+            setAsResurvey(false)
+        }
+    }
+
+    private fun onLoadInstanceState(savedInstanceState: Bundle) {
+        collectionTimesAdapter.collectionTimesRows = Json.decodeFromString(savedInstanceState.getString(TIMES_DATA)!!)
+        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_TIMES))
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -82,6 +115,13 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
         applyAnswer(CollectionTimes(collectionTimesAdapter.createCollectionTimes()))
     }
 
+    private fun setAsResurvey(resurvey: Boolean) {
+        collectionTimesAdapter.isEnabled = !resurvey
+        isDisplayingPreviousCollectionTimes = resurvey
+        binding.addTimesButton.isGone = resurvey
+        updateButtonPanel()
+    }
+
     private fun confirmNoTimes() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
@@ -90,9 +130,10 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
             .show()
     }
 
-    override fun isFormComplete() = collectionTimesAdapter.createCollectionTimes().isNotEmpty()
+    override fun isFormComplete() = collectionTimesAdapter.collectionTimesRows.isNotEmpty() && !isDisplayingPreviousCollectionTimes
 
     companion object {
         private const val TIMES_DATA = "times_data"
+        private const val IS_DISPLAYING_PREVIOUS_TIMES = "ct_is_displaying_previous_times"
     }
 }

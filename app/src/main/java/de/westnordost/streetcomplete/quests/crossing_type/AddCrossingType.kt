@@ -33,7 +33,8 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
 
     private val excludedWaysFilter by lazy { """
         ways with
-          highway and access ~ private|no
+          highway = service and service = driveway
+          or highway and access ~ private|no
     """.toElementFilterExpression()}
 
     override val commitMessage = "Add crossing type"

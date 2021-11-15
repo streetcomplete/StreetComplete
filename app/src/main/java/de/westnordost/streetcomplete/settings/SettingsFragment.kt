@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -28,6 +29,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.ktx.purge
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.*
@@ -76,17 +78,22 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> viewLifecycleScope.launch { deleteCache() }}
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() }}
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             true
         }
 
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
-            viewLifecycleScope.launch {
-                val hidden = questController.unhideAll()
-                context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-            }
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.restore_dialog_message)
+                .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
+                    val hidden = questController.unhideAll()
+                    context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
+                }}
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+
             true
         }
 
@@ -147,6 +154,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
     }
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
+        context?.externalCacheDir?.purge()
         downloadedTilesDao.removeAll()
         mapDataController.clear()
         noteController.clear()

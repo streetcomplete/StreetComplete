@@ -2,8 +2,11 @@
 additionalStreetsignLanguages: [en]
 centerLine: white
 isLeftHandTraffic: true
+isSlowZoneKnown: true
 mobileCountryCode: 455
 officialLanguages: [zh, pt]
 orchardProduces: [pepper]
 popularReligions: [chinese_folk, taoist, bhuddist]
 shoulderLine: yellow
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONA

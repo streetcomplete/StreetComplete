@@ -40,7 +40,10 @@ class ShopGoneDialog(
 
         radioButtons = listOf(binding.vacantRadioButton, binding.replaceRadioButton, binding.leaveNoteRadioButton)
         for (radioButton in radioButtons) {
-            radioButton.setOnClickListener { selectRadioButton(it) }
+            radioButton.setOnClickListener {
+                selectRadioButton(it)
+                binding.presetsEditText.error = null
+            }
         }
 
         binding.presetsEditText.setAdapter(SearchAdapter(context, { term -> getFeatures(term) }, { it.name }))
@@ -71,7 +74,7 @@ class ShopGoneDialog(
                 R.id.replaceRadioButton -> {
                     val feature = getSelectedFeature()
                     if (feature == null) {
-                        binding.presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error)
+                        binding.presetsEditText.error = context.resources.getText(R.string.quest_shop_gone_replaced_answer_error2)
                     } else {
                         onSelectedFeature(feature.addTags)
                         dismiss()

@@ -1112,9 +1112,9 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_traffic_calming_type_rumble_strip">"Rumble strip(s)"</string>
     <string name="quest_surface_value_concrete_plates">"Concrete plates"</string>
     <string name="quest_surface_value_concrete_lanes">"Concrete lanes"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_diameter_title">"What diameter is on this fire hydrant’s sign?"</string>
+    <string name="quest_fireHydrant_diameter_title">"What diameter is specified on the sign for this fire hydrant?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"This diameter looks implausible."</string>
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
+    <string name="quest_diet_answer_no_food">"It has no food"</string>
+    <string name="short_no_answer_on_button">"No"</string>
 </resources>

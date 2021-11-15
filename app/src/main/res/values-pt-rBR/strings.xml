@@ -2285,4 +2285,13 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_dietType_halal_name_title">"%s oferece produtos Halal?"</string>
     <string name="quest_dietType_explanation_halal">"Os produtos Halal devem ser preparados de acordo com regras especiais, com agências de certificação Halal marcando os produtos em conformidade."</string>
     <string name="quest_picnicTableCover_title">"Esta mesa de piquenique está coberta (protegida da chuva)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Esta parte são etapas"</string>
+    <string name="quest_barrier_type_passage_conversion">"Convertido em uma passagem, em uma parede/cerca/etc."</string>
+    <string name="quest_barrier_type_gate_conversion">"Convertido em um portão"</string>
+    <string name="quest_traffic_calming_type_island">"Ilha"</string>
+    <string name="quest_fireHydrant_diameter_title">"Qual diâmetro está especificado no sinal para este hidrante?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diâmetro parece implausível."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Você tem certeza? Às vezes, o diâmetro pode ser encontrado no próprio hidrante."</string>
+    <string name="quest_diet_answer_no_food">"Não tem comida"</string>
+    <string name="short_no_answer_on_button">"Não"</string>
 </resources>

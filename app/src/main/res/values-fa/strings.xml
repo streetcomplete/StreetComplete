@@ -2457,4 +2457,22 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"این‌ها مراحل هستند"</string>
+    <string name="quest_barrier_type_passage_conversion">"تبدیل به گذرگاه بر روی دیوار/حصار/غیره."</string>
+    <string name="quest_barrier_type_gate_conversion">"تبدیل به دروازه"</string>
+    <string name="quest_traffic_calming_type_title">"این چه نوع سرعتگیری است؟"</string>
+    <string name="quest_traffic_calming_type_bump">"برآمدگی (کوتاه)"</string>
+    <string name="quest_traffic_calming_type_hump">"قوز (بلند)"</string>
+    <string name="quest_traffic_calming_type_table">"تخت (برآمدگی صفحه ای)"</string>
+    <string name="quest_traffic_calming_type_cushion">"بالشتک (برای وسایل نقلیه عریض ناهموار نیست)"</string>
+    <string name="quest_traffic_calming_type_choker">"جاده باریک"</string>
+    <string name="quest_traffic_calming_type_island">"جزیره"</string>
+    <string name="quest_traffic_calming_type_chicane">"پیچ(های) مصنوعی"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"نوار (های) صوتی"</string>
+    <string name="quest_surface_value_concrete_plates">"صفحات بتنی"</string>
+    <string name="quest_surface_value_concrete_lanes">"خطوط بتنی"</string>
+    <string name="quest_fireHydrant_diameter_title">"چه قطری روی تابلوی این شیر آتش نشانی مشخص شده است؟"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"این قطر غیر قابل قبول به نظر می رسد."</string>
+    <string name="quest_fireHydrant_confirmation_title">"مطمئنید؟ گاهی اوقات می توان قطر را روی خود شیر یافت."</string>
+    <string name="quest_diet_answer_no_food">"خوراک ندارد"</string>
+    <string name="short_no_answer_on_button">"خیر"</string>
 </resources>

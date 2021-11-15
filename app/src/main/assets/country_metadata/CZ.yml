@@ -10,3 +10,5 @@ mobileCountryCode: 230
 officialLanguages: [cs]
 orchardProduces: [apple, grape, tomato, hop, pear, plum, strawberry, cherry, chilli_pepper, sweet_pepper, apricot, peach, walnut, raspberry]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZÓNA

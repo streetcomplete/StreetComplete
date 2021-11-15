@@ -99,7 +99,7 @@
     <string name="confirmation_discard_positive">"Kassér"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Afbryd"</string>
+    <string name="confirmation_discard_negative">"Annuller"</string>
 
     <!-- Fuzzy -->
     <string name="action_download">"Søg efter opgaver her"</string>
@@ -2232,6 +2232,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etager, over jorden, har denne del af bygningen?"</string>
     <string name="quest_crossing_title">"Er der en kantsten hvor disse veje møder hinanden? Hvilken slags?"</string>
     <string name="default_disabled_msg_roofShape">"Denne opgavetype er slået fra som standard, da formen på bygningers tage kan være svære at se fra gadeplan. Opgavetypen er også meget tidskrævende; ofte er det nemmere og mere effektivt at kortlægge dette udfra luftfotos derhjemme."</string>
+    <string name="quest_construction_steps_title">"Er disse trin færdiglavede?"</string>
     <string name="questList_disabled_at_day">"Kun vist om natten?"</string>
     <string name="pref_quests_deselect_all">"Fjern alle"</string>
     <string name="quest_buildingType_boathouse">"Bådhus"</string>
@@ -2241,8 +2242,22 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Hvor mange personer deltager i kortlægningen? Indtast det samme antal på alle deltageres telefoner."</string>
     <string name="team_mode_choose_color2">"Hver person skal nu vælge hver deres farve. Vælg din:"</string>
+    <string name="link_organic_maps_description">"Kort-apps der virker offline til rejsende, vandrere og cyklister"</string>
     <string name="quest_kerb_height_no">"Ingen kantsten"</string>
+    <string name="quest_bollard_type_removable">"Flytbar (med eller uden nøgle)"</string>
     <string name="no_search_results">"Intet fundet"</string>
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Valgt"</string>
+    <string name="notification_syncing">"Synkroniserer data..."</string>
+    <string name="notification_channel_sync">"Synkroniser data"</string>
+    <string name="quest_buildingType_bridge">"Gangbro mellem bygninger"</string>
+    <string name="quest_laundrySelfService_title2">"Er der selvbetjening i dette vaskeri?"</string>
+    <string name="quest_picnicTableCover_title">"Er dette picnicbord overdækket (beskyttet mod regn)?"</string>
+    <string name="quest_traffic_calming_type_choker">"Vejen er indsnævret"</string>
+    <string name="quest_traffic_calming_type_island">"Helleanlæg"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Rumlestribe(r)"</string>
+    <string name="quest_surface_value_concrete_plates">"Betonplader"</string>
+    <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Nogle gange kan diameteren findes på brandhanen selv"</string>
+    <string name="quest_diet_answer_no_food">"Man kan ikke købe mad"</string>
+    <string name="short_no_answer_on_button">"Nej"</string>
 </resources>

@@ -1768,7 +1768,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="achievements_empty">"你还没有成就"</string>
     <string name="links_empty">"你还没有链接"</string>
     <string name="quests_empty">"你还没有发布任何任务的答案"</string>
-    <string name="unsynced_quests_description">"还要 %d 个未推送的变更。"</string>
+    <string name="unsynced_quests_description">"还有 %d 个未推送的变更。"</string>
     <string name="unsynced_quests_not_logged_in_description">"你有%d处改变尚未发布。你需要登录以上传它们。"</string>
     <string name="user_quests_title">"已解决任务"</string>
     <string name="user_achievements_title">"成就"</string>
@@ -1855,7 +1855,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="achievement_pedestrian_title">"跑步者"</string>
     <string name="achievement_pedestrian_solved_X">"你完成了%d项与步行人群相关的任务。"</string>
     <string name="achievement_veg_title">"素食者"</string>
-    <string name="achievement_veg_solved_X">"你完成了%d项与素食人群相关的任务。"</string>
+    <string name="achievement_veg_solved_X">"你完成了 %d 项与素食人群相关的任务。"</string>
     <string name="achievement_car_title">"在路上"</string>
 
     <!-- Fuzzy -->
@@ -2117,7 +2117,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside_regional_warning">"这种任务类型在默认情况下是禁用的，因为它在某些地区没有用处，你很可能要进入这个地方才能回答这种类型的任务。"</string>
-    <string name="quest_dietType_kosher_name_title">"%s有提供犹太教洁食产品吗？"</string>
+    <string name="quest_dietType_kosher_name_title">"%s 有提供犹太教洁食产品吗？"</string>
     <string name="quest_dietType_explanation_kosher">"必须依依阿拉伯教规规矩准备，并附上饮食教规规矩，并附上饮食教规认证机构标章确保其饮食从教。"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"完全没有自行车道"</string>
 
@@ -2378,4 +2378,25 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_board_type_sport">"运动，锻炼"</string>
+    <string name="quest_generic_hasFeature_optional">"可选的"</string>
+    <string name="quest_buildingType_bridge">"位于建筑之间的桥梁（人行天桥）"</string>
+    <string name="quest_laundrySelfService_title2">"这个洗衣房提供自助服务吗？"</string>
+    <string name="quest_dietType_halal_name_title">"%s 有提供清真制品吗？"</string>
+    <string name="quest_dietType_explanation_halal">"清真制品必须按照特殊规则准备，并由清真认证机构对符合要求的产品进行标识。"</string>
+    <string name="quest_picnicTableCover_title">"野餐桌有遮蔽吗（不受雨淋）？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_title">"这个交通宁静化设施属于哪种？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_bump">"减速带（较窄）"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_hump">"减速丘（较宽）"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_choker">"缩窄的路"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_diet_answer_no_food">"它不提供餐点"</string>
 </resources>

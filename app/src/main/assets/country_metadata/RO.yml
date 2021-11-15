@@ -9,3 +9,5 @@ mobileCountryCode: 226
 officialLanguages: [ro]
 orchardProduces: [grape, tomato, plum, apple, chilli_pepper, sweet_pepper, cherry, pear, walnut, apricot, strawberry, peach, cranberry, hazelnut, blueberry, hop]
 popularSports: [soccer, tennis, basketball, handball]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONA

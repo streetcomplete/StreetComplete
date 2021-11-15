@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupported
+import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
 
@@ -146,7 +146,7 @@ class AddOpeningHours (
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
-        return rules.isSupported()
+        return rules.isSupportedOpeningHours()
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

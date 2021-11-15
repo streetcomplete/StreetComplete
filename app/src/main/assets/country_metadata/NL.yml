@@ -9,3 +9,5 @@ officialLanguages: [nl]
 orchardProduces: [tomato, chilli_pepper, sweet_pepper, pear, apple, strawberry, blueberry, raspberry, plum, cherry, grape]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

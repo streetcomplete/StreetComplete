@@ -9,3 +9,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 248
 officialLanguages: [et]
 orchardProduces: [apple, tomato, strawberry, plum, raspberry, cherry]
+slowZoneLabelPosition: top
+slowZoneLabelText: ALA

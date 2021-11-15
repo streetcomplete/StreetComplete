@@ -54,7 +54,7 @@ private val allowedKeysOnKerbNodeRegexes = getLastCheckDateKeys(".*").map { it.t
  *  If any node **could** be a kerb, this would lead to an unacceptable performance hit when any
  *  node is updated due to an answered quest. See
  *  https://github.com/streetcomplete/StreetComplete/pull/3104#issuecomment-889833381 for more
- *  details ony why this function exists */
+ *  details on why this function exists */
 fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
     key in allowedKeysOnKerbNode || allowedKeysOnKerbNodeRegexes.any { regex -> regex.matches(key) }
 }

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsR
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
+import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 
 @JvmName("openingHoursRowsToOpeningHoursRules")
 fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
@@ -58,15 +59,55 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
     }
 
-    // if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
-    // additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00"
+    /* if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
+       additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00" */
     if (rules.weekdaysCollideWithAnother()) {
-        for (rule in rules) {
-            // "off" rules stay non-additive
-            if (rule.modifier?.isSimpleOff() != true) {
-                rule.isAdditive = true
-            }
+        rules.makeAdditive()
+    }
+
+    return OpeningHoursRuleList(rules)
+}
+
+@JvmName("makeAdditiveInRuleList")
+private fun List<Rule>.makeAdditive() {
+    for (rule in this) {
+        // "off" rules stay non-additive
+        if (rule.modifier?.isSimpleOff() != true) {
+            rule.isAdditive = true
         }
+    }
+}
+
+@JvmName("collectionTimesRowsToOpeningHoursRules")
+fun List<CollectionTimesRow>.toOpeningHoursRules(): OpeningHoursRuleList {
+    val rules = mutableListOf<Rule>()
+
+    var currentWeekdays: WeekDayRangesAndHolidays? = null
+    var currentTimeSpans: MutableList<TimeSpan> = mutableListOf()
+
+    for (row in this) {
+        val time = row.time
+        val weekdays =
+            if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+            else WeekDayRangesAndHolidays()
+
+        // new weekdays -> new rule
+        if (currentWeekdays != null && weekdays != currentWeekdays) {
+            rules.add(createRule(null, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+            currentTimeSpans = mutableListOf()
+        }
+
+        currentTimeSpans.add(time.toTimeSpan())
+        currentWeekdays = weekdays
+    }
+    if (currentWeekdays != null) {
+        rules.add(createRule(null, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+    }
+
+    /* if any rule collides with another, e.g. "Mo-Fr 10:00; We 14:00", switch to
+       additive rules e.g. "Mo-Fr 10:00, We 14:00" */
+    if (rules.weekdaysCollideWithAnother()) {
+        rules.makeAdditive()
     }
 
     return OpeningHoursRuleList(rules)
@@ -95,6 +136,10 @@ private fun createOffRule(
     r.days = weekDayRanges?.toMutableList()
     r.holidays = holidays?.toMutableList()
     r.modifier = RuleModifier().also { it.modifier = RuleModifier.Modifier.OFF }
+}
+
+private fun Int.toTimeSpan() = TimeSpan().also {
+    it.start = this
 }
 
 private fun TimeRange.toTimeSpan() = TimeSpan().also {

@@ -9,3 +9,5 @@ isSlowZoneKnown: true
 mobileCountryCode: 242
 officialLanguages: [nb, nn, no]
 orchardProduces: [apple, tomato, strawberry, raspberry, plum, cherry, pear, blueberry]
+slowZoneLabelPosition: top
+slowZoneLabelText: Sone
