@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
@@ -19,9 +20,9 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
     private val filter by lazy { ("""
         nodes with amenity = post_box
-        and access !~ private|no
-        and collection_times:signed != no
-        and (!collection_times or collection_times older today -2 years)
+          and access !~ private|no
+          and collection_times:signed != no
+          and (!collection_times or collection_times older today -2 years)
     """).toElementFilterExpression() }
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
@@ -90,7 +91,10 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         return rules.isSupportedCollectionTimes()
     }
 
-    override fun createForm() = AddCollectionTimesForm()
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with amenity = post_box")
+
+    override fun createForm() = AddPostboxCollectionTimesForm()
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, changes: StringMapChangesBuilder) {
         when(answer) {

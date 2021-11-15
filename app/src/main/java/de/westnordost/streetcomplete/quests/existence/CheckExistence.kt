@@ -102,6 +102,18 @@ class CheckExistence(
         (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
         && hasAnyName(element.tags)
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+        /* put markers for objects that are exactly the same as for which this quest is asking for
+           e.g. it's a ticket validator? -> display other ticket validators. Etc. */
+        val feature = featureDictionaryFuture.get()
+            .byTags(element.tags)
+            .isSuggestion(false) // not brands
+            .find()
+            .firstOrNull() ?: return emptySequence()
+
+        return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
+    }
+
     override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
@@ -116,3 +128,5 @@ class CheckExistence(
     private fun hasAnyName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }
+
+private fun <X,Y> Map<X,Y>.containsAll(other: Map<X,Y>) = other.all { this[it.key] == it.value }

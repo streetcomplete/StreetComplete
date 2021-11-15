@@ -21,7 +21,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 
-class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
+class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)

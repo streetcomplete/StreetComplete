@@ -15,7 +15,7 @@ import kotlin.math.min
 import kotlin.math.roundToLong
 
 /** Display element geometry and enables focussing on given geometry */
-class ElementGeometryMapComponent(private val ctrl: KtMapController) {
+class FocusGeometryMapComponent(private val ctrl: KtMapController) {
 
     private val geometryLayer: MapData = ctrl.addDataLayer(GEOMETRY_LAYER)
 
