@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/levelButtonsContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:flexWrap="wrap"
-    app:justifyContent="center"
-    app:showDivider="middle"
-    app:dividerDrawable="@drawable/space_8dp"/>
+    android:orientation="vertical">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/levelSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:singleSelection="true"
+        android:layout_marginBottom="24dp"/>
+
+</LinearLayout>

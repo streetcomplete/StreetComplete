@@ -37,7 +37,6 @@ class AddLevel : OsmElementQuestType<String> {
          and !level and (name or brand)
     """.toElementFilterExpression()}
 
-
     override val commitMessage = "Add level to shops"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level

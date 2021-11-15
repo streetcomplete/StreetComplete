@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.osm.Level
+import de.westnordost.streetcomplete.osm.LevelRange
+import de.westnordost.streetcomplete.osm.SingleLevel
 import de.westnordost.streetcomplete.osm.toLevelsOrNull
 
 fun Element.copy(
@@ -78,4 +80,19 @@ fun Element.getLevelsOrNull(): List<Level>? {
     } else {
         if (repeatOns == null) levels else levels + repeatOns
     }
+}
+
+/** Return all levels of these elements, sorted ascending */
+fun Iterable<Element>.getSelectableLevels(): List<Double> {
+    val allLevels = mutableSetOf<Double>()
+    for (e in this) {
+        val levels = e.getLevelsOrNull() ?: continue
+        for (level in levels) {
+            when(level) {
+                is LevelRange -> allLevels.addAll(level.getSelectableLevels())
+                is SingleLevel -> allLevels.add(level.level)
+            }
+        }
+    }
+    return allLevels.sorted()
 }

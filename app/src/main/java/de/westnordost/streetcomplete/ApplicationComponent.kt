@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.quests.QuestModule
 import de.westnordost.streetcomplete.quests.SplitWayFragment
 import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm
+import de.westnordost.streetcomplete.quests.level.AddLevelForm
 import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOnewayForm
@@ -111,4 +112,5 @@ interface ApplicationComponent {
     fun inject(editHistoryFragment: EditHistoryFragment)
     fun inject(questPresetsFragment: QuestPresetsFragment)
     fun inject(cleanerWorker: CleanerWorker)
+    fun inject(addLevelForm: AddLevelForm)
 }
