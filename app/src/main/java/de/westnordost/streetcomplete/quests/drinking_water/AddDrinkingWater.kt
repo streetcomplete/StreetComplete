@@ -39,7 +39,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
              or man_made = water_well
              or natural = spring
              or amenity = drinking_water
-            """)
+        """)
 
     override fun createForm() = AddDrinkingWaterForm()
 
