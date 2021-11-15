@@ -455,6 +455,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment?.deleteMarkerForCurrentQuest(geometry)
     }
 
+    override fun clearMarkersForCurrentQuest() {
+        mapFragment?.clearMarkersForCurrentQuest()
+    }
+
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
 
     override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>) {
@@ -860,7 +864,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
-                putMarkerForCurrentQuest(geometry, icon, e.tags["name"] ?: e.tags["brand"])
+                val title = e.tags["name"] ?: e.tags["brand"]
+                putMarkerForCurrentQuest(geometry, icon, title)
             }
         }
     }

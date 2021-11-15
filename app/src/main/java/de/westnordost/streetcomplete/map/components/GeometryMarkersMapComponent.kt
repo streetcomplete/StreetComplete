@@ -63,10 +63,14 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         // text marker
         if (title != null) {
             val marker = ctrl.addMarker()
+            val escapedTitle = title
+                .replace('\n', ' ')
+                .replace("'", "''")
+                .replace("\"", "\\\"")
             marker.setStylingFromString("""
             {
                 style: 'text',
-                text_source: "function() { return '$title'; }",
+                text_source: 'function() { return "$escapedTitle"; }',
                 anchor: "bottom",
                 priority: 1,
                 font: {
