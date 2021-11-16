@@ -2,13 +2,19 @@ v38.0-beta1: |
   <h3>New Quests</h3>
   <ul>
   <li><i>What type of bicycle barrier is this?</i> (#3361, #3487), by @matkoniecz</li>
+  <li><i>On which level is ... located?</i> (#1487, #3509)</li>
   </ul>
   <h3>Quest Enhancements</h3>
   <ul>
+  <li>Nearby elements of the same type are now shown in context when answering various quests (#3480, #3338, #2354)</li>
   <li>Also ask for the street address for buildings with no number but a name (#3457), by @arrival-spring</li>
   <li>On resurveying postbox collection times, show current collection times (#2105, #2986), by @eginhard</li>
   <li>Clarify some wordings (#3227, #3483, #3429), by @matkoniecz</li>
+  <li>Other small UX enhancements (#3432)</li>
   </ul>
+
+v37.2:
+  <p>Fix a common crash issue when opening certain quests (#3504, #3506, #3510, #3511)</p>
 
 v37.1: |
   <ul>
