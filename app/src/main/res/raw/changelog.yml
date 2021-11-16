@@ -7,6 +7,7 @@ v38.0-beta1: |
   <h3>Quest Enhancements</h3>
   <ul>
   <li>Nearby elements of the same type are now shown in context when answering various quests (#3480, #3338, #2354)</li>
+  <li>Also ask for barriers on a pedestrian railway crossing (#3277)</li>
   <li>Also ask for the street address for buildings with no number but a name (#3457), by @arrival-spring</li>
   <li>On resurveying postbox collection times, show current collection times (#2105, #2986), by @eginhard</li>
   <li>Clarify some wordings (#3227, #3483, #3429), by @matkoniecz</li>
