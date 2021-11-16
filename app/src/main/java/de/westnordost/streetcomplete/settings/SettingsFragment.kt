@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -28,10 +29,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.ktx.purge
-import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.ktx.*
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
@@ -103,6 +101,27 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             startActivity(Intent(context, ShowQuestFormsActivity::class.java))
             true
         }
+
+        buildLanguageSelector()
+    }
+
+    private fun buildLanguageSelector() {
+        val entryValues = resources.getYamlObject<List<String>>(R.raw.languages).toMutableList()
+        val entries = entryValues.map {
+            val locale = Locale.forLanguageTag(it)
+            val name = locale.displayName
+            val nativeName = locale.getDisplayName(locale)
+            return@map nativeName + if (name != nativeName) " — $name" else ""
+        }.toMutableList()
+
+        // add default as first element
+        entryValues.add(0, "")
+        entries.add(0, getString(R.string.theme_system_default))
+
+        findPreference<ListPreference>("language.select")?.also {
+            it.entries = entries.toTypedArray()
+            it.entryValues = entryValues.toTypedArray()
+        }
     }
 
     override fun onStart() {
@@ -134,6 +153,9 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             Prefs.THEME_SELECT -> {
                 val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+                activity?.let { ActivityCompat.recreate(it) }
+            }
+            Prefs.LANGUAGE_SELECT -> {
                 activity?.let { ActivityCompat.recreate(it) }
             }
             Prefs.RESURVEY_INTERVALS -> {

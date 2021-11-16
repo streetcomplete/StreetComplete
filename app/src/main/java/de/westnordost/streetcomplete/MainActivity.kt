@@ -14,7 +14,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import androidx.fragment.app.commit
@@ -52,7 +51,7 @@ import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
     MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
 
 	@Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
