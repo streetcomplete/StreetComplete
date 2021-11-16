@@ -44,7 +44,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         favs = LastPickedValuesStore(
             PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
             key = javaClass.simpleName,
-            serialize = { item -> listOfNotNull(item.levels, item.roofLevels).joinToString("#") },
+            serialize = { listOfNotNull(it.levels, it.roofLevels).joinToString("#") },
             deserialize = { value ->
                 value.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
             }
