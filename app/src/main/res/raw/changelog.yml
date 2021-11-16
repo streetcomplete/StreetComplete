@@ -1,3 +1,6 @@
+v37.2: |
+  <p>Fix a common crash issue when opening certain quests</p>
+
 v37.1: |
   <ul>
   <li>Fix rare layout issue when creating a note with a photo (#3405, #3474), by @smichel17</li>
