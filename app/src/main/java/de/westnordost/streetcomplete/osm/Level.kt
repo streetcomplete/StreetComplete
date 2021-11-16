@@ -19,7 +19,7 @@ data class LevelRange(val start: Double, val end: Double) : Level() {
     }
 }
 
-private val levelRegex = Regex("([+-]?[0-9]+)(?:-([+-]?[0-9]+))?")
+private val levelRegex = Regex("([+-]?\\d+(?:\\.\\d+)?)(?:-([+-]?\\d+(?:\\.\\d+)?))?")
 
 fun String.toLevelOrNull(): Level? {
     val matchResult = levelRegex.matchEntire(this) ?: return null
