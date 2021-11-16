@@ -68,7 +68,10 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         binding.plusMinusContainer.addButton.setOnClickListener {
             val level = selectedLevel
             selectedLevel = if (level != null) {
-                selectableLevels.find { it > level } ?: floor(level + 1.0)
+                /* usually +1, but if the selectable levels contain any intermediate floors
+                   (e.g. 0.5), step to these instead */
+                val nextInt = floor(level + 1.0)
+                selectableLevels.find { it > level && it < nextInt } ?: nextInt
             } else {
                 selectableLevels.find { it >= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
             }
@@ -77,7 +80,8 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         binding.plusMinusContainer.subtractButton.setOnClickListener {
             val level = selectedLevel
             selectedLevel = if (level != null) {
-                selectableLevels.findLast { it < level } ?: ceil(level - 1.0)
+                val prevInt = ceil(level - 1.0)
+                selectableLevels.findLast { it < level && it > prevInt } ?: prevInt
             } else {
                 selectableLevels.findLast { it <= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
             }
