@@ -10,6 +10,8 @@ class LevelKtTest {
         assertEquals(SingleLevel(-1.0), "-1".toLevelOrNull())
         assertEquals(SingleLevel(+1.0), "+1".toLevelOrNull())
         assertEquals(SingleLevel(55.0), "55".toLevelOrNull())
+        assertEquals(SingleLevel(-0.5), "-0.5".toLevelOrNull())
+        assertEquals(SingleLevel(5.5), "5.5".toLevelOrNull())
         assertNull("".toLevelOrNull())
         assertNull("6+".toLevelOrNull())
         assertEquals(LevelRange(0.0, 10.0), "+0-10".toLevelOrNull())
