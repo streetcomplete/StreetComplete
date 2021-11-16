@@ -2,7 +2,22 @@ package de.westnordost.streetcomplete.osm
 
 sealed class Level
 data class SingleLevel(val level: Double) : Level()
-data class LevelRange(val start: Double, val end: Double) : Level()
+data class LevelRange(val start: Double, val end: Double) : Level() {
+    /** get levels that would appear on level filter buttons like in JOSM etc.
+     *  A range of 1-5 would return 1,2,3,4,5.
+     *  A range of -0.5-1.5 would return -0.5,0.5,1.5
+     *  A range of 0.5-2 would only return 0.5,2 because it is unknown/ambiguous which would be
+     *  the intermediate steps (1.0 or 1.5) */
+    fun getSelectableLevels(): Sequence<Double> = sequence {
+        val range = end - start
+        val isIntRange = range % 1 == 0.0
+        if (isIntRange) {
+            for (i in 0..range.toInt()) {
+                yield(start + i)
+            }
+        }
+    }
+}
 
 private val levelRegex = Regex("([+-]?\\d+(?:\\.\\d+)?)(?:-([+-]?\\d+(?:\\.\\d+)?))?")
 
