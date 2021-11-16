@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.quests.level
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
-import com.google.android.material.button.MaterialButton
 import de.westnordost.streetcomplete.Injector
 
 import de.westnordost.streetcomplete.R
@@ -17,11 +15,14 @@ import de.westnordost.streetcomplete.osm.SingleLevel
 import de.westnordost.streetcomplete.osm.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
+import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.math.ceil
+import kotlin.math.floor
 
 class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
 
@@ -31,15 +32,13 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
     private val binding by contentViewBinding(QuestLevelBinding::bind)
 
     private lateinit var shopElementsAndGeometry: List<Pair<Element, ElementGeometry>>
-    private var selectableLevelsById: MutableMap<Int, Double> = HashMap()
-    private var selectedLevel: Double? = null
-        set(value) {
-            field = value
-            checkIsFormComplete()
-        }
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
+
+    private var selectedLevel: Double?
+        get() = binding.levelInput.text.toString().trim().toDoubleOrNull()
+        set(value) { binding.levelInput.setText(value?.toShortString() ?: "") }
 
     init {
         Injector.applicationComponent.inject(this)
@@ -47,6 +46,8 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.levelInput.addTextChangedListener(TextChangedWatcher { onSelectedLevel() })
+
         viewLifecycleScope.launch { initializeButtons() }
     }
 
@@ -59,25 +60,33 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
             mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
         }
-        val selectableLevels = shopsWithLevels.getSelectableLevels()
-
-        val context = context ?: return
-        val buttonSize = 64f.toPx(context).toInt()
-        for (level in selectableLevels) {
-            val id = View.generateViewId()
-            val button = MaterialButton(requireContext(), null, R.attr.materialButtonOutlinedStyle)
-            button.id = id
-            button.layoutParams = LinearLayout.LayoutParams(buttonSize, buttonSize, 1f)
-            button.text = level.toShortString()
-
-            selectableLevelsById[id] = level
-            binding.levelSelector.addView(button)
-        }
-
-        binding.levelSelector.addOnButtonCheckedListener { _, checkedId, isChecked ->
-            selectedLevel = if (isChecked) selectableLevelsById[checkedId] else null
+        if (selectedLevel != null) {
             updateMarkers(selectedLevel)
         }
+
+        val selectableLevels = shopsWithLevels.getSelectableLevels()
+        binding.plusMinusContainer.addButton.setOnClickListener {
+            val level = selectedLevel
+            selectedLevel = if (level != null) {
+                selectableLevels.find { it > level } ?: floor(level + 1.0)
+            } else {
+                selectableLevels.find { it >= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
+            }
+        }
+
+        binding.plusMinusContainer.subtractButton.setOnClickListener {
+            val level = selectedLevel
+            selectedLevel = if (level != null) {
+                selectableLevels.findLast { it < level } ?: ceil(level - 1.0)
+            } else {
+                selectableLevels.findLast { it <= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
+            }
+        }
+    }
+
+    private fun onSelectedLevel() {
+        checkIsFormComplete()
+        updateMarkers(selectedLevel)
     }
 
     private fun updateMarkers(level: Double?) {
