@@ -29,7 +29,9 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter<I>
 
+    /** all items to display (after user pressed "see more"). May not be accessed before onCreate */
     protected abstract val allItems: List<GroupableDisplayItem<I>>
+    /** initial items to display. May not be accessed before onCreate */
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
     internal lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
@@ -38,21 +40,22 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     protected open val itemsPerRow = 3
 
+    private lateinit var itemsByString: Map<String, GroupableDisplayItem<I>>
+
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        val validSuggestions = allItems.mapNotNull { it.items }.flatten()
-        val stringToItem = validSuggestions.associateBy { it.value.toString() }
         favs = LastPickedValuesStore(
             PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
             key = javaClass.simpleName,
-            serialize = { item -> item.value.toString() },
-            deserialize = { value -> stringToItem[value] }
+            serialize = { it.value.toString() },
+            deserialize = { itemsByString[it] }
         )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = GroupedImageSelectAdapter(GridLayoutManager(activity, itemsPerRow))
+        itemsByString = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

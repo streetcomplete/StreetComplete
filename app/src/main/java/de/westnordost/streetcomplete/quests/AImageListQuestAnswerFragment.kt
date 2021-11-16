@@ -41,22 +41,24 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     /** return true to move last picked items to the front. On by default. Only respected if the
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
-
+    /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
+
+    private lateinit var itemsByString: Map<String, DisplayItem<I>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = ImageSelectAdapter(maxSelectableItems)
+        itemsByString = items.associateBy { it.value.toString() }
     }
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        val stringToItem = items.associateBy { it.value.toString() }
         favs = LastPickedValuesStore(
             PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
             key = javaClass.simpleName,
-            serialize = { item -> item.value.toString() },
-            deserialize = { value -> stringToItem[value] }
+            serialize = { it.value.toString() },
+            deserialize = { itemsByString[it] }
         )
     }
 
