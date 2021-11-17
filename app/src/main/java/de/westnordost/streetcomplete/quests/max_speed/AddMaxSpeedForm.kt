@@ -192,7 +192,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         }
     }
 
-    private fun getSpeedFromInput(): SpeedMeasure? {
+    private fun getSpeedFromInput(): Speed? {
         val value = speedInput?.numberOrNull?.toInt() ?: return null
         val unit = speedUnitSelect?.selectedItem as SpeedMeasurementUnit? ?: speedUnits.first()
         return when(unit) {

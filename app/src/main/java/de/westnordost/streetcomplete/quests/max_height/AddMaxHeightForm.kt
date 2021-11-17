@@ -111,7 +111,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         applyAnswer(MaxHeight(getHeightFromInput()!!))
     }
 
-    private fun getHeightFromInput(): HeightMeasure? {
+    private fun getHeightFromInput(): Height? {
         when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
             METER -> {
                 return meterInput?.numberOrNull?.let { Meters(it) }
