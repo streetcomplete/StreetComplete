@@ -197,6 +197,7 @@ tasks.register("updateAvailableLanguages") {
     doLast {
         val fileWriter = FileWriter("$projectDir/src/main/res/raw/languages.yml", false)
         fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
+        fileWriter.write("\n")
         fileWriter.close()
     }
 }
