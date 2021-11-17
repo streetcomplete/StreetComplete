@@ -5,14 +5,14 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningHoursRuleList
 
 
-sealed class FeeAnswer
+sealed class Fee
 
-object HasFee : FeeAnswer()
-object HasNoFee : FeeAnswer()
-data class HasFeeAtHours(val openingHours: OpeningHoursRuleList) : FeeAnswer()
-data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : FeeAnswer()
+object HasFee : Fee()
+object HasNoFee : Fee()
+data class HasFeeAtHours(val openingHours: OpeningHoursRuleList) : Fee()
+data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : Fee()
 
-fun FeeAnswer.applyTo(changes: StringMapChangesBuilder) {
+fun Fee.applyTo(changes: StringMapChangesBuilder) {
     when(this) {
         is HasFee   -> {
             changes.updateWithCheckDate("fee", "yes")
