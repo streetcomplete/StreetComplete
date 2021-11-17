@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.cycleway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
-import de.westnordost.streetcomplete.quests.parking_lanes.*
+import de.westnordost.streetcomplete.osm.parking_lanes.*
 
 class AddOneway : OsmElementQuestType<OnewayAnswer> {
 

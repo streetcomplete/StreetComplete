@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_lanes
+package de.westnordost.streetcomplete.osm.parking_lanes
 
 sealed class ParkingLane
 

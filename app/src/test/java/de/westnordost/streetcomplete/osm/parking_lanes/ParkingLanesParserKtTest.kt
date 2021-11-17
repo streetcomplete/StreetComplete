@@ -1,9 +1,9 @@
-package de.westnordost.streetcomplete.quests.parking_lanes
+package de.westnordost.streetcomplete.osm.parking_lanes
 
 import org.junit.Assert.*
 import org.junit.Test
 
-import de.westnordost.streetcomplete.quests.parking_lanes.ParkingLanePosition.*
+import de.westnordost.streetcomplete.osm.parking_lanes.ParkingLanePosition.*
 
 
 class ParkingLanesParserKtTest {

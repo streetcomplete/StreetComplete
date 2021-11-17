@@ -1,6 +1,6 @@
-package de.westnordost.streetcomplete.quests.parking_lanes
+package de.westnordost.streetcomplete.osm.parking_lanes
 
-import de.westnordost.streetcomplete.quests.parking_lanes.ParkingLanePosition.*
+import de.westnordost.streetcomplete.osm.parking_lanes.ParkingLanePosition.*
 
 data class LeftAndRightParkingLane(val left: ParkingLane?, val right: ParkingLane?)
 
