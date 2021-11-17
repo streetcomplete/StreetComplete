@@ -122,11 +122,17 @@ class AddPlaceName(
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is NoPlaceNameSign -> changes.add("name:signed", "no")
-            is PlaceName -> changes.add("name", answer.name)
-            is BrandFeature -> {
-                for ((key, value) in answer.tags.entries) {
-                    changes.addOrModify(key, value)
+            is NoPlaceNameSign -> {
+                changes.add("name:signed", "no")
+            }
+            is PlaceName -> {
+                for ((languageTag, name) in answer.localizedNames) {
+                    val key = when (languageTag) {
+                        "" -> "name"
+                        "international" -> "int_name"
+                        else -> "name:$languageTag"
+                    }
+                    changes.addOrModify(key, name)
                 }
             }
         }
