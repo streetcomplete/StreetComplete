@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.model.*
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.model.*
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import kotlinx.serialization.Serializable
 
 @Serializable

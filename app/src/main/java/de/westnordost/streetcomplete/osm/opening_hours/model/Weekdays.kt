@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours.model
+package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import android.content.res.Resources
 
@@ -7,6 +7,7 @@ import java.text.DateFormatSymbols
 import de.westnordost.streetcomplete.R
 import kotlinx.serialization.Serializable
 
+/** A selection of weekdays */
 @Serializable
 class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.size)) {
 

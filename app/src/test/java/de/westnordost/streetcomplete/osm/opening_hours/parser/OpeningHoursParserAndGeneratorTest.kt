@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours.parser
+package de.westnordost.streetcomplete.osm.opening_hours.parser
 
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow

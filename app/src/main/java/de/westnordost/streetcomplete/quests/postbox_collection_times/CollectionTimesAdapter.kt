@@ -11,9 +11,9 @@ import java.util.Locale
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.util.timeOfDayToString
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
 import kotlinx.serialization.Serializable

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours.model
+package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import kotlin.math.max
 import kotlin.math.min

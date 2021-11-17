@@ -1,12 +1,12 @@
-package de.westnordost.streetcomplete.quests.opening_hours.parser
+package de.westnordost.streetcomplete.osm.opening_hours.parser
 
 import ch.poole.openinghoursparser.*
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.quests.opening_hours.model.*
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
+import de.westnordost.streetcomplete.osm.opening_hours.model.*
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 
 @JvmName("openingHoursRowsToOpeningHoursRules")

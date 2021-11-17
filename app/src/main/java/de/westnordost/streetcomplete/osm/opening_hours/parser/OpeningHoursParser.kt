@@ -1,13 +1,13 @@
-package de.westnordost.streetcomplete.quests.opening_hours.parser
+package de.westnordost.streetcomplete.osm.opening_hours.parser
 
 import ch.poole.openinghoursparser.*
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.quests.opening_hours.model.*
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Companion.OSM_ABBR_WEEKDAYS
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
+import de.westnordost.streetcomplete.osm.opening_hours.model.*
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.OSM_ABBR_WEEKDAYS
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 import java.io.ByteArrayInputStream
 
@@ -193,6 +193,7 @@ fun TimeSpan.isSupportedCollectionTimes(): Boolean =
     !isOpenEnded
 
 /* ------------------------------ Collision/Intersection checking ------------------------------- */
+
 
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
