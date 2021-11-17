@@ -1105,4 +1105,5 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="short_no_answer_on_button">No</string>
     <string name="quest_level_title">On which level is %s located?</string>
+    <string name="pref_title_language_select">Select language</string>
 </resources>

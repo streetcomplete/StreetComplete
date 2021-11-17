@@ -1,5 +1,6 @@
 import java.util.Properties
 import java.io.FileInputStream
+import java.io.FileWriter
 
 plugins {
     id("com.android.application")
@@ -190,6 +191,16 @@ val bcp47ExportLanguages = setOf(
 )
 val nsiVersion = "v6.0.20211103"
 val presetsVersion = "v3.1.0"
+
+tasks.register("updateAvailableLanguages") {
+    group = "streetcomplete"
+    doLast {
+        val fileWriter = FileWriter("$projectDir/src/main/res/raw/languages.yml", false)
+        fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
+        fileWriter.write("\n")
+        fileWriter.close()
+    }
+}
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
