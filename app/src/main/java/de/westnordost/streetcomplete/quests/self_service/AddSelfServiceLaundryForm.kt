@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.*
 
-class AddSelfServiceLaundryFragment : AbstractQuestAnswerFragment<SelfServiceLaundry>() {
+class AddSelfServiceLaundryForm : AbstractQuestAnswerFragment<SelfServiceLaundry>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
