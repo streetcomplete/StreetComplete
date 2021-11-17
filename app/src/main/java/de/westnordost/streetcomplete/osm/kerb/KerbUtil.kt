@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.kerb_height
+package de.westnordost.streetcomplete.osm.kerb
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -59,6 +59,10 @@ fun Node.couldBeAKerb(): Boolean = tags.keys.all { key ->
     key in allowedKeysOnKerbNode || allowedKeysOnKerbNodeRegexes.any { regex -> regex.matches(key) }
 }
 
+/** Find all nodes that are (very likely) kerbs in this map data:
+ *  1. nodes tagged with barrier=kerb
+ *  2. the shared nodes at intersections of barrier=kerb ways with footways
+ *  3. certain shared nodes between a footway=sidewalk and a footway=crossing */
 fun MapData.findAllKerbNodes(): Iterable<Node> {
     val footwayNodes = mutableSetOf<Node>()
     ways.asSequence()

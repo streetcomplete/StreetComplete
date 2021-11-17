@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
+import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 
 class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
