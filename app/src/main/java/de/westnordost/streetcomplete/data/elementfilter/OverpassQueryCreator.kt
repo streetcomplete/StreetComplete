@@ -143,7 +143,7 @@ class OverpassQueryCreator(
 
     private class AllTagFilters(val values: List<ElementFilter>) : BooleanExpression<ElementFilter, Element>() {
         constructor(value: ElementFilter) : this(listOf(value))
-        override fun matches(obj: Element?) = values.all { it.matches(obj) }
+        override fun matches(obj: Element) = values.all { it.matches(obj) }
         override fun toString() = values.joinToString(" and ")
     }
 }

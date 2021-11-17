@@ -14,9 +14,8 @@ abstract class CompareElementAge(private val dateFilter: DateFilter) : ElementFi
 
     override fun toString() = toOverpassQLString()
 
-    override fun matches(obj: Element?): Boolean {
-        val timestampEdited = obj?.timestampEdited ?: return false
-        return compareTo(Instant.ofEpochMilli(timestampEdited).toLocalDate())
+    override fun matches(obj: Element): Boolean {
+        return compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())
     }
 
     abstract fun compareTo(tagValue: LocalDate): Boolean

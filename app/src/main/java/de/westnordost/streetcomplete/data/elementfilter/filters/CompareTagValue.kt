@@ -12,8 +12,8 @@ abstract class CompareTagValue(val key: String, val value: Float): ElementFilter
 
     override fun toString() = toOverpassQLString()
 
-    override fun matches(obj: Element?): Boolean {
-        val tagValue = obj?.tags?.get(key)?.toFloatOrNull() ?: return false
+    override fun matches(obj: Element): Boolean {
+        val tagValue = obj.tags[key]?.toFloatOrNull() ?: return false
         return compareTo(tagValue)
     }
 

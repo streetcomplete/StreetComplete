@@ -11,5 +11,5 @@ class HasTagValueLike(val key: String, val value: String) :  ElementFilter {
         "[" + key.quoteIfNecessary() + " ~ " + "^($value)$".quoteIfNecessary() + "]"
 
     override fun toString() = toOverpassQLString()
-    override fun matches(obj: Element?) = obj?.tags?.get(key)?.let { regex.matches(it) } ?: false
+    override fun matches(obj: Element) = obj.tags[key]?.let { regex.matches(it) } ?: false
 }

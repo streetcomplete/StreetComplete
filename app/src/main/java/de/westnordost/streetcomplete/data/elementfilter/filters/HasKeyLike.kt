@@ -9,5 +9,5 @@ class HasKeyLike(val key: String) : ElementFilter {
 
     override fun toOverpassQLString() = "[" + "~" + "^($key)$".quoteIfNecessary() + " ~ '.*']"
     override fun toString() = toOverpassQLString()
-    override fun matches(obj: Element?) = obj?.tags?.keys?.find { regex.matches(it) } != null
+    override fun matches(obj: Element) = obj.tags.keys.find { regex.matches(it) } != null
 }

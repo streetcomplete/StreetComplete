@@ -13,6 +13,6 @@ class HasTagLike(val key: String, val value: String) : ElementFilter {
 
     override fun toString() = toOverpassQLString()
 
-    override fun matches(obj: Element?) =
-        obj?.tags?.entries?.find { keyRegex.matches(it.key) && valueRegex.matches(it.value) } != null
+    override fun matches(obj: Element) =
+        obj.tags.entries.any { keyRegex.matches(it.key) && valueRegex.matches(it.value) }
 }

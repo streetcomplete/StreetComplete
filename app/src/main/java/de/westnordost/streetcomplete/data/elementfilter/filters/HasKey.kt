@@ -7,5 +7,5 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 class HasKey(val key: String) : ElementFilter {
     override fun toOverpassQLString() = "[" + key.quoteIfNecessary() + "]"
     override fun toString() = toOverpassQLString()
-    override fun matches(obj: Element?) = obj?.tags?.containsKey(key) ?: false
+    override fun matches(obj: Element) = obj.tags.containsKey(key)
 }

@@ -17,8 +17,8 @@ abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter):
 
     override fun toString() = toOverpassQLString()
 
-    override fun matches(obj: Element?): Boolean {
-        val tagValue = obj?.tags?.get(key)?.toCheckDate() ?: return false
+    override fun matches(obj: Element): Boolean {
+        val tagValue = obj.tags[key]?.toCheckDate() ?: return false
         return compareTo(tagValue)
     }
 
