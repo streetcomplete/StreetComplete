@@ -86,7 +86,7 @@ Note that StreetComplete also uses [some dependencies](#issues-with-dependencies
 
 If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/streetcomplete/StreetComplete/labels/help%20wanted).
 
-To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
+To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top. If your first build fails due to missing dependencies, make sure [you have accepted the required license agreements](https://developer.android.com/studio/intro/update#download-with-gradle).
 
 ### Developing new quests
 
