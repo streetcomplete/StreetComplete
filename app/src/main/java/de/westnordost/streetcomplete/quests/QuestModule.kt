@@ -60,6 +60,7 @@ import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicy
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.barrier_type.AddTrafficCalmingType
+import de.westnordost.streetcomplete.quests.barrier_type.AddWhatIsOnBarrierAndPathIntersection
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
@@ -249,6 +250,7 @@ import javax.inject.Singleton
         AddBoardType(),
 
         AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
+        AddWhatIsOnBarrierAndPathIntersection(),
         AddStileType(),
         AddBicycleBarrierType(),
 
