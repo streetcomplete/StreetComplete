@@ -43,9 +43,18 @@ abstract class AddWhatIsOnBarrierLineAndWayIntersection : OsmElementQuestType<Ba
          * intersecting path, what is even kind of correct
          *
          * F.e.:
-         * https://www.openstreetmap.org/node/5074693713 */
+         * https://www.openstreetmap.org/node/5074693713
+         *
+         * For bridges it is more dubious but also in active use, see
+         * https://www.openstreetmap.org/node/78135912 + https://www.openstreetmap.org/way/417857886
+         * https://www.openstreetmap.org/node/308681095 + https://www.openstreetmap.org/way/558083525
+         */
         waysByNodeId.values.removeAll { ways ->
-            ways.any { it.tags.containsKey("tunnel") && it.tags["tunnel"] != "no" }
+            ways.any {
+                (it.tags.containsKey("tunnel") && it.tags["tunnel"] != "no")
+                    ||
+                (it.tags.containsKey("bridge") && it.tags["bridge"] != "no")
+            }
         }
 
         /* filter out all nodes that are not shared nodes of both a road and a footway */
