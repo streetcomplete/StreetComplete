@@ -164,13 +164,13 @@ import javax.inject.Singleton
         /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
         // bus stop quests
-        AddBusStopLit(),
         AddBusStopShelter(),  // used by at least OsmAnd
         AddBenchStatusOnBusStop(), // can be seen from across the street
         AddBinStatusOnBusStop(), // can be seen from across the street
         AddTactilePavingBusStop(), // requires you to be very close to it
         AddBusStopName(), // requires text input
         AddBusStopRef(), // requires text input
+        AddBusStopLit(), // at least during day requires to stand in it to see if there is a light in the shelter
 
         AddRailwayCrossingBarrier(), // useful for routing
 
@@ -186,7 +186,7 @@ import javax.inject.Singleton
         // sport pitches
         AddSport(),
         AddPitchSurface(),
-        AddPitchLit(), // Not affected by new DayNight cycle because the lights are usually only on during games
+        AddPitchLit(),
 
         // parking
         AddParkingType(),
@@ -347,7 +347,6 @@ import javax.inject.Singleton
         /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
         // roads
-        AddWayLit(), //  used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details)
         AddSidewalk(), // for any pedestrian routers, needs minimal thinking
         AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
         AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
@@ -370,5 +369,8 @@ import javax.inject.Singleton
         AddRoofShape(countryInfos),
 
         AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
+
+        /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
+        AddWayLit(),
     ))
 }

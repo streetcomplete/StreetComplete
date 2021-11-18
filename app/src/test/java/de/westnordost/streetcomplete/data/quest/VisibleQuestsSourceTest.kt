@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
-import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.testutils.*
@@ -22,7 +21,6 @@ class VisibleQuestsSourceTest {
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
-    private lateinit var dayNightQuestFilter: DayNightQuestFilter
     private lateinit var source: VisibleQuestsSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
@@ -42,7 +40,6 @@ class VisibleQuestsSourceTest {
         visibleQuestTypeSource = mock()
         teamModeQuestFilter = mock()
         questTypeRegistry = QuestTypeRegistry(questTypes)
-        dayNightQuestFilter = mock()
 
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(true)
@@ -64,9 +61,7 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        on(dayNightQuestFilter.isVisible(any())).thenReturn(true)
-
-        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, dayNightQuestFilter)
+        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter)
 
         listener = mock()
         source.addListener(listener)
@@ -100,15 +95,6 @@ class VisibleQuestsSourceTest {
         on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock()))
         on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
         on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
-
-        val quests = source.getAllVisible(bbox)
-        assertTrue(quests.isEmpty())
-    }
-
-    @Test fun `getAllVisible does not return those that are invisible at day`() {
-        on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock()))
-        on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
-        on(dayNightQuestFilter.isVisible(any())).thenReturn(false)
 
         val quests = source.getAllVisible(bbox)
         assertTrue(quests.isEmpty())
