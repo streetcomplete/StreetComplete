@@ -425,10 +425,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_parking_fee_title">"Kostar det noko å parkera her?"</string>
     <string name="quest_cycleway_value_lane_soft">"sykkelfelt (stipla linje)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Innstøypt elvestein"</string>
-    <string name="quest_parking_access_title">"Er det avgrensa kven som kan parkera her?"</string>
-    <string name="quest_parking_access_private">"Privat parkering"</string>
-    <string name="quest_parking_access_yes">"Offentleg parkering (med eller utan avgift)"</string>
-    <string name="quest_parking_access_customers">"Kundeparkering"</string>
     <string name="quest_streetName_pedestrian_title">"Kva heiter denne gågata?"</string>
     <string name="quest_streetSurface_square_title">"Kva materiale er brukt på denne plassen?"</string>
     <string name="quest_streetSurface_square_name_title">"Kva materiale er brukt på plassen %s her?"</string>
@@ -810,6 +806,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="user_profile_local_rank">"Rangering i %s"</string>
     <string name="user_profile_days_active">"Aktive dagar"</string>
     <string name="user_profile_achievement_levels">"Bragd- nivå"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Kva gate/veg høyrer (hus)nummeret %s til?"</string>
     <string name="quest_address_street_no_named_streets">"Det høyrer ikkje til ei gate eller ein veg med namn"</string>
     <string name="quest_address_street_place_name_label">"Stadnamn:"</string>
@@ -977,9 +975,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_shop_gone_vacant_answer">"Det er ikkje noko her"</string>
     <string name="quest_shop_gone_replaced_answer">"Ein/ei/eit …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Type plass som er her"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Veit ikkje kva det er. Vurder å leggja att ein merknad."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Dette butikk­lokalet har stått tomt. Kva er her no?"</string>

@@ -186,7 +186,7 @@ val bcp47ExportLanguages = setOf(
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
-val nsiVersion = "v6.0.20211103"
+val nsiVersion = "v6.0.20211117"
 val presetsVersion = "v3.1.0"
 
 tasks.register("updateAvailableLanguages") {

@@ -1127,18 +1127,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_surface_value_unhewn_cobblestone">"Nemalingi akmenukai"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Ar apribotas, kas gali čia statyti mašiną?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Privatu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Vieša (su arba be mokesčio)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Tik klientams"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Koks yra šios pėsčiųjų gatvės pavadinimas?"</string>
 
     <!-- Fuzzy -->
@@ -2154,6 +2142,8 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
 %s"</string>
     <string name="user_profile_days_active">"Aktyvumo dienų"</string>
     <string name="user_profile_achievement_levels">"Pasiekimų lygis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Kam priklauso (namo) numeris %s?"</string>
     <string name="quest_address_street_no_named_streets">"Nepriklauso gatvei su pavadinimu"</string>
     <string name="quest_address_street_place_name_label">"Vietos pavadinimas:"</string>

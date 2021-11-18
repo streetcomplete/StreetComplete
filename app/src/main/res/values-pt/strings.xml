@@ -526,16 +526,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_surface_value_unhewn_cobblestone">"Calçada de seixos irregulares"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Quem pode estacionar aqui?"</string>
-    <string name="quest_parking_access_private">"É privado"</string>
-
-    <!-- público é explicito que é para todos. -->
-    <string name="quest_parking_access_yes">"É aberto ao público (com ou sem pagamento)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Apenas clientes"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Qual o nome desta rua pedonal?"</string>
 
     <!-- Fuzzy -->
@@ -971,6 +961,8 @@ global"</string>
 ativo"</string>
     <string name="user_profile_achievement_levels">"Níveis de
 conquista"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"A que rua pertence o número (da casa) %s?"</string>
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua com nome"</string>
     <string name="quest_address_street_place_name_label">"Nome do lugar:"</string>
@@ -1132,9 +1124,6 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <string name="quest_shop_gone_vacant_answer">"Está desocupado"</string>
     <string name="quest_shop_gone_replaced_answer">"Um…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Digite o tipo de lugar aqui"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Não sei o que é isto. Considere deixar uma nota."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Esta loja esteve desocupada. O que se encontra aqui agora?"</string>

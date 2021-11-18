@@ -1130,18 +1130,6 @@
     <string name="quest_surface_value_unhewn_cobblestone">"Αδιαμόρφωτο λιθόστρωτο"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Υπάρχει περιορισμός στο ποιος μπορεί να σταθμεύσει εδώ;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Είναι ιδιωτικό"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Είναι δημόσιο (με ή χωρίς χρέωση)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Είναι μόνο για τους πελάτες"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Ποιο είναι το όνομα αυτού του πεζόδρομου;"</string>
 
     <!-- Fuzzy -->
@@ -1950,6 +1938,8 @@
     <string name="user_profile_local_rank">"Κατάταξη σε %s"</string>
     <string name="user_profile_days_active">"Ενεργές ημέρες"</string>
     <string name="user_profile_achievement_levels">"Επίπεδα επιτευγμάτων"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Σε ποιον δρόμο ανήκει ο αριθμός (σπίτι) %s ;"</string>
     <string name="quest_address_street_no_named_streets">"Δεν ανήκει σε ονομασμένο δρόμο"</string>
     <string name="quest_address_street_place_name_label">"Όνομα τοποθεσίας:"</string>
@@ -2123,9 +2113,6 @@
     <string name="quest_shop_gone_vacant_answer">"Είναι κενό"</string>
     <string name="quest_shop_gone_replaced_answer">"Ένα..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Πληκτρολογήστε το είδος της τοποθεσίας εδώ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Δεν ξέρετε τι είναι αυτό. Σκεφτείτε να αφήσετε μια σημείωση."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;"</string>

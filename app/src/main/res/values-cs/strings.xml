@@ -1040,18 +1040,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_surface_value_unhewn_cobblestone">"Neopracované kočičí hlavy"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Je omezeno, kdo tu může parkovat?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Je to soukromé parkoviště"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Je to veřejné parkoviště (s nebo bez poplatku)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Je to parkoviště jen pro zákazníky"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Jaké jméno má tato ulice pro pěší?"</string>
 
     <!-- Fuzzy -->
@@ -2099,6 +2087,8 @@ It is not big issue, but it would be nice to have it correctly. -->
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspěchy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Ke které ulici patří (dům) číslo %s?"</string>
     <string name="quest_address_street_no_named_streets">"Nepatří k žádné pojmenované ulici"</string>
     <string name="quest_address_street_place_name_label">"Název místa:"</string>
@@ -2282,9 +2272,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Napište druh místa/obchodu"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Nevím, co tu je. Zvažte zanechání poznámky."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Tento obchod byl prázdný. Co tu je nyní?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Počet pruhů je na každé straně jiný"</string>
     <string name="quest_pitchSurface_title">"Jaký povrch má toto sportoviště?"</string>
@@ -2358,7 +2345,7 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_barrier_type_rope">"Provaz"</string>
     <string name="quest_barrier_type_wire_gate">"Dočasný drátěný plot"</string>
     <string name="quest_barrier_type_cattle_grid">"Mříže v zemi bránící zvířatům v průchodu"</string>
-    <string name="quest_barrier_type_block">"Velký nepohyblivý objekt "</string>
+    <string name="quest_barrier_type_block">"Velký nepohyblivý objekt"</string>
     <string name="quest_barrier_jersey_barrier">"Prefabrikovaná betonová/plastová zábrana"</string>
     <string name="quest_barrier_type_log">"Kláda"</string>
     <string name="quest_barrier_type_kerb">"Obrubník"</string>
@@ -2474,4 +2461,21 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_fireHydrant_confirmation_title">"Opravdu? Někdy lze průměr najít přímo na samotném hydrantu."</string>
     <string name="quest_diet_answer_no_food">"Nemá žádná jídla"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
+    <string name="restore_confirmation">"Obnovit"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"Obnovit všechny úkoly, které jste skryli?"</string>
+    <string name="quest_parking_access_title2">"Kdo zde může parkovat? Parkování může být zdarma, nebo placené."</string>
+    <string name="quest_access_yes">"Jakýkoliv člen široké veřejnosti"</string>
+    <string name="quest_access_customers">"Kdokoliv, kdo přijel navštívit určité místo (např. jen zákazníci)"</string>
+    <string name="quest_access_private">"Pouze lidé s povolením"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Jsou časy vybírání této poštovní poštovní schránky správné?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Jsou časy vybírání této poštovní %s poštovní schránky správné?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Nerozpoznáno. Zkuste zadat druh místa, např. „pekařství“. Jinak zvažte zanechání poznámky."</string>
+    <string name="quest_bicycle_barrier_type_title">"Jaký je tohle druh překážky bránící cyklistům v průjezdu?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonální vzhledem k cestě"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Zúžený průjezd, menší nahoře"</string>
+    <string name="quest_barrier_bicycle_type_single">"Průjezd mezi dvěma přkážkami"</string>
+    <string name="quest_barrier_bicycle_type_double">"Šikana - překážka na každé straně"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Šikana - více než dvě překážky"</string>
 </resources>

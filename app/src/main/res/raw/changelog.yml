@@ -6,11 +6,17 @@ v38.0-beta1: |
   </ul>
   <h3>Quest Enhancements</h3>
   <ul>
-  <li>Nearby elements of the same type are now shown in context when answering various quests (#3480, #3338, #2354)</li>
   <li>Also ask for barriers on a pedestrian railway crossing (#3277)</li>
   <li>Also ask for the street address for buildings with no number but a name (#3457), by @arrival-spring</li>
-  <li>On resurveying postbox collection times, show current collection times (#2105, #2986), by @eginhard</li>
+  <li>On resurveying postbox collection times, show current collection times first (#2105, #2986), by @eginhard</li>
+  <li>You can now specify the name of a place in multiple languages (#2610, #3317)</li>
+  <li>You can now again answer whether a way is lit also during the day. Starting in v34 it was only shown during the night but many people didn't like that feature (#3248)</li>
   <li>Clarify some wordings (#3227, #3483, #3429), by @matkoniecz</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Nearby relevant elements are now shown in context when answering various quests (#3480, #3338, #2354)</li>
+  <li>Allow switching the language in the app (#3199, #2643, #3512), thanks @amenk</li>
   <li>Other small UX enhancements (#3432)</li>
   </ul>
 

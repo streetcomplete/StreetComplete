@@ -442,10 +442,6 @@
     <string name="quest_parking_fee_title">"Чи треба тут платити за паркування?"</string>
     <string name="quest_cycleway_value_lane_soft">"велосмуга (пунктирна розмітка)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Неотесана бруківка"</string>
-    <string name="quest_parking_access_title">"Чи є обмеження, хто може тут паркуватися?"</string>
-    <string name="quest_parking_access_private">"Приватна"</string>
-    <string name="quest_parking_access_yes">"Відкрита для всіх (платна або безкоштовна)"</string>
-    <string name="quest_parking_access_customers">"Тільки для клієнтів"</string>
     <string name="quest_streetName_pedestrian_title">"Як називається ця пішохідна вулиця?"</string>
     <string name="quest_streetSurface_square_title">"Яке покриття в цього скверу?"</string>
     <string name="quest_streetSurface_square_name_title">"Яке покриття тут має сквер %s?"</string>
@@ -845,6 +841,8 @@
 %s"</string>
     <string name="user_profile_days_active">"Активних днів"</string>
     <string name="user_profile_achievement_levels">"Рівень досягнень"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"До якої вулиці належить (будинок) номер %s?"</string>
     <string name="quest_address_street_no_named_streets">"Вона не належить до названої вулиці"</string>
     <string name="quest_address_street_place_name_label">"Назва місця:"</string>
@@ -1015,9 +1013,6 @@
     <string name="quest_shop_gone_vacant_answer">"Це незайнято"</string>
     <string name="quest_shop_gone_replaced_answer">"На (n)"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Тип цього місця"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Не знаю що це. Лишити нотатку."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Цей магазин незайнятий. Що тут тепер?"</string>

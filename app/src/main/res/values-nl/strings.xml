@@ -1103,18 +1103,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_surface_value_unhewn_cobblestone">"Ongehouwen kasseien"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Mag iedereen hier parkeren?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Het is een privéparkeerplaats"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Het is openbaar (betaald of onbetaald)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Enkel klanten mogen parkeren"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Wat is de naam van dit voetpad?"</string>
 
     <!-- Fuzzy -->
@@ -2139,6 +2127,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="user_profile_local_rank">"Rang in %s"</string>
     <string name="user_profile_days_active">"Dagen actief"</string>
     <string name="user_profile_achievement_levels">"Prestatieniveaus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Bij welke straat hoort het (huis)nummer %s?"</string>
     <string name="quest_address_street_no_named_streets">"Het hoort niet bij een straat met een naam."</string>
     <string name="quest_address_street_place_name_label">"Plaatsnaam:"</string>
@@ -2314,9 +2304,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_shop_gone_vacant_answer">"Het staat leeg"</string>
     <string name="quest_shop_gone_replaced_answer">"Een..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Voer de soort winkel hier in"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Ik weet niet wat dit is. Overweeg een notitie achter te laten."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Deze winkel stond leeg. Wat is hier nu?"</string>

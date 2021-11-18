@@ -1126,18 +1126,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_surface_value_unhewn_cobblestone">"切断されていない石畳"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"ここに駐車する人は制限されていますか?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"個人用"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"公衆用 (有料または無料)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"来客用のみ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"この歩行者用の通りの名前は何ですか?"</string>
 
     <!-- Fuzzy -->

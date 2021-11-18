@@ -439,12 +439,6 @@
     <string name="quest_parking_fee_title">"هل يجب عليك الدفع لركن سيارتك هنا؟"</string>
     <string name="quest_cycleway_value_lane_soft">"مسار دراجات (علامات متقطعة)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"الحجارة المرصوفة غير مألوفة"</string>
-    <string name="quest_parking_access_title">"هل هذه المواقف محدد من يقف بها؟"</string>
-    <string name="quest_parking_access_private">"إنها خاصة"</string>
-    <string name="quest_parking_access_yes">"مفتوح للعامة (مع أو بدون رسوم)"</string>
-
-    <!-- هو فقط للعملاء -->
-    <string name="quest_parking_access_customers">"انه فقط للزبائن وعملاء مالك هذه المواقف"</string>
     <string name="quest_streetName_pedestrian_title">"ما اسم شارع المشاة هذا؟"</string>
     <string name="quest_streetSurface_square_title">"ما هو سطح هذا المربع؟"</string>
     <string name="quest_streetSurface_square_name_title">"ما هو سطح المربع %s هنا؟"</string>
@@ -836,6 +830,8 @@
 ناشط"</string>
     <string name="user_profile_achievement_levels">"الإنجازات
 المستويات"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"إلى أي شارع ينتمي رقم (المنزل) %s؟"</string>
     <string name="quest_address_street_no_named_streets">"إنه لا ينتمي إلى شارع مسمى"</string>
     <string name="quest_address_street_place_name_label">"اسم مكان:"</string>
@@ -998,9 +994,6 @@
     <string name="quest_shop_gone_vacant_answer">"إنه شاغر"</string>
     <string name="quest_shop_gone_replaced_answer">"أ"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"اكتب نوع المكان هنا"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"لا أعرف ما هذا. ضع في اعتبارك ترك ملاحظة."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"هذا المتجر كان فارغًا. ماذا يوجد هنا الآن؟"</string>

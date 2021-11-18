@@ -638,14 +638,6 @@
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"велосипедная полоса (пунктирная разметка)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Необработанный булыжник"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Имеются ли здесь ограничения на парковку?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Это частное"</string>
-    <string name="quest_parking_access_yes">"Открыта для всех (платно или бесплатно)"</string>
-    <string name="quest_parking_access_customers">"Только для клиентов"</string>
     <string name="quest_streetName_pedestrian_title">"Как называется эта пешеходная улица?"</string>
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
 
@@ -1298,6 +1290,8 @@
 дней"</string>
     <string name="user_profile_achievement_levels">"Уровень
 достижений"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"К какой улице относится дом %s?"</string>
     <string name="quest_address_street_no_named_streets">"Не принадлежит названной улице"</string>
     <string name="quest_address_street_place_name_label">"Название места:"</string>
@@ -1465,9 +1459,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Введите категорию точки здесь"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Не знаю, что это. Советуем оставить заметку."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Магазин выехал. Что здесь сейчас расположено?"</string>

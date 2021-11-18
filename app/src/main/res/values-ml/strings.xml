@@ -1109,18 +1109,6 @@
     <string name="quest_surface_value_unhewn_cobblestone">"അറിയപ്പെടാത്ത ചതുരക്കല്ല്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"ആർക്ക് ഒക്കെ ഇവിടെ പാർക്ക് ചെയ്യാം എന്ന് നിജപ്പെടുത്തിയിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"ഇത് സ്വകാര്യ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"ഇത് എല്ലാവർക്കുമായി തുറന്ന് കൊടുത്തിരിക്കുന്നു ( ഫീസ് വാങ്ങിച്ചും, സൗജന്യമായും )"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"ഇത് ഉപഭോക്താക്കൾക്ക് മാത്രമായി നിജപ്പെടുത്തിയിരിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"ഈ കാൽനടക്കാർക്കുള്ള പാതയുടെ പേര് എന്താണ്?"</string>
 
     <!-- Fuzzy -->

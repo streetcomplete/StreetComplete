@@ -902,18 +902,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_surface_value_unhewn_cobblestone">"Kesilmemiş parke taşı/Arnavut Kaldırımı"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Buraya kimlerin park edebileceği sınırlandırılmış mı?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Özel"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Halka açık (ücretli veya ücretsiz)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Müşterilere ait otopark"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Bu yaya caddesinin adı ne?"</string>
     <string name="quest_streetSurface_square_title">"Bu meydanın yüzeyi nedir?"</string>
 
@@ -1670,9 +1658,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Boş"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Buraya bir tür yer yazın"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Bunun ne olduğunu bilmiyorum. Bir not bırakmayı düşünün."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Bu dükkan boştu. Şimdi burada ne var?"</string>

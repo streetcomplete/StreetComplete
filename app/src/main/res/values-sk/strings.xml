@@ -1125,18 +1125,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_surface_value_unhewn_cobblestone">"Neotesané dlažobné kocky"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Je obmedzené kto môže na tomto mieste parkovať?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Je privátne"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Je verejné (platené alebo neplatené)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Iba pre zákazníkov"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Ako sa volá táto pešia zóna?"</string>
 
     <!-- Fuzzy -->
@@ -2154,6 +2142,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspechy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Ku ktorej ulici patrí (dom) číslo %s?"</string>
     <string name="quest_address_street_no_named_streets">"Nepatrí k žiadnej pomenovanej ulici"</string>
     <string name="quest_address_street_place_name_label">"Názov miesta:"</string>
@@ -2326,9 +2316,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_shop_gone_vacant_answer">"Je to prázdne"</string>
     <string name="quest_shop_gone_replaced_answer">"..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Napíšte druh miesta/obchodu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Neviem, čo tu je. Zvážte zanechanie poznámky."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Tento obchod bol prázdny. Čo tu je teraz?"</string>

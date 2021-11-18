@@ -428,10 +428,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_parking_fee_title">"Fallen hier Parkgebühren an?"</string>
     <string name="quest_cycleway_value_lane_soft">"Schutzstreifen (gestrichelte Linie)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pflaster aus unbehauenem Stein"</string>
-    <string name="quest_parking_access_title">"Ist es eingeschränkt, wer hier parken darf?"</string>
-    <string name="quest_parking_access_private">"Es ist ein Privatparkplatz"</string>
-    <string name="quest_parking_access_yes">"Es ist ein öffentlicher Parkplatz (mit oder ohne Gebühr)"</string>
-    <string name="quest_parking_access_customers">"Es ist ein Kundenparkplatz"</string>
     <string name="quest_streetName_pedestrian_title">"Wie heißt diese Fußgängerzone?"</string>
     <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
     <string name="quest_streetSurface_square_name_title">"Welche Oberfläche hat der Platz %s hier?"</string>
@@ -814,7 +810,7 @@ Rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Level aller
 Erfolge"</string>
-    <string name="quest_address_street_title">"Zu welcher Straße gehört die Hausnummer %s?"</string>
+    <string name="quest_address_street_title">"Zu welcher Straße gehört Haus %s?"</string>
     <string name="quest_address_street_no_named_streets">"Zu keiner mit Namen"</string>
     <string name="quest_address_street_place_name_label">"Ortsname:"</string>
     <string name="quest_address_street_description">"Tippe die entsprechende Straße auf der Karte an oder gib den Straßennamen ohne Abkürzungen im Feld unten ein:"</string>
@@ -957,7 +953,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen eine Notiz."</string>
     <string name="quest_shop_gone_vacant_answer">"Es steht leer"</string>
     <string name="quest_shop_gone_replaced_answer">"Ein(e)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Hier Art des Ortes eingeben"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Unbekannt. Hinterlasse stattdessen eine Notiz."</string>
     <string name="quest_shop_vacant_type_title">"Dieser Laden stand leer. Was ist hier jetzt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Anzahl Fahrstreifen je Seite unterschiedlich"</string>
     <string name="quest_pitchSurface_title">"Welchen Bodenbelag hat dieser Sportplatz?"</string>
@@ -1129,4 +1124,21 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_fireHydrant_confirmation_title">"Bist du sicher? Manchmal steht der Durchmesser auf dem Hydranten selbst."</string>
     <string name="quest_diet_answer_no_food">"Hier gibt’s nichts zu essen"</string>
     <string name="short_no_answer_on_button">"Nein"</string>
+    <string name="restore_confirmation">"Wiederherstellen"</string>
+    <string name="restore_dialog_message">"Alle Aufgaben wiederherstellen, die du vorher versteckt hast?"</string>
+    <string name="quest_parking_access_title2">"Wer darf hier parken? Das Parken kann kostenlos oder kostenpflichtig sein."</string>
+    <string name="quest_access_yes">"Alle Personen der Öffentlichkeit"</string>
+    <string name="quest_access_customers">"Jede Person, die einen bestimmten Ort besucht (z.B. nur Kunden)"</string>
+    <string name="quest_access_private">"Nur Einzelne mit Erlaubnis"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Sind die Leerungszeiten für diesen Briefkasten noch korrekt?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Sind die Leerungszeiten dieses %s Briefkastens noch korrekt?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Nicht erkannt. Versuche, die Art des Ortes einzugeben, z.B. „Bäckerei“. Andernfalls kannst du eine Notiz hinterlassen."</string>
+    <string name="quest_bicycle_barrier_type_title">"Um welche Art von Fahrradhindernis handelt es sich?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal zum Weg"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Enger Durchgang, nach oben hin kleiner"</string>
+    <string name="quest_barrier_bicycle_type_single">"Durchgang zwischen zwei Barrieren"</string>
+    <string name="quest_barrier_bicycle_type_double">"Schikane – Barriere auf beiden Seiten"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Schikane – mehr als zwei Barrieren"</string>
+    <string name="quest_level_title">"Auf welcher Ebene ist %s?"</string>
+    <string name="pref_title_language_select">"Sprache auswählen"</string>
 </resources>

@@ -691,16 +691,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"pas rowerowy (linia przerywana)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"kocie łby"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Czy parkowanie tutaj jest ograniczone?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"To prywatny parking"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"To ogólnodostępny parking (płatny lub bezpłatny)"</string>
-    <string name="quest_parking_access_customers">"Tylko dla klientów"</string>
     <string name="quest_streetName_pedestrian_title">"Jaka się nazywa ten deptak?"</string>
     <string name="quest_streetSurface_square_title">"Jaką nawierzchnię ma ten plac?"</string>
     <string name="quest_streetSurface_square_name_title">"Jaką nawierzchnię ma tutaj plac %s?"</string>
@@ -1668,6 +1658,8 @@ I deliberately changed form rather than translating exactly. It is necessary as 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Poziomów
 osiągnięć"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Do jakiej ulicy należy adres numer %s?"</string>
     <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
     <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
@@ -1842,9 +1834,6 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę."</string
     <string name="quest_shop_gone_vacant_answer">"Jest pusty"</string>
     <string name="quest_shop_gone_replaced_answer">"To"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Wpisz jaki rodzaj obiektu jest teraz tutaj"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Nie wiem co to jest. Rozważ zostawienie notatki."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ten sklep stał pusty. Co teraz tutaj jest?"</string>

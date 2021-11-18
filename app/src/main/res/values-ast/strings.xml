@@ -1121,18 +1121,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_surface_value_unhewn_cobblestone">"Empedráu natural"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"¿Equí ta restrinxíu l'aparcamientu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Ye priváu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Ye públicu (con o ensin costu)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Ye namái pa la vecería"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"¿Cuálu ye'l nome d'esta vía peatonal?"</string>
 
     <!-- Fuzzy -->

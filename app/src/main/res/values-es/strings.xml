@@ -1089,18 +1089,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_surface_value_unhewn_cobblestone">"Empedrado natural"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"¿Está limitado quién puede aparcar aquí?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Es privado"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Es público (con o sin coste)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Es solo para clientes"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"¿Cuál es el nombre de esta vía peatonal?"</string>
 
     <!-- Fuzzy -->
@@ -2083,6 +2071,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Logros y niveles"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"¿A qué calle pertenece el número (de puerta) «%s»?"</string>
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
@@ -2253,9 +2243,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_shop_gone_vacant_answer">"Está libre"</string>
     <string name="quest_shop_gone_replaced_answer">"Es un..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Pon el tipo de lugar aquí"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"¿No sabes lo que es? Deja una nota."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Este establecimiento ha estado vacío. ¿Qué hay aquí ahora?"</string>
@@ -2450,9 +2437,19 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_traffic_calming_type_rumble_strip">"Bandas rugosas."</string>
     <string name="quest_surface_value_concrete_plates">"Losetas de concreto."</string>
     <string name="quest_surface_value_concrete_lanes">"Acera de concreto."</string>
-    <string name="quest_fireHydrant_diameter_title">"¿Qué diámetro de toma está especificado en este hidrante de incendio?"</string>
+    <string name="quest_fireHydrant_diameter_title">"¿Qué diámetro de toma está especificado en esta boca de incendio?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"El diámetro que has puesto parece poco realista."</string>
     <string name="quest_fireHydrant_confirmation_title">"¿Seguro? A veces el diámetro está marcado en la propia boca."</string>
     <string name="quest_diet_answer_no_food">"No tiene comida."</string>
     <string name="short_no_answer_on_button">"No."</string>
+    <string name="restore_confirmation">"Restaurar"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"¿Quieres restaurar todas las tareas que has ido ocultando?"</string>
+    <string name="quest_parking_access_title2">"¿Quién tiene permiso para aparcar aquí? Puede ser gratis o no."</string>
+    <string name="quest_access_yes">"Cualquier persona, sin importar su función"</string>
+    <string name="quest_access_customers">"Cualquier persona que esté de visita (por ejemplo; solo para clientes)"</string>
+    <string name="quest_access_private">"Solo aquellos con permiso expreso (un aparcamiento privado o particular)"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"¿Las horas de recogida del correo de este buzón siguen bien puestas?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"¿Las horas de recogida del correo del buzón «%s» siguen bien puestas?"</string>
 </resources>

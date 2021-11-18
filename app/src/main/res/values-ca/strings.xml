@@ -420,10 +420,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_parking_fee_title">"Cal pagar per aparcar aquí?"</string>
     <string name="quest_cycleway_value_lane_soft">"carril bici (línies discontínues)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Empedrat irregular"</string>
-    <string name="quest_parking_access_title">"Hi ha restriccions sobre qui pot aparcar aquí?"</string>
-    <string name="quest_parking_access_private">"Privat"</string>
-    <string name="quest_parking_access_yes">"Públic (gratuït o de pagament)"</string>
-    <string name="quest_parking_access_customers">"Només per a clients"</string>
     <string name="quest_streetName_pedestrian_title">"Quin és el nom d'aquest carrer de vianants?"</string>
     <string name="quest_streetSurface_square_title">"Quin tipus de superfície té aquesta plaça?"</string>
     <string name="quest_streetSurface_square_name_title">"Quin tipus de superfície té la plaça %s aquí?"</string>
@@ -811,6 +807,8 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="user_profile_days_active">"Dies actiu"</string>
     <string name="user_profile_achievement_levels">"Nivells
 d'acompliment"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"A quin carrer pertany el número %s (de la casa)?"</string>
     <string name="quest_address_street_no_named_streets">"No pertany a cap carrer que tingui nom"</string>
     <string name="quest_address_street_place_name_label">"Nom del lloc:"</string>
@@ -974,9 +972,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_shop_gone_replaced_answer_hint">"Escriviu el tipus de lloc aquí"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"No es pot reconèixer el que vols fer. Deixa una nota"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Aquesta botiga ha estat vacant. Què hi ha aquí ara?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"El nombre de carrils difereix a cada costat"</string>
     <string name="quest_pitchSurface_title">"Quina superfície té aquest camp d'esports?"</string>
@@ -1137,4 +1132,21 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Voleu suprimir el predefinit \"%s\"? La selecció i l'ordre de les missions es perdran irrevocablement."</string>
+    <string name="notification_syncing">"S'estan sincronitzant les dades..."</string>
+    <string name="notification_channel_sync">"Sincronització de les dades"</string>
+    <string name="quest_board_type_sport">"Esport, exercicis"</string>
+    <string name="quest_generic_hasFeature_optional">"Opcionalment"</string>
+    <string name="quest_buildingType_bridge">"Pont entre edificis (penjant)"</string>
+    <string name="quest_laundrySelfService_title2">"Aquesta bugaderia és d'autoservei?"</string>
+    <string name="quest_dietType_halal_name_title">"%s ofereix productes halal?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Aquesta part són escales"</string>
+    <string name="quest_barrier_type_gate_conversion">"S'ha convertit a una porta"</string>
+    <string name="quest_traffic_calming_type_island">"Illa"</string>
+    <string name="quest_traffic_calming_type_chicane">"Corbes deliverades"</string>
+    <string name="short_no_answer_on_button">"No"</string>
+    <string name="restore_confirmation">"Recupera"</string>
+    <string name="restore_dialog_message">"Voleu recuperar totes les missions que heu ocultat?"</string>
+    <string name="quest_parking_access_title2">"Qui pot aparcar aquí? L'aparcament pot ser gratuït o de pagament."</string>
+    <string name="quest_access_private">"Només les persones autoritzades"</string>
+    <string name="pref_title_language_select">"Trieu una llengua"</string>
 </resources>

@@ -428,10 +428,6 @@
     <string name="quest_parking_fee_title">"እዚህ ለማቆም መክፈል አለብዎት?"</string>
     <string name="quest_cycleway_value_lane_soft">"የሳይክል መንገድ (የተሰረዙ ምልክቶች)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"ያልተቆረጠ ኮብልስቶን"</string>
-    <string name="quest_parking_access_title">"እዚህ ማቆም የሚችል ማን ነው የተከለከለ ነው?"</string>
-    <string name="quest_parking_access_private">"የግል ነው"</string>
-    <string name="quest_parking_access_yes">"ለሕዝብ ክፍት ነው (ያለ ክፍያ ወይም ያለ ክፍያ)"</string>
-    <string name="quest_parking_access_customers">"እሱ ለደንበኞች ብቻ ነው"</string>
     <string name="quest_streetName_pedestrian_title">"የዚህ የእግረኛ ጎዳና ስም ማን ይባላል?"</string>
     <string name="quest_streetSurface_square_title">"ይህ አደባባይ ምን ገጽታ አለው?"</string>
     <string name="quest_streetSurface_square_name_title">"%s አደባባዪ ምን ገጽ አለው?"</string>
@@ -825,6 +821,8 @@
 የነቃ"</string>
     <string name="user_profile_achievement_levels">"ስኬት
 ደረጃዎች"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"(ቤቱ) ቁጥር%s በየትኛው ጎዳና ላይ ነው?"</string>
     <string name="quest_address_street_no_named_streets">"እሱ በተሰየመ ጎዳና ውስጥ አይደለም"</string>
     <string name="quest_address_street_place_name_label">"የቦታ ስም"</string>
@@ -994,9 +992,6 @@
     <string name="quest_shop_gone_vacant_answer">"ባዶ ነው"</string>
     <string name="quest_shop_gone_replaced_answer">"ኤ (n)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"ምን ዐይነት ቦታ እንደሆነ እዚህ ጋር ይፃፉ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"ይህ ምን እንደሆነ አላውቁም። ማስታወሻ መተው ያስቡበት።"</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"ይህ ሱቅ ባዶ ሆኖ ቆይቷል ፡፡ አሁን እዚህ ምን አለ?"</string>

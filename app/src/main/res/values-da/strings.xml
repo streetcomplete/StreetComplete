@@ -1104,18 +1104,6 @@ Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndt
     <string name="quest_surface_value_unhewn_cobblestone">"Pigsten"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Er det begrænset hvem der må parkere her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Det er privat"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Det er offentligt (med eller uden betaling)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Kun for kunder"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Hvad er navnet på denne gågade?"</string>
 
     <!-- Fuzzy -->
@@ -1876,7 +1864,7 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
     <string name="link_brouter_description">"Sikkert det bedste rutenavigationsværktøj der findes til cyklister"</string>
     <string name="link_show_me_the_way_description">"Følg med i OSM opdateringer i realtid"</string>
     <string name="link_osrm_description">"Den hurtigste navigationssoftware der findes"</string>
-    <string name="link_openrouteservice_description">"Rutenavigation for et flere typer af køretøjer og til fods - hver med deres referencer. Kan også vise isokroner (nå frem til et område på X antal minutter fra startpunktet)."</string>
+    <string name="link_openrouteservice_description">"Rutenavigation for et flere typer af køretøjer og til fods - hver med deres alternativer. Kan også vise isokroner (nå frem til et område på X antal minutter fra startpunktet)."</string>
     <string name="link_osm_haiku_description">"Brug OSM data til at lave haiku (en form for Japansk digt)"</string>
     <string name="link_openinframap_description">"Et kort over energi-, telekommunikations-, gas- og olieinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Lav kort til print for orienteringssport"</string>
@@ -1931,6 +1919,8 @@ Denne data er essentiel ikke bare for postbuddet men også for ethvert navigatio
     <string name="user_profile_days_active">"Dage
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Præstationsniveau"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Hvilken vej ligger hus-nummer %s på?"</string>
     <string name="quest_address_street_no_named_streets">"Det tilhører ikke en gade/vej med navn"</string>
     <string name="quest_address_street_place_name_label">"Stednavn:"</string>
@@ -2101,9 +2091,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_shop_gone_vacant_answer">"Det er sæsonlukket"</string>
     <string name="quest_shop_gone_replaced_answer">"En/Et..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Indtast her hvilken slags sted "</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Ved ikke hvad dette er. Overvej at efterlade en note."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Denne butik har været tom. Hvad er her nu?"</string>

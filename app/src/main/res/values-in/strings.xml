@@ -621,10 +621,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_parking_fee_title">"Apakah parkir di sini bayar?"</string>
     <string name="quest_cycleway_value_lane_soft">"Lajur Sepeda (garis putus-putus)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Berangkal tidak mulus"</string>
-    <string name="quest_parking_access_title">"Apakah yang boleh parkir di sini terbatas?"</string>
-    <string name="quest_parking_access_private">"Ini pribadi"</string>
-    <string name="quest_parking_access_yes">"Ini terbuka untuk publik (dengan atau tanpa bayar)"</string>
-    <string name="quest_parking_access_customers">"Hanya untuk pelanggan"</string>
     <string name="quest_streetName_pedestrian_title">"Apa nama jalur pejalan kaki ini?"</string>
     <string name="quest_streetSurface_square_title">"Apakah permukaan dari alun-alun ini?"</string>
     <string name="quest_streetSurface_square_name_title">"Apa permukaan dari alun-alun %s ini?"</string>
@@ -1054,6 +1050,8 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="user_profile_local_rank">"Peringkat di %s"</string>
     <string name="user_profile_days_active">"Hari aktif"</string>
     <string name="user_profile_achievement_levels">"Level pencapaian"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Berada di jalan apa rumah nomor %s ini?"</string>
     <string name="quest_address_street_no_named_streets">"Rumah ini jalannya tidak bernama"</string>
     <string name="quest_address_street_place_name_label">"Nama tempat:"</string>
@@ -1132,9 +1130,6 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Ketik jenis tempat di sini"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Tidak tahu apa ini. Pertimbangkan meninggalkan catatan."</string>
     <string name="quest_construction_completed_at_known_date">"Akan selesai pada tanggal..."</string>
     <string name="quest_construction_completion_date_title">"Kapan ini akan selesai?"</string>
     <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>

@@ -913,18 +913,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_surface_value_unhewn_cobblestone">"Innstøpt elvestein"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Er det begrenset hvem som kan parkere her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Det er privat"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Offentlig parkering (med eller uten avgift)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Kundeparkering"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Hva heter denne gågata?"</string>
 
     <!-- Fuzzy -->
@@ -1604,7 +1592,7 @@ Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene di
     <string name="link_brouter_description">"Sannsynligvis den beste navigasjonsmotoren for syklister"</string>
     <string name="link_show_me_the_way_description">"Se OSM-endringer skje i sanntid"</string>
     <string name="link_osrm_description">"Den raskeste navigasjonsmotoren per nå"</string>
-    <string name="link_openrouteservice_description">"Ruteplanlegger for fotgjengere og flere ulike kjøretøy, med mulighet for tilpassinger. Kan også vise hvilket område du kan komme til innen X minutter fra startstedet."</string>
+    <string name="link_openrouteservice_description">"Ruteplanlegger for fotgjengere og flere ulike kjøretøy, med mulighet for alternativ. Kan også vise hvilket område du kan komme til innen X minutter fra startstedet."</string>
     <string name="link_osm_haiku_description">"Bruk OSM-data til å generere haikudikt (en type japanske dikt)"</string>
     <string name="link_openinframap_description">"Et kart som viser strøm-, tele- og oljeinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Lag orienteringskart for utskrift"</string>
@@ -1660,6 +1648,8 @@ plassering"</string>
     <string name="user_profile_days_active">"Dager
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Prestasjonsnivåer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Hvilken gate har husnummeret %s?"</string>
     <string name="quest_address_street_no_named_streets">"Det hører ikke til en navngitt gate"</string>
     <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
@@ -1830,9 +1820,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_shop_gone_vacant_answer">"Det er tomt"</string>
     <string name="quest_shop_gone_replaced_answer">"En/ei/et..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Hva slags sted er dette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Vet ikke hva dette er. Legg gjerne igjen en merknad."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Denne butikken er tom. Hva er her nå?"</string>
@@ -2024,6 +2011,14 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Slette oppsettet «%s»? Oppdragsoppsettet vil slettes for alltid."</string>
+    <string name="notification_syncing">"Synkroniserer…"</string>
+    <string name="notification_channel_sync">"Synkroniser"</string>
+    <string name="quest_board_type_sport">"Sport, øvelser"</string>
+    <string name="quest_generic_hasFeature_optional">"Valgfritt"</string>
+    <string name="quest_buildingType_bridge">"Bro mellom bygninger (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Tilbyr dette vaskeriet selvbetjent vaskefasiliteter?"</string>
+    <string name="quest_dietType_halal_name_title">"Tilbyr %s Halalprodukter?"</string>
+    <string name="quest_picnicTableCover_title">"Er piknikbordet tildekket (beskyttet mot regn)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Denne delen er trapper"</string>
     <string name="quest_barrier_type_gate_conversion">"Omgjort til en port"</string>
 </resources>

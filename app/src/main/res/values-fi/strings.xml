@@ -853,18 +853,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_surface_value_unhewn_cobblestone">"Mukulakivet"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Onko rajoitettu kuka voi pysäköidä täällä?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Yksityinen"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Julkinen (maksullinen tai ilmainen)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Vain asiakkaille"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Mikä on tämän kävelykadun nimi?"</string>
 
     <!-- Fuzzy -->
@@ -1769,6 +1757,8 @@ päiviä"</string>
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Saavutus-
 taso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Mille kadulle (talon) numero %s kuuluu?"</string>
     <string name="quest_address_street_no_named_streets">"Se ei kuulu nimetylle kadulle"</string>
     <string name="quest_address_street_place_name_label">"Paikan nimi:"</string>
@@ -1943,9 +1933,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_shop_gone_vacant_answer">"Se on tyhjillään"</string>
     <string name="quest_shop_gone_replaced_answer">"Siellä on..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Kirjoita paikka tänne"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"En tiedä mikä. Harkitse ilmoituksen jättämistä."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Kauppa on ollut tyhjillään. Mitä siellä on nyt?"</string>

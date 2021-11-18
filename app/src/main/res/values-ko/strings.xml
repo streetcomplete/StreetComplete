@@ -1050,16 +1050,6 @@
     <string name="quest_surface_value_unhewn_cobblestone">"거친 조약돌"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"이곳에 주차하는 데 제한이 있나요?"</string>
-    <string name="quest_parking_access_private">"개인용입니다"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"누구나 이용할 수 있습니다 (주차료 무관)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"고객 전용입니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"이 보행자 도로의 이름은 무엇인가요?"</string>
 
     <!-- Fuzzy -->
@@ -1849,6 +1839,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 날(일)"</string>
     <string name="user_profile_achievement_levels">"기여
 레벨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"이 (건물)번호 %s은(는) 어느 도로에 속해 있나요?"</string>
     <string name="quest_address_street_no_named_streets">"이름이 있는 도로에 속해 있지 않음"</string>
     <string name="quest_address_street_place_name_label">"장소명:"</string>
@@ -2028,9 +2020,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_shop_gone_vacant_answer">"비어 있습니다"</string>
     <string name="quest_shop_gone_replaced_answer">"새로 바뀐 상점명:"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"이 장소의 유형을 입력하세요"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"여기 있는 게 무엇인지 알 수 없습니다. 참고를 남겨주세요."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"이 가게는 비어 있었습니다. 지금 여기에 무엇이 있나요?"</string>

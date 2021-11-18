@@ -1103,18 +1103,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_surface_value_unhewn_cobblestone">"Seixo bruto"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Existe restrição para estacionar aqui?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"É privado"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"É público (com ou sem taxa)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"É apenas para clientes"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Qual o nome desta via de pedestres?"</string>
 
     <!-- Fuzzy -->
@@ -1941,6 +1929,8 @@ global"</string>
 ativos"</string>
     <string name="user_profile_achievement_levels">"Níveis de
 conquista"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"A que rua pertence o número da casa %s?"</string>
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua nomeada"</string>
     <string name="quest_address_street_place_name_label">"Coloque o nome:"</string>
@@ -2114,9 +2104,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_shop_gone_vacant_answer">"Está vago"</string>
     <string name="quest_shop_gone_replaced_answer">"Um(a)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Digite o tipo de lugar aqui"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Não sei o que é isso.  Considere deixar uma nota."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Esta loja está vazia.  O que está aqui agora?"</string>

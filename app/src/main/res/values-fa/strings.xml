@@ -1080,18 +1080,6 @@
     <string name="quest_surface_value_unhewn_cobblestone">"سنگفرش نامرتب"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"آیا برای پارک در اینجا محدودیت وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"خصوصی است"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"عمومی است (با هزینه یا بدون هزینه)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"فقط برای مشتریان است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"نام این خیابان عابر پیاده چیست؟"</string>
 
     <!-- Fuzzy -->
@@ -2108,6 +2096,8 @@
     <string name="user_profile_local_rank">"رتبه بندی در %s"</string>
     <string name="user_profile_days_active">"روزهای فعالیت"</string>
     <string name="user_profile_achievement_levels">"سطح پیشرفت"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"شماره (خانه) %s به کدام خیابان تعلق دارد؟"</string>
     <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
     <string name="quest_address_street_place_name_label">"نام مکان:"</string>
@@ -2281,9 +2271,6 @@
     <string name="quest_shop_gone_vacant_answer">"خالی است"</string>
     <string name="quest_shop_gone_replaced_answer">"یک..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"نوع مکان اینجا را وارد کنید"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"اگر نمی‌دانید چه عارضه‌ای اینجاست، یادداشتی بگذارید."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"این مغازه متروکه است. اکنون چه عارضه‌ای اینجاست؟"</string>

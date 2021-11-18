@@ -528,14 +528,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"bande cyclable franchissable"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pavés non taillés"</string>
-
-    <!-- Un peu long. -->
-    <string name="quest_parking_access_title">"L’accès à ce parking est-il restreint ?"</string>
-
-    <!-- Traduction non littérale. Il faudrait connaître le contexte. -->
-    <string name="quest_parking_access_private">"Privé"</string>
-    <string name="quest_parking_access_yes">"Public (payant ou gratuit)"</string>
-    <string name="quest_parking_access_customers">"Réservé aux clients"</string>
     <string name="quest_streetName_pedestrian_title">"Quel est le nom de cette rue piétonne ?"</string>
     <string name="quest_streetSurface_square_title">"Quel est le revêtement de cette place ?"</string>
     <string name="quest_streetSurface_square_name_title">"Quel est le revêtement de la place %s ?"</string>
@@ -1037,6 +1029,8 @@ global"</string>
 actifs"</string>
     <string name="user_profile_achievement_levels">"Niveaux
 accomplis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"A quelle rue appartient le bâtiment portant le numéro %s ?"</string>
     <string name="quest_address_street_no_named_streets">"Cela n’appartient pas à une rue précise"</string>
     <string name="quest_address_street_place_name_label">"Nom du lieu :"</string>
@@ -1223,9 +1217,6 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_shop_gone_vacant_answer">"L’emplacement est vacant"</string>
     <string name="quest_shop_gone_replaced_answer">"Un(e) …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Écrire un type de lieu ici"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Je ne sais pas ce que c’est. Vous pouvez laisser une note."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Cet emplacement de magasin a été vacant. Qu’y a-t’il ici maintenant ?"</string>
@@ -1473,4 +1464,17 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_fireHydrant_confirmation_title">"Êtes-vous sûr ? Parfois, le diamètre peut être trouvé sur la bouche d'incendie elle-même."</string>
     <string name="quest_diet_answer_no_food">"Pas de nourriture"</string>
     <string name="short_no_answer_on_button">"Non"</string>
+    <string name="restore_confirmation">"Restaurer"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"Restaurer toutes les quêtes cachées auparavant ?"</string>
+    <string name="quest_parking_access_title2">"Qui a le droit de stationner ici ? Peut être gratuit ou payant."</string>
+    <string name="quest_access_yes">"Tout membre du grand public"</string>
+    <string name="quest_access_customers">"Toute personne visitant un endroit spécifique (ex. clients uniquement)"</string>
+    <string name="quest_access_private">"Seul individu(s) avec permission"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Les horaires de récolte de cette boîte aux lettres sont-elles toujours correctes ?"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Passage étroit, plus petit vers le haut"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passage entre deux barrières"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - barrière à chaque côté"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane - plus de deux barrières"</string>
 </resources>

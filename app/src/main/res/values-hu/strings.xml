@@ -1065,18 +1065,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_surface_value_unhewn_cobblestone">"Nagy kavics (nem vágott)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Korlátozva van, hogy ki parkolhat itt?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Magántulajdon"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Nyilvános (parkolási díjjal vagy ingyen)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Csak ügyfeleknek"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Mi a neve ennek a sétálóutcának?"</string>
 
     <!-- Fuzzy -->
@@ -2097,6 +2085,8 @@ napok"</string>
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Kitüntetés
 szintek"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Ez a (ház)szám melyik utcához tartozik: %s?"</string>
     <string name="quest_address_street_no_named_streets">"Egyetlen elnevezett utcához sem tartozik"</string>
     <string name="quest_address_street_place_name_label">"Helynév:"</string>
@@ -2266,9 +2256,6 @@ szintek"</string>
     <string name="quest_shop_gone_vacant_answer">"Üresen áll"</string>
     <string name="quest_shop_gone_replaced_answer">"Egy…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Add meg a hely típusát"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Nem tudom pontosan. Inkább megjegyzést hagyok."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ez az üzlet üresen állt. Mi található most itt?"</string>

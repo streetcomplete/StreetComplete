@@ -433,10 +433,6 @@
     <string name="quest_parking_fee_title">"ต้องจ่ายค่าจอดรถที่นี่หรือไม่?"</string>
     <string name="quest_cycleway_value_lane_soft">"ช่องทางจักรยาน (เส้นประ)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"ก้อนหินปูถนน"</string>
-    <string name="quest_parking_access_title">"ที่จอดรถนี้มีการจำกัดคนเข้าจอดหรือไม่"</string>
-    <string name="quest_parking_access_private">"เป็นส่วนบุคคล"</string>
-    <string name="quest_parking_access_yes">"เปิดให้สาธารนะ (โดยที่มีหรือไม่มีค่าใช้จ่าย)"</string>
-    <string name="quest_parking_access_customers">"เฉพาะลูกค้า"</string>
     <string name="quest_streetName_pedestrian_title">"ถนนคนเดินที่มีชื่ออะไร?"</string>
     <string name="quest_streetSurface_square_title">"จตุรัสที่นี่มีพื้นผิวประเภทไหน?"</string>
     <string name="quest_streetSurface_square_name_title">"จตุรัส %s มีพื้นผิวประเภทไหน?"</string>
@@ -826,6 +822,8 @@
     <string name="user_profile_days_active">"จำนวนวันที่"</string>
     <string name="user_profile_achievement_levels">"ระดับ
 ความสำเร็จ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"เลขที่ (บ้าน) %s เป็นของถนนอะไร"</string>
     <string name="quest_address_street_no_named_streets">"ไม่ได้เป็นของถนนที่มีชื่อ"</string>
     <string name="quest_address_street_place_name_label">"ชื่อสถานที่:"</string>
@@ -995,9 +993,6 @@
     <string name="quest_shop_gone_vacant_answer">"ว่างอยู่"</string>
     <string name="quest_shop_gone_replaced_answer">"เป็น…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"พิมพ์ประเภทของสถานที่ในนี้"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"ไม่รู้ว่านี่คืออะไร ขอพิจารณาที่จะใส่หมายเหตุ"</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"ร้านนี้ย้ายออกไปแล้ว มีอะไรอยู่ที่นี่?"</string>

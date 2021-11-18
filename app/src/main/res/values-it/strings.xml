@@ -364,13 +364,13 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_leave_new_note_photo">"Allega una foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vuoi cancellare questa foto?"</string>
     <string name="quest_cycleway_value_track">"pista ciclabile"</string>
-    <string name="quest_cycleway_value_lane">"corsia ciclabile"</string>
+    <string name="quest_cycleway_value_lane">"pista ciclabile"</string>
     <string name="quest_cycleway_value_none">"nessuna"</string>
     <string name="quest_cycleway_value_shared">"corsia condivisa esplicitamente con altro traffico"</string>
     <string name="quest_cycleway_value_bus_lane">"sul percorso dell'autobus"</string>
     <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il percorso pedonale"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossibile creare un file per la foto"</string>
-    <string name="quest_cycleway_value_lane_dual">"corsia ciclabile, entrambe le direzioni"</string>
+    <string name="quest_cycleway_value_lane_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="pref_category_advanced">"Avanzato"</string>
     <string name="quest_enabled">"Attivato"</string>
@@ -394,7 +394,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="default_disabled_msg_go_inside">"Questo tipo di missione non è attivo perché è molto probabile che dovrai entrare nel posto per dare risposta."</string>
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
     <string name="quest_housenumber_street_number_optional">"Orientamento del numero (opzionale)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Pista ciclabile anche sull'altro lato…"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Corsia ciclabile anche sull'altro lato…"</string>
     <string name="quest_openingHours_emptyAnswer">"Devi descrivere cosa c'è sul cartello. Se non trovi nulla, dovresti chiedere gli orari di apertura all'interno."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
     <string name="quest_streetName_answer_noName_question">"Perché non ha un nome?"</string>
@@ -410,7 +410,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="create_new_note_description">"Puoi lasciare una nota per far sapere agli altri mappatori che qui c'è un problema. Aggiusta la posizione della nota muovendo la mappa:"</string>
     <string name="quest_generic_looks_like_this">"Normalmente è qualcosa tipo:"</string>
     <string name="quest_surface_value_metal">"Metallo"</string>
-    <string name="quest_cycleway_title2">"C'è una pista ciclabile qui? Di che tipo?"</string>
+    <string name="quest_cycleway_title2">"C'è una corsia ciclabile qui? Di che tipo?"</string>
     <string name="quest_bridge_structure_title">"Quale è la struttura di questo ponte?"</string>
     <string name="quest_internet_access_name_title">"Che tipo di connessione internet offre %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
@@ -439,12 +439,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <!-- Wayside shrine lo tradurrei come "edicola votiva", come già presente sull'editor di OSM. Un santuario è una cosa molto diversa -->
     <string name="quest_religion_for_wayside_shrine_title">"Quale religione è rappresentata in questa edicola votiva?"</string>
     <string name="quest_parking_fee_title">"È necessario pagare per poter parcheggiare qui?"</string>
-    <string name="quest_cycleway_value_lane_soft">"pista ciclabile (segni tratteggiati)"</string>
+    <string name="quest_cycleway_value_lane_soft">"corsia ciclabile (segni tratteggiati)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Ciottoli grezzi"</string>
-    <string name="quest_parking_access_title">"L'accesso al parcheggio è limitato ad alcune categorie?"</string>
-    <string name="quest_parking_access_private">"È privato"</string>
-    <string name="quest_parking_access_yes">"È pubblico (gratuito o a pagamento)"</string>
-    <string name="quest_parking_access_customers">"È solo per i clienti"</string>
     <string name="quest_streetName_pedestrian_title">"Qual è il nome di questa strada pedonale?"</string>
     <string name="quest_streetSurface_square_title">"Che tipo di pavimentazione ha questa piazza?"</string>
     <string name="quest_streetSurface_square_name_title">"Che tipo di pavimentazione ha la piazza %s?"</string>
@@ -839,6 +835,8 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
 attivo"</string>
     <string name="user_profile_achievement_levels">"Livelli di
 riconoscimento"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"A quale strada appartiene il numero civico %s?"</string>
     <string name="quest_address_street_no_named_streets">"Non appartiene ad una strada nota"</string>
     <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
@@ -1002,16 +1000,13 @@ riconoscimento"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Inserisci il tipo di attività"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Non so cosa sia. Se puoi lascia di una nota."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Questo negozio era libero. Cosa c'è ora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Il numero di corsie è differente su ogni lato"</string>
     <string name="quest_pitchSurface_title">"Che superficie ha questo campo sportivo?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di missione non è attivo perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
     <string name="quest_dietType_kosher_name_title">"%s vende prodotti kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna pista ciclabile"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna corsia ciclabile"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Al solito, tocca sul lato della figura, seleziona la risposta corretta e ripeti per l'altro lato. Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio una strada a senso unico che permette il transito delle bici in entrambi i sensi!"</string>
@@ -1186,4 +1181,23 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_fireHydrant_diameter_title">"Qual è il diametro indicato sulla targa dell'idrante?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Questo diametro sembra implausibile."</string>
     <string name="quest_fireHydrant_confirmation_title">"Sei Sicuro? Delle volte il diametro può essere trovato sull'idrante stesso."</string>
+    <string name="quest_diet_answer_no_food">"Non ha alcun cibo"</string>
+    <string name="short_no_answer_on_button">"No"</string>
+    <string name="restore_confirmation">"Ripristina"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"Ripristinare i compiti nascosti in precedenza?"</string>
+    <string name="quest_parking_access_title2">"Chi può parcheggiare qui? Il parcheggio può essere libero o a pagamento."</string>
+    <string name="quest_access_yes">"Chiunque"</string>
+    <string name="quest_access_customers">"Chiunque voglia visitare un luogo specifico (es. solo clienti)"</string>
+    <string name="quest_access_private">"Solo persone con un permesso"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Gli orari di raccolta di questa cassetta postale sono ancora corretti?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Gli orari di raccolta di questa %s cassetta postale sono ancora corretti?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Non riconosciuto. Prova a indicare un tipo di luogo, per esempio \"panetteria\". Altrimenti, lascia una nota."</string>
+    <string name="quest_bicycle_barrier_type_title">"Che tipo di barriera per biciclette è questa?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"In diagonale"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Passaggio stretto, più piccolo in alto"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passaggio tra due barriere"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - barriere su ogni lato"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane - più di due barriere"</string>
 </resources>

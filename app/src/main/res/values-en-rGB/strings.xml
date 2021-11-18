@@ -419,10 +419,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_parking_fee_title">"Do you have to pay to park here?"</string>
     <string name="quest_cycleway_value_lane_soft">"cycle lane (dashed markings)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Unhewn cobblestone"</string>
-    <string name="quest_parking_access_title">"Is it restricted who may park here?"</string>
-    <string name="quest_parking_access_private">"It is private"</string>
-    <string name="quest_parking_access_yes">"It is open to the public (with or without fee)"</string>
-    <string name="quest_parking_access_customers">"It is only for customers"</string>
     <string name="quest_streetName_pedestrian_title">"What is the name of this pedestrian street?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
     <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
@@ -799,6 +795,8 @@ rank"</string>
 active"</string>
     <string name="user_profile_achievement_levels">"Achievement
 levels"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"What street does the (house) number %s belong to?"</string>
     <string name="quest_address_street_no_named_streets">"It does not belong to a named street"</string>
     <string name="quest_address_street_place_name_label">"Place name:"</string>
@@ -938,7 +936,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_shop_gone_vacant_answer">"It’s vacant"</string>
     <string name="quest_shop_gone_replaced_answer">"A(n)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Type kind of place here"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Don’t know what this is. Consider leaving a note."</string>
     <string name="quest_shop_vacant_type_title">"This shop has been vacant. What’s here now?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Lane count differs for each side"</string>
     <string name="quest_pitchSurface_title">"What surface does this sports field have?"</string>
@@ -1117,4 +1114,21 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="quest_diet_answer_no_food">"It has no food"</string>
     <string name="short_no_answer_on_button">"No"</string>
+    <string name="restore_confirmation">"Restore"</string>
+    <string name="restore_dialog_message">"Restore all quests you’ve hidden?"</string>
+    <string name="quest_parking_access_title2">"Who is allowed to park here? Parking may be free or paid."</string>
+    <string name="quest_access_yes">"Any member of the general public"</string>
+    <string name="quest_access_customers">"Any person visiting a specific place (e.g. customers only)"</string>
+    <string name="quest_access_private">"Only individual(s) with permission"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Are the collection times of this postbox still correct?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Are the collection times of this %s postbox still correct?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Not recognized. Try entering the type of place, for example “bakery”. Otherwise, consider leaving a note."</string>
+    <string name="quest_bicycle_barrier_type_title">"What type of bicycle barrier is this?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal to the path"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Narrow passage, smaller toward top"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passage between two barriers"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - barrier on each side"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane - more than two barriers"</string>
+    <string name="quest_level_title">"On which level is %s located?"</string>
+    <string name="pref_title_language_select">"Select language"</string>
 </resources>

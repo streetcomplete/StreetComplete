@@ -419,10 +419,6 @@
     <string name="quest_parking_fee_title">"Да ли се плаћа овај паркинг?"</string>
     <string name="quest_cycleway_value_lane_soft">"бициклистичка трака (испрекидане ознаке)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Нетесана калдрма"</string>
-    <string name="quest_parking_access_title">"Да ли је ограничено ко овде може паркирати?"</string>
-    <string name="quest_parking_access_private">"Приватно"</string>
-    <string name="quest_parking_access_yes">"Јавно (са или без наплате)"</string>
-    <string name="quest_parking_access_customers">"Само за купце"</string>
     <string name="quest_streetName_pedestrian_title">"Како се зове ова пешачка улица?"</string>
     <string name="quest_streetSurface_square_title">"Каква је површина овог трга?"</string>
     <string name="quest_streetSurface_square_name_title">"Каква је површина трга %s овде?"</string>
@@ -811,6 +807,8 @@
 дани"</string>
     <string name="user_profile_achievement_levels">"Нивои
 у достигнућима"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Којој улици припада кућни број %s?"</string>
     <string name="quest_address_street_no_named_streets">"Не припада улици са именом"</string>
     <string name="quest_address_street_place_name_label">"Назив места:"</string>
@@ -972,9 +970,6 @@
     <string name="quest_shop_gone_vacant_answer">"Напуштено је"</string>
     <string name="quest_shop_gone_replaced_answer">"То је…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Упишите врсту радње и сл."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Не знам шта је ово. Оставите напомену."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ова продавница је напуштена. Шта је сада овде?"</string>

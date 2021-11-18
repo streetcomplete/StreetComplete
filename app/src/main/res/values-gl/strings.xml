@@ -413,10 +413,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_parking_fee_title">"Custa cartos aparcar aquí?"</string>
     <string name="quest_cycleway_value_lane_soft">"carril bici (liña descontinua)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Empedrado irregular (natural)"</string>
-    <string name="quest_parking_access_title">"Está limitado quen pode aparcar aquí?"</string>
-    <string name="quest_parking_access_private">"É privado"</string>
-    <string name="quest_parking_access_yes">"É público (de pago ou gratuíto)"</string>
-    <string name="quest_parking_access_customers">"É só para clientes"</string>
     <string name="quest_streetName_pedestrian_title">"Cal é o nome desta rúa peonil?"</string>
     <string name="quest_streetSurface_square_title">"Que tipo de superficie ten esta praza?"</string>
     <string name="quest_streetSurface_square_name_title">"Que tipo de superficie ten a praza «%s»?"</string>
@@ -788,6 +784,8 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="user_profile_days_active">"Días activo"</string>
     <string name="user_profile_achievement_levels">"Niveis dos
 logros"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"A que rúa pertence o número (de enderezo) %s?"</string>
     <string name="quest_address_street_no_named_streets">"Non pertence a unha rúa con nome"</string>
     <string name="quest_address_street_place_name_label">"Nome:"</string>
@@ -929,7 +927,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_shop_gone_vacant_answer">"Comercio baleiro"</string>
     <string name="quest_shop_gone_replaced_answer">"Un..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Escribe o tipo de lugar aquí"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Non sei que é isto. Considera deixar unha nota."</string>
     <string name="quest_shop_vacant_type_title">"Este comercio estivo baleiro. Que hai aquí agora?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"O número de carrís difire en cada sentido"</string>
     <string name="quest_pitchSurface_title">"Que superficie ten esta pista deportiva?"</string>

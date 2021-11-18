@@ -435,10 +435,6 @@
     <string name="quest_parking_fee_title">"Платено ли е паркирането тук?"</string>
     <string name="quest_cycleway_value_lane_soft">"велоалея (пунктирана линия)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Каменна настилка"</string>
-    <string name="quest_parking_access_title">"Има ли ограничения кой може да паркира тук?"</string>
-    <string name="quest_parking_access_private">"Частен"</string>
-    <string name="quest_parking_access_yes">"Публичен (безплатен или платен)"</string>
-    <string name="quest_parking_access_customers">"Само за клиенти"</string>
     <string name="quest_streetName_pedestrian_title">"Какво е името на пешеходната улица"</string>
     <string name="quest_streetSurface_square_title">"Каква настилка има този площад?"</string>
     <string name="quest_streetSurface_square_name_title">"Каква настилка има площад %s?"</string>
@@ -829,6 +825,8 @@
     <string name="user_profile_local_rank">"Класиране в %s"</string>
     <string name="user_profile_days_active">"Дни активност"</string>
     <string name="user_profile_achievement_levels">"Постижения"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Към коя улица е сградата с номер %s?"</string>
     <string name="quest_address_street_no_named_streets">"Няма определена улица"</string>
     <string name="quest_address_street_place_name_label">"Име на място:"</string>
@@ -998,9 +996,6 @@
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer">"Сега е..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Какъв вид място е това"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Не знам какво е това. Помислете да оставите бележка."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Този обект е отбелязан като празен. Какво има тук сега?"</string>
@@ -1211,4 +1206,20 @@
     <string name="quest_fireHydrant_confirmation_title">"Сигурни ли сте? Твърде често диаметърът е посочен на самия хидрант."</string>
     <string name="quest_diet_answer_no_food">"Без храна"</string>
     <string name="short_no_answer_on_button">"Не"</string>
+    <string name="restore_confirmation">"Възстанови"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"Възстановяване на всички куести, които сте скрили досега?"</string>
+    <string name="quest_parking_access_title2">"За кого е позволено да паркира тук? Паркирането може да бъде безплатно или платено."</string>
+    <string name="quest_access_yes">"Обществен"</string>
+    <string name="quest_access_customers">"Само за посетители (клиенти)"</string>
+    <string name="quest_access_private">"Само с разрешително (служебен паркинг)"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Времената за събиране още ли са актуални за тази пощенска кутия?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Времената за събиране още ли са актуални за пощенска кутия %s?"</string>
+    <string name="quest_bicycle_barrier_type_title">"Какъв тип бариера за велосипеди е това?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Диагонална на пътя"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Стеснение на пътя (по посока на движението)"</string>
+    <string name="quest_barrier_bicycle_type_single">"Преминаване през две бариери"</string>
+    <string name="quest_barrier_bicycle_type_double">"Шикан - бариери от двете страни"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Шикан - повече от 2 бариери"</string>
 </resources>
