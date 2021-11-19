@@ -157,17 +157,19 @@ private val notABuildingFilter by lazy { """
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
-      !building and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+      (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+      and !building
     """.toElementFilterExpression()}
 
 private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
-      and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+      and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
     """.toElementFilterExpression()}
 
 private val nodesWithAddressFilter by lazy { """
-   nodes with ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+   nodes with
+     addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
     """.toElementFilterExpression()}
 
 private val buildingsWithMissingAddressFilter by lazy { """
