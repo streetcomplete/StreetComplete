@@ -2,22 +2,17 @@ package de.westnordost.streetcomplete.data.elementfilter
 
 import org.junit.Test
 
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
+import de.westnordost.streetcomplete.testutils.*
 
 import org.junit.Assert.*
 import java.util.EnumSet
 
 class ElementFilterExpressionTest {
-    // Tests for toOverpassQLString are in FiltersParserTest
-
-    private val node = createElement(ElementType.NODE)
-    private val way = createElement(ElementType.WAY)
-    private val relation = createElement(ElementType.RELATION)
+    private val node = node()
+    private val way = way()
+    private val relation = rel()
 
     @Test fun `matches nodes`() {
         val expr = createMatchExpression(ElementsTypeFilter.NODES)
@@ -66,24 +61,14 @@ class ElementFilterExpressionTest {
     }
 
     @Test fun `matches filter`() {
-        val tagFilter: ElementFilter = mock()
-        val expr = ElementFilterExpression(EnumSet.of(ElementsTypeFilter.NODES), Leaf(tagFilter))
+        val expr = ElementFilterExpression(EnumSet.of(ElementsTypeFilter.NODES), Leaf(HasKey("bla")))
 
-        on(tagFilter.matches(any())).thenReturn(true)
-        assertTrue(expr.matches(node))
-        on(tagFilter.matches(any())).thenReturn(false)
-        assertFalse(expr.matches(node))
-    }
-
-    private fun createElement(type: ElementType): Element {
-        val element: Element = mock()
-        on(element.type).thenReturn(type)
-        return element
+        assertTrue(expr.matches(node(tags = mapOf("bla" to "1"))))
+        assertFalse(expr.matches(node(tags = mapOf("foo" to "1"))))
     }
 
     private fun createMatchExpression(vararg elementsTypeFilter: ElementsTypeFilter): ElementFilterExpression {
-        val tagFilter: ElementFilter = mock()
-        on(tagFilter.matches(any())).thenReturn(true)
+        val tagFilter = NotHasKey("something")
         return ElementFilterExpression(createEnumSet(*elementsTypeFilter), Leaf(tagFilter))
     }
 

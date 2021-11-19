@@ -1,13 +1,12 @@
-package de.westnordost.streetcomplete.data.elementfilter
+package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 
 fun ElementFilter.toOverpassString(): String = when(this) {
     is CombineFilters -> filters.joinToString("") { it.toOverpassString() }
     is CompareDateTagValue -> {
-        val strVal = date.toCheckDateString()
+        val strVal = dateFilter.date.toCheckDateString()
         val operator = when (this) {
             is HasDateTagGreaterOrEqualThan -> ">="
             is HasDateTagLessOrEqualThan -> "<="
@@ -18,7 +17,7 @@ fun ElementFilter.toOverpassString(): String = when(this) {
         "[%s](if: date(t[${key.quote()}]) $operator date('$strVal'))".formatQuoted(key)
     }
     is CompareElementAge -> {
-        val dateStr = date.toCheckDateString()
+        val dateStr = dateFilter.date.toCheckDateString()
         val operator = when (this) {
             is ElementNewerThan -> ">"
             is ElementOlderThan -> "<"
@@ -27,7 +26,7 @@ fun ElementFilter.toOverpassString(): String = when(this) {
         "(if: date(timestamp()) $operator date('$dateStr'))"
     }
     is CompareTagAge -> {
-        val dateStr = date.toCheckDateString()
+        val dateStr = dateFilter.date.toCheckDateString()
         val datesToCheck = (listOf("timestamp()") + getLastCheckDateKeys(key).map { "t['$it']" })
         val operator = when (this) {
             is TagNewerThan -> ">"
