@@ -11,18 +11,18 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with (
-             shop = yes
-             and !man_made
-             and !historic
-             and !military
-             and !power
-             and !tourism
-             and !attraction
-             and !amenity
-             and !craft
-             and !tourism
-             and !leisure
-          )
+         shop = yes
+         and !man_made
+         and !historic
+         and !military
+         and !power
+         and !tourism
+         and !attraction
+         and !amenity
+         and !craft
+         and !tourism
+         and !leisure
+        )
     """
     override val commitMessage = "Specify shop type"
     override val wikiLink = "Key:shop"

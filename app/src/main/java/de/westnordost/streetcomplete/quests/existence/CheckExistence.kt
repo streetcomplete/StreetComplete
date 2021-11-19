@@ -61,7 +61,7 @@ class CheckExistence(
             or amenity = drinking_water
           )
           and (${lastChecked(6.0)})
-        )) and access !~ no|private and (!seasonal or seasonal=no)
+        )) and access !~ no|private and (!seasonal or seasonal = no)
     """.toElementFilterExpression()
     }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
@@ -69,11 +69,10 @@ class CheckExistence(
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
     private val nodesWaysFilter by lazy { """
-        nodes, ways with (
-            leisure = pitch and sport = table_tennis
-        )
-        and access !~ no|private
-        and (${lastChecked(4.0)})
+        nodes, ways with
+          (leisure = pitch and sport = table_tennis)
+          and access !~ no|private
+          and (${lastChecked(4.0)})
     """.toElementFilterExpression() }
 
     /* not including bicycle parkings, motorcycle parkings because their capacity is asked every

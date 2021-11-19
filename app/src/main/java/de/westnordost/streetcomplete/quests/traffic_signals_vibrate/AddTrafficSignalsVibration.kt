@@ -13,17 +13,21 @@ import de.westnordost.streetcomplete.ktx.toYesNo
 class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot!=no
-        and (
+        nodes with
+         crossing = traffic_signals
+         and highway ~ crossing|traffic_signals
+         and foot != no
+         and (
           !$VIBRATING_BUTTON
           or $VIBRATING_BUTTON = no and $VIBRATING_BUTTON older today -4 years
           or $VIBRATING_BUTTON older today -8 years
-        )
+         )
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
         ways with
-          highway = cycleway and foot !~ yes|designated
+          highway = cycleway
+          and foot !~ yes|designated
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether traffic signals have tactile indication that it's safe to cross"
