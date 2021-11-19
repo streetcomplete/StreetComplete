@@ -16,7 +16,9 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
     override val questTypeAchievements = listOf(CAR)
 
     override val elementFilter = """
-        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
+        ways with
+         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
+         and bridge and bridge != no
          and service != driveway
          and !maxweight and maxweight:signed != no
          and !maxaxleload
@@ -24,7 +26,6 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
          and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus and !hgv
          and !maxunladenweight and !maxunladenweight:hgv and !maxunladenweight:bus
-         and bridge and bridge != no
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and (access !~ private|no or (foot and foot !~ private|no))
