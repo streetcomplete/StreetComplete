@@ -18,6 +18,9 @@ fun MapData.filter(expr: String): Sequence<Element> {
 }
 
 fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
+    /* this is a considerate performance improvement over just iterating over the whole MapData
+     * because filters that only include one (or two) element types, any filter checks
+     * are completely avoided */
     return sequence {
         if (expr.includesElementType(ElementType.NODE)) yieldAll(nodes)
         if (expr.includesElementType(ElementType.WAY)) yieldAll(ways)

@@ -10,7 +10,8 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with leisure = dog_park
+        nodes, ways, relations with
+         leisure = dog_park
          and access !~ no|private
          and (!wheelchair or wheelchair older today -8 years)
     """

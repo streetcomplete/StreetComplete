@@ -16,7 +16,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     private val filter by lazy { """
         nodes, ways, relations with
-          ~"addr:(housenumber|housename)" and !addr:street and !addr:place and !addr:block_number
+          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number
           or addr:streetnumber and !addr:street
     """.toElementFilterExpression() }
 

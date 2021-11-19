@@ -17,12 +17,4 @@ class HasDateTagGreaterThanTest {
         assertFalse(c.matches(mapOf("check_date" to "2000-11-11")))
         assertFalse(c.matches(mapOf("check_date" to "2000-11-10")))
     }
-
-    @Test fun `to string`() {
-        val eq = HasDateTagGreaterThan("check_date", FixedDate(date))
-        assertEquals(
-            "[check_date](if: date(t['check_date']) > date('2000-11-11'))",
-            eq.toOverpassQLString()
-        )
-    }
 }

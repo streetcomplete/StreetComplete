@@ -99,5 +99,5 @@ private fun <I : Matcher<T>, T> Chain<I, T>.ensureNoBracketNodes() {
 }
 
 private class BracketHelper<I : Matcher<T>, T> : Chain<I, T>() {
-    override fun matches(obj: T?) = throw IllegalStateException("Bracket cannot match")
+    override fun matches(obj: T) = throw IllegalStateException("Bracket cannot match")
 }
