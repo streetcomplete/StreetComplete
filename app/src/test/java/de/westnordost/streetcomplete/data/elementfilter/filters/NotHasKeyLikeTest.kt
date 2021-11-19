@@ -16,13 +16,4 @@ class NotHasKeyLikeTest {
         assertFalse(key.matches(mapOf("n(se" to "no")))
         assertTrue(key.matches(mapOf()))
     }
-
-
-    @Test(expected = UnsupportedOperationException::class) fun toOverpassQLString() {
-        assertEquals(
-            "[!~'^(na[ms]e)$' ~ '.*']",
-            NotHasKeyLike("na[ms]e").toOverpassQLString()
-        )
-    }
-
 }

@@ -24,12 +24,4 @@ class CombineFiltersTest {
         on(f2.matches(any())).thenReturn(true)
         assertTrue(CombineFilters(f1, f2).matches(node()))
     }
-
-    @Test fun `concatenates OQL`() {
-        val f1: ElementFilter = mock()
-        on(f1.toOverpassQLString()).thenReturn("hell")
-        val f2: ElementFilter = mock()
-        on(f2.toOverpassQLString()).thenReturn("o")
-        assertEquals("hello", CombineFilters(f1, f2).toOverpassQLString())
-    }
 }

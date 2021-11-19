@@ -6,12 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 class NotHasKeyLike(val key: String) : ElementFilter {
     private val regex = RegexOrSet.from(key)
 
-    override fun toOverpassQLString(): String {
-        // not supported (conveniently) by overpass (yet): https://github.com/drolbr/Overpass-API/issues/589
-        //return "[" + "!~" + "^(${key.pattern})$".quoteIfNecessary() + " ~ '.*']"
-        throw UnsupportedOperationException()
-    }
-
-    override fun toString() = toOverpassQLString()
+    override fun toString() = "!~$key"
     override fun matches(obj: Element) = obj.tags.keys.none { regex.matches(it) }
 }
