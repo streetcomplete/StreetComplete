@@ -99,7 +99,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/st
 
 ### Code style
 
-Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper package such as [KerbUtil](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
+Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
 ### StreetComplete-related projects
 
