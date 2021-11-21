@@ -97,6 +97,10 @@ In case you **don't have an idea of a quest?** Look [at the existing issues](htt
 
 Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
 
+### Code style
+
+Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
+
 ### StreetComplete-related projects
 
 #### Dependencies
