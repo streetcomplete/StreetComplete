@@ -5,17 +5,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 
 private val filterExpCache: MutableMap<String, ElementFilterExpression> = HashMap()
 
-fun MapData.filter(expr: String): Sequence<Element> {
-    expr.intern()
-    if (!filterExpCache.containsKey(expr)) {
-        synchronized(filterExpCache) {
-            if (!filterExpCache.containsKey(expr)) {
-                filterExpCache[expr] = expr.toElementFilterExpression()
-            }
-        }
-    }
-    return filter(filterExpCache.getValue(expr))
-}
+fun MapData.filter(expr: String): Sequence<Element> =
+    filter(getElementFilterExpression(expr))
 
 fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
     /* this is a considerate performance improvement over just iterating over the whole MapData
@@ -26,4 +17,15 @@ fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
         if (expr.includesElementType(ElementType.WAY)) yieldAll(ways)
         if (expr.includesElementType(ElementType.RELATION)) yieldAll(relations)
     }.filter(expr::matches)
+}
+
+private fun getElementFilterExpression(expr: String): ElementFilterExpression {
+    if (!filterExpCache.containsKey(expr)) {
+        synchronized(filterExpCache) {
+            if (!filterExpCache.containsKey(expr)) {
+                filterExpCache[expr] = expr.toElementFilterExpression()
+            }
+        }
+    }
+    return filterExpCache.getValue(expr)
 }
