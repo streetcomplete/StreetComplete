@@ -49,10 +49,7 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
     }
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!crossingFilter.matches(element))
-            false
-        else
-            null
+        if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = AddTrafficSignalsVibrationForm()
 
