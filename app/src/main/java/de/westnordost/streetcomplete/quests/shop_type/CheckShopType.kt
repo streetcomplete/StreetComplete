@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
-    private val disusedShops by lazy { """
+    private val disusedShopsFilter by lazy { """
         nodes, ways, relations with (
           shop = vacant
           or ${isKindOfShopExpression("disused")}
@@ -25,7 +25,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     /* elements tagged like "shop=ice_cream + disused:amenity=bank" should not appear as quests.
      *  This is arguably a tagging mistake, but that mistake should not lead to all the tags of
      *  this element being cleared when the quest is answered */
-    private val shops by lazy { """
+    private val shopsFilter by lazy { """
         nodes, ways, relations with ${isKindOfShopExpression()}
     """.toElementFilterExpression() }
 
@@ -41,7 +41,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
-        disusedShops.matches(element) && !shops.matches(element)
+        disusedShopsFilter.matches(element) && !shopsFilter.matches(element)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
