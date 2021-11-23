@@ -63,16 +63,20 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
 
         viewLifecycleScope.launch { soundFx.play(R.raw.sliding_envelope) }
 
-        binding.mailFrontImageView.alpha = 0f
+        val speechbubbleContentContainer = binding.speechbubbleContentContainer
+        val mailOpenImageView = binding.mailOpenImageView
+        val mailFrontImageView = binding.mailFrontImageView
 
-        binding.speechbubbleContentContainer.alpha = 0.0f
-        binding.speechbubbleContentContainer.visibility = View.VISIBLE
-        binding.speechbubbleContentContainer.scaleX = 0.8f
-        binding.speechbubbleContentContainer.scaleY = 0.8f
-        binding.speechbubbleContentContainer.translationY = 140f.toPx(ctx)
+        mailFrontImageView.alpha = 0f
+
+        speechbubbleContentContainer.alpha = 0.0f
+        speechbubbleContentContainer.visibility = View.VISIBLE
+        speechbubbleContentContainer.scaleX = 0.8f
+        speechbubbleContentContainer.scaleY = 0.8f
+        speechbubbleContentContainer.translationY = 140f.toPx(ctx)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            (binding.mailOpenImageView.drawable as? AnimatedVectorDrawable)?.reset()
+            (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.reset()
         }
 
         binding.mailContainer.rotation = -40f
@@ -80,25 +84,27 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         binding.mailContainer.alpha = 0.2f
         binding.mailContainer.translationX = (-400f).toPx(ctx)
         binding.mailContainer.translationY = (60f).toPx(ctx)
-        binding.mailContainer.animate()
-            .setDuration(400)
-            .setStartDelay(200)
-            .setInterpolator(DecelerateInterpolator())
-            .rotation(0f).rotationY(0f)
-            .alpha(1f)
-            .translationX(0f).translationY(0f)
-            .withEndAction {
-                (binding.mailOpenImageView.drawable as? AnimatedVectorDrawable)?.start()
+        binding.mailContainer.animate().run {
+            duration = 400
+            startDelay = 200
+            interpolator = DecelerateInterpolator()
+            rotation(0f)
+            rotationY(0f)
+            alpha(1f)
+            translationX(0f)
+            translationY(0f)
+            withEndAction {
+                (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.start()
 
-                binding.mailFrontImageView.animate().run {
+                mailFrontImageView.animate().run {
                     duration = 100
                     startDelay = 100
                     alpha(1f)
                     start()
                 }
 
-                binding.speechbubbleContentContainer.animate().run {
-                    withStartAction { binding.speechbubbleContentContainer.alpha = 0.4f }
+                speechbubbleContentContainer.animate().run {
+                    withStartAction { speechbubbleContentContainer.alpha = 0.4f }
                     startDelay = 200
                     duration = 300
                     scaleX(1f)
@@ -108,7 +114,8 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
                     start()
                 }
             }
-            .start()
+            start()
+        }
     }
 
     private fun openUrl(url: String): Boolean {
