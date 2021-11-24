@@ -101,6 +101,12 @@ Always remember to pay attention to [the quest guidelines](https://github.com/st
 
 Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
+### Hints for more active people
+
+See ["Efficiently working together"](https://github.com/streetcomplete/StreetComplete/discussions/3450) which is addressed to people highly active in this project.
+
+If you are making your first issue or pull request then you can definitely skip reading it.
+
 ## StreetComplete-related projects
 
 ### Dependencies
