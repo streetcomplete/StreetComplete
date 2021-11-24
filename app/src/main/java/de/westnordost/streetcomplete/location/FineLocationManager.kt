@@ -33,10 +33,11 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     private val locationListener = object : LocationUpdateListener {
         override fun onLocationChanged(location: Location) {
-            if (isBetterLocation(location, lastLocation)) {
-                lastLocation = location
-                locationUpdateCallback(location)
-            }
+            if (networkCancellationSignal.isCanceled || gpsCancellationSignal.isCanceled) return
+            if (!isBetterLocation(location, lastLocation)) return
+
+            lastLocation = location
+            locationUpdateCallback(location)
         }
     }
 
