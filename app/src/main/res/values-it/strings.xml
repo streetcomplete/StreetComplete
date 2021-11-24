@@ -328,7 +328,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
-    <string name="action_undo">"Annulla"</string>
+    <string name="action_undo">"Cancella"</string>
     <string name="produce_mangosteen">"Mangostano"</string>
     <string name="produce_tomatoes">"Pomodori"</string>
     <string name="produce_areca_nuts">"Palma di Betel"</string>
@@ -378,7 +378,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="action_reset">"Ripristina"</string>
 
     <!-- Ho modificato questa risposta positiva e quella negativa "Cancel" rispettivamente in "Annulla" e "Non annullare" così da essere simili a quelle usate dai traduttori francesi; esse sono le risposte che può dare l’utente alla domanda "Undo the following last answer?" che è stata tradotta in "Annullare quest'ultima riposta?". Vedi la nota in francese alla voce undo_confirm_negative. -->
-    <string name="undo_confirm_positive">"Annulla"</string>
+    <string name="undo_confirm_positive">"Cancella"</string>
     <string name="undo_confirm_negative">"Annulla"</string>
     <string name="quest_dietType_vegetarian_name_title">"%s ha cibo vegetariano nel menu?"</string>
     <string name="quest_dietType_vegan_name_title">"%s offre cibo vegano nel menu?"</string>
@@ -1043,9 +1043,9 @@ riconoscimento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Attraversamento controllato da semafori"</string>
-    <string name="undo_confirm_title2">"Vuoi annullare questa modifica?"</string>
+    <string name="undo_confirm_title2">"Vuoi cancellare questa modifica?"</string>
     <string name="synced">"Sincronizzato"</string>
-    <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere annullata"</string>
+    <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere cancellata"</string>
     <string name="quest_cycleway_value_separate">"mostrato separatamente sulla mappa"</string>
     <string name="created_note_action_title">"Hai creato una nota"</string>
     <string name="commented_note_action_title">"Hai commentato una nota"</string>
@@ -1200,4 +1200,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_barrier_bicycle_type_single">"Passaggio tra due barriere"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barriere su ogni lato"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - più di due barriere"</string>
+    <string name="quest_level_title">"Su quale piano si trova %s?"</string>
+    <string name="pref_title_language_select">"Seleziona lingua"</string>
+    <string name="language_default">"Predefinito di sistema"</string>
 </resources>

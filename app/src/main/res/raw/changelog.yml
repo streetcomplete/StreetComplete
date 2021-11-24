@@ -1,10 +1,4 @@
-v38.0-beta2: |
-  <ul>
-  <li>Small performance improvements on downloading and on solving quests</li>
-  <li>Fix a common crash issue (#3517)</li>
-  </ul>
-
-v38.0-beta1: |
+v38.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>What type of bicycle barrier is this?</i> (#3361, #3487), by @matkoniecz</li>
@@ -23,7 +17,11 @@ v38.0-beta1: |
   <ul>
   <li>Nearby relevant elements are now shown in context when answering various quests (#3480, #3338, #2354)</li>
   <li>Allow switching the language in the app (#3199, #2643, #3512), thanks @amenk</li>
-  <li>Other small UX enhancements (#3432)</li>
+  <li>Other small enhancements and improvements</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix some crash issues (#3517, #3522)</li>
   </ul>
 
 v37.2:

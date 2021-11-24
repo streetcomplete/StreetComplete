@@ -1128,16 +1128,19 @@
     <string name="quest_buildingLevels_title2">"Колко етажа над мазето има тази сграда?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Колко етажа над мазето има тази част от сградата?"</string>
     <string name="quest_crossing_title">"Има ли бордюр на мястото къде този път се среща с улицата? Какъв вид?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Настройка: %s"</string>
     <string name="default_disabled_msg_roofShape">"Тази задача е изключена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
     <string name="quest_religion_animist">"Анимизъм"</string>
     <string name="quest_construction_steps_title">"Завършени ли са тези стълби?"</string>
     <string name="questList_disabled_at_day">"Показва се само през нощта"</string>
+    <string name="pref_quests_deselect_all">"Изчистване избора на всички задачи?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_boathouse">"Къща лодка"</string>
+    <string name="quest_buildingType_boathouse">"Къща-лодка"</string>
     <string name="quest_buildingType_allotment_house">"Градинска пристройка"</string>
     <string name="quest_buildingType_grandstand">"Трибуна"</string>
     <string name="action_search">"Търсене"</string>
+    <string name="action_manage_presets">"Управление на настройките"</string>
     <string name="team_mode_team_size_label2">"Колко хора картографират? Въведете един и същ брой на всички телефони."</string>
     <string name="team_mode_choose_color2">"Всеки човек трябва да избере цвят. Изберете вашия:"</string>
     <string name="link_organic_maps_description">"Карти за пътешественици, туристи и велосипедисти, което работи офлайн"</string>
@@ -1180,6 +1183,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Това са стълби"</string>
+    <string name="quest_barrier_type_passage_conversion">"Превърнато в проход в стена/ограда/друго"</string>
+    <string name="quest_barrier_type_gate_conversion">"Превърнато в портал"</string>
     <string name="quest_traffic_calming_type_title">"Какъв тип ограничител на скоростта е това?"</string>
 
     <!-- Fuzzy -->
@@ -1216,10 +1221,13 @@
     <string name="quest_access_private">"Само с разрешително (служебен паркинг)"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Времената за събиране още ли са актуални за тази пощенска кутия?"</string>
     <string name="quest_postboxCollectionTimes_resurvey_name_title">"Времената за събиране още ли са актуални за пощенска кутия %s?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Неразпознат тип. Опитайте да въведете типа, напр. \"bakery\". Или оставете бележка."</string>
     <string name="quest_bicycle_barrier_type_title">"Какъв тип бариера за велосипеди е това?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Диагонална на пътя"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Стеснение на пътя (по посока на движението)"</string>
     <string name="quest_barrier_bicycle_type_single">"Преминаване през две бариери"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикан - бариери от двете страни"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикан - повече от 2 бариери"</string>
+    <string name="quest_level_title">"На кое ниво се намира %s?"</string>
+    <string name="pref_title_language_select">"Изберете език"</string>
 </resources>

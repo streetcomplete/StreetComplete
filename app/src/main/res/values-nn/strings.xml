@@ -993,4 +993,5 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_surface_value_clay">"Leire"</string>
     <string name="quest_surface_value_artificial_turf">"Kunst­gras"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+    <string name="language_default">"Systemstandard"</string>
 </resources>

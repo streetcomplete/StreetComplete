@@ -2247,4 +2247,5 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Nogle gange kan diameteren findes på brandhanen selv"</string>
     <string name="quest_diet_answer_no_food">"Man kan ikke købe mad"</string>
     <string name="short_no_answer_on_button">"Nej"</string>
+    <string name="language_default">"Systemstandard"</string>
 </resources>

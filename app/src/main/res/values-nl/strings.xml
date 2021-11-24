@@ -2491,4 +2491,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_fireHydrant_confirmation_title">"Weet je het zeker? Soms kan de diameter op de brandkraan zelf staan."</string>
     <string name="quest_diet_answer_no_food">"Het heeft geen eten"</string>
     <string name="short_no_answer_on_button">"Nee"</string>
+    <string name="quest_level_title">"Op welk niveau zit %s?"</string>
+    <string name="pref_title_language_select">"Selecteer taal"</string>
+    <string name="language_default">"Standaardinstelling"</string>
 </resources>

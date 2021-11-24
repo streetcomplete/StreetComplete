@@ -1149,4 +1149,5 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_parking_access_title2">"Qui pot aparcar aquí? L'aparcament pot ser gratuït o de pagament."</string>
     <string name="quest_access_private">"Només les persones autoritzades"</string>
     <string name="pref_title_language_select">"Trieu una llengua"</string>
+    <string name="language_default">"Predeterminat del sistema"</string>
 </resources>

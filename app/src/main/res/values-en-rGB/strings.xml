@@ -795,9 +795,7 @@ rank"</string>
 active"</string>
     <string name="user_profile_achievement_levels">"Achievement
 levels"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_title">"What street does the (house) number %s belong to?"</string>
+    <string name="quest_address_street_title">"What street does (house) %s belong to?"</string>
     <string name="quest_address_street_no_named_streets">"It does not belong to a named street"</string>
     <string name="quest_address_street_place_name_label">"Place name:"</string>
     <string name="quest_address_street_description">"Tap the road it belongs to on the map or enter it without abbreviations in the field below:"</string>
@@ -1131,4 +1129,5 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - more than two barriers"</string>
     <string name="quest_level_title">"On which level is %s located?"</string>
     <string name="pref_title_language_select">"Select language"</string>
+    <string name="language_default">"System default"</string>
 </resources>

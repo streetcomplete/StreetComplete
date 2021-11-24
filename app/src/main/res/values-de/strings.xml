@@ -445,8 +445,10 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_bicycle_parking_type_shed">"Schuppen"</string>
     <string name="quest_bicycle_parking_type_locker">"Schließfächer"</string>
     <string name="quest_bicycle_parking_type_building">"Gebäude"</string>
-    <string name="quest_bicycle_parking_type_title">"Was für eine Art von Fahrradabstellplatz ist das hier?"</string>
+    <string name="quest_bicycle_parking_type_title">"Was für ein Fahrradstellplatz ist das?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"Mehrzweckstreifen"</string>
+
+    <!-- @FloEdelmann: Briefkasten ist das was man an der Haustür hat. Postkasten ist der gelbe von der Post. -->
     <string name="quest_postboxCollectionTimes_title">"Wann wird dieser Postkasten geleert?"</string>
     <string name="quest_collectionTimes_add_times">"Leerungszeit hinzufügen"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Keine Zeiten angegeben"</string>
@@ -642,8 +644,8 @@ Jetzt aufspalten?"</string>
     <string name="quest_handrail_title">"Gibt es an dieser Treppe ein Geländer?"</string>
     <string name="quest_openingHours_no_name_title">"Was sind die Öffnungszeiten von diesem Ort? (%s)"</string>
     <string name="about_summary_current_version">"Aktuelle Version: %s"</string>
-    <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Briefkastens?"</string>
-    <string name="quest_postboxRef_name_title">"Was ist die Referenznummer dieses %s Briefkastens?"</string>
+    <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Postkastens?"</string>
+    <string name="quest_postboxRef_name_title">"Was ist die Referenznummer dieses %s Postkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
@@ -847,7 +849,7 @@ Erfolge"</string>
     <string name="quest_openingHours_name_type_title">"Was sind die Öffnungszeiten von %1$s (%2$s)?"</string>
     <string name="quest_openingHours_resurvey_name_title">"Stimmen diese Öffnungszeiten für %s immer noch?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Stimmen diese Öffnungszeiten für %1$s (%2$s) noch?"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"Stimmen diese Öffnungszeiten noch  (%s)?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Stimmen diese Öffnungszeiten noch (%s)?"</string>
     <string name="quest_openingHours_add_off_days">"Neuer Ruhetag"</string>
     <string name="quest_openingHours_off_day">"Ruhetag"</string>
     <string name="quest_openingHours_unspecified_range">"Nicht angegeben"</string>
@@ -978,7 +980,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_drinking_water_potable_unsigned">"Trinkwasser (nicht beschildert)"</string>
     <string name="quest_drinking_water_not_potable_signed">"kein Trinkwasser (beschildert)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"kein Trinkwasser (nicht beschildert)"</string>
-    <string name="quest_postboxRoyalCypher_title">"Welches königliche Monogramm ist auf diesem Briefkasten zu sehen?"</string>
+    <string name="quest_postboxRoyalCypher_title">"Welches königliche Monogramm ist auf diesem Postkasten zu sehen?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Kein Monogramm sichtbar"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Die Krone von Schottland"</string>
     <string name="quest_buildingType_fire_station">"Feuerwehrhaus"</string>
@@ -1061,7 +1063,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_bollard_type_rising">"Versenkbar"</string>
     <string name="quest_bollard_type_flexible">"Flexibel"</string>
     <string name="quest_bollard_type_fixed">"Fest (nicht entfernbar)"</string>
-    <string name="quest_camera_type_title">"Welche Art von Überwachungskamera ist das?"</string>
+    <string name="quest_camera_type_title">"Was für eine Überwachungskamera ist das?"</string>
     <string name="quest_camera_type_dome">"Kuppel"</string>
     <string name="quest_camera_type_fixed">"Fest"</string>
     <string name="quest_camera_type_panning">"Schwenkend"</string>
@@ -1130,15 +1132,16 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_access_yes">"Alle Personen der Öffentlichkeit"</string>
     <string name="quest_access_customers">"Jede Person, die einen bestimmten Ort besucht (z.B. nur Kunden)"</string>
     <string name="quest_access_private">"Nur Einzelne mit Erlaubnis"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">"Sind die Leerungszeiten für diesen Briefkasten noch korrekt?"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Sind die Leerungszeiten dieses %s Briefkastens noch korrekt?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Stimmen diese Leerungszeiten für diesen Postkasten noch?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Stimmen diese Leerungszeiten für diesen %s Postkasten noch?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Nicht erkannt. Versuche, die Art des Ortes einzugeben, z.B. „Bäckerei“. Andernfalls kannst du eine Notiz hinterlassen."</string>
-    <string name="quest_bicycle_barrier_type_title">"Um welche Art von Fahrradhindernis handelt es sich?"</string>
+    <string name="quest_bicycle_barrier_type_title">"Was für ein Fahrradhindernis ist das?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal zum Weg"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Enger Durchgang, nach oben hin kleiner"</string>
     <string name="quest_barrier_bicycle_type_single">"Durchgang zwischen zwei Barrieren"</string>
     <string name="quest_barrier_bicycle_type_double">"Schikane – Barriere auf beiden Seiten"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Schikane – mehr als zwei Barrieren"</string>
-    <string name="quest_level_title">"Auf welcher Ebene ist %s?"</string>
+    <string name="quest_level_title">"In welchem Stockwerk ist %s?"</string>
     <string name="pref_title_language_select">"Sprache auswählen"</string>
+    <string name="language_default">"Systemvorgabe"</string>
 </resources>

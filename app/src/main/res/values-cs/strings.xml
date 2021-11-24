@@ -2478,4 +2478,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_barrier_bicycle_type_single">"Průjezd mezi dvěma přkážkami"</string>
     <string name="quest_barrier_bicycle_type_double">"Šikana - překážka na každé straně"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana - více než dvě překážky"</string>
+    <string name="quest_level_title">"Ve kterém patře se nachází %s?"</string>
+    <string name="pref_title_language_select">"Vyberte jazyk"</string>
 </resources>
