@@ -247,7 +247,8 @@ import javax.inject.Singleton
         AddBoardType(),
 
         AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
-        AddWhatIsOnBarrierAndPathIntersection(),
+        AddBarrierOnPath(),
+        AddBarrierOnRoad(),
         AddStileType(),
         AddBicycleBarrierType(),
 

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -11,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
-class AddWhatIsOnBarrierAndPathIntersection: OsmElementQuestType<BarrierType> {
+class AddBarrierOnPath: OsmElementQuestType<BarrierType> {
 
     private val barrierFilter by lazy {
         """
@@ -24,8 +25,7 @@ class AddWhatIsOnBarrierAndPathIntersection: OsmElementQuestType<BarrierType> {
     private val pathsFilter by lazy {
         """
         ways with
-          (highway ~ path|footway|steps|cycleway)
-          and area != yes
+          (highway ~ ${ALL_PATHS.joinToString("|")} and area != yes)
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression()
     }
@@ -34,7 +34,7 @@ class AddWhatIsOnBarrierAndPathIntersection: OsmElementQuestType<BarrierType> {
 
     override val wikiLink = "Key:barrier"
 
-    override val icon = R.drawable.ic_quest_barrier
+    override val icon = R.drawable.ic_quest_barrier // TODO?
 
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
