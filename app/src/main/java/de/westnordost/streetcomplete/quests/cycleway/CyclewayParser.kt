@@ -9,7 +9,7 @@ data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): LeftAndRightCycleway? {
     if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null
 
-    val isForwardOneway = tags["oneway"] == "yes"
+    val isForwardOneway = tags["oneway"] == "yes" || (tags["junction"] == "roundabout" && tags["oneway"] != "-1")
     val isReversedOneway = tags["oneway"] == "-1"
     val isOneway = isReversedOneway || isForwardOneway
     val isReverseSideRight = isReversedOneway xor isLeftHandTraffic
