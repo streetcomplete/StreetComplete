@@ -118,7 +118,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
         // add default as first element
         entryValues.add(0, "")
-        entries.add(0, getString(R.string.theme_system_default))
+        entries.add(0, getString(R.string.language_default))
 
         findPreference<ListPreference>("language.select")?.also {
             it.entries = entries.toTypedArray()
