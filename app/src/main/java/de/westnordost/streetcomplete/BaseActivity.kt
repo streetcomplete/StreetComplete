@@ -5,7 +5,11 @@ import android.content.res.Configuration
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.preference.PreferenceManager
+import de.westnordost.streetcomplete.ktx.addedToFront
+import de.westnordost.streetcomplete.util.getSelectedLocale
+import de.westnordost.streetcomplete.util.getSystemLocales
+import de.westnordost.streetcomplete.util.setDefaultLocales
+import de.westnordost.streetcomplete.util.setLocales
 import java.util.*
 
 open class BaseActivity : AppCompatActivity {
@@ -15,11 +19,16 @@ open class BaseActivity : AppCompatActivity {
     private var locale: Locale? = null
 
     override fun attachBaseContext(base: Context) {
-        locale = getSelectedLocale(base)
+        val locale = getSelectedLocale(base)
+        this.locale = locale
 
-        val newBase = if (locale != null) {
-            base.createConfigurationContext(Configuration().also { it.setLocale(locale) })
-        } else base
+        var newBase = base
+
+        if (locale != null) {
+            val locales = getSystemLocales().addedToFront(locale)
+            setDefaultLocales(locales)
+            newBase = base.createConfigurationContext(Configuration().also { it.setLocales(locales) })
+        }
 
         super.attachBaseContext(newBase)
     }
@@ -31,10 +40,4 @@ open class BaseActivity : AppCompatActivity {
             ActivityCompat.recreate(this)
         }
     }
-}
-
-private fun getSelectedLocale(context: Context): Locale? {
-    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-    val languageTag = prefs.getString(Prefs.LANGUAGE_SELECT, "") ?: ""
-    return if (languageTag.isEmpty()) null else Locale.forLanguageTag(languageTag)
 }

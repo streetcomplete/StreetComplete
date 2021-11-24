@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -142,7 +143,13 @@ open class MapFragment : Fragment(),
 
     override fun onStart() {
         super.onStart()
-        viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
+        viewLifecycleScope.launch {
+            /* delay reloading of the scene a bit because if the language changed, the container
+               activity will actually want to restart. onStart however is still called in that
+               case */
+            delay(50)
+            sceneMapComponent?.loadScene()
+        }
     }
 
     override fun onResume() {

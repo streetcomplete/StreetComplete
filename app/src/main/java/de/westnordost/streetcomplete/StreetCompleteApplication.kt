@@ -10,8 +10,12 @@ import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
+import de.westnordost.streetcomplete.ktx.addedToFront
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.getSelectedLocale
+import de.westnordost.streetcomplete.util.getSystemLocales
+import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -35,6 +39,8 @@ class StreetCompleteApplication : Application() {
 
         Injector.initializeApplicationComponent(this)
         Injector.applicationComponent.inject(this)
+
+        setDefaultLocales()
 
         crashReportExceptionHandler.install()
 
@@ -66,6 +72,13 @@ class StreetCompleteApplication : Application() {
     override fun onTerminate() {
         super.onTerminate()
         applicationScope.cancel()
+    }
+
+    private fun setDefaultLocales() {
+        val locale = getSelectedLocale(this)
+        if (locale != null) {
+            setDefaultLocales(getSystemLocales().addedToFront(locale))
+        }
     }
 
     private fun setDefaultTheme() {
