@@ -1,2 +1,3 @@
+# units used for denoting a weight limit on signs
 default: [ton]
 US: [short ton, pound]

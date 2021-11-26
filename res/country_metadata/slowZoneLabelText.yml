@@ -1,5 +1,6 @@
+# The label text seen on a slow zone (i.e. 30km-zone) sign
+# 
 # research notes in https://github.com/streetcomplete/StreetComplete/pull/3359
-
 AM: ԹՈՏՒ
 AT: Zone
 AU: AREA

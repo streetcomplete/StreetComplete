@@ -1,3 +1,5 @@
+# the style of the road markings that separate the carriageway from the shoulder
+# 
 # source - Mapillary
 default: white
 AE: yellow
