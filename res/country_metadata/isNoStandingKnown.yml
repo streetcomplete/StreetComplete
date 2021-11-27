@@ -1,5 +1,0 @@
-# whether there are "no standing" signs additionally to "no parking" and "no stopping"
-# "no standing" is usually like "no parking" but loading/unloading goods is also forbidden
-default: false
-US: true
-PH: true # https://en.wikipedia.org/wiki/Road_signs_in_the_Philippines#Parking_signs
