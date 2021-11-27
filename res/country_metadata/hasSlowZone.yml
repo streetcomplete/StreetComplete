@@ -1,3 +1,5 @@
+# Whether the concept of a slow zone (aka 30 km/h zone) is known
+#
 # see https://en.wikipedia.org/wiki/30_km/h_zone and extend
 default: false
 # European countries, except Sweden and Bulgaria
