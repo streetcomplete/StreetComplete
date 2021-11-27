@@ -1,12 +1,23 @@
 # style of no-stopping sign
+#
+# styles:
+# - vienna       - a ⭕ crossed on blue background
+# - mutcd        - a ⭕ crossed on white background
+# - mutcd latin  - a black E behind a ⭕ crossed on white background
+# - mutcd text   - rectangular with text "NO STOPPING"
+# - sadc         - a black S in front of a mirrored 🚫 on white background
+# - australia    - a black S behind a mirrored 🚫 on white background
+# - colombia     - a black P behind a ⭕ crossed on white background 
+# - canada       - a black 🛑 (stop sign) behind a 🚫 on white background
 #  
 # sources:
 # - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
 # - https://commons.wikimedia.org/wiki/Parking_sign
 # - https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
 # - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
+# - mapillary
 #
-# sources see noParkingSignStyle.xml
+# other sources given below
 default: vienna
 AF: vienna # https://www.mapillary.com/app/?pKey=3959438737485800
 AG: vienna
@@ -49,7 +60,7 @@ JM: canada
 JO: vienna # https://www.google.com/maps/@31.9549869,35.9099047,3a,75y,8.74h,90.25t/data=!3m7!1e1!3m5!1sBED-QHlo9Ktih7FCHPA0Cw!2e0!3e11!7i13312!8i6656
 KE: sadc
 KM: sadc # no source - part of SADC
-KW: vienna variant # https://www.mapillary.com/app/?pKey=271633514705196
+KW: vienna # https://www.mapillary.com/app/?pKey=271633514705196
 LB: vienna # http://www.adcidl.com/pdf/Lebanese-Road-Signs.pdf
 LC: vienna
 LR: mutcd

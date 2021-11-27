@@ -1,3 +1,5 @@
+# Whether there is left-hand traffic
+#
 # Source: https://en.wikipedia.org/wiki/List_of_countries_with_left-hand_traffic 15/09/2017
 default: false
 AI: true

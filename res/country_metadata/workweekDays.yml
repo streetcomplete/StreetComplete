@@ -1,4 +1,5 @@
 # the number of days in a workweek
+# 
 # Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 2021-11-25)
 default: 5
 BO: 6

@@ -1,5 +1,16 @@
 # style of no-parking sign
 # 
+# styles:
+# - vienna             - 🚫 on blue background
+# - vienna variant     - a black P behind a 🚫 on white background
+# - mutcd              - a black P behind a 🚫 on white background
+# - mutcd latin        - a black E behind a 🚫 on white background
+# - mutcd text         - rectangular with text "NO PARKING"
+# - mutcd text spanish - rectangular with text "NO ESTACIONE"
+# - sadc               - a black P in front of a mirrored 🚫 on white background
+# - australia          - a black P behind a mirrored 🚫 on white background
+# - taiwan             - a black 停 in front of a 🚫 on white background
+#  
 # sources:
 # - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
 # - https://commons.wikimedia.org/wiki/Parking_sign

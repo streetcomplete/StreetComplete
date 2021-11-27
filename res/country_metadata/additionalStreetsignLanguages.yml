@@ -1,10 +1,11 @@
 # A mapping of additional languages that one can expect to find on a street sign that are not official languages.
 # "Latn" stands for romanization of the name in another script, see ISO 15924
+# 
 # Sources:
-# https://wiki.openstreetmap.org/wiki/Multilingual_names
-# https://commons.wikimedia.org/wiki/Category:Street_signs_by_country
-# https://en.wikipedia.org/wiki/Bilingual_sign#Bilingual_signs_around_the_world
-# Street photos (see examples below)
+# - https://wiki.openstreetmap.org/wiki/Multilingual_names
+# - https://commons.wikimedia.org/wiki/Category:Street_signs_by_country
+# - https://en.wikipedia.org/wiki/Bilingual_sign#Bilingual_signs_around_the_world
+# - Street photos (see examples below)
 AE: [en] # https://www.google.de/maps/@25.2669909,55.2950915,3a,19.5y,17.64h,88.15t/data=!3m6!1e1!3m4!1sc7Wi9yd_IDdBhiBuKxDhVA!2e0!7i13312!8i6656
 AM: [en] # https://commons.wikimedia.org/wiki/File:2014_Erywa%C5%84,_Tablice_z_nazw%C4%85_ulicy_i_lampy_uliczne.jpg
 BG: [international] # https://commons.wikimedia.org/wiki/File:Streets_in_Sofia_2009_20090406_063.JPG

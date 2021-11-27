@@ -1,7 +1,10 @@
-# Sources:
-# https://en.wikipedia.org/wiki/Metrication#Overview
-# https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
-# https://en.wikipedia.org/wiki/Comparison_of_European_road_signs
+# unit(s) used to denote lengths, widths and heights (on signs).
+# If there is more than one, both may exist, but the order matters
+# 
+# sources:
+# - https://en.wikipedia.org/wiki/Metrication#Overview
+# - https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# - https://en.wikipedia.org/wiki/Comparison_of_European_road_signs
 #
 # GB changed street signs to either include meters or only mention meters. So, setting meter, foot and inch for all the crown dependencies
 # This file has been forked off from lengthUnits.
