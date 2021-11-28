@@ -41,8 +41,20 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
         }
     }
 
+    // Both signals are refreshed regardless of whether the device has both providers, because
+    // they are both canceled in removeUpdates and both checked in the locationListener
+    private fun refreshCancellationSignals() {
+        if (gpsCancellationSignal.isCanceled) {
+            gpsCancellationSignal = CancellationSignal()
+        }
+        if (networkCancellationSignal.isCanceled) {
+            networkCancellationSignal = CancellationSignal()
+        }
+    }
+
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestUpdates(minTime: Long, minDistance: Float) {
+        refreshCancellationSignals()
         if (deviceHasGPS)
             locationManager.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
         if (deviceHasNetworkLocationProvider)
@@ -51,18 +63,13 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     @Synchronized fun getCurrentLocation() {
+        refreshCancellationSignals()
         if (deviceHasGPS) {
-            if (gpsCancellationSignal.isCanceled) {
-                gpsCancellationSignal = CancellationSignal()
-            }
             LocationManagerCompat.getCurrentLocation(
                 locationManager, GPS_PROVIDER, gpsCancellationSignal, mainExecutor, currentLocationConsumer
             )
         }
         if (deviceHasNetworkLocationProvider) {
-            if (networkCancellationSignal.isCanceled) {
-                networkCancellationSignal = CancellationSignal()
-            }
             LocationManagerCompat.getCurrentLocation(
                 locationManager, NETWORK_PROVIDER, networkCancellationSignal, mainExecutor, currentLocationConsumer
             )
