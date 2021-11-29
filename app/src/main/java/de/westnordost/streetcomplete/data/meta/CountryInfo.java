@@ -36,6 +36,7 @@ public class CountryInfo implements Serializable, Cloneable
 	String livingStreetSignStyle;
 	Integer mobileCountryCode;
 	String noParkingSignStyle;
+	String noStandingSignStyle;
 	String noStoppingSignStyle;
 	List<String> officialLanguages;
 	List<String> orchardProduces;
@@ -78,6 +79,7 @@ public class CountryInfo implements Serializable, Cloneable
 	}
 	public Integer getMobileCountryCode() { return mobileCountryCode; }
 	public String getNoParkingSignStyle() { return noParkingSignStyle; }
+	public String getNoStandingSignStyle() { return noStandingSignStyle; }
 	public String getNoStoppingSignStyle() { return noStoppingSignStyle; }
 	public List<String> getOfficialLanguages()
 	{
