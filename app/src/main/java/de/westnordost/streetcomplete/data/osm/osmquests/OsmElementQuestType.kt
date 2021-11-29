@@ -71,9 +71,9 @@ interface OsmElementQuestType<T> : QuestType<T> {
     fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
 
     /** The radius in which certain elements should be shown (see getHighlightedElements).
-     *  30m is the default because this is about "across this large street". There shouldn't be
-     *  any mix-ups that far apart */
-    val highlightedElementsRadius: Double get() = 30.0
+     *  100m is the default because this is about three times the width of "a large street".
+     *  Which should be sufficient to work out if an element has gone or was just wrongly located */
+    val highlightedElementsRadius: Double get() = 100.0
 
     /** applies the data from [answer] to the given element. The element is not directly modified,
      *  instead, a map of [changes] is built */
