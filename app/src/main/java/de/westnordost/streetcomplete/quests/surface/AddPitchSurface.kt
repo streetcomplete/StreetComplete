@@ -24,17 +24,17 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     )
 
     override val elementFilter = """
-        ways with (leisure=pitch or leisure=track)
-        and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})(${'$'}|;.*)"
-        and (access !~ private|no)
-        and indoor != yes and (!building or building = no)
-        and (
+        ways with leisure ~ pitch|track
+         and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})($|;.*)"
+         and (access !~ private|no)
+         and indoor != yes and (!building or building = no)
+         and (
           !surface
           or surface older today -12 years
           or (
-            surface ~ paved|unpaved
-            and !surface:note
-            and !note:surface
+           surface ~ paved|unpaved
+           and !surface:note
+           and !note:surface
           )
         )
     """

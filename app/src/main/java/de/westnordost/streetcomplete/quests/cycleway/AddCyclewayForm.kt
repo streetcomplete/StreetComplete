@@ -75,7 +75,9 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     private val isOneway get() = isForwardOneway || isReversedOneway
 
-    private val isForwardOneway get() = osmElement!!.tags["oneway"] == "yes"
+    private val isForwardOneway get() =
+        osmElement!!.tags["oneway"] == "yes"
+        || (osmElement!!.tags["junction"] == "roundabout" && osmElement!!.tags["oneway"] != "-1")
     private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
 
     // just a shortcut

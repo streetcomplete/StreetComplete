@@ -20,9 +20,13 @@ class RelativeDate(val deltaDays: Float): DateFilter {
         return relativeDateTime.toLocalDate()
     }
 
+    override fun toString() = "$deltaDays days"
+
     companion object {
         var MULTIPLIER: Float = 1f
     }
 }
 
-class FixedDate(override val date: LocalDate): DateFilter
+class FixedDate(override val date: LocalDate): DateFilter {
+    override fun toString() = date.toString()
+}

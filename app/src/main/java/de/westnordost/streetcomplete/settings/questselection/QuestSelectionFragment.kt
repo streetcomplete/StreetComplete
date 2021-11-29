@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.settings.questselection
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -11,6 +13,7 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.DisplaysTitle
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
@@ -26,19 +29,23 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasTitle {
 
-    @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var questPresetsSource: QuestPresetsSource
     @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
     @Inject internal lateinit var questTypeOrderController: QuestTypeOrderController
+    @Inject internal lateinit var countryBoundaries: FutureTask<CountryBoundaries>
+    @Inject internal lateinit var prefs: SharedPreferences
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
+
+    private lateinit var questSelectionAdapter: QuestSelectionAdapter
 
     interface Listener {
         fun onClickedQuestPresets()
@@ -66,6 +73,14 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     init {
         Injector.applicationComponent.inject(this)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        questSelectionAdapter = QuestSelectionAdapter(
+            requireContext(), visibleQuestTypeController, questTypeOrderController,
+            questTypeRegistry, countryBoundaries, prefs
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

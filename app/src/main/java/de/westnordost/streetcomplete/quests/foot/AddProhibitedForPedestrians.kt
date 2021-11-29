@@ -11,8 +11,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
 
     override val elementFilter = """
         ways with (
-          ~'sidewalk(:both)?' ~ none|no or
-          (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
+          sidewalk:both ~ none|no
+          or sidewalk ~ none|no
+          or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
         and shoulder != yes
         and !foot

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.map.tangram
 
 import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.MapController
 import com.mapzen.tangram.geometry.Polygon
@@ -56,18 +57,19 @@ class MarkerManager(private val c: MapController) {
         val marker = markers.remove(markerId) ?: return false
         val tangramMarkerId = marker.tangramMarker?.markerId
         if (tangramMarkerId != null) {
-            c.removeMarker(tangramMarkerId)
+            safe { c.removeMarker(tangramMarkerId) }
         }
         return true
     }
+
     fun removeAllMarkers() {
         markers.clear()
-        c.removeAllMarkers()
+        safe { c.removeAllMarkers() }
     }
 
     fun recreateMarkers() {
         for (marker in markers.values) {
-            marker.tangramMarker = c.addMarker()
+            safe { marker.tangramMarker = c.addMarker() }
         }
     }
 
@@ -199,3 +201,11 @@ class MarkerPickResult internal constructor(
     val marker: Marker,
     val coordinates: LatLon
 )
+
+private inline fun safe(block: () -> Unit) {
+    try {
+        block()
+    } catch (e: Throwable) {
+        Log.e("Tangram", "", e)
+    }
+}

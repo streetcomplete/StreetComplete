@@ -19,7 +19,8 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
-        and !covered and (!shelter or shelter older today -4 years)
+        and !covered
+        and (!shelter or shelter older today -4 years)
     """
     /* Not asking again if it is covered because it means the stop itself is under a large
        building or roof building so this won't usually change */

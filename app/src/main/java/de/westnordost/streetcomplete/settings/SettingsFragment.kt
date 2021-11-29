@@ -30,6 +30,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.util.getSelectedLocales
+import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
@@ -116,7 +118,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
         // add default as first element
         entryValues.add(0, "")
-        entries.add(0, getString(R.string.theme_system_default))
+        entries.add(0, getString(R.string.language_default))
 
         findPreference<ListPreference>("language.select")?.also {
             it.entries = entries.toTypedArray()
@@ -156,6 +158,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
                 activity?.let { ActivityCompat.recreate(it) }
             }
             Prefs.LANGUAGE_SELECT -> {
+                setDefaultLocales(getSelectedLocales(requireContext()))
                 activity?.let { ActivityCompat.recreate(it) }
             }
             Prefs.RESURVEY_INTERVALS -> {

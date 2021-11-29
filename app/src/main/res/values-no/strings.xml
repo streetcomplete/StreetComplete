@@ -2021,4 +2021,5 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_picnicTableCover_title">"Er piknikbordet tildekket (beskyttet mot regn)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denne delen er trapper"</string>
     <string name="quest_barrier_type_gate_conversion">"Omgjort til en port"</string>
+    <string name="language_default">"Systemvalgt"</string>
 </resources>

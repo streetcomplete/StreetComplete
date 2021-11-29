@@ -1226,4 +1226,5 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_barrier_bicycle_type_single">"Passage mellan två grindar"</string>
     <string name="quest_barrier_bicycle_type_double">"Labyrintfålla - en grind på varje sida"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Labyrintfålla - tre eller fler grindar"</string>
+    <string name="language_default">"Systemstandard"</string>
 </resources>

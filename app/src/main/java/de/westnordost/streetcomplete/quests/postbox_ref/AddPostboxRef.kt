@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = "nodes with amenity = post_box and !ref and !ref:signed"
-
     override val commitMessage = "Add postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
     override val icon = R.drawable.ic_quest_mail_ref

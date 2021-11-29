@@ -12,9 +12,9 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override val elementFilter = """
         nodes with (
-            man_made = water_tap
-            or man_made = water_well
-            or natural = spring
+          man_made = water_tap
+          or man_made = water_well
+          or natural = spring
         )
         and access !~ private|no and indoor != yes
         and !drinking_water and !drinking_water:legal and amenity != drinking_water

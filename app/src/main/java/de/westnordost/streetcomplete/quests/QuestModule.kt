@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.*
+import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType

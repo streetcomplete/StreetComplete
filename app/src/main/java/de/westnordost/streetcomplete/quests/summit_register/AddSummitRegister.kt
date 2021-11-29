@@ -19,8 +19,9 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
         nodes with
-          natural = peak and name and
-          (!summit:register or summit:register older today -4 years)
+          natural = peak
+          and name
+          and (!summit:register or summit:register older today -4 years)
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether summit register is present"

@@ -88,7 +88,7 @@ class AddOpeningHours (
           )
           or opening_hours older today -1 years
         )
-        and (access !~ private|no)
+        and access !~ private|no
         and (name or brand or noname = yes or name:signed = no)
         and opening_hours:signed != no
     """.trimIndent()).toElementFilterExpression() }

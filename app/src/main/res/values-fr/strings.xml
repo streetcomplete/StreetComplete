@@ -555,7 +555,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_construction_road_title">"Cette route est-elle achevée ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_cycleway_title">"Cette piste cyclable est-elle complète ?"</string>
+    <string name="quest_construction_cycleway_title">"Cette piste cyclable est-elle achevée ?"</string>
     <string name="quest_construction_footway_title">"Ce trottoir est-il achevé ?"</string>
     <string name="quest_construction_generic_title">"Cette voie est-elle achevée ?"</string>
     <string name="quest_construction_building_title">"Ce bâtiment est-il achevé ?"</string>
@@ -1110,10 +1110,10 @@ accomplis"</string>
     <string name="quest_steps_incline_title">"Dans quel sens cet escalier monte-t-il ?"</string>
     <string name="quest_steps_incline_up">"Dans ce sens"</string>
     <string name="quest_step_count_title">"Combien de marches y a-t-il ici ?"</string>
-    <string name="quest_traffic_signals_sound_title">"Y a-t-il des signaux sonores pour les déficients visuels ici ?"</string>
+    <string name="quest_traffic_signals_sound_title">"Y a-t-il des signaux sonores sur ce feu pour les mal-voyants ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_signals_vibrate_title">"Est-ce que ces feux piétons ont un indicateur de traversée en sécurité, pour personnes malvoyantes ?"</string>
+    <string name="quest_traffic_signals_vibrate_title">"Est-ce que ces feux ont un indicateur tactile, équivalent du feu vert piétons, pour les personnes malvoyantes ?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Aide : c’est souvent un bouton vibrant ou un cône rotatif en dessous du bouton d’appel de feu."</string>
     <string name="quest_busStopRef_title">"Quel est le numéro d’identification de cet arrêt de bus ?"</string>
     <string name="quest_tramStopRef_title">"Quel est le numéro d’identification de cet arrêt de tram ?"</string>
@@ -1471,10 +1471,16 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_parking_access_title2">"Qui a le droit de stationner ici ? Peut être gratuit ou payant."</string>
     <string name="quest_access_yes">"Tout membre du grand public"</string>
     <string name="quest_access_customers">"Toute personne visitant un endroit spécifique (ex. clients uniquement)"</string>
-    <string name="quest_access_private">"Seul individu(s) avec permission"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">"Les horaires de récolte de cette boîte aux lettres sont-elles toujours correctes ?"</string>
+    <string name="quest_access_private">"Seulement les personnes autorisées"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Les horaires de levée de cette boîte aux lettres sont-ils toujours correctes ?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Est-ce que les horaires de levée de cette boite aux lettres %s sont toujours corrects ?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Non reconnu. Essayez d'entrer le type du lieu, par exemple \"boulangerie\". Sinon, vous pouvez laisser une note."</string>
+    <string name="quest_bicycle_barrier_type_title">"Quel type de barrière à vélos est-ce ?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"En diagonal du chemin"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passage étroit, plus petit vers le haut"</string>
     <string name="quest_barrier_bicycle_type_single">"Passage entre deux barrières"</string>
-    <string name="quest_barrier_bicycle_type_double">"Chicane - barrière à chaque côté"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - barrière de chaque côté"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - plus de deux barrières"</string>
+    <string name="quest_level_title">"À quel niveau se trouve %s ?"</string>
+    <string name="pref_title_language_select">"Sélectionnez une langue"</string>
 </resources>

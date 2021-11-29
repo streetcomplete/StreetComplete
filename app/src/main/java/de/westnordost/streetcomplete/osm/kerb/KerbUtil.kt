@@ -18,7 +18,9 @@ private val footwaysFilter by lazy {"""
 """.toElementFilterExpression() }
 
 private val waysFilter by lazy {"""
-    ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} or construction ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+    ways with
+      highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+      or construction ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
 """.toElementFilterExpression() }
 
 /* It is documented to be legal for a barrier=kerb to be mapped on the highway=crossing. See also

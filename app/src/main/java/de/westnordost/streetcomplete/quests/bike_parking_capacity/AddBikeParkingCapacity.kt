@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = bicycle_parking
+        nodes, ways with
+         amenity = bicycle_parking
          and access !~ private|no
          and bicycle_parking !~ floor
          and (

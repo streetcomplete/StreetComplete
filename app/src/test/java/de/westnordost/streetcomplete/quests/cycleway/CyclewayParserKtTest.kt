@@ -36,6 +36,13 @@ class CyclewayParserKtTest {
                 "oneway" to "yes"
             )
         )
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN),
+            parse(
+                "cycleway" to "something",
+                "junction" to "roundabout"
+            )
+        )
     }
 
     @Test fun `unknown in oneway (reversed)`() {
@@ -44,6 +51,14 @@ class CyclewayParserKtTest {
             parse(
                 "cycleway" to "something",
                 "oneway" to "-1"
+            )
+        )
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN, null),
+            parse(
+                "cycleway" to "something",
+                "oneway" to "-1",
+                "junction" to "roundabout"
             )
         )
     }
@@ -56,6 +71,13 @@ class CyclewayParserKtTest {
                 "oneway" to "yes"
             )
         )
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "something",
+                "junction" to "roundabout"
+            )
+        )
     }
 
     @Test fun `unknown in oneway (reversed, left hand traffic)`() {
@@ -64,6 +86,14 @@ class CyclewayParserKtTest {
             parseForLeftHandTraffic(
                 "cycleway" to "something",
                 "oneway" to "-1"
+            )
+        )
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN),
+            parseForLeftHandTraffic(
+                "cycleway" to "something",
+                "oneway" to "-1",
+                "junction" to "roundabout"
             )
         )
     }

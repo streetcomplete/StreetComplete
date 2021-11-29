@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
     override val elementFilter = """
-        ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+        ways with
+         highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
          and ${MAXSPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
