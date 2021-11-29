@@ -1,0 +1,74 @@
+# style of living street (aka home zone) sign
+#
+# most signs show the same motive: A dad and son playing ball in the foreground, 
+# a detached house and a car in the background. All in white on blue.
+# 
+# sources:
+# - same as hasLivingStreet
+#
+# styles:
+# - wide       - white on blue, white border, wide/landscape
+# - portrait   - white on blue, white border, narrow/portrait
+# - square     - white on blue, white border, square
+# - sadc       - white on blue, red border, narrow/portrait
+# - australia  - black "Shared zone" with speed limit sign on white rectangular narrow/portrait with black border
+# - mexico     - black on yellow, black border, wide/landscape
+AL: wide
+AM: portrait
+AO: sadc
+AT: wide
+AU: australia # https://en.wikipedia.org/wiki/Shared_Zone
+BA: wide
+BE: wide
+BG: wide 
+BW: wide 
+BY: portrait
+CH: wide # https://de.wikipedia.org/wiki/Begegnungszone
+CZ: wide
+DE: wide
+DK: square # https://www.retsinformation.dk/eli/lta/2012/802
+EE: wide
+ES: wide
+FI: wide
+FR: square # https://fr.wikipedia.org/wiki/Zone_de_rencontre
+GB: square # https://en.wikipedia.org/wiki/Home_zone
+GE: portrait
+GR: wide
+HR: wide
+HU: wide
+IS: wide
+KZ: portrait
+KG: portrait
+LS: sadc
+LT: wide
+LV: wide
+LU: wide
+MD: wide
+ME: wide
+MG: sadc
+MK: wide
+MN: portrait
+MU: sadc
+MW: sadc
+MX: mexico # https://wiki.openstreetmap.org/wiki/File:SP-E17a_Calle_residencial.png
+MZ: sadc
+NL: wide
+NA: sadc
+'NO': square # https://no.wikipedia.org/wiki/Gatetun
+NZ: australia
+PL: wide
+RO: square
+RU: portrait # https://ru.wikipedia.org/wiki/Жилая_зона
+RS: wide
+SC: sadc
+SK: wide
+SI: wide
+SE: wide
+SZ: sadc
+TR: wide
+TZ: sadc
+UA: portrait
+XK: wide
+ZA: sadc
+ZM: sadc
+ZW: sadc
