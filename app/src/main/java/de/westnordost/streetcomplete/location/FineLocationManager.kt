@@ -21,7 +21,9 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
     private val mainExecutor = ContextCompat.getMainExecutor(context)
     private val currentLocationConsumer = Consumer<Location?> {
         if (it != null) {
-            locationUpdateCallback(it)
+            if (!networkCancellationSignal.isCanceled && !gpsCancellationSignal.isCanceled) {
+                locationUpdateCallback(it)
+            }
         }
     }
     private var gpsCancellationSignal = CancellationSignal()
@@ -33,7 +35,6 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     private val locationListener = object : LocationUpdateListener {
         override fun onLocationChanged(location: Location) {
-            if (networkCancellationSignal.isCanceled || gpsCancellationSignal.isCanceled) return
             if (!isBetterLocation(location, lastLocation)) return
 
             lastLocation = location
