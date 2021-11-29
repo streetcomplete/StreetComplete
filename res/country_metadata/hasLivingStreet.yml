@@ -9,7 +9,7 @@ default: false
 AL: true
 AZ: true
 AO: true
-   AM: true
+AM: true
 AU: true
 AT: true
 BY: true
@@ -24,7 +24,7 @@ EE: true
 FI: true
 FR: true
 GB: true
- GE: true
+GE: true
 DE: true
 GR: true
 HU: true

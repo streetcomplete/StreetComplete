@@ -23,10 +23,8 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> clothesContainerOperators;
 	String firstDayOfWorkweek;
 	Boolean hasAdvisorySpeedLimitSign;
-	Boolean hasBiWeeklyAlternateSideCombinationParkingSign;
 	Boolean hasBiWeeklyAlternateSideParkingSign;
 	Boolean hasCenterLeftTurnLane;
-	Boolean hasDailyAlternateSideCombinationParkingSign;
 	Boolean hasDailyAlternateSideParkingSign;
 	Boolean hasLivingStreet;
 	Boolean hasNoStandingSign;
@@ -34,6 +32,7 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean isLeftHandTraffic;
 	Boolean isUsuallyAnyGlassRecycleableInContainers;
 	List<String> lengthUnits;
+	String livingStreetSignStyle;
 	Integer mobileCountryCode;
 	String noParkingSignStyle;
 	String noStoppingSignStyle;
@@ -65,6 +64,7 @@ public class CountryInfo implements Serializable, Cloneable
 	public String getCountryCode() { return countryCode; }
 	public String getFirstDayOfWorkweek() { return firstDayOfWorkweek; }
 	public List<String> getLengthUnits() { return lengthUnits; }
+	public String getLivingStreetSignStyle() { return livingStreetSignStyle; }
 	public Locale getLocale()
 	{
 		List<String> languages = getOfficialLanguages();
@@ -105,10 +105,8 @@ public class CountryInfo implements Serializable, Cloneable
 	public List<String> getWeightLimitUnits() { return weightLimitUnits; }
 	public Integer getWorkweekDays() { return workweekDays; }
 	public boolean hasAdvisorySpeedLimitSign() { return hasAdvisorySpeedLimitSign; }
-	public Boolean hasBiWeeklyAlternateSideCombinationParkingSign() { return hasBiWeeklyAlternateSideCombinationParkingSign; }
 	public Boolean hasBiWeeklyAlternateSideParkingSign() { return hasBiWeeklyAlternateSideParkingSign; }
 	public Boolean hasCenterLeftTurnLane() { return hasCenterLeftTurnLane; }
-	public Boolean hasDailyAlternateSideCombinationParkingSign() { return hasDailyAlternateSideCombinationParkingSign; }
 	public Boolean hasDailyAlternateSideParkingSign() { return hasDailyAlternateSideParkingSign; }
 	public boolean hasLivingStreet() { return hasLivingStreet; }
 	public Boolean hasNoStandingSign() { return hasNoStandingSign; }
