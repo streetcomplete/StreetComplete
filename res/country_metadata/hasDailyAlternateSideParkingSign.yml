@@ -21,6 +21,7 @@ FI: true # https://en.wikipedia.org/wiki/Road_signs_in_Finland
 GE: true # https://en.wikipedia.org/wiki/Road_signs_in_Georgia_(country)
 GR: true # https://en.wikipedia.org/wiki/Road_signs_in_Greece
 HR: true # http://www.adcidl.com/pdf/Croatian-Road-Traffic-Signs.pdf
+IT: false # https://commons.wikimedia.org/wiki/Old_road_signs_of_Italy not used anymore
 KH: true # https://en.wikipedia.org/wiki/Road_signs_in_Cambodia
 LA: true # https://en.wikipedia.org/wiki/Road_signs_in_Laos
 LT: true # https://en.wikipedia.org/wiki/Road_signs_in_Lithuania
