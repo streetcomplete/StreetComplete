@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Banco República, BROU, Santander, Itaú, Banred, BBVA, Devoto Pando, Scotiabank, Casa de Cambio, RedBROU, RedBrou]
-centerLine: yellow
+centerLineStyle: yellow
 chargingStationOperators: [UTE]
 mobileCountryCode: 748
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
 orchardProduces: [orange, grape, apple, lemon, lime, tomato, chilli_pepper, sweet_pepper, peach, pear, olive, plum, grapefruit]

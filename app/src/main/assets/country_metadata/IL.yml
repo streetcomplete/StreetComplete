@@ -2,8 +2,8 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Bank Hapoalim, בנק לאומי, לאומי, הפועלים, בנק הפועלים, מזרחי טפחות, כספונט, דיסקונט, Bitcoin Change, Hapoalim, Leumi, בנק ירושלים]
 firstDayOfWorkweek: Su
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+hasLivingStreet: false
+hasSlowZone: true
 mobileCountryCode: 425
 officialLanguages: [heb, ar]
 orchardProduces: [tomato, chilli_pepper, sweet_pepper, grapefruit, orange, banana, apple, avocado, olive, lemon, lime, grape, peach, guava, mango, mangosteen, date, persimmon, pear]

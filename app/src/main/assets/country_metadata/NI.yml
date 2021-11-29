@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [BAC, Banpro, LAFISE, BDF, banpro, BANPRO, Bancentro, Banco de América Central, Bampro, La Fise - Bancentro, ATM BAC, BAC Credomatic, VISA ATM]
-centerLine: yellow
+centerLineStyle: yellow
 mobileCountryCode: 710
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd
 officialLanguages: [es]
 orchardProduces: [coffee, orange, banana, tomato, pineapple, chilli_pepper, sweet_pepper, coconut, cacao, agave]
 popularSports: [basketball, baseball, soccer]

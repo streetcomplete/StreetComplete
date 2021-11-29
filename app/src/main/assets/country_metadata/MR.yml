@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 609
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [ar, fr, ff, snk, wo]
 orchardProduces: [date]
 popularReligions: [muslim]

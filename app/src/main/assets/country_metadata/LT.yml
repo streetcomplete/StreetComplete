@@ -2,8 +2,10 @@
 atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
 chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
 clothesContainerOperators: [UAB „VAATC“]
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: wide
 mobileCountryCode: 246
 officialLanguages: [lt]
 orchardProduces: [apple, tomato, strawberry, pear, raspberry, cherry, plum, blueberry]
