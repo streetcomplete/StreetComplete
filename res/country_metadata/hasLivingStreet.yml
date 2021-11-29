@@ -1,9 +1,10 @@
+# Whether the concept of a living street (aka home zone, residential zone, ...) is known
+#
 # Sources:
 # https://en.wikipedia.org/wiki/Living_street
 # https://en.wikipedia.org/wiki/Comparison_of_European_road_signs
 # http://wiki.openstreetmap.org/wiki/Tag:highway%3Dliving_street
 # https://commons.wikimedia.org/wiki/Category:Diagrams_of_road_signs_by_country
-
 default: false
 AL: true
 AZ: true

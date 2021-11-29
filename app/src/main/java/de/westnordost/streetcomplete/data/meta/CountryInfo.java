@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.meta;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -14,138 +13,58 @@ public class CountryInfo implements Serializable, Cloneable
 	// i.e. US for US-TX.yml
 	String countryCode;
 
-	List<String> lengthUnits;
-	List<String> speedUnits;
-	List<String> weightLimitUnits;
-	List<String> popularSports;
-	List<String> popularReligions;
-	String firstDayOfWorkweek;
-	Integer regularShoppingDays;
-	Integer workweekDays;
-	String additionalValidHousenumberRegex;
-	List<String> officialLanguages;
+	// sorted alphabetically for better overview
+
 	List<String> additionalStreetsignLanguages;
-	Boolean isSlowZoneKnown;
-	String slowZoneLabelText;
-	String slowZoneLabelPosition;
-	Boolean isLivingStreetKnown;
-	List<String> orchardProduces;
-	Boolean isAdvisorySpeedLimitKnown;
-	Boolean isLeftHandTraffic;
-	Integer mobileCountryCode;
+	String additionalValidHousenumberRegex;
+	List<String> atmOperators;
+	String centerLineStyle;
 	List<String> chargingStationOperators;
 	List<String> clothesContainerOperators;
-	List<String> atmOperators;
+	String firstDayOfWorkweek;
+	Boolean hasAdvisorySpeedLimitSign;
+	Boolean hasBiWeeklyAlternateSideCombinationParkingSign;
+	Boolean hasBiWeeklyAlternateSideParkingSign;
+	Boolean hasCenterLeftTurnLane;
+	Boolean hasDailyAlternateSideCombinationParkingSign;
+	Boolean hasDailyAlternateSideParkingSign;
+	Boolean hasLivingStreet;
+	Boolean hasNoStandingSign;
+	Boolean hasSlowZone;
+	Boolean isLeftHandTraffic;
 	Boolean isUsuallyAnyGlassRecycleableInContainers;
-	Boolean isCenterLeftTurnLaneKnown;
-	String centerLine;
-	String shoulderLine;
+	List<String> lengthUnits;
+	Integer mobileCountryCode;
+	String noParkingSignStyle;
+	String noStoppingSignStyle;
+	List<String> officialLanguages;
+	List<String> orchardProduces;
+	List<String> popularReligions;
+	List<String> popularSports;
+	Integer regularShoppingDays;
 	Boolean roofsAreUsuallyFlat;
+	String shoulderLineStyle;
+	String slowZoneLabelPosition;
+	String slowZoneLabelText;
+	List<String> speedUnits;
+	List<String> weightLimitUnits;
+	Integer workweekDays;
 
-	public Boolean isRoofsAreUsuallyFlat() { return roofsAreUsuallyFlat; }
-
-	public String getCenterLine() { return centerLine; }
-	public String getShoulderLine() { return shoulderLine; }
-
-	public Boolean isCenterLeftTurnLaneKnown() {
-		return isCenterLeftTurnLaneKnown;
-	}
-
-	public Boolean isUsuallyAnyGlassRecycleableInContainers() {
-		return isUsuallyAnyGlassRecycleableInContainers;
-	}
-
-	public List<String> getChargingStationOperators() {
-		return chargingStationOperators;
-	}
-
-	public List<String> getClothesContainerOperators() {
-		return clothesContainerOperators;
-	}
-
-	public List<String> getAtmOperators() {
-		return atmOperators;
-	}
-
-	public List<String> getLengthUnits()
-	{
-		return lengthUnits;
-	}
-
-	public List<String> getSpeedUnits()
-	{
-		return speedUnits;
-	}
-
-	public List<String> getWeightLimitUnits()
-	{
-		return weightLimitUnits;
-	}
-
-	public List<String> getPopularSports()
-	{
-		if(popularSports == null) return new ArrayList<>(1);
-		return Collections.unmodifiableList(popularSports);
-	}
-
-	public List<String> getPopularReligions()
-	{
-		if(popularReligions == null) return new ArrayList<>(1);
-		return Collections.unmodifiableList(popularReligions);
-	}
-
-	public String getFirstDayOfWorkweek()
-	{
-		return firstDayOfWorkweek;
-	}
-
-	public Integer getRegularShoppingDays()
-	{
-		return regularShoppingDays;
-	}
-
-	public Integer getWorkweekDays()
-	{
-		return workweekDays;
-	}
-
-	public boolean isSlowZoneKnown()
-	{
-		return isSlowZoneKnown;
-	}
-
-	public String getSlowZoneLabelText()
-	{
-		return slowZoneLabelText;
-	}
-
-	public String getSlowZoneLabelPosition()
-	{
-		return slowZoneLabelPosition;
-	}
-
-	public String getAdditionalValidHousenumberRegex()
-	{
-		return additionalValidHousenumberRegex;
-	}
-
-	public List<String> getOfficialLanguages()
-	{
-		if(officialLanguages == null) return new ArrayList<>(1);
-		return Collections.unmodifiableList(officialLanguages);
-	}
+	// sorted alphabetically for better overview
 
 	public List<String> getAdditionalStreetsignLanguages()
 	{
-		if(additionalStreetsignLanguages == null) return new ArrayList<>(1);
+		if(additionalStreetsignLanguages == null) return Collections.emptyList();
 		return Collections.unmodifiableList(additionalStreetsignLanguages);
 	}
-
-	public String getCountryCode()
-	{
-		return countryCode;
-	}
-
+	public String getAdditionalValidHousenumberRegex() { return additionalValidHousenumberRegex; }
+	public List<String> getAtmOperators() { return atmOperators; }
+	public String getCenterLineStyle() { return centerLineStyle; }
+	public List<String> getChargingStationOperators() { return chargingStationOperators; }
+	public List<String> getClothesContainerOperators() { return clothesContainerOperators; }
+	public String getCountryCode() { return countryCode; }
+	public String getFirstDayOfWorkweek() { return firstDayOfWorkweek; }
+	public List<String> getLengthUnits() { return lengthUnits; }
 	public Locale getLocale()
 	{
 		List<String> languages = getOfficialLanguages();
@@ -155,30 +74,46 @@ public class CountryInfo implements Serializable, Cloneable
 		}
 		return Locale.getDefault();
 	}
-
-	public boolean isLivingStreetKnown()
+	public Integer getMobileCountryCode() { return mobileCountryCode; }
+	public String getNoParkingSignStyle() { return noParkingSignStyle; }
+	public String getNoStoppingSignStyle() { return noStoppingSignStyle; }
+	public List<String> getOfficialLanguages()
 	{
-		return isLivingStreetKnown;
+		if(officialLanguages == null) return Collections.emptyList();
+		return Collections.unmodifiableList(officialLanguages);
 	}
-
 	public List<String> getOrchardProduces()
 	{
-		if(orchardProduces == null) return new ArrayList<>(1);
+		if(orchardProduces == null) return Collections.emptyList();
 		return Collections.unmodifiableList(orchardProduces);
 	}
-
-	public boolean isAdvisorySpeedLimitKnown()
+	public List<String> getPopularReligions()
 	{
-		return isAdvisorySpeedLimitKnown;
+		if(popularReligions == null) return Collections.emptyList();
+		return Collections.unmodifiableList(popularReligions);
 	}
-
-	public boolean isLeftHandTraffic()
+	public List<String> getPopularSports()
 	{
-		return isLeftHandTraffic;
+		if(popularSports == null) return Collections.emptyList();
+		return Collections.unmodifiableList(popularSports);
 	}
-
-	public Integer getMobileCountryCode()
-	{
-		return mobileCountryCode;
-	}
+	public Integer getRegularShoppingDays() { return regularShoppingDays; }
+	public String getShoulderLineStyle() { return shoulderLineStyle; }
+	public String getSlowZoneLabelPosition() { return slowZoneLabelPosition; }
+	public String getSlowZoneLabelText() { return slowZoneLabelText; }
+	public List<String> getSpeedUnits() { return speedUnits; }
+	public List<String> getWeightLimitUnits() { return weightLimitUnits; }
+	public Integer getWorkweekDays() { return workweekDays; }
+	public boolean hasAdvisorySpeedLimitSign() { return hasAdvisorySpeedLimitSign; }
+	public Boolean hasBiWeeklyAlternateSideCombinationParkingSign() { return hasBiWeeklyAlternateSideCombinationParkingSign; }
+	public Boolean hasBiWeeklyAlternateSideParkingSign() { return hasBiWeeklyAlternateSideParkingSign; }
+	public Boolean hasCenterLeftTurnLane() { return hasCenterLeftTurnLane; }
+	public Boolean hasDailyAlternateSideCombinationParkingSign() { return hasDailyAlternateSideCombinationParkingSign; }
+	public Boolean hasDailyAlternateSideParkingSign() { return hasDailyAlternateSideParkingSign; }
+	public boolean hasLivingStreet() { return hasLivingStreet; }
+	public Boolean hasNoStandingSign() { return hasNoStandingSign; }
+	public boolean hasSlowZone() { return hasSlowZone; }
+	public boolean isLeftHandTraffic() { return isLeftHandTraffic; }
+	public Boolean isRoofsAreUsuallyFlat() { return roofsAreUsuallyFlat; }
+	public Boolean isUsuallyAnyGlassRecycleableInContainers() { return isUsuallyAnyGlassRecycleableInContainers; }
 }

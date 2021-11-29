@@ -21,7 +21,9 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
     private val mainExecutor = ContextCompat.getMainExecutor(context)
     private val currentLocationConsumer = Consumer<Location?> {
         if (it != null) {
-            locationUpdateCallback(it)
+            if (!networkCancellationSignal.isCanceled && !gpsCancellationSignal.isCanceled) {
+                locationUpdateCallback(it)
+            }
         }
     }
     private var gpsCancellationSignal = CancellationSignal()
@@ -33,11 +35,21 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     private val locationListener = object : LocationUpdateListener {
         override fun onLocationChanged(location: Location) {
-            if (networkCancellationSignal.isCanceled || gpsCancellationSignal.isCanceled) return
             if (!isBetterLocation(location, lastLocation)) return
 
             lastLocation = location
             locationUpdateCallback(location)
+        }
+    }
+
+    // Both signals are refreshed regardless of whether the device has both providers, because
+    // they are both canceled in removeUpdates and both checked in the locationListener
+    private fun refreshCancellationSignals() {
+        if (gpsCancellationSignal.isCanceled) {
+            gpsCancellationSignal = CancellationSignal()
+        }
+        if (networkCancellationSignal.isCanceled) {
+            networkCancellationSignal = CancellationSignal()
         }
     }
 
@@ -51,18 +63,13 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     @Synchronized fun getCurrentLocation() {
+        refreshCancellationSignals()
         if (deviceHasGPS) {
-            if (gpsCancellationSignal.isCanceled) {
-                gpsCancellationSignal = CancellationSignal()
-            }
             LocationManagerCompat.getCurrentLocation(
                 locationManager, GPS_PROVIDER, gpsCancellationSignal, mainExecutor, currentLocationConsumer
             )
         }
         if (deviceHasNetworkLocationProvider) {
-            if (networkCancellationSignal.isCanceled) {
-                networkCancellationSignal = CancellationSignal()
-            }
             LocationManagerCompat.getCurrentLocation(
                 locationManager, NETWORK_PROVIDER, networkCancellationSignal, mainExecutor, currentLocationConsumer
             )

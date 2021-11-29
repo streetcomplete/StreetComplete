@@ -49,7 +49,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     override val otherAnswers: List<AnswerItem> get() {
         val answers = mutableListOf<AnswerItem>()
 
-        if (!isOneway && countryInfo.isCenterLeftTurnLaneKnown) {
+        if (!isOneway && countryInfo.hasCenterLeftTurnLane()) {
             answers.add(AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
                 selectedLanesType = MARKED_SIDES
                 hasCenterLeftTurnLane = true
@@ -187,7 +187,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         puzzleView.isShowingBothSides = !isOneway
         puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
 
-        val shoulderLine = countryInfo.shoulderLine
+        val shoulderLine = countryInfo.shoulderLineStyle
 
         puzzleView.shoulderLineColor =
             if(shoulderLine.contains("yellow")) Color.YELLOW else Color.WHITE
@@ -197,7 +197,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
             else
                 LineStyle.CONTINUOUS
 
-        puzzleView.centerLineColor = if(countryInfo.centerLine.contains("yellow")) Color.YELLOW else Color.WHITE
+        puzzleView.centerLineColor = if(countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
 
         streetSideRotater = StreetSideRotater(
             streetLanesPuzzleBinding.puzzleViewRotateContainer,

@@ -1,3 +1,5 @@
+# the style of the road markings that separates the traffic flow
+# 
 # source - Mapillary
 default: white
 AE: yellow
@@ -31,7 +33,7 @@ ID: white
 IE: white
 JA: white
 JO: yellow
-JP: white
+JP: yellow # https://www.google.de/maps/@35.1486861,136.8464113,3a,60y,95.76h,82.04t/data=!3m6!1e1!3m4!1sEZwGgCav8VWoykZllrF0zA!2e0!7i16384!8i8192!5m1!1e1
 KE: yellow
 KH: yellow
 KP: white
