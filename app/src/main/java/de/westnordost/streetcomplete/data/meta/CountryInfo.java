@@ -17,6 +17,7 @@ public class CountryInfo implements Serializable, Cloneable
 
 	List<String> additionalStreetsignLanguages;
 	String additionalValidHousenumberRegex;
+	String advisorySpeedLimitSignStyle;
 	List<String> atmOperators;
 	String centerLineStyle;
 	List<String> chargingStationOperators;
@@ -57,6 +58,7 @@ public class CountryInfo implements Serializable, Cloneable
 		return Collections.unmodifiableList(additionalStreetsignLanguages);
 	}
 	public String getAdditionalValidHousenumberRegex() { return additionalValidHousenumberRegex; }
+	public String getAdvisorySpeedLimitSignStyle() { return advisorySpeedLimitSignStyle; }
 	public List<String> getAtmOperators() { return atmOperators; }
 	public String getCenterLineStyle() { return centerLineStyle; }
 	public List<String> getChargingStationOperators() { return chargingStationOperators; }
