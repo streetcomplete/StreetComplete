@@ -34,7 +34,7 @@ class AddBarrierOnPath: OsmElementQuestType<BarrierType> {
 
     override val wikiLink = "Key:barrier"
 
-    override val icon = R.drawable.ic_quest_barrier // TODO?
+    override val icon = R.drawable.ic_quest_barrier_on_path
 
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
