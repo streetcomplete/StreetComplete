@@ -54,7 +54,6 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestUpdates(minTime: Long, minDistance: Float) {
-        refreshCancellationSignals()
         if (deviceHasGPS)
             locationManager.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
         if (deviceHasNetworkLocationProvider)
