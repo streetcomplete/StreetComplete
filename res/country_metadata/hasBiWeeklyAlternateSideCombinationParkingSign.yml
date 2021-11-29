@@ -1,5 +1,0 @@
-# Whether a combination sign for alternate-side-parking (bi-weekly - first and last half of month) exists,
-# i.e. a sign that directs when parking is forbidden on the left side and when on the right side at the same time
-# 
-default: false
-BE: true # https://nl.wikipedia.org/wiki/Beurtelings_parkeren

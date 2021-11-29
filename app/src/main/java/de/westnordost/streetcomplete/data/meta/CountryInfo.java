@@ -17,25 +17,26 @@ public class CountryInfo implements Serializable, Cloneable
 
 	List<String> additionalStreetsignLanguages;
 	String additionalValidHousenumberRegex;
+	String advisorySpeedLimitSignStyle;
 	List<String> atmOperators;
 	String centerLineStyle;
 	List<String> chargingStationOperators;
 	List<String> clothesContainerOperators;
 	String firstDayOfWorkweek;
 	Boolean hasAdvisorySpeedLimitSign;
-	Boolean hasBiWeeklyAlternateSideCombinationParkingSign;
 	Boolean hasBiWeeklyAlternateSideParkingSign;
 	Boolean hasCenterLeftTurnLane;
-	Boolean hasDailyAlternateSideCombinationParkingSign;
 	Boolean hasDailyAlternateSideParkingSign;
 	Boolean hasLivingStreet;
 	Boolean hasNoStandingSign;
 	Boolean hasSlowZone;
 	Boolean isLeftHandTraffic;
-	Boolean isUsuallyAnyGlassRecycleableInContainers;
+	Boolean isUsuallyAnyGlassRecyclableInContainers;
 	List<String> lengthUnits;
+	String livingStreetSignStyle;
 	Integer mobileCountryCode;
 	String noParkingSignStyle;
+	String noStandingSignStyle;
 	String noStoppingSignStyle;
 	List<String> officialLanguages;
 	List<String> orchardProduces;
@@ -58,6 +59,7 @@ public class CountryInfo implements Serializable, Cloneable
 		return Collections.unmodifiableList(additionalStreetsignLanguages);
 	}
 	public String getAdditionalValidHousenumberRegex() { return additionalValidHousenumberRegex; }
+	public String getAdvisorySpeedLimitSignStyle() { return advisorySpeedLimitSignStyle; }
 	public List<String> getAtmOperators() { return atmOperators; }
 	public String getCenterLineStyle() { return centerLineStyle; }
 	public List<String> getChargingStationOperators() { return chargingStationOperators; }
@@ -65,6 +67,7 @@ public class CountryInfo implements Serializable, Cloneable
 	public String getCountryCode() { return countryCode; }
 	public String getFirstDayOfWorkweek() { return firstDayOfWorkweek; }
 	public List<String> getLengthUnits() { return lengthUnits; }
+	public String getLivingStreetSignStyle() { return livingStreetSignStyle; }
 	public Locale getLocale()
 	{
 		List<String> languages = getOfficialLanguages();
@@ -76,6 +79,7 @@ public class CountryInfo implements Serializable, Cloneable
 	}
 	public Integer getMobileCountryCode() { return mobileCountryCode; }
 	public String getNoParkingSignStyle() { return noParkingSignStyle; }
+	public String getNoStandingSignStyle() { return noStandingSignStyle; }
 	public String getNoStoppingSignStyle() { return noStoppingSignStyle; }
 	public List<String> getOfficialLanguages()
 	{
@@ -105,15 +109,13 @@ public class CountryInfo implements Serializable, Cloneable
 	public List<String> getWeightLimitUnits() { return weightLimitUnits; }
 	public Integer getWorkweekDays() { return workweekDays; }
 	public boolean hasAdvisorySpeedLimitSign() { return hasAdvisorySpeedLimitSign; }
-	public Boolean hasBiWeeklyAlternateSideCombinationParkingSign() { return hasBiWeeklyAlternateSideCombinationParkingSign; }
 	public Boolean hasBiWeeklyAlternateSideParkingSign() { return hasBiWeeklyAlternateSideParkingSign; }
 	public Boolean hasCenterLeftTurnLane() { return hasCenterLeftTurnLane; }
-	public Boolean hasDailyAlternateSideCombinationParkingSign() { return hasDailyAlternateSideCombinationParkingSign; }
 	public Boolean hasDailyAlternateSideParkingSign() { return hasDailyAlternateSideParkingSign; }
 	public boolean hasLivingStreet() { return hasLivingStreet; }
 	public Boolean hasNoStandingSign() { return hasNoStandingSign; }
 	public boolean hasSlowZone() { return hasSlowZone; }
 	public boolean isLeftHandTraffic() { return isLeftHandTraffic; }
 	public Boolean isRoofsAreUsuallyFlat() { return roofsAreUsuallyFlat; }
-	public Boolean isUsuallyAnyGlassRecycleableInContainers() { return isUsuallyAnyGlassRecycleableInContainers; }
+	public Boolean isUsuallyAnyGlassRecyclableInContainers() { return isUsuallyAnyGlassRecyclableInContainers; }
 }

@@ -1,5 +1,0 @@
-# Whether a combination sign for alternate-side-parking (even and odd days) exists,
-# i.e. a sign that directs when parking is forbidden on the left side and when on the right side at the same time
-# 
-default: false
-SV: true # https://sv.wikipedia.org/wiki/Datumparkering

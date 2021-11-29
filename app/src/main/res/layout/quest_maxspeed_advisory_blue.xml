@@ -13,6 +13,7 @@
         android:id="@+id/maxSpeedInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="#0fff"
         android:textColor="@color/traffic_white"
         android:inputType="number"

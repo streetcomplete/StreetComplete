@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]
-isSlowZoneKnown: true
+hasSlowZone: true
 mobileCountryCode: 295
 officialLanguages: [de]
 orchardProduces: [grape]

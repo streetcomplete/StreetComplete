@@ -2,6 +2,8 @@
 atmOperators: [بريد الجزائر, Algérie Poste, بي إن بي باريبا, BNP Paribas El Djazaïr, Algerie Poste, القرض الشعبي الجزائري, الصندوق الوطني للتوفير والاحتياط, بنك الجزائر الخارجي, CPA, Algérie poste, سوسيتيه جنرال, CCP, GAB CCP, GAB, CNEP, Algerie poste, algerie poste]
 firstDayOfWorkweek: Su
 mobileCountryCode: 603
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [ar, ber, fr]
 orchardProduces: [tomato, date, olive, orange, grape, apple, apricot, pear, peach, fig, plum, lemon, lime, almond, chilli_pepper, sweet_pepper, cherry]
 popularReligions: [muslim]

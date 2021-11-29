@@ -1,8 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [BCP, Scotiabank, Banco de la Nación, Caja Arequipa, Interbank, Globalnet, BBVA, globalnet, Multired, GlobalNet, Banco de Crédito del Perú, Banco de la Nacion, BBVA Continental, multiRed, banco de la nacion, Banco Continental, MultiRed, Banco de Credito, Caja Piura, 1, Multi Red, Caja Cusco, banco de la nación, Banco de Crédito, Global Net, Continental, max, Scotia Bank, Banco de La Nación, CODO DE POZUZO, multired, Banco de la nación]
-centerLine: yellow
+centerLineStyle: yellow
 chargingStationOperators: [La Puntilla]
-isSlowZoneKnown: true
+hasSlowZone: true
 mobileCountryCode: 716
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd
 officialLanguages: [es, qu, ay]
 orchardProduces: [grape, pineapple, avocado, orange, guava, mango, mangosteen, coffee, banana, lemon, lime, tomato, papaya, apple, chilli_pepper, sweet_pepper, cacao, olive, peach]

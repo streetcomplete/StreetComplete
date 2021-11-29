@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.foot
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogLivingStreetConfirmationBinding
+import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
@@ -29,8 +31,10 @@ class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedFo
 
     private fun confirmLivingStreet() {
         val ctx = context ?: return
+        val dialogBinding = DialogLivingStreetConfirmationBinding.inflate(layoutInflater)
+        countryInfo.livingStreetSignDrawableResId?.let { dialogBinding.livingStreetImage.setImageResource(it) }
         AlertDialog.Builder(ctx)
-            .setView(R.layout.quest_maxspeed_living_street_confirmation)
+            .setView(dialogBinding.root)
             .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IS_LIVING_STREET) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)

@@ -2,6 +2,8 @@
 additionalStreetsignLanguages: [fr]
 atmOperators: [الاتحاد البنكي للتجارة والصناعة, بنك تونس العربي الدولي, البنك الوطني الفلاحي, Banque de Tunisie, STB]
 mobileCountryCode: 605
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [ar]
 orchardProduces: [tomato, olive, date, grape, peach, apple, orange, grapefruit, almond, lemon, lime, apricot, fig, chilli_pepper, sweet_pepper, pear, plum]
 popularReligions: [muslim]
