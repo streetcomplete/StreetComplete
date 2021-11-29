@@ -49,7 +49,7 @@ class AddRecyclingContainerMaterialsForm
 
     override val maxSelectableItems = -1
 
-    private val isAnyGlassRecycleable get() = countryInfo.isUsuallyAnyGlassRecycleableInContainers
+    private val isAnyGlassRecycleable get() = countryInfo.isUsuallyAnyGlassRecyclableInContainers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

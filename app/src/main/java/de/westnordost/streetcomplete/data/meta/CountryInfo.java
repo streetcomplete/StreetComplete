@@ -30,7 +30,7 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean hasNoStandingSign;
 	Boolean hasSlowZone;
 	Boolean isLeftHandTraffic;
-	Boolean isUsuallyAnyGlassRecycleableInContainers;
+	Boolean isUsuallyAnyGlassRecyclableInContainers;
 	List<String> lengthUnits;
 	String livingStreetSignStyle;
 	Integer mobileCountryCode;
@@ -113,5 +113,5 @@ public class CountryInfo implements Serializable, Cloneable
 	public boolean hasSlowZone() { return hasSlowZone; }
 	public boolean isLeftHandTraffic() { return isLeftHandTraffic; }
 	public Boolean isRoofsAreUsuallyFlat() { return roofsAreUsuallyFlat; }
-	public Boolean isUsuallyAnyGlassRecycleableInContainers() { return isUsuallyAnyGlassRecycleableInContainers; }
+	public Boolean isUsuallyAnyGlassRecyclableInContainers() { return isUsuallyAnyGlassRecyclableInContainers; }
 }
