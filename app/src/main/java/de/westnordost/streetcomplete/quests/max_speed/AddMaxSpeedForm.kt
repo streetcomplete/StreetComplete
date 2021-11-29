@@ -3,18 +3,16 @@ package de.westnordost.streetcomplete.quests.max_speed
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.Spinner
+import android.widget.*
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.isGone
-import com.google.android.material.textview.MaterialTextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
+import de.westnordost.streetcomplete.ktx.advisorySpeedLimitSignLayoutResId
+import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -95,18 +93,25 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         binding.rightSideContainer.removeAllViews()
         speedType?.layoutResId?.let { layoutInflater.inflate(it, binding.rightSideContainer, true) }
 
-        if(speedType == ZONE) {
-            enableAppropriateLabelsForSlowZone(binding.rightSideContainer)
-        }
-
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
-
         speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         speedUnitSelect = binding.rightSideContainer.findViewById(R.id.speedUnitSelect)
         speedUnitSelect?.isGone = speedUnits.size == 1
         speedUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
+
+        when(speedType) {
+            ZONE -> {
+                enableAppropriateLabelsForSlowZone(binding.rightSideContainer)
+            }
+            LIVING_STREET -> {
+                val drawableResId = countryInfo.livingStreetSignDrawableResId
+                val livingStreetImageView = binding.rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
+                if (drawableResId != null) livingStreetImageView.setImageResource(drawableResId)
+            }
+        }
+
 
         if (speedType == ZONE && LAST_INPUT_SLOW_ZONE != null) {
             speedInput?.setText(LAST_INPUT_SLOW_ZONE.toString())
@@ -129,14 +134,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun enableAppropriateLabelsForSlowZone(layoutWithSign: FrameLayout) {
         val position = countryInfo.slowZoneLabelPosition
-        val text = countryInfo.slowZoneLabelText
+        val text = countryInfo.slowZoneLabelText ?: return
 
-        // no label
-        if (text == null) {
-            return
-        }
-
-        val label: MaterialTextView = layoutWithSign.findViewById(when (position) {
+        val label = layoutWithSign.findViewById<TextView>(when (position) {
             "bottom" -> R.id.slowZoneLabelBottom
             "top" -> R.id.slowZoneLabelTop
             else -> return // should never happen
@@ -150,7 +150,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         ZONE          -> R.layout.quest_maxspeed_zone_sign
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
         NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
-        ADVISORY      -> R.layout.quest_maxspeed_advisory
+        ADVISORY      -> countryInfo.advisorySpeedLimitSignLayoutResId ?: R.layout.quest_maxspeed_advisory_blue
         else -> null
     }
 

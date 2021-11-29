@@ -11,10 +11,10 @@ val CountryInfo.advisorySpeedLimitSignLayoutResId: Int? get() = when(advisorySpe
 }
 
 val CountryInfo.livingStreetSignDrawableResId: Int? get() = when(livingStreetSignStyle) {
-    "wide"      -> R.drawable.ic_living_street
-    "portrait"  -> R.drawable.ic_living_street_portrait
-    "square"    -> R.drawable.ic_living_street_square
+    "vienna"    -> R.drawable.ic_living_street
     "sadc"      -> R.drawable.ic_living_street_sadc
+    "russia"    -> R.drawable.ic_living_street_russia
+    "france"    -> R.drawable.ic_living_street_france
     "australia" -> R.drawable.ic_living_street_australia
     "mexico"    -> R.drawable.ic_living_street_mexico
     else        -> null
