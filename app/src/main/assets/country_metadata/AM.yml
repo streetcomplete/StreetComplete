@@ -4,7 +4,7 @@ atmOperators: [Ameriabank, Unibank, VTB, ACBA, ABB, HSBC, Ararat Bank, Ardshinba
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: portrait
+livingStreetSignStyle: russia
 mobileCountryCode: 283
 officialLanguages: [hy]
 orchardProduces: [tomato, grape, apple, apricot, peach, plum, pear, cherry, walnut, fig, hazelnut]

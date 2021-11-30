@@ -6,7 +6,7 @@ hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 206
 officialLanguages: [nl, fr, de]
 orchardProduces: [pear, tomato, apple, strawberry, chilli_pepper, sweet_pepper, cherry, raspberry, grape, walnut, hop, plum]

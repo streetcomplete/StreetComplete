@@ -9,7 +9,7 @@ hasBiWeeklyAlternateSideParkingSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 214
 officialLanguages: [es]
 orchardProduces: [olive, grape, tomato, orange, peach, chilli_pepper, sweet_pepper, lemon, lime, apple, banana, strawberry, persimmon, pear, almond, plum, apricot]

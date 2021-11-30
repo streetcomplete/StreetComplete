@@ -7,7 +7,7 @@ clothesContainerOperators: [Fretex, UFF, Idrettsinnsamlingen, Uff, Frelsesarmée
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: square
+livingStreetSignStyle: vienna
 mobileCountryCode: 242
 officialLanguages: [nb, nn, no]
 orchardProduces: [apple, tomato, strawberry, raspberry, plum, cherry, pear, blueberry]

@@ -2247,7 +2247,6 @@
     <string name="default_disabled_msg_roofShape">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αναζήτησης είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι."</string>
     <string name="quest_religion_animist">"Ανιμισμός"</string>
     <string name="quest_construction_steps_title">"Έχουν ολοκληρωθεί αυτά τα σκαλοπάτια;"</string>
-    <string name="questList_disabled_at_day">"Εμφανίζεται μόνο τη νύχτα"</string>
     <string name="pref_quests_deselect_all">"Αποεπιλογή όλων των αναζητήσεων;"</string>
     <string name="quest_buildingType_boathouse">"Αποθήκευση σκαφών"</string>
     <string name="quest_buildingType_allotment_house">"Σπιτάκι κήπου"</string>

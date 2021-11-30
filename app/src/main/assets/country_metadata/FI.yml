@@ -6,7 +6,7 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 244
 officialLanguages: [fi, sv]
 orchardProduces: [tomato, strawberry, apple, raspberry, chilli_pepper, sweet_pepper]

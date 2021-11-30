@@ -1966,9 +1966,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_construction_steps_title">"Er trappene ferdigbygget?"</string>
 
     <!-- Fuzzy -->
-    <string name="questList_disabled_at_day">"Kun vist om natten"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_quests_deselect_all">"Opphev alle oppdrag?"</string>
 
     <!-- Fuzzy -->

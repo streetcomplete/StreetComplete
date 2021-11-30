@@ -1532,7 +1532,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="map_application_missing">"Nemáte nainstalovanou žádnou jinou mapovou aplikaci"</string>
 
     <!-- Fuzzy -->
-    <string name="label_housenumber">"číslo popisné"</string>
+    <string name="label_housenumber">"číslo domu"</string>
 
     <!-- Fuzzy -->
     <string name="label_blocknumber">"číslo bloku"</string>
@@ -2003,7 +2003,7 @@ Tato data jsou důležitá nejen pro pošťáky, ale i pro navigační systémy.
 
     <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"Vyřešili jste %d úkolů, které se týkají budov.
-Pamatujte, že tato aplikace se zeptá na popisné číslo budovy až po určení jejího druhu."</string>
+Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího druhu."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_blind_title">"Šestý smysl"</string>
@@ -2131,7 +2131,7 @@ It is not big issue, but it would be nice to have it correctly. -->
 
     <!-- Fuzzy -->
     <string name="at_conscription_number">"Číslo popisné %s:"</string>
-    <string name="at_housenumber">"číslo popisné %s:"</string>
+    <string name="at_housenumber">"číslo domu %s:"</string>
     <string name="quest_openingHours_name_type_title">"Jaká je otevírací doba %1$s (%2$s)?"</string>
     <string name="quest_openingHours_resurvey_name_title">"Je tato otevírací doba pro %s stále platná?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Je tato otevírací doba pro %1$s (%2$s) stále platná?"</string>
@@ -2402,7 +2402,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="default_disabled_msg_roofShape">"Tento typ úkolů je ve výchozím nastavení zakázán, protože tvar střechy často není snadno viditelný z ulice. Tento typ úkolů je také poněkud časově náročný; ve většině případů je snazší a efektivnější toto mapovat doma podle leteckých snímků."</string>
     <string name="quest_religion_animist">"Animismus"</string>
     <string name="quest_construction_steps_title">"Jsou tyto schody hotové?"</string>
-    <string name="questList_disabled_at_day">"Zobrazeno pouze v noci"</string>
     <string name="pref_quests_deselect_all">"Zrušit výběr všech úkolů?"</string>
     <string name="quest_buildingType_boathouse">"Loděnice"</string>
     <string name="quest_buildingType_allotment_house">"Zahradní chatka"</string>
@@ -2478,6 +2477,10 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_barrier_bicycle_type_single">"Průjezd mezi dvěma přkážkami"</string>
     <string name="quest_barrier_bicycle_type_double">"Šikana - překážka na každé straně"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana - více než dvě překážky"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_level_title">"Ve kterém patře se nachází %s?"</string>
     <string name="pref_title_language_select">"Vyberte jazyk"</string>
+    <string name="language_default">"Jazyk systému
+"</string>
 </resources>

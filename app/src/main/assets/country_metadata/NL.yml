@@ -4,7 +4,7 @@ chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfal
 clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, RD4, Curitas, Twiddus, Noppes, Leger des heils, hetgoed, Waardlanden, Opnieuw & Co, HVC]
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 204
 officialLanguages: [nl]
 orchardProduces: [tomato, chilli_pepper, sweet_pepper, pear, apple, strawberry, blueberry, raspberry, plum, cherry, grape]

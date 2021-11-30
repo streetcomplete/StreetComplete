@@ -327,9 +327,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
-    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible.</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a single step to access it.</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a ankle-high step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
@@ -748,8 +748,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
 
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
+    <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s:</string>
+    <string name="on_floor">on floor %s:</string>
     <!-- as in: “Where is the metro station?” - “It is underground” -->
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
@@ -1103,7 +1104,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">This diameter looks implausible.</string>
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="short_no_answer_on_button">No</string>
-    <string name="quest_level_title">On which level is %s located?</string>
+    <string name="quest_level_title">On which level number is %s located?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
 </resources>

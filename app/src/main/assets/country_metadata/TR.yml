@@ -3,7 +3,7 @@ atmOperators: [Akbank, Ziraat Bankası, Türkiye İş Bankası, Garanti Bankası
 chargingStationOperators: [SHARZ, VOLTRUN, ZES, Sharz, Eşarj, EŞARJ]
 clothesContainerOperators: [Maltepe Belediyesi]
 hasLivingStreet: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 286
 officialLanguages: [tr]
 orchardProduces: [tomato, grape, apple, olive, orange, lemon, lime, apricot, peach, hazelnut, pear, strawberry, banana, fig, plum, grapefruit]

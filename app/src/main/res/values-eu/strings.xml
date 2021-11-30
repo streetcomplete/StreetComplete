@@ -2407,7 +2407,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="default_disabled_msg_roofShape">"Erronka mota hau desgaitua dago berez, teilatuaren formak ez direlako erraz ikusten kaletik. Bilaketa mota hau ere oso luzea izaten da, eta, gehienetan, errazagoa eta eraginkorragoa da hau etxeko aireko irudietatik mapatzea."</string>
     <string name="quest_religion_animist">"animista"</string>
     <string name="quest_construction_steps_title">"Pauso guzti hauek egin al dituzu?"</string>
-    <string name="questList_disabled_at_day">"Gauez baino ez da erakusten"</string>
     <string name="pref_quests_deselect_all">"Erronka guztien aukera kendu?"</string>
     <string name="quest_buildingType_boathouse">"Barku-etxea"</string>
     <string name="quest_buildingType_allotment_house">"Lorategia zaintzeko txabola bat"</string>

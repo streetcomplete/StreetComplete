@@ -2166,7 +2166,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="default_disabled_msg_roofShape">"지붕 형태를 길거리에서 보는 것이 쉽지 않기 때문에 이 과제는 기본적으로 비활성화 되어있습니다. 이 과제는 또 시간을 많이 소모합니다; 대부분의 경우 집에서 위성사진을 통해 정보를 채워넣는 게 더 쉽고 효율적입니다."</string>
     <string name="quest_religion_animist">"애니미즘"</string>
     <string name="quest_construction_steps_title">"이 계단이 완공되었나요?"</string>
-    <string name="questList_disabled_at_day">"밤에만 보임"</string>
     <string name="pref_quests_deselect_all">"모든 과제를 선택 해제할까요?"</string>
     <string name="quest_buildingType_boathouse">"선상가옥"</string>
     <string name="quest_buildingType_allotment_house">"공동정원 변소"</string>
@@ -2193,4 +2192,52 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"프리셋 \"%s\"을(를) 지울까요? 해당되는 과제 목록과 순서가 지워지며 되돌릴 수 없습니다."</string>
+    <string name="notification_syncing">"데이터를 동기화하는 중..."</string>
+    <string name="notification_channel_sync">"데이터 동기화"</string>
+    <string name="quest_board_type_sport">"스포츠, 운동"</string>
+    <string name="quest_generic_hasFeature_optional">"선택적"</string>
+    <string name="quest_buildingType_bridge">"건물 사이에 위치한 다리(구름다리)"</string>
+    <string name="quest_laundrySelfService_title2">"이 세탁소는 셀프 빨래방인가요?"</string>
+    <string name="quest_dietType_halal_name_title">"%s에서 할랄 식품을 취급하나요?"</string>
+    <string name="quest_dietType_explanation_halal">"할랄 식품은 할랄 인증 기관에서 정하는 특별한 규칙에 따라 제조된 식품을 의미합니다."</string>
+    <string name="quest_picnicTableCover_title">"이 피크닉 테이블에 (비를 막아주는) 지붕이 있나요?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"이 부분은 계단입니다"</string>
+    <string name="quest_barrier_type_passage_conversion">"벽이나 울타리를 통과하는 통로로 변환합니다."</string>
+    <string name="quest_barrier_type_gate_conversion">"출입구로 변환합니다."</string>
+    <string name="quest_traffic_calming_type_title">"이 과속 방지턱은 어떻게 생겼나요?"</string>
+    <string name="quest_traffic_calming_type_bump">"좁고 가파른 형태"</string>
+    <string name="quest_traffic_calming_type_hump">"넓고 완만한 형태"</string>
+    <string name="quest_traffic_calming_type_table">"꼭대기가 평평함"</string>
+    <string name="quest_traffic_calming_type_cushion">"(대형 차량은 영향을 받지 않게끔) 폭이 좁음"</string>
+    <string name="quest_traffic_calming_type_choker">"폭이 좁아지는 도로"</string>
+    <string name="quest_traffic_calming_type_island">"섬"</string>
+    <string name="quest_traffic_calming_type_chicane">"시케인(구불구불한 급커브)"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"작은 방지턱이 수십 개 나열됨"</string>
+    <string name="quest_surface_value_concrete_plates">"콘크리트 판"</string>
+    <string name="quest_surface_value_concrete_lanes">"콘크리트 차로"</string>
+    <string name="quest_fireHydrant_diameter_title">"이 소화전을 나타내는 표지판의 지름이 얼마인가요?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"입력한 지름은 타당해 보이지 않습니다."</string>
+    <string name="quest_fireHydrant_confirmation_title">"확실한가요? 소화전 겉면에 지름이 적혀 있는 경우도 있습니다."</string>
+    <string name="quest_diet_answer_no_food">"음식이 없습니다"</string>
+    <string name="short_no_answer_on_button">"아니요"</string>
+    <string name="restore_confirmation">"복구"</string>
+    <string name="restore_dialog_message">"숨긴 과제를 모두 복구하시겠습니까?"</string>
+    <string name="quest_parking_access_title2">"여기에 주차할 수 있는 사람이 누구인가요? 주차 요금은 있어도 되고, 없어도 됩니다."</string>
+    <string name="quest_access_yes">"누구나 가능"</string>
+    <string name="quest_access_customers">"특정 장소(가게 등)에 방문하는 사람만 가능"</string>
+    <string name="quest_access_private">"권한이 있는 사람만 가능"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"이 우체통의 수거 시각이 아직도 맞습니까?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"이 우체통 %s의 수거 시각이 아직도 맞습니까?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"인식할 수 없습니다. 장소의 유형(예: '빵집')을 입력해 주세요. 불가능하다면 참고를 남겨 주세요."</string>
+    <string name="quest_bicycle_barrier_type_title">"이 자전거 방벽은 어떻게 생겼나요?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"대각선 방향"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"좁은 통로, 위로 갈수록 좁아짐"</string>
+    <string name="quest_barrier_bicycle_type_single">"두 방벽 사이의 통로"</string>
+    <string name="quest_barrier_bicycle_type_double">"시케인 - 양쪽에 방벽이 있음"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"시케인 - 방벽이 세 개 이상 있음"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_level_title">"%s은(는) 몇 층에 있나요?"</string>
+    <string name="pref_title_language_select">"언어 선택"</string>
+    <string name="language_default">"시스템 기본값"</string>
 </resources>

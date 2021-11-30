@@ -1498,6 +1498,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"这座建筑是否完全位于地下？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"部分意味着只需一步即可访问它。"</string>
 
     <!-- Fuzzy -->
@@ -2144,7 +2146,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"非独立式独栋别墅"</string>
-    <string name="quest_drinking_water_title">"这里的水质是否可以饮用？(%s)"</string>
+    <string name="quest_drinking_water_title">"这里的水源是否可以饮用？(%s)"</string>
     <string name="quest_drinking_water_potable_signed">"可安全饮用（已标明）"</string>
     <string name="quest_drinking_water_potable_unsigned">"可安全饮用（未标明）"</string>
     <string name="quest_drinking_water_not_potable_signed">"不能安全饮用（已标明）"</string>
@@ -2157,7 +2159,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"仅限塑料瓶与盒子"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_charging_station_name_capacity_title">"这个充电站 (%s) 可以同时给多少辆汽车充电？
+    <string name="quest_charging_station_name_capacity_title">"这个充电站 (%s) 可以同时给多少辆车充电？
 "</string>
     <string name="team_mode">"团队模式"</string>
     <string name="team_mode_exit">"离开团队模式"</string>
@@ -2232,7 +2234,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"隔墙、围篱等…"</string>
-    <string name="quest_barrier_type_debris_pile">"杂物"</string>
+    <string name="quest_barrier_type_debris_pile">"杂物、废墟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_squeezer">"挤压式阶梯"</string>
@@ -2254,7 +2256,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_busStopLit_tram_title">"这个街车站有照明吗？"</string>
     <string name="quest_busStopLit_title">"这个公交车站有照明吗？"</string>
     <string name="quest_busStopLit_name_title">"%s 公交车站有照明吗？"</string>
-    <string name="no_location_permission_warning_title">"位置资讯授权"</string>
+    <string name="no_location_permission_warning_title">"位置授权"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_woodchips">"碎木屑"</string>
@@ -2283,7 +2285,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_bollard_type_fixed">"固定式（无法移动）"</string>
     <string name="quest_camera_type_title">"这是什么类型的监视镜头？"</string>
     <string name="quest_camera_type_dome">"拱顶"</string>
-    <string name="quest_camera_type_fixed">"修复"</string>
+    <string name="quest_camera_type_fixed">"固定式"</string>
     <string name="quest_camera_type_panning">"平移"</string>
 
     <!-- Fuzzy -->
@@ -2309,9 +2311,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_construction_steps_title">"这些步骤是否已完成？"</string>
-
-    <!-- Fuzzy -->
-    <string name="questList_disabled_at_day">"只在夜间显示"</string>
 
     <!-- Fuzzy -->
     <string name="pref_quests_deselect_all">"取消选择所有的任务？"</string>
@@ -2407,10 +2406,23 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_diet_answer_no_food">"它不提供餐点"</string>
-
-    <!-- Fuzzy -->
+    <string name="short_no_answer_on_button">"没有"</string>
     <string name="restore_confirmation">"恢复"</string>
 
     <!-- Fuzzy -->
+    <string name="restore_dialog_message">"要还原所有你已隐藏的问题吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_parking_access_title2">"谁被允许在此停车？停车可能是免费或付费的。"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_access_yes">"任何公众人员"</string>
+    <string name="quest_access_customers">"访问特定地点的任何人（如仅限顾客）"</string>
+    <string name="quest_access_private">"只有获得许可的个人"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"此邮筒的收取时间仍然正确吗?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shop_gone_replaced_answer_error2">"未被确认。请尝试报告此地的类型，例如\"面包店\"。否则,请考虑留下注解。"</string>
     <string name="pref_title_language_select">"选择语言"</string>
+    <string name="language_default">"系统预设值"</string>
 </resources>

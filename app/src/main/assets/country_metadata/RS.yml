@@ -4,7 +4,7 @@ chargingStationOperators: [putevi srbije]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 220
 officialLanguages: [sr]
 orchardProduces: [plum, apple, chilli_pepper, sweet_pepper, tomato, grape, raspberry, peach, pear, apricot, strawberry, cherry, walnut, hazelnut, hop]

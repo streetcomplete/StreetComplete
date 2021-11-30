@@ -9,7 +9,7 @@ hasLivingStreet: true
 hasSlowZone: true
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
-livingStreetSignStyle: square
+livingStreetSignStyle: vienna
 mobileCountryCode: 234
 officialLanguages: [en]
 orchardProduces: [apple, strawberry, tomato, pear, chilli_pepper, sweet_pepper, raspberry, plum, cherry, hop, grape]

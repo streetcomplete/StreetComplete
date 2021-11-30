@@ -6,7 +6,7 @@ hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: square
+livingStreetSignStyle: france
 mobileCountryCode: 208
 officialLanguages: [fr]
 orchardProduces: [grape, apple, tomato, plum, peach, apricot, pear, kiwi, strawberry, orange, chilli_pepper, sweet_pepper, walnut, cherry, olive, hazelnut]

@@ -232,8 +232,12 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ist der U-Bahn-Eingang %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Ist die Bahnstation %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Ist der Ort %s zugänglich für Rollstühle?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt, um das Gebäude zu betreten und die meisten Räume darin zugänglich für Rollstühle sind."</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt, um das Gebäude zu betreten und die meisten Räume darin zugänglich für Rollstühle sind."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ist der Name %s abgekürzt?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Gibt es einen Wickeltisch in dieser Toilette?"</string>
     <string name="quest_baby_changing_table_title">"Gibt es einen Wickeltisch in %s?"</string>
@@ -577,7 +581,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_tracktype_grade5">"Weich"</string>
     <string name="quest_building_underground_name_title">"Ist %s komplett unterirdisch?"</string>
     <string name="quest_building_underground_title">"Ist dieses Gebäude komplett unterirdisch?"</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_limited_description_outside">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt."</string>
     <string name="quest_wheelchairAccess_outside_title">"Ist dieser Ort zugänglich für Rollstühle?"</string>
     <string name="quest_traffic_signals_button_title">"Gibt es an dieser Ampel einen Knopf, um als Fußgänger Grün anzufordern?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Wie viele Motorräder können hier abgestellt werden?"</string>
@@ -1075,7 +1081,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="default_disabled_msg_roofShape">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil die Dachformen oft nicht gut von der Straße aus sichtbar sind. Dieser Aufgabentyp ist außerdem recht zeitaufwändig; in den meisten Fällen ist es einfacher und effizienter, diese von zuhause von Luftbildern zu erfassen."</string>
     <string name="quest_religion_animist">"Animistisch"</string>
     <string name="quest_construction_steps_title">"Ist diese Treppe fertig gebaut?"</string>
-    <string name="questList_disabled_at_day">"Nur nachts angezeigt"</string>
     <string name="pref_quests_deselect_all">"Alle Aufgaben abwählen?"</string>
     <string name="quest_buildingType_boathouse">"Bootshaus"</string>
     <string name="quest_buildingType_allotment_house">"Kleingartenlaube"</string>
@@ -1141,7 +1146,10 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_barrier_bicycle_type_single">"Durchgang zwischen zwei Barrieren"</string>
     <string name="quest_barrier_bicycle_type_double">"Schikane – Barriere auf beiden Seiten"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Schikane – mehr als zwei Barrieren"</string>
-    <string name="quest_level_title">"In welchem Stockwerk ist %s?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_level_title">"Auf welcher Ebene ist %s?"</string>
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
+    <string name="on_floor">"In Stockwerk %s:"</string>
 </resources>

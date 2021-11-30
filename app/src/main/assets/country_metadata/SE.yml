@@ -5,7 +5,7 @@ clothesContainerOperators: [Myrorna, Human Bridge, FTI]
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: false
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 240
 officialLanguages: [sv]
 orchardProduces: [apple, strawberry, tomato, pear, raspberry, plum, cherry, blueberry]

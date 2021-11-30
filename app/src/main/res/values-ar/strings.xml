@@ -228,7 +228,11 @@
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"هل مدخل مترو الأنفاق \"%s\" يمكن دخوله بكرسي معاقين؟"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"هل محطة القطار %s يمكن دخولها بكرسي معاقين؟"</string>
     <string name="quest_wheelchairAccess_location_name_title">"هل   يمكن الوصول للموقع %s بواسطة كرسي متحرك؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"يعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إلى المكان وأن معظم الغرف بالداخل يمكن الوصول إليها بواسطة الكراسي المتحركة."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"تعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إليه."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"اختصار في الاسم %s؟"</string>
     <string name="quest_baby_changing_table_toilets_title">"هل دورة المياه هذه تحتوي على طاولة تغيير لحفائظ للأطفال؟"</string>
@@ -588,6 +592,8 @@
     <string name="quest_tracktype_grade5">"طري - ناعم - لين، مسار يمر عبر التربة /الرمال /العشب ولا يوجد فيه حصى وصخور"</string>
     <string name="quest_building_underground_name_title">"هل %s تحت الأرض بالكامل؟"</string>
     <string name="quest_building_underground_title">"هل هذا المبنى تحت الأرض بالكامل؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"تعني جزئيًا أنه لا يوجد أكثر من عتبة واحدة للوصول إليه."</string>
     <string name="quest_wheelchairAccess_outside_title">"هل يمكن الوصول إلى هذا المكان على كرسي متحرك؟"</string>
     <string name="quest_traffic_signals_button_title">"هل تحتوي إشارات المرور هذه على زر لطلب الضوء الأخضر لعبور مسار المشاة؟"</string>
@@ -1119,7 +1125,6 @@
     <string name="default_disabled_msg_roofShape">"يتم تعطيل نوع المهمة هذا افتراضيًا لأن أشكال السقف غالبًا ما تكون غير مرئية بسهولة من الشارع، كما أن هذا النوع من المهام أيضًا يستغرق وقتًا طويلاً؛ لذا في معظم الحالات ، يكون من الأسهل والأكثر كفاءة تحديد هذا الأمر من خلال الصور الجوية في المنزل."</string>
     <string name="quest_religion_animist">"روحاني"</string>
     <string name="quest_construction_steps_title">"هل اكتملت هذه الخطوات؟"</string>
-    <string name="questList_disabled_at_day">"تظهر فقط في الليل"</string>
     <string name="pref_quests_deselect_all">"إلغاء تحديد كافة المهام؟"</string>
     <string name="quest_buildingType_boathouse">"مبنى تخزين القوارب"</string>
     <string name="quest_buildingType_allotment_house">"البناء الخارجي لـ الحدائق/المزارع المحصصة"</string>

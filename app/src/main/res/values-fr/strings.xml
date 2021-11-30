@@ -295,7 +295,11 @@ S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les 
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"La bouche de métro %s est-elle accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"La gare %s est-elle accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Le lieu %s est-il accessible en fauteuil roulant ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"« En partie » signifie qu’il n’y a qu’une seule marche pour accéder au lieu et que la plupart des pièces à l’intérieur sont accessibles en fauteuil roulant."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"« En partie » signifie qu’il n’y a qu’une seule marche pour y accéder."</string>
 
     <!-- Abréviation *dans* le nom ? -->
@@ -724,6 +728,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_tracktype_grade5">"Sol quasi naturel avec marques de passages"</string>
     <string name="quest_building_underground_name_title">"%s est-il complètement souterrain ?"</string>
     <string name="quest_building_underground_title">"Ce bâtiment est-il complètement souterrain ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"« En partie » signifie qu’il n’y a qu’une seule marche pour y accéder."</string>
     <string name="quest_wheelchairAccess_outside_title">"Cet endroit est-il accessible en fauteuil roulant ?"</string>
     <string name="quest_traffic_signals_button_title">"Ces feux tricolores ont-ils un bouton pour demander le feu vert pour les piétons ?"</string>
@@ -1381,7 +1387,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="default_disabled_msg_roofShape">"Ce type de quête est désactivé par défaut car la forme des toits est souvent peu visible depuis la rue. Cette quête est également très chronophage. Il est souvent plus efficace de renseigner ces informations depuis des images satellitaires."</string>
     <string name="quest_religion_animist">"Animiste"</string>
     <string name="quest_construction_steps_title">"Ces étapes sont-elles terminées ?"</string>
-    <string name="questList_disabled_at_day">"Ne montrer que la nuit"</string>
     <string name="pref_quests_deselect_all">"Désélectionner toutes les quêtes ?"</string>
     <string name="quest_buildingType_boathouse">"Péniche"</string>
     <string name="quest_buildingType_allotment_house">"Cabanon de jardin"</string>
@@ -1481,6 +1486,11 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_bicycle_type_single">"Passage entre deux barrières"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barrière de chaque côté"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - plus de deux barrières"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_level_title">"À quel niveau se trouve %s ?"</string>
     <string name="pref_title_language_select">"Sélectionnez une langue"</string>
+
+    <!-- Fuzzy -->
+    <string name="language_default">"Défaut du système"</string>
 </resources>

@@ -236,7 +236,11 @@
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Входът за метрото %s достъпен ли е за инвалидни колички?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Гарата/станцията %s достъпна ли е за инвалидни колички?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Мястото %s достъпно ли е за инвалидни колички?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"\"Частично\" означава, че няма повече от едно стъпало на входа и повечето стаи вътре са достъпни за инвалидни колички."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Частично\" означава, че няма повече от едно стъпало на входа."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Съкращението на името %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Тоалетните имат ли маса за смяна на бебешки пелени?"</string>
@@ -582,6 +586,8 @@
     <string name="quest_tracktype_grade5">"Мека"</string>
     <string name="quest_building_underground_name_title">"%s напълно ли е под земята?"</string>
     <string name="quest_building_underground_title">"Тази сграда напълно ли е под земята?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"\"Частично\" означава, че няма повече от едно стъпало."</string>
     <string name="quest_wheelchairAccess_outside_title">"Това място достъпно ли е за инвалидни колички?"</string>
     <string name="quest_traffic_signals_button_title">"Тези светофари имат ли бутон за пешеходци?"</string>
@@ -1132,7 +1138,6 @@
     <string name="default_disabled_msg_roofShape">"Тази задача е изключена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
     <string name="quest_religion_animist">"Анимизъм"</string>
     <string name="quest_construction_steps_title">"Завършени ли са тези стълби?"</string>
-    <string name="questList_disabled_at_day">"Показва се само през нощта"</string>
     <string name="pref_quests_deselect_all">"Изчистване избора на всички задачи?"</string>
 
     <!-- Fuzzy -->
@@ -1228,6 +1233,8 @@
     <string name="quest_barrier_bicycle_type_single">"Преминаване през две бариери"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикан - бариери от двете страни"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикан - повече от 2 бариери"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_level_title">"На кое ниво се намира %s?"</string>
     <string name="pref_title_language_select">"Изберете език"</string>
 </resources>

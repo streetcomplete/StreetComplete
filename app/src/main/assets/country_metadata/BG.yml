@@ -6,7 +6,7 @@ clothesContainerOperators: [БЧК, texcycle]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: false
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 284
 officialLanguages: [bg]
 orchardProduces: [grape, tomato, pepper, plum, apple, peach, apricot, raspberry, strawberry, walnut, cherry, pear, chilli_pepper, sweet_pepper, almond, chestnut]

@@ -387,7 +387,11 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Intrare %s are acces pentru scaunul cu rotile?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Stația de tren %s are acces pentru scaunul cu rotile?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Locația %s are acces pentru scaunul cu rotile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Prin parțial se înțelege că nu este necesar mai mult de un pas pentru a intra in locație și că majoritate spațiilor din interior au facilitați pentru scaunul cu rotile."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Prin parțial se înțelege că nu este necesar mai mult de un pas pentru a intra."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Există abrevieri in numele %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Are masă de schimbare a scutecelor copiilor această toaletă?"</string>
@@ -786,6 +790,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_tracktype_grade5">"Moale"</string>
     <string name="quest_building_underground_name_title">"%s este complet subterană?"</string>
     <string name="quest_building_underground_title">"Această clădire este in întregime sub pământ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Prin parțial se înțelege că nu este necesar mai mult de un pas pentru a fi accesat."</string>
     <string name="quest_wheelchairAccess_outside_title">"Este acest loc accesibil scaunului cu rotile?"</string>
     <string name="quest_traffic_signals_button_title">"Acest semafor are buton de solicitare a traversării?"</string>
@@ -1332,7 +1338,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="default_disabled_msg_roofShape">"Acest tip de misiune este dezactivat în mod implicit, deoarece formele acoperișului nu sunt adesea vizibile cu ușurință de pe stradă. Acest tip de misiune consumă, de asemenea, destul de mult timp; în majoritatea cazurilor, este mai ușor și mai eficient să cartografiați acest lucru din imagini aeriene acasă."</string>
     <string name="quest_religion_animist">"Animist"</string>
     <string name="quest_construction_steps_title">"Au fost parcurși acești pași?"</string>
-    <string name="questList_disabled_at_day">"Afișează noaptea"</string>
     <string name="pref_quests_deselect_all">"Deselecatam toate provicările?"</string>
     <string name="quest_buildingType_boathouse">"Casa plutitoare"</string>
     <string name="quest_buildingType_allotment_house">"Dependință pentru unelte"</string>

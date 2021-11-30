@@ -1,3 +1,9 @@
+v38.1: |
+  <ul>
+  <li>fix location wasn't updated after tabbing out and in again (#3543), thanks @smichel17</li>
+  <li>improve some wordings (#3528, #3529), thanks @1ec5</li>
+  </ul>
+
 v38.0: |
   <h3>New Quests</h3>
   <ul>

@@ -6,7 +6,7 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: portrait
+livingStreetSignStyle: russia
 mobileCountryCode: 250
 officialLanguages: [ru]
 orchardProduces: [tomato, apple, grape, cherry, strawberry, raspberry, plum, pear, apricot, peach, blueberry, tea, hop, orange]

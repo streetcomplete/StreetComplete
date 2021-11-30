@@ -2381,9 +2381,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="default_disabled_msg_roofShape">"Este tipo de tarea viene desactivada de serie porque las formas de los tejados no se ven muy bien a nivel de calle, estas tareas suelen llevar mucho rato y es mejor hacerlo desde casa con la imagen por satélite en una pantalla grande."</string>
     <string name="quest_religion_animist">"Animismo"</string>
     <string name="quest_construction_steps_title">"¿Se han completado estos pasos?"</string>
-
-    <!-- Fuzzy -->
-    <string name="questList_disabled_at_day">"Solo se muestra de noche"</string>
     <string name="pref_quests_deselect_all">"¿Quieres deseleccionar todas las tareas?"</string>
     <string name="quest_buildingType_boathouse">"Cobertizo (o casa) de botes"</string>
     <string name="quest_buildingType_allotment_house">"Casa o caseta de aperos"</string>

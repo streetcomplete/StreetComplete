@@ -3,7 +3,7 @@ atmOperators: [FNB, First National Bank, Barclays, Standard Chartered Bank, Barc
 centerLineStyle: white
 hasLivingStreet: true
 isLeftHandTraffic: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 652
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc

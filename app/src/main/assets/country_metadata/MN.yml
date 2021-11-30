@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Хаан банк, Хаан, Хаанбанк, хаан банк, Голомт, Golomt Bank, АТМ, Голомт банк, Төрийн банк, khaan bank, Khan Bank, Khaan bank, Khan bank, ХХБ, Худалдаа хөгжлийн банк, atm, Хаан банк АТМ, Хаан Банк, Ger, Aa, zam, khaanbank]
 hasLivingStreet: true
-livingStreetSignStyle: portrait
+livingStreetSignStyle: russia
 mobileCountryCode: 428
 officialLanguages: [mn]
 orchardProduces: [hazelnut]

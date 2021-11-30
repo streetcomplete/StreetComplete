@@ -5,7 +5,7 @@ chargingStationOperators: [ELEN, Elen, Tesla Motors Inc., MOL Plugee, Eurokod]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 219
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

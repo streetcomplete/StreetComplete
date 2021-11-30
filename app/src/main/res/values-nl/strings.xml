@@ -2436,7 +2436,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="default_disabled_msg_roofShape">"Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto's aan de kaart toe te voegen"</string>
     <string name="quest_religion_animist">"Animisme"</string>
     <string name="quest_construction_steps_title">"Is deze trap voltooid?"</string>
-    <string name="questList_disabled_at_day">"Wordt alleen 's nachts getoond"</string>
     <string name="pref_quests_deselect_all">"Alle vragen deselecteren?"</string>
     <string name="quest_buildingType_boathouse">"Boothuis"</string>
     <string name="quest_buildingType_allotment_house">"Volkstuingebouw"</string>
@@ -2491,6 +2490,10 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_fireHydrant_confirmation_title">"Weet je het zeker? Soms kan de diameter op de brandkraan zelf staan."</string>
     <string name="quest_diet_answer_no_food">"Het heeft geen eten"</string>
     <string name="short_no_answer_on_button">"Nee"</string>
+    <string name="restore_confirmation">"Herstel"</string>
+    <string name="restore_dialog_message">"Toon alle vragen die u verborgen hebt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_level_title">"Op welk niveau zit %s?"</string>
     <string name="pref_title_language_select">"Selecteer taal"</string>
     <string name="language_default">"Standaardinstelling"</string>
