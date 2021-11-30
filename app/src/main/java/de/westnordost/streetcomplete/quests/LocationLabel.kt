@@ -22,7 +22,7 @@ private fun Resources.getLevelLabelString(tags: Map<String, String>): CharSequen
     }
     val level = tags["level"]
     if (level != null) {
-        return getString(R.string.on_level, floor)
+        return getString(R.string.on_level, level)
     }
     val tunnel = tags["tunnel"]
     if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
