@@ -110,7 +110,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         get() = binding.rotateContainer.rotation
         set(value) {
             binding.rotateContainer.rotation = value
-            val scale = abs(cos(rotation * PI / 180)).toFloat()
+            val scale = abs(cos(value * PI / 180)).toFloat()
             binding.rotateContainer.scaleX = 1 + scale * 2 / 3f
             binding.rotateContainer.scaleY = 1 + scale * 2 / 3f
         }
