@@ -1,0 +1,34 @@
+# the style of the road markings that separate the carriageway from the shoulder
+# 
+# unless stated otherwise, the lines are continuous
+#
+# source - Mapillary
+default: white
+AE: yellow
+AO: yellow
+BW: yellow
+CD: short white dashes
+CM: short white dashes
+DE: white # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung
+FO: white
+IE: short yellow dashes
+GF: short white dashes
+HK: two yellow lines
+IS: white dashes # https://www.mapillary.com/app/?pKey=213962920255038&focus=photo
+LS: yellow
+LT: white # http://www.adcidl.com/pdf/Lithuanian-Road-Marking.pdf
+LV: white # http://www.adcidl.com/pdf/Latvian-Road-Marking.pdf
+MN: white # http://www.adcidl.com/pdf/Mongolian-Road-Marking.pdf
+MO: yellow
+MT: white # http://www.adcidl.com/pdf/Malta-Road-Marking.pdf
+MU: short white dashes
+MW: yellow
+MZ: yellow
+NA: yellow
+OM: yellow
+SE: short white dashes # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings - on motorways actually continuous line
+SZ: yellow
+TZ: yellow # http://www.adcidl.com/pdf/Tanzania-Road-Marking.pdf
+UA: white # http://www.adcidl.com/pdf/Ukraine-Road-Marking.pdf
+ZA: yellow
+ZM: yellow

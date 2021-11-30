@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Bank Muscat, بنك مسقط, HSBC, NBO, صراف بنك مسقط, Bank Dhofar, bank muscat, دائرة الجمارك الأردنية, بنك ظفار, Bank Muscat ATM, Arab Bank, Jordan Kuwait Bank, Salwa Islamic Bank]
 centerLineStyle: yellow
+edgeLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 422
 noParkingSignStyle: vienna
@@ -10,4 +11,3 @@ officialLanguages: [ar]
 orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon, lime, papaya]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-shoulderLineStyle: yellow

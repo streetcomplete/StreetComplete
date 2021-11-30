@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [FNB, Bank Windhoek, Standard Bank, Nedbank, First National Bank, FNB Namibia]
 centerLineStyle: white
+edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true
 livingStreetSignStyle: sadc
@@ -9,4 +10,3 @@ noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, af]
 orchardProduces: [grape, tomato, orange, chilli_pepper, sweet_pepper, date, guava, mango, mangosteen]
-shoulderLineStyle: yellow

@@ -1,12 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 centerLineStyle: white
+edgeLineStyle: yellow
 hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 455
 officialLanguages: [zh, pt]
 orchardProduces: [pepper]
 popularReligions: [chinese_folk, taoist, bhuddist]
-shoulderLineStyle: yellow
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA

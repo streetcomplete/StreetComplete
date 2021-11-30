@@ -187,13 +187,13 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         puzzleView.isShowingBothSides = !isOneway
         puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
 
-        val shoulderLine = countryInfo.shoulderLineStyle
+        val edgeLine = countryInfo.edgeLineStyle
 
-        puzzleView.shoulderLineColor =
-            if(shoulderLine.contains("yellow")) Color.YELLOW else Color.WHITE
-        puzzleView.shoulderLineStyle =
-            if(shoulderLine.contains("dashes"))
-                if (shoulderLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
+        puzzleView.edgeLineColor =
+            if(edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
+        puzzleView.edgeLineStyle =
+            if(edgeLine.contains("dashes"))
+                if (edgeLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
             else
                 LineStyle.CONTINUOUS
 

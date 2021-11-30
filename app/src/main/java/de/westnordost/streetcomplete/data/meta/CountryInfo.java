@@ -44,7 +44,7 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> popularSports;
 	Integer regularShoppingDays;
 	Boolean roofsAreUsuallyFlat;
-	String shoulderLineStyle;
+	String edgeLineStyle;
 	String slowZoneLabelPosition;
 	String slowZoneLabelText;
 	List<String> speedUnits;
@@ -102,7 +102,7 @@ public class CountryInfo implements Serializable, Cloneable
 		return Collections.unmodifiableList(popularSports);
 	}
 	public Integer getRegularShoppingDays() { return regularShoppingDays; }
-	public String getShoulderLineStyle() { return shoulderLineStyle; }
+	public String getEdgeLineStyle() { return edgeLineStyle; }
 	public String getSlowZoneLabelPosition() { return slowZoneLabelPosition; }
 	public String getSlowZoneLabelText() { return slowZoneLabelText; }
 	public List<String> getSpeedUnits() { return speedUnits; }

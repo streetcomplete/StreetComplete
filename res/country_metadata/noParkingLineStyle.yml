@@ -1,0 +1,15 @@
+# the style of the road markings that indicate that it is prohibited to park here
+# 
+# unless stated otherwise, the lines are continuous
+# styles:
+# - alternating yellow dashes and Xs  - like -𝗑-𝗑-𝗑-
+# 
+
+CH: alternating yellow dashes and Xs # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung#Grenzmarkierungen_in_der_Schweiz
+#DE: white zig-zags # whether it is for no-parking or no-stopping depends on the sign https://www.gesetze-im-internet.de/stvo_2013/BJNR036710013.html
+JP: yellow dashes # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf
+LT: yellow dashes # http://www.adcidl.com/pdf/Lithuanian-Road-Marking.pdf
+LV: yellow dashes # http://www.adcidl.com/pdf/Latvian-Road-Marking.pdf
+MN: yellow dashes # http://www.adcidl.com/pdf/Mongolian-Road-Marking.pdf
+SE: yellow dashes # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
+UA: yellow dashes # http://www.adcidl.com/pdf/Ukraine-Road-Marking.pdf

@@ -1,0 +1,21 @@
+# the style of the road markings that indicate that it is prohibited to stop here
+# 
+# unless stated otherwise, the lines are continuous, usually at a small 
+# distance to the curb and either ending in a short line to the curb 
+# like this └────┘ or like this ├────┤ (no differenciation is made in this list) 
+# to indicate the start/end.
+#
+# styles:
+# - white slight zig-zag - zig-zag line at less than 20° angle
+#
+
+CH: yellow # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung#Grenzmarkierungen_in_der_Schweiz
+#DE: white zig-zags # whether it is for no-parking or no-stopping depends on the sign https://www.gesetze-im-internet.de/stvo_2013/BJNR036710013.html
+JP: yellow # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf
+LT: yellow # http://www.adcidl.com/pdf/Lithuanian-Road-Marking.pdf
+LV: yellow # http://www.adcidl.com/pdf/Latvian-Road-Marking.pdf
+MN: yellow # http://www.adcidl.com/pdf/Mongolian-Road-Marking.pdf
+MT: yellow # http://www.adcidl.com/pdf/Malta-Road-Marking.pdf
+SE: yellow # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
+TZ: white slight zig-zag # http://www.adcidl.com/pdf/Tanzania-Road-Marking.pdf
+UA: yellow # http://www.adcidl.com/pdf/Ukraine-Road-Marking.pdf

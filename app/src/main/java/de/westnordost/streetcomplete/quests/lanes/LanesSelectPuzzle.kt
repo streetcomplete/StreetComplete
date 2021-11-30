@@ -93,14 +93,14 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     }
     get() = centerLinePaint.color
 
-    var shoulderLineColor: Int
+    var edgeLineColor: Int
         set(value) {
-            shoulderLinePaint.color = value
+            edgeLinePaint.color = value
             invalidate()
         }
-        get() = shoulderLinePaint.color
+        get() = edgeLinePaint.color
 
-    var shoulderLineStyle: LineStyle = CONTINUOUS
+    var edgeLineStyle: LineStyle = CONTINUOUS
     set(value) {
         field = value
         invalidate()
@@ -123,7 +123,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         it.isAntiAlias = true
     }
 
-    private val shoulderLinePaint = Paint().also {
+    private val edgeLinePaint = Paint().also {
         it.color = Color.WHITE
         it.style = Paint.Style.STROKE
         it.isAntiAlias = true
@@ -219,14 +219,14 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val rightLanesStart = rightLanesStart
         val zoom = if (isShowingBothSides && isShowingOneLaneUnmarked) 1.4f / laneWidth else 1f / laneWidth
 
-        val shoulderWidth = SHOULDER_WIDTH * laneWidth
+        val edgeWidth = SHOULDER_WIDTH * laneWidth
 
         val lineWidth = LANE_MARKING_WIDTH / zoom
 
         val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 6, lineWidth * 10), 0f)
 
-        shoulderLinePaint.strokeWidth = lineWidth
-        shoulderLinePaint.pathEffect = when(shoulderLineStyle) {
+        edgeLinePaint.strokeWidth = lineWidth
+        edgeLinePaint.pathEffect = when(edgeLineStyle) {
             CONTINUOUS -> null
             DASHES -> dashEffect
             SHORT_DASHES -> DashPathEffect(floatArrayOf(lineWidth * 4, lineWidth * 4), 0f)
@@ -256,16 +256,16 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
         // 1. markings for the shoulders
         if (laneCountLeft > 0 || isShowingOnlyRightSide) {
-            canvas.drawVerticalLine(leftLanesStart * laneWidth, shoulderLinePaint)
+            canvas.drawVerticalLine(leftLanesStart * laneWidth, edgeLinePaint)
         }
         if (laneCountRight > 0) {
-            canvas.drawVerticalLine(shoulderWidth + lanesSpace * laneWidth, shoulderLinePaint)
+            canvas.drawVerticalLine(edgeWidth + lanesSpace * laneWidth, edgeLinePaint)
         }
 
         // 2. lane markings
         if (isShowingLaneMarkings) {
             for (x in 1 until laneCountLeft) {
-                canvas.drawVerticalLine(shoulderWidth + x * laneWidth, laneSeparatorLinePaint)
+                canvas.drawVerticalLine(edgeWidth + x * laneWidth, laneSeparatorLinePaint)
             }
             for (x in 1 until laneCountRight) {
                 canvas.drawVerticalLine((rightLanesStart + x) * laneWidth, laneSeparatorLinePaint)

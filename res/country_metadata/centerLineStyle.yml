@@ -1,5 +1,7 @@
 # the style of the road markings that separates the traffic flow
 # 
+# unless stated otherwise, the lines are continuous
+# 
 # source - Mapillary
 default: white
 AE: yellow
@@ -25,6 +27,7 @@ CU: yellow
 CW: white
 DO: yellow
 EC: yellow
+FO: white # https://www.mapillary.com/app/?pKey=840466446681296&focus=photo
 GF: white
 GT: yellow
 HK: white
@@ -33,15 +36,18 @@ ID: white
 IE: white
 JA: white
 JO: yellow
-JP: yellow # https://www.google.de/maps/@35.1486861,136.8464113,3a,60y,95.76h,82.04t/data=!3m6!1e1!3m4!1sEZwGgCav8VWoykZllrF0zA!2e0!7i16384!8i8192!5m1!1e1
+JP: yellow # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf
 KE: yellow
 KH: yellow
 KP: white
 KR: yellow
 LA: white
-LB: yellow
+LB: yellow # https://en.wikipedia.org/wiki/Yellow_line_(road_marking)#Lebanon
 LR: yellow
 LS: white
+LT: white # http://www.adcidl.com/pdf/Lithuanian-Road-Marking.pdf
+LV: white # http://www.adcidl.com/pdf/Latvian-Road-Marking.pdf
+MN: white # http://www.adcidl.com/pdf/Mongolian-Road-Marking.pdf
 MO: white
 MU: white
 MW: white
@@ -50,7 +56,7 @@ MY: white
 MZ: white
 NA: white
 NI: yellow
-'NO': yellow
+'NO': yellow # https://www.mapillary.com/app/?x=0.43469568132556413&y=0.665277045156488&zoom=0.031431427916261176&pKey=239185758009711&focus=photo
 NZ: white
 OM: yellow
 PA: yellow
@@ -62,14 +68,16 @@ PH: white
 RW: white
 QA: yellow
 SA: yellow
+SE: white # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
 SG: white
 SV: yellow
 SZ: white
 TH: yellow
 TW: white
 TZ: white
+UA: white # http://www.adcidl.com/pdf/Ukraine-Road-Marking.pdf
 UG: yellow
-US: yellow
+US: yellow # https://en.wikipedia.org/wiki/Yellow_line_(road_marking)#North_America
 UY: yellow
 VE: white
 VN: white
