@@ -87,7 +87,7 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
 private const val TWO_MINUTES = 1000L * 60 * 2
 
-// Determines whether this Location reading is better than the current Location fix
+/** Determines whether this Location reading is better than the previous Location fix */
 private fun Location.isBetterThan(previous: Location?): Boolean {
     // Check whether this is a valid location at all.
     // Happened once that lat/lon is NaN, maybe issue of that particular device
