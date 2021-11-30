@@ -13,12 +13,16 @@ fun Resources.getLocationLabelString(tags: Map<String, String>): CharSequence? {
 }
 
 private fun Resources.getLevelLabelString(tags: Map<String, String>): CharSequence? {
-    /* prefer addr:floor etc. over level as level is rather an index than how the floor is
-       denominated in the building and thus may (sometimes) not coincide with it. E.g.
-       addr:floor may be "M" while level is "2" */
-    val level = tags["addr:floor"] ?: tags["level:ref"] ?: tags["level"]
+    /* distinguish between "floor" and "level":
+       E.g. addr:floor may be "M" while level is "2". The "2" is in this case purely technical and
+       can not be seen on any sign. */
+    val floor = tags["addr:floor"] ?: tags["level:ref"]
+    if (floor != null) {
+        return getString(R.string.on_floor, floor)
+    }
+    val level = tags["level"]
     if (level != null) {
-        return getString(R.string.on_level, level)
+        return getString(R.string.on_level, floor)
     }
     val tunnel = tags["tunnel"]
     if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
