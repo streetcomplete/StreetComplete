@@ -45,6 +45,7 @@ DO: mutcd latin
 DZ: vienna
 EC: mutcd latin
 EG: vienna # https://www.mapillary.com/app/?pKey=482914009797423
+ET: vienna # https://www.mapillary.com/app/?pKey=320014472983449
 GD: vienna
 GH: vienna # http://www.adcidl.com/pdf/Ghanaian-Road-Traffic-Signs.pdf
 GN: vienna # https://www.mapillary.com/app/?pKey=1094421251046219
@@ -52,7 +53,7 @@ GT: mutcd
 HN: mutcd
 HR: vienna # https://it.wikipedia.org/wiki/Segnaletica_stradale_in_Croazia
 HT: vienna
-ID: australia
+ID: australia # https://www.mapillary.com/app/?pKey=305075684432953
 IE: mutcd
 IN: vienna
 IQ: vienna # https://www.mapillary.com/app/?pKey=453051252435799
@@ -93,11 +94,13 @@ SC: sadc # no source - part of the SADC
 SD: vienna # https://www.mapillary.com/app/?pKey=548637856522738
 SL: vienna # https://www.mapillary.com/app/?pKey=211395630748518
 SR: vienna
+SS: vienna # https://www.mapillary.com/app/?pKey=473745493909526
 ST: vienna
 SV: mutcd
 SX: vienna
 TG: vienna
 TJ: vienna # https://www.mapillary.com/app/?pKey=174519121243181
+TL: australia https://www.mapillary.com/app/&pKey=510809496757110
 TM: vienna # https://www.mapillary.com/app/?pKey=1587090261487852
 TN: vienna # https://www.mapillary.com/app/?pKey=781023996110404
 TT: vienna # http://www.adcidl.com/pdf/Trinidad-and-Tobago-Road-Traffic-Signs.pdf
