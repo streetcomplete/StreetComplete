@@ -61,6 +61,11 @@ android {
         viewBinding = true
     }
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
 
     lintOptions {
         disable("MissingTranslation")
