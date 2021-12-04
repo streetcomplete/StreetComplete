@@ -7,14 +7,14 @@ import org.junit.Test
 
 class LastPickedValuesStoreTest {
 
-    @Test fun `mostCommonWithin sorts by frequency first, then recency`() {
+    @Test fun `mostCommonWithin sorts by recency`() {
         val items = sequenceOf(A, C, B, B, C, D)
-        assertEquals(items.mostCommonWithin(4, 99).toList(), listOf(C, B, A, D))
+        assertEquals(items.mostCommonWithin(4, 99).toList(), listOf(A, C, B, D))
     }
 
     @Test fun `mostCommonWithin includes the most recent item even if it is not the most common`() {
         val items = sequenceOf(A, B, B, B, C, C)
-        assertEquals(items.mostCommonWithin(2, 99).toList(), listOf(B, A))
+        assertEquals(items.mostCommonWithin(2, 99).toList(), listOf(A, B))
     }
 
     @Test fun `mostCommonWithin doesn't return duplicates`() {
@@ -34,7 +34,7 @@ class LastPickedValuesStoreTest {
 
     @Test fun `mostCommonWithin keeps counting until enough non-null items have been found`() {
         val items = sequenceOf(A, null, null, B, B, C, /* stops here */ D)
-        assertEquals(items.mostCommonWithin(3, 4).toList(), listOf(B, A, C))
+        assertEquals(items.mostCommonWithin(3, 4).toList(), listOf(A, B, C))
     }
 
     @Test fun `padWith doesn't include duplicates`() {
