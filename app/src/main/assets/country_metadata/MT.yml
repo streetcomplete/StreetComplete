@@ -4,7 +4,7 @@ edgeLineStyle: white
 hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 278
-noStoppingLineStyle: yellow
+noStoppingLineStyle: double yellow
 officialLanguages: [mt, en]
 orchardProduces: [tomato, grape, strawberry, lemon, lime, peach, orange, fig, olive, apricot, pear, apple, grapefruit]
 roofsAreUsuallyFlat: true

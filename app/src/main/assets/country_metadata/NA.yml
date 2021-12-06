@@ -7,6 +7,7 @@ isLeftHandTraffic: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 649
 noParkingSignStyle: sadc
+noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, af]
 orchardProduces: [grape, tomato, orange, chilli_pepper, sweet_pepper, date, guava, mango, mangosteen]

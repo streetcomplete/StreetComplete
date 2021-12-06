@@ -3,6 +3,7 @@ atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasiona
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 502
+noParkingLineStyle: yellow
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ms]

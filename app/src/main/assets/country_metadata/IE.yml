@@ -8,6 +8,7 @@ hasAdvisorySpeedLimitSign: false
 isLeftHandTraffic: true
 mobileCountryCode: 272
 noParkingSignStyle: mutcd
+noStoppingLineStyle: double yellow
 noStoppingSignStyle: mutcd
 officialLanguages: [en, ga]
 orchardProduces: [apple, strawberry, tomato, chilli_pepper, sweet_pepper, raspberry, hop]
