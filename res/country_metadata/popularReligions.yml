@@ -1,6 +1,6 @@
 # religions that should be shown first before the order defined in the form.
 # no total order required. Just mention the religions that should show within the first few entries
-default: []
+default: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 AE: [muslim]
 AF: [muslim]
 AU: [christian, muslim, buddhist]
