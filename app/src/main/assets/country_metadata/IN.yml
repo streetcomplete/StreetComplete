@@ -6,6 +6,6 @@ mobileCountryCode: 404
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [en, hi, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks]
-popularReligions: [hindu, muslim, christian, buddhist, jain, sikh, bahai, animism]
+popularReligions: [hindu, muslim, christian, buddhist, jain, sikh, bahai, animist]
 popularSports: [tennis, basketball, soccer, cricket, field_hockey]
 workweekDays: 6
