@@ -1,14 +1,15 @@
 /**
  * This script generates a CSV file with information about quest types (see `writeCsvFile` function).
  *
- * First, it first fetches and parses the table in the OSM Wiki (`WikiQuest`).
- * Then it reads and parses the quest types from the repository code (`RepoQuest`) and matches them
- * to the corresponding WikiQuest (if possible).
+ * First, it fetches and parses the table in the OSM Wiki (`WikiQuest`).
+ * Then it reads and parses the quest types from the repository code (`RepoQuest`) and
+ * matches them to the corresponding WikiQuest (if possible).
  *
  * The generated CSV file contains 3 sections of rows:
  * 1. WikiQuests that could not be matched with RepoQuests
  * 2. RepoQuests that could not be matched with WikiQuests
- * 3. RepoQuests that could be matched with WikiQuests (note that the "Default Priority" column may be different from the wiki)
+ * 3. RepoQuests that could be matched with WikiQuests
+ *    (note that the "Default Priority" column may be different from the wiki)
  *
  * Note: Run from the project's root directory like this:
  * kotlinc -script -Xplugin=/path/to/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts
