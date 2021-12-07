@@ -142,7 +142,7 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Th 17:30-19:30; Jul-Sep Mo 17:00-19:00")
         accept("Jul-Sep Mo 17:00-19:00; Th 17:30-19:30")
 
-        // alltogether now
+        // all together now
         accept("Jun,Sep-Feb PH,Mo-We,Fr,Sa 15:00-18:00,20:00-02:00+")
     }
 
