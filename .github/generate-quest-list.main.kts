@@ -64,6 +64,7 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     val question: String
     private val askedForElements: String
     private val modifiedTags: String
+    private val resurveyInterval: String
     private val defaultPriority: String
     private val sinceVersion: String
     private val notes: String
@@ -83,14 +84,23 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
             cellContent.trim()
         }
 
+        val expectedColumnCount = 9
+        val receivedColumnCount = rowCellContents.size
+
+        if (receivedColumnCount != expectedColumnCount) {
+            val rowString = rowCellContents.joinToString("\n")
+            throw Error("Unexpected number of columns ($receivedColumnCount instead of $expectedColumnCount) in table row $rowIndex:\n$rowString")
+        }
+
         icon = rowCellContents[0]
         question = rowCellContents[1]
         askedForElements = rowCellContents[2]
         modifiedTags = rowCellContents[3]
-        defaultPriority = rowCellContents[4]
-        sinceVersion = rowCellContents[5]
-        notes = rowCellContents[6]
-        code = rowCellContents[7]
+        resurveyInterval = rowCellContents[4]
+        defaultPriority = rowCellContents[5]
+        sinceVersion = rowCellContents[6]
+        notes = rowCellContents[7]
+        code = rowCellContents[8]
     }
 
     fun isOutdated(repoQuests: List<RepoQuest>): Boolean = !repoQuests.any { it.wikiOrder == wikiOrder }
