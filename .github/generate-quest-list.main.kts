@@ -194,7 +194,7 @@ fun getWikiTableContent(): String {
 }
 
 fun parseWikiTable(wikiPageContent: String): List<WikiQuest> {
-    val tableRows = wikiPageContent.split("|-").toMutableList()
+    val tableRows = wikiPageContent.split("\n|-").toMutableList()
 
     tableRows.removeFirst() // Drop table header and everything before the table
     tableRows[tableRows.size - 1] = tableRows.last().split("|}")[0] // Drop everything after the table
