@@ -162,6 +162,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         binding.compassView.setOnClickListener { onClickCompassButton() }
         binding.gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
+        binding.stopGPXButton.setOnClickListener { onClickGPXStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
 
@@ -607,6 +608,29 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment?.updateCameraPosition(300) { zoomBy = +1f }
     }
 
+    private fun onClickGPXStop() {
+
+        // hide the track information
+        // TODO: save as a object to be uploaded (like picture)
+        binding.stopGPXButton.visibility = View.INVISIBLE
+        val mapFragment = mapFragment ?: return
+        val tracks = mapFragment.stopPositionTrackingGPX()
+        android.util.Log.e("MAIN", "total of ${tracks.size} tracks recorded!")
+        android.util.Log.e("MAIN", "total of ${tracks.size} tracks recorded!")
+
+        // show the note dialog
+        mapFragment.show3DBuildings = false
+        val location = mapFragment.displayedLocation ?: return
+        val pos = LatLon(location.latitude, location.longitude)
+        val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
+        mapFragment.updateCameraPosition { position = offsetPos }
+
+        // TODO: attach link to the note...
+        freezeMap()
+        showInBottomSheet(CreateNoteFragment())
+
+    }
+
     private fun onClickCompassButton() {
         /* Clicking the compass button will always rotate the map back to north and remove tilt */
         val mapFragment = mapFragment ?: return
@@ -665,6 +689,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
+                R.id.action_create_gpx_track -> onClickCreateGPXTrack(position)
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
             true
@@ -705,6 +730,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
+    }
+
+    private fun onClickCreateGPXTrack(pos: LatLon) {
+        val mapFragment = mapFragment ?: return
+        mapFragment.startPositionTrackingGPX()
+        binding.stopGPXButton.visibility = View.VISIBLE
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

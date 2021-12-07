@@ -22,46 +22,52 @@ class TracksMapComponent(ctrl: KtMapController) {
 
     private var index = 0
     private var tracks: MutableList<MutableList<LngLat>>
+    private var tracksRecording: MutableList<Boolean>
 
     init {
         tracks = ArrayList()
         tracks.add(ArrayList())
+        tracksRecording = ArrayList()
     }
 
     /** Add a point to the current track */
     fun addToCurrentTrack(pos: Location) {
         val track = tracks.last()
+        val recording = tracksRecording.last()
         track.add(pos.toLngLat())
 
         // every 100th trackpoint, move the index to the back
         if (track.size - index > 100) {
             putAllTracksInOldLayer()
         } else {
-            layer1.setFeatures(listOf(track.subList(index, track.size).toPolyline(false)))
+            layer1.setFeatures(listOf(track.subList(index, track.size).toPolyline(false, recording)))
         }
     }
 
     /** Start a new track. I.e. the points in that track will be drawn as an own polyline */
-    fun startNewTrack() {
+    fun startNewTrack(record: Boolean) {
         tracks.add(ArrayList())
+        tracksRecording.add(record)
         putAllTracksInOldLayer()
     }
 
     /** Set all the tracks (when re-initializing) */
     fun setTracks(tracks: List<List<Location>>) {
         this.tracks = tracks.map { track -> track.map { it.toLngLat() }.toMutableList() }.toMutableList()
+        this.tracksRecording = tracks.map { false }.toMutableList()
         putAllTracksInOldLayer()
     }
 
     private fun putAllTracksInOldLayer() {
         index = max(0, tracks.last().lastIndex)
         layer1.clear()
-        layer2.setFeatures(tracks.map { it.toPolyline(true) })
+        layer2.setFeatures(tracks.mapIndexed { idx, it -> it.toPolyline(true, tracksRecording[idx]) })
     }
 
     fun clear() {
         tracks = ArrayList()
-        startNewTrack()
+        tracksRecording = ArrayList()
+        startNewTrack(false)
     }
 
     companion object {
@@ -72,5 +78,5 @@ class TracksMapComponent(ctrl: KtMapController) {
     }
 }
 
-private fun List<LngLat>.toPolyline(old: Boolean) =
-    Polyline(this, mapOf("type" to "line", "old" to old.toString()))
+private fun List<LngLat>.toPolyline(old: Boolean, record: Boolean) =
+    Polyline(this, mapOf("type" to "line", "old" to old.toString(), "record" to record.toString()))

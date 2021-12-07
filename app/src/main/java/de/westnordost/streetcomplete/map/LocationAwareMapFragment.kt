@@ -35,6 +35,9 @@ open class LocationAwareMapFragment : MapFragment() {
     var displayedLocation: Location? = null
         private set
 
+    /** If we are actively performing GPX tracking */
+    var gpxTracking = false;
+
     /** The GPS trackpoints the user has walked */
     private var tracks: MutableList<ArrayList<Location>>
 
@@ -130,9 +133,26 @@ open class LocationAwareMapFragment : MapFragment() {
         locationManager.requestUpdates(2000, 1f)
     }
 
+    @SuppressLint("MissingPermission")
+    fun startPositionTrackingGPX() {
+        gpxTracking = true
+        tracks.add(ArrayList())
+        locationMapComponent?.isVisible = true
+        locationManager.requestUpdates(500, 1f)
+        tracksMapComponent?.startNewTrack(true)
+    }
+
     fun stopPositionTracking() {
         locationMapComponent?.isVisible = false
         locationManager.removeUpdates()
+    }
+
+    fun stopPositionTrackingGPX() : ArrayList<Location> {
+        gpxTracking = false
+        val recordedTracks = tracks.last()
+        tracks.add(ArrayList())
+        tracksMapComponent?.startNewTrack(false)
+        return recordedTracks
     }
 
     fun clearPositionTracking() {
@@ -197,10 +217,10 @@ open class LocationAwareMapFragment : MapFragment() {
         val lastLocation = tracks.last().lastOrNull()
 
         // create new track if last position too old
-        if (lastLocation != null) {
+        if (lastLocation != null && !gpxTracking) {
             if ((displayedLocation?.time ?: 0) - lastLocation.time > MAX_TIME_BETWEEN_LOCATIONS) {
                 tracks.add(ArrayList())
-                tracksMapComponent?.startNewTrack()
+                tracksMapComponent?.startNewTrack(false)
             }
         }
 
