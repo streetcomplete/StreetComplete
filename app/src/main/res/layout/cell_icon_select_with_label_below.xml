@@ -29,10 +29,7 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabelBelow"
-        tools:text="@string/quest_sport_archery"
-        android:maxLines="3"
-        android:minLines="2"
-        />
+        tools:text="@string/quest_sport_archery" />
 
 
 </RelativeLayout>
