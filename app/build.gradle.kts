@@ -158,6 +158,7 @@ dependencies {
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
     implementation("de.westnordost:osmapi-notes:2.0")
+    implementation("de.westnordost:osmapi-traces:2.0")
     implementation("de.westnordost:osmapi-user:2.0")
     implementation("com.squareup.okhttp3:okhttp:3.12.13")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")

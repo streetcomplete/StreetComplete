@@ -35,3 +35,11 @@ data class NoteComment(
         OPENED, COMMENTED, CLOSED, REOPENED, HIDDEN
     }
 }
+
+@Serializable
+data class NoteGPXTrack(
+    val position: LatLon,
+    val time: Long,
+    val horizontalDilutionOfPrecision: Float,
+    val elevation: Float,
+)

@@ -493,7 +493,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
          */
         closeBottomSheet()
 
-        viewLifecycleScope.launch { questController.createNote(note, imagePaths, position) }
+        viewLifecycleScope.launch {
+            questController.createNote(note, imagePaths, position, mapFragment.tracksRecorded)
+            mapFragment.tracksRecorded.clear()
+        }
 
         listener?.onCreatedNote(screenPosition)
         showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
@@ -611,12 +614,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun onClickGPXStop() {
 
         // hide the track information
-        // TODO: save as a object to be uploaded (like picture)
         binding.stopGPXButton.visibility = View.INVISIBLE
         val mapFragment = mapFragment ?: return
-        val tracks = mapFragment.stopPositionTrackingGPX()
-        android.util.Log.e("MAIN", "total of ${tracks.size} tracks recorded!")
-        android.util.Log.e("MAIN", "total of ${tracks.size} tracks recorded!")
+        mapFragment.stopPositionTrackingGPX()
 
         // show the note dialog
         mapFragment.show3DBuildings = false
@@ -625,7 +625,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
         mapFragment.updateCameraPosition { position = offsetPos }
 
-        // TODO: attach link to the note...
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
 

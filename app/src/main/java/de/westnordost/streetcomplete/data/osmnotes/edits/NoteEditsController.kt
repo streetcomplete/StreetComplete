@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteGPXTrack
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -21,7 +24,8 @@ import javax.inject.Singleton
         action: NoteEditAction,
         position: LatLon,
         text: String? = null,
-        imagePaths: List<String> = emptyList()
+        imagePaths: List<String> = emptyList(),
+        tracks: List<NoteGPXTrack> = emptyList()
     ) {
         val edit = NoteEdit(
             0,
@@ -32,7 +36,9 @@ import javax.inject.Singleton
             imagePaths,
             currentTimeMillis(),
             false,
-            imagePaths.isNotEmpty()
+            imagePaths.isNotEmpty(),
+            tracks,
+            mutableMapOf()
         )
         synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)
@@ -82,6 +88,14 @@ import javax.inject.Singleton
 
         if (markSyncedSuccess) {
             onSyncedEdit(edit)
+        }
+    }
+
+    fun updateData(edit: NoteEdit, name: String, data: String) {
+        synchronized(this) {
+            val tmpData = edit.uploadedDataMap.toMutableMap()
+            tmpData[name] = data
+            editsDB.updateUploadData(edit.noteId, Json.encodeToString(tmpData))
         }
     }
 

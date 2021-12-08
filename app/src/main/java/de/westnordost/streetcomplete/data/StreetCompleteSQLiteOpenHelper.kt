@@ -124,6 +124,10 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         if (oldVersion <= 3 && newVersion > 3) {
            db.execSQL("DROP TABLE new_achievements")
         }
+        if (oldVersion <= 4 && newVersion > 4) {
+            db.execSQL("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.GPX_TRACKS} text DEFAULT '[]' NOT NULL")
+            db.execSQL("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.UPLOAD_DATA_MAP} text DEFAULT '{}' NOT NULL")
+        }
     }
 
 }

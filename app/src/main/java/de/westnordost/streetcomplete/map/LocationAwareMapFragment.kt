@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.NoteGPXTrack
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.toLatLon
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.map.tangram.screenBottomToCenterDistance
 import de.westnordost.streetcomplete.util.translate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.time.Instant
 import kotlin.math.PI
 
 /** Manages a map that shows the device's GPS location and orientation as markers on the map with
@@ -40,6 +42,9 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /** The GPS trackpoints the user has walked */
     private var tracks: MutableList<ArrayList<Location>>
+
+    /** The GPS trackpoints the user has recorded */
+    var tracksRecorded: ArrayList<NoteGPXTrack>
 
     /** Whether the view should automatically center on the GPS location */
     var isFollowingPosition = true
@@ -76,6 +81,7 @@ open class LocationAwareMapFragment : MapFragment() {
     init {
         tracks = ArrayList()
         tracks.add(ArrayList())
+        tracksRecorded = ArrayList()
     }
 
     override fun onAttach(context: Context) {
@@ -147,12 +153,20 @@ open class LocationAwareMapFragment : MapFragment() {
         locationManager.removeUpdates()
     }
 
-    fun stopPositionTrackingGPX() : ArrayList<Location> {
+    fun stopPositionTrackingGPX() {
         gpxTracking = false
-        val recordedTracks = tracks.last()
+        tracksRecorded.clear()
+        tracks.last().forEach {
+            // time here is in milliseconds
+            // TODO: why is altitude zero in emulation?
+            tracksRecorded.add(
+                NoteGPXTrack(
+                    LatLon(it.latitude, it.longitude), it.time, it.accuracy, it.altitude.toFloat()
+                )
+            )
+        }
         tracks.add(ArrayList())
         tracksMapComponent?.startNewTrack(false)
-        return recordedTracks
     }
 
     fun clearPositionTracking() {

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.CREATED_TIMESTAMP
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.GPX_TRACKS
 import javax.inject.Inject
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.IMAGES_NEED_ACTIVATION
@@ -15,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.NOTE_ID
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TEXT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TYPE
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.UPLOAD_DATA_MAP
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 import kotlinx.serialization.decodeFromString
@@ -105,6 +107,9 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
     fun updateNoteId(oldNoteId: Long, newNoteId: Long): Int =
         db.update(NAME, listOf(NOTE_ID to newNoteId), "$NOTE_ID = $oldNoteId")
 
+    fun updateUploadData(noteId: Long, data: String): Int =
+        db.update(NAME, listOf(UPLOAD_DATA_MAP to data), "$NOTE_ID = $noteId")
+
     fun getOldestNeedingImagesActivation(): NoteEdit? =
         db.queryOne(NAME, where = "$IS_SYNCED = 1 AND $IMAGES_NEED_ACTIVATION = 1", orderBy = CREATED_TIMESTAMP) { it.toNoteEdit() }
 
@@ -125,6 +130,8 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
         TEXT to text,
         IMAGE_PATHS to Json.encodeToString(imagePaths),
         IMAGES_NEED_ACTIVATION to if (imagesNeedActivation) 1 else 0,
+        GPX_TRACKS to Json.encodeToString(tracks),
+        UPLOAD_DATA_MAP to Json.encodeToString(uploadedDataMap),
         TYPE to action.name
     )
 
@@ -137,6 +144,8 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
         Json.decodeFromString(getString(IMAGE_PATHS)),
         getLong(CREATED_TIMESTAMP),
         getInt(IS_SYNCED) == 1,
-        getInt(IMAGES_NEED_ACTIVATION) == 1
+        getInt(IMAGES_NEED_ACTIVATION) == 1,
+        Json.decodeFromString(getString(GPX_TRACKS)),
+        Json.decodeFromString(getString(UPLOAD_DATA_MAP))
     )
 }

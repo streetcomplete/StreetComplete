@@ -55,8 +55,17 @@ class NoteEditsUploader @Inject constructor(
     }
 
     private fun uploadEdit(edit: NoteEdit) {
-        val text = edit.text.orEmpty() + uploadAndGetAttachedPhotosText(edit.imagePaths)
 
+        // try to upload the image
+        val imageText = edit.uploadedDataMap.getOrDefault("images", uploadAndGetAttachedPhotosText(edit.imagePaths))
+        noteEditsController.updateData(edit, "images", imageText)
+
+        // try to upload the GPX tracks
+        val gpxText = edit.uploadedDataMap.getOrDefault("gpx", uploadAndGetAttachedGPXText(edit.tracks))
+        noteEditsController.updateData(edit, "gpx", gpxText)
+
+        // done, try to upload the note to OSM
+        val text = edit.text.orEmpty() + imageText + gpxText
         try {
             val note = when(edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
@@ -105,6 +114,23 @@ class NoteEditsUploader @Inject constructor(
         }
         return ""
     }
+
+    private fun uploadAndGetAttachedGPXText(tracks: List<NoteGPXTrack>): String {
+        if (tracks.isEmpty()) {
+            return ""
+        }
+
+        // https://github.com/westnordost/osmapi/blob/396e21ef55f8f05fe69273cd67f2d084938354c2/libs/traces/src/main/java/de/westnordost/osmapi/traces/GpsTracesApi.java#L20
+        throw RuntimeException("GPX Upload Has Not Been Implemented!")
+
+        //val urls = imageUploader.upload(imagePaths)
+        //if (urls.isNotEmpty()) {
+        //    return "\n\nAttached photo(s):\n" + urls.joinToString("\n")
+        //}
+
+    }
+
+
 
     companion object {
         private const val TAG = "NoteEditsUploader"
