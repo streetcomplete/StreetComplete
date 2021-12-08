@@ -77,7 +77,7 @@
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
-    <string name="confirmation_discard_negative">"Cancel"</string>
+    <string name="confirmation_discard_negative2">"No"</string>
     <string name="action_download">"Scan for quests here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give any answer"</string>
