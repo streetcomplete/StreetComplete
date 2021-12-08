@@ -52,6 +52,18 @@
                 app:orientationRight="true"
                 tools:text="Sidewalk"/>
 
+            <ImageView
+                android:id="@+id/leftSideFloatingIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:visibility="gone"
+                android:padding="12dp"
+                tools:src="@drawable/ic_no_parking"
+                tools:visibility="visible" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -84,6 +96,19 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 tools:text="Sidewalk"/>
+
+            <ImageView
+                android:id="@+id/rightSideFloatingIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:padding="12dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:src="@drawable/ic_no_parking"
+                />
 
         </RelativeLayout>
 
