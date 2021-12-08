@@ -30,9 +30,12 @@ class LastPickedValuesStore<T : Any>(
 
 private const val MAX_ENTRIES = 100
 
-/* Returns the `count` most-common non-null items in the first `historyCount` items of the sequence.
- * If fewer than `count` unique items are found, continues counting items until that many are found,
- * or the end of the sequence is reached. If the first item is not null, it is always included.
+/* Returns the `count` most-common non-null items in the first `historyCount`
+ *  items of the sequence, in their original order.
+ * If there are fewer than `count` unique items, continues counting items
+ *  until that many are found, or the end of the sequence is reached.
+ * If the first item is not null, it is always included, displacing the
+ *  least-common of the other items if necessary.
  */
 fun <T : Any> Sequence<T?>.mostCommonWithin(count: Int, historyCount: Int): Sequence<T> {
     val counts = this.countUniqueNonNull(historyCount, count)
