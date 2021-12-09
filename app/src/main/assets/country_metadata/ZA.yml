@@ -6,7 +6,9 @@ hasLivingStreet: true
 isLeftHandTraffic: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 655
+noParkingLineStyle: yellow
 noParkingSignStyle: sadc
+noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
 orchardProduces: [grape, orange, apple, tomato, pear, lemon, lime, banana, grapefruit, peach, pineapple, plum, guava, mango, mangosteen, avocado, apricot, chilli_pepper, sweet_pepper]

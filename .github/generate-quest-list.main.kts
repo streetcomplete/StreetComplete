@@ -1,4 +1,16 @@
 /**
+ * This script generates a CSV file with information about quest types (see `writeCsvFile` function).
+ *
+ * First, it fetches and parses the table in the OSM Wiki (`WikiQuest`).
+ * Then it reads and parses the quest types from the repository code (`RepoQuest`) and
+ * matches them to the corresponding WikiQuest (if possible).
+ *
+ * The generated CSV file contains 3 sections of rows:
+ * 1. WikiQuests that could not be matched with RepoQuests
+ * 2. RepoQuests that could not be matched with WikiQuests
+ * 3. RepoQuests that could be matched with WikiQuests
+ *    (note that the "Default Priority" column may be different from the wiki)
+ *
  * Note: Run from the project's root directory like this:
  * kotlinc -script -Xplugin=/path/to/kotlinx-serialization-compiler-plugin.jar .github/generate-quest-list.main.kts
  */
@@ -64,6 +76,7 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     val question: String
     private val askedForElements: String
     private val modifiedTags: String
+    private val resurveyInterval: String
     private val defaultPriority: String
     private val sinceVersion: String
     private val notes: String
@@ -83,14 +96,23 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
             cellContent.trim()
         }
 
+        val expectedColumnCount = 9
+        val receivedColumnCount = rowCellContents.size
+
+        if (receivedColumnCount != expectedColumnCount) {
+            val rowString = rowCellContents.joinToString("\n")
+            throw Error("Unexpected number of columns ($receivedColumnCount instead of $expectedColumnCount) in table row $rowIndex:\n$rowString")
+        }
+
         icon = rowCellContents[0]
         question = rowCellContents[1]
         askedForElements = rowCellContents[2]
         modifiedTags = rowCellContents[3]
-        defaultPriority = rowCellContents[4]
-        sinceVersion = rowCellContents[5]
-        notes = rowCellContents[6]
-        code = rowCellContents[7]
+        resurveyInterval = rowCellContents[4]
+        defaultPriority = rowCellContents[5]
+        sinceVersion = rowCellContents[6]
+        notes = rowCellContents[7]
+        code = rowCellContents[8]
     }
 
     fun isOutdated(repoQuests: List<RepoQuest>): Boolean = !repoQuests.any { it.wikiOrder == wikiOrder }
@@ -194,7 +216,7 @@ fun getWikiTableContent(): String {
 }
 
 fun parseWikiTable(wikiPageContent: String): List<WikiQuest> {
-    val tableRows = wikiPageContent.split("|-").toMutableList()
+    val tableRows = wikiPageContent.split("\n|-").toMutableList()
 
     tableRows.removeFirst() // Drop table header and everything before the table
     tableRows[tableRows.size - 1] = tableRows.last().split("|}")[0] // Drop everything after the table

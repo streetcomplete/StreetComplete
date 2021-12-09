@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [BIA, Nita]
+centerLineStyle: white
+edgeLineStyle: white
 mobileCountryCode: 614
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

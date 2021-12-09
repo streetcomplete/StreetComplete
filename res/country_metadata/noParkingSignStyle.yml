@@ -27,6 +27,7 @@ AU: australia
 BB: vienna # https://www.mapillary.com/app/?pKey=1690878257762332
 BD: vienna # https://www.rhd.gov.bd/Documents/ConvDocs/Road%20Sign%20Manual%20Volume-1.pdf (sign A18)
 BF: vienna # https://www.mapillary.com/app/?pKey=1734360393402723
+BG: vienna
 BJ: vienna # https://www.mapillary.com/app/?pKey=175921584393019
 BH: vienna variant # https://www.mapillary.com/app/?pKey=2976827215872896
 BO: mutcd latin # https://www.istockphoto.com/de/foto/keine-parkpl%C3%A4tze-ampel-am-vulkan-licancabur-bolivien-gm487765226-73126945
@@ -50,6 +51,7 @@ ET: vienna # http://www.adcidl.com/pdf/Ethiopia-Road-Traffic-Signs.pdf
 GD: vienna variant # https://www.mapillary.com/app/?pKey=1126574697863348
 GH: vienna variant # https://www.mapillary.com/app/?pKey=482824806375302
 GN: vienna # https://www.mapillary.com/app/?pKey=943452753112272
+GR: vienna
 GT: mutcd latin # https://www.mapillary.com/app/?pKey=5502904046417385
 HN: mutcd latin # https://www.mapillary.com/app/?pKey=556443085760405
 HR: vienna # https://it.wikipedia.org/wiki/Segnaletica_stradale_in_Croazia
