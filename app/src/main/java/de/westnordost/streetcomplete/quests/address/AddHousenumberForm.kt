@@ -52,12 +52,16 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val view = super.onCreateView(inflater, container, savedInstanceState)
         isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
         isHousenameAndHousenumber = savedInstanceState?.getBoolean(IS_HOUSENAME_AND_HOUSENUMBER) ?: false
-        if(isHousename) {
-            setLayout(R.layout.quest_housename)
-        } else if (isHousenameAndHousenumber) {
-            setLayout(R.layout.quest_housename_and_housenumber)
-        } else {
-            setLayout(R.layout.quest_housenumber)
+        when {
+            isHousename -> {
+                setLayout(R.layout.quest_housename)
+            }
+            isHousenameAndHousenumber -> {
+                setLayout(R.layout.quest_housename_and_housenumber)
+            }
+            else -> {
+                setLayout(R.layout.quest_housenumber)
+            }
         }
         return view
     }
