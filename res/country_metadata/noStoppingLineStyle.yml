@@ -30,7 +30,7 @@ NA: red # https://www.mapillary.com/app/?pKey=3969511356503454
 NL: yellow # https://en.wikipedia.org/wiki/Road_surface_marking#Netherlands
 RU: dashed yellow # http://www.consultant.ru/document/cons_doc_LAW_2709/7e7fb48d864ef8a4981433ad2a6390113c80e119/ (ПДД РФ, 1. Горизонтальная разметка 1.4)
 SE: yellow # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
-SG: double yellow slight zig-zags # https://mothership.sg/2019/03/waiting-double-yellow-lines-singapore/
+SG: double yellow zig-zags # https://mothership.sg/2019/03/waiting-double-yellow-lines-singapore/
 SR: yellow # based on that traffic rules are usually the same as in the Netherlands
 TH: red-white on curb # https://www.angloinfo.com/how-to/thailand/transport/driving/parking (matches definition of "no stopping")
 UA: yellow # http://www.adcidl.com/pdf/Ukraine-Road-Marking.pdf

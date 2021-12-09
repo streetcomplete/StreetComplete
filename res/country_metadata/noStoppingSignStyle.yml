@@ -9,6 +9,7 @@
 # - australia    - a black S behind a mirrored 🚫 on white background
 # - colombia     - a black P behind a ⭕ crossed on white background 
 # - canada       - a black 🛑 (stop sign) behind a 🚫 on white background
+# - israel       - 🚫 on blue background with a white ╲ on top
 #  
 # sources:
 # - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
@@ -58,6 +59,7 @@ HR: vienna # https://it.wikipedia.org/wiki/Segnaletica_stradale_in_Croazia
 HT: vienna
 ID: australia # https://www.mapillary.com/app/?pKey=305075684432953
 IE: mutcd
+IL: israel # https://en.wikipedia.org/wiki/Road_signs_in_Israel
 IN: vienna
 IQ: vienna # https://www.mapillary.com/app/?pKey=453051252435799
 JM: canada

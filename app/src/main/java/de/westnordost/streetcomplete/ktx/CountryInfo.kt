@@ -48,6 +48,7 @@ val CountryInfo.noStoppingSignDrawableResId: Int get() = when(noStoppingSignStyl
     "australia"   -> R.drawable.ic_no_stopping_australia
     "colombia"    -> R.drawable.ic_no_stopping_colombia
     "canada"      -> R.drawable.ic_no_stopping_canada
+    "israel"      -> R.drawable.ic_no_stopping_israel
     else          -> R.drawable.ic_no_stopping
 }
 

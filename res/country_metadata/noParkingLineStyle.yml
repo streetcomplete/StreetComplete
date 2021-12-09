@@ -6,7 +6,7 @@
 AT: dashed yellow # https://www.oeamtc.at/thema/vorschriften-strafen/gelbe-linien-am-strassenrand-16181806 , https://www.fuerboeck.at/verkehrsrecht/bodenmarkierungen/halteverbot-parkverbot/
 BD: yellow # https://www.rhd.gov.bd/Documents/ConvDocs/Road%20Sign%20Manual%20Volume-1.pdf (road marking F11)
 BY: dashed yellow # extrapolating from neighbours RU, UA, LT, LV
-CH: dashed yellow line with Xs # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung#Grenzmarkierungen_in_der_Schweiz
+CH: dashed yellow with Xs # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung#Grenzmarkierungen_in_der_Schweiz
 # DE: no line markings for that - white zig-zags only extend the range of a sign https://www.gesetze-im-internet.de/stvo_2013/BJNR036710013.html
 ES: dashed yellow # https://www.google.de/maps/@36.7147712,-4.428612,3a,73.9y,178.91h,75.31t/data=!3m9!1e1!3m7!1sWxc1Vff8oaRk_2u62HZKrw!2e0!7i16384!8i8192!9m2!1b1!2i34 , https://n332.es/road-markings-and-lines/
 FR: dashed yellow # https://www.lepermislibre.fr/code-route/cours/marquage-au-sol-parking
