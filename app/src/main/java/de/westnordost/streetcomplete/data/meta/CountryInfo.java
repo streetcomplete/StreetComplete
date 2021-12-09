@@ -36,8 +36,11 @@ public class CountryInfo implements Serializable, Cloneable
 	String livingStreetSignStyle;
 	Integer mobileCountryCode;
 	String noParkingSignStyle;
+	String noParkingLineStyle;
 	String noStandingSignStyle;
+	String noStandingLineStyle;
 	String noStoppingSignStyle;
+	String noStoppingLineStyle;
 	List<String> officialLanguages;
 	List<String> orchardProduces;
 	List<String> popularReligions;
@@ -79,8 +82,11 @@ public class CountryInfo implements Serializable, Cloneable
 	}
 	public Integer getMobileCountryCode() { return mobileCountryCode; }
 	public String getNoParkingSignStyle() { return noParkingSignStyle; }
+	public String getNoParkingLineStyle() { return noParkingLineStyle; }
 	public String getNoStandingSignStyle() { return noStandingSignStyle; }
+	public String getNoStandingLineStyle() { return noStandingLineStyle; }
 	public String getNoStoppingSignStyle() { return noStoppingSignStyle; }
+	public String getNoStoppingLineStyle() { return noStoppingLineStyle; }
 	public List<String> getOfficialLanguages()
 	{
 		if(officialLanguages == null) return Collections.emptyList();
