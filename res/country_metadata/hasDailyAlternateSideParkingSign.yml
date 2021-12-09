@@ -24,6 +24,7 @@ HR: true # http://www.adcidl.com/pdf/Croatian-Road-Traffic-Signs.pdf
 IT: false # https://commons.wikimedia.org/wiki/Old_road_signs_of_Italy not used anymore
 KH: true # https://en.wikipedia.org/wiki/Road_signs_in_Cambodia
 LA: true # https://en.wikipedia.org/wiki/Road_signs_in_Laos
+LK: true # http://www.cmta.lk/downloads/1940-21_E%2012%20Nov%202015%20Traffic%20Signs.pdf
 LT: true # https://en.wikipedia.org/wiki/Road_signs_in_Lithuania
 LV: true # https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_of_Latvia
 MA: true # http://www.adcidl.com/pdf/Macau-Road-Traffic-Signs.pdf
@@ -35,10 +36,10 @@ KZ: true # https://it.wikipedia.org/wiki/Segnaletica_stradale_in_Kazakistan
 PL: true # https://en.wikipedia.org/wiki/Road_signs_in_Poland
 RO: true # https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_of_Romania
 RS: true # no source but other ex-Jugoslawia states have it
+RU: true # https://en.wikipedia.org/wiki/Road_signs_in_Russia
 SI: true # https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_of_Slovenia
 SK: true # https://it.wikipedia.org/wiki/Segnaletica_stradale_in_Slovacchia
 SV: true # https://sv.wikipedia.org/wiki/Datumparkering
-RU: true # https://en.wikipedia.org/wiki/Road_signs_in_Russia
 UA: true # https://en.wikipedia.org/wiki/Road_signs_in_Ukraine
 UZ: true # https://en.wikipedia.org/wiki/Road_signs_in_Uzbekistan
 VN: true # https://en.wikipedia.org/wiki/Road_signs_in_Vietnam
