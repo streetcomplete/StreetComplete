@@ -11,9 +11,11 @@ BY: yellow # extrapolating from neighbours RU, UA, LT, LV
 CH: yellow # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung#Grenzmarkierungen_in_der_Schweiz
 # DE: no line markings for that - white zig-zags only extend the range of a sign https://www.gesetze-im-internet.de/stvo_2013/BJNR036710013.html
 ES: yellow # https://www.google.de/maps/@36.7189479,-4.4356263,3a,75y,265.28h,82.5t/data=!3m9!1e1!3m7!1s9-W5zo_HMCPlqbz19nL2VA!2e0!7i16384!8i8192!9m2!1b1!2i47 , https://n332.es/road-markings-and-lines/
+# FI: none, see https://www.finlex.fi/fi/laki/ajantasa/2018/20180729
 FR: yellow # https://www.lepermislibre.fr/code-route/cours/marquage-au-sol-parking
 GB: double red # (not used in all of GB) https://en.wikipedia.org/wiki/Parking_restrictions_in_the_United_Kingdom#Stopping_restrictions, single red means it is restricted during certain times
 # IE: double yellow-line means "no parking", see https://assets.gov.ie/34719/d2683724881f4477bb2babe78c282e6f.pdf (Traffic Signs Manual Chapter 7.6)
+IL: red-white on curb # https://www.gov.il/he/Departments/Policies/tamrurim_7924_01_18 (לוח התמרורים - הודעת התעבורה (קביעת תמרורים)) - sign no 818
 JP: yellow on curb # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf
 KH: red-white on curb # https://commons.wikimedia.org/wiki/File:ป้ายจราจรเขรม .jpg, i.e. same as Thailand
 HK: double yellow # https://www.mapillary.com/app/?pKey=514017242965710 , https://www.td.gov.hk/en/road_safety/road_users_code/index/chapter_5_for_all_drivers/where_not_to_stop_/
@@ -28,7 +30,8 @@ MY: double yellow # https://www.google.de/maps/@3.1644626,101.6961972,3a,24.6y,2
 MT: double yellow # https://en.wikipedia.org/wiki/Yellow_line_(road_marking)#Verge_lines 
 NA: red # https://www.mapillary.com/app/?pKey=3969511356503454
 NL: yellow # https://en.wikipedia.org/wiki/Road_surface_marking#Netherlands
-RU: dashed yellow # http://www.consultant.ru/document/cons_doc_LAW_2709/7e7fb48d864ef8a4981433ad2a6390113c80e119/ (ПДД РФ, 1. Горизонтальная разметка 1.4)
+RS: yellow # https://www.putevi-srbije.rs/images/pdf/regulativa/Pravilnik_o_saobracajnoj_signalizaciji.pdf (PRAVILNIK O SAOBRAĆAJNOJ SIGNALIZACIJI 2.3.6 V-16.1)
+RU: dashed yellow # http://www.consultant.ru/document/cons_doc_LAW_2709/7e7fb48d864ef8a4981433ad2a6390113c80e119/ (ПДД РФ, 1. Горизонтальная разметка 1.4), see also https://megapdd.ru/book/pdd-section-12
 SE: yellow # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
 SG: double yellow zig-zags # https://mothership.sg/2019/03/waiting-double-yellow-lines-singapore/
 SR: yellow # based on that traffic rules are usually the same as in the Netherlands

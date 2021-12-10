@@ -79,6 +79,7 @@ import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
+import de.westnordost.streetcomplete.quests.street_parking.AddStreetParking
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.picnic_table_cover.AddPicnicTableCover
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
@@ -352,6 +353,7 @@ import javax.inject.Singleton
         AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
         AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
         AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
+        AddStreetParking(),
 
         // footways
         AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...

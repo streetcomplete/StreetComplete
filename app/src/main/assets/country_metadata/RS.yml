@@ -6,6 +6,8 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 220
+noParkingLineStyle: dashed yellow with Xs
+noStoppingLineStyle: yellow
 officialLanguages: [sr]
 orchardProduces: [plum, apple, chilli_pepper, sweet_pepper, tomato, grape, raspberry, peach, pear, apricot, strawberry, cherry, walnut, hazelnut, hop]
 slowZoneLabelPosition: bottom

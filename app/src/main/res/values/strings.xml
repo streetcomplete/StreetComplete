@@ -1109,4 +1109,27 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_level_title">On which level number is %s located?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
+    <string name="quest_street_parking_title">"How do cars park here, if at all?"</string>
+    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
+    <string name="select_street_parking_position">"Select position:"</string>
+    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"On roadway"</string>
+    <string name="street_parking_half_on_kerb">"Partially on roadway"</string>
+    <string name="street_parking_on_kerb">"Beside roadway"</string>
+    <string name="street_parking_street_side">"Beside roadway only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On roadway only in dedicated spaces"</string>
+    <string name="street_parking_shoulder">"On shoulder"</string>
+    <string name="street_parking_separate">Parking displayed separately on map</string>
+    <string name="street_parking_no">No parking here / Not allowed</string>
+    <string name="street_parking_prohibited">No parking</string>
+    <string name="street_stopping_prohibited">No stopping</string>
+    <string name="street_standing_prohibited">No standing</string>
+    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
+    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
+    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, first answer how those that are allowed to, do park here. What restrictions apply exactly can be specified later.
+
+Alternatively, you can leave a note (with a photo)"</string>
 </resources>

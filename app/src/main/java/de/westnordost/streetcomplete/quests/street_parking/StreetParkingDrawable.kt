@@ -1,22 +1,30 @@
-package de.westnordost.streetcomplete.quests.parking_lanes
+package de.westnordost.streetcomplete.quests.street_parking
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.ColorFilter
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
+import androidx.annotation.DrawableRes
 import androidx.core.graphics.withSave
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.parking_lanes.ParkingOrientation.*
-import de.westnordost.streetcomplete.quests.parking_lanes.ParkingPosition.*
+import de.westnordost.streetcomplete.ktx.isApril1st
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import kotlin.math.ceil
 import kotlin.random.Random
 
+/** Drawable that displays parking cars in the given orientation and position in the given size */
 class StreetParkingDrawable(
     private val context: Context,
-    private val parking: ParkingPositionAndOrientation,
-    private val width: Int,
-    private val height: Int
+    private val parkingOrientation: ParkingOrientation,
+    private val parkingPosition: ParkingPosition?,
+    private val isUpsideDown: Boolean,
+    private val width: Int = 128,
+    private val height: Int = 128,
+    @DrawableRes private val staticCarDrawableResId: Int? = null
 ) : Drawable() {
 
     override fun setAlpha(alpha: Int) {}
@@ -27,19 +35,21 @@ class StreetParkingDrawable(
     override fun getIntrinsicWidth(): Int = (width * context.resources.displayMetrics.density).toInt()
     override fun getIntrinsicHeight(): Int = (height * context.resources.displayMetrics.density).toInt()
 
-    // TODO: different cars
     override fun draw(canvas: Canvas) {
         if (!isVisible) return
+
+        if (isUpsideDown) canvas.scale(1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
 
         val width = bounds.width()
         val height = width * 2
 
-        val omittedCarIndices = parking.omittedCarIndices
+        val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
         val carWidth = 0.23f * width
-        val carX = parking.x * width - carWidth/2
-        val carRotation = parking.rotation
-        val carCount = parking.cars
-        val backgroundResId = parking.streetDrawableResId
+        val carX = parkingOrientation.carsX * width - carWidth/2
+        val carRotation = parkingOrientation.carsRotation
+        val carCount = parkingOrientation.carCount
+        val backgroundResId = getStreetDrawableResId(parkingOrientation, parkingPosition)
+        val nyanResId = if (isApril1st()) R.drawable.car_nyan else null
 
         for (y in 0..(ceil(1.0 * bounds.height() / height ).toInt())) {
 
@@ -54,7 +64,8 @@ class StreetParkingDrawable(
             // drawing the cars
             for (i in 0 until carCount) {
                 if (i in omittedCarIndices) continue
-                val car = context.getDrawable(CAR_RES_IDS[Random.nextInt(CAR_RES_IDS.size)])!!
+                val carResId = nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(CAR_RES_IDS.size)]
+                val car = context.getDrawable(carResId)!!
                 val carHeight = car.intrinsicHeight * carWidth / car.intrinsicWidth
                 val paddingY = (height / carCount - carHeight) / 2
                 val carY = 1f * height / carCount * i + paddingY
@@ -72,7 +83,7 @@ class StreetParkingDrawable(
 }
 
 /** drawable res id of the street in the background */
-private val ParkingPositionAndOrientation.streetDrawableResId: Int? get() =
+private fun getStreetDrawableResId(orientation: ParkingOrientation, position: ParkingPosition?) : Int? =
     when(position) {
         ON_STREET -> when(orientation) {
             PARALLEL -> R.drawable.ic_street
@@ -97,18 +108,18 @@ private val ParkingPositionAndOrientation.streetDrawableResId: Int? get() =
             PARALLEL -> R.drawable.ic_street_shoulder
             else -> R.drawable.ic_street_shoulder_broad
         }
-        else -> null
+        null -> null
     }
 
 /** number of cars parked */
-private val ParkingPositionAndOrientation.cars: Int get() = when(orientation) {
+private val ParkingOrientation.carCount: Int get() = when(this) {
     PARALLEL -> 4
     DIAGONAL -> 6
     PERPENDICULAR -> 8
 }
 
 /** which car indices to not draw */
-private val ParkingPositionAndOrientation.omittedCarIndices: List<Int> get() =
+private fun getOmittedCarIndices(orientation: ParkingOrientation, position: ParkingPosition?): List<Int> =
     when(position) {
         STREET_SIDE -> when(orientation) {
             PARALLEL -> listOf(1,2)
@@ -125,14 +136,14 @@ private val ParkingPositionAndOrientation.omittedCarIndices: List<Int> get() =
 
 
 /** center x-position of the cars */
-private val ParkingPositionAndOrientation.x: Float get() = when (orientation) {
+private val ParkingOrientation.carsX: Float get() = when (this) {
     PARALLEL -> 0.44f
-    DIAGONAL -> 0.49f
+    DIAGONAL -> 0.50f
     PERPENDICULAR -> 0.50f
 }
 
 /** rotation of the cars */
-private val ParkingPositionAndOrientation.rotation: Float get() = when(orientation) {
+private val ParkingOrientation.carsRotation: Float get() = when(this) {
     PARALLEL -> 0f
     DIAGONAL -> 55f
     PERPENDICULAR -> 90f
@@ -144,6 +155,7 @@ private val CAR_RES_IDS = listOf(
     R.drawable.ic_car1b,
     R.drawable.ic_car2,
     R.drawable.ic_car2a,
+    R.drawable.ic_car2b,
     R.drawable.ic_car3,
     R.drawable.ic_car3a,
     R.drawable.ic_car4,

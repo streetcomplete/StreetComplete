@@ -1110,7 +1110,7 @@ v16.0: |
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>ask about internet access for more types of accomodations (#1620), thanks @wvanderp</li>
+  <li>ask about internet access for more types of accommodations (#1620), thanks @wvanderp</li>
   <li>ask opening hours, names and wheelchair accessibility for more types of places (#1621), thanks @wvanderp</li>
   <li>do not ask for handrails of escalators by @matkoniecz</li>
   <li>add hint how to answer the cycleway and sidewalk question (#1671) by @matkoniecz</li>

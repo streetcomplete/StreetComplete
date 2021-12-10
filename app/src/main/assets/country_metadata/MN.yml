@@ -5,7 +5,7 @@ edgeLineStyle: white
 hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 428
-noParkingLineStyle: yellow dashes
+noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [mn]
 orchardProduces: [hazelnut]

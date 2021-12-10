@@ -8,6 +8,8 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 232
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
 officialLanguages: [de]
 orchardProduces: [grape, apple, tomato, pear, chilli_pepper, sweet_pepper, strawberry, plum, apricot, cherry, walnut, peach, raspberry, hop]
 popularSports: [soccer, tennis, equestrian, beachvolleyball]

@@ -10,7 +10,7 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: russia
 mobileCountryCode: 255
-noParkingLineStyle: yellow dashes
+noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [uk, ru]
 orchardProduces: [tomato, apple, grape, plum, chilli_pepper, sweet_pepper, cherry, pear, walnut, apricot, strawberry, raspberry, peach, blueberry, hop, cranberry]
