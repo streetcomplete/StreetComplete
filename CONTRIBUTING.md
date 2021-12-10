@@ -59,7 +59,7 @@ StreetComplete depends on some projects for the app. Try to report them in the a
 * **Map style issues** should be reported in a [separate repository](https://github.com/ENT8R/streetcomplete-mapstyle).
 Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
-Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with Tangram-ES or another dependency.
+Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with Tangram-ES or another project.
 The full list of dependencies and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
 
 ### Suggesting new quests
