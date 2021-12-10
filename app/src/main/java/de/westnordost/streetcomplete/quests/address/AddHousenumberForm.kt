@@ -52,14 +52,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        val isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
-        val isHousenumber = savedInstanceState?.getBoolean(IS_HOUSENUMBER) ?: false
-        interfaceMode = when {
-            isHousename && isHousenumber -> InterfaceMode.HOUSENUMBER_AND_HOUSENAME
-            isHousename -> InterfaceMode.HOUSENAME
-            isHousenumber -> InterfaceMode.HOUSENUMBER
-            else -> InterfaceMode.HOUSENUMBER
-        }
+        val prevMode = savedInstanceState?.getString(INTERFACE_MODE)?.let { InterfaceMode.valueOf(it) }
+        interfaceMode = prevMode ?: InterfaceMode.HOUSENUMBER
         setLayout(
             when(interfaceMode) {
                 InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
@@ -72,14 +66,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        when(interfaceMode) {
-            InterfaceMode.HOUSENUMBER -> outState.putBoolean(IS_HOUSENUMBER, true)
-            InterfaceMode.HOUSENAME -> outState.putBoolean(IS_HOUSENAME, true)
-            InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> {
-                outState.putBoolean(IS_HOUSENUMBER, true)
-                outState.putBoolean(IS_HOUSENAME, true)
-            }
-        }
+        outState.putString(INTERFACE_MODE, interfaceMode.name)
     }
 
     override fun onClickOk() {
@@ -311,8 +298,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     companion object {
         private var lastRealHousenumberAnswer: HousenumberAnswer? = null
 
-        private const val IS_HOUSENAME = "is_housename"
-        private const val IS_HOUSENUMBER = "is_housename"
+        private const val INTERFACE_MODE = "interface_mode"
     }
 }
 
