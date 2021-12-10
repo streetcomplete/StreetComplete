@@ -41,8 +41,10 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private var addButton: View? = null
     private var subtractButton: View? = null
 
-    private var isHousename: Boolean = false
-    private var isHousenameAndHousenumber: Boolean = false
+    enum class IntefaceMode {
+        HOUSENUMBER, HOUSENAME, HOUSENUMBER_AND_HOUSENAME
+    }
+    private var interfaceMode: IntefaceMode = IntefaceMode.HOUSENUMBER
 
     private var houseNumberInputTextColors: ColorStateList? = null
 
@@ -50,26 +52,34 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
-        isHousenameAndHousenumber = savedInstanceState?.getBoolean(IS_HOUSENAME_AND_HOUSENUMBER) ?: false
-        when {
-            isHousename -> {
-                setLayout(R.layout.quest_housename)
-            }
-            isHousenameAndHousenumber -> {
-                setLayout(R.layout.quest_housename_and_housenumber)
-            }
-            else -> {
-                setLayout(R.layout.quest_housenumber)
-            }
+        val isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
+        val isHousenumber = savedInstanceState?.getBoolean(IS_HOUSENUMBER) ?: false
+        interfaceMode = when {
+            isHousename && isHousenumber -> IntefaceMode.HOUSENUMBER_AND_HOUSENAME
+            isHousename -> IntefaceMode.HOUSENAME
+            isHousenumber -> IntefaceMode.HOUSENUMBER
+            else -> IntefaceMode.HOUSENUMBER
         }
+        setLayout(
+            when(interfaceMode) {
+                IntefaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+                IntefaceMode.HOUSENAME -> R.layout.quest_housename
+                IntefaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
+            }
+        )
         return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean(IS_HOUSENAME, isHousename)
-        outState.putBoolean(IS_HOUSENAME_AND_HOUSENUMBER, isHousenameAndHousenumber)
+        when(interfaceMode) {
+            IntefaceMode.HOUSENUMBER -> outState.putBoolean(IS_HOUSENUMBER, true)
+            IntefaceMode.HOUSENAME -> outState.putBoolean(IS_HOUSENAME, true)
+            IntefaceMode.HOUSENUMBER_AND_HOUSENAME -> {
+                outState.putBoolean(IS_HOUSENUMBER, true)
+                outState.putBoolean(IS_HOUSENAME, true)
+            }
+        }
     }
 
     override fun onClickOk() {
@@ -81,18 +91,18 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = (!isShowingHouseNumberHint || isHousename) && createAnswer() != null
+    override fun isFormComplete() = (!isShowingHouseNumberHint || interfaceMode == IntefaceMode.HOUSENAME ) && createAnswer() != null
 
     /* ------------------------------------- Other answers -------------------------------------- */
 
     private fun switchToHouseName() {
-        isHousename = true
+        interfaceMode = IntefaceMode.HOUSENAME
         setLayout(R.layout.quest_housename)
         houseNameInput?.requestFocus()
     }
 
     private fun switchToHouseNameAndHouseNumber() {
-        isHousenameAndHousenumber = true
+        interfaceMode = IntefaceMode.HOUSENUMBER_AND_HOUSENAME
         setLayout(R.layout.quest_housename_and_housenumber)
         houseNameInput?.requestFocus()
     }
@@ -260,6 +270,15 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
+    override fun isRejectingClose(): Boolean {
+        val houseName = houseNameInput?.nonEmptyInput
+        val houseNumber = houseNumberInput?.nonEmptyInput
+        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
+        val streetNumber = streetNumberInput?.nonEmptyInput
+        val blockNumber = blockNumberInput?.nonEmptyInput
+
+        if(houseName != null || houseNumber != null) {
+            return true
         }
         if(conscriptionNumber != null || streetNumber != null || blockNumber != null) {
             return true
@@ -293,7 +312,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         private var lastRealHousenumberAnswer: HousenumberAnswer? = null
 
         private const val IS_HOUSENAME = "is_housename"
-        private const val IS_HOUSENAME_AND_HOUSENUMBER = "is_housename_and_housenumber"
+        private const val IS_HOUSENUMBER = "is_housename"
     }
 }
 
