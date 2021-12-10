@@ -25,7 +25,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
-        AnswerItem(R.string.quest_address_answer_house_name_and_housenumer) { switchToHouseNameAndHouseNumber() },
+        AnswerItem(R.string.quest_address_answer_house_name_and_housenumber) { switchToHouseNameAndHouseNumber() },
         AnswerItem(R.string.quest_address_answer_house_name) { switchToHouseName() },
         AnswerItem(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
     )
