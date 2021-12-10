@@ -8,6 +8,8 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: russia
 mobileCountryCode: 250
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: dashed yellow
 officialLanguages: [ru]
 orchardProduces: [tomato, apple, grape, cherry, strawberry, raspberry, plum, pear, apricot, peach, blueberry, tea, hop, orange]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

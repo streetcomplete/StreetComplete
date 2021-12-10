@@ -9,7 +9,7 @@ hasLivingStreet: true
 hasSlowZone: false
 livingStreetSignStyle: vienna
 mobileCountryCode: 240
-noParkingLineStyle: yellow dashes
+noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [sv]
 orchardProduces: [apple, strawberry, tomato, pear, raspberry, plum, cherry, blueberry]

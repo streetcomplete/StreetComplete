@@ -9,7 +9,7 @@ hasSlowZone: true
 isLeftHandTraffic: true
 livingStreetSignStyle: australia
 mobileCountryCode: 530
-noParkingLineStyle: yellow dashes
+noParkingLineStyle: dashed yellow
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [en]

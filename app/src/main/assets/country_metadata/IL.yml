@@ -5,6 +5,8 @@ firstDayOfWorkweek: Su
 hasLivingStreet: false
 hasSlowZone: true
 mobileCountryCode: 425
+noStoppingLineStyle: red-white on curb
+noStoppingSignStyle: israel
 officialLanguages: [heb, ar]
 orchardProduces: [tomato, chilli_pepper, sweet_pepper, grapefruit, orange, banana, apple, avocado, olive, lemon, lime, grape, peach, guava, mango, mangosteen, date, persimmon, pear]
 popularReligions: [jewish, christian, muslim]

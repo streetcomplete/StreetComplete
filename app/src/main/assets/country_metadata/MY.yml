@@ -5,6 +5,7 @@ isLeftHandTraffic: true
 mobileCountryCode: 502
 noParkingLineStyle: yellow
 noParkingSignStyle: vienna
+noStoppingLineStyle: double yellow
 noStoppingSignStyle: vienna
 officialLanguages: [ms]
 orchardProduces: [rubber, coconut, pineapple, banana, tomato, guava, mango, mangosteen, papaya, pepper, cashew_nut, orange, grapefruit, tea, coffee, lemon, lime, chilli_pepper, sweet_pepper]

@@ -9,6 +9,7 @@ BY: dashed yellow # extrapolating from neighbours RU, UA, LT, LV
 CH: dashed yellow with Xs # https://de.wikipedia.org/wiki/Stra%C3%9Fenmarkierung#Grenzmarkierungen_in_der_Schweiz
 # DE: no line markings for that - white zig-zags only extend the range of a sign https://www.gesetze-im-internet.de/stvo_2013/BJNR036710013.html
 ES: dashed yellow # https://www.google.de/maps/@36.7147712,-4.428612,3a,73.9y,178.91h,75.31t/data=!3m9!1e1!3m7!1sWxc1Vff8oaRk_2u62HZKrw!2e0!7i16384!8i8192!9m2!1b1!2i34 , https://n332.es/road-markings-and-lines/
+# FI: none, see https://www.finlex.fi/fi/laki/ajantasa/2018/20180729
 FR: dashed yellow # https://www.lepermislibre.fr/code-route/cours/marquage-au-sol-parking
 GB: double yellow # https://en.wikipedia.org/wiki/Parking_restrictions_in_the_United_Kingdom#Yellow_lines , single lines mean it is restricted during certain times
 IE: double yellow # https://assets.gov.ie/34719/d2683724881f4477bb2babe78c282e6f.pdf (Traffic Signs Manual Chapter 7.6)
@@ -26,7 +27,8 @@ MY: yellow # https://www.google.de/maps/@3.166047,101.6973656,3a,75y,232.71h,83.
 NL: dashed yellow # https://en.wikipedia.org/wiki/Road_surface_marking#Netherlands
 NP: yellow # http://nepalpolicynet.com/images/documents/transportation/research/DoR_TRAFFIC%20SIGNS%20MANUAL_1997.pdf
 NZ: dashed yellow # https://www.google.de/maps/@-36.8530126,174.7576236,3a,75y,17.34h,52.14t/data=!3m6!1e1!3m4!1sopyAFnXA6RXSXH0s6MSfyg!2e0!7i16384!8i8192 and https://en.wikipedia.org/wiki/Yellow_line_(road_marking)#New_Zealand
-RU: dashed yellow # http://www.consultant.ru/document/cons_doc_LAW_2709/7e7fb48d864ef8a4981433ad2a6390113c80e119/ (ПДД РФ, 1. Горизонтальная разметка 1.10)
+RS: dashed yellow with Xs # https://www.putevi-srbije.rs/images/pdf/regulativa/Pravilnik_o_saobracajnoj_signalizaciji.pdf (PRAVILNIK O SAOBRAĆAJNOJ SIGNALIZACIJI 2.3.6 V-16)
+RU: dashed yellow # http://www.consultant.ru/document/cons_doc_LAW_2709/7e7fb48d864ef8a4981433ad2a6390113c80e119/ (ПДД РФ, 1. Горизонтальная разметка 1.10), see also https://megapdd.ru/book/pdd-section-12
 SE: dashed yellow # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
 SG: double yellow # https://www.google.de/maps/@1.2982129,103.8477809,3a,75y,291.12h,92.87t/data=!3m6!1e1!3m4!1sXCOEC8fDY3SMO6MgEu276A!2e0!7i16384!8i8192 and https://mothership.sg/2019/03/waiting-double-yellow-lines-singapore/ - single yellow means no parking from 7:00-19:00
 TH: yellow-white on curb # https://www.angloinfo.com/how-to/thailand/transport/driving/parking (matches definition of "no parking")

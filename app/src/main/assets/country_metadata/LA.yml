@@ -4,6 +4,8 @@ atmOperators: [BCEL, LDB, Joint Development Bank, JDB, Phongsavanh Bank, Lao Dev
 centerLineStyle: white
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 457
+noParkingLineStyle: yellow-white on curb
+noStoppingLineStyle: red-white on curb
 officialLanguages: [lo]
 orchardProduces: [banana, coffee, pineapple, orange, chilli_pepper, sweet_pepper, tea, grapefruit, lemon, lime, guava, mango, mangosteen, nutmeg]
 popularReligions: [buddhist]
