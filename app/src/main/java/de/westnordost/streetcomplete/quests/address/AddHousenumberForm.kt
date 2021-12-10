@@ -78,7 +78,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = (!isShowingHouseNumberHint || interfaceMode == InterfaceMode.HOUSENAME ) && createAnswer() != null
+    override fun isFormComplete() = when(interfaceMode) {
+        InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
+        InterfaceMode.HOUSENAME -> createAnswer() != null
+        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonEmptyInput != null && houseNumberInput?.nonEmptyInput != null
+    }
 
     /* ------------------------------------- Other answers -------------------------------------- */
 
