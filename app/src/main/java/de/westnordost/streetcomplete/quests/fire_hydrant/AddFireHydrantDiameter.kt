@@ -15,6 +15,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override val elementFilter = """
         nodes with
          emergency = fire_hydrant
+         and fire_hydrant:type and
+         (fire_hydrant:type = pillar or fire_hydrant:type = underground)
          and !fire_hydrant:diameter
          and fire_hydrant:diameter:signed != no
     """
