@@ -4,15 +4,15 @@
     android:viewportWidth="128"
     android:viewportHeight="128">
   <path
-      android:pathData="m74,0h4v128h-4z"
-      android:fillColor="#fc0"/>
+      android:pathData="m74,0h2v128h-2z"
+      android:strokeWidth=".25"
+      android:fillColor="#999"/>
   <path
       android:pathData="m72,0h2v128h-2z"
-      android:fillColor="#a80"/>
+      android:strokeWidth=".25"
+      android:fillColor="#666"/>
   <path
       android:pathData="M0,0h72v128h-72z"
+      android:strokeWidth=".70711"
       android:fillColor="#808080"/>
-  <path
-      android:pathData="m78,0h2v128h-2z"
-      android:fillColor="#999"/>
 </vector>

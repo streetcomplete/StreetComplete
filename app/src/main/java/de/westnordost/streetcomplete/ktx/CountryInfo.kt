@@ -58,7 +58,7 @@ val CountryInfo.noStandingLineStyleResId: Int? get() = noStandingLineStyle.asLin
 
 val CountryInfo.noStoppingLineStyleResId: Int? get() = noStoppingLineStyle.asLineStyleResId
 
-private val String.asLineStyleResId: Int? get() = when(this) {
+private val String?.asLineStyleResId: Int? get() = when(this) {
     "yellow"                 -> R.drawable.ic_street_marking_yellow
     "dashed yellow"          -> R.drawable.ic_street_marking_yellow_dashes
     "double yellow"          -> R.drawable.ic_street_marking_yellow_double
