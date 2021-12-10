@@ -171,7 +171,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMapComponent?.beginFocusGeometry(quest.geometry, offset)
         geometryMapComponent?.showGeometry(quest.geometry)
         selectedPinsMapComponent?.set(quest.type.icon, quest.markerLocations)
-        // while quest is focussed, we actually don't want to see all the other quest pins (since v38)
+        // while quest is focused, we actually don't want to see all the other quest pins (since v38)
         pinsMapComponent?.isVisible = false
     }
 

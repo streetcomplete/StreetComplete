@@ -199,12 +199,12 @@ class AddLocalizedNameAdapter(
 
                 // "unspecified language" suggestions
                 if (languageTag.isEmpty()) {
-                    var defaultNameOccurances = 0
+                    var defaultNameOccurrences = 0
                     for (other in localizedNameSuggestion.values) {
-                        if (name == other) defaultNameOccurances++
+                        if (name == other) defaultNameOccurrences++
                     }
                     // name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
-                    if (defaultNameOccurances >= 2) continue
+                    if (defaultNameOccurrences >= 2) continue
                     // only for name=A, name:de=B, name:en=C,...
                 }
                 localizedNameSuggestionsMap[name] = localizedNameSuggestion
