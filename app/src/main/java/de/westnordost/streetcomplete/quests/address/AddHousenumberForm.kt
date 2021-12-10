@@ -260,34 +260,29 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private fun createAnswer(): HousenumberAnswer? =
-        if (houseNameInput != null && houseNumberInput != null) {
-            houseNameInput?.nonEmptyInput?.let { houseName ->
-                houseNumberInput?.nonEmptyInput?.let { houseNumber ->
-                    HouseNameAndHouseNumber(houseName, houseNumber)
-                }
-            }
         }
-        else if (houseNameInput != null) {
-            houseNameInput?.nonEmptyInput?.let { HouseName(it) }
+        if(conscriptionNumber != null || streetNumber != null || blockNumber != null) {
+            return true
         }
-        else if (conscriptionNumberInput != null && streetNumberInput != null) {
-            conscriptionNumberInput?.nonEmptyInput?.let { conscriptionNumber ->
-                val streetNumber = streetNumberInput?.nonEmptyInput // streetNumber is optional
-                ConscriptionNumber(conscriptionNumber, streetNumber)
-            }
+        return false
+    }
+
+    private fun createAnswer(): HousenumberAnswer? {
+        val houseName = houseNameInput?.nonEmptyInput
+        val houseNumber = houseNumberInput?.nonEmptyInput
+        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
+        val streetNumber = streetNumberInput?.nonEmptyInput
+        val blockNumber = blockNumberInput?.nonEmptyInput
+
+        return when {
+            houseName != null && houseNumber != null   -> HouseNameAndHouseNumber(houseName, houseNumber)
+            houseName != null                          -> HouseName(houseName)
+            conscriptionNumber != null                 -> ConscriptionNumber(conscriptionNumber, streetNumber) // streetNumber is optional
+            blockNumber != null && houseNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
+            houseNumber != null                        -> HouseNumber(houseNumber)
+            else                                       -> null
         }
-        else if (blockNumberInput != null && houseNumberInput != null) {
-            blockNumberInput?.nonEmptyInput?.let { blockNumber ->
-                houseNumberInput?.nonEmptyInput?.let { houseNumber ->
-                    HouseAndBlockNumber(houseNumber, blockNumber)
-                }
-            }
-        }
-        else if (houseNumberInput != null) {
-            houseNumberInput?.nonEmptyInput?.let { HouseNumber(it) }
-        }
-        else null
+    }
 
     private val EditText.nonEmptyInput:String? get() {
         val input = text.toString().trim()
