@@ -20,10 +20,10 @@ val CountryInfo.livingStreetSignDrawableResId: Int? get() = when(livingStreetSig
     else        -> null
 }
 
-val CountryInfo.noStandingSignDrawableResId: Int get() = when(noStandingSignStyle) {
+val CountryInfo.noStandingSignDrawableResId: Int? get() = when(noStandingSignStyle) {
     "mutcd text standing" -> R.drawable.ic_no_standing_mutcd_text
     "mutcd text waiting"  -> R.drawable.ic_no_waiting_mutcd_text
-    else                  -> R.drawable.ic_no_standing_mutcd_text
+    else                  -> null
 }
 
 val CountryInfo.noParkingSignDrawableResId: Int get() = when(noParkingSignStyle) {
