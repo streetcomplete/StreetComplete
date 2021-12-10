@@ -41,10 +41,10 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private var addButton: View? = null
     private var subtractButton: View? = null
 
-    enum class IntefaceMode {
+    enum class InterfaceMode {
         HOUSENUMBER, HOUSENAME, HOUSENUMBER_AND_HOUSENAME
     }
-    private var interfaceMode: IntefaceMode = IntefaceMode.HOUSENUMBER
+    private var interfaceMode: InterfaceMode = InterfaceMode.HOUSENUMBER
 
     private var houseNumberInputTextColors: ColorStateList? = null
 
@@ -55,16 +55,16 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
         val isHousenumber = savedInstanceState?.getBoolean(IS_HOUSENUMBER) ?: false
         interfaceMode = when {
-            isHousename && isHousenumber -> IntefaceMode.HOUSENUMBER_AND_HOUSENAME
-            isHousename -> IntefaceMode.HOUSENAME
-            isHousenumber -> IntefaceMode.HOUSENUMBER
-            else -> IntefaceMode.HOUSENUMBER
+            isHousename && isHousenumber -> InterfaceMode.HOUSENUMBER_AND_HOUSENAME
+            isHousename -> InterfaceMode.HOUSENAME
+            isHousenumber -> InterfaceMode.HOUSENUMBER
+            else -> InterfaceMode.HOUSENUMBER
         }
         setLayout(
             when(interfaceMode) {
-                IntefaceMode.HOUSENUMBER -> R.layout.quest_housenumber
-                IntefaceMode.HOUSENAME -> R.layout.quest_housename
-                IntefaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
+                InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+                InterfaceMode.HOUSENAME -> R.layout.quest_housename
+                InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
             }
         )
         return view
@@ -73,9 +73,9 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         when(interfaceMode) {
-            IntefaceMode.HOUSENUMBER -> outState.putBoolean(IS_HOUSENUMBER, true)
-            IntefaceMode.HOUSENAME -> outState.putBoolean(IS_HOUSENAME, true)
-            IntefaceMode.HOUSENUMBER_AND_HOUSENAME -> {
+            InterfaceMode.HOUSENUMBER -> outState.putBoolean(IS_HOUSENUMBER, true)
+            InterfaceMode.HOUSENAME -> outState.putBoolean(IS_HOUSENAME, true)
+            InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> {
                 outState.putBoolean(IS_HOUSENUMBER, true)
                 outState.putBoolean(IS_HOUSENAME, true)
             }
@@ -91,18 +91,18 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = (!isShowingHouseNumberHint || interfaceMode == IntefaceMode.HOUSENAME ) && createAnswer() != null
+    override fun isFormComplete() = (!isShowingHouseNumberHint || interfaceMode == InterfaceMode.HOUSENAME ) && createAnswer() != null
 
     /* ------------------------------------- Other answers -------------------------------------- */
 
     private fun switchToHouseName() {
-        interfaceMode = IntefaceMode.HOUSENAME
+        interfaceMode = InterfaceMode.HOUSENAME
         setLayout(R.layout.quest_housename)
         houseNameInput?.requestFocus()
     }
 
     private fun switchToHouseNameAndHouseNumber() {
-        interfaceMode = IntefaceMode.HOUSENUMBER_AND_HOUSENAME
+        interfaceMode = InterfaceMode.HOUSENUMBER_AND_HOUSENAME
         setLayout(R.layout.quest_housename_and_housenumber)
         houseNameInput?.requestFocus()
     }
