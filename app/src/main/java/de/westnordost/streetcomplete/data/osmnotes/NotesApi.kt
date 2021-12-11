@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.osmapi.traces.GpsTracesApi
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.download.ConnectionException
@@ -65,4 +66,9 @@ interface NotesApi {
      * @return the incoming notes
      */
     fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int): List<Note>
+
+    /**
+     * Return the GPS api endpoint
+     */
+    fun getGPXApi() : GpsTracesApi
 }

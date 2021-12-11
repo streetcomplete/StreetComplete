@@ -9,6 +9,7 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.traces.GpsTracesApi
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
@@ -23,6 +24,7 @@ import de.westnordost.osmapi.user.User as OsmApiUser
 
 class NotesApiImpl(osm: OsmConnection) : NotesApi {
     private val api: OsmApiNotesApi = OsmApiNotesApi(osm)
+    private val apiGps: GpsTracesApi = GpsTracesApi(osm)
 
     override fun create(pos: LatLon, text: String): Note = wrapExceptions {
         api.create(OsmLatLon(pos.latitude, pos.longitude), text).toNote()
@@ -51,6 +53,10 @@ class NotesApiImpl(osm: OsmConnection) : NotesApi {
             hideClosedNoteAfter
         )
         notes
+    }
+
+    override fun getGPXApi() : GpsTracesApi {
+        return apiGps
     }
 }
 

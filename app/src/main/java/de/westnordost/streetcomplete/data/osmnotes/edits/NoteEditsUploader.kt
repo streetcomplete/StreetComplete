@@ -1,6 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.util.Log
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.traces.GpsTraceDetails
+import de.westnordost.osmapi.traces.GpsTrackpoint
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osmnotes.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
@@ -8,6 +14,17 @@ import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URLConnection
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.util.*
 import javax.inject.Inject
 
 class NoteEditsUploader @Inject constructor(
@@ -26,15 +43,17 @@ class NoteEditsUploader @Inject constructor(
      *  Drops any edits where the upload failed because of a conflict but keeps any notes where
      *  the upload failed because attached photos could not be uploaded (so it can try again
      *  later). */
-    suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
-        // first look if any images have not been activated yet
-        uploadMissedImageActivations()
-        // then do the usual stuff
-        uploadEdits()
-    } }
+    suspend fun upload() = mutex.withLock {
+        withContext(Dispatchers.IO) {
+            // first look if any images have not been activated yet
+            uploadMissedImageActivations()
+            // then do the usual stuff
+            uploadEdits()
+        }
+    }
 
     private suspend fun uploadMissedImageActivations() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             /* see uploadEdits */
             withContext(scope.coroutineContext) {
@@ -45,7 +64,7 @@ class NoteEditsUploader @Inject constructor(
     }
 
     private suspend fun uploadEdits() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestUnsynced() ?: break
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. F.e. a note could be uploaded
@@ -57,24 +76,29 @@ class NoteEditsUploader @Inject constructor(
     private fun uploadEdit(edit: NoteEdit) {
 
         // try to upload the image
-        val imageText = edit.uploadedDataMap.getOrDefault("images", uploadAndGetAttachedPhotosText(edit.imagePaths))
+        val imageText = edit.uploadedDataMap.getOrDefault(
+            "images",
+            uploadAndGetAttachedPhotosText(edit.imagePaths)
+        )
         noteEditsController.updateData(edit, "images", imageText)
 
         // try to upload the GPX tracks
-        val gpxText = edit.uploadedDataMap.getOrDefault("gpx", uploadAndGetAttachedGPXText(edit.tracks))
+        val gpxText =
+            edit.uploadedDataMap.getOrDefault("gpx", uploadAndGetAttachedGPXText(edit.tracks))
         noteEditsController.updateData(edit, "gpx", gpxText)
 
         // done, try to upload the note to OSM
         val text = edit.text.orEmpty() + imageText + gpxText
         try {
-            val note = when(edit.action) {
+            val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
                 COMMENT -> notesApi.comment(edit.noteId, text)
             }
 
-            Log.d(TAG,
+            Log.d(
+                TAG,
                 "Uploaded a ${edit.action.name} to ${note.id}" +
-                " at ${edit.position.latitude}, ${edit.position.longitude}"
+                    " at ${edit.position.latitude}, ${edit.position.longitude}"
             )
             uploadedChangeListener?.onUploaded(NOTE, edit.position)
 
@@ -88,9 +112,10 @@ class NoteEditsUploader @Inject constructor(
             deleteImages(edit.imagePaths)
 
         } catch (e: ConflictException) {
-            Log.d(TAG,
+            Log.d(
+                TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +
-                " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
+                    " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
             )
             uploadedChangeListener?.onDiscarded(NOTE, edit.position)
 
@@ -120,16 +145,42 @@ class NoteEditsUploader @Inject constructor(
             return ""
         }
 
-        // https://github.com/westnordost/osmapi/blob/396e21ef55f8f05fe69273cd67f2d084938354c2/libs/traces/src/main/java/de/westnordost/osmapi/traces/GpsTracesApi.java#L20
-        throw RuntimeException("GPX Upload Has Not Been Implemented!")
+        try {
 
-        //val urls = imageUploader.upload(imagePaths)
-        //if (urls.isNotEmpty()) {
-        //    return "\n\nAttached photo(s):\n" + urls.joinToString("\n")
-        //}
+            // Filename is just the start of the track
+            // https://stackoverflow.com/a/49862573/7718197
+            val name = DateTimeFormatter
+                .ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
+                .withZone(ZoneOffset.UTC)
+                .format(Instant.ofEpochSecond(tracks[0].time))
+                .replace("-","_")
+                .replace(":","_")
+                .replace(" ","_") + ".gpx"
+            val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
+            val description = ApplicationConstants.USER_AGENT
+            val tags = listOf(ApplicationConstants.NAME.lowercase())
 
+            // Generate history of trackpoints
+            val trackpoints = mutableListOf<GpsTrackpoint>()
+            tracks.forEachIndexed { idx, it ->
+                trackpoints.add(
+                    GpsTrackpoint(
+                        OsmLatLon(it.position.latitude, it.position.longitude),
+                        Instant.ofEpochSecond(it.time),
+                        idx == 0,
+                        it.horizontalDilutionOfPrecision,
+                        it.elevation
+                    )
+                )
+            }
+            val traceid =
+                notesApi.getGPXApi().create(name, visibility, description, tags, trackpoints)
+            val details = notesApi.getGPXApi().get(traceid)
+            return "\n\nGPX Trace: \nhttps://www.openstreetmap.org/user/${details.userName}/traces/${details.id}"
+        } catch (e: IOException) {
+            throw ConnectionException("Upload failed", e)
+        }
     }
-
 
 
     companion object {
