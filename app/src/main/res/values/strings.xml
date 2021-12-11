@@ -1107,7 +1107,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_level_title">On which level number is %s located?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
-    <string name="quest_street_parking_title">"How do cars park here, if at all?"</string>
+    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
     <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>
     <string name="select_street_parking_no">"Any sign or road marking here?"</string>
