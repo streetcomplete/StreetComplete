@@ -431,7 +431,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_tung_nuts">Tung nuts</string>
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
-    <string name="quest_parkingType_street_side">Parking just off the roadway</string>
+    <string name="quest_parkingType_street_side">Parking adjacent to the roadway</string>
     <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
@@ -1116,8 +1116,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="street_parking_perpendicular">"Perpendicular"</string>
     <string name="street_parking_on_street">"On roadway"</string>
     <string name="street_parking_half_on_kerb">"Partially on roadway"</string>
-    <string name="street_parking_on_kerb">"Beside roadway"</string>
-    <string name="street_parking_street_side">"Beside roadway only in dedicated spaces"</string>
+    <string name="street_parking_on_kerb">"Adjacent to roadway"</string>
+    <string name="street_parking_street_side">"Adjacent to roadway only in dedicated spaces"</string>
     <string name="street_parking_painted_area_only">"On roadway only in dedicated spaces"</string>
     <string name="street_parking_shoulder">"On shoulder"</string>
     <string name="street_parking_separate">Parking displayed separately on map</string>
