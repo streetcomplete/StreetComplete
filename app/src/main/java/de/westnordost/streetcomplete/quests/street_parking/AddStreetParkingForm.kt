@@ -251,7 +251,7 @@ private fun createParkingOrientationImage(
     isUpsideDown: Boolean,
     parkingOrientation: ParkingOrientation,
 ) =
-    DrawableImage(StreetParkingDrawable(context, parkingOrientation, null, isUpsideDown, 128, 128, R.drawable.ic_car1b))
+    DrawableImage(StreetParkingDrawable(context, parkingOrientation, null, isUpsideDown, 128, 128, R.drawable.ic_car1))
 
 private enum class NoParkingSelection {
     NO_STOPPING, NO_STANDING, NO_PARKING, CONDITIONAL_RESTRICTIONS, IMPLICIT
