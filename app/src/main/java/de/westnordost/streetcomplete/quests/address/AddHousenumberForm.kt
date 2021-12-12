@@ -268,13 +268,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val streetNumber = streetNumberInput?.nonEmptyInput
         val blockNumber = blockNumberInput?.nonEmptyInput
 
-        if(houseName != null || houseNumber != null) {
-            return true
-        }
-        if(conscriptionNumber != null || streetNumber != null || blockNumber != null) {
-            return true
-        }
-        return false
+        return listOf(houseName, houseNumber, conscriptionNumber, streetNumber, blockNumber).any { it != null }
     }
 
     private fun createAnswer(): HousenumberAnswer? {
