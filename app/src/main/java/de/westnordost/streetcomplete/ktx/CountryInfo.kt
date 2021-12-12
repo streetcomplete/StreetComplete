@@ -68,6 +68,8 @@ private val String?.asLineStyleResId: Int? get() = when(this) {
     "red"                    -> R.drawable.ic_street_marking_red
     "double red"             -> R.drawable.ic_street_marking_red_double
     "yellow on curb"         -> R.drawable.ic_street_marking_yellow_on_curb
+    "red on curb"            -> R.drawable.ic_street_marking_red_on_curb
+    "white on curb"          -> R.drawable.ic_street_marking_white_on_curb
     "dashed yellow on curb"  -> R.drawable.ic_street_marking_yellow_dashes_on_curb
     "red-white on curb"      -> R.drawable.ic_street_marking_red_white_dashes_on_curb
     "yellow-white on curb"   -> R.drawable.ic_street_marking_yellow_white_dashes_on_curb
