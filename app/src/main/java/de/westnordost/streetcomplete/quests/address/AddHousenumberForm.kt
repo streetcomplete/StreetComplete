@@ -54,13 +54,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val view = super.onCreateView(inflater, container, savedInstanceState)
         val prevMode = savedInstanceState?.getString(INTERFACE_MODE)?.let { InterfaceMode.valueOf(it) }
         interfaceMode = prevMode ?: InterfaceMode.HOUSENUMBER
-        setLayout(
-            when(interfaceMode) {
-                InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
-                InterfaceMode.HOUSENAME -> R.layout.quest_housename
-                InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
-            }
-        )
+        setLayoutBasedOnInterfaceMode()
         return view
     }
 
@@ -88,13 +82,13 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private fun switchToHouseName() {
         interfaceMode = InterfaceMode.HOUSENAME
-        setLayout(R.layout.quest_housename)
+        setLayoutBasedOnInterfaceMode()
         houseNameInput?.requestFocus()
     }
 
     private fun switchToHouseNameAndHouseNumber() {
         interfaceMode = InterfaceMode.HOUSENUMBER_AND_HOUSENAME
-        setLayout(R.layout.quest_housename_and_housenumber)
+        setLayoutBasedOnInterfaceMode()
         houseNameInput?.requestFocus()
     }
 
@@ -130,6 +124,16 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     /* -------------------------- Set (different) housenumber layout  --------------------------- */
+
+    private fun setLayoutBasedOnInterfaceMode() {
+        setLayout(
+            when (interfaceMode) {
+                InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+                InterfaceMode.HOUSENAME -> R.layout.quest_housename
+                InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
+            }
+        )
+    }
 
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
