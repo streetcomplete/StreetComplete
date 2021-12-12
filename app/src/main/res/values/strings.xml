@@ -1119,7 +1119,6 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="street_parking_on_kerb">"Adjacent to roadway"</string>
     <string name="street_parking_street_side">"Adjacent to roadway only in dedicated spaces"</string>
     <string name="street_parking_painted_area_only">"On roadway only in dedicated spaces"</string>
-    <string name="street_parking_shoulder">"On shoulder"</string>
     <string name="street_parking_separate">Parking displayed separately on map</string>
     <string name="street_parking_no">No parking here / Not allowed</string>
     <string name="street_parking_prohibited">No parking</string>

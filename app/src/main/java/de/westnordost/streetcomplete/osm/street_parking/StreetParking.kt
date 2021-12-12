@@ -32,8 +32,7 @@ enum class ParkingPosition {
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
-    PAINTED_AREA_ONLY,
-    SHOULDER
+    PAINTED_AREA_ONLY
 }
 
 val StreetParking.estimatedWidthOnRoad: Float get() = when(this) {
@@ -69,7 +68,6 @@ fun ParkingPosition.toOsmValue() = when(this) {
     ON_KERB -> "on_kerb"
     STREET_SIDE -> "street_side"
     PAINTED_AREA_ONLY -> "painted_area_only"
-    SHOULDER -> "shoulder"
 }
 
 fun ParkingOrientation.toOsmValue() = when(this) {

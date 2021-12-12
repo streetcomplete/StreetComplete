@@ -90,7 +90,6 @@ val ParkingPosition.titleResId: Int get() = when(this) {
     ON_KERB -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
     PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only
-    SHOULDER -> R.string.street_parking_shoulder
 }
 
 val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
@@ -98,6 +97,5 @@ val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
-    PAINTED_AREA_ONLY,
-    SHOULDER
+    PAINTED_AREA_ONLY
 )

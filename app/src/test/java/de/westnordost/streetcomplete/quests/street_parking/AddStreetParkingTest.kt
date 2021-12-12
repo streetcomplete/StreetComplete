@@ -46,11 +46,11 @@ class AddStreetParkingTest {
         questType.verifyAnswer(
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.SHOULDER)
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.HALF_ON_KERB)
             ),
             StringMapEntryAdd("parking:lane:both", "parallel"),
             StringMapEntryAdd("parking:lane:left:parallel", "on_street"),
-            StringMapEntryAdd("parking:lane:right:parallel", "shoulder"),
+            StringMapEntryAdd("parking:lane:right:parallel", "half_on_kerb"),
         )
     }
 

@@ -104,10 +104,6 @@ private fun getStreetDrawableResId(orientation: ParkingOrientation, position: Pa
             DIAGONAL -> R.drawable.ic_street_marked_parking_diagonal
             PERPENDICULAR -> R.drawable.ic_street_marked_parking_perpendicular
         }
-        SHOULDER -> when(orientation) {
-            PARALLEL -> R.drawable.ic_street_shoulder
-            else -> R.drawable.ic_street_shoulder_broad
-        }
         null -> null
     }
 
