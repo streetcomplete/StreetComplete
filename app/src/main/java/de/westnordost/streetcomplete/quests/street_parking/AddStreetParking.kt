@@ -78,47 +78,29 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
 
     override fun createForm() = AddStreetParkingForm()
 
-    private enum class Side(val value: String) {
-        LEFT("left"), RIGHT("right"), BOTH("both")
-    }
-
     override fun applyAnswerTo(answer: LeftAndRightStreetParking, changes: StringMapChangesBuilder) {
-        if (answer.left!! == answer.right!!) {
-            applyParkingAnswerTo(answer.left, Side.BOTH, changes)
-        } else {
-            applyParkingAnswerTo(answer.left, Side.LEFT, changes)
-            applyParkingAnswerTo(answer.right, Side.RIGHT, changes)
-        }
-    }
-
-    private fun applyParkingAnswerTo(parking: StreetParking, side: Side, changes: StringMapChangesBuilder) {
         /* Note: If a resurvey is implemented, old
-           parking:lane:*:(parallel|diagonal|perpendicular) values must be cleaned up */
+           parking:lane:*:(parallel|diagonal|perpendicular|...) values must be cleaned up */
 
-        val parkingKey = "parking:lane:" + side.value
-        when(parking) {
-            is StreetParkingPositionAndOrientation -> {
-                val orientation = parking.orientation.toOsmValue()
-                val position = parking.position.toOsmValue()
-                changes.add(parkingKey, orientation)
-                changes.addOrModify("$parkingKey:$orientation", position)
-            }
-            StreetParkingSeparate -> {
-                changes.add(parkingKey, "separate")
-            }
-            NoStreetParking -> {
-                changes.add(parkingKey, "no")
-            }
-            StreetParkingProhibited -> {
-                changes.add(parkingKey, "no_parking")
-            }
-            StreetStandingProhibited -> {
-                changes.add(parkingKey, "no_standing")
-            }
-            StreetStoppingProhibited -> {
-                changes.add(parkingKey, "no_stopping")
-            }
-            else -> throw IllegalArgumentException()
+        val laneRight = answer.right!!.toOsmLaneValue() ?: throw IllegalArgumentException()
+        val laneLeft = answer.left!!.toOsmLaneValue() ?: throw IllegalArgumentException()
+
+        if (laneLeft == laneRight) {
+            changes.add("parking:lane:both", laneLeft)
+        } else {
+            changes.add("parking:lane:left", laneLeft)
+            changes.add("parking:lane:right", laneRight)
+        }
+
+        val positionRight = (answer.right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+        val positionLeft = (answer.left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+
+        if (positionLeft == positionRight) {
+            if (positionLeft != null) changes.addOrModify("parking:lane:both:$laneLeft", positionLeft)
+        } else {
+            if (positionLeft != null) changes.addOrModify("parking:lane:left:$laneLeft", positionLeft)
+            if (positionRight != null) changes.addOrModify("parking:lane:right:$laneRight", positionRight)
+
         }
     }
 }

@@ -48,9 +48,8 @@ class AddStreetParkingTest {
                 StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
                 StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.SHOULDER)
             ),
-            StringMapEntryAdd("parking:lane:left", "parallel"),
+            StringMapEntryAdd("parking:lane:both", "parallel"),
             StringMapEntryAdd("parking:lane:left:parallel", "on_street"),
-            StringMapEntryAdd("parking:lane:right", "parallel"),
             StringMapEntryAdd("parking:lane:right:parallel", "shoulder"),
         )
     }

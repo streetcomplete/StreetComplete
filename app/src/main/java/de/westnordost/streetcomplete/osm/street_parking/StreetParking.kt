@@ -52,6 +52,17 @@ val ParkingPosition.estimatedWidthFactor: Float get() = when(this) {
     else -> 0.5f // otherwise let's assume it is somehow on the street
 }
 
+/** get the OSM value for the parking:lane key */
+fun StreetParking.toOsmLaneValue(): String? = when(this) {
+    is StreetParkingPositionAndOrientation -> orientation.toOsmValue()
+    NoStreetParking -> "no"
+    StreetParkingSeparate -> "separate"
+    StreetParkingProhibited -> "no_parking"
+    StreetStandingProhibited -> "no_standing"
+    StreetStoppingProhibited -> "no_stopping"
+    UnknownStreetParking, IncompleteStreetParking -> null
+}
+
 fun ParkingPosition.toOsmValue() = when(this) {
     ON_STREET -> "on_street"
     HALF_ON_KERB -> "half_on_kerb"
