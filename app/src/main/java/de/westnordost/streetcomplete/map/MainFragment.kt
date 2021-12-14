@@ -113,6 +113,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
     interface Listener {
+        fun onMapInitialized()
         fun onQuestSolved(quest: Quest, source: String?)
         fun onCreatedNote(screenPosition: Point)
     }
@@ -242,6 +243,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         binding.gpsTrackingButton.isActivated =  mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         updateLocationPointerPin()
+        listener?.onMapInitialized()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
