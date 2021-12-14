@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmnotes.NoteGPXTrack
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 
 /** Contains all necessary information to create/comment on an OSM note. */
 data class NoteEdit(
@@ -35,10 +35,10 @@ data class NoteEdit(
     /** whether the images attached still need activation. Already true if imagePaths is empty */
     val imagesNeedActivation: Boolean,
 
-    /** attached GPX location tracks */
-    val tracks: List<NoteGPXTrack>,
+    /** attached GPS location tracks */
+    val tracks: List<Trackpoint>,
 
-    /** contains partial upload responses index by type (e.g. image and GPX track urls) */
+    /** contains partial upload responses index by type (e.g. image and track urls) */
     val uploadedDataMap: Map<String, String>
 ): Edit {
     override val isUndoable: Boolean get() = !isSynced

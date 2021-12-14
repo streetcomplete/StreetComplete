@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiImpl
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
+import de.westnordost.streetcomplete.data.osmtracks.TracksApi
+import de.westnordost.streetcomplete.data.osmtracks.TracksApiImpl
 import de.westnordost.streetcomplete.data.user.OAuthStore
 import oauth.signpost.OAuthConsumer
 import javax.inject.Singleton
@@ -31,6 +33,8 @@ object OsmApiModule {
     @Provides fun userApi(osm: OsmConnection): UserApi = UserApi(osm)
 
     @Provides fun notesApi(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
+
+    @Provides fun tracksApi(osm: OsmConnection): TracksApi = TracksApiImpl(osm)
 
     @Provides fun mapDataApi(osm: OsmConnection): MapDataApi = MapDataApiImpl(osm)
 }

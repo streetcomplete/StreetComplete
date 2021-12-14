@@ -14,7 +14,7 @@ object NoteEditsTable {
         const val TEXT = "text"
         const val IMAGE_PATHS = "image_paths"
         const val IMAGES_NEED_ACTIVATION = "images_need_activation"
-        const val GPX_TRACKS = "gpx_tracks"
+        const val TRACKS = "tracks"
         const val UPLOAD_DATA_MAP = "upload_data_map"
     }
 
@@ -29,7 +29,7 @@ object NoteEditsTable {
             ${Columns.TEXT} text,
             ${Columns.IMAGE_PATHS} text NOT NULL,
             ${Columns.IMAGES_NEED_ACTIVATION} int NOT NULL,
-            ${Columns.GPX_TRACKS} text NOT NULL,
+            ${Columns.TRACKS} text NOT NULL,
             ${Columns.UPLOAD_DATA_MAP} text NOT NULL,
             ${Columns.TYPE} varchar(255)
         );"""

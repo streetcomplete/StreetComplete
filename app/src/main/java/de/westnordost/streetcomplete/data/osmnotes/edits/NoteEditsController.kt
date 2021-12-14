@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
-import de.westnordost.streetcomplete.data.osmnotes.NoteGPXTrack
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
@@ -25,7 +25,7 @@ import javax.inject.Singleton
         position: LatLon,
         text: String? = null,
         imagePaths: List<String> = emptyList(),
-        tracks: List<NoteGPXTrack> = emptyList()
+        tracks: List<Trackpoint> = emptyList()
     ) {
         val edit = NoteEdit(
             0,

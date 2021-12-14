@@ -1,36 +1,22 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.util.Log
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.traces.GpsTraceDetails
-import de.westnordost.osmapi.traces.GpsTrackpoint
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osmnotes.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URLConnection
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
-import java.util.*
 import javax.inject.Inject
 
 class NoteEditsUploader @Inject constructor(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val notesApi: NotesApi,
+    private val tracksApi: TracksApi,
     private val imageUploader: StreetCompleteImageUploader
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -82,13 +68,13 @@ class NoteEditsUploader @Inject constructor(
         )
         noteEditsController.updateData(edit, "images", imageText)
 
-        // try to upload the GPX tracks
-        val gpxText =
-            edit.uploadedDataMap.getOrDefault("gpx", uploadAndGetAttachedGPXText(edit.tracks))
-        noteEditsController.updateData(edit, "gpx", gpxText)
+        // try to upload the tracks
+        val tracksText =
+            edit.uploadedDataMap.getOrDefault("tracks", uploadAndGetAttachedTracksText(edit.tracks))
+        noteEditsController.updateData(edit, "tracks", tracksText)
 
         // done, try to upload the note to OSM
-        val text = edit.text.orEmpty() + imageText + gpxText
+        val text = edit.text.orEmpty() + imageText + tracksText
         try {
             val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
@@ -140,46 +126,12 @@ class NoteEditsUploader @Inject constructor(
         return ""
     }
 
-    private fun uploadAndGetAttachedGPXText(tracks: List<NoteGPXTrack>): String {
+    private fun uploadAndGetAttachedTracksText(tracks: List<Trackpoint>): String {
         if (tracks.isEmpty()) {
             return ""
         }
-
-        try {
-
-            // Filename is just the start of the track
-            // https://stackoverflow.com/a/49862573/7718197
-            val name = DateTimeFormatter
-                .ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
-                .withZone(ZoneOffset.UTC)
-                .format(Instant.ofEpochSecond(tracks[0].time))
-                .replace("-","_")
-                .replace(":","_")
-                .replace(" ","_") + ".gpx"
-            val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
-            val description = ApplicationConstants.USER_AGENT
-            val tags = listOf(ApplicationConstants.NAME.lowercase())
-
-            // Generate history of trackpoints
-            val trackpoints = mutableListOf<GpsTrackpoint>()
-            tracks.forEachIndexed { idx, it ->
-                trackpoints.add(
-                    GpsTrackpoint(
-                        OsmLatLon(it.position.latitude, it.position.longitude),
-                        Instant.ofEpochSecond(it.time),
-                        idx == 0,
-                        it.horizontalDilutionOfPrecision,
-                        it.elevation
-                    )
-                )
-            }
-            val traceid =
-                notesApi.getGPXApi().create(name, visibility, description, tags, trackpoints)
-            val details = notesApi.getGPXApi().get(traceid)
-            return "\n\nGPX Trace: \nhttps://www.openstreetmap.org/user/${details.userName}/traces/${details.id}"
-        } catch (e: IOException) {
-            throw ConnectionException("Upload failed", e)
-        }
+        val track = tracksApi.create(tracks)
+        return "\n\nGPS Trace: \nhttps://www.openstreetmap.org/user/${track.userName}/traces/${track.id}"
     }
 
 

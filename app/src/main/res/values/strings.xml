@@ -164,7 +164,7 @@
     <string name="pref_title_sync2">"Upload answers automatically"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
-    <string name="map_btn_stop_gpx">"Stop GPX"</string>
+    <string name="map_btn_stop_track">"Stop Recording Track"</string>
     <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
@@ -497,7 +497,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="map_btn_create_note">Create new note</string>
-    <string name="map_btn_create_gpx_track">Create new GPX track</string>
+    <string name="map_btn_create_track">Create new track recording</string>
     <string name="created_note_action_title">Created note</string>
     <string name="commented_note_action_title">Commented note</string>
     <string name="hid_action_description">You hid it</string>

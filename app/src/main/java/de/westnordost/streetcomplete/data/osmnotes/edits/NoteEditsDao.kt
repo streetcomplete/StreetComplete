@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.CREATED_TIMESTAMP
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.GPX_TRACKS
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TRACKS
 import javax.inject.Inject
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.IMAGES_NEED_ACTIVATION
@@ -130,7 +130,7 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
         TEXT to text,
         IMAGE_PATHS to Json.encodeToString(imagePaths),
         IMAGES_NEED_ACTIVATION to if (imagesNeedActivation) 1 else 0,
-        GPX_TRACKS to Json.encodeToString(tracks),
+        TRACKS to Json.encodeToString(tracks),
         UPLOAD_DATA_MAP to Json.encodeToString(uploadedDataMap),
         TYPE to action.name
     )
@@ -145,7 +145,7 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
         getLong(CREATED_TIMESTAMP),
         getInt(IS_SYNCED) == 1,
         getInt(IMAGES_NEED_ACTIVATION) == 1,
-        Json.decodeFromString(getString(GPX_TRACKS)),
+        Json.decodeFromString(getString(TRACKS)),
         Json.decodeFromString(getString(UPLOAD_DATA_MAP))
     )
 }

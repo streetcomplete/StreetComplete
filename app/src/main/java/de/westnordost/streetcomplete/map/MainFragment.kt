@@ -162,7 +162,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         binding.compassView.setOnClickListener { onClickCompassButton() }
         binding.gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
-        binding.stopGPXButton.setOnClickListener { onClickGPXStop() }
+        binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
 
@@ -611,12 +611,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment?.updateCameraPosition(300) { zoomBy = +1f }
     }
 
-    private fun onClickGPXStop() {
+    private fun onClickTracksStop() {
 
         // hide the track information
-        binding.stopGPXButton.visibility = View.INVISIBLE
+        binding.stopTracksButton.visibility = View.INVISIBLE
         val mapFragment = mapFragment ?: return
-        mapFragment.stopPositionTrackingGPX()
+        mapFragment.stopPositionTrackRecording()
 
         // show the note dialog
         mapFragment.show3DBuildings = false
@@ -688,7 +688,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
-                R.id.action_create_gpx_track -> onClickCreateGPXTrack(position)
+                R.id.action_create_track -> onClickCreateTrack(position)
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
             true
@@ -731,10 +731,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         showInBottomSheet(CreateNoteFragment())
     }
 
-    private fun onClickCreateGPXTrack(pos: LatLon) {
+    private fun onClickCreateTrack(pos: LatLon) {
         val mapFragment = mapFragment ?: return
-        mapFragment.startPositionTrackingGPX()
-        binding.stopGPXButton.visibility = View.VISIBLE
+        mapFragment.startPositionTrackRecording()
+        binding.stopTracksButton.visibility = View.VISIBLE
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */
