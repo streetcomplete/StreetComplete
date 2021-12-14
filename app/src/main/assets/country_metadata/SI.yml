@@ -7,6 +7,8 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 293
+noParkingLineStyle: yellow zig-zags
+noStoppingLineStyle: yellow
 officialLanguages: [sl]
 orchardProduces: [grape, apple, pear, tomato, walnut, cherry, peach, plum, hop, persimmon, strawberry, olive, chilli_pepper, sweet_pepper, apricot, kiwi]
 popularReligions: [christian, muslim]
