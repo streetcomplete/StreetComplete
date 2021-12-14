@@ -61,8 +61,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     //region Lifecycle
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState != null) {
             selectedLanesType = savedInstanceState.getString(LANES_TYPE)?.let { LanesType.valueOf(it) }
@@ -76,8 +76,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         } else {
             setStreetSideLayout()
         }
-
-        return view
     }
 
     @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {

@@ -46,11 +46,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private val isShowingHouseNumberHint: Boolean get() = houseNumberInputTextColors != null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
         setLayout(if(isHousename) R.layout.quest_housename else R.layout.quest_housenumber)
-        return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
