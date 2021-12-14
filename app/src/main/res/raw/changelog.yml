@@ -5,10 +5,17 @@ v39.0: |
   </ul>
   <h3>Other enhancements</h3>
   <ul>
-  <li>fix an issue with in-app language switching (#3554)</li>
   <li>You can now answer that a playground is only for customers (#3433), by @matkoniecz</li>
+  <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
   <li>The fire hydrant diameter is now only asked for underground or pillar hydrants (#3575), by @matkoniecz</li>
-  <li>some minor enhancements, fixes and cleared wordings (#3570, #3576, ...), thanks @matkoniecz</li>
+  <li>Some minor enhancements and clearer wordings (#3576, ...), thanks @matkoniecz</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix an issue with in-app language switching (#3554)</li>
+  <li>Fix a rare crash issue when tabbing out while quest form is open (#3590)</li>
+  <li>Fix opening a geo url (#3580)</li>
+  <li>Fix order in which selections are shown in the religion quests (#3570), by @matkoniecz</li>
   </ul>
 
 v38.1: |
