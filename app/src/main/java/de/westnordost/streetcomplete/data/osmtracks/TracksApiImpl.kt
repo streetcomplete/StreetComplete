@@ -44,7 +44,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
             trackpoints.add(
                 GpsTrackpoint(
                     OsmLatLon(it.position.latitude, it.position.longitude),
-                    Instant.ofEpochSecond(it.time),
+                    Instant.ofEpochMilli(it.time),
                     idx == 0,
                     it.horizontalDilutionOfPrecision,
                     it.elevation
