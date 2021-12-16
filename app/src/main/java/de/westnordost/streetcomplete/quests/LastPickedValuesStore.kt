@@ -38,7 +38,7 @@ private const val MAX_ENTRIES = 100
  *  included, displacing the least-common of the other items if necessary.
  */
 fun <T : Any> Sequence<T?>.mostCommonWithin(target: Int, historyCount: Int): Sequence<T> {
-    val counts = this.countUniqueNonNull(historyCount, target)
+    val counts = this.countUniqueNonNull(target, historyCount)
     val top = counts.keys.sortedByDescending { counts[it]!!.count }.take(target)
     val latest = this.take(1).filterNotNull()
     val items = (latest + top).distinct().take(target)
@@ -48,7 +48,7 @@ fun <T : Any> Sequence<T?>.mostCommonWithin(target: Int, historyCount: Int): Seq
 private data class ItemStats(val indexOfFirst: Int, var count: Int = 0)
 
 // Counts at least the first `minItems`, keeps going until it finds at least `target` unique values
-private fun <T : Any> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int): Map<T, ItemStats> {
+private fun <T : Any> Sequence<T?>.countUniqueNonNull(target: Int, minItems: Int): Map<T, ItemStats> {
     val counts = mutableMapOf<T, ItemStats>()
 
     // Sequences are evaluated lazily, so the `forEach` affects each `counts.size` check
