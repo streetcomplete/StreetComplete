@@ -4,14 +4,16 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
 
     override val elementFilter = """
         ways with (
-          ~'sidewalk(:both)?' ~ none|no or
-          (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
+          sidewalk:both ~ none|no
+          or sidewalk ~ none|no
+          or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
         and shoulder != yes
         and !foot
@@ -38,6 +40,8 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 

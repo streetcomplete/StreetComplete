@@ -27,8 +27,13 @@ import javax.inject.Singleton
     }
     private val uploadProgressRelay = UploadProgressRelay()
 
+    /** @return true if an upload is running */
     override val isUploadInProgress: Boolean get() =
         uploadService?.isUploadInProgress == true
+
+    var showNotification: Boolean
+        get() = uploadService?.showUploadNotification == true
+        set(value) { uploadService?.showUploadNotification = value }
 
     init {
         bindServices()

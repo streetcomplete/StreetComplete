@@ -87,7 +87,7 @@ import javax.inject.Singleton
         return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
-    fun synced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
+    fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
         val syncSuccess: Boolean
         synchronized(this) {
             for (update in elementUpdates.idUpdates) {
@@ -102,7 +102,7 @@ import javax.inject.Singleton
         elementIdProviderDB.delete(edit.id)
     }
 
-    fun syncFailed(edit: ElementEdit) {
+    fun markSyncFailed(edit: ElementEdit) {
         delete(edit)
     }
 

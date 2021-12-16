@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 import de.westnordost.streetcomplete.util.isRightOf
@@ -35,6 +36,8 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     override val commitMessage = "Add whether there is a crossing"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
+
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title
 
@@ -96,11 +99,11 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
             val roads = roadsByNodeId.getValue(nodeId)
             val neighbouringRoadPositions = roads
                 .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
-                .map { mapData.getNode(it)!!.position }
+                .mapNotNull { mapData.getNode(it)?.position }
 
             val neighbouringFootwayPositions = footways
                 .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
-                .map { mapData.getNode(it)!!.position }
+                .mapNotNull { mapData.getNode(it)?.position }
 
             /* So, surrounding the shared node X, in the simple case, we have
              *
@@ -115,7 +118,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
              * the south here, then, still none of those footways would actually cross the street
              *  - only if it continued straight to the north, for example.
              *
-             * The example brings us to the less simple case: What if several roads roads share
+             * The example brings us to the less simple case: What if several roads share
              * a node at a crossing-candidate position, like it is the case at every T-intersection?
              * Also, what if there are more than one footways involved as in the link above?
              *
@@ -123,8 +126,10 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
              * For all roads a car can go through point X, it is checked if not all footways that
              * go through X are on the same side of the road-polyline.
              * */
-            val nodePos = mapData.getNode(nodeId)!!.position
-            return@retainAll neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)}
+            val nodePos = mapData.getNode(nodeId)?.position
+            return@retainAll nodePos != null &&
+                neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)
+        }
 
         return footwaysByNodeId.keys
             .mapNotNull { mapData.getNode(it) }

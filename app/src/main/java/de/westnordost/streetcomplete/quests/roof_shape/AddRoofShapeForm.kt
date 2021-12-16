@@ -5,13 +5,13 @@ import android.os.Bundle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.*
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddRoofShapeForm : AImageListQuestAnswerFragment<RoofShape, RoofShape>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }
+        AnswerItem(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }
     )
 
     override val items = listOf(

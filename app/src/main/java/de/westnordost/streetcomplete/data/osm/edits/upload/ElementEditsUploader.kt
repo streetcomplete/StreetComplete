@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.data.user.StatisticsUpdater
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -18,7 +18,7 @@ class ElementEditsUploader @Inject constructor(
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
-    private val statisticsUpdater: StatisticsUpdater
+    private val statisticsController: StatisticsController
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -46,20 +46,20 @@ class ElementEditsUploader @Inject constructor(
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(questTypeName, edit.position)
 
-            elementEditsController.synced(edit, updates)
+            elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
 
             if (edit.action is IsRevertAction) {
-                statisticsUpdater.subtractOne(questTypeName, edit.position)
+                statisticsController.subtractOne(edit.questType, edit.position)
             } else {
-                statisticsUpdater.addOne(questTypeName, edit.position)
+                statisticsController.addOne(edit.questType, edit.position)
             }
 
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
 
-            elementEditsController.syncFailed(edit)
+            elementEditsController.markSyncFailed(edit)
 
             val mapData = fetchElementComplete(edit.elementType, edit.elementId)
             if (mapData != null) {

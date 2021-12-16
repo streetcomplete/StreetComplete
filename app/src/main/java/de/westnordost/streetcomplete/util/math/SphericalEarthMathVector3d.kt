@@ -88,7 +88,7 @@ fun Vector3d.toLatLon(): LatLon {
     val n = normalize()
     val φ = atan2(n.z, sqrt(n.x * n.x + n.y * n.y))
     val λ = atan2(n.y, n.x)
-    return LatLon(φ.toDegrees(), λ.toDegrees());
+    return LatLon(φ.toDegrees(), λ.toDegrees())
 }
 
 fun LatLon.toNormalOnSphere(): Vector3d {

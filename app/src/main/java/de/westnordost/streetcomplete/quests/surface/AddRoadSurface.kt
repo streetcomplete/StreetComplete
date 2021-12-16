@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -29,6 +30,8 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")

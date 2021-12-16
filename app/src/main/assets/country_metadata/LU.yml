@@ -1,9 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BCEE, BIL, P&T, Raiffeisen, BGL BNP Paribas, Post, S-Bank, Post.lu, Banque Raiffeisen, Banque Internationale à Luxembourg]
+atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]
 chargingStationOperators: [Chargy, Enovos]
-isAdvisorySpeedLimitKnown: true
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+hasAdvisorySpeedLimitSign: true
+hasBiWeeklyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
 orchardProduces: [grape, apple, pear, tomato, plum, strawberry, walnut, cherry, raspberry]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

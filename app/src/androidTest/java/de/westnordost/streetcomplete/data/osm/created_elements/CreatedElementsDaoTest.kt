@@ -34,4 +34,10 @@ class CreatedElementsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(listOf(ElementKey(ElementType.NODE, 1)), dao.getAll())
     }
+
+    @Test fun clear() {
+        dao.putAll(listOf(ElementKey(ElementType.NODE, 1)))
+        dao.clear()
+        assertTrue(dao.getAll().isEmpty())
+    }
 }

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
+import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
+import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way

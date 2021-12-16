@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.controls
 
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import android.widget.ImageButton
-import android.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -18,6 +15,7 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.edithistory.UndoDialog
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,17 +36,17 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     /* undo button is not shown when there is nothing to undo */
     private val editHistoryListener = object : EditHistorySource.Listener {
-        override fun onAdded(edit: Edit) { lifecycleScope.launch { animateInIfAnythingToUndo() }}
-        override fun onSynced(edit: Edit) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
-        override fun onDeleted(edits: List<Edit>) { lifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
-        override fun onInvalidated() { lifecycleScope.launch { updateUndoButtonVisibility() }}
+        override fun onAdded(edit: Edit) { viewLifecycleScope.launch { animateInIfAnythingToUndo() }}
+        override fun onSynced(edit: Edit) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onDeleted(edits: List<Edit>) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
+        override fun onInvalidated() { viewLifecycleScope.launch { updateUndoButtonVisibility() }}
     }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
     *  also uploading it at the same time) */
     private val uploadProgressListener = object : UploadProgressListener {
-        override fun onStarted() { lifecycleScope.launch { updateUndoButtonEnablement(false) }}
-        override fun onFinished() { lifecycleScope.launch { updateUndoButtonEnablement(true) }}
+        override fun onStarted() { viewLifecycleScope.launch { updateUndoButtonEnablement(false) }}
+        override fun onFinished() { viewLifecycleScope.launch { updateUndoButtonEnablement(true) }}
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
@@ -61,13 +59,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         super.onViewCreated(view, savedInstanceState)
 
         undoButton.setOnClickListener {
-            showUndoContextMenu()
+            showEditHistory()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launch { updateUndoButtonVisibility() }
+        viewLifecycleScope.launch { updateUndoButtonVisibility() }
         updateUndoButtonEnablement(true)
         editHistorySource.addListener(editHistoryListener)
         uploadProgressSource.addUploadProgressListener(uploadProgressListener)
@@ -80,24 +78,6 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
 
     /* ------------------------------------------------------------------------------------------ */
-
-    private fun showUndoContextMenu() {
-        val undo = 1
-        val showHistory = 2
-
-        val popup = PopupMenu(requireContext(), undoButton)
-        popup.menu.add(Menu.NONE, undo, 2, R.string.undo_last)
-        popup.menu.add(Menu.NONE, showHistory, 1, R.string.show_edit_history)
-        popup.show()
-
-        popup.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
-                undo -> lifecycleScope.launch { confirmUndo() }
-                showHistory -> showEditHistory()
-            }
-            true
-        }
-    }
 
     private fun showEditHistory() {
         listener?.onClickShowEditHistory()

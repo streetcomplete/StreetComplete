@@ -37,10 +37,10 @@
         <item android:offset="1" android:color="#FFE44848"/>
       </gradient>
     </aapt:attr>
+  </path>
   <path
       android:pathData="m29.27,67.63 l61.65,-20.55c0,-13.7 -5.48,-32.88 -12.33,-39.73l-61.65,20.55c6.85,6.85 12.33,26.03 12.33,39.73z"
       android:strokeLineJoin="round"
       android:strokeWidth="2"
       android:strokeColor="#b82e2e"/>
-  </path>
 </vector>

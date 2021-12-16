@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.view.dialogs
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.user.UserActivity
 
 /** Shows a dialog that asks the user to login */
+@SuppressLint("InflateParams")
 class RequestLoginDialog(context: Context) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_authorize_now, null, false)

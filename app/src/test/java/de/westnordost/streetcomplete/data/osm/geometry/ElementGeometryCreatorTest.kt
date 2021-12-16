@@ -143,8 +143,8 @@ class ElementGeometryCreatorTest {
             member(NODE, 1)
         ))
 
-        val ways = listOf<Way>(SIMPLE_WAY1, SIMPLE_WAY2)
-        val nodesByWayId = mapOf<Long, List<Node>>(
+        val ways = listOf(SIMPLE_WAY1, SIMPLE_WAY2)
+        val nodesByWayId = mapOf(
             0L to listOf(
                 node(0, P0),
                 node(1, P1)

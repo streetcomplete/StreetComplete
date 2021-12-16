@@ -31,7 +31,7 @@ class QuestTypeOrderControllerTest {
             Unit
         }
 
-        on(questPresetsSource.selectedQuestPresetId).thenReturn(0)
+        on(questPresetsSource.selectedId).thenReturn(0)
 
         ctrl = QuestTypeOrderController(questTypeOrderDao, questPresetsSource)
 

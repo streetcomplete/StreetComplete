@@ -15,17 +15,18 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
@@ -33,7 +34,6 @@ import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import kotlinx.android.synthetic.main.fragment_split_way.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -46,6 +46,8 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     IsCloseableBottomSheet, IsShowingQuestDetails {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
+
+    private val binding by viewBinding(FragmentSplitWayBinding::bind)
 
     @Inject internal lateinit var soundFx: SoundFx
 
@@ -60,11 +62,12 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     private val isFormComplete get() = splits.size >= if (way.isClosed) 2 else 1
 
     interface Listener {
-        fun onAddSplit(point: LatLon)
-        fun onRemoveSplit(point: LatLon)
         fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
+        parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
 
     init {
         Injector.applicationComponent.inject(this)
@@ -76,35 +79,35 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
         way = Json.decodeFromString(args.getString(ARG_WAY)!!)
         val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
-        positions = elementGeometry.polylines.single().map { LatLon(it.latitude, it.longitude) }
+        positions = elementGeometry.polylines.single()
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetContainer.respectSystemInsets(View::setMargins)
+        binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
-        splitWayRoot.setOnTouchListener { _, event ->
+        binding.splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
             false
         }
 
-        okButton.setOnClickListener { onClickOk() }
-        cancelButton.setOnClickListener { activity?.onBackPressed() }
-        undoButton.setOnClickListener { onClickUndo() }
+        binding.okButton.setOnClickListener { onClickOk() }
+        binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
+        binding.undoButton.setOnClickListener { onClickUndo() }
 
-        undoButton.isInvisible = !hasChanges
-        okButton.isInvisible = !isFormComplete
+        binding.undoButton.isInvisible = !hasChanges
+        binding.okButton.isInvisible = !isFormComplete
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-        speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+        binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
             cornerRadius, margin, margin, margin, margin
         )
 
         if (savedInstanceState == null) {
-            view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
+            binding.speechbubbleContentContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
@@ -115,7 +118,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         // see rant comment in AbstractBottomSheetFragment
         resources.updateConfiguration(newConfig, resources.displayMetrics)
 
-        bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
+        binding.bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 
     private fun onClickOk() {
@@ -145,8 +148,10 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         if (splits.isNotEmpty()) {
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
-            lifecycleScope.launch { soundFx.play(R.raw.plop2) }
-            listener?.onRemoveSplit(item.second)
+            viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
+            showsGeometryMarkersListener?.deleteMarkerForCurrentQuest(
+                ElementPointGeometry(item.second)
+            )
         }
     }
 
@@ -171,7 +176,11 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            listener?.onAddSplit(splitPosition)
+            showsGeometryMarkersListener?.putMarkerForCurrentQuest(
+                ElementPointGeometry(splitPosition),
+                R.drawable.crosshair_marker,
+                null
+            )
         }
 
         // always consume event. User should press the cancel button to exit
@@ -182,18 +191,18 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     private fun animateScissors() {
         val scissorsPos = clickPos ?: return
 
-        (scissors.drawable as? Animatable)?.start()
+        (binding.scissors.drawable as? Animatable)?.start()
 
-        scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
-            leftMargin = (scissorsPos.x - scissors.width/2).toInt()
-            topMargin = (scissorsPos.y - scissors.height/2).toInt()
+        binding.scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
+            leftMargin = (scissorsPos.x - binding.scissors.width/2).toInt()
+            topMargin = (scissorsPos.y - binding.scissors.height/2).toInt()
         }
-        scissors.alpha = 1f
+        binding.scissors.alpha = 1f
         val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)
-        animator.setTarget(scissors)
+        animator.setTarget(binding.scissors)
         animator.start()
 
-        lifecycleScope.launch { soundFx.play(R.raw.snip) }
+        viewLifecycleScope.launch { soundFx.play(R.raw.snip) }
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {
@@ -241,15 +250,15 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
                         onConfirmed()
                     }
-                    .setNegativeButton(R.string.confirmation_discard_negative, null)
+                    .setNegativeButton(R.string.short_no_answer_on_button, null)
                     .show()
             }
         }
     }
 
     private fun animateButtonVisibilities() {
-        if (isFormComplete) okButton.popIn() else okButton.popOut()
-        if (hasChanges) undoButton.popIn() else undoButton.popOut()
+        if (isFormComplete) binding.okButton.popIn() else binding.okButton.popOut()
+        if (hasChanges) binding.undoButton.popIn() else binding.undoButton.popOut()
     }
 
     companion object {

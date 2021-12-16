@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
@@ -28,6 +29,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
             "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
+
+    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
@@ -144,6 +147,10 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             WrongBuildingType -> {
                 changes.modify("building", "yes")
             }
+            is HouseNameAndHouseNumber -> {
+                changes.add("addr:housenumber", answer.number)
+                changes.add("addr:housename", answer.name)
+            }
         }
     }
 }
@@ -154,17 +161,19 @@ private val notABuildingFilter by lazy { """
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
-      !building and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+      (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+      and !building
     """.toElementFilterExpression()}
 
 private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
-      and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+      and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
     """.toElementFilterExpression()}
 
 private val nodesWithAddressFilter by lazy { """
-   nodes with ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+   nodes with
+     addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
     """.toElementFilterExpression()}
 
 private val buildingsWithMissingAddressFilter by lazy { """

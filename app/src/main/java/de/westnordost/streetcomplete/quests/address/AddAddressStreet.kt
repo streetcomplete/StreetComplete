@@ -9,13 +9,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     private val filter by lazy { """
         nodes, ways, relations with
-          addr:housenumber and !addr:street and !addr:place and !addr:block_number
+          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number
           or addr:streetnumber and !addr:street
     """.toElementFilterExpression() }
 
@@ -31,10 +32,12 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
 
+    override val questTypeAchievements = listOf(POSTMAN)
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["addr:streetnumber"] ?: tags["addr:housenumber"])
+        arrayOfNotNull(tags["addr:streetnumber"] ?: tags["addr:housenumber"] ?: tags["addr:housename"])
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()

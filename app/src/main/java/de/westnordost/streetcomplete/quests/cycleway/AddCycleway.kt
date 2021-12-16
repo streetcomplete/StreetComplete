@@ -12,8 +12,15 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-
-import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
+import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
+import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
+import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
+import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
@@ -52,6 +59,8 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
     override val isSplitWayEnabled = true
 
+    override val questTypeAchievements = listOf(BICYCLIST)
+
     override fun getTitle(tags: Map<String, String>) : Int =
         if (createCyclewaySides(tags, false) != null)
             R.string.quest_cycleway_resurvey_title
@@ -83,7 +92,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
             if (maybeSeparatelyMappedCyclewayGeometries.isNotEmpty()) {
                 // filter out roads with missing cycleways that are near footways
                 roadsWithMissingCycleway.removeAll { road ->
-                    val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
+                    val minDistToWays = getMinDistanceToWays(road.tags).toDouble()
                     val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
                     roadGeometry?.isNearAndAligned(
                         minDistToWays,
@@ -107,13 +116,12 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
-    private fun estimatedWidth(tags: Map<String, String>): Float {
-        val width = tags["width"]?.toFloatOrNull()
-        if (width != null) return width
-        val lanes = tags["lanes"]?.toIntOrNull()
-        if (lanes != null) return lanes * 3f
-        return 12f
-    }
+    private fun getMinDistanceToWays(tags: Map<String, String>): Float =
+        (
+            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags) ) +
+            (estimateParkingOffRoadWidth(tags) ?: 0f)
+        ) / 2f +
+        4f // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -274,6 +282,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
           - anything explicitly tagged as no bicycles or having to use separately mapped sidepath
           - if not already tagged with a cycleway: streets with low speed or that are not paved, as
             they are very unlikely to have cycleway infrastructure
+                - for highway=residential without speed limit tagged assume low speed
           - if not already tagged, roads that are close (15m) to foot or cycleways (see #718)
           - if already tagged, if not older than 4 years or if the cycleway tag uses some unknown value
         */
@@ -323,8 +332,9 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         """.toElementFilterExpression() }
 
         private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
-            ways with highway ~ path|footway|cycleway
+            ways with highway ~ path|footway|cycleway|construction
         """.toElementFilterExpression() }
+        // highway=construction included, as situation often changes during and after construction
 
         private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
             """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""

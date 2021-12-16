@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
@@ -142,7 +142,7 @@ import kotlin.collections.ArrayList
 
         // first remove old tags
         for ((key, value) in previousTags) {
-            val isOkToRemove = KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED.none { it.matches(key) }
+            val isOkToRemove = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }
             if (isOkToRemove && !newTags.containsKey(key)) {
                 changesList.add(StringMapEntryDelete(key, value))
             }

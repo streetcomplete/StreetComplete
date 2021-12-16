@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Eșec la autorizare: Trebuiesc acordate toate permisiunile listate"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Setări"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Comunicare"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"O să verific"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Ați lăsat acest câmp gol"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Alternativ, lăsați o notă?"</string>
@@ -157,9 +151,6 @@
     <string name="confirmation_cancel_prev_download_title">"Se oprește căutarea curentă și se reia aici?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Se caută quest-uri..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Localizarea este dezactivată. Deschidem setările pentru a o activa acum?"</string>
 
     <!-- Fuzzy -->
@@ -208,6 +199,8 @@
     <string name="quest_roofShape_answer_many">"Are câteva forme distincte"</string>
     <string name="map_btn_zoom_out">"Depărtează"</string>
     <string name="map_btn_zoom_in">"Mareste"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; Ah, cineva căruia îi pasă de intimitate, drăguț! Cred că am doar vești bune pentru tine: &lt;/p&gt;
 &lt;p&gt; &lt;b&gt; Contribuții directe &lt;/b&gt; &lt;/p&gt;
 &lt;p&gt;
@@ -257,10 +250,8 @@ Cu toate acestea, înainte de a încărca modificările, aplicația verifică cu
     <string name="quest_surface_value_sand">"Nisip"</string>
     <string name="quest_surface_value_sett">"Dungat"</string>
     <string name="quest_surface_value_wood">"Lemn"</string>
-    <string name="quest_placeName_title">"Care este denumirea acestui loc?"</string>
     <string name="quest_sidewalk_title">"Această stradă are un trotuar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Unde este această stradă?"</string>
-    <string name="quest_cyclewaySurface_title">"Ce tip de suprafață are această pistă de biciclete?"</string>
     <string name="quest_serviceType_title">"Ce fel de drum de serviciu este acesta?"</string>
     <string name="quest_oneway_title">"Este o stradă cu sens unic?"</string>
     <string name="quest_address_title">"Ce număr are această clădire?"</string>
@@ -396,7 +387,11 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Intrare %s are acces pentru scaunul cu rotile?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Stația de tren %s are acces pentru scaunul cu rotile?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Locația %s are acces pentru scaunul cu rotile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Prin parțial se înțelege că nu este necesar mai mult de un pas pentru a intra in locație și că majoritate spațiilor din interior au facilitați pentru scaunul cu rotile."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Prin parțial se înțelege că nu este necesar mai mult de un pas pentru a intra."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Există abrevieri in numele %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Are masă de schimbare a scutecelor copiilor această toaletă?"</string>
@@ -424,7 +419,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_fireHydrant_type_wall">"Zid"</string>
     <string name="quest_fireHydrant_type_pond">"Iaz"</string>
     <string name="credits_contributors">"Accesează &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;lista completă pe GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Accesează&lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiectul în POEditor&lt;/a&gt; pentru o listă completă."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Traduceri"</string>
@@ -489,8 +483,9 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_way_lit_24_7">"Este luminat și ziua și noaptea"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nu pot scana aici. Încercați să apropiați mai puțin sau înclinați mai puțin harta."</string>
     <string name="quest_crossing_type_title">"Ce fel de trecere este aceasta?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Trecerea de pietoni nemarcată"</string>
-    <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Înapoi"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Roșii"</string>
@@ -503,6 +498,8 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_parkingType_underground">"Garaj subteran"</string>
     <string name="quest_parkingType_multiStorage">"Garaj"</string>
     <string name="quest_toiletAvailability_name_title">"%s are toaletă?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Care este materialul acestui stâlp de tensiune?"</string>
     <string name="quest_powerPolesMaterial_wood">"Lemn"</string>
     <string name="quest_powerPolesMaterial_metal">"Oțel"</string>
@@ -514,7 +511,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_buildingLevels_levelsLabel2">"nivele normale (nenumarând acoperișul)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Diferă funcție de partea clădirii"</string>
     <string name="quest_buildingLevels_answer_description">"In această situație, introduceți valoarea pentru cea mai înaltă parte a clădirii."</string>
-    <string name="unglue_hint">"Atingeți pentru a dezlipi vizualizarea din poziție"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Benzile  acestui drum aici sunt separate fizic (adică printr-o barieră)? Limita de viteză implicită depinde de bandă."</string>
     <string name="about_category_feedback">"Contribuiți"</string>
     <string name="quest_leave_new_note_photo">"Atașați o fotografie"</string>
@@ -597,10 +593,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_parking_fee_title">"Este o parcare cu plată?"</string>
     <string name="quest_cycleway_value_lane_soft">"pistă pentru biciclete (marcaje punctate)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Piatră neacoperită"</string>
-    <string name="quest_parking_access_title">"Este restricționată parcarea aici?"</string>
-    <string name="quest_parking_access_private">"Acces privat"</string>
-    <string name="quest_parking_access_yes">"Este deschis publicului (cu sau fără plată)"</string>
-    <string name="quest_parking_access_customers">"Este doar pentru clienți"</string>
     <string name="quest_streetName_pedestrian_title">"Care este numele acestei străzi pietonale?"</string>
     <string name="quest_streetSurface_square_title">"Ce tip de suprafață are această piață?"</string>
     <string name="quest_streetSurface_square_name_title">"Ce timp de suprafață are piața %s aici?"</string>
@@ -638,7 +630,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți. În special, misiunea oneway solicită un API, găzduit și pe westnordost.de, despre candidații probabili pentru oneways. &lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (lăsați comentariu)"</string>
     <string name="pref_quests_reset">"Resetați atât activarea misiunii, cât și comanda la valoarea implicită?"</string>
-    <string name="quest_buildingType_title2">"Cum a fost construită această clădire?"</string>
     <string name="quest_generic_item_invalid_value">"Vă rugăm să selectați o valoare mai exactă."</string>
     <string name="quest_buildingType_answer_multiple_types">"Are mai multe scopuri"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Pur și simplu selectați scopul principal al acestei clădiri. De exemplu. dacă există un magazin la parter cu apartamente deasupra acestuia, acesta este în continuare un bloc de apartamente."</string>
@@ -743,7 +734,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Ce definește limita de viteză?"</string>
-    <string name="notification_channel_download">"Descarcă"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Este acest loc de joacă accesibil public?"</string>
@@ -800,6 +790,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_tracktype_grade5">"Moale"</string>
     <string name="quest_building_underground_name_title">"%s este complet subterană?"</string>
     <string name="quest_building_underground_title">"Această clădire este in întregime sub pământ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Prin parțial se înțelege că nu este necesar mai mult de un pas pentru a fi accesat."</string>
     <string name="quest_wheelchairAccess_outside_title">"Este acest loc accesibil scaunului cu rotile?"</string>
     <string name="quest_traffic_signals_button_title">"Acest semafor are buton de solicitare a traversării?"</string>
@@ -820,6 +812,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_sidewalk_value_yes">"trotuar"</string>
     <string name="quest_sidewalk_value_no">"fără trotuar:"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Este accesul pietonilor interzis pe această stradă?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Această stradă a fost etichetată ca neavând trotuar pe ambele părți. În cazul în care există un trotuar , dar este afișat ca o alee separată, vă rugăm să  selectați \"trotuar\"."</string>
     <string name="quest_buildingType_title">"Ce fel de clădire este aceasta?"</string>
     <string name="pref_title_theme_select">"Selectați tema"</string>
@@ -844,6 +838,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_leaf_type_needles">"Ace"</string>
     <string name="quest_leaf_type_broadleaved">"Frunze late"</string>
     <string name="quest_leaf_type_mixed">"Ambele sunt prezente"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Ce fel de suprafață are pista de biciclete aici?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Diferă pe parcurs ..."</string>
     <string name="quest_split_way_description">"Dacă diferă de-a lungul drumului, primul pas este să împărțiți drumul. După aceea, se poate răspunde separat pentru fiecare parte divizată.
@@ -851,6 +847,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_split_way_tutorial">"Atingeți drumul pentru a îl împărți în punctul (punctele) în care răspunsul diferă. Încercați să fiți cât mai precis posibil, puteți mări ca de obicei."</string>
     <string name="quest_split_way_too_imprecise">"Vă rog să măriți mai mult"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Sunt destul de multe scindări. Puteți oricând face împărțirea, chiar și mai târziu."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Care este suprafața trotuarului aici?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"La %s ,toaleta este accesibilă scaunului fu rotile?"</string>
     <string name="quest_tactilePaving_title_tram">"Această stație de tramvai are pavaje tactile?"</string>
@@ -860,7 +858,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_maxweight_answer_other_sign">"Semnul arată diferit..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Doriți să lăsați o notă? O notă cu o fotografie va permite altor cartografi să se ocupe de ea."</string>
     <string name="quest_generalFee_title">"Trebuie să plătești pentru a intra la %s?"</string>
-    <string name="quest_laundrySelfService_title">"Este această spălătorie o spălătorie cu autoservire?"</string>
     <string name="quest_handrail_title">"Au aceste scări o balustradă?"</string>
     <string name="quest_openingHours_no_name_title">"Care este programul de funcționare a acestui loc? (%s)"</string>
     <string name="about_summary_current_version">"Versiunea curentă: %s"</string>
@@ -888,6 +885,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_recycling_glass_title">"Se pot recicla aici doar sticle și borcane din sticlă sau orice tip de sticlă?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Exemple de sticlă care deseori nu sunt acceptate: sticlă călită, geamuri, sticlărie, becuri sau oglinzi."</string>
     <string name="about_title_changelog">"Istoricul versiunilor"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Ce mai este nou?"</string>
     <string name="about_title_rate">"Notați aplicația"</string>
     <string name="about_summary_rate">"în Google Play"</string>
@@ -905,6 +904,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_tourism_information_terminal">"Dispozitiv de informare"</string>
     <string name="quest_tourism_information_map">"Hartă"</string>
     <string name="quest_tourism_information_guidepost">"Ghid"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Este pentru deșeuri generale"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Deci, acesta este un container pentru orice deșeuri, cum ar fi deșeurile menajere sau comerciale?"</string>
     <string name="quest_accepts_cash_title">"%s acceptă plăți cu numerar?"</string>
@@ -913,12 +914,16 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="user_logout">"Deconectare"</string>
     <string name="osm_profile">"Profil OSM"</string>
     <string name="next">"Mai departe"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"Să începem!"</string>
     <string name="tutorial_welcome_to_osm">"Bun venit la OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"harta wiki mondială gratuită"</string>
     <string name="tutorial_intro">"StreetComplete facilitează contribuția la OpenStreetMap.
 Se caută automat detaliile care lipsesc în vecinătatea ta: piste pentru biciclete, numere de case, orele de deschidere și multe altele ..."</string>
     <string name="tutorial_solving_quests">"Odată găsite, detaliile lipsă vor apărea pe hartă ca misiuni."</string>
+
+    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Ori de câte ori sunteți nesigur, puteți răspunde oricând „Nu pot spune” și puteți lăsa o notă.
 
 În cele din urmă, nu uitați să vă mențineți în siguranță: fiți conștienți de împrejurimile dvs. și nu intrați pe proprietatea privată."</string>
@@ -960,6 +965,8 @@ Se caută automat detaliile care lipsesc în vecinătatea ta: piste pentru bicic
 
     <!-- Fuzzy -->
     <string name="link_wiki_description">"Pagina de Wiki este punctul tău de plecare către tot ceea ce are legătură cu OpenStreetMap"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Sunteți nou în OpenStreetMap? Acesta este un ghid pentru începători"</string>
     <string name="link_neis_one_description">"O colecție uriașă de statistici pentru colaboratorii OpenStreetMap, cum ar fi unde și cum ați contribuit, cine altcineva este în jurul dvs., plus clasamente"</string>
     <string name="link_welcome_mat_description">"Informații generale despre OpenStreetMap și cum să lucrați cu OSM ca organizație"</string>
@@ -977,6 +984,8 @@ Se caută automat detaliile care lipsesc în vecinătatea ta: piste pentru bicic
     <string name="link_openinframap_description">"O hartă care arată infrastructura de energie electrică, telecomunicații, gaze și petrol"</string>
     <string name="link_openorienteeringmap_description">"Creați hărți printabile pentru sporturi de orientare"</string>
     <string name="link_openstreetbrowser_description">"O hartă ce permite a răsfoi caracteristicile hărții OpenStreetMap după categorie"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Blogul săptămânal de știri despre ceea ce se întâmplă în lumea OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Creați afișe diagramă  ale unui oraș sau cartier"</string>
     <string name="achievement_first_edit_title">"Prima provocare rezolvată"</string>
@@ -1001,6 +1010,8 @@ Aceste date sunt esențiale nu numai pentru poștaș, ci și pentru orice sistem
     <string name="achievement_veg_title">"Bun cu animalele"</string>
     <string name="achievement_veg_solved_X">"Ați rezolvat %d căutări interesante pentru persoanele care trăiesc cu o dietă fără carne!"</string>
     <string name="achievement_car_title">"Pe drum"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Ați rezolvat %d misiuni care îmbunătățesc detaliile infrastructurii stradale, punând strada în OpenStreetMap!"</string>
     <string name="unread_messages_message">"Aveți %d mesaje necitite în căsuța de e-mail"</string>
     <string name="unread_messages_button">"Deschide căsuța de mail"</string>
@@ -1024,6 +1035,8 @@ global"</string>
 activitate"</string>
     <string name="user_profile_achievement_levels">"Niveluri
 de realizări"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Cărei străzi numărul (de imobil) %s aparține?"</string>
     <string name="quest_address_street_no_named_streets">"Nu aparține unei străzi anume"</string>
     <string name="quest_address_street_place_name_label">"Numele locului:"</string>
@@ -1048,14 +1061,16 @@ de realizări"</string>
     <string name="quest_board_type_map_title">"Este doar o hartă?"</string>
     <string name="quest_board_type_map_description">"Dacă plăcuța este despre un anumit subiect, vă rugăm să îl specificați, indiferent dacă acesta include și o hartă. De exemplu, o placă de transport public poate avea o hartă a rutelor de autobuz. Dacă subiectul nu este listat printre răspunsurile disponibile, vă recomandăm să lăsați o notă"</string>
     <string name="quest_surface_detailed_answer_impossible">"Suprafețe multiple ..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Sunteți sigur că este imposibil să specificați suprafața? Rețineți opțiunea de răspuns \"Diferă pe parcurs\" care vă permite să împărțiți pe secțiuni pe parcurs ce se schimbă suprafața. Vă rugăm să folosiți  \"Nu pot spune\" dacă există o singură suprafață, dar nu este disponibilă ca răspuns."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Vă rugăm să specificați pe scurt natura suprafeței de aici, de exemplu \"nisipos cu porțiuni de pietriș\". Lungimea textului este limitată la 255 de caractere."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internațional"</string>
-    <string name="quest_streetName_menuItem_romanized">"în grafie latină"</string>
     <string name="quest_buildingType_terrace2">"Case așezate pe rânduri"</string>
-    <string name="quest_oneway_tutorial">"Drumul din ilustrație este poziționat la fel ca pe hartă la locația pinului. Rețineți direcția indicată."</string>
     <string name="at_housename">"numele casei %s:"</string>
     <string name="at_conscription_and_street_number">"numărul de recrutare %1$s, numărul de orientare %2$s:"</string>
     <string name="at_conscription_number">"numărul de recrutare %s:"</string>
@@ -1098,6 +1113,8 @@ de realizări"</string>
     <string name="quest_steps_incline_up">"Pe aici in sus"</string>
     <string name="quest_step_count_title">"Câte trepte sunt aici?"</string>
     <string name="quest_traffic_signals_sound_title">"Există semnale sonore pentru nevăzători aici?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Au aceste semafoare un mod de indicare tactil pentru nevăzători atunci când este sigur să traverseze?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Indicație: Adesea acesta este un buton vibrant sau un con rotativ pe partea inferioară a carcasei butonului semaforului."</string>
     <string name="quest_busStopRef_title">"Care este numărul de referință al acestei stații de autobuz?"</string>
@@ -1110,6 +1127,8 @@ de realizări"</string>
     <string name="quest_steps_ramp_bicycle">"Rampă pentru bicicletă"</string>
     <string name="quest_steps_ramp_stroller">"Rampă pentru cărucior"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampă pentru scaun cu rotile"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Care este numele băncii pentru acest ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Cine acceptă donații pentru acest coș de îmbrăcăminte?"</string>
     <string name="quest_charging_station_operator_title">"Care este operatorul pentru această stație de încărcare?"</string>
@@ -1143,6 +1162,8 @@ de realizări"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Este un viraj la stânga cu două benzi"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Este corect?"</string>
     <string name="quest_maxheight_below_bridge_title">"Care este limita de înălțime sub acest pod?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Dacă nu se aplică pe întregul drum, luați în considerare răspunsul \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Există pavaj tactil pe această bordură?"</string>
     <string name="quest_kerb_height_title">"Care este înălțimea aceste borduri?"</string>
@@ -1150,14 +1171,22 @@ de realizări"</string>
     <string name="quest_kerb_height_lowered">"Un pic mai sus decât suprafața drumului"</string>
     <string name="quest_kerb_height_raised">"Bordură înaltă"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampa de bordură"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Specificați numărul total de benzi marcate (ambele sensuri) care pot fi utilizate de traficul auto. Deci, benzile de bicicletă și benzile de parcare dedicate nu contează.
 Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specificați numărul total de benzi marcate care pot fi utilizate de traficul auto. Deci, benzile de bicicletă și benzile de parcare dedicate nu contează.
 Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</string>
     <string name="quest_surface_value_rock">"Piatră"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Camioanele înalte pot trece"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Camioanele înalte nu pot trece"</string>
     <string name="quest_address_street_hint">"Atingeți drumul pe hartă"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Trecere de pietoni marcată"</string>
     <string name="quest_parkingType_street_side">"Parcare chiar lângă drum"</string>
     <string name="quest_parkingType_lane">"Parcare pe carosabil"</string>
@@ -1169,11 +1198,16 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="osm_element_gone_description">"Sunteți sigur că nu există, nici măcar într-o locație ușor diferită? Când aveți dubii, mai bine lăsați o notă."</string>
     <string name="osm_element_gone_confirmation">"Nu există"</string>
     <string name="leave_note">"Lăsați o notă"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Ce anume este acum în această locație?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Nu este nimic"</string>
     <string name="quest_shop_gone_replaced_answer">"Un(O)"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Introduceți tipul locației aici"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Nu știu ce este asta. Luați în considerare lăsarea unei note."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Acest magazin a fost închis. Ce este aici acum?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Numărul de benzi diferă pentru fiecare parte"</string>
     <string name="quest_pitchSurface_title">"Ce tip de suprafață are acest teren de sport?"</string>
@@ -1181,6 +1215,8 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_dietType_kosher_name_title">"%s oferă produse kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Produsele Kosher trebuie să fie pregătite în conformitate cu reguli speciale, agențiile de certificare kashrut marcând produsele în conformitate."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nu există bandă de biciclete"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ca de obicei, atingeți o parte a ilustrației, selectați un răspuns adecvat și faceți același lucru pentru cealaltă parte. Rețineți toate opțiunile disponibile: unele cazuri nu sunt evidente, cum ar fi un drum cu sens unic care permite bicicliștilor în ambele direcții!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selectat că nu există  pistă de ciclism"</string>
     <string name="quest_construction_completed_at_known_date">"Va fi finalizată la data de..."</string>
@@ -1212,9 +1248,9 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="team_mode_deactivated">"Modul echipă este dezactivat"</string>
     <string name="quest_pitchLit_title">"Este iluminat acest teren de sport?"</string>
     <string name="quest_pitchLit_title_track">"Această pistă sportivă este iluminată?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Trecere controlată de semafoare"</string>
-    <string name="undo_last">"Anulați ultima modificare"</string>
-    <string name="show_edit_history">"Afișați istoricul editării"</string>
     <string name="undo_confirm_title2">"Anulați următoarea editare?"</string>
     <string name="synced">"Sincronizat"</string>
     <string name="toast_undo_unavailable">"Această editare este deja sincronizată și nu poate fi anulată"</string>
@@ -1302,13 +1338,14 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="default_disabled_msg_roofShape">"Acest tip de misiune este dezactivat în mod implicit, deoarece formele acoperișului nu sunt adesea vizibile cu ușurință de pe stradă. Acest tip de misiune consumă, de asemenea, destul de mult timp; în majoritatea cazurilor, este mai ușor și mai eficient să cartografiați acest lucru din imagini aeriene acasă."</string>
     <string name="quest_religion_animist">"Animist"</string>
     <string name="quest_construction_steps_title">"Au fost parcurși acești pași?"</string>
-    <string name="questList_disabled_at_day">"Afișează noaptea"</string>
     <string name="pref_quests_deselect_all">"Deselecatam toate provicările?"</string>
     <string name="quest_buildingType_boathouse">"Casa plutitoare"</string>
     <string name="quest_buildingType_allotment_house">"Dependință pentru unelte"</string>
     <string name="quest_buildingType_grandstand">"Tribună"</string>
     <string name="action_search">"Caută"</string>
     <string name="action_manage_presets">"Gestionare elemente prestabilite"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Câte persoane cartografiază? Introduceți același număr în telefonul fiecăruia."</string>
     <string name="team_mode_choose_color2">"În continuare, fiecare trebuie să selecteze o culoare diferită. Alege-ți-o pe a dumneavoastră:"</string>
     <string name="link_organic_maps_description">"Aplicație de cartografiere pentru călători, excursioniști și bicicliști care funcționează offline"</string>
@@ -1324,5 +1361,50 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_presets_preset_name">"Denumire element predefinit"</string>
     <string name="quest_presets_default_name">"Implicit"</string>
     <string name="quest_presets_selected">"Selectat"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Stergeți elementul preselectat \"%s\"? Selectarea misiunii și ordinea pentru aceasta se vor pierde irevocabil."</string>
+    <string name="notification_syncing">"Sincronizăm datele..."</string>
+    <string name="notification_channel_sync">"Sincronizare date"</string>
+    <string name="quest_board_type_sport">"Sport, Exerciții"</string>
+    <string name="quest_generic_hasFeature_optional">"Opțional"</string>
+    <string name="quest_buildingType_bridge">"Punte între clădiri"</string>
+    <string name="quest_laundrySelfService_title2">"Această spălătorie este cu autoservire?"</string>
+    <string name="quest_dietType_halal_name_title">"%s oferă produse Halal?"</string>
+    <string name="quest_dietType_explanation_halal">"Produsele Halal trebuiesc preparate după reguli speciale ale unor agenții certificate Halal ce vor marca produsele corespunzătoare."</string>
+    <string name="quest_picnicTableCover_title">"Este acoperită această masă de picnic (este protejată de ploaie)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Pe această parte sunt scări"</string>
+    <string name="quest_barrier_type_passage_conversion">"Transformat într-un pasaj într-un perete/gard/etc."</string>
+    <string name="quest_barrier_type_gate_conversion">"Transformată într-o poartă"</string>
+    <string name="quest_traffic_calming_type_title">"Ce fel de calmare a traficului este acesta?"</string>
+    <string name="quest_traffic_calming_type_bump">"Cucui (mai scurt)"</string>
+    <string name="quest_traffic_calming_type_hump">"Cocoașă (mai lung)"</string>
+    <string name="quest_traffic_calming_type_table">"Stil masă (partea de sus plată)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Pernă (nedenivelată, pentru vehicule late)"</string>
+    <string name="quest_traffic_calming_type_choker">"Drum îngustat"</string>
+    <string name="quest_traffic_calming_type_island">"Insulă"</string>
+    <string name="quest_traffic_calming_type_chicane">"Curbă(e) creată(e) deliberat"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Bandă cu denivelări"</string>
+    <string name="quest_surface_value_concrete_plates">"Plăci de beton"</string>
+    <string name="quest_surface_value_concrete_lanes">"Alei de beton"</string>
+    <string name="quest_fireHydrant_diameter_title">"Ce diametru este specificat pe semnul pentru acest hidrant de incendiu?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Acest diametru pare a fi neplauzibil."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Sunteți sigur(ă)? Uneori diametrul este specificat chiar pe hidrant."</string>
+    <string name="quest_diet_answer_no_food">"Nu are mâncare"</string>
+    <string name="short_no_answer_on_button">"Nu"</string>
+    <string name="restore_confirmation">"Restaurare"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"Restaurăm toate provocările ascunse anterior?"</string>
+    <string name="quest_parking_access_title2">"Cine are permisiunea de a parca aici? Parcarea poate fi gratuită sau cu plată."</string>
+    <string name="quest_access_yes">"Orice persoană din publicul general"</string>
+    <string name="quest_access_customers">"Orice persoană ce vizitează o locație specifică(ex. doar clienții)"</string>
+    <string name="quest_access_private">"Numai persoane singure, cu permisiune"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Orele de colectare pentru această cutie poștală sunt încă corecte?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Orele de colectare pentru cutia poștală %s sunt încă corecte?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Nerecunoscut. Încercați să introduceți tipul de loc, de exemplu „brutărie”. În caz contrar, luați în considerare să lăsați o notă."</string>
+    <string name="quest_bicycle_barrier_type_title">"Ce tip de barieră pentru biciclete este aceasta?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal pe sensul de mers"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Pasaj îngustat, mai mic în partea de sus"</string>
+    <string name="quest_barrier_bicycle_type_single">"Trecere între două bariere"</string>
 </resources>

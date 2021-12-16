@@ -136,13 +136,20 @@ class CheckShopTypeTest {
         )
     }
 
-    // see KEYS_THAT_SHOULD_NOT_BE_REMOVED_WHEN_SHOP_IS_REPLACED
-    @Test fun `apply shop with tags answer clears all tags except for a few ones`() {
+    // see KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+    @Test fun `apply shop with tags answer clears only specified known safe-to-remove tags`() {
         questType.verifyAnswer(
             mapOf(
                 "building" to "yes", // <- should not be cleared
                 "disused:amenity" to "yes",
                 "phone" to "123456",
+                "ref" to "1111",
+                "fee" to "yes",
+                "nycdoitt:bin" to "22222",
+                "barrier" to "wall",
+                "office" to "it",
+                "tourism" to "information",
+                "information" to "office",
                 "name" to "Juppiebude"
             ),
             ShopType(mapOf("shop" to "ice_cream")),
@@ -150,6 +157,11 @@ class CheckShopTypeTest {
             StringMapEntryDelete("disused:amenity", "yes"),
             StringMapEntryDelete("phone", "123456"),
             StringMapEntryDelete("name", "Juppiebude"),
+            StringMapEntryDelete("ref", "1111"),
+            StringMapEntryDelete("fee", "yes"),
+            StringMapEntryDelete("office", "it"),
+            StringMapEntryDelete("tourism", "information"),
+            StringMapEntryDelete("information", "office"),
         )
     }
 }

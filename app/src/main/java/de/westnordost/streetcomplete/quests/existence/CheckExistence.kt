@@ -5,15 +5,15 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
-import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
-import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
 class CheckExistence(
@@ -61,7 +61,7 @@ class CheckExistence(
             or amenity = drinking_water
           )
           and (${lastChecked(6.0)})
-        )) and access !~ no|private and (!seasonal or seasonal=no)
+        )) and access !~ no|private and (!seasonal or seasonal = no)
     """.toElementFilterExpression()
     }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
@@ -69,11 +69,10 @@ class CheckExistence(
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
     private val nodesWaysFilter by lazy { """
-        nodes, ways with (
-            leisure = pitch and sport = table_tennis
-        )
-        and access !~ no|private
-        and (${lastChecked(4.0)})
+        nodes, ways with
+          (leisure = pitch and sport = table_tennis)
+          and access !~ no|private
+          and (${lastChecked(4.0)})
     """.toElementFilterExpression() }
 
     /* not including bicycle parkings, motorcycle parkings because their capacity is asked every
@@ -82,6 +81,8 @@ class CheckExistence(
     override val commitMessage = "Check if element still exists"
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
+
+    override val questTypeAchievements = listOf(CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>): Int =
         if (tags.containsAnyKey("name", "brand", "ref", "operator"))
@@ -100,14 +101,22 @@ class CheckExistence(
         (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
         && hasAnyName(element.tags)
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+        /* put markers for objects that are exactly the same as for which this quest is asking for
+           e.g. it's a ticket validator? -> display other ticket validators. Etc. */
+        val feature = featureDictionaryFuture.get()
+            .byTags(element.tags)
+            .isSuggestion(false) // not brands
+            .find()
+            .firstOrNull() ?: return emptySequence()
+
+        return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
+    }
+
     override fun createForm() = CheckExistenceForm()
 
     override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
-        val otherCheckDateKeys = LAST_CHECK_DATE_KEYS.filterNot { it == SURVEY_MARK_KEY }
-        for (otherCheckDateKey in otherCheckDateKeys) {
-            changes.deleteIfExists(otherCheckDateKey)
-        }
+        changes.updateCheckDate()
     }
 
     private fun lastChecked(yearsAgo: Double): String = """
@@ -118,3 +127,5 @@ class CheckExistence(
     private fun hasAnyName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }
+
+private fun <X,Y> Map<X,Y>.containsAll(other: Map<X,Y>) = other.all { this[it.key] == it.value }

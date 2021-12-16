@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.*
 import org.junit.Test
@@ -13,7 +14,7 @@ class CombineFiltersTest {
         on(f1.matches(any())).thenReturn(true)
         val f2: ElementFilter = mock()
         on(f2.matches(any())).thenReturn(false)
-        assertFalse(CombineFilters(f1, f2).matches(null))
+        assertFalse(CombineFilters(f1, f2).matches(node()))
     }
 
     @Test fun `does match if all match`() {
@@ -21,14 +22,6 @@ class CombineFiltersTest {
         on(f1.matches(any())).thenReturn(true)
         val f2: ElementFilter = mock()
         on(f2.matches(any())).thenReturn(true)
-        assertTrue(CombineFilters(f1, f2).matches(null))
-    }
-
-    @Test fun `concatenates OQL`() {
-        val f1: ElementFilter = mock()
-        on(f1.toOverpassQLString()).thenReturn("hell")
-        val f2: ElementFilter = mock()
-        on(f2.toOverpassQLString()).thenReturn("o")
-        assertEquals("hello", CombineFilters(f1, f2).toOverpassQLString())
+        assertTrue(CombineFilters(f1, f2).matches(node()))
     }
 }

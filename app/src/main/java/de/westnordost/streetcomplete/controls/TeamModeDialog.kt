@@ -9,7 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.controls.TeamModeColorCircleView.Companion.MAX_TEAM_SIZE
-import kotlinx.android.synthetic.main.dialog_team_mode.view.*
+import de.westnordost.streetcomplete.databinding.DialogTeamModeBinding
 
 /** Shows a dialog containing the team mode settings */
 class TeamModeDialog(
@@ -19,10 +19,9 @@ class TeamModeDialog(
 
     private var selectedTeamSize: Int? = null
     private var selectedIndexInTeam: Int? = null
+    private val binding = DialogTeamModeBinding.inflate(LayoutInflater.from(context))
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.dialog_team_mode, null)
-
         val adapter = TeamModeIndexSelectAdapter()
         adapter.listeners.add(object : TeamModeIndexSelectAdapter.OnSelectedIndexChangedListener {
             override fun onSelectedIndexChanged(index: Int?) {
@@ -30,23 +29,23 @@ class TeamModeDialog(
                 updateOkButtonEnablement()
             }
         })
-        view.colorCircles.adapter = adapter
-        view.colorCircles.layoutManager = GridLayoutManager(context, 3)
+        binding.colorCircles.adapter = adapter
+        binding.colorCircles.layoutManager = GridLayoutManager(context, 3)
 
-        view.teamSizeInput.addTextChangedListener { editable ->
+        binding.teamSizeInput.addTextChangedListener { editable ->
             selectedTeamSize = parseTeamSize(editable.toString())
             updateOkButtonEnablement()
 
             if (selectedTeamSize == null) {
-                view.introText.isGone = false
-                view.teamSizeHint.isGone = false
-                view.colorHint.isGone = true
-                view.colorCircles.isGone = true
+                binding.introText.isGone = false
+                binding.teamSizeHint.isGone = false
+                binding.colorHint.isGone = true
+                binding.colorCircles.isGone = true
             } else {
-                view.introText.isGone = true
-                view.teamSizeHint.isGone = true
-                view.colorHint.isGone = false
-                view.colorCircles.isGone = false
+                binding.introText.isGone = true
+                binding.teamSizeHint.isGone = true
+                binding.colorHint.isGone = false
+                binding.colorCircles.isGone = false
                 adapter.count = selectedTeamSize!!
             }
         }
@@ -60,7 +59,7 @@ class TeamModeDialog(
 
         window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
-        setView(view)
+        setView(binding.root)
     }
 
     private fun updateOkButtonEnablement() {

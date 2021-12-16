@@ -24,7 +24,7 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
 
     val listeners: MutableList<OnItemSelectionListener> = CopyOnWriteArrayList()
 
-    val selectedItems get() = _selectedIndices.map { i -> items[i].value!! }
+    val selectedItems get() = _selectedIndices.map { i -> items[i] }
 
     interface OnItemSelectionListener {
         fun onIndexSelected(index: Int)

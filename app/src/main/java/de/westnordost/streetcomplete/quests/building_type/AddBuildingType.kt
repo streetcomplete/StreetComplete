@@ -3,12 +3,14 @@ package de.westnordost.streetcomplete.quests.building_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
-    // in the case of man_made, historic, military and power, these tags already contain
+    // in the case of man_made, historic, military, aeroway and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
-    // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891
+    // or question would be confusing as there is no matching reply in available answers
+    // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891, #3233
     override val elementFilter = """
         ways, relations with (building = yes or building = unclassified)
          and !man_made
@@ -19,6 +21,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and !attraction
          and !amenity
          and !leisure
+         and !aeroway
          and !description
          and location != underground
          and abandoned != yes
@@ -30,6 +33,8 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
 
+    override val questTypeAchievements = listOf(BUILDING)
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 
     override fun createForm() = AddBuildingTypeForm()
@@ -40,6 +45,15 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
             changes.add("man_made", answer.osmValue)
         } else if (answer.osmKey != "building") {
             changes.addOrModify(answer.osmKey, answer.osmValue)
+            if(answer == BuildingType.ABANDONED) {
+                changes.deleteIfExists("disused")
+            }
+            if(answer == BuildingType.RUINS && changes.getPreviousValue("disused") == "no") {
+                changes.deleteIfExists("disused")
+            }
+            if(answer == BuildingType.RUINS && changes.getPreviousValue("abandoned") == "no") {
+                changes.deleteIfExists("abandoned")
+            }
         } else {
             changes.modify("building", answer.osmValue)
         }

@@ -6,7 +6,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Otorisasi gagal: Semua izin yang terdaftar harus diaktifkan"</string>
-    <string name="title_activity_settings">"Pengaturan"</string>
     <string name="pref_category_communication">"Komunikasi"</string>
     <string name="pref_category_display">"Tampilan"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -26,7 +25,6 @@
     <string name="quest_generic_confirmation_title">"Apa kamu yakin?"</string>
     <string name="quest_generic_confirmation_yes">"Ya, saya yakin"</string>
     <string name="quest_generic_confirmation_no">"Saya akan periksa"</string>
-    <string name="quest_generic_error_field_empty">"Kamu belum mengisi kolom ini"</string>
     <string name="quest_leave_new_note_title">"Tinggalkan catatan?"</string>
 
     <!-- Fuzzy -->
@@ -85,9 +83,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Hentikan pencarian sekarang dan pindai di sini saja?"</string>
-
-    <!-- Fuzzy -->
-    <string name="notification_downloading">"Memindai pencarian..."</string>
     <string name="turn_on_location_request">"Lokasi nonaktif. Buka pengaturan untuk mengaktifkan?"</string>
 
     <!-- Fuzzy -->
@@ -211,10 +206,8 @@ Tetapi, sebelum mengunggah perubahan, aplikasi mengecek &lt;a href=\"https://www
     <string name="quest_surface_value_sand">"Pasir"</string>
     <string name="quest_surface_value_sett">"Berangkal"</string>
     <string name="quest_surface_value_wood">"Kayu"</string>
-    <string name="quest_placeName_title">"Apa nama tempat ini?"</string>
     <string name="quest_sidewalk_title">"Apa jalan ini punya trotoar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Jalan ini ada di mana?"</string>
-    <string name="quest_cyclewaySurface_title">"Permukaan jalur sepeda disini terbuat dari apa?"</string>
     <string name="quest_serviceType_title">"Apa jenis jalan khusus ini?"</string>
     <string name="quest_oneway_title">"Apakah ini jalan satu arah?"</string>
     <string name="quest_address_title">"Nomor berapa bangunan ini?"</string>
@@ -332,7 +325,11 @@ Jika tidak ada tanda di sepanjang jalan yang berlaku untuk bagian yang disorot, 
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Apa jalan masuk kereta bawah tanah %s ramah kursi roda?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Apa stasiun kereta %s ramah kursi roda?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Apa tempat %s ramah kursi roda?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Sebagian berarti tidak ada lebih dari satu anak tangga untuk mengakses tempat dan kebanyakan ruangan di dalam ramah kursi roda."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Sebagian berarti tidak ada lebih dari satu anak tangga untuk mengakses"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Singkatan untuk nama %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Apakah kamar kecil ini ada meja ganti popok bayi?"</string>
@@ -366,9 +363,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Lihat &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;daftar lengkap di Github&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Lihat &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;di POEditor&lt;/a&gt; untuk daftar lengkapnya."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Terjemahan"</string>
@@ -501,8 +495,9 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
-    <string name="compass_north_one_letter">"U"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Urungkan"</string>
@@ -529,6 +524,8 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_parkingType_underground">"Bawah tanah"</string>
     <string name="quest_parkingType_multiStorage">"Multi lantai"</string>
     <string name="quest_toiletAvailability_name_title">"Apa %s ada kamar kecilnya?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Apa material dari tiang listrik ini?"</string>
     <string name="quest_powerPolesMaterial_wood">"Kayu"</string>
     <string name="quest_powerPolesMaterial_metal">"Baja"</string>
@@ -540,7 +537,6 @@ Kalau tidak, kamu bisa mengunduh keyboard lain di app store. Keyboard populer ya
     <string name="quest_buildingLevels_levelsLabel2">"Jumlah lantai (atap tidak dihitung)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Beda tiap bagian bangunan"</string>
     <string name="quest_buildingLevels_answer_description">"Kalau begitu, cukup masukkan nilai lantai paling tinggi."</string>
-    <string name="unglue_hint">"Sentuh untuk melepaskan tinjauan dari kunci posisi"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Apa jalan di sini terpisah secara fisik (ada penghalang)? Batas kecepatan awal tergantung dari ini atau tidak"</string>
     <string name="about_category_feedback">"Umpan balik"</string>
     <string name="quest_leave_new_note_photo">"Lampirkan foto"</string>
@@ -629,10 +625,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_parking_fee_title">"Apakah parkir di sini bayar?"</string>
     <string name="quest_cycleway_value_lane_soft">"Lajur Sepeda (garis putus-putus)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Berangkal tidak mulus"</string>
-    <string name="quest_parking_access_title">"Apakah yang boleh parkir di sini terbatas?"</string>
-    <string name="quest_parking_access_private">"Ini pribadi"</string>
-    <string name="quest_parking_access_yes">"Ini terbuka untuk publik (dengan atau tanpa bayar)"</string>
-    <string name="quest_parking_access_customers">"Hanya untuk pelanggan"</string>
     <string name="quest_streetName_pedestrian_title">"Apa nama jalur pejalan kaki ini?"</string>
     <string name="quest_streetSurface_square_title">"Apakah permukaan dari alun-alun ini?"</string>
     <string name="quest_streetSurface_square_name_title">"Apa permukaan dari alun-alun %s ini?"</string>
@@ -674,7 +666,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Reset pengaktifan pencarian dan urutan seperti semula?"</string>
-    <string name="quest_buildingType_title2">"Bangunan ini dibangun sebagai apa?"</string>
     <string name="quest_generic_item_invalid_value">"Harap isi nilai yang lebih spesifik."</string>
     <string name="quest_buildingType_answer_multiple_types">"Punya banyak fungsi"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Cukup pilih fungsi utama bangunan ini. Mis: jika ada toko di lantai dasar dengan apartemen di atasnya, maka fungsi utamanya tetap bangunan apartemen."</string>
@@ -748,6 +739,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_shrine">"Kuil"</string>
     <string name="quest_maxspeed_title_short2">"Berapa batas kecepatan di jalan ini?"</string>
     <string name="quest_maxspeed_answer_sign">"Sebuah rambu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"Di dalam zona (lamban)"</string>
     <string name="quest_maxspeed_answer_noSign2">"Tidak ada rambu, seperti awal"</string>
     <string name="quest_openingHours_no_sign">"Tidak ada tanda jam buka"</string>
@@ -755,7 +748,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_sports_centre">"Pusat olahraga"</string>
     <string name="quest_buildingType_toilets">"Toilet"</string>
     <string name="quest_maxspeed_sign_question">"Apa yang menandai batas kecepatan?"</string>
-    <string name="notification_channel_download">"Unduh"</string>
     <string name="quest_playground_access_title">"Apakah tempat bermain ini terbuka untuk umum?"</string>
     <string name="quest_segregated_title">"Bagaimana trotoar dan jalan sepeda ditata di sini?"</string>
     <string name="dialog_tutorial_upload">"Untuk mengunggah perubahanmu scr manual, gunakan tombol di toolbar yang terlihat seperti ini."</string>
@@ -784,6 +776,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_tracktype_grade5">"Lemah"</string>
     <string name="quest_building_underground_name_title">"Apa %s sepenuhnya di bawah tanah?"</string>
     <string name="quest_building_underground_title">"Apa bangunan ini sepenuhnya di bawah tanah?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Sebagian berarti tidak ada lebih dari 1 anak tangga untuk melewatinya."</string>
     <string name="quest_wheelchairAccess_outside_title">"Apa tempat ini ramah kursi roda?"</string>
     <string name="quest_traffic_signals_button_title">"Apa lampu merah di sini punya tombol untuk menyeberang?"</string>
@@ -812,6 +806,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_sidewalk_value_yes">"trotoar"</string>
     <string name="quest_sidewalk_value_no">"Tidak ada trotoar"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Apa pejalan kaki dilarang melewati jalan ini?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Jalan ini ditandai tidak mempunyai trotoar di kedua sisinya. Apabila ternyata ada trotoar tapi ditampilkan sebagai jalan terpisah, harap jawab \"trotoar\"."</string>
     <string name="quest_buildingType_title">"Bangunan apakah ini?"</string>
     <string name="pref_title_theme_select">"Pilih tema"</string>
@@ -836,6 +832,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_leaf_type_needles">"Duri"</string>
     <string name="quest_leaf_type_broadleaved">"Berdaun"</string>
     <string name="quest_leaf_type_mixed">"Ada keduanya"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Apa permukaan di jalan sepeda ini?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Berbeda sepanjang jalan..."</string>
     <string name="quest_split_way_description">"Jika berbeda, langkah pertama adalah membagi jalannya. Kemudian, pencarian bisa dijawab secara terpisah. 
@@ -843,6 +841,8 @@ Pisah sekarang?"</string>
     <string name="quest_split_way_tutorial">"Sentuh pada titik jalan di mana jawabannya beda. Harap agar seakurat mungkin, kamu bisa memperbesar."</string>
     <string name="quest_split_way_too_imprecise">"Harap perbesar lagi"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Pembagian sudah cukup banyak. Kamu bisa membaginya lagi nanti."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Apa permukaan jalan kaki di sini?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Apa kamar kecil di %s ramah kursi roda?"</string>
     <string name="quest_tactilePaving_title_tram">"Apa perhentian mobil ini memiliki ubin pemandu?"</string>
@@ -852,7 +852,6 @@ Pisah sekarang?"</string>
     <string name="quest_maxweight_answer_other_sign">"Tanda terlihat beda..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Apa kamu ingin meninggalkan catatan? Catatan dengan foto akan memudahkan pemeta lain mengurusnya."</string>
     <string name="quest_generalFee_title">"Apa masuk %s harus bayar?"</string>
-    <string name="quest_laundrySelfService_title">"Apa penatu ini swalayan?"</string>
     <string name="quest_handrail_title">"Apa tangga ini punya susur tangan?"</string>
     <string name="quest_openingHours_no_name_title">"Apa jam buka tempat ini? (%s)"</string>
     <string name="about_summary_current_version">"Versi sekarang: %s"</string>
@@ -900,6 +899,8 @@ Pisah sekarang?"</string>
     <string name="quest_tourism_information_terminal">"Terminal informasi"</string>
     <string name="quest_tourism_information_map">"Peta"</string>
     <string name="quest_tourism_information_guidepost">"Pos pemandu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Untuk sampah umum"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Jadi, ini wadah sampah apa saja, seperti sampah rumah atau limbah komersil?"</string>
     <string name="quest_accepts_cash_title">"Apa %s menerima pembayaran tunai?"</string>
@@ -908,6 +909,8 @@ Pisah sekarang?"</string>
     <string name="user_logout">"Log keluar"</string>
     <string name="osm_profile">"Profil OSM"</string>
     <string name="next">"Lanjut"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"Ayo!"</string>
     <string name="tutorial_welcome_to_osm">"Selamat datang di OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"wiki peta dunia bebas"</string>
@@ -915,6 +918,8 @@ Pisah sekarang?"</string>
     <string name="tutorial_solving_quests">"Setelah ditemukan, detail yang kurang akan muncul di petamu sebagai pencarian (quests).
 
 Kamu dapat menyelesaikannya langsung dan login nanti untuk mengunggah jawabanmu. "</string>
+
+    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Setiap kamu tidak yakin, kamu bisa membalas \"Tidak Bisa Bilang\" dan tinggalkan catatan.
 
 Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk properti pribadi sembarangan"</string>
@@ -964,6 +969,8 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
 
     <!-- Fuzzy -->
     <string name="link_wiki_description">"Wiki ini ialah tempat awal untuk semua yang berhubungan dengan OpenStreetMap"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Baru di OpenStreetMap? Ini adalah panduan pemula"</string>
     <string name="link_neis_one_description">"Kumpulan statistik besar untuk kontributor OpenStreetMap, seperti di mana kamu berkontribusi, siapa lagi di sekitarmu, juga papan peringkat"</string>
     <string name="link_welcome_mat_description">"Informasi umum tentang OpenStreetMap dan bagaimana bekerja dengan OSM sebagai organisasi"</string>
@@ -982,6 +989,8 @@ Juga bisa menampilkan isokron (area yang dapat dijangkau dalam X menit dari titi
     <string name="link_openinframap_description">"Peta yang menampilkan infrastruktur daya, telekom, gas, dan minyak"</string>
     <string name="link_openorienteeringmap_description">"Buat peta cetak untuk olahraga orienteering"</string>
     <string name="link_openstreetbrowser_description">"Peta untuk menelusuri fitur OSM menurut kategori"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Blog berita mingguan tentang apa saja yang terjadi di dunia OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Membuat poster diagram figur-ground kota atau lingkungan"</string>
 
@@ -1047,6 +1056,8 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="user_profile_local_rank">"Peringkat di %s"</string>
     <string name="user_profile_days_active">"Hari aktif"</string>
     <string name="user_profile_achievement_levels">"Level pencapaian"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Berada di jalan apa rumah nomor %s ini?"</string>
     <string name="quest_address_street_no_named_streets">"Rumah ini jalannya tidak bernama"</string>
     <string name="quest_address_street_place_name_label">"Nama tempat:"</string>
@@ -1094,6 +1105,8 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_oneway2_no_oneway">"Bukan satu-arah"</string>
     <string name="quest_maxweight_select_sign">"Pilih tanda"</string>
     <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Apakah nama bank untuk ATM ini?"</string>
     <string name="achievement_citizen_title">"Rakyat"</string>
     <string name="achievement_outdoors_title">"Luar Ruangan"</string>
@@ -1113,13 +1126,16 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_generic_answer_does_not_exist">"Ini tidak ada..."</string>
     <string name="osm_element_gone_confirmation">"Ini tidak ada"</string>
     <string name="leave_note">"Tinggalkan catatan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Apa yang ada di sini sekarang?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Ini kosong"</string>
     <string name="quest_shop_gone_replaced_answer">"Sebuah..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Ketik jenis tempat di sini"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Tidak tahu apa ini. Pertimbangkan meninggalkan catatan."</string>
     <string name="quest_construction_completed_at_known_date">"Akan selesai pada tanggal..."</string>
     <string name="quest_construction_completion_date_title">"Kapan ini akan selesai?"</string>
     <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>
@@ -1143,4 +1159,5 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Apakah halte bus %s memiliki tempat sampah?"</string>
     <string name="quest_camera_type_title">"Apa jenis kamera pengawas ini?"</string>
+    <string name="language_default">"Default Sistem"</string>
 </resources>

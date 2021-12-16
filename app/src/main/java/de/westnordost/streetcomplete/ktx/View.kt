@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
 import androidx.core.view.*
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -53,9 +54,9 @@ suspend fun View.awaitPreDraw() = suspendCancellableCoroutine<Unit> { cont ->
 }
 
 fun View.getLocationInWindow(): Point {
-    val mapPosition = IntArray(2)
-    getLocationInWindow(mapPosition)
-    return Point(mapPosition[0], mapPosition[1])
+    val pos = IntArray(2)
+    getLocationInWindow(pos)
+    return Point(pos[0], pos[1])
 }
 
 fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
@@ -71,6 +72,14 @@ fun View.showTapHint(initialDelay: Long = 300, pressedDelay: Long = 600) {
             isPressed = false
         }
     }
+}
+
+fun View.setPadding(insets: Insets) {
+    setPadding(insets.left, insets.top, insets.right, insets.bottom)
+}
+
+fun View.setMargins(insets: Insets) {
+    setMargins(insets.left, insets.top, insets.right, insets.bottom)
 }
 
 fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {

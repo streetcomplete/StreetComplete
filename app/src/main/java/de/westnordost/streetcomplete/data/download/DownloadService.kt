@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.data.download
 
+import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
-import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
+import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.*
 import kotlinx.serialization.decodeFromString
@@ -30,7 +33,7 @@ import javax.inject.Inject
 class DownloadService : CoroutineIntentService(TAG) {
     @Inject internal lateinit var downloader: Downloader
 
-    private lateinit var notificationController: DownloadNotificationController
+    private lateinit var notification: Notification
 
     // interface
     private val binder = Interface()
@@ -43,15 +46,13 @@ class DownloadService : CoroutineIntentService(TAG) {
     private var isDownloading: Boolean = false
     set(value) {
         field = value
-        if (!value || !showNotification) notificationController.hide()
-        else notificationController.show()
+        updateShowNotification()
     }
 
     private var showNotification = false
     set(value) {
         field = value
-        if (!value || !isDownloading) notificationController.hide()
-        else notificationController.show()
+        updateShowNotification()
     }
 
     init {
@@ -60,8 +61,7 @@ class DownloadService : CoroutineIntentService(TAG) {
 
     override fun onCreate() {
         super.onCreate()
-        notificationController = DownloadNotificationController(
-            this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
+        notification = createSyncNotification(this)
     }
 
     override fun onBind(intent: Intent): IBinder {
@@ -98,6 +98,11 @@ class DownloadService : CoroutineIntentService(TAG) {
         }
 
         progressListener?.onFinished()
+    }
+
+    private fun updateShowNotification() {
+        if (!showNotification || !isDownloading) stopForeground(true)
+        else startForeground(NOTIFICATIONS_ID_SYNC, notification)
     }
 
     /** Public interface to classes that are bound to this service  */

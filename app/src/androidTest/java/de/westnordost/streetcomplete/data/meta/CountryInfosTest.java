@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays;
 
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.*;

@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Baimenak huts egin du: Zerrendako baimen guztiak eman behar dira"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Ezarpenak"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Komunikazioa"</string>
 
     <!-- Fuzzy -->
@@ -45,7 +42,7 @@
     <string name="map_attribution_osm">"© OpenStreetMap laguntzaileak"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_otherAnswers">"Beste erantzun bat..."</string>
+    <string name="quest_generic_otherAnswers">"Beste erantzunak..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Ez dakit…"</string>
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Egiaztatuko dut"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Eremu hau hutsik laga duzu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Laga ohar bat ordez?"</string>
@@ -157,9 +151,6 @@
     <string name="confirmation_cancel_prev_download_title">"Utzi abian dagoen bilaketa eta bilatu hemen ordez?"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Erronkak bilatzen…"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Kokapena itzalita dago. Ezarpenak ireki orain pizteko?"</string>
 
     <!-- Fuzzy -->
@@ -245,7 +236,7 @@
     <string name="quest_roofShape_title">"Zein da eraikin honen oinarrizko forma"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_roofShape_select_one">"hautatu bat:"</string>
+    <string name="quest_roofShape_select_one">"Hautatu bat:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Erakutsi gehiago..."</string>
@@ -304,7 +295,7 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_surface_value_asphalt">"Asfaltoa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_compacted">"Konprimitua"</string>
+    <string name="quest_surface_value_compacted">"Trinkotua"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Hormigoia"</string>
@@ -338,16 +329,10 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_surface_value_wood">"Egurra"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Zein da toki honen izena?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Espaloia al dago kale honetan?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Non dago kale hau?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Zein da bidegorriaren azalera?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Ze motako zerbitzu bide da hau?"</string>
@@ -411,10 +396,10 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_busStopShelter_title">"Autobus geltoki honek aterpea du?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bikeParkingCapacity_title">"Zenkat bizikleta aparkatu daitezke hemen?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Zenbat bizikleta aparkatu daitezke hemen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_unusualHousenumber_confirmation_description">"Etxe-zenbaki hau ez ohikoa dirudi"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Etxe-zenbaki hau ez ohikoa dirudi."</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_title">"Zein kiroletarako erabiltzen da?"</string>
@@ -574,16 +559,16 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_sport_roller_skating">"Gurpil patinajea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_title">"Autobus geltoki hau gurpildun aukientzat irisgarria da?"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Autobus geltoki hau gurpildun aulkientzat irisgarria da?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Metro sarrera hau  gurpildun aukientzat irisgarria da?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Metro sarrera hau  gurpildun aulkientzat irisgarria da?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_title">"Tren geltoki hau gurpildun aukientzat irisgarria da?"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Tren geltoki hau gurpildun aulkientzat irisgarria da?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_title">"Leku hau gurpildun aukientzat irisgarria da?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Leku hau gurpildun aulkientzat irisgarria da?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"%s autobus geltokia gurpildun aulkientzat irisgarria al da?"</string>
@@ -598,10 +583,10 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_wheelchairAccess_location_name_title">"%s izeneko tokia gurpildun aulkientzat irisgarria al da?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"Partzialki-k esan nahi du eskailera-urrats bakarra dagoela eta barruko gela gehienak gurpildun aulkiarentzat irisgarriak direla."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Partzialki-k esan nahi du eskailera-maila bakarra dagoela eta barruko gela gehienak gurpildun aulkiarentzat irisgarriak direla."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Partzialak esan nahi du ez dagoela eskailera-urrats bat baino gehiago sartzeko."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Partzialak esan nahi du ez dagoela eskailera-maila bat baino gehiago sartzeko."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s izenak laburdurarik al du?"</string>
@@ -616,7 +601,7 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_recycling_type_title">"Zer motako birziklatze gunea da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="recycling_centre">"Zentrua"</string>
+    <string name="recycling_centre">"Garbigunea"</string>
     <string name="overground_recycling_container">"Kontenedorea"</string>
 
     <!-- Fuzzy -->
@@ -669,9 +654,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="credits_contributors">"Ikusi &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;zerrenda osoa GitHub-en&lt;/a&gt;"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Ikusi &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;proiektua POEditor-en&lt;/a&gt; zerrenda osorako."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Itzulpenak"</string>
@@ -845,7 +827,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
-    <string name="compass_north_one_letter">"I"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Desegin"</string>
@@ -872,13 +853,13 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_parkingType_title">"Zer motako aparkalekua da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_surface">"Arrunta"</string>
+    <string name="quest_parkingType_surface">"Aparkaleku arrunta"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_underground">"Lurrazpiko garajea"</string>
+    <string name="quest_parkingType_underground">"Lurrazpiko aparkalekua"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_multiStorage">"Kotxeetarako aparkalekua"</string>
+    <string name="quest_parkingType_multiStorage">"Autoetarako aparkalekua"</string>
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_name_title">"%s(e)k komuna du?"</string>
@@ -905,19 +886,16 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_address_house_name_label">"Etxearen izena:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_roofLevelsLabel2">"Pisuak teilatuan"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Solairuak teilatuan"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_levelsLabel2">"Pisu arruntak (teilatukoak zenbatu gabe)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Solairu arruntak (teilatukoak zenbatu gabe)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_multipleLevels">"Desberdina eraikinaren partearen arabera"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Desberdina eraikinaren aldearen arabera"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_description">"Kasu horretan, sartu eraikinaren parte altuenaren datuak."</string>
-
-    <!-- Fuzzy -->
-    <string name="unglue_hint">"Sakatu ikuspegia kokalekutik deslotzeko"</string>
+    <string name="quest_buildingLevels_answer_description">"Kasu horretan, sartu eraikinaren alde altuenaren datuak."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Errepide honetako galtzadak fisikoki banatuta daude (adib. langa baten bidez)? Lehenetsitako abiadura muga honen menpekoa da."</string>
@@ -1035,13 +1013,13 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_streetName_answer_noProperStreet_track2">"Nekazaritzarako edo baso bide bat da"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noName_noname">"Ez da goiko ezer, ez du izenik besterik gabe"</string>
+    <string name="quest_streetName_answer_noName_noname">"Aurreko horietako bat ere ez, ez du izenik besterik gabe"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_title">"Komun hauek gurpil-aulki batentzat irisgarriak dira?"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Komun hauek gurpil-aulkirentzat irisgarriak dira?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"%s komuna gurpildun aulki batentzat irisgarria al da?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"%s komuna gurpil-aulkirentzat irisgarria al da?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Honen antzeko seinale bat egon daiteke komunak irisgarriak badira.
@@ -1093,13 +1071,13 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_bench_backrest_title">"Banku honek bizkarrekoa du?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bench_answer_picnic_table">"Piknik taula bat da"</string>
+    <string name="quest_bench_answer_picnic_table">"Jateko mahai bat da"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Zein erlijio praktikatzen da toki honetan?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_religion_christian">"Kristautasuna"</string>
+    <string name="quest_religion_christian">"Kristaua"</string>
     <string name="quest_religion_muslim">"Islam"</string>
 
     <!-- Fuzzy -->
@@ -1148,25 +1126,13 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_surface_value_unhewn_cobblestone">"Landu gabeko galtzadarria"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Hemen nork aparkatu dezakeen murriztuta dago?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Pribatua da"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Publikoari irekia dago (sarrera ordainduz edo ez)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Bezeroentzako soilik da"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Zein da oinezkoen kale honen izena?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Zein da enparantza honen zoladura?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Zein da %s enparantzaren azalera hemen?"</string>
+    <string name="quest_streetSurface_square_name_title">"Zein da %s enparantzaren zoladura hemen?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Eguna eta orduaren arabera…"</string>
@@ -1196,7 +1162,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_housenumber_multiple_numbers_description">"Zenbakiak komaz bananduta edo barrutia adieraziz sartu ditzakezu. Esaterako 1,3 edo 2-6"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bicycle_parking_type_stand">"Tente"</string>
+    <string name="quest_bicycle_parking_type_stand">"Tente (koadroa lotu daiteke)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"Gurpil-zirrikitua"</string>
@@ -1265,13 +1231,10 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Erronka batzuetarako, hirugarrengoen datu gehigarriak deskargatzen da. Hain zuzen, norabide bakarraren erronkarako, bide bakarrekoak izateko aukera handiena duten bideak zeintzu diren westnordost.de helbidean ostatatutako API bati galdetzen zaio&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_hasFeature_no_leave_note">"Ez (Laga ohar bat)"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Ez (laga ohar bat)"</string>
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Leheneratu gaitutako erronkak eta hauen ordena lehenetsitakora?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Zertarako egin zen eraikin hau?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Aukeratu balio zehatzago bat."</string>
@@ -1298,16 +1261,16 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_apartments_description">"hainbat familientzako bizitoki, beheko pisuetan dendak egon daitezke"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_apartments">"Apartamentuen eraikina"</string>
+    <string name="quest_buildingType_apartments">"Etxebizitzen eraikina"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached">"Etxe bakarra (txaleta)"</string>
+    <string name="quest_buildingType_detached">"Etxebizitza independientea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached_description">"familia bakarreko etxebizitza isolatua"</string>
+    <string name="quest_buildingType_detached_description">"familia bakarreko etxea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached">"Etxe bikia (adosatua)"</string>
+    <string name="quest_buildingType_semi_detached">"Etxe bikia"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"familia bakarreko etxebizitza berdintsuen errenkada bat"</string>
@@ -1329,7 +1292,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_commercial">"Eraikin komertziala"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_commercial_generic_description">"jendeak jan, erosi edo bestelako jarduera komertzialak egiteko eraikina"</string>
+    <string name="quest_buildingType_commercial_generic_description">"jendeak lan egin, erosi edo bestelako jarduera komertzialak egiteko eraikina"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Eraikin industriala"</string>
@@ -1412,7 +1375,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_carport">"Kotxerako estalpea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_carport_description">"kotxeentzako aterpea"</string>
+    <string name="quest_buildingType_carport_description">"autoentzako aterpea"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"Garaje bakuna"</string>
@@ -1502,7 +1465,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Zerk definitzen du abiadura-muga?"</string>
-    <string name="notification_channel_download">"Jaitsi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Jolasleku hau irisgarria al da publikoari begira?"</string>
@@ -1526,7 +1488,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_maxheight_parking_entrance_title">"Zein da aparkaleku honen sarreraren altuera-muga?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_height_restrictor_title">"Zein da altuera murriztaile honen altuera muga?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Zein da altuera murriztaile honen altuera-muga?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_tunnel_title">"Zein da tunel honen altuera-muga?"</string>
@@ -1563,7 +1525,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_openingHours_timeSelect_next">"Hurrengoa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_title">"Zein da bide honen gainazalaren irmotasuna"</string>
+    <string name="quest_tracktype_title">"Zein da bide honen zoladuraren irmotasuna"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Trinkoa"</string>
@@ -1740,9 +1702,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_generalFee_title">"%s(e)n sartzeko ordaindu beharra al dago?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Garbileku honetan norberak erabiltzen ditu garbigailuak?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Eskailera hauek heldulekua daukate?"</string>
 
     <!-- Fuzzy -->
@@ -1761,6 +1720,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_ref_answer_noRef">"Ez dago erreferentzia zenbakirik ikusgai..."</string>
 
     <!-- Fuzzy -->
+    <string name="quest_street_side_puzzle_tutorial">"Irudiko kalea biratuta dago mapan ikurraren kokapenean"</string>
     <string name="quest_recycling_materials_title">"Zer utzi daiteke hemen birziklatzeko?"</string>
 
     <!-- Fuzzy -->
@@ -1779,7 +1739,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_recycling_type_green_waste">"Lorategiko hondakinak"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_type_glass_bottles">"Kristalezko botilak eta ontziak"</string>
+    <string name="quest_recycling_type_glass_bottles">"Beirazko botilak eta ontziak"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"Botilak eta ontziak"</string>
@@ -1803,7 +1763,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_recycling_type_plastic_bottles">"Plastikozko botilak soilik"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_type_plastic_packaging">"Plastikozko bilgarriak"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Plastikozko ontziak "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"Metalezko txatarra"</string>
@@ -1839,7 +1799,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="about_description_donate">"Eskerrik asko aplikazio hau babestea hausnartzeagatik! Oraingo dohaintzak ikusteko eta zurea egiteko, sakatu dagokion plataforman:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_name_title">"Ze erliji praktikatzen da %s(e)n"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Ze erlijio praktikatzen da %s(e)n"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"Eskaneatu hemen ordez"</string>
@@ -2051,7 +2011,7 @@ Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko ere
     <string name="link_myosmatic_description">"Sortu inprimatzeko moduko hiriko mapak urrats gutxi batzuekin, aukeran kale aurkibidearekin"</string>
 
     <!-- Fuzzy -->
-    <string name="link_brouter_description">"Agian, txirrindularientzako ibilbide motor onena"</string>
+    <string name="link_brouter_description">"Agian, txirrindularientzako nabigatzaile onena"</string>
 
     <!-- Fuzzy -->
     <string name="link_show_me_the_way_description">"Ikusi OSM edizioak gertatu ahala"</string>
@@ -2105,7 +2065,7 @@ Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko ere
     <string name="achievement_bicyclist_solved_X">"Txirrindularientzako lagungarriak diren %d erronka ebatzi dituzu!"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_wheelchair_title">"Higikortasuna"</string>
+    <string name="achievement_wheelchair_title">"Mugikortasuna"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_wheelchair_solved_X">"Gurpildun aulkia darabilenenei hirian mugitzeko lagungarriak zaizkien %d erronka ebatzi dituzu!"</string>
@@ -2158,8 +2118,10 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="confirmation_authorize_now_note2">"Beranduago ere egin dezakezu, profilaren pantailan."</string>
     <string name="credits_art_contributors_title">"Arte laguntzailea"</string>
     <string name="credits_projects_contributors_title">"StreetComplete-rentzat egindako proiektuak"</string>
-    <string name="credits_main_contributors_title">"Laguntzaile lagusiak"</string>
+    <string name="credits_main_contributors_title">"Laguntzaile nagusiak"</string>
     <string name="stats_are_syncing">"Zure estatistikak oraindik eguneratzen ari gara. Etorri geroxeago ikustera."</string>
+    <string name="user_statistics_country_rank">"Sailkatu hemen %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"%s ataria mapeatzen"</string>
     <string name="user_statistics_filter_by_country">"herrialdeka"</string>
     <string name="user_statistics_filter_by_quest_type">"galdera motaren arabera"</string>
     <string name="user_profile_global_rank">"Ranking
@@ -2170,13 +2132,18 @@ rankinga"</string>
 aktibo"</string>
     <string name="user_profile_achievement_levels">"Lorpen
 mailak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Zein kaleri dagokio %s etxe-zenbaki horrek?"</string>
     <string name="quest_address_street_no_named_streets">"Ez dago izena duen kale batekin lotuta"</string>
     <string name="quest_address_street_place_name_label">"Toki izena:"</string>
     <string name="quest_address_street_description">"Ukitu mapan zein kale edo bideri dagokion edo idatzi laburdurarik gabe beheko eremuan:"</string>
     <string name="quest_recycling_type_cooking_oil">"Sukaldeko olioa"</string>
     <string name="quest_recycling_type_engine_oil">"Motoreen olioa"</string>
+    <string name="link_photon_description">"Nominatim-erako gehigarri autonomoa, bilaketa lauso zein idatzi ahalako bilaketarako"</string>
+    <string name="link_graphhopper_description">"Ibilbide motore malgua"</string>
     <string name="link_qwant_maps_description">"Bilatu daitezkeen toki eta helbideen mapa bat"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Mapa bistaratzeko, lauza bektorialak %1$s-tik berreskuratzen dira. Informazio gehiago lortzeko, ikusi haien &lt;a href=\"%2$s\"&gt; pribatutasun-adierazpena &lt;/a&gt;. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Babesleak"</string>
     <string name="quest_board_type_history">"Historia"</string>
     <string name="quest_board_type_geology">"Geologia"</string>
@@ -2190,18 +2157,22 @@ mailak"</string>
     <string name="quest_board_type_map">"Mapa bat da"</string>
     <string name="quest_board_type_map_title">"Mapa bat da eta besterik ez?"</string>
     <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Hainbat gainazal..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Hainbat zoladura..."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Ziur zaude ezinezkoa dela zoladura zehaztea? Kontuan izan \"Bidean zehar aldatzen da\" erantzunak zoladura aldatzen den bidea mozteko aukera ematen duena. Erabili \"Ez dakit\" zoladura bakarra badago, baina erantzuteko gai ez bazara."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Mesedez, azaldu laburki nolako gainazala dagoen hemen, adibidez \"hondarra, harrikoxkor zatiekin\". Testuaren luzeera gehienez 255 karakterekoa da."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internazionala"</string>
-    <string name="quest_streetName_menuItem_romanized">"latindar alfabetoan"</string>
     <string name="quest_buildingType_terrace2">"Etxe elkarri atxikiak"</string>
-    <string name="at_housename">"Etxearen izena %s:"</string>
-    <string name="at_conscription_and_street_number">"Konskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
+    <string name="at_housename">"etxearen izena %s:"</string>
+    <string name="at_conscription_and_street_number">"Inskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
 
     <!-- Fuzzy -->
-    <string name="at_conscription_number">"Konskripzio zenbakia %s:"</string>
+    <string name="at_conscription_number">"Inskripzio zenbakia %s:"</string>
     <string name="at_housenumber">"etxe zenbakia %s:"</string>
     <string name="quest_openingHours_name_type_title">"Zein da %1$s (%2$s) (r)en ordutegia?"</string>
     <string name="quest_openingHours_resurvey_name_title">"%s-ko ordutegi hau oraindik zuzena da?"</string>
@@ -2229,7 +2200,280 @@ mailak"</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"%s autobus geltokiak eserlekurik du?"</string>
-    <string name="quest_is_defibrillator_inside_title">"Desfibriladore hau (AED) eraikin baten barruan dago?"</string>
+    <string name="quest_summit_register_title">"Ba al dago gailurraren erregistroa %s-n?"</string>
+    <string name="quest_is_defibrillator_inside_title">"(AED) desfibriladore hau eraikinaren barruan dago?"</string>
     <string name="about_title_translate">"Lagundu app hau itzultzen"</string>
+    <string name="about_description_translate">"%1$s %2$d%% itzuli da"</string>
+    <string name="quest_oneway2_title">"Kale hau norabide bakarrekoa da? Zein norabidekoa?"</string>
+    <string name="quest_oneway2_dir">"Norabide bakar hau"</string>
+    <string name="quest_oneway2_no_oneway">"Ez da norabide bakarrekoa"</string>
+    <string name="quest_maxweight_select_sign">"Hautatu ikurra"</string>
+    <string name="quest_steps_incline_title">"Zein da gorako norabidea?"</string>
+    <string name="quest_steps_incline_up">"Hemendik gora"</string>
+    <string name="quest_step_count_title">"Zenbat urrats daude hemen?"</string>
     <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_signals_vibrate_title">"Semaforo hauek ba al dute adierazle taktilak itsuak segurtasunez pasatzeko?"</string>
+    <string name="quest_traffic_signals_vibrate_description">"Oharra: askotan semaforoaren botoiaren zorroaren beheko aldean dagoen dardara-botoia edo kono birakaria da."</string>
+    <string name="quest_busStopRef_title">"Zein da autobus geltoki honen erreferentzia zenbakia?"</string>
+    <string name="quest_tramStopRef_title">"Zein da tranbia geltoki honen erreferentzia zenbakia?"</string>
+    <string name="quest_buildingType_bungalow_description2">"berezitako etxe txikia (udako etxea, oporretarako bungalowa, kabina...)"</string>
+    <string name="quest_railway_crossing_barrier_title2">"Zein hesi dago trenbidea gurutzatzeko leku honetan?"</string>
+    <string name="quest_railway_crossing_barrier_none2">"Hesirik ez"</string>
+    <string name="quest_steps_ramp_title">"Eskailera hauek arrapalarik al dute? Zein motakoa?"</string>
+    <string name="quest_steps_ramp_none">"Ez dago arrapala (erabilgarririk)"</string>
+    <string name="quest_steps_ramp_bicycle">"Txirrindulentzako arrapala"</string>
+    <string name="quest_steps_ramp_stroller">"Umeen karroetarako arrapala"</string>
+    <string name="quest_steps_ramp_wheelchair">"Gurpildun aulkientzako arrapala"</string>
+    <string name="quest_atm_operator_title">"Zein da kutxazain honen bankua?"</string>
+    <string name="quest_clothes_container_operator_title">"Nork onartzen ditu hemen arropa dohaintzak?"</string>
+    <string name="quest_charging_station_operator_title">"Nork kudeatzen du karga geltoki hau?"</string>
+    <string name="link_indoorequal_description">"Zentro komertzial, tren geltoki eta bestelakoen barne planoak aurkitu"</string>
+    <string name="achievement_rare_title">"Altxorraren Bila"</string>
+    <string name="achievement_rare_solved_X">"Oso gutxitan betetzen diren %d erronka aurkitu eta konpondu dituzu, zorionak!"</string>
+    <string name="achievement_citizen_title">"Herritarra"</string>
+    <string name="achievement_citizen_solved_X">"Eguneroko hiriko bizitzan erabilgarri diren %d erronka konpondu dituzu!"</string>
+    <string name="achievement_outdoors_title">"Etxetik kanpo"</string>
+    <string name="achievement_outdoors_solved_X">"Etxetik kanpo ibili ohi diren pertsonentzako %d erronka konpondu dituzu!"</string>
+    <string name="quest_pedestrian_crossing_island">"Zebra-bide honek uharte bat al du erdian?"</string>
+    <string name="quest_generic_answer_noSign">"Ez dago seinalerik"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Gurpildun aulkientzako arrapala hau mapan bereizita agertzen al da?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"bereizia"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"bereizi gabea"</string>
+    <string name="pref_title_sync2">"Igo erantzunak automatikoki"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Gainazala deskribatu"</string>
+    <string name="open_url">"URLa ireki"</string>
+    <string name="quest_buildingType_silo">"Siloa"</string>
+    <string name="quest_buildingType_historic">"Historikoa"</string>
+    <string name="quest_buildingType_historic_description">"balio historikoa duen eraikina, helburu ezezagun edo ez-argi baterako eraikia"</string>
+    <string name="quest_buildingType_abandoned">"Abandonatua"</string>
+    <string name="quest_buildingType_abandoned_description">"helburu ezezagun edo ez-argia duen eraikin abandonatua"</string>
+    <string name="quest_buildingType_ruins">"Aztarnak"</string>
+    <string name="quest_buildingType_ruins_description">"jada osorik ez dagoen eraikin baten aztarnak"</string>
+    <string name="quest_charging_station_capacity_title">"Zenbat kotxe karga daitezke aldi berean karga-estazio honetan?"</string>
+    <string name="link_disaster_ninja_description">"Azken hondamendi naturalak erakusten dituen mapa interesgarria mapa humanitarioentzat. Gainera, estatistika interesgarri asko erakusten ditu, zein leku ongi mapeatuak eta eguneratuak dauden aztertzeko."</string>
+    <string name="quest_lanes_title">"Zenbat errail ditu kotxeentzat errepide honek?"</string>
+    <string name="quest_lanes_answer_lanes">"Markatutako errailak"</string>
+    <string name="quest_lanes_answer_noLanes">"Markatu gabeko errailak"</string>
+    <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ezkerretara biratzeko bi erraileko zatia du"</string>
+    <string name="quest_address_answer_no_housenumber_message2b">"Hau zuzena al da?"</string>
+    <string name="quest_maxheight_below_bridge_title">"Zein da zubi honen gehienezko altuera?"</string>
+    <string name="quest_maxheight_split_way_hint">"Guztiarentzat baliagarri ez bada, akaso “%s” erantzun dezakezu."</string>
+    <string name="quest_tactile_paving_kerb_title">"Zintarri honek gainazal ukigarria al du?"</string>
+    <string name="quest_kerb_height_title">"Zein da zintarri honen altuera?"</string>
+    <string name="quest_kerb_height_flush">"Errepidearen gainazaleren berbera"</string>
+    <string name="quest_kerb_height_lowered">"Errepidearen gainazala baino pixka bat gehiago"</string>
+    <string name="quest_kerb_height_raised">"Zintarri altua"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Arrapaladun zintarria"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Trafikoaren bidez erabilgarri dauden errail seinalatuen (bi norabideak) kopurua zehaztu. Beraz, bidegorriek eta aparkalekuek ez dute balio.
+Autobusentzako bat baldin badago, utzi ohar bat."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Trafikoaren bidez erabilgarri dauden errail seinalatuen kopurua zehaztu. Beraz, bidegorriek eta aparkalekuek ez dute balio.
+Autobusentzako bat baldin badago, utzi ohar bat."</string>
+    <string name="quest_surface_value_rock">"Arroka"</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">"Kamioi altuak bertatik pasa daitezke"</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Kamioi altuak ezin dira pasa"</string>
+    <string name="quest_address_street_hint">"Ukitu errepidea mapan"</string>
+    <string name="quest_crossing_type_marked">"Markatua"</string>
+    <string name="quest_parkingType_street_side">"Errepidearen kanpoan aparka daiteke"</string>
+    <string name="quest_parkingType_lane">"Errepidean aparka daiteke"</string>
+    <string name="quest_existence_title">"Hau oraindik hemen al dago? (%s)"</string>
+    <string name="quest_existence_name_title">"Oraindik %1$s (%2$s) hemen al dago?"</string>
+    <string name="quest_tracktype_grade2a">"Solidoa, baina asfaltorik gabekoa"</string>
+    <string name="quest_tracktype_grade3a">"Batez ere solidoa"</string>
+    <string name="quest_generic_answer_does_not_exist">"Ez da existitzen…"</string>
+    <string name="osm_element_gone_description">"Ziur zaude ez dela existitzen, ezta gertu dagoen lekuren batean? Duda baduzu, akaso hobeto da ohar bat uztea."</string>
+    <string name="osm_element_gone_confirmation">"Ez da exititzen"</string>
+    <string name="leave_note">"Oharra utzi"</string>
+    <string name="quest_shop_gone_title">"Zer dago orain hemen?"</string>
+    <string name="quest_shop_gone_vacant_answer">"Hutsik dago"</string>
+    <string name="quest_shop_gone_replaced_answer">"Honakoa…"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Sartu hemen dagoen leku mota"</string>
+    <string name="quest_shop_vacant_type_title">"Denda hau hutsik egon da. Zer dago orain hor?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Ez dago errail kopuru bera bi aldeetan"</string>
+    <string name="quest_pitchSurface_title">"Zein da kirol esparru honen gainazala?"</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Bilaketa mota hau berez desgaitua dago eskualde batzuetan baliagarria ez delako, eta leku horretan sartu beharko duzulako mota honetako mapa bat sortzeko."</string>
+    <string name="quest_dietType_kosher_name_title">"Eskaintzen al du %s(e)k kosher produkturik?"</string>
+    <string name="quest_dietType_explanation_kosher">"Kosher produktuak arau berezi batzuen arabera prestatu behar dira, eta kashrut ziurtagiri bat behar du agentzia batek emanda hori ziurtatzeko."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ez dago bizikleta biderik"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ohikoa denez, ilustrazioaren aldeetan sakatu, aukeratu erantzunik onena eta egizu berbera beste aldearentzat.
+
+Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepidearen alde batek bi norabideko bidea izan dezakeelako txirrindularientzat."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Bizikleta biderik ez dagoela aukeratuzen"</string>
+    <string name="quest_construction_completed_at_known_date">"Data honetan amaituko da..."</string>
+    <string name="quest_construction_completion_date_title">"Noiz amaituko da?"</string>
+    <string name="quest_surface_value_clay">"Buztina"</string>
+    <string name="quest_surface_value_artificial_turf">"Belar artifiziala"</string>
+    <string name="quest_surface_value_tartan">"Tartana"</string>
+    <string name="quest_pitchSurface_title_track">"Zein da kirol eremu honetako gainazala?"</string>
+    <string name="quest_bicycle_parking_access_title">"Hemen bizikleta bat nork aparka dezakeen mugatuta al dago?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Ordaindu behar al da bizikleta bat hemen aparkatzeko?"</string>
+    <string name="quest_buildingType_house_description2">"bereizi gabeko familia bakarrarentzako etxea"</string>
+    <string name="quest_drinking_water_title">"Hemengo ura edangarria al da? (%s)"</string>
+    <string name="quest_drinking_water_potable_signed">"Ur edangarria (seinaleztatua)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"Ur edangarria (oharrik gabe)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"Ur ez edangarria (seinaleztatua)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"Ur ez edangarria (seinaleztatu gabea)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Zein da postontzi honetako errege-zenbakia?"</string>
+    <string name="quest_postboxRoyalCypher_type_none">"Ez da errege-zenbakirik ikusten"</string>
+    <string name="quest_postboxRoyalCypher_type_scottish_crown">"Eskoziako Koroa"</string>
+    <string name="quest_buildingType_fire_station">"Suhiltzaileak"</string>
+    <string name="quest_recycling_type_beverage_cartons">"Edarien brikak bakarrik"</string>
+    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastikozko botilak eta kartoiak bakarrik"</string>
+    <string name="quest_charging_station_name_capacity_title">"Zenbat kotxe karga daitezke karga-estazio honetan (%s) aldi berean?"</string>
+    <string name="team_mode">"Talde Modua"</string>
+    <string name="team_mode_exit">"Talde Modutik atera"</string>
+    <string name="team_mode_description">"Talde gisa eremu berdina mapeatzen ari bazarete, talde moduan sar zaitezke eta guztien artean lana banatu."</string>
+    <string name="team_mode_team_size_hint">"Talde Modua erabil daiteke 2 eta 12 pertsona artean."</string>
+    <string name="team_mode_active">"Talde modua gaituta dago"</string>
+    <string name="team_mode_deactivated">"Talde modua ezgaitu da"</string>
+    <string name="quest_pitchLit_title">"Honakoa hau kirol-gune bat al da?"</string>
+    <string name="quest_pitchLit_title_track">"Kirolgune hau argiztatuta al dago?"</string>
+    <string name="quest_crossing_type_signals_controlled">"Semaforo bidez kontrolatua"</string>
+    <string name="undo_confirm_title2">"Aldaketa hau ezeztatu?"</string>
+    <string name="synced">"Sinkronizatua"</string>
+    <string name="toast_undo_unavailable">"Aldaketa hau jada sinkronizatu da eta ezin da kendu"</string>
+    <string name="quest_cycleway_value_separate">"mapan bereizia agertzen da"</string>
+    <string name="created_note_action_title">"Oharra sortu da"</string>
+    <string name="commented_note_action_title">"Oharran iruzkina egin da"</string>
+    <string name="hid_action_description">"Ezkutatu duzu"</string>
+    <string name="split_way_action_description">"Bidea erdibitu duzu"</string>
+    <string name="deleted_poi_action_description">"Ezabatu duzu"</string>
+    <string name="added_tag_action_title">"%s gehitu da"</string>
+    <string name="removed_tag_action_title">"%s gaurkotu da"</string>
+    <string name="changed_tag_action_title">"%s igo da"</string>
+    <string name="pref_title_delete_cache">"Katxea ezabatu"</string>
+    <string name="pref_title_delete_cache_summary">"Uste baduzu datuak ez daudela gaurkotuak"</string>
+    <string name="delete_confirmation">"Ezabatu"</string>
+    <string name="delete_cache_dialog_message">"Jaitsitako mapa datu guztiak ezabatu, erronkak barne? Datu guztiak %1$s egun ostean berritzen dira eta erabiltzen ez diren datuak ezabatzen dira %2$s egun pasata automatikoki."</string>
+    <string name="quest_shop_type_title">"Zein denda mota da %s?"</string>
+    <string name="quest_shop_type_title_no_name">"Zein denda mota da hau?"</string>
+    <string name="pref_background_type_select">"Aukeratu atzealde mota"</string>
+    <string name="background_type_map">"Mapa"</string>
+    <string name="background_type_aerial_esri">"Airetiko irudia (Esri bidez)"</string>
+    <string name="quest_barrier_type_title">"Zein langa edo hesi mota dago hemen?"</string>
+    <string name="quest_barrier_type_gate">"Atea"</string>
+    <string name="quest_barrier_type_lift_gate">"Hesi altxagarria"</string>
+    <string name="quest_barrier_type_bollard">"Bolardoa(k)"</string>
+    <string name="quest_barrier_type_chain">"Katea"</string>
+    <string name="quest_barrier_type_rope">"Soka"</string>
+    <string name="quest_barrier_type_wire_gate">"Kendu ahal den txarrantxa sekzioa"</string>
+    <string name="quest_barrier_type_cattle_grid">"Animaliek ihes ez egiteko hesia"</string>
+    <string name="quest_barrier_type_block">"Objektu handi finkoa"</string>
+    <string name="quest_barrier_jersey_barrier">"Jersey hesia"</string>
+    <string name="quest_barrier_type_log">"Enborra"</string>
+    <string name="quest_barrier_type_kerb">"Zintarria"</string>
+    <string name="quest_barrier_type_height_restrictor">"Altuera hesia"</string>
+    <string name="quest_barrier_full_height_turnstile">"Altuera osoko tornoa"</string>
+    <string name="quest_barrier_type_turnstile">"Ate birakaria"</string>
+    <string name="quest_barrier_type_passage">"Harresi/hesi/pareta bat gurutzatzeko bidea"</string>
+    <string name="quest_barrier_type_debris_pile">"Zabor pila"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Estugunea"</string>
+    <string name="quest_barrier_type_stile_ladder">"Eskailera"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Bizikleta hesia"</string>
+    <string name="quest_barrier_type_kissing_gate">"Alboko pasagunea"</string>
+    <string name="quest_barrier_type_swing_gate">"Barra horizontala"</string>
+    <string name="quest_policeType_title">"Zein polizia-etxe mota da hau?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Alboko pasagune bihurtuta"</string>
+    <string name="quest_stile_type_title">"Zein tornu mota da hau?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"familia bakarreko etxe elkarri atxikia(k)"</string>
+    <string name="pref_title_quests2">"Erronken aukeraketa eta ordena"</string>
+    <string name="pref_subtitle_quests">"%2$d(e)tik %1$d gaitua
+"</string>
+    <string name="quest_busStopLit_tram_name_title">"%s tranbia geltokia argiztatuta al dago?"</string>
+    <string name="quest_busStopLit_tram_title">"Tranbia geltoki hau argiztatuta al dago?"</string>
+    <string name="quest_busStopLit_title">"argia dago bus geltoki honetan?"</string>
+    <string name="quest_busStopLit_name_title">"Autobus geltoki hau %s argiztatuta al dago?"</string>
+    <string name="no_location_permission_warning_title">"Kokapen Baimenak"</string>
+    <string name="quest_surface_value_woodchips">"Egur zatiak"</string>
+    <string name="no_camera_app">"Ez dago kamara aplikaziorik eskuragarri"</string>
+    <string name="quest_busStopBin_tram_name_title">"Zaborrontzirik al dago %s tranbia geltokian?"</string>
+    <string name="quest_busStopBin_tram_title">"Zaborrontzirik al dago tranbia geltoki honetan?"</string>
+    <string name="quest_busStopBin_title">"zakarrontzirik badago bus geltoki honetan?"</string>
+    <string name="quest_busStopBin_name_title">"Zaborrontzirik al dago %s bus geltokian?"</string>
+    <string name="quest_bollard_type_title">"zein motako bolardoa da hau?"</string>
+    <string name="quest_bollard_type_rising">"Bolardo altxagarria"</string>
+    <string name="quest_bollard_type_flexible">"Bolardo flexiblea"</string>
+    <string name="quest_bollard_type_fixed">"Finkoa (ezin da kendu)"</string>
+    <string name="quest_camera_type_title">"Zein bigilantzia kamera mota dago hemen?"</string>
+    <string name="quest_camera_type_dome">"Domoa"</string>
+    <string name="quest_camera_type_fixed">"Finkoa"</string>
+    <string name="quest_camera_type_panning">"Mugikorra"</string>
+    <string name="about_title_faq">"FAQ"</string>
+    <string name="quest_buildingLevels_title2">"Zenbat solairu ditu eraikin honek lurretik gora?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Zenbat solairu ditu eraikin honek lurretik gora zati honetan?"</string>
+    <string name="quest_crossing_title">"Ba al dago zintarririk bidea espaloiarekin batzen denean? Nolakoa da?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Berezkoa: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Erronka mota hau desgaitua dago berez, teilatuaren formak ez direlako erraz ikusten kaletik. Bilaketa mota hau ere oso luzea izaten da, eta, gehienetan, errazagoa eta eraginkorragoa da hau etxeko aireko irudietatik mapatzea."</string>
+    <string name="quest_religion_animist">"animista"</string>
+    <string name="quest_construction_steps_title">"Pauso guzti hauek egin al dituzu?"</string>
+    <string name="pref_quests_deselect_all">"Erronka guztien aukera kendu?"</string>
+    <string name="quest_buildingType_boathouse">"Barku-etxea"</string>
+    <string name="quest_buildingType_allotment_house">"Lorategia zaintzeko txabola bat"</string>
+    <string name="quest_buildingType_grandstand">"Tribuna"</string>
+    <string name="action_search">"bilatu"</string>
+    <string name="action_manage_presets">"Hobespenak kudeatu"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"zenbat pertsona daude kartografiatzen? Sartu zenbaki berdina denon mugikorretan."</string>
+    <string name="team_mode_choose_color2">"Hurrengoa, pertsona bakoitza kolore bat aukeratu behar du. Aukera ezazu zurea:"</string>
+    <string name="link_organic_maps_description">"Mapa aplikazioak konexiorik gabe bidaiarientzako, mendizaleentzako eta txirrindularientzako"</string>
+    <string name="quest_kerb_height_no">"Ez dago zintarririk"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Gainetik pasatzeko (egurrezkoa)"</string>
+    <string name="quest_barrier_type_stepover_stone">"Gainetik pasatzeko (harrizkoa)"</string>
+    <string name="quest_bollard_type_removable">"Kendu daiteke (giltzarekin edo giltza gabe)"</string>
+    <string name="quest_bollard_type_foldable2">"Tolesgarria (giltzarekin edo gabe)"</string>
+    <string name="no_search_results">"ez da ezer aurkitu"</string>
+    <string name="quest_selection_hint_title">"Gehiegi egiteko?"</string>
+    <string name="quest_selection_hint_message">"Mapak egitea dibertigarria izan beharko litzateke! Nekatuta bazaude egiten diren galdera piloarekin, beti duzu aukera galdera mota batzuk kentzeko zure ezarpenetan."</string>
+    <string name="quest_presets_preset_add">"Gehitu hobespena"</string>
+    <string name="quest_presets_preset_name">"Hobespenaren izena"</string>
+    <string name="quest_presets_default_name">"Berezkoa"</string>
+    <string name="quest_presets_selected">"Hautatua"</string>
+    <string name="quest_presets_delete_message">"“%s” hobespena ezabatu? Erronken hautaketa eta ordena betirako galduko da."</string>
+    <string name="notification_syncing">"Datuak sinkronizatzen..."</string>
+    <string name="notification_channel_sync">"Datuak sinkronizatu"</string>
+    <string name="quest_board_type_sport">"Kirola, Ariketak"</string>
+    <string name="quest_generic_hasFeature_optional">"Aukeran"</string>
+    <string name="quest_buildingType_bridge">"Eraikinen arteko zubia"</string>
+    <string name="quest_laundrySelfService_title2">"Garbileku honek norberak zerbitzatzeko aukera ematen al du?"</string>
+    <string name="quest_dietType_halal_name_title">"%s(e)k Halal produktuak al ditu?"</string>
+    <string name="quest_dietType_explanation_halal">"Halal produktuak arau berezien arabera prestatu behar dira, eta Halal ziurtagiri bat behar du sarreran hala dela ziurtatuz."</string>
+    <string name="quest_picnicTableCover_title">"Picnic mahai hau estalia al dago (euritik babestua)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Atal honetan eskailerak daude"</string>
+    <string name="quest_barrier_type_passage_conversion">"Horma/langa/etab. baten pasabide batean bilakatu da."</string>
+    <string name="quest_barrier_type_gate_conversion">"Ate batean eraldatu da"</string>
+    <string name="quest_traffic_calming_type_title">"Zein da trafikoa gelditzeko erabiltzen den modua?"</string>
+    <string name="quest_traffic_calming_type_bump">"Koskorra"</string>
+    <string name="quest_traffic_calming_type_hump">"Konkorra (luzeagoa)"</string>
+    <string name="quest_traffic_calming_type_table">"Taula (gainazal laua)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Kuxina (ibilgailu zabalak ez ditu gelditzen)"</string>
+    <string name="quest_traffic_calming_type_choker">"Zabalera mugatuko errepidea"</string>
+    <string name="quest_traffic_calming_type_island">"Uhartea"</string>
+    <string name="quest_traffic_calming_type_chicane">"Apropos egindako bihurguneak"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"burrunba errenkada(k)"</string>
+    <string name="quest_surface_value_concrete_plates">"Porlanezko plakak"</string>
+    <string name="quest_surface_value_concrete_lanes">"Porlanezko errailak"</string>
+    <string name="quest_fireHydrant_diameter_title">"Zein da ur-hargune honetan aipatzen den diametroa?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diametro horrek ez du oso logikoa ematen."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Ziur zaude? Batzuetan diametroa ur-hargunean bertan agertzen da."</string>
+    <string name="quest_diet_answer_no_food">"Ez du janaririk"</string>
+    <string name="short_no_answer_on_button">"Ez"</string>
+    <string name="restore_confirmation">"Berrezarri"</string>
+
+    <!-- Fuzzy -->
+    <string name="restore_dialog_message">"Berrezarri aurretik ezkutatutako erronka guztiak?"</string>
+    <string name="quest_parking_access_title2">"Nork du hemen aparkatzeko baimena? Aparkalekua doakoa edo ordaindua izan liteke."</string>
+    <string name="quest_access_yes">"Publiko orokorreko edozein"</string>
+    <string name="quest_access_customers">"Toki zehatz batera doan oro (adibidez, bezeroak bakarrik)"</string>
+    <string name="quest_access_private">"Baimenduak soilik"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Postontzi honen jasotze orduak zuzenak al dira oraindik?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"%s izeneko postontzi honen jasotze orduak zuzenak al dira oraindik?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Ezezaguna. Saiatu toki mota adierazten, adibidez \"okindegia\". Bestela, pentsatu ohar bat uztea."</string>
+    <string name="quest_bicycle_barrier_type_title">"Zein motakoa da bizikletentzako hesi hau?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Bidearekiko diagonala"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Pasabide estua, estuagoa goiko aldean"</string>
+    <string name="quest_barrier_bicycle_type_single">"Bi hesiren arteko pasabidea"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - hesia bi aldeetan"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane - bi hesi baino gehiago"</string>
 </resources>

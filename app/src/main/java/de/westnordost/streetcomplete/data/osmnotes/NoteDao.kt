@@ -64,12 +64,22 @@ class NoteDao @Inject constructor(private val db: Database) {
         return db.query(NAME, where = "$ID IN (${ids.joinToString(",")})") { it.toNote() }
     }
 
-    fun getAllIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, arrayOf(ID), "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        else return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
 
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0
         return db.delete(NAME, "$ID IN (${ids.joinToString(",")})")
+    }
+
+    fun clear() {
+        db.delete(NAME)
     }
 
     private fun Note.toPairs() = listOf(

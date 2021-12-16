@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
@@ -18,7 +19,8 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
           (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
-        and !covered and (!shelter or shelter older today -4 years)
+        and !covered
+        and (!shelter or shelter older today -4 years)
     """
     /* Not asking again if it is covered because it means the stop itself is under a large
        building or roof building so this won't usually change */
@@ -26,6 +28,8 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     override val commitMessage = "Add bus stop shelter"
     override val wikiLink = "Key:shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter
+
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsAnyKey("name", "ref")

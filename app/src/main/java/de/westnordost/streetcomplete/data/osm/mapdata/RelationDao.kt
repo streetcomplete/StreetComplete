@@ -107,6 +107,13 @@ class RelationDao @Inject constructor(private val db: Database) {
         }
     }
 
+    fun clear() {
+        db.transaction {
+            db.delete(NAME_MEMBERS)
+            db.delete(NAME)
+        }
+    }
+
     fun getAllForNode(nodeId: Long) : List<Relation> =
         getAllForElement(ElementType.NODE, nodeId)
 
@@ -116,8 +123,16 @@ class RelationDao @Inject constructor(private val db: Database) {
     fun getAllForRelation(relationId: Long) : List<Relation> =
         getAllForElement(ElementType.RELATION, relationId)
 
-    fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
+
+
 
     private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
         return db.transaction {

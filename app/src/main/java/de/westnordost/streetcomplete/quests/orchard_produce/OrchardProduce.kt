@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
-enum class OrchardProduce(val osmValue: String, val landuse: String? = null) {
+enum class OrchardProduce(val osmValue: String, val osmLanduseValue: String? = null) {
 
-    // may have been mistaken for an orchard (i.e. agave) from satellite imagery
+    // may have been mistaken for an orchard from satellite imagery
     SISAL("sisal", "farmland"),
     GRAPE("grape", "vineyard"),
 
