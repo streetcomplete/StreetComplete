@@ -36,15 +36,22 @@ enum class ParkingPosition {
 }
 
 val StreetParking.estimatedWidthOnRoad: Float get() = when(this) {
-    is StreetParkingPositionAndOrientation -> when(orientation) {
-        PARALLEL -> 2f * position.estimatedWidthFactor
-        DIAGONAL -> 3f * position.estimatedWidthFactor
-        PERPENDICULAR -> 4f * position.estimatedWidthFactor
-    }
+    is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * position.estimatedWidthOnRoadFactor
     else -> 0f // otherwise let's assume it's not on the street itself
 }
 
-val ParkingPosition.estimatedWidthFactor: Float get() = when(this) {
+val StreetParking.estimatedWidthOffRoad: Float get() = when(this) {
+    is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * (1 - position.estimatedWidthOnRoadFactor)
+    else -> 0f // otherwise let's assume it's not on the street itself
+}
+
+private val ParkingOrientation.estimatedWidth: Float get() = when(this) {
+    PARALLEL -> 2f
+    DIAGONAL -> 3f
+    PERPENDICULAR -> 4f
+}
+
+private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when(this) {
     ON_STREET -> 1f
     HALF_ON_KERB -> 0.5f
     ON_KERB -> 0f

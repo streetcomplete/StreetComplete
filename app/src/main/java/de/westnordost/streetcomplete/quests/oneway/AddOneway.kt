@@ -7,12 +7,10 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.quests.cycleway.createCyclewaySides
-import de.westnordost.streetcomplete.quests.cycleway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
-import de.westnordost.streetcomplete.osm.street_parking.*
 
 class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
@@ -75,26 +73,8 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     private fun isOnewayRoadCandidate(road: Element): Boolean {
         if (!elementFilter.matches(road)) return false
         // check if the width of the road minus the space consumed by other stuff is quite narrow
-        val width = road.tags["width"]?.toFloatOrNull()
-        val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(road.tags) + 4f
-        return isNarrow
-    }
-
-    private fun estimatedWidthConsumedByOtherThings(tags: Map<String, String>): Float {
-        return estimateWidthConsumedByParkingLanes(tags) +
-                estimateWidthConsumedByCycleLanes(tags)
-    }
-
-    private fun estimateWidthConsumedByParkingLanes(tags: Map<String, String>): Float {
-        val sides = createStreetParkingSides(tags) ?: return 0f
-        return (sides.left?.estimatedWidthOnRoad ?: 0f) + (sides.right?.estimatedWidthOnRoad ?: 0f)
-    }
-
-    private fun estimateWidthConsumedByCycleLanes(tags: Map<String, String>): Float {
-        /* left or right hand traffic is irrelevant here because we don't make a difference between
-           left and right side */
-        val sides = createCyclewaySides(tags, false) ?: return 0f
-        return (sides.left?.estimatedWidth ?: 0f) + (sides.right?.estimatedWidth ?: 0f)
+        val usableWidth = estimateUsableRoadwayWidth(road.tags) ?: return false
+        return usableWidth <= 4f
     }
 
     override fun createForm() = AddOnewayForm()
