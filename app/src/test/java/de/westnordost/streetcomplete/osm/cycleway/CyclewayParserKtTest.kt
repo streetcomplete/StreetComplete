@@ -1,6 +1,6 @@
-package de.westnordost.streetcomplete.quests.cycleway
+package de.westnordost.streetcomplete.osm.cycleway
 
-import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 
 import org.junit.Assert.*
 import org.junit.Test
