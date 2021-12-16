@@ -22,7 +22,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
      * + roads with a very low speed limit
      *
      * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
-     *   is mapped as a separate way
+     *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
+     *   cycleway is separate, the sidewalk is too for sure
     * */
     private val filter by lazy { """
         ways with
@@ -46,6 +47,10 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
           and bicycle != use_sidepath
           and bicycle:backward != use_sidepath
           and bicycle:forward != use_sidepath
+          and cycleway != separate
+          and cycleway:left != separate
+          and cycleway:right != separate
+          and cycleway:both != separate
     """.toElementFilterExpression() }
 
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
