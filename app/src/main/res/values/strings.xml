@@ -1131,4 +1131,5 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, first answer how those that are allowed to, do park here. What restrictions apply exactly can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
+    <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
 </resources>

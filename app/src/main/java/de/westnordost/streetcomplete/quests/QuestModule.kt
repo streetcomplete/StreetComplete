@@ -102,6 +102,7 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
+import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
@@ -354,6 +355,7 @@ import javax.inject.Singleton
         AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
         AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
         AddStreetParking(),
+        AddShoulder(),
 
         // footways
         AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
