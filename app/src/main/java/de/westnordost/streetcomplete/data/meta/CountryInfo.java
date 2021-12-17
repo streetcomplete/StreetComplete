@@ -36,15 +36,18 @@ public class CountryInfo implements Serializable, Cloneable
 	String livingStreetSignStyle;
 	Integer mobileCountryCode;
 	String noParkingSignStyle;
+	String noParkingLineStyle;
 	String noStandingSignStyle;
+	String noStandingLineStyle;
 	String noStoppingSignStyle;
+	String noStoppingLineStyle;
 	List<String> officialLanguages;
 	List<String> orchardProduces;
 	List<String> popularReligions;
 	List<String> popularSports;
 	Integer regularShoppingDays;
 	Boolean roofsAreUsuallyFlat;
-	String shoulderLineStyle;
+	String edgeLineStyle;
 	String slowZoneLabelPosition;
 	String slowZoneLabelText;
 	List<String> speedUnits;
@@ -79,8 +82,11 @@ public class CountryInfo implements Serializable, Cloneable
 	}
 	public Integer getMobileCountryCode() { return mobileCountryCode; }
 	public String getNoParkingSignStyle() { return noParkingSignStyle; }
+	public String getNoParkingLineStyle() { return noParkingLineStyle; }
 	public String getNoStandingSignStyle() { return noStandingSignStyle; }
+	public String getNoStandingLineStyle() { return noStandingLineStyle; }
 	public String getNoStoppingSignStyle() { return noStoppingSignStyle; }
+	public String getNoStoppingLineStyle() { return noStoppingLineStyle; }
 	public List<String> getOfficialLanguages()
 	{
 		if(officialLanguages == null) return Collections.emptyList();
@@ -102,7 +108,7 @@ public class CountryInfo implements Serializable, Cloneable
 		return Collections.unmodifiableList(popularSports);
 	}
 	public Integer getRegularShoppingDays() { return regularShoppingDays; }
-	public String getShoulderLineStyle() { return shoulderLineStyle; }
+	public String getEdgeLineStyle() { return edgeLineStyle; }
 	public String getSlowZoneLabelPosition() { return slowZoneLabelPosition; }
 	public String getSlowZoneLabelText() { return slowZoneLabelText; }
 	public List<String> getSpeedUnits() { return speedUnits; }

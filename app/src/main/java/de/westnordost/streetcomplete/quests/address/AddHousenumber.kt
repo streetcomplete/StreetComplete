@@ -147,6 +147,10 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             WrongBuildingType -> {
                 changes.modify("building", "yes")
             }
+            is HouseNameAndHouseNumber -> {
+                changes.add("addr:housenumber", answer.number)
+                changes.add("addr:housename", answer.name)
+            }
         }
     }
 }

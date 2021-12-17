@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [BSP, ANZ Bank]
-centerLineStyle: white
+centerLineStyle: yellow
 isLeftHandTraffic: true
 mobileCountryCode: 537
 noParkingSignStyle: australia

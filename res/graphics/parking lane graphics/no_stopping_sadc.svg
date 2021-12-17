@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
- <g transform="matrix(2.2937 0 0 2.2937 -.32113 -613.58)">
-  <circle cx="55.945" cy="323.32" r="54.062" fill="#fff" style="paint-order:fill markers stroke"/>
-  <circle cx="55.946" cy="323.32" r="45.567" fill="none" stroke="#c1121c" stroke-width="13.501"/>
-  <path d="m79.379 282.73-46.868 81.178" fill="none" stroke="#c1121c" stroke-width="13.951"/>
-  <path d="m40.252 336.02c3.6114 13.534 31.136 15.991 31.225-0.26574 0.08831-16.256-28.042-9.7161-28.036-24.847 0.0068-15.131 23.072-14.896 27.976-0.70792" fill="none" stroke="#000" stroke-width="10.464"/>
- </g>
+ <circle cx="128" cy="128" r="124" fill="#fff"/>
+ <circle cx="128" cy="128" r="104" fill="none" stroke="#c1121c" stroke-width="30"/>
+ <path d="m181.75 34.918-107.5 186.2" fill="none" stroke="#c1121c" stroke-width="32"/>
+ <path d="m92.005 157.15c8.2835 31.043 71.417 36.679 71.621-0.60952 0.20256-37.286-64.32-22.286-64.306-56.992 0.0156-34.706 52.92-34.167 64.169-1.6238" fill="none" stroke="#000" stroke-width="24"/>
 </svg>

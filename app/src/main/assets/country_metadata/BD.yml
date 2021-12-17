@@ -3,6 +3,9 @@ atmOperators: [Dutch-Bangla Bank Limited ATM ডাচ-বাংলা ব্য
 firstDayOfWorkweek: Su
 isLeftHandTraffic: true
 mobileCountryCode: 470
+noParkingLineStyle: yellow
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [bn]
 orchardProduces: [guava, mango, mangosteen, banana, tomato, pineapple, chilli_pepper, sweet_pepper, papaya, areca_nut, coconut, tea, lemon, lime, grapefruit, orange, rubber]
 popularReligions: [muslim, hindu]

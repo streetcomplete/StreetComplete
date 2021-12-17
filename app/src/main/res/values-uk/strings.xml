@@ -240,7 +240,11 @@
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Чи доступна станція метро %s для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Чи доступна залізнична станція %s для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Чи доступне місце %s для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат всередині обладнані для інвалідних візків."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частково» значить, що для доступу треба зробити не більше кроку."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Скорочення в назві %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Чи є в цьому туалеті дитячий столик?"</string>
@@ -591,6 +595,8 @@
     <string name="quest_tracktype_grade5">"М'яке"</string>
     <string name="quest_building_underground_name_title">"Чи є повністю під землею %s?"</string>
     <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Частково означає що одного кроку достатньо для доступу"</string>
     <string name="quest_wheelchairAccess_outside_title">"Чи є доступ для людей у візках?"</string>
     <string name="quest_traffic_signals_button_title">"Чи вмикається пішохідний світлофор кнопкою?"</string>
@@ -1148,7 +1154,6 @@
     <string name="default_disabled_msg_roofShape">"Цей тип квесту вимкнено за замовчуванням, оскільки форми даху часто нелегко побачити з вулиці. Цей тип квесту також займає більше часу; здебільшого простіше та ефективніше розпізнати з аерознімків удома."</string>
     <string name="quest_religion_animist">"Анімізм"</string>
     <string name="quest_construction_steps_title">"Ці кроки завершені?"</string>
-    <string name="questList_disabled_at_day">"Показується лише вночі"</string>
     <string name="pref_quests_deselect_all">"Прибрати виділення з усього?"</string>
     <string name="quest_buildingType_boathouse">"Елінг"</string>
     <string name="quest_buildingType_allotment_house">"Садовий флігель"</string>

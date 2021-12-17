@@ -6,7 +6,7 @@ hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: true
 isUsuallyAnyGlassRecyclableInContainers: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 230
 officialLanguages: [cs]
 orchardProduces: [apple, grape, tomato, hop, pear, plum, strawberry, cherry, chilli_pepper, sweet_pepper, apricot, peach, walnut, raspberry]

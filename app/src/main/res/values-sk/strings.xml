@@ -2437,7 +2437,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="default_disabled_msg_roofShape">"Tento typ úlohy je v predvolenom nastavení zakázaný, pretože tvary striech nie sú z ulice často dobre viditeľné. Tento typ úlohy je tiež dosť časovo náročný; vo väčšine prípadov je jednoduchšie a efektívnejšie to zmapovať z leteckých snímok doma."</string>
     <string name="quest_religion_animist">"Animista"</string>
     <string name="quest_construction_steps_title">"Sú tieto schody dokončené?"</string>
-    <string name="questList_disabled_at_day">"Zobrazuje sa iba v noci"</string>
     <string name="pref_quests_deselect_all">"Zrušiť výber všetkých úloh?"</string>
     <string name="quest_buildingType_boathouse">"Lodenica"</string>
     <string name="quest_buildingType_allotment_house">"Prístavba záhradného pozemku"</string>

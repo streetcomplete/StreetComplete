@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.cycleway.estimatedWidth
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
-import de.westnordost.streetcomplete.osm.parking_lanes.*
+import de.westnordost.streetcomplete.osm.street_parking.*
 
 class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
@@ -86,7 +86,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     }
 
     private fun estimateWidthConsumedByParkingLanes(tags: Map<String, String>): Float {
-        val sides = createParkingLaneSides(tags) ?: return 0f
+        val sides = createStreetParkingSides(tags) ?: return 0f
         return (sides.left?.estimatedWidthOnRoad ?: 0f) + (sides.right?.estimatedWidthOnRoad ?: 0f)
     }
 

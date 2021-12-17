@@ -227,7 +227,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is the underground entrance %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Is the railway station %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Is the location %s wheelchair accessible?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Partially means that there is no more than a single step to access it."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
@@ -566,6 +570,8 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_tracktype_grade5">"Soft"</string>
     <string name="quest_building_underground_name_title">"Is %s completely underground?"</string>
     <string name="quest_building_underground_title">"Is this building completely underground?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Partially means that there is no more than a single step to access it."</string>
     <string name="quest_wheelchairAccess_outside_title">"Is this place wheelchair accessible?"</string>
 
@@ -1059,7 +1065,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="default_disabled_msg_roofShape">"This quest type is disabled by default because the roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases, it is easier and more efficient to map this from aerial imagery at home."</string>
     <string name="quest_religion_animist">"Animist"</string>
     <string name="quest_construction_steps_title">"Are these steps completed?"</string>
-    <string name="questList_disabled_at_day">"Only shown at night"</string>
     <string name="pref_quests_deselect_all">"Deselect all quests?"</string>
     <string name="quest_buildingType_boathouse">"Boathouse"</string>
     <string name="quest_buildingType_allotment_house">"Allotment building"</string>
@@ -1127,6 +1132,8 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_barrier_bicycle_type_single">"Passage between two barriers"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barrier on each side"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - more than two barriers"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_level_title">"On which level is %s located?"</string>
     <string name="pref_title_language_select">"Select language"</string>
     <string name="language_default">"System default"</string>

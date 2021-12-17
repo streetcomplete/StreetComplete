@@ -1,4 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
+centerLineStyle: yellow
+edgeLineStyle: white
 lengthUnits: [foot and inch, meter]
 officialLanguages: [en, sm]
 orchardProduces: [coconut, banana, coconut, pineapple, guava, mango, mangosteen, papaya, avocado, banana, pineapple, cacao, tomato, coffee, pepper, cacao]

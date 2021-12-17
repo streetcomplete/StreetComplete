@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.R
         "clock" -> return R.drawable.ic_pin_clock
         "drinking_water" -> return R.drawable.ic_pin_water
         "motorcycle_parking" -> return R.drawable.ic_pin_motorcycle_parking
+        "parking" -> return R.drawable.ic_pin_parking
         "post_box" -> return R.drawable.ic_pin_mail
         "public_bookcase" -> return R.drawable.ic_pin_book
         "recycling" -> return R.drawable.ic_pin_recycling_container

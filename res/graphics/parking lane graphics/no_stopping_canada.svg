@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
- <circle cx="128" cy="128.02" r="124" fill="#fff" stroke-width="2.2937" style="paint-order:fill markers stroke"/>
- <circle cx="128" cy="128.02" r="104.52" fill="none" stroke="#c1121c" stroke-width="30.967"/>
- <text x="96.113449" y="128.87727" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25" xml:space="preserve"><tspan x="96.113449" y="128.87727"/></text>
- <path d="m191.69 154.82-37.618 37.182-52.892-0.30801-37.182-37.618 0.30801-52.892 37.618-37.182 52.892 0.30801 37.182 37.618z" fill="#090909" fill-rule="evenodd"/>
- <path d="m51.987 51.983 152.03 152.03" fill="none" stroke="#c1121c" stroke-width="31.999"/>
+ <circle cx="128" cy="128" r="124" fill="#fff"/>
+ <circle cx="128" cy="128" r="104" fill="none" stroke="#c1121c" stroke-width="30"/>
+ <path d="m192 154-38 38h-52l-38-38v-52l38-38h52l38 38z" fill="#090909"/>
+ <path d="m51.987 51.983 152.03 152.03" fill="none" stroke="#c1121c" stroke-width="32"/>
 </svg>

@@ -2389,7 +2389,6 @@ megállóban?"</string>
     <string name="default_disabled_msg_roofShape">"Ez a kérdéstípus alapértelmezés szerint le van tiltva, mert a tetőformák az utcáról gyakran nehezen láthatók. Ez a kérdéstípus ráadásul meglehetősen időigényes is; az esetek többségében könnyebb és hatékonyabb ezt otthon légi felvételek segítségével feltérképezni."</string>
     <string name="quest_religion_animist">"Animista"</string>
     <string name="quest_construction_steps_title">"Be van-e fejezve ez a lépcső?"</string>
-    <string name="questList_disabled_at_day">"Csak éjszaka látható"</string>
     <string name="pref_quests_deselect_all">"Visszavonod az összes kérdés kijelölését?"</string>
     <string name="quest_buildingType_boathouse">"Csónakház"</string>
     <string name="quest_buildingType_allotment_house">"Kiskerti melléképület"</string>

@@ -7,8 +7,10 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 202
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [el]
 orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry, chestnut, walnut, almond, plum]
 slowZoneLabelPosition: top

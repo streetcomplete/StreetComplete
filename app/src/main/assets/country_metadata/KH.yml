@@ -6,6 +6,8 @@ chargingStationOperators: [Green E-Bike]
 hasBiWeeklyAlternateSideParkingSign: true
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 456
+noParkingLineStyle: yellow-white on curb
+noStoppingLineStyle: red-white on curb
 officialLanguages: [km]
 orchardProduces: [banana, coconut, guava, mango, mangosteen, orange, pineapple, rubber, chilli_pepper, sweet_pepper, grapefruit, lemon, lime, pepper, coffee]
 popularReligions: [buddhist, muslim]

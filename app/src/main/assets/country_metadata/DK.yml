@@ -3,7 +3,7 @@ atmOperators: [Danske Bank, Nordea, Euronet, Sydbank, Jyske Bank, Arbejdernes La
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: square
+livingStreetSignStyle: vienna
 mobileCountryCode: 238
 officialLanguages: [da]
 orchardProduces: [apple, tomato, strawberry, pear, cherry, plum, raspberry, blueberry, hazelnut]

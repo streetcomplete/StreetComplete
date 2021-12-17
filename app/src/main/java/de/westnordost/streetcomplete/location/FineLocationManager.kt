@@ -35,10 +35,10 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     private val locationListener = object : LocationUpdateListener {
         override fun onLocationChanged(location: Location) {
-            if (!isBetterLocation(location, lastLocation)) return
-
-            lastLocation = location
-            locationUpdateCallback(location)
+            if (location.isBetterThan(lastLocation)) {
+                lastLocation = location
+                locationUpdateCallback(location)
+            }
         }
     }
 
@@ -83,48 +83,42 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
     }
 }
 
-// taken from https://developer.android.com/guide/topics/location/strategies.html#kotlin
+// Based on https://web.archive.org/web/20180424190538/https://developer.android.com/guide/topics/location/strategies.html#BestEstimate
 
 private const val TWO_MINUTES = 1000L * 60 * 2
 
-/** Determines whether one Location reading is better than the current Location fix
- * @param location The new Location that you want to evaluate
- * @param currentBestLocation The current Location fix, to which you want to compare the new one
- */
-private fun isBetterLocation(location: Location, currentBestLocation: Location?): Boolean {
-    // check whether this is a valid location at all. Happened once that lat/lon is NaN, maybe issue
-    // of that particular device
-    if (location.longitude.isNaN() || location.latitude.isNaN()) return false
+/** Determines whether this Location reading is better than the previous Location fix */
+private fun Location.isBetterThan(previous: Location?): Boolean {
+    // Check whether this is a valid location at all.
+    // Happened once that lat/lon is NaN, maybe issue of that particular device
+    if (this.longitude.isNaN() || this.latitude.isNaN()) return false
 
-    if (currentBestLocation == null) {
-        // A new location is always better than no location
-        return true
-    }
+    // A new location is always better than no location
+    if (previous == null) return true
 
     // Check whether the new location fix is newer or older
-    val timeDelta = location.time - currentBestLocation.time
-    val isSignificantlyNewer = timeDelta > TWO_MINUTES
-    val isSignificantlyOlder = timeDelta < -TWO_MINUTES
+    val timeDelta = this.time - previous.time
+    val isMuchNewer = timeDelta > TWO_MINUTES
+    val isMuchOlder = timeDelta < -TWO_MINUTES
     val isNewer = timeDelta > 0L
 
     // Check whether the new location fix is more or less accurate
-    val accuracyDelta = location.accuracy - currentBestLocation.accuracy
+    val accuracyDelta = this.accuracy - previous.accuracy
     val isLessAccurate = accuracyDelta > 0f
     val isMoreAccurate = accuracyDelta < 0f
-    val isSignificantlyLessAccurate = accuracyDelta > 200f
+    val isMuchLessAccurate = accuracyDelta > 200f
 
-    // Check if the old and new location are from the same provider
-    val isFromSameProvider = location.provider == currentBestLocation.provider
+    val isFromSameProvider = this.provider == previous.provider
 
     // Determine location quality using a combination of timeliness and accuracy
     return when {
         // the user has likely moved
-        isSignificantlyNewer -> return true
+        isMuchNewer -> true
         // If the new location is more than two minutes older, it must be worse
-        isSignificantlyOlder -> return false
+        isMuchOlder -> false
         isMoreAccurate -> true
         isNewer && !isLessAccurate -> true
-        isNewer && !isSignificantlyLessAccurate && isFromSameProvider -> true
+        isNewer && !isMuchLessAccurate && isFromSameProvider -> true
         else -> false
     }
 }

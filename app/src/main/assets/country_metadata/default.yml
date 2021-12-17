@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 advisorySpeedLimitSignStyle: blue
 centerLineStyle: white
+edgeLineStyle: white
 firstDayOfWorkweek: Mo
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: false
@@ -16,11 +17,10 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
 orchardProduces: []
-popularReligions: []
+popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
 regularShoppingDays: 6
 roofsAreUsuallyFlat: false
-shoulderLineStyle: white
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5

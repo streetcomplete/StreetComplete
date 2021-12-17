@@ -2,7 +2,7 @@
 atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, Demir bank, РСК, DemirBank, DEMiR Bank, КБ Кыргызстан, Халык Банк, Айыл Банк, РСК банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Демир Банк, Коммерческий банк Кыргызстан]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
-livingStreetSignStyle: portrait
+livingStreetSignStyle: russia
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
 orchardProduces: [tomato, apple, apricot, plum, pear, peach, grape, walnut, cherry, hazelnut, raspberry, strawberry, almond, chilli_pepper, sweet_pepper, pistachio]

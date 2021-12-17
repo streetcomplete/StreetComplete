@@ -2,7 +2,7 @@
 atmOperators: [TEB, Raiffeisen Bank, NLB Banka, BKT, TEB Bank, NLB, Pcb, BPB, ProCredit Bank, Banka Ekonomike]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 221
 officialLanguages: [sq, sr]
 popularReligions: [muslim]

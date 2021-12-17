@@ -38,7 +38,7 @@ fun Element.isArea(): Boolean {
     }
 }
 
-/* roughly sorted by occurance count */
+/* roughly sorted by occurrence count */
 private val IS_AREA_EXPR = """
     ways with area = yes or area != no and (
     building

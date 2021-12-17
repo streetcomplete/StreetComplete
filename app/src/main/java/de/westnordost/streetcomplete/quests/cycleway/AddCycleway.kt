@@ -277,6 +277,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
           - anything explicitly tagged as no bicycles or having to use separately mapped sidepath
           - if not already tagged with a cycleway: streets with low speed or that are not paved, as
             they are very unlikely to have cycleway infrastructure
+                - for highway=residential without speed limit tagged assume low speed
           - if not already tagged, roads that are close (15m) to foot or cycleways (see #718)
           - if already tagged, if not older than 4 years or if the cycleway tag uses some unknown value
         */

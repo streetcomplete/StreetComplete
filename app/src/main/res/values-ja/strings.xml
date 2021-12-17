@@ -1215,6 +1215,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_hotel">"宿泊施設"</string>
     <string name="quest_buildingType_dormitory">"寮"</string>
     <string name="quest_buildingType_houseboat">"ハウスボート"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_bungalow">"バンガロー"</string>
     <string name="quest_buildingType_static_caravan">"トレーラーハウス"</string>
     <string name="quest_buildingType_commercial">"商業施設"</string>
     <string name="quest_buildingType_industrial">"工業施設"</string>
@@ -1316,6 +1319,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_postboxCollectionTimes_name_title">"%s ポストの収集時刻は何時ですか?"</string>
     <string name="create_new_note_hint">"ノートは現地で話されている言語で書くのが最善ですが、そうでなければ英語で書いてください。"</string>
     <string name="quest_leafType_title">"ここの樹木の葉の種類は何ですか?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_leaf_type_needles">"針葉樹"</string>
     <string name="quest_leaf_type_broadleaved">"広葉樹"</string>
     <string name="quest_leaf_type_mixed">"広葉樹と針葉樹"</string>
 
@@ -1366,10 +1372,14 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_tourism_information_board">"情報掲示板"</string>
     <string name="quest_tourism_information_terminal">"情報端末"</string>
     <string name="quest_tourism_information_map">"地図"</string>
+    <string name="quest_tourism_information_guidepost">"道標"</string>
     <string name="user_profile">"自分のプロフィール"</string>
     <string name="user_login">"ログイン"</string>
     <string name="user_logout">"ログアウト"</string>
     <string name="osm_profile">"OSM プロフィール"</string>
+
+    <!-- Fuzzy -->
+    <string name="tutorial_welcome_to_osm">"OpenStreetMapにようこそ"</string>
     <string name="tutorial_intro">"StreetComplete で簡単に OpenStreetMap に貢献できます。
 このアプリはあなたの周りで不足している情報(自転車レーン、住居表示、営業時間など...)を自動で探します。"</string>
     <string name="user_achievements_title">"実績"</string>
@@ -1388,8 +1398,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 レベル"</string>
     <string name="quest_recycling_type_engine_oil">"エンジン油"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;地図を表示するためにベクタータイルを %1$s から取得します。詳しくは %1$s の &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; を参照してください。&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_history">"歴史"</string>
     <string name="quest_surface_detailed_answer_impossible">"複数の路面…"</string>
 

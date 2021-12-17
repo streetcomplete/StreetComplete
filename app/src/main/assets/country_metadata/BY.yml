@@ -5,8 +5,10 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: portrait
+livingStreetSignStyle: russia
 mobileCountryCode: 257
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
 officialLanguages: [be, ru]
 orchardProduces: [apple, tomato, strawberry, pear, cherry, grape, walnut, plum, hazelnut, cranberry]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

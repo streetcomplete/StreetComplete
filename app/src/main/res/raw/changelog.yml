@@ -1,3 +1,22 @@
+v39.0: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How can cars park here, if at all?</i> (#771) - street parking</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>fix an issue with in-app language switching (#3554)</li>
+  <li>You can now answer that a playground is only for customers (#3433), by @matkoniecz</li>
+  <li>The fire hydrant diameter is now only asked for underground or pillar hydrants (#3575), by @matkoniecz</li>
+  <li>some minor enhancements, fixes and cleared wordings (#3570, #3576, ...), thanks @matkoniecz</li>
+  </ul>
+
+v38.1: |
+  <ul>
+  <li>fix location wasn't updated after tabbing out and in again (#3543), thanks @smichel17</li>
+  <li>improve some wordings (#3528, #3529), thanks @1ec5</li>
+  </ul>
+
 v38.0: |
   <h3>New Quests</h3>
   <ul>
@@ -1050,7 +1069,7 @@ v17.1: |
 
 v17.0: |
   <p>This release includes a major update of the map rendering library (in order to satisfy new
-  Google Play guidelines). I took this as an oppurtunity to re-do most of the things that concern
+  Google Play guidelines). I took this as an opportunity to re-do most of the things that concern
   the map view (#1279, #1606) and thus solve some long-standing issues with it. If any new have been
   introduced, please report them!</p>
   <h3>Enhancements</h3>
@@ -1104,7 +1123,7 @@ v16.0: |
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>ask about internet access for more types of accomodations (#1620), thanks @wvanderp</li>
+  <li>ask about internet access for more types of accommodations (#1620), thanks @wvanderp</li>
   <li>ask opening hours, names and wheelchair accessibility for more types of places (#1621), thanks @wvanderp</li>
   <li>do not ask for handrails of escalators by @matkoniecz</li>
   <li>add hint how to answer the cycleway and sidewalk question (#1671) by @matkoniecz</li>

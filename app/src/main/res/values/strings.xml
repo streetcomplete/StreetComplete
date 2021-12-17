@@ -77,7 +77,7 @@
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
-    <string name="confirmation_discard_negative">"Cancel"</string>
+    <string name="confirmation_discard_negative2">"No"</string>
     <string name="action_download">"Scan for quests here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give any answer"</string>
@@ -327,9 +327,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
-    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible.</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a single step to access it.</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than an ankle-high step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
@@ -431,7 +431,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_tung_nuts">Tung nuts</string>
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
-    <string name="quest_parkingType_street_side">Parking just off the roadway</string>
+    <string name="quest_parkingType_street_side">Parking adjacent to the roadway</string>
     <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
@@ -451,7 +451,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit…</string>
     <string name="quest_address_answer_house_name">No house number but a name…</string>
+    <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
     <string name="quest_address_house_name_label">House name:</string>
+    <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">levels in the roof</string>
     <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
     <string name="quest_cycleway_value_track">cycle track</string>
@@ -748,8 +750,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
 
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
+    <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s:</string>
+    <string name="on_floor">on floor %s:</string>
     <!-- as in: “Where is the metro station?” - “It is underground” -->
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
@@ -1108,4 +1111,26 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_barrier_road_intersection">How does this road cross the barrier here?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
+    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
+    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
+    <string name="select_street_parking_position">"Select position:"</string>
+    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"On roadway"</string>
+    <string name="street_parking_half_on_kerb">"Partially on roadway"</string>
+    <string name="street_parking_on_kerb">"Adjacent to roadway"</string>
+    <string name="street_parking_street_side">"Adjacent to roadway only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On roadway only in dedicated spaces"</string>
+    <string name="street_parking_separate">Parking displayed separately on map</string>
+    <string name="street_parking_no">No parking here / Not allowed</string>
+    <string name="street_parking_prohibited">No parking</string>
+    <string name="street_stopping_prohibited">No stopping</string>
+    <string name="street_standing_prohibited">No standing</string>
+    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
+    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
+    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, first answer how those that are allowed to, do park here. What restrictions apply exactly can be specified later.
+
+Alternatively, you can leave a note (with a photo)."</string>
 </resources>

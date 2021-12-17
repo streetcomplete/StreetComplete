@@ -2,10 +2,11 @@
 atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
 chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
 clothesContainerOperators: [Sorpa]
+edgeLineStyle: white dashes
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 274
 officialLanguages: [is]
 orchardProduces: [tomato]

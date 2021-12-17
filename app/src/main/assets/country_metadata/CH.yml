@@ -5,8 +5,10 @@ clothesContainerOperators: [Texaid, Ville de Geneve, Contex, coop, TexAid, Coop,
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 228
+noParkingLineStyle: dashed yellow with Xs
+noStoppingLineStyle: yellow
 officialLanguages: [de, fr, it, rm]
 orchardProduces: [apple, grape, tomato, pear, strawberry, apricot, cherry, plum, raspberry, walnut, chilli_pepper, sweet_pepper, kiwi, blueberry, peach, chestnut]
 popularSports: [soccer, tennis, basketball, shooting, equestrian]

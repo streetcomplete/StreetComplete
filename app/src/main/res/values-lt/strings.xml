@@ -2226,6 +2226,5 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="quest_busStopBin_title">"Ar šioje auobusų stotelėje yra šiukšliadėžė?"</string>
     <string name="about_title_faq">"DUK"</string>
     <string name="quest_buildingLevels_title2">"Kiek rūsio aukštų turi šis pastatas?"</string>
-    <string name="questList_disabled_at_day">"Rodyti tik naktį"</string>
     <string name="action_search">"Ieškoti"</string>
 </resources>

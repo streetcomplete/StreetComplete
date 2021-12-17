@@ -2236,7 +2236,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="default_disabled_msg_roofShape">"Este tipo de missão é desabilitado por padrão porque as formas do telhado geralmente não são facilmente visíveis da rua. Esse tipo de missão também consome muito tempo; na maioria dos casos, é mais fácil e eficiente mapear isso a partir de imagens aéreas em casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
     <string name="quest_construction_steps_title">"Essas etapas foram concluídas?"</string>
-    <string name="questList_disabled_at_day">"Mostrar apenas à noite"</string>
     <string name="pref_quests_deselect_all">"Desmarcar todas as missões?"</string>
     <string name="quest_buildingType_boathouse">"Casa de barcos"</string>
     <string name="quest_buildingType_allotment_house">"Dependência de loteamento de jardim"</string>
@@ -2275,10 +2274,26 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_generic_answer_is_actually_steps">"Esta parte são etapas"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertido em uma passagem, em uma parede/cerca/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"Convertido em um portão"</string>
+    <string name="quest_traffic_calming_type_title">"Qual tipo de lombada é essa?"</string>
+    <string name="quest_traffic_calming_type_bump">"Lombada curta"</string>
+    <string name="quest_traffic_calming_type_hump">"Lombada longa"</string>
+    <string name="quest_traffic_calming_type_table">"Lombada elevada"</string>
+    <string name="quest_traffic_calming_type_choker">"Estrada estreita"</string>
     <string name="quest_traffic_calming_type_island">"Ilha"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual diâmetro está especificado no sinal para este hidrante?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diâmetro parece implausível."</string>
     <string name="quest_fireHydrant_confirmation_title">"Você tem certeza? Às vezes, o diâmetro pode ser encontrado no próprio hidrante."</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
     <string name="short_no_answer_on_button">"Não"</string>
+    <string name="restore_confirmation">"Restaurar"</string>
+    <string name="restore_dialog_message">"Restaurar todas as missões que você escondeu?"</string>
+    <string name="quest_parking_access_title2">"Quem está autorizado a estacionar aqui? O estacionamento pode ser grátis ou pago."</string>
+    <string name="quest_access_yes">"Qualquer pessoa"</string>
+    <string name="quest_access_customers">"Qualquer pessoa que visite um local específico (por exemplo, apenas clientes)"</string>
+    <string name="quest_access_private">"Apenas individual(s), com permissão"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Não reconhecido. Tente digitar o tipo de lugar, por exemplo \"padaria\". Caso contrário, considere deixar uma nota."</string>
+    <string name="quest_bicycle_barrier_type_title">"Que tipo de barreira de bicicleta é essa?"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passagem entre duas barreiras"</string>
+    <string name="pref_title_language_select">"Selecione o idioma"</string>
+    <string name="language_default">"Padrão do sistema "</string>
 </resources>

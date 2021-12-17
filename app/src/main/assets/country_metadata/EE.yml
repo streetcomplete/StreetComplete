@@ -7,7 +7,7 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 248
 officialLanguages: [et]
 orchardProduces: [apple, tomato, strawberry, plum, raspberry, cherry]

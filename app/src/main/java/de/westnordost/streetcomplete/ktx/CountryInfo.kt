@@ -26,7 +26,7 @@ val CountryInfo.noStandingSignDrawableResId: Int? get() = when(noStandingSignSty
     else                  -> null
 }
 
-val CountryInfo.noParkingSignDrawableResId: Int? get() = when(noParkingSignStyle) {
+val CountryInfo.noParkingSignDrawableResId: Int get() = when(noParkingSignStyle) {
     "vienna"             -> R.drawable.ic_no_parking
     "vienna variant"     -> R.drawable.ic_no_parking_vienna
     "mutcd"              -> R.drawable.ic_no_parking_mutcd
@@ -36,10 +36,10 @@ val CountryInfo.noParkingSignDrawableResId: Int? get() = when(noParkingSignStyle
     "sadc"               -> R.drawable.ic_no_parking_sadc
     "australia"          -> R.drawable.ic_no_parking_australia
     "taiwan"             -> R.drawable.ic_no_parking_taiwan
-    else                 -> null
+    else                 -> R.drawable.ic_no_parking
 }
 
-val CountryInfo.noStoppingSignDrawableResId: Int? get() = when(noStoppingSignStyle) {
+val CountryInfo.noStoppingSignDrawableResId: Int get() = when(noStoppingSignStyle) {
     "vienna"      -> R.drawable.ic_no_stopping
     "mutcd"       -> R.drawable.ic_no_stopping_mutcd
     "mutcd latin" -> R.drawable.ic_no_stopping_mutcd_latin_america
@@ -48,5 +48,30 @@ val CountryInfo.noStoppingSignDrawableResId: Int? get() = when(noStoppingSignSty
     "australia"   -> R.drawable.ic_no_stopping_australia
     "colombia"    -> R.drawable.ic_no_stopping_colombia
     "canada"      -> R.drawable.ic_no_stopping_canada
-    else          -> null
+    "israel"      -> R.drawable.ic_no_stopping_israel
+    else          -> R.drawable.ic_no_stopping
+}
+
+val CountryInfo.noParkingLineStyleResId: Int? get() = noParkingLineStyle.asLineStyleResId
+
+val CountryInfo.noStandingLineStyleResId: Int? get() = noStandingLineStyle.asLineStyleResId
+
+val CountryInfo.noStoppingLineStyleResId: Int? get() = noStoppingLineStyle.asLineStyleResId
+
+private val String?.asLineStyleResId: Int? get() = when(this) {
+    "yellow"                 -> R.drawable.ic_street_marking_yellow
+    "dashed yellow"          -> R.drawable.ic_street_marking_yellow_dashes
+    "double yellow"          -> R.drawable.ic_street_marking_yellow_double
+    "yellow zig-zags"        -> R.drawable.ic_street_marking_yellow_zig_zag
+    "double yellow zig-zags" -> R.drawable.ic_street_marking_double_yellow_zig_zag
+    "dashed yellow with Xs"  -> R.drawable.ic_street_marking_yellow_dash_x
+    "red"                    -> R.drawable.ic_street_marking_red
+    "double red"             -> R.drawable.ic_street_marking_red_double
+    "yellow on curb"         -> R.drawable.ic_street_marking_yellow_on_curb
+    "red on curb"            -> R.drawable.ic_street_marking_red_on_curb
+    "white on curb"          -> R.drawable.ic_street_marking_white_on_curb
+    "dashed yellow on curb"  -> R.drawable.ic_street_marking_yellow_dashes_on_curb
+    "red-white on curb"      -> R.drawable.ic_street_marking_red_white_dashes_on_curb
+    "yellow-white on curb"   -> R.drawable.ic_street_marking_yellow_white_dashes_on_curb
+    else -> null
 }

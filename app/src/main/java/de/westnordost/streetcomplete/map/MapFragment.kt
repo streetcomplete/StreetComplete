@@ -241,7 +241,7 @@ open class MapFragment : Fragment(),
         }
     }
 
-    /* ----------------------------- Overrideable map callbacks --------------------------------- */
+    /* ----------------------------- Overridable map callbacks --------------------------------- */
 
     @CallSuper protected open suspend fun onMapReady() {
         restoreMapState()
@@ -253,7 +253,7 @@ open class MapFragment : Fragment(),
 
     protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
-    /* ---------------------- Overrideable callbacks for map interaction ------------------------ */
+    /* ---------------------- Overridable callbacks for map interaction ------------------------ */
 
     override fun onPanBegin(): Boolean {
         listener?.onPanBegin()

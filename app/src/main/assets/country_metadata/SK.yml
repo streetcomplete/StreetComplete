@@ -6,7 +6,7 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
-livingStreetSignStyle: wide
+livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, tomato, chilli_pepper, sweet_pepper, peach, strawberry, plum, pear, apricot, hop, cherry, raspberry, walnut, chestnut]
