@@ -244,6 +244,11 @@ import javax.inject.Singleton
         return true
     }
 
+    fun delete(key: OsmQuestKey) {
+        db.delete(key)
+        onUpdated(deletedKeys = listOf(key))
+    }
+
     override fun get(key: OsmQuestKey): OsmQuest? {
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
