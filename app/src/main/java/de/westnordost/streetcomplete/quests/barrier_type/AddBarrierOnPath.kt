@@ -31,11 +31,8 @@ class AddBarrierOnPath: OsmElementQuestType<BarrierType> {
     }
 
     override val commitMessage = "Add what is on intersection of path and barrier"
-
     override val wikiLink = "Key:barrier"
-
     override val icon = R.drawable.ic_quest_barrier_on_path
-
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_path_intersection
