@@ -51,14 +51,12 @@ private data class ItemStats(val indexOfFirst: Int, var count: Int = 0)
 private fun <T : Any> Sequence<T?>.countUniqueNonNull(target: Int, minItems: Int): Map<T, ItemStats> {
     val counts = mutableMapOf<T, ItemStats>()
 
-    // Because this is a sequence, the chain of calls is applied to items one at a time.
-    // This means the `getOrPut` for one item affects the `counts.size` for the next item
-    this.withIndex()
-        .filter { it.value != null }
-        .takeWhile { it.index < minItems || counts.size < target }
-        .forEach {
-            counts.getOrPut(it.value!!) { ItemStats(it.index) }.count++
+    for (item in this.withIndex()) {
+        if (item.index >= minItems && counts.size >= target) break
+        item.value?.let { value ->
+            counts.getOrPut(value) { ItemStats(item.index) }.count++
         }
+    }
 
     return counts
 }
