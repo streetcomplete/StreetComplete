@@ -11,6 +11,8 @@ v39.0: |
   <li>The fire hydrant diameter is now only asked for underground or pillar hydrants (#3575), by @matkoniecz</li>
   <li>Some minor enhancements and clearer wordings (#3576, ...), thanks @matkoniecz</li>
   </ul>
+
+v38.2: |
   <h3>Fixes</h3>
   <ul>
   <li>Fix an issue with in-app language switching (#3554)</li>
