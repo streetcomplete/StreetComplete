@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
+import de.westnordost.streetcomplete.data.user.AuthorizationTracesException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.ktx.toast
@@ -48,6 +49,7 @@ import de.westnordost.streetcomplete.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
+import de.westnordost.streetcomplete.view.dialogs.RequestPermissionUpgradeDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -235,6 +237,16 @@ class MainActivity : BaseActivity(),
                        Nothing we can do about it, so it does not make sense to send an error
                        report. Just notify the user. */
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
+                } else if (e is AuthorizationTracesException) {
+                    // user has not upgraded their permissions to have GPS trace (or is not logged in)
+                    // if the user is not logged in, then we should just ask them to login which will provide all permissions
+                    val isLoggedIn = userLoginStatusController.isLoggedIn
+                    userLoginStatusController.logOut()
+                    if(isLoggedIn) {
+                        RequestPermissionUpgradeDialog(this@MainActivity).show()
+                    } else {
+                        RequestLoginDialog(this@MainActivity).show()
+                    }
                 } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
                     userLoginStatusController.logOut()
