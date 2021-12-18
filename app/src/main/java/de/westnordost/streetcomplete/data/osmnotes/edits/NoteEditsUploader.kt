@@ -70,7 +70,10 @@ class NoteEditsUploader @Inject constructor(
 
         // try to upload the tracks
         val tracksText =
-            edit.uploadedDataMap.getOrDefault("tracks", uploadAndGetAttachedTracksText(edit.tracks))
+            edit.uploadedDataMap.getOrDefault(
+                "tracks",
+                uploadAndGetAttachedTracksText(edit.tracks, edit.text)
+            )
         noteEditsController.updateData(edit, "tracks", tracksText)
 
         // done, try to upload the note to OSM
@@ -126,11 +129,14 @@ class NoteEditsUploader @Inject constructor(
         return ""
     }
 
-    private fun uploadAndGetAttachedTracksText(tracks: List<Trackpoint>): String {
-        if (tracks.isEmpty()) {
+    private fun uploadAndGetAttachedTracksText(
+        trackpoints: List<Trackpoint>,
+        noteText: String?
+    ): String {
+        if (trackpoints.isEmpty()) {
             return ""
         }
-        val track = tracksApi.create(tracks)
+        val track = tracksApi.create(trackpoints, noteText)
         return "\n\nGPS Trace: \nhttps://www.openstreetmap.org/user/${track.userName}/traces/${track.id}"
     }
 

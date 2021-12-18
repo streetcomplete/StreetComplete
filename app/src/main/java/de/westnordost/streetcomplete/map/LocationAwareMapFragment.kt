@@ -167,8 +167,9 @@ open class LocationAwareMapFragment : MapFragment() {
         tracksRecording = false
         tracksRecorded.clear()
         tracks.last().forEach {
-            // time here is in milliseconds
-            // TODO: why is altitude zero in emulation?
+            // Emulator has zero altitude:
+            // https://stackoverflow.com/q/65325665/7718197
+            // Time here is in milliseconds
             tracksRecorded.add(
                 Trackpoint(
                     LatLon(it.latitude, it.longitude), it.time, it.accuracy, it.altitude.toFloat()

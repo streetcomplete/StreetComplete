@@ -23,20 +23,20 @@ import java.time.format.DateTimeFormatter
 class TracksApiImpl(osm: OsmConnection) : TracksApi {
     private val api: GpsTracesApi = GpsTracesApi(osm)
 
-    override fun create(tracks: List<Trackpoint>): Track = wrapExceptions {
+    override fun create(trackpoints: List<Trackpoint>, noteText: String?): Track = wrapExceptions {
 
         // Filename is just the start of the track
         // https://stackoverflow.com/a/49862573/7718197
         val name = DateTimeFormatter
             .ofPattern("yyyy_MM_dd'T'HH_mm_ss.SSSSSS'Z'")
             .withZone(ZoneOffset.UTC)
-            .format(Instant.ofEpochSecond(tracks[0].time)) + ".gpx"
+            .format(Instant.ofEpochSecond(trackpoints[0].time)) + ".gpx"
         val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
-        val description = ApplicationConstants.USER_AGENT
+        val description = noteText.orEmpty() + "(" + ApplicationConstants.USER_AGENT + ")"
         val tags = listOf(ApplicationConstants.NAME.lowercase())
 
         // Generate history of trackpoints
-        val trackpoints = tracks.mapIndexed { idx, it -> 
+        val history = trackpoints.mapIndexed { idx, it ->
             GpsTrackpoint(
                 OsmLatLon(it.position.latitude, it.position.longitude),
                 Instant.ofEpochMilli(it.time),
@@ -47,7 +47,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         }
 
         // Finally query the API and return!
-        val traceId = api.create(name, visibility, description, tags, trackpoints)
+        val traceId = api.create(name, visibility, description, tags, history)
         val details = api.get(traceId)
         Track(details.id, details.userName)
     }
@@ -59,11 +59,7 @@ private inline fun <T> wrapExceptions(block: () -> T): T =
     try {
         block()
     } catch (e: OsmAuthorizationException) {
-        throw AuthorizationException(e.message, e)
-    } catch (e: OsmConflictException) {
-        throw ConflictException(e.message, e)
-    } catch (e: OsmQueryTooBigException) {
-        throw QueryTooBigException(e.message, e)
+        throw AuthorizationTracesException(e.message, e)
     } catch (e: OsmConnectionException) {
         throw ConnectionException(e.message, e)
     } catch (e: OsmApiReadResponseException) {
