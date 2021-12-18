@@ -44,23 +44,5 @@ class AddBarrierOnRoad: OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
-        changes.add("barrier", answer.osmValue)
-        when (answer) {
-            BarrierType.STILE_SQUEEZER -> {
-                changes.addOrModify("stile", "squeezer")
-            }
-            BarrierType.STILE_LADDER -> {
-                changes.addOrModify("stile", "ladder")
-            }
-            BarrierType.STILE_STEPOVER_WOODEN -> {
-                changes.addOrModify("stile", "stepover")
-                changes.addOrModify("material", "wood")
-            }
-            BarrierType.STILE_STEPOVER_STONE -> {
-                changes.addOrModify("stile", "stepover")
-                changes.addOrModify("material", "stone")
-            }
-        }
-    }
+    override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) = answer.applyTo(changes)
 }
