@@ -28,12 +28,9 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         // Filename is just the start of the track
         // https://stackoverflow.com/a/49862573/7718197
         val name = DateTimeFormatter
-            .ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
+            .ofPattern("yyyy_MM_dd'T'HH_mm_ss.SSSSSS'Z'")
             .withZone(ZoneOffset.UTC)
-            .format(Instant.ofEpochSecond(tracks[0].time))
-            .replace("-", "_")
-            .replace(":", "_")
-            .replace(" ", "_") + ".gpx"
+            .format(Instant.ofEpochSecond(tracks[0].time)) + ".gpx"
         val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
         val description = ApplicationConstants.USER_AGENT
         val tags = listOf(ApplicationConstants.NAME.lowercase())
