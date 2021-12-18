@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.fire_hydrant
+package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 
 import de.westnordost.streetcomplete.R
@@ -27,6 +27,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val questTypeAchievements = emptyList<QuestTypeAchievement>()
 
+    /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant
+       diameters are added, the code in the form needs to be adapted */
     override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
@@ -37,9 +39,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override fun createForm() = AddFireHydrantDiameterForm()
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
-
         when (answer) {
-            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.diameter.toString())
+            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.toOsmValue())
             is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
         }
     }
