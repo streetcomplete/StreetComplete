@@ -36,16 +36,13 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         val tags = listOf(ApplicationConstants.NAME.lowercase())
 
         // Generate history of trackpoints
-        val trackpoints = mutableListOf<GpsTrackpoint>()
-        tracks.forEachIndexed { idx, it ->
-            trackpoints.add(
-                GpsTrackpoint(
-                    OsmLatLon(it.position.latitude, it.position.longitude),
-                    Instant.ofEpochMilli(it.time),
-                    idx == 0,
-                    it.horizontalDilutionOfPrecision,
-                    it.elevation
-                )
+        val trackpoints = tracks.mapIndexed { idx, it -> 
+            GpsTrackpoint(
+                OsmLatLon(it.position.latitude, it.position.longitude),
+                Instant.ofEpochMilli(it.time),
+                idx == 0,
+                it.horizontalDilutionOfPrecision,
+                it.elevation
             )
         }
 
