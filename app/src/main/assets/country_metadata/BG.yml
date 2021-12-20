@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Първа инвестиционна банка, УниКредит Булбанк, Банка ДСК, Обединена Българска Банка, Централна кооперативна Банка, Пощенска банка, Raiffeisenbank, ДСК, Райфайзенбанк, Райфайзен Банк, Общинска банка, Allianz, Райфайзен, Piraeus Bank, Raiffeisen]
+atmOperators: [Първа инвестиционна банка, УниКредит Булбанк, Банка ДСК, Обединена Българска Банка, Raiffeisenbank, Централна кооперативна Банка, Пощенска банка, ДСК, Общинска банка, Райфайзенбанк, Allianz, Piraeus Bank, Райфайзен Банк, Райфайзен, Централна Кооперативна Банка]
 chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
 clothesContainerOperators: [БЧК, texcycle]
 hasDailyAlternateSideParkingSign: true
