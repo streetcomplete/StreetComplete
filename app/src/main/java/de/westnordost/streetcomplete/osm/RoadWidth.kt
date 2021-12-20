@@ -45,9 +45,6 @@ fun guessRoadwayWidth(tags: Map<String, String>): Float {
     return widthOfOneSide * (if(isOneway(tags)) 1f else 2f)
 }
 
-private fun isOneway(tags: Map<String, String>): Boolean =
-    tags["oneway"] == "yes" || tags["oneway"] == "-1" || tags["junction"] == "roundabout"
-
 /** Estimated width of shoulders, if any. If there is no shoulder tagging, returns null. */
 fun estimateShouldersWidth(tags: Map<String, String>): Float? {
     val shoulders = createShoulders(tags, false) ?: return null
