@@ -6,8 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.quests.surface.Surface
-import de.westnordost.streetcomplete.quests.surface.asItem
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
@@ -42,14 +41,8 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
         }
     }
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val surface = Surface.values().find { it.osmValue == tags["surface"] }!!
-        val surfaceString = surface.asItem().title.toString()
-        return if (tags.containsKey("name"))
-            arrayOf(tags["name"]!!, surfaceString)
-        else
-            arrayOf(surfaceString)
-    }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["name"])
 
     override fun createForm() = AddSmoothnessForm()
 
