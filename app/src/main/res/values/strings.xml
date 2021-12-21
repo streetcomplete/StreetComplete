@@ -281,6 +281,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_optional">"Optionally"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Yes (leave note)"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
