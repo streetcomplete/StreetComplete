@@ -11,20 +11,19 @@ import de.westnordost.streetcomplete.quests.surface.asItem
 
 class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
-    // maybe exclude service roads? or driveways?
     override val elementFilter = """
-        ways with highway
-        and highway ~ ${ALL_PATHS_EXCEPT_STEPS.joinToString("|")}
-        and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
-        and access !~ private|no
-        and segregated != yes
-        and (!conveying or conveying = no)
-        and (!indoor or indoor = no)
-        and !cycleway:surface and !footway:surface
-        and (
-          !smoothness
-          or smoothness older today -4 years
-        )
+        ways with
+          highway ~ ${ALL_PATHS_EXCEPT_STEPS.joinToString("|")}
+          and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
+          and access !~ private|no
+          and segregated != yes
+          and (!conveying or conveying = no)
+          and (!indoor or indoor = no)
+          and !cycleway:surface and !footway:surface
+          and (
+            !smoothness
+            or smoothness older today -4 years
+          )
     """
 
     override val commitMessage = "Add path smoothness"

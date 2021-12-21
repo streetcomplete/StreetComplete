@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -12,16 +11,17 @@ import de.westnordost.streetcomplete.quests.surface.asItem
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
-    // maybe exclude service roads? or driveways?
     override val elementFilter = """
-        ways with highway
-        and highway ~ ${ALL_ROADS.joinToString("|")}
-        and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
-        and access !~ private|no
-        and (
-          !smoothness
-          or smoothness older today -4 years
-        )
+        ways with (
+            highway ~ ${ROADS_TO_ASK_SMOOTHNESS_FOR.joinToString("|")}
+            or highway = service and service !~ driveway|slipway
+          )
+          and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
+          and (access !~ private|no or (foot and foot !~ private|no))
+          and (
+            !smoothness
+            or smoothness older today -4 years
+          )
     """
 
     override val commitMessage = "Add road smoothness"
@@ -63,4 +63,11 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 // should only contain values that are in the Surface class
 val SURFACES_FOR_SMOOTHNESS = listOf(
     "asphalt", "sett", "paving_stones", "compacted", "gravel"
+)
+
+private val ROADS_TO_ASK_SMOOTHNESS_FOR = arrayOf(
+    // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition smooth asphalt (or concrete)
+    "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
+    "unclassified", "residential", "living_street", "pedestrian", "track",
+    // "service", // this is too much, and the information value is very low
 )
