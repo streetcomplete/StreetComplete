@@ -1090,11 +1090,11 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_road_title">What is the surface quality of this road here (%s)?</string>
     <string name="quest_smoothness_title_excellent">Smooth and even</string>
     <string name="quest_smoothness_title_good">Mostly even</string>
-    <string name="quest_smoothness_title_intermediate">Bumpy</string>
-    <string name="quest_smoothness_title_bad">Very bumpy</string>
-    <string name="quest_smoothness_title_very_bad">Very uneven</string>
-    <string name="quest_smoothness_title_horrible">Extremely uneven</string>
-    <string name="quest_smoothness_title_very_horrible">Horrible</string>
+    <string name="quest_smoothness_title_intermediate">A little bumpy</string>
+    <string name="quest_smoothness_title_bad">Bumpy</string>
+    <string name="quest_smoothness_title_very_bad">Very bumpy</string>
+    <string name="quest_smoothness_title_horrible">Horribly bumpy</string>
+    <string name="quest_smoothness_title_very_horrible">Very horribly bumpy</string>
     <string name="quest_smoothness_title_impassable">Impassable</string>
     <string name="quest_smoothness_description_excellent">No bumps or cracks</string>
     <string name="quest_smoothness_description_excellent_paving_stones">Almost seamless</string>
