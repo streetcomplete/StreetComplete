@@ -2,6 +2,8 @@
 # 
 # unless stated otherwise, the lines are continuous
 # 
+# parking and stopping restrictions researched (so far) for:
+# https://ent8r.github.io/blacklistr/?data=AT,CH,FR,IE,GB,DE,NL,SR,SE,HK,JP,LT,LV,MN,MT,NA,SG,TW,UA,ZA,US-MD,ZA,LS,SZ,MZ,NA,BW,ZW,AO,ZM,MW,MG,TZ,RW,BI,KE,UG,CD,CG,GA,GQ,ST,CF,CM,TD,SS,SD,ET,SO,DJ,ER,NE,BF,ML,CI,GH,NG,BJ,TG,SN,GN,SL,LR,GW,GM,MR,AU-QLD,AU-NSW,AU-SA,AU-VIC,AU-TAS,AU-ACT,AU-NT,AU-WA,FJ,NZ,AS,PG,SB,TL,ID,SG,MY,BN,PH,TW,JP,AR,UY,CL,MU,IE,GB,DE,CH,MN,SE,UA,LV,LT,MT,US-MD,NO,IS,RU,BR,PY,BO,ES,TH,KH,LA,MM,IN,BD,LK,NP,BY,PL,RS,BE,IL,FI,GR
 
 AT: dashed yellow # https://www.oeamtc.at/thema/vorschriften-strafen/gelbe-linien-am-strassenrand-16181806 , https://www.fuerboeck.at/verkehrsrecht/bodenmarkierungen/halteverbot-parkverbot/
 BD: yellow # https://www.rhd.gov.bd/Documents/ConvDocs/Road%20Sign%20Manual%20Volume-1.pdf (road marking F11)
@@ -13,6 +15,7 @@ ES: dashed yellow # https://www.google.de/maps/@36.7147712,-4.428612,3a,73.9y,17
 # FI: none, see https://www.finlex.fi/fi/laki/ajantasa/2018/20180729
 FR: dashed yellow # https://www.lepermislibre.fr/code-route/cours/marquage-au-sol-parking
 GB: double yellow # https://en.wikipedia.org/wiki/Parking_restrictions_in_the_United_Kingdom#Yellow_lines , single lines mean it is restricted during certain times
+GR: dashed yellow # https://www.yme.gr/images/articleimages/odiki_kykloforia_kai_asfaleia/kodikas_odikis_kykloforias/Άτυπη_κωδικοποιηση_ΚΟΚ_2021-11-30_.pdf (Κώδικας Οδικής Κυκλοφορίας (Κ.Ο.Κ) - Άρθρο 5 Οριζόντια σήμανση οδών 5. Οι ειδικές διαγραμμίσεις είναι (δ) )
 IE: double yellow # https://assets.gov.ie/34719/d2683724881f4477bb2babe78c282e6f.pdf (Traffic Signs Manual Chapter 7.6)
 IN: yellow # The Nepali and Bangladeshi road sign manual look the same and mention that they have been developed together (with the Indian version), so extrapolating
 JP: dashed yellow on curb # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf

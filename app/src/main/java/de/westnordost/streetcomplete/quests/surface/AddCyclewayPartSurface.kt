@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
@@ -31,7 +30,6 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_bicycleway_surface
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title
@@ -39,16 +37,6 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun createForm() = AddPathPartSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        when (answer) {
-            is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
-                changes.deleteIfExists("cycleway:surface:note")
-            }
-            is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value.osmValue)
-                changes.addOrModify("cycleway:surface:note", answer.note)
-            }
-        }
-        changes.deleteIfExists("source:cycleway:surface")
+        answer.applyTo(changes, "cycleway:surface")
     }
 }

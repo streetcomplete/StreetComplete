@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.lanes
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.AnyThread
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -20,6 +18,9 @@ import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
+import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isOneway
 
 class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
@@ -41,10 +42,10 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    private val isOneway get() = isForwardOneway || isReversedOneway
+    private val isOneway get() = isOneway(osmElement!!.tags)
 
-    private val isForwardOneway get() = osmElement!!.tags["oneway"] == "yes" || osmElement!!.tags["junction"] == "roundabout"
-    private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
+    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
+    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
 
     override val otherAnswers: List<AnswerItem> get() {
         val answers = mutableListOf<AnswerItem>()

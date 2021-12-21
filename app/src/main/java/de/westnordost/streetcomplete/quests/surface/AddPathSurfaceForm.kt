@@ -25,14 +25,14 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsSte
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(GenericSurfaceAnswer(value, description))
+                        applyAnswer(SurfaceAnswer(value, description))
                     }.show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             return
         }
-        applyAnswer(SpecificSurfaceAnswer(value))
+        applyAnswer(SurfaceAnswer(value))
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {

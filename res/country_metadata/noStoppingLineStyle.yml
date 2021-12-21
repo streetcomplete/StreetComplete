@@ -4,7 +4,6 @@
 # distance to the curb and either ending in a short line to the curb 
 # like this └────┘ or like this ├────┤ (no differenciation is made in this list) 
 # to indicate the start/end.
-#
 
 AT: yellow # https://www.oeamtc.at/thema/vorschriften-strafen/gelbe-linien-am-strassenrand-16181806 , https://www.fuerboeck.at/verkehrsrecht/bodenmarkierungen/halteverbot-parkverbot/
 BY: yellow # extrapolating from neighbours RU, UA, LT, LV
@@ -14,6 +13,7 @@ ES: yellow # https://www.google.de/maps/@36.7189479,-4.4356263,3a,75y,265.28h,82
 # FI: none, see https://www.finlex.fi/fi/laki/ajantasa/2018/20180729
 FR: yellow # https://www.lepermislibre.fr/code-route/cours/marquage-au-sol-parking
 GB: double red # (not used in all of GB) https://en.wikipedia.org/wiki/Parking_restrictions_in_the_United_Kingdom#Stopping_restrictions, single red means it is restricted during certain times
+GR: yellow # https://www.yme.gr/images/articleimages/odiki_kykloforia_kai_asfaleia/kodikas_odikis_kykloforias/Άτυπη_κωδικοποιηση_ΚΟΚ_2021-11-30_.pdf (Κώδικας Οδικής Κυκλοφορίας (Κ.Ο.Κ) - Άρθρο 5 Οριζόντια σήμανση οδών 5. Οι ειδικές διαγραμμίσεις είναι (γ) )
 # IE: double yellow-line means "no parking", see https://assets.gov.ie/34719/d2683724881f4477bb2babe78c282e6f.pdf (Traffic Signs Manual Chapter 7.6)
 IL: red-white on curb # https://www.gov.il/he/Departments/Policies/tamrurim_7924_01_18 (לוח התמרורים - הודעת התעבורה (קביעת תמרורים)) - sign no 818
 JP: yellow on curb # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf

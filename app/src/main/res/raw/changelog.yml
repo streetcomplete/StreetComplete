@@ -6,13 +6,20 @@ v39.0: |
   </ul>
   <h3>Other enhancements</h3>
   <ul>
-  <li>You can now answer that a playground is only for customers (#3433), by @matkoniecz</li>
   <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
-  <li>The fire hydrant diameter is now only asked for underground or pillar hydrants (#3575), by @matkoniecz</li>
   <li>Some minor enhancements and clearer wordings (#3576, ...), thanks @matkoniecz</li>
+  </ul>
+
+v38.2: |
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>You can now answer that a playground is only for customers (#3433), by @matkoniecz</li>
+  <li>The fire hydrant diameter is now only asked for underground or pillar hydrants (#3575), by @matkoniecz</li>
+  <li>Some minor enhancements</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
+  <li>Fix rarely quests were not removed after giving an answer (#3588)</li>
   <li>Fix an issue with in-app language switching (#3554)</li>
   <li>Fix a rare crash issue when tabbing out while quest form is open (#3590)</li>
   <li>Fix opening a geo url (#3580)</li>
