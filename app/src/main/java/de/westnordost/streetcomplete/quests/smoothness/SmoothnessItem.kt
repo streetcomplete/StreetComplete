@@ -1,16 +1,39 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
+import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.*
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.view.CharSequenceText
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun Array<Smoothness>.toItems(surface: String, highway: String) = this.mapNotNull { it.asItem(surface, highway) }
+fun Array<Smoothness>.toItems(context: Context, surface: String, highway: String) =
+    mapNotNull { it.asItem(context, surface, highway) }
 
 // return null if not a valid combination
-fun Smoothness.asItem(surface: String, highway: String): Item<Smoothness>? {
+fun Smoothness.asItem(context: Context, surface: String, highway: String): DisplayItem<Smoothness>? {
     val imageResId = getImageResId(surface) ?: return null
     val descriptionResId = getDescriptionResId(surface, highway) ?: return null
-    return Item(this, imageResId, titleResId, descriptionResId)
+    return Item2(
+        this,
+        ResImage(imageResId),
+        CharSequenceText(context.getString(titleResId) + " " + emoji),
+        ResText(descriptionResId)
+    )
+}
+
+/** return fitting vehicle type emoji that corresponds to the "usable by" column in the wiki */
+val Smoothness.emoji get() = when(this) {
+    EXCELLENT ->     """🛹""" // or 🛼 but it is only available since Android 11
+    GOOD ->          """🛴""" // no emoji for racing bike, would be difficult to tell apart from 🚲
+    INTERMEDIATE ->  """🚲""" // or 🛵 but users are more likely to own a bike than a scooter
+    BAD ->           """🚗""" // or 🛺 but tuk-tuks have actually similar requirements as scooters
+    VERY_BAD ->      """🚙""" // this is a SUV
+    HORRIBLE ->      """🛻""" // no emoji for off-road vehicles but there is one for pick-ups (Android 11)
+    VERY_HORRIBLE -> """🚜"""
+    IMPASSABLE ->    """🚶"""
 }
 
 val Smoothness.titleResId get() = when (this) {
