@@ -81,6 +81,7 @@ fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (thi
     }
     VERY_BAD -> when (surface) {
         "sett" -> R.string.quest_smoothness_description_very_bad_sett
+        "paving_stones" -> R.string.quest_smoothness_description_very_bad_paving_stones
         else -> when (highway) {
             in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_very_bad_path
             else -> R.string.quest_smoothness_description_very_bad_road
