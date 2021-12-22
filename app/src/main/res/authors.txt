@@ -169,7 +169,7 @@ surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Woodchips_surface.jpg (10992-osm)
-surface_asphalt_bad.jpg        CC0               20201129_114019.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
+surface_asphalt_bad.jpg                          4_bad_3.jpg, see https://drive.google.com/file/d/1O3Qr-DTKVdu5hsXkVGYDxp8US65WywTM/view (Andre Thum)
 surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Mala_Hrastice_2020-06-16_Ulice_z_navsi_na_nadrazi_obr05.jpg (Miloš Hlávka)
 surface_asphalt_good.jpg       public domain     helium314
 surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Nids-de-poule_sur_une_route_communale.jpg (Mathis Brancquart)
