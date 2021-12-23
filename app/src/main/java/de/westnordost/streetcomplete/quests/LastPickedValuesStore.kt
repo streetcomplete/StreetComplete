@@ -34,13 +34,13 @@ private const val MAX_ENTRIES = 100
  *  items of the sequence, in their original order.
  * If there are fewer than `target` unique items, continues counting items
  *  until that many are found, or the end of the sequence is reached.
- * If the first item (i.e. the most recent one) is not null, it is always
- *  included, displacing the least-common of the other items if necessary.
+ * If the `first` most recent items are not null, they are always included,
+ *  displacing the least-common of the other items if necessary.
  */
-fun <T : Any> Sequence<T?>.mostCommonWithin(target: Int, historyCount: Int): Sequence<T> {
+fun <T : Any> Sequence<T?>.mostCommonWithin(target: Int, historyCount: Int, first: Int): Sequence<T> {
     val counts = this.countUniqueNonNull(target, historyCount)
     val top = counts.keys.sortedByDescending { counts[it]!!.count }.take(target)
-    val latest = this.take(1).filterNotNull()
+    val latest = this.take(first).filterNotNull()
     val items = (latest + top).distinct().take(target)
     return items.sortedBy { counts[it]!!.indexOfFirst }
 }

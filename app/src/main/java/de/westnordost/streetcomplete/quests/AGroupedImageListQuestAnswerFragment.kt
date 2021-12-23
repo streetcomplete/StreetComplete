@@ -99,7 +99,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        return favs.get().mostCommonWithin(6, 30).padWith(topItems).toList()
+        return favs.get().mostCommonWithin(6, historyCount = 30, first = 1).padWith(topItems).toList()
     }
 
     override fun onClickOk() {
