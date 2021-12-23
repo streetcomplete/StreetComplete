@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
+import de.westnordost.streetcomplete.view.image_select.Item
 import kotlin.math.max
 
 /**
@@ -67,7 +68,9 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.isNestedScrollingEnabled = false
 
         binding.showMoreButton.setOnClickListener {
-            imageSelector.items = allItems
+            val savedItems = getInitialItems() as List<Item<I>>
+            val group = Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null, savedItems)
+            imageSelector.items = listOf(group) + allItems
             binding.showMoreButton.visibility = View.GONE
         }
 
