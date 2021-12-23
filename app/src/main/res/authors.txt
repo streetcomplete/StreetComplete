@@ -182,7 +182,7 @@ surface_gravel_horrible.jpg    CC0               IMG_20210530_151832190.jpg from
 surface_gravel_intermediate... public domain     https://commons.wikimedia.org/wiki/File:Tamsa.JPG (Ingvar Pärnamäe)
 surface_gravel_very_bad.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:%C5%A0t%C4%9Brkov%C3%A1_cesta_u_Pl%C3%A1%C5%A1t%C3%ADku.jpg (ŠJů)
 surface_paving_stones_bad.jpg  CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Long_path_to_take.....to_the_dovecote_(4699339324).jpg (IDS.photos)
-surface_paving_stones_excel... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Sopron-002.jpg (Gitanes232)
+surface_paving_stones_excel... CC-BY-SA 4.0      https://drive.google.com/file/d/1xJPGzTOusalYbGeggTkYaGXOVlclPDzZ/view (mcliquid)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
 surface_paving_stones_inter... public domain     helium314
 surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
