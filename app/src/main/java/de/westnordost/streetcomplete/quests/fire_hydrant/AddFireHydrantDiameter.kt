@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
-import de.westnordost.streetcomplete.quests.getRef
 
 class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
@@ -33,7 +32,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(getRef(tags))
+        arrayOfNotNull(tags["ref"])
 
     override fun getTitle(tags: Map<String, String>):  Int {
         val hasRef = tags.containsAnyKey("ref")

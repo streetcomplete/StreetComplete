@@ -81,12 +81,3 @@ fun getNameOrBrandOrOperatorOrRef(tags: Map<String, String>): String? {
         else -> null
     }
 }
-
-fun getRef(tags: Map<String, String>): String? {
-    val ref = tags["ref"]
-
-    return when {
-        ref != null -> ref
-        else -> null
-    }
-}
