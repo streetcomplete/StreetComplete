@@ -9,6 +9,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
@@ -29,7 +32,16 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags))
+
+    override fun getTitle(tags: Map<String, String>):  Int {
+        val hasRef = tags.containsAnyKey("ref")
+        return when {
+            hasRef -> R.string.quest_fireHydrant_diameter_ref_title
+            else   -> R.string.quest_fireHydrant_diameter_title
+        }
+    }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = fire_hydrant")
