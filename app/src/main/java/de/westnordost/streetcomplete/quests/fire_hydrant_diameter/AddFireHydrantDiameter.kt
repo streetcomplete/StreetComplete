@@ -36,7 +36,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["ref"])
 
-    override fun getTitle(tags: Map<String, String>):  Int {
+    override fun getTitle(tags: Map<String, String>): Int {
         val hasRef = tags.containsAnyKey("ref")
         return when {
             hasRef -> R.string.quest_fireHydrant_diameter_ref_title
