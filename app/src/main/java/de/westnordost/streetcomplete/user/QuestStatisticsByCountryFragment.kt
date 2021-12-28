@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.CountryStatisticsDao
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -19,7 +19,7 @@ import javax.inject.Inject
 /** Shows the user's solved quests of each type in some kind of ball pit.  */
 class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit)
 {
-    @Inject internal lateinit var countryStatisticsDao: CountryStatisticsDao
+    @Inject internal lateinit var statisticsSource: StatisticsSource
 
     interface Listener {
         fun onClickedCountryFlag(countryCode: String, solvedCount: Int, rank: Int?, countryBubbleView: View)
@@ -38,7 +38,7 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
         lifecycle.addObserver(binding.ballPitView)
 
         viewLifecycleScope.launch {
-            val countriesStatistics = withContext(Dispatchers.IO) { countryStatisticsDao.getAll() }
+            val countriesStatistics = withContext(Dispatchers.IO) { statisticsSource.getCountryStatistics() }
 
             binding.ballPitView.setViews(countriesStatistics.map {
                 createCountryBubbleView(it.countryCode, it.solvedCount, it.rank) to it.solvedCount

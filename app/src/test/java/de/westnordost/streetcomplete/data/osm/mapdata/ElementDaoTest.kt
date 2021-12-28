@@ -107,6 +107,13 @@ class ElementDaoTest {
         verify(relationDao).deleteAll(listOf(0L))
     }
 
+    @Test fun clear() {
+        dao.clear()
+        verify(nodeDao).clear()
+        verify(wayDao).clear()
+        verify(relationDao).clear()
+    }
+
     @Test fun getAllElements() {
         dao.getAll(listOf(
             ElementKey(NODE,0),

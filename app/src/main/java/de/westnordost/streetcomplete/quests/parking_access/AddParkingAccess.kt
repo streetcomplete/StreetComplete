@@ -29,7 +29,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
     override val questTypeAchievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title2
 
     override fun createForm() = AddParkingAccessForm()
 

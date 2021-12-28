@@ -105,11 +105,12 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         // 1st text fade out
-        binding.tutorialStepIntro.animate()
+        val tutorialStepIntro = binding.tutorialStepIntro
+        tutorialStepIntro.animate()
             .setDuration(300)
             .alpha(0f)
             .translationY(100f.toDp(ctx))
-            .withEndAction { binding.tutorialStepIntro.visibility = View.GONE }
+            .withEndAction { tutorialStepIntro.visibility = View.GONE }
             .start()
 
         delay(200)
@@ -162,11 +163,12 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         binding.nextButton.setText(R.string.letsgo)
 
         // 2nd text fade out
-        binding.tutorialStepSolvingQuests.animate()
+        val tutorialStepSolvingQuests = binding.tutorialStepSolvingQuests
+        tutorialStepSolvingQuests.animate()
             .setDuration(300)
             .alpha(0f)
             .translationY(100f.toDp(ctx))
-            .withEndAction { binding.tutorialStepSolvingQuests.visibility = View.GONE }
+            .withEndAction { tutorialStepSolvingQuests.visibility = View.GONE }
             .start()
 
         // 3rd text fade in

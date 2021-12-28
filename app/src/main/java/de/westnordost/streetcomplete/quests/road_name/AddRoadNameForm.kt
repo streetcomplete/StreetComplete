@@ -31,6 +31,8 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     override val addLanguageButton get() = binding.addLanguageButton
     override val namesList get() = binding.namesList
 
+    override val adapterRowLayoutResId = R.layout.quest_roadname_row
+
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
@@ -43,18 +45,9 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         Injector.applicationComponent.inject(this)
     }
 
-    override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
-        AddLocalizedNameAdapter(
-            data,
-            requireContext(),
-            getPossibleStreetsignLanguageTags(),
-            abbreviationsByLocale,
-            getRoadNameSuggestions(),
-            addLanguageButton,
-            R.layout.quest_roadname_row
-        )
+    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbreviationsByLocale
 
-    private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
+    override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
         val polyline = when(val geom = elementGeometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()

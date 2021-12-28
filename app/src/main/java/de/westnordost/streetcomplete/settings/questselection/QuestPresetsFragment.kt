@@ -19,7 +19,6 @@ import javax.inject.Inject
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
     @Inject internal lateinit var questPresetsController: QuestPresetsController
-    @Inject internal lateinit var questPresetsAdapter: QuestPresetsAdapter
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
 
@@ -27,13 +26,14 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     init {
         Injector.applicationComponent.inject(this)
-        lifecycle.addObserver(questPresetsAdapter)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.questPresetsList.adapter = questPresetsAdapter
+        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController)
+        lifecycle.addObserver(adapter)
+        binding.questPresetsList.adapter = adapter
         binding.addPresetButton.setOnClickListener { onClickAddPreset() }
     }
 

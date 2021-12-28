@@ -1,20 +1,17 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.quests.LocalizedName
 
-class AddRoadName : OsmElementQuestType<RoadNameAnswer> {
+class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
-    private val filter by lazy { """
+    override val elementFilter = """
         ways with
           highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian
           and !name and !name:left and !name:right
@@ -26,7 +23,7 @@ class AddRoadName : OsmElementQuestType<RoadNameAnswer> {
             access !~ private|no
             or foot and foot !~ private|no
           )
-    """.toElementFilterExpression() }
+    """
 
     override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"
@@ -42,12 +39,6 @@ class AddRoadName : OsmElementQuestType<RoadNameAnswer> {
             R.string.quest_streetName_pedestrian_title
         else
             R.string.quest_streetName_title
-
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        return mapData.ways.filter { filter.matches(it) }
-    }
-
-    override fun isApplicableTo(element: Element): Boolean = filter.matches(element)
 
     override fun createForm() = AddRoadNameForm()
 

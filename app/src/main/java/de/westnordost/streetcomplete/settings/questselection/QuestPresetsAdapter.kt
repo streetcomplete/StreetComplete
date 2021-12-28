@@ -15,9 +15,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
 import kotlinx.coroutines.*
-import javax.inject.Inject
 
-class QuestPresetsAdapter @Inject constructor(
+class QuestPresetsAdapter(
     private val context: Context,
     private val questPresetsController: QuestPresetsController
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), LifecycleObserver {

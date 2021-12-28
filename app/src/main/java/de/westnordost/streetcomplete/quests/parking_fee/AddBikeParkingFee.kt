@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 
-class AddBikeParkingFee : OsmFilterQuestType<FeeAnswer>() {
+class AddBikeParkingFee : OsmFilterQuestType<Fee>() {
 
     // element selection logic by @DerDings in #2507
     override val elementFilter = """
@@ -31,5 +31,5 @@ class AddBikeParkingFee : OsmFilterQuestType<FeeAnswer>() {
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: FeeAnswer, changes: StringMapChangesBuilder) = answer.applyTo(changes)
+    override fun applyAnswerTo(answer: Fee, changes: StringMapChangesBuilder) = answer.applyTo(changes)
 }

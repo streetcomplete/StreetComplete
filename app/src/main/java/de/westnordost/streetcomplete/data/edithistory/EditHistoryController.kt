@@ -73,6 +73,10 @@ import javax.inject.Singleton
         }
     }
 
+    fun deleteSyncedOlderThan(timestamp: Long): Int =
+        elementEditsController.deleteSyncedOlderThan(timestamp) +
+        noteEditsController.deleteSyncedOlderThan(timestamp)
+
     override fun get(key: EditKey): Edit? = when(key) {
         is ElementEditKey -> elementEditsController.get(key.id)
         is NoteEditKey -> noteEditsController.get(key.id)

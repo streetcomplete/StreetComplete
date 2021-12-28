@@ -48,7 +48,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
             R.id.replaceRadioButton   -> {
                 val feature = getSelectedFeature()
                 if (feature == null) {
-                    binding.presetsEditText.error = context?.resources?.getText(R.string.quest_shop_gone_replaced_answer_error)
+                    binding.presetsEditText.error = context?.resources?.getText(R.string.quest_shop_gone_replaced_answer_error2)
                 } else {
                     applyAnswer(ShopType(feature.addTags))
                 }

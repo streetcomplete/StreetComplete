@@ -14,19 +14,4 @@ class NotHasTagTest {
         assertTrue(f.matches(mapOf("hipway" to "residential")))
         assertTrue(f.matches(mapOf()))
     }
-
-    @Test fun toOverpassQLString() {
-        assertEquals(
-            "[highway != residential]",
-            NotHasTag("highway", "residential").toOverpassQLString()
-        )
-        assertEquals(
-            "['high:way' != residential]",
-            NotHasTag("high:way", "residential").toOverpassQLString()
-        )
-        assertEquals(
-            "[highway != 'resi:dential']",
-            NotHasTag("highway", "resi:dential").toOverpassQLString()
-        )
-    }
 }

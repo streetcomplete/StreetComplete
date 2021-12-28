@@ -28,4 +28,11 @@ import javax.inject.Singleton
             return result
         }
     }
+
+    fun clear() {
+        synchronized(this) {
+            db.clear()
+            cache.clear()
+        }
+    }
 }

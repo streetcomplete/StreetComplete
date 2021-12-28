@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.annotation.SuppressLint
 import android.content.*
-import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
@@ -15,12 +14,12 @@ import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserController
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.toLatLon
+import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -36,12 +35,13 @@ import javax.inject.Singleton
     private val context: Context,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
-    private val loginStatusSource: LoginStatusSource,
+    private val userLoginStatusSource: UserLoginStatusSource,
     private val prefs: SharedPreferences,
-    private val userController: UserController,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesDao: DownloadedTilesDao
 ) : LifecycleObserver {
+
+    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
 
     private var pos: LatLon? = null
 
@@ -49,9 +49,9 @@ import javax.inject.Singleton
     private var isWifi: Boolean = false
 
     // new location is known -> check if downloading makes sense now
-    private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
+    private val locationManager = FineLocationManager(context) { location ->
         if (location.accuracy <= 300) {
-            pos = LatLon(location.latitude, location.longitude)
+            pos = location.toLatLon()
             triggerAutoDownload()
         }
     }
@@ -82,7 +82,7 @@ import javax.inject.Singleton
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusListener {
+    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {
             triggerAutoUpload()
         }
@@ -108,10 +108,10 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun onCreate() {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
-        loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
@@ -132,8 +132,9 @@ import javax.inject.Singleton
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
-        loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
+        coroutineScope.coroutineContext.cancelChildren()
     }
 
     @SuppressLint("MissingPermission")
@@ -147,37 +148,41 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    fun triggerAutoDownload() {
+    private fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
         if (downloadController.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
-        val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
-        val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
-        if (downloadBoundingBox != null) {
-            try {
-                downloadController.download(downloadBoundingBox)
-            } catch (e: IllegalStateException) {
-                // The Android 9 bug described here should not result in a hard crash of the app
-                // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
-                Log.e(TAG, "Cannot start download service", e)
+        coroutineScope.launch {
+            val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
+            val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
+            if (downloadBoundingBox != null) {
+                try {
+                    downloadController.download(downloadBoundingBox)
+                } catch (e: IllegalStateException) {
+                    // The Android 9 bug described here should not result in a hard crash of the app
+                    // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
+                    Log.e(TAG, "Cannot start download service", e)
+                }
             }
         }
     }
 
-    fun triggerAutoUpload() {
+    private fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!userController.isLoggedIn) return
+        if (!userLoginStatusSource.isLoggedIn) return
 
-        try {
-            uploadController.upload()
-        } catch (e: IllegalStateException) {
-            // The Android 9 bug described here should not result in a hard crash of the app
-            // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
-            Log.e(TAG, "Cannot start upload service", e)
+        coroutineScope.launch {
+            try {
+                uploadController.upload()
+            } catch (e: IllegalStateException) {
+                // The Android 9 bug described here should not result in a hard crash of the app
+                // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
+                Log.e(TAG, "Cannot start upload service", e)
+            }
         }
     }
 

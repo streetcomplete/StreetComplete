@@ -5,13 +5,15 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupported
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
@@ -30,6 +32,7 @@ class AddOpeningHours (
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
               or tourism = information and information = office
+              or (amenity = recycling and recycling:batteries = yes)
               or """.trimIndent() +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -86,8 +89,8 @@ class AddOpeningHours (
           )
           or opening_hours older today -1 years
         )
-        and (access !~ private|no)
-        and (name or brand or noname = yes or name:signed = no)
+        and access !~ private|no
+        and (name or brand or noname = yes or name:signed = no or amenity=recycling)
         and opening_hours:signed != no
     """.trimIndent()).toElementFilterExpression() }
 
@@ -144,8 +147,11 @@ class AddOpeningHours (
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         val rules = oh.toOpeningHoursRules() ?: return true
         // only display supported rules
-        return rules.isSupported()
+        return rules.isSupportedOpeningHours()
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
 
     override fun createForm() = AddOpeningHoursForm()
 

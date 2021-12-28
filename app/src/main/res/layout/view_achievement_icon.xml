@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/levelGuideline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="8"
+        tools:text="8"
         android:textColor="#fff"
         android:elevation="24dp"/>
 

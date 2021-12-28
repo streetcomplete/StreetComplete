@@ -13,8 +13,10 @@
         android:id="@+id/editHistoryList"
         android:layout_width="80dp"
         android:layout_height="match_parent"
+        android:paddingBottom="22dp"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:reverseLayout="true"
         android:orientation="vertical"
         tools:listitem="@layout/row_edit_item" />
 

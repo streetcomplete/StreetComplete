@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import java.util.*
 import kotlin.collections.ArrayList
 
 /**
@@ -34,7 +33,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
 
-    private lateinit var favs: LastPickedValuesStore<I>
+    private lateinit var favs: LastPickedValuesStore<DisplayItem<I>>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -42,17 +41,25 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     /** return true to move last picked items to the front. On by default. Only respected if the
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
-
+    /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
+
+    private lateinit var itemsByString: Map<String, DisplayItem<I>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = ImageSelectAdapter(maxSelectableItems)
+        itemsByString = items.associateBy { it.value.toString() }
     }
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.value.toString() },
+            deserialize = { itemsByString[it] }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,8 +96,8 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     override fun onClickOk() {
         val values = imageSelector.selectedItems
         if (values.isNotEmpty()) {
-            favs.add(javaClass.simpleName, values)
-            onClickOk(values)
+            favs.add(values)
+            onClickOk(values.map { it.value!! })
         }
     }
 
@@ -105,12 +112,11 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        val result: LinkedList<DisplayItem<I>> = LinkedList(originalList)
-
-        if (result.size > itemsPerRow && moveFavoritesToFront) {
-            favs.moveLastPickedDisplayItemsToFront(javaClass.simpleName, result, originalList)
+        return if (originalList.size > itemsPerRow && moveFavoritesToFront) {
+            favs.get().filterNotNull().padWith(originalList).toList()
+        } else {
+            originalList
         }
-        return result
     }
 
     companion object {

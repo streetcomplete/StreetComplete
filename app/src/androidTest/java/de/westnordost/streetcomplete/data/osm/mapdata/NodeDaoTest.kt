@@ -76,6 +76,18 @@ class NodeDaoTest : ApplicationDbTestCase() {
         val unusedIds = dao.getIdsOlderThan(currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
+
+    @Test fun getUnusedAndOldIdsButAtMostX() {
+        dao.putAll(listOf(nd(1L), nd(2L), nd(3L)))
+        val unusedIds = dao.getIdsOlderThan(currentTimeMillis() + 10, 2)
+        assertEquals(2, unusedIds.size)
+    }
+
+    @Test fun clear() {
+        dao.putAll(listOf(nd(1), nd(2), nd(3)))
+        dao.clear()
+        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+    }
 }
 
 private fun nd(

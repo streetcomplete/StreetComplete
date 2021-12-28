@@ -1,8 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Standard Lesotho Bank, FNB, NedBank, NedBank ATM, Post Bank]
-centerLine: white
+centerLineStyle: white
+edgeLineStyle: yellow
+hasLivingStreet: true
 isLeftHandTraffic: true
-isLivingStreetKnown: true
+livingStreetSignStyle: sadc
 mobileCountryCode: 651
+noParkingSignStyle: sadc
+noStoppingSignStyle: sadc
 officialLanguages: [st, en]
-shoulderLine: yellow

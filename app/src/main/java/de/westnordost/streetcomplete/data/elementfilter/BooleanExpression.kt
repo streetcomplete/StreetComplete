@@ -6,7 +6,7 @@ abstract class BooleanExpression<I : Matcher<T>,T> {
     var parent: Chain<I, T>? = null
         internal set
 
-    abstract fun matches(obj: T?): Boolean
+    abstract fun matches(obj: T): Boolean
 }
 
 abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
@@ -82,20 +82,20 @@ abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
 }
 
 class Leaf<I : Matcher<T>, T>(val value: I) : BooleanExpression<I, T>() {
-    override fun matches(obj: T?) = value.matches(obj)
+    override fun matches(obj: T) = value.matches(obj)
     override fun toString() = value.toString()
 }
 
 class AllOf<I : Matcher<T>, T> : Chain<I, T>() {
-    override fun matches(obj: T?) = nodes.all { it.matches(obj) }
+    override fun matches(obj: T) = nodes.all { it.matches(obj) }
     override fun toString() = nodes.joinToString(" and ") { if (it is AnyOf) "($it)" else "$it" }
 }
 
 class AnyOf<I : Matcher<T>, T> : Chain<I, T>() {
-    override fun matches(obj: T?) = nodes.any { it.matches(obj) }
+    override fun matches(obj: T) = nodes.any { it.matches(obj) }
     override fun toString() = nodes.joinToString(" or ") { "$it" }
 }
 
 interface Matcher<in T> {
-    fun matches(obj: T?): Boolean
+    fun matches(obj: T): Boolean
 }

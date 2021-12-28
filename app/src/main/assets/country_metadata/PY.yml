@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Itaú, Banco Continental, Itau, BBVA, Banco Itau, Banco Nacional de Fomento, Sudameris Bank, BNF - Dinelco, Banco Itaú, ITAU, Dinelco, Banco Itaú S.A., Continental, BNF, Bancop, Itaú - Infonet, Banco Sudameris]
-centerLine: yellow
+centerLineStyle: yellow
 chargingStationOperators: [Petropar]
 mobileCountryCode: 744
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd latin
 officialLanguages: [es, gug]
 orchardProduces: [orange, mate, banana, pineapple, tomato, tung_nut, grapefruit, guava, mango, mangosteen, avocado, papaya, lemon, lime, chilli_pepper, sweet_pepper, strawberry, grape, plum]

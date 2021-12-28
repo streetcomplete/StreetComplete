@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.data.user.StatisticsUpdater
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
@@ -26,7 +26,7 @@ class ElementEditsUploaderTest {
     private lateinit var mapDataController: MapDataController
     private lateinit var singleUploader: ElementEditUploader
     private lateinit var mapDataApi: MapDataApi
-    private lateinit var statisticsUpdater: StatisticsUpdater
+    private lateinit var statisticsController: StatisticsController
 
     private lateinit var uploader: ElementEditsUploader
     private lateinit var listener: OnUploadedChangeListener
@@ -35,19 +35,19 @@ class ElementEditsUploaderTest {
         elementEditsController = mock()
         mapDataController = mock()
         singleUploader = mock()
-        statisticsUpdater = mock()
         mapDataApi = mock()
+        statisticsController = mock()
 
         listener = mock()
 
-        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, statisticsUpdater)
+        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, statisticsController)
         uploader.uploadedChangeListener = listener
     }
 
     @Test fun `cancel upload works`() = runBlocking {
         val job = launch { uploader.upload() }
         job.cancelAndJoin()
-        verifyNoInteractions(elementEditsController, mapDataController, singleUploader, statisticsUpdater)
+        verifyNoInteractions(elementEditsController, mapDataController, singleUploader, statisticsController)
     }
 
     @Test fun `upload works`() = runBlocking {
@@ -66,7 +66,7 @@ class ElementEditsUploaderTest {
         verify(elementEditsController).markSynced(edit, updates)
         verify(mapDataController).updateAll(updates)
 
-        verify(statisticsUpdater).addOne(any(), any())
+        verify(statisticsController).addOne(any(), any())
     }
 
     @Test fun `upload catches conflict exception`() = runBlocking {
@@ -89,7 +89,7 @@ class ElementEditsUploaderTest {
             updated = listOf(updatedNode)
         )))
 
-        verify(statisticsUpdater, never()).addOne(any(), any())
+        verify(statisticsController, never()).addOne(any(), any())
     }
 
     @Test fun `upload catches deleted element exception`() = runBlocking {
@@ -111,6 +111,6 @@ class ElementEditsUploaderTest {
             deleted = listOf(ElementKey( ElementType.NODE, 1L))
         )))
 
-        verify(statisticsUpdater, never()).addOne(any(), any())
+        verify(statisticsController, never()).addOne(any(), any())
     }
 }

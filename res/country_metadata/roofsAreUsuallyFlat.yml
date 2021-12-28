@@ -1,5 +1,6 @@
-# Countries in which roofs are usually / almost exclusively flat. This coincides somewhat with low
-# rainfall but is also induced culturally
+# Countries in which roofs are usually / almost exclusively flat
+# 
+# This coincides somewhat with low rainfall but is also induced culturally
 # Research done in https://docs.google.com/spreadsheets/d/1Oc4i2KsF-FyJ-Bxpu1dcbGK1Wrae7mHeg_CM2rpNBc8/
 # Sources: Avg. rainfall data, photo sphere, (Google) satellite imagery
 default: false

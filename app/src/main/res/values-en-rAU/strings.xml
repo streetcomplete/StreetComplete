@@ -51,4 +51,5 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
 
     <!-- Fuzzy -->
     <string name="quest_busStopBin_name_title">"Is there a rubbish bin at the bus stop %s?"</string>
+    <string name="language_default">"System default"</string>
 </resources>

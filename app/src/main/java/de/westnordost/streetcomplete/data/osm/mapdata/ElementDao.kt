@@ -56,16 +56,24 @@ class ElementDao @Inject constructor(
         val elementIds = keys.toElementIds()
         if (elementIds.size == 0) return 0
 
-        return nodeDao.deleteAll(elementIds.nodes) +
+        // delete first relations, then ways, then nodes because relations depend on ways depend on nodes
+        return relationDao.deleteAll(elementIds.relations) +
             wayDao.deleteAll(elementIds.ways) +
-            relationDao.deleteAll(elementIds.relations)
+            nodeDao.deleteAll(elementIds.nodes)
     }
 
-    fun getIdsOlderThan(timestamp: Long): List<ElementKey> {
+    fun clear() {
+        relationDao.clear()
+        wayDao.clear()
+        nodeDao.clear()
+    }
+
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<ElementKey> {
         val result = mutableListOf<ElementKey>()
-        result.addAll(nodeDao.getIdsOlderThan(timestamp).map { ElementKey(NODE, it) })
-        result.addAll(wayDao.getIdsOlderThan(timestamp).map { ElementKey(WAY, it) })
-        result.addAll(relationDao.getIdsOlderThan(timestamp).map { ElementKey(RELATION, it) })
+        // get relations first, then ways, then nodes because relations depend on ways depend on nodes.
+        result.addAll(relationDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(RELATION, it) })
+        result.addAll(wayDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(WAY, it) })
+        result.addAll(nodeDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(NODE, it) })
         return result
     }
 

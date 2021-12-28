@@ -2,7 +2,11 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.deleteCheckDates
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.containsAny
@@ -11,18 +15,18 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with (
-             shop = yes
-             and !man_made
-             and !historic
-             and !military
-             and !power
-             and !tourism
-             and !attraction
-             and !amenity
-             and !craft
-             and !tourism
-             and !leisure
-          )
+         shop = yes
+         and !man_made
+         and !historic
+         and !military
+         and !power
+         and !tourism
+         and !attraction
+         and !amenity
+         and !craft
+         and !tourism
+         and !leisure
+        )
     """
     override val commitMessage = "Specify shop type"
     override val wikiLink = "Key:shop"
@@ -35,6 +39,9 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         hasProperName(tags)  -> R.string.quest_shop_type_title
         else            -> R.string.quest_shop_type_title_no_name
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
 
     override fun createForm() = ShopTypeForm()
 

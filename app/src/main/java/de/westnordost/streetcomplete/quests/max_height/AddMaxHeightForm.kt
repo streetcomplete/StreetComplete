@@ -35,10 +35,9 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     override fun isFormComplete() = getHeightFromInput() != null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setMaxHeightSignLayout(R.layout.quest_maxheight, heightUnits.first())
-        return view
     }
 
     private fun setMaxHeightSignLayout(resourceId: Int, unit: HeightMeasurementUnit) {
@@ -111,7 +110,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         applyAnswer(MaxHeight(getHeightFromInput()!!))
     }
 
-    private fun getHeightFromInput(): HeightMeasure? {
+    private fun getHeightFromInput(): Height? {
         when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
             METER -> {
                 return meterInput?.numberOrNull?.let { Meters(it) }

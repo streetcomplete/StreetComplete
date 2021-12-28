@@ -133,6 +133,12 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         assertNull(dao.get(ElementType.NODE, 0))
     }
 
+    @Test fun clear() {
+        dao.put(ElementGeometryEntry(ElementType.NODE, 0, createSimpleGeometry()))
+        dao.clear()
+        assertNull(dao.get(ElementType.NODE, 0))
+    }
+
     private fun createSimpleGeometry() = createPoint(50.0, 50.0)
 
     private fun createPoint(lat: Double, lon: Double) = ElementPointGeometry(LatLon(lat, lon))

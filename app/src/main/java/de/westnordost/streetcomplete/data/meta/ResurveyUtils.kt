@@ -63,6 +63,15 @@ fun StringMapChangesBuilder.updateCheckDateForKey(key: String) {
     }
 }
 
+/** Return whether a check date is set for the given key */
+fun StringMapChangesBuilder.hasCheckDateForKey(key: String): Boolean =
+    getLastCheckDateKeys(key).any { getPreviousValue(it) != null }
+
+/** Delete any check date keys for the given key */
+fun StringMapChangesBuilder.deleteCheckDatesForKey(key: String) {
+    getLastCheckDateKeys(key).forEach { deleteIfExists(it) }
+}
+
 /** Set/update solely the check date for the entire item to today, this also removes other less
  *  preferred check date keys for the entire item. */
 fun StringMapChangesBuilder.updateCheckDate() {
@@ -78,19 +87,14 @@ fun StringMapChangesBuilder.deleteOtherCheckDates() {
     }
 }
 
+/** Return whether any check dates are set */
+fun StringMapChangesBuilder.hasCheckDate(): Boolean =
+    LAST_CHECK_DATE_KEYS.any { getPreviousValue(it) != null }
+
 /** Delete any check date for the entire item */
 fun StringMapChangesBuilder.deleteCheckDates() {
     deleteIfExists(SURVEY_MARK_KEY)
     deleteOtherCheckDates()
-}
-
-/** Return whether a check date is set for the given key */
-fun StringMapChangesBuilder.hasCheckDateForKey(key: String): Boolean =
-    getLastCheckDateKeys(key).any { getPreviousValue(it) != null }
-
-/** Delete any check date keys for the given key */
-fun StringMapChangesBuilder.deleteCheckDatesForKey(key: String) {
-    getLastCheckDateKeys(key).forEach { deleteIfExists(it) }
 }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given

@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddPlaygroundAccess : OsmFilterQuestType<Boolean>() {
+class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>() {
 
     override val elementFilter = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
     override val commitMessage = "Add playground access"
@@ -17,9 +17,9 @@ class AddPlaygroundAccess : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = AddPlaygroundAccessForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("access", if (answer) "yes" else "private")
+    override fun applyAnswerTo(answer: PlaygroundAccess, changes: StringMapChangesBuilder) {
+        changes.addOrModify("access", answer.osmValue)
     }
 }

@@ -23,21 +23,4 @@ class HasTagValueLikeTest {
         assertFalse(f.matches(mapOf("highway" to "blub")))
         assertFalse(f.matches(mapOf()))
     }
-
-    @Test fun `groups values properly`() {
-        val f = HasTagValueLike("highway", "residential|unclassified")
-
-        assertEquals(
-            "[highway ~ '^(residential|unclassified)$']",
-            f.toOverpassQLString()
-        )
-    }
-
-    @Test fun `key value to string`() {
-        val f = HasTagValueLike("highway",".*")
-        assertEquals(
-            "[highway ~ '^(.*)$']",
-            f.toOverpassQLString()
-        )
-    }
 }

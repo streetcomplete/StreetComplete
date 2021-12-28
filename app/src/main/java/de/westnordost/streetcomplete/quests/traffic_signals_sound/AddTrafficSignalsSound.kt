@@ -14,17 +14,20 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with crossing = traffic_signals and highway ~ crossing|traffic_signals and foot != no
-        and (
+        nodes with crossing = traffic_signals
+         and highway ~ crossing|traffic_signals
+         and foot != no
+         and (
           !$SOUND_SIGNALS
           or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
           or $SOUND_SIGNALS older today -8 years
-        )
+         )
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
         ways with
-          highway = cycleway and foot !~ yes|designated
+          highway = cycleway
+          and foot !~ yes|designated
     """.toElementFilterExpression() }
 
     override val commitMessage = "Add whether traffic signals have sound signals"
@@ -46,10 +49,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
     }
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!crossingFilter.matches(element))
-            false
-        else
-            null
+        if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

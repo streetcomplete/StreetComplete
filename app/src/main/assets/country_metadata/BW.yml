@@ -1,9 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [FNB, First National Bank, Barclays, Standard Chartered Bank, Barclay's, Stanbic Bank, Fnb, FNB ATM]
-centerLine: white
+centerLineStyle: white
+edgeLineStyle: yellow
+hasLivingStreet: true
 isLeftHandTraffic: true
-isLivingStreetKnown: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 652
+noParkingSignStyle: sadc
+noStoppingSignStyle: sadc
 officialLanguages: [en, tn]
 orchardProduces: [tomato, orange]
-shoulderLine: yellow

@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.kerb_height.couldBeAKerb
-import de.westnordost.streetcomplete.quests.kerb_height.findAllKerbNodes
+import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
+import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 
 class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
 

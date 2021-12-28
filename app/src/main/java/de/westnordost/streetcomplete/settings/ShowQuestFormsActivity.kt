@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import de.westnordost.streetcomplete.BaseActivity
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
@@ -27,7 +28,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
 
 /** activity only used in debug, to show all the different forms for the different quests. */
-class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
+class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Listener {
 
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var prefs: SharedPreferences

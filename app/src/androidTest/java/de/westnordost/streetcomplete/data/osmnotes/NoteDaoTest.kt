@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 
 import org.junit.Assert.*
 
@@ -94,6 +95,24 @@ class NoteDaoTest : ApplicationDbTestCase() {
         assertNull(dao.get(1))
         assertNull(dao.get(2))
         assertNotNull(dao.get(3))
+    }
+
+    @Test fun getUnusedAndOldIds() {
+        dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
+        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
+        assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
+    }
+
+    @Test fun getUnusedAndOldIdsButAtMostX() {
+        dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
+        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10, 2)
+        assertEquals(2, unusedIds.size)
+    }
+
+    @Test fun clear() {
+        dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
+        dao.clear()
+        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
     }
 }
 

@@ -18,7 +18,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title2
 
-    override fun createForm() = AddSelfServiceLaundryFragment()
+    override fun createForm() = AddSelfServiceLaundryForm()
 
     override fun applyAnswerTo(answer: SelfServiceLaundry, changes: StringMapChangesBuilder) {
         when(answer) {

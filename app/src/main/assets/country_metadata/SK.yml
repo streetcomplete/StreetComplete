@@ -2,9 +2,13 @@
 atmOperators: [VÚB, Slovenská sporiteľňa, Tatra banka, ČSOB, Prima banka, Poštová banka, UniCredit Bank, OTP banka, Euronet, OTP Bank, 365.bank, ATM Point, OTP Banka, ATM point, Prima Banka, Tatra Banka, General Bytes, Slovenská Sporiteľňa]
 chargingStationOperators: [ZSE, GreenWay, ejoin, ZSE Drive, ebajk connect, Slovnaft, Billa, ebajkconnect, VSE, ebajkonnect, Lidl, Greenway, Farmárska reštaurácia, EvMapa, BMW T.O.B.]
 clothesContainerOperators: [Ekocharita, HUMANA, EKOCHARITA, Humana, Nadácia ECO, Ľudia k ľuďom n.o., FCC Trnava, Ekotextil, ECO textil]
-isAdvisorySpeedLimitKnown: true
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+hasAdvisorySpeedLimitSign: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, tomato, chilli_pepper, sweet_pepper, peach, strawberry, plum, pear, apricot, hop, cherry, raspberry, walnut, chestnut]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZÓNA

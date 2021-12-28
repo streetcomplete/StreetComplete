@@ -3,22 +3,32 @@ package de.westnordost.streetcomplete
 import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
-import de.westnordost.streetcomplete.data.Cleaner
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
+import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
+import de.westnordost.streetcomplete.ktx.addedToFront
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.getSelectedLocale
+import de.westnordost.streetcomplete.util.getSystemLocales
+import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import java.lang.System.currentTimeMillis
 
 class StreetCompleteApplication : Application() {
 
     @Inject lateinit var preloader: Preloader
-    @Inject lateinit var cleaner: Cleaner
     @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
     @Inject lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
     @Inject lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject lateinit var prefs: SharedPreferences
+    @Inject lateinit var editHistoryController: EditHistoryController
 
     private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
@@ -30,16 +40,18 @@ class StreetCompleteApplication : Application() {
         Injector.initializeApplicationComponent(this)
         Injector.applicationComponent.inject(this)
 
+        setDefaultLocales()
+
         crashReportExceptionHandler.install()
 
-        // do these in the background
         applicationScope.launch {
             preloader.preload()
-            cleaner.clean()
+            editHistoryController.deleteSyncedOlderThan(currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
         }
 
-        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
-        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+        enqueuePeriodicCleanupWork()
+
+        setDefaultTheme()
 
         resurveyIntervalsUpdater.update()
 
@@ -60,5 +72,29 @@ class StreetCompleteApplication : Application() {
     override fun onTerminate() {
         super.onTerminate()
         applicationScope.cancel()
+    }
+
+    private fun setDefaultLocales() {
+        val locale = getSelectedLocale(this)
+        if (locale != null) {
+            setDefaultLocales(getSystemLocales().addedToFront(locale))
+        }
+    }
+
+    private fun setDefaultTheme() {
+        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
+        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+    }
+
+    private fun enqueuePeriodicCleanupWork() {
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "Cleanup",
+            ExistingPeriodicWorkPolicy.KEEP,
+            PeriodicWorkRequest.Builder(
+                CleanerWorker::class.java,
+                1, TimeUnit.DAYS,
+                1, TimeUnit.DAYS,
+            ).setInitialDelay(1, TimeUnit.HOURS).build()
+        )
     }
 }

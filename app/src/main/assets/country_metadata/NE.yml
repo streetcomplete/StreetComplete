@@ -1,6 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [BIA, Nita]
+centerLineStyle: white
+edgeLineStyle: white
 mobileCountryCode: 614
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [fr, ha]
 orchardProduces: [tomato, guava, mango, mangosteen, date, chilli_pepper, sweet_pepper, pepper]
 popularReligions: [muslim]

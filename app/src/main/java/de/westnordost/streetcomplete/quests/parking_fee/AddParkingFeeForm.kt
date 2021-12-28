@@ -19,7 +19,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
+class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
 
     override val contentLayoutResId = R.layout.quest_fee_hours
     private val binding by contentViewBinding(QuestFeeHoursBinding::bind)

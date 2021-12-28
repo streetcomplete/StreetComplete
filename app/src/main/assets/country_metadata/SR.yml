@@ -2,6 +2,10 @@
 atmOperators: [DSB, Hakrinbank, Republic Bank, De Surinaamsche Bank]
 isLeftHandTraffic: true
 mobileCountryCode: 746
+noParkingLineStyle: dashed yellow
+noParkingSignStyle: vienna
+noStoppingLineStyle: yellow
+noStoppingSignStyle: vienna
 officialLanguages: [nl]
 orchardProduces: [banana, coconut, orange, grapefruit, guava, mango, mangosteen, tomato, pineapple, cherry, papaya, lemon, lime, coffee, cacao]
 popularReligions: [christian, hindu, muslim]

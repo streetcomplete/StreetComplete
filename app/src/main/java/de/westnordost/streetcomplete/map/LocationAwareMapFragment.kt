@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Context
 import android.hardware.SensorManager
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
@@ -83,10 +82,7 @@ open class LocationAwareMapFragment : MapFragment() {
             this::onCompassRotationChanged
         )
         lifecycle.addObserver(compass)
-        locationManager = FineLocationManager(
-            context.getSystemService<LocationManager>()!!,
-            this::onLocationChanged
-        )
+        locationManager = FineLocationManager(context, this::onLocationChanged)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

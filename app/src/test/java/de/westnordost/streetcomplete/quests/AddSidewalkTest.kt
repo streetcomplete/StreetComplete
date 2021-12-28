@@ -48,7 +48,7 @@ class AddSidewalkTest {
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
         val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
-        val p3 = p1.translate(14.0, 135.0)
+        val p3 = p1.translate(13.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
 
         mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
@@ -94,29 +94,6 @@ class AddSidewalkTest {
         val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(16.0, 135.0)
-        val p4 = p3.translate(50.0, 45.0)
-
-        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
-        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
-
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(road))
-    }
-
-    @Test fun `applicable to small road with footway that is far away enough`() {
-        val road = way(1, listOf(1,2), mapOf(
-            "highway" to "primary",
-            "lit" to "yes",
-            "lanes" to "2"
-        ))
-        val footway = way(2, listOf(3,4), mapOf(
-            "highway" to "cycleway"
-        ))
-
-        val mapData = TestMapDataWithGeometry(listOf(road, footway))
-        val p1 = p(0.0,0.0)
-        val p2 = p1.translate(50.0, 45.0)
-        val p3 = p1.translate(10.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
 
         mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)

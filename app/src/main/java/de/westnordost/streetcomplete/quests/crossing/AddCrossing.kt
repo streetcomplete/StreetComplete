@@ -118,7 +118,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
              * the south here, then, still none of those footways would actually cross the street
              *  - only if it continued straight to the north, for example.
              *
-             * The example brings us to the less simple case: What if several roads roads share
+             * The example brings us to the less simple case: What if several roads share
              * a node at a crossing-candidate position, like it is the case at every T-intersection?
              * Also, what if there are more than one footways involved as in the link above?
              *

@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -55,7 +55,6 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         super.onCreate(savedInstanceState)
 
         openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
-        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,6 +65,8 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         } else {
             initStateFromTags()
         }
+
+        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
 
         binding.openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.openingHoursList.adapter = openingHoursAdapter

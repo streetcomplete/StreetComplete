@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Ecobank, BTCI]
 mobileCountryCode: 615
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [fr]
 orchardProduces: [banana, cacao, coffee, orange, coconut, cashew_nut, tomato, chilli_pepper, sweet_pepper, pineapple, nutmeg]

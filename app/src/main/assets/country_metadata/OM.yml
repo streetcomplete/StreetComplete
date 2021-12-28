@@ -1,11 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 atmOperators: [Bank Muscat, بنك مسقط, HSBC, NBO, صراف بنك مسقط, Bank Dhofar, bank muscat, دائرة الجمارك الأردنية, بنك ظفار, Bank Muscat ATM, Arab Bank, Jordan Kuwait Bank, Salwa Islamic Bank]
-centerLine: yellow
+centerLineStyle: yellow
+edgeLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 422
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [ar]
 orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon, lime, papaya]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-shoulderLine: yellow
