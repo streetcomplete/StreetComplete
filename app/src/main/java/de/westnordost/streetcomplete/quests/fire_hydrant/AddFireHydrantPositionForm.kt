@@ -10,8 +10,8 @@ class AddFireHydrantPositionForm : AImageListQuestAnswerFragment<FireHydrantPosi
     override val items = listOf(
         Item(GREEN, R.drawable.fire_hydrant_position_green, R.string.quest_fireHydrant_position_green),
         Item(LANE, R.drawable.fire_hydrant_position_lane, R.string.quest_fireHydrant_position_lane),
-        Item(SIDEWALK, R.drawable.fire_hydrant_position_sidwalk, R.string.quest_fireHydrant_position_sidewalk),
-        Item(PARKING_LOT, R.drawable.fire_hydrant_pond, R.string.quest_fireHydrant_position_parking_lot)
+        Item(SIDEWALK, R.drawable.fire_hydrant_position_sidewalk, R.string.quest_fireHydrant_position_sidewalk),
+        Item(PARKING_LOT, R.drawable.fire_hydrant_position_parking, R.string.quest_fireHydrant_position_parking_lot)
     )
 
     override val itemsPerRow = 2
