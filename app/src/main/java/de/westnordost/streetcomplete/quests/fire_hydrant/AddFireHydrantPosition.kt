@@ -7,7 +7,13 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
-    override val elementFilter = "nodes with emergency = fire_hydrant and !fire_hydrant:position"
+    override val elementFilter = """
+        nodes with
+         emergency = fire_hydrant and
+         !fire_hydrant:position and
+         fire_hydrant:type and
+         (fire_hydrant:type = pillar or fire_hydrant:type = underground)
+    """
     override val commitMessage = "Add fire hydrant position"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant
