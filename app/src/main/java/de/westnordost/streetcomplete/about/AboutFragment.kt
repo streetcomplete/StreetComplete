@@ -73,7 +73,7 @@ class AboutFragment : PreferenceFragmentCompat() {
             openUrl("https://github.com/streetcomplete/StreetComplete/issues/")
         }
 
-        findPreference<Preference>("email")?.setOnPreferenceClickListener {
+        findPreference<Preference>("give_feedback")?.setOnPreferenceClickListener {
             openUrl("https://github.com/streetcomplete/StreetComplete/discussions/")
         }
 

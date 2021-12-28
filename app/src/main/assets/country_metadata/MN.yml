@@ -1,7 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Хаан банк, Хаан, Хаанбанк, хаан банк, Голомт, Golomt Bank, АТМ, Голомт банк, Төрийн банк, khaan bank, Khan Bank, Khaan bank, Khan bank, ХХБ, Худалдаа хөгжлийн банк, atm, Хаан банк АТМ, Хаан Банк, Ger, Aa, zam, khaanbank]
-isLivingStreetKnown: true
+centerLineStyle: white
+edgeLineStyle: white
+hasLivingStreet: true
+livingStreetSignStyle: russia
 mobileCountryCode: 428
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
 officialLanguages: [mn]
 orchardProduces: [hazelnut]
 popularReligions: [buddhist, chinese_folk, taoist]

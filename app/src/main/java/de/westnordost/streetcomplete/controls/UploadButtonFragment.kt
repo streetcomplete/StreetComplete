@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
@@ -24,7 +24,7 @@ import javax.inject.Inject
 class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     @Inject internal lateinit var uploadController: UploadController
-    @Inject internal lateinit var userController: UserController
+    @Inject internal lateinit var userLoginStatusSource: UserLoginStatusSource
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
     @Inject internal lateinit var prefs: SharedPreferences
 
@@ -97,7 +97,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     private fun uploadChanges() {
         // because the app should ask for permission even if there is nothing to upload right now
-        if (!userController.isLoggedIn) {
+        if (!userLoginStatusSource.isLoggedIn) {
             context?.let { RequestLoginDialog(it).show() }
         } else {
             uploadController.upload()

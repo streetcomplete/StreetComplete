@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.quests.foot
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestMaxspeedLivingStreetConfirmationBinding
+import de.westnordost.streetcomplete.databinding.DialogLivingStreetConfirmationBinding
+import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
@@ -22,7 +23,7 @@ class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedFo
         val result = mutableListOf<AnswerItem>()
 
         val highwayTag = osmElement!!.tags["highway"]!!
-        if (countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)) {
+        if (countryInfo.hasLivingStreet() && MAYBE_LIVING_STREET.contains(highwayTag)) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_living_street) { confirmLivingStreet() })
         }
         return result
@@ -30,10 +31,8 @@ class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedFo
 
     private fun confirmLivingStreet() {
         val ctx = context ?: return
-        val dialogBinding = QuestMaxspeedLivingStreetConfirmationBinding.inflate(layoutInflater)
-        // this is necessary because the inflated image view uses the activity context rather than
-        // the fragment / layout inflater context' resources to access it's drawable
-        dialogBinding.livingStreetImage.setImageDrawable(ctx.getDrawable(R.drawable.ic_living_street))
+        val dialogBinding = DialogLivingStreetConfirmationBinding.inflate(layoutInflater)
+        countryInfo.livingStreetSignDrawableResId?.let { dialogBinding.livingStreetImage.setImageResource(it) }
         AlertDialog.Builder(ctx)
             .setView(dialogBinding.root)
             .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)

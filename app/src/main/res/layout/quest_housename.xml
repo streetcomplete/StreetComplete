@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_housenumber_frame"
             app:backgroundTint="@color/traffic_blue"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:imeOptions="actionDone"
             tools:text="My Cool House"
             style="@style/HousenumberEditText"

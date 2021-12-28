@@ -8,7 +8,6 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorisatie mislukt: Alle genoemde rechten moeten worden toegekend"</string>
-    <string name="title_activity_settings">"Instellingen"</string>
     <string name="pref_category_communication">"Communicatie"</string>
     <string name="pref_category_display">"Beeld"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -36,9 +35,6 @@
     <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, ik weet het zeker"</string>
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Je hebt dit veld leeg gelaten"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Maak in plaats hiervan een opmerking"</string>
@@ -108,7 +104,7 @@
     <string name="confirmation_discard_positive">"Maak ongedaan"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Annuleer"</string>
+    <string name="confirmation_discard_negative">"Annuleren"</string>
 
     <!-- Fuzzy -->
     <string name="action_download">"Download of ververs vragen in deze omgeving"</string>
@@ -263,9 +259,7 @@ Voor het uploaden van je wijzigingen zal de app een &lt;a href=\"https://www.wes
 
     <!-- Fuzzy -->
     <string name="autosync_off">"Uit"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_title">"Welke wegbedekking heeft dit stuk weg?"</string>
+    <string name="quest_streetSurface_title">"Welk oppervlak heeft dit stuk weg?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Verhard (algemeen)"</string>
@@ -313,16 +307,10 @@ Voor het uploaden van je wijzigingen zal de app een &lt;a href=\"https://www.wes
     <string name="quest_surface_value_wood">"Hout"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Wat is de naam van deze plek?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Heeft deze straat een trottoir?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Welke wegbedekking heeft dit fietspad?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
@@ -496,7 +484,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap onder jou
     <string name="dialog_session_dont_show_again">"Toon dit niet meer voor deze sessie"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Welk wegdek heeft de weg %s hier?"</string>
+    <string name="quest_streetSurface_name_title">"Welk oppervlak heeft de weg %s hier?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximumsnelheid lijkt onwaarschijnlijk."</string>
@@ -625,7 +613,7 @@ Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde st
 Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetsenborden die veel talen ondersteunen zijn Google Gboard, SwiftKey Keyboard en Multiling O Keyboard."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_nolanguage">"(niet gespecificeerd)"</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(niet aangegeven)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"Wat voor type brandkraan is dit?"</string>
@@ -888,9 +876,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_buildingLevels_answer_description">"Vul in dit geval de waarde van het hoogste gebouwdeel in."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Tik hier om de kaart los te maken van je positie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Zijn de rijbanen van deze weg fysiek gescheiden (bv. door een vangrail of andere barrière)? De standaard maximum snelheid hangt hier van af."</string>
     <string name="about_category_feedback">"Feedback"</string>
 
@@ -919,7 +904,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_cycleway_value_sidewalk">"een fietspad gedeeld met voetgangers"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_create_image_error">"niet mogelijk om een bestand voor de foto te maken"</string>
+    <string name="quest_leave_new_note_create_image_error">"Kon geen bestand voor de foto aanmaken"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"fietspad op de weg met tweerichtingsverkeer"</string>
@@ -991,7 +976,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_emptyAnswer">"Beschrijf de aangegeven openingsuren. Als er geen openingsuren aangegeven zijn, ga het dan binnen vragen."</string>
+    <string name="quest_openingHours_emptyAnswer">"Beschrijf de aangegeven openingstijden. Als er geen openingstijden aangegeven zijn, ga het dan binnen vragen."</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"Geen, maar fietsers mogen de weg gebruiken in beide richtingen."</string>
@@ -1118,25 +1103,13 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_surface_value_unhewn_cobblestone">"Ongehouwen kasseien"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Mag iedereen hier parkeren?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Het is een privéparkeerplaats"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Het is openbaar (betaald of onbetaald)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Enkel klanten mogen parkeren"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Wat is de naam van dit voetpad?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_title">"Welke ondergrond heeft dit plein?"</string>
+    <string name="quest_streetSurface_square_title">"Welke oppervlak heeft dit plein?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein %s hier?"</string>
+    <string name="quest_streetSurface_square_name_title">"Welke oppervlak heeft het plein %s hier?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Afhankelijk van dag en tijdstip…"</string>
@@ -1218,13 +1191,13 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_toiletAvailability_rest_area_title">"Heeft dit picknickgebied een toilet?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_steps">"Wat is hier het oppervlak van deze trappen?"</string>
+    <string name="quest_pathSurface_title_steps">"Wat is hier het oppervlak van deze trap?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"Welke bedekking heeft dit ruiterpad hier?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Welk oppervlak heeft dit ruiterpad hier?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Welke bedekking heeft dit pad hier?"</string>
+    <string name="quest_pathSurface_title">"Welk oppervlak heeft dit pad hier?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Selecteer het meest specifieke dat past:"</string>
@@ -1240,9 +1213,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Zeker dat je zowel keuze van vragen als de volgorde terug wilt instellen?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Met welke functie werd dit gebouw gebouwd?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Gelieve iets specifieker te selecteren?"</string>
@@ -1306,7 +1276,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_buildingType_industrial">"Industrieel gebouw"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"bv. een fabriek, werkplaats, autoherstelplaats, ..."</string>
+    <string name="quest_buildingType_industrial_description">"bv. een fabriek, werkplaats, autogarage, ..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Kantoorgebouw"</string>
@@ -1508,7 +1478,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_maxheight_answer_noSign_question">"Is er genoeg ruimte om zelfs de grootste vrachtwagens (vanaf ongeveer 4,5 meter) door te laten?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_unusualInput_confirmation_description">"Deze hoogte lijkt onaannemelijk. Weet je zeker dat dit correct is?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Deze hoogte lijkt onwaarschijnlijk. Weet je zeker dat dit correct is?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 
     <!-- Fuzzy -->
@@ -1533,7 +1503,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_openingHours_timeSelect_next">"Volgende"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_title">"Wat is de hardheid van de ondergrond van dit pad"</string>
+    <string name="quest_tracktype_title">"Wat is de hardheid van dit pad?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Hard"</string>
@@ -1663,7 +1633,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_leaf_type_mixed">"Beide zijn aanwezig"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cyclewayPartSurface_title">"Welke bedekking heeft het fietspad hier?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Welk oppervlak heeft het fietspad hier?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Verschilt onderweg"</string>
@@ -1681,7 +1651,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Dat zijn een aardig aantal splitsingen. Je kan de weg later altijd verder splitsen."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_footwayPartSurface_title">"Welke bedekking heeft dit voetpad hier?"</string>
+    <string name="quest_footwayPartSurface_title">"Welk oppervlak heeft het voetpad hier?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Is het toilet op %s toegankelijk voor rolstoelen?"</string>
@@ -1696,7 +1666,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_maxweight_title">"Wat is hier het maximumgewicht?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_unusualInput_confirmation_description">"Dit gewicht lijkt niet waarschijnlijk, weet je zeker dat dit correct is?"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Dit gewicht lijkt onwaarschijnlijk, weet je zeker dat dit correct is?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"Borden geven iets anders aan..."</string>
@@ -2157,6 +2127,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="user_profile_local_rank">"Rang in %s"</string>
     <string name="user_profile_days_active">"Dagen actief"</string>
     <string name="user_profile_achievement_levels">"Prestatieniveaus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Bij welke straat hoort het (huis)nummer %s?"</string>
     <string name="quest_address_street_no_named_streets">"Het hoort niet bij een straat met een naam."</string>
     <string name="quest_address_street_place_name_label">"Plaatsnaam:"</string>
@@ -2182,18 +2154,17 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_board_type_map">"Het is een kaart"</string>
     <string name="quest_board_type_map_title">"Is het echt alleen maar een kaart?"</string>
     <string name="quest_board_type_map_description">"Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten bedekkingen"</string>
+    <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten oppervlak"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet je zeker dat het onmogelijk is om de bedekking te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee je de weg kunt splitsen waar de bedekking verandert. Gebruik alstublieft \"Weet ik niet\" als er één bedekking is maar die is niet beschikbaar als antwoord."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet je zeker dat het onmogelijk is om het oppervlak te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee je de weg kunt splitsen waar het oppervlak verandert. Gebruik alstublieft \"Weet ik niet\" als er één oppervlak is maar die niet beschikbaar is als antwoord."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van de bedekking aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van het oppervlak aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"Internationaal"</string>
     <string name="quest_buildingType_terrace2">"Rijtjeshuizen"</string>
-    <string name="quest_oneway_tutorial">"De weg in de afbeelding loopt in dezelfde richting als op de kaart op de locatie van de pin. Let op de aangegeven richting."</string>
     <string name="at_housename">"Naam van het gebouw %s:"</string>
     <string name="at_conscription_and_street_number">"District- of conscriptiegetal %1$s, oriëntatiegetal %2$s:"</string>
 
@@ -2206,7 +2177,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_openingHours_resurvey_no_name_title">"Zijn deze openingstijden nog steeds correct (%s)?"</string>
     <string name="quest_openingHours_add_off_days">"Voeg sluitingsdagen toe"</string>
     <string name="quest_openingHours_off_day">"Sluitingsdag"</string>
-    <string name="quest_openingHours_unspecified_range">"Niet gespecificeerd"</string>
+    <string name="quest_openingHours_unspecified_range">"Niet aangegeven"</string>
     <string name="quest_cycleway_resurvey_title">"Is dit fietspad nog steeds hier?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Is %1$s (%2$s) toegankelijk voor rolstoelen?"</string>
     <string name="pref_title_resurvey_intervals">"Heronderzoek interval"</string>
@@ -2272,7 +2243,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"apart"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"niet apart"</string>
     <string name="pref_title_sync2">"Upload antwoorden automatisch"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Beschrijf de bedekking van de grond"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Beschrijf het oppervlak"</string>
     <string name="open_url">"Open URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisch"</string>
@@ -2312,6 +2283,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
     <string name="quest_address_street_hint">"Tik de weg aan op de kaart"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
     <string name="quest_parkingType_street_side">"Parkeren langs de weg"</string>
     <string name="quest_parkingType_lane">"Parkeren op de weg"</string>
@@ -2333,16 +2306,15 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_shop_gone_replaced_answer_hint">"Voer de soort winkel hier in"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error">"Ik weet niet wat dit is. Overweeg een notitie achter te laten."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Deze winkel stond leeg. Wat is hier nu?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Het aantal rijstroken verschilt per kant."</string>
-    <string name="quest_pitchSurface_title">"Wat voor ondergrond heeft dit sportveld?"</string>
+    <string name="quest_pitchSurface_title">"Wat voor oppervlak heeft dit sportveld?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Dit type vraag is standaard uitgeschakeld omdat het in sommige regio's niet nuttig is en je waarschijnlijk naar binnen moet gaan om een ​​vraag van dit type te kunnen beantwoorden."</string>
     <string name="quest_dietType_kosher_name_title">"Biedt %s koosjere producten aan?"</string>
     <string name="quest_dietType_explanation_kosher">"Koosjere producten moeten worden bereid volgens speciale regels, waarbij kasjroet-certificeringsinstanties de producten in overeenstemming certificeren."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Hier is geen fietspad."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant. Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecteer dat er geen fietspad is"</string>
     <string name="quest_construction_completed_at_known_date">"Dit zal gereed zijn op de datum..."</string>
@@ -2350,7 +2322,7 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_surface_value_clay">"Gravel"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
-    <string name="quest_pitchSurface_title_track">"Welke oppervlak heeft deze sportbaan?"</string>
+    <string name="quest_pitchSurface_title_track">"Welk oppervlak heeft deze sportbaan?"</string>
     <string name="quest_bicycle_parking_access_title">"Is er een beperking wie hier een fiets mag parkeren?"</string>
     <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om een fiets te parkeren?"</string>
     <string name="quest_buildingType_house_description2">"niet-vrijstaande eengezinswoning"</string>
@@ -2374,9 +2346,9 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
     <string name="quest_pitchLit_title">"Is dit sportveld verlicht?"</string>
     <string name="quest_pitchLit_title_track">"Is deze sportbaan verlicht?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Oversteekplaats bestuurd door verkeerslichten"</string>
-    <string name="undo_last">"Laatste wijziging ongedaan maken"</string>
-    <string name="show_edit_history">"Toon wijzigingsgeschiedenis"</string>
     <string name="undo_confirm_title2">"De volgende wijziging ongedaan maken?"</string>
     <string name="synced">"Gesynchroniseerd"</string>
     <string name="toast_undo_unavailable">"Deze wijziging is al gesynchroniseerd en kan niet ongedaan gemaakt worden"</string>
@@ -2423,7 +2395,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_swing_gate">"Horizontale balk"</string>
     <string name="quest_policeType_title">"Welk soort politiebureau is dit?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Omgebouwd tot een kissing gate"</string>
-    <string name="quest_stile_type_title">"Wat voor soort passage is dit?"</string>
+    <string name="quest_stile_type_title">"Wat voor soort doorgang is dit?"</string>
     <string name="quest_buildingType_semi_detached_description2">"aangrenzende eengezinswoning(en)"</string>
 
     <!-- Fuzzy -->
@@ -2464,7 +2436,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="default_disabled_msg_roofShape">"Dit type vraag is standaard uitgeschakeld, omdat de dakvormen vaak niet gemakkelijk te zien zijn vanaf de straat. Deze vraag kost ook veel tijd; meestal is het makkelijker en efficiënter om dit thuis met hulp van luchtfoto's aan de kaart toe te voegen"</string>
     <string name="quest_religion_animist">"Animisme"</string>
     <string name="quest_construction_steps_title">"Is deze trap voltooid?"</string>
-    <string name="questList_disabled_at_day">"Wordt alleen 's nachts getoond"</string>
     <string name="pref_quests_deselect_all">"Alle vragen deselecteren?"</string>
     <string name="quest_buildingType_boathouse">"Boothuis"</string>
     <string name="quest_buildingType_allotment_house">"Volkstuingebouw"</string>
@@ -2494,4 +2465,36 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="notification_syncing">"Gegevens synchronizeren..."</string>
     <string name="notification_channel_sync">"Synchronizeer gegevens"</string>
     <string name="quest_board_type_sport">"Sport, Oefeningen"</string>
+    <string name="quest_generic_hasFeature_optional">"Optioneel"</string>
+    <string name="quest_buildingType_bridge">"Brug tussen gebouwen (luchtbrug)"</string>
+    <string name="quest_laundrySelfService_title2">"Biedt deze wasserij self-service aan?"</string>
+    <string name="quest_dietType_halal_name_title">"Biedt %s halal producten aan?"</string>
+    <string name="quest_dietType_explanation_halal">"Halal producten moeten bereid worden volgens speciale regels en door halal certificatie-agentschappen wordt aangegeven of producten hieraan voldoen."</string>
+    <string name="quest_picnicTableCover_title">"Is deze picknicktafel overdekt?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Dit deel is een trap"</string>
+    <string name="quest_barrier_type_passage_conversion">"Omgebouwd tot een doorgang in een muur/hek/etc."</string>
+    <string name="quest_barrier_type_gate_conversion">"Omgebouwd tot een poort"</string>
+    <string name="quest_traffic_calming_type_title">"Welke soort snelheidsremmende maatregel is dit?"</string>
+    <string name="quest_traffic_calming_type_bump">"Verkeersdrempel (korter)"</string>
+    <string name="quest_traffic_calming_type_hump">"Verkeersdrempel (langer)"</string>
+    <string name="quest_traffic_calming_type_table">"Verkeersplateau"</string>
+    <string name="quest_traffic_calming_type_cushion">"Verkeerskussen (geen hinder voor brede voertuigen)"</string>
+    <string name="quest_traffic_calming_type_choker">"Wegversmalling"</string>
+    <string name="quest_traffic_calming_type_island">"Verkeerseiland"</string>
+    <string name="quest_traffic_calming_type_chicane">"Chicane"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Rammelstrook"</string>
+    <string name="quest_surface_value_concrete_plates">"Betonnen platen"</string>
+    <string name="quest_surface_value_concrete_lanes">"Betonnen stroken"</string>
+    <string name="quest_fireHydrant_diameter_title">"Welke diameter wordt aangegeven op het bord voor deze brandkraan?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Deze diameter lijkt onwaarschijnlijk."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Weet je het zeker? Soms kan de diameter op de brandkraan zelf staan."</string>
+    <string name="quest_diet_answer_no_food">"Het heeft geen eten"</string>
+    <string name="short_no_answer_on_button">"Nee"</string>
+    <string name="restore_confirmation">"Herstel"</string>
+    <string name="restore_dialog_message">"Toon alle vragen die u verborgen hebt"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_level_title">"Op welk niveau zit %s?"</string>
+    <string name="pref_title_language_select">"Selecteer taal"</string>
+    <string name="language_default">"Standaardinstelling"</string>
 </resources>

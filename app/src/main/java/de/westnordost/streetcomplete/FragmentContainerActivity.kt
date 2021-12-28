@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -14,7 +13,7 @@ import androidx.fragment.app.commit
 /** An activity that contains one full-screen ("main") fragment */
 open class FragmentContainerActivity(
     @LayoutRes contentLayoutId: Int = R.layout.activity_fragment_container
-) : AppCompatActivity(contentLayoutId), DisplaysTitle {
+) : BaseActivity(contentLayoutId), DisplaysTitle {
 
     var mainFragment: Fragment?
         get() = supportFragmentManager.findFragmentById(R.id.fragment_container)

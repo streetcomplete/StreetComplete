@@ -1,12 +1,17 @@
 # Do not edit. Source files are in /res/country_metadata
+advisorySpeedLimitSignStyle: yellow
 atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, bnz, Quick Cash, Quickcash, KiwiBank, ANZ Bank, TSB Bank, NBS, NZCU, TSB]
-centerLine: white
+centerLineStyle: white
 chargingStationOperators: [ChargeNet NZ, charge.net.nz, Vector, Orion, ChargeNet, Unison, Charge.net.nz, Vector Limited, Thundergrid, Tesla, Powerco, Network Waitaki, Network Tasman]
-isAdvisorySpeedLimitKnown: true
+hasAdvisorySpeedLimitSign: true
+hasLivingStreet: true
+hasSlowZone: true
 isLeftHandTraffic: true
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+livingStreetSignStyle: australia
 mobileCountryCode: 530
+noParkingLineStyle: dashed yellow
+noParkingSignStyle: vienna variant
+noStoppingSignStyle: vienna
 officialLanguages: [en]
 orchardProduces: [apple, grape, kiwi, tomato, avocado, pear, orange, lemon, lime, strawberry, apricot, blueberry, chilli_pepper, sweet_pepper, cherry, persimmon, peach]
 popularReligions: [christian, hindu, buddhist]

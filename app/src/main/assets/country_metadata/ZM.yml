@@ -1,10 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [FNB, Zanaco, Absa Bank, Stanbic Bank, Ecobank, Stanbic, Barclay's]
-centerLine: white
+centerLineStyle: white
+edgeLineStyle: yellow
+hasLivingStreet: true
 isLeftHandTraffic: true
-isLivingStreetKnown: true
+livingStreetSignStyle: sadc
 mobileCountryCode: 645
+noParkingSignStyle: sadc
+noStoppingSignStyle: sadc
 officialLanguages: [en, bem, ny]
 orchardProduces: [tomato, coffee, orange, tea, banana, chilli_pepper, sweet_pepper, pepper]
 popularSports: [soccer, tennis, cricket]
-shoulderLine: yellow

@@ -2,6 +2,9 @@ package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
@@ -10,7 +13,9 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddBoardType : OsmFilterQuestType<BoardType>() {
 
     override val elementFilter = """
-        nodes with information = board
+        nodes with
+         tourism = information
+         and information = board
          and access !~ private|no
          and (!board_type or board_type ~ yes|board)
     """
@@ -22,6 +27,9 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
     override val questTypeAchievements = listOf(RARE, CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_type_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with tourism = information and information = board")
 
     override fun createForm() = AddBoardTypeForm()
 

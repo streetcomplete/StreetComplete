@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete
 
 import ch.poole.openinghoursparser.YearRange
-import de.westnordost.streetcomplete.quests.opening_hours.parser.weekdaysCollideWithAnother
-import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupported
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.weekdaysCollideWithAnother
+import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupported
+import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.net.HttpURLConnection
@@ -92,13 +93,13 @@ fun main() = runBlocking {
                         if(r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
                             timeEvents++
                         }
-                        if(r.any { rule -> rule.times?.any { !it.isSupported() && it.startEvent == null && it.endEvent == null  } == true }) {
+                        if(r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null  } == true }) {
                             complicatedTimes++
                         }
-                        if(r.any { rule -> rule.dates?.any { !it.isSupported() } == true}) {
+                        if(r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true}) {
                             complicatedDates++
                         }
-                        if (r.all { it.isSupported() } && r.weekdaysCollideWithAnother()) {
+                        if (r.all { it.isSupportedOpeningHours() } && r.weekdaysCollideWithAnother()) {
                             selfColliding++
                         }
                     }

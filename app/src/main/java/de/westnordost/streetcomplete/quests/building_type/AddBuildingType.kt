@@ -45,6 +45,15 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
             changes.add("man_made", answer.osmValue)
         } else if (answer.osmKey != "building") {
             changes.addOrModify(answer.osmKey, answer.osmValue)
+            if(answer == BuildingType.ABANDONED) {
+                changes.deleteIfExists("disused")
+            }
+            if(answer == BuildingType.RUINS && changes.getPreviousValue("disused") == "no") {
+                changes.deleteIfExists("disused")
+            }
+            if(answer == BuildingType.RUINS && changes.getPreviousValue("abandoned") == "no") {
+                changes.deleteIfExists("abandoned")
+            }
         } else {
             changes.modify("building", answer.osmValue)
         }

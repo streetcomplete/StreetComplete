@@ -10,6 +10,7 @@ import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -20,6 +21,8 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     protected abstract val addLanguageButton: View
     protected abstract val namesList: RecyclerView
+
+    open val adapterRowLayoutResId = R.layout.quest_localizedname_row
 
     protected lateinit var adapter: AddLocalizedNameAdapter
 
@@ -32,7 +35,15 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     private fun initLocalizedNameAdapter(data: MutableList<LocalizedName>? = null) {
-        adapter = createLocalizedNameAdapter(data.orEmpty(), addLanguageButton)
+        adapter = AddLocalizedNameAdapter(
+            data.orEmpty(),
+            requireContext(),
+            getSelectableLanguageTags(),
+            getAbbreviationsByLocale(),
+            getLocalizedNameSuggestions(),
+            addLanguageButton,
+            adapterRowLayoutResId
+        )
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
         namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
@@ -41,22 +52,12 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         checkIsFormComplete()
     }
 
-    protected open fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
-        AddLocalizedNameAdapter(
-            data,
-            requireContext(),
-            getPossibleStreetsignLanguageTags(),
-            null,
-            null,
-            addLanguageButton
-        )
+    protected open fun getSelectableLanguageTags(): List<String> =
+        (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct()
 
-    protected fun getPossibleStreetsignLanguageTags(): List<String> {
-        val result = mutableListOf<String>()
-        result.addAll(countryInfo.officialLanguages)
-        result.addAll(countryInfo.additionalStreetsignLanguages)
-        return result.distinct()
-    }
+    protected open fun getAbbreviationsByLocale(): AbbreviationsByLocale? = null
+
+    protected open fun getLocalizedNameSuggestions(): List<MutableMap<String, String>>? = null
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

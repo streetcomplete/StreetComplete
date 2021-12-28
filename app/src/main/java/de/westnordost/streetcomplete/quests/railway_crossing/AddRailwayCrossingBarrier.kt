@@ -7,14 +7,17 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.*
 
 class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
     private val crossingFilter by lazy { """
         nodes with
-          railway = level_crossing
-          and (!crossing:barrier or crossing:barrier older today -8 years)
+          railway ~ level_crossing|crossing
+          and (
+            !crossing:barrier and !crossing:chicane
+            or crossing:barrier older today -8 years
+          )
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
@@ -27,7 +30,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
     override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.ic_quest_railway
 
-    override val questTypeAchievements = listOf(CAR)
+    override val questTypeAchievements = listOf(CAR, PEDESTRIAN, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2
 
@@ -47,6 +50,18 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
     override fun applyAnswerTo(answer: RailwayCrossingBarrier, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("crossing:barrier", answer.osmValue)
+        if (answer.osmValue != null) {
+            changes.deleteIfExists("crossing:chicane")
+            changes.updateWithCheckDate("crossing:barrier", answer.osmValue)
+        }
+        /* The mere existence of the crossing:chicane tag seems to imply that there could be a
+        *  barrier additionally to the chicane.
+        *  However, we still tag crossing:barrier=no here because the illustration as shown
+        *  in the app corresponds to the below tagging - it shows just a chicane and no further
+        *  barriers */
+        if (answer == RailwayCrossingBarrier.CHICANE) {
+            changes.updateWithCheckDate("crossing:barrier", "no")
+            changes.addOrModify("crossing:chicane", "yes")
+        }
     }
 }

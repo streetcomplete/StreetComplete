@@ -5,13 +5,13 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_margin="4dp"
                 android:padding="4dp"
-                android:background="?android:attr/selectableItemBackground"
+                android:background="@drawable/image_select_cell_rounded"
     >
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
@@ -28,8 +28,8 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabelBelow"
-        android:maxLines="4"
         android:padding="4dp"
+        tools:text="@string/quest_cycleway_value_track"
         />
 
 

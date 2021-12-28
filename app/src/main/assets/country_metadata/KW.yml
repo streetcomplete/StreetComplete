@@ -3,6 +3,8 @@ additionalStreetsignLanguages: [en]
 atmOperators: [NBK, National Bank of Kuwait, Gulf Bank, Burgan Bank, بنك الخليج, KFH, بيت التمويل الكويتي, بنك بوبيان]
 firstDayOfWorkweek: Su
 mobileCountryCode: 419
+noParkingSignStyle: vienna variant
+noStoppingSignStyle: vienna
 officialLanguages: [ar]
 orchardProduces: [tomato, date, chilli_pepper, sweet_pepper, strawberry, orange, lemon, lime, grape, olive]
 popularReligions: [muslim]

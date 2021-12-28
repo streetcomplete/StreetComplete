@@ -93,7 +93,7 @@ class ElementGeometryDao @Inject constructor(
         ) { it.toElementGeometryEntry() }
     }
 
-    fun deleteAll(entries: Collection<ElementKey>):Int {
+    fun deleteAll(entries: Collection<ElementKey>): Int {
         if (entries.isEmpty()) return 0
         var deletedCount = 0
         db.transaction {
@@ -102,6 +102,10 @@ class ElementGeometryDao @Inject constructor(
             }
         }
         return deletedCount
+    }
+
+    fun clear() {
+        db.delete(NAME)
     }
 
     private fun ElementGeometryEntry.toPairs() = listOf(

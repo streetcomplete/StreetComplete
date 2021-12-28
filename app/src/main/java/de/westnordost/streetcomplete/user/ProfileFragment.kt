@@ -13,8 +13,10 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.*
-import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.ktx.tryStartActivity
@@ -28,11 +30,11 @@ import javax.inject.Inject
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    @Inject internal lateinit var userController: UserController
-    @Inject internal lateinit var userStore: UserStore
-    @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
-    @Inject internal lateinit var countryStatisticsDao: CountryStatisticsDao
-    @Inject internal lateinit var userAchievementsDao: UserAchievementsDao
+    @Inject internal lateinit var userDataSource: UserDataSource
+    @Inject internal lateinit var userLoginStatusController: UserLoginStatusController
+    @Inject internal lateinit var userUpdater: UserUpdater
+    @Inject internal lateinit var statisticsSource: StatisticsSource
+    @Inject internal lateinit var achievementsSource: AchievementsSource
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
 
     private lateinit var anonAvatar: Bitmap
@@ -43,15 +45,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         override fun onIncreased() { viewLifecycleScope.launch { updateUnpublishedQuestsText() } }
         override fun onDecreased() { viewLifecycleScope.launch { updateUnpublishedQuestsText() } }
     }
-    private val questStatisticsDaoListener = object : QuestStatisticsDao.Listener {
-        override fun onAddedOne(questType: String) { viewLifecycleScope.launch { updateSolvedQuestsText() }}
-        override fun onSubtractedOne(questType: String) { viewLifecycleScope.launch { updateSolvedQuestsText() } }
-        override fun onReplacedAll() { viewLifecycleScope.launch { updateSolvedQuestsText() } }
+    private val questStatisticsDaoListener = object : StatisticsSource.Listener {
+        override fun onAddedOne(questType: QuestType<*>) {
+            viewLifecycleScope.launch { updateSolvedQuestsText() }
+        }
+        override fun onSubtractedOne(questType: QuestType<*>) {
+            viewLifecycleScope.launch { updateSolvedQuestsText() }
+        }
+        override fun onUpdatedAll() {
+            viewLifecycleScope.launch { updateStatisticsTexts() }
+        }
+        override fun onCleared() {
+            viewLifecycleScope.launch { updateStatisticsTexts() }
+        }
+        override fun onUpdatedDaysActive() {
+            viewLifecycleScope.launch { updateDaysActiveText() }
+        }
     }
-    private val userStoreUpdateListener = object : UserStore.UpdateListener {
-        override fun onUserDataUpdated() { viewLifecycleScope.launch { updateUserName() } }
+    private val userListener = object : UserDataSource.Listener {
+        override fun onUpdated() { viewLifecycleScope.launch { updateUserName() } }
     }
-    private val userAvatarListener = object : UserAvatarListener {
+    private val userAvatarListener = object : UserUpdater.Listener {
         override fun onUserAvatarUpdated() { viewLifecycleScope.launch { updateAvatar() } }
     }
 
@@ -68,10 +82,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.logoutButton.setOnClickListener {
-            userController.logOut()
+            userLoginStatusController.logOut()
         }
         binding.profileButton.setOnClickListener {
-            openUrl("https://www.openstreetmap.org/user/" + userStore.userName)
+            openUrl("https://www.openstreetmap.org/user/" + userDataSource.userName)
         }
     }
 
@@ -79,9 +93,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onStart()
 
         viewLifecycleScope.launch {
-            userStore.addListener(userStoreUpdateListener)
-            userController.addUserAvatarListener(userAvatarListener)
-            questStatisticsDao.addListener(questStatisticsDaoListener)
+            userDataSource.addListener(userListener)
+            userUpdater.addUserAvatarListener(userAvatarListener)
+            statisticsSource.addListener(questStatisticsDaoListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
 
             updateUserName()
@@ -98,24 +112,31 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onStop() {
         super.onStop()
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
-        questStatisticsDao.removeListener(questStatisticsDaoListener)
-        userStore.removeListener(userStoreUpdateListener)
-        userController.removeUserAvatarListener(userAvatarListener)
+        statisticsSource.removeListener(questStatisticsDaoListener)
+        userDataSource.removeListener(userListener)
+        userUpdater.removeUserAvatarListener(userAvatarListener)
     }
 
     private fun updateUserName() {
-        binding.userNameTextView.text = userStore.userName
+        binding.userNameTextView.text = userDataSource.userName
     }
 
     private fun updateAvatar() {
         val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
-        val avatarFile = File(cacheDir.toString() + File.separator + userStore.userId)
+        val avatarFile = File(cacheDir.toString() + File.separator + userDataSource.userId)
         val avatar = if (avatarFile.exists()) BitmapFactory.decodeFile(avatarFile.path) else anonAvatar
         binding.userAvatarImageView.setImageBitmap(avatar)
     }
 
+    private suspend fun updateStatisticsTexts() {
+        updateSolvedQuestsText()
+        updateDaysActiveText()
+        updateGlobalRankText()
+        updateLocalRankText()
+    }
+
     private suspend fun updateSolvedQuestsText() {
-        binding.solvedQuestsText.text = withContext(Dispatchers.IO) { questStatisticsDao.getTotalAmount().toString() }
+        binding.solvedQuestsText.text = withContext(Dispatchers.IO) { statisticsSource.getSolvedCount().toString() }
     }
 
     private suspend fun updateUnpublishedQuestsText() {
@@ -125,20 +146,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updateDaysActiveText() {
-        val daysActive = userStore.daysActive
+        val daysActive = statisticsSource.daysActive
         binding.daysActiveContainer.isGone = daysActive <= 0
         binding.daysActiveText.text = daysActive.toString()
     }
 
     private fun updateGlobalRankText() {
-        val rank = userStore.rank
-        binding.globalRankContainer.isGone = rank <= 0 || questStatisticsDao.getTotalAmount() <= 100
+        val rank = statisticsSource.rank
+        binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getSolvedCount() <= 100
         binding.globalRankText.text = "#$rank"
     }
 
     private suspend fun updateLocalRankText() {
         val statistics = withContext(Dispatchers.IO) {
-            countryStatisticsDao.getCountryWithBiggestSolvedCount()
+            statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount()
         }
         if (statistics == null) binding.localRankContainer.isGone = true
         else {
@@ -151,7 +172,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private suspend fun updateAchievementLevelsText() {
-        val levels = withContext(Dispatchers.IO) { userAchievementsDao.getAll().values.sum() }
+        val levels = withContext(Dispatchers.IO) { achievementsSource.getAchievements().sumOf { it.second } }
         binding.achievementLevelsContainer.isGone = levels <= 0
         binding.achievementLevelsText.text = "$levels"
     }

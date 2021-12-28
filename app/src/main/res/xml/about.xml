@@ -64,7 +64,7 @@
             android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
         <Preference
-            android:key="feedback"
+            android:key="give_feedback"
             android:title="@string/about_title_feedback"
             android:summary="@string/about_summary_repository"
             android:widgetLayout="@layout/widget_image_open_in_browser"

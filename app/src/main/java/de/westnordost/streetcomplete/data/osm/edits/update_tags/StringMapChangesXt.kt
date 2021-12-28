@@ -28,3 +28,7 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
         timestampEdited = currentTimeMillis()
     )
 }
+
+fun StringMapChangesBuilder.deleteIfExistList(keys: List<String>) {
+    keys.forEach { deleteIfExists(it) }
+}

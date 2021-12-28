@@ -10,6 +10,17 @@ import androidx.core.graphics.toRectF
 /** Container that contains another drawable but rotates it and clips it so it is a circle */
 class RotatedCircleDrawable(val drawable: Drawable) : Drawable() {
 
+    override fun getIntrinsicWidth(): Int = drawable.intrinsicWidth
+    override fun getIntrinsicHeight(): Int = drawable.intrinsicHeight
+
+    override fun setAlpha(alpha: Int) { drawable.alpha = alpha }
+    override fun getAlpha(): Int = drawable.alpha
+
+    override fun setColorFilter(colorFilter: ColorFilter?) { drawable.colorFilter = colorFilter }
+    override fun getColorFilter() = drawable.colorFilter
+
+    override fun getOpacity(): Int = drawable.opacity
+
     var rotation: Float = 0f
     set(value) {
         field = value
@@ -26,14 +37,4 @@ class RotatedCircleDrawable(val drawable: Drawable) : Drawable() {
         drawable.bounds = bounds
         drawable.draw(canvas)
     }
-
-    override fun setAlpha(alpha: Int) {
-        drawable.alpha = alpha
-    }
-
-    override fun setColorFilter(colorFilter: ColorFilter?) {
-        drawable.colorFilter = colorFilter
-    }
-
-    override fun getOpacity(): Int = drawable.opacity
 }

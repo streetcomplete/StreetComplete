@@ -2,6 +2,8 @@
 atmOperators: [Republic Bank, First Citizens Bank, RBC, Scotiabank, First Citizens, Scotia Bank, RBC Royal Bank, Eastern Credit Union, FCB, Republic Bank Ltd., Republic Bank ATM]
 isLeftHandTraffic: true
 mobileCountryCode: 374
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [en]
 orchardProduces: [coconut, banana, lemon, lime, orange, tomato, pineapple, grapefruit, chilli_pepper, sweet_pepper, papaya, guava, mango, mangosteen, avocado, nutmeg, cacao, coffee]
 popularReligions: [christian, hindu]

@@ -38,7 +38,7 @@ import java.util.*
 
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
-class QuestSelectionAdapter @Inject constructor(
+class QuestSelectionAdapter (
     private val context: Context,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
@@ -146,7 +146,8 @@ class QuestSelectionAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        viewLifecycleScope.cancel()
+        // not calling .cancel because the adapter can be re-used with a new view
+        viewLifecycleScope.coroutineContext.cancelChildren()
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -240,11 +241,6 @@ class QuestSelectionAdapter @Inject constructor(
 
         lateinit var item: QuestVisibility
 
-        private val isEnabledOnlyAtNight: Boolean
-            get() {
-                return item.questType.dayNightVisibility == DayNightCycle.ONLY_NIGHT
-            }
-
         private val isEnabledInCurrentCountry: Boolean
             get() {
                 (item.questType as? OsmElementQuestType<*>)?.let { questType ->
@@ -277,14 +273,12 @@ class QuestSelectionAdapter @Inject constructor(
                 true
             }
 
-            binding.disabledText.isGone = isEnabledInCurrentCountry && !isEnabledOnlyAtNight
+            binding.disabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
                 binding.disabledText.text =  binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
-            } else if (isEnabledOnlyAtNight) {
-                binding.disabledText.text = binding.disabledText.resources.getString(R.string.questList_disabled_at_day)
             }
 
             updateSelectionStatus()

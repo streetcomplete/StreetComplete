@@ -2,8 +2,9 @@
 atmOperators: [Azizi Bank, AIB BANK]
 firstDayOfWorkweek: Sa
 mobileCountryCode: 412
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [fa, ps]
 orchardProduces: [grape, apple, apricot, peach, almond, plum, olive, pear, walnut, fig, orange, pistachio]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-workweekDays: 6

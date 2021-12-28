@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
 import de.westnordost.streetcomplete.data.user.User
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
 import org.junit.Assert.*
@@ -16,8 +15,8 @@ class OsmNoteQuestControllerTest {
 
     private lateinit var noteSource: NotesWithEditsSource
     private lateinit var hiddenDB: NoteQuestsHiddenDao
-    private lateinit var loginStatusSource: LoginStatusSource
-    private lateinit var userStore: UserStore
+    private lateinit var userDataSource: UserDataSource
+    private lateinit var userLoginStatusSource: UserLoginStatusSource
     private lateinit var notesPreferences: NotesPreferences
 
     private lateinit var ctrl: OsmNoteQuestController
@@ -25,13 +24,13 @@ class OsmNoteQuestControllerTest {
     private lateinit var hideListener: OsmNoteQuestController.HideOsmNoteQuestListener
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
-    private lateinit var userLoginStatusListener: UserLoginStatusListener
+    private lateinit var userLoginListener: UserLoginStatusSource.Listener
 
     @Before fun setUp() {
         noteSource = mock()
         hiddenDB = mock()
-        loginStatusSource = mock()
-        userStore = mock()
+        userDataSource = mock()
+        userLoginStatusSource = mock()
         notesPreferences = mock()
 
         listener = mock()
@@ -42,12 +41,12 @@ class OsmNoteQuestControllerTest {
             Unit
         }
 
-        on(loginStatusSource.addLoginStatusListener(any())).then { invocation ->
-            userLoginStatusListener = invocation.getArgument(0)
+        on(userLoginStatusSource.addListener(any())).then { invocation ->
+            userLoginListener = invocation.getArgument(0)
             Unit
         }
 
-        ctrl = OsmNoteQuestController(noteSource, hiddenDB, loginStatusSource, userStore, notesPreferences)
+        ctrl = OsmNoteQuestController(noteSource, hiddenDB, userDataSource, userLoginStatusSource, notesPreferences)
         ctrl.addListener(listener)
         ctrl.addHideQuestsListener(hideListener)
     }
@@ -144,7 +143,7 @@ class OsmNoteQuestControllerTest {
             comment(text = "test?", user = User(id = 100, "Blaubär")),
             comment(text = "test", user = User(id = 1, "Blubbi"))
         )))
-        on(userStore.userId).thenReturn(1)
+        on(userDataSource.userId).thenReturn(1)
 
         assertNull(ctrl.get(1))
     }
@@ -154,7 +153,7 @@ class OsmNoteQuestControllerTest {
             comment(text = "test?", user = User(id = 100, "Blaubär")),
             comment(text = "ok but #surveyme", user = User(id = 1, "Blubbi")),
         )))
-        on(userStore.userId).thenReturn(1)
+        on(userDataSource.userId).thenReturn(1)
 
         assertNotNull(ctrl.get(1))
     }
@@ -221,8 +220,13 @@ class OsmNoteQuestControllerTest {
     }
 
     @Test fun `calls onInvalidated when logged in`() {
-        userLoginStatusListener.onLoggedIn()
+        userLoginListener.onLoggedIn()
 
+        verify(listener).onInvalidated()
+    }
+
+    @Test fun `calls onInvalidated when cleared notes`() {
+        noteUpdatesListener.onCleared()
         verify(listener).onInvalidated()
     }
 

@@ -22,7 +22,7 @@ class StreetSideRotater(
     }
 
     private fun applyOrientation(rotation: Float, tilt: Float) {
-        puzzle.setStreetRotation(wayOrientationAtCenter + rotation.toDegrees())
+        puzzle.streetRotation = wayOrientationAtCenter + rotation.toDegrees()
         compassView.rotation = rotation.toDegrees()
         compassView.rotationX = tilt.toDegrees()
     }

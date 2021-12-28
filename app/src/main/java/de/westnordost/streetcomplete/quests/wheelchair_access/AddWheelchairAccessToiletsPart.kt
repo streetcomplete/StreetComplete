@@ -10,7 +10,9 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with name and toilets = yes
+        nodes, ways, relations with
+         toilets = yes
+         and name
          and access !~ no|private
          and (
            !toilets:wheelchair

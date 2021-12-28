@@ -22,12 +22,12 @@ class EditHistoryPinsManager(
     private val resources: Resources
 ): LifecycleObserver {
 
-    /** Switch visibility of edit history pins layer */
-    var isVisible: Boolean = false
+    /** Switch active-ness of edit history pins layer */
+    var isActive: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value) show() else hide()
+            if (value) start() else stop()
         }
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
@@ -40,16 +40,16 @@ class EditHistoryPinsManager(
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        hide()
+        stop()
         viewLifecycleScope.cancel()
     }
 
-    private fun show() {
+    private fun start() {
         updatePins()
         editHistorySource.addListener(editHistoryListener)
     }
 
-    private fun hide() {
+    private fun stop() {
         pinsMapComponent.clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
         editHistorySource.removeListener(editHistoryListener)
@@ -60,9 +60,9 @@ class EditHistoryPinsManager(
 
     private fun updatePins() {
         viewLifecycleScope.launch {
-            if (isVisible) {
+            if (this@EditHistoryPinsManager.isActive) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
-                pinsMapComponent.showPins(createEditPins(edits))
+                pinsMapComponent.set(createEditPins(edits))
             }
         }
     }

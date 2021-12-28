@@ -33,5 +33,4 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
-
 }

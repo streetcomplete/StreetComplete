@@ -4,12 +4,16 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 
 class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = bicycle_parking
+        nodes, ways with
+         amenity = bicycle_parking
          and access !~ private|no
          and bicycle_parking !~ floor
          and (
@@ -29,6 +33,9 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
     override val questTypeAchievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bikeParkingCapacity_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways with amenity = bicycle_parking")
 
     override fun createForm() = AddBikeParkingCapacityForm()
 

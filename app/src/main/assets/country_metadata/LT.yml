@@ -1,9 +1,15 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
+atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB "Swedbank", AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
+centerLineStyle: white
 chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
 clothesContainerOperators: [UAB „VAATC“]
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+edgeLineStyle: white
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 246
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
 officialLanguages: [lt]
 orchardProduces: [apple, tomato, strawberry, pear, raspberry, cherry, plum, blueberry]

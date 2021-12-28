@@ -17,7 +17,8 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast
@@ -36,7 +37,8 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     OAuthFragment.Listener {
 
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-    @Inject internal lateinit var userController: UserController
+    @Inject internal lateinit var userLoginStatusController: UserLoginStatusController
+    @Inject internal lateinit var userUpdater: UserUpdater
 
     override val title: String get() = getString(R.string.user_login)
 
@@ -87,7 +89,8 @@ class LoginFragment : Fragment(R.layout.fragment_login),
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
         viewLifecycleScope.launch {
             if (hasRequiredPermissions(consumer)) {
-                userController.logIn(consumer)
+                userLoginStatusController.logIn(consumer)
+                userUpdater.update()
             } else {
                 context?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
                 binding.loginButton.visibility = View.VISIBLE
@@ -98,7 +101,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
 
     override fun onOAuthFailed(e: Exception?) {
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        userController.logOut()
+        userLoginStatusController.logOut()
     }
 
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {

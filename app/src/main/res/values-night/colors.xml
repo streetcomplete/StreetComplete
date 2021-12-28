@@ -16,8 +16,10 @@
     <color name="title_text_next_to_image">#fff</color>
     <color name="description_text_next_to_image">#fff</color>
 
-    <color name="quest_selection_frame">#bbFF5722</color>
-
     <!-- because on dark background, normal blue doesn't work well -->
     <color name="star_of_david">#44f</color>
+
+    <!-- for fading out images -->
+    <color name="fade_out">#303030</color>
+    <color name="fade_out_transparent">#00303030</color>
 </resources>

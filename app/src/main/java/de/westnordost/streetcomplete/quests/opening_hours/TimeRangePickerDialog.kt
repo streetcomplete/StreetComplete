@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
 import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding
 import de.westnordost.streetcomplete.databinding.TimeRangePickerStartPickerBinding
-import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 
 class TimeRangePickerDialog(
     context: Context,

@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 438
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [tk, ru]
 orchardProduces: [tomato, grape, apple, plum, apricot, peach, almond]
 popularReligions: [muslim]

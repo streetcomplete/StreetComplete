@@ -41,9 +41,9 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "ice_cream", "scooter", "music", "retail", "yes", "ticket", "health", "newsagent", "lighting",
     "truck", "car_repair", "video", "fuel", "farm", "car", "ski", "sculptor", "hearing_aids",
     "surf", "photo", "boat", "gas", "kitchen", "anime", "builder", "hairdresser", "security",
-    "bakery", "fishing", "doors", "kiosk", "market", "bathroom", "lamps", "vacant", "insurance",
-    "caravan", "gift", "bicycle", "insulation", "communication", "mall", "model", "empty", "wood",
-    "hunting", "motorcycle", "trailer", "camera", "water", "fireplace", "outdoor",
+    "bakery", "bakehouse", "fishing", "doors", "kiosk", "market", "bathroom", "lamps", "vacant",
+    "insurance", "caravan", "gift", "bicycle", "insulation", "communication", "mall", "model",
+    "empty", "wood", "hunting", "motorcycle", "trailer", "camera", "water", "fireplace", "outdoor",
     // obsoleted information
     "abandoned(:.*)?", "disused(:.*)?", "was:.*", "damage", "source:damage", "created_by",
     "check_date", "last_checked", "checked_exists:date",
@@ -64,7 +64,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "bulk_purchase", ".*:covid19", "language:.*", "baby_feeding", "description(:.*)?", "min_age",
     "max_age", "supermarket(:.*)?", "social_facility(:.*)?", "operational_status", "functional",
     "trade", "wholesale", "sale", "smoking", "zero_waste", "origin", "attraction", "strapline",
-    "dog", "showroom",
+    "dog", "showroom", "toilets(:.*)?", "changing_table", "wheelchair(.*)?", "stroller",
     // food and drink details
     "bar", "cafe", "coffee", "microroasting", "microbrewery", "brewery", "real_ale", "taproom",
     "training", "distillery", "drink(:.*)?", "cocktails", "alcohol", "wine([:_].*)?",
@@ -78,7 +78,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "unisex", "male", "female", "gender",
     // healthcare like optician
     "healthcare(:.*)?", "health_.*", "medical_.*",
-    // accomodation & layout
+    // accommodation & layout
     "rooms", "stars", "accommodation", "beds", "capacity(:persons)?", "laundry_service",
     // misc specific attributes
     "clothes", "shoes", "tailor", "beauty", "tobacco", "carpenter", "furniture", "lottery",

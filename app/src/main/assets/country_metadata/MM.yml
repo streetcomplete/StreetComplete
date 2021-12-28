@@ -3,6 +3,8 @@ additionalStreetsignLanguages: [en]
 atmOperators: [KBZ, KBZ Bank, CB Bank, AGD Bank, AYA Bank, a, CB, MAB, AGD, AYA, KBZ BANK, C B Bank, Aya Bank, CB bank, UAB Bank, UAB, KBZ ATM, AYA ATM, CB Bank ATM, MAB Bank, KBZ bank, Aya Bank ATM, Ayeyarwaddy Bank, AYA bank, Aya, MAB ATM, CB BANK, kbz, aa, CB ATM, ATM, ကမ္ဘောဇဘဏ် KBZ Bank, Myanma Apex Bank, kbz bank, 1, MCB, atm, ယူနိုက်တက်အမရာဘဏ် UAB ATM]
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
+noParkingLineStyle: yellow-white on curb
+noStoppingLineStyle: red-white on curb
 officialLanguages: [my]
 orchardProduces: [coconut, rubber, areca_nut, chilli_pepper, sweet_pepper, tea, coffee, cashew_nut, guava, mango, mangosteen]
 popularReligions: [buddhist, christian, muslim, hindu]

@@ -38,12 +38,12 @@ class QuestPinsManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    /** Switch visibility of quest pins layer */
-    var isVisible: Boolean = false
+    /** Switch active-ness of quest pins layer */
+    var isActive: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value) show() else hide()
+            if (value) start() else stop()
         }
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
@@ -70,18 +70,18 @@ class QuestPinsManager(
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        hide()
+        stop()
         viewLifecycleScope.cancel()
     }
 
-    private fun show() {
+    private fun start() {
         initializeQuestTypeOrders()
         onNewScreenPosition()
         visibleQuestsSource.addListener(visibleQuestsListener)
         questTypeOrderSource.addListener(questTypeOrderListener)
     }
 
-    private fun hide() {
+    private fun stop() {
         clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
         visibleQuestsSource.removeListener(visibleQuestsListener)
@@ -97,7 +97,7 @@ class QuestPinsManager(
         properties.toQuestKey()
 
     fun onNewScreenPosition() {
-        if (!isVisible) return
+        if (!isActive) return
         val zoom = ctrl.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
         val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
@@ -160,9 +160,9 @@ class QuestPinsManager(
     }
 
     private fun updatePins() {
-        if (isVisible) {
+        if (isActive) {
             val pins = synchronized(quests) { quests.values.flatten() }
-            pinsMapComponent.showPins(pins)
+            pinsMapComponent.set(pins)
         }
     }
 

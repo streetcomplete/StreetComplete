@@ -12,4 +12,6 @@ fun RailwayCrossingBarrier.asItem(isLeftHandTraffic: Boolean): Item<RailwayCross
     HALF -> Item(this, if (isLeftHandTraffic) R.drawable.ic_railway_crossing_half_l else R.drawable.ic_railway_crossing_half)
     DOUBLE_HALF -> Item(this, R.drawable.ic_railway_crossing_double_half)
     FULL -> Item(this, if (isLeftHandTraffic) R.drawable.ic_railway_crossing_full_l else R.drawable.ic_railway_crossing_full)
+    GATE -> Item(this, R.drawable.ic_railway_crossing_gate)
+    CHICANE -> Item(this, R.drawable.ic_railway_crossing_chicane)
 }
