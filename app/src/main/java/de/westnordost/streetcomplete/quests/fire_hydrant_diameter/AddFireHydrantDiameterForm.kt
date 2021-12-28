@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.fire_hydrant
+package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 
 import android.os.Bundle
@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.*
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
@@ -19,7 +20,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
 
-    private val diameter get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+    private val diameterValue get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,19 +29,27 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
         })
     }
 
-    override fun isFormComplete() = diameter > 0
+    override fun isFormComplete() = diameterValue > 0
 
     override fun onClickOk() {
-        if (userSelectedUnusualDiameter())
-            confirmUnusualInput { applyAnswer(FireHydrantDiameter(diameter)) }
+        val diameter = if (countryInfo.countryCode == "GB" && diameterValue <= 25) {
+            FireHydrantDiameter(diameterValue, INCH)
+        } else {
+            FireHydrantDiameter(diameterValue, MILLIMETER)
+        }
+
+        if (isUnusualDiameter(diameter))
+            confirmUnusualInput { applyAnswer(diameter) }
         else
-            applyAnswer(FireHydrantDiameter(diameter))
+            applyAnswer(diameter)
     }
 
-    private fun userSelectedUnusualDiameter(): Boolean {
-        val diameter = diameter
-
-        return diameter > 600 || diameter < 50 || diameter % 5 != 0
+    private fun isUnusualDiameter(diameter: FireHydrantDiameter): Boolean {
+        val value = diameter.value
+        return when(diameter.unit) {
+            MILLIMETER -> value > 600 || value < 50 || value % 5 != 0
+            INCH -> value < 1 || value > 25
+        }
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {
