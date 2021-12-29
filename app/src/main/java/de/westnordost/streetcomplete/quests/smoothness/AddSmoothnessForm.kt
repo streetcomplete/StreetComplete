@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAnswer>() {
 
+    override val descriptionResId = R.string.quest_smoothness_hint
+
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
         AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
