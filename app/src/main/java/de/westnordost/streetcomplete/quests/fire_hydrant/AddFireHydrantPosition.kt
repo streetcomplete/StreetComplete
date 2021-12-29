@@ -15,7 +15,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
     """
     override val commitMessage = "Add fire hydrant position"
     override val wikiLink = "Tag:emergency=fire_hydrant"
-    override val icon = R.drawable.ic_quest_fire_hydrant
+    override val icon = R.drawable.ic_quest_fire_hydrant_grass
 
     override val questTypeAchievements = emptyList<QuestTypeAchievement>()
 
