@@ -1137,4 +1137,5 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">What diameter is specified on the sign for this fire hydrant? (reference number: %s)</string>
 </resources>
