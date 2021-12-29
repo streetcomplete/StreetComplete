@@ -1098,11 +1098,11 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_title_impassable">Impassable</string>
     <string name="quest_smoothness_description_excellent">No bumps or cracks</string>
     <string name="quest_smoothness_description_excellent_paving_stones">Almost seamless</string>
-    <string name="quest_smoothness_description_good">Only small cracks, gaps or repairs</string>
+    <string name="quest_smoothness_description_good">Only small cracks, gaps, repairs or a little rough surface</string>
     <string name="quest_smoothness_description_good_paving_stones">Shallow or narrow gaps</string>
     <string name="quest_smoothness_description_good_sett">Unusually flat stones, regular pattern, very shallow or narrow gaps</string>
-    <string name="quest_smoothness_description_intermediate_road">Wider gaps, cracks, patches, shallow ruts or potholes</string>
-    <string name="quest_smoothness_description_intermediate_path">Wider gaps, cracks, patches, shallow potholes or few damages by roots</string>
+    <string name="quest_smoothness_description_intermediate_road">Unusually rough surface, wider gaps, cracks, patches, shallow ruts or potholes</string>
+    <string name="quest_smoothness_description_intermediate_path">Unusually rough surface, Wider gaps, cracks, patches, shallow potholes or few damages by roots</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">Wider gaps, possibly some displaced stones or other damages</string>
     <string name="quest_smoothness_description_intermediate_sett">Flat stones or with square edges, shallow or narrow gaps</string>
     <string name="quest_smoothness_description_intermediate_compacted_gravel">Well maintained, but still bumpy</string>
