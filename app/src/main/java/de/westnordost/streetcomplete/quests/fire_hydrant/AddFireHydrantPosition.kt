@@ -10,7 +10,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
     override val elementFilter = """
         nodes with
          emergency = fire_hydrant and
-         !fire_hydrant:position and
+         (!fire_hydrant:position or fire_hydrant:position ~ "\?|fixme")
          fire_hydrant:type and
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
     """
