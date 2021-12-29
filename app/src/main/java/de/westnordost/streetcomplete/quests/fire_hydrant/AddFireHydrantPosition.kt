@@ -11,7 +11,6 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
         nodes with
          emergency = fire_hydrant and
          (!fire_hydrant:position or fire_hydrant:position ~ "\?|fixme") and
-         fire_hydrant:type and
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
     """
     override val commitMessage = "Add fire hydrant position"
