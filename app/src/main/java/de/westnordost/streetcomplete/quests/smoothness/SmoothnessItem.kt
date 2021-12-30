@@ -124,6 +124,7 @@ private val Smoothness.pavingStonesImageResId get() = when (this) {
     GOOD -> R.drawable.surface_paving_stones_good
     INTERMEDIATE -> R.drawable.surface_paving_stones_intermediate
     BAD -> R.drawable.surface_paving_stones_bad
+    VERY_BAD -> R.drawable.surface_paving_stones_very_bad
     else -> null
 }
 
