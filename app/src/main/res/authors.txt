@@ -173,7 +173,7 @@ surface_asphalt_bad.jpg                          4_bad_3.jpg, see https://drive.
 surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Mala_Hrastice_2020-06-16_Ulice_z_navsi_na_nadrazi_obr05.jpg (Miloš Hlávka)
 surface_asphalt_good.jpg       public domain     helium314
 surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Nids-de-poule_sur_une_route_communale.jpg (Mathis Brancquart)
-surface_asphalt_very_bad.jpg   CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Potholes_at_the_Level_Crossing,_Barrow_Haven_-_geograph.org.uk_-_1621073.jpg (David Wright)
+surface_asphalt_very_bad.jpg   CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kamieniec_Szalejow_Gorny_road.jpg (Jojo)
 surface_compacted_bad.jpg      public domain     helium314
 surface_compacted_intermedi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Saviselk%C3%A4_2.JPG (Htm)
 surface_compacted_very_bad.jpg CC0               IMG_20210530_151614010.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
