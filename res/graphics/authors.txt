@@ -145,6 +145,12 @@ fire hydrant diameter graphics/
     hydrant_sign_pl.svg         modified from https://wiki.openstreetmap.org/w/images/3/3e/Tablica_orientacyjna_dla_hydrantu.svg, Marvin Feiter
     hydrant_sign_uk.svg         Marvin Feiter
 
+fire hydrant position graphics/
+    Fire_hydrant_in_grass.jpg                   https://upload.wikimedia.org/wikipedia/commons/2/2d/Fire_hydrant_in_grass.jpg (CC BY-SA 4.0)
+    Fire_hydrant_on_sidewalk.jpg                https://upload.wikimedia.org/wikipedia/commons/3/32/Fire_hydrant_on_sidewalk.jpg (CC BY-SA 4.0)
+    Fire_hydrant_lane.jpg                       modified from https://upload.wikimedia.org/wikipedia/commons/d/d0/Fire_hydrant_on_road_side.jpg (CC BY-SA 4.0)
+    Fire_hydrant_parking.jpg                    modified from https://upload.wikimedia.org/wikipedia/commons/3/33/Fire-fighting-facility_node-4279866277.jpg (CC BY 2.0)
+
 housenumber graphics/
     town_silhouette.svg
 

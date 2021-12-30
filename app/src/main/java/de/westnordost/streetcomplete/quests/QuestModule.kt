@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
+import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -265,6 +266,7 @@ import javax.inject.Singleton
         AddCameraType(),
 
         AddFireHydrantType(),
+        AddFireHydrantPosition(),
         AddFireHydrantDiameter(),
 
         /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
