@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.railway_electrification
 
-enum class RailwayElectrificationSystem( val osmValue: String ) {
+enum class RailwayElectrificationSystem(val osmValue: String) {
     NO("no"),
     CONTACT_LINE("contact_line"),
     THIRD_RAIL("rail"),
