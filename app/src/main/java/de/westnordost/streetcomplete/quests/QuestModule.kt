@@ -92,6 +92,7 @@ import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyal
 import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
+import de.westnordost.streetcomplete.quests.railway_electrification.AddRailwayElectrificationSystem
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass
@@ -176,6 +177,7 @@ import javax.inject.Singleton
         AddBusStopLit(), // at least during day requires to stand in it to see if there is a light in the shelter
 
         AddRailwayCrossingBarrier(), // useful for routing
+        AddRailwayElectrificationSystem(),
 
         AddCarWashType(),
 

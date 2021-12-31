@@ -1152,4 +1152,5 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
     <string name="on_floor">"In Stockwerk %s:"</string>
+    <string name="quest_railway_electrification_system_title">Ist dieser Gleisabschnitt elektrifiziert?</string>
 </resources>
