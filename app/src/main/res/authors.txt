@@ -177,7 +177,7 @@ surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/w
 surface_asphalt_very_bad.jpg   CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kamieniec_Szalejow_Gorny_road.jpg (Jojo)
 surface_compacted_bad.jpg      public domain     https://cloud.disroot.org/s/bWCMMSGigAR7k8s?dir=undefined&openfile=189451545 (helium314)
 surface_compacted_intermedi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Saviselk%C3%A4_2.JPG (Htm)
-surface_compacted_very_bad.jpg CC0               IMG_20210530_151614010.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
+surface_compacted_very_bad.jpg CC0               modified from IMG_20210530_151614010.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
 surface_gravel_horrible.jpg    CC0               IMG_20210530_151832190.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_intermediate... public domain     https://commons.wikimedia.org/wiki/File:Tamsa.JPG (Ingvar Pärnamäe)
