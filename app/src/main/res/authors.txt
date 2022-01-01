@@ -179,7 +179,6 @@ surface_compacted_bad.jpg      public domain     https://cloud.disroot.org/s/bWC
 surface_compacted_intermedi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Saviselk%C3%A4_2.JPG (Htm)
 surface_compacted_very_bad.jpg CC0               modified from IMG_20210530_151614010.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
-surface_gravel_horrible.jpg    CC0               IMG_20210530_151832190.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_intermediate... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Compacted_-_intermediate.jpg (Supaplex030)
 surface_gravel_very_bad.jpg    ??????            5_very-bad.jpg from modified from https://drive.google.com/file/d/16qnhMBW25klUPpav02VFr5R6F4Em2LoH/view (Andre Thum)
 surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
@@ -191,7 +190,7 @@ surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/
 surface_sett_good.jpg          ????              https://nextcloud.nicohood.de/index.php/s/z6qs58jSQcBXKSw?dir=undefined&openfile=1442 - IMG_20210916_111924 (NicoHood)
 surface_sett_intermediate.jpg  ????              3_intermediate_1.jpg, see https://drive.google.com/file/d/1DaABzj_ZtHNdISHXSulVs9nwrVRbU8nG/view (Andre Thum)
 surface_sett_very_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
-surface_unpaved_horrible.jpg   CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:The_way_home_from_Christmas_dunes_-_two_and_ahalf_hours_to_go_80_km_-_killer_ruts_(16058640321).jpg (Murray Foubister)
+surface_unpaved_horrible.jpg   CC-BY-SA 2.0      IMG_20210530_151832190.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_unpaved_impassable.jpg public domain     https://wiki.openstreetmap.org/wiki/File:Goljan_destoyed_road.JPG (Svickova)
 surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
 

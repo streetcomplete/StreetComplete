@@ -142,7 +142,7 @@ private val Smoothness.gravelImageResId get() = when (this) {
     INTERMEDIATE -> R.drawable.surface_gravel_intermediate
     BAD -> R.drawable.surface_gravel_bad
     VERY_BAD -> R.drawable.surface_gravel_very_bad
-    HORRIBLE -> R.drawable.surface_gravel_horrible
+    HORRIBLE -> R.drawable.surface_unpaved_horrible
     VERY_HORRIBLE -> R.drawable.surface_unpaved_very_horrible
     IMPASSABLE -> R.drawable.surface_unpaved_impassable
     else -> null
