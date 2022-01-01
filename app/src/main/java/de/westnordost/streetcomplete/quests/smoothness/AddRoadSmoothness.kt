@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -47,7 +48,11 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun applyAnswerTo(answer: SmoothnessAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
             is SmoothnessValueAnswer -> changes.updateWithCheckDate("smoothness", answer.osmValue)
-            is WrongSurfaceAnswer -> changes.delete("surface")
+            is WrongSurfaceAnswer -> {
+                changes.delete("surface")
+                changes.deleteIfExists("smoothness")
+                changes.deleteCheckDatesForKey("smoothness")
+            }
         }
     }
 }
