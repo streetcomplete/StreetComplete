@@ -181,7 +181,7 @@ surface_compacted_very_bad.jpg CC0               modified from IMG_20210530_1516
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
 surface_gravel_horrible.jpg    CC0               IMG_20210530_151832190.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
 surface_gravel_intermediate... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Compacted_-_intermediate.jpg (Supaplex030)
-surface_gravel_very_bad.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:%C5%A0t%C4%9Brkov%C3%A1_cesta_u_Pl%C3%A1%C5%A1t%C3%ADku.jpg (ŠJů)
+surface_gravel_very_bad.jpg    ??????            5_very-bad.jpg from modified from https://drive.google.com/file/d/16qnhMBW25klUPpav02VFr5R6F4Em2LoH/view (Andre Thum)
 surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
 surface_paving_stones_excel... CC-BY-SA 4.0      https://drive.google.com/file/d/1xJPGzTOusalYbGeggTkYaGXOVlclPDzZ/view (mcliquid)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
