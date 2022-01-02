@@ -240,6 +240,14 @@ object AchievementsModule {
             R.drawable.ic_link_indoorequal,
             R.string.link_indoorequal_description
         ),
+        Link(
+            "osmhydrant",
+            "https://www.osmhydrant.org",
+            "OsmHydrant",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_osmhydrant,
+            R.string.link_osmhydrant_description
+        ),
 
         /* -------------------------------------- Showcase ---------------------------------------*/
         Link(
