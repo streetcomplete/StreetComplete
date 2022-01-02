@@ -191,7 +191,7 @@ surface_sett_good.jpg          ????              https://nextcloud.nicohood.de/i
 surface_sett_intermediate.jpg  ????              3_intermediate_1.jpg, see https://drive.google.com/file/d/1DaABzj_ZtHNdISHXSulVs9nwrVRbU8nG/view (Andre Thum)
 surface_sett_very_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
 surface_unpaved_horrible.jpg   CC-BY-SA 2.0      IMG_20210530_151832190.jpg from https://www.dropbox.com/sh/mkjhco2ob60q24l/AABZo9f5bgyA1KwyV-3zxUVYa?dl=0 (rhhsm)
-surface_unpaved_impassable.jpg public domain     https://wiki.openstreetmap.org/wiki/File:Goljan_destoyed_road.JPG (Svickova)
+surface_unpaved_impassable.jpg public domain     https://drive.google.com/file/d/1yZXynVd07IWQPKpBbrlbABzfKHkG9X7R/view?usp=sharing (Tobias Zwick)
 surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
 
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
