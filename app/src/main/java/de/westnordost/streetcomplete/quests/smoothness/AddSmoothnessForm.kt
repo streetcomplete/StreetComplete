@@ -21,9 +21,7 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
 
     private val surfaceTag get() = osmElement!!.tags["surface"]
 
-    private val highwayTag get() = osmElement!!.tags["highway"]
-
-    override val items get() = Smoothness.values().toItems(requireContext(), surfaceTag!!, highwayTag!!)
+    override val items get() = Smoothness.values().toItems(requireContext(), surfaceTag!!)
 
     override val itemsPerRow = 1
 

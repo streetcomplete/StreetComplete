@@ -1096,27 +1096,33 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_title_horrible">Very bumpy and uneven</string>
     <string name="quest_smoothness_title_very_horrible">Almost impassable</string>
     <string name="quest_smoothness_title_impassable">Impassable</string>
-    <string name="quest_smoothness_description_excellent">No bumps or cracks</string>
+
+    <string name="quest_smoothness_description_excellent_paved">No bumps or cracks</string>
     <string name="quest_smoothness_description_excellent_paving_stones">Almost seamless</string>
-    <string name="quest_smoothness_description_good">Only small cracks, gaps, repairs or a little rough surface</string>
+
+    <string name="quest_smoothness_description_good_paved">Only small cracks, gaps, repairs or a little rough surface</string>
     <string name="quest_smoothness_description_good_paving_stones">Shallow or narrow gaps</string>
     <string name="quest_smoothness_description_good_sett">Unusually flat stones, regular pattern, very shallow or narrow gaps</string>
-    <string name="quest_smoothness_description_intermediate_road">Unusually rough surface, wider gaps, cracks, patches, shallow ruts or potholes</string>
-    <string name="quest_smoothness_description_intermediate_path">Unusually rough surface, Wider gaps, cracks, patches, shallow potholes or few damages by roots</string>
+
+    <string name="quest_smoothness_description_intermediate_paved">Unusually rough surface, wider gaps, cracks, shallow ruts, potholes or other damages</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">Wider gaps, possibly some displaced stones or other damages</string>
     <string name="quest_smoothness_description_intermediate_sett">Flat stones or with square edges, shallow or narrow gaps</string>
-    <string name="quest_smoothness_description_intermediate_compacted_gravel">Well maintained, but still bumpy</string>
-    <string name="quest_smoothness_description_bad_road">Big gaps, potholes, ruts, crumbled paving or other damages</string>
-    <string name="quest_smoothness_description_bad_path">Big gaps, potholes, crumbled paving or other damages such as by roots</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">Well maintained, at most shallow bumps or potholes</string>
+
+    <string name="quest_smoothness_description_bad_paved">Big gaps, potholes, ruts, crumbled paving or other damages</string>
     <string name="quest_smoothness_description_bad_paving_stones">Displaced stones, big gaps or other damages</string>
     <string name="quest_smoothness_description_bad_sett">Weathered stone or irregular shapes, big gaps or damages</string>
-    <string name="quest_smoothness_description_very_bad_road">Deep potholes, ruts or other dangerous damages</string>
-    <string name="quest_smoothness_description_very_bad_path">Deep potholes or other dangerous damages</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">Some bigger gravel, bumps, ruts or potholes</string>
+
+    <string name="quest_smoothness_description_very_bad_paved">Deep potholes, ruts or other dangerous damages</string>
     <string name="quest_smoothness_description_very_bad_sett">Big gaps, displaced, missing or irregularly shaped stones or dangerous damages</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">Missing and broken stones, gaps or other dangerous damages</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damages</string>
+
     <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles</string>
     <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles</string>
     <string name="quest_smoothness_description_impassable">Only passable on foot</string>
+
     <string name="quest_smoothness_wrong_surface">Surface is different</string>
     <string name="quest_smoothness_surface_value">The surface was tagged as</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>

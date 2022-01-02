@@ -9,13 +9,13 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun Array<Smoothness>.toItems(context: Context, surface: String, highway: String) =
-    mapNotNull { it.asItem(context, surface, highway) }
+fun Array<Smoothness>.toItems(context: Context, surface: String) =
+    mapNotNull { it.asItem(context, surface) }
 
 // return null if not a valid combination
-fun Smoothness.asItem(context: Context, surface: String, highway: String): DisplayItem<Smoothness>? {
+fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness>? {
     val imageResId = getImageResId(surface) ?: return null
-    val descriptionResId = getDescriptionResId(surface, highway) ?: return null
+    val descriptionResId = getDescriptionResId(surface) ?: return null
     return Item2(
         this,
         ResImage(imageResId),
@@ -47,50 +47,19 @@ val Smoothness.titleResId get() = when (this) {
     IMPASSABLE -> R.string.quest_smoothness_title_impassable
 }
 
-fun Smoothness.getDescriptionResId(surface: String, highway: String) = when (this) {
-    EXCELLENT -> when (surface) {
-        // no "excellent" for roads with paving stones
-        "paving_stones" -> R.string.quest_smoothness_description_excellent_paving_stones
-        "asphalt" -> R.string.quest_smoothness_description_excellent
-        else -> null
-    }
-    GOOD -> when (surface) {
-        "paving_stones" -> R.string.quest_smoothness_description_good_paving_stones
-        "sett" -> R.string.quest_smoothness_description_good_sett
-        "asphalt" -> R.string.quest_smoothness_description_good
-        else -> null
-    }
-    INTERMEDIATE -> when (surface) {
-        "paving_stones" -> R.string.quest_smoothness_description_intermediate_paving_stones
-        "sett" -> R.string.quest_smoothness_description_intermediate_sett
-        "compacted", "gravel" -> R.string.quest_smoothness_description_intermediate_compacted_gravel
-        "asphalt" -> when (highway) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_intermediate_path
-            else -> R.string.quest_smoothness_description_intermediate_road
-        }
-        else -> null
-    }
-    BAD -> when (surface) {
-        "sett" -> R.string.quest_smoothness_description_bad_sett
-        "paving_stones" -> R.string.quest_smoothness_description_bad_paving_stones
-        "asphalt", "compacted", "gravel" -> when (highway) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_bad_path
-            else -> R.string.quest_smoothness_description_bad_road
-        }
-        else -> null
-    }
-    VERY_BAD -> when (surface) {
-        "sett" -> R.string.quest_smoothness_description_very_bad_sett
-        "paving_stones" -> R.string.quest_smoothness_description_very_bad_paving_stones
-        else -> when (highway) {
-            in ALL_PATHS_EXCEPT_STEPS -> R.string.quest_smoothness_description_very_bad_path
-            else -> R.string.quest_smoothness_description_very_bad_road
-        }
-    }
-    // split up?
+fun Smoothness.getDescriptionResId(surface: String): Int? = when (surface) {
+    "asphalt", "concrete" -> pavedDescriptionResId
+    "sett" -> settDescriptionResId
+    "paving_stones" -> pavingStonesDescriptionResId
+    "compacted", "gravel", "fine_gravel" -> compactedOrGravelDescriptionResId
+    else -> null
+} ?: descriptionResIdFallback
+
+private val Smoothness.descriptionResIdFallback: Int? get() = when(this) {
     HORRIBLE -> R.string.quest_smoothness_description_horrible
     VERY_HORRIBLE -> R.string.quest_smoothness_description_very_horrible
     IMPASSABLE -> R.string.quest_smoothness_description_impassable
+    else -> null
 }
 
 fun Smoothness.getImageResId(surface: String): Int? = when(surface) {
@@ -111,11 +80,28 @@ private val Smoothness.asphaltImageResId get() = when (this) {
     else -> null
 }
 
+private val Smoothness.pavedDescriptionResId get() = when(this) {
+    EXCELLENT -> R.string.quest_smoothness_description_excellent_paved
+    GOOD -> R.string.quest_smoothness_description_good_paved
+    INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_paved
+    BAD -> R.string.quest_smoothness_description_bad_paved
+    VERY_BAD -> R.string.quest_smoothness_description_very_bad_paved
+    else -> null
+}
+
 private val Smoothness.settImageResId get() = when (this) {
     GOOD -> R.drawable.surface_sett_good
     INTERMEDIATE -> R.drawable.surface_sett_intermediate
     BAD -> R.drawable.surface_sett_bad
     VERY_BAD -> R.drawable.surface_sett_very_bad
+    else -> null
+}
+
+private val Smoothness.settDescriptionResId get() = when(this) {
+    GOOD -> R.string.quest_smoothness_description_good_sett
+    INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_sett
+    BAD -> R.string.quest_smoothness_description_bad_sett
+    VERY_BAD -> R.string.quest_smoothness_description_very_bad_sett
     else -> null
 }
 
@@ -125,6 +111,15 @@ private val Smoothness.pavingStonesImageResId get() = when (this) {
     INTERMEDIATE -> R.drawable.surface_paving_stones_intermediate
     BAD -> R.drawable.surface_paving_stones_bad
     VERY_BAD -> R.drawable.surface_paving_stones_very_bad
+    else -> null
+}
+
+private val Smoothness.pavingStonesDescriptionResId get() = when(this) {
+    EXCELLENT -> R.string.quest_smoothness_description_excellent_paving_stones
+    GOOD -> R.string.quest_smoothness_description_good_paving_stones
+    INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_paving_stones
+    BAD -> R.string.quest_smoothness_description_bad_paving_stones
+    VERY_BAD -> R.string.quest_smoothness_description_very_bad_paving_stones
     else -> null
 }
 
@@ -145,5 +140,12 @@ private val Smoothness.gravelImageResId get() = when (this) {
     HORRIBLE -> R.drawable.surface_unpaved_horrible
     VERY_HORRIBLE -> R.drawable.surface_unpaved_very_horrible
     IMPASSABLE -> R.drawable.surface_unpaved_impassable
+    else -> null
+}
+
+private val Smoothness.compactedOrGravelDescriptionResId get() = when(this) {
+    INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_compacted_gravel
+    BAD -> R.string.quest_smoothness_description_bad_compacted_gravel
+    VERY_BAD -> R.string.quest_smoothness_description_very_bad_compacted_gravel
     else -> null
 }
