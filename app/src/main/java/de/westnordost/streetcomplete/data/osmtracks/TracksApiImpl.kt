@@ -28,7 +28,11 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
             .withZone(ZoneOffset.UTC)
             .format(Instant.ofEpochSecond(trackpoints[0].time)) + ".gpx"
         val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
-        val description = noteText.orEmpty() + "(" + ApplicationConstants.USER_AGENT + ")"
+        val description = if (noteText != null && noteText.isNotBlank()) {
+            noteText
+        } else {
+            "Uploaded via " + ApplicationConstants.USER_AGENT
+        }
         val tags = listOf(ApplicationConstants.NAME.lowercase())
 
         // Generate history of trackpoints
@@ -47,8 +51,6 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         val details = api.get(traceId)
         Track(details.id, details.userName)
     }
-
-
 }
 
 private inline fun <T> wrapExceptions(block: () -> T): T =

@@ -21,52 +21,48 @@ class TracksMapComponent(ctrl: KtMapController) {
     private val layer2 = ctrl.addDataLayer(LAYER2)
 
     private var index = 0
-    private var tracks: MutableList<MutableList<LngLat>>
-    private var tracksRecording: MutableList<Boolean>
+    private class Track(val trackpoints: MutableList<LngLat>, val isRecording: Boolean)
+    private var tracks: MutableList<Track>
 
     init {
         tracks = ArrayList()
-        tracks.add(ArrayList())
-        tracksRecording = ArrayList()
+        tracks.add(Track(ArrayList(), false))
     }
 
     /** Add a point to the current track */
     fun addToCurrentTrack(pos: Location) {
         val track = tracks.last()
-        val recording = tracksRecording.last()
-        track.add(pos.toLngLat())
+        track.trackpoints.add(pos.toLngLat())
+        val trackpoints = track.trackpoints
 
         // every 100th trackpoint, move the index to the back
-        if (track.size - index > 100) {
+        if (trackpoints.size - index > 100) {
             putAllTracksInOldLayer()
         } else {
-            layer1.setFeatures(listOf(track.subList(index, track.size).toPolyline(false, recording)))
+            layer1.setFeatures(listOf(trackpoints.subList(index, trackpoints.size).toPolyline(false, track.isRecording)))
         }
     }
 
     /** Start a new track. I.e. the points in that track will be drawn as an own polyline */
     fun startNewTrack(record: Boolean) {
-        tracks.add(ArrayList())
-        tracksRecording.add(record)
+        tracks.add(Track(ArrayList(), record))
         putAllTracksInOldLayer()
     }
 
     /** Set all the tracks (when re-initializing) */
     fun setTracks(tracks: List<List<Location>>) {
-        this.tracks = tracks.map { track -> track.map { it.toLngLat() }.toMutableList() }.toMutableList()
-        this.tracksRecording = tracks.map { false }.toMutableList()
+        this.tracks = tracks.map { track -> Track(track.map { it.toLngLat() }.toMutableList(), false) }.toMutableList()
         putAllTracksInOldLayer()
     }
 
     private fun putAllTracksInOldLayer() {
-        index = max(0, tracks.last().lastIndex)
+        index = max(0, tracks.last().trackpoints.lastIndex)
         layer1.clear()
-        layer2.setFeatures(tracks.mapIndexed { idx, it -> it.toPolyline(true, tracksRecording[idx]) })
+        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(true, it.isRecording) })
     }
 
     fun clear() {
         tracks = ArrayList()
-        tracksRecording = ArrayList()
         startNewTrack(false)
     }
 
