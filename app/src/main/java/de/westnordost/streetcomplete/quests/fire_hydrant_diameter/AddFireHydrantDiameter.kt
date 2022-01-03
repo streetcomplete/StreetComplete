@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 
@@ -27,7 +27,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override val icon = R.drawable.ic_quest_fire_hydrant_diameter
     override val isDeleteElementEnabled = true
 
-    override val questTypeAchievements = emptyList<QuestTypeAchievement>()
+    override val questTypeAchievements = listOf(LIFESAVER)
 
     /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant
        diameters are added, the code in the form needs to be adapted */
