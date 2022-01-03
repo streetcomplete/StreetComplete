@@ -24,7 +24,7 @@ enum class QuestTypeAchievement(val id: String) {
     BICYCLIST("bicyclist"),
     CITIZEN("citizen"),
     OUTDOORS("outdoors"),
-    EMERGENCY("emergency"),
+    LIFESAVER("lifesaver"),
 }
 
 @Module
@@ -597,10 +597,10 @@ object AchievementsModule {
         ),
 
         Achievement(
-            QuestTypeAchievement.EMERGENCY.id,
-            R.drawable.ic_achievement_emergency,
-            R.string.achievement_emergency_title,
-            R.string.achievement_emergency_solved_X,
+            QuestTypeAchievement.LIFESAVER.id,
+            R.drawable.ic_achievement_lifesaver,
+            R.string.achievement_lifesaver_title,
+            R.string.achievement_lifesaver_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
