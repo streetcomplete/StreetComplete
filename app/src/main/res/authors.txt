@@ -56,6 +56,11 @@ fire_hydrant_pond.jpg          CC-BY-SA 3.0      KeepOnTruckin https://commons.w
 fire_hydrant_underground.jpg   CC-BY 3.0         Panek https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_wall.jpg          CC-BY-SA 3.0      Ingo Fick https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
 
+fire_hydrant_position_green... CC-BY-SA 4.0     https://upload.wikimedia.org/wikipedia/commons/2/2d/Fire_hydrant_in_grass.jpg
+fire_hydrant_position_lane...  CC-BY-SA 4.0     https://upload.wikimedia.org/wikipedia/commons/3/32/Fire_hydrant_on_sidewalk.jpg
+fire_hydrant_position_sidew... CC-BY-SA 4.0     modified from https://upload.wikimedia.org/wikipedia/commons/d/d0/Fire_hydrant_on_road_side.jpg
+fire_hydrant_position_parki... CC-BY 2.0        modified from https://upload.wikimedia.org/wikipedia/commons/3/33/Fire-fighting-facility_node-4279866277.jpg
+
 ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
 
@@ -224,5 +229,5 @@ tourism_information_map.jpg    CC0               https://commons.wikimedia.org/w
 tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
 tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
 
-vibrating_button_illustrati... CC-BY 4.0        Tobias Zwick
-vibrating_button_i... (MCC234) CC0              CJ Malone
+vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
+vibrating_button_i... (MCC234) CC0               CJ Malone

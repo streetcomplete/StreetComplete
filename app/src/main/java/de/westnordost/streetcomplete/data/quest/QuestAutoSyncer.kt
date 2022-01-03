@@ -108,7 +108,7 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun onCreate() {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
@@ -134,7 +134,7 @@ import javax.inject.Singleton
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
-        coroutineScope.cancel()
+        coroutineScope.coroutineContext.cancelChildren()
     }
 
     @SuppressLint("MissingPermission")

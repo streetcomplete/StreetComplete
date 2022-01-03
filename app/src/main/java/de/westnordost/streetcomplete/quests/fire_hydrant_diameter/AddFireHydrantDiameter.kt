@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.fire_hydrant
+package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 
 import de.westnordost.streetcomplete.R
@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 
 class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
@@ -27,9 +29,20 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val questTypeAchievements = emptyList<QuestTypeAchievement>()
 
+    /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant
+       diameters are added, the code in the form needs to be adapted */
     override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["ref"])
+
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasRef = tags.containsAnyKey("ref")
+        return when {
+            hasRef -> R.string.quest_fireHydrant_diameter_ref_title
+            else   -> R.string.quest_fireHydrant_diameter_title
+        }
+    }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = fire_hydrant")
@@ -37,9 +50,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
     override fun createForm() = AddFireHydrantDiameterForm()
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
-
         when (answer) {
-            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.diameter.toString())
+            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.toOsmValue())
             is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
         }
     }

@@ -96,7 +96,7 @@
     <string name="action_about2">"About"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_faq">"FAQ"</string>
@@ -1130,6 +1130,11 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_hint">Try to estimate. What matters is the big picture rather than single damages.</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
+    <string name="quest_fireHydrant_position_green">In grass or dirt</string>
+    <string name="quest_fireHydrant_position_lane">On the roadway</string>
+    <string name="quest_fireHydrant_position_sidewalk">On the sidewalk</string>
+    <string name="quest_fireHydrant_position_parking_lot">In a parking spot</string>
     <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal to the path</string>
     <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>
@@ -1177,4 +1182,5 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">What diameter is specified on the sign for this fire hydrant? (reference number: %s)</string>
 </resources>

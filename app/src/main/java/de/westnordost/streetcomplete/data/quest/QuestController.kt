@@ -186,8 +186,6 @@ import kotlin.collections.ArrayList
         q: OsmQuest,
         answer: Any, source: String
     ): Boolean = withContext(Dispatchers.IO) {
-        val e = getOsmElement(q) ?: return@withContext false
-
         /* When OSM data is being updated (e.g. during download), first that data is persisted to
          *  the database and after that, the quests are updated on the new data.
          *
@@ -200,7 +198,8 @@ import kotlin.collections.ArrayList
          *  go out of sync? It was like this (since v32) initially, but it made using the app
          *  (opening quests, solving quests) unusable and seemingly unresponsive while the app was
          *  downloading/updating data. See issue #2876 */
-        if (q.osmElementQuestType.isApplicableTo(e) == false) {
+        val e = getOsmElement(q)
+        if (e == null || q.osmElementQuestType.isApplicableTo(e) == false) {
             /* the quest should then just be removed immediately, otherwise it looks like a bug
                (can't solve quest, it won't go away), see #3588 */
             osmQuestController.delete(OsmQuestKey(q.elementType, q.elementId, q.questTypeName))

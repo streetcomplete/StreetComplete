@@ -32,7 +32,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(5, 30)
+            .mostCommonWithin(target = 5, historyCount = 30, first = 1)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
