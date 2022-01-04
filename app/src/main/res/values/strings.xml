@@ -1104,20 +1104,20 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_description_good_paving_stones">Shallow or narrow gaps</string>
     <string name="quest_smoothness_description_good_sett">Unusually flat stones, regular pattern, very shallow or narrow gaps</string>
 
-    <string name="quest_smoothness_description_intermediate_paved">Unusually rough surface, wider gaps, cracks, shallow ruts, potholes or other damages</string>
-    <string name="quest_smoothness_description_intermediate_paving_stones">Wider gaps, possibly some displaced stones or other damages</string>
+    <string name="quest_smoothness_description_intermediate_paved">Unusually rough surface, wider gaps, cracks, shallow ruts, potholes or other damage</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">Wider gaps, possibly some displaced stones or other damage</string>
     <string name="quest_smoothness_description_intermediate_sett">Flat stones or with square edges, shallow or narrow gaps</string>
     <string name="quest_smoothness_description_intermediate_compacted_gravel">Well maintained, at most shallow bumps or potholes</string>
 
-    <string name="quest_smoothness_description_bad_paved">Big gaps, potholes, ruts, crumbled paving or other damages</string>
-    <string name="quest_smoothness_description_bad_paving_stones">Displaced stones, big gaps or other damages</string>
-    <string name="quest_smoothness_description_bad_sett">Weathered stone or irregular shapes, big gaps or damages</string>
+    <string name="quest_smoothness_description_bad_paved">Big gaps, potholes, ruts, crumbled paving or other damage</string>
+    <string name="quest_smoothness_description_bad_paving_stones">Displaced stones, big gaps or other damage</string>
+    <string name="quest_smoothness_description_bad_sett">Weathered stone or irregular shapes, big gaps or damage</string>
     <string name="quest_smoothness_description_bad_compacted_gravel">Some bigger gravel, bumps, ruts or potholes</string>
 
-    <string name="quest_smoothness_description_very_bad_paved">Deep potholes, ruts or other dangerous damages</string>
-    <string name="quest_smoothness_description_very_bad_sett">Big gaps, displaced, missing or irregularly shaped stones or dangerous damages</string>
-    <string name="quest_smoothness_description_very_bad_paving_stones">Missing and broken stones, gaps or other dangerous damages</string>
-    <string name="quest_smoothness_description_very_bad_compacted_gravel">Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damages</string>
+    <string name="quest_smoothness_description_very_bad_paved">Deep potholes, ruts or other dangerous damage</string>
+    <string name="quest_smoothness_description_very_bad_sett">Big gaps, displaced, missing or irregularly shaped stones or dangerous damage</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">Missing and broken stones, gaps or other dangerous damage</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damage</string>
 
     <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles</string>
     <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles</string>
