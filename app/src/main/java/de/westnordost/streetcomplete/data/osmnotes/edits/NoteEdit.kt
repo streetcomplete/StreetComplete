@@ -39,7 +39,7 @@ data class NoteEdit(
     val tracks: List<Trackpoint>,
 
     /** contains partial upload responses index by type (e.g. image and track urls) */
-    val uploadedDataMap: Map<String, String>
+    val uploadedDataMap: Map<String, String>,
 ): Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)

@@ -94,7 +94,7 @@
                 android:contentDescription="@string/map_btn_stop_track"
                 android:scaleType="center"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/zoomInButton"

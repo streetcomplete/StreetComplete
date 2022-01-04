@@ -25,7 +25,7 @@ import javax.inject.Singleton
         position: LatLon,
         text: String? = null,
         imagePaths: List<String> = emptyList(),
-        tracks: List<Trackpoint> = emptyList()
+        tracks: List<Trackpoint> = emptyList(),
     ) {
         val edit = NoteEdit(
             0,
@@ -38,7 +38,7 @@ import javax.inject.Singleton
             false,
             imagePaths.isNotEmpty(),
             tracks,
-            mutableMapOf()
+            mutableMapOf(),
         )
         synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)

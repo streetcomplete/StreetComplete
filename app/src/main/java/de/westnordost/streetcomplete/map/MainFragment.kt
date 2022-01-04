@@ -612,9 +612,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onClickTracksStop() {
-
         // hide the track information
-        binding.stopTracksButton.visibility = View.INVISIBLE
+        binding.stopTracksButton.visibility = View.GONE
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
 
@@ -627,7 +626,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
-
     }
 
     private fun onClickCompassButton() {

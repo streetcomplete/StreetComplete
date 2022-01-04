@@ -21,13 +21,8 @@ class TracksMapComponent(ctrl: KtMapController) {
     private val layer2 = ctrl.addDataLayer(LAYER2)
 
     private var index = 0
-    private class Track(val trackpoints: MutableList<LngLat>, val isRecording: Boolean)
-    private var tracks: MutableList<Track>
-
-    init {
-        tracks = ArrayList()
-        tracks.add(Track(ArrayList(), false))
-    }
+    private data class Track(val trackpoints: MutableList<LngLat>, val isRecording: Boolean)
+    private var tracks: MutableList<Track> = arrayListOf(Track(ArrayList(), false))
 
     /** Add a point to the current track */
     fun addToCurrentTrack(pos: Location) {

@@ -146,6 +146,6 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
         getInt(IS_SYNCED) == 1,
         getInt(IMAGES_NEED_ACTIVATION) == 1,
         Json.decodeFromString(getString(TRACKS)),
-        Json.decodeFromString(getString(UPLOAD_DATA_MAP))
+        Json.decodeFromString(getString(UPLOAD_DATA_MAP)),
     )
 }
