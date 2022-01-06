@@ -60,7 +60,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 // surfaces that are actually used in AddSmoothnessForm
 // should only contain values that are in the Surface class
 val SURFACES_FOR_SMOOTHNESS = listOf(
-    "asphalt", "sett", "paving_stones", "compacted", "gravel", "fine_gravel"
+    "asphalt", "concrete", "concrete:plates", "sett", "paving_stones", "compacted", "gravel", "fine_gravel"
 )
 
 private val ROADS_TO_ASK_SMOOTHNESS_FOR = arrayOf(

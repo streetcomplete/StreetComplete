@@ -48,7 +48,7 @@ val Smoothness.titleResId get() = when (this) {
 }
 
 fun Smoothness.getDescriptionResId(surface: String): Int? = when (surface) {
-    "asphalt", "concrete" -> pavedDescriptionResId
+    "asphalt", "concrete", "concrete:plates" -> pavedDescriptionResId
     "sett" -> settDescriptionResId
     "paving_stones" -> pavingStonesDescriptionResId
     "compacted", "gravel", "fine_gravel" -> compactedOrGravelDescriptionResId
@@ -64,10 +64,11 @@ private val Smoothness.descriptionResIdFallback: Int? get() = when(this) {
 
 fun Smoothness.getImageResId(surface: String): Int? = when(surface) {
     "asphalt" -> asphaltImageResId
+    "concrete", "concrete:plates" -> concreteImageResId
     "sett" -> settImageResId
     "paving_stones" -> pavingStonesImageResId
     "compacted" -> compactedImageResId
-    "gravel" -> gravelImageResId
+    "gravel", "fine_gravel" -> gravelImageResId
     else -> null
 }
 
@@ -77,6 +78,15 @@ private val Smoothness.asphaltImageResId get() = when (this) {
     INTERMEDIATE -> R.drawable.surface_asphalt_intermediate
     BAD -> R.drawable.surface_asphalt_bad
     VERY_BAD -> R.drawable.surface_asphalt_very_bad
+    else -> null
+}
+
+private val Smoothness.concreteImageResId get() = when(this) {
+    EXCELLENT -> R.drawable.surface_concrete_excellent
+    GOOD -> R.drawable.surface_concrete_good
+    INTERMEDIATE -> R.drawable.surface_concrete_intermediate
+    BAD -> R.drawable.surface_concrete_bad
+    VERY_BAD -> R.drawable.surface_concrete_very_bad
     else -> null
 }
 
