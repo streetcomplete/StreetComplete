@@ -357,7 +357,7 @@ import javax.inject.Singleton
         AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
         AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
         AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
-        AddStreetParking(),
+        // AddStreetParking(),
         AddShoulder(),
         AddRoadSmoothness(),
         AddPathSmoothness(),
