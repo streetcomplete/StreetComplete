@@ -1,8 +1,8 @@
-v39.0: |
+v39.0-beta1: |
   <h3>New Quests</h3>
   <ul>
   <li><i>How can cars park here, if at all?</i> (#771) - street parking</li>
-  <li><i>Does this road have a shoulder?</i> (#2444)</li>
+  <li><i>Does this road have a shoulder?</i> (#2444, #3613)</li>
   <li><i>What is the surface quality of this road here?</i> (#3617, #3257, #1630), special thanks to @Helium314 but also to @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more</li>
   <li><i>Where is this fire hydrant located?</i> (#3368), by @thefeiter</li>
   </ul>
@@ -10,7 +10,8 @@ v39.0: |
   <ul>
   <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
   <li>Some improvements on the fire hydrant quest(s) (#3368), by @thefeiter, (#3601)</li>
-  <li>Some minor enhancements and clearer wordings (#3576, ...), thanks @matkoniecz</li>
+  <li>Some minor enhancements and clearer wordings (#3576, #3610, ...), thanks @matkoniecz</li>
+  <li>Added "Lifesaver" achievement (#3616), by @FloEdelmann</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
