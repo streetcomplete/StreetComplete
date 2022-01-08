@@ -1124,7 +1124,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_description_impassable">Only passable on foot</string>
 
     <string name="quest_smoothness_wrong_surface">Surface is different</string>
-    <string name="quest_smoothness_surface_value">The surface was tagged as</string>
+    <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>
     <string name="quest_smoothness_obstacle_hint">Please provide a general answer for the smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single damages.</string>
