@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.fire_hydrant
+package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder

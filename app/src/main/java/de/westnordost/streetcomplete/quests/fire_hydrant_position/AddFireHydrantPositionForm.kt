@@ -1,9 +1,9 @@
-package de.westnordost.streetcomplete.quests.fire_hydrant
+package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantPosition.*
+import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.*
 
 class AddFireHydrantPositionForm : AImageListQuestAnswerFragment<FireHydrantPosition, FireHydrantPosition>() {
 
