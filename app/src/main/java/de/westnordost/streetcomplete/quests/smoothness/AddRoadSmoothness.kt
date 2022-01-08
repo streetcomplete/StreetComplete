@@ -20,7 +20,8 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
           and (access !~ private|no or (foot and foot !~ private|no))
           and (
             !smoothness
-            or smoothness older today -4 years
+            or smoothness older today -6 years
+            or smoothness:date < today -6 years
           )
     """
 
@@ -47,10 +48,14 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
-            is SmoothnessValueAnswer -> changes.updateWithCheckDate("smoothness", answer.osmValue)
+            is SmoothnessValueAnswer -> {
+                changes.updateWithCheckDate("smoothness", answer.osmValue)
+                changes.deleteIfExists("smoothness:date")
+            }
             is WrongSurfaceAnswer -> {
                 changes.delete("surface")
                 changes.deleteIfExists("smoothness")
+                changes.deleteIfExists("smoothness:date")
                 changes.deleteCheckDatesForKey("smoothness")
             }
         }
