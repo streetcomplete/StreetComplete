@@ -29,7 +29,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override val commitMessage = "Add path smoothness"
     override val wikiLink = "Key:smoothness"
-    override val icon = R.drawable.ic_quest_path_surface_detail
+    override val icon = R.drawable.ic_quest_way_surface_detail
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(WHEELCHAIR, BICYCLIST)
 
