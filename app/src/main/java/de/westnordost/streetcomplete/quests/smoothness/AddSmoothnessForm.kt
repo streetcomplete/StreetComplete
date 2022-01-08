@@ -33,7 +33,7 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
     override val moveFavoritesToFront = false
 
     override fun onClickOk(selectedItems: List<Smoothness>) {
-        applyAnswer(SmoothnessValueAnswer(selectedItems.single().osmValue))
+        applyAnswer(SmoothnessValueAnswer(selectedItems.single()))
     }
 
     private fun showObstacleHint() {

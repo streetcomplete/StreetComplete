@@ -49,7 +49,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun applyAnswerTo(answer: SmoothnessAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
             is SmoothnessValueAnswer -> {
-                changes.updateWithCheckDate("smoothness", answer.osmValue)
+                changes.updateWithCheckDate("smoothness", answer.value.osmValue)
                 changes.deleteIfExists("smoothness:date")
             }
             is WrongSurfaceAnswer -> {
