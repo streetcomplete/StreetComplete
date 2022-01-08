@@ -3364,21 +3364,9 @@
                     "name": "Jokio sukimo į dešinę",
                     "terms": "negalima į dešinę"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Tik ne tiesiai",
-                    "terms": "tik ne tiesiai"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Jokio apsisukimo",
-                    "terms": "negalima apsisukti"
-                },
                 "type/route": {
                     "name": "Maršrutas",
                     "terms": "maršrutas"
-                },
-                "type/route/bicycle": {
-                    "name": "Dviračių maršrutas",
-                    "terms": "dviračių maršrutas"
                 },
                 "type/route/bus": {
                     "name": "Autobusų maršrutas",

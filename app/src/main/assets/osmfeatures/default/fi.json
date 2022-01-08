@@ -57,11 +57,11 @@
                     "options": {
                         "designated": {
                             "description": "Liikennemerkki tai erityinen paikallinen säädös sallii pääsyn",
-                            "title": "Tarkoitettu"
+                            "title": "erikseen tarkoitettu"
                         },
                         "destination": {
                             "description": "Pääsy sallittu vain, jos kohde on alueella",
-                            "title": "Määränpää"
+                            "title": "ei läpikulkua"
                         },
                         "dismount": {
                             "description": "Pääsy sallittu, mutta ajoneuvon kuljettajan on jalkauduttava",
@@ -69,26 +69,26 @@
                         },
                         "no": {
                             "description": "Ei pääsyä ilman erityislupaa",
-                            "title": "Kielletty"
+                            "title": "kielletty"
                         },
                         "permissive": {
                             "description": "Pääsy sallittu, kunnes omistaja peruuttaa luvan",
-                            "title": "Luvanvarainen"
+                            "title": "sallittu mutta luvanvarainen"
                         },
                         "permit": {
                             "description": "Sallittu vain erillisellä luvalla",
-                            "title": "Vain erillisellä luvalla"
+                            "title": "vain erillisellä luvalla"
                         },
                         "private": {
                             "description": "Pääsy sallittu vain omistajan erityisluvalla",
-                            "title": "Yksityinen"
+                            "title": "yksityinen"
                         },
                         "yes": {
                             "description": "Laki sallii pääsyn alueelle",
-                            "title": "Sallittu"
+                            "title": "sallittu"
                         }
                     },
-                    "placeholder": "Ei määritelty",
+                    "placeholder": "ei määritelty",
                     "types": {
                         "access": "Kaikki",
                         "bicycle": "Pyöräily",
@@ -103,12 +103,12 @@
                 "access_simple": {
                     "label": "Sallittu käyttäjäryhmä",
                     "options": {
-                        "customers": "Vain asiakkaille",
-                        "no": "Ei oikeutta",
-                        "permissive": "Yksityisen sallima",
-                        "permit": "Luvanvarainen",
-                        "private": "Yksityinen",
-                        "yes": "Julkinen"
+                        "customers": "vain asiakkaille",
+                        "no": "ei oikeutta",
+                        "permissive": "sallittu mutta luvanvarainen",
+                        "permit": "vain erillisluvalla",
+                        "private": "vain yksityiseen käyttöön",
+                        "yes": "sallittu yleisesti"
                     }
                 },
                 "addr/interpolation": {
@@ -143,7 +143,7 @@
                         "place": "Paikka",
                         "postcode": "Postinumero",
                         "province": "Maakunta",
-                        "province!jp": "Itsehallinnollinen alue/prefektuuri",
+                        "province!jp": "Prefektuuri",
                         "quarter": "Neljännes",
                         "state": "Osavaltio",
                         "street": "Kadunnimi",
@@ -453,6 +453,9 @@
                 "consulate": {
                     "label": "Tyyppi"
                 },
+                "consulting": {
+                    "label": "Erikoisala"
+                },
                 "contact/webcam": {
                     "label": "Kameran verkko-osoite",
                     "placeholder": "http://www.esimerkki.fi/"
@@ -670,8 +673,8 @@
                 "direction_clock": {
                     "label": "Suunta",
                     "options": {
-                        "anticlockwise": "Vastapäivään",
-                        "clockwise": "Myötäpäivään"
+                        "anticlockwise": "vastapäivään",
+                        "clockwise": "myötäpäivään"
                     }
                 },
                 "direction_point": {
@@ -681,16 +684,16 @@
                 "direction_vertex": {
                     "label": "Vaikutussuunta",
                     "options": {
-                        "backward": "Taaksepäin",
-                        "both": "Molemmat/kaikki",
-                        "forward": "Eteenpäin"
+                        "backward": "taaksepäin",
+                        "both": "molemmat/kaikki",
+                        "forward": "eteenpäin"
                     }
                 },
                 "direction_vertex_dual": {
                     "label": "Vaikutussuunta",
                     "options": {
-                        "backward": "Taaksepäin",
-                        "forward": "Eteenpäin"
+                        "backward": "taaksepäin",
+                        "forward": "eteenpäin"
                     }
                 },
                 "dispensing": {
@@ -1103,7 +1106,7 @@
                     "label": "Tyyppi"
                 },
                 "lanes": {
-                    "label": "Kaistat",
+                    "label": "Ajokaistoja",
                     "placeholder": "1, 2, 3..."
                 },
                 "language_multi": {
@@ -1308,30 +1311,30 @@
                 "network_bicycle": {
                     "label": "Verkon luokka",
                     "options": {
-                        "icn": "Kansainvälinen",
-                        "lcn": "Paikallinen",
-                        "ncn": "Valtakunnallinen",
-                        "rcn": "Seudullinen"
+                        "icn": "kansainvälinen",
+                        "lcn": "paikallinen",
+                        "ncn": "valtakunnallinen",
+                        "rcn": "seudullinen"
                     },
                     "placeholder": "Paikallinen, seudullinen, valtakunnallinen, kansainvälinen"
                 },
                 "network_foot": {
                     "label": "Verkon luokka",
                     "options": {
-                        "iwn": "Kansainvälinen",
-                        "lwn": "Paikallinen",
-                        "nwn": "Valtakunnallinen",
-                        "rwn": "Alueellinen"
+                        "iwn": "kansainvälinen",
+                        "lwn": "paikallinen",
+                        "nwn": "valtakunnallinen",
+                        "rwn": "alueellinen"
                     },
                     "placeholder": "Paikallinen, alueellinen, valtakunnallinen, kansainvälinen"
                 },
                 "network_horse": {
                     "label": "Verkon luokka",
                     "options": {
-                        "ihn": "Kansainvälinen",
-                        "lhn": "Paikallinen",
-                        "nhn": "Valtakunnallinen",
-                        "rhn": "Alueellinen"
+                        "ihn": "kansainvälinen",
+                        "lhn": "paikallinen",
+                        "nhn": "valtakunnallinen",
+                        "rhn": "alueellinen"
                     },
                     "placeholder": "Paikallinen, alueellinen, valtakunnallinen, kansainvälinen"
                 },
@@ -1351,24 +1354,24 @@
                 "oneway": {
                     "label": "Yksisuuntaisuus",
                     "options": {
-                        "alternating": "Vaihteleva",
-                        "no": "Ei",
-                        "reversible": "Epäsäännöllisesti vaihtuva",
-                        "undefined": "Oletettavasti ei",
-                        "yes": "Kyllä"
+                        "alternating": "vaihtelee säännöllisesti ja usein",
+                        "no": "ei",
+                        "reversible": "vaihtelee muutaman kerran päivässä",
+                        "undefined": "oletettavasti ei",
+                        "yes": "kyllä"
                     }
                 },
                 "oneway/bicycle": {
                     "label": "Yksisuuntainen (pyöräily)"
                 },
                 "oneway_yes": {
-                    "label": "Yksisuuntainen",
+                    "label": "Yksisuuntaisuus",
                     "options": {
-                        "alternating": "Säännöllisesti vaihtuva",
-                        "no": "Ei",
-                        "reversible": "Epäsäännöllisesti vaihtuva",
-                        "undefined": "Oletettavasti kyllä",
-                        "yes": "Kyllä"
+                        "alternating": "vaihtelee säännöllisesti ja usein",
+                        "no": "ei",
+                        "reversible": "vaihtelee muutaman kerran päivässä",
+                        "undefined": "oletettavasti kyllä",
+                        "yes": "kyllä"
                     }
                 },
                 "openfire": {
@@ -1598,9 +1601,9 @@
                 "railway/signal/direction": {
                     "label": "Vaikutussuunta",
                     "options": {
-                        "backward": "Taaksepäin",
-                        "both": "Molemmat/kaikki",
-                        "forward": "Eteenpäin"
+                        "backward": "taaksepäin",
+                        "both": "molemmat/kaikki",
+                        "forward": "eteenpäin"
                     }
                 },
                 "rating": {
@@ -1650,7 +1653,7 @@
                     "label": "Huonenumero"
                 },
                 "ref_route": {
-                    "label": "Linjanumero"
+                    "label": "Reitin tunnus"
                 },
                 "ref_runway": {
                     "label": "Kiitoratanumero",
@@ -1926,11 +1929,11 @@
                 "source": {
                     "label": "Lähteet",
                     "options": {
-                        "aerial imagery": "ilmakuvat",
+                        "aerial imagery": "ilmakuva",
                         "gps": "GPS",
                         "local knowledge": "paikallistietämys",
                         "streetlevel imagery": "katunäkymäkuvat",
-                        "survey": "havainto"
+                        "survey": "maastokäynti"
                     },
                     "terms": "lähteet,tietolähteet"
                 },
@@ -1952,6 +1955,7 @@
                 "sport_racing_motor": {
                     "label": "Urheilulajit",
                     "options": {
+                        "karting": "karting",
                         "motocross": "motocross",
                         "motor": "moottoriurheilu"
                     }
@@ -2151,9 +2155,9 @@
                 "traffic_sign/direction": {
                     "label": "Vaikutussuunta",
                     "options": {
-                        "backward": "Taaksepäin",
-                        "both": "Molemmat/kaikki",
-                        "forward": "Eteenpäin"
+                        "backward": "taaksepäin",
+                        "both": "molemmat/kaikki",
+                        "forward": "eteenpäin"
                     }
                 },
                 "traffic_signals": {
@@ -2162,9 +2166,9 @@
                 "traffic_signals/direction": {
                     "label": "Vaikutussuunta",
                     "options": {
-                        "backward": "Taaksepäin",
-                        "both": "Molemmat/kaikki",
-                        "forward": "Eteenpäin"
+                        "backward": "taaksepäin",
+                        "both": "molemmat/kaikki",
+                        "forward": "eteenpäin"
                     }
                 },
                 "trail_visibility": {
@@ -2377,7 +2381,7 @@
                     "name": "Mainostaulu"
                 },
                 "aerialway": {
-                    "name": "Ilmailukohde"
+                    "name": "Ilmaratakohde"
                 },
                 "aerialway/cable_car": {
                     "name": "Köysirata"
@@ -2388,6 +2392,9 @@
                 },
                 "aerialway/drag_lift": {
                     "name": "Vetohissi"
+                },
+                "aerialway/gondola": {
+                    "name": "Gondolihissi"
                 },
                 "aerialway/goods": {
                     "name": "Rahti-ilmarata",
@@ -2410,6 +2417,12 @@
                 "aerialway/rope_tow": {
                     "name": "Naruhissi",
                     "terms": "hissi,hiihtohissi,lasketteluhissi,laskettelu,naru,köysi,köysihissi"
+                },
+                "aerialway/t-bar": {
+                    "name": "Ankkurihissi"
+                },
+                "aerialway/zip_line": {
+                    "name": "Vaijeriliuku"
                 },
                 "aeroway": {
                     "name": "Ilmailukohde"
@@ -4609,9 +4622,6 @@
                     "name": "Veneramppi",
                     "terms": "veneramppi,vesillelaskupaikka,veneenlaskupaikka,vene,järveenlaskupaikka,järviramppi"
                 },
-                "leisure/slipway_point": {
-                    "name": "Veneramppi"
-                },
                 "leisure/sports_centre": {
                     "name": "Liikuntakeskus",
                     "terms": "kuntokeskus,urheilukeskus,urheiluhalli,halli,kompleksi,kokonaisuus,monilajinen"
@@ -5321,9 +5331,15 @@
                     "name": "Ydinvoimala",
                     "terms": "ydinvoimalaitos,atominen,fissio,ydinvoima,reaktori"
                 },
+                "power/plant/source/oil": {
+                    "name": "Öljyvoimala"
+                },
                 "power/plant/source/solar": {
                     "name": "Aurinkovoimala",
                     "terms": "aurinkopuisto,voimalaitos,aurinkopaneeli"
+                },
+                "power/plant/source/waste": {
+                    "name": "Jätevoimalaitos"
                 },
                 "power/plant/source/wind": {
                     "name": "Tuulipuisto",
@@ -6326,30 +6342,9 @@
                 "type/restriction/no_right_turn": {
                     "name": "Ei saa kääntyä oikealle"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Ei saa ajaa suoraan"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Ei saa tehdä U-käännöstä"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Kääntyminen vain vasemmalle"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Kääntyminen vain oikealle"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Pakollinen ajosuunta suoraan"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Vain u-käännökset"
-                },
                 "type/route": {
                     "name": "Reitti",
                     "terms": "matkareitti,rengasreitti,lenkki,kulkuohjeet,ohjaus,reititys,navigointi,kurssi,traili"
-                },
-                "type/route/bicycle": {
-                    "name": "Pyöräilyreitti"
                 },
                 "type/route/bus": {
                     "name": "Linja-autolinja",

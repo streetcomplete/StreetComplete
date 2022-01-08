@@ -87,7 +87,6 @@
     <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Zahodit výběr?"</string>
     <string name="confirmation_discard_positive">"Zahodit"</string>
-    <string name="confirmation_discard_negative">"Zrušit"</string>
     <string name="action_download">"Vyhledat zde úkoly"</string>
     <string name="action_upload">"Nahrát odpovědi"</string>
 
@@ -105,7 +104,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Pro zobrazení vaší pozice v mapě a hledání úkolů ve vašem okolí je potřeba oprávnění ke zjišťování polohy."</string>
     <string name="about_title_authors">"Autoři"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick a přispěvatelé"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick a přispěvatelé"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Zdrojový kód"</string>
@@ -2252,6 +2253,8 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označený přechod"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkuje se přímo vedle cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
     <string name="quest_existence_title">"Je to tu pořád? (%s)"</string>
@@ -2483,4 +2486,33 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="pref_title_language_select">"Vyberte jazyk"</string>
     <string name="language_default">"Jazyk systému
 "</string>
+    <string name="on_floor">"ve %s patře:"</string>
+    <string name="confirmation_discard_negative2">"Ne"</string>
+    <string name="quest_street_parking_title">"Jak zde mohou parkovat auta, pokud je to možné?"</string>
+    <string name="select_street_parking_orientation">"Vyberte orientaci směrem k cestě:"</string>
+    <string name="select_street_parking_position">"Vyberte polohu:"</string>
+    <string name="select_street_parking_no">"Jsou tu nějaké dopravní značky nebo značení?"</string>
+    <string name="street_parking_parallel">"Paralelně"</string>
+    <string name="street_parking_diagonal">"Šikmo"</string>
+    <string name="street_parking_perpendicular">"Kolmo"</string>
+    <string name="street_parking_on_street">"Na cestě"</string>
+    <string name="street_parking_half_on_kerb">"Zpola na chodníku"</string>
+    <string name="street_parking_on_kerb">"Vedle vozovky (na chodníku)"</string>
+    <string name="street_parking_street_side">"Vedle vozovky pouze na vyhrazených místech"</string>
+    <string name="street_parking_painted_area_only">"Na cestě na vyhrazených místech"</string>
+    <string name="street_parking_separate">"Parkování je zobrazeno na mapě samostatně"</string>
+    <string name="street_parking_no">"Parkování zde není povoleno / je zakázáno"</string>
+    <string name="street_parking_prohibited">"Parkování zakázáno"</string>
+    <string name="street_stopping_prohibited">"Zákaz zastavení"</string>
+    <string name="street_standing_prohibited">"Zákaz stání"</string>
+    <string name="street_parking_conditional_restrictions">"Parkování / Zastavení je podmíněně omezeno"</string>
+    <string name="street_parking_no_other_reasons">"Není tu značka / Parkování není možné"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_conditional_restrictions_hint">"Pokud je tu možné parkovat nebo zastavit, odpovězte nejprve, jak tu ti, kteří zde mohou parkovat, parkují. Jaká přesně omezení tu platí, může být upřesněno později.
+
+Také můžete napsat poznámku (s fotografií)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Má obojí, číslo domu i jméno..."</string>
+    <string name="quest_address_house_number_label">"Číslo domu:"</string>
+    <string name="quest_shoulder_title">"Má tato cesta odstavný pruh?"</string>
 </resources>

@@ -124,9 +124,6 @@
     <string name="confirmation_discard_positive">"Išmesti"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Nutraukti"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Ieškoti užduočių čia"</string>
 
     <!-- Fuzzy -->
@@ -160,7 +157,7 @@
     <string name="about_title_authors">"Autoriai"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick ir talkininkai"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick ir talkininkai"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>

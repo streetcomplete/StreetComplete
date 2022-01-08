@@ -124,9 +124,6 @@
     <string name="confirmation_discard_positive">"放棄"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"取消"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"在這裡搜尋任務"</string>
 
     <!-- Fuzzy -->
@@ -160,7 +157,7 @@
     <string name="about_title_authors">"作者"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick 和貢獻者們"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick 和貢獻者們"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"原始碼倉儲"</string>
@@ -2076,6 +2073,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"標線行人穿越道"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"路外停車"</string>
     <string name="quest_parkingType_lane">"路邊停車"</string>
     <string name="quest_existence_title">"還在這裡嗎？ (%s)"</string>
@@ -2219,18 +2218,105 @@
     <string name="quest_camera_type_fixed">"固定"</string>
     <string name="quest_camera_type_panning">"平移"</string>
     <string name="about_title_faq">"常見問題"</string>
+    <string name="quest_buildingLevels_title2">"這棟建築地下室之上有幾層？"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"這棟建築部分的地下室之上有幾層？"</string>
+    <string name="quest_crossing_title">"這邊這條路與這條路的交匯處是否有路緣石？ 哪一種呢？ "</string>
     <string name="pref_subtitle_quests_preset_name">"預設組合：%s"</string>
+    <string name="default_disabled_msg_roofShape">"這個任務類型已經預設關閉，因為屋頂形狀常常無法直接從街上看出來。這個任務類型也相當花時間；大部分的情形之下，直接在家從空照圖繪製更簡單也更有效率。"</string>
+    <string name="quest_religion_animist">"泛靈論"</string>
+    <string name="quest_construction_steps_title">"這些階梯是否完成了？"</string>
     <string name="pref_quests_deselect_all">"取消選擇所有任務？"</string>
     <string name="quest_buildingType_boathouse">"船屋"</string>
+    <string name="quest_buildingType_allotment_house">"建築外的社區花園"</string>
+    <string name="quest_buildingType_grandstand">"看台"</string>
     <string name="action_search">"搜尋"</string>
     <string name="action_manage_presets">"管理預設組合"</string>
     <string name="team_mode_team_size_label2">"有多少人在畫地圖呢 ？請在每一個人的手機輸入相同的數字。"</string>
     <string name="team_mode_choose_color2">"接下來，每一個人要挑選不同的顏色。請選擇你要顏色："</string>
     <string name="link_organic_maps_description">"為了旅行者、登山客與單車騎士服務，而且能夠離線使用的地圖 app"</string>
     <string name="quest_kerb_height_no">"完全沒有路緣"</string>
+    <string name="quest_barrier_type_stepover_wooden">"木質跨步階梯"</string>
+    <string name="quest_barrier_type_stepover_stone">"石頭跨步階梯"</string>
+    <string name="quest_bollard_type_removable">"可移動的 (有或沒有鍵)"</string>
+    <string name="quest_bollard_type_foldable2">"可折疊 (有或沒有鍵)"</string>
+    <string name="no_search_results">"什麼都沒找到"</string>
+    <string name="quest_selection_hint_title">"太多要做的事情？"</string>
+    <string name="quest_selection_hint_message">"貢獻一己之力應該要很好玩的！如果你被任務的數字嚇到的話，你可以調整顯示什麼任務，以及優先順序。"</string>
+    <string name="quest_presets_preset_add">"新增預設組合"</string>
+    <string name="quest_presets_preset_name">"預設組合名稱"</string>
+    <string name="quest_presets_default_name">"預設"</string>
+    <string name="quest_presets_selected">"選取"</string>
+    <string name="quest_presets_delete_message">"刪除預設組合 “%s” 嗎？任務選取器與顯示順序將永遠消失。"</string>
+    <string name="notification_syncing">"同步資料…"</string>
+    <string name="notification_channel_sync">"同步資料"</string>
+    <string name="quest_board_type_sport">"運動、健身"</string>
+    <string name="quest_generic_hasFeature_optional">"選擇的"</string>
+    <string name="quest_buildingType_bridge">"建築之間的橋樑 (天橋)"</string>
+    <string name="quest_laundrySelfService_title2">"這間洗衣店是否有提供自助服務？"</string>
+    <string name="quest_dietType_halal_name_title">"%s 是否提供清真產品？"</string>
+    <string name="quest_dietType_explanation_halal">"清真產品的準備需符合特別的規則，清真認證單位需要認證產品。"</string>
+    <string name="quest_picnicTableCover_title">"這個野餐桌是否有遮蓋 (能夠擋雨)？"</string>
+    <string name="quest_generic_answer_is_actually_steps">"這部分是階梯"</string>
+    <string name="quest_barrier_type_passage_conversion">"轉換成牆壁/圍欄/當中的通道。 "</string>
+    <string name="quest_barrier_type_gate_conversion">"轉換成閘門"</string>
+    <string name="quest_traffic_calming_type_title">"這是那種類型的交通寧靜？"</string>
+    <string name="quest_traffic_calming_type_bump">"減速丘 (較短)"</string>
+    <string name="quest_traffic_calming_type_hump">"駝峰 (較長)"</string>
+    <string name="quest_traffic_calming_type_table">"桌子 (平頂)"</string>
+    <string name="quest_traffic_calming_type_cushion">"坐墊（對寬車不顛簸） "</string>
+    <string name="quest_traffic_calming_type_choker">"窄巷"</string>
     <string name="quest_traffic_calming_type_island">"分隔島"</string>
+    <string name="quest_traffic_calming_type_chicane">"刻意曲線 "</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"隆隆帶"</string>
+    <string name="quest_surface_value_concrete_plates">"混凝土板 "</string>
+    <string name="quest_surface_value_concrete_lanes">"混凝土巷道"</string>
+    <string name="quest_fireHydrant_diameter_title">"這個消防栓的標誌上顯示的直徑是多少？ "</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"這直徑數值看來不可能。"</string>
     <string name="quest_fireHydrant_confirmation_title">"你確定嗎？有時候能直接在消防栓找到直徑的資訊。"</string>
     <string name="quest_diet_answer_no_food">"這裡沒有食物"</string>
     <string name="short_no_answer_on_button">"沒有"</string>
+    <string name="restore_confirmation">"恢復"</string>
+    <string name="restore_dialog_message">"恢復所有你隱藏的任務？"</string>
+    <string name="quest_parking_access_title2">"什麼人允許在這裡停車？停在這裡可能是免費或需要付錢。"</string>
+    <string name="quest_access_yes">"所有的大眾成員"</string>
+    <string name="quest_access_customers">"造訪特定地方的所有人 (例如只有顧客)"</string>
+    <string name="quest_access_private">"只有被允許的個人"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"這個郵筒的收件時間是否仍正確？"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"%s 郵筒的收件時間是否仍正確？"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"無法辨識。請試著輸入地點，像是「烘培坊」，不然的話留下註解。"</string>
+    <string name="quest_bicycle_barrier_type_title">"這個是什麼類型的單車障礙？"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"對角線到路徑"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"窄通道，越到上面越小"</string>
+    <string name="quest_barrier_bicycle_type_single">"兩個障礙物間的通道"</string>
+    <string name="quest_barrier_bicycle_type_double">"雙急轉彎 - 每邊的障礙物"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"雙急轉彎 - 超過兩個障礙物"</string>
+    <string name="quest_level_title">"%s 是位在幾樓？"</string>
+    <string name="pref_title_language_select">"選擇語言"</string>
+    <string name="language_default">"系統預設"</string>
+    <string name="on_floor">"在樓層 %s："</string>
+    <string name="confirmation_discard_negative2">"無"</string>
+    <string name="quest_street_parking_title">"車子如何在這裡停靠，如果可以的話？"</string>
+    <string name="select_street_parking_orientation">"道路選擇朝向的方向："</string>
+    <string name="select_street_parking_position">"選擇位置："</string>
+    <string name="select_street_parking_no">"這裡有任何路牌或是道路標示嗎？"</string>
+    <string name="street_parking_parallel">"平行"</string>
+    <string name="street_parking_diagonal">"對角"</string>
+    <string name="street_parking_perpendicular">"垂直"</string>
+    <string name="street_parking_on_street">"在道路上"</string>
+    <string name="street_parking_half_on_kerb">"部分在道路上"</string>
+    <string name="street_parking_on_kerb">"緊臨道路"</string>
+    <string name="street_parking_street_side">"只有在部分空間緊臨道路"</string>
+    <string name="street_parking_painted_area_only">"只有在部分空間在道路上"</string>
+    <string name="street_parking_separate">"在地圖上獨立顯示停車空間"</string>
+    <string name="street_parking_no">"這裡不能停車 /不允許"</string>
+    <string name="street_parking_prohibited">"不能停車"</string>
+    <string name="street_stopping_prohibited">"不能暫時停車"</string>
+    <string name="street_standing_prohibited">"不能怠速暫停"</string>
+    <string name="street_parking_conditional_restrictions">"停車 / 有條件暫停"</string>
+    <string name="street_parking_no_other_reasons">"沒有專門標示 / 無法停車"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_conditional_restrictions_hint">"如果這邊可以停車或暫停，第一個答案應該回答停在這裡如何允許，再來講特定的限制條件。
+
+或者，你可以留註解 (拍照片)"</string>
 </resources>

@@ -9,7 +9,7 @@
                     "label": "Colour"
                 },
                 "fax": {
-                    "placeholder": "+61 2 9000 0000"
+                    "placeholder": "+61 1 2345 6789"
                 },
                 "height": {
                     "label": "Height (Metres)"
@@ -24,7 +24,7 @@
                     "label": "Length (Metres)"
                 },
                 "phone": {
-                    "placeholder": "+61 2 9000 0000"
+                    "placeholder": "+61 1 2345 6789"
                 },
                 "recycling_type": {
                     "options": {
@@ -168,6 +168,9 @@
                 },
                 "tourism/caravan_site": {
                     "name": "Caravan Site"
+                },
+                "tourism/viewpoint": {
+                    "name": "Lookout"
                 }
             }
         }

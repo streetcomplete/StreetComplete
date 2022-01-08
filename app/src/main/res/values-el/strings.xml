@@ -124,9 +124,6 @@
     <string name="confirmation_discard_positive">"Απόρριψη"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Ακύρωση"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Σάρωση για αναζητήσεις εδώ"</string>
 
     <!-- Fuzzy -->
@@ -160,7 +157,7 @@
     <string name="about_title_authors">"Ευχαριστίες"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick και συνεργάτες"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick και συνεργάτες"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Πηγή αποθήκευσης"</string>
@@ -2095,6 +2092,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Σηματοδοτημένες διαβάσεις"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
     <string name="quest_existence_title">"Αυτό είναι ακόμα εδώ; (%s)"</string>

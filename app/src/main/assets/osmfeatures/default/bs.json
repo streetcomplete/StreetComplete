@@ -1473,10 +1473,6 @@
                     "name": "Ruta",
                     "terms": "ruta,trasa,maršruta"
                 },
-                "type/route/bicycle": {
-                    "name": "Biciklistička ruta",
-                    "terms": "biciklistička trasa,biciklistička ruta"
-                },
                 "type/route/bus": {
                     "name": "Bus ruta",
                     "terms": "autobuska trasa,autobuska ruta"

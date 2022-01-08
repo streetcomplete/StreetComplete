@@ -108,9 +108,6 @@
     <string name="confirmation_discard_positive">"Descartar"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Cancelar"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Procurar por missões aqui"</string>
 
     <!-- Fuzzy -->
@@ -142,10 +139,10 @@
     <string name="about_title_authors">"Créditos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e contribuidores"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick e contribuidores"</string>
 
     <!-- Fuzzy -->
-    <string name="about_title_repository">"Repositório de código fonte"</string>
+    <string name="about_title_repository">"Repositório do código-fonte"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_repository">"no GitHub"</string>
@@ -1999,7 +1996,7 @@ conquista"</string>
     <string name="quest_busStopBench_name_title">"A parada de ônibus %s tem um banco?"</string>
     <string name="quest_summit_register_title">"Existe um registro de conferência em %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
-    <string name="about_title_translate">"Ajude a traduzir esse aplicativo"</string>
+    <string name="about_title_translate">"Ajude a traduzir este aplicativo"</string>
     <string name="about_description_translate">"%1$s está %2$d%% traduzido"</string>
     <string name="quest_oneway2_title">"Esta é uma rua de mão única? Em que direção?"</string>
     <string name="quest_oneway2_dir">"Direção única nesta direção"</string>
@@ -2086,6 +2083,8 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Cruzamento marcado"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Estacionamento perto da estrada"</string>
     <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
     <string name="quest_existence_title">"Ainda está aqui?  (%s)"</string>

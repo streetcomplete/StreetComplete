@@ -124,9 +124,6 @@
     <string name="confirmation_discard_positive">"破棄"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"キャンセル"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"スキャンしてここを探索"</string>
 
     <!-- Fuzzy -->
@@ -160,7 +157,7 @@
     <string name="about_title_authors">"作者"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick と貢献者"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick と貢献者"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"ソースリポジトリ"</string>
@@ -1459,6 +1456,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"路傍の駐車用区画"</string>
     <string name="quest_parkingType_lane">"路面の駐車用区画"</string>
 

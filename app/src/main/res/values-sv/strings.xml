@@ -42,7 +42,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Släng inmatningen?"</string>
     <string name="confirmation_discard_positive">"Släng"</string>
-    <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Skicka svar"</string>
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
@@ -54,7 +53,9 @@
     <string name="turn_on_location_request">"Plats är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Platsbehörighet är nödvändigt för att visa din position på kartan och söka efter uppdrag i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick och bidragsgivare"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Källkodsarkiv"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
@@ -988,6 +989,8 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markerad korsning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkering precis bredvid vägen"</string>
     <string name="quest_parkingType_lane">"Parkering på väg"</string>
     <string name="quest_existence_title">"Finns detta fortfarande här? (%s)"</string>
@@ -1236,4 +1239,26 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_level_title">"På vilket våningsplan ligger %s?"</string>
     <string name="pref_title_language_select">"Välj språk"</string>
     <string name="language_default">"Systemstandard"</string>
+    <string name="on_floor">"på våning %s:"</string>
+    <string name="confirmation_discard_negative2">"Nej"</string>
+    <string name="quest_street_parking_title">"Hur kan bilar parkera här, om alls?"</string>
+    <string name="select_street_parking_orientation">"Välj orientering mot väg:"</string>
+    <string name="select_street_parking_position">"Välj position:"</string>
+    <string name="select_street_parking_no">"Någon skylt eller vägmarkering här?"</string>
+    <string name="street_parking_parallel">"Parallell"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Vinkelrät"</string>
+    <string name="street_parking_on_street">"På vägbanan"</string>
+    <string name="street_parking_half_on_kerb">"Delvis på vägbanan"</string>
+    <string name="street_parking_on_kerb">"I anslutning till vägbanan"</string>
+    <string name="street_parking_street_side">"I anslutning till vägbanan endast i särskilda utrymmen"</string>
+    <string name="street_parking_painted_area_only">"Endast på vägbanan i särskilda utrymmen"</string>
+    <string name="street_parking_separate">"Parkering visas separat på kartan"</string>
+    <string name="street_parking_no">"Ingen parkering här / Inte tillåtet"</string>
+    <string name="street_parking_prohibited">"Ingen parkering"</string>
+    <string name="street_stopping_prohibited">"Inget stopp"</string>
+    <string name="street_standing_prohibited">"Inget stående"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Både ett husnummer och ett namn…"</string>
+    <string name="quest_address_house_number_label">"Husnummer:"</string>
+    <string name="quest_shoulder_title">"Har den här vägen en vägren?"</string>
 </resources>

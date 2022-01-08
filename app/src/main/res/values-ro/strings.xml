@@ -124,9 +124,6 @@
     <string name="confirmation_discard_positive">"Renunță"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Anulează"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Caută  noi provocări aici"</string>
 
     <!-- Fuzzy -->
@@ -156,7 +153,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Activarea locației este necesară pentru a  putea căuta provocări noi in aproprierea dumneavoastră."</string>
     <string name="about_title_authors">"Autori"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick și contributorii"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick și contributorii"</string>
     <string name="about_title_repository">"Sursă repository"</string>
 
     <!-- Fuzzy -->
@@ -1188,6 +1187,8 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Trecere de pietoni marcată"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parcare chiar lângă drum"</string>
     <string name="quest_parkingType_lane">"Parcare pe carosabil"</string>
     <string name="quest_existence_title">"Este încă aici? (%s)"</string>

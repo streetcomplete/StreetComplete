@@ -43,7 +43,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anònim"</string>
     <string name="confirmation_discard_title">"Voleu descartar l'entrada?"</string>
     <string name="confirmation_discard_positive">"Descarta"</string>
-    <string name="confirmation_discard_negative">"Cancel·la"</string>
     <string name="action_download">"Cerca missions aquí"</string>
     <string name="action_upload">"Puja respostes"</string>
     <string name="no_changes">"No heu indicat cap resposta"</string>
@@ -55,7 +54,9 @@
     <string name="turn_on_location_request">"La geolocalització està desactivada. Voleu anar a la configuració per a activar-la ara?"</string>
     <string name="no_location_permission_warning">"Cal la vostra ubicació per a cercar missions a prop vostre."</string>
     <string name="about_title_authors">"Crèdits"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i contribuïdors"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick i contribuïdors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
     <string name="about_title_report_error">"Informa d'un error"</string>
@@ -958,6 +959,8 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Pas de zebra"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Aparcament en bateria"</string>
     <string name="quest_parkingType_lane">"Aparcament en fila"</string>
     <string name="quest_existence_title">"Encara és aquí? (%s)"</string>
@@ -1144,15 +1147,69 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_buildingType_bridge">"Pont entre edificis (penjant)"</string>
     <string name="quest_laundrySelfService_title2">"Aquesta bugaderia és d'autoservei?"</string>
     <string name="quest_dietType_halal_name_title">"%s ofereix productes halal?"</string>
+    <string name="quest_dietType_explanation_halal">"Els productes Halal han d'estar preparats seguint unes regles especials, amb el certificat Halal de les agències de certificació corresponent."</string>
+    <string name="quest_picnicTableCover_title">"Està aquesta taula de picnic coberta (protegida de la plutja)? "</string>
     <string name="quest_generic_answer_is_actually_steps">"Aquesta part són escales"</string>
+    <string name="quest_barrier_type_passage_conversion">"Convertit en un pas en una paret/tanca/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"S'ha convertit a una porta"</string>
+    <string name="quest_traffic_calming_type_title">"Quin tipus de pacificador de transit és?"</string>
+    <string name="quest_traffic_calming_type_bump">"Bump (més curt)"</string>
+    <string name="quest_traffic_calming_type_hump">"Hump (més llarg)"</string>
+    <string name="quest_traffic_calming_type_table">"Tauler (part superior plana)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Coixí (no afecta a vehícles amples)"</string>
+    <string name="quest_traffic_calming_type_choker">"Carretera estreta"</string>
     <string name="quest_traffic_calming_type_island">"Illa"</string>
     <string name="quest_traffic_calming_type_chicane">"Corbes deliverades"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Bandes Sonores"</string>
+    <string name="quest_surface_value_concrete_plates">"Plaques de formigó"</string>
+    <string name="quest_surface_value_concrete_lanes">"Línies de formigó"</string>
+    <string name="quest_fireHydrant_diameter_title">"Quin és el diàmetre d'aquesta boca d'incendis?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"El diàmetre no pareix plausible"</string>
+    <string name="quest_fireHydrant_confirmation_title">"Estàs segur? Moltes vegades el diametre es pot trobar al propi hidrant."</string>
+    <string name="quest_diet_answer_no_food">"No té menjar"</string>
     <string name="short_no_answer_on_button">"No"</string>
     <string name="restore_confirmation">"Recupera"</string>
     <string name="restore_dialog_message">"Voleu recuperar totes les missions que heu ocultat?"</string>
     <string name="quest_parking_access_title2">"Qui pot aparcar aquí? L'aparcament pot ser gratuït o de pagament."</string>
+    <string name="quest_access_yes">"Qualsevol persona del públic general"</string>
+    <string name="quest_access_customers">"Qualsevol persona visitat un lloc en específic (ex. només clients)"</string>
     <string name="quest_access_private">"Només les persones autoritzades"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Encara són correctes els temps d'arreplega d'aquesta bústia?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Els horaris de recollida d'aquesta bústia %s encara són correctes?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"No reconegut. Proveu d'introduir el tipus de lloc, per exemple \"forn\". En cas contrari, considereu deixar una nota."</string>
+    <string name="quest_bicycle_barrier_type_title">"Quin tipus de barrera de bicicleta és aquesta?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal al camí"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Pas estret, més petit a la part superior"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passatge entre dues barreres"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - barrera en cada costat
+"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane - més de dues barreres
+"</string>
+    <string name="quest_level_title">"A quin nivell es troba %s?"</string>
     <string name="pref_title_language_select">"Trieu una llengua"</string>
     <string name="language_default">"Predeterminat del sistema"</string>
+    <string name="on_floor">"al pis %s:"</string>
+    <string name="confirmation_discard_negative2">"No"</string>
+    <string name="quest_street_parking_title">"Com poden estacionar aquí els cotxes, si és que ho poden fer?"</string>
+    <string name="select_street_parking_orientation">"Seleccioneu l'orientació cap a la carretera:"</string>
+    <string name="select_street_parking_position">"Selecciona posició:"</string>
+    <string name="select_street_parking_no">"Algun senyal o marca vial ací?"</string>
+    <string name="street_parking_parallel">"Paral·lel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"A la via"</string>
+    <string name="street_parking_half_on_kerb">"Parcialment a la via"</string>
+    <string name="street_parking_on_kerb">"Adjacent a la via"</string>
+    <string name="street_parking_street_side">"Adjacent a la via només en espais dedicats"</string>
+    <string name="street_parking_painted_area_only">"A la via en espais dedicats"</string>
+    <string name="street_parking_separate">"Estacionament mostrat separat al mapa"</string>
+    <string name="street_parking_no">"No estacionar ací / No permès"</string>
+    <string name="street_parking_prohibited">"Prohibit estacionar"</string>
+    <string name="street_stopping_prohibited">"Prohibit parar"</string>
+    <string name="quest_address_house_number_label">"Número:"</string>
+    <string name="quest_shoulder_title">"Té voral aquesta carretera?"</string>
+    <string name="quest_fireHydrant_position_green">"En herba o terra"</string>
+    <string name="quest_fireHydrant_position_lane">"A la carretera"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"A la vorera"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"En un aparcament"</string>
 </resources>

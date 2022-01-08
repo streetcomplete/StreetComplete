@@ -18,7 +18,7 @@ class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailabilityAnswer>() {
         if (osmElement?.tags?.get("amenity") == "cafe") {
             result.add(AnswerItem(R.string.quest_diet_answer_no_food) { confirmNoFood() })
         }
-        return result;
+        return result
     }
 
     override val contentLayoutResId = R.layout.quest_diet_type_explanation

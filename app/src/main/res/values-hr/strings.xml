@@ -48,7 +48,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonimno"</string>
     <string name="confirmation_discard_title">"Odbaci unos?"</string>
     <string name="confirmation_discard_positive">"Odbaci"</string>
-    <string name="confirmation_discard_negative">"Nazad"</string>
     <string name="action_download">"Traži zadatke ovdje"</string>
     <string name="action_upload">"Pošalji odgovore"</string>
     <string name="no_changes">"Niste odabrali odgovor"</string>
@@ -60,7 +59,9 @@
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li sada otvoriti Postavke kako biste je uključili?"</string>
     <string name="no_location_permission_warning">"Lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
     <string name="about_title_authors">"Zasluge"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i suradnici"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick i suradnici"</string>
     <string name="about_title_repository">"Repozitorij izvornog koda"</string>
     <string name="about_summary_repository">"na GitHubu"</string>
     <string name="about_title_report_error">"Prijavi grešku"</string>
@@ -365,7 +366,7 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jesu li smjerovi prometnice ovdje fizički odvojene (barijerom)? Pretpostavljena ograničenja brzine ovise o tome."</string>
     <string name="about_category_feedback">"Povratne informacije"</string>
-    <string name="quest_leave_new_note_photo">"Dodaj sliku"</string>
+    <string name="quest_leave_new_note_photo">"Dodaj fotografiju"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Želite li obrisati ovu sliku?"</string>
     <string name="quest_cycleway_value_track">"biciklistička staza"</string>
     <string name="quest_cycleway_value_lane">"biciklistička traka"</string>
@@ -1021,6 +1022,8 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označen (zebrom)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkiralište tik uz cestu"</string>
     <string name="quest_parkingType_lane">"Parkiralište na cesti"</string>
 
@@ -1381,4 +1384,53 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
 
     <!-- Fuzzy -->
     <string name="language_default">"Isti kao i sustav"</string>
+
+    <!-- Fuzzy -->
+    <string name="on_floor">"na katu %s:"</string>
+    <string name="confirmation_discard_negative2">"Ne"</string>
+    <string name="quest_street_parking_title">"Kako automobili mogu parkirati ovdje, ako uopće mogu?"</string>
+    <string name="select_street_parking_orientation">"Odaberite orijentaciju u odnosu na cestu:"</string>
+    <string name="select_street_parking_position">"Odaberite poziciju parkinga:"</string>
+    <string name="select_street_parking_no">"Ima li ovdje prometnih znakova ili oznaka na cesti?"</string>
+    <string name="street_parking_parallel">"Paralelno"</string>
+    <string name="street_parking_diagonal">"Dijagonalno"</string>
+    <string name="street_parking_perpendicular">"Okomito"</string>
+    <string name="street_parking_on_street">"Na cesti"</string>
+    <string name="street_parking_half_on_kerb">"Djelomično na cesti"</string>
+    <string name="street_parking_on_kerb">"Uz cestu"</string>
+    <string name="street_parking_street_side">"Uz cestu samo na označenim mjestima"</string>
+    <string name="street_parking_painted_area_only">"Na cesti samo na označenim mjestima"</string>
+    <string name="street_parking_separate">"Parking je odvojeno prikazan na karti"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_no">"Nema parkiranja ovdje / Nije dopušteno"</string>
+    <string name="street_parking_prohibited">"Zabranjeno parkiranje"</string>
+    <string name="street_stopping_prohibited">"Zabranjeno zaustavljanje"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_standing_prohibited">"Zabranjeno stajanje"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_conditional_restrictions">"Uvjetno dozvoljeno parkiranje / zaustavljanje"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_no_other_reasons">"Nema izričitog znaka / parkiranje nije moguće"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_conditional_restrictions_hint">"Ako je ovdje uopće moguće parkirati ili se zaustaviti, prvo odgovorite se parkiraju oni koji to smiju. Koja se ograničenja točno primjenjuju možete naknadno navesti.
+
+Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Ima i kućni broj i naziv"</string>
+    <string name="quest_address_house_number_label">"Kućni broj:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shoulder_title">"Ima li ova cesta zaustavnu traku?"</string>
+    <string name="quest_fireHydrant_position_title">"Gdje se  nalazi ovaj vatrogasni hidrant?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_position_green">"U travi ili zemlji"</string>
+    <string name="quest_fireHydrant_position_lane">"Na cesti"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Na nogostupu"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Na parkirnom mjestu"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Koji je promjer označen na ovom vatrogasnom hidrantu? (referentni broj: %s)"</string>
 </resources>

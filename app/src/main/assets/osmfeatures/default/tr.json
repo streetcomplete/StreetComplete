@@ -5000,9 +5000,6 @@
                     "name": "Gemi Kızağı",
                     "terms": "gemi kızağı"
                 },
-                "leisure/slipway_point": {
-                    "name": "Kızak"
-                },
                 "leisure/sports_centre": {
                     "name": "Spor Merkezi",
                     "terms": "spor merkezi"
@@ -7037,37 +7034,12 @@
                     "name": "Sağa Dönüş Yasak",
                     "terms": "sağa dönüş yasak"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Devam Etmek Yasak",
-                    "terms": "devam etmek yasak"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "U-dönüşü Yasak",
-                    "terms": "u-dönüşü yasak"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Sadece Sola Dönüş"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Sadece Sağa Dönüş"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Sadece Düz Gidiş"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Sadece U Dönüşü",
-                    "terms": "sadece u-dönüşü"
-                },
                 "type/route": {
                     "name": "Güzergah",
                     "terms": "güzergah,rota"
                 },
                 "type/route/aerialway": {
                     "name": "Araç Güzergahı"
-                },
-                "type/route/bicycle": {
-                    "name": "Bisiklet Güzergahı",
-                    "terms": "bisiklet güzergahı,bisiklet rotası"
                 },
                 "type/route/bus": {
                     "name": "Otobüs Güzergahı",

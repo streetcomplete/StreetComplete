@@ -72,7 +72,6 @@
     <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Hylkää syöttö?"</string>
     <string name="confirmation_discard_positive">"Hylkää"</string>
-    <string name="confirmation_discard_negative">"Peruuta"</string>
     <string name="action_download">"Etsi tehtäviä täältä"</string>
 
     <!-- Fuzzy -->
@@ -98,7 +97,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Sijaintiasi tarvitaan täydennyksien hakuun lähiympäristöstäsi."</string>
     <string name="about_title_authors">"Tekijät"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick ja avustajat"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick ja avustajat"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Lähdekoodin sijainti"</string>
@@ -1915,6 +1916,8 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Merkitty suojatie"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Pysäköinti tien varrella"</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
     <string name="quest_existence_title">"Onko tämä vielä täällä? (%s)"</string>
@@ -2090,4 +2093,15 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Poista esiasetus \"%s\"? Sen kysymysten valinnat ja järjestys menetetään peruuttamattomasti."</string>
+    <string name="notification_syncing">"Synkronoidaan tietoja... "</string>
+    <string name="quest_traffic_calming_type_choker">"Kavennettu tie"</string>
+    <string name="restore_confirmation">"Palauta"</string>
+    <string name="quest_parking_access_title2">"Kenelle pysäköinti on sallittu? Pysäköinti voi olla ilmainen tai maksullinen. "</string>
+    <string name="pref_title_language_select">"Valitse kieli"</string>
+    <string name="language_default">"Järjestelmän oletus"</string>
+    <string name="confirmation_discard_negative2">"Ei"</string>
+    <string name="street_parking_half_on_kerb">"Osittain tiellä"</string>
+    <string name="street_parking_no">"Ei pysäköintiä /ei sallittu "</string>
+    <string name="street_parking_prohibited">"Ei pysäköintiä"</string>
+    <string name="street_stopping_prohibited">"Ei pysähtymistä "</string>
 </resources>
