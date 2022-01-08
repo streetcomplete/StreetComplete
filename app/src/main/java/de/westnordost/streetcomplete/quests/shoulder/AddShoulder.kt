@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 
 class AddShoulder : OsmFilterQuestType<Boolean>() {
@@ -66,7 +65,7 @@ class AddShoulder : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shoulder_title
 
-    override fun createForm(): AbstractQuestAnswerFragment<Boolean> = YesNoQuestAnswerFragment()
+    override fun createForm(): AbstractQuestAnswerFragment<Boolean> = AddShoulderForm()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("shoulder", answer.toYesNo())
