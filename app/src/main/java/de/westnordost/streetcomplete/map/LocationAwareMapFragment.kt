@@ -40,10 +40,13 @@ open class LocationAwareMapFragment : MapFragment() {
     private var tracks: MutableList<ArrayList<Location>>
 
     /** If we are actively recording track history */
-    var tracksRecording = false;
+    var tracksRecording = false
+        private set
 
     /** The GPS trackpoints the user has recorded */
-    var tracksRecorded: ArrayList<Trackpoint>
+    private var _tracksRecorded: ArrayList<Trackpoint>
+
+    val tracksRecorded: List<Trackpoint> get() = _tracksRecorded
 
     /** Whether the view should automatically center on the GPS location */
     var isFollowingPosition = true
@@ -72,6 +75,7 @@ open class LocationAwareMapFragment : MapFragment() {
         /** Called after the map fragment updated its displayed location */
         fun onDisplayedLocationDidChange()
     }
+
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
 
@@ -80,12 +84,13 @@ open class LocationAwareMapFragment : MapFragment() {
     init {
         tracks = ArrayList()
         tracks.add(ArrayList())
-        tracksRecorded = ArrayList()
+        _tracksRecorded = ArrayList()
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        compass = Compass(context.getSystemService<SensorManager>()!!,
+        compass = Compass(
+            context.getSystemService<SensorManager>()!!,
             context.getSystemService<WindowManager>()!!.defaultDisplay,
             this::onCompassRotationChanged
         )
@@ -96,7 +101,8 @@ open class LocationAwareMapFragment : MapFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         displayedLocation = savedInstanceState?.getParcelable(DISPLAYED_LOCATION)
-        val nullTerminatedTracks = savedInstanceState?.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
+        val nullTerminatedTracks =
+            savedInstanceState?.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
         if (nullTerminatedTracks != null) {
             tracks = nullTerminatedTracks.unflattenNullTerminated()
         }
@@ -165,12 +171,12 @@ open class LocationAwareMapFragment : MapFragment() {
 
     fun stopPositionTrackRecording() {
         tracksRecording = false
-        tracksRecorded.clear()
+        _tracksRecorded.clear()
         tracks.last().forEach {
             // Emulator has zero altitude:
             // https://stackoverflow.com/q/65325665/7718197
             // Time here is in milliseconds
-            tracksRecorded.add(
+            _tracksRecorded.add(
                 Trackpoint(
                     LatLon(it.latitude, it.longitude), it.time, it.accuracy, it.altitude.toFloat()
                 )
@@ -197,7 +203,8 @@ open class LocationAwareMapFragment : MapFragment() {
                        behind user */
                     val distance = controller?.screenBottomToCenterDistance()
                     if (distance != null) {
-                        centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
+                        centerPosition =
+                            centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }
                 }
                 tilt = PI.toFloat() / 6f
@@ -294,8 +301,7 @@ private fun <T> List<T?>.unflattenNullTerminated(): ArrayList<ArrayList<T>> {
     for (it in this) {
         if (it != null) {
             current.add(it)
-        }
-        else {
+        } else {
             result.add(current)
             current = ArrayList()
         }

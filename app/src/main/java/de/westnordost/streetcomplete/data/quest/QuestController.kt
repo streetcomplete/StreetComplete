@@ -66,7 +66,7 @@ import kotlin.collections.ArrayList
         text: String,
         imagePaths: List<String>,
         position: LatLon,
-        tracks: ArrayList<Trackpoint>,
+        tracks: List<Trackpoint>,
     ) = withContext(Dispatchers.IO) {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
         noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, tracks)

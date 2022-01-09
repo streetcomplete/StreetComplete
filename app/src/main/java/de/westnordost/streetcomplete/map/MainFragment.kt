@@ -50,6 +50,7 @@ import de.westnordost.streetcomplete.location.hasLocationPermission
 import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
+import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.levelsIntersect
 import de.westnordost.streetcomplete.quests.*
@@ -495,7 +496,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         viewLifecycleScope.launch {
             questController.createNote(note, imagePaths, position, mapFragment.tracksRecorded)
-            mapFragment.tracksRecorded.clear()
         }
 
         listener?.onCreatedNote(screenPosition)
@@ -616,16 +616,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         binding.stopTracksButton.visibility = View.GONE
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
-
-        // show the note dialog
-        mapFragment.show3DBuildings = false
-        val location = mapFragment.displayedLocation ?: return
-        val pos = LatLon(location.latitude, location.longitude)
-        val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
-        mapFragment.updateCameraPosition { position = offsetPos }
-
-        freezeMap()
-        showInBottomSheet(CreateNoteFragment())
+        val pos = mapFragment.displayedLocation?.toLatLon() ?: return
+        composeNote(pos)
     }
 
     private fun onClickCompassButton() {
@@ -686,7 +678,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
-                R.id.action_create_track -> onClickCreateTrack(position)
+                R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
             true
@@ -729,7 +721,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         showInBottomSheet(CreateNoteFragment())
     }
 
-    private fun onClickCreateTrack(pos: LatLon) {
+    private fun onClickCreateTrack() {
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
         binding.stopTracksButton.visibility = View.VISIBLE
