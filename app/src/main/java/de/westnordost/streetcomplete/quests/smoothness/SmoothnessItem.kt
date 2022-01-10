@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import android.content.Context
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ImageSpan
+import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.*
 import de.westnordost.streetcomplete.view.CharSequenceText
@@ -9,6 +13,14 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
+private fun makeImageSpan(context: Context, drawableResId: Int): ImageSpan? {
+    val drawable = context.getDrawable(drawableResId) ?: return null
+    val size = 36
+    drawable.mutate()
+    drawable.setBounds(0, 0, size, size)
+    return ImageSpan(drawable, ImageSpan.ALIGN_BASELINE)
+}
+
 fun Array<Smoothness>.toItems(context: Context, surface: String) =
     mapNotNull { it.asItem(context, surface) }
 
@@ -16,24 +28,35 @@ fun Array<Smoothness>.toItems(context: Context, surface: String) =
 fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness>? {
     val imageResId = getImageResId(surface) ?: return null
     val descriptionResId = getDescriptionResId(surface) ?: return null
+
+    val title = context.getString(titleResId)
+    val stringBuilder = SpannableStringBuilder(title)
+    stringBuilder.append(" X") // one space char + one placeholder char for the image span
+    stringBuilder.setSpan(
+        makeImageSpan(context, icon),
+        title.length + 1,
+        title.length + 2,
+        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+    )
+
     return Item2(
         this,
         ResImage(imageResId),
-        CharSequenceText(context.getString(titleResId) + " " + emoji),
+        CharSequenceText(stringBuilder),
         ResText(descriptionResId)
     )
 }
 
 /** return fitting vehicle type emoji that corresponds to the "usable by" column in the wiki */
-val Smoothness.emoji get() = when(this) {
-    EXCELLENT ->     """🛹""" // or 🛼 but it is only available since Android 11
-    GOOD ->          """🛴""" // no emoji for racing bike, would be difficult to tell apart from 🚲
-    INTERMEDIATE ->  """🚲""" // or 🛵 but users are more likely to own a bike than a scooter
-    BAD ->           """🚗""" // or 🛺 but tuk-tuks have actually similar requirements as scooters
-    VERY_BAD ->      """🚙""" // this is a SUV
-    HORRIBLE ->      """🛻""" // no emoji for off-road vehicles but there is one for pick-ups (Android 11)
-    VERY_HORRIBLE -> """🚜"""
-    IMPASSABLE ->    """🚶"""
+val Smoothness.icon get(): @DrawableRes Int = when(this) {
+    EXCELLENT ->     R.drawable.ic_smoothness_skateboard
+    GOOD ->          R.drawable.ic_smoothness_scooter
+    INTERMEDIATE ->  R.drawable.ic_smoothness_bike
+    BAD ->           R.drawable.ic_smoothness_car
+    VERY_BAD ->      R.drawable.ic_smoothness_suv
+    HORRIBLE ->      R.drawable.ic_smoothness_pickup_truck
+    VERY_HORRIBLE -> R.drawable.ic_smoothness_tractor
+    IMPASSABLE ->    R.drawable.ic_smoothness_pedestrian
 }
 
 val Smoothness.titleResId get() = when (this) {
