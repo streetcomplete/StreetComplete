@@ -22,6 +22,9 @@
       android:pathData="M10,19c0,1 0.448,1 1,1h5c0.553,0 1,-0.448 1,-1v-4c0,-0.552 -0.447,-1 -1,-1h-3c-1,0 -3,4 -3,5z"
       android:fillColor="#BBDDF5"/>
   <path
+      android:pathData="m21,12v9h2v-7h2.4121l3.8867,7h2.291l-5.002,-9h-5.5879z"
+      android:fillColor="#99AAB5"/>
+  <path
       android:pathData="M36,21.5c0,0.828 -0.672,1.5 -1.5,1.5H20v-3h14.5c0.828,0 1.5,0.671 1.5,1.5z"
       android:fillColor="#F492A9"/>
   <path
