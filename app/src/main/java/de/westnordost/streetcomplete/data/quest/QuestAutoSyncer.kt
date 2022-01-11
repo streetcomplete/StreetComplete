@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.toLatLon
 import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
