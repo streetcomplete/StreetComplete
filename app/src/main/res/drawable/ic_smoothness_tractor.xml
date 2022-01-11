@@ -11,7 +11,7 @@
       android:fillColor="#77B255"/>
   <path
       android:pathData="M16.535,24.167C16.239,26.283 17.791,28 20,28h9c2.209,0 4,-1.717 4,-3.833V8.833C33,6.716 31.547,5 29.755,5h-7.303c-1.792,0 -3.484,1.716 -3.78,3.833l-2.137,15.334z"
-      android:fillColor="#292F33"/>
+      android:fillColor="@color/smoothness_vehicle_tyre"/>
   <path
       android:pathData="M18.245,25c-0.135,1.104 0.65,2 1.755,2h9c1.104,0 2,-0.896 2,-2V11c0,-1.104 -0.743,-2 -1.66,-2h-7.473c-0.917,0 -1.771,0.896 -1.906,2l-1.716,14z"
       android:fillColor="#BBDDF5"/>
@@ -23,7 +23,7 @@
       android:fillColor="#FFCC4D"/>
   <path
       android:pathData="M8,31m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
-      android:fillColor="#292F33"/>
+      android:fillColor="@color/smoothness_vehicle_tyre"/>
   <path
       android:pathData="M8,31m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
       android:fillColor="#FFCC4D"/>
@@ -32,7 +32,7 @@
       android:fillColor="#77B255"/>
   <path
       android:pathData="M18.222,26.111c0,-4.91 3.979,-8.889 8.889,-8.889 4.91,0 8.889,3.979 8.889,8.889C36,31.021 32.021,35 27.111,35c-4.91,0 -8.889,-3.979 -8.889,-8.889z"
-      android:fillColor="#292F33"/>
+      android:fillColor="@color/smoothness_vehicle_tyre"/>
   <path
       android:pathData="M32.667,26.111c0,3.068 -2.487,5.556 -5.556,5.556 -3.068,0 -5.556,-2.487 -5.556,-5.556 0,-3.068 2.487,-5.556 5.556,-5.556 3.069,0.001 5.556,2.488 5.556,5.556z"
       android:fillColor="#FFCC4D"/>

@@ -11,13 +11,13 @@
       android:fillColor="#BBDDF5"/>
   <path
       android:pathData="M10,31m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
-      android:fillColor="#292F33"/>
+      android:fillColor="@color/smoothness_vehicle_tyre"/>
   <path
       android:pathData="M10,31m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
       android:fillColor="#CCD6DD"/>
   <path
       android:pathData="M27,31m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
-      android:fillColor="#292F33"/>
+      android:fillColor="@color/smoothness_vehicle_tyre"/>
   <path
       android:pathData="M27,31m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
       android:fillColor="#CCD6DD"/>

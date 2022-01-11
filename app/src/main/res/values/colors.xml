@@ -53,6 +53,8 @@
     <color name="traffic_gray_a">#8e9291</color>
     <color name="traffic_gray_b">#4f5250</color>
 
+    <color name="smoothness_vehicle_tyre">#292f33</color>
+
     <color name="traffic_sign_background">@color/traffic_white</color>
 
     <color name="pressed">#ddd</color>
