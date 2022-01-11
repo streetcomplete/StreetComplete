@@ -7,16 +7,16 @@
       android:pathData="M33,31c1,0 1,-1 1,-4 0,-0.692 0,-3.862 -0.041,-5.138C33.939,21.258 33.149,20 32,20H20v-6c0,-1.058 -0.235,-2 -2,-2h-5c-3,0 -6,8 -6,8s-6,0 -6,3v4s-1,0.338 -1,1.957S1,31 2,31h31z"
       android:fillColor="#DD2E44"/>
   <path
-      android:pathData="M9,31m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+      android:pathData="M10,30m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0"
       android:fillColor="#292F33"/>
   <path
-      android:pathData="M9,31m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
+      android:pathData="M10,30m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0"
       android:fillColor="#CCD6DD"/>
   <path
-      android:pathData="M27,31m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+      android:pathData="M26,30m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0"
       android:fillColor="#292F33"/>
   <path
-      android:pathData="M27,31m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"
+      android:pathData="M26,30m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0"
       android:fillColor="#CCD6DD"/>
   <path
       android:pathData="M10,19c0,1 0.448,1 1,1h5c0.553,0 1,-0.448 1,-1v-4c0,-0.552 -0.447,-1 -1,-1h-3c-1,0 -3,4 -3,5z"
