@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.quests.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 import de.westnordost.streetcomplete.util.isRightOf
@@ -45,14 +46,13 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
         if(element !is Node || element.tags.isNotEmpty()) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-
-        val roadsByNodeId = mapData.ways.asSequence()
+        val barrierWays = mapData.ways.asSequence()
             .filter { roadsFilter.matches(it) }
-            .groupByNodeIds()
-        /* filter out nodes of roads that are the end of a road network (dead end), e.g.
-         * https://www.openstreetmap.org/node/280046349 or
-         * https://www.openstreetmap.org/node/56606744 */
-        roadsByNodeId.removeEndNodes()
+
+        val movingWays = mapData.ways.asSequence()
+            .filter { footwaysFilter.matches(it) }
+
+        var crossings = findNodesAtCrossingsOf(barrierWays, movingWays, mapData)
 
         /* require all roads at a shared node to either have no sidewalk tagging or all of them to
          * have sidewalk tagging: If the sidewalk tagging changes at that point, it may be an
@@ -60,80 +60,17 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
          * sidewalk mapping on road-way. F.e.:
          * https://www.openstreetmap.org/node/1839120490 */
         val anySidewalk = setOf("both","left","right")
-        roadsByNodeId.values.removeAll { ways ->
-            if (ways.any { it.tags["sidewalk"] in anySidewalk }) {
-                !ways.all { it.tags["sidewalk"] in anySidewalk }
-            } else {
-                false
+
+        crossings = crossings.filter {
+            it.barrierWays.all { way ->
+                (way.tags["sidewalk"] in anySidewalk)
+            }
+            ||
+            it.barrierWays.all { way ->
+                way.tags["sidewalk"] !in anySidewalk
             }
         }
-
-        val footwaysByNodeId = mapData.ways.asSequence()
-            .filter { footwaysFilter.matches(it) }
-            .groupByNodeIds()
-        /* filter out nodes of footways that are the end of a footway, e.g.
-         * https://www.openstreetmap.org/node/1449039062 or
-         * https://www.openstreetmap.org/node/56606744 */
-        footwaysByNodeId.removeEndNodes()
-
-        /* filter out all nodes that are not shared nodes of both a road and a footway */
-        roadsByNodeId.keys.retainAll(footwaysByNodeId.keys)
-        footwaysByNodeId.keys.retainAll(roadsByNodeId.keys)
-
-        /* finally, filter out all shared nodes where the footway(s) do not actually cross the road(s).
-        *  There are two situations which both need to be handled:
-        *
-        *  1. The shared node is contained in a road way and a footway way and it is not an end
-        *     node of any of the involved ways, e.g.
-        *     https://www.openstreetmap.org/node/8418974983
-        *
-        *  2. The road way or the footway way or both actually end on the shared node but are
-        *     connected to another footway / road way which continues the way after
-        *     https://www.openstreetmap.org/node/1641565064
-        *
-        *  So, for the algorithm, it should be irrelevant to which way(s) the segments around the
-        *  shared node belong, what count are the positions / angles.
-        */
-        footwaysByNodeId.entries.retainAll { (nodeId, footways) ->
-
-            val roads = roadsByNodeId.getValue(nodeId)
-            val neighbouringRoadPositions = roads
-                .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
-                .mapNotNull { mapData.getNode(it)?.position }
-
-            val neighbouringFootwayPositions = footways
-                .flatMap { it.getNodeIdsNeighbouringNodeId(nodeId) }
-                .mapNotNull { mapData.getNode(it)?.position }
-
-            /* So, surrounding the shared node X, in the simple case, we have
-             *
-             * 1. position A, B neighbouring the shared node position which are part of a road way
-             * 2. position P, Q neighbouring the shared node position which are part of the footway
-             *
-             * The footway crosses the road if P is on one side of the polyline spanned by A,X,B and
-             * Q is on the other side.
-             *
-             * How can a footway that has a shared node with a road not cross the latter?
-             * Imagine the road at https://www.openstreetmap.org/node/258003112 would continue to
-             * the south here, then, still none of those footways would actually cross the street
-             *  - only if it continued straight to the north, for example.
-             *
-             * The example brings us to the less simple case: What if several roads share
-             * a node at a crossing-candidate position, like it is the case at every T-intersection?
-             * Also, what if there are more than one footways involved as in the link above?
-             *
-             * We look for if there is ANY crossing, so all polylines involved are checked:
-             * For all roads a car can go through point X, it is checked if not all footways that
-             * go through X are on the same side of the road-polyline.
-             * */
-            val nodePos = mapData.getNode(nodeId)?.position
-            return@retainAll nodePos != null &&
-                neighbouringFootwayPositions.anyCrossesAnyOf(neighbouringRoadPositions, nodePos)
-        }
-
-        return footwaysByNodeId.keys
-            .mapNotNull { mapData.getNode(it) }
-            .filter { it.tags.isEmpty() }
+        return crossings.map { it.node }
     }
 
     override fun createForm() = AddKerbHeightForm()

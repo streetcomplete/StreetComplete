@@ -11,6 +11,8 @@ fun detectWayBarrierIntersection(mapData: MapDataWithGeometry, barrierFilter: El
     val movingWays = mapData.ways.asSequence()
         .filter { pathsFilter.matches(it) }
 
+    var crossings = findNodesAtCrossingsOf(barrierWays, movingWays, mapData)
+
     /* skip all cases involving tunnels, as it is typical to map retaining wall as
      * intersecting path, what is even kind of correct
      *
@@ -21,7 +23,6 @@ fun detectWayBarrierIntersection(mapData: MapDataWithGeometry, barrierFilter: El
      * https://www.openstreetmap.org/node/78135912 + https://www.openstreetmap.org/way/417857886
      * https://www.openstreetmap.org/node/308681095 + https://www.openstreetmap.org/way/558083525
      */
-    var crossings = findNodesAtCrossingsOf(barrierWays, movingWays, mapData)
     crossings = crossings.filter {
         !(
             it.movingWays.any { way ->
