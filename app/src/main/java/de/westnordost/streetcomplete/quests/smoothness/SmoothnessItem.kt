@@ -3,23 +3,15 @@ package de.westnordost.streetcomplete.quests.smoothness
 import android.content.Context
 import android.text.Spannable
 import android.text.SpannableStringBuilder
-import android.text.style.ImageSpan
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.asImageSpan
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.*
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
-
-private fun makeImageSpan(context: Context, drawableResId: Int): ImageSpan? {
-    val drawable = context.getDrawable(drawableResId) ?: return null
-    val size = 36
-    drawable.mutate()
-    drawable.setBounds(0, 0, size, size)
-    return ImageSpan(drawable, ImageSpan.ALIGN_BASELINE)
-}
 
 fun Array<Smoothness>.toItems(context: Context, surface: String) =
     mapNotNull { it.asItem(context, surface) }
@@ -32,8 +24,10 @@ fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness
     val title = context.getString(titleResId)
     val stringBuilder = SpannableStringBuilder(title)
     stringBuilder.append(" X") // one space char + one placeholder char for the image span
+
+    val iconDrawable = context.getDrawable(icon) ?: return null
     stringBuilder.setSpan(
-        makeImageSpan(context, icon),
+        iconDrawable.asImageSpan(36, 36),
         title.length + 1,
         title.length + 2,
         Spannable.SPAN_INCLUSIVE_INCLUSIVE
