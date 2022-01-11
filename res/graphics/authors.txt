@@ -415,7 +415,7 @@ smoothness icons/
     bike.svg                         Twemoji: U+1F6B2
     car.svg                          Twemoji: U+1F697
     pedestrian.svg                   Twemoji: U+1F6B6
-    pickup_truck.svg                 Twemoji: U+1F6FB
+    pickup_truck.svg                 modified from Twemoji: U+1F6FB
     scooter.svg                      Twemoji: U+1F6F4
     skateboard.svg                   Twemoji: U+1F6F9
     suv.svg                          Twemoji: U+1F699
