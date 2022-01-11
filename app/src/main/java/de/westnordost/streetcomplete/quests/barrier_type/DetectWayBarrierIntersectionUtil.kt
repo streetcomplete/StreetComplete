@@ -1,44 +1,34 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.util.isRightOf
 
-fun detectWayBarrierIntersection(mapData: MapDataWithGeometry, barrierFilter: ElementFilterExpression, pathsFilter: ElementFilterExpression): Iterable<Element> {
+data class WaysCrossing(val node: Node, var barrierWays: List<Way>, var movingWays: List<Way>)
 
-    val barriersByNodeId = mapData.ways.asSequence()
-        .filter { barrierFilter.matches(it) }
-        .groupByNodeIds()
+/** Return all crossings with nodes that are at crossing points between waysA and waysB.
+ *  Returned data includes both nodes at actual crossing and ways creating it
+ *  to allow additional filtering
+ *
+ *  In this context, two ways cross if
+ *  1. they intersect at a shared node
+ *  2. the node is not the end node of any of the two ways
+ *  3. the ways actually cross each other, not use touch each other, i.e. the way A
+ *     intersects, then continues on the other side of way B
+ */
+fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>, mapData: MapData): Iterable<WaysCrossing> {
+    val barriersByNodeId = barrierWays.groupByNodeIds()
     /* filter out nodes of roads that are the end of a barrier not continuing further */
     barriersByNodeId.removeEndNodes()
 
-    val waysByNodeId = mapData.ways.asSequence()
-        .filter { pathsFilter.matches(it) }
-        .groupByNodeIds()
-    /* filter out nodes of footways that are the end of a footway, e.g.
+    val waysByNodeId = movingWays.groupByNodeIds()
+
+    /* filter out nodes of footways that are the end of a graph, e.g.
+     * in case of ways representing footways following node would be skipped
      * https://www.openstreetmap.org/node/9124092987 */
     waysByNodeId.removeEndNodes()
 
-    /* skip all cases involving tunnels, as it is typical to map retaining wall as
-     * intersecting path, what is even kind of correct
-     *
-     * F.e.:
-     * https://www.openstreetmap.org/node/5074693713
-     *
-     * For bridges it is more dubious but also in active use, see
-     * https://www.openstreetmap.org/node/78135912 + https://www.openstreetmap.org/way/417857886
-     * https://www.openstreetmap.org/node/308681095 + https://www.openstreetmap.org/way/558083525
-     */
-    waysByNodeId.values.removeAll { ways ->
-        ways.any {
-            (it.tags.containsKey("tunnel") && it.tags["tunnel"] != "no")
-                ||
-                (it.tags.containsKey("bridge") && it.tags["bridge"] != "no")
-        }
-    }
+
 
     /* filter out all nodes that are not shared nodes of both a road and a footway */
     barriersByNodeId.keys.retainAll(waysByNodeId.keys)
@@ -93,9 +83,47 @@ fun detectWayBarrierIntersection(mapData: MapDataWithGeometry, barrierFilter: El
             neighbouringWayPositions.anyCrossesAnyOf(neighbouringBarrierPositions, nodePos)
     }
 
-    return waysByNodeId.keys
-        .mapNotNull { mapData.getNode(it) }
-        .filter { it.tags.isEmpty() }
+    val resultMap = mutableMapOf<Long, WaysCrossing>()
+    waysByNodeId.forEach { (nodeId, passableWays) ->
+        resultMap.putIfAbsent(nodeId, WaysCrossing(mapData.getNode(nodeId)!!, mutableListOf<Way>(), mutableListOf<Way>()))
+        resultMap[nodeId]!!.movingWays += passableWays
+    }
+    barriersByNodeId.forEach { (nodeId, barrierWays) ->
+        if(resultMap.contains(nodeId)){
+            resultMap[nodeId]!!.barrierWays += barrierWays
+        }
+    }
+    return resultMap.values;
+}
+
+fun detectWayBarrierIntersection(mapData: MapDataWithGeometry, barrierFilter: ElementFilterExpression, pathsFilter: ElementFilterExpression): Iterable<Element> {
+    val barrierWays = mapData.ways.asSequence()
+        .filter { barrierFilter.matches(it) }
+
+    val movingWays = mapData.ways.asSequence()
+        .filter { pathsFilter.matches(it) }
+
+    /* skip all cases involving tunnels, as it is typical to map retaining wall as
+     * intersecting path, what is even kind of correct
+     *
+     * F.e.:
+     * https://www.openstreetmap.org/node/5074693713
+     *
+     * For bridges it is more dubious but also in active use, see
+     * https://www.openstreetmap.org/node/78135912 + https://www.openstreetmap.org/way/417857886
+     * https://www.openstreetmap.org/node/308681095 + https://www.openstreetmap.org/way/558083525
+     */
+    var crossings = findNodesAtCrossingsOf(barrierWays, movingWays, mapData)
+    crossings = crossings.filter {
+        !(
+            it.movingWays.any { way ->
+                (way.tags.containsKey("tunnel") && way.tags["tunnel"] != "no")
+                    ||
+                    (way.tags.containsKey("bridge") && way.tags["bridge"] != "no")
+            }
+            )
+    }
+    return crossings.map { it.node }
 }
 
 /** get the node id(s) neighbouring to the given node id */
