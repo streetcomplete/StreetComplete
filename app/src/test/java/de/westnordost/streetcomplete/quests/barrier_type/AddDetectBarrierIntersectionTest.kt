@@ -42,7 +42,7 @@ class AddDetectBarrierIntersectionTest {
     */
     @Test
     fun `simple crossing with tags on node is skipped`() {
-        val shared = node(2, p(0.0, 0.0), tags = mapOf("anything" to "whateverr"))
+        val shared = node(2, p(0.0, 0.0), tags = mapOf("anything" to "whatever"))
         val mapData = TestMapDataWithGeometry(listOf(
             node(1, p(0.0, -1.0)),
             shared,
