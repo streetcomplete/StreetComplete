@@ -58,12 +58,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
                 changes.deleteIfExists("smoothness:date")
                 changes.deleteCheckDatesForKey("smoothness")
             }
-            is IsActuallyStepsAnswer -> {
-                changes.modify("highway", "steps")
-                changes.deleteIfExists("smoothness")
-                changes.deleteIfExists("smoothness:date")
-                changes.deleteCheckDatesForKey("smoothness")
-            }
+            is IsActuallyStepsAnswer -> throw IllegalStateException()
         }
     }
 }

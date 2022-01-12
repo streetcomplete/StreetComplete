@@ -68,6 +68,9 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
         val way = osmElement as? Way ?: return null
         if (way.isArea()) return null
 
+        // only in AddPathSmoothness quest
+        if (!ALL_PATHS_EXCEPT_STEPS.contains(way.tags["highway"])) return null
+
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
             applyAnswer(IsActuallyStepsAnswer)
         }
