@@ -70,7 +70,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
                 way.tags["sidewalk"] !in anySidewalk
             }
         }
-        return crossings.map { it.node }
+        return crossings.map { it.node }.filter { it.tags.isEmpty() }
     }
 
     override fun createForm() = AddKerbHeightForm()
