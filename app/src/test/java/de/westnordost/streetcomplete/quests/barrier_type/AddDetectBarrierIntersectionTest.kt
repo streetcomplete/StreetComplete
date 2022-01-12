@@ -38,6 +38,24 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
+      ══╪══
+    */
+    @Test
+    fun `simple crossing with tags on node is skipped`() {
+        val shared = node(2, p(0.0, 0.0), tags = mapOf("anything" to "whateverr"))
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(1, p(0.0, -1.0)),
+            shared,
+            node(3, p(0.0, +1.0)),
+            node(4, p(-1.0, 0.0)),
+            node(5, p(+1.0, 0.0)),
+            way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
+            way(2, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "wall")),
+        ))
+        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    /*
       ═══╡
     */
     @Test
