@@ -91,14 +91,6 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
             it.value
         )
     }
-    /*
-    // TODO: is code above really better and equivalent
-    val resultMap = mutableMapOf<Long, WaysCrossing>()
-    waysByNodeId.forEach { (nodeId, passableWays) ->
-        resultMap.putIfAbsent(nodeId, WaysCrossing(mapData.getNode(nodeId)!!, mutableListOf(), mutableListOf()))
-        resultMap[nodeId]!!.movingWays += passableWays
-    }
-    */
     barriersByNodeId.forEach { (nodeId, barrierWays) ->
         if (resultMap.contains(nodeId)) {
             resultMap[nodeId]!!.barrierWays += barrierWays
