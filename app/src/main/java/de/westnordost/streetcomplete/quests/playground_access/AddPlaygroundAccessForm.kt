@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.playground_access;
+package de.westnordost.streetcomplete.quests.playground_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment

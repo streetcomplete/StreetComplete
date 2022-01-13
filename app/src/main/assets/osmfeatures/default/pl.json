@@ -5515,10 +5515,6 @@
                     "name": "Pochylnia okrętowa",
                     "terms": "pochylnia"
                 },
-                "leisure/slipway_point": {
-                    "name": "Pochylnia okrętowa",
-                    "terms": "pochylnia"
-                },
                 "leisure/sports_centre": {
                     "name": "Centrum sportowe",
                     "terms": "centrum sportowe,ośrodek sportowy,ośrodek sportów,kompleks sportowy,klub sportowy"
@@ -7834,30 +7830,6 @@
                     "name": "Zakaz skrętu w prawo",
                     "terms": "zakaz,prawoskręt"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Zakaz jazdy prosto",
-                    "terms": "zakaz,prosto"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Zakaz zawracania",
-                    "terms": "zakaz,zawracanie"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Nakaz skrętu w lewo",
-                    "terms": "tylko w lewo,nakaz skrętu w lewo"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Nakaz skrętu w prawo",
-                    "terms": "tylko w prawo,nakaz skrętu w prawo"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Nakaz jazdy prosto",
-                    "terms": "tylko prosto,nakaz jazdy na wprost"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Tylko zawracanie",
-                    "terms": "tylko zawracanie,nakaz zawracania"
-                },
                 "type/route": {
                     "name": "Trasa/linia",
                     "terms": "trasa,linia"
@@ -7865,10 +7837,6 @@
                 "type/route/aerialway": {
                     "name": "Trasa kolei linowej",
                     "terms": "trasa kolei linowej,kolej linowa"
-                },
-                "type/route/bicycle": {
-                    "name": "Trasa rowerowa",
-                    "terms": "trasa rowerowa,szlak rowerowy,rowery"
                 },
                 "type/route/bus": {
                     "name": "Linia autobusowa",

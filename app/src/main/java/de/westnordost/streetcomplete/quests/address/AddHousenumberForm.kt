@@ -50,12 +50,12 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private val isShowingHouseNumberHint: Boolean get() = houseNumberInputTextColors != null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val prevMode = savedInstanceState?.getString(INTERFACE_MODE)?.let { InterfaceMode.valueOf(it) }
         interfaceMode = prevMode ?: InterfaceMode.HOUSENUMBER
         setLayoutBasedOnInterfaceMode()
-        return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

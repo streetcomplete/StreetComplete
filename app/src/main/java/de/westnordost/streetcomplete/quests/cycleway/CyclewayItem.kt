@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
     Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())

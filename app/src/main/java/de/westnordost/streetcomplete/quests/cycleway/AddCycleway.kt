@@ -13,8 +13,14 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-
-import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
+import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
+import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
+import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
+import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
@@ -86,7 +92,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
             if (maybeSeparatelyMappedCyclewayGeometries.isNotEmpty()) {
                 // filter out roads with missing cycleways that are near footways
                 roadsWithMissingCycleway.removeAll { road ->
-                    val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
+                    val minDistToWays = getMinDistanceToWays(road.tags).toDouble()
                     val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
                     roadGeometry?.isNearAndAligned(
                         minDistToWays,
@@ -110,13 +116,12 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
-    private fun estimatedWidth(tags: Map<String, String>): Float {
-        val width = tags["width"]?.toFloatOrNull()
-        if (width != null) return width
-        val lanes = tags["lanes"]?.toIntOrNull()
-        if (lanes != null) return lanes * 3f
-        return 12f
-    }
+    private fun getMinDistanceToWays(tags: Map<String, String>): Float =
+        (
+            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags) ) +
+            (estimateParkingOffRoadWidth(tags) ?: 0f)
+        ) / 2f +
+        4f // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false

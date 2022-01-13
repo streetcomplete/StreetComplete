@@ -32,6 +32,7 @@ class AddOpeningHours (
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
               or tourism = information and information = office
+              or (amenity = recycling and recycling:batteries = yes)
               or """.trimIndent() +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
@@ -89,7 +90,7 @@ class AddOpeningHours (
           or opening_hours older today -1 years
         )
         and access !~ private|no
-        and (name or brand or noname = yes or name:signed = no)
+        and (name or brand or noname = yes or name:signed = no or amenity=recycling)
         and opening_hours:signed != no
     """.trimIndent()).toElementFilterExpression() }
 

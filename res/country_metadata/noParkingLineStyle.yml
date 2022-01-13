@@ -2,6 +2,8 @@
 # 
 # unless stated otherwise, the lines are continuous
 # 
+# parking and stopping restrictions researched (so far) for:
+# https://ent8r.github.io/blacklistr/?data=AT,CH,FR,IE,GB,DE,NL,SR,SE,HK,JP,LT,LV,MN,MT,NA,SG,TW,UA,ZA,US-MD,ZA,LS,SZ,MZ,NA,BW,ZW,AO,ZM,MW,MG,TZ,RW,BI,KE,UG,CD,CG,GA,GQ,ST,CF,CM,TD,SS,SD,ET,SO,DJ,ER,NE,BF,ML,CI,GH,NG,BJ,TG,SN,GN,SL,LR,GW,GM,MR,AU-QLD,AU-NSW,AU-SA,AU-VIC,AU-TAS,AU-ACT,AU-NT,AU-WA,FJ,NZ,AS,PG,SB,TL,ID,SG,MY,BN,PH,TW,JP,AR,UY,CL,MU,IE,GB,DE,CH,MN,SE,UA,LV,LT,MT,US-MD,NO,IS,RU,BR,PY,BO,ES,TH,KH,LA,MM,IN,BD,LK,NP,BY,PL,RS,BE,IL,FI,GR
 
 AT: dashed yellow # https://www.oeamtc.at/thema/vorschriften-strafen/gelbe-linien-am-strassenrand-16181806 , https://www.fuerboeck.at/verkehrsrecht/bodenmarkierungen/halteverbot-parkverbot/
 BD: yellow # https://www.rhd.gov.bd/Documents/ConvDocs/Road%20Sign%20Manual%20Volume-1.pdf (road marking F11)
@@ -13,6 +15,7 @@ ES: dashed yellow # https://www.google.de/maps/@36.7147712,-4.428612,3a,73.9y,17
 # FI: none, see https://www.finlex.fi/fi/laki/ajantasa/2018/20180729
 FR: dashed yellow # https://www.lepermislibre.fr/code-route/cours/marquage-au-sol-parking
 GB: double yellow # https://en.wikipedia.org/wiki/Parking_restrictions_in_the_United_Kingdom#Yellow_lines , single lines mean it is restricted during certain times
+GR: dashed yellow # https://www.yme.gr/images/articleimages/odiki_kykloforia_kai_asfaleia/kodikas_odikis_kykloforias/Άτυπη_κωδικοποιηση_ΚΟΚ_2021-11-30_.pdf (Κώδικας Οδικής Κυκλοφορίας (Κ.Ο.Κ) - Άρθρο 5 Οριζόντια σήμανση οδών 5. Οι ειδικές διαγραμμίσεις είναι (δ) )
 IE: double yellow # https://assets.gov.ie/34719/d2683724881f4477bb2babe78c282e6f.pdf (Traffic Signs Manual Chapter 7.6)
 IN: yellow # The Nepali and Bangladeshi road sign manual look the same and mention that they have been developed together (with the Indian version), so extrapolating
 JP: dashed yellow on curb # http://www.adcidl.com/pdf/Japan-Road-Traffic-Signs.pdf
@@ -32,6 +35,7 @@ RS: dashed yellow with Xs # https://www.putevi-srbije.rs/images/pdf/regulativa/P
 RU: dashed yellow # http://www.consultant.ru/document/cons_doc_LAW_2709/7e7fb48d864ef8a4981433ad2a6390113c80e119/ (ПДД РФ, 1. Горизонтальная разметка 1.10), see also https://megapdd.ru/book/pdd-section-12
 SE: dashed yellow # https://en.wikipedia.org/wiki/Road_signs_in_Sweden#Road_markings
 SG: double yellow # https://www.google.de/maps/@1.2982129,103.8477809,3a,75y,291.12h,92.87t/data=!3m6!1e1!3m4!1sXCOEC8fDY3SMO6MgEu276A!2e0!7i16384!8i8192 and https://mothership.sg/2019/03/waiting-double-yellow-lines-singapore/ - single yellow means no parking from 7:00-19:00
+SI: yellow zig-zags # http://www.pisrs.si/Pis.web/pregledPredpisa?id=PRAV11505 ( Pravilnik o prometni signalizaciji in prometni opremi na cestah, sign no 5331)
 TH: yellow-white on curb # https://www.angloinfo.com/how-to/thailand/transport/driving/parking (matches definition of "no parking")
 SR: dashed yellow # assumption based on that traffic rules are usually the same as in the Netherlands
 TW: red # https://www.google.de/maps/@24.1443372,120.6724884,3a,77.3y,139.35h,80.66t/data=!3m9!1e1!3m7!1sH5riH9L2ecA62mP_OoymPw!2e0!7i16384!8i8192!9m2!1b1!2i37 and https://english.gov.taipei/News_Content.aspx?n=ADAE9018C6CFA1FE&sms=5B794C46F3CDE718&s=E48C7D67A993224A . Yellow lines means no parking from 7:00-20:00

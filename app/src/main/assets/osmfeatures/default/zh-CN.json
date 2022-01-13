@@ -343,6 +343,9 @@
                 "boundary": {
                     "label": "类型"
                 },
+                "branch_brand": {
+                    "label": "支线"
+                },
                 "brand": {
                     "label": "品牌",
                     "terms": "品牌,牌子,商标"
@@ -370,7 +373,7 @@
                     "placeholder": "2, 4, 6, 8..."
                 },
                 "building/levels": {
-                    "label": "楼层数",
+                    "label": "地上楼层数",
                     "placeholder": "2, 4, 6...",
                     "terms": "楼层,层数"
                 },
@@ -544,6 +547,12 @@
                 "crossing": {
                     "label": "类型"
                 },
+                "crossing/barrier": {
+                    "options": {
+                        "no": "否",
+                        "yes": "是"
+                    }
+                },
                 "crossing/island": {
                     "label": "安全岛"
                 },
@@ -552,22 +561,27 @@
                     "options": {
                         "american": "美式",
                         "asian": "亚洲菜",
+                        "bubble_tea": "奶茶",
                         "burger": "汉堡",
                         "chicken": "鸡",
                         "chinese": "中餐",
                         "coffee_shop": "咖啡店",
+                        "donut": "甜甜圈",
                         "french": "法国菜",
                         "german": "德国菜",
                         "greek": "希腊菜",
+                        "hot_dog": "热狗",
                         "ice_cream": "冰激凌",
                         "indian": "印度菜",
                         "italian": "意大利菜",
                         "japanese": "日本料理",
                         "kebab": "烤肉",
                         "mexican": "墨西哥料理",
+                        "pankcake": "薄饼",
                         "pizza": "比萨",
                         "regional": "地区的",
                         "sandwich": "三明治",
+                        "seafood": "海鲜",
                         "sushi": "寿司",
                         "thai": "泰国菜",
                         "turkish": "土耳其菜",
@@ -908,8 +922,14 @@
                     "label": "Fix Me",
                     "terms": "fixme,帮助,请求,修复我"
                 },
+                "flag/name": {
+                    "label": "旗帜名称"
+                },
                 "flag/type": {
                     "label": "旗帜类型"
+                },
+                "flag/wikidata": {
+                    "label": "旗帜维基数据"
                 },
                 "floating": {
                     "label": "漂浮"
@@ -1269,7 +1289,7 @@
                     "terms": "楼层数,楼层,层数"
                 },
                 "level_semi": {
-                    "label": "楼层",
+                    "label": "地上楼层数",
                     "terms": "楼层,层数"
                 },
                 "liaison": {
@@ -1648,8 +1668,28 @@
                     }
                 },
                 "piste/grooming_downhill": {
+                    "label": "Grooming",
                     "options": {
-                        "classic": "经典的"
+                        "backcountry": "Backcountry - no grooming",
+                        "classic": "经典的",
+                        "mogul": "Mogul"
+                    }
+                },
+                "piste/grooming_hike": {
+                    "label": "Grooming",
+                    "options": {
+                        "backcountry": "Backcountry - Snowshoeing",
+                        "classic": "Classic - Winter Hiking"
+                    }
+                },
+                "piste/grooming_nordic": {
+                    "label": "Grooming",
+                    "options": {
+                        "backcountry": "Backcountry, no grooming",
+                        "classic": "Classic",
+                        "classic+skating": "Classic and Skating",
+                        "scooter": "Scooter/Snowmobile",
+                        "skating": "Skating"
                     }
                 },
                 "piste/type": {
@@ -1753,6 +1793,9 @@
                 "rating": {
                     "label": "额定功率"
                 },
+                "rcn_ref": {
+                    "label": "Cycling Code"
+                },
                 "real_fire": {
                     "label": "真实火焰"
                 },
@@ -1764,13 +1807,17 @@
                     "options": {
                         "centre": "中心",
                         "container": "回收容器"
-                    }
+                    },
+                    "placeholder": "Container, Center"
                 },
                 "ref": {
                     "label": "编号"
                 },
                 "ref/isil": {
                     "label": "ISIL 编码"
+                },
+                "ref/vatin": {
+                    "label": "VAT ID Number"
                 },
                 "ref_aeroway_gate": {
                     "label": "登机口编号"
@@ -1844,6 +1891,9 @@
                 "rooms": {
                     "label": "房间数"
                 },
+                "roundtrip": {
+                    "label": "Forms Loop"
+                },
                 "route": {
                     "label": "类型"
                 },
@@ -1852,6 +1902,9 @@
                 },
                 "ruins": {
                     "label": "类型"
+                },
+                "rwn_ref": {
+                    "label": "Walking Code"
                 },
                 "sac_scale": {
                     "label": "远足难度",
@@ -1888,6 +1941,7 @@
                         "danger_left": "左侧危险",
                         "danger_right": "右侧危险",
                         "port": "港口",
+                        "starboard": "右舷",
                         "waterway_left": "航道左侧",
                         "waterway_right": "航道右侧"
                     }
@@ -1915,7 +1969,16 @@
                 "seamark/buoy_lateral/category": {
                     "label": "分类",
                     "options": {
-                        "port": "港口"
+                        "channel_left": "左侧航道",
+                        "channel_right": "右侧航道",
+                        "danger_left": "左侧危险",
+                        "danger_right": "右侧危险",
+                        "port": "港口",
+                        "preferred_channel_port": "航道左侧优先",
+                        "preferred_channel_starboard": "航道右侧优先",
+                        "starboard": "Starboard",
+                        "waterway_left": "航道左侧",
+                        "waterway_right": "航道右侧"
                     }
                 },
                 "seamark/buoy_lateral/colour": {
@@ -2012,6 +2075,9 @@
                 "shop": {
                     "label": "类型"
                 },
+                "shower": {
+                    "label": "Showers"
+                },
                 "siren/purpose": {
                     "label": "目的"
                 },
@@ -2071,6 +2137,7 @@
                         "aerial imagery": "航空影像",
                         "gps": "GPS",
                         "local knowledge": "本地知识",
+                        "osm notes": "OpenStreetMap 注记",
                         "streetlevel imagery": "街景照片",
                         "survey": "测量"
                     }
@@ -2213,6 +2280,31 @@
                     "label": "最近察勘日期",
                     "terms": "上次,最近,检查,调查,确认,时间,日期"
                 },
+                "survey_point/datum_aligned": {
+                    "label": "与当地大地基准对齐",
+                    "terms": "大地基准,大地参考"
+                },
+                "survey_point/purpose": {
+                    "label": "目的",
+                    "options": {
+                        "both": "双向",
+                        "horizontal": "水平对齐",
+                        "vertical": "竖直对齐"
+                    }
+                },
+                "survey_point/structure": {
+                    "label": "结构",
+                    "options": {
+                        "beacon": "信标",
+                        "block": "路障",
+                        "bracket": "支架",
+                        "cairn": "石墩/玛尼石",
+                        "cut": "剪切",
+                        "magnet": "磁铁",
+                        "pillar": "柱",
+                        "pole": "柱"
+                    }
+                },
                 "swimming_pool": {
                     "label": "类型"
                 },
@@ -2243,6 +2335,9 @@
                 },
                 "telecom": {
                     "label": "类型"
+                },
+                "telecom/medium": {
+                    "label": "Medium"
                 },
                 "tidal": {
                     "label": "处于潮间带"
@@ -2381,6 +2476,12 @@
                     },
                     "terms": "使用类型,利用类型"
                 },
+                "utility": {
+                    "label": "Utility"
+                },
+                "utility_semi": {
+                    "label": "Utilities"
+                },
                 "valve": {
                     "label": "类型"
                 },
@@ -2465,6 +2566,7 @@
                     "label": "水源"
                 },
                 "water_tank/volume": {
+                    "label": "Volume (Liters)",
                     "placeholder": "10000, 20000, 30000…"
                 },
                 "water_volume": {
@@ -2528,6 +2630,9 @@
                 }
             },
             "presets": {
+                "addr/interpolation": {
+                    "name": "Address Interpolation"
+                },
                 "address": {
                     "name": "地址",
                     "terms": "地址,址"
@@ -2899,8 +3004,12 @@
                 "amenity/fast_food/ice_cream": {
                     "name": "冰淇淋快餐"
                 },
+                "amenity/fast_food/juice": {
+                    "name": "Juice Fast Food"
+                },
                 "amenity/fast_food/kebab": {
-                    "name": "烤串炸串店"
+                    "name": "烤串炸串店",
+                    "terms": "烧烤"
                 },
                 "amenity/fast_food/mexican": {
                     "name": "墨西哥快餐",
@@ -2941,7 +3050,7 @@
                     "name": "闲置物品交换屋"
                 },
                 "amenity/grave_yard": {
-                    "name": "墓地",
+                    "name": "坟场",
                     "terms": "墓地,坟地"
                 },
                 "amenity/grit_bin": {
@@ -2965,7 +3074,7 @@
                     "terms": "网吧,上网咖啡馆,上网咖啡厅"
                 },
                 "amenity/karaoke_box": {
-                    "name": "KTV亭",
+                    "name": "KTV",
                     "terms": "卡拉ok,卡拉,ktv,迷你ktv,迷你卡拉ok,k歌,点唱,唱歌,唱吧,点唱亭,唱"
                 },
                 "amenity/kindergarten": {
@@ -3144,7 +3253,8 @@
                     "terms": "邮局,邮政局"
                 },
                 "amenity/prep_school": {
-                    "name": "补习班/培训班/辅导班"
+                    "name": "补习班",
+                    "aliases": "培训班\n辅导班"
                 },
                 "amenity/prison": {
                     "name": "监狱/看守所",
@@ -3386,8 +3496,8 @@
                     "name": "移动厕所"
                 },
                 "amenity/townhall": {
-                    "name": "市政府",
-                    "terms": "市政府,市政厅,大会堂"
+                    "name": "乡镇县市区政府",
+                    "terms": "市政府,县政府,区政府,乡政府,镇政府,村礼堂,村委会,市政厅,大会堂,市政中心"
                 },
                 "amenity/townhall/city": {
                     "name": "市政府",
@@ -3557,8 +3667,8 @@
                     "terms": "旋转木马,旋转,回转,环绕,木马,转圈,骑术,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
                 },
                 "attraction/dark_ride": {
-                    "name": "暗黑骑士",
-                    "terms": "黑暗,室内,骑乘,鬼,轨道,电影,音效,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
+                    "name": "黑暗探险",
+                    "terms": "幽灵列车,黑暗,室内,骑乘,鬼,轨道,电影,音效,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,景点,黑暗骑乘,暗黑骑士,黑暗骑士"
                 },
                 "attraction/drop_tower": {
                     "name": "跳楼机"
@@ -3779,8 +3889,8 @@
                     "terms": "学院,建筑,教学楼,实验室,校舍,宿舍,大学,院校,大专,校园,学校,学习"
                 },
                 "building/commercial": {
-                    "name": "商务办公楼",
-                    "terms": "商业建筑物,写字楼,办公楼"
+                    "name": "商务建筑物",
+                    "terms": "商务办公楼,商业建筑物,写字楼,办公楼"
                 },
                 "building/construction": {
                     "name": "在建建筑",
@@ -3791,7 +3901,7 @@
                 },
                 "building/detached": {
                     "name": "独栋住宅",
-                    "terms": "独立式房屋"
+                    "terms": "独立式房屋,独栋式别墅"
                 },
                 "building/dormitory": {
                     "name": "宿舍",
@@ -3833,7 +3943,7 @@
                     "terms": "宾馆建筑"
                 },
                 "building/house": {
-                    "name": "洋房",
+                    "name": "别墅楼",
                     "terms": "房屋"
                 },
                 "building/houseboat": {
@@ -3869,8 +3979,8 @@
                     "terms": "住宅建筑物,住宅建筑"
                 },
                 "building/retail": {
-                    "name": "商场建筑",
-                    "terms": "零售业建筑,百货,购物中心,商场"
+                    "name": "零售建筑物",
+                    "terms": "商业建筑,百货,购物中心,商场,零售业建筑"
                 },
                 "building/roof": {
                     "name": "开放式建筑",
@@ -3886,7 +3996,7 @@
                 },
                 "building/semidetached_house": {
                     "name": "半独立式房屋",
-                    "terms": "双拼,别墅,半独立,房屋"
+                    "terms": "双拼,别墅,半独立,房屋,双拼式别墅"
                 },
                 "building/service": {
                     "name": "服务建筑"
@@ -4384,7 +4494,8 @@
                     "name": "公交站"
                 },
                 "highway/construction": {
-                    "name": "关闭的道路"
+                    "name": "关闭的道路",
+                    "terms": "关闭,封闭,施工,在建,绕道,封路,修路,挖路"
                 },
                 "highway/corridor": {
                     "name": "室内走廊",
@@ -4557,7 +4668,8 @@
                     "name": "卡丁车赛道"
                 },
                 "highway/raceway/motocross": {
-                    "name": "摩托车越野赛道"
+                    "name": "摩托车越野赛道",
+                    "terms": "摩托车赛道,摩托赛道,摩托越野赛道,摩托车赛车道,摩托赛车道,摩托越野赛车道"
                 },
                 "highway/residential": {
                     "name": "住宅区道路",
@@ -4569,10 +4681,11 @@
                 },
                 "highway/road": {
                     "name": "未知种类道路",
-                    "terms": "未知种类道路,路,道路,街道,马路"
+                    "terms": "不明种类道路,路,道路,街道,马路"
                 },
                 "highway/road/bridge": {
-                    "name": "未知道路桥梁"
+                    "name": "未知种类桥梁",
+                    "terms": "不明道路,不明等级,无等级"
                 },
                 "highway/secondary": {
                     "name": "次要道路",
@@ -4612,7 +4725,7 @@
                 },
                 "highway/speed_camera": {
                     "name": "超速摄像头",
-                    "terms": "超速摄像头,电子警察,电子眼"
+                    "terms": "超速摄像头,摄像头,监控头,电子警察,电子眼"
                 },
                 "highway/steps": {
                     "name": "阶梯",
@@ -4674,8 +4787,8 @@
                     "terms": "回车场 (o形),回车场,路末环岛"
                 },
                 "highway/unclassified": {
-                    "name": "小型/未分级道路",
-                    "terms": "道路,路,公路,街道,马路,小型道路,未分级道路"
+                    "name": "小型/等级外道路",
+                    "terms": "道路,路,公路,街道,马路,小型道路,未分级道路,小型/未分级道路,无等级道路,未知等级"
                 },
                 "historic": {
                     "name": "历史地点",
@@ -4803,14 +4916,14 @@
                     "terms": "棕土,棕地,工商业使用过但被弃置的土地,待建设用地,空地,规划用地"
                 },
                 "landuse/cemetery": {
-                    "name": "墓地",
-                    "terms": "墓地"
+                    "name": "墓园区",
+                    "terms": "墓地,墓园,陵园"
                 },
                 "landuse/churchyard": {
                     "name": "教堂庭院"
                 },
                 "landuse/commercial": {
-                    "name": "商务办公用地",
+                    "name": "商务区",
                     "terms": "商业区,商业用地,办公用地,商务"
                 },
                 "landuse/construction": {
@@ -4944,7 +5057,7 @@
                     "terms": "公寓区,楼区,公寓楼,公寓,住宅,住宅区,住所,套间"
                 },
                 "landuse/retail": {
-                    "name": "购物区",
+                    "name": "零售区",
                     "terms": "零售场所,购物区,商业区,商业用地"
                 },
                 "landuse/vineyard": {
@@ -5027,11 +5140,17 @@
                 "leisure/fitness_station/balance_beam": {
                     "name": "平衡木"
                 },
+                "leisure/fitness_station/box": {
+                    "name": "健身箱"
+                },
                 "leisure/fitness_station/horizontal_bar": {
                     "name": "单杠"
                 },
                 "leisure/fitness_station/horizontal_ladder": {
                     "name": "水平前进攀爬架"
+                },
+                "leisure/fitness_station/hyperextension": {
+                    "name": "Hyperextension Station"
                 },
                 "leisure/fitness_station/parallel_bars": {
                     "name": "双杠"
@@ -5163,6 +5282,10 @@
                 "leisure/pitch/netball": {
                     "name": "无挡板篮球/篮网球场"
                 },
+                "leisure/pitch/paintball": {
+                    "name": "水弹射击场",
+                    "terms": "漆弹场,彩弹场"
+                },
                 "leisure/pitch/rugby_league": {
                     "name": "橄榄球联盟场地",
                     "terms": "橄榄球联盟场地"
@@ -5170,6 +5293,10 @@
                 "leisure/pitch/rugby_union": {
                     "name": "橄榄球联合场地",
                     "terms": "橄榄球联合场地"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "射击场",
+                    "terms": "射击馆"
                 },
                 "leisure/pitch/shuffleboard": {
                     "name": "沙壶球场"
@@ -5217,8 +5344,9 @@
                     "name": "船台",
                     "terms": "船台"
                 },
-                "leisure/slipway_point": {
-                    "name": "船台下水滑道"
+                "leisure/slipway_drivable": {
+                    "name": "滑道（可行驶）",
+                    "terms": "滑道,滑船道,船台滑道"
                 },
                 "leisure/sports_centre": {
                     "name": "体育中心/综合体育场",
@@ -5226,6 +5354,10 @@
                 },
                 "leisure/sports_centre/climbing": {
                     "name": "攀岩墙"
+                },
+                "leisure/sports_centre/shooting": {
+                    "name": "射击场设施",
+                    "terms": "射击馆设施"
                 },
                 "leisure/sports_centre/swimming": {
                     "name": "游泳设施",
@@ -5298,6 +5430,9 @@
                     "name": "桥梁范围",
                     "terms": "桥梁范围,桥面轮廓,桥梁区域,桥梁边缘,桥面,桥体,桥梁,大桥,桥"
                 },
+                "man_made/bunker_silo": {
+                    "name": "Bunker Silo"
+                },
                 "man_made/cairn": {
                     "name": "石墩/玛尼石"
                 },
@@ -5316,7 +5451,8 @@
                     "terms": "起重机,起重,吊车,天车,行车,航吊,塔吊,重物,搬运"
                 },
                 "man_made/cross": {
-                    "name": "十字架"
+                    "name": "十字架",
+                    "terms": "十字架"
                 },
                 "man_made/cutline": {
                     "name": "树林分界线",
@@ -5344,6 +5480,9 @@
                 "man_made/goods_conveyor": {
                     "name": "货物传送带",
                     "terms": "传送带,输送带,输送机"
+                },
+                "man_made/groyne": {
+                    "name": "Groin"
                 },
                 "man_made/lighthouse": {
                     "name": "灯塔",
@@ -5387,10 +5526,12 @@
                     "name": "手机通信塔"
                 },
                 "man_made/mast/communication/radio": {
-                    "name": "广播塔"
+                    "name": "广播塔",
+                    "terms": "信号塔,电波塔,电台"
                 },
                 "man_made/mast/communication/television": {
-                    "name": "电视塔"
+                    "name": "电视塔",
+                    "terms": "信号塔,电台"
                 },
                 "man_made/mineshaft": {
                     "name": "矿井",
@@ -5411,8 +5552,8 @@
                     "terms": "油井"
                 },
                 "man_made/pier": {
-                    "name": "码头",
-                    "terms": "码头"
+                    "name": "栈桥",
+                    "terms": "栈桥,码头,水上平台"
                 },
                 "man_made/pier/floating": {
                     "name": "浮动码头",
@@ -5456,7 +5597,8 @@
                     "terms": "监视器,监控,探头,监视探头"
                 },
                 "man_made/surveillance/camera": {
-                    "name": "监控摄像头"
+                    "name": "监控摄像头",
+                    "terms": "摄像头,监控头,电子眼,电子警察"
                 },
                 "man_made/survey_point": {
                     "name": "测量点",
@@ -5490,9 +5632,19 @@
                 "man_made/tower/observation": {
                     "name": "瞭望塔"
                 },
+                "man_made/tower/pagoda": {
+                    "name": "Pagoda"
+                },
                 "man_made/tunnel": {
                     "name": "隧道范围",
                     "terms": "隧道范围,隧道区域,隧道,地道,下立交"
+                },
+                "man_made/utility_pole": {
+                    "name": "Utility Pole"
+                },
+                "man_made/video_wall": {
+                    "name": "数码显示屏",
+                    "terms": "数码显示屏,数码屏,数码屏幕"
                 },
                 "man_made/wastewater_plant": {
                     "name": "污水处理厂",
@@ -5531,6 +5683,9 @@
                 },
                 "marker": {
                     "name": "标记物"
+                },
+                "marker/utility": {
+                    "name": "Utility Marker"
                 },
                 "marker/utility/power": {
                     "name": "发电站"
@@ -5604,6 +5759,10 @@
                     "name": "温泉",
                     "terms": "汤泉,温泉井,地热泉"
                 },
+                "natural/marsh": {
+                    "name": "草本沼泽",
+                    "terms": "草本沼泽,沼泽,湿地"
+                },
                 "natural/mud": {
                     "name": "淤泥",
                     "terms": "泥,淤泥,泥土,湿地,泥巴,淤渣,烂泥,土"
@@ -5611,6 +5770,10 @@
                 "natural/peak": {
                     "name": "山峰",
                     "terms": "山峰"
+                },
+                "natural/reedbed": {
+                    "name": "苇地",
+                    "terms": "苇地,芦苇地,芦苇荡"
                 },
                 "natural/reef": {
                     "name": "礁",
@@ -5653,6 +5816,10 @@
                 },
                 "natural/stone": {
                     "name": "孤立岩石"
+                },
+                "natural/swamp": {
+                    "name": "木本沼泽",
+                    "terms": "木本沼泽,沼泽"
                 },
                 "natural/tree": {
                     "name": "树",
@@ -5717,6 +5884,9 @@
                 "natural/wood": {
                     "name": "自然树林",
                     "terms": "树林,森林,自然树林,山林,林区,树,森,林,木"
+                },
+                "network/type/node_network": {
+                    "name": "Recreational Network Node"
                 },
                 "noexit/yes": {
                     "name": "路终点",
@@ -5913,8 +6083,33 @@
                     "name": "水务设施机构",
                     "terms": "水务,水源,设施,机构,水,自来水,废水,污水"
                 },
+                "piste/downhill": {
+                    "name": "Downhill Ski Run"
+                },
+                "piste/downhill/halfpipe": {
+                    "name": "Snowsports Half-Pipe"
+                },
                 "piste/hike": {
                     "name": "雪鞋/冬季徒步道"
+                },
+                "piste/ice_skate": {
+                    "name": "Ice Skating Trail"
+                },
+                "piste/nordic": {
+                    "name": "越野滑雪道",
+                    "terms": "滑雪赛道"
+                },
+                "piste/piste": {
+                    "name": "Snowsports Trail / Piste"
+                },
+                "piste/skitour": {
+                    "name": "Ski Touring Trail"
+                },
+                "piste/sled": {
+                    "name": "Sled Run"
+                },
+                "piste/sleigh": {
+                    "name": "Sleigh Trail"
                 },
                 "place": {
                     "name": "地点"
@@ -5953,9 +6148,12 @@
                     "name": "街坊社区 / 小区",
                     "terms": "社区,街坊"
                 },
+                "place/plot": {
+                    "name": "Plot"
+                },
                 "place/quarter": {
-                    "name": "街道办/片区",
-                    "terms": "街道,片区,办"
+                    "name": "街区/社区",
+                    "terms": "街区,社区,片区,里"
                 },
                 "place/square": {
                     "name": "广场",
@@ -5995,6 +6193,9 @@
                 "playground/horizontal_bar": {
                     "name": "平衡木",
                     "terms": "单杠,高低杠,杠子,横杠,铁棒,竞技,运动,体操,操场,回环,转体,摆荡,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
+                },
+                "playground/playhouse": {
+                    "name": "Play House"
                 },
                 "playground/roundabout": {
                     "name": "旋转平台 (儿童游乐)",
@@ -6235,8 +6436,8 @@
                     "terms": "列车,火车,火车站,动车,高铁,铁路,车站"
                 },
                 "public_transport/station_train_halt": {
-                    "name": "列车站 (小站 / 招呼)",
-                    "terms": "列车,动车,铁路,车站"
+                    "name": "乘降所",
+                    "terms": "乘降所,招呼站,小站,列车,动车,铁路,车站"
                 },
                 "public_transport/station_tram": {
                     "name": "有轨电车站",
@@ -6306,7 +6507,8 @@
                     "terms": "在建铁路,建设,建造,铁路,施工,工地,在建,承建,铁轨,轨道"
                 },
                 "railway/crossing": {
-                    "name": "铁路-步道交叉口"
+                    "name": "铁路-步道交叉口",
+                    "terms": "平交道口"
                 },
                 "railway/derail": {
                     "name": "铁路脱轨器",
@@ -6324,7 +6526,8 @@
                     "name": "列车站 (小站 / 招呼)"
                 },
                 "railway/level_crossing": {
-                    "name": "铁路道路交叉口"
+                    "name": "铁路道路交叉口",
+                    "terms": "平交道口"
                 },
                 "railway/light_rail": {
                     "name": "轻轨轨道",
@@ -6366,7 +6569,8 @@
                     "terms": "高铁,高速铁路,子弹头列车,动车,列车,铁路"
                 },
                 "railway/railway_crossing": {
-                    "name": "铁路-铁路交叉口"
+                    "name": "铁路-铁路交叉口",
+                    "terms": "平交道口"
                 },
                 "railway/signal": {
                     "name": "铁路信号机",
@@ -6396,17 +6600,19 @@
                     "terms": "电车,有轨,交通,公共,轻铁"
                 },
                 "railway/tram_crossing": {
-                    "name": "有轨电车-步道平交道口"
+                    "name": "有轨电车-步道平交道口",
+                    "terms": "平交道口"
                 },
                 "railway/tram_level_crossing": {
-                    "name": "有轨电车-道路平交道口"
+                    "name": "有轨电车-道路平交道口",
+                    "terms": "平交道口"
                 },
                 "railway/tram_stop": {
                     "name": "有轨电车停车处"
                 },
                 "railway/yard": {
-                    "name": "铁路货场",
-                    "terms": "货运站,货运火车站,铁路,货场,铁路货场"
+                    "name": "铁路车场",
+                    "terms": "铁路车场,货运站,货运火车站,铁路,货场,铁路货场"
                 },
                 "relation": {
                     "name": "关系",
@@ -6418,6 +6624,22 @@
                 },
                 "seamark": {
                     "name": "航标"
+                },
+                "seamark/beacon_isolated_danger": {
+                    "name": "危险警号信号",
+                    "aliases": "警告信号灯"
+                },
+                "seamark/beacon_lateral": {
+                    "name": "航道标志"
+                },
+                "seamark/buoy_lateral": {
+                    "name": "航道浮标"
+                },
+                "seamark/buoy_lateral/green": {
+                    "name": "绿色浮标"
+                },
+                "seamark/buoy_lateral/red": {
+                    "name": "Red Buoy"
                 },
                 "seamark/mooring": {
                     "name": "系泊设备"
@@ -6511,7 +6733,8 @@
                     "terms": "肉铺"
                 },
                 "shop/camera": {
-                    "name": "相机店"
+                    "name": "相机店",
+                    "terms": "摄影器材,摄影器材店"
                 },
                 "shop/candles": {
                     "name": "蜡烛店",
@@ -6541,6 +6764,9 @@
                 "shop/carpet": {
                     "name": "地毯店",
                     "terms": "地毯店,毯店"
+                },
+                "shop/catalogue": {
+                    "name": "Catalog Shop"
                 },
                 "shop/charity": {
                     "name": "慈善机构店",
@@ -6597,6 +6823,9 @@
                 "shop/cosmetics": {
                     "name": "化妆品店",
                     "terms": "日化店"
+                },
+                "shop/country_store": {
+                    "name": "Country Store"
                 },
                 "shop/craft": {
                     "name": "工艺美术用品店"
@@ -6740,6 +6969,9 @@
                 "shop/hifi": {
                     "name": "音响店",
                     "terms": "音响店"
+                },
+                "shop/hobby": {
+                    "name": "Hobby Shop"
                 },
                 "shop/household_linen": {
                     "name": "布艺店"
@@ -6972,7 +7204,8 @@
                     "terms": "茶,茶叶,茶店,茶品,红茶,黄茶,清茶,青茶,绿茶,花茶,黑茶,白茶,乌龙,商店"
                 },
                 "shop/telecommunication": {
-                    "name": "电信零售店"
+                    "name": "电信零售店",
+                    "terms": "电信办公室,电信营业厅"
                 },
                 "shop/ticket": {
                     "name": "售票处",
@@ -7047,7 +7280,8 @@
                     "terms": "批发,市场,超市,商业,零售,商场,卖场,商城,商品,百货,服装,农贸,菜场,农场"
                 },
                 "shop/wigs": {
-                    "name": "假发专卖店"
+                    "name": "假发店",
+                    "terms": "假发专卖店"
                 },
                 "shop/window_blind": {
                     "name": "百叶窗店",
@@ -7124,6 +7358,9 @@
                 "tourism/camp_site/backcountry": {
                     "name": "野外宿营地",
                     "terms": "野外宿营地,野外宿营区,野外露营地,野外露营区,野营场,露营,野营,野营场地,露营场地,宿营地,宿营,扎营,帐篷,度假"
+                },
+                "tourism/camp_site/group_only": {
+                    "name": "Group Camping Area"
                 },
                 "tourism/caravan_site": {
                     "name": "房车营地",
@@ -7268,6 +7505,9 @@
                 "traffic_sign": {
                     "name": "交通标志"
                 },
+                "traffic_sign/city_limit": {
+                    "name": "城市限制标志"
+                },
                 "traffic_sign/maxspeed": {
                     "name": "限速标志"
                 },
@@ -7278,6 +7518,9 @@
                 "type/boundary/administrative": {
                     "name": "行政区边界",
                     "terms": "行政边界"
+                },
+                "type/connectivity": {
+                    "name": "车道连接性"
                 },
                 "type/destination_sign": {
                     "name": "目的地标识",
@@ -7343,7 +7586,7 @@
                 },
                 "type/route/bicycle": {
                     "name": "自行车线路",
-                    "terms": "单车线路,自行车,单车,路线,线路"
+                    "terms": "单车线路,脚踏车线路,单车路线,自行车路线,脚踏车路线"
                 },
                 "type/route/bus": {
                     "name": "公共汽车线路",
@@ -7365,7 +7608,8 @@
                     "terms": "远足线路,路线,线路,徒步,远足,远足路线,徒步路线"
                 },
                 "type/route/horse": {
-                    "name": "骑马路线"
+                    "name": "骑马路线",
+                    "terms": "骑马线路"
                 },
                 "type/route/light_rail": {
                     "name": "轻轨线路",
@@ -7376,7 +7620,8 @@
                     "terms": "单轨列车路线,单轨列车"
                 },
                 "type/route/mtb": {
-                    "name": "山地自行车路线"
+                    "name": "山地自行车路线",
+                    "terms": "山地车路线"
                 },
                 "type/route/pipeline": {
                     "name": "管道线路",

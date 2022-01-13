@@ -7,8 +7,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.quests.cycleway.*
-import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.*
@@ -54,7 +55,7 @@ class AddCyclewayTest {
         ))
         val p1 = p(0.0,0.0)
         val p2 = p1.translate(50.0, 45.0)
-        val p3 = p1.translate(14.0, 135.0)
+        val p3 = p1.translate(13.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
 
         mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)

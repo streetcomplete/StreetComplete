@@ -30,29 +30,36 @@ class LastPickedValuesStore<T : Any>(
 
 private const val MAX_ENTRIES = 100
 
-/* In the first `historyCount` items, return the `count` most-common non-null items, in order.
- * If the first item is not included (and is not null), it replaces the last of the common items.
- * If fewer than `count` unique items are found, continue counting items until that many are found,
- * or the end of the sequence is reached.
+/* Returns the `target` most-common non-null items in the first `historyCount`
+ *  items of the sequence, in their original order.
+ * If there are fewer than `target` unique items, continues counting items
+ *  until that many are found, or the end of the sequence is reached.
+ * If the `first` most recent items are not null, they are always included,
+ *  displacing the least-common of the other items if necessary.
  */
-fun <T : Any> Sequence<T?>.mostCommonWithin(count: Int, historyCount: Int): Sequence<T> {
-    val counts = this.countUniqueNonNull(historyCount, count)
-    val top = counts.keys.sortedByDescending { counts.get(it) }
-    val latest = this.take(1).filterNotNull()
-    val items = (latest + top).distinct().take(count)
-    return items.sortedByDescending { counts.get(it) }
+fun <T : Any> Sequence<T?>.mostCommonWithin(target: Int, historyCount: Int, first: Int): Sequence<T> {
+    val counts = this.countUniqueNonNull(target, historyCount)
+    val top = counts.keys.sortedByDescending { counts[it]!!.count }.take(target)
+    val latest = this.take(first).filterNotNull()
+    val items = (latest + top).distinct().take(target)
+    return items.sortedBy { counts[it]!!.indexOfFirst }
 }
+
+private data class ItemStats(val indexOfFirst: Int, var count: Int = 0)
 
 // Counts at least the first `minItems`, keeps going until it finds at least `target` unique values
-private fun <T : Any> Sequence<T?>.countUniqueNonNull(minItems: Int, target: Int): Map<T, Int> {
-    val counts = mutableMapOf<T, Int>()
-    val items = takeAtLeastWhile(minItems) { counts.size < target }.filterNotNull()
-    return items.groupingBy { it }.eachCountTo(counts)
-}
+private fun <T : Any> Sequence<T?>.countUniqueNonNull(target: Int, minItems: Int): Map<T, ItemStats> {
+    val counts = mutableMapOf<T, ItemStats>()
 
-// Take at least `count` elements, then continue until `predicate` returns false
-private fun <T> Sequence<T>.takeAtLeastWhile(count: Int, predicate: (T) -> Boolean): Sequence<T> =
-    withIndex().takeWhile{ (i, t) -> i < count || predicate(t) }.map { it.value }
+    for (item in this.withIndex()) {
+        if (item.index >= minItems && counts.size >= target) break
+        item.value?.let { value ->
+            counts.getOrPut(value) { ItemStats(item.index) }.count++
+        }
+    }
+
+    return counts
+}
 
 fun <T> Sequence<T>.padWith(defaults: List<T>, count: Int = defaults.size) =
     (this + defaults).distinct().take(count)

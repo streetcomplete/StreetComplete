@@ -5515,10 +5515,6 @@
                     "name": "進水路",
                     "terms": "進水路,スリップウェイ"
                 },
-                "leisure/slipway_point": {
-                    "name": "進水所",
-                    "terms": "進水路,スリップウェイ,船舶"
-                },
                 "leisure/sports_centre": {
                     "name": "スポーツセンター/複合施設",
                     "terms": "スポーツセンター,複合施設,運動,競技,トレーニング,練習,訓練,体操"
@@ -6225,7 +6221,7 @@
                 },
                 "office/notary": {
                     "name": "公証役場",
-                    "terms": "公証役場"
+                    "terms": "公証人役場,公証役場,役場,法人登記"
                 },
                 "office/physician": {
                     "name": "医者"
@@ -7834,30 +7830,6 @@
                     "name": "右折禁止",
                     "terms": "右折禁止"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "直進禁止",
-                    "terms": "直進禁止"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Uターン禁止",
-                    "terms": "uターン禁止"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "左折専用",
-                    "terms": "左折専用,左折のみ"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "右折専用",
-                    "terms": "右折専用,右折のみ"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "直進専用",
-                    "terms": "直進専用,直進のみ"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Uターン専用",
-                    "terms": "uターン専用,uターンのみ"
-                },
                 "type/route": {
                     "name": "ルート",
                     "terms": "ルート"
@@ -7867,8 +7839,8 @@
                     "terms": "索道,索道ルート"
                 },
                 "type/route/bicycle": {
-                    "name": "サイクリングルート",
-                    "terms": "サイクリングルート,サイクリングコース"
+                    "name": "自転車ルート",
+                    "terms": "自転車ルート,自転車コース,自転車,サイクリングルート"
                 },
                 "type/route/bus": {
                     "name": "バスルート",

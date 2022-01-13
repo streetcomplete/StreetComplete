@@ -124,9 +124,6 @@
     <string name="confirmation_discard_positive">"Baztertu"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Utzi"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Bilatu erronkak hemen"</string>
 
     <!-- Fuzzy -->
@@ -160,7 +157,7 @@
     <string name="about_title_authors">"Kredituak"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick eta beste"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick eta beste"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Iturburu-kodearen biltegia"</string>
@@ -2275,6 +2272,8 @@ Autobusentzako bat baldin badago, utzi ohar bat."</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Kamioi altuak ezin dira pasa"</string>
     <string name="quest_address_street_hint">"Ukitu errepidea mapan"</string>
     <string name="quest_crossing_type_marked">"Markatua"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Errepidearen kanpoan aparka daiteke"</string>
     <string name="quest_parkingType_lane">"Errepidean aparka daiteke"</string>
     <string name="quest_existence_title">"Hau oraindik hemen al dago? (%s)"</string>
@@ -2476,4 +2475,23 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_barrier_bicycle_type_single">"Bi hesiren arteko pasabidea"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - hesia bi aldeetan"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - bi hesi baino gehiago"</string>
+    <string name="quest_level_title">"Zein maila-zenbakitan dago %s?"</string>
+    <string name="pref_title_language_select">"Hautatu hizkuntza"</string>
+    <string name="language_default">"Sistemarena"</string>
+    <string name="on_floor">"%s solairuan:"</string>
+    <string name="confirmation_discard_negative2">"Ez"</string>
+    <string name="quest_street_parking_title">"Nola aparkatu daitezke autoak hemen?"</string>
+    <string name="select_street_parking_orientation">"Hautatu errepideren noranzkoa:"</string>
+    <string name="select_street_parking_position">"Aukeratu kokapena:"</string>
+    <string name="select_street_parking_no">"Ba al dago seinale edo markarik hemen?"</string>
+    <string name="street_parking_parallel">"Paraleloa"</string>
+    <string name="street_parking_diagonal">"Diagonala"</string>
+    <string name="street_parking_perpendicular">"Perpendikularra"</string>
+    <string name="street_parking_on_street">"Bidean"</string>
+    <string name="street_parking_half_on_kerb">"Partzialki bidean"</string>
+    <string name="street_parking_on_kerb">"Bidearen ondoan"</string>
+    <string name="street_parking_street_side">"Bidearen ondoan toki esklusiboetan bakarrik "</string>
+    <string name="street_parking_painted_area_only">"Bidean toki esklusiboetan bakarrik"</string>
+    <string name="street_parking_separate">"Aparkalekua bereizita bistaratzen da mapan"</string>
+    <string name="street_parking_no">"Ez aparkatu hemen/ Ez dago baimenduta"</string>
 </resources>

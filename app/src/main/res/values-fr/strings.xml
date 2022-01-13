@@ -61,7 +61,6 @@ That is not very clear to me. Any further explanations? -->
     <!-- In the context of this sentence, maybe prefer the verb "Abandonner" instead of "Rejeter" because it's an idea to give up an input -->
     <string name="confirmation_discard_title">"Abandonner la saisie ?"</string>
     <string name="confirmation_discard_positive">"Abandonner"</string>
-    <string name="confirmation_discard_negative">"Annuler"</string>
     <string name="action_download">"Rechercher des quêtes ici"</string>
     <string name="action_upload">"Envoyer les réponses"</string>
     <string name="no_changes">"Vous n’avez donné aucune réponse"</string>
@@ -75,7 +74,9 @@ That is not very clear to me. Any further explanations? -->
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes autour de vous."</string>
     <string name="about_title_authors">"Auteurs"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick et contributeurs"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
@@ -1205,6 +1206,8 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Passage piéton marqué"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
     <string name="quest_parkingType_lane">"Stationnement sur la chaussée"</string>
     <string name="quest_existence_title">"Est-ce que c’est toujours ici ? (%s)"</string>
@@ -1240,7 +1243,9 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Renseignez qu’il n’y a pas de pistes cyclables"</string>
     <string name="quest_construction_completed_at_known_date">"Cela sera fini le …"</string>
     <string name="quest_construction_completion_date_title">"Quand cela sera-t’il fini ?"</string>
-    <string name="quest_surface_value_clay">"Argile"</string>
+
+    <!-- I found an issue regarding this one: regarding tennis court, "clay court" is translated "terre battue" ("argile" is here misleading). But I'm not sure if clay is used for other usages than tennis courts in translations? -->
+    <string name="quest_surface_value_clay">"Terre battue"</string>
     <string name="quest_surface_value_artificial_turf">"Gazon synthétique"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Quelle est la surface de ce terrain de sport ?"</string>
@@ -1380,7 +1385,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <!-- Fuzzy -->
     <string name="quest_camera_type_panning">"Panoramique"</string>
     <string name="about_title_faq">"FAQ"</string>
-    <string name="quest_buildingLevels_title2">"Combien d’étages au-dessus du sous-sol compte cet bâtiment ?"</string>
+    <string name="quest_buildingLevels_title2">"Combien d’étages au-dessus du sous-sol compte ce bâtiment ?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Combien d’étages au-dessus du sous-sol compte cette partie du bâtiment ?"</string>
     <string name="quest_crossing_title">"Y a-t-il des trottoirs à l’endroit où ce chemin rencontre cette route ? De quel type ?"</string>
     <string name="pref_subtitle_quests_preset_name">"Préréglages : %s"</string>
@@ -1443,9 +1448,9 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_type_gate_conversion">"Changé en porte"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_traffic_calming_type_title">"Quel type de modération du trafic s'agit-il ?"</string>
-    <string name="quest_traffic_calming_type_bump">"Dos d'âne (court)"</string>
-    <string name="quest_traffic_calming_type_hump">"Dos d'âne (long)"</string>
+    <string name="quest_traffic_calming_type_title">"Quel type de modération du trafic s’agit-il ?"</string>
+    <string name="quest_traffic_calming_type_bump">"Dos d’âne (court)"</string>
+    <string name="quest_traffic_calming_type_hump">"Dos d’âne (long)"</string>
     <string name="quest_traffic_calming_type_table">"Ralentisseur trapézoïdal"</string>
     <string name="quest_traffic_calming_type_cushion">"Coussin berlinois"</string>
     <string name="quest_traffic_calming_type_choker">"Rétrécissement de la chaussée"</string>
@@ -1460,13 +1465,13 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_surface_value_concrete_lanes">"Voies en béton"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fireHydrant_diameter_title">"Quel est le diamètre indiqué sur le panneau de cette bouche d'incendie ?"</string>
+    <string name="quest_fireHydrant_diameter_title">"Quel est le diamètre indiqué sur le panneau de cette bouche d’incendie ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ce diamètre semble peu plausible."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fireHydrant_confirmation_title">"Êtes-vous sûr ? Parfois, le diamètre peut être trouvé sur la bouche d'incendie elle-même."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Êtes-vous sûr ? Parfois, le diamètre peut être trouvé sur la bouche d’incendie elle-même."</string>
     <string name="quest_diet_answer_no_food">"Pas de nourriture"</string>
     <string name="short_no_answer_on_button">"Non"</string>
     <string name="restore_confirmation">"Restaurer"</string>
@@ -1479,7 +1484,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_access_private">"Seulement les personnes autorisées"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Les horaires de levée de cette boîte aux lettres sont-ils toujours correctes ?"</string>
     <string name="quest_postboxCollectionTimes_resurvey_name_title">"Est-ce que les horaires de levée de cette boite aux lettres %s sont toujours corrects ?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Non reconnu. Essayez d'entrer le type du lieu, par exemple \"boulangerie\". Sinon, vous pouvez laisser une note."</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Non reconnu. Essayez d’entrer le type du lieu, par exemple \"boulangerie\". Sinon, vous pouvez laisser une note."</string>
     <string name="quest_bicycle_barrier_type_title">"Quel type de barrière à vélos est-ce ?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"En diagonal du chemin"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passage étroit, plus petit vers le haut"</string>
@@ -1493,4 +1498,39 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
 
     <!-- Fuzzy -->
     <string name="language_default">"Défaut du système"</string>
+    <string name="on_floor">"à l’étage %s :"</string>
+    <string name="confirmation_discard_negative2">"Non"</string>
+    <string name="quest_street_parking_title">"Comment les véhicules se garent-ils ici, si c’est possible ?"</string>
+    <string name="select_street_parking_orientation">"Sélectionnez l’orientation vers la chaussée :"</string>
+    <string name="select_street_parking_position">"Sélectionnez la position :"</string>
+    <string name="select_street_parking_no">"Panneau ou marquage au sol ici ?"</string>
+    <string name="street_parking_parallel">"Parallèle"</string>
+    <string name="street_parking_diagonal">"En diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendiculaire"</string>
+    <string name="street_parking_on_street">"Sur la chaussée"</string>
+    <string name="street_parking_half_on_kerb">"Partiellement sur la chaussée"</string>
+    <string name="street_parking_on_kerb">"Adjacent à la chaussée"</string>
+    <string name="street_parking_street_side">"Adjacent à la chaussée seulement dans des espaces dédiés"</string>
+    <string name="street_parking_painted_area_only">"Sur la chaussée seulement dans des espaces dédiés"</string>
+    <string name="street_parking_separate">"Parking affiché séparément sur la carte"</string>
+    <string name="street_parking_no">"Pas de parking ici / Pas autorisé"</string>
+    <string name="street_parking_prohibited">"Pas de parking"</string>
+    <string name="street_stopping_prohibited">"Pas d’arrêt"</string>
+    <string name="street_standing_prohibited">"Arrêt interdit"</string>
+    <string name="street_parking_conditional_restrictions">"Parking / Arrêt sous conditions"</string>
+    <string name="street_parking_no_other_reasons">"Pas de signalisation visible / Parking impossible"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_conditional_restrictions_hint">"S’il est possible de s’arrêter ou de stationner, indiquez d’abord de quelle manière cela est permis. Vous pourrez préciser les restrictions ensuite.
+
+En alternative, vous pouvez laisser une note (avec une photo)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"A la fois un numéro d’adresse et un nom …"</string>
+    <string name="quest_address_house_number_label">"Numéro d’adresse :"</string>
+    <string name="quest_shoulder_title">"Est-ce que cette route a une bande d’arrêt d’urgence ?"</string>
+    <string name="quest_fireHydrant_position_title">"Où cette borne incendie est-elle située ?"</string>
+    <string name="quest_fireHydrant_position_green">"Dans l’herbe ou en terre"</string>
+    <string name="quest_fireHydrant_position_lane">"Sur la chaussée"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Sur le trottoir"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Sur une place de stationnement"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Quel diamètre est-il indiqué sur le panneau pour cette borne incendie ? (Référence : %s)"</string>
 </resources>

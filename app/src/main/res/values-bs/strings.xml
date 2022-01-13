@@ -47,7 +47,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonimno"</string>
     <string name="confirmation_discard_title">"Odbaci unos?"</string>
     <string name="confirmation_discard_positive">"Odbaci"</string>
-    <string name="confirmation_discard_negative">"Odustani"</string>
     <string name="action_download">"Traži zadatke ovdje"</string>
     <string name="action_upload">"Uploaduj odgovore"</string>
     <string name="no_changes">"Niste dali nijedan odgovor"</string>
@@ -61,7 +60,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Vaša lokacija je potrebna za pronalaženje zadataka u vašoj blizini"</string>
     <string name="about_title_authors">"Zasluge"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i volonteri"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick i volonteri"</string>
     <string name="about_title_repository">"Repozitorij izvora"</string>
     <string name="about_summary_repository">"na GitHubu"</string>
     <string name="about_title_report_error">"Prijavi grešku"</string>
@@ -986,6 +987,8 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označen zebrom"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkiralište tik uz cestu"</string>
     <string name="quest_parkingType_lane">"Parkiralište na cesti"</string>
     <string name="quest_existence_title">"Je li to još uvijek ovdje? (%s)"</string>

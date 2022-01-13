@@ -52,7 +52,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonim"</string>
     <string name="confirmation_discard_title">"Porzucić dane?"</string>
     <string name="confirmation_discard_positive">"Porzuć"</string>
-    <string name="confirmation_discard_negative">"Anuluj"</string>
     <string name="action_download">"Szukaj tutaj zadań"</string>
     <string name="action_upload">"Wyślij odpowiedzi"</string>
 
@@ -66,7 +65,9 @@
     <string name="turn_on_location_request">"Dostęp do lokalizacji jest wyłączony. Włączyć ją w ustawieniach?"</string>
     <string name="no_location_permission_warning">"Potrzebuję dostępu do lokalizacji, żeby poszukać zadań w okolicy."</string>
     <string name="about_title_authors">"Autorzy"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick i współautorzy"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick i współautorzy"</string>
     <string name="about_title_repository">"Repozytorium kodu źródłowego"</string>
     <string name="about_summary_repository">"na GitHubie"</string>
     <string name="about_title_report_error">"Zgłoś błąd"</string>
@@ -1816,6 +1817,8 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę."</string
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Wyznaczone przejście"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Miejsca parkingowe przylegające do jezdni"</string>
     <string name="quest_parkingType_lane">"Parkowanie na jezdni"</string>
     <string name="quest_existence_title">"Czy to nadal tu jest? (%s)"</string>
@@ -2025,4 +2028,57 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_fireHydrant_diameter_title">"Jaka średnica jest na znaku tego hydrantu?"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ta średnica wydaje się być podejrzana."</string>
     <string name="quest_fireHydrant_confirmation_title">"Jesteś pewien? Czasem średnica jest też podana na samym hydrancie."</string>
+    <string name="quest_diet_answer_no_food">"Nie ma jedzenia"</string>
+    <string name="short_no_answer_on_button">"Nie"</string>
+    <string name="restore_confirmation">"Pokaż"</string>
+    <string name="restore_dialog_message">"Pokazać ponownie wszystkie ukryte zadania?"</string>
+    <string name="quest_parking_access_title2">"Kto może tu parkować? Parking może być płatny lub darmowy."</string>
+    <string name="quest_access_yes">"Każdy"</string>
+    <string name="quest_access_customers">"Każdy odwiedzający konkretne miejsce (np. tylko dla klientów)"</string>
+    <string name="quest_access_private">"Tylko osoby z pozwoleniem"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Czy godziny odbioru listów z tej skrzynki pocztowej przez listonosza są aktualne?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Czy czasy odbioru tej skrzynki pocztowej są nadal poprawne?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Nie rozpoznane. Spróbuj wpisać typ miejsca np. \"piekarnia\". Jak to się nie uda - zostaw notatkę."</string>
+    <string name="quest_bicycle_barrier_type_title">"Jaki to rodzaj barierki rowerowej?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Ukośnie do ścieżki"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Wąskie przejście, węższe ku górze"</string>
+    <string name="quest_barrier_bicycle_type_single">"Przejście między dwoma barierami"</string>
+    <string name="quest_barrier_bicycle_type_double">"Szykana - barierka z każdej strony"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Szykana - więcej niż dwie barierki"</string>
+    <string name="quest_level_title">"Na którym piętrze znajduje się %s?"</string>
+    <string name="pref_title_language_select">"Wybierz język"</string>
+    <string name="language_default">"Domyślny telefonu"</string>
+    <string name="on_floor">"na %s piętrze:"</string>
+    <string name="confirmation_discard_negative2">"Nie"</string>
+    <string name="quest_street_parking_title">"Jak mogą tu parkować samochody, jeśli w ogóle?"</string>
+    <string name="select_street_parking_orientation">"Wybierz orientację na jezdnię:"</string>
+    <string name="select_street_parking_position">"Wybierz pozycję:"</string>
+    <string name="select_street_parking_no">"Czy jest tu jakiś znak lub oznaczenie drogowe?"</string>
+    <string name="street_parking_parallel">"Równolegle"</string>
+    <string name="street_parking_diagonal">"Ukośnie"</string>
+    <string name="street_parking_perpendicular">"Prostopadle"</string>
+    <string name="street_parking_on_street">"Na jezdni"</string>
+    <string name="street_parking_half_on_kerb">"Częściowo na jezdni"</string>
+    <string name="street_parking_on_kerb">"Przylega do jezdni"</string>
+    <string name="street_parking_street_side">"Przylega do jezdni tylko w wyznaczonych miejscach"</string>
+    <string name="street_parking_painted_area_only">"Na jezdni tylko w wyznaczonych miejscach"</string>
+    <string name="street_parking_separate">"Parking wyświetlany osobno na mapie"</string>
+    <string name="street_parking_no">"Nie ma tu parkingu / parkowanie nie jest dozwolone"</string>
+    <string name="street_parking_prohibited">"Zakaz parkowania"</string>
+    <string name="street_stopping_prohibited">"Zakaz zatrzymania"</string>
+    <string name="street_standing_prohibited">"Kierowca musi zostać w samochodzie"</string>
+    <string name="street_parking_conditional_restrictions">"Parkowanie / zatrzymywanie ograniczone warunkowo"</string>
+    <string name="street_parking_no_other_reasons">"Brak wyraźnego znaku / brak możliwości parkowania"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Jeśli w ogóle można tu zaparkować lub zatrzymać się, najpierw odpowiedz, jak ci, którym wolno, parkują tutaj.  Jakie dokładnie obowiązują ograniczenia, można określić później.
+
+ Alternatywnie możesz zostawić notatkę (ze zdjęciem)."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Zarówno numer domu, jak i nazwisko…"</string>
+    <string name="quest_address_house_number_label">"Numer domu:"</string>
+    <string name="quest_shoulder_title">"Czy ta droga ma pobocze?"</string>
+    <string name="quest_fireHydrant_position_title">"Gdzie znajduje się ten hydrant?"</string>
+    <string name="quest_fireHydrant_position_green">"W trawie lub ziemi"</string>
+    <string name="quest_fireHydrant_position_lane">"Na jezdni"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Na chodniku"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Na miejscu parkingowym"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Jaka średnica jest podana na znaku tego hydrantu?  (Numery referencyjne: )"</string>
 </resources>

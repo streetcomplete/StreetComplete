@@ -88,9 +88,6 @@
     <string name="confirmation_discard_positive">"Elvetés"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Mégse"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Kérdések beolvasása itt"</string>
 
     <!-- Fuzzy -->
@@ -124,7 +121,7 @@
     <string name="about_title_authors">"Szerzők"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick és közreműködők"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick és közreműködők"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Források"</string>
@@ -2238,6 +2235,8 @@ szintek"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Jelzett átkelő"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Közvetlen az út melletti parkoló"</string>
     <string name="quest_parkingType_lane">"Útfelületen lévő parkoló"</string>
     <string name="quest_existence_title">"Ez még mindig itt található? (%s)"</string>
@@ -2427,5 +2426,44 @@ megállóban?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Ezek lépcsők"</string>
+    <string name="quest_traffic_calming_type_title">"Ez milyen típusú forgalomcsillapító?"</string>
+    <string name="quest_traffic_calming_type_bump">"Fekvőrendőr"</string>
+    <string name="quest_traffic_calming_type_hump">"Hosszú fekvőrendőr"</string>
+    <string name="quest_traffic_calming_type_table">"Fekvőrendőr – lapos tábla"</string>
+    <string name="quest_traffic_calming_type_cushion">"Fekvőrendőr – párna"</string>
+    <string name="quest_traffic_calming_type_choker">"Szűkített út"</string>
+    <string name="quest_traffic_calming_type_island">"Sziget"</string>
+    <string name="quest_traffic_calming_type_chicane">"Szándékos ív(ek)"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Rázócsík(ok)"</string>
+    <string name="quest_surface_value_concrete_plates">"Betonlapok"</string>
+    <string name="quest_surface_value_concrete_lanes">"Betonsávok"</string>
+    <string name="quest_fireHydrant_diameter_title">"Milyen átmérő van megadva a tűzcsap tábláján?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ez az átmérő valószínűtlen."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Biztos vagy benne? Néha az átmérő magán a tűzcsapon található."</string>
+    <string name="quest_diet_answer_no_food">"Nincs étel"</string>
+    <string name="short_no_answer_on_button">"Nem"</string>
+    <string name="restore_confirmation">"Visszaállít"</string>
+    <string name="restore_dialog_message">"Visszaállítod az összes elrejtett kérdést?"</string>
+    <string name="quest_parking_access_title2">"Ki parkolhat itt? A parkolás lehet ingyenes vagy fizetős."</string>
+    <string name="quest_access_yes">"Bárki a nagyközönségből"</string>
+    <string name="quest_access_customers">"Ez adott hely látogatói (pl. ügyfelek részére)"</string>
+    <string name="quest_access_private">"Kizárólag engedéllyel rendelkező személy(ek)"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Még mindig pontos ennek a postaládának a begyűjtési ideje?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Még mindig pontos ennek a postaládának a begyűjtési ideje: %s?"</string>
+    <string name="quest_bicycle_barrier_type_title">"Ez milyen típusú kerékpáros akadály?"</string>
     <string name="pref_title_language_select">"Nyelv kiválasztása"</string>
+    <string name="language_default">"Rendszer alapértelmezett"</string>
+    <string name="on_floor">"%s. emeleten:"</string>
+    <string name="confirmation_discard_negative2">"Nem"</string>
+    <string name="quest_street_parking_title">"Hogyan parkorhatnak itt az autók, ha egyáltalán?"</string>
+    <string name="street_parking_separate">"A parkoló külön szerepel a térképen"</string>
+    <string name="street_parking_no">"Nincs parkoló / nem megengedett"</string>
+    <string name="street_parking_prohibited">"Nincs parkoló"</string>
+    <string name="street_stopping_prohibited">"Megállni tilos"</string>
+    <string name="street_standing_prohibited">"Várakozni tilos"</string>
+    <string name="street_parking_conditional_restrictions">"Várakozás/megállás feltételesen korlátozott"</string>
+    <string name="street_parking_no_other_reasons">"Nincs kifejezett jel / parkolás nem lehetséges"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Házszám és név egyaránt…"</string>
+    <string name="quest_address_house_number_label">"Házszám:"</string>
+    <string name="quest_shoulder_title">"Van leállósáv ezen az úton?"</string>
 </resources>

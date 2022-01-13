@@ -56,6 +56,11 @@ fire_hydrant_pond.jpg          CC-BY-SA 3.0      KeepOnTruckin https://commons.w
 fire_hydrant_underground.jpg   CC-BY 3.0         Panek https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_wall.jpg          CC-BY-SA 3.0      Ingo Fick https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
 
+fire_hydrant_position_green... CC-BY-SA 4.0     https://upload.wikimedia.org/wikipedia/commons/2/2d/Fire_hydrant_in_grass.jpg
+fire_hydrant_position_lane...  CC-BY-SA 4.0     https://upload.wikimedia.org/wikipedia/commons/3/32/Fire_hydrant_on_sidewalk.jpg
+fire_hydrant_position_sidew... CC-BY-SA 4.0     modified from https://upload.wikimedia.org/wikipedia/commons/d/d0/Fire_hydrant_on_road_side.jpg
+fire_hydrant_position_parki... CC-BY 2.0        modified from https://upload.wikimedia.org/wikipedia/commons/3/33/Fire-fighting-facility_node-4279866277.jpg
+
 ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
 
@@ -170,6 +175,35 @@ surface_unpaved.jpg            CC-BY 2.0         https://www.flickr.com/photos/i
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Woodchips_surface.jpg (10992-osm)
 
+surface_asphalt_bad.jpg        CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Crumbling_asphalt_path.jpg (Andre Thum)
+surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Mala_Hrastice_2020-06-16_Ulice_z_navsi_na_nadrazi_obr05.jpg (Miloš Hlávka)
+surface_asphalt_good.jpg       public domain     https://wiki.openstreetmap.org/wiki/File:Small_road_with_a_few_repairs.jpg (helium314)
+surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Nids-de-poule_sur_une_route_communale.jpg (Mathis Brancquart)
+surface_asphalt_very_bad.jpg   CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kamieniec_Szalejow_Gorny_road.jpg (Jojo)
+surface_compacted_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Rough_compacted_track.jpg (helium314)
+surface_compacted_intermedi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Saviselk%C3%A4_2.JPG (Htm)
+surface_compacted_very_bad.jpg CC0               https://wiki.openstreetmap.org/wiki/File:Smoothness_very_bad.jpg (rhhsm)
+surface_concrete_bad.jpg       CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Geograph-6398805-by-Trevor-Littlewood.jpg (Trevor Littlewood)
+surface_concrete_excellent.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Boat_ramp,_Flint_River_Park.JPG (Michael Rivera)
+surface_concrete_good.jpg      CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:2014-08-29_15_31_39_View_southeast_along_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
+surface_concrete_intermedia... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Concrete_plates_-_intermediate.jpg (Supaplex030)
+surface_concrete_very_bad.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Damaged_Irrigation_Canal.JPG (Narek75)
+surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
+surface_gravel_intermediate... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Compacted_-_intermediate.jpg (Supaplex030)
+surface_gravel_very_bad.jpg    CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Mountain_path_with_large_gravel.jpg (Andre Thum)
+surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
+surface_paving_stones_excel... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Footway_with_very_smooth_paving.jpg (mcliquid)
+surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
+surface_paving_stones_inter... public domain     https://wiki.openstreetmap.org/wiki/File:Damaged_and_loose_paving_stones.jpg (helium314)
+surface_paving_stones_very_... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Broken_up_sidewalk_near_the_shore_of_the_St._Lawrence_River_near_Aultsville,_Ontario.jpg (	Aultsville)
+surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
+surface_sett_good.jpg          CC-0              https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
+surface_sett_intermediate.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_mostly_square_but_rough_stones.jpg (Andre Thum)
+surface_sett_very_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
+surface_unpaved_horrible.jpg   CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Smoothness_horrible.jpg (rhhsm)
+surface_unpaved_impassable.jpg public domain     https://drive.google.com/file/d/1yZXynVd07IWQPKpBbrlbABzfKHkG9X7R/view?usp=sharing (Tobias Zwick)
+surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
+
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
@@ -200,5 +234,6 @@ tourism_information_map.jpg    CC0               https://commons.wikimedia.org/w
 tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
 tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
 
-vibrating_button_illustrati... CC-BY 4.0        Tobias Zwick
-vibrating_button_i... (MCC234) CC0              CJ Malone
+vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
+vibrating_button_i... (MCC234) CC0               CJ Malone
+vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)

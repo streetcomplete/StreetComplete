@@ -3794,6 +3794,9 @@
                     "name": "Vidreiro",
                     "terms": "vidreiro,vidrería,vidro,cristal"
                 },
+                "craft/handicraft": {
+                    "name": "Taller de artesanía"
+                },
                 "craft/insulator": {
                     "name": "Illador",
                     "terms": "illador,illamento,illar,aislar"
@@ -4217,14 +4220,15 @@
                 },
                 "highway/passing_place": {
                     "name": "Lugar de pasaxe",
-                    "terms": "lugar de paso,parada,zona de descanso,zona de paso,paraxe,repouso,escaleirón,relanzo"
+                    "terms": "lugar de paso,parada,zona de descanso,zona de paso,paraxe,repouso,escaleirón,relanzo,apartadero"
                 },
                 "highway/path": {
                     "name": "Camiño",
                     "terms": "verea,carreiro,senda,sendeiro,vieiro,camiño,vía,ramal,trocha,atallo,travesía,pegada,rastro"
                 },
                 "highway/path/boardwalk": {
-                    "name": "Paseo marítimo elevado"
+                    "name": "Paseo marítimo elevado",
+                    "terms": "paseo marítimo elevado,paseo elevado,paseo de madeira,pasarela,pasarela de madeira,pasarela elevada"
                 },
                 "highway/path/informal": {
                     "name": "Camiño informal"
@@ -4300,13 +4304,15 @@
                     "terms": "área de servizo,estación de servizo,área de servicio,estación de servicio,zona de servizo"
                 },
                 "highway/speed_camera": {
-                    "name": "Rádar de velocidade"
+                    "name": "Rádar de velocidade",
+                    "terms": "rádar,radar,control de velocidade"
                 },
                 "highway/steps": {
-                    "name": "Escadas"
+                    "name": "Escaleiras",
+                    "terms": "escaleira,escaleiras,escada,escadas,esqueira,esqueiro,chanzos,banzos"
                 },
                 "highway/steps/conveying": {
-                    "name": "Escadas mecánicas",
+                    "name": "Escaleira mecánica",
                     "terms": "escadas mecánicas,escaleira mecánica"
                 },
                 "highway/stop": {
@@ -4314,7 +4320,8 @@
                     "terms": "sinal,cartel,stop,deterse,parada,pare,alto,paraxe"
                 },
                 "highway/street_lamp": {
-                    "name": "Farol"
+                    "name": "Farol",
+                    "terms": "farol,farola,pau da luz,poste da luz,iluminación,foco,lámpada"
                 },
                 "highway/tertiary": {
                     "name": "Estrada terciaria",
@@ -4323,15 +4330,21 @@
                 "highway/tertiary_link": {
                     "name": "Ligazón da estrada terciaria"
                 },
+                "highway/toll_gantry": {
+                    "name": "Arco de peaxe",
+                    "terms": "arco de peaxe,arco de portaxe,pórtico de peaxe,pórtico de portaxe,peaxe electrónica,portaxe electrónica"
+                },
                 "highway/track": {
-                    "name": "Pista ou carreiro sen mantemento",
+                    "name": "Pista forestal ou agrícola",
                     "terms": "camiño,senda,sendeiro,rúa,vía,pista,rural,forestal,agrícola,campo,sen mantemento,offroad,jeep,dobre tracción,tractor,4x4,atv,cuadrimotor,quadratrack,con huella,con pegada,carreiro,verea,vieiro,aldea,parroquia,lugar"
                 },
                 "highway/traffic_mirror": {
-                    "name": "Espello de tráfico"
+                    "name": "Espello de tráfico",
+                    "terms": "espello,espello de tráfico,espello convexo"
                 },
                 "highway/traffic_signals": {
-                    "name": "Semáforo"
+                    "name": "Semáforo",
+                    "terms": "semáforo,semáforos"
                 },
                 "highway/trailhead": {
                     "name": "Comezo da pista"
@@ -4845,9 +4858,6 @@
                     "name": "Sauna"
                 },
                 "leisure/slipway": {
-                    "name": "Rampla para embarcacións"
-                },
-                "leisure/slipway_point": {
                     "name": "Rampla para embarcacións"
                 },
                 "leisure/sports_centre": {
@@ -6001,7 +6011,8 @@
                     "name": "Tenda de arte"
                 },
                 "shop/baby_goods": {
-                    "name": "Tenda de produtos para meniños"
+                    "name": "Tenda de produtos para meniños",
+                    "terms": "meniños,bebés"
                 },
                 "shop/bag": {
                     "name": "Tenda de maletas"
@@ -6065,13 +6076,15 @@
                     "name": "Concesionario de automóbiles"
                 },
                 "shop/car/second_hand": {
-                    "name": "Concesionario de coches usados"
+                    "name": "Concesionario de coches usados",
+                    "terms": "concesionario,coches,usados,segunda man,ocasión"
                 },
                 "shop/car_parts": {
                     "name": "Tenda de recambios de automóbiles"
                 },
                 "shop/car_repair": {
-                    "name": "Taller de arranxo de automóbiles"
+                    "name": "Taller de arranxo de automóbiles",
+                    "terms": "taller,taller de vehículos,taller de automóbiles,taller de coches,taller de reparación"
                 },
                 "shop/caravan": {
                     "name": "Concesionario de autocaravanas"
@@ -6165,7 +6178,7 @@
                     "name": "Tenda de cigarros electrónicos"
                 },
                 "shop/electrical": {
-                    "name": "Tenda de material de electrónica"
+                    "name": "Tenda de material eléctrico"
                 },
                 "shop/electronics": {
                     "name": "Tenda de electrodomésticos"
@@ -6422,7 +6435,8 @@
                     "terms": "tenda de subministros de costura,costura,mercería,merzaría,artigos,obxectos,cosedura,confeccion,corte"
                 },
                 "shop/shoe_repair": {
-                    "name": "Tenda de arranxo de zapatos"
+                    "name": "Tenda de arranxo de zapatos",
+                    "terms": "zapateiro,arranxo de zapatos,reparación de zapatos,arranxo de calzado,reparación de calzado"
                 },
                 "shop/shoes": {
                     "name": "Zapataría"
@@ -6755,29 +6769,8 @@
                 "type/restriction/no_right_turn": {
                     "name": "Prohibido xirar á dereita"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Prohibido seguir de fronte"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Prohibido o cambio de sentido"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Só cara a esquerda"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Só cara a dereita"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Só cara adiante"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Só cambio de sentido"
-                },
                 "type/route": {
                     "name": "Ruta"
-                },
-                "type/route/bicycle": {
-                    "name": "Roteiro ciclista"
                 },
                 "type/route/bus": {
                     "name": "Liña de bus"

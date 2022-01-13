@@ -74,7 +74,6 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 * Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date; there is a [helper action](https://github.com/streetcomplete/StreetComplete/actions/workflows/generate-quest-list.yml) which generates a CSV for this.
 * Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccurring questions.
 * Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
-* Edit [the JSON of all tags used by StreetComplete](https://github.com/goldfndr/StreetCompleteJSON) that is displayed on [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete); there is a [draft Pull Request](https://github.com/streetcomplete/StreetComplete/pull/2754) to automate this.
 
 ## Development
 

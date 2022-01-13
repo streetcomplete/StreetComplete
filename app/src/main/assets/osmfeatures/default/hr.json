@@ -20,6 +20,9 @@
                 "category-path": {
                     "name": "Staze"
                 },
+                "category-playground": {
+                    "name": "Oprema za igrališta"
+                },
                 "category-rail": {
                     "name": "Pruge"
                 },
@@ -101,6 +104,7 @@
                 "access_simple": {
                     "label": "Dopušten pristup",
                     "options": {
+                        "customers": "Samo mušterije",
                         "permissive": "Dopuštenje",
                         "permit": "Samo s dozvolom"
                     },
@@ -2687,6 +2691,10 @@
                     "name": "Kupalište",
                     "terms": "plaža,sunčanje"
                 },
+                "leisure/bleachers": {
+                    "name": "Tribine",
+                    "terms": "gledalište"
+                },
                 "leisure/bowling_alley": {
                     "name": "Kuglalište"
                 },
@@ -2802,9 +2810,6 @@
                     "name": "Navoz za brodove",
                     "terms": "istezalište"
                 },
-                "leisure/slipway_point": {
-                    "name": "Navoz za brodove"
-                },
                 "leisure/sports_centre": {
                     "name": "Sportski centar"
                 },
@@ -2822,7 +2827,7 @@
                     "terms": "stadion,sportska arena"
                 },
                 "leisure/swimming_pool": {
-                    "name": "Bazen",
+                    "name": "Bazen za kupanje",
                     "terms": "kupanje"
                 },
                 "leisure/track": {
@@ -3157,6 +3162,15 @@
                 },
                 "office/travel_agent": {
                     "name": "Putnička agencija"
+                },
+                "piste/downhill": {
+                    "name": "Staza za skijanje"
+                },
+                "piste/piste": {
+                    "name": "Staza za zimske sportove"
+                },
+                "piste/skitour": {
+                    "name": "Staza za turno skijanje"
                 },
                 "place": {
                     "name": "Mjesto"
@@ -3767,8 +3781,8 @@
                     "terms": "turistička atrakcija,turistička znamenitost,atrakcija,znamenitost,turizam,turistička"
                 },
                 "tourism/caravan_site": {
-                    "name": "Parkiralište za kamp kućice",
-                    "terms": "park za rekreativna vozila,park za kamp-prikolice,rv park,kamp,kamp za kamp kućice,kamp za kamp prikolice,kamp prikolica,park za kamp prikolice,kamp za kamp-prikolice"
+                    "name": "Autokamp",
+                    "terms": "park za rekreativna vozila,park za kamp-prikolice,rv park,kamp,kamp za kamp kućice,kamp za kamp prikolice,kamp prikolica,park za kamp prikolice,kamp za kamp-prikolice,autocamp"
                 },
                 "tourism/chalet": {
                     "name": "Bungalov",
@@ -3779,7 +3793,7 @@
                 },
                 "tourism/guest_house": {
                     "name": "Gostinjska kuća",
-                    "terms": "apartmani,gostinjska kuća"
+                    "terms": "apartmani,kuća za odmor"
                 },
                 "tourism/hostel": {
                     "name": "Hostel",
@@ -3864,31 +3878,9 @@
                 "type/restriction/no_right_turn": {
                     "name": "Zabranjeno desno skretanje"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Zabranjeno prolaženje ravno"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Zabranjeno polukružno okretanje"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Samo lijevo skretanje"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Samo desno skretanje"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Samo ravno"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Samo polukružno skretanje"
-                },
                 "type/route": {
                     "name": "Ruta",
                     "terms": "ruta,linija,pravac"
-                },
-                "type/route/bicycle": {
-                    "name": "Biciklistička ruta",
-                    "terms": "biciklistička ruta,biciklistička linija"
                 },
                 "type/route/bus": {
                     "name": "Autobusna linija",

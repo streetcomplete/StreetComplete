@@ -100,7 +100,8 @@
                 "access_simple": {
                     "label": "허가된 통행",
                     "options": {
-                        "customers": "고객 전용"
+                        "customers": "고객 전용",
+                        "permissive": "소유자 허가 필요"
                     }
                 },
                 "addr/interpolation": {
@@ -223,6 +224,12 @@
                 },
                 "attraction": {
                     "label": "종류"
+                },
+                "baby_seat": {
+                    "label": "유아석"
+                },
+                "backcountry": {
+                    "label": "오지"
                 },
                 "backrest": {
                     "label": "등받이"
@@ -1278,7 +1285,8 @@
                     "placeholder": "알 수 없음"
                 },
                 "opening_hours/covid19": {
-                    "label": "코로나바이러스감염증-19 관련 임시 영업시간"
+                    "label": "코로나바이러스감염증-19 관련 임시 영업시간",
+                    "terms": "코로나19 관련 임시 영업 시간,코로나19 영업 제한"
                 },
                 "operator": {
                     "label": "운영 주체"
@@ -1401,6 +1409,9 @@
                 },
                 "playground/theme": {
                     "label": "테마"
+                },
+                "plots": {
+                    "placeholder": "10, 20, 30..."
                 },
                 "polling_station": {
                     "label": "투표소"
@@ -3820,6 +3831,9 @@
                     "name": "엘리베이터",
                     "terms": "엘리베이터,승강기"
                 },
+                "highway/elevator_line": {
+                    "name": "경사형 엘리베이터"
+                },
                 "highway/footway": {
                     "name": "보도",
                     "terms": "보도"
@@ -4015,8 +4029,8 @@
                     "terms": "루프선 (교통섬)"
                 },
                 "highway/unclassified": {
-                    "name": "비주요/미분류 도로",
-                    "terms": "비주요/미분류 도로"
+                    "name": "비주요/마을 내 도로",
+                    "terms": "비주요/마을 내 도로"
                 },
                 "historic": {
                     "name": "사적지",
@@ -4520,9 +4534,6 @@
                 "leisure/slipway": {
                     "name": "선가대",
                     "terms": "선양장,슬립웨이"
-                },
-                "leisure/slipway_point": {
-                    "name": "선가대"
                 },
                 "leisure/sports_centre": {
                     "name": "스포츠 센터 / 단지",
@@ -6447,35 +6458,12 @@
                     "name": "우회전 금지",
                     "terms": "우회전 금지"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "직진 금지",
-                    "terms": "직진 금지"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "유턴 금지",
-                    "terms": "유턴 금지"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "좌회전 전용"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "우회전 전용"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "직진 전용"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "유턴 전용"
-                },
                 "type/route": {
                     "name": "노선",
                     "terms": "경로,노선"
                 },
                 "type/route/aerialway": {
                     "name": "항공 노선"
-                },
-                "type/route/bicycle": {
-                    "name": "자전거 노선"
                 },
                 "type/route/bus": {
                     "name": "버스 노선",

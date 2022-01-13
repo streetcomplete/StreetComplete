@@ -10,6 +10,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
+import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
+import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -31,7 +37,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         else emptyList()
 
     override val otherAnswers: List<AnswerItem> get() {
-        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
+        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout" && osmElement!!.tags["junction"] != "circular"
         val result = mutableListOf<AnswerItem>()
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
@@ -57,7 +63,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private val likelyNoBicycleContraflow = """
             ways with oneway:bicycle != no and (
                 oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or junction = roundabout
+                or junction ~ roundabout|circular
             )
         """.toElementFilterExpression()
 
@@ -72,12 +78,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
      * one-way is on the right side of the way */
     private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
-    private val isOneway get() = isForwardOneway || isReversedOneway
+    private val isOneway get() = isOneway(osmElement!!.tags)
 
-    private val isForwardOneway get() =
-        osmElement!!.tags["oneway"] == "yes"
-        || (osmElement!!.tags["junction"] == "roundabout" && osmElement!!.tags["oneway"] != "-1")
-    private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
+    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
+    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic

@@ -997,6 +997,9 @@
                 "historic/wreck/visible_at_low_tide": {
                     "label": "Synlig ved lavvande"
                 },
+                "holding_position/type": {
+                    "label": "Type"
+                },
                 "hoops": {
                     "label": "Kurve",
                     "placeholder": "1, 2, 4..."
@@ -1444,6 +1447,12 @@
                         "underground": "Underjordisk"
                     }
                 },
+                "parking_entrance": {
+                    "label": "Type"
+                },
+                "parking_space": {
+                    "label": "Type"
+                },
                 "payment_multi": {
                     "label": "Betalingstyper"
                 },
@@ -1627,6 +1636,9 @@
                     "label": "Type"
                 },
                 "route_master": {
+                    "label": "Type"
+                },
+                "ruins": {
                     "label": "Type"
                 },
                 "sac_scale": {
@@ -1924,6 +1936,9 @@
                 "target": {
                     "label": "Mål"
                 },
+                "telecom": {
+                    "label": "Type"
+                },
                 "to": {
                     "label": "Til"
                 },
@@ -2015,6 +2030,9 @@
                 "tunnel": {
                     "label": "Type",
                     "placeholder": "Standard"
+                },
+                "tunnel_combo": {
+                    "label": "Type"
                 },
                 "usage_rail": {
                     "options": {
@@ -2211,6 +2229,10 @@
                 "aeroway/terminal": {
                     "name": "Lufthavnsterminal",
                     "terms": "lufthavnsterminal"
+                },
+                "aeroway/windsock": {
+                    "name": "Vindpose",
+                    "terms": "vind,blæst,retning,vindretning,indikator"
                 },
                 "allotments/plot": {
                     "name": "Kolonihave",
@@ -2995,6 +3017,9 @@
                 },
                 "barrier/wall": {
                     "name": "Mur"
+                },
+                "boundary": {
+                    "name": "Afgrænsning"
                 },
                 "boundary/administrative": {
                     "name": "Administrativ grænse",
@@ -5719,7 +5744,7 @@
                     "terms": "hastighed,fart,skilt,max,maks"
                 },
                 "type/boundary": {
-                    "name": "Grænse",
+                    "name": "Afgrænsning",
                     "terms": "grænse"
                 },
                 "type/boundary/administrative": {
@@ -5744,33 +5769,9 @@
                     "name": "Ingen højresving",
                     "terms": "ingen højresving"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Ingen lige ud kørsel",
-                    "terms": "ingen lige ud kørsel"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Ingen U-vending",
-                    "terms": "ingen u-vending"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Kun venstresving"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Kun højresving"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Kun lige ud"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Kun U-vending"
-                },
                 "type/route": {
                     "name": "Rute",
                     "terms": "rute"
-                },
-                "type/route/bicycle": {
-                    "name": "Cykelrute",
-                    "terms": "cykelrute"
                 },
                 "type/route/bus": {
                     "name": "Busrute",

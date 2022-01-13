@@ -34,7 +34,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
         // road probably not developed enough to issue a prohibition for pedestrians
         "and surface ~ ${ANYTHING_PAVED.joinToString("|")} " +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
-        "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath )"
+        "and ( oneway ~ yes|-1 or bridge = yes or tunnel = yes or bicycle ~ no|use_sidepath )"
 
     override val commitMessage = "Add whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"

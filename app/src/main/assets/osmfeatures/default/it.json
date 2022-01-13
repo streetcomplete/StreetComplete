@@ -397,6 +397,9 @@
                     "label": "Cavi",
                     "placeholder": "1, 2, 3..."
                 },
+                "cai_scale": {
+                    "placeholder": "T, E, EE, …"
+                },
                 "camera/direction": {
                     "label": "Direzione (gradi in senso orario)",
                     "placeholder": "45, 90, 180, 270"
@@ -420,6 +423,14 @@
                 "capacity/disabled_parking": {
                     "label": "Spazi per disabili",
                     "placeholder": "1, 2, 3..."
+                },
+                "capacity/persons": {
+                    "label": "Capacità (persone)",
+                    "placeholder": "50, 100, 200..."
+                },
+                "capacity/tents": {
+                    "label": "Capacità (tende)",
+                    "placeholder": "10, 20, 50..."
                 },
                 "capacity_parking": {
                     "label": "Spazi totali",
@@ -553,6 +564,7 @@
                         "chicken": "Pollo",
                         "chinese": "Cinese",
                         "coffee_shop": "Caffetteria",
+                        "fish": "Pesce",
                         "french": "Francese",
                         "german": "Tedesca",
                         "greek": "Greca",
@@ -561,10 +573,16 @@
                         "italian": "Italiana",
                         "japanese": "Giapponese",
                         "kebab": "Kebab",
+                        "korean": "Coreana",
+                        "lebanese": "Libanese",
                         "mexican": "Messicana",
                         "pizza": "Pizza",
+                        "polish": "Polacca",
+                        "portuguese": "Portoghese",
                         "regional": "Regionale",
+                        "russian": "Russa",
                         "sandwich": "Sandwich",
+                        "spanish": "Spagnola",
                         "sushi": "Sushi",
                         "thai": "Thai",
                         "turkish": "Turca",
@@ -2062,6 +2080,7 @@
                         "aerial imagery": "Immagini aeree",
                         "gps": "GPS",
                         "local knowledge": "Conoscenza locale",
+                        "osm notes": "Note di OpenStreetMap",
                         "streetlevel imagery": "Foto a livello stradale",
                         "survey": "Da rilevamento"
                     }
@@ -2201,6 +2220,14 @@
                 "survey/date": {
                     "label": "Data ultimo sopralluogo",
                     "terms": "ultima visita,ultimo controllo"
+                },
+                "survey_point/purpose": {
+                    "label": "Scopo",
+                    "options": {
+                        "both": "Entrambi",
+                        "horizontal": "Allineamento orizzontale",
+                        "vertical": "Allineamento verticale"
+                    }
                 },
                 "swimming_pool": {
                     "label": "Tipo"
@@ -5264,10 +5291,6 @@
                     "name": "Scivolo per barche",
                     "terms": "nave,barca,natante,imbarcazione,varo,rampa,scivolo,alaggio"
                 },
-                "leisure/slipway_point": {
-                    "name": "Scivolo di varo/alaggio",
-                    "terms": "nave,barca,imbarcazione,natante,varo,rampa,scivolo,carrello,slitta,alaggio"
-                },
                 "leisure/sports_centre": {
                     "name": "Complesso / Centro Sportivo",
                     "terms": "sport,palazzetto,complesso"
@@ -5736,6 +5759,9 @@
                 "natural/stone": {
                     "name": "Roccia non fissata",
                     "terms": "roccia,pietra"
+                },
+                "natural/swamp": {
+                    "name": "Palude"
                 },
                 "natural/tree": {
                     "name": "Albero",
@@ -6766,7 +6792,7 @@
                 },
                 "shop/funeral_directors": {
                     "name": "Casa funeraria",
-                    "terms": "funerale,cimitero"
+                    "terms": "funerale,cimitero,becchino,defunto,urna,onoranze,funebre"
                 },
                 "shop/furniture": {
                     "name": "Negozio di mobili",
@@ -7389,28 +7415,22 @@
                     "terms": "divieto,vietato,curva,destra"
                 },
                 "type/restriction/no_straight_on": {
-                    "name": "Divieto di proseguire dritto",
-                    "terms": "divieto,vietato,dritto"
+                    "name": "Divieto di proseguire diritto"
                 },
                 "type/restriction/no_u_turn": {
-                    "name": "Divieto di inversione",
-                    "terms": "divieto,vietato,inversione a u"
+                    "name": "Divieto di inversione di marcia"
                 },
                 "type/restriction/only_left_turn": {
-                    "name": "Obbligo di svolta a sinistra",
-                    "terms": "svolta a sinistra,divieto di svolta a destra,divieto di andare diritto,obbligo"
+                    "name": "Obbligo di svolta a sinistra"
                 },
                 "type/restriction/only_right_turn": {
-                    "name": "Obbligo di svolta a destra",
-                    "terms": "svolta a destra,divieto di svolta sinistra,divieto di andare diritto,obbligo"
+                    "name": "Obbligo di svolta a destra"
                 },
                 "type/restriction/only_straight_on": {
-                    "name": "Obbligo di andare diritto",
-                    "terms": "diritto,dritto,proseguire diritto,obbligo,divieto di svolta"
+                    "name": "Obbligo di andare diritto"
                 },
                 "type/restriction/only_u_turn": {
-                    "name": "Obbligo di inversione di marcia",
-                    "terms": "svolta a u,inversione,inversione di marcia,tornare indietro,torna indietro,curva a u"
+                    "name": "Obbligo di inversione di marcia"
                 },
                 "type/route": {
                     "name": "Percorso",
@@ -7420,8 +7440,7 @@
                     "name": "Rotta aerea"
                 },
                 "type/route/bicycle": {
-                    "name": "Itinerario ciclabile",
-                    "terms": "pista ciclabile,ciclovia,ciclostrada"
+                    "name": "Itinerario ciclabile"
                 },
                 "type/route/bus": {
                     "name": "Linea autobus",

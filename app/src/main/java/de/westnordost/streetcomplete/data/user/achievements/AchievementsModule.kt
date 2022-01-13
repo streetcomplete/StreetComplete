@@ -24,6 +24,7 @@ enum class QuestTypeAchievement(val id: String) {
     BICYCLIST("bicyclist"),
     CITIZEN("citizen"),
     OUTDOORS("outdoors"),
+    LIFESAVER("lifesaver"),
 }
 
 @Module
@@ -239,6 +240,14 @@ object AchievementsModule {
             LinkCategory.MAPS,
             R.drawable.ic_link_indoorequal,
             R.string.link_indoorequal_description
+        ),
+        Link(
+            "osmhydrant",
+            "https://www.osmhydrant.org",
+            "OsmHydrant",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_osmhydrant,
+            R.string.link_osmhydrant_description
         ),
 
         /* -------------------------------------- Showcase ---------------------------------------*/
@@ -585,16 +594,23 @@ object AchievementsModule {
             mapOf(
                 1 to links("openorienteeringmap")
             )
-        )
+        ),
+
+        Achievement(
+            QuestTypeAchievement.LIFESAVER.id,
+            R.drawable.ic_achievement_lifesaver,
+            R.string.achievement_lifesaver_title,
+            R.string.achievement_lifesaver_solved_X,
+            SolvedQuestsOfTypes,
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("osmhydrant")
+            )
+        ),
 
     )
 
     private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
         linksKeys.map { linksById.getValue(it) }
-
-    // Achievement suggestions:
-
-    // maybe "emergency"
-    // AddFireHydrantType AddIsDefibrillatorIndoor AddBollardType
-    //
 }
