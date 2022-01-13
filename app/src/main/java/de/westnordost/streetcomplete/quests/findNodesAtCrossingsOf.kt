@@ -31,7 +31,6 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
     waysByNodeId.removeEndNodes()
 
 
-
     /* filter out all nodes that are not shared nodes of both a road and a footway */
     barriersByNodeId.keys.retainAll(waysByNodeId.keys)
     waysByNodeId.keys.retainAll(barriersByNodeId.keys)
@@ -85,7 +84,13 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
             neighbouringWayPositions.anyCrossesAnyOf(neighbouringBarrierPositions, nodePos)
     }
 
-    val resultMap = waysByNodeId.mapValues { WaysCrossing(mapData.getNode(it.key)!!, mutableListOf(), it.value) }
+    val resultMap = waysByNodeId.mapValues {
+        WaysCrossing(
+            mapData.getNode(it.key)!!,
+            mutableListOf(),
+            it.value
+        )
+    }
     /*
     // TODO: is code above really better and equivalent
     val resultMap = mutableMapOf<Long, WaysCrossing>()
@@ -95,7 +100,7 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
     }
     */
     barriersByNodeId.forEach { (nodeId, barrierWays) ->
-        if(resultMap.contains(nodeId)){
+        if (resultMap.contains(nodeId)) {
             resultMap[nodeId]!!.barrierWays += barrierWays
         }
     }
