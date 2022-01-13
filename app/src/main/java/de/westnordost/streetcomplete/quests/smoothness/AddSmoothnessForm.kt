@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.Surface
@@ -14,8 +16,9 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
 
     override val descriptionResId = R.string.quest_smoothness_hint
 
-    override val otherAnswers = listOf(
+    override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
+        createConvertToStepsAnswer(),
         AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
@@ -61,4 +64,15 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
             .show()
     }
 
+    private fun createConvertToStepsAnswer(): AnswerItem? {
+        val way = osmElement as? Way ?: return null
+        if (way.isArea()) return null
+
+        // only in AddPathSmoothness quest
+        if (!ALL_PATHS_EXCEPT_STEPS.contains(way.tags["highway"])) return null
+
+        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
+            applyAnswer(IsActuallyStepsAnswer)
+        }
+    }
 }
