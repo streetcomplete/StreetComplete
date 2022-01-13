@@ -26,8 +26,10 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
     val waysByNodeId = movingWays.groupByNodeIds()
 
     /* filter out nodes of footways that are the end of a graph, e.g.
-     * in case of ways representing footways following node would be skipped
-     * https://www.openstreetmap.org/node/9124092987 */
+     * in case of ways representing footways following nodes would be skipped
+     * https://www.openstreetmap.org/node/9124092987 (intersecting with barriers)
+     * https://www.openstreetmap.org/node/1449039062 (with roads)
+     * https://www.openstreetmap.org/node/56606744 (with roads) */
     waysByNodeId.removeEndNodes()
 
 
@@ -38,13 +40,15 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
     /* finally, filter out all shared nodes where the footway(s) do not actually cross the barrier(s).
     *  There are two situations which both need to be handled:
     *
-    *  1. The shared node is contained in a barrier way and a footway way and it is not an end
+    *  1. The shared node is contained in a both ways and it is not an end
     *     node of any of the involved ways, e.g.
-    *     https://www.openstreetmap.org/node/2225781269
+    *     https://www.openstreetmap.org/node/2225781269 (intersecting footways with barriers)
+    *     https://www.openstreetmap.org/node/8418974983 (intersecting footways with roads)
     *
     *  2. The barrier way or the footway way or both actually end on the shared node but are
-    *     connected to another footway / road way which continues the way after
-    *     https://www.openstreetmap.org/node/2458449002 (transition of footway to steps)
+    *     connected to another which continues the way after
+    *     https://www.openstreetmap.org/node/2458449002 (transition of footway to steps - intersecting with barrier)
+    *     https://www.openstreetmap.org/node/1641565064 (intersecting footways with roads)
     *
     *  So, for the algorithm, it should be irrelevant to which way(s) the segments around the
     *  shared node belong, what count are the positions / angles.
@@ -63,20 +67,23 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
         /* So, surrounding the shared node X, in the simple case, we have
          *
          * 1. position A, B neighbouring the shared node position which are part of a barrier way
-         * 2. position P, Q neighbouring the shared node position which are part of the routable way
+         * 2. position P, Q neighbouring the shared node position which are part of the moving way
          *
          * The way crosses the barrier if P is on one side of the polyline spanned by A,X,B and
          * Q is on the other side.
          *
-         * How can a footway that has a shared node with a barrier not cross the latter?
+         * How can a moving way that has a shared node with a barrier not cross the latter?
          * Multiple separate paths can reach barrier in one shared node - all from one side
+         * Imagine the road at https://www.openstreetmap.org/node/258003112 would continue to
+         * the south here, then, still none of those footways would actually cross the street
+         *  - only if it continued straight to the north, for example.
          *
          * The example brings us to the less simple case: What if several barriers share
          * a node at a crossing-candidate position?
          * Also, what if there are more than one footways involved?
          *
          * We look for if there is ANY crossing, so all polylines involved are checked:
-         * For all barriers going through point X, it is checked if not all footways that
+         * For all barriers going through point X, it is checked if not all passing ways that
          * go through X are on the same side of the barrier-polyline.
          * */
         val nodePos = mapData.getNode(nodeId)?.position
