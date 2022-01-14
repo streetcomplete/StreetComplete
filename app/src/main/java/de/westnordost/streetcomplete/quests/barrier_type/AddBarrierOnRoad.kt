@@ -28,7 +28,7 @@ class AddBarrierOnRoad: OsmElementQuestType<BarrierType> {
     """.toElementFilterExpression()
     }
 
-    override val commitMessage = "Add what is on intersection of road and barrier"
+    override val commitMessage = "Add how road and barrier intersect"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_barrier_on_road
     override val questTypeAchievements = listOf(CAR)
