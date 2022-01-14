@@ -15,7 +15,7 @@ data class WaysCrossing(val node: Node, var barrierWays: List<Way>, var movingWa
  *  In this context, two ways cross if
  *  1. they intersect at a shared node
  *  2. the node is not the end node of any of the two ways
- *  3. the ways actually cross each other, not use touch each other, i.e. the way A
+ *  3. the ways actually cross each other, not just touch each other, i.e. the way A
  *     intersects, then continues on the other side of way B
  */
 fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>, mapData: MapData): Iterable<WaysCrossing> {
