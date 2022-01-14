@@ -14,21 +14,17 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddBarrierOnPath: OsmElementQuestType<BarrierType> {
 
-    private val barrierFilter by lazy {
-        """
+    private val barrierFilter by lazy { """
         ways with
           barrier ~ wall|fence|hedge|guard_rail|retaining_wall|city_wall
           and area != yes
-    """.toElementFilterExpression()
-    }
+    """.toElementFilterExpression() }
 
-    private val pathsFilter by lazy {
-        """
+    private val pathsFilter by lazy { """
         ways with
           (highway ~ ${ALL_PATHS.joinToString("|")} and area != yes)
           and (access !~ private|no or (foot and foot !~ private|no))
-    """.toElementFilterExpression()
-    }
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add what is on intersection of path and barrier"
     override val wikiLink = "Key:barrier"
