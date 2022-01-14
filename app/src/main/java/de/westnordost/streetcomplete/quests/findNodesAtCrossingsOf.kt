@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.util.isRightOf
 
 data class WaysCrossing(val node: Node, var barrierWays: List<Way>, var movingWays: List<Way>)
 
-/** Return all crossings with nodes that are at crossing points between waysA and waysB.
+/** Return all crossings with nodes that are at crossing points between movingWays and barrierWays.
  *  Returned data includes both nodes at actual crossing and ways creating it
  *  to allow additional filtering
  *
