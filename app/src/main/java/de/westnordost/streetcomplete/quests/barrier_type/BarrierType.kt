@@ -29,7 +29,7 @@ enum class BarrierType(val osmValue: String) {
 }
 
 fun BarrierType.applyTo(changes: StringMapChangesBuilder) {
-    changes.add("barrier", this.osmValue)
+    changes.addOrModify("barrier", this.osmValue)
     when (this) {
         BarrierType.STILE_SQUEEZER -> {
             changes.addOrModify("stile", "squeezer")
