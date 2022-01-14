@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
@@ -326,6 +327,8 @@ import javax.inject.Singleton
         AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
         AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+
+        AddAirConditioning(), // often visible from the outside, if not, visible/feelable inside
 
         /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 
