@@ -33,9 +33,8 @@ class AddBarrierOnPath: OsmElementQuestType<BarrierType> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_path_intersection
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        return detectWayBarrierIntersection(mapData, barrierFilter, pathsFilter)
-    }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        detectWayBarrierIntersection(mapData, barrierFilter, pathsFilter)
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (element !is Node || element.tags.isNotEmpty()) false else null
