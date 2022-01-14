@@ -197,8 +197,13 @@ class AddDetectBarrierIntersectionTest {
         Assert.assertEquals(shared, questType.getApplicableElements(mapData).toList().single())
     }
 
-    @Test
-    fun `skip roads going into tunnel, as some map in such case retaining wall joining road which is not really incorrect`() {
+    /*
+        ║
+      ──╫──
+        ║
+    */
+    @Test fun `skip roads going into tunnel`() {
+        // some people map the retaining wall as joining with the road, which is not really incorrect
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
             node(1, p(0.0, -1.0)),
