@@ -61,14 +61,9 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
          * https://www.openstreetmap.org/node/1839120490 */
         val anySidewalk = setOf("both","left","right")
 
-        crossings = crossings.filter {
-            it.barrierWays.all { way ->
-                (way.tags["sidewalk"] in anySidewalk)
-            }
-            ||
-            it.barrierWays.all { way ->
-                way.tags["sidewalk"] !in anySidewalk
-            }
+        crossings = crossings.filter { crossing ->
+            crossing.barrierWays.all { it.tags["sidewalk"] in anySidewalk } ||
+            crossing.barrierWays.all { it.tags["sidewalk"] !in anySidewalk }
         }
         return crossings.map { it.node }.filter { it.tags.isEmpty() }
     }
