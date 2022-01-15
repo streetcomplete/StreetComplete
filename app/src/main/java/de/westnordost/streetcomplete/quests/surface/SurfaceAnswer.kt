@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
@@ -17,6 +18,8 @@ fun SurfaceAnswer.applyTo(changes: StringMapChangesBuilder, key: String) {
     // remove smoothness tag if surface was changed
     if (previousOsmValue != null && previousOsmValue != osmValue) {
         changes.deleteIfExists("smoothness")
+        changes.deleteIfExists("smoothness:date")
+        changes.deleteCheckDatesForKey("smoothness")
     }
     // add/remove note - used to describe generic surfaces
     if (note != null) {

@@ -319,7 +319,7 @@ quest pin/
     quest_pin_pointer.svg
 
 railway crossing icons/
-    chicane.svg                      License: CC0
+    chicane.svg                      (c) olo81, based on Tobias Zwick work - License: CC0
     double_half.svg                  (c) 2018 ServusWorld - License: CC0
     full.svg                         (c) 2018 ServusWorld - License: CC0
     gate.svg                         License: CC0
