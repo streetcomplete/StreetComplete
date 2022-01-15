@@ -350,6 +350,8 @@ import javax.inject.Singleton
         AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddInternetAccess(), // used by OsmAnd
 
+        AddFuelSelfService(),
+
         /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
         // roads

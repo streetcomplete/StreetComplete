@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -19,6 +20,8 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Tag:amenity=fuel"
     override val icon = R.drawable.ic_quest_fuel_self_service
 
+    override val questTypeAchievements = listOf(CAR)
+
     override fun getTitle(tags: Map<String, String>) : Int {
         val hasName = tags.containsKey("name")
         val hasBrand = tags.containsKey("brand")
@@ -28,7 +31,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
         }
     }
 
-    override val enabledInCountries = NoCountriesExcept("CN","NZ","IT","GR","HU","IS","PT","FR","AR","CA","CL")
+    override val enabledInCountries = NoCountriesExcept("IT")
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
