@@ -21,7 +21,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
     override val commitMessage = "Add air conditioning"
     override val wikiLink = "Key:air_conditioning"
     override val icon = R.drawable.ic_quest_toilet_fee //todo
-    override val isDeleteElementEnabled = false
+    override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override val questTypeAchievements = listOf(CITIZEN)
