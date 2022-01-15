@@ -9,6 +9,8 @@ fun List<Surface>.toItems() = this.map { it.asItem() }
 fun Surface.asItem(): Item<Surface> = when (this) {
     ASPHALT -> Item(this, R.drawable.surface_asphalt, R.string.quest_surface_value_asphalt)
     CONCRETE -> Item(this, R.drawable.surface_concrete, R.string.quest_surface_value_concrete)
+    CONCRETE_PLATES -> Item(this, R.drawable.surface_concrete_plates, R.string.quest_surface_value_concrete_plates)
+    CONCRETE_LANES -> Item(this, R.drawable.surface_concrete_lanes, R.string.quest_surface_value_concrete_lanes)
     FINE_GRAVEL -> Item(this, R.drawable.surface_fine_gravel, R.string.quest_surface_value_fine_gravel)
     PAVING_STONES -> Item(this, R.drawable.surface_paving_stones, R.string.quest_surface_value_paving_stones)
     COMPACTED -> Item(this, R.drawable.surface_compacted, R.string.quest_surface_value_compacted)
@@ -17,6 +19,7 @@ fun Surface.asItem(): Item<Surface> = when (this) {
     UNHEWN_COBBLESTONE -> Item(this, R.drawable.surface_cobblestone, R.string.quest_surface_value_unhewn_cobblestone)
     GRASS_PAVER -> Item(this, R.drawable.surface_grass_paver, R.string.quest_surface_value_grass_paver)
     WOOD -> Item(this, R.drawable.surface_wood, R.string.quest_surface_value_wood)
+    WOODCHIPS -> Item(this, R.drawable.surface_woodchips, R.string.quest_surface_value_woodchips)
     METAL -> Item(this, R.drawable.surface_metal, R.string.quest_surface_value_metal)
     GRAVEL -> Item(this, R.drawable.surface_gravel, R.string.quest_surface_value_gravel)
     PEBBLES -> Item(this, R.drawable.surface_pebblestone, R.string.quest_surface_value_pebblestone)

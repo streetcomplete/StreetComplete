@@ -4,15 +4,13 @@ import android.content.Context
 import android.graphics.Outline
 import android.graphics.Path
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewOutlineProvider
-import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isInvisible
-import de.westnordost.streetcomplete.R
-import kotlinx.android.synthetic.main.view_achievement_icon.view.*
+import de.westnordost.streetcomplete.databinding.ViewAchievementIconBinding
 
 /** Shows an achievement icon with its frame and level indicator */
 class AchievementIconView @JvmOverloads constructor(
@@ -21,26 +19,24 @@ class AchievementIconView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr)  {
 
+    private val binding = ViewAchievementIconBinding.inflate(LayoutInflater.from(context), this)
+
     var icon: Drawable?
-        set(value) { iconView.setImageDrawable(value) }
-        get() = iconView.drawable
+        set(value) { binding.iconView.setImageDrawable(value) }
+        get() = binding.iconView.drawable
 
     var level: Int
         set(value) {
-            levelText.text = value.toString()
-            levelText.isInvisible = value < 2
+            binding.levelText.text = value.toString()
+            binding.levelText.isInvisible = value < 2
         }
-        get() = levelText.text.toString().toIntOrNull() ?: 0
+        get() = binding.levelText.text.toString().toIntOrNull() ?: 0
 
     init {
-        inflate(context, R.layout.view_achievement_icon, this)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            outlineProvider = AchievementFrameOutlineProvider
-        }
+        outlineProvider = AchievementFrameOutlineProvider
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 object AchievementFrameOutlineProvider : ViewOutlineProvider() {
     private val points = arrayOf(
         0.45,0.98,

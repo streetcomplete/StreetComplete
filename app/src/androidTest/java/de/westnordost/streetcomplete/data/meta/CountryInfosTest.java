@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays;
 
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.*;
@@ -55,7 +55,7 @@ public class CountryInfosTest
 		assertTrue(info.getRegularShoppingDays() >= 0);
 	}
 
-	private static List<String> validWeekdays = Arrays.asList("Mo","Tu","We","Th","Fr","Sa","Su");
+	private static final List<String> validWeekdays = Arrays.asList("Mo","Tu","We","Th","Fr","Sa","Su");
 	private void checkStartOfWorkweekValid(CountryInfo info)
 	{
 		assertTrue(validWeekdays.contains(info.getFirstDayOfWorkweek()));

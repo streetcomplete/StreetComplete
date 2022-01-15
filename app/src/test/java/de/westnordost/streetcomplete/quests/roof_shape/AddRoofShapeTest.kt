@@ -59,21 +59,6 @@ class AddRoofShapeTest {
         ))
     }
 
-    @Test fun `not applicable to buildings with many levels and few or no roof levels`() {
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "6.5", "roof:levels" to "1", "building" to "apartments"))
-        ))
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "8", "roof:levels" to "2", "building" to "apartments"))
-        ))
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "5", "building" to "apartments"))
-        ))
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "4", "roof:levels" to "0", "building" to "apartments"))
-        ))
-    }
-
     @Test fun `applicable to buildings with many levels and enough roof levels to be visible from below`() {
         assertEquals(true, questType.isApplicableTo(
             way(tags = mapOf("building:levels" to "6", "roof:levels" to "1.5", "building" to "apartments"))
@@ -104,14 +89,6 @@ class AddRoofShapeTest {
         val quests = questType.getApplicableElements(TestMapDataWithGeometry(listOf(element)))
 
         assertEquals(element, quests.single())
-    }
-
-    @Test fun `do not create quest for buildings with too many levels`() {
-        val element = way(tags = mapOf("building:levels" to "6", "roof:levels" to "1", "building" to "apartments"))
-
-        val quests = questType.getApplicableElements(TestMapDataWithGeometry(listOf(element)))
-
-        assertEquals(true, quests.isEmpty())
     }
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {

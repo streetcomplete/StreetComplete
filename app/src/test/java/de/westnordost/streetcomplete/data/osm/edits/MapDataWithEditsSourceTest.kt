@@ -1020,6 +1020,21 @@ class MapDataWithEditsSourceTest {
 
     //endregion
 
+
+    //region MapDataController.Listener ::onCleared
+
+    @Test
+    fun `onCleared is passed on`() {
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        mapDataListener.onCleared()
+        verify(listener).onCleared()
+    }
+
+    //endregion
+
     private fun create() = MapDataWithEditsSource(mapDataCtrl, editsCtrl, geometryCreator)
 
     /** Feed mock MapDataController the data */

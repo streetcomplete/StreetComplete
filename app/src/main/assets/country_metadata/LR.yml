@@ -1,7 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
-centerLine: yellow
+centerLineStyle: yellow
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 618
+noParkingSignStyle: mutcd
+noStoppingSignStyle: mutcd
 officialLanguages: [en]
 orchardProduces: [banana, rubber, pineapple, orange, cacao, coconut, tomato, coffee]
 speedUnits: [miles per hour, kilometers per hour]

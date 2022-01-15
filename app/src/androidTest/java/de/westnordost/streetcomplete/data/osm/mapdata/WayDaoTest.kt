@@ -66,12 +66,12 @@ class WayDaoTest : ApplicationDbTestCase() {
         val e3 = way(3, nodeIds = listOf(8,1654))
         dao.putAll(listOf(e1,e2,e3))
         assertEquals(
-            listOf(e1, e2).map { it.id },
-            dao.getAll(listOf(1,2,4)).sortedBy { it.id }.map { it.id }
+            listOf(e1, e2),
+            dao.getAll(listOf(1,2,4)).sortedBy { it.id }
         )
         assertEquals(
-            listOf(e1,e2,e3).map { it.nodeIds },
-            dao.getAll(listOf(1,2,3)).sortedBy { it.id }.map { it.nodeIds }
+            listOf(e1,e2,e3),
+            dao.getAll(listOf(1,2,3)).sortedBy { it.id }
         )
     }
 
@@ -89,8 +89,8 @@ class WayDaoTest : ApplicationDbTestCase() {
         val e3 = way(3, nodeIds = listOf(8,1654))
         dao.putAll(listOf(e1,e2,e3))
         assertEquals(
-            listOf(e1, e2).map { it.id },
-            dao.getAllForNode(1).sortedBy { it.id }.map { it.id }
+            listOf(e1, e2),
+            dao.getAllForNode(1).sortedBy { it.id }
         )
     }
 
@@ -98,6 +98,18 @@ class WayDaoTest : ApplicationDbTestCase() {
         dao.putAll(listOf(way(1L), way(2L), way(3L)))
         val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
+    }
+
+    @Test fun getUnusedAndOldIdsButAtMostX() {
+        dao.putAll(listOf(way(1L), way(2L), way(3L)))
+        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10, 2)
+        assertEquals(2, unusedIds.size)
+    }
+
+    @Test fun clear() {
+        dao.putAll(listOf(way(1L), way(2L), way(3L)))
+        dao.clear()
+        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
     }
 }
 

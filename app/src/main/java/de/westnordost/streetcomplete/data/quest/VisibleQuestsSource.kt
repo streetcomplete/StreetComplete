@@ -49,6 +49,11 @@ import javax.inject.Singleton
     }
 
     private val visibleQuestTypeSourceListener = object : VisibleQuestTypeSource.Listener {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+            // many different quests could become visible/invisible when this is changed
+            invalidate()
+        }
+
         override fun onQuestTypeVisibilitiesChanged() {
             // many different quests could become visible/invisible when this is changed
             invalidate()
@@ -68,13 +73,9 @@ import javax.inject.Singleton
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
     }
 
-    /** Get count of all visible quests in given bounding box */
-    fun getCount(bbox: BoundingBox): Int =
-        osmQuestSource.getAllInBBoxCount(bbox)
-
     /** Retrieve all visible quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox): List<Quest> {
-        val visibleQuestTypeNames = questTypeRegistry.all
+        val visibleQuestTypeNames = questTypeRegistry
             .filter { visibleQuestTypeSource.isVisible(it) }
             .map { it::class.simpleName!! }
         if (visibleQuestTypeNames.isEmpty()) return listOf()

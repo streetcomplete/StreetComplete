@@ -1,6 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [Bank of Africa, UBA, Ecobank]
+edgeLineStyle: short white dashes
 mobileCountryCode: 613
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [fr, mos, dyu, ff]
 orchardProduces: [cashew_nut, guava, mango, mangosteen, tomato, chilli_pepper, sweet_pepper, almond, orange, lemon, lime, grapefruit]
 popularReligions: [muslim]

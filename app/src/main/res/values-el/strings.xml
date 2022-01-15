@@ -14,9 +14,6 @@
     <string name="oauth_failed_permissions">"Η εξουσιοδότηση απέτυχε: Πρέπει να παραχωρηθούν όλες οι καταχωρημένες άδειες"</string>
 
     <!-- Fuzzy -->
-    <string name="title_activity_settings">"Ρυθμίσεις"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Επικοινωνία"</string>
 
     <!-- Fuzzy -->
@@ -58,9 +55,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Θα το ελέγξω"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_field_empty">"Άφησες αυτό το πεδίο άδειο"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Θα αφήσετε σημείωμα αντ' αυτού;"</string>
@@ -130,9 +124,6 @@
     <string name="confirmation_discard_positive">"Απόρριψη"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Ακύρωση"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Σάρωση για αναζητήσεις εδώ"</string>
 
     <!-- Fuzzy -->
@@ -157,9 +148,6 @@
     <string name="confirmation_cancel_prev_download_title">"Σταμάτημα της τρέχουσας αναζήτησης και αντ' αυτού σάρωση εδώ;"</string>
 
     <!-- Fuzzy -->
-    <string name="notification_downloading">"Σάρωση για αναζητήσεις..."</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Η τοποθεσία είναι κλειστή. Άνοιγμα των Ρυθμίσεων για ενεργοποίηση τώρα;"</string>
 
     <!-- Fuzzy -->
@@ -169,7 +157,7 @@
     <string name="about_title_authors">"Ευχαριστίες"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick και συνεργάτες"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick και συνεργάτες"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Πηγή αποθήκευσης"</string>
@@ -242,12 +230,6 @@
     <string name="quest_openingHours_comment_description">"Να είστε συνοπτικός, ιδανικά χρησιμοποιήστε τη διατύπωση από το σύμβολο. Π.χ. \"με ραντεβού\". Η απουσία ενός συμβόλου δεν σημαίνει απαραίτητα ότι δεν υπάρχουν κανονικές ώρες λειτουργίας."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Πόσα επίπεδα έχει αυτό το κτίριο;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Πόσα επίπεδα έχει αυτό το τμήμα του κτιρίου;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Ποιό βασικό σχήμα έχει η οροφή αυτού του κτιρίου;"</string>
 
     <!-- Fuzzy -->
@@ -271,7 +253,7 @@
 &lt;p&gt;&lt;b&gt;Άμεσες Συνεισφορές &lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Καταρχάς, κατανοήστε ότι με αυτή την εφαρμογή, κάνετε πραγματικές και άμεσες συνεισφορές στο OpenStreetMap. &lt;br/&gt;
-Οτιδήποτε συμβάλλετε σε αυτήν την εφαρμογή προστίθεται απευθείας στον χάρτη, δεν υπάρχει τρίτο μέρος μεταξύ της εφαρμογής και της υποδομής του OSM, όπως συμβαίνει με το &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org&lt;/a&gt; ή το &lt;a href=\"http://www.kort.ch\"&gt; Kort&lt;/a&gt;.
+Οτιδήποτε συμβάλλετε σε αυτήν την εφαρμογή προστίθεται απευθείας στον χάρτη, δεν υπάρχει τρίτο μέρος μεταξύ της εφαρμογής και της υποδομής του OSM.
 &lt;/p&gt;
 &lt;p&gt;
 Η επεξεργασία του OpenStreetMap ανώνυμα δεν είναι δυνατή, επομένως οι αλλαγές που κάνετε πραγματοποιούνται με τον λογαριασμό σας χρήστη OSM. Αυτό σημαίνει ότι η ημερομηνία, το περιεχόμενο και η έμμεση τοποθεσία των αλλαγών σας είναι ορατά δημοσίως στον ιστότοπο openstreetmap και οφείλονται στον λογαριασμό σας.
@@ -344,16 +326,10 @@
     <string name="quest_surface_value_wood">"Ξύλο"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title">"Ποιό είναι το όνομα αυτού του μέρους;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Αυτός ο δρόμος έχει πεζοδρόμιο;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Που είναι αυτός ο δρόμος;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cyclewaySurface_title">"Τι επιφάνεια έχει ο ποδηλατόδρομος εδώ;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Τι είδους δρόμος υπηρεσίας είναι αυτός;"</string>
@@ -674,10 +650,7 @@
     <string name="quest_fireHydrant_type_pond">"Λιμνούλα"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Δείτε την &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;πλήρη λίστα στο GitHub&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Δείτε την &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;εργασία στο POEditor&lt;/a&gt; για μια πλήρη λίστα."</string>
+    <string name="credits_contributors">"Δείτε την &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;πλήρη λίστα στο GitHub&lt;/a&gt;."</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations_title">"Μεταφράσεις"</string>
@@ -850,17 +823,10 @@
     <string name="quest_crossing_type_title">"Τι είδους διασταύρωση είναι αυτή;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Διασταύρωση με φανάρια"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Διασταύρωση χωρίς οδικές σημάνσεις"</string>
-    <string name="compass_north_one_letter">"Ν"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Αναίρεση"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Αναίρεση της ακόλουθης τελευταίας απάντησης;"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Μανγκοστίν"</string>
@@ -930,9 +896,6 @@
     <string name="quest_buildingLevels_answer_description">"Σε αυτή την περίπτωση, απλώς εισάγετε τις τιμές του υψηλότερου μέρους του κτιρίου."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Πατήστε για απεμπλοκή προβολής από την τοποθεσία"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Είναι οι λωρίδες αυτού του δρόμου χωρισμένες φυσικά (π.χ. μέσα από ένα φράγμα); Το προεπιλεγμένο όριο ταχύτητας εξαρτάται από το αν αυτό συμβαίνει ή όχι."</string>
     <string name="about_category_feedback">"Αναφορά"</string>
 
@@ -973,9 +936,6 @@
     <string name="pref_category_advanced">"Προχωρημένο"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests">"Επιλογή αναζήτησης"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Ενεργό"</string>
 
     <!-- Fuzzy -->
@@ -983,9 +943,6 @@
 
     <!-- Fuzzy -->
     <string name="action_reset">"Επαναφορά"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Πατήστε παρατεταμένα και μετακινήστε μια αναζήτηση για επαρύθμιση της προτεραιότητας λήψης και εμφάνιση στο χάρτη."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"
@@ -1079,18 +1036,6 @@
     <string name="create_new_note_description">"Μπορείτε να αφήσετε μια σημείωση για να ενημερώσετε άλλους χαρτογράφους για ένα ζήτημα εδώ. Ρυθμίστε τη θέση της σημείωσης μετακινώντας τον χάρτη:"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Ακύρωση της προσωρινής μνήμης αναζήτησης"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Χρήσιμο αν νομίζετε ότι ορισμένες αναζητήσεις είναι ξεπερασμένες"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Ακυρώνω"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Η ακύρωση της προσωρινής μνήμης προκαλεί την ενημέρωση των αναζητήσεων την επόμενη φορά που θα γίνει η λήψη τους. Η προσωρινή μνήμη αναζητήσεων ακυρώνεται αυτόματα μετά από μία εβδομάδα και αμέσως όταν μια αναζήτηση που λύσατε αποδειχθεί ότι έχει ήδη απαντηθεί από κάποιον άλλο."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Συνήθως φαίνεται έτσι:"</string>
 
     <!-- Fuzzy -->
@@ -1180,18 +1125,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Αδιαμόρφωτο λιθόστρωτο"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Υπάρχει περιορισμός στο ποιος μπορεί να σταθμεύσει εδώ;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Είναι ιδιωτικό"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Είναι δημόσιο (με ή χωρίς χρέωση)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Είναι μόνο για τους πελάτες"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Ποιο είναι το όνομα αυτού του πεζόδρομου;"</string>
@@ -1306,9 +1239,6 @@
     <string name="pref_quests_reset">"Επαναφορά και την ενεργοποίηση αναζήτησης και την σειρά των προεπιλογών;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Πως ήταν κατασκευασμένο αυτό το κτίριο;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Επιλέξτε μια πιο συγκεκριμένη τιμή."</string>
 
     <!-- Fuzzy -->
@@ -1343,9 +1273,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Ημιτελής μονοκατοικία"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached_description">"δύο ζεύγη μονοκατοικιών"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"μια σειρά παρόμοιων μονοκατοικιών"</string>
@@ -1541,7 +1468,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Τι καθορίζει το όριο ταχύτητας;"</string>
-    <string name="notification_channel_download">"Λήψη"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Αυτή η παιδική χαρά είναι προσιτή στο κοινό;"</string>
@@ -1776,9 +1702,6 @@
     <string name="quest_generalFee_title">"Υπάρχει κόστος για την είσοδο %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Λειτουργεί αυτό το πλυντήριο με αυτοεξυπηρέτηση;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Έχουν αυτά τα σκαλιά κουπαστή;"</string>
 
     <!-- Fuzzy -->
@@ -1887,6 +1810,8 @@
     <string name="quest_tourism_information_terminal">"Τερματικό πληροφοριών"</string>
     <string name="quest_tourism_information_map">"Χάρτης"</string>
     <string name="quest_tourism_information_guidepost">"Οδοδείκτης"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Είναι για γενικά απόβλητα"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Λοιπόν, αυτό είναι ένα δοχείο για οποιαδήποτε απόβλητα, όπως οικιακά ή εμπορικά απόβλητα;"</string>
     <string name="quest_accepts_cash_title">"Δέχεται %s πληρωμή σε μετρητά;"</string>
@@ -1896,12 +1821,16 @@
     <string name="osm_profile">"Προφίλ OSM
 "</string>
     <string name="next">"Επόμενο"</string>
+
+    <!-- Fuzzy -->
     <string name="letsgo">"Πάμε!"</string>
     <string name="tutorial_welcome_to_osm">"Καλώς ήρθατε στο OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"ο δωρεάν παγκόσμιος χάρτης wiki"</string>
     <string name="tutorial_intro">"Το StreetComplete διευκολύνει τη συνεισφορά στο OpenStreetMap.
 Αναζητά αυτόματα στοιχεία που λείπουν στην περιοχή σας: λωρίδες ποδηλάτων, αριθμοί σπιτιών, ώρες λειτουργίας και πολλά άλλα…"</string>
     <string name="tutorial_solving_quests">"Μόλις βρεθούν, τα στοιχεία που λείπουν θα εμφανίζονται στον χάρτη σας ως αποστολές. Μπορείτε να αρχίσετε να τα επιλύετε αμέσως και αργότερα να συνδεθείτε για να δημοσιεύσετε τις απαντήσεις σας."</string>
+
+    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Όποτε είστε αβέβαιοι, μπορείτε πάντα να απαντήσετε \"Δεν μπορώ να πω\" και να αφήσετε μια σημείωση. Τέλος, θυμηθείτε να παραμείνετε ασφαλείς: Να γνωρίζετε το περιβάλλον σας και να μην εισέρχεστε σε ιδιωτική περιουσία."</string>
     <string name="tutorial_happy_mapping">"Καλή Χαρτογράφηση!"</string>
     <string name="achievements_empty">"Δεν έχετε ακόμη επιτεύγματα"</string>
@@ -1938,7 +1867,11 @@
     <string name="link_umap_description">"Δημιουργήστε χάρτες με προσαρμοσμένα δεδομένα γρήγορα και ενσωματώστε τους στον ιστότοπό σας"</string>
     <string name="link_opnvkarte_description">"Ένας χάρτης για διαδρομές και στάσεις δημόσιων συγκοινωνιών"</string>
     <string name="link_pic4review_description">"Συνεισφέρετε στο OSM απλά κοιτάζοντας φωτογραφίες της πόλης σας"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wiki_description">"Το wiki είναι το σημείο εκκίνησής σας με οτιδήποτε σχετικό με το OpenStreetMap"</string>
+
+    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Είστε νέοι στο OpenStreetMap; Αυτός είναι ένας οδηγός για αρχάριους"</string>
     <string name="link_neis_one_description">"Μια τεράστια συλλογή στατιστικών για συνεργάτες του OpenStreetMap, όπως πού και πώς συνεισφέρατε, ποιος άλλος είναι γύρω σας καθώς και πίνακες κατάταξης"</string>
     <string name="link_welcome_mat_description">"Γενικές πληροφορίες σχετικά με το OpenStreetMap και τον τρόπο συνεργασίας με το OSM ως οργανισμό"</string>
@@ -1956,6 +1889,8 @@
     <string name="link_openinframap_description">"Ένας χάρτης που δείχνει την υποδομή ενέργειας, τηλεπικοινωνιών, φυσικού αερίου και πετρελαίου"</string>
     <string name="link_openorienteeringmap_description">"Δημιουργήστε εκτυπώσιμους χάρτες για το άθλημα προσανατολισμού orienteering"</string>
     <string name="link_openstreetbrowser_description">"Ένας χάρτης για να περιηγηθείτε στις λειτουργίες του χάρτη του OpenStreetMap ανά κατηγορία"</string>
+
+    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Το εβδομαδιαίο ιστολόγιο ειδήσεων σχετικά με το τι συμβαίνει στον κόσμο του OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Δημιουργήστε αφίσες διαγράμματος του εδαφικού σχήματος μιας πόλης ή γειτονιάς"</string>
     <string name="achievement_first_edit_title">"Η Πρώτη Αναζήτηση Επιλύθηκε"</string>
@@ -1979,6 +1914,8 @@
     <string name="achievement_veg_title">"Ευγενικός με τα Ζώα"</string>
     <string name="achievement_veg_solved_X">"Λύσατε %d αναζητήσεις που είναι ενδιαφέρουσες για άτομα που ζουν σε δίαιτα χωρίς κρέας!"</string>
     <string name="achievement_car_title">"Στο δρόμο"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Επιλύσατε %d αποστολές που βελτιώνουν τις λεπτομέρειες της οδικής υποδομής, τοποθετώντας το δρόμο στο OpenStreetMap!"</string>
     <string name="unread_messages_message">"Έχετε %d αδιάβαστα μηνύματα στα εισερχόμενά σας"</string>
     <string name="unread_messages_button">"Ανοίξτε τα Εισερχόμενα"</string>
@@ -1998,6 +1935,8 @@
     <string name="user_profile_local_rank">"Κατάταξη σε %s"</string>
     <string name="user_profile_days_active">"Ενεργές ημέρες"</string>
     <string name="user_profile_achievement_levels">"Επίπεδα επιτευγμάτων"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Σε ποιον δρόμο ανήκει ο αριθμός (σπίτι) %s ;"</string>
     <string name="quest_address_street_no_named_streets">"Δεν ανήκει σε ονομασμένο δρόμο"</string>
     <string name="quest_address_street_place_name_label">"Όνομα τοποθεσίας:"</string>
@@ -2022,14 +1961,16 @@
     <string name="quest_board_type_map_title">"Είναι απλώς ένας χάρτης και μόνο ένας χάρτης;"</string>
     <string name="quest_board_type_map_description">"Εάν ο πίνακας αφορά ένα συγκεκριμένο θέμα, προσδιορίστε το, ανεξάρτητα από το εάν περιλαμβάνει επίσης έναν χάρτη. Για παράδειγμα, μια δημόσια συγκοινωνία μπορεί να έχει χάρτη διαδρομής λεωφορείου. Εάν το θέμα δεν περιλαμβάνεται στις διαθέσιμες απαντήσεις, σκεφτείτε το ενδεχόμενο να αφήσετε μια σημείωση."</string>
     <string name="quest_surface_detailed_answer_impossible">"Πολλαπλές επιφάνειες…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Είστε βέβαιοι ότι είναι αδύνατο να προσδιορίσετε την επιφάνεια; Σημειώστε την επιλογή απάντησης \"Διαφέρει μέσα στη διαδρομή\" που σας επιτρέπει να κόψετε τον δρόμο με τον οποίο αλλάζει η επιφάνεια. Χρησιμοποιήστε το \"Δεν μπορώ να πω\" εάν υπάρχει μία μόνο επιφάνεια, αλλά δεν είναι διαθέσιμη ως απάντηση."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Προσδιορίστε εν συντομία τη φύση της επιφάνειας εδώ, για παράδειγμα \"αμμώδης με μπαλώματα σε πλακόστρωτο\". Το μήκος του κειμένου περιορίζεται σε 255 χαρακτήρες."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"διεθνές"</string>
-    <string name="quest_streetName_menuItem_romanized">"σε λατινική γραφή"</string>
     <string name="quest_buildingType_terrace2">"Σειρά σπιτιών"</string>
-    <string name="quest_oneway_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση του πείρου. Σημειώστε την υποδεικνυόμενη κατεύθυνση."</string>
     <string name="at_housename">"Όνομα οικίας %s:"</string>
     <string name="at_conscription_and_street_number">"Αριθμός συνταγογράφησης %1$s, Αριθμός προσανατολισμού %2$s:"</string>
 
@@ -2050,9 +1991,17 @@
     <string name="resurvey_intervals_default">"Προκαθορισμένο"</string>
     <string name="resurvey_intervals_more_often">"Ρωτήστε πιο συχνά"</string>
     <string name="quest_accepts_cash_type_title">"Δέχεται το %1$s (%2$s) πληρωμή σε μετρητά;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_name_title">"Έχει η στάση του τραμ %s πάγκο;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Μήπως αυτή η στάση τραμ έχει πάγκο;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Μήπως αυτή η στάση λεωφορείου έχει πάγκο;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Η στάση λεωφορείου %s έχει πάγκο;"</string>
     <string name="quest_summit_register_title">"Υπάρχει καταχώρηση κορυφής στο %s;"</string>
     <string name="quest_is_defibrillator_inside_title">"Είναι αυτός ο απινιδωτής (AED) μέσα σε ένα κτήριο;"</string>
@@ -2066,6 +2015,8 @@
     <string name="quest_steps_incline_up">"Με αυτόν τον τρόπο"</string>
     <string name="quest_step_count_title">"Πόσα βήματα είναι εδώ;"</string>
     <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
     <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
     <string name="quest_busStopRef_title">"Ποιος είναι ο αριθμός αναφοράς αυτής της στάσης λεωφορείου;"</string>
@@ -2078,6 +2029,8 @@
     <string name="quest_steps_ramp_bicycle">"Ράμπα ποδηλάτου"</string>
     <string name="quest_steps_ramp_stroller">"Ράμπα καροτσιού"</string>
     <string name="quest_steps_ramp_wheelchair">"Ράμπα αναπηρικού αμαξιδίου"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Ποιο είναι το όνομα της τράπεζας για αυτό το ATM;"</string>
     <string name="quest_clothes_container_operator_title">"Ποιος δέχεται δωρεές για αυτόν τον κάδο ρούχων;"</string>
     <string name="quest_charging_station_operator_title">"Ποιος είναι ο διαχειριστής αυτού του σταθμού φόρτισης;"</string>
@@ -2113,39 +2066,54 @@
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Διαθέτει αμφίδρομη αριστερή λωρίδα"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Είναι αυτό σωστό?"</string>
     <string name="quest_maxheight_below_bridge_title">"Ποιο είναι το όριο ύψους κάτω από τη γέφυρα;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Εάν δεν ισχύει για όλη την διαδρομή, σκεφτείτε να απαντήσετε \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Υπάρχει ανάγλυφη επίστρωση σε αυτό το κράσπεδο εδώ;"</string>
     <string name="quest_kerb_height_title">"Ποιο είναι το ύψος αυτού του κράσπεδου;"</string>
     <string name="quest_kerb_height_flush">"Ίδιο επίπεδο με την επιφάνεια του δρόμου"</string>
     <string name="quest_kerb_height_lowered">"Λίγο υψηλότερο από την επιφάνεια του δρόμου"</string>
     <string name="quest_kerb_height_raised">"Ψηλό κράσπεδο"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Δεν υπάρχει κράσπεδο σε αυτήν την πλευρά της διάβασης"</string>
     <string name="quest_kerb_height_lowered_ramp">"Κράσπεδο ράμπας"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Καθορίστε τον συνολικό αριθμό των σηματοδοτημένων λωρίδων (και των δύο κατευθύνσεων) για την χρήση της κυκλοφορίας των αυτοκινήτων. Έτσι, οι μοτοσυκλέτες και οι ειδικές λωρίδες στάθμευσης δεν μετράνε.
 Εάν υπάρχουν λωρίδες που προορίζονται για λεωφορεία, παρακαλώ αφήστε ένα σημείωμα."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Καθορίστε εδώ τον αριθμό των σηματοδοτημένων λωρίδων για την χρήση της κυκλοφορίας των αυτοκινήτων. Έτσι, οι μοτοσυκλέτες και οι ειδικές λωρίδες στάθμευσης δεν μετράνε.
 Εάν υπάρχουν λωρίδες που προορίζονται για λεωφορεία, παρακαλώ αφήστε ένα σημείωμα."</string>
     <string name="quest_surface_value_rock">"Πέτρα"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Μπορούν να περάσουν ψηλά φορτηγά"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Τα ψηλά φορτηγά δεν χωράνε"</string>
     <string name="quest_address_street_hint">"Χτυπήστε το δρόμο στον χάρτη"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Σηματοδοτημένες διαβάσεις"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
     <string name="quest_existence_title">"Αυτό είναι ακόμα εδώ; (%s)"</string>
-    <string name="quest_existence_name_title">"Είναι ακόμα το %1$s εδώ; (%2$s)"</string>
+    <string name="quest_existence_name_title">"Είναι ακόμα το %1$s (%2$s) εδώ;"</string>
     <string name="quest_tracktype_grade2a">"Στερεό αλλά μη ασφαλτοστρωμένο"</string>
     <string name="quest_tracktype_grade3a">"Κυρίως στερεό"</string>
     <string name="quest_generic_answer_does_not_exist">"Δεν υπάρχει…"</string>
-    <string name="osm_element_gone_warning">"Προειδοποίηση: Αυτό δεν μπορεί να αναιρεθεί!"</string>
     <string name="osm_element_gone_description">"Είστε βέβαιοι ότι δεν υπάρχει, ούτε καν σε διαφορετική τοποθεσία; Σε περίπτωση αμφιβολίας, καλύτερα να αφήσετε μια σημείωση."</string>
     <string name="osm_element_gone_confirmation">"Δεν υπάρχει"</string>
     <string name="leave_note">"Αφήστε σημείωμα"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Τι είναι εδώ τώρα;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Είναι κενό"</string>
     <string name="quest_shop_gone_replaced_answer">"Ένα..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Πληκτρολογήστε το είδος της τοποθεσίας εδώ"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"Δεν ξέρετε τι είναι αυτό. Σκεφτείτε να αφήσετε μια σημείωση."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Ο αριθμός λωρίδων διαφέρει για κάθε πλευρά"</string>
     <string name="quest_pitchSurface_title">"Τι επιφάνεια έχει αυτό το γήπεδο;"</string>
@@ -2153,6 +2121,8 @@
     <string name="quest_dietType_kosher_name_title">"Το %s προσφέρει προϊόντα Κοσέρ;"</string>
     <string name="quest_dietType_explanation_kosher">"Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Δεν υπάρχει καθόλου ποδηλατόδρομος"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ως συνήθως, χτυπήστε στη μία πλευρά της εικόνας, επιλέξτε μια σωστή απάντηση και κάντε το ίδιο για την άλλη πλευρά. Σημειώστε όλες τις διαθέσιμες επιλογές: ορισμένες περιπτώσεις δεν είναι προφανείς, όπως ένας μονόδρομος που επιτρέπει ποδηλάτες και στις δύο κατευθύνσεις!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Επιλέγοντας αυτό δεν υπάρχει ποδηλατόδρομος"</string>
     <string name="quest_construction_completed_at_known_date">"Θα ολοκληρωθεί στις…"</string>
@@ -2179,9 +2149,127 @@
     <string name="team_mode">"Λειτουργία ομάδας"</string>
     <string name="team_mode_exit">"Έξοδος από τη λειτουργία ομάδας"</string>
     <string name="team_mode_description">"Όταν χαρτογραφείτε την ίδια περιοχή μαζί σε μια ομάδα, μπορείτε να εισέλθετε σε λειτουργία ομάδας για να χωρίσετε τις αποστολές μεταξύ όλων των μελών της ομάδας."</string>
-    <string name="team_mode_team_size_label">"Πόσοι άνθρωποι είναι εκεί;"</string>
     <string name="team_mode_team_size_hint">"Η ομαδική κατάσταση λειτουργεί για ομάδες από 2 έως 12 άτομα."</string>
-    <string name="team_mode_choose_color">"Τώρα όλοι στην ομάδα σας επιλέγουν ένα μοναδικό χρώμα:"</string>
     <string name="team_mode_active">"Η λειτουργία ομάδας είναι ενεργή"</string>
     <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
+    <string name="quest_pitchLit_title">"Είναι φωτισμένο αυτό το γήπεδο;"</string>
+    <string name="quest_pitchLit_title_track">"Είναι φωτισμένος αυτός ο στίβος;"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_crossing_type_signals_controlled">"Η διέλευση ελέγχεται από φανάρια"</string>
+    <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
+    <string name="synced">"Συγχρονισμένο"</string>
+    <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>
+    <string name="quest_cycleway_value_separate">"εμφανίζεται ξεχωριστά στο χάρτη"</string>
+    <string name="created_note_action_title">"Δημιουργήθηκε σημείωση"</string>
+    <string name="commented_note_action_title">"Σχολιασμένη σημείωση"</string>
+    <string name="hid_action_description">"Το έκρυψες"</string>
+    <string name="split_way_action_description">"Χωρίζεις τον δρόμο"</string>
+    <string name="deleted_poi_action_description">"Το διαγράψατε"</string>
+    <string name="added_tag_action_title">"Προστέθηκε %s"</string>
+    <string name="removed_tag_action_title">"Αφαιρέθηκε %s"</string>
+    <string name="changed_tag_action_title">"Ενημερώθηκε σε %s"</string>
+    <string name="pref_title_delete_cache">"Διαγραφή προσωρινής μνήμης"</string>
+    <string name="pref_title_delete_cache_summary">"Εάν πιστεύετε ότι ορισμένα δεδομένα είναι παλιά"</string>
+    <string name="delete_confirmation">"Διαγραφή"</string>
+    <string name="delete_cache_dialog_message">"Διαγραφή όλων των ληφθέντων δεδομένων χάρτη, συμπεριλαμβανομένων των αναζητήσεων;
+Τα δεδομένα ανανεώνονται μετά από %1$s ημέρες και τα αχρησιμοποίητα δεδομένα διαγράφονται αυτόματα μετά από %2$s ημέρες."</string>
+    <string name="quest_shop_type_title">"Τι είδους κατάστημα είναι το %s;"</string>
+    <string name="quest_shop_type_title_no_name">"Τι είδους κατάστημα είναι αυτό; "</string>
+    <string name="pref_background_type_select">"Επιλέξτε τύπο φόντου"</string>
+    <string name="background_type_map">"Χάρτης"</string>
+    <string name="background_type_aerial_esri">"Εναέρια (από το Esri)"</string>
+    <string name="quest_barrier_type_title">"Τι είδους μπάρες είναι αυτές;"</string>
+    <string name="quest_barrier_type_gate">"Πύλη"</string>
+    <string name="quest_barrier_type_lift_gate">"Μπάρα ελέγχου κυκλοφορίας"</string>
+    <string name="quest_barrier_type_bollard">"Κολωνάκι(α)"</string>
+    <string name="quest_barrier_type_chain">"Αλυσίδα"</string>
+    <string name="quest_barrier_type_rope">"Σχοινί"</string>
+    <string name="quest_barrier_type_wire_gate">"Αφαιρούμενο συρμάτινο τμήμα"</string>
+    <string name="quest_barrier_type_cattle_grid">"Πλέγμα που εμποδίζει τα ζώα να περπατούν"</string>
+    <string name="quest_barrier_type_block">"Μεγάλο ακίνητο αντικείμενο"</string>
+    <string name="quest_barrier_jersey_barrier">"Τσιμεντένιες μπάρες"</string>
+    <string name="quest_barrier_type_log">"Κορμός"</string>
+    <string name="quest_barrier_type_kerb">"Κράσπεδο"</string>
+    <string name="quest_barrier_type_height_restrictor">"Περιοριστής ύψους"</string>
+    <string name="quest_barrier_full_height_turnstile">"Περιστροφική πύλη πλήρους ύψους"</string>
+    <string name="quest_barrier_type_turnstile">"Περιστροφική πύλη"</string>
+    <string name="quest_barrier_type_passage">"Διάβαση μέσω τοίχου/φράχτη/κλπ. "</string>
+    <string name="quest_barrier_type_debris_pile">"Σωρός απορριμάτων"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Στενό πέρασμα"</string>
+    <string name="quest_barrier_type_stile_ladder">"Πέρασμα με σκάλα"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Εμπόδιο ποδηλάτων"</string>
+    <string name="quest_barrier_type_kissing_gate">"Στρογγυλή πύλη"</string>
+    <string name="quest_barrier_type_swing_gate">"Οριζόντια μπάρα"</string>
+    <string name="quest_policeType_title">"Τι είδους αστυνομικό τμήμα είναι αυτό;"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Μετατράπηκε σε στρογγυλή πύλη"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_stile_type_title">"Τι είδους πέρασμα φράχτη είναι αυτό;"</string>
+    <string name="quest_buildingType_semi_detached_description2">"παρακείμενη μονοκατοικία(ες)"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_quests2">"Επιλογή και προτεραιότητα αναζήτησης"</string>
+    <string name="pref_subtitle_quests">"%1$d από %2$d ενεργοποιήθηκαν"</string>
+    <string name="quest_busStopLit_tram_name_title">"Είναι φωτισμένη η στάση τραμ %s;"</string>
+    <string name="quest_busStopLit_tram_title">"Είναι φωτισμένη αυτή η στάση τραμ;"</string>
+    <string name="quest_busStopLit_title">"Αυτή η στάση λεωφορείου είναι φωτισμένη;"</string>
+    <string name="quest_busStopLit_name_title">"Η στάση λεωφορείου %s είναι φωτισμένη;"</string>
+    <string name="no_location_permission_warning_title">"Άδεια τοποθεσίας "</string>
+    <string name="quest_surface_value_woodchips">"Ροκανίδια"</string>
+    <string name="no_camera_app">"Δεν υπάρχει διαθέσιμη εφαρμογή κάμερας"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"Έχει κάδο απορριμάτων η στάση τραμ %s;"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"Έχει κάδο απορριμάτων αυτή η στάση τραμ;"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"Έχει κάδο απορριμάτων αυτή η στάση λεωφορείου;"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"Έχει κάδο απορριμάτων η στάση λεωφορείου %s;"</string>
+    <string name="quest_bollard_type_title">"Τί είδους κολωνάκι είναι αυτό;"</string>
+    <string name="quest_bollard_type_rising">"Αναδυόμενο"</string>
+    <string name="quest_bollard_type_flexible">"Εύκαμπτο"</string>
+    <string name="quest_bollard_type_fixed">"Σταθερό (όχι αφαιρούμενο)"</string>
+    <string name="quest_camera_type_title">"Τί είδους κάμερα παρακολούθησης είναι αυτή;"</string>
+    <string name="quest_camera_type_dome">"Θόλου"</string>
+    <string name="quest_camera_type_fixed">"Σταθερή"</string>
+    <string name="quest_camera_type_panning">"Μετακίνηση"</string>
+    <string name="about_title_faq">"Συχνές ερωτήσεις"</string>
+    <string name="quest_buildingLevels_title2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το κτίριο;"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;"</string>
+    <string name="quest_crossing_title">"Υπάρχουν κράσπεδα εκεί που συναντάει εκείνος ο δρόμος αυτόν εδώ; Τι είδους;"</string>
+    <string name="pref_subtitle_quests_preset_name">"Προεπιλογή: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αναζήτησης είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι."</string>
+    <string name="quest_religion_animist">"Ανιμισμός"</string>
+    <string name="quest_construction_steps_title">"Έχουν ολοκληρωθεί αυτά τα σκαλοπάτια;"</string>
+    <string name="pref_quests_deselect_all">"Αποεπιλογή όλων των αναζητήσεων;"</string>
+    <string name="quest_buildingType_boathouse">"Αποθήκευση σκαφών"</string>
+    <string name="quest_buildingType_allotment_house">"Σπιτάκι κήπου"</string>
+    <string name="quest_buildingType_grandstand">"Εξέδρα"</string>
+    <string name="action_search">"Αναζήτηση"</string>
+    <string name="action_manage_presets">"Διαχείριση προεπιλογών"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"Πόσα άτομα χαρτογραφούν; Εισάγετε τον ίδιο αριθμό σε όλες τις συσκευές."</string>
+    <string name="team_mode_choose_color2">"Στη συνέχεια, κάθε άτομο πρέπει να επιλέξει διαφορετικό χρώμα. Επιλέξτε το δικό σας:"</string>
+    <string name="link_organic_maps_description">"Εφαρμογή χαρτών για ταξιδιώτες, πεζοπόρους και ποδηλάτες που λειτουργεί εκτός σύνδεσης"</string>
+    <string name="quest_kerb_height_no">"Κανένα κράσπεδο"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Πέρασμα με ξύλινο πάτημα"</string>
+    <string name="quest_barrier_type_stepover_stone">"Πέρασμα με πέτρινο πάτημα"</string>
+    <string name="quest_bollard_type_removable">"Αφαιρούμενο (με ή χωρίς κλειδί)"</string>
+    <string name="quest_bollard_type_foldable2">"Πτυσσόμενο (με ή χωρίς κλειδί)"</string>
+    <string name="no_search_results">"Δεν βρέθηκε τίποτα"</string>
+    <string name="quest_selection_hint_title">"Έχετε πολλά να κάνετε;"</string>
+    <string name="quest_selection_hint_message">"Η συνεισφορά θα πρέπει πρωτίστως να είναι διασκεδαστική! Αν σας έχει κατακλύσει ο αριθμός των αποστολών, μπορείτε πάντα να ρυθμίσετε με ακρίβεια ποιες αποστολές θα σας εμφανίζονται και με ποια σειρά στις ρυθμίσεις."</string>
+    <string name="quest_presets_preset_add">"Προσθήκη προεπιλογής"</string>
+    <string name="quest_presets_preset_name">"Όνομα προεπιλογής"</string>
+    <string name="quest_presets_default_name">"Προεπιλογή"</string>
+    <string name="quest_presets_selected">"Επιλεγμένα"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_delete_message">"Διαγραφή προεπιλογής \"%s\"; Η επιλογή και η σειρά αναζήτησης για αυτήν θα χαθούν αμετάκλητα."</string>
 </resources>

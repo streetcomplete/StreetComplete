@@ -9,14 +9,10 @@ import android.view.View
 import androidx.core.view.postDelayed
 import androidx.preference.PreferenceManager
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_generic_list.*
-import java.util.LinkedList
 import kotlin.math.max
 
 /**
@@ -26,42 +22,54 @@ import kotlin.math.max
  */
 abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
-    override val contentLayoutResId = R.layout.quest_generic_list
+    final override val contentLayoutResId = R.layout.quest_generic_list
+    private val binding by contentViewBinding(QuestGenericListBinding::bind)
+
     override val defaultExpanded = false
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter<I>
 
+    /** all items to display (after user pressed "see more"). May not be accessed before onCreate */
     protected abstract val allItems: List<GroupableDisplayItem<I>>
+    /** initial items to display. May not be accessed before onCreate */
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<I>
+    internal lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
 
     private val selectedItem get() = imageSelector.selectedItem
 
     protected open val itemsPerRow = 3
 
+    private lateinit var itemsByString: Map<String, GroupableDisplayItem<I>>
+
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.value.toString() },
+            deserialize = { itemsByString[it] }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = GroupedImageSelectAdapter(GridLayoutManager(activity, itemsPerRow))
+        itemsByString = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        list.layoutManager = imageSelector.gridLayoutManager
-        list.isNestedScrollingEnabled = false
+        binding.list.layoutManager = imageSelector.gridLayoutManager
+        binding.list.isNestedScrollingEnabled = false
 
-        showMoreButton.setOnClickListener {
+        binding.showMoreButton.setOnClickListener {
             imageSelector.items = allItems
-            showMoreButton.visibility = View.GONE
+            binding.showMoreButton.visibility = View.GONE
         }
 
-        selectHintLabel.setText(R.string.quest_select_hint_most_specific)
+        binding.selectHintLabel.setText(R.string.quest_select_hint_most_specific)
 
         imageSelector.listeners.add { checkIsFormComplete() }
         imageSelector.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
@@ -73,7 +81,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         checkIsFormComplete()
 
         imageSelector.items = getInitialItems()
-        list.adapter = imageSelector
+        binding.list.adapter = imageSelector
     }
 
     private fun scrollTo(index: Int) {
@@ -90,11 +98,8 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         }
     }
 
-    private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        val items = LinkedList(topItems)
-        favs.moveLastPickedGroupableDisplayItemToFront(javaClass.simpleName, items, allItems)
-        return items
-    }
+    private fun getInitialItems(): List<GroupableDisplayItem<I>> =
+        favs.get().mostCommonWithin(6, historyCount = 30, first = 1).padWith(topItems).toList()
 
     override fun onClickOk() {
         val item = selectedItem!!
@@ -114,14 +119,14 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(javaClass.simpleName, itemValue)
+                            favs.add(item)
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             }
             else {
-                favs.add(javaClass.simpleName, itemValue)
+                favs.add(item)
                 onClickOk(itemValue)
             }
         }

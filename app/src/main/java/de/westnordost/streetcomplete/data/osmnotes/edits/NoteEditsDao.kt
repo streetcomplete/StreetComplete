@@ -94,8 +94,10 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
     fun delete(id: Long): Boolean =
         db.delete(NAME, "$ID = $id") == 1
 
-    fun deleteAll(ids: List<Long>): Int =
-        db.delete(NAME, "$ID IN (${ids.joinToString(",")})")
+    fun deleteAll(ids: List<Long>): Int {
+        if (ids.isEmpty()) return 0
+        return db.delete(NAME, "$ID IN (${ids.joinToString(",")})")
+    }
 
     fun getSyncedOlderThan(timestamp: Long): List<NoteEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $IMAGES_NEED_ACTIVATION = 0 AND $CREATED_TIMESTAMP < $timestamp") { it.toNoteEdit() }

@@ -4,7 +4,6 @@ import android.content.*
 import android.content.res.Configuration
 import android.graphics.Point
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
@@ -15,16 +14,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
-import de.westnordost.osmapi.common.errors.OsmApiException
-import de.westnordost.osmapi.common.errors.OsmApiReadResponseException
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException
-import de.westnordost.osmapi.common.errors.OsmConnectionException
 import de.westnordost.streetcomplete.Injector.applicationComponent
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -33,15 +28,20 @@ import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.AuthorizationException
+import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
+import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment
 import de.westnordost.streetcomplete.tutorial.TutorialFragment
@@ -51,7 +51,7 @@ import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
     MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
 
 	@Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity(),
 	@Inject lateinit var uploadController: UploadController
 	@Inject lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
 	@Inject lateinit var prefs: SharedPreferences
-	@Inject lateinit var userController: UserController
+	@Inject lateinit var userLoginStatusController: UserLoginStatusController
+	@Inject lateinit var userUpdater: UserUpdater
 
     private var mainFragment: MainFragment? = null
 
@@ -86,33 +87,31 @@ class MainActivity : AppCompatActivity(),
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
         if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
-        supportFragmentManager.beginTransaction()
-            .add(locationRequestFragment, LocationRequestFragment::class.java.simpleName)
-            .commit()
+        supportFragmentManager.commit {
+            add(locationRequestFragment, LocationRequestFragment::class.java.simpleName)
+        }
 
         setContentView(R.layout.activity_main)
 
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
         if (savedInstanceState == null) {
             val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
-            if (!hasShownTutorial && !userController.isLoggedIn) {
-                supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                    .add(R.id.fragment_container, TutorialFragment())
-                    .commit()
+            if (!hasShownTutorial && !userLoginStatusController.isLoggedIn) {
+                supportFragmentManager.commit {
+                    setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+                    add(R.id.fragment_container, TutorialFragment())
+                }
             }
-            if (userController.isLoggedIn && isConnected) {
-                userController.updateUser()
+            if (userLoginStatusController.isLoggedIn && isConnected) {
+                userUpdater.update()
             }
         }
-        handleGeoUri()
     }
 
     private fun handleGeoUri() {
@@ -128,18 +127,15 @@ class MainActivity : AppCompatActivity(),
     public override fun onStart() {
         super.onStart()
 
-        registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter())
+        registerReceiver(locationAvailabilityReceiver, createLocationAvailabilityIntentFilter())
         LocalBroadcastManager.getInstance(this).registerReceiver(
             locationRequestFinishedReceiver, IntentFilter(LocationRequestFragment.ACTION_FINISHED))
 
         downloadController.showNotification = false
+        uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
-        if (!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false)) {
-            locationRequestFragment.startRequest()
-        } else {
-            updateLocationAvailability()
-        }
+        updateLocationAvailability()
     }
 
     override fun onBackPressed() {
@@ -183,6 +179,7 @@ class MainActivity : AppCompatActivity(),
         LocalBroadcastManager.getInstance(this).unregisterReceiver(locationRequestFinishedReceiver)
         unregisterReceiver(locationAvailabilityReceiver)
         downloadController.showNotification = true
+        uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
     }
@@ -191,15 +188,14 @@ class MainActivity : AppCompatActivity(),
         super.onConfigurationChanged(newConfig)
         findViewById<View>(R.id.main).requestLayout()
         // recreate the NotificationsContainerFragment because it should load a new layout, see #2330
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.notifications_container_fragment, NotificationsContainerFragment())
-            .commit()
+        supportFragmentManager.commit {
+            replace(R.id.notifications_container_fragment, NotificationsContainerFragment())
+        }
     }
 
     private suspend fun ensureLoggedIn() {
         if (!questAutoSyncer.isAllowedByPreference) return
-        if (userController.isLoggedIn) return
+        if (userLoginStatusController.isLoggedIn) return
 
         // new users should not be immediately pestered to login after each change (#1446)
         if (unsyncedChangesCountSource.getCount() < 3 || dontShowRequestAuthorizationAgain) return
@@ -233,13 +229,14 @@ class MainActivity : AppCompatActivity(),
                         messageView.movementMethod = LinkMovementMethod.getInstance()
                         Linkify.addLinks(messageView, Linkify.WEB_URLS)
                     }
-                } else if (e is OsmConnectionException) {
-                    // a 5xx error is not the fault of this app. Nothing we can do about it, so
-                    // just notify the user
+                } else if (e is ConnectionException || e is ImageUploadServerException) {
+                    /* A network connection error or server error is not the fault of this app.
+                       Nothing we can do about it, so it does not make sense to send an error
+                       report. Just notify the user. */
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
-                } else if (e is OsmAuthorizationException) {
+                } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
-                    userController.logOut()
+                    userLoginStatusController.logOut()
                     RequestLoginDialog(this@MainActivity).show()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity, R.string.upload_error, e)
@@ -253,16 +250,13 @@ class MainActivity : AppCompatActivity(),
     private val downloadProgressListener: DownloadProgressListener = object : DownloadProgressListener {
         @AnyThread override fun onError(e: Exception) {
             runOnUiThread {
-                // a 5xx error is not the fault of this app. Nothing we can do about it, so it does
-                // not make sense to send an error report. Just notify the user. Further, we treat
-                // the following errors the same as a (temporary) connection error:
-                // - an invalid response (OsmApiReadResponseException)
-                // - request timeout (OsmApiException with error code 408)
-                val isEnvironmentError = e is OsmConnectionException ||
-                    e is OsmApiReadResponseException ||
-                    e is OsmApiException && e.errorCode == 408
-                if (isEnvironmentError) {
+                // A network connection error is not the fault of this app. Nothing we can do about
+                // it, so it does not make sense to send an error report. Just notify the user.
+                if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
+                }  else if (e is AuthorizationException) {
+                    // delete secret in case it failed while already having a token -> token is invalid
+                    userLoginStatusController.logOut()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity, R.string.download_error, e)
                 }
@@ -289,23 +283,30 @@ class MainActivity : AppCompatActivity(),
         lifecycleScope.launch { ensureLoggedIn() }
     }
 
+    override fun onMapInitialized() {
+        handleGeoUri()
+    }
+
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
 
-    override fun onFinishedTutorial() {
+    override fun onTutorialFinished() {
+        locationRequestFragment.startRequest()
+
         prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply()
+
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {
-            supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                .remove(tutorialFragment)
-                .commit()
+            supportFragmentManager.commit {
+                setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+                remove(tutorialFragment)
+            }
         }
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(this)) {
+        if (isLocationEnabled) {
             questAutoSyncer.startPositionTracking()
         } else {
             questAutoSyncer.stopPositionTracking()
@@ -313,19 +314,20 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun onLocationRequestFinished(withLocationState: LocationState) {
-        hasAskedForLocation = true
-        val enabled = withLocationState.isEnabled
-        prefs.edit().putBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, !enabled).apply()
-        if (enabled) {
-            updateLocationAvailability()
-        } else {
-            toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+        // if denied first time after exiting tutorial: ask again once (i.e. show rationale and ask again)
+        if (!withLocationState.isEnabled) {
+            if (!prefs.getBoolean(Prefs.FINISHED_FIRST_LOCATION_REQUEST, false)) {
+                locationRequestFragment.startRequest()
+            } else {
+                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
+            }
         }
+        prefs.edit().putBoolean(Prefs.FINISHED_FIRST_LOCATION_REQUEST, true).apply()
+        updateLocationAvailability()
     }
 
     companion object {
         // per application start settings
-        private var hasAskedForLocation = false
         private var dontShowRequestAuthorizationAgain = false
     }
 }

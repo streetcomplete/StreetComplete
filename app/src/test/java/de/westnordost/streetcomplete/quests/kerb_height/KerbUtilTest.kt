@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
+import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
+import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
@@ -37,6 +39,22 @@ class KerbUtilTest {
         ))
         assertEquals(0, mapData.findAllKerbNodes().toList().size)
         assertFalse(kerb.couldBeAKerb())
+    }
+
+    @Test fun `barrier=kerb nodes that have kerb key etc count`() {
+        val kerb = node(id = 2, tags = mapOf(
+            "barrier" to "kerb",
+            "kerb" to "lowered",
+            "check_date:kerb" to "2001-01-01"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(
+            kerb,
+            way(1, listOf(1,2,3), mapOf(
+                "highway" to "footway"
+            ))
+        ))
+        assertEquals(1, mapData.findAllKerbNodes().toList().size)
+        assertTrue(kerb.couldBeAKerb())
     }
 
     @Test fun `shared nodes between barrier=kerb ways and footways count`() {

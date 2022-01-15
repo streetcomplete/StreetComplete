@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginEnd="72dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/takePhotoButton"
@@ -12,7 +14,7 @@
         android:insetBottom="0dp"
         android:insetLeft="0dp"
         android:insetRight="0dp"
-        app:icon="@drawable/ic_add_photo_black_24dp"
+        app:icon="@drawable/ic_add_photo_24dp"
         app:iconPadding="0dp"
         app:iconGravity="textStart"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
@@ -29,7 +31,7 @@
         android:layout_centerVertical="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gridView"
+        android:id="@+id/photosList"
         android:layout_toEndOf="@id/takePhotoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

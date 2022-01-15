@@ -15,15 +15,17 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
-import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
+import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
-import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.osmquests.*
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
-import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 
 @Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
@@ -44,12 +46,16 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE)
 
         db.execSQL(NodeTable.CREATE)
+
         db.execSQL(WayTables.CREATE)
         db.execSQL(WayTables.NODES_CREATE)
         db.execSQL(WayTables.NODES_INDEX_CREATE)
+        db.execSQL(WayTables.WAYS_BY_NODE_ID_INDEX_CREATE)
+
         db.execSQL(RelationTables.CREATE)
         db.execSQL(RelationTables.MEMBERS_CREATE)
         db.execSQL(RelationTables.MEMBERS_INDEX_CREATE)
+        db.execSQL(RelationTables.MEMBERS_BY_ELEMENT_INDEX_CREATE)
 
         // changes made on OSM map data
         db.execSQL(ElementEditsTable.CREATE)
@@ -57,8 +63,13 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(ElementIdProviderTable.CREATE)
         db.execSQL(ElementIdProviderTable.INDEX_CREATE)
 
+        db.execSQL(CreatedElementsTable.CREATE)
+
         // quests
         db.execSQL(VisibleQuestTypeTable.CREATE)
+        db.execSQL(QuestTypeOrderTable.CREATE)
+        db.execSQL(QuestTypeOrderTable.INDEX_CREATE)
+        db.execSQL(QuestPresetsTable.CREATE)
 
         // quests based on OSM elements
         db.execSQL(OsmQuestTable.CREATE)
@@ -73,11 +84,10 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
         db.execSQL(DownloadedTilesTable.CREATE)
 
         // user statistics
-        db.execSQL(QuestStatisticsTable.CREATE)
+        db.execSQL(QuestTypeStatisticsTable.CREATE)
         db.execSQL(CountryStatisticsTable.CREATE)
         db.execSQL(UserAchievementsTable.CREATE)
         db.execSQL(UserLinksTable.CREATE)
-        db.execSQL(NewUserAchievementsTable.CREATE)
 
         // quest specific tables
         db.execSQL(WayTrafficFlowTable.CREATE)
@@ -86,8 +96,36 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // for later changes to the DB
         // ...
+        if (oldVersion <= 1 && newVersion > 1) {
+            db.execSQL(CreatedElementsTable.CREATE)
+        }
+        if (oldVersion <= 2 && newVersion > 2) {
+            db.execSQL(QuestTypeOrderTable.CREATE)
+            db.execSQL(QuestTypeOrderTable.INDEX_CREATE)
+
+            db.execSQL(QuestPresetsTable.CREATE)
+
+            val oldName = "quest_visibility_old"
+            db.execSQL("ALTER TABLE ${VisibleQuestTypeTable.NAME} RENAME TO $oldName;")
+            db.execSQL(VisibleQuestTypeTable.CREATE)
+            db.execSQL("""
+                INSERT INTO ${VisibleQuestTypeTable.NAME} (
+                    ${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID},
+                    ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
+                    ${VisibleQuestTypeTable.Columns.VISIBILITY}
+                ) SELECT
+                    0,
+                    ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
+                    ${VisibleQuestTypeTable.Columns.VISIBILITY}
+                FROM $oldName;
+            """.trimIndent())
+            db.execSQL("DROP TABLE $oldName;")
+        }
+        if (oldVersion <= 3 && newVersion > 3) {
+           db.execSQL("DROP TABLE new_achievements")
+        }
     }
 
 }
 
-private const val DB_VERSION = 1
+private const val DB_VERSION = 4

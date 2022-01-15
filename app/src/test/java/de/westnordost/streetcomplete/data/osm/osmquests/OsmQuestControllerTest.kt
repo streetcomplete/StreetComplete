@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -66,12 +65,6 @@ class OsmQuestControllerTest {
         ctrl.addHideQuestsListener(hideListener)
     }
 
-    @Test fun getAllInBBoxCount() {
-        val bbox = bbox()
-        on(db.getAllInBBoxCount(bbox)).thenReturn(123)
-        assertEquals(123, ctrl.getAllInBBoxCount(bbox))
-    }
-
     @Test fun get() {
         val key = osmQuestKey(NODE, 1, "ApplicableQuestType")
         val entry = questEntry(NODE, 1, "ApplicableQuestType")
@@ -101,7 +94,7 @@ class OsmQuestControllerTest {
         val bbox = bbox()
 
         on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
-        on(notesSource.getAllPositions(bbox)).thenReturn(listOf(notePos))
+        on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
         on(db.getAllInBBox(bbox, null)).thenReturn(entries)
         on(mapDataSource.getGeometries(argThat {
             it.containsExactlyInAnyOrder(listOf(
@@ -208,16 +201,14 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener update for deleted elements`() {
-        val quests1 = listOf(
+        val quests = listOf(
             osmQuest(ApplicableQuestType, NODE, 1),
             osmQuest(ComplexQuestTypeApplicableToNode42, NODE, 1),
-        )
-        val quests2 = listOf(
             osmQuest(ApplicableQuestType, NODE, 2)
         )
 
-        on(db.getAllForElement(NODE, 1)).thenReturn(quests1)
-        on(db.getAllForElement(NODE, 2)).thenReturn(quests2)
+        val keys = listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))
+        on(db.getAllForElements(eq(keys))).thenReturn(quests)
 
         val deleted = listOf(
             ElementKey(NODE, 1),
@@ -226,7 +217,7 @@ class OsmQuestControllerTest {
 
         mapDataListener.onUpdated(MutableMapDataWithGeometry(), deleted)
 
-        val expectedDeletedQuestKeys = (quests1 + quests2).map { it.key }
+        val expectedDeletedQuestKeys = quests.map { it.key }
 
         verify(db).deleteAll(argThat { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) })
         verify(db).putAll(argThat { it.isEmpty() })
@@ -234,6 +225,12 @@ class OsmQuestControllerTest {
             addedQuests = eq(emptyList()),
             deletedQuestKeys = argThat { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) }
         )
+    }
+
+    @Test fun `calls onInvalidated when cleared quests`() {
+        mapDataListener.onCleared()
+        verify(db).clear()
+        verify(listener).onInvalidated()
     }
 
     @Test fun `updates quests on map data listener update for updated elements`() {
@@ -251,13 +248,12 @@ class OsmQuestControllerTest {
 
         val mapData = MutableMapDataWithGeometry(elements, geometries)
 
-
         val existingApplicableQuest = osmQuest(ApplicableQuestType, NODE, 1)
         val existingNonApplicableQuest = osmQuest(NotApplicableQuestType, NODE, 1)
 
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
-        on(db.getAllForElement(NODE, 1L)).thenReturn(previousQuests)
+        on(db.getAllForElements(eq(elements.map { ElementKey(it.type, it.id) }))).thenReturn(previousQuests)
         on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
 
         mapDataListener.onUpdated(mapData, emptyList())
@@ -312,7 +308,7 @@ class OsmQuestControllerTest {
 
         on(db.getAllInBBox(bbox)).thenReturn(previousQuests)
 
-        on(notesSource.getAllPositions(notePos.enclosingBoundingBox(1.0))).thenReturn(listOf(notePos))
+        on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
 
         on(hiddenDB.getAllIds()).thenReturn(listOf(
             OsmQuestKey(NODE, 3L, "ApplicableQuestType2")

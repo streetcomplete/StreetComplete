@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.map
 import android.content.Context
 import android.location.Location
 import android.view.LayoutInflater
-import android.widget.CheckBox
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -11,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.databinding.QuestSourceDialogLayoutBinding
 import de.westnordost.streetcomplete.util.distanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -29,20 +29,23 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
             return true
         }
         return suspendCancellableCoroutine { cont ->
-            val inner = LayoutInflater.from(context).inflate(R.layout.quest_source_dialog_layout, null, false)
-            val checkBox = inner.findViewById<CheckBox>(R.id.checkBoxDontShowAgain)
-            checkBox.isGone = timesShown < 1
+            val dialogBinding = QuestSourceDialogLayoutBinding.inflate(LayoutInflater.from(context))
+            dialogBinding.checkBoxDontShowAgain.isGone = timesShown < 1
 
             AlertDialog.Builder(context)
                 .setTitle(R.string.quest_source_dialog_title)
-                .setView(inner)
+                .setView(dialogBinding.root)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
-                    dontShowAgain = checkBox.isChecked
-                    cont.resume(true)
+                    dontShowAgain = dialogBinding.checkBoxDontShowAgain.isChecked
+                    if(cont.isActive) cont.resume(true)
                 }
-                .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
-                .setOnCancelListener { cont.resume(false) }
+                .setNegativeButton(android.R.string.cancel) { _, _ ->
+                    if(cont.isActive) cont.resume(false)
+                }
+                .setOnCancelListener {
+                    if(cont.isActive) cont.resume(false)
+                }
                 .show()
         }
     }

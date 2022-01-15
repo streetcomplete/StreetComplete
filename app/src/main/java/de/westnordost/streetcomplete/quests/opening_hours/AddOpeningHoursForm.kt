@@ -4,11 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.widget.PopupMenu
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
 
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
@@ -16,11 +13,12 @@ import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import android.view.Menu.NONE
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
+import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
-import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
-import kotlinx.android.synthetic.main.quest_opening_hours.*
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -28,12 +26,22 @@ import kotlinx.serialization.json.Json
 class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_opening_hours
+    private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
+
+    override val buttonPanelAnswers get() =
+        if(isDisplayingPreviousOpeningHours) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+            AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                applyAnswer(RegularOpeningHours(osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!))
+            }
+        )
+        else emptyList()
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_openingHours_no_sign) { confirmNoSign() },
-        OtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
-        OtherAnswer(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
-        OtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours) {
+        AnswerItem(R.string.quest_openingHours_no_sign) { confirmNoSign() },
+        AnswerItem(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
+        AnswerItem(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
+        AnswerItem(R.string.quest_openingHours_answer_seasonal_opening_hours) {
             setAsResurvey(false)
             openingHoursAdapter.changeToMonthsMode()
         }
@@ -47,7 +55,6 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         super.onCreate(savedInstanceState)
 
         openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
-        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,12 +66,14 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
             initStateFromTags()
         }
 
-        openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        openingHoursList.adapter = openingHoursAdapter
-        openingHoursList.isNestedScrollingEnabled = false
+        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+
+        binding.openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.openingHoursList.adapter = openingHoursAdapter
+        binding.openingHoursList.isNestedScrollingEnabled = false
         checkIsFormComplete()
 
-        addTimesButton.setOnClickListener { onClickAddButton(it) }
+        binding.addTimesButton.setOnClickListener { onClickAddButton(it) }
     }
 
     private fun onClickAddButton(v: View) {
@@ -108,7 +117,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
 
     private fun onLoadInstanceState(savedInstanceState: Bundle) {
         openingHoursAdapter.rows = Json.decodeFromString(savedInstanceState.getString(OPENING_HOURS_DATA)!!)
-        isDisplayingPreviousOpeningHours = savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS)
+        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_HOURS))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -123,14 +132,13 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun showInputCommentDialog() {
-        val view = LayoutInflater.from(activity).inflate(R.layout.quest_opening_hours_comment, null)
-        val commentInput = view.findViewById<EditText>(R.id.commentInput)
+        val dialogBinding = QuestOpeningHoursCommentBinding.inflate(layoutInflater)
 
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_openingHours_comment_title)
-            .setView(view)
+            .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val txt = commentInput.text.toString().replace("\"","").trim()
+                val txt = dialogBinding.commentInput.text.toString().replace("\"","").trim()
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(requireContext())
                         .setMessage(R.string.quest_openingHours_emptyAnswer)
@@ -147,29 +155,17 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     private fun setAsResurvey(resurvey: Boolean) {
         openingHoursAdapter.isEnabled = !resurvey
         isDisplayingPreviousOpeningHours = resurvey
-        addTimesButton.isGone = resurvey
-        if (resurvey) {
-            setButtonsView(R.layout.quest_buttonpanel_yes_no)
-            requireView().findViewById<View>(R.id.noButton).setOnClickListener {
-                setAsResurvey(false)
-            }
-            requireView().findViewById<View>(R.id.yesButton).setOnClickListener {
-                applyAnswer(RegularOpeningHours(
-                    osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!
-                ))
-            }
-        } else {
-            removeButtonsView()
-        }
+        binding.addTimesButton.isGone = resurvey
+        updateButtonPanel()
     }
 
     private fun showConfirm24_7Dialog() {
         AlertDialog.Builder(requireContext())
             .setMessage(R.string.quest_openingHours_24_7_confirmation)
-            .setPositiveButton(android.R.string.yes) { _, _ ->
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
                 applyAnswer(AlwaysOpen)
             }
-            .setNegativeButton(android.R.string.no, null)
+            .setNegativeButton(R.string.quest_generic_hasFeature_no, null)
             .show()
     }
 

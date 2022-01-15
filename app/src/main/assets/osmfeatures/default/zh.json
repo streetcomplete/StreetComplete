@@ -921,9 +921,6 @@
                 "type/route": {
                     "name": "路线"
                 },
-                "type/route/bicycle": {
-                    "name": "单车路线"
-                },
                 "type/route/bus": {
                     "name": "公共汽车路线"
                 },

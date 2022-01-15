@@ -15,6 +15,6 @@
     android:background="@color/divider"
     android:drawablePadding="8dp"
     android:textColor="@color/hint_text"
-    app:drawableStartCompat="@drawable/ic_slim_arrow_down_16dp"
-    app:drawableEndCompat="@drawable/ic_slim_arrow_down_16dp"
+    app:drawableStartCompat="@drawable/ic_slim_arrow_up_16dp"
+    app:drawableEndCompat="@drawable/ic_slim_arrow_up_16dp"
     tools:ignore="HardcodedText" />

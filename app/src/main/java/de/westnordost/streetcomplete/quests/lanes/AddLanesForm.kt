@@ -5,20 +5,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
 import androidx.core.view.isGone
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.databinding.QuestLanesSelectTypeBinding
+import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.lanes.LanesType.*
 import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
-import kotlinx.android.synthetic.main.quest_lanes_select_type.view.*
-import kotlinx.android.synthetic.main.quest_street_lanes_puzzle.view.*
-import kotlinx.android.synthetic.main.view_little_compass.view.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
+import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isOneway
 
 class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
@@ -40,16 +42,16 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    private val isOneway get() = isForwardOneway || isReversedOneway
+    private val isOneway get() = isOneway(osmElement!!.tags)
 
-    private val isForwardOneway get() = osmElement!!.tags["oneway"] == "yes" || osmElement!!.tags["junction"] == "roundabout"
-    private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
+    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
+    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
 
-    override val otherAnswers: List<OtherAnswer> get() {
-        val answers = mutableListOf<OtherAnswer>()
+    override val otherAnswers: List<AnswerItem> get() {
+        val answers = mutableListOf<AnswerItem>()
 
-        if (!isOneway && countryInfo.isCenterLeftTurnLaneKnown) {
-            answers.add(OtherAnswer(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
+        if (!isOneway && countryInfo.hasCenterLeftTurnLane()) {
+            answers.add(AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
                 selectedLanesType = MARKED_SIDES
                 hasCenterLeftTurnLane = true
                 setStreetSideLayout()
@@ -119,8 +121,9 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private fun setSelectLanesTypeLayout() {
         val view = setContentView(R.layout.quest_lanes_select_type)
+        val laneSelectBinding = QuestLanesSelectTypeBinding.bind(view)
 
-        val unmarkedLanesButton = view.unmarkedLanesButton
+        val unmarkedLanesButton = laneSelectBinding.unmarkedLanesButton
 
         unmarkedLanesButton.isSelected = selectedLanesType == UNMARKED
 
@@ -130,15 +133,15 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
             selectedLanesType = if (wasSelected) null else UNMARKED
             checkIsFormComplete()
         }
-        view.markedLanesButton.setOnClickListener {
+        laneSelectBinding.markedLanesButton.setOnClickListener {
             selectedLanesType = MARKED
             unmarkedLanesButton.isSelected = false
             checkIsFormComplete()
             askLanesAndSwitchToStreetSideLayout()
         }
-        view.markedLanesOddButton.isGone = isOneway
+        laneSelectBinding.markedLanesOddButton.isGone = isOneway
 
-        view.markedLanesOddButton.setOnClickListener {
+        laneSelectBinding.markedLanesOddButton.setOnClickListener {
             selectedLanesType = MARKED_SIDES
             unmarkedLanesButton.isSelected = false
             setStreetSideLayout()
@@ -146,7 +149,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     }
 
     private fun askLanesAndSwitchToStreetSideLayout() {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val lanes = askForTotalNumberOfLanes()
             setTotalLanesCount(lanes)
             setStreetSideLayout()
@@ -164,37 +167,42 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         }
 
         val view = setContentView(R.layout.quest_street_lanes_puzzle)
-
-        puzzleView = view.puzzleView
-        lifecycle.addObserver(view.puzzleView)
+        val streetLanesPuzzleBinding = QuestStreetLanesPuzzleBinding.bind(view)
+        val puzzleView = streetLanesPuzzleBinding.puzzleView
+        this.puzzleView = puzzleView
+        lifecycle.addObserver(puzzleView)
 
         when(selectedLanesType) {
             MARKED -> {
-                view.puzzleView.onClickListener = this::selectTotalNumberOfLanes
-                view.puzzleView.onClickSideListener = null
+                puzzleView.onClickListener = this::selectTotalNumberOfLanes
+                puzzleView.onClickSideListener = null
             }
             MARKED_SIDES -> {
-                view.puzzleView.onClickListener = null
-                view.puzzleView.onClickSideListener = this::selectNumberOfLanesOnOneSide
+                puzzleView.onClickListener = null
+                puzzleView.onClickSideListener = this::selectNumberOfLanesOnOneSide
             }
         }
-        view.puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
-        view.puzzleView.isShowingBothSides = !isOneway
-        view.puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
+        puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
+        puzzleView.isShowingBothSides = !isOneway
+        puzzleView.isForwardTraffic = if (isOneway) isForwardOneway else !isLeftHandTraffic
 
-        val shoulderLine = countryInfo.shoulderLine
+        val edgeLine = countryInfo.edgeLineStyle
 
-        view.puzzleView.shoulderLineColor =
-            if(shoulderLine.contains("yellow")) Color.YELLOW else Color.WHITE
-        view.puzzleView.shoulderLineStyle =
-            if(shoulderLine.contains("dashes"))
-                if (shoulderLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
+        puzzleView.edgeLineColor =
+            if(edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
+        puzzleView.edgeLineStyle =
+            if(edgeLine.contains("dashes"))
+                if (edgeLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
             else
                 LineStyle.CONTINUOUS
 
-            view.puzzleView.centerLineColor = if(countryInfo.centerLine.contains("yellow")) Color.YELLOW else Color.WHITE
+        puzzleView.centerLineColor = if(countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
 
-        streetSideRotater = StreetSideRotater(view.puzzleViewRotateContainer, view.compassNeedleView, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(
+            streetLanesPuzzleBinding.puzzleViewRotateContainer,
+            streetLanesPuzzleBinding.littleCompass.root,
+            elementGeometry as ElementPolylinesGeometry
+        )
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)
 
         updatePuzzleView()
@@ -210,7 +218,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     //region Lane selection dialog
 
     private fun selectNumberOfLanesOnOneSide(isRight: Boolean) {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             setLanesCount(askForNumberOfLanesOnOneSide(isRight), isRight)
         }
     }
@@ -227,7 +235,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     }
 
     private fun selectTotalNumberOfLanes() {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             setTotalLanesCount(askForTotalNumberOfLanes())
         }
     }

@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,8 +15,8 @@ import javax.inject.Singleton
 @Singleton class OsmNoteQuestController @Inject constructor(
     private val noteSource: NotesWithEditsSource,
     private val hiddenDB: NoteQuestsHiddenDao,
-    private val loginStatusSource: LoginStatusSource,
-    private val userStore: UserStore,
+    private val userDataSource: UserDataSource,
+    private val userLoginStatusSource: UserLoginStatusSource,
     private val notesPreferences: NotesPreferences,
 ): OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -36,7 +35,7 @@ import javax.inject.Singleton
         notesPreferences.showOnlyNotesPhrasedAsQuestions
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
-        @Synchronized override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             val hiddenNoteIds = getNoteIdsHidden()
 
             val quests = mutableListOf<OsmNoteQuest>()
@@ -52,10 +51,14 @@ import javax.inject.Singleton
             }
             onUpdated(quests, deletedQuestIds)
         }
+
+        override fun onCleared() {
+            listeners.forEach { it.onInvalidated() }
+        }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusListener {
-        @Synchronized override fun onLoggedIn() {
+    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+        override fun onLoggedIn() {
             // notes created by the user in this app or commented on by this user should not be shown
             onInvalidated()
         }
@@ -63,7 +66,7 @@ import javax.inject.Singleton
     }
 
     private val notesPreferencesListener = object : NotesPreferences.Listener {
-        @Synchronized override fun onNotesPreferencesChanged() {
+        override fun onNotesPreferencesChanged() {
             // a lot of notes become visible/invisible if this option is changed
             onInvalidated()
         }
@@ -71,7 +74,7 @@ import javax.inject.Singleton
 
     init {
         noteSource.addListener(noteUpdatesListener)
-        loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.addListener(userLoginStatusListener)
         notesPreferences.listener = notesPreferencesListener
     }
 
@@ -90,24 +93,29 @@ import javax.inject.Singleton
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if(note.shouldShowAsQuest(userStore.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
+        if(note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
             OsmNoteQuest(note.id, note.position)
         else null
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
     /** Mark the quest as hidden by user interaction */
-    @Synchronized fun hide(questId: Long) {
-        hiddenDB.add(questId)
-        val hidden = getHidden(questId)
+    fun hide(questId: Long) {
+        val hidden: OsmNoteQuestHidden?
+        synchronized(this) {
+            hiddenDB.add(questId)
+            hidden = getHidden(questId)
+        }
         if (hidden != null) onHid(hidden)
         onUpdated(deletedQuestIds = listOf(questId))
     }
 
     /** Un-hides a specific hidden quest by user interaction */
-    @Synchronized fun unhide(questId: Long): Boolean {
+    fun unhide(questId: Long): Boolean {
         val hidden = getHidden(questId)
-        if (!hiddenDB.delete(questId)) return false
+        synchronized(this) {
+            if (!hiddenDB.delete(questId)) return false
+        }
         if (hidden != null) onUnhid(hidden)
         val quest = noteSource.get(questId)?.let { createQuestForNote(it, emptySet()) }
         if (quest != null) onUpdated(quests = listOf(quest))
@@ -115,15 +123,15 @@ import javax.inject.Singleton
     }
 
     /** Un-hides all previously hidden quests by user interaction */
-    @Synchronized fun unhideAll(): Int {
+    fun unhideAll(): Int {
         val previouslyHiddenNotes = noteSource.getAll(hiddenDB.getAllIds())
-        val result = hiddenDB.deleteAll()
+        val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
 
         val unhiddenNoteQuests = previouslyHiddenNotes.mapNotNull { createQuestForNote(it, emptySet()) }
 
         onUnhidAll()
         onUpdated(quests = unhiddenNoteQuests)
-        return result
+        return unhidCount
     }
 
     fun getHidden(questId: Long): OsmNoteQuestHidden? {
@@ -191,19 +199,26 @@ private fun Note.shouldShowAsQuest(
     showOnlyNotesPhrasedAsQuestions: Boolean,
     blockedNoteIds: Set<Long>
 ): Boolean {
-
-    // don't show a note if user already contributed to it
-    if (containsCommentFromUser(userId) || probablyCreatedByUserInThisApp(userId)) return false
-    // a note comment pending to be uploaded also counts as contribution
+    // don't show notes hidden by user
     if (id in blockedNoteIds) return false
+
+    /* don't show notes where user replied last unless he wrote a survey required marker */
+    if (comments.last().isReplyFromUser(userId) &&
+        !comments.last().containsSurveyRequiredMarker()
+    ) return false
+
+    /* newly created notes by user should not be shown if it was both created in this app and has no
+       replies yet */
+    if (probablyCreatedByUserInThisApp(userId) && !hasReplies) return false
 
     /* many notes are created to report problems on the map that cannot be resolved
      * through an on-site survey.
      * Likely, if something is posed as a question, the reporter expects someone to
      * answer/comment on it, possibly an information on-site is missing, so let's only show these */
-    if (showOnlyNotesPhrasedAsQuestions) {
-        if (!probablyContainsQuestion() && !containsSurveyRequiredMarker()) return false
-    }
+    if (showOnlyNotesPhrasedAsQuestions &&
+        !probablyContainsQuestion() &&
+        !containsSurveyRequiredMarker()
+    ) return false
 
     return true
 }
@@ -228,13 +243,11 @@ private fun Note.probablyContainsQuestion(): Boolean {
     return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
 }
 
-private fun Note.containsSurveyRequiredMarker(): Boolean {
-    val surveyRequiredMarker = "#surveyme"
-    return comments.any { it.text?.matches(".*$surveyRequiredMarker.*".toRegex()) == true }
-}
+private fun Note.containsSurveyRequiredMarker(): Boolean =
+    comments.any { it.containsSurveyRequiredMarker() }
 
-private fun Note.containsCommentFromUser(userId: Long): Boolean =
-    comments.any { it.isFromUser(userId) && it.isComment  }
+private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
+    text?.matches(".*#surveyme.*".toRegex()) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()
@@ -242,9 +255,14 @@ private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     return firstComment.isFromUser(userId) && isViaApp
 }
 
-private val NoteComment.isComment: Boolean get() =
+private val Note.hasReplies: Boolean get() =
+    comments.any { it.isReply }
+
+private fun NoteComment.isReplyFromUser(userId: Long): Boolean =
+    isFromUser(userId) && isReply
+
+private val NoteComment.isReply: Boolean get() =
     action == NoteComment.Action.COMMENTED
 
 private fun NoteComment.isFromUser(userId: Long): Boolean =
     user?.id == userId
-

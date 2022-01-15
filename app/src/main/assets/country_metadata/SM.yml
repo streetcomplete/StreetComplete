@@ -1,4 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-isSlowZoneKnown: true
+hasSlowZone: true
 mobileCountryCode: 292
 officialLanguages: [it]

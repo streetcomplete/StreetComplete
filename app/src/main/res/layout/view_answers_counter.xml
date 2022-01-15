@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="android.widget.RelativeLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -27,7 +26,9 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_star_white_shadow_32dp"/>
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_star_white_shadow_32dp"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView"

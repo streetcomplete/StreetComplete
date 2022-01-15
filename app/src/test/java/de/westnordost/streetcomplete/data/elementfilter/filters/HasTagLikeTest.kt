@@ -17,11 +17,4 @@ class HasTagLikeTest {
         assertFalse(f.matches(mapOf("names" to "yess")))
         assertFalse(f.matches(mapOf()))
     }
-
-    @Test fun `to string`() {
-        assertEquals(
-            "[~'^(.ame)$' ~ '^(y.s)$']",
-            HasTagLike(".ame","y.s").toOverpassQLString()
-        )
-    }
 }

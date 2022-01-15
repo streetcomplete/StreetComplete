@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.sport
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddSport : OsmFilterQuestType<List<Sport>>() {
 
@@ -14,13 +15,16 @@ class AddSport : OsmFilterQuestType<List<Sport>>() {
     )
 
     override val elementFilter = """
-        nodes, ways with leisure = pitch and
-        (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
-        and (access !~ private|no)
+        ways with
+          leisure = pitch
+          and (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
+          and access !~ private|no
     """
     override val commitMessage = "Add pitches sport"
     override val wikiLink = "Key:sport"
     override val icon = R.drawable.ic_quest_sport
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title
 

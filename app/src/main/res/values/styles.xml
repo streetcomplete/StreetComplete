@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="MapProgressBar.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/map_progress</item>
@@ -37,7 +37,7 @@
 
     <style name="Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">@color/button_bar_button_text</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
+        <item name="android:letterSpacing">-0.01</item>
     </style>
 
     <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
@@ -91,7 +91,8 @@
         <item name="android:background">@drawable/round_white_button</item>
         <item name="android:textColor">#000</item>
         <item name="android:clickable">true</item>
-        <item name="android:elevation" tools:targetApi="21">4dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="tint">#000</item>
     </style>
 
     <style name="RoundAccentButton">
@@ -99,7 +100,7 @@
         <item name="android:textColor">#fff</item>
         <item name="android:clickable">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:elevation" tools:targetApi="21">4dp</item>
+        <item name="android:elevation">4dp</item>
     </style>
 
     <!-- +++++++++++++++++++++++++++++++++ Image selector ++++++++++++++++++++++++++++++++++++++ -->
@@ -120,16 +121,19 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/label_text_below_image</item>
     </style>
 
-    <style name="ImageSelectTitle">
+    <style name="TitleNextToImage">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/title_text_next_to_image</item>
     </style>
 
-    <style name="ImageSelectDescription">
+    <style name="DescriptionNextToImage">
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/description_text_next_to_image</item>
     </style>
 
     <!-- ++++++++++++++++++++++++++++++++++++++ Table ++++++++++++++++++++++++++++++++++++++++++ -->
@@ -148,7 +152,7 @@
 
     <style name="BottomSheetButtonBarItem" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/button_bar_button_text</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
+        <item name="android:letterSpacing">-0.01</item>
         <item name="layout_flexGrow">1</item>
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:layout_marginEnd">2dp</item>

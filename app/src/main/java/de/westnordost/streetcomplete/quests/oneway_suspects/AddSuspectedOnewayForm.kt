@@ -3,26 +3,26 @@ package de.westnordost.streetcomplete.quests.oneway_suspects
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
-import androidx.lifecycle.lifecycleScope
-
 import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.view.ResImage
-import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
-import kotlinx.android.synthetic.main.view_little_compass.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>() {
+class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_oneway
+    override val contentLayoutResId = R.layout.quest_street_side_puzzle
+    private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
+
     override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
@@ -33,24 +33,33 @@ class AddSuspectedOnewayForm : AYesNoQuestAnswerFragment<SuspectedOnewayAnswer>(
         Injector.applicationComponent.inject(this)
     }
 
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(true) }
+    )
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        puzzleView.showOnlyRightSide()
+        binding.puzzleView.showOnlyRightSide()
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val isForward = withContext(Dispatchers.IO) { db.isForward(osmElement!!.id)!! }
 
-            puzzleView.setRightSideImage(ResImage(
+            binding.puzzleView.setRightSideImage(ResImage(
                 if (isForward) R.drawable.ic_oneway_lane
                 else R.drawable.ic_oneway_lane_reverse
             ))
         }
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(
+            binding.puzzleView,
+            binding.littleCompass.root,
+            elementGeometry as ElementPolylinesGeometry
+        )
     }
 
-    override fun onClick(answer: Boolean) {
+    private fun applyAnswer(answer: Boolean) {
         // the quest needs the way ID of the element to find out the direction of the oneway
         applyAnswer(SuspectedOnewayAnswer(answer, osmElement!!.id))
     }

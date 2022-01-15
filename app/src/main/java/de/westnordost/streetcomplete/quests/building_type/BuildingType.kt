@@ -28,6 +28,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     SPORTS_CENTRE ("building", "sports_centre"),
     HOSPITAL      ("building", "hospital"),
     STADIUM       ("building", "stadium"),
+    GRANDSTAND    ("building", "grandstand"),
     TRAIN_STATION ("building", "train_station"),
     TRANSPORTATION("building", "transportation"),
     FIRE_STATION  ("building", "fire_station"),
@@ -54,11 +55,15 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     GREENHOUSE    ("building", "greenhouse"),
 
     SHED          ("building", "shed"),
+    ALLOTMENT_HOUSE("building", "allotment_house"),
     ROOF          ("building", "roof"),
+    BRIDGE        ("building", "bridge"),
     TOILETS       ("building", "toilets"),
     SERVICE       ("building", "service"),
     HANGAR        ("building", "hangar"),
     BUNKER        ("building", "bunker"),
+    BOATHOUSE     ("building", "boathouse"),
+
     HISTORIC      ("historic", "yes"),
     ABANDONED     ("abandoned", "yes"),
     RUINS         ("ruins", "yes"),
@@ -85,11 +90,11 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         STATIC_CARAVAN, DORMITORY
     )),
     COMMERCIAL(BuildingType.COMMERCIAL, listOf(
-        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
+        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK, BUNGALOW, BRIDGE
     )),
     CIVIC(BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
-        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION
+        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION, OFFICE, GRANDSTAND
     )),
     RELIGIOUS(BuildingType.RELIGIOUS, listOf(
         CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
@@ -98,10 +103,11 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         GARAGE, GARAGES, CARPORT, PARKING
     )),
     FOR_FARMS(null, listOf(
-        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED
+        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED, ALLOTMENT_HOUSE
     )),
     OTHER(null, listOf(
-        SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, ABANDONED, RUINS
+        SHED, ROOF, BRIDGE, ALLOTMENT_HOUSE, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, BOATHOUSE,
+        ABANDONED, RUINS
     )),
 }
 

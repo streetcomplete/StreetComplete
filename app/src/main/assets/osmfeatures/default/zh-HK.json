@@ -4323,21 +4323,9 @@
                     "name": "不准右轉",
                     "terms": "禁止右轉,不可以右轉,嚴禁右轉"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "不准直駛",
-                    "terms": "禁止進入"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "不准掉頭",
-                    "terms": "禁止掉頭"
-                },
                 "type/route": {
                     "name": "路綫",
                     "terms": "route,路綫,路線"
-                },
-                "type/route/bicycle": {
-                    "name": "單車路綫",
-                    "terms": "cycle route,單車路綫,單車路線,腳踏車路線,自行車路線"
                 },
                 "type/route/bus": {
                     "name": "巴士路綫",
@@ -4354,10 +4342,6 @@
                 "type/route/hiking": {
                     "name": "遠足路綫",
                     "terms": "hiking route,行山路綫,行山路線,遠足路線"
-                },
-                "type/route/horse": {
-                    "name": "策騎路線",
-                    "terms": "騎馬路線"
                 },
                 "type/route/light_rail": {
                     "name": "輕鐵路綫",

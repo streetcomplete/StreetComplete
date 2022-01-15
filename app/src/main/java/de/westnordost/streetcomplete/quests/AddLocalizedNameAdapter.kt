@@ -137,10 +137,8 @@ class AddLocalizedNameAdapter(
     private fun getLanguageMenuItemTitle(languageTag: String): String {
         if (languageTag.isEmpty()) return context.getString(R.string.quest_streetName_menuItem_nolanguage)
         if (languageTag == "international") return context.getString(R.string.quest_streetName_menuItem_international)
-        val languageCode = languageTag.substringBefore('-')
         val isRomanization = languageTag.endsWith("Latn")
-        // if Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP was, could use Locale.forLanguageTag
-        val locale = Locale(languageCode)
+        val locale = Locale.forLanguageTag(languageTag)
 
         val displayLanguage = locale.displayLanguage
         val nativeDisplayLanguage = locale.getDisplayLanguage(locale)
@@ -160,12 +158,12 @@ class AddLocalizedNameAdapter(
             if (displayLanguage == nativeDisplayLanguage) {
                 String.format(
                     context.getString(R.string.quest_streetName_menuItem_language_with_script_simple),
-                    languageTag, displayLanguage, context.getString(R.string.quest_streetName_menuItem_romanized)
+                    languageTag, displayLanguage, locale.displayScript
                 )
             } else {
                 String.format(
                     context.getString(R.string.quest_streetName_menuItem_language_with_script_native),
-                    languageTag, nativeDisplayLanguage, displayLanguage, context.getString(R.string.quest_streetName_menuItem_romanized)
+                    languageTag, nativeDisplayLanguage, displayLanguage, locale.displayScript
                 )
             }
         }
@@ -201,12 +199,12 @@ class AddLocalizedNameAdapter(
 
                 // "unspecified language" suggestions
                 if (languageTag.isEmpty()) {
-                    var defaultNameOccurances = 0
+                    var defaultNameOccurrences = 0
                     for (other in localizedNameSuggestion.values) {
-                        if (name == other) defaultNameOccurances++
+                        if (name == other) defaultNameOccurrences++
                     }
                     // name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
-                    if (defaultNameOccurances >= 2) continue
+                    if (defaultNameOccurrences >= 2) continue
                     // only for name=A, name:de=B, name:en=C,...
                 }
                 localizedNameSuggestionsMap[name] = localizedNameSuggestion

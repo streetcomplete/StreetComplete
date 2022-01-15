@@ -13,7 +13,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
 
     @Before fun createDao() {
-        dao = ElementGeometryDao(database)
+        dao = ElementGeometryDao(database, PolylinesSerializer())
     }
 
     @Test fun testGetNull() {
@@ -130,6 +130,12 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         dao.put(ElementGeometryEntry(ElementType.NODE, 0, createSimpleGeometry()))
         assertTrue(dao.delete(ElementType.NODE, 0))
 
+        assertNull(dao.get(ElementType.NODE, 0))
+    }
+
+    @Test fun clear() {
+        dao.put(ElementGeometryEntry(ElementType.NODE, 0, createSimpleGeometry()))
+        dao.clear()
         assertNull(dao.get(ElementType.NODE, 0))
     }
 

@@ -7,17 +7,21 @@ import de.westnordost.countryboundaries.isInAny
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
+import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
+import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.util.contains
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
-import de.westnordost.streetcomplete.util.measuredLength
 import kotlinx.coroutines.*
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -50,56 +54,72 @@ import javax.inject.Singleton
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    private val allQuestTypes get() = questTypeRegistry.all.filterIsInstance<OsmElementQuestType<*>>()
+    private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
+        .sortedBy { it.chonkerIndex }
 
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 
         /** For the given elements, replace the current quests with the given ones. Called when
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
-        @Synchronized override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+        override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
             val time = currentTimeMillis()
 
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
-            val previousQuests = mutableListOf<OsmQuestDaoEntry>()
-            var count = 0
 
             for (element in updated) {
-                previousQuests.addAll(db.getAllForElement(element.type, element.id))
                 val geometry = updated.getGeometry(element.type, element.id) ?: continue
                 deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, allQuestTypes))
-                count++
             }
-
-            val deleteQuestKeys = mutableListOf<OsmQuestKey>()
-            for (key in deleted) {
-                // quests that refer to elements that have been deleted shall be deleted
-                deleteQuestKeys.addAll(db.getAllForElement(key.type, key.id).map { it.key })
-            }
-
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
                 val questTypeName = quest.type::class.simpleName!!
                 Log.d(TAG, "Created $questTypeName for ${quest.elementType.name}#${quest.elementId}")
             }
-            val seconds = (currentTimeMillis() - time) / 1000.0
-            Log.i(TAG,"Created ${quests.size} quests for $count updated elements in ${seconds.format(1)}s")
 
-            updateQuests(quests, previousQuests, deleteQuestKeys)
+            val obsoleteQuestKeys: List<OsmQuestKey>
+            synchronized(this) {
+                val previousQuests = db.getAllForElements(updated.map { ElementKey(it.type, it.id) })
+                // quests that refer to elements that have been deleted shall be deleted
+                val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
+
+                val seconds = (currentTimeMillis() - time) / 1000.0
+                Log.i(TAG,"Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
+
+                obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
+                updateQuests(quests, obsoleteQuestKeys)
+            }
+
+            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
 
         /** Replace all quests of the given types in the given bounding box with the given quests.
          *  Called on download of a quest type for a bounding box. */
-        @Synchronized override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
             val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
-            val previousQuests = db.getAllInBBox(bbox)
-            updateQuests(quests, previousQuests, emptyList())
+            val obsoleteQuestKeys: List<OsmQuestKey>
+            synchronized(this) {
+                val previousQuests = db.getAllInBBox(bbox)
+                obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
+                updateQuests(quests, obsoleteQuestKeys)
+            }
+
+            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+        }
+
+        override fun onCleared() {
+            db.clear()
+            listeners.forEach { it.onInvalidated() }
         }
     }
 
     private val notesSourceListener = object : NotesWithEditsSource.Listener {
-        @Synchronized override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+        override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
+            onInvalidated()
+        }
+
+        override fun onCleared() {
             onInvalidated()
         }
     }
@@ -182,14 +202,11 @@ import javax.inject.Singleton
         }
     }
 
-    private fun updateQuests(
+    private fun getObsoleteQuestKeys(
         questsNow: Collection<OsmQuest>,
         questsPreviously: Collection<OsmQuestDaoEntry>,
         deletedQuestKeys: Collection<OsmQuestKey>
-    ) {
-
-        val time = currentTimeMillis()
-
+    ): List<OsmQuestKey> {
         val previousQuestsByKey = mutableMapOf<OsmQuestKey, OsmQuestDaoEntry>()
         questsPreviously.associateByTo(previousQuestsByKey) { it.key }
 
@@ -197,15 +214,17 @@ import javax.inject.Singleton
             previousQuestsByKey.remove(quest.key)
         }
         // quests that were created previously for an element but now not anymore shall be deleted
-        val obsoleteQuestKeys = previousQuestsByKey.values.map { it.key } + deletedQuestKeys
+        return previousQuestsByKey.values.map { it.key } + deletedQuestKeys
+    }
+
+    private fun updateQuests(questsNow: Collection<OsmQuest>, obsoleteQuestKeys: Collection<OsmQuestKey>) {
+        val time = currentTimeMillis()
 
         db.deleteAll(obsoleteQuestKeys)
         db.putAll(questsNow)
 
         val seconds = (currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
-
-        onUpdated(added = questsNow, deletedKeys = obsoleteQuestKeys)
     }
 
     private fun mayCreateQuest(
@@ -222,14 +241,12 @@ import javax.inject.Singleton
         val countries = questType.enabledInCountries
         if (!countryBoundariesFuture.get().isInAny(pos, countries))  return false
 
-        // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
-        if (geometry is ElementPolylinesGeometry) {
-            val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
-            if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
-                return false
-            }
-        }
         return true
+    }
+
+    fun delete(key: OsmQuestKey) {
+        db.delete(key)
+        onUpdated(deletedKeys = listOf(key))
     }
 
     override fun get(key: OsmQuestKey): OsmQuest? {
@@ -239,9 +256,6 @@ import javax.inject.Singleton
         if (isBlacklistedPosition(geometry.center)) return null
         return createOsmQuest(entry, geometry)
     }
-
-    override fun getAllInBBoxCount(bbox: BoundingBox): Int =
-        db.getAllInBBoxCount(bbox)
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
         val hiddenIds = getHiddenQuests()
@@ -272,27 +286,30 @@ import javax.inject.Singleton
 
     private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
         notesSource
-            .getAllPositions(bbox)
+            .getAllPositions(bbox.enlargedBy(1.2))
             .map { it.truncateTo5Decimals() }
             .toSet()
 
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
-        notesSource.getAllPositions(pos.enclosingBoundingBox(1.0)).isNotEmpty()
+        pos.truncateTo5Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
 
     private fun getHiddenQuests(): Set<OsmQuestKey> =
         hiddenDB.getAllIds().toSet()
 
     /** Mark the quest as hidden by user interaction */
-    @Synchronized fun hide(key: OsmQuestKey) {
-        hiddenDB.add(key)
+    fun hide(key: OsmQuestKey) {
+        synchronized(this) { hiddenDB.add(key) }
+
         val hidden = getHidden(key)
         if (hidden != null) onHid(hidden)
         onUpdated(deletedKeys = listOf(key))
     }
 
-    @Synchronized fun unhide(key: OsmQuestKey): Boolean {
+    fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
-        if (!hiddenDB.delete(key)) return false
+        synchronized(this) {
+            if (!hiddenDB.delete(key)) return false
+        }
         if (hidden != null) onUnhid(hidden)
         val quest = get(key)
         if (quest != null) onUpdated(added = listOf(quest))
@@ -300,11 +317,11 @@ import javax.inject.Singleton
     }
 
     /** Un-hides all previously hidden quests by user interaction */
-    @Synchronized fun unhideAll(): Int {
-        val result = hiddenDB.deleteAll()
+    fun unhideAll(): Int {
+        val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
         onUnhidAll()
         onInvalidated()
-        return result
+        return unhidCount
     }
 
     fun getHidden(key: OsmQuestKey): OsmQuestHidden? {
@@ -353,7 +370,9 @@ import javax.inject.Singleton
 
         val visibleAdded = if (added.isNotEmpty()) {
             val hiddenIds = getHiddenQuests()
-            added.filter { it.key !in hiddenIds && !isBlacklistedPosition(it.position) }
+            val bbox = added.map { it.position }.enclosingBoundingBox()
+            val hiddenPositions = getBlacklistedPositions(bbox)
+            added.filter { it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions }
         } else {
             added
         }
@@ -393,4 +412,16 @@ private fun LatLon.truncateTo5Decimals() = LatLon(latitude.truncateTo5Decimals()
 
 private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
 
-const val MAX_GEOMETRY_LENGTH_IN_METERS = 600
+/** an index by which a list of quest types can be sorted so that quests that are the slowest to
+ *  evaluate are evaluated first. This is a performance improvement because the evaluation is done
+ *  in parallel on as many threads as there are CPU cores. So if all threads are done except one,
+ *  all have to wait for that one thread. So, better enqueue the expensive work at the beginning. */
+private val OsmElementQuestType<*>.chonkerIndex: Int get() = when(this) {
+    is AddOpeningHours -> 0 // OpeningHoursParser, extensive filter
+    is AddSuspectedOneway -> 0 // Download, IO TODO
+    is CheckExistence -> 1 // FeatureDictionary, extensive filter
+    is AddHousenumber -> 1 // complex filter
+    is AddCycleway -> 2 // complex filter
+    is AddPlaceName -> 2 // FeatureDictionary, extensive filter
+    else -> 10
+}

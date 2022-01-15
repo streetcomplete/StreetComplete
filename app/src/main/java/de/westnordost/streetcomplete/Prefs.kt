@@ -13,6 +13,7 @@ object Prefs {
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
     const val UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown"
     const val THEME_SELECT = "theme.select"
+    const val LANGUAGE_SELECT = "language.select"
     const val THEME_BACKGROUND = "theme.background_type"
 
     const val RESURVEY_INTERVALS = "quests.resurveyIntervals"
@@ -28,15 +29,16 @@ object Prefs {
     const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
 
     // not shown anywhere directly
-    const val QUEST_ORDER = "quests.order"
+    const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
     const val LAST_EDIT_TIME = "changesets.lastChangeTime"
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
     const val LAST_PICKED_PREFIX = "imageListLastPicked."
-    const val LAST_LOCATION_REQUEST_DENIED = "location.denied"
+    const val FINISHED_FIRST_LOCATION_REQUEST = "location.firstPermissionRequestFinished"
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
+    const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
 
     const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
     const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 256" xmlns="http://www.w3.org/2000/svg">
+ <path d="m74 1e-6h2v256h-2z" fill="#999"/>
+ <path d="m72 1e-6h2v256h-2z" fill="#666"/>
+ <rect y="1.3767e-6" width="72" height="256" fill="#808080"/>
+ <path d="m36 63v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm-33 5v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v2 2h2v-1h3v-2h-3v-1h-2zm9 1v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm-33 7v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm1 7v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4zm8 0v2h4v-2h-4z" fill="#fff"/>
+</svg>

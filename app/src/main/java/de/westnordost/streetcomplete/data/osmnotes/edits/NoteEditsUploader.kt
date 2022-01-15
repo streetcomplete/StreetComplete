@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.util.Log
-import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
@@ -22,7 +19,7 @@ class NoteEditsUploader @Inject constructor(
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
     private val mutex = Mutex()
-    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("ElementEditsUploader"))
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("NoteEditsUploader"))
 
     /** Uploads all edits to notes
      *
@@ -42,7 +39,7 @@ class NoteEditsUploader @Inject constructor(
             /* see uploadEdits */
             withContext(scope.coroutineContext) {
                 imageUploader.activate(edit.noteId)
-                noteEditsController.imagesActivated(edit.id)
+                noteEditsController.markImagesActivated(edit.id)
             }
         }
     }
@@ -62,8 +59,8 @@ class NoteEditsUploader @Inject constructor(
 
         try {
             val note = when(edit.action) {
-                CREATE -> uploadCreateNote(edit.position, text)
-                COMMENT -> uploadCommentNote(edit.noteId, text)
+                CREATE -> notesApi.create(edit.position, text)
+                COMMENT -> notesApi.comment(edit.noteId, text)
             }
 
             Log.d(TAG,
@@ -72,12 +69,12 @@ class NoteEditsUploader @Inject constructor(
             )
             uploadedChangeListener?.onUploaded(NOTE, edit.position)
 
-            noteEditsController.synced(edit, note)
+            noteEditsController.markSynced(edit, note)
             noteController.put(note)
 
             if (edit.imagePaths.isNotEmpty()) {
                 imageUploader.activate(note.id)
-                noteEditsController.imagesActivated(note.id)
+                noteEditsController.markImagesActivated(note.id)
             }
             deleteImages(edit.imagePaths)
 
@@ -88,7 +85,7 @@ class NoteEditsUploader @Inject constructor(
             )
             uploadedChangeListener?.onDiscarded(NOTE, edit.position)
 
-            noteEditsController.syncFailed(edit)
+            noteEditsController.markSyncFailed(edit)
 
             // should update the note if there was a conflict, so it doesn't happen again
             val updatedNote = notesApi.get(edit.noteId)
@@ -97,19 +94,6 @@ class NoteEditsUploader @Inject constructor(
 
             deleteImages(edit.imagePaths)
         }
-    }
-
-    private fun uploadCreateNote(pos: LatLon, text: String): Note =
-        notesApi.create(pos, text)
-
-    private fun uploadCommentNote(noteId: Long, text: String): Note = try {
-        notesApi.comment(noteId, text)
-    } catch (e: OsmNotFoundException) {
-        // someone else already closed the note -> our contribution is probably worthless
-        throw ConflictException(e.message, e)
-    } catch (e: OsmConflictException) {
-        // was closed by admin
-        throw ConflictException(e.message, e)
     }
 
     private fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {

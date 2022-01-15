@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -44,16 +45,30 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         assertEquals(q3, dao.get(q3.key))
     }
 
-    @Test fun getAllForElement() {
+    @Test fun clear() {
+        val q1 = entry(questTypeName = "a")
+        dao.put(q1)
+        dao.clear()
+        assertNull(dao.get(q1.key))
+    }
+
+    @Test fun getAllForElements() {
         val q1 = entry(ElementType.NODE, 0, "a")
         val q2 = entry(ElementType.NODE, 0, "b")
+        val q3 = entry(ElementType.NODE, 1L, "a")
 
         dao.putAll(listOf(
-            q1, q2,
+            q1, q2, q3,
             entry(ElementType.WAY, 0L, "a"),
-            entry(ElementType.NODE, 1L, "a")
+            entry(ElementType.NODE, 2L, "a")
         ))
-        assertTrue(dao.getAllForElement(ElementType.NODE, 0L).containsExactlyInAnyOrder(listOf(q1,q2)))
+
+        val keys = listOf(
+            ElementKey(ElementType.NODE, 0L),
+            ElementKey(ElementType.NODE, 1L)
+        )
+
+        assertTrue(dao.getAllForElements(keys).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
     }
 
     @Test fun getAllInBBox() {
@@ -77,23 +92,6 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             BoundingBox(0.0, 0.0, 1.0, 1.0),
             listOf("a")
         ).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
-    }
-
-    @Test fun getAllInBBoxCount() {
-        // in
-        val q1 = entry(elementId = 0, pos = p(0.0,0.0))
-        val q2 = entry(elementId = 1, pos = p(1.0,1.0))
-        val q3 = entry(elementId = 2, pos = p(0.5,0.5))
-        // out
-        dao.putAll(listOf(
-            q1, q2, q3,
-            // out
-            entry(elementId = 4, pos = p(-0.5,0.5)),
-            entry(elementId = 5, pos = p(0.5,-0.5)),
-            entry(elementId = 6, pos = p(0.5,1.5)),
-            entry(elementId = 7, pos = p(1.5,0.5)),
-        ))
-        assertEquals(3, dao.getAllInBBoxCount(BoundingBox(0.0,0.0,1.0,1.0)))
     }
 
     private fun entry(

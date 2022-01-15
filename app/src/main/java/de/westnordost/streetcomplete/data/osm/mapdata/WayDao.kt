@@ -66,20 +66,23 @@ class WayDao @Inject constructor(private val db: Database) {
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
 
-        val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
-        db.query(NAME_NODES, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
-            val nodeIds = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
-            nodeIds.add(c.getLong(NODE_ID))
-        }
+        return db.transaction {
+            val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
+            db.query(NAME_NODES, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
+                val nodeIds = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
+                nodeIds.add(c.getLong(NODE_ID))
+            }
 
-        return db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
-            Way(
-                cursor.getLong(ID),
-                nodeIdsByWayId.getValue(cursor.getLong(ID)),
-                cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
-                cursor.getInt(VERSION),
-                cursor.getLong(TIMESTAMP)
-            )
+            db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
+                Way(
+                    cursor.getLong(ID),
+                    nodeIdsByWayId.getValue(cursor.getLong(ID)),
+                    cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) }
+                        ?: emptyMap(),
+                    cursor.getInt(VERSION),
+                    cursor.getLong(TIMESTAMP)
+                )
+            }
         }
     }
 
@@ -92,15 +95,29 @@ class WayDao @Inject constructor(private val db: Database) {
         }
     }
 
-    fun getAllForNode(nodeId: Long): List<Way> {
-        val ids = db.query(
-            NAME_NODES,
-            columns = arrayOf(ID),
-            where = "$NODE_ID = $nodeId"
-        ) { it.getLong(ID) }.toSet()
-        return getAll(ids)
+    fun clear() {
+        db.transaction {
+            db.delete(NAME_NODES)
+            db.delete(NAME)
+        }
     }
 
-    fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun getAllForNode(nodeId: Long): List<Way> {
+        return db.transaction {
+            val ids = db.query(NAME_NODES,
+                columns = arrayOf(ID),
+                where = "$NODE_ID = $nodeId"
+            ) { it.getLong(ID) }.toSet()
+            getAll(ids)
+        }
+    }
+
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
 }

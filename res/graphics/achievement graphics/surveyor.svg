@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 290 290" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+<svg width="100%" height="100%" viewBox="0 0 290 290" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
     <g id="g4500">
         <clipPath id="_clip1">
             <path d="M145,289.016C143.129,289.016 141.37,288.287 140.047,286.965L3.035,149.952C1.712,148.63 0.984,146.871 0.984,145C0.984,143.13 1.712,141.37 3.035,140.047L140.047,3.035C141.37,1.712 143.129,0.984 145,0.984C146.871,0.984 148.63,1.712 149.953,3.035L286.965,140.047C288.288,141.371 289.016,143.13 289.016,145C289.016,146.87 288.288,148.629 286.965,149.952L149.953,286.965C148.63,288.287 146.871,289.016 145,289.016Z"/>

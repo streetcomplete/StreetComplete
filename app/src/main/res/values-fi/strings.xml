@@ -10,15 +10,12 @@
 
     <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Kirjautuminen epäonnistui: Kaikki listan käyttöoikeudet täytyy myöntää"</string>
-    <string name="title_activity_settings">"Asetukset"</string>
     <string name="pref_category_communication">"Yhteydet"</string>
     <string name="pref_category_display">"Näyttö"</string>
     <string name="pref_tilecache_size_summary">"%d Mt"</string>
 
     <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Ulkoisesta tallennustilasta varattava tila karttatiilien välimuistiksi megatavuissa"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Näytä kaikki ilmoitukset"</string>
 
     <!-- Fuzzy -->
@@ -26,8 +23,6 @@
 
     <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sivuutetaan ilmoitukset jotka eivät ole kysymysmuotoisia"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Karttavälimuistin koko"</string>
     <string name="map_btn_gps_tracking">"Seuraa minua"</string>
 
@@ -38,11 +33,8 @@
     <string name="quest_generic_confirmation_title">"Oletko varma?"</string>
     <string name="quest_generic_confirmation_yes">"Kyllä, olen varma"</string>
     <string name="quest_generic_confirmation_no">"Aion tarkistaa"</string>
-    <string name="quest_generic_error_field_empty">"Jätit kentän tyhjäksi"</string>
-    <string name="quest_leave_new_note_title">"Jätä ilmoitus sen sijaan?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Voit jättää julkisen ilmoituksen tähän sijaintiin, jota muut kartoittajat voivat kommentoida ja toivottavasti ratkaista tai vaihtoehtoisesti piilottaa itseltäsi"</string>
+    <string name="quest_leave_new_note_title">"Jätä sen sijaan ilmoitus?"</string>
+    <string name="quest_leave_new_note_description">"Voit jättää julkisen ilmoituksen tähän sijaintiin, jota muut kartoittajat voivat kommentoida ja toivottavasti ratkaista tai vaihtoehtoisesti piilottaa tehtävän vain itseltäsi"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Ei, piilota"</string>
     <string name="quest_streetName_title">"Mikä on tämän tien nimi?"</string>
@@ -56,15 +48,17 @@
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jos nimi pystytään sanomaan ilman lyhennystä, se myös kirjoitetaan ilman. Monet yleiset lyhenteet laajennetaan automaattisesti kirjoitettaessa, muttei kaikkia."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ei lyhennettä"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Mitkä ovat paikan %s aukioloajat?"</string>
     <string name="quest_openingHours_start_time">"aukeamisaika"</string>
     <string name="quest_openingHours_end_time">"sulkemisaika"</string>
     <string name="quest_openingHours_add_months">"Lisää kuukaudet"</string>
     <string name="quest_openingHours_add_hours">"Lisää tunnit"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Lisää viikonpäivät"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Valitse kuukaudet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Valitse viikonpäivät"</string>
     <string name="quest_openingHours_24_7_confirmation">"Toisin sanoen, onko auki koko ajan joka päivä?"</string>
 
@@ -78,7 +72,6 @@
     <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Hylkää syöttö?"</string>
     <string name="confirmation_discard_positive">"Hylkää"</string>
-    <string name="confirmation_discard_negative">"Peruuta"</string>
     <string name="action_download">"Etsi tehtäviä täältä"</string>
 
     <!-- Fuzzy -->
@@ -87,9 +80,7 @@
     <!-- Fuzzy -->
     <string name="no_changes">"Jätit lomakkeen tyhjäksi"</string>
     <string name="close">"sulje"</string>
-
-    <!-- Fuzzy -->
-    <string name="download_error">"Kohteiden etsinnässä tapahtui virhe"</string>
+    <string name="download_error">"Tehtävien etsinnässä tapahtui virhe"</string>
 
     <!-- Fuzzy -->
     <string name="upload_error">"Vastausten lähettämisessä tapahtui virhe"</string>
@@ -99,7 +90,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Peruuta nykyinen haku ja hae tästä?"</string>
-    <string name="notification_downloading">"Haetaan tehtäviä…"</string>
 
     <!-- Fuzzy -->
     <string name="turn_on_location_request">"Sijainti on pois käytöstä. Haluatko laittaa päälle asetuksista?"</string>
@@ -107,12 +97,12 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Sijaintiasi tarvitaan täydennyksien hakuun lähiympäristöstäsi."</string>
     <string name="about_title_authors">"Tekijät"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick ja avustajat"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick ja avustajat"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Lähdekoodin sijainti"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"GitHubissa"</string>
     <string name="about_title_report_error">"Ilmoita virheestä"</string>
     <string name="about_title_feedback">"Anna palautetta"</string>
@@ -126,15 +116,11 @@
     <string name="confirmation_authorize_now">"Kirjautuminen OSM-käyttäjätiliin vaaditaan jotta voit lisätä vastauksiasi. Kirjaudutaanko nyt?"</string>
     <string name="not_authorized">"Ei kirjauduttu"</string>
     <string name="version_banned_message">"StreetComplete-versio on vanhentunut. Päivitä sovellus!"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_gps_no_quests">"Kohteiden automaattiseen hakuun vaaditaan sijaintipalvelut"</string>
+    <string name="no_gps_no_quests">"Tehtävien automaattiseen hakuun vaaditaan sijaintipalvelua"</string>
     <string name="later">"Myöhemmin"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"Se vain yhdistää kaksi tietä"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Jotain muuta (jätä ilmoitus)"</string>
     <string name="about_title_privacy_statement">"Tietosuojalausunto"</string>
 
@@ -156,12 +142,6 @@
     <string name="quest_openingHours_comment_description">"Muotoile lyhyesti, esimerkiksi samoja sanoja käyttäen mitä kyltissä. Kyltin poissaolo ei suoraan kerro etteikö säännöllisiä aukioloaikoja olisi."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Kuinka monta kerrosta tässä rakennuksessa on?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Kuinka monta kerrosta tässä rakennuksen osassa on?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Millainen perusmuoto katolla on?"</string>
     <string name="quest_roofShape_select_one">"Valitse yksi:"</string>
     <string name="quest_roofShape_show_more">"Näytä lisää..."</string>
@@ -176,7 +156,7 @@
 &lt;p&gt;&lt;b&gt;Suorat työpanokset&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Ensimmäiseksi, on ymmärrettävä, että olet tekemässä oikeita ja suoria täydennöksiä OpenStreetMapiin.&lt;br/&gt;
-Kaikki mitä lisäät tässä sovelluksessa lisätään suoraan kartalle, välissä ei ole mitään kolmansia osapuolia välitettäessä tietoja OpenStreetMapiin, samoin kuin tapauksissa: &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; tai &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Kaikki mitä lisäät tässä sovelluksessa lisätään suoraan kartalle, välissä ei ole mitään kolmansia osapuolia välitettäessä tietoja OpenStreetMapiin.
 &lt;/p&gt;
 &lt;p&gt;
 OpenStreetMapin muokkaaminen anonyymisti ei ole mahdollista, joten kaikki muokkaukset tehdään tililläsi. Tämä tarkoittaa että muokkauksen päivä, sisältö ja sijainti näkyvät julkisesti openstreetmap -verkkosivulla ja määritettävissä tilillesi.
@@ -229,10 +209,8 @@ Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Joka tapau
     <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Nupukivi"</string>
     <string name="quest_surface_value_wood">"Puu"</string>
-    <string name="quest_placeName_title">"Mikä on tämän paikan nimi?"</string>
     <string name="quest_sidewalk_title">"Onko tällä tiellä jalkakäytävää?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
-    <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
     <string name="quest_serviceType_title">"Millainen huoltotie tämä on?"</string>
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
 
@@ -271,6 +249,8 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="upload_server_error">"Yhteysvirhe lähetettäessä vastauksia. Yritä uudelleen."</string>
     <string name="quest_generic_hasFeature_yes">"Kyllä"</string>
     <string name="quest_generic_hasFeature_no">"Ei"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Onko tällä bussipysäkillä katosta?"</string>
 
     <!-- Fuzzy -->
@@ -325,7 +305,9 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Valitsit monia lajeja"</string>
-    <string name="quest_busStopShelter_name_title">"Onko bussipusäkillä %s katosta?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Onko bussipysäkillä %s katosta?"</string>
     <string name="quest_toiletsFee_title">"Vaatiiko tämä käymälä maksun?"</string>
 
     <!-- Fuzzy -->
@@ -333,8 +315,6 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Onko tämän suojatien molemmilla puolilla kosketuspäällysteet?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Oletko varma että tarkistit tämän paikan päällä?"</string>
 
     <!-- Vaiko "kohopainettuja päällysteitä" ? -->
@@ -343,11 +323,7 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Vain paikanpäällä tarkistetut tiedot tulisi lähettää."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Onko tämä pyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Älä enää näytä tälle istunnolle."</string>
 
     <!-- Fuzzy -->
@@ -479,10 +455,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_fireHydrant_type_pond">"Lammikko"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_translations">"Katso &lt;a href=\"https://poeditor.com/join/project/IE4GC127Ki\"&gt;projekti POEditorissa&lt;/a&gt; nähdäksesi listan kokonaisuudessaan."</string>
+    <string name="credits_contributors">"Katso &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;täydellinen lista GitHub:issa&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Käännökset"</string>
 
     <!-- Fuzzy -->
@@ -617,17 +590,10 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_crossing_type_title">"Minkälainen ylityspaikka tämä on?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Ylityspaikassa liikennevalot"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
-    <string name="compass_north_one_letter">"P"</string>
 
     <!-- Fuzzy -->
     <string name="action_undo">"Kumoa"</string>
-
-    <!-- Fuzzy -->
-    <string name="undo_confirm_title">"Kumoa seuraava viimeisin vastaus?"</string>
 
     <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostaneja"</string>
@@ -684,9 +650,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingLevels_answer_description">"Siinä tapauksessa syötä korkeimman osan mukaan."</string>
 
     <!-- Fuzzy -->
-    <string name="unglue_hint">"Täppää irroittaaksesi näkymä kohdasta"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Ovatko tämän tien ajoradat fyysisesti erotetut (esim. seinämä)? Vakio nopeusrajoitus riippuu onko asia niin vaiko ei. "</string>
     <string name="about_category_feedback">"Palaute"</string>
     <string name="quest_leave_new_note_photo">"Liitä valokuva"</string>
@@ -719,7 +682,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="pref_category_advanced">"Lisäasetukset"</string>
-    <string name="pref_title_quests">"Tehtävävalinnat"</string>
 
     <!-- Fuzzy -->
     <string name="quest_enabled">"Päällä"</string>
@@ -729,9 +691,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="action_reset">"Nollaa"</string>
-
-    <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Järjestä kysymysten lataus ja kysely järjestystä painamalla pitkään ja liikuttamalla kysymystä ylös tai alas."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Kumoa"</string>
@@ -818,18 +777,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="create_new_note_description">"Voit jättää ilmoituksen tänne muiden selvitettäväksi. Kohdista sijaintia siirtämällä karttaa:"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"Viallinen kysymys välimuistissa"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Hyödyllinen, jos ajattelet osan kysymyksistä vanhentuneen"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Tyhjennä"</string>
-
-    <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuisti tyhjennetään automaattisesti viikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normaalisti näyttää tältä:"</string>
 
     <!-- Fuzzy -->
@@ -857,10 +804,10 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_internet_access_no">"Ei yhteyttä"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"Onko pysäkillä %s katos?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Onko raitiovaunupysäkillä %s katos?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"Onko tällä pysäkillä katos?"</string>
+    <string name="quest_busStopShelter_tram_title">"Onko tällä raitiovaunupysäkillä katos?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"Onko tällä penkillä selkänoja?"</string>
@@ -907,18 +854,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_surface_value_unhewn_cobblestone">"Mukulakivet"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"Onko rajoitettu kuka voi pysäköidä täällä?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_private">"Yksityinen"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_yes">"Julkinen (maksullinen tai ilmainen)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_parking_access_customers">"Vain asiakkaille"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Mikä on tämän kävelykadun nimi?"</string>
 
     <!-- Fuzzy -->
@@ -944,8 +879,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Mikä on tämän linja-autopysäkin nimi?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tramStopName_title">"Mikä on tämän raitiovaunupysäkin nimi?"</string>
 
     <!-- Fuzzy -->
@@ -1000,15 +933,11 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"Onko tällä levähdysalueella vessa?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_pathSurface_title_steps">"Mikä päällyste näillä portailla on?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"Mikä päällyste tällä ratsastustiellä on?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Mikä päällyste tällä polulla on?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Mikä päällyste tällä ratsastuspolulla on?"</string>
+    <string name="quest_pathSurface_title">"Mikä päällyste tällä käytävällä on?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Valitse tarkin sopiva vaihtoehto näistä:"</string>
@@ -1023,9 +952,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="pref_quests_reset">"Resetoi kysymysten aktivoinnit ja palautua järjestys oletukseksi?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_title2">"Mikä on tämän rakennuksen käyttötarkoitus?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Valitse tarkempi arvo"</string>
@@ -1048,7 +974,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Paritalo"</string>
-    <string name="quest_buildingType_semi_detached_description">"rakennus, jossa kaksi asuinhuoneistoa jakavat seinän"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"rivi samankaltaisia yhden perheen koteja"</string>
@@ -1217,16 +1142,13 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Mikä määrittää nopeusrajoituksen?"</string>
-    <string name="notification_channel_download">"Lataa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Onko tämä leikkikenttä julkisesti käytössä?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"Miten kevyenliikenteenväylä on jaettu jalankulkijoille ja pyöräilijöille?"</string>
-
-    <!-- Fuzzy -->
-    <string name="dialog_tutorial_upload">"Tallentaaksesi muutoksesi manuaalisesti, käytä seuraavan näköistä nappia työkalurivillä."</string>
+    <string name="dialog_tutorial_upload">"Tallentaaksesi muutoksesi manuaalisesti, käytä viereistä nappia työkalurivillä."</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_separated">"Rinnakkain erillään toisista"</string>
@@ -1429,12 +1351,8 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Onko tämän %s WC pyörätuolilla saavutettavissa?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"Onko tällä raitiovaunupysäkillä kosketuspäällysteitä?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"Onko tällä %s raitiovaunupysäkillä kosketuspäällysteitä?"</string>
+    <string name="quest_tactilePaving_title_tram">"Onko tällä raitiovaunupysäkillä kosketuspäällyste?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Onko raitiovaunupysäkillä %s kosketuspäällyste?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Mikä painorajoitus täällä on?"</string>
@@ -1450,9 +1368,6 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Onko tänne %s sisäänpääsymaksua?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_laundrySelfService_title">"Toimiiko tämä pesula itsepalveluna?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"Onko näissä portaissa kaidetta?"</string>
@@ -1502,6 +1417,8 @@ Jaetaanko nyt?"</string>
     <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Esimerkkejä lasista, jota usein ei hyväksytä: karkaistu lasi, ikkunaikkunat, lasitavara, hehkulamput tai peilit."</string>
     <string name="about_title_changelog">"Versiohistoria"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Mitä uutta?"</string>
     <string name="about_title_rate">"Arvioi sovellus"</string>
 
@@ -1831,20 +1748,18 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja älä mene yksityisalueill
     <string name="user_statistics_country_wiki_link">"Kartoitusprortaali %s"</string>
     <string name="user_statistics_filter_by_country">"maittain"</string>
     <string name="user_statistics_filter_by_quest_type">"tehtävittäin"</string>
-
-    <!-- Fuzzy -->
-    <string name="user_profile_global_rank">"Globaali
-sija"</string>
-
-    <!-- Fuzzy -->
-    <string name="user_profile_local_rank">"%s
-sija"</string>
+    <string name="user_profile_global_rank">"Globaali-
+sijoitus"</string>
+    <string name="user_profile_local_rank">"%s-
+sijoitus"</string>
     <string name="user_profile_days_active">"Aktiivisia 
 päiviä"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Saavutus-
 taso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_title">"Mille kadulle (talon) numero %s kuuluu?"</string>
     <string name="quest_address_street_no_named_streets">"Se ei kuulu nimetylle kadulle"</string>
     <string name="quest_address_street_place_name_label">"Paikan nimi:"</string>
@@ -1869,14 +1784,16 @@ taso"</string>
     <string name="quest_board_type_map_title">"Onko se vain ja ainoastaan kartta?"</string>
     <string name="quest_board_type_map_description">"Jos taululla on joku tietty aihe, niin tarkenna sitä huolimatta siitä sisältyykö tieto myös kartalle. Esimerkiksi julkisen liikenteen infossa voi olla mukana myös kartta. Jos taulun aihetta ei ole listattu, niin jätä ilmoitus valinnan sijasta."</string>
     <string name="quest_surface_detailed_answer_impossible">"Useita pintoja.."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Oletko varma, ettei pintaa pysty määrittelemään tarkemmin? Huomioi, että \"eroaa pitkin matkaa\" mahdollistaa tien katkaiseminen sieltä, missä pinta vaihtuu. Paina \"en osaa sanoa\", jos kyseessä on yksi pintamateriaali, mutta vaihtoehtoa ei ole valittavissa."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Määritä tässä lyhyesti pintamateriaali, esimerkiksi \"hiekkainen sisältäen mukulakiviä\".  Tekstin pituus on rajoitettu 255 merkkiin."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"kansainvälinen"</string>
-    <string name="quest_streetName_menuItem_romanized">"Latinalaisin aakkosin"</string>
     <string name="quest_buildingType_terrace2">"Rivitaloja"</string>
-    <string name="quest_oneway_tutorial">"Kuvassa olevaa tietä kierretään samalla tavalla kuin kartalla on sijainnissa.  Huomaa ilmoitettu suunta."</string>
     <string name="at_housename">"Talon nimi %s:"</string>
     <string name="at_conscription_and_street_number">"Rekisterinumero %1$s, suuntausnumero %2$s:"</string>
 
@@ -1892,14 +1809,22 @@ taso"</string>
     <string name="quest_openingHours_unspecified_range">"Ei määritelty"</string>
     <string name="quest_cycleway_resurvey_title">"Onko täällä edelleen pyörätietä?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Onko %1$s (%2$s) pyörätuolille sopiva?"</string>
-    <string name="pref_title_resurvey_intervals">"Uudelleen kyselyn tiheys"</string>
+    <string name="pref_title_resurvey_intervals">"Uudelleenkyselyn tiheys"</string>
     <string name="resurvey_intervals_less_often">"Kysy harvemmin"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
     <string name="quest_accepts_cash_type_title">"Hyväksyykö %1$s (%2$s) käteismaksun?"</string>
-    <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkillä %s penkki"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBench_tram_name_title">"Onko raitiovaunupysäkki %s penkki?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_tram_title">"Onko raitiovaunupysäkillä penkki?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_title">"Onko bussipysäkillä penkki?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopBench_name_title">"Onko bussipysäkillä %s penkki?"</string>
     <string name="quest_summit_register_title">"Onko huipulla %s vieraskirja?"</string>
     <string name="quest_is_defibrillator_inside_title">"Onko tämä defibrillaattori rakennuksen sisällä?"</string>
@@ -1913,11 +1838,12 @@ taso"</string>
     <string name="quest_steps_incline_up">"Tähän suuntaan ylös"</string>
     <string name="quest_step_count_title">"Kuinka monta askelmaa tässä on?"</string>
     <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Onko näissä liikennevaloissa tuntoindikaattori sokeille ihmisille kertomaan milloin on turvallista ylittää tie?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Vihje: Yleensä kyse on värisevästä painikeesta tai pyörivästä kartiosta liikennevalopainikkeen alapuolella."</string>
     <string name="quest_busStopRef_title">"Mikä on tämän linja-autopysäkin pysäkkinumero?"</string>
-    <string name="quest_tramStopRef_title">"Mikä on tämän raitiovaunupysäkin pysäkkinumero? 
-"</string>
+    <string name="quest_tramStopRef_title">"Mikä on tämän raitiovaunupysäkin pysäkkinumero?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"pieni omakotitalo (kesämökki, loma-asunto yms..)"</string>
@@ -1928,6 +1854,8 @@ taso"</string>
     <string name="quest_steps_ramp_bicycle">"Polkupyöräramppi"</string>
     <string name="quest_steps_ramp_stroller">"Lastenrattaiden ramppi"</string>
     <string name="quest_steps_ramp_wheelchair">"Pyörätuoliramppi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Minkä pankin raha-automaatti tämä on?"</string>
     <string name="quest_clothes_container_operator_title">"Mikä taho vastaanottaa tämän vaatekeräyksen lahjoitukset?"</string>
     <string name="quest_charging_station_operator_title">"Kenen operoima latausasema tämä on?"</string>
@@ -1963,38 +1891,53 @@ taso"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Siinä on kaksisuuntainen kaista vasemmalle"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Onko tämä oikein?"</string>
     <string name="quest_maxheight_below_bridge_title">"Mikä on korkeusrajoitus sillan alla?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Jos tämä ei koske koko tietä, harkitse vastaamaan \"%s\""</string>
     <string name="quest_tactile_paving_kerb_title">"Onko täällä jalkakäytävässä kosketuspäällysteitä?"</string>
     <string name="quest_kerb_height_title">"Mikä on tämän reunakivetyksen korkeus?"</string>
     <string name="quest_kerb_height_flush">"Tienpinnan kanssa samalla tasolla"</string>
     <string name="quest_kerb_height_lowered">"Hieman tienpintaa korkeammalla"</string>
     <string name="quest_kerb_height_raised">"Korkea reunakiveys"</string>
-    <string name="quest_kerb_height_answer_no_kerb">"Tällä puolella ei ole reunakivetystä"</string>
     <string name="quest_kerb_height_lowered_ramp">"Ohitusramppi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Määritä autoliikenteelle merkittyjen kaistojen määrä (kumpaankin suuntaan). Pyöräväylät ja pysäköintikaistat ei lasketa mukaan. Jos löytyy bussikaistoja, jätä paikalle mieluiten ilmoitus."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Määritä täällä autoliikenteelle merkittyjen kaistojen määrä. Pyöräväylät ja pysäköintikaistat ei lasketa.
 Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_surface_value_rock">"Kivi"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Korkeat kuorma-autot mahtuvat"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Korkeat kuorma-autot eivät mahdu"</string>
     <string name="quest_address_street_hint">"Napauta tietä"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Merkitty suojatie"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Pysäköinti tien varrella"</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
     <string name="quest_existence_title">"Onko tämä vielä täällä? (%s)"</string>
-    <string name="quest_existence_name_title">"Onko %1s vielä täällä? (%2$s)"</string>
+    <string name="quest_existence_name_title">"Onko %1$s (%2$s) vielä täällä?"</string>
     <string name="quest_tracktype_grade2a">"Kiinteä mutta päällystämätön"</string>
     <string name="quest_tracktype_grade3a">"Enimmäkseen kiinteä"</string>
     <string name="quest_generic_answer_does_not_exist">"Ei olemassa..."</string>
-    <string name="osm_element_gone_warning">"Varoitus: Tätä ei voi peruuttaa!"</string>
     <string name="osm_element_gone_description">"Oletko varma ettei tätä ole, ei edes hieman eri paikassa? Jos et ole varma, jätä ilmoitus."</string>
     <string name="osm_element_gone_confirmation">"Se ei ole olemassa"</string>
     <string name="leave_note">"Jätä ilmoitus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Mitä täällä on nyt?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Se on tyhjillään"</string>
     <string name="quest_shop_gone_replaced_answer">"Siellä on..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Kirjoita paikka tänne"</string>
-    <string name="quest_shop_gone_replaced_answer_error">"En tiedä mikä. Harkitse ilmoituksen jättämistä."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Kauppa on ollut tyhjillään. Mitä siellä on nyt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Kaistojen määrä vaihtelee"</string>
     <string name="quest_pitchSurface_title">"Mikä pinnoite tällä urheilukentällä on?"</string>
@@ -2002,6 +1945,8 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_dietType_kosher_name_title">"Tarjoaako %s kosher tuotteita?"</string>
     <string name="quest_dietType_explanation_kosher">"Kosher tuotteet täytyy valmistaa erikoissääntöjen mukaan, kashrut-järjestöjen antamien todistuksia sääntöjen noudattamisesta."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ei lainkaan pyöräilytietä"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Kuten tapana, napauta kuvituksen yhtä laitaa, valitse sopiva vastaus ja tee samoin toiselle laidalle. Huomaa: jotkut tapaukset eivät ole ilmiselviä, kuten yksisuuntainen tie joka sallii polkupyöriä kumpaankin suuntaan!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Valitsemassa ettei ole pyörätietä"</string>
     <string name="quest_construction_completed_at_known_date">"Valmistuu päivämäärässä..."</string>
@@ -2028,9 +1973,135 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="team_mode">"Työryhmätila"</string>
     <string name="team_mode_exit">"Poistu työryhmätilasta"</string>
     <string name="team_mode_description">"Kun kartoitatte samaa aluetta yhtenä ryhmänä, voitte mennä työryhmätilaan ja jakaa tehtävät ryhmän jäsenten kesken."</string>
-    <string name="team_mode_team_size_label">"Kuinka monta on mukana?"</string>
     <string name="team_mode_team_size_hint">"Työryhmätila toimii 2–12 ihmisen ryhmissä."</string>
-    <string name="team_mode_choose_color">"Nyt jokainen ryhmässäsi valitsee oman värinsä:"</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
+    <string name="quest_pitchLit_title">"Onko tämä urheilukenttä valaistu?"</string>
+    <string name="quest_pitchLit_title_track">"Onko tämä urheilurata valaistu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_crossing_type_signals_controlled">"Ylistys ohjataan liikennevaloilla"</string>
+    <string name="undo_confirm_title2">"Kumpaanko seuraava muutos?"</string>
+    <string name="synced">"Synkronoitu"</string>
+    <string name="toast_undo_unavailable">"Tämä muutos on synkronoitu ja sitä ei voida perua"</string>
+    <string name="quest_cycleway_value_separate">"Näykyy erillisenä kartalla"</string>
+    <string name="created_note_action_title">"Luotu ilmoitus"</string>
+    <string name="commented_note_action_title">"Kommentoitu ilmoitus"</string>
+    <string name="hid_action_description">"Piiloit sen"</string>
+    <string name="split_way_action_description">"Jaoit tien"</string>
+    <string name="deleted_poi_action_description">"Poistot sen"</string>
+    <string name="added_tag_action_title">"Lisäsit %s"</string>
+    <string name="removed_tag_action_title">"Poistit %s"</string>
+    <string name="changed_tag_action_title">"Päivitit %s"</string>
+    <string name="pref_title_delete_cache">"Poista välimuisti"</string>
+    <string name="pref_title_delete_cache_summary">"Jos arvelet jonkin tiedon olevan vanhentunutta"</string>
+    <string name="delete_confirmation">"Poista"</string>
+    <string name="delete_cache_dialog_message">"Poista kaikki ladatut karttatiedot sisältäen kysymykset? Tiedot päivitetään %1$s päivän ja käyttämättömät tiedot poistetaan %2$s päivän päästä automaattisesti."</string>
+    <string name="quest_shop_type_title">"Minkä tyyppistä kauppa %s on?"</string>
+    <string name="quest_shop_type_title_no_name">"Minkä tyyppinen kauppa tämä on?"</string>
+    <string name="pref_background_type_select">"Valitse taustan tyyli"</string>
+    <string name="background_type_map">"Kartta"</string>
+    <string name="background_type_aerial_esri">"Ilmakuva (Esti)"</string>
+    <string name="quest_barrier_type_title">"Minkä tyylinen este tämä on?"</string>
+    <string name="quest_barrier_type_gate">"Portti"</string>
+    <string name="quest_barrier_type_lift_gate">"Puomieste"</string>
+    <string name="quest_barrier_type_bollard">"Tolpat"</string>
+    <string name="quest_barrier_type_chain">"Ketju"</string>
+    <string name="quest_barrier_type_rope">"Köysi"</string>
+    <string name="quest_barrier_type_wire_gate">"Irrotettava lankaosa"</string>
+    <string name="quest_barrier_type_cattle_grid">"Ruudukko estää karjan kulkemisen"</string>
+    <string name="quest_barrier_type_block">"Suuri liikkumaton este"</string>
+    <string name="quest_barrier_jersey_barrier">"Betoniporsas"</string>
+    <string name="quest_barrier_type_log">"Hirsi"</string>
+    <string name="quest_barrier_type_kerb">"Reunakiveys"</string>
+    <string name="quest_barrier_type_height_restrictor">"Korkeuseste"</string>
+    <string name="quest_barrier_full_height_turnstile">"Täyskorkea portti"</string>
+    <string name="quest_barrier_type_turnstile">"Portti"</string>
+    <string name="quest_barrier_type_passage">"Kulku seinän/portin/tms. kautta"</string>
+    <string name="quest_barrier_type_debris_pile">"Roskakasa"</string>
+    <string name="quest_barrier_type_stile_squeezer">"Ahdas väli"</string>
+    <string name="quest_barrier_type_stile_ladder">"Tikapuut"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Polkupyöräeste"</string>
+    <string name="quest_barrier_type_kissing_gate">"U tai V portti"</string>
+    <string name="quest_barrier_type_swing_gate">"Vaakasuora este"</string>
+    <string name="quest_policeType_title">"Minkä tyyppinen poliisiasema tämä on?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Muunnettu suudelmaportiksi (V tai U portti)"</string>
+    <string name="quest_stile_type_title">"Minkä tyyppinen porras tai portti tämä on?"</string>
+    <string name="quest_buildingType_semi_detached_description2">"viereiset omakotitalot"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_quests2">"Tehtävävalikoima ja tärkeysjärjestys"</string>
+    <string name="pref_subtitle_quests">"%1$d / %2$d käytössä"</string>
+    <string name="quest_busStopLit_tram_name_title">"Onko raitiovaunupysäkki %s valaistu?"</string>
+    <string name="quest_busStopLit_tram_title">"Onko tämä raitiovaunupysäkki valaistu?"</string>
+    <string name="quest_busStopLit_title">"Onko tämä bussipysäkki valaistu?"</string>
+    <string name="quest_busStopLit_name_title">"Onko bussipysäkki %s valaistu?"</string>
+    <string name="no_location_permission_warning_title">"Sijainnin käyttöoikeus"</string>
+    <string name="quest_surface_value_woodchips">"Hake"</string>
+    <string name="no_camera_app">"Ei kamera-appia käytettävissä"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_name_title">"Onko raitiovaunupysäkkillä %s roskakori?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_tram_title">"Onko tällä raitiovaunupysäkillä roskakori?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_title">"Onko tällä bussipysäkillä roskakori?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopBin_name_title">"Onko bussipysäkillä %s roskakori?"</string>
+    <string name="quest_bollard_type_title">"Minkä tyyppinen tolppa tämä on?"</string>
+    <string name="quest_bollard_type_rising">"Nouseva"</string>
+    <string name="quest_bollard_type_flexible">"Joustava"</string>
+    <string name="quest_bollard_type_fixed">"Kiinteä (ei poistettava)"</string>
+    <string name="quest_camera_type_title">"Minkä tyyppinen valvontakamera tämä on?"</string>
+    <string name="quest_camera_type_dome">"Kupoli"</string>
+    <string name="quest_camera_type_fixed">"Kiinteä"</string>
+    <string name="quest_camera_type_panning">"Panoroiva"</string>
+    <string name="about_title_faq">"UKK"</string>
+    <string name="quest_buildingLevels_title2">"Kuinka monta tasoa rakennuksessa on kellarin yläpuolella?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Kuinka monta tasoa rakennuksen osassa on kellarin yläpuolella?"</string>
+    <string name="quest_crossing_title">"Onko tämän väylän ja tien välissä reunakivetys? Minkälainen?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Esiasetus: %s"</string>
+    <string name="default_disabled_msg_roofShape">"Tämä kysymystyyppi on oletuksena pois päältä, koska kattojen muotoa ei yleensä näe helposti kadulta. Tämä kysymystyyppi vie myös melko paljon aikaa: monissa tapauksissa se on helpompaa ja tehokkaampaa tehdä kotoa ilmakuvien avulla."</string>
+    <string name="quest_religion_animist">"Animismi"</string>
+    <string name="quest_construction_steps_title">"Onko nämä askelmat rakennettu?"</string>
+    <string name="pref_quests_deselect_all">"Poista kaikkien kysymysten valinta?"</string>
+    <string name="quest_buildingType_boathouse">"Venevaja"</string>
+    <string name="quest_buildingType_allotment_house">"Siirtolapuutarhamökki"</string>
+    <string name="quest_buildingType_grandstand">"Katsomo"</string>
+    <string name="action_search">"Hae"</string>
+    <string name="action_manage_presets">"Hallitse esiasetuksia"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode_team_size_label2">"Kuinka monta henkilöä on kartoittamassa? Kirjoita sama numero kaikkien puhelimiin."</string>
+    <string name="team_mode_choose_color2">"Seuraavaksi jokaisen tulee valita eri väri. Valitse omasi:"</string>
+    <string name="link_organic_maps_description">"Ilman verkkoyhteyttä toimiva karttasovellus matkailijoille, retkeilijöille ja pyöräilijöille"</string>
+    <string name="quest_kerb_height_no">"Ei reunakivetystä"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Puurakenteinen ylimenevä pylväs"</string>
+    <string name="quest_barrier_type_stepover_stone">"Kivinen ylimenoporras"</string>
+    <string name="quest_bollard_type_removable">"Poistettava (avaimella tai ilman)"</string>
+    <string name="quest_bollard_type_foldable2">"Taitettava (avaimella tai ilman)"</string>
+    <string name="no_search_results">"Mitään ei löytynyt"</string>
+    <string name="quest_selection_hint_title">"Liikaa tehtävää?"</string>
+    <string name="quest_selection_hint_message">"Osallistumisen tulisi ensisijaisesti olla hauskaa! Jos kysymysten määrä häkellyttää sinua, voit aina hienosäätää asetuksista mitä kysymyksiä sinulle näytetään ja missä järjestyksessä."</string>
+    <string name="quest_presets_preset_add">"Lisää esiasetus"</string>
+    <string name="quest_presets_preset_name">"Esiasetuksen nimi"</string>
+    <string name="quest_presets_default_name">"Oletus"</string>
+    <string name="quest_presets_selected">"Valitut"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_presets_delete_message">"Poista esiasetus \"%s\"? Sen kysymysten valinnat ja järjestys menetetään peruuttamattomasti."</string>
+    <string name="notification_syncing">"Synkronoidaan tietoja... "</string>
+    <string name="quest_traffic_calming_type_choker">"Kavennettu tie"</string>
+    <string name="restore_confirmation">"Palauta"</string>
+    <string name="quest_parking_access_title2">"Kenelle pysäköinti on sallittu? Pysäköinti voi olla ilmainen tai maksullinen. "</string>
+    <string name="pref_title_language_select">"Valitse kieli"</string>
+    <string name="language_default">"Järjestelmän oletus"</string>
+    <string name="confirmation_discard_negative2">"Ei"</string>
+    <string name="street_parking_half_on_kerb">"Osittain tiellä"</string>
+    <string name="street_parking_no">"Ei pysäköintiä /ei sallittu "</string>
+    <string name="street_parking_prohibited">"Ei pysäköintiä"</string>
+    <string name="street_stopping_prohibited">"Ei pysähtymistä "</string>
 </resources>

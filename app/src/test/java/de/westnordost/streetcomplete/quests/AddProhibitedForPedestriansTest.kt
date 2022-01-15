@@ -22,7 +22,6 @@ class AddProhibitedForPedestriansTest {
         questType.verifyAnswer(
             mapOf("sidewalk" to "no"),
             HAS_SEPARATE_SIDEWALK,
-            StringMapEntryAdd("foot", "use_sidepath"),
             StringMapEntryModify("sidewalk", "no", "separate")
         )
     }

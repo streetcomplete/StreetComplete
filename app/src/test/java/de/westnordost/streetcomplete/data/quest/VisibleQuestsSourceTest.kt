@@ -39,9 +39,7 @@ class VisibleQuestsSourceTest {
         osmQuestSource = mock()
         visibleQuestTypeSource = mock()
         teamModeQuestFilter = mock()
-        questTypeRegistry = mock()
-
-        on(questTypeRegistry.all).thenReturn(questTypes)
+        questTypeRegistry = QuestTypeRegistry(questTypes)
 
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(true)
@@ -67,12 +65,6 @@ class VisibleQuestsSourceTest {
 
         listener = mock()
         source.addListener(listener)
-    }
-
-    @Test fun getAllCount() {
-        on(osmQuestSource.getAllInBBoxCount(bbox)).thenReturn(3)
-
-        assertEquals(3, source.getCount(bbox))
     }
 
     @Test fun getAllVisible() {

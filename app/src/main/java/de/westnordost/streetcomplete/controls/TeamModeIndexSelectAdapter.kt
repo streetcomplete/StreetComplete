@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.controls
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.R
-import kotlinx.android.synthetic.main.cell_team_mode_color_circle_select.view.*
+import de.westnordost.streetcomplete.databinding.CellTeamModeColorCircleSelectBinding
 import java.util.concurrent.CopyOnWriteArrayList
 
 class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapter.ViewHolder>() {
@@ -23,6 +21,9 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
 
             oldIndex?.let { notifyItemChanged(it) }
             index?.let { notifyItemChanged(it) }
+            for (listener in listeners) {
+                listener.onSelectedIndexChanged(index)
+            }
         }
 
     val listeners: MutableList<OnSelectedIndexChangedListener> = CopyOnWriteArrayList()
@@ -32,8 +33,9 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cell_team_mode_color_circle_select, parent, false)
-        val holder = ViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = CellTeamModeColorCircleSelectBinding.inflate(inflater, parent, false)
+        val holder = ViewHolder(binding)
         holder.onClickListener = ::toggle
         return holder
     }
@@ -43,14 +45,10 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
             throw ArrayIndexOutOfBoundsException(index)
 
         selectedIndex = if (index == selectedIndex) null else index
-
-        for (listener in listeners) {
-            listener.onSelectedIndexChanged(selectedIndex)
-        }
     }
 
     private fun deselect() {
-        selectedIndex?.let { toggle(it) }
+        selectedIndex = null
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -60,7 +58,7 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
 
     override fun getItemCount() = count
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(val binding: CellTeamModeColorCircleSelectBinding) : RecyclerView.ViewHolder(binding.root) {
         var onClickListener: ((index: Int) -> Unit)? = null
             set(value) {
                 field = value
@@ -72,7 +70,7 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
             }
 
         fun bind(index: Int) {
-            itemView.teamModeColorCircle.setIndexInTeam(index)
+            binding.teamModeColorCircle.setIndexInTeam(index)
         }
     }
 }

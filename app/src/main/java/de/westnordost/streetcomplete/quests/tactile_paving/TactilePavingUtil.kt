@@ -8,7 +8,7 @@ val COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON = NoCountriesExcept(
     "NO", "SE", "DK",
     "GB", "IE", "NL", "BE", "FR", "ES", "IT",
     "DE", "PL", "CZ", "SK", "HU", "AT", "CH",
-    "LV", "LT", "EE", "LU", "RU",
+    "LV", "LT", "EE", "LU", "RU", "HR",
     // America
     "US", "CA", "AR",
     // Asia

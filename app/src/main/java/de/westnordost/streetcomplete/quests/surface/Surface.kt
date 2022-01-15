@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.quests.surface.Surface.*
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),
     CONCRETE("concrete"),
+    CONCRETE_PLATES("concrete:plates"),
+    CONCRETE_LANES("concrete:lanes"),
     FINE_GRAVEL("fine_gravel"),
     PAVING_STONES("paving_stones"),
     COMPACTED("compacted"),
@@ -14,6 +16,7 @@ enum class Surface(val osmValue: String) {
     UNHEWN_COBBLESTONE("unhewn_cobblestone"),
     GRASS_PAVER("grass_paver"),
     WOOD("wood"),
+    WOODCHIPS("woodchips"),
     METAL("metal"),
     GRAVEL("gravel"),
     PEBBLES("pebblestone"),
@@ -29,8 +32,8 @@ enum class Surface(val osmValue: String) {
 }
 
 val PAVED_SURFACES = listOf(
-    ASPHALT, CONCRETE, PAVING_STONES,
-    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+    ASPHALT, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
+    PAVING_STONES, SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
     WOOD, METAL
 )
 
