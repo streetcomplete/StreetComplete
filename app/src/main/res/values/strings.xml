@@ -1119,9 +1119,9 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_description_very_bad_paving_stones">Missing and broken stones, gaps or other dangerous damage</string>
     <string name="quest_smoothness_description_very_bad_compacted_gravel">Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damage</string>
 
-    <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles</string>
-    <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles</string>
-    <string name="quest_smoothness_description_impassable">Only passable on foot</string>
+    <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles or on foot</string>
+    <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles or on foot</string>
+    <string name="quest_smoothness_description_impassable">Unfit for any vehicle, only passable on foot</string>
 
     <string name="quest_smoothness_wrong_surface">Surface is different</string>
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
