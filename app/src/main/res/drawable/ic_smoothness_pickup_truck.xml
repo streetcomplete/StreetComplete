@@ -4,8 +4,8 @@
     android:viewportWidth="36"
     android:viewportHeight="36">
   <path
-      android:pathData="M33,31c1,0 1,-1 1,-4 0,-0.692 0,-3.862 -0.041,-5.138C33.939,21.258 33.149,20 32,20H20v-6c0,-1.058 -0.235,-2 -2,-2h-5c-3,0 -6,8 -6,8s-6,0 -6,3v4s-1,0.338 -1,1.957S1,31 2,31h31z"
-      android:fillColor="#DD2E44"/>
+      android:pathData="m33,30c1,0 1,-1 1,-4 0,-0.692 0,-2.862 -0.041,-4.138 -0.02,-0.604 -0.81,-1.862 -1.959,-1.862h-12v-6c0,-1.058 -0.235,-2 -2,-2h-5c-3,0 -6,8 -6,8s-6,0 -6,3v3s-1,0.338 -1,1.957 1,2.043 2,2.043z"
+      android:fillColor="#dd2e44"/>
   <path
       android:pathData="M10,30m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0"
       android:fillColor="@color/smoothness_vehicle_tyre"/>
@@ -28,9 +28,9 @@
       android:pathData="M36,21.5c0,0.828 -0.672,1.5 -1.5,1.5H20v-3h14.5c0.828,0 1.5,0.671 1.5,1.5z"
       android:fillColor="#F492A9"/>
   <path
-      android:pathData="M1,23h1v5H1z"
-      android:fillColor="#99AAB5"/>
+      android:pathData="m1,23h1v3h-1z"
+      android:fillColor="#99aab5"/>
   <path
-      android:pathData="M2,31L1,31c-0.55,0 -1,-0.45 -1,-1v-2c0,-0.55 0.45,-1 1,-1h1c0.55,0 1,0.45 1,1v2c0,0.55 -0.45,1 -1,1zM34,31h-1c-0.55,0 -1,-0.45 -1,-1v-2c0,-0.55 0.45,-1 1,-1h1c0.55,0 1,0.45 1,1v2c0,0.55 -0.45,1 -1,1z"
-      android:fillColor="#CCD6DD"/>
+      android:pathData="m2,30h-1c-0.55,0 -1,-0.45 -1,-1v-2c0,-0.55 0.45,-1 1,-1h1c0.55,0 1,0.45 1,1v2c0,0.55 -0.45,1 -1,1zM34,30h-1c-0.55,0 -1,-0.45 -1,-1v-2c0,-0.55 0.45,-1 1,-1h1c0.55,0 1,0.45 1,1v2c0,0.55 -0.45,1 -1,1z"
+      android:fillColor="#ccd6dd"/>
 </vector>

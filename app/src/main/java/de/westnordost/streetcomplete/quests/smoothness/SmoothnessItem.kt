@@ -45,7 +45,7 @@ fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness
 val Smoothness.icon get(): @DrawableRes Int = when(this) {
     EXCELLENT ->     R.drawable.ic_smoothness_skateboard
     GOOD ->          R.drawable.ic_smoothness_scooter
-    INTERMEDIATE ->  R.drawable.ic_smoothness_bike
+    INTERMEDIATE ->  R.drawable.ic_smoothness_city_bike
     BAD ->           R.drawable.ic_smoothness_car
     VERY_BAD ->      R.drawable.ic_smoothness_suv
     HORRIBLE ->      R.drawable.ic_smoothness_pickup_truck
