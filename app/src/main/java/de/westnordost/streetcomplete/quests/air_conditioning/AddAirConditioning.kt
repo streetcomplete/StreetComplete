@@ -22,7 +22,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:air_conditioning"
     override val icon = R.drawable.ic_quest_snow_poi
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override val questTypeAchievements = listOf(CITIZEN)
 
