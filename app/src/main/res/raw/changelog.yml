@@ -2,7 +2,8 @@ v39.0-beta1: |
   <h3>New Quests</h3>
   <ul>
   <li><i>Does this road have a shoulder?</i> (#2444, #3613)</li>
-  <li><i>What is the surface quality of this road here?</i> (#3617, #3257, #1630), special thanks to @Helium314 but also to @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more</li>
+  <li><i>What is the surface quality of this road here?</i> (#3617, #3257, #1630), special thanks to @Helium314 but also to @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more<br>
+      It is disabled by default, enable it in the settings to try it out!</li>
   <li><i>Where is this fire hydrant located?</i> (#3368), by @thefeiter</li>
   </ul>
   <h3>Other enhancements</h3>
