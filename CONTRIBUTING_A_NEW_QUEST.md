@@ -1,0 +1,354 @@
+For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development.md).
+
+If you want to contribute code to the StreetComplete then making a new quest is one of the easiest programming tasks. Implementing quest with interface design matching an existing one is quite
+simple.
+
+Contributions like that are highly welcomed and you would make mapping one more things in OSM much easier!
+
+Reading the text below is not necessary to create a new quest - basic method of duplicating existing ones and modifying may be sufficient. And people were creating new quests before this documentation existed.
+
+But this materials may help or be quicker than trying to explore how things work fully on your own.
+
+# What is not required
+
+- expert programming ability - you do not need to be an expert programmer to make contributions, basic programming abilities are sufficient to implement a quest similar to existing ones
+- any Kotlin-specific or Android-specific knowledge - it is fine if you never did anything with Kotlin or Android
+- any Github specific knowledge
+
+Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) if you are stuck despite this. 
+
+# Required
+
+- programming ability - it is not a good first task for someone who never programmed anything. 
+  - Setup of environment takes long
+  - Editing even the simplest quest requires edits to at least two different files
+  - Kotlin familiarity is not needed, but ability to adjust to a new syntax is needed
+  - It is expected that someone trying this can search for solution of a typical problems on encountering an error message
+- familiarity with StreetComplete as an user - it is really recommended to be familiar with how StreetComplete works.Making hundreds of edits is not mandatory. But passing familiarity how surveying with StreetComplete works is needed.
+- time - Android Studio setup is sadly complicated
+  - Multiple hours are typical, though most was spend on waiting for various downloads
+  - it is likely that setting up Android Studio will be more complex than writing the code
+- basic ability to use git (but as mentioned, anything GitHub specific will be explained) 
+- GitHub account
+- around 15GB of a free space
+  - initial setup will download half of the Internet while getting emulators and dependencies. This is typical.
+
+# Dependencies - initial setup
+
+- install necessary software (Android Studio and git)
+- clone StreetComplete repository
+- open StreetComplete in Android Studio
+- [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also connect to real device via usb, this will not be later mentioned but can fully replace emulator)
+- run StreetComple in emulator - to verify that everything was setup as required
+
+if you are doing it for the first time do not worry if there is some error to solve along way. This is typical for setting up Android development. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to info about the setup.
+
+# Invent a new quest
+
+## Own ideas
+To [repeat](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](#suggesting-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
+
+## Existing proposals
+You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
+
+# Learn from an existing code
+
+## Find a base
+Base the new quest on one that exists already.
+
+Find one that hasthe same type of interface to the one that you are trying to implement.
+
+Are you trying to implement quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be yes/no question. `AddTracktype` where mapper will be selecting one of images.
+
+Is it going to be asked for POIs and be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
+
+Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
+
+
+### Locating quest
+
+Search across code for part of question or other text characteristic to this message. For example "What is the name of this place"
+
+You will find an XML file with entry looking like this:
+
+`<string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>`
+
+The code `quest_placeName_title_name` is string reference, used in code to alow translations.
+
+Search for this identifier in `*.kt` files, it should appear in the quest file [AddPlaceName](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt).
+
+This method can be often used to locate relevant code.
+
+## Pull requests
+
+One of better ways to get around a codebase new to you is to look at recent accepted proposals to change code (pull requests).
+
+This is likely useful also here.
+
+Find some [recent one](https://github.com/streetcomplete/StreetComplete/pulls?q=is%3Apr+is%3Aclosed) adding a quest.
+
+You can look at what was changed to achieve the goal, where relevant code is located. How much coding was need to impotent something. And what kind of comments are typical, how long one needs to wait for mainteners and so on.
+
+This can be also used to locate relevant code, especially helpful if some change needs to be done in multiple files.
+
+# Copying
+
+Copy relevant quest folder. Some contain multiple quests, in such case case copy only what you need.
+
+Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
+
+# Adjust copy
+
+After the quest is copied it is necessary to adjust it a bit.
+
+Change its class name and the file name to the new one.
+
+In copied code change package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
+
+# Add quest to the list of active ones
+
+Adjust [QuestModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt#L138-L162) but do not worry too much, it can be later tweaked.
+
+Add your own quest to the list so that it will be loaded by the app.
+
+## Quest anatomy
+See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
+
+
+TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt) would be better? And extend documentation there?
+
+### Element selection
+elementFilter property defines nodes, way, relations which will be selected for a given quest. It is a element selection used by OsmFilterQuestType.
+
+```
+"""
+        nodes with
+         emergency = defibrillator
+         and access !~ private|no
+         and !indoor
+"""
+``` 
+
+This query will be limited to nodes (`nodes with`), which fulfil some requirements.
+
+- `emergency = defibrillator` tag must be present
+- `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific optionA|optionB is treated like `^optionA|optionB$` regexp)
+- `indoor` key must not be present at all, to show only ones where this tag is still missing
+
+It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request a more thorough documentation here.
+
+### Properties
+
+#### commitMessage
+`override val commitMessage = "Add whether defibrillator is inside building"`
+message used as a changeset comment
+
+#### wikiLink
+`override val wikiLink = "Key:indoor"`
+
+points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case it is page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
+
+#### icon
+`override val icon = R.drawable.ic_quest_defibrillator` 
+icon drawable, you can initially use any icon. 
+
+Do not worry, submissions with placeholder icons are also welcomed! In many cases icon itself was not made by the PR author.
+
+More info about icon handling will be given later.
+
+#### questTypeAchievements
+`override val questTypeAchievements = listOf(LIFESAVER)`
+
+In quest achievements list what is relevant to given quest, see full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+
+#### getTitle
+`override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title`
+`    override fun createForm() = YesNoQuestAnswerFragment()`
+
+Get title is message displayed to user, code here passes [reference](https://developer.android.com/guide/topics/resources/string-resource) to string. You can change it to the new, not yet existing one and use built in tool to place text.
+
+Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
+
+There are additional files with text, but text is translated with a completely separately mechanism and your changes will modify solely this one file, leaving other text files untouched.
+
+#### Form
+
+`override fun createForm() = YesNoQuestAnswerFragment()`
+
+Form defines interface used by mappers.
+
+In this case the simplest possible is used.
+
+But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt) 
+
+`override fun createForm() = AddBridgeStructureForm()`
+
+
+With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
+### applyAnswerTo
+```
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.add("indoor", answer.toYesNo())
+    }
+``` 
+
+This code is responsible for modifying `StringMapChangesBuilder` object (passed by reference).
+
+Actions may include (examples from various quests):
+
+- `changes.add("indoor", answer.toYesNo())` - adds a new tag, it must not be present already
+- `changes.addOrModify("material", newMaterial)` - add a new tag if missing, override existing value if present
+- `changes.modify("sport", values)` - modify existing tag, value must be present
+- `changes.delete("amenity")` - remove key that must be present
+- `changes.deleteIfExists("stile")` - remove key if present
+- `changes.updateWithCheckDate("lit", answer.toYesNo())` - acts as `addOrModify` but will also update survey date and can be used in cases where tag value is not changing
+
+See other ones defined in [StringMapChangesBuilder.kt](de/westnordost/streetcomplete/data/osm/edits/update_tags/StringMapChangesBuilder.kt)
+
+### Extras
+
+Info listed above must be supplied by every quest. But there are also several optional fields. This specific qest has
+```
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with emergency = defibrillator")
+```
+
+which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/map/PinIcons.kt))
+
+See [also other optional properties](de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+
+### Adding quest icon
+
+It is OK to submit quest without own icon, using any icon as a placeholder.
+
+But it would be even better to include also icon.
+
+Note that there are some not-yet-used graphics, created for some proposed or expected quests. Maybe there is no need to create icon at all!
+
+New icon can reuse content of [other quest icons](res/graphics/quest icons), it can be based on openly licensed graphics. See [attribution file](res/graphics/authors.txt) for what was used so far.
+
+Keep similar style to existing ones and app in general. Once the quest icon is ready:
+
+- save as "Plain svg" or clean SVG file from unnecessary cruft in other way, like using [svgo](https://github.com/svg/svgo)
+- Put SVG into `[res/graphics/quest icons](res/graphics/quest icons)` folder
+  - SVG is a standard format editable in various software, unlike internal Android Studio xml that will be produced in the next step.
+- Open Android Studio
+- Right click on "app" folder in the Project tool window (top left)
+- Select new → vector asset
+- Select your svg file
+- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`), this will cause IDE to generate an XML file
+- add entry in the [attribution file](res/graphics/authors.txt)
+- modify `icon` property in the quest definition to use the new drawable
+- Commit modified or created files
+- Compile, test quest in the emulator
+
+The same method applies also to other vecot drawables, only they will be placed in other parts of [res/graphics/](res/graphics/)
+
+Inkscape is a typical tool to create and edit SVG files, it is a good, free, open-source so is available to all.
+
+# Test
+
+Obviously testing can be done also earlier.
+
+But before submitting it should be tested.
+
+Typically it is done using emulator.
+
+## Is quest listed?
+Look at the quest list in settings - is your quest appearing there? If not - see [this step](#Add quest to the list of active ones).
+
+While you are there you can disable all quest except yours for an easier testing.
+
+## Element selection
+Is it selected for expected elements? Is it not selected for some unwanted elements? Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
+
+## Quest form
+Is quest form opening? Can you fill answer as expected?
+
+## Solving quest
+Can you solve the quest? Is expected tagging being applied?
+
+You can look at logs for info what was applied or use undo menu from bottom-left.
+
+You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers.
+
+Is quest disappearing after being solved?
+
+# Open a pull request
+
+[Pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) is a submission of proposed changes to the source code.
+
+You can put into description of PR something like "fixes #1234" to [mark it as fixing this issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword). It can go into a commit message or PR description ([not its title](https://github.com/streetcomplete/StreetComplete/discussions/2917), it is a known GitHub bug).
+
+If you are stuck on something, need some help or guidance and you are willing and able to continue after solving the problem - you can open a pull request in an incomplete state and mention the blocker.
+
+You can see [already submitted pull requests](https://github.com/streetcomplete/StreetComplete/pulls?q=is%3Apr+) to see how this process works in practice.
+
+# Future
+
+After opening a pull request it will be reviewed and you will likely be asked to make some changes. This is normal and happens also with pull requests submitted by experienced contributors.
+
+Changes typically include improving code style, tweaking phrasing and quest settings.
+
+You are also welcome to help with reviewing other PRs - different people have different strength, there are active reviewers who help with code style, there are some native speakers of English, some with deep knowledge of OSM tagging schemes or deep knowledge how StreetComplete works.
+
+After the PR was finished it will be merged before the beta release of the next version. This way it can be additionally tested with a wider audience before release to all and translators can [translate text into other languages](CONTRIBUTING.md#translating-the-app).
+
+After full release it will reach entire StreetComplete audience who now will be able to more easily contribute to OpenStreetMap - thanks in advance for that!
+
+# Bad documentation is a bug
+
+Unclear documentation, including this one, is a bug. Feel free to either submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a fix or [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) describing your confusion.
+
+Note that not everything will be directly described. This documet is very intentionally not including step-by-step guide to install Android Studio, [linking](CONTRIBUTING.md#development) to an official docs.
+
+# More complexity
+What was described above is attempt to cover all aspects of quest creation, without describing all complexity.
+
+This contains some additional info.
+
+## getTitle Parameters
+In some cases quest will mention name and type of feature, for example in case of shops to make their identification possible.
+
+This requires preparing space in message for filling at runtime,
+
+And to add mechanism supplying this data. Here is [a typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L102-L111) that will
+
+```
+    override fun getTitle(tags: Map<String, String>) =
+        if (hasFeatureName(tags))
+            R.string.quest_wheelchairAccess_name_type_title
+        else
+            R.string.quest_wheelchairAccess_name_title
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+        val name = tags["name"] ?: tags["brand"]
+        return arrayOfNotNull(name, featureName.value)
+    }
+``` 
+
+- try to pass name, featureType (such as "greengrocer", translated to the proper language)
+- if name is not tagged: brand and featureType
+- or just featureType
+
+## Custom filters
+It is possible to use far more complex filters when querying for eligible elements.
+
+Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as `surface` is either of `earth`, `dirt`, `ground`
+
+`access !~ private|no` will be evaluated to `access` is neither `private` nor `no`
+
+Simple lists are [evaluated as sets](https://github.com/streetcomplete/StreetComplete/blob/2e812b9a3b5288983309a7edde6e8f9db05ad3f2/app/src/test/java/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88) - and for example `surface ~ earth|dirt|ground` will not match `surface=earther` tag. Basically, `surface ~ earth|dirt|ground` is treated as `surface ~ ^earth|dirt|ground$`
+
+But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/test/java/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
+
+It is possible to check for [age of elements](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L13-L17) or implement a [fully custom tag parsing](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L137-L151), still combined with filter syntax.
+
+It is possible to share and reuse [information about tagging schemes](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L18).
+
+(this info is gathered [here](/app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt))
+
+
+Even more complex ones using a different class bases are possible. Such as what was needed by the [address quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
+
+It allows to make a complex geometry checks, but writing them is also far more complex.
