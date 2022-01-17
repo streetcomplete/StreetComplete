@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton class CreatedElementsController @Inject constructor(
     private val db: CreatedElementsDao
-): CreatedElementsSource {
+) : CreatedElementsSource {
 
     private val cache: MutableSet<ElementKey> by lazy { db.getAll().toMutableSet() }
 

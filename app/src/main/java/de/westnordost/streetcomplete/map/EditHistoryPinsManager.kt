@@ -20,7 +20,7 @@ class EditHistoryPinsManager(
     private val pinsMapComponent: PinsMapComponent,
     private val editHistorySource: EditHistorySource,
     private val resources: Resources
-): LifecycleObserver {
+) : LifecycleObserver {
 
     /** Switch active-ness of edit history pins layer */
     var isActive: Boolean = false

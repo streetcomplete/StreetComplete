@@ -61,7 +61,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
     override val questTypeAchievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) : Int =
+    override fun getTitle(tags: Map<String, String>): Int =
         if (createCyclewaySides(tags, false) != null)
             R.string.quest_cycleway_resurvey_title
         else

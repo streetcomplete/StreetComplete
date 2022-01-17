@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 
-class AddRecyclingContainerMaterialsForm
-    : AImageListQuestAnswerFragment<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
+class AddRecyclingContainerMaterialsForm :
+    AImageListQuestAnswerFragment<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 
     override val descriptionResId = R.string.quest_recycling_materials_note
 

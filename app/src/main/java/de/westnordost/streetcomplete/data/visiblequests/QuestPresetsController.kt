@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton class QuestPresetsController @Inject constructor(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore
-): QuestPresetsSource {
+) : QuestPresetsSource {
 
     private val listeners = CopyOnWriteArrayList<QuestPresetsSource.Listener>()
 

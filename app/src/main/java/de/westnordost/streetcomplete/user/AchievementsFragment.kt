@@ -99,7 +99,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
             return ViewHolder(binding)
         }
 
-        inner class ViewHolder(val binding : CellAchievementBinding) : ListAdapter.ViewHolder<Pair<Achievement, Int>>(binding) {
+        inner class ViewHolder(val binding: CellAchievementBinding) : ListAdapter.ViewHolder<Pair<Achievement, Int>>(binding) {
             override fun onBind(with: Pair<Achievement, Int>) {
                 val achievement = with.first
                 val level = with.second

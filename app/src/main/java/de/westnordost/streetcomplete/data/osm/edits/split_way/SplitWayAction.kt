@@ -21,7 +21,7 @@ import kotlin.collections.ArrayList
  *  end, it is not considered compatible anymore
  *  */
 @Serializable
-data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): ElementEditAction {
+data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : ElementEditAction {
 
     override val newElementsCount get() = NewElementsCount(
         nodes = splits.count { it is SplitAtLinePosition },
@@ -171,7 +171,7 @@ private fun getUpdatedRelations(
     originalWay: Way,
     newWays: List<Way>,
     mapDataRepository: MapDataRepository
-) : Collection<Relation> {
+): Collection<Relation> {
     val relations = mapDataRepository.getRelationsForWay(originalWay.id)
     val result = ArrayList<Relation>()
     for (relation in relations) {

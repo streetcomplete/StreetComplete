@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.databinding.RowLinkCategoryItemBinding
 import de.westnordost.streetcomplete.databinding.RowLinkItemBinding
 
 /** Adapter for a list of links, grouped by category */
-class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: String) -> Unit)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: String) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val groupedLinks: List<Item> = links
         .groupBy { it.category }

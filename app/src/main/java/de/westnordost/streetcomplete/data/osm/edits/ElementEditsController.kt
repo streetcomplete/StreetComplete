@@ -13,7 +13,7 @@ import javax.inject.Singleton
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore
-): ElementEditsSource {
+) : ElementEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 

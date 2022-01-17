@@ -57,18 +57,18 @@ class NotesApiImpl(osm: OsmConnection) : NotesApi {
 private inline fun <T> wrapExceptions(block: () -> T): T =
     try {
         block()
-    } catch (e : OsmAuthorizationException) {
+    } catch (e: OsmAuthorizationException) {
         throw AuthorizationException(e.message, e)
-    } catch (e : OsmConflictException) {
+    } catch (e: OsmConflictException) {
         throw ConflictException(e.message, e)
-    } catch (e : OsmQueryTooBigException) {
+    } catch (e: OsmQueryTooBigException) {
         throw QueryTooBigException(e.message, e)
-    } catch (e : OsmConnectionException) {
+    } catch (e: OsmConnectionException) {
         throw ConnectionException(e.message, e)
-    } catch (e : OsmApiReadResponseException) {
+    } catch (e: OsmApiReadResponseException) {
         // probably a temporary connection error
         throw ConnectionException(e.message, e)
-    } catch (e : OsmApiException) {
+    } catch (e: OsmApiException) {
         // request timeout is a temporary connection error
         throw if (e.errorCode == 408) ConnectionException(e.message, e) else e
     }

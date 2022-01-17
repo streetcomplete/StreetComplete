@@ -17,7 +17,7 @@ import javax.inject.Singleton
     private val questTypeRegistry: QuestTypeRegistry,
     @Named("Achievements") private val allAchievements: List<Achievement>,
     @Named("Links") allLinks: List<Link>
-): AchievementsSource {
+) : AchievementsSource {
 
     private val listeners: MutableList<AchievementsSource.Listener> = CopyOnWriteArrayList()
 

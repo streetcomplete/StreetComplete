@@ -114,13 +114,13 @@ class RelationDao @Inject constructor(private val db: Database) {
         }
     }
 
-    fun getAllForNode(nodeId: Long) : List<Relation> =
+    fun getAllForNode(nodeId: Long): List<Relation> =
         getAllForElement(ElementType.NODE, nodeId)
 
-    fun getAllForWay(wayId: Long) : List<Relation> =
+    fun getAllForWay(wayId: Long): List<Relation> =
         getAllForElement(ElementType.WAY, wayId)
 
-    fun getAllForRelation(relationId: Long) : List<Relation> =
+    fun getAllForRelation(relationId: Long): List<Relation> =
         getAllForElement(ElementType.RELATION, relationId)
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {

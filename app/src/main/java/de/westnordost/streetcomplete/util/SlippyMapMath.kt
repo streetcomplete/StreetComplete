@@ -8,7 +8,7 @@ import kotlin.math.*
 
 /** X and Y position of a tile */
 @Serializable
-data class TilePos(val x: Int, val y:Int) {
+data class TilePos(val x: Int, val y: Int) {
     /** Returns this tile rect as a bounding box */
     fun asBoundingBox(zoom: Int): BoundingBox {
         return BoundingBox(

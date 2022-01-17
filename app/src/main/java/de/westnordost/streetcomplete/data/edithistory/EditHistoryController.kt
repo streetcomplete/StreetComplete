@@ -23,7 +23,7 @@ import javax.inject.Singleton
     private val noteEditsController: NoteEditsController,
     private val noteQuestController: OsmNoteQuestController,
     private val osmQuestController: OsmQuestController
-): EditHistorySource {
+) : EditHistorySource {
     private val listeners: MutableList<EditHistorySource.Listener> = CopyOnWriteArrayList()
 
     private val osmElementEditsListener = object : ElementEditsSource.Listener {

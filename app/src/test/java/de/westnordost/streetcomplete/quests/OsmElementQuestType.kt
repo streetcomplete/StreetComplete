@@ -6,13 +6,13 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 
 import org.assertj.core.api.Assertions.*
 
-fun <T> OsmElementQuestType<T>.verifyAnswer(tags:Map<String,String>, answer:T, vararg expectedChanges: StringMapEntryChange) {
+fun <T> OsmElementQuestType<T>.verifyAnswer(tags: Map<String,String>, answer: T, vararg expectedChanges: StringMapEntryChange) {
     val cb = StringMapChangesBuilder(tags)
     this.applyAnswerTo(answer, cb)
     val changes = cb.create().changes
     assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
 }
 
-fun <T> OsmElementQuestType<T>.verifyAnswer(answer:T, vararg expectedChanges: StringMapEntryChange) {
+fun <T> OsmElementQuestType<T>.verifyAnswer(answer: T, vararg expectedChanges: StringMapEntryChange) {
     verifyAnswer(emptyMap(), answer, *expectedChanges)
 }

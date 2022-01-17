@@ -14,8 +14,8 @@ import de.westnordost.streetcomplete.util.DefaultTextWatcher
  * ".") and capitalizes the first letter of each word that is longer than 3 letters.  */
 class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.editTextStyle)
-    : AppCompatEditText(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = R.attr.editTextStyle) :
+    AppCompatEditText(context, attrs, defStyleAttr) {
 
     var abbreviations: Abbreviations? = null
 

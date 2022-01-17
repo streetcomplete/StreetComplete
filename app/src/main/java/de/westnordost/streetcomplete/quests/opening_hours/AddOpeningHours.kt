@@ -137,7 +137,7 @@ class AddOpeningHours (
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) : Boolean {
+    override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
         val tags = element.tags
         // only show places that can be named somehow

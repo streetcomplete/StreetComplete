@@ -137,10 +137,10 @@ import javax.inject.Singleton
         mapData.addAll(ways)
     }
 
-    fun get(type: ElementType, id: Long) : Element? =
+    fun get(type: ElementType, id: Long): Element? =
         elementDB.get(type, id)
 
-    fun getGeometry(type: ElementType, id: Long) : ElementGeometry? =
+    fun getGeometry(type: ElementType, id: Long): ElementGeometry? =
         geometryDB.get(type, id)
 
     fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> =

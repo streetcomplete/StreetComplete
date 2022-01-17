@@ -75,7 +75,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
         currentQuestType = null
     }
 
-    inner class ShowQuestFormAdapter: ListAdapter<QuestType<*>>() {
+    inner class ShowQuestFormAdapter : ListAdapter<QuestType<*>>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ViewHolder<QuestType<*>> =
             ViewHolder(RowQuestDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
