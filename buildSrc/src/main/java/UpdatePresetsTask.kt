@@ -33,7 +33,7 @@ open class UpdatePresetsTask : DefaultTask() {
 
             val presetsLocalization = fetchPresetsLocalizations(localizationMetadata)
             val javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
-            File("$targetDir/${javaLanguage}.json").writeText(presetsLocalization)
+            File("$targetDir/$javaLanguage.json").writeText(presetsLocalization)
         }
     }
 

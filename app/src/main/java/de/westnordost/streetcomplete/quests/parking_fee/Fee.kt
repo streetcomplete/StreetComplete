@@ -23,11 +23,11 @@ fun Fee.applyTo(tags: Tags) {
         }
         is HasFeeAtHours -> {
             tags.updateWithCheckDate("fee", "no")
-            tags["fee:conditional"] = "yes @ (${openingHours})"
+            tags["fee:conditional"] = "yes @ ($openingHours)"
         }
         is HasFeeExceptAtHours -> {
             tags.updateWithCheckDate("fee", "yes")
-            tags["fee:conditional"] = "no @ (${openingHours})"
+            tags["fee:conditional"] = "no @ ($openingHours)"
         }
     }
 }
