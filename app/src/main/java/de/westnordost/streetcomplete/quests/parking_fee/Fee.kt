@@ -23,11 +23,11 @@ fun Fee.applyTo(changes: StringMapChangesBuilder) {
         }
         is HasFeeAtHours -> {
             changes.updateWithCheckDate("fee", "no")
-            changes.addOrModify("fee:conditional", "yes @ (${openingHours})")
+            changes.addOrModify("fee:conditional", "yes @ ($openingHours)")
         }
         is HasFeeExceptAtHours -> {
             changes.updateWithCheckDate("fee", "yes")
-            changes.addOrModify("fee:conditional", "no @ (${openingHours})")
+            changes.addOrModify("fee:conditional", "no @ ($openingHours)")
         }
     }
 }

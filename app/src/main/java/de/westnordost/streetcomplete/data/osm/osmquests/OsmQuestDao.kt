@@ -69,7 +69,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         if (questTypes != null) {
             if (questTypes.isEmpty()) return emptyList()
             val questTypesStr = questTypes.joinToString(",") { "'$it'" }
-            builder += " AND $QUEST_TYPE IN (${questTypesStr})"
+            builder += " AND $QUEST_TYPE IN ($questTypesStr)"
         }
         return db.query(NAME, where = builder) { it.toOsmQuestEntry() }
     }
