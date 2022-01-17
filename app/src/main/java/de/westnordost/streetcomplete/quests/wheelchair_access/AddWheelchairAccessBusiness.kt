@@ -14,8 +14,7 @@ import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<WheelchairAccess>()
-{
+) : OsmFilterQuestType<WheelchairAccess>() {
     override val elementFilter = """
         nodes, ways, relations with
           (name or brand)

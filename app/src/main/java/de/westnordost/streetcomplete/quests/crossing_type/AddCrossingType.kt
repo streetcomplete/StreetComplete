@@ -29,13 +29,13 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
               and crossing older today -8 years
             )
           )
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
         ways with
           highway = service and service = driveway
           or highway and access ~ private|no
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     override val commitMessage = "Add crossing type"
     override val wikiLink = "Key:crossing"

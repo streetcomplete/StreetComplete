@@ -32,7 +32,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
     }
 
     fun modify(key: String, value: String) {
-        val valueBefore = requireNotNull(source[key]) {"The key '$key' does not exist in the map '$source'." }
+        val valueBefore = requireNotNull(source[key]) { "The key '$key' does not exist in the map '$source'." }
         val change = StringMapEntryModify(key, valueBefore, value)
         if (changes[key] == change) return
         checkDuplicate(key)

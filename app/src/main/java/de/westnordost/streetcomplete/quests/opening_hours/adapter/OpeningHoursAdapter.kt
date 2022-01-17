@@ -171,7 +171,7 @@ class RegularOpeningHoursAdapter(
     fun changeToMonthsMode() {
         if (rows.isEmpty()) {
             addNewMonths()
-        } else if (rows.first() !is OpeningMonthsRow){
+        } else if (rows.first() !is OpeningMonthsRow) {
             addNewMonthsAsFirstRow()
         }
     }

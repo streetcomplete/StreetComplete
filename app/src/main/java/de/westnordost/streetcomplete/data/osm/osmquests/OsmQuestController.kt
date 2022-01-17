@@ -189,7 +189,7 @@ import javax.inject.Singleton
                     Log.d(TAG, "${questType::class.simpleName!!} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
                     val mapData = withContext(Dispatchers.IO) { lazyMapData }
                     appliesToElement = questType.getApplicableElements(mapData)
-                        .any{ it.id == element.id && it.type == element.type }
+                        .any { it.id == element.id && it.type == element.type }
                 }
                 if (!appliesToElement) return@async null
 

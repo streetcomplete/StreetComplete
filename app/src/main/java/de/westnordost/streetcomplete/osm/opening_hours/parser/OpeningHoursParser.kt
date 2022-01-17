@@ -228,7 +228,7 @@ private fun Rule.collidesWith(other: Rule): Boolean {
     if (dates1 != null) {
         val dates2 = other.dates
         if (dates2 != null) {
-            if (dates1.all { date1 -> dates2.none { date2 -> date2.intersectWith(date1) }})
+            if (dates1.all { date1 -> dates2.none { date2 -> date2.intersectWith(date1) } })
                 return false
         }
     }
@@ -256,7 +256,7 @@ private fun DateRange.intersectWith(other: DateRange): Boolean {
 
 @JvmName("intersectsWithWeekDayRange")
 private fun List<WeekDayRange>.intersectsWith(other: List<WeekDayRange>): Boolean =
-    any{ range1 -> other.any { range2 -> range1.intersectsWith(range2) } }
+    any { range1 -> other.any { range2 -> range1.intersectsWith(range2) } }
 
 private fun WeekDayRange.intersectsWith(other: WeekDayRange): Boolean {
     return toCircularSection().intersects(other.toCircularSection())
@@ -264,7 +264,7 @@ private fun WeekDayRange.intersectsWith(other: WeekDayRange): Boolean {
 
 @JvmName("intersectsWithHolidays")
 private fun List<Holiday>.intersectsWith(other: List<Holiday>): Boolean =
-    any{ holiday1 -> other.any { holiday2 -> holiday1.intersectsWith(holiday2) } }
+    any { holiday1 -> other.any { holiday2 -> holiday1.intersectsWith(holiday2) } }
 
 private fun Holiday.intersectsWith(other: Holiday): Boolean {
     require(isSupported())

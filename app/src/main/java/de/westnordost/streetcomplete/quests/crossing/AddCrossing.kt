@@ -175,7 +175,7 @@ private fun Sequence<Way>.groupByNodeIds(): MutableMap<Long, MutableList<Way>> {
     val result = mutableMapOf<Long, MutableList<Way>>()
     forEach { way ->
         way.nodeIds.forEach { nodeId ->
-            result.getOrPut(nodeId, { mutableListOf() } ).add(way)
+            result.getOrPut(nodeId, { mutableListOf() }).add(way)
         }
     }
     return result

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
-private val footwaysFilter by lazy {"""
+private val footwaysFilter by lazy { """
     ways with (
         highway ~ footway|path
         or highway = cycleway and foot ~ yes|designated
@@ -17,7 +17,7 @@ private val footwaysFilter by lazy {"""
       and access !~ private|no and foot !~ no
 """.toElementFilterExpression() }
 
-private val waysFilter by lazy {"""
+private val waysFilter by lazy { """
     ways with
       highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
       or construction ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}

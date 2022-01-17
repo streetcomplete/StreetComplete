@@ -47,7 +47,7 @@ class AddAcceptsCash(
           or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
         )
         and (name or brand) and !payment:cash and !payment:coins and !payment:notes
-    """}
+    """ }
 
     override val commitMessage = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside

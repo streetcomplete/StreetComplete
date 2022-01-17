@@ -128,7 +128,7 @@ class UndoDialog(
              * It happens the element is null or otherwise is not at all what is expected by
              * that quest type.
              * So, this is the fallback for that case */
-            context.resources.getString(questType.title, *Array(10){"…"})
+            context.resources.getString(questType.title, *Array(10) { "…" })
         }
 
     private fun createTextView(text: Text?): TextView {
