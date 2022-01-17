@@ -1,13 +1,12 @@
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development.md).
 
-If you want to contribute code to the StreetComplete then making a new quest is one of the easiest programming tasks. Implementing quest with interface design matching an existing one is quite
-simple.
+If you want to contribute code to the StreetComplete then making a new quest is one of the easiest programming tasks. Implementing a quest with interface design matching an existing one is quite simple.
 
-Contributions like that are highly welcomed and you would make mapping one more things in OSM much easier!
+Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier!
 
-Reading the text below is not necessary to create a new quest - basic method of duplicating existing ones and modifying may be sufficient. And people were creating new quests before this documentation existed.
+Reading the text below is not necessary to create a new quest - a basic method of duplicating existing ones and modifying may be sufficient. And people were creating new quests before this documentation existed.
 
-But this materials may help or be quicker than trying to explore how things work fully on your own.
+But these materials may help or be quicker than trying to explore how things work fully on your own.
 
 # What is not required
 
@@ -22,16 +21,16 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 - programming ability - it is not a good first task for someone who never programmed anything. 
   - Setup of environment takes long
   - Editing even the simplest quest requires edits to at least two different files
-  - Kotlin familiarity is not needed, but ability to adjust to a new syntax is needed
-  - It is expected that someone trying this can search for solution of a typical problems on encountering an error message
-- familiarity with StreetComplete as an user - it is really recommended to be familiar with how StreetComplete works.Making hundreds of edits is not mandatory. But passing familiarity how surveying with StreetComplete works is needed.
+  - Kotlin familiarity is not needed, but the ability to adjust to a new syntax is needed
+  - It is expected that someone trying this can search for a solution of a typical problems on encountering an error message
+- familiarity with StreetComplete as a user - it is really recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory. But passing familiarity with how surveying with StreetComplete works is needed.
 - time - Android Studio setup is sadly complicated
-  - Multiple hours are typical, though most was spend on waiting for various downloads
-  - it is likely that setting up Android Studio will be more complex than writing the code
+  - Multiple hours are typical, though most spend on waiting for various downloads
+  - setting up Android Studio will likely be more complex than writing the code
 - basic ability to use git (but as mentioned, anything GitHub specific will be explained) 
 - GitHub account
 - around 15GB of a free space
-  - initial setup will download half of the Internet while getting emulators and dependencies. This is typical.
+  - the initial setup will download half of the Internet while getting emulators and dependencies. This is typical.
 
 # Dependencies - initial setup
 
