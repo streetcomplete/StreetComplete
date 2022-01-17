@@ -21,6 +21,9 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_position_title
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with emergency = fire_hydrant")
+
     override fun createForm() = AddFireHydrantPositionForm()
 
     override fun applyAnswerTo(answer: FireHydrantPosition, changes: StringMapChangesBuilder) {
