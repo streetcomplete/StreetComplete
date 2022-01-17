@@ -125,8 +125,8 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         update.rotation?.let {
             val currentRotation = _tangramCamera.rotation
             var targetRotation = it
-            while (targetRotation - PI > currentRotation) targetRotation -= 2*PI.toFloat()
-            while (targetRotation + PI < currentRotation) targetRotation += 2*PI.toFloat()
+            while (targetRotation - PI > currentRotation) targetRotation -= 2 * PI.toFloat()
+            while (targetRotation + PI < currentRotation) targetRotation += 2 * PI.toFloat()
 
             propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, targetRotation))
             assignAnimation("rotation", animator)

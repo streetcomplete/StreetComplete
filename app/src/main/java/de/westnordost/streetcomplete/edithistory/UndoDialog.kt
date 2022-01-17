@@ -155,7 +155,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>"+Html.escapeHtml(change.tagString)+"</tt>"
+               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
            ) +
            "</li>"
         })

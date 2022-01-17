@@ -51,7 +51,7 @@ class StreetParkingDrawable(
 
         val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
         val carWidth = 0.23f * width
-        val carX = parkingOrientation.carsX * width - carWidth/2
+        val carX = parkingOrientation.carsX * width - carWidth / 2
         val carRotation = parkingOrientation.carsRotation
         val carCount = parkingOrientation.carCount
         val backgroundResId = getStreetDrawableResId(parkingOrientation, parkingPosition)

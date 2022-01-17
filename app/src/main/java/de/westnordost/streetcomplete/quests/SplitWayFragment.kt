@@ -199,8 +199,8 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         (binding.scissors.drawable as? Animatable)?.start()
 
         binding.scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
-            leftMargin = (scissorsPos.x - binding.scissors.width/2).toInt()
-            topMargin = (scissorsPos.y - binding.scissors.height/2).toInt()
+            leftMargin = (scissorsPos.x - binding.scissors.width / 2).toInt()
+            topMargin = (scissorsPos.y - binding.scissors.height / 2).toInt()
         }
         binding.scissors.alpha = 1f
         val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)

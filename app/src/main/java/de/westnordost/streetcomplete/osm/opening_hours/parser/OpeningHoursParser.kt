@@ -215,7 +215,7 @@ fun List<Rule>.weekdaysCollideWithAnother(): Boolean {
     for (i in 0 until size) {
         val rule1 = get(i)
         var additive = true
-        for (j in i+1 until size) {
+        for (j in i + 1 until size) {
             val rule2 = get(j)
             // off/closed rules may collide because they overwrite their whole weekdays anyway
             // (because we do not support times for off-rules in StreetComplete)
@@ -289,7 +289,7 @@ private fun WeekDayRange.expandedToNextDay(): WeekDayRange = WeekDayRange().also
     it.startDay = startDay
     val end = if (endDay == null) startDay else endDay
     val values = WeekDay.values()
-    it.endDay = values[(end.ordinal+1) % values.size]
+    it.endDay = values[(end.ordinal + 1) % values.size]
 }
 
 private fun TimeSpan.expandsIntoNextDay(): Boolean =

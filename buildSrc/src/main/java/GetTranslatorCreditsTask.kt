@@ -146,8 +146,8 @@ private fun tagToName(tag: String): String =
         "en" -> "English (US)"
         else -> {
             val locale = Locale.forLanguageTag(tag)
-            val scriptName = if (locale.script != "") " ("+locale.getDisplayScript(Locale.ENGLISH)+")" else ""
-            val countryName = if (locale.country != "") " ("+locale.country+")" else ""
+            val scriptName = if (locale.script != "") " (" + locale.getDisplayScript(Locale.ENGLISH) + ")" else ""
+            val countryName = if (locale.country != "") " (" + locale.country + ")" else ""
             val langName = locale.getDisplayLanguage(Locale.ENGLISH)
             langName + countryName + scriptName
         }

@@ -74,7 +74,7 @@ object AchievementFrameOutlineProvider : ViewOutlineProvider() {
         val p = Path()
         p.moveTo((points[0] * w).toFloat(), (points[1] * h).toFloat())
         for (i in 2 until points.size step 2) {
-            p.lineTo((points[i] * w).toFloat(), (points[i+1] * h).toFloat())
+            p.lineTo((points[i] * w).toFloat(), (points[i + 1] * h).toFloat())
         }
         outline.setConvexPath(p)
     }

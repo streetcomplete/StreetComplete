@@ -176,7 +176,7 @@ class BallPitView @JvmOverloads constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     private suspend fun addBubble(view: View, size: Int, position: Vec2) {
-        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height())/3 )
+        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height()) / 3 )
         val body = createBubbleBody(position, radius)
 
         startInflatingAnimation(view, size, position.y)
@@ -201,7 +201,7 @@ class BallPitView @JvmOverloads constructor(
         val shape = CircleShape()
         shape.radius = radius
         // bubbles behave like balls, not circles
-        val density = 4f/3f * radius
+        val density = 4f / 3f * radius
         bubbleBodyDef.position = position
         return physicsController.createBody(bubbleBodyDef, shape, density)
     }

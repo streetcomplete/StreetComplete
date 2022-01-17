@@ -52,7 +52,7 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
         binding.titleView.setImageResource(questType.icon)
         binding.questTitleText.text = resources.getString(questType.title, *Array(10) { "…" })
         binding.solvedQuestsText.text = ""
-        val scale = (0.4 + min( questCount / 100.0, 1.0)*0.6).toFloat()
+        val scale = (0.4 + min( questCount / 100.0, 1.0) * 0.6).toFloat()
         binding.solvedQuestsContainer.visibility = View.INVISIBLE
         binding.solvedQuestsContainer.scaleX = scale
         binding.solvedQuestsContainer.scaleY = scale

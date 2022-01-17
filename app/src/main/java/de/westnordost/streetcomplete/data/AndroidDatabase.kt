@@ -108,7 +108,7 @@ class AndroidDatabase @Inject constructor(private val dbHelper: SQLiteOpenHelper
                 require(values.size == columnNames.size)
                 for ((i, value) in values.withIndex()) {
                     // Android SQLiteProgram.bind* indices are 1-based
-                    stmt.bind(i+1, value)
+                    stmt.bind(i + 1, value)
                 }
                 val rowId = stmt.executeInsert()
                 result.add(rowId)

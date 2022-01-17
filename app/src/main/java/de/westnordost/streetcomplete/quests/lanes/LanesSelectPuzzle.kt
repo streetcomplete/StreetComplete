@@ -345,7 +345,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
            we need to go faster/slower */
         val ratio = 1f * w / h
         val zoom = max(3, lanesSpace)
-        val delta = ratio * deltaTime/1000f / zoom
+        val delta = ratio * deltaTime / 1000f / zoom
 
         for (car in carsOnLanesLeft) {
             car.position += delta * car.speed
