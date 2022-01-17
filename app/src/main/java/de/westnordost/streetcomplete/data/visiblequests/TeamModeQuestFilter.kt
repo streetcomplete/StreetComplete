@@ -55,7 +55,6 @@ import javax.inject.Singleton
         listeners.forEach { it.onTeamModeChanged(false) }
     }
 
-
     /* ------------------------------------ Listeners ------------------------------------------- */
 
     fun addListener(listener: TeamModeChangeListener) {

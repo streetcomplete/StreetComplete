@@ -32,7 +32,6 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
-
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasTitle {
 

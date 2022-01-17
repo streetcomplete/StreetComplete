@@ -59,4 +59,3 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
         return countryBubbleView
     }
 }
-

@@ -89,7 +89,6 @@ import javax.inject.Singleton
         delete(edit)
     }
 
-
     /* ----------------------- Undoable edits and undoing them -------------------------------- */
 
     /** Undo edit with the given id. If unsynced yet, will delete the edit if it is undoable. If

@@ -66,8 +66,6 @@ class UploadService : CoroutineIntentService(TAG) {
     }
 
     override suspend fun onHandleIntent(intent: Intent?) {
-
-
         try {
             isUploading = true
             progressListener?.onStarted()

@@ -67,7 +67,6 @@ open class LocationAwareMapFragment : MapFragment() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     init {

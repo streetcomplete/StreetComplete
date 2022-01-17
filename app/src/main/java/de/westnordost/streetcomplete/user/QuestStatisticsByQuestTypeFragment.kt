@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.user
 
-
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -77,4 +76,3 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         return clickableContainer
     }
 }
-

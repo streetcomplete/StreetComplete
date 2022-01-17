@@ -87,7 +87,6 @@ import javax.inject.Singleton
     override fun getCountryStatisticsOfCountryWithBiggestSolvedCount() =
         countryStatisticsDao.getCountryWithBiggestSolvedCount()
 
-
     fun addOne(questType: QuestType<*>, position: LatLon) {
         questTypeStatisticsDao.addOne(questType.name)
         getRealCountryCode(position)?.let { countryStatisticsDao.addOne(it) }

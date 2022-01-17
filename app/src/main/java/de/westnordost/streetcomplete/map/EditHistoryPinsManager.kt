@@ -104,7 +104,6 @@ private const val EDIT_TYPE_NOTE = "note"
 private const val EDIT_TYPE_HIDE_OSM_NOTE_QUEST = "hide_osm_note_quest"
 private const val EDIT_TYPE_HIDE_OSM_QUEST = "hide_osm_quest"
 
-
 private fun Edit.toProperties(): Map<String, String> = when(this) {
     is ElementEdit -> mapOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_ELEMENT,

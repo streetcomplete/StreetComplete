@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry

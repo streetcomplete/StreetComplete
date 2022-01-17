@@ -386,7 +386,6 @@ val edits1 = listOf(
     noteEdit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )
 
-
 private fun checkListenerCalledWith(
     listener: NotesWithEditsSource.Listener,
     added: Collection<Note> = emptyList(),

@@ -17,7 +17,6 @@ import java.util.LinkedList
 import java.util.Locale
 import javax.inject.Inject
 
-
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_roadname

@@ -317,7 +317,6 @@ object AchievementsModule {
             R.string.link_graphhopper_description
         ),
 
-
         /* -------------------------------------- Goodies ----------------------------------------*/
         Link(
             "umap",
@@ -460,7 +459,6 @@ object AchievementsModule {
             { lvl -> (lvl + 1)*10 },
             mapOf(
                 2 to links("city_roads"), // put it here because it shows roads
-
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),

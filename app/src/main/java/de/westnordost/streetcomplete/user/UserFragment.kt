@@ -45,7 +45,6 @@ class UserFragment : Fragment(R.layout.fragment_user), HasTitle {
 
     private data class Page(@StringRes val title: Int, @DrawableRes val icon: Int, val creator: () -> Fragment)
 
-
     companion object {
         private val PAGES = listOf(
             Page(R.string.user_profile_title, R.drawable.ic_profile_48dp) {  ProfileFragment() },

@@ -13,7 +13,6 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
     private val pref: NumberPickerPreference
         get() = preference as NumberPickerPreference
 
-
     override fun onBindDialogView(view: View) {
         super.onBindDialogView(view)
         picker = view.findViewById(R.id.numberPicker)

@@ -168,7 +168,6 @@ class OsmNoteQuestControllerTest {
         assertNotNull(ctrl.get(1))
     }
 
-
     @Test fun `get quest not phrased as question returns null`() {
         on(noteSource.get(1)).thenReturn(note(comments = listOf(
             comment(text = "test")

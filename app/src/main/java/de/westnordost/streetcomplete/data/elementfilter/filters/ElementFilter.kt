@@ -12,7 +12,6 @@ sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String
 }
 
-
 class HasKey(val key: String) : ElementFilter {
     override fun toString() = key
     override fun matches(obj: Element) = obj.tags.containsKey(key)
@@ -23,7 +22,6 @@ class NotHasKey(val key: String) : ElementFilter {
     override fun matches(obj: Element) = !obj.tags.containsKey(key)
 }
 
-
 class HasTag(val key: String, val value: String) : ElementFilter {
     override fun toString() = "$key = $value"
     override fun matches(obj: Element) = obj.tags[key] == value
@@ -33,7 +31,6 @@ class NotHasTag(val key: String, val value: String) : ElementFilter {
     override fun toString() = "$key != $value"
     override fun matches(obj: Element) = obj.tags[key] != value
 }
-
 
 class HasKeyLike(val key: String) : ElementFilter {
     private val regex = RegexOrSet.from(key)
@@ -49,7 +46,6 @@ class NotHasKeyLike(val key: String) : ElementFilter {
     override fun matches(obj: Element) = obj.tags.keys.none { regex.matches(it) }
 }
 
-
 class HasTagValueLike(val key: String, val value: String) :  ElementFilter {
     private val regex = RegexOrSet.from(value)
 
@@ -64,7 +60,6 @@ class NotHasTagValueLike(val key: String, val value: String) : ElementFilter {
     override fun matches(obj: Element) = obj.tags[key]?.let { !regex.matches(it) } ?: true
 }
 
-
 class HasTagLike(val key: String, val value: String) : ElementFilter {
     private val keyRegex = RegexOrSet.from(key)
     private val valueRegex = RegexOrSet.from(value)
@@ -74,7 +69,6 @@ class HasTagLike(val key: String, val value: String) : ElementFilter {
     override fun matches(obj: Element) =
         obj.tags.entries.any { keyRegex.matches(it.key) && valueRegex.matches(it.value) }
 }
-
 
 class HasTagLessThan(key: String, value: Float): CompareTagValue(key, value) {
     override fun toString() = "$key < $value"
@@ -101,7 +95,6 @@ abstract class CompareTagValue(val key: String, val value: Float): ElementFilter
     }
 }
 
-
 class HasDateTagLessThan(key: String, dateFilter: DateFilter): CompareDateTagValue(key, dateFilter) {
     override fun toString() = "$key < $dateFilter"
     override fun compareTo(tagValue: LocalDate) = tagValue < dateFilter.date
@@ -127,7 +120,6 @@ abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter):
     }
 }
 
-
 class TagOlderThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dateFilter) {
     override fun toString() = "$key older $dateFilter"
     override fun compareTo(tagValue: LocalDate) = tagValue < dateFilter.date
@@ -146,7 +138,6 @@ abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : Elem
             .any { compareTo(it) }
     }
 }
-
 
 class ElementOlderThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
     override fun toString() = "older $dateFilter"

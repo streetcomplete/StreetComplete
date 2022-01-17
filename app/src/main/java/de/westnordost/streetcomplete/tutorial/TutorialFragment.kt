@@ -81,7 +81,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .alpha(0f)
             .start()
 
-
         // map zooms in and tilts
         val mapTranslate = (-50f).toPx(ctx)
         val mapRotate = 50f
@@ -132,7 +131,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .alpha(1f)
             .translationY(0f)
             .start()
-
 
         delay(1400)
 

@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedName
 
-
 class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_localizedname

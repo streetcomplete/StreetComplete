@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.quests.lanes.LineStyle.SHORT_DASHES
 import kotlin.math.max
 import kotlin.random.Random
 
-
 class LanesSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

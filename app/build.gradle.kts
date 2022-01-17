@@ -73,8 +73,6 @@ android {
     }
 }
 
-
-
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
     val props = Properties()

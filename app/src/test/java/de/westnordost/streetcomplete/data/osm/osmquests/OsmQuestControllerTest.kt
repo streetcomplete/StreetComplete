@@ -132,7 +132,6 @@ class OsmQuestControllerTest {
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
 
-
     @Test fun getAllHiddenNewerThan() {
         val geoms = listOf(
             ElementPointGeometry(p()),

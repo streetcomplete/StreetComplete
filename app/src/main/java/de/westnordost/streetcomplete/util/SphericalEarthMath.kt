@@ -98,7 +98,6 @@ fun LatLon.isRightOf(p0: LatLon, p1: LatLon, p2: LatLon): Boolean {
     }
 }
 
-
 /** Returns the distance from this point to the other point */
 fun LatLon.distanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
     angularDistance(
@@ -264,7 +263,6 @@ fun List<LatLon>.centerLineOfPolyline(globeRadius: Double = EARTH_RADIUS): Pair<
     throw RuntimeException()
 }
 
-
 /**
  * Returns the center point of this polyline
  */
@@ -377,7 +375,6 @@ fun LatLon.isInPolygon(polygon: List<LatLon>): Boolean {
 private fun inside(v: Double, bound0: Double, bound1: Double): Boolean =
     if (bound0 < bound1) v in bound0..bound1 else v in bound1..bound0
 
-
 /**
  * Returns the area of a this multipolygon, assuming the outer shell is defined counterclockwise and
  * any holes are defined clockwise
@@ -452,9 +449,7 @@ fun List<LatLon>.isRingDefinedClockwise(): Boolean {
     return sum > 0
 }
 
-
 /* ------------------------------ Bounding Box extension functions  ----------------------------- */
-
 
 /** Returns the area enclosed by this bbox */
 fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
@@ -512,7 +507,6 @@ private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean
     max.longitude <= other.max.longitude &&
     max.latitude <= other.max.latitude
 
-
 private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
     canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
@@ -564,7 +558,6 @@ fun normalizeLongitude(lon: Double): Double {
     if (lon > 180) lon -= 360 // lon is now -180..180
     return lon
 }
-
 
 /* The following formulas have been adapted from this excellent source:
    http://www.movable-type.co.uk/scripts/latlong.html

@@ -60,4 +60,3 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
         }
     }
 }
-

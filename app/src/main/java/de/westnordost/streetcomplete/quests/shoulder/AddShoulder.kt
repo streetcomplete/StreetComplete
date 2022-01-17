@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
-
 class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
     /* Trunks always, smaller roads only if they are either motorroads, bridges or tunnels or if

@@ -30,7 +30,6 @@ class IconProgressView @JvmOverloads constructor(
         set(value) { binding.iconView.setImageDrawable(value) }
         get() = binding.iconView.drawable
 
-
     private val animatorDurationScale: Float get() =
        Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
 

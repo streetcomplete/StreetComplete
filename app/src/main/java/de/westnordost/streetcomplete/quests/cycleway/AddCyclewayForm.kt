@@ -46,7 +46,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         return result
     }
 
-
     override val contentPadding = false
 
     private var isDisplayingPreviousCycleway: Boolean = false
@@ -302,7 +301,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         saveLastSelection()
     }
-
 
     private fun Cycleway.isSingleTrackOrLane() =
         this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE

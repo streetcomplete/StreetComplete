@@ -57,7 +57,6 @@ class MapDataWithEditsSourceTest {
 
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(listOf()))
 
-
         on(mapDataCtrl.get(any(), anyLong())).thenAnswer { invocation ->
             val elementType = invocation.getArgument<ElementType>(0)!!
             val elementId = invocation.getArgument<Long>(1)
@@ -1039,7 +1038,6 @@ class MapDataWithEditsSourceTest {
     // getMapDataWithGeometry
 
     //endregion
-
 
     //region MapDataController.Listener ::onCleared
 

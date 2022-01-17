@@ -55,4 +55,3 @@ class TeamModeColorCircleView @JvmOverloads constructor(
         val MAX_TEAM_SIZE get() = colors.size
     }
 }
-

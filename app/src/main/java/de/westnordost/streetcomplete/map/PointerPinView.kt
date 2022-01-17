@@ -20,7 +20,6 @@ import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
-
 /** A view for the pointer pin that ought to be displayed at the edge of the screen.
  *  Can be rotated with the pinRotation field. As opposed to normal rotation, it ensures that the
  *  pin icon always stays upright  */

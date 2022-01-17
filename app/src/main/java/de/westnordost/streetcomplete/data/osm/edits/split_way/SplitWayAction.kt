@@ -59,7 +59,6 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): El
         if(updatedWay.isClosed && splits.size < 2)
             throw ConflictException("Must specify at least two split positions for a closed way")
 
-
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
         val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
         /* the splits must be sorted strictly from start to end of way because the algorithm may

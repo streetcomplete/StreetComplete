@@ -131,8 +131,6 @@ class RelationDao @Inject constructor(private val db: Database) {
         ) { it.getLong(ID) }
     }
 
-
-
     private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
         return db.transaction {
             val ids = db.query(NAME_MEMBERS,

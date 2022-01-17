@@ -99,7 +99,6 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
         checkIsFormComplete()
     }
 
-
     @AnyThread
     override fun onMapOrientation(rotation: Float, tilt: Float) {
         streetSideRotater?.onMapOrientation(rotation, tilt)
@@ -268,7 +267,6 @@ private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boole
 
 private fun ParkingSelection.asItem(context: Context, isUpsideDown: Boolean) =
     Item2(this, getDialogIcon(context, isUpsideDown), ResText(titleResId))
-
 
 private fun createParkingOrientationImage(
     context: Context,

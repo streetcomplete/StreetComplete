@@ -135,7 +135,6 @@ class AndroidDatabase @Inject constructor(private val dbHelper: SQLiteOpenHelper
         )
     }
 
-
     override fun delete(table: String, where: String?, args: Array<Any>?): Int {
         val strArgs = args?.primitivesArrayToStringArray()
         return db.delete(table, where, strArgs)
