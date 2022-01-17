@@ -46,7 +46,7 @@ class NotHasKeyLike(val key: String) : ElementFilter {
     override fun matches(obj: Element) = obj.tags.keys.none { regex.matches(it) }
 }
 
-class HasTagValueLike(val key: String, val value: String) :  ElementFilter {
+class HasTagValueLike(val key: String, val value: String) : ElementFilter {
     private val regex = RegexOrSet.from(value)
 
     override fun toString() = "$key ~ $value"

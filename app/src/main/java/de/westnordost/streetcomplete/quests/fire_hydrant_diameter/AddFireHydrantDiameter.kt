@@ -39,7 +39,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
         val hasRef = tags.containsAnyKey("ref")
         return when {
             hasRef -> R.string.quest_fireHydrant_diameter_ref_title
-            else   -> R.string.quest_fireHydrant_diameter_title
+            else -> R.string.quest_fireHydrant_diameter_title
         }
     }
 
@@ -50,7 +50,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
-            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.toOsmValue())
+            is FireHydrantDiameter -> changes.add("fire_hydrant:diameter", answer.toOsmValue())
             is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
         }
     }

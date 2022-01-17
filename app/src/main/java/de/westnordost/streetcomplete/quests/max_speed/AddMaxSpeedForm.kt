@@ -123,11 +123,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun getSpeedType(@IdRes checkedId: Int) = when (checkedId) {
-        R.id.sign          -> SIGN
-        R.id.zone          -> ZONE
+        R.id.sign -> SIGN
+        R.id.zone -> ZONE
         R.id.living_street -> LIVING_STREET
-        R.id.nsl           -> NSL
-        R.id.no_sign       -> NO_SIGN
+        R.id.nsl -> NSL
+        R.id.no_sign -> NO_SIGN
         else -> null
     }
 
@@ -147,11 +147,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private val SpeedType.layoutResId get() = when (this) {
-        SIGN          -> R.layout.quest_maxspeed_sign
-        ZONE          -> R.layout.quest_maxspeed_zone_sign
+        SIGN -> R.layout.quest_maxspeed_sign
+        ZONE -> R.layout.quest_maxspeed_zone_sign
         LIVING_STREET -> R.layout.quest_maxspeed_living_street_sign
-        NSL           -> R.layout.quest_maxspeed_national_speed_limit_sign
-        ADVISORY      -> countryInfo.advisorySpeedLimitSignLayoutResId ?: R.layout.quest_maxspeed_advisory_blue
+        NSL -> R.layout.quest_maxspeed_national_speed_limit_sign
+        ADVISORY -> countryInfo.advisorySpeedLimitSignLayoutResId ?: R.layout.quest_maxspeed_advisory_blue
         else -> null
     }
 
@@ -183,14 +183,14 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun applySpeedLimitFormAnswer() {
         val speed = getSpeedFromInput()!!
         when (speedType) {
-            ADVISORY      -> applyAnswer(AdvisorySpeedSign(speed))
-            ZONE          -> {
+            ADVISORY -> applyAnswer(AdvisorySpeedSign(speed))
+            ZONE -> {
                 val zoneX = speed.toValue()
                 LAST_INPUT_SLOW_ZONE = zoneX
                 applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone$zoneX"))
             }
-            SIGN          -> applyAnswer(MaxSpeedSign(speed))
-            else          -> throw IllegalStateException()
+            SIGN -> applyAnswer(MaxSpeedSign(speed))
+            else -> throw IllegalStateException()
         }
     }
 

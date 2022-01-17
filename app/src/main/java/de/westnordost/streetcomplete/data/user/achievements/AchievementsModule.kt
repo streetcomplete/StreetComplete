@@ -38,13 +38,13 @@ object AchievementsModule {
 
     // list of quest synonyms (this alternate name is mentioned to aid searching for this code)
     private val questAliases = listOf(
-        "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
+        "AddAccessibleForPedestrians" to AddProhibitedForPedestrians::class.simpleName!!,
         "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
-        "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
-        "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
-        "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
-        "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
-        "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
+        "AddWheelChairAccessToilets" to AddWheelchairAccessToilets::class.simpleName!!,
+        "AddSidewalks" to AddSidewalk::class.simpleName!!,
+        "DetailRoadSurface" to AddRoadSurface::class.simpleName!!,
+        "AddTrafficSignalsBlindFeatures" to AddTrafficSignalsVibration::class.simpleName!!,
+        "AddSuspectedOneway" to AddOneway::class.simpleName!!,
     )
 
     private val links = listOf(

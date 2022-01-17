@@ -16,10 +16,10 @@ fun MaxWeightSign.asItem(inflater: LayoutInflater): DisplayItem<MaxWeightSign> =
     Item2(this, DrawableImage(BitmapDrawable(inflater.context.resources, createBitmap(inflater))))
 
 val MaxWeightSign.layoutResourceId get() = when (this) {
-    MaxWeightSign.MAX_WEIGHT             -> R.layout.quest_maxweight_sign
+    MaxWeightSign.MAX_WEIGHT -> R.layout.quest_maxweight_sign
     MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> R.layout.quest_maxweight_mgv_sign
-    MaxWeightSign.MAX_AXLE_LOAD          -> R.layout.quest_maxweight_axleload_sign
-    MaxWeightSign.MAX_TANDEM_AXLE_LOAD   -> R.layout.quest_maxweight_tandem_axleload_sign
+    MaxWeightSign.MAX_AXLE_LOAD -> R.layout.quest_maxweight_axleload_sign
+    MaxWeightSign.MAX_TANDEM_AXLE_LOAD -> R.layout.quest_maxweight_tandem_axleload_sign
 }
 
 private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {

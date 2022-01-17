@@ -33,10 +33,10 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
         val hasName = tags.containsAnyKey("name", "ref")
         val isTram = tags["tram"] == "yes"
         return when {
-            isTram && hasName ->    R.string.quest_busStopBench_tram_name_title
-            isTram ->               R.string.quest_busStopBench_tram_title
-            hasName ->              R.string.quest_busStopBench_name_title
-            else ->                 R.string.quest_busStopBench_title
+            isTram && hasName -> R.string.quest_busStopBench_tram_name_title
+            isTram -> R.string.quest_busStopBench_tram_title
+            hasName -> R.string.quest_busStopBench_name_title
+            else -> R.string.quest_busStopBench_title
         }
     }
 

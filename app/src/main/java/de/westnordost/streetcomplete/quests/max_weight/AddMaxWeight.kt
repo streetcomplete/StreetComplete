@@ -49,8 +49,8 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 }
 
 private val MaxWeightSign.osmKey get() = when (this) {
-    MAX_WEIGHT             -> "maxweight"
+    MAX_WEIGHT -> "maxweight"
     MAX_GROSS_VEHICLE_MASS -> "maxweightrating"
-    MAX_AXLE_LOAD          -> "maxaxleload"
-    MAX_TANDEM_AXLE_LOAD   -> "maxbogieweight"
+    MAX_AXLE_LOAD -> "maxaxleload"
+    MAX_TANDEM_AXLE_LOAD -> "maxbogieweight"
 }

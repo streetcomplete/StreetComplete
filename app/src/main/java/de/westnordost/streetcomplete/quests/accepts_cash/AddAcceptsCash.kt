@@ -62,7 +62,7 @@ class AddAcceptsCash(
 
     override fun getTitle(tags: Map<String, String>) =
         if (hasFeatureName(tags)) R.string.quest_accepts_cash_type_title
-        else                      R.string.quest_accepts_cash_title
+        else R.string.quest_accepts_cash_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["name"] ?: tags["brand"], featureName.value.toString())

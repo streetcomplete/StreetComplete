@@ -108,9 +108,9 @@ class EditHistoryAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            EDIT   -> EditViewHolder(RowEditItemBinding.inflate(inflater))
+            EDIT -> EditViewHolder(RowEditItemBinding.inflate(inflater))
             SYNCED -> SyncedViewHolder(RowEditSyncedBinding.inflate(inflater))
-            else   -> throw IllegalArgumentException("Unknown viewType $viewType")
+            else -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
 

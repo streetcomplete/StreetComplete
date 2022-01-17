@@ -9,14 +9,14 @@ enum class WeightMeasurementUnit {
 }
 
 fun WeightMeasurementUnit.toDisplayString() = when (this) {
-    TON       -> "TONS"
+    TON -> "TONS"
     SHORT_TON -> "TONS"
-    POUND     -> "POUNDS"
+    POUND -> "POUNDS"
 }
 
 fun String.toWeightMeasurementUnit() = when (this) {
-    "ton"       -> TON
+    "ton" -> TON
     "short ton" -> SHORT_TON
-    "pound"     -> POUND
+    "pound" -> POUND
     else -> throw UnsupportedOperationException("not implemented")
 }

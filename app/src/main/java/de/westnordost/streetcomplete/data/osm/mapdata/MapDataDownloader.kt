@@ -52,9 +52,9 @@ class MapDataDownloader @Inject constructor(
 private fun BoundingBox.splitIntoFour(): List<BoundingBox> {
     val center = LatLon((max.latitude + min.latitude) / 2, (max.longitude + min.longitude) / 2)
     return listOf(
-        BoundingBox(min.latitude,    min.longitude,    center.latitude, center.longitude),
-        BoundingBox(min.latitude,    center.longitude, center.latitude, max.longitude),
-        BoundingBox(center.latitude, min.longitude,    max.latitude,    center.longitude),
-        BoundingBox(center.latitude, center.longitude, max.latitude,    max.longitude)
+        BoundingBox(min.latitude, min.longitude, center.latitude, center.longitude),
+        BoundingBox(min.latitude, center.longitude, center.latitude, max.longitude),
+        BoundingBox(center.latitude, min.longitude, max.latitude, center.longitude),
+        BoundingBox(center.latitude, center.longitude, max.latitude, max.longitude)
     )
 }

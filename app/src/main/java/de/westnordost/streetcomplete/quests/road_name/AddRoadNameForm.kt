@@ -115,14 +115,14 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                 val answer = answers[selection]
                 when (answer) {
                     leaveNote -> composeNote()
-                    noName    -> confirmNoStreetName()
-                    else      -> {
+                    noName -> confirmNoStreetName()
+                    else -> {
                         applyAnswer(
                             when (answer) {
-                                linkRoad    -> RoadIsLinkRoad
+                                linkRoad -> RoadIsLinkRoad
                                 serviceRoad -> RoadIsServiceRoad
-                                trackRoad   -> RoadIsTrack
-                                else        -> throw IllegalStateException()
+                                trackRoad -> RoadIsTrack
+                                else -> throw IllegalStateException()
                             }
                         )
                     }

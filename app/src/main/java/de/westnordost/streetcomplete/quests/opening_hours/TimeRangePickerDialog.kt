@@ -87,7 +87,7 @@ class TimeRangePickerDialog(
         }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab)   { setCurrentTab(tab.position) }
+            override fun onTabSelected(tab: TabLayout.Tab) { setCurrentTab(tab.position) }
             override fun onTabUnselected(tab: TabLayout.Tab) { }
             override fun onTabReselected(tab: TabLayout.Tab) { }
         })
@@ -137,7 +137,7 @@ class TimeRangePickerDialog(
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (tabLayout.selectedTabPosition) {
                 START_TIME_TAB -> setCurrentTab(END_TIME_TAB)
-                END_TIME_TAB   -> applyAndDismiss()
+                END_TIME_TAB -> applyAndDismiss()
             }
         }
     }

@@ -145,7 +145,7 @@ import javax.inject.Singleton
         val notesById = noteSource.getAll(noteIdsWithTimestamp.map { it.noteId }).associateBy { it.id }
 
         return noteIdsWithTimestamp.mapNotNull { (noteId, timestamp) ->
-            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp)  }
+            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp) }
         }
     }
 

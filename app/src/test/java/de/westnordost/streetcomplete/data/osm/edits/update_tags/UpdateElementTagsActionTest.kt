@@ -30,7 +30,7 @@ class UpdateElementTagsActionTest {
             StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
         ).createUpdates(
             node(1, p(0.0, 0.0)),
-            node(1,  p(0.1, 0.0)),
+            node(1, p(0.1, 0.0)),
             repos,
             provider
         )

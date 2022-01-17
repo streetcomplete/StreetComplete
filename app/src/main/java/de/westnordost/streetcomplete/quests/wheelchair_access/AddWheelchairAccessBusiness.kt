@@ -36,20 +36,20 @@ class AddWheelchairAccessBusiness(
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "cinema", "planetarium", "casino", // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe", // commercial
+                "car_wash", "car_rental", "fuel", // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary", // health
+                "animal_boarding", "animal_shelter", "animal_breeding", // animals
 
                 // name & wheelchair only
-                "theatre",                             // culture
-                "conference_centre", "arts_centre",    // events
-                "police", "ranger_station",            // civic
-                "ferry_terminal",                      // transport
-                "place_of_worship",                    // religious
-                "hospital"                             // health care
+                "theatre", // culture
+                "conference_centre", "arts_centre", // events
+                "police", "ranger_station", // civic
+                "ferry_terminal", // transport
+                "place_of_worship", // religious
+                "hospital" // health care
             ),
             "tourism" to arrayOf(
                 // common

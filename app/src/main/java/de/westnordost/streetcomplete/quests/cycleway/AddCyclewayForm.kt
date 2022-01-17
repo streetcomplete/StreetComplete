@@ -105,12 +105,12 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         if (!isDefiningBothSides) {
             if (isLeftHandTraffic) binding.puzzleView.showOnlyLeftSide()
-            else                   binding.puzzleView.showOnlyRightSide()
+            else binding.puzzleView.showOnlyRightSide()
         }
 
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
-            else                   R.drawable.ic_cycleway_unknown
+            else R.drawable.ic_cycleway_unknown
 
         binding.puzzleView.setLeftSideImage(ResImage(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         binding.puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
@@ -311,7 +311,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     override fun isFormComplete() = !isDisplayingPreviousCycleway && (
         if (isDefiningBothSides) leftSide != null && rightSide != null
-        else                     leftSide != null || rightSide != null
+        else leftSide != null || rightSide != null
         )
 
     override fun isRejectingClose() =

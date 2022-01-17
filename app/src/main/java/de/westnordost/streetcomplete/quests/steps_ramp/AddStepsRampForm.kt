@@ -13,9 +13,9 @@ import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 class AddStepsRampForm : AImageListQuestAnswerFragment<StepsRamp, StepsRampAnswer>() {
 
     override val items = listOf(
-        Item(NONE,       R.drawable.ramp_none,       R.string.quest_steps_ramp_none),
-        Item(BICYCLE,    R.drawable.ramp_bicycle,    R.string.quest_steps_ramp_bicycle),
-        Item(STROLLER,   R.drawable.ramp_stroller,   R.string.quest_steps_ramp_stroller),
+        Item(NONE, R.drawable.ramp_none, R.string.quest_steps_ramp_none),
+        Item(BICYCLE, R.drawable.ramp_bicycle, R.string.quest_steps_ramp_bicycle),
+        Item(STROLLER, R.drawable.ramp_stroller, R.string.quest_steps_ramp_stroller),
         Item(WHEELCHAIR, R.drawable.ramp_wheelchair, R.string.quest_steps_ramp_wheelchair)
     )
 

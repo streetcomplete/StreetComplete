@@ -13,7 +13,7 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
             other.isOpenEnded && start >= other.start ||
             loops && other.loops ||
             if (loops || other.loops) other.end > start || other.start < end
-            else                      other.end > start && other.start < end
+            else other.end > start && other.start < end
 
     val loops get() = end < start
 

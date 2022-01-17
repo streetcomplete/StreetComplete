@@ -15,15 +15,15 @@ import kotlin.math.*
 fun Vector3d.translate(θ: Double, δ: Double): Vector3d {
     val northPole = Vector3d(0.0, 0.0, 1.0)
 
-    val de = (northPole x this).normalize()   // east direction vector @ n1 (Gade's k_e_E)
-    val dn = this x de                        // north direction vector @ n1 (Gade's (k_n_E)
+    val de = (northPole x this).normalize() // east direction vector @ n1 (Gade's k_e_E)
+    val dn = this x de // north direction vector @ n1 (Gade's (k_n_E)
 
-    val d = dn * cos(θ) + de * sin(θ)         // direction vector @ n1 (≡ C×n1; C = great circle)
+    val d = dn * cos(θ) + de * sin(θ) // direction vector @ n1 (≡ C×n1; C = great circle)
 
-    val x = this * cos(δ)                     // component of n2 parallel to n1
-    val y = d * sin(δ)                        // component of n2 perpendicular to n1
+    val x = this * cos(δ) // component of n2 parallel to n1
+    val y = d * sin(δ) // component of n2 perpendicular to n1
 
-    val n2 = x + y                            // Gade's n_EB_E
+    val n2 = x + y // Gade's n_EB_E
 
     return n2.normalize()
 }
@@ -36,7 +36,7 @@ fun Vector3d.initialBearingTo(o: Vector3d): Double {
     val northPole = Vector3d(0.0, 0.0, 1.0)
 
     val c1 = this x o // great circle through p1 & p2
-    val c2 = this x northPole  // great circle through p1 & north pole
+    val c2 = this x northPole // great circle through p1 & north pole
 
     return c1.angleTo(c2, this) // bearing is (signed) angle between c1 & c2
 }

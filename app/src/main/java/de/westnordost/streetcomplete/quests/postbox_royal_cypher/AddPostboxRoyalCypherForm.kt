@@ -10,13 +10,13 @@ import de.westnordost.streetcomplete.view.image_select.Item
 class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
     override val items = listOf(
-        Item(PostboxRoyalCypher.ELIZABETH_II,   R.drawable.ic_postbox_royal_cypher_eiir,           R.string.quest_postboxRoyalCypher_type_eiir),
-        Item(PostboxRoyalCypher.GEORGE_V,       R.drawable.ic_postbox_royal_cypher_gr,             R.string.quest_postboxRoyalCypher_type_gr),
-        Item(PostboxRoyalCypher.GEORGE_VI,      R.drawable.ic_postbox_royal_cypher_gvir,           R.string.quest_postboxRoyalCypher_type_gvir),
-        Item(PostboxRoyalCypher.VICTORIA,       R.drawable.ic_postbox_royal_cypher_vr,             R.string.quest_postboxRoyalCypher_type_vr),
-        Item(PostboxRoyalCypher.EDWARD_VII,     R.drawable.ic_postbox_royal_cypher_eviir,          R.string.quest_postboxRoyalCypher_type_eviir),
+        Item(PostboxRoyalCypher.ELIZABETH_II, R.drawable.ic_postbox_royal_cypher_eiir, R.string.quest_postboxRoyalCypher_type_eiir),
+        Item(PostboxRoyalCypher.GEORGE_V, R.drawable.ic_postbox_royal_cypher_gr, R.string.quest_postboxRoyalCypher_type_gr),
+        Item(PostboxRoyalCypher.GEORGE_VI, R.drawable.ic_postbox_royal_cypher_gvir, R.string.quest_postboxRoyalCypher_type_gvir),
+        Item(PostboxRoyalCypher.VICTORIA, R.drawable.ic_postbox_royal_cypher_vr, R.string.quest_postboxRoyalCypher_type_vr),
+        Item(PostboxRoyalCypher.EDWARD_VII, R.drawable.ic_postbox_royal_cypher_eviir, R.string.quest_postboxRoyalCypher_type_eviir),
         Item(PostboxRoyalCypher.SCOTTISH_CROWN, R.drawable.ic_postbox_royal_cypher_scottish_crown, R.string.quest_postboxRoyalCypher_type_scottish_crown),
-        Item(PostboxRoyalCypher.EDWARD_VIII,    R.drawable.ic_postbox_royal_cypher_eviiir,         R.string.quest_postboxRoyalCypher_type_eviiir),
+        Item(PostboxRoyalCypher.EDWARD_VIII, R.drawable.ic_postbox_royal_cypher_eviiir, R.string.quest_postboxRoyalCypher_type_eviiir),
     )
 
     override val otherAnswers = listOf(

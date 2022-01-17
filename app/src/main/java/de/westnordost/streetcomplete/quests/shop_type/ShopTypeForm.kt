@@ -43,9 +43,9 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
 
     override fun onClickOk() {
         when (selectedRadioButtonId) {
-            R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
+            R.id.vacantRadioButton -> applyAnswer(IsShopVacant)
             R.id.leaveNoteRadioButton -> composeNote()
-            R.id.replaceRadioButton   -> {
+            R.id.replaceRadioButton -> {
                 val feature = getSelectedFeature()
                 if (feature == null) {
                     binding.presetsEditText.error = context?.resources?.getText(R.string.quest_shop_gone_replaced_answer_error2)
@@ -57,10 +57,10 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
     }
 
     override fun isFormComplete() = when (selectedRadioButtonId) {
-        R.id.vacantRadioButton    -> true
+        R.id.vacantRadioButton -> true
         R.id.leaveNoteRadioButton -> true
-        R.id.replaceRadioButton   -> shopTypeText.isNotEmpty()
-        else                      -> false
+        R.id.replaceRadioButton -> shopTypeText.isNotEmpty()
+        else -> false
     }
 
     private fun selectRadioButton(radioButton: View) {

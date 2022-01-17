@@ -16,7 +16,7 @@ fun javaLanguageTagToAndroidResCodes(languageTag: String): List<String> {
     // scripts not supported by Android resource system
     if (locale.script.isNotEmpty()) return listOf()
 
-    if (languageTag == "nb")    return listOf("no", "nb")
+    if (languageTag == "nb") return listOf("no", "nb")
     if (languageTag == "zh-CN") return listOf("zh")
     val withCountry = Regex("([a-z]{2,3})-([A-Z]{2})").matchEntire(languageTag)
     if (withCountry != null) {

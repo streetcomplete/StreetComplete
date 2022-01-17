@@ -172,9 +172,9 @@ private fun RelationMember.toOsmRelationMember() = OsmRelationMember(
 )
 
 private fun ElementType.toOsmElementType(): OsmApiElement.Type = when (this) {
-    ElementType.NODE        -> OsmApiElement.Type.NODE
-    ElementType.WAY         -> OsmApiElement.Type.WAY
-    ElementType.RELATION    -> OsmApiElement.Type.RELATION
+    ElementType.NODE -> OsmApiElement.Type.NODE
+    ElementType.WAY -> OsmApiElement.Type.WAY
+    ElementType.RELATION -> OsmApiElement.Type.RELATION
 }
 
 private fun BoundingBox.toOsmApiBoundingBox() =
@@ -200,8 +200,8 @@ private fun OsmApiRelationMember.toRelationMember() =
     RelationMember(type.toElementType(), ref, role)
 
 private fun OsmApiElement.Type.toElementType(): ElementType = when (this) {
-    OsmApiElement.Type.NODE     -> ElementType.NODE
-    OsmApiElement.Type.WAY      -> ElementType.WAY
+    OsmApiElement.Type.NODE -> ElementType.NODE
+    OsmApiElement.Type.WAY -> ElementType.WAY
     OsmApiElement.Type.RELATION -> ElementType.RELATION
 }
 

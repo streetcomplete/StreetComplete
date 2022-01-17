@@ -286,12 +286,12 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val blockNumber = blockNumberInput?.nonEmptyInput
 
         return when {
-            houseName != null && houseNumber != null   -> HouseNameAndHouseNumber(houseName, houseNumber)
-            houseName != null                          -> HouseName(houseName)
-            conscriptionNumber != null                 -> ConscriptionNumber(conscriptionNumber, streetNumber) // streetNumber is optional
+            houseName != null && houseNumber != null -> HouseNameAndHouseNumber(houseName, houseNumber)
+            houseName != null -> HouseName(houseName)
+            conscriptionNumber != null -> ConscriptionNumber(conscriptionNumber, streetNumber) // streetNumber is optional
             blockNumber != null && houseNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
-            houseNumber != null                        -> HouseNumber(houseNumber)
-            else                                       -> null
+            houseNumber != null -> HouseNumber(houseNumber)
+            else -> null
         }
     }
 
@@ -323,7 +323,7 @@ private fun String.addToHouseNumber(add: Int): String? {
     val parsed = parseHouseNumber(this) ?: return null
     when {
         add == 0 -> return this
-        add > 0  -> {
+        add > 0 -> {
             val max = when (val it = parsed.list.maxOrNull()) {
                 is HouseNumbersPartsRange -> maxOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single
@@ -331,7 +331,7 @@ private fun String.addToHouseNumber(add: Int): String? {
             }
             return (max.number + add).toString()
         }
-        add < 0  -> {
+        add < 0 -> {
             val min = when (val it = parsed.list.minOrNull()) {
                 is HouseNumbersPartsRange -> minOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single

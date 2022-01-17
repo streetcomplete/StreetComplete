@@ -73,7 +73,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String) :
 
 class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelog) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder  =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(RowChangelogBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     inner class ViewHolder(val binding: RowChangelogBinding) : ListAdapter.ViewHolder<Release>(binding) {

@@ -107,12 +107,12 @@ class CircularFlagView @JvmOverloads constructor(
         val scale = width.toFloat() / min(w, h)
         val hOffset = -w * scale + width
         return when (align) {
-            FlagAlignment.LEFT ->         Rect(0, 0, hOffset.toInt(), 0)
-            FlagAlignment.CENTER_LEFT ->  Rect((1f * hOffset / 3f).toInt(), 0, (2f * hOffset / 3f).toInt(), 0)
-            FlagAlignment.CENTER ->       Rect((hOffset / 2f).toInt(), 0, (hOffset / 2f).toInt(), 0)
+            FlagAlignment.LEFT -> Rect(0, 0, hOffset.toInt(), 0)
+            FlagAlignment.CENTER_LEFT -> Rect((1f * hOffset / 3f).toInt(), 0, (2f * hOffset / 3f).toInt(), 0)
+            FlagAlignment.CENTER -> Rect((hOffset / 2f).toInt(), 0, (hOffset / 2f).toInt(), 0)
             FlagAlignment.CENTER_RIGHT -> Rect((2f * hOffset / 3f).toInt(), 0, (1f * hOffset / 3f).toInt(), 0)
-            FlagAlignment.RIGHT ->        Rect(hOffset.toInt(), 0, 0, 0)
-            FlagAlignment.STRETCH ->      Rect(0, 0, 0, 0)
+            FlagAlignment.RIGHT -> Rect(hOffset.toInt(), 0, 0, 0)
+            FlagAlignment.STRETCH -> Rect(0, 0, 0, 0)
         }
     }
 

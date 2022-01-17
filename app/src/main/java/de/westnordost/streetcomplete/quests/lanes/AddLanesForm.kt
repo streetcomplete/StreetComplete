@@ -232,7 +232,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private fun setLanesCount(lanes: Int, isRightSide: Boolean) {
         if (isRightSide) rightSide = lanes
-        else             leftSide = lanes
+        else leftSide = lanes
         updatePuzzleView()
     }
 

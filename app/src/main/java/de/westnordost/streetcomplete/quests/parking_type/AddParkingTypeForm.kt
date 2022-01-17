@@ -8,10 +8,10 @@ import de.westnordost.streetcomplete.view.image_select.Item
 class AddParkingTypeForm : AImageListQuestAnswerFragment<ParkingType, ParkingType>() {
 
     override val items = listOf(
-        Item(SURFACE,      R.drawable.parking_type_surface,     R.string.quest_parkingType_surface),
-        Item(STREET_SIDE,  R.drawable.parking_type_street_side, R.string.quest_parkingType_street_side),
-        Item(LANE,         R.drawable.parking_type_lane,        R.string.quest_parkingType_lane),
-        Item(UNDERGROUND,  R.drawable.parking_type_underground, R.string.quest_parkingType_underground),
+        Item(SURFACE, R.drawable.parking_type_surface, R.string.quest_parkingType_surface),
+        Item(STREET_SIDE, R.drawable.parking_type_street_side, R.string.quest_parkingType_street_side),
+        Item(LANE, R.drawable.parking_type_lane, R.string.quest_parkingType_lane),
+        Item(UNDERGROUND, R.drawable.parking_type_underground, R.string.quest_parkingType_underground),
         Item(MULTI_STOREY, R.drawable.parking_type_multistorey, R.string.quest_parkingType_multiStorage)
     )
 

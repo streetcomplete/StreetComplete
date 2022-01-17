@@ -35,10 +35,10 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
         val hasName = tags.containsAnyKey("name", "ref")
         val isTram = tags["tram"] == "yes"
         return when {
-            isTram && hasName ->    R.string.quest_busStopShelter_tram_name_title
-            isTram ->               R.string.quest_busStopShelter_tram_title
-            hasName ->              R.string.quest_busStopShelter_name_title
-            else ->                 R.string.quest_busStopShelter_title
+            isTram && hasName -> R.string.quest_busStopShelter_tram_name_title
+            isTram -> R.string.quest_busStopShelter_tram_title
+            hasName -> R.string.quest_busStopShelter_name_title
+            else -> R.string.quest_busStopShelter_title
         }
     }
 

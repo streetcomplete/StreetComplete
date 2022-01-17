@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType
 import org.junit.Test
 
-class AddRecyclingTypeTest  {
+class AddRecyclingTypeTest {
 
     private val questType = AddRecyclingType()
 

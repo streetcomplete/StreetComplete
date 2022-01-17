@@ -30,17 +30,17 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
 
         return if (hasName) {
             when (type) {
-                "bus_station"     -> R.string.quest_wheelchairAccess_bus_station_name_title
-                "station"         -> R.string.quest_wheelchairAccess_railway_station_name_title
+                "bus_station" -> R.string.quest_wheelchairAccess_bus_station_name_title
+                "station" -> R.string.quest_wheelchairAccess_railway_station_name_title
                 "subway_entrance" -> R.string.quest_wheelchairAccess_subway_entrance_name_title
-                else              -> R.string.quest_wheelchairAccess_location_name_title
+                else -> R.string.quest_wheelchairAccess_location_name_title
             }
         } else {
             when (type) {
-                "bus_station"     -> R.string.quest_wheelchairAccess_bus_station_title
-                "station"         -> R.string.quest_wheelchairAccess_railway_station_title
+                "bus_station" -> R.string.quest_wheelchairAccess_bus_station_title
+                "station" -> R.string.quest_wheelchairAccess_railway_station_title
                 "subway_entrance" -> R.string.quest_wheelchairAccess_subway_entrance_title
-                else              -> R.string.quest_wheelchairAccess_location_title
+                else -> R.string.quest_wheelchairAccess_location_title
             }
         }
     }

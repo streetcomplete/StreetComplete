@@ -71,8 +71,8 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
         val z = a.z
 
         val r = arrayOf( // rotation matrix for rotation about supplied axis
-            arrayOf(t * x * x + c,   t * x * y - s * z, t * x * z + s * y),
-            arrayOf(t * x * y + s * z, t * y * y + c,   t * y * z - s * x),
+            arrayOf(t * x * x + c, t * x * y - s * z, t * x * z + s * y),
+            arrayOf(t * x * y + s * z, t * y * y + c, t * y * z - s * x),
             arrayOf(t * x * z - s * y, t * y * z + s * x, t * z * z + c),
         )
 

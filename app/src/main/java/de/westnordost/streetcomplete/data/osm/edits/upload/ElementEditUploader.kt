@@ -31,8 +31,8 @@ class ElementEditUploader @Inject constructor(
     }
 
     private fun ElementEdit.fetchElement() = when (elementType) {
-        ElementType.NODE     -> mapDataApi.getNode(elementId)
-        ElementType.WAY      -> mapDataApi.getWay(elementId)
+        ElementType.NODE -> mapDataApi.getNode(elementId)
+        ElementType.WAY -> mapDataApi.getWay(elementId)
         ElementType.RELATION -> mapDataApi.getRelation(elementId)
     }
 }

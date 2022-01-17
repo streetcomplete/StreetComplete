@@ -46,12 +46,12 @@ class AddOpeningHours(
                     "amenity" to arrayOf(
                         // common
                         "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                        "cinema", "planetarium", "casino",                                                                     // amenities
-                        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                        "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                        "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                        "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                        "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                        "cinema", "planetarium", "casino", // amenities
+                        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                        "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe", // commercial
+                        "car_wash", "car_rental", "fuel", // car stuff
+                        "dentist", "doctors", "clinic", "pharmacy", "veterinary", // health
+                        "animal_boarding", "animal_shelter", "animal_breeding", // animals
 
                         // name & opening hours
                         "boat_rental"
@@ -115,15 +115,15 @@ class AddOpeningHours(
         val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
         return if (hasValidOpeningHours) {
             when {
-                !hasProperName  -> R.string.quest_openingHours_resurvey_no_name_title
+                !hasProperName -> R.string.quest_openingHours_resurvey_no_name_title
                 !hasFeatureName -> R.string.quest_openingHours_resurvey_name_title
-                else            -> R.string.quest_openingHours_resurvey_name_type_title
+                else -> R.string.quest_openingHours_resurvey_name_type_title
             }
         } else {
             when {
-                !hasProperName  -> R.string.quest_openingHours_no_name_title
+                !hasProperName -> R.string.quest_openingHours_no_name_title
                 !hasFeatureName -> R.string.quest_openingHours_name_title
-                else            -> R.string.quest_openingHours_name_type_title
+                else -> R.string.quest_openingHours_name_type_title
             }
         }
     }
@@ -133,9 +133,9 @@ class AddOpeningHours(
         val hasProperName = name != null
         val hasFeatureName = hasFeatureName(tags)
         return when {
-            !hasProperName  -> arrayOf(featureName.value.toString())
+            !hasProperName -> arrayOf(featureName.value.toString())
             !hasFeatureName -> arrayOf(name!!)
-            else            -> arrayOf(name!!, featureName.value.toString())
+            else -> arrayOf(name!!, featureName.value.toString())
         }
     }
 
@@ -166,7 +166,7 @@ class AddOpeningHours(
                 changes.updateWithCheckDate("opening_hours", answer.hours.toString())
                 changes.deleteIfPreviously("opening_hours:signed", "no")
             }
-            is AlwaysOpen          -> {
+            is AlwaysOpen -> {
                 changes.updateWithCheckDate("opening_hours", "24/7")
                 changes.deleteIfPreviously("opening_hours:signed", "no")
             }
@@ -175,7 +175,7 @@ class AddOpeningHours(
                 changes.updateWithCheckDate("opening_hours", "\"$text\"")
                 changes.deleteIfPreviously("opening_hours:signed", "no")
             }
-            is NoOpeningHoursSign  -> {
+            is NoOpeningHoursSign -> {
                 changes.addOrModify("opening_hours:signed", "no")
                 // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
             }

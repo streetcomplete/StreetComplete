@@ -17,7 +17,7 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : CircularMaskFrameLayout(context, attrs, defStyleAttr)  {
+) : CircularMaskFrameLayout(context, attrs, defStyleAttr) {
 
     private val binding = ViewIconsDownloadProgressBinding.inflate(LayoutInflater.from(context), this)
 

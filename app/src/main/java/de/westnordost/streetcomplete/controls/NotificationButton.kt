@@ -12,7 +12,7 @@ class NotificationButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr)  {
+) : RelativeLayout(context, attrs, defStyleAttr) {
 
     private val binding = ViewNotificationButtonBinding.inflate(LayoutInflater.from(context), this)
 

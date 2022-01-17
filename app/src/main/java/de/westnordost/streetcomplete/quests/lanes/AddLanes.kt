@@ -45,8 +45,8 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         // (if there are no more than one lane, there are no markings to separate them)
         when {
             laneCount == 1 -> changes.deleteIfExists("lane_markings")
-            isMarked ->       changes.modifyIfExists("lane_markings", "yes")
-            else ->           changes.addOrModify("lane_markings", "no")
+            isMarked -> changes.modifyIfExists("lane_markings", "yes")
+            else -> changes.addOrModify("lane_markings", "no")
         }
 
         val hasCenterLeftTurnLane = answer is MarkedLanesSides && answer.centerLeftTurnLane

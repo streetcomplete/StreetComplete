@@ -85,7 +85,7 @@ class OsmNoteQuestControllerTest {
         )
     }
 
-    @Test  fun unhideAll() {
+    @Test fun unhideAll() {
         val hiddenNoteIds = listOf<Long>(1, 2, 3)
         val hiddenNotes = listOf(
             note(1), note(2), note(3)

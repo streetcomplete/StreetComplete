@@ -71,12 +71,12 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         return if (hasValidCollectionTimes) {
             when {
                 hasName -> R.string.quest_postboxCollectionTimes_resurvey_name_title
-                else    -> R.string.quest_postboxCollectionTimes_resurvey_title
+                else -> R.string.quest_postboxCollectionTimes_resurvey_title
             }
         } else {
             when {
                 hasName -> R.string.quest_postboxCollectionTimes_name_title
-                else    -> R.string.quest_postboxCollectionTimes_title
+                else -> R.string.quest_postboxCollectionTimes_title
             }
         }
     }

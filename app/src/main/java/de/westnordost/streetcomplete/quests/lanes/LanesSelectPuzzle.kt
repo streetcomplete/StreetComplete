@@ -146,17 +146,17 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     private val leftLanesStart: Float get() = SHOULDER_WIDTH
 
     private val leftLanesEnd: Float get() = leftLanesStart + when {
-        bothSidesAreDefined    -> laneCountLeft
+        bothSidesAreDefined -> laneCountLeft
         isShowingOnlyRightSide -> 0
-        noSidesAreDefined      -> 1
-        else                   -> max(laneCountLeft, laneCountRight)
+        noSidesAreDefined -> 1
+        else -> max(laneCountLeft, laneCountRight)
     }
 
     private val lanesSpace: Int get() = laneCountCenter + when {
-        bothSidesAreDefined    -> laneCountLeft + laneCountRight
+        bothSidesAreDefined -> laneCountLeft + laneCountRight
         isShowingOnlyRightSide -> max(1, laneCountRight)
-        noSidesAreDefined      -> 2
-        else                   -> 2 * max(laneCountLeft, laneCountRight)
+        noSidesAreDefined -> 2
+        else -> 2 * max(laneCountLeft, laneCountRight)
     }
 
     private val rightLanesStart: Float get() = leftLanesEnd + laneCountCenter

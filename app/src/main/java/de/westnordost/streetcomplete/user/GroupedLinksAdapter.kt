@@ -45,7 +45,7 @@ class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: Stri
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = groupedLinks[position]) {
             is CategoryItem -> (holder as CategoryViewHolder).onBind(item.category)
-            is LinkItem ->  (holder as LinkViewHolder).onBind(item.link)
+            is LinkItem -> (holder as LinkViewHolder).onBind(item.link)
         }
     }
 

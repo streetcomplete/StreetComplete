@@ -164,7 +164,7 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
         previousCharacterCount = characterCount
         if (nextIsAndAdvance(bracket)) {
             try {
-                if (bracket == '(')      expr.addOpenBracket()
+                if (bracket == '(') expr.addOpenBracket()
                 else if (bracket == ')') expr.addCloseBracket()
             } catch (e: IllegalStateException) {
                 throw ParseException(e.message, cursorPos)
@@ -229,10 +229,10 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         val value = parseQuotableWord()
 
         when (operator) {
-            EQUALS       -> return HasTag(key, value)
-            NOT_EQUALS   -> return NotHasTag(key, value)
-            LIKE         -> return HasTagValueLike(key, value)
-            NOT_LIKE     -> return NotHasTagValueLike(key, value)
+            EQUALS -> return HasTag(key, value)
+            NOT_EQUALS -> return NotHasTag(key, value)
+            LIKE -> return HasTagValueLike(key, value)
+            NOT_LIKE -> return NotHasTagValueLike(key, value)
         }
     }
 
@@ -241,18 +241,18 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         if (nextMatches(NUMBER_WORD_REGEX) != null) {
             val value = parseNumber()
             when (operator) {
-                GREATER_THAN          -> return HasTagGreaterThan(key, value)
+                GREATER_THAN -> return HasTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasTagGreaterOrEqualThan(key, value)
-                LESS_THAN             -> return HasTagLessThan(key, value)
-                LESS_OR_EQUAL_THAN    -> return HasTagLessOrEqualThan(key, value)
+                LESS_THAN -> return HasTagLessThan(key, value)
+                LESS_OR_EQUAL_THAN -> return HasTagLessOrEqualThan(key, value)
             }
         } else {
             val value = parseDate()
             when (operator) {
-                GREATER_THAN          -> return HasDateTagGreaterThan(key, value)
+                GREATER_THAN -> return HasDateTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasDateTagGreaterOrEqualThan(key, value)
-                LESS_THAN             -> return HasDateTagLessThan(key, value)
-                LESS_OR_EQUAL_THAN    -> return HasDateTagLessOrEqualThan(key, value)
+                LESS_THAN -> return HasDateTagLessThan(key, value)
+                LESS_OR_EQUAL_THAN -> return HasDateTagLessOrEqualThan(key, value)
             }
         }
         throw ParseException("must either be a number or a (relative) date", cursorPos)

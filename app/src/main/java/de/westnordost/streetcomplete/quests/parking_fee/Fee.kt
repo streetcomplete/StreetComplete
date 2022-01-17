@@ -13,7 +13,7 @@ data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : Fee()
 
 fun Fee.applyTo(changes: StringMapChangesBuilder) {
     when (this) {
-        is HasFee   -> {
+        is HasFee -> {
             changes.updateWithCheckDate("fee", "yes")
             changes.deleteIfExists("fee:conditional")
         }

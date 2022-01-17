@@ -55,8 +55,8 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
         return when {
             hasName -> R.string.quest_way_lit_named_title
-            isRoad  -> R.string.quest_way_lit_road_title
-            else    -> R.string.quest_way_lit_title
+            isRoad -> R.string.quest_way_lit_road_title
+            else -> R.string.quest_way_lit_title
         }
     }
 

@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val wikiLink = "Key:addr"
@@ -27,7 +27,7 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
         "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
         "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
         "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
-        "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
+        "FR" // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
 
     override val questTypeAchievements = listOf(POSTMAN)
@@ -129,8 +129,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
     override fun applyAnswerTo(answer: HousenumberAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
             is NoHouseNumber -> changes.add("nohousenumber", "yes")
-            is HouseNumber   -> changes.add("addr:housenumber", answer.number)
-            is HouseName     -> changes.add("addr:housename", answer.name)
+            is HouseNumber -> changes.add("addr:housenumber", answer.number)
+            is HouseName -> changes.add("addr:housename", answer.name)
             is ConscriptionNumber -> {
                 changes.add("addr:conscriptionnumber", answer.number)
                 if (answer.streetNumber != null) {

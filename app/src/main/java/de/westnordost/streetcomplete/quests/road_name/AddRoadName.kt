@@ -44,7 +44,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
     override fun applyAnswerTo(answer: RoadNameAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
-            is NoRoadName        -> changes.add("noname", "yes")
+            is NoRoadName -> changes.add("noname", "yes")
             is RoadIsServiceRoad -> {
                 // The understanding of what is a service road is much broader in common language
                 // than what the highway=service tagging covers. For example, certain traffic-calmed
@@ -56,8 +56,8 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
                     changes.modify("highway", "service")
                 }
             }
-            is RoadIsTrack       -> changes.modify("highway", "track")
-            is RoadIsLinkRoad    -> {
+            is RoadIsTrack -> changes.modify("highway", "track")
+            is RoadIsLinkRoad -> {
                 val prevValue = changes.getPreviousValue("highway")
                 if (prevValue?.matches("primary|secondary|tertiary".toRegex()) == true) {
                     changes.modify("highway", prevValue + "_link")

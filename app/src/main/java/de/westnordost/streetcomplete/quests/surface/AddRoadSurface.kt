@@ -36,10 +36,10 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
         val hasName = tags.containsKey("name")
         val isSquare = tags["area"] == "yes"
         return when {
-            hasName && isSquare ->  R.string.quest_streetSurface_square_name_title
-            hasName ->              R.string.quest_streetSurface_name_title
-            isSquare ->             R.string.quest_streetSurface_square_title
-            else ->                 R.string.quest_streetSurface_title
+            hasName && isSquare -> R.string.quest_streetSurface_square_name_title
+            hasName -> R.string.quest_streetSurface_name_title
+            isSquare -> R.string.quest_streetSurface_square_title
+            else -> R.string.quest_streetSurface_title
         }
     }
 

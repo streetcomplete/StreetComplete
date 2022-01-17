@@ -50,10 +50,10 @@ class RegularOpeningHoursAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            MONTHS   -> MonthsViewHolder(QuestTimesMonthRowBinding.inflate(inflater, parent, false))
+            MONTHS -> MonthsViewHolder(QuestTimesMonthRowBinding.inflate(inflater, parent, false))
             WEEKDAYS -> WeekdayViewHolder(QuestTimesWeekdayRowBinding.inflate(inflater, parent, false))
-            OFFDAYS  -> OffDaysViewHolder(QuestTimesOffdayRowBinding.inflate(inflater, parent, false))
-            else     -> throw IllegalArgumentException("Unknown viewType $viewType")
+            OFFDAYS -> OffDaysViewHolder(QuestTimesOffdayRowBinding.inflate(inflater, parent, false))
+            else -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
 
@@ -94,7 +94,7 @@ class RegularOpeningHoursAdapter(
         notifyItemRemoved(position)
 
         val rowHere = if (position < rows.size) rows[position] else null
-        val rowAbove =  if (position > 0) rows[position - 1] else null
+        val rowAbove = if (position > 0) rows[position - 1] else null
 
         // this weekday row must be updated because it might be the first one with the same weekdays
         // and thus it is the one that should show the weekdays now

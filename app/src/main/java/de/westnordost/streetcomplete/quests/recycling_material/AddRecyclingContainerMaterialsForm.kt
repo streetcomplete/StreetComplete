@@ -26,25 +26,25 @@ class AddRecyclingContainerMaterialsForm :
         } else {
             Item(listOf(GLASS_BOTTLES), R.drawable.ic_recycling_glass_bottles, R.string.quest_recycling_type_glass_bottles)
         },
-        Item(listOf(PAPER),         R.drawable.ic_recycling_paper,         R.string.quest_recycling_type_paper),
-        Item(listOf(PLASTIC),       R.drawable.ic_recycling_plastic,       R.string.quest_recycling_type_plastic_generic),
-        Item(listOf(CANS),          R.drawable.ic_recycling_cans,          R.string.quest_recycling_type_cans),
-        Item(listOf(SCRAP_METAL),   R.drawable.ic_recycling_scrap_metal,   R.string.quest_recycling_type_scrap_metal),
-        Item(listOf(CLOTHES),       R.drawable.ic_recycling_clothes,       R.string.quest_recycling_type_clothes),
-        Item(listOf(SHOES),         R.drawable.ic_recycling_shoes,         R.string.quest_recycling_type_shoes),
+        Item(listOf(PAPER), R.drawable.ic_recycling_paper, R.string.quest_recycling_type_paper),
+        Item(listOf(PLASTIC), R.drawable.ic_recycling_plastic, R.string.quest_recycling_type_plastic_generic),
+        Item(listOf(CANS), R.drawable.ic_recycling_cans, R.string.quest_recycling_type_cans),
+        Item(listOf(SCRAP_METAL), R.drawable.ic_recycling_scrap_metal, R.string.quest_recycling_type_scrap_metal),
+        Item(listOf(CLOTHES), R.drawable.ic_recycling_clothes, R.string.quest_recycling_type_clothes),
+        Item(listOf(SHOES), R.drawable.ic_recycling_shoes, R.string.quest_recycling_type_shoes),
         Item(listOf(SMALL_ELECTRICAL_APPLIANCES), R.drawable.ic_recycling_small_electric_appliances, R.string.quest_recycling_type_electric_appliances),
-        Item(listOf(BATTERIES),     R.drawable.ic_recycling_batteries,     R.string.quest_recycling_type_batteries),
-        Item(listOf(GREEN_WASTE),   R.drawable.ic_recycling_garden_waste,  R.string.quest_recycling_type_green_waste),
-        Item(listOf(COOKING_OIL),   R.drawable.ic_recycling_cooking_oil,   R.string.quest_recycling_type_cooking_oil),
-        Item(listOf(ENGINE_OIL),    R.drawable.ic_recycling_engine_oil,    R.string.quest_recycling_type_engine_oil)
+        Item(listOf(BATTERIES), R.drawable.ic_recycling_batteries, R.string.quest_recycling_type_batteries),
+        Item(listOf(GREEN_WASTE), R.drawable.ic_recycling_garden_waste, R.string.quest_recycling_type_green_waste),
+        Item(listOf(COOKING_OIL), R.drawable.ic_recycling_cooking_oil, R.string.quest_recycling_type_cooking_oil),
+        Item(listOf(ENGINE_OIL), R.drawable.ic_recycling_engine_oil, R.string.quest_recycling_type_engine_oil)
     )
 
     private val plasticItems = listOf(
-        Item(listOf(PLASTIC),           R.drawable.ic_recycling_plastic,           R.string.quest_recycling_type_plastic),
+        Item(listOf(PLASTIC), R.drawable.ic_recycling_plastic, R.string.quest_recycling_type_plastic),
         Item(listOf(PLASTIC_PACKAGING), R.drawable.ic_recycling_plastic_packaging, R.string.quest_recycling_type_plastic_packaging),
         Item(listOf(PLASTIC_BOTTLES, BEVERAGE_CARTONS), R.drawable.ic_recycling_plastic_bottles_and_cartons, R.string.quest_recycling_type_plastic_bottles_and_cartons),
-        Item(listOf(PLASTIC_BOTTLES),   R.drawable.ic_recycling_plastic_bottles,   R.string.quest_recycling_type_plastic_bottles),
-        Item(listOf(BEVERAGE_CARTONS),  R.drawable.ic_recycling_beverage_cartons,  R.string.quest_recycling_type_beverage_cartons),
+        Item(listOf(PLASTIC_BOTTLES), R.drawable.ic_recycling_plastic_bottles, R.string.quest_recycling_type_plastic_bottles),
+        Item(listOf(BEVERAGE_CARTONS), R.drawable.ic_recycling_beverage_cartons, R.string.quest_recycling_type_beverage_cartons),
     )
 
     override val maxSelectableItems = -1

@@ -71,7 +71,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"
-        val isHeightRestrictor =  tags["barrier"] == "height_restrictor"
+        val isHeightRestrictor = tags["barrier"] == "height_restrictor"
         val isTunnel = tags["tunnel"] == "yes"
         val isBelowBridge =
             !isParkingEntrance && !isHeightRestrictor &&
@@ -79,11 +79,11 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
                 tags["man_made"] != "pipeline"
 
         return when {
-            isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title
+            isParkingEntrance -> R.string.quest_maxheight_parking_entrance_title
             isHeightRestrictor -> R.string.quest_maxheight_height_restrictor_title
-            isTunnel           -> R.string.quest_maxheight_tunnel_title
-            isBelowBridge      -> R.string.quest_maxheight_below_bridge_title
-            else               -> R.string.quest_maxheight_title
+            isTunnel -> R.string.quest_maxheight_tunnel_title
+            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
+            else -> R.string.quest_maxheight_title
         }
     }
 

@@ -91,29 +91,29 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
             when (cyclewayLane) {
                 "exclusive", "exclusive_lane", "mandatory" -> {
                     if (isDual) DUAL_LANE
-                    else        EXCLUSIVE_LANE
+                    else EXCLUSIVE_LANE
                 }
                 null -> {
                     if (isDual) DUAL_LANE
-                    else        UNSPECIFIED_LANE
+                    else UNSPECIFIED_LANE
                 }
                 "advisory", "advisory_lane", "soft_lane", "dashed" -> ADVISORY_LANE
-                else                                               -> UNKNOWN_LANE
+                else -> UNKNOWN_LANE
             }
         }
         "shared_lane" -> {
             when (cyclewayLane) {
                 "advisory", "advisory_lane", "soft_lane", "dashed" -> SUGGESTION_LANE
-                "pictogram"                                        -> PICTOGRAMS
-                null                                               -> UNSPECIFIED_SHARED_LANE
-                else                                               -> UNKNOWN_SHARED_LANE
+                "pictogram" -> PICTOGRAMS
+                null -> UNSPECIFIED_SHARED_LANE
+                else -> UNKNOWN_SHARED_LANE
             }
         }
         "track", "opposite_track" -> {
             when {
                 !isSegregated -> SIDEWALK_EXPLICIT
-                isDual        -> DUAL_TRACK
-                else          -> TRACK
+                isDual -> DUAL_TRACK
+                else -> TRACK
             }
         }
         "separate" -> SEPARATE

@@ -53,7 +53,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
-            else                   R.drawable.ic_sidewalk_unknown
+            else R.drawable.ic_sidewalk_unknown
 
         binding.puzzleView.setLeftSideImage(ResImage(leftSide?.iconResId ?: defaultResId))
         binding.puzzleView.setRightSideImage(ResImage(rightSide?.iconResId ?: defaultResId))

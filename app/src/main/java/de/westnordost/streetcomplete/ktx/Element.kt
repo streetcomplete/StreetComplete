@@ -75,7 +75,7 @@ private val IS_SOME_KIND_OF_SHOP_EXPR =
  *  repeat_on is interpreted the same way as level */
 fun Element.getLevelsOrNull(): List<Level>? {
     val levels = tags["level"]?.toLevelsOrNull()
-    val repeatOns =  tags["repeat_on"]?.toLevelsOrNull()
+    val repeatOns = tags["repeat_on"]?.toLevelsOrNull()
     return if (levels == null) {
         if (repeatOns == null) null else repeatOns
     } else {

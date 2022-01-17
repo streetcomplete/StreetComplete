@@ -36,9 +36,9 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
         val hasName = tags.containsKey("name")
         val isSquare = tags["area"] == "yes"
         return when {
-            hasName ->     R.string.quest_smoothness_name_title
-            isSquare ->    R.string.quest_smoothness_square_title
-            else ->        R.string.quest_smoothness_road_title
+            hasName -> R.string.quest_smoothness_name_title
+            isSquare -> R.string.quest_smoothness_square_title
+            else -> R.string.quest_smoothness_road_title
         }
     }
 

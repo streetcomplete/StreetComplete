@@ -37,33 +37,33 @@ class AddPlaceName(
                     "amenity" to arrayOf(
                         // common
                         "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                        "cinema", "planetarium", "casino",                                                                     // amenities
-                        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                        "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                        "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                        "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                        "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                        "cinema", "planetarium", "casino", // amenities
+                        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                        "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe", // commercial
+                        "car_wash", "car_rental", "fuel", // car stuff
+                        "dentist", "doctors", "clinic", "pharmacy", "veterinary", // health
+                        "animal_boarding", "animal_shelter", "animal_breeding", // animals
 
                         // name & opening hours
                         "boat_rental",
 
                         // name & wheelchair
-                        "theatre",                             // culture
-                        "conference_centre", "arts_centre",    // events
-                        "police", "ranger_station",            // civic
-                        "ferry_terminal",                      // transport
-                        "place_of_worship",                    // religious
-                        "hospital",                            // health care
+                        "theatre", // culture
+                        "conference_centre", "arts_centre", // events
+                        "police", "ranger_station", // civic
+                        "ferry_terminal", // transport
+                        "place_of_worship", // religious
+                        "hospital", // health care
 
                         // name only
-                        "studio",                                                                // culture
-                        "events_venue", "exhibition_centre", "music_venue",                      // events
-                        "prison", "fire_station",                                                // civic
+                        "studio", // culture
+                        "events_venue", "exhibition_centre", "music_venue", // events
+                        "prison", "fire_station", // civic
                         "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
-                        "monastery",                                                             // religious
+                        "monastery", // religious
                         "kindergarten", "school", "college", "university", "research_institute", // education
-                        "driving_school", "dive_centre", "language_school", "music_school",      // learning
-                        "brothel", "gambling", "love_hotel", "stripclub"                         // bad stuff
+                        "driving_school", "dive_centre", "language_school", "music_school", // learning
+                        "brothel", "gambling", "love_hotel", "stripclub" // bad stuff
                     ),
                     "tourism" to arrayOf(
                         // common

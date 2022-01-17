@@ -128,8 +128,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val unit = weightLimitUnits[weightUnitSelect?.selectedItemPosition ?: 0]
         return when (unit) {
             WeightMeasurementUnit.SHORT_TON -> ShortTons(input)
-            WeightMeasurementUnit.POUND     -> ImperialPounds(input.toInt())
-            WeightMeasurementUnit.TON       -> MetricTons(input)
+            WeightMeasurementUnit.POUND -> ImperialPounds(input.toInt())
+            WeightMeasurementUnit.TON -> MetricTons(input)
         }
     }
 
