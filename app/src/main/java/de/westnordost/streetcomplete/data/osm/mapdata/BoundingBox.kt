@@ -5,8 +5,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BoundingBox(val min: LatLon, val max: LatLon) {
     constructor(
-        minLatitude: Double, minLongitude: Double,
-        maxLatitude: Double, maxLongitude: Double
+        minLatitude: Double,
+        minLongitude: Double,
+        maxLatitude: Double,
+        maxLongitude: Double
     ) : this(LatLon(minLatitude, minLongitude), LatLon(maxLatitude, maxLongitude))
 
     init {

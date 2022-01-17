@@ -23,7 +23,9 @@ import kotlin.coroutines.resume
 class QuestSourceIsSurveyChecker @Inject constructor() {
 
     suspend fun checkIsSurvey(
-        context: Context, geometry: ElementGeometry, locations: List<Location>
+        context: Context,
+        geometry: ElementGeometry,
+        locations: List<Location>
     ): Boolean {
         if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
             return true

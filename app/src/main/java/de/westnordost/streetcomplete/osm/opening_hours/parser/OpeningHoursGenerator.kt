@@ -129,7 +129,8 @@ private fun createRule(
     dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
     holidays: List<Holiday>?,
-    timeSpans: List<TimeSpan>) = Rule().also { r ->
+    timeSpans: List<TimeSpan>
+) = Rule().also { r ->
 
     require(timeSpans.isNotEmpty())
 
@@ -142,7 +143,8 @@ private fun createRule(
 private fun createOffRule(
     dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
-    holidays: List<Holiday>?) = Rule().also { r ->
+    holidays: List<Holiday>?
+) = Rule().also { r ->
 
     r.dates = dateRanges?.toMutableList()
     r.days = weekDayRanges?.toMutableList()

@@ -118,8 +118,11 @@ class NoteDaoTest : ApplicationDbTestCase() {
     }
 }
 
-private fun createNote(id: Long = 5, position: LatLon = LatLon(1.0, 1.0),
-                       timestampClosed: Long? = null): Note {
+private fun createNote(
+    id: Long = 5,
+    position: LatLon = LatLon(1.0, 1.0),
+    timestampClosed: Long? = null
+): Note {
     val timestampCreated: Long = 5000
     val user = User(5, "PingPong")
     val comment = NoteComment(timestampCreated, NoteComment.Action.OPENED, "hi", user)

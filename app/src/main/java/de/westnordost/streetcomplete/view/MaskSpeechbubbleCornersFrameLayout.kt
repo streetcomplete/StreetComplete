@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.ktx.toPx
 class MaskSpeechbubbleCornersFrameLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0) :
+    defStyleAttr: Int = 0
+) :
     FrameLayout(context, attrs, defStyleAttr) {
 
     override fun dispatchDraw(canvas: Canvas) {

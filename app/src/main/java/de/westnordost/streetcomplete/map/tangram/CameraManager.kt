@@ -235,7 +235,8 @@ data class CameraPosition(
     val position: LatLon,
     val rotation: Float,
     val tilt: Float,
-    val zoom: Float) {
+    val zoom: Float
+) {
 
     constructor(p: TangramCameraPosition) : this(LatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
 }

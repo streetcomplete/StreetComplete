@@ -173,9 +173,9 @@ class AddLocalizedNameAdapter(
      * [localizedNameSuggestionsMap]. The value of the selected key will be passed to the
      * [callback] */
     private fun showNameSuggestionsMenu(
-            view: View,
-            localizedNameSuggestionsMap: Map<String, Map<String, String>>,
-            callback: (Map<String, String>) -> Unit
+        view: View,
+        localizedNameSuggestionsMap: Map<String, Map<String, String>>,
+        callback: (Map<String, String>) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 

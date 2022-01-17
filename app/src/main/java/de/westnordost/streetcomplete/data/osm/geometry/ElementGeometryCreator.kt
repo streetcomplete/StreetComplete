@@ -138,7 +138,8 @@ class ElementGeometryCreator @Inject constructor() {
     }
 
     private fun getRelationMemberWaysNodePositions(
-        relation: Relation, wayGeometries: Map<Long, List<LatLon>>
+        relation: Relation,
+        wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
             .filter { it.type == ElementType.WAY }
@@ -146,7 +147,9 @@ class ElementGeometryCreator @Inject constructor() {
     }
 
     private fun getRelationMemberWaysNodePositions(
-        relation: Relation, withRole: String, wayGeometries: Map<Long, List<LatLon>>
+        relation: Relation,
+        withRole: String,
+        wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
             .filter { it.type == ElementType.WAY && it.role == withRole }
