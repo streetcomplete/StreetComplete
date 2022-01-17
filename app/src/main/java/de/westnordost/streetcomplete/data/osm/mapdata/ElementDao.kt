@@ -77,7 +77,6 @@ class ElementDao @Inject constructor(
         result.addAll(nodeDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(NODE, it) })
         return result
     }
-
 }
 
 private data class ElementIds(val nodes: List<Long>, val ways: List<Long>, val relations: List<Long>) {

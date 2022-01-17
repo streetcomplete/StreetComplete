@@ -64,7 +64,6 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 for ((key, value) in answer.tags) {
                     tags[key] = value
                 }
-
             }
         }
     }

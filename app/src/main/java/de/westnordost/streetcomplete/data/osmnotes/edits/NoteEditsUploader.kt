@@ -85,7 +85,6 @@ class NoteEditsUploader @Inject constructor(
                 noteEditsController.markImagesActivated(note.id)
             }
             deleteImages(edit.imagePaths)
-
         } catch (e: ConflictException) {
             Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +

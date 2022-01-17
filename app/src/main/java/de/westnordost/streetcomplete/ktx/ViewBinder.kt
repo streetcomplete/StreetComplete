@@ -52,7 +52,6 @@ class ActivityBindingPropertyDelegate<T : ViewBinding>(
         }
         return binding!!
     }
-
 }
 
 inline fun <reified T : ViewBinding> Fragment.viewBinding(
@@ -87,5 +86,4 @@ class FragmentViewBindingPropertyDelegate<T : ViewBinding>(
         }
         return binding!!
     }
-
 }

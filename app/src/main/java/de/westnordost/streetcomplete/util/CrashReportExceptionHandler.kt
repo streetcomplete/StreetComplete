@@ -111,5 +111,4 @@ $stackTrace
     private fun deleteCrashReport() {
         appCtx.deleteFile(crashReportFile)
     }
-
 }

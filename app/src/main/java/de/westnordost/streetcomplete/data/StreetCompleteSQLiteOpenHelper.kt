@@ -124,7 +124,6 @@ import javax.inject.Singleton
            db.execSQL("DROP TABLE new_achievements")
         }
     }
-
 }
 
 private const val DB_VERSION = 4

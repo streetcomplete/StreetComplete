@@ -92,7 +92,6 @@ fun BoundingBox.enclosingTilesRect(zoom: Int): TilesRect {
     else {
         enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
     }
-
 }
 
 private fun BoundingBox.enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom: Int): TilesRect {

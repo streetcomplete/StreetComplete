@@ -22,7 +22,6 @@ class StringWithCursorTest {
             fail()
         } catch (ignore: IndexOutOfBoundsException) {
         }
-
     }
 
     @Test fun advanceBy() {

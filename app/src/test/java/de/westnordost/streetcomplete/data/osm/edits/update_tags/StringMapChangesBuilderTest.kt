@@ -175,7 +175,6 @@ class StringMapChangesBuilderTest {
 
         assertFalse(builder().also { it.remove("a") }.hasChanges)
         assertTrue(builder("a" to "1").also { it.remove("a") }.hasChanges)
-
     }
 }
 

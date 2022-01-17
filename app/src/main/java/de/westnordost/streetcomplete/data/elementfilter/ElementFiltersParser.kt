@@ -113,7 +113,6 @@ private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFil
         3 -> EnumSet.of(result[0], result[1], result[2])
         else -> throw IllegalStateException()
     }
-
 }
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
@@ -172,7 +171,6 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
             builder.addAnd()
         } else
             throw ParseException("Expected end of string, '$AND' or '$OR'", cursorPos)
-
     } while (true)
 
     try {
