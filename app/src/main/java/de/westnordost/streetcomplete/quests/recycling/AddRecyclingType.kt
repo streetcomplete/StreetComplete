@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
 
-
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override val elementFilter = "nodes, ways, relations with amenity = recycling and !recycling_type"

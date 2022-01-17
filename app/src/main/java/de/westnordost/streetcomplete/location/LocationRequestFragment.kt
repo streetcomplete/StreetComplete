@@ -47,7 +47,6 @@ class LocationRequestFragment : Fragment() {
         }
     }
 
-
     override fun onStop() {
         super.onStop()
         unregisterForLocationProviderChanges()

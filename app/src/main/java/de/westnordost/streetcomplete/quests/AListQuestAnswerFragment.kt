@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericRadioListBinding
 import de.westnordost.streetcomplete.ktx.setMargins
 
-
 abstract class AListQuestAnswerFragment<T> : AbstractQuestFormAnswerFragment<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_radio_list

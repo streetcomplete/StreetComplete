@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog

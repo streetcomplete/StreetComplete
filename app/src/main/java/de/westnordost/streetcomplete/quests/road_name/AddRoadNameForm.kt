@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.quests.AddLocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.LocalizedName
 import java.lang.IllegalStateException
 
-
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_roadname

@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
 
-
 /** Shows details for a certain level of one achievement as a fake-dialog.
  *  There are two modes:
  *

@@ -28,4 +28,3 @@ data class SplitAtLinePosition(val pos1: LatLon, val pos2: LatLon, val delta: Do
             throw IllegalArgumentException("Delta must be between 0 and 1 (both exclusive)")
     }
 }
-

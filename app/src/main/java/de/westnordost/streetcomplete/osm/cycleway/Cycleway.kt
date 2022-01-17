@@ -62,8 +62,6 @@ enum class Cycleway {
         else -> false
     }
 
-
-
     val isUnknown get() = when(this) {
         UNKNOWN, UNKNOWN_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false

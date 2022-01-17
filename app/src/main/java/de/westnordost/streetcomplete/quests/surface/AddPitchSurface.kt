@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
-
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
         // #2377
@@ -49,8 +48,6 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
             R.string.quest_pitchSurface_title_track
         else
             R.string.quest_pitchSurface_title
-
-
 
     override fun createForm() = AddPitchSurfaceForm()
 

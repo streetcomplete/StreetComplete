@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.toYesNo
 
-
 class AddShoulder : OsmFilterQuestType<Boolean>() {
 
     /* Trunks always, smaller roads only if they are either motorroads, bridges or tunnels or if

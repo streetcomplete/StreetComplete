@@ -125,7 +125,6 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.*
 import java.util.concurrent.FutureTask
 import javax.inject.Singleton
 
-
 @Module object QuestModule
 {
     @Provides @Singleton fun questTypeRegistry(

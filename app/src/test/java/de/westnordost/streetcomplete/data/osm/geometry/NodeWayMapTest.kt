@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.geometry
 
 import org.junit.Test
 
-
 import org.junit.Assert.*
 
 class NodeWayMapTest {

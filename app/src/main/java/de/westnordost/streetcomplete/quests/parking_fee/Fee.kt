@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 
-
 sealed class Fee
 
 object HasFee : Fee()

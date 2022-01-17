@@ -86,7 +86,6 @@ class VisibleQuestsSourceTest {
         on(visibleQuestTypeSource.isVisible(t1)).thenReturn(false)
         on(visibleQuestTypeSource.isVisible(t2)).thenReturn(true)
 
-
         val quests = source.getAllVisible(bbox)
         assertEquals(q2, quests.single())
     }

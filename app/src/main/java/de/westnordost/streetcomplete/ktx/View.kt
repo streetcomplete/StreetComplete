@@ -13,7 +13,6 @@ import androidx.core.view.*
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-
 fun View.popIn(): ViewPropertyAnimator {
     visibility = View.VISIBLE
     return animate()

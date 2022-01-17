@@ -45,7 +45,6 @@ class LocationStateButton @JvmOverloads constructor(
         }
     }
 
-
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.LocationStateButton)
         state = determineStateFrom(a)

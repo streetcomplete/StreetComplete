@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.quests.lanes.LineStyle.*
 import kotlin.math.max
 import kotlin.random.Random
 
-
 class LanesSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

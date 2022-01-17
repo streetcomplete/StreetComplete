@@ -17,7 +17,6 @@ allprojects {
     }
 }
 
-
 tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
     group = "streetcomplete"
     targetDir = "$projectDir/metadata"

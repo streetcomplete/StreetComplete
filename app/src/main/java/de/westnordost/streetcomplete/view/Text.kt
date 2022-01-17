@@ -17,4 +17,3 @@ fun TextView.setText(text: Text?) {
         null -> setText("")
     }
 }
-

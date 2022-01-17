@@ -360,7 +360,6 @@ class LoadSceneException(message: String, val sceneUpdate: SceneUpdate) : Runtim
 private fun SceneError.toException() =
     LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
 
-
 suspend fun MapView.initMap(
     httpHandler: HttpHandler? = null,
     glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
@@ -377,4 +376,3 @@ interface MapChangingListener {
     fun onMapIsChanging()
     fun onMapDidChange()
 }
-

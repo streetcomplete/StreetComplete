@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
 
-
 class DetermineRecyclingGlassForm : AbstractQuestAnswerFragment<RecyclingGlass>() {
     override val contentLayoutResId = R.layout.quest_determine_recycling_glass_explanation
 

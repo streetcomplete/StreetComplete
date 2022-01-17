@@ -48,7 +48,6 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.keys.containsAny(listOf("name", "brand", "operator"))
 
-
     override fun applyAnswerTo(answer: ShopTypeAnswer, changes: StringMapChangesBuilder) {
         changes.deleteCheckDates()
         when (answer) {

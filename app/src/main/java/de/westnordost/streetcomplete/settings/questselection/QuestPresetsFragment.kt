@@ -28,7 +28,6 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
         Injector.applicationComponent.inject(this)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = QuestPresetsAdapter(requireContext(), questPresetsController)
@@ -56,4 +55,3 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             .show()
     }
 }
-

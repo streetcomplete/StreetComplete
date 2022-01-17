@@ -18,7 +18,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
 
-
 class AddOpeningHoursTest {
 
     private val questType = AddOpeningHours(mock())
@@ -83,7 +82,6 @@ class AddOpeningHoursTest {
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
-
 
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(

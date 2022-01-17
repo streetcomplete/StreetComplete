@@ -3165,7 +3165,6 @@ class CyclewayParserKtTest {
     }
 }
 
-
 private fun parse(vararg pairs: Pair<String, String>) =
     createCyclewaySides(mapOf(*pairs), false)
 

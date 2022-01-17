@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.street_parking.*
 
-
 class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
 
     override val elementFilter = """

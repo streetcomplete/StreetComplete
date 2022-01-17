@@ -105,5 +105,3 @@ import javax.inject.Singleton
         listeners.forEach { it.onVisibleQuestsInvalidated() }
     }
 }
-
-

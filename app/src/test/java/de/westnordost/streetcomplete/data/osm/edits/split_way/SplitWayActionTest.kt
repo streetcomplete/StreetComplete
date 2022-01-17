@@ -222,7 +222,6 @@ class SplitWayActionTest {
         )
     }
 
-
     @Test fun `split way with several split position at vertices`() {
         // 0   1   2   3
         //     |   |
@@ -646,7 +645,6 @@ class SplitWayActionTest {
         val data = action.createUpdates(originalWay, way, repos, provider)
         return MutableMapData(data.creations + data.modifications)
     }
-
 
     private fun MapData.checkWaysNodes(vararg chunks: List<Long>) {
         assertTrue(ways.map { it.nodeIds }.containsExactlyInAnyOrder(chunks.toList()))

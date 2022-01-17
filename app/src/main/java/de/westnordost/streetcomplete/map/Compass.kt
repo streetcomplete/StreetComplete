@@ -173,4 +173,3 @@ class Compass(
         private const val MIN_DIFFERENCE = 0.001f
     }
 }
-

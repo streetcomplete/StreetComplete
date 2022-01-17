@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatEditText
 
-
 import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 

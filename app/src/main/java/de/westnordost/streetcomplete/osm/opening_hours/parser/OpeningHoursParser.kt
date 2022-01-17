@@ -194,7 +194,6 @@ fun TimeSpan.isSupportedCollectionTimes(): Boolean =
 
 /* ------------------------------ Collision/Intersection checking ------------------------------- */
 
-
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
  *  non-additive rules and additive rules mix, it becomes a bit difficult to find it out */

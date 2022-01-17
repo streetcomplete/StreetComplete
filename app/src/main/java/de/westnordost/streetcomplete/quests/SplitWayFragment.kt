@@ -187,7 +187,6 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         return true
     }
 
-
     private fun animateScissors() {
         val scissorsPos = clickPos ?: return
 

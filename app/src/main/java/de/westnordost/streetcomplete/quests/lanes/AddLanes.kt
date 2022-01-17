@@ -87,4 +87,3 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         )
     }
 }
-

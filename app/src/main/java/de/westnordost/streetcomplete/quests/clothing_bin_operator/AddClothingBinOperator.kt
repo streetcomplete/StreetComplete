@@ -52,5 +52,3 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
         changes.add("operator", answer)
     }
 }
-
-

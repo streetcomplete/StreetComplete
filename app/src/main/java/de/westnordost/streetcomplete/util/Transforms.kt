@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
 
-
 data class Transforms(
     val translationX: Float,
     val translationY: Float,

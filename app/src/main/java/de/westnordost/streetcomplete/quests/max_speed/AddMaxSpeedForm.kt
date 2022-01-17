@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.*
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-
 class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
@@ -111,7 +110,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                 if (drawableResId != null) livingStreetImageView.setImageResource(drawableResId)
             }
         }
-
 
         if (speedType == ZONE && LAST_INPUT_SLOW_ZONE != null) {
             speedInput?.setText(LAST_INPUT_SLOW_ZONE.toString())
@@ -221,7 +219,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             val dialogSpeedInput: EditText = dialogBinding.slowZoneImage.findViewById(R.id.maxSpeedInput)
             dialogSpeedInput.setText("××")
             dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
-
 
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)

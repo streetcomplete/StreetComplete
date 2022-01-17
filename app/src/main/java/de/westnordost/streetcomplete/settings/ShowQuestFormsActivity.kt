@@ -128,8 +128,6 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
             f.arguments = args
         }
 
-
-
         currentQuestType = questType
 
         binding.questFormContainer.visibility = View.VISIBLE

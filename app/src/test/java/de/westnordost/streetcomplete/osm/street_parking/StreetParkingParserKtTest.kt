@@ -6,7 +6,6 @@ import org.junit.Test
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 
-
 class StreetParkingParserKtTest {
 
     @Test fun `parallel parking on street left`() {

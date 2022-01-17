@@ -162,4 +162,3 @@ class NoteControllerTest {
         verify(listener).onUpdated(eq(listOf(note3)), eq(listOf(note1)), eq(setOf(2)))
     }
 }
-

@@ -82,4 +82,3 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
         listener?.onClickedCountryFlag(countryCode, solvedCount, rank, countryBubbleView)
     }
 }
-

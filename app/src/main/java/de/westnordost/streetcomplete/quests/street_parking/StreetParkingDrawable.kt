@@ -130,7 +130,6 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
         else -> emptyList()
     }
 
-
 /** center x-position of the cars */
 private val ParkingOrientation.carsX: Float get() = when (this) {
     PARALLEL -> 0.44f
