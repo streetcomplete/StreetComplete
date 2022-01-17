@@ -138,8 +138,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import java.util.concurrent.FutureTask
 import javax.inject.Singleton
 
-@Module object QuestModule
-{
+@Module object QuestModule {
     @Provides @Singleton fun questTypeRegistry(
         trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
         trafficFlowDao: WayTrafficFlowDao,

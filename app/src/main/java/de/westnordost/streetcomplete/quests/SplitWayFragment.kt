@@ -176,7 +176,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
-        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters } ) {
+        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters }) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         } else {
             splits.add(Pair(splitWay, splitPosition))

@@ -37,8 +37,8 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
 
     private val loginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) }}
-        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) }}
+        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) } }
+        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) } }
     }
 
     init {

@@ -83,7 +83,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() }}
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             true
@@ -95,7 +95,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
                 .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
                     val hidden = questController.unhideAll()
                     context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                }}
+                } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 

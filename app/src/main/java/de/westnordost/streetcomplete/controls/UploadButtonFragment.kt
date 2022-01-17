@@ -31,8 +31,8 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     private val uploadButton get() = view as UploadButton
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
-        override fun onIncreased() { viewLifecycleScope.launch { updateCount() }}
-        override fun onDecreased() { viewLifecycleScope.launch { updateCount() }}
+        override fun onIncreased() { viewLifecycleScope.launch { updateCount() } }
+        override fun onDecreased() { viewLifecycleScope.launch { updateCount() } }
     }
 
     private val uploadProgressListener = object : UploadProgressListener {

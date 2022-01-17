@@ -50,7 +50,7 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
         return sequence {
             for (y in startY..endY) {
                 for (x in startX..endX) {
-                    raster[y * rasterWidth + x]?.let{ yieldAll(it) }
+                    raster[y * rasterWidth + x]?.let { yieldAll(it) }
                 }
             }
         }.asIterable()

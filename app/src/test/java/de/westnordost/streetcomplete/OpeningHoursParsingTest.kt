@@ -87,7 +87,7 @@ fun main() = runBlocking {
                         if(r.any { rule -> rule.holidays?.any { !it.isSupported() } == true }) {
                             complicatedHolidays++
                         }
-                        if(r.any { rule -> rule.days?.any { !it.isSupported() } == true}) {
+                        if(r.any { rule -> rule.days?.any { !it.isSupported() } == true }) {
                             complicatedWeekdayRanges++
                         }
                         if(r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
@@ -96,7 +96,7 @@ fun main() = runBlocking {
                         if(r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null  } == true }) {
                             complicatedTimes++
                         }
-                        if(r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true}) {
+                        if(r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true }) {
                             complicatedDates++
                         }
                         if (r.all { it.isSupportedOpeningHours() } && r.weekdaysCollideWithAnother()) {

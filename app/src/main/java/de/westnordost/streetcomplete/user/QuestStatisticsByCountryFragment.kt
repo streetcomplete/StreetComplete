@@ -17,8 +17,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit.  */
-class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit)
-{
+class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
     @Inject internal lateinit var statisticsSource: StatisticsSource
 
     interface Listener {

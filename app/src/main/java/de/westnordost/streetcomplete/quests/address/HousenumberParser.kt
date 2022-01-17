@@ -91,7 +91,7 @@ sealed class HouseNumbersPart : Comparable<HouseNumbersPart> {
 
 private fun sign(vararg numbers: Int): Int = when {
     numbers.all { it > 0 } -> 1
-    numbers.all { it < 0} -> -1
+    numbers.all { it < 0 } -> -1
     else -> 0
 }
 

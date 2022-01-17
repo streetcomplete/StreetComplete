@@ -36,17 +36,17 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     /* undo button is not shown when there is nothing to undo */
     private val editHistoryListener = object : EditHistorySource.Listener {
-        override fun onAdded(edit: Edit) { viewLifecycleScope.launch { animateInIfAnythingToUndo() }}
-        override fun onSynced(edit: Edit) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
-        override fun onDeleted(edits: List<Edit>) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() }}
-        override fun onInvalidated() { viewLifecycleScope.launch { updateUndoButtonVisibility() }}
+        override fun onAdded(edit: Edit) { viewLifecycleScope.launch { animateInIfAnythingToUndo() } }
+        override fun onSynced(edit: Edit) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() } }
+        override fun onDeleted(edits: List<Edit>) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() } }
+        override fun onInvalidated() { viewLifecycleScope.launch { updateUndoButtonVisibility() } }
     }
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
     *  also uploading it at the same time) */
     private val uploadProgressListener = object : UploadProgressListener {
-        override fun onStarted() { viewLifecycleScope.launch { updateUndoButtonEnablement(false) }}
-        override fun onFinished() { viewLifecycleScope.launch { updateUndoButtonEnablement(true) }}
+        override fun onStarted() { viewLifecycleScope.launch { updateUndoButtonEnablement(false) } }
+        override fun onFinished() { viewLifecycleScope.launch { updateUndoButtonEnablement(true) } }
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */

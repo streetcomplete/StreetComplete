@@ -197,8 +197,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         LEFT("left"), RIGHT("right"), BOTH("both")
     }
 
-    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags)
-    {
+    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags) {
         val directionValue = when {
             dir > 0 -> "yes"
             dir < 0 -> "-1"

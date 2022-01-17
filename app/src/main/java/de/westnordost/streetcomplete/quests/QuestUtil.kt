@@ -23,7 +23,7 @@ fun Resources.getQuestTitle(questType: QuestType<*>, element: Element?, featureD
 fun Resources.getHtmlQuestTitle(questType: QuestType<*>, element: Element?, featureDictionaryFuture: FutureTask<FeatureDictionary>?): Spanned {
     val localeList = ConfigurationCompat.getLocales(configuration)
     val arguments = getTemplateArguments(questType, element, localeList, featureDictionaryFuture)
-    val spannedArguments = arguments.map {"<i>" + Html.escapeHtml(it) + "</i>"}.toTypedArray()
+    val spannedArguments = arguments.map { "<i>" + Html.escapeHtml(it) + "</i>" }.toTypedArray()
     return getString(getQuestTitleResId(questType, element), *spannedArguments).parseAsHtml()
 }
 
