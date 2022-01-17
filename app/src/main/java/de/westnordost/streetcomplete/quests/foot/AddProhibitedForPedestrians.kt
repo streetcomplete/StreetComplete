@@ -5,7 +5,10 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
 

@@ -7,7 +7,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.notifications.*
+import de.westnordost.streetcomplete.data.notifications.Notification
+import de.westnordost.streetcomplete.data.notifications.NotificationsSource
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope

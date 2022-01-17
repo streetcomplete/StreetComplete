@@ -1,12 +1,35 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.streetcomplete.data.elementfilter.filters.*
+import de.westnordost.streetcomplete.data.elementfilter.filters.CombineFilters
+import de.westnordost.streetcomplete.data.elementfilter.filters.DateFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementNewerThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementOlderThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.FixedDate
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagGreaterOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagGreaterThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagLessOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagLessThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagGreaterOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagGreaterThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
+import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import java.lang.NumberFormatException
 import java.text.ParseException
 import java.util.EnumSet
-import kotlin.collections.ArrayList
 import kotlin.math.min
 
 /**

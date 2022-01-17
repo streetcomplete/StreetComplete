@@ -101,14 +101,18 @@ import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
-import de.westnordost.streetcomplete.quests.smoothness.*
+import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
+import de.westnordost.streetcomplete.quests.smoothness.AddRoadSmoothness
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
-import de.westnordost.streetcomplete.quests.street_parking.AddStreetParking
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
-import de.westnordost.streetcomplete.quests.surface.*
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddPathSurface
+import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
+import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
@@ -121,7 +125,11 @@ import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSig
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
-import de.westnordost.streetcomplete.quests.wheelchair_access.*
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToiletsPart
 import java.util.concurrent.FutureTask
 import javax.inject.Singleton
 

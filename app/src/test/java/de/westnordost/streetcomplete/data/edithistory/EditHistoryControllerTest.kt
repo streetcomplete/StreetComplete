@@ -9,8 +9,15 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import de.westnordost.streetcomplete.testutils.*
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.edit
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.noteEdit
+import de.westnordost.streetcomplete.testutils.noteQuestHidden
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.questHidden
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong

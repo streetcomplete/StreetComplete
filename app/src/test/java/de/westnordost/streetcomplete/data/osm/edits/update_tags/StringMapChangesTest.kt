@@ -2,9 +2,13 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertSame
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.mockito.Mockito.atLeastOnce
+import org.mockito.Mockito.verify
 
 class StringMapChangesTest {
 

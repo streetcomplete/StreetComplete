@@ -8,7 +8,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.NO
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.PICNIC_TABLE
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.YES
 
 class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 

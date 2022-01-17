@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.quests.camera_type
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.camera_type.CameraType.*
+import de.westnordost.streetcomplete.quests.camera_type.CameraType.DOME
+import de.westnordost.streetcomplete.quests.camera_type.CameraType.FIXED
+import de.westnordost.streetcomplete.quests.camera_type.CameraType.PANNING
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddCameraTypeForm : AImageListQuestAnswerFragment<CameraType, CameraType>() {

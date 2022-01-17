@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.Prefs
-import okhttp3.*
+import okhttp3.Cache
+import okhttp3.CacheControl
 import java.io.File
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

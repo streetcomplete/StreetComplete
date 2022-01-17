@@ -1,7 +1,19 @@
 package de.westnordost.streetcomplete.osm.opening_hours.parser
 
-import ch.poole.openinghoursparser.*
-import de.westnordost.streetcomplete.osm.opening_hours.model.*
+import ch.poole.openinghoursparser.DateRange
+import ch.poole.openinghoursparser.DateWithOffset
+import ch.poole.openinghoursparser.Holiday
+import ch.poole.openinghoursparser.Month
+import ch.poole.openinghoursparser.Rule
+import ch.poole.openinghoursparser.RuleModifier
+import ch.poole.openinghoursparser.TimeSpan
+import ch.poole.openinghoursparser.WeekDay
+import ch.poole.openinghoursparser.WeekDayRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
+import de.westnordost.streetcomplete.osm.opening_hours.model.Months
+import de.westnordost.streetcomplete.osm.opening_hours.model.NumberSystem
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow

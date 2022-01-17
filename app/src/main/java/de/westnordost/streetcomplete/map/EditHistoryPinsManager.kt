@@ -4,7 +4,14 @@ import android.content.res.Resources
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.streetcomplete.data.edithistory.*
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
+import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
+import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.OsmQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -14,7 +21,13 @@ import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.map.components.Pin
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class EditHistoryPinsManager(
     private val pinsMapComponent: PinsMapComponent,

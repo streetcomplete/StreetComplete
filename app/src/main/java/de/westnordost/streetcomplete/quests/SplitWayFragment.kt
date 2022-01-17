@@ -27,7 +27,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
+import de.westnordost.streetcomplete.ktx.setMargins
+import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo

@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.*
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
 
 class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 

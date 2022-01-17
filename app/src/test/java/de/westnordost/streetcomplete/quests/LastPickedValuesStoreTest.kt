@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.quests.Letter.*
+import de.westnordost.streetcomplete.quests.Letter.A
+import de.westnordost.streetcomplete.quests.Letter.B
+import de.westnordost.streetcomplete.quests.Letter.C
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

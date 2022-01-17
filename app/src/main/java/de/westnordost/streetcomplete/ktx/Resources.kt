@@ -7,7 +7,9 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import com.esotericsoftware.yamlbeans.YamlReader
-import de.westnordost.streetcomplete.view.*
+import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.view.ResImage
 import java.io.BufferedReader
 import java.io.InputStreamReader
 

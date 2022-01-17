@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.*
-import de.westnordost.streetcomplete.data.elementfilter.filters.*
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.toOverpassString
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import java.util.EnumSet
 

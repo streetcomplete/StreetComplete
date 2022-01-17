@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.fail
 import org.junit.Test
 
 class CollectionsTest {

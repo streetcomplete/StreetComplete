@@ -9,13 +9,18 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.valueOf
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
-import de.westnordost.streetcomplete.view.image_select.*
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.image_select.Item2
 import kotlin.math.PI
 
 class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {

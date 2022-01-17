@@ -3,11 +3,33 @@ package de.westnordost.streetcomplete.data
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.*
+import android.database.sqlite.SQLiteDatabase.CONFLICT_ABORT
+import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
+import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
+import android.database.sqlite.SQLiteDatabase.CONFLICT_NONE
+import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
+import android.database.sqlite.SQLiteDatabase.CONFLICT_ROLLBACK
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteStatement
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.*
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.ABORT
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.FAIL
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.REPLACE
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
+import de.westnordost.streetcomplete.ktx.getBlob
+import de.westnordost.streetcomplete.ktx.getBlobOrNull
+import de.westnordost.streetcomplete.ktx.getDouble
+import de.westnordost.streetcomplete.ktx.getDoubleOrNull
+import de.westnordost.streetcomplete.ktx.getFloat
+import de.westnordost.streetcomplete.ktx.getFloatOrNull
+import de.westnordost.streetcomplete.ktx.getInt
+import de.westnordost.streetcomplete.ktx.getIntOrNull
+import de.westnordost.streetcomplete.ktx.getLong
+import de.westnordost.streetcomplete.ktx.getLongOrNull
+import de.westnordost.streetcomplete.ktx.getShort
+import de.westnordost.streetcomplete.ktx.getShortOrNull
+import de.westnordost.streetcomplete.ktx.getString
+import de.westnordost.streetcomplete.ktx.getStringOrNull
 import javax.inject.Inject
 
 @SuppressLint("Recycle")

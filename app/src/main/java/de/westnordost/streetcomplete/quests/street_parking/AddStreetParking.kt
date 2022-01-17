@@ -8,7 +8,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.street_parking.*
+import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
+import de.westnordost.streetcomplete.osm.street_parking.toOsmLaneValue
+import de.westnordost.streetcomplete.osm.street_parking.toOsmValue
 
 class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
 

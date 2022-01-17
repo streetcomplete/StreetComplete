@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 

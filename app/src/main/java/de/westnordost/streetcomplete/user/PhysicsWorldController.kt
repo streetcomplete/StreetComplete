@@ -2,14 +2,13 @@ package de.westnordost.streetcomplete.user
 
 import android.os.Handler
 import android.os.HandlerThread
-import kotlinx.coroutines.*
 import kotlinx.coroutines.android.asCoroutineDispatcher
+import kotlinx.coroutines.withContext
 import org.jbox2d.collision.shapes.Shape
 import org.jbox2d.common.Vec2
 import org.jbox2d.dynamics.Body
 import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.World
-import java.lang.Runnable
 import kotlin.math.max
 
 /** Contains the physics simulation world and the physics simulation loop */

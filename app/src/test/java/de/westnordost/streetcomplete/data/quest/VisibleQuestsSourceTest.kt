@@ -6,7 +6,14 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.osmNoteQuest
+import de.westnordost.streetcomplete.testutils.osmQuest
+import de.westnordost.streetcomplete.testutils.osmQuestKey
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before

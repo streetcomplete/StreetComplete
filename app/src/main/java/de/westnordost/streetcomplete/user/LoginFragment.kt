@@ -25,7 +25,9 @@ import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.settings.OAuthFragment
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
 import javax.inject.Inject
 

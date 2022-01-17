@@ -7,7 +7,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_CONTAINER
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
 
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 

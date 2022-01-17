@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 
 data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
 

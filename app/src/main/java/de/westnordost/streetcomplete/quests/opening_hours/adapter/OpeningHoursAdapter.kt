@@ -11,7 +11,9 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesMonthRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesOffdayRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
-import de.westnordost.streetcomplete.osm.opening_hours.model.*
+import de.westnordost.streetcomplete.osm.opening_hours.model.Months
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog

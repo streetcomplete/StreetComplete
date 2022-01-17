@@ -11,7 +11,11 @@ import android.view.View
 import androidx.annotation.Keep
 import androidx.appcompat.widget.AppCompatImageButton
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.location.LocationState.*
+import de.westnordost.streetcomplete.location.LocationState.ALLOWED
+import de.westnordost.streetcomplete.location.LocationState.DENIED
+import de.westnordost.streetcomplete.location.LocationState.ENABLED
+import de.westnordost.streetcomplete.location.LocationState.SEARCHING
+import de.westnordost.streetcomplete.location.LocationState.UPDATING
 
 /**
  * An image button which shows the current location state

@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
-import de.westnordost.streetcomplete.data.osm.osmquests.*
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable

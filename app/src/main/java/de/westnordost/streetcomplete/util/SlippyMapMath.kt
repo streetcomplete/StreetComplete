@@ -4,7 +4,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
 import kotlinx.serialization.Serializable
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.asinh
+import kotlin.math.atan
+import kotlin.math.sinh
+import kotlin.math.tan
 
 /** X and Y position of a tile */
 @Serializable

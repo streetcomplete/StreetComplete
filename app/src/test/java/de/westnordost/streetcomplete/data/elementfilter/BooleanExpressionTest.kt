@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class BooleanExpressionTest {

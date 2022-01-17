@@ -17,7 +17,11 @@ import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Shows the full changelog */
 class ChangelogFragment : Fragment(R.layout.fragment_changelog) {

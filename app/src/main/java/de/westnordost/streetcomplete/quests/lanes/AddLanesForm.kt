@@ -16,7 +16,9 @@ import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.quests.lanes.LanesType.*
+import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED
+import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED_SIDES
+import de.westnordost.streetcomplete.quests.lanes.LanesType.UNMARKED
 import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine

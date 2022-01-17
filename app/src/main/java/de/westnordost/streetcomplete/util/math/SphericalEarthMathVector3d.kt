@@ -2,7 +2,13 @@ package de.westnordost.streetcomplete.util.math
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.normalizeRadians
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 /* The following formulas have been adapted from this excellent source:
    http://www.movable-type.co.uk/scripts/latlong-vectors.html#intersection

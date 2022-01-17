@@ -4,7 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.*
+import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.UP
+import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.UP_REVERSED
 
 class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
 

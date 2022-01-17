@@ -6,7 +6,11 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.children
 import de.westnordost.streetcomplete.view.StreetRotateable
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
 
 class StreetSideSelectRotateContainer @JvmOverloads constructor(
     context: Context,

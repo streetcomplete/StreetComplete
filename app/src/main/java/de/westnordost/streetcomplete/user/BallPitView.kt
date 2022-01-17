@@ -10,7 +10,11 @@ import android.hardware.SensorManager
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.view.*
+import android.view.GestureDetector
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.Surface
+import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.core.content.getSystemService
@@ -20,14 +24,24 @@ import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.databinding.ViewBallPitBinding
 import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import org.jbox2d.collision.shapes.ChainShape
 import org.jbox2d.collision.shapes.CircleShape
 import org.jbox2d.common.Vec2
 import org.jbox2d.dynamics.Body
 import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.BodyType
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.pow
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 /** Shows the contained views in a physics simulated ball pit of some kind. */
 class BallPitView @JvmOverloads constructor(

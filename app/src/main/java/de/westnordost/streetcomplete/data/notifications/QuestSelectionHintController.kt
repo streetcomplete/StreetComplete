@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.data.notifications
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintState.*
+import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintState.NOT_SHOWN
+import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintState.SHOULD_SHOW
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource

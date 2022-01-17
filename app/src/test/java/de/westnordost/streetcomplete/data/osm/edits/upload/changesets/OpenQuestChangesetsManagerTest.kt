@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 import java.util.Locale
 
 class OpenQuestChangesetsManagerTest {

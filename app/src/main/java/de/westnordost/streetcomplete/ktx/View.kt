@@ -9,7 +9,9 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
-import androidx.core.view.*
+import androidx.core.view.OneShotPreDrawListener
+import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 

@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.HandlesOnBackPressed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.about.WhatsNewDialog
-import de.westnordost.streetcomplete.data.notifications.*
+import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification
+import de.westnordost.streetcomplete.data.notifications.NewVersionNotification
+import de.westnordost.streetcomplete.data.notifications.Notification
+import de.westnordost.streetcomplete.data.notifications.OsmUnreadMessagesNotification
+import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintNotification
 import de.westnordost.streetcomplete.settings.SettingsActivity
 import de.westnordost.streetcomplete.user.AchievementInfoFragment
 
