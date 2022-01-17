@@ -124,7 +124,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     }
 
     private fun applyWasteContainerAnswer(changes: StringMapChangesBuilder) {
-        changes.modify("amenity","waste_disposal")
+        changes.modify("amenity", "waste_disposal")
         changes.delete("recycling_type")
 
         val previousRecyclingKeys = changes.getPreviousEntries().keys.filter { it.startsWith("recycling:") }

@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RevertUpdateElementTagsAction(private val changes: StringMapChanges) : ElementEditAction, IsRevertAction {
 
-    override val newElementsCount get() = NewElementsCount(0,0,0)
+    override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
         originalElement: Element,

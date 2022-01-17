@@ -17,7 +17,7 @@ data class Transforms(
     constructor(view: View) : this(view.translationX, view.translationY, view.scaleX, view.scaleY, view.rotation, view.rotationX, view.rotationY)
 
     companion object {
-        val IDENTITY = Transforms(0f,0f, 1f, 1f, 0f, 0f, 0f)
+        val IDENTITY = Transforms(0f, 0f, 1f, 1f, 0f, 0f, 0f)
     }
 }
 

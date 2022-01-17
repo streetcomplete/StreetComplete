@@ -19,7 +19,7 @@ open class CircularMaskFrameLayout @JvmOverloads constructor(
 
     var circularity: Float = 1f
     set(value) {
-        val newVal = value.coerceIn(0f,1f)
+        val newVal = value.coerceIn(0f, 1f)
         field = newVal
         invalidate()
     }

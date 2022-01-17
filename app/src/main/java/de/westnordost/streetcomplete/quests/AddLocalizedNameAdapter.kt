@@ -192,7 +192,7 @@ class AddLocalizedNameAdapter(
     }
 
     private fun getLocalizedNameSuggestionsByLanguageTag(languageTag: String): Map<String, Map<String, String>> {
-        val localizedNameSuggestionsMap = mutableMapOf<String, Map<String,String>>()
+        val localizedNameSuggestionsMap = mutableMapOf<String, Map<String, String>>()
         if (localizedNameSuggestions != null) {
             for (localizedNameSuggestion in localizedNameSuggestions) {
                 val name = localizedNameSuggestion[languageTag] ?: continue

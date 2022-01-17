@@ -91,11 +91,11 @@ class AchievementsControllerTest {
             id = "allQuests",
             condition = TotalSolvedQuests,
             unlockedLinks = mapOf(
-                1 to links("a","b"),
+                1 to links("a", "b"),
                 2 to links("c"),
                 3 to links("d"), // 3 has one link
                 // 4 has no links
-                5 to links("e","f") // 5 has two links
+                5 to links("e", "f") // 5 has two links
             ))
         allAchievements = listOf(achievement)
 
@@ -103,7 +103,7 @@ class AchievementsControllerTest {
         statisticsListener.onAddedOne(QuestOne)
 
         verify(userAchievementsDao).put("allQuests", 5)
-        verify(userLinksDao).addAll(listOf("d","e","f"))
+        verify(userLinksDao).addAll(listOf("d", "e", "f"))
         verify(listener).onAchievementUnlocked(achievement, 3)
         verify(listener).onAchievementUnlocked(achievement, 4)
         verify(listener).onAchievementUnlocked(achievement, 5)
@@ -115,7 +115,7 @@ class AchievementsControllerTest {
             id = "allQuests",
             condition = TotalSolvedQuests,
             unlockedLinks = mapOf(
-                1 to links("a","b"),
+                1 to links("a", "b"),
                 2 to links("c"),
                 3 to links("d") // this shouldn't be unlocked
             )))
@@ -123,7 +123,7 @@ class AchievementsControllerTest {
         createAchievementsController()
         statisticsListener.onUpdatedAll()
 
-        verify(userLinksDao).addAll(listOf("a","b","c"))
+        verify(userLinksDao).addAll(listOf("a", "b", "c"))
     }
 
     @Test fun `no achievement level above maxLevel will be granted`() {
@@ -197,10 +197,10 @@ class AchievementsControllerTest {
     }
 
     @Test fun `get all unlocked links`() {
-        allLinks = links("a","b","c")
-        on(userLinksDao.getAll()).thenReturn(listOf("a","b"))
+        allLinks = links("a", "b", "c")
+        on(userLinksDao.getAll()).thenReturn(listOf("a", "b"))
         assertEquals(
-            links("a","b"),
+            links("a", "b"),
             createAchievementsController().getLinks()
         )
     }

@@ -30,7 +30,7 @@ class UpdateElementTagsActionTest {
             StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
         ).createUpdates(
             node(1, p(0.0, 0.0)),
-            node(1,  p(0.1,0.0)),
+            node(1,  p(0.1, 0.0)),
             repos,
             provider
         )
@@ -41,8 +41,8 @@ class UpdateElementTagsActionTest {
         UpdateElementTagsAction(
             StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
         ).createUpdates(
-            way(1, listOf(0,1,2,3)),
-            way(1, listOf(1,2,3)),
+            way(1, listOf(0, 1, 2, 3)),
+            way(1, listOf(1, 2, 3)),
             repos,
             provider
         )
@@ -53,8 +53,8 @@ class UpdateElementTagsActionTest {
         UpdateElementTagsAction(
             StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
         ).createUpdates(
-            way(1,listOf(0,1,2,3)),
-            way(1,listOf(0,1,2)),
+            way(1, listOf(0, 1, 2, 3)),
+            way(1, listOf(0, 1, 2)),
             repos,
             provider
         )
@@ -78,7 +78,7 @@ class UpdateElementTagsActionTest {
             StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
         ).createUpdates(
             rel(1, listOf(member(NODE, 1))),
-            rel(1, listOf(member(NODE, 1),member(NODE, 2))),
+            rel(1, listOf(member(NODE, 1), member(NODE, 2))),
             repos,
             provider
         )
@@ -110,14 +110,14 @@ class UpdateElementTagsActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if changes are not applicable`() {
-        val w = way(1, listOf(1,2,3), mutableMapOf("highway" to "residential"))
+        val w = way(1, listOf(1, 2, 3), mutableMapOf("highway" to "residential"))
         UpdateElementTagsAction(
             StringMapChanges(listOf(StringMapEntryAdd("highway", "living_street")))
         ).createUpdates(w, w, repos, provider)
     }
 
     @Test fun `apply changes`() {
-        val w = way(1, listOf(1,2,3))
+        val w = way(1, listOf(1, 2, 3))
         val data = UpdateElementTagsAction(
             StringMapChanges(listOf(StringMapEntryAdd("highway", "living_street")))
         ).createUpdates(w, w, repos, provider)

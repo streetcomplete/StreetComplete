@@ -242,7 +242,7 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             mapOf("amenity" to "recycling", "recycling_type" to "container"),
             IsWasteContainer,
-            StringMapEntryModify("amenity","recycling","waste_disposal"),
+            StringMapEntryModify("amenity", "recycling", "waste_disposal"),
             StringMapEntryDelete("recycling_type", "container")
         )
     }
@@ -262,7 +262,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:another_thing" to "no"
             ),
             IsWasteContainer,
-            StringMapEntryModify("amenity","recycling","waste_disposal"),
+            StringMapEntryModify("amenity", "recycling", "waste_disposal"),
             StringMapEntryDelete("recycling_type", "container"),
             StringMapEntryDelete("check_date:recycling", "2000-11-11"),
             StringMapEntryDelete("recycling:check_date", "2000-11-11"),

@@ -202,7 +202,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     }
 
     private fun updateIndicatorDots() {
-        listOf(binding.dot1,binding.dot2,binding.dot3).forEachIndexed { index, dot ->
+        listOf(binding.dot1, binding.dot2, binding.dot3).forEachIndexed { index, dot ->
             dot.setImageResource(
                 if(currentPage == index) R.drawable.indicator_dot_selected
                 else R.drawable.indicator_dot_default

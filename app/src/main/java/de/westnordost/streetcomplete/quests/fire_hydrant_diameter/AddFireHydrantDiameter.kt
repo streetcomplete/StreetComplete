@@ -30,7 +30,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant
        diameters are added, the code in the form needs to be adapted */
-    override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
+    override val enabledInCountries = NoCountriesExcept("DE", "BE", "GB", "PL", "IE", "FI", "NL")
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["ref"])

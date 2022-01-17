@@ -282,7 +282,7 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val p = p(1.0,1.0)
+        val p = p(1.0, 1.0)
         val expectedNote = note(id = 1, position = p, timestamp = 123L, comments = arrayListOf(
             comment("abc", NoteComment.Action.OPENED, 123L)
         ))
@@ -306,7 +306,7 @@ class NotesWithEditsSourceTest {
 
         val added = listOf(note(1), note(2))
         val updated = listOf(note(3), note(4))
-        val deleted = listOf(1L,2L)
+        val deleted = listOf(1L, 2L)
 
         on(noteEditsController.getAllUnsynced()).thenReturn(emptyList())
 
@@ -353,26 +353,26 @@ private val bbox = bbox()
 val user = User(id = -1, displayName = "")
 
 val initialNotes1 = listOf(
-    note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
+    note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100)
     )),
-    note(id = 3, position = p(0.0,3.0), timestamp = 800)
+    note(id = 3, position = p(0.0, 3.0), timestamp = 800)
 )
 
 val expectedNotes1 = listOf(
-    note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
+    note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100),
         comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
     )),
-    note(id = 2, position = p(12.0,1.0), timestamp = 300, comments = arrayListOf(
+    note(id = 2, position = p(12.0, 1.0), timestamp = 300, comments = arrayListOf(
         comment("xyz", NoteComment.Action.OPENED, timestamp = 300, user = user),
         comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, user = user),
     )),
-    note(id = 3, position = p(0.0,3.0), timestamp = 800)
+    note(id = 3, position = p(0.0, 3.0), timestamp = 800)
 )
 
 val edits1 = listOf(
-    noteEdit(noteId = 2, action = NoteEditAction.CREATE, text = "xyz", timestamp = 300, pos = p(12.0,1.0)),
+    noteEdit(noteId = 2, action = NoteEditAction.CREATE, text = "xyz", timestamp = 300, pos = p(12.0, 1.0)),
     noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
     noteEdit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )

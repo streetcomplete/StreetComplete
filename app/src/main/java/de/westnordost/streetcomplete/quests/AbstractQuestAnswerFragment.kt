@@ -362,7 +362,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     private fun updateContentPadding() {
         if(!contentPadding) {
-            binding.content.setPadding(0,0,0,0)
+            binding.content.setPadding(0, 0, 0, 0)
         } else {
             val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
             val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)

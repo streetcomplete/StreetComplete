@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.elementfilter
 
 import java.util.LinkedList
 
-abstract class BooleanExpression<I : Matcher<T>,T> {
+abstract class BooleanExpression<I : Matcher<T>, T> {
     var parent: Chain<I, T>? = null
         internal set
 
@@ -24,7 +24,7 @@ abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
         child.parent = null
     }
 
-    fun replaceChild(replace: BooleanExpression<I,T>, with: BooleanExpression<I,T>) {
+    fun replaceChild(replace: BooleanExpression<I, T>, with: BooleanExpression<I, T>) {
         val it = nodes.listIterator()
         while (it.hasNext()) {
             val child = it.next()
@@ -36,8 +36,8 @@ abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
     }
 
     private fun replaceChildAt(
-        at: MutableListIterator<BooleanExpression<I,T>>,
-        vararg with: BooleanExpression<I,T>
+        at: MutableListIterator<BooleanExpression<I, T>>,
+        vararg with: BooleanExpression<I, T>
     ) {
         at.remove()
         for (w in with) {

@@ -104,7 +104,7 @@ class CircularFlagView @JvmOverloads constructor(
     private fun getBoundsOffset(d: Drawable, align: FlagAlignment): Rect {
         val w = d.intrinsicWidth
         val h = d.intrinsicHeight
-        val scale = width.toFloat() / min(w,h)
+        val scale = width.toFloat() / min(w, h)
         val hOffset = -w * scale + width
         return when(align) {
             FlagAlignment.LEFT ->         Rect(0, 0, hOffset.toInt(), 0)
@@ -147,7 +147,7 @@ class CircularFlagView @JvmOverloads constructor(
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
             resources.getYamlObject<HashMap<String, String>>(R.raw.flag_alignments).map {
-                it.key to FlagAlignment.valueOf(it.value.replace("-","_").uppercase())
+                it.key to FlagAlignment.valueOf(it.value.replace("-", "_").uppercase())
             }.toMap()
     }
 

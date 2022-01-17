@@ -97,9 +97,9 @@ class ElementDaoTest {
 
     @Test fun deleteAllElements() {
         dao.deleteAll(listOf(
-            ElementKey(NODE,0),
-            ElementKey(WAY,0),
-            ElementKey(RELATION,0)
+            ElementKey(NODE, 0),
+            ElementKey(WAY, 0),
+            ElementKey(RELATION, 0)
         ))
 
         verify(nodeDao).deleteAll(listOf(0L))
@@ -116,9 +116,9 @@ class ElementDaoTest {
 
     @Test fun getAllElements() {
         dao.getAll(listOf(
-            ElementKey(NODE,0),
-            ElementKey(WAY,0),
-            ElementKey(RELATION,0)
+            ElementKey(NODE, 0),
+            ElementKey(WAY, 0),
+            ElementKey(RELATION, 0)
         ))
 
         verify(nodeDao).getAll(listOf(0L))

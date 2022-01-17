@@ -55,10 +55,10 @@ class LocationStateButton @JvmOverloads constructor(
     }
 
     private fun determineStateFrom(a: TypedArray): LocationState = when {
-        a.getBoolean(R.styleable.LocationStateButton_state_updating,false) ->  UPDATING
-        a.getBoolean(R.styleable.LocationStateButton_state_searching,false) -> SEARCHING
-        a.getBoolean(R.styleable.LocationStateButton_state_enabled,false) ->   ENABLED
-        a.getBoolean(R.styleable.LocationStateButton_state_allowed,false) ->   ALLOWED
+        a.getBoolean(R.styleable.LocationStateButton_state_updating, false) ->  UPDATING
+        a.getBoolean(R.styleable.LocationStateButton_state_searching, false) -> SEARCHING
+        a.getBoolean(R.styleable.LocationStateButton_state_enabled, false) ->   ENABLED
+        a.getBoolean(R.styleable.LocationStateButton_state_allowed, false) ->   ALLOWED
         else -> DENIED
     }
 

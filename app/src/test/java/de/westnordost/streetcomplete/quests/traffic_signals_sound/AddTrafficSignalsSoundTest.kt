@@ -25,7 +25,7 @@ class AddTrafficSignalsSoundTest {
                 "highway" to "crossing",
                 "crossing" to "traffic_signals"
             )),
-            way(1, listOf(1,2,3), mapOf(
+            way(1, listOf(1, 2, 3), mapOf(
                 "highway" to "cycleway",
                 "foot" to "no"
             ))

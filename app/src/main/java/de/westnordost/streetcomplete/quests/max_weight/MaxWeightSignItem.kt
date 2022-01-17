@@ -36,7 +36,7 @@ private fun MaxWeightSign.createBitmap(inflater: LayoutInflater): Bitmap {
     )
     val w = container.measuredWidth
     val h = container.measuredHeight
-    container.layout(0,0, w, h)
+    container.layout(0, 0, w, h)
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     container.draw(canvas)

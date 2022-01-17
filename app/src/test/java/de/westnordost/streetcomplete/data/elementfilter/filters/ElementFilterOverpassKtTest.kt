@@ -8,7 +8,7 @@ import java.time.LocalDate
 
 class ElementFilterOverpassKtTest {
 
-    private val date2000_11_11 = FixedDate(LocalDate.of(2000,11,11))
+    private val date2000_11_11 = FixedDate(LocalDate.of(2000, 11, 11))
 
     @Test fun tagOlderThan() {
         val date = dateDaysAgo(100f).toCheckDateString()
@@ -83,7 +83,7 @@ class ElementFilterOverpassKtTest {
         )
         assertEquals(
             "[highway ~ '^(.*)$']",
-            HasTagValueLike("highway",".*").toOverpassString()
+            HasTagValueLike("highway", ".*").toOverpassString()
         )
     }
 
@@ -105,7 +105,7 @@ class ElementFilterOverpassKtTest {
     @Test fun hasTagLike() {
         assertEquals(
             "[~'^(.ame)$' ~ '^(y.s)$']",
-            HasTagLike(".ame","y.s").toOverpassString()
+            HasTagLike(".ame", "y.s").toOverpassString()
         )
     }
 

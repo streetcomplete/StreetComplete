@@ -84,20 +84,20 @@ class NumberSystemTest {
     }
 
     @Test fun `complement one that loops`() {
-        val s = NumberSystem(0,10)
-        val r = s.complemented(listOf(CircularSection(8,5)))
+        val s = NumberSystem(0, 10)
+        val r = s.complemented(listOf(CircularSection(8, 5)))
         assertEquals(listOf(CircularSection(6, 7)), r)
     }
 
     @Test fun `no complement at end`() {
-        val s = NumberSystem(0,10)
-        val r = s.complemented(listOf(CircularSection(0,9), CircularSection(10,10)))
+        val s = NumberSystem(0, 10)
+        val r = s.complemented(listOf(CircularSection(0, 9), CircularSection(10, 10)))
         assertTrue(r.isEmpty())
     }
 
     @Test fun merge() {
-        val s = NumberSystem(3,10)
-        val r = s.merged(listOf(CircularSection(3,4), CircularSection(9,10)))
-        assertEquals(listOf(CircularSection(9,4)), r)
+        val s = NumberSystem(3, 10)
+        val r = s.merged(listOf(CircularSection(3, 4), CircularSection(9, 10)))
+        assertEquals(listOf(CircularSection(9, 4)), r)
     }
 }

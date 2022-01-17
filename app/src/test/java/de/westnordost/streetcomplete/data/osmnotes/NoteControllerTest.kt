@@ -24,7 +24,7 @@ class NoteControllerTest {
     }
 
     @Test fun `getAll note ids`() {
-        val ids = listOf(1L,2L,3L)
+        val ids = listOf(1L, 2L, 3L)
         val ret = listOf(note(1), note(2), note(3))
         on(dao.getAll(ids)).thenReturn(ret)
         assertEquals(ret, noteController.getAll(ids))
@@ -103,7 +103,7 @@ class NoteControllerTest {
     }
 
     @Test fun deleteOlderThan() {
-        val ids = listOf(1L,2L,3L)
+        val ids = listOf(1L, 2L, 3L)
         on(dao.getIdsOlderThan(123L)).thenReturn(ids)
         val listener = mock<NoteController.Listener>()
 

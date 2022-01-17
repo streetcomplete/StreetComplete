@@ -52,7 +52,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         val hasCenterLeftTurnLane = answer is MarkedLanesSides && answer.centerLeftTurnLane
         if (hasCenterLeftTurnLane) {
             changes.addOrModify("lanes:both_ways", "1")
-            changes.addOrModify("turn:lanes:both_ways","left")
+            changes.addOrModify("turn:lanes:both_ways", "left")
         } else {
             changes.deleteIfExists("lanes:both_ways")
             changes.deleteIfExists("turn:lanes:both_ways")

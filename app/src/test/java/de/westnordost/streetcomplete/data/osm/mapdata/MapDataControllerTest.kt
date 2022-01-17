@@ -41,18 +41,18 @@ class MapDataControllerTest {
     @Test fun get() {
         val node = node(5)
         on(elementDB.get(NODE, 5L)).thenReturn(node)
-        assertEquals(node, controller.get(NODE,5L))
+        assertEquals(node, controller.get(NODE, 5L))
     }
 
     @Test fun getGeometry() {
         val pGeom = pGeom()
         on(geometryDB.get(NODE, 5L)).thenReturn(pGeom)
-        assertEquals(pGeom, controller.getGeometry(NODE,5L))
+        assertEquals(pGeom, controller.getGeometry(NODE, 5L))
     }
 
     @Test fun getGeometries() {
         val pGeom = ElementGeometryEntry(NODE, 1, pGeom())
-        val keys = listOf(ElementKey(NODE,1))
+        val keys = listOf(ElementKey(NODE, 1))
         on(geometryDB.getAllEntries(keys)).thenReturn(listOf(pGeom))
         assertEquals(
             listOf(pGeom),

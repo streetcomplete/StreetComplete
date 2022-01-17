@@ -48,7 +48,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(2))
         assertNotNull(dao.get(3))
 
-        dao.deleteAll(listOf(1,2,3))
+        dao.deleteAll(listOf(1, 2, 3))
 
         assertNull(dao.get(1))
         assertNull(dao.get(2))

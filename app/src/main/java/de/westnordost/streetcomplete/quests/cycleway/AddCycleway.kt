@@ -204,7 +204,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
                 if (cycleway == EXCLUSIVE_LANE)
                     changes.addOrModify("$cyclewayKey:lane", "exclusive")
                 else if (cycleway == ADVISORY_LANE)
-                    changes.addOrModify("$cyclewayKey:lane","advisory")
+                    changes.addOrModify("$cyclewayKey:lane", "advisory")
             }
             TRACK -> {
                 changes.addOrModify(cyclewayKey, "track")

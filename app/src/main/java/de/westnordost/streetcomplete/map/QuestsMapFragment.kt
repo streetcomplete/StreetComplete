@@ -119,7 +119,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 listener?.onClickedEdit(editKey)
                 return@launch
             }
-            val pickMarkerResult = controller?.pickMarker(x,y)
+            val pickMarkerResult = controller?.pickMarker(x, y)
             if (pickMarkerResult == null) {
                 onClickedMap(x, y)
             }

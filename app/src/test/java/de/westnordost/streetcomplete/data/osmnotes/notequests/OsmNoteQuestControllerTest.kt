@@ -86,7 +86,7 @@ class OsmNoteQuestControllerTest {
     }
 
     @Test  fun unhideAll() {
-        val hiddenNoteIds = listOf<Long>(1,2,3)
+        val hiddenNoteIds = listOf<Long>(1, 2, 3)
         val hiddenNotes = listOf(
             note(1), note(2), note(3)
         )
@@ -116,7 +116,7 @@ class OsmNoteQuestControllerTest {
             NoteIdWithTimestamp(2, 500),
             NoteIdWithTimestamp(3, 600), // missing note
         ))
-        on(noteSource.getAll(eq(listOf(1L,2L,3L)))).thenReturn(listOf(note1, note2))
+        on(noteSource.getAll(eq(listOf(1L, 2L, 3L)))).thenReturn(listOf(note1, note2))
 
         assertEquals(
             listOf(
@@ -170,34 +170,34 @@ class OsmNoteQuestControllerTest {
     @Test fun `get quest phrased as question returns non-null`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
-            position = p(1.0,1.0),
+            position = p(1.0, 1.0),
             comments = listOf(comment(text = "test?"))
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest with comment containing survey required marker returns non-null`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
-            position = p(1.0,1.0),
+            position = p(1.0, 1.0),
             comments = listOf(comment(text = "test #surveyme"))
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns non-null by preference`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
-            position = p(1.0,1.0),
+            position = p(1.0, 1.0),
             comments = listOf(comment(text = "test"))
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(false)
 
-        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     // not doing all the tests for getAll again because it uses the same functions
@@ -236,7 +236,7 @@ class OsmNoteQuestControllerTest {
         // note 4 is not eligible -> delete it
         // note 5 is deleted
 
-        on(hiddenDB.getAllIds()).thenReturn(listOf(2,4))
+        on(hiddenDB.getAllIds()).thenReturn(listOf(2, 4))
 
         noteUpdatesListener.onUpdated(
             added = listOf(
@@ -254,7 +254,7 @@ class OsmNoteQuestControllerTest {
                     OsmNoteQuest(3, p()),
                 ))
             },
-            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(4,5)) }
+            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(4, 5)) }
         )
     }
 }

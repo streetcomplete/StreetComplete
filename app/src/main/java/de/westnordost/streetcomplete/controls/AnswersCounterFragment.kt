@@ -36,10 +36,10 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
 
     private val questStatisticsListener = object : StatisticsSource.Listener {
         override fun onAddedOne(questType: QuestType<*>) {
-            viewLifecycleScope.launch { addCount(+1,true) }
+            viewLifecycleScope.launch { addCount(+1, true) }
         }
         override fun onSubtractedOne(questType: QuestType<*>) {
-            viewLifecycleScope.launch { addCount(-1,true) }
+            viewLifecycleScope.launch { addCount(-1, true) }
         }
         override fun onUpdatedAll() {
             viewLifecycleScope.launch { updateCount(false) }

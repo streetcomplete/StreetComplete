@@ -7,7 +7,7 @@ import org.junit.Test
 class HasTagValueLikeTest {
 
     @Test fun `matches like dot`() {
-        val f = HasTagValueLike("highway",".esidential")
+        val f = HasTagValueLike("highway", ".esidential")
 
         assertTrue(f.matches(mapOf("highway" to "residential")))
         assertTrue(f.matches(mapOf("highway" to "wesidential")))

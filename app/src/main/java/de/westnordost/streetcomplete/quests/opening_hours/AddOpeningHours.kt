@@ -166,7 +166,7 @@ class AddOpeningHours (
                 changes.deleteIfPreviously("opening_hours:signed", "no")
             }
             is DescribeOpeningHours -> {
-                val text = answer.text.replace("\"","")
+                val text = answer.text.replace("\"", "")
                 changes.updateWithCheckDate("opening_hours", "\"$text\"")
                 changes.deleteIfPreviously("opening_hours:signed", "no")
             }

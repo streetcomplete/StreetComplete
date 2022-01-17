@@ -101,7 +101,7 @@ class AddStepsRampTest {
                 strollerRamp = false,
                 wheelchairRamp = WheelchairRampStatus.NO
             ),
-            StringMapEntryModify("ramp", "yes","no"),
+            StringMapEntryModify("ramp", "yes", "no"),
             StringMapEntryDelete("ramp:bicycle", "yes"),
             StringMapEntryDelete("ramp:wheelchair", "separate"),
         )

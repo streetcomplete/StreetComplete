@@ -41,7 +41,7 @@ class BallPitView @JvmOverloads constructor(
     private val sensorManager: SensorManager
     private var accelerometer: Sensor? = null
 
-    private val physicsController = PhysicsWorldController(Vec2(0f,-10f))
+    private val physicsController = PhysicsWorldController(Vec2(0f, -10f))
     private var minPixelsPerMeter = 1f
     private val bubbleBodyDef: BodyDef
     private lateinit var worldBounds: RectF
@@ -63,10 +63,10 @@ class BallPitView @JvmOverloads constructor(
             val y = event.values[1]
             val z = event.values[2]
             physicsController.gravity = when (display.rotation) {
-                Surface.ROTATION_90 -> Vec2(y,-x)
-                Surface.ROTATION_180 -> Vec2(x,y)
-                Surface.ROTATION_270 -> Vec2(-y,x)
-                else -> Vec2(-x,-y)
+                Surface.ROTATION_90 -> Vec2(y, -x)
+                Surface.ROTATION_180 -> Vec2(x, y)
+                Surface.ROTATION_270 -> Vec2(-y, x)
+                else -> Vec2(-x, -y)
             }
         }
     }
@@ -127,7 +127,7 @@ class BallPitView @JvmOverloads constructor(
 
         val widthInMeters = width / minPixelsPerMeter
         val heightInMeters = height / minPixelsPerMeter
-        worldBounds = RectF(0f,0f, widthInMeters, heightInMeters)
+        worldBounds = RectF(0f, 0f, widthInMeters, heightInMeters)
 
         createWorldBounds(worldBounds)
     }

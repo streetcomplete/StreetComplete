@@ -194,7 +194,7 @@ import javax.inject.Singleton
             geometryCount = geometryDB.deleteAll(elements)
             createdElementsController.deleteAll(elements)
         }
-        Log.i(TAG,"Deleted $elementCount old elements and $geometryCount geometries")
+        Log.i(TAG, "Deleted $elementCount old elements and $geometryCount geometries")
 
         onUpdated(deleted = elements)
 

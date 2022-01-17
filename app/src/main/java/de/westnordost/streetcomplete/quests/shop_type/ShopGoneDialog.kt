@@ -24,7 +24,7 @@ class ShopGoneDialog(
     private val geometryType: GeometryType?,
     private val countryCode: String?,
     private val featureDictionary: FeatureDictionary,
-    private val onSelectedFeature: (Map<String,String>) -> Unit,
+    private val onSelectedFeature: (Map<String, String>) -> Unit,
     private val onLeaveNote: () -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 

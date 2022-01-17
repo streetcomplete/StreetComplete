@@ -85,7 +85,7 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
     }
 
     private fun querySophoxCsv(query: String): List<String> {
-        val url = URL("https://sophox.org/sparql?query="+ URLEncoder.encode(query,"UTF-8"))
+        val url = URL("https://sophox.org/sparql?query="+ URLEncoder.encode(query, "UTF-8"))
         val connection = url.openConnection() as HttpURLConnection
         try {
             connection.setRequestProperty("Accept", "text/csv")
