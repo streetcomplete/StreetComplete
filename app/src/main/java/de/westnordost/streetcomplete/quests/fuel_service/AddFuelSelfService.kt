@@ -31,7 +31,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
         }
     }
 
-    override val enabledInCountries = NoCountriesExcept("IT")
+    override val enabledInCountries = NoCountriesExcept("IT", "UK")
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
