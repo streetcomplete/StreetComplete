@@ -338,8 +338,6 @@ And to add mechanism supplying this data. Here is [a typical code](https://githu
 
 ## Designing the form
 
-## 3. Design the form
-
 As mentioned, the user interface must leave no space for misunderstandings, it must be concise and quick and easy to use. Also sounds obvious, but you will quickly find out that a balance must be found between covering all the edge cases and designing the form to be as straightforward and clutterless as possible.
 
 - Design the main form clutter-free so that it is straightforward for the majority of use cases.
