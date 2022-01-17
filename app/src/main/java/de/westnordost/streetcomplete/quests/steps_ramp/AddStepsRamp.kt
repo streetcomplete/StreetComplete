@@ -25,7 +25,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
          )
     """
 
-    override val commitMessage = "Add whether steps have a ramp"
+    override val changesetComment = "Add whether steps have a ramp"
     override val wikiLink = "Key:ramp"
     override val icon = R.drawable.ic_quest_steps_ramp
     override val isSplitWayEnabled = true

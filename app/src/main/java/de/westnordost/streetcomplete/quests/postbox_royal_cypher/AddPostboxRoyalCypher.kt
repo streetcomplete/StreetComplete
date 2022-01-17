@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override val elementFilter = "nodes with amenity = post_box and !royal_cypher"
-    override val commitMessage = "Add postbox royal cypher"
+    override val changesetComment = "Add postbox royal cypher"
     override val wikiLink = "Key:royal_cypher"
     override val icon = R.drawable.ic_quest_crown
     override val isDeleteElementEnabled = true

@@ -20,7 +20,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
            or toilets:wheelchair older today -8 years
          )
     """
-    override val commitMessage = "Add wheelchair access to toilets"
+    override val changesetComment = "Add wheelchair access to toilets"
     override val wikiLink = "Key:toilets:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val isReplaceShopEnabled = true

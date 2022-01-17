@@ -27,7 +27,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
         )
     """
 
-    override val commitMessage = "Add whether a bus stop is lit"
+    override val changesetComment = "Add whether a bus stop is lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_bus_stop_lit
 

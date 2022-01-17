@@ -24,7 +24,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
         and (!segregated or segregated older today -8 years)
     """
 
-    override val commitMessage = "Add segregated status for combined footway with cycleway"
+    override val changesetComment = "Add segregated status for combined footway with cycleway"
     override val wikiLink = "Key:segregated"
     override val icon = R.drawable.ic_quest_path_segregation
 

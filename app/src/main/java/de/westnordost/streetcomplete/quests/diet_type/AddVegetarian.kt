@@ -25,7 +25,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
         )
     """
 
-    override val commitMessage = "Add vegetarian diet type"
+    override val changesetComment = "Add vegetarian diet type"
     override val wikiLink = "Key:diet"
     override val icon = R.drawable.ic_quest_restaurant_vegetarian
     override val isReplaceShopEnabled = true

@@ -24,7 +24,7 @@ class AddBollardType : OsmElementQuestType<BollardType> {
           and area != yes
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add bollard type"
+    override val changesetComment = "Add bollard type"
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.ic_quest_no_cars
     override val isDeleteElementEnabled = true

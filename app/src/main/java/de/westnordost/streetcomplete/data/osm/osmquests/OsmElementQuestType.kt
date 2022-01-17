@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 interface OsmElementQuestType<T> : QuestType<T> {
 
     /** the commit message to be used for this quest type */
-    val commitMessage: String
+    val changesetComment: String
 
     /** the OpenStreetMap wiki page with the documentation */
     val wikiLink: String?

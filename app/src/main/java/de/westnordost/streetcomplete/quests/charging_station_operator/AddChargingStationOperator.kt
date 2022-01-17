@@ -15,7 +15,7 @@ class AddChargingStationOperator : OsmFilterQuestType<String>() {
           amenity = charging_station
           and !operator and !name and !brand
     """
-    override val commitMessage = "Add charging station operator"
+    override val changesetComment = "Add charging station operator"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.ic_quest_car_charger
     override val isDeleteElementEnabled = true

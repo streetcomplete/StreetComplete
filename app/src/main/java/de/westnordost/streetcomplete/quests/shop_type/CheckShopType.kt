@@ -29,7 +29,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
         nodes, ways, relations with ${isKindOfShopExpression()}
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Check if vacant shop is still vacant"
+    override val changesetComment = "Check if vacant shop is still vacant"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop
 
