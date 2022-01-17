@@ -137,6 +137,11 @@ This query will be limited to nodes (`nodes with`), which fulfil some requiremen
 
 It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request a more thorough documentation here.
 
+#### Hints
+The rules should be as exclusive as possible to generate as few false-positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
+
+Also, for very detailed information that can be assumed to always have the same ("undefined") answer in many countries, it might be a good idea to limit quests to an inclusive list of certain countries.
+
 ### Properties
 
 #### commitMessage
@@ -330,6 +335,20 @@ And to add mechanism supplying this data. Here is [a typical code](https://githu
 - try to pass name, featureType (such as "greengrocer", translated to the proper language)
 - if name is not tagged: brand and featureType
 - or just featureType
+
+## Designing the form
+
+## 3. Design the form
+
+As mentioned, the user interface must leave no space for misunderstandings, it must be concise and quick and easy to use. Also sounds obvious, but you will quickly find out that a balance must be found between covering all the edge cases and designing the form to be as straightforward and clutterless as possible.
+
+- Design the main form clutter-free so that it is straightforward for the majority of use cases.
+- Make it not impossible to answer the edge cases (but don't clutter up the main form with that). A good pattern is to "ban" answering edge cases into the "Other answers..." menu. I.e. look at the opening hours quest.
+- Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
+- The information the user should fill in should be as atomic as possible. Users are impatient. I.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
+- "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo. 
+
+Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
 
 ## Custom filters
 It is possible to use far more complex filters when querying for eligible elements.
