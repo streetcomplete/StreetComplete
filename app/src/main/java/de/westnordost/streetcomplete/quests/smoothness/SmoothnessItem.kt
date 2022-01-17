@@ -151,6 +151,7 @@ private val Smoothness.pavingStonesDescriptionResId get() = when(this) {
 }
 
 private val Smoothness.compactedImageResId get() = when (this) {
+    GOOD -> R.drawable.surface_compacted_good
     INTERMEDIATE -> R.drawable.surface_compacted_intermediate
     BAD -> R.drawable.surface_compacted_bad
     VERY_BAD -> R.drawable.surface_compacted_very_bad
@@ -171,6 +172,7 @@ private val Smoothness.gravelImageResId get() = when (this) {
 }
 
 private val Smoothness.compactedOrGravelDescriptionResId get() = when(this) {
+    GOOD -> R.string.quest_smoothness_description_good_compacted_gravel
     INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_compacted_gravel
     BAD -> R.string.quest_smoothness_description_bad_compacted_gravel
     VERY_BAD -> R.string.quest_smoothness_description_very_bad_compacted_gravel
