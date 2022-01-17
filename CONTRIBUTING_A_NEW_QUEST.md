@@ -348,6 +348,32 @@ As mentioned, the user interface must leave no space for misunderstandings, it m
 
 Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
 
+## New photos
+
+Some quest will require photos for their interface.
+
+Photo must be available on open license - so not every photo found across Internet is usable. You can either take own photo or find an existing freely licensed photo.
+
+Good places to find freely licensed images are [Geograph](https://www.geograph.org.uk/) and [Wikimedia Commons](https://commons.wikimedia.org/).
+
+You can also take own photos, standard smartphone camera is a good enough. And sometimes highly specific image is needed.
+
+In StreetComplete many images have unusual composition. Often it is necessary to leave space for label at the bottom.
+
+Images should be free of visual debris, not misleading. Though it is fine to use image not strictly matching what is depicted, as long as it is clear. For example [permanent pile of soil blocking road](https://wiki.openstreetmap.org/wiki/Tag:barrier%3Ddebris) is illustrated by a [temporary landslide](https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg). This is OK as images are illustrative.
+
+Photos go to a different folder than SVGs: they can be used directly by build process so put them into folders
+  - [mdpi](app/src/main/res/drawable-mdpi) (typically 128 x 128 pixels, for rectangular ones smaller dimension should be 128 pixels)
+  - [hdpi](app/src/main/res/drawable-hdpi) (typically 192 x 192 pixels, for rectangular ones smaller dimension should be 192 pixels)
+  - [xhdpi](app/src/main/res/drawable-xhdpi) (typically 256 x 256 pixels, for rectangular ones smaller dimension should be 256 pixels)
+  - [xxhdpi](app/src/main/res/drawable-xxhdpi) (typically 384 x 384 pixels, for rectangular ones smaller dimension should be 384 pixels)
+
+Each of this folders should hold the same image resized to a different resolution. While testing various images it is enough to put into one folder.
+
+The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may be useful, but you can also do this manually with Gimp or a similar software.
+
+After adding file remember to update [credit file](app/src/main/res/authors.txt) (different than one for icons).
+
 ## Custom filters
 It is possible to use far more complex filters when querying for eligible elements.
 
