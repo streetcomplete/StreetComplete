@@ -48,9 +48,11 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
 
         viewLifecycleScope.launch {
             val statistics = withContext(Dispatchers.IO) { statisticsSource.getQuestStatistics() }
-            binding.ballPitView.setViews(statistics.map { statistic ->
-                createQuestTypeBubbleView(statistic.questType, statistic.solvedCount) to statistic.solvedCount
-            })
+            binding.ballPitView.setViews(
+                statistics.map { statistic ->
+                    createQuestTypeBubbleView(statistic.questType, statistic.solvedCount) to statistic.solvedCount
+                }
+            )
         }
     }
 

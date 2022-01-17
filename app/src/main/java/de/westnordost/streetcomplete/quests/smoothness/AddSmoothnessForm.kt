@@ -62,10 +62,11 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
     }
 
     private fun showObstacleHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_smoothness_obstacle_hint)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_smoothness_obstacle_hint)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 

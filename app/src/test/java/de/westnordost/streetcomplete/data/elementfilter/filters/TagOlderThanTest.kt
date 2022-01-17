@@ -21,50 +21,85 @@ class TagOlderThanTest {
     }
 
     @Test fun `matches new element with tag and old check_date`() {
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "opening_hours:check_date" to oldDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "opening_hours:check_date" to oldDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
 
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "check_date:opening_hours" to oldDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "check_date:opening_hours" to oldDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
     }
 
     @Test fun `matches new element with tag and old lastcheck`() {
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "opening_hours:lastcheck" to oldDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "opening_hours:lastcheck" to oldDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
 
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "lastcheck:opening_hours" to oldDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "lastcheck:opening_hours" to oldDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
     }
 
     @Test fun `matches new element with tag and old last_checked`() {
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "opening_hours:last_checked" to oldDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "opening_hours:last_checked" to oldDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
 
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "last_checked:opening_hours" to oldDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "last_checked:opening_hours" to oldDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
     }
 
     @Test fun `matches new element with tag and different check date tags of which only one is old`() {
-        assertTrue(c.matches(mapOf(
-            "opening_hours" to "tag",
-            "opening_hours:last_checked" to newDate.toCheckDateString(),
-            "opening_hours:lastcheck" to newDate.toCheckDateString(),
-            "opening_hours:check_date" to newDate.toCheckDateString(),
-            "last_checked:opening_hours" to oldDate.toCheckDateString(),
-            "lastcheck:opening_hours" to newDate.toCheckDateString(),
-            "check_date:opening_hours" to newDate.toCheckDateString()
-        ), newDate))
+        assertTrue(
+            c.matches(
+                mapOf(
+                    "opening_hours" to "tag",
+                    "opening_hours:last_checked" to newDate.toCheckDateString(),
+                    "opening_hours:lastcheck" to newDate.toCheckDateString(),
+                    "opening_hours:check_date" to newDate.toCheckDateString(),
+                    "last_checked:opening_hours" to oldDate.toCheckDateString(),
+                    "lastcheck:opening_hours" to newDate.toCheckDateString(),
+                    "check_date:opening_hours" to newDate.toCheckDateString()
+                ),
+                newDate
+            )
+        )
     }
 }

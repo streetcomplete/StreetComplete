@@ -85,26 +85,38 @@ class AddOpeningHoursTest {
 
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(
-            RegularOpeningHours(OpeningHoursRuleList(listOf(
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.MO
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 10
-                        it.end = 60 * 12
-                    })
-                },
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.TU
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 12
-                        it.end = 60 * 24
-                    })
-                })
-            )),
+            RegularOpeningHours(
+                OpeningHoursRuleList(
+                    listOf(
+                        Rule().apply {
+                            days = listOf(
+                                WeekDayRange().also {
+                                    it.startDay = WeekDay.MO
+                                }
+                            )
+                            times = listOf(
+                                TimeSpan().also {
+                                    it.start = 60 * 10
+                                    it.end = 60 * 12
+                                }
+                            )
+                        },
+                        Rule().apply {
+                            days = listOf(
+                                WeekDayRange().also {
+                                    it.startDay = WeekDay.TU
+                                }
+                            )
+                            times = listOf(
+                                TimeSpan().also {
+                                    it.start = 60 * 12
+                                    it.end = 60 * 24
+                                }
+                            )
+                        }
+                    )
+                )
+            ),
             StringMapEntryAdd("opening_hours", "Mo 10:00-12:00; Tu 12:00-24:00")
         )
     }
@@ -112,17 +124,25 @@ class AddOpeningHoursTest {
     @Test fun `apply opening hours answer when there was a different one before`() {
         questType.verifyAnswer(
             mapOf("opening_hours" to "hohoho"),
-            RegularOpeningHours(OpeningHoursRuleList(listOf(
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.MO
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 10
-                        it.end = 60 * 12
-                    })
-                })
-            )),
+            RegularOpeningHours(
+                OpeningHoursRuleList(
+                    listOf(
+                        Rule().apply {
+                            days = listOf(
+                                WeekDayRange().also {
+                                    it.startDay = WeekDay.MO
+                                }
+                            )
+                            times = listOf(
+                                TimeSpan().also {
+                                    it.start = 60 * 10
+                                    it.end = 60 * 12
+                                }
+                            )
+                        }
+                    )
+                )
+            ),
             StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")
         )
     }
@@ -130,52 +150,76 @@ class AddOpeningHoursTest {
     @Test fun `apply opening hours answer when there was the same one before`() {
         questType.verifyAnswer(
             mapOf("opening_hours" to "Mo 10:00-12:00"),
-            RegularOpeningHours(OpeningHoursRuleList(listOf(
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.MO
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 10
-                        it.end = 60 * 12
-                    })
-                })
-            )),
+            RegularOpeningHours(
+                OpeningHoursRuleList(
+                    listOf(
+                        Rule().apply {
+                            days = listOf(
+                                WeekDayRange().also {
+                                    it.startDay = WeekDay.MO
+                                }
+                            )
+                            times = listOf(
+                                TimeSpan().also {
+                                    it.start = 60 * 10
+                                    it.end = 60 * 12
+                                }
+                            )
+                        }
+                    )
+                )
+            ),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
 
     @Test fun `isApplicableTo returns false for unknown places`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("whatisthis" to "something")
-        )))
+        assertFalse(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf("whatisthis" to "something")
+                )
+            )
+        )
     }
 
     @Test fun `isApplicableTo returns true for known places`() {
-        assertTrue(questType.isApplicableTo(node(
-            tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
-        )))
+        assertTrue(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
+                )
+            )
+        )
     }
 
     @Test fun `isApplicableTo returns true if the opening hours cannot be parsed`() {
-        assertTrue(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours" to "maybe open maybe closed who knows"
-            ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        assertTrue(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf(
+                        "shop" to "supermarket",
+                        "name" to "Supi",
+                        "opening_hours" to "maybe open maybe closed who knows"
+                    ),
+                    timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+                )
+            )
+        )
     }
 
     @Test fun `isApplicableTo returns false if the opening hours are not supported`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours" to "1998 Mo-Fr 18:00-20:00"
-            ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        assertFalse(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf(
+                        "shop" to "supermarket",
+                        "name" to "Supi",
+                        "opening_hours" to "1998 Mo-Fr 18:00-20:00"
+                    ),
+                    timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+                )
+            )
+        )
     }
 }

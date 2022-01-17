@@ -20,10 +20,12 @@ abstract class ANameWithSuggestionsForm<T> : AbstractQuestFormAnswerFragment<T>(
         super.onViewCreated(view, savedInstanceState)
 
         suggestions?.let {
-            binding.nameInput.setAdapter(ArrayAdapter(
-                requireContext(),
-                android.R.layout.simple_dropdown_item_1line, it
-            ))
+            binding.nameInput.setAdapter(
+                ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line, it
+                )
+            )
         }
 
         binding.nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })

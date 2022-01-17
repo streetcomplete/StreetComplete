@@ -17,12 +17,14 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         nodes with
           amenity = recycling
           and recycling_type = container
           and access !~ private|no
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"
@@ -39,10 +41,10 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
          * haven't been touched for 2 years and are exclusively recycling types selectable in
          * StreetComplete. */
         filter.matches(element) &&
-        (
-            !element.hasAnyRecyclingMaterials() ||
-            recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
-        )
+            (
+                !element.hasAnyRecyclingMaterials() ||
+                    recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
+                )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
@@ -80,7 +82,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
                 changes.deleteIfExists("recycling:beverage_cartons")
             }
             selectedMaterials.contains("recycling:beverage_cartons") &&
-            selectedMaterials.contains("recycling:plastic_bottles") -> {
+                selectedMaterials.contains("recycling:plastic_bottles") -> {
                 changes.addOrModify("recycling:plastic_packaging", "no")
                 changes.addOrModify("recycling:plastic", "no")
             }
@@ -105,10 +107,10 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         // remove recycling:* taggings previously "yes" but now not any more
         val materialsNotSelectedAnymore = changes.getPreviousEntries().filter { (key, value) ->
             !selectedMaterials.contains(key) &&
-            // don't touch any previous explicit recycling:*=no taggings
-            value == "yes" &&
-            // leave plastic values alone because it is managed separately (see above)
-            !anyPlastic.contains(key)
+                // don't touch any previous explicit recycling:*=no taggings
+                value == "yes" &&
+                // leave plastic values alone because it is managed separately (see above)
+                !anyPlastic.contains(key)
         }.keys
         for (notAcceptedMaterial in materialsNotSelectedAnymore) {
             changes.delete(notAcceptedMaterial)
@@ -146,6 +148,6 @@ private fun Element.hasAnyRecyclingMaterials(): Boolean =
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
     tags.any {
         it.key.startsWith("recycling:") &&
-        it.key !in allKnownMaterials &&
-        it.value == "yes"
+            it.key !in allKnownMaterials &&
+            it.value == "yes"
     }

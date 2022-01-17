@@ -39,17 +39,17 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     private val currentAnimations = mutableMapOf<String, Animator>()
     private val mainHandler = Handler(Looper.getMainLooper())
     private var lastAnimator: ValueAnimator? = null
-    set(value) {
-        if (field == value) return
-        mainHandler.post {
-            if (field == null) {
-                listener?.onAnimationsStarted()
-            } else if (value == null) {
-                listener?.onAnimationsEnded()
+        set(value) {
+            if (field == value) return
+            mainHandler.post {
+                if (field == null) {
+                    listener?.onAnimationsStarted()
+                } else if (value == null) {
+                    listener?.onAnimationsEnded()
+                }
             }
+            field = value
         }
-        field = value
-    }
     private var lastAnimatorEndTime: Long = 0
 
     private val _tangramCamera = com.mapzen.tangram.CameraPosition()

@@ -119,11 +119,13 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
     EDIT_TYPE_NOTE ->
         NoteEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_HIDE_OSM_QUEST ->
-        OsmQuestHiddenKey(OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
-            getValue(MARKER_ELEMENT_ID).toLong(),
-            getValue(MARKER_QUEST_TYPE)
-        ))
+        OsmQuestHiddenKey(
+            OsmQuestKey(
+                getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
+                getValue(MARKER_ELEMENT_ID).toLong(),
+                getValue(MARKER_QUEST_TYPE)
+            )
+        )
     EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
         OsmNoteQuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     else -> null

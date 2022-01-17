@@ -23,7 +23,8 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
         getTimestamp(osmQuestKey) != null
 
     fun getTimestamp(osmQuestKey: OsmQuestKey): Long? =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
             args = arrayOf(
                 osmQuestKey.questTypeName,
@@ -33,7 +34,8 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
         ) { it.getLong(TIMESTAMP) }
 
     fun delete(osmQuestKey: OsmQuestKey): Boolean =
-        db.delete(NAME,
+        db.delete(
+            NAME,
             where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
             args = arrayOf(
                 osmQuestKey.questTypeName,

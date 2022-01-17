@@ -12,10 +12,13 @@ import javax.inject.Inject
 class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
 
     fun add(noteId: Long) {
-        db.insert(NAME, listOf(
-            NOTE_ID to noteId,
-            TIMESTAMP to currentTimeMillis()
-        ))
+        db.insert(
+            NAME,
+            listOf(
+                NOTE_ID to noteId,
+                TIMESTAMP to currentTimeMillis()
+            )
+        )
     }
 
     fun contains(noteId: Long): Boolean =

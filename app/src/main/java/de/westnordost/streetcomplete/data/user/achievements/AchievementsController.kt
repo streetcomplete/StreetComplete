@@ -85,13 +85,15 @@ import javax.inject.Singleton
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
     private fun updateQuestTypeAchievements(questType: QuestType<*>) {
-        updateAchievements(allAchievements.filter {
-            when (it.condition) {
-                is SolvedQuestsOfTypes -> questType.questTypeAchievements.anyHasId(it.id)
-                is TotalSolvedQuests -> true
-                else -> false
+        updateAchievements(
+            allAchievements.filter {
+                when (it.condition) {
+                    is SolvedQuestsOfTypes -> questType.questTypeAchievements.anyHasId(it.id)
+                    is TotalSolvedQuests -> true
+                    else -> false
+                }
             }
-        })
+        )
     }
 
     /** Look at and grant only the achievements that have anything to do with days active */

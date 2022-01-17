@@ -48,65 +48,68 @@ fun main() = runBlocking {
         connection.doOutput = true
         connection.inputStream.bufferedReader().useLines { lines ->
             runBlocking {
-            for (line in lines) { launch {
-                total++
-                var oh = line
-                // CSV output wraps string in "..." if it contains a ,
-                if (oh.contains(',') && oh.startsWith('"')) {
-                    oh = oh.trim { it == '"' }.replace("\"\"", "\"")
-                }
-                val rules = oh.toOpeningHoursRules()
-                if (rules != null) {
-                    parsed++
-                    val oh2 = rules.toOpeningHoursRows()?.toOpeningHoursRules()?.toString()
-                    if (oh2 != null) {
-                        supported++
-                    } else {
-                        val r = rules.rules
-                        if (r.any { it.isTwentyfourseven }) {
-                            containsTwentyfourseven++
+                for (line in lines) {
+                    launch {
+                        total++
+                        var oh = line
+                        // CSV output wraps string in "..." if it contains a ,
+                        if (oh.contains(',') && oh.startsWith('"')) {
+                            oh = oh.trim { it == '"' }.replace("\"\"", "\"")
                         }
-                        if (r.any { it.comment != null }) {
-                            containsComments++
+                        val rules = oh.toOpeningHoursRules()
+                        if (rules != null) {
+                            parsed++
+                            val oh2 = rules.toOpeningHoursRows()?.toOpeningHoursRules()?.toString()
+                            if (oh2 != null) {
+                                supported++
+                            } else {
+                                val r = rules.rules
+                                if (r.any { it.isTwentyfourseven }) {
+                                    containsTwentyfourseven++
+                                }
+                                if (r.any { it.comment != null }) {
+                                    containsComments++
+                                }
+                                if (r.any { it.isFallBack }) {
+                                    containsFallback++
+                                }
+                                if (r.any { it.modifier != null }) {
+                                    containingOff++
+                                }
+                                if (r.any { rule -> rule.years != null || rule.dates?.any { it.startDate.year != YearRange.UNDEFINED_YEAR } == true }) {
+                                    containsYears++
+                                }
+                                if (r.any { it.weeks != null }) {
+                                    containsWeeks++
+                                }
+                                if (r.any { it.times == null && !it.isTwentyfourseven && it.modifier == null }) {
+                                    noHours++
+                                }
+                                if (r.any { rule -> rule.holidays?.any { !it.isSupported() } == true }) {
+                                    complicatedHolidays++
+                                }
+                                if (r.any { rule -> rule.days?.any { !it.isSupported() } == true }) {
+                                    complicatedWeekdayRanges++
+                                }
+                                if (r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
+                                    timeEvents++
+                                }
+                                if (r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null  } == true }) {
+                                    complicatedTimes++
+                                }
+                                if (r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true }) {
+                                    complicatedDates++
+                                }
+                                if (r.all { it.isSupportedOpeningHours() } && r.weekdaysCollideWithAnother()) {
+                                    selfColliding++
+                                }
+                            }
                         }
-                        if (r.any { it.isFallBack }) {
-                            containsFallback++
-                        }
-                        if (r.any { it.modifier != null }) {
-                            containingOff++
-                        }
-                        if (r.any { rule -> rule.years != null || rule.dates?.any { it.startDate.year != YearRange.UNDEFINED_YEAR } == true }) {
-                            containsYears++
-                        }
-                        if (r.any { it.weeks != null }) {
-                            containsWeeks++
-                        }
-                        if (r.any { it.times == null && !it.isTwentyfourseven && it.modifier == null }) {
-                            noHours++
-                        }
-                        if (r.any { rule -> rule.holidays?.any { !it.isSupported() } == true }) {
-                            complicatedHolidays++
-                        }
-                        if (r.any { rule -> rule.days?.any { !it.isSupported() } == true }) {
-                            complicatedWeekdayRanges++
-                        }
-                        if (r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
-                            timeEvents++
-                        }
-                        if (r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null  } == true }) {
-                            complicatedTimes++
-                        }
-                        if (r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true }) {
-                            complicatedDates++
-                        }
-                        if (r.all { it.isSupportedOpeningHours() } && r.weekdaysCollideWithAnother()) {
-                            selfColliding++
-                        }
+                        if (total % 100000 == 0) print(".")
                     }
                 }
-                if (total % 100000 == 0) print(".")
-            } }
-        } }
+            }
+        }
     } finally {
         connection.disconnect()
     }

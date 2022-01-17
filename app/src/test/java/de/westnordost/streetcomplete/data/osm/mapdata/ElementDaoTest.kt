@@ -96,11 +96,13 @@ class ElementDaoTest {
     }
 
     @Test fun deleteAllElements() {
-        dao.deleteAll(listOf(
-            ElementKey(NODE, 0),
-            ElementKey(WAY, 0),
-            ElementKey(RELATION, 0)
-        ))
+        dao.deleteAll(
+            listOf(
+                ElementKey(NODE, 0),
+                ElementKey(WAY, 0),
+                ElementKey(RELATION, 0)
+            )
+        )
 
         verify(nodeDao).deleteAll(listOf(0L))
         verify(wayDao).deleteAll(listOf(0L))
@@ -115,11 +117,13 @@ class ElementDaoTest {
     }
 
     @Test fun getAllElements() {
-        dao.getAll(listOf(
-            ElementKey(NODE, 0),
-            ElementKey(WAY, 0),
-            ElementKey(RELATION, 0)
-        ))
+        dao.getAll(
+            listOf(
+                ElementKey(NODE, 0),
+                ElementKey(WAY, 0),
+                ElementKey(RELATION, 0)
+            )
+        )
 
         verify(nodeDao).getAll(listOf(0L))
         verify(wayDao).getAll(listOf(0L))

@@ -14,11 +14,13 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
     /* not the complete filter, see below: we want to filter out additionally all elements that
        contain any recycling:* = yes that is not shoes or clothes but this can not be expressed
        in the elements filter syntax */
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         nodes with amenity = recycling and recycling_type = container
          and recycling:clothes = yes
          and !operator and !name and !brand
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add clothing bin operator"
     override val wikiLink = "Tag:amenity=recycling"
@@ -36,9 +38,9 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
     private fun Map<String, String>.hasNoOtherRecyclingTags(): Boolean =
         entries.none { (key, value) ->
             key.startsWith("recycling:") &&
-            key != "recycling:shoes" &&
-            key != "recycling:clothes" &&
-            value == "yes"
+                key != "recycling:shoes" &&
+                key != "recycling:clothes" &&
+                value == "yes"
         }
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_clothes_container_operator_title

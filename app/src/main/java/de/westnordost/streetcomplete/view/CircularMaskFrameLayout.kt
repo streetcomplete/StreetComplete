@@ -19,11 +19,11 @@ open class CircularMaskFrameLayout @JvmOverloads constructor(
     FrameLayout(context, attrs, defStyleAttr) {
 
     var circularity: Float = 1f
-    set(value) {
-        val newVal = value.coerceIn(0f, 1f)
-        field = newVal
-        invalidate()
-    }
+        set(value) {
+            val newVal = value.coerceIn(0f, 1f)
+            field = newVal
+            invalidate()
+        }
 
     init {
         context.withStyledAttributes(attrs, R.styleable.CircularMaskFrameLayout) {

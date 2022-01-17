@@ -35,18 +35,21 @@ class NoteDao @Inject constructor(private val db: Database) {
     fun putAll(notes: Collection<Note>) {
         if (notes.isEmpty()) return
 
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             arrayOf(ID, LATITUDE, LONGITUDE, STATUS, CREATED, CLOSED, COMMENTS, LAST_SYNC),
-            notes.map { arrayOf(
-                it.id,
-                it.position.latitude,
-                it.position.longitude,
-                it.status.name,
-                it.timestampCreated,
-                it.timestampClosed,
-                Json.encodeToString(it.comments),
-                currentTimeMillis()
-            ) }
+            notes.map {
+                arrayOf(
+                    it.id,
+                    it.position.latitude,
+                    it.position.longitude,
+                    it.status.name,
+                    it.timestampCreated,
+                    it.timestampClosed,
+                    Json.encodeToString(it.comments),
+                    currentTimeMillis()
+                )
+            }
         )
     }
 
@@ -54,7 +57,8 @@ class NoteDao @Inject constructor(private val db: Database) {
         db.query(NAME, where = inBoundsSql(bbox)) { it.toNote() }
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon> =
-        db.query(NAME,
+        db.query(
+            NAME,
             columns = arrayOf(LATITUDE, LONGITUDE),
             where = inBoundsSql(bbox),
         ) { LatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
@@ -66,7 +70,8 @@ class NoteDao @Inject constructor(private val db: Database) {
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
         if (limit != null && limit <= 0) return emptyList()
-        else return db.query(NAME,
+        else return db.query(
+            NAME,
             columns = arrayOf(ID),
             where = "$LAST_SYNC < $timestamp",
             limit = limit?.toString()

@@ -54,19 +54,19 @@ class QuestSelectionAdapter(
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
-    var filter: String = ""
-    set(value) {
-        val n = value.trim()
-        if (n != field) {
-            field = n
+        set(value) {
+            field = value
             notifyDataSetChanged()
         }
-    }
+
+    var filter: String = ""
+        set(value) {
+            val n = value.trim()
+            if (n != field) {
+                field = n
+                notifyDataSetChanged()
+            }
+        }
 
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {
@@ -182,7 +182,7 @@ class QuestSelectionAdapter(
             if (!qv.isInteractionEnabled) return 0
 
             return makeFlag(ACTION_STATE_IDLE, UP or DOWN) or
-                   makeFlag(ACTION_STATE_DRAG, UP or DOWN)
+                makeFlag(ACTION_STATE_DRAG, UP or DOWN)
         }
 
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {

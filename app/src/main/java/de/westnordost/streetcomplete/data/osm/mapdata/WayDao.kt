@@ -38,7 +38,8 @@ class WayDao @Inject constructor(private val db: Database) {
         db.transaction {
             db.delete(NAME_NODES, "$ID IN ($idsString)")
 
-            db.insertMany(NAME_NODES,
+            db.insertMany(
+                NAME_NODES,
                 arrayOf(ID, NODE_ID, INDEX),
                 ways.flatMap { way ->
                     way.nodeIds.mapIndexed { index, nodeId ->
@@ -47,7 +48,8 @@ class WayDao @Inject constructor(private val db: Database) {
                 }
             )
 
-            db.replaceMany(NAME,
+            db.replaceMany(
+                NAME,
                 arrayOf(ID, VERSION, TAGS, TIMESTAMP, LAST_SYNC),
                 ways.map { way ->
                     arrayOf(
@@ -104,7 +106,8 @@ class WayDao @Inject constructor(private val db: Database) {
 
     fun getAllForNode(nodeId: Long): List<Way> {
         return db.transaction {
-            val ids = db.query(NAME_NODES,
+            val ids = db.query(
+                NAME_NODES,
                 columns = arrayOf(ID),
                 where = "$NODE_ID = $nodeId"
             ) { it.getLong(ID) }.toSet()
@@ -114,7 +117,8 @@ class WayDao @Inject constructor(private val db: Database) {
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
         if (limit != null && limit <= 0) return emptyList()
-        return db.query(NAME,
+        return db.query(
+            NAME,
             columns = arrayOf(ID),
             where = "$LAST_SYNC < $timestamp",
             limit = limit?.toString()

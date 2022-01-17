@@ -23,10 +23,10 @@ class CircularFlagView @JvmOverloads constructor(
     private var boundsOffset: Rect? = null
 
     var countryCode: String? = null
-    set(value) {
-        field = value
-        updateCountryCode(value)
-    }
+        set(value) {
+            field = value
+            updateCountryCode(value)
+        }
 
     init {
         outlineProvider = object : ViewOutlineProvider() {

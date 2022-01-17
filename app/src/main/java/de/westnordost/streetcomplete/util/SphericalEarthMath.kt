@@ -469,7 +469,7 @@ fun BoundingBox.contains(pos: LatLon): Boolean {
  *  not cross the 180th meridian */
 private fun BoundingBox.containsCanonical(pos: LatLon): Boolean =
     pos.longitude in min.longitude..max.longitude &&
-    pos.latitude in min.latitude..max.latitude
+        pos.latitude in min.latitude..max.latitude
 
 /** returns whether this bounding box intersects with the other. Works if any of the bounding boxes
  *  cross the 180th meridian */
@@ -485,17 +485,17 @@ fun BoundingBox.isCompletelyInside(other: BoundingBox): Boolean =
  *  not cross the 180th meridian */
 private fun BoundingBox.intersectCanonical(other: BoundingBox): Boolean =
     max.longitude >= other.min.longitude &&
-    min.longitude <= other.max.longitude &&
-    max.latitude >= other.min.latitude &&
-    min.latitude <= other.max.latitude
+        min.longitude <= other.max.longitude &&
+        max.latitude >= other.min.latitude &&
+        min.latitude <= other.max.latitude
 
 /** returns whether this bounding box is completely inside the other, assuming both bounding boxes
  *  do not cross the 180th meridian */
 private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean =
     min.longitude >= other.min.longitude &&
-    min.latitude >= other.min.latitude &&
-    max.longitude <= other.max.longitude &&
-    max.latitude <= other.max.latitude
+        min.latitude >= other.min.latitude &&
+        max.longitude <= other.max.longitude &&
+        max.latitude <= other.max.latitude
 
 private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
@@ -543,10 +543,10 @@ private fun Double.toRadians() = this / 180.0 * PI
 private fun Double.toDegrees() = this / PI * 180.0
 
 fun normalizeLongitude(lon: Double): Double {
-	var lon = lon % 360 // lon is now -360..360
+    var lon = lon % 360 // lon is now -360..360
     lon = (lon + 360) % 360 // lon is now 0..360
     if (lon > 180) lon -= 360 // lon is now -180..180
-	return lon
+    return lon
 }
 
 /* The following formulas have been adapted from this excellent source:

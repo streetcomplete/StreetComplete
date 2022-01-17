@@ -31,13 +31,15 @@ class ElementGeometryDao @Inject constructor(
     }
 
     fun get(type: ElementType, id: Long): ElementGeometry? =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(type.name, id)
         ) { it.toElementGeometry() }
 
     fun delete(type: ElementType, id: Long): Boolean =
-        db.delete(NAME,
+        db.delete(
+            NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(type.name, id)
         ) == 1
@@ -45,7 +47,8 @@ class ElementGeometryDao @Inject constructor(
     fun putAll(entries: Collection<ElementGeometryEntry>) {
         if (entries.isEmpty()) return
 
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             arrayOf(
                 ELEMENT_TYPE,
                 ELEMENT_ID,
@@ -72,12 +75,14 @@ class ElementGeometryDao @Inject constructor(
                     bbox.min.longitude,
                     bbox.max.latitude,
                     bbox.max.longitude
-            ) }
+                )
+            }
         )
     }
 
     fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
-        db.query(NAME,
+        db.query(
+            NAME,
             columns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
             where = inBoundsSql(bbox)
         ) { it.toElementKey() }
@@ -87,7 +92,8 @@ class ElementGeometryDao @Inject constructor(
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
         if (keys.isEmpty()) return emptyList()
-        return db.queryIn(NAME,
+        return db.queryIn(
+            NAME,
             whereColumns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
             whereArgs = keys.map { arrayOf(it.type.name, it.id) }
         ) { it.toElementGeometryEntry() }

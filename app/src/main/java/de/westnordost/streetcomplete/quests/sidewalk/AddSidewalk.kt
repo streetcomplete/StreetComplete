@@ -29,7 +29,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
      *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
      *   cycleway is separate, the sidewalk is too for sure
     * */
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         ways with
           highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
           and area != yes
@@ -55,11 +56,14 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
           and cycleway:left != separate
           and cycleway:right != separate
           and cycleway:both != separate
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val maybeSeparatelyMappedSidewalksFilter by lazy { """
+    private val maybeSeparatelyMappedSidewalksFilter by lazy {
+        """
         ways with highway ~ path|footway|cycleway|construction
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
     // highway=construction included, as situation often changes during and after construction
 
     override val commitMessage = "Add whether there are sidewalks"
@@ -102,10 +106,10 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
         (
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
-            (estimateParkingOffRoadWidth(tags) ?: 0f) +
-            (estimateCycleTrackWidth(tags) ?: 0f)
-        ) / 2f +
-        4f // + generous buffer for possible grass verge
+                (estimateParkingOffRoadWidth(tags) ?: 0f) +
+                (estimateCycleTrackWidth(tags) ?: 0f)
+            ) / 2f +
+            4f // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null

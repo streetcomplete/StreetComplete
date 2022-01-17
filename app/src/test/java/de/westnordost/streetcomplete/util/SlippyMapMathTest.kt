@@ -27,12 +27,15 @@ class SlippyMapMathTest {
     }
 
     @Test fun `asTileSequence returns sequence of contained tiles`() {
-        assertEquals(listOf(
-            TilePos(1, 1),
-            TilePos(2, 1),
-            TilePos(1, 2),
-            TilePos(2, 2)
-        ), TilesRect(1, 1, 2, 2).asTilePosSequence().toList())
+        assertEquals(
+            listOf(
+                TilePos(1, 1),
+                TilePos(2, 1),
+                TilePos(1, 2),
+                TilePos(2, 2)
+            ),
+            TilesRect(1, 1, 2, 2).asTilePosSequence().toList()
+        )
     }
 
     @Test fun `minTileRect of empty list returns null`() {

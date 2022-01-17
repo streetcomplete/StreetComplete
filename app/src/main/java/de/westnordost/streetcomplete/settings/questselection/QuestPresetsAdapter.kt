@@ -26,20 +26,26 @@ class QuestPresetsAdapter(
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() { viewLifecycleScope.launch {
-            notifyDataSetChanged()
-        } }
+        override fun onSelectedQuestPresetChanged() {
+            viewLifecycleScope.launch {
+                notifyDataSetChanged()
+            }
+        }
 
-        override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
-            presets.add(preset)
-            notifyItemInserted(presets.size - 1)
-        } }
+        override fun onAddedQuestPreset(preset: QuestPreset) {
+            viewLifecycleScope.launch {
+                presets.add(preset)
+                notifyItemInserted(presets.size - 1)
+            }
+        }
 
-        override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
-            val deleteIndex = presets.indexOfFirst { it.id == presetId }
-            presets.removeAt(deleteIndex)
-            notifyItemRemoved(deleteIndex)
-        } }
+        override fun onDeletedQuestPreset(presetId: Long) {
+            viewLifecycleScope.launch {
+                val deleteIndex = presets.indexOfFirst { it.id == presetId }
+                presets.removeAt(deleteIndex)
+                notifyItemRemoved(deleteIndex)
+            }
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)

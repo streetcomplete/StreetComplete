@@ -23,10 +23,10 @@ class SceneMapComponent(
     private var loadedSceneUpdates: List<String>? = null
 
     var isAerialView: Boolean = false
-    set(value) {
-        field = value
-        aerialViewChanged = true
-    }
+        set(value) {
+            field = value
+            aerialViewChanged = true
+        }
     private var aerialViewChanged: Boolean = false
 
     private val mutex = Mutex()
@@ -51,7 +51,8 @@ class SceneMapComponent(
         val strSceneUpdates = sceneUpdates.map { it.toString() }
         if (loadedSceneFilePath == sceneFilePath &&
             loadedSceneUpdates == strSceneUpdates &&
-            !aerialViewChanged) return
+            !aerialViewChanged
+        ) return
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }

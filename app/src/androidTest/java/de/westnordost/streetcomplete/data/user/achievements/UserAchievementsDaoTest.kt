@@ -16,10 +16,13 @@ class UserAchievementsDaoTest : ApplicationDbTestCase() {
         dao.put(ONE, 1)
         dao.put(ONE, 4)
         dao.put(TWO, 2)
-        assertEquals(mapOf(
-            ONE to 4,
-            TWO to 2
-        ), dao.getAll())
+        assertEquals(
+            mapOf(
+                ONE to 4,
+                TWO to 2
+            ),
+            dao.getAll()
+        )
     }
 }
 

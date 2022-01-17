@@ -23,9 +23,11 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.diameterInput.addTextChangedListener(TextChangedWatcher {
-            checkIsFormComplete()
-        })
+        binding.diameterInput.addTextChangedListener(
+            TextChangedWatcher {
+                checkIsFormComplete()
+            }
+        )
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -52,21 +54,23 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 
     private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_fireHydrant_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->  applyAnswer(NoFireHydrantDiameterSign) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_fireHydrant_confirmation_title)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->  applyAnswer(NoFireHydrantDiameterSign) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 }

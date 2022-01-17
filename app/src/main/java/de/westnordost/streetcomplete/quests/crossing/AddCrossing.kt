@@ -13,20 +13,24 @@ import de.westnordost.streetcomplete.util.isRightOf
 
 class AddCrossing : OsmElementQuestType<KerbHeight> {
 
-    private val roadsFilter by lazy { """
+    private val roadsFilter by lazy {
+        """
         ways with
           highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
           and area != yes
           and (access !~ private|no or (foot and foot !~ private|no))
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val footwaysFilter by lazy { """
+    private val footwaysFilter by lazy {
+        """
         ways with
           (highway ~ footway|steps or highway ~ path|cycleway and foot ~ designated|yes)
           and footway !~ sidewalk|crossing
           and area != yes
           and access !~ private|no
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     /* It is neither asked for sidewalks nor crossings (=separately mapped sidewalk infrastructure)
     *  because a "no" answer would require to also delete/adapt the crossing ways, rather than just

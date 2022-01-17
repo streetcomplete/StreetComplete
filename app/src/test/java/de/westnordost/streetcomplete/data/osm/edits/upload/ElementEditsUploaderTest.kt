@@ -85,9 +85,13 @@ class ElementEditsUploaderTest {
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
-        verify(mapDataController).updateAll(eq(MapDataUpdates(
-            updated = listOf(updatedNode)
-        )))
+        verify(mapDataController).updateAll(
+            eq(
+                MapDataUpdates(
+                    updated = listOf(updatedNode)
+                )
+            )
+        )
 
         verify(statisticsController, never()).addOne(any(), any())
     }
@@ -107,9 +111,13 @@ class ElementEditsUploaderTest {
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
-        verify(mapDataController).updateAll(eq(MapDataUpdates(
-            deleted = listOf(ElementKey(ElementType.NODE, 1L))
-        )))
+        verify(mapDataController).updateAll(
+            eq(
+                MapDataUpdates(
+                    deleted = listOf(ElementKey(ElementType.NODE, 1L))
+                )
+            )
+        )
 
         verify(statisticsController, never()).addOne(any(), any())
     }

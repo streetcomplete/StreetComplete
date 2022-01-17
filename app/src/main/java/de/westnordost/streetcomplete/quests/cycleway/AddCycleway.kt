@@ -35,26 +35,26 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
     override val enabledInCountries = NoCountriesExcept(
-            // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
-            "NO", "SE", "FI", "IS", "DK",
-            "GB", "IE", "NL", "BE", "FR", "LU",
-            "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
-            "ES", "IT", "HR",
-            // East Asia
-            "JP", "KR", "TW",
-            // some of China (East Coast)
-            "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
-            "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
-            // Australia etc
-            "NZ", "AU",
-            // some of Canada
-            "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
-            // some of the US
-            // West Coast, East Coast, Center, South
-            "US-WA", "US-OR", "US-CA",
-            "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
-            "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
-            "US-AZ", "US-TX"
+        // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
+        "NO", "SE", "FI", "IS", "DK",
+        "GB", "IE", "NL", "BE", "FR", "LU",
+        "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
+        "ES", "IT", "HR",
+        // East Asia
+        "JP", "KR", "TW",
+        // some of China (East Coast)
+        "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
+        "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
+        // Australia etc
+        "NZ", "AU",
+        // some of Canada
+        "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
+        // some of the US
+        // West Coast, East Coast, Center, South
+        "US-WA", "US-OR", "US-CA",
+        "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
+        "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
+        "US-AZ", "US-TX"
     )
 
     override val isSplitWayEnabled = true
@@ -119,9 +119,9 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
         (
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
-            (estimateParkingOffRoadWidth(tags) ?: 0f)
-        ) / 2f +
-        4f // + generous buffer for possible grass verge
+                (estimateParkingOffRoadWidth(tags) ?: 0f)
+            ) / 2f +
+            4f // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -295,7 +295,8 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         */
 
         // streets that may have cycleway tagging
-        private val roadsFilter by lazy { """
+        private val roadsFilter by lazy {
+            """
             ways with
               highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
               and area != yes
@@ -309,10 +310,12 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
               and bicycle:backward != use_sidepath
               and bicycle:forward != use_sidepath
               and sidewalk != separate
-        """.toElementFilterExpression() }
+        """.toElementFilterExpression()
+        }
 
         // streets that do not have cycleway tagging yet
-        private val untaggedRoadsFilter by lazy { """
+        private val untaggedRoadsFilter by lazy {
+            """
             ways with (
                 highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
                 or highway = residential and (
@@ -336,11 +339,14 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
                 or $notIn30ZoneOrLess
               )
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-        """.toElementFilterExpression() }
+        """.toElementFilterExpression()
+        }
 
-        private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
+        private val maybeSeparatelyMappedCyclewaysFilter by lazy {
+            """
             ways with highway ~ path|footway|cycleway|construction
-        """.toElementFilterExpression() }
+        """.toElementFilterExpression()
+        }
         // highway=construction included, as situation often changes during and after construction
 
         private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {

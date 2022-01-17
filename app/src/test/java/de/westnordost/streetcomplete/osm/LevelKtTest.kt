@@ -21,11 +21,14 @@ class LevelKtTest {
 
     @Test fun `parses levels`() {
         assertEquals(listOf(SingleLevel(1.0)), "1".toLevelsOrNull())
-        assertEquals(listOf(
-            SingleLevel(1.0),
-            SingleLevel(2.0),
-            SingleLevel(-1.0),
-        ), "1;2;-1".toLevelsOrNull())
+        assertEquals(
+            listOf(
+                SingleLevel(1.0),
+                SingleLevel(2.0),
+                SingleLevel(-1.0),
+            ),
+            "1;2;-1".toLevelsOrNull()
+        )
         assertNull("".toLevelsOrNull())
         assertEquals(listOf(SingleLevel(12.0)), "12;a;b".toLevelsOrNull())
         assertNull("a;b".toLevelsOrNull())

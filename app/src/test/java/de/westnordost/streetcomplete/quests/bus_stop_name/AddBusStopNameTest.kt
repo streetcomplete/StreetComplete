@@ -26,11 +26,13 @@ class AddBusStopNameTest {
 
     @Test fun `apply name answer with multiple names`() {
         questType.verifyAnswer(
-            BusStopName(listOf(
-                LocalizedName("", "Altona / All-Too-Close"),
-                LocalizedName("de", "Altona"),
-                LocalizedName("en", "All-Too-Close")
-            )),
+            BusStopName(
+                listOf(
+                    LocalizedName("", "Altona / All-Too-Close"),
+                    LocalizedName("de", "Altona"),
+                    LocalizedName("en", "All-Too-Close")
+                )
+            ),
             StringMapEntryAdd("name", "Altona / All-Too-Close"),
             StringMapEntryAdd("name:en", "All-Too-Close"),
             StringMapEntryAdd("name:de", "Altona")

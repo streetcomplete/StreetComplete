@@ -22,7 +22,8 @@ class UserLinksDao @Inject constructor(private val db: Database) {
 
     fun addAll(links: List<String>) {
         if (links.isEmpty()) return
-        db.insertOrIgnoreMany(NAME,
+        db.insertOrIgnoreMany(
+            NAME,
             arrayOf(LINK),
             links.map { arrayOf(it) }
         )

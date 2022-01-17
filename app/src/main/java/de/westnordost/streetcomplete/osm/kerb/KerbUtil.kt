@@ -8,20 +8,24 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
-private val footwaysFilter by lazy { """
+private val footwaysFilter by lazy {
+    """
     ways with (
         highway ~ footway|path
         or highway = cycleway and foot ~ yes|designated
       )
       and area != yes
       and access !~ private|no and foot !~ no
-""".toElementFilterExpression() }
+""".toElementFilterExpression()
+}
 
-private val waysFilter by lazy { """
+private val waysFilter by lazy {
+    """
     ways with
       highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
       or construction ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-""".toElementFilterExpression() }
+""".toElementFilterExpression()
+}
 
 /* It is documented to be legal for a barrier=kerb to be mapped on the highway=crossing. See also
  * https://taginfo.openstreetmap.org/keys/kerb#combinations . At the time of writing, 40% of
@@ -86,12 +90,12 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
         it.tags["barrier"] == "kerb" ||
-        // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
-        it.id in kerbBarrierNodeIds ||
-        // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
-        //    another tagged with footway = sidewalk that is the continuation of the way and is not
-        //    and intersection (thus, has exactly two connections: to the sidewalk and to the crossing)
-        it.id in crossingEndNodeIds
+            // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
+            it.id in kerbBarrierNodeIds ||
+            // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
+            //    another tagged with footway = sidewalk that is the continuation of the way and is not
+            //    and intersection (thus, has exactly two connections: to the sidewalk and to the crossing)
+            it.id in crossingEndNodeIds
     }
 }
 

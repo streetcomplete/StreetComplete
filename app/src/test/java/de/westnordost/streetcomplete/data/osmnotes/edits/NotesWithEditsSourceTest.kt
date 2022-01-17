@@ -87,13 +87,15 @@ class NotesWithEditsSourceTest {
         )
 
         val note = note(id = 1, comments = arrayListOf(comment))
-        val edits = listOf(noteEdit(
-            noteId = 1,
-            action = NoteEditAction.COMMENT,
-            text = "test2",
-            imagePaths = listOf("something"),
-            timestamp = 500
-        ))
+        val edits = listOf(
+            noteEdit(
+                noteId = 1,
+                action = NoteEditAction.COMMENT,
+                text = "test2",
+                imagePaths = listOf("something"),
+                timestamp = 500
+            )
+        )
 
         on(userDataSource.userId).thenReturn(-1)
         on(noteController.get(1)).thenReturn(note)
@@ -148,7 +150,8 @@ class NotesWithEditsSourceTest {
                 comment("test12", NoteComment.Action.OPENED, timestamp = 123, user = user)
             ),
             position = p,
-            timestamp = 123)
+            timestamp = 123
+        )
 
         val edits = listOf(
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123)
@@ -171,7 +174,8 @@ class NotesWithEditsSourceTest {
                 comment("test34", NoteComment.Action.COMMENTED, timestamp = 234, user = user),
             ),
             position = p,
-            timestamp = 123)
+            timestamp = 123
+        )
 
         val edits = listOf(
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123),
@@ -283,9 +287,12 @@ class NotesWithEditsSourceTest {
         src.addListener(listener)
 
         val p = p(1.0, 1.0)
-        val expectedNote = note(id = 1, position = p, timestamp = 123L, comments = arrayListOf(
-            comment("abc", NoteComment.Action.OPENED, 123L)
-        ))
+        val expectedNote = note(
+            id = 1, position = p, timestamp = 123L,
+            comments = arrayListOf(
+                comment("abc", NoteComment.Action.OPENED, 123L)
+            )
+        )
         val edit = noteEdit(noteId = 1, id = -1, action = NoteEditAction.CREATE, text = "abc", timestamp = 123L, pos = p)
 
         on(noteController.get(1)).thenReturn(null)
@@ -353,21 +360,30 @@ private val bbox = bbox()
 val user = User(id = -1, displayName = "")
 
 val initialNotes1 = listOf(
-    note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
-        comment("test", NoteComment.Action.OPENED, timestamp = 100)
-    )),
+    note(
+        id = 1, position = p(1.0, 2.0), timestamp = 10,
+        comments = arrayListOf(
+            comment("test", NoteComment.Action.OPENED, timestamp = 100)
+        )
+    ),
     note(id = 3, position = p(0.0, 3.0), timestamp = 800)
 )
 
 val expectedNotes1 = listOf(
-    note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
-        comment("test", NoteComment.Action.OPENED, timestamp = 100),
-        comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
-    )),
-    note(id = 2, position = p(12.0, 1.0), timestamp = 300, comments = arrayListOf(
-        comment("xyz", NoteComment.Action.OPENED, timestamp = 300, user = user),
-        comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, user = user),
-    )),
+    note(
+        id = 1, position = p(1.0, 2.0), timestamp = 10,
+        comments = arrayListOf(
+            comment("test", NoteComment.Action.OPENED, timestamp = 100),
+            comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
+        )
+    ),
+    note(
+        id = 2, position = p(12.0, 1.0), timestamp = 300,
+        comments = arrayListOf(
+            comment("xyz", NoteComment.Action.OPENED, timestamp = 300, user = user),
+            comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, user = user),
+        )
+    ),
     note(id = 3, position = p(0.0, 3.0), timestamp = 800)
 )
 

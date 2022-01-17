@@ -18,25 +18,35 @@ class AddParkingFeeTest {
 
     private val questType = AddParkingFee()
 
-    private val openingHours = OpeningHoursRuleList(listOf(
-        Rule().apply {
-            days = listOf(WeekDayRange().also {
-                it.startDay = WeekDay.MO
-            })
-            times = listOf(TimeSpan().also {
-                it.start = 60 * 10
-                it.end = 60 * 12
-            })
-        },
-        Rule().apply {
-            days = listOf(WeekDayRange().also {
-                it.startDay = WeekDay.TU
-            })
-            times = listOf(TimeSpan().also {
-                it.start = 60 * 12
-                it.end = 60 * 24
-            })
-        })
+    private val openingHours = OpeningHoursRuleList(
+        listOf(
+            Rule().apply {
+                days = listOf(
+                    WeekDayRange().also {
+                        it.startDay = WeekDay.MO
+                    }
+                )
+                times = listOf(
+                    TimeSpan().also {
+                        it.start = 60 * 10
+                        it.end = 60 * 12
+                    }
+                )
+            },
+            Rule().apply {
+                days = listOf(
+                    WeekDayRange().also {
+                        it.startDay = WeekDay.TU
+                    }
+                )
+                times = listOf(
+                    TimeSpan().also {
+                        it.start = 60 * 12
+                        it.end = 60 * 24
+                    }
+                )
+            }
+        )
     )
     private val openingHoursString = "Mo 10:00-12:00; Tu 12:00-24:00"
 

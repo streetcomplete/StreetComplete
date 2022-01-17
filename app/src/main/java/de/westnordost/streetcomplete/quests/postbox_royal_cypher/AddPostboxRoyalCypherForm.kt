@@ -35,11 +35,12 @@ class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCyph
     }
 
     private fun confirmNoCypher() {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(PostboxRoyalCypher.NONE) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(PostboxRoyalCypher.NONE) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 }

@@ -44,16 +44,16 @@ class DownloadService : CoroutineIntentService(TAG) {
     // state
     private var isPriorityDownload: Boolean = false
     private var isDownloading: Boolean = false
-    set(value) {
-        field = value
-        updateShowNotification()
-    }
+        set(value) {
+            field = value
+            updateShowNotification()
+        }
 
     private var showNotification = false
-    set(value) {
-        field = value
-        updateShowNotification()
-    }
+        set(value) {
+            field = value
+            updateShowNotification()
+        }
 
     init {
         Injector.applicationComponent.inject(this)

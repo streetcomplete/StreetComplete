@@ -105,7 +105,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     }
 
     /** Does not necessarily mean that the user has internet. But if he is not connected, he will
-      * not have internet  */
+     * not have internet  */
     private fun isConnected(): Boolean {
         val connectivityManager = context?.getSystemService<ConnectivityManager>()
         val activeNetworkInfo = connectivityManager?.activeNetworkInfo

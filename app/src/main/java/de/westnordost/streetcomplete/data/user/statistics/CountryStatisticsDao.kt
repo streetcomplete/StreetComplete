@@ -26,7 +26,8 @@ class CountryStatisticsDao @Inject constructor(private val db: Database) {
         db.transaction {
             db.delete(NAME)
             if (countriesStatistics.isNotEmpty()) {
-                db.replaceMany(NAME,
+                db.replaceMany(
+                    NAME,
                     arrayOf(COUNTRY_CODE, SUCCEEDED, RANK),
                     countriesStatistics.map { arrayOf(it.countryCode, it.solvedCount, it.rank) }
                 )
@@ -37,10 +38,13 @@ class CountryStatisticsDao @Inject constructor(private val db: Database) {
     fun addOne(countryCode: String) {
         db.transaction {
             // first ensure the row exists
-            db.insertOrIgnore(NAME, listOf(
-                COUNTRY_CODE to countryCode,
-                SUCCEEDED to 0
-            ))
+            db.insertOrIgnore(
+                NAME,
+                listOf(
+                    COUNTRY_CODE to countryCode,
+                    SUCCEEDED to 0
+                )
+            )
 
             // then increase by one
             db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $COUNTRY_CODE = ?", arrayOf(countryCode))

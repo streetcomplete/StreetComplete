@@ -37,7 +37,9 @@ import java.util.*
 import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
+class SettingsFragment :
+    PreferenceFragmentCompat(),
+    HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
@@ -72,7 +74,8 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
         findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
             val dialogBinding = DialogDeleteCacheBinding.inflate(layoutInflater)
-            dialogBinding.descriptionText.text = resources.getString(R.string.delete_cache_dialog_message,
+            dialogBinding.descriptionText.text = resources.getString(
+                R.string.delete_cache_dialog_message,
                 (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1),
                 (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1)
             )
@@ -87,10 +90,12 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.restore_dialog_message)
-                .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
-                    val hidden = questController.unhideAll()
-                    context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                } }
+                .setPositiveButton(R.string.restore_confirmation) { _, _ ->
+                    lifecycleScope.launch {
+                        val hidden = questController.unhideAll()
+                        context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
+                    }
+                }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 

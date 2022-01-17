@@ -81,11 +81,12 @@ class AddRecyclingContainerMaterialsForm :
     }
 
     private fun confirmJustTrash() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_recycling_materials_answer_waste_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsWasteContainer) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_recycling_materials_answer_waste_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsWasteContainer) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 }

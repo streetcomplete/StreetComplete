@@ -51,11 +51,12 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private var isDisplayingPreviousCycleway: Boolean = false
 
     private fun noCyclewayHereHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_cycleway_answer_no_bicycle_infrastructure_title)
-            .setMessage(R.string.quest_cycleway_answer_no_bicycle_infrastructure_explanation)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_cycleway_answer_no_bicycle_infrastructure_title)
+                .setMessage(R.string.quest_cycleway_answer_no_bicycle_infrastructure_explanation)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 
@@ -311,7 +312,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     override fun isFormComplete() = !isDisplayingPreviousCycleway && (
         if (isDefiningBothSides) leftSide != null && rightSide != null
         else                     leftSide != null || rightSide != null
-    )
+        )
 
     override fun isRejectingClose() =
         !isDisplayingPreviousCycleway && (leftSide != null || rightSide != null)

@@ -12,15 +12,19 @@ import de.westnordost.streetcomplete.data.Database
 class WayTrafficFlowDao @Inject constructor(private val db: Database) {
 
     fun put(wayId: Long, isForward: Boolean) {
-        db.replace(NAME, listOf(
-            WAY_ID to wayId,
-            IS_FORWARD to if (isForward) 1 else 0
-        ))
+        db.replace(
+            NAME,
+            listOf(
+                WAY_ID to wayId,
+                IS_FORWARD to if (isForward) 1 else 0
+            )
+        )
     }
 
     /** returns whether the direction of road user flow is forward or null if unknown */
     fun isForward(wayId: Long): Boolean? =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             columns = arrayOf(IS_FORWARD),
             where = "$WAY_ID = $wayId"
         ) { it.getInt(IS_FORWARD) != 0 }

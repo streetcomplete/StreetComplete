@@ -25,7 +25,8 @@ class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {
         db.transaction {
             db.delete(NAME)
             if (amounts.isNotEmpty()) {
-                db.replaceMany(NAME,
+                db.replaceMany(
+                    NAME,
                     arrayOf(QUEST_TYPE, SUCCEEDED),
                     amounts.map { arrayOf(it.key, it.value) }
                 )
@@ -36,10 +37,13 @@ class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {
     fun addOne(questType: String) {
         db.transaction {
             // first ensure the row exists
-            db.insertOrIgnore(NAME, listOf(
-                QUEST_TYPE to questType,
-                SUCCEEDED to 0
-            ))
+            db.insertOrIgnore(
+                NAME,
+                listOf(
+                    QUEST_TYPE to questType,
+                    SUCCEEDED to 0
+                )
+            )
 
             // then increase by one
             db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
@@ -51,7 +55,8 @@ class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {
     }
 
     fun getAmount(questType: String): Int =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             columns = arrayOf(SUCCEEDED),
             where = "$QUEST_TYPE = ?",
             args = arrayOf(questType)
@@ -59,7 +64,8 @@ class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {
 
     fun getAmount(questTypes: List<String>): Int {
         val questionMarks = Array(questTypes.size) { "?" }.joinToString(",")
-        return db.queryOne(NAME,
+        return db.queryOne(
+            NAME,
             columns = arrayOf("total($SUCCEEDED) as count"),
             where = "$QUEST_TYPE in ($questionMarks)",
             args = questTypes.toTypedArray()

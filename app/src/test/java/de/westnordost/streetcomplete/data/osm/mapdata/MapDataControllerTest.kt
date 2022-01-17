@@ -99,11 +99,13 @@ class MapDataControllerTest {
 
         val listener = mock<MapDataController.Listener>()
         controller.addListener(listener)
-        controller.updateAll(MapDataUpdates(
-            updated = elements,
-            deleted = deleteKeys,
-            idUpdates = idUpdates
-        ))
+        controller.updateAll(
+            MapDataUpdates(
+                updated = elements,
+                deleted = deleteKeys,
+                idUpdates = idUpdates
+            )
+        )
 
         val expectedDeleteKeys = deleteKeys + idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
         verify(geometryDB).deleteAll(expectedDeleteKeys)

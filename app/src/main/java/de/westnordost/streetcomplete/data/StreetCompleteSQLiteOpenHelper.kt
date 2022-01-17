@@ -108,7 +108,8 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
             val oldName = "quest_visibility_old"
             db.execSQL("ALTER TABLE ${VisibleQuestTypeTable.NAME} RENAME TO $oldName;")
             db.execSQL(VisibleQuestTypeTable.CREATE)
-            db.execSQL("""
+            db.execSQL(
+                """
                 INSERT INTO ${VisibleQuestTypeTable.NAME} (
                     ${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID},
                     ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
@@ -118,11 +119,12 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
                     ${VisibleQuestTypeTable.Columns.QUEST_TYPE},
                     ${VisibleQuestTypeTable.Columns.VISIBILITY}
                 FROM $oldName;
-            """.trimIndent())
+                """.trimIndent()
+            )
             db.execSQL("DROP TABLE $oldName;")
         }
         if (oldVersion <= 3 && newVersion > 3) {
-           db.execSQL("DROP TABLE new_achievements")
+            db.execSQL("DROP TABLE new_achievements")
         }
     }
 }

@@ -78,10 +78,11 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     }
 
     private fun showMultipleLevelsHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_buildingLevels_answer_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_buildingLevels_answer_description)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 

@@ -51,10 +51,14 @@ object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
         }
         // if it is a vertex in a way or has a role in a relation: just clear the tags then
         else {
-            MapDataChanges(modifications = listOf(node.copy(
-                tags = emptyMap(),
-                timestampEdited = System.currentTimeMillis()
-            )))
+            MapDataChanges(
+                modifications = listOf(
+                    node.copy(
+                        tags = emptyMap(),
+                        timestampEdited = System.currentTimeMillis()
+                    )
+                )
+            )
         }
     }
 

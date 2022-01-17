@@ -19,12 +19,17 @@ class RoadWidthKtTest {
         assertEquals(8f, estimateRoadwayWidth(mapOf("highway" to "trunk", "lanes" to "2")))
         assertEquals(6f, estimateRoadwayWidth(mapOf("highway" to "residential", "lanes" to "2")))
 
-        assertEquals(100f, estimateRoadwayWidth(mapOf(
-            "highway" to "residential",
-            "lanes" to "2",
-            "shoulder" to "right",
-            "shoulder:width" to "94"
-        )))
+        assertEquals(
+            100f,
+            estimateRoadwayWidth(
+                mapOf(
+                    "highway" to "residential",
+                    "lanes" to "2",
+                    "shoulder" to "right",
+                    "shoulder:width" to "94"
+                )
+            )
+        )
     }
 
     @Test fun `roadway width checks best tags first`() {
@@ -50,84 +55,122 @@ class RoadWidthKtTest {
 
         assertEquals(
             10f,
-            estimateUsableRoadwayWidth(mapOf(
-                "width" to "12",
-                "parking:lane:both" to "parallel",
-                "parking:lane:both:parallel" to "half_on_kerb" // 1m (both sides)
-            ))
+            estimateUsableRoadwayWidth(
+                mapOf(
+                    "width" to "12",
+                    "parking:lane:both" to "parallel",
+                    "parking:lane:both:parallel" to "half_on_kerb" // 1m (both sides)
+                )
+            )
         )
 
         assertEquals(
             10.5f,
-            estimateUsableRoadwayWidth(mapOf(
-                "width" to "12",
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "exclusive", // 1.5m
-                "cycleway:left" to "track"
-            ))
+            estimateUsableRoadwayWidth(
+                mapOf(
+                    "width" to "12",
+                    "cycleway:right" to "lane",
+                    "cycleway:right:lane" to "exclusive", // 1.5m
+                    "cycleway:left" to "track"
+                )
+            )
         )
 
         assertEquals(
             10f,
-            estimateUsableRoadwayWidth(mapOf(
-                "width" to "12",
-                "shoulder" to "left"
-            ))
+            estimateUsableRoadwayWidth(
+                mapOf(
+                    "width" to "12",
+                    "shoulder" to "left"
+                )
+            )
         )
 
         assertEquals(
             2f,
-            estimateUsableRoadwayWidth(mapOf(
-                "width" to "12",
-                "cycleway:both" to "lane",
-                "cycleway:right:lane" to "exclusive", // 1.5m
-                "cycleway:left:lane" to "advisory", // 1m
-                "parking:lane:left" to "diagonal",
-                "parking:lane:left:diagonal" to "half_on_kerb", // 1.5m
-                "parking:lane:right" to "parallel",
-                "parking:lane:right:parallel" to "on_street", // 2m
-                "shoulder" to "both" // 4m
-            ))
+            estimateUsableRoadwayWidth(
+                mapOf(
+                    "width" to "12",
+                    "cycleway:both" to "lane",
+                    "cycleway:right:lane" to "exclusive", // 1.5m
+                    "cycleway:left:lane" to "advisory", // 1m
+                    "parking:lane:left" to "diagonal",
+                    "parking:lane:left:diagonal" to "half_on_kerb", // 1.5m
+                    "parking:lane:right" to "parallel",
+                    "parking:lane:right:parallel" to "on_street", // 2m
+                    "shoulder" to "both" // 4m
+                )
+            )
         )
     }
 
     @Test fun `shoulders width`() {
         assertEquals(null, estimateShouldersWidth(mapOf()))
         assertEquals(4f, estimateShouldersWidth(mapOf("shoulder" to "both")))
-        assertEquals(123f, estimateShouldersWidth(mapOf(
-            "shoulder" to "right",
-            "shoulder:width" to "123"
-        )))
-        assertEquals(246f, estimateShouldersWidth(mapOf(
-            "shoulder" to "yes",
-            "shoulder:width" to "123"
-        )))
+        assertEquals(
+            123f,
+            estimateShouldersWidth(
+                mapOf(
+                    "shoulder" to "right",
+                    "shoulder:width" to "123"
+                )
+            )
+        )
+        assertEquals(
+            246f,
+            estimateShouldersWidth(
+                mapOf(
+                    "shoulder" to "yes",
+                    "shoulder:width" to "123"
+                )
+            )
+        )
     }
 
     @Test fun `cycleway lane width`() {
         assertEquals(null, estimateCycleLanesWidth(mapOf()))
-        assertEquals(3f, estimateCycleLanesWidth(mapOf(
-            "cycleway:both" to "lane",
-            "cycleway:both:lane" to "exclusive"
-        )))
-        assertEquals(1.5f, estimateCycleLanesWidth(mapOf(
-            "cycleway:left" to "lane",
-            "cycleway:right" to "track",
-            "cycleway:left:lane" to "exclusive"
-        )))
+        assertEquals(
+            3f,
+            estimateCycleLanesWidth(
+                mapOf(
+                    "cycleway:both" to "lane",
+                    "cycleway:both:lane" to "exclusive"
+                )
+            )
+        )
+        assertEquals(
+            1.5f,
+            estimateCycleLanesWidth(
+                mapOf(
+                    "cycleway:left" to "lane",
+                    "cycleway:right" to "track",
+                    "cycleway:left:lane" to "exclusive"
+                )
+            )
+        )
     }
 
     @Test fun `specified cycleway lane width takes precedence`() {
-        assertEquals(123f, estimateCycleLanesWidth(mapOf(
-            "cycleway:left" to "lane",
-            "cycleway:left:lane" to "exclusive",
-            "cycleway:left:width" to "123"
-        )))
+        assertEquals(
+            123f,
+            estimateCycleLanesWidth(
+                mapOf(
+                    "cycleway:left" to "lane",
+                    "cycleway:left:lane" to "exclusive",
+                    "cycleway:left:width" to "123"
+                )
+            )
+        )
 
-        assertEquals(124.5f, estimateCycleLanesWidth(mapOf(
-            "cycleway:both" to "lane",
-            "cycleway:both:lane" to "exclusive",
-            "cycleway:left:width" to "123"
-        )))
+        assertEquals(
+            124.5f,
+            estimateCycleLanesWidth(
+                mapOf(
+                    "cycleway:both" to "lane",
+                    "cycleway:both:lane" to "exclusive",
+                    "cycleway:left:width" to "123"
+                )
+            )
+        )
     }
 }

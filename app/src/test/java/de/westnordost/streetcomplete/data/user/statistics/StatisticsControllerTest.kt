@@ -124,28 +124,34 @@ class StatisticsControllerTest {
         val editor: SharedPreferences.Editor = mock()
         on(prefs.edit()).thenReturn(editor)
 
-        statisticsController.updateAll(Statistics(
-            questTypes = listOf(
-                QuestTypeStatistics(questA, 123),
-                QuestTypeStatistics(questB, 44),
-            ),
-            countries = listOf(
+        statisticsController.updateAll(
+            Statistics(
+                questTypes = listOf(
+                    QuestTypeStatistics(questA, 123),
+                    QuestTypeStatistics(questB, 44),
+                ),
+                countries = listOf(
+                    CountryStatistics("DE", 12, 5),
+                    CountryStatistics("US", 43, null),
+                ),
+                rank = 999,
+                daysActive = 333,
+                lastUpdate = 9999999,
+                isAnalyzing = false
+            )
+        )
+        verify(questTypeStatisticsDao).replaceAll(
+            mapOf(
+                "TestQuestTypeA" to 123,
+                "TestQuestTypeB" to 44
+            )
+        )
+        verify(countryStatisticsDao).replaceAll(
+            listOf(
                 CountryStatistics("DE", 12, 5),
                 CountryStatistics("US", 43, null),
-            ),
-            rank = 999,
-            daysActive = 333,
-            lastUpdate = 9999999,
-            isAnalyzing = false
-        ))
-        verify(questTypeStatisticsDao).replaceAll(mapOf(
-            "TestQuestTypeA" to 123,
-            "TestQuestTypeB" to 44
-        ))
-        verify(countryStatisticsDao).replaceAll(listOf(
-            CountryStatistics("DE", 12, 5),
-            CountryStatistics("US", 43, null),
-        ))
+            )
+        )
         verify(editor).putInt(Prefs.USER_DAYS_ACTIVE, 333)
         verify(editor).putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false)
         verify(editor).putInt(Prefs.USER_GLOBAL_RANK, 999)

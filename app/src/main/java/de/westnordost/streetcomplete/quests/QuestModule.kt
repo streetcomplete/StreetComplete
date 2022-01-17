@@ -131,7 +131,8 @@ import javax.inject.Singleton
         trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>,
         countryInfos: CountryInfos
-    ): QuestTypeRegistry = QuestTypeRegistry(listOf<QuestType<*>>(
+    ): QuestTypeRegistry = QuestTypeRegistry(
+        listOf<QuestType<*>>(
 
         /* The quest types are primarily sorted by how easy they can be solved:
 
@@ -161,223 +162,224 @@ import javax.inject.Singleton
 
         /* always first: notes - they mark a mistake in the data so potentially every quest for that
            element is based on wrong data while the note is not resolved */
-        OsmNoteQuestType,
+            OsmNoteQuestType,
 
-        /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
+            /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
-        // bus stop quests
-        AddBusStopShelter(),  // used by at least OsmAnd
-        AddBenchStatusOnBusStop(), // can be seen from across the street
-        AddBinStatusOnBusStop(), // can be seen from across the street
-        AddTactilePavingBusStop(), // requires you to be very close to it
-        AddBusStopName(), // requires text input
-        AddBusStopRef(), // requires text input
-        AddBusStopLit(), // at least during day requires to stand in it to see if there is a light in the shelter
+            // bus stop quests
+            AddBusStopShelter(),  // used by at least OsmAnd
+            AddBenchStatusOnBusStop(), // can be seen from across the street
+            AddBinStatusOnBusStop(), // can be seen from across the street
+            AddTactilePavingBusStop(), // requires you to be very close to it
+            AddBusStopName(), // requires text input
+            AddBusStopRef(), // requires text input
+            AddBusStopLit(), // at least during day requires to stand in it to see if there is a light in the shelter
 
-        AddRailwayCrossingBarrier(), // useful for routing
+            AddRailwayCrossingBarrier(), // useful for routing
 
-        AddCarWashType(),
+            AddCarWashType(),
 
-        AddBenchBackrest(),
-        AddPicnicTableCover(),
+            AddBenchBackrest(),
+            AddPicnicTableCover(),
 
-        AddBridgeStructure(),
+            AddBridgeStructure(),
 
-        MarkCompletedBuildingConstruction(), // unlocks AddBuildingType which unlocks address and building detail quests
+            MarkCompletedBuildingConstruction(), // unlocks AddBuildingType which unlocks address and building detail quests
 
-        // sport pitches
-        AddSport(),
-        AddPitchSurface(),
-        AddPitchLit(),
+            // sport pitches
+            AddSport(),
+            AddPitchSurface(),
+            AddPitchLit(),
 
-        // parking
-        AddParkingType(),
-        AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
-        AddParkingFee(), // used by OsmAnd
+            // parking
+            AddParkingType(),
+            AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
+            AddParkingFee(), // used by OsmAnd
 
-        AddTrafficCalmingType(),
+            AddTrafficCalmingType(),
 
-        // steps
-        AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
-        AddStepsRamp(),
-        AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past, confuses some people, so not as high as it theoretically should be
+            // steps
+            AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
+            AddStepsRamp(),
+            AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past, confuses some people, so not as high as it theoretically should be
 
-        AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
-        AddReligionToWaysideShrine(),
+            AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
+            AddReligionToWaysideShrine(),
 
-        AddPowerPolesMaterial(),
+            AddPowerPolesMaterial(),
 
-        AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
+            AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
 
-        // motorcycle parking
-        AddMotorcycleParkingCover(),
-        AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+            // motorcycle parking
+            AddMotorcycleParkingCover(),
+            AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
 
-        // recycling containers
-        AddRecyclingType(),
-        DetermineRecyclingGlass(), // because most recycling:glass=yes is a tagging mistake
-        AddRecyclingContainerMaterials(),
+            // recycling containers
+            AddRecyclingType(),
+            DetermineRecyclingGlass(), // because most recycling:glass=yes is a tagging mistake
+            AddRecyclingContainerMaterials(),
 
-        // kerbs
-        AddKerbHeight(), /* deliberately before AddTactilePavingKerb:
+            // kerbs
+            AddKerbHeight(), /* deliberately before AddTactilePavingKerb:
         * - Also should be visible while waiting to cross
         * - Some people are not interpreting flush or lowered kerb as a kerb on their own,
         * and would be confused about asking about tactile status on kerb without kerb
         * but with this quest first they are OK with such interpretation
         */
-        AddTactilePavingKerb(), // Paving can be completed while waiting to cross
+            AddTactilePavingKerb(), // Paving can be completed while waiting to cross
 
-        // crossing quests: A little later because they are not all solvable from a distance
-        AddCrossing(),
-        AddCrossingIsland(), // can be done at a glance
-        AddCrossingType(),
-        AddTactilePavingCrosswalk(),
-        AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
-        AddTrafficSignalsVibration(),
-        AddTrafficSignalsButton(),
+            // crossing quests: A little later because they are not all solvable from a distance
+            AddCrossing(),
+            AddCrossingIsland(), // can be done at a glance
+            AddCrossingType(),
+            AddTactilePavingCrosswalk(),
+            AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
+            AddTrafficSignalsVibration(),
+            AddTrafficSignalsButton(),
 
-        /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
-        AddInformationToTourism(), // OSM Carto
+            /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
+            AddInformationToTourism(), // OSM Carto
 
-        AddPoliceType(),
+            AddPoliceType(),
 
-        AddPlaygroundAccess(),
+            AddPlaygroundAccess(),
 
         /* pulled up in priority to be before CheckExistence because this is basically the check
            whether the postbox is still there in countries in which it is enabled */
-        AddPostboxCollectionTimes(),
-        CheckExistence(featureDictionaryFuture),
+            AddPostboxCollectionTimes(),
+            CheckExistence(featureDictionaryFuture),
 
-        AddBoardType(),
+            AddBoardType(),
 
-        AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
-        AddStileType(),
-        AddBicycleBarrierType(),
+            AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
+            AddStileType(),
+            AddBicycleBarrierType(),
 
-        AddBollardType(), // useful for first responders
+            AddBollardType(), // useful for first responders
 
-        AddSelfServiceLaundry(),
+            AddSelfServiceLaundry(),
 
-        AddGeneralFee(),
+            AddGeneralFee(),
 
-        AddDrinkingWater(), // used by AnyFinder
+            AddDrinkingWater(), // used by AnyFinder
 
-        AddCameraType(),
+            AddCameraType(),
 
-        AddFireHydrantType(),
-        AddFireHydrantPosition(),
-        AddFireHydrantDiameter(),
+            AddFireHydrantType(),
+            AddFireHydrantPosition(),
+            AddFireHydrantDiameter(),
 
-        /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
+            /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
-        // bike parking: would be higher up if not for bike parking capacity which is usually not solvable when moving past
-        AddBikeParkingCover(), // used by OsmAnd in the object description
-        AddBikeParkingType(), // used by OsmAnd
-        AddBikeParkingAccess(),
-        AddBikeParkingFee(),
-        AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
+            // bike parking: would be higher up if not for bike parking capacity which is usually not solvable when moving past
+            AddBikeParkingCover(), // used by OsmAnd in the object description
+            AddBikeParkingType(), // used by OsmAnd
+            AddBikeParkingAccess(),
+            AddBikeParkingFee(),
+            AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
-        // address: usually only visible when just in front + sometimes requires to take "other answer"
-        AddHousenumber(),
-        AddAddressStreet(),
+            // address: usually only visible when just in front + sometimes requires to take "other answer"
+            AddHousenumber(),
+            AddAddressStreet(),
 
-        // shops: text input / opening hours input take longer than other quests
-        AddPlaceName(featureDictionaryFuture),
-        SpecifyShopType(),
-        CheckShopType(),
-        AddOpeningHours(featureDictionaryFuture),
+            // shops: text input / opening hours input take longer than other quests
+            AddPlaceName(featureDictionaryFuture),
+            SpecifyShopType(),
+            CheckShopType(),
+            AddOpeningHours(featureDictionaryFuture),
 
-        AddAtmOperator(),
+            AddAtmOperator(),
 
-        AddClothingBinOperator(),
+            AddClothingBinOperator(),
 
-        AddChargingStationCapacity(),
-        AddChargingStationOperator(),
+            AddChargingStationCapacity(),
+            AddChargingStationOperator(),
 
-        // postboxes (collection times are further up, see comment)
-        AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
-        AddPostboxRef(), // requires text input
+            // postboxes (collection times are further up, see comment)
+            AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
+            AddPostboxRef(), // requires text input
 
-        AddWheelchairAccessOutside(),
+            AddWheelchairAccessOutside(),
 
-        // road but information is visible usually at the beginning of the marked stretch of way
-        AddMaxWeight(), // used by OSRM and other routing engines
-        AddMaxHeight(), // OSRM and other routing engines
-        AddRoadName(),
-        AddOneway(),
-        AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
+            // road but information is visible usually at the beginning of the marked stretch of way
+            AddMaxWeight(), // used by OSRM and other routing engines
+            AddMaxHeight(), // OSRM and other routing engines
+            AddRoadName(),
+            AddOneway(),
+            AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
 
-        /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
+            /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
-        // ferry: usually visible from looking at the boat, but not always...
-        AddFerryAccessPedestrian(),
-        AddFerryAccessMotorVehicle(),
+            // ferry: usually visible from looking at the boat, but not always...
+            AddFerryAccessPedestrian(),
+            AddFerryAccessMotorVehicle(),
 
-        AddProhibitedForPedestrians(), // need to understand the pedestrian situation
+            AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
-        MarkCompletedHighwayConstruction(), // need to look the whole way
+            MarkCompletedHighwayConstruction(), // need to look the whole way
 
-        AddSummitRegister(), // the summit register is not necessarily directly at the peak, need to look around
+            AddSummitRegister(), // the summit register is not necessarily directly at the peak, need to look around
 
-        AddForestLeafType(), // need to walk around in the highlighted section
+            AddForestLeafType(), // need to walk around in the highlighted section
 
-        AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
+            AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
-        AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+            AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
 
-        /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
+            /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 
-        AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
+            AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
-        AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
+            AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
 
-        // toilets
-        AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
-        AddToiletsFee(), // used by OsmAnd in the object description
-        AddBabyChangingTable(), // used by OsmAnd in the object description
-        AddWheelchairAccessToiletsPart(),
-        AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
+            // toilets
+            AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
+            AddToiletsFee(), // used by OsmAnd in the object description
+            AddBabyChangingTable(), // used by OsmAnd in the object description
+            AddWheelchairAccessToiletsPart(),
+            AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
 
-        // shop
-        AddAcceptsCash(featureDictionaryFuture),
-        AddVegetarian(),
-        AddVegan(),
-        AddHalal(), // there are ~ 100 times more Muslims than Jews
-        AddKosher(),
-        AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
-        AddInternetAccess(), // used by OsmAnd
+            // shop
+            AddAcceptsCash(featureDictionaryFuture),
+            AddVegetarian(),
+            AddVegan(),
+            AddHalal(), // there are ~ 100 times more Muslims than Jews
+            AddKosher(),
+            AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
+            AddInternetAccess(), // used by OsmAnd
 
-        /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
+            /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
-        // roads
-        AddSidewalk(), // for any pedestrian routers, needs minimal thinking
-        AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
-        AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
-        AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
-        AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
-        // AddStreetParking(),
-        AddShoulder(),
-        AddRoadSmoothness(),
-        AddPathSmoothness(),
+            // roads
+            AddSidewalk(), // for any pedestrian routers, needs minimal thinking
+            AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
+            AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
+            AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
+            AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
+            // AddStreetParking(),
+            AddShoulder(),
+            AddRoadSmoothness(),
+            AddPathSmoothness(),
 
-        // footways
-        AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
-        AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
-        AddFootwayPartSurface(),
-        AddCyclewayPartSurface(),
+            // footways
+            AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
+            AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
+            AddFootwayPartSurface(),
+            AddCyclewayPartSurface(),
 
         /* should best be after road surface because it excludes unpaved roads, also, need to search
         *  for the sign which is one reason why it is disabled by default */
-        AddMaxSpeed(),
+            AddMaxSpeed(),
 
-        // buildings
-        AddBuildingType(),
-        AddBuildingLevels(),
-        AddRoofShape(countryInfos),
+            // buildings
+            AddBuildingType(),
+            AddBuildingLevels(),
+            AddRoofShape(countryInfos),
 
-        AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
+            AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 
-        /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
-        AddWayLit(),
-    ))
+            /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
+            AddWayLit(),
+        )
+    )
 }

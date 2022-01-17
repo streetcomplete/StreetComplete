@@ -96,13 +96,13 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         }
 
         bottomSheetBehavior.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {}
+                BottomSheetBehavior.BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {}
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                updateCloseButtonVisibility()
-            }
-        })
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    updateCloseButtonVisibility()
+                }
+            })
 
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE || defaultExpanded) {
             expand()

@@ -48,28 +48,30 @@ import de.westnordost.streetcomplete.user.*
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    ApplicationModule::class,
-    OsmApiModule::class,
-    TrafficFlowSegmentsModule::class,
-    NotesModule::class,
-    UploadModule::class,
-    DownloadModule::class,
-    QuestModule::class,
-    DbModule::class,
-    EditHistoryModule::class,
-    MetadataModule::class,
-    UserModule::class,
-    StatisticsModule::class,
-    AchievementsModule::class,
-    MapModule::class,
-    ElementEditsModule::class,
-    NoteEditsModule::class,
-    OsmNoteQuestModule::class,
-    OsmQuestModule::class,
-    QuestPresetsModule::class,
-    CreatedElementsModule::class
-])
+@Component(
+    modules = [
+        ApplicationModule::class,
+        OsmApiModule::class,
+        TrafficFlowSegmentsModule::class,
+        NotesModule::class,
+        UploadModule::class,
+        DownloadModule::class,
+        QuestModule::class,
+        DbModule::class,
+        EditHistoryModule::class,
+        MetadataModule::class,
+        UserModule::class,
+        StatisticsModule::class,
+        AchievementsModule::class,
+        MapModule::class,
+        ElementEditsModule::class,
+        NoteEditsModule::class,
+        OsmNoteQuestModule::class,
+        OsmQuestModule::class,
+        QuestPresetsModule::class,
+        CreatedElementsModule::class
+    ]
+)
 interface ApplicationComponent {
     fun inject(app: StreetCompleteApplication)
     fun inject(mainActivity: MainActivity)

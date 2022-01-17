@@ -42,7 +42,8 @@ import de.westnordost.streetcomplete.util.applyTransforms
  *  different root view than the rest of the UI. However, for the calculation to animate the icon
  *  from another view to the position in the "dialog", there must be a common root view.
  *  */
-class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
+class AchievementInfoFragment :
+    Fragment(R.layout.fragment_achievement_info),
     HandlesOnBackPressed {
 
     private val binding by viewBinding(FragmentAchievementInfoBinding::bind)
@@ -168,11 +169,11 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
 
         currentAnimators.addAll(
             createShineFadeInAnimations() +
-            createDialogPopInAnimations(DIALOG_APPEAR_DELAY_IN_MS) +
-            listOf(
-                createFadeInBackgroundAnimation(),
-                createAchievementIconPopInAnimation()
-            )
+                createDialogPopInAnimations(DIALOG_APPEAR_DELAY_IN_MS) +
+                listOf(
+                    createFadeInBackgroundAnimation(),
+                    createAchievementIconPopInAnimation()
+                )
         )
         currentAnimators.forEach { it.start() }
     }
@@ -184,10 +185,12 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
         binding.shineView1.visibility = View.GONE
         binding.shineView2.visibility = View.GONE
 
-        currentAnimators.addAll(createDialogPopInAnimations() + listOf(
-            createFadeInBackgroundAnimation(),
-            createAchievementIconFlingInAnimation(questBubbleView)
-        ))
+        currentAnimators.addAll(
+            createDialogPopInAnimations() + listOf(
+                createFadeInBackgroundAnimation(),
+                createAchievementIconFlingInAnimation(questBubbleView)
+            )
+        )
         currentAnimators.forEach { it.start() }
     }
 
@@ -203,11 +206,11 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
 
         currentAnimators.addAll(
             createDialogPopOutAnimations() +
-            createShineFadeOutAnimations() +
-            listOf(
-                createFadeOutBackgroundAnimation(),
-                iconAnimator
-            )
+                createShineFadeOutAnimations() +
+                listOf(
+                    createFadeOutBackgroundAnimation(),
+                    iconAnimator
+                )
         )
         currentAnimators.forEach { it.start() }
     }

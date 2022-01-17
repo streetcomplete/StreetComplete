@@ -39,10 +39,12 @@ class OsmQuestControllerTest {
         mapDataSource = mock()
 
         notesSource = mock()
-        questTypeRegistry = QuestTypeRegistry(listOf(
-            ApplicableQuestType, NotApplicableQuestType, ComplexQuestTypeApplicableToNode42,
-            ApplicableQuestTypeNotInAnyCountry, ApplicableQuestType2
-        ))
+        questTypeRegistry = QuestTypeRegistry(
+            listOf(
+                ApplicableQuestType, NotApplicableQuestType, ComplexQuestTypeApplicableToNode42,
+                ApplicableQuestTypeNotInAnyCountry, ApplicableQuestType2
+            )
+        )
         countryBoundaries = mock()
 
         on(mapDataSource.addListener(any())).then { invocation ->
@@ -96,14 +98,22 @@ class OsmQuestControllerTest {
         on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
         on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
         on(db.getAllInBBox(bbox, null)).thenReturn(entries)
-        on(mapDataSource.getGeometries(argThat {
-            it.containsExactlyInAnyOrder(listOf(
-                ElementKey(NODE, 1),
-                ElementKey(NODE, 4),
-            ))
-        })).thenReturn(listOf(
-            ElementGeometryEntry(NODE, 1, geoms[0])
-        ))
+        on(
+            mapDataSource.getGeometries(
+                argThat {
+                    it.containsExactlyInAnyOrder(
+                        listOf(
+                            ElementKey(NODE, 1),
+                            ElementKey(NODE, 4),
+                        )
+                    )
+                }
+            )
+        ).thenReturn(
+            listOf(
+                ElementGeometryEntry(NODE, 1, geoms[0])
+            )
+        )
 
         val expectedQuests = listOf(
             OsmQuest(ApplicableQuestType, NODE, 1, geoms[0]),
@@ -118,24 +128,34 @@ class OsmQuestControllerTest {
             ElementPointGeometry(p()),
         )
 
-        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
-            // ok!
-            OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 1L, "ApplicableQuestType"), 250),
-            // unknown quest type
-            OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 2L, "UnknownQuestType"), 250),
-            // no geometry!
-            OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 3L, "ApplicableQuestType"), 250),
-        ))
-        on(mapDataSource.getGeometries(argThat {
-            it.containsExactlyInAnyOrder(listOf(
-                ElementKey(NODE, 1),
-                ElementKey(NODE, 2),
-                ElementKey(NODE, 3)
-            ))
-        })).thenReturn(listOf(
-            ElementGeometryEntry(NODE, 1, geoms[0]),
-            ElementGeometryEntry(NODE, 2, geoms[1])
-        ))
+        on(hiddenDB.getNewerThan(123L)).thenReturn(
+            listOf(
+                // ok!
+                OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 1L, "ApplicableQuestType"), 250),
+                // unknown quest type
+                OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 2L, "UnknownQuestType"), 250),
+                // no geometry!
+                OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 3L, "ApplicableQuestType"), 250),
+            )
+        )
+        on(
+            mapDataSource.getGeometries(
+                argThat {
+                    it.containsExactlyInAnyOrder(
+                        listOf(
+                            ElementKey(NODE, 1),
+                            ElementKey(NODE, 2),
+                            ElementKey(NODE, 3)
+                        )
+                    )
+                }
+            )
+        ).thenReturn(
+            listOf(
+                ElementGeometryEntry(NODE, 1, geoms[0]),
+                ElementGeometryEntry(NODE, 2, geoms[1])
+            )
+        )
 
         assertEquals(
             listOf(
@@ -154,9 +174,13 @@ class OsmQuestControllerTest {
         ctrl.hide(quest.key)
 
         verify(hiddenDB).add(quest.key)
-        verify(hideListener).onHid(eq(OsmQuestHidden(
-            quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
-        )))
+        verify(hideListener).onHid(
+            eq(
+                OsmQuestHidden(
+                    quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
+                )
+            )
+        )
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
             deletedQuestKeys = eq(listOf(quest.key))
@@ -174,9 +198,13 @@ class OsmQuestControllerTest {
         assertTrue(ctrl.unhide(quest.key))
 
         verify(hiddenDB).delete(quest.key)
-        verify(hideListener).onUnhid(eq(OsmQuestHidden(
-            quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
-        )))
+        verify(hideListener).onUnhid(
+            eq(
+                OsmQuestHidden(
+                    quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
+                )
+            )
+        )
         verify(listener).onUpdated(
             addedQuests = eq(listOf(quest)),
             deletedQuestKeys = eq(emptyList())
@@ -308,9 +336,11 @@ class OsmQuestControllerTest {
 
         on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
 
-        on(hiddenDB.getAllIds()).thenReturn(listOf(
-            OsmQuestKey(NODE, 3L, "ApplicableQuestType2")
-        ))
+        on(hiddenDB.getAllIds()).thenReturn(
+            listOf(
+                OsmQuestKey(NODE, 3L, "ApplicableQuestType2")
+            )
+        )
 
         mapDataListener.onReplacedForBBox(bbox, mapData)
 

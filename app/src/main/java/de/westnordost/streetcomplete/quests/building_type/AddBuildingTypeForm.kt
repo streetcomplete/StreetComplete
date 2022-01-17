@@ -33,10 +33,11 @@ class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<BuildingType?, 
     }
 
     private fun showMultipleTypesHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_buildingType_answer_multiple_types_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_buildingType_answer_multiple_types_description)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 }

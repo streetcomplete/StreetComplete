@@ -25,16 +25,18 @@ class ElementEditsUploader @Inject constructor(
     private val mutex = Mutex()
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("ElementEditsUploader"))
 
-    suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
-        while (true) {
-            val edit = elementEditsController.getOldestUnsynced() ?: break
-            val idProvider = elementEditsController.getIdProvider(edit.id)
+    suspend fun upload() = mutex.withLock {
+        withContext(Dispatchers.IO) {
+            while (true) {
+                val edit = elementEditsController.getOldestUnsynced() ?: break
+                val idProvider = elementEditsController.getIdProvider(edit.id)
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. F.e. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
-            withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
+                withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
+            }
         }
-    } }
+    }
 
     private suspend fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
         val questTypeName = edit.questType::class.simpleName!!

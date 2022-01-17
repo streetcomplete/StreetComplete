@@ -129,8 +129,8 @@ private inline fun <T> wrapExceptions(block: () -> T): T =
 
 private fun MapDataChanges.toOsmApiElements(): List<OsmApiElement> =
     creations.map { it.toOsmApiElement().apply { isNew = true } } +
-    modifications.map { it.toOsmApiElement().apply { isModified = true } } +
-    deletions.map { it.toOsmApiElement().apply { isDeleted = true } }
+        modifications.map { it.toOsmApiElement().apply { isModified = true } } +
+        deletions.map { it.toOsmApiElement().apply { isDeleted = true } }
 
 private fun Element.toOsmApiElement(): OsmElement = when (this) {
     is Node -> toOsmApiNode()

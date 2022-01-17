@@ -18,13 +18,18 @@ class PinsMapComponent(ctrl: KtMapController) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
-        pinsLayer.setFeatures(pins.map { pin ->
-            Point(pin.position.toLngLat(), mapOf(
-                "type" to "point",
-                "kind" to pin.iconName,
-                "importance" to pin.importance.toString()
-            ) + pin.properties)
-        })
+        pinsLayer.setFeatures(
+            pins.map { pin ->
+                Point(
+                    pin.position.toLngLat(),
+                    mapOf(
+                        "type" to "point",
+                        "kind" to pin.iconName,
+                        "importance" to pin.importance.toString()
+                    ) + pin.properties
+                )
+            }
+        )
     }
 
     /** Clear pins */

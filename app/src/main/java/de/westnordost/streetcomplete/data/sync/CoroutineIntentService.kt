@@ -17,7 +17,8 @@ import kotlinx.coroutines.sync.withLock
 abstract class CoroutineIntentService(name: String) : Service() {
 
     private val scope = CoroutineScope(
-        SupervisorJob() + Dispatchers.Default + CoroutineName("CoroutineIntentService[$name]"))
+        SupervisorJob() + Dispatchers.Default + CoroutineName("CoroutineIntentService[$name]")
+    )
     private var currentJob: Job? = null
     private val mutex = Mutex()
 

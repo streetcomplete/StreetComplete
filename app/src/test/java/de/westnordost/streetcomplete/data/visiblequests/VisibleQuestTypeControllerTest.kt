@@ -51,18 +51,22 @@ class VisibleQuestTypeControllerTest {
     }
 
     @Test fun `get visibility`() {
-        on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf(
-            quest1.name to false,
-            disabledQuest.name to true
-        ))
+        on(visibleQuestTypeDao.getAll(0)).thenReturn(
+            mutableMapOf(
+                quest1.name to false,
+                disabledQuest.name to true
+            )
+        )
         assertFalse(ctrl.isVisible(quest1))
         assertTrue(ctrl.isVisible(disabledQuest))
     }
 
     @Test fun `visibility is cached`() {
-        on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf(
-            quest1.name to false
-        ))
+        on(visibleQuestTypeDao.getAll(0)).thenReturn(
+            mutableMapOf(
+                quest1.name to false
+            )
+        )
         ctrl.isVisible(quest1)
         ctrl.isVisible(quest1)
         ctrl.isVisible(quest1)
@@ -70,9 +74,11 @@ class VisibleQuestTypeControllerTest {
     }
 
     @Test fun `set visibility`() {
-        on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf(
-            quest1.name to false
-        ))
+        on(visibleQuestTypeDao.getAll(0)).thenReturn(
+            mutableMapOf(
+                quest1.name to false
+            )
+        )
         ctrl.setVisible(quest1, true)
         assertTrue(ctrl.isVisible(quest1))
         verify(visibleQuestTypeDao).put(0, quest1.name, true)
@@ -80,9 +86,11 @@ class VisibleQuestTypeControllerTest {
     }
 
     @Test fun `set visibility of several`() {
-        on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf(
-            quest1.name to true
-        ))
+        on(visibleQuestTypeDao.getAll(0)).thenReturn(
+            mutableMapOf(
+                quest1.name to true
+            )
+        )
         ctrl.setAllVisible(listOf(quest1, quest2), false)
         assertFalse(ctrl.isVisible(quest1))
         assertFalse(ctrl.isVisible(quest2))
@@ -95,10 +103,12 @@ class VisibleQuestTypeControllerTest {
     }
 
     @Test fun `clear visibilities`() {
-        on(visibleQuestTypeDao.getAll(0)).thenReturn(mutableMapOf(
-            quest1.name to false,
-            disabledQuest.name to true
-        ))
+        on(visibleQuestTypeDao.getAll(0)).thenReturn(
+            mutableMapOf(
+                quest1.name to false,
+                disabledQuest.name to true
+            )
+        )
         ctrl.clear()
         assertTrue(ctrl.isVisible(quest1))
         assertFalse(ctrl.isVisible(disabledQuest))

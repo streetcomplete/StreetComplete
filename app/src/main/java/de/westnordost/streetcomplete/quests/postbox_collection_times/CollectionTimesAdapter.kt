@@ -69,7 +69,8 @@ class CollectionTimesAdapter(
         val isFirst = collectionTimesRows.isEmpty()
         openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst)) { weekdays ->
             openSetTimeDialog(12 * 60) { minutes ->
-                add(weekdays, minutes) }
+                add(weekdays, minutes)
+            }
         }
     }
 

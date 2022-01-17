@@ -93,10 +93,13 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `creating for multipolygon relation ignores unusable parts`() {
-        val geom = create(areaRelation(
+        val geom = create(
+            areaRelation(
                 asOuters(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
-                        asInners(EMPTY_WAY) +
-                        asMembers(AREA_WAY))) as ElementPolygonsGeometry
+                    asInners(EMPTY_WAY) +
+                    asMembers(AREA_WAY)
+            )
+        ) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
         assertEquals(O, geom.center)
     }
@@ -137,11 +140,14 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `positions for relation`() {
-        val relation = rel(1, listOf(
-            member(WAY, 0),
-            member(WAY, 1),
-            member(NODE, 1)
-        ))
+        val relation = rel(
+            1,
+            listOf(
+                member(WAY, 0),
+                member(WAY, 1),
+                member(NODE, 1)
+            )
+        )
 
         val ways = listOf(SIMPLE_WAY1, SIMPLE_WAY2)
         val nodesByWayId = mapOf(
@@ -162,41 +168,54 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `returns null for non-existent relation`() {
-        val relation = rel(1, listOf(
-            member(WAY, 1),
-            member(WAY, 2),
-            member(NODE, 1)
-        ))
+        val relation = rel(
+            1,
+            listOf(
+                member(WAY, 1),
+                member(WAY, 2),
+                member(NODE, 1)
+            )
+        )
         assertNull(create(relation, MutableMapData()))
     }
 
     @Test fun `returns null for relation with a way that's missing from map data`() {
-        val relation = rel(1, listOf(
-            member(WAY, 0),
-            member(WAY, 1)
-        ))
-        val mapData = MutableMapData(listOf(
-            relation,
-            way(0, listOf(0, 1)),
-            node(0, P0),
-            node(1, P1)
-        ))
+        val relation = rel(
+            1,
+            listOf(
+                member(WAY, 0),
+                member(WAY, 1)
+            )
+        )
+        val mapData = MutableMapData(
+            listOf(
+                relation,
+                way(0, listOf(0, 1)),
+                node(0, P0),
+                node(1, P1)
+            )
+        )
 
         assertNull(create(relation, mapData))
     }
 
     @Test fun `does not return null for relation with a way that's missing from map data if returning incomplete geometries is ok`() {
-        val relation = rel(1, listOf(
-            member(WAY, 0),
-            member(WAY, 1)
-        ))
+        val relation = rel(
+            1,
+            listOf(
+                member(WAY, 0),
+                member(WAY, 1)
+            )
+        )
         val way = way(0, listOf(0, 1))
-        val mapData = MutableMapData(listOf(
-            relation,
-            way,
-            node(0, P0),
-            node(1, P1)
-        ))
+        val mapData = MutableMapData(
+            listOf(
+                relation,
+                way,
+                node(0, P0),
+                node(1, P1)
+            )
+        )
 
         assertEquals(
             create(way),

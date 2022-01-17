@@ -12,17 +12,21 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddBollardType : OsmElementQuestType<BollardType> {
 
-    private val bollardNodeFilter by lazy { """
+    private val bollardNodeFilter by lazy {
+        """
         nodes with
           barrier = bollard
           and !bollard
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val waysFilter by lazy { """
+    private val waysFilter by lazy {
+        """
         ways with
           highway and highway != construction
           and area != yes
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add bollard type"
     override val wikiLink = "Key:bollard"

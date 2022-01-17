@@ -117,12 +117,14 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                     leaveNote -> composeNote()
                     noName    -> confirmNoStreetName()
                     else      -> {
-                        applyAnswer(when (answer) {
-                            linkRoad    -> RoadIsLinkRoad
-                            serviceRoad -> RoadIsServiceRoad
-                            trackRoad   -> RoadIsTrack
-                            else        -> throw IllegalStateException()
-                        })
+                        applyAnswer(
+                            when (answer) {
+                                linkRoad    -> RoadIsLinkRoad
+                                serviceRoad -> RoadIsServiceRoad
+                                trackRoad   -> RoadIsTrack
+                                else        -> throw IllegalStateException()
+                            }
+                        )
                     }
                 }
             }

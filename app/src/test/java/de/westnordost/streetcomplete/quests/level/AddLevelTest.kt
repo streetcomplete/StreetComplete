@@ -19,32 +19,38 @@ class AddLevelTest {
     }
 
     @Test fun `does not create quest for shop in single-storey mall`() {
-        val mapData = createMapData(mapOf(
-            mall,
-            thingWithLevel("1"),
-            thingWithLevel("1"),
-            shopWithoutLevel(),
-        ))
+        val mapData = createMapData(
+            mapOf(
+                mall,
+                thingWithLevel("1"),
+                thingWithLevel("1"),
+                shopWithoutLevel(),
+            )
+        )
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does not create quest for shop just outside multi-storey mall`() {
-        val mapData = createMapData(mapOf(
-            mall,
-            thingWithLevel("1"),
-            thingWithLevel("0"),
-            shopWithoutLevel(p(0.24, 0.5)),
-        ))
+        val mapData = createMapData(
+            mapOf(
+                mall,
+                thingWithLevel("1"),
+                thingWithLevel("0"),
+                shopWithoutLevel(p(0.24, 0.5)),
+            )
+        )
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `does create quest for shop inside multi-storey mall (level)`() {
-        val mapData = createMapData(mapOf(
-            mall,
-            thingWithLevel("1"),
-            thingWithLevel("0"),
-            shopWithoutLevel(p(0.5, 0.5)),
-        ))
+        val mapData = createMapData(
+            mapOf(
+                mall,
+                thingWithLevel("1"),
+                thingWithLevel("0"),
+                shopWithoutLevel(p(0.5, 0.5)),
+            )
+        )
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }

@@ -51,11 +51,13 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         val answers = mutableListOf<AnswerItem>()
 
         if (!isOneway && countryInfo.hasCenterLeftTurnLane()) {
-            answers.add(AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
-                selectedLanesType = MARKED_SIDES
-                hasCenterLeftTurnLane = true
-                setStreetSideLayout()
-            })
+            answers.add(
+                AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
+                    selectedLanesType = MARKED_SIDES
+                    hasCenterLeftTurnLane = true
+                    setStreetSideLayout()
+                }
+            )
         }
         return answers
     }
@@ -265,7 +267,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     }
 
     private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
-        ValuePickerDialog(requireContext(),
+        ValuePickerDialog(
+            requireContext(),
             listOf(2, 4, 6, 8, 10, 12, 14),
             selectedValue, null,
             R.layout.quest_lanes_select_lanes,
@@ -274,7 +277,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     }
 
     private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
-        ValuePickerDialog(requireContext(),
+        ValuePickerDialog(
+            requireContext(),
             listOf(1, 2, 3, 4, 5, 6, 7, 8),
             selectedValue, null,
             R.layout.quest_lanes_select_lanes_one_side_only,

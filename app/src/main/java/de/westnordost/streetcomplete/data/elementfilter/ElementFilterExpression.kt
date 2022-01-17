@@ -20,8 +20,8 @@ class ElementFilterExpression(
     /** returns whether the given element is found through (=matches) this expression */
     fun matches(element: Element): Boolean =
         includesElementType(element.type) &&
-        (element.tags.isNotEmpty() || mayEvaluateToTrueWithNoTags) &&
-        (elementExprRoot?.matches(element) ?: true)
+            (element.tags.isNotEmpty() || mayEvaluateToTrueWithNoTags) &&
+            (elementExprRoot?.matches(element) ?: true)
 
     fun includesElementType(elementType: ElementType): Boolean = when (elementType) {
         ElementType.NODE -> elementsTypes.contains(NODES)
@@ -37,12 +37,12 @@ class ElementFilterExpression(
 enum class ElementsTypeFilter { NODES, WAYS, RELATIONS }
 
 private val BooleanExpression<ElementFilter, Element>.mayEvaluateToTrueWithNoTags: Boolean
-get() = when (this) {
-    is Leaf -> value.mayEvaluateToTrueWithNoTags
-    is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
-    is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
-    else -> throw IllegalStateException("Unexpected expression")
-}
+    get() = when (this) {
+        is Leaf -> value.mayEvaluateToTrueWithNoTags
+        is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
+        is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
+        else -> throw IllegalStateException("Unexpected expression")
+    }
 
 private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when (this) {
     is CompareElementAge,

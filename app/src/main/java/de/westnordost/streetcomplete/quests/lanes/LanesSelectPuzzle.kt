@@ -62,36 +62,36 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
 
     var isShowingLaneMarkings: Boolean = true
-    set(value) {
-        if (field != value) {
-            field = value
-            invalidate()
+        set(value) {
+            if (field != value) {
+                field = value
+                invalidate()
+            }
         }
-    }
     var laneCountLeft: Int = 0
-    private set
+        private set
 
     var laneCountRight: Int = 0
-    private set
+        private set
 
     var hasCenterLeftTurnLane: Boolean = false
 
     var isShowingBothSides: Boolean = true
-    set(value) {
-        if (field != value) {
-            field = value
-            updateLanes()
+        set(value) {
+            if (field != value) {
+                field = value
+                updateLanes()
+            }
         }
-    }
 
     var isForwardTraffic: Boolean = true
 
     var centerLineColor: Int
-    set(value) {
-        centerLinePaint.color = value
-        invalidate()
-    }
-    get() = centerLinePaint.color
+        set(value) {
+            centerLinePaint.color = value
+            invalidate()
+        }
+        get() = centerLinePaint.color
 
     var edgeLineColor: Int
         set(value) {
@@ -101,10 +101,10 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         get() = edgeLinePaint.color
 
     var edgeLineStyle: LineStyle = CONTINUOUS
-    set(value) {
-        field = value
-        invalidate()
-    }
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     private val roadPaint = Paint().also {
         it.color = Color.parseColor("#808080")

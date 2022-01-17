@@ -23,27 +23,27 @@ class LocationStateButton @JvmOverloads constructor(
 ) : AppCompatImageButton(context, attrs, defStyle) {
 
     var state: LocationState
-    get() = _state ?: DENIED
-    set(value) { _state = value }
+        get() = _state ?: DENIED
+        set(value) { _state = value }
 
     // this is necessary because state is accessed before it is initialized (in constructor of super)
     private var _state: LocationState? = null
-    set(value) {
-        if (field != value) {
-            field = value
-            refreshDrawableState()
+        set(value) {
+            if (field != value) {
+                field = value
+                refreshDrawableState()
+            }
         }
-    }
 
     private val tint: ColorStateList?
 
     var isNavigation: Boolean = false
-    set(value) {
-        if (field != value) {
-            field = value
-            refreshDrawableState()
+        set(value) {
+            if (field != value) {
+                field = value
+                refreshDrawableState()
+            }
         }
-    }
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.LocationStateButton)

@@ -137,7 +137,8 @@ class RegularOpeningHoursAdapter(
         val isFirst = rowAbove == null || rowAbove is OpeningMonthsRow
         openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst)) { weekdays ->
             openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
-                addWeekdays(weekdays, timeRange) }
+                addWeekdays(weekdays, timeRange)
+            }
         }
     }
 
@@ -145,7 +146,8 @@ class RegularOpeningHoursAdapter(
         val rowAbove = if (rows.size > 0) rows[rows.size - 1] else null
         if (rowAbove !is OpeningWeekdaysRow) return
         openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
-            addWeekdays(rowAbove.weekdays, timeRange) }
+            addWeekdays(rowAbove.weekdays, timeRange)
+        }
     }
 
     private fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {

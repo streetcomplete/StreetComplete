@@ -40,7 +40,8 @@ class RelationDao @Inject constructor(private val db: Database) {
         db.transaction {
             db.delete(NAME_MEMBERS, "$ID IN ($idsString)")
 
-            db.insertMany(NAME_MEMBERS,
+            db.insertMany(
+                NAME_MEMBERS,
                 arrayOf(ID, INDEX, REF, TYPE, ROLE),
                 relations.flatMap { relation ->
                     relation.members.mapIndexed { index, member ->
@@ -54,7 +55,8 @@ class RelationDao @Inject constructor(private val db: Database) {
                     }
                 }
             )
-            db.replaceMany(NAME,
+            db.replaceMany(
+                NAME,
                 arrayOf(ID, VERSION, TAGS, TIMESTAMP, LAST_SYNC),
                 relations.map { relation ->
                     arrayOf(
@@ -125,7 +127,8 @@ class RelationDao @Inject constructor(private val db: Database) {
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
         if (limit != null && limit <= 0) return emptyList()
-        return db.query(NAME,
+        return db.query(
+            NAME,
             columns = arrayOf(ID),
             where = "$LAST_SYNC < $timestamp",
             limit = limit?.toString()
@@ -134,7 +137,8 @@ class RelationDao @Inject constructor(private val db: Database) {
 
     private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
         return db.transaction {
-            val ids = db.query(NAME_MEMBERS,
+            val ids = db.query(
+                NAME_MEMBERS,
                 columns = arrayOf(ID),
                 where = "$TYPE = ? AND $REF = $elementId",
                 args = arrayOf(elementType.name)

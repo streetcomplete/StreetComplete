@@ -56,20 +56,23 @@ class ElementEditsDao @Inject constructor(
         db.queryOne(NAME, where = "$ID = $id") { it.toElementEdit() }
 
     fun getByElement(elementType: ElementType, elementId: Long): List<ElementEdit> =
-        db.query(NAME,
+        db.query(
+            NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
             args = arrayOf(elementType.name, elementId),
             orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP"
         ) { it.toElementEdit() }
 
     fun getOldestUnsynced(): ElementEdit? =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             where = "$IS_SYNCED = 0",
             orderBy = CREATED_TIMESTAMP
         ) { it.toElementEdit() }
 
     fun getUnsyncedCount(): Int =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             columns = arrayOf("COUNT(*) AS count"),
             where = "$IS_SYNCED = 0"
         ) { it.getInt("count") } ?: 0

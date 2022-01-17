@@ -24,63 +24,99 @@ class AddRoofShapeTest {
     }
 
     @Test fun `not applicable to roofs with shapes already set`() {
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("roof:levels" to "1", "roof:shape" to "something"))
-        ))
+        assertEquals(
+            false,
+            questType.isApplicableTo(
+                way(tags = mapOf("roof:levels" to "1", "roof:shape" to "something"))
+            )
+        )
     }
 
     @Test fun `not applicable to building parts`() {
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "1", "building:part" to "something"))
-        ))
+        assertEquals(
+            false,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "1", "building:part" to "something"))
+            )
+        )
     }
 
     @Test fun `not applicable to demolished building`() {
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "1", "demolished:building" to "something"))
-        ))
+        assertEquals(
+            false,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "1", "demolished:building" to "something"))
+            )
+        )
     }
 
     @Test fun `not applicable to negated building`() {
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "1", "building" to "no"))
-        ))
+        assertEquals(
+            false,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "1", "building" to "no"))
+            )
+        )
     }
 
     @Test fun `not applicable to building under contruction`() {
-        assertEquals(false, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "1", "building" to "construction"))
-        ))
+        assertEquals(
+            false,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "1", "building" to "construction"))
+            )
+        )
     }
 
     @Test fun `applicable to roofs`() {
-        assertEquals(true, questType.isApplicableTo(
-            way(tags = mapOf("roof:levels" to "1", "building" to "apartments"))
-        ))
+        assertEquals(
+            true,
+            questType.isApplicableTo(
+                way(tags = mapOf("roof:levels" to "1", "building" to "apartments"))
+            )
+        )
     }
 
     @Test fun `applicable to buildings with many levels and enough roof levels to be visible from below`() {
-        assertEquals(true, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "6", "roof:levels" to "1.5", "building" to "apartments"))
-        ))
-        assertEquals(true, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "8", "roof:levels" to "3", "building" to "apartments"))
-        ))
-        assertEquals(true, questType.isApplicableTo(
-            way(tags = mapOf("building:levels" to "4.5", "roof:levels" to "0.5", "building" to "apartments"))
-        ))
+        assertEquals(
+            true,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "6", "roof:levels" to "1.5", "building" to "apartments"))
+            )
+        )
+        assertEquals(
+            true,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "8", "roof:levels" to "3", "building" to "apartments"))
+            )
+        )
+        assertEquals(
+            true,
+            questType.isApplicableTo(
+                way(tags = mapOf("building:levels" to "4.5", "roof:levels" to "0.5", "building" to "apartments"))
+            )
+        )
     }
 
     @Test fun `unknown if applicable to buildings with no or few levels and 0 or no roof levels`() {
-        assertEquals(null, questType.isApplicableTo(
-            way(tags = mapOf("roof:levels" to "0", "building" to "apartments"))
-        ))
-        assertEquals(null, questType.isApplicableTo(
-            way(tags = mapOf("roof:levels" to "0", "building" to "apartments", "building:levels" to "3"))
-        ))
-        assertEquals(null, questType.isApplicableTo(
-            way(tags = mapOf("building" to "apartments", "building:levels" to "2"))
-        ))
+        assertEquals(
+            null,
+            questType.isApplicableTo(
+                way(tags = mapOf("roof:levels" to "0", "building" to "apartments"))
+            )
+        )
+        assertEquals(
+            null,
+            questType.isApplicableTo(
+                way(tags = mapOf("roof:levels" to "0", "building" to "apartments", "building:levels" to "3"))
+            )
+        )
+        assertEquals(
+            null,
+            questType.isApplicableTo(
+                way(tags = mapOf("building" to "apartments", "building:levels" to "2"))
+            )
+        )
     }
 
     @Test fun `create quest for roofs`() {

@@ -170,10 +170,12 @@ private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
             WeekDayRange().also { it.startDay = WeekDay.values()[end] }
         )
     } else {
-        listOf(WeekDayRange().also {
-            it.startDay = WeekDay.values()[start]
-            it.endDay = if (start != end) WeekDay.values()[end] else null
-        })
+        listOf(
+            WeekDayRange().also {
+                it.startDay = WeekDay.values()[start]
+                it.endDay = if (start != end) WeekDay.values()[end] else null
+            }
+        )
     }
 }
 

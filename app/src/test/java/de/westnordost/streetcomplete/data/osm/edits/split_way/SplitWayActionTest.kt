@@ -213,7 +213,8 @@ class SplitWayActionTest {
         assertEquals(
             createTranslated(
                 p1.latitude + 0.5 * (p2.latitude - p1.latitude),
-                p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
+                p1.longitude + 0.5 * (p2.longitude - p1.longitude)
+            ),
             node.position
         )
         data.checkWaysNodes(
@@ -298,9 +299,11 @@ class SplitWayActionTest {
     }
 
     @Test fun `insert all way chunks into relation the way is a member of`() {
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(0)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(0)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -309,10 +312,12 @@ class SplitWayActionTest {
     }
 
     @Test fun `insert all way chunks into multiple relations the way is a member of`() {
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(0))),
-            rel(1, waysAsMembers(listOf(0)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(0))),
+                rel(1, waysAsMembers(listOf(0)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -324,9 +329,11 @@ class SplitWayActionTest {
     @Test fun `insert all way chunks multiple times into relation the way is a member of multiple times`() {
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(0, 5, 0)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(3, 4, 3)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(0, 1, 0, 2)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(0, 1, 0, 2)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -342,10 +349,12 @@ class SplitWayActionTest {
     }
 
     @Test fun `all way chunks in updated relations have the same role as the original way`() {
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(0), "cool role")),
-            rel(1, waysAsMembers(listOf(0), "not so cool role"))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(0), "cool role")),
+                rel(1, waysAsMembers(listOf(0), "not so cool role"))
+            )
+        )
         val data = doSplit()
 
         assertTrue(data.getRelation(0)!!.members.all { it.role == "cool role" })
@@ -356,9 +365,11 @@ class SplitWayActionTest {
         // 4 5 | 0 1 2 3 | 6 7  => 4 5 | 0 1 -1 | -1 2 3 | 6 7
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4, 5)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(6, 7)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(1, 0, 2)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(1, 0, 2)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -377,18 +388,22 @@ class SplitWayActionTest {
            nullpointer exception */
         on(repos.getWay(1)).thenReturn(null)
         on(repos.getWay(2)).thenReturn(null)
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(1, 0, 2)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(1, 0, 2)))
+            )
+        )
         doSplit()
     }
 
     @Test fun `insert way chunks backwards in the updated relation as end of reverse chain`() {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4, 3)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(1, 0)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(1, 0)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -403,16 +418,21 @@ class SplitWayActionTest {
     @Test fun `ignore non-way relation members when determining way orientation in relation`() {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4, 3)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 1),
-                member(NODE, 0),
-                member(RELATION, 1),
-                member(WAY, 0),
-                member(NODE, 0),
-                member(RELATION, 1)
-            ))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 1),
+                        member(NODE, 0),
+                        member(RELATION, 1),
+                        member(WAY, 0),
+                        member(NODE, 0),
+                        member(RELATION, 1)
+                    )
+                )
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -427,9 +447,11 @@ class SplitWayActionTest {
     @Test fun `insert way chunks forwards in the updated relation as end of chain`() {
         // 4 0 | 0 1 2 3  =>  4 0 | 0 1 -1 | -1 2 3
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4, 0)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(1, 0)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(1, 0)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -444,9 +466,11 @@ class SplitWayActionTest {
     @Test fun `insert way chunks backwards in the updated relation as start of reverse chain`() {
         // 0 1 2 3 | 4 0  =>  -1 2 3 | 0 1 -1 | 4 0
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4, 0)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(0, 1)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(0, 1)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -461,9 +485,11 @@ class SplitWayActionTest {
     @Test fun `insert way chunks forwards in the updated relation as start of chain`() {
         // 0 1 2 3 | 4 3  =>  0 1 -1 | -1 2 3 | 4 3
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(4, 3)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, waysAsMembers(listOf(0, 1)))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(0, waysAsMembers(listOf(0, 1)))
+            )
+        )
         val data = doSplit()
 
         data.checkRelationWayMemberNodeIds(
@@ -490,13 +516,19 @@ class SplitWayActionTest {
     ) {
         val otherRole = if (role == "from") "to" else "from"
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(3, 4)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 0, role),
-                member(WAY, 1, otherRole),
-                member(NODE, 3, via)
-            ), mapOf("type" to relationType))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 0, role),
+                        member(WAY, 1, otherRole),
+                        member(NODE, 3, via)
+                    ),
+                    mapOf("type" to relationType)
+                )
+            )
+        )
         val data = doSplit()
 
         val relation = data.relations.single()
@@ -529,13 +561,19 @@ class SplitWayActionTest {
         val otherRole = if (role == "from") "to" else "from"
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(5, 7)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(5, 4, 3)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 0, role),
-                member(WAY, 1, otherRole),
-                member(WAY, 2, via)
-            ), mapOf("type" to relationType))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 0, role),
+                        member(WAY, 1, otherRole),
+                        member(WAY, 2, via)
+                    ),
+                    mapOf("type" to relationType)
+                )
+            )
+        )
         val data = doSplit()
 
         val relation = data.relations.single()
@@ -553,14 +591,20 @@ class SplitWayActionTest {
         on(repos.getWay(1)).thenReturn(way(1, mutableListOf(6, 7)))
         on(repos.getWay(2)).thenReturn(way(2, mutableListOf(4, 5, 6)))
         on(repos.getWay(3)).thenReturn(way(3, mutableListOf(3, 4)))
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 0, "from"),
-                member(WAY, 1, "to"),
-                member(WAY, 2, "via"),
-                member(WAY, 3, "via")
-            ), mapOf("type" to "restriction"))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 0, "from"),
+                        member(WAY, 1, "to"),
+                        member(WAY, 2, "via"),
+                        member(WAY, 3, "via")
+                    ),
+                    mapOf("type" to "restriction")
+                )
+            )
+        )
         val data = doSplit(SplitAtPoint(p[2]))
 
         val relation = data.relations.single()
@@ -574,14 +618,20 @@ class SplitWayActionTest {
     }
 
     @Test fun `no special treatment of restriction relation if the way has another role`() {
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 0, "another role"),
-                member(WAY, 1, "from"),
-                member(NODE, 3, "via"),
-                member(WAY, 3, "to")
-            ), mapOf("type" to "restriction"))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 0, "another role"),
+                        member(WAY, 1, "from"),
+                        member(NODE, 3, "via"),
+                        member(WAY, 3, "to")
+                    ),
+                    mapOf("type" to "restriction")
+                )
+            )
+        )
         val data = doSplit()
 
         val relation = data.relations.single()
@@ -589,12 +639,18 @@ class SplitWayActionTest {
     }
 
     @Test fun `no special treatment of restriction relation if there is no via`() {
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 0, "from"),
-                member(WAY, 1, "to")
-            ), mapOf("type" to "restriction"))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 0, "from"),
+                        member(WAY, 1, "to")
+                    ),
+                    mapOf("type" to "restriction")
+                )
+            )
+        )
         val data = doSplit()
 
         val relation = data.relations.single()
@@ -602,13 +658,19 @@ class SplitWayActionTest {
     }
 
     @Test fun `no special treatment of restriction relation if from-way does not touch via`() {
-        on(repos.getRelationsForWay(0)).thenReturn(listOf(
-            rel(0, listOf(
-                member(WAY, 0, "from"),
-                member(NODE, 4, "via"),
-                member(WAY, 3, "to")
-            ), mapOf("type" to "restriction"))
-        ))
+        on(repos.getRelationsForWay(0)).thenReturn(
+            listOf(
+                rel(
+                    0,
+                    listOf(
+                        member(WAY, 0, "from"),
+                        member(NODE, 4, "via"),
+                        member(WAY, 3, "to")
+                    ),
+                    mapOf("type" to "restriction")
+                )
+            )
+        )
         val data = doSplit()
 
         val relation = data.relations.single()
@@ -653,10 +715,11 @@ class SplitWayActionTest {
     private fun MapData.checkRelationWayMemberNodeIds(vararg chunksByRelationId: Pair<Long, List<List<Long>>>) {
         assertEquals(
             mapOf(*chunksByRelationId),
-            relations.associate { rel -> rel.id to
-                rel.members
-                    .filter { it.type == WAY }
-                    .map { (getWay(it.ref) ?: repos.getWay(it.ref))!!.nodeIds }
+            relations.associate { rel ->
+                rel.id to
+                    rel.members
+                        .filter { it.type == WAY }
+                        .map { (getWay(it.ref) ?: repos.getWay(it.ref))!!.nodeIds }
             }
         )
     }

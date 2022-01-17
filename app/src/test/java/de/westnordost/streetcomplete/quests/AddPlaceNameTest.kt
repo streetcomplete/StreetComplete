@@ -20,10 +20,12 @@ class AddPlaceNameTest {
 
     @Test fun `apply name answer`() {
         questType.verifyAnswer(
-            PlaceName(listOf(
-                LocalizedName("", "Hey ya!"),
-                LocalizedName("de", "He ja!"),
-            )),
+            PlaceName(
+                listOf(
+                    LocalizedName("", "Hey ya!"),
+                    LocalizedName("de", "He ja!"),
+                )
+            ),
             StringMapEntryAdd("name", "Hey ya!"),
             StringMapEntryAdd("name:de", "He ja!"),
         )

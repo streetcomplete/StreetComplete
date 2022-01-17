@@ -111,11 +111,13 @@ class OsmNoteQuestControllerTest {
         val note1 = note(1)
         val note2 = note(2)
 
-        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
-            NoteIdWithTimestamp(1, 300),
-            NoteIdWithTimestamp(2, 500),
-            NoteIdWithTimestamp(3, 600), // missing note
-        ))
+        on(hiddenDB.getNewerThan(123L)).thenReturn(
+            listOf(
+                NoteIdWithTimestamp(1, 300),
+                NoteIdWithTimestamp(2, 500),
+                NoteIdWithTimestamp(3, 600), // missing note
+            )
+        )
         on(noteSource.getAll(eq(listOf(1L, 2L, 3L)))).thenReturn(listOf(note1, note2))
 
         assertEquals(
@@ -139,62 +141,80 @@ class OsmNoteQuestControllerTest {
     }
 
     @Test fun `get note quest with comment from user returns null`() {
-        on(noteSource.get(1)).thenReturn(note(comments = listOf(
-            comment(text = "test?", user = User(id = 100, "Blaubär")),
-            comment(text = "test", user = User(id = 1, "Blubbi"))
-        )))
+        on(noteSource.get(1)).thenReturn(
+            note(
+                comments = listOf(
+                    comment(text = "test?", user = User(id = 100, "Blaubär")),
+                    comment(text = "test", user = User(id = 1, "Blubbi"))
+                )
+            )
+        )
         on(userDataSource.userId).thenReturn(1)
 
         assertNull(ctrl.get(1))
     }
 
     @Test fun `get note quest with comment from user that contains a survey required marker returns non-null`() {
-        on(noteSource.get(1)).thenReturn(note(comments = listOf(
-            comment(text = "test?", user = User(id = 100, "Blaubär")),
-            comment(text = "ok but #surveyme", user = User(id = 1, "Blubbi")),
-        )))
+        on(noteSource.get(1)).thenReturn(
+            note(
+                comments = listOf(
+                    comment(text = "test?", user = User(id = 100, "Blaubär")),
+                    comment(text = "ok but #surveyme", user = User(id = 1, "Blubbi")),
+                )
+            )
+        )
         on(userDataSource.userId).thenReturn(1)
 
         assertNotNull(ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns null`() {
-        on(noteSource.get(1)).thenReturn(note(comments = listOf(
-            comment(text = "test")
-        )))
+        on(noteSource.get(1)).thenReturn(
+            note(
+                comments = listOf(
+                    comment(text = "test")
+                )
+            )
+        )
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
         assertNull(ctrl.get(1))
     }
 
     @Test fun `get quest phrased as question returns non-null`() {
-        on(noteSource.get(1)).thenReturn(note(
-            1,
-            position = p(1.0, 1.0),
-            comments = listOf(comment(text = "test?"))
-        ))
+        on(noteSource.get(1)).thenReturn(
+            note(
+                1,
+                position = p(1.0, 1.0),
+                comments = listOf(comment(text = "test?"))
+            )
+        )
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
         assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest with comment containing survey required marker returns non-null`() {
-        on(noteSource.get(1)).thenReturn(note(
-            1,
-            position = p(1.0, 1.0),
-            comments = listOf(comment(text = "test #surveyme"))
-        ))
+        on(noteSource.get(1)).thenReturn(
+            note(
+                1,
+                position = p(1.0, 1.0),
+                comments = listOf(comment(text = "test #surveyme"))
+            )
+        )
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
         assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns non-null by preference`() {
-        on(noteSource.get(1)).thenReturn(note(
-            1,
-            position = p(1.0, 1.0),
-            comments = listOf(comment(text = "test"))
-        ))
+        on(noteSource.get(1)).thenReturn(
+            note(
+                1,
+                position = p(1.0, 1.0),
+                comments = listOf(comment(text = "test"))
+            )
+        )
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(false)
 
         assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
@@ -249,10 +269,12 @@ class OsmNoteQuestControllerTest {
 
         verify(listener).onUpdated(
             addedQuests = argThat {
-                it.containsExactlyInAnyOrder(listOf(
-                    OsmNoteQuest(1, p()),
-                    OsmNoteQuest(3, p()),
-                ))
+                it.containsExactlyInAnyOrder(
+                    listOf(
+                        OsmNoteQuest(1, p()),
+                        OsmNoteQuest(3, p()),
+                    )
+                )
             },
             deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(4, 5)) }
         )

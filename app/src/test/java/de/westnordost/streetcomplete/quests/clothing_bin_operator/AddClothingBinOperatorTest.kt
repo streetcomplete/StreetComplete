@@ -13,38 +13,62 @@ class AddClothingBinOperatorTest {
     }
 
     @Test fun `is applicable to clothing container`() {
-        assertTrue(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:clothes" to "yes",
-            "recycling:paper" to "no",
-        ))))
+        assertTrue(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "recycling:clothes" to "yes",
+                        "recycling:paper" to "no",
+                    )
+                )
+            )
+        )
     }
 
     @Test fun `is not applicable to clothing container with operator`() {
-        assertFalse(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:clothes" to "yes",
-            "operator" to "DRK",
-        ))))
+        assertFalse(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "recycling:clothes" to "yes",
+                        "operator" to "DRK",
+                    )
+                )
+            )
+        )
     }
 
     @Test fun `is not applicable to clothing container with another recycling type`() {
-        assertFalse(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:clothes" to "yes",
-            "recycling:paper" to "yes",
-        ))))
+        assertFalse(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "recycling:clothes" to "yes",
+                        "recycling:paper" to "yes",
+                    )
+                )
+            )
+        )
     }
 
     @Test fun `is applicable to clothing container with shoes recycling type`() {
-        assertTrue(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:clothes" to "yes",
-            "recycling:shoes" to "yes",
-        ))))
+        assertTrue(
+            questType.isApplicableTo(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "recycling:clothes" to "yes",
+                        "recycling:shoes" to "yes",
+                    )
+                )
+            )
+        )
     }
 }

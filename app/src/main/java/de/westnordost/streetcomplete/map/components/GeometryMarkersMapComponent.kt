@@ -49,14 +49,16 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 iconSize = pointSize
                 color = pointColor
             }
-            marker.setStylingFromString("""
+            marker.setStylingFromString(
+                """
             {
                 style: 'geometry-points',
                 color: '$color',
                 size: ${iconSize}px,
                 collide: false
             }
-            """.trimIndent())
+                """.trimIndent()
+            )
             marker.setPoint(geometry.center)
             markers.add(marker)
         }
@@ -73,7 +75,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 .replace('\n', ' ')
                 .replace("'", "''")
                 .replace("\"", "\\\"")
-            marker.setStylingFromString("""
+            marker.setStylingFromString(
+                """
             {
                 style: 'text',
                 text_source: 'function() { return "$escapedTitle"; }',
@@ -88,7 +91,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 offset: [0, ${iconSize / 2 + 2}px],
                 collide: true
             }
-            """.trimIndent())
+                """.trimIndent()
+            )
             marker.setPoint(geometry.center)
             markers.add(marker)
         }
@@ -103,17 +107,21 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
             if (geometry is ElementPolygonsGeometry) {
                 val marker = ctrl.addMarker()
-                marker.setStylingFromString("""
+                marker.setStylingFromString(
+                    """
                 {
                     style: 'geometry-polygons',
                     color: '$areaColor',
                     order: 2000,
                     collide: false
                 }
-                """.trimIndent())
-                marker.setPolygon(Polygon(
-                    positions.map { polygon -> polygon.map { it.toLngLat() } }, null
-                ))
+                    """.trimIndent()
+                )
+                marker.setPolygon(
+                    Polygon(
+                        positions.map { polygon -> polygon.map { it.toLngLat() } }, null
+                    )
+                )
                 markers.add(marker)
             }
 
@@ -121,7 +129,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
              *  limitation in tangram-es, these have to be actually two markers then. */
             for (polyline in positions) {
                 val marker = ctrl.addMarker()
-                marker.setStylingFromString("""
+                marker.setStylingFromString(
+                    """
                 {
                     style: 'geometry-lines',
                     width: ${lineWidth}px,
@@ -131,7 +140,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                     cap: round,
                     join: round
                 }
-                """.trimIndent())
+                    """.trimIndent()
+                )
                 marker.setPolyline(Polyline(polyline.map { it.toLngLat() }, null))
                 markers.add(marker)
             }

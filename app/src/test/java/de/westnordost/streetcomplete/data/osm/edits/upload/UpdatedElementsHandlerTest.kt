@@ -169,14 +169,20 @@ class UpdatedElementsHandlerTest {
             DiffElement(RELATION, -4, 44)
         )
         val updates = handler.getElementUpdates(elements)
-        assertTrue(updates.idUpdates.containsExactlyInAnyOrder(listOf(
-            ElementIdUpdate(NODE, -1, 11),
-            ElementIdUpdate(WAY, -3, 33),
-            ElementIdUpdate(RELATION, -4, 44),
-        )))
-        updates.deleted.containsExactlyInAnyOrder(listOf(
-            ElementKey(NODE, -2)
-        ))
+        assertTrue(
+            updates.idUpdates.containsExactlyInAnyOrder(
+                listOf(
+                    ElementIdUpdate(NODE, -1, 11),
+                    ElementIdUpdate(WAY, -3, 33),
+                    ElementIdUpdate(RELATION, -4, 44),
+                )
+            )
+        )
+        updates.deleted.containsExactlyInAnyOrder(
+            listOf(
+                ElementKey(NODE, -2)
+            )
+        )
     }
 }
 

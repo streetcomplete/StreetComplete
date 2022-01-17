@@ -41,20 +41,30 @@ class AddBuildingLevelsTest {
         // https://commons.wikimedia.org/wiki/File:Walters_Ranch_Hop_Kiln_in_2019,_4×5.jpg
         // https://en.wikipedia.org/wiki/File:Koebergnps.jpg
         // https://commons.wikimedia.org/wiki/File:Kernkraftwerk_Stendal_Panorama_2012.jpg
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1, 2, 3, 4), mapOf(
-                "building" to "industrial"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                way(
+                    1L, listOf(1, 2, 3, 4),
+                    mapOf(
+                        "building" to "industrial"
+                    )
+                )
+            )
+        )
         Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applicable to residential buildings`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1, 2, 3, 4), mapOf(
-                "building" to "residential"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                way(
+                    1L, listOf(1, 2, 3, 4),
+                    mapOf(
+                        "building" to "residential"
+                    )
+                )
+            )
+        )
         Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 }

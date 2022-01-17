@@ -33,7 +33,8 @@ class NodeDao @Inject constructor(private val db: Database) {
 
         val time = currentTimeMillis()
 
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             arrayOf(ID, VERSION, LATITUDE, LONGITUDE, TAGS, TIMESTAMP, LAST_SYNC),
             nodes.map { node ->
                 arrayOf(
@@ -75,7 +76,8 @@ class NodeDao @Inject constructor(private val db: Database) {
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
         if (limit != null && limit <= 0) return emptyList()
-        return db.query(NAME,
+        return db.query(
+            NAME,
             columns = arrayOf(ID),
             where = "$LAST_SYNC < $timestamp",
             limit = limit?.toString()

@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
-    private val disusedShopsFilter by lazy { """
+    private val disusedShopsFilter by lazy {
+        """
         nodes, ways, relations with (
           shop = vacant
           or ${isKindOfShopExpression("disused")}
@@ -20,14 +21,17 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
           older today -1 years
           or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -1 years" }}
         )
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     /* elements tagged like "shop=ice_cream + disused:amenity=bank" should not appear as quests.
      *  This is arguably a tagging mistake, but that mistake should not lead to all the tags of
      *  this element being cleared when the quest is answered */
-    private val shopsFilter by lazy { """
+    private val shopsFilter by lazy {
+        """
         nodes, ways, relations with ${isKindOfShopExpression()}
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Check if vacant shop is still vacant"
     override val wikiLink = "Key:disused:"

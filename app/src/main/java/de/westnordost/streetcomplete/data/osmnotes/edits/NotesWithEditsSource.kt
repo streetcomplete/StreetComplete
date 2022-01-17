@@ -93,7 +93,7 @@ import javax.inject.Singleton
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon> =
         noteController.getAllPositions(bbox) +
-        noteEditsSource.getAllUnsyncedPositions(bbox)
+            noteEditsSource.getAllUnsyncedPositions(bbox)
 
     fun getAll(bbox: BoundingBox): Collection<Note> =
         editsAppliedToNotes(

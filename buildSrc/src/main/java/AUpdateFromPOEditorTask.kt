@@ -26,9 +26,11 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
         return URL("https://api.poeditor.com/v2/projects/export").retryingQuotaConnection({ connection ->
             connection.doOutput = true
             connection.requestMethod = "POST"
-            connection.outputStream.bufferedWriter().use { it.write(
-                "$baseParams&language=${languageCode.toLowerCase(Locale.US)}&type=$format&filters=translated"
-            ) }
+            connection.outputStream.bufferedWriter().use {
+                it.write(
+                    "$baseParams&language=${languageCode.toLowerCase(Locale.US)}&type=$format&filters=translated"
+                )
+            }
         }) { inputStream ->
             val response = Parser.default().parse(inputStream) as JsonObject
             (response.obj("result")!!)["url"] as String

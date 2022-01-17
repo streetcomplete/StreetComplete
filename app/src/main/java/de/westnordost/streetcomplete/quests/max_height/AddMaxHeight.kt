@@ -15,33 +15,42 @@ import de.westnordost.streetcomplete.util.intersects
 
 class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
-    private val nodeFilter by lazy { """
+    private val nodeFilter by lazy {
+        """
         nodes with
         (
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
         and !maxheight and !maxheight:signed and !maxheight:physical
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val roadsWithoutMaxHeightFilter by lazy { """
+    private val roadsWithoutMaxHeightFilter by lazy {
+        """
         ways with
         (
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and !maxheight and !maxheight:signed and !maxheight:physical
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val allRoadsFilter by lazy { """
+    private val allRoadsFilter by lazy {
+        """
         ways with highway ~ ${ALL_ROADS.joinToString("|")}
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val tunnelFilter by lazy { """
+    private val tunnelFilter by lazy {
+        """
         ways with highway and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val bridgeFilter by lazy { """
+    private val bridgeFilter by lazy {
+        """
         ways with (
             highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
             or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular
@@ -50,7 +59,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
             or man_made = pipeline and location = overhead
           )
           and layer
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
@@ -65,8 +75,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         val isTunnel = tags["tunnel"] == "yes"
         val isBelowBridge =
             !isParkingEntrance && !isHeightRestrictor &&
-            tags["tunnel"] == null && tags["covered"] == null &&
-            tags["man_made"] != "pipeline"
+                tags["tunnel"] == null && tags["covered"] == null &&
+                tags["man_made"] != "pipeline"
 
         return when {
             isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title

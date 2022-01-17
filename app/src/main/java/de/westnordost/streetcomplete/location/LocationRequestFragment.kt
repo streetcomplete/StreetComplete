@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.R
 class LocationRequestFragment : Fragment() {
 
     var state: LocationState? = null
-    private set
+        private set
 
     private var inProgress = false
     private var locationProviderChangedReceiver: BroadcastReceiver? = null

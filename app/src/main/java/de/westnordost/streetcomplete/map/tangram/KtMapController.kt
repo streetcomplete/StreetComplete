@@ -201,10 +201,12 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         val h = view.height
         if (w == 0 || h == 0) return null
 
-        return screenPositionToLatLon(PointF(
-            padding.left + (w - padding.left - padding.right) / 2f,
-            padding.top + (h - padding.top - padding.bottom) / 2f
-        ))
+        return screenPositionToLatLon(
+            PointF(
+                padding.left + (w - padding.left - padding.right) / 2f,
+                padding.top + (h - padding.top - padding.bottom) / 2f
+            )
+        )
     }
 
     fun screenAreaToBoundingBox(padding: RectF): BoundingBox? {
@@ -365,9 +367,11 @@ suspend fun MapView.initMap(
     glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
 ) = suspendCancellableCoroutine<KtMapController?> { cont ->
     getMapAsync({ mapController ->
-        cont.resume(mapController?.let {
-            KtMapController(it, context.contentResolver)
-        })
+        cont.resume(
+            mapController?.let {
+                KtMapController(it, context.contentResolver)
+            }
+        )
     }, glViewHolderFactory, httpHandler)
 }
 

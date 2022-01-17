@@ -18,9 +18,12 @@ class UserAchievementsDao @Inject constructor(private val db: Database) {
     }
 
     fun put(achievement: String, level: Int) {
-        db.replace(NAME, listOf(
-            ACHIEVEMENT to achievement,
-            LEVEL to level
-        ))
+        db.replace(
+            NAME,
+            listOf(
+                ACHIEVEMENT to achievement,
+                LEVEL to level
+            )
+        )
     }
 }

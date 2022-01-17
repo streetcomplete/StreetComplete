@@ -131,7 +131,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     // all added name rows are not empty
     override fun isFormComplete() =
         adapter.localizedNames.isNotEmpty() &&
-        adapter.localizedNames.all { it.name.trim().isNotEmpty() }
+            adapter.localizedNames.all { it.name.trim().isNotEmpty() }
 
     companion object {
         private const val LOCALIZED_NAMES_DATA = "localized_names_data"

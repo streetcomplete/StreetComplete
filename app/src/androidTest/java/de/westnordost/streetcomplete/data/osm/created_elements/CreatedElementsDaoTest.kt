@@ -27,10 +27,12 @@ class CreatedElementsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(elements, dao.getAll())
 
-        dao.deleteAll(listOf(
-            ElementKey(ElementType.WAY, 1),
-            ElementKey(ElementType.NODE, 3),
-        ))
+        dao.deleteAll(
+            listOf(
+                ElementKey(ElementType.WAY, 1),
+                ElementKey(ElementType.NODE, 3),
+            )
+        )
 
         assertEquals(listOf(ElementKey(ElementType.NODE, 1)), dao.getAll())
     }

@@ -225,11 +225,13 @@ private fun updateTags(
     timestamp,
     isSynced,
     UpdateElementTagsAction(
-        StringMapChanges(listOf(
-            StringMapEntryAdd("a", "b"),
-            StringMapEntryModify("c", "d", "e"),
-            StringMapEntryDelete("f", "g"),
-        ))
+        StringMapChanges(
+            listOf(
+                StringMapEntryAdd("a", "b"),
+                StringMapEntryModify("c", "d", "e"),
+                StringMapEntryDelete("f", "g"),
+            )
+        )
     )
 )
 
@@ -244,11 +246,13 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
     timestamp,
     isSynced,
     RevertUpdateElementTagsAction(
-        StringMapChanges(listOf(
-            StringMapEntryAdd("a", "b"),
-            StringMapEntryModify("c", "d", "e"),
-            StringMapEntryDelete("f", "g"),
-        ))
+        StringMapChanges(
+            listOf(
+                StringMapEntryAdd("a", "b"),
+                StringMapEntryModify("c", "d", "e"),
+                StringMapEntryDelete("f", "g"),
+            )
+        )
     )
 )
 

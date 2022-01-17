@@ -106,27 +106,28 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *  */
 fun isKindOfShopExpression(prefix: String? = null): String {
     val p = if (prefix != null) "$prefix:" else ""
-    return ("""
+    return (
+        """
         ${p}shop and ${p}shop !~ no|vacant|mall
         or ${p}tourism = information and ${p}information = office
         or """ +
-        mapOf(
-            "amenity" to arrayOf(
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "nightclub",
-                "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
-                "pharmacy",
-                "driving_school",
-            ),
-            "leisure" to arrayOf(
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
-            ),
-            "office" to arrayOf(
-                "insurance", "travel_agent", "tax_advisor", "estate_agent", "political_party",
-            ),
-            "craft" to arrayOf(
-                "shoemaker", "tailor", "photographer", "watchmaker", "optician",
-                "electronics_repair", "key_cutter",
-            )
-        ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
+            mapOf(
+                "amenity" to arrayOf(
+                    "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "nightclub",
+                    "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
+                    "pharmacy",
+                    "driving_school",
+                ),
+                "leisure" to arrayOf(
+                    "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+                ),
+                "office" to arrayOf(
+                    "insurance", "travel_agent", "tax_advisor", "estate_agent", "political_party",
+                ),
+                "craft" to arrayOf(
+                    "shoemaker", "tailor", "photographer", "watchmaker", "optician",
+                    "electronics_repair", "key_cutter",
+                )
+            ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
         ).trimIndent()
 }

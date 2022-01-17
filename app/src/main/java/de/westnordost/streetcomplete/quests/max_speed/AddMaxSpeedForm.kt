@@ -61,7 +61,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
             val couldBeSlowZone = countryInfo.hasSlowZone() &&
-                    POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
+                POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
 
             if (couldBeSlowZone)
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }
@@ -72,7 +72,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         } else if (speedType == NSL) {
             askIsDualCarriageway(
                 onYes = { applyNoSignAnswer("nsl_dual") },
-                onNo = { applyNoSignAnswer("nsl_single") })
+                onNo = { applyNoSignAnswer("nsl_single") }
+            )
         } else {
             if (userSelectedUnusualSpeed())
                 confirmUnusualInput { applySpeedLimitFormAnswer() }
@@ -134,11 +135,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         val position = countryInfo.slowZoneLabelPosition
         val text = countryInfo.slowZoneLabelText ?: return
 
-        val label = layoutWithSign.findViewById<TextView>(when (position) {
-            "bottom" -> R.id.slowZoneLabelBottom
-            "top" -> R.id.slowZoneLabelTop
-            else -> return // should never happen
-        })
+        val label = layoutWithSign.findViewById<TextView>(
+            when (position) {
+                "bottom" -> R.id.slowZoneLabelBottom
+                "top" -> R.id.slowZoneLabelTop
+                else -> return // should never happen
+            }
+        )
         label.visibility = View.VISIBLE
         label.text = text
     }
@@ -167,12 +170,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 
@@ -250,7 +254,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         } else {
             askUrbanOrRural(
                 onUrban = { applyNoSignAnswer("urban") },
-                onRural = { applyNoSignAnswer("rural") })
+                onRural = { applyNoSignAnswer("rural") }
+            )
         }
     }
 

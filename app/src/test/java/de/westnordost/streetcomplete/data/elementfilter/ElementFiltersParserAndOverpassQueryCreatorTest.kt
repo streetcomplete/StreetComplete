@@ -210,7 +210,9 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `tag older x days`() {
         val date = dateDaysAgo(14f).toCheckDateString()
-        check("nodes with surface older today -14 days", "node[surface](if: " +
+        check(
+            "nodes with surface older today -14 days",
+            "node[surface](if: " +
                 "date(timestamp()) < date('$date') ||" +
                 "date(t['surface:check_date']) < date('$date') ||" +
                 "date(t['check_date:surface']) < date('$date') ||" +
@@ -218,12 +220,15 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
                 "date(t['lastcheck:surface']) < date('$date') ||" +
                 "date(t['surface:last_checked']) < date('$date') ||" +
                 "date(t['last_checked:surface']) < date('$date')" +
-                ");")
+                ");"
+        )
     }
 
     @Test fun `tag newer x days`() {
         val date = dateDaysAgo(14f).toCheckDateString()
-        check("nodes with surface newer today - 14 days", "node[surface](if: " +
+        check(
+            "nodes with surface newer today - 14 days",
+            "node[surface](if: " +
                 "date(timestamp()) > date('$date') ||" +
                 "date(t['surface:check_date']) > date('$date') ||" +
                 "date(t['check_date:surface']) > date('$date') ||" +
@@ -231,7 +236,8 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
                 "date(t['lastcheck:surface']) > date('$date') ||" +
                 "date(t['surface:last_checked']) > date('$date') ||" +
                 "date(t['last_checked:surface']) > date('$date')" +
-                ");")
+                ");"
+        )
     }
 
     @Test fun `tag negation not combinable with operator`() {
@@ -250,22 +256,26 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
     }
 
     @Test fun or() {
-        check("nodes with highway or name",
+        check(
+            "nodes with highway or name",
             """
             node[highway]->.n1;
             node[name]->.n2;
             (.n1;.n2;);
-            """)
+            """
+        )
     }
 
     @Test fun `two or`() {
-        check("nodes with highway or name or ref",
+        check(
+            "nodes with highway or name or ref",
             """
             node[highway]->.n1;
             node[name]->.n2;
             node[ref]->.n3;
             (.n1;.n2;.n3;);
-            """)
+            """
+        )
     }
 
     @Test fun `or as first child in and`() {
@@ -393,6 +403,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         val expr = input.toElementFilterExpression()
         assertEquals(
             output.replace("\n", "").replace(" ", ""),
-            expr.toOverpassQLString().replace("\n", "").replace(" ", ""))
+            expr.toOverpassQLString().replace("\n", "").replace(" ", "")
+        )
     }
 }

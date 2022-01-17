@@ -15,13 +15,15 @@ import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 
 class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
 
-    private val eligibleKerbsFilter by lazy { """
+    private val eligibleKerbsFilter by lazy {
+        """
         nodes with
           !tactile_paving
           or tactile_paving = unknown
           or tactile_paving = no and tactile_paving older today -4 years
           or tactile_paving = yes and tactile_paving older today -8 years
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add tactile paving on kerbs"
     override val wikiLink = "Key:tactile_paving"

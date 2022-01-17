@@ -134,30 +134,33 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     }
 
     private fun onUnsupportedSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
-            .setPositiveButton(android.R.string.ok) { _, _ -> composeNote() }
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
+                .setPositiveButton(android.R.string.ok) { _, _ -> composeNote() }
+                .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
+                .show()
         }
     }
 
     private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxWeightSign) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxWeightSign) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 

@@ -11,12 +11,14 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType<RoofShape> {
 
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         ways, relations with (building:levels or roof:levels)
           and !roof:shape and !3dr:type and !3dr:roof
           and building
           and building !~ no|construction
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add roof shapes"
     override val wikiLink = "Key:roof:shape"
@@ -36,10 +38,10 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter { element ->
             filter.matches(element) &&
-            (
-                element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f ||
-                roofsAreUsuallyFlatAt(element, mapData) == false
-            )
+                (
+                    element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f ||
+                        roofsAreUsuallyFlatAt(element, mapData) == false
+                    )
         }
 
     override fun isApplicableTo(element: Element): Boolean? {

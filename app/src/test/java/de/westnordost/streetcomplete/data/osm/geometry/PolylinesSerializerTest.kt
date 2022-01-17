@@ -17,24 +17,30 @@ class PolylinesSerializerTest {
     }
 
     @Test fun `serialize and deserialize one polyline`() {
-        check(listOf(listOf(
-            p(0.0, 10.0),
-            p(3.0, 4.0),
-            p(-10.1111, 12.333),
-        )))
+        check(
+            listOf(
+                listOf(
+                    p(0.0, 10.0),
+                    p(3.0, 4.0),
+                    p(-10.1111, 12.333),
+                )
+            )
+        )
     }
 
     @Test fun `serialize and deserialize several polylines`() {
-        check(listOf(
+        check(
             listOf(
-                p(0.0, 10.0),
-                p(3.0, 4.0)
-            ),
-            listOf(
-                p(8.1, 5.6),
-                p(3.4, 8.3)
+                listOf(
+                    p(0.0, 10.0),
+                    p(3.0, 4.0)
+                ),
+                listOf(
+                    p(8.1, 5.6),
+                    p(3.4, 8.3)
+                )
             )
-        ))
+        )
     }
 
     private fun check(polylines: List<List<LatLon>>) {

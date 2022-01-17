@@ -18,9 +18,11 @@ import kotlin.coroutines.resume
 @Singleton class SoundFx @Inject constructor(private val context: Context) {
     private val soundPool = SoundPool.Builder()
         .setMaxStreams(10)
-        .setAudioAttributes(AudioAttributes.Builder()
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .build())
+        .setAudioAttributes(
+            AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+        )
         .build()
 
     private val soundIds: SparseIntArray = SparseIntArray()

@@ -20,7 +20,8 @@ class CheckExistence(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<Unit> {
 
-    private val nodesFilter by lazy { """
+    private val nodesFilter by lazy {
+        """
         nodes with ((
           (
             amenity = atm
@@ -68,12 +69,14 @@ class CheckExistence(
     //    to delete the crossing if the table is not there anymore, so exclude that
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
 
-    private val nodesWaysFilter by lazy { """
+    private val nodesWaysFilter by lazy {
+        """
         nodes, ways with
           (leisure = pitch and sport = table_tennis)
           and access !~ no|private
           and (${lastChecked(4.0)})
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     /* not including bicycle parkings, motorcycle parkings because their capacity is asked every
     *  few years already, so if it's gone now, it will be noticed that way. */
@@ -99,7 +102,7 @@ class CheckExistence(
 
     override fun isApplicableTo(element: Element) =
         (nodesFilter.matches(element) || nodesWaysFilter.matches(element)) &&
-        hasAnyName(element.tags)
+            hasAnyName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for

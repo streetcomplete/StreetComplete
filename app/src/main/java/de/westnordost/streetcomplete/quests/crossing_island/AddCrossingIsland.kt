@@ -13,22 +13,26 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddCrossingIsland : OsmElementQuestType<Boolean> {
 
-    private val crossingFilter by lazy { """
+    private val crossingFilter by lazy {
+        """
         nodes with
           highway = crossing
           and foot != no
           and crossing
           and crossing != island
           and !crossing:island
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val excludedWaysFilter by lazy { """
+    private val excludedWaysFilter by lazy {
+        """
         ways with
           highway and access ~ private|no
           or railway
           or highway = service
           or highway and oneway and oneway != no
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add whether pedestrian crossing has an island"
     override val wikiLink = "Key:crossing:island"

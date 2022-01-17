@@ -137,12 +137,15 @@ class BallPitView @JvmOverloads constructor(
         bodyDef.type = BodyType.STATIC
 
         val shape = ChainShape()
-        shape.createLoop(arrayOf(
-            Vec2(0f, 0f),
-            Vec2(rect.width(), 0f),
-            Vec2(rect.width(), rect.height()),
-            Vec2(0f, rect.height())
-        ), 4)
+        shape.createLoop(
+            arrayOf(
+                Vec2(0f, 0f),
+                Vec2(rect.width(), 0f),
+                Vec2(rect.width(), rect.height()),
+                Vec2(0f, rect.height())
+            ),
+            4
+        )
 
         return physicsController.createBody(bodyDef, shape, 0f)
     }
@@ -155,7 +158,8 @@ class BallPitView @JvmOverloads constructor(
             val radius = getBubbleRadius(size)
             val spawnPos = Vec2(
                 radius + Math.random().toFloat() * (worldBounds.width() - 2 * radius),
-                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius))
+                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius)
+            )
             addBubble(view, size, spawnPos)
         }
     }

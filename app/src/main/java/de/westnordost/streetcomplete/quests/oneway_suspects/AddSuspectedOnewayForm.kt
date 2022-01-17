@@ -46,10 +46,12 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
         viewLifecycleScope.launch {
             val isForward = withContext(Dispatchers.IO) { db.isForward(osmElement!!.id)!! }
 
-            binding.puzzleView.setRightSideImage(ResImage(
-                if (isForward) R.drawable.ic_oneway_lane
-                else R.drawable.ic_oneway_lane_reverse
-            ))
+            binding.puzzleView.setRightSideImage(
+                ResImage(
+                    if (isForward) R.drawable.ic_oneway_lane
+                    else R.drawable.ic_oneway_lane_reverse
+                )
+            )
         }
 
         streetSideRotater = StreetSideRotater(

@@ -116,9 +116,11 @@ open class GetTranslatorCreditsTask : DefaultTask() {
             connection.requestMethod = "POST"
             connection.setRequestProperty("Cookie", "login=$cookieEncoded;PHPSESSID=$phpSessidEncoded")
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-            connection.outputStream.bufferedWriter().use { it.write(
-                "id_project=97843&start=2016-01-01&stop=$today&user=$userId"
-            ) }
+            connection.outputStream.bufferedWriter().use {
+                it.write(
+                    "id_project=97843&start=2016-01-01&stop=$today&user=$userId"
+                )
+            }
             val response = Parser.default().parse(connection.inputStream) as JsonObject
             val languages = response.obj("table")?.array<JsonObject>("languages")
             return languages?.mapNotNull {

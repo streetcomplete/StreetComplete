@@ -28,9 +28,12 @@ class QuestPresetDaoTest : ApplicationDbTestCase() {
     @Test fun addTwo() {
         dao.add("one")
         dao.add("two")
-        assertEquals(listOf(
-            QuestPreset(1, "one"),
-            QuestPreset(2, "two")
-        ), dao.getAll())
+        assertEquals(
+            listOf(
+                QuestPreset(1, "one"),
+                QuestPreset(2, "two")
+            ),
+            dao.getAll()
+        )
     }
 }

@@ -33,9 +33,12 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with missing cycleway`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary"
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -44,15 +47,23 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with nearby cycleway`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1, 2), mapOf(
-                "highway" to "primary",
-                "width" to "18"
-            )),
-            way(2L, listOf(3, 4), mapOf(
-                "highway" to "cycleway"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                way(
+                    1L, listOf(1, 2),
+                    mapOf(
+                        "highway" to "primary",
+                        "width" to "18"
+                    )
+                ),
+                way(
+                    2L, listOf(3, 4),
+                    mapOf(
+                        "highway" to "cycleway"
+                    )
+                )
+            )
+        )
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(13.0, 135.0)
@@ -65,15 +76,23 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with nearby cycleway that is not aligned to the road`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1, 2), mapOf(
-                "highway" to "primary",
-                "width" to "18"
-            )),
-            way(2L, listOf(3, 4), mapOf(
-                "highway" to "cycleway"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                way(
+                    1L, listOf(1, 2),
+                    mapOf(
+                        "highway" to "primary",
+                        "width" to "18"
+                    )
+                ),
+                way(
+                    2L, listOf(3, 4),
+                    mapOf(
+                        "highway" to "cycleway"
+                    )
+                )
+            )
+        )
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(14.0, 135.0)
@@ -86,15 +105,23 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with cycleway that is far away enough`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1, 2), mapOf(
-                "highway" to "primary",
-                "width" to "18"
-            )),
-            way(2L, listOf(3, 4), mapOf(
-                "highway" to "cycleway"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                way(
+                    1L, listOf(1, 2),
+                    mapOf(
+                        "highway" to "primary",
+                        "width" to "18"
+                    )
+                ),
+                way(
+                    2L, listOf(3, 4),
+                    mapOf(
+                        "highway" to "cycleway"
+                    )
+                )
+            )
+        )
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(16.0, 135.0)
@@ -107,15 +134,23 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to small road with cycleway that is far away enough`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1, 2), mapOf(
-                "highway" to "primary",
-                "lanes" to "2"
-            )),
-            way(2L, listOf(3, 4), mapOf(
-                "highway" to "cycleway"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                way(
+                    1L, listOf(1, 2),
+                    mapOf(
+                        "highway" to "primary",
+                        "lanes" to "2"
+                    )
+                ),
+                way(
+                    2L, listOf(3, 4),
+                    mapOf(
+                        "highway" to "cycleway"
+                    )
+                )
+            )
+        )
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(10.0, 135.0)
@@ -129,10 +164,13 @@ class AddCyclewayTest {
 
     @Test fun `not applicable to road with cycleway=separate`() {
         for (cyclewayKey in listOf("cycleway", "cycleway:left", "cycleway:right", "cycleway:both")) {
-            val way = way(1L, listOf(1, 2, 3), mapOf(
-                "highway" to "primary",
-                cyclewayKey to "separate"
-            ))
+            val way = way(
+                1L, listOf(1, 2, 3),
+                mapOf(
+                    "highway" to "primary",
+                    cyclewayKey to "separate"
+                )
+            )
             val mapData = TestMapDataWithGeometry(listOf(way))
 
             assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -149,10 +187,14 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is not old enough`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "track"
-        ), timestamp = Instant.now().toEpochMilli())
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "track"
+            ),
+            timestamp = Instant.now().toEpochMilli()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -160,11 +202,15 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with cycleway that is old enough`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "track",
-            "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "track",
+                "check_date:cycleway" to "2001-01-01"
+            ),
+            timestamp = Instant.now().toEpochMilli()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -172,11 +218,15 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "whatsthis",
-            "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "whatsthis",
+                "check_date:cycleway" to "2001-01-01"
+            ),
+            timestamp = Instant.now().toEpochMilli()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -184,10 +234,13 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with cycleway that is tagged with an invalid value`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "yes",
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "yes",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -195,11 +248,14 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is tagged with an unknown + invalid value`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway:left" to "yes",
-            "cycleway:right" to "doorzone",
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway:left" to "yes",
+                "cycleway:right" to "doorzone",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -207,10 +263,13 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with ambiguous cycleway value`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "shared_lane",
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "shared_lane",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -218,11 +277,14 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with ambiguous + unknown cycleway value`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway:left" to "shared_lane",
-            "cycleway:right" to "strange",
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway:left" to "shared_lane",
+                "cycleway:right" to "strange",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -230,10 +292,13 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with ambiguous cycle lane not in Belgium`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "lane",
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "lane",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
         on(countryInfo.countryCode).thenReturn("DE")
@@ -244,10 +309,13 @@ class AddCyclewayTest {
     }
 
     @Test fun `unspecified cycle lane is not ambiguous in Belgium`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "lane",
-        ))
+        val way = way(
+            1L, listOf(1, 2, 3),
+            mapOf(
+                "highway" to "primary",
+                "cycleway" to "lane",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
         on(countryInfo.countryCode).thenReturn("BE")

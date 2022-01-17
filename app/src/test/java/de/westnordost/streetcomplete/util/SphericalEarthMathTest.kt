@@ -577,15 +577,19 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `point in polygon is in polygon`() {
-        assertTrue(p(0.0, 0.0).isInPolygon(
-            listOf(p(1.0, 1.0), p(1.0, -2.0), p(-2.0, 1.0))
-        ))
+        assertTrue(
+            p(0.0, 0.0).isInPolygon(
+                listOf(p(1.0, 1.0), p(1.0, -2.0), p(-2.0, 1.0))
+            )
+        )
     }
 
     @Test fun `point in polygon at 180th meridian is in polygon`() {
-        assertTrue(p(180.0, 0.0).isInPolygon(
-            listOf(p(-179.0, 1.0), p(-179.0, -2.0), p(178.0, 1.0))
-        ))
+        assertTrue(
+            p(180.0, 0.0).isInPolygon(
+                listOf(p(-179.0, 1.0), p(-179.0, -2.0), p(178.0, 1.0))
+            )
+        )
     }
 
     // The counting number algorithm in particular needs to handle a special case where the ray

@@ -10,7 +10,8 @@ import javax.inject.Inject
 class QuestTypeOrderDao @Inject constructor(private val db: Database) {
 
     fun getAll(presetId: Long): List<Pair<String, String>> =
-        db.query(NAME,
+        db.query(
+            NAME,
             where = "$QUEST_PRESET_ID = $presetId",
             orderBy = "ROWID ASC"
         ) { cursor ->
@@ -18,11 +19,14 @@ class QuestTypeOrderDao @Inject constructor(private val db: Database) {
         }
 
     fun put(presetId: Long, pair: Pair<String, String>) {
-        db.insert(NAME, listOf(
-            QUEST_PRESET_ID to presetId,
-            BEFORE to pair.first,
-            AFTER to pair.second
-        ))
+        db.insert(
+            NAME,
+            listOf(
+                QUEST_PRESET_ID to presetId,
+                BEFORE to pair.first,
+                AFTER to pair.second
+            )
+        )
     }
 
     fun clear(presetId: Long) {

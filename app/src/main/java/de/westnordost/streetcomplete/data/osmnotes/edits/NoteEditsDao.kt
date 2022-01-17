@@ -42,46 +42,53 @@ class NoteEditsDao @Inject constructor(private val db: Database) {
         db.query(NAME, orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP") { it.toNoteEdit() }
 
     fun getOldestUnsynced(): NoteEdit? =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             where = "$IS_SYNCED = 0",
             orderBy = CREATED_TIMESTAMP
         ) { it.toNoteEdit() }
 
     fun getUnsyncedCount(): Int =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             columns = arrayOf("COUNT(*) as count"),
             where = "$IS_SYNCED = 0"
         ) { it.getInt("count") } ?: 0
 
     fun getAllUnsynced(): List<NoteEdit> =
-        db.query(NAME,
+        db.query(
+            NAME,
             where = "$IS_SYNCED = 0",
             orderBy = CREATED_TIMESTAMP
         ) { it.toNoteEdit() }
 
     fun getAllUnsyncedForNote(noteId: Long): List<NoteEdit> =
-        db.query(NAME,
+        db.query(
+            NAME,
             where = "$NOTE_ID = $noteId AND $IS_SYNCED = 0",
             orderBy = CREATED_TIMESTAMP
         ) { it.toNoteEdit() }
 
     fun getAllUnsyncedForNotes(noteIds: Collection<Long>): List<NoteEdit> {
         val notes = noteIds.joinToString(",")
-        return db.query(NAME,
+        return db.query(
+            NAME,
             where = "$NOTE_ID IN ($notes) AND $IS_SYNCED = 0",
             orderBy = CREATED_TIMESTAMP
         ) { it.toNoteEdit() }
     }
 
     fun getAllUnsynced(bbox: BoundingBox): List<NoteEdit> {
-        return db.query(NAME,
+        return db.query(
+            NAME,
             where = "$IS_SYNCED = 0 AND " + inBoundsSql(bbox),
             orderBy = CREATED_TIMESTAMP
         ) { it.toNoteEdit() }
     }
 
     fun getAllUnsyncedPositions(bbox: BoundingBox): List<LatLon> {
-        return db.query(NAME,
+        return db.query(
+            NAME,
             columns = arrayOf(LATITUDE, LONGITUDE),
             where = "$IS_SYNCED = 0 AND " + inBoundsSql(bbox),
             orderBy = CREATED_TIMESTAMP

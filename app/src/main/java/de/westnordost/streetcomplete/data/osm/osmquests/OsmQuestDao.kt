@@ -24,13 +24,15 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
     }
 
     fun get(key: OsmQuestKey): OsmQuestDaoEntry? =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",
             args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) { it.toOsmQuestEntry() }
 
     fun delete(key: OsmQuestKey): Boolean =
-        db.delete(NAME,
+        db.delete(
+            NAME,
             where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ? AND $QUEST_TYPE = ?",
             args = arrayOf(key.elementType.name, key.elementId, key.questTypeName)
         ) == 1
@@ -38,21 +40,25 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
     fun putAll(quests: Collection<OsmQuestDaoEntry>) {
         if (quests.isEmpty()) return
         // replace because even if the quest already exists in DB, the center position might have changed
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             arrayOf(QUEST_TYPE, ELEMENT_TYPE, ELEMENT_ID, LATITUDE, LONGITUDE),
-            quests.map { arrayOf(
-                it.questTypeName,
-                it.elementType.name,
-                it.elementId,
-                it.position.latitude,
-                it.position.longitude
-            ) }
+            quests.map {
+                arrayOf(
+                    it.questTypeName,
+                    it.elementType.name,
+                    it.elementId,
+                    it.position.latitude,
+                    it.position.longitude
+                )
+            }
         )
     }
 
     fun getAllForElements(keys: Collection<ElementKey>): List<OsmQuestDaoEntry> {
         if (keys.isEmpty()) return emptyList()
-        return db.queryIn(NAME,
+        return db.queryIn(
+            NAME,
             whereColumns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
             whereArgs = keys.map { arrayOf(it.type.name, it.id) }
         ) { it.toOsmQuestEntry() }
@@ -85,7 +91,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
 private fun inBoundsSql(bbox: BoundingBox): String = """
         ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
         ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
-    """.trimIndent()
+""".trimIndent()
 
 private fun CursorPosition.toOsmQuestEntry(): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(
     ElementType.valueOf(getString(ELEMENT_TYPE)),

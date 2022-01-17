@@ -21,10 +21,12 @@ class AddAddressStreetTest {
     }
 
     @Test fun `not applicable to place with street name`() {
-        val addr = node(tags = mapOf(
-            "addr:housenumber" to "123",
-            "addr:street" to "onetwothree",
-        ))
+        val addr = node(
+            tags = mapOf(
+                "addr:housenumber" to "123",
+                "addr:street" to "onetwothree",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(addr))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertEquals(false, questType.isApplicableTo(addr))
@@ -44,9 +46,12 @@ class AddAddressStreetTest {
 
     @Test fun `applicable to place in interpolation without street name`() {
         val addr = node(tags = mapOf("addr:housenumber" to "123"))
-        val addrInterpolation = way(nodes = listOf(1, 2, 3), tags = mapOf(
-            "addr:interpolation" to "whatever",
-        ))
+        val addrInterpolation = way(
+            nodes = listOf(1, 2, 3),
+            tags = mapOf(
+                "addr:interpolation" to "whatever",
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(addr, addrInterpolation))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(addr))
@@ -54,10 +59,13 @@ class AddAddressStreetTest {
 
     @Test fun `not applicable to place in interpolation with street name`() {
         val addr = node(tags = mapOf("addr:housenumber" to "123"))
-        val addrInterpolation = way(nodes = listOf(1, 2, 3), tags = mapOf(
-            "addr:interpolation" to "whatever",
-            "addr:street" to "Street Name"
-        ))
+        val addrInterpolation = way(
+            nodes = listOf(1, 2, 3),
+            tags = mapOf(
+                "addr:interpolation" to "whatever",
+                "addr:street" to "Street Name"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(addr, addrInterpolation))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(addr))

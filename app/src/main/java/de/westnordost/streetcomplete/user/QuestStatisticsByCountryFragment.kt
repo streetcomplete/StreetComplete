@@ -39,9 +39,11 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
         viewLifecycleScope.launch {
             val countriesStatistics = withContext(Dispatchers.IO) { statisticsSource.getCountryStatistics() }
 
-            binding.ballPitView.setViews(countriesStatistics.map {
-                createCountryBubbleView(it.countryCode, it.solvedCount, it.rank) to it.solvedCount
-            })
+            binding.ballPitView.setViews(
+                countriesStatistics.map {
+                    createCountryBubbleView(it.countryCode, it.solvedCount, it.rank) to it.solvedCount
+                }
+            )
         }
     }
 

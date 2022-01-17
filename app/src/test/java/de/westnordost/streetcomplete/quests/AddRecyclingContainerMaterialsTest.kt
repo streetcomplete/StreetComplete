@@ -21,48 +21,66 @@ class AddRecyclingContainerMaterialsTest {
     private val questType = AddRecyclingContainerMaterials()
 
     @Test fun `applicable to container without recycling materials`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container"
+                    )
+                )
+            )
+        )
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with recycling materials`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "recycling:something" to "yes"
-            ))
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "recycling:something" to "yes"
+                    )
+                )
+            )
+        )
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `applicable to container with old recycling materials`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "check_date:recycling" to "2001-01-01",
-                "recycling:plastic_packaging" to "yes",
-                "recycling:something_else" to "no"
-            ), timestamp = Instant.now().toEpochMilli())
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "check_date:recycling" to "2001-01-01",
+                        "recycling:plastic_packaging" to "yes",
+                        "recycling:something_else" to "no"
+                    ),
+                    timestamp = Instant.now().toEpochMilli()
+                )
+            )
+        )
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with old but unknown recycling materials`() {
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "check_date:recycling" to "2001-01-01",
-                "recycling:something_else" to "yes"
-            ), timestamp = Instant.now().toEpochMilli())
-        ))
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(
+                    tags = mapOf(
+                        "amenity" to "recycling",
+                        "recycling_type" to "container",
+                        "check_date:recycling" to "2001-01-01",
+                        "recycling:something_else" to "yes"
+                    ),
+                    timestamp = Instant.now().toEpochMilli()
+                )
+            )
+        )
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 

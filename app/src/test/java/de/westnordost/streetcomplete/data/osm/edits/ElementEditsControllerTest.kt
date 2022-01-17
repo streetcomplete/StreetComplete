@@ -101,13 +101,21 @@ class ElementEditsControllerTest {
         val edit4 = edit(action = mock(), id = 4L)
         val edit5 = edit(action = mock(), id = 5L)
 
-        on(idProvider.get(1L)).thenReturn(ElementIdProvider(listOf(
-            ElementKey(NODE, -1),
-            ElementKey(NODE, -2),
-        )))
-        on(idProvider.get(2L)).thenReturn(ElementIdProvider(listOf(
-            ElementKey(NODE, -3),
-        )))
+        on(idProvider.get(1L)).thenReturn(
+            ElementIdProvider(
+                listOf(
+                    ElementKey(NODE, -1),
+                    ElementKey(NODE, -2),
+                )
+            )
+        )
+        on(idProvider.get(2L)).thenReturn(
+            ElementIdProvider(
+                listOf(
+                    ElementKey(NODE, -3),
+                )
+            )
+        )
         on(idProvider.get(3L)).thenReturn(ElementIdProvider(listOf()))
         on(idProvider.get(4L)).thenReturn(ElementIdProvider(listOf()))
         on(idProvider.get(5L)).thenReturn(ElementIdProvider(listOf()))

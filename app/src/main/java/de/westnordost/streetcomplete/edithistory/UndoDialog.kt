@@ -89,10 +89,12 @@ class UndoDialog(
             getQuestTitle(questType, originalElement)
         }
         is NoteEdit -> {
-            context.resources.getText(when (action) {
-                CREATE -> R.string.created_note_action_title
-                COMMENT -> R.string.commented_note_action_title
-            })
+            context.resources.getText(
+                when (action) {
+                    CREATE -> R.string.created_note_action_title
+                    COMMENT -> R.string.commented_note_action_title
+                }
+            )
         }
         is OsmQuestHidden -> {
             val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
@@ -142,14 +144,16 @@ class UndoDialog(
         val txt = HtmlTextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
 
-        txt.setHtml(changes.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { change ->
-           "<li>" +
-           context.resources.getString(
-               change.titleResId,
-               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
-           ) +
-           "</li>"
-        })
+        txt.setHtml(
+            changes.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { change ->
+                "<li>" +
+                    context.resources.getString(
+                        change.titleResId,
+                        "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
+                    ) +
+                    "</li>"
+            }
+        )
         return txt
     }
 }

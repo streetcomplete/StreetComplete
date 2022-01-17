@@ -13,7 +13,8 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
 
-    private val crossingFilter by lazy { """
+    private val crossingFilter by lazy {
+        """
         nodes with crossing = traffic_signals
          and highway ~ crossing|traffic_signals
          and foot != no
@@ -22,13 +23,16 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
           or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
           or $SOUND_SIGNALS older today -8 years
          )
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val excludedWaysFilter by lazy { """
+    private val excludedWaysFilter by lazy {
+        """
         ways with
           highway = cycleway
           and foot !~ yes|designated
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add whether traffic signals have sound signals"
     override val wikiLink = "Key:$SOUND_SIGNALS"

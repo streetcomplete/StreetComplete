@@ -51,18 +51,21 @@ import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(),
-    MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
+class MainActivity :
+    BaseActivity(),
+    MainFragment.Listener,
+    TutorialFragment.Listener,
+    NotificationButtonFragment.Listener {
 
-	@Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
-	@Inject lateinit var locationRequestFragment: LocationRequestFragment
-	@Inject lateinit var questAutoSyncer: QuestAutoSyncer
-	@Inject lateinit var downloadController: DownloadController
-	@Inject lateinit var uploadController: UploadController
-	@Inject lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-	@Inject lateinit var prefs: SharedPreferences
-	@Inject lateinit var userLoginStatusController: UserLoginStatusController
-	@Inject lateinit var userUpdater: UserUpdater
+    @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
+    @Inject lateinit var locationRequestFragment: LocationRequestFragment
+    @Inject lateinit var questAutoSyncer: QuestAutoSyncer
+    @Inject lateinit var downloadController: DownloadController
+    @Inject lateinit var uploadController: UploadController
+    @Inject lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
+    @Inject lateinit var prefs: SharedPreferences
+    @Inject lateinit var userLoginStatusController: UserLoginStatusController
+    @Inject lateinit var userUpdater: UserUpdater
 
     private var mainFragment: MainFragment? = null
 
@@ -129,7 +132,8 @@ class MainActivity : BaseActivity(),
 
         registerReceiver(locationAvailabilityReceiver, createLocationAvailabilityIntentFilter())
         LocalBroadcastManager.getInstance(this).registerReceiver(
-            locationRequestFinishedReceiver, IntentFilter(LocationRequestFragment.ACTION_FINISHED))
+            locationRequestFinishedReceiver, IntentFilter(LocationRequestFragment.ACTION_FINISHED)
+        )
 
         downloadController.showNotification = false
         uploadController.showNotification = false

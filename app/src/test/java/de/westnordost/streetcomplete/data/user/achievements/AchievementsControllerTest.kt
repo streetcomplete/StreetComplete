@@ -96,7 +96,8 @@ class AchievementsControllerTest {
                 3 to links("d"), // 3 has one link
                 // 4 has no links
                 5 to links("e", "f") // 5 has two links
-            ))
+            )
+        )
         allAchievements = listOf(achievement)
 
         createAchievementsController()
@@ -111,14 +112,17 @@ class AchievementsControllerTest {
 
     @Test fun `unlocks links not yet unlocked`() {
         on(userAchievementsDao.getAll()).thenReturn(mapOf("allQuests" to 2))
-        allAchievements = listOf(achievement(
-            id = "allQuests",
-            condition = TotalSolvedQuests,
-            unlockedLinks = mapOf(
-                1 to links("a", "b"),
-                2 to links("c"),
-                3 to links("d") // this shouldn't be unlocked
-            )))
+        allAchievements = listOf(
+            achievement(
+                id = "allQuests",
+                condition = TotalSolvedQuests,
+                unlockedLinks = mapOf(
+                    1 to links("a", "b"),
+                    2 to links("c"),
+                    3 to links("d") // this shouldn't be unlocked
+                )
+            )
+        )
 
         createAchievementsController()
         statisticsListener.onUpdatedAll()
@@ -208,10 +212,13 @@ class AchievementsControllerTest {
     @Test fun `get all unlocked achievements`() {
         allAchievements = listOf(
             achievement("daysActive", DaysActive),
-            achievement("otherAchievement", SolvedQuestsOfTypes))
-        on(userAchievementsDao.getAll()).thenReturn(mapOf(
-            "daysActive" to 3
-        ))
+            achievement("otherAchievement", SolvedQuestsOfTypes)
+        )
+        on(userAchievementsDao.getAll()).thenReturn(
+            mapOf(
+                "daysActive" to 3
+            )
+        )
         assertEquals(
             listOf(achievement("daysActive", DaysActive) to 3),
             createAchievementsController().getAchievements()

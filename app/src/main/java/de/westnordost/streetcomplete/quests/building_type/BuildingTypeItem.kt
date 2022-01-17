@@ -82,28 +82,35 @@ fun BuildingType.asItem(): Item<BuildingType?> = when (this) {
 fun Array<BuildingTypeCategory>.toItems() = this.map { it.asItem() }
 
 fun BuildingTypeCategory.asItem(): Item<BuildingType?> = when (this) {
-    BuildingTypeCategory.RESIDENTIAL -> Item(this.type, R.drawable.ic_building_apartments,
+    BuildingTypeCategory.RESIDENTIAL -> Item(
+        this.type, R.drawable.ic_building_apartments,
         R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
         this.subTypes.toItems()
     )
-    BuildingTypeCategory.COMMERCIAL -> Item(this.type, R.drawable.ic_building_office,
+    BuildingTypeCategory.COMMERCIAL -> Item(
+        this.type, R.drawable.ic_building_office,
         R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description,
         this.subTypes.toItems()
     )
-    BuildingTypeCategory.CIVIC -> Item(this.type, R.drawable.ic_building_civic,
+    BuildingTypeCategory.CIVIC -> Item(
+        this.type, R.drawable.ic_building_civic,
         R.string.quest_buildingType_civic, R.string.quest_buildingType_civic_description,
         this.subTypes.toItems()
     )
-    BuildingTypeCategory.RELIGIOUS -> Item(this.type, R.drawable.ic_building_temple,
+    BuildingTypeCategory.RELIGIOUS -> Item(
+        this.type, R.drawable.ic_building_temple,
         R.string.quest_buildingType_religious, null, this.subTypes.toItems()
     )
-    BuildingTypeCategory.FOR_CARS -> Item(this.type, R.drawable.ic_building_car,
+    BuildingTypeCategory.FOR_CARS -> Item(
+        this.type, R.drawable.ic_building_car,
         R.string.quest_buildingType_cars, null, this.subTypes.toItems()
     )
-    BuildingTypeCategory.FOR_FARMS -> Item(this.type, R.drawable.ic_building_farm,
+    BuildingTypeCategory.FOR_FARMS -> Item(
+        this.type, R.drawable.ic_building_farm,
         R.string.quest_buildingType_farm, null, this.subTypes.toItems()
     )
-    BuildingTypeCategory.OTHER -> Item(this.type, R.drawable.ic_building_other,
+    BuildingTypeCategory.OTHER -> Item(
+        this.type, R.drawable.ic_building_other,
         R.string.quest_buildingType_other, null, this.subTypes.toItems()
     )
 }

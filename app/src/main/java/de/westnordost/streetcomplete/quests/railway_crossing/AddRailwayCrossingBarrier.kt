@@ -11,20 +11,24 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
-    private val crossingFilter by lazy { """
+    private val crossingFilter by lazy {
+        """
         nodes with
           railway ~ level_crossing|crossing
           and (
             !crossing:barrier and !crossing:chicane
             or crossing:barrier older today -8 years
           )
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val excludedWaysFilter by lazy { """
+    private val excludedWaysFilter by lazy {
+        """
         ways with
           highway and access ~ private|no
           or railway ~ tram|abandoned|disused
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add type of barrier for railway crossing"
     override val wikiLink = "Key:crossing:barrier"

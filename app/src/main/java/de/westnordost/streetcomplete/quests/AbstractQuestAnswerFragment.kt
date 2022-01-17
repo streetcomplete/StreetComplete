@@ -45,7 +45,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     private val binding get() = _binding!!
 
     protected var otherAnswersButton: TextView? = null
-    private set
+        private set
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
     override val bottomSheet get() = binding.bottomSheet
@@ -282,12 +282,13 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     protected fun onClickCantSay() {
-        context?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_leave_new_note_title)
-            .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
-            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
-            .show()
+        context?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_leave_new_note_title)
+                .setMessage(R.string.quest_leave_new_note_description)
+                .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
+                .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
+                .show()
         }
     }
 
@@ -297,13 +298,14 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     private fun onClickSplitWayAnswer() {
-        context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_split_way_description)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onSplitWay(questKey as OsmQuestKey)
-            }
-            .show()
+        context?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_split_way_description)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    listener?.onSplitWay(questKey as OsmQuestKey)
+                }
+                .show()
         }
     }
 

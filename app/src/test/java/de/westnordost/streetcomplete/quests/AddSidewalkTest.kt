@@ -17,34 +17,44 @@ class AddSidewalkTest {
     private val questType = AddSidewalk()
 
     @Test fun `not applicable to road with sidewalk`() {
-        val road = way(tags = mapOf(
-            "highway" to "primary",
-            "sidewalk" to "both"
-        ))
+        val road = way(
+            tags = mapOf(
+                "highway" to "primary",
+                "sidewalk" to "both"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertEquals(false, questType.isApplicableTo(road))
     }
 
     @Test fun `applicable to road with missing sidewalk`() {
-        val road = way(tags = mapOf(
-            "highway" to "primary",
-            "lit" to "yes"
-        ))
+        val road = way(
+            tags = mapOf(
+                "highway" to "primary",
+                "lit" to "yes"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(road))
     }
 
     @Test fun `not applicable to road with nearby footway`() {
-        val road = way(1, listOf(1, 2), mapOf(
-            "highway" to "primary",
-            "lit" to "yes",
-            "width" to "18"
-        ))
-        val footway = way(2, listOf(3, 4), mapOf(
-            "highway" to "footway"
-        ))
+        val road = way(
+            1, listOf(1, 2),
+            mapOf(
+                "highway" to "primary",
+                "lit" to "yes",
+                "width" to "18"
+            )
+        )
+        val footway = way(
+            2, listOf(3, 4),
+            mapOf(
+                "highway" to "footway"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
@@ -59,14 +69,20 @@ class AddSidewalkTest {
     }
 
     @Test fun `applicable to road with nearby footway that is not aligned to the road`() {
-        val road = way(1, listOf(1, 2), mapOf(
-            "highway" to "primary",
-            "lit" to "yes",
-            "width" to "18"
-        ))
-        val footway = way(2, listOf(3, 4), mapOf(
-            "highway" to "footway"
-        ))
+        val road = way(
+            1, listOf(1, 2),
+            mapOf(
+                "highway" to "primary",
+                "lit" to "yes",
+                "width" to "18"
+            )
+        )
+        val footway = way(
+            2, listOf(3, 4),
+            mapOf(
+                "highway" to "footway"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
@@ -81,14 +97,20 @@ class AddSidewalkTest {
     }
 
     @Test fun `applicable to road with footway that is far away enough`() {
-        val road = way(1L, listOf(1, 2), mapOf(
-            "highway" to "primary",
-            "lit" to "yes",
-            "width" to "18"
-        ))
-        val footway = way(2L, listOf(3, 4), mapOf(
-            "highway" to "footway"
-        ))
+        val road = way(
+            1L, listOf(1, 2),
+            mapOf(
+                "highway" to "primary",
+                "lit" to "yes",
+                "width" to "18"
+            )
+        )
+        val footway = way(
+            2L, listOf(3, 4),
+            mapOf(
+                "highway" to "footway"
+            )
+        )
 
         val mapData = TestMapDataWithGeometry(listOf(road, footway))
         val p1 = p(0.0, 0.0)

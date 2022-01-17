@@ -14,17 +14,21 @@ import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         nodes, ways, relations with
           (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number
           or addr:streetnumber and !addr:street
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     // #2112 - exclude indirect addr:street
-    private val excludedWaysFilter by lazy { """
+    private val excludedWaysFilter by lazy {
+        """
         ways with
           addr:street and addr:interpolation
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
@@ -52,8 +56,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
         val addressesWithoutStreet = mapData.filter { address ->
             filter.matches(address) &&
-            associatedStreetRelations.none { it.contains(address.type, address.id) } &&
-            address.id !in excludedWayNodeIds
+                associatedStreetRelations.none { it.contains(address.type, address.id) } &&
+                address.id !in excludedWayNodeIds
         }
 
         return addressesWithoutStreet

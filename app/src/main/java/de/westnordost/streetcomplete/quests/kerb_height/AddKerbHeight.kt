@@ -16,12 +16,14 @@ import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 
 class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
-    private val eligibleKerbsFilter by lazy { """
+    private val eligibleKerbsFilter by lazy {
+        """
         nodes with
           !kerb
           or kerb ~ yes|unknown
           or kerb !~ no|rolled and kerb older today -8 years
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add kerb height info"
     override val wikiLink = "Key:kerb"

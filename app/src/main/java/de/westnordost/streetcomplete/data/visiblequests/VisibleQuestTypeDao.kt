@@ -13,23 +13,28 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.NA
 class VisibleQuestTypeDao @Inject constructor(private val db: Database) {
 
     fun put(presetId: Long, questTypeName: String, visible: Boolean) {
-        db.replace(NAME, listOf(
-            QUEST_PRESET_ID to presetId,
-            QUEST_TYPE to questTypeName,
-            VISIBILITY to if (visible) 1 else 0
-        ))
+        db.replace(
+            NAME,
+            listOf(
+                QUEST_PRESET_ID to presetId,
+                QUEST_TYPE to questTypeName,
+                VISIBILITY to if (visible) 1 else 0
+            )
+        )
     }
 
     fun put(presetId: Long, questTypeNames: Iterable<String>, visible: Boolean) {
         val vis = if (visible) 1 else 0
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             arrayOf(QUEST_PRESET_ID, QUEST_TYPE, VISIBILITY),
             questTypeNames.map { arrayOf(presetId, it, vis) }
         )
     }
 
     fun get(presetId: Long, questTypeName: String): Boolean =
-        db.queryOne(NAME,
+        db.queryOne(
+            NAME,
             columns = arrayOf(VISIBILITY),
             where = "$QUEST_PRESET_ID = ? AND $QUEST_TYPE = ?",
             args = arrayOf(presetId, questTypeName)

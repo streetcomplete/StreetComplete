@@ -1317,7 +1317,8 @@ class CyclewayParserKtTest {
     }
 
     @Test fun `unknown cycle lane on left side`() {
-        assertEquals(LeftAndRightCycleway(UNKNOWN_LANE, null),
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_LANE, null),
             parse(
                 "cycleway:left" to "lane",
                 "cycleway:left:lane" to "something"
@@ -1326,7 +1327,8 @@ class CyclewayParserKtTest {
     }
 
     @Test fun `unknown shared lane on left side`() {
-        assertEquals(LeftAndRightCycleway(UNKNOWN_SHARED_LANE, null),
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_SHARED_LANE, null),
             parse(
                 "cycleway:left" to "shared_lane",
                 "cycleway:left:lane" to "something"
@@ -1969,7 +1971,8 @@ class CyclewayParserKtTest {
     }
 
     @Test fun `unknown cycle lane on right side`() {
-        assertEquals(LeftAndRightCycleway(null, UNKNOWN_LANE),
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN_LANE),
             parse(
                 "cycleway:right" to "lane",
                 "cycleway:right:lane" to "something"
@@ -1978,7 +1981,8 @@ class CyclewayParserKtTest {
     }
 
     @Test fun `unknown shared lane on right side`() {
-        assertEquals(LeftAndRightCycleway(null, UNKNOWN_SHARED_LANE),
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN_SHARED_LANE),
             parse(
                 "cycleway:right" to "shared_lane",
                 "cycleway:right:lane" to "something"
@@ -2604,7 +2608,8 @@ class CyclewayParserKtTest {
     }
 
     @Test fun `unknown cycle lane on both sides`() {
-        assertEquals(LeftAndRightCycleway(UNKNOWN_LANE, UNKNOWN_LANE),
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_LANE, UNKNOWN_LANE),
             parse(
                 "cycleway:both" to "lane",
                 "cycleway:both:lane" to "something"
@@ -2613,7 +2618,8 @@ class CyclewayParserKtTest {
     }
 
     @Test fun `unknown shared lane on both sides`() {
-        assertEquals(LeftAndRightCycleway(UNKNOWN_SHARED_LANE, UNKNOWN_SHARED_LANE),
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_SHARED_LANE, UNKNOWN_SHARED_LANE),
             parse(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "something"

@@ -16,7 +16,7 @@ class RelativeDate(val deltaDays: Float) : DateFilter {
         val relativeDateTime = (
             if (plusHours > 0) now.plusHours(plusHours)
             else now.minusHours(plusHours.absoluteValue)
-        )
+            )
         return relativeDateTime.toLocalDate()
     }
 

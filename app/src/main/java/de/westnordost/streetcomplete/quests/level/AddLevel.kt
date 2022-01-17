@@ -16,26 +16,32 @@ class AddLevel : OsmElementQuestType<String> {
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
-    private val mallFilter by lazy { """
+    private val mallFilter by lazy {
+        """
         ways, relations with
          shop = mall
          or aeroway = terminal
          or railway = station
          or amenity = bus_station
          or public_transport = station
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val thingsWithLevelFilter by lazy { """
+    private val thingsWithLevelFilter by lazy {
+        """
         nodes, ways, relations with level
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
     *  outline */
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         nodes with
          (${isKindOfShopExpression()})
          and !level and (name or brand)
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add level to shops"
     override val wikiLink = "Key:level"

@@ -12,10 +12,10 @@ import javax.inject.Singleton
 @Module
 object MetadataModule {
 
-	@Provides @Singleton fun countryInfos(assetManager: AssetManager, countryBoundaries: FutureTask<CountryBoundaries>): CountryInfos =
+    @Provides @Singleton fun countryInfos(assetManager: AssetManager, countryBoundaries: FutureTask<CountryBoundaries>): CountryInfos =
         CountryInfos(assetManager, countryBoundaries)
 
-	@Provides @Singleton fun countryBoundariesFuture(assetManager: AssetManager): FutureTask<CountryBoundaries> =
+    @Provides @Singleton fun countryBoundariesFuture(assetManager: AssetManager): FutureTask<CountryBoundaries> =
         FutureTask { CountryBoundaries.load(assetManager.open("boundaries.ser")) }
 
     @Provides @Singleton fun featureDictionaryFuture(assetManager: AssetManager): FutureTask<FeatureDictionary> =

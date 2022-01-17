@@ -25,10 +25,13 @@ class AddTactilePavingCrosswalkTest {
 
     @Test fun `not applicable to crossing with private road`() {
         val crossing = node(id = 1, tags = mapOf("highway" to "crossing"))
-        val privateRoad = way(nodes = listOf(1, 2, 3), tags = mapOf(
-            "highway" to "residential",
-            "access" to "private"
-        ))
+        val privateRoad = way(
+            nodes = listOf(1, 2, 3),
+            tags = mapOf(
+                "highway" to "residential",
+                "access" to "private"
+            )
+        )
         val mapData = TestMapDataWithGeometry(listOf(crossing, privateRoad))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(crossing))

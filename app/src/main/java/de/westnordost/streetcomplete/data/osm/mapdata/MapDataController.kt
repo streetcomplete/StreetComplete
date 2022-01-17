@@ -64,9 +64,10 @@ import javax.inject.Singleton
             elementDB.putAll(mapData)
         }
 
-        Log.i(TAG,
+        Log.i(
+            TAG,
             "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
-            " in ${((currentTimeMillis() - time) / 1000.0).format(1)}s"
+                " in ${((currentTimeMillis() - time) / 1000.0).format(1)}s"
         )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)

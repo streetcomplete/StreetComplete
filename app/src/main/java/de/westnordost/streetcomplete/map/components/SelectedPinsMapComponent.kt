@@ -49,10 +49,13 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
 
     private fun putSelectedPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
         val points = pinPositions.map { position ->
-            Point(position.toLngLat(), mapOf(
-                "type" to "point",
-                "kind" to ctx.resources.getResourceEntryName(iconResId)
-            ))
+            Point(
+                position.toLngLat(),
+                mapOf(
+                    "type" to "point",
+                    "kind" to ctx.resources.getResourceEntryName(iconResId)
+                )
+            )
         }
         selectedPinsLayer.setFeatures(points)
     }
@@ -70,7 +73,8 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
     }
 
     private fun createPinSelectionMarker(pos: LatLon): Marker = ctrl.addMarker().also {
-        it.setStylingFromString("""
+        it.setStylingFromString(
+            """
         {
             style: 'pin-selection',
             color: 'white',
@@ -78,7 +82,9 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
             flat: false,
             collide: false,
             offset: ['0px', '-38px']
-        }""".trimIndent())
+        }
+            """.trimIndent()
+        )
         it.setDrawable(selectionDrawable)
         it.isVisible = true
         it.setPoint(pos)

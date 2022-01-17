@@ -15,7 +15,8 @@ class ElementIdProviderDao @Inject constructor(private val db: Database) {
     fun assign(editId: Long, nodeCount: Int, wayCount: Int, relationCount: Int) {
         if (nodeCount == 0 && wayCount == 0 && relationCount == 0) return
 
-        db.insertMany(NAME,
+        db.insertMany(
+            NAME,
             arrayOf(EDIT_ID, ELEMENT_TYPE),
             sequence {
                 repeat(nodeCount) { yield(ElementType.NODE) }
@@ -28,7 +29,8 @@ class ElementIdProviderDao @Inject constructor(private val db: Database) {
     fun get(editId: Long) = ElementIdProvider(
         db.query(NAME, where = "$EDIT_ID = $editId") {
             ElementKey(ElementType.valueOf(it.getString(ELEMENT_TYPE)), -it.getLong(ID))
-        })
+        }
+    )
 
     fun delete(editId: Long): Int =
         db.delete(NAME, "$EDIT_ID = $editId")

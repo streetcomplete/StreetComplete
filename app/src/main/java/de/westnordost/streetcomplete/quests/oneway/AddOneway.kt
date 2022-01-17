@@ -15,17 +15,21 @@ import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find all roads */
-    private val allRoadsFilter by lazy { """
+    private val allRoadsFilter by lazy {
+        """
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     /** find only those roads eligible for asking for oneway */
-    private val elementFilter by lazy { """
+    private val elementFilter by lazy {
+        """
         ways with highway ~ living_street|residential|service|tertiary|unclassified
          and lanes <= 1 and width
          and !oneway and area != yes and junction != roundabout
          and (access !~ private|no or (foot and foot !~ private|no))
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage = "Add whether this road is a one-way road because it is quite slim"
     override val wikiLink = "Key:oneway"
@@ -59,7 +63,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
             */
             // check if the way has connections to other roads at both ends
             (connectionCountByNodeIds[it.nodeIds.first()] ?: 0) > 1 &&
-            (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
+                (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1
         }
     }
 
@@ -80,10 +84,13 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     override fun createForm() = AddOnewayForm()
 
     override fun applyAnswerTo(answer: OnewayAnswer, changes: StringMapChangesBuilder) {
-        changes.add("oneway", when (answer) {
-            FORWARD -> "yes"
-            BACKWARD -> "-1"
-            NO_ONEWAY -> "no"
-        })
+        changes.add(
+            "oneway",
+            when (answer) {
+                FORWARD -> "yes"
+                BACKWARD -> "-1"
+                NO_ONEWAY -> "no"
+            }
+        )
     }
 }

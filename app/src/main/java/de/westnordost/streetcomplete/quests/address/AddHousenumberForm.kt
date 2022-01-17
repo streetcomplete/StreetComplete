@@ -93,10 +93,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun showMultipleNumbersHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_housenumber_multiple_numbers_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_housenumber_multiple_numbers_description)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 
@@ -184,11 +185,13 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         houseNumberInputTextColors = input.textColors
         input.setTextColor(input.hintTextColors)
         input.setText(prev)
-        input.addTextChangedListener(TextChangedWatcher {
-            val colors = houseNumberInputTextColors
-            if (colors != null) input.setTextColor(colors)
-            houseNumberInputTextColors = null
-        })
+        input.addTextChangedListener(
+            TextChangedWatcher {
+                val colors = houseNumberInputTextColors
+                if (colors != null) input.setTextColor(colors)
+                houseNumberInputTextColors = null
+            }
+        )
         input.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             updateKeyboardButtonVisibility()
             if (hasFocus) input.showKeyboard()
@@ -247,9 +250,9 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private fun updateKeyboardButtonVisibility() {
         toggleKeyboardButton?.isInvisible = !(
             houseNumberInput?.hasFocus() == true ||
-            streetNumberInput?.hasFocus() == true ||
-            blockNumberInput?.hasFocus() == true
-        )
+                streetNumberInput?.hasFocus() == true ||
+                blockNumberInput?.hasFocus() == true
+            )
     }
 
     private fun confirmHousenumber(isUnusual: Boolean, onConfirmed: () -> Unit) {

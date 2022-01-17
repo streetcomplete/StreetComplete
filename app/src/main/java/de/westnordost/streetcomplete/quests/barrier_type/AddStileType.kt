@@ -13,17 +13,21 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
-    private val stileNodeFilter by lazy { """
+    private val stileNodeFilter by lazy {
+        """
         nodes with
          barrier = stile
          and (!stile or older today -8 years)
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
-    private val excludedWaysFilter by lazy { """
+    private val excludedWaysFilter by lazy {
+        """
         ways with
           access ~ private|no
           and foot !~ permissive|yes|designated
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()
@@ -58,7 +62,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                 val oldMaterial = changes.getPreviousValue("material")
                 val stileWasRebuilt =
                     oldType != null && oldType != newType ||
-                    newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
+                        newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
 
                 if (stileWasRebuilt) {
                     // => properties that refer to the old replaced stile should be removed

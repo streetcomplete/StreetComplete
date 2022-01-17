@@ -79,14 +79,20 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun getAll() {
         val e1 = rel(1, members = listOf(RelationMember(NODE, 0, "bla")))
-        val e2 = rel(2, members = listOf(
-            RelationMember(NODE, 0, "bla"),
-            RelationMember(WAY, 1, "blub"),
-        ))
-        val e3 = rel(3, members = listOf(
-            RelationMember(RELATION, 3, "one"),
-            RelationMember(WAY, 4, "two"),
-        ))
+        val e2 = rel(
+            2,
+            members = listOf(
+                RelationMember(NODE, 0, "bla"),
+                RelationMember(WAY, 1, "blub"),
+            )
+        )
+        val e3 = rel(
+            3,
+            members = listOf(
+                RelationMember(RELATION, 3, "one"),
+                RelationMember(WAY, 4, "two"),
+            )
+        )
         dao.putAll(listOf(e1, e2, e3))
         assertEquals(
             listOf(e1, e2),
@@ -108,14 +114,20 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun getAllForElement() {
         val e1 = rel(1, members = listOf(RelationMember(NODE, 0, "bla")))
-        val e2 = rel(2, members = listOf(
-            RelationMember(NODE, 0, "bla"),
-            RelationMember(WAY, 1, "blub"),
-        ))
-        val e3 = rel(3, members = listOf(
-            RelationMember(RELATION, 3, "one"),
-            RelationMember(WAY, 4, "two"),
-        ))
+        val e2 = rel(
+            2,
+            members = listOf(
+                RelationMember(NODE, 0, "bla"),
+                RelationMember(WAY, 1, "blub"),
+            )
+        )
+        val e3 = rel(
+            3,
+            members = listOf(
+                RelationMember(RELATION, 3, "one"),
+                RelationMember(WAY, 4, "two"),
+            )
+        )
         dao.putAll(listOf(e1, e2, e3))
         assertEquals(
             listOf(e1, e2),

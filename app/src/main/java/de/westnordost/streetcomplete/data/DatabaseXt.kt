@@ -58,13 +58,15 @@ fun <T> Database.queryIn(
            Instead, we insert the values into a temporary table and inner join on that table then
            https://stackoverflow.com/questions/18363276/how-do-you-do-an-in-query-that-has-multiple-columns-in-sqlite
          */
-        exec("""
+        exec(
+            """
             CREATE TEMPORARY TABLE $lookupTable(
                 $inColumnDefs,
                 CONSTRAINT primary_key PRIMARY KEY ($inColumnsNames)
             );"""
         )
-        exec("""
+        exec(
+            """
             CREATE TEMPORARY VIEW $lookupTableMergedView AS
                 SELECT * FROM $table INNER JOIN $lookupTable USING ($inColumnsNames)
             ;"""

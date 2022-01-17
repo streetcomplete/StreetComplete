@@ -79,7 +79,8 @@ $error
     override fun uncaughtException(t: Thread, e: Throwable) {
         val stackTrace = StringWriter()
         e.printStackTrace(PrintWriter(stackTrace))
-        writeCrashReportToFile("""
+        writeCrashReportToFile(
+            """
 Thread: ${t.name}
 App version: ${BuildConfig.VERSION_NAME}
 Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}

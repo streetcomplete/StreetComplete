@@ -28,33 +28,41 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     @Test fun putAll() {
         val geometry = createSimpleGeometry()
-        dao.putAll(listOf(
-            ElementGeometryEntry(ElementType.NODE, 1, geometry),
-            ElementGeometryEntry(ElementType.WAY, 2, geometry)
-        ))
+        dao.putAll(
+            listOf(
+                ElementGeometryEntry(ElementType.NODE, 1, geometry),
+                ElementGeometryEntry(ElementType.WAY, 2, geometry)
+            )
+        )
 
         assertNotNull(dao.get(ElementType.WAY, 2))
         assertNotNull(dao.get(ElementType.NODE, 1))
     }
 
     @Test fun getAllKeys() {
-        dao.putAll(listOf(
-            ElementGeometryEntry(ElementType.NODE, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
-            ElementGeometryEntry(ElementType.NODE, 2, createPoint(0.5, 1.0)),
-            // these are outside
-            ElementGeometryEntry(ElementType.NODE, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.NODE, 4, createPoint(1.5, 1.0)),
-            ElementGeometryEntry(ElementType.NODE, 5, createPoint(0.5, -0.5)),
-            ElementGeometryEntry(ElementType.NODE, 6, createPoint(0.5, 2.5))
-        ))
+        dao.putAll(
+            listOf(
+                ElementGeometryEntry(ElementType.NODE, 1, createPoint(0.0, 0.0)),
+                ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
+                ElementGeometryEntry(ElementType.NODE, 2, createPoint(0.5, 1.0)),
+                // these are outside
+                ElementGeometryEntry(ElementType.NODE, 3, createPoint(-0.5, 1.0)),
+                ElementGeometryEntry(ElementType.NODE, 4, createPoint(1.5, 1.0)),
+                ElementGeometryEntry(ElementType.NODE, 5, createPoint(0.5, -0.5)),
+                ElementGeometryEntry(ElementType.NODE, 6, createPoint(0.5, 2.5))
+            )
+        )
 
-        assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(listOf(
-                ElementKey(ElementType.NODE, 1),
-                ElementKey(ElementType.WAY, 2),
-                ElementKey(ElementType.NODE, 2),
-        )))
+        assertTrue(
+            dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
+                .containsExactlyInAnyOrder(
+                    listOf(
+                        ElementKey(ElementType.NODE, 1),
+                        ElementKey(ElementType.WAY, 2),
+                        ElementKey(ElementType.NODE, 2),
+                    )
+                )
+        )
     }
 
     @Test fun getAllEntriesFoxBBox() {
@@ -71,8 +79,10 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         )
         dao.putAll(insideElements + outsideElements)
 
-        assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(insideElements))
+        assertTrue(
+            dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
+                .containsExactlyInAnyOrder(insideElements)
+        )
     }
 
     @Test fun getAllEntriesForElementKeys() {
@@ -96,8 +106,10 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.WAY, 2, createSimpleGeometry())
         )
 
-        assertTrue(dao.getAllEntries(keys)
-            .containsExactlyInAnyOrder(expectedEntries))
+        assertTrue(
+            dao.getAllEntries(keys)
+                .containsExactlyInAnyOrder(expectedEntries)
+        )
     }
 
     @Test fun simplePutGet() {

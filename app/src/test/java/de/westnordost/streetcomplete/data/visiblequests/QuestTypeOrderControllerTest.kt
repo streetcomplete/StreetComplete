@@ -46,14 +46,16 @@ class QuestTypeOrderControllerTest {
 
     @Test fun sort() {
         val list = mutableListOf<QuestType<*>>(questA, questB, questC, questD)
-        on(questTypeOrderDao.getAll(0)).thenReturn(listOf(
-            // A,B,C,D -> A,D,B,C
-            questD.name to questA.name,
-            // A,D,B,C -> A,D,C,B
-            questC.name to questD.name,
-            // A,D,C,B -> D,C,B,A
-            questA.name to questB.name
-        ))
+        on(questTypeOrderDao.getAll(0)).thenReturn(
+            listOf(
+                // A,B,C,D -> A,D,B,C
+                questD.name to questA.name,
+                // A,D,B,C -> A,D,C,B
+                questC.name to questD.name,
+                // A,D,C,B -> D,C,B,A
+                questA.name to questB.name
+            )
+        )
 
         ctrl.sort(list)
         assertEquals(

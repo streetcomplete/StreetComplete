@@ -71,12 +71,14 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
             override fun onNothingSelected(parentView: AdapterView<*>) {}
         }
 
-        inchInput?.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
-            val destStr = dest.toString()
-            val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
+        inchInput?.filters = arrayOf(
+            InputFilter { source, start, end, dest, dstart, dend ->
+                val destStr = dest.toString()
+                val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
 
-            if (input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
-        })
+                if (input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
+            }
+        )
         meterInput?.allowOnlyNumbers()
         switchLayout(unit)
     }
@@ -128,21 +130,23 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     }
 
     private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
-            .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_maxheight_answer_noSign_question)
+                .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+                .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
+                .show()
         }
     }
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 }

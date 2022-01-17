@@ -18,14 +18,17 @@ class DownloadedTilesDao @Inject constructor(private val db: Database) {
     /** Persist that the given type has been downloaded in every tile in the given tile range  */
     fun put(tilesRect: TilesRect, typeName: String) {
         val time = currentTimeMillis()
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             arrayOf(X, Y, TYPE, DATE),
-            tilesRect.asTilePosSequence().map { arrayOf<Any?>(
-                it.x,
-                it.y,
-                typeName,
-                time
-            ) }.asIterable()
+            tilesRect.asTilePosSequence().map {
+                arrayOf<Any?>(
+                    it.x,
+                    it.y,
+                    typeName,
+                    time
+                )
+            }.asIterable()
         )
     }
 
@@ -42,7 +45,8 @@ class DownloadedTilesDao @Inject constructor(private val db: Database) {
      */
     fun get(tilesRect: TilesRect, ignoreOlderThan: Long): List<String> {
         val tileCount = tilesRect.size
-        return db.query(NAME,
+        return db.query(
+            NAME,
             columns = arrayOf(TYPE),
             where = "$X BETWEEN ? AND ? AND $Y BETWEEN ? AND ? AND $DATE > ?",
             args = arrayOf(

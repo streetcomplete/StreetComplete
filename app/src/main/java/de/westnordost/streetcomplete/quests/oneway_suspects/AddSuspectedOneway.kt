@@ -21,7 +21,8 @@ class AddSuspectedOneway(
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<SuspectedOnewayAnswer> {
 
-    private val filter by lazy { """
+    private val filter by lazy {
+        """
         ways with
           highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
           and !oneway
@@ -31,7 +32,8 @@ class AddSuspectedOneway(
             access !~ private|no
             or (foot and foot !~ private|no)
           )
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val commitMessage =
         "Add whether roads are one-way roads as they were marked as likely oneway by improveosm.org"
@@ -60,15 +62,15 @@ class AddSuspectedOneway(
         val onewayCandidates = mapData.ways.filter {
             // so, only the ways suspected by improveOSM to be oneways
             it.id in suspectedOnewayWayIds &&
-            // but also filter the data as ImproveOSM data may be outdated or catching too much
-            filter.matches(it) &&
+                // but also filter the data as ImproveOSM data may be outdated or catching too much
+                filter.matches(it) &&
             /* also exclude rings because the driving direction can then not be determined reliably
                from the improveosm data and the quest should stay simple, i.e not require the
                user to input it in those cases. Additionally, whether a ring-road is a oneway or
                not is less valuable information (for routing) and many times such a ring will
                actually be a roundabout. Oneway information on roundabouts is superfluous.
                See #1320 */
-            it.nodeIds.first() != it.nodeIds.last()
+                it.nodeIds.first() != it.nodeIds.last()
         }
 
         // rehash traffic direction data into simple "way id -> forward/backward" data and persist

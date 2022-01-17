@@ -68,18 +68,22 @@ class NumberSystemTest {
 
     @Test fun `complement swiss cheese`() {
         val s = NumberSystem(0, 10)
-        val r = s.complemented(listOf(
-            CircularSection(-5, 1),
-            CircularSection(3, 3),
-            CircularSection(7, 8)
-        ))
+        val r = s.complemented(
+            listOf(
+                CircularSection(-5, 1),
+                CircularSection(3, 3),
+                CircularSection(7, 8)
+            )
+        )
         assertEquals(3, r.size)
         assertTrue(
-            r.containsAll(listOf(
-                CircularSection(2, 2),
-                CircularSection(4, 6),
-                CircularSection(9, 10)
-            ))
+            r.containsAll(
+                listOf(
+                    CircularSection(2, 2),
+                    CircularSection(4, 6),
+                    CircularSection(9, 10)
+                )
+            )
         )
     }
 

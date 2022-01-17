@@ -53,10 +53,12 @@ class QuestTypeStatisticsDaoTest : ApplicationDbTestCase() {
     @Test fun replaceAll() {
         daoType.addOne(ONE)
         daoType.addOne(TWO)
-        daoType.replaceAll(mapOf(
-            ONE to 4,
-            THREE to 1
-        ))
+        daoType.replaceAll(
+            mapOf(
+                ONE to 4,
+                THREE to 1
+            )
+        )
         assertEquals(4, daoType.getAmount(ONE))
         assertEquals(0, daoType.getAmount(TWO))
         assertEquals(1, daoType.getAmount(THREE))
@@ -66,10 +68,13 @@ class QuestTypeStatisticsDaoTest : ApplicationDbTestCase() {
         daoType.addOne(ONE)
         daoType.addOne(ONE)
         daoType.addOne(TWO)
-        assertEquals(mapOf(
-            ONE to 2,
-            TWO to 1
-        ), daoType.getAll())
+        assertEquals(
+            mapOf(
+                ONE to 2,
+                TWO to 1
+            ),
+            daoType.getAll()
+        )
     }
 }
 

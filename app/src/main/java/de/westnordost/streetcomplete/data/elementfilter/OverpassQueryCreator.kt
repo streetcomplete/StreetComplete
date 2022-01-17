@@ -15,12 +15,12 @@ class OverpassQueryCreator(
     private val dataSets: MutableMap<BooleanExpression<ElementFilter, Element>, Int> = mutableMapOf()
 
     fun create(): String {
-         if (elementTypes.size == 1) {
+        if (elementTypes.size == 1) {
             val elementType = elementTypes.first()
             if (expr == null) {
                 return "$elementType;\n"
             }
-             return expr.toOverpassString(elementType, null)
+            return expr.toOverpassString(elementType, null)
         } else {
             if (expr == null) {
                 return "(" + elementTypes.joinToString(" ") { "$it; " } + ");\n"
@@ -41,11 +41,13 @@ class OverpassQueryCreator(
         containsAll(listOf(NODES, WAYS, RELATIONS)) ->  listOf("nwr")
         containsAll(listOf(NODES, WAYS)) ->             listOf("nw")
         containsAll(listOf(WAYS, RELATIONS)) ->         listOf("wr")
-        else -> map { when (it!!) {
-            NODES -> "node"
-            WAYS -> "way"
-            RELATIONS -> "rel"
-        } }
+        else -> map {
+            when (it!!) {
+                NODES -> "node"
+                WAYS -> "way"
+                RELATIONS -> "rel"
+            }
+        }
     }
 
     private fun BooleanExpression<ElementFilter, Element>.toOverpassString(elementType: String, resultSetId: Int?): String {
@@ -102,14 +104,16 @@ class OverpassQueryCreator(
         // first print every nested statement
         for (child in children) {
             val workingSetId = child.assignResultSetId()
-            result.append(when (child) {
-                is Leaf ->
-                    AllTagFilters(child.value).toOverpassString(elementType, inputSetId, workingSetId)
-                is AllOf ->
-                    child.toOverpassString(elementType, inputSetId, workingSetId)
-                else ->
-                    throw IllegalStateException("Expected only Leaf and AllOf children")
-            })
+            result.append(
+                when (child) {
+                    is Leaf ->
+                        AllTagFilters(child.value).toOverpassString(elementType, inputSetId, workingSetId)
+                    is AllOf ->
+                        child.toOverpassString(elementType, inputSetId, workingSetId)
+                    else ->
+                        throw IllegalStateException("Expected only Leaf and AllOf children")
+                }
+            )
             childrenResultSetIds.add(workingSetId)
         }
         // then union all direct children

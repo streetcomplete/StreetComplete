@@ -26,13 +26,15 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
                 if (androidResCode == "en-rUS") continue
                 val targetFile = File(targetFiles(androidResCode))
                 File(targetFile.parent).mkdirs()
-                targetFile.writeText("""
+                targetFile.writeText(
+                    """
                     <?xml version="1.0" encoding="utf-8"?>
                     <resources>
                       <integer name="translation_completeness">${completedPercentage}</integer>
                     </resources>
 
-                    """.trimIndent())
+                    """.trimIndent()
+                )
             }
         }
     }
