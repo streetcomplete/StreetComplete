@@ -156,7 +156,6 @@ import javax.inject.Singleton
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
         coroutineScope.launch {
-            Log.i(TAG, "triggerAutoDownload coroutine launched")
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {
@@ -167,8 +166,6 @@ import javax.inject.Singleton
                     // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
                     Log.e(TAG, "Cannot start download service", e)
                 }
-            } else {
-                Log.i(TAG, "downloadBoundingBox is null, new quest download was not run")
             }
         }
     }
