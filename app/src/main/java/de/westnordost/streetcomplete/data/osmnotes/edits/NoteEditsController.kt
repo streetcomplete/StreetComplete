@@ -38,7 +38,6 @@ import javax.inject.Singleton
             false,
             imagePaths.isNotEmpty(),
             tracks,
-            mutableMapOf(),
         )
         synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)
@@ -88,14 +87,6 @@ import javax.inject.Singleton
 
         if (markSyncedSuccess) {
             onSyncedEdit(edit)
-        }
-    }
-
-    fun updateData(edit: NoteEdit, name: String, data: String) {
-        synchronized(this) {
-            val tmpData = edit.uploadedDataMap.toMutableMap()
-            tmpData[name] = data
-            editsDB.updateUploadData(edit.noteId, Json.encodeToString(tmpData))
         }
     }
 

@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.settings.*
 import de.westnordost.streetcomplete.settings.questselection.QuestPresetsFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import de.westnordost.streetcomplete.user.*
+import de.westnordost.streetcomplete.view.dialogs.RequestPermissionUpgradeDialog
 import javax.inject.Singleton
 
 @Singleton
@@ -113,4 +114,5 @@ interface ApplicationComponent {
     fun inject(questPresetsFragment: QuestPresetsFragment)
     fun inject(cleanerWorker: CleanerWorker)
     fun inject(addLevelForm: AddLevelForm)
+    fun inject(requestPermissionUpgradeDialog: RequestPermissionUpgradeDialog)
 }

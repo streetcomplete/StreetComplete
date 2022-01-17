@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.levelsIntersect
 import de.westnordost.streetcomplete.quests.*
 import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.view.dialogs.RequestPermissionUpgradeDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -722,6 +723,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onClickCreateTrack() {
+
+        // Check that the user has required permission to record a track
+        val hasUploadPermission = prefs.getBoolean(Prefs.OSM_HAS_UPLOAD_TRACES_PERMISSION, false)
+        if(!hasUploadPermission) {
+            RequestPermissionUpgradeDialog(requireContext()).show()
+            return
+        }
+
+        // Else we are good to start recording!
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
         binding.stopTracksButton.visibility = View.VISIBLE

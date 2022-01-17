@@ -61,22 +61,12 @@ class NoteEditsUploader @Inject constructor(
 
     private fun uploadEdit(edit: NoteEdit) {
 
-        // try to upload the image
-        var imageText = edit.uploadedDataMap.getOrDefault("images", "")
-        if(imageText.isEmpty()) {
-            imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
-            noteEditsController.updateData(edit, "images", imageText)
-        }
-
-        // try to upload the tracks
-        var tracksText = edit.uploadedDataMap.getOrDefault("tracks", "")
-        if(tracksText.isEmpty()) {
-            tracksText = uploadAndGetAttachedTracksText(edit.tracks, edit.text)
-            noteEditsController.updateData(edit, "tracks", tracksText)
-        }
+        // try to upload the image and tracks if we have them
+        val imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
+        val tracksText = uploadAndGetAttachedTracksText(edit.tracks, edit.text)
+        val text = edit.text.orEmpty() + imageText + tracksText
 
         // done, try to upload the note to OSM
-        val text = edit.text.orEmpty() + imageText + tracksText
         try {
             val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)

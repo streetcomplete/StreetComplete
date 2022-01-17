@@ -139,7 +139,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
             Permission.MODIFY_MAP,
             Permission.WRITE_NOTES,
             Permission.READ_GPS_TRACES,
-            Permission.WRITE_GPS_TRACES
+            Permission.WRITE_GPS_TRACES,
         )
 
         private const val ARG_LAUNCH_AUTH = "launch_auth"

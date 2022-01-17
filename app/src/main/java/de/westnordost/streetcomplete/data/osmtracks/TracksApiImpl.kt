@@ -11,7 +11,7 @@ import de.westnordost.osmapi.traces.GpsTracesApi
 import de.westnordost.osmapi.traces.GpsTrackpoint
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
-import de.westnordost.streetcomplete.data.user.AuthorizationTracesException
+import de.westnordost.streetcomplete.data.user.AuthorizationException
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -53,7 +53,7 @@ private inline fun <T> wrapExceptions(block: () -> T): T =
     try {
         block()
     } catch (e: OsmAuthorizationException) {
-        throw AuthorizationTracesException(e.message, e)
+        throw AuthorizationException(e.message, e)
     } catch (e: OsmConnectionException) {
         throw ConnectionException(e.message, e)
     } catch (e: OsmApiReadResponseException) {
