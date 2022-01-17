@@ -112,7 +112,7 @@ class OverpassQueryCreator(
             childrenResultSetIds.add(workingSetId)
         }
         // then union all direct children
-        val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it)+";" }
+        val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it) + ";" }
         val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         result.append("($unionChildren)$resultStmt;\n")
         return result.toString()

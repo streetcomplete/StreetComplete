@@ -160,7 +160,7 @@ private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
 }
 
 private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
-    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT-1).getSize(this)
+    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT - 1).getSize(this)
     // if the range is very short (e.g. Mo-Tu), rather save it as Mo,Tu
     return if (size == 2) {
         listOf(

@@ -65,7 +65,7 @@ class RegularOpeningHoursAdapter(
                 holder.update(row as OpeningMonthsRow, isEnabled)
             }
             is WeekdayViewHolder -> {
-                val prevRow = if (position > 0) rows[position -1] as? OpeningWeekdaysRow else null
+                val prevRow = if (position > 0) rows[position - 1] as? OpeningWeekdaysRow else null
                 holder.update(row as OpeningWeekdaysRow, prevRow, isEnabled)
             }
             is OffDaysViewHolder -> {
@@ -186,7 +186,7 @@ class RegularOpeningHoursAdapter(
 
         fun update(row: OpeningMonthsRow, isEnabled: Boolean) {
             binding.monthsLabel.text =
-                if (row.months.isSelectionEmpty()) "("+context.resources.getString(R.string.quest_openingHours_unspecified_range)+")"
+                if (row.months.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
                 else row.months.toLocalizedString()
             binding.monthsLabel.setOnClickListener {
                 openSetMonthsRangeDialog(row.months) { months ->
@@ -234,7 +234,7 @@ class RegularOpeningHoursAdapter(
         fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
             binding.weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
-                else if (row.weekdays.isSelectionEmpty()) "("+context.resources.getString(R.string.quest_openingHours_unspecified_range)+")"
+                else if (row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
                 else row.weekdays.toLocalizedString(context.resources)
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->

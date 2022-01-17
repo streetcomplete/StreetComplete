@@ -66,7 +66,7 @@ class PhysicsWorldController(gravity: Vec2) {
 
     private fun loop() {
         val startTime = System.currentTimeMillis()
-        world.step(DELAY /1000f, 6, 2)
+        world.step(DELAY / 1000f, 6, 2)
         val executionTime = System.currentTimeMillis() - startTime
         listener?.onWorldStep()
         if (isRunning) {

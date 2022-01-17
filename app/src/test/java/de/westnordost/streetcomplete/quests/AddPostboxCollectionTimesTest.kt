@@ -36,7 +36,7 @@ class AddPostboxCollectionTimesTest {
                         it.startDay = WeekDay.TU
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*2
+                        it.start = 60 * 2
                     })
                     isAdditive = true
                 },
@@ -67,7 +67,7 @@ class AddPostboxCollectionTimesTest {
                         it.startDay = WeekDay.TU
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*2
+                        it.start = 60 * 2
                     })
                     isAdditive = true
                 },
@@ -94,7 +94,7 @@ class AddPostboxCollectionTimesTest {
                         it.endDay = WeekDay.SU
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*2
+                        it.start = 60 * 2
                     })
                     isAdditive = true
                 },
@@ -103,7 +103,7 @@ class AddPostboxCollectionTimesTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*3
+                        it.start = 60 * 3
                     })
                     isAdditive = true
                 },

@@ -64,7 +64,7 @@ fun KtMapController.screenBottomToCenterDistance(): Double? {
     val h = view.height
     if (w == 0 || h == 0) return null
 
-    val center = screenPositionToLatLon(PointF(w/2f, h/2f)) ?: return null
-    val bottom = screenPositionToLatLon(PointF(w/2f, h*1f)) ?: return null
+    val center = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
+    val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f)) ?: return null
     return center.distanceTo(bottom)
 }

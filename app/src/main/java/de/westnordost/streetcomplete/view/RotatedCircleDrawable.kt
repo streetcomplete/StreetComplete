@@ -33,7 +33,7 @@ class RotatedCircleDrawable(val drawable: Drawable) : Drawable() {
         val path = Path()
         path.addOval(Rect(0, 0, w, h).toRectF(), Path.Direction.CW)
         canvas.clipPath(path)
-        canvas.rotate(rotation, w/2f, h/2f)
+        canvas.rotate(rotation, w / 2f, h / 2f)
         drawable.bounds = bounds
         drawable.draw(canvas)
     }

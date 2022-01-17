@@ -74,7 +74,7 @@ class TimeRangeTest {
         )
         assertEquals(
             "12:00 AM - 12:00 AM",
-            TimeRange(0, 24*60).toStringUsing(Locale.US, " - ")
+            TimeRange(0, 24 * 60).toStringUsing(Locale.US, " - ")
         )
 
         assertEquals(
@@ -83,7 +83,7 @@ class TimeRangeTest {
         )
         assertEquals(
             "00:00 - 24:00",
-            TimeRange(0, 24*60).toStringUsing(Locale.GERMANY, " - ")
+            TimeRange(0, 24 * 60).toStringUsing(Locale.GERMANY, " - ")
         )
     }
 }

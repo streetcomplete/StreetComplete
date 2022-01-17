@@ -32,7 +32,7 @@ class UnsyncedChangesCountSourceTest {
 
     private lateinit var source: UnsyncedChangesCountSource
 
-    private val baseCount = 3+4
+    private val baseCount = 3 + 4
 
     @Before fun setUp() {
         osmQuestSource = mock()

@@ -132,7 +132,7 @@ private fun <E> List<E>.splitIntoChunks(indices: List<Int>): MutableList<Mutable
     val result = mutableListOf<MutableList<E>>()
     var lastIndex = 0
     for (index in indices) {
-        result.add(subList(lastIndex, index+1).toMutableList())
+        result.add(subList(lastIndex, index + 1).toMutableList())
         lastIndex = index
     }
     result.add(subList(lastIndex, size).toMutableList())
@@ -257,7 +257,7 @@ private fun Way.isOrientedForwardInOrderedRelation(
         if (isBeforeWayInChain(wayBefore)) return false
     }
 
-    val wayIdAfter = relation.members.findNext(indexInRelation+1) { it.type == ElementType.WAY }?.ref
+    val wayIdAfter = relation.members.findNext(indexInRelation + 1) { it.type == ElementType.WAY }?.ref
     val wayAfter = wayIdAfter?.let { mapDataRepository.getWay(it) }
     if (wayAfter != null) {
         if (isBeforeWayInChain(wayAfter)) return true

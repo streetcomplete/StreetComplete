@@ -202,8 +202,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         if (w == 0 || h == 0) return null
 
         return screenPositionToLatLon(PointF(
-            padding.left + (w - padding.left - padding.right)/2f,
-            padding.top + (h - padding.top - padding.bottom)/2f
+            padding.left + (w - padding.left - padding.right) / 2f,
+            padding.top + (h - padding.top - padding.bottom) / 2f
         ))
     }
 
