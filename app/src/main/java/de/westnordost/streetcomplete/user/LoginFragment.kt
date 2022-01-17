@@ -74,7 +74,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onBackPressed(): Boolean {
         val f = oAuthFragment
         if (f != null) {
-            if(f.onBackPressed()) return true
+            if (f.onBackPressed()) return true
             childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
             return true
         }
@@ -109,8 +109,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
             try {
                 val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
-            }
-            catch (e: Exception) { false }
+            } catch (e: Exception) { false }
             }
     }
 

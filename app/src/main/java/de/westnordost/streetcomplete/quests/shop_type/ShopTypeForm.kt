@@ -42,7 +42,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
     }
 
     override fun onClickOk() {
-        when(selectedRadioButtonId) {
+        when (selectedRadioButtonId) {
             R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
             R.id.leaveNoteRadioButton -> composeNote()
             R.id.replaceRadioButton   -> {
@@ -56,7 +56,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         }
     }
 
-    override fun isFormComplete() = when(selectedRadioButtonId) {
+    override fun isFormComplete() = when (selectedRadioButtonId) {
         R.id.vacantRadioButton    -> true
         R.id.leaveNoteRadioButton -> true
         R.id.replaceRadioButton   -> shopTypeText.isNotEmpty()

@@ -32,7 +32,7 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         } else if (row is OpeningWeekdaysRow) {
             val timeSpan = row.timeRange.toTimeSpan()
             val weekdays =
-                if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+                if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
                 else WeekDayRangesAndHolidays()
 
             // new weekdays -> new rule
@@ -88,7 +88,7 @@ fun List<CollectionTimesRow>.toOpeningHoursRules(): OpeningHoursRuleList {
     for (row in this) {
         val time = row.time
         val weekdays =
-            if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+            if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
             else WeekDayRangesAndHolidays()
 
         // new weekdays -> new rule

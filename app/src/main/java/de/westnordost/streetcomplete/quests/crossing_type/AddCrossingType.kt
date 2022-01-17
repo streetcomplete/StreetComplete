@@ -62,7 +62,7 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
 
     override fun applyAnswerTo(answer: CrossingType, changes: StringMapChangesBuilder) {
         val previous = changes.getPreviousValue("crossing")
-        if(previous == "island") {
+        if (previous == "island") {
             changes.modify("crossing", answer.osmValue)
             changes.addOrModify("crossing:island", "yes")
         } else {

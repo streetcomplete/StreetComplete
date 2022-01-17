@@ -41,8 +41,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
             if (isReverseSideRight) {
                 left = null
                 right = cycleway
-            }
-            else {
+            } else {
                 left = cycleway
                 right = null
             }
@@ -50,8 +49,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
             if (isReverseSideRight) {
                 left = cycleway
                 right = null
-            }
-            else {
+            } else {
                 left = null
                 right = cycleway
             }
@@ -88,7 +86,7 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
     val isDual = tags["$cyclewayKey:oneway"] == "no"
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
 
-    val result = when(cycleway) {
+    val result = when (cycleway) {
         "lane", "opposite_lane" -> {
             when (cyclewayLane) {
                 "exclusive", "exclusive_lane", "mandatory" -> {

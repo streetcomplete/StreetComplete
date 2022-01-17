@@ -21,7 +21,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override fun createForm() = AddSelfServiceLaundryForm()
 
     override fun applyAnswerTo(answer: SelfServiceLaundry, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             NO -> {
                 changes.add("self_service", "no")
                 changes.addOrModify("laundry_service", "yes")

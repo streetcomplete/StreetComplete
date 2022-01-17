@@ -235,7 +235,7 @@ private open class SimpleGestureListener(private val view: View) : GestureDetect
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        when(event?.actionMasked) {
+        when (event?.actionMasked) {
             MotionEvent.ACTION_DOWN -> view.isPressed = true
             MotionEvent.ACTION_UP -> view.isPressed = false
         }

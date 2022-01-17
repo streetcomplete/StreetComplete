@@ -77,7 +77,7 @@ import javax.inject.Singleton
         val noteEdits = noteEditsSource.getAllUnsyncedForNote(noteId)
         var note = noteController.get(noteId)
         for (noteEdit in noteEdits) {
-            when(noteEdit.action) {
+            when (noteEdit.action) {
                 CREATE -> {
                     if (note == null) note = noteEdit.createNote()
                 }
@@ -116,7 +116,7 @@ import javax.inject.Singleton
 
         for (noteEdit in noteEdits) {
             val id = noteEdit.noteId
-            when(noteEdit.action) {
+            when (noteEdit.action) {
                 CREATE -> {
                     if (!notesById.containsKey(id)) notesById[id] = noteEdit.createNote()
                 }

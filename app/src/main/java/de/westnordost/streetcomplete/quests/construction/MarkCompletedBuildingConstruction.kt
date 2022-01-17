@@ -25,7 +25,7 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
     override fun createForm() = MarkCompletedConstructionForm()
 
     override fun applyAnswerTo(answer: CompletedConstructionAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is OpeningDateAnswer -> {
                 changes.addOrModify("opening_date", answer.date.toCheckDateString())
             }

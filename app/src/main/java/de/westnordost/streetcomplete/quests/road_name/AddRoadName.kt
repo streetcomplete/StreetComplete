@@ -43,7 +43,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     override fun createForm() = AddRoadNameForm()
 
     override fun applyAnswerTo(answer: RoadNameAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is NoRoadName        -> changes.add("noname", "yes")
             is RoadIsServiceRoad -> {
                 // The understanding of what is a service road is much broader in common language

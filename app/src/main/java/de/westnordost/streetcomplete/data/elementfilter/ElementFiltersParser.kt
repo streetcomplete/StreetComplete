@@ -84,7 +84,7 @@ private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFil
         result.add(element)
     }
     // a little odd interface of EnumSet here
-    return when(result.size) {
+    return when (result.size) {
         1 -> EnumSet.of(result[0])
         2 -> EnumSet.of(result[0], result[1])
         3 -> EnumSet.of(result[0], result[1], result[2])
@@ -95,7 +95,7 @@ private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFil
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
     expectAnyNumberOfSpaces()
     for (t in ElementsTypeFilter.values()) {
-        val name = when(t) {
+        val name = when (t) {
             ElementsTypeFilter.NODES -> "nodes"
             ElementsTypeFilter.WAYS -> "ways"
             ElementsTypeFilter.RELATIONS -> "relations"
@@ -240,7 +240,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         expectAnyNumberOfSpaces()
         if (nextMatches(NUMBER_WORD_REGEX) != null) {
             val value = parseNumber()
-            when(operator) {
+            when (operator) {
                 GREATER_THAN          -> return HasTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasTagGreaterOrEqualThan(key, value)
                 LESS_THAN             -> return HasTagLessThan(key, value)
@@ -248,7 +248,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
             }
         } else {
             val value = parseDate()
-            when(operator) {
+            when (operator) {
                 GREATER_THAN          -> return HasDateTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasDateTagGreaterOrEqualThan(key, value)
                 LESS_THAN             -> return HasDateTagLessThan(key, value)
@@ -262,7 +262,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
 
 private fun StringWithCursor.parseKey(): String {
     val reserved = nextIsReservedWord()
-    if(reserved != null) {
+    if (reserved != null) {
         throw ParseException("A key cannot be named like the reserved word '$reserved', surround it with quotation marks", cursorPos)
     }
 

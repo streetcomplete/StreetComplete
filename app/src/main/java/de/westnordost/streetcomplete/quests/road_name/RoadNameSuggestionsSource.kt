@@ -82,7 +82,7 @@ internal fun Map<String, String>.toRoadNameByLanguage(): Map<String, String>? {
         if (m != null) {
             val languageTag = m.groupValues[1]
             result[languageTag] = value
-        } else if(key == "int_name") {
+        } else if (key == "int_name") {
             result["international"] = value
         }
     }

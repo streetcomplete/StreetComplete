@@ -87,7 +87,7 @@ private fun Iterable<ElementKey>.toElementIds(): ElementIds {
     val ways = ArrayList<Long>()
     val relations = ArrayList<Long>()
     for (key in this) {
-        when(key.type) {
+        when (key.type) {
             NODE -> nodes.add(key.id)
             WAY -> ways.add(key.id)
             RELATION -> relations.add(key.id)

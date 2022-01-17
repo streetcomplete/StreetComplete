@@ -121,7 +121,7 @@ class AddPlaceName(
     override fun createForm() = AddPlaceNameForm()
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is NoPlaceNameSign -> {
                 changes.add("name:signed", "no")
             }

@@ -72,7 +72,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = when(interfaceMode) {
+    override fun isFormComplete() = when (interfaceMode) {
         InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
         InterfaceMode.HOUSENAME -> createAnswer() != null
         InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonEmptyInput != null && houseNumberInput?.nonEmptyInput != null
@@ -294,7 +294,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private val EditText.nonEmptyInput: String? get() {
         val input = text.toString().trim()
-        return if(input.isNotEmpty()) input else null
+        return if (input.isNotEmpty()) input else null
     }
 
     companion object {
@@ -304,13 +304,13 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 }
 
-private val HousenumberAnswer.isRealHouseNumberAnswer: Boolean get() = when(this) {
+private val HousenumberAnswer.isRealHouseNumberAnswer: Boolean get() = when (this) {
     is HouseNumber -> true
     is HouseAndBlockNumber -> true
     else -> false
 }
 
-private val HousenumberAnswer.realHouseNumber: String? get() = when(this) {
+private val HousenumberAnswer.realHouseNumber: String? get() = when (this) {
     is HouseNumber -> number
     is HouseAndBlockNumber -> houseNumber
     else -> null

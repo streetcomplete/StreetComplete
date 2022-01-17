@@ -24,7 +24,7 @@ private fun Resources.getLevelLabelString(tags: Map<String, String>): CharSequen
     if (level != null) {
         return getString(R.string.on_level, level)
     }
-    if(tags["tunnel"] == "yes" || tags["location"] == "underground") {
+    if (tags["tunnel"] == "yes" || tags["location"] == "underground") {
         return getString(R.string.underground)
     }
     return null

@@ -45,7 +45,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
 
     private fun isUnusualDiameter(diameter: FireHydrantDiameter): Boolean {
         val value = diameter.value
-        return when(diameter.unit) {
+        return when (diameter.unit) {
             MILLIMETER -> value > 600 || value < 50 || value % 5 != 0
             INCH -> value < 1 || value > 25
         }

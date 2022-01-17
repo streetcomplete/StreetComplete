@@ -64,7 +64,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
-            if(field == null) {
+            if (field == null) {
                 val latLon = elementGeometry.center
                 field = countryInfos.get(latLon.longitude, latLon.latitude)
             }
@@ -266,7 +266,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     override fun onStart() {
         super.onStart()
-        if(!startedOnce) {
+        if (!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
         }
@@ -361,7 +361,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     private fun updateContentPadding() {
-        if(!contentPadding) {
+        if (!contentPadding) {
             binding.content.setPadding(0, 0, 0, 0)
         } else {
             val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)

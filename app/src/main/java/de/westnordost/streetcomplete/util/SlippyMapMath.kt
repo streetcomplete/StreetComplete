@@ -84,8 +84,7 @@ fun BoundingBox.asBoundingBoxOfEnclosingTiles(zoom: Int): BoundingBox {
 fun BoundingBox.enclosingTilesRect(zoom: Int): TilesRect {
     return if (crosses180thMeridian) {
         splitAt180thMeridian().first().enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
-    }
-    else {
+    } else {
         enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
     }
 }

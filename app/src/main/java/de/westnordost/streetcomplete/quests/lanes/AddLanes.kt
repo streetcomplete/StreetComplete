@@ -58,7 +58,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             changes.deleteIfExists("turn:lanes:both_ways")
         }
 
-        when(answer) {
+        when (answer) {
             is MarkedLanes -> {
                 if (answer.count == 1) {
                     changes.deleteIfExists("lanes:forward")

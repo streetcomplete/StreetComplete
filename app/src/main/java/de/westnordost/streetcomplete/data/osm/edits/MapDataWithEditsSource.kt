@@ -300,7 +300,7 @@ import javax.inject.Singleton
 
     fun getRelationsForElement(type: ElementType, id: Long): Collection<Relation> = synchronized(this) {
         val relationsById = HashMap<Long, Relation>()
-        val relations = when(type) {
+        val relations = when (type) {
             NODE -> mapDataController.getRelationsForNode(id)
             WAY -> mapDataController.getRelationsForWay(id)
             RELATION -> mapDataController.getRelationsForRelation(id)
@@ -393,7 +393,7 @@ import javax.inject.Singleton
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {
-        return when(element) {
+        return when (element) {
             is Node -> {
                 elementGeometryCreator.create(element)
             }

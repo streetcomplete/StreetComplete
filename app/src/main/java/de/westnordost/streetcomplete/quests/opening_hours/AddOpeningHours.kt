@@ -156,7 +156,7 @@ class AddOpeningHours (
     override fun createForm() = AddOpeningHoursForm()
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is RegularOpeningHours -> {
                 changes.updateWithCheckDate("opening_hours", answer.hours.toString())
                 changes.deleteIfPreviously("opening_hours:signed", "no")

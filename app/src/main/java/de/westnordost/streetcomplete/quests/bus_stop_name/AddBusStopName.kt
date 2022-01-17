@@ -34,7 +34,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override fun createForm() = AddBusStopNameForm()
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is NoBusStopName -> {
                 changes.add("name:signed", "no")
             }

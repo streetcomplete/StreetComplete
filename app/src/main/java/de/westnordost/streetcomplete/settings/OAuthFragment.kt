@@ -144,8 +144,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
                 listener?.onOAuthSuccess(consumer)
                 binding.progressView.visibility = View.INVISIBLE
             }
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
             Log.e(TAG, "Error during authorization", e)
             listener?.onOAuthFailed(e)

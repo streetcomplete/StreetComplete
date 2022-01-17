@@ -161,7 +161,7 @@ import kotlin.collections.ArrayList
      * @return true if successful
      */
     suspend fun solve(quest: Quest, answer: Any, source: String): Boolean {
-        return when(quest) {
+        return when (quest) {
             is OsmNoteQuest -> solveOsmNoteQuest(quest, answer as NoteAnswer)
             is OsmQuest -> solveOsmQuest(quest, answer, source)
             else -> throw NotImplementedError()

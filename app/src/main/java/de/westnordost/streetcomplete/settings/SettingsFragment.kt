@@ -143,7 +143,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        when(key) {
+        when (key) {
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     AlertDialog.Builder(requireContext())

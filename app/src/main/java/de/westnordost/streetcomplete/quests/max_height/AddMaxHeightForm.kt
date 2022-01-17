@@ -75,7 +75,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
 
-            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
+            if (input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
         })
         meterInput?.allowOnlyNumbers()
         switchLayout(unit)
@@ -111,7 +111,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     }
 
     private fun getHeightFromInput(): Height? {
-        when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
+        when (heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
             METER -> {
                 return meterInput?.numberOrNull?.let { Meters(it) }
             }

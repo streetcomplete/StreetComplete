@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.view.image_select.Item2
 fun MaxWeightSign.asItem(inflater: LayoutInflater): DisplayItem<MaxWeightSign> =
     Item2(this, DrawableImage(BitmapDrawable(inflater.context.resources, createBitmap(inflater))))
 
-val MaxWeightSign.layoutResourceId get() = when(this) {
+val MaxWeightSign.layoutResourceId get() = when (this) {
     MaxWeightSign.MAX_WEIGHT             -> R.layout.quest_maxweight_sign
     MaxWeightSign.MAX_GROSS_VEHICLE_MASS -> R.layout.quest_maxweight_mgv_sign
     MaxWeightSign.MAX_AXLE_LOAD          -> R.layout.quest_maxweight_axleload_sign

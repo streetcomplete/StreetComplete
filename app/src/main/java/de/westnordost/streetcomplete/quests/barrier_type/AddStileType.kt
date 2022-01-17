@@ -63,7 +63,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                 if (stileWasRebuilt) {
                     // => properties that refer to the old replaced stile should be removed
                     changes.deleteIfExistList(STILE_PROPERTIES - "material")
-                    if(newMaterial != null) {
+                    if (newMaterial != null) {
                         changes.addOrModify("material", newMaterial)
                     } else {
                         changes.deleteIfExists("material")

@@ -90,7 +90,7 @@ class EditHistoryAdapter(
         }
     }
 
-    override fun getItemViewType(position: Int): Int = when(rows[position]) {
+    override fun getItemViewType(position: Int): Int = when (rows[position]) {
         is EditItem -> EDIT
         IsSyncedItem -> SYNCED
     }
@@ -117,7 +117,7 @@ class EditHistoryAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val row = rows[position]
         val rowAbove = rows.findNext(position+1) { it is EditItem } as EditItem?
-        when(holder) {
+        when (holder) {
             is EditViewHolder -> holder.onBind((row as EditItem).edit, rowAbove?.edit)
         }
     }

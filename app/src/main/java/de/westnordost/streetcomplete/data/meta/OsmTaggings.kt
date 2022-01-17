@@ -105,7 +105,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/Makefile
  *  */
 fun isKindOfShopExpression(prefix: String? = null): String {
-    val p = if(prefix != null) "$prefix:" else ""
+    val p = if (prefix != null) "$prefix:" else ""
     return ("""
         ${p}shop and ${p}shop !~ no|vacant|mall
         or ${p}tourism = information and ${p}information = office

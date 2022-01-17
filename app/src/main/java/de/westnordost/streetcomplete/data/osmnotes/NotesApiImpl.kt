@@ -82,7 +82,7 @@ private fun OsmApiNote.toNote() = Note(
     comments.map { it.toNoteComment() }
 )
 
-private fun OsmApiNote.Status.toNoteStatus() = when(this) {
+private fun OsmApiNote.Status.toNoteStatus() = when (this) {
     OsmApiNote.Status.OPEN   -> Note.Status.OPEN
     OsmApiNote.Status.CLOSED -> Note.Status.CLOSED
     OsmApiNote.Status.HIDDEN -> Note.Status.HIDDEN
@@ -96,7 +96,7 @@ private fun OsmApiNoteComment.toNoteComment() = NoteComment(
     user?.toUser()
 )
 
-private fun OsmApiNoteComment.Action.toNoteCommentAction() = when(this) {
+private fun OsmApiNoteComment.Action.toNoteCommentAction() = when (this) {
     OsmApiNoteComment.Action.OPENED     -> NoteComment.Action.OPENED
     OsmApiNoteComment.Action.COMMENTED  -> NoteComment.Action.COMMENTED
     OsmApiNoteComment.Action.CLOSED     -> NoteComment.Action.CLOSED

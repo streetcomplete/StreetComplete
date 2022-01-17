@@ -66,7 +66,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     override fun createForm() = AddAddressStreetForm()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
-        val key = when(answer) {
+        val key = when (answer) {
             is StreetName -> "addr:street"
             is PlaceName -> "addr:place"
         }

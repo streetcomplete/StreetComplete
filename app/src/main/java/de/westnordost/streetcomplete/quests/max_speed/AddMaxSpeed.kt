@@ -43,7 +43,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
     override fun createForm() = AddMaxSpeedForm()
 
     override fun applyAnswerTo(answer: MaxSpeedAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is MaxSpeedSign -> {
                 changes.add("maxspeed", answer.value.toString())
                 changes.add("maxspeed:type", "sign")

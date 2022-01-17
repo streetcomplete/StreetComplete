@@ -20,8 +20,8 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
         val intValues = (pref.minValue..pref.maxValue step pref.step).toList()
         values = intValues.map { "$it" }.toTypedArray()
         var index = values.indexOf(pref.value.toString())
-        if(index == -1) {
-            do ++index while(index < intValues.lastIndex && intValues[index] < pref.value)
+        if (index == -1) {
+            do ++index while (index < intValues.lastIndex && intValues[index] < pref.value)
         }
         picker.apply {
             displayedValues = values

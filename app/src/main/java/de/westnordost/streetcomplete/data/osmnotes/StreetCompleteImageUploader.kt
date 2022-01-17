@@ -82,8 +82,7 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             if (status == HttpURLConnection.HTTP_GONE) {
                 // it's gone if the note does not exist anymore. That's okay, it should only fail
                 // if we might want to try again later.
-            }
-            else if (status != HttpURLConnection.HTTP_OK) {
+            } else if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
                 if (status / 100 == 5)
                     throw ImageUploadServerException("Error code $status, Message: \"$error\"")

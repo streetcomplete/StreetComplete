@@ -42,7 +42,7 @@ open class DownloadBrandLogosTask : DefaultTask() {
                 }
                 try {
                     val conn = URL(smallImageUrl)
-                    val suffix = when(conn.openConnection().contentType) {
+                    val suffix = when (conn.openConnection().contentType) {
                         "image/jpeg" -> "jpg"
                         "image/png" -> "png"
                         "image/webp" -> "webp"

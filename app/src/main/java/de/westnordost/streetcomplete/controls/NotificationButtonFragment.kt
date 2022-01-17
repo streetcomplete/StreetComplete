@@ -64,7 +64,7 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
         notificationButton.notificationsCount = numberOfNotifications
         if (notificationButton.isVisible && numberOfNotifications == 0) {
             notificationButton.popOut()
-        } else if(!notificationButton.isVisible && numberOfNotifications > 0) {
+        } else if (!notificationButton.isVisible && numberOfNotifications > 0) {
             notificationButton.popIn()
         }
     }

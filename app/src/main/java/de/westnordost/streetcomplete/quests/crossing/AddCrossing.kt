@@ -42,7 +42,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if(element !is Node || element.tags.isNotEmpty()) false else null
+        if (element !is Node || element.tags.isNotEmpty()) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
 

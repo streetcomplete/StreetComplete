@@ -34,7 +34,7 @@ class NoteEditsUploader @Inject constructor(
     } }
 
     private suspend fun uploadMissedImageActivations() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             /* see uploadEdits */
             withContext(scope.coroutineContext) {
@@ -45,7 +45,7 @@ class NoteEditsUploader @Inject constructor(
     }
 
     private suspend fun uploadEdits() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestUnsynced() ?: break
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. F.e. a note could be uploaded
@@ -58,7 +58,7 @@ class NoteEditsUploader @Inject constructor(
         val text = edit.text.orEmpty() + uploadAndGetAttachedPhotosText(edit.imagePaths)
 
         try {
-            val note = when(edit.action) {
+            val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
                 COMMENT -> notesApi.comment(edit.noteId, text)
             }

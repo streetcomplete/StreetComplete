@@ -9,7 +9,7 @@ fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
     Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
 
 fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
-    when(this) {
+    when (this) {
         NONE -> R.drawable.ic_cycleway_none_in_selection
         SEPARATE -> R.drawable.ic_cycleway_separate
         else -> getIconResId(isLeftHandTraffic)
@@ -18,7 +18,7 @@ fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
 fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
 
-private fun Cycleway.getRightHandTrafficIconResId(): Int = when(this) {
+private fun Cycleway.getRightHandTrafficIconResId(): Int = when (this) {
     UNSPECIFIED_LANE -> R.drawable.ic_cycleway_lane
     EXCLUSIVE_LANE -> R.drawable.ic_cycleway_lane
     ADVISORY_LANE -> R.drawable.ic_cycleway_shared_lane
@@ -35,7 +35,7 @@ private fun Cycleway.getRightHandTrafficIconResId(): Int = when(this) {
     else -> 0
 }
 
-private fun Cycleway.getLeftHandTrafficIconResId(): Int = when(this) {
+private fun Cycleway.getLeftHandTrafficIconResId(): Int = when (this) {
     UNSPECIFIED_LANE -> R.drawable.ic_cycleway_lane_l
     EXCLUSIVE_LANE -> R.drawable.ic_cycleway_lane_l
     ADVISORY_LANE -> R.drawable.ic_cycleway_shared_lane_l
@@ -52,7 +52,7 @@ private fun Cycleway.getLeftHandTrafficIconResId(): Int = when(this) {
     else -> 0
 }
 
-fun Cycleway.getTitleResId(): Int = when(this) {
+fun Cycleway.getTitleResId(): Int = when (this) {
     UNSPECIFIED_LANE -> R.string.quest_cycleway_value_lane
     EXCLUSIVE_LANE -> R.string.quest_cycleway_value_lane
     ADVISORY_LANE -> R.string.quest_cycleway_value_lane_soft

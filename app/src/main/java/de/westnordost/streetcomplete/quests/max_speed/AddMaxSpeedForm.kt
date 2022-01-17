@@ -100,7 +100,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
 
-        when(speedType) {
+        when (speedType) {
             ZONE -> {
                 enableAppropriateLabelsForSlowZone(binding.rightSideContainer)
             }
@@ -193,7 +193,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun getSpeedFromInput(): Speed? {
         val value = speedInput?.numberOrNull?.toInt() ?: return null
         val unit = speedUnitSelect?.selectedItem as SpeedMeasurementUnit? ?: speedUnits.first()
-        return when(unit) {
+        return when (unit) {
             KILOMETERS_PER_HOUR -> Kmh(value)
             MILES_PER_HOUR -> Mph(value)
         }

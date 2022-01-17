@@ -308,7 +308,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters)) {
                 f.onClickClose { closeBottomSheet() }
             }
-        } else if(editHistoryFragment != null) {
+        } else if (editHistoryFragment != null) {
             closeEditHistorySidebar()
         }
     }
@@ -665,7 +665,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val popupMenu = PopupMenu(requireContext(), binding.contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
         popupMenu.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
@@ -818,7 +818,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
         val args = AbstractQuestAnswerFragment.createArguments(quest, element, rotation, tilt)
-        if(f.arguments != null) {
+        if (f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
             f.arguments = args

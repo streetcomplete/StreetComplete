@@ -80,7 +80,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     override fun createForm() = AddOnewayForm()
 
     override fun applyAnswerTo(answer: OnewayAnswer, changes: StringMapChangesBuilder) {
-        changes.add("oneway", when(answer) {
+        changes.add("oneway", when (answer) {
             FORWARD -> "yes"
             BACKWARD -> "-1"
             NO_ONEWAY -> "no"

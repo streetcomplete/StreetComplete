@@ -97,7 +97,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     override fun createForm() = AddPostboxCollectionTimesForm()
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is NoCollectionTimesSign -> {
                 changes.add("collection_times:signed", "no")
             }

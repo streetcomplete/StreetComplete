@@ -23,7 +23,7 @@ class ElementGeometryCreator @Inject constructor() {
      *  @return an ElementGeometry or null if any necessary element to create the geometry is not
      *          in the given MapData */
     fun create(element: Element, mapData: MapData, allowIncomplete: Boolean = false): ElementGeometry? {
-        when(element) {
+        when (element) {
             is Node -> {
                 return create(element)
             }
