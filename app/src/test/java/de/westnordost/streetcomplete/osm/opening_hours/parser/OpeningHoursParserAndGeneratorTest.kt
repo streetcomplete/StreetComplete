@@ -112,7 +112,7 @@ class OpeningHoursParserAndGeneratorTest {
         // weekdays and PH
         accept("PH 08:00-10:00")
         accept("PH,Mo-Th 08:00-10:00")
-        accept("Mo-Th,PH 08:00-10:00","PH,Mo-Th 08:00-10:00")
+        accept("Mo-Th,PH 08:00-10:00", "PH,Mo-Th 08:00-10:00")
         // weekday ranges
         accept("Mo-Th 08:00-10:00")
         accept("Th-Tu 08:00-10:00")

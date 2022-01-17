@@ -117,15 +117,15 @@ class OverpassQueryCreator(
         }
         // then union all direct children
         val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it)+";" }
-        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
+        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         result.append("($unionChildren)$resultStmt;\n")
         return result.toString()
     }
 
     private fun AllTagFilters.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
-        val elementFilter = elementType + inputSetId?.let { getSetId(elementType,it) }.orEmpty()
+        val elementFilter = elementType + inputSetId?.let { getSetId(elementType, it) }.orEmpty()
         val tagFilters = values.joinToString("") { it.toOverpassString() }
-        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
+        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         return "$elementFilter$tagFilters$resultStmt;\n"
     }
 

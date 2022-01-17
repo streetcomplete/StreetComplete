@@ -8,6 +8,6 @@ import android.view.ViewOutlineProvider
  *  shaped view correctly */
 object CircularOutlineProvider : ViewOutlineProvider() {
     override fun getOutline(view: View, outline: Outline) {
-        outline.setOval(0,0,view.width,view.height)
+        outline.setOval(0, 0, view.width, view.height)
     }
 }

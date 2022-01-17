@@ -138,7 +138,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
             .setTitle(R.string.quest_openingHours_comment_title)
             .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val txt = dialogBinding.commentInput.text.toString().replace("\"","").trim()
+                val txt = dialogBinding.commentInput.text.toString().replace("\"", "").trim()
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(requireContext())
                         .setMessage(R.string.quest_openingHours_emptyAnswer)

@@ -180,7 +180,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
     }
 }
 
-private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*,*>): Boolean {
+private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*, *>): Boolean {
     var characterCount = expectAnyNumberOfSpaces()
     var previousCharacterCount: Int
     do {

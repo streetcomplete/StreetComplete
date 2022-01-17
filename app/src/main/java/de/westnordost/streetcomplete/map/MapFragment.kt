@@ -138,7 +138,7 @@ open class MapFragment : Fragment(),
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.open_url)
             .setMessage(url)
-            .setPositiveButton(android.R.string.ok) { _,_ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 openUrl(url)
             }
             .setNegativeButton(android.R.string.cancel, null)

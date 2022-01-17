@@ -77,7 +77,7 @@ class AddLanesTest {
 
     @Test fun `answering marked lanes for each side`() {
         questType.verifyAnswer(
-            MarkedLanesSides(2,3, false),
+            MarkedLanesSides(2, 3, false),
             StringMapEntryAdd("lanes", "5"),
             StringMapEntryAdd("lanes:forward", "2"),
             StringMapEntryAdd("lanes:backward", "3")
@@ -118,7 +118,7 @@ class AddLanesTest {
                 "lanes:both_ways" to "1",
                 "turn:lanes:both_ways" to "left"
             ),
-            MarkedLanesSides(2,3, false),
+            MarkedLanesSides(2, 3, false),
             StringMapEntryAdd("lanes", "5"),
             StringMapEntryAdd("lanes:forward", "2"),
             StringMapEntryAdd("lanes:backward", "3"),
@@ -155,7 +155,7 @@ class AddLanesTest {
 
     @Test fun `answering marked lanes with center left turn lane`() {
         questType.verifyAnswer(
-            MarkedLanesSides(1,1, true),
+            MarkedLanesSides(1, 1, true),
             StringMapEntryAdd("lanes", "3"),
             StringMapEntryAdd("lanes:forward", "1"),
             StringMapEntryAdd("lanes:backward", "1"),

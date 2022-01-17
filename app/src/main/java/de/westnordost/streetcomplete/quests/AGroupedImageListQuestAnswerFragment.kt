@@ -19,7 +19,7 @@ import kotlin.math.max
  *
  * Saving and restoring state is not implemented
  */
-abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AGroupedImageListQuestAnswerFragment<I, T> : AbstractQuestFormAnswerFragment<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)

@@ -37,8 +37,8 @@ class VisibleQuestsSourceTest {
 
     private lateinit var listener: VisibleQuestsSource.Listener
 
-    private val bbox = bbox(0.0,0.0,1.0,1.0)
-    private val questTypes = listOf(TestQuestTypeA(),TestQuestTypeB(), TestQuestTypeC())
+    private val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+    private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC())
     private val questTypeNames = questTypes.map { it::class.simpleName!! }
 
     @Before fun setUp() {

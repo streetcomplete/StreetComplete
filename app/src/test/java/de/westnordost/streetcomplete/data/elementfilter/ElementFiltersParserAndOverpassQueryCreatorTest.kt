@@ -392,7 +392,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
     private fun check(input: String, output: String) {
         val expr = input.toElementFilterExpression()
         assertEquals(
-            output.replace("\n","").replace(" ",""),
-            expr.toOverpassQLString().replace("\n","").replace(" ",""))
+            output.replace("\n", "").replace(" ", ""),
+            expr.toOverpassQLString().replace("\n", "").replace(" ", ""))
     }
 }

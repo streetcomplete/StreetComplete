@@ -73,8 +73,8 @@ class RoadNameSuggestionsSource @Inject constructor(
  *  Tags that are not two- or three-letter ISO 639 language codes appended with an optional 4-letter
  *  ISO 15924 code, such as name:left, name:etymology, name:source etc., are ignored
  *  */
-internal fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
+internal fun Map<String, String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String, String>()
     val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")
     for ((key, value) in this) {
         val m = namePattern.matchEntire(key)

@@ -128,4 +128,4 @@ class CheckExistence(
         featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }
 
-private fun <X,Y> Map<X,Y>.containsAll(other: Map<X,Y>) = other.all { this[it.key] == it.value }
+private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

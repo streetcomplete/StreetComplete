@@ -296,8 +296,8 @@ class MapDataWithEditsSourceTest {
     @Test
     fun `getGeometry returns updated geometry updated from updated element`() {
         val nd = node(1)
-        val nd2 = node(1, pos = p(1.0,2.0))
-        val nd3 = node(1, pos = p(55.0,56.0))
+        val nd2 = node(1, pos = p(1.0, 2.0))
+        val nd3 = node(1, pos = p(55.0, 56.0))
         val p = pGeom(0.0, 0.0)
         val p3 = pGeom(55.0, 56.0)
 
@@ -343,7 +343,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getGeometry returns null if element was updated with invalid geometry`() {
-        val way = way(1, listOf(1,2))
+        val way = way(1, listOf(1, 2))
         val wayNew = way(1, listOf())
         val p1 = pGeom(0.0, 0.0)
         val p2 = pGeom(1.0, 0.0)
@@ -379,7 +379,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getWayComplete returns null because it is not complete`() {
-        val w = way(1, listOf(1,2,3))
+        val w = way(1, listOf(1, 2, 3))
 
         originalElementsAre(w, node(1), node(2))
         thereAreNoMapDataChanges()
@@ -390,7 +390,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getWayComplete returns original way with original node ids`() {
-        val w = way(1, listOf(1,2,3))
+        val w = way(1, listOf(1, 2, 3))
         val n1 = node(1)
         val n2 = node(2)
         val n3 = node(3)
@@ -401,12 +401,12 @@ class MapDataWithEditsSourceTest {
         val s = create()
         val data = s.getWayComplete(1)!!
         assertEquals(w, data.ways.single())
-        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(n1,n2,n3)))
+        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(n1, n2, n3)))
     }
 
     @Test
     fun `getWayComplete returns original way with updated node ids`() {
-        val w = way(1, listOf(1,2,3))
+        val w = way(1, listOf(1, 2, 3))
         val nd1 = node(1)
         val nd2 = node(2)
         val nd3 = node(3)
@@ -423,7 +423,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getWayComplete returns updated way with updated node ids`() {
-        val w = way(1, listOf(1,2))
+        val w = way(1, listOf(1, 2))
         val wNew = way(1, listOf(3, 1))
 
         val nd1 = node(1)
@@ -444,7 +444,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getWayComplete returns null because a node of the way was deleted`() {
-        val w = way(1, listOf(1,2))
+        val w = way(1, listOf(1, 2))
         val nd1 = node(1)
         val nd1NewDeleted = node(1)
 
@@ -474,7 +474,7 @@ class MapDataWithEditsSourceTest {
             member(WAY, 1),
             member(WAY, 2),
         ))
-        val w = way(1, listOf(1,2))
+        val w = way(1, listOf(1, 2))
         val n1 = node(1)
         val n2 = node(2)
 
@@ -495,8 +495,8 @@ class MapDataWithEditsSourceTest {
         val n4 = node(4)
         val n5 = node(5)
 
-        val w1 = way(1, listOf(1,2))
-        val w2 = way(2, listOf(3,4))
+        val w1 = way(1, listOf(1, 2))
+        val w2 = way(2, listOf(3, 4))
 
         val r = rel(1, listOf(
             member(WAY, 1),
@@ -514,8 +514,8 @@ class MapDataWithEditsSourceTest {
         val data = s.getRelationComplete(1)!!
 
         assertTrue(data.relations.containsExactlyInAnyOrder(listOf(r, r2)))
-        assertTrue(data.ways.containsExactlyInAnyOrder(listOf(w1,w2)))
-        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(n1,n2,n3,n4,n5)))
+        assertTrue(data.ways.containsExactlyInAnyOrder(listOf(w1, w2)))
+        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(n1, n2, n3, n4, n5)))
     }
 
     @Test
@@ -524,12 +524,12 @@ class MapDataWithEditsSourceTest {
         val n2 = node(2)
         val n3 = node(3)
 
-        val w = way(1, listOf(1,2))
+        val w = way(1, listOf(1, 2))
 
         val r = rel(1, listOf(
             member(WAY, 1),
             member(NODE, 3),
-            member(RELATION,2),
+            member(RELATION, 2),
         ))
 
         val r2 = rel(2)
@@ -548,7 +548,7 @@ class MapDataWithEditsSourceTest {
 
         assertTrue(data.relations.containsExactlyInAnyOrder(listOf(r)))
         assertTrue(data.ways.containsExactlyInAnyOrder(listOf(wNew)))
-        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(n1New,n4,n3)))
+        assertTrue(data.nodes.containsExactlyInAnyOrder(listOf(n1New, n4, n3)))
     }
 
     //endregion
@@ -623,7 +623,7 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `getWaysForNode returns an updated way that didn't contain the node before`() {
-        val wNew = way(1,listOf(1, 2))
+        val wNew = way(1, listOf(1, 2))
 
         thereAreNoOriginalElements()
         mapDataChangesAre(modifications = listOf(wNew))
@@ -736,7 +736,7 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns original elements`() {
-        val nd = node(1, p(0.5,0.5))
+        val nd = node(1, p(0.5, 0.5))
         val p = pGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(ElementGeometryEntry(NODE, 1, p))
@@ -748,15 +748,15 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns updated elements`() {
-        val nd = node(1, p(-0.5,0.5))
+        val nd = node(1, p(-0.5, 0.5))
         val p = pGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(
             ElementGeometryEntry(NODE, 1, p)
         )
 
-        val ndInside = node(1, pos = p(0.1,0.1))
-        val ndOutside = node(2, pos = p(-0.5,0.1))
+        val ndInside = node(1, pos = p(0.1, 0.1))
+        val ndOutside = node(2, pos = p(-0.5, 0.1))
         mapDataChangesAre(modifications = listOf(ndInside, ndOutside))
 
         val s = create()
@@ -766,14 +766,14 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns nothing because updated element is not in bbox anymore`() {
-        val nd = node(1, p(0.5,0.5))
+        val nd = node(1, p(0.5, 0.5))
         val p = pGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(
             ElementGeometryEntry(NODE, 1, p)
         )
 
-        val ndNew = node(1, p(-0.1,0.1))
+        val ndNew = node(1, p(-0.1, 0.1))
         mapDataChangesAre(modifications = listOf(ndNew))
 
         val s = create()
@@ -783,14 +783,14 @@ class MapDataWithEditsSourceTest {
     }
 
     @Test fun `getMapDataWithGeometry returns nothing because element was deleted`() {
-        val nd = node(1, p(0.5,0.5))
+        val nd = node(1, p(0.5, 0.5))
         val p = pGeom(0.5, 0.5)
         originalElementsAre(nd)
         originalGeometriesAre(
             ElementGeometryEntry(NODE, 1, p)
         )
 
-        val ndNewDeleted = node(1, p(-0.1,0.1))
+        val ndNewDeleted = node(1, p(-0.1, 0.1))
         mapDataChangesAre(deletions = listOf(ndNewDeleted))
 
         val s = create()
@@ -820,8 +820,8 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = node(1, p(1.0,10.0))
-        val p = ElementGeometryEntry(elementType = NODE, elementId = 1, geometry = pGeom(1.0,10.0))
+        val n = node(1, p(1.0, 10.0))
+        val p = ElementGeometryEntry(elementType = NODE, elementId = 1, geometry = pGeom(1.0, 10.0))
         editsControllerNotifiesMapDataChangesAdded(modifications = listOf(n))
 
         val expectedMapData = MutableMapDataWithGeometry(
@@ -841,7 +841,7 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = node(1, p(1.0,10.0))
+        val n = node(1, p(1.0, 10.0))
         editsControllerNotifiesMapDataChangesAdded(deletions = listOf(n))
 
         verify(listener).onUpdated(
@@ -863,8 +863,8 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = node(1, p(1.0,10.0))
-        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0,10.0))
+        val n = node(1, p(1.0, 10.0))
+        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0, 10.0))
 
         mapDataChangesAre(modifications = listOf(n))
 
@@ -882,8 +882,8 @@ class MapDataWithEditsSourceTest {
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = node(1, p(1.0,10.0))
-        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0,10.0))
+        val n = node(1, p(1.0, 10.0))
+        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0, 10.0))
 
         val delElements = listOf(
             ElementKey(NODE, -10),
@@ -906,8 +906,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onUpdate passes through mapData because there are no edits`() {
-        val ndNewOriginal = node(1, p(0.2,0.0), mapOf("Iam" to "server version"))
-        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2,0.0))
+        val ndNewOriginal = node(1, p(0.2, 0.0), mapOf("Iam" to "server version"))
+        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2, 0.0))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
@@ -939,16 +939,16 @@ class MapDataWithEditsSourceTest {
         // 3 is deleted,
         // 4 was deleted but was modified to be not
 
-        val ndNewOriginal = node(1, p(0.2,0.0))
-        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2,0.0))
-        val ndNewOriginal2 = node(2, p(0.2,1.0))
-        val pNew2 = ElementGeometryEntry(NODE, 1, pGeom(0.2,1.0))
+        val ndNewOriginal = node(1, p(0.2, 0.0))
+        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2, 0.0))
+        val ndNewOriginal2 = node(2, p(0.2, 1.0))
+        val pNew2 = ElementGeometryEntry(NODE, 1, pGeom(0.2, 1.0))
 
-        val ndModified = node(1, p(0.3,0.0))
-        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3,0.0))
+        val ndModified = node(1, p(0.3, 0.0))
+        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.0))
         val ndModifiedDeleted2 = node(2)
-        val ndModified4 = node(4, p(0.5,0.4))
-        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5,0.4))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
 
         mapDataChangesAre(modifications = listOf(ndModified, ndModified4), deletions = listOf(ndModifiedDeleted2))
 
@@ -968,7 +968,7 @@ class MapDataWithEditsSourceTest {
 
         val expectedMapDataWithGeometry = MutableMapDataWithGeometry(
             elements = listOf(ndModified, ndModified4),
-            geometryEntries = listOf(pModified,pModified4),
+            geometryEntries = listOf(pModified, pModified4),
         )
         val expectedDeletions = listOf(
             ElementKey(NODE, 2),
@@ -983,8 +983,8 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onReplacedForBBox passes through mapData because there are no edits`() {
-        val ndNewOriginal = node(1, p(0.2,0.0), mapOf("Iam" to "server version"))
-        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2,0.0))
+        val ndNewOriginal = node(1, p(0.2, 0.0), mapOf("Iam" to "server version"))
+        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2, 0.0))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
@@ -1006,13 +1006,13 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onReplacedForBBox applies edits on top of passed mapData`() {
-        val ndModified = node(1, p(0.3,0.2), mapOf("Iam" to "modified"))
-        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3,0.2))
+        val ndModified = node(1, p(0.3, 0.2), mapOf("Iam" to "modified"))
+        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.2))
 
-        val ndNewOriginal = node(1, p(0.2,0.0), mapOf("Iam" to "server version"))
-        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2,0.0))
-        val ndNewOriginal2 = node(2, p(0.8,0.1), mapOf("Iam" to "server version"))
-        val pNew2 = ElementGeometryEntry(NODE, 2, pGeom(0.8,0.1))
+        val ndNewOriginal = node(1, p(0.2, 0.0), mapOf("Iam" to "server version"))
+        val pNew = ElementGeometryEntry(NODE, 1, pGeom(0.2, 0.0))
+        val ndNewOriginal2 = node(2, p(0.8, 0.1), mapOf("Iam" to "server version"))
+        val pNew2 = ElementGeometryEntry(NODE, 2, pGeom(0.8, 0.1))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()

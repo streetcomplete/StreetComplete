@@ -64,7 +64,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
          * indicator that this is the transition point between separate sidewalk mapping and
          * sidewalk mapping on road-way. F.e.:
          * https://www.openstreetmap.org/node/1839120490 */
-        val anySidewalk = setOf("both","left","right")
+        val anySidewalk = setOf("both", "left", "right")
 
         crossings = crossings.filter { crossing ->
             crossing.barrierWays.all { it.tags["sidewalk"] in anySidewalk } ||

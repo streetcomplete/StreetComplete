@@ -125,7 +125,7 @@ class AddOpeningHoursTest {
                     })
                 })
             )),
-            StringMapEntryModify("opening_hours", "hohoho","Mo 10:00-12:00")
+            StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")
         )
     }
 

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import org.assertj.core.api.Assertions.assertThat
 
-fun <T> OsmElementQuestType<T>.verifyAnswer(tags: Map<String,String>, answer: T, vararg expectedChanges: StringMapEntryChange) {
+fun <T> OsmElementQuestType<T>.verifyAnswer(tags: Map<String, String>, answer: T, vararg expectedChanges: StringMapEntryChange) {
     val cb = StringMapChangesBuilder(tags)
     this.applyAnswerTo(answer, cb, 0)
     val changes = cb.create().changes

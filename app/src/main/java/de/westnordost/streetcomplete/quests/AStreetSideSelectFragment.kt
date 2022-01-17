@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.view.image_select.Item2
 import de.westnordost.streetcomplete.view.setImage
 import kotlin.math.absoluteValue
 
-abstract class AStreetSideSelectFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment<T>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)

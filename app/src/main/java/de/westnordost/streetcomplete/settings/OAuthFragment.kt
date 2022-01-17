@@ -188,7 +188,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
 
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
             continuation?.resumeWithException(
-                OAuthCommunicationException("Error for URL $url","$description")
+                OAuthCommunicationException("Error for URL $url", "$description")
             )
         }
 

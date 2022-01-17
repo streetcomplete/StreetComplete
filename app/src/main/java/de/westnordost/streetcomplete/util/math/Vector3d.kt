@@ -29,7 +29,7 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
     operator fun times(o: Vector3d) = x * o.x + y * o.y + z * o.z
 
     /** cross (vector) product with [o] */
-    infix fun x(o: Vector3d) = Vector3d(y * o.z - z * o.y,z * o.x - x * o.z,x * o.y - y * o.x)
+    infix fun x(o: Vector3d) = Vector3d(y * o.z - z * o.y, z * o.x - x * o.z, x * o.y - y * o.x)
 
     /** normalize to length == 1 */
     fun normalize(): Vector3d {

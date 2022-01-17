@@ -50,7 +50,7 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
         val ctx = requireContext()
         val countryBubbleView = CircularFlagView(ctx)
         countryBubbleView.id = View.generateViewId()
-        countryBubbleView.layoutParams = ViewGroup.LayoutParams(240,240)
+        countryBubbleView.layoutParams = ViewGroup.LayoutParams(240, 240)
         countryBubbleView.countryCode = countryCode
         countryBubbleView.elevation = 6f.toPx(ctx)
         countryBubbleView.setOnClickListener { v ->

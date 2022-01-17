@@ -124,14 +124,14 @@ private val ParkingOrientation.carCount: Int get() = when(this) {
 private fun getOmittedCarIndices(orientation: ParkingOrientation, position: ParkingPosition?): List<Int> =
     when(position) {
         STREET_SIDE -> when(orientation) {
-            PARALLEL -> listOf(1,2)
-            DIAGONAL -> listOf(2,3)
-            PERPENDICULAR -> listOf(0,3,4,7)
+            PARALLEL -> listOf(1, 2)
+            DIAGONAL -> listOf(2, 3)
+            PERPENDICULAR -> listOf(0, 3, 4, 7)
         }
         PAINTED_AREA_ONLY -> when(orientation) {
-            PARALLEL -> listOf(0,3)
-            DIAGONAL -> listOf(0,1,4,5)
-            PERPENDICULAR -> listOf(0,1,5,6,7)
+            PARALLEL -> listOf(0, 3)
+            DIAGONAL -> listOf(0, 1, 4, 5)
+            PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
         }
         else -> emptyList()
     }

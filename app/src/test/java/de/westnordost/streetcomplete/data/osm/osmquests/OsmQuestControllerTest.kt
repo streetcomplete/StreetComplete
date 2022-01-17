@@ -99,7 +99,7 @@ class OsmQuestControllerTest {
     }
 
     @Test fun getAllVisibleInBBox() {
-        val notePos = p(0.5,0.5)
+        val notePos = p(0.5, 0.5)
         val entries = listOf(
             // ok!
             questEntry(elementType = NODE, elementId = 1),
@@ -255,7 +255,7 @@ class OsmQuestControllerTest {
 
     @Test fun `updates quests on map data listener update for updated elements`() {
 
-        val geom = pGeom(0.0,0.0)
+        val geom = pGeom(0.0, 0.0)
 
         val elements = listOf(
             node(1, tags = mapOf("a" to "b")),
@@ -307,8 +307,8 @@ class OsmQuestControllerTest {
             // at note position
             node(4),
         )
-        val geom = pGeom(0.0,0.0)
-        val notePos = p(0.5,0.5)
+        val geom = pGeom(0.0, 0.0)
+        val notePos = p(0.5, 0.5)
         val notePosGeom = ElementPointGeometry(notePos)
 
         val geometries = listOf(

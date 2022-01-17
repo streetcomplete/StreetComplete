@@ -96,7 +96,7 @@ import javax.inject.Singleton
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
                 val seconds = (currentTimeMillis() - time) / 1000.0
-                Log.i(TAG,"Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
+                Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
                 updateQuests(quests, obsoleteQuestKeys)
@@ -176,7 +176,7 @@ import javax.inject.Singleton
         val quests = runBlocking { deferredQuests.awaitAll().flatten() }
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
+        Log.i(TAG, "Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 
         return quests
     }

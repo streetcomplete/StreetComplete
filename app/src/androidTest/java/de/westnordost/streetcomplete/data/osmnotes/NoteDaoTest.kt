@@ -87,13 +87,13 @@ class NoteDaoTest : ApplicationDbTestCase() {
         val third = createNote(3)
         dao.putAll(listOf(first, second, third))
 
-        assertEquals(listOf(first, second), dao.getAll(listOf(1,2)))
+        assertEquals(listOf(first, second), dao.getAll(listOf(1, 2)))
     }
 
     @Test fun deleteAllByIds() {
         dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
 
-        assertEquals(2, dao.deleteAll(listOf(1,2)))
+        assertEquals(2, dao.deleteAll(listOf(1, 2)))
         assertNull(dao.get(1))
         assertNull(dao.get(2))
         assertNotNull(dao.get(3))
@@ -114,7 +114,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
     @Test fun clear() {
         dao.putAll(listOf(createNote(1), createNote(2), createNote(3)))
         dao.clear()
-        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+        assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
     }
 }
 

@@ -270,7 +270,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private suspend fun showSelectMarkedLanesDialogForBothSides(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
-            listOf(2,4,6,8,10,12,14),
+            listOf(2, 4, 6, 8, 10, 12, 14),
             selectedValue, null,
             R.layout.quest_lanes_select_lanes,
             { cont.resume(it) }
@@ -279,7 +279,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private suspend fun showSelectMarkedLanesDialogForOneSide(selectedValue: Int?) = suspendCancellableCoroutine<Int> { cont ->
         ValuePickerDialog(requireContext(),
-            listOf(1,2,3,4,5,6,7,8),
+            listOf(1, 2, 3, 4, 5, 6, 7, 8),
             selectedValue, null,
             R.layout.quest_lanes_select_lanes_one_side_only,
             { cont.resume(it) }

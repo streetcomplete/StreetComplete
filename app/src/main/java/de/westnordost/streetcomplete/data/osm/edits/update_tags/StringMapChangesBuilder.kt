@@ -45,7 +45,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) : Map<Str
 
     override val entries: Set<Map.Entry<String, String>> get() {
         val result = mutableSetOf<Map.Entry<String, String>>()
-        for ((k,v) in source) {
+        for ((k, v) in source) {
             when (val change = changes[k]) {
                 // modified
                 is StringMapEntryModify -> {
@@ -55,7 +55,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) : Map<Str
                 is StringMapEntryDelete -> {}
                 // otherwise use entry from source map
                 else ->                    {
-                    result.add(Entry(k,v))
+                    result.add(Entry(k, v))
                 }
             }
         }

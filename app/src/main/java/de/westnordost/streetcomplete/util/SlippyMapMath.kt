@@ -23,7 +23,7 @@ data class TilePos(val x: Int, val y: Int) {
         )
     }
 
-    fun toTilesRect() = TilesRect(x,y,x,y)
+    fun toTilesRect() = TilesRect(x, y, x, y)
 }
 
 /** Returns the minimum rectangle of tiles that encloses all the tiles */

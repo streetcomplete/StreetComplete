@@ -64,7 +64,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         questView.setImageResource(questType.icon)
 
         val clickableContainer = FrameLayout(ctx)
-        clickableContainer.layoutParams = ViewGroup.LayoutParams(256,256)
+        clickableContainer.layoutParams = ViewGroup.LayoutParams(256, 256)
         clickableContainer.foreground = requireContext().getDrawable(R.drawable.round_pressed)
         clickableContainer.elevation = 6f.toPx(ctx)
         clickableContainer.outlineProvider = CircularOutlineProvider

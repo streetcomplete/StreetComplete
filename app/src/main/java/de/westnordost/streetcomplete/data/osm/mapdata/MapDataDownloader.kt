@@ -27,7 +27,7 @@ class MapDataDownloader @Inject constructor(
         mapData.boundingBox = expandedBBox
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
+        Log.i(TAG, "Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
         yield()
 

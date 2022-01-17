@@ -25,7 +25,7 @@ class WithFootnoteDrawable(context: Context, val drawable: Drawable) : Drawable(
         drawable.bounds = bounds
         drawable.draw(canvas)
         val size = bounds.width() * 3/8
-        footnoteDrawable.setBounds(bounds.width() - size,0, bounds.width(), size)
+        footnoteDrawable.setBounds(bounds.width() - size, 0, bounds.width(), size)
         footnoteDrawable.draw(canvas)
     }
 }

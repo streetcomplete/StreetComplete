@@ -93,7 +93,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
     ) : ListAdapter<Pair<Achievement, Int>>(achievements) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val binding = CellAchievementBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            val binding = CellAchievementBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             binding.root.updateLayoutParams {
                 width = actualCellWidth
                 height = actualCellWidth
