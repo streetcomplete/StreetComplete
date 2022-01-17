@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 /** Quest type where each quest refers to an OSM element */
 interface OsmElementQuestType<T> : QuestType<T> {
 
-    /** the commit message to be used for this quest type */
+    /** the changeset comment to be used for this quest type */
     val changesetComment: String
 
     /** the OpenStreetMap wiki page with the documentation */
