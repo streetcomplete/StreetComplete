@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.smoothness
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {

@@ -44,12 +44,12 @@ import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.hasLocationPermission
-import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
+import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
+import de.westnordost.streetcomplete.location.hasLocationPermission
+import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.levelsIntersect
 import de.westnordost.streetcomplete.quests.*

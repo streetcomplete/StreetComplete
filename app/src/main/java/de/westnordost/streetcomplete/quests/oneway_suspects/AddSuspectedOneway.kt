@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment

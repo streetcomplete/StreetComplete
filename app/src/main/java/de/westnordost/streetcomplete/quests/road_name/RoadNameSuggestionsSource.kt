@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -11,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
+import javax.inject.Inject
 
 class RoadNameSuggestionsSource @Inject constructor(
     private val mapDataSource: MapDataWithEditsSource

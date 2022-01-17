@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.Database
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.Columns.SUCCEEDED
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.NAME
+import javax.inject.Inject
 
 /** Stores how many quests of which quest types the user solved */
 class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {

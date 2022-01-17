@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.intersect
 import java.util.concurrent.CopyOnWriteArrayList

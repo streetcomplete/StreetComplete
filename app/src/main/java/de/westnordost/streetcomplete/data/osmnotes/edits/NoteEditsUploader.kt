@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.util.Log
 import de.westnordost.streetcomplete.data.osmnotes.*
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex

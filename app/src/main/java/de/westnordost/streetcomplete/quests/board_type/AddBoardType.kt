@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 
 class AddBoardType : OsmFilterQuestType<BoardType>() {
 

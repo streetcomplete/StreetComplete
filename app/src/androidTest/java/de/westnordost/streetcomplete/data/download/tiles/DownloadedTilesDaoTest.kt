@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
-import org.junit.Before
-import org.junit.Test
-
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.util.TilePos
 import de.westnordost.streetcomplete.util.TilesRect
-
 import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 class DownloadedTilesDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: DownloadedTilesDao

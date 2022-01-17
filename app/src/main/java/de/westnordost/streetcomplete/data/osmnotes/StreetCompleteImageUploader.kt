@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import org.json.JSONException
 import org.json.JSONObject
-
 import java.io.File
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
-
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.ConnectionException
 
 /** Upload and activate a list of image paths to an instance of the
  * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>

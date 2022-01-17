@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import javax.inject.Inject
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */

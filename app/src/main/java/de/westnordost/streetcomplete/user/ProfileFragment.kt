@@ -11,8 +11,8 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource

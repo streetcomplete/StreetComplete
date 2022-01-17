@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sidewalk.SeparatelyMapped
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkSides
-import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test

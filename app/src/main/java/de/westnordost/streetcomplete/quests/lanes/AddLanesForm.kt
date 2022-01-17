@@ -10,6 +10,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestLanesSelectTypeBinding
 import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -18,9 +21,6 @@ import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import de.westnordost.streetcomplete.osm.isForwardOneway
-import de.westnordost.streetcomplete.osm.isReversedOneway
-import de.westnordost.streetcomplete.osm.isOneway
 
 class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 

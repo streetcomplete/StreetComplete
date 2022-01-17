@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding

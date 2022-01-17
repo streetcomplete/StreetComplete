@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
-import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding

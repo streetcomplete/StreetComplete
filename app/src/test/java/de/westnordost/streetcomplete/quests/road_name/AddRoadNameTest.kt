@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Test
 
 class AddRoadNameTest {

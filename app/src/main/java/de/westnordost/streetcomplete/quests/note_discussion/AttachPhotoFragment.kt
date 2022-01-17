@@ -14,8 +14,8 @@ import androidx.core.content.FileProvider
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXHEIGHT
+import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages

@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.util.normalizeDegrees
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.image_select.Item
 import kotlin.math.absoluteValue
 
 class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {

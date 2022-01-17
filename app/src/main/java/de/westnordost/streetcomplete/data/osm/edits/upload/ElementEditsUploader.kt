@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.edits.*
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-
 import javax.inject.Inject
 
 class ElementEditsUploader @Inject constructor(

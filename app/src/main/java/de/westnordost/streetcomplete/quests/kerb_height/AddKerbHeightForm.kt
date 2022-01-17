@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.*
+import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddKerbHeightForm : AImageListQuestAnswerFragment<KerbHeight, KerbHeight>() {
 

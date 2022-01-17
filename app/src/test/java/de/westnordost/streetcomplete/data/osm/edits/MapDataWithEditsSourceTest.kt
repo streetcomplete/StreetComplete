@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.util.intersect
 import org.junit.Assert.*
 import org.junit.Before

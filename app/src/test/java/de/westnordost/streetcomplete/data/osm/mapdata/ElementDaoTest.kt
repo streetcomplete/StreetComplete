@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import org.junit.Before
-import org.junit.Test
-
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.testutils.rel
-
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Before
+import org.junit.Test
 import org.mockito.Mockito.*
 
 class ElementDaoTest {

@@ -12,8 +12,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

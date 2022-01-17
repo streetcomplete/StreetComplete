@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.building_type
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem

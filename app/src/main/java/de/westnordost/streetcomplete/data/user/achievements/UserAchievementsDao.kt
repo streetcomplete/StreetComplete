@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable.Columns.ACHIEVEMENT
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable.Columns.LEVEL
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable.NAME
-
 import javax.inject.Inject
 
 /** Stores which achievement ids have been unlocked by the user and at which level */

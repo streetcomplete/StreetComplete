@@ -4,9 +4,9 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationChannelCompat
-import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
 import de.westnordost.streetcomplete.ApplicationConstants.NAME
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC
 import de.westnordost.streetcomplete.MainActivity

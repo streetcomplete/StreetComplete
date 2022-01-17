@@ -1,10 +1,10 @@
 
 import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Parser
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import com.beust.klaxon.Parser
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.lang.Exception

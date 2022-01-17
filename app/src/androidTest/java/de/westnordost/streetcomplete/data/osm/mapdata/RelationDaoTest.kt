@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import org.junit.Before
-import org.junit.Test
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import org.junit.Before
+import org.junit.Test
 
 class RelationDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RelationDao

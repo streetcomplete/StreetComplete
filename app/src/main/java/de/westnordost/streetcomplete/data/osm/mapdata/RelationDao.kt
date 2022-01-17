@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.INDEX
@@ -18,6 +16,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
+import javax.inject.Inject
 
 /** Stores OSM relations */
 class RelationDao @Inject constructor(private val db: Database) {

@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {

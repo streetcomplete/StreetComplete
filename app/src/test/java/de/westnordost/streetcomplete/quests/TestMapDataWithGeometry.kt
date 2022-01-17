@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.testutils.bbox
 
 class TestMapDataWithGeometry(elements: Iterable<Element>) : MutableMapData(), MapDataWithGeometry {
 

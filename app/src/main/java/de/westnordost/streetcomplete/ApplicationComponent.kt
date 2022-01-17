@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.data.edithistory.EditHistoryModule
 import de.westnordost.streetcomplete.data.meta.MetadataModule
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsModule
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsModule
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestModule
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestModule
@@ -37,10 +37,10 @@ import de.westnordost.streetcomplete.quests.SplitWayFragment
 import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm
 import de.westnordost.streetcomplete.quests.level.AddLevelForm
-import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOnewayForm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsModule
+import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm
 import de.westnordost.streetcomplete.settings.*
 import de.westnordost.streetcomplete.settings.questselection.QuestPresetsFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment

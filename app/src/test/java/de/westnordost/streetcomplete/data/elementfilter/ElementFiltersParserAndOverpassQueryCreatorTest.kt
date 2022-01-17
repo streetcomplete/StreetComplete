@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import org.junit.Test
-
 import org.junit.Assert.*
+import org.junit.Test
 import java.text.ParseException
 
 /** Integration test for the filter parser, filter expression and creator, the whole way from parsing

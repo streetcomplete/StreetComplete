@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
-import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType

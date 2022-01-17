@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete
 
 import ch.poole.openinghoursparser.YearRange
-import de.westnordost.streetcomplete.osm.opening_hours.parser.weekdaysCollideWithAnother
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.weekdaysCollideWithAnother
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.net.HttpURLConnection

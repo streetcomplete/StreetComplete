@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.os.Bundle
-import androidx.annotation.AnyThread
 import android.view.View
-import javax.inject.Inject
+import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -17,6 +16,7 @@ import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer>() {
 

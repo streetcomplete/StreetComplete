@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
-import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.upload.ConflictException

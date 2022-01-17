@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.testutils.*
-import org.junit.Test
-
 import org.junit.Assert.*
+import org.junit.Test
 
 class ElementGeometryCreatorTest {
 

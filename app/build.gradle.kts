@@ -1,6 +1,6 @@
-import java.util.Properties
 import java.io.FileInputStream
 import java.io.FileWriter
+import java.util.Properties
 
 plugins {
     id("com.android.application")

@@ -2,14 +2,12 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
+import javax.inject.Inject
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
 class NotesDownloader @Inject constructor(

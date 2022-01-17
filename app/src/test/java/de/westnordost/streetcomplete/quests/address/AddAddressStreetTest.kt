@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.*

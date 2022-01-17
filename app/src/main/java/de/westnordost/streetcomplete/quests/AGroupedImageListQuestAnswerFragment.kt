@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.postDelayed
 import androidx.preference.PreferenceManager
-
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem

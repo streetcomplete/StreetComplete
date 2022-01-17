@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
-import org.junit.Test
-
 import org.junit.Assert.*
+import org.junit.Test
 
 class WeekdaysTest {
 

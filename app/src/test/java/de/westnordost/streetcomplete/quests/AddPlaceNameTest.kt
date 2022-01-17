@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.place_name.NoPlaceNameSign
 import de.westnordost.streetcomplete.quests.place_name.PlaceName
+import de.westnordost.streetcomplete.testutils.mock
 import org.junit.Test
 
 class AddPlaceNameTest {

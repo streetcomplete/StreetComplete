@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
-
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import org.assertj.core.api.Assertions.*
 
 fun <T> OsmElementQuestType<T>.verifyAnswer(tags: Map<String, String>, answer: T, vararg expectedChanges: StringMapEntryChange) {

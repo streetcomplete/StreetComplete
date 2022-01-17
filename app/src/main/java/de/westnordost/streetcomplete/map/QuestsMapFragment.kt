@@ -22,8 +22,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.FocusGeometryMapComponent
-import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.GeometryMarkersMapComponent
+import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.distanceTo

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem

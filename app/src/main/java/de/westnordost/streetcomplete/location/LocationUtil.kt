@@ -6,11 +6,9 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Location
 import android.location.LocationManager
-
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
-
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 val Context.isLocationEnabled: Boolean

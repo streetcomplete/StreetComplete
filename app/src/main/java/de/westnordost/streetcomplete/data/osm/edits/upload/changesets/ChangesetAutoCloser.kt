@@ -1,16 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.content.Context
-import java.util.concurrent.TimeUnit
-
-import javax.inject.Inject
-
 import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy.REPLACE
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-
-import androidx.work.ExistingWorkPolicy.REPLACE
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 class ChangesetAutoCloser @Inject constructor(private val context: Context) {
 

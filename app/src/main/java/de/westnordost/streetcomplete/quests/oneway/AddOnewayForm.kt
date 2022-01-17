@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.quests.oneway
 
 import android.content.Context
 import android.os.Bundle
-import androidx.annotation.AnyThread
 import android.view.View
-
+import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding

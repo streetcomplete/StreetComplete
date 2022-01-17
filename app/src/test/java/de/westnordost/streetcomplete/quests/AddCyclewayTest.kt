@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
-import de.westnordost.streetcomplete.quests.cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.quests.cycleway.*
 import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.*

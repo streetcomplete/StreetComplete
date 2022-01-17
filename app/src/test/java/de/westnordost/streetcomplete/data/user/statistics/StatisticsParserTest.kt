@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeC
-import java.time.OffsetDateTime
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.time.OffsetDateTime
 
 class StatisticsParserTest {
 

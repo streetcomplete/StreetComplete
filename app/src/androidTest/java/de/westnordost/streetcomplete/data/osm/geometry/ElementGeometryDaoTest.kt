@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import org.junit.Before
-import org.junit.Test
-
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-
 import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao

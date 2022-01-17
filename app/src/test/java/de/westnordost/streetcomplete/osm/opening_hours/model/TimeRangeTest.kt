@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
-import org.junit.Test
-
-import java.util.Locale
-
 import org.junit.Assert.*
+import org.junit.Test
+import java.util.Locale
 
 class TimeRangeTest {
 

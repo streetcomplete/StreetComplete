@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestDietTypeExplanationBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment

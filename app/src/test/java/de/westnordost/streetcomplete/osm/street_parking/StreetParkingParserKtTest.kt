@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import org.junit.Assert.*
 import org.junit.Test
-
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 
 class StreetParkingParserKtTest {
 

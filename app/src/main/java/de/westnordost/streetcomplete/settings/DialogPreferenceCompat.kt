@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.settings
 
 import android.content.Context
+import android.util.AttributeSet
 import androidx.preference.DialogPreference
 import androidx.preference.PreferenceDialogFragmentCompat
-import android.util.AttributeSet
 import androidx.preference.R
 
 abstract class DialogPreferenceCompat @JvmOverloads constructor(

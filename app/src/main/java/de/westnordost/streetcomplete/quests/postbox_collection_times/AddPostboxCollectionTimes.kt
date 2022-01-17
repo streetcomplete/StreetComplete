@@ -12,9 +12,9 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
-import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedCollectionTimes
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 

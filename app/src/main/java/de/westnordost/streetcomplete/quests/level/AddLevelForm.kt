@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.level
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.Injector
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

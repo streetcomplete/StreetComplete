@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.testutils.any
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 
 class NoteEditsControllerTest {
 

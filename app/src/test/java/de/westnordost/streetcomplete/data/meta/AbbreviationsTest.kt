@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.meta
 
+import org.junit.Assert.*
 import org.junit.Test
-
 import java.io.ByteArrayInputStream
 import java.util.Locale
-
-import org.junit.Assert.*
 
 class AbbreviationsTest {
     @Test fun `capitalizes first letter`() {

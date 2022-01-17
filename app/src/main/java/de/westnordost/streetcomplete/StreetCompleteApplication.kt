@@ -17,9 +17,9 @@ import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.*
+import java.lang.System.currentTimeMillis
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import java.lang.System.currentTimeMillis
 
 class StreetCompleteApplication : Application() {
 

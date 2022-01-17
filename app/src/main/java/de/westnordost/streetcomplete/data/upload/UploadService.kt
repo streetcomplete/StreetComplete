@@ -7,13 +7,11 @@ import android.os.Binder
 import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
+import javax.inject.Inject
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */

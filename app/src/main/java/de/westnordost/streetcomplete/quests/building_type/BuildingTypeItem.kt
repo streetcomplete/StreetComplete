@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
+import de.westnordost.streetcomplete.view.image_select.Item
 
 fun List<BuildingType>.toItems() = this.map { it.asItem() }
 

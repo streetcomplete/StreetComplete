@@ -8,8 +8,8 @@ import android.widget.RelativeLayout
 import de.westnordost.streetcomplete.databinding.ViewIconsDownloadProgressBinding
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.view.CircularMaskFrameLayout
-import java.util.Queue
 import java.util.LinkedList
+import java.util.Queue
 
 /** view that shows a queue of IconProgressViews moving in from the right and moving out to the
  *  left when they are done */

@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import org.junit.Test
-
 import org.junit.Assert.*
+import org.junit.Test
 
 class StringMapEntryModifyTest {
 

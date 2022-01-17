@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.res.Resources
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding

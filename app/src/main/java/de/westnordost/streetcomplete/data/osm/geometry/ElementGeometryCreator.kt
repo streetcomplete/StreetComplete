@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline

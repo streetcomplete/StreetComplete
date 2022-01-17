@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.data.osm.mapdata.UpdatedElementsHandler
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.UpdatedElementsHandler
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node

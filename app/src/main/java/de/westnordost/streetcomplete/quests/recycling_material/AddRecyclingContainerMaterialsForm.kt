@@ -2,14 +2,13 @@ package de.westnordost.streetcomplete.quests.recycling_material
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
+import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 
 class AddRecyclingContainerMaterialsForm :
     AImageListQuestAnswerFragment<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {

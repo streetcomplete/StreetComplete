@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.kerb
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.*
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.allExceptFirstAndLast
