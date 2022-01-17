@@ -3,11 +3,10 @@ package de.westnordost.streetcomplete.quests.bus_stop_ref
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
-import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddBusStopRefForm : AbstractQuestFormAnswerFragment<BusStopRefAnswer>() {

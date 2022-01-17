@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.settings
 
-import androidx.preference.PreferenceDialogFragmentCompat
 import android.view.View
 import android.widget.NumberPicker
-
+import androidx.preference.PreferenceDialogFragmentCompat
 import de.westnordost.streetcomplete.R
 
 /** Preference dialog where user should pick a number */

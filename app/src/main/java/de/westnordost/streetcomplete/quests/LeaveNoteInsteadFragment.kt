@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding

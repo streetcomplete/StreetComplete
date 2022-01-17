@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN

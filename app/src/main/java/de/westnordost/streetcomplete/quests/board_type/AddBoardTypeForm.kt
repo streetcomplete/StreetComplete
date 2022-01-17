@@ -5,7 +5,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TextItem
-import de.westnordost.streetcomplete.quests.board_type.BoardType.*
+import de.westnordost.streetcomplete.quests.board_type.BoardType.GEOLOGY
+import de.westnordost.streetcomplete.quests.board_type.BoardType.HISTORY
+import de.westnordost.streetcomplete.quests.board_type.BoardType.MAP
+import de.westnordost.streetcomplete.quests.board_type.BoardType.NATURE
+import de.westnordost.streetcomplete.quests.board_type.BoardType.NOTICE
+import de.westnordost.streetcomplete.quests.board_type.BoardType.PLANTS
+import de.westnordost.streetcomplete.quests.board_type.BoardType.PUBLIC_TRANSPORT
+import de.westnordost.streetcomplete.quests.board_type.BoardType.SPORT
+import de.westnordost.streetcomplete.quests.board_type.BoardType.WILDLIFE
 
 class AddBoardTypeForm : AListQuestAnswerFragment<BoardType>() {
 

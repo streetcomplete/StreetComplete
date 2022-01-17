@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.view
 
 import android.content.Context
-import androidx.appcompat.R
 import android.text.Editable
 import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
+import androidx.appcompat.R
 import androidx.appcompat.widget.AppCompatEditText
-
-
 import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 

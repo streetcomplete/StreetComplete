@@ -18,8 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.sufficientlysecure.htmltextview.HtmlTextView
-import java.util.*
-import kotlin.collections.LinkedHashMap
+import java.util.Locale
 
 /** Shows the credits of this app */
 class CreditsFragment : Fragment(R.layout.fragment_credits) {

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_button
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals

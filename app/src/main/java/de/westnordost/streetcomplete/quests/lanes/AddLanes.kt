@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.lanes
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {

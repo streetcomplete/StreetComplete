@@ -2,12 +2,16 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.*
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.meta.removeCheckDates
+import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {

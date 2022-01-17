@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.GREEN
+import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.LANE
+import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.PARKING_LOT
+import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.SIDEWALK
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.*
 
 class AddFireHydrantPositionForm : AImageListQuestAnswerFragment<FireHydrantPosition, FireHydrantPosition>() {
 

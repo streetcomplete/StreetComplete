@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.distanceTo
 
 internal fun isGeometrySubstantiallyDifferent(element: Element, newElement: Element) =

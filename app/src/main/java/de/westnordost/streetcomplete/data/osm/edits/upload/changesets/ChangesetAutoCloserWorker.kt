@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.content.Context
-
-import javax.inject.Inject
-
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
+import javax.inject.Inject
 
 class ChangesetAutoCloserWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {

@@ -4,7 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.*
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 

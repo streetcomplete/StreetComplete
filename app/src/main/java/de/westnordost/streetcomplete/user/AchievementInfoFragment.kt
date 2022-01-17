@@ -9,7 +9,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
-import android.view.animation.*
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.OvershootInterpolator
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -20,7 +23,11 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.ktx.viewBinding
-import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.util.Transforms
+import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer
+import de.westnordost.streetcomplete.util.animateFrom
+import de.westnordost.streetcomplete.util.animateTo
+import de.westnordost.streetcomplete.util.applyTransforms
 
 
 /** Shows details for a certain level of one achievement as a fake-dialog.

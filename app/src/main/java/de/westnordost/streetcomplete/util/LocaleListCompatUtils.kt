@@ -9,7 +9,7 @@ import androidx.core.os.LocaleListCompat
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.ktx.addedToFront
-import java.util.*
+import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */
 fun getSelectedLocale(context: Context): Locale? {

@@ -10,7 +10,8 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.util.TilesRect
 import de.westnordost.streetcomplete.util.area
-import kotlinx.coroutines.*
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.lang.System.currentTimeMillis

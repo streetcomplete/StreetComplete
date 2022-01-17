@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import de.westnordost.streetcomplete.util.setLocales
-import java.util.*
+import java.util.Locale
 
 open class BaseActivity : AppCompatActivity {
     constructor() : super()

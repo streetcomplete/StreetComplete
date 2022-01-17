@@ -1,13 +1,17 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.isRingDefinedClockwise
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
 class ElementGeometryCreator @Inject constructor() {

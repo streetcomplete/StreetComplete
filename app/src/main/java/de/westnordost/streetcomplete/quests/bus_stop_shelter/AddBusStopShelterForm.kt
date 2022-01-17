@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
+import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.COVERED
+import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.NO_SHELTER
+import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.SHELTER
 
 class AddBusStopShelterForm : AbstractQuestAnswerFragment<BusStopShelterAnswer>() {
 

@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.*
+import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
+import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
 
 class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
 

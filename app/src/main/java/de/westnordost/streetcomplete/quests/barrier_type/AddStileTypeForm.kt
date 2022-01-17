@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.barrier_type.StileType.*
+import de.westnordost.streetcomplete.quests.barrier_type.StileType.LADDER
+import de.westnordost.streetcomplete.quests.barrier_type.StileType.SQUEEZER
+import de.westnordost.streetcomplete.quests.barrier_type.StileType.STEPOVER_STONE
+import de.westnordost.streetcomplete.quests.barrier_type.StileType.STEPOVER_WOODEN
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 

@@ -1,24 +1,24 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.appcompat.widget.PopupMenu
-import android.view.View
-
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-
 import android.view.Menu.NONE
+import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.*
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

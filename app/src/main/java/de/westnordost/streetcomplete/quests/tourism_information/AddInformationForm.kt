@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.quests.tourism_information
 
 import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.*
+import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.BOARD
+import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.GUIDEPOST
+import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.MAP
+import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.OFFICE
+import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.TERMINAL
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddInformationForm : AImageListQuestAnswerFragment<TourismInformation, TourismInformation>() {

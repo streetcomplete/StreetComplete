@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.view.dialogs
 
 import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogRangePickerBinding
 

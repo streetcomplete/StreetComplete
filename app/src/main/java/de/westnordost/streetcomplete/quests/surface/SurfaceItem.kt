@@ -1,7 +1,31 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.surface.Surface.*
+import de.westnordost.streetcomplete.quests.surface.Surface.ARTIFICIAL_TURF
+import de.westnordost.streetcomplete.quests.surface.Surface.ASPHALT
+import de.westnordost.streetcomplete.quests.surface.Surface.CLAY
+import de.westnordost.streetcomplete.quests.surface.Surface.COMPACTED
+import de.westnordost.streetcomplete.quests.surface.Surface.CONCRETE
+import de.westnordost.streetcomplete.quests.surface.Surface.CONCRETE_LANES
+import de.westnordost.streetcomplete.quests.surface.Surface.CONCRETE_PLATES
+import de.westnordost.streetcomplete.quests.surface.Surface.DIRT
+import de.westnordost.streetcomplete.quests.surface.Surface.FINE_GRAVEL
+import de.westnordost.streetcomplete.quests.surface.Surface.GRASS
+import de.westnordost.streetcomplete.quests.surface.Surface.GRASS_PAVER
+import de.westnordost.streetcomplete.quests.surface.Surface.GRAVEL
+import de.westnordost.streetcomplete.quests.surface.Surface.GROUND
+import de.westnordost.streetcomplete.quests.surface.Surface.METAL
+import de.westnordost.streetcomplete.quests.surface.Surface.PAVED
+import de.westnordost.streetcomplete.quests.surface.Surface.PAVING_STONES
+import de.westnordost.streetcomplete.quests.surface.Surface.PEBBLES
+import de.westnordost.streetcomplete.quests.surface.Surface.ROCK
+import de.westnordost.streetcomplete.quests.surface.Surface.SAND
+import de.westnordost.streetcomplete.quests.surface.Surface.SETT
+import de.westnordost.streetcomplete.quests.surface.Surface.TARTAN
+import de.westnordost.streetcomplete.quests.surface.Surface.UNHEWN_COBBLESTONE
+import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED
+import de.westnordost.streetcomplete.quests.surface.Surface.WOOD
+import de.westnordost.streetcomplete.quests.surface.Surface.WOODCHIPS
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun List<Surface>.toItems() = this.map { it.asItem() }

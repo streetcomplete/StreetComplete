@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.quests.findNodesAtCrossingsOf
 
 fun detectWayBarrierIntersection(mapData: MapDataWithGeometry, barrierFilter: ElementFilterExpression, pathsFilter: ElementFilterExpression): Iterable<Element> {

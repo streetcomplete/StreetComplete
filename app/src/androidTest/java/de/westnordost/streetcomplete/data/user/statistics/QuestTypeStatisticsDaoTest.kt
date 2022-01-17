@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-
-import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-
-import org.junit.Assert.*
 
 class QuestTypeStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var daoType: QuestTypeStatisticsDao

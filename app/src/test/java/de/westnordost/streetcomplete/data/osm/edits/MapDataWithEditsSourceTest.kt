@@ -1,20 +1,40 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.edit
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.member
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.intersect
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.*
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoInteractions
 
 class MapDataWithEditsSourceTest {
 

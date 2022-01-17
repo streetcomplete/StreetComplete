@@ -3,11 +3,9 @@ package de.westnordost.streetcomplete.quests.oneway_suspects.data
 import android.annotation.SuppressLint
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-
-import java.net.URL
-
 import de.westnordost.streetcomplete.ktx.format
 import org.json.JSONObject
+import java.net.URL
 
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api  */
 class TrafficFlowSegmentsApi(private val apiUrl: String) {

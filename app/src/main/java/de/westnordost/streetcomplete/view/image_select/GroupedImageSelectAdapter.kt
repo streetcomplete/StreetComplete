@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.view.image_select
 
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 
 /** Select one items from a groupable list of items  */

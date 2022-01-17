@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import com.google.android.material.tabs.TabLayout
-import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +10,11 @@ import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.TimePicker
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
 import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding

@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.map.tangram
 
-import org.junit.Test
-
 import de.westnordost.streetcomplete.testutils.p
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class TangramExtensionsTest {
 

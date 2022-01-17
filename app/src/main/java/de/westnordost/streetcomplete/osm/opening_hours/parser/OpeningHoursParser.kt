@@ -1,13 +1,26 @@
 package de.westnordost.streetcomplete.osm.opening_hours.parser
 
-import ch.poole.openinghoursparser.*
+import ch.poole.openinghoursparser.DateRange
+import ch.poole.openinghoursparser.DateWithOffset
+import ch.poole.openinghoursparser.Holiday
+import ch.poole.openinghoursparser.OpeningHoursParser
+import ch.poole.openinghoursparser.ParseException
+import ch.poole.openinghoursparser.Rule
+import ch.poole.openinghoursparser.RuleModifier
+import ch.poole.openinghoursparser.TimeSpan
+import ch.poole.openinghoursparser.WeekDay
+import ch.poole.openinghoursparser.WeekDayRange
+import ch.poole.openinghoursparser.YearRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
+import de.westnordost.streetcomplete.osm.opening_hours.model.Months
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.OSM_ABBR_WEEKDAYS
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.osm.opening_hours.model.*
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.OSM_ABBR_WEEKDAYS
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 import java.io.ByteArrayInputStream
 
