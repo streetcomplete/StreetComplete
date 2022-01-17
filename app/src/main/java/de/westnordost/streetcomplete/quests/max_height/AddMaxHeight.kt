@@ -106,7 +106,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
                 bridgeLayer > layer
                     // and with which it does not share any node (=connects) (#2555)
                     && !bridge.nodeIds.toSet().containsAny(way.nodeIds)
-                    //, it intersects
+                    // , it intersects
                     && bridgeGeometry != null && bridgeGeometry.intersects(geometry)
             }
         }

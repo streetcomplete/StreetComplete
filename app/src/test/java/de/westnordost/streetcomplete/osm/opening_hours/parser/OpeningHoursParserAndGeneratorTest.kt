@@ -59,7 +59,7 @@ class OpeningHoursParserAndGeneratorTest {
         reject("Mo sunrise-18:00") // event based
         reject("Mo 10:00-16:00/90") // intervals
 
-        //rules overriding earlier rules
+        // rules overriding earlier rules
         reject("Th 17:30-19:30; Th 20:00-22:00")
         reject("Mo-Th 17:30-19:30; Mo-Th 10:00-12:00")
         reject("PH 08:00-20:00; PH 10:00-12:00")
