@@ -52,8 +52,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
         val addressesWithoutStreet = mapData.filter { address ->
             filter.matches(address) &&
-            associatedStreetRelations.none { it.contains(address.type, address.id) }
-            && address.id !in excludedWayNodeIds
+            associatedStreetRelations.none { it.contains(address.type, address.id) } &&
+            address.id !in excludedWayNodeIds
         }
 
         return addressesWithoutStreet

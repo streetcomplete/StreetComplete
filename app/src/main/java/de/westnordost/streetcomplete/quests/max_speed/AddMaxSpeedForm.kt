@@ -60,8 +60,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
-            val couldBeSlowZone = countryInfo.hasSlowZone()
-                    && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
+            val couldBeSlowZone = countryInfo.hasSlowZone() &&
+                    POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
 
             if (couldBeSlowZone)
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }

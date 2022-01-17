@@ -87,13 +87,13 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         if (this === other) return true
         if (other !is MutableMapDataWithGeometry) return false
 
-        return boundingBox == other.boundingBox
-            && nodesById == other.nodesById
-            && waysById == other.waysById
-            && relationsById == other.relationsById
-            && nodeGeometriesById == other.nodeGeometriesById
-            && wayGeometriesById == other.wayGeometriesById
-            && relationGeometriesById == other.relationGeometriesById
+        return boundingBox == other.boundingBox &&
+            nodesById == other.nodesById &&
+            waysById == other.waysById &&
+            relationsById == other.relationsById &&
+            nodeGeometriesById == other.nodeGeometriesById &&
+            wayGeometriesById == other.wayGeometriesById &&
+            relationGeometriesById == other.relationGeometriesById
     }
 
     override fun hashCode(): Int {

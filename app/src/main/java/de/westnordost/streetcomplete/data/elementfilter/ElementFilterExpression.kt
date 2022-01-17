@@ -19,9 +19,9 @@ class ElementFilterExpression(
 
     /** returns whether the given element is found through (=matches) this expression */
     fun matches(element: Element): Boolean =
-        includesElementType(element.type)
-        && (element.tags.isNotEmpty() || mayEvaluateToTrueWithNoTags)
-        && (elementExprRoot?.matches(element) ?: true)
+        includesElementType(element.type) &&
+        (element.tags.isNotEmpty() || mayEvaluateToTrueWithNoTags) &&
+        (elementExprRoot?.matches(element) ?: true)
 
     fun includesElementType(elementType: ElementType): Boolean = when (elementType) {
         ElementType.NODE -> elementsTypes.contains(NODES)

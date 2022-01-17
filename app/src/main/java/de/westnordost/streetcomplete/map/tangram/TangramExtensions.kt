@@ -50,11 +50,11 @@ fun KtMapController.screenAreaContains(g: ElementGeometry, offset: RectF): Boole
         is ElementPolygonsGeometry -> g.polygons
         else -> listOf(listOf(g.center))
     }.flatten().all {
-        latLonToScreenPosition(it, p, false)
-            && p.x >= offset.left
-            && p.x <= mapView.width - offset.right
-            && p.y >= offset.top
-            && p.y <= mapView.height - offset.bottom
+        latLonToScreenPosition(it, p, false) &&
+            p.x >= offset.left &&
+            p.x <= mapView.width - offset.right &&
+            p.y >= offset.top &&
+            p.y <= mapView.height - offset.bottom
     }
 }
 

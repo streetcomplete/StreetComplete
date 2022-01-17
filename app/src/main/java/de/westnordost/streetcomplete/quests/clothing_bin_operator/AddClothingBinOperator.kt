@@ -35,10 +35,10 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
 
     private fun Map<String, String>.hasNoOtherRecyclingTags(): Boolean =
         entries.none { (key, value) ->
-            key.startsWith("recycling:")
-            && key != "recycling:shoes"
-            && key != "recycling:clothes"
-            && value == "yes"
+            key.startsWith("recycling:") &&
+            key != "recycling:shoes" &&
+            key != "recycling:clothes" &&
+            value == "yes"
         }
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_clothes_container_operator_title

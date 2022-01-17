@@ -287,8 +287,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
                 }
             }
 
-            isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
-                || (if (isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
+            isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane() ||
+                (if (isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
         }
 
         val answer = CyclewayAnswer(

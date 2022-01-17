@@ -44,8 +44,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
          *          ...that do not have an address node on their outline */
 
         val buildings = mapData.filter {
-            buildingsWithMissingAddressFilter.matches(it)
-            && !it.containsAnyNode(addressNodeIds, mapData)
+            buildingsWithMissingAddressFilter.matches(it) &&
+            !it.containsAnyNode(addressNodeIds, mapData)
         }.toMutableList()
 
         if (buildings.isEmpty()) return listOf()

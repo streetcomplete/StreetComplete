@@ -233,8 +233,8 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
         val isDeletePoiEnabled =
-            (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
-                && osmElement?.type == ElementType.NODE
+            (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true &&
+                osmElement?.type == ElementType.NODE
         val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
         if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
         check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {

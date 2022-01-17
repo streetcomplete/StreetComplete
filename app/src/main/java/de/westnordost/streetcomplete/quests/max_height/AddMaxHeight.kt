@@ -103,11 +103,11 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
                 val bridgeLayer = bridge.tags["layer"]?.toIntOrNull() ?: 0
 
                 // , that is in a layer above this way
-                bridgeLayer > layer
+                bridgeLayer > layer &&
                     // and with which it does not share any node (=connects) (#2555)
-                    && !bridge.nodeIds.toSet().containsAny(way.nodeIds)
+                    !bridge.nodeIds.toSet().containsAny(way.nodeIds) &&
                     // , it intersects
-                    && bridgeGeometry != null && bridgeGeometry.intersects(geometry)
+                    bridgeGeometry != null && bridgeGeometry.intersects(geometry)
             }
         }
 

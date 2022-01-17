@@ -98,8 +98,8 @@ class CheckExistence(
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) =
-        (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
-        && hasAnyName(element.tags)
+        (nodesFilter.matches(element) || nodesWaysFilter.matches(element)) &&
+        hasAnyName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
