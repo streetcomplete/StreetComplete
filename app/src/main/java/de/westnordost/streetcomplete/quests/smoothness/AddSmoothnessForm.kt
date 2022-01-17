@@ -47,7 +47,7 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
         val context = requireContext()
         val description = context.getString(R.string.quest_smoothness_hint)
         val stringBuilder = SpannableStringBuilder(description)
-        stringBuilder.replaceEmojiWithImageSpan(context, "🚲", R.drawable.ic_smoothness_bike)
+        stringBuilder.replaceEmojiWithImageSpan(context, "🚲", R.drawable.ic_smoothness_city_bike)
         stringBuilder.replaceEmojiWithImageSpan(context, "🚗", R.drawable.ic_smoothness_car)
         stringBuilder.replaceEmojiWithImageSpan(context, "🚙", R.drawable.ic_smoothness_suv)
 
