@@ -107,7 +107,6 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
         val lat = matchResult.groupValues[2].toDoubleOrNull() ?: return null
         return Row(value, lon, lat)
     }
-
 }
 
 private data class Row(val value: String, val lon: Double, val lat: Double)

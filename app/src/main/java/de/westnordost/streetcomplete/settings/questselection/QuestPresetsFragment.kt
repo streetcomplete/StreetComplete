@@ -54,7 +54,6 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
-
     }
 }
 

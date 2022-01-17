@@ -73,7 +73,6 @@ class CircularFlagView @JvmOverloads constructor(
         canvas.clipPath(clipPath)
         d.setBounds(offset.left, offset.top, width - offset.right, height - offset.bottom)
         d.draw(canvas)
-
     }
 
     private fun updateCountryCode(countryCode: String?) {

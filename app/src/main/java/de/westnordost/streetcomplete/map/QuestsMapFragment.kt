@@ -195,7 +195,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             geometryMapComponent?.endFocusGeometry()
         }
         centerCurrentPositionIfFollowing()
-
     }
 
     /* -------------------------------  Markers for current quest ------------------------------- */

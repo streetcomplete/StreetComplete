@@ -16,7 +16,6 @@ data class BoundingBox(val min: LatLon, val max: LatLon) {
     }
 
     val crosses180thMeridian get() = min.longitude > max.longitude
-
 }
 
 /** @return two new bounds split alongside the 180th meridian or, if these bounds do not cross

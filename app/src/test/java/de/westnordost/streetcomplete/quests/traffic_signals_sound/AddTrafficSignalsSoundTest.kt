@@ -32,5 +32,4 @@ class AddTrafficSignalsSoundTest {
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
-
 }

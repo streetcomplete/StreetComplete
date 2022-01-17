@@ -21,7 +21,6 @@ android {
 
     signingConfigs {
         create("release") {
-
         }
     }
 

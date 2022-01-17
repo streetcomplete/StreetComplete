@@ -52,6 +52,5 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
                 changes.addOrModify("material", "stone")
             }
         }
-
     }
 }

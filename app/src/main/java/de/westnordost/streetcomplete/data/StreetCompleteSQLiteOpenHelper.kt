@@ -125,7 +125,6 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
            db.execSQL("DROP TABLE new_achievements")
         }
     }
-
 }
 
 private const val DB_VERSION = 4

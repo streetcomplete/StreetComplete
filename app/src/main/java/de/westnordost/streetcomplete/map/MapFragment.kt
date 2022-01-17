@@ -386,5 +386,4 @@ open class MapFragment : Fragment(),
         private const val PREF_LAT = "map_lat"
         private const val PREF_LON = "map_lon"
     }
-
 }

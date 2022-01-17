@@ -274,5 +274,4 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryDelete("recycling:another_thing", "no")
         )
     }
-
 }

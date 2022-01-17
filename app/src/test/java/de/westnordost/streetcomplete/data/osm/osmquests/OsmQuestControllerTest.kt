@@ -274,7 +274,6 @@ class OsmQuestControllerTest {
             addedQuests = eq(expectedCreatedQuests),
             deletedQuestKeys = eq(expectedDeletedQuestKeys)
         )
-
     }
 
     @Test fun `updates quests on map data listener replace for bbox`() {

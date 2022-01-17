@@ -54,7 +54,6 @@ class ElementEditsUploader @Inject constructor(
             } else {
                 statisticsController.addOne(edit.questType, edit.position)
             }
-
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(questTypeName, edit.position)

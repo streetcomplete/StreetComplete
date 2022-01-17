@@ -18,5 +18,4 @@ object MonthsPickerDialog {
             .setPositiveButton(android.R.string.ok) { _, _ -> callback(Months(selection)) }
             .show()
     }
-
 }

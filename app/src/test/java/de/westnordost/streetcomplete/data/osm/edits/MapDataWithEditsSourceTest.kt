@@ -1093,5 +1093,4 @@ class MapDataWithEditsSourceTest {
         on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
         editsListener.onDeletedEdits(listOf(edit(element = element)))
     }
-
 }

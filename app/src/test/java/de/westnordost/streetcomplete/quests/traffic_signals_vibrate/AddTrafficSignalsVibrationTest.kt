@@ -32,5 +32,4 @@ class AddTrafficSignalsVibrationTest {
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
-
 }

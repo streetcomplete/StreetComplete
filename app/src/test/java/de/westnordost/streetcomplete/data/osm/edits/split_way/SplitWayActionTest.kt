@@ -662,5 +662,4 @@ class SplitWayActionTest {
             }
         )
     }
-
 }

@@ -106,5 +106,4 @@ class NoteDao @Inject constructor(private val db: Database) {
         ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
         ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
     """.trimIndent()
-
 }

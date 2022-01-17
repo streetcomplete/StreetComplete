@@ -181,5 +181,4 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
-
 }

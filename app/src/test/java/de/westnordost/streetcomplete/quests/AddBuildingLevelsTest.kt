@@ -57,5 +57,4 @@ class AddBuildingLevelsTest {
         ))
         Assert.assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
-
 }
