@@ -169,7 +169,10 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
     /** Just add a sidewalk if we implicitly know from the answer that there is one */
     private fun applySidewalkAnswerTo(
-        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, changes: StringMapChangesBuilder) {
+        cyclewayLeft: Cycleway?,
+        cyclewayRight: Cycleway?,
+        changes: StringMapChangesBuilder
+    ) {
 
         /* only tag if we know the sidewalk value for both sides (because it is not possible in
            OSM to specify the sidewalk value only for one side. sidewalk:right/left=yes is not
@@ -183,8 +186,12 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         LEFT("left"), RIGHT("right"), BOTH("both")
     }
 
-    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int,
-                                      changes: StringMapChangesBuilder) {
+    private fun applyCyclewayAnswerTo(
+        cycleway: Cycleway,
+        side: Side,
+        dir: Int,
+        changes: StringMapChangesBuilder
+    ) {
         val directionValue = when {
             dir > 0 -> "yes"
             dir < 0 -> "-1"

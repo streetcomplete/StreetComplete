@@ -87,7 +87,8 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
 
     /* -------------------------------------- Interaction --------------------------------------- */
 
-    private inner class AchievementsAdapter(achievements: List<Pair<Achievement, Int>>
+    private inner class AchievementsAdapter(
+        achievements: List<Pair<Achievement, Int>>
     ) : ListAdapter<Pair<Achievement, Int>>(achievements) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

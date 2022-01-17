@@ -28,9 +28,13 @@ data class SplitWayAtIndex(override val pos: LatLon, public override val index: 
     override val delta get() = 0.0
 }
 
-data class SplitWayAtLinePosition(val pos1: LatLon, val index1: Int,
-                                  val pos2: LatLon, val index2: Int,
-                                  public override val delta: Double) : SplitWayAt() {
+data class SplitWayAtLinePosition(
+    val pos1: LatLon,
+    val index1: Int,
+    val pos2: LatLon,
+    val index2: Int,
+    public override val delta: Double
+) : SplitWayAt() {
     override val index get() = index1
     override val pos: LatLon
         get() {

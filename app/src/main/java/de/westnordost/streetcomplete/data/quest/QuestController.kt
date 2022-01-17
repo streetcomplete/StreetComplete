@@ -184,7 +184,8 @@ import kotlin.collections.ArrayList
 
     private suspend fun solveOsmQuest(
         q: OsmQuest,
-        answer: Any, source: String
+        answer: Any,
+        source: String
     ): Boolean = withContext(Dispatchers.IO) {
         /* When OSM data is being updated (e.g. during download), first that data is persisted to
          *  the database and after that, the quests are updated on the new data.

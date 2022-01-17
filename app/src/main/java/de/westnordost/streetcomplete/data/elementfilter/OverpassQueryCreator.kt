@@ -8,7 +8,8 @@ import java.util.EnumSet
 /** Create an overpass query from the given element filter expression */
 class OverpassQueryCreator(
     elementTypes: EnumSet<ElementsTypeFilter>,
-    private val expr: BooleanExpression<ElementFilter, Element>?) {
+    private val expr: BooleanExpression<ElementFilter, Element>?
+) {
     private val elementTypes = elementTypes.toOqlNames()
     private var setIdCounter: Int = 1
     private val dataSets: MutableMap<BooleanExpression<ElementFilter, Element>, Int> = mutableMapOf()

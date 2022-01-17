@@ -59,7 +59,7 @@ data class RelationMember(
     val type: ElementType,
     val ref: Long,
     val role: String
-    )
+)
 
 enum class ElementType { NODE, WAY, RELATION }
 

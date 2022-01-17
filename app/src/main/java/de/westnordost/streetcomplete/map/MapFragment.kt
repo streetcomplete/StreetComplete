@@ -359,7 +359,8 @@ open class MapFragment : Fragment(),
     fun updateCameraPosition(
         duration: Long = 0,
         interpolator: Interpolator = defaultCameraInterpolator,
-        builder: CameraUpdate.() -> Unit) {
+        builder: CameraUpdate.() -> Unit
+    ) {
 
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
