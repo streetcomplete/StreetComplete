@@ -37,15 +37,15 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 - install necessary software (Android Studio and git)
 - clone StreetComplete repository
 - open StreetComplete in Android Studio
-- [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also connect to real device via usb, this will not be later mentioned but can fully replace emulator)
+- [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also connect to a real device via usb, this will not be later mentioned but can fully replace emulator)
 - run StreetComple in emulator - to verify that everything was setup as required
 
-if you are doing it for the first time do not worry if there is some error to solve along way. This is typical for setting up Android development. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to info about the setup.
+if you are doing it for the first time do not worry if there is some error to solve along the way. This is typical for setting up Android development. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to info about the setup.
 
 # Invent a new quest
 
 ## Own ideas
-To [repeat](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](#suggesting-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
+To [repeat](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](#suggesting-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
 
 ## Existing proposals
 You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
@@ -55,9 +55,9 @@ You can also look at [quest proposals waiting for implementation](https://github
 ## Find a base
 Base the new quest on one that exists already.
 
-Find one that hasthe same type of interface to the one that you are trying to implement.
+Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be yes/no question. `AddTracktype` where mapper will be selecting one of images.
+Are you trying to implement a quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be a yes/no question. `AddTracktype` where the mapper will be selecting one of the images.
 
 Is it going to be asked for POIs and be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
@@ -66,7 +66,7 @@ Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetc
 
 ### Locating quest
 
-Search across code for part of question or other text characteristic to this message. For example "What is the name of this place"
+Search across code for part of a question or other text characteristic to this message. For example "What is the name of this place"
 
 You will find an XML file with entry looking like this:
 
@@ -80,19 +80,19 @@ This method can be often used to locate relevant code.
 
 ## Pull requests
 
-One of better ways to get around a codebase new to you is to look at recent accepted proposals to change code (pull requests).
+One of the better ways to get around a codebase new to you is to look at recent accepted proposals to change code (pull requests).
 
 This is likely useful also here.
 
-Find some [recent one](https://github.com/streetcomplete/StreetComplete/pulls?q=is%3Apr+is%3Aclosed) adding a quest.
+Find some [recent ones](https://github.com/streetcomplete/StreetComplete/pulls?q=is%3Apr+is%3Aclosed) adding a quest.
 
-You can look at what was changed to achieve the goal, where relevant code is located. How much coding was need to impotent something. And what kind of comments are typical, how long one needs to wait for mainteners and so on.
+You can look at what was changed to achieve the goal, where relevant code is located. How much coding was needed to implement something. And what kind of comments are typical, how long one needs to wait for maintainers and so on.
 
 This can be also used to locate relevant code, especially helpful if some change needs to be done in multiple files.
 
 # Copying
 
-Copy relevant quest folder. Some contain multiple quests, in such case case copy only what you need.
+Copy relevant quest folder. Some contain multiple quests, in such case copy only what you need.
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
@@ -108,7 +108,7 @@ In copied code change package info (things like `package de.westnordost.streetco
 
 Adjust [QuestModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt#L138-L162) but do not worry too much, it can be later tweaked.
 
-Add your own quest to the list so that it will be loaded by the app.
+Add your quest to the list so that it will be loaded by the app.
 
 ## Quest anatomy
 See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
@@ -117,7 +117,7 @@ See for example [simple yes/no quest asking whether AED is indoor or outdoor](ap
 TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt) would be better? And extend documentation there?
 
 ### Element selection
-elementFilter property defines nodes, way, relations which will be selected for a given quest. It is a element selection used by OsmFilterQuestType.
+elementFilter property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
 
 ```
 """
@@ -134,10 +134,10 @@ This query will be limited to nodes (`nodes with`), which fulfil some requiremen
 - `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific optionA|optionB is treated like `^optionA|optionB$` regexp)
 - `indoor` key must not be present at all, to show only ones where this tag is still missing
 
-It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request a more thorough documentation here.
+It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request more thorough documentation here.
 
 #### Hints
-The rules should be as exclusive as possible to generate as few false-positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
+The rules should be as exclusive as possible to generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
 Also, for very detailed information that can be assumed to always have the same ("undefined") answer in many countries, it might be a good idea to limit quests to an inclusive list of certain countries.
 
@@ -150,7 +150,7 @@ message used as a changeset comment
 #### wikiLink
 `override val wikiLink = "Key:indoor"`
 
-points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case it is page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
+points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
 #### icon
 `override val icon = R.drawable.ic_quest_defibrillator` 
