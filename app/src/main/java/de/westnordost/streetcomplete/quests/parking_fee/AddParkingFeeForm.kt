@@ -25,7 +25,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
     private val binding by contentViewBinding(QuestFeeHoursBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if(!isDefiningHours) listOf(
+        if (!isDefiningHours) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(HasNoFee) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(HasFee) }
         )
@@ -94,7 +94,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
 
     override fun onClickOk() {
         val times = openingHoursAdapter.createOpeningHours()
-        applyAnswer(if(isFeeOnlyAtHours) HasFeeAtHours(times) else HasFeeExceptAtHours(times))
+        applyAnswer(if (isFeeOnlyAtHours) HasFeeAtHours(times) else HasFeeExceptAtHours(times))
     }
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningHoursRow> =

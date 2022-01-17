@@ -29,7 +29,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if(isDisplayingPreviousOpeningHours) listOf(
+        if (isDisplayingPreviousOpeningHours) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) {
                 applyAnswer(RegularOpeningHours(osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!))
@@ -90,7 +90,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
             if (addOffDayAvailable) popup.menu.add(NONE, 2, NONE, R.string.quest_openingHours_add_off_days)
             if (addMonthAvailable) popup.menu.add(NONE, 3, NONE, R.string.quest_openingHours_add_months)
             popup.setOnMenuItemClickListener { item ->
-                when(item.itemId) {
+                when (item.itemId) {
                     0 -> openingHoursAdapter.addNewHours()
                     1 -> openingHoursAdapter.addNewWeekdays()
                     2 -> openingHoursAdapter.addNewOffDays()

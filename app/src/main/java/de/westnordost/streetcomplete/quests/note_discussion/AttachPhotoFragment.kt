@@ -137,7 +137,7 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
         val directory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
         val file = File(directory, imageFileName)
-        if(!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
+        if (!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
         return file
     }
 

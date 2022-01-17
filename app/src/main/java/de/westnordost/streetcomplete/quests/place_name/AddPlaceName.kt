@@ -121,7 +121,7 @@ class AddPlaceName(
     override fun createForm() = AddPlaceNameForm()
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoPlaceNameSign -> {
                 tags["name:signed"] = "no"
             }

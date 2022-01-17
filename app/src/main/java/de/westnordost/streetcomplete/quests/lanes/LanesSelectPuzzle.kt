@@ -234,7 +234,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 6, lineWidth * 10), 0f)
 
         edgeLinePaint.strokeWidth = lineWidth
-        edgeLinePaint.pathEffect = when(edgeLineStyle) {
+        edgeLinePaint.pathEffect = when (edgeLineStyle) {
             CONTINUOUS -> null
             DASHES -> dashEffect
             SHORT_DASHES -> DashPathEffect(floatArrayOf(lineWidth * 4, lineWidth * 4), 0f)
@@ -347,13 +347,13 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val zoom = max(3, lanesSpace)
         val delta = ratio * deltaTime/1000f / zoom
 
-        for(car in carsOnLanesLeft) {
+        for (car in carsOnLanesLeft) {
             car.position += delta * car.speed
             if (car.isOutOfBounds) {
                 car.reset(!isForwardTraffic, carBitmaps)
             }
         }
-        for(car in carsOnLanesRight) {
+        for (car in carsOnLanesRight) {
             car.position += delta * car.speed
             if (car.isOutOfBounds) {
                 if (isShowingBothSides && isShowingOneLaneUnmarked) {

@@ -84,7 +84,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
             val width = min(bottom - top, right - left)
             val height = max(bottom - top, right - left)
             val params = binding.rotateContainer.layoutParams
-            if(width != params.width || height != params.height) {
+            if (width != params.width || height != params.height) {
                 params.width = width
                 params.height = height
                 binding.rotateContainer.layoutParams = params

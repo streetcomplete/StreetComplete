@@ -123,8 +123,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I, T> : AbstractQuestFormAns
                         }
                         .show()
                 }
-            }
-            else {
+            } else {
                 favs.add(item)
                 onClickOk(itemValue)
             }

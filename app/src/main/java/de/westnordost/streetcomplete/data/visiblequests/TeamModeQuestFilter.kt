@@ -36,7 +36,7 @@ import javax.inject.Singleton
         quest is OsmQuest && createdElementsSource.contains(quest.elementType, quest.elementId) ||
         quest.stableId % teamSize == indexInTeam.toLong()
 
-    private val Quest.stableId: Long get() = when(this) {
+    private val Quest.stableId: Long get() = when (this) {
         is OsmQuest -> elementId
         is OsmNoteQuest -> id
         else -> 0

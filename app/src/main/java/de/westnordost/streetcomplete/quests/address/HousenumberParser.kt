@@ -60,7 +60,7 @@ data class HouseNumbers(val list: List<HouseNumbersPart>) {
 /** -------------------------------------- HouseNumbersPart ------------------------------------- */
 
 sealed class HouseNumbersPart : Comparable<HouseNumbersPart> {
-    override fun compareTo(other: HouseNumbersPart): Int = when(this) {
+    override fun compareTo(other: HouseNumbersPart): Int = when (this) {
         is SingleHouseNumbersPart -> when (other) {
             // e.g. 12c < 15
             is SingleHouseNumbersPart -> sign(

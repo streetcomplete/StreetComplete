@@ -48,7 +48,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
         getMapData().filter { it.isCrossing() }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if(element !is Node || element.tags.isNotEmpty()) false else null
+        if (element !is Node || element.tags.isNotEmpty()) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val barrierWays = mapData.ways.asSequence()

@@ -49,7 +49,7 @@ class NotificationsContainerFragment : Fragment(R.layout.fragment_notifications_
     }
 
     override fun onBackPressed(): Boolean {
-        for(f in childFragmentManager.fragments) {
+        for (f in childFragmentManager.fragments) {
             if (f is HandlesOnBackPressed) {
                 if (f.onBackPressed()) return true
             }

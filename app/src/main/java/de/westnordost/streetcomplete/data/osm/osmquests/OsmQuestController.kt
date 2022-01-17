@@ -427,7 +427,7 @@ private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
  *  evaluate are evaluated first. This is a performance improvement because the evaluation is done
  *  in parallel on as many threads as there are CPU cores. So if all threads are done except one,
  *  all have to wait for that one thread. So, better enqueue the expensive work at the beginning. */
-private val OsmElementQuestType<*>.chonkerIndex: Int get() = when(this) {
+private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
     is AddOpeningHours -> 0 // OpeningHoursParser, extensive filter
     is AddSuspectedOneway -> 0 // Download, IO TODO
     is CheckExistence -> 1 // FeatureDictionary, extensive filter

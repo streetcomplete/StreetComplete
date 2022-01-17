@@ -130,7 +130,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override fun createForm() = AddMaxHeightForm()
 
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is MaxHeight -> {
                 tags["maxheight"] = answer.value.toString()
             }

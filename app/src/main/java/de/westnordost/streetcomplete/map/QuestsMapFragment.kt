@@ -153,7 +153,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMapComponent?.clearGeometry()
     }
 
-    private fun Edit.getGeometry(): ElementGeometry = when(this) {
+    private fun Edit.getGeometry(): ElementGeometry = when (this) {
         is ElementEdit -> originalGeometry
         is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
         else -> null

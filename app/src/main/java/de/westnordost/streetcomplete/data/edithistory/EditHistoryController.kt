@@ -64,7 +64,7 @@ import javax.inject.Singleton
 
     fun undo(edit: Edit): Boolean {
         if (!edit.isUndoable) return false
-        return when(edit) {
+        return when (edit) {
             is ElementEdit -> elementEditsController.undo(edit)
             is NoteEdit -> noteEditsController.undo(edit)
             is OsmNoteQuestHidden -> noteQuestController.unhide(edit.note.id)
@@ -77,7 +77,7 @@ import javax.inject.Singleton
         elementEditsController.deleteSyncedOlderThan(timestamp) +
         noteEditsController.deleteSyncedOlderThan(timestamp)
 
-    override fun get(key: EditKey): Edit? = when(key) {
+    override fun get(key: EditKey): Edit? = when (key) {
         is ElementEditKey -> elementEditsController.get(key.id)
         is NoteEditKey -> noteEditsController.get(key.id)
         is OsmNoteQuestHiddenKey -> noteQuestController.getHidden(key.osmNoteQuestKey.noteId)

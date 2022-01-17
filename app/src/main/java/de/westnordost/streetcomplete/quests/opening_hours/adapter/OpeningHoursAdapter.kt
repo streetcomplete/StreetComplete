@@ -74,7 +74,7 @@ class RegularOpeningHoursAdapter(
         }
     }
 
-    override fun getItemViewType(position: Int) = when(rows[position]) {
+    override fun getItemViewType(position: Int) = when (rows[position]) {
         is OpeningMonthsRow -> MONTHS
         is OpeningWeekdaysRow -> WEEKDAYS
         is OffDaysRow -> OFFDAYS
@@ -200,7 +200,7 @@ class RegularOpeningHoursAdapter(
 
     private fun getMonthsSuggestion(): Months {
         val mentionedMonths = BooleanArray(Months.MONTHS_COUNT)
-        for(row in rows) {
+        for (row in rows) {
             if (row is OpeningMonthsRow) {
                 row.months.selection.forEachIndexed { index, b ->
                     if (b) mentionedMonths[index] = true

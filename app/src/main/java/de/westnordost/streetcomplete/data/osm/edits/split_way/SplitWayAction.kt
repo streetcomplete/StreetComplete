@@ -56,7 +56,7 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
             throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
         }
 
-        if(updatedWay.isClosed && splits.size < 2)
+        if (updatedWay.isClosed && splits.size < 2)
             throw ConflictException("Must specify at least two split positions for a closed way")
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
@@ -70,7 +70,7 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
         val splitAtIndices = mutableListOf<Int>()
         var insertedNodeCount = 0
         for (split in sortedSplits) {
-            when(split) {
+            when (split) {
                 is SplitWayAtIndex -> {
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
@@ -129,10 +129,9 @@ private fun getSplitWayAtIndices(
     removeTagsThatArePotentiallyWrongAfterSplit(tags)
 
     return nodesChunks.mapIndexed { index, nodes ->
-        if(index == indexOfChunkToKeep) {
+        if (index == indexOfChunkToKeep) {
             Way(originalWay.id, nodes, tags, originalWay.version, currentTimeMillis())
-        }
-        else {
+        } else {
             Way(idProvider.nextWayId(), nodes, tags, 0, currentTimeMillis())
         }
     }

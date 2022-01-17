@@ -98,7 +98,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     override fun onClickOk() {
         val totalLanes = leftSide + rightSide
-        when(selectedLanesType) {
+        when (selectedLanesType) {
             MARKED -> applyAnswer(MarkedLanes(totalLanes))
             UNMARKED -> applyAnswer(UnmarkedLanes)
             MARKED_SIDES -> {
@@ -175,7 +175,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         this.puzzleView = puzzleView
         lifecycle.addObserver(puzzleView)
 
-        when(selectedLanesType) {
+        when (selectedLanesType) {
             MARKED -> {
                 puzzleView.onClickListener = this::selectTotalNumberOfLanes
                 puzzleView.onClickSideListener = null
@@ -193,14 +193,14 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         val edgeLine = countryInfo.edgeLineStyle
 
         puzzleView.edgeLineColor =
-            if(edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
+            if (edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
         puzzleView.edgeLineStyle =
-            if(edgeLine.contains("dashes"))
+            if (edgeLine.contains("dashes"))
                 if (edgeLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
             else
                 LineStyle.CONTINUOUS
 
-        puzzleView.centerLineColor = if(countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
+        puzzleView.centerLineColor = if (countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
 
         streetSideRotater = StreetSideRotater(
             streetLanesPuzzleBinding.puzzleViewRotateContainer,

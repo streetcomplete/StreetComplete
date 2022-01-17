@@ -82,7 +82,7 @@ class TimeRangePickerDialog(
 
         tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
-            tab.text = if(position == 0) startTimeLabel else endTimeLabel
+            tab.text = if (position == 0) startTimeLabel else endTimeLabel
         }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

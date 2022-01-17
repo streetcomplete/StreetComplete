@@ -74,7 +74,7 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
         } else {
             tags.updateWithCheckDate("crossing", answer.osmValue)
             // put previous crossing=island into proper tag
-            if(crossingValue == "island") {
+            if (crossingValue == "island") {
                 tags["crossing:island"] = "yes"
             }
         }

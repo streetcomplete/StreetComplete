@@ -66,7 +66,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             tags.remove("turn:lanes:both_ways")
         }
 
-        when(answer) {
+        when (answer) {
             is MarkedLanes -> {
                 if (answer.count == 1) {
                     tags.remove("lanes:forward")

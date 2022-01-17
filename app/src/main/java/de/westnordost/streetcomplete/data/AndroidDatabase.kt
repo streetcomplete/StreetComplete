@@ -166,7 +166,7 @@ private inline fun <T> Cursor.toSequence(crossinline transform: (CursorPosition)
     val c = AndroidCursorPosition(cursor)
     cursor.moveToFirst()
     val result = ArrayList<T>(cursor.count)
-    while(!cursor.isAfterLast) {
+    while (!cursor.isAfterLast) {
         result.add(transform(c))
         cursor.moveToNext()
     }
@@ -209,7 +209,7 @@ private fun Collection<Pair<String, Any?>>.toContentValues() = ContentValues(siz
     }
 }
 
-private fun ConflictAlgorithm?.toConstant() = when(this) {
+private fun ConflictAlgorithm?.toConstant() = when (this) {
     ROLLBACK -> CONFLICT_ROLLBACK
     ABORT -> CONFLICT_ABORT
     FAIL -> CONFLICT_FAIL
@@ -218,7 +218,7 @@ private fun ConflictAlgorithm?.toConstant() = when(this) {
     null -> CONFLICT_NONE
 }
 
-private fun ConflictAlgorithm?.toSQL() = when(this) {
+private fun ConflictAlgorithm?.toSQL() = when (this) {
     ROLLBACK -> " OR ROLLBACK "
     ABORT -> " OR ABORT "
     FAIL -> " OR FAIL "
@@ -228,7 +228,7 @@ private fun ConflictAlgorithm?.toSQL() = when(this) {
 }
 
 private fun SQLiteStatement.bind(i: Int, value: Any?) {
-    when(value) {
+    when (value) {
         null -> bindNull(i)
         is String -> bindString(i, value)
         is Double -> bindDouble(i, value)

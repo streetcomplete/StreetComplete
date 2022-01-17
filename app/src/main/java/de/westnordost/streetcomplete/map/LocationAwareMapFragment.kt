@@ -263,8 +263,7 @@ private fun <T> List<T?>.unflattenNullTerminated(): ArrayList<ArrayList<T>> {
     for (it in this) {
         if (it != null) {
             current.add(it)
-        }
-        else {
+        } else {
             result.add(current)
             current = ArrayList()
         }

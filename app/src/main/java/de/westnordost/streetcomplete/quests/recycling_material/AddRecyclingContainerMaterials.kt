@@ -57,7 +57,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {
             applyRecyclingMaterialsAnswer(answer.materials, tags)
-        } else if(answer is IsWasteContainer) {
+        } else if (answer is IsWasteContainer) {
             applyWasteContainerAnswer(tags)
         }
     }

@@ -63,7 +63,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                 if (stileWasRebuilt) {
                     STILE_PROPERTIES.forEach { tags.remove(it) }
                 }
-                if(newMaterial != null) {
+                if (newMaterial != null) {
                     tags["material"] = newMaterial
                 }
                 tags["stile"] = newType

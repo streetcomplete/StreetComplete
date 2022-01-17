@@ -22,7 +22,7 @@ fun Resources.getBitmapDrawable(@DrawableRes id: Int): BitmapDrawable =
 fun Resources.getBitmapDrawable(image: Image): BitmapDrawable =
     getDrawable(image).asBitmapDrawable(this)
 
-fun Resources.getDrawable(image: Image): Drawable = when(image) {
+fun Resources.getDrawable(image: Image): Drawable = when (image) {
     is ResImage -> getDrawable(image.resId)
     is DrawableImage -> image.drawable
 }

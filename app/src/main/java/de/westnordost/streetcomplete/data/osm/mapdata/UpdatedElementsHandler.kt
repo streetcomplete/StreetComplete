@@ -64,7 +64,7 @@ class UpdatedElementsHandler {
         for (member in relation.members) {
             val diff = getDiff(member.type, member.ref)
             if (diff == null) newRelationMembers.add(RelationMember(member.type, member.ref, member.role))
-            else if(diff.serverId != null) newRelationMembers.add(RelationMember(member.type, diff.serverId, member.role))
+            else if (diff.serverId != null) newRelationMembers.add(RelationMember(member.type, diff.serverId, member.role))
         }
         return Relation(newId, newRelationMembers, HashMap(relation.tags), newVersion, relation.timestampEdited)
     }

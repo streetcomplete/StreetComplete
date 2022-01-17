@@ -47,7 +47,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
     /* ---------------------------------------- Interface --------------------------------------- */
 
     fun show(countryCode: String, questCount: Int, rank: Int?, countryFlagBubbleView: View) {
-        if(!show(countryFlagBubbleView)) return
+        if (!show(countryFlagBubbleView)) return
         circularRevealAnimator?.cancel()
         val revealAnim = createCircularRevealAnimator()
         revealAnim.start()

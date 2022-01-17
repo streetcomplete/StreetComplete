@@ -141,7 +141,7 @@ data class User(
 /** Convert language tag to how the language is named in English POEditor UI
  *  e.g. en -> English, en-US -> English (US). */
 private fun tagToName(tag: String): String =
-    when(tag) {
+    when (tag) {
         "en-GB" -> "English (UK)"
         "en" -> "English (US)"
         else -> {

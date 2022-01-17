@@ -28,7 +28,7 @@ class PhysicsWorldController(gravity: Vec2) {
             // wake up everyone if the gravity changed
             world.gravity = value
             var bodyIt = world.bodyList
-            while(bodyIt != null) {
+            while (bodyIt != null) {
                 bodyIt.isAwake = true
                 bodyIt = bodyIt.next
             }

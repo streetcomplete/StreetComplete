@@ -253,7 +253,7 @@ class QuestSelectionAdapter (
         private val isEnabledInCurrentCountry: Boolean
             get() {
                 (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    return when(val countries = questType.enabledInCountries) {
+                    return when (val countries = questType.enabledInCountries) {
                         is AllCountries -> true
                         is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
                         is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)

@@ -160,7 +160,7 @@ class AddOpeningHours (
             tags["opening_hours:signed"] = "no"
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
-            val openingHoursString = when(answer) {
+            val openingHoursString = when (answer) {
                 is RegularOpeningHours  -> answer.hours.toString()
                 is AlwaysOpen           -> "24/7"
                 is DescribeOpeningHours -> "\"" + answer.text.replace("\"", "") + "\""

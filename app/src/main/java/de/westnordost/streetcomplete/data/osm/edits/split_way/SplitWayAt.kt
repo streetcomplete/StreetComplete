@@ -51,7 +51,7 @@ fun SplitPolylineAtPosition.toSplitWayAt(positions: List<LatLon>): SplitWayAt {
        self-intersecting. This doesn't make a huge difference anyway as self-intersecting ways are
        very rare and likely an error and splitting such a way only once and not several times at
        the same position does not lead to wrong or corrupted data */
-    return when(this) {
+    return when (this) {
         is SplitAtPoint -> toSplitWays(positions)
         is SplitAtLinePosition -> toSplitWaysAt(positions)
     }.first()

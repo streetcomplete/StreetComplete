@@ -35,7 +35,7 @@ val Element.geometryType: GeometryType get() =
     }
 
 fun Element.isArea(): Boolean {
-    return when(this) {
+    return when (this) {
         is Way -> isClosed && IS_AREA_EXPR.matches(this)
         is Relation -> tags["type"] == "multipolygon"
         else -> false
@@ -93,7 +93,7 @@ fun Iterable<Element>.getSelectableLevels(): List<Double> {
     for (e in this) {
         val levels = e.getLevelsOrNull() ?: continue
         for (level in levels) {
-            when(level) {
+            when (level) {
                 is LevelRange -> allLevels.addAll(level.getSelectableLevels())
                 is SingleLevel -> allLevels.add(level.level)
             }

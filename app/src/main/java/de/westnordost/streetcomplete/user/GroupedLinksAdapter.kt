@@ -35,7 +35,7 @@ class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: Stri
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return when(viewType) {
+        return when (viewType) {
             CATEGORY -> CategoryViewHolder(RowLinkCategoryItemBinding.inflate(inflater, parent, false))
             LINK -> LinkViewHolder(RowLinkItemBinding.inflate(inflater, parent, false))
             else -> throw IllegalStateException("Unexpected viewType $viewType")
@@ -90,7 +90,7 @@ private sealed class Item
 private data class CategoryItem(val category: LinkCategory) : Item()
 private data class LinkItem(val link: Link) : Item()
 
-private val LinkCategory.title: Int get() = when(this) {
+private val LinkCategory.title: Int get() = when (this) {
     LinkCategory.INTRO -> R.string.link_category_intro_title
     LinkCategory.EDITORS -> R.string.link_category_editors_title
     LinkCategory.MAPS -> R.string.link_category_maps_title
@@ -98,7 +98,7 @@ private val LinkCategory.title: Int get() = when(this) {
     LinkCategory.GOODIES -> R.string.link_category_goodies_title
 }
 
-private val LinkCategory.description: Int? get() = when(this) {
+private val LinkCategory.description: Int? get() = when (this) {
     LinkCategory.INTRO -> R.string.link_category_intro_description
     LinkCategory.EDITORS -> R.string.link_category_editors_description
     LinkCategory.SHOWCASE -> R.string.link_category_showcase_description

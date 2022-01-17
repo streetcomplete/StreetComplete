@@ -48,7 +48,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         mainHandler.post {
             if (field == null) {
                 listener?.onAnimationsStarted()
-            } else if(value == null) {
+            } else if (value == null) {
                 listener?.onAnimationsEnded()
             }
         }
@@ -102,10 +102,10 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
 
     @AnyThread private fun cancelCameraAnimations(update: CameraUpdate) {
-        if(update.rotation != null) cancelAnimation("rotation")
-        if(update.tilt != null) cancelAnimation("tilt")
-        if(update.zoom != null) cancelAnimation("zoom")
-        if(update.position != null) cancelAnimation("position")
+        if (update.rotation != null) cancelAnimation("rotation")
+        if (update.tilt != null) cancelAnimation("tilt")
+        if (update.zoom != null) cancelAnimation("zoom")
+        if (update.position != null) cancelAnimation("position")
     }
 
     private fun applyCameraUpdate(update: CameraUpdate) {

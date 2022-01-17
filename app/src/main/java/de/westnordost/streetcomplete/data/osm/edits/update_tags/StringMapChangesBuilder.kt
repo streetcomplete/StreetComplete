@@ -31,7 +31,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) : Map<Str
 
     override operator fun get(key: String): String? =
         if (changes.containsKey(key)) {
-            when(val change = changes.getValue(key)) {
+            when (val change = changes.getValue(key)) {
                 is StringMapEntryAdd -> change.value
                 is StringMapEntryModify -> change.value
                 is StringMapEntryDelete -> null

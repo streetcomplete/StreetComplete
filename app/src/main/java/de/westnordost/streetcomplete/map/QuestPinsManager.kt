@@ -230,7 +230,7 @@ private const val MARKER_NOTE_ID = "note_id"
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 
-private fun QuestKey.toProperties(): Map<String, String> = when(this) {
+private fun QuestKey.toProperties(): Map<String, String> = when (this) {
     is OsmNoteQuestKey -> mapOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_NOTE_ID to noteId.toString()
@@ -243,7 +243,7 @@ private fun QuestKey.toProperties(): Map<String, String> = when(this) {
     )
 }
 
-private fun Map<String, String>.toQuestKey(): QuestKey? = when(get(MARKER_QUEST_GROUP)) {
+private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST_GROUP)) {
     QUEST_GROUP_OSM_NOTE ->
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
     QUEST_GROUP_OSM ->

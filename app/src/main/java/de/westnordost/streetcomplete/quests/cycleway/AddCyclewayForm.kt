@@ -30,7 +30,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if(isDisplayingPreviousCycleway) listOf(
+        if (isDisplayingPreviousCycleway) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
         )
@@ -288,7 +288,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             }
 
             isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
-                || (if(isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
+                || (if (isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
         }
 
         val answer = CyclewayAnswer(

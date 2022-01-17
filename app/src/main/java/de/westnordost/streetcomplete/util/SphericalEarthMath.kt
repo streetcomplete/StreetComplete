@@ -511,7 +511,7 @@ private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
     canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
 ): Boolean {
-    return if(crosses180thMeridian) {
+    return if (crosses180thMeridian) {
         val these = splitAt180thMeridian()
         if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()

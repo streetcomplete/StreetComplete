@@ -60,7 +60,7 @@ class MapDataWithEditsSourceTest {
         on(mapDataCtrl.get(any(), anyLong())).thenAnswer { invocation ->
             val elementType = invocation.getArgument<ElementType>(0)!!
             val elementId = invocation.getArgument<Long>(1)
-            when(elementType) {
+            when (elementType) {
                 NODE -> mapData.getNode(elementId)
                 WAY -> mapData.getWay(elementId)
                 RELATION -> mapData.getRelation(elementId)
@@ -86,7 +86,7 @@ class MapDataWithEditsSourceTest {
         }
         on(mapDataCtrl.getAll(any())).thenAnswer { invocation ->
             invocation.getArgument<Collection<ElementKey>>(0).mapNotNull {
-                when(it.type) {
+                when (it.type) {
                     NODE -> mapData.getNode(it.id)
                     WAY -> mapData.getWay(it.id)
                     RELATION -> mapData.getRelation(it.id)
@@ -112,7 +112,7 @@ class MapDataWithEditsSourceTest {
         on(mapDataCtrl.getGeometry(any(), anyLong())).thenAnswer { invocation ->
             val elementType = invocation.getArgument<ElementType>(0)!!
             val elementId = invocation.getArgument<Long>(1)
-            when(elementType) {
+            when (elementType) {
                 NODE -> mapData.getNodeGeometry(elementId)
                 WAY -> mapData.getWayGeometry(elementId)
                 RELATION -> mapData.getRelationGeometry(elementId)
@@ -121,7 +121,7 @@ class MapDataWithEditsSourceTest {
         on(mapDataCtrl.getGeometries(any())).thenAnswer { invocation ->
             val keys = invocation.getArgument<Collection<ElementKey>>(0)!!
             keys.mapNotNull { key ->
-                when(key.type) {
+                when (key.type) {
                     NODE -> mapData.getNodeGeometry(key.id)
                     WAY -> mapData.getWayGeometry(key.id)
                     RELATION -> mapData.getRelationGeometry(key.id)
@@ -138,7 +138,7 @@ class MapDataWithEditsSourceTest {
             val bbox = invocation.getArgument<BoundingBox>(0)
             val result = MutableMapDataWithGeometry()
             for (element in mapData) {
-                val geometry = when(element.type) {
+                val geometry = when (element.type) {
                     NODE -> mapData.getNodeGeometry(element.id)
                     WAY -> mapData.getWayGeometry(element.id)
                     RELATION -> mapData.getRelationGeometry(element.id)

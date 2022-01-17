@@ -132,7 +132,7 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
     override fun createForm() = AddHousenumberForm()
 
     override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoHouseNumber -> tags["nohousenumber"] = "yes"
             is HouseNumber   -> tags["addr:housenumber"] = answer.number
             is HouseName     -> tags["addr:housename"] = answer.name

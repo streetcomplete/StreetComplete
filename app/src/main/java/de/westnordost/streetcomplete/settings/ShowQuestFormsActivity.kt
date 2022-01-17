@@ -125,7 +125,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
 
         val f = questType.createForm()
         val args = AbstractQuestAnswerFragment.createArguments(quest, element, 0f, 0f)
-        if(f.arguments != null) {
+        if (f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
             f.arguments = args

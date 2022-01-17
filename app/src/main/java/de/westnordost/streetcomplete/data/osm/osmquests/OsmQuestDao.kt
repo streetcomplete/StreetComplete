@@ -71,7 +71,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
     fun deleteAll(keys: Collection<OsmQuestKey>) {
         if (keys.isEmpty()) return
         db.transaction {
-            for(key in keys) {
+            for (key in keys) {
                 delete(key)
             }
         }
