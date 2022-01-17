@@ -35,7 +35,7 @@ enum class Cycleway {
     SIDEWALK_EXPLICIT,
     // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
-    //SIDEWALK_OK,
+    // SIDEWALK_OK,
 
     // no cycleway
     NONE,

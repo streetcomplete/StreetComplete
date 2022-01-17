@@ -332,7 +332,7 @@ import javax.inject.Singleton
         AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
 
         // toilets
-        AddToiletAvailability(), //OSM Carto, shown in OsmAnd descriptions
+        AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
         AddToiletsFee(), // used by OsmAnd in the object description
         AddBabyChangingTable(), // used by OsmAnd in the object description
         AddWheelchairAccessToiletsPart(),

@@ -35,7 +35,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         // Europe
         "AT", "DE", "CZ", "ES", "IT", "FR", "GR", "SI", "CH", "RO", "SK",
 
-        //Americas
+        // Americas
         "US", "AR", "PE"
     )
 

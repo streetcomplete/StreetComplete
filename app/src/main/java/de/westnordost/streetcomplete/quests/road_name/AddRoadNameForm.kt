@@ -148,6 +148,6 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 // m
     }
 }

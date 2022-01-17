@@ -109,8 +109,8 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
         val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
 
         // for testing quests requiring nodes code above can be commented out and this uncommented
-        //val element = Node(1, firstPos, tags, 1)
-        //val elementGeometry = ElementPointGeometry(firstPos)
+        // val element = Node(1, firstPos, tags, 1)
+        // val elementGeometry = ElementPointGeometry(firstPos)
 
         val quest = object : Quest {
             override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
