@@ -748,6 +748,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be quite the stretch just to solve a single quest.</string>
+    <string name="default_disabled_msg_surface_quality">This quest type is disabled by default because it is quite time-consuming and often difficult to make the right choice. You should only enable this quest type if you are really into surface quality mapping.</string>
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
 
@@ -1119,9 +1120,9 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_smoothness_description_very_bad_paving_stones">Missing and broken stones, gaps or other dangerous damage</string>
     <string name="quest_smoothness_description_very_bad_compacted_gravel">Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damage</string>
 
-    <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles</string>
-    <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles</string>
-    <string name="quest_smoothness_description_impassable">Only passable on foot</string>
+    <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles or on foot</string>
+    <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles or on foot</string>
+    <string name="quest_smoothness_description_impassable">Unfit for any vehicle, only passable on foot</string>
 
     <string name="quest_smoothness_wrong_surface">Surface is different</string>
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>

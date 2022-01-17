@@ -1,9 +1,19 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
+import android.content.Context
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
+import android.view.View
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
+import de.westnordost.streetcomplete.ktx.asImageSpan
+import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.Surface
@@ -12,10 +22,11 @@ import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAnswer>() {
 
-    override val descriptionResId = R.string.quest_smoothness_hint
+    private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
-    override val otherAnswers = listOf(
+    override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
+        createConvertToStepsAnswer(),
         AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
@@ -28,6 +39,20 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_smoothness
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val context = requireContext()
+        val description = context.getString(R.string.quest_smoothness_hint)
+        val stringBuilder = SpannableStringBuilder(description)
+        stringBuilder.replaceEmojiWithImageSpan(context, "🚲", R.drawable.ic_smoothness_bike)
+        stringBuilder.replaceEmojiWithImageSpan(context, "🚗", R.drawable.ic_smoothness_car)
+        stringBuilder.replaceEmojiWithImageSpan(context, "🚙", R.drawable.ic_smoothness_suv)
+
+        binding.descriptionLabel.isGone = false
+        binding.descriptionLabel.text = stringBuilder
     }
 
     override val moveFavoritesToFront = false
@@ -61,4 +86,30 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
             .show()
     }
 
+    private fun createConvertToStepsAnswer(): AnswerItem? {
+        val way = osmElement as? Way ?: return null
+        if (way.isArea()) return null
+
+        // only in AddPathSmoothness quest
+        if (!ALL_PATHS_EXCEPT_STEPS.contains(way.tags["highway"])) return null
+
+        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
+            applyAnswer(IsActuallyStepsAnswer)
+        }
+    }
+}
+
+private fun SpannableStringBuilder.replaceEmojiWithImageSpan(
+    context: Context,
+    emoji: String,
+    @DrawableRes drawableResId: Int
+) {
+    val iconDrawable = context.getDrawable(drawableResId) ?: return
+    val index = this.indexOf(emoji)
+    this.setSpan(
+        iconDrawable.asImageSpan(36, 36),
+        index,
+        index + emoji.length,
+        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+    )
 }

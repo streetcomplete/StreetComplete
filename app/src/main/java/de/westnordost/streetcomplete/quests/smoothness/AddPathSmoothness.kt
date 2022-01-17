@@ -32,6 +32,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val icon = R.drawable.ic_quest_way_surface_detail
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(WHEELCHAIR, BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_surface_quality
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
@@ -56,6 +57,12 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
             }
             is WrongSurfaceAnswer -> {
                 changes.delete("surface")
+                changes.deleteIfExists("smoothness")
+                changes.deleteIfExists("smoothness:date")
+                changes.deleteCheckDatesForKey("smoothness")
+            }
+            is IsActuallyStepsAnswer -> {
+                changes.modify("highway", "steps")
                 changes.deleteIfExists("smoothness")
                 changes.deleteIfExists("smoothness:date")
                 changes.deleteCheckDatesForKey("smoothness")

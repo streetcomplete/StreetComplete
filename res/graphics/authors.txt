@@ -319,7 +319,7 @@ quest pin/
     quest_pin_pointer.svg
 
 railway crossing icons/
-    chicane.svg                      License: CC0
+    chicane.svg                      (c) olo81, based on Tobias Zwick work - License: CC0
     double_half.svg                  (c) 2018 ServusWorld - License: CC0
     full.svg                         (c) 2018 ServusWorld - License: CC0
     gate.svg                         License: CC0
@@ -410,6 +410,16 @@ sidewalk graphics/
 
 slow zone graphics/
     slow_zone_us.svg
+
+smoothness icons/
+    car.svg                          Twemoji: U+1F697
+    city_bike.svg                    modified from Twemoji: U+1F6B2
+    pedestrian.svg                   Twemoji: U+1F6B6
+    pickup_truck.svg                 modified from Twemoji: U+1F6FB
+    scooter.svg                      Twemoji: U+1F6F4
+    skateboard.svg                   Twemoji: U+1F6F9
+    suv.svg                          modified from Twemoji: U+1F699
+    tractor.svg                      Twemoji: U+1F69C
 
 speech bubbles/
     speech_bubble_left.9.svg

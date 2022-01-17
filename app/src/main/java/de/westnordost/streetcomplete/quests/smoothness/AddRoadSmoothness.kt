@@ -30,6 +30,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val icon = R.drawable.ic_quest_street_surface_detail
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(CAR, BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_surface_quality
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
@@ -58,6 +59,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
                 changes.deleteIfExists("smoothness:date")
                 changes.deleteCheckDatesForKey("smoothness")
             }
+            is IsActuallyStepsAnswer -> throw IllegalStateException()
         }
     }
 }
