@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpening
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
 
-class AddOpeningHours (
+class AddOpeningHours(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 

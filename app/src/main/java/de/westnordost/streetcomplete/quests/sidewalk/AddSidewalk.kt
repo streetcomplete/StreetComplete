@@ -101,7 +101,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
         (
-            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags) ) +
+            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f) +
             (estimateCycleTrackWidth(tags) ?: 0f)
         ) / 2f +

@@ -108,7 +108,7 @@ class ElementEditsUploaderTest {
 
         verify(elementEditsController).markSyncFailed(edit)
         verify(mapDataController).updateAll(eq(MapDataUpdates(
-            deleted = listOf(ElementKey( ElementType.NODE, 1L))
+            deleted = listOf(ElementKey(ElementType.NODE, 1L))
         )))
 
         verify(statisticsController, never()).addOne(any(), any())

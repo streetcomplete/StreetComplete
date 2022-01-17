@@ -101,7 +101,7 @@ class TouchGestureManager(private val c: MapController) {
                     return defaultPanResponder.onPanBegin()
                 }
 
-                override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float ): Boolean {
+                override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float): Boolean {
                     if (responder.onPan(startX, startY, endX, endY)) return false
                     return defaultPanResponder.onPan(startX, startY, endX, endY)
                 }

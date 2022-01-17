@@ -53,7 +53,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
 
         openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
         openingHoursAdapter.rows = loadOpeningHoursData(savedInstanceState).toMutableList()
-        openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

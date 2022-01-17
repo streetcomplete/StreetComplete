@@ -50,7 +50,7 @@ private const val MINUS = "-"
 
 private val RESERVED_WORDS = arrayOf(WITH, OR, AND)
 private val QUOTATION_MARKS = charArrayOf('"', '\'')
-private val KEY_VALUE_OPERATORS = arrayOf( EQUALS, NOT_EQUALS, LIKE, NOT_LIKE )
+private val KEY_VALUE_OPERATORS = arrayOf(EQUALS, NOT_EQUALS, LIKE, NOT_LIKE)
 private val COMPARISON_OPERATORS = arrayOf(
     GREATER_THAN, GREATER_OR_EQUAL_THAN,
     LESS_THAN, LESS_OR_EQUAL_THAN

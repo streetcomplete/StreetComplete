@@ -201,13 +201,13 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun updateNoteId() {
-        assertEquals(0, dao.updateNoteId( -5, 6))
+        assertEquals(0, dao.updateNoteId(-5, 6))
 
         val e1 = edit(noteId = -5)
         val e2 = edit(noteId = -5)
         dao.addAll(e1, e2)
 
-        assertEquals(2, dao.updateNoteId( -5, 6))
+        assertEquals(2, dao.updateNoteId(-5, 6))
         assertEquals(6, dao.get(e1.id)!!.noteId)
         assertEquals(6, dao.get(e2.id)!!.noteId)
     }

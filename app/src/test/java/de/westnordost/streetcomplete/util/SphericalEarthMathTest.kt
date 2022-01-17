@@ -120,8 +120,8 @@ class SphericalEarthMathTest {
     @Test fun `simple distance to horizontal arc`() {
         val start = p(-0.01, 0.0)
         val end = p(+0.01, 0.0)
-        val point = p( 0.0, -0.01)
-        val intersect = p( 0.0, 0.0)
+        val point = p(0.0, -0.01)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
@@ -151,7 +151,7 @@ class SphericalEarthMathTest {
         val start = p(+0.01, 0.0)
         val end = p(+0.02, 0.0)
         val point = p(0.0, -0.01)
-        val intersect = p( 0.0, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(start), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), -point.alongTrackDistanceTo(start, end), 0.01)
@@ -170,14 +170,14 @@ class SphericalEarthMathTest {
     @Test fun `distance to horizontal arc crossing 180th meridian`() {
         val start = p(170.0, 0.0)
         val end = p(-170.0, 0.0)
-        val point = p( -175.0, 0.01)
+        val point = p(-175.0, 0.01)
         val intersect = p(-175.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to vertical arc crossing north pole`() {
-        val start = p( 0.0, 80.0)
+        val start = p(0.0, 80.0)
         val end = p(180.0, 0.0)
         val point = p(179.99, 85.0)
         val intersect = p(180.0, 85.0)

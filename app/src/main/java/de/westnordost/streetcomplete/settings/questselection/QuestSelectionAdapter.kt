@@ -38,7 +38,7 @@ import java.util.*
 
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
-class QuestSelectionAdapter (
+class QuestSelectionAdapter(
     private val context: Context,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
