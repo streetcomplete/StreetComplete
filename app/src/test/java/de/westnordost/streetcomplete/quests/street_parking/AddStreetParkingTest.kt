@@ -19,8 +19,9 @@ class AddStreetParkingTest {
     @Test fun `apply different no parking on different sides`() {
         questType.verifyAnswer(
             LeftAndRightStreetParking(StreetStoppingProhibited, StreetStandingProhibited),
-            StringMapEntryAdd("parking:lane:left", "no_stopping"),
-            StringMapEntryAdd("parking:lane:right", "no_standing"),
+            StringMapEntryAdd("parking:lane:both", "no"),
+            StringMapEntryAdd("parking:condition:left", "no_stopping"),
+            StringMapEntryAdd("parking:condition:right", "no_standing"),
         )
     }
 
