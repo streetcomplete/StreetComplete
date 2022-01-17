@@ -39,7 +39,7 @@ class QuestPinsManager(
     private val questTypeRegistry: QuestTypeRegistry,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-): LifecycleObserver {
+) : LifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()

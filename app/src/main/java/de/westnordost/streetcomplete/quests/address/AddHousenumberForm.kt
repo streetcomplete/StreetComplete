@@ -290,7 +290,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private val EditText.nonEmptyInput:String? get() {
+    private val EditText.nonEmptyInput: String? get() {
         val input = text.toString().trim()
         return if(input.isNotEmpty()) input else null
     }

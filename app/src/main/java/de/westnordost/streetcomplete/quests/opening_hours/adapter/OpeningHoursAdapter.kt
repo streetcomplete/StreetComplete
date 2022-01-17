@@ -24,11 +24,11 @@ import java.util.Locale
 @Serializable
 sealed class OpeningHoursRow
 @Serializable
-data class OpeningMonthsRow(var months: Months): OpeningHoursRow()
+data class OpeningMonthsRow(var months: Months) : OpeningHoursRow()
 @Serializable
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) : OpeningHoursRow()
 @Serializable
-data class OffDaysRow(var weekdays: Weekdays): OpeningHoursRow()
+data class OffDaysRow(var weekdays: Weekdays) : OpeningHoursRow()
 
 class RegularOpeningHoursAdapter(
     private val context: Context,

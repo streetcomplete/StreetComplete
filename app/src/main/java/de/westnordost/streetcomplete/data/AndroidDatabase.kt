@@ -173,7 +173,7 @@ private inline fun <T> Cursor.toSequence(crossinline transform: (CursorPosition)
     return result
 }
 
-class AndroidCursorPosition(private val cursor: Cursor): CursorPosition {
+class AndroidCursorPosition(private val cursor: Cursor) : CursorPosition {
     override fun getShort(columnName: String): Short = cursor.getShort(columnName)
     override fun getInt(columnName: String): Int = cursor.getInt(columnName)
     override fun getLong(columnName: String): Long = cursor.getLong(columnName)

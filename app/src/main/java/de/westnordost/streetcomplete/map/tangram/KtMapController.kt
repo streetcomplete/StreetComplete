@@ -56,7 +56,7 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, contentResolver: ContentResolver):
+class KtMapController(private val c: MapController, contentResolver: ContentResolver) :
     LifecycleObserver {
 
     private val cameraManager = CameraManager(c, contentResolver)

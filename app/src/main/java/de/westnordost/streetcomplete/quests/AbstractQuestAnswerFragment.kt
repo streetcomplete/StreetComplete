@@ -207,7 +207,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         otherAnswersButton = null
     }
 
-    private fun assembleOtherAnswers() : List<AnswerItem> {
+    private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
         val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }

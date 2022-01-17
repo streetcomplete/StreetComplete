@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Singleton class VisibleQuestTypeController @Inject constructor(
     private val visibleQuestTypeDao: VisibleQuestTypeDao,
     private val questPresetsSource: QuestPresetsSource
-): VisibleQuestTypeSource {
+) : VisibleQuestTypeSource {
 
     private val listeners = CopyOnWriteArrayList<VisibleQuestTypeSource.Listener>()
 

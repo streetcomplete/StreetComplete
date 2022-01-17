@@ -49,7 +49,7 @@ import javax.inject.Singleton
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
-): OsmQuestSource {
+) : OsmQuestSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */

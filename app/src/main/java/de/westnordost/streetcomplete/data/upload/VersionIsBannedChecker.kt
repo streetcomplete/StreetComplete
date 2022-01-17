@@ -30,10 +30,10 @@ class VersionIsBannedChecker @Inject constructor(private val url: String, privat
     }
 }
 
-class VersionBannedException(val banReason: String?)
-    : RuntimeException("This version is banned from making any changes!")
+class VersionBannedException(val banReason: String?) :
+    RuntimeException("This version is banned from making any changes!")
 
 sealed class BannedInfo
 
-data class IsBanned(val reason: String?): BannedInfo()
+data class IsBanned(val reason: String?) : BannedInfo()
 object IsNotBanned : BannedInfo()

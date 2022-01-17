@@ -18,7 +18,7 @@ import javax.inject.Singleton
     private val userDataSource: UserDataSource,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val notesPreferences: NotesPreferences,
-): OsmNoteQuestSource {
+) : OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 

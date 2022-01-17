@@ -123,7 +123,7 @@ class TimeRangePickerDialog(
                 viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
             }
 
-            inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+            inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     }
 
     override fun show() {

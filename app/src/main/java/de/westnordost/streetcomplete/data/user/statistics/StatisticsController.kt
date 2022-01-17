@@ -26,7 +26,7 @@ import javax.inject.Singleton
     private val questTypeRegistry: QuestTypeRegistry,
     private val prefs: SharedPreferences,
     userLoginStatusSource: UserLoginStatusSource
-): StatisticsSource {
+) : StatisticsSource {
 
     private val listeners: MutableList<StatisticsSource.Listener> = CopyOnWriteArrayList()
 

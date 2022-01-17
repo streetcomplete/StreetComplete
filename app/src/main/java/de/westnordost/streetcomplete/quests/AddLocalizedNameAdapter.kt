@@ -217,10 +217,10 @@ class AddLocalizedNameAdapter(
 
         private lateinit var localizedName: LocalizedName
 
-        private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
-        private val buttonLanguage : TextView = itemView.findViewById(R.id.languageButton)
-        private val buttonDelete : View = itemView.findViewById(R.id.deleteButton)
-        private val buttonNameSuggestions : View = itemView.findViewById(R.id.nameSuggestionsButton)
+        private val autoCorrectInput: AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
+        private val buttonLanguage: TextView = itemView.findViewById(R.id.languageButton)
+        private val buttonDelete: View = itemView.findViewById(R.id.deleteButton)
+        private val buttonNameSuggestions: View = itemView.findViewById(R.id.nameSuggestionsButton)
 
         init {
             autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {

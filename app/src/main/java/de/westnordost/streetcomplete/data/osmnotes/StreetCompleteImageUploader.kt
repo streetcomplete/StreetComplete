@@ -104,8 +104,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 }
 
-class ImageUploadServerException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ImageUploadServerException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
-class ImageUploadClientException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ImageUploadClientException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)

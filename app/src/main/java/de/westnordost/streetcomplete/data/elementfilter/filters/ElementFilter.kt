@@ -70,24 +70,24 @@ class HasTagLike(val key: String, val value: String) : ElementFilter {
         obj.tags.entries.any { keyRegex.matches(it.key) && valueRegex.matches(it.value) }
 }
 
-class HasTagLessThan(key: String, value: Float): CompareTagValue(key, value) {
+class HasTagLessThan(key: String, value: Float) : CompareTagValue(key, value) {
     override fun toString() = "$key < $value"
     override fun compareTo(tagValue: Float) = tagValue < value
 }
-class HasTagGreaterThan(key: String, value: Float): CompareTagValue(key, value) {
+class HasTagGreaterThan(key: String, value: Float) : CompareTagValue(key, value) {
     override fun toString() = "$key > $value"
     override fun compareTo(tagValue: Float) = tagValue > value
 }
-class HasTagLessOrEqualThan(key: String, value: Float): CompareTagValue(key, value) {
+class HasTagLessOrEqualThan(key: String, value: Float) : CompareTagValue(key, value) {
     override fun toString() = "$key <= $value"
     override fun compareTo(tagValue: Float) = tagValue <= value
 }
-class HasTagGreaterOrEqualThan(key: String, value: Float): CompareTagValue(key, value) {
+class HasTagGreaterOrEqualThan(key: String, value: Float) : CompareTagValue(key, value) {
     override fun toString() = "$key >= $value"
     override fun compareTo(tagValue: Float) = tagValue >= value
 }
 
-abstract class CompareTagValue(val key: String, val value: Float): ElementFilter {
+abstract class CompareTagValue(val key: String, val value: Float) : ElementFilter {
     abstract fun compareTo(tagValue: Float): Boolean
     override fun matches(obj: Element): Boolean {
         val tagValue = obj.tags[key]?.toFloatOrNull() ?: return false
@@ -95,24 +95,24 @@ abstract class CompareTagValue(val key: String, val value: Float): ElementFilter
     }
 }
 
-class HasDateTagLessThan(key: String, dateFilter: DateFilter): CompareDateTagValue(key, dateFilter) {
+class HasDateTagLessThan(key: String, dateFilter: DateFilter) : CompareDateTagValue(key, dateFilter) {
     override fun toString() = "$key < $dateFilter"
     override fun compareTo(tagValue: LocalDate) = tagValue < dateFilter.date
 }
-class HasDateTagGreaterThan(key: String, dateFilter: DateFilter): CompareDateTagValue(key, dateFilter) {
+class HasDateTagGreaterThan(key: String, dateFilter: DateFilter) : CompareDateTagValue(key, dateFilter) {
     override fun toString() = "$key > $dateFilter"
     override fun compareTo(tagValue: LocalDate) = tagValue > dateFilter.date
 }
-class HasDateTagLessOrEqualThan(key: String, dateFilter: DateFilter): CompareDateTagValue(key, dateFilter) {
+class HasDateTagLessOrEqualThan(key: String, dateFilter: DateFilter) : CompareDateTagValue(key, dateFilter) {
     override fun toString() = "$key <= $dateFilter"
     override fun compareTo(tagValue: LocalDate) = tagValue <= dateFilter.date
 }
-class HasDateTagGreaterOrEqualThan(key: String, dateFilter: DateFilter): CompareDateTagValue(key, dateFilter) {
+class HasDateTagGreaterOrEqualThan(key: String, dateFilter: DateFilter) : CompareDateTagValue(key, dateFilter) {
     override fun toString() = "$key >= $dateFilter"
     override fun compareTo(tagValue: LocalDate) = tagValue >= dateFilter.date
 }
 
-abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter): ElementFilter {
+abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter) : ElementFilter {
     abstract fun compareTo(tagValue: LocalDate): Boolean
     override fun matches(obj: Element): Boolean {
         val tagValue = obj.tags[key]?.toCheckDate() ?: return false

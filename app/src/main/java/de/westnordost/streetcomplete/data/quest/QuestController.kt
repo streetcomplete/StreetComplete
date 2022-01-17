@@ -224,7 +224,7 @@ import javax.inject.Singleton
         return@withContext true
     }
 
-    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges {
+    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any): StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
         quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder, element.timestampEdited)
         return changesBuilder.create()

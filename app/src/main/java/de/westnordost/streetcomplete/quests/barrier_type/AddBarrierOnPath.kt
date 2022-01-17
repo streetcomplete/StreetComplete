@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
-class AddBarrierOnPath: OsmElementQuestType<BarrierType> {
+class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
 
     private val barrierFilter by lazy { """
         ways with
