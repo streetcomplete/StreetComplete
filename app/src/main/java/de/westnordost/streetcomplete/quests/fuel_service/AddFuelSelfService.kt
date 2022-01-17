@@ -18,7 +18,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
     """
     override val commitMessage = "Add self service information to fuel station"
     override val wikiLink = "Tag:amenity=fuel"
-    override val icon = R.drawable.ic_fuel_self_service
+    override val icon = R.drawable.ic_quest_fuel_self_service
 
     override val questTypeAchievements = listOf(CAR)
 
