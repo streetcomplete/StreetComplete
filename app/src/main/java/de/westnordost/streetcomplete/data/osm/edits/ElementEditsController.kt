@@ -37,7 +37,7 @@ import javax.inject.Singleton
             synchronized(this) {
                 val reverseEdit = getAllUnsynced().asReversed().find {
                     it.elementType == element.type && it.elementId == element.id
-                    it.action is UpdateElementTagsAction && it.action.isReverseOf(action)
+                        && it.action is UpdateElementTagsAction && it.action.isReverseOf(action)
                 }
                 if (reverseEdit != null) {
                     delete(reverseEdit)

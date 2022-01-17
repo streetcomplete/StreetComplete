@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
@@ -43,6 +44,46 @@ class ElementEditsControllerTest {
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)
+        verify(listener).onAddedEdit(any())
+        verify(lastEditTimeStore).touch()
+    }
+
+    @Test fun `add leads to deletion of reverse edit`() {
+
+        val addSurface = StringMapChanges(setOf(StringMapEntryAdd("surface", "asphalt")))
+        val deleteSurface = StringMapChanges(setOf(StringMapEntryDelete("surface", "asphalt")))
+
+        // we just added surface=asphalt
+        val edit = ElementEdit(123, QUEST_TYPE, NODE, 1, node(1), pGeom(), "test", 0, false,
+            UpdateElementTagsAction(addSurface)
+        )
+        on(idProvider.get(123L)).thenReturn(ElementIdProvider(listOf()))
+        on(db.getAllUnsynced()).thenReturn(listOf(edit))
+        // and now we want to delete surface=asphalt
+        ctrl.add(QUEST_TYPE, node(1), pGeom(),"test", UpdateElementTagsAction(deleteSurface))
+
+        verify(db).deleteAll(listOf(123L))
+        verify(listener).onDeletedEdits(listOf(edit))
+        verify(idProvider).deleteAll(listOf(123L))
+    }
+
+    // see issue #3290
+    @Test fun `add doest not lead to deletion of reverse edit on another element`() {
+
+        val addSurface = StringMapChanges(setOf(StringMapEntryAdd("surface", "asphalt")))
+        val deleteSurface = StringMapChanges(setOf(StringMapEntryDelete("surface", "asphalt")))
+
+        // we just added surface=asphalt on node 2
+        val edit = ElementEdit(123, QUEST_TYPE, NODE, 2, node(2), pGeom(), "test", 0, false,
+            UpdateElementTagsAction(addSurface)
+        )
+        on(idProvider.get(123L)).thenReturn(ElementIdProvider(listOf()))
+        on(db.getAllUnsynced()).thenReturn(listOf(edit))
+        // and now we want to delete surface=asphalt on node 1
+        ctrl.add(QUEST_TYPE, node(1), pGeom(),"test", UpdateElementTagsAction(deleteSurface))
+
+        verify(db).add(any())
+        verify(idProvider).assign(0L, 0, 0, 0)
         verify(listener).onAddedEdit(any())
         verify(lastEditTimeStore).touch()
     }
