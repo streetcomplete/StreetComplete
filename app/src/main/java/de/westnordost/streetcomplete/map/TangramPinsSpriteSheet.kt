@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.ktx.isApril1st
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.ceil
@@ -25,10 +26,10 @@ import kotlin.math.sqrt
         val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
         val spriteSheet =
-            if (isSpriteSheetCurrent && !BuildConfig.DEBUG)
-                prefs.getString(Prefs.PIN_SPRITES, "")!!
-            else
+            if (!isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown())
                 createSpritesheet()
+            else
+                prefs.getString(Prefs.PIN_SPRITES, "")!!
 
         createSceneUpdates(spriteSheet)
     }
@@ -56,7 +57,14 @@ import kotlin.math.sqrt
             val questX = x + questIconOffsetX
             val questY = y + questIconOffsetY
             questIcon.setBounds(questX, questY, questX + questIconSize, questY + questIconSize)
+            val checkpoint = canvas.save()
+            if (shouldBeUpsideDown()) {
+                val questCenterX = questX + questIconSize / 2f
+                val questCenterY = questY + questIconSize / 2f
+                canvas.rotate(180f, questCenterX, questCenterY)
+            }
             questIcon.draw(canvas)
+            canvas.restoreToCount(checkpoint)
             val questIconName = context.resources.getResourceEntryName(questIconResId)
             spriteSheetEntries.add("$questIconName: [$x,$y,$iconSize,$iconSize]")
         }
@@ -69,12 +77,18 @@ import kotlin.math.sqrt
         val questSprites = "{${spriteSheetEntries.joinToString(",")}}"
 
         prefs.edit {
-            putInt(Prefs.PIN_SPRITES_VERSION, BuildConfig.VERSION_CODE)
+            putInt(Prefs.PIN_SPRITES_VERSION, if (shouldBeUpsideDown()) -1 else BuildConfig.VERSION_CODE)
             putString(Prefs.PIN_SPRITES, questSprites)
         }
 
         return questSprites
     }
+
+    private fun shouldBeUpsideDown(): Boolean {
+        val isBelowEquator = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits())) < 0.0
+        return isBelowEquator && isApril1st()
+    }
+
 
     private fun createSceneUpdates(pinSprites: String): List<Pair<String, String>> = listOf(
         "textures.pins.url" to "file://${context.filesDir}/$PIN_ICONS_FILE",
