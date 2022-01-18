@@ -10,7 +10,7 @@ v39.0: |
   <ul>
   <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
   <li>Some improvements on the fire hydrant quest(s) (#3608), by @tiptoptom and @thefeiter, (#3601)</li>
-  <li>Some minor enhancements and clearer wordings (#3576, #3610, ...), thanks @matkoniecz, @olo81</li>
+  <li>Some minor enhancements and clearer wordings (#3576, #3610, #3599...), thanks @matkoniecz, @olo81</li>
   <li>Added "Lifesaver" achievement (#3616), by @FloEdelmann</li>
   </ul>
   <h3>Fixes</h3>

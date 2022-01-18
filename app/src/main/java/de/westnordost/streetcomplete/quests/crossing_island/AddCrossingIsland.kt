@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddCrossingIsland : OsmElementQuestType<Boolean> {
@@ -37,6 +38,9 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     override val questTypeAchievements = listOf(PEDESTRIAN, BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_island
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter { it.isCrossing() }.asSequence()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()
