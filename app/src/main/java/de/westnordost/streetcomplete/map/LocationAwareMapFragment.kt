@@ -10,9 +10,9 @@ import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.map.tangram.screenBottomToCenterDistance

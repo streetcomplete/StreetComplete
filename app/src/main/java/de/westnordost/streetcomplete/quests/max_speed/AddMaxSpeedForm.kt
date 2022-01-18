@@ -120,6 +120,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                 val livingStreetImageView = binding.rightSideContainer.findViewById<ImageView>(R.id.livingStreetImage)
                 if (drawableResId != null) livingStreetImageView.setImageResource(drawableResId)
             }
+            else -> {}
         }
 
         if (speedType == ZONE && LAST_INPUT_SLOW_ZONE != null) {

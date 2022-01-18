@@ -51,6 +51,7 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
                 changes.addOrModify("stile", "stepover")
                 changes.addOrModify("material", "stone")
             }
+            else -> {}
         }
     }
 }

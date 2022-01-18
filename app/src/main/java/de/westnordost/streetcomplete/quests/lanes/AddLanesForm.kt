@@ -108,6 +108,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
                 val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
                 applyAnswer(MarkedLanesSides(forwardLanes, backwardLanes, hasCenterLeftTurnLane))
             }
+            null -> {}
         }
     }
 
@@ -185,6 +186,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
                 puzzleView.onClickListener = null
                 puzzleView.onClickSideListener = this::selectNumberOfLanesOnOneSide
             }
+            else -> {}
         }
         puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
         puzzleView.isShowingBothSides = !isOneway

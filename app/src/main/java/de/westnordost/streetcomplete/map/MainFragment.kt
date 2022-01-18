@@ -12,6 +12,7 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.HandlesOnBackPressed
@@ -62,18 +64,18 @@ import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.getLevelsOrNull
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.ktx.hideKeyboard
+import de.westnordost.streetcomplete.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.ktx.setMargins
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.LocationRequestFragment
+import de.westnordost.streetcomplete.location.LocationRequester
+import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
 import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.createLocationAvailabilityIntentFilter
-import de.westnordost.streetcomplete.location.hasLocationPermission
-import de.westnordost.streetcomplete.location.isLocationEnabled
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -131,6 +133,7 @@ class MainFragment :
     @Inject internal lateinit var soundFx: SoundFx
     @Inject internal lateinit var prefs: SharedPreferences
 
+    private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
 
     private val binding by viewBinding(FragmentMainBinding::bind)
@@ -170,10 +173,9 @@ class MainFragment :
         }
     }
 
-    private val locationRequestFinishedReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            val state = LocationState.valueOf(intent.getStringExtra(LocationRequestFragment.STATE)!!)
-            onLocationRequestFinished(state)
+            updateLocationAvailability()
         }
     }
 
@@ -184,6 +186,7 @@ class MainFragment :
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
+        requestLocation = LocationRequester(requireActivity(), this)
         locationManager = FineLocationManager(context, this::onLocationChanged)
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
@@ -229,11 +232,11 @@ class MainFragment :
         visibleQuestsSource.addListener(this)
         requireContext().registerReceiver(
             locationAvailabilityReceiver,
-            createLocationAvailabilityIntentFilter()
+            IntentFilter(LocationManager.MODE_CHANGED_ACTION)
         )
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
-            locationRequestFinishedReceiver,
-            IntentFilter(LocationRequestFragment.ACTION_FINISHED)
+            requestLocationPermissionResultReceiver,
+            IntentFilter(REQUEST_LOCATION_PERMISSION_RESULT)
         )
         updateLocationAvailability()
     }
@@ -261,7 +264,7 @@ class MainFragment :
         wasNavigationMode = mapFragment?.isNavigationMode ?: false
         visibleQuestsSource.removeListener(this)
         requireContext().unregisterReceiver(locationAvailabilityReceiver)
-        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(locationRequestFinishedReceiver)
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(requestLocationPermissionResultReceiver)
         locationManager.removeUpdates()
     }
 
@@ -594,7 +597,7 @@ class MainFragment :
     //region Location - Request location and update location status
 
     private fun updateLocationAvailability() {
-        if (requireContext().isLocationEnabled) {
+        if (requireContext().hasLocationPermission && requireContext().isLocationEnabled) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -617,14 +620,6 @@ class MainFragment :
         binding.locationPointerPin.visibility = View.GONE
         mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
-    }
-
-    private fun onLocationRequestFinished(state: LocationState) {
-        if (activity == null) return
-        binding.gpsTrackingButton.state = state
-        if (state.isEnabled) {
-            updateLocationAvailability()
-        }
     }
 
     private fun onLocationChanged(location: Location) {
@@ -672,9 +667,7 @@ class MainFragment :
 
         when {
             !binding.gpsTrackingButton.state.isEnabled -> {
-                val tag = LocationRequestFragment::class.java.simpleName
-                val locationRequestFragment = activity?.supportFragmentManager?.findFragmentByTag(tag) as LocationRequestFragment?
-                locationRequestFragment?.startRequest()
+                lifecycleScope.launch { requestLocation() }
             }
             !mapFragment.isFollowingPosition -> {
                 setIsFollowingPosition(true)
