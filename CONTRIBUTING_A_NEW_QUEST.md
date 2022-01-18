@@ -252,31 +252,21 @@ Inkscape is a typical tool to create and edit SVG files, it is a good, free, ope
 
 # Test
 
-Obviously, testing can be done also earlier.
+Obviously, testing can be done also earlier. But at least before submitting for review quest should be tested.
 
-But before submitting it should be tested.
+Typically it is done using an emulator. Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
 
-Typically it is done using an emulator.
-
-## Is quest listed?
-Look at the quest list in settings - is your quest appearing there? If not - see [this step](#Add quest to the list of active ones).
-
-While you are there you can disable all quests except yours for an easier testing.
-
-## Element selection
-Is it selected for expected elements? Is it not selected for some unwanted elements? Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
-
-## Quest form
-Is quest form opening? Can you fill answer as expected?
-
-## Solving quest
-Can you solve the quest? Is expected tagging being applied?
-
-You can look at logs for info what was applied or use undo menu from bottom-left.
-
-You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers.
-
-Is quest disappearing after being solved?
+* Is quest listed?
+  * Look at the quest list in settings - is your quest appearing there? If not - see [this step](#Add quest to the list of active ones).
+  * While you are there you can disable all quests except yours for an easier testing.
+* Is it shown for expected elements?
+* Is it selected for some unwanted elements?
+* Can you tap on quest marker on open quest form?* an you fill answer as expected?
+* Can you solve the quest?
+* Is expected tagging being applied?
+** You can look at logs for info what was applied or use undo menu from bottom-left.
+** You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers.
+* Is quest disappearing after being solved?
 
 # Open a pull request
 
