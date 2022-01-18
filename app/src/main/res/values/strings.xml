@@ -1193,4 +1193,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">Lifesaver</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
+    <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
+    <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
 </resources>
