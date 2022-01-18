@@ -15,12 +15,15 @@ jobs:
       - name: Checkout the source code
         uses: actions/checkout@v2
       - name: Run Kotlin linter
+        id: ktlint-check
         uses: musichin/ktlint-check@v1
         with:
           version: '0.43.2'
           reporter: plain?group_by_file,output=${{ env.lintResultFilename }}
           relative: true
           verbose: true
-      - if: ${{ always() }}
-        name: Kotlin linter result
-        run: cat ${{ env.lintResultFilename }}
+        continue-on-error: true
+      - name: Kotlin linter result
+        run: |
+          cat ${{ env.lintResultFilename }}
+          [ "${{ steps.ktlint-check.outcome }}" == "success" ] || exit 1
