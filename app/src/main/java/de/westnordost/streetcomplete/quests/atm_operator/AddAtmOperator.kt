@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddAtmOperator : OsmFilterQuestType<String>() {
 
     override val elementFilter = "nodes with amenity = atm and !operator and !name and !brand"
-    override val commitMessage = "Add ATM operator"
+    override val changesetComment = "Add ATM operator"
     override val wikiLink = "Tag:amenity=atm"
     override val icon = R.drawable.ic_quest_money
     override val isDeleteElementEnabled = true

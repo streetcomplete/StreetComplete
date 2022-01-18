@@ -20,7 +20,7 @@ class AddSport : OsmFilterQuestType<List<Sport>>() {
           and (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
           and access !~ private|no
     """
-    override val commitMessage = "Add pitches sport"
+    override val changesetComment = "Add pitches sport"
     override val wikiLink = "Key:sport"
     override val icon = R.drawable.ic_quest_sport
 

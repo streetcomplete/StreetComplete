@@ -57,7 +57,7 @@ class AddShoulder : OsmFilterQuestType<Boolean>() {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter(elementFilter).asIterable()
 
-    override val commitMessage = "Add whether there are shoulders"
+    override val changesetComment = "Add whether there are shoulders"
     override val wikiLink = "Key:shoulder"
     override val icon = R.drawable.ic_quest_street_shoulder
     override val isSplitWayEnabled = true

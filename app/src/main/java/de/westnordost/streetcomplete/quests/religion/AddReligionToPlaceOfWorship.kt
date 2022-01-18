@@ -16,7 +16,7 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
         )
         and !religion
     """
-    override val commitMessage = "Add religion for place of worship"
+    override val changesetComment = "Add religion for place of worship"
     override val wikiLink = "Key:religion"
     override val icon = R.drawable.ic_quest_religion
 

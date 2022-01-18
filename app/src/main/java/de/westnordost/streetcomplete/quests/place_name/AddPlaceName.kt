@@ -97,7 +97,7 @@ class AddPlaceName(
         and !name and !brand and noname != yes and name:signed != no
     """.trimIndent()).toElementFilterExpression() }
 
-    override val commitMessage = "Determine place names"
+    override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
     override val isReplaceShopEnabled = true

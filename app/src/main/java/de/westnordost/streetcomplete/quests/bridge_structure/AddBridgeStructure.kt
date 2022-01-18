@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
 
     override val elementFilter = "ways with man_made = bridge and !bridge:structure and !bridge:movable"
-    override val commitMessage = "Add bridge structures"
+    override val changesetComment = "Add bridge structures"
     override val wikiLink = "Key:bridge:structure"
     override val icon = R.drawable.ic_quest_bridge
 
