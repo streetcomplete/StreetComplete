@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       lintResultFilename: ktlint-result.txt
+      prCommentHeader: ktlint-message
     steps:
       - name: Checkout the source code
         uses: actions/checkout@v2
@@ -27,3 +28,16 @@ jobs:
         run: |
           cat ${{ env.lintResultFilename }}
           [ "${{ steps.ktlint-check.outcome }}" == "success" ] || exit 1
+      - if: ${{ github.event_name == 'pull_request' && failure() }}
+        name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          header: ${{ env.prCommentHeader }}
+          recreate: true
+          path: .github/ktlint-message.md
+      - if: ${{ github.event_name == 'pull_request' && success() }}
+        name: Delete comment
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          header: ${{ env.prCommentHeader }}
+          delete: true
