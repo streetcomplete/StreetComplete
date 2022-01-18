@@ -9,11 +9,18 @@ jobs:
   ktlint:
     name: "Kotlin"
     runs-on: ubuntu-latest
+    env:
+      lintResultFilename: ktlint-result.txt
     steps:
-      - uses: actions/checkout@v2
-      - uses: musichin/ktlint-check@v1
+      - name: Checkout the source code
+        uses: actions/checkout@v2
+      - name: Run Kotlin linter
+        uses: musichin/ktlint-check@v1
         with:
           version: '0.43.2'
-          reporter: plain
+          reporter: plain?group_by_file,output=${{ env.lintResultFilename }}
           relative: true
           verbose: true
+      - if: ${{ always() }}
+        name: Kotlin linter result
+        run: cat ${{ env.lintResultFilename }}
