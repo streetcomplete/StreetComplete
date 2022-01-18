@@ -96,7 +96,7 @@ In case you **don't have an idea of a quest?** Look [at the existing issues](htt
 
 Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
 
-See [also far more detailed guide to making a new quest](CONTRIBUTING_A_NEW_QUEST.md).
+See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW_QUEST.md).
 
 ### Code style
 
