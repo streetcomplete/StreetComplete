@@ -78,7 +78,7 @@ class CheckExistence(
     /* not including bicycle parkings, motorcycle parkings because their capacity is asked every
     *  few years already, so if it's gone now, it will be noticed that way. */
 
-    override val commitMessage = "Check if element still exists"
+    override val changesetComment = "Check if element still exists"
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
 

@@ -14,7 +14,7 @@ open class TestQuestTypeA : OsmElementQuestType<String> {
     override fun isApplicableTo(element: Element):Boolean? = null
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
     override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
-    override val commitMessage = "test me"
+    override val changesetComment = "test me"
     override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }
     override val wikiLink: String? = null
     override val icon = 0

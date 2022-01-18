@@ -28,7 +28,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
          and !leisure
         )
     """
-    override val commitMessage = "Specify shop type"
+    override val changesetComment = "Specify shop type"
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.ic_quest_check_shop
     override val isReplaceShopEnabled = true

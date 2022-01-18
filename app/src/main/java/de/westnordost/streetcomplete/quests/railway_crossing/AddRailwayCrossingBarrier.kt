@@ -26,7 +26,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
           or railway ~ tram|abandoned|disused
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add type of barrier for railway crossing"
+    override val changesetComment = "Add type of barrier for railway crossing"
     override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.ic_quest_railway
 

@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override val elementFilter = "nodes, ways, relations with amenity = recycling and !recycling_type"
-    override val commitMessage = "Add recycling type to recycling amenity"
+    override val changesetComment = "Add recycling type to recycling amenity"
     override val wikiLink = "Key:recycling_type"
     override val icon = R.drawable.ic_quest_recycling
     override val isDeleteElementEnabled = true

@@ -27,7 +27,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
          and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add whether this road is a one-way road because it is quite slim"
+    override val changesetComment = "Add whether this road is a one-way road because it is quite slim"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true

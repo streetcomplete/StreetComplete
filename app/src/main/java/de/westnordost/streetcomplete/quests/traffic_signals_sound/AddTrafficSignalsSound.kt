@@ -30,7 +30,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
           and foot !~ yes|designated
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add whether traffic signals have sound signals"
+    override val changesetComment = "Add whether traffic signals have sound signals"
     override val wikiLink = "Key:$SOUND_SIGNALS"
     override val icon = R.drawable.ic_quest_blind_traffic_lights_sound
 

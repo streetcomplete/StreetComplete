@@ -18,7 +18,7 @@ class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
          and !covered
     """
 
-    override val commitMessage = "Add picnic table cover"
+    override val changesetComment = "Add picnic table cover"
     override val wikiLink = "Key:covered"
     override val icon = R.drawable.ic_quest_picnic_table_cover
     override val isDeleteElementEnabled = true

@@ -18,7 +18,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
         )
         and !air_conditioning
     """
-    override val commitMessage = "Add air conditioning"
+    override val changesetComment = "Add air conditioning"
     override val wikiLink = "Key:air_conditioning"
     override val icon = R.drawable.ic_quest_snow_poi
     override val isReplaceShopEnabled = true
