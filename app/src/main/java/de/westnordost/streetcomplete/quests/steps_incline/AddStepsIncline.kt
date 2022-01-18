@@ -17,7 +17,7 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
          and !incline
     """
 
-    override val commitMessage = "Add which way leads up for these steps"
+    override val changesetComment = "Add which way leads up for these steps"
     override val wikiLink = "Key:incline"
     override val icon = R.drawable.ic_quest_steps
     override val isSplitWayEnabled = true

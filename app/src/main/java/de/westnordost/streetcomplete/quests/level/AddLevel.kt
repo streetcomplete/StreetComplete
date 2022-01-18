@@ -43,7 +43,7 @@ class AddLevel : OsmElementQuestType<String> {
     """.toElementFilterExpression()
     }
 
-    override val commitMessage = "Add level to shops"
+    override val changesetComment = "Add level to shops"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level
     /* disabled because in a mall with multiple levels, if there are nodes with no level defined,

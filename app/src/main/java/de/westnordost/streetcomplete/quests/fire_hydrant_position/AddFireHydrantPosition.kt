@@ -16,7 +16,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
          (!fire_hydrant:position or fire_hydrant:position ~ "\?|fixme") and
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
     """
-    override val commitMessage = "Add fire hydrant position"
+    override val changesetComment = "Add fire hydrant position"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant_grass
 

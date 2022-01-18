@@ -21,7 +21,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
     """
     /* ~paved tracks are less likely to change the surface type */
 
-    override val commitMessage = "Add tracktype"
+    override val changesetComment = "Add tracktype"
     override val wikiLink = "Key:tracktype"
     override val icon = R.drawable.ic_quest_tractor
     override val isSplitWayEnabled = true

@@ -16,7 +16,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
          and surveillance ~ public|outdoor|traffic
          and !camera:type
     """
-    override val commitMessage = "Add camera type"
+    override val changesetComment = "Add camera type"
     override val wikiLink = "Tag:surveillance:type"
     override val icon = R.drawable.ic_quest_surveillance_camera
 

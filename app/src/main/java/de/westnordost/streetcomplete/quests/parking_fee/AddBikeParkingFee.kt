@@ -21,7 +21,7 @@ class AddBikeParkingFee : OsmFilterQuestType<Fee>() {
             or fee older today -8 years
         )
     """
-    override val commitMessage = "Add whether there is a bike parking fee"
+    override val changesetComment = "Add whether there is a bike parking fee"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_fee
 

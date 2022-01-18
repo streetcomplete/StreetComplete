@@ -102,7 +102,7 @@ class AddPlaceName(
             ).toElementFilterExpression()
     }
 
-    override val commitMessage = "Determine place names"
+    override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
     override val isReplaceShopEnabled = true

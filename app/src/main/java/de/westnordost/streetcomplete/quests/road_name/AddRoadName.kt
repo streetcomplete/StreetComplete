@@ -26,7 +26,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     """
 
     override val enabledInCountries = AllCountriesExcept("JP")
-    override val commitMessage = "Determine road names and types"
+    override val changesetComment = "Determine road names and types"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true

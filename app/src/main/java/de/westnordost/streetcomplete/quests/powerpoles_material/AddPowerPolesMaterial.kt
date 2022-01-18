@@ -15,7 +15,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
           (power = pole or man_made = utility_pole)
           and !material
     """
-    override val commitMessage = "Add power poles material type"
+    override val changesetComment = "Add power poles material type"
     override val wikiLink = "Tag:power=pole"
     override val icon = R.drawable.ic_quest_power
 

@@ -16,7 +16,7 @@ class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>() {
           and access !~ private|no
           and !bicycle_parking
     """
-    override val commitMessage = "Add bicycle parking type"
+    override val changesetComment = "Add bicycle parking type"
     override val wikiLink = "Key:bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking
     override val isDeleteElementEnabled = true

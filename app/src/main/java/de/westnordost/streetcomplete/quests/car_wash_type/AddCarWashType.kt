@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVI
 class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
 
     override val elementFilter = "nodes, ways with amenity = car_wash and !automated and !self_service"
-    override val commitMessage = "Add car wash type"
+    override val changesetComment = "Add car wash type"
     override val wikiLink = "Tag:amenity=car_wash"
     override val icon = R.drawable.ic_quest_car_wash
 

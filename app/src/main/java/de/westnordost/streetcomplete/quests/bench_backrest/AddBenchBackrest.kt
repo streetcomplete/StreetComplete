@@ -21,7 +21,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
           and !backrest
           and !bench:type
     """
-    override val commitMessage = "Add backrest information to benches"
+    override val changesetComment = "Add backrest information to benches"
     override val wikiLink = "Tag:amenity=bench"
     override val icon = R.drawable.ic_quest_bench_poi
     override val isDeleteElementEnabled = true

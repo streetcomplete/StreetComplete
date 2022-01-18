@@ -25,7 +25,7 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
     """.toElementFilterExpression()
     }
 
-    override val commitMessage = "Add kerb height info"
+    override val changesetComment = "Add kerb height info"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.ic_quest_kerb_type
 

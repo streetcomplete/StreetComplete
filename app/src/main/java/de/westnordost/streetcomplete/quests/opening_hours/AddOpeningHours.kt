@@ -101,7 +101,7 @@ class AddOpeningHours(
 
     private val nameTags = listOf("name", "brand")
 
-    override val commitMessage = "Add opening hours"
+    override val changesetComment = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override val isReplaceShopEnabled = true

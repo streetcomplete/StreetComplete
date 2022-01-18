@@ -29,7 +29,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and abandoned:building != yes
          and ruins != yes and ruined != yes
     """
-    override val commitMessage = "Add building types"
+    override val changesetComment = "Add building types"
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
 

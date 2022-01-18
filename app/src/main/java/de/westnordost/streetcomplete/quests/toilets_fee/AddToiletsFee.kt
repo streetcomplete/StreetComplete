@@ -15,7 +15,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
           and access !~ private|customers
           and !fee
     """
-    override val commitMessage = "Add toilets fee"
+    override val changesetComment = "Add toilets fee"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_toilet_fee
     override val isDeleteElementEnabled = true

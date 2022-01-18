@@ -23,7 +23,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no
     """
-    override val commitMessage = "Add road lanes"
+    override val changesetComment = "Add road lanes"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
     override val isSplitWayEnabled = true

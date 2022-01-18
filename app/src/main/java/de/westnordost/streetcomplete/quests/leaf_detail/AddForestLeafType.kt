@@ -23,7 +23,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     """.toElementFilterExpression()
     }
 
-    override val commitMessage = "Add leaf type"
+    override val changesetComment = "Add leaf type"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true

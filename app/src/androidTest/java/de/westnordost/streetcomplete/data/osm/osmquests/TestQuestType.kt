@@ -13,7 +13,7 @@ open class TestQuestType : OsmElementQuestType<String> {
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
     override val icon = 0
     override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
-    override val commitMessage = ""
+    override val changesetComment = ""
     override fun getApplicableElements(mapData: MapDataWithGeometry) = emptyList<Element>()
     override val wikiLink: String? = null
     override val questTypeAchievements = emptyList<QuestTypeAchievement>()

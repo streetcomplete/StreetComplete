@@ -26,7 +26,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
     """.toElementFilterExpression()
     }
 
-    override val commitMessage = "Add whether summit register is present"
+    override val changesetComment = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.ic_quest_peak
 

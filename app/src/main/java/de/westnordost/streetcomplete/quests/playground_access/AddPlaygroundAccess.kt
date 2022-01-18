@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>() {
 
     override val elementFilter = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
-    override val commitMessage = "Add playground access"
+    override val changesetComment = "Add playground access"
     override val wikiLink = "Tag:leisure=playground"
     override val icon = R.drawable.ic_quest_playground
 

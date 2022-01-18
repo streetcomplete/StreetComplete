@@ -66,7 +66,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
     }
     // highway=construction included, as situation often changes during and after construction
 
-    override val commitMessage = "Add whether there are sidewalks"
+    override val changesetComment = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val isSplitWayEnabled = true

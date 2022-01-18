@@ -41,7 +41,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     *  tagging crossing=no on the vertex.
     *  See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203 */
 
-    override val commitMessage = "Add whether there is a crossing"
+    override val changesetComment = "Add whether there is a crossing"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
 

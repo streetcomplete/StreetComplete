@@ -23,7 +23,7 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
         and (!bin or bin older today -4 years)
     """
 
-    override val commitMessage = "Add whether a bus stop has a bin"
+    override val changesetComment = "Add whether a bus stop has a bin"
     override val wikiLink = "Key:bin"
     override val icon = R.drawable.ic_quest_bin_public_transport
 

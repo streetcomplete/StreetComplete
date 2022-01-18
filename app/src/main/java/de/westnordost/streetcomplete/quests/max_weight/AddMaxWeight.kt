@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
-    override val commitMessage = "Add maximum allowed weight"
+    override val changesetComment = "Add maximum allowed weight"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true

@@ -12,7 +12,7 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
           amenity = parking
           and (!parking or parking = yes)
     """
-    override val commitMessage = "Add parking type"
+    override val changesetComment = "Add parking type"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking
 

@@ -23,7 +23,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
         and (!bench or bench older today -4 years)
     """
 
-    override val commitMessage = "Add whether a bus stop has a bench"
+    override val changesetComment = "Add whether a bus stop has a bench"
     override val wikiLink = "Key:bench"
     override val icon = R.drawable.ic_quest_bench_public_transport
 

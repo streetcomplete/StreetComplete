@@ -17,7 +17,7 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
         nodes with amenity = recycling and recycling_type = container
          and recycling:glass = yes and !recycling:glass_bottles
     """
-    override val commitMessage = "Determine whether any glass or just glass bottles can be recycled here"
+    override val changesetComment = "Determine whether any glass or just glass bottles can be recycled here"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_glass
     // see isUsuallyAnyGlassRecycleableInContainers.yml
