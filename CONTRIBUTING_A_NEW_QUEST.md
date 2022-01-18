@@ -143,8 +143,12 @@ Also, for very detailed information that can be assumed to always have the same 
 
 ### Properties
 
-#### commitMessage
-`override val commitMessage = "Add whether defibrillator is inside building"`
+You can obtain more info about properties by
+mousing over a property and pressing Ctrl+Q
+
+
+#### changesetComment
+`override val changesetComment = "Add whether defibrillator is inside building"`
 message used as a changeset comment
 
 #### wikiLink
