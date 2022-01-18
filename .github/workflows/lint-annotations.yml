@@ -1,8 +1,6 @@
-name: "Lint"
+name: "Add lint annotations"
 on:
-  push:
-    branches:
-      - master
+  pull_request:
 
 jobs:
   ktlint:
@@ -16,3 +14,4 @@ jobs:
           reporter: plain
           relative: true
           verbose: true
+        continue-on-error: true
