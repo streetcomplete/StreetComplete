@@ -72,7 +72,7 @@ You will find an XML file with entry looking like this:
 
 `<string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>`
 
-The code `quest_placeName_title_name` is string reference, used in code to alow translations.
+The code `quest_placeName_title_name` is string reference, used in code to allow translations.
 
 Search for this identifier in `*.kt` files, it should appear in the quest file [AddPlaceName](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt).
 
@@ -128,7 +128,7 @@ elementFilter property defines nodes, ways and relations which will be selected 
 """
 ``` 
 
-This query will be limited to nodes (`nodes with`), which fulfil some requirements.
+This query will be limited to nodes (`nodes with`), which fulfill some requirements.
 
 - `emergency = defibrillator` tag must be present
 - `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific optionA|optionB is treated like `^optionA|optionB$` regexp)
