@@ -1,18 +1,18 @@
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development.md).
 
-If you want to contribute code to the StreetComplete then making a new quest is one of the easiest programming tasks. Implementing a quest with interface design matching an existing one is quite simple.
+If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest with the interface design matching an existing one is quite simple.
 
-Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier!
+Contributions like that are highly welcome and you would make mapping one more thing in OSM much easier!
 
 Reading the text below is not necessary to create a new quest - a basic method of duplicating existing ones and modifying them may be sufficient. And people were creating new quests before this documentation existed.
 
-But these materials may help or be quicker than trying to explore how things work fully on your own.
+But these materials may help or be quicker than trying to fully explore on your own how things work.
 
 # What is not required
 
 - expert programming ability - you do not need to be an expert programmer to make contributions, basic programming abilities are sufficient to implement a quest similar to existing ones
 - any Kotlin-specific or Android-specific knowledge - it is fine if you never did anything with Kotlin or Android
-- any Github specific knowledge
+- any GitHub specific knowledge
 
 Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) if you are stuck despite this. 
 
@@ -25,11 +25,11 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
   - It is expected that someone trying this can search for a solution to a typical problems on encountering an error message
 - familiarity with StreetComplete as a user - it is really recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory. But passing familiarity with how surveying with StreetComplete works is needed.
 - time - Android Studio setup is sadly complicated
-  - Multiple hours are typical, though most spend on waiting for various downloads
+  - Multiple hours are typical, though mostly spent on waiting for various downloads
   - setting up Android Studio will likely be more complex than writing the code
 - basic ability to use git (but as mentioned, anything GitHub specific will be explained) 
 - GitHub account
-- around 15GB of a free space
+- around 15GB of free space
   - the initial setup will download half of the Internet while getting emulators and dependencies. This is typical.
 
 # Dependencies - initial setup
@@ -40,7 +40,7 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 - [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also connect to a real device via usb, this will not be later mentioned but can fully replace the emulator)
 - run StreetComple in emulator - to verify that everything was setup as required
 
-if you are doing it for the first time do not worry if there is some error to solve along the way. This is typical for setting up Android development. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to info about the setup.
+If you are doing it for the first time, don't worry if there is some error to solve along the way. This is typical for setting up Android development. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to information about the setup.
 
 # Invent a new quest
 
@@ -59,7 +59,7 @@ Find one that has the same type of interface as the one that you are trying to i
 
 Are you trying to implement a quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be a yes/no question. `AddTracktype` where the mapper will be selecting one of the images.
 
-Is it going to be asked for POIs and be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
+Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
 Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
@@ -76,7 +76,7 @@ The code `quest_placeName_title_name` is string reference, used in code to allow
 
 Search for this identifier in `*.kt` files, it should appear in the quest file [AddPlaceName](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt).
 
-This method can be often used to locate relevant code.
+This method can often be used to locate relevant code.
 
 ## Pull requests
 
