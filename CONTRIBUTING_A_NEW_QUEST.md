@@ -1,4 +1,4 @@
-For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development.md).
+For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development).
 
 If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest with the interface design matching an existing one is quite simple.
 
