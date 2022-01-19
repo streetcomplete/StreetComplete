@@ -807,14 +807,6 @@
                     "placeholder": "00:00",
                     "terms": "trvanie,cas,čas,dlzka,dĺžka"
                 },
-                "ele": {
-                    "label": "Nadmorská výška",
-                    "terms": "nadmorska vyska,vyska,výška,nadmorská výška"
-                },
-                "ele_node": {
-                    "label": "Nadmorská výška",
-                    "terms": "nadmorska vyska,vyska,výška,nadmorská výška"
-                },
                 "electrified": {
                     "label": "Elektrifikovaná",
                     "options": {
@@ -976,10 +968,6 @@
                 },
                 "geyser/height": {
                     "label": "Výška erupcie"
-                },
-                "gnis/feature_id": {
-                    "label": "Identifikačné číslo objektu GNIS",
-                    "terms": "gnis,federálny informačný systém geografických názvov usa"
                 },
                 "government": {
                     "label": "Typ"
@@ -1790,10 +1778,6 @@
                 },
                 "rcn_ref": {
                     "label": "Číslo cyklistickej trasy"
-                },
-                "real_fire": {
-                    "label": "Prirodzený oheň",
-                    "terms": "krb,ohnisko,pec,oheň,komín"
                 },
                 "recycling_accepts": {
                     "label": "Prijíma"
@@ -3494,14 +3478,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "Automat na noviny",
                     "terms": "noviny,casopisy"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Automat na vyzdvihnutie zásielky",
-                    "terms": "balíkomat,balikomat,poštomat,postomat"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Automat na vyzdvihnutie/odoslanie zásielky",
-                    "terms": "balíkomat,balikomat,poštomat,postomat"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Automat na parkovacie lístky",

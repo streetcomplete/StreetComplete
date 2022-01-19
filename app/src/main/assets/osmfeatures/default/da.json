@@ -778,14 +778,6 @@
                     "label": "Varighed",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "Højde",
-                    "terms": "højde,elevering,bakke.bjerg,udsigt"
-                },
-                "ele_node": {
-                    "label": "Højde",
-                    "terms": "højde,elevering,bakke.bjerg,udsigt"
-                },
                 "electrified": {
                     "label": "Elektrificering",
                     "options": {
