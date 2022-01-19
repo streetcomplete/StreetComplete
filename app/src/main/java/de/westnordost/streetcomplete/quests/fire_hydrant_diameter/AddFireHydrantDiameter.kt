@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -21,6 +22,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
          and !fire_hydrant:diameter
          and fire_hydrant:diameter:signed != no
+         or (fire_hydrant:diameter:signed = no and fire_hydrant:diameter:signed older today -2 years)
     """
     override val changesetComment = "Add fire hydrant diameter"
     override val wikiLink = "Tag:emergency=fire_hydrant"
@@ -51,8 +53,11 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
         when (answer) {
-            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.toOsmValue())
-            is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
+            is FireHydrantDiameter ->       {
+                changes.add("fire_hydrant:diameter", answer.toOsmValue())
+                changes.deleteIfPreviously("fire_hydrant:diameter:signed", "no")
+            }
+            is NoFireHydrantDiameterSign -> changes.updateWithCheckDate("fire_hydrant:diameter:signed", "no")
         }
     }
 }
