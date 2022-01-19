@@ -29,7 +29,8 @@
         app:layout_constraintTop_toTopOf="@id/dialogContainer"
         app:layout_constraintBottom_toBottomOf="@id/dialogContainer"
         app:layout_constraintLeft_toLeftOf="@id/dialogContainer"
-        app:layout_constraintRight_toRightOf="@id/dialogContainer"/>
+        app:layout_constraintRight_toRightOf="@id/dialogContainer"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/shineView2"
@@ -43,7 +44,8 @@
         app:layout_constraintTop_toTopOf="@id/dialogContainer"
         app:layout_constraintBottom_toBottomOf="@id/dialogContainer"
         app:layout_constraintLeft_toLeftOf="@id/dialogContainer"
-        app:layout_constraintRight_toRightOf="@id/dialogContainer"/>
+        app:layout_constraintRight_toRightOf="@id/dialogContainer"
+        tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dialogContainer"
