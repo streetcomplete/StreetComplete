@@ -1,12 +1,12 @@
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development).
 
-If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest with the interface design matching an existing one is quite simple.
+If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest where the interface design matches an existing one is quite simple.
 
 Contributions like that are highly welcome and you would make mapping one more thing in OSM much easier!
 
 Reading the text below is not necessary to create a new quest - a basic method of duplicating existing ones and modifying them may be sufficient. And people were creating new quests before this documentation existed.
 
-But these materials may help or be quicker than trying to fully explore on your own how things work.
+But this materials may help or be quicker than trying to fully explore on your own how things work.
 
 # What is not required
 
@@ -18,12 +18,12 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 
 # Required
 
-- programming ability - it is not a good first task for someone who never programmed anything. 
-  - Setup of environment takes long
+- programming ability - it is not a good first task for someone who has never programmed anything. 
+  - Setup of environment takes a long time
   - Editing even the simplest quest requires edits to at least two different files
-  - Kotlin familiarity is not needed, but the ability to adjust to a new syntax is needed
+  - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed
   - It is expected that someone trying this can search for a solution to a typical problems on encountering an error message
-- familiarity with StreetComplete as a user - it is really recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory. But passing familiarity with how surveying with StreetComplete works is needed.
+- familiarity with StreetComplete as a user - it is highly recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory, but having a passing familiarity with how surveying with StreetComplete works is needed.
 - time - Android Studio setup is sadly complicated
   - Multiple hours are typical, though mostly spent on waiting for various downloads
   - setting up Android Studio will likely be more complex than writing the code
@@ -40,7 +40,7 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 - [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also connect to a real device via usb, this will not be later mentioned but can fully replace the emulator)
 - run StreetComple in emulator - to verify that everything was setup as required
 
-If you are doing it for the first time, don't worry if there is some error to solve along the way. This is typical for setting up Android development. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to information about the setup.
+If you are doing it for the first time, don't worry if there is an error to solve along the way, this is typical for setting up an Android development environment. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to information about the setup.
 
 # Invent a new quest
 
@@ -50,7 +50,7 @@ To [repeat](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIB
 ## Existing proposals
 You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
 
-# Learn from an existing code
+# Learn from existing code
 
 ## Find a base
 Base the new quest on one that exists already.
@@ -64,15 +64,15 @@ Is it going to be asked for POIs and should be disabled by default? `AddWheelcha
 Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
 
-### Locating quest
+### Locating a quest
 
-Search across code for part of a question or other text characteristic to this message. For example "What is the name of this place"
+Search across the code for part of a question or other text characteristic to this quest. For example "What is the name of this place"
 
-You will find an XML file with entry looking like this:
+You will find an XML file with an entry looking like this:
 
 `<string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>`
 
-The code `quest_placeName_title_name` is string reference, used in code to allow translations.
+The identifier `quest_placeName_title_name` is a string reference, used in the code to allow translations.
 
 Search for this identifier in `*.kt` files, it should appear in the quest file [AddPlaceName](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt).
 
@@ -82,7 +82,7 @@ This method can often be used to locate relevant code.
 
 One of the better ways to get around a codebase new to you is to look at recent accepted proposals to change code (pull requests).
 
-This is likely useful also here.
+This is also likely useful here.
 
 Find some [recent ones](https://github.com/streetcomplete/StreetComplete/pulls?q=is%3Apr+is%3Aclosed) adding a quest.
 
@@ -92,11 +92,11 @@ This can be also used to locate relevant code, especially helpful if some change
 
 # Copying
 
-Copy relevant quest folder. Some contain multiple quests, in such case copy only what you need.
+Copy the relevant quest folder. Some contain multiple quests, in such case copy only what you need.
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
-# Adjust copy
+# Adjust the copy
 
 After the quest is copied it is necessary to adjust it a bit.
 
@@ -104,9 +104,9 @@ Change its class name and the file name to the new one.
 
 In copied code change package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
 
-# Add quest to the list of active ones
+# Add the quest to the list of active ones
 
-Adjust [QuestModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt#L138-L162) but do not worry too much, it can be later tweaked.
+Adjust [QuestModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt#L138-L162) but do not worry too much, it can be tweaked later.
 
 Add your quest to the list so that it will be loaded by the app.
 
@@ -143,8 +143,7 @@ Also, for very detailed information that can be assumed to always have the same 
 
 ### Properties
 
-You can obtain more info about properties by
-mousing over a property and pressing Ctrl+Q
+You can obtain more info about properties by mousing over a property and pressing Ctrl+Q within Android Studio
 
 
 #### changesetComment
@@ -167,7 +166,7 @@ More info about icon handling will be given later.
 #### questTypeAchievements
 `override val questTypeAchievements = listOf(LIFESAVER)`
 
-In quest achievements list what is relevant to given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
 #### getTitle
 `override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title`
@@ -177,7 +176,7 @@ It is a message displayed to user, code here passes a [reference](https://develo
 
 Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
 
-There are additional files with text, but the text is translated with a completely separately worflow and your changes will modify solely this one file, leaving other text files untouched.
+There are additional files with text, but the text is translated with a completely separately workflow and your changes will only modify this file, leaving other text files untouched.
 
 #### Form
 
@@ -215,7 +214,7 @@ See other ones defined in [StringMapChangesBuilder.kt](de/westnordost/streetcomp
 
 ### Extras
 
-Info listed above must be supplied by every quest. But there are also several optional fields. This specific qest has
+Info listed above must be supplied by every quest. But there are also several optional fields. This specific quest has
 ```
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = defibrillator")
@@ -239,33 +238,34 @@ Keep similar style to existing ones and app in general. Once the quest icon is r
 
 - save as "Plain svg" or clean SVG file from unnecessary cruft in another way, like using [svgo](https://github.com/svg/svgo)
 - Put SVG into `[res/graphics/quest icons](res/graphics/quest icons)` folder
-  - SVG is a standard format editable in various software, unlike internal Android Studio xml that will be produced in the next step.
+  - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next step.
 - Open Android Studio
 - Right click on "app" folder in the Project tool window (top left)
 - Select new → vector asset
-- Select your svg file
+- Select your SVG file
 - Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`), this will cause IDE to generate an XML file
 - add an entry in the [attribution file](res/graphics/authors.txt)
 - modify `icon` property in the quest definition to use the new drawable
 - Commit modified or created files
 - Compile, test quest in the emulator
 
-The same method applies also to other vector drawables, only they will be placed in other parts of [res/graphics/](res/graphics/)
+The same method applies also to other vector drawables, although they will be placed in other parts of [res/graphics/](res/graphics/)
 
-Inkscape is a typical tool to create and edit SVG files, it is a good, free, open-source so is available to all.
+Inkscape is a typical tool to create and edit SVG files, it is a good, free and open-source so is available to all.
 
 # Test
 
-Obviously, testing can be done also earlier. But at least before submitting for review quest should be tested.
+Obviously, testing can also be done earlier. But the quest should at least be tested before submitting for review.
 
 Typically it is done using an emulator. Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
 
 * Is quest listed?
   * Look at the quest list in settings - is your quest appearing there? If not - see [this step](#Add quest to the list of active ones).
-  * While you are there you can disable all quests except yours for an easier testing.
+  * While you are there you can disable all quests except yours for easier testing.
 * Is it shown for expected elements?
 * Is it selected for some unwanted elements?
-* Can you tap on quest marker on open quest form?* an you fill answer as expected?
+* Can you tap on quest marker on open quest form?
+* Can you fill the answer as expected?
 * Can you solve the quest?
 * Is expected tagging being applied?
 ** You can look at logs for info what was applied or use undo menu from bottom-left.
@@ -284,13 +284,13 @@ You can see [already submitted pull requests](https://github.com/streetcomplete/
 
 # Future
 
-After opening a pull request it will be reviewed and you will likely be asked to make some changes. This is normal and happens also with pull requests submitted by experienced contributors.
+After opening a pull request it will be reviewed and you will likely be asked to make some changes. This is normal and also happens with pull requests submitted by experienced contributors.
 
 Changes typically include improving code style, tweaking phrasing and quest settings.
 
 You are also welcome to help with reviewing other PRs - different people have different strengths, there are active reviewers who help with code style, there are some native speakers of English, some with deep knowledge of OSM tagging schemes or deep knowledge of how StreetComplete works.
 
-After the PR was finished it will be merged before the beta release of the next version. This way it can be additionally tested with a wider audience before release to all and translators can [translate text into other languages](CONTRIBUTING.md#translating-the-app).
+After the PR is finished it will be merged before the beta release of the next version. This way it can be additionally tested with a wider audience before release to all and translators can [translate text into other languages](CONTRIBUTING.md#translating-the-app).
 
 After full release it will reach the entire StreetComplete audience who now will be able to more easily contribute to OpenStreetMap. Thanks in advance for that!
 
@@ -298,19 +298,19 @@ After full release it will reach the entire StreetComplete audience who now will
 
 Unclear documentation, including this one, is a bug. Feel free to either submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a fix or [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) describing your confusion.
 
-Note that not everything will be directly described. This document is very intentionally not including step-by-step guide to install Android Studio, [linking](CONTRIBUTING.md#development) to an official docs.
+Note that not everything will be directly described. This document is very intentionally not including step-by-step guide to install Android Studio, [linking](CONTRIBUTING.md#development) to official docs instead.
 
 # More complexity
-What was described above is an attempt to cover all aspects of quest creation, without describing all complexity.
+What was described above is an attempt to cover all aspects of quest creation, without describing all the complexity.
 
-This contains some additional info.
+Below is some additional info.
 
 ## getTitle Parameters
-In some cases, quest will mention the name and type of feature. For example, in case of shops to make their identification possible.
+In some cases, the quest will mention the name and type of feature. For example, in the case of shops to make their identification possible.
 
-This requires preparing space in message for filling at runtime,
+This requires preparing space in the message for filling at runtime,
 
-And to add mechanism supplying this data. Here is [a typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L102-L111) that will
+And to add the mechanism supplying this data. Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L102-L111) that will:
 
 ```
     override fun getTitle(tags: Map<String, String>) =
