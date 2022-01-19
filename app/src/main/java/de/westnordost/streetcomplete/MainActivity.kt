@@ -53,16 +53,16 @@ import javax.inject.Inject
 class MainActivity : BaseActivity(),
     MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
 
-	@Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
-	@Inject lateinit var questAutoSyncer: QuestAutoSyncer
-	@Inject lateinit var downloadController: DownloadController
-	@Inject lateinit var uploadController: UploadController
-	@Inject lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-	@Inject lateinit var prefs: SharedPreferences
-	@Inject lateinit var userLoginStatusController: UserLoginStatusController
-	@Inject lateinit var userUpdater: UserUpdater
+    @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
+    @Inject lateinit var questAutoSyncer: QuestAutoSyncer
+    @Inject lateinit var downloadController: DownloadController
+    @Inject lateinit var uploadController: UploadController
+    @Inject lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
+    @Inject lateinit var prefs: SharedPreferences
+    @Inject lateinit var userLoginStatusController: UserLoginStatusController
+    @Inject lateinit var userUpdater: UserUpdater
 
-	private val requestLocation = LocationRequester(this, this)
+    private val requestLocation = LocationRequester(this, this)
 
     private var mainFragment: MainFragment? = null
 
