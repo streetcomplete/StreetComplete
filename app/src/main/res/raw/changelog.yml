@@ -10,14 +10,14 @@ v39.0: |
   <ul>
   <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
   <li>Some improvements on the fire hydrant quest(s) (#3608), by @tiptoptom and @thefeiter, (#3601)</li>
-  <li>Some minor enhancements and clearer wordings (#3576, #3610, #3599...), thanks @matkoniecz, @olo81</li>
+  <li>Some minor enhancements and clearer wordings (#3576, #3610, #3599, #3653...), thanks @matkoniecz, @olo81</li>
   <li>Added "Lifesaver" achievement (#3616), by @FloEdelmann</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
   <li>Fix rarely quests don't go away after solving them (#3290)</li>
   <li>Fix rarely quest answers don't get uploaded automatically until next restart of app (#3494)</li>
-  <li>Fix a few more crashes</li>
+  <li>Fix a crashes (#3622, ...)</li>
   </ul>
 
 v38.2: |
