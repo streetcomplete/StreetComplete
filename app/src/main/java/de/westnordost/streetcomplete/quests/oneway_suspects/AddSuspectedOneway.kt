@@ -58,16 +58,16 @@ class AddSuspectedOneway(
 
         val onewayCandidates = mapData.ways.filter {
             // so, only the ways suspected by improveOSM to be oneways
-            it.id in suspectedOnewayWayIds &&
+            it.id in suspectedOnewayWayIds
             // but also filter the data as ImproveOSM data may be outdated or catching too much
-            filter.matches(it) &&
+            && filter.matches(it)
             /* also exclude rings because the driving direction can then not be determined reliably
                from the improveosm data and the quest should stay simple, i.e not require the
                user to input it in those cases. Additionally, whether a ring-road is a oneway or
                not is less valuable information (for routing) and many times such a ring will
                actually be a roundabout. Oneway information on roundabouts is superfluous.
                See #1320 */
-            it.nodeIds.first() != it.nodeIds.last()
+            && it.nodeIds.first() != it.nodeIds.last()
         }
 
         // rehash traffic direction data into simple "way id -> forward/backward" data and persist

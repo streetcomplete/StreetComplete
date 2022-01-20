@@ -88,13 +88,13 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // Kerbs can be defined in three ways (see https://github.com/streetcomplete/StreetComplete/issues/1305#issuecomment-688333976):
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
-        it.tags["barrier"] == "kerb" ||
+        it.tags["barrier"] == "kerb"
         // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
-        it.id in kerbBarrierNodeIds ||
+        || it.id in kerbBarrierNodeIds
         // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
         //    another tagged with footway = sidewalk that is the continuation of the way and is not
         //    and intersection (thus, has exactly two connections: to the sidewalk and to the crossing)
-        it.id in crossingEndNodeIds
+        || it.id in crossingEndNodeIds
     }
 }
 

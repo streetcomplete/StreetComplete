@@ -203,8 +203,8 @@ private fun Note.shouldShowAsQuest(
     if (id in blockedNoteIds) return false
 
     /* don't show notes where user replied last unless he wrote a survey required marker */
-    if (comments.last().isReplyFromUser(userId) &&
-        !comments.last().containsSurveyRequiredMarker()
+    if (comments.last().isReplyFromUser(userId)
+        && !comments.last().containsSurveyRequiredMarker()
     ) return false
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
@@ -215,9 +215,9 @@ private fun Note.shouldShowAsQuest(
      * through an on-site survey.
      * Likely, if something is posed as a question, the reporter expects someone to
      * answer/comment on it, possibly an information on-site is missing, so let's only show these */
-    if (showOnlyNotesPhrasedAsQuestions &&
-        !probablyContainsQuestion() &&
-        !containsSurveyRequiredMarker()
+    if (showOnlyNotesPhrasedAsQuestions
+        && !probablyContainsQuestion()
+        && !containsSurveyRequiredMarker()
     ) return false
 
     return true

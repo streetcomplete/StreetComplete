@@ -53,11 +53,11 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
             is StileType -> {
                 val newType = answer.osmValue
                 val newMaterial = answer.osmMaterialValue
-                val oldType = tags["stile"]
-                val oldMaterial = tags["material"]
+                val oldType = changes.getPreviousValue("stile")
+                val oldMaterial = changes.getPreviousValue("material")
                 val stileWasRebuilt =
-                    oldType != null && oldType != newType ||
-                    newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
+                    oldType != null && oldType != newType
+                    || newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
 
                 // => properties that refer to the old replaced stile should be removed
                 if (stileWasRebuilt) {

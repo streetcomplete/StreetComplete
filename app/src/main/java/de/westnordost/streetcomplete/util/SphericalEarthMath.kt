@@ -192,8 +192,8 @@ fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
             if (intersection != null) {
                 // touching endpoints don't count
                 if (
-                    first != npolyline.first() && first != npolyline.last() &&
-                    second != npolyline.first() && second != npolyline.last()
+                    first != npolyline.first() && first != npolyline.last()
+                    && second != npolyline.first() && second != npolyline.last()
                 ) return true
             }
         }

@@ -244,9 +244,9 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private fun updateKeyboardButtonVisibility() {
         toggleKeyboardButton?.isInvisible = !(
-            houseNumberInput?.hasFocus() == true ||
-            streetNumberInput?.hasFocus() == true ||
-            blockNumberInput?.hasFocus() == true
+            houseNumberInput?.hasFocus() == true
+            || streetNumberInput?.hasFocus() == true
+            || blockNumberInput?.hasFocus() == true
         )
     }
 

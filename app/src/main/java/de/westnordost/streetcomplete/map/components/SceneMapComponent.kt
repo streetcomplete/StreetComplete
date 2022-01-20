@@ -49,9 +49,10 @@ class SceneMapComponent(
         val sceneFilePath = getSceneFilePath()
         val sceneUpdates = getAllSceneUpdates()
         val strSceneUpdates = sceneUpdates.map { it.toString() }
-        if (loadedSceneFilePath == sceneFilePath &&
-            loadedSceneUpdates == strSceneUpdates &&
-            !aerialViewChanged) return
+        if (loadedSceneFilePath == sceneFilePath
+            && loadedSceneUpdates == strSceneUpdates
+            && !aerialViewChanged
+        ) return
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }

@@ -94,9 +94,9 @@ fun Cycleway.isSuperfluous(countryCode: String) = when (this) {
 }
 
 fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
-    !isUnknown && !isInvalid && !isAmbiguous(countryCode) && !isSuperfluous(countryCode) &&
+    !isUnknown && !isInvalid && !isAmbiguous(countryCode) && !isSuperfluous(countryCode)
     /* suggestion lanes are only known in Belgium and Netherlands */
-    (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
+    && (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
 
 val Cycleway.estimatedWidth: Float get() = when (this) {
     EXCLUSIVE_LANE -> 1.5f

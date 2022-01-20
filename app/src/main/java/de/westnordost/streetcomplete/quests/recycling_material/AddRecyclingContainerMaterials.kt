@@ -41,10 +41,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         /* Only recycling containers that do either not have any recycling:* tag yet or
          * haven't been touched for 2 years and are exclusively recycling types selectable in
          * StreetComplete. */
-        filter.matches(element) &&
-        (
-            !element.hasAnyRecyclingMaterials() ||
-            recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
+        filter.matches(element) && (
+            !element.hasAnyRecyclingMaterials()
+            || recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
         )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
@@ -132,7 +131,7 @@ private fun Element.hasAnyRecyclingMaterials(): Boolean =
 
 private fun Element.hasUnknownRecyclingMaterials(): Boolean =
     tags.any {
-        it.key.startsWith("recycling:") &&
-        it.key !in allKnownMaterials &&
-        it.value == "yes"
+        it.key.startsWith("recycling:")
+        && it.key !in allKnownMaterials
+        && it.value == "yes"
     }

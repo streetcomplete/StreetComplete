@@ -64,9 +64,9 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         val isHeightRestrictor = tags["barrier"] == "height_restrictor"
         val isTunnel = tags["tunnel"] == "yes"
         val isBelowBridge =
-            !isParkingEntrance && !isHeightRestrictor &&
-            tags["tunnel"] == null && tags["covered"] == null &&
-            tags["man_made"] != "pipeline"
+            !isParkingEntrance && !isHeightRestrictor
+            && tags["tunnel"] == null && tags["covered"] == null
+            && tags["man_made"] != "pipeline"
 
         return when {
             isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title

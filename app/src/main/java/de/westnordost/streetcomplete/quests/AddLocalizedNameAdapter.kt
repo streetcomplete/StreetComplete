@@ -227,8 +227,8 @@ class AddLocalizedNameAdapter(
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
                     localizedName.name = name.trim()
-                    buttonNameSuggestions.isGone = name.isNotEmpty() ||
-                        getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
+                    buttonNameSuggestions.isGone = name.isNotEmpty()
+                        || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
                     for (listener in listeners) {
                         listener(localizedName)
                     }

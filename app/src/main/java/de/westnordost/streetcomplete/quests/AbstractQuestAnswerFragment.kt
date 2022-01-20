@@ -230,8 +230,8 @@ abstract class AbstractQuestAnswerFragment<T> :
            relation, so it is not supported
            https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
         */
-        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-            way.tags["junction"] == "roundabout"
+        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull()
+            && way.tags["junction"] == "roundabout"
         if (isClosedRoundabout) return null
 
         if (way.isArea()) return null
