@@ -95,8 +95,7 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
 
             if (it.startsWith(wikiRowSpan2)) {
                 cellContent = it.substring(wikiRowSpan2.length)
-            }
-            else if (it.startsWith(" rowspan=") || it.startsWith(" colspan=")) {
+            } else if (it.startsWith(" rowspan=") || it.startsWith(" colspan=")) {
                 throw Error("Unsupported rowspan > 2 or colspan detected in table row $rowIndex: $it")
             }
 
@@ -142,11 +141,10 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
         "\"???\", \"$question\", \"${packageName ?: "–"}\", \"???\", ${wikiOrder + 1}, \"???\""
 }
 
-fun getFilesRecursively(directory: File): List<File> {
-    return directory.listFiles()!!.flatMap {
+fun getFilesRecursively(directory: File): List<File> =
+    directory.listFiles()!!.flatMap {
         if (it.isDirectory) getFilesRecursively(it) else listOf(it)
     }
-}
 
 fun getStrings(stringsFile: File): Map<String, String> {
     fun normalizeString(string: String) = string
@@ -269,12 +267,15 @@ fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
 
     val (updatedRepoQuests, existingRepoQuests) = repoQuests.partition { repoQuest ->
         repoQuest.wikiOrder == -1 // repo quests not yet in wiki
-        || outdatedWikiQuests.any { it.wikiOrder == repoQuest.wikiOrder } // repo quests not up-to-date in wiki
+            || outdatedWikiQuests.any { // repo quests not up-to-date in wiki
+                it.wikiOrder == repoQuest.wikiOrder
+            }
     }
 
-    val csvLines =
-        listOf("\"Quest Name\", \"Question\", \"Package name\", \"Default Priority\", \"Wiki Order\", \"SVG Icon URL\"") +
-        listOf(",,,,,") +
+    val csvLines = listOf(
+        "\"Quest Name\", \"Question\", \"Package name\", \"Default Priority\", \"Wiki Order\", \"SVG Icon URL\"",
+        ",,,,,"
+    ) +
         outdatedWikiQuests.map { it.csvString } +
         listOf(",,,,,") +
         updatedRepoQuests.map { it.csvString } +
