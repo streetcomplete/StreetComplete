@@ -206,9 +206,13 @@ open class LocationAwareMapFragment : MapFragment() {
 
         tracks.last().add(location)
         // delay update by 600 ms because the animation to the new location takes that long
-        viewLifecycleScope.launch {
-            delay(600)
-            tracksMapComponent?.addToCurrentTrack(location)
+        // in rare cases, onLocationChanged may already be called before the view has been created
+        // so we need to check that first
+        if (view != null) {
+            viewLifecycleScope.launch {
+                delay(600)
+                tracksMapComponent?.addToCurrentTrack(location)
+            }
         }
     }
 

@@ -66,7 +66,7 @@ android {
         }
     }
 
-    lintOptions {
+    lint {
         disable("MissingTranslation")
         ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false

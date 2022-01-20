@@ -85,7 +85,10 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         }
     }
 
-    override fun isFormComplete() = levels.isNotEmpty()
+    override fun isFormComplete() =
+        // levels must be an int >= 0. IF roof levels is specified, it must also be an int >= 0
+        levels.toIntOrNull()?.let { it >= 0 } ?: false &&
+            (roofLevels.isEmpty() || roofLevels.toIntOrNull()?.let { it >= 0 } ?: false)
 }
 
 private class LastPickedAdapter(

@@ -835,14 +835,6 @@
                     "placeholder": "00:00",
                     "terms": "trvání,doba,průběh,čas,rozmezí"
                 },
-                "ele": {
-                    "label": "Nadmořská výška",
-                    "terms": "výška,poloha,mnm,m. n. m.,metrů,nad mořem,vysoko,vrchol,vrch,nadmořská,úroveň,nízko"
-                },
-                "ele_node": {
-                    "label": "Nadmořská výška",
-                    "terms": "výška,poloha,mnm,m. n. m.,metrů,nad mořem,vysoko,vrchol,vrch,nadmořská,úroveň,nízko"
-                },
                 "electrified": {
                     "label": "Elektrifikace",
                     "options": {
@@ -1004,10 +996,6 @@
                 },
                 "geyser/height": {
                     "label": "Výška výtrysku"
-                },
-                "gnis/feature_id": {
-                    "label": "Identifikační číslo prvku GNIS",
-                    "terms": "id,identifikace,číslo,kód,označení,usa,antarktida,místo,značka"
                 },
                 "government": {
                     "label": "Typ"
@@ -1598,12 +1586,7 @@
                     }
                 },
                 "parking/orientation": {
-                    "label": "Orientace",
-                    "options": {
-                        "diagonal": "Šikmo k cestě",
-                        "parallel": "Rovnoběžně s cestou",
-                        "perpendicular": "Kolmo k cestě"
-                    }
+                    "label": "Orientace"
                 },
                 "parking_entrance": {
                     "label": "Typ",
@@ -1826,10 +1809,6 @@
                 },
                 "rcn_ref": {
                     "label": "číslo cyklotrasy"
-                },
-                "real_fire": {
-                    "label": "Pravý oheň",
-                    "terms": "oheň,krb,ohniště,vnitřní ohniště,vnitřní oheň,krb v hospodě,hospoda s krbem,gril,sezení u ohně,skutečný oheň"
                 },
                 "recycling_accepts": {
                     "label": "Určení"
@@ -3572,12 +3551,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "Automat na noviny",
                     "terms": "automat,prodejní automat,noviny,časopisy"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Schránka na vyzvednutí zásilky"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Schránka na vyzvednutí / zanechání zásilky"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Parkovací automat",
@@ -5751,9 +5724,6 @@
                 "natural/wood": {
                     "name": "přírodní les"
                 },
-                "network/type/node_network": {
-                    "name": "Bod rekreační sítě"
-                },
                 "noexit/yes": {
                     "name": "Konec cesty",
                     "terms": "slepá ulice,konec ulice,konec silnice,slepá silnice"
@@ -5779,9 +5749,6 @@
                 },
                 "office/association": {
                     "name": "Kancelář neziskové organizace"
-                },
-                "office/bail_bond_agent": {
-                    "name": "zastavárna pro získání kauce"
                 },
                 "office/charity": {
                     "name": "Kancelář charity"
