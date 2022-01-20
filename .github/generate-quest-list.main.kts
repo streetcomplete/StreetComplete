@@ -63,10 +63,10 @@ data class RepoQuest(
 ) {
     val csvString: String get() {
         val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")
-        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/${iconsPath}"
+        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/$iconsPath"
 
         val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder + 1
-        return "\"$name\", \"$title\", \"${iconUrl}\", ${defaultPriority + 1}, $wikiOrder"
+        return "\"$name\", \"$title\", ${defaultPriority + 1}, $wikiOrder, \"$iconUrl\""
     }
 }
 
@@ -117,7 +117,7 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
 
     fun isOutdated(repoQuests: List<RepoQuest>): Boolean = !repoQuests.any { it.wikiOrder == wikiOrder }
 
-    val csvString: String get() = "\"???\", \"$question\", \"???\", \"???\", ${wikiOrder + 1}"
+    val csvString: String get() = "\"???\", \"$question\", \"???\", ${wikiOrder + 1}, \"???\""
 }
 
 fun getFilesRecursively(directory: File): List<File> {
@@ -246,7 +246,7 @@ fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
     val (newQuests, oldQuests) = repoQuests.partition { it.wikiOrder == -1 }
 
     val csvLines =
-        listOf("\"Quest Name\", \"Question\", \"SVG Icon URL\", \"Default Priority\", \"Wiki Order\"") +
+        listOf("\"Quest Name\", \"Question\", \"Default Priority\", \"Wiki Order\", \"SVG Icon URL\"") +
         wikiQuests.filter { it.isOutdated(repoQuests) }.map { it.csvString } +
         listOf(",,,") +
         newQuests.map { it.csvString } +
