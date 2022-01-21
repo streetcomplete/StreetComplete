@@ -18,7 +18,7 @@ class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
 
     override fun createForm() = AddBridgeStructureForm()
 
-    override fun applyAnswerTo(answer: BridgeStructure, changes: StringMapChangesBuilder) {
-        changes.add("bridge:structure", answer.osmValue)
+    override fun applyAnswerTo(answer: BridgeStructure, tags: StringMapChangesBuilder) {
+        tags["bridge:structure"] = answer.osmValue
     }
 }

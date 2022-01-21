@@ -24,8 +24,8 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
     override fun createForm() = AddPoliceTypeForm()
 
-    override fun applyAnswerTo(answer: PoliceType, changes: StringMapChangesBuilder) {
-        changes.add("operator", answer.operatorName)
-        changes.addOrModify("operator:wikidata", answer.wikidata)
+    override fun applyAnswerTo(answer: PoliceType, tags: StringMapChangesBuilder) {
+        tags["operator"] = answer.operatorName
+        tags["operator:wikidata"] = answer.wikidata
     }
 }

@@ -42,46 +42,45 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
     override fun createForm() = AddRoadNameForm()
 
-    override fun applyAnswerTo(answer: RoadNameAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RoadNameAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            is NoRoadName        -> changes.add("noname", "yes")
+            is NoRoadName        -> tags["noname"] = "yes"
             is RoadIsServiceRoad -> {
                 // The understanding of what is a service road is much broader in common language
                 // than what the highway=service tagging covers. For example, certain traffic-calmed
                 // driveways / service roads may be tagged as highway=living_street. We do not want
                 // to overwrite this, so let's keep it a living street in that case (see #2431)
-                if (changes.getPreviousValue("highway") == "living_street") {
-                    changes.add("noname", "yes")
+                if (tags["highway"] == "living_street") {
+                    tags["noname"] = "yes"
                 } else {
-                    changes.modify("highway", "service")
+                    tags["highway"] = "service"
                 }
             }
-            is RoadIsTrack       -> changes.modify("highway", "track")
+            is RoadIsTrack       -> tags["highway"] = "track"
             is RoadIsLinkRoad    -> {
-                val prevValue = changes.getPreviousValue("highway")
-                if (prevValue?.matches("primary|secondary|tertiary".toRegex()) == true) {
-                    changes.modify("highway", prevValue + "_link")
+                if (tags["highway"]?.matches("primary|secondary|tertiary".toRegex()) == true) {
+                    tags["highway"] += "_link"
                 }
             }
             is RoadName -> {
                 val singleName = answer.localizedNames.singleOrNull()
                 if (singleName?.isRef() == true) {
-                    changes.add("ref", singleName.name)
+                    tags["ref"] = singleName.name
                 } else {
-                    applyAnswerRoadName(answer, changes)
+                    applyAnswerRoadName(answer, tags)
                 }
             }
         }
     }
 
-    private fun applyAnswerRoadName(answer: RoadName, changes: StringMapChangesBuilder) {
+    private fun applyAnswerRoadName(answer: RoadName, tags: StringMapChangesBuilder) {
         for ((languageTag, name) in answer.localizedNames) {
             val key = when (languageTag) {
                 "" -> "name"
                 "international" -> "int_name"
                 else -> "name:$languageTag"
             }
-            changes.addOrModify(key, name)
+            tags[key] = name
         }
     }
 }

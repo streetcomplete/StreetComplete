@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.quests.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
-import de.westnordost.streetcomplete.util.isRightOf
 
 class AddCrossing : OsmElementQuestType<KerbHeight> {
 
@@ -70,8 +69,8 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("kerb", answer.osmValue)
+    override fun applyAnswerTo(answer: KerbHeight, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("kerb", answer.osmValue)
         /* So, we don't assume there is a crossing here for kerb=no and kerb=raised.
 
            As most actual crossings will have at least lowered kerbs, this is a good indicator.
@@ -82,7 +81,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
          */
 
         if (answer.osmValue in listOf("lowered", "flush")) {
-            changes.add("highway", "crossing")
+            tags["highway"] = "crossing"
         }
     }
 }

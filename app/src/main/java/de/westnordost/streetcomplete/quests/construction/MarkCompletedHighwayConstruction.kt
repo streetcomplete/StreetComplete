@@ -39,18 +39,18 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
 
     override fun createForm() = MarkCompletedConstructionForm()
 
-    override fun applyAnswerTo(answer: CompletedConstructionAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             is OpeningDateAnswer -> {
-                changes.addOrModify("opening_date", answer.date.toCheckDateString())
+                tags["opening_date"] = answer.date.toCheckDateString()
             }
             is StateAnswer -> {
                 if (answer.value) {
-                    val value = changes.getPreviousValue("construction") ?: "road"
-                    changes.modify("highway", value)
-                    deleteTagsDescribingConstruction(changes)
+                    val value = tags["construction"] ?: "road"
+                    tags["highway"] = value
+                    removeTagsDescribingConstruction(tags)
                 } else {
-                    changes.updateCheckDate()
+                    tags.updateCheckDate()
                 }
             }
         }

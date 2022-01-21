@@ -60,16 +60,16 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
 
     override fun createForm() = AddCrossingTypeForm()
 
-    override fun applyAnswerTo(answer: CrossingType, changes: StringMapChangesBuilder) {
-        val previous = changes.getPreviousValue("crossing")
-        if(previous == "island") {
-            changes.modify("crossing", answer.osmValue)
-            changes.addOrModify("crossing:island", "yes")
+    override fun applyAnswerTo(answer: CrossingType, tags: StringMapChangesBuilder) {
+        val crossingValue = tags["crossing"]
+        if(crossingValue == "island") {
+            tags.updateWithCheckDate("crossing", answer.osmValue)
+            tags["crossing:island"] = "yes"
         } else {
-            if (answer == CrossingType.MARKED && previous in listOf("zebra", "marked", "uncontrolled")) {
-                changes.updateCheckDateForKey("crossing")
+            if (answer == CrossingType.MARKED && crossingValue in listOf("zebra", "marked", "uncontrolled")) {
+                tags.updateCheckDateForKey("crossing")
             } else {
-                changes.updateWithCheckDate("crossing", answer.osmValue)
+                tags.updateWithCheckDate("crossing", answer.osmValue)
             }
         }
     }

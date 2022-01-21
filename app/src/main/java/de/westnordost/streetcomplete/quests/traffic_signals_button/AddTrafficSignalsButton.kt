@@ -26,7 +26,7 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("button_operated", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["button_operated"] = answer.toYesNo()
     }
 }

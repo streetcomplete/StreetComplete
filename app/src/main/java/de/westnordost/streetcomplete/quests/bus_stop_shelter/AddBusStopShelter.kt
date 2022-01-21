@@ -47,13 +47,13 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override fun createForm() = AddBusStopShelterForm()
 
-    override fun applyAnswerTo(answer: BusStopShelterAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BusStopShelterAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            SHELTER -> changes.updateWithCheckDate("shelter", "yes")
-            NO_SHELTER -> changes.updateWithCheckDate("shelter", "no")
+            SHELTER -> tags.updateWithCheckDate("shelter", "yes")
+            NO_SHELTER -> tags.updateWithCheckDate("shelter", "no")
             COVERED -> {
-                changes.deleteIfExists("shelter")
-                changes.add("covered", "yes")
+                tags.remove("shelter")
+                tags["covered"] = "yes"
             }
         }
     }

@@ -53,7 +53,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("crossing:island", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["crossing:island"] = answer.toYesNo()
     }
 }

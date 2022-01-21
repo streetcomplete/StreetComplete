@@ -29,7 +29,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
     override fun createForm() = AddFireHydrantPositionForm()
 
-    override fun applyAnswerTo(answer: FireHydrantPosition, changes: StringMapChangesBuilder) {
-        changes.add("fire_hydrant:position", answer.osmValue)
+    override fun applyAnswerTo(answer: FireHydrantPosition, tags: StringMapChangesBuilder) {
+        tags["fire_hydrant:position"] = answer.osmValue
     }
 }

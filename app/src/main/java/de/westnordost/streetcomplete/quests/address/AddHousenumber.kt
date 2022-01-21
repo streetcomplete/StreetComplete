@@ -126,30 +126,30 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: HousenumberAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: HousenumberAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            is NoHouseNumber -> changes.add("nohousenumber", "yes")
-            is HouseNumber   -> changes.add("addr:housenumber", answer.number)
-            is HouseName     -> changes.add("addr:housename", answer.name)
+            is NoHouseNumber -> tags["nohousenumber"] = "yes"
+            is HouseNumber   -> tags["addr:housenumber"] = answer.number
+            is HouseName     -> tags["addr:housename"] = answer.name
             is ConscriptionNumber -> {
-                changes.add("addr:conscriptionnumber", answer.number)
+                tags["addr:conscriptionnumber"] = answer.number
                 if (answer.streetNumber != null) {
-                    changes.add("addr:streetnumber", answer.streetNumber)
-                    changes.add("addr:housenumber", answer.streetNumber)
+                    tags["addr:streetnumber"] = answer.streetNumber
+                    tags["addr:housenumber"] = answer.streetNumber
                 } else {
-                    changes.add("addr:housenumber", answer.number)
+                    tags["addr:housenumber"] = answer.number
                 }
             }
             is HouseAndBlockNumber -> {
-                changes.add("addr:housenumber", answer.houseNumber)
-                changes.addOrModify("addr:block_number", answer.blockNumber)
+                tags["addr:housenumber"] = answer.houseNumber
+                tags["addr:block_number"] = answer.blockNumber
             }
             WrongBuildingType -> {
-                changes.modify("building", "yes")
+                tags["building"] = "yes"
             }
             is HouseNameAndHouseNumber -> {
-                changes.add("addr:housenumber", answer.number)
-                changes.add("addr:housename", answer.name)
+                tags["addr:housenumber"] = answer.number
+                tags["addr:housename"] = answer.name
             }
         }
     }

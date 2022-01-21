@@ -22,12 +22,12 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
 
     override fun createForm() = AddOrchardProduceForm()
 
-    override fun applyAnswerTo(answer: List<OrchardProduce>, changes: StringMapChangesBuilder) {
-        changes.add("produce", answer.joinToString(";") { it.osmValue })
+    override fun applyAnswerTo(answer: List<OrchardProduce>, tags: StringMapChangesBuilder) {
+        tags["produce"] = answer.joinToString(";") { it.osmValue }
 
         val landuse = answer.singleOrNull()?.osmLanduseValue
         if (landuse != null) {
-            changes.modify("landuse", landuse)
+            tags["landuse"] = landuse
         }
     }
 }

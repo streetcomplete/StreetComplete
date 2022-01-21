@@ -53,8 +53,8 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
 
     override fun createForm() = AddTrafficSignalsVibrationForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate(VIBRATING_BUTTON, answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate(VIBRATING_BUTTON, answer.toYesNo())
     }
 }
 

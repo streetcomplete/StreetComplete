@@ -29,10 +29,6 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
 
     override fun createForm() = AddRoofShapeForm()
 
-    override fun applyAnswerTo(answer: RoofShape, changes: StringMapChangesBuilder) {
-        changes.add("roof:shape", answer.osmValue)
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter { element ->
             filter.matches(element)
@@ -54,5 +50,9 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
         val center = mapData.getGeometry(element.type, element.id)?.center ?: return null
         return countryInfos.get(center.longitude, center.latitude).isRoofsAreUsuallyFlat
+    }
+
+    override fun applyAnswerTo(answer: RoofShape, tags: StringMapChangesBuilder) {
+        tags["roof:shape"] = answer.osmValue
     }
 }

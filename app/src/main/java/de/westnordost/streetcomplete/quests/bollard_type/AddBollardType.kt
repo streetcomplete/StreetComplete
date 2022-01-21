@@ -52,7 +52,7 @@ class AddBollardType : OsmElementQuestType<BollardType> {
 
     override fun createForm() = AddBollardTypeForm()
 
-    override fun applyAnswerTo(answer: BollardType, changes: StringMapChangesBuilder) {
-        changes.add("bollard", answer.osmValue)
+    override fun applyAnswerTo(answer: BollardType, tags: StringMapChangesBuilder) {
+        tags["bollard"] = answer.osmValue
     }
 }

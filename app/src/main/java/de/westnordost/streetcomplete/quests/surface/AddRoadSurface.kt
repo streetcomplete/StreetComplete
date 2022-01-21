@@ -45,8 +45,8 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddRoadSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        answer.applyTo(changes, "surface")
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: StringMapChangesBuilder) {
+        answer.applyTo(tags, "surface")
     }
 }
 

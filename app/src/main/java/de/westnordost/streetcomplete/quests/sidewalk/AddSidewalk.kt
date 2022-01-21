@@ -112,8 +112,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: SidewalkAnswer, changes: StringMapChangesBuilder) {
-        changes.add("sidewalk", getSidewalkValue(answer))
+    override fun applyAnswerTo(answer: SidewalkAnswer, tags: StringMapChangesBuilder) {
+        tags["sidewalk"] = getSidewalkValue(answer)
     }
 
     private fun getSidewalkValue(answer: SidewalkAnswer) =

@@ -25,7 +25,7 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
     override fun createForm() = AddInformationForm()
 
-    override fun applyAnswerTo(answer: TourismInformation, changes: StringMapChangesBuilder) {
-        changes.add("information", answer.osmValue)
+    override fun applyAnswerTo(answer: TourismInformation, tags: StringMapChangesBuilder) {
+        tags["information"] = answer.osmValue
     }
 }

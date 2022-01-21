@@ -35,7 +35,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("self_service", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["self_service"] = answer.toYesNo()
     }
 }

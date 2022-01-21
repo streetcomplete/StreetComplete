@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
+import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
@@ -9,24 +9,24 @@ object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer()
 
 data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer()
 
-fun SurfaceAnswer.applyTo(changes: StringMapChangesBuilder, key: String) {
+fun SurfaceAnswer.applyTo(tags: StringMapChangesBuilder, key: String) {
     val osmValue = value.osmValue
-    val previousOsmValue = changes.getPreviousValue(key)
+    val previousOsmValue = tags[key]
 
     // update surface + check date
-    changes.updateWithCheckDate(key, osmValue)
+    tags.updateWithCheckDate(key, osmValue)
     // remove smoothness tag if surface was changed
     if (previousOsmValue != null && previousOsmValue != osmValue) {
-        changes.deleteIfExists("smoothness")
-        changes.deleteIfExists("smoothness:date")
-        changes.deleteCheckDatesForKey("smoothness")
+        tags.remove("smoothness")
+        tags.remove("smoothness:date")
+        tags.removeCheckDatesForKey("smoothness")
     }
     // add/remove note - used to describe generic surfaces
     if (note != null) {
-        changes.addOrModify("$key:note", note)
+        tags["$key:note"] = note
     } else {
-        changes.deleteIfExists("$key:note")
+        tags.remove("$key:note")
     }
     // clean up old source tags - source should be in changeset tags
-    changes.deleteIfExists("source:$key")
+    tags.remove("source:$key")
 }

@@ -35,12 +35,12 @@ class AddHandrail : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("handrail", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("handrail", answer.toYesNo())
         if (!answer) {
-            changes.deleteIfExists("handrail:left")
-            changes.deleteIfExists("handrail:right")
-            changes.deleteIfExists("handrail:center")
+            tags.remove("handrail:left")
+            tags.remove("handrail:right")
+            tags.remove("handrail:center")
         }
     }
 }

@@ -28,22 +28,22 @@ enum class BarrierType(val osmValue: String) {
     BICYCLE_BARRIER("cycle_barrier")
 }
 
-fun BarrierType.applyTo(changes: StringMapChangesBuilder) {
-    changes.addOrModify("barrier", this.osmValue)
+fun BarrierType.applyTo(tags: StringMapChangesBuilder) {
+    tags["barrier"] = this.osmValue
     when (this) {
         BarrierType.STILE_SQUEEZER -> {
-            changes.addOrModify("stile", "squeezer")
+            tags["stile"] = "squeezer"
         }
         BarrierType.STILE_LADDER -> {
-            changes.addOrModify("stile", "ladder")
+            tags["stile"] = "ladder"
         }
         BarrierType.STILE_STEPOVER_WOODEN -> {
-            changes.addOrModify("stile", "stepover")
-            changes.addOrModify("material", "wood")
+            tags["stile"] = "stepover"
+            tags["material"] = "wood"
         }
         BarrierType.STILE_STEPOVER_STONE -> {
-            changes.addOrModify("stile", "stepover")
-            changes.addOrModify("material", "stone")
+            tags["stile"] = "stepover"
+            tags["material"] = "stone"
         }
     }
 }

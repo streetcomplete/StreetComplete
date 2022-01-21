@@ -32,7 +32,7 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override fun createForm() = AddPostboxRoyalCypherForm()
 
-    override fun applyAnswerTo(answer: PostboxRoyalCypher, changes: StringMapChangesBuilder) {
-        changes.add("royal_cypher", answer.osmValue)
+    override fun applyAnswerTo(answer: PostboxRoyalCypher, tags: StringMapChangesBuilder) {
+        tags["royal_cypher"] = answer.osmValue
     }
 }

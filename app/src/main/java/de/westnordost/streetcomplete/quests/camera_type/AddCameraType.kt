@@ -30,7 +30,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
 
     override fun createForm() = AddCameraTypeForm()
 
-    override fun applyAnswerTo(answer: CameraType, changes: StringMapChangesBuilder) {
-        changes.add("camera:type", answer.osmValue)
+    override fun applyAnswerTo(answer: CameraType, tags: StringMapChangesBuilder) {
+        tags["camera:type"] = answer.osmValue
     }
 }

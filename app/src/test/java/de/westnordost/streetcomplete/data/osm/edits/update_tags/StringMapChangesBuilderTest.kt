@@ -8,7 +8,7 @@ class StringMapChangesBuilderTest {
 
     @Test fun delete() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
-        builder.delete("exists")
+        builder.remove("exists")
         val change = builder.create().changes.single() as StringMapEntryDelete
         assertEquals("exists", change.key)
         assertEquals("like this", change.valueBefore)
@@ -17,12 +17,12 @@ class StringMapChangesBuilderTest {
     @Test(expected = IllegalArgumentException::class)
     fun `delete non-existing fails`() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
-        builder.delete("does not exist")
+        builder.remove("does not exist")
     }
 
     @Test fun `deleteIfExists non-existing does not fail`() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
-        builder.deleteIfExists("does not exist")
+        builder.remove("does not exist")
     }
 
     @Test fun `deleteIfPreviously non-existing does not fail`() {
@@ -48,7 +48,7 @@ class StringMapChangesBuilderTest {
 
     @Test fun add() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
-        builder.add("does not exist", "but now")
+        builder.set("does not exist", "but now")
         val change = builder.create().changes.single() as StringMapEntryAdd
         assertEquals("does not exist", change.key)
         assertEquals("but now", change.value)
@@ -57,7 +57,7 @@ class StringMapChangesBuilderTest {
     @Test(expected = IllegalArgumentException::class)
     fun `add already existing fails`() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
-        builder.add("exists", "like that")
+        builder.set("exists", "like that")
     }
 
     @Test fun modify() {
@@ -84,6 +84,6 @@ class StringMapChangesBuilderTest {
     fun `duplicate change on same key fails`() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
         builder.modify("exists", "like that")
-        builder.delete("exists")
+        builder.remove("exists")
     }
 }

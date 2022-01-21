@@ -30,5 +30,5 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
 }
 
 fun StringMapChangesBuilder.deleteIfExistList(keys: List<String>) {
-    keys.forEach { deleteIfExists(it) }
+    keys.forEach { remove(it) }
 }
