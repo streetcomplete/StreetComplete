@@ -14,11 +14,13 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
     /** put the given value for the given key */
     operator fun set(key: String, value: String) {
         val valueBefore = source[key]
-        addChange(if (valueBefore == null) {
-            StringMapEntryAdd(key, value)
-        } else {
-            StringMapEntryModify(key, valueBefore, value)
-        })
+        if (valueBefore != value) {
+            addChange(if (valueBefore == null) {
+                StringMapEntryAdd(key, value)
+            } else {
+                StringMapEntryModify(key, valueBefore, value)
+            })
+        }
     }
 
     /* ----------------------- */
@@ -67,7 +69,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
 
     data class Entry(override val key: String, override val value: String) : Map.Entry<String, String>
 
-    fun getChanges(): List<StringMapEntryChange> = changes.values.toList()
+    val hasChanges: Boolean get() = changes.isNotEmpty()
 
     private fun addChange(change: StringMapEntryChange) {
         if (changes[change.key] == change) return

@@ -160,10 +160,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         }
 
         // only set the check date if nothing was changed
-        val isNotActuallyChangingAnything = tags.getChanges().all { change ->
-            change is StringMapEntryModify && change.value == change.valueBefore
-        }
-        if (isNotActuallyChangingAnything || tags.hasCheckDateForKey("cycleway")) {
+        if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
             tags.updateCheckDateForKey("cycleway")
         }
     }

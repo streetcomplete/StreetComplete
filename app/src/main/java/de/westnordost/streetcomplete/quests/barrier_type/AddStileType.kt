@@ -84,7 +84,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
             }
         }
         // policy is to not remove a check date if one is already there but update it instead
-        if (tags.getChanges().isEmpty() || tags.hasCheckDate()) {
+        if (!tags.hasChanges || tags.hasCheckDate()) {
             tags.updateCheckDate()
         }
     }

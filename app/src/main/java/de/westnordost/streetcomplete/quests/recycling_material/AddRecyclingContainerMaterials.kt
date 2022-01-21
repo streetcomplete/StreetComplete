@@ -115,10 +115,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
 
         // only set the check date if nothing was changed
-        val isNotActuallyChangingAnything = tags.getChanges().all { change ->
-            change is StringMapEntryModify && change.value == change.valueBefore
-        }
-        if (isNotActuallyChangingAnything || tags.hasCheckDateForKey("recycling")) {
+        if (!tags.hasChanges || tags.hasCheckDateForKey("recycling")) {
             tags.updateCheckDateForKey("recycling")
         }
     }
