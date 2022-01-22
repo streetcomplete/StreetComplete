@@ -48,7 +48,6 @@ import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.location.LocationRequester
 import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
