@@ -705,14 +705,6 @@
                     "placeholder": "00:00",
                     "terms": "durasi,lama.lamanya,waktu"
                 },
-                "ele": {
-                    "label": "Ketinggian",
-                    "terms": "ketinggian,tinggi,panjang,elevasi"
-                },
-                "ele_node": {
-                    "label": "Ketinggian",
-                    "terms": "ketinggian,tinggi,panjang,elevasi"
-                },
                 "electrified": {
                     "label": "Memiliki Listrik",
                     "options": {
@@ -855,9 +847,6 @@
                 },
                 "geyser/height": {
                     "label": "Tinggi Erupsi"
-                },
-                "gnis/feature_id": {
-                    "label": "Fitur ID GNIS"
                 },
                 "government": {
                     "label": "Tipe"
@@ -2789,17 +2778,8 @@
                 "type/restriction/no_right_turn": {
                     "name": "Dilarang Berbelok ke Kanan"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Tidak Boleh Lurus"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Dilarang Putar Balik"
-                },
                 "type/route": {
                     "name": "Rute"
-                },
-                "type/route/bicycle": {
-                    "name": "Rute Sepeda"
                 },
                 "type/route/bus": {
                     "name": "Rute Bus"

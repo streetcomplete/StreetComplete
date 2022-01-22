@@ -42,7 +42,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anónimo"</string>
     <string name="confirmation_discard_title">"Desexas rexeita-los datos engadidos?"</string>
     <string name="confirmation_discard_positive">"Rexeitar"</string>
-    <string name="confirmation_discard_negative">"Volver"</string>
     <string name="action_download">"Procurar por tarefas neste lugar"</string>
     <string name="action_upload">"Subir respostas"</string>
     <string name="no_changes">"Non diches ningunha resposta"</string>
@@ -54,7 +53,9 @@
     <string name="turn_on_location_request">"A ubicación non está activada. Desexas ir ós axustes para activala agora?"</string>
     <string name="no_location_permission_warning">"Precísase a túa ubicación para mostrar a túa posición no mapa e para procurar tarefas preto de ti."</string>
     <string name="about_title_authors">"Cretos"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e os contribuíntes"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick e os contribuíntes"</string>
     <string name="about_title_repository">"Repositorio do código"</string>
     <string name="about_summary_repository">"no GitHub"</string>
     <string name="about_title_report_error">"Notificar erros"</string>
@@ -919,6 +920,8 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Os camións altos non caben"</string>
     <string name="quest_address_street_hint">"Preme a estrada no mapa"</string>
     <string name="quest_crossing_type_marked">"Con marcas viarias"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Aparcadoiro ao carón da estrada"</string>
     <string name="quest_parkingType_lane">"Liña de aparcadoiro"</string>
     <string name="quest_existence_title">"Isto segue aquí? (%s)"</string>

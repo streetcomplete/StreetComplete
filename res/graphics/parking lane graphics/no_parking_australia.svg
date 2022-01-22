@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
- <g transform="matrix(2.2937 0 0 2.2937 -.32113 -613.58)">
-  <circle cx="55.945" cy="323.32" r="54.062" fill="#fff" style="paint-order:fill markers stroke"/>
-  <circle cx="55.946" cy="323.32" r="45.567" fill="none" stroke="#c1121c" stroke-width="13.501"/>
-  <path d="m47.226 352.96-0.15185-50.652 15.991-0.0201c16.172-0.0203 17.244 22.707-0.3037 22.74l-15.535 0.0294" fill="none" stroke="#000" stroke-width="10.464"/>
-  <path d="m89.086 290.17-66.281 66.281" fill="none" stroke="#c1121c" stroke-width="13.951"/>
-  <text x="42.04324" y="323.69415" fill="#000000" font-family="sans-serif" font-size="17.439px" stroke-width=".43598" style="line-height:1.25" xml:space="preserve"><tspan x="42.04324" y="323.69415" stroke-width=".43598"/></text>
- </g>
+ <circle cx="128" cy="128.02" r="124" fill="#fff"/>
+ <circle cx="128" cy="128.02" r="104.52" fill="none" stroke="#c1121c" stroke-width="30"/>
+ <path d="m108 196-0.3483-116.18 36.679-0.0461c37.094-0.04656 39.553 52.083-0.69659 52.159l-35.633 0.0674" fill="none" stroke="#000" stroke-width="24"/>
+ <path d="m204.02 51.983-152.03 152.03" fill="none" stroke="#c1121c" stroke-width="32"/>
 </svg>

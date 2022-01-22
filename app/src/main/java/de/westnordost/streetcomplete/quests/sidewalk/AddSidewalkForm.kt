@@ -23,27 +23,25 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     override val otherAnswers = listOf(
-            AnswerItem(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }
+        AnswerItem(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }
     )
 
     override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
+
     private var leftSide: Sidewalk? = null
     private var rightSide: Sidewalk? = null
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        savedInstanceState?.getString(SIDEWALK_RIGHT)?.let { rightSide = Sidewalk.valueOf(it) }
-        savedInstanceState?.getString(SIDEWALK_LEFT)?.let { leftSide = Sidewalk.valueOf(it) }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (savedInstanceState != null) {
+            onLoadInstanceState(savedInstanceState)
+        }
 
         binding.puzzleView.onClickSideListener = { isRight -> showSidewalkSelectionDialog(isRight) }
 
@@ -60,22 +58,14 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         binding.puzzleView.setLeftSideImage(ResImage(leftSide?.iconResId ?: defaultResId))
         binding.puzzleView.setRightSideImage(ResImage(rightSide?.iconResId ?: defaultResId))
 
-        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
-            if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
-            if (rightSide == null) binding.puzzleView.showRightSideTapHint()
-            HAS_SHOWN_TAP_HINT = true
-        }
-
-        updateLastAnswerButtonVisibility()
-
-        lastSelection?.let {
-            binding.lastAnswerButton.leftSideImageView.setImageResource(it.left.dialogIconResId)
-            binding.lastAnswerButton.rightSideImageView.setImageResource(it.right.dialogIconResId)
-        }
-
-        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
-
+        showTapHint()
+        initLastAnswerButton()
         checkIsFormComplete()
+    }
+
+    private fun onLoadInstanceState(savedInstanceState: Bundle) {
+        savedInstanceState.getString(SIDEWALK_RIGHT)?.let { rightSide = Sidewalk.valueOf(it) }
+        savedInstanceState.getString(SIDEWALK_LEFT)?.let { leftSide = Sidewalk.valueOf(it) }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -88,37 +78,15 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         streetSideRotater?.onMapOrientation(rotation, tilt)
     }
 
-    override fun onClickOk() {
-        val leftSide = leftSide
-        val rightSide = rightSide
-
-        val answer = SidewalkSides(
-            left = leftSide == Sidewalk.YES,
-            right = rightSide == Sidewalk.YES
-        )
-
-        applyAnswer(answer)
-
-        if (leftSide != null && rightSide != null) {
-            lastSelection =
-                if (isRoadDisplayedUpsideDown())
-                    LastSidewalkSelection(rightSide, leftSide)
-                else
-                    LastSidewalkSelection(leftSide, rightSide)
+    private fun showTapHint() {
+        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
+            if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
+            if (rightSide == null) binding.puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
         }
     }
 
-    private fun confirmSeparatelyMappedSidewalk() {
-        AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(SeparatelyMapped) }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
-    }
-
-    override fun isFormComplete() = leftSide != null && rightSide != null
-
-    override fun isRejectingClose() = leftSide != null || rightSide != null
+    /* ---------------------------------- selection dialog -------------------------------------- */
 
     private fun showSidewalkSelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
@@ -128,29 +96,6 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
             onSelectedSide(it.value!!, isRight)
         }.show()
     }
-
-    private fun applyLastSelection() {
-        val lastSelection = lastSelection ?: return
-        if (isRoadDisplayedUpsideDown()) {
-            onSelectedSide(lastSelection.right, false)
-            onSelectedSide(lastSelection.left, true)
-        } else {
-            onSelectedSide(lastSelection.left, false)
-            onSelectedSide(lastSelection.right, true)
-        }
-    }
-
-
-    private fun isRoadDisplayedUpsideDown(): Boolean {
-        val roadDisplayRotation = binding.puzzleView.streetRotation
-        return roadDisplayRotation.normalizeDegrees(-180f).absoluteValue > 90f
-    }
-
-    private fun updateLastAnswerButtonVisibility() {
-        binding.lastAnswerButton.root.isGone =
-            lastSelection == null || leftSide != null || rightSide != null
-    }
-
 
     private fun onSelectedSide(sidewalk: Sidewalk, isRight: Boolean) {
         if (isRight) {
@@ -165,6 +110,78 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         updateLastAnswerButtonVisibility()
         checkIsFormComplete()
     }
+
+    /* --------------------------------- last answer button ------------------------------------- */
+
+    private fun initLastAnswerButton() {
+        updateLastAnswerButtonVisibility()
+
+        lastSelection?.let {
+            binding.lastAnswerButton.leftSideImageView.setImageResource(it.left.dialogIconResId)
+            binding.lastAnswerButton.rightSideImageView.setImageResource(it.right.dialogIconResId)
+        }
+
+        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
+    }
+
+    private fun updateLastAnswerButtonVisibility() {
+        binding.lastAnswerButton.root.isGone =
+            lastSelection == null || leftSide != null || rightSide != null
+    }
+
+    private fun saveLastSelection() {
+        val leftSide = leftSide
+        val rightSide = rightSide
+        if (leftSide != null && rightSide != null) {
+            lastSelection =
+                if (isRoadDisplayedUpsideDown())
+                    LastSidewalkSelection(rightSide, leftSide)
+                else
+                    LastSidewalkSelection(leftSide, rightSide)
+        }
+    }
+
+    private fun applyLastSelection() {
+        val lastSelection = lastSelection ?: return
+        if (isRoadDisplayedUpsideDown()) {
+            onSelectedSide(lastSelection.right, false)
+            onSelectedSide(lastSelection.left, true)
+        } else {
+            onSelectedSide(lastSelection.left, false)
+            onSelectedSide(lastSelection.right, true)
+        }
+    }
+
+    private fun isRoadDisplayedUpsideDown(): Boolean =
+        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+
+    /* --------------------------------------- apply answer ------------------------------------- */
+
+    override fun onClickOk() {
+        val leftSide = leftSide
+        val rightSide = rightSide
+
+        val answer = SidewalkSides(
+            left = leftSide == Sidewalk.YES,
+            right = rightSide == Sidewalk.YES
+        )
+
+        applyAnswer(answer)
+
+        saveLastSelection()
+    }
+
+    private fun confirmSeparatelyMappedSidewalk() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(SeparatelyMapped) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+    }
+
+    override fun isFormComplete() = leftSide != null && rightSide != null
+
+    override fun isRejectingClose() = leftSide != null || rightSide != null
 
     companion object {
         private const val SIDEWALK_LEFT = "sidewalk_left"

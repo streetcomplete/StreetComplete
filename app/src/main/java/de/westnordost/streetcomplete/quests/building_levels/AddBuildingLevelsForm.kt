@@ -32,7 +32,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(5, 30)
+            .mostCommonWithin(target = 5, historyCount = 30, first = 1)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
@@ -85,7 +85,10 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         }
     }
 
-    override fun isFormComplete() = levels.isNotEmpty()
+    override fun isFormComplete() =
+        // levels must be an int >= 0. IF roof levels is specified, it must also be an int >= 0
+        levels.toIntOrNull()?.let { it >= 0 } ?: false
+        && (roofLevels.isEmpty() || roofLevels.toIntOrNull()?.let { it >= 0 } ?: false)
 }
 
 private class LastPickedAdapter(

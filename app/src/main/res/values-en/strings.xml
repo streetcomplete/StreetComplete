@@ -77,7 +77,7 @@
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
-    <string name="confirmation_discard_negative">"Cancel"</string>
+    <string name="confirmation_discard_negative2">"No"</string>
     <string name="action_download">"Scan for quests here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give any answer"</string>
@@ -96,7 +96,7 @@
     <string name="action_about2">"About"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_faq">"FAQ"</string>
@@ -281,6 +281,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_generic_hasFeature_optional">"Optionally"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Yes (leave note)"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
@@ -327,9 +328,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
-    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a ankle-high step to access it.</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a ankle-high step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than an ankle-high step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
@@ -431,7 +432,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_tung_nuts">Tung nuts</string>
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
-    <string name="quest_parkingType_street_side">Parking just off the roadway</string>
+    <string name="quest_parkingType_street_side">Parking adjacent to the roadway</string>
     <string name="quest_parkingType_lane">Parking on roadway</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
@@ -451,7 +452,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit…</string>
     <string name="quest_address_answer_house_name">No house number but a name…</string>
+    <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
     <string name="quest_address_house_name_label">House name:</string>
+    <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">levels in the roof</string>
     <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
     <string name="quest_cycleway_value_track">cycle track</string>
@@ -745,6 +748,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be quite the stretch just to solve a single quest.</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">This quest type is disabled by default because it is quite time-consuming and often difficult to make the right choice. You should only enable this quest type if you are really committed to add this kind of data.</string>
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
 
@@ -1081,8 +1085,58 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_preset_name">Preset name</string>
     <string name="quest_presets_default_name">Default</string>
     <string name="quest_presets_selected">Selected</string>
+    <string name="quest_smoothness_name_title">What is the surface quality of %s here?</string>
+    <string name="quest_smoothness_square_title">What is the surface quality of this square?</string>
+    <string name="quest_smoothness_path_title">What is the surface quality of this path here?</string>
+    <string name="quest_smoothness_road_title">What is the surface quality of this road here?</string>
+    <string name="quest_smoothness_title_excellent">Smooth and even</string>
+    <string name="quest_smoothness_title_good">Mostly even</string>
+    <string name="quest_smoothness_title_intermediate">A little bumpy</string>
+    <string name="quest_smoothness_title_bad">Bumpy</string>
+    <string name="quest_smoothness_title_very_bad">Very bumpy</string>
+    <string name="quest_smoothness_title_horrible">Very bumpy and uneven</string>
+    <string name="quest_smoothness_title_very_horrible">Almost impassable</string>
+    <string name="quest_smoothness_title_impassable">Impassable</string>
+
+    <string name="quest_smoothness_description_excellent_paved">No bumps or cracks</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">Almost seamless</string>
+
+    <string name="quest_smoothness_description_good_paved">Only small cracks, gaps, repairs or a little rough surface</string>
+    <string name="quest_smoothness_description_good_paving_stones">Shallow or narrow gaps</string>
+    <string name="quest_smoothness_description_good_sett">Unusually flat stones, regular pattern, very shallow or narrow gaps</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">Hard-packed, very little loose gravel or sand</string>
+
+    <string name="quest_smoothness_description_intermediate_paved">Unusually rough surface, wider gaps, cracks, shallow ruts, potholes or other damage</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">Wider gaps, possibly some displaced stones or other damage</string>
+    <string name="quest_smoothness_description_intermediate_sett">Flat stones or with square edges, shallow or narrow gaps</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">Fine gravel, shallow bumps or potholes</string>
+
+    <string name="quest_smoothness_description_bad_paved">Big gaps, potholes, ruts, crumbled paving or other damage</string>
+    <string name="quest_smoothness_description_bad_paving_stones">Displaced stones, big gaps or other damage</string>
+    <string name="quest_smoothness_description_bad_sett">Weathered stone or irregular shapes, big gaps or damage</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">Some bigger gravel, bumps, ruts or potholes</string>
+
+    <string name="quest_smoothness_description_very_bad_paved">Deep potholes, ruts or other dangerous damage</string>
+    <string name="quest_smoothness_description_very_bad_sett">Big gaps, displaced, missing or irregularly shaped stones or dangerous damage</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">Missing and broken stones, gaps or other dangerous damage</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damage</string>
+
+    <string name="quest_smoothness_description_horrible">Properly usable only by off-road vehicles or on foot</string>
+    <string name="quest_smoothness_description_very_horrible">Properly usable only by specialized off-road vehicles or on foot</string>
+    <string name="quest_smoothness_description_impassable">Unfit for any vehicle, only passable on foot</string>
+
+    <string name="quest_smoothness_wrong_surface">Surface is different</string>
+    <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
+    <string name="quest_smoothness_obstacle">There is an obstacle</string>
+    <string name="quest_smoothness_obstacle_hint">Please provide a general answer for the smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
+    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single damages.</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
+    <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
+    <string name="quest_fireHydrant_position_green">In grass or dirt</string>
+    <string name="quest_fireHydrant_position_lane">On the roadway</string>
+    <string name="quest_fireHydrant_position_sidewalk">On the sidewalk</string>
+    <string name="quest_fireHydrant_position_parking_lot">In a parking spot</string>
     <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal to the path</string>
     <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>
@@ -1107,4 +1161,32 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_level_title">On which level number is %s located?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
+    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
+    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
+    <string name="select_street_parking_position">"Select position:"</string>
+    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"On roadway"</string>
+    <string name="street_parking_half_on_kerb">"Partially on roadway"</string>
+    <string name="street_parking_on_kerb">"Adjacent to roadway"</string>
+    <string name="street_parking_street_side">"Adjacent to roadway only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On roadway only in dedicated spaces"</string>
+    <string name="street_parking_separate">Parking displayed separately on map</string>
+    <string name="street_parking_no">No parking here / Not allowed</string>
+    <string name="street_parking_prohibited">No parking</string>
+    <string name="street_stopping_prohibited">No stopping</string>
+    <string name="street_standing_prohibited">No standing</string>
+    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
+    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
+    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, first answer how those that are allowed to, do park here. What restrictions apply exactly can be specified later.
+
+Alternatively, you can leave a note (with a photo)."</string>
+    <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
+    <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that allows vehicles to stop safely completely beside the traffic lane, though not always (fully) on paved surface."</string>
+    <string name="quest_fireHydrant_diameter_ref_title">What diameter is specified on the sign for this fire hydrant? (reference number: %s)</string>
+    <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
+    <string name="achievement_lifesaver_title">Lifesaver</string>
+    <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
 </resources>

@@ -46,7 +46,6 @@
     <string name="quest_noteDiscussion_anonymous">"Анонім"</string>
     <string name="confirmation_discard_title">"Очистити поле?"</string>
     <string name="confirmation_discard_positive">"Очистити"</string>
-    <string name="confirmation_discard_negative">"Скасувати"</string>
     <string name="action_download">"Знайти завдання поруч"</string>
     <string name="action_upload">"Надіслати відповіді"</string>
     <string name="no_changes">"Ви залишили форму пустою"</string>
@@ -60,7 +59,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Позиціювання потрібне для пошуку завдань поруч з вами."</string>
     <string name="about_title_authors">"Автори"</string>
-    <string name="about_summary_authors">"© 2016–2021 Тобіас Цвік та інші"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Тобіас Цвік та інші"</string>
     <string name="about_title_repository">"Репозиторій проєкту"</string>
     <string name="about_summary_repository">"на GitHub"</string>
     <string name="about_title_report_error">"Повідомити про помилку"</string>
@@ -1001,6 +1002,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Позначений перехід"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Парковка біля проїжджої частини"</string>
     <string name="quest_parkingType_lane">"Парковка на проїжджій частині"</string>
     <string name="quest_existence_title">"Ще тут? (%s)"</string>
@@ -1186,8 +1189,21 @@
     <string name="quest_generic_hasFeature_optional">"За бажанням"</string>
     <string name="quest_buildingType_bridge">"Міст між будівлями"</string>
     <string name="quest_laundrySelfService_title2">"Чи надає ця пральня самообслуговування?"</string>
+    <string name="quest_dietType_halal_name_title">"Чи %s пропонує халяльні продукти?"</string>
+    <string name="quest_dietType_explanation_halal">"Халяльна продукція повинна готуватися за спеціальними правилами, а сертифікаційні агенції Халяль повинні маркувати продукцію відповідно."</string>
+    <string name="quest_picnicTableCover_title">"Цей стіл для пікніку має накриття (захищений від дощу)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Ця частина є сходами"</string>
+    <string name="quest_barrier_type_passage_conversion">"Чи час забору кореспонденції для цієї скриньки все ще правильний?"</string>
+    <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
+    <string name="quest_traffic_calming_type_title">"Чи час забору кореспонденції для цієї %s скриньки все ще правильний?"</string>
+    <string name="quest_traffic_calming_type_bump">"Не розпізнано. Спробуйте ввести тип місця, наприклад, “пекарня”. Або залиште нотатку."</string>
+    <string name="quest_traffic_calming_type_hump">"Лежачий поліцейський (широкий)"</string>
+    <string name="quest_traffic_calming_type_table">"Стіл (плаский верх)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Лежачий поліцейський з розривами (не заважає широкому транспорту)"</string>
     <string name="quest_traffic_calming_type_choker">"Звужена дорога"</string>
     <string name="quest_traffic_calming_type_island">"Острів"</string>
+    <string name="quest_traffic_calming_type_chicane">"Навмисні вигини"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Пральна дошка (шумові смуги)"</string>
     <string name="quest_surface_value_concrete_plates">"Бетонні плити"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонні доріжки"</string>
     <string name="quest_fireHydrant_diameter_title">"Який діаметр вказаний на знаку для цього пожежного гідранта?"</string>
@@ -1195,4 +1211,25 @@
     <string name="quest_fireHydrant_confirmation_title">"Ви впевнені?  Іноді діаметр можна знайти на самому гідранті."</string>
     <string name="quest_diet_answer_no_food">"У ньому немає їжі"</string>
     <string name="short_no_answer_on_button">"Ні"</string>
+    <string name="restore_confirmation">"Відновити"</string>
+    <string name="restore_dialog_message">"Відновити усі квести, які ви приховали?"</string>
+    <string name="quest_parking_access_title2">"Кому дозволено паркуватися тут? Паркування може бути безкоштовним або платним."</string>
+    <string name="quest_access_yes">"Будь-хто"</string>
+    <string name="quest_access_customers">"Будь-який відвідувач закладу (наприклад, лише клієнти)"</string>
+    <string name="quest_access_private">"Лише особа(-и) з дозволом"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Чи час забору кореспонденції для цієї скриньки все ще вірний?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Чи час забору кореспонденції для цієї %s скриньки все ще вірний?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Не розпізнано. Спробуйте ввести тип місця, наприклад, “пекарня”. Або залиште нотатку."</string>
+    <string name="quest_bicycle_barrier_type_title">"Який це тип велобар'єру?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Діагональ на шляху"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Вузький проїзд, менший у напрямку верха"</string>
+    <string name="quest_barrier_bicycle_type_single">"Проїзд між двома бар'єрами"</string>
+    <string name="quest_barrier_bicycle_type_double">"Шикана - бар'єр з кожної сторони"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Шикана - більше, ніж два бар'єри"</string>
+    <string name="quest_level_title">"На якому рівні розміщено номер %s?"</string>
+    <string name="pref_title_language_select">"Оберіть мову"</string>
+    <string name="language_default">"Визначається системою"</string>
+    <string name="on_floor">"на поверсі %s:"</string>
+    <string name="select_street_parking_position">"Вибрати місце"</string>
+    <string name="quest_smoothness_square_title">"Яка якість покриття цієї площі?"</string>
 </resources>

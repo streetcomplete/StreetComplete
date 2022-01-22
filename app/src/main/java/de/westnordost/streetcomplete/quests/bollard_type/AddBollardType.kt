@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
 
 class AddBollardType : OsmElementQuestType<BollardType> {
 
@@ -23,12 +24,12 @@ class AddBollardType : OsmElementQuestType<BollardType> {
           and area != yes
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add bollard type"
+    override val changesetComment = "Add bollard type"
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.ic_quest_no_cars
     override val isDeleteElementEnabled = true
 
-    override val questTypeAchievements = listOf(CAR)
+    override val questTypeAchievements = listOf(CAR, LIFESAVER)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bollard_type_title
 

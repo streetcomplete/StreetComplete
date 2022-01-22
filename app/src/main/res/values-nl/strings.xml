@@ -104,9 +104,6 @@
     <string name="confirmation_discard_positive">"Maak ongedaan"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Annuleren"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Download of ververs vragen in deze omgeving"</string>
 
     <!-- Fuzzy -->
@@ -140,7 +137,7 @@
     <string name="about_title_authors">"Auteurs"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick en medewerkers"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick en medewerkers"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Broncode-repo"</string>
@@ -1714,7 +1711,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_recycling_type_clothes">"Kleding"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_type_green_waste">"Tuinafval"</string>
+    <string name="quest_recycling_type_green_waste">"Groente-, Fruit- en Tuinafval"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"Glazen flessen en potten"</string>
@@ -2286,6 +2283,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkeren langs de weg"</string>
     <string name="quest_parkingType_lane">"Parkeren op de weg"</string>
     <string name="quest_existence_title">"Is dit hier nog steeds? (%s)"</string>
@@ -2492,9 +2491,57 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="short_no_answer_on_button">"Nee"</string>
     <string name="restore_confirmation">"Herstel"</string>
     <string name="restore_dialog_message">"Toon alle vragen die u verborgen hebt"</string>
+    <string name="quest_parking_access_title2">"Wie mag hier parkeren? Parkeren kan gratis of betaald zijn."</string>
+    <string name="quest_access_yes">"Iedereen"</string>
+    <string name="quest_access_customers">"Elke persoon die een specifieke plaats bezoekt (bijvoorbeeld alleen klanten)"</string>
+    <string name="quest_access_private">"Alleen persoon(en) met toestemming"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Zijn de ophaaltijden van deze brievenbus nog steeds correct?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Zijn de ophaaltijden van deze %s brievenbus nog steeds correct?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Niet herkend. Probeer de soort winkel in te voeren, bijvoorbeeld 'bakkerij'. Overweeg anders een notitie achter te laten."</string>
+    <string name="quest_bicycle_barrier_type_title">"Welk soort fietssluis is dit?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonaal over het pad"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Smalle doorgang, nauwer naar boven toe."</string>
+    <string name="quest_barrier_bicycle_type_single">"Doorgang tussen twee hekken"</string>
+    <string name="quest_barrier_bicycle_type_double">"Chicane - doorgang tussen twee hekken"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Chicane - doorgang door meer dan 2 hekken"</string>
 
     <!-- Fuzzy -->
     <string name="quest_level_title">"Op welk niveau zit %s?"</string>
     <string name="pref_title_language_select">"Selecteer taal"</string>
     <string name="language_default">"Standaardinstelling"</string>
+    <string name="on_floor">"op verdieping %s"</string>
+    <string name="confirmation_discard_negative2">"Nee"</string>
+    <string name="quest_street_parking_title">"Hoe kunnen auto's hier parkeren, of helemaal niet?"</string>
+    <string name="select_street_parking_orientation">"Selecteer de postitie ten op zichte van de rijbaan:"</string>
+    <string name="select_street_parking_position">"Selecteer positie:"</string>
+    <string name="select_street_parking_no">"Zijn er hier borden of weg makeringen?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonaal"</string>
+    <string name="street_parking_perpendicular">"Loodrecht"</string>
+    <string name="street_parking_on_street">"Op de rijbaan"</string>
+    <string name="street_parking_half_on_kerb">"Gedeeltelijk op de rijbaan"</string>
+    <string name="street_parking_on_kerb">"Naast de rijbaan"</string>
+    <string name="street_parking_street_side">"Naast de rijbaan, in parkeervakken"</string>
+    <string name="street_parking_painted_area_only">"Op de rijbaan, alleen in de parkeervakken"</string>
+    <string name="street_parking_separate">"Parking displayed separately on map"</string>
+    <string name="street_parking_no">"Parkeren niet toegestaan"</string>
+    <string name="street_parking_prohibited">"Niet parkeren"</string>
+    <string name="street_stopping_prohibited">"Niet stoppen"</string>
+    <string name="street_standing_prohibited">"Niet stilstaan"</string>
+    <string name="street_parking_conditional_restrictions">"parkeren of stoppen onder voorwaarden"</string>
+    <string name="street_parking_no_other_reasons">"Geen specifiek bord / parkeren niet mogelijk"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_conditional_restrictions_hint">"Als het mogelijk is om hier te parkeren of te stoppen, antwoord dan eerst hoe degenen die mogen, hier parkeren. Welke beperkingen precies gelden, kunt u later specificeren.
+
+U kunt ook een notitie achterlaten (met een foto)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Zowel een huisnummer als een gebouwnaam"</string>
+    <string name="quest_address_house_number_label">"Huisnummer:"</string>
+    <string name="quest_shoulder_title">"Heeft deze weg een vluchtstrook?"</string>
+    <string name="quest_fireHydrant_position_title">"Waar is deze brandkraan geplaatst?"</string>
+    <string name="quest_fireHydrant_position_green">"In gras of aarde"</string>
+    <string name="quest_fireHydrant_position_lane">"Op de rijbaan"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"op het voetpad"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Op een parkeerplaats"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Welke diameter is aangegeven op het bord van deze brandkraan? (Referentie nummer %s)"</string>
 </resources>

@@ -108,9 +108,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Terket"</string>
-
-    <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"İptal"</string>
     <string name="action_download">"Buradaki görevleri tara"</string>
     <string name="action_upload">"Yanıtları yükle"</string>
 
@@ -138,7 +135,7 @@
     <string name="about_title_authors">"Yazarlar"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick ve katkıda bulunan kişiler"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick ve katkıda bulunan kişiler"</string>
     <string name="about_title_repository">"Kaynak Deposu"</string>
     <string name="about_summary_repository">"GitHub'da"</string>
     <string name="about_title_report_error">"Hata bildir"</string>
@@ -859,7 +856,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_religion_for_place_of_worship_title">"Bu mekanda hangi din uygulanmaktadır?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_religion_christian">"Hristiyanlık"</string>
+    <string name="quest_religion_christian">"Hıristiyanlık"</string>
     <string name="quest_religion_muslim">"İslam"</string>
 
     <!-- Fuzzy -->
@@ -904,6 +901,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Bu yaya caddesinin adı ne?"</string>
     <string name="quest_streetSurface_square_title">"Bu meydanın yüzeyi nedir?"</string>
+    <string name="quest_streetSurface_square_name_title">"%s meydanının yüzeyi nedir?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Zamana ve güne bağlı…"</string>
@@ -1066,7 +1064,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_buildingType_cathedral">"Katedral"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_mosque">"Camii"</string>
+    <string name="quest_buildingType_mosque">"Cami"</string>
     <string name="quest_buildingType_temple">"İbadethane"</string>
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
 
@@ -1132,7 +1130,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_buildingType_farm_auxiliary_description">"Bir çiftlikte konut olmayan herhangi bir bina"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_greenhouse">"Yeşil Ev"</string>
+    <string name="quest_buildingType_greenhouse">"Sera"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_other">"Diğer"</string>
@@ -1178,8 +1176,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_maxspeed_name_title2">"%s için hız sınırı nedir?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_sports_centre">"Spor Merkezi
-"</string>
+    <string name="quest_buildingType_sports_centre">"Spor Merkezi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Tuvaletler"</string>
@@ -1240,6 +1237,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"İleri"</string>
+    <string name="quest_tracktype_title">"Bu patikanın sertliğin nasıl?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Katı"</string>
@@ -1460,6 +1458,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Uygulamamızı desteklemeyi düşündüğünüz için teşekkür ederiz! Mevcut bağışları görmek ve bağışyapmak için ilgili platforma dokunun:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"%s mekânı hangi dine ait?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Burayı tarayın"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Mevcut taramaya devam et"</string>
     <string name="quest_tourism_information_title">"Bu ne tür bir turist bilgisi?"</string>
@@ -1505,6 +1504,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="link_category_showcase_description">"OpenStreetMap tabanlı hizmetler ve uygulamalar"</string>
     <string name="link_cyclosm_description">"Bisikletçiler için bir harita"</string>
     <string name="link_osm_buildings_description">"Binaları 3D olarak gösteren bir harita"</string>
+    <string name="link_openvegemap_description">"Şehrinizdeki vejetaryen ve vegan lokantaları keşfedin"</string>
     <string name="link_mapy_tactile_description">"Görme engelliler için çeşitli ölçeklerde dokunsal haritalar"</string>
     <string name="link_josm_description">"Masaüstü için tam özellikli OSM editörü. Bu, düzenli katkıda bulunanlar için güçlü bir araçtır."</string>
     <string name="link_vespucci_description">"Android için gelişmiş OSM editörü"</string>
@@ -1529,9 +1529,18 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="achievement_regular_title">"Düzenli"</string>
     <string name="achievement_regular_description">"Bu uygulamayla OSMye %d gün katkıda bulundunuz! Düzenli olarak katkıda bulunanlar, OSMnin bel kemiğidir, bağlılığınız için teşekkürler! ❤"</string>
     <string name="achievement_bicyclist_title">"Bisikletçi"</string>
+    <string name="achievement_bicyclist_solved_X">"Bisikletçilere yardımı dokunan %d görev çözdün!"</string>
+    <string name="achievement_wheelchair_solved_X">"Tekerlekli sandalye kullananlara yardımı dokunan %d görev çözdünüz!"</string>
     <string name="achievement_postman_title">"Postacı"</string>
+    <string name="achievement_postman_solved_X">"%d adres girdiniz!
+Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok önemlidir."</string>
+    <string name="achievement_building_solved_X">"Binalarla ilgili %d görev çözdünüz.
+Şunu unutmayın ki bu uygulama binaların numaralarını yalnızca bina türü belirtildikten sonra sorar."</string>
     <string name="achievement_blind_title">"Altıncı His"</string>
     <string name="achievement_blind_solved_X">"Görme engelliler için ilginç olan %d görevi çözdünüz."</string>
+    <string name="achievement_pedestrian_title">"Koşucu"</string>
+    <string name="achievement_pedestrian_solved_X">"Yayaları ilgilendiren %d görev çözdünüz!"</string>
+    <string name="achievement_car_title">"Yolda"</string>
     <string name="unread_messages_message">"Gelen kutunuzda %d okunmamış mesajınız var"</string>
     <string name="unread_messages_button">"Gelen Kutusunu Aç"</string>
     <string name="action_about2">"Hakkında"</string>
@@ -1540,6 +1549,9 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="credits_art_contributors_title">"Sanatsal katkıcılar"</string>
     <string name="credits_main_contributors_title">"Ana katkıcılar"</string>
     <string name="stats_are_syncing">"İstatistikleriniz hala senkronize ediliyor. Bu ekranı daha sonra kontrol edin."</string>
+    <string name="user_statistics_filter_by_country">"ülkeye göre"</string>
+    <string name="user_statistics_filter_by_quest_type">"görev türüne göre"</string>
+    <string name="user_profile_global_rank">"Küresel sıralama"</string>
     <string name="quest_address_street_no_named_streets">"Adlandırılmış bir sokağa ait değil"</string>
     <string name="quest_address_street_place_name_label">"Yer adı:"</string>
     <string name="quest_address_street_description">"Haritadaki ait olduğu yola dokunun veya aşağıdaki alana kısaltma olmadan girin:"</string>
@@ -1549,7 +1561,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="about_title_sponsors">"Sponsorlar"</string>
     <string name="quest_board_type_history">"Tarih"</string>
     <string name="quest_board_type_geology">"Jeoloji"</string>
-    <string name="quest_board_type_plants">"Bitki"</string>
+    <string name="quest_board_type_plants">"Bitkiler"</string>
     <string name="quest_board_type_wildlife">"Yaban hayatı"</string>
     <string name="quest_board_type_nature">"Doğa (birden çok konu)"</string>
     <string name="quest_board_type_notice_board">"Bu bir ilan panosu"</string>
@@ -1557,6 +1569,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_board_type_title">"Bu bilgi panosunun konusu nedir?"</string>
     <string name="quest_board_type_map">"Bu bir harita"</string>
     <string name="quest_board_type_map_description">"Pano belirli bir konu hakkındaysa, lütfen bir harita içerip içermediğine bakılmaksızın bunu belirtin. Örneğin, bir toplu taşıma panosunun bir otobüs güzergah haritası olabilir. Konu mevcut cevaplar arasında listelenmemişse, lütfen bunun yerine bir not bırakın."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Bir kaç yüzey..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Lütfen burada yüzeyin yapısını kısaca belirtin, örneğin \"arnavut kaldırımlı yer yer kumlu\". Metin uzunluğu 255 karakterle sınırlıdır."</string>
@@ -1575,6 +1588,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_openingHours_resurvey_no_name_title">"Bu açılış saatleri hala geçerli mi (%s)?"</string>
     <string name="quest_openingHours_unspecified_range">"Belirtilmemiş"</string>
     <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) tekerlekli sandalye ile erişilebilir mi?"</string>
+    <string name="resurvey_intervals_less_often">"Daha az sor"</string>
+    <string name="resurvey_intervals_default">"Varsayılan"</string>
     <string name="resurvey_intervals_more_often">"Daha sık sor"</string>
     <string name="quest_accepts_cash_type_title">"%1$s (%2$s) nakit ödeme kabul ediyor mu?"</string>
 
@@ -1593,6 +1608,9 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="about_title_translate">"Bu uygulamayı çevirmemize yardımcı olun"</string>
     <string name="about_description_translate">"%1$s, %2$d%% çevrildi"</string>
     <string name="quest_oneway2_title">"Bu tek yönlü bir yol mu? Hangi yönde?"</string>
+    <string name="quest_steps_incline_title">"Hangi taraftaki basamaklarla yukarı çıkılıyor?"</string>
+    <string name="quest_steps_incline_up">"Bu tarafla"</string>
+    <string name="quest_step_count_title">"Burada kaç basamak var?"</string>
     <string name="quest_traffic_signals_sound_title">"Burada kör için ses sinyalleri var mı?"</string>
     <string name="quest_steps_ramp_none">"(Kullanılabilir) Rampa yok"</string>
     <string name="quest_steps_ramp_bicycle">"Bisiklet rampası"</string>
@@ -1622,6 +1640,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_buildingType_ruins_description">"metruk, harap ve tanımlanamayan bina"</string>
     <string name="quest_charging_station_capacity_title">"Bu şarj istasyonunda aynı anda kaç araba şarj edilebilir?"</string>
     <string name="quest_lanes_title">"Bu yolda arabalar için kaç şerit var?"</string>
+    <string name="quest_lanes_answer_lanes">"İşaretli şeritler"</string>
     <string name="quest_lanes_answer_noLanes">"İşaretli şerit yok"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Bu doğru mu?"</string>
     <string name="quest_maxheight_below_bridge_title">"Köprünün altındaki yükseklik sınırı nedir?"</string>
@@ -1657,6 +1676,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Boş"</string>
+    <string name="quest_shop_gone_replaced_answer">"Bir..."</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Buraya bir tür yer yazın"</string>
 
     <!-- Fuzzy -->
@@ -1664,17 +1684,37 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_lanes_answer_lanes_odd2">"Şerit sayısı iki taraf için farklı"</string>
     <string name="quest_pitchSurface_title">"Bu spor sahası nasıl bir yüzeyi sahip?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Bu görev türü varsayılan olarak devre dışı bırakılmıştır çünkü bazı bölgelerde kullanışlı değildir ve bu türden bir görevi cevaplayabilmek için büyük olasılıkla bir yere girmeniz gerekecektir."</string>
+    <string name="quest_dietType_kosher_name_title">"%s koşer ürünler sunuyor mu?"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Hiç bisiklet yolu yok"</string>
     <string name="quest_construction_completed_at_known_date">"Şu tarihte bitecek…"</string>
     <string name="quest_construction_completion_date_title">"Ne zaman tamamlanacak?"</string>
     <string name="quest_surface_value_clay">"Kil"</string>
     <string name="quest_surface_value_artificial_turf">"Suni çim"</string>
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
+    <string name="quest_buildingType_fire_station">"İtfaiye"</string>
+    <string name="team_mode">"Takım Kipi"</string>
+    <string name="team_mode_exit">"Takım Kipinden Çık"</string>
+    <string name="quest_pitchLit_title">"Bu spor sahası aydınlatılmış mı?"</string>
     <string name="undo_confirm_title2">"Bu düzenleme geri alınsın mı?"</string>
     <string name="synced">"Senkron"</string>
+    <string name="deleted_poi_action_description">"Sildin"</string>
+    <string name="added_tag_action_title">"%s eklendi"</string>
+    <string name="removed_tag_action_title">"%s kaldırıldı"</string>
+    <string name="quest_shop_type_title">"%s ne tür bir mağaza?"</string>
+    <string name="quest_shop_type_title_no_name">"Bu ne tür bir mağaza?"</string>
+    <string name="background_type_map">"Harita"</string>
+    <string name="quest_busStopLit_title">"Bu otobüs durağı aydınlatılmış mı?"</string>
+    <string name="quest_busStopLit_name_title">"%s otobüs durağı aydınlatılmış mı?"</string>
     <string name="no_location_permission_warning_title">"Konum İzni"</string>
+    <string name="quest_busStopBin_title">"Bu otobüs durağında çöp kutusu var mı?"</string>
+    <string name="quest_busStopBin_name_title">"%s otobüs durağında çöp kutusu var mı?"</string>
     <string name="about_title_faq">"S.S.S."</string>
     <string name="action_search">"Ara"</string>
     <string name="no_search_results">"Hiçbir şey bulunamadı"</string>
     <string name="quest_presets_default_name">"Varsayılan"</string>
+    <string name="quest_dietType_halal_name_title">"%s helal ürünler sunuyor mu?"</string>
+    <string name="quest_picnicTableCover_title">"Bu piknik masası kapalı mı (yağmurdan korunuyor mu)?"</string>
+    <string name="short_no_answer_on_button">"Hayır"</string>
+    <string name="pref_title_language_select">"Dil seç"</string>
+    <string name="language_default">"Sistem varsayılanı"</string>
 </resources>

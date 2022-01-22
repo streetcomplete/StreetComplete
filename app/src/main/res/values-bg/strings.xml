@@ -46,7 +46,6 @@
     <string name="quest_noteDiscussion_anonymous">"Анонимен"</string>
     <string name="confirmation_discard_title">"Откажи въведеното?"</string>
     <string name="confirmation_discard_positive">"Откажи"</string>
-    <string name="confirmation_discard_negative">"Обратно"</string>
     <string name="action_download">"Сканиране за въпроси тук"</string>
     <string name="action_upload">"Качи отговори"</string>
     <string name="no_changes">"Не отговорихте на нито един въпрос"</string>
@@ -60,7 +59,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Местоположението ти е нужно за сканиране за въпроси наблизо."</string>
     <string name="about_title_authors">"Автор(и)"</string>
-    <string name="about_summary_authors">"© 2016–2021 Тобиас Цвик и други"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Тобиас Цвик и други"</string>
     <string name="about_title_repository">"Източник"</string>
     <string name="about_summary_repository">"в GitHub"</string>
     <string name="about_title_report_error">"Докладвай грешка"</string>
@@ -982,6 +983,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Маркирано пресичане"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Паркиране до пътя"</string>
     <string name="quest_parkingType_lane">"Паркиране на пътя"</string>
     <string name="quest_existence_title">"Това още ли е тук? (%s)"</string>
@@ -1237,4 +1240,6 @@
     <!-- Fuzzy -->
     <string name="quest_level_title">"На кое ниво се намира %s?"</string>
     <string name="pref_title_language_select">"Изберете език"</string>
+    <string name="language_default">"По подразбиране от системата"</string>
+    <string name="on_floor">"на етаж %s:"</string>
 </resources>

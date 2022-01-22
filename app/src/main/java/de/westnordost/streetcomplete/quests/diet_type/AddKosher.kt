@@ -17,14 +17,14 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
         (
           amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
           or amenity ~ pub|nightclub|biergarten|bar and food = yes
-          or shop ~ butcher|supermarket|ice_cream
+          or shop ~ butcher|supermarket|ice_cream|convenience
         )
         and name and (
           !diet:kosher
           or diet:kosher != only and diet:kosher older today -4 years
         )
     """
-    override val commitMessage = "Add kosher status"
+    override val changesetComment = "Add kosher status"
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.ic_quest_kosher
     override val isReplaceShopEnabled = true

@@ -1,3 +1,41 @@
+v39.0: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Does this road have a shoulder?</i> (#2444, #3613)</li>
+  <li><i>What is the surface quality of this road here?</i> (#3617, #3257, #1630, #3633), special thanks to @Helium314 but also to @FloEdelmann, @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more<br>
+      It is disabled by default, enable it in the settings to try it out!</li>
+  <li><i>Where is this fire hydrant located?</i> (#3368), by @thefeiter</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
+  <li>Some improvements on the fire hydrant quest(s) (#3608), by @tiptoptom and @thefeiter, (#3601)</li>
+  <li>Some minor enhancements and clearer wordings (#3576, #3610, #3599, #3653...), thanks @matkoniecz, @olo81</li>
+  <li>Added "Lifesaver" achievement (#3616), by @FloEdelmann</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix rarely quests don't go away after solving them (#3290)</li>
+  <li>Fix rarely quest answers don't get uploaded automatically until next restart of app (#3494)</li>
+  <li>Fix a few crashes (#3622, ...)</li>
+  </ul>
+
+v38.2: |
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>You can now answer that a playground is only for customers (#3433), by @matkoniecz</li>
+  <li>The fire hydrant diameter is now only asked for underground or pillar hydrants (#3575), by @matkoniecz</li>
+  <li>Some minor enhancements</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix rarely quests were not removed after giving an answer (#3588)</li>
+  <li>Fix an issue with in-app language switching (#3554)</li>
+  <li>Fix a rare crash issue when tabbing out while quest form is open (#3590)</li>
+  <li>Fix opening a geo url (#3580)</li>
+  <li>Fix order in which selections are shown in the religion quests (#3570), by @matkoniecz</li>
+  </ul>
+
 v38.1: |
   <ul>
   <li>fix location wasn't updated after tabbing out and in again (#3543), thanks @smichel17</li>
@@ -1056,7 +1094,7 @@ v17.1: |
 
 v17.0: |
   <p>This release includes a major update of the map rendering library (in order to satisfy new
-  Google Play guidelines). I took this as an oppurtunity to re-do most of the things that concern
+  Google Play guidelines). I took this as an opportunity to re-do most of the things that concern
   the map view (#1279, #1606) and thus solve some long-standing issues with it. If any new have been
   introduced, please report them!</p>
   <h3>Enhancements</h3>
@@ -1110,7 +1148,7 @@ v16.0: |
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>ask about internet access for more types of accomodations (#1620), thanks @wvanderp</li>
+  <li>ask about internet access for more types of accommodations (#1620), thanks @wvanderp</li>
   <li>ask opening hours, names and wheelchair accessibility for more types of places (#1621), thanks @wvanderp</li>
   <li>do not ask for handrails of escalators by @matkoniecz</li>
   <li>add hint how to answer the cycleway and sidewalk question (#1671) by @matkoniecz</li>

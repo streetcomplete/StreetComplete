@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.util.isInMultipolygon
 
 class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
-    override val commitMessage = "Add housenumbers"
+    override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
 
@@ -146,6 +146,10 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             }
             WrongBuildingType -> {
                 changes.modify("building", "yes")
+            }
+            is HouseNameAndHouseNumber -> {
+                changes.add("addr:housenumber", answer.number)
+                changes.add("addr:housename", answer.name)
             }
         }
     }

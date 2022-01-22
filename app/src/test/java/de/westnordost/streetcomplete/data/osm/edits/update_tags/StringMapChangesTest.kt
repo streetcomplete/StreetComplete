@@ -75,13 +75,27 @@ class StringMapChangesTest {
         val conflict: StringMapEntryChange = mock()
         on(conflict.conflictsWith(someMap)).thenReturn(true)
 
-        val changes = StringMapChanges(listOf(mock(), mock(), conflict, mock(), conflict))
+        val conflict2: StringMapEntryChange = mock()
+        on(conflict2.conflictsWith(someMap)).thenReturn(true)
+
+        val changes = StringMapChanges(listOf(mock(), mock(), conflict, mock(), conflict2))
 
         changes.getConflictsTo(someMap)
 
-        val it = changes.getConflictsTo(someMap).iterator()
+        val conflicts = changes.getConflictsTo(someMap).toSet()
+        val expectedConflicts = setOf(conflict, conflict2)
+        assertEquals(expectedConflicts, conflicts)
+    }
 
-        assertSame(conflict, it.next())
-        assertSame(conflict, it.next())
+    @Test fun equals() {
+        val a: StringMapEntryChange = mock()
+        val b: StringMapEntryChange = mock()
+        val one = StringMapChanges(listOf(a,b))
+        val anotherOne = StringMapChanges(listOf(a,b))
+        val two = StringMapChanges(listOf(b,a))
+
+        assertEquals(one, anotherOne)
+        // but the order does not matter
+        assertEquals(one, two)
     }
 }

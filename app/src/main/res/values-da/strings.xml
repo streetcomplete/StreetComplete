@@ -99,9 +99,6 @@
     <string name="confirmation_discard_positive">"Kassér"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Annuller"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Søg efter opgaver her"</string>
 
     <!-- Fuzzy -->
@@ -135,7 +132,7 @@
     <string name="about_title_authors">"Kreditering"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick og bidragsydere"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick og bidragsydere"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Kildekode"</string>
@@ -2073,6 +2070,8 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markeret fodgængerfelt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkering lige ved siden ad vejen"</string>
     <string name="quest_parkingType_lane">"Parkering på vejen"</string>
     <string name="quest_existence_title">"Er dette stadig her? (%s)"</string>
@@ -2218,33 +2217,105 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_buildingLevels_title2">"Hvor mange etager, over jorden, har denne bygning?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etager, over jorden, har denne del af bygningen?"</string>
     <string name="quest_crossing_title">"Er der en kantsten hvor disse veje møder hinanden? Hvilken slags?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Forudindstilling: %s"</string>
     <string name="default_disabled_msg_roofShape">"Denne opgavetype er slået fra som standard, da formen på bygningers tage kan være svære at se fra gadeplan. Opgavetypen er også meget tidskrævende; ofte er det nemmere og mere effektivt at kortlægge dette udfra luftfotos derhjemme."</string>
+    <string name="quest_religion_animist">"Animisme"</string>
     <string name="quest_construction_steps_title">"Er disse trin færdiglavede?"</string>
     <string name="pref_quests_deselect_all">"Fjern alle"</string>
     <string name="quest_buildingType_boathouse">"Bådhus"</string>
     <string name="quest_buildingType_allotment_house">"Kolonihavehus"</string>
+    <string name="quest_buildingType_grandstand">"Tribune"</string>
     <string name="action_search">"Søg"</string>
+    <string name="action_manage_presets">"Håndterer forudindstillinger"</string>
 
     <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Hvor mange personer deltager i kortlægningen? Indtast det samme antal på alle deltageres telefoner."</string>
     <string name="team_mode_choose_color2">"Hver person skal nu vælge hver deres farve. Vælg din:"</string>
     <string name="link_organic_maps_description">"Kort-apps der virker offline til rejsende, vandrere og cyklister"</string>
     <string name="quest_kerb_height_no">"Ingen kantsten"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Trætrappestige over hegn"</string>
+    <string name="quest_barrier_type_stepover_stone">"Stentrappe over hegn"</string>
     <string name="quest_bollard_type_removable">"Flytbar (med eller uden nøgle)"</string>
+    <string name="quest_bollard_type_foldable2">"Sammenfoldelig (med eller uden nøgle)"</string>
     <string name="no_search_results">"Intet fundet"</string>
+    <string name="quest_selection_hint_title">"For mange opgaver at løse?"</string>
+    <string name="quest_selection_hint_message">"Deltagelse skal primært være sjovt! Hvis du er overmandet af antallet af opgaver, så kan du altid justere hvilke opgaver der er vist til dig samt i hvilken rækkefølge."</string>
+    <string name="quest_presets_preset_add">"Tilføj forudindstillinger"</string>
+    <string name="quest_presets_preset_name">"Forudindstillingnavn"</string>
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Valgt"</string>
     <string name="notification_syncing">"Synkroniserer data..."</string>
     <string name="notification_channel_sync">"Synkroniser data"</string>
+    <string name="quest_board_type_sport">"Sport, motionsøvelser"</string>
+    <string name="quest_generic_hasFeature_optional">"Eventuelt"</string>
     <string name="quest_buildingType_bridge">"Gangbro mellem bygninger"</string>
     <string name="quest_laundrySelfService_title2">"Er der selvbetjening i dette vaskeri?"</string>
+    <string name="quest_dietType_halal_name_title">"Tilbyder %s halal produkter?"</string>
+    <string name="quest_dietType_explanation_halal">"Halaprodukter skal være lavet efter specielle regler  og skal være med en halalcertificering som markeres på produkterne."</string>
     <string name="quest_picnicTableCover_title">"Er dette picnicbord overdækket (beskyttet mod regn)?"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Denne del er trapper"</string>
+    <string name="quest_barrier_type_passage_conversion">"Konverteret til en passage i mur/hegn/osv."</string>
+    <string name="quest_barrier_type_gate_conversion">"Konverteret til en låge"</string>
+    <string name="quest_traffic_calming_type_title">"Hvilken type  af trafikhastighedsdæmpning er dette?"</string>
+    <string name="quest_traffic_calming_type_bump">"Vejbump (lille)"</string>
+    <string name="quest_traffic_calming_type_hump">"Vejbump (større)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Pudebump (brede køretøjer kan passere uden bump)"</string>
     <string name="quest_traffic_calming_type_choker">"Vejen er indsnævret"</string>
     <string name="quest_traffic_calming_type_island">"Helleanlæg"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rumlestribe(r)"</string>
     <string name="quest_surface_value_concrete_plates">"Betonplader"</string>
+    <string name="quest_surface_value_concrete_lanes">"Betonbaner"</string>
+    <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er angivet for denne brandhane?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Denne diameterværdi virker besynderlig. "</string>
     <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Nogle gange kan diameteren findes på brandhanen selv"</string>
     <string name="quest_diet_answer_no_food">"Man kan ikke købe mad"</string>
     <string name="short_no_answer_on_button">"Nej"</string>
+    <string name="restore_confirmation">"Gendan"</string>
+    <string name="restore_dialog_message">"Gendan alle opgaver du har skjult?"</string>
+    <string name="quest_parking_access_title2">"For hvem er det tilladt at parkere her? Parkering kan være gratis eller betaling."</string>
+    <string name="quest_access_yes">"Alle fra offentligheden"</string>
+    <string name="quest_access_customers">"Kun personbesøg til bestemt sted (fx kunder)"</string>
+    <string name="quest_access_private">"Kun person(er) med tilladelse"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Er tømningstider på denne postkasse stadigvæk korrekte?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Er tømmetiderne for denne %s postkasse stadig korrekte?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Ej genkendt. Prøv at indtaste typen af sted, fx \"bageri\". Ellers overvej at efterlade en note."</string>
+    <string name="quest_bicycle_barrier_type_title">"Hvilken type af cykelchikane er dette?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal i forhold til stien"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Indsnævring af passagen, mindre mod toppen"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passage mellem to barrierer"</string>
+    <string name="quest_barrier_bicycle_type_double">"Cykelchicane - med barriere på hver side"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Cykelchicane - mere end to barrierer"</string>
+    <string name="quest_level_title">"På hvilken etage befinder %s sig? "</string>
+    <string name="pref_title_language_select">"Vælg sprog"</string>
     <string name="language_default">"Systemstandard"</string>
+    <string name="on_floor">"på etage %s:"</string>
+    <string name="confirmation_discard_negative2">"Nej"</string>
+    <string name="quest_street_parking_title">"Hvordan kan biler parkeres her, hvis det er muligt?"</string>
+    <string name="select_street_parking_orientation">"Vælg orienteringen mod vejbanen:"</string>
+    <string name="select_street_parking_position">"Vælg position:"</string>
+    <string name="select_street_parking_no">"Noget tegn på vejmarkering her?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Vinkelret"</string>
+    <string name="street_parking_on_street">"På vejen"</string>
+    <string name="street_parking_half_on_kerb">"Delvist på vejbanen"</string>
+    <string name="street_parking_on_kerb">"Ved siden af ​​kørebanen"</string>
+    <string name="street_parking_painted_area_only">"På vejen, kun på markerede pladser"</string>
+    <string name="street_parking_separate">"Parkering vises separat på kort"</string>
+    <string name="street_parking_no">"Ingen parkering her / Ikke tilladt"</string>
+    <string name="street_parking_prohibited">"Ingen parkering"</string>
+    <string name="street_stopping_prohibited">"Ingen stop"</string>
+    <string name="street_standing_prohibited">"Standsning forbudt"</string>
+    <string name="street_parking_no_other_reasons">"Ingen eksplicit skiltning / parkering ikke muligt"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Både et husnummer og et navn..."</string>
+    <string name="quest_address_house_number_label">"Husnummer:"</string>
+    <string name="quest_shoulder_title">"Har denne vej et nødspor?"</string>
+    <string name="quest_fireHydrant_position_title">"Hvor er denne brandhane placeret?"</string>
+    <string name="quest_fireHydrant_position_green">"I græs eller jord"</string>
+    <string name="quest_fireHydrant_position_lane">"På vejen"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
+    <string name="quest_smoothness_obstacle">"Der er en forhindring"</string>
+    <string name="achievement_lifesaver_title">"Livredder"</string>
 </resources>

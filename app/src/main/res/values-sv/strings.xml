@@ -42,7 +42,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Släng inmatningen?"</string>
     <string name="confirmation_discard_positive">"Släng"</string>
-    <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Skicka svar"</string>
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
@@ -54,7 +53,7 @@
     <string name="turn_on_location_request">"Plats är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Platsbehörighet är nödvändigt för att visa din position på kartan och söka efter uppdrag i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick och bidragsgivare"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Källkodsarkiv"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
@@ -709,8 +708,6 @@ Dela den nu?"</string>
     <string name="user_logout">"Logga ut"</string>
     <string name="osm_profile">"OSM-profil"</string>
     <string name="next">"Nästa"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"Nu kör vi!"</string>
     <string name="tutorial_welcome_to_osm">"Välkommen till OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"den fria wiki-världskartan"</string>
@@ -988,6 +985,8 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markerad korsning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkering precis bredvid vägen"</string>
     <string name="quest_parkingType_lane">"Parkering på väg"</string>
     <string name="quest_existence_title">"Finns detta fortfarande här? (%s)"</string>
@@ -1017,7 +1016,9 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen cykelväg alls"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Som vanligt, tryck på ena sidan av bilden, välj ett rätt svar och gör detsamma för den andra sidan. Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en enkelriktad väg som tillåter cyklister i båda riktningar!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Som vanligt, tryck på ena sidan av bilden, välj ett rätt svar och gör detsamma för den andra sidan.
+
+Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en enkelriktad väg som tillåter cyklister i båda riktningar!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Väljer att det inte finns någon cykelväg"</string>
     <string name="quest_construction_completed_at_known_date">"Färdigställs vid datum…"</string>
     <string name="quest_construction_completion_date_title">"När kommer det att vara klart?"</string>
@@ -1236,4 +1237,84 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_level_title">"På vilket våningsplan ligger %s?"</string>
     <string name="pref_title_language_select">"Välj språk"</string>
     <string name="language_default">"Systemstandard"</string>
+    <string name="on_floor">"på våning %s:"</string>
+    <string name="confirmation_discard_negative2">"Nej"</string>
+    <string name="quest_street_parking_title">"Hur kan bilar parkera här, om alls?"</string>
+    <string name="select_street_parking_orientation">"Välj orientering mot väg:"</string>
+    <string name="select_street_parking_position">"Välj position:"</string>
+    <string name="select_street_parking_no">"Någon skylt eller vägmarkering här?"</string>
+    <string name="street_parking_parallel">"Parallell"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Vinkelrät"</string>
+    <string name="street_parking_on_street">"På vägbanan"</string>
+    <string name="street_parking_half_on_kerb">"Delvis på vägbanan"</string>
+    <string name="street_parking_on_kerb">"I anslutning till vägbanan"</string>
+    <string name="street_parking_street_side">"I anslutning till vägbanan endast i särskilda utrymmen"</string>
+    <string name="street_parking_painted_area_only">"Endast på vägbanan i särskilda utrymmen"</string>
+    <string name="street_parking_separate">"Parkering visas separat på kartan"</string>
+    <string name="street_parking_no">"Ingen parkering här / Inte tillåtet"</string>
+    <string name="street_parking_prohibited">"Ingen parkering"</string>
+    <string name="street_stopping_prohibited">"Inget stopp"</string>
+    <string name="street_standing_prohibited">"Inget stående"</string>
+    <string name="street_parking_conditional_restrictions">"Parkering eller stannande förbjudet ibland"</string>
+    <string name="street_parking_no_other_reasons">"Ingen skyltning / Inte möjligt att parkera"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Om det är möjligt att parkera eller stanna här, svara först på hur man får parkera här. Vilka regler som gäller kan anges senare.
+
+Du kan också lämna en anteckning (med bild)."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Både ett husnummer och ett namn…"</string>
+    <string name="quest_address_house_number_label">"Husnummer:"</string>
+    <string name="quest_shoulder_title">"Har den här vägen en vägren?"</string>
+    <string name="quest_fireHydrant_position_title">"Vad ligger denna brandpost?"</string>
+    <string name="quest_fireHydrant_position_green">"I gräset eller jorden"</string>
+    <string name="quest_fireHydrant_position_lane">"På vägen"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"På trottoaren"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplats"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Vad har denna brandpost för diameter angiven på sig? (referensnummer: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Ja (lämna anteckning)"</string>
+    <string name="quest_smoothness_name_title">"Hur pass jämn är vägbeläggningen på %s?"</string>
+    <string name="quest_smoothness_square_title">"Hur pass jämn är det här torget?"</string>
+    <string name="quest_smoothness_path_title">"Hur pass jämn är den här stigen?"</string>
+    <string name="quest_smoothness_road_title">"Hur pass jämn är den här vägen?"</string>
+    <string name="quest_smoothness_title_excellent">"Jämn och fin"</string>
+    <string name="quest_smoothness_title_good">"Ganska jämn"</string>
+    <string name="quest_smoothness_title_intermediate">"Något ojämn"</string>
+    <string name="quest_smoothness_title_bad">"Ojämn"</string>
+    <string name="quest_smoothness_title_very_bad">"Väldigt ojämn"</string>
+    <string name="quest_smoothness_title_horrible">"Hemskt ojämn"</string>
+    <string name="quest_smoothness_title_very_horrible">"Nästan opasserbar"</string>
+    <string name="quest_smoothness_title_impassable">"Opasserbar"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Slät och fin yta"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Nästan sömlös yta"</string>
+    <string name="quest_smoothness_description_good_paved">"Endast små sprickor, lagningar eller något grov yta"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Små springor"</string>
+    <string name="quest_smoothness_description_good_sett">"Väldigt platta stenar, regelbundet mönster eller mycket små springor"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"Grov yta, potthål eller andra skador"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Större springor, någon lös sten eller andra skador"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Ganska platta stenar eller små springor"</string>
+    <string name="quest_smoothness_description_bad_paved">"Stora potthål, skarvar eller andra skador"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"Lösa plattor, hål eller andra skador"</string>
+    <string name="quest_smoothness_description_bad_sett">"Lösa stenar, hål eller andra skador"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Större grus, potthål eller andra skador"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Djupa potthål eller andra farliga skador"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Stora hål, saknade stenar eller andra farliga skador"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Saknade och trasiga plattor, hål eller farliga skador"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Stenar, djupa potthål eller andra farliga skador"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_horrible">"Endast körbart för terrängfordon (och till fots)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_horrible">"Endast körbart för särskilt ägnade terrängfordon (och till fots)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_impassable">"Endast till fots"</string>
+    <string name="quest_smoothness_wrong_surface">"Beläggningen skiljer sig"</string>
+    <string name="quest_smoothness_surface_value">"Beläggningen är angiven som:"</string>
+    <string name="quest_smoothness_obstacle">"Det finns ett hinder"</string>
+    <string name="quest_smoothness_obstacle_hint">"Ange ett generellt svar för jämnheten. Enskilda hinder som trottoarkanter, farthinder eller färistar kan ignoreras. Upprepade hinder ska tas med."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … ange vilka fordon som utan problem kan köra på denna beläggning. Det viktiga är vägen som helt, inte enskilda skador."</string>
+    <string name="quest_shoulder_explanation">"En vägren är den del av vägen som inte utgör själva körbanan och som kan användas i nödsituationer, av långsamtgående fordon, cyklister, m.m. Den är oftast belagd, men kan vara av grus eller gräs."</string>
+    <string name="link_osmhydrant_description">"Hitta, lägg till och redigera brandstationer och brandposter"</string>
+    <string name="achievement_lifesaver_title">"Livräddare"</string>
+    <string name="achievement_lifesaver_solved_X">"Du löste %d uppdrag som hjälper räddningstjänsten och utryckningspersonal!"</string>
 </resources>

@@ -22,21 +22,21 @@ object UserModule {
         prefs, Provider { oAuthConsumer() }
     )
 
-	@Provides fun oAuthProvider(): OAuthProvider = OkHttpOAuthProvider(
+    @Provides fun oAuthProvider(): OAuthProvider = OkHttpOAuthProvider(
         BASE_OAUTH_URL + "request_token",
         BASE_OAUTH_URL + "access_token",
         BASE_OAUTH_URL + "authorize"
     )
 
-	@Provides fun oAuthConsumer(): OAuthConsumer =
-	    OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
+    @Provides fun oAuthConsumer(): OAuthConsumer =
+        OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
 
     @Provides fun userDataSource(controller: UserDataController): UserDataSource = controller
     @Provides fun userLoginStatusSource(controller: UserLoginStatusController): UserLoginStatusSource = controller
 
-	@Provides @Named("OAuthCallbackScheme")
+    @Provides @Named("OAuthCallbackScheme")
     fun oAuthCallbackScheme(): String = CALLBACK_SCHEME
 
-	@Provides @Named("OAuthCallbackHost")
+    @Provides @Named("OAuthCallbackHost")
     fun oAuthCallbackHost(): String = CALLBACK_HOST
 }

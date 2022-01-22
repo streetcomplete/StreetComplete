@@ -16,7 +16,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
          and !fee
          and name
     """
-    override val commitMessage = "Add fee info"
+    override val changesetComment = "Add fee info"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_fee
 

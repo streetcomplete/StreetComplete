@@ -46,7 +46,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Eingaben verwerfen?"</string>
     <string name="confirmation_discard_positive">"Verwerfen"</string>
-    <string name="confirmation_discard_negative">"Abbrechen"</string>
     <string name="action_download">"Hier nach Aufgaben suchen"</string>
     <string name="action_upload">"Antworten hochladen"</string>
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
@@ -58,7 +57,7 @@
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?"</string>
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick und Mitwirkende"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
     <string name="about_title_report_error">"Fehler melden"</string>
@@ -232,11 +231,7 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ist der U-Bahn-Eingang %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Ist die Bahnstation %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Ist der Ort %s zugänglich für Rollstühle?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt, um das Gebäude zu betreten und die meisten Räume darin zugänglich für Rollstühle sind."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ist der Name %s abgekürzt?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Gibt es einen Wickeltisch in dieser Toilette?"</string>
@@ -581,8 +576,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_tracktype_grade5">"Weich"</string>
     <string name="quest_building_underground_name_title">"Ist %s komplett unterirdisch?"</string>
     <string name="quest_building_underground_title">"Ist dieses Gebäude komplett unterirdisch?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt."</string>
     <string name="quest_wheelchairAccess_outside_title">"Ist dieser Ort zugänglich für Rollstühle?"</string>
     <string name="quest_traffic_signals_button_title">"Gibt es an dieser Ampel einen Knopf, um als Fußgänger Grün anzufordern?"</string>
@@ -1146,10 +1139,99 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_barrier_bicycle_type_single">"Durchgang zwischen zwei Barrieren"</string>
     <string name="quest_barrier_bicycle_type_double">"Schikane – Barriere auf beiden Seiten"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Schikane – mehr als zwei Barrieren"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_level_title">"Auf welcher Ebene ist %s?"</string>
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
-    <string name="on_floor">"In Stockwerk %s:"</string>
+    <string name="on_floor">"in Stockwerk %s:"</string>
+    <string name="confirmation_discard_negative2">"Nein"</string>
+    <string name="quest_street_parking_title">"Wie kann hier geparkt werden (falls überhaupt)?"</string>
+    <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Straße:"</string>
+    <string name="select_street_parking_position">"Wähle Position:"</string>
+    <string name="select_street_parking_no">"Irgendein Schild oder Markierung hier?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Im rechten Winkel"</string>
+    <string name="street_parking_on_street">"Auf der Straße"</string>
+    <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
+    <string name="street_parking_on_kerb">"Neben der Straße"</string>
+    <string name="street_parking_street_side">"Nur in Parkbuchten"</string>
+    <string name="street_parking_painted_area_only">"Nur in dafür vorgesehenen Plätzen auf der Straße"</string>
+    <string name="street_parking_separate">"Parkplätze sind separat auf Karte eingezeichnet"</string>
+    <string name="street_parking_no">"Kein Parken hier / Nicht erlaubt"</string>
+    <string name="street_parking_prohibited">"Parkverbot"</string>
+    <string name="street_stopping_prohibited">"Halteverbot"</string>
+
+    <!-- Does not exist in most countries. It is something in between "no parking" and "no stopping", see wiki for parking:lane -->
+    <string name="street_standing_prohibited">"Warteverbot"</string>
+    <string name="street_parking_conditional_restrictions">"Parken / Halten ist bedingt eingeschränkt"</string>
+    <string name="street_parking_no_other_reasons">"Kein explizites Schild / Parken nicht möglich"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Wenn es überhaupt möglich ist, hier zu parken oder zu halten, beantworte zunächst, wie diejenigen, die es dürfen, hier parken. Welche Einschränkungen genau gelten, kann später angegeben werden.
+
+Alternativ kann auch eine Notiz (mit Foto) hinterlassen werden."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Hausnummer und -name…"</string>
+    <string name="quest_address_house_number_label">"Hausnummer:"</string>
+    <string name="quest_shoulder_title">"Hat diese Straße einen Seitenstreifen?"</string>
+    <string name="quest_fireHydrant_position_title">"Wo befindet sich dieser Hydrant?"</string>
+    <string name="quest_fireHydrant_position_green">"In Gras- oder Erdboden"</string>
+    <string name="quest_fireHydrant_position_lane">"Auf der Straße"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Auf dem Bürgersteig"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"In einem Parkplatz"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten? (Referenznummer: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Ja (Notiz hinterlassen)"</string>
+    <string name="quest_smoothness_name_title">"Wie gut ist die Oberfläche von %s hier beschaffen?"</string>
+    <string name="quest_smoothness_square_title">"Wie gut ist die Oberfläche von diesem Platz beschaffen?"</string>
+    <string name="quest_smoothness_path_title">"Wie gut ist die Oberfläche von diesem Weg beschaffen?"</string>
+    <string name="quest_smoothness_road_title">"Wie gut ist die Oberfläche von dieser Straße beschaffen?"</string>
+    <string name="quest_smoothness_title_excellent">"Eben"</string>
+    <string name="quest_smoothness_title_good">"Größtenteils eben"</string>
+    <string name="quest_smoothness_title_intermediate">"Ein wenig holprig"</string>
+    <string name="quest_smoothness_title_bad">"Holprig"</string>
+    <string name="quest_smoothness_title_very_bad">"Sehr holprig"</string>
+    <string name="quest_smoothness_title_horrible">"Sehr holprig und uneben"</string>
+    <string name="quest_smoothness_title_very_horrible">"Nahezu unbefahrbar"</string>
+    <string name="quest_smoothness_title_impassable">"Unbefahrbar"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Keine Unebenheiten oder Risse"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Fast nahtlos"</string>
+
+    <!-- mit "rough" is hier die Granularität der Oberfläche gemeint... vielleicht "rau"? -->
+    <string name="quest_smoothness_description_good_paved">"Nur kleine Risse, Lücken, Reparaturen oder eine leicht raue Oberfläche"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Flache oder schmale Lücken"</string>
+    <string name="quest_smoothness_description_good_sett">"Ungewöhnlich ebene Steine, regelmäßiges Muster, sehr flache oder schmale Lücken"</string>
+
+    <!-- auch hier ist mit "rough" eigentlich die Granularität der Oberfläche gemeint -->
+    <string name="quest_smoothness_description_intermediate_paved">"Ungewöhnlich raue Oberfläche, größere Lücken, Risse, flache Spurrillen, Schlaglöcher oder andere Schäden"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Größere Lücken, möglicherweise einige verschobene Steine oder andere Schäden"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Ebene Steine oder mit harten Kanten, flache oder schmale Lücken"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Feiner Kies, flache Unebenheiten oder Schlaglöcher"</string>
+    <string name="quest_smoothness_description_bad_paved">"Große Lücken, Schlaglöcher, Spurrillen, bröckelnder Belag oder andere Schäden"</string>
+
+    <!-- "Displaced" eigentlich in dem Sinne wie es in dem Bild zu sehen ist: Sind leicht verdreht, oder einige höher als andere usw.
+Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durcheinander" beschreiben? -->
+    <string name="quest_smoothness_description_bad_paving_stones">"Verschobene Steine, große Lücken oder andere Schäden"</string>
+    <string name="quest_smoothness_description_bad_sett">"Verwitterte oder unregelmäßig geformte Steine, große Lücken oder Schäden"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Einige größere Kiesel, Unebenheiten, Spurrillen oder Schlaglöcher"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Tiefe Schlaglöcher, Spurrillen oder andere gefährliche Schäden"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Große Lücken, verschobene, fehlende oder unregelmäßig geformte Steine oder gefährliche Schäden"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Fehlende und kaputte Steine, Lücken oder andere gefährliche Schäden"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Einige große Steine, tiefe Schlaglöcher, Spurrillen, Erosion oder andere gefährliche Schäden"</string>
+    <string name="quest_smoothness_description_horrible">"Nur für Geländefahrzeuge oder zu Fuß angemessen nutzbar"</string>
+    <string name="quest_smoothness_description_very_horrible">"Nur für Fahrzeuge mit hoher Geländegängikeit oder zu Fuß angemessen nutzbar"</string>
+    <string name="quest_smoothness_description_impassable">"Ungeeignet für alle Fahrzeuge, nur zu Fuß passierbar"</string>
+    <string name="quest_smoothness_wrong_surface">"Ist andere Oberfläche"</string>
+    <string name="quest_smoothness_surface_value">"Die Oberfläche wurde bestimmt als:"</string>
+    <string name="quest_smoothness_obstacle">"Da ist ein Hindernis"</string>
+    <string name="quest_smoothness_obstacle_hint">"Bitte gib eine allgemeine Antwort für die Glätte der Oberfläche. Einzelne Hindernisse wie Bordsteinkanten, Schwellen zur Geschwindigkeitsbegrenzung oder Weideroste können ignoriert werden. Mehrfache oder unerwartete Hindernisse sollten in die Antwort miteinbezogen werden."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … zeigen an, für welche Fahrzeuge die Oberfläche okay sein sollte. Was zählt, ist das Gesamtbild, nicht vereinzelte Schäden."</string>
+    <string name="quest_shoulder_explanation">"Ein Seitenstreifen ist eine deutlich markierte Standspur, die Fahrzeugen sicheres Anhalten komplett neben der Fahrspur erlaubt, allerdings nicht immer (komplett) auf befestigtem Untergrund."</string>
+    <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
+    <string name="achievement_lifesaver_title">"Lebensretter"</string>
+    <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
+    <string name="quest_fuelSelfService_title">"Kann man an dieser Tankstelle selbst tanken?"</string>
+    <string name="quest_fuelSelfService_name_title">"Kann man bei %s selbst tanken?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er sehr zeitintensiv ist und es oft recht schwer ist, die richtige Wahl zu treffen. Du solltest diesen Aufgabentyp nur aktivieren wenn es dir wichtig ist, speziell diese Daten beizutragen."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Festgetreten, sehr wenig loser Kies oder Sand"</string>
+    <string name="quest_barrier_path_intersection">"Wie kreuzt dieser Weg die Barriere hier?"</string>
+    <string name="quest_barrier_road_intersection">"Wie kreuzt diesee Straße die Barriere hier?"</string>
+    <string name="quest_airConditioning_no_name_title">"Hat dieser Ort (%s) eine Klimaanlage?"</string>
+    <string name="quest_airConditioning_name_type_title">"Hat %1$s (%2$s) eine Klimaanlage?"</string>
 </resources>

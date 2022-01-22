@@ -23,7 +23,7 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
           or kerb !~ no|rolled and kerb older today -8 years
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add kerb height info"
+    override val changesetComment = "Add kerb height info"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.ic_quest_kerb_type
 
@@ -31,14 +31,14 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_kerb_height_title
 
-    override fun createForm() = AddKerbHeightForm()
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) false
         else null
+
+    override fun createForm() = AddKerbHeightForm()
 
     override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
         changes.updateWithCheckDate("kerb", answer.osmValue)

@@ -7,40 +7,71 @@ import org.junit.Test
 
 class LastPickedValuesStoreTest {
 
-    @Test fun `mostCommonWithin sorts by frequency first, then recency`() {
-        val items = sequenceOf(A, C, B, B, C, D)
-        assertEquals(items.mostCommonWithin(4, 99).toList(), listOf(C, B, A, D))
+    @Test fun `mostCommonWithin`() {
+        assertEquals(
+            "Returns the most common items",
+            listOf(A, C),
+            sequenceOf(A, A, B, C, C).mostCommonWithin(2, 99, 1).toList(),
+        )
+        assertEquals(
+            "Sorted in the original order",
+            listOf(A, C, B),
+            sequenceOf(A, C, B, B, C).mostCommonWithin(4, 99, 1).toList(),
+        )
+        assertEquals(
+            "Doesn't return nulls",
+            listOf(A),
+            sequenceOf(A, null).mostCommonWithin(2, 99, 1).toList()
+        )
     }
 
-    @Test fun `mostCommonWithin includes the most recent item even if it is not the most common`() {
-        val items = sequenceOf(A, B, B, B, C, C)
-        assertEquals(items.mostCommonWithin(2, 99).toList(), listOf(B, A))
+    @Test fun `mostCommonWithin first item(s) special case`() {
+        assertEquals(
+            "Included even if it is not the most common",
+            listOf(A, B),
+            sequenceOf(A, B, B, C, C).mostCommonWithin(2, 99, 1).toList(),
+        )
+        assertEquals(
+            "Not included if null",
+            listOf(B, C),
+            sequenceOf(null, B, C).mostCommonWithin(2, 99, 1).toList(),
+        )
+        assertEquals(
+            "Not duplicated if it was already among the most common",
+            listOf(A, B),
+            sequenceOf(A, B, A, B).mostCommonWithin(4, 99, 1).toList(),
+        )
     }
 
-    @Test fun `mostCommonWithin doesn't return duplicates`() {
-        val items = sequenceOf(A, B, A, B)
-        assertEquals(items.mostCommonWithin(4, 99).toList(), listOf(A, B))
-    }
-
-    @Test fun `mostCommonWithin doesn't include the first item if it's null`() {
-        val items = sequenceOf(null, B, null, C)
-        assertEquals(items.mostCommonWithin(2, 99).toList(), listOf(B, C))
-    }
-
-    @Test fun `mostCommonWithin includes nulls in the number of items to count`() {
-        val items = sequenceOf(A, null, null, B, /* stops here */ B, C, D)
-        assertEquals(items.mostCommonWithin(2, 4).toList(), listOf(A, B))
-    }
-
-    @Test fun `mostCommonWithin keeps counting until enough non-null items have been found`() {
-        val items = sequenceOf(A, null, null, B, B, C, /* stops here */ D)
-        assertEquals(items.mostCommonWithin(3, 4).toList(), listOf(B, A, C))
+    @Test fun `mostCommonWithin counts the right number of items`() {
+        assertEquals(
+            "Always counts the minimum",
+            listOf(A, C),
+            sequenceOf(A, B, C, C).mostCommonWithin(2, 4, 1).toList(),
+        )
+        assertEquals(
+            "Counts more to find the target",
+            listOf(A, B, C),
+            sequenceOf(A, B, C, C).mostCommonWithin(3, 1, 1).toList(),
+        )
+        assertEquals(
+            "Counts nulls towards the minimum",
+            listOf(A, B),
+            sequenceOf(A, null, B, null, C, C).mostCommonWithin(2, 3, 1).toList(),
+        )
+        assertEquals(
+            "Doesn't count null toward the target",
+            listOf(A, B, C),
+            sequenceOf(A, null, B, null, C, C).mostCommonWithin(3, 2, 1).toList(),
+        )
     }
 
     @Test fun `padWith doesn't include duplicates`() {
-        val items = sequenceOf(A, B).padWith(listOf(B, C, D, A))
-        assertEquals(items.toList(), listOf(A, B, C, D))
+        assertEquals(
+            listOf(A, B, C),
+            sequenceOf(A).padWith(listOf(B, A, C)).toList(),
+        )
     }
 }
 
-private enum class Letter { A, B, C, D }
+private enum class Letter { A, B, C }

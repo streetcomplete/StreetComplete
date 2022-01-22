@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.toLatLon
 import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -108,7 +108,7 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun onCreate() {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
@@ -134,7 +134,7 @@ import javax.inject.Singleton
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
-        coroutineScope.cancel()
+        coroutineScope.coroutineContext.cancelChildren()
     }
 
     @SuppressLint("MissingPermission")

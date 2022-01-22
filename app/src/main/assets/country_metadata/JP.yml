@@ -9,11 +9,11 @@ hasAdvisorySpeedLimitSign: true
 hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 440
-noParkingLineStyle: yellow dashes
-noStoppingLineStyle: yellow
+noParkingLineStyle: dashed yellow on curb
+noStoppingLineStyle: yellow on curb
 officialLanguages: [ja]
 orchardProduces: [apple, tomato, pear, persimmon, grape, strawberry, chilli_pepper, sweet_pepper, peach, apricot, tea, kiwi, plum, cherry, chestnut, fig]
-popularReligions: [shinto, buddhist, animism]
+popularReligions: [shinto, buddhist, animist]
 popularSports: [tennis, baseball]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: 区域 ここあら

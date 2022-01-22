@@ -17,7 +17,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
 orchardProduces: []
-popularReligions: []
+popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
 regularShoppingDays: 6
 roofsAreUsuallyFlat: false

@@ -58,9 +58,6 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Buang"</string>
-
-    <!-- Fuzzy -->
-    <string name="confirmation_discard_negative">"Batal"</string>
     <string name="action_download">"Pindai pencarian di sini"</string>
 
     <!-- Fuzzy -->
@@ -92,7 +89,7 @@
     <string name="about_title_authors">"Kredit"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick dan kontributor"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick dan kontributor"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositori Sumber"</string>

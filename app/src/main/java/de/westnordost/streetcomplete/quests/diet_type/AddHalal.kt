@@ -16,14 +16,14 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
         nodes, ways with
         (
           amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
-          or shop ~ butcher|supermarket|ice_cream
+          or shop ~ butcher|supermarket|ice_cream|convenience
         )
         and name and (
           !diet:halal
           or diet:halal != only and diet:halal older today -4 years
         )
     """
-    override val commitMessage = "Add Halal status"
+    override val changesetComment = "Add Halal status"
     override val wikiLink = "Key:diet:halal"
     override val icon = R.drawable.ic_quest_halal
     override val isReplaceShopEnabled = true

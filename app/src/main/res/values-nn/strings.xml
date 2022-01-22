@@ -46,7 +46,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Forkast teksten?"</string>
     <string name="confirmation_discard_positive">"Forkast"</string>
-    <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Søk etter oppdrag her"</string>
     <string name="action_upload">"Last opp svar"</string>
     <string name="no_changes">"Du gav ingen svar"</string>
@@ -60,7 +59,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Programmet treng posisjonen din for å kunna søkja opp oppdrag i nærleiken."</string>
     <string name="about_title_authors">"Bidragsytarar"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick og andre bidragsytarar"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick og andre bidragsytarar"</string>
     <string name="about_title_repository">"Kjeldekode"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Meld frå om feil"</string>
@@ -963,6 +964,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Overgang med vegmarkering"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
     <string name="quest_existence_title">"Finst denne framleis her? (%s)"</string>

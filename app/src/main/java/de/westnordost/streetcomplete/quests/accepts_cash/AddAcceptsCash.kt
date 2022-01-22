@@ -49,7 +49,7 @@ class AddAcceptsCash(
         and (name or brand) and !payment:cash and !payment:coins and !payment:notes
     """}
 
-    override val commitMessage = "Add whether this place accepts cash as payment"
+    override val changesetComment = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash

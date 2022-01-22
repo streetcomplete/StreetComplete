@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 import de.westnordost.streetcomplete.util.isRightOf
@@ -33,13 +34,16 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     *  tagging crossing=no on the vertex.
     *  See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203 */
 
-    override val commitMessage = "Add whether there is a crossing"
+    override val changesetComment = "Add whether there is a crossing"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
 
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter { it.isCrossing() }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
         if(element !is Node || element.tags.isNotEmpty()) false else null

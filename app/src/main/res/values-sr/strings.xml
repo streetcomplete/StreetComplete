@@ -42,7 +42,6 @@
     <string name="quest_noteDiscussion_anonymous">"Анонимно"</string>
     <string name="confirmation_discard_title">"Желите ли да одустанете?"</string>
     <string name="confirmation_discard_positive">"Одбаци"</string>
-    <string name="confirmation_discard_negative">"Одустани"</string>
     <string name="action_download">"Тражи задатке овде"</string>
     <string name="action_upload">"Отпремање одговора"</string>
     <string name="no_changes">"Нисте дали ниједан одговор"</string>
@@ -54,7 +53,9 @@
     <string name="turn_on_location_request">"Локација је искључена. Да отворим Поставке како би је укључили?"</string>
     <string name="no_location_permission_warning">"Неопходна је дозвола вашој локацији како би се тражили задаци у вашој непосредној близини."</string>
     <string name="about_title_authors">"Заслуге"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick и сарадници"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick и сарадници"</string>
     <string name="about_title_repository">"Спремиште изворног кôда"</string>
     <string name="about_summary_repository">"на GitHub-у"</string>
     <string name="about_title_report_error">"Пријавите грешку"</string>
@@ -227,7 +228,7 @@
     <string name="quest_wheelchairAccess_location_name_title">"Да ли је локација %s доступна за инвалидска колица?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"„Делимично“ значи да нема више од једног степеника за приступ, и да је већина просторија доступна за инвалидска колица."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"„Делимично“ значи да нема више од једног степеника за приступ, и да је већина просторија доступна инвалидским колицима."</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"„Делимично“ значи да нема више од једног степеника за приступ."</string>
@@ -958,7 +959,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Обележени пешачки прелаз"</string>
-    <string name="quest_parkingType_street_side">"Паркинг крај пута"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_parkingType_street_side">"Паркинг уз улицу"</string>
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>
     <string name="quest_existence_title">"Да ли је и даље овде? (%s)"</string>
     <string name="quest_existence_name_title">"Да ли је %1$s (%2$s) још увек ту?"</string>
@@ -1159,4 +1162,49 @@
     <string name="quest_fireHydrant_confirmation_title">"Да ли сте сигурни? Понекад се пречник може наћи на самом хидранту."</string>
     <string name="quest_diet_answer_no_food">"Нема хране"</string>
     <string name="short_no_answer_on_button">"Не"</string>
+    <string name="restore_confirmation">"Врати задатке"</string>
+    <string name="restore_dialog_message">"Вратити све задатке које сте сакрили?"</string>
+    <string name="quest_parking_access_title2">"Ко се овде сме паркирати? Паркинг може бити са или без наплате."</string>
+    <string name="quest_access_yes">"Било ко"</string>
+    <string name="quest_access_customers">"Свака особа која посећује одређено место (нпр. само муштерије)"</string>
+    <string name="quest_access_private">"Само особе са дозволом"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Да ли су времена прикупљања овог сандучета и даље исправна?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Да ли су времена прикупљања овог %s сандучета и даље исправна?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Није препознато. Пробајте унети врсту места, нпр. „пекара“, или размислите да оставите белешку."</string>
+    <string name="quest_bicycle_barrier_type_title">"Која је врста ове бициклистичке препреке?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Дијагонална у односу на стазу"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Уски пролаз који се сужава ка врху"</string>
+    <string name="quest_barrier_bicycle_type_single">"Пролаз између две препреке"</string>
+    <string name="quest_barrier_bicycle_type_double">"Намерно скретање (шикана) – препрека са обе стране"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Намерно скретање (шикана) – више од две препреке"</string>
+    <string name="quest_level_title">"На ком спрату се налази %s?"</string>
+    <string name="pref_title_language_select">"Одабери језик"</string>
+    <string name="language_default">"Исти као уређај"</string>
+    <string name="on_floor">"На спрату %s:"</string>
+    <string name="confirmation_discard_negative2">"Не"</string>
+    <string name="quest_street_parking_title">"Како се возила овде паркирају, ако уопште могу?"</string>
+    <string name="select_street_parking_orientation">"Одаберите смер у односу на пут"</string>
+    <string name="select_street_parking_position">"Одаберите позицију паркинга"</string>
+    <string name="select_street_parking_no">"Да ли овде постоји знак или ознака на улици?"</string>
+    <string name="street_parking_parallel">"Паралелно"</string>
+    <string name="street_parking_diagonal">"Дијагонално"</string>
+    <string name="street_parking_perpendicular">"Под правим углом"</string>
+    <string name="street_parking_on_street">"На улици"</string>
+    <string name="street_parking_half_on_kerb">"Делимично на улици"</string>
+    <string name="street_parking_on_kerb">"Уз улицу"</string>
+    <string name="street_parking_street_side">"Уз улицу само на означеним местима"</string>
+    <string name="street_parking_painted_area_only">"На улици само на означеним местима"</string>
+    <string name="street_parking_separate">"Паркинг је приказан одвојено на карти"</string>
+    <string name="street_parking_no">"Нема паркирања / Није дозвољено паркирање"</string>
+    <string name="street_parking_prohibited">"Забрањено паркирање"</string>
+    <string name="street_stopping_prohibited">"Забрањено заустављање"</string>
+    <string name="street_standing_prohibited">"Забрањено стајање"</string>
+    <string name="street_parking_conditional_restrictions">"Условно забрањено паркирање / заустављање"</string>
+    <string name="street_parking_no_other_reasons">"Нема изричитог знака / паркирање није могуће"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Ако је овде уопште могуће паркирање или заустављање, прво одговорите како се паркирају они којима је дозвољено. Можете накнадно навести која се тачно ограничења примењују.
+
+Или, можете оставити белешку (са фотографијом)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Има и кућни број и назив..."</string>
+    <string name="quest_address_house_number_label">"Кућни број:"</string>
+    <string name="quest_shoulder_title">"Да ли овај пут има зауставну траку?"</string>
 </resources>

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
 
     override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
-    override val commitMessage = "Add specific cycle barrier type"
+    override val changesetComment = "Add specific cycle barrier type"
     override val wikiLink = "Key:cycle_barrier"
     override val icon = R.drawable.ic_quest_no_bicycles
     override val isDeleteElementEnabled = true

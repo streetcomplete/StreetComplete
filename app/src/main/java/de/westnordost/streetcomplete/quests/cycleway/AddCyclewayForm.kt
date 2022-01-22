@@ -10,6 +10,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
+import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
+import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
@@ -31,7 +37,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         else emptyList()
 
     override val otherAnswers: List<AnswerItem> get() {
-        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
+        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout" && osmElement!!.tags["junction"] != "circular"
         val result = mutableListOf<AnswerItem>()
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
@@ -54,11 +60,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         }
     }
 
-
     private val likelyNoBicycleContraflow = """
             ways with oneway:bicycle != no and (
                 oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or junction = roundabout
+                or junction ~ roundabout|circular
             )
         """.toElementFilterExpression()
 
@@ -73,12 +78,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
      * one-way is on the right side of the way */
     private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
-    private val isOneway get() = isForwardOneway || isReversedOneway
+    private val isOneway get() = isOneway(osmElement!!.tags)
 
-    private val isForwardOneway get() =
-        osmElement!!.tags["oneway"] == "yes"
-        || (osmElement!!.tags["junction"] == "roundabout" && osmElement!!.tags["oneway"] != "-1")
-    private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
+    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
+    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
@@ -113,20 +116,9 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         binding.puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         binding.puzzleView.setLeftSideText(leftSide?.getTitleResId()?.let { resources.getString(it) })
         binding.puzzleView.setRightSideText(rightSide?.getTitleResId()?.let { resources.getString(it) })
-        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
-            if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
-            if (rightSide == null) binding.puzzleView.showRightSideTapHint()
-            HAS_SHOWN_TAP_HINT = true
-        }
 
-        updateLastAnswerButtonVisibility()
-
-        lastSelection?.let {
-            binding.lastAnswerButton.leftSideImageView.setImageResource(it.left.getDialogIconResId(isLeftHandTraffic))
-            binding.lastAnswerButton.rightSideImageView.setImageResource(it.right.getDialogIconResId(isLeftHandTraffic))
-        }
-
-        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
+        showTapHint()
+        initLastAnswerButton()
         checkIsFormComplete()
     }
 
@@ -150,7 +142,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         savedInstanceState.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
         savedInstanceState.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
         setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY))
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -159,7 +150,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         leftSide?.let { outState.putString(CYCLEWAY_LEFT, it.name) }
         outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides)
         outState.putBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY, isDisplayingPreviousCycleway)
-
     }
 
     private fun setAsResurvey(resurvey: Boolean) {
@@ -173,87 +163,22 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         streetSideRotater?.onMapOrientation(rotation, tilt)
     }
 
-    override fun onClickOk() {
-        val leftSide = leftSide
-        val rightSide = rightSide
-
-        // a cycleway that goes into opposite direction of a oneway street needs special tagging
-        var leftSideDir = 0
-        var rightSideDir = 0
-        var isOnewayNotForCyclists = false
-        if (isOneway && leftSide != null && rightSide != null) {
-            // if the road is oneway=-1, a cycleway that goes opposite to it would be cycleway:oneway=yes
-            val reverseDir = if (isReversedOneway) 1 else -1
-
-            if (isReverseSideRight) {
-                if (rightSide.isSingleTrackOrLane()) {
-                    rightSideDir = reverseDir
-                }
-            } else {
-                if (leftSide.isSingleTrackOrLane()) {
-                    leftSideDir = reverseDir
-                }
-            }
-
-            isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
-                    || (if(isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
-        }
-
-        val answer = CyclewayAnswer(
-            left = leftSide?.let { CyclewaySide(it, leftSideDir) },
-            right = rightSide?.let { CyclewaySide(it, rightSideDir) },
-            isOnewayNotForCyclists = isOnewayNotForCyclists
-        )
-
-        applyAnswer(answer)
-
-        if (leftSide != null && rightSide != null) {
-            lastSelection =
-                if (isRoadDisplayedUpsideDown())
-                    LastCyclewaySelection(rightSide, leftSide)
-                else
-                    LastCyclewaySelection(leftSide, rightSide)
+    private fun showTapHint() {
+        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
+            if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
+            if (rightSide == null) binding.puzzleView.showRightSideTapHint()
+            HAS_SHOWN_TAP_HINT = true
         }
     }
 
-    private fun applyLastSelection() {
-        val lastSelection = lastSelection ?: return
-        if (isRoadDisplayedUpsideDown()) {
-            onSelectedSide(lastSelection.right, false)
-            onSelectedSide(lastSelection.left, true)
-        } else {
-            onSelectedSide(lastSelection.left, false)
-            onSelectedSide(lastSelection.right, true)
-        }
+    private fun showBothSides() {
+        isDefiningBothSides = true
+        binding.puzzleView.showBothSides()
+        updateLastAnswerButtonVisibility()
+        checkIsFormComplete()
     }
 
-    private fun isRoadDisplayedUpsideDown(): Boolean {
-        val roadDisplayRotation = binding.puzzleView.streetRotation
-        return roadDisplayRotation.normalizeDegrees(-180f).absoluteValue > 90f
-    }
-
-    private fun updateLastAnswerButtonVisibility() {
-        val formIsPrefilled = leftSide != null || rightSide != null
-        val lastAnswerWasForBothSides = (lastSelection?.left != null && lastSelection?.right != null)
-        val isDefiningBothSides = isDefiningBothSides && lastAnswerWasForBothSides
-
-        binding.lastAnswerButton.root.isGone =
-            lastSelection == null || formIsPrefilled || !isDefiningBothSides
-    }
-
-    private fun Cycleway.isSingleTrackOrLane() =
-        this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
-
-    private fun Cycleway.isDualTrackOrLane() =
-        this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE
-
-    override fun isFormComplete() = !isDisplayingPreviousCycleway && (
-        if (isDefiningBothSides) leftSide != null && rightSide != null
-        else                     leftSide != null || rightSide != null
-    )
-
-    override fun isRejectingClose() =
-        !isDisplayingPreviousCycleway && (leftSide != null || rightSide != null)
+    /* ---------------------------------- selection dialog -------------------------------------- */
 
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
@@ -291,12 +216,107 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         return values
     }
 
-    private fun showBothSides() {
-        isDefiningBothSides = true
-        binding.puzzleView.showBothSides()
+    /* --------------------------------- last answer button ------------------------------------- */
+
+    private fun initLastAnswerButton() {
         updateLastAnswerButtonVisibility()
-        checkIsFormComplete()
+
+        lastSelection?.let {
+            binding.lastAnswerButton.leftSideImageView.setImageResource(it.left.getDialogIconResId(isLeftHandTraffic))
+            binding.lastAnswerButton.rightSideImageView.setImageResource(it.right.getDialogIconResId(isLeftHandTraffic))
+        }
+
+        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
     }
+
+    private fun updateLastAnswerButtonVisibility() {
+        val formIsPrefilled = leftSide != null || rightSide != null
+        val lastAnswerWasForBothSides = (lastSelection?.left != null && lastSelection?.right != null)
+        val isDefiningBothSides = isDefiningBothSides && lastAnswerWasForBothSides
+
+        binding.lastAnswerButton.root.isGone =
+            lastSelection == null || formIsPrefilled || !isDefiningBothSides
+    }
+
+    private fun saveLastSelection() {
+        val leftSide = leftSide
+        val rightSide = rightSide
+        if (leftSide != null && rightSide != null) {
+            lastSelection =
+                if (isRoadDisplayedUpsideDown())
+                    LastCyclewaySelection(rightSide, leftSide)
+                else
+                    LastCyclewaySelection(leftSide, rightSide)
+        }
+    }
+
+    private fun applyLastSelection() {
+        val lastSelection = lastSelection ?: return
+        if (isRoadDisplayedUpsideDown()) {
+            onSelectedSide(lastSelection.right, false)
+            onSelectedSide(lastSelection.left, true)
+        } else {
+            onSelectedSide(lastSelection.left, false)
+            onSelectedSide(lastSelection.right, true)
+        }
+    }
+
+    private fun isRoadDisplayedUpsideDown(): Boolean =
+        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+
+    /* --------------------------------------- apply answer ------------------------------------- */
+
+    override fun onClickOk() {
+        val leftSide = leftSide
+        val rightSide = rightSide
+
+        // a cycleway that goes into opposite direction of a oneway street needs special tagging
+        var leftSideDir = 0
+        var rightSideDir = 0
+        var isOnewayNotForCyclists = false
+        if (isOneway && leftSide != null && rightSide != null) {
+            // if the road is oneway=-1, a cycleway that goes opposite to it would be cycleway:oneway=yes
+            val reverseDir = if (isReversedOneway) 1 else -1
+
+            if (isReverseSideRight) {
+                if (rightSide.isSingleTrackOrLane()) {
+                    rightSideDir = reverseDir
+                }
+            } else {
+                if (leftSide.isSingleTrackOrLane()) {
+                    leftSideDir = reverseDir
+                }
+            }
+
+            isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
+                || (if(isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
+        }
+
+        val answer = CyclewayAnswer(
+            left = leftSide?.let { CyclewaySide(it, leftSideDir) },
+            right = rightSide?.let { CyclewaySide(it, rightSideDir) },
+            isOnewayNotForCyclists = isOnewayNotForCyclists
+        )
+
+        applyAnswer(answer)
+
+        saveLastSelection()
+    }
+
+
+    private fun Cycleway.isSingleTrackOrLane() =
+        this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
+
+    private fun Cycleway.isDualTrackOrLane() =
+        this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE
+
+    override fun isFormComplete() = !isDisplayingPreviousCycleway && (
+        if (isDefiningBothSides) leftSide != null && rightSide != null
+        else                     leftSide != null || rightSide != null
+    )
+
+    override fun isRejectingClose() =
+        !isDisplayingPreviousCycleway && (leftSide != null || rightSide != null)
 
     companion object {
         private const val CYCLEWAY_LEFT = "cycleway_left"

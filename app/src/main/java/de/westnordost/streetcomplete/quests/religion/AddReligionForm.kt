@@ -35,7 +35,16 @@ class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
         Item(JAIN,         R.drawable.ic_religion_jain,      R.string.quest_religion_jain), // India
         Item(SHINTO,       R.drawable.ic_religion_shinto,    R.string.quest_religion_shinto), // Japan
         Item(CAODAISM,     R.drawable.ic_religion_caodaist,  R.string.quest_religion_caodaist) // Vietnam
-    ).sortedBy { countryInfo.popularReligions.indexOf(it.value!!.osmValue) }
+    ).sortedBy { religionPosition(it.value!!.osmValue) }
+
+    fun religionPosition(osmValue: String): Int {
+        val position = countryInfo.popularReligions.indexOf(osmValue)
+        if(position < 0) {
+            // not present at all in config, so should be put at the end
+            return Integer.MAX_VALUE
+        }
+        return position
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data.sync
 
 import android.app.*
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
 import androidx.core.app.NotificationCompat
@@ -16,7 +18,11 @@ import de.westnordost.streetcomplete.R
  *  and by the download service. */
 fun createSyncNotification(context: Context): Notification {
     val intent = Intent(context, MainActivity::class.java)
-    val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+    val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        PendingIntent.getActivity(context, 0, intent, FLAG_IMMUTABLE)
+    } else {
+        PendingIntent.getActivity(context, 0, intent, 0)
+    }
     val manager = NotificationManagerCompat.from(context)
     if (manager.getNotificationChannelCompat(NOTIFICATIONS_CHANNEL_SYNC) == null) {
         manager.createNotificationChannel(

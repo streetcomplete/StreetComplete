@@ -42,7 +42,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
-    <string name="confirmation_discard_negative">"Cancel"</string>
     <string name="action_download">"Scan for quests here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give any answer"</string>
@@ -54,7 +53,7 @@
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -227,12 +226,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is the underground entrance %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Is the railway station %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Is the location %s wheelchair accessible?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Partially means that there is no more than a single step to access it."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Partially means that there is no more than an ankle-high step to access it."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
@@ -570,9 +565,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_tracktype_grade5">"Soft"</string>
     <string name="quest_building_underground_name_title">"Is %s completely underground?"</string>
     <string name="quest_building_underground_title">"Is this building completely underground?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_outside">"Partially means that there is no more than a single step to access it."</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Partially means that there is no more than an ankle-high step to access it."</string>
     <string name="quest_wheelchairAccess_outside_title">"Is this place wheelchair accessible?"</string>
 
     <!-- Unsure if 'green man' is too colloquial. 'Walk signal' would be very unusual in the UK however. -->
@@ -926,7 +919,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Tall lorries don’t fit"</string>
     <string name="quest_address_street_hint">"Tap road on map"</string>
     <string name="quest_crossing_type_marked">"Marked"</string>
-    <string name="quest_parkingType_street_side">"Parking just off the carriageway"</string>
+    <string name="quest_parkingType_street_side">"Parking adjacent to the carriageway"</string>
     <string name="quest_parkingType_lane">"Parking on carriageway"</string>
     <string name="quest_existence_title">"Is this still here? (%s)"</string>
     <string name="quest_existence_name_title">"Is %1$s (%2$s) still here?"</string>
@@ -1132,9 +1125,40 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_barrier_bicycle_type_single">"Passage between two barriers"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barrier on each side"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - more than two barriers"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_level_title">"On which level is %s located?"</string>
+    <string name="quest_level_title">"On which level number is %s located?"</string>
     <string name="pref_title_language_select">"Select language"</string>
     <string name="language_default">"System default"</string>
+    <string name="on_floor">"on floor %s:"</string>
+    <string name="confirmation_discard_negative2">"No"</string>
+    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
+    <string name="select_street_parking_orientation">"Select orientation toward carriageway:"</string>
+    <string name="select_street_parking_position">"Select position:"</string>
+    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"On carriageway"</string>
+    <string name="street_parking_half_on_kerb">"Partially on carriageway"</string>
+    <string name="street_parking_on_kerb">"Adjacent to carriageway"</string>
+    <string name="street_parking_street_side">"Adjacent to carriageway only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On carriageway only in dedicated spaces"</string>
+    <string name="street_parking_separate">"Parking displayed separately on map"</string>
+    <string name="street_parking_no">"No parking here / Not allowed"</string>
+    <string name="street_parking_prohibited">"No parking"</string>
+    <string name="street_stopping_prohibited">"No stopping"</string>
+    <string name="street_standing_prohibited">"No standing"</string>
+    <string name="street_parking_conditional_restrictions">"Parking / Stopping restricted conditionally"</string>
+    <string name="street_parking_no_other_reasons">"No explicit sign / parking not possible"</string>
+    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, first answer how those that are allowed to, do park here. What restrictions apply exactly can be specified later.
+
+Alternatively, you can leave a note (with a photo)."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Both a house number and a name…"</string>
+    <string name="quest_address_house_number_label">"House number:"</string>
+    <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
+    <string name="quest_fireHydrant_position_title">"Where is this fire hydrant located?"</string>
+    <string name="quest_fireHydrant_position_green">"In grass or dirt"</string>
+    <string name="quest_fireHydrant_position_lane">"On the carriageway"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"On the pavement"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"In a parking spot"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"What diameter is specified on the sign for this fire hydrant? (reference number: %s)"</string>
 </resources>

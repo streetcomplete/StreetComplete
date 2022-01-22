@@ -42,7 +42,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Forkast endrigene?"</string>
     <string name="confirmation_discard_positive">"Forkast"</string>
-    <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Let etter oppdrag her"</string>
     <string name="action_upload">"Last opp svar"</string>
     <string name="no_changes">"Du ga ingen svar"</string>
@@ -56,7 +55,9 @@
     <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Posisjonen din trengs for å vise den på kartet, og for å lete etter oppdrag i nærheten."</string>
     <string name="about_title_authors">"Bidragsytere"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick og bidragsytere"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick og bidragsytere"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Kodelager"</string>
@@ -1802,6 +1803,8 @@ forkortelser i feltet nedenfor:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Overgang med oppmerking"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkering ved siden av veien"</string>
     <string name="quest_parkingType_lane">"Parkering i veien"</string>
     <string name="quest_existence_title">"Er denne fortsatt her? (%s)"</string>
@@ -2015,8 +2018,47 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_buildingType_bridge">"Bro mellom bygninger (skyway)"</string>
     <string name="quest_laundrySelfService_title2">"Tilbyr dette vaskeriet selvbetjent vaskefasiliteter?"</string>
     <string name="quest_dietType_halal_name_title">"Tilbyr %s Halalprodukter?"</string>
+    <string name="quest_dietType_explanation_halal">"Halalretter må være tilberedt etter gjeldende regler, og produkter må ha merking og være sertifisert."</string>
     <string name="quest_picnicTableCover_title">"Er piknikbordet tildekket (beskyttet mot regn)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denne delen er trapper"</string>
+    <string name="quest_barrier_type_passage_conversion">"Endret til en passasje i en vegg, gjerde, e.l."</string>
     <string name="quest_barrier_type_gate_conversion">"Omgjort til en port"</string>
+    <string name="quest_traffic_calming_type_title">"Hvilken type fartsreduserende tiltak er dette?"</string>
+    <string name="quest_traffic_calming_type_bump">"Fartshump (liten)"</string>
+    <string name="quest_traffic_calming_type_hump">"Fartshump (større)"</string>
+    <string name="quest_traffic_calming_type_table">"Opphøyd kryss (større flate)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Fartspute (større kjøretøy kan kjøre mellom)"</string>
+    <string name="quest_traffic_calming_type_choker">"Innsnevring av veibanen"</string>
+    <string name="quest_traffic_calming_type_island">"Trafikkøy"</string>
+    <string name="quest_traffic_calming_type_chicane">"Sideforskyvning"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Rumlestripe(r)"</string>
+    <string name="quest_surface_value_concrete_plates">"Betongelementer"</string>
+    <string name="quest_surface_value_concrete_lanes">"Spor med betongplater"</string>
+    <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er dokumentert på selve brannhydranten?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Den oppgitte diameteren virker ikke å være rett."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Som oftest kan diameter-informasjon være beskrevet på selve brannhydranten."</string>
+    <string name="quest_diet_answer_no_food">"Ingen servering"</string>
+    <string name="short_no_answer_on_button">"Nei"</string>
+    <string name="restore_confirmation">"Gjenopprette"</string>
+    <string name="restore_dialog_message">"Gjenopprette alle skulte oppdrag?"</string>
+    <string name="quest_parking_access_title2">"Hvem kan parkere her? Gratis eller betalt parkering."</string>
+    <string name="quest_access_yes">"Offentlig tilgjengelig"</string>
+    <string name="quest_access_customers">"Besøk til et sted (f.eks. kunder)"</string>
+    <string name="quest_access_private">"Privat eller med tillatelse"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Er hentetidene for denne postkassa fortsatt korrekte?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Er hentetidene for denne %s postkassa fortsatt korrekte?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Ukjent type forretning. Prøv for eksempel \"bakery\" (bruk engelsk), eller lag en kommentar."</string>
+    <string name="quest_bicycle_barrier_type_title">"Hvilken type sperring er dette?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal over veien"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Smal passasje, trangest øverst"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passasje mellom to barrierer"</string>
+    <string name="quest_barrier_bicycle_type_double">"Innsnevring på begge sider"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Innsnevring med mer enn to barrierer "</string>
+    <string name="pref_title_language_select">"Velg språk"</string>
     <string name="language_default">"Systemvalgt"</string>
+    <string name="confirmation_discard_negative2">"Nei"</string>
+    <string name="quest_street_parking_title">"På hvilken måte kan biler parkere her?"</string>
+    <string name="street_parking_prohibited">"Ingen parkering her"</string>
+    <string name="street_stopping_prohibited">"Ingen parkering"</string>
+    <string name="street_standing_prohibited">"Ingen stans"</string>
 </resources>

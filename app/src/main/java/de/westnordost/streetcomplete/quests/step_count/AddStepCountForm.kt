@@ -12,16 +12,16 @@ class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
     override val contentLayoutResId = R.layout.quest_step_count
     private val binding by contentViewBinding(QuestStepCountBinding::bind)
 
-    private val count get() = binding.countInput.text?.toString().orEmpty().trim()
+    private val count get() = binding.countInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.countInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
-    override fun isFormComplete() = count.isNotEmpty() && count.toInt() > 0
+    override fun isFormComplete() = count > 0
 
     override fun onClickOk() {
-        applyAnswer(count.toInt())
+        applyAnswer(count)
     }
 }

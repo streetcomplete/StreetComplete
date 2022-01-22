@@ -98,9 +98,8 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         }
     }
 
-    private fun getInitialItems(): List<GroupableDisplayItem<I>> {
-        return favs.get().mostCommonWithin(6, 30).padWith(topItems).toList()
-    }
+    private fun getInitialItems(): List<GroupableDisplayItem<I>> =
+        favs.get().mostCommonWithin(6, historyCount = 30, first = 1).padWith(topItems).toList()
 
     override fun onClickOk() {
         val item = selectedItem!!

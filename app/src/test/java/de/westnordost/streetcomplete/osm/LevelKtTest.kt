@@ -52,7 +52,7 @@ class LevelKtTest {
         assertFalse(intersects(LevelRange(0.0, 3.0), LevelRange(-2.0, -0.5)))
     }
 
-    // check if it is symetrical
+    // check if it is symmetrical
     private fun intersects(level1: Level, level2: Level): Boolean {
         val result1 = level1.intersects(level2)
         val result2 = level2.intersects(level1)

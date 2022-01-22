@@ -44,7 +44,6 @@
     <string name="quest_noteDiscussion_anonymous">"Anonimo"</string>
     <string name="confirmation_discard_title">"Scartare l'input?"</string>
     <string name="confirmation_discard_positive">"Scarta"</string>
-    <string name="confirmation_discard_negative">"Annulla"</string>
     <string name="action_download">"Trova le missioni in zona"</string>
     <string name="action_upload">"Carica risposte"</string>
     <string name="no_changes">"Non hai dato alcuna risposta"</string>
@@ -56,7 +55,9 @@
     <string name="turn_on_location_request">"La localizzazione è spenta. Apro le Impostazioni per abilitarla?"</string>
     <string name="no_location_permission_warning">"L'accesso alla tua posizione è necessario per cercare le missioni vicine a te."</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
-    <string name="about_summary_authors">"© 2016–2021 Tobias Zwick e contributori"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© %s Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
@@ -986,6 +987,8 @@ riconoscimento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Attraversamento indicato"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parcheggio poco fuori dalla carreggiata"</string>
     <string name="quest_parkingType_lane">"Parcheggio sulla carreggiata"</string>
     <string name="quest_existence_title">"È ancora qui? (%s)"</string>
@@ -1210,4 +1213,25 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_level_title">"Su quale piano si trova %s?"</string>
     <string name="pref_title_language_select">"Seleziona lingua"</string>
     <string name="language_default">"Predefinito di sistema"</string>
+    <string name="on_floor">"al piano %s:"</string>
+    <string name="confirmation_discard_negative2">"No"</string>
+    <string name="quest_street_parking_title">"Come possono parcheggiare la auto qua?"</string>
+    <string name="select_street_parking_orientation">"Seleziona l'orientamento verso la strada:"</string>
+    <string name="select_street_parking_position">"Seleziona la posizione:"</string>
+    <string name="select_street_parking_no">"Sono presenti cartelli o strisce qua?"</string>
+    <string name="street_parking_parallel">"Parallelo"</string>
+    <string name="street_parking_diagonal">"Diagonale"</string>
+    <string name="street_parking_perpendicular">"Perpendicolare"</string>
+    <string name="street_parking_on_street">"Sulla strada"</string>
+    <string name="street_parking_half_on_kerb">"Parzialmente su strada"</string>
+    <string name="street_parking_on_kerb">"Accanto alla strada"</string>
+    <string name="street_parking_street_side">"Accanto alla strada solo su spazi dedicati"</string>
+    <string name="street_parking_painted_area_only">"Sulla strada solo su spazi dedicati"</string>
+    <string name="street_parking_separate">"Parcheggio visualizzato separatamente sulla mappa"</string>
+    <string name="street_parking_prohibited">"No sosta"</string>
+    <string name="street_stopping_prohibited">"No fermata"</string>
+    <string name="street_parking_conditional_restrictions">"Limiti condizionali alla sosta o fermata"</string>
+    <string name="street_parking_no_other_reasons">"Indiccazione non presente / parcheggio non possibile"</string>
+    <string name="quest_address_house_number_label">"Numero civico"</string>
+    <string name="quest_shoulder_title">"Questa strada ha un bordo?"</string>
 </resources>

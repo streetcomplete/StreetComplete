@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
@@ -11,7 +10,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with (
-          highway ~ ${ROADS_WITH_SURFACES.joinToString("|")}
+          highway ~ ${ROADS_TO_ASK_SURFACE_FOR.joinToString("|")}
           or highway = service and service !~ driveway|slipway
         )
         and (
@@ -26,7 +25,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val commitMessage = "Add road surface info"
+    override val changesetComment = "Add road surface info"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
     override val isSplitWayEnabled = true
@@ -47,26 +46,13 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun createForm() = AddRoadSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value.osmValue)
-                changes.deleteIfExists("surface:note")
-            }
-            is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value.osmValue)
-                changes.addOrModify("surface:note", answer.note)
-            }
-        }
-        changes.deleteIfExists("source:surface")
-    }
-
-    companion object {
-        // well, all roads have surfaces, what I mean is that not all ways with highway key are
-        // "something with a surface"
-        private val ROADS_WITH_SURFACES = arrayOf(
-            // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition asphalt (or concrete)
-            "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track", "road"
-        )/*"service", */// this is too much, and the information value is very low
+        answer.applyTo(changes, "surface")
     }
 }
+
+private val ROADS_TO_ASK_SURFACE_FOR = arrayOf(
+    // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition asphalt (or concrete)
+    "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
+    "unclassified", "residential", "living_street", "pedestrian", "track",
+    // "service", // this is too much, and the information value is very low
+)

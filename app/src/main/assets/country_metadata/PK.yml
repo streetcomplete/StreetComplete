@@ -6,6 +6,6 @@ noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ur, en, pa]
 orchardProduces: [guava, mango, mangosteen, orange, tomato, apple, date, apricot, chilli_pepper, sweet_pepper, banana, lemon, lime, peach, grape, plum, almond, pear, walnut]
-popularReligions: [muslim, hindu, christian, animism]
+popularReligions: [muslim, hindu, christian, animist]
 popularSports: [cricket, soccer, tennis, field_hockey]
 roofsAreUsuallyFlat: true

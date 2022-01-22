@@ -7,7 +7,7 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 228
-noParkingLineStyle: alternating yellow dashes and Xs
+noParkingLineStyle: dashed yellow with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [de, fr, it, rm]
 orchardProduces: [apple, grape, tomato, pear, strawberry, apricot, cherry, plum, raspberry, walnut, chilli_pepper, sweet_pepper, kiwi, blueberry, peach, chestnut]

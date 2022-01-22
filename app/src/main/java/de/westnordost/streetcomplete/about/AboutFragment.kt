@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import de.westnordost.streetcomplete.ApplicationConstants.COPYRIGHT_YEARS
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBinding
@@ -37,6 +38,8 @@ class AboutFragment : PreferenceFragmentCompat() {
             listener?.onClickedChangelog()
             true
         }
+        findPreference<Preference>("authors")?.summary =
+            getString(R.string.about_summary_authors, COPYRIGHT_YEARS)
 
         findPreference<Preference>("license")?.setOnPreferenceClickListener {
             openUrl("https://www.gnu.org/licenses/gpl-3.0.html")

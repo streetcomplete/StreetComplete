@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.lanes
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.AnyThread
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -20,6 +18,9 @@ import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
+import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isOneway
 
 class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
@@ -41,10 +42,10 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    private val isOneway get() = isForwardOneway || isReversedOneway
+    private val isOneway get() = isOneway(osmElement!!.tags)
 
-    private val isForwardOneway get() = osmElement!!.tags["oneway"] == "yes" || osmElement!!.tags["junction"] == "roundabout"
-    private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
+    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
+    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
 
     override val otherAnswers: List<AnswerItem> get() {
         val answers = mutableListOf<AnswerItem>()
@@ -61,8 +62,8 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     //region Lifecycle
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState != null) {
             selectedLanesType = savedInstanceState.getString(LANES_TYPE)?.let { LanesType.valueOf(it) }
@@ -76,8 +77,6 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         } else {
             setStreetSideLayout()
         }
-
-        return view
     }
 
     @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
@@ -105,6 +104,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
                 val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
                 applyAnswer(MarkedLanesSides(forwardLanes, backwardLanes, hasCenterLeftTurnLane))
             }
+            null -> {}
         }
     }
 
@@ -182,6 +182,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
                 puzzleView.onClickListener = null
                 puzzleView.onClickSideListener = this::selectNumberOfLanesOnOneSide
             }
+            else -> {}
         }
         puzzleView.isShowingLaneMarkings = selectedLanesType in listOf(MARKED, MARKED_SIDES)
         puzzleView.isShowingBothSides = !isOneway

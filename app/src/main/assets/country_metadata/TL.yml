@@ -3,6 +3,6 @@ atmOperators: [BNU, Mandiri, LOOS24, ANZ, ANZ Bank, Loos24]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 514
-noStoppingSignStyle: australia https://www.mapillary.com/app/&pKey=510809496757110
+noStoppingSignStyle: australia
 officialLanguages: [tet, pt]
 orchardProduces: [coffee, coconut, guava, mango, mangosteen, avocado, papaya, orange, tomato, banana, cacao, pineapple]
