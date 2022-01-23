@@ -25,7 +25,7 @@ This is done by executing the `updateStreetCompleteData` gradle task. However, s
 3. Run the gradle task `app:installRelease` to deploy the release on your smartphone.
 4. Test if all works as expected. At least look at the changelog and download quests.
 5. Commit and push.
-6. In Android Studio, select _Build -> Generate Signed Bundle / APK_. You need both. You should first create the APK, then the bundle, because the build process for the APK clears the directory in which the Bundle/APK is placed. Rename the created files to match the release name, e.g. "StreetComplete-v99.9-beta9.apk"
+6. In Android Studio, select _Build -> Generate Signed Bundle / APK_. You need both. You should first create the APK, then the bundle, because the build process for the APK clears the directory in which the Bundle/APK is placed. Rename the created files to match the release name, e.g. "StreetComplete-v99.0-beta9.apk"
 
 ### Publish Release on GitHub
 
@@ -43,7 +43,7 @@ This is done by executing the `updateStreetCompleteData` gradle task. However, s
 _Testing -> Open Testing_ to release a beta release.
 2. Tap _Create New Release_ in the upper right corner.
 3. Upload the **bundle**
-4. In the field _Release name_, just input the version name, e.g. "v99-beta9". In the _Release notes_, we just refer to the changelog on GitHub (e.g. `<en-US>https://github.com/streetcomplete/StreetComplete/releases/tag/v99.9-beta9</en-US>`) because the character limit it too short for a proper changelog.
+4. In the field _Release name_, just input the version name, e.g. "v99.0-beta9". In the _Release notes_, we just refer to the changelog on GitHub (e.g. `<en-US>https://github.com/streetcomplete/StreetComplete/releases/tag/v99.0-beta9</en-US>`) because the character limit it too short for a proper changelog.
 5. Finally, press on _Save_, then _Review release_. Review the release.
 
 ### After the release
