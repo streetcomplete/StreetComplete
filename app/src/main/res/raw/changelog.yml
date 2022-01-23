@@ -1,3 +1,9 @@
+v39.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix housenumbers, road names etc. were not visible on the map on Android 12 (by @matteblair)</li>
+  </ul>
+
 v39.0: |
   <h3>New Quests</h3>
   <ul>
