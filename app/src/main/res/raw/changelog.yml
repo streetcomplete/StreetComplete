@@ -17,7 +17,7 @@ v39.0: |
   <ul>
   <li>Fix rarely quests don't go away after solving them (#3290)</li>
   <li>Fix rarely quest answers don't get uploaded automatically until next restart of app (#3494)</li>
-  <li>Fix a crashes (#3622, ...)</li>
+  <li>Fix a few crashes (#3622, ...)</li>
   </ul>
 
 v38.2: |
