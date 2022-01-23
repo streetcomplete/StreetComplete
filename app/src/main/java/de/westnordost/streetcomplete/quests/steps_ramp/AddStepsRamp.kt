@@ -49,9 +49,9 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
             // updating ramp key: We need to take into account other ramp:*=yes values not touched
             // by this app
             val supportedRampKeys = listOf("ramp:wheelchair", "ramp:stroller", "ramp:bicycle")
-            val anyUnsupportedRampTagIsYes = tags.entries.filter { (key, _) ->
-                key.startsWith("ramp:") && key !in supportedRampKeys
-            }.any { it.value != "no" }
+            val anyUnsupportedRampTagIsYes = tags.entries.any { (key, value) ->
+                key.startsWith("ramp:") && key !in supportedRampKeys && value != "no"
+            }
 
             val hasRamp = (answer.hasRamp() || anyUnsupportedRampTagIsYes)
             tags.updateWithCheckDate("ramp", hasRamp.toYesNo())
