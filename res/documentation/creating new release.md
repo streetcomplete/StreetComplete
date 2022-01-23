@@ -30,7 +30,7 @@ This is done by executing the `updateStreetCompleteData` gradle task. However, s
 ### Publish Release on GitHub
 
 1. On GitHub, [create a new release](https://github.com/streetcomplete/StreetComplete/releases/new).
-2. Create a new tag by tapping on _Choose a tag_, type the name, e.g. "v99-beta9" and press _Create new tag: v99-beta9 on publish_
+2. Create a new tag by tapping on _Choose a tag_, type the name, e.g. "v99.0-beta9" and press _Create new tag: v99.0-beta9 on publish_
 3. Select the branch you built the APK on. Usually it is master.
 4. Copy&paste the text from the `changelog.yml` into the textbox
 5. Attach the **APK**.
@@ -45,3 +45,7 @@ _Testing -> Open Testing_ to release a beta release.
 3. Upload the **bundle**
 4. In the field _Release name_, just input the version name, e.g. "v99-beta9". In the _Release notes_, we just refer to the changelog on GitHub (e.g. `<en-US>https://github.com/streetcomplete/StreetComplete/releases/tag/v99.9-beta9</en-US>`) because the character limit it too short for a proper changelog.
 5. Finally, press on _Save_, then _Review release_. Review the release.
+
+### After the release
+
+There might be bug fixes for the latest release that should be published as a minor version (before any new major version). If there are already changes for the next major version in the `master` branch then, create a release branch from the latest tag: E.g. for tag `v99.0`, create branch `99` with `git checkout -b 99 v99.0`. Then fix the bugs in the `master` branch and cherry-pick them to the release branch. The release branch can be deleted once the next major version is published.
