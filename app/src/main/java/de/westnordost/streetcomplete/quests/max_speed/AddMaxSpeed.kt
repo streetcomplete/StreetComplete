@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
@@ -62,13 +63,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
             is ImplicitMaxSpeed -> {
                 tags["maxspeed:type"] = answer.countryCode + ":" + answer.roadType
                 // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
-                if (answer.lit != null) {
-                    if (answer.lit) {
-                        tags["lit"] = "yes"
-                    } else {
-                        tags["lit"] = "no"
-                    }
-                }
+                answer.lit?.let { tags["lit"] = it.toYesNo() }
             }
         }
     }
