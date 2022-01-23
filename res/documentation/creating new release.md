@@ -43,7 +43,7 @@ This is done by executing the `updateStreetCompleteData` gradle task. However, s
 _Testing -> Open Testing_ to release a beta release.
 2. Tap _Create New Release_ in the upper right corner.
 3. Upload the **bundle**
-4. In the field _Release name_, just input the version name, e.g. "v99.0-beta9". In the _Release notes_, we just refer to the changelog on GitHub (e.g. `<en-US>https://github.com/streetcomplete/StreetComplete/releases/tag/v99.0-beta9</en-US>`) because the character limit it too short for a proper changelog.
+4. In the field _Release name_, just input the version name, e.g. "v99.0-beta9". In the _Release notes_, we just refer to the changelog on GitHub (e.g. `<en-US>https://github.com/streetcomplete/StreetComplete/releases/tag/v99.0-beta9</en-US>`) because the character limit is too short for a proper changelog.
 5. Finally, press on _Save_, then _Review release_. Review the release.
 
 ### After the release
