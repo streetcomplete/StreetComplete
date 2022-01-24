@@ -746,12 +746,6 @@
                     "label": "Varighet",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "Elevasjon"
-                },
-                "ele_node": {
-                    "label": "Elevasjon"
-                },
                 "electrified": {
                     "label": "Elektrifisering",
                     "options": {
@@ -900,9 +894,6 @@
                 },
                 "geyser/height": {
                     "label": "Utbruddshøyde"
-                },
-                "gnis/feature_id": {
-                    "label": "GNIS Egenskap ID"
                 },
                 "government": {
                     "label": "Type"
@@ -1622,9 +1613,6 @@
                 },
                 "rcn_ref": {
                     "label": "Sykkel Lov"
-                },
-                "real_fire": {
-                    "label": "Ekte Flamme"
                 },
                 "recycling_accepts": {
                     "label": "Godtar "
@@ -2850,9 +2838,6 @@
                 },
                 "amenity/vending_machine/newspapers": {
                     "name": "Avisautomat"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Pakkeboks"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Parkeringsautomat"

@@ -803,12 +803,6 @@
                     "label": "مدت زمان",
                     "placeholder": "۰۰:۰۰"
                 },
-                "ele": {
-                    "label": "ارتفاع از سطح دریا"
-                },
-                "ele_node": {
-                    "label": "ارتفاع از سطح دریا"
-                },
                 "electrified": {
                     "label": "برق رسانی",
                     "options": {
@@ -958,9 +952,6 @@
                 },
                 "geyser/height": {
                     "label": "ارتفاع فوران"
-                },
-                "gnis/feature_id": {
-                    "label": "شناسه عارضه GNIS (سامانه اطلاعات نام‌های جغرافیایی)"
                 },
                 "government": {
                     "label": "نوع"
@@ -1509,12 +1500,7 @@
                     }
                 },
                 "parking/orientation": {
-                    "label": "جهت",
-                    "options": {
-                        "diagonal": "به صورت قطری در نسبت با مسیر حرکت",
-                        "parallel": "موازی با مسیر حرکت",
-                        "perpendicular": "در اتصال هم سو با مسیر حرکت"
-                    }
+                    "label": "جهت"
                 },
                 "parking_entrance": {
                     "label": "نوع",
@@ -1729,9 +1715,6 @@
                 },
                 "rcn_ref": {
                     "label": "کد دوچرخه‌سواری"
-                },
-                "real_fire": {
-                    "label": "آتش واقعی"
                 },
                 "recycling_accepts": {
                     "label": "قبول"
@@ -3541,14 +3524,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "دستگاه فروش خودکار روزنامه",
                     "terms": "روزنامه"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "قفسه قفل‌دار",
-                    "terms": "قفسه رختکن  ، قفل ، نامه ، بسته بندی ، بسته ، وانت"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "صندوق امانات / صندوق پستی قفل‌دار",
-                    "terms": "نامه ، بسته بندی ، بسته ، گرفتن"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "دستگاه فروش خودکار کارت پارکینگ",

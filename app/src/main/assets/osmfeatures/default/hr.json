@@ -580,14 +580,6 @@
                     "label": "Trajanje",
                     "terms": "trajanje"
                 },
-                "ele": {
-                    "label": "Visina",
-                    "terms": "visina,nadmorska visina"
-                },
-                "ele_node": {
-                    "label": "Visina",
-                    "terms": "visina,nadmorska visina,visinska razlika"
-                },
                 "electrified": {
                     "label": "Elektrifikacija",
                     "options": {
@@ -686,9 +678,6 @@
                 },
                 "generator/type": {
                     "label": "Vrsta"
-                },
-                "gnis/feature_id": {
-                    "terms": "gnis id oznaka,sad"
                 },
                 "grape_variety": {
                     "label": "Vrsta grožđa"
@@ -1198,9 +1187,6 @@
                 },
                 "ramp": {
                     "terms": "ugrađen prilaz"
-                },
-                "real_fire": {
-                    "terms": "logorska vatra,vatra"
                 },
                 "ref": {
                     "terms": "referenti kod"

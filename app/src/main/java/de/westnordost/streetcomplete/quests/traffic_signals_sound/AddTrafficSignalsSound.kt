@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
@@ -37,6 +38,9 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
     override val questTypeAchievements = listOf(BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_sound_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter { it.isCrossingWithTrafficSignals() }.asSequence()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()

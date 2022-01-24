@@ -2021,6 +2021,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_dietType_explanation_halal">"Halalretter må være tilberedt etter gjeldende regler, og produkter må ha merking og være sertifisert."</string>
     <string name="quest_picnicTableCover_title">"Er piknikbordet tildekket (beskyttet mot regn)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Denne delen er trapper"</string>
+    <string name="quest_barrier_type_passage_conversion">"Endret til en passasje i en vegg, gjerde, e.l."</string>
     <string name="quest_barrier_type_gate_conversion">"Omgjort til en port"</string>
     <string name="quest_traffic_calming_type_title">"Hvilken type fartsreduserende tiltak er dette?"</string>
     <string name="quest_traffic_calming_type_bump">"Fartshump (liten)"</string>
@@ -2041,6 +2042,23 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="restore_confirmation">"Gjenopprette"</string>
     <string name="restore_dialog_message">"Gjenopprette alle skulte oppdrag?"</string>
     <string name="quest_parking_access_title2">"Hvem kan parkere her? Gratis eller betalt parkering."</string>
+    <string name="quest_access_yes">"Offentlig tilgjengelig"</string>
+    <string name="quest_access_customers">"Besøk til et sted (f.eks. kunder)"</string>
+    <string name="quest_access_private">"Privat eller med tillatelse"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Er hentetidene for denne postkassa fortsatt korrekte?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Er hentetidene for denne %s postkassa fortsatt korrekte?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Ukjent type forretning. Prøv for eksempel \"bakery\" (bruk engelsk), eller lag en kommentar."</string>
+    <string name="quest_bicycle_barrier_type_title">"Hvilken type sperring er dette?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal over veien"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Smal passasje, trangest øverst"</string>
+    <string name="quest_barrier_bicycle_type_single">"Passasje mellom to barrierer"</string>
+    <string name="quest_barrier_bicycle_type_double">"Innsnevring på begge sider"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Innsnevring med mer enn to barrierer "</string>
     <string name="pref_title_language_select">"Velg språk"</string>
     <string name="language_default">"Systemvalgt"</string>
+    <string name="confirmation_discard_negative2">"Nei"</string>
+    <string name="quest_street_parking_title">"På hvilken måte kan biler parkere her?"</string>
+    <string name="street_parking_prohibited">"Ingen parkering her"</string>
+    <string name="street_stopping_prohibited">"Ingen parkering"</string>
+    <string name="street_standing_prohibited">"Ingen stans"</string>
 </resources>

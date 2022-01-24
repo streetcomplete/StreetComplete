@@ -2259,6 +2259,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_traffic_calming_type_title">"Hvilken type  af trafikhastighedsdæmpning er dette?"</string>
     <string name="quest_traffic_calming_type_bump">"Vejbump (lille)"</string>
     <string name="quest_traffic_calming_type_hump">"Vejbump (større)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Pudebump (brede køretøjer kan passere uden bump)"</string>
     <string name="quest_traffic_calming_type_choker">"Vejen er indsnævret"</string>
     <string name="quest_traffic_calming_type_island">"Helleanlæg"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Rumlestribe(r)"</string>
@@ -2276,6 +2277,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_access_customers">"Kun personbesøg til bestemt sted (fx kunder)"</string>
     <string name="quest_access_private">"Kun person(er) med tilladelse"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Er tømningstider på denne postkasse stadigvæk korrekte?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Er tømmetiderne for denne %s postkasse stadig korrekte?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Ej genkendt. Prøv at indtaste typen af sted, fx \"bageri\". Ellers overvej at efterlade en note."</string>
     <string name="quest_bicycle_barrier_type_title">"Hvilken type af cykelchikane er dette?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal i forhold til stien"</string>
@@ -2298,6 +2300,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="street_parking_on_street">"På vejen"</string>
     <string name="street_parking_half_on_kerb">"Delvist på vejbanen"</string>
     <string name="street_parking_on_kerb">"Ved siden af ​​kørebanen"</string>
+    <string name="street_parking_painted_area_only">"På vejen, kun på markerede pladser"</string>
     <string name="street_parking_separate">"Parkering vises separat på kort"</string>
     <string name="street_parking_no">"Ingen parkering her / Ikke tilladt"</string>
     <string name="street_parking_prohibited">"Ingen parkering"</string>
@@ -2307,4 +2310,12 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Både et husnummer og et navn..."</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
     <string name="quest_shoulder_title">"Har denne vej et nødspor?"</string>
+    <string name="quest_fireHydrant_position_title">"Hvor er denne brandhane placeret?"</string>
+    <string name="quest_fireHydrant_position_green">"I græs eller jord"</string>
+    <string name="quest_fireHydrant_position_lane">"På vejen"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
+    <string name="quest_smoothness_obstacle">"Der er en forhindring"</string>
+    <string name="achievement_lifesaver_title">"Livredder"</string>
 </resources>

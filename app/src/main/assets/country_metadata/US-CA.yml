@@ -1,5 +1,3 @@
 # Do not edit. Source files are in /res/country_metadata
 chargingStationOperators: [Tesla, Tesla Motors, Intel Corporation, NRG Energy, Charge Point, Electrify America, ChargePoint, Chargepoint, SemaConnect, EVgo, Telsa, City of Oakland, chargepoint, Whole Foods, Volta, Roseville Electric]
-noParkingLineStyle: yellow on curb
-noStandingLineStyle: white on curb
 noStoppingLineStyle: red on curb

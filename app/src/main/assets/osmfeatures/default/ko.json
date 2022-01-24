@@ -703,12 +703,6 @@
                     "label": "소요 시간",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "고도"
-                },
-                "ele_node": {
-                    "label": "고도"
-                },
                 "electrified": {
                     "label": "전력화",
                     "options": {
@@ -840,9 +834,6 @@
                 },
                 "generator/type": {
                     "label": "유형"
-                },
-                "gnis/feature_id": {
-                    "label": "GNIS 지물 ID"
                 },
                 "government": {
                     "label": "유형"
@@ -2964,12 +2955,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "신문 자동판매기",
                     "terms": "신문 자동판매기"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "무인 택배 보관함"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "무인 택배함"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "주차권 발권기",
