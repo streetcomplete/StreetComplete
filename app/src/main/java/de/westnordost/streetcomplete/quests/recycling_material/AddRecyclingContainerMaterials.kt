@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
@@ -59,59 +60,46 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     }
 
     private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: StringMapChangesBuilder) {
+        // first clear recycling:* taggings previously "yes"
+        val previousMaterials = tags.entries.filter { (key, value) ->
+            key.startsWith("recycling:") && value == "yes"
+        }.map { it.key }
+        for (material in previousMaterials) {
+            tags.remove(material)
+        }
+
         // set selected recycling:* taggings to "yes"
         val selectedMaterials = materials.map { "recycling:${it.value}" }
-        for (acceptedMaterial in selectedMaterials) {
-            tags[acceptedMaterial] = "yes"
+        for (material in selectedMaterials) {
+            tags[material] = "yes"
         }
 
         // if the user chose deliberately not "all plastic", also tag it explicitly
-        val anyPlastic = listOf("recycling:plastic", "recycling:plastic_packaging", "recycling:plastic_bottles", "recycling:beverage_cartons")
         when {
-            "recycling:plastic" in selectedMaterials -> {
+            PLASTIC in materials -> {
                 tags.remove("recycling:plastic_packaging")
                 tags.remove("recycling:plastic_bottles")
                 tags.remove("recycling:beverage_cartons")
             }
-            "recycling:plastic_packaging" in selectedMaterials -> {
+            PLASTIC_PACKAGING in materials -> {
                 tags["recycling:plastic"] = "no"
                 tags.remove("recycling:plastic_bottles")
                 tags.remove("recycling:beverage_cartons")
             }
-            "recycling:beverage_cartons" in selectedMaterials
-            && "recycling:plastic_bottles" in selectedMaterials -> {
+            BEVERAGE_CARTONS in materials && PLASTIC_BOTTLES in materials -> {
                 tags["recycling:plastic_packaging"] = "no"
                 tags["recycling:plastic"] = "no"
             }
-            "recycling:beverage_cartons" in selectedMaterials -> {
+            BEVERAGE_CARTONS in materials -> {
                 tags["recycling:plastic_bottles"] = "no"
                 tags["recycling:plastic_packaging"] = "no"
                 tags["recycling:plastic"] = "no"
             }
-            "recycling:plastic_bottles" in selectedMaterials -> {
+            PLASTIC_BOTTLES in materials -> {
                 tags["recycling:beverage_cartons"] = "no"
                 tags["recycling:plastic_packaging"] = "no"
                 tags["recycling:plastic"] = "no"
             }
-            else -> {
-                tags.remove("recycling:plastic")
-                tags.remove("recycling:plastic_packaging")
-                tags.remove("recycling:plastic_bottles")
-                tags.remove("recycling:beverage_cartons")
-            }
-        }
-
-        // remove recycling:* taggings previously "yes" but now not any more
-        val materialsNotSelectedAnymore = tags.entries.filter { (key, value) ->
-            key.startsWith("recycling:")
-            && key !in selectedMaterials
-            // don't touch any previous explicit recycling:*=no taggings
-            && value == "yes"
-            // leave plastic values alone because it is managed separately (see above)
-            && key !in anyPlastic
-        }.map { it.key }
-        for (notAcceptedMaterial in materialsNotSelectedAnymore) {
-            tags.remove(notAcceptedMaterial)
         }
 
         // only set the check date if nothing was changed
