@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.upload
 
+import android.app.ForegroundServiceStartNotAllowedException
 import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
@@ -66,14 +68,20 @@ class UploadService : CoroutineIntentService(TAG) {
     }
 
     override suspend fun onHandleIntent(intent: Intent?) {
-        isUploading = true
-        progressListener?.onStarted()
+
 
         try {
+            isUploading = true
+            progressListener?.onStarted()
+
             uploader.upload()
         } catch (e: Exception) {
-            Log.e(TAG, "Unable to upload", e)
-            progressListener?.onError(e)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && e is ForegroundServiceStartNotAllowedException) {
+                // ok. Nevermind then.
+            } else {
+                Log.e(TAG, "Unable to upload", e)
+                progressListener?.onError(e)
+            }
         }
 
         isUploading = false
