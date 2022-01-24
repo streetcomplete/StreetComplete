@@ -61,11 +61,10 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
     private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: StringMapChangesBuilder) {
         // first clear recycling:* taggings previously "yes"
-        val previousMaterials = tags.entries.filter { (key, value) ->
-            key.startsWith("recycling:") && value == "yes"
-        }.map { it.key }
-        for (material in previousMaterials) {
-            tags.remove(material)
+        for ((key, value) in tags.entries) {
+            if (key.startsWith("recycling:") && value == "yes") {
+                tags.remove(material)
+            }
         }
 
         // set selected recycling:* taggings to "yes"
