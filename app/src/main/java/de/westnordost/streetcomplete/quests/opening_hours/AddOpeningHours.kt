@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
-import de.westnordost.streetcomplete.quests.place_name.PlaceFilterQuestType.OPENING_HOURS_QUEST
 import de.westnordost.streetcomplete.quests.place_name.getPlaceElementFilterString
 import java.util.concurrent.FutureTask
 
@@ -32,7 +31,7 @@ class AddOpeningHours (
               or amenity = recycling and recycling_type = centre
               or tourism = information and information = office
               or (amenity = recycling and recycling:batteries = yes)
-              or ${getPlaceElementFilterString(OPENING_HOURS_QUEST)}
+              or ${getPlaceElementFilterString(this)}
             )
             and !opening_hours
           )

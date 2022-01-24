@@ -1,23 +1,18 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import de.westnordost.streetcomplete.quests.place_name.PlaceFilterQuestType.OPENING_HOURS_QUEST
-import de.westnordost.streetcomplete.quests.place_name.PlaceFilterQuestType.PLACE_NAME_QUEST
-import de.westnordost.streetcomplete.quests.place_name.PlaceFilterQuestType.WHEELCHAIR_ACCESS_QUEST
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
+import kotlin.reflect.KClass
 
-enum class PlaceFilterQuestType {
-    OPENING_HOURS_QUEST,
-    PLACE_NAME_QUEST,
-    WHEELCHAIR_ACCESS_QUEST,
-}
+private typealias ValuesPerQuestTypes = Map<Set<KClass<*>>, List<String>>
 
-private typealias ValuesPerQuestTypes = Map<Set<PlaceFilterQuestType>, List<String>>
-
-fun getPlaceElementFilterString(questType: PlaceFilterQuestType): String {
-    val common = setOf(OPENING_HOURS_QUEST, PLACE_NAME_QUEST, WHEELCHAIR_ACCESS_QUEST)
-    val nameAndOpeningHours = setOf(PLACE_NAME_QUEST, OPENING_HOURS_QUEST)
-    val nameAndWheelchair = setOf(PLACE_NAME_QUEST, WHEELCHAIR_ACCESS_QUEST)
-    val name = setOf(PLACE_NAME_QUEST)
-    val wheelchair = setOf(WHEELCHAIR_ACCESS_QUEST)
+fun getPlaceElementFilterString(questType: QuestType<*>): String {
+    val common = setOf(AddOpeningHours::class, AddPlaceName::class, AddWheelchairAccessBusiness::class)
+    val nameAndOpeningHours = setOf(AddPlaceName::class, AddOpeningHours::class)
+    val nameAndWheelchair = setOf(AddPlaceName::class, AddWheelchairAccessBusiness::class)
+    val name = setOf(AddPlaceName::class)
+    val wheelchair = setOf(AddWheelchairAccessBusiness::class)
 
     val filterTags: Map<String, ValuesPerQuestTypes> = mapOf(
         "amenity" to mapOf(
@@ -143,8 +138,8 @@ fun getPlaceElementFilterString(questType: PlaceFilterQuestType): String {
     }.joinToString(" or ")
 }
 
-private fun ValuesPerQuestTypes.forQuestType(questType: PlaceFilterQuestType): List<String>? =
+private fun ValuesPerQuestTypes.forQuestType(questType: QuestType<*>): List<String>? =
     this.entries
-        .filter { questType in it.key }
+        .filter { questType::class in it.key }
         .flatMap { it.value }
         .ifEmpty { null }

@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.quests.place_name.PlaceFilterQuestType.WHEELCHAIR_ACCESS_QUEST
 import de.westnordost.streetcomplete.quests.place_name.getPlaceElementFilterString
 import java.util.concurrent.FutureTask
 
@@ -28,7 +27,7 @@ class AddWheelchairAccessBusiness(
             or amenity = parking and parking = multi-storey
             or amenity = recycling and recycling_type = centre
             or tourism = information and information = office
-            or ${getPlaceElementFilterString(WHEELCHAIR_ACCESS_QUEST)}
+            or ${getPlaceElementFilterString(this)}
           )
     """
 

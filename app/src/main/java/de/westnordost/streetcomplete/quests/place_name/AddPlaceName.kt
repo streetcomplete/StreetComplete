@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.quests.place_name.PlaceFilterQuestType.PLACE_NAME_QUEST
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -26,7 +25,7 @@ class AddPlaceName(
           or tourism = information and information = office
           or landuse ~ cemetery|allotments
           or military ~ airfield|barracks|training_area
-          or ${getPlaceElementFilterString(PLACE_NAME_QUEST)}
+          or ${getPlaceElementFilterString(this)}
         )
         and !name and !brand and noname != yes and name:signed != no
     """.toElementFilterExpression() }
