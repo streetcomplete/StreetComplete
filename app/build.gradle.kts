@@ -173,7 +173,7 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
@@ -182,7 +182,7 @@ dependencies {
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.25.0")
+    implementation("ch.poole:OpeningHoursParser:0.26.0")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
