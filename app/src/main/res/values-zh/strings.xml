@@ -14,7 +14,7 @@
 
     <!-- 纠正机翻 -->
     <!-- Fuzzy -->
-    <string name="pref_tilecache_size_message">"在外部存储器上保留数兆字节（mb）的空间以用于缓存片状地图"</string>
+    <string name="pref_tilecache_size_message">"在外部存储器上保留数兆字节（MB）的空间以用于缓存片状地图"</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"显示所有笔记"</string>
@@ -2397,6 +2397,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_dietType_explanation_halal">"清真制品必须按照特殊规则准备，并由清真认证机构对符合要求的产品进行标识。"</string>
     <string name="quest_picnicTableCover_title">"野餐桌有遮蔽吗（不受雨淋）？"</string>
     <string name="quest_generic_answer_is_actually_steps">"这部分是台阶"</string>
+    <string name="quest_barrier_type_gate_conversion">"改建成大门"</string>
 
     <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_title">"这个交通宁静化设施属于哪种？"</string>
@@ -2416,6 +2417,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_concrete_lanes">"水泥车辙板"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"这个直径令人难以置信"</string>
     <string name="quest_fireHydrant_confirmation_title">"你确定吗？有时可以在它本身上找到直径"</string>
 
     <!-- Fuzzy -->
@@ -2440,6 +2442,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_type_title">"这是什么类型的自行车护栏？"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"与小路成对角线"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"狭窄的通道，从底部朝顶部变小"</string>
     <string name="quest_barrier_bicycle_type_single">"屏障之间的通道"</string>
     <string name="quest_barrier_bicycle_type_double">"减速弯道 - 每边各一个障碍物"</string>
 
@@ -2508,4 +2512,24 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"这条路有路肩吗？"</string>
+    <string name="quest_fireHydrant_position_title">"消防栓在哪里？"</string>
+    <string name="quest_fireHydrant_position_green">"在草地或泥土中"</string>
+    <string name="quest_fireHydrant_position_lane">"在马路上"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"在人行道上"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"在停车场"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"是(留言)"</string>
+    <string name="quest_smoothness_name_title">"这里的 %s 的表面质量是什么"</string>
+    <string name="quest_smoothness_square_title">"这个广场的表面积如何"</string>
+    <string name="quest_smoothness_title_intermediate">"稍有颠簸"</string>
+    <string name="quest_smoothness_title_bad">"颠簸"</string>
+    <string name="quest_smoothness_title_very_bad">"很颠簸"</string>
+    <string name="quest_smoothness_title_horrible">"颠簸不平"</string>
+    <string name="quest_smoothness_title_very_horrible">"几乎不能通行"</string>
+    <string name="quest_smoothness_title_impassable">"不能通行"</string>
+    <string name="quest_smoothness_description_excellent_paved">"没有凸起或裂缝"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"几乎没有裂缝"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"有移位的石头、大缺口或存在其他损坏"</string>
+    <string name="quest_smoothness_description_bad_sett">"有风化的石头或者不规则形状、大缝隙或其他损坏"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"一些较大的砾石、凸起、车辙或坑洼"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"有丢失和破碎的石头或开裂的缝隙和其他可能会带来危险的损坏"</string>
 </resources>

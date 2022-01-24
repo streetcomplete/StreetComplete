@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.map.components
 
-import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import androidx.annotation.DrawableRes
@@ -63,11 +62,6 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
         // text marker
         if (title != null) {
-            // workaround for https://github.com/tangrams/tangram-es/issues/2305
-            val isNightMode = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-            val textFillColor = if (isNightMode) "#ccf" else "#124"
-            val textStrokeColor = if (isNightMode) "#2e2e48" else "#fff"
-
             val marker = ctrl.addMarker()
             val escapedTitle = title
                 .replace('\n', ' ')
@@ -80,10 +74,10 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 anchor: "bottom",
                 priority: 1,
                 font: {
-                    family: 'Roboto',
-                    fill: '$textFillColor',
-                    size: '17px',
-                    stroke: { color: '$textStrokeColor', width: 2.5px }
+                    family: global.text_font_family,
+                    fill: global.text_fill_color,
+                    size: global.text_size,
+                    stroke: global.text_stroke
                 },
                 offset: [0, ${iconSize / 2 + 2}px],
                 collide: true

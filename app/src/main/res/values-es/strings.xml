@@ -1908,7 +1908,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_oneway2_no_oneway">"No es de una sola dirección"</string>
     <string name="quest_maxweight_select_sign">"Elige una señal"</string>
     <string name="quest_steps_incline_title">"¿En qué dirección asciende la escalera?"</string>
-    <string name="quest_steps_incline_up">"Aquí está la parte alta"</string>
+    <string name="quest_steps_incline_up">"Sube en esta dirección"</string>
     <string name="quest_step_count_title">"¿Cuántos escalones hay?"</string>
     <string name="quest_traffic_signals_sound_title">"¿Tiene señales sonoras para personas con discapacidad visual?"</string>
 
@@ -2244,4 +2244,57 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Tiene número de puerta y nombre…"</string>
     <string name="quest_address_house_number_label">"Número de puerta:"</string>
     <string name="quest_shoulder_title">"¿Tiene arcén?"</string>
+    <string name="quest_fireHydrant_position_title">"¿Dónde está esta boca de incendios?"</string>
+    <string name="quest_fireHydrant_position_green">"Sobre hierba o tierra"</string>
+    <string name="quest_fireHydrant_position_lane">"En la vía"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"En la acera"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"En un aparcamiento"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"¿Qué diámetro de boca se especifica en el cartel? (número de referencia: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Sí (dejar nota)"</string>
+    <string name="quest_smoothness_name_title">"¿Cómo calificarías la superficie de «%s» en este punto?"</string>
+    <string name="quest_smoothness_square_title">"¿Cómo calificarías la superficie de esta plaza?"</string>
+    <string name="quest_smoothness_path_title">"¿Cómo calificarías la superficie de este camino?"</string>
+    <string name="quest_smoothness_road_title">"¿Cómo calificarías la superficie de esta vía?"</string>
+    <string name="quest_smoothness_title_excellent">"Superficie llana y fácil de cruzar"</string>
+    <string name="quest_smoothness_title_good">"Más o menos transitable"</string>
+    <string name="quest_smoothness_title_intermediate">"Con algún que otro bache"</string>
+    <string name="quest_smoothness_title_bad">"Con baches"</string>
+    <string name="quest_smoothness_title_very_bad">"Con muchos baches"</string>
+    <string name="quest_smoothness_title_horrible">"Con muchos baches y agujeros"</string>
+    <string name="quest_smoothness_title_very_horrible">"Casi imposible de cruzar"</string>
+    <string name="quest_smoothness_title_impassable">"No se puede cruzar; impracticable"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Sin ningún bache o imperfección"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Casi llano"</string>
+    <string name="quest_smoothness_description_good_paved">"Con algún que otro problema; grietas, imperfecciones o parches"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Superficie de piedras llanas y compactas"</string>
+    <string name="quest_smoothness_description_good_sett">"Adoquines muy bien alineados y de bordes casi imperceptibles para el viandante"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"De superficie más accidentada; grietas, roderas, baches, agujeros y demás daños"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Espacios entre adoquines con los que tropezar o piezas en mal sitio y otros daños"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Adoquines llanos o de forma regular, sin demasiada distancia entre sí"</string>
+    <string name="quest_smoothness_description_bad_paved">"Separación importante entre piezas, agujeros, piezas rotas u otro tipo de daño"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"Piedras en mal sitio, dejando agujeros y hondonadas, dañadas"</string>
+    <string name="quest_smoothness_description_bad_sett">"Losas en mal estado o partidas, demasiado separadas o dañadas"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Gravilla gruesa, baches, roderas y otros agujeros que causan irregularidad en el terreno"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Agujeros profundos, hondonadas importantes y otros aspectos potencialmente peligrosos para el tránsito causados por una superficie irregular"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Gran separación entre losa y losa, piezas que faltan o están rotas y que pueden causar daños o ser peligrosas"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Roto o con agujeros, piezas que faltan y otros problemas de estabilidad graves"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Con muchos pedruscos, erosión y baches que impiden o complican seriamente el paso"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_horrible">"Solo para vehículos todoterreno"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_horrible">"Solo para vehículos todoterreno especiales"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_impassable">"Solo es peatonal"</string>
+    <string name="quest_smoothness_wrong_surface">"Está mal puesta"</string>
+    <string name="quest_smoothness_surface_value">"La superficie aparece como:"</string>
+    <string name="quest_smoothness_obstacle">"Hay un obstáculo"</string>
+    <string name="quest_smoothness_obstacle_hint">"Si puedes responde teniendo en cuenta el estado general del trazado. No pasa nada si hay algún guardaganado, banda de frenado o bordillo por el camino. Aunque si ves muchos obstáculos seguro que resta puntos."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indican el tipo de vehículo que puede transitar por la vía, en líneas generales, más allá de problemas puntuales que lo impidan."</string>
+    <string name="quest_shoulder_explanation">"Un arcén es una sección al borde de la vía claramente demarcada para que los vehículos puedan hacer paradas de emergencia seguras, aunque a veces no esté pavimentado del todo."</string>
+    <string name="link_osmhydrant_description">"Busca, pon y edita parques de bomberos y bocas de incendio"</string>
+    <string name="achievement_lifesaver_title">"Salvavidas"</string>
+    <string name="achievement_lifesaver_solved_X">"¡Has completado %d tareas que mejoran la vida de los servicios de emergencia y primeros auxilios!"</string>
 </resources>

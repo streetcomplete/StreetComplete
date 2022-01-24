@@ -10,9 +10,9 @@ import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.toLatLon
 import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.map.tangram.screenBottomToCenterDistance
@@ -206,9 +206,13 @@ open class LocationAwareMapFragment : MapFragment() {
 
         tracks.last().add(location)
         // delay update by 600 ms because the animation to the new location takes that long
-        viewLifecycleScope.launch {
-            delay(600)
-            tracksMapComponent?.addToCurrentTrack(location)
+        // in rare cases, onLocationChanged may already be called before the view has been created
+        // so we need to check that first
+        if (view != null) {
+            viewLifecycleScope.launch {
+                delay(600)
+                tracksMapComponent?.addToCurrentTrack(location)
+            }
         }
     }
 

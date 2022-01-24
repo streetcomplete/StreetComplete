@@ -750,12 +750,6 @@
                     "label": "Kesto",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "Korkeus merenpinnasta"
-                },
-                "ele_node": {
-                    "label": "Korkeus merenpinnasta"
-                },
                 "electrified": {
                     "label": "Sähköistys",
                     "options": {
@@ -898,9 +892,6 @@
                 },
                 "geyser/height": {
                     "label": "Purkautumiskorkeus"
-                },
-                "gnis/feature_id": {
-                    "label": "GNIS-tunniste"
                 },
                 "government": {
                     "label": "Tyyppi"
@@ -3171,12 +3162,6 @@
                 },
                 "amenity/vending_machine/newspapers": {
                     "name": "Lehtiautomaatti"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Postin noutoautomaatti"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Pakettiautomaatti"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Pysäköintimaksuautomaatti",

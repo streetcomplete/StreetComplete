@@ -1877,7 +1877,7 @@
     <string name="achievement_pedestrian_solved_X">"കാൽനടയായി ആളുകൾക്ക് താൽപ്പര്യമുള്ള% ക്വസ്റ്റുകൾ പരിഹരിച്ചു!"</string>
     <string name="achievement_veg_title">"മൃഗങ്ങളോട് ദയ"</string>
     <string name="achievement_car_title">"റോഡിൽ"</string>
-    <string name="unread_messages_message">"നിങ്ങളുടെ ഇൻബോക്സിൽ നിങ്ങൾ വായിക്കാത്ത സന്ദേശങ്ങൾ ഉണ്ട്"</string>
+    <string name="unread_messages_message">"നിങ്ങളുടെ ഇൻബോക്സിൽ നിങ്ങൾ വായിക്കാത്ത %d സന്ദേശങ്ങൾ ഉണ്ട്"</string>
     <string name="unread_messages_button">"ഇൻബോക്സ് തുറക്കുക"</string>
     <string name="action_about2">"ഇതിനെ കുറിച്ച്"</string>
     <string name="map_btn_menu">"മെനു"</string>

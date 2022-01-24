@@ -1202,7 +1202,7 @@ Alternativ kann auch eine Notiz (mit Foto) hinterlassen werden."</string>
     <string name="quest_smoothness_description_intermediate_paved">"Ungewöhnlich raue Oberfläche, größere Lücken, Risse, flache Spurrillen, Schlaglöcher oder andere Schäden"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Größere Lücken, möglicherweise einige verschobene Steine oder andere Schäden"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Ebene Steine oder mit harten Kanten, flache oder schmale Lücken"</string>
-    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Gut instand gehalten, höchstens flache Unebenheiten oder Schlaglöcher"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Feiner Kies, flache Unebenheiten oder Schlaglöcher"</string>
     <string name="quest_smoothness_description_bad_paved">"Große Lücken, Schlaglöcher, Spurrillen, bröckelnder Belag oder andere Schäden"</string>
 
     <!-- "Displaced" eigentlich in dem Sinne wie es in dem Bild zu sehen ist: Sind leicht verdreht, oder einige höher als andere usw.
@@ -1214,9 +1214,9 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_smoothness_description_very_bad_sett">"Große Lücken, verschobene, fehlende oder unregelmäßig geformte Steine oder gefährliche Schäden"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Fehlende und kaputte Steine, Lücken oder andere gefährliche Schäden"</string>
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Einige große Steine, tiefe Schlaglöcher, Spurrillen, Erosion oder andere gefährliche Schäden"</string>
-    <string name="quest_smoothness_description_horrible">"Nur für Geländefahrzeuge angemessen nutzbar"</string>
-    <string name="quest_smoothness_description_very_horrible">"Nur für Fahrzeuge mit hoher Geländegängikeit angemessen nutzbar"</string>
-    <string name="quest_smoothness_description_impassable">"Nur zu Fuß passierbar"</string>
+    <string name="quest_smoothness_description_horrible">"Nur für Geländefahrzeuge oder zu Fuß angemessen nutzbar"</string>
+    <string name="quest_smoothness_description_very_horrible">"Nur für Fahrzeuge mit hoher Geländegängikeit oder zu Fuß angemessen nutzbar"</string>
+    <string name="quest_smoothness_description_impassable">"Ungeeignet für alle Fahrzeuge, nur zu Fuß passierbar"</string>
     <string name="quest_smoothness_wrong_surface">"Ist andere Oberfläche"</string>
     <string name="quest_smoothness_surface_value">"Die Oberfläche wurde bestimmt als:"</string>
     <string name="quest_smoothness_obstacle">"Da ist ein Hindernis"</string>
@@ -1226,4 +1226,12 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
+    <string name="quest_fuelSelfService_title">"Kann man an dieser Tankstelle selbst tanken?"</string>
+    <string name="quest_fuelSelfService_name_title">"Kann man bei %s selbst tanken?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er sehr zeitintensiv ist und es oft recht schwer ist, die richtige Wahl zu treffen. Du solltest diesen Aufgabentyp nur aktivieren wenn es dir wichtig ist, speziell diese Daten beizutragen."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Festgetreten, sehr wenig loser Kies oder Sand"</string>
+    <string name="quest_barrier_path_intersection">"Wie kreuzt dieser Weg die Barriere hier?"</string>
+    <string name="quest_barrier_road_intersection">"Wie kreuzt diesee Straße die Barriere hier?"</string>
+    <string name="quest_airConditioning_no_name_title">"Hat dieser Ort (%s) eine Klimaanlage?"</string>
+    <string name="quest_airConditioning_name_type_title">"Hat %1$s (%2$s) eine Klimaanlage?"</string>
 </resources>

@@ -12,10 +12,10 @@ import javax.inject.Singleton
 object NotesModule {
 
     /* NOTE: most dependents don't actually let dagger inject this dependency but just use this
-	   static method to initialize it themselves. This is not clean, but for some reason, having an
-	   @Inject @Named("AvatarsCacheDirectory") internal lateinit var avatarsCacheDirectory: File
-	   doesn't work. Dagger2 always reports that it does not know how to inject it.
-	*/
+       static method to initialize it themselves. This is not clean, but for some reason, having an
+       @Inject @Named("AvatarsCacheDirectory") internal lateinit var avatarsCacheDirectory: File
+       doesn't work. Dagger2 always reports that it does not know how to inject it.
+    */
     @Provides @Named("AvatarsCacheDirectory")
     fun getAvatarsCacheDirectory(context: Context): File {
         return File(context.cacheDir, ApplicationConstants.AVATARS_CACHE_DIRECTORY)

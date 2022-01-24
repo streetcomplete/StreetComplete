@@ -16,7 +16,7 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
         nodes, ways with
         (
           amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
-          or shop ~ butcher|supermarket|ice_cream
+          or shop ~ butcher|supermarket|ice_cream|convenience
         )
         and name and (
           !diet:halal

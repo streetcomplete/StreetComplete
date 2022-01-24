@@ -2272,4 +2272,27 @@
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Διαγραφή προεπιλογής \"%s\"; Η επιλογή και η σειρά αναζήτησης για αυτήν θα χαθούν αμετάκλητα."</string>
+    <string name="notification_syncing">"Συγχρονίζονται τα δεδομένα… "</string>
+    <string name="notification_channel_sync">"Συγχρονισμός δεδομένων"</string>
+    <string name="quest_board_type_sport">"Αθλητισμός, Ασκήσεις"</string>
+    <string name="quest_generic_hasFeature_optional">"Προαιρετικά"</string>
+    <string name="quest_buildingType_bridge">"Γέφυρα μεταξύ κτιρίων (πεζογέφυρα)"</string>
+    <string name="quest_laundrySelfService_title2">"Αυτό το πλυντήριο παρέχει αυτοεξυπηρέτηση;"</string>
+    <string name="quest_dietType_halal_name_title">"Το %s προσφέρει προϊόντα Χαλάλ;"</string>
+    <string name="quest_dietType_explanation_halal">"Τα προϊόντα Χαλάλ πρέπει να παρασκευάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης να σηματοδοτούν τα συμβατά προϊόντα."</string>
+    <string name="quest_picnicTableCover_title">"Είναι αυτό το τραπέζι πικνίκ καλυμμένο (προστατεύεται από τη βροχή);"</string>
+    <string name="quest_barrier_type_passage_conversion">"Μετατράπηκε σε πέρασμα σε τοίχο/φράχτη/κ.λπ."</string>
+    <string name="quest_barrier_type_gate_conversion">"Μετατράπηκε σε πύλη"</string>
+    <string name="quest_traffic_calming_type_title">"Τι είδους ήπια κυκλοφορία είναι αυτή;"</string>
+    <string name="quest_traffic_calming_type_choker">"Στενός δρόμος"</string>
+    <string name="quest_traffic_calming_type_island">"Νησίδα"</string>
+    <string name="quest_traffic_calming_type_chicane">"Σκόπιμη καμπύλη(ες)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_impassable">"Μετάβαση μόνο με τα πόδια"</string>
+    <string name="quest_smoothness_wrong_surface">"Η επιφάνεια είναι διαφορετική"</string>
+    <string name="quest_smoothness_surface_value">"Η επιφάνεια επισημάνθηκε ως:"</string>
+    <string name="quest_smoothness_obstacle">"Υπάρχει ένα εμπόδιο"</string>
+    <string name="quest_smoothness_obstacle_hint">"Δώστε μια γενική απάντηση για την ομαλότητα. Μεμονωμένα εμπόδια όπως τα κράσπεδα, σαμαράκια ή σχάρες βοοειδών μπορούν να αγνοηθούν. Επαναλαμβανόμενα ή απροσδόκητα εμπόδια θα πρέπει να υπολογίζονται στην απάντηση. "</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … υποδείξτε για ποια οχήματα η επιφάνεια πρέπει να είναι εντάξει για χρήση. Αυτό που έχει σημασία είναι η μεγάλη εικόνα και όχι οι μεμονωμένες ζημιές."</string>
 </resources>

@@ -103,7 +103,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
         // remove recycling:* taggings previously "yes" but now not any more
         val materialsNotSelectedAnymore = tags.entries.filter { (key, value) ->
-            key !in selectedMaterials
+            key.startsWith("recycling:")
+            && key !in selectedMaterials
             // don't touch any previous explicit recycling:*=no taggings
             && value == "yes"
             // leave plastic values alone because it is managed separately (see above)

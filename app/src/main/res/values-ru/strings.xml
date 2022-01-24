@@ -1659,7 +1659,17 @@
 
     <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_title">"Как здесь успокаивается дорожное движение?"</string>
+    <string name="quest_traffic_calming_type_bump">"Лежачий полицейский (короткий)"</string>
+    <string name="quest_traffic_calming_type_hump">"Лежачий полицейский (длинный)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_table">"Лежачий полицейский (плоская вершина)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_cushion">"Лежачий полицейский (не бугристый для широких транспортных средств)"</string>
     <string name="quest_traffic_calming_type_choker">"Суженная дорога"</string>
+    <string name="quest_traffic_calming_type_island">"Островок безопасности"</string>
+    <string name="quest_traffic_calming_type_chicane">"Преднамеренная(-ые) кривая(-ыи)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_traffic_calming_type_rumble_strip">"Полоса (полосы) вибрации"</string>
@@ -1685,6 +1695,8 @@
     <string name="quest_barrier_bicycle_type_diagonal">"По диагонали к дорожке"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Узкий проход, уменьшающийся к вершине"</string>
     <string name="quest_barrier_bicycle_type_single">"Проход между двумя барьерами"</string>
+    <string name="quest_barrier_bicycle_type_double">"Шикана - барьер на каждой стороне"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Шикана - больше двух барьеров"</string>
 
     <!-- Fuzzy -->
     <string name="quest_level_title">"На каком уровне находится %s?"</string>
@@ -1729,4 +1741,57 @@
     <string name="quest_fireHydrant_position_sidewalk">"На тротуаре"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На парковочном месте"</string>
     <string name="quest_fireHydrant_diameter_ref_title">"Какой диаметр указан на табличке у данного пожарного гидранта? (номер ссылки: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Да (оставьте заметку)"</string>
+    <string name="quest_smoothness_name_title">"Каково качество покрытия %s здесь?"</string>
+    <string name="quest_smoothness_square_title">"Каково качество покрытия этого квадрата?"</string>
+    <string name="quest_smoothness_path_title">"Какого качество покрытия у этой тропы?"</string>
+    <string name="quest_smoothness_road_title">"Каково качество покрытия этой дороги в этом месте?"</string>
+    <string name="quest_smoothness_title_excellent">"Гладкий и ровный"</string>
+    <string name="quest_smoothness_title_good">"В основном ровный"</string>
+    <string name="quest_smoothness_title_intermediate">"Немного бугристая"</string>
+    <string name="quest_smoothness_title_bad">"Бугристая"</string>
+    <string name="quest_smoothness_title_very_bad">"Очень бугристая"</string>
+    <string name="quest_smoothness_title_horrible">"Очень бугристая и неровная"</string>
+    <string name="quest_smoothness_title_very_horrible">"Почти непроходимый"</string>
+    <string name="quest_smoothness_title_impassable">"Непроходимый"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Нет выпуклостей и трещин"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Почти незаметные"</string>
+    <string name="quest_smoothness_description_good_paved">"Лишь маленькие трещины, дыры или немного неровная поверхность"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Мелкие или узкие дыры"</string>
+    <string name="quest_smoothness_description_good_sett">"Необычно плоские камни, правильный рисунок, очень мелкие или узкие промежутки"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"Необычно неровная поверхность, широкие зазоры, трещины, неглубокие колеи, выбоины или другие повреждения"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Широкие промежутки, возможное смещение камней или другие повреждения"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Плоские камни или с квадратными краями, неглубокие или узкие промежутки"</string>
+    <string name="quest_smoothness_description_bad_paved">"Большие ямы, выбоины, колеи, осыпающееся дорожное покрытие или другие повреждения"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"Смещённые камни, большие ямы или другие повреждения"</string>
+    <string name="quest_smoothness_description_bad_sett">"Выветренные камни или камни неправильной формы, большие ямы и повреждения"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Крупный гравий, неровности, колеи или выбоины"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Глубокие выбоины, колеи или другие опасные повреждения"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Большие дыры, смещённые, отсутствующие или неправильной формы камни или другие опасные повреждения"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Отсутствующие или разбитые камни, дыры или другие опасные повреждения"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Крупные камни, глубокие выбоины, неровности, рытвины, эрозия или другие опасные повреждения"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_horrible">"Хороша для использования лишь внедорожниками"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_horrible">"Хороша для использования лишь специализированными внедорожниками"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_impassable">"Проходима лишь пешком"</string>
+    <string name="quest_smoothness_wrong_surface">"Поверхность отличается"</string>
+    <string name="quest_smoothness_surface_value">"Поверхность помечена как:"</string>
+    <string name="quest_smoothness_obstacle">"На пути препятствие"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_obstacle_hint">"Пожалуйста, дайте общее обозрение гладкости. Отдельные препятствия, такие как бордюры, лежачие полицейские или сетки для крупного рогатого скота, можно игнорировать. Повторяющиеся или неожиданные препятствия должны учитываться при ответе. "</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … укажите, какие автомобили могут использовать поверхность. Важна общая картина, а не единичные повреждения."</string>
+    <string name="quest_shoulder_explanation">"Обочина — это чётко обозначенная полоса аварийной остановки, которая позволяет транспортным средствам безопасно останавливаться рядом с полосой движения, хотя и не всегда (полностью) на асфальтированной поверхности."</string>
+
+    <!-- Fuzzy -->
+    <string name="link_osmhydrant_description">"Найти, добавить или изменить пожарные депо и пожарные краны"</string>
+    <string name="achievement_lifesaver_title">"Спасатель"</string>
+
+    <!-- Fuzzy -->
+    <string name="achievement_lifesaver_solved_X">"Вы решили %d квестов помогающих службам спасения!"</string>
 </resources>

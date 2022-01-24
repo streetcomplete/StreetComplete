@@ -792,14 +792,6 @@
                     "placeholder": "00:00",
                     "terms": "διάρκεια,χρονική περίοδος"
                 },
-                "ele": {
-                    "label": "Υψόμετρο",
-                    "terms": "υψόμετρο"
-                },
-                "ele_node": {
-                    "label": "Υψόμετρο",
-                    "terms": "υψόμετρο"
-                },
                 "electrified": {
                     "label": "Ηλεκτροδότηση",
                     "options": {
@@ -1702,9 +1694,6 @@
                         "both": "Και τις δύο / Παντού",
                         "forward": "Προς τα Εμπρός"
                     }
-                },
-                "real_fire": {
-                    "label": "Πραγματική Φωτιά"
                 },
                 "recycling_accepts": {
                     "label": "Δέχεται"
@@ -3158,12 +3147,6 @@
                 },
                 "amenity/vending_machine/newspapers": {
                     "name": "Αυτόματος Πωλητής Τύπου"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Ντουλάπι Παραληφθέντων Δεμάτων"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Ντουλάπι Παραλαβής / Εναπόθεσης Δέματος"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Αυτόματος Πωλητής Εισιτηρίων Στάθμευσης"

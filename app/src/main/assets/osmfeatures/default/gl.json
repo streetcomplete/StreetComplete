@@ -722,12 +722,6 @@
                     "label": "Dura",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "Elevación"
-                },
-                "ele_node": {
-                    "label": "Elevación"
-                },
                 "electrified": {
                     "label": "Electrificación",
                     "options": {
@@ -877,9 +871,6 @@
                 },
                 "geyser/height": {
                     "label": "Altura de erupción"
-                },
-                "gnis/feature_id": {
-                    "label": "ID do elemento GNIS"
                 },
                 "government": {
                     "label": "Tipo"
@@ -1625,10 +1616,6 @@
                 },
                 "rcn_ref": {
                     "label": "Código de vía ciclista"
-                },
-                "real_fire": {
-                    "label": "Con lareira",
-                    "terms": "lume,lar,larega,lareiro"
                 },
                 "recycling_accepts": {
                     "label": "Acepta"
@@ -3273,14 +3260,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "Expendedora de xornais",
                     "terms": "expendedora,xornais,revistas,periódicos"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Máquina de recollida de paquetaría",
-                    "terms": "paquete,envios,retirar,recoller,paquetes,produtos,amazon,locker,casilleiro,casillero,armario,estante,estantería,libraría,andel,librería,paquetería,paquetaria,paqueteria,envíos,recollida,productos,produto,retiro"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Máquina para recollida e entrega de paquetaría",
-                    "terms": "paquete,envios,retirar,recoller,paquetes,produtos,amazon,locker,casilleiro,casillero,armario,estante,estantería,libraría,andel,librería,paquetería,paquetaria,paqueteria,envíos,recollida,productos,produto,retiro,entrega"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Parquímetro",
@@ -5371,9 +5350,6 @@
                 },
                 "office/association": {
                     "name": "Oficina de asociación"
-                },
-                "office/bail_bond_agent": {
-                    "name": "Axente de fianzas"
                 },
                 "office/charity": {
                     "name": "Oficina da caridade",
