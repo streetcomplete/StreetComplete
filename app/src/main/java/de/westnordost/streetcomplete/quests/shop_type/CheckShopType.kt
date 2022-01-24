@@ -49,16 +49,15 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override fun createForm() = ShopTypeForm()
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: StringMapChangesBuilder) {
-
         when (answer) {
             is IsShopVacant -> {
                 tags.updateCheckDate()
             }
             is ShopType -> {
+                tags.removeCheckDates()
+
                 for (key in tags.keys) {
-                    // also deletes all "disused:" keys
-                    val isOkToRemove = KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }
-                    if (isOkToRemove && !answer.tags.containsKey(key)) {
+                    if (KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }) {
                         tags.remove(key)
                     }
                 }
@@ -66,8 +65,6 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
                 for ((key, value) in answer.tags) {
                     tags[key] = value
                 }
-
-                tags.removeCheckDates()
             }
         }
     }

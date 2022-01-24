@@ -5,6 +5,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
 
     /** Remove the given key from the map */
     fun remove(key: String) {
+        changes.remove(key)
         val valueBefore = source[key]
         if (valueBefore != null) {
             addChange(StringMapEntryDelete(key, valueBefore))
@@ -14,13 +15,11 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
     /** put the given value for the given key */
     operator fun set(key: String, value: String) {
         val valueBefore = source[key]
-        if (valueBefore != value) {
-            addChange(if (valueBefore == null) {
-                StringMapEntryAdd(key, value)
-            } else {
-                StringMapEntryModify(key, valueBefore, value)
-            })
-        }
+        addChange(if (valueBefore == null) {
+            StringMapEntryAdd(key, value)
+        } else {
+            StringMapEntryModify(key, valueBefore, value)
+        })
     }
 
     /* ----------------------- */
@@ -69,17 +68,14 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
 
     data class Entry(override val key: String, override val value: String) : Map.Entry<String, String>
 
-    val hasChanges: Boolean get() = changes.isNotEmpty()
+    val hasChanges: Boolean get() = changes.values.any { change ->
+        change !is StringMapEntryModify || change.value != change.valueBefore
+    }
 
     private fun addChange(change: StringMapEntryChange) {
         if (changes[change.key] == change) return
-        checkDuplicate(change.key)
         changes[change.key] = change
     }
 
-    private fun checkDuplicate(key: String) {
-        check(!changes.containsKey(key)) { "The key '$key' is already being modified." }
-    }
-
-    fun create() = StringMapChanges(ArrayList(changes.values))
+    fun create() = StringMapChanges(changes.values)
 }

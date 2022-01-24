@@ -42,8 +42,8 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
             val hasAnotherRamp = answer.bicycleRamp || answer.strollerRamp
             // there is just a separate wheelchair ramp -> use ramp=separate, otherwise just yes
             tags.updateWithCheckDate("ramp", if (!hasAnotherRamp) "separate" else "yes")
-            tags.applyRampAnswer("bicycle", answer.bicycleRamp, false)
-            tags.applyRampAnswer("stroller", answer.strollerRamp, false)
+            applyRampAnswer(tags, "bicycle", answer.bicycleRamp, false)
+            applyRampAnswer(tags, "stroller", answer.strollerRamp, false)
             tags["ramp:wheelchair"] = "separate"
         } else {
             // updating ramp key: We need to take into account other ramp:*=yes values not touched
@@ -57,23 +57,23 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
             tags.updateWithCheckDate("ramp", hasRamp.toYesNo())
 
             val hasWheelchairRamp = answer.wheelchairRamp != WheelchairRampStatus.NO
-            tags.applyRampAnswer("bicycle", answer.bicycleRamp, anyUnsupportedRampTagIsYes)
-            tags.applyRampAnswer("stroller", answer.strollerRamp, anyUnsupportedRampTagIsYes)
-            tags.applyRampAnswer("wheelchair", hasWheelchairRamp, anyUnsupportedRampTagIsYes)
+            applyRampAnswer(tags, "bicycle", answer.bicycleRamp, anyUnsupportedRampTagIsYes)
+            applyRampAnswer(tags, "stroller", answer.strollerRamp, anyUnsupportedRampTagIsYes)
+            applyRampAnswer(tags, "wheelchair", hasWheelchairRamp, anyUnsupportedRampTagIsYes)
         }
     }
 }
 
-private fun StringMapChangesBuilder.applyRampAnswer(rampType: String, hasRamp: Boolean, rampTagForcedToBeYes: Boolean) {
+private fun applyRampAnswer(tags: StringMapChangesBuilder, rampType: String, hasRamp: Boolean, rampTagForcedToBeYes: Boolean) {
     if (hasRamp) {
-        set("ramp:$rampType", "yes")
+        tags["ramp:$rampType"] = "yes"
     } else if(rampTagForcedToBeYes) {
         /* if there is an unsupported ramp:*=yes tag but at the same time, there is neither a
         *  bicycle, stroller nor wheelchair ramp, the ramp key will remain =yes. But then, nothing
         *  else will be tagged and thus, the quest will still remain. So in this case, we tag
         *  the user's choices as "no" explicitly. See #3115 */
-        set("ramp:$rampType", "no")
-    } else if(get("ramp:$rampType") in listOf("yes", "separate")) {
-        remove("ramp:$rampType")
+        tags["ramp:$rampType"] = "no"
+    } else if(tags["ramp:$rampType"] in listOf("yes", "separate")) {
+        tags.remove("ramp:$rampType")
     }
 }
