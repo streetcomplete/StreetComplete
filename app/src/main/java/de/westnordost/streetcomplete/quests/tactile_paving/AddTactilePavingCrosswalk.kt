@@ -61,7 +61,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
 
     override fun createForm() = TactilePavingForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 }

@@ -39,5 +39,5 @@ class AddBarrierOnRoad: OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) = answer.applyTo(changes)
+    override fun applyAnswerTo(answer: BarrierType, tags: StringMapChangesBuilder) = answer.applyTo(tags)
 }

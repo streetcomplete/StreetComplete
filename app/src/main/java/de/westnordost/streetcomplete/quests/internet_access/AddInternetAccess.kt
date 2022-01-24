@@ -36,7 +36,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
     override fun createForm() = AddInternetAccessForm()
 
-    override fun applyAnswerTo(answer: InternetAccess, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("internet_access", answer.osmValue)
+    override fun applyAnswerTo(answer: InternetAccess, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("internet_access", answer.osmValue)
     }
 }

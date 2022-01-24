@@ -49,7 +49,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
 
     override fun createForm() = AddForestLeafTypeForm()
 
-    override fun applyAnswerTo(answer: ForestLeafType, changes: StringMapChangesBuilder) {
-        changes.add("leaf_type", answer.osmValue)
+    override fun applyAnswerTo(answer: ForestLeafType, tags: StringMapChangesBuilder) {
+        tags["leaf_type"] = answer.osmValue
     }
 }

@@ -27,10 +27,10 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
 
     override fun createForm() = AddStepsInclineForm()
 
-    override fun applyAnswerTo(answer: StepsIncline, changes: StringMapChangesBuilder) {
-        changes.add("incline", when(answer) {
+    override fun applyAnswerTo(answer: StepsIncline, tags: StringMapChangesBuilder) {
+        tags["incline"] = when(answer) {
             UP -> "up"
             UP_REVERSED -> "down"
-        })
+        }
     }
 }

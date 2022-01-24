@@ -129,13 +129,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     override fun createForm() = AddMaxHeightForm()
 
-    override fun applyAnswerTo(answer: MaxHeightAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: MaxHeightAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             is MaxHeight -> {
-                changes.add("maxheight", answer.value.toString())
+                tags["maxheight"] = answer.value.toString()
             }
             is NoMaxHeightSign -> {
-                changes.add("maxheight", if (answer.isTallEnough) "default" else "below_default")
+                tags["maxheight"] = if (answer.isTallEnough) "default" else "below_default"
             }
         }
     }

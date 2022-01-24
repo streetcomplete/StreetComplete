@@ -48,8 +48,8 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
 
     override fun createForm() = AddClothingBinOperatorForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("operator", answer)
+    override fun applyAnswerTo(answer: String, tags: StringMapChangesBuilder) {
+        tags["operator"] = answer
     }
 }
 

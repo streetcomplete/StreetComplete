@@ -39,8 +39,8 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("air_conditioning", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["air_conditioning"] = answer.toYesNo()
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =

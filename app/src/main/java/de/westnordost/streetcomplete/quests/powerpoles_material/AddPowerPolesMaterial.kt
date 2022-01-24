@@ -36,7 +36,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
 
     override fun createForm() = AddPowerPolesMaterialForm()
 
-    override fun applyAnswerTo(answer: PowerPolesMaterial, changes: StringMapChangesBuilder) {
-        changes.add("material", answer.osmValue)
+    override fun applyAnswerTo(answer: PowerPolesMaterial, tags: StringMapChangesBuilder) {
+        tags["material"] = answer.osmValue
     }
 }

@@ -33,10 +33,10 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
     override fun createForm() = AddBusStopNameForm()
 
-    override fun applyAnswerTo(answer: BusStopNameAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             is NoBusStopName -> {
-                changes.add("name:signed", "no")
+                tags["name:signed"] = "no"
             }
             is BusStopName -> {
                 for ((languageTag, name) in answer.localizedNames) {
@@ -45,7 +45,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
                         "international" -> "int_name"
                         else -> "name:$languageTag"
                     }
-                    changes.addOrModify(key, name)
+                    tags[key] = name
                 }
             }
         }

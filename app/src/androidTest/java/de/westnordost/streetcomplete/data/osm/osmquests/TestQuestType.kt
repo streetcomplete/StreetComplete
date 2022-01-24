@@ -10,7 +10,7 @@ open class TestQuestType : OsmElementQuestType<String> {
 
     override fun getTitle(tags: Map<String, String>) = 0
     override fun isApplicableTo(element: Element): Boolean? = null
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
+    override fun applyAnswerTo(answer: String, tags: StringMapChangesBuilder) {}
     override val icon = 0
     override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
     override val changesetComment = ""

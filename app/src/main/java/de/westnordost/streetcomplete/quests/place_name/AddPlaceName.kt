@@ -120,10 +120,10 @@ class AddPlaceName(
 
     override fun createForm() = AddPlaceNameForm()
 
-    override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             is NoPlaceNameSign -> {
-                changes.add("name:signed", "no")
+                tags["name:signed"] = "no"
             }
             is PlaceName -> {
                 for ((languageTag, name) in answer.localizedNames) {
@@ -132,7 +132,7 @@ class AddPlaceName(
                         "international" -> "int_name"
                         else -> "name:$languageTag"
                     }
-                    changes.addOrModify(key, name)
+                    tags[key] = name
                 }
             }
         }

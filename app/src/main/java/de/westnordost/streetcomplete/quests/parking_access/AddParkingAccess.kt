@@ -33,7 +33,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
     override fun createForm() = AddParkingAccessForm()
 
-    override fun applyAnswerTo(answer: ParkingAccess, changes: StringMapChangesBuilder) {
-        changes.addOrModify("access", answer.osmValue)
+    override fun applyAnswerTo(answer: ParkingAccess, tags: StringMapChangesBuilder) {
+        tags["access"] = answer.osmValue
     }
 }
