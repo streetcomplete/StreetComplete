@@ -275,4 +275,11 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
+    @Test fun `answer does not delete other =yes-keys`() {
+        questType.verifyAnswer(
+            mapOf("amenity" to "recycling", "access" to "yes"),
+            RecyclingMaterials(listOf(PAPER)),
+            StringMapEntryAdd("recycling:paper","yes")
+        )
+    }
 }

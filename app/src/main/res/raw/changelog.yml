@@ -2,6 +2,8 @@ v39.1: |
   <h3>Fixes</h3>
   <ul>
   <li>Fix housenumbers, road names etc. were not visible on the map on Android 12 (by @matteblair)</li>
+  <li>Fix build for F-Droid (#3667)</li>
+  <li>Fix recycling materials quest would delete also tags that don't start with "recycling:" but have "yes" as value</li>
   </ul>
 
 v39.0: |
