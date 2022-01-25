@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.quests.shoulder
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
+import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 
-class AddShoulderForm : AbstractQuestAnswerFragment<Boolean>() {
+class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
 
     override val contentLayoutResId = R.layout.quest_shoulder_explanation
 
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(true) }
-    )
+    override val items: List<StreetSideDisplayItem<Boolean>>
+        get() = TODO()
+
+    override fun onClickOk(leftSide: Boolean, rightSide: Boolean) {
+        applyAnswer(ShoulderSides(leftSide, rightSide))
+    }
 }

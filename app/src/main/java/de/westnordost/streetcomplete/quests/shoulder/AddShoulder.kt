@@ -8,12 +8,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.ktx.toYesNo
 
 
-class AddShoulder : OsmFilterQuestType<Boolean>() {
+class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
     /* Trunks always, smaller roads only if they are either motorroads, bridges or tunnels or if
      * they are likely rural roads (high max speeds - implicit or explicit - or no sidewalk).
@@ -65,9 +63,9 @@ class AddShoulder : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shoulder_title
 
-    override fun createForm(): AbstractQuestAnswerFragment<Boolean> = AddShoulderForm()
+    override fun createForm() = AddShoulderForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("shoulder", answer.toYesNo())
+    override fun applyAnswerTo(answer: ShoulderSides, changes: StringMapChangesBuilder) {
+        changes.add("shoulder", answer.osmValue)
     }
 }
