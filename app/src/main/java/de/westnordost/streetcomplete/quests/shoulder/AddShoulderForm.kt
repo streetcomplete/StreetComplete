@@ -14,4 +14,6 @@ class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
     override fun onClickOk(leftSide: Boolean, rightSide: Boolean) {
         applyAnswer(ShoulderSides(leftSide, rightSide))
     }
+
+    // TODO handle one-way streets(?)
 }
