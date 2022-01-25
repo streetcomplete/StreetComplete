@@ -8,8 +8,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.core.graphics.withRotation
-import androidx.core.view.isGone
-import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -17,7 +15,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.isApril1st
-import de.westnordost.streetcomplete.ktx.showTapHint
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.*
 import kotlin.math.max
 import kotlin.random.Random
@@ -32,7 +29,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     private val animator = TimeAnimator()
 
     private val binding : ViewLanesSelectPuzzleBinding
-    private val questionMark: Drawable = context.getDrawable(R.drawable.ic_lanes_unknown)!!
+    private val questionMark: Drawable = context.getDrawable(R.drawable.ic_street_side_unknown)!!
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
         set(value) {

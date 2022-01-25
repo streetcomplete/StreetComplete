@@ -40,7 +40,7 @@ fun StreetParking.getIcon(context: Context, countryInfo: CountryInfo, isUpsideDo
     StreetStoppingProhibited ->
         ResImage(countryInfo.noStoppingLineStyleResId ?: R.drawable.ic_street_none)
     UnknownStreetParking, IncompleteStreetParking ->
-        ResImage(if (isUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
+        ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the icon in a selection dialog */
@@ -58,7 +58,7 @@ fun StreetParking.getDialogIcon(context: Context, countryInfo: CountryInfo, isUp
     StreetParkingSeparate ->
         ResImage(R.drawable.ic_parking_separate)
     IncompleteStreetParking, UnknownStreetParking ->
-        ResImage(if (isUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
+        ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */

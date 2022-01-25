@@ -759,6 +759,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
+    <string name="quest_sidewalk_value_separate">displayed separately on map</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
     <string name="pref_title_theme_select">Select theme</string>
     <string name="theme_automatic">Auto</string>
@@ -982,7 +983,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
-    <string name="quest_sidewalk_separately_mapped">Yes, displayed separately on map</string>
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>

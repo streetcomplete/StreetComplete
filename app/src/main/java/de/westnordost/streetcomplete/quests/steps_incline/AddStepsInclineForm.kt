@@ -47,7 +47,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         binding.puzzleView.showOnlyRightSide()
         binding.puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
-        val defaultResId = R.drawable.ic_steps_incline_unknown
+        val defaultResId = R.drawable.ic_street_side_unknown
 
         binding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
         binding.puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })

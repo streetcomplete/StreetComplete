@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -19,10 +18,8 @@ import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.util.normalizeDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import kotlin.math.absoluteValue
 
 class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
@@ -109,8 +106,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         }
 
         val defaultResId =
-            if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
-            else                   R.drawable.ic_cycleway_unknown
+            if (isLeftHandTraffic) R.drawable.ic_street_side_unknown_l
+            else                   R.drawable.ic_street_side_unknown
 
         binding.puzzleView.setLeftSideImage(ResImage(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         binding.puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))

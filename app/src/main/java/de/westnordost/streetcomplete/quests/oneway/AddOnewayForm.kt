@@ -47,7 +47,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         binding.puzzleView.showOnlyRightSide()
         binding.puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
-        val defaultResId = R.drawable.ic_oneway_unknown
+        val defaultResId = R.drawable.ic_street_side_unknown
 
         binding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
 

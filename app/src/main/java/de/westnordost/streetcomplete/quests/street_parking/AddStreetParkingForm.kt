@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -18,12 +17,10 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.*
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.*
-import de.westnordost.streetcomplete.util.normalizeDegrees
 import de.westnordost.streetcomplete.view.*
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
-import kotlin.math.absoluteValue
 
 class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetParking>() {
 
@@ -60,8 +57,8 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
             elementGeometry as ElementPolylinesGeometry
         )
 
-        val defaultLeftImg = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
-        val defaultRightImg = ResImage(if (isRightSideUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
+        val defaultLeftImg = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        val defaultRightImg = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 
         val ctx = requireContext()
         binding.puzzleView.setLeftSideImage(leftSide?.getIcon(ctx, countryInfo, isLeftSideUpsideDown) ?: defaultLeftImg)
