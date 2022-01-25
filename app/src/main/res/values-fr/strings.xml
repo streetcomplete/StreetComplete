@@ -1530,4 +1530,11 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="link_osmhydrant_description">"Chercher, ajouter et éditer des casernes de pompiers et des poteaux incendie"</string>
     <string name="achievement_lifesaver_title">"Sauveteur"</string>
     <string name="achievement_lifesaver_solved_X">"Vous avez résolu %d quêtes aidant les services d’urgence et de premier secours !"</string>
+    <string name="quest_fuelSelfService_title">"Les pompes sont-elles en libre-service dans cette station-essence ?"</string>
+    <string name="quest_fuelSelfService_name_title">"Les pompes sont-elles en libre-service chez %s ?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Ce type de quête est désactivé par défaut car elles demandent beaucoup de temps, et il est souvent difficile d’y répondre correctement. Vous ne devriez activer ce type de quête que si vous êtes certain de vouloir rajouter ce type d’informations à la carte."</string>
+    <string name="quest_barrier_path_intersection">"De quelle façon ce chemin croise t’il cette barrière ?"</string>
+    <string name="quest_barrier_road_intersection">"De quelle façon cette route croise t’elle cette barrière ?"</string>
+    <string name="quest_airConditioning_no_name_title">"Est-ce que ce lieu (%s) est climatisé ?"</string>
+    <string name="quest_airConditioning_name_type_title">"Est-ce que %1$s (%2$s) est climatisé ?"</string>
 </resources>

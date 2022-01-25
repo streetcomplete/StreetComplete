@@ -83,6 +83,10 @@
                             "description": "Acesso permitido apenas com a permissão do proprietário em caráter individual",
                             "title": "Privado"
                         },
+                        "unknown": {
+                            "description": "Condições de acesso desconhecidas ou incertas",
+                            "title": "Desconhecido"
+                        },
                         "yes": {
                             "description": "Acesso permitido pela lei; direito de passagem",
                             "title": "Público"
@@ -108,8 +112,20 @@
                         "permissive": "Permissivo",
                         "permit": "Somente com licença",
                         "private": "Privado",
+                        "unknown": "Desconhecido",
                         "yes": "Público"
                     }
+                },
+                "activity": {
+                    "label": "Atividade",
+                    "options": {
+                        "Ski": "Esqui",
+                        "bicycle": "Ciclismo",
+                        "hiking": "Caminhada",
+                        "horse": "Hipismo",
+                        "mtb": "Ciclismo de montanha"
+                    },
+                    "terms": "uso,atividade,ocupação,função"
                 },
                 "addr/interpolation": {
                     "label": "Tipo",
@@ -532,6 +548,14 @@
                     "label": "Coberto",
                     "terms": "cobertura,com cobertura,proteção,protegido"
                 },
+                "covered_no": {
+                    "label": "Coberto",
+                    "options": {
+                        "no": "Não",
+                        "undefined": "Presume-se que não",
+                        "yes": "Sim"
+                    }
+                },
                 "craft": {
                     "label": "Tipo"
                 },
@@ -580,6 +604,8 @@
                         "chinese": "Chinês",
                         "chocolate": "Chocolate",
                         "coffee_shop": "Cafeteria",
+                        "dessert": "Sobremesa",
+                        "donut": "Donut",
                         "fish": "Peixe",
                         "french": "Francês",
                         "german": "Alemão",
@@ -587,12 +613,14 @@
                         "hot_dog": "Cachorro-quente/hot dog",
                         "ice_cream": "Sorvete",
                         "indian": "Indiano",
+                        "indonesian": "Indonésia",
                         "italian": "Italiano",
                         "japanese": "Japonês",
                         "juice": "Suco",
                         "kebab": "Kebab",
                         "korean": "Coreana",
                         "lebanese": "Libanesa",
+                        "malaysian": "Malaia",
                         "mexican": "Mexicano",
                         "pankcake": "Panqueca",
                         "pasta": "Macarrão",
@@ -607,6 +635,7 @@
                         "spanish": "Espanhola",
                         "steak_house": "Churrascaria",
                         "sushi": "Sushi",
+                        "taiwanese": "Taiwanesa",
                         "thai": "Tailandês",
                         "turkish": "Turco",
                         "vietnamese": "Vietnamita"
@@ -752,6 +781,16 @@
                     "label": "Direção (graus em sentido horário)",
                     "placeholder": "45, 90, 180, 270"
                 },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "Direção",
+                    "options": {
+                        "east": "Leste",
+                        "north": "Norte",
+                        "south": "Sul",
+                        "west": "Oeste"
+                    },
+                    "terms": "direções,direção,sentido,orientação"
+                },
                 "direction_clock": {
                     "label": "Direção",
                     "options": {
@@ -832,6 +871,14 @@
                     "label": "Tempo de duração",
                     "placeholder": "00:00"
                 },
+                "ele": {
+                    "label": "Elevação (metros)",
+                    "terms": "elevação,altura,altitude"
+                },
+                "ele_node": {
+                    "label": "Elevação (metros)",
+                    "terms": "elevação,altura,altitude"
+                },
                 "electrified": {
                     "label": "Eletrificação",
                     "options": {
@@ -877,6 +924,10 @@
                 },
                 "expected_rwn_route_relations": {
                     "label": "Nós de pedestres adjacentes"
+                },
+                "expressway-US": {
+                    "label": "Via Expressa",
+                    "terms": "via expressa,rodovia,autoestrada"
                 },
                 "faces": {
                     "label": "Faces"
@@ -1543,7 +1594,12 @@
                     "label": "Ponto de entrega"
                 },
                 "parcel_pickup": {
-                    "label": "Ponto de retirada"
+                    "label": "Ponto de retirada",
+                    "options": {
+                        "no": "Não",
+                        "undefined": "Presume-se que sim",
+                        "yes": "Sim"
+                    }
                 },
                 "park_ride": {
                     "label": "Estacionamento de intercâmbio"
@@ -1557,12 +1613,18 @@
                         "multi-storey": "Vários níveis",
                         "rooftop": "Telhado",
                         "sheds": "Cabanas",
+                        "street_side": "Lado da rua",
                         "surface": "Superfície",
                         "underground": "Subterrâneo"
                     }
                 },
                 "parking/orientation": {
-                    "label": "Orientação"
+                    "label": "Orientação",
+                    "options": {
+                        "diagonal": "Diagonal",
+                        "parallel": "Paralelo",
+                        "perpendicular": "Perpendicular"
+                    }
                 },
                 "parking_entrance": {
                     "label": "Tipo",
@@ -1780,7 +1842,20 @@
                     "label": "Código de ciclismo"
                 },
                 "recycling_accepts": {
-                    "label": "Aceita"
+                    "label": "Aceita",
+                    "options": {
+                        "batteries": "Baterias",
+                        "cans": "Latas",
+                        "cardboard": "Papelão",
+                        "clothes": "Roupas",
+                        "glass": "Vidros",
+                        "glass_bottles": "Garrafas de vidro",
+                        "green_waste": "Lixo verde",
+                        "paper": "Papel",
+                        "plastic_packaging": "Embalagens de plástico",
+                        "scrap_metal": "Sucata metálica",
+                        "shoes": "Sapatos"
+                    }
                 },
                 "recycling_type": {
                     "label": "Tipo",
@@ -1902,6 +1977,9 @@
                 },
                 "salt": {
                     "label": "Sal"
+                },
+                "sample_collection": {
+                    "label": "Amostras"
                 },
                 "sanitary_dump_station": {
                     "label": "Ponto de descarga de dejetos"
@@ -4727,16 +4805,16 @@
                     "terms": "autoestrada,via expressa,via rápida"
                 },
                 "highway/motorway_junction": {
-                    "name": "Entroncamento / Saída de Autoestrada",
-                    "terms": "acesso de autoestrada,saída de autoestrada,junção de autoestrada,acesso de via expressa,junção de via expressa,saída de via expressa"
+                    "name": "Entroncamento/Saída de autoestrada",
+                    "terms": "acesso de autoestrada,saída de autoestrada,junção de autoestrada,acesso de via expressa,junção de via expressa,saída de via expressa,acesso à autoestrada,acesso à via expressa,ligação de via expressa,saída,acesso"
                 },
                 "highway/motorway_link": {
-                    "name": "Ligação de Autoestrada",
-                    "terms": "acesso a autoestrada,acesso a via expressa,ligação de via expressa"
+                    "name": "Ligação de autoestrada",
+                    "terms": "acesso à autoestrada,acesso à via expressa,ligação de via expressa,saída de autoestrada,saída,acesso"
                 },
                 "highway/motorway_link-US-CA": {
-                    "name": "Ligação de Autoestrada",
-                    "terms": "acesso a autoestrada,acesso a via expressa,ligação de via expressa"
+                    "name": "Ligação de autoestrada",
+                    "terms": "acesso à autoestrada,acesso à via expressa,ligação de via expressa,saída de autoestrada,saída,acesso"
                 },
                 "highway/passing_place": {
                     "name": "Lugar de passagem",
@@ -5611,8 +5689,7 @@
                     "name": "Rosa-dos-ventos"
                 },
                 "man_made/courtyard": {
-                    "name": "Pátio",
-                    "terms": "pátio"
+                    "name": "Pátio"
                 },
                 "man_made/crane": {
                     "name": "Grua",

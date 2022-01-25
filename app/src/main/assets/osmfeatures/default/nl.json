@@ -478,7 +478,18 @@
                     "label": "Cash in"
                 },
                 "castle_type": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "castrum": "Romeins fort",
+                        "defensive": "Verdedigingskasteel",
+                        "fortress": "Vesting",
+                        "hillfort": "Heuvelfort",
+                        "kremlin": "Kremlin",
+                        "manor": "Landhuis\nHavezate",
+                        "palace": "Paleis",
+                        "shiro": "Japans kasteel\nShiro",
+                        "stately": "Statig huis"
+                    }
                 },
                 "changing_table": {
                     "label": "Commode"
@@ -1699,9 +1710,11 @@
                         "carports": "Carports",
                         "garage_boxes": "Garageboxen",
                         "lane": "Parkeerstrook",
+                        "layby": "Uitwijkplaats",
                         "multi-storey": "Parkeergebouw met meerdere verdiepingen",
                         "rooftop": "Dak",
                         "sheds": "Stallen",
+                        "street_side": "Straatkant",
                         "surface": "Oppervlak",
                         "underground": "Ondergronds"
                     }
@@ -1939,7 +1952,20 @@
                     "label": "Echt vuur"
                 },
                 "recycling_accepts": {
-                    "label": "Aanvaardt"
+                    "label": "Aanvaardt",
+                    "options": {
+                        "batteries": "Batterijen",
+                        "cans": "Blikjes",
+                        "cardboard": "Karton",
+                        "clothes": "Kleding",
+                        "glass": "Glas",
+                        "glass_bottles": "Glazen flessen",
+                        "green_waste": "Groenafval",
+                        "paper": "Papier",
+                        "plastic_packaging": "Plastic verpakkingsmateriaal",
+                        "scrap_metal": "Oud ijzer\nSchroot",
+                        "shoes": "Schoenen"
+                    }
                 },
                 "recycling_type": {
                     "label": "Type",
@@ -2641,6 +2667,17 @@
                         "military": "Militair",
                         "test": "Test",
                         "tourism": "Toerisme"
+                    }
+                },
+                "usage_waterway": {
+                    "label": "Gebruik",
+                    "options": {
+                        "headrace": "Inlaattunnel",
+                        "irrigation": "Irrigatie",
+                        "spillway": "Overlaat",
+                        "tailrace": "Afvoerleiding",
+                        "transmission": "Overbrenging",
+                        "transportation": "Transport"
                     }
                 },
                 "utility": {
@@ -5276,6 +5313,9 @@
                 "landuse/retail": {
                     "name": "Handelsgebied",
                     "terms": "commercieel,handel,shoppingstraat,winkelstraat,winkelgebied,verkoopgebied,verkoopzone"
+                },
+                "landuse/salt_pond": {
+                    "name": "Zoutpan"
                 },
                 "landuse/vineyard": {
                     "name": "Wijngaard",

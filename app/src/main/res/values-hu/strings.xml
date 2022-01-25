@@ -751,12 +751,10 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
+    <string name="quest_way_lit_title">"Ki van-e világítva ez az útszakasz?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"Ki van világítva ez az útszakasz?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"A(z) %s ki van itt világítva?"</string>
+    <string name="quest_way_lit_named_title">"Ki van ez világítva: %s?"</string>
 
     <!-- Az edit war-t elkerülendő: én úgy gondolom, és ahogy látom a többi szerkesztőtárs is, hogy az "-e" szócskát csak függőbeszédben használjuk, egy magában alló kérdőmondatban szerintem nagyon magyartalan. -->
     <!-- Fuzzy -->
@@ -1115,28 +1113,28 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_cycleway_value_suggestion_lane">"kerékpárral javasolt sáv"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxCollectionTimes_title">"Mikor gyűjtik be ezt a postaládát?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Mikor ürítik ezt a postaládát?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_collectionTimes_add_times">"Gyűjtési idő hozzáadása"</string>
+    <string name="quest_collectionTimes_add_times">"Ürítési idő hozzáadása"</string>
 
     <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"Nincsen meghatározott időpont"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_road_title">"Ezt az utat már befejezték?"</string>
+    <string name="quest_construction_road_title">"Befejezték már ezt az utat?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_cycleway_title">"Ezt a kerékpárutat már befejezték?"</string>
+    <string name="quest_construction_cycleway_title">"Befejezték már ezt a kerékpárutat?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_footway_title">"Ezt a járdát már befejezték?"</string>
+    <string name="quest_construction_footway_title">"Befejezték már ezt a járdát?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_generic_title">"Ezt az utat már befejezték?"</string>
+    <string name="quest_construction_generic_title">"Befejezték már ezt az utat?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_building_title">"Ezt az épületet már befejezték?"</string>
+    <string name="quest_construction_building_title">"Befejezték már ezt az épületet?"</string>
 
     <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"Soha nem jelenik meg itt: %s"</string>
@@ -1561,7 +1559,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_leave_new_note_photos_are_useful">"Fénykép hozzáadásával a megjegyzés sokkal hasznosabb lesz."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxCollectionTimes_name_title">"Mikor gyűjtik be ezt a postaládát: %s?"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Mikor ürítik ezt a postaládát: %s?"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Legjobb, ha a megjegyzést a helyi nyelven vagy angolul írod."</string>
@@ -1633,13 +1631,13 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="about_summary_current_version">"Jelenlegi verzió: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Mi a referenciaszáma ennek a postaládának?"</string>
+    <string name="quest_postboxRef_title">"Mi az azonosító száma ennek a postaládának?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_name_title">"Mi a referenciaszáma ennek a postaládának: %s?"</string>
+    <string name="quest_postboxRef_name_title">"Mi az azonosító száma ennek a postaládának: %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ref_answer_noRef">"Nem látható refernciaszám…"</string>
+    <string name="quest_ref_answer_noRef">"Nem látható azonosító szám…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Az ábrán látható út ugyanúgy van elforgatva, mint a térképen a jelölő helyén. "</string>
 
     <!-- Fuzzy -->
@@ -2166,8 +2164,8 @@ szintek"</string>
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Rendelkezik ez a közlekedési lámpa a biztonságos átkelés idején a vakok számára szolgáló tapintható jelzéssel?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tipp: Ez gyakran a jelzőgomb házán alul található rezgő gomb vagy forgó kúp."</string>
-    <string name="quest_busStopRef_title">"Mi az azonosítószáma ennek a buszmegállónak?"</string>
-    <string name="quest_tramStopRef_title">"Mi az azonosítószáma ennek a villamosmegállónak?"</string>
+    <string name="quest_busStopRef_title">"Mi az azonosító száma ennek a buszmegállónak?"</string>
+    <string name="quest_tramStopRef_title">"Mi az azonosító száma ennek a villamosmegállónak?"</string>
     <string name="quest_buildingType_bungalow_description2">"apró lakóház (nyaraló, hétvégi ház …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Milyen akadály található ezen a vasúti átkelőhelyen?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Nincs akadály"</string>
@@ -2352,10 +2350,10 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <!-- Fuzzy -->
     <string name="pref_title_quests2">"Kérdések kiválasztása és prioritásuk"</string>
     <string name="pref_subtitle_quests">"%1$d/%2$d engedélyezve"</string>
-    <string name="quest_busStopLit_tram_name_title">"Ez a villamosmegálló ki van világítva: %s?"</string>
-    <string name="quest_busStopLit_tram_title">"Ez a villamosmegálló ki van világítva?"</string>
-    <string name="quest_busStopLit_title">"Ez a buszmegálló ki van világítva?"</string>
-    <string name="quest_busStopLit_name_title">"Ez a buszmegálló ki van világítva: %s?"</string>
+    <string name="quest_busStopLit_tram_name_title">"Ki van világítva ez a villamosmegálló: %s?"</string>
+    <string name="quest_busStopLit_tram_title">"Ki van világítva ez a villamosmegálló?"</string>
+    <string name="quest_busStopLit_title">"Ki van világítva ez a buszmegálló?"</string>
+    <string name="quest_busStopLit_name_title">"Ki van világítva ez a buszmegálló: %s?"</string>
     <string name="no_location_permission_warning_title">"Helymeghatározási engedély"</string>
     <string name="quest_surface_value_woodchips">"Faapríték"</string>
     <string name="no_camera_app">"Kamera app hiányzik"</string>
@@ -2448,22 +2446,98 @@ megállóban?"</string>
     <string name="quest_access_yes">"Bárki a nagyközönségből"</string>
     <string name="quest_access_customers">"Ez adott hely látogatói (pl. ügyfelek részére)"</string>
     <string name="quest_access_private">"Kizárólag engedéllyel rendelkező személy(ek)"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">"Még mindig pontos ennek a postaládának a begyűjtési ideje?"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Még mindig pontos ennek a postaládának a begyűjtési ideje: %s?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Még mindig pontos ennek a postaládának az ürítési ideje?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Még mindig pontos ennek a postaládának az ürítési ideje: %s?"</string>
     <string name="quest_bicycle_barrier_type_title">"Ez milyen típusú kerékpáros akadály?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Az ösvényre átlósan"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"Keskeny átjáró, fölfelé keskenyedik"</string>
+    <string name="quest_barrier_bicycle_type_single">"Átjáró két akadály között"</string>
+    <string name="quest_barrier_bicycle_type_double">"S-kanyar mindkét oldalon akadállyal"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"S-kanyar legalább három akadállyal"</string>
+    <string name="quest_level_title">"Melyik szinten található ez: %s?"</string>
     <string name="pref_title_language_select">"Nyelv kiválasztása"</string>
     <string name="language_default">"Rendszer alapértelmezett"</string>
     <string name="on_floor">"%s. emeleten:"</string>
     <string name="confirmation_discard_negative2">"Nem"</string>
     <string name="quest_street_parking_title">"Hogyan parkorhatnak itt az autók, ha egyáltalán?"</string>
+    <string name="select_street_parking_orientation">"Az úttesthez viszonyított irányultság kiválasztása:"</string>
+    <string name="select_street_parking_position">"Helyzet kiválasztása:"</string>
+    <string name="select_street_parking_no">"Van-e itt jelzés vagy útburkolati jel?"</string>
+    <string name="street_parking_parallel">"Párhuzamosan"</string>
+    <string name="street_parking_diagonal">"Harántirányban"</string>
+    <string name="street_parking_perpendicular">"Merőlegesen"</string>
+    <string name="street_parking_on_street">"Az úttesten"</string>
+    <string name="street_parking_half_on_kerb">"Részben az úttesten"</string>
+    <string name="street_parking_on_kerb">"Az úttest mellett"</string>
+    <string name="street_parking_street_side">"Az úttest mellett, csak az erre kijelölt helyeken"</string>
+    <string name="street_parking_painted_area_only">"Az úttesten, csak az erre kijelölt helyeken"</string>
     <string name="street_parking_separate">"A parkoló külön szerepel a térképen"</string>
     <string name="street_parking_no">"Nincs parkoló / nem megengedett"</string>
-    <string name="street_parking_prohibited">"Nincs parkoló"</string>
+    <string name="street_parking_prohibited">"Várakozni tilos"</string>
     <string name="street_stopping_prohibited">"Megállni tilos"</string>
-    <string name="street_standing_prohibited">"Várakozni tilos"</string>
-    <string name="street_parking_conditional_restrictions">"Várakozás/megállás feltételesen korlátozott"</string>
-    <string name="street_parking_no_other_reasons">"Nincs kifejezett jel / parkolás nem lehetséges"</string>
+    <string name="street_standing_prohibited">"No standing (USA)"</string>
+    <string name="street_parking_conditional_restrictions">"Feltételesen korlátozott várakozás/megállás"</string>
+    <string name="street_parking_no_other_reasons">"Nincs kifejezett jel / nem lehet parkolni"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Ha egyáltalán lehet itt parkolni vagy megállni, akkor először is arra válaszolj, hogy hogyan lehet itt szabályosan parkolni. Az esetleges korlátozásokat később lehet pontosítani.
+
+Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Házszám és név egyaránt…"</string>
     <string name="quest_address_house_number_label">"Házszám:"</string>
     <string name="quest_shoulder_title">"Van leállósáv ezen az úton?"</string>
+    <string name="quest_fireHydrant_position_title">"Hol található ez a tűzcsap?"</string>
+    <string name="quest_fireHydrant_position_green">"Füvön vagy földön"</string>
+    <string name="quest_fireHydrant_position_lane">"Úttesten"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Járdán"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Parkolóhelyen"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Mekkora átmérő van feltüntetve ennek a tűzcsapnak a tábláján? (azonosító szám: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Igen (megjegyzés írása)"</string>
+    <string name="quest_smoothness_name_title">"Milyen a felszín minősége itt: %s?"</string>
+    <string name="quest_smoothness_square_title">"Milyen a felszín minősége ezen a téren?"</string>
+    <string name="quest_smoothness_path_title">"Milyen a felszín minősége ezen az ösvényen?"</string>
+    <string name="quest_smoothness_road_title">"Milyen az felszín minősége ezen az úton?"</string>
+    <string name="quest_smoothness_title_excellent">"Tükörsima"</string>
+    <string name="quest_smoothness_title_good">"Jobbára sima"</string>
+    <string name="quest_smoothness_title_intermediate">"Kicsit zötyögős"</string>
+    <string name="quest_smoothness_title_bad">"Göröngyös, kátyús"</string>
+    <string name="quest_smoothness_title_very_bad">"Nagyon kátyús"</string>
+    <string name="quest_smoothness_title_horrible">"Nagyon kátyús"</string>
+    <string name="quest_smoothness_title_very_horrible">"Szinte járhatatlan"</string>
+    <string name="quest_smoothness_title_impassable">"Járhatatlan"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Zökkenő- és repedésmentes"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Szinte zökkenőmentes"</string>
+    <string name="quest_smoothness_description_good_paved">"Csak kis repedések, hézagok, javítások vagy egy kicsit érdes felület"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Sekély vagy keskeny hézagok"</string>
+    <string name="quest_smoothness_description_good_sett">"Szokatlanul lapos kövek, szabályos mintázat, nagyon sekély vagy keskeny hézagok"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"Szokatlanul érdes felület, szélesebb hézagok, repedések, sekély nyomvályúk, kátyúk vagy más sérülések"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Nagyobb hézagok, esetleg néhány elmozdult kő vagy más sérülés"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Lapos vagy négyszögletes élű kövek, sekély vagy keskeny hézagokkal"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Finom kavics, sekély zökkenők vagy kátyúk"</string>
+    <string name="quest_smoothness_description_bad_paved">"Nagy hézagok, kátyúk, nyomvályúk, morzsalékos burkolat vagy más sérülések"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"Elmozdult kövek, nagy hézagok vagy más sérülések"</string>
+    <string name="quest_smoothness_description_bad_sett">"Mállott kő vagy szabálytalan formák, nagy hézagok vagy sérülések"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Nagyobb kavicsok, zökkenők, nyomvályúk vagy kátyúk"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Mély kátyúk, nyomvályúk vagy egyéb veszélyes sérülések"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Nagy hézagok, elmozdult, hiányzó vagy szabálytalan alakú kövek vagy veszélyes sérülések"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Hiányzó vagy törött kövek, hézagok vagy más veszélyes sérülések"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Néhány nagy kő, mély kátyúk, zökkenők, nyomvályúk, erózió vagy más veszélyes sérülések"</string>
+    <string name="quest_smoothness_description_horrible">"Megfelelően csak terepjáróval vagy gyalogosan használható"</string>
+    <string name="quest_smoothness_description_very_horrible">"Megfelelően csak különleges terepjáróval vagy gyalogosan használható"</string>
+    <string name="quest_smoothness_description_impassable">"Minden járművel használhatatlan, csak gyalogosan járható"</string>
+    <string name="quest_smoothness_wrong_surface">"A felszín nem ilyen"</string>
+    <string name="quest_smoothness_surface_value">"A felszín így volt címkézve:"</string>
+    <string name="quest_smoothness_obstacle">"Van rajta akadály"</string>
+    <string name="quest_smoothness_obstacle_hint">"Kérjük, általánosan határozd meg a simaságot. Az egyedi akadályok (pl járdaszegélyek, fekvőrendőr vagy szarvasmarha-rács) figyelmen kívül hagyhatók. Az ismétlődő vagy váratlan akadályokat viszont bele kell számítani a válaszba."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, ... add meg, hogy mely járművekkel lehet használni a felszínt. Az összkép számít, nem az egyedi sérülések."</string>
+    <string name="quest_shoulder_explanation">"A leállósáv egy világosan elhatárolt vészhelyzeti megállósáv, amelyen a járművek biztonságos megállhatnak a forgalmi sáv mellett, igaz, nem mindig (teljesen) burkolt felületen."</string>
+    <string name="link_osmhydrant_description">"Tűzoltóságok és tűzcsapok keresése, hozzáadása és szerkesztése"</string>
+    <string name="achievement_lifesaver_title">"Életmentő"</string>
+    <string name="achievement_lifesaver_solved_X">"Választ adtál %d olyan kérdésre, amellyel a mentőknek, a tűzoltóknak és más segélyszolgálatoknak nyújtottál segítséget!"</string>
+    <string name="quest_fuelSelfService_title">"Tankolhatsz te magad is ezen a benzinkúton?"</string>
+    <string name="quest_fuelSelfService_name_title">"Tankolhatsz te magad is itt: %s?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mert elég időigényes és gyakran nehéz helyesen válaszolni rá. Csak akkor engedélyezd, ha valóban elkötelezett vagy ilyen jellegű adatok hozzáadása iránt."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Keményre tömörödött, nagyon kevés laza kavics vagy homok"</string>
+    <string name="quest_barrier_path_intersection">"Hogyan keresztezi itt ez az ösvény az akadályt?"</string>
+    <string name="quest_barrier_road_intersection">"Hogyan keresztezi itt ez az út az akadályt?"</string>
+    <string name="quest_airConditioning_no_name_title">"Van-e itt (%s) légkondicionálás?"</string>
+    <string name="quest_airConditioning_name_type_title">"Rendelkezik-e %1$s (%2$s) légkondicionálással?"</string>
 </resources>
