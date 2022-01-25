@@ -16,15 +16,13 @@ import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
-class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
+class AddSidewalk : OsmElementQuestType<SidewalkSides> {
 
     /* the filter additionally filters out ways that are unlikely to have sidewalks:
      *
-     * + unpaved roads, roads with very low speed limits and roads that are probably not developed
-     *   enough to have sidewalk (i.e. country roads). But let's ask for urban roads at least
-     *
+     * + unpaved roads
+     * + roads that are probably not developed enough to have sidewalk (i.e. country roads)
      * + roads with a very low speed limit
-     *
      * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
      *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
      *   cycleway is separate, the sidewalk is too for sure
@@ -46,7 +44,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
             or highway = residential
             or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
           )
-          and foot != no and access !~ private|no
+          and foot != no
+          and access !~ private|no
           and foot != use_sidepath
           and bicycle != use_sidepath
           and bicycle:backward != use_sidepath
@@ -66,7 +65,6 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
@@ -112,18 +110,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: SidewalkAnswer, changes: StringMapChangesBuilder) {
-        changes.add("sidewalk", getSidewalkValue(answer))
+    override fun applyAnswerTo(answer: SidewalkSides, changes: StringMapChangesBuilder) {
+        answer.applyTo(changes)
     }
-
-    private fun getSidewalkValue(answer: SidewalkAnswer) =
-        when (answer) {
-            is SeparatelyMapped -> "separate"
-            is SidewalkSides -> when {
-                answer.left && answer.right -> "both"
-                answer.left -> "left"
-                answer.right -> "right"
-                else -> "no"
-            }
-        }
 }
