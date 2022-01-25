@@ -1230,4 +1230,6 @@
     <string name="pref_title_language_select">"Оберіть мову"</string>
     <string name="language_default">"Визначається системою"</string>
     <string name="on_floor">"на поверсі %s:"</string>
+    <string name="select_street_parking_position">"Вибрати місце"</string>
+    <string name="quest_smoothness_square_title">"Яка якість покриття цієї площі?"</string>
 </resources>

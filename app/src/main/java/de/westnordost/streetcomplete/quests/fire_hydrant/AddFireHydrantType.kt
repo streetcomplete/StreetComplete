@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
     override val elementFilter = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
-    override val commitMessage = "Add fire hydrant type"
+    override val changesetComment = "Add fire hydrant type"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant
     override val isDeleteElementEnabled = true
@@ -20,10 +20,10 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_type_title
 
-    override fun createForm() = AddFireHydrantTypeForm()
-
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = fire_hydrant")
+
+    override fun createForm() = AddFireHydrantTypeForm()
 
     override fun applyAnswerTo(answer: FireHydrantType, changes: StringMapChangesBuilder) {
         changes.add("fire_hydrant:type", answer.osmValue)

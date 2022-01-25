@@ -19,7 +19,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
         )
         and !toilets
     """
-    override val commitMessage = "Add toilet availability"
+    override val changesetComment = "Add toilet availability"
     override val wikiLink = "Key:toilets"
     override val icon = R.drawable.ic_quest_toilets
 

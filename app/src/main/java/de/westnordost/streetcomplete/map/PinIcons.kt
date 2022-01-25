@@ -28,6 +28,17 @@ import de.westnordost.streetcomplete.R
         "fire_hydrant" -> return R.drawable.ic_pin_fire_hydrant
         "phone" -> return R.drawable.ic_pin_phone
     }
+    when(map["highway"]) {
+        "crossing" -> {
+            if(map["crossing"] == "traffic_signals")
+                return R.drawable.ic_pin_pedestrian_traffic_light
+            else
+                return R.drawable.ic_pin_crossing
+        }
+        "traffic_signals" -> {
+            if(map["crossing"] == "traffic_signals") return R.drawable.ic_pin_pedestrian_traffic_light
+        }
+    }
     when(map["leisure"]) {
         "picnic_table" -> return R.drawable.ic_pin_picnic_table
     }

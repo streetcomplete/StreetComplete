@@ -117,6 +117,16 @@
                         }
                     }
                 },
+                "activity": {
+                    "label": "Activity",
+                    "options": {
+                        "hiking": "Hiking",
+                        "bicycle": "Cycling",
+                        "mtb": "Mountain Biking",
+                        "horse": "Horseback Riding",
+                        "Ski": "Skiing"
+                    }
+                },
                 "addr/interpolation": {
                     "label": "Type",
                     "options": {
@@ -457,7 +467,18 @@
                     "label": "Cash In"
                 },
                 "castle_type": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "defensive": "Defensive Castle",
+                        "palace": "Palace",
+                        "stately": "Stately Home",
+                        "manor": "Manor House",
+                        "fortress": "Fortress",
+                        "castrum": "Roman Fort",
+                        "shiro": "Shiro",
+                        "kremlin": "Kremlin",
+                        "hillfort": "Hillfort"
+                    }
                 },
                 "changing_table": {
                     "label": "Diaper Changing Table"
@@ -539,6 +560,14 @@
                 "couplings": {
                     "label": "Couplings",
                     "placeholder": "1, 2, 3..."
+                },
+                "covered_no": {
+                    "label": "Covered",
+                    "options": {
+                        "undefined": "Assumed to be No",
+                        "yes": "Yes",
+                        "no": "No"
+                    }
                 },
                 "covered": {
                     "label": "Covered"
@@ -864,11 +893,11 @@
                     "placeholder": "00:00"
                 },
                 "ele_node": {
-                    "label": "Elevation",
+                    "label": "Elevation (Meters)",
                     "terms": "altitude,height"
                 },
                 "ele": {
-                    "label": "Elevation",
+                    "label": "Elevation (Meters)",
                     "terms": "altitude,height"
                 },
                 "electrified": {
@@ -891,7 +920,17 @@
                     "placeholder": "Default"
                 },
                 "embassy": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "yes": "Embassy",
+                        "residence": "Official Residence of an Ambassador",
+                        "high_commission": "High Commission",
+                        "mission": "Diplomatic Mission",
+                        "branch_embassy": "Branch of an Embassy",
+                        "nunciature": "Diplomatic Mission of the Holy See",
+                        "delegation": "Delegation",
+                        "interests_section": "Interests Section"
+                    }
                 },
                 "emergency_combo": {
                     "label": "Type"
@@ -1581,6 +1620,17 @@
                     "label": "Par",
                     "placeholder": "3, 4, 5..."
                 },
+                "parcel_dropoff": {
+                    "label": "Parcel Dropoff"
+                },
+                "parcel_pickup": {
+                    "label": "Parcel Pickup",
+                    "options": {
+                        "undefined": "Assumed to be Yes",
+                        "yes": "Yes",
+                        "no": "No"
+                    }
+                },
                 "park_ride": {
                     "label": "Park and Ride"
                 },
@@ -1605,15 +1655,16 @@
                         "garage_boxes": "Garage Boxes",
                         "rooftop": "Rooftop",
                         "sheds": "Sheds",
-                        "street_side": "Street-side"
+                        "street_side": "Street-Side",
+                        "layby": "Turnout / Lay-By"
                     }
                 },
                 "parking/orientation": {
                     "label": "Orientation",
                     "options": {
-                        "parallel": "Parallel to the Carriage Way",
-                        "diagonal": "Diagonal in Relation to the Carriage Way",
-                        "perpendicular": "Meets the Carriage Way at a Straight Angle"
+                        "parallel": "Parallel to the Street",
+                        "diagonal": "Diagonal in Relation to the Street",
+                        "perpendicular": "Meets the Street at a Straight Angle"
                     }
                 },
                 "payment_multi_fee": {
@@ -1828,7 +1879,20 @@
                     "terms": "fire place,fire"
                 },
                 "recycling_accepts": {
-                    "label": "Accepts"
+                    "label": "Accepts",
+                    "options": {
+                        "glass_bottles": "Glass Bottles",
+                        "glass": "Glass",
+                        "paper": "Paper",
+                        "clothes": "Clothes",
+                        "cans": "Cans",
+                        "batteries": "Batteries",
+                        "shoes": "Shoes",
+                        "green_waste": "Green Waste",
+                        "plastic_packaging": "Plastic Packaging",
+                        "cardboard": "Cardboard",
+                        "scrap_metal": "Scrap Metal"
+                    }
                 },
                 "recycling_type": {
                     "label": "Type",
@@ -1951,6 +2015,9 @@
                 "salt": {
                     "label": "Salt",
                     "terms": "saline,salinated"
+                },
+                "sample_collection": {
+                    "label": "Samples"
                 },
                 "sanitary_dump_station": {
                     "label": "Toilet Disposal"
@@ -2190,7 +2257,8 @@
                     "options": {
                         "motor": "Motorsport",
                         "karting": "Karting",
-                        "motocross": "Motocross"
+                        "motocross": "Motocross",
+                        "speedway": "Motorcycle Speedway"
                     }
                 },
                 "sport_racing_nonmotor": {
@@ -2610,7 +2678,19 @@
                     "placeholder": "https://example.com"
                 },
                 "wetland": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "marsh": "Marsh",
+                        "reedbed": "Reed Bed",
+                        "saltmarsh": "Coastal Salt Marsh",
+                        "tidalflat": "Tidal Flat",
+                        "wet_meadow": "Wet Meadow",
+                        "swamp": "Swamp",
+                        "mangrove": "Mangrove",
+                        "bog": "Bog",
+                        "fen": "Fen",
+                        "string_bog": "String Bog"
+                    }
                 },
                 "wheelchair": {
                     "label": "Wheelchair Access",
@@ -3258,6 +3338,10 @@
                     "name": "LGBTQ+ Nightclub",
                     "terms": "gay nightclub,lesbian nightclub,lgbtq nightclub,lgbt nightclub,lgb nightclub"
                 },
+                "amenity/parcel_locker": {
+                    "name": "Parcel Locker",
+                    "terms": "automated postal box,dropoff,locker,mail,packstation,parcel,pickup"
+                },
                 "amenity/parking_entrance": {
                     "name": "Parking Garage Entrance / Exit"
                 },
@@ -3315,7 +3399,7 @@
                 },
                 "amenity/place_of_worship/christian": {
                     "name": "Christian Church",
-                    "terms": "christian,abbey,basilica,bethel,cathedral,chancel,chantry,chapel,fold,house of god,house of prayer,house of worship,minster,mission,oratory,parish,sacellum,sanctuary,shrine,tabernacle,temple"
+                    "terms": "christian,abbey,basilica,bethel,cathedral,chancel,chantry,chapel,fold,house of god,house of prayer,house of worship,minster,mission,oratory,parish,sacellum,sanctuary,shrine,tabernacle,temple,anglican,roman catholic"
                 },
                 "amenity/place_of_worship/christian/jehovahs_witness": {
                     "name": "Kingdom Hall of Jehovah's Witnesses",
@@ -3719,14 +3803,6 @@
                     "name": "Newspaper Vending Machine",
                     "terms": "newspaper"
                 },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Parcel Pickup/Dropoff Locker",
-                    "terms": "mail,packstation,parcel,pickup"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Parcel Pickup Locker",
-                    "terms": "amazon,locker,mail,packstation,parcel,pickup"
-                },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Parking Ticket Vending Machine",
                     "aliases": "Parking Meter",
@@ -3778,6 +3854,10 @@
                 "area": {
                     "name": "Area",
                     "terms": "polygon"
+                },
+                "area/footway": {
+                    "name": "Footway Area",
+                    "terms": "area:highway,edge of pavement,footway area,footway shape,pavement,sidewalk shape,sidewalk area"
                 },
                 "area/highway": {
                     "name": "Road Area",
@@ -4151,6 +4231,9 @@
                     "name": "Pigsty",
                     "terms": "hog parlor,hog pen,pig ark,pig barn,pig parlor,pig pen,pig shed,pig shelter,pig-cote,piggery,pigpen,pigshed,sty"
                 },
+                "building/synagogue": {
+                    "name": "Synagogue Building"
+                },
                 "building/temple": {
                     "name": "Temple Building"
                 },
@@ -4274,7 +4357,8 @@
                     "terms": "furniture"
                 },
                 "craft/key_cutter": {
-                    "name": "Key Cutter"
+                    "name": "Key Cutter",
+                    "terms": "key duplication"
                 },
                 "craft/metal_construction": {
                     "name": "Metalworker"
@@ -4394,6 +4478,10 @@
                     "name": "Ambulance Station",
                     "terms": "ems,emt,rescue"
                 },
+                "emergency/assembly_point": {
+                    "name": "Emergency Assembly Point",
+                    "terms": "eap,muster point,meeting point,staging area"
+                },
                 "emergency/defibrillator": {
                     "name": "Defibrillator",
                     "terms": "aed"
@@ -4442,9 +4530,17 @@
                     "name": "Siren",
                     "terms": "air raid,loud,noise,storm,tornado,warning"
                 },
+                "emergency/water_reservoir covered": {
+                    "name": "Emergency Water Reservoir (Underground)",
+                    "terms": "cistern,reservoir,extinguishing,firefighting"
+                },
+                "emergency/water_reservoir": {
+                    "name": "Emergency Water Reservoir",
+                    "terms": "basin,reservoir,extinguishing,firefighting"
+                },
                 "emergency/water_tank": {
                     "name": "Emergency Water Tank",
-                    "terms": "water tank,cistern,reservoir"
+                    "terms": "water tank,cistern,extinguishing,firefighting"
                 },
                 "entrance": {
                     "name": "Entrance / Exit",
@@ -4467,7 +4563,8 @@
                 },
                 "golf/bunker": {
                     "name": "Sand Trap",
-                    "terms": "hazard,bunker"
+                    "aliases": "bunker",
+                    "terms": "hazard"
                 },
                 "golf/cartpath": {
                     "name": "Golf Cartpath"
@@ -4483,7 +4580,8 @@
                     "name": "Fairway"
                 },
                 "golf/green": {
-                    "name": "Putting Green"
+                    "name": "Putting Green",
+                    "terms": "green"
                 },
                 "golf/hole": {
                     "name": "Golf Hole"
@@ -4570,6 +4668,10 @@
                 "healthcare/rehabilitation": {
                     "name": "Rehabilitation Facility",
                     "terms": "rehab,therapist,therapy"
+                },
+                "healthcare/sample_collection": {
+                    "name": "Sample Collection Facility",
+                    "terms": "blood sample collection,urine sample collection"
                 },
                 "healthcare/speech_therapist": {
                     "name": "Speech Therapist",
@@ -5041,11 +5143,15 @@
                 },
                 "landuse/commercial": {
                     "name": "Commercial Area",
-                    "terms": "offices"
+                    "terms": "depot,offices"
                 },
                 "landuse/construction": {
                     "name": "Construction Area",
                     "terms": "building,bulldozer,construction site,construction zone,crane,demolition,development,infrastructure"
+                },
+                "landuse/education": {
+                    "name": "Educational Campus",
+                    "terms": "educational facilities,campus,school grounds,school center"
                 },
                 "landuse/farmland": {
                     "name": "Farmland",
@@ -5085,7 +5191,7 @@
                 },
                 "landuse/industrial": {
                     "name": "Industrial Area",
-                    "terms": "factory,manufacturing"
+                    "terms": "depot,factory,manufacturing"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "Scrap Yard",
@@ -5105,7 +5211,7 @@
                 },
                 "landuse/military": {
                     "name": "Military Area",
-                    "terms": "air force,army,base,coast guard,marines,navy,security"
+                    "terms": "air force,army,base,coast guard,depot,marines,navy,security"
                 },
                 "landuse/military/airfield": {
                     "name": "Military Airfield",
@@ -5149,7 +5255,7 @@
                 },
                 "landuse/railway": {
                     "name": "Railway Corridor",
-                    "terms": "rail,railway,train,track"
+                    "terms": "depot,rail,railway,train,train depot,track"
                 },
                 "landuse/recreation_ground": {
                     "name": "Recreation Ground",
@@ -5169,6 +5275,11 @@
                 },
                 "landuse/retail": {
                     "name": "Retail Area"
+                },
+                "landuse/salt_pond": {
+                    "name": "Salt Evaporation Pond",
+                    "aliases": "Salt Pond\nSaltern",
+                    "terms": "evapoation,saline,salt,salt works,salt pan"
                 },
                 "landuse/vineyard": {
                     "name": "Vineyard",
@@ -5246,7 +5357,8 @@
                 },
                 "leisure/fitness_station": {
                     "name": "Outdoor Fitness Station",
-                    "terms": "exercise,fitness,gym,trim trail"
+                    "aliases": "Calisthenics Park\nFitness Station\nOutdoor Gym\nStreet Workout\nTrim Trail",
+                    "terms": "exercise,fitness,gym"
                 },
                 "leisure/fitness_station/balance_beam": {
                     "name": "Exercise Balance Beam",
@@ -5354,7 +5466,7 @@
                 },
                 "leisure/pitch": {
                     "name": "Sport Pitch",
-                    "terms": "field"
+                    "terms": "field,sport field"
                 },
                 "leisure/pitch/american_football": {
                     "name": "American Football Field",
@@ -5413,6 +5525,10 @@
                 },
                 "leisure/pitch/paintball": {
                     "name": "Paintball Field"
+                },
+                "leisure/pitch/pickleball": {
+                    "name": "Pickleball Court",
+                    "terms": "tennis,paddleball"
                 },
                 "leisure/pitch/rugby_league": {
                     "name": "Rugby League Field"
@@ -5610,7 +5726,8 @@
                     "terms": "belt conveyor,chain conveyor,conveyor belt,roller conveyor"
                 },
                 "man_made/groyne": {
-                    "name": "Groin"
+                    "name": "Groin",
+                    "aliases": "Wing Dam\nWing Dyke\nSpur Dyke"
                 },
                 "man_made/lighthouse": {
                     "name": "Lighthouse"
@@ -5901,9 +6018,6 @@
                     "name": "Hot Spring",
                     "terms": "geothermal spring,thermal pool"
                 },
-                "natural/marsh": {
-                    "name": "Marsh"
-                },
                 "natural/mud": {
                     "name": "Mud",
                     "terms": "wetland"
@@ -5911,10 +6025,6 @@
                 "natural/peak": {
                     "name": "Peak",
                     "terms": "acme,aiguille,alp,climax,crest,crown,hill,mount,mountain,pinnacle,summit,tip,top"
-                },
-                "natural/reedbed": {
-                    "name": "Reed bed",
-                    "terms": "reeds,bulrushes,cattail"
                 },
                 "natural/reef": {
                     "name": "Reef",
@@ -5959,9 +6069,6 @@
                 "natural/stone": {
                     "name": "Unattached Stone / Boulder",
                     "terms": "boulder,stone,rock"
-                },
-                "natural/swamp": {
-                    "name": "Swamp"
                 },
                 "natural/tree_row": {
                     "name": "Tree Row",
@@ -6019,6 +6126,44 @@
                     "name": "Wetland",
                     "terms": "bog,fen,marsh,mire,moor,muskeg,peatland,quagmire,reedbed,saltmarsh,swamp,tidalflat,wet meadow"
                 },
+                "natural/wetland/bog": {
+                    "name": "Bog"
+                },
+                "natural/wetland/fen": {
+                    "name": "Fen",
+                    "terms": "groundwater"
+                },
+                "natural/wetland/mangrove": {
+                    "name": "Mangrove"
+                },
+                "natural/wetland/marsh": {
+                    "name": "Marsh"
+                },
+                "natural/wetland/reedbed": {
+                    "name": "Reed bed",
+                    "terms": "reeds,bulrushes,cattail"
+                },
+                "natural/wetland/saltmarsh": {
+                    "name": "Coastal Salt Marsh",
+                    "terms": "saltmarsh,tidal"
+                },
+                "natural/wetland/string_bog": {
+                    "name": "String Bog",
+                    "aliases": "Strong Mire",
+                    "terms": "aapa moore,strangemoore"
+                },
+                "natural/wetland/swamp": {
+                    "name": "Swamp",
+                    "terms": "waterlogged"
+                },
+                "natural/wetland/tidalflat": {
+                    "name": "Tidal Flat",
+                    "aliases": "Mudflat",
+                    "terms": "tidal"
+                },
+                "natural/wetland/wet_meadow": {
+                    "name": "Wet Meadow"
+                },
                 "natural/wood": {
                     "name": "Natural Wood",
                     "terms": "boreal,forest,forrest,taiga,tree,trees,woodlands,woods"
@@ -6029,7 +6174,7 @@
                 },
                 "noexit/yes": {
                     "name": "No Exit",
-                    "terms": "no exit,road end,dead end"
+                    "terms": "dead end,no exit,not connected,road end,unconnected"
                 },
                 "office": {
                     "name": "Office",
@@ -6584,7 +6729,7 @@
                 },
                 "public_transport/station_train": {
                     "name": "Train Station",
-                    "terms": "public transit,public transportation,rail,station,terminal,track,train,transit,transportation"
+                    "terms": "public transit,public transportation,rail,railway station,station,terminal,track,train,transit,transportation"
                 },
                 "public_transport/station_tram": {
                     "name": "Tram Station",
@@ -7038,7 +7183,8 @@
                 },
                 "shop/farm": {
                     "name": "Produce Stand",
-                    "terms": "baked goods,farm shop,farm stand,fresh food,fruits,greengrocer,organics,vegetables"
+                    "aliases": "Farm Shop\nFarm Stand",
+                    "terms": "baked goods,fresh food,fruits,greengrocer,orchard,organics,vegetables"
                 },
                 "shop/fashion_accessories": {
                     "name": "Fashion Accessories Store",

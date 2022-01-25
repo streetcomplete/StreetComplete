@@ -38,7 +38,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!stileNodeFilter.matches(element)) false else null
 
-    override val commitMessage = "Add specific stile type"
+    override val changesetComment = "Add specific stile type"
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.ic_quest_cow
     override val isDeleteElementEnabled = true

@@ -392,18 +392,6 @@
                     "label": "Cabos",
                     "placeholder": "1, 2, 3..."
                 },
-                "cai_scale": {
-                    "label": "Dificuldade de rota de trilha (Clube Alpino Italiano)",
-                    "options": {
-                        "E": "E: Para caminhantes",
-                        "EAI": "EAI: Trilha com neve",
-                        "EE": "EE: Para caminhantes experientes",
-                        "EEA": "EEA: Para caminhantes experientes com equipamento",
-                        "T": "T: Turística"
-                    },
-                    "placeholder": "T, E, EE...",
-                    "terms": "trilha,caminhada,hiking,rota,pedestre,caminhante,montanhismo"
-                },
                 "camera/direction": {
                     "label": "Direção (Graus Sentido Horário)",
                     "placeholder": "45, 90, 180, 270"
@@ -844,12 +832,6 @@
                     "label": "Tempo de duração",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "Elevação"
-                },
-                "ele_node": {
-                    "label": "Elevação"
-                },
                 "electrified": {
                     "label": "Eletrificação",
                     "options": {
@@ -895,9 +877,6 @@
                 },
                 "expected_rwn_route_relations": {
                     "label": "Nós de pedestres adjacentes"
-                },
-                "expressway": {
-                    "label": "Via expressa"
                 },
                 "faces": {
                     "label": "Faces"
@@ -1017,9 +996,6 @@
                 },
                 "geyser/height": {
                     "label": "Altura da erupção"
-                },
-                "gnis/feature_id": {
-                    "label": "ID do Recurso GNIS"
                 },
                 "government": {
                     "label": "Tipo"
@@ -1563,6 +1539,12 @@
                     "label": "Par",
                     "placeholder": "3, 4, 5..."
                 },
+                "parcel_dropoff": {
+                    "label": "Ponto de entrega"
+                },
+                "parcel_pickup": {
+                    "label": "Ponto de retirada"
+                },
                 "park_ride": {
                     "label": "Estacionamento de intercâmbio"
                 },
@@ -1575,18 +1557,12 @@
                         "multi-storey": "Vários níveis",
                         "rooftop": "Telhado",
                         "sheds": "Cabanas",
-                        "street_side": "Lado da rua",
                         "surface": "Superfície",
                         "underground": "Subterrâneo"
                     }
                 },
                 "parking/orientation": {
-                    "label": "Orientação",
-                    "options": {
-                        "diagonal": "Diagonal",
-                        "parallel": "Paralelo",
-                        "perpendicular": "Perpendicular"
-                    }
+                    "label": "Orientação"
                 },
                 "parking_entrance": {
                     "label": "Tipo",
@@ -1802,9 +1778,6 @@
                 },
                 "rcn_ref": {
                     "label": "Código de ciclismo"
-                },
-                "real_fire": {
-                    "label": "Fogo real"
                 },
                 "recycling_accepts": {
                     "label": "Aceita"
@@ -3174,6 +3147,11 @@
                 "amenity/nursing_home": {
                     "name": "Casa de Repouso"
                 },
+                "amenity/parcel_locker": {
+                    "name": "Locker postal",
+                    "terms": "encomendas,correios,armários,automática,postais,inteligente,locker",
+                    "aliases": "Locker dos Correios\nArmário postal\nArmário inteligente"
+                },
                 "amenity/parking": {
                     "name": "Estacionamento",
                     "terms": "estacionamento,parada"
@@ -3639,14 +3617,6 @@
                     "name": "Máquina de venda de jornais",
                     "terms": "jornais,revistas,venda de jornal,notícia,banca de jornal,periódicos,tabloides"
                 },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Armário de recolha de encomendas",
-                    "terms": "armário de recolha de encomendas"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Captador de encomendas/Guarda-volumes",
-                    "terms": "captador de encomendas / guarda-volumes"
-                },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Máquina de vendas de ticket de estacionamento",
                     "terms": "máquina de vendas de bilhete de estacionamento,carro,bilhete de estacionamento"
@@ -4014,7 +3984,7 @@
                     "terms": "garagens"
                 },
                 "building/grandstand": {
-                    "name": "Arquibancada",
+                    "name": "Arquibancada (edificação)",
                     "terms": "arquibancada"
                 },
                 "building/greenhouse": {
@@ -4761,6 +4731,10 @@
                     "terms": "acesso de autoestrada,saída de autoestrada,junção de autoestrada,acesso de via expressa,junção de via expressa,saída de via expressa"
                 },
                 "highway/motorway_link": {
+                    "name": "Ligação de Autoestrada",
+                    "terms": "acesso a autoestrada,acesso a via expressa,ligação de via expressa"
+                },
+                "highway/motorway_link-US-CA": {
                     "name": "Ligação de Autoestrada",
                     "terms": "acesso a autoestrada,acesso a via expressa,ligação de via expressa"
                 },
@@ -5979,9 +5953,6 @@
                     "name": "Fonte termal",
                     "terms": "fonte termal"
                 },
-                "natural/marsh": {
-                    "name": "Brejo"
-                },
                 "natural/mud": {
                     "name": "Lama",
                     "terms": "solo,lamaçal,mangue,lama,cobertura de solo"
@@ -5989,9 +5960,6 @@
                 "natural/peak": {
                     "name": "Cume",
                     "terms": "pico,topo de montanha,serra,montanha,monte"
-                },
-                "natural/reedbed": {
-                    "name": "Leito de juncos"
                 },
                 "natural/reef": {
                     "name": "Recife",
@@ -6036,9 +6004,6 @@
                 "natural/stone": {
                     "name": "Pedra Deserta / Pedregulho",
                     "terms": "pedra deserta / pedregulho"
-                },
-                "natural/swamp": {
-                    "name": "Pântano"
                 },
                 "natural/tree": {
                     "name": "Árvore",
@@ -6104,10 +6069,6 @@
                     "name": "Mata nativa",
                     "terms": "arvoredo,bosque,mata,matagal,mato,floresta,selva"
                 },
-                "network/type/node_network": {
-                    "name": "Nó de rede recreativa",
-                    "terms": "nó de rede recreativa"
-                },
                 "noexit/yes": {
                     "name": "Rua sem saída",
                     "terms": "sem saída,rua fechada,beco sem saída,beco,bloqueio"
@@ -6138,10 +6099,6 @@
                 "office/association": {
                     "name": "Escritório de organização sem fins lucrativos",
                     "terms": "entidade sem fins lucrativos,escritório de associação,associação de profissionais,associação de moradores,instituição beneficente,sem lucro"
-                },
-                "office/bail_bond_agent": {
-                    "name": "Agente de fiança",
-                    "terms": "agente de fiança"
                 },
                 "office/charity": {
                     "name": "Escritório de Caridade",

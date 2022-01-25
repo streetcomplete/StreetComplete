@@ -13,7 +13,7 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
           amenity = police
           and !operator
     """
-    override val commitMessage = "Add police type"
+    override val changesetComment = "Add police type"
     override val wikiLink = "Tag:amenity=police"
     override val icon = R.drawable.ic_quest_police
     override val enabledInCountries = NoCountriesExcept("IT")

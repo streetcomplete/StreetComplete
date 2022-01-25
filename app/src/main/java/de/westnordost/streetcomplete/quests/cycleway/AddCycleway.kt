@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
 
-    override val commitMessage = "Add whether there are cycleways"
+    override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
 

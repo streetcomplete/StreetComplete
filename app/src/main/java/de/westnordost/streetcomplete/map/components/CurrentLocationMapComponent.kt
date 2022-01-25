@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.isApril1st
 import de.westnordost.streetcomplete.ktx.toDp
-import de.westnordost.streetcomplete.location.toLatLon
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE

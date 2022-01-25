@@ -5,7 +5,9 @@ import kotlinx.serialization.Serializable
 /** A diff that can be applied on a map of strings. Use StringMapChangesBuilder to conveniently build
  * it. A StringMapChanges is immutable.  */
 @Serializable
-class StringMapChanges(val changes: Collection<StringMapEntryChange>) {
+class StringMapChanges(val changes: Set<StringMapEntryChange>) {
+
+    constructor(changes: Collection<StringMapEntryChange>) : this(changes.toSet())
 
     fun isEmpty() = changes.isEmpty()
 

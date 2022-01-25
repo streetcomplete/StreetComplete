@@ -15,7 +15,7 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
         and (!access or access = unknown)
     """
 
-    override val commitMessage = "Add type of bike parking access"
+    override val changesetComment = "Add type of bike parking access"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_access
 

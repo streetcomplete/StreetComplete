@@ -1,20 +1,31 @@
-v39.0-beta1: |
+v39.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix housenumbers, road names etc. were not visible on the map on Android 12 (by @matteblair)</li>
+  <li>Fix build for F-Droid (#3667)</li>
+  <li>Fix recycling materials quest would delete also tags that don't start with "recycling:" but have "yes" as value</li>
+  </ul>
+
+v39.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>Does this road have a shoulder?</i> (#2444, #3613)</li>
-  <li><i>What is the surface quality of this road here?</i> (#3617, #3257, #1630), special thanks to @Helium314 but also to @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more</li>
+  <li><i>What is the surface quality of this road here?</i> (#3617, #3257, #1630, #3633), special thanks to @Helium314 but also to @FloEdelmann, @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more<br>
+      It is disabled by default, enable it in the settings to try it out!</li>
   <li><i>Where is this fire hydrant located?</i> (#3368), by @thefeiter</li>
   </ul>
   <h3>Other enhancements</h3>
   <ul>
   <li>You can now answer that a building has a house name <i>and</i> a number (#1983, #3582), by @matkoniecz</li>
   <li>Some improvements on the fire hydrant quest(s) (#3608), by @tiptoptom and @thefeiter, (#3601)</li>
-  <li>Some minor enhancements and clearer wordings (#3576, #3610, ...), thanks @matkoniecz</li>
+  <li>Some minor enhancements and clearer wordings (#3576, #3610, #3599, #3653...), thanks @matkoniecz, @olo81</li>
   <li>Added "Lifesaver" achievement (#3616), by @FloEdelmann</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
+  <li>Fix rarely quests don't go away after solving them (#3290)</li>
   <li>Fix rarely quest answers don't get uploaded automatically until next restart of app (#3494)</li>
+  <li>Fix a few crashes (#3622, ...)</li>
   </ul>
 
 v38.2: |

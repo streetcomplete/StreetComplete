@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import android.content.Context
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.asImageSpan
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.*
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResImage
@@ -16,24 +20,37 @@ fun Array<Smoothness>.toItems(context: Context, surface: String) =
 fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness>? {
     val imageResId = getImageResId(surface) ?: return null
     val descriptionResId = getDescriptionResId(surface) ?: return null
+
+    val title = context.getString(titleResId)
+    val stringBuilder = SpannableStringBuilder(title)
+    stringBuilder.append(" X") // one space char + one placeholder char for the image span
+
+    val iconDrawable = context.getDrawable(icon) ?: return null
+    stringBuilder.setSpan(
+        iconDrawable.asImageSpan(36, 36),
+        title.length + 1,
+        title.length + 2,
+        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+    )
+
     return Item2(
         this,
         ResImage(imageResId),
-        CharSequenceText(context.getString(titleResId) + " " + emoji),
+        CharSequenceText(stringBuilder),
         ResText(descriptionResId)
     )
 }
 
 /** return fitting vehicle type emoji that corresponds to the "usable by" column in the wiki */
-val Smoothness.emoji get() = when(this) {
-    EXCELLENT ->     """🛹""" // or 🛼 but it is only available since Android 11
-    GOOD ->          """🛴""" // no emoji for racing bike, would be difficult to tell apart from 🚲
-    INTERMEDIATE ->  """🚲""" // or 🛵 but users are more likely to own a bike than a scooter
-    BAD ->           """🚗""" // or 🛺 but tuk-tuks have actually similar requirements as scooters
-    VERY_BAD ->      """🚙""" // this is a SUV
-    HORRIBLE ->      """🛻""" // no emoji for off-road vehicles but there is one for pick-ups (Android 11)
-    VERY_HORRIBLE -> """🚜"""
-    IMPASSABLE ->    """🚶"""
+val Smoothness.icon get(): @DrawableRes Int = when(this) {
+    EXCELLENT ->     R.drawable.ic_smoothness_skateboard
+    GOOD ->          R.drawable.ic_smoothness_scooter
+    INTERMEDIATE ->  R.drawable.ic_smoothness_city_bike
+    BAD ->           R.drawable.ic_smoothness_car
+    VERY_BAD ->      R.drawable.ic_smoothness_suv
+    HORRIBLE ->      R.drawable.ic_smoothness_pickup_truck
+    VERY_HORRIBLE -> R.drawable.ic_smoothness_tractor
+    IMPASSABLE ->    R.drawable.ic_smoothness_pedestrian
 }
 
 val Smoothness.titleResId get() = when (this) {
@@ -134,6 +151,7 @@ private val Smoothness.pavingStonesDescriptionResId get() = when(this) {
 }
 
 private val Smoothness.compactedImageResId get() = when (this) {
+    GOOD -> R.drawable.surface_compacted_good
     INTERMEDIATE -> R.drawable.surface_compacted_intermediate
     BAD -> R.drawable.surface_compacted_bad
     VERY_BAD -> R.drawable.surface_compacted_very_bad
@@ -154,6 +172,7 @@ private val Smoothness.gravelImageResId get() = when (this) {
 }
 
 private val Smoothness.compactedOrGravelDescriptionResId get() = when(this) {
+    GOOD -> R.string.quest_smoothness_description_good_compacted_gravel
     INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_compacted_gravel
     BAD -> R.string.quest_smoothness_description_bad_compacted_gravel
     VERY_BAD -> R.string.quest_smoothness_description_very_bad_compacted_gravel

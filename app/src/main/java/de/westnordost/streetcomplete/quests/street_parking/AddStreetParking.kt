@@ -28,6 +28,7 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
             )
           )
           and !parking:lane and !parking:lane:left and !parking:lane:right and !parking:lane:both
+          and !parking:condition and !parking:condition:left and !parking:condition:right and !parking:condition:both
           and area != yes
           and motorroad != yes
           and tunnel != yes
@@ -64,12 +65,12 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
        roads that are probably outside of settlements (similar idea like for AddWayLit)
       */
 
-    override val commitMessage = "Add how cars park here"
+    override val changesetComment = "Add how cars park here"
     override val wikiLink = "Key:parking:lane"
     override val icon = R.drawable.ic_quest_parking_lane
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(CAR)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_street_parking_title
 
@@ -82,6 +83,7 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
         /* Note: If a resurvey is implemented, old
            parking:lane:*:(parallel|diagonal|perpendicular|...) values must be cleaned up */
 
+        // parking:lane:<left/right/both>
         val laneRight = answer.right!!.toOsmLaneValue() ?: throw IllegalArgumentException()
         val laneLeft = answer.left!!.toOsmLaneValue() ?: throw IllegalArgumentException()
 
@@ -92,15 +94,26 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
             changes.add("parking:lane:right", laneRight)
         }
 
-        val positionRight = (answer.right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
-        val positionLeft = (answer.left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+        // parking:condition:<left/right/both>
+        val conditionRight = answer.right.toOsmConditionValue()
+        val conditionLeft = answer.left.toOsmConditionValue()
 
-        if (positionLeft == positionRight) {
-            if (positionLeft != null) changes.addOrModify("parking:lane:both:$laneLeft", positionLeft)
+        if (conditionLeft == conditionRight) {
+            conditionLeft?.let { changes.add("parking:condition:both", it) }
         } else {
-            if (positionLeft != null) changes.addOrModify("parking:lane:left:$laneLeft", positionLeft)
-            if (positionRight != null) changes.addOrModify("parking:lane:right:$laneRight", positionRight)
+            conditionLeft?.let { changes.add("parking:condition:left", it) }
+            conditionRight?.let { changes.add("parking:condition:right", it) }
+        }
 
+        // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular> (aka "parking orientation")
+        val orientationRight = (answer.right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+        val orientationLeft = (answer.left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+
+        if (orientationLeft == orientationRight) {
+            if (orientationLeft != null) changes.addOrModify("parking:lane:both:$laneLeft", orientationLeft)
+        } else {
+            if (orientationLeft != null) changes.addOrModify("parking:lane:left:$laneLeft", orientationLeft)
+            if (orientationRight != null) changes.addOrModify("parking:lane:right:$laneRight", orientationRight)
         }
     }
 }

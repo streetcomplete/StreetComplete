@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 
 class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
@@ -13,13 +16,16 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
          (!fire_hydrant:position or fire_hydrant:position ~ "\?|fixme") and
          (fire_hydrant:type = pillar or fire_hydrant:type = underground)
     """
-    override val commitMessage = "Add fire hydrant position"
+    override val changesetComment = "Add fire hydrant position"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant_grass
 
     override val questTypeAchievements = listOf(LIFESAVER)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_position_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with emergency = fire_hydrant")
 
     override fun createForm() = AddFireHydrantPositionForm()
 

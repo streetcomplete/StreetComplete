@@ -13,7 +13,7 @@ data class ElementEdit(
     var id: Long,
 
     /** quest type associated with the edit. This is used to sort this edit into a changeset
-     *  associated with the quest type. A changeset gets its commit message from the quest type */
+     *  associated with the quest type. A changeset gets its comment from the quest type */
     val questType: OsmElementQuestType<*>,
 
     /** element type this edit refers to */

@@ -24,7 +24,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("new key", "tag")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("new key", "tag")
         ), changes)
     }
@@ -48,7 +48,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("old key", "new value")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("old key", "old value", "new value")
         ), changes)
     }
@@ -58,7 +58,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("key", "value")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("check_date:key", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -68,7 +68,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("key", "value")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("check_date:key", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -148,7 +148,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDateForKey("key")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("check_date:key", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -158,7 +158,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDateForKey("key")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("check_date:key", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -190,7 +190,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDate()
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -200,7 +200,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDate()
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("check_date", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }

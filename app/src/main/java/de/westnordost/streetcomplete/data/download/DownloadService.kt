@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.download
 
+import android.app.ForegroundServiceStartNotAllowedException
 import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
@@ -71,20 +73,24 @@ class DownloadService : CoroutineIntentService(TAG) {
     override suspend fun onHandleIntent(intent: Intent?) {
         if (intent == null) return
         val tiles: TilesRect = Json.decodeFromString(intent.getStringExtra(ARG_TILES_RECT)!!)
-        isPriorityDownload = intent.getBooleanExtra(ARG_IS_PRIORITY, false)
-
-        isDownloading = true
-
-        progressListener?.onStarted()
 
         var error: Exception? = null
         try {
+            isPriorityDownload = intent.getBooleanExtra(ARG_IS_PRIORITY, false)
+            isDownloading = true
+
+            progressListener?.onStarted()
+
             downloader.download(tiles, isPriorityDownload)
         } catch (e: CancellationException) {
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
-            Log.e(TAG, "Unable to download", e)
-            error = e
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && e is ForegroundServiceStartNotAllowedException) {
+                // ok. Nevermind then.
+            } else {
+                Log.e(TAG, "Unable to download", e)
+                error = e
+            }
         } finally {
             // downloading flags must be set to false before invoking the callbacks
             isPriorityDownload = false

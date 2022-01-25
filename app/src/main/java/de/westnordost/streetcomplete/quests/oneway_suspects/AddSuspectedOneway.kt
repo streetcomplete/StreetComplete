@@ -33,7 +33,7 @@ class AddSuspectedOneway(
           )
     """.toElementFilterExpression() }
 
-    override val commitMessage =
+    override val changesetComment =
         "Add whether roads are one-way roads as they were marked as likely oneway by improveosm.org"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway

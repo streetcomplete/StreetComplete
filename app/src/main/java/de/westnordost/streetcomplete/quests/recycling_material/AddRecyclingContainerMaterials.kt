@@ -24,7 +24,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
           and access !~ private|no
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add recycled materials to container"
+    override val changesetComment = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
     override val isDeleteElementEnabled = true
@@ -104,7 +104,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
         // remove recycling:* taggings previously "yes" but now not any more
         val materialsNotSelectedAnymore = changes.getPreviousEntries().filter { (key, value) ->
-            !selectedMaterials.contains(key)
+            key.startsWith("recycling:")
+            && !selectedMaterials.contains(key)
             // don't touch any previous explicit recycling:*=no taggings
             && value == "yes"
             // leave plastic values alone because it is managed separately (see above)

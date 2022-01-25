@@ -267,7 +267,7 @@
                     "terms": "travessia,fora de pista"
                 },
                 "backrest": {
-                    "label": "Banc públic"
+                    "label": "Espatller"
                 },
                 "bar": {
                     "label": "Bar",
@@ -783,12 +783,6 @@
                     "label": "Durada",
                     "placeholder": "00:00",
                     "terms": "durada,duració"
-                },
-                "ele": {
-                    "label": "Elevació"
-                },
-                "ele_node": {
-                    "label": "Elevació"
                 },
                 "electrified": {
                     "label": "Electrificació",
@@ -1634,9 +1628,6 @@
                         "both": "Ambdós / Tots",
                         "forward": "Endavant"
                     }
-                },
-                "real_fire": {
-                    "label": "Foc de debò"
                 },
                 "recycling_accepts": {
                     "label": "N'accepta"

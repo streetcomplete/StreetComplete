@@ -1073,7 +1073,7 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Odabir da nema biciklističke infrastrukture"</string>
     <string name="quest_construction_completed_at_known_date">"Bit će dovršeno na datum…"</string>
     <string name="quest_construction_completion_date_title">"Kada će biti dovršeno?"</string>
-    <string name="quest_surface_value_clay">"Glina"</string>
+    <string name="quest_surface_value_clay">"Mrvljena cigla"</string>
     <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Kakvu površinu ima ova sportska staza?"</string>
@@ -1422,8 +1422,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
 Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Ima i kućni broj i naziv"</string>
     <string name="quest_address_house_number_label">"Kućni broj:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Ima li ova cesta zaustavnu traku?"</string>
     <string name="quest_fireHydrant_position_title">"Gdje se  nalazi ovaj vatrogasni hidrant?"</string>
 
@@ -1433,4 +1431,93 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Na nogostupu"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Na parkirnom mjestu"</string>
     <string name="quest_fireHydrant_diameter_ref_title">"Koji je promjer označen na ovom vatrogasnom hidrantu? (referentni broj: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Da (ostavi bilješku)"</string>
+    <string name="quest_smoothness_name_title">"Kakva je kvaliteta površine %s ovdje?"</string>
+    <string name="quest_smoothness_square_title">"Kakva je kvaliteta površine ovog trga?"</string>
+    <string name="quest_smoothness_path_title">"Kakva je kvaliteta površine staze ovdje?"</string>
+    <string name="quest_smoothness_road_title">"Kakva je kvaliteta površine ceste ovdje?"</string>
+    <string name="quest_smoothness_title_excellent">"Glatka i ravna"</string>
+    <string name="quest_smoothness_title_good">"Uglavnom ravna"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_title_intermediate">"Malo kvrgava"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_title_bad">"Kvrgava"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_title_very_bad">"Vrlo kvrgava"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_title_horrible">"Vrlo kvrgava i neravna"</string>
+    <string name="quest_smoothness_title_very_horrible">"Skoro neprohodna"</string>
+    <string name="quest_smoothness_title_impassable">"Neprohodna"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Nema neravnina ili pukotina"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_excellent_paving_stones">"Gotovo spojene"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_good_paved">"Samo male pukotine, praznine, popravci ili malo grublja površina"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_good_paving_stones">"Plitki ili uski razmaci"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_good_sett">"Neuobičajeno ravno kamenje, pravilnog uzorka, vrlo plitki ili uski razmaci"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_intermediate_paved">"Neuobičajeno gruba površina, šire praznine, pukotine, plitke ulegnuća, rupe ili druga oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Širi razmaci, moguće pomaknute ploče ili druga oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_intermediate_sett">"Plosnato ili kamenje s četvrtastim rubovima, plitkim ili uskim razmacima"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_paved">"Velike praznine, rupe, kolotečine, mrvljenje podloge ili druga oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_paving_stones">"Pomaknute ploče, veliki razmaci ili druga oštećenja"</string>
+    <string name="quest_smoothness_description_bad_sett">"Istrošeni kamen ili nepravilni oblici, veliki razmaci ili oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Ponekad veći tucanik, neravnine, kolotečine ili rupe"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_paved">"Duboke rupe, kolotečine ili druga opasna oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_sett">"Velike praznine, pomaknuto, nedostajuće ili kamenje nepravilnog oblika ili opasna oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Nedostajuće i slomljene ploče, praznine ili druga opasna oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Ponekad veliko kamenje, duboke rupe, neravnine, kolotečine, erozija ili druga opasna oštećenja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_horrible">"Upotrebljivo samo za terenska vozila i pješake"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_horrible">"Upotrebljivo samo za specijalizirana terenska vozila i pješake"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_impassable">"Neupotrebljivo za vozila, prohodno samo pješice"</string>
+    <string name="quest_smoothness_wrong_surface">"Površina je drugačija"</string>
+    <string name="quest_smoothness_surface_value">"Površina je bila označena kao:"</string>
+    <string name="quest_smoothness_obstacle">"Postoji prepreka"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_obstacle_hint">"Molimo navedite prosječnu glatkoću. Pojedinačne prepreke kao što su rubnici, uspornici ili rešetke za stoku mogu se zanemariti. Ali ponovljene ili neočekivane prepreke trebale bi utjecati na odgovor."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … pokazuju za koja vozila bi površina trebala biti adekvatna za korištenje. Obratite pažnju na širu sliku, a ne na pojedinačna oštećenja."</string>
+    <string name="quest_shoulder_explanation">"Zaustavna traka je jasno razgraničena traka za zaustavljanje vozila u nuždi koja omogućuje da se vozila sigurno zaustave van prometne trake, iako ne uvijek na (potpuno) asfaltiranoj površini."</string>
+    <string name="link_osmhydrant_description">"Pretražite, dodajte i uredite vatrogasne stanice i vatrogasne hidrante"</string>
+
+    <!-- Fuzzy -->
+    <string name="achievement_lifesaver_title">"Spasilac"</string>
+    <string name="achievement_lifesaver_solved_X">"Riješili ste %d zadataka koji pomažu hitnim službama!"</string>
 </resources>

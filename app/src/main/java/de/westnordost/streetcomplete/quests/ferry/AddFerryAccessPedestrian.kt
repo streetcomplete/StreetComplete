@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = "ways, relations with route = ferry and !foot"
-    override val commitMessage = "Specify ferry access for pedestrians"
+    override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_pedestrian
     override val hasMarkersAtEnds = true

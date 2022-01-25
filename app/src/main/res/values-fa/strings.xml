@@ -1157,7 +1157,7 @@
     <string name="quest_construction_building_title">"آیا این ساختمان ساخته شده است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="questList_disabled_in_country">"اصلا %s موجود نیست."</string>
+    <string name="questList_disabled_in_country">"اصلا در %s موجود نیست"</string>
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"آیا این استراحتگاه دارای سرویس بهداشتی است؟"</string>
@@ -2505,4 +2505,66 @@
     <string name="quest_address_answer_house_name_and_housenumber">"شماره پلاک و نام خانه..."</string>
     <string name="quest_address_house_number_label">"شماره پلاک خانه:"</string>
     <string name="quest_shoulder_title">"آیا این جاده شانه دارد؟"</string>
+    <string name="quest_fireHydrant_position_title">"این شیر آتش‌نشانی در کجا قرار دارد؟"</string>
+    <string name="quest_fireHydrant_position_green">"در چمن یا خاک"</string>
+    <string name="quest_fireHydrant_position_lane">"در جاده"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"در پیاده‌رو"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"در یک پارکینگ"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"چه قطری روی تابلوی این شیر آتش‌نشانی مشخص شده است؟  (شماره مرجع: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"بله (یادداشت بگذارید)"</string>
+    <string name="quest_smoothness_name_title">"کیفیت سطح %s در اینجا چگونه است؟"</string>
+    <string name="quest_smoothness_square_title">"کیفیت سطح این میدان چگونه است؟"</string>
+    <string name="quest_smoothness_path_title">"کیفیت سطح این مسیر در اینجا چگونه است؟"</string>
+    <string name="quest_smoothness_road_title">"کیفیت سطح این جاده در اینجا چگونه است؟"</string>
+    <string name="quest_smoothness_title_excellent">"صاف و یک‌دست"</string>
+    <string name="quest_smoothness_title_good">"اکثرا حتی"</string>
+    <string name="quest_smoothness_title_intermediate">"کمی دست‌انداز"</string>
+    <string name="quest_smoothness_title_bad">"پر از دست‌انداز"</string>
+    <string name="quest_smoothness_title_very_bad">"ناهموار"</string>
+    <string name="quest_smoothness_title_horrible">"بسیار برآمده و ناهموار"</string>
+    <string name="quest_smoothness_title_very_horrible">"تقریبا صعب‌العبور/غیرقابل عبور"</string>
+    <string name="quest_smoothness_title_impassable">"صعب‌العبور"</string>
+    <string name="quest_smoothness_description_excellent_paved">"بدون برآمدگی و ترک خوردگی"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"تقریبا بدون درز"</string>
+    <string name="quest_smoothness_description_good_paved">"فقط ترک‌های کوچک، شکاف‌ها، تعمیرات یا سطح کمی ناهموار"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"شکاف‌های کم‌عمق یا باریک"</string>
+    <string name="quest_smoothness_description_good_sett">"سنگ‌های مسطح غیرمعمول، الگوی منظم، شکاف‌های بسیار کم عمق یا باریک"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"سطح خشن ناهموار، شکاف‌های گسترده‌تر، ترک‌ها، شیارهای کم‌عمق، وجود چاله‌ها یا آسیب‌های دیگر"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"شکاف‌های وسیع، احتمالاً برخی سنگ‌ها جابجا شده یا آسیب‌های دیگر"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"سنگ‌های مسطح یا با لبه‌های مربع، شکاف‌های کم عمق یا باریک"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"سنگریزه، برآمدگی‌های کم‌عمق یا چاله‌ها"</string>
+    <string name="quest_smoothness_description_bad_paved">"شکاف‌های بزرگ، چاله‌ها، شیارها، سنگفرش‌های خرد شده یا آسیب‌های دیگر"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"سنگ‌های جابجا شده، شکاف‌های بزرگ یا آسیب‌های دیگر"</string>
+    <string name="quest_smoothness_description_bad_sett">"سنگ فرسوده یا اشکال نامنظم، شکاف‌های بزرگ یا آسیب"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"کمی شن درشت، برآمدگی‌ها، شیارها یا چاله‌ها"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"چاله‌های عمیق، شیارها یا سایر آسیب‌های خطرناک"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"شکاف‌های بزرگ، جابجایی، سنگ‌های گم شده یا نامنظم یا آسیب‌های خطرناک"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"سنگ‌ها، شکاف‌ها یا سایر آسیب‌های خطرناک گم شده و خرد شده"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"وجود برخی از سنگ‌های بزرگ، چاله‌های عمیق، برآمدگی‌ها، شیارها، فرسایش و یا سایر آسیب‌های خطرناک"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_horrible">"فقط توسط وسایل نقلیه آفرود قابل استفاده است"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_horrible">"فقط توسط وسایل نقلیه آفرود تخصصی قابل استفاده است"</string>
+    <string name="quest_smoothness_description_impassable">"برای هر وسیله نقلیه ای مناسب نیست، فقط با پای پیاده قابل عبور است"</string>
+    <string name="quest_smoothness_wrong_surface">"سطح متفاوت است"</string>
+    <string name="quest_smoothness_surface_value">"سطح اینجا به این صورت برچسب گذاری شده:"</string>
+    <string name="quest_smoothness_obstacle">"یک مانع وجود دارد"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_obstacle_hint">"لطفا یک پاسخ کلی برای میزان همواری ارائه دهید. موانع منفرد مانند حاشیه، سرعت گیر یا شبکه گاوی شکل را می‌توان نادیده گرفت. موانع مکرر یا غیرمنتظره باید در پاسخ به حساب بیایند."</string>
+    <string name="quest_smoothness_hint">"🚲، 🚗، 🚙، ... مشخص کنید سطح برای کدام وسایل نقلیه باید مناسب باشد. آنچه اهمیت دارد، تصویر بزرگ است تا آسیب‌های منفرد."</string>
+    <string name="quest_shoulder_explanation">"شانه یک خط توقف اضطراری است که به وضوح مشخص شده است که به وسایل نقلیه اجازه می‌دهد تا کاملاً ایمن در کنار خط ترافیک توقف کنند، البته نه همیشه (به طور کامل) روی سطح سنگفرش."</string>
+    <string name="link_osmhydrant_description">"جستجو، اضافه‌کردن و ویرایش ایستگاه‌های آتش‌نشانی و شیر آتش‌نشانی"</string>
+    <string name="achievement_lifesaver_title">"نجات‌دهنده"</string>
+    <string name="achievement_lifesaver_solved_X">"شما %d جُستاری را که به خدمات اضطراری و اولین پاسخ دهندگان کمک می کند، حل نمودید!"</string>
+    <string name="quest_fuelSelfService_title">"آیا می‌توانید خودتان در این پمپ بنزین، بنزین بزنید؟"</string>
+    <string name="quest_fuelSelfService_name_title">"آیا می‌توانید خودتان در %s گاز پمپ/پمپاژ کنید؟"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"این نوع جستجو به طور پیش‌فرض غیرفعال است زیرا بسیار وقت‌گیر است و انتخاب درست اغلب دشوار است. فقط در صورتی باید این نوع جستجو را فعال کنید که واقعاً متعهد به اضافه کردن این نوع داده باشید."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"شن و ماسه سست و سخت فشرده شده و بسیار کم"</string>
+    <string name="quest_barrier_path_intersection">"این مسیر در اینجا چگونه از مانع عبور می‌کند؟"</string>
+    <string name="quest_barrier_road_intersection">"این جاده در اینجا چگونه از مانع عبور می‌کند؟"</string>
+    <string name="quest_airConditioning_no_name_title">"آیا این مکان (%s) تهویه هوا دارد؟"</string>
+    <string name="quest_airConditioning_name_type_title">"آیا %1$s (%2$s) دارای تهویه هوا است؟"</string>
 </resources>

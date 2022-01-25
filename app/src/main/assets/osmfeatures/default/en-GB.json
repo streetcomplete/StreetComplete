@@ -83,6 +83,11 @@
                 "access_simple": {
                     "label": "Allowed Access"
                 },
+                "activity": {
+                    "options": {
+                        "horse": "Horse Riding"
+                    }
+                },
                 "addr/interpolation": {
                     "options": {
                         "all": "All",
@@ -1561,7 +1566,7 @@
                     "name": "Airport Terminal"
                 },
                 "allotments/plot": {
-                    "name": "Allotments Plot"
+                    "name": "Individual Allotment Plot"
                 },
                 "amenity": {
                     "name": "Amenity"
@@ -2596,6 +2601,9 @@
                 },
                 "junction": {
                     "name": "Junction"
+                },
+                "landuse/allotments": {
+                    "name": "Allotment Garden"
                 },
                 "landuse/aquaculture": {
                     "name": "Aquaculture"
