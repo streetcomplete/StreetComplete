@@ -65,7 +65,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
     override fun createForm() = AddShoulderForm()
 
-    override fun applyAnswerTo(answer: ShoulderSides, changes: StringMapChangesBuilder) {
-        changes.add("shoulder", answer.osmValue)
+    override fun applyAnswerTo(answer: ShoulderSides, tags: StringMapChangesBuilder) {
+        tags["shoulder"] = answer.osmValue
     }
 }

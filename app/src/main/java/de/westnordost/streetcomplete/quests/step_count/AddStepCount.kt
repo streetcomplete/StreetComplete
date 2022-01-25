@@ -28,7 +28,7 @@ class AddStepCount : OsmFilterQuestType<Int>() {
 
     override fun createForm() = AddStepCountForm()
 
-    override fun applyAnswerTo(answer: Int, changes: StringMapChangesBuilder) {
-        changes.add("step_count", answer.toString())
+    override fun applyAnswerTo(answer: Int, tags: StringMapChangesBuilder) {
+        tags["step_count"] = answer.toString()
     }
 }

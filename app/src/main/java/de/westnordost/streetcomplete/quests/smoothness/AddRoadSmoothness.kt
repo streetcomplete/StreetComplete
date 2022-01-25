@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
+import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -47,17 +47,17 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override fun createForm() = AddSmoothnessForm()
 
-    override fun applyAnswerTo(answer: SmoothnessAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: StringMapChangesBuilder) {
         when (answer) {
             is SmoothnessValueAnswer -> {
-                changes.updateWithCheckDate("smoothness", answer.value.osmValue)
-                changes.deleteIfExists("smoothness:date")
+                tags.updateWithCheckDate("smoothness", answer.value.osmValue)
+                tags.remove("smoothness:date")
             }
             is WrongSurfaceAnswer -> {
-                changes.delete("surface")
-                changes.deleteIfExists("smoothness")
-                changes.deleteIfExists("smoothness:date")
-                changes.deleteCheckDatesForKey("smoothness")
+                tags.remove("surface")
+                tags.remove("smoothness")
+                tags.remove("smoothness:date")
+                tags.removeCheckDatesForKey("smoothness")
             }
             is IsActuallyStepsAnswer -> throw IllegalStateException()
         }

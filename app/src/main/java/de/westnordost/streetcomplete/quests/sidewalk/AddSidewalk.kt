@@ -110,7 +110,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: SidewalkSides, changes: StringMapChangesBuilder) {
-        answer.applyTo(changes)
+    override fun applyAnswerTo(answer: SidewalkSides, tags: StringMapChangesBuilder) {
+        answer.applyTo(tags)
     }
 }

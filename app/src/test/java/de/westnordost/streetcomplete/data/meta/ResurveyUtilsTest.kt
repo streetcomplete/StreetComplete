@@ -223,7 +223,7 @@ class ResurveyUtilsTest {
 
     @Test fun `deleteCheckDates does not add a check date`() {
         val builder = StringMapChangesBuilder(mapOf())
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.isEmpty())
@@ -231,7 +231,7 @@ class ResurveyUtilsTest {
 
     @Test fun `deleteCheckDates removes check date`() {
         val builder = StringMapChangesBuilder(mapOf("check_date" to "2000-11-11"))
-        builder.deleteCheckDates()
+        builder.removeCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
@@ -245,7 +245,7 @@ class ResurveyUtilsTest {
             "lastcheck" to "2000-11-02",
             "last_checked" to "2000-11-03",
         ))
-        builder.deleteCheckDates()
+        builder.removeCheckDates()
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
@@ -257,7 +257,7 @@ class ResurveyUtilsTest {
 
     @Test fun `deleteOtherCheckDates does not add a check date`() {
         val builder = StringMapChangesBuilder(mapOf())
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.isEmpty())
@@ -265,7 +265,7 @@ class ResurveyUtilsTest {
 
     @Test fun `deleteOtherCheckDates does not modify check date`() {
         val builder = StringMapChangesBuilder(mapOf("check_date" to "2000-11-11"))
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.isEmpty())
@@ -277,7 +277,7 @@ class ResurveyUtilsTest {
             "lastcheck" to "2000-11-02",
             "last_checked" to "2000-11-03",
         ))
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(

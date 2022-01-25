@@ -76,11 +76,11 @@ interface OsmElementQuestType<T> : QuestType<T> {
     val highlightedElementsRadius: Double get() = 30.0
 
     /** applies the data from [answer] to the given element. The element is not directly modified,
-     *  instead, a map of [changes] is built */
-    fun applyAnswerTo(answer: T, changes: StringMapChangesBuilder)
+     *  instead, a map of [tags] is built */
+    fun applyAnswerTo(answer: T, tags: StringMapChangesBuilder)
 
     @Suppress("UNCHECKED_CAST")
-    fun applyAnswerToUnsafe(answer: Any, changes: StringMapChangesBuilder) {
-        applyAnswerTo(answer as T, changes)
+    fun applyAnswerToUnsafe(answer: Any, tags: StringMapChangesBuilder) {
+        applyAnswerTo(answer as T, tags)
     }
 }

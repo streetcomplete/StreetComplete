@@ -46,13 +46,13 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             is SurfaceAnswer -> {
-                answer.applyTo(changes, "surface")
+                answer.applyTo(tags, "surface")
             }
             is IsActuallyStepsAnswer -> {
-                changes.modify("highway", "steps")
+                tags["highway"] = "steps"
             }
         }
     }

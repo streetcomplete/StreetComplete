@@ -30,7 +30,7 @@ class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>() {
 
     override fun createForm() = AddBikeParkingTypeForm()
 
-    override fun applyAnswerTo(answer: BikeParkingType, changes: StringMapChangesBuilder) {
-        changes.add("bicycle_parking", answer.osmValue)
+    override fun applyAnswerTo(answer: BikeParkingType, tags: StringMapChangesBuilder) {
+        tags["bicycle_parking"] = answer.osmValue
     }
 }

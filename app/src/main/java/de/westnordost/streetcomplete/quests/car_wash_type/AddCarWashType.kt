@@ -20,9 +20,9 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
 
     override fun createForm() = AddCarWashTypeForm()
 
-    override fun applyAnswerTo(answer: List<CarWashType>, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: List<CarWashType>, tags: StringMapChangesBuilder) {
         val isAutomated = answer.contains(AUTOMATED)
-        changes.add("automated", isAutomated.toYesNo())
+        tags["automated"] = isAutomated.toYesNo()
 
         val hasSelfService = answer.contains(SELF_SERVICE)
         val selfService = when {
@@ -30,6 +30,6 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
             hasSelfService -> "yes"
             else -> "no"
         }
-        changes.add("self_service", selfService)
+        tags["self_service"] = selfService
     }
 }

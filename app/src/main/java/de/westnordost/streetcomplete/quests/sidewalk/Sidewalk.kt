@@ -22,12 +22,12 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
-fun SidewalkSides.applyTo(changes: StringMapChangesBuilder) {
+fun SidewalkSides.applyTo(tags: StringMapChangesBuilder) {
     val sidewalkValue = simpleOsmValue
     if (sidewalkValue != null) {
-        changes.add("sidewalk", sidewalkValue)
+        tags["sidewalk"] = sidewalkValue
     } else {
-        changes.add("sidewalk:left", left.osmValue)
-        changes.add("sidewalk:right", right.osmValue)
+        tags["sidewalk:left"] = left.osmValue
+        tags["sidewalk:right"] = right.osmValue
     }
 }

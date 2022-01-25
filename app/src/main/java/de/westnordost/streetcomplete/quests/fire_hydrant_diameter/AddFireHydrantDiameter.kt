@@ -49,10 +49,10 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun createForm() = AddFireHydrantDiameterForm()
 
-    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: StringMapChangesBuilder) {
         when (answer) {
-            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.toOsmValue())
-            is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
+            is FireHydrantDiameter ->       tags["fire_hydrant:diameter"] = answer.toOsmValue()
+            is NoFireHydrantDiameterSign -> tags["fire_hydrant:diameter:signed"] = "no"
         }
     }
 }

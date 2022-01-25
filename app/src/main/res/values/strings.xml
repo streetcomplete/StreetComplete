@@ -604,6 +604,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_steps_title">Are these steps completed?</string>
     <string name="quest_construction_generic_title">Is this way completed?</string>
     <string name="quest_construction_building_title">Is this building completed?</string>
+    <string name="quest_fuelSelfService_title">Can you pump gas yourself at this fuel station?</string>
+    <string name="quest_fuelSelfService_name_title">Can you pump gas yourself at %s?</string>
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
     <string name="quest_maxspeed_name_title2">What is the speed limit for %s here?</string>
@@ -1159,6 +1161,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="short_no_answer_on_button">No</string>
     <string name="quest_level_title">On which level number is %s located?</string>
+    <string name="quest_barrier_path_intersection">How does this path cross the barrier here?</string>
+    <string name="quest_barrier_road_intersection">How does this road cross the barrier here?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
     <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
@@ -1189,4 +1193,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">Lifesaver</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
+    <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
+    <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
 </resources>

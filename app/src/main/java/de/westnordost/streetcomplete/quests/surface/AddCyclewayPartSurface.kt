@@ -36,7 +36,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        answer.applyTo(changes, "cycleway:surface")
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: StringMapChangesBuilder) {
+        answer.applyTo(tags, "cycleway:surface")
     }
 }

@@ -479,7 +479,18 @@
                     "label": "Pagar en efectivo"
                 },
                 "castle_type": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "castrum": "Fuerte romano",
+                        "defensive": "Castillo defensivo",
+                        "fortress": "Fortaleza",
+                        "hillfort": "Fuerte en la colina",
+                        "kremlin": "Kremlin",
+                        "manor": "Casa solariega",
+                        "palace": "Palacio",
+                        "shiro": "Shiro",
+                        "stately": "Casa señorial"
+                    }
                 },
                 "changing_table": {
                     "label": "Cambiador de pañales"
@@ -1427,7 +1438,7 @@
                     }
                 },
                 "lock": {
-                    "label": "Bloqueo"
+                    "label": "Esclusa"
                 },
                 "lockable": {
                     "label": "Se puede cerrar con llave"
@@ -1706,9 +1717,11 @@
                         "carports": "Cocheras",
                         "garage_boxes": "Garaje en cubículos",
                         "lane": "Carril al borde de la calzada",
+                        "layby": "Área de descanso",
                         "multi-storey": "Multinivel",
                         "rooftop": "Techo",
                         "sheds": "Galpones",
+                        "street_side": "Junto a la calle",
                         "surface": "Superficie",
                         "underground": "Subterráneo"
                     }
@@ -1948,7 +1961,20 @@
                     "terms": "chimenea,hogar,fuego,estufa,leña,carbón"
                 },
                 "recycling_accepts": {
-                    "label": "Acepta"
+                    "label": "Acepta",
+                    "options": {
+                        "batteries": "Baterías",
+                        "cans": "Latas",
+                        "cardboard": "Cartón",
+                        "clothes": "Ropa",
+                        "glass": "Vidrio",
+                        "glass_bottles": "Botellas de vidrio",
+                        "green_waste": "Basura orgánica",
+                        "paper": "Papel",
+                        "plastic_packaging": "Envases de plástico",
+                        "scrap_metal": "Chatarra de metal",
+                        "shoes": "Zapatos"
+                    }
                 },
                 "recycling_type": {
                     "label": "Tipo",
@@ -2658,6 +2684,17 @@
                         "tourism": "Turismo"
                     },
                     "terms": "tipo de uso,uso"
+                },
+                "usage_waterway": {
+                    "label": "Tipo de uso",
+                    "options": {
+                        "headrace": "Galería de conducción",
+                        "irrigation": "Irrigación",
+                        "spillway": "Aliviadero",
+                        "tailrace": "Canal de desagüe",
+                        "transmission": "Transmisión",
+                        "transportation": "Transporte"
+                    }
                 },
                 "utility": {
                     "label": "Servicio público"
@@ -5468,6 +5505,10 @@
                     "name": "Área de tiendas comerciales",
                     "terms": "área comercial,locales comerciales,venta al detalle,comercios minoristas,comercios,tiendas,venta,minorista,al por menor,menudeo"
                 },
+                "landuse/salt_pond": {
+                    "name": "Estanque de evaporación de sal",
+                    "terms": "evaporación,solución salina,sal,salinas"
+                },
                 "landuse/vineyard": {
                     "name": "Viñedo",
                     "terms": "viña,viñedo,majuelo,parral"
@@ -5895,8 +5936,7 @@
                     "terms": "brújula,este,norte,sur,oeste,rosa de los vientos"
                 },
                 "man_made/courtyard": {
-                    "name": "Patio",
-                    "terms": "aire libre cerrado,cuadrilátero,patio"
+                    "name": "Patio"
                 },
                 "man_made/crane": {
                     "name": "Grúa",

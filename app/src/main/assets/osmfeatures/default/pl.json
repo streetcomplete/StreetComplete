@@ -632,7 +632,7 @@
                     "label": "Data"
                 },
                 "defibrillator/location": {
-                    "label": "Lokalizacja"
+                    "label": "Opis lokalizacji"
                 },
                 "delivery": {
                     "label": "Dostawa",
@@ -3160,6 +3160,10 @@
                 "amenity/nursing_home": {
                     "name": "Dom spokojnej starości"
                 },
+                "amenity/parcel_locker": {
+                    "name": "Paczkomat",
+                    "terms": "inpost,orlen paczka,aliexpress,cainiao,allegro,automat przesyłkowy,automat paczkowy"
+                },
                 "amenity/parking": {
                     "name": "Parking samochodowy",
                     "terms": "parking"
@@ -5591,8 +5595,7 @@
                     "terms": "wyręba,poręba,wycinka,las,drewno,drzewo"
                 },
                 "man_made/courtyard": {
-                    "name": "Dziedziniec",
-                    "terms": "dziedziniec,podwórze,podwórzec,podworzec,patio,atrium,wirydarz,perystyl"
+                    "name": "Dziedziniec"
                 },
                 "man_made/crane": {
                     "name": "Żuraw stacjonarny",

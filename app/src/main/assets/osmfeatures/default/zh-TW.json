@@ -479,7 +479,18 @@
                     "label": "存款"
                 },
                 "castle_type": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "castrum": "古羅馬兵營",
+                        "defensive": "城堡",
+                        "fortress": "要塞",
+                        "hillfort": "丘堡",
+                        "kremlin": "克里姆林",
+                        "manor": "莊園大屋",
+                        "palace": "宮殿",
+                        "shiro": "日式城堡",
+                        "stately": "法式城堡"
+                    }
                 },
                 "changing_table": {
                     "label": "尿布更換桌"
@@ -1707,9 +1718,11 @@
                         "carports": "車棚",
                         "garage_boxes": "垃圾桶",
                         "lane": "路邊停車位",
+                        "layby": "休息站",
                         "multi-storey": "立體",
                         "rooftop": "屋頂",
                         "sheds": "有覆蓋",
+                        "street_side": "路邊",
                         "surface": "平面",
                         "underground": "地下"
                     }
@@ -1949,7 +1962,20 @@
                     "terms": "實體火燄"
                 },
                 "recycling_accepts": {
-                    "label": "接受"
+                    "label": "接受",
+                    "options": {
+                        "batteries": "電池",
+                        "cans": "金屬容器",
+                        "cardboard": "紙板",
+                        "clothes": "衣服",
+                        "glass": "玻璃",
+                        "glass_bottles": "玻璃瓶",
+                        "green_waste": "堆肥",
+                        "paper": "紙類",
+                        "plastic_packaging": "塑膠包裝",
+                        "scrap_metal": "廢金屬",
+                        "shoes": "鞋子"
+                    }
                 },
                 "recycling_type": {
                     "label": "種類",
@@ -2659,6 +2685,17 @@
                         "tourism": "觀光"
                     },
                     "terms": "使用種類"
+                },
+                "usage_waterway": {
+                    "label": "用途類型",
+                    "options": {
+                        "headrace": "引水道",
+                        "irrigation": "灌溉",
+                        "spillway": "溢洪道",
+                        "tailrace": "尾水道",
+                        "transmission": "傳輸",
+                        "transportation": "運輸"
+                    }
                 },
                 "utility": {
                     "label": "公用事業"
@@ -5454,6 +5491,10 @@
                     "name": "零售用地",
                     "terms": "商店街"
                 },
+                "landuse/salt_pond": {
+                    "name": "鹽蒸發池",
+                    "terms": "鹽蒸發池,鹽田,鹽灘,鹽埕"
+                },
                 "landuse/vineyard": {
                     "name": "酒莊",
                     "terms": "酒莊"
@@ -5881,8 +5922,7 @@
                     "terms": "羅盤方位圖,羅盤玫瑰,羅針圖,玫瑰風圖,風圖"
                 },
                 "man_made/courtyard": {
-                    "name": "庭院",
-                    "terms": "庭院,天井"
+                    "name": "庭院"
                 },
                 "man_made/crane": {
                     "name": "起重機",

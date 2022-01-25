@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
@@ -58,8 +59,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowD
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
-import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
-import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.barrier_type.*
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
@@ -72,6 +72,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.level.AddLevel
@@ -253,6 +254,8 @@ import javax.inject.Singleton
         AddBoardType(),
 
         AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
+        AddBarrierOnPath(),
+        AddBarrierOnRoad(),
         AddStileType(),
         AddBicycleBarrierType(),
 
@@ -327,6 +330,8 @@ import javax.inject.Singleton
 
         AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
 
+        AddAirConditioning(), // often visible from the outside, if not, visible/feelable inside
+
         /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 
         AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
@@ -348,6 +353,8 @@ import javax.inject.Singleton
         AddKosher(),
         AddWheelchairAccessBusiness(featureDictionaryFuture), // used by wheelmap, OsmAnd, Organic Maps
         AddInternetAccess(), // used by OsmAnd
+
+        AddFuelSelfService(),
 
         /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 

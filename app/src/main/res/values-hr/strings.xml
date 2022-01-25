@@ -1474,6 +1474,7 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_sett">"Plosnato ili kamenje s četvrtastim rubovima, plitkim ili uskim razmacima"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Sitni šljunak, plitke izbočine ili rupe"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_bad_paved">"Velike praznine, rupe, kolotečine, mrvljenje podloge ili druga oštećenja"</string>
@@ -1520,4 +1521,18 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_title">"Spasilac"</string>
     <string name="achievement_lifesaver_solved_X">"Riješili ste %d zadataka koji pomažu hitnim službama!"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fuelSelfService_title">"Možete li sami točiti benzin na ovoj benzinskoj postaji?"</string>
+    <string name="quest_fuelSelfService_name_title">"Možete li sami točiti benzin na %s?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Ova vrsta zadatka je inicijalno onemogućena jer je prilično dugotrajna i često je teško ispravno odabrati. Omogućite je samo ako ste stvarno predani dodavanju ove vrste podataka."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Tvrdo nabijen, sa vrlo malo rastresitog šljunka ili pijeska"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_path_intersection">"Kako put ovdje prolazi kroz barijeru?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_road_intersection">"Kako cesta ovdje prolazi kroz barijeru?"</string>
+    <string name="quest_airConditioning_no_name_title">"Ima li ova lokacija (%s) klima uređaj?"</string>
+    <string name="quest_airConditioning_name_type_title">"Ima li %1$s (%2$s) klima uređaj?"</string>
 </resources>

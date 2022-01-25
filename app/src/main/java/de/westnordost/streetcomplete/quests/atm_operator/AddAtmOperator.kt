@@ -25,7 +25,7 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddAtmOperatorForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("operator", answer)
+    override fun applyAnswerTo(answer: String, tags: StringMapChangesBuilder) {
+        tags["operator"] = answer
     }
 }

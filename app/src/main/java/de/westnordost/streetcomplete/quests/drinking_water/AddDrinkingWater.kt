@@ -43,8 +43,8 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override fun createForm() = AddDrinkingWaterForm()
 
-    override fun applyAnswerTo(answer: DrinkingWater, changes: StringMapChangesBuilder) {
-        changes.addOrModify("drinking_water", answer.osmValue)
-        answer.osmLegalValue?.let { changes.addOrModify("drinking_water:legal", it) }
+    override fun applyAnswerTo(answer: DrinkingWater, tags: StringMapChangesBuilder) {
+        tags["drinking_water"] = answer.osmValue
+        answer.osmLegalValue?.let { tags["drinking_water:legal"] = it }
     }
 }

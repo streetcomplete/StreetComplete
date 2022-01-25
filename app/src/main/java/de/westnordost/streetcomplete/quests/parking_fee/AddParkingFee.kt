@@ -25,5 +25,5 @@ class AddParkingFee : OsmFilterQuestType<Fee>() {
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: Fee, changes: StringMapChangesBuilder) = answer.applyTo(changes)
+    override fun applyAnswerTo(answer: Fee, tags: StringMapChangesBuilder) = answer.applyTo(tags)
 }

@@ -155,24 +155,20 @@ class AddOpeningHours (
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is RegularOpeningHours -> {
-                changes.updateWithCheckDate("opening_hours", answer.hours.toString())
-                changes.deleteIfPreviously("opening_hours:signed", "no")
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: StringMapChangesBuilder) {
+        if (answer is NoOpeningHoursSign) {
+            tags["opening_hours:signed"] = "no"
+            // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
+        } else {
+            val openingHoursString = when(answer) {
+                is RegularOpeningHours  -> answer.hours.toString()
+                is AlwaysOpen           -> "24/7"
+                is DescribeOpeningHours -> "\"" + answer.text.replace("\"","") + "\""
+                NoOpeningHoursSign      -> throw IllegalStateException()
             }
-            is AlwaysOpen          -> {
-                changes.updateWithCheckDate("opening_hours", "24/7")
-                changes.deleteIfPreviously("opening_hours:signed", "no")
-            }
-            is DescribeOpeningHours -> {
-                val text = answer.text.replace("\"","")
-                changes.updateWithCheckDate("opening_hours", "\"$text\"")
-                changes.deleteIfPreviously("opening_hours:signed", "no")
-            }
-            is NoOpeningHoursSign  -> {
-                changes.addOrModify("opening_hours:signed", "no")
-                // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
+            tags.updateWithCheckDate("opening_hours", openingHoursString)
+            if (tags["opening_hours:signed"] == "no") {
+                tags.remove("opening_hours:signed")
             }
         }
     }

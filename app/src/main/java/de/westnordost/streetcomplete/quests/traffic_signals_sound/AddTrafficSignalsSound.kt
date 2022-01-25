@@ -57,8 +57,8 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate(SOUND_SIGNALS, answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate(SOUND_SIGNALS, answer.toYesNo())
     }
 }
 

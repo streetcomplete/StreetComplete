@@ -586,6 +586,13 @@
                 "crop": {
                     "label": "Crops"
                 },
+                "crossing_raised": {
+                    "label": "Raised",
+                    "options": {
+                        "undefined": "No",
+                        "table": "Yes"
+                    }
+                },
                 "crossing": {
                     "label": "Type"
                 },
@@ -2571,6 +2578,17 @@
                         "military": "Military",
                         "test": "Test",
                         "tourism": "Tourism"
+                    }
+                },
+                "usage_waterway": {
+                    "label": "Usage Type",
+                    "options": {
+                        "transportation": "Transportation",
+                        "transmission": "Transmission",
+                        "irrigation": "Irrigation",
+                        "headrace": "Headrace",
+                        "tailrace": "Tailrace",
+                        "spillway": "Spillway"
                     }
                 },
                 "utility_semi": {
@@ -4699,34 +4717,20 @@
                     "name": "Indoor Corridor",
                     "terms": "gallery,hall,hallway,indoor,passage,passageway"
                 },
-                "highway/crossing/zebra-raised": {
-                    "name": "Marked Crosswalk (Raised)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Marked Crosswalk"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Marked Crosswalk (Raised)",
-                    "terms": "zebra crossing,marked crossing,crosswalk,flat top,hump,speed,slow"
-                },
                 "highway/crossing/marked": {
                     "name": "Marked Crosswalk",
-                    "terms": "zebra crossing,marked crossing,crosswalk"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Crossing With Pedestrian Signals (Raised)",
-                    "terms": "pedestrian traffic lights,pedestrian traffic signals,pedestrian crossing (lights),bicycle crossing (lights),crosswalk (lights),flat top,hump,speed,slow"
+                    "terms": "zebra crossing,marked crossing,crosswalk,flat top,hump,speed,slow"
                 },
                 "highway/crossing/signals": {
                     "name": "Crossing With Pedestrian Signals",
-                    "terms": "pedestrian traffic lights,pedestrian traffic signals,pedestrian crossing (lights),bicycle crossing (lights),crosswalk (lights)"
-                },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Unmarked Crossing (Raised)",
-                    "terms": "flat top,hump,speed,slow"
+                    "terms": "pedestrian traffic lights,pedestrian traffic signals,pedestrian crossing (lights),bicycle crossing (lights),crosswalk (lights),flat top,hump,speed,slow"
                 },
                 "highway/crossing/unmarked": {
-                    "name": "Unmarked Crossing"
+                    "name": "Unmarked Crossing",
+                    "terms": "unmarked foot path crossing,unmarked crosswalk,unmarked pedestrian crossing,flat top,hump,speed,slow"
                 },
                 "highway/cycleway": {
                     "name": "Cycle Path",
@@ -4771,9 +4775,6 @@
                 "highway/footway/crossing": {
                     "name": "Pedestrian Crossing"
                 },
-                "highway/footway/zebra-raised": {
-                    "name": "Marked Crosswalk (Raised)"
-                },
                 "highway/footway/zebra": {
                     "name": "Marked Crosswalk"
                 },
@@ -4785,25 +4786,21 @@
                     "name": "Moving Walkway",
                     "terms": "moving sidewalk,autwalk,skywalk,travolator,travelator,travellator,conveyor"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Marked Crosswalk (Raised)",
-                    "terms": "zebra crossing,marked crossing,crosswalk,flat top,hump,speed,slow"
-                },
                 "highway/footway/marked": {
                     "name": "Marked Crosswalk",
-                    "terms": "marked foot path crossing,marked crossing,marked pedestrian crosswalk,zebra crossing"
+                    "terms": "marked foot path crossing,marked crossing,marked pedestrian crosswalk,zebra crossing,crosswalk,flat top,hump,speed,slow"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Sidewalk",
                     "terms": "pavement,sidepath"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Unmarked Crossing (Raised)",
-                    "terms": "flat top,hump,speed,slow"
+                "highway/footway/signals": {
+                    "name": "Crossing With Pedestrian Signals",
+                    "terms": "pedestrian traffic lights,pedestrian traffic signals,pedestrian crossing (lights),bicycle crossing (lights),crosswalk (lights),flat top,hump,speed,slow"
                 },
                 "highway/footway/unmarked": {
                     "name": "Unmarked Crossing",
-                    "terms": "unmarked foot path crossing,unmarked crosswalk,unmarked pedestrian crossing"
+                    "terms": "unmarked foot path crossing,unmarked crosswalk,unmarked pedestrian crossing,flat top,hump,speed,slow"
                 },
                 "highway/give_way": {
                     "name": "Yield Sign",
@@ -5515,6 +5512,10 @@
                     "name": "Field Hockey Pitch",
                     "terms": "landhockey"
                 },
+                "leisure/pitch/futsal": {
+                    "name": "Futsal Court",
+                    "terms": "minifootball,five-a-side soccer"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "Horseshoes Pit",
                     "terms": "horse shoes"
@@ -5650,6 +5651,9 @@
                     "name": "Line",
                     "terms": "polyline"
                 },
+                "man_made/courtyard": {
+                    "name": "Courtyard"
+                },
                 "man_made/adit": {
                     "name": "Adit",
                     "terms": "cave,horizontal mine entrance,tunnel,underground"
@@ -5689,10 +5693,6 @@
                 "man_made/compass_rose": {
                     "name": "Compass Rose",
                     "terms": "compass,east,north,rose of the winds,south,west,wind rose"
-                },
-                "man_made/courtyard": {
-                    "name": "Courtyard",
-                    "terms": "court,enclosed open air,quadrangle,yard"
                 },
                 "man_made/crane": {
                     "name": "Crane"
@@ -7930,7 +7930,8 @@
                     "name": "Boatyard"
                 },
                 "waterway/canal": {
-                    "name": "Canal"
+                    "name": "Canal",
+                    "terms": "headrace,irrigation,spillway,tailrace,waterpower"
                 },
                 "waterway/canal/lock": {
                     "name": "Canal Lock"

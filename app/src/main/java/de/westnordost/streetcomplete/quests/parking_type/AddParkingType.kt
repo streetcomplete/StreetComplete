@@ -22,7 +22,7 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
 
     override fun createForm() = AddParkingTypeForm()
 
-    override fun applyAnswerTo(answer: ParkingType, changes: StringMapChangesBuilder) {
-        changes.addOrModify("parking", answer.osmValue)
+    override fun applyAnswerTo(answer: ParkingType, tags: StringMapChangesBuilder) {
+        tags["parking"] = answer.osmValue
     }
 }

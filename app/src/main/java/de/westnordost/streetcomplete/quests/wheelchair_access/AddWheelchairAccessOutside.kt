@@ -25,7 +25,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun createForm() = AddWheelchairAccessOutsideForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("wheelchair", answer.osmValue)
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("wheelchair", answer.osmValue)
     }
 }
