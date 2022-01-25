@@ -2,7 +2,7 @@ For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#d
 
 If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest where the interface design matches an existing one is quite simple.
 
-Contributions like that are highly welcome and you would make mapping one more thing in OSM much easier!
+Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier!
 
 Reading the text below is not necessary to create a new quest - a basic method of duplicating existing ones and modifying them may be sufficient. And people were creating new quests before this documentation existed.
 
