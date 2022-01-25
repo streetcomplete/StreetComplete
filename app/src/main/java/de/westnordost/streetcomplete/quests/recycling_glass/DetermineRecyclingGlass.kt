@@ -32,15 +32,15 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
     override fun createForm() = DetermineRecyclingGlassForm()
 
-    override fun applyAnswerTo(answer: RecyclingGlass, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingGlass, tags: StringMapChangesBuilder) {
         when(answer) {
             ANY -> {
                 // to mark that it has been checked
-                changes.add("recycling:glass_bottles", "yes")
+                tags["recycling:glass_bottles"] = "yes"
             }
             BOTTLES -> {
-                changes.add("recycling:glass_bottles", "yes")
-                changes.modify("recycling:glass", "no")
+                tags["recycling:glass_bottles"] = "yes"
+                tags["recycling:glass"] = "no"
             }
         }
     }

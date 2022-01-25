@@ -68,8 +68,8 @@ class AddAcceptsCash(
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("payment:cash", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["payment:cash"] = answer.toYesNo()
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =

@@ -139,11 +139,11 @@ class AddSuspectedOneway(
 
     override fun createForm() = AddSuspectedOnewayForm()
 
-    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: StringMapChangesBuilder) {
         if (!answer.isOneway) {
-            changes.add("oneway", "no")
+            tags["oneway"] = "no"
         } else {
-            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
+            tags["oneway"] = if (db.isForward(answer.wayId)!!) "yes" else "-1"
         }
     }
 

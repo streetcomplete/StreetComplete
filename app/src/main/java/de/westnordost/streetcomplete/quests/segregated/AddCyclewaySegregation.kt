@@ -36,7 +36,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = AddCyclewaySegregationForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("segregated", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("segregated", answer.toYesNo())
     }
 }

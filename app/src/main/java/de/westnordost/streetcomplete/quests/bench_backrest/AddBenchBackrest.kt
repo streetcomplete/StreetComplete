@@ -33,14 +33,14 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override fun createForm() = AddBenchBackrestForm()
 
-    override fun applyAnswerTo(answer: BenchBackrestAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BenchBackrestAnswer, tags: StringMapChangesBuilder) {
         when (answer) {
             PICNIC_TABLE -> {
-                changes.add("leisure", "picnic_table")
-                changes.delete("amenity")
+                tags["leisure"] = "picnic_table"
+                tags.remove("amenity")
             }
-            YES -> changes.add("backrest", "yes")
-            NO -> changes.add("backrest", "no")
+            YES -> tags["backrest"] = "yes"
+            NO -> tags["backrest"] = "no"
         }
     }
 }

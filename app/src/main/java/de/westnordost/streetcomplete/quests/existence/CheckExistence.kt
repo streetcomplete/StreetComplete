@@ -115,8 +115,8 @@ class CheckExistence(
 
     override fun createForm() = CheckExistenceForm()
 
-    override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.updateCheckDate()
+    override fun applyAnswerTo(answer: Unit, tags: StringMapChangesBuilder) {
+        tags.updateCheckDate()
     }
 
     private fun lastChecked(yearsAgo: Double): String = """

@@ -67,7 +67,7 @@ class AddShoulder : OsmFilterQuestType<Boolean>() {
 
     override fun createForm(): AbstractQuestAnswerFragment<Boolean> = AddShoulderForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("shoulder", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["shoulder"] = answer.toYesNo()
     }
 }

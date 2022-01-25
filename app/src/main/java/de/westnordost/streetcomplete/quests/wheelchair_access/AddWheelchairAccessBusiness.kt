@@ -115,8 +115,8 @@ class AddWheelchairAccessBusiness(
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
-        changes.add("wheelchair", answer.osmValue)
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: StringMapChangesBuilder) {
+        tags["wheelchair"] = answer.osmValue
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =

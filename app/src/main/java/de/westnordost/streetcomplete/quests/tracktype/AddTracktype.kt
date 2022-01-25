@@ -32,7 +32,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
     override fun createForm() = AddTracktypeForm()
 
-    override fun applyAnswerTo(answer: Tracktype, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("tracktype", answer.osmValue)
+    override fun applyAnswerTo(answer: Tracktype, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("tracktype", answer.osmValue)
     }
 }

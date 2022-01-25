@@ -40,8 +40,8 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("kerb", answer.osmValue)
-        changes.addOrModify("barrier", "kerb")
+    override fun applyAnswerTo(answer: KerbHeight, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("kerb", answer.osmValue)
+        tags["barrier"] = "kerb"
     }
 }

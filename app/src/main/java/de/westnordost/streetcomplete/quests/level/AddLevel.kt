@@ -113,7 +113,7 @@ class AddLevel : OsmElementQuestType<String> {
 
     override fun createForm() = AddLevelForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("level", answer)
+    override fun applyAnswerTo(answer: String, tags: StringMapChangesBuilder) {
+        tags["level"] = answer
     }
 }

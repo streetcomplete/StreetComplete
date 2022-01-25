@@ -25,7 +25,7 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
     override fun createForm() = AddFireHydrantTypeForm()
 
-    override fun applyAnswerTo(answer: FireHydrantType, changes: StringMapChangesBuilder) {
-        changes.add("fire_hydrant:type", answer.osmValue)
+    override fun applyAnswerTo(answer: FireHydrantType, tags: StringMapChangesBuilder) {
+        tags["fire_hydrant:type"] = answer.osmValue
     }
 }

@@ -38,10 +38,10 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_halal)
 
-    override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            is DietAvailability -> changes.updateWithCheckDate("diet:halal", answer.osmValue)
-            NoFood -> changes.addOrModify("food", "no")
+            is DietAvailability -> tags.updateWithCheckDate("diet:halal", answer.osmValue)
+            NoFood -> tags["food"] = "no"
         }
     }
 }

@@ -40,10 +40,10 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override fun createForm() = AddPostboxRefForm()
 
-    override fun applyAnswerTo(answer: PostboxRefAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: PostboxRefAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            is NoRefVisible -> changes.add("ref:signed", "no")
-            is Ref ->          changes.add("ref", answer.ref)
+            is NoRefVisible -> tags["ref:signed"] = "no"
+            is Ref ->          tags["ref"] = answer.ref
         }
     }
 }

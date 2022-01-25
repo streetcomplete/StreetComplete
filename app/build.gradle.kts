@@ -36,8 +36,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 3902
-        versionName = "39.1"
+        versionCode = 4000
+        versionName = "40.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -68,8 +68,6 @@ android {
     }
 
     lint {
-        // there is currently always an internal error "Unexpected lint invalid arguments" when executing lintAnalyze*, so whatever, disable this then!
-        isCheckReleaseBuilds = false
         disable("MissingTranslation")
         ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false

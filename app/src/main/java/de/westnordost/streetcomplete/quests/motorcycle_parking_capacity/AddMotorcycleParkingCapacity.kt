@@ -30,7 +30,7 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = motorcycle_parking")
 
-    override fun applyAnswerTo(answer: Int, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("capacity", answer.toString())
+    override fun applyAnswerTo(answer: Int, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("capacity", answer.toString())
     }
 }

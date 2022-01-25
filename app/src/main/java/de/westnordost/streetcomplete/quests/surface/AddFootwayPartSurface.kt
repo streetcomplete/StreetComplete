@@ -36,7 +36,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        answer.applyTo(changes, "footway:surface")
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: StringMapChangesBuilder) {
+        answer.applyTo(tags, "footway:surface")
     }
 }

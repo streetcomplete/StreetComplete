@@ -27,16 +27,18 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override fun createForm() = AddRecyclingTypeForm()
 
-    override fun applyAnswerTo(answer: RecyclingType, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingType, tags: StringMapChangesBuilder) {
         when (answer) {
-            RECYCLING_CENTRE -> changes.add("recycling_type", "centre")
+            RECYCLING_CENTRE -> {
+                tags["recycling_type"] = "centre"
+            }
             OVERGROUND_CONTAINER -> {
-                changes.add("recycling_type", "container")
-                changes.add("location", "overground")
+                tags["recycling_type"] = "container"
+                tags["location"] = "overground"
             }
             UNDERGROUND_CONTAINER -> {
-                changes.add("recycling_type", "container")
-                changes.add("location", "underground")
+                tags["recycling_type"] = "container"
+                tags["location"] = "underground"
             }
         }
     }

@@ -41,7 +41,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
 
     override fun createForm() = AddChargingStationCapacityForm()
 
-    override fun applyAnswerTo(answer: Int, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("capacity", answer.toString())
+    override fun applyAnswerTo(answer: Int, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("capacity", answer.toString())
     }
 }

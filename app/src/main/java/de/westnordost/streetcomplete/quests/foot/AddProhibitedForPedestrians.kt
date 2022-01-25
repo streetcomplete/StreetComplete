@@ -47,13 +47,13 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
 
     override fun createForm() = AddProhibitedForPedestriansForm()
 
-    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
-            YES -> changes.add("foot", "no")
-            NO -> changes.add("foot", "yes")
-            HAS_SEPARATE_SIDEWALK -> changes.modify("sidewalk", "separate")
-            IS_LIVING_STREET -> changes.modify("highway", "living_street")
+            YES -> tags["foot"] = "no"
+            NO -> tags["foot"] = "yes"
+            HAS_SEPARATE_SIDEWALK -> tags["sidewalk"] = "separate"
+            IS_LIVING_STREET -> tags["highway"] = "living_street"
         }
     }
 }

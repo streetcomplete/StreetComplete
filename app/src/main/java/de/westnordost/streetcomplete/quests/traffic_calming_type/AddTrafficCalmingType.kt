@@ -18,8 +18,8 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
 
     override fun createForm() = AddTrafficCalmingTypeForm()
 
-    override fun applyAnswerTo(answer: TrafficCalmingType, changes: StringMapChangesBuilder) {
-        changes.modify("traffic_calming", answer.osmValue)
+    override fun applyAnswerTo(answer: TrafficCalmingType, tags: StringMapChangesBuilder) {
+        tags["traffic_calming"] = answer.osmValue
     }
 
     override val questTypeAchievements = listOf(PEDESTRIAN, CAR)

@@ -41,8 +41,8 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
         if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) false
         else null
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("tactile_paving", answer.toYesNo())
-        changes.addOrModify("barrier", "kerb")
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
+        tags["barrier"] = "kerb"
     }
 }

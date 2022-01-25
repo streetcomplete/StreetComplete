@@ -23,7 +23,7 @@ class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>() {
 
     override fun createForm() = AddReligionForm()
 
-    override fun applyAnswerTo(answer: Religion, changes: StringMapChangesBuilder) {
-        changes.add("religion", answer.osmValue)
+    override fun applyAnswerTo(answer: Religion, tags: StringMapChangesBuilder) {
+        tags["religion"] = answer.osmValue
     }
 }

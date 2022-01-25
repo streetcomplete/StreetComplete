@@ -39,23 +39,23 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: BuildingType, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BuildingType, tags: StringMapChangesBuilder) {
         if (answer.osmKey == "man_made") {
-            changes.delete("building")
-            changes.add("man_made", answer.osmValue)
+            tags.remove("building")
+            tags["man_made"] = answer.osmValue
         } else if (answer.osmKey != "building") {
-            changes.addOrModify(answer.osmKey, answer.osmValue)
+            tags[answer.osmKey] = answer.osmValue
             if(answer == BuildingType.ABANDONED) {
-                changes.deleteIfExists("disused")
+                tags.remove("disused")
             }
-            if(answer == BuildingType.RUINS && changes.getPreviousValue("disused") == "no") {
-                changes.deleteIfExists("disused")
+            if(answer == BuildingType.RUINS && tags["disused"] == "no") {
+                tags.remove("disused")
             }
-            if(answer == BuildingType.RUINS && changes.getPreviousValue("abandoned") == "no") {
-                changes.deleteIfExists("abandoned")
+            if(answer == BuildingType.RUINS && tags["abandoned"] == "no") {
+                tags.remove("abandoned")
             }
         } else {
-            changes.modify("building", answer.osmValue)
+            tags["building"] = answer.osmValue
         }
     }
 }
