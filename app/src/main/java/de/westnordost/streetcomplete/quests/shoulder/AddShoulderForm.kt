@@ -1,29 +1,33 @@
 package de.westnordost.streetcomplete.quests.shoulder
 
+import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
-import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.quests.StreetSideItem
 
 class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
 
-    override val contentLayoutResId = R.layout.quest_shoulder_explanation
-
     override val items = listOf(
-        StreetSideDisplayItem(
-            value = false,
-            image = ResImage(R.drawable.ic_shoulder_no_illustration),
-            icon = ResImage(R.drawable.ic_shoulder_no),
-            title = ResText(R.string.quest_shoulder_value_no)
+        StreetSideItem(
+            false,
+            R.drawable.ic_shoulder_illustration_no,
+            R.string.quest_shoulder_value_no,
+            R.drawable.ic_shoulder_no
         ),
-        StreetSideDisplayItem(
-            value = true,
-            image = ResImage(R.drawable.ic_shoulder_yes_illustration),
-            icon = ResImage(R.drawable.ic_shoulder_yes),
-            title = ResText(R.string.quest_shoulder_value_yes)
+        StreetSideItem(
+            true,
+            R.drawable.ic_shoulder_illustration_yes,
+            R.string.quest_shoulder_value_yes,
+            R.drawable.ic_shoulder_yes
         )
     )
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<TextView>(R.id.descriptionLabel).setText(R.string.quest_shoulder_explanation)
+    }
 
     override fun onClickOk(leftSide: Boolean, rightSide: Boolean) {
         applyAnswer(ShoulderSides(leftSide, rightSide))

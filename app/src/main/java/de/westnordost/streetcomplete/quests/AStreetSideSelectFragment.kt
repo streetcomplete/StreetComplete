@@ -4,19 +4,19 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.view.isGone
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.normalizeDegrees
-import de.westnordost.streetcomplete.view.Image
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.Text
+import de.westnordost.streetcomplete.view.*
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.Item2
-import de.westnordost.streetcomplete.view.setImage
 import kotlin.math.absoluteValue
 
 abstract class AStreetSideSelectFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
@@ -34,7 +34,7 @@ abstract class AStreetSideSelectFragment<I,T> : AbstractQuestFormAnswerFragment<
     private lateinit var favs: LastPickedValuesStore<LastSelection<I>>
     private val lastSelection get() = favs.get().firstOrNull()
 
-    open val cellLayoutId = R.layout.cell_labeled_image_select
+    open val cellLayoutId = R.layout.cell_icon_select_with_label_below
 
     open val defaultImage get() = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 
@@ -126,7 +126,7 @@ abstract class AStreetSideSelectFragment<I,T> : AbstractQuestFormAnswerFragment<
     private fun showSelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
 
-        ImageListPickerDialog(ctx, items.map { it.toDisplayItem() }, cellLayoutId, 2) { item ->
+        ImageListPickerDialog(ctx, items.map { it.asItem() }, cellLayoutId, 2) { item ->
             onSelectedSide(items.find { it.value == item.value }!!, isRight)
         }.show()
     }
@@ -218,12 +218,37 @@ private data class LastSelection<T>(
     val right: StreetSideDisplayItem<T>
 )
 
-data class StreetSideDisplayItem<T>(
-    val value: T,
-    val image: Image,
-    val icon: Image = image,
-    val floatingIcon: Image? = null,
-    val title: Text? = null) {
+interface StreetSideDisplayItem<T> {
+    val value: T
+    val image: Image
+    val title: Text?
+    val icon: Image
+    val floatingIcon: Image?
 
-    fun toDisplayItem(): DisplayItem<T> = Item2(value, icon, title)
+    fun asItem(): DisplayItem<T>
+}
+
+data class StreetSideItem<T>(
+    override val value: T,
+    @DrawableRes val imageId: Int,
+    @StringRes val titleId: Int? = null,
+    @DrawableRes val iconId: Int = imageId,
+    @DrawableRes val floatingIconId: Int? = null
+) : StreetSideDisplayItem<T> {
+    override val image: Image get() = ResImage(imageId)
+    override val title: Text? get() = titleId?.let { ResText(it) }
+    override val icon: Image get() = ResImage(iconId)
+    override val floatingIcon: Image? get() = floatingIconId?.let { ResImage(it) }
+
+    override fun asItem() = Item(value, iconId, titleId)
+}
+
+data class StreetSideItem2<T>(
+    override val value: T,
+    override val image: Image,
+    override val title: Text? = null,
+    override val icon: Image = image,
+    override val floatingIcon: Image? = null
+) : StreetSideDisplayItem<T> {
+    override fun asItem() = Item2(value, icon, title)
 }
