@@ -63,7 +63,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         // first clear recycling:* taggings previously "yes"
         for ((key, value) in tags.entries) {
             if (key.startsWith("recycling:") && value == "yes") {
-                tags.remove(material)
+                tags.remove(key)
             }
         }
 

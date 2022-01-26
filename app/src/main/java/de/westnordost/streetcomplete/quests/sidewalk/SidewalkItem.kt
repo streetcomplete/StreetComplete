@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.sidewalk
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.*
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
 
 val Sidewalk.iconResId get() = when(this) {
     YES -> R.drawable.ic_sidewalk_yes
@@ -11,13 +13,13 @@ val Sidewalk.iconResId get() = when(this) {
 }
 
 val Sidewalk.imageResId get() = when(this) {
-    YES -> R.drawable.ic_sidewalk_puzzle_yes
-    NO -> R.drawable.ic_sidewalk_puzzle_no
-    SEPARATE -> R.drawable.ic_sidewalk_puzzle_no
+    YES -> R.drawable.ic_sidewalk_illustration_yes
+    NO -> R.drawable.ic_sidewalk_illustration_no
+    SEPARATE -> R.drawable.ic_sidewalk_illustration_no
 }
 
 val Sidewalk.floatingIconResId get() = when(this) {
-    SEPARATE -> R.drawable.ic_sidewalk_separate_floating
+    SEPARATE -> R.drawable.ic_sidewalk_floating_separate
     else -> null
 }
 
@@ -27,4 +29,10 @@ val Sidewalk.titleResId get() = when(this) {
     SEPARATE -> R.string.quest_sidewalk_value_separate
 }
 
-fun Sidewalk.asStreetSideDisplayItem(): StreetSideDisplayItem<Sidewalk> = TODO()
+fun Sidewalk.asStreetSideDisplayItem() = StreetSideDisplayItem(
+    this,
+    ResImage(imageResId),
+    ResImage(iconResId),
+    floatingIconResId?.let { ResImage(it) },
+    ResText(titleResId)
+)

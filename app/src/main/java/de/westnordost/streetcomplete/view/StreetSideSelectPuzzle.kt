@@ -158,11 +158,11 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.rightSideImage.animateFallDown()
     }
 
-    fun setLeftSideText(text: String?) {
+    fun setLeftSideText(text: Text?) {
         binding.leftSideTextView.setText(text)
     }
 
-    fun setRightSideText(text: String?) {
+    fun setRightSideText(text: Text?) {
         binding.rightSideTextView.setText(text)
     }
 

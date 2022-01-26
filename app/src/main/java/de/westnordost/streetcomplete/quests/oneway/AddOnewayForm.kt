@@ -51,7 +51,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
         binding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
 
-        binding.puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        binding.puzzleView.setRightSideText(selection?.titleResId?.let { ResText(it) })
         if (selection == null && !HAS_SHOWN_TAP_HINT) {
             binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
@@ -86,7 +86,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 3) { selected ->
             val oneway = selected.value!!
             binding.puzzleView.replaceRightSideImage(ResImage(oneway.iconResId))
-            binding.puzzleView.setRightSideText(resources.getString(oneway.titleResId))
+            binding.puzzleView.setRightSideText(ResText(oneway.titleResId))
             selection = oneway
             checkIsFormComplete()
         }.show()

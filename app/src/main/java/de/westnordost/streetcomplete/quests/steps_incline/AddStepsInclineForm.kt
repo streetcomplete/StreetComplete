@@ -50,7 +50,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         val defaultResId = R.drawable.ic_street_side_unknown
 
         binding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
-        binding.puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        binding.puzzleView.setRightSideText(selection?.titleResId?.let { ResText(it) })
         if (selection == null && !HAS_SHOWN_TAP_HINT) {
             binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
@@ -85,7 +85,7 @@ class AddStepsInclineForm : AbstractQuestFormAnswerFragment<StepsIncline>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
             val dir = selected.value!!
             binding.puzzleView.replaceRightSideImage(ResImage(dir.iconResId))
-            binding.puzzleView.setRightSideText(resources.getString(dir.titleResId))
+            binding.puzzleView.setRightSideText(ResText(dir.titleResId))
             selection = dir
             checkIsFormComplete()
         }.show()

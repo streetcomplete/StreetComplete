@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
  <rect y="6.1377e-5" width="208" height="256" fill="#808080" style="paint-order:stroke fill markers"/>
- <rect x="96" width="16" height="256" fill="#fff" style="paint-order:markers fill stroke"/>
+ <rect x="104" width="16" height="256" fill="#fff" style="paint-order:markers fill stroke"/>
+ <path d="m136.42 128 32 32 56-64" fill="none" stroke="#3c0" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
 </svg>
