@@ -5,6 +5,11 @@ v40.0-beta1: |
   <li><i>Can you pump gas yourself at this fuel station?</i> (#2822, #1827), by @naposm</li>
   <li><i>Does this place have air conditioning?</i> (#3641, #3127), by @coolultra1</li>
   </ul>
+  <h3>Quest enhancements</h3>
+  <ul>
+  <li>Allow answering whether there is a shoulder for each side individually (#3659)</li>
+  <li>Allow answering whether the sidewalk is displayed separately on the map for each side individually</li>
+  </ul>
 
 v39.1: |
   <h3>Fixes</h3>
