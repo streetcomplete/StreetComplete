@@ -3,7 +3,12 @@ package de.westnordost.streetcomplete.quests.max_speed
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
@@ -19,7 +24,12 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
 import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES_PER_HOUR
-import de.westnordost.streetcomplete.quests.max_speed.SpeedType.*
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.LIVING_STREET
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NSL
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.SIGN
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ZONE
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 

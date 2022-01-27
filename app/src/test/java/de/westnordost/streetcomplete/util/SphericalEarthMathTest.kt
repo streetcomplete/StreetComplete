@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.util
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import org.junit.Test
-
 import de.westnordost.streetcomplete.testutils.bbox
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Test
 import kotlin.math.PI
 import kotlin.math.roundToInt
 import kotlin.math.sqrt

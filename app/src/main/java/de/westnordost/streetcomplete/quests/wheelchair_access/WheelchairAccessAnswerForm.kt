@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.*
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.LIMITED
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.NO
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.YES
 
 open class WheelchairAccessAnswerForm : AbstractQuestAnswerFragment<WheelchairAccess>() {
 

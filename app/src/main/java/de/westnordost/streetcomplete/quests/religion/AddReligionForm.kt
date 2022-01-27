@@ -1,11 +1,23 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.religion.Religion.*
+import de.westnordost.streetcomplete.quests.religion.Religion.ANIMIST
+import de.westnordost.streetcomplete.quests.religion.Religion.BAHAI
+import de.westnordost.streetcomplete.quests.religion.Religion.BUDDHIST
+import de.westnordost.streetcomplete.quests.religion.Religion.CAODAISM
+import de.westnordost.streetcomplete.quests.religion.Religion.CHINESE_FOLK
+import de.westnordost.streetcomplete.quests.religion.Religion.CHRISTIAN
+import de.westnordost.streetcomplete.quests.religion.Religion.HINDU
+import de.westnordost.streetcomplete.quests.religion.Religion.JAIN
+import de.westnordost.streetcomplete.quests.religion.Religion.JEWISH
+import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
+import de.westnordost.streetcomplete.quests.religion.Religion.MUSLIM
+import de.westnordost.streetcomplete.quests.religion.Religion.SHINTO
+import de.westnordost.streetcomplete.quests.religion.Religion.SIKH
+import de.westnordost.streetcomplete.quests.religion.Religion.TAOIST
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {

@@ -9,7 +9,17 @@ import de.westnordost.streetcomplete.ktx.forEachLine
 import de.westnordost.streetcomplete.util.math.arcIntersection
 import de.westnordost.streetcomplete.util.math.toLatLon
 import de.westnordost.streetcomplete.util.math.toNormalOnSphere
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.acos
+import kotlin.math.asin
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.pow
+import kotlin.math.sign
+import kotlin.math.sin
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 /** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
  * approximation and totally sufficient for our use here.  */

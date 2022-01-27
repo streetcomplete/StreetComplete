@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.util.math
 
-import kotlin.math.*
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sign
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 /* The following code has been adapted from this excellent source:
 

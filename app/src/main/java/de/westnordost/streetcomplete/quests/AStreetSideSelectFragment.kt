@@ -12,11 +12,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.normalizeDegrees
-import de.westnordost.streetcomplete.view.*
+import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item
 import de.westnordost.streetcomplete.view.image_select.Item2
+import de.westnordost.streetcomplete.view.setImage
 import kotlin.math.absoluteValue
 
 abstract class AStreetSideSelectFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {

@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import android.content.res.Resources
-
-import java.text.DateFormatSymbols
-
 import de.westnordost.streetcomplete.R
 import kotlinx.serialization.Serializable
+import java.text.DateFormatSymbols
 
 /** A selection of weekdays */
 @Serializable

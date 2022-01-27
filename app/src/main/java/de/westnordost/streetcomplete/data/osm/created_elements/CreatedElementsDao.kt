@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.data.osm.created_elements
 
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable.NAME
-import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable.Columns.ELEMENT_ID
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable.Columns.ELEMENT_TYPE
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import javax.inject.Inject

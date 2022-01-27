@@ -4,8 +4,7 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class AddCrossingTest {
@@ -49,7 +48,7 @@ class AddCrossingTest {
             way(1, nodes = listOf(1, 2, 3), tags = mapOf("highway" to "unclassified")),
             way(2, nodes = listOf(4, 2, 5), tags = mapOf("highway" to "footway")),
         ))
-        Assert.assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
     /*

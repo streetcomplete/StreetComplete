@@ -11,14 +11,15 @@ import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
-import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
+import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
 import de.westnordost.osmapi.user.User as OsmApiUser
 
 class NotesApiImpl(osm: OsmConnection) : NotesApi {

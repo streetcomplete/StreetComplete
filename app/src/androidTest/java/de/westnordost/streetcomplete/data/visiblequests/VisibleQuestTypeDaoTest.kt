@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-
-import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-
-import org.junit.Assert.*
 
 class VisibleQuestTypeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: VisibleQuestTypeDao

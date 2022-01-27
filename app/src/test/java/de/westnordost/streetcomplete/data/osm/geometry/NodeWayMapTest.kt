@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-
-import org.junit.Assert.*
 
 class NodeWayMapTest {
     @Test fun all() {

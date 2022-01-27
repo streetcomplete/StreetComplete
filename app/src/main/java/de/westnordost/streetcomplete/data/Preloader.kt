@@ -4,7 +4,10 @@ import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ktx.format
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.FutureTask
 import javax.inject.Inject

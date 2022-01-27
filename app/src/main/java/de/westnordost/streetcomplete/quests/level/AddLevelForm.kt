@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.quests.level
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.Injector
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.getLevelsOrNull
+import de.westnordost.streetcomplete.ktx.getSelectableLevels
+import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
+import de.westnordost.streetcomplete.ktx.toShortString
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.getPinIcon
 import de.westnordost.streetcomplete.osm.SingleLevel
 import de.westnordost.streetcomplete.osm.levelsIntersect

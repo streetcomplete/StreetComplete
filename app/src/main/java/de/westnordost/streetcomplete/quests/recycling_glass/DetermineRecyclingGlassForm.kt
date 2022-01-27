@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.quests.recycling_glass
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 
 
 class DetermineRecyclingGlassForm : AbstractQuestAnswerFragment<RecyclingGlass>() {

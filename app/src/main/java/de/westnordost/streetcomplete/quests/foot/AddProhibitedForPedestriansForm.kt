@@ -6,7 +6,10 @@ import de.westnordost.streetcomplete.databinding.DialogLivingStreetConfirmationB
 import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
 class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedForPedestriansAnswer>() {
 

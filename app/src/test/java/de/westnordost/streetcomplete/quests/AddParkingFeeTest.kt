@@ -9,7 +9,11 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
-import de.westnordost.streetcomplete.quests.parking_fee.*
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.HasFee
+import de.westnordost.streetcomplete.quests.parking_fee.HasFeeAtHours
+import de.westnordost.streetcomplete.quests.parking_fee.HasFeeExceptAtHours
+import de.westnordost.streetcomplete.quests.parking_fee.HasNoFee
 import org.junit.Test
 import java.time.LocalDate
 

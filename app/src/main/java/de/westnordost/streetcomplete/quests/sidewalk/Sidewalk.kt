@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.*
+import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.NO
+import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.SEPARATE
+import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.YES
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 

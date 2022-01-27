@@ -1,17 +1,18 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 import java.util.Locale
 
 class OpenQuestChangesetsManagerTest {

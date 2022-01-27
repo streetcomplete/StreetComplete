@@ -6,7 +6,9 @@ import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
-import de.westnordost.streetcomplete.quests.postbox_collection_times.*
+import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
+import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimes
+import de.westnordost.streetcomplete.quests.postbox_collection_times.NoCollectionTimesSign
 import org.junit.Test
 
 class AddPostboxCollectionTimesTest {

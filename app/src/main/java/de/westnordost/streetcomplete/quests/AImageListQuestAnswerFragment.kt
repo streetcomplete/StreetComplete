@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import androidx.core.view.isGone
 import androidx.preference.PreferenceManager
-
+import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
