@@ -316,8 +316,8 @@ fun getQuestTaginfo(
         continue
       }
       // Tidy up some dodgy capturing
-      // TODO(Peter): Fix this at source
-      var value = questChange[2].replace("^,\\s+".toRegex(), "").trim('(')
+      // TODO(Peter): Fix this at source (probably keep both brackets if possible
+      var value = questChange[2].replace("^,\\s+".toRegex(), "").replace("\\(\\)?$".toRegex(), "")
       if (Regex("\\.toYesNo$").containsMatchIn(value)) {
         // Add both variants
         allChanges.add(TaginfoChange(key, "yes", change))
@@ -329,7 +329,7 @@ fun getQuestTaginfo(
       } else if (Regex("^when\\(answer").containsMatchIn(value)) {
         // TODO: Unpick this
         println(value + " is unknown when")
-        //allChanges.add(TaginfoChange(key, "", change))
+        allChanges.add(TaginfoChange(key, "", change))
       } else {
         if ((value == "") || stringCheck.matches(value)) {
           // For a basic insert, we either need no value (e.g. an updateCheckDate), or we need a basic string
@@ -406,6 +406,9 @@ fun getQuestTaginfo(
                       allChanges.add(TaginfoChange(key, answerEnum.getOrDefault(fieldName, ""), change))
                     }
                   }
+                } else {
+                  // Just add the key change without the value at least
+                  allChanges.add(TaginfoChange(key, "", change))
                 }
               }
             }
