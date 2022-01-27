@@ -49,12 +49,13 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "check_date", "last_checked", "checked_exists:date",
     // classifications / links to external databases
     "fhrs:.*", "old_fhrs:.*", "fvst:.*", "ncat", "nat_ref", "gnis:.*", "winkelnummer",
-    "type:FR:FINESS", "type:FR:APE", "kvl_hro:amenity", "ref:DK:cvr(:.*)?",
+    "type:FR:FINESS", "type:FR:APE", "kvl_hro:amenity", "ref:DK:cvr(:.*)?", "certifications?",
     // names and identifications
-    "name_?[1-9]?(:.*)?", ".*_name(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?", "network",
-    "operator(:.*)?", "ref", "ref:vatin", "designation",
+    "name_?[1-9]?(:.*)?", ".*_name(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?",
+    "not:brand(:.*)?", "network", "operator(:.*)?", "operator_type", "ref", "ref:vatin",
+    "designation",
     // contacts
-    "contact:.*", "phone(:.*)?", "phone_?[1-9]?", "mobile", "fax", "facebook", "instagram",
+    "contact(:.*)?", "phone(:.*)?", "phone_?[1-9]?", "mobile", "fax", "facebook", "instagram",
     "twitter", "youtube", "telegram", "email", "website_?[1-9]?", "url", "source_ref:url", "owner",
     // payments
     "payment(:.*)?", "currency:.*", "cash_withdrawal(:.*)?", "fee", "money_transfer",
@@ -71,7 +72,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "happy_hours", "diet:.*", "cuisine", "tasting", "breakfast", "lunch", "organic",
     "produced_on_site", "restaurant", "food", "pastry", "pastry_shop", "product", "produce",
     "chocolate", "fair_trade", "butcher", "reservation", "takeaway(:.*)?", "delivery(:.*)?",
-    "caterer", "real_fire",
+    "caterer", "real_fire", "flour_fortified",
     // related to repair shops/crafts
     "service(:.*)?", "motorcycle:.*", "repair", ".*:repair", "electronics_repair(:.*)?",
     // shop=hairdresser, shop=clothes
@@ -87,7 +88,8 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "agrarian", "musical_instrument", "massage", "parts", "post_office(:.*)?", "religion",
     "denomination", "rental", ".*:rental", "tickets:.*", "public_transport", "goods_supply", "pet",
     "appliance", "artwork_type", "charity", "company", "crop", "dry_cleaning", "factory",
-    "feature",
+    "feature", "air_conditioning", "atm", "drive_through", "surveillance(:.*)?", "outdoor_seating",
+    "indoor_seating", "vending", "vending_machine", "recycling_type",
 ).map { it.toRegex() }
 
 /** ~ tenant of a normal retail shop area.
