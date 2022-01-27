@@ -164,7 +164,7 @@ class Compass(
         declination = toRadians(geomagneticField.declination.toDouble()).toFloat()
     }
 
-    private fun smoothenAngle( newValue: Float, oldValue: Float, factor: Float): Float {
+    private fun smoothenAngle(newValue: Float, oldValue: Float, factor: Float): Float {
         var delta = newValue - oldValue
         while (delta > +PI) delta -= 2 * PI.toFloat()
         while (delta < -PI) delta += 2 * PI.toFloat()

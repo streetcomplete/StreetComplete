@@ -39,7 +39,7 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
     }
 
     fun addCloseBracket() {
-        if (--bracketCount < 0 ) throw IllegalStateException("Closed one bracket too much")
+        if (--bracketCount < 0) throw IllegalStateException("Closed one bracket too much")
 
         while (node !is BracketHelper) {
             node = node.parent!!

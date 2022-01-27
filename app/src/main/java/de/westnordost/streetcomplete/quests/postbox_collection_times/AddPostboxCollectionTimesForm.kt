@@ -56,7 +56,7 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
             initStateFromTags()
         }
 
-        collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+        collectionTimesAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
 
         binding.collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.collectionTimesList.adapter = collectionTimesAdapter

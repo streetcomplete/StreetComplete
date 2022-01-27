@@ -12,7 +12,7 @@ import java.util.Locale
 
 /** Takes care of loading the base map with the right parameters (localization, api key, night mode
  *  etc, custom scene updates, etc ...) */
-class SceneMapComponent (
+class SceneMapComponent(
     private val resources: Resources,
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider

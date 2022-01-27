@@ -88,7 +88,7 @@ class RegularOpeningHoursAdapter(
         if (!isEnabled) return
 
         val row = rows[position]
-        require (row !is OpeningMonthsRow) { "May only directly remove weekdays, not months" }
+        require(row !is OpeningMonthsRow) { "May only directly remove weekdays, not months" }
 
         rows.removeAt(position)
         notifyItemRemoved(position)

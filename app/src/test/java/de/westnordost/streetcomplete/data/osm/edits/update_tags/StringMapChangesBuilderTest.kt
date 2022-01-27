@@ -8,7 +8,7 @@ class StringMapChangesBuilderTest {
 
     @Test fun remove() {
         val builder = builder("exists" to "like this")
-        builder.remove ("exists")
+        builder.remove("exists")
 
         assertEquals(
             StringMapEntryDelete("exists", "like this"),

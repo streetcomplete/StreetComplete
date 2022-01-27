@@ -256,7 +256,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                     }
                 )
             }
-        } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag) ) {
+        } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
             applyNoSignAnswer(highwayTag)
         } else {
             askUrbanOrRural(

@@ -132,7 +132,7 @@ class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dat
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
     abstract fun compareTo(tagValue: LocalDate): Boolean
     override fun matches(obj: Element): Boolean {
-        if (compareTo(Instant.ofEpochMilli(obj.timestampEdited ).toLocalDate())) return true
+        if (compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())) return true
         return getLastCheckDateKeys(key)
             .mapNotNull { obj.tags[it]?.toCheckDate() }
             .any { compareTo(it) }

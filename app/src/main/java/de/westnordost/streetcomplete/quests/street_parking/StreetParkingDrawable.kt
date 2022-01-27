@@ -57,7 +57,7 @@ class StreetParkingDrawable(
         val backgroundResId = getStreetDrawableResId(parkingOrientation, parkingPosition)
         val nyanResId = if (isApril1st()) R.drawable.car_nyan else null
 
-        for (y in 0..(ceil(1.0 * bounds.height() / height ).toInt())) {
+        for (y in 0..(ceil(1.0 * bounds.height() / height).toInt())) {
 
             // drawing the street background
             if (backgroundResId != null) {
