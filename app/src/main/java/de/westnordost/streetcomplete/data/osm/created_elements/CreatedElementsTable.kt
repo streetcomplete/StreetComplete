@@ -16,5 +16,6 @@ object CreatedElementsTable {
                 ${Columns.ELEMENT_TYPE},
                 ${Columns.ELEMENT_ID}
             )
-        );"""
+        );
+    """
 }

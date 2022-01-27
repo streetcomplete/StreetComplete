@@ -87,7 +87,8 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
                 flat: true,
                 collide: false,
                 interactive: true
-            }""".trimIndent())
+            }
+            """.trimIndent())
             it.setDrawable(dotImg)
             it.setDrawOrder(3)
         }
@@ -142,7 +143,8 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             order: 2000,
             flat: true,
             collide: false
-        }""")
+        }
+        """)
     }
 
     /** Update the marker that shows the direction in which the smartphone is held */
@@ -161,7 +163,8 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             collide: false,
             flat: true,
             angle: $rotation
-        }""")
+        }
+        """)
     }
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {

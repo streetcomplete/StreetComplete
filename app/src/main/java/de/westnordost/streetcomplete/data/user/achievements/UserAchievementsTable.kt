@@ -12,5 +12,6 @@ object UserAchievementsTable {
         CREATE TABLE $NAME (
             ${Columns.ACHIEVEMENT} varchar(255) PRIMARY KEY,
             ${Columns.LEVEL} int NOT NULL
-        );"""
+        );
+    """
 }

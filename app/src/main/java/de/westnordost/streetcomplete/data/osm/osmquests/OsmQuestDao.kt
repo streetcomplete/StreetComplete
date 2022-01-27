@@ -83,9 +83,9 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
 }
 
 private fun inBoundsSql(bbox: BoundingBox): String = """
-        ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
-        ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
-    """.trimIndent()
+    ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+    ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
+""".trimIndent()
 
 private fun CursorPosition.toOsmQuestEntry(): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(
     ElementType.valueOf(getString(ELEMENT_TYPE)),

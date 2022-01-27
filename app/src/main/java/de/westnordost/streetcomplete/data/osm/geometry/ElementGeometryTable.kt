@@ -32,7 +32,8 @@ object ElementGeometryTable {
                 ${Columns.ELEMENT_TYPE},
                 ${Columns.ELEMENT_ID}
             )
-        );"""
+        );
+    """
 
     const val SPATIAL_INDEX_CREATE = """
         CREATE INDEX elements_geometry_bounds_index ON $NAME (

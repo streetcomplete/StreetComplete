@@ -36,18 +36,19 @@ class AddAcceptsCash(
             "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
             "electronics_repair", "key_cutter", "stonemason"
         )
-       return """
-        nodes, ways, relations with
-        (
-          (shop and shop !~ no|vacant|mall)
-          or amenity ~ ${amenities.joinToString("|")}
-          or leisure ~ ${leisures.joinToString("|")}
-          or craft ~ ${crafts.joinToString("|")}
-          or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
-          or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
-        )
-        and (name or brand) and !payment:cash and !payment:coins and !payment:notes
-    """ }
+        return """
+            nodes, ways, relations with
+            (
+              (shop and shop !~ no|vacant|mall)
+              or amenity ~ ${amenities.joinToString("|")}
+              or leisure ~ ${leisures.joinToString("|")}
+              or craft ~ ${crafts.joinToString("|")}
+              or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
+              or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
+            )
+            and (name or brand) and !payment:cash and !payment:coins and !payment:notes
+        """
+    }
 
     override val changesetComment = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside

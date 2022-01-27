@@ -66,8 +66,8 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         if (buildings.isEmpty()) return listOf()
 
         /** exclude buildings that intersect with the bounding box because it is not possible to
-           ascertain for these if there is an address node within the building - it could be outside
-           the bounding box */
+            ascertain for these if there is an address node within the building - it could be outside
+            the bounding box */
 
         val buildingGeometriesById = buildings.associate {
             it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
@@ -162,24 +162,24 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
 private val notABuildingFilter by lazy { """
     ways, relations with !building"
-    """.toElementFilterExpression() }
+""".toElementFilterExpression() }
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
       (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
       and !building
-    """.toElementFilterExpression() }
+""".toElementFilterExpression() }
 
 private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
       and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-    """.toElementFilterExpression() }
+""".toElementFilterExpression() }
 
 private val nodesWithAddressFilter by lazy { """
    nodes with
      addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
-    """.toElementFilterExpression() }
+""".toElementFilterExpression() }
 
 private val buildingsWithMissingAddressFilter by lazy { """
     ways, relations with
@@ -193,7 +193,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
       and !addr:streetnumber
       and !noaddress
       and !nohousenumber
-    """.toElementFilterExpression() }
+""".toElementFilterExpression() }
 
 private val buildingTypesThatShouldHaveAddresses = listOf(
     "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",

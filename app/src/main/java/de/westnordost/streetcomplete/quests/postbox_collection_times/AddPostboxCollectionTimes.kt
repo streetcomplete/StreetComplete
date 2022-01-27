@@ -18,12 +18,12 @@ import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
-    private val filter by lazy { ("""
+    private val filter by lazy { """
         nodes with amenity = post_box
           and access !~ private|no
           and collection_times:signed != no
           and (!collection_times or collection_times older today -2 years)
-    """).toElementFilterExpression() }
+    """.toElementFilterExpression() }
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
     *  change and problematic to tag clearly with the check date scheme */

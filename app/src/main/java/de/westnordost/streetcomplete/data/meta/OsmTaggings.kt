@@ -130,5 +130,5 @@ fun isKindOfShopExpression(prefix: String? = null): String {
                 "electronics_repair", "key_cutter",
             )
         ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
-        ).trimIndent()
+    ).trimIndent()
 }

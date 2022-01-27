@@ -60,11 +60,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private val likelyNoBicycleContraflow = """
-            ways with oneway:bicycle != no and (
-                oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or junction ~ roundabout|circular
-            )
-        """.toElementFilterExpression()
+        ways with oneway:bicycle != no and (
+            oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+            or junction ~ roundabout|circular
+        )
+    """.toElementFilterExpression()
 
     private var streetSideRotater: StreetSideRotater? = null
 

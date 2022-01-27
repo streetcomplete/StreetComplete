@@ -21,5 +21,6 @@ object OsmQuestsHiddenTable {
                 ${Columns.ELEMENT_ID},
                 ${Columns.ELEMENT_TYPE}
             )
-        );"""
+        );
+    """
 }

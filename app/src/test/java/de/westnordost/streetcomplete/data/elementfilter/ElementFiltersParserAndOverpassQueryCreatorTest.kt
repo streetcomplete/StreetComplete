@@ -255,7 +255,8 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
             node[highway]->.n1;
             node[name]->.n2;
             (.n1;.n2;);
-            """)
+            """
+        )
     }
 
     @Test fun `two or`() {
@@ -265,7 +266,8 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
             node[name]->.n2;
             node[ref]->.n3;
             (.n1;.n2;.n3;);
-            """)
+            """
+        )
     }
 
     @Test fun `or as first child in and`() {

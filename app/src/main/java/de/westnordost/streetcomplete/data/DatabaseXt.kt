@@ -62,13 +62,13 @@ fun <T> Database.queryIn(
             CREATE TEMPORARY TABLE $lookupTable(
                 $inColumnDefs,
                 CONSTRAINT primary_key PRIMARY KEY ($inColumnsNames)
-            );"""
-        )
+            );
+        """)
         exec("""
             CREATE TEMPORARY VIEW $lookupTableMergedView AS
                 SELECT * FROM $table INNER JOIN $lookupTable USING ($inColumnsNames)
-            ;"""
-        )
+            ;
+        """)
 
         insertOrIgnoreMany(lookupTable, whereColumns, whereArgs)
         val result = query(lookupTableMergedView, columns, null, null, groupBy, having, orderBy, limit, distinct, transform)
