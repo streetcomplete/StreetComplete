@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.databinding.FragmentEditHistoryListBinding
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import kotlinx.android.synthetic.main.fragment_edit_history_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -32,14 +33,16 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val binding by viewBinding(FragmentEditHistoryListBinding::bind)
+
     private val adapter = EditHistoryAdapter(this::onSelected, this::onSelectionDeleted, this::onUndo)
 
     private val editHistoryListener = object : EditHistorySource.Listener {
-        override fun onAdded(edit: Edit) { lifecycleScope.launch { adapter.onAdded(edit) } }
-        override fun onSynced(edit: Edit) { lifecycleScope.launch { adapter.onSynced(edit) } }
+        override fun onAdded(edit: Edit) { viewLifecycleScope.launch { adapter.onAdded(edit) } }
+        override fun onSynced(edit: Edit) { viewLifecycleScope.launch { adapter.onSynced(edit) } }
 
         override fun onDeleted(edits: List<Edit>) {
-            lifecycleScope.launch {
+            viewLifecycleScope.launch {
                 adapter.onDeleted(edits)
                 if (editHistorySource.getCount() == 0) {
                     listener?.onEditHistoryIsEmpty()
@@ -48,7 +51,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         }
 
         override fun onInvalidated() {
-            lifecycleScope.launch {
+            viewLifecycleScope.launch {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
                 adapter.setEdits(edits)
                 if (edits.isEmpty()) {
@@ -70,11 +73,18 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editHistoryList.respectSystemInsets { updatePadding(left = it.left, top = it.top, bottom = it.bottom) }
-        lifecycleScope.launch {
+        val initialPaddingBottom = binding.editHistoryList.paddingBottom
+        binding.editHistoryList.respectSystemInsets {
+            updatePadding(left = it.left, top = it.top, bottom = it.bottom + initialPaddingBottom)
+        }
+        viewLifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)
-            editHistoryList.adapter = adapter
+            val first = edits.firstOrNull { it.isUndoable }
+            if (first != null) {
+                adapter.select(first)
+            }
+            binding.editHistoryList.adapter = adapter
         }
     }
 

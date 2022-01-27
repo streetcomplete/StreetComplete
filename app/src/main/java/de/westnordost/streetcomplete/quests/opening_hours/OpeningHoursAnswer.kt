@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningHoursRuleList
+import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 
 sealed class OpeningHoursAnswer
 

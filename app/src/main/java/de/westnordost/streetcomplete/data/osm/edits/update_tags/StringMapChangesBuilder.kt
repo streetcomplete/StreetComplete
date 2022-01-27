@@ -1,72 +1,81 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-class StringMapChangesBuilder(private val source: Map<String, String>) {
+class StringMapChangesBuilder(private val source: Map<String, String>): Map<String, String> {
     private val changes: MutableMap<String, StringMapEntryChange> = mutableMapOf()
 
-    fun delete(key: String) {
-        val valueBefore = requireNotNull(source[key]) { "The key '$key' does not exist in the map '$source'." }
-        val change = StringMapEntryDelete(key, valueBefore)
-        if (changes[key] == change) return
-        checkDuplicate(key)
-        changes[key] = change
-    }
-
-    fun deleteIfExists(key: String) {
-        if (source[key] != null) {
-            delete(key)
-        }
-    }
-
-    fun deleteIfPreviously(key: String, valueBefore: String) {
-        if (source[key] == valueBefore) {
-            delete(key)
-        }
-    }
-
-    fun add(key: String, value: String) {
-        require(!source.containsKey(key)) { "The key '$key' already exists in the map '$source'." }
-        val change = StringMapEntryAdd(key, value)
-        if (changes[key] == change) return
-        checkDuplicate(key)
-        changes[key] = change
-    }
-
-    fun modify(key: String, value: String) {
-        val valueBefore = requireNotNull(source[key]) {"The key '$key' does not exist in the map '$source'." }
-        val change = StringMapEntryModify(key, valueBefore, value)
-        if (changes[key] == change) return
-        checkDuplicate(key)
-        changes[key] = change
-    }
-
-    fun addOrModify(key: String, value: String) {
+    /** Remove the given key from the map */
+    fun remove(key: String) {
+        changes.remove(key)
         val valueBefore = source[key]
-        if (valueBefore == null) {
-            add(key, value)
+        if (valueBefore != null) {
+            addChange(StringMapEntryDelete(key, valueBefore))
+        }
+    }
+
+    /** put the given value for the given key */
+    operator fun set(key: String, value: String) {
+        val valueBefore = source[key]
+        addChange(if (valueBefore == null) {
+            StringMapEntryAdd(key, value)
         } else {
-            modify(key, value)
+            StringMapEntryModify(key, valueBefore, value)
+        })
+    }
+
+    /* ----------------------- */
+
+    override val size: Int get() = entries.size
+    override fun isEmpty(): Boolean = size == 0
+    override fun containsKey(key: String): Boolean = get(key) != null
+    override fun containsValue(value: String): Boolean = value in values
+
+    override operator fun get(key: String): String? =
+        if (changes.containsKey(key)) {
+            when(val change = changes.getValue(key)) {
+                is StringMapEntryAdd -> change.value
+                is StringMapEntryModify -> change.value
+                is StringMapEntryDelete -> null
+            }
+        } else {
+            source[key]
         }
-    }
 
-    fun modifyIfExists(key: String, value: String) {
-        if (source[key] != null) {
-            modify(key, value)
+    override val keys: Set<String> get() = entries.map { it.key }.toSet()
+    override val values: Collection<String>  get() = entries.map { it.value }
+
+    override val entries: Set<Map.Entry<String, String>> get() {
+        val result = mutableSetOf<Map.Entry<String, String>>()
+        for ((k,v) in source) {
+            when (val change = changes[k]) {
+                // modified
+                is StringMapEntryModify -> {
+                    result.add(Entry(k, change.value))
+                }
+                // deleted
+                is StringMapEntryDelete -> {}
+                // otherwise use entry from source map
+                else ->                    {
+                    result.add(Entry(k,v))
+                }
+            }
         }
+        // add added entries
+        for (add in changes.values.filterIsInstance<StringMapEntryAdd>()) {
+            result.add(Entry(add.key, add.value))
+        }
+        return result
     }
 
-    fun getPreviousValue(key: String): String? {
-        return source[key]
+    data class Entry(override val key: String, override val value: String) : Map.Entry<String, String>
+
+    val hasChanges: Boolean get() = changes.values.any { change ->
+        change !is StringMapEntryModify || change.value != change.valueBefore
     }
 
-    fun getPreviousEntries(): Map<String, String> {
-        return source.toMap()
+    private fun addChange(change: StringMapEntryChange) {
+        if (changes[change.key] == change) return
+        changes[change.key] = change
     }
 
-    fun getChanges(): List<StringMapEntryChange> = changes.values.toList()
-
-    private fun checkDuplicate(key: String) {
-        check(!changes.containsKey(key)) { "The key '$key' is already being modified." }
-    }
-
-    fun create() = StringMapChanges(ArrayList(changes.values))
+    fun create() = StringMapChanges(changes.values)
 }

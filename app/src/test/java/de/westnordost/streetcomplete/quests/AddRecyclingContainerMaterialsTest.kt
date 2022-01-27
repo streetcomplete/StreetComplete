@@ -66,41 +66,6 @@ class AddRecyclingContainerMaterialsTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `not applicable to container without recycling materials close to another container`() {
-        val pos1 = p(0.0,0.0)
-        val pos2 = pos1.translate(19.0, 45.0)
-
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1, pos = pos1, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            )),
-            node(id = 2, pos = pos2, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            ))
-        ))
-        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-    }
-
-    @Test fun `applicable to container without recycling materials not too close to another container`() {
-        val pos1 = p(0.0,0.0)
-        val pos2 = pos1.translate(21.0, 45.0)
-
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1, pos = pos1, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            )),
-            node(id = 2, pos = pos2, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "recycling:paper" to "yes"
-            ))
-        ))
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-    }
-
     @Test fun `apply normal answer`() {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(SHOES, PAPER)),
@@ -310,4 +275,11 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
+    @Test fun `answer does not delete other =yes-keys`() {
+        questType.verifyAnswer(
+            mapOf("amenity" to "recycling", "access" to "yes"),
+            RecyclingMaterials(listOf(PAPER)),
+            StringMapEntryAdd("recycling:paper","yes")
+        )
+    }
 }

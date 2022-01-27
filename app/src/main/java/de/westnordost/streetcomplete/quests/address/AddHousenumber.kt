@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.util.isInMultipolygon
 
 class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
-    override val commitMessage = "Add housenumbers"
+    override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
 
@@ -28,6 +29,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
             "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
             "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
+
+    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
@@ -123,26 +126,30 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: HousenumberAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: HousenumberAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            is NoHouseNumber -> changes.add("nohousenumber", "yes")
-            is HouseNumber   -> changes.add("addr:housenumber", answer.number)
-            is HouseName     -> changes.add("addr:housename", answer.name)
+            is NoHouseNumber -> tags["nohousenumber"] = "yes"
+            is HouseNumber   -> tags["addr:housenumber"] = answer.number
+            is HouseName     -> tags["addr:housename"] = answer.name
             is ConscriptionNumber -> {
-                changes.add("addr:conscriptionnumber", answer.number)
+                tags["addr:conscriptionnumber"] = answer.number
                 if (answer.streetNumber != null) {
-                    changes.add("addr:streetnumber", answer.streetNumber)
-                    changes.add("addr:housenumber", answer.streetNumber)
+                    tags["addr:streetnumber"] = answer.streetNumber
+                    tags["addr:housenumber"] = answer.streetNumber
                 } else {
-                    changes.add("addr:housenumber", answer.number)
+                    tags["addr:housenumber"] = answer.number
                 }
             }
             is HouseAndBlockNumber -> {
-                changes.add("addr:housenumber", answer.houseNumber)
-                changes.addOrModify("addr:block_number", answer.blockNumber)
+                tags["addr:housenumber"] = answer.houseNumber
+                tags["addr:block_number"] = answer.blockNumber
             }
             WrongBuildingType -> {
-                changes.modify("building", "yes")
+                tags["building"] = "yes"
+            }
+            is HouseNameAndHouseNumber -> {
+                tags["addr:housenumber"] = answer.number
+                tags["addr:housename"] = answer.name
             }
         }
     }
@@ -154,17 +161,19 @@ private val notABuildingFilter by lazy { """
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
-      !building and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+      (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+      and !building
     """.toElementFilterExpression()}
 
 private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
-      and ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+      and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
     """.toElementFilterExpression()}
 
 private val nodesWithAddressFilter by lazy { """
-   nodes with ~"addr:(housenumber|housename|conscriptionnumber|streetnumber)"
+   nodes with
+     addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
     """.toElementFilterExpression()}
 
 private val buildingsWithMissingAddressFilter by lazy { """

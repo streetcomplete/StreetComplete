@@ -14,15 +14,4 @@ class HasKeyTest {
         assertFalse(key.matches(mapOf("neme" to "no")))
         assertFalse(key.matches(mapOf()))
     }
-
-    @Test fun toOverpassQLString() {
-        assertEquals(
-            "[name]",
-            HasKey("name").toOverpassQLString()
-        )
-        assertEquals(
-            "['name:old']",
-            HasKey("name:old").toOverpassQLString()
-        )
-    }
 }

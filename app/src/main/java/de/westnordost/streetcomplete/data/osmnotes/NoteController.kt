@@ -18,7 +18,10 @@ import javax.inject.Singleton
 
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
+        /** called when a number of notes has been added, updated or deleted */
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+        /** called when all notes have been cleared */
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
@@ -71,11 +74,11 @@ import javax.inject.Singleton
         dao.put(note)
     }
 
-    fun deleteAllOlderThan(timestamp: Long): Int {
+    fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val ids: List<Long>
         val deletedCount: Int
         synchronized(this) {
-            ids = dao.getAllIdsOlderThan(timestamp)
+            ids = dao.getIdsOlderThan(timestamp, limit)
             if (ids.isEmpty()) return 0
 
             deletedCount = dao.deleteAll(ids)
@@ -86,6 +89,11 @@ import javax.inject.Singleton
         onUpdated(deleted = ids)
 
         return ids.size
+    }
+
+    fun clear() {
+        dao.clear()
+        listeners.forEach { it.onCleared() }
     }
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)

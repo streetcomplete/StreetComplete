@@ -12,14 +12,23 @@ import androidx.core.animation.doOnStart
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.FragmentCountryInfoDialogBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
-import kotlinx.android.synthetic.main.fragment_country_info_dialog.*
+import de.westnordost.streetcomplete.ktx.viewBinding
 import java.util.Locale
 import kotlin.math.min
 import kotlin.math.pow
 
 /** Shows the details for a certain quest type as a fake-dialog. */
 class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_country_info_dialog) {
+
+    private val binding by viewBinding(FragmentCountryInfoDialogBinding::bind)
+
+    override val dialogAndBackgroundContainer get() = binding.dialogAndBackgroundContainer
+    override val dialogBackground get() = binding.dialogBackground
+    override val dialogContentContainer get() = binding.dialogContentContainer
+    override val dialogBubbleBackground get() = binding.dialogBubbleBackground
+    override val titleView get() = binding.titleView
 
     // need to keep the animators here to be able to clear them on cancel
     private var counterAnimation: ValueAnimator? = null
@@ -45,9 +54,9 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         circularRevealAnimator = revealAnim
 
         val flag = requireContext().getDrawable(getFlagResId(countryCode))!!
-        titleImageView.setImageDrawable(flag)
+        binding.titleImageView.setImageDrawable(flag)
 
-        titleView.outlineProvider = object : ViewOutlineProvider() {
+        binding.titleView.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
                 val flagAspectRatio = flag.intrinsicWidth.toFloat() / flag.intrinsicHeight.toFloat()
                 val aspectRatio = view.width.toFloat() / view.height.toFloat()
@@ -70,32 +79,32 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
         val countryLocale = Locale("", countryCode)
 
-        solvedQuestsText.text = ""
+        binding.solvedQuestsText.text = ""
         val scale = (0.4 + min( questCount / 100.0, 1.0)*0.6).toFloat()
-        solvedQuestsContainer.visibility = View.INVISIBLE
-        solvedQuestsContainer.scaleX = scale
-        solvedQuestsContainer.scaleY = scale
-        solvedQuestsContainer.setOnClickListener { counterAnimation?.end() }
+        binding.solvedQuestsContainer.visibility = View.INVISIBLE
+        binding.solvedQuestsContainer.scaleX = scale
+        binding.solvedQuestsContainer.scaleY = scale
+        binding.solvedQuestsContainer.setOnClickListener { counterAnimation?.end() }
 
         val shouldShowRank = rank != null && rank < 500 && questCount > 50
-        countryRankTextView.isGone = !shouldShowRank
+        binding.countryRankTextView.isGone = !shouldShowRank
         if (shouldShowRank) {
-            countryRankTextView.text = resources.getString(
+            binding.countryRankTextView.text = resources.getString(
                 R.string.user_statistics_country_rank, rank, countryLocale.displayCountry
             )
         }
 
-        wikiLinkButton.text = resources.getString(R.string.user_statistics_country_wiki_link, countryLocale.displayCountry)
-        wikiLinkButton.setOnClickListener {
+        binding.wikiLinkButton.text = resources.getString(R.string.user_statistics_country_wiki_link, countryLocale.displayCountry)
+        binding.wikiLinkButton.setOnClickListener {
             openUrl("https://wiki.openstreetmap.org/wiki/${countryLocale.getDisplayCountry(Locale.UK)}")
         }
 
         counterAnimation?.cancel()
         val anim = ValueAnimator.ofInt(0, questCount)
 
-        anim.doOnStart { solvedQuestsContainer.visibility = View.VISIBLE }
+        anim.doOnStart { binding.solvedQuestsContainer.visibility = View.VISIBLE }
         anim.duration = 300 + (questCount * 500.0).pow(0.6).toLong()
-        anim.addUpdateListener { solvedQuestsText?.text = it.animatedValue.toString() }
+        anim.addUpdateListener { binding.solvedQuestsText.text = it.animatedValue.toString() }
         anim.interpolator = DecelerateInterpolator()
         anim.startDelay = ANIMATION_TIME_IN_MS
         anim.start()
@@ -118,14 +127,14 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
     }
 
     private fun createCircularRevealAnimator(): ObjectAnimator {
-        val anim = ObjectAnimator.ofFloat(titleView, "circularity", 1f, 0f)
+        val anim = ObjectAnimator.ofFloat(binding.titleView, "circularity", 1f, 0f)
         anim.interpolator = AccelerateInterpolator()
         anim.duration = ANIMATION_TIME_IN_MS
         return anim
     }
 
     private fun createCircularHideAnimator(): ObjectAnimator {
-        val anim = ObjectAnimator.ofFloat(titleView, "circularity", 0f, 1f)
+        val anim = ObjectAnimator.ofFloat(binding.titleView, "circularity", 0f, 1f)
         anim.interpolator = DecelerateInterpolator()
         anim.duration = ANIMATION_TIME_OUT_MS
         return anim

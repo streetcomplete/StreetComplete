@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -20,9 +21,11 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
         )
     """
 
-    override val commitMessage = "Add whether pitch is lit"
+    override val changesetComment = "Add whether pitch is lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_pitch_lantern
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["leisure"] == "track")
@@ -32,7 +35,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("lit", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("lit", answer.toYesNo())
     }
 }

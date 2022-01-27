@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,8 +15,8 @@ import javax.inject.Singleton
 @Singleton class OsmNoteQuestController @Inject constructor(
     private val noteSource: NotesWithEditsSource,
     private val hiddenDB: NoteQuestsHiddenDao,
-    private val loginStatusSource: LoginStatusSource,
-    private val userStore: UserStore,
+    private val userDataSource: UserDataSource,
+    private val userLoginStatusSource: UserLoginStatusSource,
     private val notesPreferences: NotesPreferences,
 ): OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -52,9 +51,13 @@ import javax.inject.Singleton
             }
             onUpdated(quests, deletedQuestIds)
         }
+
+        override fun onCleared() {
+            listeners.forEach { it.onInvalidated() }
+        }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusListener {
+    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {
             // notes created by the user in this app or commented on by this user should not be shown
             onInvalidated()
@@ -71,7 +74,7 @@ import javax.inject.Singleton
 
     init {
         noteSource.addListener(noteUpdatesListener)
-        loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.addListener(userLoginStatusListener)
         notesPreferences.listener = notesPreferencesListener
     }
 
@@ -90,7 +93,7 @@ import javax.inject.Singleton
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if(note.shouldShowAsQuest(userStore.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
+        if(note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
             OsmNoteQuest(note.id, note.position)
         else null
 

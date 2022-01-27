@@ -1,20 +1,26 @@
 # Do not edit. Source files are in /res/country_metadata
-centerLine: white
+advisorySpeedLimitSignStyle: blue
+centerLineStyle: white
+edgeLineStyle: white
 firstDayOfWorkweek: Mo
-isAdvisorySpeedLimitKnown: false
-isCenterLeftTurnLaneKnown: false
+hasAdvisorySpeedLimitSign: false
+hasBiWeeklyAlternateSideParkingSign: false
+hasCenterLeftTurnLane: false
+hasDailyAlternateSideParkingSign: false
+hasLivingStreet: false
+hasNoStandingSign: false
+hasSlowZone: false
 isLeftHandTraffic: false
-isLivingStreetKnown: false
-isSlowZoneKnown: false
-isUsuallyAnyGlassRecycleableInContainers: false
+isUsuallyAnyGlassRecyclableInContainers: false
 lengthUnits: [meter]
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [en]
 orchardProduces: []
-popularReligions: []
+popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
 regularShoppingDays: 6
 roofsAreUsuallyFlat: false
-shoulderLine: white
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5

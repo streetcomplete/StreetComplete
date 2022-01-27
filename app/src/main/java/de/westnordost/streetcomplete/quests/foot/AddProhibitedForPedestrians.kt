@@ -4,14 +4,16 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
 
     override val elementFilter = """
         ways with (
-          ~'sidewalk(:both)?' ~ none|no or
-          (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
+          sidewalk:both ~ none|no
+          or sidewalk ~ none|no
+          or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
         and shoulder != yes
         and !foot
@@ -32,24 +34,26 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
         // road probably not developed enough to issue a prohibition for pedestrians
         "and surface ~ ${ANYTHING_PAVED.joinToString("|")} " +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
-        "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath )"
+        "and ( oneway ~ yes|-1 or bridge = yes or tunnel = yes or bicycle ~ no|use_sidepath )"
 
-    override val commitMessage = "Add whether roads are prohibited for pedestrians"
+    override val changesetComment = "Add whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
     override fun createForm() = AddProhibitedForPedestriansForm()
 
-    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
-            YES -> changes.add("foot", "no")
-            NO -> changes.add("foot", "yes")
-            HAS_SEPARATE_SIDEWALK -> changes.modify("sidewalk", "separate")
-            IS_LIVING_STREET -> changes.modify("highway", "living_street")
+            YES -> tags["foot"] = "no"
+            NO -> tags["foot"] = "yes"
+            HAS_SEPARATE_SIDEWALK -> tags["sidewalk"] = "separate"
+            IS_LIVING_STREET -> tags["highway"] = "living_street"
         }
     }
 }

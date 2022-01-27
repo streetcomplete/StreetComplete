@@ -7,12 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -31,15 +27,18 @@ import androidx.recyclerview.widget.ItemTouchHelper.UP
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.*
+import de.westnordost.streetcomplete.data.quest.AllCountries
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
-import kotlinx.android.synthetic.main.row_quest_selection.view.*
 import kotlinx.coroutines.*
 import java.util.*
 
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
-class QuestSelectionAdapter @Inject constructor(
+class QuestSelectionAdapter (
     private val context: Context,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
@@ -51,7 +50,7 @@ class QuestSelectionAdapter @Inject constructor(
     private val currentCountryCodes: List<String>
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
@@ -99,7 +98,7 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun onQuestTypeVisibilitiesChanged() {
             // all/many visibilities have changed - update the data and notify UI of changes
-            lifecycleScope.launch {
+            viewLifecycleScope.launch {
                 withContext(Dispatchers.IO) {
                     questTypes.forEach { it.visible = visibleQuestTypeController.isVisible(it.questType) }
                 }
@@ -121,7 +120,7 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun onQuestTypeOrdersChanged() {
             // all/many quest orders have been changed - reinit list
-            lifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
+            viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
         }
     }
 
@@ -133,7 +132,7 @@ class QuestSelectionAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
-        lifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
+        viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
 
         visibleQuestTypeController.addListener(visibleQuestsListener)
         questTypeOrderController.addListener(questTypeOrderListener)
@@ -147,7 +146,8 @@ class QuestSelectionAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        lifecycleScope.cancel()
+        // not calling .cancel because the adapter can be re-used with a new view
+        viewLifecycleScope.coroutineContext.cancelChildren()
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -156,8 +156,8 @@ class QuestSelectionAdapter @Inject constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestVisibilityViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_quest_selection, parent, false)
-        return QuestVisibilityViewHolder(layout)
+        val inflater = LayoutInflater.from(parent.context)
+        return QuestVisibilityViewHolder(RowQuestSelectionBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: QuestVisibilityViewHolder, position: Int) {
@@ -220,7 +220,7 @@ class QuestSelectionAdapter @Inject constructor(
                 val item = qt[draggedTo].questType
                 val toAfter = qt[draggedTo - 1].questType
 
-                lifecycleScope.launch(Dispatchers.IO) {
+                viewLifecycleScope.launch(Dispatchers.IO) {
                     questTypeOrderController.addOrderItem(item, toAfter)
                 }
             }
@@ -236,20 +236,10 @@ class QuestSelectionAdapter @Inject constructor(
     }
 
     /** View Holder for a single quest type */
-    inner class QuestVisibilityViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView), CompoundButton.OnCheckedChangeListener {
+    inner class QuestVisibilityViewHolder(private val binding: RowQuestSelectionBinding) :
+        RecyclerView.ViewHolder(binding.root), CompoundButton.OnCheckedChangeListener {
 
-        private val dragHandle: ImageView = itemView.dragHandle
-        private val questIcon: ImageView = itemView.questIcon
-        private val questTitle: TextView = itemView.questTitle
-        private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
-        private val disabledText: TextView = itemView.disabledText
         lateinit var item: QuestVisibility
-
-        private val isEnabledOnlyAtNight: Boolean
-            get() {
-                return item.questType.dayNightVisibility == DayNightCycle.ONLY_NIGHT
-            }
 
         private val isEnabledInCurrentCountry: Boolean
             get() {
@@ -267,15 +257,15 @@ class QuestSelectionAdapter @Inject constructor(
             this.item = with
             val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
-            questIcon.setImageResource(item.questType.icon)
-            questTitle.text = genericQuestTitle(questTitle.resources, item.questType)
-            visibilityCheckBox.setOnCheckedChangeListener(null)
-            visibilityCheckBox.isChecked = item.visible
-            visibilityCheckBox.isEnabled = item.isInteractionEnabled
-            visibilityCheckBox.setOnCheckedChangeListener(this)
+            binding.questIcon.setImageResource(item.questType.icon)
+            binding.questTitle.text = genericQuestTitle(binding.questTitle.resources, item.questType)
+            binding.visibilityCheckBox.setOnCheckedChangeListener(null)
+            binding.visibilityCheckBox.isChecked = item.visible
+            binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
+            binding.visibilityCheckBox.setOnCheckedChangeListener(this)
 
-            dragHandle.isInvisible = !item.isInteractionEnabled
-            dragHandle.setOnTouchListener { v, event ->
+            binding.dragHandle.isInvisible = !item.isInteractionEnabled
+            binding.dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)
                     MotionEvent.ACTION_UP -> v.performClick()
@@ -283,14 +273,12 @@ class QuestSelectionAdapter @Inject constructor(
                 true
             }
 
-            disabledText.isGone = isEnabledInCurrentCountry && !isEnabledOnlyAtNight
+            binding.disabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                disabledText.text =  disabledText.resources.getString(
+                binding.disabledText.text =  binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
-            } else if (isEnabledOnlyAtNight) {
-                disabledText.text = disabledText.resources.getString(R.string.questList_disabled_at_day)
             }
 
             updateSelectionStatus()
@@ -298,17 +286,17 @@ class QuestSelectionAdapter @Inject constructor(
 
         private fun updateSelectionStatus() {
             if (!item.visible) {
-                questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
+                binding.questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
             } else {
-                questIcon.clearColorFilter()
+                binding.questIcon.clearColorFilter()
             }
-            questTitle.isEnabled = item.visible
+            binding.questTitle.isEnabled = item.visible
         }
 
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
             item.visible = b
             updateSelectionStatus()
-            lifecycleScope.launch(Dispatchers.IO) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
                 visibleQuestTypeController.setVisible(item.questType, item.visible)
             }
             if (b && item.questType.defaultDisabledMessage > 0) {

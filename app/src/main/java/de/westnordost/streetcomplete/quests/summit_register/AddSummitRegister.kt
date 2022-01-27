@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.util.distanceToArcs
@@ -17,11 +19,12 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
         nodes with
-          natural = peak and name and
-          (!summit:register or summit:register older today -4 years)
+          natural = peak
+          and name
+          and (!summit:register or summit:register older today -4 years)
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add whether summit register is present"
+    override val changesetComment = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.ic_quest_peak
 
@@ -35,6 +38,8 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         //Americas
         "US", "AR", "PE"
     )
+
+    override val questTypeAchievements = listOf(RARE, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_register_title
 
@@ -62,7 +67,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("summit:register", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("summit:register", answer.toYesNo())
     }
 }

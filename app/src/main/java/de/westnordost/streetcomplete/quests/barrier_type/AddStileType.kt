@@ -2,15 +2,21 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.hasCheckDate
+import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.deleteIfExistList
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
-class AddStileType : OsmElementQuestType<BarrierType> {
+class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     private val stileNodeFilter by lazy { """
-        nodes with barrier = stile and !stile
+        nodes with
+         barrier = stile
+         and (!stile or older today -8 years)
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
@@ -32,43 +38,61 @@ class AddStileType : OsmElementQuestType<BarrierType> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!stileNodeFilter.matches(element)) false else null
 
-    override val commitMessage = "Add specific stile type"
+    override val changesetComment = "Add specific stile type"
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.ic_quest_cow
     override val isDeleteElementEnabled = true
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title
 
     override fun createForm() = AddStileTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: StileTypeAnswer, tags: StringMapChangesBuilder) {
         when (answer) {
-            BarrierType.STILE_SQUEEZER -> {
-                changes.add("stile", "squeezer")
+            is StileType -> {
+                val newType = answer.osmValue
+                val newMaterial = answer.osmMaterialValue
+                val oldType = tags["stile"]
+                val oldMaterial = tags["material"]
+                val stileWasRebuilt =
+                    oldType != null && oldType != newType ||
+                    newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
+
+                if (stileWasRebuilt) {
+                    // => properties that refer to the old replaced stile should be removed
+                    tags.deleteIfExistList(STILE_PROPERTIES - "material")
+                    if(newMaterial != null) {
+                        tags["material"] = newMaterial
+                    } else {
+                        tags.remove("material")
+                    }
+                } else if (newMaterial != null && oldMaterial == null) {
+                    // not considered as rebuilt, but material info still
+                    // can be added where it was missing
+                    tags["material"] = newMaterial
+                }
+                if (newType != oldType) {
+                    tags["stile"] = newType
+                }
             }
-            BarrierType.STILE_LADDER -> {
-                changes.add("stile", "ladder")
-            }
-            BarrierType.STILE_STEPOVER_WOODEN -> {
-                changes.addOrModify("stile", "stepover")
-                changes.addOrModify("material", "wood")
-            }
-            BarrierType.STILE_STEPOVER_STONE -> {
-                changes.addOrModify("stile", "stepover")
-                changes.addOrModify("material", "stone")
-            }
-            BarrierType.KISSING_GATE -> {
-                changes.modify("barrier", "kissing_gate")
-                changes.deleteIfExists("step_count")
-                changes.deleteIfExists("wheelchair")
-                changes.deleteIfExists("bicycle")
-                changes.deleteIfExists("dog_gate")
-                changes.deleteIfExists("material")
-                changes.deleteIfExists("height")
-                changes.deleteIfExists("width")
-                changes.deleteIfExists("stroller")
+            is ConvertedStile -> {
+                tags.deleteIfExistList(STILE_PROPERTIES)
+                tags.remove("stile")
+                tags["barrier"] = answer.newBarrier
             }
         }
+        // policy is to not remove a check date if one is already there but update it instead
+        if (!tags.hasChanges || tags.hasCheckDate()) {
+            tags.updateCheckDate()
+        }
+    }
 
+    companion object {
+        private val STILE_PROPERTIES = listOf(
+            "step_count", "wheelchair", "bicycle",
+            "dog_gate", "material", "height", "width", "stroller", "steps"
+        )
     }
 }

@@ -1,6 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
-class YesNoQuestAnswerFragment : AYesNoQuestAnswerFragment<Boolean>() {
+import de.westnordost.streetcomplete.R
 
-    override fun onClick(answer: Boolean) { applyAnswer(answer) }
+class YesNoQuestAnswerFragment : AbstractQuestAnswerFragment<Boolean>() {
+
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(true) }
+    )
 }

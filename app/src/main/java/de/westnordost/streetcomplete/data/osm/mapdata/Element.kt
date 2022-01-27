@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.lang.System.currentTimeMillis
 
 @Serializable
 sealed class Element {
@@ -20,7 +19,7 @@ data class Node(
     val position: LatLon,
     override val tags: Map<String, String> = HashMap(0),
     override val version: Int = 1,
-    override val timestampEdited: Long = currentTimeMillis()
+    override val timestampEdited: Long = 0
 ) : Element() {
     @SerialName("elementType")
     override val type get() = ElementType.NODE
@@ -33,7 +32,7 @@ data class Way(
     val nodeIds: List<Long>,
     override val tags: Map<String, String> = HashMap(0),
     override val version: Int = 1,
-    override val timestampEdited: Long = currentTimeMillis()
+    override val timestampEdited: Long = 0
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.WAY
@@ -48,7 +47,7 @@ data class Relation(
     val members: List<RelationMember>,
     override val tags: Map<String, String> = HashMap(0),
     override val version: Int = 1,
-    override val timestampEdited: Long = currentTimeMillis()
+    override val timestampEdited: Long = 0
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.RELATION

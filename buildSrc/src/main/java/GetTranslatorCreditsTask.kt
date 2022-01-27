@@ -17,12 +17,15 @@ open class GetTranslatorCreditsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input lateinit var languageCodes: Collection<String>
     @get:Input lateinit var cookie: String
+    @get:Input lateinit var phpsessid: String
 
     private val limitTranslationContributionsByName = mapOf(
         // once did a huge refactoring on the strings
         "Karl Ove Hufthammer" to listOf("nn"),
         // admin, changes strings etc
-        "matkoniecz" to listOf("pl")
+        "Mateusz Konieczny" to listOf("pl"),
+        // once did a huge refactoring on the strings (quotation marks), helps with "school-french"
+        "Flo Edelmann" to listOf("de"),
     )
 
     @TaskAction
@@ -37,7 +40,9 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         val users = queryUsersOnAllPages()
 
         // 2. for each user, query his contributions and add it to the result map
+        var i = 0
         for (user in users) {
+            println("user ${++i}/${users.size}")
             val translationsByName = queryTranslatorStats(user.id)
             translationsByName?.forEach { (languageName, count) ->
                 val tag = tagsByName[languageName]
@@ -69,6 +74,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         val result = mutableListOf<User>()
         var i = 1
         while (true) {
+            println("page $i")
             val users = queryUsers(i++)
             if (users.isEmpty()) break
             result += users
@@ -85,6 +91,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
                 "Accept-Language", "en-US,en;q=0.5"
             )
             .cookie("login", cookie)
+            .cookie("PHPSESSID", phpsessid)
             .get()
 
         return doc.select("div.contributor-wrapper").map { contributor ->
@@ -103,11 +110,12 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         val url = URL("https://poeditor.com/contributors/contributor_stats")
         val connection = url.openConnection() as HttpURLConnection
         val cookieEncoded = URLEncoder.encode(cookie, "UTF-8")
+        val phpSessidEncoded = URLEncoder.encode(phpsessid, "UTF-8")
         val today = LocalDate.now().toString()
         try {
             connection.doOutput = true
             connection.requestMethod = "POST"
-            connection.setRequestProperty("Cookie", "login=$cookieEncoded")
+            connection.setRequestProperty("Cookie", "login=$cookieEncoded;PHPSESSID=$phpSessidEncoded")
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
             connection.outputStream.bufferedWriter().use { it.write(
                 "id_project=97843&start=2016-01-01&stop=$today&user=$userId"
@@ -139,8 +147,9 @@ private fun tagToName(tag: String): String =
         "en" -> "English (US)"
         else -> {
             val locale = Locale.forLanguageTag(tag)
+            val scriptName = if (locale.script != "") " ("+locale.getDisplayScript(Locale.ENGLISH)+")" else ""
             val countryName = if (locale.country != "") " ("+locale.country+")" else ""
             val langName = locale.getDisplayLanguage(Locale.ENGLISH)
-            langName + countryName
+            langName + countryName + scriptName
         }
     }

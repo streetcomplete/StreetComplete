@@ -20,5 +20,5 @@
         android:title="@string/action_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:icon="@drawable/ic_search_24dp"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 </menu>

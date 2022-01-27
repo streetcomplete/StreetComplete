@@ -11,31 +11,31 @@ import javax.inject.Singleton
 
     private val listeners = CopyOnWriteArrayList<QuestPresetsSource.Listener>()
 
-    override var selectedQuestPresetId: Long
+    override var selectedId: Long
         get() = selectedQuestPresetStore.get()
         set(value) {
             selectedQuestPresetStore.set(value)
-            onSelectedQuestProfileChanged()
+            onSelectedQuestPresetChanged()
         }
 
     override val selectedQuestPresetName: String? get() =
-        questPresetsDao.getName(selectedQuestPresetId)
+        questPresetsDao.getName(selectedId)
 
-    fun addQuestProfile(presetName: String): Long {
+    fun add(presetName: String): Long {
         val presetId = questPresetsDao.add(presetName)
-        onAddedQuestProfile(presetId, presetName)
+        onAddedQuestPreset(presetId, presetName)
         return presetId
     }
 
-    fun deleteQuestPreset(presetId: Long) {
-        if (presetId == selectedQuestPresetId) {
-            selectedQuestPresetId = 0
+    fun delete(presetId: Long) {
+        if (presetId == selectedId) {
+            selectedId = 0
         }
         questPresetsDao.delete(presetId)
-        onDeletedQuestProfile(presetId)
+        onDeletedQuestPreset(presetId)
     }
 
-    override fun getAllQuestPresets(): List<QuestPreset> =
+    override fun getAll(): List<QuestPreset> =
         questPresetsDao.getAll()
 
     /* listeners */
@@ -46,13 +46,13 @@ import javax.inject.Singleton
     override fun removeListener(listener: QuestPresetsSource.Listener) {
         listeners.remove(listener)
     }
-    private fun onSelectedQuestProfileChanged() {
+    private fun onSelectedQuestPresetChanged() {
         listeners.forEach { it.onSelectedQuestPresetChanged() }
     }
-    private fun onAddedQuestProfile(presetId: Long, presetName: String) {
+    private fun onAddedQuestPreset(presetId: Long, presetName: String) {
         listeners.forEach { it.onAddedQuestPreset(QuestPreset(presetId, presetName)) }
     }
-    private fun onDeletedQuestProfile(presetId: Long) {
+    private fun onDeletedQuestPreset(presetId: Long) {
         listeners.forEach { it.onDeletedQuestPreset(presetId) }
     }
 }

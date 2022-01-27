@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -48,13 +49,15 @@ class AddAcceptsCash(
         and (name or brand) and !payment:cash and !payment:coins and !payment:notes
     """}
 
-    override val commitMessage = "Add whether this place accepts cash as payment"
+    override val changesetComment = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
 
     override val enabledInCountries = NoCountriesExcept("SE")
+
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
         if (hasFeatureName(tags)) R.string.quest_accepts_cash_type_title
@@ -65,8 +68,8 @@ class AddAcceptsCash(
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("payment:cash", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags["payment:cash"] = answer.toYesNo()
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =

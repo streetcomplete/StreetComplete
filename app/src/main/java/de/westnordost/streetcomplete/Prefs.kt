@@ -13,6 +13,7 @@ object Prefs {
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
     const val UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown"
     const val THEME_SELECT = "theme.select"
+    const val LANGUAGE_SELECT = "language.select"
     const val THEME_BACKGROUND = "theme.background_type"
 
     const val RESURVEY_INTERVALS = "quests.resurveyIntervals"
@@ -33,7 +34,6 @@ object Prefs {
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
     const val LAST_PICKED_PREFIX = "imageListLastPicked."
-    const val FINISHED_FIRST_LOCATION_REQUEST = "location.firstPermissionRequestFinished"
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"

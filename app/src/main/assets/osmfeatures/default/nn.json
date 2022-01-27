@@ -20,7 +20,15 @@
                         "motor_vehicle": "Motorkøyretøy"
                     }
                 },
+                "access_simple": {
+                    "options": {
+                        "no": "Ingen",
+                        "private": "Privat",
+                        "yes": "Offentleg"
+                    }
+                },
                 "addr/interpolation": {
+                    "label": "Type",
                     "options": {
                         "all": "Alle",
                         "alphabetic": "Alfabetisk"
@@ -71,6 +79,16 @@
                 "aerialway/bubble": {
                     "label": "Boble"
                 },
+                "aerialway/summer/access": {
+                    "options": {
+                        "both": "Begge",
+                        "entry": "Oppføring",
+                        "exit": "Avslutt"
+                    }
+                },
+                "aeroway": {
+                    "label": "Type"
+                },
                 "agrarian": {
                     "label": "Produkts"
                 },
@@ -107,6 +125,14 @@
                 "attraction": {
                     "label": "Type"
                 },
+                "automated": {
+                    "label": "Automatisert"
+                },
+                "baby_feeding": {
+                    "options": {
+                        "no": "Ingen"
+                    }
+                },
                 "bar": {
                     "label": "Bar"
                 },
@@ -118,6 +144,13 @@
                 },
                 "bin": {
                     "label": "Søppeldunk"
+                },
+                "blind": {
+                    "options": {
+                        "limited": "Avgrensa",
+                        "no": "Nei",
+                        "yes": "Ja"
+                    }
                 },
                 "brewery": {
                     "label": "Fatøl"
@@ -187,6 +220,7 @@
                             "title": "Ingen"
                         }
                     },
+                    "placeholder": "Ingen",
                     "types": {
                         "cycleway:left": "Venstre side",
                         "cycleway:right": "Høgre side"
@@ -483,6 +517,11 @@
                 "operator/type": {
                     "label": "Driftsleiartype"
                 },
+                "organic": {
+                    "options": {
+                        "no": "Ingen"
+                    }
+                },
                 "outdoor_seating": {
                     "label": "Utandørsservering"
                 },
@@ -516,6 +555,16 @@
                 },
                 "piste/difficulty_downhill": {
                     "label": "Vanskegrad"
+                },
+                "pump": {
+                    "options": {
+                        "no": "Ingen"
+                    }
+                },
+                "railway/signal/direction": {
+                    "options": {
+                        "both": "Begge/Alle"
+                    }
                 },
                 "scuba_diving": {
                     "label": "Tenester"
@@ -622,6 +671,16 @@
                 "surveillance/type": {
                     "options": {
                         "camera": "Kamera"
+                    }
+                },
+                "traffic_sign/direction": {
+                    "options": {
+                        "both": "Begge/Alle"
+                    }
+                },
+                "traffic_signals/direction": {
+                    "options": {
+                        "both": "Begge/Alle"
                     }
                 },
                 "tunnel": {

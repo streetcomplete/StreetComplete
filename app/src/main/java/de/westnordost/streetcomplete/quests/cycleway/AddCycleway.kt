@@ -12,13 +12,20 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-
-import de.westnordost.streetcomplete.quests.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
+import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
+import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
+import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
+import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
 
-    override val commitMessage = "Add whether there are cycleways"
+    override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
 
@@ -52,6 +59,8 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
     override val isSplitWayEnabled = true
 
+    override val questTypeAchievements = listOf(BICYCLIST)
+
     override fun getTitle(tags: Map<String, String>) : Int =
         if (createCyclewaySides(tags, false) != null)
             R.string.quest_cycleway_resurvey_title
@@ -83,7 +92,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
             if (maybeSeparatelyMappedCyclewayGeometries.isNotEmpty()) {
                 // filter out roads with missing cycleways that are near footways
                 roadsWithMissingCycleway.removeAll { road ->
-                    val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
+                    val minDistToWays = getMinDistanceToWays(road.tags).toDouble()
                     val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
                     roadGeometry?.isNearAndAligned(
                         minDistToWays,
@@ -107,13 +116,12 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
-    private fun estimatedWidth(tags: Map<String, String>): Float {
-        val width = tags["width"]?.toFloatOrNull()
-        if (width != null) return width
-        val lanes = tags["lanes"]?.toIntOrNull()
-        if (lanes != null) return lanes * 3f
-        return 12f
-    }
+    private fun getMinDistanceToWays(tags: Map<String, String>): Float =
+        (
+            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags) ) +
+            (estimateParkingOffRoadWidth(tags) ?: 0f)
+        ) / 2f +
+        4f // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -129,45 +137,43 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: CyclewayAnswer, changes: StringMapChangesBuilder) {
-
+    override fun applyAnswerTo(answer: CyclewayAnswer, tags: StringMapChangesBuilder) {
         if (answer.left == answer.right) {
-            answer.left?.let { applyCyclewayAnswerTo(it.cycleway, Side.BOTH, 0, changes) }
-            deleteCyclewayAnswerIfExists(Side.LEFT, changes)
-            deleteCyclewayAnswerIfExists(Side.RIGHT, changes)
+            answer.left?.let { applyCyclewayAnswerTo(it.cycleway, Side.BOTH, 0, tags) }
+            deleteCyclewayAnswerIfExists(Side.LEFT, tags)
+            deleteCyclewayAnswerIfExists(Side.RIGHT, tags)
         } else {
-            answer.left?.let { applyCyclewayAnswerTo(it.cycleway, Side.LEFT, it.dirInOneway, changes) }
-            answer.right?.let { applyCyclewayAnswerTo(it.cycleway, Side.RIGHT, it.dirInOneway, changes) }
-            deleteCyclewayAnswerIfExists(Side.BOTH, changes)
+            answer.left?.let { applyCyclewayAnswerTo(it.cycleway, Side.LEFT, it.dirInOneway, tags) }
+            answer.right?.let { applyCyclewayAnswerTo(it.cycleway, Side.RIGHT, it.dirInOneway, tags) }
+            deleteCyclewayAnswerIfExists(Side.BOTH, tags)
         }
-        deleteCyclewayAnswerIfExists(null, changes)
+        deleteCyclewayAnswerIfExists(null, tags)
 
-        applySidewalkAnswerTo(answer.left?.cycleway, answer.right?.cycleway, changes)
+        applySidewalkAnswerTo(answer.left?.cycleway, answer.right?.cycleway, tags)
 
         if (answer.isOnewayNotForCyclists) {
-            changes.addOrModify("oneway:bicycle", "no")
+            tags["oneway:bicycle"] = "no"
         } else {
-            changes.deleteIfPreviously("oneway:bicycle", "no")
+            if (tags["oneway:bicycle"] == "no") {
+                tags.remove("oneway:bicycle")
+            }
         }
 
         // only set the check date if nothing was changed
-        val isNotActuallyChangingAnything = changes.getChanges().all { change ->
-            change is StringMapEntryModify && change.value == change.valueBefore
-        }
-        if (isNotActuallyChangingAnything || changes.hasCheckDateForKey("cycleway")) {
-            changes.updateCheckDateForKey("cycleway")
+        if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
+            tags.updateCheckDateForKey("cycleway")
         }
     }
 
     /** Just add a sidewalk if we implicitly know from the answer that there is one */
     private fun applySidewalkAnswerTo(
-        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, changes: StringMapChangesBuilder) {
+        cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, tags: StringMapChangesBuilder) {
 
         /* only tag if we know the sidewalk value for both sides (because it is not possible in
            OSM to specify the sidewalk value only for one side. sidewalk:right/left=yes is not
            well established. */
         if (cyclewayLeft?.isOnSidewalk == true && cyclewayRight?.isOnSidewalk == true) {
-            changes.addOrModify("sidewalk", "both")
+            tags["sidewalk"] = "both"
         }
     }
 
@@ -175,8 +181,9 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         LEFT("left"), RIGHT("right"), BOTH("both")
     }
 
-    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int,
-                                      changes: StringMapChangesBuilder) {
+    private fun applyCyclewayAnswerTo(
+        cycleway: Cycleway, side: Side, dir: Int, tags: StringMapChangesBuilder)
+    {
         val directionValue = when {
             dir > 0 -> "yes"
             dir < 0 -> "-1"
@@ -186,54 +193,55 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         val cyclewayKey = "cycleway:" + side.value
         when (cycleway) {
             NONE, NONE_NO_ONEWAY -> {
-                changes.addOrModify(cyclewayKey, "no")
+                tags[cyclewayKey] = "no"
             }
             EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE -> {
-                changes.addOrModify(cyclewayKey, "lane")
+                tags[cyclewayKey] = "lane"
                 if (directionValue != null) {
-                    changes.addOrModify("$cyclewayKey:oneway", directionValue)
+                    tags["$cyclewayKey:oneway"] = directionValue
                 }
-                if (cycleway == EXCLUSIVE_LANE)
-                    changes.addOrModify("$cyclewayKey:lane", "exclusive")
-                else if (cycleway == ADVISORY_LANE)
-                    changes.addOrModify("$cyclewayKey:lane","advisory")
+                if (cycleway == EXCLUSIVE_LANE) {
+                    tags["$cyclewayKey:lane"] = "exclusive"
+                } else if (cycleway == ADVISORY_LANE) {
+                    tags["$cyclewayKey:lane"] = "advisory"
+                }
             }
             TRACK -> {
-                changes.addOrModify(cyclewayKey, "track")
+                tags[cyclewayKey] = "track"
                 if (directionValue != null) {
-                    changes.addOrModify("$cyclewayKey:oneway", directionValue)
+                    tags["$cyclewayKey:oneway"] = directionValue
                 }
-                if (changes.getPreviousValue("$cyclewayKey:segregated") == "no") {
-                    changes.modify("$cyclewayKey:segregated", "yes")
+                if (tags.containsKey("$cyclewayKey:segregated")) {
+                    tags["$cyclewayKey:segregated"] = "yes"
                 }
             }
             DUAL_TRACK -> {
-                changes.addOrModify(cyclewayKey, "track")
-                changes.addOrModify("$cyclewayKey:oneway", "no")
+                tags[cyclewayKey] = "track"
+                tags["$cyclewayKey:oneway"] = "no"
             }
             DUAL_LANE -> {
-                changes.addOrModify(cyclewayKey, "lane")
-                changes.addOrModify("$cyclewayKey:oneway", "no")
-                changes.addOrModify("$cyclewayKey:lane", "exclusive")
+                tags[cyclewayKey] = "lane"
+                tags["$cyclewayKey:oneway"] = "no"
+                tags["$cyclewayKey:lane"] = "exclusive"
             }
             SIDEWALK_EXPLICIT -> {
                 // https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
-                changes.addOrModify(cyclewayKey, "track")
-                changes.addOrModify("$cyclewayKey:segregated", "no")
+                tags[cyclewayKey] = "track"
+                tags["$cyclewayKey:segregated"] = "no"
             }
             PICTOGRAMS -> {
-                changes.addOrModify(cyclewayKey, "shared_lane")
-                changes.addOrModify("$cyclewayKey:lane", "pictogram")
+                tags[cyclewayKey] = "shared_lane"
+                tags["$cyclewayKey:lane"] = "pictogram"
             }
             SUGGESTION_LANE -> {
-                changes.addOrModify(cyclewayKey, "shared_lane")
-                changes.addOrModify("$cyclewayKey:lane", "advisory")
+                tags[cyclewayKey] = "shared_lane"
+                tags["$cyclewayKey:lane"] = "advisory"
             }
             BUSWAY -> {
-                changes.addOrModify(cyclewayKey, "share_busway")
+                tags[cyclewayKey] = "share_busway"
             }
             SEPARATE -> {
-                changes.addOrModify(cyclewayKey, "separate")
+                tags[cyclewayKey] = "separate"
             }
             else -> {
                 throw IllegalArgumentException("Invalid cycleway")
@@ -242,30 +250,34 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
         // clear previous cycleway:lane value
         if (!cycleway.isLane) {
-            changes.deleteIfExists("$cyclewayKey:lane")
+            tags.remove("$cyclewayKey:lane")
         }
         // clear previous cycleway:oneway=no value (if not about to set a new value)
         if (cycleway.isOneway && directionValue == null) {
-            changes.deleteIfPreviously("$cyclewayKey:oneway", "no")
+            if (tags["$cyclewayKey:oneway"] == "no") {
+                tags.remove("$cyclewayKey:oneway")
+            }
         }
         // clear previous cycleway:segregated=no value
         if (cycleway != SIDEWALK_EXPLICIT && cycleway != TRACK) {
-            changes.deleteIfPreviously("$cyclewayKey:segregated", "no")
+            if (tags["$cyclewayKey:segregated"] == "no") {
+                tags.remove("$cyclewayKey:segregated")
+            }
         }
     }
 
     /** clear previous answers for the given side */
-    private fun deleteCyclewayAnswerIfExists(side: Side?, changes: StringMapChangesBuilder) {
+    private fun deleteCyclewayAnswerIfExists(side: Side?, tags: StringMapChangesBuilder) {
         val sideVal = if (side == null) "" else ":" + side.value
         val cyclewayKey = "cycleway$sideVal"
 
         // only things are cleared that are set by this quest
         // for example cycleway:surface should only be cleared by a cycleway surface quest etc.
-        changes.deleteIfExists(cyclewayKey)
-        changes.deleteIfExists("$cyclewayKey:lane")
-        changes.deleteIfExists("$cyclewayKey:oneway")
-        changes.deleteIfExists("$cyclewayKey:segregated")
-        changes.deleteIfExists("sidewalk$sideVal:bicycle")
+        tags.remove(cyclewayKey)
+        tags.remove("$cyclewayKey:lane")
+        tags.remove("$cyclewayKey:oneway")
+        tags.remove("$cyclewayKey:segregated")
+        tags.remove("sidewalk$sideVal:bicycle")
     }
 
     companion object {
@@ -274,6 +286,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
           - anything explicitly tagged as no bicycles or having to use separately mapped sidepath
           - if not already tagged with a cycleway: streets with low speed or that are not paved, as
             they are very unlikely to have cycleway infrastructure
+                - for highway=residential without speed limit tagged assume low speed
           - if not already tagged, roads that are close (15m) to foot or cycleways (see #718)
           - if already tagged, if not older than 4 years or if the cycleway tag uses some unknown value
         */
@@ -323,8 +336,9 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         """.toElementFilterExpression() }
 
         private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
-            ways with highway ~ path|footway|cycleway
+            ways with highway ~ path|footway|cycleway|construction
         """.toElementFilterExpression() }
+        // highway=construction included, as situation often changes during and after construction
 
         private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
             """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""

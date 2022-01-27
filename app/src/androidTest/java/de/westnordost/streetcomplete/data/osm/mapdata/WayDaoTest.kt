@@ -99,6 +99,18 @@ class WayDaoTest : ApplicationDbTestCase() {
         val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
+
+    @Test fun getUnusedAndOldIdsButAtMostX() {
+        dao.putAll(listOf(way(1L), way(2L), way(3L)))
+        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10, 2)
+        assertEquals(2, unusedIds.size)
+    }
+
+    @Test fun clear() {
+        dao.putAll(listOf(way(1L), way(2L), way(3L)))
+        dao.clear()
+        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+    }
 }
 
 private fun way(

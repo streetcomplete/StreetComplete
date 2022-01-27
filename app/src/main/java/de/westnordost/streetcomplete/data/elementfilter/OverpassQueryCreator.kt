@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.*
-import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import java.util.EnumSet
 
@@ -121,7 +121,7 @@ class OverpassQueryCreator(
 
     private fun AllTagFilters.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
         val elementFilter = elementType + inputSetId?.let { getSetId(elementType,it) }.orEmpty()
-        val tagFilters = values.joinToString("") { it.toOverpassQLString() }
+        val tagFilters = values.joinToString("") { it.toOverpassString() }
         val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
         return "$elementFilter$tagFilters$resultStmt;\n"
     }
@@ -143,7 +143,7 @@ class OverpassQueryCreator(
 
     private class AllTagFilters(val values: List<ElementFilter>) : BooleanExpression<ElementFilter, Element>() {
         constructor(value: ElementFilter) : this(listOf(value))
-        override fun matches(obj: Element?) = values.all { it.matches(obj) }
+        override fun matches(obj: Element) = values.all { it.matches(obj) }
         override fun toString() = values.joinToString(" and ")
     }
 }

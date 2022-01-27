@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
 import de.westnordost.streetcomplete.data.user.User
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.UserDataSource
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,11 +15,13 @@ import javax.inject.Singleton
 @Singleton class NotesWithEditsSource @Inject constructor(
     private val noteController: NoteController,
     private val noteEditsSource: NoteEditsSource,
-    private val userStore: UserStore
+    private val userDataSource: UserDataSource
 ) {
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
@@ -34,6 +36,10 @@ import javax.inject.Singleton
                 editsAppliedToNotes(updated, noteCommentEdits),
                 deleted
             )
+        }
+
+        override fun onCleared() {
+            callOnCleared()
         }
     }
 
@@ -144,7 +150,7 @@ import javax.inject.Singleton
             createdTimestamp,
             action,
             commentText,
-            User(userStore.userId, userStore.userName ?: "")
+            User(userDataSource.userId, userDataSource.userName ?: "")
         )
     }
 
@@ -157,5 +163,9 @@ import javax.inject.Singleton
 
     private fun callOnUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
         listeners.forEach { it.onUpdated(added, updated, deleted) }
+    }
+
+    private fun callOnCleared() {
+        listeners.forEach { it.onCleared() }
     }
 }

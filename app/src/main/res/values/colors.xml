@@ -16,7 +16,7 @@
     <color name="selection_frame">#bbff6600</color>
 
     <color name="location_dot">#536dfe</color>
-    <color name="quest_selection_frame">#536dfe</color>
+    <color name="quest_selection_frame">#bbFF5722</color>
     <color name="location_accuracy_fill">#22536dfe</color>
     <color name="location_accuracy_stroke">#88536dfe</color>
 
@@ -27,6 +27,9 @@
     <color name="indicator_dot_selected">@color/accent</color>
 
     <color name="hint_text">#666</color>
+    <color name="label_text_below_image">#000</color>
+    <color name="title_text_next_to_image">#000</color>
+    <color name="description_text_next_to_image">#000</color>
 
     <color name="disabled_text">#6666</color>
 
@@ -49,6 +52,8 @@
 
     <color name="traffic_gray_a">#8e9291</color>
     <color name="traffic_gray_b">#4f5250</color>
+
+    <color name="smoothness_vehicle_tyre">#292f33</color>
 
     <color name="traffic_sign_background">@color/traffic_white</color>
 
@@ -74,4 +79,8 @@
     <color name="team_11">#655555</color>
 
     <color name="star_of_david">#22f</color>
+
+    <!-- for fading out images -->
+    <color name="fade_out">#fff</color>
+    <color name="fade_out_transparent">#00FFFFFF</color>
 </resources>

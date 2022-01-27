@@ -9,26 +9,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
+import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
-import kotlinx.android.synthetic.main.row_changelog.view.*
 import kotlinx.coroutines.*
 
 /** Shows the full changelog */
 class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
-        changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+    private val binding by viewBinding(FragmentChangelogBinding::bind)
 
-        lifecycleScope.launch {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
+        viewLifecycleScope.launch {
             val changelog = readChangelog(resources)
-            changelogList.adapter = ChangelogAdapter(changelog)
+            binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
     }
 
@@ -45,12 +47,11 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
     private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.fragment_changelog, null, false)
-        val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
-        changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        val binding = FragmentChangelogBinding.inflate(LayoutInflater.from(context))
+        binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         setTitle(R.string.title_whats_new)
-        setView(view)
+        setView(binding.root)
         setButton(DialogInterface.BUTTON_POSITIVE, context.resources.getText(android.R.string.ok), null, null)
 
         scope.launch {
@@ -60,7 +61,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
             if (currentVersionIndex == -1) currentVersionIndex = 1
             val changelog = fullChangelog.subList(0, currentVersionIndex)
 
-            changelogList.adapter = ChangelogAdapter(changelog)
+            binding.changelogList.adapter = ChangelogAdapter(changelog)
         }
     }
 
@@ -73,12 +74,12 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
 class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelog) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder  =
-        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_changelog, parent, false))
+        ViewHolder(RowChangelogBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<Release>(itemView) {
+    inner class ViewHolder(val binding: RowChangelogBinding) : ListAdapter.ViewHolder<Release>(binding) {
         override fun onBind(with: Release) {
-            itemView.titleLabel.text = with.title
-            itemView.descriptionLabel.setHtml(with.description)
+            binding.titleLabel.text = with.title
+            binding.descriptionLabel.setHtml(with.description)
         }
     }
 }

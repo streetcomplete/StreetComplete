@@ -765,12 +765,6 @@
                     "label": "Süre",
                     "placeholder": "00:00"
                 },
-                "ele": {
-                    "label": "Yükseklik"
-                },
-                "ele_node": {
-                    "label": "Yükseklik"
-                },
                 "electrified": {
                     "label": "Elektrik Kaynağı",
                     "options": {
@@ -920,9 +914,6 @@
                 },
                 "geyser/height": {
                     "label": "Patlama Yüksekliği"
-                },
-                "gnis/feature_id": {
-                    "label": "Coğrafi Adlar Bilgi Sistemi nesne ID"
                 },
                 "government": {
                     "label": "Hükümet"
@@ -1661,9 +1652,6 @@
                 },
                 "rcn_ref": {
                     "label": "Bisiklet Kodu"
-                },
-                "real_fire": {
-                    "label": "Gerçek Ateş"
                 },
                 "recycling_accepts": {
                     "label": "Kabul Ediyor"
@@ -3319,12 +3307,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "Gazete Satış Makinası",
                     "terms": "gazete satış makinası,gazete otomatı"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Paket Alma Dolabı"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Paket Alma / Bırakma Dolabı"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Park Fişi Otomatı",
@@ -5000,9 +4982,6 @@
                     "name": "Gemi Kızağı",
                     "terms": "gemi kızağı"
                 },
-                "leisure/slipway_point": {
-                    "name": "Kızak"
-                },
                 "leisure/sports_centre": {
                     "name": "Spor Merkezi",
                     "terms": "spor merkezi"
@@ -5475,9 +5454,6 @@
                 "natural/wood": {
                     "name": "Doğal Orman"
                 },
-                "network/type/node_network": {
-                    "name": "Eğlence ağı düğümü"
-                },
                 "noexit/yes": {
                     "name": "Çıkış Yok",
                     "terms": "çıkış yok"
@@ -5508,9 +5484,6 @@
                 "office/association": {
                     "name": "Yardım Kuruluşu",
                     "terms": "yardım kuruluşu merkezi"
-                },
-                "office/bail_bond_agent": {
-                    "name": "Kefaletnameci"
                 },
                 "office/charity": {
                     "name": "Hayır Kurumu",
@@ -7037,37 +7010,12 @@
                     "name": "Sağa Dönüş Yasak",
                     "terms": "sağa dönüş yasak"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Devam Etmek Yasak",
-                    "terms": "devam etmek yasak"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "U-dönüşü Yasak",
-                    "terms": "u-dönüşü yasak"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Sadece Sola Dönüş"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Sadece Sağa Dönüş"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Sadece Düz Gidiş"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Sadece U Dönüşü",
-                    "terms": "sadece u-dönüşü"
-                },
                 "type/route": {
                     "name": "Güzergah",
                     "terms": "güzergah,rota"
                 },
                 "type/route/aerialway": {
                     "name": "Araç Güzergahı"
-                },
-                "type/route/bicycle": {
-                    "name": "Bisiklet Güzergahı",
-                    "terms": "bisiklet güzergahı,bisiklet rotası"
                 },
                 "type/route/bus": {
                     "name": "Otobüs Güzergahı",

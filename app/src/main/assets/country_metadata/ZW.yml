@@ -1,6 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+hasLivingStreet: true
 isLeftHandTraffic: true
-isLivingStreetKnown: true
+livingStreetSignStyle: sadc
 mobileCountryCode: 648
+noParkingSignStyle: sadc
+noStoppingSignStyle: sadc
 officialLanguages: [en, sn, nd]
 orchardProduces: [banana, tomato, tea, lemon, lime, orange, grapefruit, apple, grape, pepper, guava, mango, mangosteen, avocado, peach, coffee, plum, strawberry]

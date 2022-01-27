@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
@@ -32,12 +33,14 @@ class AddSuspectedOneway(
           )
     """.toElementFilterExpression() }
 
-    override val commitMessage =
+    override val changesetComment =
         "Add whether roads are one-way roads as they were marked as likely oneway by improveosm.org"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 
@@ -136,11 +139,11 @@ class AddSuspectedOneway(
 
     override fun createForm() = AddSuspectedOnewayForm()
 
-    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: StringMapChangesBuilder) {
         if (!answer.isOneway) {
-            changes.add("oneway", "no")
+            tags["oneway"] = "no"
         } else {
-            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
+            tags["oneway"] = if (db.isForward(answer.wayId)!!) "yes" else "-1"
         }
     }
 

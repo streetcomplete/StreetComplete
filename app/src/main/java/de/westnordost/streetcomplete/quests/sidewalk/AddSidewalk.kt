@@ -9,19 +9,23 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.estimateCycleTrackWidth
+import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
+import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
+import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
-class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
+class AddSidewalk : OsmElementQuestType<SidewalkSides> {
 
     /* the filter additionally filters out ways that are unlikely to have sidewalks:
      *
-     * + unpaved roads, roads with very low speed limits and roads that are probably not developed
-     *   enough to have sidewalk (i.e. country roads). But let's ask for urban roads at least
-     *
+     * + unpaved roads
+     * + roads that are probably not developed enough to have sidewalk (i.e. country roads)
      * + roads with a very low speed limit
-     *
      * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
-     *   is mapped as a separate way
+     *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
+     *   cycleway is separate, the sidewalk is too for sure
     * */
     private val filter by lazy { """
         ways with
@@ -40,21 +44,28 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
             or highway = residential
             or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
           )
-          and foot != no and access !~ private|no
+          and foot != no
+          and access !~ private|no
           and foot != use_sidepath
           and bicycle != use_sidepath
           and bicycle:backward != use_sidepath
           and bicycle:forward != use_sidepath
+          and cycleway != separate
+          and cycleway:left != separate
+          and cycleway:right != separate
+          and cycleway:both != separate
     """.toElementFilterExpression() }
 
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
-        ways with highway ~ path|footway|cycleway
+        ways with highway ~ path|footway|cycleway|construction
     """.toElementFilterExpression() }
+    // highway=construction included, as situation often changes during and after construction
 
-    override val commitMessage = "Add whether there are sidewalks"
+    override val changesetComment = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val isSplitWayEnabled = true
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -76,7 +87,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
 
         // filter out roads with missing sidewalks that are near footways
         return roadsWithMissingSidewalks.filter { road ->
-            val minDistToWays = estimatedWidth(road.tags) / 2.0 + 6
+            val minDistToWays = getMinDistanceToWays(road.tags).toDouble()
             val roadGeometry = mapData.getWayGeometry(road.id) as? ElementPolylinesGeometry
             if (roadGeometry != null) {
                 !roadGeometry.isNearAndAligned(minDistToWays, minAngleToWays, maybeSeparatelyMappedSidewalkGeometries)
@@ -86,31 +97,20 @@ class AddSidewalk : OsmElementQuestType<SidewalkAnswer> {
         }
     }
 
-    private fun estimatedWidth(tags: Map<String, String>): Float {
-        val width = tags["width"]?.toFloatOrNull()
-        if (width != null) return width
-        val lanes = tags["lanes"]?.toIntOrNull()
-        if (lanes != null) return lanes * 3f
-        return 12f
-    }
+    private fun getMinDistanceToWays(tags: Map<String, String>): Float =
+        (
+            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags) ) +
+            (estimateParkingOffRoadWidth(tags) ?: 0f) +
+            (estimateCycleTrackWidth(tags) ?: 0f)
+        ) / 2f +
+        4f // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: SidewalkAnswer, changes: StringMapChangesBuilder) {
-        changes.add("sidewalk", getSidewalkValue(answer))
+    override fun applyAnswerTo(answer: SidewalkSides, tags: StringMapChangesBuilder) {
+        answer.applyTo(tags)
     }
-
-    private fun getSidewalkValue(answer: SidewalkAnswer) =
-        when (answer) {
-            is SeparatelyMapped -> "separate"
-            is SidewalkSides -> when {
-                answer.left && answer.right -> "both"
-                answer.left -> "left"
-                answer.right -> "right"
-                else -> "no"
-            }
-        }
 }

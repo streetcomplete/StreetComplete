@@ -632,7 +632,7 @@
                     "label": "Data"
                 },
                 "defibrillator/location": {
-                    "label": "Lokalizacja"
+                    "label": "Opis lokalizacji"
                 },
                 "delivery": {
                     "label": "Dostawa",
@@ -807,14 +807,6 @@
                     "placeholder": "00:00",
                     "terms": "czas trwania,trwanie"
                 },
-                "ele": {
-                    "label": "Wysokość n.p.m. (WGS84)",
-                    "terms": "wysokość"
-                },
-                "ele_node": {
-                    "label": "Wysokość n.p.m. (WGS84)",
-                    "terms": "wysokość"
-                },
                 "electrified": {
                     "label": "Elektryfikacja",
                     "options": {
@@ -976,10 +968,6 @@
                 },
                 "geyser/height": {
                     "label": "Wysokość erupcji"
-                },
-                "gnis/feature_id": {
-                    "label": "GNIS",
-                    "terms": "gnis"
                 },
                 "government": {
                     "label": "Rodzaj"
@@ -1790,10 +1778,6 @@
                 },
                 "rcn_ref": {
                     "label": "Numer regionalnej sieci rowerowej"
-                },
-                "real_fire": {
-                    "label": "Kominek",
-                    "terms": "kominek"
                 },
                 "recycling_accepts": {
                     "label": "Przyjmuje"
@@ -3176,6 +3160,10 @@
                 "amenity/nursing_home": {
                     "name": "Dom spokojnej starości"
                 },
+                "amenity/parcel_locker": {
+                    "name": "Paczkomat",
+                    "terms": "inpost,orlen paczka,aliexpress,cainiao,allegro,automat przesyłkowy,automat paczkowy"
+                },
                 "amenity/parking": {
                     "name": "Parking samochodowy",
                     "terms": "parking"
@@ -3638,14 +3626,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "Automat z gazetami",
                     "terms": "automat z gazetami,gazety"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Paczkomat",
-                    "terms": "amazon,paczki,przesyłki,paczkomat,odbiór"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Paczkomat z możliwością nadawania przesyłek",
-                    "terms": "paczki,przesyłki,paczkomat,odbiór,wysyłanie"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Parkomat",
@@ -5190,7 +5170,7 @@
                     "terms": "tereny kolejowe,kolejowy,pkp,torów"
                 },
                 "landuse/recreation_ground": {
-                    "name": "Park rekreacyjno-sportowy",
+                    "name": "Teren rekreacyjno-sportowy",
                     "terms": "teren rekreacyjny,teren sportowy,rekreacja,odpoczynek,sporty,zabawy,park linowy"
                 },
                 "landuse/religious": {
@@ -5515,10 +5495,6 @@
                     "name": "Pochylnia okrętowa",
                     "terms": "pochylnia"
                 },
-                "leisure/slipway_point": {
-                    "name": "Pochylnia okrętowa",
-                    "terms": "pochylnia"
-                },
                 "leisure/sports_centre": {
                     "name": "Centrum sportowe",
                     "terms": "centrum sportowe,ośrodek sportowy,ośrodek sportów,kompleks sportowy,klub sportowy"
@@ -5619,8 +5595,7 @@
                     "terms": "wyręba,poręba,wycinka,las,drewno,drzewo"
                 },
                 "man_made/courtyard": {
-                    "name": "Dziedziniec",
-                    "terms": "dziedziniec,podwórze,podwórzec,podworzec,patio,atrium,wirydarz,perystyl"
+                    "name": "Dziedziniec"
                 },
                 "man_made/crane": {
                     "name": "Żuraw stacjonarny",
@@ -6073,10 +6048,6 @@
                     "name": "Drzewa",
                     "terms": "drzewa,las,puszcza,tajga,las pierwotny,las tropikalny,dżungla,bór,knieja,gaj,zagaj,zagajnik,młodnik,młodniak,zadrzewienie,zalesienie"
                 },
-                "network/type/node_network": {
-                    "name": "Rekreacyjna trasa ponumerowanych węzłów",
-                    "terms": "rekreacyjna trasa ponumerowanych węzłów"
-                },
                 "noexit/yes": {
                     "name": "Brak przejścia/przejazdu",
                     "terms": "brak przejścia,brak przejazdu,koniec drogi,ślepa ulica,ślepa uliczka"
@@ -6107,10 +6078,6 @@
                 "office/association": {
                     "name": "Biuro organizacji non profit",
                     "terms": "biuro organizacji non-profit,stowarzyszenie,non-profit,nonprofit,organizacja,społeczeństwo,społeczność"
-                },
-                "office/bail_bond_agent": {
-                    "name": "Poręczyciel majątkowy",
-                    "terms": "poręczyciel majątkowy,agent obligacji,kaucja,obligacje,poręczenie majątkowe"
                 },
                 "office/charity": {
                     "name": "Organizacja charytatywna",
@@ -7834,30 +7801,6 @@
                     "name": "Zakaz skrętu w prawo",
                     "terms": "zakaz,prawoskręt"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Zakaz jazdy prosto",
-                    "terms": "zakaz,prosto"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Zakaz zawracania",
-                    "terms": "zakaz,zawracanie"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Nakaz skrętu w lewo",
-                    "terms": "tylko w lewo,nakaz skrętu w lewo"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Nakaz skrętu w prawo",
-                    "terms": "tylko w prawo,nakaz skrętu w prawo"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Nakaz jazdy prosto",
-                    "terms": "tylko prosto,nakaz jazdy na wprost"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Tylko zawracanie",
-                    "terms": "tylko zawracanie,nakaz zawracania"
-                },
                 "type/route": {
                     "name": "Trasa/linia",
                     "terms": "trasa,linia"
@@ -7865,10 +7808,6 @@
                 "type/route/aerialway": {
                     "name": "Trasa kolei linowej",
                     "terms": "trasa kolei linowej,kolej linowa"
-                },
-                "type/route/bicycle": {
-                    "name": "Trasa rowerowa",
-                    "terms": "trasa rowerowa,szlak rowerowy,rowery"
                 },
                 "type/route/bus": {
                     "name": "Linia autobusowa",

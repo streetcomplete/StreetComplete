@@ -9,59 +9,55 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXHEIGHT
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
+import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
-import kotlinx.android.synthetic.main.fragment_attach_photo.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
-class AttachPhotoFragment : Fragment() {
+class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
-    val imagePaths: List<String> get() = noteImageAdapter.list
-    private var photosListView : RecyclerView? = null
-    private var hintView : TextView? = null
+    private val binding by viewBinding(FragmentAttachPhotoBinding::bind)
 
     private var currentImagePath: String? = null
 
     private lateinit var noteImageAdapter: NoteImageAdapter
+    val imagePaths: List<String> get() = noteImageAdapter.list
 
     private val takePhoto = registerForActivityResult(ActivityResultContracts.TakePicture(), ::onTakePhotoResult)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_attach_photo, container, false)
+        val view = super.onCreateView(inflater, container, savedInstanceState)
         val hasCamera = requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
         if (!hasCamera) {
-            view.visibility = View.GONE
+            view?.visibility = View.GONE
         }
-        photosListView = view.findViewById(R.id.gridView)
-        hintView = view.findViewById(R.id.photosAreUsefulExplanation)
         return view
     }
 
-    private fun updateHintVisibility(){
+    private fun updateHintVisibility() {
         val isImagePathsEmpty = imagePaths.isEmpty()
-        photosListView?.isGone = isImagePathsEmpty
-        hintView?.isGone = !isImagePathsEmpty
+        binding.photosList.isGone = isImagePathsEmpty
+        binding.photosAreUsefulExplanation.isGone = !isImagePathsEmpty
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        takePhotoButton.setOnClickListener { takePhoto() }
+        binding.takePhotoButton.setOnClickListener { takePhoto() }
 
         val paths: ArrayList<String>
         if (savedInstanceState != null) {
@@ -73,12 +69,12 @@ class AttachPhotoFragment : Fragment() {
         }
 
         noteImageAdapter = NoteImageAdapter(paths, requireContext())
-        gridView.layoutManager = LinearLayoutManager(
+        binding.photosList.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        gridView.adapter = noteImageAdapter
+        binding.photosList.adapter = noteImageAdapter
         noteImageAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { updateHintVisibility() })
         updateHintVisibility()
     }

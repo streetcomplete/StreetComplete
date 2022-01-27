@@ -221,6 +221,9 @@
                 "club": {
                     "label": "Tip"
                 },
+                "collection_times": {
+                    "label": "Ore de colectare"
+                },
                 "communication_multi": {
                     "label": "Tipuri de Comunicație"
                 },
@@ -430,6 +433,7 @@
                     "label": "Inscripție"
                 },
                 "internet_access": {
+                    "label": "Conexiune Internet",
                     "options": {
                         "no": "Nu",
                         "terminal": "Terminal",
@@ -706,6 +710,9 @@
                 "social_facility": {
                     "label": "Tip"
                 },
+                "source": {
+                    "label": "Surse"
+                },
                 "sport": {
                     "label": "Sporturi"
                 },
@@ -849,6 +856,9 @@
                 "aeroway/aerodrome": {
                     "name": "Aeroport"
                 },
+                "aeroway/helipad": {
+                    "name": "Heliport"
+                },
                 "amenity/arts_centre": {
                     "name": "Centru de Artă"
                 },
@@ -969,8 +979,14 @@
                 "amenity/nightclub": {
                     "name": "Club de Noapte"
                 },
+                "amenity/parking": {
+                    "name": "Parcare"
+                },
                 "amenity/parking_space": {
                     "name": "Loc de Parcare"
+                },
+                "amenity/pharmacy": {
+                    "name": "Farmacie"
                 },
                 "amenity/place_of_worship": {
                     "name": "Loc de Rugăciune"
@@ -978,8 +994,17 @@
                 "amenity/place_of_worship/buddhist": {
                     "name": "Templu Budist"
                 },
+                "amenity/place_of_worship/christian": {
+                    "name": "Biserică Creștină"
+                },
                 "amenity/place_of_worship/hindu": {
                     "name": "Templu Hinduist"
+                },
+                "amenity/place_of_worship/jewish": {
+                    "name": "Sinagogă Evreiască"
+                },
+                "amenity/place_of_worship/muslim": {
+                    "name": "Moschee Musulmană"
                 },
                 "amenity/place_of_worship/shinto": {
                     "name": "Altar Shinto"
@@ -1076,6 +1101,9 @@
                 },
                 "building": {
                     "name": "Clădire"
+                },
+                "building/apartments": {
+                    "name": "Bloc de apartamente"
                 },
                 "building/barn": {
                     "name": "Grajd"
@@ -1211,6 +1239,9 @@
                 },
                 "emergency/defibrillator": {
                     "name": "Defibrilator"
+                },
+                "entrance": {
+                    "name": "Intrare / Ieșire"
                 },
                 "ford": {
                     "name": "Vad"
@@ -1630,7 +1661,7 @@
                     "name": "Agenție de Muncă"
                 },
                 "office/estate_agent": {
-                    "name": "Oficiu de Proprietate Imobiliară"
+                    "name": "Agenție Imobiliară"
                 },
                 "office/financial": {
                     "name": "Oficiu Financiar"
@@ -2039,7 +2070,7 @@
                     "name": "Galerie de Artă"
                 },
                 "tourism/guest_house": {
-                    "name": "Casă de Oaspeți"
+                    "name": "Pensiune"
                 },
                 "tourism/hostel": {
                     "name": "Hostel"
@@ -2104,17 +2135,8 @@
                 "type/restriction/no_right_turn": {
                     "name": "Fără Întoarcere la Dreapta"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Fără Drum Continuu"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Fără Întoarcere"
-                },
                 "type/route": {
                     "name": "Rută"
-                },
-                "type/route/bicycle": {
-                    "name": "Rută de Biciclete"
                 },
                 "type/route/bus": {
                     "name": "Traseu Autobuz"

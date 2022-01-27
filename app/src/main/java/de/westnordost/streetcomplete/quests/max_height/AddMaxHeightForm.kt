@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.FOOT_AND_INCH
 import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.METER
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
+        AnswerItem(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
     )
 
     private var meterInput: EditText? = null
@@ -35,11 +35,9 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     override fun isFormComplete() = getHeightFromInput() != null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setMaxHeightSignLayout(R.layout.quest_maxheight, heightUnits.first())
-        return view
     }
 
     private fun setMaxHeightSignLayout(resourceId: Int, unit: HeightMeasurementUnit) {
@@ -112,7 +110,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         applyAnswer(MaxHeight(getHeightFromInput()!!))
     }
 
-    private fun getHeightFromInput(): HeightMeasure? {
+    private fun getHeightFromInput(): Height? {
         when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
             METER -> {
                 return meterInput?.numberOrNull?.let { Meters(it) }

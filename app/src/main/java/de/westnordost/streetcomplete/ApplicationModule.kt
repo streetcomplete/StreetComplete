@@ -8,7 +8,6 @@ import android.content.res.Resources
 import androidx.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
-import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.SoundFx
 import javax.inject.Singleton
@@ -27,14 +26,12 @@ import javax.inject.Singleton
 
     @Provides fun resources(): Resources = application.resources
 
-    @Provides fun locationRequestComponent(): LocationRequestFragment = LocationRequestFragment()
-
     @Provides @Singleton fun soundFx(): SoundFx = SoundFx(appContext())
 
     @Provides @Singleton fun exceptionHandler(ctx: Context): CrashReportExceptionHandler =
         CrashReportExceptionHandler(
             ctx,
-            "osm@westnordost.de",
+            "streetcomplete_errors@westnordost.de",
             "crashreport.txt"
         )
 }

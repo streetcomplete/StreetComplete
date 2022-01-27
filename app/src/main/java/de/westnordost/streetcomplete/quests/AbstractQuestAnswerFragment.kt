@@ -1,39 +1,34 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
-import com.google.android.flexbox.FlexboxLayout
+import androidx.core.widget.NestedScrollView
+import androidx.viewbinding.ViewBinding
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.ktx.geometryType
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
+import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
+import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -45,6 +40,22 @@ import javax.inject.Inject
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> :
     AbstractBottomSheetFragment(), IsShowingQuestDetails, IsLockable {
+
+    private var _binding: FragmentQuestAnswerBinding? = null
+    private val binding get() = _binding!!
+
+    protected var otherAnswersButton: TextView? = null
+    private set
+
+    override val bottomSheetContainer get() = binding.bottomSheetContainer
+    override val bottomSheet get() = binding.bottomSheet
+    override val scrollViewChild get() = binding.scrollViewChild
+    override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
+    override val bottomSheetContent get() = binding.speechbubbleContentContainer
+    override val floatingBottomView get() = binding.okButton
+    override val backButton get() = binding.closeButton
+
+    protected val scrollView: NestedScrollView get() = binding.scrollView
 
     // dependencies
     private val countryInfos: CountryInfos
@@ -63,11 +74,6 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
-    // views
-    private lateinit var content: ViewGroup
-    private lateinit var buttonPanel: FlexboxLayout
-    private lateinit var otherAnswersButton: Button
-
     // passed in parameters
     override lateinit var questKey: QuestKey
     protected lateinit var elementGeometry: ElementGeometry private set
@@ -78,7 +84,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         private set
 
     private var currentContext = WeakReference<Context>(null)
-    private var currentCountryContext: ContextWrapper? = null
 
     private val englishResources: Resources
         get() {
@@ -93,27 +98,27 @@ abstract class AbstractQuestAnswerFragment<T> :
     override var locked: Boolean = false
         set(value) {
             field = value
-            view?.findViewById<View>(R.id.glassPane)?.isGone = !locked
+            binding.glassPane.isGone = !locked
         }
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
-    open val buttonsResId: Int? = null
-    open val otherAnswers = listOf<OtherAnswer>()
+    open val buttonPanelAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<AnswerItem>()
     open val contentPadding = true
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
-         * the dialog with which the quest was answered  */
+         * the dialog with which the quest was answered */
         fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
-        /** Called when the user chose to leave a note instead  */
+        /** Called when the user chose to leave a note instead */
         fun onComposeNote(questKey: QuestKey, questTitle: String)
 
-        /** Called when the user chose to split the way  */
+        /** Called when the user chose to split the way */
         fun onSplitWay(osmQuestKey: OsmQuestKey)
 
-        /** Called when the user chose to skip the quest  */
+        /** Called when the user chose to skip the quest */
         fun onSkippedQuest(questKey: QuestKey)
 
         /** Called when the node shall be deleted */
@@ -143,40 +148,59 @@ abstract class AbstractQuestAnswerFragment<T> :
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
+
+        /* The Android resource system is not designed to offer different resources depending on the
+         * country (code). But what it can do is to offer different resources for different
+         * "mobile country codes" - i.e. in which country your mobile phone network provider
+         * operates.
+         *
+         * A few quest forms want to display different resources depending on the country.
+         *
+         * So what we do here is to override the parent activity's "mobile country code" resource
+         * configuration and use this mechanism to access our country-dependent resources */
+        countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_quest_answer, container, false)
-        content = view.findViewById(R.id.content)
-        buttonPanel = view.findViewById(R.id.buttonPanel)
-        otherAnswersButton = buttonPanel.findViewById(R.id.otherAnswersButton)
+        _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
+
+        /* content and buttons panel should be inflated in onCreateView because in onViewCreated,
+        *  subclasses may already want to access the content. */
+        otherAnswersButton = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
 
         contentLayoutResId?.let { setContentView(it) }
-        buttonsResId?.let { setButtonsView(it) }
-        return view
+        updateButtonPanel()
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
+        binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
-        val levelLabelText = getLocationLabelText()
-        locationLabel.isGone = levelLabelText == null
+        val levelLabelText = osmElement?.let { resources.getLocationLabelString(it.tags) }
+        binding.titleHintLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            locationLabel.text = levelLabelText
+            binding.titleHintLabel.text = levelLabelText
         }
 
         // no content? -> hide the content container
-        if (content.childCount == 0) {
-            content.visibility = View.GONE
+        if (binding.content.childCount == 0) {
+            binding.content.visibility = View.GONE
         }
     }
 
-    private fun assembleOtherAnswers() : List<OtherAnswer> {
-        val answers = mutableListOf<OtherAnswer>()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        otherAnswersButton = null
+    }
 
-        val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
+    private fun assembleOtherAnswers() : List<AnswerItem> {
+        val answers = mutableListOf<AnswerItem>()
+
+        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
         createSplitWayAnswer()?.let { answers.add(it) }
@@ -186,7 +210,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         return answers
     }
 
-    private fun createSplitWayAnswer(): OtherAnswer? {
+    private fun createSplitWayAnswer(): AnswerItem? {
         val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
         if (!isSplitWayEnabled) return null
 
@@ -202,12 +226,12 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         if (way.isArea()) return null
 
-        return OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+        return AnswerItem(R.string.quest_generic_answer_differs_along_the_way) {
             onClickSplitWayAnswer()
         }
     }
 
-    private fun createDeleteOrReplaceElementAnswer(): OtherAnswer? {
+    private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
         val isDeletePoiEnabled =
             (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
                 && osmElement?.type == ElementType.NODE
@@ -217,13 +241,14 @@ abstract class AbstractQuestAnswerFragment<T> :
             "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
         }
 
-        return OtherAnswer(R.string.quest_generic_answer_does_not_exist) {
+        return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
             if (isDeletePoiEnabled) deletePoiNode()
             else if (isReplaceShopEnabled) replaceShopElement()
         }
     }
 
     private fun showOtherAnswers() {
+        val otherAnswersButton = otherAnswersButton ?: return
         val answers = assembleOtherAnswers()
         val popup = PopupMenu(requireContext(), otherAnswersButton)
         for (i in answers.indices) {
@@ -239,53 +264,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         }
     }
 
-    private fun getLocationLabelText(): CharSequence? {
-        // prefer to show the level if both are present because it is a more precise indication
-        // where it is supposed to be
-        return getLevelLabelText() ?: getHouseNumberLabelText()
-    }
-
-    private fun getLevelLabelText(): CharSequence? {
-        val tags = osmElement?.tags ?: return null
-        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
-           denominated in the building and thus may (sometimes) not coincide with it. E.g.
-           addr:floor may be "M" while level is "2" */
-        val level = tags["addr:floor"] ?: tags["level:ref"] ?: tags["level"]
-        if (level != null) {
-            return resources.getString(R.string.on_level, level)
-        }
-        val tunnel = tags["tunnel"]
-        if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
-            return resources.getString(R.string.underground)
-        }
-        return null
-    }
-
-    private fun getHouseNumberLabelText(): CharSequence? {
-        val tags = osmElement?.tags ?: return null
-
-        val houseName = tags["addr:housename"]
-        val conscriptionNumber = tags["addr:conscriptionnumber"]
-        val streetNumber = tags["addr:streetnumber"]
-        val houseNumber = tags["addr:housenumber"]
-
-        if (houseName != null) {
-            return resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>")
-                .parseAsHtml()
-        }
-        if (conscriptionNumber != null) {
-            if (streetNumber != null) {
-                return resources.getString(R.string.at_conscription_and_street_number, conscriptionNumber, streetNumber)
-            } else {
-                return resources.getString(R.string.at_conscription_number, conscriptionNumber)
-            }
-        }
-        if (houseNumber != null) {
-            return resources.getString(R.string.at_housenumber, houseNumber)
-        }
-        return null
-    }
-
     override fun onStart() {
         super.onStart()
         if(!startedOnce) {
@@ -295,38 +273,11 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         val answers = assembleOtherAnswers()
         if (answers.size == 1) {
-            otherAnswersButton.setText(answers.first().titleResourceId)
-            otherAnswersButton.setOnClickListener { answers.first().action() }
+            otherAnswersButton?.setText(answers.first().titleResourceId)
+            otherAnswersButton?.setOnClickListener { answers.first().action() }
         } else {
-            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
-            otherAnswersButton.setOnClickListener { showOtherAnswers() }
-        }
-    }
-
-    /** Note: Due to Android architecture limitations, a layout inflater based on this ContextWrapper
-     * will not resolve any resources specified in the XML according to MCC  */
-    override fun onGetLayoutInflater(savedInstanceState: Bundle?): LayoutInflater {
-        // will always return a layout inflater for the current country
-        return super.onGetLayoutInflater(savedInstanceState).cloneInContext(context)
-    }
-
-    override fun getContext(): Context? {
-        val context = super.getContext()
-        if (currentContext.get() !== context) {
-            currentContext = WeakReference<Context>(context)
-            currentCountryContext = if (context != null) createCurrentCountryContextWrapper(context) else null
-        }
-        return currentCountryContext
-    }
-
-    private fun createCurrentCountryContextWrapper(context: Context): ContextWrapper {
-        val conf = Configuration(context.resources.configuration)
-        conf.mcc = countryInfo.mobileCountryCode ?: 0
-        val res = context.createConfigurationContext(conf).resources
-        return object : ContextWrapper(context) {
-            override fun getResources(): Resources {
-                return res
-            }
+            otherAnswersButton?.setText(R.string.quest_generic_otherAnswers)
+            otherAnswersButton?.setOnClickListener { showOtherAnswers() }
         }
     }
 
@@ -398,33 +349,37 @@ abstract class AbstractQuestAnswerFragment<T> :
             }.show()
     }
 
+    /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
-        if (content.childCount > 0) {
-            content.removeAllViews()
+        if (binding.content.childCount > 0) {
+            binding.content.removeAllViews()
         }
-        content.visibility = View.VISIBLE
+        binding.content.visibility = View.VISIBLE
         updateContentPadding()
-        return layoutInflater.inflate(resourceId, content)
+        layoutInflater.inflate(resourceId, binding.content)
+        return binding.content.getChildAt(0)
     }
 
     private fun updateContentPadding() {
         if(!contentPadding) {
-            content.setPadding(0,0,0,0)
+            binding.content.setPadding(0,0,0,0)
         } else {
             val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
             val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
-            content.setPadding(horizontal, vertical, horizontal, vertical)
+            binding.content.setPadding(horizontal, vertical, horizontal, vertical)
         }
     }
 
-    protected fun setButtonsView(resourceId: Int) {
-        removeButtonsView()
-        activity?.layoutInflater?.inflate(resourceId, buttonPanel)
-    }
+    protected fun updateButtonPanel() {
+        // the other answers button is never removed/replaced
+        if (binding.buttonPanel.childCount > 1) {
+            binding.buttonPanel.removeViews(1, binding.buttonPanel.childCount - 1)
+        }
 
-    protected fun removeButtonsView() {
-        if (buttonPanel.childCount > 1) {
-            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+        for (buttonPanelAnswer in buttonPanelAnswers) {
+            val button = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
+            button.setText(buttonPanelAnswer.titleResourceId)
+            button.setOnClickListener { buttonPanelAnswer.action() }
         }
     }
 
@@ -437,6 +392,10 @@ abstract class AbstractQuestAnswerFragment<T> :
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
     }
+
+    protected inline fun <reified T : ViewBinding> contentViewBinding(
+        noinline viewBinder: (View) -> T
+    ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
 
     companion object {
         private const val ARG_QUEST_KEY = "quest_key"
@@ -457,4 +416,4 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 }
 
-data class OtherAnswer(val titleResourceId: Int, val action: () -> Unit)
+data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)

@@ -83,6 +83,10 @@
                             "description": "通行時には所有者から個々に許可を得る必要がある",
                             "title": "私有"
                         },
+                        "unknown": {
+                            "description": "通行条件が不明または曖昧",
+                            "title": "不明"
+                        },
                         "yes": {
                             "description": "法律上の許可あり; 正当利用",
                             "title": "通行可"
@@ -109,6 +113,7 @@
                         "permissive": "所有者許諾あり",
                         "permit": "要許可",
                         "private": "私有",
+                        "unknown": "不明",
                         "yes": "アクセス可"
                     },
                     "terms": "アクセス,許可"
@@ -343,6 +348,10 @@
                 "boundary": {
                     "label": "種類"
                 },
+                "branch_brand": {
+                    "label": "支店名",
+                    "terms": "支店,店舗名,支社,店名,支店名,支所,分館,支部"
+                },
                 "brand": {
                     "label": "ブランド",
                     "terms": "ブランド,系列"
@@ -398,6 +407,18 @@
                 "cables": {
                     "label": "ケーブル",
                     "placeholder": "1, 2, 3..."
+                },
+                "cai_scale-IT": {
+                    "label": "ハイキングルート難度 (Italian Alpine Club)",
+                    "options": {
+                        "E": "E: ハイカー向け",
+                        "EAI": "EAI: 雪模様のハイキング",
+                        "EE": "EE: 熟練ハイカー向け",
+                        "EEA": "EEA: 装備ありの熟練ハイカー向け",
+                        "T": "T: 旅行用"
+                    },
+                    "placeholder": "T, E, EE, …",
+                    "terms": "ハイキングルート難度"
                 },
                 "camera/direction": {
                     "label": "監視カメラの向き(時計回りの角度)",
@@ -544,6 +565,16 @@
                 "crossing": {
                     "label": "種類"
                 },
+                "crossing/barrier": {
+                    "label": "遮断機の種類 ",
+                    "options": {
+                        "double_half": "半幅2つ",
+                        "full": "全幅",
+                        "half": "半幅1つ",
+                        "no": "なし",
+                        "yes": "あり"
+                    }
+                },
                 "crossing/island": {
                     "label": "横断島"
                 },
@@ -552,23 +583,45 @@
                     "options": {
                         "american": "アメリカ料理",
                         "asian": "アジア料理",
+                        "bubble_tea": "タピオカティー",
                         "burger": "ハンバーガー",
+                        "cake": "ケーキ",
                         "chicken": "チキン",
                         "chinese": "中華料理",
+                        "chocolate": "チョコレート",
                         "coffee_shop": "コーヒー店",
+                        "dessert": "デザート",
+                        "donut": "ドーナツ",
+                        "fish": "魚料理",
                         "french": "フランス料理",
                         "german": "ドイツ料理",
                         "greek": "ギリシア料理",
+                        "hot_dog": "ホットドッグ",
                         "ice_cream": "アイスクリーム",
                         "indian": "インド料理",
+                        "indonesian": "インドネシア料理",
                         "italian": "イタリア料理",
                         "japanese": "日本料理",
+                        "juice": "ジュース",
                         "kebab": "ケバブ",
+                        "korean": "韓国料理",
+                        "lebanese": "レバノン料理",
+                        "malaysian": "マレーシア料理",
                         "mexican": "メキシコ料理",
+                        "pankcake": "パンケーキ",
+                        "pasta": "パスタ",
                         "pizza": "ピザ",
+                        "polish": "ポーランド料理",
+                        "portuguese": "ポルトガル料理",
                         "regional": "郷土料理",
+                        "russian": "ロシア料理",
+                        "salad": "サラダ",
                         "sandwich": "サンドイッチ",
+                        "seafood": "海鮮料理",
+                        "spanish": "スペイン料理",
+                        "steak_house": "ステーキハウス",
                         "sushi": "寿司",
+                        "taiwanese": "台湾料理",
                         "thai": "タイ料理",
                         "turkish": "トルコ料理",
                         "vietnamese": "ベトナム料理"
@@ -722,6 +775,16 @@
                     "placeholder": "45, 90, 180, 270",
                     "terms": "方向,度,角度"
                 },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "方向",
+                    "options": {
+                        "east": "東行き",
+                        "north": "北行き",
+                        "south": "南行き",
+                        "west": "西行き"
+                    },
+                    "terms": "方向,方角,向き"
+                },
                 "direction_clock": {
                     "label": "方向",
                     "options": {
@@ -808,12 +871,12 @@
                     "terms": "期間"
                 },
                 "ele": {
-                    "label": "標高",
-                    "terms": "標高,高さ"
+                    "label": "標高 (メートル)",
+                    "terms": "標高,高さ,高度"
                 },
                 "ele_node": {
-                    "label": "標高",
-                    "terms": "標高,高さ"
+                    "label": "標高 (メートル)",
+                    "terms": "標高,高さ,高度"
                 },
                 "electrified": {
                     "label": "電化状態",
@@ -977,7 +1040,7 @@
                 "geyser/height": {
                     "label": "間欠泉の高さ"
                 },
-                "gnis/feature_id": {
+                "gnis/feature_id-US": {
                     "label": "GNIS地物ID",
                     "terms": "gnis地物id"
                 },
@@ -1025,6 +1088,9 @@
                 "height_building": {
                     "label": "高さ (メートル)",
                     "terms": "高さ,建物の高さ,全高"
+                },
+                "highchair": {
+                    "label": "子供用椅子"
                 },
                 "highspeed": {
                     "label": "高速鉄道",
@@ -1305,6 +1371,9 @@
                     "label": "施錠可否",
                     "terms": "施錠可否,施錠,ロック,鍵"
                 },
+                "locked": {
+                    "label": "ロック済"
+                },
                 "man_made": {
                     "label": "種類"
                 },
@@ -1376,6 +1445,9 @@
                 "min_age": {
                     "label": "最少年齢",
                     "terms": "最小年齢,最低年齢,最年少"
+                },
+                "min_height": {
+                    "label": "底辺の高さ (メートル)"
                 },
                 "minspeed": {
                     "label": "最低速度制限",
@@ -1568,6 +1640,9 @@
                         "surface": "地面",
                         "underground": "地下"
                     }
+                },
+                "parking/orientation": {
+                    "label": "駐車の向き"
                 },
                 "parking_entrance": {
                     "label": "種類",
@@ -1791,7 +1866,7 @@
                 "rcn_ref": {
                     "label": "地方自転車ルート参照記号"
                 },
-                "real_fire": {
+                "real_fire-GB-IE": {
                     "label": "リアル暖炉",
                     "terms": "リアル暖炉,暖炉"
                 },
@@ -1926,6 +2001,9 @@
                 "salt": {
                     "label": "塩分",
                     "terms": "塩,塩分,塩湖,塩水"
+                },
+                "sample_collection": {
+                    "label": "検体の種類"
                 },
                 "sanitary_dump_station": {
                     "label": "汚物廃棄所の場所",
@@ -2148,6 +2226,7 @@
                         "aerial imagery": "航空画像",
                         "gps": "GPS",
                         "local knowledge": "地元の知識",
+                        "osm notes": "OpenStreetMapのメモ",
                         "streetlevel imagery": "街路写真",
                         "survey": "現地調査"
                     },
@@ -2175,7 +2254,8 @@
                     "options": {
                         "karting": "カート",
                         "motocross": "モトクロス",
-                        "motor": "モータースポーツ"
+                        "motor": "モータースポーツ",
+                        "speedway": "スピードウェイ競技"
                     }
                 },
                 "sport_racing_nonmotor": {
@@ -2264,6 +2344,7 @@
                     "options": {
                         "artificial_turf": "人工芝",
                         "asphalt": "アスファルト",
+                        "compacted": "砕石舗装",
                         "concrete": "コンクリート",
                         "dirt": "土",
                         "grass": "芝生",
@@ -2294,6 +2375,17 @@
                 "survey/date": {
                     "label": "最新現地調査日付",
                     "terms": "最終測定日"
+                },
+                "survey_point/purpose": {
+                    "label": "測量標の用途",
+                    "options": {
+                        "both": "三角・水準",
+                        "horizontal": "三角測量",
+                        "vertical": "水準測量"
+                    }
+                },
+                "survey_point/structure": {
+                    "label": "測量標の形状"
                 },
                 "swimming_pool": {
                     "label": "種類"
@@ -2941,6 +3033,10 @@
                     "name": "LGBTQ+なコミュニティセンター",
                     "terms": "lgbtq+なコミュニティセンター,コミュニティセンター,lgbt,ゲイ,レズビアン,トランスジェンダー,レインボー"
                 },
+                "amenity/community_centre/youth_centre": {
+                    "name": "青少年センター",
+                    "aliases": "児童館\n青年館"
+                },
                 "amenity/compressed_air": {
                     "name": "空気入れ",
                     "terms": "空気入れ,エアー調整,自転車"
@@ -2971,6 +3067,9 @@
                 "amenity/doctors": {
                     "name": "医院（小規模病院）",
                     "terms": "医院,町医者,診療所,医者,病院,医療"
+                },
+                "amenity/doctors/gynaecology": {
+                    "name": "婦人科医"
                 },
                 "amenity/dojo": {
                     "name": "道場",
@@ -3187,6 +3286,10 @@
                 "amenity/parking/park_ride": {
                     "name": "パーク＆ライド",
                     "terms": "駐車場,自動車,パーキング,コインパーキング,パーク＆ライド,通勤,乗り換え,公共交通機関"
+                },
+                "amenity/parking/street-side": {
+                    "name": "路傍の駐車区画",
+                    "aliases": "駐車場（道路脇）"
                 },
                 "amenity/parking/underground": {
                     "name": "地下駐車場",
@@ -3639,14 +3742,6 @@
                     "name": "新聞販売機",
                     "terms": "新聞販売機"
                 },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "宅配ボックス",
-                    "terms": "宅配ボックス,宅配ロッカー,ロッカー,宅配"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "集配ボックス",
-                    "terms": "集配ボックス,宅配ボックス,宅配ロッカー,ロッカー,宅配"
-                },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "パーキングチケット発給機",
                     "terms": "パーキングチケット,パーキングメーター,駐車券,券売機,自動券売機,自動販売機,自販機,自動発券機,発券機,駐車場,自動車"
@@ -3698,6 +3793,9 @@
                 "area": {
                     "name": "エリア",
                     "terms": "エリア,領域,範囲,面"
+                },
+                "area/footway": {
+                    "name": "歩道（エリア）"
                 },
                 "area/highway": {
                     "name": "道路（エリア）",
@@ -4117,6 +4215,10 @@
                 "building/sty": {
                     "name": "豚小屋",
                     "terms": "豚小屋,豚舎,家畜,小屋"
+                },
+                "building/synagogue": {
+                    "name": "シナゴーグ（建物）",
+                    "aliases": "会堂（ユダヤ教）"
                 },
                 "building/temple": {
                     "name": "寺院（建物）",
@@ -4605,6 +4707,10 @@
                     "name": "リハビリ施設",
                     "terms": "リハビリ,リハビリテーション,医療,福祉"
                 },
+                "healthcare/sample_collection": {
+                    "name": "検査用検体採取施設",
+                    "aliases": "検体採取施設\n検体採取センター"
+                },
                 "healthcare/speech_therapist": {
                     "name": "スピーチセラピスト",
                     "terms": "スピーチセラピスト,福祉"
@@ -4641,6 +4747,13 @@
                 "highway/crossing/marked-raised": {
                     "name": "横断歩道（隆起あり・マークあり）",
                     "terms": "横断歩道（隆起あり・マークあり）,横断歩道,隆起,交通安全,静音化,歩道"
+                },
+                "highway/crossing/signals": {
+                    "name": "横断歩道（歩行者用信号あり）"
+                },
+                "highway/crossing/signals-raised": {
+                    "name": "横断歩道（歩行者用信号あり、隆起型）",
+                    "aliases": "スムーズ横断歩道\nスムース横断歩道"
                 },
                 "highway/crossing/unmarked": {
                     "name": "横断歩道（マークなし）",
@@ -5151,8 +5264,9 @@
                     "terms": "兵舎,兵営"
                 },
                 "landuse/military/danger_area": {
-                    "name": "危険区域",
-                    "terms": "危険区域"
+                    "name": "（軍事的）危険区域",
+                    "terms": "危険区域",
+                    "aliases": "地雷原"
                 },
                 "landuse/military/naval_base": {
                     "name": "海軍基地",
@@ -5459,6 +5573,9 @@
                     "name": "ネットボールコート",
                     "terms": "ネットボールコート,ネットボール,屋内スポーツ,球技"
                 },
+                "leisure/pitch/paintball": {
+                    "name": "ペイントボール場"
+                },
                 "leisure/pitch/rugby_league": {
                     "name": "ラグビーリーグ場",
                     "terms": "ラグビー場,ラグビー,リーグ,スポーツ,運動,競技"
@@ -5466,6 +5583,9 @@
                 "leisure/pitch/rugby_union": {
                     "name": "ラグビー場",
                     "terms": "ラグビーユニオン場,スポーツ,運動,競技"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "射撃場（競技用）"
                 },
                 "leisure/pitch/shuffleboard": {
                     "name": "シャフルボード場",
@@ -5515,9 +5635,8 @@
                     "name": "進水路",
                     "terms": "進水路,スリップウェイ"
                 },
-                "leisure/slipway_point": {
-                    "name": "進水所",
-                    "terms": "進水路,スリップウェイ,船舶"
+                "leisure/slipway_drivable": {
+                    "name": "進水斜路（自走用）"
                 },
                 "leisure/sports_centre": {
                     "name": "スポーツセンター/複合施設",
@@ -5526,6 +5645,9 @@
                 "leisure/sports_centre/climbing": {
                     "name": "クライミングジム",
                     "terms": "クライミングジム,クライミング,スポーツ,ボルダリング"
+                },
+                "leisure/sports_centre/shooting": {
+                    "name": "射撃競技用施設"
                 },
                 "leisure/sports_centre/swimming": {
                     "name": "遊泳プール（屋内）",
@@ -5618,9 +5740,12 @@
                     "name": "皆伐地",
                     "terms": "皆伐,伐採"
                 },
+                "man_made/compass_rose": {
+                    "name": "コンパスローズ",
+                    "aliases": "コンパス図\n羅針図\nウインドローズ"
+                },
                 "man_made/courtyard": {
-                    "name": "中庭",
-                    "terms": "中庭,建物"
+                    "name": "中庭"
                 },
                 "man_made/crane": {
                     "name": "クレーン",
@@ -5834,6 +5959,10 @@
                     "name": "柱",
                     "terms": "電柱,鉄柱,柱"
                 },
+                "man_made/video_wall": {
+                    "name": "街頭ビジョン",
+                    "aliases": "屋外ビジョン\nデジタルサイネージ"
+                },
                 "man_made/wastewater_plant": {
                     "name": "下水処理場",
                     "terms": "下水処理場"
@@ -5887,7 +6016,7 @@
                     "terms": "掩体壕,軍事用バンカー,バンカー"
                 },
                 "military/checkpoint": {
-                    "name": "検問所",
+                    "name": "検問所（軍）",
                     "terms": "検問所,チェックポイント"
                 },
                 "military/nuclear_explosion_site": {
@@ -6073,10 +6202,6 @@
                     "name": "森林（自然林・原生林）",
                     "terms": "森林（自然林・原生林）,自然林,原生林,樹木,植物,林"
                 },
-                "network/type/node_network": {
-                    "name": "ノード・ネットワーク",
-                    "terms": "ノード・ネットワーク,ネットワーク"
-                },
                 "noexit/yes": {
                     "name": "行き止まり",
                     "terms": "行き止まり,行止り,突き当たり"
@@ -6108,9 +6233,8 @@
                     "name": "非営利組織",
                     "terms": "非営利組織,npo,非営利団体"
                 },
-                "office/bail_bond_agent": {
-                    "name": "保釈保証業者",
-                    "terms": "保釈保証業者"
+                "office/bail_bond_agent-US-PH": {
+                    "name": "保釈保証業者"
                 },
                 "office/charity": {
                     "name": "慈善団体",
@@ -6225,7 +6349,7 @@
                 },
                 "office/notary": {
                     "name": "公証役場",
-                    "terms": "公証役場"
+                    "terms": "公証人役場,公証役場,役場,法人登記"
                 },
                 "office/physician": {
                     "name": "医者"
@@ -6441,6 +6565,9 @@
                 "point": {
                     "name": "ポイント",
                     "terms": "ポイント,点,ノード"
+                },
+                "police/checkpoint": {
+                    "name": "検問所（警察）"
                 },
                 "polling_station": {
                     "name": "投票所(臨時)",
@@ -7844,19 +7971,19 @@
                 },
                 "type/restriction/only_left_turn": {
                     "name": "左折専用",
-                    "terms": "左折専用,左折のみ"
+                    "terms": "左折専用"
                 },
                 "type/restriction/only_right_turn": {
                     "name": "右折専用",
-                    "terms": "右折専用,右折のみ"
+                    "terms": "右折専用"
                 },
                 "type/restriction/only_straight_on": {
                     "name": "直進専用",
-                    "terms": "直進専用,直進のみ"
+                    "terms": "直進専用"
                 },
                 "type/restriction/only_u_turn": {
                     "name": "Uターン専用",
-                    "terms": "uターン専用,uターンのみ"
+                    "terms": "uターン専用"
                 },
                 "type/route": {
                     "name": "ルート",
@@ -7867,8 +7994,8 @@
                     "terms": "索道,索道ルート"
                 },
                 "type/route/bicycle": {
-                    "name": "サイクリングルート",
-                    "terms": "サイクリングルート,サイクリングコース"
+                    "name": "自転車ルート",
+                    "terms": "自転車ルート,自転車コース,自転車,サイクリングルート"
                 },
                 "type/route/bus": {
                     "name": "バスルート",

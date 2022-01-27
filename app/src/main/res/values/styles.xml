@@ -121,16 +121,19 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/label_text_below_image</item>
     </style>
 
-    <style name="ImageSelectTitle">
+    <style name="TitleNextToImage">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/title_text_next_to_image</item>
     </style>
 
-    <style name="ImageSelectDescription">
+    <style name="DescriptionNextToImage">
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/description_text_next_to_image</item>
     </style>
 
     <!-- ++++++++++++++++++++++++++++++++++++++ Table ++++++++++++++++++++++++++++++++++++++++++ -->

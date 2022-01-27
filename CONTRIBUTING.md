@@ -59,7 +59,7 @@ StreetComplete depends on some projects for the app. Try to report them in the a
 * **Map style issues** should be reported in a [separate repository](https://github.com/ENT8R/streetcomplete-mapstyle).
 Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
-Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with Tangram-ES or another dependency.
+Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with Tangram-ES or another project.
 The full list of dependencies and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
 
 ### Suggesting new quests
@@ -85,7 +85,7 @@ Note that StreetComplete also uses [some dependencies](#issues-with-dependencies
 
 If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/streetcomplete/StreetComplete/labels/help%20wanted).
 
-To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
+To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top. If your first build fails due to missing dependencies, make sure [you have accepted the required license agreements](https://developer.android.com/studio/intro/update#download-with-gradle).
 
 ### Developing new quests
 
@@ -96,16 +96,26 @@ In case you **don't have an idea of a quest?** Look [at the existing issues](htt
 
 Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
 
-### StreetComplete-related projects
+### Code style
 
-#### Dependencies
+Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
+
+### Hints for more active people
+
+See ["Efficiently working together"](https://github.com/streetcomplete/StreetComplete/discussions/3450) which is addressed to people highly active in this project.
+
+If you are making your first issue or pull request then you can definitely skip reading it.
+
+## StreetComplete-related projects
+
+### Dependencies
 
 * [Tangram-ES](https://github.com/tangrams/tangram-es/) map rendering
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name
 
-#### Created for StreetComplete
+### Created for StreetComplete
 
 * [StreetCompleteJSON](https://github.com/goldfndr/StreetCompleteJSON) by [@goldfndr](https://github.com/goldfndr) listing all tags edited by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete)
 * [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
@@ -116,6 +126,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/st
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 * [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
+* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L35)
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 

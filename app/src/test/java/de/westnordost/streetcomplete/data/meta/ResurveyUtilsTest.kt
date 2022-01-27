@@ -24,7 +24,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("new key", "tag")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("new key", "tag")
         ), changes)
     }
@@ -48,7 +48,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("old key", "new value")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("old key", "old value", "new value")
         ), changes)
     }
@@ -58,7 +58,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("key", "value")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("check_date:key", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -68,7 +68,7 @@ class ResurveyUtilsTest {
         builder.updateWithCheckDate("key", "value")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("check_date:key", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -148,7 +148,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDateForKey("key")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("check_date:key", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -158,7 +158,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDateForKey("key")
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("check_date:key", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -185,63 +185,12 @@ class ResurveyUtilsTest {
         )))
     }
 
-    @Test fun `addOrModifyCheckDate adds check date`() {
-        val builder = StringMapChangesBuilder(mapOf())
-        builder.addOrModifyCheckDate()
-        val changes = builder.create().changes
-
-        assertEquals(listOf(
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
-        ), changes)
-    }
-
-    @Test fun `addOrModifyCheckDate modifies check date`() {
-        val builder = StringMapChangesBuilder(mapOf("check_date" to "2000-11-11"))
-        builder.addOrModifyCheckDate()
-        val changes = builder.create().changes
-
-        assertEquals(listOf(
-            StringMapEntryModify("check_date", "2000-11-11", LocalDate.now().toCheckDateString())
-        ), changes)
-    }
-
-    @Test fun `addOrModifyCheckDate does not remove old check dates on adding check date`() {
-        val builder = StringMapChangesBuilder(mapOf(
-            "lastcheck" to "2000-11-02",
-            "last_checked" to "2000-11-03",
-        ))
-        builder.addOrModifyCheckDate()
-        val changes = builder.create().changes.toSet()
-
-        assertTrue(changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
-            StringMapEntryDelete("lastcheck", "2000-11-02"),
-            StringMapEntryDelete("last_checked", "2000-11-03"),
-        )))
-    }
-
-    @Test fun `addOrModifyCheckDate does not remove old check dates on modifying check date`() {
-        val builder = StringMapChangesBuilder(mapOf(
-            "check_date" to "2000-11-01",
-            "lastcheck" to "2000-11-02",
-            "last_checked" to "2000-11-03",
-        ))
-        builder.addOrModifyCheckDate()
-        val changes = builder.create().changes.toSet()
-
-        assertTrue(changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryModify("check_date", "2000-11-01", LocalDate.now().toCheckDateString()),
-            StringMapEntryDelete("lastcheck", "2000-11-02"),
-            StringMapEntryDelete("last_checked", "2000-11-03"),
-        )))
-    }
-
     @Test fun `updateCheckDate adds check date`() {
         val builder = StringMapChangesBuilder(mapOf())
         builder.updateCheckDate()
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -251,7 +200,7 @@ class ResurveyUtilsTest {
         builder.updateCheckDate()
         val changes = builder.create().changes
 
-        assertEquals(listOf(
+        assertEquals(setOf(
             StringMapEntryModify("check_date", "2000-11-11", LocalDate.now().toCheckDateString())
         ), changes)
     }
@@ -274,15 +223,15 @@ class ResurveyUtilsTest {
 
     @Test fun `deleteCheckDates does not add a check date`() {
         val builder = StringMapChangesBuilder(mapOf())
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.isEmpty())
     }
-    
+
     @Test fun `deleteCheckDates removes check date`() {
         val builder = StringMapChangesBuilder(mapOf("check_date" to "2000-11-11"))
-        builder.deleteOtherCheckDates()
+        builder.removeCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
@@ -296,7 +245,7 @@ class ResurveyUtilsTest {
             "lastcheck" to "2000-11-02",
             "last_checked" to "2000-11-03",
         ))
-        builder.deleteOtherCheckDates()
+        builder.removeCheckDates()
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
@@ -305,18 +254,18 @@ class ResurveyUtilsTest {
             StringMapEntryDelete("last_checked", "2000-11-03"),
         )))
     }
-    
+
     @Test fun `deleteOtherCheckDates does not add a check date`() {
         val builder = StringMapChangesBuilder(mapOf())
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.isEmpty())
     }
-    
+
     @Test fun `deleteOtherCheckDates does not modify check date`() {
         val builder = StringMapChangesBuilder(mapOf("check_date" to "2000-11-11"))
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes
 
         assertTrue(changes.isEmpty())
@@ -328,7 +277,7 @@ class ResurveyUtilsTest {
             "lastcheck" to "2000-11-02",
             "last_checked" to "2000-11-03",
         ))
-        builder.deleteOtherCheckDates()
+        builder.removeOtherCheckDates()
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(

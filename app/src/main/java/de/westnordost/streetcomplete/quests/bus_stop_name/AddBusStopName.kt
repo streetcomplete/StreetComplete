@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
@@ -18,9 +19,11 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     """
 
     override val enabledInCountries = AllCountriesExcept("US", "CA")
-    override val commitMessage = "Determine bus/tram stop names"
+    override val changesetComment = "Determine bus/tram stop names"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
+
+    override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["tram"] == "yes")
@@ -30,10 +33,10 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
     override fun createForm() = AddBusStopNameForm()
 
-    override fun applyAnswerTo(answer: BusStopNameAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
             is NoBusStopName -> {
-                changes.add("name:signed", "no")
+                tags["name:signed"] = "no"
             }
             is BusStopName -> {
                 for ((languageTag, name) in answer.localizedNames) {
@@ -42,7 +45,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
                         "international" -> "int_name"
                         else -> "name:$languageTag"
                     }
-                    changes.addOrModify(key, name)
+                    tags[key] = name
                 }
             }
         }

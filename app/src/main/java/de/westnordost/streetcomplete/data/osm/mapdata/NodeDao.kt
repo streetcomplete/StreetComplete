@@ -58,7 +58,7 @@ class NodeDao @Inject constructor(private val db: Database) {
                 LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
                 cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
                 cursor.getInt(VERSION),
-                cursor.getLong(TIMESTAMP)
+                cursor.getLong(TIMESTAMP),
             )
         }
     }
@@ -69,6 +69,16 @@ class NodeDao @Inject constructor(private val db: Database) {
         return db.delete(NAME, "$ID IN ($idsString)")
     }
 
-    fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun clear() {
+        db.delete(NAME)
+    }
+
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
 }

@@ -36,14 +36,14 @@ class QuestPinsManager(
     // quest key -> [point, ...]
     private val quests: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
 
-    private val lifecycleScope: CoroutineScope
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    /** Switch visibility of quest pins layer */
+    /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value) show() else hide()
+            if (value) start() else stop()
         }
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
@@ -69,25 +69,21 @@ class QuestPinsManager(
         }
     }
 
-    init {
-        lifecycleScope = CoroutineScope(SupervisorJob())
-    }
-
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        hide()
-        lifecycleScope.cancel()
+        stop()
+        viewLifecycleScope.cancel()
     }
 
-    private fun show() {
+    private fun start() {
         initializeQuestTypeOrders()
         onNewScreenPosition()
         visibleQuestsSource.addListener(visibleQuestsListener)
         questTypeOrderSource.addListener(questTypeOrderListener)
     }
 
-    private fun hide() {
+    private fun stop() {
         clear()
-        lifecycleScope.coroutineContext.cancelChildren()
+        viewLifecycleScope.coroutineContext.cancelChildren()
         visibleQuestsSource.removeListener(visibleQuestsListener)
         questTypeOrderSource.removeListener(questTypeOrderListener)
     }
@@ -123,7 +119,7 @@ class QuestPinsManager(
         }
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
             var addedAny = false
             for (quest in quests) {
@@ -166,7 +162,7 @@ class QuestPinsManager(
     private fun updatePins() {
         if (isActive) {
             val pins = synchronized(quests) { quests.values.flatten() }
-            pinsMapComponent.showPins(pins)
+            pinsMapComponent.set(pins)
         }
     }
 

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.settings.questselection
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
@@ -14,30 +13,29 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
-import kotlinx.android.synthetic.main.row_quest_preset.view.*
+import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
 import kotlinx.coroutines.*
-import javax.inject.Inject
 
-class QuestPresetsAdapter @Inject constructor(
+class QuestPresetsAdapter(
     private val context: Context,
     private val questPresetsController: QuestPresetsController
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), LifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() { lifecycleScope.launch {
+        override fun onSelectedQuestPresetChanged() { viewLifecycleScope.launch {
             notifyDataSetChanged()
         }}
 
-        override fun onAddedQuestPreset(preset: QuestPreset) { lifecycleScope.launch {
+        override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
             presets.add(preset)
             notifyItemInserted(presets.size - 1)
         }}
 
-        override fun onDeletedQuestPreset(presetId: Long) { lifecycleScope.launch {
+        override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
             val deleteIndex = presets.indexOfFirst { it.id == presetId }
             presets.removeAt(deleteIndex)
             notifyItemRemoved(deleteIndex)
@@ -48,7 +46,7 @@ class QuestPresetsAdapter @Inject constructor(
     fun onStart() {
         presets = mutableListOf()
         presets.add(QuestPreset(0, context.getString(R.string.quest_presets_default_name)))
-        presets.addAll(questPresetsController.getAllQuestPresets())
+        presets.addAll(questPresetsController.getAll())
 
         questPresetsController.addListener(questPresetsListener)
     }
@@ -60,36 +58,38 @@ class QuestPresetsAdapter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        lifecycleScope.cancel()
+        viewLifecycleScope.cancel()
     }
 
     override fun getItemCount(): Int = presets.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestPresetViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_quest_preset, parent, false)
-        return QuestPresetViewHolder(layout)
+        val inflater = LayoutInflater.from(parent.context)
+        return QuestPresetViewHolder(RowQuestPresetBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: QuestPresetViewHolder, position: Int) {
         holder.onBind(presets[position])
     }
 
-    inner class QuestPresetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class QuestPresetViewHolder(private val binding: RowQuestPresetBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
         fun onBind(with: QuestPreset) {
-            itemView.presetTitleText.text = with.name
-            itemView.selectionRadioButton.setOnCheckedChangeListener(null)
-            itemView.selectionRadioButton.isChecked = questPresetsController.selectedQuestPresetId == with.id
-            itemView.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
+            binding.presetTitleText.text = with.name
+            binding.selectionRadioButton.setOnCheckedChangeListener(null)
+            binding.selectionRadioButton.isChecked = questPresetsController.selectedId == with.id
+            binding.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) onSelectQuestPreset(with.id)
             }
-            itemView.deleteButton.isEnabled = true
-            itemView.deleteButton.isInvisible = with.id == 0L
-            itemView.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
+            binding.deleteButton.isEnabled = true
+            binding.deleteButton.isInvisible = with.id == 0L
+            binding.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
         }
 
         fun onSelectQuestPreset(presetId: Long) {
-            lifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.selectedQuestPresetId = presetId
+            viewLifecycleScope.launch(Dispatchers.IO) {
+                questPresetsController.selectedId = presetId
             }
         }
 
@@ -102,9 +102,9 @@ class QuestPresetsAdapter @Inject constructor(
         }
 
         fun deleteQuestPreset(presetId: Long) {
-            itemView.deleteButton.isEnabled = false
-            lifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.deleteQuestPreset(presetId)
+            binding.deleteButton.isEnabled = false
+            viewLifecycleScope.launch(Dispatchers.IO) {
+                questPresetsController.delete(presetId)
             }
         }
     }

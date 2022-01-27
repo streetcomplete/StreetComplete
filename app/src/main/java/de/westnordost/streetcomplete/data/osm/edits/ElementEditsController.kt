@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.*
@@ -30,24 +29,7 @@ import javax.inject.Singleton
         source: String,
         action: ElementEditAction
     ) {
-        // some hardcode here, but not sure how to generalize this:
-        if (action is UpdateElementTagsAction) {
-            /* if there is an unsynced UpdateElementTagsAction that is the exact reverse of what
-               shall be added now, instead of adding that, delete that reverse edit */
-            synchronized(this) {
-                val reverseEdit = getAllUnsynced().asReversed().find {
-                    it.elementType == element.type && it.elementId == element.id
-                    it.action is UpdateElementTagsAction && it.action.isReverseOf(action)
-                }
-                if (reverseEdit != null) {
-                    delete(reverseEdit)
-                    return
-                }
-            }
-        }
-
-        val edit = ElementEdit(0, questType, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action)
-        add(edit)
+        add(ElementEdit(0, questType, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
     }
 
     fun get(id: Long): ElementEdit? =
@@ -87,7 +69,7 @@ import javax.inject.Singleton
         return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
-    fun synced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
+    fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
         val syncSuccess: Boolean
         synchronized(this) {
             for (update in elementUpdates.idUpdates) {
@@ -102,7 +84,7 @@ import javax.inject.Singleton
         elementIdProviderDB.delete(edit.id)
     }
 
-    fun syncFailed(edit: ElementEdit) {
+    fun markSyncFailed(edit: ElementEdit) {
         delete(edit)
     }
 

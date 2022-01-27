@@ -16,11 +16,4 @@ class HasKeyLikeTest {
         assertTrue(key.matches(mapOf("n(se" to "no")))
         assertFalse(key.matches(mapOf()))
     }
-
-    @Test fun toOverpassQLString() {
-        assertEquals(
-            "[~'^(na[ms]e)$' ~ '.*']",
-            HasKeyLike("na[ms]e").toOverpassQLString()
-        )
-    }
 }

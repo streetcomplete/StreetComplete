@@ -5,8 +5,11 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
@@ -94,10 +97,12 @@ class AddPlaceName(
         and !name and !brand and noname != yes and name:signed != no
     """.trimIndent()).toElementFilterExpression() }
 
-    override val commitMessage = "Determine place names"
+    override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
     override val isReplaceShopEnabled = true
+
+    override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
 
@@ -110,15 +115,24 @@ class AddPlaceName(
     override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && hasFeatureName(element.tags)
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+
     override fun createForm() = AddPlaceNameForm()
 
-    override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: StringMapChangesBuilder) {
         when(answer) {
-            is NoPlaceNameSign -> changes.add("name:signed", "no")
-            is PlaceName -> changes.add("name", answer.name)
-            is BrandFeature -> {
-                for ((key, value) in answer.tags.entries) {
-                    changes.addOrModify(key, value)
+            is NoPlaceNameSign -> {
+                tags["name:signed"] = "no"
+            }
+            is PlaceName -> {
+                for ((languageTag, name) in answer.localizedNames) {
+                    val key = when (languageTag) {
+                        "" -> "name"
+                        "international" -> "int_name"
+                        else -> "name:$languageTag"
+                    }
+                    tags[key] = name
                 }
             }
         }

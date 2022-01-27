@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCypher, PostboxRoyalCypher>() {
@@ -20,7 +20,7 @@ class AddPostboxRoyalCypherForm : AImageListQuestAnswerFragment<PostboxRoyalCyph
     )
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_postboxRoyalCypher_type_none) { confirmNoCypher() }
+        AnswerItem(R.string.quest_postboxRoyalCypher_type_none) { confirmNoCypher() }
     )
 
     override val itemsPerRow = 3

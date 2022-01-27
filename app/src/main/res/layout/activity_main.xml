@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map_fragment"
         android:name="de.westnordost.streetcomplete.map.MainFragment"
         android:layout_width="match_parent"

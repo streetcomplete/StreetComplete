@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -22,21 +24,23 @@ class AddHandrail : OsmFilterQuestType<Boolean>() {
          )
     """
 
-    override val commitMessage = "Add whether steps have a handrail"
+    override val changesetComment = "Add whether steps have a handrail"
     override val wikiLink = "Key:handrail"
     override val icon = R.drawable.ic_quest_steps_handrail
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_handrail_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("handrail", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+        tags.updateWithCheckDate("handrail", answer.toYesNo())
         if (!answer) {
-            changes.deleteIfExists("handrail:left")
-            changes.deleteIfExists("handrail:right")
-            changes.deleteIfExists("handrail:center")
+            tags.remove("handrail:left")
+            tags.remove("handrail:right")
+            tags.remove("handrail:center")
         }
     }
 }

@@ -1,6 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
 atmOperators: [BNDA, BICIM]
 mobileCountryCode: 610
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
 officialLanguages: [fr, bm]
 orchardProduces: [guava, mango, mangosteen, tomato, banana, cashew_nut, papaya, chilli_pepper, sweet_pepper, lemon, lime, orange, grapefruit, date, tea]
 popularReligions: [muslim]

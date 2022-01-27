@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
@@ -52,7 +53,7 @@ class ElementEditsControllerTest {
 
         on(idProvider.get(anyLong())).thenReturn(ElementIdProvider(listOf()))
 
-        ctrl.syncFailed(edit)
+        ctrl.markSyncFailed(edit)
 
         verify(db).deleteAll(eq(listOf(edit.id)))
         verify(idProvider).deleteAll(eq(listOf(edit.id)))
@@ -68,7 +69,7 @@ class ElementEditsControllerTest {
         )
         val updates = MapDataUpdates(idUpdates = idUpdates)
 
-        ctrl.synced(edit, updates)
+        ctrl.markSynced(edit, updates)
 
         verify(db).updateElementId(NODE, -1,2)
         verify(db).updateElementId(NODE, -8,20)

@@ -15,7 +15,8 @@ import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AddLocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.LocalizedName
@@ -24,9 +25,17 @@ import java.lang.IllegalStateException
 
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
+    override val contentLayoutResId = R.layout.quest_roadname
+    private val binding by contentViewBinding(QuestRoadnameBinding::bind)
+
+    override val addLanguageButton get() = binding.addLanguageButton
+    override val namesList get() = binding.namesList
+
+    override val adapterRowLayoutResId = R.layout.quest_roadname_row
+
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
-        OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+        AnswerItem(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
+        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
@@ -36,14 +45,9 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         Injector.applicationComponent.inject(this)
     }
 
-    override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
-        return AddLocalizedNameAdapter(
-            data, requireContext(), getPossibleStreetsignLanguageTags(),
-            abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
-        )
-    }
+    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbreviationsByLocale
 
-    private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
+    override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
         val polyline = when(val geom = elementGeometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()

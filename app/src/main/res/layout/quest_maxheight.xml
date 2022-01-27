@@ -39,6 +39,7 @@
         android:paddingStart="16dp"
         android:background="#0fff"
         android:visibility="gone"
-        tools:visibility="visible"/>
+        tools:visibility="visible"
+        tools:ignore="RtlSymmetry" />
 
 </RelativeLayout>

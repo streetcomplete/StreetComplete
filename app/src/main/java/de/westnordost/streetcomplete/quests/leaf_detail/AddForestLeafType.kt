@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
@@ -18,10 +19,12 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
         ways with natural = tree_row and !leaf_type
     """.toElementFilterExpression()}
 
-    override val commitMessage = "Add leaf type"
+    override val changesetComment = "Add leaf type"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val forests = mapData
@@ -46,7 +49,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
 
     override fun createForm() = AddForestLeafTypeForm()
 
-    override fun applyAnswerTo(answer: ForestLeafType, changes: StringMapChangesBuilder) {
-        changes.add("leaf_type", answer.osmValue)
+    override fun applyAnswerTo(answer: ForestLeafType, tags: StringMapChangesBuilder) {
+        tags["leaf_type"] = answer.osmValue
     }
 }
