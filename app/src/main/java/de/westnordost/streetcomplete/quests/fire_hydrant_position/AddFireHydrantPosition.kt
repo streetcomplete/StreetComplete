@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -29,7 +29,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
     override fun createForm() = AddFireHydrantPositionForm()
 
-    override fun applyAnswerTo(answer: FireHydrantPosition, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: FireHydrantPosition, tags: Tags, timestampEdited: Long) {
         tags["fire_hydrant:position"] = answer.osmValue
     }
 }

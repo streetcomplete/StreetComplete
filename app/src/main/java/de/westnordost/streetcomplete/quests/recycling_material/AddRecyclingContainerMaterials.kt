@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
@@ -51,7 +51,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = recycling")
 
-    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {
             applyRecyclingMaterialsAnswer(answer.materials, tags)
         } else if(answer is IsWasteContainer) {
@@ -59,7 +59,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
     }
 
-    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: StringMapChangesBuilder) {
+    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: Tags, timestampEdited: Long) {
         // first clear recycling:* taggings previously "yes"
         for ((key, value) in tags.entries) {
             if (key.startsWith("recycling:") && value == "yes") {
@@ -107,7 +107,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
     }
 
-    private fun applyWasteContainerAnswer(tags: StringMapChangesBuilder) {
+    private fun applyWasteContainerAnswer(tags: Tags, timestampEdited: Long) {
         tags["amenity"] = "waste_disposal"
         tags.remove("recycling_type")
 

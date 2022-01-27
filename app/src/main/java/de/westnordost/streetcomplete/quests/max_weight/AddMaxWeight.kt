@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.*
 
@@ -36,7 +36,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
     override fun createForm() = AddMaxWeightForm()
 
-    override fun applyAnswerTo(answer: MaxWeightAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is MaxWeight -> {
                 tags[answer.sign.osmKey] = answer.weight.toString()

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.steps_ramp
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
@@ -36,7 +36,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
     override fun createForm() = AddStepsRampForm()
 
-    override fun applyAnswerTo(answer: StepsRampAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: StepsRampAnswer, tags: Tags, timestampEdited: Long) {
         // special tagging if the wheelchair ramp is separate
         if (answer.wheelchairRamp == WheelchairRampStatus.SEPARATE) {
             val hasAnotherRamp = answer.bicycleRamp || answer.strollerRamp
@@ -64,7 +64,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
     }
 }
 
-private fun applyRampAnswer(tags: StringMapChangesBuilder, rampType: String, hasRamp: Boolean, rampTagForcedToBeYes: Boolean) {
+private fun applyRampAnswer(tags: Tags, rampType: String, hasRamp: Boolean, rampTagForcedToBeYes: Boolean) {
     if (hasRamp) {
         tags["ramp:$rampType"] = "yes"
     } else if(rampTagForcedToBeYes) {

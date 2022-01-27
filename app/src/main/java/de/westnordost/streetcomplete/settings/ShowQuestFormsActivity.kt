@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.BaseActivity
 import javax.inject.Inject
@@ -141,7 +140,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
 
     override fun onAnsweredQuest(questKey: QuestKey, answer: Any) {
         val builder = StringMapChangesBuilder(mapOf())
-        (currentQuestType as? OsmElementQuestType<Any>)?.applyAnswerTo(answer, builder)
+        (currentQuestType as? OsmElementQuestType<Any>)?.applyAnswerTo(answer, builder, 0)
         val tagging = builder.create().changes.joinToString("\n")
         AlertDialog.Builder(this)
             .setMessage("Tagging\n$tagging")

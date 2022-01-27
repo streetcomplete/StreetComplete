@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
@@ -47,7 +47,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override fun createForm() = AddBusStopShelterForm()
 
-    override fun applyAnswerTo(answer: BusStopShelterAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BusStopShelterAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             SHELTER -> tags.updateWithCheckDate("shelter", "yes")
             NO_SHELTER -> tags.updateWithCheckDate("shelter", "no")

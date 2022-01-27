@@ -224,7 +224,7 @@ import kotlin.collections.ArrayList
 
     private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
-        quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder)
+        quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder, element.timestampEdited)
         return changesBuilder.create()
     }
 

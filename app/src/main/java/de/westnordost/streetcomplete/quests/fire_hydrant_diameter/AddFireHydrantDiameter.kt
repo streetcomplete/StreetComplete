@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -49,7 +49,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun createForm() = AddFireHydrantDiameterForm()
 
-    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is FireHydrantDiameter ->       tags["fire_hydrant:diameter"] = answer.toOsmValue()
             is NoFireHydrantDiameterSign -> tags["fire_hydrant:diameter:signed"] = "no"

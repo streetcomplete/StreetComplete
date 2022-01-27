@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -57,7 +57,7 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
 
     override fun createForm() = AddTrafficSignalsVibrationForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate(VIBRATING_BUTTON, answer.toYesNo())
     }
 }

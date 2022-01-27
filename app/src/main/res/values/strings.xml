@@ -53,6 +53,11 @@
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
+
+    <string name="quest_openingHours_signed_name_title">"Are the opening hours signed for %s?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Are the opening hours signed for %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Are the opening hours of this place signed? (%s)"</string>
+
     <string name="quest_openingHours_resurvey_name_title">"Are these opening hours for %s still correct?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Are these opening hours for %1$s (%2$s) still correct?"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"Are these opening hours still correct (%s)?"</string>

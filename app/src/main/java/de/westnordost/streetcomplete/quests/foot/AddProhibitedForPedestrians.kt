@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.foot
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
@@ -47,7 +47,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
 
     override fun createForm() = AddProhibitedForPedestriansForm()
 
-    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> tags["foot"] = "no"
