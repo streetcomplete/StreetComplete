@@ -56,8 +56,11 @@ import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(),
-    MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
+class MainActivity :
+    BaseActivity(),
+    MainFragment.Listener,
+    TutorialFragment.Listener,
+    NotificationButtonFragment.Listener {
 
     @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
     @Inject lateinit var questAutoSyncer: QuestAutoSyncer

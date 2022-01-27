@@ -48,8 +48,10 @@ import javax.inject.Inject
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
-class SplitWayFragment : Fragment(R.layout.fragment_split_way),
-    IsCloseableBottomSheet, IsShowingQuestDetails {
+class SplitWayFragment :
+    Fragment(R.layout.fragment_split_way),
+    IsCloseableBottomSheet,
+    IsShowingQuestDetails {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 

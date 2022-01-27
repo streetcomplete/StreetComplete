@@ -107,9 +107,9 @@ abstract class AGroupedImageListQuestAnswerFragment<I, T> : AbstractQuestFormAns
         if (itemValue == null) {
             context?.let {
                 AlertDialog.Builder(it)
-                .setMessage(R.string.quest_generic_item_invalid_value)
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
+                    .setMessage(R.string.quest_generic_item_invalid_value)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show()
             }
         } else {
             if (item.isGroup) {

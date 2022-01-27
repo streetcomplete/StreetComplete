@@ -46,8 +46,7 @@ fun main() = runBlocking {
         connection.setRequestProperty("User-Agent", "StreetComplete opening hours test")
         connection.setRequestProperty("charset", StandardCharsets.UTF_8.name())
         connection.doOutput = true
-        connection.inputStream.bufferedReader().useLines { lines ->
-            runBlocking {
+        connection.inputStream.bufferedReader().useLines { lines -> runBlocking {
             for (line in lines) { launch {
                 total++
                 var oh = line

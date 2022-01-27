@@ -46,6 +46,7 @@ class DeletePoiNodeActionTest {
     fun `moved element creates conflict`() {
         DeletePoiNodeAction.createUpdates(
             e.copy(position = p(1.0, 1.0)),
-            e, repos, provider)
+            e, repos, provider
+        )
     }
 }

@@ -33,7 +33,8 @@ import javax.inject.Inject
 
 /** Shows only a login button and a text that clarifies that login is necessary for publishing the
  *  answers. */
-class LoginFragment : Fragment(R.layout.fragment_login),
+class LoginFragment :
+    Fragment(R.layout.fragment_login),
     HasTitle,
     BackPressedListener,
     OAuthFragment.Listener {
@@ -112,7 +113,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
                 val permissionsApi = PermissionsApi(OsmApiModule.osmConnection(consumer))
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
             } catch (e: Exception) { false }
-            }
+        }
     }
 
     /* ------------------------------------------------------------------------------------------ */

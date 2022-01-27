@@ -55,7 +55,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     private val binding get() = _binding!!
 
     protected var otherAnswersButton: TextView? = null
-    private set
+        private set
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
     override val bottomSheet get() = binding.bottomSheet

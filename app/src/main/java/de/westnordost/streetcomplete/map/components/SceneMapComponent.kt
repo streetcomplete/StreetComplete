@@ -23,10 +23,10 @@ class SceneMapComponent(
     private var loadedSceneUpdates: List<String>? = null
 
     var isAerialView: Boolean = false
-    set(value) {
-        field = value
-        aerialViewChanged = true
-    }
+        set(value) {
+            field = value
+            aerialViewChanged = true
+        }
     private var aerialViewChanged: Boolean = false
 
     private val mutex = Mutex()

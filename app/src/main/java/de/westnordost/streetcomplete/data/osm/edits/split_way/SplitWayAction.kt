@@ -185,7 +185,7 @@ private fun getUpdatedRelations(
     val result = ArrayList<Relation>()
     for (relation in relations) {
         val updatedRelationMembers = ArrayList<RelationMember>()
-       relation.members.forEachIndexed { i, relationMember ->
+        relation.members.forEachIndexed { i, relationMember ->
             if (relationMember.type == ElementType.WAY && relationMember.ref == originalWay.id) {
                 updatedRelationMembers.addAll(
                     getRelationMemberReplacements(relation, i, originalWay, newWays, mapDataRepository)

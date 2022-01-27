@@ -31,7 +31,7 @@ class IconProgressView @JvmOverloads constructor(
         get() = binding.iconView.drawable
 
     private val animatorDurationScale: Float get() =
-       Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+        Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()

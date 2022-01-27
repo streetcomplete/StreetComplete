@@ -40,12 +40,12 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
     private var content: ViewGroup? = null
 
     private var isDefiningHours: Boolean = false
-    set(value) {
-        field = value
+        set(value) {
+            field = value
 
-        content?.isGone = !value
-        updateButtonPanel()
-    }
+            content?.isGone = !value
+            updateButtonPanel()
+        }
     private var isFeeOnlyAtHours: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

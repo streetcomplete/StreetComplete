@@ -21,7 +21,8 @@ import javax.inject.Inject
  *  The LoginFragment, the UserFragment (which contains the viewpager with more
  *  fragments) and the "fake" dialogs AchievementInfoFragment and QuestTypeInfoFragment.
  * */
-class UserActivity : FragmentContainerActivity(R.layout.activity_user),
+class UserActivity :
+    FragmentContainerActivity(R.layout.activity_user),
     AchievementsFragment.Listener,
     QuestStatisticsFragment.Listener {
 

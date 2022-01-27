@@ -38,9 +38,9 @@ data class SplitWayAtLinePosition(
     override val index get() = index1
     override val pos: LatLon
         get() {
-        val line = listOf(pos1, pos2)
-        return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
-    }
+            val line = listOf(pos1, pos2)
+            return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
+        }
 }
 
 /** creates a SplitWay from a SplitLineAtPosition, given the nodes of the way. So, basically it

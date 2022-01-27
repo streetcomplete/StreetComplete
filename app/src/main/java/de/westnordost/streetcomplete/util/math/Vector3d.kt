@@ -82,9 +82,9 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
 
         // multiply r × p
         val rp = arrayOf(
-                r[0][0] * p.x + r[0][1] * p.y + r[0][2] * p.z,
-                r[1][0] * p.x + r[1][1] * p.y + r[1][2] * p.z,
-                r[2][0] * p.x + r[2][1] * p.y + r[2][2] * p.z,
+            r[0][0] * p.x + r[0][1] * p.y + r[0][2] * p.z,
+            r[1][0] * p.x + r[1][1] * p.y + r[1][2] * p.z,
+            r[2][0] * p.x + r[2][1] * p.y + r[2][2] * p.z,
         )
         val p2 = Vector3d(rp[0], rp[1], rp[2])
 

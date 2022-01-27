@@ -76,7 +76,8 @@ open class LocationAwareMapFragment : MapFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        compass = Compass(context.getSystemService<SensorManager>()!!,
+        compass = Compass(
+            context.getSystemService<SensorManager>()!!,
             context.getSystemService<WindowManager>()!!.defaultDisplay,
             this::onCompassRotationChanged
         )

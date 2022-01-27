@@ -95,8 +95,10 @@ class TimeRangePickerDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+        window?.clearFlags(
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+            WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM
+        )
     }
 
     private fun setCurrentTab(position: Int) {
@@ -117,13 +119,13 @@ class TimeRangePickerDialog(
                 )
             })
 
-            override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-                val viewGroup = (holder.itemView as FrameLayout)
-                viewGroup.removeAllViews()
-                viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
-            }
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val viewGroup = (holder.itemView as FrameLayout)
+            viewGroup.removeAllViews()
+            viewGroup.addView(if (position == START_TIME_TAB) startPicker else endPickerContainer)
+        }
 
-            inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     }
 
     override fun show() {

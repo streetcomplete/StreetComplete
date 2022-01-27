@@ -43,7 +43,8 @@ import de.westnordost.streetcomplete.util.applyTransforms
  *  different root view than the rest of the UI. However, for the calculation to animate the icon
  *  from another view to the position in the "dialog", there must be a common root view.
  *  */
-class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
+class AchievementInfoFragment :
+    Fragment(R.layout.fragment_achievement_info),
     HandlesOnBackPressed {
 
     private val binding by viewBinding(FragmentAchievementInfoBinding::bind)

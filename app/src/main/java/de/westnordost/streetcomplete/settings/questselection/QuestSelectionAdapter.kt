@@ -63,19 +63,19 @@ class QuestSelectionAdapter(
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
-    var filter: String = ""
-    set(value) {
-        val n = value.trim()
-        if (n != field) {
-            field = n
+        set(value) {
+            field = value
             notifyDataSetChanged()
         }
-    }
+
+    var filter: String = ""
+        set(value) {
+            val n = value.trim()
+            if (n != field) {
+                field = n
+                notifyDataSetChanged()
+            }
+        }
 
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {

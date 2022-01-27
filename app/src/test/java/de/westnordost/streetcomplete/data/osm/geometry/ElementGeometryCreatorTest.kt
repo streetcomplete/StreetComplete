@@ -104,9 +104,10 @@ class ElementGeometryCreatorTest {
 
     @Test fun `creating for multipolygon relation ignores unusable parts`() {
         val geom = create(areaRelation(
-                asOuters(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
-                        asInners(EMPTY_WAY) +
-                        asMembers(AREA_WAY))) as ElementPolygonsGeometry
+            asOuters(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
+            asInners(EMPTY_WAY) +
+            asMembers(AREA_WAY)
+        )) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
         assertEquals(O, geom.center)
     }

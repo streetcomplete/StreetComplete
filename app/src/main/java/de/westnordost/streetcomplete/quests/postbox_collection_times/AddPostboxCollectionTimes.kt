@@ -39,18 +39,18 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     // https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     // http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
     override val enabledInCountries = NoCountriesExcept(
-            // definitely, seen pictures:
-            "AU", "NZ", "VU", "MY", "SG", "TH", "VN", "LA", "MM", "IN", "BD", "NP", "LK", "BT", "PK", "TW", "HK",
-            "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "DK", "GB", "IE", "IS", "NL", "BE",
-            "FR", "AD", "ES", "PT", "CH", "LI", "AT", "DE", "LU", "MC", "IT", "SM", "MT", "PL", "EE", "CA", "US",
-            "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
-            // these only maybe/sometimes (Oceania, Cambodia, North Korea):
-            "BN", "KH", "ID", "TL", "PG", "KP", "PH",
-            // unknown but all countries around have it (former Yugoslawia):
-            "RS", "RS-KM", "BA", "MK", "AL",
-            // unknown but region around it has it (southern states of former soviet union):
-            "TJ", "KG", "KZ", "MN", "GE"
-            // apparently mostly not in Latin America and in Arabic world and unknown in Africa
+        // definitely, seen pictures:
+        "AU", "NZ", "VU", "MY", "SG", "TH", "VN", "LA", "MM", "IN", "BD", "NP", "LK", "BT", "PK", "TW", "HK",
+        "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "DK", "GB", "IE", "IS", "NL", "BE",
+        "FR", "AD", "ES", "PT", "CH", "LI", "AT", "DE", "LU", "MC", "IT", "SM", "MT", "PL", "EE", "CA", "US",
+        "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
+        // these only maybe/sometimes (Oceania, Cambodia, North Korea):
+        "BN", "KH", "ID", "TL", "PG", "KP", "PH",
+        // unknown but all countries around have it (former Yugoslawia):
+        "RS", "RS-KM", "BA", "MK", "AL",
+        // unknown but region around it has it (southern states of former soviet union):
+        "TJ", "KG", "KZ", "MN", "GE"
+        // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
     override val questTypeAchievements = listOf(POSTMAN)

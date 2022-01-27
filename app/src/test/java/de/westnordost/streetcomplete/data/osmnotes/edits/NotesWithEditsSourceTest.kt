@@ -157,7 +157,8 @@ class NotesWithEditsSourceTest {
                 comment("test12", NoteComment.Action.OPENED, timestamp = 123, user = user)
             ),
             position = p,
-            timestamp = 123)
+            timestamp = 123
+        )
 
         val edits = listOf(
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123)
@@ -180,7 +181,8 @@ class NotesWithEditsSourceTest {
                 comment("test34", NoteComment.Action.COMMENTED, timestamp = 234, user = user),
             ),
             position = p,
-            timestamp = 123)
+            timestamp = 123
+        )
 
         val edits = listOf(
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123),

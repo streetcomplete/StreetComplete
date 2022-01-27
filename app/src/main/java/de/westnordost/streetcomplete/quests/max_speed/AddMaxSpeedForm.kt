@@ -82,7 +82,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         } else if (speedType == NSL) {
             askIsDualCarriageway(
                 onYes = { applyNoSignAnswer("nsl_dual") },
-                onNo = { applyNoSignAnswer("nsl_single") })
+                onNo = { applyNoSignAnswer("nsl_single") }
+            )
         } else {
             if (userSelectedUnusualSpeed())
                 confirmUnusualInput { applySpeedLimitFormAnswer() }
@@ -261,7 +262,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         } else {
             askUrbanOrRural(
                 onUrban = { applyNoSignAnswer("urban") },
-                onRural = { applyNoSignAnswer("rural") })
+                onRural = { applyNoSignAnswer("rural") }
+            )
         }
     }
 

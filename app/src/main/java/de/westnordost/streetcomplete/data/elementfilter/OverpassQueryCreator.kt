@@ -18,12 +18,12 @@ class OverpassQueryCreator(
     private val dataSets: MutableMap<BooleanExpression<ElementFilter, Element>, Int> = mutableMapOf()
 
     fun create(): String {
-         if (elementTypes.size == 1) {
+        if (elementTypes.size == 1) {
             val elementType = elementTypes.first()
             if (expr == null) {
                 return "$elementType;\n"
             }
-             return expr.toOverpassString(elementType, null)
+            return expr.toOverpassString(elementType, null)
         } else {
             if (expr == null) {
                 return "(" + elementTypes.joinToString(" ") { "$it; " } + ");\n"

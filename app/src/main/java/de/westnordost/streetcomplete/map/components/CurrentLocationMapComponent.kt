@@ -29,38 +29,38 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
     var isVisible: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
-        if (!value) hide() else show()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            if (!value) hide() else show()
+        }
 
     /** The location of the GPS location dot on the map. Null if none (yet) */
     var location: Location? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        updateLocation()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            updateLocation()
+        }
 
     /** The view rotation angle in degrees. Null if not set (yet) */
     var rotation: Double? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        updateDirection()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            updateDirection()
+        }
 
     /** Tell this component the current map zoom. Why does it need to know this at all? It doesn't,
      *  but it needs to know when it changed. There is no specific event for that. Whenever the
      *  zoom changed, the marker showing the accuracy must be updated because the accuracy's marker
      *  size is calculated programmatically using the current zoom. */
     var currentMapZoom: Float? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        updateAccuracy()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            updateAccuracy()
+        }
 
     init {
         val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)

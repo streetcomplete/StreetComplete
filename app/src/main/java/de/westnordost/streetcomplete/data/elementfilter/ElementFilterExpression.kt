@@ -51,12 +51,12 @@ class ElementFilterExpression(
 enum class ElementsTypeFilter { NODES, WAYS, RELATIONS }
 
 private val BooleanExpression<ElementFilter, Element>.mayEvaluateToTrueWithNoTags: Boolean
-get() = when (this) {
-    is Leaf -> value.mayEvaluateToTrueWithNoTags
-    is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
-    is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
-    else -> throw IllegalStateException("Unexpected expression")
-}
+    get() = when (this) {
+        is Leaf -> value.mayEvaluateToTrueWithNoTags
+        is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
+        is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
+        else -> throw IllegalStateException("Unexpected expression")
+    }
 
 private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when (this) {
     is CompareElementAge,

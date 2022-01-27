@@ -55,9 +55,16 @@ import okhttp3.internal.Version
 import javax.inject.Inject
 
 /** Manages a map that remembers its last location*/
-open class MapFragment : Fragment(),
-    TapResponder, DoubleTapResponder, LongPressResponder,
-    PanResponder, ScaleResponder, ShoveResponder, RotateResponder, SharedPreferences.OnSharedPreferenceChangeListener {
+open class MapFragment :
+    Fragment(),
+    TapResponder,
+    DoubleTapResponder,
+    LongPressResponder,
+    PanResponder,
+    ScaleResponder,
+    ShoveResponder,
+    RotateResponder,
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
@@ -69,23 +76,23 @@ open class MapFragment : Fragment(),
     private var previousCameraPosition: CameraPosition? = null
 
     var isMapInitialized: Boolean = false
-    private set
+        private set
 
     var show3DBuildings: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
+        set(value) {
+            if (field == value) return
+            field = value
 
-        val toggle = if (value) "true" else "false"
+            val toggle = if (value) "true" else "false"
 
-        viewLifecycleScope.launch {
-            sceneMapComponent?.putSceneUpdates(listOf(
-                "layers.buildings.draw.buildings-style.extrude" to toggle,
-                "layers.buildings.draw.buildings-outline-style.extrude" to toggle
-            ))
-            sceneMapComponent?.loadScene()
+            viewLifecycleScope.launch {
+                sceneMapComponent?.putSceneUpdates(listOf(
+                    "layers.buildings.draw.buildings-style.extrude" to toggle,
+                    "layers.buildings.draw.buildings-outline-style.extrude" to toggle
+                ))
+                sceneMapComponent?.loadScene()
+            }
         }
-    }
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
     @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig

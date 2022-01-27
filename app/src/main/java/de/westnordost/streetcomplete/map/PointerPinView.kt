@@ -130,7 +130,8 @@ class PointerPinView @JvmOverloads constructor(
                 width / 2 - iconSize / 2 + x,
                 height / 2 - iconSize / 2 + y,
                 width / 2 + iconSize / 2 + x,
-                height / 2 + iconSize / 2 + y)
+                height / 2 + iconSize / 2 + y
+            )
             icon.draw(c)
         }
     }

@@ -28,7 +28,8 @@ class ElementIdProviderDao @Inject constructor(private val db: Database) {
     fun get(editId: Long) = ElementIdProvider(
         db.query(NAME, where = "$EDIT_ID = $editId") {
             ElementKey(ElementType.valueOf(it.getString(ELEMENT_TYPE)), -it.getLong(ID))
-        })
+        }
+    )
 
     fun delete(editId: Long): Int =
         db.delete(NAME, "$EDIT_ID = $editId")

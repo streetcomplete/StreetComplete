@@ -169,7 +169,8 @@ class BallPitView @JvmOverloads constructor(
             val radius = getBubbleRadius(size)
             val spawnPos = Vec2(
                 radius + Math.random().toFloat() * (worldBounds.width() - 2 * radius),
-                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius))
+                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius)
+            )
             addBubble(view, size, spawnPos)
         }
     }

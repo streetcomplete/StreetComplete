@@ -223,7 +223,8 @@ class SplitWayActionTest {
         assertEquals(
             createTranslated(
                 p1.latitude + 0.5 * (p2.latitude - p1.latitude),
-                p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
+                p1.longitude + 0.5 * (p2.longitude - p1.longitude)
+            ),
             node.position
         )
         data.checkWaysNodes(

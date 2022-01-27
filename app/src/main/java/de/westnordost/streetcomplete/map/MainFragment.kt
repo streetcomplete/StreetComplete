@@ -110,7 +110,8 @@ import kotlin.random.Random
  *  place where all the logic when interacting with the map / bottom sheets / sidebars etc. comes
  *  together, hence it implements all the listeners to communicate with its child fragments.
  *  */
-class MainFragment : Fragment(R.layout.fragment_main),
+class MainFragment :
+    Fragment(R.layout.fragment_main),
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
     QuestsMapFragment.Listener,
@@ -970,7 +971,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         root.addView(img)
 
         val answerTarget = view.findViewById<View>(
-            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment)
+            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment
+        )
         flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
     }
 

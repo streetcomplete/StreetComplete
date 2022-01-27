@@ -17,11 +17,11 @@ class NotificationButton @JvmOverloads constructor(
     private val binding = ViewNotificationButtonBinding.inflate(LayoutInflater.from(context), this)
 
     var notificationsCount: Int = 0
-    set(value) {
-        field = value
-        binding.textView.text = value.toString()
-        binding.textView.isInvisible = value == 0
-    }
+        set(value) {
+            field = value
+            binding.textView.text = value.toString()
+            binding.textView.isInvisible = value == 0
+        }
 
     init {
         clipToPadding = false

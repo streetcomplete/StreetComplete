@@ -32,7 +32,7 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
                       <integer name="translation_completeness">$completedPercentage</integer>
                     </resources>
 
-                    """.trimIndent())
+                """.trimIndent())
             }
         }
     }

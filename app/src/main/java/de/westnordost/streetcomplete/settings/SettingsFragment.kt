@@ -42,7 +42,9 @@ import java.util.Locale
 import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
+class SettingsFragment :
+    PreferenceFragmentCompat(),
+    HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
