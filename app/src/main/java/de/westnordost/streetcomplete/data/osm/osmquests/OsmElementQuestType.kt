@@ -75,7 +75,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  any mix-ups that far apart */
     val highlightedElementsRadius: Double get() = 30.0
 
-    /** applies the data from [answer] to the element that has last been edited at [timestamp].
+    /** applies the data from [answer] to the element that has last been edited at [timestampEdited].
      * The element is not directly modified, instead, a map of [tags] is built */
     fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
 
