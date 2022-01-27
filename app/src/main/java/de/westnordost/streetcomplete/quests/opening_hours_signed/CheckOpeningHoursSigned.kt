@@ -34,7 +34,7 @@ class CheckOpeningHoursSigned (
           )
           and access !~ private|no
           and (name or brand or noname = yes or name:signed = no or amenity = recycling)
-    """.trimIndent().toElementFilterExpression() }
+    """.toElementFilterExpression() }
 
     private val hasOldOpeningHoursCheckDateFilter: String get() =
         getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
