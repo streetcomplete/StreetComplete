@@ -477,8 +477,8 @@ fun getQuestChanges(questFileContent: String): List<List<String>> {
 }
 
 fun getQuestAnswerType(questFileContent: String): List<String> {
-//override fun applyAnswerTo(answer: PostboxRoyalCypher, tags: StringMapChangesBuilder) {
-    val regex = Regex("applyAnswerTo\\(answer: ([^,]+), tags: StringMapChangesBuilder\\)")
+//override fun applyAnswerTo(answer: PlaygroundAccess, tags: Tags, timestampEdited: Long) {
+    val regex = Regex("applyAnswerTo\\(answer: ([^,]+), tags: Tags")
 
     return regex.findAll(questFileContent).map { it.groupValues[1] }.toList()
 }
