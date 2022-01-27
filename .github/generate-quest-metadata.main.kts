@@ -293,7 +293,7 @@ fun getQuestTaginfo(
         // It's not actually a change, so discard it
         println("Discarding a read only change: " + change)
         continue
-      } else if (change.startsWith("remove")) {
+      } else if (change.startsWith("remove") || change.startsWith("delete")) {
         // Skip the remove's at @westnordost request
         println("Discarding a remove change: " + change)
         continue
@@ -315,6 +315,7 @@ fun getQuestTaginfo(
         println("Discarding an unknown change type " + change)
         continue
       }
+
       // Tidy up some dodgy capturing
       // TODO(Peter): Fix this at source (probably keep both brackets if possible
       var value = questChange[2].replace("^,\\s+".toRegex(), "").replace("\\(\\)?$".toRegex(), "")
