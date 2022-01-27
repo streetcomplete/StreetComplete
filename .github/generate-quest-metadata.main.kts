@@ -260,6 +260,7 @@ fun getQuestTaginfo(
     val questConstants = getQuestConstants(questFileContent)
     println("Got quest constants: " + questConstants)
     var questChanges = getQuestChanges(questFileContent)
+    // if empty, handle applyTo see e.g. barrier
     println("Got raw quest changes: " + questChanges)
 
     // Prep some common stuff
@@ -293,7 +294,7 @@ fun getQuestTaginfo(
         // It's not actually a change, so discard it
         println("Discarding a read only change: " + change)
         continue
-      } else if (change.startsWith("remove") || change.startsWith("delete")) {
+      } else if (change.startsWith("remove")) {
         // Skip the remove's at @westnordost request
         println("Discarding a remove change: " + change)
         continue
