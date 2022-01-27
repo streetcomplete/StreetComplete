@@ -41,7 +41,7 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
         val rows = querySophoxCsv(query).mapNotNull { parseCsvRow(it) }
         for (row in rows) {
             row.countryCode?.let {
-                result.getOrPut(it, { mutableMapOf() }).compute(row.value) { _, u ->  (u ?: 0) + 1 }
+                result.getOrPut(it, { mutableMapOf() }).compute(row.value) { _, u -> (u ?: 0) + 1 }
             }
         }
 

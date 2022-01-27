@@ -32,7 +32,7 @@ fun View.popOut(): ViewPropertyAnimator {
         .withEndAction { visibility = View.GONE }
 }
 
-suspend fun View.awaitLayout()  {
+suspend fun View.awaitLayout() {
     if (!ViewCompat.isLaidOut(this) || isLayoutRequested) {
         awaitNextLayout()
     }

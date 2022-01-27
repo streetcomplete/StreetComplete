@@ -93,7 +93,7 @@ fun main() = runBlocking {
                         if (r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
                             timeEvents++
                         }
-                        if (r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null  } == true }) {
+                        if (r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null } == true }) {
                             complicatedTimes++
                         }
                         if (r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true }) {

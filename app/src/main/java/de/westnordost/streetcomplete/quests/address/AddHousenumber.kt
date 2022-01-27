@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"

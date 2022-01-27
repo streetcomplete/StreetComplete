@@ -250,7 +250,7 @@ import javax.inject.Singleton
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
-        if (!countryBoundariesFuture.get().isInAny(pos, countries))  return false
+        if (!countryBoundariesFuture.get().isInAny(pos, countries)) return false
 
         return true
     }

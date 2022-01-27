@@ -285,7 +285,7 @@ class QuestSelectionAdapter(
             binding.disabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                binding.disabledText.text =  binding.disabledText.resources.getString(
+                binding.disabledText.text = binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
             }

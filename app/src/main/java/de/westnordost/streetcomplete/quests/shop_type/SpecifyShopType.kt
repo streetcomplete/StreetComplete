@@ -36,8 +36,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = when {
-        hasProperName(tags)  -> R.string.quest_shop_type_title
-        else            -> R.string.quest_shop_type_title_no_name
+        hasProperName(tags) -> R.string.quest_shop_type_title
+        else -> R.string.quest_shop_type_title_no_name
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

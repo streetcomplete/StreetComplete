@@ -96,7 +96,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             it.setDrawable(directionImg)
             it.setDrawOrder(2)
         }
-        accuracyMarker =  ctrl.addMarker().also {
+        accuracyMarker = ctrl.addMarker().also {
             it.setDrawable(accuracyImg)
             it.setDrawOrder(1)
         }

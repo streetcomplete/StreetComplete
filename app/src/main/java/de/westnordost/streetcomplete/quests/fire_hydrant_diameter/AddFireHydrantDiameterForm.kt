@@ -65,7 +65,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_fireHydrant_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->  applyAnswer(NoFireHydrantDiameterSign) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoFireHydrantDiameterSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }

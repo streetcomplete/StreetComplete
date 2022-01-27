@@ -70,7 +70,7 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
             val nodeParent = node.parent
             if (nodeParent is AnyOf) {
                 node = nodeParent
-            } else  {
+            } else {
                 nodeParent?.removeChild(allOf)
                 val anyOf = AnyOf<I, T>()
                 anyOf.addChild(allOf)

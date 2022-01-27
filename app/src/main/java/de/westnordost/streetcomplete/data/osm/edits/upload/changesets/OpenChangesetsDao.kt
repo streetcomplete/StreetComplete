@@ -22,7 +22,7 @@ class OpenChangesetsDao @Inject constructor(private val db: Database) {
         db.queryOne(NAME,
             where = "$QUEST_TYPE = ? AND $SOURCE = ?",
             args = arrayOf(questType, source)
-        ) { it.toOpenChangeset()  }
+        ) { it.toOpenChangeset() }
 
     fun delete(questType: String, source: String): Boolean =
         db.delete(NAME,

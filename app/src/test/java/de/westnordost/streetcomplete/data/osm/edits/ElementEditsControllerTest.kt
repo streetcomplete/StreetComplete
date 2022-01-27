@@ -42,7 +42,7 @@ class ElementEditsControllerTest {
     }
 
     @Test fun add() {
-        val action =  mock<ElementEditAction>()
+        val action = mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(1, 2, 3))
 
         ctrl.add(QUEST_TYPE, node(1), pGeom(), "test", action)

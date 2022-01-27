@@ -66,7 +66,7 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         val id = element.id
         when (element) {
             is Node -> nodesById[id] = element
-            is Way ->  waysById[id] = element
+            is Way -> waysById[id] = element
             is Relation -> relationsById[id] = element
         }
     }

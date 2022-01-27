@@ -51,7 +51,7 @@ import javax.inject.Singleton
         try {
             val statistics = statisticsDownloader.download(userId)
             statisticsController.updateAll(statistics)
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             Log.w(TAG, "Unable to download statistics", e)
         }
     }

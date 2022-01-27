@@ -318,7 +318,7 @@ private fun String.addToHouseNumber(add: Int): String? {
     val parsed = parseHouseNumber(this) ?: return null
     when {
         add == 0 -> return this
-        add > 0  -> {
+        add > 0 -> {
             val max = when (val it = parsed.list.maxOrNull()) {
                 is HouseNumbersPartsRange -> maxOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single
@@ -326,7 +326,7 @@ private fun String.addToHouseNumber(add: Int): String? {
             }
             return (max.number + add).toString()
         }
-        add < 0  -> {
+        add < 0 -> {
             val min = when (val it = parsed.list.minOrNull()) {
                 is HouseNumbersPartsRange -> minOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single

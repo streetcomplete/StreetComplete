@@ -135,19 +135,19 @@ class StringMapChangesBuilderTest {
     }
 
     @Test fun keys() {
-        assertEquals(setOf("a"),  builder("a" to "1").keys)
-        assertEquals(setOf<String>(),  builder().keys)
+        assertEquals(setOf("a"), builder("a" to "1").keys)
+        assertEquals(setOf<String>(), builder().keys)
 
-        assertEquals(setOf("a"),  builder().also { it["a"] = "1" }.keys)
+        assertEquals(setOf("a"), builder().also { it["a"] = "1" }.keys)
         assertEquals(setOf<String>(), builder("a" to "1").also { it.remove("a") }.keys)
         assertEquals(setOf("a"), builder("a" to "1").also { it["a"] = "2" }.keys)
     }
 
     @Test fun values() {
         assertEquals(listOf("1"), builder("a" to "1").values)
-        assertEquals(listOf<String>(),  builder().values)
+        assertEquals(listOf<String>(), builder().values)
 
-        assertEquals(listOf("1"),  builder().also { it["a"] = "1" }.values)
+        assertEquals(listOf("1"), builder().also { it["a"] = "1" }.values)
         assertEquals(listOf<String>(), builder("a" to "1").also { it.remove("a") }.values)
         assertEquals(listOf("2"), builder("a" to "1").also { it["a"] = "2" }.values)
 
@@ -156,9 +156,9 @@ class StringMapChangesBuilderTest {
 
     @Test fun entries() {
         assertEquals(mapOf("a" to "1"), builder("a" to "1").map)
-        assertEquals(mapOf<String, String>(),  builder().map)
+        assertEquals(mapOf<String, String>(), builder().map)
 
-        assertEquals(mapOf("a" to "1"),  builder().also { it["a"] = "1" }.map)
+        assertEquals(mapOf("a" to "1"), builder().also { it["a"] = "1" }.map)
         assertEquals(mapOf<String, String>(), builder("a" to "1").also { it.remove("a") }.map)
         assertEquals(mapOf("a" to "2"), builder("a" to "1").also { it["a"] = "2" }.map)
 

@@ -71,7 +71,7 @@ class AddHousenumberTest {
         ))
         val relationWithAddr = rel(
             members = listOf(member(ElementType.WAY, 1)),
-            tags =  mapOf("addr:housenumber" to "123")
+            tags = mapOf("addr:housenumber" to "123")
         )
 
         val mapData = createMapData(mapOf(

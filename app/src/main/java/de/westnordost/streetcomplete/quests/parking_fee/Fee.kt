@@ -13,7 +13,7 @@ data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : Fee()
 
 fun Fee.applyTo(tags: Tags) {
     when (this) {
-        is HasFee   -> {
+        is HasFee -> {
             tags.updateWithCheckDate("fee", "yes")
             tags.remove("fee:conditional")
         }

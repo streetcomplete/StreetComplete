@@ -21,7 +21,7 @@ import javax.inject.Inject
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
 class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
-    QuestStatisticsByQuestTypeFragment.Listener,  QuestStatisticsByCountryFragment.Listener {
+    QuestStatisticsByQuestTypeFragment.Listener, QuestStatisticsByCountryFragment.Listener {
     @Inject internal lateinit var statisticsSource: StatisticsSource
 
     interface Listener {
