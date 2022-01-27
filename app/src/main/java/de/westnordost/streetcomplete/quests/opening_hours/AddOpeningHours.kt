@@ -33,7 +33,7 @@ class AddOpeningHours(
               or amenity = recycling and recycling_type = centre
               or tourism = information and information = office
               or (amenity = recycling and recycling:batteries = yes)
-              or """.trimIndent() +
+              or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -92,7 +92,7 @@ class AddOpeningHours(
         and access !~ private|no
         and (name or brand or noname = yes or name:signed = no or amenity=recycling)
         and opening_hours:signed != no
-    """.trimIndent()).toElementFilterExpression() }
+    """).toElementFilterExpression() }
 
     private val nameTags = listOf("name", "brand")
 
