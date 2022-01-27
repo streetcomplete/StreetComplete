@@ -22,7 +22,7 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
-fun SidewalkSides.applyTo(tags: Tags, timestampEdited: Long) {
+fun SidewalkSides.applyTo(tags: Tags) {
     val sidewalkValue = simpleOsmValue
     if (sidewalkValue != null) {
         tags["sidewalk"] = sidewalkValue

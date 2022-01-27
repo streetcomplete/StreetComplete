@@ -73,7 +73,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
         }
     }
 
-    private fun applyAnswerRoadName(answer: RoadName, tags: Tags, timestampEdited: Long) {
+    private fun applyAnswerRoadName(answer: RoadName, tags: Tags) {
         for ((languageTag, name) in answer.localizedNames) {
             val key = when (languageTag) {
                 "" -> "name"

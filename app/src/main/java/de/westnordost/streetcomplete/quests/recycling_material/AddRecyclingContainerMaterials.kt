@@ -59,7 +59,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
     }
 
-    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: Tags, timestampEdited: Long) {
+    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: Tags) {
         // first clear recycling:* taggings previously "yes"
         for ((key, value) in tags.entries) {
             if (key.startsWith("recycling:") && value == "yes") {
@@ -107,7 +107,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
     }
 
-    private fun applyWasteContainerAnswer(tags: Tags, timestampEdited: Long) {
+    private fun applyWasteContainerAnswer(tags: Tags) {
         tags["amenity"] = "waste_disposal"
         tags.remove("recycling_type")
 
