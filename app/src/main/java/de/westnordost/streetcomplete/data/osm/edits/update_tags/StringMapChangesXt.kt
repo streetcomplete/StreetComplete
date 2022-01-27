@@ -29,6 +29,6 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
     )
 }
 
-fun StringMapChangesBuilder.deleteIfExistList(keys: List<String>) {
+fun StringMapChangesBuilder.removeIfExistsList(keys: List<String>) {
     keys.forEach { remove(it) }
 }
