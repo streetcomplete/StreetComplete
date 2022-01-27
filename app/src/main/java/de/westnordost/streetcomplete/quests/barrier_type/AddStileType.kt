@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.hasCheckDate
 import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.deleteIfExistList
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.removeIfExistsList
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -62,7 +62,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
                 if (stileWasRebuilt) {
                     // => properties that refer to the old replaced stile should be removed
-                    tags.deleteIfExistList(STILE_PROPERTIES - "material")
+                    tags.removeIfExistsList(STILE_PROPERTIES - "material")
                     if(newMaterial != null) {
                         tags["material"] = newMaterial
                     } else {
@@ -78,7 +78,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                 }
             }
             is ConvertedStile -> {
-                tags.deleteIfExistList(STILE_PROPERTIES)
+                tags.removeIfExistsList(STILE_PROPERTIES)
                 tags.remove("stile")
                 tags["barrier"] = answer.newBarrier
             }
