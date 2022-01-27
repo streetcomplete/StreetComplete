@@ -59,22 +59,14 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                     oldType != null && oldType != newType ||
                     newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
 
+                // => properties that refer to the old replaced stile should be removed
                 if (stileWasRebuilt) {
-                    // => properties that refer to the old replaced stile should be removed
                     STILE_PROPERTIES.forEach { tags.remove(it) }
-                    if(newMaterial != null) {
-                        tags["material"] = newMaterial
-                    } else {
-                        tags.remove("material")
-                    }
-                } else if (newMaterial != null && oldMaterial == null) {
-                    // not considered as rebuilt, but material info still
-                    // can be added where it was missing
+                }
+                if(newMaterial != null) {
                     tags["material"] = newMaterial
                 }
-                if (newType != oldType) {
-                    tags["stile"] = newType
-                }
+                tags["stile"] = newType
             }
             is ConvertedStile -> {
                 STILE_PROPERTIES.forEach { tags.remove(it) }
