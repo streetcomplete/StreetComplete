@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.fuel_service
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
@@ -35,7 +35,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["self_service"] = answer.toYesNo()
     }
 }

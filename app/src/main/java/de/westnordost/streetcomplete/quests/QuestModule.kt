@@ -76,6 +76,7 @@ import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.level.AddLevel
+import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
@@ -287,6 +288,7 @@ import javax.inject.Singleton
         AddAddressStreet(),
 
         // shops: text input / opening hours input take longer than other quests
+        CheckOpeningHoursSigned(featureDictionaryFuture),
         AddPlaceName(featureDictionaryFuture),
         SpecifyShopType(),
         CheckShopType(),

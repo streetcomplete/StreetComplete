@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.crossing
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.*
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
@@ -73,7 +73,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: KerbHeight, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: KerbHeight, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("kerb", answer.osmValue)
         /* So, we don't assume there is a crossing here for kerb=no and kerb=raised.
 

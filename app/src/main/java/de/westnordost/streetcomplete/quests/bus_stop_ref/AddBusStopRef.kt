@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_ref
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 
@@ -33,7 +33,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
 
     override fun createForm() = AddBusStopRefForm()
 
-    override fun applyAnswerTo(answer: BusStopRefAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BusStopRefAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is NoBusStopRef -> tags["ref:signed"] = "no"
             is BusStopRef ->   tags["ref"] = answer.ref

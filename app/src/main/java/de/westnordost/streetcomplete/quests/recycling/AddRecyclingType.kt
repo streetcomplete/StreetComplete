@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -27,7 +27,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override fun createForm() = AddRecyclingTypeForm()
 
-    override fun applyAnswerTo(answer: RecyclingType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingType, tags: Tags, timestampEdited: Long) {
         when (answer) {
             RECYCLING_CENTRE -> {
                 tags["recycling_type"] = "centre"

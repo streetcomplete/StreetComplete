@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 
 enum class BarrierType(val osmValue: String) {
     PASSAGE("entrance"),
@@ -28,7 +28,7 @@ enum class BarrierType(val osmValue: String) {
     BICYCLE_BARRIER("cycle_barrier")
 }
 
-fun BarrierType.applyTo(tags: StringMapChangesBuilder) {
+fun BarrierType.applyTo(tags: Tags) {
     tags["barrier"] = this.osmValue
     when (this) {
         BarrierType.STILE_SQUEEZER -> {

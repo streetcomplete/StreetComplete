@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.bollard_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -52,7 +52,7 @@ class AddBollardType : OsmElementQuestType<BollardType> {
 
     override fun createForm() = AddBollardTypeForm()
 
-    override fun applyAnswerTo(answer: BollardType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BollardType, tags: Tags, timestampEdited: Long) {
         tags["bollard"] = answer.osmValue
     }
 }

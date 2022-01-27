@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.motorcycle_parking_capacity
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -30,7 +30,7 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = motorcycle_parking")
 
-    override fun applyAnswerTo(answer: Int, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("capacity", answer.toString())
     }
 }

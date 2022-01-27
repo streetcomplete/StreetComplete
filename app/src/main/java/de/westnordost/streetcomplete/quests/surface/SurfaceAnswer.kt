@@ -2,14 +2,14 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 
 sealed class SurfaceOrIsStepsAnswer
 object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer()
 
 data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer()
 
-fun SurfaceAnswer.applyTo(tags: StringMapChangesBuilder, key: String) {
+fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     val osmValue = value.osmValue
     val previousOsmValue = tags[key]
 

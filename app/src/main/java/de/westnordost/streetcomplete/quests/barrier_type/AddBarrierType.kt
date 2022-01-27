@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
@@ -34,5 +34,6 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
 
     override fun createForm() = AddBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, tags: StringMapChangesBuilder) = answer.applyTo(tags)
+    override fun applyAnswerTo(answer: BarrierType, tags: Tags, timestampEdited: Long) =
+        answer.applyTo(tags)
 }

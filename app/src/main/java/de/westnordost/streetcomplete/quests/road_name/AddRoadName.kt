@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
@@ -42,7 +42,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
     override fun createForm() = AddRoadNameForm()
 
-    override fun applyAnswerTo(answer: RoadNameAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is NoRoadName        -> tags["noname"] = "yes"
             is RoadIsServiceRoad -> {
@@ -73,7 +73,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
         }
     }
 
-    private fun applyAnswerRoadName(answer: RoadName, tags: StringMapChangesBuilder) {
+    private fun applyAnswerRoadName(answer: RoadName, tags: Tags) {
         for ((languageTag, name) in answer.localizedNames) {
             val key = when (languageTag) {
                 "" -> "name"

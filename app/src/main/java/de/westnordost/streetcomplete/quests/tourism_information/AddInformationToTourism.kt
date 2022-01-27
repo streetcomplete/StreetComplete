@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.tourism_information
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
@@ -25,7 +25,7 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
     override fun createForm() = AddInformationForm()
 
-    override fun applyAnswerTo(answer: TourismInformation, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: TourismInformation, tags: Tags, timestampEdited: Long) {
         tags["information"] = answer.osmValue
     }
 }

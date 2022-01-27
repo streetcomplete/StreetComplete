@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -96,7 +96,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
     override fun createForm() = AddPostboxCollectionTimesForm()
 
-    override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is NoCollectionTimesSign -> {
                 tags["collection_times:signed"] = "no"

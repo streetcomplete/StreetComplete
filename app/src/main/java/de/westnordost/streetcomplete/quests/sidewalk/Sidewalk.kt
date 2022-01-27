@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.*
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
@@ -22,7 +22,7 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
-fun SidewalkSides.applyTo(tags: StringMapChangesBuilder) {
+fun SidewalkSides.applyTo(tags: Tags) {
     val sidewalkValue = simpleOsmValue
     if (sidewalkValue != null) {
         tags["sidewalk"] = sidewalkValue

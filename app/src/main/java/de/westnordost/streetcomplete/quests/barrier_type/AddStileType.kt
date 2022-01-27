@@ -4,8 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.hasCheckDate
 import de.westnordost.streetcomplete.data.meta.updateCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.deleteIfExistList
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -49,7 +48,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     override fun createForm() = AddStileTypeForm()
 
-    override fun applyAnswerTo(answer: StileTypeAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is StileType -> {
                 val newType = answer.osmValue
@@ -60,25 +59,17 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                     oldType != null && oldType != newType ||
                     newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
 
+                // => properties that refer to the old replaced stile should be removed
                 if (stileWasRebuilt) {
-                    // => properties that refer to the old replaced stile should be removed
-                    tags.deleteIfExistList(STILE_PROPERTIES - "material")
-                    if(newMaterial != null) {
-                        tags["material"] = newMaterial
-                    } else {
-                        tags.remove("material")
-                    }
-                } else if (newMaterial != null && oldMaterial == null) {
-                    // not considered as rebuilt, but material info still
-                    // can be added where it was missing
+                    STILE_PROPERTIES.forEach { tags.remove(it) }
+                }
+                if(newMaterial != null) {
                     tags["material"] = newMaterial
                 }
-                if (newType != oldType) {
-                    tags["stile"] = newType
-                }
+                tags["stile"] = newType
             }
             is ConvertedStile -> {
-                tags.deleteIfExistList(STILE_PROPERTIES)
+                STILE_PROPERTIES.forEach { tags.remove(it) }
                 tags.remove("stile")
                 tags["barrier"] = answer.newBarrier
             }

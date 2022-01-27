@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
@@ -39,7 +39,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: BuildingType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BuildingType, tags: Tags, timestampEdited: Long) {
         if (answer.osmKey == "man_made") {
             tags.remove("building")
             tags["man_made"] = answer.osmValue

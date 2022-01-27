@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -33,7 +33,7 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: BoardType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BoardType, tags: Tags, timestampEdited: Long) {
         if(answer == BoardType.MAP) {
             tags["information"] = "map"
         } else {

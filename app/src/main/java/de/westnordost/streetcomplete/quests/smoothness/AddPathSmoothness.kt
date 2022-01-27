@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
@@ -49,7 +49,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override fun createForm() = AddSmoothnessForm()
 
-    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is SmoothnessValueAnswer -> {
                 tags.updateWithCheckDate("smoothness", answer.value.osmValue)

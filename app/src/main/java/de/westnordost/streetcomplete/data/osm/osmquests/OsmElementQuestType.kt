@@ -75,12 +75,14 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  any mix-ups that far apart */
     val highlightedElementsRadius: Double get() = 30.0
 
-    /** applies the data from [answer] to the given element. The element is not directly modified,
-     *  instead, a map of [tags] is built */
-    fun applyAnswerTo(answer: T, tags: StringMapChangesBuilder)
+    /** applies the data from [answer] to the element that has last been edited at [timestampEdited].
+     * The element is not directly modified, instead, a map of [tags] is built */
+    fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
 
     @Suppress("UNCHECKED_CAST")
-    fun applyAnswerToUnsafe(answer: Any, tags: StringMapChangesBuilder) {
-        applyAnswerTo(answer as T, tags)
+    fun applyAnswerToUnsafe(answer: Any, tags: Tags, timestampEdited: Long) {
+        applyAnswerTo(answer as T, tags, timestampEdited)
     }
 }
+
+typealias Tags = StringMapChangesBuilder

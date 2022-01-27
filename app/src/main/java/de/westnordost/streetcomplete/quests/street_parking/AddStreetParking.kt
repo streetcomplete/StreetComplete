@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.street_parking
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -79,7 +79,7 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
 
     override fun createForm() = AddStreetParkingForm()
 
-    override fun applyAnswerTo(answer: LeftAndRightStreetParking, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: LeftAndRightStreetParking, tags: Tags, timestampEdited: Long) {
         /* Note: If a resurvey is implemented, old
            parking:lane:*:(parallel|diagonal|perpendicular|...) values must be cleaned up */
 

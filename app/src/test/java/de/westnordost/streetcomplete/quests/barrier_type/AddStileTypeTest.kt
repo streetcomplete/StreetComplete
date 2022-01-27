@@ -31,6 +31,7 @@ class AddStileTypeTest {
             ),
             StileType.SQUEEZER,
             StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("stile", "squeezer", "squeezer"),
         )
     }
 
@@ -47,6 +48,7 @@ class AddStileTypeTest {
             StileType.STEPOVER_STONE,
             StringMapEntryDelete("steps", "5"),
             StringMapEntryModify("material", "wood", "stone"),
+            StringMapEntryModify("stile", "stepover", "stepover"),
         )
     }
 
@@ -90,6 +92,7 @@ class AddStileTypeTest {
             ),
             StileType.STEPOVER_WOODEN,
             StringMapEntryAdd("stile", "stepover"),
+            StringMapEntryModify("material", "wood", "wood"),
         )
     }
 
@@ -119,6 +122,9 @@ class AddStileTypeTest {
             ),
             StileType.STEPOVER_WOODEN,
             StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("stile", "stepover", "stepover"),
+            StringMapEntryModify("material", "wood", "wood"),
+
         )
     }
 
@@ -131,6 +137,7 @@ class AddStileTypeTest {
             ),
             StileType.STEPOVER_WOODEN,
             StringMapEntryAdd("material", "wood"),
+            StringMapEntryModify("stile", "stepover", "stepover"),
         )
     }
 
