@@ -289,15 +289,15 @@ fun getQuestTaginfo(
         key = key.trim('"')
       }
 
-      if (change.startsWith("get") || change.startsWith("has")) {
+      if (change.startsWith("get") || change.startsWith("has") || change.startsWith("contains")) {
         // It's not actually a change, so discard it
         println("Discarding a read only change: " + change)
         continue
-      } else if (change.startsWith("delete")) {
-        // Skip the delete's at @westnordost request
-        println("Discarding a delete change: " + change)
+      } else if (change.startsWith("remove")) {
+        // Skip the remove's at @westnordost request
+        println("Discarding a remove change: " + change)
         continue
-      } else if (change in setOf("add", "addOrModify", "modify", "modifyIfExists")) {
+      } else if (change in setOf("set")) {
         // No Op
       } else if (change == "addRampAnswer") {
         // Basically add, but yes only
@@ -449,10 +449,26 @@ fun lookupQuestConstant(coreConstants: Map<String, String>, questConstants: Map<
 fun getQuestChanges(questFileContent: String): List<List<String>> {
     //val regex = Regex("changes\\.[^\\(]\"([^\"])\"")
     //val regex = Regex("changes\\.[^\\(]+\\(\"([^\"]+)\"")
-    val regex = Regex("\\s+changes\\.([^\\(]+)\\(((?>\"[^\"]+\"|[^,\\)]+))(,\\s(?>\"[^\"]+\"|[^\\)]+)|)\\)")
+    //val regex = Regex("\\s+changes\\.([^\\(]+)\\(((?>\"[^\"]+\"|[^,\\)]+))(,\\s(?>\"[^\"]+\"|[^\\)]+)|)\\)")
 
-    //return regex.findAll(questFileContent).map { it.groupValues[1], it.groupValues[2], "" }.toList()
-    return regex.findAll(questFileContent).map { it.groupValues.drop(1) }.toList()
+    /**
+     * tags.updateWithCheckDate("shelter", "yes")
+     * tags.remove("shelter")
+     */
+    val functionRegex = Regex("\\s+tags\\.([^\\(]+)\\(((?>\"[^\"]+\"|[^,\\)]+))(,\\s(?>\"[^\"]+\"|[^\\)]+)|)\\)")
+    /**
+     * tags["covered"] = "yes"
+     * tags["covered"] = osm.answerValue
+     *
+     * Not:
+     * tags["covered"] == "yes"
+     */
+    val setRegex = Regex("\\s+tags\\[(\"[^\"]+\"|[^\\]]+)]\\s*=\\s*(\"[^\"]+\"|[^=][^/\\s]+)")
+
+    //return functionRegex.findAll(questFileContent).map { it.groupValues[1], it.groupValues[2], "" }.toList()
+
+    return functionRegex.findAll(questFileContent).map { it.groupValues.drop(1) }.toList() +
+           setRegex.findAll(questFileContent).map { mutableListOf("set", it.groupValues[1], it.groupValues[2]) }.toList()
 }
 
 fun getQuestAnswerType(questFileContent: String): List<String> {
