@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
-import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.*
+import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
+import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
 
 sealed interface FireHydrantDiameterAnswer
 

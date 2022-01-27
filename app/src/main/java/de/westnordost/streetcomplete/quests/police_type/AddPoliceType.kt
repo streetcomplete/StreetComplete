@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.police_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
@@ -24,7 +24,7 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
     override fun createForm() = AddPoliceTypeForm()
 
-    override fun applyAnswerTo(answer: PoliceType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: PoliceType, tags: Tags, timestampEdited: Long) {
         tags["operator"] = answer.operatorName
         tags["operator:wikidata"] = answer.wikidata
     }

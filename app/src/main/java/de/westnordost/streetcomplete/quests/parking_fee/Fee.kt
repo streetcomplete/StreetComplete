@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 
 
@@ -12,7 +12,7 @@ object HasNoFee : Fee()
 data class HasFeeAtHours(val openingHours: OpeningHoursRuleList) : Fee()
 data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : Fee()
 
-fun Fee.applyTo(tags: StringMapChangesBuilder) {
+fun Fee.applyTo(tags: Tags) {
     when(this) {
         is HasFee   -> {
             tags.updateWithCheckDate("fee", "yes")

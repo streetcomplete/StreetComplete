@@ -1,10 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.max_height.*
+import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
+import de.westnordost.streetcomplete.quests.max_height.ImperialFeetAndInches
+import de.westnordost.streetcomplete.quests.max_height.MaxHeight
+import de.westnordost.streetcomplete.quests.max_height.Meters
+import de.westnordost.streetcomplete.quests.max_height.NoMaxHeightSign
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

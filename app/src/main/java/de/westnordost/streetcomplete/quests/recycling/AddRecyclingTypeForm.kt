@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_CONTAINER
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddRecyclingTypeForm : AImageListQuestAnswerFragment<RecyclingType, RecyclingType>() {

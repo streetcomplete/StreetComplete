@@ -16,10 +16,14 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.setDefaultLocales
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import java.lang.System.currentTimeMillis
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import java.lang.System.currentTimeMillis
 
 class StreetCompleteApplication : Application() {
 

@@ -1,9 +1,23 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
-import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
-import de.westnordost.streetcomplete.data.elementfilter.filters.*
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
+import de.westnordost.streetcomplete.data.elementfilter.filters.CombineFilters
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareDateTagValue
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareElementAge
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagAge
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagValue
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import java.util.EnumSet

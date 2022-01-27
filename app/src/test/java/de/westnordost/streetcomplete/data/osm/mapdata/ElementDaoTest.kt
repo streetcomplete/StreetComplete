@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import org.junit.Before
-import org.junit.Test
-
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.testutils.rel
-
-import org.mockito.Mockito.*
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Before
+import org.junit.Test
+import org.mockito.Mockito.anyCollection
+import org.mockito.Mockito.verify
 
 class ElementDaoTest {
     private lateinit var nodeDao: NodeDao

@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.map.tangram
 
-import android.animation.*
+import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.animation.TypeEvaluator
+import android.animation.ValueAnimator
 import android.content.ContentResolver
 import android.os.Handler
 import android.os.Looper

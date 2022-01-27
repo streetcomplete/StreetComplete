@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -19,6 +17,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
+import javax.inject.Inject
 
 /** Stores OSM notes */
 class NoteDao @Inject constructor(private val db: Database) {

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.drinking_water
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
@@ -43,7 +43,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override fun createForm() = AddDrinkingWaterForm()
 
-    override fun applyAnswerTo(answer: DrinkingWater, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: DrinkingWater, tags: Tags, timestampEdited: Long) {
         tags["drinking_water"] = answer.osmValue
         answer.osmLegalValue?.let { tags["drinking_water:legal"] = it }
     }

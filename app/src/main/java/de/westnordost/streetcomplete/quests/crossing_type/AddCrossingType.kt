@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.isCrossing
 
@@ -64,7 +64,7 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
 
     override fun createForm() = AddCrossingTypeForm()
 
-    override fun applyAnswerTo(answer: CrossingType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: CrossingType, tags: Tags, timestampEdited: Long) {
         val crossingValue = tags["crossing"]
         val isAndWasMarked = answer == CrossingType.MARKED && crossingValue in listOf("zebra", "marked", "uncontrolled")
         /* don't change the tag value of the synonyms for "marked" because it is something of a

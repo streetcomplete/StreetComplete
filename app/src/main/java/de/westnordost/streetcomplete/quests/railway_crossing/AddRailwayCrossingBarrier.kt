@@ -1,13 +1,15 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.*
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 
 class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
@@ -49,7 +51,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
-    override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: Tags, timestampEdited: Long) {
         if (answer.osmValue != null) {
             tags.remove("crossing:chicane")
             tags.updateWithCheckDate("crossing:barrier", answer.osmValue)

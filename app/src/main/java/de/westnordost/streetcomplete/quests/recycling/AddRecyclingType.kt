@@ -1,13 +1,15 @@
 package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_CONTAINER
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
+import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
 
 
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
@@ -27,7 +29,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override fun createForm() = AddRecyclingTypeForm()
 
-    override fun applyAnswerTo(answer: RecyclingType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingType, tags: Tags, timestampEdited: Long) {
         when (answer) {
             RECYCLING_CENTRE -> {
                 tags["recycling_type"] = "centre"

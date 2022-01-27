@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
 
 class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
@@ -25,7 +25,7 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
     override fun createForm() = AddFireHydrantTypeForm()
 
-    override fun applyAnswerTo(answer: FireHydrantType, tags: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: FireHydrantType, tags: Tags, timestampEdited: Long) {
         tags["fire_hydrant:type"] = answer.osmValue
     }
 }
