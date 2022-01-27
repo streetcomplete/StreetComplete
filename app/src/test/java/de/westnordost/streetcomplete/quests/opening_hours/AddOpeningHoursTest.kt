@@ -42,6 +42,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "\"oh\""),
             DescribeOpeningHours("oh"),
+            StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
@@ -80,6 +81,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "24/7"),
             AlwaysOpen,
+            StringMapEntryModify("opening_hours", "24/7", "24/7"),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
@@ -143,6 +145,7 @@ class AddOpeningHoursTest {
                     })
                 })
             )),
+            StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }

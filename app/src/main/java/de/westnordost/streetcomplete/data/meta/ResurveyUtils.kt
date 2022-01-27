@@ -41,9 +41,7 @@ fun String.toCheckDate(): LocalDate? {
  *  tag to today instead. */
 fun Tags.updateWithCheckDate(key: String, value: String) {
     val previousValue = get(key)
-    if (previousValue != value) {
-        set(key, value)
-    }
+    set(key, value)
     /* if the value is changed, set the check date only if it has been set before. Behavior
     *  before v32.0 was to delete the check date. However, this destroys data that was
     *  previously collected by another surveyor - we don't want to destroy other people's data
@@ -76,16 +74,8 @@ fun Tags.removeCheckDatesForKey(key: String) {
 /** Set/update solely the check date for the entire item to today, this also removes other less
  *  preferred check date keys for the entire item. */
 fun Tags.updateCheckDate() {
+    removeCheckDates()
     set(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
-    removeOtherCheckDates()
-}
-
-/** Delete solely the other check date for the entire item, don't touch SURVEY_MARK_KEY */
-fun Tags.removeOtherCheckDates() {
-    // remove old check dates (except the one we want to set)
-    LAST_CHECK_DATE_KEYS.forEach {
-        if (it != SURVEY_MARK_KEY) remove(it)
-    }
 }
 
 /** Return whether any check dates are set */
@@ -94,8 +84,7 @@ fun Tags.hasCheckDate(): Boolean =
 
 /** Delete any check date for the entire item */
 fun Tags.removeCheckDates() {
-    remove(SURVEY_MARK_KEY)
-    removeOtherCheckDates()
+    LAST_CHECK_DATE_KEYS.forEach { remove(it) }
 }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given

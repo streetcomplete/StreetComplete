@@ -49,6 +49,7 @@ class AddStepsRampTest {
                 strollerRamp = false,
                 wheelchairRamp = WheelchairRampStatus.YES
             ),
+            StringMapEntryModify("ramp", "yes", "yes"),
             StringMapEntryAdd("ramp:wheelchair", "yes"),
             StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
         )
@@ -81,6 +82,7 @@ class AddStepsRampTest {
                 strollerRamp = true,
                 wheelchairRamp = WheelchairRampStatus.YES
             ),
+            StringMapEntryModify("ramp", "yes", "yes"),
             StringMapEntryModify("ramp:bicycle", "yes", "yes"),
             StringMapEntryModify("ramp:stroller", "no", "yes"),
             StringMapEntryModify("ramp:wheelchair", "automatic", "yes"),
@@ -118,6 +120,7 @@ class AddStepsRampTest {
                 strollerRamp = false,
                 wheelchairRamp = WheelchairRampStatus.NO
             ),
+            StringMapEntryModify("ramp", "yes", "yes"),
             StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
             StringMapEntryAdd("ramp:bicycle", "no"),
             StringMapEntryAdd("ramp:stroller", "no"),
