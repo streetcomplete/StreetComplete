@@ -232,12 +232,12 @@ But it would be even better to include also icon.
 
 Note that there are some not-yet-used graphics, created for some proposed or expected quests. Maybe there is no need to create icon at all!
 
-A new icon can reuse the content of [other quest icons](res/graphics/quest icons), it can be based on openly licensed graphics. See [the attribution file](res/graphics/authors.txt) for what was used so far.
+A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics. See [the attribution file](res/graphics/authors.txt) for what was used so far.
 
 Keep similar style to existing ones and app in general. Once the quest icon is ready:
 
 - save as "Plain svg" or clean SVG file from unnecessary cruft in another way, like using [svgo](https://github.com/svg/svgo)
-- Put SVG into `[res/graphics/quest icons](res/graphics/quest icons)` folder
+- Put SVG into `[res/graphics/quest](res/graphics/quest)` folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next step.
 - Open Android Studio
 - Right click on "app" folder in the Project tool window (top left)
