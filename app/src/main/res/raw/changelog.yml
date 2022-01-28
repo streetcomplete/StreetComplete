@@ -4,7 +4,7 @@ v40.0-beta1: |
   <li><i>How does this road cross the barrier here?</i> (#3372, #3515), by @matkoniecz</li>
   <li><i>Can you pump gas yourself at this fuel station?</i> (#2822, #1827), by @naposm</li>
   <li><i>Does this place have air conditioning?</i> (#3641, #3127), by @coolultra1</li>
-  <li><i>Are the opening hours signed for this place?</i>, in intervals asked for places that have previously been tagged as having no signed opening hours (#3682, #3130)</li>
+  <li><i>Are the opening hours signed for this place?</i>, asked at intervals for places that have previously been tagged as having no signed opening hours (#3682, #3130)</li>
   </ul>
   <h3>Quest enhancements</h3>
   <ul>
