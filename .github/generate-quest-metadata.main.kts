@@ -343,9 +343,10 @@ fun getQuestTaginfo(
         // Add both variants
         allChanges.add(TaginfoChange(key, "yes", change))
         allChanges.add(TaginfoChange(key, "no", change))
-      } else if (Regex("\\.toString$").containsMatchIn(value) || Regex("\\.joinToString\\(").containsMatchIn(value)) {
+      } else if (Regex("\\.toString$").containsMatchIn(value)) {
         // No value to add
         // TODO: Check what value we should be setting
+        println("Value " + value + " is unknown toString, dropping value (for now)")
         allChanges.add(TaginfoChange(key, "", change))
       } else if (Regex("^when\\(answer").containsMatchIn(value)) {
         // TODO: Unpick this
@@ -365,6 +366,9 @@ fun getQuestTaginfo(
           println("Value '" + value + "' is not a string")
           if (value.startsWith("LocalDate.now")) {
             println("Dropping value of LocalDate.now change")
+            value = ""
+          } else if (value.endsWith(".toCheckDateString")) {
+            println("Dropping value of .toCheckDateString change")
             value = ""
           } else if (value.startsWith("if (")) {
             // TODO: Fix me!
@@ -403,23 +407,39 @@ fun getQuestTaginfo(
 //                println("Skipping, simple enum " + it + "...")
 //                allChanges.add(TaginfoChange(key, "", change))
 //                continue
-              } else if (it in setOf("RoadNameAnswer", "PlaceNameAnswer", "BusStopRefAnswer", "HousenumberAnswer", "PostboxRefAnswer")) {
+              } else if (it in setOf("RoadNameAnswer", "PlaceNameAnswer", "HousenumberAnswer")) {
                 println("Skipping just a name " + it + "...")
+                // TODO: Add all the language versions...
+                allChanges.add(TaginfoChange(key, "", change))
+                continue
+              } else if (it in setOf("BusStopRefAnswer", "PostboxRefAnswer")) {
+                println("Skipping just a ref " + it + "...")
                 allChanges.add(TaginfoChange(key, "", change))
                 continue
               } else {
+                var fieldName: String? = null
+                if (Regex("\\.joinToString\\(").containsMatchIn(value)) {
+                  val joinToStringRegex = Regex("([^/\\s]+(?>\\s*\\{\\s*it\\.([^\\s}]+)\\s*\\}|))")
+                  // TODO: Check what values we should be setting
+                  //tags["produce"] = answer.joinToString(";") { it.osmValue }
+                  if (joinToStringRegex.matches(value)) {
+                    fieldName = joinToStringRegex.find(value)!!.groupValues[2]
+                  } else {
+                    println("Value " + value + " is unknown joinToString, dropping value (for now)")
+                    allChanges.add(TaginfoChange(key, "", change))
+                    continue
+                  }
+                } else if (fieldRegex.matches(value)) {
+                  fieldName = fieldRegex.find(value)!!.groupValues[1]
+                } else {
+                  println("No regex match against " + value + " for enums field name")
+                }
                 val answerFile = getAnswerTypeFile(it, questFiles)
                 val questAnswerTypeFileContent = answerFile.readText()
 
                 println("Checking " + answerFile + " for enums")
                 //println(questAnswerTypeFileContent)
 
-                var fieldName: String? = null
-                if (fieldRegex.matches(value)) {
-                  fieldName = fieldRegex.find(value)!!.groupValues[1]
-                } else {
-                  println("No regex match against " + value + " for enums field name")
-                }
                 if (fieldName != null) {
                   for (answerEnum in getQuestAnswerTypeEnums(questAnswerTypeFileContent).values) {
                     if (answerEnum.containsKey(fieldName)) {
@@ -506,11 +526,14 @@ fun getQuestChanges(questFileContent: String): List<List<String>> {
     /**
      * tags["covered"] = "yes"
      * tags["covered"] = osm.answerValue
+     * tags["produce"] = answer.joinToString(";") { it.osmValue }
+     * tags["sport"] = answer.joinToString(";") { it.osmValue }
      *
      * Not:
      * tags["covered"] == "yes"
      */
-    val setRegex = Regex("\\s+tags\\[(\"[^\"]+\"|[^\\]]+)]\\s*=\\s*(\"[^\"]+\"|[^=][^/\\s]+)")
+    //val setRegex = Regex("\\s+tags\\[(\"[^\"]+\"|[^\\]]+)]\\s*=\\s*(\"[^\"]+\"|[^=][^/\\s]+)")
+    val setRegex = Regex("\\s+tags\\[(\"[^\"]+\"|[^\\]]+)]\\s*=\\s*(\"[^\"]+\"|[^=][^/\\s]+(?>\\s*\\{\\s*it\\.[^\\s}]+\\s*\\}|))")
 
     //return functionRegex.findAll(questFileContent).map { it.groupValues[1], it.groupValues[2], "" }.toList()
 
@@ -549,6 +572,14 @@ fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, Map<String, S
 //    AUTOMATIC("automatic"),
 //    YES("yes"),
 //    NO("no"),
+//}
+//enum class OrchardProduce(val osmValue: String, val osmLanduseValue: String? = null) {
+//    // Comment
+//    SISAL("sisal", "farmland"),
+//    GRAPE("grape", "vineyard"),
+//
+//    AGAVE("agave"),
+//    ALMOND("almond")
 //}
     //val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\) \\{\\s*([^\\}]+)\\}")
     val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\)(?>\\s*\\:\\s*|)([^\\s\\{]+|)\\s+\\{\\s*([^\\}]+)\\}")
