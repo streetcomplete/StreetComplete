@@ -10,19 +10,44 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.noParkingLineStyleResId
+import de.westnordost.streetcomplete.ktx.noParkingSignDrawableResId
+import de.westnordost.streetcomplete.ktx.noStandingLineStyleResId
+import de.westnordost.streetcomplete.ktx.noStandingSignDrawableResId
+import de.westnordost.streetcomplete.ktx.noStoppingLineStyleResId
+import de.westnordost.streetcomplete.ktx.noStoppingSignDrawableResId
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
-import de.westnordost.streetcomplete.osm.street_parking.*
+import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
+import de.westnordost.streetcomplete.osm.street_parking.StreetParking
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
+import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
+import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.*
-import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.*
+import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.CONDITIONAL_RESTRICTIONS
+import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.IMPLICIT
+import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.NO_PARKING
+import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.NO_STANDING
+import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.NO_STOPPING
+import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.DIAGONAL
+import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.NO
+import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PARALLEL
+import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PERPENDICULAR
+import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.SEPARATE
 import de.westnordost.streetcomplete.util.normalizeDegrees
-import de.westnordost.streetcomplete.view.*
+import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
+import de.westnordost.streetcomplete.view.setImage
 import kotlin.math.absoluteValue
 
 class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetParking>() {
@@ -60,8 +85,8 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
             elementGeometry as ElementPolylinesGeometry
         )
 
-        val defaultLeftImg = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
-        val defaultRightImg = ResImage(if (isRightSideUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
+        val defaultLeftImg = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        val defaultRightImg = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 
         val ctx = requireContext()
         binding.puzzleView.setLeftSideImage(leftSide?.getIcon(ctx, countryInfo, isLeftSideUpsideDown) ?: defaultLeftImg)

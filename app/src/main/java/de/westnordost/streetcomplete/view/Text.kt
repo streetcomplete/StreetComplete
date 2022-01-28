@@ -18,3 +18,10 @@ fun TextView.setText(text: Text?) {
     }
 }
 
+fun VerticalLabelView.setText(text: Text?) {
+    when(text) {
+        is ResText -> setText(resources.getString(text.resId))
+        is CharSequenceText -> setText(text.text.toString())
+        null -> setText("")
+    }
+}

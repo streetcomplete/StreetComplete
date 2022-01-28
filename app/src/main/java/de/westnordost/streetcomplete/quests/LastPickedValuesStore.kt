@@ -2,19 +2,19 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-
 import de.westnordost.streetcomplete.Prefs
 
 class LastPickedValuesStore<T : Any>(
     private val prefs: SharedPreferences,
     private val key: String,
     private val serialize: (T) -> String,
-    private val deserialize: (String) -> T? // null = unwanted value, see mostCommonWithin
+    private val deserialize: (String) -> T?, // null = unwanted value, see mostCommonWithin
+    private val maxEntries: Int = 100
 ) {
     fun add(newValues: Iterable<T>) {
         val lastValues = newValues.asSequence().map(serialize) + getRaw()
         prefs.edit {
-            putString(getKey(), lastValues.take(MAX_ENTRIES).joinToString(","))
+            putString(getKey(), lastValues.take(maxEntries).joinToString(","))
         }
     }
 
@@ -27,8 +27,6 @@ class LastPickedValuesStore<T : Any>(
 
     private fun getKey() = Prefs.LAST_PICKED_PREFIX + key
 }
-
-private const val MAX_ENTRIES = 100
 
 /* Returns the `target` most-common non-null items in the first `historyCount`
  *  items of the sequence, in their original order.

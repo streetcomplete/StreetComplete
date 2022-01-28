@@ -476,7 +476,17 @@
                     "label": "Depósito"
                 },
                 "castle_type": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "castrum": "Forte romano",
+                        "defensive": "Castelo defensivo",
+                        "fortress": "Fortaleza",
+                        "hillfort": "Castro",
+                        "kremlin": "Kremlin",
+                        "manor": "Solar",
+                        "palace": "Palácio",
+                        "shiro": "Shiro"
+                    }
                 },
                 "changing_table": {
                     "label": "Mesa para troca de fraldas"
@@ -1939,7 +1949,20 @@
                     "terms": "fogueira,fogo,fogão,aquecimento"
                 },
                 "recycling_accepts": {
-                    "label": "Aceita"
+                    "label": "Aceita",
+                    "options": {
+                        "batteries": "Pilhas",
+                        "cans": "Latas",
+                        "cardboard": "Cartão",
+                        "clothes": "Roupas",
+                        "glass": "Vidro",
+                        "glass_bottles": "Garrafas de vidro",
+                        "green_waste": "Resíduos vegetais",
+                        "paper": "Papel",
+                        "plastic_packaging": "Embalagens de plástico",
+                        "scrap_metal": "Sucata",
+                        "shoes": "Calçado"
+                    }
                 },
                 "recycling_type": {
                     "label": "Tipo",
@@ -5854,8 +5877,7 @@
                     "terms": "compass,rose of the winds,rosa dos ventos,ventos,quadrante,norte,sul,este,oeste,leste"
                 },
                 "man_made/courtyard": {
-                    "name": "Pátio",
-                    "terms": "átrio,pateo,claustro,espaço murado,área"
+                    "name": "Pátio"
                 },
                 "man_made/crane": {
                     "name": "Grua",

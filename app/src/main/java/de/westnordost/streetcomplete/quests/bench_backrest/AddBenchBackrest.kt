@@ -1,14 +1,16 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.NO
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.PICNIC_TABLE
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.YES
 
 class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
@@ -33,14 +35,14 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override fun createForm() = AddBenchBackrestForm()
 
-    override fun applyAnswerTo(answer: BenchBackrestAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: BenchBackrestAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             PICNIC_TABLE -> {
-                changes.add("leisure", "picnic_table")
-                changes.delete("amenity")
+                tags["leisure"] = "picnic_table"
+                tags.remove("amenity")
             }
-            YES -> changes.add("backrest", "yes")
-            NO -> changes.add("backrest", "no")
+            YES -> tags["backrest"] = "yes"
+            NO -> tags["backrest"] = "no"
         }
     }
 }

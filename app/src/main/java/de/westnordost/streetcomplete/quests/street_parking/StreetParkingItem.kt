@@ -3,9 +3,27 @@ package de.westnordost.streetcomplete.quests.street_parking
 import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.osm.street_parking.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
+import de.westnordost.streetcomplete.ktx.noParkingLineStyleResId
+import de.westnordost.streetcomplete.ktx.noParkingSignDrawableResId
+import de.westnordost.streetcomplete.ktx.noStandingLineStyleResId
+import de.westnordost.streetcomplete.ktx.noStandingSignDrawableResId
+import de.westnordost.streetcomplete.ktx.noStoppingLineStyleResId
+import de.westnordost.streetcomplete.ktx.noStoppingSignDrawableResId
+import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.StreetParking
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
+import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
+import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
+import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
@@ -40,7 +58,7 @@ fun StreetParking.getIcon(context: Context, countryInfo: CountryInfo, isUpsideDo
     StreetStoppingProhibited ->
         ResImage(countryInfo.noStoppingLineStyleResId ?: R.drawable.ic_street_none)
     UnknownStreetParking, IncompleteStreetParking ->
-        ResImage(if (isUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
+        ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the icon in a selection dialog */
@@ -58,7 +76,7 @@ fun StreetParking.getDialogIcon(context: Context, countryInfo: CountryInfo, isUp
     StreetParkingSeparate ->
         ResImage(R.drawable.ic_parking_separate)
     IncompleteStreetParking, UnknownStreetParking ->
-        ResImage(if (isUpsideDown) R.drawable.ic_lanes_unknown_l else R.drawable.ic_lanes_unknown)
+        ResImage(if (isUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */

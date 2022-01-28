@@ -1,26 +1,26 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
 import android.os.Bundle
-import androidx.annotation.AnyThread
 import android.view.View
+import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
-import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.util.normalizeDegrees
 import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlin.math.absoluteValue
 
@@ -109,13 +109,13 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         }
 
         val defaultResId =
-            if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
-            else                   R.drawable.ic_cycleway_unknown
+            if (isLeftHandTraffic) R.drawable.ic_street_side_unknown_l
+            else                   R.drawable.ic_street_side_unknown
 
         binding.puzzleView.setLeftSideImage(ResImage(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
         binding.puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
-        binding.puzzleView.setLeftSideText(leftSide?.getTitleResId()?.let { resources.getString(it) })
-        binding.puzzleView.setRightSideText(rightSide?.getTitleResId()?.let { resources.getString(it) })
+        binding.puzzleView.setLeftSideText(leftSide?.getTitleResId()?.let { ResText(it) })
+        binding.puzzleView.setRightSideText(rightSide?.getTitleResId()?.let { ResText(it) })
 
         showTapHint()
         initLastAnswerButton()
@@ -189,16 +189,16 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private fun onSelectedSide(cycleway: Cycleway, isRight: Boolean) {
-        val iconResId = cycleway.getIconResId(isLeftHandTraffic)
-        val titleResId = resources.getString(cycleway.getTitleResId())
+        val icon = ResImage(cycleway.getIconResId(isLeftHandTraffic))
+        val title = ResText(cycleway.getTitleResId())
 
         if (isRight) {
-            binding.puzzleView.replaceRightSideImage(ResImage(iconResId))
-            binding.puzzleView.setRightSideText(titleResId)
+            binding.puzzleView.replaceRightSideImage(icon)
+            binding.puzzleView.setRightSideText(title)
             rightSide = cycleway
         } else {
-            binding.puzzleView.replaceLeftSideImage(ResImage(iconResId))
-            binding.puzzleView.setLeftSideText(titleResId)
+            binding.puzzleView.replaceLeftSideImage(icon)
+            binding.puzzleView.setLeftSideText(title)
             leftSide = cycleway
         }
         updateLastAnswerButtonVisibility()

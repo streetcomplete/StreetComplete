@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.util.intersects
@@ -129,13 +129,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     override fun createForm() = AddMaxHeightForm()
 
-    override fun applyAnswerTo(answer: MaxHeightAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is MaxHeight -> {
-                changes.add("maxheight", answer.value.toString())
+                tags["maxheight"] = answer.value.toString()
             }
             is NoMaxHeightSign -> {
-                changes.add("maxheight", if (answer.isTallEnough) "default" else "below_default")
+                tags["maxheight"] = if (answer.isTallEnough) "default" else "below_default"
             }
         }
     }

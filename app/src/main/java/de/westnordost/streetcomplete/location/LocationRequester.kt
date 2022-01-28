@@ -12,7 +12,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.awaitReceiverCall
+import de.westnordost.streetcomplete.ktx.hasLocationPermission
+import de.westnordost.streetcomplete.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ActivityForResultLauncher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope

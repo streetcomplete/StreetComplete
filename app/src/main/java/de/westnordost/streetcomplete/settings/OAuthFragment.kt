@@ -10,7 +10,11 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.*
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.BackPressedListener
+import de.westnordost.streetcomplete.HasTitle
+import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding

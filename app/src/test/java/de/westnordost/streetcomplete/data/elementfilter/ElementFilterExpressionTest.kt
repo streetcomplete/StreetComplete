@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import org.junit.Test
-
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
-import de.westnordost.streetcomplete.testutils.*
-
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
 import java.util.EnumSet
 
 class ElementFilterExpressionTest {

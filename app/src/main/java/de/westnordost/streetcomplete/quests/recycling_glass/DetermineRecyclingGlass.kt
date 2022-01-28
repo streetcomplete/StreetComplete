@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.quests.recycling_glass
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
@@ -32,15 +33,15 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
     override fun createForm() = DetermineRecyclingGlassForm()
 
-    override fun applyAnswerTo(answer: RecyclingGlass, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingGlass, tags: Tags, timestampEdited: Long) {
         when(answer) {
             ANY -> {
                 // to mark that it has been checked
-                changes.add("recycling:glass_bottles", "yes")
+                tags["recycling:glass_bottles"] = "yes"
             }
             BOTTLES -> {
-                changes.add("recycling:glass_bottles", "yes")
-                changes.modify("recycling:glass", "no")
+                tags["recycling:glass_bottles"] = "yes"
+                tags["recycling:glass"] = "no"
             }
         }
     }

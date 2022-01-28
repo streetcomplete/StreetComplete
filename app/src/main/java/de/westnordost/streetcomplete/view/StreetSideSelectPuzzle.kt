@@ -6,18 +6,22 @@ import android.graphics.Matrix
 import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.showTapHint
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
 
 /** A very custom view that conceptually shows the left and right side of a street. Both sides
  *  are clickable.<br>
@@ -158,11 +162,11 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.rightSideImage.animateFallDown()
     }
 
-    fun setLeftSideText(text: String?) {
+    fun setLeftSideText(text: Text?) {
         binding.leftSideTextView.setText(text)
     }
 
-    fun setRightSideText(text: String?) {
+    fun setRightSideText(text: Text?) {
         binding.rightSideTextView.setText(text)
     }
 

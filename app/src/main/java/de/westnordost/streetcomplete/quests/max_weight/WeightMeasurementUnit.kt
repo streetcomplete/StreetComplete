@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit.*
+import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit.POUND
+import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit.SHORT_TON
+import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit.TON
 
 enum class WeightMeasurementUnit {
     TON,

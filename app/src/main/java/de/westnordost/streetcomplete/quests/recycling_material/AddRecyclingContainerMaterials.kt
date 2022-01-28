@@ -1,19 +1,22 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
+import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BEVERAGE_CARTONS
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
 
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
@@ -51,88 +54,71 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = recycling")
 
-    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {
-            applyRecyclingMaterialsAnswer(answer.materials, changes)
+            applyRecyclingMaterialsAnswer(answer.materials, tags)
         } else if(answer is IsWasteContainer) {
-            applyWasteContainerAnswer(changes)
+            applyWasteContainerAnswer(tags)
         }
     }
 
-    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, changes: StringMapChangesBuilder) {
+    private fun applyRecyclingMaterialsAnswer(materials: List<RecyclingMaterial>, tags: Tags) {
+        // first clear recycling:* taggings previously "yes"
+        for ((key, value) in tags.entries) {
+            if (key.startsWith("recycling:") && value == "yes") {
+                tags.remove(key)
+            }
+        }
+
         // set selected recycling:* taggings to "yes"
         val selectedMaterials = materials.map { "recycling:${it.value}" }
-        for (acceptedMaterial in selectedMaterials) {
-            changes.addOrModify(acceptedMaterial, "yes")
+        for (material in selectedMaterials) {
+            tags[material] = "yes"
         }
 
         // if the user chose deliberately not "all plastic", also tag it explicitly
-        val anyPlastic = listOf("recycling:plastic", "recycling:plastic_packaging", "recycling:plastic_bottles", "recycling:beverage_cartons")
         when {
-            selectedMaterials.contains("recycling:plastic") -> {
-                changes.deleteIfExists("recycling:plastic_packaging")
-                changes.deleteIfExists("recycling:plastic_bottles")
-                changes.deleteIfExists("recycling:beverage_cartons")
+            PLASTIC in materials -> {
+                tags.remove("recycling:plastic_packaging")
+                tags.remove("recycling:plastic_bottles")
+                tags.remove("recycling:beverage_cartons")
             }
-            selectedMaterials.contains("recycling:plastic_packaging") -> {
-                changes.addOrModify("recycling:plastic", "no")
-                changes.deleteIfExists("recycling:plastic_bottles")
-                changes.deleteIfExists("recycling:beverage_cartons")
+            PLASTIC_PACKAGING in materials -> {
+                tags["recycling:plastic"] = "no"
+                tags.remove("recycling:plastic_bottles")
+                tags.remove("recycling:beverage_cartons")
             }
-            selectedMaterials.contains("recycling:beverage_cartons") &&
-            selectedMaterials.contains("recycling:plastic_bottles") -> {
-                changes.addOrModify("recycling:plastic_packaging", "no")
-                changes.addOrModify("recycling:plastic", "no")
+            BEVERAGE_CARTONS in materials && PLASTIC_BOTTLES in materials -> {
+                tags["recycling:plastic_packaging"] = "no"
+                tags["recycling:plastic"] = "no"
             }
-            selectedMaterials.contains("recycling:beverage_cartons") -> {
-                changes.addOrModify("recycling:plastic_bottles", "no")
-                changes.addOrModify("recycling:plastic_packaging", "no")
-                changes.addOrModify("recycling:plastic", "no")
+            BEVERAGE_CARTONS in materials -> {
+                tags["recycling:plastic_bottles"] = "no"
+                tags["recycling:plastic_packaging"] = "no"
+                tags["recycling:plastic"] = "no"
             }
-            selectedMaterials.contains("recycling:plastic_bottles") -> {
-                changes.addOrModify("recycling:beverage_cartons", "no")
-                changes.addOrModify("recycling:plastic_packaging", "no")
-                changes.addOrModify("recycling:plastic", "no")
+            PLASTIC_BOTTLES in materials -> {
+                tags["recycling:beverage_cartons"] = "no"
+                tags["recycling:plastic_packaging"] = "no"
+                tags["recycling:plastic"] = "no"
             }
-            else -> {
-                changes.deleteIfExists("recycling:plastic")
-                changes.deleteIfExists("recycling:plastic_packaging")
-                changes.deleteIfExists("recycling:plastic_bottles")
-                changes.deleteIfExists("recycling:beverage_cartons")
-            }
-        }
-
-        // remove recycling:* taggings previously "yes" but now not any more
-        val materialsNotSelectedAnymore = changes.getPreviousEntries().filter { (key, value) ->
-            key.startsWith("recycling:")
-            && !selectedMaterials.contains(key)
-            // don't touch any previous explicit recycling:*=no taggings
-            && value == "yes"
-            // leave plastic values alone because it is managed separately (see above)
-            && !anyPlastic.contains(key)
-        }.keys
-        for (notAcceptedMaterial in materialsNotSelectedAnymore) {
-            changes.delete(notAcceptedMaterial)
         }
 
         // only set the check date if nothing was changed
-        val isNotActuallyChangingAnything = changes.getChanges().all { change ->
-            change is StringMapEntryModify && change.value == change.valueBefore
-        }
-        if (isNotActuallyChangingAnything || changes.hasCheckDateForKey("recycling")) {
-            changes.updateCheckDateForKey("recycling")
+        if (!tags.hasChanges || tags.hasCheckDateForKey("recycling")) {
+            tags.updateCheckDateForKey("recycling")
         }
     }
 
-    private fun applyWasteContainerAnswer(changes: StringMapChangesBuilder) {
-        changes.modify("amenity","waste_disposal")
-        changes.delete("recycling_type")
+    private fun applyWasteContainerAnswer(tags: Tags) {
+        tags["amenity"] = "waste_disposal"
+        tags.remove("recycling_type")
 
-        val previousRecyclingKeys = changes.getPreviousEntries().keys.filter { it.startsWith("recycling:") }
-        for (previousRecyclingKey in previousRecyclingKeys) {
-            changes.delete(previousRecyclingKey)
+        val recyclingKeys = tags.keys.filter { it.startsWith("recycling:") }
+        for (key in recyclingKeys) {
+            tags.remove(key)
         }
-        changes.deleteCheckDatesForKey("recycling")
+        tags.removeCheckDatesForKey("recycling")
     }
 }
 

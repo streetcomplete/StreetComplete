@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import org.junit.Test
 import de.westnordost.streetcomplete.testutils.p
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class PolylinesSerializerTest {
 

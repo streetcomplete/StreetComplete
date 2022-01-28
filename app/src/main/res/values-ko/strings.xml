@@ -2238,4 +2238,24 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_address_answer_house_name_and_housenumber">"건물번호와 이름 둘 다 있음..."</string>
     <string name="quest_address_house_number_label">"건물번호:"</string>
     <string name="quest_shoulder_title">"이 도로에 갓길이 있나요?"</string>
+    <string name="quest_fireHydrant_position_title">"소화전이 어디에 위치해 있나요?"</string>
+    <string name="quest_fireHydrant_position_green">"잔디 또는 흙"</string>
+    <string name="quest_fireHydrant_position_lane">"길가"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"인도"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"주차장"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"예 (참고 남기기)"</string>
+    <string name="quest_smoothness_title_excellent">"매끈하고 고름"</string>
+    <string name="quest_smoothness_title_good">"대체로 고름"</string>
+    <string name="quest_smoothness_title_intermediate">"일부 울퉁불퉁함"</string>
+    <string name="quest_smoothness_title_bad">"울퉁불퉁함"</string>
+    <string name="quest_smoothness_title_very_bad">"매우 울퉁불퉁함"</string>
+    <string name="quest_smoothness_title_horrible">"매우 울퉁불퉁하고 고르지 않음"</string>
+    <string name="quest_smoothness_title_very_horrible">"거의 통행 불가"</string>
+    <string name="quest_smoothness_title_impassable">"통행 불가"</string>
+    <string name="quest_smoothness_description_excellent_paved">"균열 및 요철 없음"</string>
+    <string name="quest_smoothness_description_good_paved">"작은 균열, 틈, 복구 흔적 또는 약간의 요철만 있음"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"틈새가 얕거나 작음"</string>
+    <string name="quest_smoothness_description_good_sett">"돌이 매우 평평하고, 배열이 규칙적이고, 틈새가 매우 얕거나 작음"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"표면이 비정상적으로 울퉁불퉁하고, 큰 틈새 혹은 균열, 얕은 바퀴 자국, 포트홀 등의 손상 있음"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"틈새가 크며, 빠진 돌 등의 손상 가능성 있음"</string>
 </resources>

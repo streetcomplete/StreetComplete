@@ -2,8 +2,12 @@ package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.FLUSH
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.KERB_RAMP
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.LOWERED
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.NO_KERB
+import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.RAISED
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.*
 
 class AddKerbHeightForm : AImageListQuestAnswerFragment<KerbHeight, KerbHeight>() {
 

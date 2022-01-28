@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.*
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES_PER_HOUR
 
 enum class SpeedMeasurementUnit(private val displayString: String) {
     KILOMETERS_PER_HOUR("km/h"),

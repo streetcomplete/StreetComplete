@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
-
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class NumberSystemTest {
     @Test(expected = IllegalArgumentException::class) fun `illegal arguments`() {

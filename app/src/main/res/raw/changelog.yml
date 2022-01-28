@@ -1,3 +1,22 @@
+v40.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How does this road cross the barrier here?</i> (#3372, #3515), by @matkoniecz</li>
+  <li><i>Can you pump gas yourself at this fuel station?</i> (#2822, #1827), by @naposm</li>
+  <li><i>Does this place have air conditioning?</i> (#3641, #3127), by @coolultra1</li>
+  <li><i>Are the opening hours signed for this place?</i>, asked at intervals for places that have previously been tagged as having no signed opening hours (#3682, #3130)</li>
+  </ul>
+  <h3>Quest enhancements</h3>
+  <ul>
+  <li>Allow answering whether there is a shoulder for each side individually (#3659)</li>
+  <li>Allow answering whether the sidewalk is displayed separately on the map for each side individually</li>
+  </ul>
+  <h3>Fixes and improvements</h3>
+  <ul>
+  <li>More accurate conflict detection</li>
+  <li>Fix a few rare crash issues</li>
+  </ul>
+
 v39.1: |
   <h3>Fixes</h3>
   <ul>

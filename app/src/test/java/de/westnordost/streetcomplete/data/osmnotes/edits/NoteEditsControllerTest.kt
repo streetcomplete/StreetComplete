@@ -1,12 +1,17 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.noteEdit
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 
 class NoteEditsControllerTest {
 

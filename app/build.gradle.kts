@@ -1,6 +1,6 @@
-import java.util.Properties
 import java.io.FileInputStream
 import java.io.FileWriter
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -36,8 +36,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 3901
-        versionName = "39.0"
+        versionCode = 4000
+        versionName = "40.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -191,8 +191,8 @@ val bcp47ExportLanguages = setOf(
     "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
     "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
 )
-val nsiVersion = "v6.0.20220110"
-val presetsVersion = "v3.1.0"
+val nsiVersion = "v6.0.20220124"
+val presetsVersion = "v3.2.1"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"

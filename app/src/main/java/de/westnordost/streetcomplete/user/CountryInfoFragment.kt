@@ -36,8 +36,8 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         counterAnimation?.cancel()
         counterAnimation = null
         circularRevealAnimator?.cancel()

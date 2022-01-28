@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
@@ -139,11 +138,11 @@ class AddSuspectedOneway(
 
     override fun createForm() = AddSuspectedOnewayForm()
 
-    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: Tags, timestampEdited: Long) {
         if (!answer.isOneway) {
-            changes.add("oneway", "no")
+            tags["oneway"] = "no"
         } else {
-            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
+            tags["oneway"] = if (db.isForward(answer.wayId)!!) "yes" else "-1"
         }
     }
 

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
@@ -36,7 +36,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
 
     override fun createForm() = AddPowerPolesMaterialForm()
 
-    override fun applyAnswerTo(answer: PowerPolesMaterial, changes: StringMapChangesBuilder) {
-        changes.add("material", answer.osmValue)
+    override fun applyAnswerTo(answer: PowerPolesMaterial, tags: Tags, timestampEdited: Long) {
+        tags["material"] = answer.osmValue
     }
 }

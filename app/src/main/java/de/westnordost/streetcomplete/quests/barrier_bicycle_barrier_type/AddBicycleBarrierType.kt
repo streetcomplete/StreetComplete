@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
@@ -21,7 +21,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
 
     override fun createForm() = AddBicycleBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BicycleBarrierType, changes: StringMapChangesBuilder) {
-        changes.add("cycle_barrier", answer.osmValue)
+    override fun applyAnswerTo(answer: BicycleBarrierType, tags: Tags, timestampEdited: Long) {
+        tags["cycle_barrier"] = answer.osmValue
     }
 }

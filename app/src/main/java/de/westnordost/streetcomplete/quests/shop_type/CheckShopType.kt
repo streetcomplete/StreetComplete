@@ -2,12 +2,16 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.*
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.meta.removeCheckDates
+import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
@@ -48,30 +52,22 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
     override fun createForm() = ShopTypeForm()
 
-    override fun applyAnswerTo(answer: ShopTypeAnswer, changes: StringMapChangesBuilder) {
-
+    override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is IsShopVacant -> {
-                changes.updateCheckDate()
+                tags.updateCheckDate()
             }
             is ShopType -> {
-                changes.deleteCheckDates()
+                tags.removeCheckDates()
 
-                if (!answer.tags.containsKey("shop")) {
-                    changes.deleteIfExists("shop")
-                }
-
-                for ((key, _) in changes.getPreviousEntries()) {
-                    // also deletes all "disused:" keys
-                    val isOkToRemove =
-                        KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }
-                    if (isOkToRemove && !answer.tags.containsKey(key)) {
-                        changes.delete(key)
+                for (key in tags.keys) {
+                    if (KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }) {
+                        tags.remove(key)
                     }
                 }
 
                 for ((key, value) in answer.tags) {
-                    changes.addOrModify(key, value)
+                    tags[key] = value
                 }
             }
         }

@@ -479,7 +479,18 @@
                     "label": "Insättning av pengar"
                 },
                 "castle_type": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "castrum": "Romerskt fort",
+                        "defensive": "Defensivt slott",
+                        "fortress": "Befästning",
+                        "hillfort": "Fornborg",
+                        "kremlin": "Kreml",
+                        "manor": "Herrgård",
+                        "palace": "Palats",
+                        "shiro": "Shiro (japanskt slott)",
+                        "stately": "Ståtligt hem (Slott)"
+                    }
                 },
                 "changing_table": {
                     "label": "Skötbord"
@@ -938,7 +949,11 @@
                     "placeholder": "Standard"
                 },
                 "embassy": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "delegation": "Delegation",
+                        "yes": "Ambassad"
+                    }
                 },
                 "emergency": {
                     "label": "Akut"
@@ -1693,9 +1708,11 @@
                         "carports": "Carportar",
                         "garage_boxes": "Garageboxar",
                         "lane": "Fickparkering",
+                        "layby": "Rastplats",
                         "multi-storey": "Flera våningar",
                         "rooftop": "På taket",
                         "sheds": "Skjul",
+                        "street_side": "Sidan av väg",
                         "surface": "Yta",
                         "underground": "Underjordisk"
                     }
@@ -1935,7 +1952,20 @@
                     "terms": "verklig eldstad,eldstad,brasa,kamin,öppen eldstad,öppen eld,eldplats,eld"
                 },
                 "recycling_accepts": {
-                    "label": "Accepterar"
+                    "label": "Accepterar",
+                    "options": {
+                        "batteries": "Batterier",
+                        "cans": "Burkar",
+                        "cardboard": "Kartong",
+                        "clothes": "Kläder",
+                        "glass": "Glas",
+                        "glass_bottles": "Glasflaskor",
+                        "green_waste": "Trädgårdsavfall",
+                        "paper": "Papper",
+                        "plastic_packaging": "Plastförpackningar",
+                        "scrap_metal": "Skräpmetall",
+                        "shoes": "Skor"
+                    }
                 },
                 "recycling_type": {
                     "label": "Typ",
@@ -5859,8 +5889,7 @@
                     "terms": "kompassros,kompass,öst,norr,vindros,syd,väst"
                 },
                 "man_made/courtyard": {
-                    "name": "Innergård",
-                    "terms": "innergård,torg,gård,gårdsplan,borggård,innetorg,inhägnad öppet område"
+                    "name": "Innergård"
                 },
                 "man_made/crane": {
                     "name": "Kran",

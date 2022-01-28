@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddParkingFee : OsmFilterQuestType<Fee>() {
@@ -25,5 +25,6 @@ class AddParkingFee : OsmFilterQuestType<Fee>() {
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: Fee, changes: StringMapChangesBuilder) = answer.applyTo(changes)
+    override fun applyAnswerTo(answer: Fee, tags: Tags, timestampEdited: Long) =
+        answer.applyTo(tags)
 }

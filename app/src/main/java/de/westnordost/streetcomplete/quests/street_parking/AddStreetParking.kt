@@ -2,13 +2,17 @@ package de.westnordost.streetcomplete.quests.street_parking
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.street_parking.*
+import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
+import de.westnordost.streetcomplete.osm.street_parking.toOsmConditionValue
+import de.westnordost.streetcomplete.osm.street_parking.toOsmLaneValue
+import de.westnordost.streetcomplete.osm.street_parking.toOsmValue
 
 
 class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
@@ -79,7 +83,7 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
 
     override fun createForm() = AddStreetParkingForm()
 
-    override fun applyAnswerTo(answer: LeftAndRightStreetParking, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: LeftAndRightStreetParking, tags: Tags, timestampEdited: Long) {
         /* Note: If a resurvey is implemented, old
            parking:lane:*:(parallel|diagonal|perpendicular|...) values must be cleaned up */
 
@@ -88,10 +92,10 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
         val laneLeft = answer.left!!.toOsmLaneValue() ?: throw IllegalArgumentException()
 
         if (laneLeft == laneRight) {
-            changes.add("parking:lane:both", laneLeft)
+            tags["parking:lane:both"] = laneLeft
         } else {
-            changes.add("parking:lane:left", laneLeft)
-            changes.add("parking:lane:right", laneRight)
+            tags["parking:lane:left"] = laneLeft
+            tags["parking:lane:right"] = laneRight
         }
 
         // parking:condition:<left/right/both>
@@ -99,10 +103,10 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
         val conditionLeft = answer.left.toOsmConditionValue()
 
         if (conditionLeft == conditionRight) {
-            conditionLeft?.let { changes.add("parking:condition:both", it) }
+            conditionLeft?.let { tags["parking:condition:both"] = it }
         } else {
-            conditionLeft?.let { changes.add("parking:condition:left", it) }
-            conditionRight?.let { changes.add("parking:condition:right", it) }
+            conditionLeft?.let { tags["parking:condition:left"] = it }
+            conditionRight?.let { tags["parking:condition:right"] = it }
         }
 
         // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular> (aka "parking orientation")
@@ -110,10 +114,10 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
         val orientationLeft = (answer.left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
 
         if (orientationLeft == orientationRight) {
-            if (orientationLeft != null) changes.addOrModify("parking:lane:both:$laneLeft", orientationLeft)
+            if (orientationLeft != null) tags["parking:lane:both:$laneLeft"] = orientationLeft
         } else {
-            if (orientationLeft != null) changes.addOrModify("parking:lane:left:$laneLeft", orientationLeft)
-            if (orientationRight != null) changes.addOrModify("parking:lane:right:$laneRight", orientationRight)
+            if (orientationLeft != null) tags["parking:lane:left:$laneLeft"] = orientationLeft
+            if (orientationRight != null) tags["parking:lane:right:$laneRight"] = orientationRight
         }
     }
 }

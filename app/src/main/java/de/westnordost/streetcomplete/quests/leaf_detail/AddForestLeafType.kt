@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
@@ -49,7 +49,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
 
     override fun createForm() = AddForestLeafTypeForm()
 
-    override fun applyAnswerTo(answer: ForestLeafType, changes: StringMapChangesBuilder) {
-        changes.add("leaf_type", answer.osmValue)
+    override fun applyAnswerTo(answer: ForestLeafType, tags: Tags, timestampEdited: Long) {
+        tags["leaf_type"] = answer.osmValue
     }
 }

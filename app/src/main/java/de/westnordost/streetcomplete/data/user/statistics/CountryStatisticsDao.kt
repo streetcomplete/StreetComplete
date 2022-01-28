@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.Columns.RANK
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.Columns.SUCCEEDED
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.NAME
-
 import javax.inject.Inject
 
 /** Stores how many quests the user solved in which country */

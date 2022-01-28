@@ -1,24 +1,33 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.common.errors.*
-import de.westnordost.osmapi.map.data.*
-
-import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
-import de.westnordost.osmapi.map.data.Element as OsmApiElement
-import de.westnordost.osmapi.map.data.Node as OsmApiNode
-import de.westnordost.osmapi.map.data.Way as OsmApiWay
-import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
-import de.westnordost.osmapi.map.data.RelationMember as OsmApiRelationMember
-import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
-import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
-
+import de.westnordost.osmapi.common.errors.OsmApiException
+import de.westnordost.osmapi.common.errors.OsmApiReadResponseException
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException
+import de.westnordost.osmapi.common.errors.OsmConflictException
+import de.westnordost.osmapi.common.errors.OsmConnectionException
+import de.westnordost.osmapi.common.errors.OsmNotFoundException
+import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
+import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmRelation
+import de.westnordost.osmapi.map.data.OsmRelationMember
+import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import java.time.Instant
+import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
+import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
+import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
+import de.westnordost.osmapi.map.data.Element as OsmApiElement
+import de.westnordost.osmapi.map.data.Node as OsmApiNode
+import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
+import de.westnordost.osmapi.map.data.RelationMember as OsmApiRelationMember
+import de.westnordost.osmapi.map.data.Way as OsmApiWay
 
 class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 

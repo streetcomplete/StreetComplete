@@ -5745,8 +5745,7 @@
                     "aliases": "コンパス図\n羅針図\nウインドローズ"
                 },
                 "man_made/courtyard": {
-                    "name": "中庭",
-                    "terms": "中庭,建物"
+                    "name": "中庭"
                 },
                 "man_made/crane": {
                     "name": "クレーン",

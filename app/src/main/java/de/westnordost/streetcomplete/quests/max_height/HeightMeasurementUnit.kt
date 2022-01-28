@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.*
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.FOOT_AND_INCH
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.METER
 
 enum class HeightMeasurementUnit(private val displayString: String) {
     METER("m"),

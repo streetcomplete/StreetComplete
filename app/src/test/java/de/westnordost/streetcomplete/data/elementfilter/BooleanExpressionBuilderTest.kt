@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class BooleanExpressionBuilderTest {
     @Test fun leaf() { check("a") }

@@ -2,21 +2,25 @@ package de.westnordost.streetcomplete.quests.oneway
 
 import android.content.Context
 import android.os.Bundle
-import androidx.annotation.AnyThread
 import android.view.View
-
+import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.valueOf
 import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
-import de.westnordost.streetcomplete.view.image_select.*
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.image_select.Item2
 import kotlin.math.PI
 
 class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
@@ -47,11 +51,11 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         binding.puzzleView.showOnlyRightSide()
         binding.puzzleView.onClickSideListener = { showDirectionSelectionDialog() }
 
-        val defaultResId = R.drawable.ic_oneway_unknown
+        val defaultResId = R.drawable.ic_street_side_unknown
 
         binding.puzzleView.setRightSideImage(ResImage(selection?.iconResId ?: defaultResId))
 
-        binding.puzzleView.setRightSideText(selection?.titleResId?.let { resources.getString(it) })
+        binding.puzzleView.setRightSideText(selection?.titleResId?.let { ResText(it) })
         if (selection == null && !HAS_SHOWN_TAP_HINT) {
             binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
@@ -86,7 +90,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 3) { selected ->
             val oneway = selected.value!!
             binding.puzzleView.replaceRightSideImage(ResImage(oneway.iconResId))
-            binding.puzzleView.setRightSideText(resources.getString(oneway.titleResId))
+            binding.puzzleView.setRightSideText(ResText(oneway.titleResId))
             selection = oneway
             checkIsFormComplete()
         }.show()

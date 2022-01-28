@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+
 enum class BarrierType(val osmValue: String) {
     PASSAGE("entrance"),
     GATE("gate"),
@@ -24,4 +26,24 @@ enum class BarrierType(val osmValue: String) {
     STILE_STEPOVER_STONE("stile"),
     KISSING_GATE("kissing_gate"),
     BICYCLE_BARRIER("cycle_barrier")
+}
+
+fun BarrierType.applyTo(tags: Tags) {
+    tags["barrier"] = this.osmValue
+    when (this) {
+        BarrierType.STILE_SQUEEZER -> {
+            tags["stile"] = "squeezer"
+        }
+        BarrierType.STILE_LADDER -> {
+            tags["stile"] = "ladder"
+        }
+        BarrierType.STILE_STEPOVER_WOODEN -> {
+            tags["stile"] = "stepover"
+            tags["material"] = "wood"
+        }
+        BarrierType.STILE_STEPOVER_STONE -> {
+            tags["stile"] = "stepover"
+            tags["material"] = "stone"
+        }
+    }
 }

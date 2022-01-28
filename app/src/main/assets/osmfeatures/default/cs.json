@@ -57,7 +57,7 @@
                     "options": {
                         "designated": {
                             "description": "Přístup povolen v souladu se značením nebo specifickými místními předpisy",
-                            "title": "Vyhrazen"
+                            "title": "Vyhrazeno"
                         },
                         "destination": {
                             "description": "Přístup je povolen pouze k dosažení cíle",
@@ -447,7 +447,11 @@
                     "label": "Hotovost"
                 },
                 "castle_type": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "fortress": "Pevnost",
+                        "palace": "Palác"
+                    }
                 },
                 "changing_table": {
                     "label": "Stůl na výměnu plenek"
@@ -539,6 +543,13 @@
                     "label": "Zastřešeno",
                     "terms": "zastřešený,zastřešené,střecha,kryté,kryt,zakryté"
                 },
+                "covered_no": {
+                    "label": "Zastřešeno",
+                    "options": {
+                        "no": "Ne",
+                        "yes": "Ano"
+                    }
+                },
                 "craft": {
                     "label": "Typ"
                 },
@@ -579,9 +590,13 @@
                         "american": "Americká",
                         "asian": "Asijská",
                         "burger": "Burger",
+                        "cake": "Koláče",
                         "chicken": "Kuřecí",
                         "chinese": "Čínská",
+                        "chocolate": "Čokoláda",
                         "coffee_shop": "Kavárna",
+                        "dessert": "Dezerty",
+                        "donut": "Donuty",
                         "fish": "Ryba",
                         "french": "Francouzská",
                         "german": "Německá",
@@ -590,12 +605,21 @@
                         "indian": "Indická",
                         "italian": "Italská",
                         "japanese": "Japonská",
+                        "juice": "Džusy",
                         "kebab": "Kebab",
                         "korean": "Korejký",
                         "mexican": "Mexická",
+                        "pankcake": "Lívance",
+                        "pasta": "Těstoviny",
                         "pizza": "Pizza",
+                        "polish": "Polská",
+                        "portuguese": "Portugalská",
                         "regional": "Místní",
+                        "russian": "Ruská",
+                        "salad": "Saláty",
                         "sandwich": "Sendvič",
+                        "seafood": "Mořské plody",
+                        "spanish": "Španělská",
                         "sushi": "Suši",
                         "thai": "Thajská",
                         "turkish": "Turecká",
@@ -750,6 +774,9 @@
                     "placeholder": "45, 90, 180, 270",
                     "terms": "stupně ve směru hodinových ručiček,stupňů,sklon,orientace,kompas,směr,otočení,natočení,poloha"
                 },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "Směr"
+                },
                 "direction_clock": {
                     "label": "Směr",
                     "options": {
@@ -856,7 +883,10 @@
                     "placeholder": "Výchozí"
                 },
                 "embassy": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "yes": "Ambasáda"
+                    }
                 },
                 "emergency": {
                     "label": "Pohotovost"
@@ -1321,6 +1351,9 @@
                     "label": "Uzamykatelné",
                     "terms": "uzamykatelné,uzamykatelný,zámek,zamknutý,zamknout,uzamknout,zamykat,uzavřít,uzaviratelné"
                 },
+                "locked": {
+                    "label": "Zamčeno"
+                },
                 "man_made": {
                     "label": "Typ"
                 },
@@ -1568,6 +1601,13 @@
                     "label": "Par",
                     "placeholder": "3, 4, 5..."
                 },
+                "parcel_pickup": {
+                    "label": "Vyzvedávání zásilek",
+                    "options": {
+                        "no": "Ne",
+                        "yes": "Ano"
+                    }
+                },
                 "park_ride": {
                     "label": "Parkoviště P+R",
                     "terms": "p+r,par,zaparkuj a jeď,mhd,přestup,dojíždějící,kapacitní,odstavné,hromadná doprava,na kraji města,p + r,parkandride,p/r,parkuj a jeď,městská,metro,tram,bus"
@@ -1581,6 +1621,7 @@
                         "multi-storey": "Víceúrovňové",
                         "rooftop": "Na střeše",
                         "sheds": "Lehký přístřešek",
+                        "street_side": "Podél ulice",
                         "surface": "Povrchové",
                         "underground": "Podzemní"
                     }
@@ -1811,7 +1852,20 @@
                     "label": "číslo cyklotrasy"
                 },
                 "recycling_accepts": {
-                    "label": "Určení"
+                    "label": "Určení",
+                    "options": {
+                        "batteries": "Baterie",
+                        "cans": "Plechovky",
+                        "cardboard": "Karton",
+                        "clothes": "Oblečení",
+                        "glass": "Sklo",
+                        "glass_bottles": "Skleněné lahve",
+                        "green_waste": "Zelený odpad",
+                        "paper": "Papír",
+                        "plastic_packaging": "Plastové obaly",
+                        "scrap_metal": "Šrot",
+                        "shoes": "Boty"
+                    }
                 },
                 "recycling_type": {
                     "label": "Typ",
@@ -2280,6 +2334,7 @@
                     "options": {
                         "artificial_turf": "Umělý trávník",
                         "asphalt": "Asfalt",
+                        "compacted": "Zhutněný",
                         "concrete": "Beton",
                         "dirt": "Hlína",
                         "grass": "Tráva",
@@ -2311,10 +2366,14 @@
                     "label": "Datum posledního průzkumu",
                     "terms": "datum kontroly,návštěvy,datum,prohlídka,návštěva,kontrola,zkontrolováno,ověřeno,navštíveno,kdy,čas,poslední kontrola,aktuální"
                 },
+                "survey_point/purpose": {
+                    "label": "Účel"
+                },
                 "survey_point/structure": {
                     "label": "Struktura",
                     "options": {
                         "beacon": "Maják",
+                        "magnet": "Magnet",
                         "medallion": "Magnet"
                     }
                 },
@@ -5331,8 +5390,7 @@
                     "name": "paseka"
                 },
                 "man_made/courtyard": {
-                    "name": "Nádvoří",
-                    "terms": "nádvoří,dvůr,atrium,pavlač,obestavěný prostor"
+                    "name": "Nádvoří"
                 },
                 "man_made/crane": {
                     "name": "Jeřáb"

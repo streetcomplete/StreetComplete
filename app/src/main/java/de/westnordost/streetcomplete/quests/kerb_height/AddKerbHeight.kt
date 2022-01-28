@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
@@ -40,8 +40,8 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun createForm() = AddKerbHeightForm()
 
-    override fun applyAnswerTo(answer: KerbHeight, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("kerb", answer.osmValue)
-        changes.addOrModify("barrier", "kerb")
+    override fun applyAnswerTo(answer: KerbHeight, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("kerb", answer.osmValue)
+        tags["barrier"] = "kerb"
     }
 }

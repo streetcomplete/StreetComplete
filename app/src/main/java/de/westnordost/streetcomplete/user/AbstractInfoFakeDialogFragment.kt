@@ -9,7 +9,11 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.util.Transforms
+import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer
+import de.westnordost.streetcomplete.util.animateFrom
+import de.westnordost.streetcomplete.util.animateTo
+import de.westnordost.streetcomplete.util.applyTransforms
 
 /**  It is not a real dialog because a real dialog has its own window, or in other words, has a
  *  different root view than the rest of the UI. However, for the calculation to animate the icon

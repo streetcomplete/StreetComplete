@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.meta.updateCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
@@ -24,18 +24,18 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
 
     override fun createForm() = MarkCompletedConstructionForm()
 
-    override fun applyAnswerTo(answer: CompletedConstructionAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is OpeningDateAnswer -> {
-                changes.addOrModify("opening_date", answer.date.toCheckDateString())
+                tags["opening_date"] = answer.date.toCheckDateString()
             }
             is StateAnswer -> {
                 if (answer.value) {
-                    val value = changes.getPreviousValue("construction") ?: "yes"
-                    changes.modify("building", value)
-                    deleteTagsDescribingConstruction(changes)
+                    val value = tags["construction"] ?: "yes"
+                    tags["building"] = value
+                    removeTagsDescribingConstruction(tags)
                 } else {
-                    changes.updateCheckDate()
+                    tags.updateCheckDate()
                 }
             }
         }

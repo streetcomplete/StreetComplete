@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
@@ -155,24 +155,20 @@ class AddOpeningHours (
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is RegularOpeningHours -> {
-                changes.updateWithCheckDate("opening_hours", answer.hours.toString())
-                changes.deleteIfPreviously("opening_hours:signed", "no")
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, timestampEdited: Long) {
+        if (answer is NoOpeningHoursSign) {
+            tags["opening_hours:signed"] = "no"
+            // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
+        } else {
+            val openingHoursString = when(answer) {
+                is RegularOpeningHours  -> answer.hours.toString()
+                is AlwaysOpen           -> "24/7"
+                is DescribeOpeningHours -> "\"" + answer.text.replace("\"","") + "\""
+                NoOpeningHoursSign      -> throw IllegalStateException()
             }
-            is AlwaysOpen          -> {
-                changes.updateWithCheckDate("opening_hours", "24/7")
-                changes.deleteIfPreviously("opening_hours:signed", "no")
-            }
-            is DescribeOpeningHours -> {
-                val text = answer.text.replace("\"","")
-                changes.updateWithCheckDate("opening_hours", "\"$text\"")
-                changes.deleteIfPreviously("opening_hours:signed", "no")
-            }
-            is NoOpeningHoursSign  -> {
-                changes.addOrModify("opening_hours:signed", "no")
-                // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
+            tags.updateWithCheckDate("opening_hours", openingHoursString)
+            if (tags["opening_hours:signed"] == "no") {
+                tags.remove("opening_hours:signed")
             }
         }
     }

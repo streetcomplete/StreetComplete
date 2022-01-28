@@ -4,9 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
@@ -42,33 +43,27 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
     override fun createForm() = AddMaxSpeedForm()
 
-    override fun applyAnswerTo(answer: MaxSpeedAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, timestampEdited: Long) {
         when(answer) {
             is MaxSpeedSign -> {
-                changes.add("maxspeed", answer.value.toString())
-                changes.add("maxspeed:type", "sign")
+                tags["maxspeed"] = answer.value.toString()
+                tags["maxspeed:type"] = "sign"
             }
             is MaxSpeedZone -> {
-                changes.add("maxspeed", answer.value.toString())
-                changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+                tags["maxspeed"] = answer.value.toString()
+                tags["maxspeed:type"] = answer.countryCode + ":" + answer.roadType
             }
             is AdvisorySpeedSign -> {
-                changes.add("maxspeed:advisory", answer.value.toString())
-                changes.add("maxspeed:type:advisory", "sign")
+                tags["maxspeed:advisory"] = answer.value.toString()
+                tags["maxspeed:type:advisory"] = "sign"
             }
             is IsLivingStreet -> {
-                changes.modify("highway", "living_street")
+                tags["highway"] = "living_street"
             }
             is ImplicitMaxSpeed -> {
-                changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+                tags["maxspeed:type"] = answer.countryCode + ":" + answer.roadType
                 // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
-                if (answer.lit != null) {
-                    if (answer.lit) {
-                        changes.addOrModify("lit", "yes")
-                    } else {
-                        changes.addOrModify("lit", "no")
-                    }
-                }
+                answer.lit?.let { tags["lit"] = it.toYesNo() }
             }
         }
     }

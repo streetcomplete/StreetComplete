@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
 class AddTracktype : OsmFilterQuestType<Tracktype>() {
@@ -32,7 +32,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
     override fun createForm() = AddTracktypeForm()
 
-    override fun applyAnswerTo(answer: Tracktype, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("tracktype", answer.osmValue)
+    override fun applyAnswerTo(answer: Tracktype, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("tracktype", answer.osmValue)
     }
 }

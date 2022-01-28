@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.address
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
@@ -65,12 +65,12 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     override fun createForm() = AddAddressStreetForm()
 
-    override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: AddressStreetAnswer, tags: Tags, timestampEdited: Long) {
         val key = when(answer) {
             is StreetName -> "addr:street"
             is PlaceName -> "addr:place"
         }
-        changes.add(key, answer.name)
+        tags[key] = answer.name
     }
 }
 
