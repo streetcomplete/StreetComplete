@@ -260,7 +260,18 @@ fun getQuestTaginfo(
     val questConstants = getQuestConstants(questFileContent)
     println("Got quest constants: " + questConstants)
     var questChanges = getQuestChanges(questFileContent)
-    // if empty, handle applyTo see e.g. barrier
+    if (questChanges.isEmpty()) {
+      // if empty, handle applyTo see e.g. barrier
+      println("No raw quest changes for " + file + " possible applyTo")
+      var questAnswerTypes = getQuestAnswerTypeApplyTo(questFileContent)
+      println("Got applyTo quest answer types: " + questAnswerTypes)
+      for (it in questAnswerTypes) {
+          val answerFile = getAnswerTypeFile(it, questFiles)
+          println("Found answer file: " + answerFile)
+          val questAnswerTypeFileContent = answerFile.readText()
+          questChanges = getQuestChanges(questAnswerTypeFileContent)
+      }
+    }
     println("Got raw quest changes: " + questChanges)
 
     // Prep some common stuff
@@ -277,6 +288,22 @@ fun getQuestTaginfo(
       println("Assessing quest change: " + questChange)
       // Substitute any quest constants
       var change = questChange[0]
+
+      // Skip the changes we don't care about, or need to do anything with, early
+      if (change.startsWith("get") || change.startsWith("has") || change.startsWith("contains")) {
+        // It's not actually a change, so discard it
+        println("Discarding a read only change: " + change)
+        continue
+      } else if (change.startsWith("remove")) {
+        // Skip the remove's at @westnordost request
+        println("Discarding a remove change: " + change)
+        continue
+      } else if (change == "updateCheckDate") {
+        println("Adding an updateCheckDate as it needs no further processing: " + change)
+        allChanges.add(TaginfoChange(checkDateKey, "", change))
+        continue
+      }
+
       var key = lookupQuestConstant(coreConstants, questConstants, questChange[1])
 
       // TODO: Rather than just dropping non-quote ones, ideally we need to deal with their variable names
@@ -290,15 +317,7 @@ fun getQuestTaginfo(
         key = key.trim('"')
       }
 
-      if (change.startsWith("get") || change.startsWith("has") || change.startsWith("contains")) {
-        // It's not actually a change, so discard it
-        println("Discarding a read only change: " + change)
-        continue
-      } else if (change.startsWith("remove")) {
-        // Skip the remove's at @westnordost request
-        println("Discarding a remove change: " + change)
-        continue
-      } else if (change in setOf("set")) {
+      if (change in setOf("set")) {
         // No Op
       } else if (change == "addRampAnswer") {
         // Basically add, but yes only
@@ -308,7 +327,7 @@ fun getQuestTaginfo(
         // Add the (addAnd)UpdateCheckDate; we don't care about the remove old survey tags
         // We also don't care about the (timestamp) value for the update
         allChanges.add(TaginfoChange(checkDateKey + ":" + key, "", change))
-      } else if (change == "updateCheckDateForKey") {
+      } else if (change in setOf("updateCheckDateForKey", "setCheckDateForKey")) {
         // Only sets the check date
         // Correcting key name
         key = checkDateKey + ":" + key
@@ -336,6 +355,12 @@ fun getQuestTaginfo(
         if ((value == "") || stringCheck.matches(value)) {
           // For a basic insert, we either need no value (e.g. an updateCheckDate), or we need a basic string
           value = value.trim('"')
+
+          if (value.contains("$")) {
+            // TODO: Fix me! If possible (probably not for e.g. Fee)
+            println("Value '" + value + "' has unprocessed string substitution, dropping value")
+            value = ""
+          }
         } else {
           println("Value '" + value + "' is not a string")
           if (value.startsWith("LocalDate.now")) {
@@ -343,7 +368,7 @@ fun getQuestTaginfo(
             value = ""
           } else if (value.startsWith("if (")) {
             // TODO: Fix me!
-            println("Skipping if statement")
+            println("Dropping value due to if statement")
             value = ""
           } else {
             var questAnswerType = getQuestAnswerType(questFileContent)
@@ -383,17 +408,10 @@ fun getQuestTaginfo(
                 allChanges.add(TaginfoChange(key, "", change))
                 continue
               } else {
-                var answerType = it
-                // TODO: Write this regex (and the replacement, once)
-                // TODO: We still need to fix the answer value matching
-                if (Regex("^List<").containsMatchIn(answerType)) {
-                  answerType = answerType.replace(Regex("^List<([^>]+)>"), "$1") // Strip the list aspect
-                  println("Checking actual answer type " + answerType + "...")
-                }
-                val answerFile = getQuestFile("/" + answerType, questFiles)
-                println("Checking " + answerFile + " for enums")
+                val answerFile = getAnswerTypeFile(it, questFiles)
                 val questAnswerTypeFileContent = answerFile.readText()
 
+                println("Checking " + answerFile + " for enums")
                 //println(questAnswerTypeFileContent)
 
                 var fieldName: String? = null
@@ -440,6 +458,29 @@ fun getQuestFile(questName: String, questFiles: List<File>): File {
         ?: throw Error("Could not find quest file for quest $questName.")
 }
 
+fun getAnswerTypeFile(answerType: String, questFiles: List<File>): File {
+    var cleanedAnswerType = answerType
+    // TODO: Write this regex (and the replacement, once)
+    // TODO: We still need to fix the answer value matching
+    if (Regex("^List<").containsMatchIn(cleanedAnswerType)) {
+        cleanedAnswerType = cleanedAnswerType.replace(Regex("^List<([^>]+)>"), "$1") // Strip the list aspect
+        println("Checking actual answer type " + cleanedAnswerType + "...")
+    }
+    // TODO(Peter): Fix me! Kludges for random file naming
+    if (cleanedAnswerType == "SidewalkSides") {
+        cleanedAnswerType = "Sidewalk"
+        println("Instead looking for: " + cleanedAnswerType)
+    } else if (cleanedAnswerType == "ShoulderSides") {
+        cleanedAnswerType = "Shoulder"
+        println("Instead looking for: " + cleanedAnswerType)
+    } else if (cleanedAnswerType == "WayLitOrIsStepsAnswer") {
+        cleanedAnswerType = "WayLit"
+        println("Instead looking for: " + cleanedAnswerType)
+    }
+    return getQuestFile("/" + cleanedAnswerType, questFiles)
+}
+
+
 fun getQuestConstants(questFileContent: String): Map<String, String> {
 //private const val SOUND_SIGNALS = "traffic_signals:sound"
     val regex = Regex("const val ([^\\s]+)\\s*=\\s*(\"([^\"]+)\")")
@@ -459,8 +500,9 @@ fun getQuestChanges(questFileContent: String): List<List<String>> {
     /**
      * tags.updateWithCheckDate("shelter", "yes")
      * tags.remove("shelter")
+     * tags.updateCheckDate()
      */
-    val functionRegex = Regex("\\s+tags\\.([^\\(]+)\\(((?>\"[^\"]+\"|[^,\\)]+))(,\\s(?>\"[^\"]+\"|[^\\)]+)|)\\)")
+    val functionRegex = Regex("\\s+tags\\.([^\\(]+)\\(((?>\"[^\"]+\"|[^,\\)]+|))(,\\s(?>\"[^\"]+\"|[^\\)]+)|)\\)")
     /**
      * tags["covered"] = "yes"
      * tags["covered"] = osm.answerValue
@@ -483,6 +525,15 @@ fun getQuestAnswerType(questFileContent: String): List<String> {
     return regex.findAll(questFileContent).map { it.groupValues[1] }.toList()
 }
 
+fun getQuestAnswerTypeApplyTo(questFileContent: String): List<String> {
+//    override fun applyAnswerTo(answer: Fee, tags: Tags, timestampEdited: Long) =
+//        answer.applyTo(tags)
+    val regex = Regex("applyAnswerTo\\(answer: ([^,]+), tags: Tags[^\\)]+\\)\\s*[={]\\s*answer.applyTo\\(tags")
+
+    return regex.findAll(questFileContent).map { it.groupValues[1] }.toList()
+}
+
+
 fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, Map<String, String>> {
 //enum class ParkingType(val osmValue: String) {
 //    SURFACE("surface"),
@@ -493,8 +544,14 @@ fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, Map<String, S
 //    DIET_NO("no"),
 //    DIET_ONLY("only"),
 //}
+//enum class WayLit(val osmValue: String) : WayLitOrIsStepsAnswer {
+//    NIGHT_AND_DAY("24/7"),
+//    AUTOMATIC("automatic"),
+//    YES("yes"),
+//    NO("no"),
+//}
     //val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\) \\{\\s*([^\\}]+)\\}")
-    val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\)(?>\\:\\s*|)([^\\s\\{]+|)\\s+\\{\\s*([^\\}]+)\\}")
+    val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\)(?>\\s*\\:\\s*|)([^\\s\\{]+|)\\s+\\{\\s*([^\\}]+)\\}")
     val fieldsRegex = Regex("val ([^:]+): [^,]+")
     val valsRegex = Regex("\\s*([^\\(]+)\\(([^\\)]+)\\),?")
     val valRegex = Regex("\\s*\"([^\"]+)\",?\\s*")
