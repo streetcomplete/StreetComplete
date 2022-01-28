@@ -39,8 +39,8 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
         binding.titleView.outlineProvider = CircularOutlineProvider
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         counterAnimation?.cancel()
         counterAnimation = null
     }
