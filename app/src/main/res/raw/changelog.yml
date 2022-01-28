@@ -11,6 +11,11 @@ v40.0-beta1: |
   <li>Allow answering whether there is a shoulder for each side individually (#3659)</li>
   <li>Allow answering whether the sidewalk is displayed separately on the map for each side individually</li>
   </ul>
+  <h3>Fixes and improvements</h3>
+  <ul>
+  <li>More accurate conflict detection</li>
+  <li>Fix a few rare crash issues</li>
+  </ul>
 
 v39.1: |
   <h3>Fixes</h3>
