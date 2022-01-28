@@ -30,7 +30,7 @@ import java.net.URL
 
 val projectDirectory = File(".")
 val sourceDirectory = projectDirectory.resolve("app/src/main/java/de/westnordost/streetcomplete/")
-val iconsDirectory = projectDirectory.resolve("res/graphics/quest icons/")
+val iconsDirectory = projectDirectory.resolve("res/graphics/quest/")
 
 val csvFile = projectDirectory.resolve("quest-list.csv")
 val jsonFile = projectDirectory.resolve("taginfo.json")
