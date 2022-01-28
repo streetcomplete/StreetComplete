@@ -488,7 +488,13 @@ fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, Map<String, S
 //    SURFACE("surface"),
 //    MULTI_STOREY("multi-storey"),
 //}
-    val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\) \\{\\s*([^\\}]+)\\}")
+//enum class DietAvailability(val osmValue: String): DietAvailabilityAnswer {
+//    DIET_YES("yes"),
+//    DIET_NO("no"),
+//    DIET_ONLY("only"),
+//}
+    //val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\) \\{\\s*([^\\}]+)\\}")
+    val enumRegex = Regex("enum class [^\\(]+\\(([^\\)]+)\\)(?>\\:\\s*|)([^\\s\\{]+|)\\s+\\{\\s*([^\\}]+)\\}")
     val fieldsRegex = Regex("val ([^:]+): [^,]+")
     val valsRegex = Regex("\\s*([^\\(]+)\\(([^\\)]+)\\),?")
     val valRegex = Regex("\\s*\"([^\"]+)\",?\\s*")
@@ -497,7 +503,7 @@ fun getQuestAnswerTypeEnums(questFileContent: String): Map<String, Map<String, S
     val data: MutableMap<String, Map<String, String>> = mutableMapOf<String, Map<String, String>>()
     if (enumVals != null) {
       //println(fieldsRegex.findAll(enumVals[1]).map { it.groupValues[1] }.toList())
-      for (it in valsRegex.findAll(enumVals[2])) {
+      for (it in valsRegex.findAll(enumVals[3])) {
         //println(it.groupValues[1] + " = " + it.groupValues[2])
         //println(valRegex.findAll(it.groupValues[2]).map { it.groupValues[1] }.toList())
         data.put(it.groupValues[1],
