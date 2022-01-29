@@ -7,10 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class ElementEditsController @Inject constructor(
+class ElementEditsController constructor(
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore

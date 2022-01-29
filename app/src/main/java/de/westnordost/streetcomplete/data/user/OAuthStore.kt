@@ -4,17 +4,14 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
 import oauth.signpost.OAuthConsumer
-import javax.inject.Inject
-import javax.inject.Provider
 
 /** Manages saving and loading OAuthConsumer persistently  */
-class OAuthStore @Inject constructor(
+class OAuthStore constructor(
     private val prefs: SharedPreferences,
-    private val oAuthConsumerProvider: Provider<OAuthConsumer>
 ) {
     var oAuthConsumer: OAuthConsumer?
         get() {
-            val result = oAuthConsumerProvider.get()
+            val result = okHttpOAuthConsumer()
             val accessToken = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN, null)
             val accessTokenSecret = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN_SECRET, null)
             if (accessToken == null || accessTokenSecret == null) return null

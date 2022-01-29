@@ -7,7 +7,6 @@ import android.view.View
 import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
@@ -18,15 +17,15 @@ import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that shows the upload button, including upload progress etc. */
 class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
-    @Inject internal lateinit var uploadController: UploadController
-    @Inject internal lateinit var userLoginStatusSource: UserLoginStatusSource
-    @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-    @Inject internal lateinit var prefs: SharedPreferences
+    internal val uploadController: UploadController by inject()
+    internal val userLoginStatusSource: UserLoginStatusSource by inject()
+    internal val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    internal val prefs: SharedPreferences by inject()
 
     private val uploadButton get() = view as UploadButton
 
@@ -41,10 +40,6 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -6,7 +6,6 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import androidx.fragment.app.commit
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
@@ -16,7 +15,7 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
@@ -24,7 +23,7 @@ class QuestStatisticsFragment :
     Fragment(R.layout.fragment_quest_statistics),
     QuestStatisticsByQuestTypeFragment.Listener,
     QuestStatisticsByCountryFragment.Listener {
-    @Inject internal lateinit var statisticsSource: StatisticsSource
+    internal val statisticsSource: StatisticsSource by inject()
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
@@ -33,10 +32,6 @@ class QuestStatisticsFragment :
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     private val binding by viewBinding(FragmentQuestStatisticsBinding::bind)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

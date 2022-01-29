@@ -3,16 +3,11 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import de.westnordost.streetcomplete.Injector
-import javax.inject.Inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class CleanerWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
-
-    @Inject internal lateinit var cleaner: Cleaner
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+class CleanerWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams), KoinComponent {
+    internal val cleaner: Cleaner by inject()
 
     override fun doWork(): Result {
         cleaner.clean()

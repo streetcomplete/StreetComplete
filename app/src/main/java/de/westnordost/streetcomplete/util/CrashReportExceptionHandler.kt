@@ -12,14 +12,12 @@ import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.Locale
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Exception handler that takes care of asking the user to send the report of the last crash
  *  to the email address [mailReportTo].
  *  When a crash occurs, the stack trace is saved to [crashReportFile] so that it can be accessed
  *  on next startup */
-@Singleton class CrashReportExceptionHandler @Inject constructor(
+class CrashReportExceptionHandler constructor(
     private val appCtx: Context,
     private val mailReportTo: String,
     private val crashReportFile: String

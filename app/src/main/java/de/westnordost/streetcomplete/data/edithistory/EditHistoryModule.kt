@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.edithistory
 
-import dagger.Module
-import dagger.Provides
+import org.koin.dsl.module
 
-@Module
-object EditHistoryModule {
-    @Provides fun editHistorySource(editHistoryController: EditHistoryController): EditHistorySource =
-        editHistoryController
+val editHistoryModule = module {
+    factory<EditHistorySource> { get<EditHistoryController>() }
+
+    single { EditHistoryController(get(), get(), get(), get()) }
 }

@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.HasTitle
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.DialogInputTextBinding
@@ -14,19 +13,15 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
-    @Inject internal lateinit var questPresetsController: QuestPresetsController
+    internal val questPresetsController: QuestPresetsController by inject()
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
 
     override val title: String get() = getString(R.string.action_manage_presets)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

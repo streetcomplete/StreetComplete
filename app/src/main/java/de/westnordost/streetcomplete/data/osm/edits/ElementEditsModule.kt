@@ -1,12 +1,24 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditUploader
+import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
+import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsDao
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
+import org.koin.dsl.module
 
-@Module object ElementEditsModule {
+val elementEditsModule = module {
+    factory { ChangesetAutoCloser(get()) }
+    factory { ElementEditUploader(get(), get()) }
+    factory { ElementEditsUploader(get(), get(), get(), get(), get()) }
+    factory { ElementEditsDao(get(), get()) }
+    factory { ElementIdProviderDao(get()) }
+    factory { LastEditTimeStore(get()) }
+    factory { OpenChangesetsDao(get()) }
+    factory { OpenQuestChangesetsManager(get(), get(), get(), get()) }
 
-    @Provides @Singleton fun elementEditsSource(
-        elementEditsController: ElementEditsController
-    ): ElementEditsSource = elementEditsController
+    single<ElementEditsSource> { get<ElementEditsController>() }
+    single { ElementEditsController(get(), get(), get()) }
+    single { MapDataWithEditsSource(get(), get(), get()) }
 }

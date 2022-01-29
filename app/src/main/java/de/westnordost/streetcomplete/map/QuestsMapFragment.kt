@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -31,17 +30,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-    @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
-    @Inject internal lateinit var questTypeOrderSource: QuestTypeOrderSource
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
-    @Inject internal lateinit var editHistorySource: EditHistorySource
-    @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
+    internal val spriteSheet: TangramPinsSpriteSheet by inject()
+    internal val questTypeOrderSource: QuestTypeOrderSource by inject()
+    internal val questTypeRegistry: QuestTypeRegistry by inject()
+    internal val visibleQuestsSource: VisibleQuestsSource by inject()
+    internal val editHistorySource: EditHistorySource by inject()
+    internal val mapDataSource: MapDataWithEditsSource by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -66,10 +65,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override suspend fun onMapReady() {
         val ctrl = controller ?: return

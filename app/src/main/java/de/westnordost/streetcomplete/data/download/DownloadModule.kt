@@ -1,11 +1,15 @@
 package de.westnordost.streetcomplete.data.download
 
-import dagger.Module
-import dagger.Provides
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-@Module
-object DownloadModule {
-    @Provides
-    fun downloadProgressSource(downloadController: DownloadController): DownloadProgressSource =
-        downloadController
+val downloadModule = module {
+    factory<DownloadProgressSource> { get<DownloadController>() }
+    factory { DownloadedTilesDao(get()) }
+    factory { Downloader(get(), get(), get(), get(), get(named("SerializeSync"))) }
+    factory { MobileDataAutoDownloadStrategy(get(), get()) }
+    factory { WifiAutoDownloadStrategy(get(), get()) }
+
+    single { DownloadController(get()) }
 }

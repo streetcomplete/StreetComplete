@@ -8,11 +8,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Used to get visible osm note quests */
-@Singleton class OsmNoteQuestController @Inject constructor(
+class OsmNoteQuestController constructor(
     private val noteSource: NotesWithEditsSource,
     private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,

@@ -5,11 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controls uploading */
-@Singleton class UploadController @Inject constructor(
+class UploadController constructor(
     private val context: Context
 ) : UploadProgressSource {
 

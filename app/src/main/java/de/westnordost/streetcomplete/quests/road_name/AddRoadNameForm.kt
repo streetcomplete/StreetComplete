@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -12,10 +11,10 @@ import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedName
+import org.koin.android.ext.android.inject
 import java.lang.IllegalStateException
 import java.util.LinkedList
 import java.util.Locale
-import javax.inject.Inject
 
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
@@ -32,12 +31,8 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
-    @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsSource: RoadNameSuggestionsSource
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+    internal val abbreviationsByLocale: AbbreviationsByLocale by inject()
+    internal val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
     override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbreviationsByLocale
 

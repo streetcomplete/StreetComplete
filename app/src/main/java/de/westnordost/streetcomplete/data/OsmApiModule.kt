@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data
 
-import dagger.Module
-import dagger.Provides
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -11,26 +9,22 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
 import de.westnordost.streetcomplete.data.user.OAuthStore
 import oauth.signpost.OAuthConsumer
-import javax.inject.Singleton
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-@Module
-object OsmApiModule {
+val osmApiModule = module {
+    factory { Cleaner(get(), get(), get()) }
+    factory<MapDataApi> { MapDataApiImpl(get()) }
+    factory<NotesApi> { NotesApiImpl(get()) }
+    factory { Preloader(get(named("CountryBoundariesFuture")), get(named("FeatureDictionaryFuture"))) }
+    factory { UserApi(get()) }
 
-    private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
+    single { osmConnection(get<OAuthStore>().oAuthConsumer) }
+    single { UnsyncedChangesCountSource(get(), get()) }
+}
 
-    /** Returns the osm connection singleton used for all daos with the saved oauth consumer  */
-    @Provides @Singleton fun osmConnection(oAuthStore: OAuthStore): OsmConnection {
-        return osmConnection(oAuthStore.oAuthConsumer)
-    }
-
-    /** Returns an osm connection with the supplied consumer (note the difference to the above function)  */
-    fun osmConnection(consumer: OAuthConsumer?): OsmConnection {
-        return OsmConnection(OSM_API_URL, ApplicationConstants.USER_AGENT, consumer)
-    }
-
-    @Provides fun userApi(osm: OsmConnection): UserApi = UserApi(osm)
-
-    @Provides fun notesApi(osm: OsmConnection): NotesApi = NotesApiImpl(osm)
-
-    @Provides fun mapDataApi(osm: OsmConnection): MapDataApi = MapDataApiImpl(osm)
+private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
+/** Returns an osm connection with the supplied consumer (note the difference to the above function)  */
+fun osmConnection(consumer: OAuthConsumer?): OsmConnection {
+    return OsmConnection(OSM_API_URL, ApplicationConstants.USER_AGENT, consumer)
 }

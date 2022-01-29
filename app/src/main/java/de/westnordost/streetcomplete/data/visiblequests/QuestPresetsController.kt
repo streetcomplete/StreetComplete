@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class QuestPresetsController @Inject constructor(
+class QuestPresetsController constructor(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore
 ) : QuestPresetsSource {

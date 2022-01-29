@@ -9,11 +9,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
-@Singleton class MapDataController @Inject internal constructor(
+class MapDataController internal constructor(
     private val nodeDB: NodeDao,
     private val wayDB: WayDao,
     private val relationDB: RelationDao,

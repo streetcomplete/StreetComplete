@@ -5,11 +5,9 @@ import androidx.core.content.edit
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controller that handles user login, logout, auth and updated data */
-@Singleton class UserDataController @Inject constructor(
+class UserDataController constructor(
     private val prefs: SharedPreferences,
     private val userLoginStatusSource: UserLoginStatusSource
 ) : UserDataSource {

@@ -8,12 +8,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controller for filtering all quests that are hidden because they are shown to other users in
  *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
-@Singleton class TeamModeQuestFilter @Inject internal constructor(
+class TeamModeQuestFilter internal constructor(
     private val createdElementsSource: CreatedElementsSource,
     private val prefs: SharedPreferences
 ) {

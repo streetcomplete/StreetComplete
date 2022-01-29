@@ -16,9 +16,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class NoteEditsUploader @Inject constructor(
+class NoteEditsUploader constructor(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val notesApi: NotesApi,

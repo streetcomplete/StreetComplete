@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.data.osm.created_elements
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class CreatedElementsController @Inject constructor(
+class CreatedElementsController constructor(
     private val db: CreatedElementsDao
 ) : CreatedElementsSource {
 

@@ -9,9 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
-import javax.inject.Inject
 
-class RoadNameSuggestionsSource @Inject constructor(
+class RoadNameSuggestionsSource constructor(
     private val mapDataSource: MapDataWithEditsSource
 ) {
 

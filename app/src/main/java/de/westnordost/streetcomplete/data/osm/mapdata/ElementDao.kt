@@ -3,11 +3,10 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
-import javax.inject.Inject
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */
-class ElementDao @Inject constructor(
+class ElementDao constructor(
     private val nodeDao: NodeDao,
     private val wayDao: WayDao,
     private val relationDao: RelationDao

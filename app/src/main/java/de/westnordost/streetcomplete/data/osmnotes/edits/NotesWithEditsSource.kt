@@ -10,10 +10,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class NotesWithEditsSource @Inject constructor(
+class NotesWithEditsSource constructor(
     private val noteController: NoteController,
     private val noteEditsSource: NoteEditsSource,
     private val userDataSource: UserDataSource

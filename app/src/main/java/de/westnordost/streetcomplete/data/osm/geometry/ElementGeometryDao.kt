@@ -18,10 +18,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.queryIn
-import javax.inject.Inject
 
 /** Stores the geometry of elements */
-class ElementGeometryDao @Inject constructor(
+class ElementGeometryDao constructor(
     private val db: Database,
     private val polylinesSerializer: PolylinesSerializer
 ) {

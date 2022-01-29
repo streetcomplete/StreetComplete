@@ -14,11 +14,9 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestContro
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
-@Singleton class EditHistoryController @Inject constructor(
+class EditHistoryController constructor(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val noteQuestController: OsmNoteQuestController,

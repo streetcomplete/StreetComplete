@@ -22,9 +22,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class ElementEditsUploader @Inject constructor(
+class ElementEditsUploader constructor(
     private val elementEditsController: ElementEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,

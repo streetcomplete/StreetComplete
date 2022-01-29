@@ -13,10 +13,9 @@ import de.westnordost.osmapi.user.Permission
 import de.westnordost.osmapi.user.PermissionsApi
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osmConnection
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
@@ -29,7 +28,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows only a login button and a text that clarifies that login is necessary for publishing the
  *  answers. */
@@ -39,9 +38,9 @@ class LoginFragment :
     BackPressedListener,
     OAuthFragment.Listener {
 
-    @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-    @Inject internal lateinit var userLoginStatusController: UserLoginStatusController
-    @Inject internal lateinit var userUpdater: UserUpdater
+    internal val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    internal val userLoginStatusController: UserLoginStatusController by inject()
+    internal val userUpdater: UserUpdater by inject()
 
     override val title: String get() = getString(R.string.user_login)
 
@@ -49,10 +48,6 @@ class LoginFragment :
 
     private val oAuthFragment: OAuthFragment? get() =
         childFragmentManagerOrNull?.findFragmentById(R.id.oauthFragmentContainer) as? OAuthFragment
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -110,7 +105,7 @@ class LoginFragment :
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
             try {
-                val permissionsApi = PermissionsApi(OsmApiModule.osmConnection(consumer))
+                val permissionsApi = PermissionsApi(osmConnection(consumer))
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
             } catch (e: Exception) { false }
         }

@@ -10,7 +10,6 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.BaseActivity
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -28,13 +27,13 @@ import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Listener {
 
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var prefs: SharedPreferences
+    internal val questTypeRegistry: QuestTypeRegistry by inject()
+    internal val prefs: SharedPreferences by inject()
 
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
 
@@ -43,7 +42,6 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
     private var currentQuestType: QuestType<*>? = null
 
     init {
-        Injector.applicationComponent.inject(this)
         showQuestFormAdapter.list = questTypeRegistry.toMutableList()
     }
 

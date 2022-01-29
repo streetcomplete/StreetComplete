@@ -14,10 +14,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.QU
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.NAME
 import de.westnordost.streetcomplete.data.queryIn
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import javax.inject.Inject
 
 /** Persists OsmQuest objects, or more specifically, OsmQuestEntry objects */
-class OsmQuestDao @Inject constructor(private val db: Database) {
+class OsmQuestDao constructor(private val db: Database) {
 
     fun put(quest: OsmQuestDaoEntry) {
         db.replace(NAME, quest.toPairs())
