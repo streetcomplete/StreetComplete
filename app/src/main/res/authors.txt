@@ -56,15 +56,15 @@ fire_hydrant_pond.jpg          CC-BY-SA 3.0      KeepOnTruckin https://commons.w
 fire_hydrant_underground.jpg   CC-BY 3.0         Panek https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_wall.jpg          CC-BY-SA 3.0      Ingo Fick https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
 
-fire_hydrant_position_undergr… CC-BY-SA 4.0      https://upload.wikimedia.org/wikipedia/commons/2/2d/Fire_hydrant_in_grass.jpg
-fire_hydrant_position_undergr… CC-BY-SA 4.0      modified from https://upload.wikimedia.org/wikipedia/commons/d/d0/Fire_hydrant_on_road_side.jpg
-fire_hydrant_position_undergr… CC-BY 2.0         modified from https://upload.wikimedia.org/wikipedia/commons/3/33/Fire-fighting-facility_node-4279866277.jpg
-fire_hydrant_position_undergr… CC-BY-SA 4.0      https://upload.wikimedia.org/wikipedia/commons/3/32/Fire_hydrant_on_sidewalk.jpg
+fire_hydrant_position_undergr… CC-BY-SA 4.0      Thefeiter https://commons.wikimedia.org/wiki/File:Fire_hydrant_in_grass.jpg
+fire_hydrant_position_undergr… CC-BY-SA 4.0      modified from Thefeiter https://commons.wikimedia.org/wiki/File:Fire_hydrant_on_road_side.jpg
+fire_hydrant_position_undergr… CC-BY 2.0         modified from centauri https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-4279866277.jpg
+fire_hydrant_position_undergr… CC-BY-SA 4.0      Thefeiter https://commons.wikimedia.org/wiki/File:Fire_hydrant_on_sidewalk.jpg
 
-fire_hydrant_position_pillar_… CC-BY 4.0         modified from https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-6472528792.jpg
-fire_hydrant_position_pillar_… CC-BY 4.0         modified from https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-6464454770.jpg
+fire_hydrant_position_pillar_… CC-BY 4.0         modified from FwKfg https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-6472528792.jpg
+fire_hydrant_position_pillar_… CC-BY 4.0         modified from Corripiano https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-6464454770.jpg
 fire_hydrant_position_pillar_… CC-BY 4.0         modified from Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3686#issuecomment-1024936939
-fire_hydrant_position_pillar_… CC-BY 4.0         modified from https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-7190010477.jpg
+fire_hydrant_position_pillar_… CC-BY 4.0         modified from Stefan Patscheider https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-7190010477.jpg
 
 ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney
 ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
