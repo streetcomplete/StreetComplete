@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Swedbank, SEB, Citadele, Luminor, DNB, Nordea, DnB Nord, DnB, PrivatBank, Hipotēku banka, DNB banka, SEB Unibanka, DNB nord, BlueOrange]
+atmOperators: [Swedbank, SEB, Citadele, Luminor, DNB, Nordea, DnB Nord, PrivatBank, Hipotēku banka, DNB banka, SEB Unibanka, BlueOrange]
 centerLineStyle: white
 chargingStationOperators: [CSDD, Elektrum]
 edgeLineStyle: white

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasional, Bank Rakyat, RHB Bank, RHB, AmBank, Affin Bank, Agrobank, ATM AmBank@7eleven, BSN, Bank Muamalat, Agro Bank, Cimb, Standard Chartered, ATM, Rhb, UOB, 7-Eleven Malaysia Sdn Bhd, MayBank, Public Bank, maybank, Meps, HSBC, Bank Islam Malaysia Berhad]
+atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasional, Bank Rakyat, RHB Bank, RHB, AmBank, Affin Bank, Agrobank, ATM AmBank@7eleven, BSN, Bank Muamalat, Agro Bank, Standard Chartered, ATM, UOB, 7-Eleven Malaysia Sdn Bhd, Public Bank, HSBC, Bank Islam Malaysia Berhad]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 502

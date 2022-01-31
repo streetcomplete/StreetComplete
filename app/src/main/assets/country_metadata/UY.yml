@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Banco República, BROU, Santander, Itaú, Banred, BBVA, Devoto Pando, Scotiabank, Casa de Cambio, RedBROU, RedBrou]
+atmOperators: [Banco República, BROU, Santander, Itaú, Banred, BBVA, Devoto Pando, Scotiabank, Casa de Cambio, RedBROU]
 centerLineStyle: yellow
 chargingStationOperators: [UTE]
 mobileCountryCode: 748
