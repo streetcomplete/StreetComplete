@@ -4744,30 +4744,15 @@
                     "name": "横断歩道（マークあり）",
                     "terms": "横断歩道（マークあり）,横断歩道,歩道"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "横断歩道（隆起あり・マークあり）",
-                    "terms": "横断歩道（隆起あり・マークあり）,横断歩道,隆起,交通安全,静音化,歩道"
-                },
                 "highway/crossing/signals": {
                     "name": "横断歩道（歩行者用信号あり）"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "横断歩道（歩行者用信号あり、隆起型）",
-                    "aliases": "スムーズ横断歩道\nスムース横断歩道"
                 },
                 "highway/crossing/unmarked": {
                     "name": "横断歩道（マークなし）",
                     "terms": "横断歩道（マークなし）,横断歩道,歩道"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "横断歩道（隆起あり・マークなし）",
-                    "terms": "横断歩道（隆起あり・マークなし）,横断歩道,隆起,交通安全,静音化,歩道"
-                },
                 "highway/crossing/zebra": {
                     "name": "横断歩道（ゼブラあり）"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "横断歩道（隆起あり・ゼブラあり）"
                 },
                 "highway/cycleway": {
                     "name": "自転車専用道路(歩行者通行不可)",
@@ -4823,10 +4808,6 @@
                     "name": "横断歩道（マークあり）",
                     "terms": "横断歩道（マークあり）,横断歩道,歩道"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "横断歩道（隆起あり・マークあり）",
-                    "terms": "横断歩道（隆起あり・マークあり）,横断歩道,隆起,交通安全,静音化,歩道"
-                },
                 "highway/footway/sidewalk": {
                     "name": "歩道（車道の脇）",
                     "terms": "歩道（車道の脇）,歩道"
@@ -4835,15 +4816,8 @@
                     "name": "横断歩道（マークなし）",
                     "terms": "横断歩道（マークなし）,横断歩道,歩道"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "横断歩道（隆起あり・マークなし）",
-                    "terms": "横断歩道（隆起あり・マークなし）,横断歩道,隆起,交通安全,静音化,歩道"
-                },
                 "highway/footway/zebra": {
                     "name": "横断歩道（ゼブラあり）"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "横断歩道（隆起あり・ゼブラあり）"
                 },
                 "highway/give_way": {
                     "name": "ゆずれ標識（前方優先道路）",

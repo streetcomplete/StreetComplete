@@ -1326,4 +1326,10 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_barrier_road_intersection">"Hur korsar vägen hindret här?"</string>
     <string name="quest_airConditioning_no_name_title">"Har det här stället (%s) luftkonditionering?"</string>
     <string name="quest_airConditioning_name_type_title">"Har %1$s (%2$s) luftkonditionering?"</string>
+    <string name="quest_openingHours_signed_name_title">"Har %s skyltade öppettider?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Har %1$s (%2$s) skyltade öppettider?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Har detta ställe skyltade öppettider? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"visas separat på kartan"</string>
+    <string name="quest_shoulder_value_yes">"vägren"</string>
+    <string name="quest_shoulder_value_no">"ingen vägren"</string>
 </resources>

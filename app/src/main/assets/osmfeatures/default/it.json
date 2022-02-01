@@ -4489,23 +4489,12 @@
                     "name": "Strisce pedonali",
                     "terms": "attraversamento,pedonale,zebrato,zebra,strisce"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Attraversamento pedonale (rialzato)",
-                    "terms": "zebra,zebrato,strisce,attraversamento,pedoni,piano,tavolo,pedonale,dosso,velocità,lento"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Attraversamento pedonale non segnalato",
                     "terms": "pedone,pedoni,pedonale,attraversamento,punto,senza strisce,informale"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Attraversamento pedonale non segnalato (sopraelevato)",
-                    "terms": "tavolo,tabella,tabellone,dosso,velocità,piano,lento,attraversamento,pedone,pedonale"
-                },
                 "highway/crossing/zebra": {
                     "name": "Strisce pedonali"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Strisce pedonali (rialzate)"
                 },
                 "highway/cycleway": {
                     "name": "Percorso ciclabile",
@@ -4560,10 +4549,6 @@
                     "name": "Strisce pedonali",
                     "terms": "strisce,pedonale,pedoni,attraversamento pedonale,zebra,segnalato,incrocio"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Strisce  pedonali (rialzate)",
-                    "terms": "incrocio,attraversamento,strisce,zebra,rialzato,scalino,limitatore,velocità,piano,lento,sicurezza"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Marciapiede",
                     "terms": "marciapiedi"
@@ -4572,15 +4557,8 @@
                     "name": "Attraversamento pedonale non segnalato",
                     "terms": "attraversamento,pedonale,percorso,sentiero,incrocio,non sengnalato,pericoloso"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Attraversamento pedonale non segnalato (sopraelevato)",
-                    "terms": "tavolo,tabellone,tabella,dosso,velocità,lento,piano,pedone,pedonale,punto"
-                },
                 "highway/footway/zebra": {
                     "name": "Strisce pedonali"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Strisce pedonali (rialzate)"
                 },
                 "highway/give_way": {
                     "name": "Dare la precedenza",

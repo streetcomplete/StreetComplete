@@ -627,6 +627,13 @@
                 "crossing/light": {
                     "label": "燈號"
                 },
+                "crossing_raised": {
+                    "label": "交通寧靜區",
+                    "options": {
+                        "table": "是",
+                        "undefined": "否"
+                    }
+                },
                 "cuisine": {
                     "label": "菜系",
                     "options": {
@@ -4895,31 +4902,16 @@
                     "name": "標記人行穿越道",
                     "terms": "有斑馬線穿越道"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "標記人行穿越道（凸起）",
-                    "terms": "有斑馬線穿越道（凸起）"
-                },
                 "highway/crossing/signals": {
                     "name": "行人燈號交叉路口",
                     "terms": "行人燈號交叉路口"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "行人燈號交叉路口（升起）",
-                    "terms": "行人燈號交叉路口（升起）"
                 },
                 "highway/crossing/unmarked": {
                     "name": "無標記人行穿越道",
                     "terms": "無斑馬線穿越道"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "無標記人行穿越道（凸起）",
-                    "terms": "無斑馬線穿越道（凸起）"
-                },
                 "highway/crossing/zebra": {
                     "name": "標記人行穿越道"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "標記人行穿越道（凸起）"
                 },
                 "highway/cycleway": {
                     "name": "單車路線",
@@ -4975,27 +4967,20 @@
                     "name": "有標記人行穿越道",
                     "terms": "有斑馬線穿越道"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "有標記人行穿越道（凸起）",
-                    "terms": "有斑馬線穿越道（凸起）"
-                },
                 "highway/footway/sidewalk": {
                     "name": "路邊人行道",
                     "terms": "人行道"
+                },
+                "highway/footway/signals": {
+                    "name": "行人燈號交叉路口",
+                    "terms": "行人燈號交叉路口"
                 },
                 "highway/footway/unmarked": {
                     "name": "無標記人行穿越道",
                     "terms": "無斑馬線穿越道"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "無標記人行穿越道（凸起）",
-                    "terms": "無斑馬線穿越道（凸起）"
-                },
                 "highway/footway/zebra": {
                     "name": "標記人行穿越道"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "有斑馬線人行穿越道（凸起）"
                 },
                 "highway/give_way": {
                     "name": "通行標誌",
@@ -5733,6 +5718,10 @@
                 "leisure/pitch/field_hockey": {
                     "name": "曲棍球場",
                     "terms": "曲棍球場"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "室內五人制足球場",
+                    "terms": "室內五人制足球場"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "馬蹄鐵坑",

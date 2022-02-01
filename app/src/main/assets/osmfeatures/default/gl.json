@@ -4082,23 +4082,12 @@
                     "name": "Paso de peóns marcado",
                     "terms": "cebra,paso de cebra,cruzamento marcado,paso de peóns,cruzamento de peóns"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Paso de peóns marcado (Levantado)",
-                    "terms": "paso de cebra,cruzamento marcado,paso de peóns,lombo de burro,lombada,velocidade,calmador,redutor"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Paso de peóns sen marcar",
                     "terms": "paso de peóns sen marcar,peonil,peonal"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Paso de peóns sen marcar (Levantado)",
-                    "terms": "peonil,peonal"
-                },
                 "highway/crossing/zebra": {
                     "name": "Paso de peóns marcado"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Paso de peóns marcado (Levantado)"
                 },
                 "highway/cycleway": {
                     "name": "Senda ciclista",
@@ -4148,10 +4137,6 @@
                     "name": "Paso de peóns marcado",
                     "terms": "cebra,paso de cebra,cruzamento marcado,paso de peóns,cruzamento de peóns"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Paso de peóns marcado (Levantado)",
-                    "terms": "paso de cebra,cruzamento marcado,paso de peóns,lombo de burro,lombada,velocidade,calmador,redutor"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Beirarrúa",
                     "terms": "calzada,paseo,berma"
@@ -4160,15 +4145,8 @@
                     "name": "Paso peonil sen marcar",
                     "terms": "cruzamento sen marcar,paso de peóns sen marcar"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Paso de peóns sen marcar (Levantado)",
-                    "terms": "peonil,peonal"
-                },
                 "highway/footway/zebra": {
                     "name": "Paso de peóns marcado"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Paso de peóns marcado (Levantado)"
                 },
                 "highway/give_way": {
                     "name": "Ceda o paso"

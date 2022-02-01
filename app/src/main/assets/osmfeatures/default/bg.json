@@ -1430,14 +1430,8 @@
                 "highway/crossing/marked": {
                     "name": "Пешеходна пътека \"Зебра\""
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Повдигната пешеходна пътека"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Немаркирана мешеходна пътека"
-                },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Немаркирана повдигната пешеходна пътека"
                 },
                 "highway/cycleway": {
                     "name": "Велоалея"
@@ -1447,9 +1441,6 @@
                 },
                 "highway/footway/marked": {
                     "name": "Пешеходна пътека \"Зебра\""
-                },
-                "highway/footway/marked-raised": {
-                    "name": "Повдигната пешеходна пътека \"Зебра\""
                 },
                 "highway/living_street": {
                     "name": "Улица в жилищна зона"

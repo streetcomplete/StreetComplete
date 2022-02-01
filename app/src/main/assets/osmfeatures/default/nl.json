@@ -626,6 +626,13 @@
                 "crossing/light": {
                     "label": "Lampen"
                 },
+                "crossing_raised": {
+                    "label": "Verhoogd",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nee"
+                    }
+                },
                 "cuisine": {
                     "label": "Keukens",
                     "options": {
@@ -1696,7 +1703,7 @@
                     "label": "Pakket afhalen",
                     "options": {
                         "no": "Nee",
-                        "undefined": "Aangenomen van niet",
+                        "undefined": "Aangenomen van wel",
                         "yes": "Ja"
                     }
                 },
@@ -3630,7 +3637,8 @@
                     "terms": "rookzone,kankerzone,rookpaviljoen"
                 },
                 "amenity/social_centre": {
-                    "name": "Buurthuis"
+                    "name": "Sociaal ontmoetingscentrum",
+                    "terms": "broederschapshuis,broederschap,studentenvereniging,beroepsvereniging,vakbondshuis,sociëteit"
                 },
                 "amenity/social_facility": {
                     "name": "Sociale Faciliteit",
@@ -4756,30 +4764,16 @@
                 "highway/crossing/marked": {
                     "name": "Gemarkeerde Voetgangersoversteekplaats"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Voetgangersoversteekplaats (op drempel)"
-                },
                 "highway/crossing/signals": {
                     "name": "Kruispunt met signalen voor voetgangers",
                     "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Kruispunt met signalen voor voetgangers (verhoogd)",
-                    "terms": "verkeerslichten,zebra,oversteekplaats,drempel,verkeersremmer,zebrapad,verkeersdrempel,stoplicht"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Ongemarkeerde oversteekplaats",
                     "terms": "ongemarkeerde oversteekplaats"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Ongemarkeerde oversteekplaats (op drempel)",
-                    "terms": "ongmarkeerde oversteekplaats op plateau,ongmarkeerde oversteekplaats op drempel"
-                },
                 "highway/crossing/zebra": {
                     "name": "Zebrapad"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Zebrapad (op drempel)"
                 },
                 "highway/cycleway": {
                     "name": "Fietspad",
@@ -4826,25 +4820,19 @@
                 "highway/footway/marked": {
                     "name": "Gemarkeerde Voetgangersoversteekplaats"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Gemarkeerde Voetgangersoversteekplaats (op drempel)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Stoep",
                     "terms": "voetpad,trottoir"
                 },
+                "highway/footway/signals": {
+                    "name": "Kruispunt met signalen voor voetgangers",
+                    "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
+                },
                 "highway/footway/unmarked": {
                     "name": "Ongemarkeerde Voetgangersoversteekplaats"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Ongemarkeerde Voetgangersoversteekplaats (op drempel)",
-                    "terms": "ongmarkeerde oversteekplaats op plateau,ongmarkeerde oversteekplaats op drempel"
-                },
                 "highway/footway/zebra": {
                     "name": "Zebrapad"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Zebrapad (op drempel)"
                 },
                 "highway/give_way": {
                     "name": "Voorrangsbord",
@@ -5063,7 +5051,7 @@
                 },
                 "historic/castle": {
                     "name": "Kasteel",
-                    "terms": "kasteel,burcht"
+                    "terms": "kasteel,burcht,havezate,landhuis,paleis,vesting,fort,kremlin,chateau,shiro,citadel"
                 },
                 "historic/castle/fortress": {
                     "name": "Historische fortificatie",
@@ -5544,6 +5532,11 @@
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Veldhockeyveld"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Futsalveld",
+                    "terms": "futsal,zaalvoetbal,zaalvoetbalveld",
+                    "aliases": "Zaalvoetbalveld"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Hoefijzer kuil"

@@ -2590,6 +2590,12 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_fuelSelfService_name_title">"Kunt u zelf tanken bij %s?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Dit type vraag is standaard uitgeschakeld omdat het nogal tijdrovend en vaak moeilijk is om de juiste keuze te maken. Je moet dit type vraag alleen inschakelen als je echt toegewijd bent om dit soort gegevens toe te voegen."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Stevige ondergrond, heel weinig los grind of zand"</string>
+
+    <!-- Don't understand the question. How a path crosses a barier or a barrier crosses a path? don't understand the back round of this quest. please explain? -->
+    <string name="quest_barrier_path_intersection">"Hoe wordt dit pad versperd?"</string>
+
+    <!-- Don't understand the question. How a road crosses a barier or a barrier crosses a road? don't understand the back round of this quest. please explain? -->
+    <string name="quest_barrier_road_intersection">"Hoe wordt deze weg versperd?"</string>
     <string name="quest_airConditioning_no_name_title">"Heeft deze plaats (%s) airconditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Heeft %1$s (%2$s) airconditioning?"</string>
 </resources>

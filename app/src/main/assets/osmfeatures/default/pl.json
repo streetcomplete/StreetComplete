@@ -4618,23 +4618,12 @@
                     "name": "Oznakowane przejście dla pieszych",
                     "terms": "oznaczone przejście dla pieszych,przejście dla pieszych,zebra,pasy"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Oznakowane przejście dla pieszych (podwyższone)",
-                    "terms": "oznaczone przejście dla pieszych (wyniesione),zebra,przejście dla pieszych,płaska góra,próg zwalniający,prędkość,powoli"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Nieoznakowane przejście",
                     "terms": "nieoznaczone przejście dla pieszych"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Nieoznakowane przejście (podwyższone)",
-                    "terms": "nieoznaczone przejście dla pieszych (wyniesione),płaska góra,próg zwalniający,prędkość,powoli"
-                },
                 "highway/crossing/zebra": {
                     "name": "Oznakowane przejście dla pieszych"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Oznakowane przejście dla pieszych (podwyższone)"
                 },
                 "highway/cycleway": {
                     "name": "Droga rowerowa",
@@ -4690,10 +4679,6 @@
                     "name": "Oznakowane przejście dla pieszych",
                     "terms": "oznaczone przejście dla pieszych,przejście dla pieszych,zebra,pasy"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Oznakowane przejście dla pieszych (podwyższone)",
-                    "terms": "oznaczone przejście dla pieszych (wyniesione),zebra,przejście dla pieszych,płaska góra,próg zwalniający,prędkość,powoli"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Chodnik przy jezdni",
                     "terms": "chodnik"
@@ -4702,15 +4687,8 @@
                     "name": "Nieoznakowane przejście",
                     "terms": "nieoznaczone przejście dla pieszych"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Nieoznakowane przejście (podwyższone)",
-                    "terms": "nieoznaczone przejście dla pieszych (wyniesione),płaska góra,próg zwalniający,prędkość,powoli"
-                },
                 "highway/footway/zebra": {
                     "name": "Oznakowane przejście dla pieszych"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Oznakowane przejście dla pieszych (podwyższone)"
                 },
                 "highway/give_way": {
                     "name": "Ustąp pierwszeństwa przejazdu",

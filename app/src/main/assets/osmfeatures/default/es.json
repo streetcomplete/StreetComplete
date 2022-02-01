@@ -627,6 +627,13 @@
                 "crossing/light": {
                     "label": "Luces"
                 },
+                "crossing_raised": {
+                    "label": "Elevado",
+                    "options": {
+                        "table": "Sí",
+                        "undefined": "No"
+                    }
+                },
                 "cuisine": {
                     "label": "Cocinas",
                     "options": {
@@ -4907,31 +4914,16 @@
                     "name": "Cruce peatonal marcado",
                     "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)",
-                    "terms": "paso de cebra,cruce marcado,paso de peatones,lomo de burro,lomada,velocidad,calmador,reductor"
-                },
                 "highway/crossing/signals": {
                     "name": "Cruce con señales para peatones",
                     "terms": "semáforo para peatones,paso de peatones,paso de bicicletas"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Cruce con señales para peatones (Elevado)",
-                    "terms": "semáforo para peatones,cruce de bicicletas,cruce de peatones,lomada,lomo de burro,reductor de velocidad"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Cruce peatonal sin marcar",
                     "terms": "cruce,crucero,paso a nivel,sin marcar"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Cruce peatonal sin marcar (Elevado)",
-                    "terms": "lomo de burro,lomada,velocidad,calmador,reductor,cruce,crucero,paso a nivel,sin marcar"
-                },
                 "highway/crossing/zebra": {
                     "name": "Cruce peatonal marcado"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)"
                 },
                 "highway/cycleway": {
                     "name": "Ciclovía",
@@ -4987,27 +4979,20 @@
                     "name": "Cruce peatonal marcado",
                     "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)",
-                    "terms": "paso de cebra,cruce marcado,paso de peatones,lomo de burro,lomada,velocidad,calmador,reductor"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Acera",
                     "terms": "acera,vereda,banqueta,andén"
+                },
+                "highway/footway/signals": {
+                    "name": "Cruce con señales para peatones",
+                    "terms": "semáforo para peatones,paso de peatones,paso de bicicletas,lomo de burro,lomada,bajar velocidad"
                 },
                 "highway/footway/unmarked": {
                     "name": "Cruce sin marcar",
                     "terms": "cruce sin marcar"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Cruce sin marcar (Elevado)",
-                    "terms": "lomo de burro,lomada,velocidad,calmador,reductor"
-                },
                 "highway/footway/zebra": {
                     "name": "Cruce peatonal marcado"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)"
                 },
                 "highway/give_way": {
                     "name": "Señal de ceda el paso",
@@ -5747,6 +5732,10 @@
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hockey",
                     "terms": "hockey"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Cancha de fútbol sala (Futsal)",
+                    "terms": "fútbol sala,futbol sala,futsal,fútbol de salón,futbol de salon,futsala,futbolito,microfútbol,microfutbol"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Foso de herraduras (juego)",

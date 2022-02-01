@@ -4636,21 +4636,11 @@
                     "name": "Jelölt gyalogátkelő",
                     "terms": "zebra"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)",
-                    "terms": "zebra"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Jelöletlen gyalogosátkelő"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Jelöletlen gyalogosátkelő (megemelt)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Jelölt gyalogátkelő"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)"
                 },
                 "highway/cycleway": {
                     "name": "Kijelölt kerékpárút",
@@ -4699,9 +4689,6 @@
                 "highway/footway/marked": {
                     "name": "Jelölt gyalogátkelő"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Járda",
                     "terms": "járda,gyalogjáró,gyalogút"
@@ -4709,14 +4696,8 @@
                 "highway/footway/unmarked": {
                     "name": "Nem jelölt gyalogosátkelő"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Nem jelölt gyalogosátkelő (megemelt)"
-                },
                 "highway/footway/zebra": {
                     "name": "Jelölt gyalogátkelő"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)"
                 },
                 "highway/give_way": {
                     "name": "Elsőbbségadás kötelező",

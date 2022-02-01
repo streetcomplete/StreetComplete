@@ -3590,22 +3590,12 @@
                 "highway/crossing/marked": {
                     "name": "Markeret fodgængerfelt"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Markeret fodgængerfelt (hævet)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Umarkeret fodgængerfelt",
                     "terms": "overgang,felt,fodgænger,fodgængerovergang"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Umarkeret fodgængerfelt (hævet)",
-                    "terms": "overgang,felt,fodgænger,fodgængerovergang,bump,hævet"
-                },
                 "highway/crossing/zebra": {
                     "name": "Markeret fodgængerfelt"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Markeret fodgængerfelt (hævet)"
                 },
                 "highway/cycleway": {
                     "name": "Cykelsti",
@@ -3648,9 +3638,6 @@
                 "highway/footway/marked": {
                     "name": "Markeret fodgængerfelt"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Markeret fodgængerfelt (hævet)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Fortov",
                     "terms": "fodgænger,flise"
@@ -3659,15 +3646,8 @@
                     "name": "Umarkeret fodgængerfelt",
                     "terms": "felt,overgang,fodgænger,fortov,umarkeret"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Umarkeret fodgængerfelt (hævet)",
-                    "terms": "overgang,felt,fodgænger,fodgængerovergang,bump,hævet"
-                },
                 "highway/footway/zebra": {
                     "name": "Markeret fodgængerfelt"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Markeret fodgængerfelt (hævet)"
                 },
                 "highway/give_way": {
                     "name": "Advarselsskilt",
