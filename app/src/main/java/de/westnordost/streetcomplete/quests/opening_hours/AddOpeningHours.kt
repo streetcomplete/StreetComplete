@@ -82,7 +82,14 @@ class AddOpeningHours (
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+
+                // name & opening hours
+                "sample_collection", "laboratory", "blood_donation", "physiotherapist", "podiatrist",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
             and !opening_hours

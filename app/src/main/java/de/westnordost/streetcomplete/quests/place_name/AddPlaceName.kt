@@ -91,7 +91,14 @@ class AddPlaceName(
             ),
             "military" to arrayOf(
                 "airfield", "barracks", "training_area"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+
+                // name & opening hours
+                "sample_collection", "laboratory", "blood_donation", "physiotherapist", "podiatrist",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
