@@ -33,9 +33,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.coroutines.resume
 
-/** Activity to measure distances. Can be started as activity for result, see createIntent
- *
- *  */
+/** Activity to measure distances. Can be started as activity for result, see [createIntent] */
 class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private val createArCoreSession = ArCoreSessionCreator(this, ::askUserToAcknowledgeCameraPermissionRationale)
