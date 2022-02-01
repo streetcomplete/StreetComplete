@@ -30,9 +30,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-/** Activity to measure distances. Can be started as activity for result, see createIntent
- *
- *  */
+/** Activity to measure distances. Can be started as activity for result, see [createIntent] */
 class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private val createArCoreSession = ArCoreSessionCreator(this, ::askUserToAcknowledgeCameraPermissionRationale)
