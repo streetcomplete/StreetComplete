@@ -50,7 +50,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private var cursorNode: AnchorNode? = null
 
     private var measureMode: MeasureMode = MeasureMode.BOTH
-    private var displayUnit: MeasureDisplayUnit = MeasureDisplayUnitMeter(1)
+    private var displayUnit: MeasureDisplayUnit = MeasureDisplayUnitMeter(2)
     private var requestResult: Boolean = false
 
     private enum class MeasureState { READY, MEASURING, DONE }
@@ -125,9 +125,9 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private fun readIntent() {
         measureMode = intent.getStringExtra(PARAM_MEASURE_MODE)?.let { MeasureMode.valueOf(it) } ?: MeasureMode.BOTH
         displayUnit = when (intent.getStringExtra(PARAM_DISPLAY_UNIT)) {
-            METER -> MeasureDisplayUnitMeter(intent.getIntExtra(PARAM_DISPLAY_UNIT_PRECISION, 1))
-            FOOT_AND_INCH -> MeasureDisplayUnitFeetInch(intent.getIntExtra(PARAM_DISPLAY_UNIT_PRECISION, 4))
-            else -> MeasureDisplayUnitMeter(1)
+            METER -> MeasureDisplayUnitMeter(intent.getIntExtra(PARAM_DISPLAY_UNIT_PRECISION, 2))
+            FOOT_AND_INCH -> MeasureDisplayUnitFeetInch(intent.getIntExtra(PARAM_DISPLAY_UNIT_PRECISION, 1))
+            else -> MeasureDisplayUnitMeter(2)
         }
         requestResult = intent.getBooleanExtra(PARAM_REQUEST_RESULT, false)
     }
