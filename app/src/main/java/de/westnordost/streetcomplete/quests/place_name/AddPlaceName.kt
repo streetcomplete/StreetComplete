@@ -95,9 +95,10 @@ class AddPlaceName(
             "healthcare" to arrayOf(
                 // common
                 "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
 
                 // name & opening hours
-                "sample_collection", "laboratory", "blood_donation", "physiotherapist", "podiatrist",
+                "physiotherapist", "podiatrist",
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
