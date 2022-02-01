@@ -28,6 +28,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.future.await
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import kotlin.coroutines.resume
 
 /** Activity to measure distances. Can be started as activity for result, see createIntent
@@ -123,12 +126,10 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     }
 
     private fun readIntent() {
-        measureMode = intent.getStringExtra(PARAM_MEASURE_MODE)?.let { MeasureMode.valueOf(it) } ?: MeasureMode.BOTH
-        displayUnit = when (intent.getStringExtra(PARAM_DISPLAY_UNIT)) {
-            METER -> MeasureDisplayUnitMeter(intent.getIntExtra(PARAM_DISPLAY_UNIT_PRECISION, 2))
-            FOOT_AND_INCH -> MeasureDisplayUnitFeetInch(intent.getIntExtra(PARAM_DISPLAY_UNIT_PRECISION, 1))
-            else -> MeasureDisplayUnitMeter(2)
-        }
+        measureMode = intent.getStringExtra(PARAM_MEASURE_MODE)?.let { MeasureMode.valueOf(it) }
+            ?: MeasureMode.BOTH
+        displayUnit = intent.getStringExtra(PARAM_DISPLAY_UNIT)?.let { Json.decodeFromString(it) }
+            ?: MeasureDisplayUnitMeter(2)
         requestResult = intent.getBooleanExtra(PARAM_REQUEST_RESULT, false)
     }
 
@@ -370,7 +371,6 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     companion object {
         private const val PARAM_MEASURE_MODE = "measure_mode"
         private const val PARAM_DISPLAY_UNIT = "display_unit"
-        private const val PARAM_DISPLAY_UNIT_PRECISION = "display_unit_precision"
         private const val PARAM_REQUEST_RESULT = "request_result"
 
         private const val METER = "meter"
@@ -397,17 +397,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         ): Intent {
             val intent = Intent(context, MeasureActivity::class.java)
             mode?.let { intent.putExtra(PARAM_MEASURE_MODE, it.name) }
-            when(unit) {
-                is MeasureDisplayUnitFeetInch -> {
-                    intent.putExtra(PARAM_DISPLAY_UNIT, FOOT_AND_INCH)
-                    intent.putExtra(PARAM_DISPLAY_UNIT_PRECISION, unit.inchStep)
-                }
-                is MeasureDisplayUnitMeter -> {
-                    intent.putExtra(PARAM_DISPLAY_UNIT, METER)
-                    intent.putExtra(PARAM_DISPLAY_UNIT_PRECISION, unit.decimals)
-                }
-                null -> {}
-            }
+            unit?.let { intent.putExtra(PARAM_DISPLAY_UNIT, Json.encodeToString(it)) }
             requestResult?.let { intent.putExtra(PARAM_REQUEST_RESULT, it) }
             return intent
         }

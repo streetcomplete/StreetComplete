@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.measure
 
+import kotlinx.serialization.Serializable
 import kotlin.math.floor
 import kotlin.math.pow
 import kotlin.math.round
 
 /** In which unit the measurement is displayed */
-sealed interface MeasureDisplayUnit {
-    fun format(distanceMeters: Double): String
+@Serializable
+sealed class MeasureDisplayUnit {
+    abstract fun format(distanceMeters: Double): String
 }
 /** Measurement displayed in meters rounded to the given number of [decimals] */
-data class MeasureDisplayUnitMeter(val decimals: Int) : MeasureDisplayUnit {
+@Serializable
+data class MeasureDisplayUnitMeter(val decimals: Int) : MeasureDisplayUnit() {
     init {
         require(decimals >= 0)
     }
@@ -25,7 +28,8 @@ data class MeasureDisplayUnitMeter(val decimals: Int) : MeasureDisplayUnit {
     }
 }
 /** Measurement displayed in feet+inch, inches rounded to nearest [inchStep]. Must be 1,2,3,4,6 or 12 */
-data class MeasureDisplayUnitFeetInch(val inchStep: Int) : MeasureDisplayUnit {
+@Serializable
+data class MeasureDisplayUnitFeetInch(val inchStep: Int) : MeasureDisplayUnit() {
     init {
         require(inchStep in arrayOf(1,2,3,4,6,12))
     }
