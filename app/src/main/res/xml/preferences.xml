@@ -124,6 +124,11 @@
             android:title="Show Quest Forms"
             />
 
+        <Preference
+            android:key="debug.ar_measure"
+            android:title="Show AR Measure"
+            />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

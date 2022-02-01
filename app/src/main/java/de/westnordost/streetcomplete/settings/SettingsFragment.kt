@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.measure.MeasureActivity
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -106,6 +107,11 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
         findPreference<Preference>("debug.quests")?.setOnPreferenceClickListener {
             startActivity(Intent(context, ShowQuestFormsActivity::class.java))
+            true
+        }
+
+        findPreference<Preference>("debug.ar_measure")?.setOnPreferenceClickListener {
+            startActivity(Intent(context, MeasureActivity::class.java))
             true
         }
 
