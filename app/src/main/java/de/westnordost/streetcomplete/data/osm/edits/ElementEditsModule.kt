@@ -4,8 +4,10 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditUploader
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsDao
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
+import org.koin.androidx.workmanager.dsl.worker
 import org.koin.dsl.module
 
 val elementEditsModule = module {
@@ -21,4 +23,6 @@ val elementEditsModule = module {
     single<ElementEditsSource> { get<ElementEditsController>() }
     single { ElementEditsController(get(), get(), get()) }
     single { MapDataWithEditsSource(get(), get(), get()) }
+
+    worker { ChangesetAutoCloserWorker(get(), get(), get()) }
 }

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
 import de.westnordost.streetcomplete.data.user.OAuthStore
 import oauth.signpost.OAuthConsumer
+import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -21,6 +22,8 @@ val osmApiModule = module {
 
     single { osmConnection(get<OAuthStore>().oAuthConsumer) }
     single { UnsyncedChangesCountSource(get(), get()) }
+
+    worker { CleanerWorker(get(), get(), get()) }
 }
 
 private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"

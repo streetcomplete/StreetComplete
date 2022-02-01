@@ -49,6 +49,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import java.lang.System.currentTimeMillis
@@ -75,6 +76,7 @@ class StreetCompleteApplication : Application() {
             // https://github.com/InsertKoinIO/koin/issues/1188
             androidLogger(Level.ERROR)
             androidContext(this@StreetCompleteApplication)
+            workManagerFactory()
             modules(
                 achievementsModule,
                 appModule,

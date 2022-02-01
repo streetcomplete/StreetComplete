@@ -5,13 +5,12 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class ChangesetAutoCloserWorker(context: Context, workerParams: WorkerParameters) :
-    Worker(context, workerParams), KoinComponent {
-
-    internal val openQuestChangesetsManager: OpenQuestChangesetsManager by inject()
+class ChangesetAutoCloserWorker(
+    private val openQuestChangesetsManager: OpenQuestChangesetsManager,
+    context: Context,
+    workerParams: WorkerParameters
+) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
         try {
