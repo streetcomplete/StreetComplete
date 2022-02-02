@@ -63,4 +63,3 @@ private inline fun <T> wrapExceptions(block: () -> T): T =
         // request timeout is a temporary connection error
         throw if (e.errorCode == 408) ConnectionException(e.message, e) else e
     }
-

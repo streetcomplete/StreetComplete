@@ -4,8 +4,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject

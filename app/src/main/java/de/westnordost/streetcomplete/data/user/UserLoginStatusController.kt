@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.user
 
 import android.content.SharedPreferences
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import oauth.signpost.OAuthConsumer
 import java.util.concurrent.CopyOnWriteArrayList

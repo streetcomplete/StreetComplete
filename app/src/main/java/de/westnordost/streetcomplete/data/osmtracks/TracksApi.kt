@@ -22,5 +22,4 @@ interface TracksApi {
      * @return the new track
      */
     fun create(trackpoints: List<Trackpoint>, noteText: String?): Track
-
 }

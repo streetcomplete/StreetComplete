@@ -65,5 +65,4 @@ interface NotesApi {
      * @return the incoming notes
      */
     fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int): List<Note>
-
 }

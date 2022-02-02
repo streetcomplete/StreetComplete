@@ -21,7 +21,7 @@ class RequestPermissionUpgradeDialog(context: Context) : AlertDialog(context, R.
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_permission_upgrade, null, false)
         setView(view)
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
-            if(userLoginStatusController.isLoggedIn) {
+            if (userLoginStatusController.isLoggedIn) {
                 userLoginStatusController.logOut()
             }
             val intent = Intent(context, UserActivity::class.java)
