@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.map
 
-import android.hardware.*
+import android.hardware.GeomagneticField
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Location
 import android.os.Handler
 import android.os.HandlerThread
@@ -75,7 +79,7 @@ class Compass(
         accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
         magnetometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
 
-        dispatcherThread = Thread( { dispatchLoop() }, "Compass Dispatcher Thread")
+        dispatcherThread = Thread({ dispatchLoop() }, "Compass Dispatcher Thread")
         dispatcherThread?.start()
     }
 
@@ -160,7 +164,7 @@ class Compass(
         declination = toRadians(geomagneticField.declination.toDouble()).toFloat()
     }
 
-    private fun smoothenAngle( newValue: Float, oldValue: Float, factor: Float): Float {
+    private fun smoothenAngle(newValue: Float, oldValue: Float, factor: Float): Float {
         var delta = newValue - oldValue
         while (delta > +PI) delta -= 2 * PI.toFloat()
         while (delta < -PI) delta += 2 * PI.toFloat()
@@ -173,4 +177,3 @@ class Compass(
         private const val MIN_DIFFERENCE = 0.001f
     }
 }
-

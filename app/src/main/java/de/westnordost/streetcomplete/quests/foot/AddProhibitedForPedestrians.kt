@@ -3,9 +3,12 @@ package de.westnordost.streetcomplete.quests.foot
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
 
@@ -47,13 +50,13 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
 
     override fun createForm() = AddProhibitedForPedestriansForm()
 
-    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
-            YES -> changes.add("foot", "no")
-            NO -> changes.add("foot", "yes")
-            HAS_SEPARATE_SIDEWALK -> changes.modify("sidewalk", "separate")
-            IS_LIVING_STREET -> changes.modify("highway", "living_street")
+            YES -> tags["foot"] = "no"
+            NO -> tags["foot"] = "yes"
+            HAS_SEPARATE_SIDEWALK -> tags["sidewalk"] = "separate"
+            IS_LIVING_STREET -> tags["highway"] = "living_street"
         }
     }
 }

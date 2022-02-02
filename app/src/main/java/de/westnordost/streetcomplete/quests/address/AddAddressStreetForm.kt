@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
@@ -86,7 +84,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     override fun onClickOk() {
-        if(isPlaceName) {
+        if (isPlaceName) {
             applyAnswer(PlaceName(placeName))
         } else {
             if (selectedStreetName != null) {

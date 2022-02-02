@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 open class TestQuestTypeA : OsmElementQuestType<String> {
 
     override fun getTitle(tags: Map<String, String>) = 0
-    override fun isApplicableTo(element: Element):Boolean? = null
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {}
+    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {}
     override fun createForm(): AbstractQuestAnswerFragment<String> = object : AbstractQuestAnswerFragment<String>() {}
     override val changesetComment = "test me"
     override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }

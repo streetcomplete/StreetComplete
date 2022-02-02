@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.data.notifications
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintState.NOT_SHOWN
+import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintState.SHOULD_SHOW
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintState.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,14 +23,14 @@ import javax.inject.Singleton
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     var state: QuestSelectionHintState
-    set(value) {
-        prefs.edit().putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString()).apply()
-        listeners.forEach { it.onQuestSelectionHintStateChanged() }
-    }
-    get() {
-        val str = prefs.getString(Prefs.QUEST_SELECTION_HINT_STATE, null)
-        return if (str == null) NOT_SHOWN else QuestSelectionHintState.valueOf(str)
-    }
+        set(value) {
+            prefs.edit().putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString()).apply()
+            listeners.forEach { it.onQuestSelectionHintStateChanged() }
+        }
+        get() {
+            val str = prefs.getString(Prefs.QUEST_SELECTION_HINT_STATE, null)
+            return if (str == null) NOT_SHOWN else QuestSelectionHintState.valueOf(str)
+        }
 
     init {
         visibleQuestsSource.addListener(object : VisibleQuestsSource.Listener {

@@ -7,14 +7,15 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class MutableMapDataWithGeometryTest {
 
     @Test fun `put get remove node`() {
         val m = MutableMapDataWithGeometry()
-        val p = p(0.0,0.0)
+        val p = p(0.0, 0.0)
         val node = node(1, p)
         val geom = ElementPointGeometry(p)
 
@@ -33,7 +34,7 @@ class MutableMapDataWithGeometryTest {
 
     @Test fun `put get remove way`() {
         val m = MutableMapDataWithGeometry()
-        val p = p(0.0,0.0)
+        val p = p(0.0, 0.0)
         val way = way(1)
         val geom = ElementPolylinesGeometry(listOf(listOf(p)), p)
 
@@ -52,7 +53,7 @@ class MutableMapDataWithGeometryTest {
 
     @Test fun `put get remove relation`() {
         val m = MutableMapDataWithGeometry()
-        val p = p(0.0,0.0)
+        val p = p(0.0, 0.0)
         val rel = rel(1)
         val geom = ElementPolygonsGeometry(listOf(listOf(p)), p)
 

@@ -22,7 +22,9 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
@@ -87,11 +89,12 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
 
     /* -------------------------------------- Interaction --------------------------------------- */
 
-    private inner class AchievementsAdapter(achievements: List<Pair<Achievement, Int>>
+    private inner class AchievementsAdapter(
+        achievements: List<Pair<Achievement, Int>>
     ) : ListAdapter<Pair<Achievement, Int>>(achievements) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val binding = CellAchievementBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            val binding = CellAchievementBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             binding.root.updateLayoutParams {
                 width = actualCellWidth
                 height = actualCellWidth
@@ -99,7 +102,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
             return ViewHolder(binding)
         }
 
-        inner class ViewHolder(val binding : CellAchievementBinding) : ListAdapter.ViewHolder<Pair<Achievement, Int>>(binding) {
+        inner class ViewHolder(val binding: CellAchievementBinding) : ListAdapter.ViewHolder<Pair<Achievement, Int>>(binding) {
             override fun onBind(with: Pair<Achievement, Int>) {
                 val achievement = with.first
                 val level = with.second

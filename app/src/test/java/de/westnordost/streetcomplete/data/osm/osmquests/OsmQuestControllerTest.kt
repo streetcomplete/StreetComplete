@@ -4,13 +4,34 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.data.quest.Countries
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.testutils.*
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.argThat
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.osmQuest
+import de.westnordost.streetcomplete.testutils.osmQuestKey
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.pGeom
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -78,7 +99,7 @@ class OsmQuestControllerTest {
     }
 
     @Test fun getAllVisibleInBBox() {
-        val notePos = p(0.5,0.5)
+        val notePos = p(0.5, 0.5)
         val entries = listOf(
             // ok!
             questEntry(elementType = NODE, elementId = 1),
@@ -110,7 +131,6 @@ class OsmQuestControllerTest {
         )
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
-
 
     @Test fun getAllHiddenNewerThan() {
         val geoms = listOf(
@@ -235,7 +255,7 @@ class OsmQuestControllerTest {
 
     @Test fun `updates quests on map data listener update for updated elements`() {
 
-        val geom = pGeom(0.0,0.0)
+        val geom = pGeom(0.0, 0.0)
 
         val elements = listOf(
             node(1, tags = mapOf("a" to "b")),
@@ -274,7 +294,6 @@ class OsmQuestControllerTest {
             addedQuests = eq(expectedCreatedQuests),
             deletedQuestKeys = eq(expectedDeletedQuestKeys)
         )
-
     }
 
     @Test fun `updates quests on map data listener replace for bbox`() {
@@ -288,8 +307,8 @@ class OsmQuestControllerTest {
             // at note position
             node(4),
         )
-        val geom = pGeom(0.0,0.0)
-        val notePos = p(0.5,0.5)
+        val geom = pGeom(0.0, 0.0)
+        val notePos = p(0.5, 0.5)
         val notePosGeom = ElementPointGeometry(notePos)
 
         val geometries = listOf(

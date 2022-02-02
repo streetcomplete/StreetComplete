@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Rawbank, Raw Bank, BIAC, RawBank]
+atmOperators: [Rawbank, Raw Bank, BIAC]
 centerLineStyle: white
 edgeLineStyle: short white dashes
 mobileCountryCode: 630

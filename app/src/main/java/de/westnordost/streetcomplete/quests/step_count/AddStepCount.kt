@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.step_count
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 
 class AddStepCount : OsmFilterQuestType<Int>() {
@@ -28,7 +28,7 @@ class AddStepCount : OsmFilterQuestType<Int>() {
 
     override fun createForm() = AddStepCountForm()
 
-    override fun applyAnswerTo(answer: Int, changes: StringMapChangesBuilder) {
-        changes.add("step_count", answer.toString())
+    override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
+        tags["step_count"] = answer.toString()
     }
 }

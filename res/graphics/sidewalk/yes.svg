@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128-0h72v256h-72z" fill="#aaa"/>
+ <path d="m192 232h8m-8-24h8m-8-24h8m0-24h-8m0-24h8m-8-24h8m-8-24h8m-8-24h8m-8-24h8m-8-24h8m-72 216h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-48h16m-16-24h16m-16-48h16m-16 24h16m-16 72h16m16 120h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-48h16m-16-24h16m-16-48h16m-16 24h16m-16 72h16m-32 132h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-48h16m-16-24h16m-16-48h16m-16 24h16m-16 72h16m32 156v-256m-16 0v256m-16 0v-256m-16 0v256m32-228.58h16m-16 24h16m-16 192h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-24h16m-16-72h16" fill="none" stroke="#999" stroke-width="4"/>
+ <path d="m120-0h8v256h-8z" fill="#999"/>
+ <path d="m200-0h8v256h-8z" fill="#999"/>
+ <path d="m112-0h8v256h-8z" fill="#666"/>
+ <path d="m0-0h112v256h-112z" fill="#808080"/>
+ <path d="m144 140 32 32 56-64" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".2" stroke-width="20"/>
+ <path d="m144 128 32 32 56-64" fill="none" stroke="#3c0" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+</svg>

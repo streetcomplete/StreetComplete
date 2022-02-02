@@ -24,7 +24,7 @@ open class MutableMapData() : MapData {
     }
 
     fun add(element: Element) {
-        when(element) {
+        when (element) {
             is Node -> nodesById[element.id] = element
             is Way -> waysById[element.id] = element
             is Relation -> relationsById[element.id] = element

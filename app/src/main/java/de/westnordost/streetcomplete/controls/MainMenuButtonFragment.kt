@@ -12,7 +12,11 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
+import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

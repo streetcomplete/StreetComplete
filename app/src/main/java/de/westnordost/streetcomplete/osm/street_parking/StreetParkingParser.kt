@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 
 fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParking? {
     val expandedTags = expandRelevantSidesTags(tags)
@@ -26,7 +32,7 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
         "no_stopping" -> return StreetStoppingProhibited
         "no" -> {
             val parkingCondition = tags["parking:condition$sideVal"]
-            return when(parkingCondition) {
+            return when (parkingCondition) {
                 // new style tagging
                 "no_parking" -> StreetParkingProhibited
                 "no_standing" -> StreetStandingProhibited
@@ -53,14 +59,14 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
     }
 }
 
-private fun String.toParkingOrientation() = when(this) {
+private fun String.toParkingOrientation() = when (this) {
     "parallel" -> PARALLEL
     "diagonal" -> DIAGONAL
     "perpendicular" -> PERPENDICULAR
     else -> null
 }
 
-private fun String.toParkingPosition() = when(this) {
+private fun String.toParkingPosition() = when (this) {
     "on_street", "on-street" -> ON_STREET
     "half_on_kerb" -> HALF_ON_KERB
     "on_kerb" -> ON_KERB

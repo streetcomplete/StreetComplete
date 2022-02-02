@@ -1,11 +1,17 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 
 class RelationDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RelationDao
@@ -87,20 +93,20 @@ class RelationDaoTest : ApplicationDbTestCase() {
             RelationMember(RELATION, 3, "one"),
             RelationMember(WAY, 4, "two"),
         ))
-        dao.putAll(listOf(e1,e2,e3))
+        dao.putAll(listOf(e1, e2, e3))
         assertEquals(
             listOf(e1, e2),
-            dao.getAll(listOf(1,2,4)).sortedBy { it.id }
+            dao.getAll(listOf(1, 2, 4)).sortedBy { it.id }
         )
         assertEquals(
             listOf(e1, e2, e3),
-            dao.getAll(listOf(1,2,3)).sortedBy { it.id }
+            dao.getAll(listOf(1, 2, 3)).sortedBy { it.id }
         )
     }
 
     @Test fun deleteAll() {
         dao.putAll(listOf(rel(1), rel(2), rel(3)))
-        assertEquals(2, dao.deleteAll(listOf(1,2,4)))
+        assertEquals(2, dao.deleteAll(listOf(1, 2, 4)))
         assertNotNull(dao.get(3))
         assertNull(dao.get(1))
         assertNull(dao.get(2))
@@ -116,7 +122,7 @@ class RelationDaoTest : ApplicationDbTestCase() {
             RelationMember(RELATION, 3, "one"),
             RelationMember(WAY, 4, "two"),
         ))
-        dao.putAll(listOf(e1,e2,e3))
+        dao.putAll(listOf(e1, e2, e3))
         assertEquals(
             listOf(e1, e2),
             dao.getAllForNode(0).sortedBy { it.id }
@@ -146,7 +152,7 @@ class RelationDaoTest : ApplicationDbTestCase() {
     @Test fun clear() {
         dao.putAll(listOf(rel(1L), rel(2L), rel(3L)))
         dao.clear()
-        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+        assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
     }
 }
 

@@ -27,12 +27,13 @@ import java.net.URL
 
 val projectDirectory = File(".")
 val sourceDirectory = projectDirectory.resolve("app/src/main/java/de/westnordost/streetcomplete/")
-val iconsDirectory = projectDirectory.resolve("res/graphics/quest icons/")
+val iconsDirectory = projectDirectory.resolve("res/graphics/quest/")
 
 val csvFile = projectDirectory.resolve("quest-list.csv")
 
 val noteQuestName = "OsmNoteQuest"
 val noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
+val noteQuestPackageName = "note_discussion"
 
 val wikiRowSpan2 = " rowspan=\"2\" |"
 
@@ -61,17 +62,21 @@ data class RepoQuest(
     val defaultPriority: Int,
     val wikiOrder: Int
 ) {
+    val packageName: String get() =
+        if (name == noteQuestName) noteQuestPackageName
+        else file.parentFile.name
+
     val csvString: String get() {
         val iconsPath = icon.toRelativeString(projectDirectory).replace(" ", "%20")
-        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/${iconsPath}"
+        val iconUrl = "https://raw.githubusercontent.com/streetcomplete/StreetComplete/master/$iconsPath"
 
         val wikiOrder = if (wikiOrder == -1) "\"???\"" else wikiOrder + 1
-        return "\"$name\", \"$title\", \"${iconUrl}\", ${defaultPriority + 1}, $wikiOrder"
+        return "\"$name\", \"$title\", \"$packageName\", ${defaultPriority + 1}, $wikiOrder, \"$iconUrl\""
     }
 }
 
 class WikiQuest(rowCells: List<String>, rowIndex: Int) {
-    private val wikiOrder: Int = rowIndex
+    val wikiOrder: Int = rowIndex
     private val icon: String
     val question: String
     private val askedForElements: String
@@ -80,7 +85,9 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     private val defaultPriority: String
     private val sinceVersion: String
     private val notes: String
-    private val code: String
+    private val issueNumber: String?
+    private val prNumber: String?
+    private val packageName: String?
 
     init {
         val rowCellContents = rowCells.map {
@@ -88,8 +95,7 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
 
             if (it.startsWith(wikiRowSpan2)) {
                 cellContent = it.substring(wikiRowSpan2.length)
-            }
-            else if (it.startsWith(" rowspan=") || it.startsWith(" colspan=")) {
+            } else if (it.startsWith(" rowspan=") || it.startsWith(" colspan=")) {
                 throw Error("Unsupported rowspan > 2 or colspan detected in table row $rowIndex: $it")
             }
 
@@ -112,19 +118,33 @@ class WikiQuest(rowCells: List<String>, rowIndex: Int) {
         defaultPriority = rowCellContents[5]
         sinceVersion = rowCellContents[6]
         notes = rowCellContents[7]
-        code = rowCellContents[8]
+
+        val code = rowCellContents[8]
+        val codeArguments = code.split("|")
+
+        if (!code.startsWith("{{StreetComplete Quest Code|")
+            || !code.endsWith("}}")
+            || codeArguments.size !in 3..4
+        ) {
+            throw Error("Unsupported content detected in code column in table row $rowIndex: $code")
+        }
+
+        issueNumber = codeArguments[1].ifEmpty { null }
+        prNumber = codeArguments[2].ifEmpty { null }
+        packageName = codeArguments.getOrNull(3)?.trimEnd { it == '}' }
     }
 
-    fun isOutdated(repoQuests: List<RepoQuest>): Boolean = !repoQuests.any { it.wikiOrder == wikiOrder }
+    fun isOutdated(repoQuests: List<RepoQuest>): Boolean =
+        !repoQuests.any { it.wikiOrder == wikiOrder && it.packageName == packageName }
 
-    val csvString: String get() = "\"???\", \"$question\", \"???\", \"???\", ${wikiOrder + 1}"
+    val csvString: String get() =
+        "\"???\", \"$question\", \"${packageName ?: "–"}\", \"???\", ${wikiOrder + 1}, \"???\""
 }
 
-fun getFilesRecursively(directory: File): List<File> {
-    return directory.listFiles()!!.flatMap {
+fun getFilesRecursively(directory: File): List<File> =
+    directory.listFiles()!!.flatMap {
         if (it.isDirectory) getFilesRecursively(it) else listOf(it)
     }
-}
 
 fun getStrings(stringsFile: File): Map<String, String> {
     fun normalizeString(string: String) = string
@@ -243,15 +263,24 @@ fun parseWikiTable(wikiPageContent: String): List<WikiQuest> {
 }
 
 fun writeCsvFile(repoQuests: List<RepoQuest>, wikiQuests: List<WikiQuest>) {
-    val (newQuests, oldQuests) = repoQuests.partition { it.wikiOrder == -1 }
+    val outdatedWikiQuests = wikiQuests.filter { it.isOutdated(repoQuests) }
 
-    val csvLines =
-        listOf("\"Quest Name\", \"Question\", \"SVG Icon URL\", \"Default Priority\", \"Wiki Order\"") +
-        wikiQuests.filter { it.isOutdated(repoQuests) }.map { it.csvString } +
-        listOf(",,,") +
-        newQuests.map { it.csvString } +
-        listOf(",,,") +
-        oldQuests.map { it.csvString }
+    val (updatedRepoQuests, existingRepoQuests) = repoQuests.partition { repoQuest ->
+        repoQuest.wikiOrder == -1 // repo quests not yet in wiki
+            || outdatedWikiQuests.any { // repo quests not up-to-date in wiki
+                it.wikiOrder == repoQuest.wikiOrder
+            }
+    }
+
+    val csvLines = listOf(
+        "\"Quest Name\", \"Question\", \"Package name\", \"Default Priority\", \"Wiki Order\", \"SVG Icon URL\"",
+        ",,,,,"
+    ) +
+        outdatedWikiQuests.map { it.csvString } +
+        listOf(",,,,,") +
+        updatedRepoQuests.map { it.csvString } +
+        listOf(",,,,,") +
+        existingRepoQuests.map { it.csvString }
 
     csvFile.writeText(csvLines.joinToString("\n"))
 }

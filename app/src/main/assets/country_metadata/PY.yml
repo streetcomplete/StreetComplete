@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Itaú, Banco Continental, Itau, BBVA, Banco Itau, Banco Nacional de Fomento, Sudameris Bank, BNF - Dinelco, Banco Itaú, ITAU, Dinelco, Banco Itaú S.A., Continental, BNF, Bancop, Itaú - Infonet, Banco Sudameris]
+atmOperators: [Itaú, Banco Continental, Itau, BBVA, Banco Itau, Banco Nacional de Fomento, Sudameris Bank, BNF - Dinelco, Banco Itaú, Dinelco, Banco Itaú S.A., Continental, BNF, Bancop, Itaú - Infonet, Banco Sudameris]
 centerLineStyle: yellow
 chargingStationOperators: [Petropar]
 mobileCountryCode: 744

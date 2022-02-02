@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.view.image_select
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -12,10 +11,10 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
     var items = listOf<DisplayItem<T>>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     private val _selectedIndices = mutableSetOf<Int>()
     val selectedIndices get() = _selectedIndices.toList()

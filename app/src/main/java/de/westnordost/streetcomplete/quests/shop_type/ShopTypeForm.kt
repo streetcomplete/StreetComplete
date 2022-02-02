@@ -42,7 +42,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
     }
 
     override fun onClickOk() {
-        when(selectedRadioButtonId) {
+        when (selectedRadioButtonId) {
             R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
             R.id.leaveNoteRadioButton -> composeNote()
             R.id.replaceRadioButton   -> {
@@ -56,14 +56,14 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         }
     }
 
-    override fun isFormComplete() = when(selectedRadioButtonId) {
+    override fun isFormComplete() = when (selectedRadioButtonId) {
         R.id.vacantRadioButton    -> true
         R.id.leaveNoteRadioButton -> true
         R.id.replaceRadioButton   -> shopTypeText.isNotEmpty()
         else                      -> false
     }
 
-    private fun selectRadioButton(radioButton : View) {
+    private fun selectRadioButton(radioButton: View) {
         selectedRadioButtonId = radioButton.id
         for (b in radioButtons) {
             b.isChecked = selectedRadioButtonId == b.id
@@ -76,7 +76,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         return getFeatures(input).firstOrNull()?.takeIf { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
-    private fun getFeatures(startsWith: String) : List<Feature> {
+    private fun getFeatures(startsWith: String): List<Feature> {
         val context = context ?: return emptyList()
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
         return featureDictionary

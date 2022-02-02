@@ -27,7 +27,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
+import de.westnordost.streetcomplete.ktx.setMargins
+import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
@@ -42,8 +48,10 @@ import javax.inject.Inject
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
-class SplitWayFragment : Fragment(R.layout.fragment_split_way),
-    IsCloseableBottomSheet, IsShowingQuestDetails {
+class SplitWayFragment :
+    Fragment(R.layout.fragment_split_way),
+    IsCloseableBottomSheet,
+    IsShowingQuestDetails {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
@@ -170,7 +178,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
-        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters } ) {
+        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters }) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         } else {
             splits.add(Pair(splitWay, splitPosition))
@@ -187,15 +195,14 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         return true
     }
 
-
     private fun animateScissors() {
         val scissorsPos = clickPos ?: return
 
         (binding.scissors.drawable as? Animatable)?.start()
 
         binding.scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
-            leftMargin = (scissorsPos.x - binding.scissors.width/2).toInt()
-            topMargin = (scissorsPos.y - binding.scissors.height/2).toInt()
+            leftMargin = (scissorsPos.x - binding.scissors.width / 2).toInt()
+            topMargin = (scissorsPos.y - binding.scissors.height / 2).toInt()
         }
         binding.scissors.alpha = 1f
         val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)

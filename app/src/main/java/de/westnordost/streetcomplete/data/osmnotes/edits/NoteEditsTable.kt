@@ -30,7 +30,8 @@ object NoteEditsTable {
             ${Columns.IMAGES_NEED_ACTIVATION} int NOT NULL,
             ${Columns.TRACKS} text NOT NULL,
             ${Columns.TYPE} varchar(255)
-        );"""
+        );
+    """
 
     const val SPATIAL_INDEX_CREATE = """
         CREATE INDEX osm_note_edits_spatial_index ON $NAME (

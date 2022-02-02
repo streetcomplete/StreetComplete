@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 
 data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
 
@@ -35,23 +41,23 @@ enum class ParkingPosition {
     PAINTED_AREA_ONLY
 }
 
-val StreetParking.estimatedWidthOnRoad: Float get() = when(this) {
+val StreetParking.estimatedWidthOnRoad: Float get() = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * position.estimatedWidthOnRoadFactor
     else -> 0f // otherwise let's assume it's not on the street itself
 }
 
-val StreetParking.estimatedWidthOffRoad: Float get() = when(this) {
+val StreetParking.estimatedWidthOffRoad: Float get() = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * (1 - position.estimatedWidthOnRoadFactor)
     else -> 0f // otherwise let's assume it's not on the street itself
 }
 
-private val ParkingOrientation.estimatedWidth: Float get() = when(this) {
+private val ParkingOrientation.estimatedWidth: Float get() = when (this) {
     PARALLEL -> 2f
     DIAGONAL -> 3f
     PERPENDICULAR -> 4f
 }
 
-private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when(this) {
+private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this) {
     ON_STREET -> 1f
     HALF_ON_KERB -> 0.5f
     ON_KERB -> 0f
@@ -59,21 +65,21 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when(this)
 }
 
 /** get the OSM value for the parking:lane key */
-fun StreetParking.toOsmLaneValue(): String? = when(this) {
+fun StreetParking.toOsmLaneValue(): String? = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.toOsmValue()
     NoStreetParking, StreetParkingProhibited, StreetStandingProhibited, StreetStoppingProhibited -> "no"
     StreetParkingSeparate -> "separate"
     UnknownStreetParking, IncompleteStreetParking -> null
 }
 
-fun StreetParking.toOsmConditionValue(): String? = when(this) {
+fun StreetParking.toOsmConditionValue(): String? = when (this) {
     StreetParkingProhibited -> "no_parking"
     StreetStandingProhibited -> "no_standing"
     StreetStoppingProhibited -> "no_stopping"
     else -> null
 }
 
-fun ParkingPosition.toOsmValue() = when(this) {
+fun ParkingPosition.toOsmValue() = when (this) {
     ON_STREET -> "on_street"
     HALF_ON_KERB -> "half_on_kerb"
     ON_KERB -> "on_kerb"
@@ -81,7 +87,7 @@ fun ParkingPosition.toOsmValue() = when(this) {
     PAINTED_AREA_ONLY -> "painted_area_only"
 }
 
-fun ParkingOrientation.toOsmValue() = when(this) {
+fun ParkingOrientation.toOsmValue() = when (this) {
     PARALLEL -> "parallel"
     DIAGONAL -> "diagonal"
     PERPENDICULAR -> "perpendicular"

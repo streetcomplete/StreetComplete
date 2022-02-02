@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.settings
 
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.*
+import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.DEFAULT
+import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.LESS_OFTEN
+import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.MORE_OFTEN
+import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.valueOf
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,7 +17,7 @@ import javax.inject.Singleton
         RelativeDate.MULTIPLIER = multiplier
     }
 
-    private val multiplier: Float get() = when(intervalsPreference) {
+    private val multiplier: Float get() = when (intervalsPreference) {
         LESS_OFTEN -> 2.0f
         DEFAULT -> 1.0f
         MORE_OFTEN -> 0.5f

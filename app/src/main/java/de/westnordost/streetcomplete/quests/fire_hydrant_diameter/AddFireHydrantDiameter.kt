@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
@@ -31,7 +30,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant
        diameters are added, the code in the form needs to be adapted */
-    override val enabledInCountries = NoCountriesExcept("DE","BE","GB","PL","IE","FI","NL")
+    override val enabledInCountries = NoCountriesExcept("DE", "BE", "GB", "PL", "IE", "FI", "NL")
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["ref"])
@@ -49,10 +48,10 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override fun createForm() = AddFireHydrantDiameterForm()
 
-    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is FireHydrantDiameter ->       changes.add("fire_hydrant:diameter", answer.toOsmValue())
-            is NoFireHydrantDiameterSign -> changes.add("fire_hydrant:diameter:signed", "no")
+            is FireHydrantDiameter ->       tags["fire_hydrant:diameter"] = answer.toOsmValue()
+            is NoFireHydrantDiameterSign -> tags["fire_hydrant:diameter:signed"] = "no"
         }
     }
 }

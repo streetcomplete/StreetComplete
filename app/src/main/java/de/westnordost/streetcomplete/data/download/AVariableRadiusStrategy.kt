@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.data.download
 
 import android.util.Log
-
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.util.TilesRect
+import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.enclosingTilePos
+import de.westnordost.streetcomplete.util.enclosingTilesRect
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.PI
@@ -40,11 +43,11 @@ abstract class AVariableRadiusStrategy(
 
         // otherwise, see if anything is missing in a variable radius, based on map data density
         val density = getScoredMapDataDensityFor(thisTile.asBoundingBox(tileZoom))
-        val maxRadius = sqrt( maxDownloadAreaInKm2 * 1000 * 1000 / PI )
+        val maxRadius = sqrt(maxDownloadAreaInKm2 * 1000 * 1000 / PI)
 
-        var radius = if (density > 0) sqrt( desiredScoredMapDataCountInVicinity / ( PI * density )) else maxRadius
+        var radius = if (density > 0) sqrt(desiredScoredMapDataCountInVicinity / (PI * density)) else maxRadius
 
-        radius = min( radius, maxRadius)
+        radius = min(radius, maxRadius)
 
         val activeBoundingBox = pos.enclosingBoundingBox(radius)
         val tilesRect = activeBoundingBox.enclosingTilesRect(tileZoom)

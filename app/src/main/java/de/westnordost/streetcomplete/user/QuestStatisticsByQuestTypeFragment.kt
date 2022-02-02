@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.user
 
-
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +24,7 @@ import javax.inject.Inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
-class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit)
-{
+class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
     @Inject internal lateinit var statisticsSource: StatisticsSource
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
 
@@ -65,7 +63,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         questView.setImageResource(questType.icon)
 
         val clickableContainer = FrameLayout(ctx)
-        clickableContainer.layoutParams = ViewGroup.LayoutParams(256,256)
+        clickableContainer.layoutParams = ViewGroup.LayoutParams(256, 256)
         clickableContainer.foreground = requireContext().getDrawable(R.drawable.round_pressed)
         clickableContainer.elevation = 6f.toPx(ctx)
         clickableContainer.outlineProvider = CircularOutlineProvider
@@ -77,4 +75,3 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         return clickableContainer
     }
 }
-

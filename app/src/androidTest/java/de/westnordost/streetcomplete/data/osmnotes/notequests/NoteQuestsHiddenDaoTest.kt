@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -34,7 +36,7 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
     @Test fun getAllIds() {
         dao.add(1L)
         dao.add(2L)
-        assertTrue(dao.getAllIds().containsExactlyInAnyOrder(listOf(1L,2L)))
+        assertTrue(dao.getAllIds().containsExactlyInAnyOrder(listOf(1L, 2L)))
     }
 
     @Test fun getNewerThan() = runBlocking {

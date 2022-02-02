@@ -479,7 +479,18 @@
                     "label": "Insättning av pengar"
                 },
                 "castle_type": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "castrum": "Romerskt fort",
+                        "defensive": "Defensivt slott",
+                        "fortress": "Befästning",
+                        "hillfort": "Fornborg",
+                        "kremlin": "Kreml",
+                        "manor": "Herrgård",
+                        "palace": "Palats",
+                        "shiro": "Shiro (japanskt slott)",
+                        "stately": "Ståtligt hem (Slott)"
+                    }
                 },
                 "changing_table": {
                     "label": "Skötbord"
@@ -615,6 +626,13 @@
                 },
                 "crossing/light": {
                     "label": "Trafikljus"
+                },
+                "crossing_raised": {
+                    "label": "Upphöjd",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nej"
+                    }
                 },
                 "cuisine": {
                     "label": "Typer av mat",
@@ -938,7 +956,11 @@
                     "placeholder": "Standard"
                 },
                 "embassy": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "delegation": "Delegation",
+                        "yes": "Ambassad"
+                    }
                 },
                 "emergency": {
                     "label": "Akut"
@@ -1677,6 +1699,7 @@
                     "placeholder": "3, 4, 5..."
                 },
                 "parcel_pickup": {
+                    "label": "Uthämtning paket",
                     "options": {
                         "no": "Nej",
                         "undefined": "Förväntas vara Ja",
@@ -1693,9 +1716,11 @@
                         "carports": "Carportar",
                         "garage_boxes": "Garageboxar",
                         "lane": "Fickparkering",
+                        "layby": "Rastplats",
                         "multi-storey": "Flera våningar",
                         "rooftop": "På taket",
                         "sheds": "Skjul",
+                        "street_side": "Sidan av väg",
                         "surface": "Yta",
                         "underground": "Underjordisk"
                     }
@@ -1935,7 +1960,20 @@
                     "terms": "verklig eldstad,eldstad,brasa,kamin,öppen eldstad,öppen eld,eldplats,eld"
                 },
                 "recycling_accepts": {
-                    "label": "Accepterar"
+                    "label": "Accepterar",
+                    "options": {
+                        "batteries": "Batterier",
+                        "cans": "Burkar",
+                        "cardboard": "Kartong",
+                        "clothes": "Kläder",
+                        "glass": "Glas",
+                        "glass_bottles": "Glasflaskor",
+                        "green_waste": "Trädgårdsavfall",
+                        "paper": "Papper",
+                        "plastic_packaging": "Plastförpackningar",
+                        "scrap_metal": "Skräpmetall",
+                        "shoes": "Skor"
+                    }
                 },
                 "recycling_type": {
                     "label": "Typ",
@@ -4842,31 +4880,16 @@
                     "name": "Markerad gångpassage",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Markerad gångpassage (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerat övergångsställe (upphöjt),markerad gångpassage (upphöjt),markerad gångpassage,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/crossing/signals": {
                     "name": "Korsning med trafikljus för fotgängare",
                     "terms": "trafikljus för fotgängare,trafiksignaler för fotgängare,övergångsställe (trafiksignal),cykelöverfart (trafiksignal)"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Korsning med trafikljus för fotgängare (upphöjd)",
-                    "terms": "korsning med trafikljus för fotgängare (upphöjd),trafikljus för fotgängare,trafiksignaler för fotgängare,övergångsställe (trafikljus),cykelöverfart (trafikljus),gupp,farthinder,fartgupp,fartpuckel,upphöjd,puckel,hastighet,långsam"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Omarkerad övergång",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Omarkerad övergång (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerat övergångsställe (upphöjt),omarkerad övergång (upphöjt),omarkerad övergång,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/crossing/zebra": {
                     "name": "Markerat övergångsställe"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)"
                 },
                 "highway/cycleway": {
                     "name": "Cykelväg",
@@ -4922,10 +4945,6 @@
                     "name": "Markerat övergångsställe",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerat övergångsställe (upphöjt),markerad gångpassage (upphöjt),markerad gångpassage,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoar",
                     "terms": "trottoar,gångbana,gångväg"
@@ -4934,15 +4953,8 @@
                     "name": "Omarkerad övergång",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Omarkerad övergång (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerat övergångsställe (upphöjt),omarkerad övergång (upphöjt),omarkerad övergång,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/footway/zebra": {
                     "name": "Markerat övergångsställe"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)"
                 },
                 "highway/give_way": {
                     "name": "Väjningsplikt",
@@ -5859,8 +5871,7 @@
                     "terms": "kompassros,kompass,öst,norr,vindros,syd,väst"
                 },
                 "man_made/courtyard": {
-                    "name": "Innergård",
-                    "terms": "innergård,torg,gård,gårdsplan,borggård,innetorg,inhägnad öppet område"
+                    "name": "Innergård"
                 },
                 "man_made/crane": {
                     "name": "Kran",

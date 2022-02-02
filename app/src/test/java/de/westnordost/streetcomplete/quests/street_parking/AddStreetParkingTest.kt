@@ -1,7 +1,14 @@
 package de.westnordost.streetcomplete.quests.street_parking
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.osm.street_parking.*
+import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
+import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
+import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 

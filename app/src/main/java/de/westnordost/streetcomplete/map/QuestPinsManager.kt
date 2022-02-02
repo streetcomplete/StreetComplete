@@ -6,13 +6,28 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.map.components.Pin
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.tangram.KtMapController
-import de.westnordost.streetcomplete.util.*
-import kotlinx.coroutines.*
+import de.westnordost.streetcomplete.util.TilePos
+import de.westnordost.streetcomplete.util.TilesRect
+import de.westnordost.streetcomplete.util.enclosingTilesRect
+import de.westnordost.streetcomplete.util.minTileRect
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -24,7 +39,7 @@ class QuestPinsManager(
     private val questTypeRegistry: QuestTypeRegistry,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-): LifecycleObserver {
+) : LifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -215,7 +230,7 @@ private const val MARKER_NOTE_ID = "note_id"
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 
-private fun QuestKey.toProperties(): Map<String, String> = when(this) {
+private fun QuestKey.toProperties(): Map<String, String> = when (this) {
     is OsmNoteQuestKey -> mapOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_NOTE_ID to noteId.toString()
@@ -228,7 +243,7 @@ private fun QuestKey.toProperties(): Map<String, String> = when(this) {
     )
 }
 
-private fun Map<String, String>.toQuestKey(): QuestKey? = when(get(MARKER_QUEST_GROUP)) {
+private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST_GROUP)) {
     QUEST_GROUP_OSM_NOTE ->
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
     QUEST_GROUP_OSM ->

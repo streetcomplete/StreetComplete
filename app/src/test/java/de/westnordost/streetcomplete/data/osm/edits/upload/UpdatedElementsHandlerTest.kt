@@ -1,14 +1,21 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.data.osm.mapdata.DiffElement
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.UpdatedElementsHandler
-import de.westnordost.streetcomplete.data.osm.mapdata.*
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class UpdatedElementsHandlerTest {
@@ -40,9 +47,9 @@ class UpdatedElementsHandlerTest {
     @Test fun `updates node id and all ways containing this id`() {
         val elements = listOf(
             node(-1),
-            way(1, listOf(3,2,-1)), // contains it once
-            way(2, listOf(-1,2,-1,-1)), // contains it multiple times
-            way(3, listOf(3,4)) // contains it not
+            way(1, listOf(3, 2, -1)), // contains it once
+            way(2, listOf(-1, 2, -1, -1)), // contains it multiple times
+            way(3, listOf(3, 4)) // contains it not
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(
@@ -56,9 +63,9 @@ class UpdatedElementsHandlerTest {
         assertEquals(4, updatedElements.size)
         val updatedWays = updatedElements.filterIsInstance<Way>()
         assertEquals(3, updatedWays.size)
-        assertEquals(listOf(3L,2L,1L), updatedWays.find { it.id == 1L }!!.nodeIds)
-        assertEquals(listOf(1L,2L,1L,1L), updatedWays.find { it.id == 2L }!!.nodeIds)
-        assertEquals(listOf(3L,4L), updatedWays.find { it.id == 3L }!!.nodeIds)
+        assertEquals(listOf(3L, 2L, 1L), updatedWays.find { it.id == 1L }!!.nodeIds)
+        assertEquals(listOf(1L, 2L, 1L, 1L), updatedWays.find { it.id == 2L }!!.nodeIds)
+        assertEquals(listOf(3L, 4L), updatedWays.find { it.id == 3L }!!.nodeIds)
     }
 
     @Test fun `updates node id and all relations containing this id`() {
@@ -98,9 +105,9 @@ class UpdatedElementsHandlerTest {
     @Test fun `deletes node id and updates all ways containing this id`() {
         val elements = listOf(
             node(1),
-            way(1, listOf(3,1)), // contains it once
-            way(2, listOf(1,2,1)), // contains it multiple times
-            way(3, listOf(3,4)) // contains it not
+            way(1, listOf(3, 1)), // contains it once
+            way(2, listOf(1, 2, 1)), // contains it multiple times
+            way(3, listOf(3, 4)) // contains it not
         )
         val handler = UpdatedElementsHandler()
         handler.handleAll(

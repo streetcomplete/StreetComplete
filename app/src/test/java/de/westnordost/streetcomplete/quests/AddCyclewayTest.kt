@@ -8,11 +8,31 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
-import de.westnordost.streetcomplete.quests.cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SEPARATE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
+import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.quests.cycleway.CyclewayAnswer
+import de.westnordost.streetcomplete.quests.cycleway.CyclewaySide
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.translate
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
@@ -33,7 +53,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with missing cycleway`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary"
         ))
         val mapData = TestMapDataWithGeometry(listOf(way))
@@ -45,15 +65,15 @@ class AddCyclewayTest {
 
     @Test fun `not applicable to road with nearby cycleway`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2), mapOf(
+            way(1L, listOf(1, 2), mapOf(
                 "highway" to "primary",
                 "width" to "18"
             )),
-            way(2L, listOf(3,4), mapOf(
+            way(2L, listOf(3, 4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = p(0.0,0.0)
+        val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(13.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -66,15 +86,15 @@ class AddCyclewayTest {
 
     @Test fun `applicable to road with nearby cycleway that is not aligned to the road`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2), mapOf(
+            way(1L, listOf(1, 2), mapOf(
                 "highway" to "primary",
                 "width" to "18"
             )),
-            way(2L, listOf(3,4), mapOf(
+            way(2L, listOf(3, 4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = p(0.0,0.0)
+        val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(14.0, 135.0)
         val p4 = p3.translate(50.0, 75.0)
@@ -87,15 +107,15 @@ class AddCyclewayTest {
 
     @Test fun `applicable to road with cycleway that is far away enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2), mapOf(
+            way(1L, listOf(1, 2), mapOf(
                 "highway" to "primary",
                 "width" to "18"
             )),
-            way(2L, listOf(3,4), mapOf(
+            way(2L, listOf(3, 4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = p(0.0,0.0)
+        val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(16.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -108,15 +128,15 @@ class AddCyclewayTest {
 
     @Test fun `applicable to small road with cycleway that is far away enough`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            way(1L, listOf(1,2), mapOf(
+            way(1L, listOf(1, 2), mapOf(
                 "highway" to "primary",
                 "lanes" to "2"
             )),
-            way(2L, listOf(3,4), mapOf(
+            way(2L, listOf(3, 4), mapOf(
                 "highway" to "cycleway"
             ))
         ))
-        val p1 = p(0.0,0.0)
+        val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
         val p3 = p1.translate(10.0, 135.0)
         val p4 = p3.translate(50.0, 45.0)
@@ -129,7 +149,7 @@ class AddCyclewayTest {
 
     @Test fun `not applicable to road with cycleway=separate`() {
         for (cyclewayKey in listOf("cycleway", "cycleway:left", "cycleway:right", "cycleway:both")) {
-            val way = way(1L, listOf(1,2,3), mapOf(
+            val way = way(1L, listOf(1, 2, 3), mapOf(
                 "highway" to "primary",
                 cyclewayKey to "separate"
             ))
@@ -149,7 +169,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is not old enough`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "track"
         ), timestamp = Instant.now().toEpochMilli())
@@ -160,7 +180,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with cycleway that is old enough`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "track",
             "check_date:cycleway" to "2001-01-01"
@@ -172,7 +192,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "whatsthis",
             "check_date:cycleway" to "2001-01-01"
@@ -184,7 +204,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with cycleway that is tagged with an invalid value`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "yes",
         ))
@@ -195,7 +215,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is tagged with an unknown + invalid value`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway:left" to "yes",
             "cycleway:right" to "doorzone",
@@ -207,7 +227,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with ambiguous cycleway value`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "shared_lane",
         ))
@@ -218,7 +238,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with ambiguous + unknown cycleway value`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway:left" to "shared_lane",
             "cycleway:right" to "strange",
@@ -230,7 +250,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with ambiguous cycle lane not in Belgium`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "lane",
         ))
@@ -244,7 +264,7 @@ class AddCyclewayTest {
     }
 
     @Test fun `unspecified cycle lane is not ambiguous in Belgium`() {
-        val way = way(1L, listOf(1,2,3), mapOf(
+        val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "lane",
         ))
@@ -473,7 +493,7 @@ class AddCyclewayTest {
                 "cycleway:both:lane" to "exclusive"
             ),
             bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both", "lane","track"),
+            StringMapEntryModify("cycleway:both", "lane", "track"),
             StringMapEntryDelete("cycleway:both:lane", "exclusive")
         )
     }
@@ -485,7 +505,7 @@ class AddCyclewayTest {
                 "cycleway:both:lane" to "pictogram"
             ),
             bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both", "shared_lane","track"),
+            StringMapEntryModify("cycleway:both", "shared_lane", "track"),
             StringMapEntryDelete("cycleway:both:lane", "pictogram")
         )
     }
@@ -498,8 +518,8 @@ class AddCyclewayTest {
                 "cycleway:both:oneway" to "no"
             ),
             bothSidesAnswer(EXCLUSIVE_LANE),
-            StringMapEntryModify("cycleway:both","lane", "lane"),
-            StringMapEntryModify("cycleway:both:lane","exclusive", "exclusive"),
+            StringMapEntryModify("cycleway:both", "lane", "lane"),
+            StringMapEntryModify("cycleway:both:lane", "exclusive", "exclusive"),
             StringMapEntryDelete("cycleway:both:oneway", "no")
         )
     }
@@ -511,8 +531,8 @@ class AddCyclewayTest {
                 "cycleway:both:lane" to "pictogram"
             ),
             bothSidesAnswer(SUGGESTION_LANE),
-            StringMapEntryModify("cycleway:both", "shared_lane","shared_lane"),
-            StringMapEntryModify("cycleway:both:lane", "pictogram","advisory")
+            StringMapEntryModify("cycleway:both", "shared_lane", "shared_lane"),
+            StringMapEntryModify("cycleway:both:lane", "pictogram", "advisory")
         )
     }
 
@@ -523,7 +543,7 @@ class AddCyclewayTest {
                 "cycleway:both:oneway" to "no"
             ),
             bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both","track", "track"),
+            StringMapEntryModify("cycleway:both", "track", "track"),
             StringMapEntryDelete("cycleway:both:oneway", "no")
         )
     }
@@ -535,7 +555,7 @@ class AddCyclewayTest {
                 "cycleway:both:segregated" to "no"
             ),
             bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both","track", "track"),
+            StringMapEntryModify("cycleway:both", "track", "track"),
             StringMapEntryModify("cycleway:both:segregated", "no", "yes")
         )
     }
@@ -548,8 +568,8 @@ class AddCyclewayTest {
                 "cycleway:both:segregated" to "yes"
             ),
             bothSidesAnswer(SIDEWALK_EXPLICIT),
-            StringMapEntryModify("cycleway:both","track", "track"),
-            StringMapEntryModify("sidewalk","both", "both"),
+            StringMapEntryModify("cycleway:both", "track", "track"),
+            StringMapEntryModify("sidewalk", "both", "both"),
             StringMapEntryModify("cycleway:both:segregated", "yes", "no")
         )
     }
@@ -561,7 +581,7 @@ class AddCyclewayTest {
                 "cycleway:both:segregated" to "no"
             ),
             bothSidesAnswer(BUSWAY),
-            StringMapEntryModify("cycleway:both","track", "share_busway"),
+            StringMapEntryModify("cycleway:both", "track", "share_busway"),
             StringMapEntryDelete("cycleway:both:segregated", "no")
         )
     }
@@ -570,7 +590,7 @@ class AddCyclewayTest {
         questType.verifyAnswer(
             mapOf("cycleway:both" to "track"),
             bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both","track", "track"),
+            StringMapEntryModify("cycleway:both", "track", "track"),
             StringMapEntryAdd("check_date:cycleway", LocalDate.now().toCheckDateString())
         )
     }
@@ -579,7 +599,7 @@ class AddCyclewayTest {
         questType.verifyAnswer(
             mapOf("cycleway:both" to "track", "check_date:cycleway" to "2000-11-11"),
             bothSidesAnswer(TRACK),
-            StringMapEntryModify("cycleway:both","track", "track"),
+            StringMapEntryModify("cycleway:both", "track", "track"),
             StringMapEntryModify("check_date:cycleway", "2000-11-11", LocalDate.now().toCheckDateString())
         )
     }
@@ -592,7 +612,7 @@ class AddCyclewayTest {
                 "oneway:bicycle" to "no"
             ),
             bothSidesAnswer(NONE),
-            StringMapEntryModify("cycleway:both","no", "no"),
+            StringMapEntryModify("cycleway:both", "no", "no"),
             StringMapEntryDelete("oneway:bicycle", "no")
         )
     }

@@ -65,11 +65,6 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         Injector.applicationComponent.inject(this)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        editHistorySource.addListener(editHistoryListener)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -86,10 +81,11 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
             }
             binding.editHistoryList.adapter = adapter
         }
+        editHistorySource.addListener(editHistoryListener)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         editHistorySource.removeListener(editHistoryListener)
     }
 

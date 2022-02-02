@@ -2,11 +2,12 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class AddRailwayCrossingBarrierTest {
@@ -45,7 +46,7 @@ class AddRailwayCrossingBarrierTest {
     @Test fun `not applicable to crossing with private road`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = mapOf("railway" to "level_crossing")),
-            way(nodes = listOf(1,2,3), tags = mapOf(
+            way(nodes = listOf(1, 2, 3), tags = mapOf(
                 "highway" to "residential",
                 "access" to "private"
             ))

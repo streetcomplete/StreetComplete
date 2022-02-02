@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddPitchSurfaceTest {
@@ -40,10 +41,10 @@ class AddPitchSurfaceTest {
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
-        assertTrue(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
+        assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 
     private fun assertIsNotApplicable(vararg pairs: Pair<String, String>) {
-        assertFalse(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
+        assertFalse(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 }

@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -13,7 +14,7 @@ import javax.inject.Singleton
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val lastEditTimeStore: LastEditTimeStore
-): ElementEditsSource {
+) : ElementEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
@@ -87,7 +88,6 @@ import javax.inject.Singleton
     fun markSyncFailed(edit: ElementEdit) {
         delete(edit)
     }
-
 
     /* ----------------------- Undoable edits and undoing them -------------------------------- */
 

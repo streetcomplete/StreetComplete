@@ -3926,20 +3926,11 @@
                 "highway/crossing/marked": {
                     "name": "Merkitty suojatie"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Merkitty ja korotettu suojatie"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Merkitsemätön suojatie"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Merkitsemätön korotettu suojatie"
-                },
                 "highway/crossing/zebra": {
                     "name": "Merkitty suojatie"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Merkitty ja korotettu suojatie"
                 },
                 "highway/cycleway": {
                     "name": "Pyörätie"
@@ -3983,23 +3974,14 @@
                 "highway/footway/marked": {
                     "name": "Merkitty suojatie"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Merkitty ja korotettu suojatie"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Jalkakäytävä"
                 },
                 "highway/footway/unmarked": {
                     "name": "Merkitsemätön suojatie"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Merkitsemätön korotettu suojatie"
-                },
                 "highway/footway/zebra": {
                     "name": "Merkitty suojatie"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Merkitty ja korotettu suojatie"
                 },
                 "highway/give_way": {
                     "name": "Väistämisvelvollisuus",

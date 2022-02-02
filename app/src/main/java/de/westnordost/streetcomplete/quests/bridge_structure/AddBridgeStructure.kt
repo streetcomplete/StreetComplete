@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
 class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
@@ -18,7 +18,7 @@ class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
 
     override fun createForm() = AddBridgeStructureForm()
 
-    override fun applyAnswerTo(answer: BridgeStructure, changes: StringMapChangesBuilder) {
-        changes.add("bridge:structure", answer.osmValue)
+    override fun applyAnswerTo(answer: BridgeStructure, tags: Tags, timestampEdited: Long) {
+        tags["bridge:structure"] = answer.osmValue
     }
 }

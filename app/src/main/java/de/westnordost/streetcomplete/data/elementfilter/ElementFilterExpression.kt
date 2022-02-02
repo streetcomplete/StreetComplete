@@ -1,9 +1,23 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
-import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
-import de.westnordost.streetcomplete.data.elementfilter.filters.*
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
+import de.westnordost.streetcomplete.data.elementfilter.filters.CombineFilters
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareDateTagValue
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareElementAge
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagAge
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagValue
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import java.util.EnumSet
@@ -37,14 +51,14 @@ class ElementFilterExpression(
 enum class ElementsTypeFilter { NODES, WAYS, RELATIONS }
 
 private val BooleanExpression<ElementFilter, Element>.mayEvaluateToTrueWithNoTags: Boolean
-get() = when(this) {
-    is Leaf -> value.mayEvaluateToTrueWithNoTags
-    is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
-    is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
-    else -> throw IllegalStateException("Unexpected expression")
-}
+    get() = when (this) {
+        is Leaf -> value.mayEvaluateToTrueWithNoTags
+        is AnyOf -> children.any { it.mayEvaluateToTrueWithNoTags }
+        is AllOf -> children.all { it.mayEvaluateToTrueWithNoTags }
+        else -> throw IllegalStateException("Unexpected expression")
+    }
 
-private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when(this) {
+private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when (this) {
     is CompareElementAge,
     is CompareTagAge ->
         true

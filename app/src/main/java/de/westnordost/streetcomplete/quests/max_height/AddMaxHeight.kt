@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.util.intersects
@@ -61,12 +61,12 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isParkingEntrance = tags["amenity"] == "parking_entrance"
-        val isHeightRestrictor =  tags["barrier"] == "height_restrictor"
+        val isHeightRestrictor = tags["barrier"] == "height_restrictor"
         val isTunnel = tags["tunnel"] == "yes"
         val isBelowBridge =
-            !isParkingEntrance && !isHeightRestrictor &&
-            tags["tunnel"] == null && tags["covered"] == null &&
-            tags["man_made"] != "pipeline"
+            !isParkingEntrance && !isHeightRestrictor
+            && tags["tunnel"] == null && tags["covered"] == null
+            && tags["man_made"] != "pipeline"
 
         return when {
             isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title
@@ -106,7 +106,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
                 bridgeLayer > layer
                     // and with which it does not share any node (=connects) (#2555)
                     && !bridge.nodeIds.toSet().containsAny(way.nodeIds)
-                    //, it intersects
+                    // , it intersects
                     && bridgeGeometry != null && bridgeGeometry.intersects(geometry)
             }
         }
@@ -129,13 +129,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     override fun createForm() = AddMaxHeightForm()
 
-    override fun applyAnswerTo(answer: MaxHeightAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             is MaxHeight -> {
-                changes.add("maxheight", answer.value.toString())
+                tags["maxheight"] = answer.value.toString()
             }
             is NoMaxHeightSign -> {
-                changes.add("maxheight", if (answer.isTallEnough) "default" else "below_default")
+                tags["maxheight"] = if (answer.isTallEnough) "default" else "below_default"
             }
         }
     }

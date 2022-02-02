@@ -479,7 +479,18 @@
                     "label": "Bargeldannahme"
                 },
                 "castle_type": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "castrum": "Römisches Kastel",
+                        "defensive": "Burg",
+                        "fortress": "Festung",
+                        "hillfort": "Hügelfestung",
+                        "kremlin": "Kreml",
+                        "manor": "Herrenhaus",
+                        "palace": "Palast",
+                        "shiro": "Shiro",
+                        "stately": "Schloss"
+                    }
                 },
                 "changing_table": {
                     "label": "Wickeltisch"
@@ -615,6 +626,13 @@
                 },
                 "crossing/light": {
                     "label": "Warnlicht am Bahnübergang"
+                },
+                "crossing_raised": {
+                    "label": "Angehoben",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nein"
+                    }
                 },
                 "cuisine": {
                     "label": "Küche",
@@ -1707,9 +1725,11 @@
                         "carports": "Carports",
                         "garage_boxes": "Garagenboxen",
                         "lane": "Parkstreifen am Straßenrand",
+                        "layby": "Rastplatz",
                         "multi-storey": "Parkhaus",
                         "rooftop": "Dachfläche",
                         "sheds": "Schuppen",
+                        "street_side": "Straßenrand",
                         "surface": "Ebenerdig",
                         "underground": "Tiefgarage"
                     }
@@ -1949,7 +1969,20 @@
                     "terms": "echtes feuer,holzfeuer,kohlenfeuer,kamin"
                 },
                 "recycling_accepts": {
-                    "label": "Akzeptiert"
+                    "label": "Akzeptiert",
+                    "options": {
+                        "batteries": "Batterien",
+                        "cans": "Metalldosen",
+                        "cardboard": "Pappe",
+                        "clothes": "Kleidung",
+                        "glass": "Glas",
+                        "glass_bottles": "Glasflaschen",
+                        "green_waste": "Biomüll",
+                        "paper": "Papier",
+                        "plastic_packaging": "Plastikverpackungen",
+                        "scrap_metal": "Metallschrott",
+                        "shoes": "Schuhe"
+                    }
                 },
                 "recycling_type": {
                     "label": "Typ",
@@ -2088,7 +2121,7 @@
                     "terms": "toilettenabfall"
                 },
                 "screen": {
-                    "label": "Bildschirme",
+                    "label": "Leinwände",
                     "placeholder": "1, 4, 8…"
                 },
                 "scuba_diving": {
@@ -2659,6 +2692,17 @@
                         "tourism": "Touristische Nutzung"
                     },
                     "terms": "nutzungstyp"
+                },
+                "usage_waterway": {
+                    "label": "Verwendung",
+                    "options": {
+                        "headrace": "Triebwasserzuführung",
+                        "irrigation": "Bewässerungsgerinne",
+                        "spillway": "Entlastungswehr",
+                        "tailrace": "Unterwasserkanal",
+                        "transmission": "Übertragungsweg",
+                        "transportation": "Transport"
+                    }
                 },
                 "utility": {
                     "label": "Medium"
@@ -4875,31 +4919,16 @@
                     "name": "markierter / gekennzeichneter Übergang",
                     "terms": "zebrastreifen,gekennzeichneter übergang"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)",
-                    "terms": "zebrastreifen (erhöht),gekennzeichneter übergang (erhöht)"
-                },
                 "highway/crossing/signals": {
                     "name": "Kreuzung mit Fußgängerampel",
-                    "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Kreuzung mit Fußgängersignalen (erhöht)",
                     "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Nicht gekennzeichneter Übergang",
                     "terms": "nicht gekennzeichneter übergang,nicht markierte kreuzung,nicht gekennzeichnete kreuzung"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Nicht gekennzeichneter Fußgängerübergang (erhöht)",
-                    "terms": "nicht markierter fußgängerübergang (erhöht),nicht gekennzeichneter fußgängerübergang (erhöht),nicht gekennzeichneter übergang (erhöht)"
-                },
                 "highway/crossing/zebra": {
                     "name": "markierter / gekennzeichneter Übergang"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)"
                 },
                 "highway/cycleway": {
                     "name": "Radweg",
@@ -4955,27 +4984,20 @@
                     "name": "markierter / gekennzeichneter Übergang",
                     "terms": "zebrastreifen,markierter fußgängerübergang"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)",
-                    "terms": "zebrastreifen (erhöht),markierter fußgängerübergang (erhöht)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Bürgersteig/Gehsteig/Trottoir",
                     "terms": "gangsteig,gehsteig,bürgersteig,trottoir,gehweg,fußweg"
+                },
+                "highway/footway/signals": {
+                    "name": "Kreuzung mit Fußgängerampel",
+                    "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
                 },
                 "highway/footway/unmarked": {
                     "name": "Nicht gekennzeichneter Übergang",
                     "terms": "unbezeichneter übergang,unmarkierter übergang,ungekennzeichneter übergang"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Nicht gekennzeichneter Übergang (erhöht)",
-                    "terms": "nicht gekennzeichneter übergang (erhöht),nicht bezeichneter übergang (erhöht)"
-                },
                 "highway/footway/zebra": {
                     "name": "markierter / gekennzeichneter Übergang"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)"
                 },
                 "highway/give_way": {
                     "name": "Vorfahrt gewähren",
@@ -5473,6 +5495,10 @@
                     "name": "Einzelhandel",
                     "terms": "einzelhandelsgebiet,einzelhandelsfläche,geschäfte"
                 },
+                "landuse/salt_pond": {
+                    "name": "Salzverdunstungsteich",
+                    "terms": "salzverdunstungsteich,saline,siedesaline,meerwassersaline,verdunstung"
+                },
                 "landuse/vineyard": {
                     "name": "Weinberg",
                     "terms": "weinberg,weinanbau,wengert,wingert,weingarten"
@@ -5711,6 +5737,10 @@
                     "name": "Hockeyfeld",
                     "terms": "hockeyfeld,hockeyplatz"
                 },
+                "leisure/pitch/futsal": {
+                    "name": "Futsalplatz",
+                    "terms": "futsalfeld,futsal-spielfeld,kleinfeldfußball,futsal,hallenfußball"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "Hufeisenwurfplatz",
                     "terms": "pferde,hufeisen"
@@ -5899,8 +5929,7 @@
                     "terms": "kompass,ost,nord,windrose,süd,west"
                 },
                 "man_made/courtyard": {
-                    "name": "Innenhof",
-                    "terms": "innenhof,hof,open air,freier himmel,umbauter hof"
+                    "name": "Innenhof"
                 },
                 "man_made/crane": {
                     "name": "Kran",
@@ -6316,7 +6345,7 @@
                 },
                 "natural/water/basin": {
                     "name": "Rückhaltebecken",
-                    "terms": "rückhaltebecken,basin"
+                    "terms": "rückhaltebecken,basin,wasserbecken,becken,rrh,regenrückhaltebecken,wasserrückhaltebecken,versickerungsbecken,trockenbecken,sickerbecken"
                 },
                 "natural/water/canal": {
                     "name": "Kanalfläche",

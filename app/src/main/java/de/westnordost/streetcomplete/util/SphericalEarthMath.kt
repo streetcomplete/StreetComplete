@@ -9,7 +9,17 @@ import de.westnordost.streetcomplete.ktx.forEachLine
 import de.westnordost.streetcomplete.util.math.arcIntersection
 import de.westnordost.streetcomplete.util.math.toLatLon
 import de.westnordost.streetcomplete.util.math.toNormalOnSphere
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.acos
+import kotlin.math.asin
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.pow
+import kotlin.math.sign
+import kotlin.math.sin
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 /** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
  * approximation and totally sufficient for our use here.  */
@@ -87,7 +97,6 @@ fun LatLon.isRightOf(p0: LatLon, p1: LatLon, p2: LatLon): Boolean {
         isRightOf(p0, angle01) || isRightOf(p1, angle12)
     }
 }
-
 
 /** Returns the distance from this point to the other point */
 fun LatLon.distanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
@@ -183,8 +192,8 @@ fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
             if (intersection != null) {
                 // touching endpoints don't count
                 if (
-                    first != npolyline.first() && first != npolyline.last() &&
-                    second != npolyline.first() && second != npolyline.last()
+                    first != npolyline.first() && first != npolyline.last()
+                    && second != npolyline.first() && second != npolyline.last()
                 ) return true
             }
         }
@@ -253,7 +262,6 @@ fun List<LatLon>.centerLineOfPolyline(globeRadius: Double = EARTH_RADIUS): Pair<
     }
     throw RuntimeException()
 }
-
 
 /**
  * Returns the center point of this polyline
@@ -367,7 +375,6 @@ fun LatLon.isInPolygon(polygon: List<LatLon>): Boolean {
 private fun inside(v: Double, bound0: Double, bound1: Double): Boolean =
     if (bound0 < bound1) v in bound0..bound1 else v in bound1..bound0
 
-
 /**
  * Returns the area of a this multipolygon, assuming the outer shell is defined counterclockwise and
  * any holes are defined clockwise
@@ -442,9 +449,7 @@ fun List<LatLon>.isRingDefinedClockwise(): Boolean {
     return sum > 0
 }
 
-
 /* ------------------------------ Bounding Box extension functions  ----------------------------- */
-
 
 /** Returns the area enclosed by this bbox */
 fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
@@ -502,12 +507,11 @@ private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean
     max.longitude <= other.max.longitude &&
     max.latitude <= other.max.latitude
 
-
 private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
     canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
 ): Boolean {
-    return if(crosses180thMeridian) {
+    return if (crosses180thMeridian) {
         val these = splitAt180thMeridian()
         if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()
@@ -554,7 +558,6 @@ fun normalizeLongitude(lon: Double): Double {
     if (lon > 180) lon -= 360 // lon is now -180..180
     return lon
 }
-
 
 /* The following formulas have been adapted from this excellent source:
    http://www.movable-type.co.uk/scripts/latlong.html

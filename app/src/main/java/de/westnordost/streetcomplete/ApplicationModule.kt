@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.SoundFx
 import javax.inject.Singleton
 
-
 @Module class ApplicationModule(private val application: Application) {
 
     @Provides fun appContext(): Context = application

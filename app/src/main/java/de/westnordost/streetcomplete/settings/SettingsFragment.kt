@@ -29,15 +29,22 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.purge
+import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.setDefaultLocales
-import kotlinx.coroutines.*
-import java.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.Locale
 import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
+class SettingsFragment :
+    PreferenceFragmentCompat(),
+    HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
@@ -78,7 +85,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() }}
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             true
@@ -90,7 +97,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
                 .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
                     val hidden = questController.unhideAll()
                     context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                }}
+                } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 
@@ -143,7 +150,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        when(key) {
+        when (key) {
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     AlertDialog.Builder(requireContext())

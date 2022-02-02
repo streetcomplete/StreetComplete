@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.meta
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import java.time.DateTimeException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -39,11 +39,9 @@ fun String.toCheckDate(): LocalDate? {
 
 /** adds or modifies the given tag. If the updated tag is the same as before, sets the check date
  *  tag to today instead. */
-fun StringMapChangesBuilder.updateWithCheckDate(key: String, value: String) {
-    val previousValue = getPreviousValue(key)
-    if (previousValue != value) {
-        addOrModify(key, value)
-    }
+fun Tags.updateWithCheckDate(key: String, value: String) {
+    val previousValue = get(key)
+    set(key, value)
     /* if the value is changed, set the check date only if it has been set before. Behavior
     *  before v32.0 was to delete the check date. However, this destroys data that was
     *  previously collected by another surveyor - we don't want to destroy other people's data
@@ -55,46 +53,38 @@ fun StringMapChangesBuilder.updateWithCheckDate(key: String, value: String) {
 
 /** Set/update solely the check date to today for the given key, this also removes other less
  *  preferred check date keys. */
-fun StringMapChangesBuilder.updateCheckDateForKey(key: String) {
-    addOrModify("$SURVEY_MARK_KEY:$key", LocalDate.now().toCheckDateString())
-    // remove old check date keys (except the one we want to set)
-    getLastCheckDateKeys(key).forEach {
-        if (it != "$SURVEY_MARK_KEY:$key") deleteIfExists(it)
-    }
+fun Tags.updateCheckDateForKey(key: String) {
+    setCheckDateForKey(key, LocalDate.now())
+}
+
+fun Tags.setCheckDateForKey(key: String, date: LocalDate) {
+    removeCheckDatesForKey(key)
+    set("$SURVEY_MARK_KEY:$key", date.toCheckDateString())
 }
 
 /** Return whether a check date is set for the given key */
-fun StringMapChangesBuilder.hasCheckDateForKey(key: String): Boolean =
-    getLastCheckDateKeys(key).any { getPreviousValue(it) != null }
+fun Tags.hasCheckDateForKey(key: String): Boolean =
+    getLastCheckDateKeys(key).any { get(it) != null }
 
 /** Delete any check date keys for the given key */
-fun StringMapChangesBuilder.deleteCheckDatesForKey(key: String) {
-    getLastCheckDateKeys(key).forEach { deleteIfExists(it) }
+fun Tags.removeCheckDatesForKey(key: String) {
+    getLastCheckDateKeys(key).forEach { remove(it) }
 }
 
 /** Set/update solely the check date for the entire item to today, this also removes other less
  *  preferred check date keys for the entire item. */
-fun StringMapChangesBuilder.updateCheckDate() {
-    addOrModify(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
-    deleteOtherCheckDates()
-}
-
-/** Delete solely the other check date for the entire item, don't touch SURVEY_MARK_KEY */
-fun StringMapChangesBuilder.deleteOtherCheckDates() {
-    // remove old check dates (except the one we want to set)
-    LAST_CHECK_DATE_KEYS.forEach {
-        if (it != SURVEY_MARK_KEY) deleteIfExists(it)
-    }
+fun Tags.updateCheckDate() {
+    removeCheckDates()
+    set(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
 }
 
 /** Return whether any check dates are set */
-fun StringMapChangesBuilder.hasCheckDate(): Boolean =
-    LAST_CHECK_DATE_KEYS.any { getPreviousValue(it) != null }
+fun Tags.hasCheckDate(): Boolean =
+    LAST_CHECK_DATE_KEYS.any { get(it) != null }
 
 /** Delete any check date for the entire item */
-fun StringMapChangesBuilder.deleteCheckDates() {
-    deleteIfExists(SURVEY_MARK_KEY)
-    deleteOtherCheckDates()
+fun Tags.removeCheckDates() {
+    LAST_CHECK_DATE_KEYS.forEach { remove(it) }
 }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given

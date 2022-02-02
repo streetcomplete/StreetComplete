@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.res.Resources
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
@@ -18,7 +17,11 @@ import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Shows the full changelog */
 class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
@@ -41,8 +44,8 @@ class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 }
 
 /** A dialog that shows the changelog */
-class WhatsNewDialog(context: Context, sinceVersion: String)
-    : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+class WhatsNewDialog(context: Context, sinceVersion: String) :
+    AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
@@ -73,7 +76,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
 
 class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelog) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder  =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(RowChangelogBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     inner class ViewHolder(val binding: RowChangelogBinding) : ListAdapter.ViewHolder<Release>(binding) {

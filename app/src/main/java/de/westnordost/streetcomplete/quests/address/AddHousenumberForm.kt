@@ -2,14 +2,12 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.text.InputType
 import android.text.method.DigitsKeyListener
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
@@ -72,7 +70,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isFormComplete() = when(interfaceMode) {
+    override fun isFormComplete() = when (interfaceMode) {
         InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
         InterfaceMode.HOUSENAME -> createAnswer() != null
         InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonEmptyInput != null && houseNumberInput?.nonEmptyInput != null
@@ -246,9 +244,9 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private fun updateKeyboardButtonVisibility() {
         toggleKeyboardButton?.isInvisible = !(
-            houseNumberInput?.hasFocus() == true ||
-            streetNumberInput?.hasFocus() == true ||
-            blockNumberInput?.hasFocus() == true
+            houseNumberInput?.hasFocus() == true
+            || streetNumberInput?.hasFocus() == true
+            || blockNumberInput?.hasFocus() == true
         )
     }
 
@@ -292,9 +290,9 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private val EditText.nonEmptyInput:String? get() {
+    private val EditText.nonEmptyInput: String? get() {
         val input = text.toString().trim()
-        return if(input.isNotEmpty()) input else null
+        return if (input.isNotEmpty()) input else null
     }
 
     companion object {
@@ -304,13 +302,13 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 }
 
-private val HousenumberAnswer.isRealHouseNumberAnswer: Boolean get() = when(this) {
+private val HousenumberAnswer.isRealHouseNumberAnswer: Boolean get() = when (this) {
     is HouseNumber -> true
     is HouseAndBlockNumber -> true
     else -> false
 }
 
-private val HousenumberAnswer.realHouseNumber: String? get() = when(this) {
+private val HousenumberAnswer.realHouseNumber: String? get() = when (this) {
     is HouseNumber -> number
     is HouseAndBlockNumber -> houseNumber
     else -> null
@@ -320,7 +318,7 @@ private fun String.addToHouseNumber(add: Int): String? {
     val parsed = parseHouseNumber(this) ?: return null
     when {
         add == 0 -> return this
-        add > 0  -> {
+        add > 0 -> {
             val max = when (val it = parsed.list.maxOrNull()) {
                 is HouseNumbersPartsRange -> maxOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single
@@ -328,7 +326,7 @@ private fun String.addToHouseNumber(add: Int): String? {
             }
             return (max.number + add).toString()
         }
-        add < 0  -> {
+        add < 0 -> {
             val min = when (val it = parsed.list.minOrNull()) {
                 is HouseNumbersPartsRange -> minOf(it.start, it.end)
                 is SingleHouseNumbersPart -> it.single

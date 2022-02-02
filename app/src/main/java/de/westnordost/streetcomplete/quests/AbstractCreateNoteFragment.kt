@@ -2,12 +2,11 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.res.Configuration
 import android.os.Bundle
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import android.view.View
 import android.widget.EditText
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut

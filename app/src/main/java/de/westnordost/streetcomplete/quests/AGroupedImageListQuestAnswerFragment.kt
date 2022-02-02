@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.postDelayed
 import androidx.preference.PreferenceManager
-
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
@@ -20,7 +19,7 @@ import kotlin.math.max
  *
  * Saving and restoring state is not implemented
  */
-abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AGroupedImageListQuestAnswerFragment<I, T> : AbstractQuestFormAnswerFragment<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
@@ -108,9 +107,9 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         if (itemValue == null) {
             context?.let {
                 AlertDialog.Builder(it)
-                .setMessage(R.string.quest_generic_item_invalid_value)
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
+                    .setMessage(R.string.quest_generic_item_invalid_value)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show()
             }
         } else {
             if (item.isGroup) {
@@ -124,8 +123,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
                         }
                         .show()
                 }
-            }
-            else {
+            } else {
                 favs.add(item)
                 onClickOk(itemValue)
             }

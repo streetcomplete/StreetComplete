@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.annotation.SuppressLint
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
@@ -9,8 +13,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.download.*
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.DownloadProgressListener
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
+import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
+import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -19,7 +27,11 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.location.FineLocationManager
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -205,5 +217,4 @@ import javax.inject.Singleton
     companion object {
         private const val TAG = "QuestAutoSyncer"
     }
-
 }

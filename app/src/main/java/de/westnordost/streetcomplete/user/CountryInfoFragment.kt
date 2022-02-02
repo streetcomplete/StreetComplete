@@ -36,8 +36,8 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         counterAnimation?.cancel()
         counterAnimation = null
         circularRevealAnimator?.cancel()
@@ -47,7 +47,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
     /* ---------------------------------------- Interface --------------------------------------- */
 
     fun show(countryCode: String, questCount: Int, rank: Int?, countryFlagBubbleView: View) {
-        if(!show(countryFlagBubbleView)) return
+        if (!show(countryFlagBubbleView)) return
         circularRevealAnimator?.cancel()
         val revealAnim = createCircularRevealAnimator()
         revealAnim.start()
@@ -80,7 +80,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         val countryLocale = Locale("", countryCode)
 
         binding.solvedQuestsText.text = ""
-        val scale = (0.4 + min( questCount / 100.0, 1.0)*0.6).toFloat()
+        val scale = (0.4 + min(questCount / 100.0, 1.0) * 0.6).toFloat()
         binding.solvedQuestsContainer.visibility = View.INVISIBLE
         binding.solvedQuestsContainer.scaleX = scale
         binding.solvedQuestsContainer.scaleY = scale

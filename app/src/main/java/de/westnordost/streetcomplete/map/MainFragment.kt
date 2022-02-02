@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.map
 
 import android.annotation.SuppressLint
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Point
 import android.graphics.PointF
@@ -30,7 +34,11 @@ import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import de.westnordost.streetcomplete.*
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.HandlesOnBackPressed
+import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -39,28 +47,63 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
+import de.westnordost.streetcomplete.ktx.getLevelsOrNull
+import de.westnordost.streetcomplete.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.ktx.hasLocationPermission
+import de.westnordost.streetcomplete.ktx.hideKeyboard
+import de.westnordost.streetcomplete.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.ktx.setMargins
+import de.westnordost.streetcomplete.ktx.toLatLon
+import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.location.LocationRequester
 import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
+import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.levelsIntersect
-import de.westnordost.streetcomplete.quests.*
-import de.westnordost.streetcomplete.util.*
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.CreateNoteFragment
+import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.quests.IsLockable
+import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
+import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
+import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
+import de.westnordost.streetcomplete.quests.SplitWayFragment
+import de.westnordost.streetcomplete.util.SoundFx
+import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.asBoundingBoxOfEnclosingTiles
+import de.westnordost.streetcomplete.util.buildGeoUri
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.initialBearingTo
 import de.westnordost.streetcomplete.view.dialogs.RequestPermissionUpgradeDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
 import kotlin.random.Random
 
 /** Contains the quests map and the controls for it.
@@ -69,7 +112,8 @@ import kotlin.random.Random
  *  place where all the logic when interacting with the map / bottom sheets / sidebars etc. comes
  *  together, hence it implements all the listeners to communicate with its child fragments.
  *  */
-class MainFragment : Fragment(R.layout.fragment_main),
+class MainFragment :
+    Fragment(R.layout.fragment_main),
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
     QuestsMapFragment.Listener,
@@ -243,7 +287,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        binding.gpsTrackingButton.isActivated =  mapFragment?.isFollowingPosition ?: false
+        binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         updateLocationPointerPin()
         listener?.onMapInitialized()
@@ -311,7 +355,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters)) {
                 f.onClickClose { closeBottomSheet() }
             }
-        } else if(editHistoryFragment != null) {
+        } else if (editHistoryFragment != null) {
             closeEditHistorySidebar()
         }
     }
@@ -669,7 +713,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val popupMenu = PopupMenu(requireContext(), binding.contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
         popupMenu.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
                 R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
@@ -718,7 +762,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         // Check that the user has required permission to record a track
         val hasUploadPermission = prefs.getBoolean(Prefs.OSM_HAS_UPLOAD_TRACES_PERMISSION, false)
-        if(!hasUploadPermission) {
+        if (!hasUploadPermission) {
             RequestPermissionUpgradeDialog(requireContext()).show()
             return
         }
@@ -838,7 +882,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
         val args = AbstractQuestAnswerFragment.createArguments(quest, element, rotation, tilt)
-        if(f.arguments != null) {
+        if (f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
             f.arguments = args
@@ -957,7 +1001,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         root.addView(img)
 
         val answerTarget = view.findViewById<View>(
-            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment)
+            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment
+        )
         flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
     }
 

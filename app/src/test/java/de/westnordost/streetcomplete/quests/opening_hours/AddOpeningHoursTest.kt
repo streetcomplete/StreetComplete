@@ -4,7 +4,6 @@ import ch.poole.openinghoursparser.Rule
 import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
-import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -13,11 +12,11 @@ import de.westnordost.streetcomplete.ktx.toEpochMilli
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
-
 
 class AddOpeningHoursTest {
 
@@ -42,6 +41,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "\"oh\""),
             DescribeOpeningHours("oh"),
+            StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
@@ -80,10 +80,10 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "24/7"),
             AlwaysOpen,
+            StringMapEntryModify("opening_hours", "24/7", "24/7"),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
-
 
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(
@@ -93,8 +93,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 },
                 Rule().apply {
@@ -102,8 +102,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.TU
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*12
-                        it.end = 60*24
+                        it.start = 60 * 12
+                        it.end = 60 * 24
                     })
                 })
             )),
@@ -120,12 +120,12 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 })
             )),
-            StringMapEntryModify("opening_hours", "hohoho","Mo 10:00-12:00")
+            StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")
         )
     }
 
@@ -138,11 +138,12 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 })
             )),
+            StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }

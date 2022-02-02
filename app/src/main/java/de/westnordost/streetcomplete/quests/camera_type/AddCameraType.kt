@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.camera_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-
 
 class AddCameraType : OsmFilterQuestType<CameraType>() {
 
@@ -30,7 +29,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
 
     override fun createForm() = AddCameraTypeForm()
 
-    override fun applyAnswerTo(answer: CameraType, changes: StringMapChangesBuilder) {
-        changes.add("camera:type", answer.osmValue)
+    override fun applyAnswerTo(answer: CameraType, tags: Tags, timestampEdited: Long) {
+        tags["camera:type"] = answer.osmValue
     }
 }

@@ -101,7 +101,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
                     val ease = pointEaseType
                     if (duration != null && ease != null) {
                         value.setPointEased(it, duration, ease)
-                    }  else {
+                    } else {
                         value.setPoint(it)
                     }
                 }

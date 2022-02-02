@@ -1,12 +1,12 @@
+import com.beust.klaxon.JsonArray
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Parser
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.net.URL
-import com.beust.klaxon.Parser
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.JsonArray
 import java.io.StringWriter
+import java.net.URL
 
 /** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures library */
 open class UpdatePresetsTask : DefaultTask() {
@@ -33,7 +33,7 @@ open class UpdatePresetsTask : DefaultTask() {
 
             val presetsLocalization = fetchPresetsLocalizations(localizationMetadata)
             val javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
-            File("$targetDir/${javaLanguage}.json").writeText(presetsLocalization)
+            File("$targetDir/$javaLanguage.json").writeText(presetsLocalization)
         }
     }
 

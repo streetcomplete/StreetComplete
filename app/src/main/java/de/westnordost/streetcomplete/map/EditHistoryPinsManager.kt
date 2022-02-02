@@ -4,7 +4,14 @@ import android.content.res.Resources
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.streetcomplete.data.edithistory.*
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
+import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
+import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.OsmQuestHiddenKey
+import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -14,13 +21,19 @@ import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.map.components.Pin
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class EditHistoryPinsManager(
     private val pinsMapComponent: PinsMapComponent,
     private val editHistorySource: EditHistorySource,
     private val resources: Resources
-): LifecycleObserver {
+) : LifecycleObserver {
 
     /** Switch active-ness of edit history pins layer */
     var isActive: Boolean = false
@@ -91,8 +104,7 @@ private const val EDIT_TYPE_NOTE = "note"
 private const val EDIT_TYPE_HIDE_OSM_NOTE_QUEST = "hide_osm_note_quest"
 private const val EDIT_TYPE_HIDE_OSM_QUEST = "hide_osm_quest"
 
-
-private fun Edit.toProperties(): Map<String, String> = when(this) {
+private fun Edit.toProperties(): Map<String, String> = when (this) {
     is ElementEdit -> mapOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_ELEMENT,
         MARKER_ID to id.toString()
@@ -114,7 +126,7 @@ private fun Edit.toProperties(): Map<String, String> = when(this) {
     else -> throw IllegalArgumentException()
 }
 
-private fun Map<String, String>.toEditKey(): EditKey? = when(get(MARKER_EDIT_TYPE)) {
+private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TYPE)) {
     EDIT_TYPE_ELEMENT ->
         ElementEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_NOTE ->

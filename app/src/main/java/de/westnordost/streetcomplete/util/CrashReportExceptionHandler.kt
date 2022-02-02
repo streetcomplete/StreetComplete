@@ -56,12 +56,12 @@ import javax.inject.Singleton
 
     private fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, error: String?) {
         val report = """
-Describe how to reproduce it here:
+        Describe how to reproduce it here:
 
 
 
-$error
-"""
+        $error
+        """.trimIndent()
 
         AlertDialog.Builder(activityCtx)
             .setTitle(titleResourceId)
@@ -80,14 +80,13 @@ $error
         val stackTrace = StringWriter()
         e.printStackTrace(PrintWriter(stackTrace))
         writeCrashReportToFile("""
-Thread: ${t.name}
-App version: ${BuildConfig.VERSION_NAME}
-Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
-Locale: ${Locale.getDefault()}
-Stack trace:
-$stackTrace
-"""
-        )
+        Thread: ${t.name}
+        App version: ${BuildConfig.VERSION_NAME}
+        Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
+        Locale: ${Locale.getDefault()}
+        Stack trace:
+        $stackTrace
+        """.trimIndent())
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
     }
 
@@ -111,5 +110,4 @@ $stackTrace
     private fun deleteCrashReport() {
         appCtx.deleteFile(crashReportFile)
     }
-
 }

@@ -12,5 +12,6 @@ object QuestTypeStatisticsTable {
         CREATE TABLE $NAME (
             ${Columns.QUEST_TYPE} varchar(255) PRIMARY KEY,
             ${Columns.SUCCEEDED} int NOT NULL
-        );"""
+        );
+    """
 }

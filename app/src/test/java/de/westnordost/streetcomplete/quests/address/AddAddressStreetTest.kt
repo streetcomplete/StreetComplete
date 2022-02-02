@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class AddAddressStreetTest {
@@ -44,7 +45,7 @@ class AddAddressStreetTest {
 
     @Test fun `applicable to place in interpolation without street name`() {
         val addr = node(tags = mapOf("addr:housenumber" to "123"))
-        val addrInterpolation = way(nodes = listOf(1,2,3), tags = mapOf(
+        val addrInterpolation = way(nodes = listOf(1, 2, 3), tags = mapOf(
             "addr:interpolation" to "whatever",
         ))
         val mapData = TestMapDataWithGeometry(listOf(addr, addrInterpolation))
@@ -54,7 +55,7 @@ class AddAddressStreetTest {
 
     @Test fun `not applicable to place in interpolation with street name`() {
         val addr = node(tags = mapOf("addr:housenumber" to "123"))
-        val addrInterpolation = way(nodes = listOf(1,2,3), tags = mapOf(
+        val addrInterpolation = way(nodes = listOf(1, 2, 3), tags = mapOf(
             "addr:interpolation" to "whatever",
             "addr:street" to "Street Name"
         ))

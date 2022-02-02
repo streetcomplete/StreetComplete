@@ -4,7 +4,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import kotlinx.serialization.Serializable
 import java.lang.System.currentTimeMillis
@@ -15,7 +18,7 @@ import java.lang.System.currentTimeMillis
 object RevertDeletePoiNodeAction : ElementEditAction, IsRevertAction {
 
     /** No "new" elements are created, instead, an old one is being revived */
-    override val newElementsCount get() = NewElementsCount(0,0,0)
+    override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
         originalElement: Element,

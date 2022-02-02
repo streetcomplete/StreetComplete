@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Banco de Bogotá, Banco Popular, Colpatria, Grupo Aval, Servibanca S.A., Banco Caja Social, Citibank, Av Villas, Banco Agrario, AV Villas, bancolombia, Caja Social, servibanca, Bacolombia, BanColombia, ServiBanca, Grupo AVAL, Banco Agrario de Colombia, Banco Colombia, Cajero Bancolombia, BANCOLOMBIA, banco de bogota, banco popular, Scotiabank, davivienda, A Toda Hora (ATH) S.A., cajero Bancolombia, cajero BBVA, Banco Pichincha, ath, cespo, BancoBogota, Banco de Occidente, Casa Kennedy, Cajero, polv, VIA baloto, COOMULDESA, Banco AV Villas, CAJERO BANCO POPULAR, DAVIVIENDA]
+atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Banco de Bogotá, Banco Popular, Colpatria, Grupo Aval, Servibanca S.A., Banco Caja Social, Citibank, Av Villas, Banco Agrario, Caja Social, Bacolombia, Banco Agrario de Colombia, Banco Colombia, Cajero Bancolombia, Scotiabank, A Toda Hora (ATH) S.A., cajero BBVA, Banco Pichincha, cespo, BancoBogota, Banco de Occidente, Casa Kennedy, Cajero, polv, VIA baloto, COOMULDESA, Banco AV Villas, CAJERO BANCO POPULAR]
 centerLineStyle: yellow
 chargingStationOperators: [Codensa, parqueadero, Terpel, Mobil]
 mobileCountryCode: 732

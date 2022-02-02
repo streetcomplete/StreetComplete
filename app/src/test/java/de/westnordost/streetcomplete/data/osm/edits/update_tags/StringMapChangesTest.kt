@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-import org.junit.Assert.*
-import org.mockito.Mockito.*
+import org.mockito.Mockito.atLeastOnce
+import org.mockito.Mockito.verify
 
 class StringMapChangesTest {
 
@@ -90,9 +92,9 @@ class StringMapChangesTest {
     @Test fun equals() {
         val a: StringMapEntryChange = mock()
         val b: StringMapEntryChange = mock()
-        val one = StringMapChanges(listOf(a,b))
-        val anotherOne = StringMapChanges(listOf(a,b))
-        val two = StringMapChanges(listOf(b,a))
+        val one = StringMapChanges(listOf(a, b))
+        val anotherOne = StringMapChanges(listOf(a, b))
+        val two = StringMapChanges(listOf(b, a))
 
         assertEquals(one, anotherOne)
         // but the order does not matter

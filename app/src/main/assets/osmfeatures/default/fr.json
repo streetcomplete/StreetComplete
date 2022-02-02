@@ -479,7 +479,18 @@
                     "label": "Dépôt"
                 },
                 "castle_type": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "castrum": "Camp fortifié romain",
+                        "defensive": "Château défensif",
+                        "fortress": "Forteresse",
+                        "hillfort": "Colline fortifiée",
+                        "kremlin": "Fortification russe",
+                        "manor": "Manoir",
+                        "palace": "Palais",
+                        "shiro": "Forteresse japonaise",
+                        "stately": "Résidence officielle"
+                    }
                 },
                 "changing_table": {
                     "label": "Table à langer"
@@ -1707,9 +1718,11 @@
                         "carports": "Auvent",
                         "garage_boxes": "Box",
                         "lane": "Bordure de voie",
+                        "layby": "Bas-côté",
                         "multi-storey": "Sur plusieurs niveaux",
                         "rooftop": "Toiture",
                         "sheds": "Abri privé",
+                        "street_side": "Stationnement de rue",
                         "surface": "En surface",
                         "underground": "Souterrain"
                     }
@@ -1949,7 +1962,20 @@
                     "terms": "vrai,véritable,authentique,feu,âtre,cheminée,poêle"
                 },
                 "recycling_accepts": {
-                    "label": "Accepte"
+                    "label": "Accepte",
+                    "options": {
+                        "batteries": "Piles",
+                        "cans": "Canettes",
+                        "cardboard": "Cartons",
+                        "clothes": "Vêtements",
+                        "glass": "Verre",
+                        "glass_bottles": "Bouteilles en verre",
+                        "green_waste": "Déchets verts",
+                        "paper": "Papiers",
+                        "plastic_packaging": "Emballages plastiques",
+                        "scrap_metal": "Ferraille",
+                        "shoes": "Chaussures"
+                    }
                 },
                 "recycling_type": {
                     "label": "Type",
@@ -2659,6 +2685,17 @@
                         "tourism": "Touristique"
                     },
                     "terms": "utilisation,type"
+                },
+                "usage_waterway": {
+                    "label": "Utilisation",
+                    "options": {
+                        "headrace": "Canal d'amenée",
+                        "irrigation": "Canal d'irrigation",
+                        "spillway": "Déversoir",
+                        "tailrace": "Canal de fuite",
+                        "transmission": "Réseau principal",
+                        "transportation": "Transport fluvial"
+                    }
                 },
                 "utility": {
                     "label": "Utilitaire"
@@ -4871,31 +4908,16 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Passage piéton marqué (surélevé)",
-                    "terms": "zebra,marquage,passage piéton"
-                },
                 "highway/crossing/signals": {
                     "name": "Feux piétons",
                     "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Plateau surélevé avec feux piétons",
-                    "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons,plateau,surélevé,traversant,ralentisseur,coussin,dos d'âne"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Passage piéton non marqué",
                     "terms": "passage piéton non marqué"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Passage piéton non marqué (surélevé)",
-                    "terms": "passage piéton non marqué (surélevé)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Passage piéton marqué"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Passage piéton marqué (surélevé)"
                 },
                 "highway/cycleway": {
                     "name": "Voie cyclable",
@@ -4951,10 +4973,6 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Passage piéton marqué (surélevé)",
-                    "terms": "zebra,marquage,passage piéton"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoir",
                     "terms": "trottoir"
@@ -4963,15 +4981,8 @@
                     "name": "Passage piéton non marqué",
                     "terms": "passage piéton non marqué"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Passage piéton non marqué (surélevé)",
-                    "terms": "passage piéton non marqué (surélevé)"
-                },
                 "highway/footway/zebra": {
                     "name": "Passage piéton marqué"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Passage piéton marqué (surélevé)"
                 },
                 "highway/give_way": {
                     "name": "Cédez-le-passage",
@@ -5469,6 +5480,10 @@
                     "name": "Zone commerciale",
                     "terms": "zone de magasins"
                 },
+                "landuse/salt_pond": {
+                    "name": "Marais salants",
+                    "terms": "marais salants,salins,salines,saliculture,saunerie"
+                },
                 "landuse/vineyard": {
                     "name": "Vigne",
                     "terms": "vignes"
@@ -5895,8 +5910,7 @@
                     "terms": "rose des vents"
                 },
                 "man_made/courtyard": {
-                    "name": "Cour intérieure",
-                    "terms": "cour intérieure,patio,préau,courette"
+                    "name": "Cour intérieure"
                 },
                 "man_made/crane": {
                     "name": "Grue",

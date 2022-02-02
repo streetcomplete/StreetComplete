@@ -1,6 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

@@ -78,7 +78,8 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
             flat: false,
             collide: false,
             offset: ['0px', '-38px']
-        }""".trimIndent())
+        }
+        """.trimIndent())
         it.setDrawable(selectionDrawable)
         it.isVisible = true
         it.setPoint(pos)

@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete
 
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Point
 import android.location.LocationManager
@@ -23,22 +27,24 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Injector.applicationComponent
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.notifications.Notification
-import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.hasLocationPermission
+import de.westnordost.streetcomplete.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.location.LocationRequester
 import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
 import de.westnordost.streetcomplete.map.MainFragment
@@ -50,8 +56,11 @@ import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(),
-    MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
+class MainActivity :
+    BaseActivity(),
+    MainFragment.Listener,
+    TutorialFragment.Listener,
+    NotificationButtonFragment.Listener {
 
     @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
     @Inject lateinit var questAutoSyncer: QuestAutoSyncer
@@ -115,7 +124,7 @@ class MainActivity : BaseActivity(),
         val data = intent.data ?: return
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
-        val zoom = if (geo.zoom == null || geo.zoom < 14)  18f else geo.zoom
+        val zoom = if (geo.zoom == null || geo.zoom < 14) 18f else geo.zoom
         val pos = LatLon(geo.latitude, geo.longitude)
         mainFragment?.setCameraPosition(pos, zoom)
     }
@@ -255,7 +264,7 @@ class MainActivity : BaseActivity(),
                 // it, so it does not make sense to send an error report. Just notify the user.
                 if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
-                }  else if (e is AuthorizationException) {
+                } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
                     userLoginStatusController.logOut()
                 } else {

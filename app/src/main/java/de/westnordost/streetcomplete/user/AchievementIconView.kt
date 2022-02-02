@@ -17,7 +17,7 @@ class AchievementIconView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ConstraintLayout(context, attrs, defStyleAttr)  {
+) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private val binding = ViewAchievementIconBinding.inflate(LayoutInflater.from(context), this)
 
@@ -39,31 +39,31 @@ class AchievementIconView @JvmOverloads constructor(
 
 object AchievementFrameOutlineProvider : ViewOutlineProvider() {
     private val points = arrayOf(
-        0.45,0.98,
-        0.47,0.99,
-        0.50,1.00,
-        0.53,0.99,
-        0.55,0.98,
+        0.45, 0.98,
+        0.47, 0.99,
+        0.50, 1.00,
+        0.53, 0.99,
+        0.55, 0.98,
 
-        0.98,0.55,
-        0.99,0.53,
-        1.00,0.50,
-        0.99,0.47,
-        0.98,0.45,
+        0.98, 0.55,
+        0.99, 0.53,
+        1.00, 0.50,
+        0.99, 0.47,
+        0.98, 0.45,
 
-        0.55,0.02,
-        0.53,0.01,
-        0.50,0.00,
-        0.47,0.01,
-        0.45,0.02,
+        0.55, 0.02,
+        0.53, 0.01,
+        0.50, 0.00,
+        0.47, 0.01,
+        0.45, 0.02,
 
-        0.02,0.45,
-        0.01,0.47,
-        0.00,0.50,
-        0.01,0.53,
-        0.02,0.55,
+        0.02, 0.45,
+        0.01, 0.47,
+        0.00, 0.50,
+        0.01, 0.53,
+        0.02, 0.55,
 
-        0.45,0.98
+        0.45, 0.98
     )
 
     override fun getOutline(view: View, outline: Outline) {
@@ -74,7 +74,7 @@ object AchievementFrameOutlineProvider : ViewOutlineProvider() {
         val p = Path()
         p.moveTo((points[0] * w).toFloat(), (points[1] * h).toFloat())
         for (i in 2 until points.size step 2) {
-            p.lineTo((points[i] * w).toFloat(), (points[i+1] * h).toFloat())
+            p.lineTo((points[i] * w).toFloat(), (points[i + 1] * h).toFloat())
         }
         outline.setConvexPath(p)
     }

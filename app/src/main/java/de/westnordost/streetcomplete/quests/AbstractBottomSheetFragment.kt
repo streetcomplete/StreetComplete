@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
@@ -8,7 +7,9 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.*
+import androidx.core.view.isInvisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED

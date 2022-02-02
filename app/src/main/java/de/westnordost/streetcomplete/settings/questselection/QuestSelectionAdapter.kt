@@ -2,43 +2,52 @@ package de.westnordost.streetcomplete.settings.questselection
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import java.util.concurrent.FutureTask
-import javax.inject.Inject
-import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.R
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
+import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.data.visiblequests.*
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
-import kotlinx.coroutines.*
-import java.util.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.Collections
+import java.util.Locale
+import java.util.concurrent.FutureTask
 
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
-class QuestSelectionAdapter (
+class QuestSelectionAdapter(
     private val context: Context,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
@@ -54,19 +63,19 @@ class QuestSelectionAdapter (
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
-    var filter: String = ""
-    set(value) {
-        val n = value.trim()
-        if (n != field) {
-            field = n
+        set(value) {
+            field = value
             notifyDataSetChanged()
         }
-    }
+
+    var filter: String = ""
+        set(value) {
+            val n = value.trim()
+            if (n != field) {
+                field = n
+                notifyDataSetChanged()
+            }
+        }
 
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {
@@ -244,7 +253,7 @@ class QuestSelectionAdapter (
         private val isEnabledInCurrentCountry: Boolean
             get() {
                 (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    return when(val countries = questType.enabledInCountries) {
+                    return when (val countries = questType.enabledInCountries) {
                         is AllCountries -> true
                         is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
                         is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
@@ -276,7 +285,7 @@ class QuestSelectionAdapter (
             binding.disabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                binding.disabledText.text =  binding.disabledText.resources.getString(
+                binding.disabledText.text = binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
             }

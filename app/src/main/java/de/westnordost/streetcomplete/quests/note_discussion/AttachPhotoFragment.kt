@@ -14,8 +14,8 @@ import androidx.core.content.FileProvider
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXHEIGHT
+import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
@@ -137,7 +137,7 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
         val directory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
         val file = File(directory, imageFileName)
-        if(!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
+        if (!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
         return file
     }
 

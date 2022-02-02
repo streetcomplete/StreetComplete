@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
@@ -46,13 +46,13 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             is SurfaceAnswer -> {
-                answer.applyTo(changes, "surface")
+                answer.applyTo(tags, "surface")
             }
             is IsActuallyStepsAnswer -> {
-                changes.modify("highway", "steps")
+                tags["highway"] = "steps"
             }
         }
     }

@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.text.InputFilter
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -75,7 +77,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
 
-            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
+            if (input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
         })
         meterInput?.allowOnlyNumbers()
         switchLayout(unit)
@@ -111,7 +113,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     }
 
     private fun getHeightFromInput(): Height? {
-        when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
+        when (heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
             METER -> {
                 return meterInput?.numberOrNull?.let { Meters(it) }
             }
@@ -130,7 +132,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ -> applyAnswer(NoMaxHeightSign(true)) }
             .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }

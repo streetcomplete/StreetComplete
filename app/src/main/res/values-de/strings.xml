@@ -998,7 +998,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
     <string name="synced">"Synchronisiert"</string>
     <string name="toast_undo_unavailable">"Diese Bearbeitung wurde bereits synchronisiert und kann nicht rückgängig gemacht werden"</string>
-    <string name="quest_cycleway_value_separate">"auf Karte separat abgebildet"</string>
+    <string name="quest_cycleway_value_separate">"separat auf Karte eingezeichnet"</string>
     <string name="created_note_action_title">"Notiz erstellt"</string>
     <string name="commented_note_action_title">"Notiz kommentiert"</string>
     <string name="hid_action_description">"Versteckt von dir"</string>
@@ -1228,10 +1228,16 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
     <string name="quest_fuelSelfService_title">"Kann man an dieser Tankstelle selbst tanken?"</string>
     <string name="quest_fuelSelfService_name_title">"Kann man bei %s selbst tanken?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er sehr zeitintensiv ist und es oft recht schwer ist, die richtige Wahl zu treffen. Du solltest diesen Aufgabentyp nur aktivieren wenn es dir wichtig ist, speziell diese Daten beizutragen."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er sehr zeitintensiv ist und es oft recht schwer ist, die richtige Wahl zu treffen. Du solltest diesen Aufgabentyp nur aktivieren, wenn es dir wichtig ist, speziell diese Daten beizutragen."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Festgetreten, sehr wenig loser Kies oder Sand"</string>
     <string name="quest_barrier_path_intersection">"Wie kreuzt dieser Weg die Barriere hier?"</string>
-    <string name="quest_barrier_road_intersection">"Wie kreuzt diesee Straße die Barriere hier?"</string>
+    <string name="quest_barrier_road_intersection">"Wie kreuzt diese Straße die Barriere hier?"</string>
     <string name="quest_airConditioning_no_name_title">"Hat dieser Ort (%s) eine Klimaanlage?"</string>
     <string name="quest_airConditioning_name_type_title">"Hat %1$s (%2$s) eine Klimaanlage?"</string>
+    <string name="quest_openingHours_signed_name_title">"Sind die Öffnungszeiten für %s ausgeschildert?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Sind die Öffnungszeiten für %1$s (%2$s) ausgeschildert?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Sind die Öffnungszeiten dieses Ortes ausgeschildert? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"separat auf Karte eingezeichnet"</string>
+    <string name="quest_shoulder_value_yes">"Seitenstreifen"</string>
+    <string name="quest_shoulder_value_no">"Kein Seitenstreifen"</string>
 </resources>

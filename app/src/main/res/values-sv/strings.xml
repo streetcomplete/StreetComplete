@@ -1291,6 +1291,7 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_smoothness_description_intermediate_paved">"Grov yta, potthål eller andra skador"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Större springor, någon lös sten eller andra skador"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Ganska platta stenar eller små springor"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Fint grus, små potthål eller andra skador"</string>
     <string name="quest_smoothness_description_bad_paved">"Stora potthål, skarvar eller andra skador"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"Lösa plattor, hål eller andra skador"</string>
     <string name="quest_smoothness_description_bad_sett">"Lösa stenar, hål eller andra skador"</string>
@@ -1317,4 +1318,18 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="link_osmhydrant_description">"Hitta, lägg till och redigera brandstationer och brandposter"</string>
     <string name="achievement_lifesaver_title">"Livräddare"</string>
     <string name="achievement_lifesaver_solved_X">"Du löste %d uppdrag som hjälper räddningstjänsten och utryckningspersonal!"</string>
+    <string name="quest_fuelSelfService_title">"Får du tanka på egen hand här?"</string>
+    <string name="quest_fuelSelfService_name_title">"Får du tanka på egen hand här hos %s?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Uppdragstypen är inaktiverad som standard eftersom den är ganska tidskrävande och ofta svår att svara på. Du bör bara aktivera uppdragstypen om du är villig att lägga tid på uppdraget i fråga."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Hårt packat, väldigt lite löst grus eller sand"</string>
+    <string name="quest_barrier_path_intersection">"Hur korsar stigen hindret här?"</string>
+    <string name="quest_barrier_road_intersection">"Hur korsar vägen hindret här?"</string>
+    <string name="quest_airConditioning_no_name_title">"Har det här stället (%s) luftkonditionering?"</string>
+    <string name="quest_airConditioning_name_type_title">"Har %1$s (%2$s) luftkonditionering?"</string>
+    <string name="quest_openingHours_signed_name_title">"Har %s skyltade öppettider?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Har %1$s (%2$s) skyltade öppettider?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Har detta ställe skyltade öppettider? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"visas separat på kartan"</string>
+    <string name="quest_shoulder_value_yes">"vägren"</string>
+    <string name="quest_shoulder_value_no">"ingen vägren"</string>
 </resources>

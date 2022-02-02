@@ -15,5 +15,6 @@ object VisibleQuestTypeTable {
             ${Columns.QUEST_TYPE} TEXT,
             ${Columns.VISIBILITY} INTEGER NOT NULL,
             CONSTRAINT primary_key PRIMARY KEY (${Columns.QUEST_PRESET_ID}, ${Columns.QUEST_TYPE})
-        );"""
+        );
+    """
 }

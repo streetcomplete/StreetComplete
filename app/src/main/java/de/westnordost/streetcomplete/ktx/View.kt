@@ -9,10 +9,11 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
-import androidx.core.view.*
+import androidx.core.view.OneShotPreDrawListener
+import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-
 
 fun View.popIn(): ViewPropertyAnimator {
     visibility = View.VISIBLE
@@ -31,7 +32,7 @@ fun View.popOut(): ViewPropertyAnimator {
         .withEndAction { visibility = View.GONE }
 }
 
-suspend fun View.awaitLayout()  {
+suspend fun View.awaitLayout() {
     if (!ViewCompat.isLaidOut(this) || isLayoutRequested) {
         awaitNextLayout()
     }

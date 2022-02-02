@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Sogebank, Unibank, SogeBank]
+atmOperators: [Sogebank, Unibank]
 mobileCountryCode: 372
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

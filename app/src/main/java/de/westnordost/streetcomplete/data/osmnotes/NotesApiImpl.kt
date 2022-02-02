@@ -11,14 +11,15 @@ import de.westnordost.osmapi.common.errors.OsmQueryTooBigException
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
-import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.osmapi.map.data.BoundingBox as OsmApiBoundingBox
 import de.westnordost.osmapi.notes.Note as OsmApiNote
 import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
+import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
 import de.westnordost.osmapi.user.User as OsmApiUser
 
 class NotesApiImpl(osm: OsmConnection) : NotesApi {
@@ -57,18 +58,18 @@ class NotesApiImpl(osm: OsmConnection) : NotesApi {
 private inline fun <T> wrapExceptions(block: () -> T): T =
     try {
         block()
-    } catch (e : OsmAuthorizationException) {
+    } catch (e: OsmAuthorizationException) {
         throw AuthorizationException(e.message, e)
-    } catch (e : OsmConflictException) {
+    } catch (e: OsmConflictException) {
         throw ConflictException(e.message, e)
-    } catch (e : OsmQueryTooBigException) {
+    } catch (e: OsmQueryTooBigException) {
         throw QueryTooBigException(e.message, e)
-    } catch (e : OsmConnectionException) {
+    } catch (e: OsmConnectionException) {
         throw ConnectionException(e.message, e)
-    } catch (e : OsmApiReadResponseException) {
+    } catch (e: OsmApiReadResponseException) {
         // probably a temporary connection error
         throw ConnectionException(e.message, e)
-    } catch (e : OsmApiException) {
+    } catch (e: OsmApiException) {
         // request timeout is a temporary connection error
         throw if (e.errorCode == 408) ConnectionException(e.message, e) else e
     }
@@ -82,7 +83,7 @@ private fun OsmApiNote.toNote() = Note(
     comments.map { it.toNoteComment() }
 )
 
-private fun OsmApiNote.Status.toNoteStatus() = when(this) {
+private fun OsmApiNote.Status.toNoteStatus() = when (this) {
     OsmApiNote.Status.OPEN   -> Note.Status.OPEN
     OsmApiNote.Status.CLOSED -> Note.Status.CLOSED
     OsmApiNote.Status.HIDDEN -> Note.Status.HIDDEN
@@ -96,7 +97,7 @@ private fun OsmApiNoteComment.toNoteComment() = NoteComment(
     user?.toUser()
 )
 
-private fun OsmApiNoteComment.Action.toNoteCommentAction() = when(this) {
+private fun OsmApiNoteComment.Action.toNoteCommentAction() = when (this) {
     OsmApiNoteComment.Action.OPENED     -> NoteComment.Action.OPENED
     OsmApiNoteComment.Action.COMMENTED  -> NoteComment.Action.COMMENTED
     OsmApiNoteComment.Action.CLOSED     -> NoteComment.Action.CLOSED

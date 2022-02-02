@@ -683,7 +683,7 @@ Razdvojiti put sada?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"To je poprilično mnogo podjela. Uvijek možete kasnije dodatno razdvojiti put."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_footwayPartSurface_title">"Kakva je ovdje površina nogostupa?"</string>
+    <string name="quest_footwayPartSurface_title">"Kakvu površinu ima ovaj dio nogostupa?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Je li toalet u %s pristupačan za invalidska kolica?"</string>
     <string name="quest_tactilePaving_title_tram">"Ima li ova tramvajska stanica trake vodilje za slijepe?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Ima li tramvajska stanica %s trake vodilje za slijepe?"</string>
@@ -898,11 +898,7 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_board_type_map_title">"Je li to samo karta i jedino karta?"</string>
     <string name="quest_board_type_map_description">"Ako je ploča o određenoj temi, navedite je, bez obzira na to uključuje li i kartu. Na primjer, tabla javnog prijevoza može imati kartu autobusne rute. Ako tema nije navedena među dostupnim odgovorima, razmislite o tome da umjesto nje ostavite bilješku."</string>
     <string name="quest_surface_detailed_answer_impossible">"Višestruke površine..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Jeste li sigurni da je nemoguće odrediti površinu? Obratite pažnju na odgovor \"Razlikuje se putem\" koji vam omogućuje da označite mjesto na kojem se površina mijenja. Molimo da koristite \"Ne mogu reći\" ako postoji jedna površina, ali ona nije dostupna kao odgovor."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Molimo ukratko opišite vrstu površine ovdje, na primjer \"pjeskovita s kaldrmom mjestimice\". Duljina teksta ograničena je na 255 znakova."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
@@ -1001,8 +997,7 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_kerb_height_flush">"Iste razine kao i površina ceste"</string>
 
     <!-- What is this exactly, how does it gets mapped? I'm looking at https://wiki.openstreetmap.org/wiki/Key:kerb but can't find what quest_kerb_height_lowered maps to (I assume quest_kerb_height_lowered_ramps maps to kerb=lowered?) -->
-    <!-- Fuzzy -->
-    <string name="quest_kerb_height_lowered">"Malo viši nego površina ceste"</string>
+    <string name="quest_kerb_height_lowered">"Malo viši od površine ceste"</string>
     <string name="quest_kerb_height_raised">"Visoki rubnik"</string>
 
     <!-- Fuzzy -->
@@ -1114,7 +1109,7 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="toast_undo_unavailable">"Ova izmjena je već poslana i ne može se poništiti"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_separate">"prikazan odvojeno na karti"</string>
+    <string name="quest_cycleway_value_separate">"prikazana odvojeno na karti"</string>
 
     <!-- Fuzzy -->
     <string name="created_note_action_title">"Napravljena bilješka"</string>
@@ -1456,24 +1451,21 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_excellent_paving_stones">"Gotovo spojene"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_smoothness_description_good_paved">"Samo male pukotine, praznine, popravci ili malo grublja površina"</string>
+    <string name="quest_smoothness_description_good_paved">"Samo sitne pukotine, praznine, popravci ili malo grublja površina"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_good_paving_stones">"Plitki ili uski razmaci"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_good_sett">"Neuobičajeno ravno kamenje, pravilnog uzorka, vrlo plitki ili uski razmaci"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_smoothness_description_intermediate_paved">"Neuobičajeno gruba površina, šire praznine, pukotine, plitke ulegnuća, rupe ili druga oštećenja"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"Neuobičajeno gruba površina, širi rascjepi, pukotine, plitka ulegnuća, rupe ili druga oštećenja"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_paving_stones">"Širi razmaci, moguće pomaknute ploče ili druga oštećenja"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_intermediate_sett">"Plosnato ili kamenje s četvrtastim rubovima, plitkim ili uskim razmacima"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Sitni šljunak, plitke izbočine ili rupe"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_bad_paved">"Velike praznine, rupe, kolotečine, mrvljenje podloge ili druga oštećenja"</string>
@@ -1513,11 +1505,35 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <string name="quest_smoothness_obstacle_hint">"Molimo navedite prosječnu glatkoću. Pojedinačne prepreke kao što su rubnici, uspornici ili rešetke za stoku mogu se zanemariti. Ali ponovljene ili neočekivane prepreke trebale bi utjecati na odgovor."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … pokazuju za koja vozila bi površina trebala biti adekvatna za korištenje. Obratite pažnju na širu sliku, a ne na pojedinačna oštećenja."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … pokazuju za koju vrstu vozila bi površina trebala biti adekvatna za korištenje. Obratite pažnju na širu sliku, a ne na pojedinačna oštećenja."</string>
     <string name="quest_shoulder_explanation">"Zaustavna traka je jasno razgraničena traka za zaustavljanje vozila u nuždi koja omogućuje da se vozila sigurno zaustave van prometne trake, iako ne uvijek na (potpuno) asfaltiranoj površini."</string>
     <string name="link_osmhydrant_description">"Pretražite, dodajte i uredite vatrogasne stanice i vatrogasne hidrante"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_title">"Spasilac"</string>
     <string name="achievement_lifesaver_solved_X">"Riješili ste %d zadataka koji pomažu hitnim službama!"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fuelSelfService_title">"Možete li sami točiti benzin na ovoj benzinskoj postaji?"</string>
+    <string name="quest_fuelSelfService_name_title">"Možete li sami točiti benzin na %s?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Ova vrsta zadatka je inicijalno onemogućena jer je prilično dugotrajna i često je teško ispravno odabrati. Omogućite je samo ako ste stvarno predani dodavanju ove vrste podataka."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Tvrdo nabijen, sa vrlo malo rastresitog šljunka ili pijeska"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_path_intersection">"Kako put ovdje prolazi kroz barijeru?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_road_intersection">"Kako cesta ovdje prolazi kroz barijeru?"</string>
+    <string name="quest_airConditioning_no_name_title">"Ima li ova lokacija (%s) klima uređaj?"</string>
+    <string name="quest_airConditioning_name_type_title">"Ima li %1$s (%2$s) klima uređaj?"</string>
+    <string name="quest_openingHours_signed_name_title">"Je li naznačeno radno vrijeme za %s?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Je li naznačeno radno vrijeme za %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Je li naznačeno radno vrijeme ovog mjesta? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"prikazan odvojeno na karti"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shoulder_value_yes">"zaustavna traka"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shoulder_value_no">"bez zaustavne trake"</string>
 </resources>

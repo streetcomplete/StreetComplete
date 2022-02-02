@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
@@ -24,7 +24,7 @@ class AddPlaceName(
           or craft
           or office
           or tourism = information and information = office
-          or """.trimIndent() +
+          or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -91,11 +91,19 @@ class AddPlaceName(
             ),
             "military" to arrayOf(
                 "airfield", "barracks", "training_area"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
+
+                // name & opening hours
+                "physiotherapist", "podiatrist",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
-    """.trimIndent()).toElementFilterExpression() }
+    """).toElementFilterExpression() }
 
     override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
@@ -120,10 +128,10 @@ class AddPlaceName(
 
     override fun createForm() = AddPlaceNameForm()
 
-    override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             is NoPlaceNameSign -> {
-                changes.add("name:signed", "no")
+                tags["name:signed"] = "no"
             }
             is PlaceName -> {
                 for ((languageTag, name) in answer.localizedNames) {
@@ -132,7 +140,7 @@ class AddPlaceName(
                         "international" -> "int_name"
                         else -> "name:$languageTag"
                     }
-                    changes.addOrModify(key, name)
+                    tags[key] = name
                 }
             }
         }

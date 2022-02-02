@@ -1,12 +1,24 @@
 package de.westnordost.streetcomplete.osm.opening_hours.parser
 
-import ch.poole.openinghoursparser.*
+import ch.poole.openinghoursparser.DateRange
+import ch.poole.openinghoursparser.DateWithOffset
+import ch.poole.openinghoursparser.Holiday
+import ch.poole.openinghoursparser.Month
+import ch.poole.openinghoursparser.Rule
+import ch.poole.openinghoursparser.RuleModifier
+import ch.poole.openinghoursparser.TimeSpan
+import ch.poole.openinghoursparser.WeekDay
+import ch.poole.openinghoursparser.WeekDayRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
+import de.westnordost.streetcomplete.osm.opening_hours.model.Months
+import de.westnordost.streetcomplete.osm.opening_hours.model.NumberSystem
+import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
+import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.osm.opening_hours.model.*
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 
 @JvmName("openingHoursRowsToOpeningHoursRules")
@@ -32,7 +44,7 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         } else if (row is OpeningWeekdaysRow) {
             val timeSpan = row.timeRange.toTimeSpan()
             val weekdays =
-                if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+                if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
                 else WeekDayRangesAndHolidays()
 
             // new weekdays -> new rule
@@ -88,7 +100,7 @@ fun List<CollectionTimesRow>.toOpeningHoursRules(): OpeningHoursRuleList {
     for (row in this) {
         val time = row.time
         val weekdays =
-            if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+            if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
             else WeekDayRangesAndHolidays()
 
         // new weekdays -> new rule
@@ -117,7 +129,8 @@ private fun createRule(
     dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
     holidays: List<Holiday>?,
-    timeSpans: List<TimeSpan>) = Rule().also { r ->
+    timeSpans: List<TimeSpan>
+) = Rule().also { r ->
 
     require(timeSpans.isNotEmpty())
 
@@ -130,7 +143,8 @@ private fun createRule(
 private fun createOffRule(
     dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
-    holidays: List<Holiday>?) = Rule().also { r ->
+    holidays: List<Holiday>?
+) = Rule().also { r ->
 
     r.dates = dateRanges?.toMutableList()
     r.days = weekDayRanges?.toMutableList()
@@ -160,7 +174,7 @@ private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
 }
 
 private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
-    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT-1).getSize(this)
+    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT - 1).getSize(this)
     // if the range is very short (e.g. Mo-Tu), rather save it as Mo,Tu
     return if (size == 2) {
         listOf(

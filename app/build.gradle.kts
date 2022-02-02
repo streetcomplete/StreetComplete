@@ -1,6 +1,6 @@
-import java.util.Properties
 import java.io.FileInputStream
 import java.io.FileWriter
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -21,7 +21,6 @@ android {
 
     signingConfigs {
         create("release") {
-
         }
     }
 
@@ -36,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 3901
-        versionName = "39.0"
+        versionCode = 4000
+        versionName = "40.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -68,13 +67,13 @@ android {
     }
 
     lint {
+        // there is currently always an internal error "Unexpected lint invalid arguments" when executing lintAnalyze*, so whatever, disable this then!
+        isCheckReleaseBuilds = false
         disable("MissingTranslation")
         ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false
     }
 }
-
-
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
@@ -133,8 +132,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.annotation:annotation:1.3.0")
-    implementation("androidx.fragment:fragment-ktx:1.4.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
@@ -174,26 +173,29 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.17.0")
+    implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // config files
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.25.0")
+    implementation("ch.poole:OpeningHoursParser:0.26.0")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
-    "am","ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
-    "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
-    "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
+    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el", "en", "en-AU", "en-GB", "es", "eu",
+    "fa", "fi", "fr", "gl", "hr", "hu", "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn",
+    "pl", "pt", "pt-BR", "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
 )
-val nsiVersion = "v6.0.20220110"
-val presetsVersion = "v3.1.0"
+
+// see https://github.com/osmlab/name-suggestion-index/tags for latest version
+val nsiVersion = "v6.0.20220131"
+// see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
+val presetsVersion = "v3.2.1"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"

@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.internet_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
@@ -36,7 +36,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
     override fun createForm() = AddInternetAccessForm()
 
-    override fun applyAnswerTo(answer: InternetAccess, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("internet_access", answer.osmValue)
+    override fun applyAnswerTo(answer: InternetAccess, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("internet_access", answer.osmValue)
     }
 }

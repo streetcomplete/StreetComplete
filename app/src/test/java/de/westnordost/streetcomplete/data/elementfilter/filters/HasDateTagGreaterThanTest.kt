@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.matches
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
 
 class HasDateTagGreaterThanTest {
-    private val date = LocalDate.of(2000,11,11)
+    private val date = LocalDate.of(2000, 11, 11)
 
     @Test fun matches() {
         val c = HasDateTagGreaterThan("check_date", FixedDate(date))

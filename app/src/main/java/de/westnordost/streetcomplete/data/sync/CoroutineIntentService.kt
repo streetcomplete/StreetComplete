@@ -2,11 +2,18 @@ package de.westnordost.streetcomplete.data.sync
 
 import android.app.Service
 import android.content.Intent
-import android.os.*
+import android.os.IBinder
 import androidx.annotation.WorkerThread
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.yield
 
 /**
  * CoroutineIntentService is similar to IntentService only that it is coroutines enabled and
@@ -17,7 +24,8 @@ import kotlinx.coroutines.sync.withLock
 abstract class CoroutineIntentService(name: String) : Service() {
 
     private val scope = CoroutineScope(
-        SupervisorJob() + Dispatchers.Default + CoroutineName("CoroutineIntentService[$name]"))
+        SupervisorJob() + Dispatchers.Default + CoroutineName("CoroutineIntentService[$name]")
+    )
     private var currentJob: Job? = null
     private val mutex = Mutex()
 

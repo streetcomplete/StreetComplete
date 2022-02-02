@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, FAB, Al Hilal, NBAD, Union National Bank, HSBC, mashreq, UNION NATIONAL BANK, RAKBANK, RAK Bank, RAK BANK, Sharjah Islamic Bank, al hilal bank, Commercial Bank of Dubai, Mashreq Bank, Mashreq, Rak Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, Al Hilal Bank, City Bank, FGB, Bank of Sharjah, Abu Dhabi Distribution Co., union national bank, Dubai Islamic bank, Emirates Islamic Bank, nbf, Emirates Islamic, Standard Chartered, Al Masraf]
+atmOperators: [ADIB, ADCB, Emirates NBD, Dubai Islamic Bank, FAB, Al Hilal, NBAD, Union National Bank, HSBC, mashreq, RAKBANK, RAK Bank, Sharjah Islamic Bank, al hilal bank, Commercial Bank of Dubai, Mashreq Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, City Bank, FGB, Bank of Sharjah, Abu Dhabi Distribution Co., Emirates Islamic Bank, nbf, Standard Chartered, Al Masraf]
 centerLineStyle: yellow
 edgeLineStyle: yellow
 firstDayOfWorkweek: Su

@@ -2,14 +2,13 @@ package de.westnordost.streetcomplete.user
 
 import android.os.Handler
 import android.os.HandlerThread
-import kotlinx.coroutines.*
 import kotlinx.coroutines.android.asCoroutineDispatcher
+import kotlinx.coroutines.withContext
 import org.jbox2d.collision.shapes.Shape
 import org.jbox2d.common.Vec2
 import org.jbox2d.dynamics.Body
 import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.World
-import java.lang.Runnable
 import kotlin.math.max
 
 /** Contains the physics simulation world and the physics simulation loop */
@@ -29,7 +28,7 @@ class PhysicsWorldController(gravity: Vec2) {
             // wake up everyone if the gravity changed
             world.gravity = value
             var bodyIt = world.bodyList
-            while(bodyIt != null) {
+            while (bodyIt != null) {
                 bodyIt.isAwake = true
                 bodyIt = bodyIt.next
             }
@@ -66,7 +65,7 @@ class PhysicsWorldController(gravity: Vec2) {
 
     private fun loop() {
         val startTime = System.currentTimeMillis()
-        world.step(DELAY /1000f, 6, 2)
+        world.step(DELAY / 1000f, 6, 2)
         val executionTime = System.currentTimeMillis() - startTime
         listener?.onWorldStep()
         if (isRunning) {

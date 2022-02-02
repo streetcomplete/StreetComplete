@@ -287,6 +287,7 @@ quest icons/
     roof_shape.svg
     sidewalk.svg
     smoking.svg
+    snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
     sport.svg                        modified from EmojiOne 2: U+26BD
     steps.svg
     steps_ramp.svg

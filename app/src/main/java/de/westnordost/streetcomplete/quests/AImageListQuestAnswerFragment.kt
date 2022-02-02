@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import androidx.core.view.isGone
 import androidx.preference.PreferenceManager
-
+import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -22,7 +21,7 @@ import kotlin.collections.ArrayList
  * T is the type of the answer object (also a simple model object) created by the quest
  * form and consumed by the quest type. In MVC, this would be the model.
  */
-abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AImageListQuestAnswerFragment<I, T> : AbstractQuestFormAnswerFragment<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)

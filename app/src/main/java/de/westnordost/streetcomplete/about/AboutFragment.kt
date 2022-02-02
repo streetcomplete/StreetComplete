@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBindi
 import de.westnordost.streetcomplete.databinding.DialogDonateBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.ListAdapter
-import java.util.*
+import java.util.Locale
 
 /** Shows the about screen */
 class AboutFragment : PreferenceFragmentCompat() {

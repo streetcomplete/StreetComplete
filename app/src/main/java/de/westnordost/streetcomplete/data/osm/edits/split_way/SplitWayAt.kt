@@ -28,15 +28,19 @@ data class SplitWayAtIndex(override val pos: LatLon, public override val index: 
     override val delta get() = 0.0
 }
 
-data class SplitWayAtLinePosition(val pos1: LatLon, val index1: Int,
-                                  val pos2: LatLon, val index2: Int,
-                                  public override val delta: Double) : SplitWayAt() {
+data class SplitWayAtLinePosition(
+    val pos1: LatLon,
+    val index1: Int,
+    val pos2: LatLon,
+    val index2: Int,
+    public override val delta: Double
+) : SplitWayAt() {
     override val index get() = index1
     override val pos: LatLon
         get() {
-        val line = listOf(pos1, pos2)
-        return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
-    }
+            val line = listOf(pos1, pos2)
+            return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
+        }
 }
 
 /** creates a SplitWay from a SplitLineAtPosition, given the nodes of the way. So, basically it
@@ -51,7 +55,7 @@ fun SplitPolylineAtPosition.toSplitWayAt(positions: List<LatLon>): SplitWayAt {
        self-intersecting. This doesn't make a huge difference anyway as self-intersecting ways are
        very rare and likely an error and splitting such a way only once and not several times at
        the same position does not lead to wrong or corrupted data */
-    return when(this) {
+    return when (this) {
         is SplitAtPoint -> toSplitWays(positions)
         is SplitAtLinePosition -> toSplitWaysAt(positions)
     }.first()

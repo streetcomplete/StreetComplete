@@ -22,12 +22,22 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.*
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.FragmentViewBindingPropertyDelegate
+import de.westnordost.streetcomplete.ktx.geometryType
+import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
+import de.westnordost.streetcomplete.ktx.updateConfiguration
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -45,7 +55,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     private val binding get() = _binding!!
 
     protected var otherAnswersButton: TextView? = null
-    private set
+        private set
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
     override val bottomSheet get() = binding.bottomSheet
@@ -64,7 +74,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
-            if(field == null) {
+            if (field == null) {
                 val latLon = elementGeometry.center
                 field = countryInfos.get(latLon.longitude, latLon.latitude)
             }
@@ -197,7 +207,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         otherAnswersButton = null
     }
 
-    private fun assembleOtherAnswers() : List<AnswerItem> {
+    private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
         val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
@@ -220,8 +230,8 @@ abstract class AbstractQuestAnswerFragment<T> :
            relation, so it is not supported
            https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
         */
-        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-            way.tags["junction"] == "roundabout"
+        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull()
+            && way.tags["junction"] == "roundabout"
         if (isClosedRoundabout) return null
 
         if (way.isArea()) return null
@@ -266,7 +276,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     override fun onStart() {
         super.onStart()
-        if(!startedOnce) {
+        if (!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
         }
@@ -361,8 +371,8 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     private fun updateContentPadding() {
-        if(!contentPadding) {
-            binding.content.setPadding(0,0,0,0)
+        if (!contentPadding) {
+            binding.content.setPadding(0, 0, 0, 0)
         } else {
             val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
             val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)

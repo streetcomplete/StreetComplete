@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -16,8 +17,6 @@ import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import android.Manifest.permission.ACCESS_FINE_LOCATION
-
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()

@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import org.json.JSONException
 import org.json.JSONObject
-
 import java.io.File
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
-
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.ConnectionException
 
 /** Upload and activate a list of image paths to an instance of the
  * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>
@@ -82,8 +80,7 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             if (status == HttpURLConnection.HTTP_GONE) {
                 // it's gone if the note does not exist anymore. That's okay, it should only fail
                 // if we might want to try again later.
-            }
-            else if (status != HttpURLConnection.HTTP_OK) {
+            } else if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
                 if (status / 100 == 5)
                     throw ImageUploadServerException("Error code $status, Message: \"$error\"")
@@ -106,8 +103,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 }
 
-class ImageUploadServerException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ImageUploadServerException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
-class ImageUploadClientException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ImageUploadClientException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)

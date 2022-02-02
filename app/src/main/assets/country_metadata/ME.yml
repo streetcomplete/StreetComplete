@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [CKB, Erste Bank, NLB, Atlas Banka, ERSTE Bank, Hipotekarna banka, NLB Banka, Addiko Bank, Societe Generale, Prva Banka, Universal Capital Bank]
+atmOperators: [CKB, Erste Bank, NLB, Atlas Banka, Hipotekarna banka, NLB Banka, Addiko Bank, Societe Generale, Prva Banka, Universal Capital Bank]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

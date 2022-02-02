@@ -479,7 +479,18 @@
                     "label": "Pagar en efectivo"
                 },
                 "castle_type": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "castrum": "Fuerte romano",
+                        "defensive": "Castillo defensivo",
+                        "fortress": "Fortaleza",
+                        "hillfort": "Fuerte en la colina",
+                        "kremlin": "Kremlin",
+                        "manor": "Casa solariega",
+                        "palace": "Palacio",
+                        "shiro": "Shiro",
+                        "stately": "Casa señorial"
+                    }
                 },
                 "changing_table": {
                     "label": "Cambiador de pañales"
@@ -615,6 +626,13 @@
                 },
                 "crossing/light": {
                     "label": "Luces"
+                },
+                "crossing_raised": {
+                    "label": "Elevado",
+                    "options": {
+                        "table": "Sí",
+                        "undefined": "No"
+                    }
                 },
                 "cuisine": {
                     "label": "Cocinas",
@@ -1427,7 +1445,7 @@
                     }
                 },
                 "lock": {
-                    "label": "Bloqueo"
+                    "label": "Esclusa"
                 },
                 "lockable": {
                     "label": "Se puede cerrar con llave"
@@ -1706,9 +1724,11 @@
                         "carports": "Cocheras",
                         "garage_boxes": "Garaje en cubículos",
                         "lane": "Carril al borde de la calzada",
+                        "layby": "Área de descanso",
                         "multi-storey": "Multinivel",
                         "rooftop": "Techo",
                         "sheds": "Galpones",
+                        "street_side": "Junto a la calle",
                         "surface": "Superficie",
                         "underground": "Subterráneo"
                     }
@@ -1948,7 +1968,20 @@
                     "terms": "chimenea,hogar,fuego,estufa,leña,carbón"
                 },
                 "recycling_accepts": {
-                    "label": "Acepta"
+                    "label": "Acepta",
+                    "options": {
+                        "batteries": "Baterías",
+                        "cans": "Latas",
+                        "cardboard": "Cartón",
+                        "clothes": "Ropa",
+                        "glass": "Vidrio",
+                        "glass_bottles": "Botellas de vidrio",
+                        "green_waste": "Basura orgánica",
+                        "paper": "Papel",
+                        "plastic_packaging": "Envases de plástico",
+                        "scrap_metal": "Chatarra de metal",
+                        "shoes": "Zapatos"
+                    }
                 },
                 "recycling_type": {
                     "label": "Tipo",
@@ -2658,6 +2691,17 @@
                         "tourism": "Turismo"
                     },
                     "terms": "tipo de uso,uso"
+                },
+                "usage_waterway": {
+                    "label": "Tipo de uso",
+                    "options": {
+                        "headrace": "Galería de conducción",
+                        "irrigation": "Irrigación",
+                        "spillway": "Aliviadero",
+                        "tailrace": "Canal de desagüe",
+                        "transmission": "Transmisión",
+                        "transportation": "Transporte"
+                    }
                 },
                 "utility": {
                     "label": "Servicio público"
@@ -4870,31 +4914,16 @@
                     "name": "Cruce peatonal marcado",
                     "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)",
-                    "terms": "paso de cebra,cruce marcado,paso de peatones,lomo de burro,lomada,velocidad,calmador,reductor"
-                },
                 "highway/crossing/signals": {
                     "name": "Cruce con señales para peatones",
                     "terms": "semáforo para peatones,paso de peatones,paso de bicicletas"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Cruce con señales para peatones (Elevado)",
-                    "terms": "semáforo para peatones,cruce de bicicletas,cruce de peatones,lomada,lomo de burro,reductor de velocidad"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Cruce peatonal sin marcar",
                     "terms": "cruce,crucero,paso a nivel,sin marcar"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Cruce peatonal sin marcar (Elevado)",
-                    "terms": "lomo de burro,lomada,velocidad,calmador,reductor,cruce,crucero,paso a nivel,sin marcar"
-                },
                 "highway/crossing/zebra": {
                     "name": "Cruce peatonal marcado"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)"
                 },
                 "highway/cycleway": {
                     "name": "Ciclovía",
@@ -4950,27 +4979,20 @@
                     "name": "Cruce peatonal marcado",
                     "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)",
-                    "terms": "paso de cebra,cruce marcado,paso de peatones,lomo de burro,lomada,velocidad,calmador,reductor"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Acera",
                     "terms": "acera,vereda,banqueta,andén"
+                },
+                "highway/footway/signals": {
+                    "name": "Cruce con señales para peatones",
+                    "terms": "semáforo para peatones,paso de peatones,paso de bicicletas,lomo de burro,lomada,bajar velocidad"
                 },
                 "highway/footway/unmarked": {
                     "name": "Cruce sin marcar",
                     "terms": "cruce sin marcar"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Cruce sin marcar (Elevado)",
-                    "terms": "lomo de burro,lomada,velocidad,calmador,reductor"
-                },
                 "highway/footway/zebra": {
                     "name": "Cruce peatonal marcado"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Cruce peatonal marcado (Elevado)"
                 },
                 "highway/give_way": {
                     "name": "Señal de ceda el paso",
@@ -5468,6 +5490,10 @@
                     "name": "Área de tiendas comerciales",
                     "terms": "área comercial,locales comerciales,venta al detalle,comercios minoristas,comercios,tiendas,venta,minorista,al por menor,menudeo"
                 },
+                "landuse/salt_pond": {
+                    "name": "Estanque de evaporación de sal",
+                    "terms": "evaporación,solución salina,sal,salinas"
+                },
                 "landuse/vineyard": {
                     "name": "Viñedo",
                     "terms": "viña,viñedo,majuelo,parral"
@@ -5707,6 +5733,10 @@
                     "name": "Campo de hockey",
                     "terms": "hockey"
                 },
+                "leisure/pitch/futsal": {
+                    "name": "Cancha de fútbol sala (Futsal)",
+                    "terms": "fútbol sala,futbol sala,futsal,fútbol de salón,futbol de salon,futsala,futbolito,microfútbol,microfutbol"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "Foso de herraduras (juego)",
                     "terms": "herradura de caballo"
@@ -5895,8 +5925,7 @@
                     "terms": "brújula,este,norte,sur,oeste,rosa de los vientos"
                 },
                 "man_made/courtyard": {
-                    "name": "Patio",
-                    "terms": "aire libre cerrado,cuadrilátero,patio"
+                    "name": "Patio"
                 },
                 "man_made/crane": {
                     "name": "Grúa",

@@ -13,7 +13,7 @@ import javax.inject.Singleton
     private val oAuthStore: OAuthStore,
     private val osmConnection: OsmConnection,
     private val prefs: SharedPreferences,
-): UserLoginStatusSource {
+) : UserLoginStatusSource {
 
     private val listeners: MutableList<UserLoginStatusSource.Listener> = CopyOnWriteArrayList()
 

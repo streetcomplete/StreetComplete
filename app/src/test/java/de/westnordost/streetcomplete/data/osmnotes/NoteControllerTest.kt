@@ -1,11 +1,16 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.eq
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoInteractions
 import java.lang.Thread.sleep
 
 class NoteControllerTest {
@@ -24,7 +29,7 @@ class NoteControllerTest {
     }
 
     @Test fun `getAll note ids`() {
-        val ids = listOf(1L,2L,3L)
+        val ids = listOf(1L, 2L, 3L)
         val ret = listOf(note(1), note(2), note(3))
         on(dao.getAll(ids)).thenReturn(ret)
         assertEquals(ret, noteController.getAll(ids))
@@ -103,7 +108,7 @@ class NoteControllerTest {
     }
 
     @Test fun deleteOlderThan() {
-        val ids = listOf(1L,2L,3L)
+        val ids = listOf(1L, 2L, 3L)
         on(dao.getIdsOlderThan(123L)).thenReturn(ids)
         val listener = mock<NoteController.Listener>()
 
@@ -162,4 +167,3 @@ class NoteControllerTest {
         verify(listener).onUpdated(eq(listOf(note3)), eq(listOf(note1)), eq(setOf(2)))
     }
 }
-

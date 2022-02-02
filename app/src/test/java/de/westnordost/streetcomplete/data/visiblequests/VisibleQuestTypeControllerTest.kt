@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.times
@@ -42,7 +43,6 @@ class VisibleQuestTypeControllerTest {
 
         listener = mock()
         ctrl.addListener(listener)
-
     }
 
     @Test fun `default visibility`() {

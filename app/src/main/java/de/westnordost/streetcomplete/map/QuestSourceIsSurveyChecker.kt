@@ -23,7 +23,9 @@ import kotlin.coroutines.resume
 class QuestSourceIsSurveyChecker @Inject constructor() {
 
     suspend fun checkIsSurvey(
-        context: Context, geometry: ElementGeometry, locations: List<Location>
+        context: Context,
+        geometry: ElementGeometry,
+        locations: List<Location>
     ): Boolean {
         if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
             return true
@@ -38,13 +40,13 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
                     dontShowAgain = dialogBinding.checkBoxDontShowAgain.isChecked
-                    if(cont.isActive) cont.resume(true)
+                    if (cont.isActive) cont.resume(true)
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    if(cont.isActive) cont.resume(false)
+                    if (cont.isActive) cont.resume(false)
                 }
                 .setOnCancelListener {
-                    if(cont.isActive) cont.resume(false)
+                    if (cont.isActive) cont.resume(false)
                 }
                 .show()
         }
@@ -86,7 +88,7 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
           "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
         */
 
-        private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f //m
+        private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
         // "static" values persisted per application start
         private var dontShowAgain = false

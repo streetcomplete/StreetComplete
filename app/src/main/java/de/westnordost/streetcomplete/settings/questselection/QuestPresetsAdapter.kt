@@ -14,7 +14,11 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 class QuestPresetsAdapter(
     private val context: Context,
@@ -28,18 +32,18 @@ class QuestPresetsAdapter(
     private val questPresetsListener = object : QuestPresetsSource.Listener {
         override fun onSelectedQuestPresetChanged() { viewLifecycleScope.launch {
             notifyDataSetChanged()
-        }}
+        } }
 
         override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
             presets.add(preset)
             notifyItemInserted(presets.size - 1)
-        }}
+        } }
 
         override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
             val deleteIndex = presets.indexOfFirst { it.id == presetId }
             presets.removeAt(deleteIndex)
             notifyItemRemoved(deleteIndex)
-        }}
+        } }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
@@ -96,7 +100,7 @@ class QuestPresetsAdapter(
         fun onClickDeleteQuestPreset(preset: QuestPreset) {
             AlertDialog.Builder(itemView.context, R.style.Theme_Bubble_Dialog_Alert)
                 .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.name))
-                .setPositiveButton(R.string.delete_confirmation) { _,_ -> deleteQuestPreset(preset.id) }
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> deleteQuestPreset(preset.id) }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
         }

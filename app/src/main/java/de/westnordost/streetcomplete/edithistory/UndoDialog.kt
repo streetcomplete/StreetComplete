@@ -22,11 +22,16 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
@@ -35,7 +40,11 @@ import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import java.util.MissingFormatArgumentException
 import java.util.concurrent.FutureTask
@@ -84,12 +93,12 @@ class UndoDialog(
         scope.cancel()
     }
 
-    suspend fun Edit.getTitle(): CharSequence = when(this) {
+    suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
             getQuestTitle(questType, originalElement)
         }
         is NoteEdit -> {
-            context.resources.getText(when(action) {
+            context.resources.getText(when (action) {
                 CREATE -> R.string.created_note_action_title
                 COMMENT -> R.string.commented_note_action_title
             })
@@ -104,9 +113,9 @@ class UndoDialog(
         else -> throw IllegalArgumentException()
     }
 
-    private val Edit.descriptionView: View get() = when(this) {
+    private val Edit.descriptionView: View get() = when (this) {
         is ElementEdit -> {
-            when(action) {
+            when (action) {
                 is UpdateElementTagsAction -> createListOfTagUpdates(action.changes.changes)
                 is DeletePoiNodeAction -> createTextView(ResText(R.string.deleted_poi_action_description))
                 is SplitWayAction -> createTextView(ResText(R.string.split_way_action_description))
@@ -128,7 +137,7 @@ class UndoDialog(
              * It happens the element is null or otherwise is not at all what is expected by
              * that quest type.
              * So, this is the fallback for that case */
-            context.resources.getString(questType.title, *Array(10){"…"})
+            context.resources.getString(questType.title, *Array(10) { "…" })
         }
 
     private fun createTextView(text: Text?): TextView {
@@ -146,7 +155,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>"+Html.escapeHtml(change.tagString)+"</tt>"
+               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
            ) +
            "</li>"
         })
@@ -154,13 +163,13 @@ class UndoDialog(
     }
 }
 
-private val StringMapEntryChange.tagString: String get() = when(this) {
+private val StringMapEntryChange.tagString: String get() = when (this) {
     is StringMapEntryAdd -> "$key = $value"
     is StringMapEntryModify -> "$key = $value"
     is StringMapEntryDelete -> "$key = $valueBefore"
 }
 
-private val StringMapEntryChange.titleResId: Int get() = when(this) {
+private val StringMapEntryChange.titleResId: Int get() = when (this) {
     is StringMapEntryAdd -> R.string.added_tag_action_title
     is StringMapEntryModify -> R.string.changed_tag_action_title
     is StringMapEntryDelete -> R.string.removed_tag_action_title

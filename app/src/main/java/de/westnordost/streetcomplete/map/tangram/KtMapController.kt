@@ -10,15 +10,33 @@ import android.view.animation.Interpolator
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.mapzen.tangram.*
+import com.mapzen.tangram.FeaturePickResult
+import com.mapzen.tangram.LabelPickResult
+import com.mapzen.tangram.MapChangeListener
+import com.mapzen.tangram.MapController
+import com.mapzen.tangram.MapData
+import com.mapzen.tangram.MapView
+import com.mapzen.tangram.SceneError
+import com.mapzen.tangram.SceneUpdate
+import com.mapzen.tangram.TouchInput
 import com.mapzen.tangram.networking.HttpHandler
 import com.mapzen.tangram.viewholder.GLSurfaceViewHolderFactory
 import com.mapzen.tangram.viewholder.GLViewHolder
 import com.mapzen.tangram.viewholder.GLViewHolderFactory
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.*
-import kotlinx.coroutines.*
+import de.westnordost.streetcomplete.util.centerPointOfPolyline
+import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.initialBearingTo
+import de.westnordost.streetcomplete.util.normalizeLongitude
+import de.westnordost.streetcomplete.util.translate
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
@@ -38,7 +56,7 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, contentResolver: ContentResolver):
+class KtMapController(private val c: MapController, contentResolver: ContentResolver) :
     LifecycleObserver {
 
     private val cameraManager = CameraManager(c, contentResolver)
@@ -202,8 +220,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         if (w == 0 || h == 0) return null
 
         return screenPositionToLatLon(PointF(
-            padding.left + (w - padding.left - padding.right)/2f,
-            padding.top + (h - padding.top - padding.bottom)/2f
+            padding.left + (w - padding.left - padding.right) / 2f,
+            padding.top + (h - padding.top - padding.bottom) / 2f
         ))
     }
 
@@ -254,7 +272,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
         val zoomDelta = min(zoomDeltaX, zoomDeltaY)
-        return max( 1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
+        return max(1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
     }
 
     fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom): LatLon? {
@@ -360,7 +378,6 @@ class LoadSceneException(message: String, val sceneUpdate: SceneUpdate) : Runtim
 private fun SceneError.toException() =
     LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
 
-
 suspend fun MapView.initMap(
     httpHandler: HttpHandler? = null,
     glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
@@ -377,4 +394,3 @@ interface MapChangingListener {
     fun onMapIsChanging()
     fun onMapDidChange()
 }
-

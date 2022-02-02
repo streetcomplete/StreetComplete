@@ -5,8 +5,6 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.CREATED_TIMESTAMP
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TRACKS
-import javax.inject.Inject
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.IMAGES_NEED_ACTIVATION
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.IMAGE_PATHS
@@ -15,12 +13,13 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.NOTE_ID
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TEXT
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TRACKS
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TYPE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.NAME
-import de.westnordost.streetcomplete.ktx.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import javax.inject.Inject
 
 class NoteEditsDao @Inject constructor(private val db: Database) {
     fun add(edit: NoteEdit): Boolean =

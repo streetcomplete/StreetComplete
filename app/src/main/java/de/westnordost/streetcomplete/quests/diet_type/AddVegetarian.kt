@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.diet_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.VEG
 
@@ -40,15 +40,15 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegetarian)
 
-    override fun applyAnswerTo(answer: DietAvailabilityAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             is DietAvailability -> {
-                changes.updateWithCheckDate("diet:vegetarian", answer.osmValue)
+                tags.updateWithCheckDate("diet:vegetarian", answer.osmValue)
                 if (answer.osmValue == "no") {
-                    changes.deleteIfExists("diet:vegan")
+                    tags.remove("diet:vegan")
                 }
             }
-            NoFood -> changes.addOrModify("food", "no")
+            NoFood -> tags["food"] = "no"
         }
     }
 }

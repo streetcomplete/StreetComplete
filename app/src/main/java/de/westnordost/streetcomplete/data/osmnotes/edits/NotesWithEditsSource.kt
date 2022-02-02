@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import java.util.concurrent.CopyOnWriteArrayList
@@ -77,7 +78,7 @@ import javax.inject.Singleton
         val noteEdits = noteEditsSource.getAllUnsyncedForNote(noteId)
         var note = noteController.get(noteId)
         for (noteEdit in noteEdits) {
-            when(noteEdit.action) {
+            when (noteEdit.action) {
                 CREATE -> {
                     if (note == null) note = noteEdit.createNote()
                 }
@@ -116,7 +117,7 @@ import javax.inject.Singleton
 
         for (noteEdit in noteEdits) {
             val id = noteEdit.noteId
-            when(noteEdit.action) {
+            when (noteEdit.action) {
                 CREATE -> {
                     if (!notesById.containsKey(id)) notesById[id] = noteEdit.createNote()
                 }

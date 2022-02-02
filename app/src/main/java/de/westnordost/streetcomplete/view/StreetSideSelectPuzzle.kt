@@ -6,18 +6,22 @@ import android.graphics.Matrix
 import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.showTapHint
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
 
 /** A very custom view that conceptually shows the left and right side of a street. Both sides
  *  are clickable.<br>
@@ -36,32 +40,32 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         ViewSideSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
-    set(value) {
-        field = value
-        if (value == null) {
-            binding.leftSideContainer.setOnClickListener(null)
-            binding.rightSideContainer.setOnClickListener(null)
-            binding.leftSideContainer.isClickable = false
-            binding.rightSideContainer.isClickable = false
-        } else {
-            binding.rotateContainer.isClickable = false
-            binding.leftSideContainer.setOnClickListener { value.invoke(false) }
-            binding.rightSideContainer.setOnClickListener { value.invoke(true) }
+        set(value) {
+            field = value
+            if (value == null) {
+                binding.leftSideContainer.setOnClickListener(null)
+                binding.rightSideContainer.setOnClickListener(null)
+                binding.leftSideContainer.isClickable = false
+                binding.rightSideContainer.isClickable = false
+            } else {
+                binding.rotateContainer.isClickable = false
+                binding.leftSideContainer.setOnClickListener { value.invoke(false) }
+                binding.rightSideContainer.setOnClickListener { value.invoke(true) }
+            }
         }
-    }
 
     var onClickListener: (() -> Unit)? = null
-    set(value) {
-        field = value
-        if (value == null) {
-            binding.rotateContainer.setOnClickListener(null)
-            binding.rotateContainer.isClickable = false
-        } else {
-            binding.leftSideContainer.isClickable = false
-            binding.rightSideContainer.isClickable = false
-            binding.rotateContainer.setOnClickListener { value.invoke() }
+        set(value) {
+            field = value
+            if (value == null) {
+                binding.rotateContainer.setOnClickListener(null)
+                binding.rotateContainer.isClickable = false
+            } else {
+                binding.leftSideContainer.isClickable = false
+                binding.rightSideContainer.isClickable = false
+                binding.rotateContainer.setOnClickListener { value.invoke() }
+            }
         }
-    }
 
     private var leftImage: Image? = null
     private var rightImage: Image? = null
@@ -80,7 +84,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
             val width = min(bottom - top, right - left)
             val height = max(bottom - top, right - left)
             val params = binding.rotateContainer.layoutParams
-            if(width != params.width || height != params.height) {
+            if (width != params.width || height != params.height) {
                 params.width = width
                 params.height = height
                 binding.rotateContainer.layoutParams = params
@@ -158,11 +162,11 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.rightSideImage.animateFallDown()
     }
 
-    fun setLeftSideText(text: String?) {
+    fun setLeftSideText(text: Text?) {
         binding.leftSideTextView.setText(text)
     }
 
-    fun setRightSideText(text: String?) {
+    fun setRightSideText(text: Text?) {
         binding.rightSideTextView.setText(text)
     }
 

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class ShouldersKtTest {

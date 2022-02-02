@@ -10,7 +10,11 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.*
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.BackPressedListener
+import de.westnordost.streetcomplete.HasTitle
+import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -144,8 +148,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
                 listener?.onOAuthSuccess(consumer)
                 binding.progressView.visibility = View.INVISIBLE
             }
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
             Log.e(TAG, "Error during authorization", e)
             listener?.onOAuthFailed(e)
@@ -184,7 +187,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
 
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
             continuation?.resumeWithException(
-                OAuthCommunicationException("Error for URL $url","$description")
+                OAuthCommunicationException("Error for URL $url", "$description")
             )
         }
 

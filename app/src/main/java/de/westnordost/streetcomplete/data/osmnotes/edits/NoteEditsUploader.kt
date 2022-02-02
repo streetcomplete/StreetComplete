@@ -1,15 +1,23 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.osmnotes.*
-import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.NotesApi
+import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.deleteImages
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.osmtracks.TracksApi
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class NoteEditsUploader @Inject constructor(
@@ -88,7 +96,6 @@ class NoteEditsUploader @Inject constructor(
                 noteEditsController.markImagesActivated(note.id)
             }
             deleteImages(edit.imagePaths)
-
         } catch (e: ConflictException) {
             Log.d(
                 TAG,
@@ -126,7 +133,6 @@ class NoteEditsUploader @Inject constructor(
         val track = tracksApi.create(trackpoints, noteText)
         return "\n\nGPS Trace: \nhttps://www.openstreetmap.org/user/${track.userName}/traces/${track.id}"
     }
-
 
     companion object {
         private const val TAG = "NoteEditsUploader"

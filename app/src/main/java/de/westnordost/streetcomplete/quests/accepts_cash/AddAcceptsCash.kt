@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.accepts_cash
 
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.toYesNo
@@ -36,18 +36,19 @@ class AddAcceptsCash(
             "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
             "electronics_repair", "key_cutter", "stonemason"
         )
-       return """
-        nodes, ways, relations with
-        (
-          (shop and shop !~ no|vacant|mall)
-          or amenity ~ ${amenities.joinToString("|")}
-          or leisure ~ ${leisures.joinToString("|")}
-          or craft ~ ${crafts.joinToString("|")}
-          or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
-          or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
-        )
-        and (name or brand) and !payment:cash and !payment:coins and !payment:notes
-    """}
+        return """
+            nodes, ways, relations with
+            (
+              (shop and shop !~ no|vacant|mall)
+              or amenity ~ ${amenities.joinToString("|")}
+              or leisure ~ ${leisures.joinToString("|")}
+              or craft ~ ${crafts.joinToString("|")}
+              or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
+              or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
+            )
+            and (name or brand) and !payment:cash and !payment:coins and !payment:notes
+        """
+    }
 
     override val changesetComment = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
@@ -68,8 +69,8 @@ class AddAcceptsCash(
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("payment:cash", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+        tags["payment:cash"] = answer.toYesNo()
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =

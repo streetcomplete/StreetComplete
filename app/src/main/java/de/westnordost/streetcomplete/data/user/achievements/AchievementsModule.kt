@@ -317,7 +317,6 @@ object AchievementsModule {
             R.string.link_graphhopper_description
         ),
 
-
         /* -------------------------------------- Goodies ----------------------------------------*/
         Link(
             "umap",
@@ -399,7 +398,7 @@ object AchievementsModule {
             R.string.achievement_surveyor_solved_X,
             TotalSolvedQuests,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 /* Achievements rewarded for general activity should first cover introduction to OSM
                    and then most of all goodies and general (OSM) showcases */
@@ -446,7 +445,7 @@ object AchievementsModule {
             R.string.achievement_rare_solved_X,
             SolvedQuestsOfTypes,
             // levels: 3, 9, 18, 30, 45, 63, ...
-            { lvl -> (lvl + 1)*3 },
+            { lvl -> (lvl + 1) * 3 },
             mapOf()
         ),
 
@@ -457,10 +456,9 @@ object AchievementsModule {
             R.string.achievement_car_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 2 to links("city_roads"), // put it here because it shows roads
-
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
                 6 to links("openrouteservice"),
@@ -476,7 +474,7 @@ object AchievementsModule {
             R.string.achievement_veg_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("openvegemap")
             )
@@ -489,7 +487,7 @@ object AchievementsModule {
             R.string.achievement_pedestrian_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("öpnvkarte")
             )
@@ -502,7 +500,7 @@ object AchievementsModule {
             R.string.achievement_building_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("osm_buildings"),
                 2 to links("figuregrounder")
@@ -516,7 +514,7 @@ object AchievementsModule {
             R.string.achievement_postman_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 // Nominatim should not appear too early because it is a bit technical, the functionality
                 // itself is often integrated into other services
@@ -532,7 +530,7 @@ object AchievementsModule {
             R.string.achievement_blind_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("touch_mapper"),
                 2 to links("mapy_tactile")
@@ -546,7 +544,7 @@ object AchievementsModule {
             R.string.achievement_wheelchair_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("wheelmap"),
                 2 to links("openrouteservice-wheelchair")
@@ -560,7 +558,7 @@ object AchievementsModule {
             R.string.achievement_bicyclist_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("cyclosm"),
                 2 to links("brouter")
@@ -574,7 +572,7 @@ object AchievementsModule {
             R.string.achievement_citizen_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("openstreetbrowser"),
                 2 to links("qwant_maps"),
@@ -590,7 +588,7 @@ object AchievementsModule {
             R.string.achievement_outdoors_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("openorienteeringmap")
             )
@@ -603,7 +601,7 @@ object AchievementsModule {
             R.string.achievement_lifesaver_solved_X,
             SolvedQuestsOfTypes,
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
-            { lvl -> (lvl + 1)*10 },
+            { lvl -> (lvl + 1) * 10 },
             mapOf(
                 1 to links("osmhydrant")
             )

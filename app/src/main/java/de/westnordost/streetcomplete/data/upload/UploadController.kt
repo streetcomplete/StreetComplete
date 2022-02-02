@@ -11,7 +11,7 @@ import javax.inject.Singleton
 /** Controls uploading */
 @Singleton class UploadController @Inject constructor(
     private val context: Context
-): UploadProgressSource {
+) : UploadProgressSource {
 
     private var uploadServiceIsBound = false
     private var uploadService: UploadService.Interface? = null

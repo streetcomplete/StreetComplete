@@ -2,9 +2,11 @@ package de.westnordost.streetcomplete.quests.self_service
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.*
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
 
 class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
@@ -20,19 +22,19 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
     override fun createForm() = AddSelfServiceLaundryForm()
 
-    override fun applyAnswerTo(answer: SelfServiceLaundry, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: SelfServiceLaundry, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             NO -> {
-                changes.add("self_service", "no")
-                changes.addOrModify("laundry_service", "yes")
+                tags["self_service"] = "no"
+                tags["laundry_service"] = "yes"
             }
             OPTIONAL -> {
-                changes.add("self_service", "yes")
-                changes.addOrModify("laundry_service", "yes")
+                tags["self_service"] = "yes"
+                tags["laundry_service"] = "yes"
             }
             ONLY -> {
-                changes.add("self_service", "yes")
-                changes.addOrModify("laundry_service", "no")
+                tags["self_service"] = "yes"
+                tags["laundry_service"] = "no"
             }
         }
     }

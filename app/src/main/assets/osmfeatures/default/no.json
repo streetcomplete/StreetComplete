@@ -3472,20 +3472,11 @@
                 "highway/crossing/marked": {
                     "name": "Fotgjengerovergang"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Fotgjengerovergang (forhøyet)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Tilrettelagt kryssing"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Tilrettelagt kryssing (forhøyet)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Fotgjengerovergang"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Fotgjengerovergang (forhøyet)"
                 },
                 "highway/cycleway": {
                     "name": "Sykkelvei"
@@ -3517,23 +3508,14 @@
                 "highway/footway/marked": {
                     "name": "Fotgjengerovergang"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Fotgjengerovergang (forhøyet)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Fortau"
                 },
                 "highway/footway/unmarked": {
                     "name": "Tilrettelagt kryssing"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Tilrettelagt kryssing (forhøyet)"
-                },
                 "highway/footway/zebra": {
                     "name": "Fotgjengerovergang"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Fotgjengerovergang (forhøyet)"
                 },
                 "highway/give_way": {
                     "name": "Vikepliktskilt"

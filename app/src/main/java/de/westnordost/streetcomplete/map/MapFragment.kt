@@ -16,7 +16,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import com.mapzen.tangram.TouchInput.*
+import com.mapzen.tangram.TouchInput.DoubleTapResponder
+import com.mapzen.tangram.TouchInput.LongPressResponder
+import com.mapzen.tangram.TouchInput.PanResponder
+import com.mapzen.tangram.TouchInput.RotateResponder
+import com.mapzen.tangram.TouchInput.ScaleResponder
+import com.mapzen.tangram.TouchInput.ShoveResponder
+import com.mapzen.tangram.TouchInput.TapResponder
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -27,9 +33,18 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.ktx.awaitLayout
+import de.westnordost.streetcomplete.ktx.containsAll
+import de.westnordost.streetcomplete.ktx.setMargins
+import de.westnordost.streetcomplete.ktx.tryStartActivity
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.SceneMapComponent
-import de.westnordost.streetcomplete.map.tangram.*
+import de.westnordost.streetcomplete.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.map.tangram.CameraUpdate
+import de.westnordost.streetcomplete.map.tangram.KtMapController
+import de.westnordost.streetcomplete.map.tangram.MapChangingListener
+import de.westnordost.streetcomplete.map.tangram.initMap
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -40,9 +55,16 @@ import okhttp3.internal.Version
 import javax.inject.Inject
 
 /** Manages a map that remembers its last location*/
-open class MapFragment : Fragment(),
-    TapResponder, DoubleTapResponder, LongPressResponder,
-    PanResponder, ScaleResponder, ShoveResponder, RotateResponder, SharedPreferences.OnSharedPreferenceChangeListener {
+open class MapFragment :
+    Fragment(),
+    TapResponder,
+    DoubleTapResponder,
+    LongPressResponder,
+    PanResponder,
+    ScaleResponder,
+    ShoveResponder,
+    RotateResponder,
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
@@ -54,23 +76,23 @@ open class MapFragment : Fragment(),
     private var previousCameraPosition: CameraPosition? = null
 
     var isMapInitialized: Boolean = false
-    private set
+        private set
 
     var show3DBuildings: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
+        set(value) {
+            if (field == value) return
+            field = value
 
-        val toggle = if (value) "true" else "false"
+            val toggle = if (value) "true" else "false"
 
-        viewLifecycleScope.launch {
-            sceneMapComponent?.putSceneUpdates(listOf(
-                "layers.buildings.draw.buildings-style.extrude" to toggle,
-                "layers.buildings.draw.buildings-outline-style.extrude" to toggle
-            ))
-            sceneMapComponent?.loadScene()
+            viewLifecycleScope.launch {
+                sceneMapComponent?.putSceneUpdates(listOf(
+                    "layers.buildings.draw.buildings-style.extrude" to toggle,
+                    "layers.buildings.draw.buildings-outline-style.extrude" to toggle
+                ))
+                sceneMapComponent?.loadScene()
+            }
         }
-    }
 
     @Inject internal lateinit var vectorTileProvider: VectorTileProvider
     @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
@@ -123,7 +145,7 @@ open class MapFragment : Fragment(),
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.open_url)
             .setMessage(url)
-            .setPositiveButton(android.R.string.ok) { _,_ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 openUrl(url)
             }
             .setNegativeButton(android.R.string.cancel, null)
@@ -359,7 +381,8 @@ open class MapFragment : Fragment(),
     fun updateCameraPosition(
         duration: Long = 0,
         interpolator: Interpolator = defaultCameraInterpolator,
-        builder: CameraUpdate.() -> Unit) {
+        builder: CameraUpdate.() -> Unit
+    ) {
 
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
@@ -386,5 +409,4 @@ open class MapFragment : Fragment(),
         private const val PREF_LAT = "map_lat"
         private const val PREF_LON = "map_lon"
     }
-
 }

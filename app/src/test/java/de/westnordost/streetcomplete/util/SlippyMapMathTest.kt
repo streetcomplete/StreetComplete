@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.util
 
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SlippyMapMathTest {
@@ -40,7 +42,7 @@ class SlippyMapMathTest {
     }
 
     @Test fun `minTileRect of list with one entry returns tiles rect of size 1`() {
-        assertEquals(TilesRect(1,1,1,1), listOf(TilePos(1,1)).minTileRect())
+        assertEquals(TilesRect(1, 1, 1, 1), listOf(TilePos(1, 1)).minTileRect())
     }
 
     @Test fun `minTileRect returns correct minimum tiles rect`() {

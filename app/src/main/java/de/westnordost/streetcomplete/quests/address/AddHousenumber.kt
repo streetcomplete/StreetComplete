@@ -2,10 +2,15 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.ktx.isArea
@@ -13,7 +18,7 @@ import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
@@ -21,13 +26,13 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
-            "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
-            "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
-            "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
-            "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
-            "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
-            "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
-            "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
+        "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
+        "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+        "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+        "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+        "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+        "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
+        "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
 
     override val questTypeAchievements = listOf(POSTMAN)
@@ -61,8 +66,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
         if (buildings.isEmpty()) return listOf()
 
         /** exclude buildings that intersect with the bounding box because it is not possible to
-           ascertain for these if there is an address node within the building - it could be outside
-           the bounding box */
+            ascertain for these if there is an address node within the building - it could be outside
+            the bounding box */
 
         val buildingGeometriesById = buildings.associate {
             it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
@@ -126,30 +131,30 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: HousenumberAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is NoHouseNumber -> changes.add("nohousenumber", "yes")
-            is HouseNumber   -> changes.add("addr:housenumber", answer.number)
-            is HouseName     -> changes.add("addr:housename", answer.name)
+    override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
+            is NoHouseNumber -> tags["nohousenumber"] = "yes"
+            is HouseNumber   -> tags["addr:housenumber"] = answer.number
+            is HouseName     -> tags["addr:housename"] = answer.name
             is ConscriptionNumber -> {
-                changes.add("addr:conscriptionnumber", answer.number)
+                tags["addr:conscriptionnumber"] = answer.number
                 if (answer.streetNumber != null) {
-                    changes.add("addr:streetnumber", answer.streetNumber)
-                    changes.add("addr:housenumber", answer.streetNumber)
+                    tags["addr:streetnumber"] = answer.streetNumber
+                    tags["addr:housenumber"] = answer.streetNumber
                 } else {
-                    changes.add("addr:housenumber", answer.number)
+                    tags["addr:housenumber"] = answer.number
                 }
             }
             is HouseAndBlockNumber -> {
-                changes.add("addr:housenumber", answer.houseNumber)
-                changes.addOrModify("addr:block_number", answer.blockNumber)
+                tags["addr:housenumber"] = answer.houseNumber
+                tags["addr:block_number"] = answer.blockNumber
             }
             WrongBuildingType -> {
-                changes.modify("building", "yes")
+                tags["building"] = "yes"
             }
             is HouseNameAndHouseNumber -> {
-                changes.add("addr:housenumber", answer.number)
-                changes.add("addr:housename", answer.name)
+                tags["addr:housenumber"] = answer.number
+                tags["addr:housename"] = answer.name
             }
         }
     }
@@ -157,24 +162,24 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
 private val notABuildingFilter by lazy { """
     ways, relations with !building"
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
       (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
       and !building
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
       and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val nodesWithAddressFilter by lazy { """
    nodes with
      addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val buildingsWithMissingAddressFilter by lazy { """
     ways, relations with
@@ -188,7 +193,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
       and !addr:streetnumber
       and !noaddress
       and !nohousenumber
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val buildingTypesThatShouldHaveAddresses = listOf(
     "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",

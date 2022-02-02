@@ -1609,7 +1609,7 @@
     <string name="quest_religion_animist">"Анимист"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_steps_title">"Завершены ли эти шаги?"</string>
+    <string name="quest_construction_steps_title">"Ремонт этой лестницы завершён?"</string>
     <string name="pref_quests_deselect_all">"Отменить выбор всех заданий?"</string>
     <string name="quest_buildingType_boathouse">"Эллинг"</string>
     <string name="quest_buildingType_allotment_house">"Пристройка для садового участка"</string>
@@ -1762,6 +1762,7 @@
     <string name="quest_smoothness_description_intermediate_paved">"Необычно неровная поверхность, широкие зазоры, трещины, неглубокие колеи, выбоины или другие повреждения"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Широкие промежутки, возможное смещение камней или другие повреждения"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Плоские камни или с квадратными краями, неглубокие или узкие промежутки"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Мелкий гравий, неглубокие неровности или выбоины"</string>
     <string name="quest_smoothness_description_bad_paved">"Большие ямы, выбоины, колеи, осыпающееся дорожное покрытие или другие повреждения"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"Смещённые камни, большие ямы или другие повреждения"</string>
     <string name="quest_smoothness_description_bad_sett">"Выветренные камни или камни неправильной формы, большие ямы и повреждения"</string>
@@ -1794,4 +1795,7 @@
 
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_solved_X">"Вы решили %d квестов помогающих службам спасения!"</string>
+    <string name="quest_fuelSelfService_title">"Можете ли вы сами заправиться бензином на этой заправке?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Этот тип квеста по умолчанию отключен, потому что он занимает довольно много времени и часто сложно сделать правильный выбор. Вы можете включить этот тип квеста только в том случае, если вы действительно намерены добавить эти данные."</string>
+    <string name="quest_airConditioning_no_name_title">"Это место (%s) оснащено кондиционером?"</string>
 </resources>

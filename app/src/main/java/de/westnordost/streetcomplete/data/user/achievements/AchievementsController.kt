@@ -17,7 +17,7 @@ import javax.inject.Singleton
     private val questTypeRegistry: QuestTypeRegistry,
     @Named("Achievements") private val allAchievements: List<Achievement>,
     @Named("Links") allLinks: List<Link>
-): AchievementsSource {
+) : AchievementsSource {
 
     private val listeners: MutableList<AchievementsSource.Listener> = CopyOnWriteArrayList()
 
@@ -64,7 +64,6 @@ import javax.inject.Singleton
     override fun getLinks(): List<Link> =
         userLinksDao.getAll().mapNotNull { linksById[it] }
 
-
     override fun addListener(listener: AchievementsSource.Listener) {
         listeners.add(listener)
     }
@@ -99,7 +98,6 @@ import javax.inject.Singleton
     private fun updateDaysActiveAchievements() {
         updateAchievements(allAchievements.filter { it.condition is DaysActive })
     }
-
 
     private fun updateAchievements(achievements: List<Achievement>, silent: Boolean = false) {
         val currentAchievementLevels = userAchievementsDao.getAll()

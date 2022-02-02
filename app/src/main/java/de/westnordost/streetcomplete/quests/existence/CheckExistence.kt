@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.updateCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
@@ -62,8 +62,7 @@ class CheckExistence(
           )
           and (${lastChecked(6.0)})
         )) and access !~ no|private and (!seasonal or seasonal = no)
-    """.toElementFilterExpression()
-    }
+    """.toElementFilterExpression() }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that
     // postboxes are in 4 years category so that postbox collection times is asked instead more often
@@ -115,8 +114,8 @@ class CheckExistence(
 
     override fun createForm() = CheckExistenceForm()
 
-    override fun applyAnswerTo(answer: Unit, changes: StringMapChangesBuilder) {
-        changes.updateCheckDate()
+    override fun applyAnswerTo(answer: Unit, tags: Tags, timestampEdited: Long) {
+        tags.updateCheckDate()
     }
 
     private fun lastChecked(yearsAgo: Double): String = """
@@ -128,4 +127,4 @@ class CheckExistence(
         featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
 }
 
-private fun <X,Y> Map<X,Y>.containsAll(other: Map<X,Y>) = other.all { this[it.key] == it.value }
+private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

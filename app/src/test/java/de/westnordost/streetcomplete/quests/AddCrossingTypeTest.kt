@@ -4,7 +4,8 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.*
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import org.junit.Test
 import java.time.LocalDate
 

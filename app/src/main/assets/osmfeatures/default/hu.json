@@ -123,6 +123,7 @@
                         "Ski": "Síelés",
                         "bicycle": "Kerékpározás",
                         "hiking": "Túrázás",
+                        "horse": "Lovaglás",
                         "mtb": "Hegyikerékpározás"
                     },
                     "terms": "aktivitás,elfoglaltság,sport,kikapcsolódás"
@@ -793,7 +794,13 @@
                     "terms": "irány,tájolás,menetirány"
                 },
                 "direction_cardinal-US-CA-NZ": {
-                    "label": "Irány"
+                    "label": "Irány",
+                    "options": {
+                        "east": "Kelet felé",
+                        "north": "Észak felé",
+                        "south": "Dél felé",
+                        "west": "Nyugat felé"
+                    }
                 },
                 "direction_clock": {
                     "label": "Irány",
@@ -1220,7 +1227,7 @@
                 },
                 "intermittent": {
                     "label": "Időszakos",
-                    "terms": "időszakos"
+                    "terms": "időszaki"
                 },
                 "intermittent_yes": {
                     "label": "Időszakos"
@@ -1234,16 +1241,16 @@
                         "wlan": "Wifi",
                         "yes": "Van"
                     },
-                    "terms": "internetcsatlakozás,wifi,wlan,web"
+                    "terms": "internet,wifi,wlan,web,net,hálózat"
                 },
                 "internet_access/fee": {
-                    "label": "Internetcsatlakozás",
+                    "label": "Internethozzáférés",
                     "options": {
                         "customers": "Csak ügyfeleknek",
                         "no": "Ingyenes",
                         "yes": "Fizetős"
                     },
-                    "terms": "internet hozzáférés,hálózati hozzáférés"
+                    "terms": "internet,hálózat,net,wifi"
                 },
                 "internet_access/ssid": {
                     "label": "Wifi-hálózat neve",
@@ -1251,7 +1258,7 @@
                 },
                 "interval": {
                     "label": "Intervallum",
-                    "terms": "időköz"
+                    "terms": "időköz,időszak"
                 },
                 "junction/ref_oneway": {
                     "label": "Csomópont száma",
@@ -4629,21 +4636,11 @@
                     "name": "Jelölt gyalogátkelő",
                     "terms": "zebra"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)",
-                    "terms": "zebra"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Jelöletlen gyalogosátkelő"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Jelöletlen gyalogosátkelő (megemelt)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Jelölt gyalogátkelő"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)"
                 },
                 "highway/cycleway": {
                     "name": "Kijelölt kerékpárút",
@@ -4692,9 +4689,6 @@
                 "highway/footway/marked": {
                     "name": "Jelölt gyalogátkelő"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Járda",
                     "terms": "járda,gyalogjáró,gyalogút"
@@ -4702,14 +4696,8 @@
                 "highway/footway/unmarked": {
                     "name": "Nem jelölt gyalogosátkelő"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Nem jelölt gyalogosátkelő (megemelt)"
-                },
                 "highway/footway/zebra": {
                     "name": "Jelölt gyalogátkelő"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Jelölt gyalogátkelő (megemelt)"
                 },
                 "highway/give_way": {
                     "name": "Elsőbbségadás kötelező",
@@ -5928,6 +5916,9 @@
                 "natural/wetland": {
                     "name": "Vizenyős terület",
                     "terms": "mocsár,vizenyő,nádas,láp,ingovány"
+                },
+                "natural/wetland/swamp": {
+                    "terms": "láp,mocsár,vizenyő"
                 },
                 "natural/wood": {
                     "name": "Erdő (természetes)"
@@ -7510,22 +7501,28 @@
                     "terms": "tilos jobbra kanyarodni,jobbra menni tilos,jobbra fordulni tilos"
                 },
                 "type/restriction/no_straight_on": {
-                    "name": "Egyenesen tilos"
+                    "name": "Egyenesen tilos",
+                    "terms": "kötelező haladási irány"
                 },
                 "type/restriction/no_u_turn": {
-                    "name": "Megfordulni tilos"
+                    "name": "Megfordulni tilos",
+                    "terms": "kötelező haladási irány"
                 },
                 "type/restriction/only_left_turn": {
-                    "name": "Csak balra fordulás"
+                    "name": "Csak balra fordulás",
+                    "terms": "kötelező haladási irány"
                 },
                 "type/restriction/only_right_turn": {
-                    "name": "Csak jobbra fordulás"
+                    "name": "Csak jobbra fordulás",
+                    "terms": "kötelező haladási irány"
                 },
                 "type/restriction/only_straight_on": {
-                    "name": "Csak egyenesen tovább"
+                    "name": "Csak egyenesen tovább",
+                    "terms": "kötelező haladási irány"
                 },
                 "type/restriction/only_u_turn": {
-                    "name": "Csak visszafordulás"
+                    "name": "Csak visszafordulás",
+                    "terms": "kötelező haladási irány"
                 },
                 "type/route": {
                     "name": "Útvonal",

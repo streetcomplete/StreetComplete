@@ -4,11 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.hasCheckDate
 import de.westnordost.streetcomplete.data.meta.updateCheckDate
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.deleteIfExistList
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddStileType : OsmElementQuestType<StileTypeAnswer> {
@@ -49,43 +48,35 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     override fun createForm() = AddStileTypeForm()
 
-    override fun applyAnswerTo(answer: StileTypeAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is StileType -> {
                 val newType = answer.osmValue
                 val newMaterial = answer.osmMaterialValue
-                val oldType = changes.getPreviousValue("stile")
-                val oldMaterial = changes.getPreviousValue("material")
+                val oldType = tags["stile"]
+                val oldMaterial = tags["material"]
                 val stileWasRebuilt =
-                    oldType != null && oldType != newType ||
-                    newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
+                    oldType != null && oldType != newType
+                    || newMaterial != null && oldMaterial != null && oldMaterial != newMaterial
 
+                // => properties that refer to the old replaced stile should be removed
                 if (stileWasRebuilt) {
-                    // => properties that refer to the old replaced stile should be removed
-                    changes.deleteIfExistList(STILE_PROPERTIES - "material")
-                    if(newMaterial != null) {
-                        changes.addOrModify("material", newMaterial)
-                    } else {
-                        changes.deleteIfExists("material")
-                    }
-                } else if (newMaterial != null && oldMaterial == null) {
-                    // not considered as rebuilt, but material info still
-                    // can be added where it was missing
-                    changes.add("material", newMaterial)
+                    STILE_PROPERTIES.forEach { tags.remove(it) }
                 }
-                if (newType != oldType) {
-                    changes.addOrModify("stile", newType)
+                if (newMaterial != null) {
+                    tags["material"] = newMaterial
                 }
+                tags["stile"] = newType
             }
             is ConvertedStile -> {
-                changes.deleteIfExistList(STILE_PROPERTIES)
-                changes.deleteIfExists("stile")
-                changes.modify("barrier", answer.newBarrier)
+                STILE_PROPERTIES.forEach { tags.remove(it) }
+                tags.remove("stile")
+                tags["barrier"] = answer.newBarrier
             }
         }
         // policy is to not remove a check date if one is already there but update it instead
-        if (changes.getChanges().isEmpty() || changes.hasCheckDate()) {
-            changes.updateCheckDate()
+        if (!tags.hasChanges || tags.hasCheckDate()) {
+            tags.updateCheckDate()
         }
     }
 

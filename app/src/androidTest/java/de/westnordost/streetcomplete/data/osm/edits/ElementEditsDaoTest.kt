@@ -6,16 +6,29 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAc
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.*
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -106,7 +119,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(2))
         assertNotNull(dao.get(3))
 
-        dao.deleteAll(listOf(1,2,3))
+        dao.deleteAll(listOf(1, 2, 3))
 
         assertNull(dao.get(1))
         assertNull(dao.get(2))
@@ -283,17 +296,17 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
     TEST_QUEST_TYPE,
     ElementType.WAY,
     1,
-    Way(1, listOf(0,1)),
-    ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0,1.0))), LatLon(0.5, 0.5)),
+    Way(1, listOf(0, 1)),
+    ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0, 1.0))), LatLon(0.5, 0.5)),
     "survey",
     timestamp,
     isSynced,
     SplitWayAction(
         arrayListOf(
-            SplitAtPoint(LatLon(0.0,0.0)),
+            SplitAtPoint(LatLon(0.0, 0.0)),
             SplitAtLinePosition(
-                LatLon(0.0,0.0),
-                LatLon(1.0,1.0),
+                LatLon(0.0, 0.0),
+                LatLon(1.0, 1.0),
                 0.5
             )
         )

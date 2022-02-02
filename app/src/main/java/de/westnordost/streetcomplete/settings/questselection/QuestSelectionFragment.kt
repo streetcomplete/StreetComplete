@@ -32,7 +32,6 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
-
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasTitle {
 
@@ -119,7 +118,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
             R.id.action_deselect_all -> {
                 AlertDialog.Builder(requireContext())
                     .setTitle(R.string.pref_quests_deselect_all)
-                    .setPositiveButton(android.R.string.ok) { _,_ -> deselectAllQuests() }
+                    .setPositiveButton(android.R.string.ok) { _, _ -> deselectAllQuests() }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()
                 return true

@@ -7,8 +7,17 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.testutils.*
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.comment
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.noteEdit
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -148,7 +157,8 @@ class NotesWithEditsSourceTest {
                 comment("test12", NoteComment.Action.OPENED, timestamp = 123, user = user)
             ),
             position = p,
-            timestamp = 123)
+            timestamp = 123
+        )
 
         val edits = listOf(
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123)
@@ -171,7 +181,8 @@ class NotesWithEditsSourceTest {
                 comment("test34", NoteComment.Action.COMMENTED, timestamp = 234, user = user),
             ),
             position = p,
-            timestamp = 123)
+            timestamp = 123
+        )
 
         val edits = listOf(
             noteEdit(noteId = -12, pos = p, action = NoteEditAction.CREATE, text = "test12", timestamp = 123),
@@ -282,7 +293,7 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val p = p(1.0,1.0)
+        val p = p(1.0, 1.0)
         val expectedNote = note(id = 1, position = p, timestamp = 123L, comments = arrayListOf(
             comment("abc", NoteComment.Action.OPENED, 123L)
         ))
@@ -306,7 +317,7 @@ class NotesWithEditsSourceTest {
 
         val added = listOf(note(1), note(2))
         val updated = listOf(note(3), note(4))
-        val deleted = listOf(1L,2L)
+        val deleted = listOf(1L, 2L)
 
         on(noteEditsController.getAllUnsynced()).thenReturn(emptyList())
 
@@ -353,30 +364,29 @@ private val bbox = bbox()
 val user = User(id = -1, displayName = "")
 
 val initialNotes1 = listOf(
-    note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
+    note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100)
     )),
-    note(id = 3, position = p(0.0,3.0), timestamp = 800)
+    note(id = 3, position = p(0.0, 3.0), timestamp = 800)
 )
 
 val expectedNotes1 = listOf(
-    note(id = 1, position = p(1.0,2.0), timestamp = 10, comments = arrayListOf(
+    note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
         comment("test", NoteComment.Action.OPENED, timestamp = 100),
         comment("test2", NoteComment.Action.COMMENTED, timestamp = 500, user = user)
     )),
-    note(id = 2, position = p(12.0,1.0), timestamp = 300, comments = arrayListOf(
+    note(id = 2, position = p(12.0, 1.0), timestamp = 300, comments = arrayListOf(
         comment("xyz", NoteComment.Action.OPENED, timestamp = 300, user = user),
         comment("abc", NoteComment.Action.COMMENTED, timestamp = 900, user = user),
     )),
-    note(id = 3, position = p(0.0,3.0), timestamp = 800)
+    note(id = 3, position = p(0.0, 3.0), timestamp = 800)
 )
 
 val edits1 = listOf(
-    noteEdit(noteId = 2, action = NoteEditAction.CREATE, text = "xyz", timestamp = 300, pos = p(12.0,1.0)),
+    noteEdit(noteId = 2, action = NoteEditAction.CREATE, text = "xyz", timestamp = 300, pos = p(12.0, 1.0)),
     noteEdit(noteId = 1, action = NoteEditAction.COMMENT, text = "test2", timestamp = 500),
     noteEdit(noteId = 2, action = NoteEditAction.COMMENT, text = "abc", timestamp = 900),
 )
-
 
 private fun checkListenerCalledWith(
     listener: NotesWithEditsSource.Listener,

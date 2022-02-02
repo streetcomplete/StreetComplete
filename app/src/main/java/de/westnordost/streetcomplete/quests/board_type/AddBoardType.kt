@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 
 class AddBoardType : OsmFilterQuestType<BoardType>() {
 
@@ -33,11 +33,11 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: BoardType, changes: StringMapChangesBuilder) {
-        if(answer == BoardType.MAP) {
-            changes.modify("information", "map")
+    override fun applyAnswerTo(answer: BoardType, tags: Tags, timestampEdited: Long) {
+        if (answer == BoardType.MAP) {
+            tags["information"] = "map"
         } else {
-            changes.addOrModify("board_type", answer.osmValue)
+            tags["board_type"] = answer.osmValue
         }
     }
 }

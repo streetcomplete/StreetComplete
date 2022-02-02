@@ -37,7 +37,6 @@ data class NoteEdit(
 
     /** attached GPS location tracks */
     val tracks: List<Trackpoint>,
-
 ): Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)

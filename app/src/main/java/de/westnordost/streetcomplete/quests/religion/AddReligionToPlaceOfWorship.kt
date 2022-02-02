@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.religion
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
@@ -30,7 +30,7 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
 
     override fun createForm() = AddReligionForm()
 
-    override fun applyAnswerTo(answer: Religion, changes: StringMapChangesBuilder) {
-        changes.add("religion", answer.osmValue)
+    override fun applyAnswerTo(answer: Religion, tags: Tags, timestampEdited: Long) {
+        tags["religion"] = answer.osmValue
     }
 }

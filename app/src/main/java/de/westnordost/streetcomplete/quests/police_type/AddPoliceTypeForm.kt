@@ -26,6 +26,4 @@ class AddPoliceTypeForm : AImageListQuestAnswerFragment<PoliceType, PoliceType>(
     override fun onClickOk(selectedItems: List<PoliceType>) {
         applyAnswer(selectedItems.single())
     }
-
-
 }

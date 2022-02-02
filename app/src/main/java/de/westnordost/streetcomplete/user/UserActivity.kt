@@ -21,7 +21,8 @@ import javax.inject.Inject
  *  The LoginFragment, the UserFragment (which contains the viewpager with more
  *  fragments) and the "fake" dialogs AchievementInfoFragment and QuestTypeInfoFragment.
  * */
-class UserActivity : FragmentContainerActivity(R.layout.activity_user),
+class UserActivity :
+    FragmentContainerActivity(R.layout.activity_user),
     AchievementsFragment.Listener,
     QuestStatisticsFragment.Listener {
 
@@ -37,8 +38,8 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
 
     private val loginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) }}
-        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) }}
+        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) } }
+        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) } }
     }
 
     init {
@@ -116,5 +117,3 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         const val EXTRA_LAUNCH_AUTH = "de.westnordost.streetcomplete.user.launch_auth"
     }
 }
-
-

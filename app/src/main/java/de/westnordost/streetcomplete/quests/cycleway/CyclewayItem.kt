@@ -2,14 +2,26 @@ package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SEPARATE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
     Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
 
 fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
-    when(this) {
+    when (this) {
         NONE -> R.drawable.ic_cycleway_none_in_selection
         SEPARATE -> R.drawable.ic_cycleway_separate
         else -> getIconResId(isLeftHandTraffic)
@@ -18,7 +30,7 @@ fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
 fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
 
-private fun Cycleway.getRightHandTrafficIconResId(): Int = when(this) {
+private fun Cycleway.getRightHandTrafficIconResId(): Int = when (this) {
     UNSPECIFIED_LANE -> R.drawable.ic_cycleway_lane
     EXCLUSIVE_LANE -> R.drawable.ic_cycleway_lane
     ADVISORY_LANE -> R.drawable.ic_cycleway_shared_lane
@@ -35,7 +47,7 @@ private fun Cycleway.getRightHandTrafficIconResId(): Int = when(this) {
     else -> 0
 }
 
-private fun Cycleway.getLeftHandTrafficIconResId(): Int = when(this) {
+private fun Cycleway.getLeftHandTrafficIconResId(): Int = when (this) {
     UNSPECIFIED_LANE -> R.drawable.ic_cycleway_lane_l
     EXCLUSIVE_LANE -> R.drawable.ic_cycleway_lane_l
     ADVISORY_LANE -> R.drawable.ic_cycleway_shared_lane_l
@@ -52,7 +64,7 @@ private fun Cycleway.getLeftHandTrafficIconResId(): Int = when(this) {
     else -> 0
 }
 
-fun Cycleway.getTitleResId(): Int = when(this) {
+fun Cycleway.getTitleResId(): Int = when (this) {
     UNSPECIFIED_LANE -> R.string.quest_cycleway_value_lane
     EXCLUSIVE_LANE -> R.string.quest_cycleway_value_lane
     ADVISORY_LANE -> R.string.quest_cycleway_value_lane_soft

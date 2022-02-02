@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
@@ -59,16 +58,16 @@ class AddSuspectedOneway(
 
         val onewayCandidates = mapData.ways.filter {
             // so, only the ways suspected by improveOSM to be oneways
-            it.id in suspectedOnewayWayIds &&
+            it.id in suspectedOnewayWayIds
             // but also filter the data as ImproveOSM data may be outdated or catching too much
-            filter.matches(it) &&
+            && filter.matches(it)
             /* also exclude rings because the driving direction can then not be determined reliably
                from the improveosm data and the quest should stay simple, i.e not require the
                user to input it in those cases. Additionally, whether a ring-road is a oneway or
                not is less valuable information (for routing) and many times such a ring will
                actually be a roundabout. Oneway information on roundabouts is superfluous.
                See #1320 */
-            it.nodeIds.first() != it.nodeIds.last()
+            && it.nodeIds.first() != it.nodeIds.last()
         }
 
         // rehash traffic direction data into simple "way id -> forward/backward" data and persist
@@ -139,11 +138,11 @@ class AddSuspectedOneway(
 
     override fun createForm() = AddSuspectedOnewayForm()
 
-    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: Tags, timestampEdited: Long) {
         if (!answer.isOneway) {
-            changes.add("oneway", "no")
+            tags["oneway"] = "no"
         } else {
-            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
+            tags["oneway"] = if (db.isForward(answer.wayId)!!) "yes" else "-1"
         }
     }
 

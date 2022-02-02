@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Singleton class UserDataController @Inject constructor(
     private val prefs: SharedPreferences,
     private val userLoginStatusSource: UserLoginStatusSource
-): UserDataSource {
+) : UserDataSource {
 
     private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {}

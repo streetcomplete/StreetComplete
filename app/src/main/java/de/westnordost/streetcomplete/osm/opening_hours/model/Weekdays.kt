@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.osm.opening_hours.model
 
 import android.content.res.Resources
-
-import java.text.DateFormatSymbols
-
 import de.westnordost.streetcomplete.R
 import kotlinx.serialization.Serializable
+import java.text.DateFormatSymbols
 
 /** A selection of weekdays */
 @Serializable
@@ -71,7 +69,7 @@ class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.s
             }
         }
         if (currentStart != null) {
-            result.add(CircularSection(currentStart, WEEKDAY_COUNT-1))
+            result.add(CircularSection(currentStart, WEEKDAY_COUNT - 1))
         }
 
         return WEEKDAY_NUMBER_SYSTEM.merged(result)
@@ -91,7 +89,7 @@ class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.s
         const val PUBLIC_HOLIDAY = 7
         const val WEEKDAY_COUNT = 7
 
-        private val WEEKDAY_NUMBER_SYSTEM = NumberSystem(0, WEEKDAY_COUNT-1)
+        private val WEEKDAY_NUMBER_SYSTEM = NumberSystem(0, WEEKDAY_COUNT - 1)
 
         fun getNames(r: Resources): Array<String> {
             val symbols = DateFormatSymbols.getInstance()
