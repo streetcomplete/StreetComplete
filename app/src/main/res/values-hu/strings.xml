@@ -2424,6 +2424,8 @@ megállóban?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Ezek lépcsők"</string>
+    <string name="quest_barrier_type_passage_conversion">"Falon/kerítésen lévő átjáróvá alakítva"</string>
+    <string name="quest_barrier_type_gate_conversion">"Kapuvá alakítva"</string>
     <string name="quest_traffic_calming_type_title">"Ez milyen típusú forgalomcsillapító?"</string>
     <string name="quest_traffic_calming_type_bump">"Fekvőrendőr"</string>
     <string name="quest_traffic_calming_type_hump">"Hosszú fekvőrendőr"</string>
@@ -2448,6 +2450,7 @@ megállóban?"</string>
     <string name="quest_access_private">"Kizárólag engedéllyel rendelkező személy(ek)"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Még mindig pontos ennek a postaládának az ürítési ideje?"</string>
     <string name="quest_postboxCollectionTimes_resurvey_name_title">"Még mindig pontos ennek a postaládának az ürítési ideje: %s?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Nem sikerült felismerni. Próbáld meg megadni a hely típusát, pl. \"pékség\", vagy inkább hagyj egy megjegyzést."</string>
     <string name="quest_bicycle_barrier_type_title">"Ez milyen típusú kerékpáros akadály?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Az ösvényre átlósan"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Keskeny átjáró, fölfelé keskenyedik"</string>

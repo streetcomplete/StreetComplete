@@ -2511,8 +2511,11 @@
                     "terms": "пту,техникум,колледж"
                 },
                 "amenity/community_centre": {
-                    "name": "Культурный центр",
+                    "name": "Общественный центр",
                     "terms": "дом культуры"
+                },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Молодёжный центр"
                 },
                 "amenity/compressed_air": {
                     "name": "Сжатый воздух",
@@ -3641,9 +3644,6 @@
                 "highway/crossing/unmarked": {
                     "name": "Неразмеченный переход",
                     "terms": "народная тропа"
-                },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Неразмеченный переход (приподнятый)"
                 },
                 "highway/cycleway": {
                     "name": "Велодорожка",

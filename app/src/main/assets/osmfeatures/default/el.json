@@ -3887,20 +3887,11 @@
                 "highway/crossing/marked": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Διάβαση Πεζών (Υπερυψωμένη)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Διασταύρωση χωρίς Διαγράμμιση"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Διασταύρωση χωρίς Διαγράμμιση (Υπερυψωμένη)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Διάβαση Πεζών / Ζέβρα (Υπερυψωμένη)"
                 },
                 "highway/cycleway": {
                     "name": "Ποδηλατόδρομος",
@@ -3947,23 +3938,14 @@
                 "highway/footway/marked": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Διάβαση Πεζών (Υπερυψωμένη)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Πεζοδρόμιο"
                 },
                 "highway/footway/unmarked": {
                     "name": "Μη Διαγραμμισμένη Διάβαση Πεζών"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Μη Διαγραμμισμένη Διάβαση Πεζών (Υπερυψωμένη)"
-                },
                 "highway/footway/zebra": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Διάβαση Πεζών (Υπερυψωμένη)"
                 },
                 "highway/give_way": {
                     "name": "Σήμανση Παραχώρησης Προτεραιότητας"

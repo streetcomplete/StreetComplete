@@ -1206,10 +1206,41 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_parking_no">"No estacionar ací / No permès"</string>
     <string name="street_parking_prohibited">"Prohibit estacionar"</string>
     <string name="street_stopping_prohibited">"Prohibit parar"</string>
+    <string name="street_standing_prohibited">"Sense detenció"</string>
+    <string name="street_parking_conditional_restrictions">"Es pot estacionar / Sols es pot parar en certs casos"</string>
+    <string name="street_parking_no_other_reasons">"Sense senyal que ho indiqui / no es pot estacionar"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Tant un número de casa com un nom..."</string>
     <string name="quest_address_house_number_label">"Número:"</string>
     <string name="quest_shoulder_title">"Té voral aquesta carretera?"</string>
+    <string name="quest_fireHydrant_position_title">"On es troba l'hidrant?"</string>
     <string name="quest_fireHydrant_position_green">"En herba o terra"</string>
     <string name="quest_fireHydrant_position_lane">"A la carretera"</string>
     <string name="quest_fireHydrant_position_sidewalk">"A la vorera"</string>
     <string name="quest_fireHydrant_position_parking_lot">"En un aparcament"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Quin diàmetre s'especifica al senyal per a aquest hidrant? (nombre de referència: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Sí (deixa una nota)"</string>
+    <string name="quest_smoothness_name_title">"Quina és la qualitat de la superfície de %s ací?
+"</string>
+    <string name="quest_smoothness_square_title">"Quina és la qualitat de la superfície en aquesta plaça?"</string>
+    <string name="quest_smoothness_path_title">"Quina és la qualitat de la superfície en aquest camí?
+"</string>
+    <string name="quest_smoothness_road_title">"Quina és la qualitat de la superfície en aquesta via?"</string>
+    <string name="quest_smoothness_title_excellent">"Superfície plana i fàcil de creuar"</string>
+    <string name="quest_smoothness_title_good">"Més o menys transitable"</string>
+    <string name="quest_smoothness_title_very_horrible">"Gairebé impassable"</string>
+    <string name="quest_smoothness_title_impassable">"Impassable"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Quasi pla"</string>
+    <string name="quest_smoothness_description_good_paved">"Amb algun problema; esquerdes, imperfeccions o reparacions"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Superfície de pedres planes i compactes"</string>
+    <string name="quest_smoothness_description_good_sett">"Llambordes molt ben alineades i de vores quasi imperceptibles per al vianant
+"</string>
+    <string name="quest_smoothness_obstacle">"Hi ha un obstacle"</string>
+    <string name="link_osmhydrant_description">"Cerca, afegeix i edita estacions de bombers i hidrants"</string>
+    <string name="achievement_lifesaver_title">"Salvavides"</string>
+    <string name="achievement_lifesaver_solved_X">"Has resolt %d missions que ajuden als serveis d'emergència!"</string>
+    <string name="quest_fuelSelfService_title">"A aquesta benzinera pots repostar tu mateix?"</string>
+    <string name="quest_fuelSelfService_name_title">"A %s pots repostar tu mateix?"</string>
+    <string name="quest_barrier_path_intersection">"Com creua aquest camí la barrera aquí?"</string>
+    <string name="quest_barrier_road_intersection">"Com creua aquesta carretera la barrera aquí?"</string>
+    <string name="quest_airConditioning_no_name_title">"%s té aire condicionat?"</string>
 </resources>

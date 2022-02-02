@@ -2382,9 +2382,6 @@
                 "highway/crossing/marked": {
                     "name": "Označeni pješački prijelaz"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Uzdignuti pješački prijelaz"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Neoznačeni pješački prijelaz"
                 },

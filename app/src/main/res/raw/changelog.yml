@@ -10,6 +10,8 @@ v40.0-beta1: |
   <ul>
   <li>Allow answering whether there is a shoulder for each side individually (#3659)</li>
   <li>Allow answering whether the sidewalk is displayed separately on the map for each side individually</li>
+  <li>When asking where a hydrant is located, show example pictures of pillar hydrants if it is a pillar hydrant (#3686, #3695, #3711), by @FloEdelmann</li>
+  <li>Ask opening hours, place names and wheelchair accessibility for more amenities in the healthcare sector (#3710), by @FloEdelmann</li>
   </ul>
   <h3>Fixes and improvements</h3>
   <ul>

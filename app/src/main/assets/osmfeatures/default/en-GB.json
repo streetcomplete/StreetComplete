@@ -2422,14 +2422,8 @@
                 "highway/crossing/marked": {
                     "name": "Marked Crossing"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Marked Crossing (Raised)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Marked Crossing (Raised)"
                 },
                 "highway/cycleway": {
                     "name": "Cycle Path"
@@ -2443,17 +2437,11 @@
                 "highway/footway/marked": {
                     "name": "Marked Crossing"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Marked Crossing (Raised)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Pavement"
                 },
                 "highway/footway/zebra": {
                     "name": "Marked Crossing"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Marked Crossing (Raised)"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"
