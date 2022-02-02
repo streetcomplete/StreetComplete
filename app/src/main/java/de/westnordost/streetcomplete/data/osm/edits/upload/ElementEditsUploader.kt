@@ -41,7 +41,7 @@ class ElementEditsUploader @Inject constructor(
             val edit = elementEditsController.getOldestUnsynced() ?: break
             val idProvider = elementEditsController.getIdProvider(edit.id)
             /* the sync of local change -> API and its response should not be cancellable because
-             * otherwise an inconsistency in the data would occur. F.e. no "star" for an uploaded
+             * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
             withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
         }

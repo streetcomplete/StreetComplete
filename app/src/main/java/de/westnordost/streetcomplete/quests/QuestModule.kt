@@ -149,19 +149,19 @@ import javax.inject.Singleton
         /* The quest types are primarily sorted by how easy they can be solved:
 
            1. quests that are solvable from a distance or while passing by (fast)
-           2. quests that require to be right in front of it (f.e. because it is small, you need to
+           2. quests that require to be right in front of it (e.g. because it is small, you need to
               look for it or read text)
-           3. quests that require some exploration or walking around to check (f.e. walking down the
+           3. quests that require some exploration or walking around to check (e.g. walking down the
               whole road to find the cycleway is the same along the whole way)
            4. quests that require to go inside, i.e. deviate from your walking route by a lot just
               to solve the quest
-           5. quests that come in heaps (are spammy) come last: F.e. building type etc.
+           5. quests that come in heaps (are spammy) come last: E.g. building type etc.
 
            The ordering within this primary sort order shall be whatever is faster so solve first:
 
            a. Yes/No quests, easy selections first,
            b. number and text inputs later,
-           c. complex inputs (opening hours, ...) last. Quests that f.e. often require the way to be
+           c. complex inputs (opening hours, ...) last. Quests that e.g. often require the way to be
               split up first are in effect also slow to answer
 
            The order can be watered down somewhat if it means that quests that usually apply to the

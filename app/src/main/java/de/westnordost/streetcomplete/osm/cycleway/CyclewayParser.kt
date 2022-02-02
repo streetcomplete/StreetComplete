@@ -47,8 +47,8 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     var right: Cycleway?
 
     /* For oneways, the naked "cycleway"-keys should be interpreted differently:
-    *  F.e. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
-    *  is a lane. F.e. cycleway=opposite_lane means that there is a lane in opposite traffic flow
+    *  E.g. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
+    *  is a lane. E.g. cycleway=opposite_lane means that there is a lane in opposite traffic flow
     *  direction.
     *  Whether there is anything each in the other direction, is not defined, so we have to treat
     *  it that way. */
