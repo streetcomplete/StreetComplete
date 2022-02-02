@@ -9,8 +9,7 @@ data class RoadName(
     val localizedNames: List<LocalizedName>,
     val wayId: Long,
     val wayGeometry: List<LatLon>
-) :
-    RoadNameAnswer()
+) : RoadNameAnswer()
 
 object NoRoadName : RoadNameAnswer()
 object RoadIsServiceRoad : RoadNameAnswer()

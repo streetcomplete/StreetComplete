@@ -15,8 +15,7 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = R.attr.editTextStyle
-) :
-    AppCompatEditText(context, attrs, defStyleAttr) {
+) : AppCompatEditText(context, attrs, defStyleAttr) {
 
     var abbreviations: Abbreviations? = null
 
