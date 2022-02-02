@@ -31,8 +31,8 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
 
     @TaskAction fun run() {
         val query = """
-            SELECT ?value ?loc
-            WHERE { ?osm $sparqlQueryPart osmt:$osmTag ?value; osmm:loc ?loc. }
+        SELECT ?value ?loc
+        WHERE { ?osm $sparqlQueryPart osmt:$osmTag ?value; osmm:loc ?loc. }
         """.trimIndent()
 
         // country code -> ( value -> count )

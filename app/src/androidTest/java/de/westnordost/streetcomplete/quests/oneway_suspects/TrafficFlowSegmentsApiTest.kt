@@ -18,10 +18,10 @@ class TrafficFlowSegmentsApiTest {
 
     @Test fun parseTwoOfDifferentWay() {
         val result = TrafficFlowSegmentsApi.parse("""
-            {"segments":[
-                {"wayId":1,"fromPosition":{"lon":1, "lat":2},"toPosition":{"lon":5, "lat":6}},
-                {"wayId":2,"fromPosition":{"lon":3, "lat":4},"toPosition":{"lon":7, "lat":8}},
-            ]}
+        {"segments":[
+            {"wayId":1,"fromPosition":{"lon":1, "lat":2},"toPosition":{"lon":5, "lat":6}},
+            {"wayId":2,"fromPosition":{"lon":3, "lat":4},"toPosition":{"lon":7, "lat":8}},
+        ]}
         """.trimIndent())
         val expected = mapOf(
             1L to listOf(TrafficFlowSegment(LatLon(2.0, 1.0), LatLon(6.0, 5.0))),
@@ -32,10 +32,10 @@ class TrafficFlowSegmentsApiTest {
 
     @Test fun parseTwoOfSameWay() {
         val result = TrafficFlowSegmentsApi.parse("""
-            {"segments":[
-                {"wayId":1,"fromPosition":{"lon":1, "lat":2},"toPosition":{"lon":5, "lat":6}},
-                {"wayId":1,"fromPosition":{"lon":3, "lat":4},"toPosition":{"lon":7, "lat":8}},
-            ]}
+        {"segments":[
+            {"wayId":1,"fromPosition":{"lon":1, "lat":2},"toPosition":{"lon":5, "lat":6}},
+            {"wayId":1,"fromPosition":{"lon":3, "lat":4},"toPosition":{"lon":7, "lat":8}},
+        ]}
         """.trimIndent())
         val expected = mapOf(1L to listOf(
             TrafficFlowSegment(LatLon(2.0, 1.0), LatLon(6.0, 5.0)),
