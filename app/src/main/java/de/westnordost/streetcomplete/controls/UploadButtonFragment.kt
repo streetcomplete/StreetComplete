@@ -22,10 +22,10 @@ import org.koin.android.ext.android.inject
 /** Fragment that shows the upload button, including upload progress etc. */
 class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
-    internal val uploadController: UploadController by inject()
-    internal val userLoginStatusSource: UserLoginStatusSource by inject()
-    internal val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    internal val prefs: SharedPreferences by inject()
+    private val uploadController: UploadController by inject()
+    private val userLoginStatusSource: UserLoginStatusSource by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val prefs: SharedPreferences by inject()
 
     private val uploadButton get() = view as UploadButton
 

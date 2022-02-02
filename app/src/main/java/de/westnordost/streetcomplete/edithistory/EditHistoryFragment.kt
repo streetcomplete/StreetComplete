@@ -20,7 +20,7 @@ import org.koin.android.ext.android.inject
 /** Shows a list of the edit history */
 class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
 
-    internal val editHistorySource: EditHistorySource by inject()
+    private val editHistorySource: EditHistorySource by inject()
 
     interface Listener {
         /** Called when an edit has been selected and the undo-button appeared */

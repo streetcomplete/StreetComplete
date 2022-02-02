@@ -57,12 +57,12 @@ import java.util.concurrent.TimeUnit
 
 class StreetCompleteApplication : Application() {
 
-    val preloader: Preloader by inject()
-    val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
-    val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
-    val downloadedTilesDao: DownloadedTilesDao by inject()
-    val prefs: SharedPreferences by inject()
-    val editHistoryController: EditHistoryController by inject()
+    private val preloader: Preloader by inject()
+    private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
+    private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
+    private val downloadedTilesDao: DownloadedTilesDao by inject()
+    private val prefs: SharedPreferences by inject()
+    private val editHistoryController: EditHistoryController by inject()
 
     private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 

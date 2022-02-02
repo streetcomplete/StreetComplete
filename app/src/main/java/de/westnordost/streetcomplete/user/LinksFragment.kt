@@ -26,8 +26,8 @@ import org.koin.android.ext.android.inject
 /** Shows the user's unlocked links */
 class LinksFragment : Fragment(R.layout.fragment_links) {
 
-    internal val achievementsSource: AchievementsSource by inject()
-    internal val statisticsSource: StatisticsSource by inject()
+    private val achievementsSource: AchievementsSource by inject()
+    private val statisticsSource: StatisticsSource by inject()
 
     private val binding by viewBinding(FragmentLinksBinding::bind)
 

@@ -93,9 +93,9 @@ open class MapFragment :
             }
         }
 
-    internal val vectorTileProvider: VectorTileProvider by inject()
-    internal val cacheConfig: MapTilesDownloadCacheConfig by inject()
-    internal val sharedPrefs: SharedPreferences by inject()
+    private val vectorTileProvider: VectorTileProvider by inject()
+    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
+    private val sharedPrefs: SharedPreferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */

@@ -24,8 +24,8 @@ import org.koin.android.ext.android.inject
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
 class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
-    internal val statisticsSource: StatisticsSource by inject()
-    internal val questTypeRegistry: QuestTypeRegistry by inject()
+    private val statisticsSource: StatisticsSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)

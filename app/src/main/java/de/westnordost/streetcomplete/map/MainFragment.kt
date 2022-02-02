@@ -125,12 +125,12 @@ class MainFragment :
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
 
-    internal val questController: QuestController by inject()
-    internal val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
-    internal val visibleQuestsSource: VisibleQuestsSource by inject()
-    internal val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    internal val soundFx: SoundFx by inject()
-    internal val prefs: SharedPreferences by inject()
+    private val questController: QuestController by inject()
+    private val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val soundFx: SoundFx by inject()
+    private val prefs: SharedPreferences by inject()
 
     private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager

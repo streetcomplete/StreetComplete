@@ -16,10 +16,10 @@ import org.koin.android.ext.android.inject
 /** Fragment that shows the "star" with the number of solved quests */
 class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
 
-    internal val uploadProgressSource: UploadProgressSource by inject()
-    internal val prefs: SharedPreferences by inject()
-    internal val statisticsSource: StatisticsSource by inject()
-    internal val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val uploadProgressSource: UploadProgressSource by inject()
+    private val prefs: SharedPreferences by inject()
+    private val statisticsSource: StatisticsSource by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
 
     private val answersCounterView get() = view as AnswersCounterView
 

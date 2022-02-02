@@ -14,7 +14,7 @@ import org.koin.android.ext.android.inject
 /** Fragment that takes care of showing the download progress */
 class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
 
-    internal val downloadProgressSource: DownloadProgressSource by inject()
+    private val downloadProgressSource: DownloadProgressSource by inject()
 
     private val progressView get() = view as IconsDownloadProgressView
 

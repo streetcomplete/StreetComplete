@@ -32,8 +32,8 @@ import org.koin.android.ext.android.inject
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Listener {
 
-    internal val questTypeRegistry: QuestTypeRegistry by inject()
-    internal val prefs: SharedPreferences by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val prefs: SharedPreferences by inject()
 
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
 

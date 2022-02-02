@@ -38,9 +38,9 @@ class LoginFragment :
     BackPressedListener,
     OAuthFragment.Listener {
 
-    internal val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    internal val userLoginStatusController: UserLoginStatusController by inject()
-    internal val userUpdater: UserUpdater by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userUpdater: UserUpdater by inject()
 
     override val title: String get() = getString(R.string.user_login)
 

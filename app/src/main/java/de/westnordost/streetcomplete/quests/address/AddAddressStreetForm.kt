@@ -17,8 +17,8 @@ import org.koin.android.ext.android.inject
 import java.util.Locale
 
 class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
-    internal val abbreviationsByLocale: AbbreviationsByLocale by inject()
-    internal val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
+    private val abbreviationsByLocale: AbbreviationsByLocale by inject()
+    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
     private var streetNameInput: EditText? = null
     private var placeNameInput: EditText? = null

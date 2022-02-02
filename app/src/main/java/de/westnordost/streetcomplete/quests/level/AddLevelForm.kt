@@ -28,7 +28,7 @@ import kotlin.math.floor
 
 class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
 
-    internal val mapDataSource: MapDataWithEditsSource by inject()
+    private val mapDataSource: MapDataWithEditsSource by inject()
 
     override val contentLayoutResId = R.layout.quest_level
     private val binding by contentViewBinding(QuestLevelBinding::bind)

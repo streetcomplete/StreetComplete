@@ -23,7 +23,7 @@ import org.koin.android.ext.android.inject
 /** Fragment that shows a notification that the user has X unread messages in his OSM inbox */
 class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_message) {
 
-    val soundFx: SoundFx by inject()
+    private val soundFx: SoundFx by inject()
 
     private val binding by viewBinding(FragmentUnreadOsmMessageBinding::bind)
 

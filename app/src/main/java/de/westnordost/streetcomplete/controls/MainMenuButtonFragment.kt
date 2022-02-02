@@ -22,8 +22,8 @@ import org.koin.android.ext.android.inject
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
-    internal val teamModeQuestFilter: TeamModeQuestFilter by inject()
-    internal val downloadController: DownloadController by inject()
+    private val teamModeQuestFilter: TeamModeQuestFilter by inject()
+    private val downloadController: DownloadController by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?

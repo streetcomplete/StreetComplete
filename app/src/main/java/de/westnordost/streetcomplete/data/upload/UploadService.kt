@@ -17,7 +17,7 @@ import org.koin.android.ext.android.inject
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
 class UploadService : CoroutineIntentService(TAG) {
-    internal val uploader: Uploader by inject()
+    private val uploader: Uploader by inject()
 
     private lateinit var notification: Notification
 

@@ -12,7 +12,7 @@ import org.koin.android.ext.android.inject
 /** Shows the privacy statement */
 class PrivacyStatementFragment : Fragment(R.layout.fragment_show_html) {
 
-    internal val vectorTileProvider: VectorTileProvider by inject()
+    private val vectorTileProvider: VectorTileProvider by inject()
 
     private val binding by viewBinding(FragmentShowHtmlBinding::bind)
 

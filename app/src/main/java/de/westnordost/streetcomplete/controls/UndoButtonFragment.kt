@@ -23,8 +23,8 @@ import org.koin.android.ext.android.inject
 /** Fragment that shows (and hides) the undo button, based on whether there is anything to undo */
 class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
-    internal val editHistorySource: EditHistorySource by inject()
-    internal val uploadProgressSource: UploadProgressSource by inject()
+    private val editHistorySource: EditHistorySource by inject()
+    private val uploadProgressSource: UploadProgressSource by inject()
 
     private val undoButton get() = view as ImageButton
 

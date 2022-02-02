@@ -31,10 +31,10 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
-    internal val abbreviationsByLocale: AbbreviationsByLocale by inject()
-    internal val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
+    private val abbrByLocale: AbbreviationsByLocale by inject()
+    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
-    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbreviationsByLocale
+    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
     override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
         val polyline = when (val geom = elementGeometry) {
@@ -52,7 +52,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         val possibleAbbreviations = LinkedList<String>()
         for ((languageTag, name) in adapter.localizedNames) {
             val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale.forLanguageTag(languageTag)
-            val abbr = abbreviationsByLocale.get(locale)
+            val abbr = abbrByLocale.get(locale)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
 
             if (name.contains(".") || containsLocalizedAbbreviations) {

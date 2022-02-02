@@ -17,7 +17,7 @@ import org.koin.android.ext.android.inject
 
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
-    internal val questPresetsController: QuestPresetsController by inject()
+    private val questPresetsController: QuestPresetsController by inject()
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
 

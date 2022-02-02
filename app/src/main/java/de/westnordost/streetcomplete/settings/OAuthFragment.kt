@@ -37,9 +37,9 @@ import kotlin.coroutines.suspendCoroutine
 /** Fragment that manages the OAuth 1 authentication process in a webview*/
 class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, HasTitle {
 
-    internal val provider: OAuthProvider by inject()
-    internal val callbackScheme: String by inject(named("OAuthCallbackScheme"))
-    internal val callbackHost: String by inject(named("OAuthCallbackHost"))
+    private val provider: OAuthProvider by inject()
+    private val callbackScheme: String by inject(named("OAuthCallbackScheme"))
+    private val callbackHost: String by inject(named("OAuthCallbackHost"))
 
     private val binding by viewBinding(FragmentOauthBinding::bind)
 

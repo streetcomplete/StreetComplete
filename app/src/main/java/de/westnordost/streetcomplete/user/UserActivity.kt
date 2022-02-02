@@ -25,7 +25,7 @@ class UserActivity :
     AchievementsFragment.Listener,
     QuestStatisticsFragment.Listener {
 
-    internal val userLoginStatusSource: UserLoginStatusSource by inject()
+    private val userLoginStatusSource: UserLoginStatusSource by inject()
 
     private val countryDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment?

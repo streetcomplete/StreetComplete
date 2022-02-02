@@ -35,12 +35,12 @@ import java.util.concurrent.FutureTask
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasTitle {
 
-    internal val questTypeRegistry: QuestTypeRegistry by inject()
-    internal val questPresetsSource: QuestPresetsSource by inject()
-    internal val visibleQuestTypeController: VisibleQuestTypeController by inject()
-    internal val questTypeOrderController: QuestTypeOrderController by inject()
-    internal val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
-    internal val prefs: SharedPreferences by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
+    private val visibleQuestTypeController: VisibleQuestTypeController by inject()
+    private val questTypeOrderController: QuestTypeOrderController by inject()
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val prefs: SharedPreferences by inject()
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
 

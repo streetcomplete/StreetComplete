@@ -46,15 +46,15 @@ class SettingsFragment :
     HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    internal val prefs: SharedPreferences by inject()
-    internal val downloadedTilesDao: DownloadedTilesDao by inject()
-    internal val noteController: NoteController by inject()
-    internal val mapDataController: MapDataController by inject()
-    internal val questController: QuestController by inject()
-    internal val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
-    internal val questTypeRegistry: QuestTypeRegistry by inject()
-    internal val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
-    internal val questPresetsSource: QuestPresetsSource by inject()
+    private val prefs: SharedPreferences by inject()
+    private val downloadedTilesDao: DownloadedTilesDao by inject()
+    private val noteController: NoteController by inject()
+    private val mapDataController: MapDataController by inject()
+    private val questController: QuestController by inject()
+    private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
 
     interface Listener {
         fun onClickedQuestSelection()

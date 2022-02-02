@@ -23,7 +23,7 @@ class QuestStatisticsFragment :
     Fragment(R.layout.fragment_quest_statistics),
     QuestStatisticsByQuestTypeFragment.Listener,
     QuestStatisticsByCountryFragment.Listener {
-    internal val statisticsSource: StatisticsSource by inject()
+    private val statisticsSource: StatisticsSource by inject()
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)

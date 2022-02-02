@@ -56,9 +56,9 @@ class UndoDialog(
     private val edit: Edit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog), KoinComponent {
 
-    internal val mapDataSource: MapDataWithEditsSource by inject()
-    internal val featureDictionaryFutureTask: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
-    internal val editHistoryController: EditHistoryController by inject()
+    private val mapDataSource: MapDataWithEditsSource by inject()
+    private val featureDictionaryFutureTask: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val editHistoryController: EditHistoryController by inject()
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 

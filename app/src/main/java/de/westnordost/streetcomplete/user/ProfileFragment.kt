@@ -33,13 +33,13 @@ import java.util.Locale
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    internal val userDataSource: UserDataSource by inject()
-    internal val userLoginStatusController: UserLoginStatusController by inject()
-    internal val userUpdater: UserUpdater by inject()
-    internal val statisticsSource: StatisticsSource by inject()
-    internal val achievementsSource: AchievementsSource by inject()
-    internal val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    internal val avatarsCacheDirectory: File by inject(named("AvatarsCacheDirectory"))
+    private val userDataSource: UserDataSource by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userUpdater: UserUpdater by inject()
+    private val statisticsSource: StatisticsSource by inject()
+    private val achievementsSource: AchievementsSource by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val avatarsCacheDirectory: File by inject(named("AvatarsCacheDirectory"))
 
     private lateinit var anonAvatar: Bitmap
 

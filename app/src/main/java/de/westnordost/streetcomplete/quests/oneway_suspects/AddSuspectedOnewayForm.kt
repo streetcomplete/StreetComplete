@@ -26,7 +26,7 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
 
     private var streetSideRotater: StreetSideRotater? = null
 
-    internal val db: WayTrafficFlowDao by inject()
+    private val db: WayTrafficFlowDao by inject()
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },

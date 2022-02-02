@@ -19,7 +19,7 @@ import org.koin.android.ext.android.inject
 /** Handles showing a button with a little counter that shows how many unread notifications there are */
 class NotificationButtonFragment : Fragment(R.layout.fragment_notification_button) {
 
-    val notificationsSource: NotificationsSource by inject()
+    private val notificationsSource: NotificationsSource by inject()
 
     interface Listener {
         fun onClickShowNotification(notification: Notification)

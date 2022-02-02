@@ -56,7 +56,7 @@ class SplitWayFragment :
 
     private val binding by viewBinding(FragmentSplitWayBinding::bind)
 
-    internal val soundFx: SoundFx by inject()
+    private val soundFx: SoundFx by inject()
 
     override val questKey: QuestKey get() = osmQuestKey
 

@@ -41,8 +41,8 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
 
     private lateinit var anonAvatar: Bitmap
 
-    internal val noteSource: NotesWithEditsSource by inject()
-    internal val avatarsCacheDir: File by inject(named("AvatarsCacheDirectory"))
+    private val noteSource: NotesWithEditsSource by inject()
+    private val avatarsCacheDir: File by inject(named("AvatarsCacheDirectory"))
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment

@@ -32,7 +32,7 @@ import org.koin.android.ext.android.inject
  * download job was started by the user
  */
 class DownloadService : CoroutineIntentService(TAG) {
-    internal val downloader: Downloader by inject()
+    private val downloader: Downloader by inject()
 
     private lateinit var notification: Notification
 

@@ -61,14 +61,14 @@ class MainActivity :
     TutorialFragment.Listener,
     NotificationButtonFragment.Listener {
 
-    val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
-    val questAutoSyncer: QuestAutoSyncer by inject()
-    val downloadController: DownloadController by inject()
-    val uploadController: UploadController by inject()
-    val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    val prefs: SharedPreferences by inject()
-    val userLoginStatusController: UserLoginStatusController by inject()
-    val userUpdater: UserUpdater by inject()
+    private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
+    private val questAutoSyncer: QuestAutoSyncer by inject()
+    private val downloadController: DownloadController by inject()
+    private val uploadController: UploadController by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val prefs: SharedPreferences by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userUpdater: UserUpdater by inject()
 
     private val requestLocation = LocationRequester(this, this)
 

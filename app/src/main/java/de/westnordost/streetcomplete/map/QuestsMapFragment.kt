@@ -35,12 +35,12 @@ import org.koin.android.ext.android.inject
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-    internal val spriteSheet: TangramPinsSpriteSheet by inject()
-    internal val questTypeOrderSource: QuestTypeOrderSource by inject()
-    internal val questTypeRegistry: QuestTypeRegistry by inject()
-    internal val visibleQuestsSource: VisibleQuestsSource by inject()
-    internal val editHistorySource: EditHistorySource by inject()
-    internal val mapDataSource: MapDataWithEditsSource by inject()
+    private val spriteSheet: TangramPinsSpriteSheet by inject()
+    private val questTypeOrderSource: QuestTypeOrderSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
+    private val editHistorySource: EditHistorySource by inject()
+    private val mapDataSource: MapDataWithEditsSource by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
