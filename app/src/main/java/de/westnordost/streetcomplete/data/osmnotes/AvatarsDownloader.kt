@@ -36,7 +36,7 @@ class AvatarsDownloader @Inject constructor(
     private fun getProfileImageUrl(userId: Long): String? {
         return try {
             userApi.get(userId)?.profileImageUrl
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             Log.w(TAG, "Unable to query info for user id $userId")
             null
         }

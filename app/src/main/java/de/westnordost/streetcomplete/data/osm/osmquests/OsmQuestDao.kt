@@ -63,7 +63,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
         if (questTypes != null) {
             if (questTypes.isEmpty()) return emptyList()
             val questTypesStr = questTypes.joinToString(",") { "'$it'" }
-            builder += " AND $QUEST_TYPE IN (${questTypesStr})"
+            builder += " AND $QUEST_TYPE IN ($questTypesStr)"
         }
         return db.query(NAME, where = builder) { it.toOsmQuestEntry() }
     }
@@ -71,7 +71,7 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
     fun deleteAll(keys: Collection<OsmQuestKey>) {
         if (keys.isEmpty()) return
         db.transaction {
-            for(key in keys) {
+            for (key in keys) {
                 delete(key)
             }
         }
@@ -83,9 +83,9 @@ class OsmQuestDao @Inject constructor(private val db: Database) {
 }
 
 private fun inBoundsSql(bbox: BoundingBox): String = """
-        ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
-        ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
-    """.trimIndent()
+    ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+    ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
+""".trimIndent()
 
 private fun CursorPosition.toOsmQuestEntry(): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(
     ElementType.valueOf(getString(ELEMENT_TYPE)),

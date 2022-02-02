@@ -12,7 +12,7 @@ data class ResImage(@DrawableRes val resId: Int) : Image()
 data class DrawableImage(val drawable: Drawable) : Image()
 
 fun ImageView.setImage(image: Image?) {
-    when(image) {
+    when (image) {
         is ResImage -> setImageResource(image.resId)
         is DrawableImage -> setImageDrawable(image.drawable)
         null -> setImageDrawable(null)

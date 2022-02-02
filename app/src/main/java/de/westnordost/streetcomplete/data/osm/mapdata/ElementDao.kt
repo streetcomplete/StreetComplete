@@ -77,7 +77,6 @@ class ElementDao @Inject constructor(
         result.addAll(nodeDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(NODE, it) })
         return result
     }
-
 }
 
 private data class ElementIds(val nodes: List<Long>, val ways: List<Long>, val relations: List<Long>) {
@@ -89,7 +88,7 @@ private fun Iterable<ElementKey>.toElementIds(): ElementIds {
     val ways = ArrayList<Long>()
     val relations = ArrayList<Long>()
     for (key in this) {
-        when(key.type) {
+        when (key.type) {
             NODE -> nodes.add(key.id)
             WAY -> ways.add(key.id)
             RELATION -> relations.add(key.id)

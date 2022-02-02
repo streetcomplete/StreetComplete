@@ -20,8 +20,8 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
     private val progressView get() = view as IconsDownloadProgressView
 
     private val downloadProgressListener = object : DownloadProgressListener {
-        override fun onStarted() { viewLifecycleScope.launch { animateInProgressView() }}
-        override fun onFinished() { viewLifecycleScope.launch { animateOutProgressView() }}
+        override fun onStarted() { viewLifecycleScope.launch { animateInProgressView() } }
+        override fun onFinished() { viewLifecycleScope.launch { animateOutProgressView() } }
     }
 
     init {

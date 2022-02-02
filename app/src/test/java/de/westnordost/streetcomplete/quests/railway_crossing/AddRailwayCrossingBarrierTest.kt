@@ -46,7 +46,7 @@ class AddRailwayCrossingBarrierTest {
     @Test fun `not applicable to crossing with private road`() {
         val mapData = TestMapDataWithGeometry(listOf(
             node(id = 1, tags = mapOf("railway" to "level_crossing")),
-            way(nodes = listOf(1,2,3), tags = mapOf(
+            way(nodes = listOf(1, 2, 3), tags = mapOf(
                 "highway" to "residential",
                 "access" to "private"
             ))

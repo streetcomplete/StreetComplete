@@ -58,16 +58,16 @@ class CollectionsTest {
     }
 
     @Test fun `forEachLine with list with only one element`() {
-        listOf(p(0.0,0.0)).forEachLine { _, _ -> fail() }
+        listOf(p(0.0, 0.0)).forEachLine { _, _ -> fail() }
     }
 
     @Test fun `forEachLine with several elements`() {
         var counter = 0
         listOf(
-            p(0.0,0.0),
-            p(1.0,0.0),
-            p(2.0,0.0),
-            p(3.0,0.0),
+            p(0.0, 0.0),
+            p(1.0, 0.0),
+            p(2.0, 0.0),
+            p(3.0, 0.0),
         ).forEachLine { first, second ->
             assertEquals(first.latitude + 1, second.latitude, 0.0)
             counter++
@@ -80,7 +80,7 @@ class CollectionsTest {
     }
 
     @Test fun `indexOfMaxBy with some elements`() {
-        assertEquals(2, listOf(3,4,8).indexOfMaxBy { it })
-        assertEquals(0, listOf(4,0,-1).indexOfMaxBy { it })
+        assertEquals(2, listOf(3, 4, 8).indexOfMaxBy { it })
+        assertEquals(0, listOf(4, 0, -1).indexOfMaxBy { it })
     }
 }

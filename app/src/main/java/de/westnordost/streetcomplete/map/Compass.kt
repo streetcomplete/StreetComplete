@@ -79,7 +79,7 @@ class Compass(
         accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
         magnetometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
 
-        dispatcherThread = Thread( { dispatchLoop() }, "Compass Dispatcher Thread")
+        dispatcherThread = Thread({ dispatchLoop() }, "Compass Dispatcher Thread")
         dispatcherThread?.start()
     }
 
@@ -164,7 +164,7 @@ class Compass(
         declination = toRadians(geomagneticField.declination.toDouble()).toFloat()
     }
 
-    private fun smoothenAngle( newValue: Float, oldValue: Float, factor: Float): Float {
+    private fun smoothenAngle(newValue: Float, oldValue: Float, factor: Float): Float {
         var delta = newValue - oldValue
         while (delta > +PI) delta -= 2 * PI.toFloat()
         while (delta < -PI) delta += 2 * PI.toFloat()
@@ -177,4 +177,3 @@ class Compass(
         private const val MIN_DIFFERENCE = 0.001f
     }
 }
-

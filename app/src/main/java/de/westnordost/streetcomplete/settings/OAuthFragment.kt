@@ -148,8 +148,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
                 listener?.onOAuthSuccess(consumer)
                 binding.progressView.visibility = View.INVISIBLE
             }
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             activity?.toast(R.string.oauth_communication_error, Toast.LENGTH_LONG)
             Log.e(TAG, "Error during authorization", e)
             listener?.onOAuthFailed(e)
@@ -188,7 +187,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
 
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
             continuation?.resumeWithException(
-                OAuthCommunicationException("Error for URL $url","$description")
+                OAuthCommunicationException("Error for URL $url", "$description")
             )
         }
 

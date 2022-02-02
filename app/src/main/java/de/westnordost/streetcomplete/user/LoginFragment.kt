@@ -33,7 +33,8 @@ import javax.inject.Inject
 
 /** Shows only a login button and a text that clarifies that login is necessary for publishing the
  *  answers. */
-class LoginFragment : Fragment(R.layout.fragment_login),
+class LoginFragment :
+    Fragment(R.layout.fragment_login),
     HasTitle,
     BackPressedListener,
     OAuthFragment.Listener {
@@ -76,7 +77,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onBackPressed(): Boolean {
         val f = oAuthFragment
         if (f != null) {
-            if(f.onBackPressed()) return true
+            if (f.onBackPressed()) return true
             childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
             return true
         }
@@ -109,11 +110,10 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
             try {
-                val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
+                val permissionsApi = PermissionsApi(OsmApiModule.osmConnection(consumer))
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
-            }
-            catch (e: Exception) { false }
-            }
+            } catch (e: Exception) { false }
+        }
     }
 
     /* ------------------------------------------------------------------------------------------ */

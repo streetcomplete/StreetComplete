@@ -68,7 +68,6 @@ class TracksMapComponent(ctrl: KtMapController) {
         // see streetcomplete.yaml for the definitions of the layer
         private const val LAYER1 = "streetcomplete_track"
         private const val LAYER2 = "streetcomplete_track2"
-
     }
 }
 

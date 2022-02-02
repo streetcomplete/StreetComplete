@@ -18,12 +18,12 @@ import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
-    private val filter by lazy { ("""
+    private val filter by lazy { """
         nodes with amenity = post_box
           and access !~ private|no
           and collection_times:signed != no
           and (!collection_times or collection_times older today -2 years)
-    """).toElementFilterExpression() }
+    """.toElementFilterExpression() }
 
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
     *  change and problematic to tag clearly with the check date scheme */
@@ -39,18 +39,18 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     // https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     // http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
     override val enabledInCountries = NoCountriesExcept(
-            // definitely, seen pictures:
-            "AU", "NZ", "VU", "MY", "SG", "TH", "VN", "LA", "MM", "IN", "BD", "NP", "LK", "BT", "PK", "TW", "HK",
-            "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "DK", "GB", "IE", "IS", "NL", "BE",
-            "FR", "AD", "ES", "PT", "CH", "LI", "AT", "DE", "LU", "MC", "IT", "SM", "MT", "PL", "EE", "CA", "US",
-            "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
-            // these only maybe/sometimes (Oceania, Cambodia, North Korea):
-            "BN", "KH", "ID", "TL", "PG", "KP", "PH",
-            // unknown but all countries around have it (former Yugoslawia):
-            "RS", "RS-KM", "BA", "MK", "AL",
-            // unknown but region around it has it (southern states of former soviet union):
-            "TJ", "KG", "KZ", "MN", "GE"
-            // apparently mostly not in Latin America and in Arabic world and unknown in Africa
+        // definitely, seen pictures:
+        "AU", "NZ", "VU", "MY", "SG", "TH", "VN", "LA", "MM", "IN", "BD", "NP", "LK", "BT", "PK", "TW", "HK",
+        "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "DK", "GB", "IE", "IS", "NL", "BE",
+        "FR", "AD", "ES", "PT", "CH", "LI", "AT", "DE", "LU", "MC", "IT", "SM", "MT", "PL", "EE", "CA", "US",
+        "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
+        // these only maybe/sometimes (Oceania, Cambodia, North Korea):
+        "BN", "KH", "ID", "TL", "PG", "KP", "PH",
+        // unknown but all countries around have it (former Yugoslawia):
+        "RS", "RS-KM", "BA", "MK", "AL",
+        // unknown but region around it has it (southern states of former soviet union):
+        "TJ", "KG", "KZ", "MN", "GE"
+        // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
     override val questTypeAchievements = listOf(POSTMAN)
@@ -80,7 +80,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) : Boolean {
+    override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
         val tags = element.tags
         // no collection_times yet -> new survey
@@ -97,7 +97,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     override fun createForm() = AddPostboxCollectionTimesForm()
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoCollectionTimesSign -> {
                 tags["collection_times:signed"] = "no"
             }

@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
 
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
-    when(map["amenity"]) {
+    when (map["amenity"]) {
         "atm" -> return R.drawable.ic_pin_money
         "bench" -> return R.drawable.ic_pin_bench
         "bicycle_parking" -> return R.drawable.ic_pin_bicycle_parking
@@ -20,43 +20,43 @@ import de.westnordost.streetcomplete.R
         "toilets" -> return R.drawable.ic_pin_toilets
         "waste_basket" -> return R.drawable.ic_pin_bin
     }
-    when(map["barrier"]) {
+    when (map["barrier"]) {
         "bollard" -> return R.drawable.ic_pin_bollard
     }
-    when(map["emergency"]) {
+    when (map["emergency"]) {
         "defibrillator" -> return R.drawable.ic_pin_defibrillator
         "fire_hydrant" -> return R.drawable.ic_pin_fire_hydrant
         "phone" -> return R.drawable.ic_pin_phone
     }
-    when(map["highway"]) {
+    when (map["highway"]) {
         "crossing" -> {
-            if(map["crossing"] == "traffic_signals")
+            if (map["crossing"] == "traffic_signals")
                 return R.drawable.ic_pin_pedestrian_traffic_light
             else
                 return R.drawable.ic_pin_crossing
         }
         "traffic_signals" -> {
-            if(map["crossing"] == "traffic_signals") return R.drawable.ic_pin_pedestrian_traffic_light
+            if (map["crossing"] == "traffic_signals") return R.drawable.ic_pin_pedestrian_traffic_light
         }
     }
-    when(map["leisure"]) {
+    when (map["leisure"]) {
         "picnic_table" -> return R.drawable.ic_pin_picnic_table
     }
-    when(map["man_made"]) {
+    when (map["man_made"]) {
         "utility_pole" -> return R.drawable.ic_pin_power
         "water_well" -> return R.drawable.ic_pin_water
         "water_tap" -> return R.drawable.ic_pin_water
     }
-    when(map["natural"]) {
+    when (map["natural"]) {
         "spring" -> return R.drawable.ic_pin_water
     }
-    when(map["power"]) {
+    when (map["power"]) {
         "pole" -> return R.drawable.ic_pin_power
     }
     if (map["surveillance"] != null && map["surveillance:type"] == "camera") {
         return R.drawable.ic_pin_surveillance_camera
     }
-    when(map["tourism"]) {
+    when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
     }
     return null

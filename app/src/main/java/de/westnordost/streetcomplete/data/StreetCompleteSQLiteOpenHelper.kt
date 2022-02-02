@@ -121,10 +121,9 @@ import javax.inject.Singleton
             db.execSQL("DROP TABLE $oldName;")
         }
         if (oldVersion <= 3 && newVersion > 3) {
-           db.execSQL("DROP TABLE new_achievements")
+            db.execSQL("DROP TABLE new_achievements")
         }
     }
-
 }
 
 private const val DB_VERSION = 4

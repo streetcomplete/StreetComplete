@@ -31,12 +31,12 @@ import javax.inject.Singleton
     private val listeners: MutableList<TeamModeChangeListener> = CopyOnWriteArrayList()
 
     fun isVisible(quest: Quest): Boolean =
-        !isEnabled ||
-        quest.stableId < 0 ||
-        quest is OsmQuest && createdElementsSource.contains(quest.elementType, quest.elementId) ||
-        quest.stableId % teamSize == indexInTeam.toLong()
+        !isEnabled
+        || quest.stableId < 0
+        || quest is OsmQuest && createdElementsSource.contains(quest.elementType, quest.elementId)
+        || quest.stableId % teamSize == indexInTeam.toLong()
 
-    private val Quest.stableId: Long get() = when(this) {
+    private val Quest.stableId: Long get() = when (this) {
         is OsmQuest -> elementId
         is OsmNoteQuest -> id
         else -> 0
@@ -54,7 +54,6 @@ import javax.inject.Singleton
         prefs.edit().putInt(Prefs.TEAM_MODE_TEAM_SIZE, -1).apply()
         listeners.forEach { it.onTeamModeChanged(false) }
     }
-
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 

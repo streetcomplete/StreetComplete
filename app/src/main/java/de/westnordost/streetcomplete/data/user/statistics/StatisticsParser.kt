@@ -41,7 +41,7 @@ class StatisticsParser @Inject constructor(
         return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
     }
 
-    private fun mergeQuestAliases(map: MutableMap<String, Int>)  {
+    private fun mergeQuestAliases(map: MutableMap<String, Int>) {
         for ((oldName, newName) in questAliases) {
             val count = map[oldName]
             if (count != null) {

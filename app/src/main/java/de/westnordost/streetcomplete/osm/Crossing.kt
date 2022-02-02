@@ -7,15 +7,13 @@ private val isCrossingExpr by lazy { """
     nodes with
       highway = traffic_signals and crossing = traffic_signals
       or highway = crossing
-""".toElementFilterExpression()
-}
+""".toElementFilterExpression() }
 
 private val isCrossingWithTrafficSignalsExpr by lazy { """
     nodes with
       crossing = traffic_signals
       and highway ~ crossing|traffic_signals
-""".toElementFilterExpression()
-}
+""".toElementFilterExpression() }
 
 fun Element.isCrossing(): Boolean = isCrossingExpr.matches(this)
 

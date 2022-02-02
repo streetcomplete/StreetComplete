@@ -24,5 +24,4 @@ class NotesPreferences @Inject constructor(private val prefs: SharedPreferences)
 
     val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         !prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
-
 }

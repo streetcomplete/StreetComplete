@@ -14,7 +14,7 @@ import javax.inject.Singleton
 /** Controls downloading */
 @Singleton class DownloadController @Inject constructor(
     private val context: Context
-): DownloadProgressSource {
+) : DownloadProgressSource {
 
     private var downloadServiceIsBound: Boolean = false
     private var downloadService: DownloadService.Interface? = null

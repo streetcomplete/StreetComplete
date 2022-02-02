@@ -31,8 +31,8 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     private val uploadButton get() = view as UploadButton
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
-        override fun onIncreased() { viewLifecycleScope.launch { updateCount() }}
-        override fun onDecreased() { viewLifecycleScope.launch { updateCount() }}
+        override fun onIncreased() { viewLifecycleScope.launch { updateCount() } }
+        override fun onDecreased() { viewLifecycleScope.launch { updateCount() } }
     }
 
     private val uploadProgressListener = object : UploadProgressListener {
@@ -104,8 +104,8 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
         }
     }
 
-    /** Does not necessarily mean that the user has internet. But if he is not connected, he will
-      * not have internet  */
+    /* Does not necessarily mean that the user has internet. But if he is not connected, he will
+     * not have internet */
     private fun isConnected(): Boolean {
         val connectivityManager = context?.getSystemService<ConnectivityManager>()
         val activeNetworkInfo = connectivityManager?.activeNetworkInfo

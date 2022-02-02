@@ -37,8 +37,7 @@ import javax.inject.Singleton
                 updateAvatar(userDetails.id, profileImageUrl)
             }
             updateStatistics(userDetails.id)
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             Log.w(TAG, "Unable to download user details", e)
         }
     }
@@ -52,7 +51,7 @@ import javax.inject.Singleton
         try {
             val statistics = statisticsDownloader.download(userId)
             statisticsController.updateAll(statistics)
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             Log.w(TAG, "Unable to download statistics", e)
         }
     }

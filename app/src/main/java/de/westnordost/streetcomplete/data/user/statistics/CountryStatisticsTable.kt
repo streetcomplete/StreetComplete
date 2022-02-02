@@ -14,5 +14,6 @@ object CountryStatisticsTable {
             ${Columns.COUNTRY_CODE} varchar(255) PRIMARY KEY,
             ${Columns.SUCCEEDED} int NOT NULL,
             ${Columns.RANK} int
-        );"""
+        );
+    """
 }

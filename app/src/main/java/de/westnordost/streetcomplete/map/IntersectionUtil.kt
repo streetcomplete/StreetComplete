@@ -73,9 +73,12 @@ private fun isReallyVisible(view: View): Boolean =
 /** Intersection of line segment going from P to Q with vertical line starting at V and given
  *  length. Returns the f for P+f*(Q-P) or MAX_VALUE if no intersection found. */
 private fun intersectionWithVerticalSegment(
-    px: Float, py: Float,
-    qx: Float, qy: Float,
-    vx: Float, vy: Float,
+    px: Float,
+    py: Float,
+    qx: Float,
+    qy: Float,
+    vx: Float,
+    vy: Float,
     length: Float
 ): Float {
 
@@ -98,9 +101,12 @@ private fun intersectionWithVerticalSegment(
 /** Intersection of line segment going from P to Q with horizontal line starting at H and given
  *  length. Returns the f for P+f*(Q-P) or MAX_VALUE if no intersection found. */
 private fun intersectionWithHorizontalSegment(
-    px: Float, py: Float,
-    qx: Float, qy: Float,
-    hx: Float, hy: Float,
+    px: Float,
+    py: Float,
+    qx: Float,
+    qy: Float,
+    hx: Float,
+    hy: Float,
     length: Float
 ): Float {
 

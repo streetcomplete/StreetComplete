@@ -84,7 +84,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     override fun onClickOk() {
-        if(isPlaceName) {
+        if (isPlaceName) {
             applyAnswer(PlaceName(placeName))
         } else {
             if (selectedStreetName != null) {

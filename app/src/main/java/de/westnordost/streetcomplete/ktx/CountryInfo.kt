@@ -3,14 +3,14 @@ package de.westnordost.streetcomplete.ktx
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 
-val CountryInfo.advisorySpeedLimitSignLayoutResId: Int? get() = when(advisorySpeedLimitSignStyle) {
+val CountryInfo.advisorySpeedLimitSignLayoutResId: Int? get() = when (advisorySpeedLimitSignStyle) {
     "blue"  -> R.layout.quest_maxspeed_advisory_blue
     "yellow"  -> R.layout.quest_maxspeed_advisory_yellow
     "white"  -> R.layout.quest_maxspeed_advisory_white
     else    -> null
 }
 
-val CountryInfo.livingStreetSignDrawableResId: Int? get() = when(livingStreetSignStyle) {
+val CountryInfo.livingStreetSignDrawableResId: Int? get() = when (livingStreetSignStyle) {
     "vienna"    -> R.drawable.ic_living_street
     "sadc"      -> R.drawable.ic_living_street_sadc
     "russia"    -> R.drawable.ic_living_street_russia
@@ -20,13 +20,13 @@ val CountryInfo.livingStreetSignDrawableResId: Int? get() = when(livingStreetSig
     else        -> null
 }
 
-val CountryInfo.noStandingSignDrawableResId: Int? get() = when(noStandingSignStyle) {
+val CountryInfo.noStandingSignDrawableResId: Int? get() = when (noStandingSignStyle) {
     "mutcd text standing" -> R.drawable.ic_no_standing_mutcd_text
     "mutcd text waiting"  -> R.drawable.ic_no_waiting_mutcd_text
     else                  -> null
 }
 
-val CountryInfo.noParkingSignDrawableResId: Int get() = when(noParkingSignStyle) {
+val CountryInfo.noParkingSignDrawableResId: Int get() = when (noParkingSignStyle) {
     "vienna"             -> R.drawable.ic_no_parking
     "vienna variant"     -> R.drawable.ic_no_parking_vienna
     "mutcd"              -> R.drawable.ic_no_parking_mutcd
@@ -39,7 +39,7 @@ val CountryInfo.noParkingSignDrawableResId: Int get() = when(noParkingSignStyle)
     else                 -> R.drawable.ic_no_parking
 }
 
-val CountryInfo.noStoppingSignDrawableResId: Int get() = when(noStoppingSignStyle) {
+val CountryInfo.noStoppingSignDrawableResId: Int get() = when (noStoppingSignStyle) {
     "vienna"      -> R.drawable.ic_no_stopping
     "mutcd"       -> R.drawable.ic_no_stopping_mutcd
     "mutcd latin" -> R.drawable.ic_no_stopping_mutcd_latin_america
@@ -58,7 +58,7 @@ val CountryInfo.noStandingLineStyleResId: Int? get() = noStandingLineStyle.asLin
 
 val CountryInfo.noStoppingLineStyleResId: Int? get() = noStoppingLineStyle.asLineStyleResId
 
-private val String?.asLineStyleResId: Int? get() = when(this) {
+private val String?.asLineStyleResId: Int? get() = when (this) {
     "yellow"                 -> R.drawable.ic_street_marking_yellow
     "dashed yellow"          -> R.drawable.ic_street_marking_yellow_dashes
     "double yellow"          -> R.drawable.ic_street_marking_yellow_double

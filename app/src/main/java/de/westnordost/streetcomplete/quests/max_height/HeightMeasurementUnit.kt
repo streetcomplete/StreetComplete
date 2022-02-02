@@ -10,7 +10,7 @@ enum class HeightMeasurementUnit(private val displayString: String) {
     override fun toString() = displayString
 }
 
-fun String.toHeightMeasurementUnit() = when(this) {
+fun String.toHeightMeasurementUnit() = when (this) {
     "meter" -> METER
     "foot and inch" -> FOOT_AND_INCH
     else -> throw UnsupportedOperationException("not implemented")

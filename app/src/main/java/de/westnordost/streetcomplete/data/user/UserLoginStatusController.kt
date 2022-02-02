@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Singleton class UserLoginStatusController @Inject constructor(
     private val oAuthStore: OAuthStore,
     private val osmConnection: OsmConnection,
-): UserLoginStatusSource {
+) : UserLoginStatusSource {
 
     private val listeners: MutableList<UserLoginStatusSource.Listener> = CopyOnWriteArrayList()
 

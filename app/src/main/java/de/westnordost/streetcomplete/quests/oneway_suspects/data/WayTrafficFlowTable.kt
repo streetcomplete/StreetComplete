@@ -12,5 +12,6 @@ object WayTrafficFlowTable {
         CREATE TABLE $NAME (
             ${Columns.WAY_ID} int PRIMARY KEY,
             ${Columns.IS_FORWARD} int NOT NULL
-        );"""
+        );
+    """
 }

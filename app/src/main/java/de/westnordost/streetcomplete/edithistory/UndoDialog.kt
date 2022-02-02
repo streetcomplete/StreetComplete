@@ -93,12 +93,12 @@ class UndoDialog(
         scope.cancel()
     }
 
-    suspend fun Edit.getTitle(): CharSequence = when(this) {
+    suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
             getQuestTitle(questType, originalElement)
         }
         is NoteEdit -> {
-            context.resources.getText(when(action) {
+            context.resources.getText(when (action) {
                 CREATE -> R.string.created_note_action_title
                 COMMENT -> R.string.commented_note_action_title
             })
@@ -113,9 +113,9 @@ class UndoDialog(
         else -> throw IllegalArgumentException()
     }
 
-    private val Edit.descriptionView: View get() = when(this) {
+    private val Edit.descriptionView: View get() = when (this) {
         is ElementEdit -> {
-            when(action) {
+            when (action) {
                 is UpdateElementTagsAction -> createListOfTagUpdates(action.changes.changes)
                 is DeletePoiNodeAction -> createTextView(ResText(R.string.deleted_poi_action_description))
                 is SplitWayAction -> createTextView(ResText(R.string.split_way_action_description))
@@ -137,7 +137,7 @@ class UndoDialog(
              * It happens the element is null or otherwise is not at all what is expected by
              * that quest type.
              * So, this is the fallback for that case */
-            context.resources.getString(questType.title, *Array(10){"…"})
+            context.resources.getString(questType.title, *Array(10) { "…" })
         }
 
     private fun createTextView(text: Text?): TextView {
@@ -155,7 +155,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>"+Html.escapeHtml(change.tagString)+"</tt>"
+               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
            ) +
            "</li>"
         })
@@ -163,13 +163,13 @@ class UndoDialog(
     }
 }
 
-private val StringMapEntryChange.tagString: String get() = when(this) {
+private val StringMapEntryChange.tagString: String get() = when (this) {
     is StringMapEntryAdd -> "$key = $value"
     is StringMapEntryModify -> "$key = $value"
     is StringMapEntryDelete -> "$key = $valueBefore"
 }
 
-private val StringMapEntryChange.titleResId: Int get() = when(this) {
+private val StringMapEntryChange.titleResId: Int get() = when (this) {
     is StringMapEntryAdd -> R.string.added_tag_action_title
     is StringMapEntryModify -> R.string.changed_tag_action_title
     is StringMapEntryDelete -> R.string.removed_tag_action_title

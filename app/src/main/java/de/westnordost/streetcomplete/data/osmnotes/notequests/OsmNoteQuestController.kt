@@ -18,7 +18,7 @@ import javax.inject.Singleton
     private val userDataSource: UserDataSource,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val notesPreferences: NotesPreferences,
-): OsmNoteQuestSource {
+) : OsmNoteQuestSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
@@ -93,7 +93,7 @@ import javax.inject.Singleton
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if(note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
+        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
             OsmNoteQuest(note.id, note.position)
         else null
 
@@ -145,7 +145,7 @@ import javax.inject.Singleton
         val notesById = noteSource.getAll(noteIdsWithTimestamp.map { it.noteId }).associateBy { it.id }
 
         return noteIdsWithTimestamp.mapNotNull { (noteId, timestamp) ->
-            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp)  }
+            notesById[noteId]?.let { OsmNoteQuestHidden(it, timestamp) }
         }
     }
 
@@ -203,8 +203,8 @@ private fun Note.shouldShowAsQuest(
     if (id in blockedNoteIds) return false
 
     /* don't show notes where user replied last unless he wrote a survey required marker */
-    if (comments.last().isReplyFromUser(userId) &&
-        !comments.last().containsSurveyRequiredMarker()
+    if (comments.last().isReplyFromUser(userId)
+        && !comments.last().containsSurveyRequiredMarker()
     ) return false
 
     /* newly created notes by user should not be shown if it was both created in this app and has no
@@ -215,9 +215,9 @@ private fun Note.shouldShowAsQuest(
      * through an on-site survey.
      * Likely, if something is posed as a question, the reporter expects someone to
      * answer/comment on it, possibly an information on-site is missing, so let's only show these */
-    if (showOnlyNotesPhrasedAsQuestions &&
-        !probablyContainsQuestion() &&
-        !containsSurveyRequiredMarker()
+    if (showOnlyNotesPhrasedAsQuestions
+        && !probablyContainsQuestion()
+        && !containsSurveyRequiredMarker()
     ) return false
 
     return true

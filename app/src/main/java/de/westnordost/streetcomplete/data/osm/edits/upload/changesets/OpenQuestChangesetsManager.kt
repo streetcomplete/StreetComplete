@@ -18,7 +18,7 @@ class OpenQuestChangesetsManager @Inject constructor(
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
 ) {
-    fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long  = synchronized(this) {
+    fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long = synchronized(this) {
         val openChangeset = openChangesetsDB.get(questType.name, source)
         return if (openChangeset?.changesetId != null) {
             openChangeset.changesetId

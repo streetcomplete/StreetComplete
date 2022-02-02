@@ -13,11 +13,11 @@ import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     private val areaFilter by lazy { """
         ways, relations with (landuse = forest or natural = wood) and !leaf_type
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     private val wayFilter by lazy { """
         ways with natural = tree_row and !leaf_type
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Add leaf type"
     override val wikiLink = "Key:leaf_type"

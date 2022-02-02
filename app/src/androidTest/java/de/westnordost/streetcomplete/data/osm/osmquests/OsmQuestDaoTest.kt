@@ -71,30 +71,30 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             ElementKey(ElementType.NODE, 1L)
         )
 
-        assertTrue(dao.getAllForElements(keys).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
+        assertTrue(dao.getAllForElements(keys).containsExactlyInAnyOrder(listOf(q1, q2, q3)))
     }
 
     @Test fun getAllInBBox() {
         // in
-        val q1 = entry(elementId = 0, pos = p(0.0,0.0))
-        val q2 = entry(elementId = 1, pos = p(1.0,1.0))
-        val q3 = entry(elementId = 2, pos = p(0.5,0.5))
+        val q1 = entry(elementId = 0, pos = p(0.0, 0.0))
+        val q2 = entry(elementId = 1, pos = p(1.0, 1.0))
+        val q3 = entry(elementId = 2, pos = p(0.5, 0.5))
 
         dao.putAll(listOf(
             q1, q2, q3,
             // in but wrong quest type
-            entry(elementId = 3, questTypeName = "b", pos = p(0.5,0.5)),
+            entry(elementId = 3, questTypeName = "b", pos = p(0.5, 0.5)),
             // out
-            entry(elementId = 4, pos = p(-0.5,0.5)),
-            entry(elementId = 5, pos = p(0.5,-0.5)),
-            entry(elementId = 6, pos = p(0.5,1.5)),
-            entry(elementId = 7, pos = p(1.5,0.5)),
+            entry(elementId = 4, pos = p(-0.5, 0.5)),
+            entry(elementId = 5, pos = p(0.5, -0.5)),
+            entry(elementId = 6, pos = p(0.5, 1.5)),
+            entry(elementId = 7, pos = p(1.5, 0.5)),
         ))
 
         assertTrue(dao.getAllInBBox(
             BoundingBox(0.0, 0.0, 1.0, 1.0),
             listOf("a")
-        ).containsExactlyInAnyOrder(listOf(q1,q2,q3)))
+        ).containsExactlyInAnyOrder(listOf(q1, q2, q3)))
     }
 
     private fun entry(

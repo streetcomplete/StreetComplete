@@ -43,17 +43,17 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     private val currentAnimations = mutableMapOf<String, Animator>()
     private val mainHandler = Handler(Looper.getMainLooper())
     private var lastAnimator: ValueAnimator? = null
-    set(value) {
-        if (field == value) return
-        mainHandler.post {
-            if (field == null) {
-                listener?.onAnimationsStarted()
-            } else if(value == null) {
-                listener?.onAnimationsEnded()
+        set(value) {
+            if (field == value) return
+            mainHandler.post {
+                if (field == null) {
+                    listener?.onAnimationsStarted()
+                } else if (value == null) {
+                    listener?.onAnimationsEnded()
+                }
             }
+            field = value
         }
-        field = value
-    }
     private var lastAnimatorEndTime: Long = 0
 
     private val _tangramCamera = com.mapzen.tangram.CameraPosition()
@@ -102,10 +102,10 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
 
     @AnyThread private fun cancelCameraAnimations(update: CameraUpdate) {
-        if(update.rotation != null) cancelAnimation("rotation")
-        if(update.tilt != null) cancelAnimation("tilt")
-        if(update.zoom != null) cancelAnimation("zoom")
-        if(update.position != null) cancelAnimation("position")
+        if (update.rotation != null) cancelAnimation("rotation")
+        if (update.tilt != null) cancelAnimation("tilt")
+        if (update.zoom != null) cancelAnimation("zoom")
+        if (update.position != null) cancelAnimation("position")
     }
 
     private fun applyCameraUpdate(update: CameraUpdate) {
@@ -125,8 +125,8 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         update.rotation?.let {
             val currentRotation = _tangramCamera.rotation
             var targetRotation = it
-            while (targetRotation - PI > currentRotation) targetRotation -= 2*PI.toFloat()
-            while (targetRotation + PI < currentRotation) targetRotation += 2*PI.toFloat()
+            while (targetRotation - PI > currentRotation) targetRotation -= 2 * PI.toFloat()
+            while (targetRotation + PI < currentRotation) targetRotation += 2 * PI.toFloat()
 
             propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, targetRotation))
             assignAnimation("rotation", animator)
@@ -235,7 +235,8 @@ data class CameraPosition(
     val position: LatLon,
     val rotation: Float,
     val tilt: Float,
-    val zoom: Float) {
+    val zoom: Float
+) {
 
     constructor(p: TangramCameraPosition) : this(LatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
 }

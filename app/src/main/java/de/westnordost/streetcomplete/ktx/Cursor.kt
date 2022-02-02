@@ -27,7 +27,7 @@ fun Cursor.getBlobOrNull(columnName: String): ByteArray? = getBlobOrNull(getColu
 
 inline fun <reified T> Cursor.get(columnName: String): T {
     val index = getColumnIndexOrThrow(columnName)
-    return when(T::class) {
+    return when (T::class) {
         Long::class -> getLong(index)
         Int::class -> getInt(index)
         Short::class -> getShort(index)

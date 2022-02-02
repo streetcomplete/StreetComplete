@@ -41,7 +41,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegetarian)
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is DietAvailability -> {
                 tags.updateWithCheckDate("diet:vegetarian", answer.osmValue)
                 if (answer.osmValue == "no") {

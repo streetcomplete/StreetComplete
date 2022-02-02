@@ -5,7 +5,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class CountryStatisticsDaoTest  : ApplicationDbTestCase() {
+class CountryStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: CountryStatisticsDao
 
     @Before fun createDao() {

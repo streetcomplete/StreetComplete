@@ -28,7 +28,7 @@ class Uploader @Inject constructor(
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    private val bannedInfo by lazy { versionIsBannedChecker.get()  }
+    private val bannedInfo by lazy { versionIsBannedChecker.get() }
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {

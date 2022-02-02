@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton class NoteEditsController @Inject constructor(
     private val editsDB: NoteEditsDao
-): NoteEditsSource {
+) : NoteEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 

@@ -56,8 +56,11 @@ import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(),
-    MainFragment.Listener, TutorialFragment.Listener, NotificationButtonFragment.Listener {
+class MainActivity :
+    BaseActivity(),
+    MainFragment.Listener,
+    TutorialFragment.Listener,
+    NotificationButtonFragment.Listener {
 
     @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
     @Inject lateinit var questAutoSyncer: QuestAutoSyncer
@@ -121,7 +124,7 @@ class MainActivity : BaseActivity(),
         val data = intent.data ?: return
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
-        val zoom = if (geo.zoom == null || geo.zoom < 14)  18f else geo.zoom
+        val zoom = if (geo.zoom == null || geo.zoom < 14) 18f else geo.zoom
         val pos = LatLon(geo.latitude, geo.longitude)
         mainFragment?.setCameraPosition(pos, zoom)
     }
@@ -261,7 +264,7 @@ class MainActivity : BaseActivity(),
                 // it, so it does not make sense to send an error report. Just notify the user.
                 if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
-                }  else if (e is AuthorizationException) {
+                } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
                     userLoginStatusController.logOut()
                 } else {

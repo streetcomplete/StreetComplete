@@ -17,7 +17,6 @@ import java.util.LinkedList
 import java.util.Locale
 import javax.inject.Inject
 
-
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_roadname
@@ -43,7 +42,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbreviationsByLocale
 
     override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
-        val polyline = when(val geom = elementGeometry) {
+        val polyline = when (val geom = elementGeometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()
             is ElementPointGeometry -> listOf(geom.center)
@@ -67,7 +66,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            val points = when(val g = elementGeometry) {
+            val points = when (val g = elementGeometry) {
                 is ElementPolylinesGeometry -> g.polylines.first()
                 is ElementPolygonsGeometry -> g.polygons.first()
                 is ElementPointGeometry -> listOf(g.center)
@@ -102,7 +101,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                     (dialog as AlertDialog).getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = true
                 } else if (which == DialogInterface.BUTTON_POSITIVE) {
                     selection?.let {
-                        if(it >= 0 && it < answers.size) onAnswer(it)
+                        if (it >= 0 && it < answers.size) onAnswer(it)
                     }
                 }
             }
@@ -112,14 +111,12 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                 when (answer) {
                     leaveNote -> composeNote()
                     noName    -> confirmNoStreetName()
-                    else      -> {
-                        applyAnswer(when(answer) {
-                            linkRoad    -> RoadIsLinkRoad
-                            serviceRoad -> RoadIsServiceRoad
-                            trackRoad   -> RoadIsTrack
-                            else        -> throw IllegalStateException()
-                        })
-                    }
+                    else      -> applyAnswer(when (answer) {
+                        linkRoad    -> RoadIsLinkRoad
+                        serviceRoad -> RoadIsServiceRoad
+                        trackRoad   -> RoadIsTrack
+                        else        -> throw IllegalStateException()
+                    })
                 }
             }
         }
@@ -144,6 +141,6 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 // m
     }
 }

@@ -11,7 +11,7 @@ data class ResText(@StringRes val resId: Int) : Text()
 data class CharSequenceText(val text: CharSequence) : Text()
 
 fun TextView.setText(text: Text?) {
-    when(text) {
+    when (text) {
         is ResText -> setText(text.resId)
         is CharSequenceText -> setText(text.text)
         null -> setText("")
@@ -19,7 +19,7 @@ fun TextView.setText(text: Text?) {
 }
 
 fun VerticalLabelView.setText(text: Text?) {
-    when(text) {
+    when (text) {
         is ResText -> setText(resources.getString(text.resId))
         is CharSequenceText -> setText(text.text.toString())
         null -> setText("")

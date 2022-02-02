@@ -119,7 +119,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 listener?.onClickedEdit(editKey)
                 return@launch
             }
-            val pickMarkerResult = controller?.pickMarker(x,y)
+            val pickMarkerResult = controller?.pickMarker(x, y)
             if (pickMarkerResult == null) {
                 onClickedMap(x, y)
             }
@@ -153,7 +153,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMapComponent?.clearGeometry()
     }
 
-    private fun Edit.getGeometry(): ElementGeometry = when(this) {
+    private fun Edit.getGeometry(): ElementGeometry = when (this) {
         is ElementEdit -> originalGeometry
         is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
         else -> null
@@ -195,7 +195,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             geometryMapComponent?.endFocusGeometry()
         }
         centerCurrentPositionIfFollowing()
-
     }
 
     /* -------------------------------  Markers for current quest ------------------------------- */

@@ -42,7 +42,9 @@ import java.util.Locale
 import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
+class SettingsFragment :
+    PreferenceFragmentCompat(),
+    HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
@@ -83,7 +85,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() }}
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             true
@@ -95,7 +97,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
                 .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
                     val hidden = questController.unhideAll()
                     context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                }}
+                } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 
@@ -148,7 +150,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        when(key) {
+        when (key) {
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     AlertDialog.Builder(requireContext())

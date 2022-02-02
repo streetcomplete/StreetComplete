@@ -20,7 +20,7 @@ class CheckExistenceTitleTest {
 
     init {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        featureDictionaryFuture = FutureTask { AndroidFeatureDictionary.create(context.assets,"osmfeatures/default", "osmfeatures/brands" ) }
+        featureDictionaryFuture = FutureTask { AndroidFeatureDictionary.create(context.assets, "osmfeatures/default", "osmfeatures/brands") }
         featureDictionaryFuture.run()
 
         val conf = Configuration(context.resources.configuration)

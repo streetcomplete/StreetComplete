@@ -77,7 +77,7 @@ class NumberSystem(private val min: Int, private val max: Int) {
                 rangeList.addAll(splitAlongBounds(range))
             } else if (min <= range.end || max >= range.start) {
                 rangeList.add(range)
-            }// leave out those which are not in the max range anyway
+            } // leave out those which are not in the max range anyway
         }
         rangeList.sort()
         return rangeList

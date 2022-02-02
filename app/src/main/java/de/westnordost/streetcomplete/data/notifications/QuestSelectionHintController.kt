@@ -23,14 +23,14 @@ import javax.inject.Singleton
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     var state: QuestSelectionHintState
-    set(value) {
-        prefs.edit().putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString()).apply()
-        listeners.forEach { it.onQuestSelectionHintStateChanged() }
-    }
-    get() {
-        val str = prefs.getString(Prefs.QUEST_SELECTION_HINT_STATE, null)
-        return if (str == null) NOT_SHOWN else QuestSelectionHintState.valueOf(str)
-    }
+        set(value) {
+            prefs.edit().putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString()).apply()
+            listeners.forEach { it.onQuestSelectionHintStateChanged() }
+        }
+        get() {
+            val str = prefs.getString(Prefs.QUEST_SELECTION_HINT_STATE, null)
+            return if (str == null) NOT_SHOWN else QuestSelectionHintState.valueOf(str)
+        }
 
     init {
         visibleQuestsSource.addListener(object : VisibleQuestsSource.Listener {

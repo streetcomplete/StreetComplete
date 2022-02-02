@@ -10,7 +10,7 @@ val VALID_BLOCKNUMBER_REGEX = Regex("\\p{N}{1,4}(\\s?\\p{L})?")
 
 fun HousenumberAnswer.looksInvalid(additionalValidHousenumberRegex: String?): Boolean {
     val validHousenumberRegex = getValidHouseNumberRegex(additionalValidHousenumberRegex)
-    return when(this) {
+    return when (this) {
         is ConscriptionNumber ->
             !number.matches(VALID_CONSCRIPTIONNUMBER_REGEX) || streetNumber != null && !streetNumber.matches(validHousenumberRegex)
         is HouseNumber ->

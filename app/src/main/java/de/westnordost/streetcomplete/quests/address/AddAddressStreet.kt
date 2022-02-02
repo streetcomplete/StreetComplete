@@ -51,8 +51,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
         }
 
         val addressesWithoutStreet = mapData.filter { address ->
-            filter.matches(address) &&
-            associatedStreetRelations.none { it.contains(address.type, address.id) }
+            filter.matches(address)
+            && associatedStreetRelations.none { it.contains(address.type, address.id) }
             && address.id !in excludedWayNodeIds
         }
 
@@ -66,7 +66,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     override fun createForm() = AddAddressStreetForm()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, tags: Tags, timestampEdited: Long) {
-        val key = when(answer) {
+        val key = when (answer) {
             is StreetName -> "addr:street"
             is PlaceName -> "addr:place"
         }
@@ -74,6 +74,6 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     }
 }
 
-private fun Relation.contains(elementType: ElementType, elementId: Long) : Boolean {
+private fun Relation.contains(elementType: ElementType, elementId: Long): Boolean {
     return members.any { it.type == elementType && it.ref == elementId }
 }

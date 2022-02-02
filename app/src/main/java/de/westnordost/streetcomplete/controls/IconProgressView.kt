@@ -19,7 +19,7 @@ class IconProgressView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr)  {
+) : RelativeLayout(context, attrs, defStyleAttr) {
 
     private val binding = ViewIconProgressBinding.inflate(LayoutInflater.from(context), this)
 
@@ -30,9 +30,8 @@ class IconProgressView @JvmOverloads constructor(
         set(value) { binding.iconView.setImageDrawable(value) }
         get() = binding.iconView.drawable
 
-
     private val animatorDurationScale: Float get() =
-       Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+        Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()

@@ -40,7 +40,7 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override fun createForm() = MarkCompletedConstructionForm()
 
     override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is OpeningDateAnswer -> {
                 tags["opening_date"] = answer.date.toCheckDateString()
             }

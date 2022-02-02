@@ -161,7 +161,7 @@ import javax.inject.Singleton
      * @return true if successful
      */
     suspend fun solve(quest: Quest, answer: Any, source: String): Boolean {
-        return when(quest) {
+        return when (quest) {
             is OsmNoteQuest -> solveOsmNoteQuest(quest, answer as NoteAnswer)
             is OsmQuest -> solveOsmQuest(quest, answer, source)
             else -> throw NotImplementedError()
@@ -184,7 +184,8 @@ import javax.inject.Singleton
 
     private suspend fun solveOsmQuest(
         q: OsmQuest,
-        answer: Any, source: String
+        answer: Any,
+        source: String
     ): Boolean = withContext(Dispatchers.IO) {
         /* When OSM data is being updated (e.g. during download), first that data is persisted to
          *  the database and after that, the quests are updated on the new data.
@@ -224,7 +225,7 @@ import javax.inject.Singleton
         return@withContext true
     }
 
-    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges {
+    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any): StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
         quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder, element.timestampEdited)
         return changesBuilder.create()

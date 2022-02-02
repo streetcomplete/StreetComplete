@@ -89,7 +89,6 @@ import kotlin.math.sqrt
         return isBelowEquator && isApril1st()
     }
 
-
     private fun createSceneUpdates(pinSprites: String): List<Pair<String, String>> = listOf(
         "textures.pins.url" to "file://${context.filesDir}/$PIN_ICONS_FILE",
         "textures.pins.sprites" to pinSprites

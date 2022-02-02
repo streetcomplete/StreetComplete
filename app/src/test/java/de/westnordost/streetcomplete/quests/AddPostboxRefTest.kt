@@ -23,5 +23,4 @@ class AddPostboxRefTest {
             StringMapEntryAdd("ref", "12d")
         )
     }
-
 }

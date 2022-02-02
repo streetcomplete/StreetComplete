@@ -15,7 +15,6 @@ import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-
 fun View.popIn(): ViewPropertyAnimator {
     visibility = View.VISIBLE
     return animate()
@@ -33,7 +32,7 @@ fun View.popOut(): ViewPropertyAnimator {
         .withEndAction { visibility = View.GONE }
 }
 
-suspend fun View.awaitLayout()  {
+suspend fun View.awaitLayout() {
     if (!ViewCompat.isLaidOut(this) || isLayoutRequested) {
         awaitNextLayout()
     }

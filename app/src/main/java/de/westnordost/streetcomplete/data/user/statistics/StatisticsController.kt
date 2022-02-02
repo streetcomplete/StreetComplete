@@ -26,7 +26,7 @@ import javax.inject.Singleton
     private val questTypeRegistry: QuestTypeRegistry,
     private val prefs: SharedPreferences,
     userLoginStatusSource: UserLoginStatusSource
-): StatisticsSource {
+) : StatisticsSource {
 
     private val listeners: MutableList<StatisticsSource.Listener> = CopyOnWriteArrayList()
 
@@ -86,7 +86,6 @@ import javax.inject.Singleton
 
     override fun getCountryStatisticsOfCountryWithBiggestSolvedCount() =
         countryStatisticsDao.getCountryWithBiggestSolvedCount()
-
 
     fun addOne(questType: QuestType<*>, position: LatLon) {
         questTypeStatisticsDao.addOne(questType.name)

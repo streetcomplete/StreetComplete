@@ -138,9 +138,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import java.util.concurrent.FutureTask
 import javax.inject.Singleton
 
-
-@Module object QuestModule
-{
+@Module object QuestModule {
     @Provides @Singleton fun questTypeRegistry(
         trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
         trafficFlowDao: WayTrafficFlowDao,
@@ -181,7 +179,7 @@ import javax.inject.Singleton
         /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
         // bus stop quests
-        AddBusStopShelter(),  // used by at least OsmAnd
+        AddBusStopShelter(), // used by at least OsmAnd
         AddBenchStatusOnBusStop(), // can be seen from across the street
         AddBinStatusOnBusStop(), // can be seen from across the street
         AddTactilePavingBusStop(), // requires you to be very close to it
@@ -352,7 +350,7 @@ import javax.inject.Singleton
         AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
 
         // toilets
-        AddToiletAvailability(), //OSM Carto, shown in OsmAnd descriptions
+        AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
         AddToiletsFee(), // used by OsmAnd in the object description
         AddBabyChangingTable(), // used by OsmAnd in the object description
         AddWheelchairAccessToiletsPart(),

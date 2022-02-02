@@ -32,11 +32,11 @@ class AddCrossingIslandTest {
             "highway" to "crossing",
             "crossing" to "something"
         ))
-        val privateRoad = way(nodes = listOf(1,2,3), tags = mapOf(
+        val privateRoad = way(nodes = listOf(1, 2, 3), tags = mapOf(
             "highway" to "residential",
             "access" to "private"
         ))
-        val mapData = TestMapDataWithGeometry(listOf(crossing, privateRoad ))
+        val mapData = TestMapDataWithGeometry(listOf(crossing, privateRoad))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(crossing))
     }

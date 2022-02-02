@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.osm.street_parking.toOsmConditionValue
 import de.westnordost.streetcomplete.osm.street_parking.toOsmLaneValue
 import de.westnordost.streetcomplete.osm.street_parking.toOsmValue
 
-
 class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
 
     override val elementFilter = """

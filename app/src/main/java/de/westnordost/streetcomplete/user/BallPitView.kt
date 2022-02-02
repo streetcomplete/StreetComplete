@@ -55,7 +55,7 @@ class BallPitView @JvmOverloads constructor(
     private val sensorManager: SensorManager
     private var accelerometer: Sensor? = null
 
-    private val physicsController = PhysicsWorldController(Vec2(0f,-10f))
+    private val physicsController = PhysicsWorldController(Vec2(0f, -10f))
     private var minPixelsPerMeter = 1f
     private val bubbleBodyDef: BodyDef
     private lateinit var worldBounds: RectF
@@ -77,10 +77,10 @@ class BallPitView @JvmOverloads constructor(
             val y = event.values[1]
             val z = event.values[2]
             physicsController.gravity = when (display.rotation) {
-                Surface.ROTATION_90 -> Vec2(y,-x)
-                Surface.ROTATION_180 -> Vec2(x,y)
-                Surface.ROTATION_270 -> Vec2(-y,x)
-                else -> Vec2(-x,-y)
+                Surface.ROTATION_90 -> Vec2(y, -x)
+                Surface.ROTATION_180 -> Vec2(x, y)
+                Surface.ROTATION_270 -> Vec2(-y, x)
+                else -> Vec2(-x, -y)
             }
         }
     }
@@ -141,7 +141,7 @@ class BallPitView @JvmOverloads constructor(
 
         val widthInMeters = width / minPixelsPerMeter
         val heightInMeters = height / minPixelsPerMeter
-        worldBounds = RectF(0f,0f, widthInMeters, heightInMeters)
+        worldBounds = RectF(0f, 0f, widthInMeters, heightInMeters)
 
         createWorldBounds(worldBounds)
     }
@@ -169,14 +169,15 @@ class BallPitView @JvmOverloads constructor(
             val radius = getBubbleRadius(size)
             val spawnPos = Vec2(
                 radius + Math.random().toFloat() * (worldBounds.width() - 2 * radius),
-                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius))
+                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius)
+            )
             addBubble(view, size, spawnPos)
         }
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private suspend fun addBubble(view: View, size: Int, position: Vec2) {
-        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height())/3 )
+        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height()) / 3)
         val body = createBubbleBody(position, radius)
 
         startInflatingAnimation(view, size, position.y)
@@ -201,7 +202,7 @@ class BallPitView @JvmOverloads constructor(
         val shape = CircleShape()
         shape.radius = radius
         // bubbles behave like balls, not circles
-        val density = 4f/3f * radius
+        val density = 4f / 3f * radius
         bubbleBodyDef.position = position
         return physicsController.createBody(bubbleBodyDef, shape, density)
     }
@@ -249,7 +250,7 @@ private open class SimpleGestureListener(private val view: View) : GestureDetect
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        when(event?.actionMasked) {
+        when (event?.actionMasked) {
             MotionEvent.ACTION_DOWN -> view.isPressed = true
             MotionEvent.ACTION_UP -> view.isPressed = false
         }

@@ -39,13 +39,13 @@ fun String.toLevelsOrNull(): List<Level>? =
 
 fun Level.intersects(other: Level): Boolean = when (this) {
     is SingleLevel -> {
-        when(other) {
+        when (other) {
             is SingleLevel -> level == other.level
             is LevelRange -> level in other.start..other.end
         }
     }
     is LevelRange -> {
-        when(other) {
+        when (other) {
             is SingleLevel -> other.level in start..end
             is LevelRange -> start <= other.end && end >= other.start
         }

@@ -43,7 +43,7 @@ class Months(private val data: BooleanArray = BooleanArray(MONTHS_COUNT)) {
             }
         }
         if (currentStart != null) {
-            result.add(CircularSection(currentStart, MONTHS_COUNT-1))
+            result.add(CircularSection(currentStart, MONTHS_COUNT - 1))
         }
 
         return MONTHS_NUMBER_SYSTEM.merged(result)
@@ -61,7 +61,7 @@ class Months(private val data: BooleanArray = BooleanArray(MONTHS_COUNT)) {
 
         const val MONTHS_COUNT = 12
         val OSM_ABBR_MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-        val MONTHS_NUMBER_SYSTEM = NumberSystem(0, MONTHS_COUNT-1)
+        val MONTHS_NUMBER_SYSTEM = NumberSystem(0, MONTHS_COUNT - 1)
 
         fun getNames(): Array<String> {
             val symbols = DateFormatSymbols.getInstance()

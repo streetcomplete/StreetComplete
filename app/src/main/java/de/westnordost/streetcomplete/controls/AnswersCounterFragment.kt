@@ -30,16 +30,16 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     }
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
-        override fun onIncreased() { viewLifecycleScope.launch { updateCount(true) }}
-        override fun onDecreased() { viewLifecycleScope.launch { updateCount(true) }}
+        override fun onIncreased() { viewLifecycleScope.launch { updateCount(true) } }
+        override fun onDecreased() { viewLifecycleScope.launch { updateCount(true) } }
     }
 
     private val questStatisticsListener = object : StatisticsSource.Listener {
         override fun onAddedOne(questType: QuestType<*>) {
-            viewLifecycleScope.launch { addCount(+1,true) }
+            viewLifecycleScope.launch { addCount(+1, true) }
         }
         override fun onSubtractedOne(questType: QuestType<*>) {
-            viewLifecycleScope.launch { addCount(-1,true) }
+            viewLifecycleScope.launch { addCount(-1, true) }
         }
         override fun onUpdatedAll() {
             viewLifecycleScope.launch { updateCount(false) }

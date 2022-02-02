@@ -73,4 +73,3 @@ class TeamModeDialog(
         } catch (e: NumberFormatException) { null }
     }
 }
-

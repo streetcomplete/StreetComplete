@@ -55,7 +55,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     private val binding get() = _binding!!
 
     protected var otherAnswersButton: TextView? = null
-    private set
+        private set
 
     override val bottomSheetContainer get() = binding.bottomSheetContainer
     override val bottomSheet get() = binding.bottomSheet
@@ -74,7 +74,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
-            if(field == null) {
+            if (field == null) {
                 val latLon = elementGeometry.center
                 field = countryInfos.get(latLon.longitude, latLon.latitude)
             }
@@ -207,7 +207,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         otherAnswersButton = null
     }
 
-    private fun assembleOtherAnswers() : List<AnswerItem> {
+    private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
         val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
@@ -230,8 +230,8 @@ abstract class AbstractQuestAnswerFragment<T> :
            relation, so it is not supported
            https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
         */
-        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-            way.tags["junction"] == "roundabout"
+        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull()
+            && way.tags["junction"] == "roundabout"
         if (isClosedRoundabout) return null
 
         if (way.isArea()) return null
@@ -276,7 +276,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     override fun onStart() {
         super.onStart()
-        if(!startedOnce) {
+        if (!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
         }
@@ -371,8 +371,8 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     private fun updateContentPadding() {
-        if(!contentPadding) {
-            binding.content.setPadding(0,0,0,0)
+        if (!contentPadding) {
+            binding.content.setPadding(0, 0, 0, 0)
         } else {
             val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
             val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)

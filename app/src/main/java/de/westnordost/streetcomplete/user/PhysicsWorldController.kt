@@ -28,7 +28,7 @@ class PhysicsWorldController(gravity: Vec2) {
             // wake up everyone if the gravity changed
             world.gravity = value
             var bodyIt = world.bodyList
-            while(bodyIt != null) {
+            while (bodyIt != null) {
                 bodyIt.isAwake = true
                 bodyIt = bodyIt.next
             }
@@ -65,7 +65,7 @@ class PhysicsWorldController(gravity: Vec2) {
 
     private fun loop() {
         val startTime = System.currentTimeMillis()
-        world.step(DELAY /1000f, 6, 2)
+        world.step(DELAY / 1000f, 6, 2)
         val executionTime = System.currentTimeMillis() - startTime
         listener?.onWorldStep()
         if (isRunning) {

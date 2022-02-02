@@ -71,14 +71,14 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     private fun createOsmModel(): List<LocalizedName> {
         val data = adapter.localizedNames.toMutableList()
         // language is only specified explicitly in OSM (usually) if there is more than one name specified
-        if(data.size == 1) {
+        if (data.size == 1) {
             data[0].languageTag = ""
         }
         // but if there is more than one language, ensure that a "main" name is also specified
         else {
             val mainLanguageIsSpecified = data.indexOfFirst { it.languageTag == "" } >= 0
             // use the name specified in the top row for that
-            if(!mainLanguageIsSpecified) {
+            if (!mainLanguageIsSpecified) {
                 data.add(LocalizedName("", data[0].name))
             }
         }
@@ -130,8 +130,8 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     // all added name rows are not empty
     override fun isFormComplete() =
-        adapter.localizedNames.isNotEmpty() &&
-        adapter.localizedNames.all { it.name.trim().isNotEmpty() }
+        adapter.localizedNames.isNotEmpty()
+        && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
 
     companion object {
         private const val LOCALIZED_NAMES_DATA = "localized_names_data"

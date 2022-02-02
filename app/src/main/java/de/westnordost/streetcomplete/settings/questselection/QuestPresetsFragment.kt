@@ -28,7 +28,6 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
         Injector.applicationComponent.inject(this)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = QuestPresetsAdapter(requireContext(), questPresetsController)
@@ -46,7 +45,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
         AlertDialog.Builder(ctx)
             .setTitle(R.string.quest_presets_preset_add)
             .setView(dialogBinding.root)
-            .setPositiveButton(android.R.string.ok) { _,_ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 val name = dialogBinding.editText.text.toString().trim()
                 viewLifecycleScope.launch(Dispatchers.IO) {
                     questPresetsController.add(name)
@@ -54,7 +53,5 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
-
     }
 }
-
