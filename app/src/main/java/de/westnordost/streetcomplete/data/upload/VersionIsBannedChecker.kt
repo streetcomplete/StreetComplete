@@ -5,7 +5,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 /** Asks remote server if this version of the app is banned */
-class VersionIsBannedChecker constructor(private val url: String, private val userAgent: String) {
+class VersionIsBannedChecker(private val url: String, private val userAgent: String) {
 
     fun get(): BannedInfo {
         var connection: HttpURLConnection? = null

@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.WAY_ID
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.NAME
 
-class WayTrafficFlowDao constructor(private val db: Database) {
+class WayTrafficFlowDao(private val db: Database) {
 
     fun put(wayId: Long, isForward: Boolean) {
         db.replace(NAME, listOf(

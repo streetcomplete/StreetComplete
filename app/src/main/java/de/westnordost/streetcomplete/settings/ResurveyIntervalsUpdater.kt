@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 
 /** This class is just to access the user's preference about which multiplier for the resurvey
  *  intervals to use */
-class ResurveyIntervalsUpdater constructor(private val prefs: SharedPreferences) {
+class ResurveyIntervalsUpdater(private val prefs: SharedPreferences) {
     fun update() {
         RelativeDate.MULTIPLIER = multiplier
     }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
-class NotesDownloader constructor(
+class NotesDownloader(
     private val notesApi: NotesApi,
     private val noteController: NoteController
 ) {

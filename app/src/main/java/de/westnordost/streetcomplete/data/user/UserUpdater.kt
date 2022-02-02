@@ -11,7 +11,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.util.concurrent.CopyOnWriteArrayList
 
-class UserUpdater constructor(
+class UserUpdater(
     private val userApi: UserApi,
     private val avatarsDownloader: AvatarsDownloader,
     private val statisticsDownloader: StatisticsDownloader,

@@ -9,7 +9,7 @@ import java.io.IOException
 import java.net.URL
 
 /** Downloads and stores the OSM avatars of users */
-class AvatarsDownloader constructor(
+class AvatarsDownloader(
     private val userApi: UserApi,
     private val cacheDir: File
 ) {

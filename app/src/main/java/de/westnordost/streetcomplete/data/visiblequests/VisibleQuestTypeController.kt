@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import java.util.concurrent.CopyOnWriteArrayList
 
-class VisibleQuestTypeController constructor(
+class VisibleQuestTypeController(
     private val visibleQuestTypeDao: VisibleQuestTypeDao,
     private val questPresetsSource: QuestPresetsSource
 ) : VisibleQuestTypeSource {

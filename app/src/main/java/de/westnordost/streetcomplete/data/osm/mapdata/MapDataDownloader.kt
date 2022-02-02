@@ -11,7 +11,7 @@ import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
 
 /** Takes care of downloading all note and osm quests */
-class MapDataDownloader constructor(
+class MapDataDownloader(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
 ) {

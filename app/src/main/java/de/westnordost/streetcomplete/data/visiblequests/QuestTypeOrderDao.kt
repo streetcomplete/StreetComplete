@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable.Colu
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable.Columns.QUEST_PRESET_ID
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable.NAME
 
-class QuestTypeOrderDao constructor(private val db: Database) {
+class QuestTypeOrderDao(private val db: Database) {
 
     fun getAll(presetId: Long): List<Pair<String, String>> =
         db.query(NAME,

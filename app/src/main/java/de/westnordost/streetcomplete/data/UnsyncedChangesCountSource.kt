@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Access and listen to how many unsynced (=uploadable) changes there are */
-class UnsyncedChangesCountSource constructor(
+class UnsyncedChangesCountSource(
     private val noteEditsSource: NoteEditsSource,
     private val elementEditsSource: ElementEditsSource
 ) {

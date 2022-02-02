@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 
 /** Assigns new element ids for ElementEditActions that create new elements */
-class ElementIdProviderDao constructor(private val db: Database) {
+class ElementIdProviderDao(private val db: Database) {
 
     fun assign(editId: Long, nodeCount: Int, wayCount: Int, relationCount: Int) {
         if (nodeCount == 0 && wayCount == 0 && relationCount == 0) return

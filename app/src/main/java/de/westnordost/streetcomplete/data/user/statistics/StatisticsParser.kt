@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import org.json.JSONObject
 import java.time.OffsetDateTime
 
-class StatisticsParser constructor(
+class StatisticsParser(
     private val questTypeRegistry: QuestTypeRegistry,
     private val questAliases: List<Pair<String, String>>
 ) {

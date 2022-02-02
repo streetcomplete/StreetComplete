@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable.Colum
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable.NAME
 
 /** Stores which link ids have been unlocked by the user */
-class UserLinksDao constructor(private val db: Database) {
+class UserLinksDao(private val db: Database) {
 
     fun getAll(): List<String> =
         db.query(NAME) { it.getString(LINK) }

@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
 import java.lang.System.currentTimeMillis
 
-class LastEditTimeStore constructor(private val prefs: SharedPreferences) {
+class LastEditTimeStore(private val prefs: SharedPreferences) {
 
     fun touch() {
         prefs.edit().putLong(Prefs.LAST_EDIT_TIME, currentTimeMillis()).apply()

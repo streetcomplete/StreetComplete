@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-class AvatarsInNotesUpdater constructor(private val downloader: AvatarsDownloader) :
+class AvatarsInNotesUpdater(private val downloader: AvatarsDownloader) :
     NoteController.Listener {
 
     override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {

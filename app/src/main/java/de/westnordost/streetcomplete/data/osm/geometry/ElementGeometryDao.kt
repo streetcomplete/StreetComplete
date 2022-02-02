@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.queryIn
 
 /** Stores the geometry of elements */
-class ElementGeometryDao constructor(
+class ElementGeometryDao(
     private val db: Database,
     private val polylinesSerializer: PolylinesSerializer
 ) {

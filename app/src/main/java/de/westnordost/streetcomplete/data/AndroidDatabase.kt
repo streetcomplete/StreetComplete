@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.ktx.getString
 import de.westnordost.streetcomplete.ktx.getStringOrNull
 
 @SuppressLint("Recycle")
-class AndroidDatabase constructor(private val dbHelper: SQLiteOpenHelper) : Database {
+class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     private val db get() = dbHelper.writableDatabase
 
     override fun exec(sql: String, args: Array<Any>?) {

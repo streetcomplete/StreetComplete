@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import java.util.concurrent.CopyOnWriteArrayList
 
-class NotesWithEditsSource constructor(
+class NotesWithEditsSource(
     private val noteController: NoteController,
     private val noteEditsSource: NoteEditsSource,
     private val userDataSource: UserDataSource

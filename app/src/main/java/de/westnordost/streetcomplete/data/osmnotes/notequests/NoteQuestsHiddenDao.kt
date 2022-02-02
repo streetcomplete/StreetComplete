@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTa
 import java.lang.System.currentTimeMillis
 
 /** Persists which note ids should be hidden (because the user selected so) in the note quest */
-class NoteQuestsHiddenDao constructor(private val db: Database) {
+class NoteQuestsHiddenDao(private val db: Database) {
 
     fun add(noteId: Long) {
         db.insert(NAME, listOf(

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable.NAME
 
 /** Stores how many quests the user solved in which country */
-class CountryStatisticsDao constructor(private val db: Database) {
+class CountryStatisticsDao(private val db: Database) {
 
     fun getCountryWithBiggestSolvedCount(): CountryStatistics? =
         db.queryOne(NAME, orderBy = "$SUCCEEDED DESC") { it.toCountryStatistics() }

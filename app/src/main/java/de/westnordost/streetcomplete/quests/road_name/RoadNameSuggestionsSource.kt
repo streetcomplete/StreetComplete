@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
 
-class RoadNameSuggestionsSource constructor(
+class RoadNameSuggestionsSource(
     private val mapDataSource: MapDataWithEditsSource
 ) {
 

@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList
  *  itself, really.
  *  This class is to access user notifications, which are basically dialogs that pop up when
  *  clicking on the bell icon, such as "you have a new OSM message in your inbox" etc. */
-class NotificationsSource constructor(
+class NotificationsSource(
     private val userDataController: UserDataController,
     private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,

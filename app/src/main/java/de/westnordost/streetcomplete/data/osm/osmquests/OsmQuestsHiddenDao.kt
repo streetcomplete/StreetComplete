@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import java.lang.System.currentTimeMillis
 
 /** Persists which osm quests should be hidden (because the user selected so) */
-class OsmQuestsHiddenDao constructor(private val db: Database) {
+class OsmQuestsHiddenDao(private val db: Database) {
 
     fun add(osmQuestKey: OsmQuestKey) {
         db.insert(NAME, osmQuestKey.toPairs())

@@ -13,7 +13,7 @@ import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 
 /** Simple wrapper to enable just playing a sound effect from raw resources */
-class SoundFx constructor(private val context: Context) {
+class SoundFx(private val context: Context) {
     private val soundPool = SoundPool.Builder()
         .setMaxStreams(10)
         .setAudioAttributes(AudioAttributes.Builder()

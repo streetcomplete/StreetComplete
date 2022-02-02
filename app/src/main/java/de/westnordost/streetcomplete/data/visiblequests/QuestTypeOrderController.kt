@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 import de.westnordost.streetcomplete.data.quest.QuestType
 import java.util.concurrent.CopyOnWriteArrayList
 
-class QuestTypeOrderController constructor(
+class QuestTypeOrderController(
     private val questTypeOrderDao: QuestTypeOrderDao,
     private val questPresetsSource: QuestPresetsSource
 ) : QuestTypeOrderSource {

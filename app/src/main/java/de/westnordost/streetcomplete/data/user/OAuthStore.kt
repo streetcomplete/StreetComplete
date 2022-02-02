@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.Prefs
 import oauth.signpost.OAuthConsumer
 
 /** Manages saving and loading OAuthConsumer persistently  */
-class OAuthStore constructor(
+class OAuthStore(
     private val prefs: SharedPreferences,
 ) {
     var oAuthConsumer: OAuthConsumer?

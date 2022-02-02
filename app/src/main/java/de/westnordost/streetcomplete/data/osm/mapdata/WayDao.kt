@@ -16,7 +16,7 @@ import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM ways */
-class WayDao constructor(private val db: Database) {
+class WayDao(private val db: Database) {
     fun put(way: Way) {
         putAll(listOf(way))
     }

@@ -8,7 +8,7 @@ import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Manages access to the notes storage */
-class NoteController constructor(
+class NoteController(
     private val dao: NoteDao
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the

@@ -18,7 +18,7 @@ import java.lang.System.currentTimeMillis
 import kotlin.math.max
 
 /** Downloads all the things */
-class Downloader constructor(
+class Downloader(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,

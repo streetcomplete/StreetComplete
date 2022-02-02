@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import java.util.Locale
 
 /** Manages the creation and reusage of quest-related changesets */
-class OpenQuestChangesetsManager constructor(
+class OpenQuestChangesetsManager(
     private val mapDataApi: MapDataApi,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.Prefs
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Controller that handles user login, logout, auth and updated data */
-class UserDataController constructor(
+class UserDataController(
     private val prefs: SharedPreferences,
     private val userLoginStatusSource: UserLoginStatusSource
 ) : UserDataSource {

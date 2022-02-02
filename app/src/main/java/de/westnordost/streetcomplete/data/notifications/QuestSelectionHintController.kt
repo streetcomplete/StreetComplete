@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import java.util.concurrent.CopyOnWriteArrayList
 
-class QuestSelectionHintController constructor(
+class QuestSelectionHintController(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val prefs: SharedPreferences
 ) {

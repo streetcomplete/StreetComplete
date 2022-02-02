@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 /** Manages the data associated with achievements: Unlocked achievements, unlocked links and info
  *  about newly unlocked achievements (the user shall be notified about) */
-class AchievementsController constructor(
+class AchievementsController(
     private val statisticsSource: StatisticsSource,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,

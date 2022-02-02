@@ -15,7 +15,7 @@ import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM nodes */
-class NodeDao constructor(private val db: Database) {
+class NodeDao(private val db: Database) {
     fun put(node: Node) {
         putAll(listOf(node))
     }

@@ -15,7 +15,7 @@ import kotlin.math.sqrt
 
 /** From all the quest types, creates and saves a sprite sheet of quest type pin icons, provides
  *  the scene updates for tangram to access this sprite sheet  */
-class TangramPinsSpriteSheet constructor(
+class TangramPinsSpriteSheet(
     private val context: Context,
     private val questTypeRegistry: QuestTypeRegistry,
     private val prefs: SharedPreferences

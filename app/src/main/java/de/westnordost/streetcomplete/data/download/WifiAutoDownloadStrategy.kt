@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 
 /** Download strategy if user is on wifi */
-class WifiAutoDownloadStrategy constructor(
+class WifiAutoDownloadStrategy(
     mapDataController: MapDataController,
     downloadedTilesDao: DownloadedTilesDao
 ) : AVariableRadiusStrategy(mapDataController, downloadedTilesDao) {

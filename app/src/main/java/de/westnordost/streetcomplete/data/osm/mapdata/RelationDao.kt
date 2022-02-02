@@ -18,7 +18,7 @@ import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM relations */
-class RelationDao constructor(private val db: Database) {
+class RelationDao(private val db: Database) {
     fun put(relation: Relation) {
         putAll(listOf(relation))
     }

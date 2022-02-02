@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.queryIn
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 
 /** Persists OsmQuest objects, or more specifically, OsmQuestEntry objects */
-class OsmQuestDao constructor(private val db: Database) {
+class OsmQuestDao(private val db: Database) {
 
     fun put(quest: OsmQuestDaoEntry) {
         db.replace(NAME, quest.toPairs())

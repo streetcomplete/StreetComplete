@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.util.TilesRect
 import java.lang.System.currentTimeMillis
 
 /** Keeps info in which areas things have been downloaded already in a tile grid */
-class DownloadedTilesDao constructor(private val db: Database) {
+class DownloadedTilesDao(private val db: Database) {
 
     /** Persist that the given type has been downloaded in every tile in the given tile range  */
     fun put(tilesRect: TilesRect, typeName: String) {

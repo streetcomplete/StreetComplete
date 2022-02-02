@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
-class NoteEditsController constructor(
+class NoteEditsController(
     private val editsDB: NoteEditsDao
 ) : NoteEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the

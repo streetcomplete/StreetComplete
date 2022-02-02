@@ -29,7 +29,7 @@ import kotlin.collections.ArrayList
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
  *  undoing, etc. */
-class QuestController constructor(
+class QuestController(
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
     private val elementEditsController: ElementEditsController,

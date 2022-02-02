@@ -23,7 +23,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
-class ElementEditsUploader constructor(
+class ElementEditsUploader(
     private val elementEditsController: ElementEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,

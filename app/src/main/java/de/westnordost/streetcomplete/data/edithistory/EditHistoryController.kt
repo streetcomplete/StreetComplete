@@ -16,7 +16,7 @@ import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
-class EditHistoryController constructor(
+class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val noteQuestController: OsmNoteQuestController,

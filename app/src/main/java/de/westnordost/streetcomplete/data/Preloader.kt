@@ -12,7 +12,7 @@ import java.lang.System.currentTimeMillis
 import java.util.concurrent.FutureTask
 
 /** Initialize certain singleton classes used elsewhere throughout the app in the background */
-class Preloader constructor(
+class Preloader(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     private val featuresDictionaryFuture: FutureTask<FeatureDictionary>
 ) {

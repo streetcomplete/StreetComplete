@@ -8,7 +8,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import java.util.concurrent.TimeUnit
 
-class ChangesetAutoCloser constructor(private val context: Context) {
+class ChangesetAutoCloser(private val context: Context) {
 
     fun enqueue(delayInMilliseconds: Long) {
         // changesets are closed delayed after X minutes of inactivity

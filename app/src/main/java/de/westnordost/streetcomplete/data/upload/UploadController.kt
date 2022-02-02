@@ -7,7 +7,7 @@ import android.content.ServiceConnection
 import android.os.IBinder
 
 /** Controls uploading */
-class UploadController constructor(
+class UploadController(
     private val context: Context
 ) : UploadProgressSource {
 

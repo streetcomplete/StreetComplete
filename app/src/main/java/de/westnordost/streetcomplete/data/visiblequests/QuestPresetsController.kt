@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import java.util.concurrent.CopyOnWriteArrayList
 
-class QuestPresetsController constructor(
+class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore
 ) : QuestPresetsSource {

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable.Column
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable.Columns.QUEST_PRESET_NAME
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable.NAME
 
-class QuestPresetsDao constructor(private val db: Database) {
+class QuestPresetsDao(private val db: Database) {
 
     fun add(name: String): Long =
         db.insert(NAME, listOf(QUEST_PRESET_NAME to name))

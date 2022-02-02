@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Used to get visible osm note quests */
-class OsmNoteQuestController constructor(
+class OsmNoteQuestController(
     private val noteSource: NotesWithEditsSource,
     private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,

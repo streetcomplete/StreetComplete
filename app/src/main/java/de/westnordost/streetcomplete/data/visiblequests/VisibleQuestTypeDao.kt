@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Co
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.NAME
 
 /** Stores which quest types are visible by user selection and which are not */
-class VisibleQuestTypeDao constructor(private val db: Database) {
+class VisibleQuestTypeDao(private val db: Database) {
 
     fun put(presetId: Long, questTypeName: String, visible: Boolean) {
         db.replace(NAME, listOf(

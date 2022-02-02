@@ -4,7 +4,7 @@ import de.westnordost.osmapi.OsmConnection
 import oauth.signpost.OAuthConsumer
 import java.util.concurrent.CopyOnWriteArrayList
 
-class UserLoginStatusController constructor(
+class UserLoginStatusController(
     private val oAuthStore: OAuthStore,
     private val osmConnection: OsmConnection,
 ) : UserLoginStatusSource {

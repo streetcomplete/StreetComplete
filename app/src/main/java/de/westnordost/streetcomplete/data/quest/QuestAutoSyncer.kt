@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-class QuestAutoSyncer constructor(
+class QuestAutoSyncer(
     private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,

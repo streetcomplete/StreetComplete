@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTab
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.NAME
 
 /** Stores how many quests of which quest types the user solved */
-class QuestTypeStatisticsDao constructor(private val db: Database) {
+class QuestTypeStatisticsDao(private val db: Database) {
 
     fun getTotalAmount(): Int =
         db.queryOne(NAME, arrayOf("total($SUCCEEDED) as count")) { it.getInt("count") } ?: 0

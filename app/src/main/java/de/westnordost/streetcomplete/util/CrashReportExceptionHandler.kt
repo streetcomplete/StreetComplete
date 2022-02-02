@@ -17,7 +17,7 @@ import java.util.Locale
  *  to the email address [mailReportTo].
  *  When a crash occurs, the stack trace is saved to [crashReportFile] so that it can be accessed
  *  on next startup */
-class CrashReportExceptionHandler constructor(
+class CrashReportExceptionHandler(
     private val appCtx: Context,
     private val mailReportTo: String,
     private val crashReportFile: String

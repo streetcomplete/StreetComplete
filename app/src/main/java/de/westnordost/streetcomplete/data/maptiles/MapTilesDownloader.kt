@@ -22,7 +22,7 @@ import java.io.IOException
 import java.lang.System.currentTimeMillis
 import kotlin.coroutines.resume
 
-class MapTilesDownloader constructor(
+class MapTilesDownloader(
     private val vectorTileProvider: VectorTileProvider,
     private val cacheConfig: MapTilesDownloadCacheConfig
 ) {

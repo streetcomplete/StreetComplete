@@ -17,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
 /** Manages statistics of solved quests - by quest type and by country */
-class StatisticsController constructor(
+class StatisticsController(
     private val questTypeStatisticsDao: QuestTypeStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,

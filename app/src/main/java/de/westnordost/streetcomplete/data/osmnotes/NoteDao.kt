@@ -19,7 +19,7 @@ import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM notes */
-class NoteDao constructor(private val db: Database) {
+class NoteDao(private val db: Database) {
     fun put(note: Note) {
         db.replace(NAME, note.toPairs())
     }

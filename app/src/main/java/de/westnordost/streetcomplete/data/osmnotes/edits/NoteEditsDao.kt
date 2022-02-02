@@ -19,7 +19,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class NoteEditsDao constructor(private val db: Database) {
+class NoteEditsDao(private val db: Database) {
     fun add(edit: NoteEdit): Boolean =
         db.transaction {
             val rowId = db.insert(NAME, edit.toPairs())

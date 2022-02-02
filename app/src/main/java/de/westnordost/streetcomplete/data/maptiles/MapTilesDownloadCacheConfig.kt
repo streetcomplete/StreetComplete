@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 /** Configuration for the common cache shared by tangram-es and the map tile ("pre"-)downloader
  *  integrated into the normal map download process */
-class MapTilesDownloadCacheConfig constructor(context: Context) {
+class MapTilesDownloadCacheConfig(context: Context) {
 
     val cacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)

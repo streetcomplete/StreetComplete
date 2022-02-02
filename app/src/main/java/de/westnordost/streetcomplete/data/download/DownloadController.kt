@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.util.enclosingTilesRect
 
 /** Controls downloading */
-class DownloadController constructor(
+class DownloadController(
     private val context: Context
 ) : DownloadProgressSource {
 

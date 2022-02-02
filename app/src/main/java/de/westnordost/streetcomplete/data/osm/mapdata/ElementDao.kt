@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */
-class ElementDao constructor(
+class ElementDao(
     private val nodeDao: NodeDao,
     private val wayDao: WayDao,
     private val relationDao: RelationDao

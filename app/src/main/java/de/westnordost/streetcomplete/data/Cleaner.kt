@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 
 /** Deletes old unused data in the background */
-class Cleaner constructor(
+class Cleaner(
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry
