@@ -161,9 +161,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         val result = createArCoreSession()
         if (result is ArCoreSessionCreator.Success) {
             val session = result.session
-            val config = Config(session)
-            configureSession(config)
-            session.configure(config)
+            configureSession(session)
             addArSceneView(session)
         } else if (result is ArCoreSessionCreator.Failure) {
             val reason = result.reason
@@ -175,17 +173,21 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         }
     }
 
-    private fun configureSession(config: Config) {
-        config.updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE
-        config.instantPlacementMode = Config.InstantPlacementMode.DISABLED
+    private fun configureSession(session: Session) {
+        val config = Config(session)
+
         config.planeFindingMode = when(measureMode) {
             MeasureMode.BOTH -> Config.PlaneFindingMode.HORIZONTAL_AND_VERTICAL
             MeasureMode.HORIZONTAL -> Config.PlaneFindingMode.HORIZONTAL
             MeasureMode.VERTICAL -> Config.PlaneFindingMode.VERTICAL
         }
+        // disabling unused features should make processing faster
+        config.depthMode = Config.DepthMode.DISABLED
         config.cloudAnchorMode = Config.CloudAnchorMode.DISABLED
-        config.focusMode = Config.FocusMode.AUTO
-        config.depthMode = Config.DepthMode.AUTOMATIC
+        config.instantPlacementMode = Config.InstantPlacementMode.DISABLED
+        config.lightEstimationMode = Config.LightEstimationMode.DISABLED
+
+        session.configure(config)
     }
 
     private fun addArSceneView(session: Session) {
