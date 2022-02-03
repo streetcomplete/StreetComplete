@@ -12,6 +12,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
 import de.westnordost.streetcomplete.databinding.RowCreditsTranslatorsBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.mapSerializer
+import de.westnordost.streetcomplete.ktx.stringListSerializer
+import de.westnordost.streetcomplete.ktx.stringMapSerializer
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -61,24 +64,25 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 
     private suspend fun readMainContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_main).map(::withLinkToGithubAccount)
+        resources.getYamlObject(stringListSerializer, R.raw.credits_main).map(::withLinkToGithubAccount)
     }
 
     private suspend fun readProjectsContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_projects)
+        resources.getYamlObject(stringListSerializer, R.raw.credits_projects)
     }
 
     private suspend fun readCodeContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_code).map(::withLinkToGithubAccount) +
+        resources.getYamlObject(stringListSerializer, R.raw.credits_code).map(::withLinkToGithubAccount) +
             getString(R.string.credits_and_more)
     }
 
     private suspend fun readArtContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_art)
+        resources.getYamlObject(stringListSerializer, R.raw.credits_art)
     }
 
     private suspend fun readTranslators() = withContext(Dispatchers.IO) {
-        val map = resources.getYamlObject<LinkedHashMap<String, LinkedHashMap<String, String>>>(R.raw.credits_translators)
+        val serializer = mapSerializer(stringMapSerializer)
+        val map = resources.getYamlObject(serializer, R.raw.credits_translators).toDeepMutableMap()
 
         // skip those translators who contributed less than 2% of the translation
         for (contributors in map.values) {
@@ -118,3 +122,6 @@ private fun withLinkToGithubAccount(contributor: String): String {
         "$name (<a href=\"https://github.com/$githubName\">$githubName</a>)"
     }
 }
+
+private fun Map<String, Map<String, String>>.toDeepMutableMap(): MutableMap<String, MutableMap<String, String>> =
+    entries.associate { it.key to it.value.toMutableMap() }.toMutableMap()

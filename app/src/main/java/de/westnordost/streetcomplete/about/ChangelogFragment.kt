@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.stringMapSerializer
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -22,6 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
 
 /** Shows the full changelog */
 class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
@@ -90,7 +93,7 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 data class Release(val title: String, val description: String)
 
 private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.changelog)
+    resources.getYamlObject(stringMapSerializer, R.raw.changelog)
         .map { Release(it.key, addedLinks(it.value)) }
 }
 

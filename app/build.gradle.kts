@@ -182,13 +182,10 @@ dependencies {
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    implementation("com.charleskorn.kaml:kaml:0.40.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
-
-    // config files
-    implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
-    implementation("com.charleskorn.kaml:kaml:0.40.0")
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.26.0")

@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.data.meta
 
-import com.esotericsoftware.yamlbeans.YamlException
-import com.esotericsoftware.yamlbeans.YamlReader
+import com.charleskorn.kaml.Yaml
+import de.westnordost.streetcomplete.ktx.stringMapSerializer
 import java.io.InputStream
-import java.io.InputStreamReader
 import java.util.Locale
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -15,19 +14,17 @@ class Abbreviations(config: InputStream, val locale: Locale) {
     init {
         try {
             parseConfig(config)
-        } catch (e: YamlException) {
+        } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-    @Throws(YamlException::class)
     private fun parseConfig(config: InputStream) {
-        val reader = YamlReader(InputStreamReader(config))
-        val map = reader.read() as Map<*, *>
+        val map = Yaml.default.decodeFromStream(stringMapSerializer, config)
 
         for ((key, value) in map.entries) {
-            var abbreviation = (key as String).lowercase(locale)
-            var expansion = (value as String).lowercase(locale)
+            var abbreviation = key.lowercase(locale)
+            var expansion = value.lowercase(locale)
 
             if (abbreviation.endsWith("$")) {
                 abbreviation = abbreviation.substring(0, abbreviation.length - 1) + "\\.?$"

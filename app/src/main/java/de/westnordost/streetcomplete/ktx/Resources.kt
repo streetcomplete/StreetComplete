@@ -6,15 +6,14 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
-import com.esotericsoftware.yamlbeans.YamlReader
+import com.charleskorn.kaml.Yaml
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import kotlinx.serialization.KSerializer
 
-inline fun <reified T> Resources.getYamlObject(@RawRes id: Int): T =
-    YamlReader(BufferedReader(InputStreamReader(openRawResource(id)))).read(T::class.java)
+inline fun <reified T> Resources.getYamlObject(serializer: KSerializer<T>, @RawRes id: Int): T =
+    Yaml.default.decodeFromStream(serializer, openRawResource(id))
 
 fun Resources.getBitmapDrawable(@DrawableRes id: Int): BitmapDrawable =
     getDrawable(id).asBitmapDrawable(this)
