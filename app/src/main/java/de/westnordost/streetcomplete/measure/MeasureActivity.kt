@@ -176,6 +176,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private fun configureSession(session: Session) {
         val config = Config(session)
 
+        config.updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE // necessary for Sceneform
         config.planeFindingMode = when(measureMode) {
             MeasureMode.BOTH -> Config.PlaneFindingMode.HORIZONTAL_AND_VERTICAL
             MeasureMode.HORIZONTAL -> Config.PlaneFindingMode.HORIZONTAL
