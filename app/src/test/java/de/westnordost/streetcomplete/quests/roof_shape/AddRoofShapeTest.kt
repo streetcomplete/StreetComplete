@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.roof_shape
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.mock
@@ -92,11 +93,7 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {
-        val noFlatRoofs = CountryInfo()
-        val field = noFlatRoofs.javaClass.getDeclaredField("roofsAreUsuallyFlat")
-        field.isAccessible = true
-        field.set(noFlatRoofs, false)
-
+        val noFlatRoofs = CountryInfo(listOf(IncompleteCountryInfo(countryCode = "foo", roofsAreUsuallyFlat = false)))
         on(countryInfos.get(anyDouble(), anyDouble())).thenReturn(noFlatRoofs)
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
@@ -112,12 +109,9 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs not in countries with flat roofs`() {
-        val flatRoofs = CountryInfo()
-        val field = flatRoofs.javaClass.getDeclaredField("roofsAreUsuallyFlat")
-        field.isAccessible = true
-        field.set(flatRoofs, true)
-
+        val flatRoofs = CountryInfo(listOf(IncompleteCountryInfo(countryCode = "foo", roofsAreUsuallyFlat = true)))
         on(countryInfos.get(anyDouble(), anyDouble())).thenReturn(flatRoofs)
+
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(1, tags = mapOf("building:levels" to "3", "building" to "apartments"))
 

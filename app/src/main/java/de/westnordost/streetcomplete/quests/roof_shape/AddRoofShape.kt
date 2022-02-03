@@ -48,7 +48,7 @@ class AddRoofShape(private val countryInfos: CountryInfos) : OsmElementQuestType
 
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
         val center = mapData.getGeometry(element.type, element.id)?.center ?: return null
-        return countryInfos.get(center.longitude, center.latitude).isRoofsAreUsuallyFlat
+        return countryInfos.get(center.longitude, center.latitude).roofsAreUsuallyFlat
     }
 
     override fun applyAnswerTo(answer: RoofShape, tags: Tags, timestampEdited: Long) {

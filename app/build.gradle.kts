@@ -188,6 +188,7 @@ dependencies {
 
     // config files
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
+    implementation("com.charleskorn.kaml:kaml:0.40.0")
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.26.0")

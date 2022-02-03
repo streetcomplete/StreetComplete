@@ -39,7 +39,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override val otherAnswers: List<AnswerItem> get() {
         val result = mutableListOf<AnswerItem>()
-        if (countryInfo.hasAdvisorySpeedLimitSign()) {
+        if (countryInfo.hasAdvisorySpeedLimitSign) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
         }
         return result
@@ -56,10 +56,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
         val highwayTag = osmElement!!.tags["highway"]!!
 
-        val couldBeSlowZone = countryInfo.hasSlowZone() && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
+        val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
         binding.zone.isGone = !couldBeSlowZone
 
-        val couldBeLivingStreet = countryInfo.hasLivingStreet() && MAYBE_LIVING_STREET.contains(highwayTag)
+        val couldBeLivingStreet = countryInfo.hasLivingStreet && MAYBE_LIVING_STREET.contains(highwayTag)
         binding.livingStreet.isGone = !couldBeLivingStreet
 
         val couldBeNSL = countryInfo.countryCode == "GB"
@@ -70,8 +70,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
-            val couldBeSlowZone = countryInfo.hasSlowZone()
-                && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
+            val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
 
             if (couldBeSlowZone)
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }

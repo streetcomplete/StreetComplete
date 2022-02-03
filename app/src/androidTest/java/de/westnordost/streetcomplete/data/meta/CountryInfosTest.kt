@@ -12,47 +12,45 @@ class CountryInfosTest {
     private val validWeekdays = listOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
 
     private fun checkFirstDayOfWorkweekIsValid(info: CountryInfo) {
-        assertNotNull(info.getFirstDayOfWorkweek())
-        assertTrue(getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1)
+        assertNotNull(info.firstDayOfWorkweek)
+        assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) > -1)
     }
 
     private fun checkLengthUnitIsEitherMeterOrFootAndInch(info: CountryInfo) {
-        assertNotNull(info.getLengthUnits())
-        assertTrue(info.getLengthUnits().contains("meter")
-            || info.getLengthUnits().contains("foot and inch")
+        assertNotNull(info.lengthUnits)
+        assertTrue(info.lengthUnits.contains("meter")
+            || info.lengthUnits.contains("foot and inch")
         )
     }
 
     private fun checkSpeedUnitIsEitherMphOrKmh(info: CountryInfo) {
-        assertNotNull(info.getSpeedUnits())
-        assertTrue(info.getSpeedUnits().contains("kilometers per hour")
-            || info.getSpeedUnits().contains("miles per hour")
+        assertNotNull(info.speedUnits)
+        assertTrue(info.speedUnits.contains("kilometers per hour")
+            || info.speedUnits.contains("miles per hour")
         )
     }
 
     private fun checkWeightLimitUnitIsEitherTonOrShortTonOrPound(info: CountryInfo) {
-        assertNotNull(info.getWeightLimitUnits())
-        assertTrue(info.getWeightLimitUnits().contains("ton")
-            || info.getWeightLimitUnits().contains("short ton")
-            || info.getWeightLimitUnits().contains("pound")
+        assertNotNull(info.weightLimitUnits)
+        assertTrue(info.weightLimitUnits.contains("ton")
+            || info.weightLimitUnits.contains("short ton")
+            || info.weightLimitUnits.contains("pound")
         )
     }
 
     private fun checkAdditionalValidHousenumberRegexes(infos: Map<String, CountryInfo>) {
-        assertTrue("99 bis".matches(infos["FR"]!!.getAdditionalValidHousenumberRegex()
-            .toRegex()))
-        assertTrue("s/n".matches(infos["ES"]!!.getAdditionalValidHousenumberRegex()
-            .toRegex()))
+        assertTrue("99 bis".matches(infos["FR"]!!.additionalValidHousenumberRegex!!.toRegex()))
+        assertTrue("s/n".matches(infos["ES"]!!.additionalValidHousenumberRegex!!.toRegex()))
     }
 
     private fun checkRegularShoppingDaysIsBetween0And7(info: CountryInfo) {
-        assertNotNull(info.getRegularShoppingDays())
-        assertTrue(info.getRegularShoppingDays() <= 7)
-        assertTrue(info.getRegularShoppingDays() >= 0)
+        assertNotNull(info.regularShoppingDays)
+        assertTrue(info.regularShoppingDays <= 7)
+        assertTrue(info.regularShoppingDays >= 0)
     }
 
     private fun checkStartOfWorkweekValid(info: CountryInfo) {
-        assertTrue(validWeekdays.contains(info.getFirstDayOfWorkweek()))
+        assertTrue(validWeekdays.contains(info.firstDayOfWorkweek))
     }
 
     @Test
