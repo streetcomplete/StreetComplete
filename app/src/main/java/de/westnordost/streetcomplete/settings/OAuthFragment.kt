@@ -66,7 +66,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
             authorizeUrl = inState.getString(AUTHORIZE_URL)
             oAuthVerifier = inState.getString(OAUTH_VERIFIER)
         } else {
-            consumer = get()
+            consumer = get<OAuthConsumer>()
             authorizeUrl = null
             oAuthVerifier = null
         }
