@@ -107,7 +107,7 @@ dependencies {
     val kotlinVersion = "1.6.10"
     val mockitoVersion = "3.12.4"
     val kotlinxVersion = "1.6.0"
-    val daggerVersion = "2.40.5"
+    val koinVersion = "3.1.5"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -123,8 +123,8 @@ dependencies {
     androidTestImplementation("org.assertj:assertj-core:2.8.0")
 
     // dependency injection
-    implementation("com.google.dagger:dagger:$daggerVersion")
-    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
+    implementation("io.insert-koin:koin-android-compat:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
     // Android stuff
     implementation("com.google.android.material:material:1.4.0")

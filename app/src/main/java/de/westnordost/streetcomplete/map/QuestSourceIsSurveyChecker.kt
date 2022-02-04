@@ -15,12 +15,11 @@ import de.westnordost.streetcomplete.util.distanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 import kotlin.coroutines.resume
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
-class QuestSourceIsSurveyChecker @Inject constructor() {
+class QuestSourceIsSurveyChecker {
 
     suspend fun checkIsSurvey(
         context: Context,

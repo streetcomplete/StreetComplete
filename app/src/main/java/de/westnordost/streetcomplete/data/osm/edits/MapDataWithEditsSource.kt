@@ -24,14 +24,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.intersect
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Source for map data. It combines the original data downloaded with the edits made.
  *
  *  This class is threadsafe.
  * */
-@Singleton class MapDataWithEditsSource @Inject internal constructor(
+class MapDataWithEditsSource internal constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,
     private val elementGeometryCreator: ElementGeometryCreator

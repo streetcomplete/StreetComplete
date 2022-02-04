@@ -7,10 +7,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
-class NotesDownloader @Inject constructor(
+class NotesDownloader(
     private val notesApi: NotesApi,
     private val noteController: NoteController
 ) {

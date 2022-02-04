@@ -15,17 +15,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
-import javax.inject.Named
 import kotlin.math.max
 
 /** Downloads all the things */
-class Downloader @Inject constructor(
+class Downloader(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesDb: DownloadedTilesDao,
-    @Named("SerializeSync") private val mutex: Mutex
+    private val mutex: Mutex
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)

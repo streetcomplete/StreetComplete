@@ -5,10 +5,9 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Co
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Columns.VISIBILITY
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.NAME
-import javax.inject.Inject
 
 /** Stores which quest types are visible by user selection and which are not */
-class VisibleQuestTypeDao @Inject constructor(private val db: Database) {
+class VisibleQuestTypeDao(private val db: Database) {
 
     fun put(presetId: Long, questTypeName: String, visible: Boolean) {
         db.replace(NAME, listOf(

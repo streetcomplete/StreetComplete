@@ -6,10 +6,9 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChange
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.NAME
-import javax.inject.Inject
 
 /** Keep track of changesets and the date of the last change that has been made to them  */
-class OpenChangesetsDao @Inject constructor(private val db: Database) {
+class OpenChangesetsDao(private val db: Database) {
 
     fun getAll(): Collection<OpenChangeset> =
         db.query(NAME) { it.toOpenChangeset() }

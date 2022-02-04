@@ -36,7 +36,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.HandlesOnBackPressed
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
@@ -96,7 +95,7 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -126,12 +125,12 @@ class MainFragment :
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
 
-    @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
-    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
-    @Inject internal lateinit var mapDataWithEditsSource: MapDataWithEditsSource
-    @Inject internal lateinit var soundFx: SoundFx
-    @Inject internal lateinit var prefs: SharedPreferences
+    private val questController: QuestController by inject()
+    private val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val soundFx: SoundFx by inject()
+    private val prefs: SharedPreferences by inject()
 
     private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
@@ -177,10 +176,6 @@ class MainFragment :
         override fun onReceive(context: Context, intent: Intent) {
             updateLocationAvailability()
         }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {

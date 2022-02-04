@@ -9,10 +9,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import java.util.Locale
-import javax.inject.Inject
 
 /** Manages the creation and reusage of quest-related changesets */
-class OpenQuestChangesetsManager @Inject constructor(
+class OpenQuestChangesetsManager(
     private val mapDataApi: MapDataApi,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,

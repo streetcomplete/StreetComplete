@@ -9,10 +9,8 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class QuestSelectionHintController @Inject constructor(
+class QuestSelectionHintController(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val prefs: SharedPreferences
 ) {
