@@ -40,7 +40,7 @@ val wikiRowSpan2 = " rowspan=\"2\" |"
 main()
 
 fun main() {
-    val questFileContent = sourceDirectory.resolve("quests/QuestModule.kt").readText()
+    val questFileContent = sourceDirectory.resolve("quests/QuestsModule.kt").readText()
     val questNameRegex = Regex("(?<=^ {8})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
     val questNames = listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
