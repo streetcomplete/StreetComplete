@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.okHttpOAuthConsumer
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
@@ -26,6 +25,7 @@ import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
 import oauth.signpost.exception.OAuthCommunicationException
 import oauth.signpost.exception.OAuthExpectationFailedException
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.Locale
@@ -66,7 +66,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
             authorizeUrl = inState.getString(AUTHORIZE_URL)
             oAuthVerifier = inState.getString(OAUTH_VERIFIER)
         } else {
-            consumer = okHttpOAuthConsumer()
+            consumer = get()
             authorizeUrl = null
             oAuthVerifier = null
         }

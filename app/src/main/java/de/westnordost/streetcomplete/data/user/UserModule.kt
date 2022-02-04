@@ -16,7 +16,7 @@ private const val CALLBACK_HOST = "oauth"
 val userModule = module {
     factory(named("OAuthCallbackScheme")) { CALLBACK_SCHEME }
     factory(named("OAuthCallbackHost")) { CALLBACK_HOST }
-    factory<OAuthConsumer> { okHttpOAuthConsumer() }
+    factory<OAuthConsumer> { OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET) }
     factory<OAuthProvider> { OkHttpOAuthProvider(
         BASE_OAUTH_URL + "request_token",
         BASE_OAUTH_URL + "access_token",
@@ -30,5 +30,3 @@ val userModule = module {
     single { UserLoginStatusController(get(), get()) }
     single { UserUpdater(get(), get(), get(), get(), get()) }
 }
-
-internal fun okHttpOAuthConsumer() = OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)

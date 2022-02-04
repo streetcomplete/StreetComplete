@@ -4,14 +4,16 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
 import oauth.signpost.OAuthConsumer
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 
 /** Manages saving and loading OAuthConsumer persistently  */
 class OAuthStore(
     private val prefs: SharedPreferences,
-) {
+) : KoinComponent {
     var oAuthConsumer: OAuthConsumer?
         get() {
-            val result = okHttpOAuthConsumer()
+            val result = get<OAuthConsumer>()
             val accessToken = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN, null)
             val accessTokenSecret = prefs.getString(Prefs.OAUTH_ACCESS_TOKEN_SECRET, null)
             if (accessToken == null || accessTokenSecret == null) return null
