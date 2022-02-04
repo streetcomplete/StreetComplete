@@ -2,10 +2,17 @@ package de.westnordost.streetcomplete.user
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.ColorFilter
+import android.graphics.Paint
+import android.graphics.PixelFormat
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import androidx.core.graphics.withRotation
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -21,6 +28,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ktx.createBitmap
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
@@ -155,10 +163,48 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.daysActiveText.text = daysActive.toString()
     }
 
+    class LaurelWreath(var resources: Resources) : Drawable() {
+        private val redPaint: Paint = Paint().apply { setARGB(255, 255, 0, 0) }
+
+        private val antiAliasPaint: Paint = Paint().apply {
+            isAntiAlias = true
+            isFilterBitmap = true
+        }
+
+        override fun draw(canvas: Canvas) {
+            // Get the drawable's bounds
+            val width: Int = bounds.width()
+            val height: Int = bounds.height()
+            val radius: Float = Math.min(width, height).toFloat() / 2f
+
+            // Draw a red circle in the center
+            canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, redPaint)
+
+            val bitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf)
+            canvas.withRotation(100f, width / 2f, height / 2f) {
+                canvas.drawBitmap(bitmap.bitmap, 0f, 0f, antiAliasPaint)
+            }
+        }
+
+        override fun setAlpha(alpha: Int) {
+            // This method is required
+        }
+
+        override fun setColorFilter(colorFilter: ColorFilter?) {
+            // This method is required
+        }
+
+        override fun getOpacity(): Int =
+            // Must be PixelFormat.UNKNOWN, TRANSLUCENT, TRANSPARENT, or OPAQUE
+            PixelFormat.OPAQUE
+    }
+
+
     private fun updateGlobalRankText() {
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getSolvedCount() <= 100
         binding.globalRankText.text = "#$rank"
+        binding.globalRankText.background = LaurelWreath(resources)
     }
 
     private suspend fun updateLocalRankText() {
