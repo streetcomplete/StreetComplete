@@ -22,7 +22,7 @@ class AddOpeningHours(
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    private val filter by lazy { ("""
+    val filter by lazy { ("""
         nodes, ways, relations with
         (
           (
@@ -93,12 +93,25 @@ class AddOpeningHours(
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
-            and !opening_hours
+            and (!opening_hours or opening_hours older today -1 years)
           )
-          or opening_hours older today -1 years
+          or
+          (
+          opening_hours older today -1 years
+          and
+            (
+            leisure=park
+            or
+            barrier
+            or
+            amenity=toilets
+            or
+            amenity=bicycle_rental
+            )
+          )
         )
         and access !~ private|no
-        and (name or brand or noname = yes or name:signed = no or amenity=recycling)
+        and (name or brand or noname = yes or name:signed = no or amenity=recycling or amenity=toilets)
         and opening_hours:signed != no
     """).toElementFilterExpression() }
 

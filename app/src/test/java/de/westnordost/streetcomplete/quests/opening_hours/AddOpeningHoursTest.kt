@@ -8,14 +8,17 @@ import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.toEpochMilli
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.lang.System.currentTimeMillis
 import java.time.LocalDate
 
 class AddOpeningHoursTest {
@@ -158,6 +161,60 @@ class AddOpeningHoursTest {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
         )))
+    }
+
+    @Test fun `isApplicableTo returns false for known places with recently edited opening hours`() {
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis())
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for known places with old opening hours`() {
+        val milisecodsFor400Days : Long =  34560000000 // 1000 * 60 * 60 * 24 * 400
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecodsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns false for closed shops with old opening hours`() {
+        val milisecodsFor400Days : Long = 34560000000 // 1000 * 60 * 60 * 24 * 400
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecodsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for parks with old opening hours`() {
+        val milisecodsFor400Days : Long = 34560000000 // 1000 * 60 * 60 * 24 * 400
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecodsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for unnamed battery recycling with old opening hours`() {
+        val milisecodsFor400Days : Long = 34560000000 // 1000 * 60 * 60 * 24 * 400
+        assertTrue(questType.filter.matches(
+            node(tags = mapOf("amenity" to "recycling", "recycling:batteries" to "yes", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecodsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for unnamed toilets with old opening hours`() {
+        val milisecodsFor400Days : Long = 34560000000 // 1000 * 60 * 60 * 24 * 400
+        assertTrue(questType.filter.matches(
+            node(tags = mapOf("amenity" to "toilets", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecodsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for unnamed toilets with old opening hours WAT`() {
+        val milisecodsFor400Days : Long = 34560000000 // 1000 * 60 * 60 * 24 * 400
+        assertTrue(questType.filter.matches(
+            node(tags = mapOf("amenity" to "toilets", "opening_hours" to "Mo-Fr 10:00-20:00", "noname" to "yes"), timestamp = currentTimeMillis() - milisecodsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns false for toilets without opening hours`() {
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("amenity" to "toilets"), timestamp = currentTimeMillis())
+        ))
     }
 
     @Test fun `isApplicableTo returns true if the opening hours cannot be parsed`() {
