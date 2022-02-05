@@ -19,7 +19,7 @@ fun createShoulders(tags: Map<String, String>, isLeftHandTraffic: Boolean): Shou
     return null
 }
 
-private fun createShouldersDefault(tags: Map<String, String>, isLeftHandTraffic: Boolean): Shoulders? = when(tags["shoulder"]) {
+private fun createShouldersDefault(tags: Map<String, String>, isLeftHandTraffic: Boolean): Shoulders? = when (tags["shoulder"]) {
     "left" -> Shoulders(left = true, right = false)
     "right" -> Shoulders(left = false, right = true)
     "both" -> Shoulders(left = true, right = true)

@@ -14,8 +14,7 @@ import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<WheelchairAccess>()
-{
+) : OsmFilterQuestType<WheelchairAccess>() {
     override val elementFilter = """
         nodes, ways, relations with
           (name or brand)
@@ -26,7 +25,7 @@ class AddWheelchairAccessBusiness(
             or amenity = parking and parking = multi-storey
             or amenity = recycling and recycling_type = centre
             or tourism = information and information = office
-            or """.trimIndent() +
+            or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.

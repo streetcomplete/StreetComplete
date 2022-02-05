@@ -92,9 +92,9 @@ class StringMapChangesTest {
     @Test fun equals() {
         val a: StringMapEntryChange = mock()
         val b: StringMapEntryChange = mock()
-        val one = StringMapChanges(listOf(a,b))
-        val anotherOne = StringMapChanges(listOf(a,b))
-        val two = StringMapChanges(listOf(b,a))
+        val one = StringMapChanges(listOf(a, b))
+        val anotherOne = StringMapChanges(listOf(a, b))
+        val two = StringMapChanges(listOf(b, a))
 
         assertEquals(one, anotherOne)
         // but the order does not matter

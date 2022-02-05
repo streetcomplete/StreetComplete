@@ -8,7 +8,6 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
@@ -22,19 +21,15 @@ import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows the user's unlocked links */
 class LinksFragment : Fragment(R.layout.fragment_links) {
 
-    @Inject internal lateinit var achievementsSource: AchievementsSource
-    @Inject internal lateinit var statisticsSource: StatisticsSource
+    private val achievementsSource: AchievementsSource by inject()
+    private val statisticsSource: StatisticsSource by inject()
 
     private val binding by viewBinding(FragmentLinksBinding::bind)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

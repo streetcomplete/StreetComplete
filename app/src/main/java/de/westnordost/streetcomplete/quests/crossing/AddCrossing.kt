@@ -48,7 +48,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
         getMapData().filter { it.isCrossing() }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if(element !is Node || element.tags.isNotEmpty()) false else null
+        if (element !is Node || element.tags.isNotEmpty()) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val barrierWays = mapData.ways.asSequence()
@@ -62,9 +62,9 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
         /* require all roads at a shared node to either have no sidewalk tagging or all of them to
          * have sidewalk tagging: If the sidewalk tagging changes at that point, it may be an
          * indicator that this is the transition point between separate sidewalk mapping and
-         * sidewalk mapping on road-way. F.e.:
+         * sidewalk mapping on road-way. E.g.:
          * https://www.openstreetmap.org/node/1839120490 */
-        val anySidewalk = setOf("both","left","right")
+        val anySidewalk = setOf("both", "left", "right")
 
         crossings = crossings.filter { crossing ->
             crossing.barrierWays.all { it.tags["sidewalk"] in anySidewalk } ||

@@ -40,7 +40,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
     override fun createForm() = AddMaxWeightForm()
 
     override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is MaxWeight -> {
                 tags[answer.sign.osmKey] = answer.weight.toString()
             }
@@ -51,7 +51,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
     }
 }
 
-private val MaxWeightSign.osmKey get() = when(this) {
+private val MaxWeightSign.osmKey get() = when (this) {
     MAX_WEIGHT             -> "maxweight"
     MAX_GROSS_VEHICLE_MASS -> "maxweightrating"
     MAX_AXLE_LOAD          -> "maxaxleload"

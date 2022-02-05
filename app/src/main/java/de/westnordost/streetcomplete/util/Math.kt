@@ -12,7 +12,7 @@ fun Double.normalizeDegrees(startAt: Double = 0.0): Double {
 
 /** returns a number between [startAt] - [startAt]+2PI */
 fun Double.normalizeRadians(startAt: Double = 0.0): Double {
-    val pi2 = PI*2
+    val pi2 = PI * 2
     var result = this % pi2 // is now -2PI..2PI
     result = (result + pi2) % pi2 // is now 0..2PI
     if (result > startAt + pi2) result -= pi2

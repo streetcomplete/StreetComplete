@@ -11,10 +11,10 @@ import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.isRingDefinedClockwise
-import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
-class ElementGeometryCreator @Inject constructor() {
+class ElementGeometryCreator() {
 
     /** Create an ElementGeometry from any element, using the given MapData to find the positions
      *  of the nodes.
@@ -27,7 +27,7 @@ class ElementGeometryCreator @Inject constructor() {
      *  @return an ElementGeometry or null if any necessary element to create the geometry is not
      *          in the given MapData */
     fun create(element: Element, mapData: MapData, allowIncomplete: Boolean = false): ElementGeometry? {
-        when(element) {
+        when (element) {
             is Node -> {
                 return create(element)
             }
@@ -138,7 +138,8 @@ class ElementGeometryCreator @Inject constructor() {
     }
 
     private fun getRelationMemberWaysNodePositions(
-        relation: Relation, wayGeometries: Map<Long, List<LatLon>>
+        relation: Relation,
+        wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
             .filter { it.type == ElementType.WAY }
@@ -146,7 +147,9 @@ class ElementGeometryCreator @Inject constructor() {
     }
 
     private fun getRelationMemberWaysNodePositions(
-        relation: Relation, withRole: String, wayGeometries: Map<Long, List<LatLon>>
+        relation: Relation,
+        withRole: String,
+        wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
             .filter { it.type == ElementType.WAY && it.role == withRole }

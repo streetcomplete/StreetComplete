@@ -42,10 +42,10 @@ class ElementEditsControllerTest {
     }
 
     @Test fun add() {
-        val action =  mock<ElementEditAction>()
-        on(action.newElementsCount).thenReturn(NewElementsCount(1,2,3))
+        val action = mock<ElementEditAction>()
+        on(action.newElementsCount).thenReturn(NewElementsCount(1, 2, 3))
 
-        ctrl.add(QUEST_TYPE, node(1), pGeom(),"test", action)
+        ctrl.add(QUEST_TYPE, node(1), pGeom(), "test", action)
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)
@@ -69,15 +69,15 @@ class ElementEditsControllerTest {
         val edit = edit(action = mock())
 
         val idUpdates = listOf(
-            ElementIdUpdate(NODE, -1,2),
-            ElementIdUpdate(NODE, -8,20),
+            ElementIdUpdate(NODE, -1, 2),
+            ElementIdUpdate(NODE, -8, 20),
         )
         val updates = MapDataUpdates(idUpdates = idUpdates)
 
         ctrl.markSynced(edit, updates)
 
-        verify(db).updateElementId(NODE, -1,2)
-        verify(db).updateElementId(NODE, -8,20)
+        verify(db).updateElementId(NODE, -1, 2)
+        verify(db).updateElementId(NODE, -8, 20)
         verify(db).markSynced(edit.id)
         verify(idProvider).delete(edit.id)
         verify(listener).onSyncedEdit(edit)

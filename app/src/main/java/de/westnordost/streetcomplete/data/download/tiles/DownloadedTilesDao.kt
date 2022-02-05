@@ -9,10 +9,9 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.NA
 import de.westnordost.streetcomplete.util.TilePos
 import de.westnordost.streetcomplete.util.TilesRect
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Keeps info in which areas things have been downloaded already in a tile grid */
-class DownloadedTilesDao @Inject constructor(private val db: Database) {
+class DownloadedTilesDao(private val db: Database) {
 
     /** Persist that the given type has been downloaded in every tile in the given tile range  */
     fun put(tilesRect: TilesRect, typeName: String) {

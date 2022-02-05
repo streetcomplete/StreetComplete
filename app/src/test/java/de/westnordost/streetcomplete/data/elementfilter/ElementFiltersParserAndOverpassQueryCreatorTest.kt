@@ -255,7 +255,8 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
             node[highway]->.n1;
             node[name]->.n2;
             (.n1;.n2;);
-            """)
+            """
+        )
     }
 
     @Test fun `two or`() {
@@ -265,7 +266,8 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
             node[name]->.n2;
             node[ref]->.n3;
             (.n1;.n2;.n3;);
-            """)
+            """
+        )
     }
 
     @Test fun `or as first child in and`() {
@@ -392,7 +394,8 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
     private fun check(input: String, output: String) {
         val expr = input.toElementFilterExpression()
         assertEquals(
-            output.replace("\n","").replace(" ",""),
-            expr.toOverpassQLString().replace("\n","").replace(" ",""))
+            output.replace("\n", "").replace(" ", ""),
+            expr.toOverpassQLString().replace("\n", "").replace(" ", "")
+        )
     }
 }

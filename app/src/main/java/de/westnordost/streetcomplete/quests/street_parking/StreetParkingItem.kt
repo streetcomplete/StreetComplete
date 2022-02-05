@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.view.image_select.Item2
 fun StreetParking.asItem(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean) =
     Item2(this, getDialogIcon(context, countryInfo, isUpsideDown), titleResId?.let { ResText(it) })
 
-val StreetParking.titleResId: Int? get() = when(this) {
+val StreetParking.titleResId: Int? get() = when (this) {
     NoStreetParking -> R.string.street_parking_no
     is StreetParkingPositionAndOrientation -> position.titleResId
     StreetParkingProhibited -> R.string.street_parking_prohibited
@@ -46,7 +46,7 @@ val StreetParking.titleResId: Int? get() = when(this) {
 }
 
 /** Image that should be shown in the street side select puzzle */
-fun StreetParking.getIcon(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean): Image = when(this) {
+fun StreetParking.getIcon(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean): Image = when (this) {
     is StreetParkingPositionAndOrientation ->
         getIcon(context, isUpsideDown)
     NoStreetParking, StreetParkingSeparate ->
@@ -62,7 +62,7 @@ fun StreetParking.getIcon(context: Context, countryInfo: CountryInfo, isUpsideDo
 }
 
 /** Icon that should be shown as the icon in a selection dialog */
-fun StreetParking.getDialogIcon(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean): Image = when(this) {
+fun StreetParking.getDialogIcon(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean): Image = when (this) {
     is StreetParkingPositionAndOrientation ->
         getDialogIcon(context, isUpsideDown)
     NoStreetParking ->
@@ -80,7 +80,7 @@ fun StreetParking.getDialogIcon(context: Context, countryInfo: CountryInfo, isUp
 }
 
 /** Icon that should be shown as the floating icon in the street side select puzzle */
-fun StreetParking.getFloatingIcon(countryInfo: CountryInfo): Image? = when(this) {
+fun StreetParking.getFloatingIcon(countryInfo: CountryInfo): Image? = when (this) {
     StreetParkingProhibited -> countryInfo.noParkingSignDrawableResId
     StreetStandingProhibited -> countryInfo.noStandingSignDrawableResId
     StreetStoppingProhibited -> countryInfo.noStoppingSignDrawableResId
@@ -102,7 +102,7 @@ private fun StreetParkingPositionAndOrientation.getDialogIcon(context: Context, 
 private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean): Image =
     DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512))
 
-val ParkingPosition.titleResId: Int get() = when(this) {
+val ParkingPosition.titleResId: Int get() = when (this) {
     ON_STREET -> R.string.street_parking_on_street
     HALF_ON_KERB -> R.string.street_parking_half_on_kerb
     ON_KERB -> R.string.street_parking_on_kerb

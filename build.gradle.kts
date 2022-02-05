@@ -17,7 +17,6 @@ allprojects {
     }
 }
 
-
 tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
     group = "streetcomplete"
     targetDir = "$projectDir/metadata"
@@ -55,9 +54,9 @@ tasks.register("updateStreetCompleteData") {
     group = "streetcomplete"
     dependsOn(
         "updateStoreDescriptions",
-        //"updateChargingStationOperators",
-        //"updateClothesContainerOperators",
-        //"updateAtmOperators",
+        // "updateChargingStationOperators",
+        // "updateClothesContainerOperators",
+        // "updateAtmOperators",
         "app:updatePresets",
         "app:updateNsiPresets",
         "app:updateTranslations",

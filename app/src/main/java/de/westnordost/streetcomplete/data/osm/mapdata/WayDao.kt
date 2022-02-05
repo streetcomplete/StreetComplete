@@ -14,10 +14,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Stores OSM ways */
-class WayDao @Inject constructor(private val db: Database) {
+class WayDao(private val db: Database) {
     fun put(way: Way) {
         putAll(listOf(way))
     }

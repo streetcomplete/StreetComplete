@@ -7,7 +7,7 @@ import org.junit.Test
 import java.time.LocalDate
 
 class HasDateTagLessThanTest {
-    private val date = LocalDate.of(2000,11,11)
+    private val date = LocalDate.of(2000, 11, 11)
 
     @Test fun matches() {
         val c = HasDateTagLessThan("check_date", FixedDate(date))

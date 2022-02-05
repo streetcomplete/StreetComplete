@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-
 /** Knows which vertices connect which ways. T is the identifier of a vertex  */
 class NodeWayMap<T>(ways: List<List<T>>) {
     private val wayEndpoints = LinkedHashMap<T, MutableList<List<T>>>()

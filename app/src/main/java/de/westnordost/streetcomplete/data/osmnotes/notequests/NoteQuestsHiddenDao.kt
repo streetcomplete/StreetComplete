@@ -6,10 +6,9 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTa
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.NAME
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Persists which note ids should be hidden (because the user selected so) in the note quest */
-class NoteQuestsHiddenDao @Inject constructor(private val db: Database) {
+class NoteQuestsHiddenDao(private val db: Database) {
 
     fun add(noteId: Long) {
         db.insert(NAME, listOf(

@@ -36,7 +36,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.HandlesOnBackPressed
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.controls.MainMenuButtonFragment
@@ -96,7 +95,7 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -110,7 +109,8 @@ import kotlin.random.Random
  *  place where all the logic when interacting with the map / bottom sheets / sidebars etc. comes
  *  together, hence it implements all the listeners to communicate with its child fragments.
  *  */
-class MainFragment : Fragment(R.layout.fragment_main),
+class MainFragment :
+    Fragment(R.layout.fragment_main),
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
     QuestsMapFragment.Listener,
@@ -125,12 +125,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
 
-    @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
-    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
-    @Inject internal lateinit var mapDataWithEditsSource: MapDataWithEditsSource
-    @Inject internal lateinit var soundFx: SoundFx
-    @Inject internal lateinit var prefs: SharedPreferences
+    private val questController: QuestController by inject()
+    private val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val soundFx: SoundFx by inject()
+    private val prefs: SharedPreferences by inject()
 
     private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
@@ -176,10 +176,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         override fun onReceive(context: Context, intent: Intent) {
             updateLocationAvailability()
         }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {
@@ -283,7 +279,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        binding.gpsTrackingButton.isActivated =  mapFragment?.isFollowingPosition ?: false
+        binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         updateLocationPointerPin()
         listener?.onMapInitialized()
@@ -351,7 +347,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters)) {
                 f.onClickClose { closeBottomSheet() }
             }
-        } else if(editHistoryFragment != null) {
+        } else if (editHistoryFragment != null) {
             closeEditHistorySidebar()
         }
     }
@@ -698,7 +694,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val popupMenu = PopupMenu(requireContext(), binding.contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
         popupMenu.setOnMenuItemClickListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
@@ -851,7 +847,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
         val args = AbstractQuestAnswerFragment.createArguments(quest, element, rotation, tilt)
-        if(f.arguments != null) {
+        if (f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
             f.arguments = args
@@ -970,7 +966,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         root.addView(img)
 
         val answerTarget = view.findViewById<View>(
-            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment)
+            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment
+        )
         flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
     }
 

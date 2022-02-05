@@ -12,7 +12,7 @@ import java.util.Locale
 
 /** Takes care of loading the base map with the right parameters (localization, api key, night mode
  *  etc, custom scene updates, etc ...) */
-class SceneMapComponent (
+class SceneMapComponent(
     private val resources: Resources,
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider
@@ -23,10 +23,10 @@ class SceneMapComponent (
     private var loadedSceneUpdates: List<String>? = null
 
     var isAerialView: Boolean = false
-    set(value) {
-        field = value
-        aerialViewChanged = true
-    }
+        set(value) {
+            field = value
+            aerialViewChanged = true
+        }
     private var aerialViewChanged: Boolean = false
 
     private val mutex = Mutex()
@@ -49,9 +49,10 @@ class SceneMapComponent (
         val sceneFilePath = getSceneFilePath()
         val sceneUpdates = getAllSceneUpdates()
         val strSceneUpdates = sceneUpdates.map { it.toString() }
-        if (loadedSceneFilePath == sceneFilePath &&
-            loadedSceneUpdates == strSceneUpdates &&
-            !aerialViewChanged) return
+        if (loadedSceneFilePath == sceneFilePath
+            && loadedSceneUpdates == strSceneUpdates
+            && !aerialViewChanged
+        ) return
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }

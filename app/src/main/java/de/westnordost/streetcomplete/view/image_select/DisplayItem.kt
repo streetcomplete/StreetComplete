@@ -14,5 +14,3 @@ interface GroupableDisplayItem<T> : DisplayItem<T> {
     val items: List<GroupableDisplayItem<T>>?
     val isGroup: Boolean get() = !items.isNullOrEmpty()
 }
-
-

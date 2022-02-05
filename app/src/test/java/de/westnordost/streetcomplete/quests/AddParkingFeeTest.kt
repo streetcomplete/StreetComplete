@@ -27,8 +27,8 @@ class AddParkingFeeTest {
                 it.startDay = WeekDay.MO
             })
             times = listOf(TimeSpan().also {
-                it.start = 60*10
-                it.end = 60*12
+                it.start = 60 * 10
+                it.end = 60 * 12
             })
         },
         Rule().apply {
@@ -36,8 +36,8 @@ class AddParkingFeeTest {
                 it.startDay = WeekDay.TU
             })
             times = listOf(TimeSpan().also {
-                it.start = 60*12
-                it.end = 60*24
+                it.start = 60 * 12
+                it.end = 60 * 24
             })
         })
     )

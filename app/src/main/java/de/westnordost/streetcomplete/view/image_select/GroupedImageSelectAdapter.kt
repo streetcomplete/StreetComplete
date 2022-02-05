@@ -15,16 +15,16 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     private var _items = mutableListOf<GroupableDisplayItem<T>>()
     var items: List<GroupableDisplayItem<T>>
-    set(value) {
-        _items.clear()
-        _items.addAll(value)
-        selectedItem = null
-        for (listener in listeners) {
-            listener(null)
+        set(value) {
+            _items.clear()
+            _items.addAll(value)
+            selectedItem = null
+            for (listener in listeners) {
+                listener(null)
+            }
+            notifyDataSetChanged()
         }
-        notifyDataSetChanged()
-    }
-    get() = _items.toList()
+        get() = _items.toList()
 
     var selectedItem: GroupableDisplayItem<T>? = null
         private set

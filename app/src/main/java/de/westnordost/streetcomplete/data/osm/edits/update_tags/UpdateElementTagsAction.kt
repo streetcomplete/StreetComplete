@@ -19,9 +19,9 @@ import kotlinx.serialization.Serializable
  *  the tag update made may not be correct anymore, so that is considered a conflict.
  *  */
 @Serializable
-data class UpdateElementTagsAction(val changes: StringMapChanges): ElementEditAction, IsActionRevertable {
+data class UpdateElementTagsAction(val changes: StringMapChanges) : ElementEditAction, IsActionRevertable {
 
-    override val newElementsCount get() = NewElementsCount(0,0,0)
+    override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
         originalElement: Element,

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
-class AddBarrierOnRoad: OsmElementQuestType<BarrierType> {
+class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
 
     private val barrierFilter by lazy { """
         ways with

@@ -59,8 +59,8 @@ data class HouseNumbers(val list: List<HouseNumbersPart>) {
 
 /** -------------------------------------- HouseNumbersPart ------------------------------------- */
 
-sealed class HouseNumbersPart: Comparable<HouseNumbersPart> {
-    override fun compareTo(other: HouseNumbersPart): Int = when(this) {
+sealed class HouseNumbersPart : Comparable<HouseNumbersPart> {
+    override fun compareTo(other: HouseNumbersPart): Int = when (this) {
         is SingleHouseNumbersPart -> when (other) {
             // e.g. 12c < 15
             is SingleHouseNumbersPart -> sign(
@@ -91,7 +91,7 @@ sealed class HouseNumbersPart: Comparable<HouseNumbersPart> {
 
 private fun sign(vararg numbers: Int): Int = when {
     numbers.all { it > 0 } -> 1
-    numbers.all { it < 0} -> -1
+    numbers.all { it < 0 } -> -1
     else -> 0
 }
 
@@ -99,7 +99,7 @@ private fun sign(vararg numbers: Int): Int = when {
 data class HouseNumbersPartsRange(
     val start: StructuredHouseNumber,
     val end: StructuredHouseNumber
-): HouseNumbersPart() {
+) : HouseNumbersPart() {
     override fun toString() = "$start-$end"
 }
 
@@ -109,7 +109,7 @@ data class SingleHouseNumbersPart(val single: StructuredHouseNumber) : HouseNumb
 
 /** ----------------------------------- StructuredHouseNumber ---------------------------------- */
 
-sealed class StructuredHouseNumber: Comparable<StructuredHouseNumber> {
+sealed class StructuredHouseNumber : Comparable<StructuredHouseNumber> {
     abstract val number: Int
 
     override fun compareTo(other: StructuredHouseNumber): Int {

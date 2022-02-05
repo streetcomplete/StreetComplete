@@ -44,8 +44,8 @@ object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
 
         // delete free-floating node
         return if (
-            mapDataRepository.getWaysForNode(node.id).isEmpty() &&
-            mapDataRepository.getRelationsForNode(node.id).isEmpty()
+            mapDataRepository.getWaysForNode(node.id).isEmpty()
+            && mapDataRepository.getRelationsForNode(node.id).isEmpty()
         ) {
             MapDataChanges(deletions = listOf(node))
         }

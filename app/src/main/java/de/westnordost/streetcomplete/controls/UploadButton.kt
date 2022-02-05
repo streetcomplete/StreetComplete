@@ -13,16 +13,16 @@ class UploadButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr)  {
+) : RelativeLayout(context, attrs, defStyleAttr) {
 
     private val binding = ViewUploadButtonBinding.inflate(LayoutInflater.from(context), this)
 
     var uploadableCount: Int = 0
-    set(value) {
-        field = value
-        binding.textView.text = value.toString()
-        binding.textView.isInvisible = value == 0
-    }
+        set(value) {
+            field = value
+            binding.textView.text = value.toString()
+            binding.textView.isInvisible = value == 0
+        }
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
@@ -30,10 +30,10 @@ class UploadButton @JvmOverloads constructor(
     }
 
     var showProgress: Boolean = false
-    set(value) {
-        field = value
-        binding.progressView.isInvisible = !value
-    }
+        set(value) {
+            field = value
+            binding.progressView.isInvisible = !value
+        }
 
     init {
         clipToPadding = false

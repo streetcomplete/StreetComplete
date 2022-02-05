@@ -93,7 +93,6 @@ class AddSportForm : AImageListQuestAnswerFragment<Sport, List<Sport>>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
-
     }
 
     override fun onClickOk(selectedItems: List<Sport>) {

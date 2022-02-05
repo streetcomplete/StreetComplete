@@ -17,7 +17,7 @@ class AddCyclewaySegregationForm : AImageListQuestAnswerFragment<Boolean, Boolea
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageSelector.cellLayoutId  = R.layout.cell_labeled_icon_select_right
+        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_right
     }
 
     override fun onClickOk(selectedItems: List<Boolean>) {

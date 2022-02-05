@@ -49,7 +49,7 @@ fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness
 }
 
 /** return fitting vehicle type emoji that corresponds to the "usable by" column in the wiki */
-val Smoothness.icon get(): @DrawableRes Int = when(this) {
+val Smoothness.icon get(): @DrawableRes Int = when (this) {
     EXCELLENT ->     R.drawable.ic_smoothness_skateboard
     GOOD ->          R.drawable.ic_smoothness_scooter
     INTERMEDIATE ->  R.drawable.ic_smoothness_city_bike
@@ -79,14 +79,14 @@ fun Smoothness.getDescriptionResId(surface: String): Int? = when (surface) {
     else -> null
 } ?: descriptionResIdFallback
 
-private val Smoothness.descriptionResIdFallback: Int? get() = when(this) {
+private val Smoothness.descriptionResIdFallback: Int? get() = when (this) {
     HORRIBLE -> R.string.quest_smoothness_description_horrible
     VERY_HORRIBLE -> R.string.quest_smoothness_description_very_horrible
     IMPASSABLE -> R.string.quest_smoothness_description_impassable
     else -> null
 }
 
-fun Smoothness.getImageResId(surface: String): Int? = when(surface) {
+fun Smoothness.getImageResId(surface: String): Int? = when (surface) {
     "asphalt" -> asphaltImageResId
     "concrete", "concrete:plates" -> concreteImageResId
     "sett" -> settImageResId
@@ -105,7 +105,7 @@ private val Smoothness.asphaltImageResId get() = when (this) {
     else -> null
 }
 
-private val Smoothness.concreteImageResId get() = when(this) {
+private val Smoothness.concreteImageResId get() = when (this) {
     EXCELLENT -> R.drawable.surface_concrete_excellent
     GOOD -> R.drawable.surface_concrete_good
     INTERMEDIATE -> R.drawable.surface_concrete_intermediate
@@ -114,7 +114,7 @@ private val Smoothness.concreteImageResId get() = when(this) {
     else -> null
 }
 
-private val Smoothness.pavedDescriptionResId get() = when(this) {
+private val Smoothness.pavedDescriptionResId get() = when (this) {
     EXCELLENT -> R.string.quest_smoothness_description_excellent_paved
     GOOD -> R.string.quest_smoothness_description_good_paved
     INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_paved
@@ -131,7 +131,7 @@ private val Smoothness.settImageResId get() = when (this) {
     else -> null
 }
 
-private val Smoothness.settDescriptionResId get() = when(this) {
+private val Smoothness.settDescriptionResId get() = when (this) {
     GOOD -> R.string.quest_smoothness_description_good_sett
     INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_sett
     BAD -> R.string.quest_smoothness_description_bad_sett
@@ -148,7 +148,7 @@ private val Smoothness.pavingStonesImageResId get() = when (this) {
     else -> null
 }
 
-private val Smoothness.pavingStonesDescriptionResId get() = when(this) {
+private val Smoothness.pavingStonesDescriptionResId get() = when (this) {
     EXCELLENT -> R.string.quest_smoothness_description_excellent_paving_stones
     GOOD -> R.string.quest_smoothness_description_good_paving_stones
     INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_paving_stones
@@ -178,7 +178,7 @@ private val Smoothness.gravelImageResId get() = when (this) {
     else -> null
 }
 
-private val Smoothness.compactedOrGravelDescriptionResId get() = when(this) {
+private val Smoothness.compactedOrGravelDescriptionResId get() = when (this) {
     GOOD -> R.string.quest_smoothness_description_good_compacted_gravel
     INTERMEDIATE -> R.string.quest_smoothness_description_intermediate_compacted_gravel
     BAD -> R.string.quest_smoothness_description_bad_compacted_gravel

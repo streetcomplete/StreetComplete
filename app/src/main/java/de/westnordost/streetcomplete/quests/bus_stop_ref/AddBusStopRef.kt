@@ -34,7 +34,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
     override fun createForm() = AddBusStopRefForm()
 
     override fun applyAnswerTo(answer: BusStopRefAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoBusStopRef -> tags["ref:signed"] = "no"
             is BusStopRef ->   tags["ref"] = answer.ref
         }

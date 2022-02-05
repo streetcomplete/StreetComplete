@@ -17,10 +17,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Stores OSM notes */
-class NoteDao @Inject constructor(private val db: Database) {
+class NoteDao(private val db: Database) {
     fun put(note: Note) {
         db.replace(NAME, note.toPairs())
     }
@@ -105,5 +104,4 @@ class NoteDao @Inject constructor(private val db: Database) {
         ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
         ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
     """.trimIndent()
-
 }

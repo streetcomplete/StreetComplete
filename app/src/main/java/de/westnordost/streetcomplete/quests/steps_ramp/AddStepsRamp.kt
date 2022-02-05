@@ -67,13 +67,13 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 private fun applyRampAnswer(tags: Tags, rampType: String, hasRamp: Boolean, rampTagForcedToBeYes: Boolean) {
     if (hasRamp) {
         tags["ramp:$rampType"] = "yes"
-    } else if(rampTagForcedToBeYes) {
+    } else if (rampTagForcedToBeYes) {
         /* if there is an unsupported ramp:*=yes tag but at the same time, there is neither a
         *  bicycle, stroller nor wheelchair ramp, the ramp key will remain =yes. But then, nothing
         *  else will be tagged and thus, the quest will still remain. So in this case, we tag
         *  the user's choices as "no" explicitly. See #3115 */
         tags["ramp:$rampType"] = "no"
-    } else if(tags["ramp:$rampType"] in listOf("yes", "separate")) {
+    } else if (tags["ramp:$rampType"] in listOf("yes", "separate")) {
         tags.remove("ramp:$rampType")
     }
 }

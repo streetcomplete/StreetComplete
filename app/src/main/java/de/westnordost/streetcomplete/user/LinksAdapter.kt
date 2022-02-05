@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.databinding.RowLinkItemBinding
 import de.westnordost.streetcomplete.view.ListAdapter
 
 /** Adapter for a list of links */
-class LinksAdapter(links: List<Link>, private val onClickLink: (url: String) -> Unit)
-    : ListAdapter<Link>(links) {
+class LinksAdapter(links: List<Link>, private val onClickLink: (url: String) -> Unit) :
+    ListAdapter<Link>(links) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(RowLinkItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))

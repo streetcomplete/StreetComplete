@@ -10,7 +10,6 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.BaseActivity
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -28,13 +27,13 @@ import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Listener {
 
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var prefs: SharedPreferences
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val prefs: SharedPreferences by inject()
 
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
 
@@ -43,7 +42,6 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
     private var currentQuestType: QuestType<*>? = null
 
     init {
-        Injector.applicationComponent.inject(this)
         showQuestFormAdapter.list = questTypeRegistry.toMutableList()
     }
 
@@ -78,7 +76,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
         currentQuestType = null
     }
 
-    inner class ShowQuestFormAdapter: ListAdapter<QuestType<*>>() {
+    inner class ShowQuestFormAdapter : ListAdapter<QuestType<*>>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ViewHolder<QuestType<*>> =
             ViewHolder(RowQuestDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -100,20 +98,20 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
         val secondLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latitudeDelta).toBits()))
         val secondLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta).toBits()))
         val secondPos = LatLon(secondLat, secondLng)
-        val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latitudeDelta/2).toBits()))
-        val centerLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta/2).toBits()))
+        val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latitudeDelta / 2).toBits()))
+        val centerLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta / 2).toBits()))
         val centerPos = LatLon(centerLat, centerLng)
         // tags selected here are values that results in more that quests working on showing/solving debug quest form
         // some quests expect specific tags to be set and crash without them - what is OK, but here
         // some tag combination needs to be setup to reduce number of crashes when using test forms
-        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>", "opening_hours" to "Mo-Fr 08:00-12:00,13:00-17:30; Sa 08:00-12:00", "addr:housenumber" to "176")
+        val tags = mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>", "opening_hours" to "Mo-Fr 08:00-12:00,13:00-17:30; Sa 08:00-12:00", "addr:housenumber" to "176")
         // way geometry is needed by quests using clickable way display (steps direction, sidewalk quest, lane quest, cycleway quest...)
         val element = Way(1, listOf(1, 2), tags, 1)
         val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
 
         // for testing quests requiring nodes code above can be commented out and this uncommented
-        //val element = Node(1, firstPos, tags, 1)
-        //val elementGeometry = ElementPointGeometry(firstPos)
+        // val element = Node(1, firstPos, tags, 1)
+        // val elementGeometry = ElementPointGeometry(firstPos)
 
         val quest = object : Quest {
             override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
@@ -125,13 +123,11 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
 
         val f = questType.createForm()
         val args = AbstractQuestAnswerFragment.createArguments(quest, element, 0f, 0f)
-        if(f.arguments != null) {
+        if (f.arguments != null) {
             f.arguments!!.putAll(args)
         } else {
             f.arguments = args
         }
-
-
 
         currentQuestType = questType
 

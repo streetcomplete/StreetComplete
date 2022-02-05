@@ -121,8 +121,8 @@ class SphericalEarthMathTest {
     @Test fun `simple distance to horizontal arc`() {
         val start = p(-0.01, 0.0)
         val end = p(+0.01, 0.0)
-        val point = p( 0.0, -0.01)
-        val intersect = p( 0.0, 0.0)
+        val point = p(0.0, -0.01)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
@@ -152,7 +152,7 @@ class SphericalEarthMathTest {
         val start = p(+0.01, 0.0)
         val end = p(+0.02, 0.0)
         val point = p(0.0, -0.01)
-        val intersect = p( 0.0, 0.0)
+        val intersect = p(0.0, 0.0)
         assertEquals(point.distanceTo(start), point.distanceToArc(start, end), 0.01)
         assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), -point.alongTrackDistanceTo(start, end), 0.01)
@@ -171,14 +171,14 @@ class SphericalEarthMathTest {
     @Test fun `distance to horizontal arc crossing 180th meridian`() {
         val start = p(170.0, 0.0)
         val end = p(-170.0, 0.0)
-        val point = p( -175.0, 0.01)
+        val point = p(-175.0, 0.01)
         val intersect = p(-175.0, 0.0)
         assertEquals(point.distanceTo(intersect), point.distanceToArc(start, end), 0.01)
         assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to vertical arc crossing north pole`() {
-        val start = p( 0.0, 80.0)
+        val start = p(0.0, 80.0)
         val end = p(180.0, 0.0)
         val point = p(179.99, 85.0)
         val intersect = p(180.0, 85.0)
@@ -260,7 +260,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `enclosingbbox for line`() {
-        val positions = listOf(p(0.0, -4.0), p(3.0, 12.0), p(16.0, 1.0),p(-6.0, 0.0))
+        val positions = listOf(p(0.0, -4.0), p(3.0, 12.0), p(16.0, 1.0), p(-6.0, 0.0))
         val bbox = positions.enclosingBoundingBox()
         assertEquals(-4.0, bbox.min.latitude, 0.0)
         assertEquals(12.0, bbox.max.latitude, 0.0)
@@ -269,7 +269,7 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `enclosingbbox for line crosses 180th meridian`() {
-        val positions = listOf(p(160.0, 10.0),p(-150.0, 0.0),p(180.0, -10.0))
+        val positions = listOf(p(160.0, 10.0), p(-150.0, 0.0), p(180.0, -10.0))
         val bbox = positions.enclosingBoundingBox()
         assertTrue(bbox.crosses180thMeridian)
         assertEquals(-10.0, bbox.min.latitude, 0.0)
@@ -280,30 +280,30 @@ class SphericalEarthMathTest {
 
     @Test fun `contains works`() {
         val bbox = bbox(-1.0, -2.0, 1.0, 2.0)
-        assertTrue(bbox.contains(p(-2.0,-1.0)))
-        assertTrue(bbox.contains(p(+2.0,-1.0)))
-        assertTrue(bbox.contains(p(-2.0,+1.0)))
-        assertTrue(bbox.contains(p(+2.0,+1.0)))
-        assertTrue(bbox.contains(p(+0.0,+0.0)))
+        assertTrue(bbox.contains(p(-2.0, -1.0)))
+        assertTrue(bbox.contains(p(+2.0, -1.0)))
+        assertTrue(bbox.contains(p(-2.0, +1.0)))
+        assertTrue(bbox.contains(p(+2.0, +1.0)))
+        assertTrue(bbox.contains(p(+0.0, +0.0)))
 
-        assertFalse(bbox.contains(p(-2.1,0.0)))
-        assertFalse(bbox.contains(p(+2.1,0.0)))
-        assertFalse(bbox.contains(p(0.0,-1.1)))
-        assertFalse(bbox.contains(p(0.0,+1.1)))
+        assertFalse(bbox.contains(p(-2.1, 0.0)))
+        assertFalse(bbox.contains(p(+2.1, 0.0)))
+        assertFalse(bbox.contains(p(0.0, -1.1)))
+        assertFalse(bbox.contains(p(0.0, +1.1)))
     }
 
     @Test fun `contains works at 180th meridian`() {
         val bbox = bbox(0.0, 179.0, 1.0, -179.0)
-        assertTrue(bbox.contains(p(179.0,0.0)))
-        assertTrue(bbox.contains(p(179.0,1.0)))
-        assertTrue(bbox.contains(p(180.0,0.0)))
-        assertTrue(bbox.contains(p(180.0,1.0)))
-        assertTrue(bbox.contains(p(-179.0,0.0)))
-        assertTrue(bbox.contains(p(-179.0,1.0)))
-        assertTrue(bbox.contains(p(-180.0,0.0)))
-        assertTrue(bbox.contains(p(-180.0,1.0)))
+        assertTrue(bbox.contains(p(179.0, 0.0)))
+        assertTrue(bbox.contains(p(179.0, 1.0)))
+        assertTrue(bbox.contains(p(180.0, 0.0)))
+        assertTrue(bbox.contains(p(180.0, 1.0)))
+        assertTrue(bbox.contains(p(-179.0, 0.0)))
+        assertTrue(bbox.contains(p(-179.0, 1.0)))
+        assertTrue(bbox.contains(p(-180.0, 0.0)))
+        assertTrue(bbox.contains(p(-180.0, 1.0)))
 
-        assertFalse(bbox.contains(p(0.0,0.0)))
+        assertFalse(bbox.contains(p(0.0, 0.0)))
     }
 
     @Test fun `isCompletelyInside works`() {
@@ -452,7 +452,7 @@ class SphericalEarthMathTest {
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerLineOfPolyline for point fails`() {
-        listOf(p(0.0,0.0)).centerLineOfPolyline()
+        listOf(p(0.0, 0.0)).centerLineOfPolyline()
     }
 
     @Test fun `centerLineOfPolyline for a line with zero length`() {
@@ -493,7 +493,7 @@ class SphericalEarthMathTest {
 
     @Test fun `centerPointOfPolyline for line with zero length`() {
         val p0 = p(20.0, 20.0)
-        assertEquals(p0, listOf(p0,p0).centerPointOfPolyline())
+        assertEquals(p0, listOf(p0, p0).centerPointOfPolyline())
     }
 
     @Test fun `centerPointOfPolyline for simple line`() {
@@ -729,24 +729,24 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `polygon area is 0 for a polygon with less than 3 edges`() {
-        val twoEdges = listOf(p(0.0,0.0), p(1.0,0.0), p(1.0,1.0))
+        val twoEdges = listOf(p(0.0, 0.0), p(1.0, 0.0), p(1.0, 1.0))
         assertEquals(0.0, twoEdges.measuredArea(), 0.0)
     }
 
     @Test fun `polygon area is 0 for a polygon that is not closed`() {
-        val notClosed = listOf(p(0.0,0.0), p(1.0,0.0), p(1.0,1.0), p(0.0,1.0))
+        val notClosed = listOf(p(0.0, 0.0), p(1.0, 0.0), p(1.0, 1.0), p(0.0, 1.0))
         assertEquals(0.0, notClosed.measuredArea(), 0.0)
     }
 
     @Test fun `polygon area is positive for a counterclockwise polygon`() {
-        val square = p(0.0,0.0).createCounterClockwiseSquare(1.0)
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(1.0)
         assertFalse(square.isRingDefinedClockwise())
         assertTrue(square.measuredAreaSigned() > 0)
         assertTrue(square.measuredArea() > 0)
     }
 
     @Test fun `polygon area is negative for a clockwise polygon`() {
-        val square = p(0.0,0.0).createCounterClockwiseSquare(1.0).reversed()
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(1.0).reversed()
         assertTrue(square.isRingDefinedClockwise())
         assertTrue(square.measuredAreaSigned() < 0)
         assertTrue(square.measuredArea() > 0)
@@ -755,8 +755,8 @@ class SphericalEarthMathTest {
     /* +++++++++++++++++++++++++++++ test intersection check +++++++++++++++++++++++++++ */
 
     @Test fun `two lines intersect at endpoints`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(1.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
         val q1 = p(0.0, 1.0)
         val q2 = p(1.0, 0.0)
 
@@ -766,8 +766,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines intersect at start points`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(1.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
         val q1 = p(0.0, 0.0)
         val q2 = p(1.0, 1.0)
 
@@ -777,8 +777,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines intersect somewhere in the middle`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(2.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(2.0, 0.0)
         val q1 = p(0.0, 1.0)
         val q2 = p(2.0, -1.0)
 
@@ -788,8 +788,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines do not intersect somewhere after segment p`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(4.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(4.0, 0.0)
         val q1 = p(0.0, 2.0)
         val q2 = p(1.0, 1.0)
 
@@ -797,8 +797,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines do not intersect somewhere after segment q`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(1.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
         val q1 = p(0.0, 1.0)
         val q2 = p(4.0, -1.0)
 
@@ -806,8 +806,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines do not intersect somewhere before segment p`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(0.0,1.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(0.0, 1.0)
         val q1 = p(-2.0, -1.0)
         val q2 = p(0.0, 1.0)
 
@@ -815,8 +815,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines do not intersect somewhere before segment q`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(0.0,4.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(0.0, 4.0)
         val q1 = p(4.0, 1.0)
         val q2 = p(5.0, 2.0)
 
@@ -824,8 +824,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines intersect that are on the same great circle`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(2.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(2.0, 0.0)
         val q1 = p(4.0, 0.0)
         val q2 = p(-2.0, 0.0)
 
@@ -833,8 +833,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines do not intersect that are on the same great circle`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(1.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(1.0, 0.0)
         val q1 = p(3.0, 0.0)
         val q2 = p(2.0, 0.0)
 
@@ -842,8 +842,8 @@ class SphericalEarthMathTest {
     }
 
     @Test fun `two lines intersect on the other side of the earth`() {
-        val p1 = p(0.0,0.0)
-        val p2 = p(180.0,0.0)
+        val p1 = p(0.0, 0.0)
+        val p2 = p(180.0, 0.0)
         val q1 = p(-90.0, 1.0)
         val q2 = p(90.0, -1.0)
 

@@ -7,8 +7,9 @@ sealed class RoadNameAnswer
 
 data class RoadName(
     val localizedNames: List<LocalizedName>,
-    val wayId: Long, val wayGeometry: List<LatLon>)
-    : RoadNameAnswer()
+    val wayId: Long,
+    val wayGeometry: List<LatLon>
+) : RoadNameAnswer()
 
 object NoRoadName : RoadNameAnswer()
 object RoadIsServiceRoad : RoadNameAnswer()
