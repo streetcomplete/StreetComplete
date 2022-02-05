@@ -10,14 +10,12 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.isApril1st
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
 /** From all the quest types, creates and saves a sprite sheet of quest type pin icons, provides
  *  the scene updates for tangram to access this sprite sheet  */
-@Singleton class TangramPinsSpriteSheet @Inject constructor(
+class TangramPinsSpriteSheet(
     private val context: Context,
     private val questTypeRegistry: QuestTypeRegistry,
     private val prefs: SharedPreferences

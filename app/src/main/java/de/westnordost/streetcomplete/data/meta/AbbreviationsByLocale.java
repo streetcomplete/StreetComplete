@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import de.westnordost.streetcomplete.R;
 
 public class AbbreviationsByLocale
@@ -19,7 +17,7 @@ public class AbbreviationsByLocale
 
 	private final Map<String,Abbreviations> byLanguageAbbreviations = new HashMap<>();
 
-	@Inject public AbbreviationsByLocale(Context applicationContext)
+	public AbbreviationsByLocale(Context applicationContext)
 	{
 		this.applicationContext = applicationContext;
 	}

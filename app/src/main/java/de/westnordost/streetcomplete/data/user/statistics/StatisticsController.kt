@@ -15,11 +15,9 @@ import java.time.Instant
 import java.time.LocalDate
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Manages statistics of solved quests - by quest type and by country */
-@Singleton class StatisticsController @Inject constructor(
+class StatisticsController(
     private val questTypeStatisticsDao: QuestTypeStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,

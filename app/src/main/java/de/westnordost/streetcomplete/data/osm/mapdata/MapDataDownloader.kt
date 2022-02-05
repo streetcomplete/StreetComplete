@@ -9,10 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Takes care of downloading all note and osm quests */
-class MapDataDownloader @Inject constructor(
+class MapDataDownloader(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
 ) {

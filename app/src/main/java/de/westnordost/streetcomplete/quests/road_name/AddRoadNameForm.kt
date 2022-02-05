@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -12,10 +11,10 @@ import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedName
+import org.koin.android.ext.android.inject
 import java.lang.IllegalStateException
 import java.util.LinkedList
 import java.util.Locale
-import javax.inject.Inject
 
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
@@ -32,14 +31,10 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
-    @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsSource: RoadNameSuggestionsSource
+    private val abbrByLocale: AbbreviationsByLocale by inject()
+    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
-    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbreviationsByLocale
+    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
     override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
         val polyline = when (val geom = elementGeometry) {
@@ -57,7 +52,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         val possibleAbbreviations = LinkedList<String>()
         for ((languageTag, name) in adapter.localizedNames) {
             val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale.forLanguageTag(languageTag)
-            val abbr = abbreviationsByLocale.get(locale)
+            val abbr = abbrByLocale.get(locale)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
 
             if (name.contains(".") || containsLocalizedAbbreviations) {

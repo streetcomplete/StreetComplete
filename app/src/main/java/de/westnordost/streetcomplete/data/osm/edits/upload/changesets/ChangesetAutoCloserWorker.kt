@@ -3,19 +3,14 @@ package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
-import javax.inject.Inject
 
-class ChangesetAutoCloserWorker(context: Context, workerParams: WorkerParameters) :
-    Worker(context, workerParams) {
-
-    @Inject internal lateinit var openQuestChangesetsManager: OpenQuestChangesetsManager
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+class ChangesetAutoCloserWorker(
+    private val openQuestChangesetsManager: OpenQuestChangesetsManager,
+    context: Context,
+    workerParams: WorkerParameters
+) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
         try {

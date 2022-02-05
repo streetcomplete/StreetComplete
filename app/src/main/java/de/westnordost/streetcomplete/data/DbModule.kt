@@ -1,20 +1,10 @@
 package de.westnordost.streetcomplete.data
 
-import android.content.Context
 import android.database.sqlite.SQLiteOpenHelper
-import dagger.Module
-import dagger.Provides
 import de.westnordost.streetcomplete.ApplicationConstants
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module
-object DbModule {
-    @Provides @Singleton fun sqLiteOpenHelper(ctx: Context): SQLiteOpenHelper =
-        sqLiteOpenHelper(ctx, ApplicationConstants.DATABASE_NAME)
-
-    fun sqLiteOpenHelper(ctx: Context, databaseName: String): SQLiteOpenHelper =
-        StreetCompleteSQLiteOpenHelper(ctx, databaseName)
-
-    @Provides @Singleton fun database(sqLiteOpenHelper: SQLiteOpenHelper): Database =
-        AndroidDatabase(sqLiteOpenHelper)
+val dbModule = module {
+    single<Database> { AndroidDatabase(get()) }
+    single<SQLiteOpenHelper> { StreetCompleteSQLiteOpenHelper(get(), ApplicationConstants.DATABASE_NAME) }
 }

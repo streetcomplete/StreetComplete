@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
@@ -12,15 +11,15 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that shows the "star" with the number of solved quests */
 class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
 
-    @Inject internal lateinit var uploadProgressSource: UploadProgressSource
-    @Inject internal lateinit var prefs: SharedPreferences
-    @Inject internal lateinit var statisticsSource: StatisticsSource
-    @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
+    private val uploadProgressSource: UploadProgressSource by inject()
+    private val prefs: SharedPreferences by inject()
+    private val statisticsSource: StatisticsSource by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
 
     private val answersCounterView get() = view as AnswersCounterView
 
@@ -52,10 +51,6 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onStart() {
         super.onStart()

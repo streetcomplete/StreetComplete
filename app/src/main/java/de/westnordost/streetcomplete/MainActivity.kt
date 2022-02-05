@@ -25,7 +25,6 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
-import de.westnordost.streetcomplete.Injector.applicationComponent
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.ConnectionException
@@ -54,7 +53,7 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 class MainActivity :
     BaseActivity(),
@@ -62,14 +61,14 @@ class MainActivity :
     TutorialFragment.Listener,
     NotificationButtonFragment.Listener {
 
-    @Inject lateinit var crashReportExceptionHandler: CrashReportExceptionHandler
-    @Inject lateinit var questAutoSyncer: QuestAutoSyncer
-    @Inject lateinit var downloadController: DownloadController
-    @Inject lateinit var uploadController: UploadController
-    @Inject lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-    @Inject lateinit var prefs: SharedPreferences
-    @Inject lateinit var userLoginStatusController: UserLoginStatusController
-    @Inject lateinit var userUpdater: UserUpdater
+    private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
+    private val questAutoSyncer: QuestAutoSyncer by inject()
+    private val downloadController: DownloadController by inject()
+    private val uploadController: UploadController by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val prefs: SharedPreferences by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userUpdater: UserUpdater by inject()
 
     private val requestLocation = LocationRequester(this, this)
 
@@ -88,8 +87,6 @@ class MainActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        applicationComponent.inject(this)
 
         lifecycle.addObserver(questAutoSyncer)
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)

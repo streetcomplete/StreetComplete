@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class SelectedQuestPresetStore @Inject constructor(
+class SelectedQuestPresetStore(
     private val prefs: SharedPreferences
 ) {
     fun get(): Long = prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0)

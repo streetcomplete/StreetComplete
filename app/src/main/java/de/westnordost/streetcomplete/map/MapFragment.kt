@@ -26,7 +26,6 @@ import com.mapzen.tangram.TouchInput.TapResponder
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
@@ -52,7 +51,7 @@ import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.Version
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Manages a map that remembers its last location*/
 open class MapFragment :
@@ -94,9 +93,9 @@ open class MapFragment :
             }
         }
 
-    @Inject internal lateinit var vectorTileProvider: VectorTileProvider
-    @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
-    @Inject internal lateinit var sharedPrefs: SharedPreferences
+    private val vectorTileProvider: VectorTileProvider by inject()
+    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
+    private val sharedPrefs: SharedPreferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -113,10 +112,6 @@ open class MapFragment :
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

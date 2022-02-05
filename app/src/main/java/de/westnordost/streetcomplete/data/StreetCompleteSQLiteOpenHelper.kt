@@ -25,9 +25,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
-import javax.inject.Singleton
 
-@Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
+class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {

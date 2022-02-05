@@ -7,11 +7,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Access and listen to how many unsynced (=uploadable) changes there are */
-@Singleton class UnsyncedChangesCountSource @Inject constructor(
+class UnsyncedChangesCountSource(
     private val noteEditsSource: NoteEditsSource,
     private val elementEditsSource: ElementEditsSource
 ) {
