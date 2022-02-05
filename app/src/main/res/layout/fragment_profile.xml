@@ -259,6 +259,209 @@
 
                     </RelativeLayout>
 
+                    <RelativeLayout
+                        android:id="@+id/placeholder1Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder1Text"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder1Text"
+                            android:layout_below="@id/placeholder1Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 1"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder2Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder2Text"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder2Text"
+                            android:layout_below="@id/placeholder2Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 2"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder3Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder3Text"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder3Text"
+                            android:layout_below="@id/placeholder3Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 3"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder4Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder4Text"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder4Text"
+                            android:layout_below="@id/placeholder4Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 4"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder5Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder5Text"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder5Text"
+                            android:layout_below="@id/placeholder5Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 5"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder6Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder6Text"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder6Text"
+                            android:layout_below="@id/placeholder6Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 6"/>
+
+                    </RelativeLayout>
                 </com.google.android.flexbox.FlexboxLayout>
 
             </LinearLayout>

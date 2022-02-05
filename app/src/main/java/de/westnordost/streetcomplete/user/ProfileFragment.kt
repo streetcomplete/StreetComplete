@@ -163,7 +163,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.daysActiveText.text = daysActive.toString()
     }
 
-    class LaurelWreath(var resources: Resources) : Drawable() {
+    /*
+    100 and more: fully grown wreath with all pretty elements
+    99 to 1: may be losing elements as it gets smaller
+    0 and lower: no decorative styling at all
+     */
+    class LaurelWreath(val resources: Resources, val percentageOfGrowth: Int) : Drawable() {
         private val redPaint: Paint = Paint().apply { setARGB(255, 255, 0, 0) }
 
         private val antiAliasPaint: Paint = Paint().apply {
@@ -182,7 +187,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             val bitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf)
             canvas.withRotation(100f, width / 2f, height / 2f) {
-                canvas.drawBitmap(bitmap.bitmap, 0f, 0f, antiAliasPaint)
+                canvas.drawBitmap(bitmap.bitmap, 0f, 10f, antiAliasPaint)
+            }
+            canvas.withRotation(100-180f, width / 2f, height / 2f) {
+                canvas.drawBitmap(bitmap.bitmap, 0f, height - 10f, antiAliasPaint)
             }
         }
 
@@ -204,7 +212,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getSolvedCount() <= 100
         binding.globalRankText.text = "#$rank"
-        binding.globalRankText.background = LaurelWreath(resources)
+        binding.globalRankText.background = LaurelWreath(resources, 1001 - rank)
+    }
+
+    private fun updatePlaceholderRanksTexts() {
+        binding.placeholder1Text.text = "100%"
+        binding.placeholder1Text.background = LaurelWreath(resources, 100)
+
+        binding.placeholder2Text.text = "90%"
+        binding.placeholder2Text.background = LaurelWreath(resources, 90)
+
+        binding.placeholder3Text.text = "50%"
+        binding.placeholder3Text.background = LaurelWreath(resources, 50)
+
+        binding.placeholder4Text.text = "30%"
+        binding.placeholder4Text.background = LaurelWreath(resources, 30)
+
+        binding.placeholder5Text.text = "10%"
+        binding.placeholder5Text.background = LaurelWreath(resources, 10)
+
+        binding.placeholder6Text.text = "0%"
+        binding.placeholder6Text.background = LaurelWreath(resources, 0)
     }
 
     private suspend fun updateLocalRankText() {
