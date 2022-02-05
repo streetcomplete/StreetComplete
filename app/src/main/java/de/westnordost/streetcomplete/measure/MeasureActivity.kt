@@ -317,7 +317,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         val difference = Vector3.subtract(pos1, pos2)
         distance = difference.length()
 
-        binding.measurementTextView.text = displayUnit.format(distance.toDouble())
+        binding.measurementTextView.text = displayUnit.format(distance)
 
         val line = getLineNode()
         line.worldPosition = Vector3.add(pos1, pos2).scaled(.5f)
@@ -373,9 +373,6 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         private const val PARAM_MEASURE_MODE = "measure_mode"
         private const val PARAM_DISPLAY_UNIT = "display_unit"
         private const val PARAM_REQUEST_RESULT = "request_result"
-
-        private const val METER = "meter"
-        private const val FOOT_AND_INCH = "foot_inch"
 
         /** The action to identify a result */
         const val RESULT_ACTION = "de.westnordost.streetcomplete.measure.RESULT_ACTION"
