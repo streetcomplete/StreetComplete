@@ -47,8 +47,8 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     var right: Cycleway?
 
     /* For oneways, the naked "cycleway"-keys should be interpreted differently:
-    *  F.e. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
-    *  is a lane. F.e. cycleway=opposite_lane means that there is a lane in opposite traffic flow
+    *  E.g. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
+    *  is a lane. E.g. cycleway=opposite_lane means that there is a lane in opposite traffic flow
     *  direction.
     *  Whether there is anything each in the other direction, is not defined, so we have to treat
     *  it that way. */
@@ -58,8 +58,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
             if (isReverseSideRight) {
                 left = null
                 right = cycleway
-            }
-            else {
+            } else {
                 left = cycleway
                 right = null
             }
@@ -67,8 +66,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
             if (isReverseSideRight) {
                 left = cycleway
                 right = null
-            }
-            else {
+            } else {
                 left = null
                 right = cycleway
             }
@@ -105,7 +103,7 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
     val isDual = tags["$cyclewayKey:oneway"] == "no"
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
 
-    val result = when(cycleway) {
+    val result = when (cycleway) {
         "lane", "opposite_lane" -> {
             when (cyclewayLane) {
                 "exclusive", "exclusive_lane", "mandatory" -> {

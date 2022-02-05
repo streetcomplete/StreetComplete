@@ -59,7 +59,7 @@ data class RelationMember(
     val type: ElementType,
     val ref: Long,
     val role: String
-    )
+)
 
 enum class ElementType { NODE, WAY, RELATION }
 
@@ -84,9 +84,9 @@ data class LatLon(
     companion object {
         fun checkValidity(latitude: Double, longitude: Double) {
             require(
-                latitude >= -90.0 && latitude <= +90 &&
-                    longitude >= -180 && longitude <= +180
-            ) { "Latitude $latitude, longitude $longitude is not a valid position"}
+                latitude >= -90.0 && latitude <= +90
+                    && longitude >= -180 && longitude <= +180
+            ) { "Latitude $latitude, longitude $longitude is not a valid position" }
         }
     }
 }

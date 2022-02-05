@@ -119,7 +119,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(2))
         assertNotNull(dao.get(3))
 
-        dao.deleteAll(listOf(1,2,3))
+        dao.deleteAll(listOf(1, 2, 3))
 
         assertNull(dao.get(1))
         assertNull(dao.get(2))
@@ -296,17 +296,17 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
     TEST_QUEST_TYPE,
     ElementType.WAY,
     1,
-    Way(1, listOf(0,1)),
-    ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0,1.0))), LatLon(0.5, 0.5)),
+    Way(1, listOf(0, 1)),
+    ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0, 1.0))), LatLon(0.5, 0.5)),
     "survey",
     timestamp,
     isSynced,
     SplitWayAction(
         arrayListOf(
-            SplitAtPoint(LatLon(0.0,0.0)),
+            SplitAtPoint(LatLon(0.0, 0.0)),
             SplitAtLinePosition(
-                LatLon(0.0,0.0),
-                LatLon(1.0,1.0),
+                LatLon(0.0, 0.0),
+                LatLon(1.0, 1.0),
                 0.5
             )
         )

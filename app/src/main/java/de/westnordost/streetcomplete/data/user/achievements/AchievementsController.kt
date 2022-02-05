@@ -4,20 +4,17 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Named
-import javax.inject.Singleton
 
 /** Manages the data associated with achievements: Unlocked achievements, unlocked links and info
  *  about newly unlocked achievements (the user shall be notified about) */
-@Singleton class AchievementsController @Inject constructor(
+class AchievementsController(
     private val statisticsSource: StatisticsSource,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
     private val questTypeRegistry: QuestTypeRegistry,
-    @Named("Achievements") private val allAchievements: List<Achievement>,
-    @Named("Links") allLinks: List<Link>
-): AchievementsSource {
+    private val allAchievements: List<Achievement>,
+    allLinks: List<Link>
+) : AchievementsSource {
 
     private val listeners: MutableList<AchievementsSource.Listener> = CopyOnWriteArrayList()
 
@@ -64,7 +61,6 @@ import javax.inject.Singleton
     override fun getLinks(): List<Link> =
         userLinksDao.getAll().mapNotNull { linksById[it] }
 
-
     override fun addListener(listener: AchievementsSource.Listener) {
         listeners.add(listener)
     }
@@ -99,7 +95,6 @@ import javax.inject.Singleton
     private fun updateDaysActiveAchievements() {
         updateAchievements(allAchievements.filter { it.condition is DaysActive })
     }
-
 
     private fun updateAchievements(achievements: List<Achievement>, silent: Boolean = false) {
         val currentAchievementLevels = userAchievementsDao.getAll()

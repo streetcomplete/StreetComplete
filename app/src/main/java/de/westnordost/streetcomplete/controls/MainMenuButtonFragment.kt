@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -18,13 +17,13 @@ import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
-    @Inject internal lateinit var teamModeQuestFilter: TeamModeQuestFilter
-    @Inject internal lateinit var downloadController: DownloadController
+    private val teamModeQuestFilter: TeamModeQuestFilter by inject()
+    private val downloadController: DownloadController by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
@@ -39,10 +38,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

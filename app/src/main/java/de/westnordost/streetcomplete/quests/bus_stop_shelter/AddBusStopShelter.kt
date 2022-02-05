@@ -50,7 +50,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     override fun createForm() = AddBusStopShelterForm()
 
     override fun applyAnswerTo(answer: BusStopShelterAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             SHELTER -> tags.updateWithCheckDate("shelter", "yes")
             NO_SHELTER -> tags.updateWithCheckDate("shelter", "no")
             COVERED -> {
@@ -60,4 +60,3 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
         }
     }
 }
-

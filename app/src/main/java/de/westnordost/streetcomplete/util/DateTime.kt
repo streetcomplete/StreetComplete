@@ -8,7 +8,7 @@ import java.time.ZoneId
 import java.util.Locale
 
 fun timeOfDayToString(locale: Locale, minutes: Int): String {
-    val seconds = (minutes % (24*60)) * 60L
+    val seconds = (minutes % (24 * 60)) * 60L
     val todayAt = LocalDateTime.of(LocalDate.now(), LocalTime.ofSecondOfDay(seconds))
         .atZone(ZoneId.systemDefault())
         .toInstant()

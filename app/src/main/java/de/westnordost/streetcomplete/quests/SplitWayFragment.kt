@@ -15,7 +15,6 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
@@ -44,18 +43,20 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
-class SplitWayFragment : Fragment(R.layout.fragment_split_way),
-    IsCloseableBottomSheet, IsShowingQuestDetails {
+class SplitWayFragment :
+    Fragment(R.layout.fragment_split_way),
+    IsCloseableBottomSheet,
+    IsShowingQuestDetails {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
     private val binding by viewBinding(FragmentSplitWayBinding::bind)
 
-    @Inject internal lateinit var soundFx: SoundFx
+    private val soundFx: SoundFx by inject()
 
     override val questKey: QuestKey get() = osmQuestKey
 
@@ -74,10 +75,6 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -176,7 +173,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
-        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters } ) {
+        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters }) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         } else {
             splits.add(Pair(splitWay, splitPosition))
@@ -193,15 +190,14 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         return true
     }
 
-
     private fun animateScissors() {
         val scissorsPos = clickPos ?: return
 
         (binding.scissors.drawable as? Animatable)?.start()
 
         binding.scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
-            leftMargin = (scissorsPos.x - binding.scissors.width/2).toInt()
-            topMargin = (scissorsPos.y - binding.scissors.height/2).toInt()
+            leftMargin = (scissorsPos.x - binding.scissors.width / 2).toInt()
+            topMargin = (scissorsPos.y - binding.scissors.height / 2).toInt()
         }
         binding.scissors.alpha = 1f
         val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)

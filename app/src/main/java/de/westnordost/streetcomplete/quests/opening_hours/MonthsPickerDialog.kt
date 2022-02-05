@@ -12,10 +12,9 @@ object MonthsPickerDialog {
 
         return AlertDialog.Builder(context)
             .setTitle(R.string.quest_openingHours_chooseMonthsTitle)
-            .setMultiChoiceItems(Months.getNames(), selection)  { _, _, _ -> }
+            .setMultiChoiceItems(Months.getNames(), selection) { _, _, _ -> }
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ -> callback(Months(selection)) }
             .show()
     }
-
 }

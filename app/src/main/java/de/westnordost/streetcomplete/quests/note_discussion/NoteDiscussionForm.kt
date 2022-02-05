@@ -12,10 +12,8 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
-import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.user.User
@@ -29,9 +27,10 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import java.io.File
 import java.time.Instant
-import javax.inject.Inject
 
 class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
 
@@ -42,7 +41,8 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
 
     private lateinit var anonAvatar: Bitmap
 
-    @Inject internal lateinit var noteSource: NotesWithEditsSource
+    private val noteSource: NotesWithEditsSource by inject()
+    private val avatarsCacheDir: File by inject(named("AvatarsCacheDirectory"))
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -52,10 +52,6 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_noteDiscussion_no) { skipQuest() }
     )
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -152,8 +148,7 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
         }
 
         private val User.avatar: Bitmap? get() {
-            val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
-            val file = File(cacheDir.toString() + File.separator + id)
+            val file = File(avatarsCacheDir.toString() + File.separator + id)
             return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
         }
 

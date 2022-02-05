@@ -11,10 +11,10 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
     var items = listOf<DisplayItem<T>>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     private val _selectedIndices = mutableSetOf<Int>()
     val selectedIndices get() = _selectedIndices.toList()

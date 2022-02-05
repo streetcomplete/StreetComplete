@@ -30,7 +30,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if(isDisplayingPreviousCycleway) listOf(
+        if (isDisplayingPreviousCycleway) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
         )
@@ -46,7 +46,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         return result
     }
 
-
     override val contentPadding = false
 
     private var isDisplayingPreviousCycleway: Boolean = false
@@ -61,11 +60,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private val likelyNoBicycleContraflow = """
-            ways with oneway:bicycle != no and (
-                oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or junction ~ roundabout|circular
-            )
-        """.toElementFilterExpression()
+        ways with oneway:bicycle != no and (
+            oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+            or junction ~ roundabout|circular
+        )
+    """.toElementFilterExpression()
 
     private var streetSideRotater: StreetSideRotater? = null
 
@@ -289,7 +288,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             }
 
             isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
-                || (if(isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
+                || (if (isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
         }
 
         val answer = CyclewayAnswer(
@@ -302,7 +301,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         saveLastSelection()
     }
-
 
     private fun Cycleway.isSingleTrackOrLane() =
         this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE

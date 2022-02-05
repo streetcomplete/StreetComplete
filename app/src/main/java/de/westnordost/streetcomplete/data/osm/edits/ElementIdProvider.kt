@@ -15,7 +15,7 @@ class ElementIdProvider(elementKeys: Collection<ElementKey>) {
         relationIds = ArrayList(elementKeys.size)
 
         for (key in elementKeys) {
-            when(key.type) {
+            when (key.type) {
                 ElementType.NODE -> nodeIds.add(key.id)
                 ElementType.WAY -> wayIds.add(key.id)
                 ElementType.RELATION -> relationIds.add(key.id)

@@ -8,11 +8,9 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Access and listen to quests visible on the map */
-@Singleton class VisibleQuestsSource @Inject constructor(
+class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
     private val osmNoteQuestSource: OsmNoteQuestSource,
@@ -105,5 +103,3 @@ import javax.inject.Singleton
         listeners.forEach { it.onVisibleQuestsInvalidated() }
     }
 }
-
-

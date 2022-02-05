@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestType
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class QuestTypeOrderController @Inject constructor(
+class QuestTypeOrderController(
     private val questTypeOrderDao: QuestTypeOrderDao,
     private val questPresetsSource: QuestPresetsSource
-): QuestTypeOrderSource {
+) : QuestTypeOrderSource {
 
     private val listeners = CopyOnWriteArrayList<QuestTypeOrderSource.Listener>()
 

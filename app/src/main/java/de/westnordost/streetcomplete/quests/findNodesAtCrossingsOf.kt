@@ -32,7 +32,6 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
      * https://www.openstreetmap.org/node/56606744 (with roads) */
     waysByNodeId.removeEndNodes()
 
-
     /* filter out all nodes that are not shared nodes of both a road and a footway */
     barriersByNodeId.keys.retainAll(waysByNodeId.keys)
     waysByNodeId.keys.retainAll(barriersByNodeId.keys)
@@ -99,7 +98,6 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
         )
     }
 }
-
 
 /** get the node id(s) neighbouring to the given node id */
 private fun Way.getNodeIdsNeighbouringNodeId(nodeId: Long): List<Long> {

@@ -28,8 +28,8 @@ class TestMapDataWithGeometry(elements: Iterable<Element>) : MutableMapData(), M
 
 fun createMapData(elements: Map<Element, ElementGeometry?>): TestMapDataWithGeometry {
     val result = TestMapDataWithGeometry(elements.keys)
-    for((element, geometry) in elements) {
-        when(element) {
+    for ((element, geometry) in elements) {
+        when (element) {
             is Node ->
                 result.nodeGeometriesById[element.id] = geometry as ElementPointGeometry
             is Way ->

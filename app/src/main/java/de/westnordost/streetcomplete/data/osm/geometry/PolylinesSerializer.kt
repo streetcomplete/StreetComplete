@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
-import javax.inject.Inject
 
 /** Serializes a list of a list of latlons into to a byte array and back memory-efficiently.
  *
@@ -19,7 +18,7 @@ import javax.inject.Inject
  *  ... for every single coordinate that is part of this particular geometry. That's more than 2
  *  times the size as when using this method.
  *  */
-class PolylinesSerializer @Inject constructor() {
+class PolylinesSerializer() {
 
     fun serialize(polylines: List<List<LatLon>>): ByteArray {
         val baos = ByteArrayOutputStream()

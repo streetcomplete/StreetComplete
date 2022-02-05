@@ -14,6 +14,6 @@ inline fun <reified T : Any> argumentCaptor(): ArgumentCaptor<T> =
     ArgumentCaptor.forClass(T::class.java)
 
 fun <T> on(methodCall: T): OngoingStubbing<T> = Mockito.`when`(methodCall)
-fun <T> Stubber.on(mock:T): T = this.`when`(mock)
+fun <T> Stubber.on(mock: T): T = this.`when`(mock)
 
-inline fun <reified T> mock():T = Mockito.mock(T::class.java)
+inline fun <reified T> mock(): T = Mockito.mock(T::class.java)

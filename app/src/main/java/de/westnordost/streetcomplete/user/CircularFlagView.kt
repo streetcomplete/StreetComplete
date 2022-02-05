@@ -20,17 +20,17 @@ class CircularFlagView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-): View(context, attrs, defStyleAttr) {
+) : View(context, attrs, defStyleAttr) {
 
     private val clipPath = Path()
     private var drawable: Drawable? = null
     private var boundsOffset: Rect? = null
 
     var countryCode: String? = null
-    set(value) {
-        field = value
-        updateCountryCode(value)
-    }
+        set(value) {
+            field = value
+            updateCountryCode(value)
+        }
 
     init {
         outlineProvider = object : ViewOutlineProvider() {
@@ -77,7 +77,6 @@ class CircularFlagView @JvmOverloads constructor(
         canvas.clipPath(clipPath)
         d.setBounds(offset.left, offset.top, width - offset.right, height - offset.bottom)
         d.draw(canvas)
-
     }
 
     private fun updateCountryCode(countryCode: String?) {
@@ -109,9 +108,9 @@ class CircularFlagView @JvmOverloads constructor(
     private fun getBoundsOffset(d: Drawable, align: FlagAlignment): Rect {
         val w = d.intrinsicWidth
         val h = d.intrinsicHeight
-        val scale = width.toFloat() / min(w,h)
+        val scale = width.toFloat() / min(w, h)
         val hOffset = -w * scale + width
-        return when(align) {
+        return when (align) {
             FlagAlignment.LEFT ->         Rect(0, 0, hOffset.toInt(), 0)
             FlagAlignment.CENTER_LEFT ->  Rect((1f * hOffset / 3f).toInt(), 0, (2f * hOffset / 3f).toInt(), 0)
             FlagAlignment.CENTER ->       Rect((hOffset / 2f).toInt(), 0, (hOffset / 2f).toInt(), 0)
@@ -152,7 +151,7 @@ class CircularFlagView @JvmOverloads constructor(
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
             resources.getYamlObject<HashMap<String, String>>(R.raw.flag_alignments).map {
-                it.key to FlagAlignment.valueOf(it.value.replace("-","_").uppercase())
+                it.key to FlagAlignment.valueOf(it.value.replace("-", "_").uppercase())
             }.toMap()
     }
 

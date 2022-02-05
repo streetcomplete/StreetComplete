@@ -85,7 +85,7 @@ class VerticalLabelView @JvmOverloads constructor(
         text?.let {
             val originY = paddingTop + textBounds.width() / 2f
             if (orientationRight) {
-                val originX = paddingLeft -  textBounds.height() - textPaint.ascent()
+                val originX = paddingLeft - textBounds.height() - textPaint.ascent()
                 canvas.translate(originX, originY)
                 canvas.rotate(90f)
             } else {

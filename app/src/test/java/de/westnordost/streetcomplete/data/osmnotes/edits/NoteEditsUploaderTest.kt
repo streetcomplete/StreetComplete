@@ -144,13 +144,13 @@ class NoteEditsUploaderTest {
             action = NoteEditAction.COMMENT,
             text = "test",
             pos = pos,
-            imagePaths = listOf("a","b","c")
+            imagePaths = listOf("a", "b", "c")
         )
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenReturn(note)
-        on(imageUploader.upload(any())).thenReturn(listOf("x","y","z"))
+        on(imageUploader.upload(any())).thenReturn(listOf("x", "y", "z"))
 
         upload()
 
@@ -158,7 +158,7 @@ class NoteEditsUploaderTest {
         verify(noteController).put(note)
         verify(noteEditsController).markSynced(edit, note)
         verify(noteEditsController).markImagesActivated(1L)
-        verify(imageUploader).upload(listOf("a","b","c"))
+        verify(imageUploader).upload(listOf("a", "b", "c"))
         verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -170,13 +170,13 @@ class NoteEditsUploaderTest {
             action = NoteEditAction.CREATE,
             text = "test",
             pos = pos,
-            imagePaths = listOf("a","b","c")
+            imagePaths = listOf("a", "b", "c")
         )
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.create(any(), any())).thenReturn(note)
-        on(imageUploader.upload(any())).thenReturn(listOf("x","y","z"))
+        on(imageUploader.upload(any())).thenReturn(listOf("x", "y", "z"))
 
         upload()
 
@@ -184,7 +184,7 @@ class NoteEditsUploaderTest {
         verify(noteController).put(note)
         verify(noteEditsController).markSynced(edit, note)
         verify(noteEditsController).markImagesActivated(1L)
-        verify(imageUploader).upload(listOf("a","b","c"))
+        verify(imageUploader).upload(listOf("a", "b", "c"))
         verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
     }

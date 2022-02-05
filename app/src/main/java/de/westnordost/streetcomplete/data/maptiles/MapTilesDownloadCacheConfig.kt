@@ -8,12 +8,10 @@ import okhttp3.Cache
 import okhttp3.CacheControl
 import java.io.File
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Configuration for the common cache shared by tangram-es and the map tile ("pre"-)downloader
  *  integrated into the normal map download process */
-@Singleton class MapTilesDownloadCacheConfig @Inject constructor(context: Context) {
+class MapTilesDownloadCacheConfig(context: Context) {
 
     val cacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)

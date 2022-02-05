@@ -16,7 +16,7 @@ class AddBusStopShelterTest {
     @Test fun `apply shelter yes answer`() {
         questType.verifyAnswer(
             BusStopShelterAnswer.SHELTER,
-            StringMapEntryAdd("shelter","yes")
+            StringMapEntryAdd("shelter", "yes")
         )
     }
 
@@ -32,7 +32,7 @@ class AddBusStopShelterTest {
     @Test fun `apply shelter no answer`() {
         questType.verifyAnswer(
             BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryAdd("shelter","no")
+            StringMapEntryAdd("shelter", "no")
         )
     }
 

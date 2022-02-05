@@ -30,7 +30,7 @@ class AddRoadNameTest {
     }
 
     @Test fun `apply ref answer`() {
-        val refs = listOf("9","A","A2","L 3211","US-9","MEX 25","1234","G9321")
+        val refs = listOf("9", "A", "A2", "L 3211", "US-9", "MEX 25", "1234", "G9321")
         for (ref in refs) {
             questType.verifyAnswer(
                 tags,
@@ -108,7 +108,7 @@ class AddRoadNameTest {
 
     // convenience method
     private fun roadName(vararg names: LocalizedName): RoadName {
-        val pointsList = listOf(p(0.0,0.0), p(1.0,1.0))
+        val pointsList = listOf(p(0.0, 0.0), p(1.0, 1.0))
         return RoadName(names.toList(), 1L, pointsList)
     }
 }

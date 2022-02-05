@@ -9,10 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Takes care of downloading all note and osm quests */
-class MapDataDownloader @Inject constructor(
+class MapDataDownloader(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
 ) {
@@ -27,7 +26,7 @@ class MapDataDownloader @Inject constructor(
         mapData.boundingBox = expandedBBox
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
+        Log.i(TAG, "Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
         yield()
 
@@ -37,7 +36,7 @@ class MapDataDownloader @Inject constructor(
     private fun getMapAndHandleTooBigQuery(bounds: BoundingBox, mutableMapData: MutableMapData) {
         try {
             mapDataApi.getMap(bounds, mutableMapData, ApplicationConstants.IGNORED_RELATION_TYPES)
-        } catch (e : QueryTooBigException) {
+        } catch (e: QueryTooBigException) {
             for (subBounds in bounds.splitIntoFour()) {
                 getMapAndHandleTooBigQuery(subBounds, mutableMapData)
             }

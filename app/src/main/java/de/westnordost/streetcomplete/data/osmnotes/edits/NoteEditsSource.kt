@@ -26,5 +26,4 @@ interface NoteEditsSource {
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
-
 }

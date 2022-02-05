@@ -18,7 +18,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
 
-
 class AddOpeningHoursTest {
 
     private val questType = AddOpeningHours(mock())
@@ -86,7 +85,6 @@ class AddOpeningHoursTest {
         )
     }
 
-
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(
             RegularOpeningHours(OpeningHoursRuleList(listOf(
@@ -95,8 +93,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 },
                 Rule().apply {
@@ -104,8 +102,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.TU
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*12
-                        it.end = 60*24
+                        it.start = 60 * 12
+                        it.end = 60 * 24
                     })
                 })
             )),
@@ -122,12 +120,12 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 })
             )),
-            StringMapEntryModify("opening_hours", "hohoho","Mo 10:00-12:00")
+            StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")
         )
     }
 
@@ -140,8 +138,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 })
             )),

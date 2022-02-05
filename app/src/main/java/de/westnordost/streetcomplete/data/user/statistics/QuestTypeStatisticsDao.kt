@@ -4,10 +4,9 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.Columns.SUCCEEDED
 import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable.NAME
-import javax.inject.Inject
 
 /** Stores how many quests of which quest types the user solved */
-class QuestTypeStatisticsDao @Inject constructor(private val db: Database) {
+class QuestTypeStatisticsDao(private val db: Database) {
 
     fun getTotalAmount(): Int =
         db.queryOne(NAME, arrayOf("total($SUCCEEDED) as count")) { it.getInt("count") } ?: 0

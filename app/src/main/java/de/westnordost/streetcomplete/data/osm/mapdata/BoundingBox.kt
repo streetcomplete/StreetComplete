@@ -5,9 +5,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BoundingBox(val min: LatLon, val max: LatLon) {
     constructor(
-        minLatitude: Double, minLongitude: Double,
-        maxLatitude: Double, maxLongitude: Double
-    ): this(LatLon(minLatitude, minLongitude), LatLon(maxLatitude, maxLongitude))
+        minLatitude: Double,
+        minLongitude: Double,
+        maxLatitude: Double,
+        maxLongitude: Double
+    ) : this(LatLon(minLatitude, minLongitude), LatLon(maxLatitude, maxLongitude))
 
     init {
         require(min.latitude <= max.latitude) {
@@ -16,7 +18,6 @@ data class BoundingBox(val min: LatLon, val max: LatLon) {
     }
 
     val crosses180thMeridian get() = min.longitude > max.longitude
-
 }
 
 /** @return two new bounds split alongside the 180th meridian or, if these bounds do not cross

@@ -13,15 +13,14 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
     private val pref: NumberPickerPreference
         get() = preference as NumberPickerPreference
 
-
     override fun onBindDialogView(view: View) {
         super.onBindDialogView(view)
         picker = view.findViewById(R.id.numberPicker)
         val intValues = (pref.minValue..pref.maxValue step pref.step).toList()
         values = intValues.map { "$it" }.toTypedArray()
         var index = values.indexOf(pref.value.toString())
-        if(index == -1) {
-            do ++index while(index < intValues.lastIndex && intValues[index] < pref.value)
+        if (index == -1) {
+            do ++index while (index < intValues.lastIndex && intValues[index] < pref.value)
         }
         picker.apply {
             displayedValues = values

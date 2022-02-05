@@ -62,13 +62,13 @@ class NodeDaoTest : ApplicationDbTestCase() {
         val e1 = nd(1)
         val e2 = nd(2)
         val e3 = nd(3)
-        dao.putAll(listOf(e1,e2,e3))
-        assertEquals(listOf(e1, e2).map { it.id }, dao.getAll(listOf(1,2,4)).map { it.id })
+        dao.putAll(listOf(e1, e2, e3))
+        assertEquals(listOf(e1, e2).map { it.id }, dao.getAll(listOf(1, 2, 4)).map { it.id })
     }
 
     @Test fun deleteAll() {
         dao.putAll(listOf(nd(1), nd(2), nd(3)))
-        assertEquals(2,dao.deleteAll(listOf(1,2,4)))
+        assertEquals(2, dao.deleteAll(listOf(1, 2, 4)))
         assertNotNull(dao.get(3))
         assertNull(dao.get(1))
         assertNull(dao.get(2))
@@ -89,7 +89,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
     @Test fun clear() {
         dao.putAll(listOf(nd(1), nd(2), nd(3)))
         dao.clear()
-        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+        assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
     }
 }
 
@@ -98,6 +98,6 @@ private fun nd(
     version: Int = 1,
     lat: Double = 1.0,
     lon: Double = 2.0,
-    tags: Map<String,String> = emptyMap(),
+    tags: Map<String, String> = emptyMap(),
     timestamp: Long = 123
 ) = Node(id, LatLon(lat, lon), tags, version, timestamp)

@@ -13,10 +13,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Stores OSM nodes */
-class NodeDao @Inject constructor(private val db: Database) {
+class NodeDao(private val db: Database) {
     fun put(node: Node) {
         putAll(listOf(node))
     }

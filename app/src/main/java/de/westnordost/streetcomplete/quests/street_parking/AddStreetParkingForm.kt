@@ -99,7 +99,6 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
         checkIsFormComplete()
     }
 
-
     @AnyThread
     override fun onMapOrientation(rotation: Float, tilt: Float) {
         streetSideRotater?.onMapOrientation(rotation, tilt)
@@ -133,7 +132,7 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
         val ctx = context ?: return
         val items = getNoParkingSelectionItems(ctx, countryInfo)
         ImageListPickerDialog(ctx, items, R.layout.cell_icon_select_with_label_below, 2, R.string.select_street_parking_no) {
-            when(it.value!!) {
+            when (it.value!!) {
                 NO_STOPPING -> onSelectedSide(StreetStoppingProhibited, isRight)
                 NO_STANDING -> onSelectedSide(StreetStandingProhibited, isRight)
                 NO_PARKING -> onSelectedSide(StreetParkingProhibited, isRight)
@@ -250,7 +249,7 @@ private enum class ParkingSelection {
     PARALLEL, DIAGONAL, PERPENDICULAR, SEPARATE, NO
 }
 
-private val ParkingSelection.titleResId: Int get() = when(this) {
+private val ParkingSelection.titleResId: Int get() = when (this) {
     PARALLEL -> R.string.street_parking_parallel
     DIAGONAL -> R.string.street_parking_diagonal
     PERPENDICULAR -> R.string.street_parking_perpendicular
@@ -258,7 +257,7 @@ private val ParkingSelection.titleResId: Int get() = when(this) {
     NO -> R.string.street_parking_no
 }
 
-private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when(this) {
+private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boolean): Image = when (this) {
     PARALLEL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PARALLEL)
     DIAGONAL -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.DIAGONAL)
     PERPENDICULAR -> createParkingOrientationImage(context, isUpsideDown, ParkingOrientation.PERPENDICULAR)
@@ -268,7 +267,6 @@ private fun ParkingSelection.getDialogIcon(context: Context, isUpsideDown: Boole
 
 private fun ParkingSelection.asItem(context: Context, isUpsideDown: Boolean) =
     Item2(this, getDialogIcon(context, isUpsideDown), ResText(titleResId))
-
 
 private fun createParkingOrientationImage(
     context: Context,

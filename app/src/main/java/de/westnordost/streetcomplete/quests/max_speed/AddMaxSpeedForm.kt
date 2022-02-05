@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.quests.max_speed.SpeedType.SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ZONE
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-
 class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
@@ -72,7 +71,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
             val couldBeSlowZone = countryInfo.hasSlowZone()
-                    && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
+                && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
 
             if (couldBeSlowZone)
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }
@@ -83,7 +82,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         } else if (speedType == NSL) {
             askIsDualCarriageway(
                 onYes = { applyNoSignAnswer("nsl_dual") },
-                onNo = { applyNoSignAnswer("nsl_single") })
+                onNo = { applyNoSignAnswer("nsl_single") }
+            )
         } else {
             if (userSelectedUnusualSpeed())
                 confirmUnusualInput { applySpeedLimitFormAnswer() }
@@ -111,7 +111,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
 
-        when(speedType) {
+        when (speedType) {
             ZONE -> {
                 enableAppropriateLabelsForSlowZone(binding.rightSideContainer)
             }
@@ -122,7 +122,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             }
             else -> {}
         }
-
 
         if (speedType == ZONE && LAST_INPUT_SLOW_ZONE != null) {
             speedInput?.setText(LAST_INPUT_SLOW_ZONE.toString())
@@ -206,7 +205,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun getSpeedFromInput(): Speed? {
         val value = speedInput?.numberOrNull?.toInt() ?: return null
         val unit = speedUnitSelect?.selectedItem as SpeedMeasurementUnit? ?: speedUnits.first()
-        return when(unit) {
+        return when (unit) {
             KILOMETERS_PER_HOUR -> Kmh(value)
             MILES_PER_HOUR -> Mph(value)
         }
@@ -233,7 +232,6 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
             dialogSpeedInput.setText("××")
             dialogSpeedInput.inputType = EditorInfo.TYPE_NULL
 
-
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
                 .setView(dialogBinding.root)
@@ -259,12 +257,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                     }
                 )
             }
-        } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag) ) {
+        } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
             applyNoSignAnswer(highwayTag)
         } else {
             askUrbanOrRural(
                 onUrban = { applyNoSignAnswer("urban") },
-                onRural = { applyNoSignAnswer("rural") })
+                onRural = { applyNoSignAnswer("rural") }
+            )
         }
     }
 

@@ -41,7 +41,7 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
         val rows = querySophoxCsv(query).mapNotNull { parseCsvRow(it) }
         for (row in rows) {
             row.countryCode?.let {
-                result.getOrPut(it, { mutableMapOf() }).compute(row.value) { _, u ->  (u ?: 0) + 1}
+                result.getOrPut(it, { mutableMapOf() }).compute(row.value) { _, u -> (u ?: 0) + 1 }
             }
         }
 
@@ -62,7 +62,7 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
             var hasAddedCountry = false
             for ((value, count) in entries) {
                 if (count < minCount) continue
-                if (100*(count.toDouble() / totalCount) < minPercent) continue
+                if (100 * (count.toDouble() / totalCount) < minPercent) continue
 
                 if (!hasAddedCountry) {
                     fileWriter.write("$countryCode:\n")
@@ -85,7 +85,7 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
     }
 
     private fun querySophoxCsv(query: String): List<String> {
-        val url = URL("https://sophox.org/sparql?query="+ URLEncoder.encode(query,"UTF-8"))
+        val url = URL("https://sophox.org/sparql?query=" + URLEncoder.encode(query, "UTF-8"))
         val connection = url.openConnection() as HttpURLConnection
         try {
             connection.setRequestProperty("Accept", "text/csv")
@@ -107,7 +107,6 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
         val lat = matchResult.groupValues[2].toDoubleOrNull() ?: return null
         return Row(value, lon, lat)
     }
-
 }
 
 private data class Row(val value: String, val lon: Double, val lat: Double)

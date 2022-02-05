@@ -24,7 +24,7 @@ class TimePickerDialog(
     init {
         timePicker.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         setView(timePicker)
-        setButton(BUTTON_POSITIVE,context.getString(android.R.string.ok)) { _, _ ->
+        setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P || timePicker.validateInput()) {
                 callback(timePicker.currentHour, timePicker.currentMinute)
                 // Clearing focus forces the dialog to commit any pending

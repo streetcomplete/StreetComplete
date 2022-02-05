@@ -18,7 +18,6 @@ import androidx.core.location.LocationManagerCompat
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
 }

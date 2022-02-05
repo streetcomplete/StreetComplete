@@ -72,5 +72,4 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
             }
         }
     }
-
 }

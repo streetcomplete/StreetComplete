@@ -21,7 +21,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
           and crossing
           and crossing != island
           and !crossing:island
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
         ways with
@@ -29,7 +29,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
           or railway
           or highway = service
           or highway and oneway and oneway != no
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Add whether pedestrian crossing has an island"
     override val wikiLink = "Key:crossing:island"

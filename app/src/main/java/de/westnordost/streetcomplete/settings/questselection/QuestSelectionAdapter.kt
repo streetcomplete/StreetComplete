@@ -47,7 +47,7 @@ import java.util.concurrent.FutureTask
 
 /** Adapter for the list that in which the user can enable and disable quests as well as re-order
  *  them */
-class QuestSelectionAdapter (
+class QuestSelectionAdapter(
     private val context: Context,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
@@ -63,19 +63,19 @@ class QuestSelectionAdapter (
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
-    var filter: String = ""
-    set(value) {
-        val n = value.trim()
-        if (n != field) {
-            field = n
+        set(value) {
+            field = value
             notifyDataSetChanged()
         }
-    }
+
+    var filter: String = ""
+        set(value) {
+            val n = value.trim()
+            if (n != field) {
+                field = n
+                notifyDataSetChanged()
+            }
+        }
 
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {
@@ -253,7 +253,7 @@ class QuestSelectionAdapter (
         private val isEnabledInCurrentCountry: Boolean
             get() {
                 (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    return when(val countries = questType.enabledInCountries) {
+                    return when (val countries = questType.enabledInCountries) {
                         is AllCountries -> true
                         is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
                         is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
@@ -285,7 +285,7 @@ class QuestSelectionAdapter (
             binding.disabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                binding.disabledText.text =  binding.disabledText.resources.getString(
+                binding.disabledText.text = binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
             }

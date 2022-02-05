@@ -16,10 +16,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Stores OSM relations */
-class RelationDao @Inject constructor(private val db: Database) {
+class RelationDao(private val db: Database) {
     fun put(relation: Relation) {
         putAll(listOf(relation))
     }
@@ -113,13 +112,13 @@ class RelationDao @Inject constructor(private val db: Database) {
         }
     }
 
-    fun getAllForNode(nodeId: Long) : List<Relation> =
+    fun getAllForNode(nodeId: Long): List<Relation> =
         getAllForElement(ElementType.NODE, nodeId)
 
-    fun getAllForWay(wayId: Long) : List<Relation> =
+    fun getAllForWay(wayId: Long): List<Relation> =
         getAllForElement(ElementType.WAY, wayId)
 
-    fun getAllForRelation(relationId: Long) : List<Relation> =
+    fun getAllForRelation(relationId: Long): List<Relation> =
         getAllForElement(ElementType.RELATION, relationId)
 
     fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
@@ -130,8 +129,6 @@ class RelationDao @Inject constructor(private val db: Database) {
             limit = limit?.toString()
         ) { it.getLong(ID) }
     }
-
-
 
     private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
         return db.transaction {

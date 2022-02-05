@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
-
 class AddCameraType : OsmFilterQuestType<CameraType>() {
 
     override val elementFilter = """

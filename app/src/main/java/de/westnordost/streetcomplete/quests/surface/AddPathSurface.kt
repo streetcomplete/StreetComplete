@@ -47,7 +47,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override fun createForm() = AddPathSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is SurfaceAnswer -> {
                 answer.applyTo(tags, "surface")
             }

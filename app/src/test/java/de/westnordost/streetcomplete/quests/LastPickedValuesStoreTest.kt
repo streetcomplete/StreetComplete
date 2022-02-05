@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.quests.Letter.C
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-
 class LastPickedValuesStoreTest {
 
     @Test fun `mostCommonWithin`() {

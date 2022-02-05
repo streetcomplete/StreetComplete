@@ -11,7 +11,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
 
-
 class ResurveyUtilsTest {
     @Test fun toCheckDateString() {
         assertEquals("2007-12-08", LocalDate.of(2007, 12, 8).toCheckDateString())

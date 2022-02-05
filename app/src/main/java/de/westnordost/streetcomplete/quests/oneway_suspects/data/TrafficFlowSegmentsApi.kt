@@ -18,7 +18,7 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
             bbox.max.latitude
         ).joinToString(",") { it.format(7) }
 
-        val url = URL("$apiUrl?bbox=${leftBottomRightTopString}")
+        val url = URL("$apiUrl?bbox=$leftBottomRightTopString")
         val json = url.openConnection().getInputStream().bufferedReader().use { it.readText() }
         return parse(json)
     }

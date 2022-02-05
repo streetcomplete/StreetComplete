@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
-import javax.inject.Inject;
-
 import de.westnordost.countryboundaries.CountryBoundaries;
 
 public class CountryInfos
@@ -31,7 +29,7 @@ public class CountryInfos
 	private CountryInfo defaultCountryInfo;
 
 
-	@Inject public CountryInfos(AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
+	public CountryInfos(AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
 	{
 		this.assetManager = assetManager;
 		this.countryBoundaries = countryBoundaries;

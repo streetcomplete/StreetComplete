@@ -15,15 +15,16 @@ import de.westnordost.streetcomplete.util.distanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 import kotlin.coroutines.resume
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
-class QuestSourceIsSurveyChecker @Inject constructor() {
+class QuestSourceIsSurveyChecker {
 
     suspend fun checkIsSurvey(
-        context: Context, geometry: ElementGeometry, locations: List<Location>
+        context: Context,
+        geometry: ElementGeometry,
+        locations: List<Location>
     ): Boolean {
         if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
             return true
@@ -38,13 +39,13 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
                     dontShowAgain = dialogBinding.checkBoxDontShowAgain.isChecked
-                    if(cont.isActive) cont.resume(true)
+                    if (cont.isActive) cont.resume(true)
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
-                    if(cont.isActive) cont.resume(false)
+                    if (cont.isActive) cont.resume(false)
                 }
                 .setOnCancelListener {
-                    if(cont.isActive) cont.resume(false)
+                    if (cont.isActive) cont.resume(false)
                 }
                 .show()
         }
@@ -86,7 +87,7 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
           "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
         */
 
-        private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f //m
+        private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
         // "static" values persisted per application start
         private var dontShowAgain = false
