@@ -33,7 +33,10 @@ class TakeMeasurementLauncher(caller: ActivityResultCaller) {
 
         val meters = result.data?.getFloatExtra(RESULT_MEASURE_METERS, -1f)?.takeIf { it != -1f }
         if (meters != null) {
-            return LengthInMeters(meters.toDouble())
+            /* e.g. `1.7f.toDouble()` will return `1.7000000476837158` but we really want the
+               result as it is printed, this is why we first convert to string and then back to
+               double :-/ */
+            return LengthInMeters(meters.toString().toDouble())
         }
 
         val feet = result.data?.getIntExtra(RESULT_MEASURE_FEET, -1)?.takeIf { it != -1 }
