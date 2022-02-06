@@ -29,18 +29,6 @@ class LengthInput @JvmOverloads constructor(
 
     var onInputChanged: (() -> Unit)? = null
 
-    var feet: Int?
-        get() = binding.feetInput.intOrNull
-        set(value) { binding.feetInput.setText(value?.toString()) }
-
-    var inches: Int?
-        get() = binding.inchesInput.intOrNull
-        set(value) { binding.inchesInput.setText(value?.toString()) }
-
-    var meters: Double?
-        get() = binding.metersInput.numberOrNull
-        set(value) { binding.metersInput.setText(value?.toString()) }
-
     init {
         binding.unitSelect.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -83,18 +71,31 @@ class LengthInput @JvmOverloads constructor(
             }
         }
 
-    /** return the input length of the selected unit or null if input is not complete or invalid */
-    val length: Length? get() = when (unit) {
-        LengthUnit.METER -> {
-            meters?.let { LengthInMeters(it) }
+    /** get/set the input length of the selected unit or null if input is not complete or invalid */
+    var length: Length?
+        get() = when (unit) {
+            LengthUnit.METER -> {
+                binding.metersInput.numberOrNull?.let { LengthInMeters(it) }
+            }
+            LengthUnit.FOOT_AND_INCH -> {
+                val feet = binding.feetInput.intOrNull
+                val inches = binding.inchesInput.intOrNull
+                if (feet != null && inches != null) LengthInFeetAndInches(feet, inches) else null
+            }
+            null -> null
         }
-        LengthUnit.FOOT_AND_INCH -> {
-            val feet = feet
-            val inches = inches
-            if (feet != null && inches != null) LengthInFeetAndInches(feet, inches) else null
+        set(value) {
+            when(value) {
+                is LengthInFeetAndInches -> {
+                    binding.feetInput.setText(value.feet.toString())
+                    binding.inchesInput.setText(value.inches.toString())
+                }
+                is LengthInMeters -> {
+                    binding.metersInput.setText(value.meters.toString())
+                }
+                null -> {}
+            }
         }
-        null -> null
-    }
 
     private fun updateInputFieldsVisibility() {
         binding.feetInchesContainer.isInvisible = unit != LengthUnit.FOOT_AND_INCH

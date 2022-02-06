@@ -17,7 +17,7 @@
 
             <LinearLayout
                 android:id="@+id/feetInchesContainer"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -29,9 +29,10 @@
                     android:id="@+id/feetInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="2"
+                    android:minEms="1"
                     android:textAlignment="textEnd"
                     android:inputType="number"
+                    android:imeOptions="actionNext"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -46,8 +47,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"
-                    android:ems="2"
+                    android:minEms="1"
                     android:inputType="number"
+                    android:imeOptions="actionDone"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -61,7 +63,8 @@
 
             <LinearLayout
                 android:id="@+id/metersContainer"
-                android:visibility="visible"
+                tools:visibility="invisible"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -72,10 +75,11 @@
                     android:id="@+id/metersInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="3"
+                    android:minEms="2"
                     android:textAlignment="textEnd"
                     android:inputType="numberDecimal"
-                    tools:text="0.86"
+                    android:imeOptions="actionDone"
+                    tools:text="0.8"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
@@ -85,7 +89,8 @@
         <Spinner
             android:id="@+id/unitSelect"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"/>
 
     </LinearLayout>
 

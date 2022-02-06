@@ -17,8 +17,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.ktx.advisorySpeedLimitSignLayoutResId
+import de.westnordost.streetcomplete.ktx.intOrNull
 import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
-import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -203,7 +203,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun getSpeedFromInput(): Speed? {
-        val value = speedInput?.numberOrNull?.toInt() ?: return null
+        val value = speedInput?.intOrNull ?: return null
         val unit = speedUnitSelect?.selectedItem as SpeedMeasurementUnit? ?: speedUnits.first()
         return when (unit) {
             KILOMETERS_PER_HOUR -> Kmh(value)

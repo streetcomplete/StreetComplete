@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:gravity="center">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <de.westnordost.streetcomplete.view.LengthInput
         android:id="@+id/lengthInput"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
     <Button
         android:id="@+id/measureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:visibility="gone"
         tools:visibility="visible"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        app:iconPadding="0dp"
+        app:iconGravity="textStart"
         app:icon="@drawable/ic_camera_measure_24dp"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:text="@string/ar_measure"/>
+        android:contentDescription="@string/ar_measure"
+        android:layout_alignParentRight="true"
+        />
 
-</LinearLayout>
+</RelativeLayout>

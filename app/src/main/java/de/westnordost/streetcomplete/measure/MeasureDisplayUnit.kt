@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.measure
 
 import kotlinx.serialization.Serializable
 import kotlin.math.floor
-import kotlin.math.pow
 import kotlin.math.round
 
 /** In which unit the measurement is displayed */
@@ -10,28 +9,34 @@ import kotlin.math.round
 sealed class MeasureDisplayUnit {
     abstract fun format(distanceMeters: Float): String
 }
-/** Measurement displayed in meters rounded to the given number of [decimals] */
+
+/** Measurement displayed in meters rounded to the nearest [cmStep] */
 @Serializable
-data class MeasureDisplayUnitMeter(val decimals: Int) : MeasureDisplayUnit() {
+data class MeasureDisplayUnitMeter(val cmStep: Int) : MeasureDisplayUnit() {
     init {
-        require(decimals >= 0)
+        require(cmStep > 0)
     }
 
     override fun format(distanceMeters: Float): String {
+        val decimals = when {
+            cmStep % 100 == 0 -> 0
+            cmStep % 10 == 0 -> 1
+            else -> 2
+        }
         return "%.${decimals}f m".format(getRounded(distanceMeters))
     }
 
     /** Returns the given distance in meters rounded to the given precision */
-    fun getRounded(distanceMeters: Float): Double {
-        val num = 10.0.pow(decimals)
-        return round(distanceMeters * num) / num
+    fun getRounded(distanceMeters: Float): Float {
+        return round(distanceMeters * 100 / cmStep) * cmStep / 100
     }
 }
-/** Measurement displayed in feet+inch, inches rounded to nearest [inchStep]. Must be 1,2,3,4,6 or 12 */
+
+/** Measurement displayed in feet+inch, inches rounded to nearest [inchStep]. Must be between 1-12 */
 @Serializable
 data class MeasureDisplayUnitFeetInch(val inchStep: Int) : MeasureDisplayUnit() {
     init {
-        require(inchStep in arrayOf(1,2,3,4,6,12))
+        require(inchStep in 1..12)
     }
 
     override fun format(distanceMeters: Float): String {

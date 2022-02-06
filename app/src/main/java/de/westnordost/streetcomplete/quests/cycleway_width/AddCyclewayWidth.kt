@@ -32,7 +32,7 @@ class AddCyclewayWidth(
 
     override fun getTitle(tags: Map<String, String>) : Int = R.string.quest_cycleway_width_title
 
-    override fun createForm() = AddLengthForm()
+    override fun createForm() = AddWidthForm()
 
     override fun applyAnswerTo(answer: Length, tags: Tags, timestampEdited: Long) {
         val isExclusive = tags["highway"] == "cycleway" && tags["foot"] != "yes" && tags["foot"] != "designated"

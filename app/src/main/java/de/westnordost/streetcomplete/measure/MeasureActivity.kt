@@ -193,6 +193,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private fun addArSceneView(session: Session) {
         val arSceneView = ArSceneView(this)
+        arSceneView.planeRenderer.isEnabled = false
         binding.arSceneViewContainer.addView(arSceneView, MATCH_PARENT, MATCH_PARENT)
         arSceneView.setupSession(session)
         arSceneView.scene.addOnUpdateListener(this)
@@ -277,7 +278,16 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private fun returnMeasuringResult() {
         val resultIntent = Intent(RESULT_ACTION)
-        resultIntent.putExtra(RESULT_MEASURE_IN_METERS, distance)
+        when(val displayUnit = displayUnit) {
+            is MeasureDisplayUnitFeetInch -> {
+                val (feet, inches) = displayUnit.getRounded(distance)
+                resultIntent.putExtra(RESULT_MEASURE_FEET, feet)
+                resultIntent.putExtra(RESULT_MEASURE_INCHES, inches)
+            }
+            is MeasureDisplayUnitMeter -> {
+                resultIntent.putExtra(RESULT_MEASURE_METERS, displayUnit.getRounded(distance))
+            }
+        }
         setResult(RESULT_OK, resultIntent)
         finish()
     }
@@ -376,9 +386,15 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         /** The action to identify a result */
         const val RESULT_ACTION = "de.westnordost.streetcomplete.measure.RESULT_ACTION"
-        /** The exact floating point measure result. It is up to the caller to round and/or convert
-         *  it according to his preference */
-        const val RESULT_MEASURE_IN_METERS = "measure_result"
+
+        /** The result as displayed to the user, set if display unit was meters. Float. */
+        const val RESULT_MEASURE_METERS = "measure_result_meters"
+
+        /** The result as displayed to the user, set if display unit was feet+inches. Int. */
+        const val RESULT_MEASURE_FEET = "measure_result_feet"
+
+        /** The result as displayed to the user, set if display unit was feet+inches. Int. */
+        const val RESULT_MEASURE_INCHES = "measure_result_inches"
 
         /** Create the intent for starting this activity, with optional parameters:
          * @param mode specifies whether to measure distances on the ground, on walls or both
