@@ -50,9 +50,9 @@ class ArCoreSessionCreator(
         val availability = getArCoreAvailability()
         if (!availability.isSupported) {
             return when (availability) {
-                UNKNOWN_TIMED_OUT ->              Failure(DEVICE_COMPATIBILITY_CHECK_TIMED_OUT)
-                UNSUPPORTED_DEVICE_NOT_CAPABLE -> Failure(DEVICE_NOT_COMPATIBLE)
-                else ->                           Failure(DEVICE_COMPATIBILITY_CHECK_FAILURE)
+                UNKNOWN_CHECKING, UNKNOWN_TIMED_OUT -> Failure(DEVICE_COMPATIBILITY_CHECK_TIMED_OUT)
+                UNSUPPORTED_DEVICE_NOT_CAPABLE ->      Failure(DEVICE_NOT_COMPATIBLE)
+                else ->                                Failure(DEVICE_COMPATIBILITY_CHECK_FAILURE)
             }
         }
 

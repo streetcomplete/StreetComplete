@@ -16,7 +16,8 @@ fun Frame.hasFoundPlane(): Boolean =
 
 suspend fun ArCoreApk.getAvailability(context: Context): ArCoreApk.Availability {
     var result = checkAvailability(context)
-    while(result.isTransient) {
+    // only check again ONCE because of https://github.com/google-ar/arcore-android-sdk/issues/343
+    if (result.isTransient) {
         delay(200)
         result = checkAvailability(context)
     }
