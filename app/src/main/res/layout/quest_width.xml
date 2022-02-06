@@ -28,6 +28,6 @@
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:contentDescription="@string/ar_measure"
         android:layout_alignParentRight="true"
-        />
+        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>

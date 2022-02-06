@@ -66,7 +66,7 @@
     <style name="HousenumberEditText">
         <item name="android:textColor">#fff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">40dp</item>
+        <item name="android:textSize">@dimen/x_large_input</item>
         <item name="android:inputType">number</item>
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>

@@ -55,7 +55,7 @@ class LengthInput @JvmOverloads constructor(
             if (value.isEmpty()) {
                 binding.unitSelect.adapter = null
             } else {
-                binding.unitSelect.adapter = ArrayAdapter(context, R.layout.spinner_item_centered, value)
+                binding.unitSelect.adapter = ArrayAdapter(context, R.layout.spinner_item_centered_large, value)
                 binding.unitSelect.setSelection(0)
             }
             updateInputFieldsVisibility()

@@ -26,6 +26,7 @@
                 android:imeOptions="actionDone"
                 android:textColorHint="#2fff"
                 android:digits="0123456789.,- /"
+                tools:text="12"
                 style="@style/HousenumberEditText"
                 />
 

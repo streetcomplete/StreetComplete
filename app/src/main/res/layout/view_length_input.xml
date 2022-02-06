@@ -17,7 +17,8 @@
 
             <LinearLayout
                 android:id="@+id/feetInchesContainer"
-                android:visibility="visible"
+                android:visibility="invisible"
+                tools:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -29,8 +30,11 @@
                     android:id="@+id/feetInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minEms="1"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
+                    android:minWidth="@dimen/x_large_input"
+                    android:textSize="@dimen/x_large_input"
+                    tools:text="12"
+                    android:maxLength="4"
                     android:inputType="number"
                     android:imeOptions="actionNext"
                     tools:ignore="HardcodedText" />
@@ -39,6 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="′"
+                    android:textSize="@dimen/x_large_input"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
@@ -46,8 +51,10 @@
                     android:id="@+id/inchesInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:minEms="1"
+                    android:textAlignment="center"
+                    android:minWidth="@dimen/x_large_input"
+                    android:textSize="@dimen/x_large_input"
+                    tools:text="1"
                     android:inputType="number"
                     android:imeOptions="actionDone"
                     tools:ignore="HardcodedText" />
@@ -56,6 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="″"
+                    android:textSize="@dimen/x_large_input"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
@@ -63,11 +71,12 @@
 
             <LinearLayout
                 android:id="@+id/metersContainer"
-                tools:visibility="invisible"
+                tools:visibility="visible"
                 android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:textSize="@dimen/x_large_input"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -75,11 +84,13 @@
                     android:id="@+id/metersInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minEms="2"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="center"
+                    android:minWidth="96sp"
+                    android:maxLength="5"
+                    android:textSize="@dimen/x_large_input"
                     android:inputType="numberDecimal"
                     android:imeOptions="actionDone"
-                    tools:text="0.8"
+                    tools:text="1.8"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
