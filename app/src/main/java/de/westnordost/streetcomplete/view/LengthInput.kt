@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.FrameLayout
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
@@ -52,6 +53,7 @@ class LengthInput @JvmOverloads constructor(
         set(value) {
             field = value
             binding.unitSelect.isEnabled = value.size > 1
+            binding.unitSelect.isGone = value.singleOrNull() == LengthUnit.FOOT_AND_INCH
             if (value.isEmpty()) {
                 binding.unitSelect.adapter = null
             } else {
@@ -99,6 +101,11 @@ class LengthInput @JvmOverloads constructor(
 
     private fun updateInputFieldsVisibility() {
         binding.feetInchesContainer.isInvisible = unit != LengthUnit.FOOT_AND_INCH
-        binding.metersContainer.isInvisible = unit !=  LengthUnit.METER
+        binding.metersContainer.isInvisible = unit != LengthUnit.METER
+        when (unit) {
+            LengthUnit.METER -> binding.metersInput
+            LengthUnit.FOOT_AND_INCH -> binding.feetInput
+            null -> null
+        }?.requestFocus()
     }
 }
