@@ -204,8 +204,8 @@ But sometimes more complex ones are needed, see for example [AddBridgeStructure.
 With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
 ### applyAnswerTo
 ```
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("indoor", answer.toYesNo())
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+        tags["indoor"] = answer.toYesNo()
     }
 ``` 
 
@@ -213,6 +213,7 @@ This code is responsible for modifying `StringMapChangesBuilder` object (passed 
 
 Actions may include (examples from various quests):
 
+TODO update to the new syntax
 - `changes.add("indoor", answer.toYesNo())` - adds a new tag, it must not be present already
 - `changes.addOrModify("material", newMaterial)` - add a new tag if missing, override existing value if present
 - `changes.modify("sport", values)` - modify existing tag, value must be present
