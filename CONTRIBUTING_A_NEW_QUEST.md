@@ -379,10 +379,10 @@ In StreetComplete many images have unusual composition. Often it is necessary to
 Images should be free of visual debris, not misleading. Though it is fine to use an image not strictly matching what is depicted, as long as it is clear. For example, [a permanent pile of soil blocking road](https://wiki.openstreetmap.org/wiki/Tag:barrier%3Ddebris) is illustrated by a [temporary landslide](https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg). This is OK as images are illustrative.
 
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
-  - [mdpi](app/src/main/res/drawable-mdpi) (typically 128 x 128 pixels, for rectangular ones smaller dimension should be 128 pixels)
-  - [hdpi](app/src/main/res/drawable-hdpi) (typically 192 x 192 pixels, for rectangular ones smaller dimension should be 192 pixels)
-  - [xhdpi](app/src/main/res/drawable-xhdpi) (typically 256 x 256 pixels, for rectangular ones smaller dimension should be 256 pixels)
-  - [xxhdpi](app/src/main/res/drawable-xxhdpi) (typically 384 x 384 pixels, for rectangular ones smaller dimension should be 384 pixels)
+  - [mdpi](app/src/main/res/drawable-mdpi) (typically 128 x 128 pixels, for rectangular ones, smaller dimension should be 128 pixels)
+  - [hdpi](app/src/main/res/drawable-hdpi) (typically 192 x 192 pixels, for rectangular ones, smaller dimension should be 192 pixels)
+  - [xhdpi](app/src/main/res/drawable-xhdpi) (typically 256 x 256 pixels, for rectangular ones, smaller dimension should be 256 pixels)
+  - [xxhdpi](app/src/main/res/drawable-xxhdpi) (typically 384 x 384 pixels, for rectangular ones, smaller dimension should be 384 pixels)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
