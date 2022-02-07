@@ -9,7 +9,7 @@ val statisticsModule = module {
     factory { QuestTypeStatisticsDao(get()) }
     factory { StatisticsDownloader(STATISTICS_BACKEND_URL, get()) }
     factory { StatisticsParser(get(), get(named("QuestAliases"))) }
-    factory<StatisticsSource> { get<StatisticsController>() }
 
+    single<StatisticsSource> { get<StatisticsController>() }
     single { StatisticsController(get(), get(), get(named("CountryBoundariesFuture")), get(), get(), get()) }
 }
