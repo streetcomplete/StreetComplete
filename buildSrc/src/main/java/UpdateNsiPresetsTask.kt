@@ -1,3 +1,4 @@
+import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import org.gradle.api.DefaultTask
@@ -15,7 +16,6 @@ open class UpdateNsiPresetsTask : DefaultTask() {
         val targetDir = targetDir ?: return
         val version = version ?: return
 
-        val presetsFile = File("$targetDir/presets.json")
         val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         // NSI uses (atm) a slightly different format than the normal presets: The presets are in
@@ -27,6 +27,29 @@ open class UpdateNsiPresetsTask : DefaultTask() {
             preset.remove("icon")
             preset.remove("imageURL")
         }
-        presetsFile.writeText(presets.toJsonString())
+        val byCountryMap = mutableMapOf<String?, JsonObject>()
+        for (entry in presets.entries) {
+            val key = entry.key
+            val preset = entry.value as JsonObject
+            val locationSet = preset["locationSet"] as? JsonObject
+            val include = locationSet?.get("include") as? JsonArray<*>
+            val exclude = locationSet?.get("exclude")
+            val includeContains001 = include?.any { it as? String == "001" } == true
+            val includeCanBeParsed = include.orEmpty().all { it is String && (it == "001" || it.length == 2) }
+            if (includeCanBeParsed) {
+                if (include != null && exclude == null && !includeContains001) {
+                    for (country in include) {
+                        byCountryMap.getOrPut(country as String) { JsonObject() }[key] = preset
+                    }
+                } else {
+                    byCountryMap.getOrPut(null) { JsonObject() }[key] = preset
+                }
+            }
+        }
+
+        for ((country, jsonObject) in byCountryMap.entries) {
+            val name = "$targetDir/presets${ if (country != null) "-$country" else "" }.json"
+            File(name).writeText(jsonObject.toJsonString())
+        }
     }
 }
