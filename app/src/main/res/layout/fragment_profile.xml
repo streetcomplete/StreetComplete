@@ -266,11 +266,9 @@
 
                         <TextView
                             android:id="@+id/placeholder1Text"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/background_inverted_text_circle"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:gravity="center"
-                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
@@ -300,11 +298,9 @@
 
                         <TextView
                             android:id="@+id/placeholder2Text"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/background_inverted_text_circle"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:gravity="center"
-                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
@@ -334,11 +330,9 @@
 
                         <TextView
                             android:id="@+id/placeholder3Text"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/background_inverted_text_circle"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:gravity="center"
-                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
@@ -368,11 +362,9 @@
 
                         <TextView
                             android:id="@+id/placeholder4Text"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/background_inverted_text_circle"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:gravity="center"
-                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
@@ -402,11 +394,9 @@
 
                         <TextView
                             android:id="@+id/placeholder5Text"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/background_inverted_text_circle"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:gravity="center"
-                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
@@ -436,18 +426,16 @@
 
                         <TextView
                             android:id="@+id/placeholder6Text"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/background_inverted_text_circle"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:gravity="center"
-                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/background"
+                            android:textColor="@color/rank_text"
                             tools:text="123"/>
 
                         <TextView

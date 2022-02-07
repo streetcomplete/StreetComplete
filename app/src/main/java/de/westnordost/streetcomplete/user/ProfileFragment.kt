@@ -2,15 +2,18 @@ package de.westnordost.streetcomplete.user
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Color.BLUE
 import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
+import android.graphics.RectF
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.graphics.withRotation
 import androidx.core.net.toUri
@@ -114,6 +117,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             updateGlobalRankText()
             updateLocalRankText()
             updateAchievementLevelsText()
+            updatePlaceholderRanksTexts()
         }
     }
 
@@ -158,13 +162,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.daysActiveText.text = daysActive.toString()
     }
 
-    /*
-    100 and more: fully grown wreath with all pretty elements
-    99 to 1: may be losing elements as it gets smaller
-    0 and lower: no decorative styling at all
-     */
-    class LaurelWreath(val resources: Resources, val percentageOfGrowth: Int) : Drawable() {
+    class LaurelWreathInitialAttempt(val bitmap: BitmapDrawable) : Drawable() {
         private val redPaint: Paint = Paint().apply { setARGB(255, 255, 0, 0) }
+        private val yellowPaint: Paint = Paint().apply { setARGB(255, 255, 255, 0) }
+        private val orangePaint: Paint = Paint().apply { setARGB(255, 255, 155, 0) }
+        private val bluePaint: Paint = Paint().apply { setARGB(255, 0, 0, 255) }
 
         private val antiAliasPaint: Paint = Paint().apply {
             isAntiAlias = true
@@ -180,13 +182,147 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             // Draw a red circle in the center
             canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, redPaint)
 
-            val bitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf)
-            canvas.withRotation(100f, width / 2f, height / 2f) {
-                canvas.drawBitmap(bitmap.bitmap, 0f, 10f, antiAliasPaint)
+            val imageWith = bitmap.intrinsicWidth //width is the same as intrinsicWidth
+            val imageHeight = bitmap.intrinsicHeight //width is the same as intrinsicWidth
+
+            val n = 30f
+            val smallCircleRadius = 10f
+            /*
+            for(i in 0..n.toInt()) {
+                canvas.withRotation(i * 360.0f/n, width / 2f, height / 2f) {
+                    canvas.drawCircle(width /2f, smallCircleRadius, smallCircleRadius, orangePaint)
+                }
             }
-            canvas.withRotation(100-180f, width / 2f, height / 2f) {
-                canvas.drawBitmap(bitmap.bitmap, 0f, height - 10f, antiAliasPaint)
+             */
+            canvas.drawCircle(width /2f, smallCircleRadius * 3, smallCircleRadius, bluePaint)
+
+            //canvas.drawCircle((width/2).toFloat(), (height/2).toFloat(), smallCircleRadius, yellowPaint)
+
+            /*
+            val offset = width / 2f
+            val imageInternalOffset = imageWith/2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+            canvas.withRotation(0f, width / 2f, height / 2f) {
+                canvas.drawBitmap(bitmap.bitmap, offset - imageInternalOffset, height/2f, antiAliasPaint)
             }
+
+            canvas.withRotation(180f, width / 2f, height / 2f) {
+                canvas.drawBitmap(bitmap.bitmap, width - offset - imageInternalOffset, height/2f, antiAliasPaint)
+            }
+            */
+
+            for(i in 0..n.toInt()) {
+                val offset = width / 2f
+                val imageInternalOffset = imageWith/2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+                canvas.withRotation(i * 360.0f/n + 0f, width / 2f, height / 2f) {
+                    canvas.drawBitmap(bitmap.bitmap, offset - imageInternalOffset, height/10f * 1.5f, antiAliasPaint)
+                }
+
+                canvas.withRotation(i * 360.0f/n + 180f, width / 2f, height / 2f) {
+                    canvas.drawBitmap(bitmap.bitmap, width - offset - imageInternalOffset, height/10f * 8.5f, antiAliasPaint)
+                }
+            }
+
+            // https://stackoverflow.com/questions/11131954/how-to-draw-arc-between-two-points-on-the-canvas
+            // https://thoughtbot.com/blog/android-canvas-drawarc-method-a-visual-guide
+            //
+            val rect = RectF(0f, 0f, 80f, 80f)
+            val paint = Paint()
+            paint.apply {
+                strokeWidth = 5f
+                style = Paint.Style.STROKE
+                color = BLUE
+            }
+            canvas.drawArc(rect, 0f, -180f, true, paint)
+
+
+
+            Log.wtf("AAAAA", "Redraw happened!")
+        }
+
+        override fun setAlpha(alpha: Int) {
+            // This method is required
+        }
+
+        override fun setColorFilter(colorFilter: ColorFilter?) {
+            // This method is required
+        }
+
+        override fun getOpacity(): Int =
+            // Must be PixelFormat.UNKNOWN, TRANSLUCENT, TRANSPARENT, or OPAQUE
+            PixelFormat.OPAQUE
+    }
+
+    /*
+    100 and more: fully grown wreath with all pretty elements
+    99 to 1: may be losing elements as it gets smaller
+    0 and lower: no decorative styling at all
+     */
+    class LaurelWreath(val bitmap: BitmapDrawable, val endingBitmap: BitmapDrawable, val percentageOfGrowth: Int) : Drawable() {
+        private val redPaint: Paint = Paint().apply { setARGB(255, 255, 0, 0) }
+        private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 186, 209, 154) }
+        private val yellowPaint: Paint = Paint().apply { setARGB(255, 255, 255, 0) }
+        private val orangePaint: Paint = Paint().apply { setARGB(255, 255, 155, 0) }
+        private val bluePaint: Paint = Paint().apply { setARGB(255, 0, 0, 255) }
+
+        private val antiAliasPaint: Paint = Paint().apply {
+            isAntiAlias = true
+            isFilterBitmap = true
+        }
+
+        override fun draw(canvas: Canvas) {
+            // Get the drawable's bounds
+            val width: Int = bounds.width()
+            val height: Int = bounds.height()
+            val radius: Float = Math.min(width, height).toFloat() / 2f
+
+            // Draw a red circle in the center
+            canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
+
+            val imageWith = bitmap.intrinsicWidth //width is the same as intrinsicWidth
+            val imageHeight = bitmap.intrinsicHeight //width is the same as intrinsicWidth
+
+            val imageWithEnding = endingBitmap.intrinsicWidth //width is the same as intrinsicWidth
+            val imageHeightEnding = endingBitmap.intrinsicHeight //width is the same as intrinsicWidth
+
+            val n = 10f
+
+            val offset = width / 2f
+            val imageInternalOffset = imageWith/2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+            val endingImageInternalOffset = imageWith/2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+            val reach = ((n-2)*percentageOfGrowth/100).toInt()
+            for(i in 0..reach) {
+                // https://web.archive.org/web/20210201203811/https://stackoverflow.com/questions/36493977/flip-a-bitmap-image-horizontally-or-vertically
+                val offsetFromBorder = height/12f
+                // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
+
+                if(i == reach) {
+                    // left side
+                    canvas.withRotation(i * 180.0f/n - 180f, width / 2f, height / 2f) {
+                        canvas.drawBitmap(endingBitmap.bitmap, offset - endingImageInternalOffset, offsetFromBorder, antiAliasPaint)
+                    }
+
+                    // right side
+                    canvas.withRotation(i * 180.0f/n, width / 2f, height / 2f) {
+                        canvas.drawBitmap(endingBitmap.bitmap, offset - endingImageInternalOffset, offsetFromBorder, antiAliasPaint)
+                    }
+                } else {
+                    // left side
+                    canvas.withRotation(i * 180.0f/n - 180f, width / 2f, height / 2f) {
+                        canvas.drawBitmap(bitmap.bitmap, offset - imageInternalOffset, offsetFromBorder, antiAliasPaint)
+                    }
+
+                    // right side
+                    canvas.withRotation(i * 180.0f/n, width / 2f, height / 2f) {
+                        canvas.drawBitmap(bitmap.bitmap, offset - imageInternalOffset, offsetFromBorder, antiAliasPaint)
+                    }
+                }
+            }
+            val smallCircleRadius = width /10f
+            canvas.drawCircle(smallCircleRadius * 2, smallCircleRadius * 2, smallCircleRadius, bluePaint)
+            canvas.withRotation(20.0f, width / 2f, height / 2f) {
+                canvas.drawCircle(smallCircleRadius * 2, smallCircleRadius * 2, smallCircleRadius, yellowPaint)
+            }
+            canvas.drawBitmap(endingBitmap.bitmap, width/2f, height*0.8f, antiAliasPaint)
         }
 
         override fun setAlpha(alpha: Int) {
@@ -207,27 +343,32 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getSolvedCount() <= 100
         binding.globalRankText.text = "#$rank"
-        binding.globalRankText.background = LaurelWreath(resources, 1001 - rank)
+        val bitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf)
+        val endingBitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
+        binding.globalRankText.background = LaurelWreath(bitmap, endingBitmap,1001 - rank)
     }
 
     private fun updatePlaceholderRanksTexts() {
+        val bitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf)
         binding.placeholder1Text.text = "100%"
-        binding.placeholder1Text.background = LaurelWreath(resources, 100)
+        binding.placeholder1Text.background = LaurelWreathInitialAttempt(bitmap)
 
+        val bitmap_experimental = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_rotated)
+        val endingBitmap = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
         binding.placeholder2Text.text = "90%"
-        binding.placeholder2Text.background = LaurelWreath(resources, 90)
+        binding.placeholder2Text.background = LaurelWreath(bitmap_experimental, endingBitmap, 90)
 
         binding.placeholder3Text.text = "50%"
-        binding.placeholder3Text.background = LaurelWreath(resources, 50)
+        binding.placeholder3Text.background = LaurelWreath(bitmap_experimental, endingBitmap, 50)
 
         binding.placeholder4Text.text = "30%"
-        binding.placeholder4Text.background = LaurelWreath(resources, 30)
+        binding.placeholder4Text.background = LaurelWreath(bitmap_experimental, endingBitmap, 30)
 
         binding.placeholder5Text.text = "10%"
-        binding.placeholder5Text.background = LaurelWreath(resources, 10)
+        binding.placeholder5Text.background = LaurelWreath(bitmap_experimental, endingBitmap, 10)
 
         binding.placeholder6Text.text = "0%"
-        binding.placeholder6Text.background = LaurelWreath(resources, 0)
+        binding.placeholder6Text.background = LaurelWreath(bitmap_experimental, endingBitmap, 0)
     }
 
     private suspend fun updateLocalRankText() {
