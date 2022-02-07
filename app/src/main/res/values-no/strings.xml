@@ -1671,7 +1671,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_notice_board">"En oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_board_type_title">"Hva er temaet for oppslagstavla?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist adskilt på kartet"</string>
     <string name="quest_board_type_map">"Et kart"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>

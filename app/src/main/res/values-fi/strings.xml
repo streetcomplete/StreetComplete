@@ -1779,7 +1779,6 @@ taso"</string>
     <string name="quest_board_type_notice_board">"Se on ilmoitustaulu"</string>
     <string name="quest_board_type_public_transport">"Julkinen liikenne"</string>
     <string name="quest_board_type_title">"Mikä on tämän ilmoitustaulun aihe?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Kyllä, näytetään erikseen kartalla."</string>
     <string name="quest_board_type_map">"Se on kartta"</string>
     <string name="quest_board_type_map_title">"Onko se vain ja ainoastaan kartta?"</string>
     <string name="quest_board_type_map_description">"Jos taululla on joku tietty aihe, niin tarkenna sitä huolimatta siitä sisältyykö tieto myös kartalle. Esimerkiksi julkisen liikenteen infossa voi olla mukana myös kartta. Jos taulun aihetta ei ole listattu, niin jätä ilmoitus valinnan sijasta."</string>
@@ -2228,4 +2227,12 @@ Vaihtoehtoisesti voit jättää muistiinpanon (kuvan kanssa)."</string>
     <string name="quest_sidewalk_value_separate">"näytetään erillisenä kartalla"</string>
     <string name="quest_shoulder_value_yes">"Piennar"</string>
     <string name="quest_shoulder_value_no">"Ei piennarta"</string>
+    <string name="no_camera_permission_warning_title">"Oikeudet kameraan"</string>
+    <string name="no_camera_permission_warning">"Oikeudet tarvitaan mitatakseen etäisyyksiä kameran avulla"</string>
+    <string name="ar_core_error_sdk_too_old">"Sovellusversio on vanha, päivitä sovellus."</string>
+    <string name="ar_core_tracking_error_bad_state">"Jokin meni pieleen. Kokeile käynnistää mittaus uudelleen."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Liian pimeää"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Liikaa liikettä"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Tässä ei ole tarpeeksi visuaalisia ominaisuuksia"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Toinen sovellus käyttää kameraa"</string>
 </resources>

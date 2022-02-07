@@ -853,7 +853,6 @@
     <string name="quest_board_type_notice_board">"Табло за обяви"</string>
     <string name="quest_board_type_public_transport">"Обществен транспорт"</string>
     <string name="quest_board_type_title">"Каква е темата на това информационно табло?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Да, на картата е отделен път"</string>
     <string name="quest_board_type_map">"Това е карта"</string>
     <string name="quest_board_type_map_title">"Това е само карта и нищо друго?"</string>
     <string name="quest_board_type_map_description">"Ако табелата има определена тема, укажете я, независимо от това дали съдържа карта или не. Например, таблата за обществен транспорт могат да съдържат карта на автобусните линии. Ако темата не е в списъка, по-добре оставете бележка."</string>

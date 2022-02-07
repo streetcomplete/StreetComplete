@@ -2160,7 +2160,6 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="quest_board_type_notice_board">"Tai pranešimų lenta"</string>
     <string name="quest_board_type_public_transport">"Viešasis transportas"</string>
     <string name="quest_board_type_title">"Kokia yra šios informacinės lentos tema?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Taip, rodoma žemėlapyje atskirai"</string>
     <string name="quest_board_type_map">"Tai žemėlapis"</string>
     <string name="quest_board_type_map_title">"Ar tai žemėlapis ir tik žemėlapis?"</string>
     <string name="quest_board_type_map_description">"Jei lenta yra apie konkrečią temą, prašome ją nurodyti, nepriklausomai nuo to, ar joje yra žemėlapis. Pavyzdžiui viešo transporto lentoje gali būti autobusų maršrutų žemėlapis. Jei temos nėra galimuose atsakymuose, galbūt geriau būtų palikti pastabą."</string>

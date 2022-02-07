@@ -861,7 +861,6 @@ nivåer"</string>
     <string name="quest_board_type_notice_board">"Det är en anslagstavla"</string>
     <string name="quest_board_type_public_transport">"Kollektivtrafik"</string>
     <string name="quest_board_type_title">"Vad handlar denna informationstavla om?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, visas separat på kartan"</string>
     <string name="quest_board_type_map">"Det är en karta"</string>
     <string name="quest_board_type_map_title">"Är det en karta och enbart en karta?"</string>
     <string name="quest_board_type_map_description">"Om tavlan handlar om ett visst ämne, ange det, oavsett om det också innehåller en karta. Till exempel kan en kollektivtrafikstavla ha en bussruttkarta. Om ämnet inte är listat bland de tillgängliga svaren, överväg att lämna en anteckning istället."</string>

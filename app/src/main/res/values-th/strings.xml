@@ -850,7 +850,6 @@
     <string name="quest_board_type_notice_board">"เป็นป้ายประกาศข่าวสาร"</string>
     <string name="quest_board_type_public_transport">"ขนส่งสาธารนะ"</string>
     <string name="quest_board_type_title">"หัวข้อของกระดานข้อมูลนี้คืออะไร?"</string>
-    <string name="quest_sidewalk_separately_mapped">"ใช่ แสดงแยกต่างหากบนแผนที่"</string>
     <string name="quest_board_type_map">"มันคือแผนที่"</string>
     <string name="quest_board_type_map_title">"มันเป็นเพียงแผนที่และเป็นแผนที่เท่านั้น?"</string>
     <string name="quest_board_type_map_description">"หากกระดานเกี่ยวกับหัวข้อใดหัวข้อหนึ่ง โปรดระบุหัวข้อ ไม่ว่ากระดานจะมีแผนที่รวมอยู่ด้วยหรือไม่ ตัวอย่างเช่น กระดานข้อมูลขนส่งสาธารณะอาจมีแผนที่เส้นทางรถประจำทาง หากหัวข้อไม่อยู่ในรายการคำตอบที่มีอยู่ โปรดพิจารณาใส่หมายเหตุแทน"</string>

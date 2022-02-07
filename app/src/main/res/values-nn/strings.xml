@@ -834,7 +834,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_board_type_notice_board">"Det er ei oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Kollektiv­tilbod"</string>
     <string name="quest_board_type_title">"Kva handlar denne informasjons­tavla om?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist for seg på kart"</string>
     <string name="quest_board_type_map">"Det er eit kart"</string>
     <string name="quest_board_type_map_title">"Er det eit kart og berre eit kart?"</string>
     <string name="quest_board_type_map_description">"Om tavla handlar om eit spesifikt emne, oppgje emnet, uavhengig av om ho òg inneheld eit kart. For eksempel har tavler som viser kollektiv­tilbod, ofte òg eit kart over bussruter. Viss det ikkje finst eit val for emnet til tavla, kan du vurdera å heller leggja att ein merknad."</string>

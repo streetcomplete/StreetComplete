@@ -855,7 +855,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_board_type_notice_board">"To je oglasna ploča"</string>
     <string name="quest_board_type_public_transport">"Javni prijevoz"</string>
     <string name="quest_board_type_title">"Koja je tema ove informativne ploče?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Da, prikazan odvojeno na karti"</string>
     <string name="quest_board_type_map">"To je karta"</string>
     <string name="quest_board_type_map_title">"Je li to samo karta i jedino karta?"</string>
     <string name="quest_board_type_map_description">"Ako je ploča o određenoj temi, navedite je, bez obzira na to uključuje li i kartu. Na primjer, tabla javnog prijevoza može imati kartu autobusne rute. Ako tema nije navedena među dostupnim odgovorima, razmislite o tome da umjesto nje ostavite bilješku."</string>
