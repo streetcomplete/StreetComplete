@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.NO
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.SEPARATE
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.quests.sidewalk.SidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.translate

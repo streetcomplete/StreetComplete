@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Assert.assertFalse
 import org.junit.Test
 
 class StringMapChangesBuilderTest {
