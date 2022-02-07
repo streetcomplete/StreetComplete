@@ -29,7 +29,6 @@ class CheckOpeningHoursSignedTest {
         ))))
     }
 
-
     @Test fun `is applicable to place with old check_date`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "name" to "XYZ",

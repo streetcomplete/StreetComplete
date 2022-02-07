@@ -4908,31 +4908,16 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Passage piéton marqué (surélevé)",
-                    "terms": "zebra,marquage,passage piéton"
-                },
                 "highway/crossing/signals": {
                     "name": "Feux piétons",
                     "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Plateau surélevé avec feux piétons",
-                    "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons,plateau,surélevé,traversant,ralentisseur,coussin,dos d'âne"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Passage piéton non marqué",
                     "terms": "passage piéton non marqué"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Passage piéton non marqué (surélevé)",
-                    "terms": "passage piéton non marqué (surélevé)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Passage piéton marqué"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Passage piéton marqué (surélevé)"
                 },
                 "highway/cycleway": {
                     "name": "Voie cyclable",
@@ -4988,10 +4973,6 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Passage piéton marqué (surélevé)",
-                    "terms": "zebra,marquage,passage piéton"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoir",
                     "terms": "trottoir"
@@ -5000,15 +4981,8 @@
                     "name": "Passage piéton non marqué",
                     "terms": "passage piéton non marqué"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Passage piéton non marqué (surélevé)",
-                    "terms": "passage piéton non marqué (surélevé)"
-                },
                 "highway/footway/zebra": {
                     "name": "Passage piéton marqué"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Passage piéton marqué (surélevé)"
                 },
                 "highway/give_way": {
                     "name": "Cédez-le-passage",

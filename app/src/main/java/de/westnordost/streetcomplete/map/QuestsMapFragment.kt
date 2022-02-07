@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -31,17 +30,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-    @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
-    @Inject internal lateinit var questTypeOrderSource: QuestTypeOrderSource
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
-    @Inject internal lateinit var editHistorySource: EditHistorySource
-    @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
+    private val spriteSheet: TangramPinsSpriteSheet by inject()
+    private val questTypeOrderSource: QuestTypeOrderSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
+    private val editHistorySource: EditHistorySource by inject()
+    private val mapDataSource: MapDataWithEditsSource by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -66,10 +65,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override suspend fun onMapReady() {
         val ctrl = controller ?: return
@@ -119,7 +114,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 listener?.onClickedEdit(editKey)
                 return@launch
             }
-            val pickMarkerResult = controller?.pickMarker(x,y)
+            val pickMarkerResult = controller?.pickMarker(x, y)
             if (pickMarkerResult == null) {
                 onClickedMap(x, y)
             }
@@ -153,7 +148,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMapComponent?.clearGeometry()
     }
 
-    private fun Edit.getGeometry(): ElementGeometry = when(this) {
+    private fun Edit.getGeometry(): ElementGeometry = when (this) {
         is ElementEdit -> originalGeometry
         is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
         else -> null
@@ -195,7 +190,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             geometryMapComponent?.endFocusGeometry()
         }
         centerCurrentPositionIfFollowing()
-
     }
 
     /* -------------------------------  Markers for current quest ------------------------------- */

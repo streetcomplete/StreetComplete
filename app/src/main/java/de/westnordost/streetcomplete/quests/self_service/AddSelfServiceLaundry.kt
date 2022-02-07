@@ -23,7 +23,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override fun createForm() = AddSelfServiceLaundryForm()
 
     override fun applyAnswerTo(answer: SelfServiceLaundry, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             NO -> {
                 tags["self_service"] = "no"
                 tags["laundry_service"] = "yes"

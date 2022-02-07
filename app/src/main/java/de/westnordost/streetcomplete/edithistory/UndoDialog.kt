@@ -12,7 +12,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -45,27 +44,27 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.core.qualifier.named
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import java.util.MissingFormatArgumentException
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
 
 class UndoDialog(
     context: Context,
     private val edit: Edit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context, R.style.Theme_Bubble_Dialog), KoinComponent {
 
-    @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
-    @Inject internal lateinit var featureDictionaryFutureTask: FutureTask<FeatureDictionary>
-    @Inject internal lateinit var editHistoryController: EditHistoryController
+    private val mapDataSource: MapDataWithEditsSource by inject()
+    private val featureDictionaryFutureTask: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val editHistoryController: EditHistoryController by inject()
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
-        Injector.applicationComponent.inject(this)
-
         binding.icon.setImageResource(edit.icon)
         val overlayResId = edit.overlayIcon
         if (overlayResId != 0) binding.overlayIcon.setImageResource(overlayResId)
@@ -93,12 +92,12 @@ class UndoDialog(
         scope.cancel()
     }
 
-    suspend fun Edit.getTitle(): CharSequence = when(this) {
+    suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
             getQuestTitle(questType, originalElement)
         }
         is NoteEdit -> {
-            context.resources.getText(when(action) {
+            context.resources.getText(when (action) {
                 CREATE -> R.string.created_note_action_title
                 COMMENT -> R.string.commented_note_action_title
             })
@@ -113,9 +112,9 @@ class UndoDialog(
         else -> throw IllegalArgumentException()
     }
 
-    private val Edit.descriptionView: View get() = when(this) {
+    private val Edit.descriptionView: View get() = when (this) {
         is ElementEdit -> {
-            when(action) {
+            when (action) {
                 is UpdateElementTagsAction -> createListOfTagUpdates(action.changes.changes)
                 is DeletePoiNodeAction -> createTextView(ResText(R.string.deleted_poi_action_description))
                 is SplitWayAction -> createTextView(ResText(R.string.split_way_action_description))
@@ -137,7 +136,7 @@ class UndoDialog(
              * It happens the element is null or otherwise is not at all what is expected by
              * that quest type.
              * So, this is the fallback for that case */
-            context.resources.getString(questType.title, *Array(10){"…"})
+            context.resources.getString(questType.title, *Array(10) { "…" })
         }
 
     private fun createTextView(text: Text?): TextView {
@@ -155,7 +154,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>"+Html.escapeHtml(change.tagString)+"</tt>"
+               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
            ) +
            "</li>"
         })
@@ -163,13 +162,13 @@ class UndoDialog(
     }
 }
 
-private val StringMapEntryChange.tagString: String get() = when(this) {
+private val StringMapEntryChange.tagString: String get() = when (this) {
     is StringMapEntryAdd -> "$key = $value"
     is StringMapEntryModify -> "$key = $value"
     is StringMapEntryDelete -> "$key = $valueBefore"
 }
 
-private val StringMapEntryChange.titleResId: Int get() = when(this) {
+private val StringMapEntryChange.titleResId: Int get() = when (this) {
     is StringMapEntryAdd -> R.string.added_tag_action_title
     is StringMapEntryModify -> R.string.changed_tag_action_title
     is StringMapEntryDelete -> R.string.removed_tag_action_title

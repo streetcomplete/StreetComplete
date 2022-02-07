@@ -1537,4 +1537,10 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_barrier_road_intersection">"De quelle façon cette route croise t’elle cette barrière ?"</string>
     <string name="quest_airConditioning_no_name_title">"Est-ce que ce lieu (%s) est climatisé ?"</string>
     <string name="quest_airConditioning_name_type_title">"Est-ce que %1$s (%2$s) est climatisé ?"</string>
+    <string name="quest_openingHours_signed_name_title">"Y a-t-il un panneau indiquant les horaires de %s ?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Y a-t-il un panneau indiquant les horaires de %1$s (%2$s) ?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Y a-t-il un panneau indiquant les horaires de ce lieu ? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"indiqué séparément sur la carte"</string>
+    <string name="quest_shoulder_value_yes">"accotement"</string>
+    <string name="quest_shoulder_value_no">"pas d’accotement"</string>
 </resources>

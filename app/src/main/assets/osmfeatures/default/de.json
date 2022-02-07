@@ -627,6 +627,13 @@
                 "crossing/light": {
                     "label": "Warnlicht am Bahnübergang"
                 },
+                "crossing_raised": {
+                    "label": "Angehoben",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nein"
+                    }
+                },
                 "cuisine": {
                     "label": "Küche",
                     "options": {
@@ -4912,31 +4919,16 @@
                     "name": "markierter / gekennzeichneter Übergang",
                     "terms": "zebrastreifen,gekennzeichneter übergang"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)",
-                    "terms": "zebrastreifen (erhöht),gekennzeichneter übergang (erhöht)"
-                },
                 "highway/crossing/signals": {
                     "name": "Kreuzung mit Fußgängerampel",
-                    "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Kreuzung mit Fußgängersignalen (erhöht)",
                     "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Nicht gekennzeichneter Übergang",
                     "terms": "nicht gekennzeichneter übergang,nicht markierte kreuzung,nicht gekennzeichnete kreuzung"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Nicht gekennzeichneter Fußgängerübergang (erhöht)",
-                    "terms": "nicht markierter fußgängerübergang (erhöht),nicht gekennzeichneter fußgängerübergang (erhöht),nicht gekennzeichneter übergang (erhöht)"
-                },
                 "highway/crossing/zebra": {
                     "name": "markierter / gekennzeichneter Übergang"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)"
                 },
                 "highway/cycleway": {
                     "name": "Radweg",
@@ -4992,27 +4984,20 @@
                     "name": "markierter / gekennzeichneter Übergang",
                     "terms": "zebrastreifen,markierter fußgängerübergang"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)",
-                    "terms": "zebrastreifen (erhöht),markierter fußgängerübergang (erhöht)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Bürgersteig/Gehsteig/Trottoir",
                     "terms": "gangsteig,gehsteig,bürgersteig,trottoir,gehweg,fußweg"
+                },
+                "highway/footway/signals": {
+                    "name": "Kreuzung mit Fußgängerampel",
+                    "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
                 },
                 "highway/footway/unmarked": {
                     "name": "Nicht gekennzeichneter Übergang",
                     "terms": "unbezeichneter übergang,unmarkierter übergang,ungekennzeichneter übergang"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Nicht gekennzeichneter Übergang (erhöht)",
-                    "terms": "nicht gekennzeichneter übergang (erhöht),nicht bezeichneter übergang (erhöht)"
-                },
                 "highway/footway/zebra": {
                     "name": "markierter / gekennzeichneter Übergang"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "markierter / gekennzeichneter Übergang (erhöht)"
                 },
                 "highway/give_way": {
                     "name": "Vorfahrt gewähren",
@@ -5752,6 +5737,10 @@
                     "name": "Hockeyfeld",
                     "terms": "hockeyfeld,hockeyplatz"
                 },
+                "leisure/pitch/futsal": {
+                    "name": "Futsalplatz",
+                    "terms": "futsalfeld,futsal-spielfeld,kleinfeldfußball,futsal,hallenfußball"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "Hufeisenwurfplatz",
                     "terms": "pferde,hufeisen"
@@ -6356,7 +6345,7 @@
                 },
                 "natural/water/basin": {
                     "name": "Rückhaltebecken",
-                    "terms": "rückhaltebecken,basin"
+                    "terms": "rückhaltebecken,basin,wasserbecken,becken,rrh,regenrückhaltebecken,wasserrückhaltebecken,versickerungsbecken,trockenbecken,sickerbecken"
                 },
                 "natural/water/canal": {
                     "name": "Kanalfläche",

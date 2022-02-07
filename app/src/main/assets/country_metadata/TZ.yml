@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [CRDB, NMB, NBC, CRDB Bank, crdb, Barclays, Stanbic Bank, nmb, FNB, Ecobank, CRDB BANK, National Microfinance Bank (NMB), CRDB bank, Absa, NBC Bank, National Bank of Commerce, Barclays Bank, Exim Bank, Umoja, NMB Bank, Machochwe Ranger Post, NMB wakala, Tpb bank, NMB & CRDB Wakala]
+atmOperators: [CRDB, NMB, NBC, CRDB Bank, Barclays, Stanbic Bank, FNB, Ecobank, National Microfinance Bank (NMB), Absa, NBC Bank, National Bank of Commerce, Barclays Bank, Exim Bank, Umoja, NMB Bank, Machochwe Ranger Post, NMB wakala, Tpb bank, NMB & CRDB Wakala]
 centerLineStyle: white
 chargingStationOperators: [Jaza Energy]
 edgeLineStyle: yellow

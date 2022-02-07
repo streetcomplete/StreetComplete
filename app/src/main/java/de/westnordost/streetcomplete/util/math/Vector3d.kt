@@ -14,7 +14,7 @@ import kotlin.math.sqrt
 
 class Vector3d(val x: Double, val y: Double, val z: Double) {
 
-    val length: Double get() = sqrt(x*x + y*y + z*z)
+    val length: Double get() = sqrt(x * x + y * y + z * z)
 
     operator fun unaryPlus() = this
     operator fun unaryMinus() = Vector3d(-x, -y, -z)
@@ -29,7 +29,7 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
     operator fun times(o: Vector3d) = x * o.x + y * o.y + z * o.z
 
     /** cross (vector) product with [o] */
-    infix fun x(o: Vector3d) = Vector3d(y * o.z - z * o.y,z * o.x - x * o.z,x * o.y - y * o.x)
+    infix fun x(o: Vector3d) = Vector3d(y * o.z - z * o.y, z * o.x - x * o.z, x * o.y - y * o.x)
 
     /** normalize to length == 1 */
     fun normalize(): Vector3d {
@@ -69,22 +69,22 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
 
         val s = sin(θ)
         val c = cos(θ)
-        val t = 1-c
+        val t = 1 - c
         val x = a.x
         val y = a.y
         val z = a.z
 
         val r = arrayOf( // rotation matrix for rotation about supplied axis
-            arrayOf( t*x*x + c,   t*x*y - s*z, t*x*z + s*y ),
-            arrayOf( t*x*y + s*z, t*y*y + c,   t*y*z - s*x ),
-            arrayOf( t*x*z - s*y, t*y*z + s*x, t*z*z + c   ),
+            arrayOf(t * x * x + c,     t * x * y - s * z, t * x * z + s * y),
+            arrayOf(t * y * x + s * z, t * y * y + c,     t * y * z - s * x),
+            arrayOf(t * z * x - s * y, t * z * y + s * x, t * z * z + c    ),
         )
 
         // multiply r × p
         val rp = arrayOf(
-                r[0][0]*p.x + r[0][1]*p.y + r[0][2]*p.z,
-                r[1][0]*p.x + r[1][1]*p.y + r[1][2]*p.z,
-                r[2][0]*p.x + r[2][1]*p.y + r[2][2]*p.z,
+            r[0][0] * p.x + r[0][1] * p.y + r[0][2] * p.z,
+            r[1][0] * p.x + r[1][1] * p.y + r[1][2] * p.z,
+            r[2][0] * p.x + r[2][1] * p.y + r[2][2] * p.z,
         )
         val p2 = Vector3d(rp[0], rp[1], rp[2])
 

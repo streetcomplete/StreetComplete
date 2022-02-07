@@ -15,20 +15,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Named
 
-class Uploader @Inject constructor(
+class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
     private val elementEditsUploader: ElementEditsUploader,
     private val downloadedTilesDB: DownloadedTilesDao,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
-    @Named("SerializeSync") private val mutex: Mutex
+    private val mutex: Mutex
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    private val bannedInfo by lazy { versionIsBannedChecker.get()  }
+    private val bannedInfo by lazy { versionIsBannedChecker.get() }
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {

@@ -21,7 +21,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
-            "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
+        "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
     override val questTypeAchievements = listOf(POSTMAN)
@@ -41,7 +41,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
     override fun createForm() = AddPostboxRefForm()
 
     override fun applyAnswerTo(answer: PostboxRefAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoRefVisible -> tags["ref:signed"] = "no"
             is Ref ->          tags["ref"] = answer.ref
         }

@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import dagger.Module
-import dagger.Provides
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-@Module
-object StatisticsModule {
-    private const val STATISTICS_BACKEND_URL = "https://www.westnordost.de/streetcomplete/statistics/"
+private const val STATISTICS_BACKEND_URL = "https://www.westnordost.de/streetcomplete/statistics/"
+val statisticsModule = module {
+    factory { CountryStatisticsDao(get()) }
+    factory { QuestTypeStatisticsDao(get()) }
+    factory { StatisticsDownloader(STATISTICS_BACKEND_URL, get()) }
+    factory { StatisticsParser(get(), get(named("QuestAliases"))) }
 
-    @Provides fun statisticsDownloader(parser: StatisticsParser): StatisticsDownloader =
-        StatisticsDownloader(STATISTICS_BACKEND_URL, parser)
-
-    @Provides fun statisticsSource(statisticsController: StatisticsController): StatisticsSource =
-        statisticsController
+    single<StatisticsSource> { get<StatisticsController>() }
+    single { StatisticsController(get(), get(), get(named("CountryBoundariesFuture")), get(), get(), get()) }
 }

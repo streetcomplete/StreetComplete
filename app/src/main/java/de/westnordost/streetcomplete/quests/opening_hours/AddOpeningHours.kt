@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpening
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
 
-class AddOpeningHours (
+class AddOpeningHours(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
@@ -33,7 +33,7 @@ class AddOpeningHours (
               or amenity = recycling and recycling_type = centre
               or tourism = information and information = office
               or (amenity = recycling and recycling:batteries = yes)
-              or """.trimIndent() +
+              or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -82,7 +82,15 @@ class AddOpeningHours (
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
+
+                // name & opening hours
+                "physiotherapist", "podiatrist",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
             )
             and !opening_hours
@@ -92,7 +100,7 @@ class AddOpeningHours (
         and access !~ private|no
         and (name or brand or noname = yes or name:signed = no or amenity=recycling)
         and opening_hours:signed != no
-    """.trimIndent()).toElementFilterExpression() }
+    """).toElementFilterExpression() }
 
     private val nameTags = listOf("name", "brand")
 
@@ -137,7 +145,7 @@ class AddOpeningHours (
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) : Boolean {
+    override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
         val tags = element.tags
         // only show places that can be named somehow
@@ -151,7 +159,9 @@ class AddOpeningHours (
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+        getMapData().filter("nodes, ways, relations with " +
+            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
+        )
 
     override fun createForm() = AddOpeningHoursForm()
 
@@ -160,10 +170,10 @@ class AddOpeningHours (
             tags["opening_hours:signed"] = "no"
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
-            val openingHoursString = when(answer) {
+            val openingHoursString = when (answer) {
                 is RegularOpeningHours  -> answer.hours.toString()
                 is AlwaysOpen           -> "24/7"
-                is DescribeOpeningHours -> "\"" + answer.text.replace("\"","") + "\""
+                is DescribeOpeningHours -> "\"" + answer.text.replace("\"", "") + "\""
                 NoOpeningHoursSign      -> throw IllegalStateException()
             }
             tags.updateWithCheckDate("opening_hours", openingHoursString)

@@ -52,7 +52,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(2))
         assertNotNull(dao.get(3))
 
-        dao.deleteAll(listOf(1,2,3))
+        dao.deleteAll(listOf(1, 2, 3))
 
         assertNull(dao.get(1))
         assertNull(dao.get(2))
@@ -205,13 +205,13 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun updateNoteId() {
-        assertEquals(0, dao.updateNoteId( -5, 6))
+        assertEquals(0, dao.updateNoteId(-5, 6))
 
         val e1 = edit(noteId = -5)
         val e2 = edit(noteId = -5)
         dao.addAll(e1, e2)
 
-        assertEquals(2, dao.updateNoteId( -5, 6))
+        assertEquals(2, dao.updateNoteId(-5, 6))
         assertEquals(6, dao.get(e1.id)!!.noteId)
         assertEquals(6, dao.get(e2.id)!!.noteId)
     }
@@ -257,13 +257,13 @@ private fun edit(
     timestamp: Long = 123L,
     isSynced: Boolean = false
 ) = NoteEdit(
-        1L,
-        noteId,
-        pos,
-        action,
-        text,
-        imagePaths,
-        timestamp,
-        isSynced,
-        imagePaths.isNotEmpty()
+    1L,
+    noteId,
+    pos,
+    action,
+    text,
+    imagePaths,
+    timestamp,
+    isSynced,
+    imagePaths.isNotEmpty()
 )

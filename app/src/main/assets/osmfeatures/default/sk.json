@@ -113,6 +113,15 @@
                     },
                     "terms": "vstup povolený,vjazd povolený,vstup povoleny,vjazd povoleny"
                 },
+                "activity": {
+                    "options": {
+                        "Ski": "Lyžovanie",
+                        "bicycle": "Cyklistika",
+                        "hiking": "Turistika",
+                        "horse": "Jazda na koni",
+                        "mtb": "Horská cyklistika"
+                    }
+                },
                 "addr/interpolation": {
                     "label": "Typ",
                     "options": {
@@ -555,7 +564,9 @@
                         "burger": "Hamburgery",
                         "chicken": "Kuracia",
                         "chinese": "Čínska",
+                        "chocolate": "Čokoláda",
                         "coffee_shop": "Kaviareň",
+                        "dessert": "Dezert",
                         "french": "Frencúzska",
                         "german": "Nemecká",
                         "greek": "Grécka",
@@ -565,9 +576,13 @@
                         "japanese": "Japonská",
                         "kebab": "Kebab",
                         "mexican": "Mexická",
+                        "pankcake": "Palacinka",
+                        "pasta": "Cestovina",
                         "pizza": "Pizza",
                         "regional": "Miestna",
+                        "salad": "Šalát",
                         "sandwich": "Sendvič",
+                        "seafood": "Morské plody",
                         "sushi": "Suši",
                         "thai": "Thajská",
                         "turkish": "Turecká",
@@ -1780,7 +1795,20 @@
                     "label": "Číslo cyklistickej trasy"
                 },
                 "recycling_accepts": {
-                    "label": "Prijíma"
+                    "label": "Prijíma",
+                    "options": {
+                        "batteries": "Batérie",
+                        "cans": "Plechovky",
+                        "cardboard": "Kartón",
+                        "clothes": "Oblečenie",
+                        "glass": "Sklo",
+                        "glass_bottles": "Sklenené fľaše",
+                        "green_waste": "Bioodpad",
+                        "paper": "Papier",
+                        "plastic_packaging": "Plastové obaly",
+                        "scrap_metal": "Kovový šrot",
+                        "shoes": "Topánky"
+                    }
                 },
                 "recycling_type": {
                     "label": "Typ",
@@ -2241,8 +2269,9 @@
                     "options": {
                         "artificial_turf": "Umelý trávnik",
                         "asphalt": "Asfalt",
+                        "compacted": "Kompaktný",
                         "concrete": "Betón",
-                        "dirt": "Hlina",
+                        "dirt": "Špina",
                         "grass": "Tráva",
                         "gravel": "Štrk",
                         "ground": "Zem",
@@ -2750,8 +2779,8 @@
                     "terms": "gay bar,lesbický bar,lgbt bar"
                 },
                 "amenity/bbq": {
-                    "name": "Stanovište pre gril",
-                    "terms": "stanoviste pre girl,bbq,barbicue,opekanie,grilovanie,grilovačka,grilovacka"
+                    "name": "Gril",
+                    "terms": "stanovište pre gril,stanoviste pre girl,bbq,barbecue,opekanie,grilovanie,grilovačka,grilovacka,krb"
                 },
                 "amenity/bench": {
                     "name": "Lavička",
@@ -3877,6 +3906,9 @@
                 "building/sty": {
                     "name": "Chliev pre ošípané"
                 },
+                "building/synagogue": {
+                    "name": "Synagóga"
+                },
                 "building/temple": {
                     "name": "Budova chrámu"
                 },
@@ -4194,6 +4226,12 @@
                 "emergency/siren": {
                     "name": "Siréna"
                 },
+                "emergency/water_reservoir": {
+                    "name": "Protipožiarna nádrž"
+                },
+                "emergency/water_reservoir covered": {
+                    "name": "Protipožiarna nádrž (podzemná)"
+                },
                 "emergency/water_tank": {
                     "name": "Núdzový zásobník vody"
                 },
@@ -4340,20 +4378,11 @@
                 "highway/crossing/marked": {
                     "name": "Značený priechod pre chodcov"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Značený priechod pre chodcov (vyvýšený)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Neznačený priechod pre chodcov"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Neznačený priechod pre chodcov (vyvýšený)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Značený priechod pre chodcov"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Značený priechod pre chodcov (vyvýšený)"
                 },
                 "highway/cycleway": {
                     "name": "Cyklocesta",
@@ -4399,23 +4428,14 @@
                 "highway/footway/marked": {
                     "name": "Značený priechod pre chodcov"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Značený priechod pre chodcov (vyvýšený)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Chodník"
                 },
                 "highway/footway/unmarked": {
                     "name": "Neznačený priechod pre chodcov"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Neznačený priechod pre chodcov (vyvýšený)"
-                },
                 "highway/footway/zebra": {
                     "name": "Značený priechod pre chodcov"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Značený priechod pre chodcov (vyvýšený)"
                 },
                 "highway/give_way": {
                     "name": "Značka daj prednosť",
@@ -5048,11 +5068,17 @@
                 "leisure/pitch/field_hockey": {
                     "name": "Ihrisko pre pozemný hokej"
                 },
+                "leisure/pitch/futsal": {
+                    "name": "Futsalové ihrisko"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "Ihrisko pre hádzanie podkovou"
                 },
                 "leisure/pitch/netball": {
                     "name": "Ihrisko pre netball"
+                },
+                "leisure/pitch/paintball": {
+                    "name": "Paintballové ihrisko"
                 },
                 "leisure/pitch/rugby_league": {
                     "name": "Ihrisko ragby league",
@@ -5061,6 +5087,9 @@
                 "leisure/pitch/rugby_union": {
                     "name": "Ihrisko ragby union",
                     "terms": "rugby union"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "Strelnica"
                 },
                 "leisure/pitch/shuffleboard": {
                     "name": "Ihrisko pre shuffleboard"
@@ -5186,6 +5215,10 @@
                 },
                 "man_made/clearcut": {
                     "name": "Holorub"
+                },
+                "man_made/compass_rose": {
+                    "name": "Ružica kompasu",
+                    "terms": "ruzica kompasu,veterná ružica,veterna ruzica"
                 },
                 "man_made/courtyard": {
                     "name": "Nádvorie"
@@ -5814,7 +5847,8 @@
                     "name": "Hojdačka pre dvoch"
                 },
                 "playground/slide": {
-                    "name": "Šmýkalka"
+                    "name": "Šmýkačka",
+                    "terms": "smykacka,šmykľavka,smyklavka,kĺzačka,klzacka"
                 },
                 "playground/springy": {
                     "name": "Pružina"

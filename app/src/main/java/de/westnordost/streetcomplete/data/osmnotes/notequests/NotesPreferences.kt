@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
-import javax.inject.Inject
 
-class NotesPreferences @Inject constructor(private val prefs: SharedPreferences) {
+class NotesPreferences(private val prefs: SharedPreferences) {
 
     interface Listener {
         fun onNotesPreferencesChanged()
@@ -24,5 +23,4 @@ class NotesPreferences @Inject constructor(private val prefs: SharedPreferences)
 
     val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         !prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
-
 }

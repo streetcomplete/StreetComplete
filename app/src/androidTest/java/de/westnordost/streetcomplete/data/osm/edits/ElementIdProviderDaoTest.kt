@@ -67,15 +67,15 @@ class ElementIdProviderDaoTest : ApplicationDbTestCase() {
 
     @Test fun delete() {
         assertEquals(0, dao.delete(1L))
-        dao.assign(1L, 1,1,1)
+        dao.assign(1L, 1, 1, 1)
         assertEquals(3, dao.delete(1L))
         assertTrue(dao.get(1L).isEmpty())
     }
 
     @Test fun deleteAll() {
         assertEquals(0, dao.deleteAll(listOf(1L, 2L)))
-        dao.assign(1L, 1,2,3)
-        dao.assign(2L, 2,1,0)
+        dao.assign(1L, 1, 2, 3)
+        dao.assign(2L, 2, 1, 0)
         assertEquals(9, dao.deleteAll(listOf(1L, 2L)))
         assertTrue(dao.get(1L).isEmpty())
         assertTrue(dao.get(2L).isEmpty())

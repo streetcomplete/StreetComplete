@@ -4860,31 +4860,16 @@
                     "name": "Passadeira marcada",
                     "terms": "passadeira,zebra,marcações,passagem,travessia,peões,pedestre"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Passadeira marcada (elevada)",
-                    "terms": "passadeira levantada,passadeira elevada,lomba,travessia,pedestre,peões,faixa de segurança,lomba redutora de velocidade,trapézio,trapezoidal"
-                },
                 "highway/crossing/signals": {
                     "name": "Passadeira com semáforos",
                     "terms": "pedestre,passagem,travessia,atravessar,cruzar,peões,luzes,luminosos"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Passadeira com semáforos (elevada)",
-                    "terms": "pedestre,passagem,travessia,atravessar,cruzar,peões,luzes,luminosos,lomba,lombada"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Travessia sem marcações",
                     "terms": "passagem de pedestres não marcada,passadeira não marcada,passadeira sem marcas,atravessamento,pedestre,peões,passadeira,faixa de segurança"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Passadeira não marcada (elevada)",
-                    "terms": "passadeira levantada,passadeira elevada,lomba,travessia,pedestre,peões,faixa de segurança,lomba redutora de velocidade,trapézio,trapezoidal"
-                },
                 "highway/crossing/zebra": {
                     "name": "Passadeira marcada"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Passadeira marcada (elevada)"
                 },
                 "highway/cycleway": {
                     "name": "Ciclovia",
@@ -4940,10 +4925,6 @@
                     "name": "Passadeira marcada",
                     "terms": "passadeira,zebra,passagem,travessia,pedestres,peões,peão"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Passadeira marcada (elevada)",
-                    "terms": "passadeira,lomba,passadeira-lomba,passadeira elevada,pedestres,peões,peão,travessia"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Passeio",
                     "terms": "calçada,passeios,bermas,berma"
@@ -4952,15 +4933,8 @@
                     "name": "Passadeira não marcada",
                     "terms": "passagem de pedestres não marcada,passadeira,passagem,travessia,pedestres,peões,peão"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Passadeira não marcada (elevada)",
-                    "terms": "passagem de pedestres não marcada,passagem,atravessamento,passadeira,lomba,pedestres,peões,peão,travessia"
-                },
                 "highway/footway/zebra": {
                     "name": "Passadeira marcada"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "faixa de pedestres marcada, passadeira, atravessamento, passagem,travessia,pedestres,peões,peão"
                 },
                 "highway/give_way": {
                     "name": "Sinal de cedência de passagem",

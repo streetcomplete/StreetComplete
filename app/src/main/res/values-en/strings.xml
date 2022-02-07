@@ -53,6 +53,11 @@
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
     <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
+
+    <string name="quest_openingHours_signed_name_title">"Are the opening hours signed for %s?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Are the opening hours signed for %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Are the opening hours of this place signed? (%s)"</string>
+
     <string name="quest_openingHours_resurvey_name_title">"Are these opening hours for %s still correct?"</string>
     <string name="quest_openingHours_resurvey_name_type_title">"Are these opening hours for %1$s (%2$s) still correct?"</string>
     <string name="quest_openingHours_resurvey_no_name_title">"Are these opening hours still correct (%s)?"</string>
@@ -604,6 +609,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_steps_title">Are these steps completed?</string>
     <string name="quest_construction_generic_title">Is this way completed?</string>
     <string name="quest_construction_building_title">Is this building completed?</string>
+    <string name="quest_fuelSelfService_title">Can you pump gas yourself at this fuel station?</string>
+    <string name="quest_fuelSelfService_name_title">Can you pump gas yourself at %s?</string>
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
     <string name="quest_maxspeed_name_title2">What is the speed limit for %s here?</string>
@@ -759,6 +766,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
+    <string name="quest_sidewalk_value_separate">displayed separately on map</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
     <string name="pref_title_theme_select">Select theme</string>
     <string name="theme_automatic">Auto</string>
@@ -982,7 +990,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
-    <string name="quest_sidewalk_separately_mapped">Yes, displayed separately on map</string>
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
@@ -1159,6 +1166,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="short_no_answer_on_button">No</string>
     <string name="quest_level_title">On which level number is %s located?</string>
+    <string name="quest_barrier_path_intersection">How does this path cross the barrier here?</string>
+    <string name="quest_barrier_road_intersection">How does this road cross the barrier here?</string>
     <string name="pref_title_language_select">Select language</string>
     <string name="language_default">System default</string>
     <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
@@ -1185,8 +1194,12 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
     <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that allows vehicles to stop safely completely beside the traffic lane, though not always (fully) on paved surface."</string>
+    <string name="quest_shoulder_value_yes">shoulder</string>
+    <string name="quest_shoulder_value_no">no shoulder</string>
     <string name="quest_fireHydrant_diameter_ref_title">What diameter is specified on the sign for this fire hydrant? (reference number: %s)</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">Lifesaver</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
+    <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
+    <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
 </resources>

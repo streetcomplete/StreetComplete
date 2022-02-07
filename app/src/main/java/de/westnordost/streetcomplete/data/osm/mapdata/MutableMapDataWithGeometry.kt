@@ -37,7 +37,7 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
     }
 
     fun remove(type: ElementType, id: Long) {
-        when(type) {
+        when (type) {
             ElementType.NODE -> {
                 nodesById.remove(id)
                 nodeGeometriesById.remove(id)
@@ -64,15 +64,15 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
 
     fun putElement(element: Element) {
         val id = element.id
-        when(element) {
+        when (element) {
             is Node -> nodesById[id] = element
-            is Way ->  waysById[id] = element
+            is Way -> waysById[id] = element
             is Relation -> relationsById[id] = element
         }
     }
 
     fun putGeometry(type: ElementType, id: Long, geometry: ElementGeometry?) {
-        when(type) {
+        when (type) {
             ElementType.NODE -> nodeGeometriesById[id] = geometry as? ElementPointGeometry
             ElementType.WAY -> wayGeometriesById[id] = geometry
             ElementType.RELATION -> relationGeometriesById[id] = geometry

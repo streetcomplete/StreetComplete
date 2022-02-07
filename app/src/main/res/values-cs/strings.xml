@@ -2578,4 +2578,14 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_barrier_road_intersection">"Jak zde tato cesta překračuje překážku?"</string>
     <string name="quest_airConditioning_no_name_title">"Má toto místo (%s) klimatizaci?"</string>
     <string name="quest_airConditioning_name_type_title">"Má %1$s (%2$s) klimatizaci?"</string>
+
+    <!-- Could someone write example with variables, please? -->
+    <string name="quest_openingHours_signed_name_title">"Jsou tyto otevírací hodiny uvedeny pro %s?"</string>
+
+    <!-- Could someone write example with variables, please? -->
+    <string name="quest_openingHours_signed_name_type_title">"Jsou tyto otevírací hodiny uvedeny pro %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Je otevírací doba tohoto místa na zvenku viditelném místě? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"zobrazen samostatně na mapě"</string>
+    <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
+    <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
 </resources>

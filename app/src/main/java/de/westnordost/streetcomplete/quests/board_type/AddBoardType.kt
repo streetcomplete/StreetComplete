@@ -34,7 +34,7 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
     override fun createForm() = AddBoardTypeForm()
 
     override fun applyAnswerTo(answer: BoardType, tags: Tags, timestampEdited: Long) {
-        if(answer == BoardType.MAP) {
+        if (answer == BoardType.MAP) {
             tags["information"] = "map"
         } else {
             tags["board_type"] = answer.osmValue

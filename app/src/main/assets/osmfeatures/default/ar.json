@@ -625,6 +625,13 @@
                 "crossing/light": {
                     "label": "إضاءات"
                 },
+                "crossing_raised": {
+                    "label": "مرتفع",
+                    "options": {
+                        "table": "نعم",
+                        "undefined": "لا"
+                    }
+                },
                 "cuisine": {
                     "label": "المأكولات",
                     "options": {
@@ -4854,31 +4861,16 @@
                     "name": "معبر مشاة بعلامات مرورية",
                     "terms": "معبر مشاة بدون إشارة مرور,معبر مشاة غير متحكم به,معبر مشاة"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "معبر مشاة مرتفع عن الطريق بعلامات مرورية",
-                    "terms": "معبر مشاة على مطب بدون إشارة مرور,معبر مشاة مرتفع عن الطريق بدون إشارة مرور,معبر مشاة مرتفع عن الطريق"
-                },
                 "highway/crossing/signals": {
                     "name": "معبر مشاة بإشارات",
                     "terms": "معبر مشاة بإشارات"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "معبر مشاة بإشارة (مرفوع)",
-                    "terms": "معبر مشاة بإشارة (مرفوع)"
                 },
                 "highway/crossing/unmarked": {
                     "name": "معبر مشاة بدون علامات أو إشارة مرورية",
                     "terms": "معبر مشاة بدون علامات مرورية أو إشارة مرورية"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "معبر مشاة مرتفع عن الطريق بدون علامات مرورية",
-                    "terms": "معبر مشاة مرتفع عن الطريق بدون علامات مرورية أو إشارات مرورية,معبر مشاة مرتفع عن الطريق بدون علامات مرورية"
-                },
                 "highway/crossing/zebra": {
                     "name": "معبر مشاة بعلامات مرورية"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "معبر مشاة مرتفع عن الطريق بعلامات مرورية"
                 },
                 "highway/cycleway": {
                     "name": "مسار دراجات",
@@ -4934,27 +4926,20 @@
                     "name": "معبر مشاة بعلامات مرورية",
                     "terms": "معبر مشاة بعلامات مرورية"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "معبر مشاة مرتفع بعلامات مرورية",
-                    "terms": "معبر مشاة مرتفع بعلامات مرورية"
-                },
                 "highway/footway/sidewalk": {
                     "name": "رصيف مشاة",
                     "terms": "رصيف مشاة,رصيف المشاة,رصيف جانب الطريق للمشاة"
+                },
+                "highway/footway/signals": {
+                    "name": "معبر مشاة بإشارات",
+                    "terms": "معبر مشاة بإشارات"
                 },
                 "highway/footway/unmarked": {
                     "name": "معبر مشاة بدون علامات أو إشارة مرورية",
                     "terms": "معبر مشاة بدون علامات أو إشارة مرورية"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "معبر مشاة مرفوع بدون علامات أو إشارة مرورية",
-                    "terms": "معبر مشاة مرفوع بدون علامات أو إشارة مرورية"
-                },
                 "highway/footway/zebra": {
                     "name": "معبر مشاة بعلامات مرورية"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "معبر مشاة مرفوع بعلامات مرورية"
                 },
                 "highway/give_way": {
                     "name": "علامة \"أعط أفضلية المرور لمن هم في الطريق الآخر\"",
@@ -5687,6 +5672,10 @@
                 "leisure/pitch/field_hockey": {
                     "name": "مساحة ملعب الهوكى",
                     "terms": "مساحة ملعب الهوكى"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "كرة الصالات",
+                    "terms": "كرة الصالات"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "حفرة حدوة الحصان",

@@ -43,14 +43,14 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     @Test fun getAllKeys() {
         dao.putAll(listOf(
-            ElementGeometryEntry(ElementType.NODE, 1, createPoint(0.0,0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0,2.0)),
-            ElementGeometryEntry(ElementType.NODE, 2, createPoint(0.5,1.0)),
+            ElementGeometryEntry(ElementType.NODE, 1, createPoint(0.0, 0.0)),
+            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
+            ElementGeometryEntry(ElementType.NODE, 2, createPoint(0.5, 1.0)),
             // these are outside
-            ElementGeometryEntry(ElementType.NODE, 3, createPoint(-0.5,1.0)),
-            ElementGeometryEntry(ElementType.NODE, 4, createPoint(1.5,1.0)),
-            ElementGeometryEntry(ElementType.NODE, 5, createPoint(0.5,-0.5)),
-            ElementGeometryEntry(ElementType.NODE, 6, createPoint(0.5,2.5))
+            ElementGeometryEntry(ElementType.NODE, 3, createPoint(-0.5, 1.0)),
+            ElementGeometryEntry(ElementType.NODE, 4, createPoint(1.5, 1.0)),
+            ElementGeometryEntry(ElementType.NODE, 5, createPoint(0.5, -0.5)),
+            ElementGeometryEntry(ElementType.NODE, 6, createPoint(0.5, 2.5))
         ))
 
         assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
@@ -63,15 +63,15 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
     @Test fun getAllEntriesFoxBBox() {
         val insideElements = listOf(
-            ElementGeometryEntry(ElementType.NODE, 1, createPoint(0.0,0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0,2.0)),
-            ElementGeometryEntry(ElementType.NODE, 2, createPoint(0.5,1.0))
+            ElementGeometryEntry(ElementType.NODE, 1, createPoint(0.0, 0.0)),
+            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
+            ElementGeometryEntry(ElementType.NODE, 2, createPoint(0.5, 1.0))
         )
         val outsideElements = listOf(
-            ElementGeometryEntry(ElementType.NODE, 3, createPoint(-0.5,1.0)),
-            ElementGeometryEntry(ElementType.NODE, 4, createPoint(1.5,1.0)),
-            ElementGeometryEntry(ElementType.NODE, 5, createPoint(0.5,-0.5)),
-            ElementGeometryEntry(ElementType.NODE, 6, createPoint(0.5,2.5))
+            ElementGeometryEntry(ElementType.NODE, 3, createPoint(-0.5, 1.0)),
+            ElementGeometryEntry(ElementType.NODE, 4, createPoint(1.5, 1.0)),
+            ElementGeometryEntry(ElementType.NODE, 5, createPoint(0.5, -0.5)),
+            ElementGeometryEntry(ElementType.NODE, 6, createPoint(0.5, 2.5))
         )
         dao.putAll(insideElements + outsideElements)
 

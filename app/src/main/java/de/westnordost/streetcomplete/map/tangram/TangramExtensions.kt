@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.distanceTo
 
-fun ElementGeometry.toTangramGeometry(): List<Geometry> = when(this) {
+fun ElementGeometry.toTangramGeometry(): List<Geometry> = when (this) {
     is ElementPolylinesGeometry -> {
         polylines.map { polyline ->
             Polyline(polyline.map { it.toLngLat() }, mapOf("type" to "line"))
@@ -64,7 +64,7 @@ fun KtMapController.screenBottomToCenterDistance(): Double? {
     val h = view.height
     if (w == 0 || h == 0) return null
 
-    val center = screenPositionToLatLon(PointF(w/2f, h/2f)) ?: return null
-    val bottom = screenPositionToLatLon(PointF(w/2f, h*1f)) ?: return null
+    val center = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
+    val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f)) ?: return null
     return center.distanceTo(bottom)
 }

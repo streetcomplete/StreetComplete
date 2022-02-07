@@ -67,7 +67,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 fun List<BuildingType>.toItems() = this.map { it.asItem() }
 
-fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
+fun BuildingType.asItem(): Item<BuildingType?> = when (this) {
     HOUSE -> Item(this, R.drawable.ic_building_house, R.string.quest_buildingType_house, R.string.quest_buildingType_house_description2)
     APARTMENTS -> Item(this, R.drawable.ic_building_apartments, R.string.quest_buildingType_apartments, R.string.quest_buildingType_apartments_description)
     DETACHED -> Item(this, R.drawable.ic_building_detached, R.string.quest_buildingType_detached, R.string.quest_buildingType_detached_description)
@@ -142,7 +142,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
 
 fun Array<BuildingTypeCategory>.toItems() = this.map { it.asItem() }
 
-fun BuildingTypeCategory.asItem(): Item<BuildingType?> = when(this) {
+fun BuildingTypeCategory.asItem(): Item<BuildingType?> = when (this) {
     BuildingTypeCategory.RESIDENTIAL -> Item(this.type, R.drawable.ic_building_apartments,
         R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
         this.subTypes.toItems()

@@ -12,5 +12,6 @@ object QuestPresetsTable {
         CREATE TABLE $NAME (
             ${Columns.QUEST_PRESET_ID} INTEGER PRIMARY KEY,
             ${Columns.QUEST_PRESET_NAME} TEXT NOT NULL
-        );"""
+        );
+    """
 }

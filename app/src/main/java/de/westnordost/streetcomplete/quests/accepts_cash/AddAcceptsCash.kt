@@ -2,6 +2,10 @@ package de.westnordost.streetcomplete.quests.accepts_cash
 
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
@@ -36,18 +40,19 @@ class AddAcceptsCash(
             "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
             "electronics_repair", "key_cutter", "stonemason"
         )
-       return """
-        nodes, ways, relations with
-        (
-          (shop and shop !~ no|vacant|mall)
-          or amenity ~ ${amenities.joinToString("|")}
-          or leisure ~ ${leisures.joinToString("|")}
-          or craft ~ ${crafts.joinToString("|")}
-          or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
-          or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
-        )
-        and (name or brand) and !payment:cash and !payment:coins and !payment:notes
-    """}
+        return """
+            nodes, ways, relations with
+            (
+              (shop and shop !~ no|vacant|mall)
+              or amenity ~ ${amenities.joinToString("|")}
+              or leisure ~ ${leisures.joinToString("|")}
+              or craft ~ ${crafts.joinToString("|")}
+              or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
+              or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
+            )
+            and (name or brand) and !payment:cash and !payment:coins and !payment:notes
+        """
+    }
 
     override val changesetComment = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
@@ -65,6 +70,11 @@ class AddAcceptsCash(
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["name"] ?: tags["brand"], featureName.value.toString())
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways, relations with " +
+            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
+        )
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

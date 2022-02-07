@@ -14,8 +14,7 @@ import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<WheelchairAccess>()
-{
+) : OsmFilterQuestType<WheelchairAccess>() {
     override val elementFilter = """
         nodes, ways, relations with
           (name or brand)
@@ -26,7 +25,7 @@ class AddWheelchairAccessBusiness(
             or amenity = parking and parking = multi-storey
             or amenity = recycling and recycling_type = centre
             or tourism = information and information = office
-            or """.trimIndent() +
+            or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -87,7 +86,12 @@ class AddWheelchairAccessBusiness(
 
                 // name & wheelchair
                 "winery"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
         "  \n)"
 
@@ -111,7 +115,9 @@ class AddWheelchairAccessBusiness(
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+        getMapData().filter("nodes, ways, relations with " +
+            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
+        )
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
 

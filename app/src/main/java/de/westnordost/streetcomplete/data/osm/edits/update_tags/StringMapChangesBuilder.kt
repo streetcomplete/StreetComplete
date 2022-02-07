@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
-class StringMapChangesBuilder(private val source: Map<String, String>): Map<String, String> {
+class StringMapChangesBuilder(private val source: Map<String, String>) : Map<String, String> {
     private val changes: MutableMap<String, StringMapEntryChange> = mutableMapOf()
 
     /** Remove the given key from the map */
@@ -31,7 +31,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
 
     override operator fun get(key: String): String? =
         if (changes.containsKey(key)) {
-            when(val change = changes.getValue(key)) {
+            when (val change = changes.getValue(key)) {
                 is StringMapEntryAdd -> change.value
                 is StringMapEntryModify -> change.value
                 is StringMapEntryDelete -> null
@@ -41,11 +41,11 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
         }
 
     override val keys: Set<String> get() = entries.map { it.key }.toSet()
-    override val values: Collection<String>  get() = entries.map { it.value }
+    override val values: Collection<String> get() = entries.map { it.value }
 
     override val entries: Set<Map.Entry<String, String>> get() {
         val result = mutableSetOf<Map.Entry<String, String>>()
-        for ((k,v) in source) {
+        for ((k, v) in source) {
             when (val change = changes[k]) {
                 // modified
                 is StringMapEntryModify -> {
@@ -54,8 +54,8 @@ class StringMapChangesBuilder(private val source: Map<String, String>): Map<Stri
                 // deleted
                 is StringMapEntryDelete -> {}
                 // otherwise use entry from source map
-                else ->                    {
-                    result.add(Entry(k,v))
+                else -> {
+                    result.add(Entry(k, v))
                 }
             }
         }

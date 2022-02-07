@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.user
 
-
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -21,14 +19,13 @@ import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
-class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit)
-{
-    @Inject internal lateinit var statisticsSource: StatisticsSource
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
+    private val statisticsSource: StatisticsSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
@@ -36,10 +33,6 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     private val binding by viewBinding(FragmentQuestStatisticsBallPitBinding::bind)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
@@ -65,7 +58,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         questView.setImageResource(questType.icon)
 
         val clickableContainer = FrameLayout(ctx)
-        clickableContainer.layoutParams = ViewGroup.LayoutParams(256,256)
+        clickableContainer.layoutParams = ViewGroup.LayoutParams(256, 256)
         clickableContainer.foreground = requireContext().getDrawable(R.drawable.round_pressed)
         clickableContainer.elevation = 6f.toPx(ctx)
         clickableContainer.outlineProvider = CircularOutlineProvider
@@ -77,4 +70,3 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         return clickableContainer
     }
 }
-

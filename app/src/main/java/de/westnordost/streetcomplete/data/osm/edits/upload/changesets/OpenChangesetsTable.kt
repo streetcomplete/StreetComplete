@@ -15,5 +15,6 @@ object OpenChangesetsTable {
             ${Columns.SOURCE} varchar(255),
             ${Columns.CHANGESET_ID} int NOT NULL,
             CONSTRAINT primary_key PRIMARY KEY (${Columns.QUEST_TYPE}, ${Columns.SOURCE})
-        );"""
+        );
+    """
 }

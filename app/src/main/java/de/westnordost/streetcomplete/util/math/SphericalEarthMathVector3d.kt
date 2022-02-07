@@ -42,7 +42,7 @@ fun Vector3d.initialBearingTo(o: Vector3d): Double {
     val northPole = Vector3d(0.0, 0.0, 1.0)
 
     val c1 = this x o // great circle through p1 & p2
-    val c2 = this x northPole  // great circle through p1 & north pole
+    val c2 = this x northPole // great circle through p1 & north pole
 
     return c1.angleTo(c2, this) // bearing is (signed) angle between c1 & c2
 }

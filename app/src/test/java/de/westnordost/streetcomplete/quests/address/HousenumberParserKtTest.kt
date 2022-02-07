@@ -97,7 +97,7 @@ class HousenumberParserKtTest {
 private fun range(
     start: StructuredHouseNumber,
     end: StructuredHouseNumber
-) = HouseNumbersPartsRange(start,end)
+) = HouseNumbersPartsRange(start, end)
 
 private fun single(s: StructuredHouseNumber) =
     SingleHouseNumbersPart(s)

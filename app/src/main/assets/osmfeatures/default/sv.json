@@ -627,6 +627,13 @@
                 "crossing/light": {
                     "label": "Trafikljus"
                 },
+                "crossing_raised": {
+                    "label": "Upphöjd",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nej"
+                    }
+                },
                 "cuisine": {
                     "label": "Typer av mat",
                     "options": {
@@ -1692,6 +1699,7 @@
                     "placeholder": "3, 4, 5..."
                 },
                 "parcel_pickup": {
+                    "label": "Uthämtning paket",
                     "options": {
                         "no": "Nej",
                         "undefined": "Förväntas vara Ja",
@@ -4872,31 +4880,16 @@
                     "name": "Markerad gångpassage",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Markerad gångpassage (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerat övergångsställe (upphöjt),markerad gångpassage (upphöjt),markerad gångpassage,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/crossing/signals": {
                     "name": "Korsning med trafikljus för fotgängare",
                     "terms": "trafikljus för fotgängare,trafiksignaler för fotgängare,övergångsställe (trafiksignal),cykelöverfart (trafiksignal)"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Korsning med trafikljus för fotgängare (upphöjd)",
-                    "terms": "korsning med trafikljus för fotgängare (upphöjd),trafikljus för fotgängare,trafiksignaler för fotgängare,övergångsställe (trafikljus),cykelöverfart (trafikljus),gupp,farthinder,fartgupp,fartpuckel,upphöjd,puckel,hastighet,långsam"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Omarkerad övergång",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Omarkerad övergång (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerat övergångsställe (upphöjt),omarkerad övergång (upphöjt),omarkerad övergång,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/crossing/zebra": {
                     "name": "Markerat övergångsställe"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)"
                 },
                 "highway/cycleway": {
                     "name": "Cykelväg",
@@ -4952,10 +4945,6 @@
                     "name": "Markerat övergångsställe",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerat övergångsställe (upphöjt),markerad gångpassage (upphöjt),markerad gångpassage,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoar",
                     "terms": "trottoar,gångbana,gångväg"
@@ -4964,15 +4953,8 @@
                     "name": "Omarkerad övergång",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Omarkerad övergång (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerat övergångsställe (upphöjt),omarkerad övergång (upphöjt),omarkerad övergång,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/footway/zebra": {
                     "name": "Markerat övergångsställe"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)"
                 },
                 "highway/give_way": {
                     "name": "Väjningsplikt",

@@ -7,13 +7,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.FragmentContainerActivity
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows all the user information, login etc.
  *  This activity coordinates quite a number of fragments, which all call back to this one. In order
@@ -21,11 +20,12 @@ import javax.inject.Inject
  *  The LoginFragment, the UserFragment (which contains the viewpager with more
  *  fragments) and the "fake" dialogs AchievementInfoFragment and QuestTypeInfoFragment.
  * */
-class UserActivity : FragmentContainerActivity(R.layout.activity_user),
+class UserActivity :
+    FragmentContainerActivity(R.layout.activity_user),
     AchievementsFragment.Listener,
     QuestStatisticsFragment.Listener {
 
-    @Inject internal lateinit var userLoginStatusSource: UserLoginStatusSource
+    private val userLoginStatusSource: UserLoginStatusSource by inject()
 
     private val countryDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment?
@@ -37,12 +37,8 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
 
     private val loginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) }}
-        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) }}
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
+        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) } }
+        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) } }
     }
 
     /* --------------------------------------- Lifecycle --------------------------------------- */
@@ -116,5 +112,3 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         const val EXTRA_LAUNCH_AUTH = "de.westnordost.streetcomplete.user.launch_auth"
     }
 }
-
-

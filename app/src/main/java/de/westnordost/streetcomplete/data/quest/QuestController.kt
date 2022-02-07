@@ -25,12 +25,11 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestContro
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
+import kotlin.collections.ArrayList
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
  *  undoing, etc. */
-@Singleton class QuestController @Inject constructor(
+class QuestController(
     private val osmQuestController: OsmQuestController,
     private val osmNoteQuestController: OsmNoteQuestController,
     private val elementEditsController: ElementEditsController,
@@ -161,7 +160,7 @@ import javax.inject.Singleton
      * @return true if successful
      */
     suspend fun solve(quest: Quest, answer: Any, source: String): Boolean {
-        return when(quest) {
+        return when (quest) {
             is OsmNoteQuest -> solveOsmNoteQuest(quest, answer as NoteAnswer)
             is OsmQuest -> solveOsmQuest(quest, answer, source)
             else -> throw NotImplementedError()
@@ -184,7 +183,8 @@ import javax.inject.Singleton
 
     private suspend fun solveOsmQuest(
         q: OsmQuest,
-        answer: Any, source: String
+        answer: Any,
+        source: String
     ): Boolean = withContext(Dispatchers.IO) {
         /* When OSM data is being updated (e.g. during download), first that data is persisted to
          *  the database and after that, the quests are updated on the new data.
@@ -224,7 +224,7 @@ import javax.inject.Singleton
         return@withContext true
     }
 
-    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges {
+    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any): StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
         quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder, element.timestampEdited)
         return changesBuilder.create()

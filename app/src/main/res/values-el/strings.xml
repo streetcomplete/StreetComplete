@@ -2402,4 +2402,10 @@
     <string name="quest_barrier_road_intersection">"Πώς διασχίζει αυτός ο δρόμος τις μπάρες εδώ;"</string>
     <string name="quest_airConditioning_no_name_title">"Αυτό το μέρος (%s) έχει κλιματισμό;"</string>
     <string name="quest_airConditioning_name_type_title">"Το %1$s (%2$s) έχει κλιματισμό;"</string>
+    <string name="quest_openingHours_signed_name_title">"Φαίνονται οι ώρες λειτουργίας για το %s;"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Φαίνονται οι ώρες λειτουργίας για το %1$s (%2$s);"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Φαίνονται οι ώρες λειτουργίας αυτού του χώρου; (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"εμφανίζεται ξεχωριστά στον χάρτη"</string>
+    <string name="quest_shoulder_value_yes">"ΛΕΑ"</string>
+    <string name="quest_shoulder_value_no">"χωρίς ΛΕΑ"</string>
 </resources>

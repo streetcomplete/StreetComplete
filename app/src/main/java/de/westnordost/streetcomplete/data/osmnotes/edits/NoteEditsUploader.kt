@@ -16,9 +16,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class NoteEditsUploader @Inject constructor(
+class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val notesApi: NotesApi,
@@ -42,7 +41,7 @@ class NoteEditsUploader @Inject constructor(
     } }
 
     private suspend fun uploadMissedImageActivations() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             /* see uploadEdits */
             withContext(scope.coroutineContext) {
@@ -53,10 +52,10 @@ class NoteEditsUploader @Inject constructor(
     }
 
     private suspend fun uploadEdits() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestUnsynced() ?: break
             /* the sync of local change -> API and its response should not be cancellable because
-             * otherwise an inconsistency in the data would occur. F.e. a note could be uploaded
+             * otherwise an inconsistency in the data would occur. E.g. a note could be uploaded
              * twice  */
             withContext(scope.coroutineContext) { uploadEdit(edit) }
         }
@@ -66,7 +65,7 @@ class NoteEditsUploader @Inject constructor(
         val text = edit.text.orEmpty() + uploadAndGetAttachedPhotosText(edit.imagePaths)
 
         try {
-            val note = when(edit.action) {
+            val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
                 COMMENT -> notesApi.comment(edit.noteId, text)
             }
@@ -85,7 +84,6 @@ class NoteEditsUploader @Inject constructor(
                 noteEditsController.markImagesActivated(note.id)
             }
             deleteImages(edit.imagePaths)
-
         } catch (e: ConflictException) {
             Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +

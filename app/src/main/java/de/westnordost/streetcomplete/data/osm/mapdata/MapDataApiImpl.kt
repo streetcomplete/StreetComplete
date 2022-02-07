@@ -118,18 +118,18 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 private inline fun <T> wrapExceptions(block: () -> T): T =
     try {
         block()
-    } catch (e : OsmAuthorizationException) {
+    } catch (e: OsmAuthorizationException) {
         throw AuthorizationException(e.message, e)
-    } catch (e : OsmConflictException) {
+    } catch (e: OsmConflictException) {
         throw ConflictException(e.message, e)
-    } catch (e : OsmQueryTooBigException) {
+    } catch (e: OsmQueryTooBigException) {
         throw QueryTooBigException(e.message, e)
-    } catch (e : OsmConnectionException) {
+    } catch (e: OsmConnectionException) {
         throw ConnectionException(e.message, e)
-    } catch (e : OsmApiReadResponseException) {
+    } catch (e: OsmApiReadResponseException) {
         // probably a temporary connection error
         throw ConnectionException(e.message, e)
-    } catch (e : OsmApiException) {
+    } catch (e: OsmApiException) {
         // request timeout is a temporary connection error
         throw if (e.errorCode == 408) ConnectionException(e.message, e) else e
     }
@@ -141,7 +141,7 @@ private fun MapDataChanges.toOsmApiElements(): List<OsmApiElement> =
     modifications.map { it.toOsmApiElement().apply { isModified = true } } +
     deletions.map { it.toOsmApiElement().apply { isDeleted = true } }
 
-private fun Element.toOsmApiElement(): OsmElement = when(this) {
+private fun Element.toOsmApiElement(): OsmElement = when (this) {
     is Node -> toOsmApiNode()
     is Way -> toOsmApiWay()
     is Relation -> toOsmApiRelation()
@@ -180,7 +180,7 @@ private fun RelationMember.toOsmRelationMember() = OsmRelationMember(
     type.toOsmElementType()
 )
 
-private fun ElementType.toOsmElementType(): OsmApiElement.Type = when(this) {
+private fun ElementType.toOsmElementType(): OsmApiElement.Type = when (this) {
     ElementType.NODE        -> OsmApiElement.Type.NODE
     ElementType.WAY         -> OsmApiElement.Type.WAY
     ElementType.RELATION    -> OsmApiElement.Type.RELATION
@@ -208,7 +208,7 @@ private fun OsmApiRelation.toRelation() = Relation(
 private fun OsmApiRelationMember.toRelationMember() =
     RelationMember(type.toElementType(), ref, role)
 
-private fun OsmApiElement.Type.toElementType(): ElementType = when(this) {
+private fun OsmApiElement.Type.toElementType(): ElementType = when (this) {
     OsmApiElement.Type.NODE     -> ElementType.NODE
     OsmApiElement.Type.WAY      -> ElementType.WAY
     OsmApiElement.Type.RELATION -> ElementType.RELATION

@@ -56,7 +56,7 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController, contentResolver: ContentResolver):
+class KtMapController(private val c: MapController, contentResolver: ContentResolver) :
     LifecycleObserver {
 
     private val cameraManager = CameraManager(c, contentResolver)
@@ -220,8 +220,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         if (w == 0 || h == 0) return null
 
         return screenPositionToLatLon(PointF(
-            padding.left + (w - padding.left - padding.right)/2f,
-            padding.top + (h - padding.top - padding.bottom)/2f
+            padding.left + (w - padding.left - padding.right) / 2f,
+            padding.top + (h - padding.top - padding.bottom) / 2f
         ))
     }
 
@@ -272,7 +272,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
         val zoomDelta = min(zoomDeltaX, zoomDeltaY)
-        return max( 1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
+        return max(1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
     }
 
     fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom): LatLon? {
@@ -378,7 +378,6 @@ class LoadSceneException(message: String, val sceneUpdate: SceneUpdate) : Runtim
 private fun SceneError.toException() =
     LoadSceneException(error.name.lowercase().replace("_", " "), sceneUpdate)
 
-
 suspend fun MapView.initMap(
     httpHandler: HttpHandler? = null,
     glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
@@ -395,4 +394,3 @@ interface MapChangingListener {
     fun onMapIsChanging()
     fun onMapDidChange()
 }
-

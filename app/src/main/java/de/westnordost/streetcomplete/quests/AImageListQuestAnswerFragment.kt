@@ -21,7 +21,7 @@ import kotlin.collections.ArrayList
  * T is the type of the answer object (also a simple model object) created by the quest
  * form and consumed by the quest type. In MVC, this would be the model.
  */
-abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AImageListQuestAnswerFragment<I, T> : AbstractQuestFormAnswerFragment<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)

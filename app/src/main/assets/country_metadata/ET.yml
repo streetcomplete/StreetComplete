@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [CBE, Government, Dashen Bank, Commercial Bank of Ethiopia, Wegagen Bank, Bank of Abyssinia, cbe, CBE ATM, Zemen Bank, Awash International Bank, Addis International Bank, United Bank, Commercial bank of Ethiopia, Awash Bank]
+atmOperators: [CBE, Government, Dashen Bank, Commercial Bank of Ethiopia, Wegagen Bank, Bank of Abyssinia, CBE ATM, Zemen Bank, Awash International Bank, Addis International Bank, United Bank, Awash Bank]
 centerLineStyle: yellow
 mobileCountryCode: 636
 noParkingSignStyle: vienna

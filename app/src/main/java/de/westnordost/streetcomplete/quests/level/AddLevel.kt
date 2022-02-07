@@ -27,7 +27,7 @@ class AddLevel : OsmElementQuestType<String> {
 
     private val thingsWithLevelFilter by lazy { """
         nodes, ways, relations with level
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
     *  outline */
@@ -35,7 +35,7 @@ class AddLevel : OsmElementQuestType<String> {
         nodes with
          (${isKindOfShopExpression()})
          and !level and (name or brand)
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Add level to shops"
     override val wikiLink = "Key:level"

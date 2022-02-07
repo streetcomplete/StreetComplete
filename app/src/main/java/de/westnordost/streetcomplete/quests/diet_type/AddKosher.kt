@@ -35,12 +35,14 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+        getMapData().filter("nodes, ways, relations with " +
+            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
+        )
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_kosher)
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is DietAvailability -> tags.updateWithCheckDate("diet:kosher", answer.osmValue)
             NoFood -> tags["food"] = "no"
         }

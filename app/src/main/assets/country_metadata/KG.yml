@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, Demir bank, РСК, DemirBank, DEMiR Bank, КБ Кыргызстан, Халык Банк, Айыл Банк, РСК банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Демир Банк, Коммерческий банк Кыргызстан]
+atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, РСК, DemirBank, КБ Кыргызстан, Халык Банк, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Коммерческий банк Кыргызстан]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 livingStreetSignStyle: russia

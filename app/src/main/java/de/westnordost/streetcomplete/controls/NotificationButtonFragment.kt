@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource
@@ -15,12 +14,12 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Handles showing a button with a little counter that shows how many unread notifications there are */
 class NotificationButtonFragment : Fragment(R.layout.fragment_notification_button) {
 
-    @Inject lateinit var notificationsSource: NotificationsSource
+    private val notificationsSource: NotificationsSource by inject()
 
     interface Listener {
         fun onClickShowNotification(notification: Notification)
@@ -33,10 +32,6 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
         override fun onNumberOfNotificationsUpdated(numberOfNotifications: Int) {
             viewLifecycleScope.launch { updateButtonStateAnimated(numberOfNotifications) }
         }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +60,7 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
         notificationButton.notificationsCount = numberOfNotifications
         if (notificationButton.isVisible && numberOfNotifications == 0) {
             notificationButton.popOut()
-        } else if(!notificationButton.isVisible && numberOfNotifications > 0) {
+        } else if (!notificationButton.isVisible && numberOfNotifications > 0) {
             notificationButton.popIn()
         }
     }

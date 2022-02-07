@@ -10,7 +10,7 @@ enum class SpeedMeasurementUnit(private val displayString: String) {
     override fun toString() = displayString
 }
 
-fun String.toSpeedMeasurementUnit() = when(this) {
+fun String.toSpeedMeasurementUnit() = when (this) {
     "kilometers per hour" -> KILOMETERS_PER_HOUR
     "miles per hour" -> MILES_PER_HOUR
     else -> throw UnsupportedOperationException("not implemented")

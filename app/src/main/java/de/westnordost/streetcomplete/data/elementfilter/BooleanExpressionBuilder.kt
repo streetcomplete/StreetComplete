@@ -17,7 +17,7 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
         node.flatten()
 
         // flatten cannot remove itself, but we wanna do that
-        when(node.children.size) {
+        when (node.children.size) {
             0 -> return null
             1 -> {
                 val firstChild = node.children.first()
@@ -39,9 +39,9 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
     }
 
     fun addCloseBracket() {
-        if (--bracketCount < 0 ) throw IllegalStateException("Closed one bracket too much")
+        if (--bracketCount < 0) throw IllegalStateException("Closed one bracket too much")
 
-        while(node !is BracketHelper) {
+        while (node !is BracketHelper) {
             node = node.parent!!
         }
         node = node.parent!!
@@ -70,15 +70,14 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
             val nodeParent = node.parent
             if (nodeParent is AnyOf) {
                 node = nodeParent
-            } else  {
+            } else {
                 nodeParent?.removeChild(allOf)
                 val anyOf = AnyOf<I, T>()
                 anyOf.addChild(allOf)
                 nodeParent?.addChild(anyOf)
                 node = anyOf
             }
-        }
-        else if (group != null) {
+        } else if (group != null) {
             val last = node.children.last()
             val anyOf = AnyOf<I, T>()
             node.replaceChild(last, anyOf)

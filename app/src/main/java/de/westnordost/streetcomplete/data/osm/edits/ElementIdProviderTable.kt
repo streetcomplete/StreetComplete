@@ -17,10 +17,12 @@ object ElementIdProviderTable {
         );
         CREATE INDEX osm_element_id_provider_edit_id_idx ON $NAME (
             ${Columns.EDIT_ID}
-        );"""
+        );
+    """
 
     const val INDEX_CREATE = """
         CREATE INDEX osm_element_id_provider_edit_id_idx ON $NAME (
             ${Columns.EDIT_ID}
-        );"""
+        );
+    """
 }

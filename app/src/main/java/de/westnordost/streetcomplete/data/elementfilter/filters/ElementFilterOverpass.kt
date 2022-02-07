@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 
-fun ElementFilter.toOverpassString(): String = when(this) {
+fun ElementFilter.toOverpassString(): String = when (this) {
     is CombineFilters -> filters.joinToString("") { it.toOverpassString() }
     is CompareDateTagValue -> {
         val strVal = dateFilter.date.toCheckDateString()
@@ -38,7 +38,7 @@ fun ElementFilter.toOverpassString(): String = when(this) {
     }
     is CompareTagValue -> {
         val strVal = if (value - value.toInt() == 0f) value.toInt().toString() else value.toString()
-        val operator = when(this) {
+        val operator = when (this) {
             is HasTagGreaterOrEqualThan -> ">="
             is HasTagLessOrEqualThan -> "<="
             is HasTagGreaterThan -> ">"

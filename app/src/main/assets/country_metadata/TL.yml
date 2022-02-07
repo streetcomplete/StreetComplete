@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BNU, Mandiri, LOOS24, ANZ, ANZ Bank, Loos24]
+atmOperators: [BNU, Mandiri, LOOS24, ANZ, ANZ Bank]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 514

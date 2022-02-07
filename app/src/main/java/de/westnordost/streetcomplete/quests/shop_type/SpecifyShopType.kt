@@ -36,18 +36,19 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = when {
-        hasProperName(tags)  -> R.string.quest_shop_type_title
-        else            -> R.string.quest_shop_type_title_no_name
+        hasProperName(tags) -> R.string.quest_shop_type_title
+        else -> R.string.quest_shop_type_title_no_name
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+        getMapData().filter("nodes, ways, relations with " +
+            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
+        )
 
     override fun createForm() = ShopTypeForm()
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.keys.containsAny(listOf("name", "brand", "operator"))
-
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, timestampEdited: Long) {
         tags.removeCheckDates()
@@ -64,7 +65,6 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 for ((key, value) in answer.tags) {
                     tags[key] = value
                 }
-
             }
         }
     }

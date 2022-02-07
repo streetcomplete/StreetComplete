@@ -34,7 +34,7 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     override fun createForm() = DetermineRecyclingGlassForm()
 
     override fun applyAnswerTo(answer: RecyclingGlass, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             ANY -> {
                 // to mark that it has been checked
                 tags["recycling:glass_bottles"] = "yes"

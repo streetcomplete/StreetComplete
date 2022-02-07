@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.DisplaysTitle
 import de.westnordost.streetcomplete.HasTitle
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -29,19 +28,19 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
-
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasTitle {
 
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var questPresetsSource: QuestPresetsSource
-    @Inject internal lateinit var visibleQuestTypeController: VisibleQuestTypeController
-    @Inject internal lateinit var questTypeOrderController: QuestTypeOrderController
-    @Inject internal lateinit var countryBoundaries: FutureTask<CountryBoundaries>
-    @Inject internal lateinit var prefs: SharedPreferences
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
+    private val visibleQuestTypeController: VisibleQuestTypeController by inject()
+    private val questTypeOrderController: QuestTypeOrderController by inject()
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val prefs: SharedPreferences by inject()
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
 
@@ -69,10 +68,6 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
         override fun onQuestTypeVisibilitiesChanged() {
             viewLifecycleScope.launch { updateTitle() }
         }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {
@@ -119,7 +114,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
             R.id.action_deselect_all -> {
                 AlertDialog.Builder(requireContext())
                     .setTitle(R.string.pref_quests_deselect_all)
-                    .setPositiveButton(android.R.string.ok) { _,_ -> deselectAllQuests() }
+                    .setPositiveButton(android.R.string.ok) { _, _ -> deselectAllQuests() }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()
                 return true

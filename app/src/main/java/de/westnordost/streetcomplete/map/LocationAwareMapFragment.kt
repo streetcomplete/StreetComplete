@@ -67,7 +67,6 @@ open class LocationAwareMapFragment : MapFragment() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     init {
@@ -77,7 +76,8 @@ open class LocationAwareMapFragment : MapFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        compass = Compass(context.getSystemService<SensorManager>()!!,
+        compass = Compass(
+            context.getSystemService<SensorManager>()!!,
             context.getSystemService<WindowManager>()!!.defaultDisplay,
             this::onCompassRotationChanged
         )
@@ -264,8 +264,7 @@ private fun <T> List<T?>.unflattenNullTerminated(): ArrayList<ArrayList<T>> {
     for (it in this) {
         if (it != null) {
             current.add(it)
-        }
-        else {
+        } else {
             result.add(current)
             current = ArrayList()
         }

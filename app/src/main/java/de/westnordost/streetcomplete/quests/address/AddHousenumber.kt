@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.isCompletelyInside
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
@@ -26,13 +26,13 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
-            "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
-            "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
-            "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
-            "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
-            "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
-            "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
-            "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
+        "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
+        "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+        "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+        "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+        "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+        "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
+        "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
 
     override val questTypeAchievements = listOf(POSTMAN)
@@ -66,8 +66,8 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
         if (buildings.isEmpty()) return listOf()
 
         /** exclude buildings that intersect with the bounding box because it is not possible to
-           ascertain for these if there is an address node within the building - it could be outside
-           the bounding box */
+            ascertain for these if there is an address node within the building - it could be outside
+            the bounding box */
 
         val buildingGeometriesById = buildings.associate {
             it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
@@ -132,7 +132,7 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
     override fun createForm() = AddHousenumberForm()
 
     override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoHouseNumber -> tags["nohousenumber"] = "yes"
             is HouseNumber   -> tags["addr:housenumber"] = answer.number
             is HouseName     -> tags["addr:housename"] = answer.name
@@ -162,24 +162,24 @@ class AddHousenumber :  OsmElementQuestType<HousenumberAnswer> {
 
 private val notABuildingFilter by lazy { """
     ways, relations with !building"
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val nonBuildingAreasWithAddressFilter by lazy { """
     ways, relations with
       (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
       and !building
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val nonMultipolygonRelationsWithAddressFilter by lazy { """
     relations with
       type != multipolygon
       and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val nodesWithAddressFilter by lazy { """
    nodes with
      addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val buildingsWithMissingAddressFilter by lazy { """
     ways, relations with
@@ -193,7 +193,7 @@ private val buildingsWithMissingAddressFilter by lazy { """
       and !addr:streetnumber
       and !noaddress
       and !nohousenumber
-    """.toElementFilterExpression()}
+""".toElementFilterExpression() }
 
 private val buildingTypesThatShouldHaveAddresses = listOf(
     "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",

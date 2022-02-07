@@ -22,5 +22,6 @@ object NodeTable {
             ${Columns.TAGS} text,
             ${Columns.TIMESTAMP} int NOT NULL,
             ${Columns.LAST_SYNC} int NOT NULL
-        );"""
+        );
+    """
 }

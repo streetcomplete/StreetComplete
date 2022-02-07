@@ -9,10 +9,8 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.osmnotes.NotesModule
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
@@ -27,19 +25,21 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import java.io.File
 import java.util.Locale
-import javax.inject.Inject
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    @Inject internal lateinit var userDataSource: UserDataSource
-    @Inject internal lateinit var userLoginStatusController: UserLoginStatusController
-    @Inject internal lateinit var userUpdater: UserUpdater
-    @Inject internal lateinit var statisticsSource: StatisticsSource
-    @Inject internal lateinit var achievementsSource: AchievementsSource
-    @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
+    private val userDataSource: UserDataSource by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userUpdater: UserUpdater by inject()
+    private val statisticsSource: StatisticsSource by inject()
+    private val achievementsSource: AchievementsSource by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val avatarsCacheDirectory: File by inject(named("AvatarsCacheDirectory"))
 
     private lateinit var anonAvatar: Bitmap
 
@@ -71,10 +71,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
     private val userAvatarListener = object : UserUpdater.Listener {
         override fun onUserAvatarUpdated() { viewLifecycleScope.launch { updateAvatar() } }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {
@@ -126,8 +122,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updateAvatar() {
-        val cacheDir = NotesModule.getAvatarsCacheDirectory(requireContext())
-        val avatarFile = File(cacheDir.toString() + File.separator + userDataSource.userId)
+        val avatarFile = File(avatarsCacheDirectory.toString() + File.separator + userDataSource.userId)
         val avatar = if (avatarFile.exists()) BitmapFactory.decodeFile(avatarFile.path) else anonAvatar
         binding.userAvatarImageView.setImageBitmap(avatar)
     }
@@ -185,5 +180,4 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
-
 }

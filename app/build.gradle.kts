@@ -21,7 +21,6 @@ android {
 
     signingConfigs {
         create("release") {
-
         }
     }
 
@@ -68,13 +67,13 @@ android {
     }
 
     lint {
+        // there is currently always an internal error "Unexpected lint invalid arguments" when executing lintAnalyze*, so whatever, disable this then!
+        isCheckReleaseBuilds = false
         disable("MissingTranslation")
         ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
         isAbortOnError = false
     }
 }
-
-
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
@@ -108,7 +107,7 @@ dependencies {
     val kotlinVersion = "1.6.10"
     val mockitoVersion = "3.12.4"
     val kotlinxVersion = "1.6.0"
-    val daggerVersion = "2.40.5"
+    val koinVersion = "3.1.5"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -124,8 +123,8 @@ dependencies {
     androidTestImplementation("org.assertj:assertj-core:2.8.0")
 
     // dependency injection
-    implementation("com.google.dagger:dagger:$daggerVersion")
-    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
+    implementation("io.insert-koin:koin-android-compat:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
     // Android stuff
     implementation("com.google.android.material:material:1.4.0")
@@ -133,8 +132,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.annotation:annotation:1.3.0")
-    implementation("androidx.fragment:fragment-ktx:1.4.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
@@ -187,11 +186,14 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor etc. */
 val bcp47ExportLanguages = setOf(
-    "am","ar","ast","bg","bs","ca","cs","da","de","el","en","en-AU","en-GB","es","eu",
-    "fa","fi","fr","gl","hr","hu","id","it", "ja","ko","lt","ml","nb","no","nl","nn",
-    "pl","pt","pt-BR","ro","ru","sk","sr-cyrl","sv","th","tr","uk","zh","zh-CN","zh-HK","zh-TW"
+    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el", "en", "en-AU", "en-GB", "es", "eu",
+    "fa", "fi", "fr", "gl", "hr", "hu", "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn",
+    "pl", "pt", "pt-BR", "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
 )
-val nsiVersion = "v6.0.20220124"
+
+// see https://github.com/osmlab/name-suggestion-index/tags for latest version
+val nsiVersion = "v6.0.20220131"
+// see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.1"
 
 tasks.register("updateAvailableLanguages") {

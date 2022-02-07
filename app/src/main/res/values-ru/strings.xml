@@ -1797,4 +1797,5 @@
     <string name="achievement_lifesaver_solved_X">"Вы решили %d квестов помогающих службам спасения!"</string>
     <string name="quest_fuelSelfService_title">"Можете ли вы сами заправиться бензином на этой заправке?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Этот тип квеста по умолчанию отключен, потому что он занимает довольно много времени и часто сложно сделать правильный выбор. Вы можете включить этот тип квеста только в том случае, если вы действительно намерены добавить эти данные."</string>
+    <string name="quest_airConditioning_no_name_title">"Это место (%s) оснащено кондиционером?"</string>
 </resources>

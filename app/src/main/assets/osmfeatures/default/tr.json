@@ -4211,20 +4211,11 @@
                 "highway/crossing/marked": {
                     "name": "İşaretli Yaya Geçidi"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "İşaretsiz Yaya Geçidi"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "İşaretsiz Yaya Geçidi (Kasisli)"
-                },
                 "highway/crossing/zebra": {
                     "name": "İşaretli Yaya Geçidi"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
                 },
                 "highway/cycleway": {
                     "name": "Bisiklet Yolu",
@@ -4271,23 +4262,14 @@
                 "highway/footway/marked": {
                     "name": "İşaretli Yaya Geçidi"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Kaldırım"
                 },
                 "highway/footway/unmarked": {
                     "name": "İşaretsiz Yaya Geçidi"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "İşaretsiz Yaya Geçidi (Kasisli)"
-                },
                 "highway/footway/zebra": {
                     "name": "İşaretli Yaya Geçidi"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
                 },
                 "highway/give_way": {
                     "name": "Yol Ver İşareti",

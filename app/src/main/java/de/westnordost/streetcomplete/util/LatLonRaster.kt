@@ -32,7 +32,7 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
     fun insert(p: LatLon) {
         val x = longitudeToCellX(p.longitude)
         val y = latitudeToCellY(p.latitude)
-        if(!isInsideBounds(x, y)) return
+        if (!isInsideBounds(x, y)) return
         var list = raster[y * rasterWidth + x]
         if (list == null) {
             list = ArrayList()
@@ -50,7 +50,7 @@ class LatLonRaster(bounds: BoundingBox, private val cellSize: Double) {
         return sequence {
             for (y in startY..endY) {
                 for (x in startX..endX) {
-                    raster[y * rasterWidth + x]?.let{ yieldAll(it) }
+                    raster[y * rasterWidth + x]?.let { yieldAll(it) }
                 }
             }
         }.asIterable()

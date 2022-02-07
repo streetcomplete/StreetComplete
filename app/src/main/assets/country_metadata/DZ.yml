@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [بريد الجزائر, Algérie Poste, بي إن بي باريبا, BNP Paribas El Djazaïr, Algerie Poste, القرض الشعبي الجزائري, الصندوق الوطني للتوفير والاحتياط, بنك الجزائر الخارجي, CPA, Algérie poste, سوسيتيه جنرال, CCP, GAB CCP, GAB, CNEP, Algerie poste, algerie poste]
+atmOperators: [بريد الجزائر, Algérie Poste, بي إن بي باريبا, BNP Paribas El Djazaïr, Algerie Poste, القرض الشعبي الجزائري, الصندوق الوطني للتوفير والاحتياط, بنك الجزائر الخارجي, CPA, سوسيتيه جنرال, CCP, GAB CCP, GAB, CNEP]
 firstDayOfWorkweek: Su
 mobileCountryCode: 603
 noParkingSignStyle: vienna

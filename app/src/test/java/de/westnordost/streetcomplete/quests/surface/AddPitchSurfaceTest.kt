@@ -41,10 +41,10 @@ class AddPitchSurfaceTest {
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
-        assertTrue(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
+        assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 
     private fun assertIsNotApplicable(vararg pairs: Pair<String, String>) {
-        assertFalse(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
+        assertFalse(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 }

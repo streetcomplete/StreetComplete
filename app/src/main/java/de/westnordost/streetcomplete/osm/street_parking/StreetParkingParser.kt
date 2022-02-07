@@ -32,7 +32,7 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
         "no_stopping" -> return StreetStoppingProhibited
         "no" -> {
             val parkingCondition = tags["parking:condition$sideVal"]
-            return when(parkingCondition) {
+            return when (parkingCondition) {
                 // new style tagging
                 "no_parking" -> StreetParkingProhibited
                 "no_standing" -> StreetStandingProhibited
@@ -59,14 +59,14 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
     }
 }
 
-private fun String.toParkingOrientation() = when(this) {
+private fun String.toParkingOrientation() = when (this) {
     "parallel" -> PARALLEL
     "diagonal" -> DIAGONAL
     "perpendicular" -> PERPENDICULAR
     else -> null
 }
 
-private fun String.toParkingPosition() = when(this) {
+private fun String.toParkingPosition() = when (this) {
     "on_street", "on-street" -> ON_STREET
     "half_on_kerb" -> HALF_ON_KERB
     "on_kerb" -> ON_KERB

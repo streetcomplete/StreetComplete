@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Kazkom, Амонатбонк, Amonat Bank, Алиф бонк, Amonatbonk, Эсхата, KazKom, Amonatbank, Агроинвест бонк, Бонки Эсхата, амонатбонк, Банкомат, Eskhata Bank, Эсхата Банк, терминали шот гузарони, Dushanbe City ATM 178, Halyk Bank]
+atmOperators: [Kazkom, Амонатбонк, Amonat Bank, Алиф бонк, Amonatbonk, Эсхата, Amonatbank, Агроинвест бонк, Бонки Эсхата, Банкомат, Eskhata Bank, Эсхата Банк, терминали шот гузарони, Dushanbe City ATM 178, Halyk Bank]
 mobileCountryCode: 436
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

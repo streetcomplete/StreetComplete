@@ -43,7 +43,7 @@ enum class Cycleway {
     SIDEWALK_EXPLICIT,
     // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
-    //SIDEWALK_OK,
+    // SIDEWALK_OK,
 
     // no cycleway
     NONE,
@@ -64,15 +64,13 @@ enum class Cycleway {
 
     /** is a lane (cycleway=lane or cycleway=shared_lane), shared on busway doesn't count as a lane
      *  in that sense because it is not a subtag of the mentioned tags */
-    val isLane get() = when(this) {
+    val isLane get() = when (this) {
         EXCLUSIVE_LANE, DUAL_LANE, ADVISORY_LANE, UNSPECIFIED_LANE, UNKNOWN_LANE,
         SUGGESTION_LANE, PICTOGRAMS, UNSPECIFIED_SHARED_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false
     }
 
-
-
-    val isUnknown get() = when(this) {
+    val isUnknown get() = when (this) {
         UNKNOWN, UNKNOWN_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false
     }
@@ -82,25 +80,25 @@ enum class Cycleway {
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
 }
 
-fun Cycleway.isAmbiguous(countryCode: String) = when(this) {
+fun Cycleway.isAmbiguous(countryCode: String) = when (this) {
     UNSPECIFIED_SHARED_LANE -> true
     // all cycle lanes in Belgium and Norway are exclusive
     UNSPECIFIED_LANE -> countryCode !in listOf("BE", "NO")
     else -> false
 }
 
-fun Cycleway.isSuperfluous(countryCode: String) = when(this) {
+fun Cycleway.isSuperfluous(countryCode: String) = when (this) {
     // all cycle lanes in Belgium and Norway are exclusive
     EXCLUSIVE_LANE, ADVISORY_LANE -> countryCode in listOf("BE", "NO")
     else -> false
 }
 
 fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
-    !isUnknown && !isInvalid && !isAmbiguous(countryCode) && !isSuperfluous(countryCode) &&
+    !isUnknown && !isInvalid && !isAmbiguous(countryCode) && !isSuperfluous(countryCode)
     /* suggestion lanes are only known in Belgium and Netherlands */
-    (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
+    && (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
 
-val Cycleway.estimatedWidth: Float get() = when(this) {
+val Cycleway.estimatedWidth: Float get() = when (this) {
     EXCLUSIVE_LANE -> 1.5f
     DUAL_LANE -> 3f
     ADVISORY_LANE -> 1f

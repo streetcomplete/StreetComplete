@@ -33,7 +33,7 @@ class EditHistoryPinsManager(
     private val pinsMapComponent: PinsMapComponent,
     private val editHistorySource: EditHistorySource,
     private val resources: Resources
-): LifecycleObserver {
+) : LifecycleObserver {
 
     /** Switch active-ness of edit history pins layer */
     var isActive: Boolean = false
@@ -104,8 +104,7 @@ private const val EDIT_TYPE_NOTE = "note"
 private const val EDIT_TYPE_HIDE_OSM_NOTE_QUEST = "hide_osm_note_quest"
 private const val EDIT_TYPE_HIDE_OSM_QUEST = "hide_osm_quest"
 
-
-private fun Edit.toProperties(): Map<String, String> = when(this) {
+private fun Edit.toProperties(): Map<String, String> = when (this) {
     is ElementEdit -> mapOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_ELEMENT,
         MARKER_ID to id.toString()
@@ -127,7 +126,7 @@ private fun Edit.toProperties(): Map<String, String> = when(this) {
     else -> throw IllegalArgumentException()
 }
 
-private fun Map<String, String>.toEditKey(): EditKey? = when(get(MARKER_EDIT_TYPE)) {
+private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TYPE)) {
     EDIT_TYPE_ELEMENT ->
         ElementEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_NOTE ->

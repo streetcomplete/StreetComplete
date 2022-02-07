@@ -8,7 +8,7 @@ interface MapDataWithGeometry : MapData {
     fun getWayGeometry(id: Long): ElementGeometry?
     fun getRelationGeometry(id: Long): ElementGeometry?
 
-    fun getGeometry(elementType: ElementType, id: Long): ElementGeometry? = when(elementType) {
+    fun getGeometry(elementType: ElementType, id: Long): ElementGeometry? = when (elementType) {
         ElementType.NODE -> getNodeGeometry(id)
         ElementType.WAY -> getWayGeometry(id)
         ElementType.RELATION -> getRelationGeometry(id)

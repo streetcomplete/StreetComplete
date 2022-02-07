@@ -32,14 +32,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Automatically downloads new quests around the user's location and uploads quests.
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-@Singleton class QuestAutoSyncer @Inject constructor(
+class QuestAutoSyncer(
     private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
@@ -217,5 +215,4 @@ import javax.inject.Singleton
     companion object {
         private const val TAG = "QuestAutoSyncer"
     }
-
 }

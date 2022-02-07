@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Комерцијална банка, Banca Intesa, Komercijalna banka, Raiffeisen Bank, TEB, Poštanska Štedionica, NLB Banka, Eurobank, AIK Banka, Raiffeisen, Erste bank, NLB, OTP Bank, Poštanska štedionica, BKT, TEB Bank, Bankomat, Aik Banka, Hypo Alpe Adria, Telenor, Postanska stedionica, OTP BANK, Pcb, Erste, Credit Agricole, BPB, OTP Banka, ProCredit Bank, Банка Поштанска штедионица, Bank Intesa, Addiko bank, Banka Intesa, NLB Bank, Поштанска штедионица, Banka Ekonomike]
+atmOperators: [Комерцијална банка, Banca Intesa, Komercijalna banka, Raiffeisen Bank, TEB, Poštanska Štedionica, NLB Banka, Eurobank, AIK Banka, Raiffeisen, Erste bank, NLB, OTP Bank, BKT, TEB Bank, Bankomat, Hypo Alpe Adria, Telenor, Postanska stedionica, Pcb, Erste, Credit Agricole, BPB, OTP Banka, ProCredit Bank, Банка Поштанска штедионица, Bank Intesa, Addiko bank, Banka Intesa, NLB Bank, Поштанска штедионица, Banka Ekonomike]
 chargingStationOperators: [putevi srbije]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

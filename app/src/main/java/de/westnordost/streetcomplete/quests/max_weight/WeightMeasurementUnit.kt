@@ -10,13 +10,13 @@ enum class WeightMeasurementUnit {
     POUND
 }
 
-fun WeightMeasurementUnit.toDisplayString() = when(this) {
+fun WeightMeasurementUnit.toDisplayString() = when (this) {
     TON       -> "TONS"
     SHORT_TON -> "TONS"
     POUND     -> "POUNDS"
 }
 
-fun String.toWeightMeasurementUnit() = when(this) {
+fun String.toWeightMeasurementUnit() = when (this) {
     "ton"       -> TON
     "short ton" -> SHORT_TON
     "pound"     -> POUND
