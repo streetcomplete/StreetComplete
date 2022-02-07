@@ -316,12 +316,12 @@ What was described above is an attempt to cover all aspects of quest creation, w
 
 Below is some additional info.
 
-## getTitle Parameters
+## getTitle and getTitleArgs
 In some cases, the quest will mention the name and type of feature. For example, in the case of shops to make their identification possible.
 
 This requires preparing space in the message for filling at runtime,
 
-And to add the mechanism supplying this data. Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L102-L111) that will:
+And to add the mechanism supplying this data. Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L104-L115) that will:
 
 ```
     override fun getTitle(tags: Map<String, String>) =
@@ -336,9 +336,21 @@ And to add the mechanism supplying this data. Here is [some typical code](https:
     }
 ``` 
 
-- try to pass name, feature type (such as "greengrocer", translated to the proper language)
-- if name is not tagged: brand and feature type
-- or just feature type
+- `getTitleArgs` tries to pass to the title
+  - name of the object
+  - brand of the object (only if ``name` tag is not used, and `brand` tag is present)
+  - feature type (such as "greengrocer", translated to the proper language, based on [iD presets](https://github.com/westnordost/osmfeatures))
+
+[Filtering in the element selection](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L20) ensures that every object will have either `name` or `brand` tag.
+
+Though description from iD presets is not guaranted.
+
+So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
+
+* `quest_wheelchairAccess_name_type_title` which represents `Is %1$s (%2$s) wheelchair accessible?` (or translation). Note presence of `%1$s` and `%2$s` which will be replaced by text provided by ``getTitleArgs`
+* In case of no feature type being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?`
+
+This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code.
 
 ## Designing the form
 
