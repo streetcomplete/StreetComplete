@@ -1,3 +1,5 @@
+This file describes in detail process of creating a new quest.
+
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development).
 
 If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest where the interface design matches an existing one is quite simple.
