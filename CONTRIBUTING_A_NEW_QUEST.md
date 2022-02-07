@@ -35,7 +35,10 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 # Dependencies - initial setup
 
 - install necessary software (Android Studio and git)
-- clone StreetComplete repository
+- create GitHub account if needed
+- visit [https://github.com/streetcomplete/StreetComplete](https://github.com/streetcomplete/StreetComplete) and press "fork" button on top right
+	+ this creates a copy of StreetComplete repository that you control and can prepare code there
+- clone your fork of a StreetComplete repository
 - open StreetComplete in Android Studio
 - [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also []connect to a real device via USB](https://developer.android.com/studio/run/device), this can replace using the emulator)
 - run StreetComplete in the emulator (to verify that everything was setup as required)
@@ -49,6 +52,10 @@ To [repeat](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIB
 
 ## Existing proposals
 You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
+
+# Prepare repository for development
+
+That is a good moment create a branch and switch to it (`git checkout -b short_branch_name_describing_planned_work`)
 
 # Learn from existing code
 
