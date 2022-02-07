@@ -31,8 +31,10 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
     private var networkCancellationSignal = CancellationSignal()
     private var lastLocation: Location? = null
 
-    private val deviceHasGPS: Boolean get() = locationManager.allProviders.contains(GPS_PROVIDER)
-    private val deviceHasNetworkLocationProvider: Boolean get() = locationManager.allProviders.contains(NETWORK_PROVIDER)
+    private val deviceHasGPS: Boolean
+        get() = LocationManagerCompat.hasProvider(locationManager, GPS_PROVIDER)
+    private val deviceHasNetworkLocationProvider: Boolean
+        get() = LocationManagerCompat.hasProvider(locationManager, NETWORK_PROVIDER)
 
     private val locationListener = LocationListenerCompat { location ->
         if (location.isBetterThan(lastLocation)) {
