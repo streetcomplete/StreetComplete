@@ -143,7 +143,7 @@ Also, for very detailed information that can be assumed to always have the same 
 
 ### Properties
 
-You can obtain more info about properties by mousing over a property and pressing Ctrl+Q within Android Studio
+You can obtain more info about properties by placing the cursor in a property and pressing Ctrl+Q within Android Studio.
 
 
 #### changesetComment
