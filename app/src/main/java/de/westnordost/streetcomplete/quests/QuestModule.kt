@@ -118,6 +118,7 @@ import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.quests.surface.AddSidewalkSurface
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
@@ -387,6 +388,7 @@ import javax.inject.Singleton
         AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
         AddFootwayPartSurface(),
         AddCyclewayPartSurface(),
+        AddSidewalkSurface(),
 
         /* should best be after road surface because it excludes unpaved roads, also, need to search
         *  for the sign which is one reason why it is disabled by default */

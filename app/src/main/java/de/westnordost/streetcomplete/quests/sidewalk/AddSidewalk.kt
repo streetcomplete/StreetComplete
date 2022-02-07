@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.osm.estimateCycleTrackWidth
 import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
+import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.util.isNearAndAligned
 
 class AddSidewalk : OsmElementQuestType<SidewalkSides> {
