@@ -72,7 +72,7 @@ Are you trying to implement a quest that will affect roads and paths? Take `AddW
 
 Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
-Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
+Quests are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
 
 ### Locating a quest
