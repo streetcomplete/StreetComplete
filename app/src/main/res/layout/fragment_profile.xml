@@ -275,7 +275,7 @@
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/background"
+                            android:textColor="@color/rank_text"
                             tools:text="123"/>
 
                         <TextView
@@ -307,7 +307,7 @@
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/background"
+                            android:textColor="@color/rank_text"
                             tools:text="123"/>
 
                         <TextView
@@ -339,7 +339,7 @@
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/background"
+                            android:textColor="@color/rank_text"
                             tools:text="123"/>
 
                         <TextView
@@ -373,6 +373,7 @@
                             app:autoSizeMinTextSize="12dp"
                             android:textColor="@color/background"
                             tools:text="123"/>
+                        <!-- TODO android:textColor="@color/rank_text" -->
 
                         <TextView
                             android:layout_width="match_parent"
@@ -403,7 +404,7 @@
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/background"
+                            android:textColor="@color/rank_text"
                             tools:text="123"/>
 
                         <TextView
