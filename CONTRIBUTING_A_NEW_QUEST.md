@@ -36,7 +36,7 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 
 # Dependencies - initial setup
 
-- install necessary software (Android Studio and git)
+- install necessary software ([Android Studio](https://developer.android.com/studio) and [git](https://git-scm.com/downloads))
 - create GitHub account if needed
 - visit [https://github.com/streetcomplete/StreetComplete](https://github.com/streetcomplete/StreetComplete) and press "fork" button on top right
 	+ this creates a copy of StreetComplete repository that you control and can prepare code there
