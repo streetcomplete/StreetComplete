@@ -42,7 +42,7 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 	+ this creates a copy of StreetComplete repository that you control and can prepare code there
 - clone your fork of a StreetComplete repository
 - open StreetComplete in Android Studio
-- [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also []connect to a real device via USB](https://developer.android.com/studio/run/device), this can replace using the emulator)
+- [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also [connect to a real device via USB](https://developer.android.com/studio/run/device), this can replace using the emulator)
 - run StreetComplete in the emulator (to verify that everything was setup as required)
 
 If you are doing it for the first time, don't worry if there is an error to solve along the way, this is typical for setting up an Android development environment. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to information about the setup.
