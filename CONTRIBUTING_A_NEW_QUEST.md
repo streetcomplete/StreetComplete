@@ -57,7 +57,9 @@ You can also look at [quest proposals waiting for implementation](https://github
 
 # Prepare repository for development
 
-That is a good moment create a branch and switch to it (`git checkout -b short_branch_name_describing_planned_work`)
+That is a good moment create a branch and switch to it. It can be done with the following command:
+
+`git checkout -b short_branch_name_describing_planned_work`
 
 # Learn from existing code
 
