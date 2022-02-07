@@ -275,7 +275,7 @@ Typically it is done using an emulator. Note that you can set location in emulat
   * While you are there you can disable all quests except yours for easier testing.
 * Is it shown for expected elements?
 * Is it selected for some unwanted elements?
-* Can you tap on quest marker on open quest form?
+* Can you tap on quest marker to open quest form?
 * Can you fill the answer as expected?
 * Can you solve the quest?
 * Is expected tagging being applied?
