@@ -2112,7 +2112,6 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_board_type_notice_board">"Je to místní nástěnka"</string>
     <string name="quest_board_type_public_transport">"Veřejná doprava"</string>
     <string name="quest_board_type_title">"Jaké informace jsou na této informační ceduli?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ano, zobrazen(á) samostatně na mapě"</string>
     <string name="quest_board_type_map">"Je na ní mapa"</string>
     <string name="quest_board_type_map_title">"Je na ní jen a pouze mapa?"</string>
     <string name="quest_board_type_map_description">"Pokud se cedule týká konkrétního tématu, specifikujte ho, prosím, bez ohledu na to, jestli je na ní i mapa. Například na cedulích týkajících se veřejné dopravy bývá mapa s trasami autobusů. Pokud nenaleznete téma mezi odpověďmi, zvažte, prosím, jestli nezanecháte poznámku."</string>
@@ -2588,4 +2587,11 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_sidewalk_value_separate">"zobrazen samostatně na mapě"</string>
     <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
     <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
+    <string name="no_camera_permission_warning_title">"Oprávnění fotoaparátu"</string>
+    <string name="no_camera_permission_warning">"Oprávnění je nutné, aby bylo možné měřit vzdálenosti pomocí rozšířené reality."</string>
+    <string name="ar_core_error_sdk_too_old">"Tato aplikace je příliš stará, zkuste ji aktualizovat."</string>
+    <string name="ar_core_tracking_error_bad_state">"Něco je špatně. Zkuste měření restartovat."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Je tu příliš velká tma"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Příliš mnoho pohybu"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Fotoaparát je používán jinou aplikací"</string>
 </resources>

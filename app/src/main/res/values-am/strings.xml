@@ -849,7 +849,6 @@
     <string name="quest_board_type_notice_board">"የማስታወቂያ ሰሌዳ ነው"</string>
     <string name="quest_board_type_public_transport">"የሕዝብ ማመላለሻ"</string>
     <string name="quest_board_type_title">"የዚህ የመረጃ ቦርድ ርዕስ ምንድነው?"</string>
-    <string name="quest_sidewalk_separately_mapped">"አዎ በካርታው ላይ በተናጠል ታይቷል"</string>
     <string name="quest_board_type_map">"ካርታ ነው"</string>
     <string name="quest_board_type_map_title">"ካርታ ብቻ እና ካርታ ብቻ ነው?"</string>
     <string name="quest_board_type_map_description">"ቦርዱ ስለ አንድ የተወሰነ ርዕስ ከሆነ ፣ እባክዎ ካርታውንም ያካተተ ቢሆንም ይግለጹ። ለምሳሌ የህዝብ ማመላለሻ ቦርድ የአውቶቡስ መስመር ካርታ ሊኖረው ይችላል ፡፡ ርዕሰ ጉዳዩ ከሚገኙት መልሶች መካከል ካልተዘረዘረ እባክዎ በምትኩ ማስታወሻ ለመተው ያስቡ ፡፡"</string>

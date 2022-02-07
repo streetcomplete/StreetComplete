@@ -1902,7 +1902,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_board_type_notice_board">"公告板"</string>
     <string name="quest_board_type_public_transport">"公共交通"</string>
     <string name="quest_board_type_title">"该信息板的主题是什么？"</string>
-    <string name="quest_sidewalk_separately_mapped">"是的，在地图上分别展示"</string>
     <string name="quest_board_type_map">"它是一张地图"</string>
     <string name="quest_board_type_map_title">"它是且仅是一张地图吗？"</string>
 

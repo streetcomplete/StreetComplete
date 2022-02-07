@@ -318,7 +318,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Ist dieser Wegabschnitt beleuchtet?"</string>
+    <string name="quest_way_lit_title">"Ist dieser (Geh-)wegabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_named_title">"Ist %s hier beleuchtet?"</string>
     <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
@@ -459,7 +459,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="questList_disabled_in_country">"Niemals in %s gezeigt"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Hat dieser Rastplatz eine Toilette?"</string>
     <string name="quest_pathSurface_title_steps">"Welche Oberfläche haben diese Stufen?"</string>
-    <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Saumweg?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Reitweg?"</string>
     <string name="quest_pathSurface_title">"Welche Oberfläche hat dieser Weg?"</string>
     <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
     <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
@@ -830,7 +830,6 @@ Erfolge"</string>
     <string name="quest_board_type_notice_board">"Es ist eine Anschlagtafel"</string>
     <string name="quest_board_type_public_transport">"ÖPNV"</string>
     <string name="quest_board_type_title">"Worum geht es auf dieser Tafel?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, auf Karte separat abgebildet"</string>
     <string name="quest_board_type_map">"Es ist eine Karte"</string>
     <string name="quest_board_type_map_title">"Ist es einzig eine Karte?"</string>
     <string name="quest_board_type_map_description">"Wenn es auf der Tafel um ein bestimmtes Thema geht, bitte gib es an, egal ob da auch eine Karte mit dabei ist. Zum Beispiel mag eine Tafel zum öffentlichen Nahverkehr auch eine Verkehrsnetzkarte beinhalten. Wenn das Thema nicht bei den zur Verfügung stehenden Antworten dabei ist, hinterlasse bitte stattdessen eine Notiz."</string>
@@ -1178,10 +1177,10 @@ Alternativ kann auch eine Notiz (mit Foto) hinterlassen werden."</string>
     <string name="quest_fireHydrant_position_parking_lot">"In einem Parkplatz"</string>
     <string name="quest_fireHydrant_diameter_ref_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten? (Referenznummer: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (Notiz hinterlassen)"</string>
-    <string name="quest_smoothness_name_title">"Wie gut ist die Oberfläche von %s hier beschaffen?"</string>
-    <string name="quest_smoothness_square_title">"Wie gut ist die Oberfläche von diesem Platz beschaffen?"</string>
-    <string name="quest_smoothness_path_title">"Wie gut ist die Oberfläche von diesem Weg beschaffen?"</string>
-    <string name="quest_smoothness_road_title">"Wie gut ist die Oberfläche von dieser Straße beschaffen?"</string>
+    <string name="quest_smoothness_name_title">"Wie ist die Oberflächenbeschaffenheit von %s?"</string>
+    <string name="quest_smoothness_square_title">"Wie ist die Oberflächenbeschaffenheit dieses Platzes?"</string>
+    <string name="quest_smoothness_path_title">"Wie ist die Oberflächenbeschaffenheit dieses (Geh-)wegs?"</string>
+    <string name="quest_smoothness_road_title">"Wie ist die Oberflächenbeschaffenheit dieser Straße?"</string>
     <string name="quest_smoothness_title_excellent">"Eben"</string>
     <string name="quest_smoothness_title_good">"Größtenteils eben"</string>
     <string name="quest_smoothness_title_intermediate">"Ein wenig holprig"</string>
@@ -1240,4 +1239,12 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_sidewalk_value_separate">"separat auf Karte eingezeichnet"</string>
     <string name="quest_shoulder_value_yes">"Seitenstreifen"</string>
     <string name="quest_shoulder_value_no">"Kein Seitenstreifen"</string>
+    <string name="no_camera_permission_warning_title">"Kamerazugriff"</string>
+    <string name="no_camera_permission_warning">"Die Kamera wird benötigt, um Abstände mit Hilfe von erweiterter Realität zu messen."</string>
+    <string name="ar_core_error_sdk_too_old">"Die App ist zu alt, versuche zu aktualisieren."</string>
+    <string name="ar_core_tracking_error_bad_state">"Etwas hat nicht geklappt. Versuche die Messung neu zu starten."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Zu dunkel hier"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Zu viel Bewegung"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Unzureichende visuelle Merkmale hier"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Kamera wird von einer anderen App verwendet"</string>
 </resources>

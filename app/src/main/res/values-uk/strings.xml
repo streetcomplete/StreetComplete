@@ -869,7 +869,6 @@
     <string name="quest_board_type_notice_board">"Це дошка оголошень"</string>
     <string name="quest_board_type_public_transport">"Громадський транспорт"</string>
     <string name="quest_board_type_title">"Яка тема цієї інформаційної дошки?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Так, окремо показаний на мапі"</string>
     <string name="quest_board_type_map">"Це мапа"</string>
     <string name="quest_board_type_map_title">"Чи це просто мапа і лише мапа?"</string>
     <string name="quest_board_type_map_description">"Якщо дошка стосується певної теми, будь ласка, вкажіть її, незалежно від того, чи містить вона також мапу. Наприклад, дошка громадського транспорту може мати мапу автобусних маршрутів. Якщо тема не вказана серед доступних відповідей, залиште нотатку."</string>
@@ -1195,7 +1194,6 @@
     <string name="quest_generic_answer_is_actually_steps">"Ця частина є сходами"</string>
     <string name="quest_barrier_type_passage_conversion">"Чи час забору кореспонденції для цієї скриньки все ще правильний?"</string>
     <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
-    <string name="quest_traffic_calming_type_title">"Чи час забору кореспонденції для цієї %s скриньки все ще правильний?"</string>
     <string name="quest_traffic_calming_type_bump">"Не розпізнано. Спробуйте ввести тип місця, наприклад, “пекарня”. Або залиште нотатку."</string>
     <string name="quest_traffic_calming_type_hump">"Лежачий поліцейський (широкий)"</string>
     <string name="quest_traffic_calming_type_table">"Стіл (плаский верх)"</string>

@@ -13,12 +13,15 @@ import org.koin.dsl.module
 val elementEditsModule = module {
     factory { ChangesetAutoCloser(get()) }
     factory { ElementEditUploader(get(), get()) }
-    factory { ElementEditsUploader(get(), get(), get(), get(), get()) }
+
     factory { ElementEditsDao(get(), get()) }
     factory { ElementIdProviderDao(get()) }
     factory { LastEditTimeStore(get()) }
     factory { OpenChangesetsDao(get()) }
-    factory { OpenQuestChangesetsManager(get(), get(), get(), get()) }
+
+    single { OpenQuestChangesetsManager(get(), get(), get(), get()) }
+
+    single { ElementEditsUploader(get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
     single { ElementEditsController(get(), get(), get()) }

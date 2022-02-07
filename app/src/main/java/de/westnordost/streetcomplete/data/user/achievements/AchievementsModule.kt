@@ -30,10 +30,10 @@ val achievementsModule = module {
     factory(named("Achievements")) { achievements }
     factory(named("Links")) { links }
     factory(named("QuestAliases")) { questAliases }
-    factory<AchievementsSource> { get<AchievementsController>() }
     factory { UserAchievementsDao(get()) }
     factory { UserLinksDao(get()) }
 
+    single<AchievementsSource> { get<AchievementsController>() }
     single { AchievementsController(get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
 }
 

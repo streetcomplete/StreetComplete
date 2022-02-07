@@ -987,7 +987,6 @@ conquista"</string>
     <string name="quest_board_type_notice_board">"É um painel de informações"</string>
     <string name="quest_board_type_public_transport">"Transporte público"</string>
     <string name="quest_board_type_title">"Qual é o tópico deste painel de informações?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sim, mostrado separadamente no mapa"</string>
     <string name="quest_board_type_map">"É um mapa"</string>
     <string name="quest_board_type_map_title">"É um mapa e apenas um mapa?"</string>
     <string name="quest_board_type_map_description">"Se o painel for sobre um determinado tópico, especifique-o, independentemente de também incluir um mapa. Por exemplo, uma placa de transporte público pode ter um mapa de percursos de autocarro. Se o tópico não estiver listado entre as respostas disponíveis, deixe antes uma nota."</string>

@@ -5,8 +5,8 @@ import org.koin.dsl.module
 
 val osmQuestModule = module {
     factory { OsmQuestDao(get()) }
-    factory<OsmQuestSource> { get<OsmQuestController>() }
     factory { OsmQuestsHiddenDao(get()) }
 
+    single<OsmQuestSource> { get<OsmQuestController>() }
     single { OsmQuestController(get(), get(), get(), get(), get(), get(named("CountryBoundariesFuture"))) }
 }
