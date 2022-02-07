@@ -32,7 +32,7 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 - basic ability to use git (but as mentioned, anything GitHub specific will be explained) 
 - GitHub account
 - around 15GB of free space
-  - the initial setup will download half of the Internet while getting emulators and dependencies. This is typical.
+  - the initial setup will typically download half of the Internet while getting emulators and dependencies
 
 # Dependencies - initial setup
 
@@ -68,7 +68,7 @@ Find one that has the same type of interface as the one that you are trying to i
 
 Are you trying to implement a quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be a yes/no question. `AddTracktype` where the mapper will be selecting one of the images.
 
-Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
+Is it going to be asked for POIs (Points of Interest) and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
 Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
@@ -83,7 +83,7 @@ You will find an XML file with an entry looking like this:
 
 The identifier `quest_placeName_title_name` is a string reference, used in the code to allow translations.
 
-Search for this identifier in `*.kt` files, it should appear in the quest file [AddPlaceName](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt).
+Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
 
 This method can often be used to locate relevant code.
 
@@ -161,7 +161,6 @@ message used as a changeset comment
 
 #### wikiLink
 `override val wikiLink = "Key:indoor"`
-
 points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
 #### icon
@@ -305,7 +304,7 @@ After full release it will reach the entire StreetComplete audience who now will
 
 # Bad documentation is a bug
 
-Unclear documentation, including this one, is a bug. Feel free to either submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a fix or [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) describing your confusion.
+Unclear documents, including this one, are a bug. Feel free to either submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a fix or [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) describing your confusion.
 
 Note that not everything will be directly described. This document very intentionally doesn't include a step-by-step guide to installing Android Studio, [linking](CONTRIBUTING.md#development) to official docs instead.
 
@@ -354,7 +353,7 @@ Considerations about the edge cases to consider, how the design could look like 
 
 Some quests will require photos for their interface.
 
-Photo must be available on open license - so not every photo found across the Internet is usable. You can either take own photo or find an existing freely licensed photo.
+Photos must be available on open license - so not every photo found on the Internet is usable. You can either take your own photo or find an existing freely licensed photo.
 
 Good places to find freely licensed images are [Geograph](https://www.geograph.org.uk/) and [Wikimedia Commons](https://commons.wikimedia.org/).
 
@@ -370,11 +369,11 @@ Photos go to a different folder than SVGs: they can be used directly by the buil
   - [xhdpi](app/src/main/res/drawable-xhdpi) (typically 256 x 256 pixels, for rectangular ones smaller dimension should be 256 pixels)
   - [xxhdpi](app/src/main/res/drawable-xxhdpi) (typically 384 x 384 pixels, for rectangular ones smaller dimension should be 384 pixels)
 
-Each of this folders should hold the same image resized to a different resolution. While testing various images it is enough to put into one folder.
+Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
 The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may be useful, but you can also do this manually with Gimp or similar software.
 
-After adding a file remember to update [the credit file](app/src/main/res/authors.txt) (different than one for icons).
+After adding a photo, remember to update [the credit file](app/src/main/res/authors.txt) (different to the one for icons).
 
 ## Custom filters
 It is possible to use far more complex filters when querying for eligible elements.
@@ -396,4 +395,4 @@ It is possible to share and reuse [information about tagging schemes](https://gi
 
 Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
-It allows to make complex geometry checks, but writing them is also far more complex.
+It allows it to make complex geometry checks, but writing them is also far more complex.
