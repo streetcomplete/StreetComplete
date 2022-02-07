@@ -28,7 +28,7 @@ class HasTagValueLikeTest {
     @Test fun `matches like character class`() {
         val f = HasTagValueLike("maxspeed", "([1-9]|[1-2][0-9]|3[0-5]) mph")
 
-        assertTrue(f.matches(mapOf("maxspeed" to "0 mph")))
+        assertTrue(f.matches(mapOf("maxspeed" to "1 mph")))
         assertTrue(f.matches(mapOf("maxspeed" to "5 mph")))
         assertTrue(f.matches(mapOf("maxspeed" to "15 mph")))
         assertTrue(f.matches(mapOf("maxspeed" to "25 mph")))
