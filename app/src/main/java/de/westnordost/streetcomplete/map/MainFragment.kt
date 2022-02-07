@@ -253,6 +253,7 @@ class MainFragment :
         return false
     }
 
+    @SuppressLint("MissingPermission")
     override fun onStop() {
         super.onStop()
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
@@ -608,6 +609,7 @@ class MainFragment :
         locationManager.getCurrentLocation()
     }
 
+    @SuppressLint("MissingPermission")
     private fun onLocationIsDisabled() {
         binding.gpsTrackingButton.state = if (requireContext().hasLocationPermission)
             LocationState.ALLOWED else LocationState.DENIED

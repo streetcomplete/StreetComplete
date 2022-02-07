@@ -152,6 +152,7 @@ class QuestAutoSyncer(
         locationManager.requestUpdates(30 * 1000L, 250f)
     }
 
+    @SuppressLint("MissingPermission")
     fun stopPositionTracking() {
         locationManager.removeUpdates()
     }

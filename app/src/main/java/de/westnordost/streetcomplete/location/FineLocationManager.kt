@@ -6,12 +6,12 @@ import android.location.Location
 import android.location.LocationManager
 import android.location.LocationManager.GPS_PROVIDER
 import android.location.LocationManager.NETWORK_PROVIDER
-import android.os.Looper
 import androidx.annotation.RequiresPermission
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationListenerCompat
 import androidx.core.location.LocationManagerCompat
+import androidx.core.location.LocationRequestCompat
 import androidx.core.os.CancellationSignal
 import androidx.core.util.Consumer
 
@@ -56,10 +56,20 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestUpdates(minTime: Long, minDistance: Float) {
-        if (deviceHasGPS)
-            locationManager.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
-        if (deviceHasNetworkLocationProvider)
-            locationManager.requestLocationUpdates(NETWORK_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
+        val locationRequest = LocationRequestCompat.Builder(minTime)
+            .setMinUpdateDistanceMeters(minDistance)
+            .build()
+
+        if (deviceHasGPS) {
+            LocationManagerCompat.requestLocationUpdates(
+                locationManager, GPS_PROVIDER, locationRequest, mainExecutor, locationListener
+            )
+        }
+        if (deviceHasNetworkLocationProvider) {
+            LocationManagerCompat.requestLocationUpdates(
+                locationManager, NETWORK_PROVIDER, locationRequest, mainExecutor, locationListener
+            )
+        }
     }
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
@@ -77,8 +87,9 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
         }
     }
 
+    @RequiresPermission(ACCESS_FINE_LOCATION)
     @Synchronized fun removeUpdates() {
-        locationManager.removeUpdates(locationListener)
+        LocationManagerCompat.removeUpdates(locationManager, locationListener)
         gpsCancellationSignal.cancel()
         networkCancellationSignal.cancel()
     }
