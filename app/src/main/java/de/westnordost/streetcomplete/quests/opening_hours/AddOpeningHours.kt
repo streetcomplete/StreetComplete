@@ -107,7 +107,8 @@ class AddOpeningHours(
         and access !~ private|no
         and (
           name or brand or noname = yes or name:signed = no
-          or amenity = recycling or amenity = toilets or barrier
+          or barrier
+          or amenity ~ toilets|bicycle_rental
         )
         and opening_hours:signed != no
     """).toElementFilterExpression() }
