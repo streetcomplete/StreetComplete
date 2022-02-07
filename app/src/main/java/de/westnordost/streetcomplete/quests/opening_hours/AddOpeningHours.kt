@@ -95,18 +95,12 @@ class AddOpeningHours(
             )
             and (!opening_hours or opening_hours older today -1 years)
           )
-          or
-          (
-          opening_hours older today -1 years
-          and
-            (
-            leisure=park
-            or
-            barrier
-            or
-            amenity=toilets
-            or
-            amenity=bicycle_rental
+          or (
+            opening_hours older today -1 years
+            and (
+              leisure = park
+              or barrier
+              or amenity ~ toilets|bicycle_rental
             )
           )
         )
