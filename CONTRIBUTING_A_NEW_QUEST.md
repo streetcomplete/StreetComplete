@@ -22,7 +22,7 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
   - Setup of environment takes a long time
   - Editing even the simplest quest requires edits to at least two different files
   - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed
-  - It is expected that someone trying this can search for a solution to a typical problems on encountering an error message
+  - It is expected that someone trying this can search for a solution to a typical problem on encountering an error message
 - familiarity with StreetComplete as a user - it is highly recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory, but having a passing familiarity with how surveying with StreetComplete works is needed.
 - time - Android Studio setup is sadly complicated
   - Multiple hours are typical, though mostly spent on waiting for various downloads
