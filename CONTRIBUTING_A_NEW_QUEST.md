@@ -230,7 +230,7 @@ It is OK to submit a quest without own icon, using any icon as a placeholder.
 
 But it would be even better to include also icon.
 
-Note that there are some not-yet-used graphics, created for some proposed or expected quests. Maybe there is no need to create icon at all!
+Note that there are some graphics which haven't been used yet, created for proposed or expected quests; maybe you don't even need to create an icon!
 
 A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics. See [the attribution file](res/graphics/authors.txt) for what was used so far.
 
