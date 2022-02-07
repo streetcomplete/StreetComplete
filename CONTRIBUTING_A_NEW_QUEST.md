@@ -70,14 +70,14 @@ Find one that has the same type of interface as the one that you are trying to i
 
 Are you trying to implement a quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be a yes/no question. `AddTracktype` where the mapper will be selecting one of the images.
 
-Is it going to be asked for POIs (Points of Interest) and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
+Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
 Quest are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
 
 ### Locating a quest
 
-Search across the code for part of a question or other text characteristic to this quest. For example "What is the name of this place"
+Search across the code for part of a question or other text characteristic to this quest. For example "What is the name of this place".
 
 You will find an XML file with an entry looking like this:
 
