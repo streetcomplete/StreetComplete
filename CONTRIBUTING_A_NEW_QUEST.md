@@ -307,7 +307,7 @@ After full release it will reach the entire StreetComplete audience who now will
 
 Unclear documentation, including this one, is a bug. Feel free to either submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a fix or [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) describing your confusion.
 
-Note that not everything will be directly described. This document is very intentionally not including step-by-step guide to install Android Studio, [linking](CONTRIBUTING.md#development) to official docs instead.
+Note that not everything will be directly described. This document very intentionally doesn't include a step-by-step guide to installing Android Studio, [linking](CONTRIBUTING.md#development) to official docs instead.
 
 # More complexity
 What was described above is an attempt to cover all aspects of quest creation, without describing all the complexity.
