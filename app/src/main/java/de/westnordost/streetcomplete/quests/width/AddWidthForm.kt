@@ -1,10 +1,11 @@
-package de.westnordost.streetcomplete.quests.cycleway_width
+package de.westnordost.streetcomplete.quests.width
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.databinding.QuestWidthBinding
 import de.westnordost.streetcomplete.measure.ArSupportChecker
 import de.westnordost.streetcomplete.measure.MeasureActivity
@@ -29,6 +30,12 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<Length>() {
         binding.lengthInput.onInputChanged = { checkIsFormComplete() }
         binding.measureButton.isGone = !checkArSupport()
         binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }
+
+        val isRoad = osmElement!!.tags["highway"] in ALL_ROADS
+        val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
+
+        binding.widthExplanationTextView.isGone = explanation == null
+        binding.widthExplanationTextView.text = explanation
     }
 
     private suspend fun takeMeasurement() {

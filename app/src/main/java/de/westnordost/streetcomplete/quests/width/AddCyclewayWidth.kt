@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.cycleway_width
+package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -15,22 +15,31 @@ class AddCyclewayWidth(
      *  segregated */
     override val elementFilter = """
         ways with (
-          highway = cycleway and foot !~ yes|designated
-          or highway ~ cycleway|path|footway and bicycle != no and segregated = yes
-          or highway = bridleway and bicycle ~ designated|yes and segregated = yes
+          (
+            highway = cycleway
+            and foot !~ yes|designated
+            and !width
+          ) or (
+            segregated = yes
+            and !cycleway:width
+            and (
+              highway ~ cycleway|path|footway and bicycle != no
+              or highway = bridleway and bicycle ~ designated|yes
+            )
+          )
         )
+        and area != yes
         and access !~ private|no
-        and !width
     """
     override val changesetComment = "Determine cycleways width"
-    override val wikiLink = "Key:cycleway"
+    override val wikiLink = "Key:width"
     override val icon = R.drawable.ic_quest_bicycleway_width
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(BICYCLIST)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
-    override fun getTitle(tags: Map<String, String>) : Int = R.string.quest_cycleway_width_title
+    override fun getTitle(tags: Map<String, String>): Int = R.string.quest_cycleway_width_title
 
     override fun createForm() = AddWidthForm()
 
