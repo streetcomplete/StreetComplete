@@ -98,7 +98,7 @@ class AddSidewalkSurfaceTest {
         )
     }
 
-    @Test fun `smoothness tag removed when surface changes`() {
+    @Test fun `smoothness tag removed when surface changes, same on both sides`() {
         questType.verifyAnswer(
             mapOf("sidewalk:both:surface" to "asphalt", "sidewalk:both:smoothness" to "excellent"),
             SidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
@@ -107,18 +107,19 @@ class AddSidewalkSurfaceTest {
         )
     }
 
-    @Test fun `keep separate sidewalk surface tagging and remove smoothness when surface changes`() {
+    @Test fun `remove smoothness when surface changes, different on each side`() {
         questType.verifyAnswer(
             mapOf("sidewalk:left:surface" to "asphalt",
-                "sidewalk:right:surface" to "asphalt",
+                "sidewalk:right:surface" to "concrete",
                 "sidewalk:left:smoothness" to "excellent",
                 "sidewalk:right:smoothness" to "good"
             ),
             SidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
-            StringMapEntryModify("sidewalk:left:surface", "asphalt", "paving_stones"),
-            StringMapEntryModify("sidewalk:right:surface", "asphalt", "paving_stones"),
+            StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
+            StringMapEntryDelete("sidewalk:right:surface", "concrete"),
             StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
             StringMapEntryDelete("sidewalk:right:smoothness", "good"),
+            StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
         )
     }
 

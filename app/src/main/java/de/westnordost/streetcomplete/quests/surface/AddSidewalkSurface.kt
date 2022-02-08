@@ -62,13 +62,19 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun createForm() = AddSidewalkSurfaceForm()
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        val previousLeftOsmValue = tags["sidewalk:left:surface"]
-        val previousRightOsmValue = tags["sidewalk:right:surface"]
+        val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
+        val rightChanged = answer.right?.let { sideSurfaceChanged(it,  Side.RIGHT, tags) }
 
-        // Need to consider this so that smoothness values for each side are checked and deleted if necessary
-        val bothSidesPreviouslyDefinedSeparately =  previousLeftOsmValue!=null && previousRightOsmValue != null && previousLeftOsmValue == previousRightOsmValue
+        if (leftChanged == true) {
+            deleteSmoothnessKeys(Side.LEFT, tags)
+            deleteSmoothnessKeys(Side.BOTH, tags)
+        }
+        if (rightChanged == true) {
+            deleteSmoothnessKeys(Side.RIGHT, tags)
+            deleteSmoothnessKeys(Side.BOTH, tags)
+        }
 
-        if (answer.left == answer.right && !bothSidesPreviouslyDefinedSeparately) {
+        if (answer.left == answer.right) {
             answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
             deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
             deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
@@ -92,20 +98,23 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         LEFT("left"), RIGHT("right"), BOTH("both")
     }
 
+    private fun sideSurfaceChanged(surface: SurfaceAnswer, side: Side, tags: Tags): Boolean {
+        val previousSideValue = tags["sidewalk:${side.value}:surface"]
+        val previousBothOsmValue = tags["sidewalk:both:surface"]
+        val osmValue = surface.value.osmValue
+
+        return if (previousSideValue != null && previousSideValue != osmValue) {
+            true
+        } else previousBothOsmValue != null && previousBothOsmValue != osmValue
+    }
+
     private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags)
     {
         val sidewalkKey = "sidewalk:" + side.value
         val sidewalkSurfaceKey = "$sidewalkKey:surface"
-        val osmValue = surface.value.osmValue
-        val previousOsmValue = tags[sidewalkSurfaceKey]
 
-        tags.updateWithCheckDate(sidewalkSurfaceKey, osmValue)
-        // remove smoothness tag if surface was changed
-        if (previousOsmValue != null && previousOsmValue != osmValue) {
-            tags.remove("$sidewalkKey:smoothness")
-            tags.remove("$sidewalkKey:smoothness:date")
-            tags.removeCheckDatesForKey("$sidewalkKey:smoothness")
-        }
+        tags.updateWithCheckDate(sidewalkSurfaceKey, surface.value.osmValue)
+
         // add/remove note - used to describe generic surfaces
         if (surface.note != null) {
             tags["$sidewalkSurfaceKey:note"] = surface.note
@@ -114,6 +123,14 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         }
         // clean up old source tags - source should be in changeset tags
         tags.remove("source:$sidewalkSurfaceKey")
+    }
+
+    /** clear smoothness tags for the given side*/
+    private fun deleteSmoothnessKeys(side: Side, tags: Tags) {
+        val sidewalkKey = "sidewalk:" + side.value
+        tags.remove("$sidewalkKey:smoothness")
+        tags.remove("$sidewalkKey:smoothness:date")
+        tags.removeCheckDatesForKey("$sidewalkKey:smoothness")
     }
 
     /** clear previous answers for the given side */
