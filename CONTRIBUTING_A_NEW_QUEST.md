@@ -1,4 +1,4 @@
-This file describes in detail process of creating a new quest.
+This file describes in detail the process of creating a new quest.
 
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development).
 
@@ -37,8 +37,8 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 # Dependencies - initial setup
 
 - install necessary software ([Android Studio](https://developer.android.com/studio) and [git](https://git-scm.com/downloads))
-- create GitHub account if needed
-- visit [https://github.com/streetcomplete/StreetComplete](https://github.com/streetcomplete/StreetComplete) and press "fork" button on top right
+- create a GitHub [account](https://github.com/signup) if needed
+- visit [https://github.com/streetcomplete/StreetComplete](https://github.com/streetcomplete/StreetComplete) and press the "fork" button on the top right
 	+ this creates a copy of StreetComplete repository that you control and can prepare code there
 - clone your fork of a StreetComplete repository
 - open StreetComplete in Android Studio
@@ -57,7 +57,7 @@ You can also look at [quest proposals waiting for implementation](https://github
 
 # Prepare repository for development
 
-That is a good moment create a branch and switch to it. It can be done with the following command:
+That is a good moment to create a branch and switch to it. It can be done with the following command:
 
 `git checkout -b short_branch_name_describing_planned_work`
 
@@ -72,12 +72,12 @@ Are you trying to implement a quest that will affect roads and paths? Take `AddW
 
 Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
-Quests are defined in [their own folder](app/src/main/java/de/westnordost/streetcomplete/quests).
+Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
 
 ### Locating a quest
 
-Search across the code for part of a question or other text characteristic to this quest. For example "What is the name of this place".
+Search across the code for part of a question or other text specific to this quest. For example "What is the name of this place".
 
 You will find an XML file with an entry looking like this:
 
@@ -103,7 +103,7 @@ This is also likely useful here.
 
 Find some [recent ones](https://github.com/streetcomplete/StreetComplete/pulls?q=is%3Apr+is%3Aclosed) adding a quest.
 
-You can look at what was changed to achieve the goal, where relevant code is located. How much coding was needed to implement something. And what kind of comments are typical, how long one needs to wait for maintainers and so on.
+You can look at what was changed to achieve the goal, where relevant code is located. How much coding was needed to implement something? And what kind of comments are typical, how long one needs to wait for maintainers and so on.
 
 This can be also used to locate relevant code, especially helpful if some change needs to be done in multiple files.
 
@@ -254,11 +254,11 @@ A new icon can reuse the content of [other quest icons](res/graphics/quest), it 
 
 Keep similar style to existing ones and app in general. Once the quest icon is ready:
 
-- save as "Plain svg" or clean SVG file from unnecessary cruft in another way, like using [svgo](https://github.com/svg/svgo)
+- save as "Plain SVG" or clean SVG file from unnecessary cruft in another way, like using [svgo](https://github.com/svg/svgo)
 - Put SVG into `[res/graphics/quest](res/graphics/quest)` folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next step.
 - Open Android Studio
-- Right click on "app" folder in the Project tool window (top left)
+- Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
 - Select your SVG file
 - Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`), this will cause IDE to generate an XML file
@@ -269,7 +269,7 @@ Keep similar style to existing ones and app in general. Once the quest icon is r
 
 The same method applies also to other vector drawables, although they will be placed in other parts of [res/graphics/](res/graphics/)
 
-Inkscape is a typical tool to create and edit SVG files, it is a good, free and open-source so is available to all.
+Inkscape is a typical tool to create and edit SVG files, it is good, free and open-source so is available to all.
 
 # Test
 
@@ -281,14 +281,18 @@ Typically it is done using an emulator. Note that you can set location in emulat
   * Look at the quest list in settings - is your quest appearing there? If not - see [this step](#Add quest to the list of active ones).
   * While you are there you can disable all quests except yours for easier testing.
 * Is it shown for expected elements?
+  * Note that due to emulator peculiarities you may need to move map after quests are downloaded to see their markers ([gory details for curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
 * Is it selected for some unwanted elements?
-* Can you tap on quest marker to open quest form?
+* Can you tap on a quest marker to open quest form?
 * Can you fill the answer as expected?
 * Can you solve the quest?
 * Is expected tagging being applied?
-** You can look at logs for info what was applied or use undo menu from bottom-left.
-** You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers.
+  * You can look at logs for info what was applied or use undo menu from bottom-left in the app itself.
+  * You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers in settings.
 * Is quest disappearing after being solved?
+  * If no - then either tags are not being applied or element selection filter have some problems.
+
+See "logcat" (bottom left area of the screen) to see stacktrace or logging messages.
 
 # Open a pull request
 
