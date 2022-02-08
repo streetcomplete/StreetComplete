@@ -215,19 +215,20 @@ With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/s
     }
 ``` 
 
-This code is responsible for modifying `StringMapChangesBuilder` object (passed by reference).
+This code is responsible for modifying `tags` object (passed by reference).
+
+In this case it would set `indoor` tag to have either `yes` or `no` answer, depending on selection in the quest interface.
 
 Actions may include (examples from various quests):
 
-TODO update to the new syntax
-- `changes.add("indoor", answer.toYesNo())` - adds a new tag, it must not be present already
-- `changes.addOrModify("material", newMaterial)` - add a new tag if missing, override existing value if present
-- `changes.modify("sport", values)` - modify existing tag, value must be present
-- `changes.delete("amenity")` - remove key that must be present
-- `changes.deleteIfExists("stile")` - remove key if present
-- `changes.updateWithCheckDate("lit", answer.toYesNo())` - acts as `addOrModify` but will also update survey date and can be used in cases where tag value is not changing
+- `tags["indoor"] = answer.toYesNo()`
+- `tags.remove("amenity")` - remove key if it is present
+- `tags.updateWithCheckDate("lit", answer.toYesNo())`
+  - in case of changing value such change will be applied
+  - in case of value being the same also add survey date tag and can be used in cases where tag value is not changing, it would be `check_date:lit=` in this case
+     - survey date prefix is defined as `[const val SURVEY_MARK_KEY = "check_date"](src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt)`
+  - always update survey tag if present alreadt
 
-See other ones defined in [StringMapChangesBuilder.kt](de/westnordost/streetcomplete/data/osm/edits/update_tags/StringMapChangesBuilder.kt)
 
 ### Extras
 
