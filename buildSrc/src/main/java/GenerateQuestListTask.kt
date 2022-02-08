@@ -41,7 +41,7 @@ open class GenerateQuestListTask : DefaultTask() {
         val questNames =
             listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 
-        val questFiles = getFilesRecursively(sourceDirectory.resolve("quests/"))
+        val questFiles = sourceDirectory.resolve("quests/").listFilesRecursively()
         val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
         val wikiQuests = parseWikiTable(getWikiTableContent())
         val repoQuests = questNames.mapIndexed { defaultPriority, name ->
@@ -50,11 +50,6 @@ open class GenerateQuestListTask : DefaultTask() {
 
         writeCsvFile(repoQuests, wikiQuests)
     }
-
-    private fun getFilesRecursively(directory: File): List<File> =
-        directory.listFiles()!!.flatMap {
-            if (it.isDirectory) getFilesRecursively(it) else listOf(it)
-        }
 
     private fun getStrings(stringsFile: File): Map<String, String> {
         fun normalizeString(string: String) = string
@@ -282,3 +277,6 @@ data class ApiWikiPage(val title: String, val pageid: Long, val wikitext: String
 
 @Serializable
 data class ApiResult(val parse: ApiWikiPage)
+
+private fun File.listFilesRecursively(): List<File> =
+    listFiles()!!.flatMap { if (it.isDirectory) it.listFilesRecursively() else listOf(it) }
