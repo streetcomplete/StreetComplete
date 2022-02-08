@@ -29,9 +29,9 @@ Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/n
 - time - Android Studio setup is sadly complicated
   - Multiple hours are typical, though mostly spent on waiting for various downloads
   - setting up Android Studio will likely be more complex than writing the code
-- basic ability to use git (but as mentioned, anything GitHub specific will be explained) 
-- GitHub account
-- around 15GB of free space
+- [basic ability to use git](https://git-scm.com/docs/user-manual) (but as mentioned, anything GitHub specific will be explained)
+- GitHub [account](https://github.com/signup)
+- around 15GB of free space on disk
   - the initial setup will typically download half of the Internet while getting emulators and dependencies
 
 # Dependencies - initial setup
