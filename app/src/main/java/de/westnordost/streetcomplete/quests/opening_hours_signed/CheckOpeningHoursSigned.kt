@@ -33,7 +33,8 @@ class CheckOpeningHoursSigned (
             or older today -1 years
           )
           and access !~ private|no
-          and (name or brand or noname = yes or name:signed = no or amenity = recycling)
+          and (name or brand or noname = yes or name:signed = no
+          or amenity = recycling|toilets|bicycle_rental or leisure=park or barrier)
     """.toElementFilterExpression() }
 
     private val hasOldOpeningHoursCheckDateFilter: String get() =
