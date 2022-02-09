@@ -37,9 +37,9 @@ open class GenerateQuestListTask : DefaultTask() {
     @TaskAction
     fun run() {
         val questFileContent = sourceDirectory.resolve("quests/QuestsModule.kt").readText()
-        val questNameRegex = Regex("(?<=^ {4})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
+        val questNameRegex = Regex("^\s+([A-Z][a-zA-Z]+)\\(", RegexOption.MULTILINE)
         val questNames =
-            listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
+            listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.groupValues[1] }
 
         val questFiles = sourceDirectory.resolve("quests/").listFilesRecursively()
         val strings = getStrings(projectDirectory.resolve("app/src/main/res/values/strings.xml"))
