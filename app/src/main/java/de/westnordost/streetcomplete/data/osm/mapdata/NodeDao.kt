@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LATITUDE
@@ -79,4 +81,62 @@ class NodeDao(private val db: Database) {
             limit = limit?.toString()
         ) { it.getLong(ID) }
     }
+
+
+    fun getAllIds(bbox: BoundingBox): List<Long> {
+        return db.query(NAME, where = inBoundsSql(bbox),
+            columns = arrayOf(ID)
+        ) { it.getLong(ID) }
+    }
+
+    fun getAllEntries(ids: Collection<Long>): List<ElementGeometryEntry> {
+        if (ids.isEmpty()) return emptyList()
+        val idsString = ids.joinToString(",")
+        return db.query(NAME,
+            where = "$ID IN ($idsString)",
+            columns = arrayOf(ID, LATITUDE, LONGITUDE)
+        ) { cursor ->
+            ElementGeometryEntry(
+                ElementType.NODE,
+                cursor.getLong(ID),
+                ElementPointGeometry(
+                    LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE))
+                )
+            )
+        }
+    }
+
+    fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> {
+        return db.query(NAME, where = inBoundsSql(bbox),
+            columns = arrayOf(ID, LATITUDE, LONGITUDE)
+        ) { cursor ->
+            ElementGeometryEntry(
+                ElementType.NODE,
+                cursor.getLong(ID),
+                ElementPointGeometry(
+                    LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE))
+                )
+            )
+        }
+    }
+
+    fun getAll(bbox: BoundingBox): List<Node> {
+        return db.query(NAME, where = inBoundsSql(bbox)) { cursor ->
+            Node(
+                cursor.getLong(ID),
+                LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
+                cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
+                cursor.getInt(VERSION),
+                cursor.getLong(TIMESTAMP),
+            )
+        }
+    }
+
 }
+
+private fun inBoundsSql(bbox: BoundingBox) = """
+    $LATITUDE <= ${bbox.max.latitude} AND
+    $LATITUDE >= ${bbox.min.latitude} AND
+    $LONGITUDE <= ${bbox.max.longitude} AND
+    $LONGITUDE >= ${bbox.min.longitude}
+""".trimIndent()

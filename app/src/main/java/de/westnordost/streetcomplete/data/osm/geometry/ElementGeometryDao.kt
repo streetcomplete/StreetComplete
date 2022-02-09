@@ -4,49 +4,65 @@ import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.CENTER_LATITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.CENTER_LONGITUDE
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_ID
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.GEOMETRY_POLYGONS
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.GEOMETRY_POLYLINES
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MAX_LATITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MAX_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MIN_LATITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.Columns.MIN_LONGITUDE
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_RELATIONS
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable.NAME_WAYS
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.queryIn
+import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
 
 /** Stores the geometry of elements */
 class ElementGeometryDao(
     private val db: Database,
-    private val polylinesSerializer: PolylinesSerializer
+    private val polylinesSerializer: PolylinesSerializer,
+    private val nodeDao: NodeDao
 ) {
     fun put(entry: ElementGeometryEntry) {
-        db.replace(NAME, entry.toPairs())
+        when (entry.elementType) {
+            ElementType.NODE -> Unit
+            else -> db.replace(dbName(entry.elementType), entry.toPairs())
+        }
     }
 
     fun get(type: ElementType, id: Long): ElementGeometry? =
-        db.queryOne(NAME,
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(type.name, id)
-        ) { it.toElementGeometry() }
+        when (type) {
+            ElementType.NODE -> nodeDao.get(id)?.let { ElementPointGeometry(it.position) }
+            else -> db.queryOne(dbName(type),
+                where = "$ID = $id",
+                columns = arrayOf(ID, GEOMETRY_POLYGONS, GEOMETRY_POLYLINES, CENTER_LATITUDE, CENTER_LONGITUDE)
+            ) { it.toElementGeometry() }
+        }
 
     fun delete(type: ElementType, id: Long): Boolean =
-        db.delete(NAME,
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(type.name, id)
-        ) == 1
+        when (type) {
+            ElementType.NODE -> false
+            else -> db.delete(
+                dbName(type),
+                where = "$ID = $id"
+            ) == 1
+        }
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
-        if (entries.isEmpty()) return
+        db.transaction {
+            putAll(NAME_WAYS, entries.filter { it.elementType == ElementType.WAY })
+            putAll(NAME_RELATIONS, entries.filter { it.elementType == ElementType.RELATION })
+        }
+    }
 
-        db.replaceMany(NAME,
+    fun putAll(table: String, entries: Collection<ElementGeometryEntry>) {
+        if (entries.isEmpty()) return
+        db.replaceMany(
+            table,
             arrayOf(
-                ELEMENT_TYPE,
-                ELEMENT_ID,
+                ID,
                 CENTER_LATITUDE,
                 CENTER_LONGITUDE,
                 GEOMETRY_POLYGONS,
@@ -60,7 +76,6 @@ class ElementGeometryDao(
                 val bbox = it.geometry.getBounds()
                 val g = it.geometry
                 arrayOf(
-                    it.elementType.name,
                     it.elementId,
                     g.center.latitude,
                     g.center.longitude,
@@ -70,25 +85,73 @@ class ElementGeometryDao(
                     bbox.min.longitude,
                     bbox.max.latitude,
                     bbox.max.longitude
-            ) }
+                )
+            }
         )
     }
 
-    fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
-        db.query(NAME,
-            columns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
-            where = inBoundsSql(bbox)
-        ) { it.toElementKey() }
+    fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
+        val results = mutableListOf<ElementKey>()
+        db.transaction {
+            db.query(
+                NAME_RELATIONS,
+                columns = arrayOf(ID),
+                where = inBoundsSql(bbox)
+            ) { results.add(ElementKey(ElementType.RELATION, it.getLong(ID))) }
+            db.query(
+                NAME_WAYS,
+                columns = arrayOf(ID),
+                where = inBoundsSql(bbox)
+            ) { results.add(ElementKey(ElementType.WAY, it.getLong(ID))) }
+            results.addAll(nodeDao.getAllIds(bbox).map { ElementKey(ElementType.NODE, it) })
+        }
+        return results
+    }
+
 
     fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> =
-        db.query(NAME, where = inBoundsSql(bbox)) { it.toElementGeometryEntry() }
+        getAllEntriesWithoutNodes(bbox) + nodeDao.getAllEntries(bbox)
+
+    fun getAllEntriesWithoutNodes(bbox: BoundingBox): List<ElementGeometryEntry> {
+        val results = mutableListOf<ElementGeometryEntry>()
+        db.transaction {
+            db.query(
+                NAME_RELATIONS, where = inBoundsSql(bbox),
+                columns = arrayOf(ID, GEOMETRY_POLYGONS, GEOMETRY_POLYLINES, CENTER_LATITUDE, CENTER_LONGITUDE)
+            ) { results.add(ElementGeometryEntry(ElementType.RELATION, it.getLong(ID), it.toElementGeometry())) }
+            db.query(
+                NAME_WAYS, where = inBoundsSql(bbox),
+                columns = arrayOf(ID, GEOMETRY_POLYGONS, GEOMETRY_POLYLINES, CENTER_LATITUDE, CENTER_LONGITUDE)
+            ) { results.add(ElementGeometryEntry(ElementType.WAY, it.getLong(ID), it.toElementGeometry())) }
+        }
+        return results
+    }
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
-        if (keys.isEmpty()) return emptyList()
-        return db.queryIn(NAME,
-            whereColumns = arrayOf(ELEMENT_TYPE, ELEMENT_ID),
-            whereArgs = keys.map { arrayOf(it.type.name, it.id) }
-        ) { it.toElementGeometryEntry() }
+        val results = mutableListOf<ElementGeometryEntry>()
+        db.transaction {
+            for (type in ElementType.values()) {
+                results.addAll(
+                    getAllEntriesForType(
+                        type,
+                        keys.mapNotNull { if (it.type == type) it.id else null }
+                    )
+                )
+            }
+        }
+        return results
+    }
+
+    private fun getAllEntriesForType(type: ElementType, ids: List<Long>): List<ElementGeometryEntry> {
+        if (ids.isEmpty()) return emptyList()
+        return when (type) {
+            ElementType.NODE -> nodeDao.getAllEntries(ids)
+            else -> db.query(
+                dbName(type),
+                where = "$ID in (${ids.joinToString(",")})",
+                columns = arrayOf(ID, GEOMETRY_POLYGONS, GEOMETRY_POLYLINES, CENTER_LATITUDE, CENTER_LONGITUDE)
+            ) { ElementGeometryEntry(ElementType.WAY, it.getLong(ID), it.toElementGeometry()) }
+        }
     }
 
     fun deleteAll(entries: Collection<ElementKey>): Int {
@@ -103,19 +166,13 @@ class ElementGeometryDao(
     }
 
     fun clear() {
-        db.delete(NAME)
+        db.delete(NAME_RELATIONS)
+        db.delete(NAME_WAYS)
     }
 
     private fun ElementGeometryEntry.toPairs() = listOf(
-        ELEMENT_TYPE to elementType.name,
-        ELEMENT_ID to elementId
+        ID to elementId
     ) + geometry.toPairs()
-
-    private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
-        ElementType.valueOf(getString(ELEMENT_TYPE)),
-        getLong(ELEMENT_ID),
-        toElementGeometry()
-    )
 
     private fun ElementGeometry.toPairs() = listOf(
         CENTER_LATITUDE to center.latitude,
@@ -148,10 +205,11 @@ private fun inBoundsSql(bbox: BoundingBox) = """
     $MAX_LONGITUDE >= ${bbox.min.longitude}
 """.trimIndent()
 
-private fun CursorPosition.toElementKey() = ElementKey(
-    ElementType.valueOf(getString(ELEMENT_TYPE)),
-    getLong(ELEMENT_ID)
-)
+private fun dbName(type: ElementType) = when(type) {
+    ElementType.WAY -> NAME_WAYS
+    ElementType.RELATION -> NAME_RELATIONS
+    ElementType.NODE -> throw(IllegalArgumentException("no geometry table for nodes"))
+}
 
 data class ElementGeometryEntry(
     val elementType: ElementType,

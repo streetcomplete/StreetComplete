@@ -40,10 +40,13 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(NoteEditsTable.NOTE_ID_INDEX_CREATE)
 
         // OSM map data
-        db.execSQL(ElementGeometryTable.CREATE)
-        db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE)
+        db.execSQL(ElementGeometryTable.CREATE_WAYS)
+        db.execSQL(ElementGeometryTable.CREATE_RELATIONS)
+        db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE_WAYS)
+        db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE_RELATIONS)
 
         db.execSQL(NodeTable.CREATE)
+        db.execSQL(NodeTable.SPATIAL_INDEX_CREATE)
 
         db.execSQL(WayTables.CREATE)
         db.execSQL(WayTables.NODES_CREATE)

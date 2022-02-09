@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -149,12 +150,18 @@ class MapDataController internal constructor(
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
-        val elementGeometryEntries = geometryDB.getAllEntries(bbox)
-        val elementKeys = elementGeometryEntries.map { ElementKey(it.elementType, it.elementId) }
-        val elements = elementDB.getAll(elementKeys)
-        val result = MutableMapDataWithGeometry(elements, elementGeometryEntries)
+        val nodes = nodeDB.getAll(bbox)
+        // nodes have simple point geometries, which we can create from the node position
+        //  instead of querying for nodes and node geometry separately
+        val elementGeometryEntriesWithoutNodes = geometryDB.getAllEntriesWithoutNodes(bbox)
+        val elementKeysWithoutNodes = elementGeometryEntriesWithoutNodes.map { ElementKey(it.elementType, it.elementId) }
+        val elements = elementDB.getAll(elementKeysWithoutNodes) + nodes
+        val elementGeometries = elementGeometryEntriesWithoutNodes + nodes.map {
+            ElementGeometryEntry(ElementType.NODE, it.id, ElementPointGeometry(it.position))
+        }
+        val result = MutableMapDataWithGeometry(elements, elementGeometries)
         result.boundingBox = bbox
-        Log.i(TAG, "Fetched ${elementKeys.size} elements and geometries in ${currentTimeMillis() - time}ms")
+        Log.i(TAG, "Fetched ${elements.size} elements and geometries in ${currentTimeMillis() - time}ms")
         return result
     }
 
