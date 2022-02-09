@@ -125,7 +125,72 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         if (oldVersion <= 3 && newVersion > 3) {
             db.execSQL("DROP TABLE new_achievements")
         }
+        if (oldVersion <= 4 && newVersion > 4) {
+            db.execSQL(NodeTable.SPATIAL_INDEX_CREATE)
+            db.execSQL(ElementGeometryTable.CREATE_WAYS)
+            db.execSQL(ElementGeometryTable.CREATE_RELATIONS)
+            db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE_WAYS)
+            db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE_RELATIONS)
+            val oldGeometryTableName = "elements_geometry"
+            val oldTypeName = "element_type"
+            val oldIdName = "element_id"
+            db.execSQL("""
+                INSERT INTO ${ElementGeometryTable.NAME_WAYS} (
+                    ${ElementGeometryTable.Columns.ID},
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${ElementGeometryTable.Columns.CENTER_LATITUDE},
+                    ${ElementGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LATITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LATITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LONGITUDE}
+                ) SELECT
+                    $oldIdName,
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${ElementGeometryTable.Columns.CENTER_LATITUDE},
+                    ${ElementGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LATITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LATITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LONGITUDE}
+                FROM
+                    $oldGeometryTableName
+                WHERE
+                    $oldTypeName = 'WAY';
+            """.trimIndent()
+            )
+            db.execSQL("""
+                INSERT INTO ${ElementGeometryTable.NAME_RELATIONS} (
+                    ${ElementGeometryTable.Columns.ID},
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${ElementGeometryTable.Columns.CENTER_LATITUDE},
+                    ${ElementGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LATITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LATITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LONGITUDE}
+                ) SELECT
+                    $oldIdName,
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${ElementGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${ElementGeometryTable.Columns.CENTER_LATITUDE},
+                    ${ElementGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LATITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LATITUDE},
+                    ${ElementGeometryTable.Columns.MIN_LONGITUDE},
+                    ${ElementGeometryTable.Columns.MAX_LONGITUDE}
+                FROM
+                    $oldGeometryTableName
+                WHERE
+                    $oldTypeName = 'RELATION';
+            """.trimIndent()
+            )
+            db.execSQL("DROP TABLE $oldGeometryTableName;")
+        }
     }
 }
 
-private const val DB_VERSION = 4
+private const val DB_VERSION = 5
