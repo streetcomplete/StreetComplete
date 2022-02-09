@@ -25,7 +25,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
         )
         and name and (
           !diet:vegan
-          or diet:vegan != only and diet:vegan older today -2 years
+          or diet:vegan != only and diet:vegan older today -4 years
         )
     """
     override val changesetComment = "Add vegan diet type"

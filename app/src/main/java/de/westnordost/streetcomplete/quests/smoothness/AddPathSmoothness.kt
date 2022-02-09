@@ -22,8 +22,8 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
           and !cycleway:surface and !footway:surface
           and (
             !smoothness
-            or smoothness older today -6 years
-            or smoothness:date < today -6 years
+            or smoothness older today -4 years
+            or smoothness:date < today -4 years
           )
     """
 
