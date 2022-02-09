@@ -18,14 +18,14 @@ class AddCyclewayWidth(
           (
             highway = cycleway
             and foot !~ yes|designated
-            and !width
+            and (!width or width older today -8 years)
           ) or (
             segregated = yes
-            and !cycleway:width
             and (
               highway ~ cycleway|path|footway and bicycle != no
               or highway = bridleway and bicycle ~ designated|yes
             )
+            and (!cycleway:width or cycleway:width older today -8 years)
           )
         )
         and area != yes
