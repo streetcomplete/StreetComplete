@@ -1,4 +1,6 @@
-v40.0-beta1: |
+v40.0: |
+  <h3>Important: Update manually after Feb 21!</h3>
+  <p>Google Play / F-Droid will not update to the next major version v41 automatically because the app will ask for an additional permission. In v41, you'll be able to measure widths and heights with the camera! </p>
   <h3>New Quests</h3>
   <ul>
   <li><i>How does this road cross the barrier here?</i> (#3372, #3515), by @matkoniecz</li>
@@ -12,6 +14,9 @@ v40.0-beta1: |
   <li>Allow answering whether the sidewalk is displayed separately on the map for each side individually</li>
   <li>When asking where a hydrant is located, show example pictures of pillar hydrants if it is a pillar hydrant (#3686, #3695, #3711), by @FloEdelmann</li>
   <li>Ask opening hours, place names and wheelchair accessibility for more amenities in the healthcare sector (#3710), by @FloEdelmann</li>
+  <li>Clearer wording for access quests (#3693, #3712), by @matkoniecz</li>
+  <li>Only display the "Its actually steps" answer for footways in the lit quest (#3722), by @arrival-spring</li>
+  <li>Tweak sorting of last answer buttons for the building levels quest (#3593, #3726), by @smichel17</li>
   </ul>
   <h3>Fixes and improvements</h3>
   <ul>

@@ -1,12 +1,21 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import dagger.Module
-import dagger.Provides
+import org.koin.dsl.module
 
-@Module object QuestPresetsModule {
-    @Provides fun visibleQuestTypeSource(ctrl: VisibleQuestTypeController): VisibleQuestTypeSource = ctrl
+val questPresetsModule = module {
+    factory { QuestPresetsDao(get()) }
+    factory { QuestTypeOrderDao(get()) }
+    factory { VisibleQuestTypeDao(get()) }
 
-    @Provides fun questTypeOrderSource(ctrl: QuestTypeOrderController): QuestTypeOrderSource = ctrl
+    single<QuestPresetsSource> { get<QuestPresetsController>() }
+    single { QuestPresetsController(get(), get()) }
 
-    @Provides fun questPresetsSource(ctrl: QuestPresetsController): QuestPresetsSource = ctrl
+    single<QuestTypeOrderSource> { get<QuestTypeOrderController>() }
+    single { QuestTypeOrderController(get(), get()) }
+
+    single { SelectedQuestPresetStore(get()) }
+    single { TeamModeQuestFilter(get(), get()) }
+
+    single<VisibleQuestTypeSource> { get<VisibleQuestTypeController>() }
+    single { VisibleQuestTypeController(get(), get()) }
 }

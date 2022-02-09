@@ -6,11 +6,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Manages access to the notes storage */
-@Singleton class NoteController @Inject constructor(
+class NoteController(
     private val dao: NoteDao
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the

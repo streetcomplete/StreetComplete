@@ -30,10 +30,9 @@ import de.westnordost.streetcomplete.ktx.getShort
 import de.westnordost.streetcomplete.ktx.getShortOrNull
 import de.westnordost.streetcomplete.ktx.getString
 import de.westnordost.streetcomplete.ktx.getStringOrNull
-import javax.inject.Inject
 
 @SuppressLint("Recycle")
-class AndroidDatabase @Inject constructor(private val dbHelper: SQLiteOpenHelper) : Database {
+class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     private val db get() = dbHelper.writableDatabase
 
     override fun exec(sql: String, args: Array<Any>?) {

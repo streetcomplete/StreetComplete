@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import dagger.Module
-import dagger.Provides
+import org.koin.dsl.module
 
-@Module
-object OsmNoteQuestModule {
-    @Provides fun osmNoteQuestSource(ctrl: OsmNoteQuestController): OsmNoteQuestSource = ctrl
+val osmNoteQuestModule = module {
+    factory { NoteQuestsHiddenDao(get()) }
+
+    single { NotesPreferences(get()) }
+    single<OsmNoteQuestSource> { get<OsmNoteQuestController>() }
+    single { OsmNoteQuestController(get(), get(), get(), get(), get()) }
 }

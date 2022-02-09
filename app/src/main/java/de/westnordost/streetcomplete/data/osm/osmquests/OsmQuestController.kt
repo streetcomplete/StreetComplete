@@ -37,12 +37,10 @@ import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
-@Singleton class OsmQuestController @Inject internal constructor(
+class OsmQuestController internal constructor(
     private val db: OsmQuestDao,
     private val hiddenDB: OsmQuestsHiddenDao,
     private val mapDataSource: MapDataWithEditsSource,

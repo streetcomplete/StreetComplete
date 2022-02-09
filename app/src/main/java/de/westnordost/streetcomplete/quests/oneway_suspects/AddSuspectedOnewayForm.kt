@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.oneway_suspects
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
@@ -16,7 +15,7 @@ import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer>() {
 
@@ -27,11 +26,7 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
 
     private var streetSideRotater: StreetSideRotater? = null
 
-    @Inject internal lateinit var db: WayTrafficFlowDao
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+    private val db: WayTrafficFlowDao by inject()
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },

@@ -17,7 +17,6 @@ import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
 import androidx.viewbinding.ViewBinding
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -42,10 +41,11 @@ import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import java.lang.ref.WeakReference
 import java.util.Locale
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> :
@@ -68,9 +68,9 @@ abstract class AbstractQuestAnswerFragment<T> :
     protected val scrollView: NestedScrollView get() = binding.scrollView
 
     // dependencies
-    private val countryInfos: CountryInfos
-    private val questTypeRegistry: QuestTypeRegistry
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val countryInfos: CountryInfos by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
@@ -138,14 +138,6 @@ abstract class AbstractQuestAnswerFragment<T> :
         fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    init {
-        val fields = InjectedFields()
-        Injector.applicationComponent.inject(fields)
-        countryInfos = fields.countryInfos
-        featureDictionaryFuture = fields.featureDictionaryFuture
-        questTypeRegistry = fields.questTypeRegistry
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -395,12 +387,6 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
-    }
-
-    class InjectedFields {
-        @Inject internal lateinit var countryInfos: CountryInfos
-        @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-        @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
     }
 
     protected inline fun <reified T : ViewBinding> contentViewBinding(

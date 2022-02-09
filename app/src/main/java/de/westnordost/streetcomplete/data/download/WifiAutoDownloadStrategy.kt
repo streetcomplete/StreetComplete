@@ -2,10 +2,9 @@ package de.westnordost.streetcomplete.data.download
 
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import javax.inject.Inject
 
 /** Download strategy if user is on wifi */
-class WifiAutoDownloadStrategy @Inject constructor(
+class WifiAutoDownloadStrategy(
     mapDataController: MapDataController,
     downloadedTilesDao: DownloadedTilesDao
 ) : AVariableRadiusStrategy(mapDataController, downloadedTilesDao) {

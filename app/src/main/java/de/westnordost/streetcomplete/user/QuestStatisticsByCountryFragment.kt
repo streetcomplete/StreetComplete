@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
@@ -14,11 +13,11 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit.  */
 class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
-    @Inject internal lateinit var statisticsSource: StatisticsSource
+    private val statisticsSource: StatisticsSource by inject()
 
     interface Listener {
         fun onClickedCountryFlag(countryCode: String, solvedCount: Int, rank: Int?, countryBubbleView: View)
@@ -26,10 +25,6 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     private val binding by viewBinding(FragmentQuestStatisticsBallPitBinding::bind)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

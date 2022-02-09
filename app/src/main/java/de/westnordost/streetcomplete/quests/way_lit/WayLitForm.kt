@@ -25,7 +25,7 @@ class WayLitForm : AbstractQuestAnswerFragment<WayLitOrIsStepsAnswer>() {
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
         val way = osmElement as? Way ?: return null
-        if (way.isArea() || way.tags["highway"] == "steps") return null
+        if (way.isArea() || way.tags["highway"] != "footway") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
             applyAnswer(IsActuallyStepsAnswer)

@@ -6,7 +6,6 @@ import android.widget.ImageButton
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -19,13 +18,13 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that shows (and hides) the undo button, based on whether there is anything to undo */
 class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
-    @Inject internal lateinit var editHistorySource: EditHistorySource
-    @Inject internal lateinit var uploadProgressSource: UploadProgressSource
+    private val editHistorySource: EditHistorySource by inject()
+    private val uploadProgressSource: UploadProgressSource by inject()
 
     private val undoButton get() = view as ImageButton
 
@@ -50,10 +49,6 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

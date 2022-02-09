@@ -7,7 +7,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -20,13 +19,13 @@ import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
 class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
-    @Inject internal lateinit var statisticsSource: StatisticsSource
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    private val statisticsSource: StatisticsSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
@@ -34,10 +33,6 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     private val binding by viewBinding(FragmentQuestStatisticsBallPitBinding::bind)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
