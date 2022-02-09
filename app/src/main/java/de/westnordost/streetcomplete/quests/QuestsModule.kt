@@ -378,12 +378,12 @@ whether the postbox is still there in countries in which it is enabled */
 
     // roads
     AddSidewalk(), // for any pedestrian routers, needs minimal thinking
+    AddShoulder(), // needs minimal thinking
     AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
     AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
     // AddStreetParking(),
-    AddShoulder(),
     AddRoadSmoothness(),
     AddPathSmoothness(),
 
