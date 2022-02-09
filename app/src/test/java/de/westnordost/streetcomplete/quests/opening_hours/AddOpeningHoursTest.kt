@@ -188,13 +188,6 @@ class AddOpeningHoursTest {
         ))
     }
 
-    @Test fun `isApplicableTo returns true for unnamed battery recycling with old opening hours`() {
-        val milisecondsFor400Days : Long = 1000L * 60 * 60 * 24 * 400
-        assertTrue(questType.filter.matches(
-            node(tags = mapOf("amenity" to "recycling", "recycling:batteries" to "yes", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
-        ))
-    }
-
     @Test fun `isApplicableTo returns true for unnamed toilets with old opening hours`() {
         val milisecondsFor400Days : Long = 1000L * 60 * 60 * 24 * 400
         assertTrue(questType.filter.matches(
