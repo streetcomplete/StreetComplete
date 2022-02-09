@@ -21,7 +21,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
         )
         and name and diet:vegan != only and (
           !diet:vegetarian
-          or diet:vegetarian != only and diet:vegetarian older today -2 years
+          or diet:vegetarian != only and diet:vegetarian older today -4 years
         )
     """
 
