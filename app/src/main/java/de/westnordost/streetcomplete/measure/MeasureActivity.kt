@@ -35,7 +35,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.coroutines.resume
 import kotlin.math.PI
-import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -345,7 +344,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         val normalizedCameraAngle = cameraAngle.toDouble().normalizeRadians(-PI)
         val pi2 = PI / 2
-        if (normalizedCameraAngle < -pi2 * 4 / 6 || normalizedCameraAngle > +pi2 * 2 / 6) {
+        if (normalizedCameraAngle < -pi2 * 2 / 3 || normalizedCameraAngle > +pi2 * 1 / 2) {
             setTrackingError(R.string.ar_core_tracking_error_too_steep_angle)
             return
         } else {

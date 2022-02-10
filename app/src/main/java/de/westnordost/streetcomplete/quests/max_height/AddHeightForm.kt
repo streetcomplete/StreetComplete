@@ -1,11 +1,10 @@
-package de.westnordost.streetcomplete.quests.width
+package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.measure.ArSupportChecker
 import de.westnordost.streetcomplete.measure.TakeMeasurementLauncher
@@ -15,7 +14,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class AddWidthForm : AbstractQuestFormAnswerFragment<Length>() {
+class AddHeightForm : AbstractQuestFormAnswerFragment<Length>() {
 
     override val contentLayoutResId = R.layout.quest_length
     private val binding by contentViewBinding(QuestLengthBinding::bind)
@@ -29,16 +28,11 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<Length>() {
         binding.lengthInput.onInputChanged = { checkIsFormComplete() }
         binding.measureButton.isGone = !checkArSupport()
         binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }
-
-        val isRoad = osmElement!!.tags["highway"] in ALL_ROADS
-        val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
-        binding.widthExplanationTextView.isGone = explanation == null
-        binding.widthExplanationTextView.text = explanation
     }
 
     private suspend fun takeMeasurement() {
         val lengthUnit = binding.lengthInput.unit ?: return
-        val length = takeMeasurement(requireContext(), lengthUnit, false) ?: return
+        val length = takeMeasurement(requireContext(), lengthUnit, true) ?: return
         binding.lengthInput.length = length
     }
 

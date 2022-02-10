@@ -66,6 +66,7 @@ import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.level.AddLevel
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
+import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
@@ -330,6 +331,7 @@ whether the postbox is still there in countries in which it is enabled */
     // road but information is visible usually at the beginning of the marked stretch of way
     AddMaxWeight(), // used by OSRM and other routing engines
     AddMaxHeight(), // OSRM and other routing engines
+    AddMaxPhysicalHeight(arSupportChecker), // same as above, best if it appears right after (if enabled)
     AddRoadName(),
     AddOneway(),
     AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
