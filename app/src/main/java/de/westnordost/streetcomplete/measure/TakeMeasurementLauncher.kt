@@ -22,13 +22,13 @@ class TakeMeasurementLauncher(caller: ActivityResultCaller) {
     suspend operator fun invoke(
         context: Context,
         lengthUnit: LengthUnit,
-        mode: MeasureActivity.MeasureMode? = null
+        measureVertical: Boolean? = null
     ): Length? {
         val unit = when (lengthUnit) {
             LengthUnit.METER -> MeasureDisplayUnitMeter(10)
             LengthUnit.FOOT_AND_INCH -> MeasureDisplayUnitFeetInch(4)
         }
-        val result = activityForResultLauncher(MeasureActivity.createIntent(context, mode, unit, true))
+        val result = activityForResultLauncher(MeasureActivity.createIntent(context, measureVertical, unit, true))
         if (result.resultCode != Activity.RESULT_OK) return null
 
         val meters = result.data?.getFloatExtra(RESULT_MEASURE_METERS, -1f)?.takeIf { it != -1f }

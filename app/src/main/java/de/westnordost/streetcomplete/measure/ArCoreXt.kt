@@ -3,8 +3,12 @@ package de.westnordost.streetcomplete.measure
 import android.content.Context
 import com.google.ar.core.*
 import com.google.ar.core.TrackingFailureReason.*
-import kotlinx.coroutines.delay
+import com.google.ar.sceneform.math.Quaternion
+import com.google.ar.sceneform.math.Vector3
 import de.westnordost.streetcomplete.R
+import kotlinx.coroutines.delay
+import kotlin.math.abs
+import kotlin.math.atan2
 
 fun Frame.hitPlane(xPx: Float, yPx: Float): HitResult? =
     hitTest(xPx, yPx)
@@ -12,7 +16,6 @@ fun Frame.hitPlane(xPx: Float, yPx: Float): HitResult? =
 
 fun Frame.hasFoundPlane(): Boolean =
     getUpdatedTrackables(Plane::class.java).any { it.trackingState == TrackingState.TRACKING }
-
 
 suspend fun ArCoreApk.getAvailability(context: Context): ArCoreApk.Availability {
     var result = checkAvailability(context)
@@ -24,7 +27,7 @@ suspend fun ArCoreApk.getAvailability(context: Context): ArCoreApk.Availability 
     return result
 }
 
-val TrackingFailureReason.messageResId: Int? get() = when(this) {
+val TrackingFailureReason.messageResId: Int? get() = when (this) {
     NONE -> null
     BAD_STATE -> R.string.ar_core_tracking_error_bad_state
     INSUFFICIENT_LIGHT -> R.string.ar_core_tracking_error_insufficient_light
@@ -32,3 +35,13 @@ val TrackingFailureReason.messageResId: Int? get() = when(this) {
     INSUFFICIENT_FEATURES -> R.string.ar_core_tracking_error_insufficient_features
     CAMERA_UNAVAILABLE -> R.string.ar_core_tracking_error_camera_unavailable
 }
+
+val Pose.position: Vector3 get() = Vector3(tx(), ty(), tz())
+val Pose.pitch: Float get() {
+    val (x, y, z, w) = rotationQuaternion
+    return if (0.5 - abs(x * y + z * w) < 0.001) 0f
+           else atan2(2 * (x * w - y * z), -x * x + y * y - z * z + w * w)
+}
+
+fun Quaternion.difference(other: Quaternion): Quaternion =
+    Quaternion.multiply(this, other.inverted())

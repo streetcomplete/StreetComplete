@@ -23,6 +23,8 @@ import com.google.ar.sceneform.rendering.*
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ActivityMeasureBinding
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.createIntent
+import de.westnordost.streetcomplete.util.normalizeRadians
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.future.await
@@ -32,13 +34,19 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.coroutines.resume
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.pow
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 /** Activity to measure distances. Can be started as activity for result, see [createIntent] */
 class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private val createArCoreSession = ArCoreSessionCreator(this, ::askUserToAcknowledgeCameraPermissionRationale)
 
-    private lateinit var binding : ActivityMeasureBinding
+    private lateinit var binding: ActivityMeasureBinding
     private var arSceneView: ArSceneView? = null
 
     private var cursorRenderable: Renderable? = null
@@ -47,10 +55,10 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private var lineNode: Node? = null
     private var firstNode: AnchorNode? = null
-    private var secondNode: AnchorNode? = null
+    private var secondNode: Node? = null
     private var cursorNode: AnchorNode? = null
 
-    private var measureMode: MeasureMode = MeasureMode.BOTH
+    private var measureVertical: Boolean = false
     private var displayUnit: MeasureDisplayUnit = MeasureDisplayUnitMeter(2)
     private var requestResult: Boolean = false
 
@@ -124,8 +132,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     }
 
     private fun readIntent() {
-        measureMode = intent.getStringExtra(PARAM_MEASURE_MODE)?.let { MeasureMode.valueOf(it) }
-            ?: MeasureMode.BOTH
+        measureVertical = intent.getBooleanExtra(PARAM_MEASURE_VERTICAL, measureVertical)
         displayUnit = intent.getStringExtra(PARAM_DISPLAY_UNIT)?.let { Json.decodeFromString(it) }
             ?: MeasureDisplayUnitMeter(2)
         requestResult = intent.getBooleanExtra(PARAM_REQUEST_RESULT, false)
@@ -140,19 +147,26 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             binding.handMotionView.isGone = true
         }
 
-        val textResId = frame.camera.trackingFailureReason.messageResId
-        binding.trackingErrorTextView.isGone = textResId == null
-        textResId?.let { binding.trackingErrorTextView.setText(textResId) }
+        setTrackingError(frame.camera.trackingFailureReason.messageResId)
 
         if (frame.camera.trackingState == TrackingState.TRACKING) {
-            val centerX = binding.arSceneViewContainer.width / 2f
-            val centerY = binding.arSceneViewContainer.height / 2f
-            val hitResult = frame.hitPlane(centerX, centerY)
+            if (measureState == MeasureState.MEASURING && measureVertical) {
+                updateVerticalMeasuring(frame.camera.displayOrientedPose)
+            } else {
+                val centerX = binding.arSceneViewContainer.width / 2f
+                val centerY = binding.arSceneViewContainer.height / 2f
+                val hitResult = frame.hitPlane(centerX, centerY)
 
-            if (hitResult != null) {
-                updateCursor(hitResult)
+                if (hitResult != null) {
+                    updateCursor(hitResult)
+                }
             }
         }
+    }
+
+    private fun setTrackingError(messageResId: Int?) {
+        binding.trackingErrorTextView.isGone = messageResId == null
+        messageResId?.let { binding.trackingErrorTextView.setText(messageResId) }
     }
 
     /* ------------------------------------------ Session --------------------------------------- */
@@ -177,11 +191,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         val config = Config(session)
 
         config.updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE // necessary for Sceneform
-        config.planeFindingMode = when(measureMode) {
-            MeasureMode.BOTH -> Config.PlaneFindingMode.HORIZONTAL_AND_VERTICAL
-            MeasureMode.HORIZONTAL -> Config.PlaneFindingMode.HORIZONTAL
-            MeasureMode.VERTICAL -> Config.PlaneFindingMode.VERTICAL
-        }
+        config.planeFindingMode = Config.PlaneFindingMode.HORIZONTAL
         // disabling unused features should make processing faster
         config.depthMode = Config.DepthMode.DISABLED
         config.cloudAnchorMode = Config.CloudAnchorMode.DISABLED
@@ -225,8 +235,8 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         // takes about half a second on a high-end device(!)
         val materialBlue = MaterialFactory.makeOpaqueWithColor(this, Color(0.1f, 0.4f, 0.9f)).await()
         cursorRenderable = ViewRenderable.builder().setView(this, R.layout.view_ar_cursor).build().await()
-        pointRenderable = ShapeFactory.makeCylinder(0.03f, 0.001f, Vector3.zero(), materialBlue)
-        lineRenderable = ShapeFactory.makeCube(Vector3(0.02f, 0.001f, 1f), Vector3.zero(), materialBlue)
+        pointRenderable = ShapeFactory.makeCylinder(0.03f, 0.005f, Vector3.zero(), materialBlue)
+        lineRenderable = ShapeFactory.makeCube(Vector3(0.02f, 0.005f, 1f), Vector3.zero(), materialBlue)
         listOfNotNull(cursorRenderable, pointRenderable, lineRenderable).forEach {
             it.isShadowCaster = false
             it.isShadowReceiver = false
@@ -247,10 +257,16 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             setParent(arSceneView!!.scene)
             setAnchor(anchor)
         }
-        secondNode = AnchorNode().apply {
+
+        if (measureVertical) {
+            secondNode = Node()
+            cursorNode?.isEnabled = false
+        } else {
+            secondNode = AnchorNode().apply { setAnchor(anchor) }
+        }
+        secondNode?.apply {
             renderable = pointRenderable
             setParent(arSceneView!!.scene)
-            setAnchor(anchor)
         }
     }
 
@@ -266,10 +282,11 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         binding.measurementSpeechBubble.isInvisible = true
         binding.acceptResultContainer.isGone = true
         distance = 0f
+        cursorNode?.isEnabled = true
         firstNode?.anchor?.detach()
         firstNode?.setParent(null)
         firstNode = null
-        secondNode?.anchor?.detach()
+        (secondNode as? AnchorNode)?.anchor?.detach()
         secondNode?.setParent(null)
         secondNode = null
         lineNode?.setParent(null)
@@ -278,7 +295,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private fun returnMeasuringResult() {
         val resultIntent = Intent(RESULT_ACTION)
-        when(val displayUnit = displayUnit) {
+        when (val displayUnit = displayUnit) {
             is MeasureDisplayUnitFeetInch -> {
                 val (feet, inches) = displayUnit.getRounded(distance)
                 resultIntent.putExtra(RESULT_MEASURE_FEET, feet)
@@ -295,7 +312,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private fun updateCursor(hitResult: HitResult) {
         // release previous anchor only if it is not used by any other node
         val anchor = cursorNode?.anchor
-        if (anchor != null && anchor != firstNode?.anchor && anchor != secondNode?.anchor) {
+        if (anchor != null && anchor != firstNode?.anchor && anchor != (secondNode as? AnchorNode)?.anchor) {
             anchor.detach()
         }
 
@@ -305,7 +322,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             cursorNode.anchor = newAnchor
 
             if (measureState == MeasureState.MEASURING) {
-                secondNode?.anchor = newAnchor
+                (secondNode as? AnchorNode)?.anchor = newAnchor
             }
             /* update distance should always be called because the world position could be adjusted
              *  for already existing anchors */
@@ -313,6 +330,32 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         } catch (e: Exception) {
             Log.e("MeasureActivity", "Error", e)
         }
+    }
+
+    private fun updateVerticalMeasuring(cameraPose: Pose) {
+        val cameraPos = cameraPose.position
+        val nodePos = firstNode!!.worldPosition
+
+        val cameraToNodeHeightDifference = cameraPos.y - nodePos.y
+        val cameraToNodeDistanceOnPlane = sqrt((cameraPos.x - nodePos.x).pow(2) + (cameraPos.z - nodePos.z).pow(2))
+        val cameraAngle = cameraPose.pitch
+
+        val normalizedCameraAngle = cameraAngle.toDouble().normalizeRadians(-PI)
+        val pi2 = PI / 2
+        if (normalizedCameraAngle < -pi2 * 5 / 6 || normalizedCameraAngle > +pi2 * 3 / 6) {
+            setTrackingError(R.string.ar_core_tracking_error_too_steep_angle)
+            return
+        } else {
+            setTrackingError(null)
+        }
+
+        // don't allow negative heights (into the ground)
+        val height = max(0f, cameraToNodeHeightDifference + cameraToNodeDistanceOnPlane * tan(cameraAngle))
+
+        val pos = Vector3.add(nodePos, Vector3(0f, height, 0f))
+        secondNode?.worldPosition = pos
+
+        updateDistance()
     }
 
     private fun updateDistance() {
@@ -326,7 +369,6 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         val difference = Vector3.subtract(pos1, pos2)
         distance = difference.length()
-
         binding.measurementTextView.text = displayUnit.format(distance)
 
         val line = getLineNode()
@@ -359,7 +401,6 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         return node
     }
 
-
     /* ----------------------------------- Permission request ----------------------------------- */
 
     /** Show dialog that explains why the camera permission is necessary. Returns whether the user
@@ -380,7 +421,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     /* ----------------------------------------- Intent ----------------------------------------- */
 
     companion object {
-        private const val PARAM_MEASURE_MODE = "measure_mode"
+        private const val PARAM_MEASURE_VERTICAL = "measure_vertical"
         private const val PARAM_DISPLAY_UNIT = "display_unit"
         private const val PARAM_REQUEST_RESULT = "request_result"
 
@@ -397,7 +438,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         const val RESULT_MEASURE_INCHES = "measure_result_inches"
 
         /** Create the intent for starting this activity, with optional parameters:
-         * @param mode specifies whether to measure distances on the ground, on walls or both
+         * @param vertical whether to measure vertical distances
          * @param unit specifies which unit (meters or foot/inch) should be used for display and
          *             with which precision the measure should be shown (where to round to).
          * @param requestResult whether this activity should return a result. If yes, the activity
@@ -405,18 +446,15 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
          *                      RESULT_MEASURE_IN_METERS when the user confirmed it. */
         fun createIntent(
             context: Context,
-            mode: MeasureMode? = null,
+            vertical: Boolean? = null,
             unit: MeasureDisplayUnit? = null,
-            requestResult: Boolean? = null
+            requestResult: Boolean? = null,
         ): Intent {
             val intent = Intent(context, MeasureActivity::class.java)
-            mode?.let { intent.putExtra(PARAM_MEASURE_MODE, it.name) }
+            vertical?.let { intent.putExtra(PARAM_MEASURE_VERTICAL, it) }
             unit?.let { intent.putExtra(PARAM_DISPLAY_UNIT, Json.encodeToString(it)) }
             requestResult?.let { intent.putExtra(PARAM_REQUEST_RESULT, it) }
             return intent
         }
     }
-
-    /** Whether to be able to measure on the ground, on walls or both */
-    enum class MeasureMode { HORIZONTAL, VERTICAL, BOTH }
 }

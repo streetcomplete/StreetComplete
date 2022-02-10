@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.databinding.QuestWidthBinding
 import de.westnordost.streetcomplete.measure.ArSupportChecker
-import de.westnordost.streetcomplete.measure.MeasureActivity
 import de.westnordost.streetcomplete.measure.TakeMeasurementLauncher
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.toLengthUnit
@@ -40,7 +39,7 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<Length>() {
 
     private suspend fun takeMeasurement() {
         val lengthUnit = binding.lengthInput.unit ?: return
-        val length = takeMeasurement(requireContext(), lengthUnit, MeasureActivity.MeasureMode.HORIZONTAL) ?: return
+        val length = takeMeasurement(requireContext(), lengthUnit, false) ?: return
         binding.lengthInput.length = length
     }
 
