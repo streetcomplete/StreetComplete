@@ -345,7 +345,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         val normalizedCameraAngle = cameraAngle.toDouble().normalizeRadians(-PI)
         val pi2 = PI / 2
-        if (normalizedCameraAngle < -pi2 * 5 / 6 || normalizedCameraAngle > +pi2 * 3 / 6) {
+        if (normalizedCameraAngle < -pi2 * 4 / 6 || normalizedCameraAngle > +pi2 * 2 / 6) {
             setTrackingError(R.string.ar_core_tracking_error_too_steep_angle)
             return
         } else {
