@@ -233,7 +233,10 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     @RequiresApi(Build.VERSION_CODES.N)
     private suspend fun initRenderables() {
         // takes about half a second on a high-end device(!)
-        val materialBlue = MaterialFactory.makeOpaqueWithColor(this, Color(0.1f, 0.4f, 0.9f)).await()
+        val attributes = obtainStyledAttributes(intArrayOf(android.R.attr.colorAccent))
+        val argb = attributes.getColor(0, 0)
+        attributes.recycle()
+        val materialBlue = MaterialFactory.makeOpaqueWithColor(this, Color(argb)).await()
         cursorRenderable = ViewRenderable.builder().setView(this, R.layout.view_ar_cursor).build().await()
         pointRenderable = ShapeFactory.makeCylinder(0.03f, 0.005f, Vector3.zero(), materialBlue)
         lineRenderable = ShapeFactory.makeCube(Vector3(0.02f, 0.005f, 1f), Vector3.zero(), materialBlue)
