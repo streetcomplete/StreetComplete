@@ -107,8 +107,13 @@ class SettingsFragment :
             true
         }
 
-        findPreference<Preference>("debug.ar_measure")?.setOnPreferenceClickListener {
-            startActivity(Intent(context, MeasureActivity::class.java))
+        findPreference<Preference>("debug.ar_measure_horizontal")?.setOnPreferenceClickListener {
+            startActivity(MeasureActivity.createIntent(requireContext(), false))
+            true
+        }
+
+        findPreference<Preference>("debug.ar_measure_vertical")?.setOnPreferenceClickListener {
+            startActivity(MeasureActivity.createIntent(requireContext(), true))
             true
         }
 
