@@ -389,7 +389,7 @@ whether the postbox is still there in countries in which it is enabled */
     AddCycleway(countryInfos), // for any cyclist routers (and cyclist maps)
     AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
     // AddStreetParking(),
-    AddShoulder(),
+    AddShoulder(), // needs minimal thinking, but after AddStreetParking because a parking lane can be/look very similar to a shoulder
     AddRoadWidth(arSupportChecker),
     AddRoadSmoothness(),
     AddPathSmoothness(),
