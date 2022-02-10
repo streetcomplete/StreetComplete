@@ -78,11 +78,11 @@ class ElementDao(
     }
 }
 
-private data class ElementIds(val nodes: List<Long>, val ways: List<Long>, val relations: List<Long>) {
+data class ElementIds(val nodes: List<Long>, val ways: List<Long>, val relations: List<Long>) {
     val size: Int get() = nodes.size + ways.size + relations.size
 }
 
-private fun Iterable<ElementKey>.toElementIds(): ElementIds {
+fun Iterable<ElementKey>.toElementIds(): ElementIds {
     val nodes = ArrayList<Long>()
     val ways = ArrayList<Long>()
     val relations = ArrayList<Long>()

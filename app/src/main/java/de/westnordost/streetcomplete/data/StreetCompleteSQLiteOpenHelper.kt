@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTa
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTables
+import de.westnordost.streetcomplete.data.osm.geometry.RelationGeometryTable
+import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
@@ -40,10 +41,10 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(NoteEditsTable.NOTE_ID_INDEX_CREATE)
 
         // OSM map data
-        db.execSQL(ElementGeometryTables.WayGeometryTable.CREATE)
-        db.execSQL(ElementGeometryTables.WayGeometryTable.SPATIAL_INDEX_CREATE)
-        db.execSQL(ElementGeometryTables.RelationGeometryTable.CREATE)
-        db.execSQL(ElementGeometryTables.RelationGeometryTable.SPATIAL_INDEX_CREATE)
+        db.execSQL(WayGeometryTable.CREATE)
+        db.execSQL(WayGeometryTable.SPATIAL_INDEX_CREATE)
+        db.execSQL(RelationGeometryTable.CREATE)
+        db.execSQL(RelationGeometryTable.SPATIAL_INDEX_CREATE)
 
         db.execSQL(NodeTable.CREATE)
         db.execSQL(NodeTable.SPATIAL_INDEX_CREATE)
@@ -127,34 +128,34 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         }
         if (oldVersion <= 4 && newVersion > 4) {
             db.execSQL(NodeTable.SPATIAL_INDEX_CREATE)
-            db.execSQL(ElementGeometryTables.WayGeometryTable.CREATE)
-            db.execSQL(ElementGeometryTables.WayGeometryTable.SPATIAL_INDEX_CREATE)
-            db.execSQL(ElementGeometryTables.RelationGeometryTable.CREATE)
-            db.execSQL(ElementGeometryTables.RelationGeometryTable.SPATIAL_INDEX_CREATE)
+            db.execSQL(WayGeometryTable.CREATE)
+            db.execSQL(WayGeometryTable.SPATIAL_INDEX_CREATE)
+            db.execSQL(RelationGeometryTable.CREATE)
+            db.execSQL(RelationGeometryTable.SPATIAL_INDEX_CREATE)
             val oldGeometryTableName = "elements_geometry"
             val oldTypeName = "element_type"
             val oldIdName = "element_id"
             db.execSQL("""
-                INSERT INTO ${ElementGeometryTables.NAME_WAYS} (
-                    ${ElementGeometryTables.Columns.ID},
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYLINES},
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYGONS},
-                    ${ElementGeometryTables.Columns.CENTER_LATITUDE},
-                    ${ElementGeometryTables.Columns.CENTER_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LATITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LATITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LONGITUDE}
+                INSERT INTO ${WayGeometryTable.NAME} (
+                    ${WayGeometryTable.Columns.ID},
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${WayGeometryTable.Columns.CENTER_LATITUDE},
+                    ${WayGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${WayGeometryTable.Columns.MIN_LATITUDE},
+                    ${WayGeometryTable.Columns.MAX_LATITUDE},
+                    ${WayGeometryTable.Columns.MIN_LONGITUDE},
+                    ${WayGeometryTable.Columns.MAX_LONGITUDE}
                 ) SELECT
                     $oldIdName,
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYLINES},
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYGONS},
-                    ${ElementGeometryTables.Columns.CENTER_LATITUDE},
-                    ${ElementGeometryTables.Columns.CENTER_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LATITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LATITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LONGITUDE}
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${WayGeometryTable.Columns.CENTER_LATITUDE},
+                    ${WayGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${WayGeometryTable.Columns.MIN_LATITUDE},
+                    ${WayGeometryTable.Columns.MAX_LATITUDE},
+                    ${WayGeometryTable.Columns.MIN_LONGITUDE},
+                    ${WayGeometryTable.Columns.MAX_LONGITUDE}
                 FROM
                     $oldGeometryTableName
                 WHERE
@@ -162,26 +163,26 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             """.trimIndent()
             )
             db.execSQL("""
-                INSERT INTO ${ElementGeometryTables.NAME_RELATIONS} (
-                    ${ElementGeometryTables.Columns.ID},
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYLINES},
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYGONS},
-                    ${ElementGeometryTables.Columns.CENTER_LATITUDE},
-                    ${ElementGeometryTables.Columns.CENTER_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LATITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LATITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LONGITUDE}
+                INSERT INTO ${RelationGeometryTable.NAME} (
+                    ${RelationGeometryTable.Columns.ID},
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${RelationGeometryTable.Columns.CENTER_LATITUDE},
+                    ${RelationGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${RelationGeometryTable.Columns.MIN_LATITUDE},
+                    ${RelationGeometryTable.Columns.MAX_LATITUDE},
+                    ${RelationGeometryTable.Columns.MIN_LONGITUDE},
+                    ${RelationGeometryTable.Columns.MAX_LONGITUDE}
                 ) SELECT
                     $oldIdName,
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYLINES},
-                    ${ElementGeometryTables.Columns.GEOMETRY_POLYGONS},
-                    ${ElementGeometryTables.Columns.CENTER_LATITUDE},
-                    ${ElementGeometryTables.Columns.CENTER_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LATITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LATITUDE},
-                    ${ElementGeometryTables.Columns.MIN_LONGITUDE},
-                    ${ElementGeometryTables.Columns.MAX_LONGITUDE}
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${RelationGeometryTable.Columns.CENTER_LATITUDE},
+                    ${RelationGeometryTable.Columns.CENTER_LONGITUDE},
+                    ${RelationGeometryTable.Columns.MIN_LATITUDE},
+                    ${RelationGeometryTable.Columns.MAX_LATITUDE},
+                    ${RelationGeometryTable.Columns.MIN_LONGITUDE},
+                    ${RelationGeometryTable.Columns.MAX_LONGITUDE}
                 FROM
                     $oldGeometryTableName
                 WHERE
