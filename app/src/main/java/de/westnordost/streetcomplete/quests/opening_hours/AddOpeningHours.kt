@@ -108,6 +108,7 @@ class AddOpeningHours(
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override val isReplaceShopEnabled = true
+    override val isDeleteElementEnabled = true
 
     override val questTypeAchievements = listOf(CITIZEN)
 

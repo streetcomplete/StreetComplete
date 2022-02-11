@@ -47,6 +47,7 @@ class CheckOpeningHoursSigned (
     override val wikiLink = "Key:opening_hours:signed"
     override val icon = R.drawable.ic_quest_opening_hours_signed
     override val isReplaceShopEnabled = true
+    override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>): Int {

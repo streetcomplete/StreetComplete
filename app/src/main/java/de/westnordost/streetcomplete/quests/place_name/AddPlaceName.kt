@@ -109,6 +109,7 @@ class AddPlaceName(
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
     override val isReplaceShopEnabled = true
+    override val isDeleteElementEnabled = true
 
     override val questTypeAchievements = listOf(CITIZEN)
 

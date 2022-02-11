@@ -59,6 +59,7 @@ class AddAcceptsCash(
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
+    override val isDeleteElementEnabled = true
 
     override val enabledInCountries = NoCountriesExcept("SE")
 

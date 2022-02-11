@@ -239,11 +239,14 @@ abstract class AbstractQuestAnswerFragment<T> :
                 && osmElement?.type == ElementType.NODE
         val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
         if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
-        check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {
-            "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
-        }
 
         return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
+            val element = osmElement
+            if(element != null) {
+                if (element.isSomeKindOfShop()) {
+                    if (isReplaceShopEnabled) replaceShopElement()
+                }
+            }
             if (isDeletePoiEnabled) deletePoiNode()
             else if (isReplaceShopEnabled) replaceShopElement()
         }
