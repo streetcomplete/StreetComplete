@@ -130,6 +130,42 @@ class RelationDao(private val db: Database) {
         ) { it.getLong(ID) }
     }
 
+    fun getAllForElements(
+        nodeIds: Collection<Long> = emptyList(),
+        wayIds: Collection<Long> = emptyList(),
+        relationIds: Collection<Long> = emptyList()
+    ): List<Relation> =
+        getAll(getAllIdsForElements(nodeIds, wayIds, relationIds).toSet())
+
+    fun getAllIdsForElements(
+        nodeIds: Collection<Long> = emptyList(),
+        wayIds: Collection<Long> = emptyList(),
+        relationIds: Collection<Long> = emptyList()
+    ): List<Long> {
+        if (nodeIds.isEmpty() && wayIds.isEmpty() && relationIds.isEmpty()) return emptyList()
+
+        val where = ArrayList<String>()
+        if (nodeIds.isNotEmpty()) {
+            val nodeIdsStr = nodeIds.joinToString(",")
+            val elementTypeName = ElementType.NODE.name
+            where.add("($TYPE = '$elementTypeName' AND $REF IN ($nodeIdsStr))")
+        }
+        if (wayIds.isNotEmpty()) {
+            val wayIdsStr = wayIds.joinToString(",")
+            val elementTypeName = ElementType.WAY.name
+            where.add("($TYPE = '$elementTypeName' AND $REF IN ($wayIdsStr))")
+        }
+        if (relationIds.isNotEmpty()) {
+            val relationIdsStr = relationIds.joinToString(",")
+            val elementTypeName = ElementType.RELATION.name
+            where.add("($TYPE = '$elementTypeName' AND $REF IN ($relationIdsStr))")
+        }
+        return db.query(
+            NAME_MEMBERS,
+            columns = arrayOf(ID),
+            where = where.joinToString(" OR ")) { it.getLong(ID) }
+    }
+
     private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
         return db.transaction {
             val ids = db.query(NAME_MEMBERS,
