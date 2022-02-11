@@ -11,28 +11,22 @@ class ElementDao(
     private val wayDao: WayDao,
     private val relationDao: RelationDao
 ) {
-    fun put(element: Element) {
-        when (element) {
-            is Node -> nodeDao.put(element)
-            is Way -> wayDao.put(element)
-            is Relation -> relationDao.put(element)
-        }
+    fun put(element: Element) = when (element) {
+        is Node -> nodeDao.put(element)
+        is Way -> wayDao.put(element)
+        is Relation -> relationDao.put(element)
     }
 
-    fun get(type: ElementType, id: Long): Element? {
-        return when (type) {
-            NODE -> nodeDao.get(id)
-            WAY -> wayDao.get(id)
-            RELATION -> relationDao.get(id)
-        }
+    fun get(type: ElementType, id: Long): Element? = when (type) {
+        NODE -> nodeDao.get(id)
+        WAY -> wayDao.get(id)
+        RELATION -> relationDao.get(id)
     }
 
-    fun delete(type: ElementType, id: Long) {
-        when (type) {
-            NODE -> nodeDao.delete(id)
-            WAY -> wayDao.delete(id)
-            RELATION -> relationDao.delete(id)
-        }
+    fun delete(type: ElementType, id: Long) = when (type) {
+        NODE -> nodeDao.delete(id)
+        WAY -> wayDao.delete(id)
+        RELATION -> relationDao.delete(id)
     }
 
     fun putAll(elements: Iterable<Element>) {

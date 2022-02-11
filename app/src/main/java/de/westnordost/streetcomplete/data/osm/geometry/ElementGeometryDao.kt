@@ -14,27 +14,23 @@ class ElementGeometryDao(
     private val wayGeometryDao: WayGeometryDao,
     private val relationGeometryDao: RelationGeometryDao
 ) {
-    fun put(entry: ElementGeometryEntry) {
-        when (entry.elementType) {
-            ElementType.NODE -> Unit
-            ElementType.WAY -> wayGeometryDao.put(entry)
-            ElementType.RELATION -> relationGeometryDao.put(entry)
-        }
+    fun put(entry: ElementGeometryEntry) = when (entry.elementType) {
+        ElementType.NODE -> Unit
+        ElementType.WAY -> wayGeometryDao.put(entry)
+        ElementType.RELATION -> relationGeometryDao.put(entry)
     }
 
-    fun get(type: ElementType, id: Long): ElementGeometry? =
-        when (type) {
-            ElementType.NODE -> nodeDao.get(id)?.let { ElementPointGeometry(it.position) }
-            ElementType.WAY -> wayGeometryDao.get(id)
-            ElementType.RELATION -> relationGeometryDao.get(id)
-        }
+    fun get(type: ElementType, id: Long): ElementGeometry? = when (type) {
+        ElementType.NODE -> nodeDao.get(id)?.let { ElementPointGeometry(it.position) }
+        ElementType.WAY -> wayGeometryDao.get(id)
+        ElementType.RELATION -> relationGeometryDao.get(id)
+    }
 
-    fun delete(type: ElementType, id: Long): Boolean =
-        when (type) {
-            ElementType.NODE -> false
-            ElementType.WAY -> wayGeometryDao.delete(id)
-            ElementType.RELATION -> relationGeometryDao.delete(id)
-        }
+    fun delete(type: ElementType, id: Long): Boolean = when (type) {
+        ElementType.NODE -> false
+        ElementType.WAY -> wayGeometryDao.delete(id)
+        ElementType.RELATION -> relationGeometryDao.delete(id)
+    }
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
         wayGeometryDao.putAll(entries.filter { it.elementType == ElementType.WAY })
@@ -52,17 +48,13 @@ class ElementGeometryDao(
     fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> =
         nodeDao.getAllEntries(bbox) + getAllEntriesWithoutNodes(bbox)
 
-    fun getAllEntriesWithoutNodes(bbox: BoundingBox): List<ElementGeometryEntry> {
-        val results = mutableListOf<ElementGeometryEntry>()
-        results.addAll(wayGeometryDao.getAllEntries(bbox))
-        results.addAll(relationGeometryDao.getAllEntries(bbox))
-        return results
-    }
+    fun getAllEntriesWithoutNodes(bbox: BoundingBox): List<ElementGeometryEntry> =
+        wayGeometryDao.getAllEntries(bbox) + relationGeometryDao.getAllEntries(bbox)
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
         if (keys.isEmpty()) return emptyList()
         val elementIds = keys.toElementIds()
-        val results = mutableListOf<ElementGeometryEntry>()
+        val results = ArrayList<ElementGeometryEntry>(elementIds.size)
         results.addAll(nodeDao.getAllEntries(elementIds.nodes))
         results.addAll(wayGeometryDao.getAllEntries(elementIds.ways))
         results.addAll(relationGeometryDao.getAllEntries(elementIds.relations))
@@ -70,12 +62,9 @@ class ElementGeometryDao(
     }
 
     fun deleteAll(keys: Collection<ElementKey>): Int {
-        if (keys.isEmpty()) return 0
         val elementIds = keys.toElementIds()
-        var deletedCount = 0
-        deletedCount += wayGeometryDao.deleteAll(elementIds.ways)
-        deletedCount += relationGeometryDao.deleteAll(elementIds.relations)
-        return deletedCount
+        return wayGeometryDao.deleteAll(elementIds.ways) +
+            relationGeometryDao.deleteAll(elementIds.relations)
     }
 
     fun clear() {
