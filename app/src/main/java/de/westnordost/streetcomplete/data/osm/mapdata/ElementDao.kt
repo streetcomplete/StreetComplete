@@ -43,6 +43,30 @@ class ElementDao(
         return result
     }
 
+    fun getAll(bbox: BoundingBox): List<Element> {
+        val nodes = nodeDao.getAll(bbox)
+        val nodeIds = nodes.map { it.id }
+        val ways = wayDao.getAllForNodes(nodeIds)
+        val wayIds = ways.map { it.id }
+        val relations = relationDao.getAllForElements(nodeIds = nodeIds, wayIds = wayIds)
+        val result = ArrayList<Element>(nodes.size + ways.size + relations.size)
+        result.addAll(nodes)
+        result.addAll(ways)
+        result.addAll(relations)
+        return result
+    }
+
+    fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
+        val nodeIds = nodeDao.getAllIds(bbox)
+        val wayIds = wayDao.getAllIdsForNodes(nodeIds)
+        val relationIds = relationDao.getAllIdsForElements(nodeIds = nodeIds, wayIds = wayIds)
+        val result = ArrayList<ElementKey>(nodeIds.size + wayIds.size + relationIds.size)
+        result.addAll(nodeIds.map { ElementKey(NODE, it) })
+        result.addAll(wayIds.map { ElementKey(WAY, it) })
+        result.addAll(relationIds.map { ElementKey(RELATION, it) })
+        return result
+    }
+
     fun deleteAll(keys: Iterable<ElementKey>): Int =
         // delete first relations, then ways, then nodes because relations depend on ways depend on nodes
         relationDao.deleteAll(keys.filterByType(RELATION)) +

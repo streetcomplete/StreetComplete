@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -50,38 +49,6 @@ class RelationGeometryDaoTest : ApplicationDbTestCase() {
 
         assertNotNull(dao.get(2))
         assertNotNull(dao.get(1))
-    }
-
-    @Test fun getAllIds() {
-        dao.putAll(listOf(
-            ElementGeometryEntry(ElementType.RELATION, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.RELATION, 2, createPoint(1.0, 2.0)),
-            // these are outside
-            ElementGeometryEntry(ElementType.RELATION, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.RELATION, 4, createPoint(1.5, 1.0)),
-            ElementGeometryEntry(ElementType.RELATION, 5, createPoint(0.5, -0.5)),
-            ElementGeometryEntry(ElementType.RELATION, 6, createPoint(0.5, 2.5))
-        ))
-
-        assertTrue(dao.getAllIds(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(listOf(1L,2L)))
-    }
-
-    @Test fun getAllEntriesForBBox() {
-        val insideElements = listOf(
-            ElementGeometryEntry(ElementType.RELATION, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.RELATION, 2, createPoint(1.0, 2.0)),
-        )
-        val outsideElements = listOf(
-            ElementGeometryEntry(ElementType.RELATION, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.RELATION, 4, createPoint(1.5, 1.0)),
-            ElementGeometryEntry(ElementType.RELATION, 5, createPoint(0.5, -0.5)),
-            ElementGeometryEntry(ElementType.RELATION, 6, createPoint(0.5, 2.5))
-        )
-        dao.putAll(insideElements + outsideElements)
-
-        assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(insideElements))
     }
 
     @Test fun getAllEntriesForElementIds() {

@@ -52,38 +52,6 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(1))
     }
 
-    @Test fun getAllIds() {
-        dao.putAll(listOf(
-            ElementGeometryEntry(ElementType.WAY, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
-            // these are outside
-            ElementGeometryEntry(ElementType.WAY, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 4, createPoint(1.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 5, createPoint(0.5, -0.5)),
-            ElementGeometryEntry(ElementType.WAY, 6, createPoint(0.5, 2.5))
-        ))
-
-        assertTrue(dao.getAllIds(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(listOf(1L, 2L)))
-    }
-
-    @Test fun getAllEntriesForBBox() {
-        val insideElements = listOf(
-            ElementGeometryEntry(ElementType.WAY, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
-        )
-        val outsideElements = listOf(
-            ElementGeometryEntry(ElementType.WAY, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 4, createPoint(1.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 5, createPoint(0.5, -0.5)),
-            ElementGeometryEntry(ElementType.WAY, 6, createPoint(0.5, 2.5))
-        )
-        dao.putAll(insideElements + outsideElements)
-
-        assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(insideElements))
-    }
-
     @Test fun getAllEntriesForElementIds() {
         val entries = listOf(
             ElementGeometryEntry(ElementType.WAY, 1, createSimpleGeometry()),

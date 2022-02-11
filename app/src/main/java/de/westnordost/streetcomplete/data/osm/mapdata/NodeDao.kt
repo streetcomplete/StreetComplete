@@ -78,7 +78,7 @@ class NodeDao(private val db: Database) {
     fun getAllIds(bbox: BoundingBox): List<Long> =
         db.query(NAME, where = inBoundsSql(bbox), columns = arrayOf(ID)) { it.getLong(ID) }
 
-    fun getAllEntries(ids: Collection<Long>): List<ElementGeometryEntry> {
+    fun getAllAsGeometryEntries(ids: Collection<Long>): List<ElementGeometryEntry> {
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
         return db.query(NAME,
@@ -86,12 +86,6 @@ class NodeDao(private val db: Database) {
             columns = arrayOf(ID, LATITUDE, LONGITUDE)
         ) { it.toElementGeometryEntry() }
     }
-
-    fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> =
-        db.query(NAME,
-            where = inBoundsSql(bbox),
-            columns = arrayOf(ID, LATITUDE, LONGITUDE)
-        ) { it.toElementGeometryEntry() }
 
     fun getAll(bbox: BoundingBox): List<Node> =
         db.query(NAME, where = inBoundsSql(bbox)) { it.toNode() }

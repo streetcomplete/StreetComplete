@@ -95,6 +95,10 @@ class WayDaoTest : ApplicationDbTestCase() {
             listOf(e1, e2),
             dao.getAllForNode(1).sortedBy { it.id }
         )
+        assertEquals(
+            listOf(e2, e3),
+            dao.getAllForNodes(listOf(5,8)).sortedBy { it.id }
+        )
     }
 
     @Test fun getUnusedAndOldIds() {

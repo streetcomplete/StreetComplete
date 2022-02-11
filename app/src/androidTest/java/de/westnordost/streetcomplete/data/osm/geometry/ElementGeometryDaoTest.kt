@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -58,77 +57,6 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
 
         assertNotNull(dao.get(ElementType.WAY, 2))
         assertNull(dao.get(ElementType.NODE, 1))
-    }
-
-    @Test fun getAllKeys() {
-        dao.putAll(listOf(
-            ElementGeometryEntry(ElementType.RELATION, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
-            // these are outside
-            ElementGeometryEntry(ElementType.RELATION, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 4, createPoint(1.5, 1.0)),
-        ))
-        nodeDao.putAll(listOf(
-            Node(2, LatLon(0.5, 1.0)),
-            // these are outside
-            Node(5, LatLon(0.5, -0.5)),
-            Node(6, LatLon(0.5, 2.5))
-        ))
-
-        assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(listOf(
-                ElementKey(ElementType.RELATION, 1),
-                ElementKey(ElementType.WAY, 2),
-                ElementKey(ElementType.NODE, 2),
-        )))
-    }
-
-    @Test fun getAllEntriesForBBox() {
-        val insideElements = listOf(
-            ElementGeometryEntry(ElementType.RELATION, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
-        )
-        val insideNodes = listOf(Node(2, LatLon(0.5, 1.0)))
-
-        val outsideElements = listOf(
-            ElementGeometryEntry(ElementType.RELATION, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 4, createPoint(1.5, 1.0)),
-        )
-        val outsideNodes = listOf(
-            Node(5, LatLon(0.5, -0.5)),
-            Node(6, LatLon(0.5, 2.5))
-        )
-
-        dao.putAll(insideElements + outsideElements)
-        nodeDao.putAll(insideNodes + outsideNodes)
-
-        assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(insideElements +
-                insideNodes.map { ElementGeometryEntry(ElementType.NODE, it.id, ElementPointGeometry(it.position)) }
-            ))
-    }
-
-    @Test fun getAllEntriesWithoutNodesForBBox() {
-        val insideElements = listOf(
-            ElementGeometryEntry(ElementType.RELATION, 1, createPoint(0.0, 0.0)),
-            ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
-        )
-        val insideNodes = listOf(Node(2, LatLon(0.5, 1.0)))
-
-        val outsideElements = listOf(
-            ElementGeometryEntry(ElementType.RELATION, 3, createPoint(-0.5, 1.0)),
-            ElementGeometryEntry(ElementType.WAY, 4, createPoint(1.5, 1.0)),
-        )
-        val outsideNodes = listOf(
-            Node(5, LatLon(0.5, -0.5)),
-            Node(6, LatLon(0.5, 2.5))
-        )
-
-        dao.putAll(insideElements + outsideElements)
-        nodeDao.putAll(insideNodes + outsideNodes)
-
-        assertTrue(dao.getAllEntriesWithoutNodes(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(insideElements))
     }
 
     @Test fun getAllEntriesForElementKeys() {
