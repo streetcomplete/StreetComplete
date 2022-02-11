@@ -6,7 +6,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import org.junit.Assert
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 
@@ -18,7 +22,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun testGetNull() {
-        Assert.assertNull(dao.get(0))
+        assertNull(dao.get(0))
     }
 
     @Test fun putWrongTypes() {
@@ -45,8 +49,8 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.WAY, 2, geometry)
         ))
 
-        Assert.assertNotNull(dao.get(2))
-        Assert.assertNotNull(dao.get(1))
+        assertNotNull(dao.get(2))
+        assertNotNull(dao.get(1))
     }
 
     @Test fun getAllKeys() {
@@ -60,7 +64,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.WAY, 6, createPoint(0.5, 2.5))
         ))
 
-        Assert.assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
+        assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
             .containsExactlyInAnyOrder(listOf(
                 ElementKey(ElementType.WAY, 1),
                 ElementKey(ElementType.WAY, 2),
@@ -80,7 +84,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         )
         dao.putAll(insideElements + outsideElements)
 
-        Assert.assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
+        assertTrue(dao.getAllEntries(BoundingBox(0.0, 0.0, 1.0, 2.0))
             .containsExactlyInAnyOrder(insideElements))
     }
 
@@ -99,7 +103,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.WAY, 3, createSimpleGeometry())
         )
 
-        Assert.assertTrue(dao.getAllEntries(ids)
+        assertTrue(dao.getAllEntries(ids)
             .containsExactlyInAnyOrder(expectedEntries))
     }
 
@@ -108,7 +112,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         dao.put(ElementGeometryEntry(ElementType.WAY, 0, geometry))
         val dbGeometry = dao.get(0)
 
-        Assert.assertEquals(geometry, dbGeometry)
+        assertEquals(geometry, dbGeometry)
     }
 
     @Test fun polylineGeometryPutGet() {
@@ -117,7 +121,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         dao.put(ElementGeometryEntry(ElementType.WAY, 0, geometry))
         val dbGeometry = dao.get(0)
 
-        Assert.assertEquals(geometry, dbGeometry)
+        assertEquals(geometry, dbGeometry)
     }
 
     @Test fun polygonGeometryPutGet() {
@@ -126,20 +130,20 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         dao.put(ElementGeometryEntry(ElementType.WAY, 0, geometry))
         val dbGeometry = dao.get(0)
 
-        Assert.assertEquals(geometry, dbGeometry)
+        assertEquals(geometry, dbGeometry)
     }
 
     @Test fun delete() {
         dao.put(ElementGeometryEntry(ElementType.WAY, 0, createSimpleGeometry()))
-        Assert.assertTrue(dao.delete(0))
+        assertTrue(dao.delete(0))
 
-        Assert.assertNull(dao.get(0))
+        assertNull(dao.get(0))
     }
 
     @Test fun clear() {
         dao.put(ElementGeometryEntry(ElementType.WAY, 0, createSimpleGeometry()))
         dao.clear()
-        Assert.assertNull(dao.get(0))
+        assertNull(dao.get(0))
     }
 
     private fun createSimpleGeometry() = createPoint(50.0, 50.0)
@@ -158,6 +162,6 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
 private fun assertThrows(block: () -> Unit) {
     try {
         block()
-        Assert.fail("Expected exception")
+        fail("Expected exception")
     } catch (e: Throwable) {}
 }

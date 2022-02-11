@@ -129,8 +129,8 @@ class WayGeometryDao(
         )
 
     private fun CursorPosition.toElementGeometry(): ElementGeometry {
-        val polylines: PolyLines? = getBlobOrNull(GEOMETRY_POLYLINES)?.let { polylinesSerializer.deserialize(it) }
-        val polygons: PolyLines? = getBlobOrNull(GEOMETRY_POLYGONS)?.let { polylinesSerializer.deserialize(it) }
+        val polylines: List<List<LatLon>>? = getBlobOrNull(GEOMETRY_POLYLINES)?.let { polylinesSerializer.deserialize(it) }
+        val polygons: List<List<LatLon>>? = getBlobOrNull(GEOMETRY_POLYGONS)?.let { polylinesSerializer.deserialize(it) }
         val center = LatLon(getDouble(CENTER_LATITUDE), getDouble(CENTER_LONGITUDE))
 
         return when {

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.geometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
 import de.westnordost.streetcomplete.data.osm.mapdata.toElementIds
 
@@ -83,7 +82,6 @@ class ElementGeometryDao(
         wayGeometryDao.clear()
         relationGeometryDao.clear()
     }
-
 }
 
 data class ElementGeometryEntry(
@@ -91,5 +89,3 @@ data class ElementGeometryEntry(
     val elementId: Long,
     val geometry: ElementGeometry
 )
-
-typealias PolyLines = List<List<LatLon>>
