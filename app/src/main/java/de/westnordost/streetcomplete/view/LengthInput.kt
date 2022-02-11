@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.osm.LengthUnit
+import de.westnordost.streetcomplete.view.inputfilter.IntRangeInputValidator
+import de.westnordost.streetcomplete.view.inputfilter.MaxDecimalsInputValidator
 
 /** Allows to input a length in any of the units specified in [selectableUnits] */
 class LengthInput @JvmOverloads constructor(
@@ -40,6 +42,7 @@ class LengthInput @JvmOverloads constructor(
         }
 
         binding.inchesInput.filters = arrayOf(IntRangeInputValidator(0 until 12))
+        binding.metersInput.filters = arrayOf(MaxDecimalsInputValidator(2))
 
         binding.metersInput.addTextChangedListener { onInputChanged?.invoke() }
         binding.feetInput.addTextChangedListener { onInputChanged?.invoke() }
@@ -87,7 +90,7 @@ class LengthInput @JvmOverloads constructor(
             null -> null
         }
         set(value) {
-            when(value) {
+            when (value) {
                 is LengthInFeetAndInches -> {
                     binding.feetInput.setText(value.feet.toString())
                     binding.inchesInput.setText(value.inches.toString())

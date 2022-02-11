@@ -1,10 +1,10 @@
-package de.westnordost.streetcomplete.view
+package de.westnordost.streetcomplete.view.inputfilter
 
 import android.text.InputFilter
 import android.text.Spanned
 
 /** Input filter that only allows a certain range of integers to be input */
-class IntRangeInputValidator(val range: IntRange) : InputFilter {
+class IntRangeInputValidator(private val range: IntRange) : InputFilter {
     override fun filter(
         source: CharSequence, start: Int, end: Int, dest: Spanned, dstart: Int, dend: Int,
     ): CharSequence? {
