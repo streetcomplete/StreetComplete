@@ -16,7 +16,7 @@ class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
     private fun noSidewalksHereHint() {
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_sidewalk_answer_none_title)
-            .setMessage(R.string.quest_sidewalk_answer_none_explanation)
+            .setMessage(R.string.quest_side_select_interface_explanation)
             .setPositiveButton(android.R.string.ok, null)
             .show()
         }
