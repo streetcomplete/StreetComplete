@@ -56,7 +56,7 @@ class MapDataController internal constructor(
                 geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
             }
 
-            oldElementKeys = geometryDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
             }
@@ -150,24 +150,24 @@ class MapDataController internal constructor(
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
-        val nodes = nodeDB.getAll(bbox)
-        // nodes have simple point geometries, which we can create from the node position
-        //  instead of querying for nodes and node geometry separately
-        val elementGeometryEntriesWithoutNodes = geometryDB.getAllEntriesWithoutNodes(bbox)
-        val elementKeysWithoutNodes = elementGeometryEntriesWithoutNodes.map { ElementKey(it.elementType, it.elementId) }
-        val elements = elementDB.getAll(elementKeysWithoutNodes) + nodes
-        val elementGeometries = elementGeometryEntriesWithoutNodes + nodes.map {
-            ElementGeometryEntry(ElementType.NODE, it.id, ElementPointGeometry(it.position))
-        }
+        val elements = elementDB.getAll(bbox)
+        /* performance improvement over geometryDB.getAllEntries(elements): no need to query
+           nodeDB twice (once for the element, another time for the geometry */
+        val elementGeometries = geometryDB.getAllEntries(
+            elements.mapNotNull { if (it !is Node) ElementKey(it.type, it.id) else null }
+        ) + elements.mapNotNull { if (it is Node) it.toElementGeometryEntry() else null }
         val result = MutableMapDataWithGeometry(elements, elementGeometries)
         result.boundingBox = bbox
         Log.i(TAG, "Fetched ${elements.size} elements and geometries in ${currentTimeMillis() - time}ms")
         return result
     }
 
+    fun Node.toElementGeometryEntry() =
+        ElementGeometryEntry(type, id, ElementPointGeometry(position))
+
     data class ElementCounts(val nodes: Int, val ways: Int, val relations: Int)
     fun getElementCounts(bbox: BoundingBox): ElementCounts {
-        val keys = geometryDB.getAllKeys(bbox)
+        val keys = elementDB.getAllKeys(bbox)
         return ElementCounts(
             keys.count { it.type == ElementType.NODE },
             keys.count { it.type == ElementType.WAY },

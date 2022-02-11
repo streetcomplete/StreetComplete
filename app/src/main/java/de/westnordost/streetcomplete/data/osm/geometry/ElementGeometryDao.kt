@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
@@ -39,23 +38,9 @@ class ElementGeometryDao(
         relationGeometryDao.putAll(entries.filter { it.elementType == RELATION })
     }
 
-    fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
-        val results = mutableListOf<ElementKey>()
-        results.addAll(nodeDao.getAllIds(bbox).map { ElementKey(NODE, it) })
-        results.addAll(wayGeometryDao.getAllIds(bbox).map { ElementKey(WAY, it) })
-        results.addAll(relationGeometryDao.getAllIds(bbox).map { ElementKey(RELATION, it) })
-        return results
-    }
-
-    fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> =
-        nodeDao.getAllEntries(bbox) + getAllEntriesWithoutNodes(bbox)
-
-    fun getAllEntriesWithoutNodes(bbox: BoundingBox): List<ElementGeometryEntry> =
-        wayGeometryDao.getAllEntries(bbox) + relationGeometryDao.getAllEntries(bbox)
-
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
         val results = ArrayList<ElementGeometryEntry>(keys.size)
-        results.addAll(nodeDao.getAllEntries(keys.filterByType(NODE)))
+        results.addAll(nodeDao.getAllAsGeometryEntries(keys.filterByType(NODE)))
         results.addAll(wayGeometryDao.getAllEntries(keys.filterByType(WAY)))
         results.addAll(relationGeometryDao.getAllEntries(keys.filterByType(RELATION)))
         return results
