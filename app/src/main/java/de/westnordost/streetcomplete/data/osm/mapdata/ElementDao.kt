@@ -35,26 +35,19 @@ class ElementDao(
         relationDao.putAll(elements.filterIsInstance<Relation>())
     }
 
-    fun getAll(keys: Iterable<ElementKey>): List<Element> {
-        val elementIds = keys.toElementIds()
-        if (elementIds.size == 0) return emptyList()
-
-        val result = ArrayList<Element>(elementIds.size)
-        result.addAll(nodeDao.getAll(elementIds.nodes))
-        result.addAll(wayDao.getAll(elementIds.ways))
-        result.addAll(relationDao.getAll(elementIds.relations))
+    fun getAll(keys: Collection<ElementKey>): List<Element> {
+        val result = ArrayList<Element>(keys.size)
+        result.addAll(nodeDao.getAll(keys.filterByType(NODE)))
+        result.addAll(wayDao.getAll(keys.filterByType(WAY)))
+        result.addAll(relationDao.getAll(keys.filterByType(RELATION)))
         return result
     }
 
-    fun deleteAll(keys: Iterable<ElementKey>): Int {
-        val elementIds = keys.toElementIds()
-        if (elementIds.size == 0) return 0
-
+    fun deleteAll(keys: Iterable<ElementKey>): Int =
         // delete first relations, then ways, then nodes because relations depend on ways depend on nodes
-        return relationDao.deleteAll(elementIds.relations) +
-            wayDao.deleteAll(elementIds.ways) +
-            nodeDao.deleteAll(elementIds.nodes)
-    }
+        relationDao.deleteAll(keys.filterByType(RELATION)) +
+        wayDao.deleteAll(keys.filterByType(WAY)) +
+        nodeDao.deleteAll(keys.filterByType(NODE))
 
     fun clear() {
         relationDao.clear()
@@ -72,20 +65,5 @@ class ElementDao(
     }
 }
 
-data class ElementIds(val nodes: List<Long>, val ways: List<Long>, val relations: List<Long>) {
-    val size: Int get() = nodes.size + ways.size + relations.size
-}
-
-fun Iterable<ElementKey>.toElementIds(): ElementIds {
-    val nodes = ArrayList<Long>()
-    val ways = ArrayList<Long>()
-    val relations = ArrayList<Long>()
-    for (key in this) {
-        when (key.type) {
-            NODE -> nodes.add(key.id)
-            WAY -> ways.add(key.id)
-            RELATION -> relations.add(key.id)
-        }
-    }
-    return ElementIds(nodes, ways, relations)
-}
+private fun Iterable<ElementKey>.filterByType(type: ElementType) =
+    mapNotNull { if (it.type == type) it.id else null }

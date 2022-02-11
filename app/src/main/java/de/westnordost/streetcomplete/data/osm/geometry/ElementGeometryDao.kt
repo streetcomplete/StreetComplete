@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
-import de.westnordost.streetcomplete.data.osm.mapdata.toElementIds
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
@@ -55,20 +54,16 @@ class ElementGeometryDao(
         wayGeometryDao.getAllEntries(bbox) + relationGeometryDao.getAllEntries(bbox)
 
     fun getAllEntries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
-        if (keys.isEmpty()) return emptyList()
-        val elementIds = keys.toElementIds()
-        val results = ArrayList<ElementGeometryEntry>(elementIds.size)
-        results.addAll(nodeDao.getAllEntries(elementIds.nodes))
-        results.addAll(wayGeometryDao.getAllEntries(elementIds.ways))
-        results.addAll(relationGeometryDao.getAllEntries(elementIds.relations))
+        val results = ArrayList<ElementGeometryEntry>(keys.size)
+        results.addAll(nodeDao.getAllEntries(keys.filterByType(NODE)))
+        results.addAll(wayGeometryDao.getAllEntries(keys.filterByType(WAY)))
+        results.addAll(relationGeometryDao.getAllEntries(keys.filterByType(RELATION)))
         return results
     }
 
-    fun deleteAll(keys: Collection<ElementKey>): Int {
-        val elementIds = keys.toElementIds()
-        return wayGeometryDao.deleteAll(elementIds.ways) +
-            relationGeometryDao.deleteAll(elementIds.relations)
-    }
+    fun deleteAll(keys: Collection<ElementKey>): Int =
+        wayGeometryDao.deleteAll(keys.filterByType(WAY)) +
+        relationGeometryDao.deleteAll(keys.filterByType(RELATION))
 
     fun clear() {
         wayGeometryDao.clear()
@@ -81,3 +76,6 @@ data class ElementGeometryEntry(
     val elementId: Long,
     val geometry: ElementGeometry
 )
+
+private fun Iterable<ElementKey>.filterByType(type: ElementType) =
+    mapNotNull { if (it.type == type) it.id else null }

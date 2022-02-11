@@ -179,7 +179,7 @@ class MapDataController internal constructor(
     fun getWay(id: Long): Way? = wayDB.get(id)
     fun getRelation(id: Long): Relation? = relationDB.get(id)
 
-    fun getAll(elementKeys: Iterable<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
+    fun getAll(elementKeys: Collection<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
 
     fun getNodes(ids: Collection<Long>): List<Node> = nodeDB.getAll(ids)
     fun getWays(ids: Collection<Long>): List<Way> = wayDB.getAll(ids)
