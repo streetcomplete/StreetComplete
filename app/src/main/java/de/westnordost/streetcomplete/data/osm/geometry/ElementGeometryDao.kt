@@ -5,6 +5,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
 import de.westnordost.streetcomplete.data.osm.mapdata.toElementIds
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 
 /** Stores the geometry of elements. Actually, stores nothing, but delegates the work to
  *  WayGeometryDao and RelationDao. Node geometry is never stored separately, but created
@@ -15,33 +18,33 @@ class ElementGeometryDao(
     private val relationGeometryDao: RelationGeometryDao
 ) {
     fun put(entry: ElementGeometryEntry) = when (entry.elementType) {
-        ElementType.NODE -> Unit
-        ElementType.WAY -> wayGeometryDao.put(entry)
-        ElementType.RELATION -> relationGeometryDao.put(entry)
+        NODE -> Unit
+        WAY -> wayGeometryDao.put(entry)
+        RELATION -> relationGeometryDao.put(entry)
     }
 
     fun get(type: ElementType, id: Long): ElementGeometry? = when (type) {
-        ElementType.NODE -> nodeDao.get(id)?.let { ElementPointGeometry(it.position) }
-        ElementType.WAY -> wayGeometryDao.get(id)
-        ElementType.RELATION -> relationGeometryDao.get(id)
+        NODE -> nodeDao.get(id)?.let { ElementPointGeometry(it.position) }
+        WAY -> wayGeometryDao.get(id)
+        RELATION -> relationGeometryDao.get(id)
     }
 
     fun delete(type: ElementType, id: Long): Boolean = when (type) {
-        ElementType.NODE -> false
-        ElementType.WAY -> wayGeometryDao.delete(id)
-        ElementType.RELATION -> relationGeometryDao.delete(id)
+        NODE -> false
+        WAY -> wayGeometryDao.delete(id)
+        RELATION -> relationGeometryDao.delete(id)
     }
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
-        wayGeometryDao.putAll(entries.filter { it.elementType == ElementType.WAY })
-        relationGeometryDao.putAll(entries.filter { it.elementType == ElementType.RELATION })
+        wayGeometryDao.putAll(entries.filter { it.elementType == WAY })
+        relationGeometryDao.putAll(entries.filter { it.elementType == RELATION })
     }
 
     fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
         val results = mutableListOf<ElementKey>()
-        results.addAll(nodeDao.getAllIds(bbox).map { ElementKey(ElementType.NODE, it) })
-        results.addAll(wayGeometryDao.getAllIds(bbox).map { ElementKey(ElementType.WAY, it) })
-        results.addAll(relationGeometryDao.getAllIds(bbox).map { ElementKey(ElementType.RELATION, it) })
+        results.addAll(nodeDao.getAllIds(bbox).map { ElementKey(NODE, it) })
+        results.addAll(wayGeometryDao.getAllIds(bbox).map { ElementKey(WAY, it) })
+        results.addAll(relationGeometryDao.getAllIds(bbox).map { ElementKey(RELATION, it) })
         return results
     }
 
