@@ -114,9 +114,7 @@ private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
     ElementPointGeometry(LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)))
 )
 
-private fun inBoundsSql(bbox: BoundingBox) = """
-    $LATITUDE <= ${bbox.max.latitude} AND
-    $LATITUDE >= ${bbox.min.latitude} AND
-    $LONGITUDE <= ${bbox.max.longitude} AND
-    $LONGITUDE >= ${bbox.min.longitude}
+private fun inBoundsSql(bbox: BoundingBox): String = """
+    ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+    ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
 """.trimIndent()
