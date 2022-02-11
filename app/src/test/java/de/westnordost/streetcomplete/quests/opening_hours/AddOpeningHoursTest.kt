@@ -188,20 +188,6 @@ class AddOpeningHoursTest {
         ))
     }
 
-    @Test fun `isApplicableTo returns true for unnamed toilets with old opening hours`() {
-        val milisecondsFor400Days : Long = 1000L * 60 * 60 * 24 * 400
-        assertTrue(questType.filter.matches(
-            node(tags = mapOf("amenity" to "toilets", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
-        ))
-    }
-
-    @Test fun `isApplicableTo returns true for unnamed toilets with old opening hours WAT`() {
-        val milisecondsFor400Days : Long = 1000L * 60 * 60 * 24 * 400
-        assertTrue(questType.filter.matches(
-            node(tags = mapOf("amenity" to "toilets", "opening_hours" to "Mo-Fr 10:00-20:00", "noname" to "yes"), timestamp = currentTimeMillis() - milisecondsFor400Days)
-        ))
-    }
-
     @Test fun `isApplicableTo returns false for toilets without opening hours`() {
         assertFalse(questType.isApplicableTo(
             node(tags = mapOf("amenity" to "toilets"), timestamp = currentTimeMillis())

@@ -22,7 +22,7 @@ class AddOpeningHours(
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    val filter by lazy { ("""
+    private val filter by lazy { ("""
         nodes, ways, relations with
         (
           (
