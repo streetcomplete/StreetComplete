@@ -9,12 +9,9 @@ class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
 
     override val items = Sidewalk.values().map { it.asStreetSideItem() }
 
-    override val otherAnswers: List<AnswerItem> get() {
-        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout" && osmElement!!.tags["junction"] != "circular"
-        val result = mutableListOf<AnswerItem>()
-        result.add(AnswerItem(R.string.quest_sidewalk_answer_none) { noSidewalksHereHint() })
-        return result
-    }
+    override val otherAnswers: List<AnswerItem> = listOf(
+        AnswerItem(R.string.quest_sidewalk_answer_none) { noSidewalksHereHint() }
+    )
 
     private fun noSidewalksHereHint() {
         activity?.let { AlertDialog.Builder(it)
