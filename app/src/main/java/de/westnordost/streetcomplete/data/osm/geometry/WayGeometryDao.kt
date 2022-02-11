@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable.Columns.
 import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable.Columns.MIN_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
@@ -71,11 +70,11 @@ class WayGeometryDao(
         )
     }
 
-    fun getAllKeys(bbox: BoundingBox): List<ElementKey> =
+    fun getAllIds(bbox: BoundingBox): List<Long> =
         db.query(NAME,
             columns = arrayOf(ID),
             where = inBoundsSql(bbox)
-        ) { ElementKey(ElementType.WAY, it.getLong(ID)) }
+        ) { it.getLong(ID) }
 
     fun getAllEntries(bbox: BoundingBox): List<ElementGeometryEntry> =
         db.query(NAME,
@@ -121,12 +120,11 @@ class WayGeometryDao(
         MAX_LONGITUDE to getBounds().max.longitude
     )
 
-    private fun CursorPosition.toElementGeometryEntry(): ElementGeometryEntry =
-        ElementGeometryEntry(
-            ElementType.WAY,
-            getLong(ID),
-            toElementGeometry()
-        )
+    private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
+        ElementType.WAY,
+        getLong(ID),
+        toElementGeometry()
+    )
 
     private fun CursorPosition.toElementGeometry(): ElementGeometry {
         val polylines: List<List<LatLon>>? = getBlobOrNull(GEOMETRY_POLYLINES)?.let { polylinesSerializer.deserialize(it) }

@@ -40,8 +40,8 @@ class ElementGeometryDao(
     fun getAllKeys(bbox: BoundingBox): List<ElementKey> {
         val results = mutableListOf<ElementKey>()
         results.addAll(nodeDao.getAllIds(bbox).map { ElementKey(ElementType.NODE, it) })
-        results.addAll(wayGeometryDao.getAllKeys(bbox))
-        results.addAll(relationGeometryDao.getAllKeys(bbox))
+        results.addAll(wayGeometryDao.getAllIds(bbox).map { ElementKey(ElementType.WAY, it) })
+        results.addAll(relationGeometryDao.getAllIds(bbox).map { ElementKey(ElementType.RELATION, it) })
         return results
     }
 

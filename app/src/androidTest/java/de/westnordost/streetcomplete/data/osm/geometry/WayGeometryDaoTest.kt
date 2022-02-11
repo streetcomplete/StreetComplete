@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
@@ -53,7 +52,7 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
         assertNotNull(dao.get(1))
     }
 
-    @Test fun getAllKeys() {
+    @Test fun getAllIds() {
         dao.putAll(listOf(
             ElementGeometryEntry(ElementType.WAY, 1, createPoint(0.0, 0.0)),
             ElementGeometryEntry(ElementType.WAY, 2, createPoint(1.0, 2.0)),
@@ -64,11 +63,8 @@ class WayGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.WAY, 6, createPoint(0.5, 2.5))
         ))
 
-        assertTrue(dao.getAllKeys(BoundingBox(0.0, 0.0, 1.0, 2.0))
-            .containsExactlyInAnyOrder(listOf(
-                ElementKey(ElementType.WAY, 1),
-                ElementKey(ElementType.WAY, 2),
-            )))
+        assertTrue(dao.getAllIds(BoundingBox(0.0, 0.0, 1.0, 2.0))
+            .containsExactlyInAnyOrder(listOf(1L, 2L)))
     }
 
     @Test fun getAllEntriesForBBox() {
