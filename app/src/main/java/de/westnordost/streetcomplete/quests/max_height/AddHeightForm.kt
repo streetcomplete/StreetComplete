@@ -24,6 +24,8 @@ class AddHeightForm : AbstractQuestFormAnswerFragment<Length>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.lengthInput.maxFeetDigits = 2
+        binding.lengthInput.maxMeterDigitsBeforeDecimalPoint = 1
         binding.lengthInput.selectableUnits = countryInfo.lengthUnits.map { it.toLengthUnit() }
         binding.lengthInput.onInputChanged = { checkIsFormComplete() }
         binding.measureButton.isGone = !checkArSupport()

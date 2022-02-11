@@ -25,15 +25,17 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<Length>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.lengthInput.selectableUnits = countryInfo.lengthUnits.map { it.toLengthUnit() }
-        binding.lengthInput.onInputChanged = { checkIsFormComplete() }
-        binding.measureButton.isGone = !checkArSupport()
-        binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }
-
         val isRoad = osmElement!!.tags["highway"] in ALL_ROADS
         val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
         binding.widthExplanationTextView.isGone = explanation == null
         binding.widthExplanationTextView.text = explanation
+
+        binding.lengthInput.maxFeetDigits = if (isRoad) 3 else 2
+        binding.lengthInput.maxMeterDigitsBeforeDecimalPoint = if (isRoad) 2 else 1
+        binding.lengthInput.selectableUnits = countryInfo.lengthUnits.map { it.toLengthUnit() }
+        binding.lengthInput.onInputChanged = { checkIsFormComplete() }
+        binding.measureButton.isGone = !checkArSupport()
+        binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }
     }
 
     private suspend fun takeMeasurement() {

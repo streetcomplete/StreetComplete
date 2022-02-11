@@ -18,8 +18,9 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.osm.LengthUnit
-import de.westnordost.streetcomplete.view.inputfilter.IntRangeInputValidator
-import de.westnordost.streetcomplete.view.inputfilter.MaxDecimalsInputValidator
+import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
+import de.westnordost.streetcomplete.view.inputfilter.acceptIntDigits
+import de.westnordost.streetcomplete.view.inputfilter.acceptIntRange
 
 /** Allows to input a length in any of the units specified in [selectableUnits] */
 class LengthInput @JvmOverloads constructor(
@@ -41,8 +42,9 @@ class LengthInput @JvmOverloads constructor(
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        binding.inchesInput.filters = arrayOf(IntRangeInputValidator(0 until 12))
-        binding.metersInput.filters = arrayOf(MaxDecimalsInputValidator(2))
+        binding.feetInput.filters = arrayOf(acceptIntDigits(4))
+        binding.inchesInput.filters = arrayOf(acceptIntRange(0 until 12))
+        binding.metersInput.filters = arrayOf(acceptDecimalDigits(3, 2))
 
         binding.metersInput.addTextChangedListener { onInputChanged?.invoke() }
         binding.feetInput.addTextChangedListener { onInputChanged?.invoke() }
@@ -50,6 +52,20 @@ class LengthInput @JvmOverloads constructor(
 
         updateInputFieldsVisibility()
     }
+
+    /** set/get how many digits the feet input may have*/
+    var maxFeetDigits: Int = 4
+        set(value) {
+            field = value
+            binding.feetInput.filters = arrayOf(acceptIntDigits(value))
+        }
+
+    /** set/get how many digits the meter input may have*/
+    var maxMeterDigitsBeforeDecimalPoint: Int = 3
+        set(value) {
+            field = value
+            binding.metersInput.filters = arrayOf(acceptDecimalDigits(value, 2))
+        }
 
     /** set/get which units can be selected from the dropdown */
     var selectableUnits: List<LengthUnit> = emptyList()
