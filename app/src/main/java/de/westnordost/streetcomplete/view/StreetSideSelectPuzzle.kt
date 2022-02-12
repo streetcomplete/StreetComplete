@@ -132,26 +132,6 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.rightSideFloatingIcon.isGone = image == null
     }
 
-    fun replaceLeftSideFloatingCircularImage(image: Image?) {
-        setLeftSideFloatingCircularImage(image)
-        binding.leftSideFloatingCircularImage.animateFallDown()
-    }
-
-    fun replaceRightSideFloatingCircularImage(image: Image?) {
-        setRightSideFloatingCircularImage(image)
-        binding.rightSideFloatingCircularImage.animateFallDown()
-    }
-
-    fun setLeftSideFloatingCircularImage(image: Image?) {
-        binding.leftSideFloatingCircularImage.setImage(image)
-        binding.leftSideFloatingCircularImage.isGone = image == null
-    }
-
-    fun setRightSideFloatingCircularImage(image: Image?) {
-        binding.rightSideFloatingCircularImage.setImage(image)
-        binding.rightSideFloatingCircularImage.isGone = image == null
-    }
-
     fun replaceLeftSideFloatingIcon(image: Image?) {
         setLeftSideFloatingIcon(image)
         binding.leftSideFloatingIcon.animateFallDown()

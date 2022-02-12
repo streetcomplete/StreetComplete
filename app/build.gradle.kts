@@ -183,9 +183,6 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.26.0")
-
-    // circular image view
-    implementation("de.hdodenhof:circleimageview:3.1.0")
 }
 
 /** Localizations that should be pulled from POEditor etc. */

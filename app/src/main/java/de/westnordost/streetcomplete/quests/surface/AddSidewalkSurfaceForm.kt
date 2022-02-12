@@ -15,8 +15,10 @@ import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.sidewalk.imageResId
 import de.westnordost.streetcomplete.quests.sidewalk.titleResId
 import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlin.math.absoluteValue
 
@@ -140,14 +142,14 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
     }
 
     private fun onSelectedSide(surface: SurfaceAnswer, isRight: Boolean) {
-        val image = ResImage(surface.value.asItem().drawableId!!)
+        val image = DrawableImage(RotatedCircleDrawable(resources.getDrawable(surface.value.asItem().drawableId!!)))
 
         if (isRight) {
-            binding.puzzleView.replaceRightSideFloatingCircularImage(image)
+            binding.puzzleView.replaceRightSideFloatingIcon(image)
             binding.puzzleView.replaceRightSideImage(ResImage(R.drawable.ic_sidewalk_illustration_yes))
             rightSide = surface
         } else {
-            binding.puzzleView.replaceLeftSideFloatingCircularImage(image)
+            binding.puzzleView.replaceLeftSideFloatingIcon(image)
             binding.puzzleView.replaceLeftSideImage(ResImage(R.drawable.ic_sidewalk_illustration_yes))
             leftSide = surface
         }
