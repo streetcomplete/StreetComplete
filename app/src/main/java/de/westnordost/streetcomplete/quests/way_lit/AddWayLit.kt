@@ -26,7 +26,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
             sidewalk ~ both|left|right|yes|separate
             or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
             or maxspeed <= 60
-            or maxspeed ~ "(5|10|15|20|25|30|35) mph"
+            or maxspeed ~ "([1-9]|[1-2][0-9]|3[0-5]) mph"
           )
           or highway ~ ${LIT_WAYS.joinToString("|")}
           or highway = path and (foot = designated or bicycle = designated)

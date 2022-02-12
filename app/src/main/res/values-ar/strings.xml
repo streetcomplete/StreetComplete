@@ -855,7 +855,6 @@
     <string name="quest_board_type_notice_board">"إنها لوحة إعلانات وملصقات"</string>
     <string name="quest_board_type_public_transport">"النقل العام"</string>
     <string name="quest_board_type_title">"ما هو موضوع لوحة المعلومات هذه؟"</string>
-    <string name="quest_sidewalk_separately_mapped">"نعم، يتم عرضها بشكل منفصل على الخريطة"</string>
     <string name="quest_board_type_map">"إنها خريطة"</string>
     <string name="quest_board_type_map_title">"هل هي مجرد خريطة وبالتأكيد خريطة فقط؟"</string>
     <string name="quest_board_type_map_description">"إذا كانت اللوحة تدور حول موضوع معين، فيرجى تحديده، بغض النظر عما إذا كان يتضمن أيضًا خريطة. على سبيل المثال، قد تحتوي لوحة النقل العام على خريطة طريق للحافلات. إذا لم يكن الموضوع مدرجًا ضمن الإجابات المتاحة، فيرجى التفكير في ترك ملاحظة بدلاً من ذلك."</string>

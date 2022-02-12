@@ -1312,7 +1312,6 @@
     <string name="quest_board_type_notice_board">"Это доска объявлений"</string>
     <string name="quest_board_type_public_transport">"Общественный транспорт"</string>
     <string name="quest_board_type_title">"Какая информация на этой доске объявлений?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Да, отображены раздельно на карте"</string>
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_board_type_map_description">"Если доска посвящена определённой теме, укажите её, независимо от того, есть ли на ней карта. Например, на табло общественного транспорта может быть карта автобусных маршрутов. Если тема отсутствует в списке доступных ответов, оставьте вместо этого заметку."</string>

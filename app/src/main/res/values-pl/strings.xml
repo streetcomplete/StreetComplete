@@ -1680,7 +1680,6 @@ osiągnięć"</string>
     <string name="quest_board_type_notice_board">"To jest tablica z ogłoszeniami"</string>
     <string name="quest_board_type_public_transport">"Transport publiczny"</string>
     <string name="quest_board_type_title">"Jaki jest temat tej tablicy informacyjnej"</string>
-    <string name="quest_sidewalk_separately_mapped">"Tak, pokazany osobno na mapie"</string>
     <string name="quest_board_type_map">"To jest mapa"</string>
     <string name="quest_board_type_map_title">"Czy to jest mapa i tylko mapa?"</string>
     <string name="quest_board_type_map_description">"Jeśli tablica jest o konkretnym temacie, wybierz go - niezależnie od tego czy pojawia się też mapa. Na przykład tablica o transporcie publicznym może zawierać też mapę tras autobusowych. Jeśli temat nie jest na liście możliwych odpowiedzi, wybierz raczej \"odpowiedź niemożliwa\" i zostaw notatkę."</string>
@@ -2038,8 +2037,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_access_yes">"Każdy"</string>
     <string name="quest_access_customers">"Każdy odwiedzający konkretne miejsce (np. tylko dla klientów)"</string>
     <string name="quest_access_private">"Tylko osoby z pozwoleniem"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">"Czy godziny odbioru listów z tej skrzynki pocztowej przez listonosza są aktualne?"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Czy czasy odbioru tej skrzynki pocztowej są nadal poprawne?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"Czy czasy odbioru tej skrzynki pocztowej są nadal poprawne?"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Czy czasy odbioru skrzynki pocztowej %s są nadal poprawne?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Nie rozpoznane. Spróbuj wpisać typ miejsca np. \"piekarnia\". Jak to się nie uda - zostaw notatkę."</string>
     <string name="quest_bicycle_barrier_type_title">"Jaki to rodzaj barierki rowerowej?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Ukośnie do ścieżki"</string>
@@ -2082,7 +2081,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_fireHydrant_position_lane">"Na jezdni"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Na chodniku"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Na miejscu parkingowym"</string>
-    <string name="quest_fireHydrant_diameter_ref_title">"Jaka średnica jest podana na znaku tego hydrantu?  (Numery referencyjne: )"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Jaka średnica jest podana na znaku tego hydrantu?  (Numery referencyjne: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Tak (zostaw notatkę)"</string>
     <string name="quest_smoothness_name_title">"Jaka jest jakość powierzchni %s tutaj?"</string>
     <string name="quest_smoothness_square_title">"Jaka jest jakość tej powierzchni?"</string>

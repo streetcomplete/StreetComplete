@@ -1055,7 +1055,6 @@ de realizări"</string>
     <string name="quest_board_type_notice_board">"Este un avizier"</string>
     <string name="quest_board_type_public_transport">"Transport public"</string>
     <string name="quest_board_type_title">"Care este subiectul acestui forum?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Da, afișat separat pe hartă"</string>
     <string name="quest_board_type_map">"Este o hartă"</string>
     <string name="quest_board_type_map_title">"Este doar o hartă?"</string>
     <string name="quest_board_type_map_description">"Dacă plăcuța este despre un anumit subiect, vă rugăm să îl specificați, indiferent dacă acesta include și o hartă. De exemplu, o placă de transport public poate avea o hartă a rutelor de autobuz. Dacă subiectul nu este listat printre răspunsurile disponibile, vă recomandăm să lăsați o notă"</string>

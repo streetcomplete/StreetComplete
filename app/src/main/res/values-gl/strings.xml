@@ -812,7 +812,6 @@ logros"</string>
     <string name="quest_board_type_notice_board">"É un taboleiro de anuncios"</string>
     <string name="quest_board_type_public_transport">"Transporte público"</string>
     <string name="quest_board_type_title">"Cal é o tema deste taboleiro de información?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Si, amósase por separado no mapa"</string>
     <string name="quest_board_type_map">"É un mapa"</string>
     <string name="quest_board_type_map_title">"É soamente un mapa?"</string>
     <string name="quest_board_type_map_description">"Se o taboleiro é sobre un tema en particular, especifícao, independentemente de se tamén inclúe un mapa. Por exemplo, un taboleiro de transporte público pode ter un mapa de rutas de autobús. Se o tema non figura entre as respostas dispoñíbeis, coida deixar unha nota."</string>

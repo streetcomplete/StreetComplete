@@ -1956,7 +1956,6 @@
     <string name="quest_board_type_notice_board">"Είναι ένας πίνακας ανακοινώσεων"</string>
     <string name="quest_board_type_public_transport">"Δημόσια συγκοινωνία"</string>
     <string name="quest_board_type_title">"Ποιο είναι το θέμα αυτού του πίνακα πληροφοριών;"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ναι, εμφανίζεται ξεχωριστά στο χάρτη"</string>
     <string name="quest_board_type_map">"Είναι ένας χάρτης"</string>
     <string name="quest_board_type_map_title">"Είναι απλώς ένας χάρτης και μόνο ένας χάρτης;"</string>
     <string name="quest_board_type_map_description">"Εάν ο πίνακας αφορά ένα συγκεκριμένο θέμα, προσδιορίστε το, ανεξάρτητα από το εάν περιλαμβάνει επίσης έναν χάρτη. Για παράδειγμα, μια δημόσια συγκοινωνία μπορεί να έχει χάρτη διαδρομής λεωφορείου. Εάν το θέμα δεν περιλαμβάνεται στις διαθέσιμες απαντήσεις, σκεφτείτε το ενδεχόμενο να αφήσετε μια σημείωση."</string>

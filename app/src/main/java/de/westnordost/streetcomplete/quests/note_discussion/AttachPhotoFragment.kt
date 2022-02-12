@@ -80,11 +80,10 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
             noteImageAdapter.list.add(file.path)
             noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
-
         } catch (e: Exception) {
             Log.e(TAG, "Unable to create photo", e)
             file?.let { deleteImageFile(it) }
-            when(e) {
+            when (e) {
                 is ActivityNotFoundException -> context?.toast(R.string.no_camera_app)
                 else -> context?.toast(R.string.quest_leave_new_note_create_image_error)
             }

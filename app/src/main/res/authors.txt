@@ -37,7 +37,7 @@ bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      Tabl-trai https://commons.wikim
 bicycle_parking_type_stand.jpg CC0               Mateusz Konieczny https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheel...  CC-BY-SA 4.0      Joxemai https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
 
-bollard_fixed.jpg              CC-BY-SA 2.0 (?)  Chrisix (?) https://wiki.openstreetmap.org/wiki/File:Bollard_in_residential_area.png
+bollard_fixed.jpg              CC-BY-SA 4.0      Matja Nalis https://github.com/streetcomplete/StreetComplete/issues/3657#issuecomment-1020666101
 bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
 bollard_foldable.jpg           CC-BY-SA 3.0      Hauke Stieler https://wiki.openstreetmap.org/wiki/File:Bollard_foldable.jpg
 bollard_removable.jpg          CC0               Florian Edelmann https://commons.wikimedia.org/wiki/File:Traffic_bollard_removable_with_key_on_a_footway.jpg

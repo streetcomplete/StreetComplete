@@ -23,10 +23,12 @@ val userModule = module {
         BASE_OAUTH_URL + "authorize"
     ) }
     factory { OAuthStore(get()) }
-    factory<UserDataSource> { get<UserDataController>() }
-    factory<UserLoginStatusSource> { get<UserLoginStatusController>() }
 
+    single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get(), get()) }
+
+    single<UserLoginStatusSource> { get<UserLoginStatusController>() }
     single { UserLoginStatusController(get(), get()) }
+
     single { UserUpdater(get(), get(), get(), get(), get()) }
 }

@@ -1939,7 +1939,6 @@
     <string name="quest_board_type_notice_board">"這是個公告欄"</string>
     <string name="quest_board_type_public_transport">"大眾運輸"</string>
     <string name="quest_board_type_title">"這個資訊板是什麼主題？"</string>
-    <string name="quest_sidewalk_separately_mapped">"是，在地圖上分開顯示"</string>
     <string name="quest_board_type_map">"這是地圖"</string>
     <string name="quest_board_type_map_title">"這是地圖而且就只是地圖？"</string>
     <string name="quest_board_type_map_description">"當此資訊看板是指特定主題的話請描述它，無論是否有包含地圖。例如大眾運輸的資訊看板也許會包含公車路線地圖。當包含解答的主題並沒被列出來，取而代之請考慮留下註記。"</string>

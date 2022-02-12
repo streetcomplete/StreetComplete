@@ -25,6 +25,7 @@ fun Drawable.asBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHeight
 fun Drawable.asImageSpan(width: Int = intrinsicWidth, height: Int = intrinsicHeight): ImageSpan {
     this.mutate()
     this.setBounds(0, 0, width, height)
-    val alignment = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) ImageSpan.ALIGN_CENTER else ImageSpan.ALIGN_BASELINE
+    // ALIGN_CENTER does not work correctly on SDK 29, see #3736
+    val alignment = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) ImageSpan.ALIGN_CENTER else ImageSpan.ALIGN_BASELINE
     return ImageSpan(this, alignment)
 }
