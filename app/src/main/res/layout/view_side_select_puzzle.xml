@@ -65,6 +65,20 @@
                 tools:src="@drawable/ic_no_parking"
                 tools:visibility="visible" />
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/leftSideFloatingCircularImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:src="@drawable/surface_asphalt"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FFCCCCCC"
+                tools:visibility="visible" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -111,6 +125,20 @@
                 tools:visibility="visible"
                 tools:src="@drawable/ic_no_parking"
                 />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/rightSideFloatingCircularImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:src="@drawable/surface_asphalt"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FFCCCCCC"
+                tools:visibility="visible" />
 
         </RelativeLayout>
 

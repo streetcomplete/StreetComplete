@@ -140,16 +140,15 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
     }
 
     private fun onSelectedSide(surface: SurfaceAnswer, isRight: Boolean) {
-        val icon = ResImage(surface.value.asItem().drawableId!!)
-        val title = ResText(surface.value.asItem().titleId!!)
+        val image = ResImage(surface.value.asItem().drawableId!!)
 
         if (isRight) {
-            binding.puzzleView.replaceRightSideImage(icon)
-            binding.puzzleView.setRightSideText(title)
+            binding.puzzleView.replaceRightSideFloatingCircularImage(image)
+            binding.puzzleView.replaceRightSideImage(ResImage(R.drawable.ic_sidewalk_illustration_yes))
             rightSide = surface
         } else {
-            binding.puzzleView.replaceLeftSideImage(icon)
-            binding.puzzleView.setLeftSideText(title)
+            binding.puzzleView.replaceLeftSideFloatingCircularImage(image)
+            binding.puzzleView.replaceLeftSideImage(ResImage(R.drawable.ic_sidewalk_illustration_yes))
             leftSide = surface
         }
         updateLastAnswerButtonVisibility()
