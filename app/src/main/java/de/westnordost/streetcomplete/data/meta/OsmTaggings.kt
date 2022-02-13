@@ -127,7 +127,8 @@ fun isKindOfShopExpression(prefix: String? = null): String {
             ),
             "craft" to arrayOf(
                 "shoemaker", "tailor", "photographer", "watchmaker", "optician",
-                "electronics_repair", "key_cutter",
+                "electronics_repair", "key_cutter", "dressmaker", "jeweller", "signmaker",
+                "clockmaker"
             )
         ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
     ).trimIndent()
