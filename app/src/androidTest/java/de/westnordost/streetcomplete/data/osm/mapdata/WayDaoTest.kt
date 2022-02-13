@@ -97,7 +97,7 @@ class WayDaoTest : ApplicationDbTestCase() {
         )
         assertEquals(
             listOf(e2, e3),
-            dao.getAllForNodes(listOf(5,8)).sortedBy { it.id }
+            dao.getAllForNodes(listOf(5, 8)).sortedBy { it.id }
         )
     }
 

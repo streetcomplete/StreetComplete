@@ -108,7 +108,6 @@ class NodeDaoTest : ApplicationDbTestCase() {
         assertTrue(ids.containsExactlyInAnyOrder(inside.map { it.id }))
     }
 
-
     @Test fun getAllEntriesForIds() {
         val e1 = nd(1)
         val e2 = nd(2)

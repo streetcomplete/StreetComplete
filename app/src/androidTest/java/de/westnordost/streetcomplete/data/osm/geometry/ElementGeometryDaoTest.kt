@@ -41,7 +41,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
             ElementGeometryEntry(ElementType.RELATION, 1, geometry),
             ElementGeometryEntry(ElementType.WAY, 2, geometry)
         ))
-        nodeDao.put(Node(1, LatLon(0.0,0.0)))
+        nodeDao.put(Node(1, LatLon(0.0, 0.0)))
 
         assertNotNull(dao.get(ElementType.WAY, 2))
         assertNotNull(dao.get(ElementType.RELATION, 1))
