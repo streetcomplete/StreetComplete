@@ -41,7 +41,8 @@ class CheckExistence(
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
             or (highway = emergency_access_point or emergency = access_point) and ref
-            or emergency ~ life_ring|defibrillator|phone
+            or emergency ~ life_ring|phone
+            or (emergency=defibrillator and indoor=no)
             or (
               man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public
               and !highway
