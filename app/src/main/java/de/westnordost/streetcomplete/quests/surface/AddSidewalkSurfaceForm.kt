@@ -44,17 +44,19 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
     private var leftSide: SurfaceAnswer? = null
     private var rightSide: SurfaceAnswer? = null
 
+    private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.puzzleView.onClickSideListener = { isRight -> showSurfaceSelectionDialog(isRight) }
 
-        val defaultResId = R.drawable.ic_street_side_unknown
+        val defaultResId =
+            if (isLeftHandTraffic) R.drawable.ic_street_side_unknown_l
+            else                   R.drawable.ic_street_side_unknown
 
-        binding.puzzleView.setLeftSideImage(ResImage(leftSide?.value?.asItem()?.drawableId ?: defaultResId))
-        binding.puzzleView.setRightSideImage(ResImage(rightSide?.value?.asItem()?.drawableId ?: defaultResId))
-        binding.puzzleView.setLeftSideText(leftSide?.value?.asItem()?.titleId?.let { ResText(it) })
-        binding.puzzleView.setRightSideText(rightSide?.value?.asItem()?.titleId?.let { ResText(it) })
+        binding.puzzleView.setLeftSideImage(ResImage(defaultResId))
+        binding.puzzleView.setRightSideImage(ResImage(defaultResId))
 
         initStateFromTags()
 
