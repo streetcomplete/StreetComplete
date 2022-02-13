@@ -11,7 +11,8 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-         (tourism = museum or leisure = beach_resort or tourism = gallery)
+         (tourism = museum or leisure = beach_resort or tourism = gallery
+         or office=coworking or amenity=coworking_space)
          and access !~ private|no
          and !fee
          and name

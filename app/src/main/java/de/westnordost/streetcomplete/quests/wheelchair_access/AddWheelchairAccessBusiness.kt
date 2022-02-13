@@ -41,6 +41,7 @@ class AddWheelchairAccessBusiness(
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",                                                                                     // work
 
                 // name & wheelchair only
                 "theatre",                             // culture
@@ -74,7 +75,7 @@ class AddWheelchairAccessBusiness(
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic",
+                "employment_agency", "diplomatic", "coworking",
 
                 // name & wheelchair
                 "lawyer", "estate_agent", "political_party", "therapist"
