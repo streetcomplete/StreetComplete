@@ -3,9 +3,8 @@ package de.westnordost.streetcomplete.quests.seating
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.TextItem
-import de.westnordost.streetcomplete.quests.parking_access.ParkingAccess
 
-class AddSeatingForm  : AListQuestAnswerFragment<Seating>(){
+class AddSeatingForm : AListQuestAnswerFragment<Seating>() {
     override val items = listOf(
         TextItem(Seating.NO, R.string.quest_seating_takeaway),
         TextItem(Seating.ONLY_INDOOR, R.string.quest_seating_indoor_only),
