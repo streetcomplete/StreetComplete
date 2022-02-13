@@ -60,6 +60,11 @@ class CheckExistence(
             or amenity = drinking_water
           )
           and (${lastChecked(6.0)})
+        ) or (
+          (
+            amenity = bicycle_parking|motorcycle_parking
+          )
+          and (${lastChecked(12.0)})
         )) and access !~ no|private and (!seasonal or seasonal = no)
     """.toElementFilterExpression() }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
@@ -73,8 +78,11 @@ class CheckExistence(
           and (${lastChecked(4.0)})
     """.toElementFilterExpression() }
 
-    /* not including bicycle parkings, motorcycle parkings because their capacity is asked every
-    *  few years already, so if it's gone now, it will be noticed that way. */
+    /* bicycle parkings, motorcycle parkings have capacity quests asked every
+    *  few years already, so if it's gone now, it will be noticed that way.
+    *  But some users disable this quests as spammy or boring or unimportant,
+    *  so asking about this anyway would be a good idea.
+    * */
 
     override val changesetComment = "Check if element still exists"
     override val wikiLink: String? = null
