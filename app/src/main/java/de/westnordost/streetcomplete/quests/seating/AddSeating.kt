@@ -15,7 +15,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     """
     override val changesetComment = "Add seating info"
     override val wikiLink = "Key:outdoor_seating"
-    override val icon = R.drawable.ic_terrace_seating_512
+    override val icon = R.drawable.ic_seating_quest
     override val isReplaceShopEnabled = true
 
     override val questTypeAchievements = listOf(QuestTypeAchievement.CITIZEN)
