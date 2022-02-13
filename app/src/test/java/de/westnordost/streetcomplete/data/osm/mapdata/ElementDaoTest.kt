@@ -131,7 +131,7 @@ class ElementDaoTest {
     }
 
     @Test fun getAllElementsByBbox() {
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
         val nodes = listOf(node(1), node(2), node(3))
         val nodeIds = nodes.map { it.id }
         val ways = listOf(way(1), way(2))
@@ -152,9 +152,9 @@ class ElementDaoTest {
     }
 
     @Test fun getAllElementKeysByBbox() {
-        val bbox = BoundingBox(0.0,0.0,1.0,1.0)
-        val nodeIds = listOf<Long>(1,2,3)
-        val wayIds = listOf<Long>(1,2)
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val nodeIds = listOf<Long>(1, 2, 3)
+        val wayIds = listOf<Long>(1, 2)
         val relationIds = listOf<Long>(1)
 
         on(nodeDao.getAllIds(bbox)).thenReturn(nodeIds)
