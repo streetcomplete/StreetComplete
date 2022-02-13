@@ -42,7 +42,7 @@ class CheckExistence(
             or advertising ~ column|board|poster_box
             or (highway = emergency_access_point or emergency = access_point) and ref
             or emergency ~ life_ring|phone
-            or (emergency=defibrillator and indoor=no)
+            or (emergency = defibrillator and indoor = no)
             or (
               man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public
               and !highway
@@ -63,7 +63,7 @@ class CheckExistence(
           and (${lastChecked(6.0)})
         ) or (
           (
-            amenity = bicycle_parking|motorcycle_parking
+            amenity ~ bicycle_parking|motorcycle_parking
           )
           and (${lastChecked(12.0)})
         )) and access !~ no|private and (!seasonal or seasonal = no)
