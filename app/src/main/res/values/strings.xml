@@ -1140,6 +1140,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
+    <string name="quest_fireHydrant_position_ref_title">Where is this fire hydrant located? (reference number: %s)</string>
     <string name="quest_fireHydrant_position_green">In grass or dirt</string>
     <string name="quest_fireHydrant_position_lane">On the roadway</string>
     <string name="quest_fireHydrant_position_sidewalk">On the sidewalk</string>
