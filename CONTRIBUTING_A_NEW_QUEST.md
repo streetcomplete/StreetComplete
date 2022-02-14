@@ -2,7 +2,7 @@ This file describes in detail the process of creating a new quest.
 
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development).
 
-If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest where the interface design matches an existing one is quite simple.
+If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. It is quite easy to implement a quest where layout design matches an existing quest. For example one more yes/no quest or where user taps one of displayed images.
 
 Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier! You can implement it also when you never used Kotlin or implemented anything for Android. Being highly experienced programmer is not necessary here.
 
