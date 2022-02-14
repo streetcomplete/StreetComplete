@@ -6,7 +6,7 @@ If you want to contribute code to StreetComplete, then making a new quest is one
 
 Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier! You can implement it also if you never used Kotlin or implemented anything for Android. Being highly experienced programmer is not necessary here.
 
-Reading the text below is not necessary to create a new quest - a basic method of duplicating existing ones and modifying them may be sufficient. And people were creating new quests before this documentation existed.
+Reading the text below is not necessary to create a new quest. Duplicating existing quest and modifying its code may be sufficient. And people were creating new quests before this documentation existed.
 
 But this materials may help or be quicker than trying to fully explore on your own how things work.
 
