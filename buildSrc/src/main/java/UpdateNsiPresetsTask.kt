@@ -73,7 +73,10 @@ open class UpdateNsiPresetsTask : DefaultTask() {
 
 private fun countryCodeIsParsable(code: Any?): Boolean =
     code is String
-    && (ISO3166_1_ALPHA2_REGEX.matches(code) || ISO3166_2_REGEX.matches(code) || code == "001")
+        && (ISO3166_1_ALPHA2_REGEX.matches(code)
+            || ISO3166_2_REGEX.matches(code)
+            || UN_M49_REGEX.matches(code)
+        )
 
 private fun transform(codes: MutableList<String>) {
     expandM49Codes(codes)
@@ -95,8 +98,9 @@ private fun transformSubdivision(code: String): String {
     return if (iso3166_1_alpha2 in SUPPORTED_SUBDIVISIONS) "$iso3166_1_alpha2-$iso3166_2" else iso3166_1_alpha2
 }
 
+val UN_M49_REGEX = Regex("[0-9]{3}")
 val ISO3166_1_ALPHA2_REGEX = Regex("([a-z]{2})")
-val ISO3166_2_REGEX = Regex("([a-z]{2})-([a-z0-9]{1,3})\\.geojson")
+val ISO3166_2_REGEX = Regex("([a-z]{2})-([a-z0-9]{1,3})(\\.geojson)?")
 
 val SUPPORTED_SUBDIVISIONS = setOf("us", "ca", "in", "au", "cn")
 
@@ -108,7 +112,7 @@ private fun expandM49Codes(codes: MutableList<String>) {
         val expandedCodes = M49Codes[cc]
         if (expandedCodes != null) {
             codes.removeAt(i)
-            codes.addAll(i, expandedCodes)
+            codes.addAll(i, expandedCodes.map { it.toLowerCase(Locale.US) })
         } else {
             ++i
         }
