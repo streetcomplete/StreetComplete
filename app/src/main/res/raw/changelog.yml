@@ -1,3 +1,11 @@
+v40.1: |
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Improved average database performance by over 100%, leading to faster downloads, faster opening of quest forms and faster display of nearby data (#3741), by @Helium314</li>
+  <li>Improved performance of loading certain metadata at startup by 400%, leading to faster initial download when starting the app</li>
+  <li>Other small improvements, quest enhancements and UI fixes (#3736, #3757, #3719), thanks @mnalis, @matkoniecz</li>
+  </ul>
+
 v40.0: |
   <h3>Important: Update manually after Feb 21!</h3>
   <p>Google Play / F-Droid will not update to the next major version v41 automatically because the app will ask for an additional permission. In v41, you'll be able to measure widths and heights with the camera! </p>
