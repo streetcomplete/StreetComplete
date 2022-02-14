@@ -23,6 +23,7 @@ class AddPlaceName(
           shop and shop !~ no|vacant
           or craft
           or office
+          or amenity = recycling and recycling_type = centre
           or tourism = information and information = office
           or """ +
 
@@ -40,6 +41,7 @@ class AddPlaceName(
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",                                                                                     // work
 
                 // name & opening hours
                 "boat_rental",

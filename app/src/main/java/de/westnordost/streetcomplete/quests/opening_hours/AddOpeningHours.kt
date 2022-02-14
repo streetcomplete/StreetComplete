@@ -31,6 +31,7 @@ class AddOpeningHours(
               or amenity = bicycle_parking and bicycle_parking = building
               or amenity = parking and parking = multi-storey
               or amenity = recycling and recycling_type = centre
+              or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
               or tourism = information and information = office
               or """ +
 
@@ -48,6 +49,7 @@ class AddOpeningHours(
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",                                                                                     // work
 
                 // name & opening hours
                 "boat_rental"
@@ -75,7 +77,7 @@ class AddOpeningHours(
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic"
+                "employment_agency", "diplomatic", "coworking",
             ),
             "craft" to arrayOf(
                 // common
@@ -99,7 +101,7 @@ class AddOpeningHours(
             and (
               leisure = park
               or barrier
-              or amenity ~ toilets|bicycle_rental
+              or amenity ~ toilets|bicycle_rental|charging_station
             )
           )
         )
