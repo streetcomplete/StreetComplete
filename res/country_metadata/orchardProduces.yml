@@ -56,6 +56,8 @@ EC: [cacao, banana, coffee, orange, guava, mango, mangosteen, rubber, lemon, lim
 EE: [strawberry, apple, raspberry, plum, tomato]
 EG: [tomato, guava, mango, mangosteen, orange, olive, grape, date, banana, apple, fig, chilli_pepper, sweet_pepper, peach, strawberry, lemon, lime, apricot, walnut]
 ES: [olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, chilli_pepper, sweet_pepper, pear, apricot, fig, avocado, plum]
+# Canary Islands has very different climates, biomes and culture (manually edited)
+IC: [olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, chilli_pepper, sweet_pepper, pear, apricot, fig, avocado, plum, pineapple, mango, avocado]
 ET: [coffee, banana, hop, avocado, guava, mango, mangosteen, chilli_pepper, sweet_pepper, tea, pepper, tomato, papaya, orange, grape, lemon, lime, sisal, pineapple]
 FI: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
 FJ: [coconut, pepper, pineapple, banana, papaya, tomato, orange, guava, mango, mangosteen, chilli_pepper, sweet_pepper, coffee, cacao]
