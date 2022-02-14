@@ -4,19 +4,11 @@ For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#d
 
 If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. Implementing a quest where the interface design matches an existing one is quite simple.
 
-Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier!
+Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier! You can implement it also when you never used Kotlin or implemented anything for Android. Being highly experienced programmer is not necessary here.
 
 Reading the text below is not necessary to create a new quest - a basic method of duplicating existing ones and modifying them may be sufficient. And people were creating new quests before this documentation existed.
 
 But this materials may help or be quicker than trying to fully explore on your own how things work.
-
-# What is not required
-
-- expert programming ability - you do not need to be an expert programmer to make contributions, basic programming abilities are sufficient to implement a quest similar to existing ones
-- any Kotlin-specific or Android-specific knowledge - it is fine if you never did anything with Kotlin or Android
-- any GitHub specific knowledge
-
-Please [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) if you are stuck despite this. 
 
 # Required
 
