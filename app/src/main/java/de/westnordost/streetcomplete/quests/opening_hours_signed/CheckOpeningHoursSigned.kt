@@ -35,7 +35,7 @@ class CheckOpeningHoursSigned (
           and access !~ private|no
           and (
             name or brand or noname = yes or name:signed = no
-            or amenity ~ recycling|toilets|bicycle_rental|charging_station|social_facility or leisure=park or barrier
+            or amenity ~ recycling|toilets|bicycle_rental|charging_station or leisure=park or barrier
           )
     """.toElementFilterExpression() }
 
