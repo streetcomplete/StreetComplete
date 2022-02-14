@@ -22,6 +22,7 @@ But this materials may help or be quicker than trying to fully explore on your o
   - Multiple hours are typical, though mostly spent on waiting for various downloads
   - setting up Android Studio will likely be more complex than writing the code
 - [basic ability to use git](https://git-scm.com/docs/user-manual) (but as mentioned, anything GitHub specific will be explained)
+  - Go to File -> Settings -> Version control in Android Studio to optionally configure git integration
 - GitHub [account](https://github.com/signup)
 - around 15GB of free space on disk
   - the initial setup will typically download half of the Internet while getting emulators and dependencies
