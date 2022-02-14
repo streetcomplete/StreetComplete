@@ -132,7 +132,7 @@ class CheckExistence(
     """.trimIndent()
 
     private fun hasAnyName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }
 
 private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

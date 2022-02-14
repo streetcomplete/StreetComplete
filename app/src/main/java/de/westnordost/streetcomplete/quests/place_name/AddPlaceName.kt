@@ -151,5 +151,5 @@ class AddPlaceName(
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

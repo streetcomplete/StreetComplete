@@ -73,7 +73,7 @@ open class UpdateNsiPresetsTask : DefaultTask() {
 
 private fun countryCodeIsParsable(code: Any?): Boolean =
     code is String
-    && (ISO3166_1_REGEX.matches(code) || ISO3166_2_REGEX.matches(code) || code == "001")
+    && (ISO3166_1_ALPHA2_REGEX.matches(code) || ISO3166_2_REGEX.matches(code) || code == "001")
 
 private fun transform(codes: MutableList<String>) {
     expandM49Codes(codes)
@@ -90,13 +90,13 @@ private fun transformSubdivisions(codes: MutableList<String>) {
 /** transform "us-ny.geojson" to "us-ny" */
 private fun transformSubdivision(code: String): String {
     val match = ISO3166_2_REGEX.matchEntire(code) ?: return code
-    val iso3166_1 = match.groupValues[1]
+    val iso3166_1_alpha2 = match.groupValues[1]
     val iso3166_2 = match.groupValues[2]
-    return if (iso3166_1 in SUPPORTED_SUBDIVISIONS) "$iso3166_1-$iso3166_2" else iso3166_1
+    return if (iso3166_1_alpha2 in SUPPORTED_SUBDIVISIONS) "$iso3166_1_alpha2-$iso3166_2" else iso3166_1_alpha2
 }
 
-val ISO3166_1_REGEX = Regex("([a-z]{2})")
-val ISO3166_2_REGEX = Regex("([a-z]{2})-([a-z]{2})\\.geojson")
+val ISO3166_1_ALPHA2_REGEX = Regex("([a-z]{2})")
+val ISO3166_2_REGEX = Regex("([a-z]{2})-([a-z0-9]{1,3})\\.geojson")
 
 val SUPPORTED_SUBDIVISIONS = setOf("us", "ca", "in", "au", "cn")
 

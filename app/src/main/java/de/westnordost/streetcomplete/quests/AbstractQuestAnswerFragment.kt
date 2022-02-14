@@ -16,6 +16,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
 import androidx.viewbinding.ViewBinding
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -71,6 +72,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     private val countryInfos: CountryInfos by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
@@ -81,6 +83,12 @@ abstract class AbstractQuestAnswerFragment<T> :
             return field
         }
     protected val countryInfo get() = _countryInfo!!
+
+    /** either DE or US-NY (or null), depending on what countryBoundaries returns */
+    protected val countryOrSubdivisionCode: String? get() {
+        val latLon = elementGeometry.center
+        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+    }
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
@@ -320,13 +328,12 @@ abstract class AbstractQuestAnswerFragment<T> :
     protected fun replaceShopElement() {
         val ctx = context ?: return
         val element = osmElement ?: return
-        val isoCountryCode = countryInfo.countryCode.substringBefore('-')
 
         if (element.isSomeKindOfShop()) {
             ShopGoneDialog(
                 ctx,
                 element.geometryType,
-                isoCountryCode,
+                countryOrSubdivisionCode,
                 featureDictionary,
                 onSelectedFeature = { tags ->
                     listener?.onReplaceShopElement(questKey as OsmQuestKey, tags)
