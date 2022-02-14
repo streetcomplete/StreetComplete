@@ -120,6 +120,7 @@ import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
+import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
@@ -221,6 +222,7 @@ fun questTypeRegistry(
     AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
     AddStepsRamp(),
     AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past, confuses some people, so not as high as it theoretically should be
+    AddTactilePavingSteps(), // need to check top and bottom
 
     AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
     AddReligionToWaysideShrine(),
