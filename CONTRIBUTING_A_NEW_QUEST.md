@@ -12,7 +12,7 @@ But this materials may help or be quicker than trying to fully explore on your o
 
 # Required
 
-- programming ability - it is not a good first task for someone who has never programmed anything. 
+- programming ability - it is not a good task for someone who has never programmed anything.
   - Setup of environment takes a long time
   - Editing even the simplest quest requires edits to at least two different files
   - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed
