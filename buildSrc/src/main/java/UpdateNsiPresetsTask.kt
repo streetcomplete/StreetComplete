@@ -6,6 +6,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URL
+import java.util.Locale
 
 open class UpdateNsiPresetsTask : DefaultTask() {
     @get:Input var targetDir: String? = null
@@ -18,38 +19,104 @@ open class UpdateNsiPresetsTask : DefaultTask() {
 
         val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
-        // NSI uses (atm) a slightly different format than the normal presets: The presets are in
-        // a sub-object called "presets"
+        /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
+           a sub-object called "presets" */
         val presets = nsiPresetsJson.obj("presets")!!
-        // since we already read the JSON and it is so large, let's drop some properties that are
-        // (currently) not used, to make it a bit smaller: icon, imageURL
+        /* since we already read the JSON and it is so large, let's drop some properties that are
+           (currently) not used, to make it a bit smaller: icon, imageURL */
         for (preset in presets.values.filterIsInstance<JsonObject>()) {
             preset.remove("icon")
             preset.remove("imageURL")
         }
+
+        // remove presets with locationSets that cannot be parsed by osmfeatures library
+        presets.values.retainAll { value ->
+            val locationSet = (value as JsonObject)["locationSet"] as? JsonObject
+            val include = locationSet?.get("include") as? JsonArray<*>
+            val exclude = locationSet?.get("exclude") as? JsonArray<*>
+            return@retainAll include.orEmpty().all { countryCodeIsParsable(it) }
+                && exclude.orEmpty().all { countryCodeIsParsable(it) }
+        }
+
+        // expand M49 codes and transform US-NY.geojson etc. strings to US-NY etc.
+        for (value in presets.values) {
+            val locationSet = (value as JsonObject)["locationSet"] as? JsonObject ?: continue
+            val include = locationSet["include"] as? JsonArray<String>
+            val exclude = locationSet["exclude"] as? JsonArray<String>
+            if (include != null) transform(include)
+            if (exclude != null) transform(exclude)
+        }
+
+        // sort into separate files
         val byCountryMap = mutableMapOf<String?, JsonObject>()
         for (entry in presets.entries) {
             val key = entry.key
             val preset = entry.value as JsonObject
             val locationSet = preset["locationSet"] as? JsonObject
             val include = locationSet?.get("include") as? JsonArray<*>
-            val exclude = locationSet?.get("exclude")
             val includeContains001 = include?.any { it as? String == "001" } == true
-            val includeCanBeParsed = include.orEmpty().all { it is String && (it == "001" || it.length == 2) }
-            if (includeCanBeParsed) {
-                if (include != null && exclude == null && !includeContains001) {
-                    for (country in include) {
-                        byCountryMap.getOrPut(country as String) { JsonObject() }[key] = preset
-                    }
-                } else {
-                    byCountryMap.getOrPut(null) { JsonObject() }[key] = preset
+            if (include != null && !includeContains001) {
+                for (country in include) {
+                    byCountryMap.getOrPut(country as String) { JsonObject() }[key] = preset
                 }
+            } else {
+                byCountryMap.getOrPut(null) { JsonObject() }[key] = preset
             }
         }
 
         for ((country, jsonObject) in byCountryMap.entries) {
-            val name = "$targetDir/presets${ if (country != null) "-$country" else "" }.json"
+            val name = "$targetDir/presets${ if (country != null) "-${country.toUpperCase(Locale.US)}" else "" }.json"
             File(name).writeText(jsonObject.toJsonString())
         }
     }
+}
+
+private fun countryCodeIsParsable(code: Any?): Boolean =
+    code is String
+    && (ISO3166_1_REGEX.matches(code) || ISO3166_2_REGEX.matches(code) || code == "001")
+
+private fun transform(codes: MutableList<String>) {
+    expandM49Codes(codes)
+    transformSubdivisions(codes)
+    removeDuplicates(codes)
+}
+
+private fun transformSubdivisions(codes: MutableList<String>) {
+    for (i in 0 until codes.size) {
+        codes[i] = transformSubdivision(codes[i])
+    }
+}
+
+/** transform "us-ny.geojson" to "us-ny" */
+private fun transformSubdivision(code: String): String {
+    val match = ISO3166_2_REGEX.matchEntire(code) ?: return code
+    val iso3166_1 = match.groupValues[1]
+    val iso3166_2 = match.groupValues[2]
+    return if (iso3166_1 in SUPPORTED_SUBDIVISIONS) "$iso3166_1-$iso3166_2" else iso3166_1
+}
+
+val ISO3166_1_REGEX = Regex("([a-z]{2})")
+val ISO3166_2_REGEX = Regex("([a-z]{2})-([a-z]{2})\\.geojson")
+
+val SUPPORTED_SUBDIVISIONS = setOf("us", "ca", "in", "au", "cn")
+
+/** resolve M49 codes to country codes */
+private fun expandM49Codes(codes: MutableList<String>) {
+    var i = 0
+    while (i < codes.size) {
+        val cc = codes[i]
+        val expandedCodes = M49Codes[cc]
+        if (expandedCodes != null) {
+            codes.removeAt(i)
+            codes.addAll(i, expandedCodes)
+        } else {
+            ++i
+        }
+    }
+}
+
+private fun removeDuplicates(codes: MutableList<String>) {
+    val set = codes.toSet()
+    codes.clear()
+    codes.addAll(set)
 }
