@@ -28,7 +28,7 @@ class CheckExistence(
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = public_bookcase
           )
-          and (${lastChecked(2.0)}) and (!seasonal or seasonal=no)
+          and (${lastChecked(2.0)})
         ) or (
           (
             amenity = clock
@@ -41,14 +41,14 @@ class CheckExistence(
             or tourism = information and information ~ board|terminal|map
             or advertising ~ column|board|poster_box
             or (highway = emergency_access_point or emergency = access_point) and ref
-            or emergency = life_ring
-            or emergency = phone
+            or emergency ~ life_ring|phone
+            or (emergency = defibrillator and indoor = no)
             or (
               man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public
               and !highway
             )
           )
-          and (${lastChecked(4.0)}) and (!seasonal or seasonal=no)
+          and (${lastChecked(4.0)})
         ) or (
           (
             amenity = bench
@@ -61,6 +61,11 @@ class CheckExistence(
             or amenity = drinking_water
           )
           and (${lastChecked(6.0)})
+        ) or (
+          (
+            amenity ~ bicycle_parking|motorcycle_parking
+          )
+          and (${lastChecked(12.0)})
         )) and access !~ no|private and (!seasonal or seasonal = no)
     """.toElementFilterExpression() }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
@@ -74,8 +79,11 @@ class CheckExistence(
           and (${lastChecked(4.0)})
     """.toElementFilterExpression() }
 
-    /* not including bicycle parkings, motorcycle parkings because their capacity is asked every
-    *  few years already, so if it's gone now, it will be noticed that way. */
+    /* bicycle parkings, motorcycle parkings have capacity quests asked every
+    *  few years already, so if it's gone now, it will be noticed that way.
+    *  But some users disable this quests as spammy or boring or unimportant,
+    *  so asking about this anyway would be a good idea.
+    * */
 
     override val changesetComment = "Check if element still exists"
     override val wikiLink: String? = null
@@ -124,7 +132,7 @@ class CheckExistence(
     """.trimIndent()
 
     private fun hasAnyName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).find().isNotEmpty()
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }
 
 private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

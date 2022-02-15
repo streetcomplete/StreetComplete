@@ -835,7 +835,6 @@
     <string name="quest_board_type_notice_board">"То је огласна табла"</string>
     <string name="quest_board_type_public_transport">"Јавни превоз"</string>
     <string name="quest_board_type_title">"Која је тема ове инфо-табле?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Да, приказан је одвојено на карти"</string>
     <string name="quest_board_type_map">"То је карта"</string>
     <string name="quest_board_type_map_title">"Да ли је само и једино карта?"</string>
     <string name="quest_board_type_map_description">"Ако је табла о одређеној теми, наведите је, без обзира на то да ли укључује и карту. На пример, табла јавног превоза може имати карту аутобуских линија. Ако тема није наведена у неведеним одговорима, размислите да је оставите као белешку."</string>

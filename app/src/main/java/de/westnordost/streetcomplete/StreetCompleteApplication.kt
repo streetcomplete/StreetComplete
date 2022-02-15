@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
 import de.westnordost.streetcomplete.ktx.addedToFront
 import de.westnordost.streetcomplete.map.mapModule
+import de.westnordost.streetcomplete.measure.arModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
@@ -104,6 +105,7 @@ class StreetCompleteApplication : Application() {
                 trafficFlowSegmentsModule,
                 uploadModule,
                 userModule,
+                arModule
             )
         }
 

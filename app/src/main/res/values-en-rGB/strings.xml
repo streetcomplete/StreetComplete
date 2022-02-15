@@ -813,7 +813,6 @@ levels"</string>
     <string name="quest_board_type_notice_board">"It is a notice board"</string>
     <string name="quest_board_type_public_transport">"Public transport"</string>
     <string name="quest_board_type_title">"What is the topic of this information board?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Yes, displayed separately on map"</string>
     <string name="quest_board_type_map">"It is a map"</string>
     <string name="quest_board_type_map_title">"Is it just a map and only a map?"</string>
     <string name="quest_board_type_map_description">"If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead."</string>
@@ -1217,4 +1216,12 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_sidewalk_value_separate">"displayed separately on map"</string>
     <string name="quest_shoulder_value_yes">"shoulder"</string>
     <string name="quest_shoulder_value_no">"no shoulder"</string>
+    <string name="no_camera_permission_warning_title">"Camera permission"</string>
+    <string name="no_camera_permission_warning">"The permission is necessary to be able to measure distances with augmented reality."</string>
+    <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
+    <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Too dark here"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Too much movement"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Insufficient visual features here"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Camera is used by another app"</string>
 </resources>

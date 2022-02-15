@@ -124,6 +124,16 @@
             android:title="Show Quest Forms"
             />
 
+        <Preference
+            android:key="debug.ar_measure_horizontal"
+            android:title="AR Measure Horizontal"
+            />
+
+        <Preference
+            android:key="debug.ar_measure_vertical"
+            android:title="AR Measure Vertical"
+            />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

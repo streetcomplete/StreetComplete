@@ -1787,7 +1787,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_board_type_notice_board">"공지 알림판입니다"</string>
     <string name="quest_board_type_public_transport">"대중교통"</string>
     <string name="quest_board_type_title">"이 안내판의 주제가 무엇인가요?"</string>
-    <string name="quest_sidewalk_separately_mapped">"네, 지도에 별도로 표시됨"</string>
     <string name="quest_board_type_map">"지도입니다"</string>
     <string name="quest_board_type_map_title">"지도 외엔 아무것도 없나요?"</string>
 

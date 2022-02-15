@@ -20,8 +20,8 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
           and (access !~ private|no or (foot and foot !~ private|no))
           and (
             !smoothness
-            or smoothness older today -6 years
-            or smoothness:date < today -6 years
+            or smoothness older today -4 years
+            or smoothness:date < today -4 years
           )
     """
 

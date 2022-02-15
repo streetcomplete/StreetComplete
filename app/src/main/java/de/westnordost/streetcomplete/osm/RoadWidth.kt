@@ -37,7 +37,7 @@ fun guessRoadwayWidth(tags: Map<String, String>): Float {
     val widthOfOneSide = when (tags["highway"]) {
         "motorway", "trunk" -> 2 * BROAD_LANE
         "motorway_link", "trunk_link" -> BROAD_LANE
-        "primary" -> BROAD_LANE
+        "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
         "secondary", "tertiary", "unclassified" -> LANE
         "service" -> 2.5f
         else -> LANE

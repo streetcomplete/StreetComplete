@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4000
-        versionName = "40.0-beta1"
+        versionCode = 4002
+        versionName = "40.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -145,6 +145,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxVersion")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime:2.7.1")
@@ -152,7 +153,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:3.0")
+    implementation("de.westnordost:osmfeatures-android:4.0")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
@@ -182,6 +183,10 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.26.0")
+
+    // measuring distance with AR
+    implementation("com.google.ar:core:1.29.0")
+    implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
 /** Localizations that should be pulled from POEditor etc. */

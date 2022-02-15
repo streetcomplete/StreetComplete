@@ -835,7 +835,6 @@ d'acompliment"</string>
     <string name="quest_board_type_notice_board">"És un taulell d'anuncis"</string>
     <string name="quest_board_type_public_transport">"Transport públic"</string>
     <string name="quest_board_type_title">"Quin és el tema d'aquest plafó informatiu?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sí, es mostra per separat al mapa"</string>
     <string name="quest_board_type_map">"És un mapa"</string>
     <string name="quest_board_type_map_title">"És un mapa i només un mapa?"</string>
     <string name="quest_board_type_map_description">"Si el tauler tracta sobre un tema en particular, especifiqueu-ho, independentment de si també inclou un mapa. Per exemple, un consell de transport públic pot tenir un mapa de ruta d'autobús. Si el tema no està llistat entre les respostes disponibles, considereu deixar una nota en el seu lloc."</string>

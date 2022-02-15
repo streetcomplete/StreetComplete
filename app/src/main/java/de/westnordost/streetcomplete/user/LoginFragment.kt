@@ -106,8 +106,8 @@ class LoginFragment :
         return withContext(Dispatchers.IO) {
             try {
                 /* we didn't save the new OAuthConsumer yet but we want to make an API call with it
-                   to check if the user granted all required permissions, this is why we need to 
-                   create a new OsmConnection with the supplied consumer instead of using an 
+                   to check if the user granted all required permissions, this is why we need to
+                   create a new OsmConnection with the supplied consumer instead of using an
                    injected one */
                 val permissionsApi = PermissionsApi(osmConnection(consumer))
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)

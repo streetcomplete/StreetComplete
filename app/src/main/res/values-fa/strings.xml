@@ -1670,7 +1670,7 @@
     <string name="quest_ref_answer_noRef">"بدون شماره پستی قابل مشاهده است ..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"جاده در تصویر همانند روی نقشه حول موقعیت سنجاق چرخانده شده است."</string>
+    <string name="quest_street_side_puzzle_tutorial">"جاده در تصویر حول موقعیت سنجاق همانند روی نقشه چرخانده شده است."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"چه موادی را می‌توان در اینجا برای بازیافت قرار داد؟"</string>
@@ -2111,7 +2111,6 @@
     <string name="quest_board_type_notice_board">"این یک تابلوی اعلانات است"</string>
     <string name="quest_board_type_public_transport">"حمل و نقل عمومی"</string>
     <string name="quest_board_type_title">"موضوع این تابلو اطلاع رسانی چیست؟"</string>
-    <string name="quest_sidewalk_separately_mapped">"بله، جداگانه روی نقشه نمایش داده می‌شود"</string>
     <string name="quest_board_type_map">"این یک نقشه است."</string>
     <string name="quest_board_type_map_title">"آیا این فقط یک نقشه است و تمام؟"</string>
     <string name="quest_board_type_map_description">"اگر تابلو در مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل و نقل عمومی می تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید."</string>
@@ -2572,4 +2571,11 @@
     <string name="quest_sidewalk_value_separate">"به صورت جداگانه روی نقشه نمایش داده می‌شود"</string>
     <string name="quest_shoulder_value_yes">"شانه"</string>
     <string name="quest_shoulder_value_no">"بدون شانه"</string>
+    <string name="no_camera_permission_warning_title">"مجوز دوربین"</string>
+    <string name="no_camera_permission_warning">"این مجوز برای اندازه‌گیری مسافت‌ها از طریق واقعیت افزوده لازم است."</string>
+    <string name="ar_core_error_sdk_too_old">"این برنامه خیلی قدیمی است، به‌روزش کنید."</string>
+    <string name="ar_core_tracking_error_bad_state">"مشکلی پیش آمد. اندازه‌گیری را از اول آغاز کنید."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"اینجا خیلی تاریک است"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"جابه‌جایی خیلی زیاد است"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"برنامهٔ دیگری از دوربین استفاده می‌کند"</string>
 </resources>

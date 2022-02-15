@@ -10,7 +10,6 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
 import androidx.core.view.OneShotPreDrawListener
-import androidx.core.view.ViewCompat
 import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
@@ -33,7 +32,7 @@ fun View.popOut(): ViewPropertyAnimator {
 }
 
 suspend fun View.awaitLayout() {
-    if (!ViewCompat.isLaidOut(this) || isLayoutRequested) {
+    if (!isLaidOut || isLayoutRequested) {
         awaitNextLayout()
     }
 }

@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.measure.MeasureActivity
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
@@ -103,6 +104,16 @@ class SettingsFragment :
 
         findPreference<Preference>("debug.quests")?.setOnPreferenceClickListener {
             startActivity(Intent(context, ShowQuestFormsActivity::class.java))
+            true
+        }
+
+        findPreference<Preference>("debug.ar_measure_horizontal")?.setOnPreferenceClickListener {
+            startActivity(MeasureActivity.createIntent(requireContext(), false))
+            true
+        }
+
+        findPreference<Preference>("debug.ar_measure_vertical")?.setOnPreferenceClickListener {
+            startActivity(MeasureActivity.createIntent(requireContext(), true))
             true
         }
 

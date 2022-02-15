@@ -3,10 +3,13 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.anyCollection
@@ -125,5 +128,47 @@ class ElementDaoTest {
         verify(nodeDao).getAll(listOf(0L))
         verify(wayDao).getAll(listOf(0L))
         verify(relationDao).getAll(listOf(0L))
+    }
+
+    @Test fun getAllElementsByBbox() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val nodes = listOf(node(1), node(2), node(3))
+        val nodeIds = nodes.map { it.id }
+        val ways = listOf(way(1), way(2))
+        val wayIds = ways.map { it.id }
+        val relations = listOf(rel(1))
+
+        on(nodeDao.getAll(bbox)).thenReturn(nodes)
+        on(wayDao.getAllForNodes(eq(nodeIds))).thenReturn(ways)
+        on(relationDao.getAllForElements(
+            nodeIds = eq(nodeIds),
+            wayIds = eq(wayIds),
+            relationIds = eq(emptyList())
+        )).thenReturn(relations)
+        assertEquals(
+            nodes + ways + relations,
+            dao.getAll(bbox)
+        )
+    }
+
+    @Test fun getAllElementKeysByBbox() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val nodeIds = listOf<Long>(1, 2, 3)
+        val wayIds = listOf<Long>(1, 2)
+        val relationIds = listOf<Long>(1)
+
+        on(nodeDao.getAllIds(bbox)).thenReturn(nodeIds)
+        on(wayDao.getAllIdsForNodes(eq(nodeIds))).thenReturn(wayIds)
+        on(relationDao.getAllIdsForElements(
+            nodeIds = eq(nodeIds),
+            wayIds = eq(wayIds),
+            relationIds = eq(emptyList())
+        )).thenReturn(relationIds)
+        assertEquals(
+            nodeIds.map { ElementKey(NODE, it) } +
+                wayIds.map { ElementKey(WAY, it) } +
+                relationIds.map { ElementKey(RELATION, it) },
+            dao.getAllKeys(bbox)
+        )
     }
 }

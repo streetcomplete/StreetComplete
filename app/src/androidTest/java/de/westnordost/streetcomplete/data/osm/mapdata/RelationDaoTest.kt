@@ -135,6 +135,15 @@ class RelationDaoTest : ApplicationDbTestCase() {
             listOf(e3),
             dao.getAllForRelation(3).sortedBy { it.id }
         )
+
+        assertEquals(
+            listOf(e1, e2, e3),
+            dao.getAllForElements(
+                nodeIds = listOf(0),
+                wayIds = listOf(1),
+                relationIds = listOf(3)
+            ).sortedBy { it.id }
+        )
     }
 
     @Test fun getUnusedAndOldIds() {

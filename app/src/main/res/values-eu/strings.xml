@@ -2150,7 +2150,6 @@ mailak"</string>
     <string name="quest_board_type_notice_board">"Iragarki-taula bat da"</string>
     <string name="quest_board_type_public_transport">"Garraio publikoa"</string>
     <string name="quest_board_type_title">"Zein da argibide-taula honen gaia?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Bai, mapan aparte erakutsita"</string>
     <string name="quest_board_type_map">"Mapa bat da"</string>
     <string name="quest_board_type_map_title">"Mapa bat da eta besterik ez?"</string>
     <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>

@@ -82,7 +82,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         return featureDictionary
             .byTerm(startsWith.trim())
             .forGeometry(osmElement!!.geometryType)
-            .inCountry(countryInfo.countryCode)
+            .inCountry(countryOrSubdivisionCode)
             .forLocale(*localeList.toTypedArray())
             .find()
             .filter { feature ->

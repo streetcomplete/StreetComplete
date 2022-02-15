@@ -1852,7 +1852,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_board_type_notice_board">"Es un tablón de anuncios"</string>
     <string name="quest_board_type_public_transport">"Transporte público"</string>
     <string name="quest_board_type_title">"¿Qué tipo de información proporciona este cartel o señal?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sí, se muestra por separado en el mapa"</string>
     <string name="quest_board_type_map">"Es un mapa"</string>
     <string name="quest_board_type_map_title">"¿Es sólo un mapa, sin nada más?"</string>
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular déjalo claro y afina tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista deja una nota."</string>

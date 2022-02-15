@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util
 
 import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.view.ViewPropertyAnimator
 
 /** Plays the given ViewPropertyAnimators and optionally executes an action when all finished. */
@@ -19,11 +20,9 @@ class ViewPropertyAnimatorsPlayer(animators: Collection<ViewPropertyAnimator>) {
         // copy for iterating because animators could be removed from the list while iterating
         val animators = ArrayList(animators)
         animators.forEach {
-            it.setListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {}
+            it.setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) { removeAnimator(it) }
                 override fun onAnimationCancel(animation: Animator) { removeAnimator(it) }
-                override fun onAnimationRepeat(animation: Animator) {}
             })
             it.start()
         }

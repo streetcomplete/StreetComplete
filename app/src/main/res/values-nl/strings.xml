@@ -2147,7 +2147,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_board_type_notice_board">"Het is een prikbord"</string>
     <string name="quest_board_type_public_transport">"Openbaar vervoer"</string>
     <string name="quest_board_type_title">"Wat is het onderwerp van dit informatiebord?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, afzonderlijk op de kaart aangegeven."</string>
     <string name="quest_board_type_map">"Het is een kaart"</string>
     <string name="quest_board_type_map_title">"Is het echt alleen maar een kaart?"</string>
     <string name="quest_board_type_map_description">"Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten."</string>

@@ -586,6 +586,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
     <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bike here?</string>
@@ -1140,6 +1141,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
+    <string name="quest_fireHydrant_position_ref_title">Where is this fire hydrant located? (reference number: %s)</string>
     <string name="quest_fireHydrant_position_green">In grass or dirt</string>
     <string name="quest_fireHydrant_position_lane">On the roadway</string>
     <string name="quest_fireHydrant_position_sidewalk">On the sidewalk</string>
@@ -1202,7 +1204,24 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
     <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
+
     <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
     <string name="quest_side_select_interface_explanation">Tap each side and select the situation for that side.\nDo the same for the other side if present.</string>
-    <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
+
+    <string name="no_camera_permission_warning_title">Camera permission</string>
+    <string name="no_camera_permission_warning">The permission is necessary to be able to measure distances with the camera.</string>
+    <string name="ar_measure">Measure</string>
+    <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
+    <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
+    <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
+    <string name="ar_core_tracking_error_excessive_motion">Too much movement</string>
+    <string name="ar_core_tracking_error_insufficient_features">Insufficient visual features here</string>
+    <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
+    <string name="ar_core_tracking_error_too_steep_angle">Too steep angle, step away a bit</string>
+    <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
+
+    <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
+    <string name="quest_road_width_title">"What’s the width of this road here?"</string>
+    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
+
 </resources>

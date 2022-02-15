@@ -2161,7 +2161,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_board_type_notice_board">"Je to miestna nástenka"</string>
     <string name="quest_board_type_public_transport">"Verejná doprava"</string>
     <string name="quest_board_type_title">"Aké informácie sú na tejto informačnej tabuli?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Áno, zobrazený samostatne na mape"</string>
     <string name="quest_board_type_map">"Je na nej mapa"</string>
     <string name="quest_board_type_map_title">"Je na nej len a len mapa?"</string>
     <string name="quest_board_type_map_description">"Pokiaľ sa ceduľa týka konkrétnej témy, špecifikujte ju, prosím, bez ohľadu na to, či je na nej aj mapa. Napríklad na tabuliach týkajúcich sa verejnej dopravy býva mapa s trasami autobusov. Pokiaľ nenájdete tému medzi odpoveďami, zvážte, prosím, či nezanecháte poznámku."</string>

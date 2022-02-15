@@ -132,7 +132,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is MaxHeight -> {
-                tags["maxheight"] = answer.value.toString()
+                tags["maxheight"] = answer.value.toOsmValue()
             }
             is NoMaxHeightSign -> {
                 tags["maxheight"] = if (answer.isTallEnough) "default" else "below_default"
