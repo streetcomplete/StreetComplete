@@ -586,6 +586,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
     <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bike here?</string>
