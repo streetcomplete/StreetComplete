@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 
 class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
@@ -22,7 +24,16 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
 
     override val questTypeAchievements = listOf(LIFESAVER)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_position_title
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["ref"])
+
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasRef = tags.containsAnyKey("ref")
+        return when {
+            hasRef -> R.string.quest_fireHydrant_position_ref_title
+            else   -> R.string.quest_fireHydrant_position_title
+        }
+    }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = fire_hydrant")
