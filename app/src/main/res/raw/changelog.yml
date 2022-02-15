@@ -1,8 +1,8 @@
 v40.1: |
   <h3>Enhancements</h3>
   <ul>
-  <li>Improved average database performance by over 100%, leading to faster downloads, faster opening of quest forms and faster display of nearby data (#3741), by @Helium314</li>
-  <li>Improved performance of loading certain metadata at startup by 400%, leading to faster initial download when starting the app</li>
+  <li>Faster downloads and faster display of nearby data (#3741), by @Helium314</li>
+  <li>Faster initial download when starting the app</li>
   <li>Other small improvements, quest enhancements and UI fixes (#3736, #3757, #3719), thanks @mnalis, @matkoniecz</li>
   </ul>
 
