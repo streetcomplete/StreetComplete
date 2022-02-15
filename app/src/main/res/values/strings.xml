@@ -1205,6 +1205,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
 
+    <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
     <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
     <string name="quest_side_select_interface_explanation">Tap each side and select the situation for that side.\nDo the same for the other side if present.</string>
 
