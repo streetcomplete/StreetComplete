@@ -1,3 +1,18 @@
+v41.0-beta1: |
+  <h3>Measure things with the camera (AR) (#3709, #879)</h3>
+  <p>Measuring with AR is only supported <a href="https://developers.google.com/ar/devices#google_play_devices">on certain devices</a> and you need to have the Play Services on your phone. If AR is not available, the new quests are disabled by default because you'd need to take a tape measure or something with you instead.</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li>What’s the width of this cycleway here? (#698)</li>
+  <li>What’s the width of this road here?</li>
+  <li>What is the height limit here?</li>
+  </ul>
+  <h3>Quest enhancements</h3>
+  <ul>
+  <li>Add "handlebar holders" as bicycle parking type option (#3061, #3724), by @sams96</li>
+  <li>Other small improvements (#3740, #3755), thanks @matkoniecz, @tiptoptom</li>
+  </ul>
+
 v40.1: |
   <h3>Enhancements</h3>
   <ul>
