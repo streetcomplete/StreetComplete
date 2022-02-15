@@ -1202,4 +1202,20 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
     <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
+
+    <string name="no_camera_permission_warning_title">Camera permission</string>
+    <string name="no_camera_permission_warning">The permission is necessary to be able to measure distances with the camera.</string>
+    <string name="ar_measure">Measure</string>
+    <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
+    <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
+    <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
+    <string name="ar_core_tracking_error_excessive_motion">Too much movement</string>
+    <string name="ar_core_tracking_error_insufficient_features">Insufficient visual features here</string>
+    <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
+    <string name="ar_core_tracking_error_too_steep_angle">Too steep angle, step away a bit</string>
+    <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
+
+    <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
+    <string name="quest_road_width_title">"What’s the width of this road here?"</string>
+    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
 </resources>

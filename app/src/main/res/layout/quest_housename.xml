@@ -30,7 +30,7 @@
             app:backgroundTint="@color/traffic_blue"
             android:inputType="textCapWords"
             android:imeOptions="actionDone"
-            tools:text="My Cool House"
+            tools:text="Cool House"
             style="@style/HousenumberEditText"
             />
 

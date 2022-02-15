@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="32dp"
+            android:textSize="@dimen/large_input"
             android:textAlignment="center"
             android:maxLines="1"
             android:background="#000000ff"

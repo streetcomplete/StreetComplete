@@ -145,6 +145,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxVersion")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime:2.7.1")
@@ -182,6 +183,10 @@ dependencies {
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.26.0")
+
+    // measuring distance with AR
+    implementation("com.google.ar:core:1.29.0")
+    implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
 /** Localizations that should be pulled from POEditor etc. */
