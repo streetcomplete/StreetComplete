@@ -1205,6 +1205,9 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
 
+    <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
+    <string name="quest_side_select_interface_explanation">Tap each side and select the situation for that side.\nDo the same for the other side if present.</string>
+
     <string name="no_camera_permission_warning_title">Camera permission</string>
     <string name="no_camera_permission_warning">The permission is necessary to be able to measure distances with the camera.</string>
     <string name="ar_measure">Measure</string>
@@ -1220,4 +1223,5 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
     <string name="quest_road_width_title">"What’s the width of this road here?"</string>
     <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
+
 </resources>
