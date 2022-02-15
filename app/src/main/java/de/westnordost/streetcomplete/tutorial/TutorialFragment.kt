@@ -40,32 +40,41 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         view.respectSystemInsets()
-
         updateIndicatorDots()
-
-        binding.nextButton.setOnClickListener {
-            when (currentPage) {
-                0 -> {
-                    currentPage = 1
-                    step1Transition()
-                }
-                1 -> {
-                    currentPage = 2
-                    step2Transition()
-                }
-                MAX_PAGE_INDEX -> {
-                    binding.nextButton.isEnabled = false
-                    listener?.onTutorialFinished()
-                }
-            }
-        }
+        enableNextButton()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+    }
+
+    private fun nextStep() {
+        disableNextButton()
+        when (currentPage) {
+            0 -> {
+                currentPage = 1
+                step1Transition()
+            }
+            1 -> {
+                currentPage = 2
+                step2Transition()
+            }
+            MAX_PAGE_INDEX -> {
+                listener?.onTutorialFinished()
+            }
+        }
+    }
+
+    private fun disableNextButton() {
+        binding.nextButton.setOnClickListener(null)
+        binding.nextButton.isClickable = false
+    }
+
+    private fun enableNextButton() {
+        binding.nextButton.isClickable = true
+        binding.nextButton.setOnClickListener { nextStep() }
     }
 
     private fun step1Transition() = viewLifecycleScope.launch {
@@ -152,6 +161,8 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 .alpha(1f)
                 .start()
         }
+
+        enableNextButton()
     }
 
     private fun step2Transition() = viewLifecycleScope.launch {
@@ -199,6 +210,8 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
+
+        enableNextButton()
     }
 
     private fun updateIndicatorDots() {
