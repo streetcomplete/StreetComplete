@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Context
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.contract.ActivityResultContracts
-import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.RESULT_MEASURE_METERS
 import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.RESULT_MEASURE_FEET
 import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.RESULT_MEASURE_INCHES
+import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.RESULT_MEASURE_METERS
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters

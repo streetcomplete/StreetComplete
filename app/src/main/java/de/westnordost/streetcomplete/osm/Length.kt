@@ -24,7 +24,7 @@ data class LengthInFeetAndInches(val feet: Int, val inches: Int) : Length {
     override fun toOsmValue() = "$feet'$inches\""
 }
 
-fun String.toLengthUnit() = when(this) {
+fun String.toLengthUnit() = when (this) {
     "meter" -> LengthUnit.METER
     "foot and inch" -> LengthUnit.FOOT_AND_INCH
     else -> throw UnsupportedOperationException("not implemented")

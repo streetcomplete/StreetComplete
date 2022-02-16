@@ -14,12 +14,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.lifecycle.lifecycleScope
-import com.google.ar.core.*
+import com.google.ar.core.Config
+import com.google.ar.core.HitResult
+import com.google.ar.core.Pose
+import com.google.ar.core.Session
+import com.google.ar.core.TrackingState.TRACKING
 import com.google.ar.core.exceptions.CameraNotAvailableException
-import com.google.ar.sceneform.*
+import com.google.ar.sceneform.AnchorNode
+import com.google.ar.sceneform.ArSceneView
+import com.google.ar.sceneform.FrameTime
+import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.Scene
 import com.google.ar.sceneform.math.Quaternion
 import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.*
+import com.google.ar.sceneform.rendering.Color
+import com.google.ar.sceneform.rendering.MaterialFactory
+import com.google.ar.sceneform.rendering.Renderable
+import com.google.ar.sceneform.rendering.ShapeFactory
+import com.google.ar.sceneform.rendering.ViewRenderable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ActivityMeasureBinding
 import de.westnordost.streetcomplete.ktx.toast
@@ -148,7 +160,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         setTrackingError(frame.camera.trackingFailureReason.messageResId)
 
-        if (frame.camera.trackingState == TrackingState.TRACKING) {
+        if (frame.camera.trackingState == TRACKING) {
             if (measureState == MeasureState.MEASURING && measureVertical) {
                 updateVerticalMeasuring(frame.camera.displayOrientedPose)
             } else {
