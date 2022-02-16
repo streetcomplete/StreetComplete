@@ -102,7 +102,7 @@ val UN_M49_REGEX = Regex("[0-9]{3}")
 val ISO3166_1_ALPHA2_REGEX = Regex("([a-z]{2})")
 val ISO3166_2_REGEX = Regex("([a-z]{2})-([a-z0-9]{1,3})(\\.geojson)?")
 
-val SUPPORTED_SUBDIVISIONS = setOf("au", "ca", "cn", "in", "us")
+val SUPPORTED_SUBDIVISIONS = setOf("au", "ca", "cn", "gb", "in", "us")
 
 /** resolve M49 codes to country codes */
 private fun expandM49Codes(codes: MutableList<String>) {
