@@ -8,5 +8,5 @@ mobileCountryCode: 425
 noStoppingLineStyle: red-white on curb
 noStoppingSignStyle: israel
 officialLanguages: [heb, ar]
-orchardProduces: [tomato, chilli_pepper, sweet_pepper, grapefruit, orange, banana, apple, avocado, olive, lemon, lime, grape, peach, guava, mango, mangosteen, date, persimmon, pear]
+orchardProduces: [olive, avocado, grape, date, tomato, orange, peach, banana, apple, lemon, lime, chilli_pepper, sweet_pepper, guava, mango, mangosteen, grapefruit, plum, pear]
 popularReligions: [jewish, christian, muslim]

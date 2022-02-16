@@ -3,7 +3,7 @@ en-GB:
    ebel: 219
    10992: 313
    Andrew: 559
-   arrival-spring: 899
+   arrival-spring: 980
    Daniel: 133
    Ferdi: 5
    Ian Rutson: 476
@@ -19,12 +19,12 @@ ca:
    Josep: 1914
    el_libre: 608
    Gabriel Fernández Fernández: 67
-   jmaspons: 14731
+   jmaspons: 14708
    Joan Montané: 11443
    JOAQUIN: 1020
    Jose Luis Infante: 1023
    pataquets: 770
-   Pau Nofuentes Sendra: 8356
+   Pau Nofuentes Sendra: 10358
 fi: 
    Kantele: 2416
    Aleksi.klasila: 8045
@@ -41,7 +41,7 @@ nn:
    Karl Ove Hufthammer: 28830
 de: 
    Markus Göllnitz: 47
-   Andre Thum: 865
+   Andre Thum: 920
    Brandtner_michael: 173
    calli: 68
    Claudius Henrichs: 173
@@ -51,7 +51,8 @@ de:
    Github: 201
    Go4it.1: 14
    grafst: 22
-   Lenni: 648
+   HolgerJeromin: 113
+   Lenni: 1162
    mrab: 9
    Natenom: 14
    nautilusx: 139
@@ -64,7 +65,7 @@ de:
 zh: 
    Mumulhl: 86
    Minecraftis1st: 9
-   OilStation: 4722
+   OilStation: 5542
    Oliver_lew: 1285
    Redaready. dev: 146
    Settingdust: 413
@@ -73,10 +74,10 @@ ml:
    Shijil: 900
    Arun Raj: 2580
    Dharwish: 478
-   Lijo: 6887
+   Lijo: 6828
    Muhammed Yaseen: 4467
    Mujeeb rahman k: 398
-   Rajeev R R: 12276
+   Rajeev R R: 12092
 hu: 
    ursus: 680
    Gábor Babos: 15662
@@ -144,18 +145,18 @@ id:
    zmni: 85
 fa: 
    Ahmad: 969
-   ARA2020: 12811
+   ARA2020: 13554
    Goudarz Jafari: 445
-   Iman: 2570
-   Mohammad Mehdi Maliki: 18211
+   Iman: 3045
+   Mohammad Mehdi Maliki: 17768
    Mostafa Ahangarha: 3138
 sk: 
-   Aiqo: 3047
+   Aiqo: 8014
    Andrej Shadura: 328
    Brano: 31
    Martin: 14156
    segi: 2947
-   Vlado Jendrol: 12901
+   Vlado Jendrol: 12742
    Zaijo: 255
 sv: 
    Albin FL: 116
@@ -166,10 +167,10 @@ sv:
    Jonatan Nyberg: 9373
    Landrash: 51
    Ntoonio: 255
-   riiga: 16590
+   riiga: 16866
    rindlerblabla: 7536
 nl: 
-   Alert Bouterse: 10730
+   Alert Bouterse: 10470
    Amy: 534
    Casperkersten1: 83
    Daniel: 5635
@@ -179,11 +180,11 @@ nl:
    Jan. lammertyn: 1496
    Karel Trachet: 65
    Kenny: 252
-   Pander: 1845
+   Pander: 2288
    Peter: 7279
    Rhhsmits: 4371
    Richard: 3124
-   Robin: 771
+   Robin: 1066
    Youri Lima: 5
 fr: 
    Alex: 462
@@ -199,7 +200,7 @@ fr:
    David Chionne: 5525
    Dettorer: 125
    fabrice: 6
-   Florian Stosse: 4329
+   Florian Stosse: 4971
    Frédéric Bourgeon: 930
    gendy54: 162
    Idrizza: 14
@@ -261,7 +262,7 @@ ru:
    XnL: 221
    zetx16: 1823
    zimirrrr: 42
-   Константин: 337
+   Константин: 554
 am: 
    Alexander: 16336
    Anteneh Belayneh: 6988
@@ -318,7 +319,7 @@ uk:
    ANT Berezhnyi: 588
    Domkot_UA: 9582
    EtriKodoku: 279
-   Github: 1311
+   Github: 1243
    iChill: 140
    Mihajlo0743: 510
    Nazar Kotsur: 5
@@ -339,18 +340,18 @@ pl:
    Konrad W: 286
    Krystian Biesaga: 1313
    Krzysztof Krasoń: 1511
-   M1roN: 1000
+   M1roN: 867
    Marek: 39
    Marek-M: 2784
-   Mateusz Konieczny: 16772
+   Mateusz Konieczny: 17313
    Michal: 38
    Michał 'kwiateusz' Kwiatek: 1262
    Paba22: 375
    PoiuyPL: 97
    psokol: 98
-   rmikke: 306
+   rmikke: 201
    Saibamen: 172
-   skepticalknowledge: 1758
+   skepticalknowledge: 1498
    Tomasz Maciejewski: 5833
 gl: 
    ccpr1l: 15625
@@ -361,7 +362,7 @@ en:
 da: 
    Cookieblues: 1121
    Daniel: 175
-   Dennis Kjær Jensen: 13861
+   Dennis Kjær Jensen: 14053
    Jens Hyllegaard: 1400
    Jonas Storgaard: 911
    Leonora: 5576
@@ -423,7 +424,7 @@ th:
    Vee Satayamas: 22
    เรย์ โรจนสมสิทธิ์: 28
 el: 
-   makmar: 42423
+   makmar: 42748
    Nelli.k.21: 613
    tinigrillion: 420
 sr-cyrl: 
@@ -432,7 +433,7 @@ sr-cyrl:
    Nikola: 192
 hr: 
    Mario: 63
-   Matija Nalis: 41599
+   Matija Nalis: 42362
 ja: 
    Morgan: 56
    naofumi: 4274

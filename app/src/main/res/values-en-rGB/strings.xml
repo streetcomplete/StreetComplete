@@ -1202,8 +1202,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">"Lifesaver"</string>
     <string name="achievement_lifesaver_solved_X">"You solved %d quests that help emergency services and first responders!"</string>
-    <string name="quest_fuelSelfService_title">"Can you pump gas yourself at this fuel station?"</string>
-    <string name="quest_fuelSelfService_name_title">"Can you pump gas yourself at %s?"</string>
+    <string name="quest_fuelSelfService_title">"Can you pump fuel yourself at this fuel station?"</string>
+    <string name="quest_fuelSelfService_name_title">"Can you pump fuel yourself at %s?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"This quest type is disabled by default because it is quite time-consuming and often difficult to make the right choice. You should only enable this quest type if you are really committed to add this kind of data."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Hard-packed, very little loose gravel or sand"</string>
     <string name="quest_barrier_path_intersection">"How does this path cross the barrier here?"</string>
@@ -1217,6 +1217,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_value_yes">"shoulder"</string>
     <string name="quest_shoulder_value_no">"no shoulder"</string>
     <string name="no_camera_permission_warning_title">"Camera permission"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"The permission is necessary to be able to measure distances with augmented reality."</string>
     <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
     <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>

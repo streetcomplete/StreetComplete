@@ -2588,6 +2588,8 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
     <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
     <string name="no_camera_permission_warning_title">"Oprávnění fotoaparátu"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Oprávnění je nutné, aby bylo možné měřit vzdálenosti pomocí rozšířené reality."</string>
     <string name="ar_core_error_sdk_too_old">"Tato aplikace je příliš stará, zkuste ji aktualizovat."</string>
     <string name="ar_core_tracking_error_bad_state">"Něco je špatně. Zkuste měření restartovat."</string>

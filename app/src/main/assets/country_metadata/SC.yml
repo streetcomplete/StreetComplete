@@ -7,4 +7,4 @@ mobileCountryCode: 633
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, fr, crs]
-orchardProduces: [coconut, banana, tomato, guava, mango, mangosteen, lemon, lime, orange, pineapple, tea, avocado]
+orchardProduces: [coconut, banana, tomato, tea, guava, mango, mangosteen, orange, lemon, lime, pineapple, avocado]

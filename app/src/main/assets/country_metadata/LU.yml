@@ -8,6 +8,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
-orchardProduces: [grape, apple, pear, tomato, plum, strawberry, walnut, cherry, raspberry]
+orchardProduces: [grape, apple, plum, pear, walnut, strawberry]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE

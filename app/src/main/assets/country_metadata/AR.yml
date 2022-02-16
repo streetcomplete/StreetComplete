@@ -7,5 +7,5 @@ mobileCountryCode: 722
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-orchardProduces: [grape, lemon, lime, orange, apple, pear, tomato, mate, olive, banana, peach, chilli_pepper, sweet_pepper, grapefruit, plum, tea, apricot]
+orchardProduces: [grape, mate, olive, lemon, lime, tea, orange, pear, apple, plum, tomato, walnut, peach, banana, grapefruit, chilli_pepper, sweet_pepper]
 popularSports: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]

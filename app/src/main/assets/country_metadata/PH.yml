@@ -9,6 +9,6 @@ noParkingSignStyle: mutcd
 noStandingSignStyle: mutcd text waiting
 noStoppingSignStyle: mutcd
 officialLanguages: [en, fil, es, ceb, ilo, hil]
-orchardProduces: [coconut, banana, pineapple, guava, mango, mangosteen, rubber, cashew_nut, tomato, papaya, coffee, grapefruit, chilli_pepper, sweet_pepper, avocado, orange, cacao, agave]
+orchardProduces: [coconut, rubber, guava, mango, mangosteen, banana, coffee, pineapple, cacao, cashew_nut, tomato, papaya, chilli_pepper, sweet_pepper, avocado, grapefruit, agave, pepper]
 popularSports: [basketball, tennis, soccer, volleyball]
 workweekDays: 6

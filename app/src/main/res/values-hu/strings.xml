@@ -2549,6 +2549,8 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_shoulder_value_yes">"leállósáv"</string>
     <string name="quest_shoulder_value_no">"nincs leállíósáv"</string>
     <string name="no_camera_permission_warning_title">"Kamera engedély"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Az engedély szükséges a kiterjesztett valósággal történő távolságméréshez."</string>
     <string name="ar_core_error_sdk_too_old">"Az alkalmazás túl régi, próbáld meg frissíteni."</string>
     <string name="ar_core_tracking_error_bad_state">"Valami hiba történt. Próbáld újraindítani a mérést."</string>

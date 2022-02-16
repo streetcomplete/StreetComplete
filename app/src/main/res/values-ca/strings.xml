@@ -54,8 +54,6 @@
     <string name="turn_on_location_request">"La geolocalització està desactivada. Voleu anar a la configuració per a activar-la ara?"</string>
     <string name="no_location_permission_warning">"Cal la vostra ubicació per a cercar missions a prop vostre."</string>
     <string name="about_title_authors">"Crèdits"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick i contribuïdors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
@@ -685,8 +683,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_tourism_information_terminal">"Terminal informatiu"</string>
     <string name="quest_tourism_information_map">"Mapa"</string>
     <string name="quest_tourism_information_guidepost">"Senyal d'indicació"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"És per a brossa en general"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Aleshores, aquest contenidor és per a qualsevol brossa, com ara residus domèstics o brossa comercial?"</string>
     <string name="quest_accepts_cash_title">"%s accepta pagaments en metàl·lic?"</string>
@@ -695,8 +691,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="user_logout">"Tanca la sessió"</string>
     <string name="osm_profile">"Perfil OSM"</string>
     <string name="next">"Endavant"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"Som-hi!"</string>
     <string name="tutorial_welcome_to_osm">"Us donem la benvinguda a l'OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"el mapa mundial wiki"</string>
@@ -874,7 +868,7 @@ d'acompliment"</string>
     <string name="quest_summit_register_title">"Hi ha un llibre de cim a %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Hi ha un desfibril·lador (DEA) dins l'edifici?"</string>
     <string name="about_title_translate">"Ajudeu a traduir aquesta aplicació"</string>
-    <string name="about_description_translate">"%1$s es tradueix %2$d%%"</string>
+    <string name="about_description_translate">"%1$s està traduït al %2$d%%"</string>
     <string name="quest_oneway2_title">"Aquest és un carrer de sentit únic? En quin sentit?"</string>
     <string name="quest_oneway2_dir">"Sentit únic en aquesta direcció"</string>
     <string name="quest_oneway2_no_oneway">"No és de sentit únic"</string>
@@ -932,8 +926,6 @@ d'acompliment"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Té un carril de gir esquerre de doble sentit"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"És això correcte?"</string>
     <string name="quest_maxheight_below_bridge_title">"Quin és el límit d'alçària sota el pont?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Si no s'aplica a tota la via, considereu respondre \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Hi ha paviment tàctil en aquesta vorera aquí?"</string>
     <string name="quest_kerb_height_title">"Quina alçada té aquesta vorera?"</string>
@@ -1208,6 +1200,9 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_standing_prohibited">"Sense detenció"</string>
     <string name="street_parking_conditional_restrictions">"Es pot estacionar / Sols es pot parar en certs casos"</string>
     <string name="street_parking_no_other_reasons">"Sense senyal que ho indiqui / no es pot estacionar"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Si és possible estacionar o parar ací, primer contesta com pot fer-se. La restricció que s’aplica es pot contestar després.
+
+Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Tant un número de casa com un nom..."</string>
     <string name="quest_address_house_number_label">"Número:"</string>
     <string name="quest_shoulder_title">"Té voral aquesta carretera?"</string>
@@ -1226,20 +1221,53 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_smoothness_road_title">"Quina és la qualitat de la superfície en aquesta via?"</string>
     <string name="quest_smoothness_title_excellent">"Superfície plana i fàcil de creuar"</string>
     <string name="quest_smoothness_title_good">"Més o menys transitable"</string>
+    <string name="quest_smoothness_title_intermediate">"Un poc irregular"</string>
+    <string name="quest_smoothness_title_bad">"Irregular"</string>
+    <string name="quest_smoothness_title_very_bad">"Molt irregular"</string>
+    <string name="quest_smoothness_title_horrible">"Molt irregular i desigual"</string>
     <string name="quest_smoothness_title_very_horrible">"Gairebé impassable"</string>
     <string name="quest_smoothness_title_impassable">"Impassable"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Sense iregularitats ni esquerdes"</string>
     <string name="quest_smoothness_description_excellent_paving_stones">"Quasi pla"</string>
     <string name="quest_smoothness_description_good_paved">"Amb algun problema; esquerdes, imperfeccions o reparacions"</string>
     <string name="quest_smoothness_description_good_paving_stones">"Superfície de pedres planes i compactes"</string>
     <string name="quest_smoothness_description_good_sett">"Llambordes molt ben alineades i de vores quasi imperceptibles per al vianant
 "</string>
+    <string name="quest_smoothness_description_impassable">"No apte per a cap vehicle, només passable a peu"</string>
+    <string name="quest_smoothness_wrong_surface">"La superfície és diferent"</string>
+    <string name="quest_smoothness_surface_value">"La superfície va ser etiquetada com:"</string>
     <string name="quest_smoothness_obstacle">"Hi ha un obstacle"</string>
+    <string name="quest_smoothness_obstacle_hint">"Per favor, proporciona una resposta general per a la suavitat de la superfície. Obstacles com vorades, reductors de velocitat, graelles per al bestiar es poden ignorar. Obstacles repetits o inesperats són els que haurien de contar per a la resposta."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indica quin vehicle pot utilitzar bé la superfície. El que importa és el panorama general en lloc de danys individuals."</string>
+    <string name="quest_shoulder_explanation">"Un voral és una zona de parada d'emergència clarament demarcat que permet que els vehicles s'aturin de forma segura completament al costat de la carretera, encara que no sempre en una superfície totalment pavimentada."</string>
     <string name="link_osmhydrant_description">"Cerca, afegeix i edita estacions de bombers i hidrants"</string>
     <string name="achievement_lifesaver_title">"Salvavides"</string>
     <string name="achievement_lifesaver_solved_X">"Has resolt %d missions que ajuden als serveis d'emergència!"</string>
     <string name="quest_fuelSelfService_title">"A aquesta benzinera pots repostar tu mateix?"</string>
     <string name="quest_fuelSelfService_name_title">"A %s pots repostar tu mateix?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Aquesta missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Molt compactat, poca grava o sorra solta"</string>
     <string name="quest_barrier_path_intersection">"Com creua aquest camí la barrera aquí?"</string>
     <string name="quest_barrier_road_intersection">"Com creua aquesta carretera la barrera aquí?"</string>
     <string name="quest_airConditioning_no_name_title">"%s té aire condicionat?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Hi ha un cartell amb els horaris d’apertura? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"mostrat separat al map"</string>
+    <string name="quest_shoulder_value_yes">"voral"</string>
+    <string name="quest_shoulder_value_no">"no hi ha voral"</string>
+    <string name="no_camera_permission_warning_title">"Permisos de càmera"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"El permís és necessari per a poder mesurar distàncies amb realitat augmentada."</string>
+    <string name="ar_core_error_sdk_too_old">"Aquesta aplicació és massa antiga, intenta a actualitzar."</string>
+    <string name="ar_core_tracking_error_bad_state">"Quelcom ha anat malament. Intenta a reiniciar el mesurament."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Hi ha molta foscor"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Massa moviment"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Característiques visuals insuficients"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"La càmera està sent usada per una altra app"</string>
+    <string name="quest_fireHydrant_position_ref_title">"On està localitzat l’hidrandt? (Nombre de referència: %s)"</string>
+    <string name="ar_measure">"Mesura"</string>
+    <string name="default_disabled_msg_no_ar">"Necesites una cinta mètrica per a resoldre aquesta missió perqué aquest dispositiu no suporta mesurar amb la càmera."</string>
+    <string name="quest_cycleway_width_title">"Quina és l’amplada del carril bici ací?"</string>
+    <string name="quest_road_width_title">"Quina és l’amplada de la via ací?"</string>
+    <string name="quest_sidewalk_answer_none">"No hi ha vorera"</string>
 </resources>

@@ -5,6 +5,6 @@ mobileCountryCode: 634
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar, en]
-orchardProduces: [banana, guava, mango, mangosteen, tomato, date, lemon, lime, grapefruit, orange, chilli_pepper, sweet_pepper, pineapple]
+orchardProduces: [tomato, banana, date, lemon, lime, guava, mango, mangosteen, grapefruit, orange, chilli_pepper, sweet_pepper, orange, pineapple]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

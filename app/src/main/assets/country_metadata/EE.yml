@@ -10,6 +10,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 248
 officialLanguages: [et]
-orchardProduces: [apple, tomato, strawberry, plum, raspberry, cherry]
+orchardProduces: [strawberry, apple, raspberry, plum, tomato]
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA

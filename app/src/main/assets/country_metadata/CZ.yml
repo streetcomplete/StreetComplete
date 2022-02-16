@@ -9,7 +9,7 @@ isUsuallyAnyGlassRecyclableInContainers: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 230
 officialLanguages: [cs]
-orchardProduces: [apple, grape, tomato, hop, pear, plum, strawberry, cherry, chilli_pepper, sweet_pepper, apricot, peach, walnut, raspberry]
+orchardProduces: [grape, apple, hop, plum, cherry, apricot, pear, strawberry, peach, chilli_pepper, sweet_pepper, tomato, walnut, raspberry]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZÓNA

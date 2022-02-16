@@ -1436,6 +1436,8 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_shoulder_value_yes">"accotement"</string>
     <string name="quest_shoulder_value_no">"pas d’accotement"</string>
     <string name="no_camera_permission_warning_title">"Permission d’accès à la caméra"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"La permission est nécessaire pour mesurer les distances en réalité augmentée."</string>
     <string name="ar_core_error_sdk_too_old">"Cette application est trop ancienne, essayez de la mettre à jour."</string>
     <string name="ar_core_tracking_error_bad_state">"Quelque chose s’est mal passé. Essayez de redémarrer la mesure."</string>
@@ -1443,4 +1445,16 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Il y a trop de mouvement"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Pas assez de caractéristiques visuelles ici"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"La caméra est déjà utilisée par une autre application"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Support de guidon"</string>
+    <string name="quest_bicycle_parking_access_title2">"Qui est autorisé à stationner un vélo ici ? Le parking peut être gratuit ou payant."</string>
+    <string name="quest_playground_access_title2">"Qui est autorisé à utiliser cette aire de jeux ?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Où cette borne incendie est-elle située ? (numéro de référence : %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Sélectionner que les trottoirs sont manquants"</string>
+    <string name="quest_side_select_interface_explanation">"Sélectionnez un côté et précisez sa situation. Faites la même chose pour l'autre côté, si présent."</string>
+    <string name="ar_measure">"Mesure"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Angle trop important, reculez un peu"</string>
+    <string name="default_disabled_msg_no_ar">"Vous aurez besoin d'un mètre mesureur pour résoudre cette quête, la mesure via la caméra n'est pas supporté sur cet appareil."</string>
+    <string name="quest_cycleway_width_title">"Quelle est la largeur de cette piste cyclable ici ?"</string>
+    <string name="quest_road_width_title">"Quelle est la largeur de cette route ici ?"</string>
+    <string name="quest_sidewalk_answer_none">"Pas de trottoir du tout"</string>
 </resources>

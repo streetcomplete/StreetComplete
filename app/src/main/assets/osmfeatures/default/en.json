@@ -103,6 +103,10 @@
                             "title": "Destination",
                             "description": "Access allowed only to reach a destination"
                         },
+                        "customers": {
+                            "title": "Customers",
+                            "description": "Restricted to customers at the destination"
+                        },
                         "dismount": {
                             "title": "Dismount",
                             "description": "Access allowed but rider must dismount"
@@ -1888,17 +1892,21 @@
                 "recycling_accepts": {
                     "label": "Accepts",
                     "options": {
-                        "glass_bottles": "Glass Bottles",
-                        "glass": "Glass",
+                        "glass_bottles": "Glass Bottles and Jars",
+                        "glass": "Any Glass (tempered glass, windows, mirrors, etc.)",
                         "paper": "Paper",
+                        "plastic": "Plastic",
                         "clothes": "Clothes",
                         "cans": "Cans",
                         "batteries": "Batteries",
                         "shoes": "Shoes",
                         "green_waste": "Green Waste",
                         "plastic_packaging": "Plastic Packaging",
+                        "plastic_bottles": "Plastic Bottles",
                         "cardboard": "Cardboard",
-                        "scrap_metal": "Scrap Metal"
+                        "scrap_metal": "Scrap Metal",
+                        "cooking_oil": "Cooking Oil",
+                        "engine_oil": "Engine Oil"
                     }
                 },
                 "recycling_type": {
@@ -1911,6 +1919,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "Gate Number"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "Hole Number",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "Hole Number",
@@ -2112,6 +2124,21 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Category"
+                },
+                "seamark/rescue_station/category": {
+                    "label": "Life Saving Equipment",
+                    "options": {
+                        "lifeboat": "Lifeboat (on Land)",
+                        "lifeboat_on_mooring": "Lifeboat (at a Mooring)",
+                        "seaplane": "Seaplane",
+                        "aircraft": "Aircraft",
+                        "hovercraft": "Hovercraft",
+                        "radio": "Radio Station",
+                        "first_aid": "First aid",
+                        "refuge_shipwrecked": "Shipwreck Refuge",
+                        "refuge_intertidal": " Intertidal Refuge",
+                        "tug": "Salvage tug"
+                    }
                 },
                 "seamark/type": {
                     "label": "Seamark",
@@ -3713,6 +3740,11 @@
                     "name": "Amphitheatre",
                     "terms": "open air,outdoor,greek,ampi"
                 },
+                "amenity/ticket_validator": {
+                    "name": "Ticket Validator",
+                    "aliases": "ticket puncher\npunching machine\nticket marker",
+                    "terms": "ticket,validator,puncher"
+                },
                 "amenity/toilets": {
                     "name": "Toilets",
                     "aliases": "Restroom\nBathroom\nLavatory\nWater Closet",
@@ -4465,6 +4497,17 @@
                 "demolished/building": {
                     "name": "Recently Demolished Building"
                 },
+                "disc_golf/basket": {
+                    "name": "Disc Golf Basket",
+                    "terms": "disc golf target,disc pole hole"
+                },
+                "disc_golf/hole": {
+                    "name": "Disc Golf Hole"
+                },
+                "disc_golf/tee": {
+                    "name": "Disc Golf Tee",
+                    "terms": "tee box,teeing ground"
+                },
                 "disused/amenity": {
                     "name": "Disused Amenity"
                 },
@@ -4531,7 +4574,7 @@
                 },
                 "emergency/lifeboat_station": {
                     "name": "Lifeboat Station",
-                    "terms": "boat rescue"
+                    "terms": "lifeboat,rescue,search and rescue,life saving,boat rescue"
                 },
                 "emergency/lifeguard": {
                     "name": "Lifeguard",
@@ -4548,7 +4591,7 @@
                     "name": "Siren",
                     "terms": "air raid,loud,noise,storm,tornado,warning"
                 },
-                "emergency/water_reservoir covered": {
+                "emergency/water_reservoir_covered": {
                     "name": "Emergency Water Reservoir (Underground)",
                     "terms": "cistern,reservoir,extinguishing,firefighting"
                 },
@@ -4638,7 +4681,7 @@
                 },
                 "healthcare/birthing_center": {
                     "name": "Birthing Center",
-                    "terms": "baby,childbirth,delivery,labour,labor,pregnancy"
+                    "terms": "baby,childbirth,delivery,labour,labor,midwive,pregnancy,pregnant"
                 },
                 "healthcare/blood_donation": {
                     "name": "Blood Donor Center",
@@ -4716,6 +4759,9 @@
                 "highway/corridor": {
                     "name": "Indoor Corridor",
                     "terms": "gallery,hall,hallway,indoor,passage,passageway"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "Marked Crosswalk"
                 },
                 "highway/crossing/zebra": {
                     "name": "Marked Crosswalk"
@@ -5516,6 +5562,10 @@
                     "name": "Field Hockey Pitch",
                     "terms": "landhockey"
                 },
+                "leisure/pitch/four_square": {
+                    "name": "Four Square Court",
+                    "terms": "4 square"
+                },
                 "leisure/pitch/futsal": {
                     "name": "Futsal Court",
                     "terms": "minifootball,five-a-side soccer"
@@ -6193,6 +6243,9 @@
                 "office/travel_agent": {
                     "name": "Travel Agency"
                 },
+                "office/yes": {
+                    "name": "Office (Unspecified Type)"
+                },
                 "office/accountant": {
                     "name": "Accountant Office",
                     "terms": "accountancy,accounting firm,bookkeeper"
@@ -6864,7 +6917,7 @@
                 "railway/rail": {
                     "name": "Train Track",
                     "aliases": "Railway Track\nRailroad Track",
-                    "terms": "permanent way,rail line,track"
+                    "terms": "rail,permanent way,rail line,track"
                 },
                 "railway/rail/highspeed": {
                     "name": "High-Speed Train Track",
@@ -6954,6 +7007,9 @@
                 },
                 "shop/vacant": {
                     "name": "Vacant Shop"
+                },
+                "shop/yes": {
+                    "name": "Shop (Unspecified Type)"
                 },
                 "shop/agrarian": {
                     "name": "Farm Supply Shop",

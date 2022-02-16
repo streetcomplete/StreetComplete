@@ -478,7 +478,7 @@
     <string name="quest_maxspeed_answer_noSign_ruralOk">"بیرون شهرک"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_info_zone">"اگر علائمی مانند این در تقاطع اصلی خیابان وجود داشته باشد، علائم ویژه این منطقه را در این محدوده پیدا نخواهید کرد زیرا محدودیت سرعت قرار داده شده در این محدوده به کل منطقه اعمال می شود."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"اگر علامتی مانند این در تقاطع خیابان اصلی وجود دارد، علائم جداگانه‌ای در این محدوده پیدا نخواهید کرد زیرا محدودیت سرعت ذکرشده در آنجا به کل محدوده اعمال می‌شود."</string>
     <string name="quest_sport_softball">"سافتبال"</string>
     <string name="quest_sport_racquet">"راکت‌بال"</string>
 
@@ -770,7 +770,7 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"اگر نمی‌توانید اینجا را بررسی کنید با بزرگنمایی و کوچک نمایی نقشه سعی نمایید."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_title">"این تقاطع از چه نوعی است؟"</string>
+    <string name="quest_crossing_type_title">"این گذرگاه از چه نوعی است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌ کشی"</string>
@@ -1190,10 +1190,10 @@
     <string name="quest_generic_item_invalid_value">"لطفا یک مقدار واضح‌تر را انتخاب کنید."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_answer_multiple_types">"این کاربری چندمنظوره است"</string>
+    <string name="quest_buildingType_answer_multiple_types">"چندمنظوره است"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_answer_multiple_types_description">"به سادگی کاربری اصلی این ساختمان را انتخاب کنید. به عنوان مثال. اگر یک فروشگاه در طبقه همکف با واحدهای فوقانی آن باشد، هنوز عمدتا یک واحد مسکونی است."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"به‌سادگی کاربری اصلی این ساختمان را انتخاب کنید. برای مثال اگر در طبقه همکف یک فروشگاه هست و روی آن واحدهای آپارتمانی قرار دارد، هنوز یک ساختمان آپارتمانی است."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"هنوز در حال ساخت است"</string>
@@ -1202,28 +1202,28 @@
     <string name="quest_buildingType_residential">"مسکونی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_residential_description">"ساختمانی که مردم در آن زندگی می کنند"</string>
+    <string name="quest_buildingType_residential_description">"ساختمانی که مردم در آن زندگی می‌کنند"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house">"خانه"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_apartments_description">"خانه چندمنظوره ، ممکن است خرده فروشی در طبقه همکف داشته باشد."</string>
+    <string name="quest_buildingType_apartments_description">"خانه برای چند خانواده؛ ممکن است خرده‌فروشی‌هایی در طبقه همکف داشته باشد"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_apartments">"ساختمان مسکونی چند واحدی"</string>
+    <string name="quest_buildingType_apartments">"ساختمان آپارتمانی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached">"خانه های ویلایی"</string>
+    <string name="quest_buildingType_detached">"خانه غیرمتصل"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached_description">"خانه مستقل تک کاربری"</string>
+    <string name="quest_buildingType_detached_description">"خانه غیرمتصل تک‌خانواری"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_semi_detached">"خانه دو تکه"</string>
+    <string name="quest_buildingType_semi_detached">"خانه نیمه‌متصل"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace_description">"ردیف خطی از خانه‌های مشابه هم"</string>
+    <string name="quest_buildingType_terrace_description">"ردیف خطی از خانه‌های مشابه تک‌خانواری"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"ساختمان هتل"</string>
@@ -1239,7 +1239,7 @@
     <string name="quest_buildingType_static_caravan">"خانه سیار"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_commercial">"مجتمع تجاری"</string>
+    <string name="quest_buildingType_commercial">"ساختمان تجاری"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"ساختمانی که افراد در آن کار، خرید یا هر فعالیت تجاری دیگری انجام می‌دهند"</string>
@@ -1248,13 +1248,13 @@
     <string name="quest_buildingType_industrial">"ساختمان صنعتی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"به عنوان مثال، کارخانه، کارگاه، گاراژ تعمیر خودرو، ..."</string>
+    <string name="quest_buildingType_industrial_description">"به عنوان مثال، کارخانه، کارگاه، گاراژ تعمیر خودرو"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"ساختمان اداری"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail">"فروشگاه"</string>
+    <string name="quest_buildingType_retail">"فروشگاه(ها)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"انبار"</string>
@@ -1264,7 +1264,7 @@
     <string name="quest_buildingType_storage_tank">"مخزن ذخیره"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_religious">"ساختمان عبادتگاه"</string>
+    <string name="quest_buildingType_religious">"ساختمان مذهبی"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_church">"کلیسا"</string>
@@ -2193,7 +2193,7 @@
     <string name="achievement_citizen_solved_X">"شما %d جُستار مفید در زندگی روزمره این شهر را پاسخ دادید!"</string>
     <string name="achievement_outdoors_title">"فضای پیرامون"</string>
     <string name="achievement_outdoors_solved_X">"شما %d جُستار مفید برای گردشگران را پاسخ دادید"</string>
-    <string name="quest_pedestrian_crossing_island">"آیا این گذرگاه عابرپیاده مکان جزیره‌ای دارد؟"</string>
+    <string name="quest_pedestrian_crossing_island">"آیا این گذرگاهِ پیاده جزیره دارد؟"</string>
     <string name="quest_generic_answer_noSign">"اینجا تابلو ندارد"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"آیا سطح شیب‌دار صندلی چرخدار به صورت راه جداگانه روی نقشه نمایش داده می شود؟"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"تفکیک شده"</string>
@@ -2572,10 +2572,27 @@
     <string name="quest_shoulder_value_yes">"شانه"</string>
     <string name="quest_shoulder_value_no">"بدون شانه"</string>
     <string name="no_camera_permission_warning_title">"مجوز دوربین"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"این مجوز برای اندازه‌گیری مسافت‌ها از طریق واقعیت افزوده لازم است."</string>
-    <string name="ar_core_error_sdk_too_old">"این برنامه خیلی قدیمی است، به‌روزش کنید."</string>
+    <string name="ar_core_error_sdk_too_old">"این برنامه خیلی قدیمی است، سعی کنید بروزرسانی کنید."</string>
     <string name="ar_core_tracking_error_bad_state">"مشکلی پیش آمد. اندازه‌گیری را از اول آغاز کنید."</string>
     <string name="ar_core_tracking_error_insufficient_light">"اینجا خیلی تاریک است"</string>
     <string name="ar_core_tracking_error_excessive_motion">"جابه‌جایی خیلی زیاد است"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"امکانات بصری کافی در اینجا وجود ندارد"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"برنامهٔ دیگری از دوربین استفاده می‌کند"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"نگهدارنده دسته"</string>
+    <string name="quest_bicycle_parking_access_title2">"چه کسی اجازه دارد دوچرخه را در اینجا پارک کند؟ پارکینگ ممکن است رایگان یا پولی باشد."</string>
+    <string name="quest_playground_access_title2">"چه کسانی مجاز به استفاده از این زمین بازی هستند؟"</string>
+    <string name="quest_fireHydrant_position_ref_title">"این شیر آتش‌نشانی در کجا قرار دارد؟ (شماره مرجع: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"انتخاب‌کردن اینکه پیاده روها وجود ندارد"</string>
+    <string name="quest_side_select_interface_explanation">"روی هر طرف ضربه بزنید و وضعیت آن طرف را انتخاب کنید.
+در صورت وجود همین کار را برای طرف دیگر انجام دهید."</string>
+    <string name="ar_measure">"اندازه گیری"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"زاویه خیلی تند، کمی فاصله بگیرید"</string>
+    <string name="default_disabled_msg_no_ar">"برای حل این چالش به یک متر نوار نیاز دارید زیرا اندازه‌گیری با دوربین در این دستگاه پشتیبانی نمی‌شود."</string>
+    <string name="quest_cycleway_width_title">"عرض این مسیر دوچرخه در اینجا چقدر است؟"</string>
+    <string name="quest_road_width_title">"پهنای این جاده اینجا چقدر است؟"</string>
+    <string name="quest_road_width_explanation">"عرض جاده از حاشیه به حاشیه: این شامل هر چیزی در سطح خیابان مانند پارکینگ در خیابان یا خطوط دوچرخه است، اما هر چیزی فراتر از آن مانند مسیرهای دوچرخه‌سواری یا پارک در کنار جاده را حذف می‌کند."</string>
+    <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
 </resources>

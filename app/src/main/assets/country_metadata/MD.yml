@@ -5,6 +5,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 259
 officialLanguages: [ro]
-orchardProduces: [grape, apple, plum, tomato, apricot, peach, walnut, chilli_pepper, sweet_pepper, strawberry, pear, cherry, raspberry, almond, hazelnut]
+orchardProduces: [grape, apple, walnut, plum, peach, tomato, cherry, apricot, pear, strawberry, chilli_pepper, sweet_pepper, raspberry, hazelnut, almond]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA

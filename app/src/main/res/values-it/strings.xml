@@ -1302,6 +1302,8 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_shoulder_value_yes">"banchina"</string>
     <string name="quest_shoulder_value_no">"nessuna banchina"</string>
     <string name="no_camera_permission_warning_title">"Permessi della fotocamera"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"I permessi sono necessari per poter misurare le distanze con la realtà aumentata."</string>
     <string name="ar_core_error_sdk_too_old">"Questa app è di una versione troppo vecchia, prova ad aggiornarla."</string>
     <string name="ar_core_tracking_error_bad_state">"Qualcosa è andato storto. Prova a far ripartire la misurazione."</string>

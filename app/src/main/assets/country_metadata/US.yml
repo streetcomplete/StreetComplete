@@ -12,7 +12,7 @@ noParkingSignStyle: mutcd text
 noStandingSignStyle: mutcd text standing
 noStoppingSignStyle: mutcd text
 officialLanguages: [en]
-orchardProduces: [tomato, grape, apple, orange, strawberry, almond, peach, lemon, lime, grapefruit, pear, walnut, cranberry, plum, pistachio, blueberry]
+orchardProduces: [almond, grape, orange, walnut, pistachio, apple, tomato, blueberry, peach, hop, lemon, lime, plum, hazelnut, avocado, chilli_pepper, sweet_pepper]
 popularReligions: [christian, jewish]
 popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
 speedUnits: [miles per hour]

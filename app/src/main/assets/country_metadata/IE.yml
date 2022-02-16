@@ -11,5 +11,5 @@ noParkingLineStyle: double yellow
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en, ga]
-orchardProduces: [apple, strawberry, tomato, chilli_pepper, sweet_pepper, raspberry, hop]
+orchardProduces: [apple, strawberry, pear, raspberry, cherry, apple, plum, grape, hop, tomato, strawberry, chilli_pepper, sweet_pepper, raspberry, tomato]
 popularSports: [gaelic_games, rugby]

@@ -8,4 +8,4 @@ mobileCountryCode: 631
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [pt]
-orchardProduces: [banana, pineapple, tomato, coffee, cashew_nut, sisal, cacao]
+orchardProduces: [banana, coffee, pineapple, tomato, cacao, cashew_nut, sisal]

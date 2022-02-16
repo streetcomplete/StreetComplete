@@ -6,4 +6,4 @@ mobileCountryCode: 748
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-orchardProduces: [orange, grape, apple, lemon, lime, tomato, chilli_pepper, sweet_pepper, peach, pear, olive, plum, grapefruit]
+orchardProduces: [olive, grape, orange, lemon, lime, apple, peach, pear, tomato, plum, chilli_pepper, sweet_pepper, grapefruit]

@@ -11,6 +11,6 @@ mobileCountryCode: 247
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lv]
-orchardProduces: [apple, tomato, strawberry, pear, cranberry, blueberry, raspberry, plum, cherry]
+orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA

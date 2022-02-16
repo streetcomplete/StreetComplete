@@ -4,6 +4,6 @@ centerLineStyle: white
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 452
 officialLanguages: [vi]
-orchardProduces: [banana, coffee, coconut, rubber, cashew_nut, guava, mango, mangosteen, orange, pineapple, grapefruit, tea, pepper, chilli_pepper, sweet_pepper, grape]
+orchardProduces: [rubber, coffee, cashew_nut, coconut, banana, pepper, tea, guava, mango, mangosteen, orange, chilli_pepper, sweet_pepper, grapefruit, pineapple, grape]
 popularReligions: [chinese_folk, buddhist, christian, caodaism]
 popularSports: [soccer, tennis, badminton, australian_football, sepak_takraw]

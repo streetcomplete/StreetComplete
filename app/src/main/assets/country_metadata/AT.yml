@@ -11,7 +11,7 @@ mobileCountryCode: 232
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [de]
-orchardProduces: [grape, apple, tomato, pear, chilli_pepper, sweet_pepper, strawberry, plum, apricot, cherry, walnut, peach, raspberry, hop]
+orchardProduces: [grape, apple, strawberry, apricot, pear, hop, plum, blueberry, tomato, peach, walnut, chilli_pepper, sweet_pepper, raspberry, cherry]
 popularSports: [soccer, tennis, equestrian, beachvolleyball]
 regularShoppingDays: 5
 slowZoneLabelPosition: bottom

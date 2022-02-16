@@ -10,7 +10,7 @@ mobileCountryCode: 219
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [hr]
-orchardProduces: [grape, apple, tomato, olive, chilli_pepper, sweet_pepper, plum, peach, pear, strawberry, cherry, hazelnut, fig, apricot, walnut, orange]
+orchardProduces: [grape, olive, walnut, hazelnut, apple, plum, cherry, orange, peach, pear, almond, chilli_pepper, sweet_pepper, fig, tomato, blueberry]
 popularSports: [soccer, tennis, basketball, boules, handball]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA

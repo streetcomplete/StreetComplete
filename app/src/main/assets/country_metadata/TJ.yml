@@ -4,6 +4,6 @@ mobileCountryCode: 436
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [tg, ru]
-orchardProduces: [tomato, apple, grape, apricot, peach, lemon, lime, plum, almond, pepper, orange, fig, hazelnut]
+orchardProduces: [apple, grape, tomato, plum, peach, apricot, almond, pepper, hazelnut, lemon, lime, fig, orange]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

@@ -81,7 +81,8 @@
                     }
                 },
                 "access_simple": {
-                    "label": "Allowed Access"
+                    "label": "Allowed Access",
+                    "terms": "permitted,private,public"
                 },
                 "activity": {
                     "options": {
@@ -130,7 +131,8 @@
                         "suburb": "Suburb",
                         "suburb!jp": "Ward",
                         "unit": "Unit"
-                    }
+                    },
+                    "terms": "location"
                 },
                 "admin_level": {
                     "label": "Admin Level"
@@ -179,7 +181,8 @@
                     "label": "Products"
                 },
                 "air_conditioning": {
-                    "label": "Air Conditioning"
+                    "label": "Air Conditioning",
+                    "terms": "cooling system,refrigeration"
                 },
                 "amenity": {
                     "label": "Type"
@@ -267,14 +270,16 @@
                     "label": "Brand"
                 },
                 "brewery": {
-                    "label": "Draught Beers"
+                    "label": "Draught Beers",
+                    "terms": "on tap"
                 },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Default"
                 },
                 "building": {
-                    "label": "Building"
+                    "label": "Building",
+                    "terms": "structure"
                 },
                 "building/levels/underground": {
                     "placeholder": "2, 4, 6..."
@@ -386,7 +391,8 @@
                     "label": "Type"
                 },
                 "cuisine": {
-                    "label": "Cuisines"
+                    "label": "Cuisines",
+                    "terms": "fare,food types"
                 },
                 "currency_multi": {
                     "label": "Currency Types"
@@ -460,7 +466,8 @@
                     }
                 },
                 "description": {
-                    "label": "Description"
+                    "label": "Description",
+                    "terms": "summary"
                 },
                 "devices": {
                     "label": "Devices",
@@ -497,7 +504,8 @@
                     "label": "Type"
                 },
                 "dog": {
-                    "label": "Dogs"
+                    "label": "Dogs",
+                    "terms": "animals,pets"
                 },
                 "door": {
                     "label": "Door"
@@ -3611,7 +3619,8 @@
                     "name": "Greengrocer"
                 },
                 "shop/hairdresser": {
-                    "name": "Hairdresser"
+                    "name": "Hairdresser",
+                    "terms": "barber"
                 },
                 "shop/hardware": {
                     "name": "Hardware Shop"
@@ -3651,7 +3660,8 @@
                     "name": "Lottery Shop"
                 },
                 "shop/mall": {
-                    "name": "Mall"
+                    "name": "Shopping Centre",
+                    "terms": "mall,shopping center"
                 },
                 "shop/massage": {
                     "name": "Massage Shop"

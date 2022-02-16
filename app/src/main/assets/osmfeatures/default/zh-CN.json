@@ -147,7 +147,7 @@
                         "city!cn": "地级市/地区/自治州/盟",
                         "city!jp": "市/町/村/东京都区部",
                         "city!vn": "市/镇",
-                        "conscriptionnumber": "123号",
+                        "conscriptionnumber": "123",
                         "country": "国家",
                         "county": "郡",
                         "county!jp": "日本郡",
@@ -157,7 +157,7 @@
                         "floor": "楼层",
                         "hamlet": "小村庄",
                         "housename": "房屋名称",
-                        "housenumber": "123号",
+                        "housenumber": "123",
                         "housenumber!jp": "楼号/地段号",
                         "neighbourhood": "社区",
                         "neighbourhood!jp": "丁目/字/小字",
@@ -174,7 +174,7 @@
                         "subdistrict!vn": "行政区/社区/小镇",
                         "suburb": "地区",
                         "suburb!jp": "行政区",
-                        "unit": "单元"
+                        "unit": "户号"
                     },
                     "terms": "地址,方位,住址,居所,地点,住处"
                 },
@@ -360,7 +360,7 @@
                     "label": "类型"
                 },
                 "branch_brand": {
-                    "label": "支线",
+                    "label": "分店",
                     "terms": "分支,分店,分叉,分理处,分部,分支机构"
                 },
                 "brand": {
@@ -3845,7 +3845,7 @@
                     "name": "旋转秋千"
                 },
                 "attraction/train": {
-                    "name": "游览车",
+                    "name": "无轨游览列车停靠站",
                     "terms": "游览车,观光车,火车,列车,公路车,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
                 },
                 "attraction/water_slide": {

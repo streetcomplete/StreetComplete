@@ -1331,4 +1331,14 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_sidewalk_value_separate">"visas separat på kartan"</string>
     <string name="quest_shoulder_value_yes">"vägren"</string>
     <string name="quest_shoulder_value_no">"ingen vägren"</string>
+    <string name="no_camera_permission_warning_title">"Kamerabehörighet"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"Behörigheten krävs för att kunna mäta avstånd med förstärkt verklighet."</string>
+    <string name="ar_core_error_sdk_too_old">"Appen är för gammal, försök att uppdatera."</string>
+    <string name="ar_core_tracking_error_bad_state">"Något gick fel. Försök att starta om inmätningen."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"För mörkt här"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"För mycket rörelse"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Otillräckligt antal synliga detaljer"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Kameran används av en annan app"</string>
 </resources>

@@ -10,4 +10,4 @@ mobileCountryCode: 640
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [sw, en]
-orchardProduces: [banana, coconut, tomato, orange, guava, mango, mangosteen, pineapple, cashew_nut, coffee, tea, sisal, lemon, lime, chilli_pepper, sweet_pepper, cacao, pear, grape]
+orchardProduces: [cashew_nut, coconut, banana, coffee, sisal, orange, tomato, guava, mango, mangosteen, tea, pineapple, cacao, chilli_pepper, sweet_pepper, lemon, lime, nutmeg, grape]

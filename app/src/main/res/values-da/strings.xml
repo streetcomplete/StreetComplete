@@ -2314,7 +2314,15 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_fireHydrant_position_lane">"På vejen"</string>
     <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Hvilken diameter er angivet på denne brandhane? (reference nummer: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
+    <string name="quest_smoothness_title_excellent">"Jævn og lige"</string>
+    <string name="quest_smoothness_title_good">"Hovedsageligt jævn"</string>
+    <string name="quest_smoothness_title_intermediate">"Lidt ujævn"</string>
+    <string name="quest_smoothness_title_bad">"Ujævn"</string>
+    <string name="quest_smoothness_title_very_bad">"Meget ujævn"</string>
+    <string name="quest_smoothness_title_horrible">"Meget ujævn og skæv"</string>
+    <string name="quest_smoothness_description_impassable">"Uegnet for køretøjer, kan kun passeres til fods"</string>
     <string name="quest_smoothness_obstacle">"Der er en forhindring"</string>
     <string name="achievement_lifesaver_title">"Livredder"</string>
 </resources>

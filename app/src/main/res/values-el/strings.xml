@@ -2407,4 +2407,14 @@
     <string name="quest_sidewalk_value_separate">"εμφανίζεται ξεχωριστά στον χάρτη"</string>
     <string name="quest_shoulder_value_yes">"ΛΕΑ"</string>
     <string name="quest_shoulder_value_no">"χωρίς ΛΕΑ"</string>
+    <string name="no_camera_permission_warning_title">"Άδεια κάμερας"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"Η άδεια είναι απαραίτητη για να μπορούμε να μετράμε αποστάσεις με επαυξημένη πραγματικότητα."</string>
+    <string name="ar_core_error_sdk_too_old">"Αυτή η εφαρμογή είναι πολύ παλιά, δοκιμάστε ενημέρωση."</string>
+    <string name="ar_core_tracking_error_bad_state">"Κάτι πήγε στραβά. Δοκιμάστε να επανεκκινήσετε τη μέτρηση."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Πολύ σκοτεινά εδώ"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Πάρα πολύ κίνηση"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Ανεπαρκή οπτικά χαρακτηριστικά εδώ"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Η κάμερα χρησιμοποιείται από άλλη εφαρμογή"</string>
 </resources>
