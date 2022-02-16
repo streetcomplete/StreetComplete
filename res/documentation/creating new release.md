@@ -25,7 +25,7 @@ This is done by executing the `updateStreetCompleteData` gradle task. However, s
 3. Run the gradle task `app:installRelease` to deploy the release on your smartphone.
 4. Test if all works as expected. At least look at the changelog and download quests.
 5. Commit and push.
-6. In Android Studio, select _Build -> Generate Signed Bundle / APK_. You need both. You should first create the APK, then the bundle, because the build process for the APK clears the directory in which the Bundle/APK is placed. Rename the created files to match the release name, e.g. "StreetComplete-v99.0-beta9.apk"
+6. In Android Studio, select _Build -> Generate Signed Bundle / APK_. You need both. You should first create the APK, then the bundle, because the build process for the APK clears the directory in which the Bundle/APK is placed. Rename the created files to match the release name, e.g. "StreetComplete-v99.0-beta9.apk". Build the bundle with the `releaseGooglePlay` config.
 
 ### Publish Release on GitHub
 
