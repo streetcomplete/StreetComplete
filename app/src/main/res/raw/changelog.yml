@@ -1,9 +1,10 @@
 v40.1: |
-  <h3>Enhancements</h3>
+  <h3>Enhancements and fixes</h3>
   <ul>
   <li>Faster downloads and faster display of nearby data (#3741), by @Helium314</li>
   <li>Faster initial download when starting the app</li>
   <li>Other small improvements, quest enhancements and UI fixes (#3736, #3757, #3719), thanks @mnalis, @matkoniecz</li>
+  <li>Fixed display issue when going through the tutorial too fast (#3767)</li>
   </ul>
   <h3>Un-Features</h3>
   <ul>
