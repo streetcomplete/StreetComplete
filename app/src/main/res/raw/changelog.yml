@@ -5,6 +5,10 @@ v40.1: |
   <li>Faster initial download when starting the app</li>
   <li>Other small improvements, quest enhancements and UI fixes (#3736, #3757, #3719), thanks @mnalis, @matkoniecz</li>
   </ul>
+  <h3>Un-Features</h3>
+  <ul>
+  <li>Google Play version only: Removed donation links in the about screen because this is now against their policies unless those links lead to their own billing system (see #3768).</li>
+  </ul>
 
 v40.0: |
   <h3>Important: Update manually after Feb 21!</h3>

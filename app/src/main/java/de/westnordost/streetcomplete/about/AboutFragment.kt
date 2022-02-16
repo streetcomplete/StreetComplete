@@ -117,9 +117,7 @@ class AboutFragment : PreferenceFragmentCompat() {
     private fun showDonateDialog() {
         val ctx = context ?: return
 
-        val isGooglePlay = true//ctx.packageManager.getInstallerPackageName(ctx.packageName) == "com.android.vending"
-
-        val view = if (!isGooglePlay) {
+        val view = if (!BuildConfig.IS_GOOGLE_PLAY) {
             val dialogBinding = DialogDonateBinding.inflate(layoutInflater)
             dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
             dialogBinding.root
