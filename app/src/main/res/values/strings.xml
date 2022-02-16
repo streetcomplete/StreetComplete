@@ -1209,7 +1209,7 @@ Alternatively, you can leave a note (with a photo)."</string>
 
     <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
     <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
-    <string name="quest_side_select_interface_explanation">Tap each side and select the situation for that side.\nDo the same for the other side if present.</string>
+    <string name="quest_side_select_interface_explanation">Tap one side and select the matching answer.\nDo the same for the other side if present.</string>
 
     <string name="no_camera_permission_warning_title">Camera permission</string>
     <string name="no_camera_permission_warning">The permission is necessary to be able to measure distances with the camera.</string>
