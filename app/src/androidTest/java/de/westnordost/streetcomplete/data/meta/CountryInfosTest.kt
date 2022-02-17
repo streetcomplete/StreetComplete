@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.data.meta
 
 import androidx.test.platform.app.InstrumentationRegistry
+import de.westnordost.streetcomplete.osm.LengthUnit
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.getWeekdayIndex
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit
+import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -18,23 +21,23 @@ class CountryInfosTest {
 
     private fun checkLengthUnitIsEitherMeterOrFootAndInch(info: CountryInfo) {
         assertNotNull(info.lengthUnits)
-        assertTrue(info.lengthUnits.contains("meter")
-            || info.lengthUnits.contains("foot and inch")
+        assertTrue(info.lengthUnits.contains(LengthUnit.METER)
+            || info.lengthUnits.contains(LengthUnit.FOOT_AND_INCH)
         )
     }
 
     private fun checkSpeedUnitIsEitherMphOrKmh(info: CountryInfo) {
         assertNotNull(info.speedUnits)
-        assertTrue(info.speedUnits.contains("kilometers per hour")
-            || info.speedUnits.contains("miles per hour")
+        assertTrue(info.speedUnits.contains(SpeedMeasurementUnit.KILOMETERS_PER_HOUR)
+            || info.speedUnits.contains(SpeedMeasurementUnit.MILES_PER_HOUR)
         )
     }
 
     private fun checkWeightLimitUnitIsEitherTonOrShortTonOrPound(info: CountryInfo) {
         assertNotNull(info.weightLimitUnits)
-        assertTrue(info.weightLimitUnits.contains("ton")
-            || info.weightLimitUnits.contains("short ton")
-            || info.weightLimitUnits.contains("pound")
+        assertTrue(info.weightLimitUnits.contains(WeightMeasurementUnit.TON)
+            || info.weightLimitUnits.contains(WeightMeasurementUnit.SHORT_TON)
+            || info.weightLimitUnits.contains(WeightMeasurementUnit.POUND)
         )
     }
 

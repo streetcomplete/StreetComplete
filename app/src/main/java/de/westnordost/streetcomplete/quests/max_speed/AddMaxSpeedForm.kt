@@ -49,7 +49,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private var speedUnitSelect: Spinner? = null
     private var speedType: SpeedType? = null
 
-    private val speedUnits get() = countryInfo.speedUnits.map { it.toSpeedMeasurementUnit() }
+    private val speedUnits get() = countryInfo.speedUnits
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

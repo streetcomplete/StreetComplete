@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.meta
 
+import de.westnordost.streetcomplete.osm.LengthUnit
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit
+import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit
 import kotlinx.serialization.Serializable
 import java.util.Locale
 
@@ -28,7 +31,7 @@ data class IncompleteCountryInfo(
     val hasSlowZone: Boolean? = null,
     val isLeftHandTraffic: Boolean? = null,
     val isUsuallyAnyGlassRecyclableInContainers: Boolean? = null,
-    val lengthUnits: List<String> = emptyList(),
+    val lengthUnits: List<LengthUnit> = emptyList(),
     val livingStreetSignStyle: String? = null,
     val mobileCountryCode: Int? = null,
     val noParkingLineStyle: String? = null,
@@ -45,8 +48,8 @@ data class IncompleteCountryInfo(
     val roofsAreUsuallyFlat: Boolean? = null,
     val slowZoneLabelPosition: String? = null,
     val slowZoneLabelText: String? = null,
-    val speedUnits: List<String> = emptyList(),
-    val weightLimitUnits: List<String> = emptyList(),
+    val speedUnits: List<SpeedMeasurementUnit> = emptyList(),
+    val weightLimitUnits: List<WeightMeasurementUnit> = emptyList(),
     val workweekDays: Int? = null,
 )
 
