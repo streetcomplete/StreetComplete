@@ -17,6 +17,7 @@ class CountryInfosTest {
     private fun checkFirstDayOfWorkweekIsValid(info: CountryInfo) {
         assertNotNull(info.firstDayOfWorkweek)
         assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) > -1)
+        assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) < 7)
     }
 
     private fun checkLengthUnitIsEitherMeterOrFootAndInch(info: CountryInfo) {
