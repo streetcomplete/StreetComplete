@@ -12,30 +12,9 @@ class CountryInfosTest {
 
     private fun checkFirstDayOfWorkweekIsValid(info: CountryInfo) {
         assertNotNull(info.firstDayOfWorkweek)
+        assertTrue(validWeekdays.contains(info.firstDayOfWorkweek))
         assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) > -1)
         assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) < 7)
-    }
-
-    private fun checkLengthUnitIsEitherMeterOrFootAndInch(info: CountryInfo) {
-        assertNotNull(info.lengthUnits)
-        assertTrue(info.lengthUnits.contains(LengthUnit.METER)
-            || info.lengthUnits.contains(LengthUnit.FOOT_AND_INCH)
-        )
-    }
-
-    private fun checkSpeedUnitIsEitherMphOrKmh(info: CountryInfo) {
-        assertNotNull(info.speedUnits)
-        assertTrue(info.speedUnits.contains(SpeedMeasurementUnit.KILOMETERS_PER_HOUR)
-            || info.speedUnits.contains(SpeedMeasurementUnit.MILES_PER_HOUR)
-        )
-    }
-
-    private fun checkWeightLimitUnitIsEitherTonOrShortTonOrPound(info: CountryInfo) {
-        assertNotNull(info.weightLimitUnits)
-        assertTrue(info.weightLimitUnits.contains(WeightMeasurementUnit.TON)
-            || info.weightLimitUnits.contains(WeightMeasurementUnit.SHORT_TON)
-            || info.weightLimitUnits.contains(WeightMeasurementUnit.POUND)
-        )
     }
 
     private fun checkAdditionalValidHousenumberRegexes(infos: Map<String, CountryInfo>) {
@@ -49,21 +28,13 @@ class CountryInfosTest {
         assertTrue(info.regularShoppingDays >= 0)
     }
 
-    private fun checkStartOfWorkweekValid(info: CountryInfo) {
-        assertTrue(validWeekdays.contains(info.firstDayOfWorkweek))
-    }
-
     @Test fun all() {
         val infos = getAllCountryInfos()
         for ((key, countryInfo) in infos) {
             try {
-                assertEquals(key.split("-".toRegex()).toTypedArray()[0], countryInfo.countryCode)
+                assertEquals(key.split("-").first(), countryInfo.countryCode)
                 checkFirstDayOfWorkweekIsValid(countryInfo)
-                checkLengthUnitIsEitherMeterOrFootAndInch(countryInfo)
-                checkSpeedUnitIsEitherMphOrKmh(countryInfo)
-                checkWeightLimitUnitIsEitherTonOrShortTonOrPound(countryInfo)
                 checkRegularShoppingDaysIsBetween0And7(countryInfo)
-                checkStartOfWorkweekValid(countryInfo)
             } catch (e: Throwable) {
                 throw RuntimeException("Error for $key", e)
             }
