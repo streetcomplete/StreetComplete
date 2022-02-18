@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
 
 class AddChargingStationOperatorForm : ANameWithSuggestionsForm<String>() {
 
-    override val suggestions: List<String> get() = countryInfo.chargingStationOperators
+    override val suggestions: List<String>? get() = countryInfo.chargingStationOperators
 
     override fun onClickOk() {
         applyAnswer(name)
