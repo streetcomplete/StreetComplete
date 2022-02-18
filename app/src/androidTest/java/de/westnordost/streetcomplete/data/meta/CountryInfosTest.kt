@@ -9,7 +9,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.io.IOException
 
 class CountryInfosTest {
     private val validWeekdays = listOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
@@ -57,9 +56,7 @@ class CountryInfosTest {
         assertTrue(validWeekdays.contains(info.firstDayOfWorkweek))
     }
 
-    @Test
-    @Throws(IOException::class)
-    fun all() {
+    @Test fun all() {
         val infos = getAllCountryInfos()
         for ((key, countryInfo) in infos) {
             try {
@@ -77,7 +74,6 @@ class CountryInfosTest {
         checkAdditionalValidHousenumberRegexes(infos)
     }
 
-    @Throws(IOException::class)
     private fun getAllCountryInfos(): Map<String, CountryInfo> {
         val assetManager = InstrumentationRegistry.getInstrumentation().targetContext.assets
         val countryInfos = CountryInfos(assetManager, null)

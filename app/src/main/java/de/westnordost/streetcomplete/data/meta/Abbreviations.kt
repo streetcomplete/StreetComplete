@@ -12,11 +12,7 @@ class Abbreviations(config: InputStream, val locale: Locale) {
     private val abbreviations = HashMap<String, String>()
 
     init {
-        try {
-            parseConfig(config)
-        } catch (e: Exception) {
-            throw RuntimeException(e)
-        }
+        parseConfig(config)
     }
 
     private fun parseConfig(config: InputStream) {
