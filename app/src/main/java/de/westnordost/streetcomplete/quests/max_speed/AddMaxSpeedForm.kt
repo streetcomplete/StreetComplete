@@ -14,6 +14,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.ktx.advisorySpeedLimitSignLayoutResId
@@ -22,8 +25,6 @@ import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.LIVING_STREET
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN

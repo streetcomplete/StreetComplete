@@ -1,16 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.ktx.toShortString
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-
-@Serializable
-enum class LengthUnit(private val abbr: String) {
-    @SerialName("meter") METER("m"),
-    @SerialName("foot and inch") FOOT_AND_INCH("ft / in");
-
-    override fun toString() = abbr
-}
 
 sealed interface Length {
     fun toMeters(): Double

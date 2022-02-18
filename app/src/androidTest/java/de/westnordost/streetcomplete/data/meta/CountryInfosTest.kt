@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.data.meta
 
 import androidx.test.platform.app.InstrumentationRegistry
-import de.westnordost.streetcomplete.osm.LengthUnit
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.getWeekdayIndex
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit
-import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue

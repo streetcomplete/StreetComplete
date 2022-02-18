@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
@@ -69,7 +70,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         maxWeightInput.allowOnlyNumbers()
         binding.inputSignContainer.setOnClickListener { focusMaxWeightInput() }
 
-        val units = weightLimitUnits.map { it.toDisplayString() }
+        val units = weightLimitUnits.map { it.displayString }
         weightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, units)
         weightUnitSelect?.setSelection(0)
     }
