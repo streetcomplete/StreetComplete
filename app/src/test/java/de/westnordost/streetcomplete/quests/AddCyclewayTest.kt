@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.cycleway.CyclewayAnswer
 import de.westnordost.streetcomplete.quests.cycleway.CyclewaySide
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
