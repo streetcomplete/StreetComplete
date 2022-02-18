@@ -17,7 +17,7 @@ class CountryInfos(private val assetManager: AssetManager) {
     fun get(countryCodesIso3166: List<String>): CountryInfo =
         CountryInfo(countryCodesIso3166.mapNotNull { get(it) } + defaultCountryInfo)
 
-    private operator fun get(countryCodeIso3166: String): IncompleteCountryInfo? {
+    private fun get(countryCodeIso3166: String): IncompleteCountryInfo? {
         if (!countryInfoMap.containsKey(countryCodeIso3166)) {
             val info = load(countryCodeIso3166)
             countryInfoMap[countryCodeIso3166] = info
