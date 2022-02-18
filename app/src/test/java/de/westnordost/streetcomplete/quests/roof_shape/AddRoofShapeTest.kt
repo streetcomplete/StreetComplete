@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
@@ -16,14 +16,20 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
+import java.util.concurrent.FutureTask
 
 class AddRoofShapeTest {
     private lateinit var countryInfos: CountryInfos
     private lateinit var questType: AddRoofShape
+    private lateinit var countryBoundaries: CountryBoundaries
 
     @Before fun setUp() {
+        countryBoundaries = mock()
+        val futureTask = FutureTask { countryBoundaries }
+        futureTask.run()
+
         countryInfos = mock()
-        questType = AddRoofShape(countryInfos, mock())
+        questType = AddRoofShape(countryInfos, futureTask)
     }
 
     @Test fun `not applicable to roofs with shapes already set`() {
@@ -96,7 +102,7 @@ class AddRoofShapeTest {
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {
         val noFlatRoofs = CountryInfo(listOf(IncompleteCountryInfo(countryCode = "foo", roofsAreUsuallyFlat = false)))
-        on(countryInfos.getByLocation(any(), anyDouble(), anyDouble())).thenReturn(noFlatRoofs)
+        on(countryInfos.getByLocation(countryBoundaries, anyDouble(), anyDouble())).thenReturn(noFlatRoofs)
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(2, tags = mapOf("building:levels" to "3", "building" to "apartments"))
@@ -112,7 +118,7 @@ class AddRoofShapeTest {
 
     @Test fun `create quest for 0 or null-level roofs not in countries with flat roofs`() {
         val flatRoofs = CountryInfo(listOf(IncompleteCountryInfo(countryCode = "foo", roofsAreUsuallyFlat = true)))
-        on(countryInfos.getByLocation(any(), anyDouble(), anyDouble())).thenReturn(flatRoofs)
+        on(countryInfos.getByLocation(countryBoundaries, anyDouble(), anyDouble())).thenReturn(flatRoofs)
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(1, tags = mapOf("building:levels" to "3", "building" to "apartments"))

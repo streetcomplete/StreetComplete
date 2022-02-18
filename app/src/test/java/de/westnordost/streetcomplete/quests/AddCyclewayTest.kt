@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -40,6 +41,7 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
 import java.time.Instant
 import java.time.LocalDate
+import java.util.concurrent.FutureTask
 
 class AddCyclewayTest {
 
@@ -48,10 +50,15 @@ class AddCyclewayTest {
     private lateinit var questType: AddCycleway
 
     @Before fun setUp() {
+        val countryBoundaries: CountryBoundaries = mock()
+        val futureTask = FutureTask { countryBoundaries }
+        futureTask.run()
+
         countryInfo = mock()
         countryInfos = mock()
-        on(countryInfos.getByLocation(any(), anyDouble(), anyDouble())).thenReturn(countryInfo)
-        questType = AddCycleway(countryInfos, mock())
+        on(countryInfos.getByLocation(countryBoundaries, anyDouble(), anyDouble())).thenReturn(countryInfo)
+
+        questType = AddCycleway(countryInfos, futureTask)
     }
 
     @Test fun `applicable to road with missing cycleway`() {
