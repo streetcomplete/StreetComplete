@@ -949,6 +949,7 @@ Due to a Google Play Store policy, the donation links must not be displayed in-a
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
     <string name="link_qwant_maps_description">A map with searchable places and directions</string>
     <string name="link_organic_maps_description">Maps app for travelers, hikers and cyclists that works offline</string>
+    <string name="link_osmand_description">Mobile app for online and offline map viewing and navigation</string>
     <string name="link_weeklyosm_description">The weekly news blog about what’s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
 
