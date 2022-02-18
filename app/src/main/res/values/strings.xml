@@ -952,6 +952,7 @@ Due to a Google Play Store policy, the donation links must not be displayed in-a
     <string name="link_osmand_description">Mobile app for online and offline map viewing and navigation</string>
     <string name="link_weeklyosm_description">The weekly news blog about what’s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
+    <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
     <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more info for each quest type you solved.</string>

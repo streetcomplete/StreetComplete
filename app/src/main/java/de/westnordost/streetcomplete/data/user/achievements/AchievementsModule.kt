@@ -258,6 +258,14 @@ private val links = listOf(
         R.drawable.ic_link_osmhydrant,
         R.string.link_osmhydrant_description
     ),
+    Link(
+        "sunders",
+        "https://sunders.uber.space/",
+        "Surveillance under Surveillance",
+        LinkCategory.MAPS,
+        R.drawable.ic_link_sunders,
+        R.string.link_sunders_description
+    ),
 
     /* -------------------------------------- Showcase ---------------------------------------*/
     Link(
@@ -588,6 +596,7 @@ private val achievements = listOf(
             3 to links("organic_maps"),
             4 to links("indoorequal"),
             5 to links("osmand"),
+            6 to links("sunders"),
         )
     ),
 
