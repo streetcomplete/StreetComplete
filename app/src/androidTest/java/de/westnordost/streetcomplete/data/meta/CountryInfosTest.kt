@@ -76,7 +76,7 @@ class CountryInfosTest {
 
     private fun getAllCountryInfos(): Map<String, CountryInfo> {
         val assetManager = InstrumentationRegistry.getInstrumentation().targetContext.assets
-        val countryInfos = CountryInfos(assetManager, null)
+        val countryInfos = CountryInfos(assetManager)
         val fileList = assetManager.list("country_metadata")!!
         assertNotNull(fileList)
 

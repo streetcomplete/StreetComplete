@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.cycleway.CyclewayAnswer
 import de.westnordost.streetcomplete.quests.cycleway.CyclewaySide
+import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
@@ -48,8 +50,8 @@ class AddCyclewayTest {
     @Before fun setUp() {
         countryInfo = mock()
         countryInfos = mock()
-        on(countryInfos.get(anyDouble(), anyDouble())).thenReturn(countryInfo)
-        questType = AddCycleway(countryInfos)
+        on(countryInfos.getByLocation(any(), anyDouble(), anyDouble())).thenReturn(countryInfo)
+        questType = AddCycleway(countryInfos, mock())
     }
 
     @Test fun `applicable to road with missing cycleway`() {

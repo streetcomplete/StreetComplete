@@ -5,21 +5,11 @@ import com.charleskorn.kaml.Yaml
 import de.westnordost.countryboundaries.CountryBoundaries
 import java.io.File
 import java.io.SequenceInputStream
-import java.util.concurrent.Future
 
-class CountryInfos(
-    private val assetManager: AssetManager,
-    private val countryBoundaries: Future<CountryBoundaries>?,
-) {
+class CountryInfos(private val assetManager: AssetManager) {
     private val countryInfoMap = HashMap<String, IncompleteCountryInfo?>()
     private val defaultCountryInfo: IncompleteCountryInfo by lazy {
         loadCountryInfo("default")
-    }
-
-    /** Get the info by location */
-    fun get(longitude: Double, latitude: Double): CountryInfo {
-        val countryCodesIso3166 = countryBoundaries?.get()?.getIds(longitude, latitude)
-        return get(countryCodesIso3166 ?: emptyList())
     }
 
     /** Get the info by a list of country codes sorted by size. I.e. DE-NI,DE,EU gets the info
@@ -57,3 +47,10 @@ class CountryInfos(
         private const val BASEPATH = "country_metadata"
     }
 }
+
+fun CountryInfos.getByLocation(
+    countryBoundaries: CountryBoundaries,
+    longitude: Double,
+    latitude: Double,
+): CountryInfo =
+    get(countryBoundaries.getIds(longitude, latitude) ?: emptyList())
