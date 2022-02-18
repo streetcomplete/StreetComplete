@@ -1,41 +1,28 @@
 package de.westnordost.streetcomplete.data.meta
 
-import com.charleskorn.kaml.Yaml
-import de.westnordost.streetcomplete.ktx.stringMapSerializer
-import java.io.InputStream
 import java.util.Locale
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 /** Road abbreviations for all languages */
-class Abbreviations(config: InputStream, val locale: Locale) {
-    private val abbreviations = HashMap<String, String>()
+class Abbreviations(config: Map<String, String>, val locale: Locale) {
+    private val abbreviations = config.map { (key, value) ->
+        var abbreviation = key.lowercase(locale)
+        var expansion = value.lowercase(locale)
 
-    init {
-        parseConfig(config)
-    }
-
-    private fun parseConfig(config: InputStream) {
-        val map = Yaml.default.decodeFromStream(stringMapSerializer, config)
-
-        for ((key, value) in map.entries) {
-            var abbreviation = key.lowercase(locale)
-            var expansion = value.lowercase(locale)
-
-            if (abbreviation.endsWith("$")) {
-                abbreviation = abbreviation.substring(0, abbreviation.length - 1) + "\\.?$"
-            } else {
-                abbreviation += "\\.?"
-            }
-
-            if (abbreviation.startsWith("...")) {
-                abbreviation = "(\\w*)" + abbreviation.substring(3)
-                expansion = "$1$expansion"
-            }
-
-            abbreviations[abbreviation] = expansion
+        if (abbreviation.endsWith("$")) {
+            abbreviation = abbreviation.substring(0, abbreviation.length - 1) + "\\.?$"
+        } else {
+            abbreviation += "\\.?"
         }
-    }
+
+        if (abbreviation.startsWith("...")) {
+            abbreviation = "(\\w*)" + abbreviation.substring(3)
+            expansion = "$1$expansion"
+        }
+
+        return@map abbreviation to expansion
+    }.toMap()
 
     /**
      * @param word the word that might be an abbreviation for something
