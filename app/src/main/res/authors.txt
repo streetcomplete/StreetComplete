@@ -201,7 +201,7 @@ surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/
 surface_paving_stones_excel... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Footway_with_very_smooth_paving.jpg (mcliquid)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
 surface_paving_stones_inter... public domain     https://wiki.openstreetmap.org/wiki/File:Damaged_and_loose_paving_stones.jpg (helium314)
-surface_paving_stones_very_... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Broken_up_sidewalk_near_the_shore_of_the_St._Lawrence_River_near_Aultsville,_Ontario.jpg (	Aultsville)
+surface_paving_stones_very_... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Broken_up_sidewalk_near_the_shore_of_the_St._Lawrence_River_near_Aultsville,_Ontario.jpg (Aultsville)
 surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
 surface_sett_good.jpg          CC-0              https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
 surface_sett_intermediate.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_mostly_square_but_rough_stones.jpg (Andre Thum)
@@ -224,11 +224,11 @@ traffic_calming_ruble_strip... CC-BY-SA 3.0      Koolah https://commons.wikimedi
 traffic_calming_table.jpg      CC-BY-SA 2.5      noebse https://commons.wikimedia.org/wiki/File%3ABremsschwelle%2EJPG
 
 
-tracktype_grade1.jpg    	   Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade1.jpg           Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
 tracktype_grade2.jpg           CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 tracktype_grade3.jpg           CC-BY-SA 2.0?     https://wiki.openstreetmap.org/wiki/File:Tracktype.jpg (unconfirmed author)
 tracktype_grade4.jpg           Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
-tracktype_grade5.jpg           CC-BY-SA 4.0  	 https://wiki.openstreetmap.org/wiki/File:Tracktype_grade5.jpg (unconfirmed author)
+tracktype_grade5.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Tracktype_grade5.jpg (unconfirmed author)
 
 leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
 leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
