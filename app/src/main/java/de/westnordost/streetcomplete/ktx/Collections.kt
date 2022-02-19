@@ -10,6 +10,12 @@ fun <E> List<E>.allExceptFirstAndLast() = if (size > 2) subList(1, size - 1) els
 /** Returns whether the collection contains any of the [elements] */
 fun <E> Collection<E>.containsAny(elements: Collection<E>) = elements.any { contains(it) }
 
+/** Returns `true` if at least one element matches the given [predicate]. */
+inline fun <T> Collection<T>.anyIndexed(predicate: (index: Int, T) -> Boolean): Boolean {
+    this.forEachIndexed { index, element -> if (predicate(index, element)) return true }
+    return false
+}
+
 /**
  * Starting at [index] (exclusive), iterating the list in reverse, returns the first element that
  * matches the given [predicate], or `null` if no such element was found.

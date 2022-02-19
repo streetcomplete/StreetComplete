@@ -1,27 +1,28 @@
 package de.westnordost.streetcomplete.data.meta
 
+import de.westnordost.streetcomplete.ktx.anyIndexed
 import java.util.Locale
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 /** Road abbreviations for all languages */
 class Abbreviations(config: Map<String, String>, val locale: Locale) {
-    private val abbreviations = config.map { (key, value) ->
-        var abbreviation = key.lowercase(locale)
-        var expansion = value.lowercase(locale)
+    private val abbreviations = config.map { (abbreviation, expansion) ->
+        var pattern = abbreviation.lowercase(locale)
+        var replacement = expansion.lowercase(locale)
 
-        if (abbreviation.endsWith("$")) {
-            abbreviation = abbreviation.substring(0, abbreviation.length - 1) + "\\.?$"
+        if (pattern.endsWith("$")) {
+            pattern = pattern.dropLast(1) + "\\.?$"
         } else {
-            abbreviation += "\\.?"
+            pattern += "\\.?"
         }
 
-        if (abbreviation.startsWith("...")) {
-            abbreviation = "(\\w*)" + abbreviation.substring(3)
-            expansion = "$1$expansion"
+        if (pattern.startsWith("...")) {
+            pattern = "(\\w*)" + pattern.drop(3)
+            replacement = "$1$replacement"
         }
 
-        return@map abbreviation to expansion
+        val regex = pattern.toRegex(RegexOption.IGNORE_CASE)
+
+        return@map regex to replacement
     }.toMap()
 
     /**
@@ -32,27 +33,21 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
      * otherwise null
      */
     fun getExpansion(word: String, isFirstWord: Boolean, isLastWord: Boolean): String? {
-        for ((pattern, replacement) in abbreviations) {
-            val matcher = getMatcher(word, pattern, isFirstWord, isLastWord)
-            if (matcher == null || !matcher.matches()) continue
-            val result = matcher.replaceFirst(replacement)
+        for ((regex, replacement) in abbreviations) {
+            if (regex.matches(word, isFirstWord, isLastWord)) continue
+            val result = regex.replaceFirst(word, replacement)
             return result.firstLetterToUppercase()
         }
         return null
     }
 
-    private fun getMatcher(
+    private fun Regex.matches(
         word: String,
-        pattern: String,
         isFirstWord: Boolean,
         isLastWord: Boolean,
-    ): Matcher? {
-        if (pattern.startsWith("^") && !isFirstWord) return null
-        if (pattern.endsWith("$") && !isLastWord) return null
-
-        val patternFlags = Pattern.CASE_INSENSITIVE or Pattern.UNICODE_CASE
-        val p = Pattern.compile(pattern, patternFlags)
-        val matcher = p.matcher(word)
+    ): Boolean {
+        if (pattern.startsWith("^") && !isFirstWord) return false
+        if (pattern.endsWith("$") && !isLastWord) return false
 
         /* abbreviations that are marked to only appear at the end of the name do not
            match with the first word the user is typing. I.e. if the user types "St. ", it will
@@ -61,24 +56,21 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
            UNLESS the word is actually concatenated, i.e. German "Königstr." is expanded to
            "Königstraße" (but "Str. " is not expanded to "Straße") */
         if (pattern.endsWith("$") && isFirstWord) {
-            val isConcatenated =
-                matcher.matches() && matcher.groupCount() > 0 && !matcher.group(1).isNullOrEmpty()
-            if (!isConcatenated) return null
+            val groupMatch = this.find(word)?.groupValues?.getOrNull(1)
+            return !groupMatch.isNullOrEmpty()
         }
 
-        return matcher
+        return this.matches(word)
     }
 
     /** @return whether any word in the given name matches with an abbreviation */
     fun containsAbbreviations(name: String): Boolean {
-        val words = name.split("[ -]+".toRegex()).toTypedArray()
-        words.forEachIndexed { index, word ->
-            for (pattern in abbreviations.keys) {
-                val matcher = getMatcher(word, pattern, index == 0, index == words.size - 1)
-                if (matcher != null && matcher.matches()) return true
-            }
+        val words = name.split("[ -]+".toRegex())
+        return words.anyIndexed { index, word ->
+            val isFirstWord = index == 0
+            val isLastWord = index == words.size - 1
+            abbreviations.any { (regex, _) -> regex.matches(word, isFirstWord, isLastWord) }
         }
-        return false
     }
 
     private fun String.firstLetterToUppercase() =
