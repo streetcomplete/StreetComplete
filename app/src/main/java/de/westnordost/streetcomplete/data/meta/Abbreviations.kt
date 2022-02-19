@@ -41,6 +41,16 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
         return null
     }
 
+    /** @return whether any word in the given name matches with an abbreviation */
+    fun containsAbbreviations(name: String): Boolean {
+        val words = name.split("[ -]+".toRegex())
+        return words.anyIndexed { index, word ->
+            val isFirstWord = index == 0
+            val isLastWord = index == words.size - 1
+            abbreviations.any { (regex, _) -> regex.matches(word, isFirstWord, isLastWord) }
+        }
+    }
+
     private fun Regex.matches(
         word: String,
         isFirstWord: Boolean,
@@ -61,16 +71,6 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
         }
 
         return this.matches(word)
-    }
-
-    /** @return whether any word in the given name matches with an abbreviation */
-    fun containsAbbreviations(name: String): Boolean {
-        val words = name.split("[ -]+".toRegex())
-        return words.anyIndexed { index, word ->
-            val isFirstWord = index == 0
-            val isLastWord = index == words.size - 1
-            abbreviations.any { (regex, _) -> regex.matches(word, isFirstWord, isLastWord) }
-        }
     }
 
     private fun String.firstLetterToUppercase() =
