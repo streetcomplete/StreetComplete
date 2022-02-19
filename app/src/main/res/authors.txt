@@ -173,7 +173,7 @@ surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:200_metres_track_running_start_line.jpg (Santeri Viinamäki)
 surface_paved_area.jpg         CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-27_13_01_48_View_across_Parkway_Avenue_(Mercer_County_Route_634)_near_the_Delaware_and_Bound_Brook_Railroad_underpass,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_unpaved_area.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Art_earthwork_landscape_sculpture_Woodland_Trust_Theydon_Bois_Essex_08.JPG (Acabashi)
-surface_ground_area.jpg        CC-BY 2.0         https://www.flickr.com/photos/7175652@N02/3734770583 (Danumurthi Mahendra)
+surface_ground_area.jpg        CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bend_It_Like_Beckham_(3734770583).jpg (Danumurthi Mahendra)
 surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
