@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddSmoking : OsmFilterQuestType<Boolean>() {
+class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -16,7 +16,7 @@ class AddSmoking : OsmFilterQuestType<Boolean>() {
           amenity ~ bar|cafe|pub|biergarten|restaurant|nightclub|stripclub
           or leisure ~ outdoor_seating
         )
-        and !smoking
+	and (!smoking or smoking older today -8 years)
     """
     override val changesetComment = "Add smoking status"
     override val wikiLink = "Key:smoking"
@@ -37,10 +37,10 @@ class AddSmoking : OsmFilterQuestType<Boolean>() {
         return arrayOfNotNull(name, featureName.value)
     }
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = SmokingAllowedAnswerForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags["smoking"] = answer.toYesNo()
+    override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
+	tags.updateWithCheckDate("smoking", answer.osmValue)
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
