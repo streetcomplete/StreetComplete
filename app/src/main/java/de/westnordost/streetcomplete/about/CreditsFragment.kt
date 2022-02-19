@@ -12,11 +12,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentCreditsBinding
 import de.westnordost.streetcomplete.databinding.RowCreditsTranslatorsBinding
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.getYamlStringList
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import java.util.Locale
 
@@ -52,7 +55,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 
     private fun addContributorsTo(contributors: List<String>, view: ViewGroup) {
-        val items = contributors.map { "<li>$it</li>" }.joinToString("")
+        val items = contributors.joinToString("") { "<li>$it</li>" }
         val textView = HtmlTextView(activity)
         TextViewCompat.setTextAppearance(textView, R.style.TextAppearance_Body)
         textView.setTextIsSelectable(true)
@@ -61,31 +64,33 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 
     private suspend fun readMainContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_main).map(::withLinkToGithubAccount)
+        resources.getYamlStringList(R.raw.credits_main).map(::withLinkToGithubAccount)
     }
 
     private suspend fun readProjectsContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_projects)
+        resources.getYamlStringList(R.raw.credits_projects)
     }
 
     private suspend fun readCodeContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_code).map(::withLinkToGithubAccount) +
+        resources.getYamlStringList(R.raw.credits_code).map(::withLinkToGithubAccount) +
             getString(R.string.credits_and_more)
     }
 
     private suspend fun readArtContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_art)
+        resources.getYamlStringList(R.raw.credits_art)
     }
 
     private suspend fun readTranslators() = withContext(Dispatchers.IO) {
-        val map = resources.getYamlObject<LinkedHashMap<String, LinkedHashMap<String, String>>>(R.raw.credits_translators)
+        val intMapSerializer = MapSerializer(String.serializer(), Int.serializer())
+        val serializer = MapSerializer(String.serializer(), intMapSerializer)
+        val map = resources.getYamlObject(serializer, R.raw.credits_translators).toDeepMutableMap()
 
         // skip those translators who contributed less than 2% of the translation
         for (contributors in map.values) {
-            val totalTranslated = contributors.values.sumOf { it.toInt() }
-            val removedAnyone = contributors.values.removeAll { 100 * it.toInt() / totalTranslated < 2 }
+            val totalTranslated = contributors.values.sum()
+            val removedAnyone = contributors.values.removeAll { 100 * it / totalTranslated < 2 }
             if (removedAnyone) {
-                contributors[""] = "1"
+                contributors[""] = 1
             }
         }
         // skip plain English. That's not a translation
@@ -100,7 +105,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
         namesSorted.associateWith { name ->
             val contributionCountByName = map[languageTagByName[name]]!!
             contributionCountByName.entries
-                .sortedByDescending { it.value.toInt() }
+                .sortedByDescending { it.value }
                 .joinToString(", ") { it.key }
                 .replace(Regex(", $"), " " + getString(R.string.credits_and_more))
         }
@@ -118,3 +123,6 @@ private fun withLinkToGithubAccount(contributor: String): String {
         "$name (<a href=\"https://github.com/$githubName\">$githubName</a>)"
     }
 }
+
+private fun Map<String, Map<String, Int>>.toDeepMutableMap(): MutableMap<String, MutableMap<String, Int>> =
+    entries.associate { it.key to it.value.toMutableMap() }.toMutableMap()

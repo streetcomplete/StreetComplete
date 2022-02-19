@@ -14,6 +14,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
+import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
 import de.westnordost.streetcomplete.ktx.advisorySpeedLimitSignLayoutResId
@@ -22,8 +25,6 @@ import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.LIVING_STREET
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN
@@ -39,7 +40,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override val otherAnswers: List<AnswerItem> get() {
         val result = mutableListOf<AnswerItem>()
-        if (countryInfo.hasAdvisorySpeedLimitSign()) {
+        if (countryInfo.hasAdvisorySpeedLimitSign) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) { switchToAdvisorySpeedLimit() })
         }
         return result
@@ -49,17 +50,17 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private var speedUnitSelect: Spinner? = null
     private var speedType: SpeedType? = null
 
-    private val speedUnits get() = countryInfo.speedUnits.map { it.toSpeedMeasurementUnit() }
+    private val speedUnits get() = countryInfo.speedUnits
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val highwayTag = osmElement!!.tags["highway"]!!
 
-        val couldBeSlowZone = countryInfo.hasSlowZone() && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
+        val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
         binding.zone.isGone = !couldBeSlowZone
 
-        val couldBeLivingStreet = countryInfo.hasLivingStreet() && MAYBE_LIVING_STREET.contains(highwayTag)
+        val couldBeLivingStreet = countryInfo.hasLivingStreet && MAYBE_LIVING_STREET.contains(highwayTag)
         binding.livingStreet.isGone = !couldBeLivingStreet
 
         val couldBeNSL = countryInfo.countryCode == "GB"
@@ -70,8 +71,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
-            val couldBeSlowZone = countryInfo.hasSlowZone()
-                && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
+            val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
 
             if (couldBeSlowZone)
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }

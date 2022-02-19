@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.measure.ArSupportChecker
 import de.westnordost.streetcomplete.measure.TakeMeasurementLauncher
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.toLengthUnit
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -32,7 +31,7 @@ class AddWidthForm : AbstractQuestFormAnswerFragment<Length>() {
 
         binding.lengthInput.maxFeetDigits = if (isRoad) 3 else 2
         binding.lengthInput.maxMeterDigitsBeforeDecimalPoint = if (isRoad) 2 else 1
-        binding.lengthInput.selectableUnits = countryInfo.lengthUnits.map { it.toLengthUnit() }
+        binding.lengthInput.selectableUnits = countryInfo.lengthUnits
         binding.lengthInput.onInputChanged = { checkIsFormComplete() }
         binding.measureButton.isGone = !checkArSupport()
         binding.measureButton.setOnClickListener { lifecycleScope.launch { takeMeasurement() } }

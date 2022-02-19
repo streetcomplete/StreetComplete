@@ -52,7 +52,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
     override val otherAnswers: List<AnswerItem> get() {
         val answers = mutableListOf<AnswerItem>()
 
-        if (!isOneway && countryInfo.hasCenterLeftTurnLane()) {
+        if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
             answers.add(AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
                 selectedLanesType = MARKED_SIDES
                 hasCenterLeftTurnLane = true

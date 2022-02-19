@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.intOrNull
@@ -18,8 +19,6 @@ import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
-import de.westnordost.streetcomplete.osm.LengthUnit
-import de.westnordost.streetcomplete.osm.toLengthUnit
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
@@ -37,7 +36,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private var meterInputSign: View? = null
     private var feetInputSign: View? = null
 
-    private val lengthUnits get() = countryInfo.lengthUnits.map { it.toLengthUnit() }
+    private val lengthUnits get() = countryInfo.lengthUnits
 
     override fun isFormComplete() = getHeightFromInput() != null
 

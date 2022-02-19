@@ -26,7 +26,7 @@ class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedFo
         val result = mutableListOf<AnswerItem>()
 
         val highwayTag = osmElement!!.tags["highway"]!!
-        if (countryInfo.hasLivingStreet() && MAYBE_LIVING_STREET.contains(highwayTag)) {
+        if (countryInfo.hasLivingStreet && MAYBE_LIVING_STREET.contains(highwayTag)) {
             result.add(AnswerItem(R.string.quest_maxspeed_answer_living_street) { confirmLivingStreet() })
         }
         return result

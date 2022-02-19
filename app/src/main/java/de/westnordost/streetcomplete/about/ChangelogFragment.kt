@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
-import de.westnordost.streetcomplete.ktx.getYamlObject
+import de.westnordost.streetcomplete.ktx.getYamlStringMap
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -90,8 +90,7 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 data class Release(val title: String, val description: String)
 
 private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.changelog)
-        .map { Release(it.key, addedLinks(it.value)) }
+    resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
 }
 
 private fun addedLinks(description: String): String {
