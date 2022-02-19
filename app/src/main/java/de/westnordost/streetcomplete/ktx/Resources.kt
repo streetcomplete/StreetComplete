@@ -11,9 +11,18 @@ import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
 
 inline fun <reified T> Resources.getYamlObject(serializer: KSerializer<T>, @RawRes id: Int): T =
     Yaml.default.decodeFromStream(serializer, openRawResource(id))
+
+fun Resources.getYamlStringMap(@RawRes id: Int): Map<String, String> =
+    this.getYamlObject(MapSerializer(String.serializer(), String.serializer()), id)
+
+fun Resources.getYamlStringList(@RawRes id: Int): List<String> =
+    this.getYamlObject(ListSerializer(String.serializer()), id)
 
 fun Resources.getBitmapDrawable(@DrawableRes id: Int): BitmapDrawable =
     getDrawable(id).asBitmapDrawable(this)

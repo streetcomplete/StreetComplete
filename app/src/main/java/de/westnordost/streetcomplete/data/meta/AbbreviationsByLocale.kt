@@ -3,9 +3,8 @@ package de.westnordost.streetcomplete.data.meta
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
-import com.charleskorn.kaml.Yaml
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.stringMapSerializer
+import de.westnordost.streetcomplete.ktx.getYamlStringMap
 import java.util.Locale
 
 class AbbreviationsByLocale(private val applicationContext: Context) {
@@ -20,8 +19,7 @@ class AbbreviationsByLocale(private val applicationContext: Context) {
     }
 
     private fun load(locale: Locale): Abbreviations {
-        val inputStream = getResources(locale).openRawResource(R.raw.abbreviations)
-        val config = Yaml.default.decodeFromStream(stringMapSerializer, inputStream)
+        val config = getResources(locale).getYamlStringMap(R.raw.abbreviations)
         return Abbreviations(config, locale)
     }
 
