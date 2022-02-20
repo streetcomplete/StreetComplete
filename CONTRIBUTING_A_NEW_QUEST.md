@@ -350,9 +350,9 @@ Below is some additional info.
 ## getTitle and getTitleArgs
 In some cases, the quest will mention the name and type of feature. For example, in the case of shops to make their identification possible.
 
-This requires preparing space in the message for filling at runtime,
+This requires preparing space in the message for filling at runtime, and to add the mechanism supplying this data.
 
-And to add the mechanism supplying this data. Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L104-L115) that will:
+Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L104-L115) that will:
 
 ```
     override fun getTitle(tags: Map<String, String>) =
