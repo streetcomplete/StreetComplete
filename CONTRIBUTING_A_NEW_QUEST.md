@@ -281,9 +281,10 @@ Keep similar style to existing ones and app in general. Once the quest icon is r
 - Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
 - Select your SVG file
-- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`), this will cause IDE to generate an XML file
-- add an entry in the [attribution file](res/graphics/authors.txt)
-- modify `icon` property in the quest definition to use the new drawable
+- Name with `ic_quest_` prefix (something like `ic_quest_traffic_calming`)
+- Press "Finish" button to generate drawable
+- Add an entry in the [attribution file](res/graphics/authors.txt)
+- Modify `icon` property in the quest definition to use the new drawable
 - Commit modified or created files
 - Compile, test quest in the emulator
 
