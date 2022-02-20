@@ -170,7 +170,7 @@ This quest will be triggered when:
  - `access` tag is not set with value `private` or `no`
  - `bicycle_parking` is not having value `floor`
  -  and one of following is fullfilled:
-	- `capacity` tag is not present at all
+	- `capacity` tag is not present at all (`!capacity`)
 	-  element was not edited for a long time (base time is 4 years, but it can by influenced by user changing settings)
 	- `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
