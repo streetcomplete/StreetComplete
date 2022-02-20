@@ -9,14 +9,18 @@ import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
-    override val elementFilter = """
-        nodes, ways, relations with
+    private val elementFilterBasic = """
+        nodes, ways with
         (
           amenity ~ bar|cafe|pub|biergarten|restaurant|nightclub|stripclub
           or leisure ~ outdoor_seating
         )
+    """
+
+    override val elementFilter = elementFilterBasic + """
 	and (!smoking or smoking older today -8 years)
     """
+
     override val changesetComment = "Add smoking status"
     override val wikiLink = "Key:smoking"
     override val icon = R.drawable.ic_quest_smoke
@@ -35,6 +39,9 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
         val name = tags["name"] ?: tags["brand"]
         return arrayOfNotNull(name, featureName.value)
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(elementFilterBasic)
 
     override fun createForm() = SmokingAllowedAnswerForm()
 
