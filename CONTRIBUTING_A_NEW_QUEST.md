@@ -149,6 +149,30 @@ This query will be limited to nodes (`nodes with`), which fulfill some requireme
 
 It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request more thorough documentation here.
 
+###### Resurvey
+
+Some quests are asked not only when tag is missing but also when it is likely to be outdated.
+
+Typical form is like in [quest asking about bicycle parking capacity](/app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_capacity/AddMotorcycleParkingCapacity.kt):
+
+```
+    override val elementFilter = """
+        nodes, ways with amenity = motorcycle_parking
+         and access !~ private|no
+         and (!capacity or capacity older today -4 years)
+    """
+```  
+  
+This quest will be triggered when:
+
+ - on nodes and ways
+ - where `amenity = motorcycle_parking` tag is present
+ - `access` tag is not set with value `private` or `no`
+ - `bicycle_parking` is not having value `floor`
+ -  and one of following is fullfilled:
+	- `capacity` tag is not present at all
+	- `capacity` tag is older than 4 years (date of last edit of the element and `check_date:capacity` tag will be taken into account)
+
 #### Hints
 The rules should be as exclusive as possible to generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
