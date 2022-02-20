@@ -378,8 +378,8 @@ Though description from iD presets is not guaranted.
 
 So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
 
-* `quest_wheelchairAccess_name_type_title` which represents `Is %1$s (%2$s) wheelchair accessible?` (or translation). Note presence of `%1$s` and `%2$s` which will be replaced by text provided by `getTitleArgs`
-* In case of no feature type being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?`
+* `quest_wheelchairAccess_name_type_title` which represents `Is %1$s (%2$s) wheelchair accessible?` (or translation). `%1$s` and `%2$s` [placeholders](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) will be replaced by text provided by `getTitleArgs`
+* In case of no feature type being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?` (`%s` is a single placeholder which will be replaced by text parameter)
 
 This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code.
 
