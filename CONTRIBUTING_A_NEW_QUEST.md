@@ -314,6 +314,10 @@ Typically it is done using an emulator. Note that you can set location in emulat
 
 See "logcat" (bottom left area of the screen) to see stacktrace or logging messages.
 
+## Adding logs
+
+`Log.w("Unique string for easy grepping in logcat", "Message with whatever you need like #${someVariable.itsProperty}")`
+
 # Open a pull request
 
 [Pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) is a submission of proposed changes to the source code.
