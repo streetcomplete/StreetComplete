@@ -171,7 +171,8 @@ This quest will be triggered when:
  - `bicycle_parking` is not having value `floor`
  -  and one of following is fullfilled:
 	- `capacity` tag is not present at all
-	- `capacity` tag is older than 4 years (date of last edit of the element and `check_date:capacity` tag will be taken into account)
+	-  element was not edited for a long time (base time is 4 years, but it can by influenced by user changing settings)
+	- `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
 #### Hints
 The rules should be as exclusive as possible to generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
