@@ -174,9 +174,9 @@ This quest will be triggered when:
 	- `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
 #### Hints
-The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads. 
+The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
-Also, for very detailed information that can be assumed to always have the same ("undefined") answer in many countries, it might be a good idea to [limit quests to certain countries](#enabledInCountries).
+In some cases it will be a good idea to [limit quests to certain countries](#enabledInCountries).
 
 ### Properties
 
