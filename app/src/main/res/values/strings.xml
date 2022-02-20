@@ -1234,5 +1234,5 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_seating_indoor_only">Only indoor seating available</string>
     <string name="quest_seating_outdoor_only">Only outdoor seating available</string>
     <string name="quest_seating_indoor_and_outdoor">Indoor and outdoor seating available</string>
-    <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because this quest can only be resolved in summer season in order to check outdoor seating "</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because it can only be solved in summer season in order to check outdoor seating."</string>
 </resources>
