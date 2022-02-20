@@ -15,7 +15,7 @@ But this materials may help or be quicker than trying to fully explore on your o
 - programming ability - it is not a good task for someone who has never programmed anything.
   - Setup of environment takes a long time
   - Editing even the simplest quest requires edits to at least two different files
-  - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed
+  - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed. If you are unfamiliar with Kotlin reading about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful.
   - It is expected that someone trying this can search for a solution to a typical problem on encountering an error message
 - familiarity with StreetComplete as a user - it is highly recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory, but having a passing familiarity with how surveying with StreetComplete works is needed.
 - time - Android Studio setup is sadly complicated
@@ -382,6 +382,11 @@ So `getTitle` function that returns identifier to text in [strings file](app/src
 * In case of no feature type being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?` (`%s` is a single placeholder which will be replaced by text parameter)
 
 This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code.
+
+### Kotlin
+Article about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful, especially if you are confused by `?:` [Elvis operator](https://kotlinlang.org/docs/null-safety.html#elvis-operator).
+
+`arrayOfNotNull` is a minor helper function [defined in StreetComplete](app/src/main/java/de/westnordost/streetcomplete/ktx/Collections.kt). Note that when you open code in Android Studio or other IDE you can easily go to place where given function is defined.
 
 ## Designing the form
 
