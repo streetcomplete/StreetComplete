@@ -153,7 +153,7 @@ It is specified as a string, in syntax specific to StreetComplete. You can look 
 
 Some quests are asked not only when tag is missing but also when it is likely to be outdated.
 
-Typical code is in [quest asking about bicycle parking capacity](/app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_capacity/AddMotorcycleParkingCapacity.kt):
+Typical code is in [quest asking about bicycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_capacity/AddMotorcycleParkingCapacity.kt):
 
 ```
     override val elementFilter = """
