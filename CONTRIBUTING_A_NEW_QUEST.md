@@ -46,7 +46,7 @@ If you are doing it for the first time, don't worry if there is an error to solv
 # Invent a new quest
 
 ## Own ideas
-To [repeat](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](#suggesting-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
+To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](CONTRIBUTING.md#developing-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
 
 ## Existing proposals
 You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
