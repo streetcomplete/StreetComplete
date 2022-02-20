@@ -81,7 +81,7 @@ You will find an XML file with an entry looking like this:
 
 The identifier `quest_placeName_title_name` is a string reference, used in the code to allow translations.
 
-Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
+Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
 
 This method can often be used to locate relevant code.
 
