@@ -370,7 +370,7 @@ Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blo
 - `getTitleArgs` tries to pass to the title
   - name of the object
   - brand of the object (only if `name` tag is not used, and `brand` tag is present)
-  - feature type (such as "greengrocer", translated to the proper language, based on [iD presets](https://github.com/westnordost/osmfeatures))
+  - feature name (such as "greengrocer", translated to the proper language, based on [iD presets](https://github.com/westnordost/osmfeatures))
 
 [Filtering in the element selection](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L20) ensures that every object will have either `name` or `brand` tag.
 
