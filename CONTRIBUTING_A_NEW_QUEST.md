@@ -244,7 +244,8 @@ Actions may include (examples from various quests):
 - `tags.remove("amenity")` - remove key if it is present
 - `tags.updateWithCheckDate("lit", answer.toYesNo())`
   - in case of changing value such change will be applied
-  - in case of value being the same also add survey date tag and can be used in cases where tag value is not changing, it would be `check_date:lit=` in this case
+  - in case of value being the same: add survey date tag, it would be `check_date:lit=` in this case
+     - so can be used even if value will stay the same - possible for resurvey quests
      - survey date prefix is defined as `[const val SURVEY_MARK_KEY = "check_date"](src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt)`
   - always update survey tag if present alreadt
 
