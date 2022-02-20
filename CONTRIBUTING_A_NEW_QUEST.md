@@ -348,9 +348,46 @@ What was described above is an attempt to cover all aspects of quest creation, w
 Below is some additional info.
 
 ## getTitle and getTitleArgs
-In some cases, the quest will mention the name and type of feature. For example, in the case of shops to make their identification possible.
 
-This requires preparing space in the message for filling at runtime, and to add the mechanism supplying this data.
+In some cases it is desirable to change quest title, based on specific object.
+
+This requires preparing space in the message for filling at runtime, and to add the mechanism supplying data to replace placeholders.
+
+### Display value of tag if it is present
+
+[AddFireHydrantDiameter](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/fire_hydrant_diameter/AddFireHydrantDiameter.kt) displays `ref` code of hydrant, if tagged.
+
+```
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+        arrayOfNotNull(tags["ref"])
+
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasRef = tags.containsAnyKey("ref")
+        return when {
+            hasRef -> R.string.quest_fireHydrant_diameter_ref_title
+            else   -> R.string.quest_fireHydrant_diameter_title
+        }
+    }
+```
+
+``getTitleArgs` will return either array with single element containing value of `ref` tag or an empty array. In either cases it will be passed to code displaying title at runtime.
+
+`arrayOfNotNull` is a minor helper function [defined in StreetComplete](app/src/main/java/de/westnordost/streetcomplete/ktx/Collections.kt). Note that when you open code in Android Studio or other IDE you can easily go to place where given function is defined.
+
+``getTitle` provide identifier of text which will be
+
+So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
+
+
+* `quest_fireHydrant_diameter_ref_title` which represents `What diameter is specified on the sign for this fire hydrant? (reference number: %s)` (or translation). `%s` is a [placeholder](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) and will be replaced by text provided by `getTitleArgs`
+* In case of ref tag being not present `quest_fireHydrant_diameter_title` (`What diameter is specified on the sign for this fire hydrant?` will be used.
+
+This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code. See for example identifiers with texts in [Polish translation](app/src/main/res/values-pl/strings.xml).
+
+### Use feature name if present
+In some cases, the quest will mention the name of object (lets say "Knight") and type of feature (maybe restaurant? Or supermarket?).
+
+For example, in the case of shops it may be necessary to identify specific one among several.
 
 Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L104-L115) that will:
 
@@ -379,14 +416,10 @@ Though description from iD presets is not guaranted.
 So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
 
 * `quest_wheelchairAccess_name_type_title` which represents `Is %1$s (%2$s) wheelchair accessible?` (or translation). `%1$s` and `%2$s` [placeholders](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) will be replaced by text provided by `getTitleArgs`
-* In case of no feature type being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?` (`%s` is a single placeholder which will be replaced by text parameter)
-
-This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code.
+* In case of no feature name being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?` (`%s` is a single placeholder which will be replaced by text parameter)
 
 ### Kotlin
 Article about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful, especially if you are confused by `?:` [Elvis operator](https://kotlinlang.org/docs/null-safety.html#elvis-operator).
-
-`arrayOfNotNull` is a minor helper function [defined in StreetComplete](app/src/main/java/de/westnordost/streetcomplete/ktx/Collections.kt). Note that when you open code in Android Studio or other IDE you can easily go to place where given function is defined.
 
 ## Designing the form
 
