@@ -323,7 +323,7 @@ See "logcat" (bottom left area of the screen) to see stacktrace or logging messa
 
 [Pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) is a submission of proposed changes to the source code.
 
-You can put into the description of PR something like "fixes #1234" to [mark it as fixing this issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword). It can go into a commit message or PR description ([not its title](https://github.com/streetcomplete/StreetComplete/discussions/2917), it is a known GitHub bug).
+You can put into the description of PR something like "fixes #1234" to [mark it as fixing this issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword). It can go into a commit message or PR description or the tile.
 
 If you are stuck on something, need some help or guidance and you are willing and able to continue after solving the problem - you can open a pull request in an incomplete state and mention the blocker.
 
