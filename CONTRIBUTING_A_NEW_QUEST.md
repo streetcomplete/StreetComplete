@@ -119,7 +119,7 @@ In copied code change package info (things like `package de.westnordost.streetco
 
 # Add the quest to the list of active ones
 
-Adjust [QuestModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestModule.kt#L138-L162) but do not worry too much, it can be tweaked later.
+Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L169-L192) but do not worry too much, it can be tweaked later.
 
 Add your quest to the list so that it will be loaded by the app.
 
