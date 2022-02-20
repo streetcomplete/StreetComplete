@@ -173,7 +173,7 @@ icon drawable, you can initially use any icon.
 
 Do not worry, submissions with placeholder icons are also welcomed! In many cases icon itself was not made by the PR author.
 
-More info about icon handling will be given later.
+More info about icon handling [will be given later](#adding-quest-icon).
 
 #### questTypeAchievements
 `override val questTypeAchievements = listOf(LIFESAVER)`
@@ -239,7 +239,7 @@ which causes nearby `emergency = defibrillator` nodes to be shown (icons used ar
 See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
 ### Adding quest icon
-
+<!-- note that this section name is linked from section discussing val icon, in case of changing section name change also that link -->
 It is OK to submit a quest without own icon, using any icon as a placeholder.
 
 But it would be even better to include also icon.
