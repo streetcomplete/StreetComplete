@@ -152,7 +152,7 @@ It is specified as a string, in syntax specific to StreetComplete. You can look 
 #### Hints
 The rules should be as exclusive as possible to generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
-Also, for very detailed information that can be assumed to always have the same ("undefined") answer in many countries, it might be a good idea to limit quests to an inclusive list of certain countries.
+Also, for very detailed information that can be assumed to always have the same ("undefined") answer in many countries, it might be a good idea to [limit quests to certain countries](#enabledInCountries).
 
 ### Properties
 
@@ -418,3 +418,11 @@ It is possible to share and reuse [information about tagging schemes](https://gi
 Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
 It allows it to make complex geometry checks, but writing them is also far more complex.
+
+## `enabledInCountries`
+
+Some quests should be enabled only in some countries or disabled in a specific countries.
+
+[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
+
+[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA and Canada
