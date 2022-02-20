@@ -206,7 +206,6 @@ In quest achievements, list what is relevant to the given quest, see the full li
 
 #### getTitle
 `override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title`
-`    override fun createForm() = YesNoQuestAnswerFragment()`
 
 It is a message displayed to user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
 
