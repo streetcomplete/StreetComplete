@@ -335,7 +335,9 @@ Changes typically include improving code style, tweaking phrasing and quest sett
 
 You are also welcome to help with reviewing other PRs - different people have different strengths, there are active reviewers who help with code style, there are some native speakers of English, some with deep knowledge of OSM tagging schemes or deep knowledge of how StreetComplete works.
 
-After the PR is finished it will be merged before the beta release of the next version. This way it can be additionally tested with a wider audience before release to all and translators can [translate text into other languages](CONTRIBUTING.md#translating-the-app).
+In case that pull requests appears to be ready, it will be marked as approved and wait for merge.
+
+After the PR is finished it will be merged before the beta release of the next version. This way it can be additionally tested with a wider audience before release to all and translators have time to [translate text into other languages](CONTRIBUTING.md#translating-the-app).
 
 After full release it will reach the entire StreetComplete audience who now will be able to more easily contribute to OpenStreetMap. Thanks in advance for that!
 
