@@ -211,7 +211,7 @@ It is a message displayed to user, code here passes a [reference](https://develo
 
 Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
 
-There are additional files with text, but the text is translated with a completely separately workflow and your changes will only modify this file, leaving other text files untouched.
+There are separate files with translated text, but do not worry about it - [translations are handled separately](CONTRIBUTING.md#translating-the-app).
 
 #### Form
 
@@ -329,7 +329,7 @@ You can see [already submitted pull requests](https://github.com/streetcomplete/
 
 # Future
 
-After opening a pull request it will be reviewed and you will likely be asked to make some changes. This is normal and also happens with pull requests submitted by experienced contributors.
+After opening a pull request it will be reviewed and you will be likely asked to make some changes. This is normal and also happens with pull requests submitted by experienced contributors.
 
 Changes typically include improving code style, tweaking phrasing and quest settings.
 
