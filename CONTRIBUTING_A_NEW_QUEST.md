@@ -236,7 +236,7 @@ Info listed above must be supplied by every quest. But there are also several op
 
 which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/map/PinIcons.kt))
 
-See [also other optional properties](de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
 ### Adding quest icon
 
