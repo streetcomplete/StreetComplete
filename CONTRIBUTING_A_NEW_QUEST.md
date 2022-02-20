@@ -64,7 +64,7 @@ Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement a quest that will affect roads and paths? Take `AddWayLit` quest as a base if it will be a yes/no question or `AddTracktype` where the mapper will be selecting one of the images.
+Are you trying to implement a quest that will affect roads and paths? Take [`AddIsDefibrillatorIndoor`](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt) quest as a base if it will be a yes/no question or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_type/AddBikeParkingTypeForm.kt) where the mapper will be selecting one of the images.
 
 Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
