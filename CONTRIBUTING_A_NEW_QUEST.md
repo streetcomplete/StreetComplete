@@ -276,7 +276,7 @@ Keep similar style to existing ones and app in general. Once the quest icon is r
 
 - save as "Plain SVG" or clean SVG file from unnecessary cruft in another way, like using [svgo](https://github.com/svg/svgo)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
-  - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next step.
+  - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
 - Open Android Studio
 - Right click on the "app" folder in the Project tool window (top left)
 - Select new → vector asset
