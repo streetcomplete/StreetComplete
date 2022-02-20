@@ -299,7 +299,7 @@ Obviously, testing can also be done earlier. But the quest should at least be te
 Typically it is done using an emulator. Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
 
 * Is quest listed?
-  * Look at the quest list in settings - is your quest appearing there? If not - see [this step](#Add quest to the list of active ones).
+  * Look at the quest list in settings - is your quest appearing there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
   * While you are there you can disable all quests except yours for easier testing.
 * Is it shown for expected elements?
   * Note that due to emulator peculiarities you may need to move map after quests are downloaded to see their markers ([gory details for curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
