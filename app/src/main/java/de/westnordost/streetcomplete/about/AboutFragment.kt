@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLabeledIconSelectRightBinding
 import de.westnordost.streetcomplete.databinding.DialogDonateBinding
-import de.westnordost.streetcomplete.databinding.DialogDonateGooglePlayBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.ListAdapter
 import java.util.Locale
@@ -117,20 +116,17 @@ class AboutFragment : PreferenceFragmentCompat() {
     private fun showDonateDialog() {
         val ctx = context ?: return
 
-        val view = if (!BuildConfig.IS_GOOGLE_PLAY) {
+        if (!BuildConfig.IS_GOOGLE_PLAY) {
             val dialogBinding = DialogDonateBinding.inflate(layoutInflater)
             dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
-            dialogBinding.root
+            AlertDialog.Builder(ctx)
+                .setView(dialogBinding.root)
+                .show()
         } else {
-            val dialogBinding = DialogDonateGooglePlayBinding.inflate(layoutInflater)
-            dialogBinding.githubButton.setOnClickListener { openUrl("https://github.com/streetcomplete/streetcomplete") }
-            dialogBinding.root
+            AlertDialog.Builder(ctx)
+                .setMessage(R.string.about_description_donate_google_play2)
+                .show()
         }
-
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.about_title_donate)
-            .setView(view)
-            .show()
     }
 
     private inner class DonationPlatformAdapter(list: List<DonationPlatform>) :
