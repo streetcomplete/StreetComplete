@@ -144,7 +144,7 @@ elementFilter property defines nodes, ways and relations which will be selected 
 This query will be limited to nodes (`nodes with`), which fulfill some requirements.
 
 - `emergency = defibrillator` tag must be present
-- `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific `optionA|optionB` is treated like `^optionA|optionB$` regexp)
+- `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific `optionA|optionB` is treated like `^optionA|optionB$` [regexp](https://en.wikipedia.org/wiki/Regular_expression))
 - `indoor` key must not be present at all, to show only ones where this tag is still missing
 
 It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request more thorough documentation here.
