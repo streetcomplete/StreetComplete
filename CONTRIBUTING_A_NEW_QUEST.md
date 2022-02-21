@@ -381,9 +381,9 @@ This requires preparing space in the message for filling at runtime, and to add 
 
 `arrayOfNotNull` is a minor helper function [defined in StreetComplete](app/src/main/java/de/westnordost/streetcomplete/ktx/Collections.kt). Note that when you open code in Android Studio or other IDE you can easily go to place where given function is defined.
 
-``getTitle` provide identifier of text which will be
+`getTitle` provide identifier of text which will be
 
-So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
+So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either:
 
 
 * `quest_fireHydrant_diameter_ref_title` which represents `What diameter is specified on the sign for this fire hydrant? (reference number: %s)` (or translation). `%s` is a [placeholder](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) and will be replaced by text provided by `getTitleArgs`
