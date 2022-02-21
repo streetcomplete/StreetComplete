@@ -3200,17 +3200,8 @@
                 "type/restriction/no_right_turn": {
                     "name": "Xiru a la drecha torgáu"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Nun siguir de frente"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "Sin cambiu de sentíu"
-                },
                 "type/route": {
                     "name": "Ruta"
-                },
-                "type/route/bicycle": {
-                    "name": "Ruta ciclista"
                 },
                 "type/route/bus": {
                     "name": "Ruta d'autobús"
@@ -3224,10 +3215,6 @@
                 "type/route/hiking": {
                     "name": "Ruta escursionista",
                     "terms": "senderismu,escursionismu"
-                },
-                "type/route/horse": {
-                    "name": "Ruta a caballu",
-                    "terms": "ruta ecuestre"
                 },
                 "type/route/light_rail": {
                     "name": "Ruta de tren llixeru"

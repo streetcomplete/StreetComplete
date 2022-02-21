@@ -3,8 +3,18 @@ package de.westnordost.streetcomplete.ktx
 /** Return the first and last element of this list. If it contains only one element, just that one */
 fun <E> List<E>.firstAndLast() = if (size == 1) listOf(first()) else listOf(first(), last())
 
+/** Return all except the first and last element of this list. If it contains less than two elements,
+ *  it returns an empty list */
+fun <E> List<E>.allExceptFirstAndLast() = if (size > 2) subList(1, size - 1) else listOf()
+
 /** Returns whether the collection contains any of the [elements] */
 fun <E> Collection<E>.containsAny(elements: Collection<E>) = elements.any { contains(it) }
+
+/** Returns `true` if at least one element matches the given [predicate]. */
+inline fun <T> Collection<T>.anyIndexed(predicate: (index: Int, T) -> Boolean): Boolean {
+    this.forEachIndexed { index, element -> if (predicate(index, element)) return true }
+    return false
+}
 
 /**
  * Starting at [index] (exclusive), iterating the list in reverse, returns the first element that

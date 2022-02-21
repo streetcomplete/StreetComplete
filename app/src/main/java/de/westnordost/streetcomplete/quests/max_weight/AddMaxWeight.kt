@@ -2,18 +2,26 @@ package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.*
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
-    override val commitMessage = "Add maximum allowed weight"
+    override val changesetComment = "Add maximum allowed weight"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true
 
+    override val questTypeAchievements = listOf(CAR)
+
     override val elementFilter = """
-        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
+        ways with
+         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
+         and bridge and bridge != no
          and service != driveway
          and !maxweight and maxweight:signed != no
          and !maxaxleload
@@ -21,7 +29,6 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
          and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus and !hgv
          and !maxunladenweight and !maxunladenweight:hgv and !maxunladenweight:bus
-         and bridge and bridge != no
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and (access !~ private|no or (foot and foot !~ private|no))
@@ -32,19 +39,19 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
     override fun createForm() = AddMaxWeightForm()
 
-    override fun applyAnswerTo(answer: MaxWeightAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+    override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
             is MaxWeight -> {
-                changes.add(answer.sign.osmKey, answer.weight.toString())
+                tags[answer.sign.osmKey] = answer.weight.toString()
             }
             is NoMaxWeightSign -> {
-                changes.addOrModify("maxweight:signed", "no")
+                tags["maxweight:signed"] = "no"
             }
         }
     }
 }
 
-private val MaxWeightSign.osmKey get() = when(this) {
+private val MaxWeightSign.osmKey get() = when (this) {
     MAX_WEIGHT             -> "maxweight"
     MAX_GROSS_VEHICLE_MASS -> "maxweightrating"
     MAX_AXLE_LOAD          -> "maxaxleload"

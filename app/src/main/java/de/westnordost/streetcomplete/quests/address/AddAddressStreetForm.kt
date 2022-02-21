@@ -2,26 +2,23 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.TextChangedWatcher
-import java.util.*
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import java.util.Locale
 
 class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
-    @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsSource: RoadNameSuggestionsSource
+    private val abbreviationsByLocale: AbbreviationsByLocale by inject()
+    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
     private var streetNameInput: EditText? = null
     private var placeNameInput: EditText? = null
@@ -33,20 +30,14 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private val placeName: String get() = placeNameInput?.text?.toString().orEmpty().trim()
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
+        AnswerItem(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
     )
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
         setLayout(if (isPlaceName) R.layout.quest_housenumber_place else R.layout.quest_housenumber_street)
-
-        return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -88,7 +79,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     override fun onClickOk() {
-        if(isPlaceName) {
+        if (isPlaceName) {
             applyAnswer(PlaceName(placeName))
         } else {
             if (selectedStreetName != null) {
@@ -142,6 +133,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
         setLayout(R.layout.quest_housenumber_place)
+        placeNameInput?.requestFocus()
     }
 
     companion object {

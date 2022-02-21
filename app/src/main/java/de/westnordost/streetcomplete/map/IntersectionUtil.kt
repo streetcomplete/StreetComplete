@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.map
 
 import android.graphics.PointF
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.core.view.isVisible
@@ -30,7 +31,7 @@ fun findClosestIntersection(v: ViewGroup, target: PointF): PointF? {
     if (a < minA) minA = a
 
     for (child in v.children) {
-        if (!child.isVisible) continue
+        if (!isReallyVisible(child)) continue
         val t = child.top.toFloat()
         val b = child.bottom.toFloat()
         val r = child.right.toFloat()
@@ -60,12 +61,24 @@ fun findClosestIntersection(v: ViewGroup, target: PointF): PointF? {
     return if (minA <= 1f) PointF(ox + (tx - ox) * minA, oy + (ty - oy) * minA) else null
 }
 
+// A visible ViewGroup with no visible children is (probably) not actually visible
+// This assumption isn't 100% necessarily correct, since the ViewGroup *could* itself be opaque;
+// if there's a bug with the pointer pin not showing when it should, check here first.
+private fun isReallyVisible(view: View): Boolean =
+    view.isVisible && when (view) {
+        is ViewGroup -> view.children.any(::isReallyVisible)
+        else -> true
+    }
+
 /** Intersection of line segment going from P to Q with vertical line starting at V and given
  *  length. Returns the f for P+f*(Q-P) or MAX_VALUE if no intersection found. */
 private fun intersectionWithVerticalSegment(
-    px: Float, py: Float,
-    qx: Float, qy: Float,
-    vx: Float, vy: Float,
+    px: Float,
+    py: Float,
+    qx: Float,
+    qy: Float,
+    vx: Float,
+    vy: Float,
     length: Float
 ): Float {
 
@@ -88,9 +101,12 @@ private fun intersectionWithVerticalSegment(
 /** Intersection of line segment going from P to Q with horizontal line starting at H and given
  *  length. Returns the f for P+f*(Q-P) or MAX_VALUE if no intersection found. */
 private fun intersectionWithHorizontalSegment(
-    px: Float, py: Float,
-    qx: Float, qy: Float,
-    hx: Float, hy: Float,
+    px: Float,
+    py: Float,
+    qx: Float,
+    qy: Float,
+    hx: Float,
+    hy: Float,
     length: Float
 ): Float {
 

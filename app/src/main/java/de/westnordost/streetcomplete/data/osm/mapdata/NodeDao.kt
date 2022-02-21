@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import javax.inject.Inject
-
-import de.westnordost.osmapi.map.data.Node
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LATITUDE
@@ -14,16 +12,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import java.util.Date
 
 /** Stores OSM nodes */
-class NodeDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class NodeDao(private val db: Database) {
     fun put(node: Node) {
         putAll(listOf(node))
     }
@@ -47,8 +42,8 @@ class NodeDao @Inject constructor(
                     node.version,
                     node.position.latitude,
                     node.position.longitude,
-                    node.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
-                    node.dateEdited.time,
+                    if (node.tags.isNotEmpty()) Json.encodeToString(node.tags) else null,
+                    node.timestampEdited,
                     time
                 )
             }
@@ -58,16 +53,7 @@ class NodeDao @Inject constructor(
     fun getAll(ids: Collection<Long>): List<Node> {
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
-        return db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
-            OsmNode(
-                cursor.getLong(ID),
-                cursor.getInt(VERSION),
-                OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-                cursor.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
-                null,
-                Date(cursor.getLong(TIMESTAMP))
-            )
-        }
+        return db.query(NAME, where = "$ID IN ($idsString)") { it.toNode() }
     }
 
     fun deleteAll(ids: Collection<Long>): Int {
@@ -76,6 +62,50 @@ class NodeDao @Inject constructor(
         return db.delete(NAME, "$ID IN ($idsString)")
     }
 
-    fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun clear() {
+        db.delete(NAME)
+    }
+
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
+
+    fun getAllIds(bbox: BoundingBox): List<Long> =
+        db.query(NAME, where = inBoundsSql(bbox), columns = arrayOf(ID)) { it.getLong(ID) }
+
+    fun getAllAsGeometryEntries(ids: Collection<Long>): List<ElementGeometryEntry> {
+        if (ids.isEmpty()) return emptyList()
+        val idsString = ids.joinToString(",")
+        return db.query(NAME,
+            where = "$ID IN ($idsString)",
+            columns = arrayOf(ID, LATITUDE, LONGITUDE)
+        ) { it.toElementGeometryEntry() }
+    }
+
+    fun getAll(bbox: BoundingBox): List<Node> =
+        db.query(NAME, where = inBoundsSql(bbox)) { it.toNode() }
 }
+
+private fun CursorPosition.toNode() = Node(
+    getLong(ID),
+    LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+    getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
+    getInt(VERSION),
+    getLong(TIMESTAMP),
+)
+
+private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
+    ElementType.NODE,
+    getLong(ID),
+    ElementPointGeometry(LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)))
+)
+
+private fun inBoundsSql(bbox: BoundingBox): String = """
+    ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+    ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
+""".trimIndent()

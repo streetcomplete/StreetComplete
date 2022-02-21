@@ -1,26 +1,26 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.user.User
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
-import de.westnordost.streetcomplete.data.user.UserStore
-import java.util.*
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
+import de.westnordost.streetcomplete.data.user.User
+import de.westnordost.streetcomplete.data.user.UserDataSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class NotesWithEditsSource @Inject constructor(
+class NotesWithEditsSource(
     private val noteController: NoteController,
     private val noteEditsSource: NoteEditsSource,
-    private val userStore: UserStore
+    private val userDataSource: UserDataSource
 ) {
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
@@ -35,6 +35,10 @@ import javax.inject.Singleton
                 editsAppliedToNotes(updated, noteCommentEdits),
                 deleted
             )
+        }
+
+        override fun onCleared() {
+            callOnCleared()
         }
     }
 
@@ -72,12 +76,14 @@ import javax.inject.Singleton
         val noteEdits = noteEditsSource.getAllUnsyncedForNote(noteId)
         var note = noteController.get(noteId)
         for (noteEdit in noteEdits) {
-            when(noteEdit.action) {
+            when (noteEdit.action) {
                 CREATE -> {
                     if (note == null) note = noteEdit.createNote()
                 }
                 COMMENT -> {
-                    note?.comments?.add(noteEdit.createNoteComment())
+                    if (note != null) {
+                        note = note.copy(comments = note.comments + noteEdit.createNoteComment())
+                    }
                 }
             }
         }
@@ -109,41 +115,42 @@ import javax.inject.Singleton
 
         for (noteEdit in noteEdits) {
             val id = noteEdit.noteId
-            when(noteEdit.action) {
+            when (noteEdit.action) {
                 CREATE -> {
                     if (!notesById.containsKey(id)) notesById[id] = noteEdit.createNote()
                 }
                 COMMENT -> {
-                    notesById[id]?.comments?.add(noteEdit.createNoteComment())
+                    val note = notesById[id]
+                    if (note != null) {
+                        notesById[id] = note.copy(comments = note.comments + noteEdit.createNoteComment())
+                    }
                 }
             }
         }
         return notesById.values
     }
 
-    private fun NoteEdit.createNote(): Note {
-        val comment = createNoteComment()
-        comment.action = NoteComment.Action.OPENED
+    private fun NoteEdit.createNote() = Note(
+        position,
+        noteId,
+        createdTimestamp,
+        null,
+        Note.Status.OPEN,
+        arrayListOf(createNoteComment(NoteComment.Action.OPENED))
+    )
 
-        val note = Note()
-        note.status = Note.Status.OPEN
-        note.id = noteId
-        note.position = position
-        note.comments = arrayListOf(comment)
-        note.dateCreated = Date(createdTimestamp)
-        return note
-    }
-
-    private fun NoteEdit.createNoteComment(): NoteComment {
-        val comment = NoteComment()
-        comment.action = NoteComment.Action.COMMENTED
-        comment.text = text
+    private fun NoteEdit.createNoteComment(action: NoteComment.Action = NoteComment.Action.COMMENTED): NoteComment {
+        var commentText = text ?: ""
         if (!imagePaths.isNullOrEmpty()) {
-            comment.text += "\n\n(Photo(s) will be attached on upload)"
+            commentText += "\n\n(Photo(s) will be attached on upload)"
         }
-        comment.user = User(userStore.userId, userStore.userName ?: "")
-        comment.date = Date(createdTimestamp)
-        return comment
+
+        return NoteComment(
+            createdTimestamp,
+            action,
+            commentText,
+            User(userDataSource.userId, userDataSource.userName ?: "")
+        )
     }
 
     fun addListener(listener: Listener) {
@@ -155,5 +162,9 @@ import javax.inject.Singleton
 
     private fun callOnUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
         listeners.forEach { it.onUpdated(added, updated, deleted) }
+    }
+
+    private fun callOnCleared() {
+        listeners.forEach { it.onCleared() }
     }
 }

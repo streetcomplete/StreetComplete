@@ -1,17 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Manages access to the notes storage */
-@Singleton class NoteController @Inject constructor(
+class NoteController(
     private val dao: NoteDao
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -19,33 +16,38 @@ import javax.inject.Singleton
 
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
+        /** called when a number of notes has been added, updated or deleted */
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+        /** called when all notes have been cleared */
+        fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     /** Replace all notes in the given bounding box with the given notes */
-    @Synchronized fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
+    fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
         val time = currentTimeMillis()
 
         val oldNotesById = mutableMapOf<Long, Note>()
-        dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
-
         val addedNotes = mutableListOf<Note>()
         val updatedNotes = mutableListOf<Note>()
-        for (note in notes) {
-            if (oldNotesById.containsKey(note.id)) {
-                updatedNotes.add(note)
-            } else {
-                addedNotes.add(note)
+        synchronized(this) {
+            dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
+
+            for (note in notes) {
+                if (oldNotesById.containsKey(note.id)) {
+                    updatedNotes.add(note)
+                } else {
+                    addedNotes.add(note)
+                }
+                oldNotesById.remove(note.id)
             }
-            oldNotesById.remove(note.id)
+
+            dao.putAll(notes)
+            dao.deleteAll(oldNotesById.keys)
         }
 
-        dao.putAll(notes)
-        dao.deleteAll(oldNotesById.keys)
-
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
+        Log.i(TAG, "Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
 
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
@@ -53,15 +55,16 @@ import javax.inject.Singleton
     fun get(noteId: Long): Note? = dao.get(noteId)
 
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
-    @Synchronized fun delete(noteId: Long) {
-        if (dao.delete(noteId)) {
+    fun delete(noteId: Long) {
+        val deleteSuccess = synchronized(this) { dao.delete(noteId) }
+        if (deleteSuccess) {
             onUpdated(deleted = listOf(noteId))
         }
     }
 
     /** put a note because the note has been created/changed on OSM */
-    @Synchronized fun put(note: Note) {
-        val hasNote = dao.get(note.id) != null
+    fun put(note: Note) {
+        val hasNote = synchronized(this) { dao.get(note.id) != null }
 
         if (hasNote) onUpdated(updated = listOf(note))
         else onUpdated(added = listOf(note))
@@ -69,16 +72,26 @@ import javax.inject.Singleton
         dao.put(note)
     }
 
-    @Synchronized fun deleteAllOlderThan(timestamp: Long): Int {
-        val ids = dao.getAllIdsOlderThan(timestamp)
-        if (ids.isEmpty()) return 0
+    fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
+        val ids: List<Long>
+        val deletedCount: Int
+        synchronized(this) {
+            ids = dao.getIdsOlderThan(timestamp, limit)
+            if (ids.isEmpty()) return 0
+
+            deletedCount = dao.deleteAll(ids)
+        }
+
+        Log.i(TAG, "Deleted $deletedCount old notes")
 
         onUpdated(deleted = ids)
 
-        val deletedCount = dao.deleteAll(ids)
-        Log.i(TAG, "Deleted $deletedCount old notes")
-
         return ids.size
+    }
+
+    fun clear() {
+        dao.clear()
+        listeners.forEach { it.onCleared() }
     }
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)

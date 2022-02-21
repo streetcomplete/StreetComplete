@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.ConnectionException
 import org.json.JSONException
 import org.json.JSONObject
-
 import java.io.File
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
-
-import de.westnordost.streetcomplete.ApplicationConstants
 
 /** Upload and activate a list of image paths to an instance of the
  * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>
@@ -18,7 +17,9 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
 
     /** Upload list of images.
      *
-     *  @throws ImageUploadException if there was any error */
+     *  @throws ImageUploadServerException when there was a server error on upload (server error)
+     *  @throws ImageUploadClientException when the server rejected the upload request (client error)
+     *  @throws ConnectionException if it is currently not reachable (no internet etc) */
     fun upload(imagePaths: List<String>): List<String> {
         val imageLinks = ArrayList<String>()
 
@@ -46,15 +47,18 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
                         val url = jsonResponse.getString("future_url")
                         imageLinks.add(url)
                     } catch (e: JSONException) {
-                        throw ImageUploadException("Upload Failed: Unexpected response \"$response\"")
+                        throw ImageUploadServerException("Upload Failed: Unexpected response \"$response\"")
                     }
                 } else {
-                    val error = connection.errorStream.bufferedReader().use { it.readText() }
-                    throw ImageUploadException("Upload failed: Error code $status, Message: \"$error\"")
+                    val error = connection.errorStream.bufferedReader().use { it.readText() }.toInt()
+                    if (error / 100 == 5)
+                        throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$error\"")
+                    else
+                        throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$error\"")
                 }
                 connection.disconnect()
             } catch (e: IOException) {
-                throw ImageUploadException("Upload failed", e)
+                throw ConnectionException("Upload failed", e)
             }
         }
 
@@ -62,7 +66,9 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 
     /** Activate the images in the given note.
-     *  @throws ImageActivationException if there was any error */
+     *  @throws ImageUploadServerException when there was a server error on upload (server error)
+     *  @throws ImageUploadClientException when the server rejected the upload request (client error)
+     *  @throws ConnectionException if it is currently not reachable (no internet etc)  */
     fun activate(noteId: Long) {
         try {
             val connection = createConnection("activate.php")
@@ -74,14 +80,16 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             if (status == HttpURLConnection.HTTP_GONE) {
                 // it's gone if the note does not exist anymore. That's okay, it should only fail
                 // if we might want to try again later.
-            }
-            else if (status != HttpURLConnection.HTTP_OK) {
+            } else if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
-                throw ImageActivationException("Error code $status, Message: \"$error\"")
+                if (status / 100 == 5)
+                    throw ImageUploadServerException("Error code $status, Message: \"$error\"")
+                else
+                    throw ImageUploadClientException("Error code $status, Message: \"$error\"")
             }
             connection.disconnect()
         } catch (e: IOException) {
-            throw ImageActivationException("", e)
+            throw ConnectionException("", e)
         }
     }
 
@@ -95,8 +103,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 }
 
-class ImageUploadException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ImageUploadServerException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
-class ImageActivationException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ImageUploadClientException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)

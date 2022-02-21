@@ -33,17 +33,14 @@
   <path
       android:pathData="m50,92.001v144"
       android:strokeWidth="12"
-      android:fillColor="#00000000"
       android:strokeColor="#b2b2b2"/>
   <path
       android:pathData="m110,92.001 l-0,144"
       android:strokeWidth="12"
-      android:fillColor="#00000000"
       android:strokeColor="#b2b2b2"/>
   <path
       android:pathData="m80,92.001v144"
       android:strokeWidth="12"
-      android:fillColor="#00000000"
       android:strokeColor="#b2b2b2"/>
   <path
       android:pathData="m34,248c24.561,5.537 68.519,5.126 92,0l8,12c-29.816,5.479 -79.124,5.185 -108,0z"

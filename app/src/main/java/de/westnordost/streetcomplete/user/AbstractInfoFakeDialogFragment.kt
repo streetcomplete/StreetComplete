@@ -9,8 +9,8 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.Transforms
+import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
@@ -26,46 +26,38 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     var isShowing: Boolean = false
         private set
 
-    // need to keep the animators here to be able to clear them on cancel
-    private val currentAnimators: MutableList<ViewPropertyAnimator> = mutableListOf()
+    private var animatorsPlayer: ViewPropertyAnimatorsPlayer? = null
 
-    private lateinit var dialogAndBackgroundContainer: ViewGroup
-    private lateinit var dialogBackground: View
-    private lateinit var dialogContentContainer: ViewGroup
-    private lateinit var dialogBubbleBackground: View
-    private lateinit var titleView: View
+    protected abstract val dialogAndBackgroundContainer: ViewGroup
+    protected abstract val dialogBackground: View
+    protected abstract val dialogContentContainer: ViewGroup
+    protected abstract val dialogBubbleBackground: View
+    protected abstract val titleView: View
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        dialogAndBackgroundContainer = view.findViewById(R.id.dialogAndBackgroundContainer)
-        dialogBackground = view.findViewById(R.id.dialogBackground)
-        titleView = view.findViewById(R.id.titleView)
-        dialogContentContainer = view.findViewById(R.id.dialogContentContainer)
-        dialogBubbleBackground = view.findViewById(R.id.dialogBubbleBackground)
-
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         sharedTitleView = null
-        clearAnimators()
+        animatorsPlayer?.cancel()
     }
 
     /* ---------------------------------------- Interface --------------------------------------- */
 
     open fun dismiss(): Boolean {
-        if (currentAnimators.isNotEmpty()) return false
+        if (animatorsPlayer != null) return false
         isShowing = false
         animateOut(sharedTitleView)
         return true
     }
 
     protected fun show(sharedView: View): Boolean {
-        if (currentAnimators.isNotEmpty()) return false
+        if (animatorsPlayer != null) return false
         isShowing = true
         this.sharedTitleView = sharedView
         animateIn(sharedView)
@@ -77,20 +69,20 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     private fun animateIn(sharedView: View) {
         dialogAndBackgroundContainer.visibility = View.VISIBLE
 
-        currentAnimators.addAll(
+        playAll(
             createDialogPopInAnimations() + listOf(
                 createTitleImageFlingInAnimation(sharedView),
                 createFadeInBackgroundAnimation()
             )
         )
-        currentAnimators.forEach { it.start() }
     }
 
     private fun animateOut(sharedView: View?) {
-        currentAnimators.addAll(createDialogPopOutAnimations())
-        if (sharedView != null) currentAnimators.add(createTitleImageFlingOutAnimation(sharedView))
-        currentAnimators.add(createFadeOutBackgroundAnimation())
-        currentAnimators.forEach { it.start() }
+        val animators = mutableListOf<ViewPropertyAnimator>()
+        animators.addAll(createDialogPopOutAnimations())
+        if (sharedView != null) animators.add(createTitleImageFlingOutAnimation(sharedView))
+        animators.add(createFadeOutBackgroundAnimation())
+        playAll(animators)
     }
 
     private fun createFadeInBackgroundAnimation(): ViewPropertyAnimator {
@@ -99,7 +91,6 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
             .alpha(1f)
             .setDuration(ANIMATION_TIME_IN_MS)
             .setInterpolator(DecelerateInterpolator())
-            .withEndAction { currentAnimators.clear() }
     }
 
     private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator {
@@ -109,7 +100,6 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
             .setInterpolator(AccelerateInterpolator())
             .withEndAction {
                 dialogAndBackgroundContainer.visibility = View.INVISIBLE
-                currentAnimators.clear()
             }
     }
 
@@ -158,11 +148,11 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
         }
     }
 
-    private fun clearAnimators() {
-        for (anim in currentAnimators) {
-            anim.cancel()
+    private fun playAll(animators: Collection<ViewPropertyAnimator>) {
+        animatorsPlayer = ViewPropertyAnimatorsPlayer(animators.toMutableList()).also {
+            it.onEnd = { animatorsPlayer = null }
+            it.start()
         }
-        currentAnimators.clear()
     }
 
     companion object {

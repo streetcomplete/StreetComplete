@@ -6,7 +6,7 @@
         android:color="@color/location_dot"/>
     <stroke
         android:width="2dp"
-        android:color="#ffffff"/>
+        android:color="#fff"/>
     <size
         android:width="20dp"
         android:height="20dp"/>

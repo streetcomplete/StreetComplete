@@ -1,28 +1,30 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.map.ElementUpdates
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.data.user.StatisticsUpdater
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.*
+import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoInteractions
 
 class ElementEditsUploaderTest {
 
@@ -30,7 +32,7 @@ class ElementEditsUploaderTest {
     private lateinit var mapDataController: MapDataController
     private lateinit var singleUploader: ElementEditUploader
     private lateinit var mapDataApi: MapDataApi
-    private lateinit var statisticsUpdater: StatisticsUpdater
+    private lateinit var statisticsController: StatisticsController
 
     private lateinit var uploader: ElementEditsUploader
     private lateinit var listener: OnUploadedChangeListener
@@ -39,25 +41,25 @@ class ElementEditsUploaderTest {
         elementEditsController = mock()
         mapDataController = mock()
         singleUploader = mock()
-        statisticsUpdater = mock()
         mapDataApi = mock()
+        statisticsController = mock()
 
         listener = mock()
 
-        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, statisticsUpdater)
+        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, statisticsController)
         uploader.uploadedChangeListener = listener
     }
 
     @Test fun `cancel upload works`() = runBlocking {
         val job = launch { uploader.upload() }
         job.cancelAndJoin()
-        verifyNoInteractions(elementEditsController, mapDataController, singleUploader, statisticsUpdater)
+        verifyNoInteractions(elementEditsController, mapDataController, singleUploader, statisticsController)
     }
 
     @Test fun `upload works`() = runBlocking {
         val edit = edit()
         val idProvider = mock<ElementIdProvider>()
-        val updates = mock<ElementUpdates>()
+        val updates = mock<MapDataUpdates>()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
@@ -67,10 +69,10 @@ class ElementEditsUploaderTest {
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onUploaded(any(), any())
-        verify(elementEditsController).synced(edit, updates)
+        verify(elementEditsController).markSynced(edit, updates)
         verify(mapDataController).updateAll(updates)
 
-        verify(statisticsUpdater).addOne(any(), any())
+        verify(statisticsController).addOne(any(), any())
     }
 
     @Test fun `upload catches conflict exception`() = runBlocking {
@@ -88,16 +90,16 @@ class ElementEditsUploaderTest {
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
 
-        verify(elementEditsController).syncFailed(edit)
-        verify(mapDataController).updateAll(eq(ElementUpdates(
+        verify(elementEditsController).markSyncFailed(edit)
+        verify(mapDataController).updateAll(eq(MapDataUpdates(
             updated = listOf(updatedNode)
         )))
 
-        verify(statisticsUpdater, never()).addOne(any(), any())
+        verify(statisticsController, never()).addOne(any(), any())
     }
 
     @Test fun `upload catches deleted element exception`() = runBlocking {
-        val edit = edit(elementId = 1)
+        val edit = edit(element = node(1))
         val idProvider = mock<ElementIdProvider>()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
@@ -110,11 +112,11 @@ class ElementEditsUploaderTest {
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
 
-        verify(elementEditsController).syncFailed(edit)
-        verify(mapDataController).updateAll(eq(ElementUpdates(
-            deleted = listOf(ElementKey( Element.Type.NODE, 1L))
+        verify(elementEditsController).markSyncFailed(edit)
+        verify(mapDataController).updateAll(eq(MapDataUpdates(
+            deleted = listOf(ElementKey(ElementType.NODE, 1L))
         )))
 
-        verify(statisticsUpdater, never()).addOne(any(), any())
+        verify(statisticsController, never()).addOne(any(), any())
     }
 }

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
@@ -8,11 +8,9 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Access and listen to quests visible on the map */
-@Singleton class VisibleQuestsSource @Inject constructor(
+class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,
     private val osmNoteQuestSource: OsmNoteQuestSource,
@@ -49,6 +47,11 @@ import javax.inject.Singleton
     }
 
     private val visibleQuestTypeSourceListener = object : VisibleQuestTypeSource.Listener {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+            // many different quests could become visible/invisible when this is changed
+            invalidate()
+        }
+
         override fun onQuestTypeVisibilitiesChanged() {
             // many different quests could become visible/invisible when this is changed
             invalidate()
@@ -68,13 +71,9 @@ import javax.inject.Singleton
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
     }
 
-    /** Get count of all visible quests in given bounding box */
-    fun getCount(bbox: BoundingBox): Int =
-        osmQuestSource.getAllInBBoxCount(bbox)
-
     /** Retrieve all visible quests in the given bounding box from local database */
     fun getAllVisible(bbox: BoundingBox): List<Quest> {
-        val visibleQuestTypeNames = questTypeRegistry.all
+        val visibleQuestTypeNames = questTypeRegistry
             .filter { visibleQuestTypeSource.isVisible(it) }
             .map { it::class.simpleName!! }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
@@ -104,5 +103,3 @@ import javax.inject.Singleton
         listeners.forEach { it.onVisibleQuestsInvalidated() }
     }
 }
-
-

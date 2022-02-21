@@ -1,12 +1,23 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.testutils.member
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class ElementGeometryCreatorTest {
 
@@ -93,9 +104,10 @@ class ElementGeometryCreatorTest {
 
     @Test fun `creating for multipolygon relation ignores unusable parts`() {
         val geom = create(areaRelation(
-                asOuters(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
-                        asInners(EMPTY_WAY) +
-                        asMembers(AREA_WAY))) as ElementPolygonsGeometry
+            asOuters(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
+            asInners(EMPTY_WAY) +
+            asMembers(AREA_WAY)
+        )) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
         assertEquals(O, geom.center)
     }
@@ -131,19 +143,19 @@ class ElementGeometryCreatorTest {
     }
 
     @Test fun `returns null for non-existent way`() {
-        val way = way(1, listOf(1,2,3))
+        val way = way(1, listOf(1, 2, 3))
         assertNull(create(way, MutableMapData()))
     }
 
     @Test fun `positions for relation`() {
         val relation = rel(1, listOf(
-            member(Element.Type.WAY, 0),
-            member(Element.Type.WAY, 1),
-            member(Element.Type.NODE, 1)
+            member(WAY, 0),
+            member(WAY, 1),
+            member(NODE, 1)
         ))
 
-        val ways = listOf<Way>(SIMPLE_WAY1, SIMPLE_WAY2)
-        val nodesByWayId = mapOf<Long, List<Node>>(
+        val ways = listOf(SIMPLE_WAY1, SIMPLE_WAY2)
+        val nodesByWayId = mapOf(
             0L to listOf(
                 node(0, P0),
                 node(1, P1)
@@ -162,21 +174,21 @@ class ElementGeometryCreatorTest {
 
     @Test fun `returns null for non-existent relation`() {
         val relation = rel(1, listOf(
-            member(Element.Type.WAY, 1),
-            member(Element.Type.WAY, 2),
-            member(Element.Type.NODE, 1)
+            member(WAY, 1),
+            member(WAY, 2),
+            member(NODE, 1)
         ))
         assertNull(create(relation, MutableMapData()))
     }
 
     @Test fun `returns null for relation with a way that's missing from map data`() {
         val relation = rel(1, listOf(
-            member(Element.Type.WAY, 0),
-            member(Element.Type.WAY, 1)
+            member(WAY, 0),
+            member(WAY, 1)
         ))
         val mapData = MutableMapData(listOf(
             relation,
-            way(0, listOf(0,1)),
+            way(0, listOf(0, 1)),
             node(0, P0),
             node(1, P1)
         ))
@@ -186,10 +198,10 @@ class ElementGeometryCreatorTest {
 
     @Test fun `does not return null for relation with a way that's missing from map data if returning incomplete geometries is ok`() {
         val relation = rel(1, listOf(
-            member(Element.Type.WAY, 0),
-            member(Element.Type.WAY, 1)
+            member(WAY, 0),
+            member(WAY, 1)
         ))
-        val way = way(0, listOf(0,1))
+        val way = way(0, listOf(0, 1))
         val mapData = MutableMapData(listOf(
             relation,
             way,
@@ -224,12 +236,12 @@ private val P1 = p(0.0, 0.0)
 private val P2 = p(2.0, 0.0)
 private val P3 = p(2.0, 2.0)
 
-private val SIMPLE_WAY1 = way(0, listOf(0,1))
-private val SIMPLE_WAY2 = way(1, listOf(1,2,3))
-private val SIMPLE_WAY3 = way(2, listOf(0,3))
-private val AREA_WAY = way(4, listOf(0,1,2,3,0), WAY_AREA)
-private val AREA_WAY_CLOCKWISE = way(5, listOf(0,3,2,1,0), WAY_AREA)
-private val WAY_DUPLICATE_NODES = way(6, listOf(0,1,1,2))
+private val SIMPLE_WAY1 = way(0, listOf(0, 1))
+private val SIMPLE_WAY2 = way(1, listOf(1, 2, 3))
+private val SIMPLE_WAY3 = way(2, listOf(0, 3))
+private val AREA_WAY = way(4, listOf(0, 1, 2, 3, 0), WAY_AREA)
+private val AREA_WAY_CLOCKWISE = way(5, listOf(0, 3, 2, 1, 0), WAY_AREA)
+private val WAY_DUPLICATE_NODES = way(6, listOf(0, 1, 1, 2))
 private val EMPTY_WAY = way(7, emptyList())
 
 private val CCW_RING = listOf(P0, P1, P2, P3, P0)
@@ -248,6 +260,6 @@ private val WAY_GEOMETRIES = mapOf(
 private fun areaRelation(members: List<RelationMember>) =
     rel(0, members, mapOf("type" to "multipolygon"))
 
-private fun asOuters(vararg ways: Way) = ways.map { member(Element.Type.WAY, it.id, "outer") }
-private fun asInners(vararg ways: Way) = ways.map { member(Element.Type.WAY, it.id, "inner") }
-private fun asMembers(vararg ways: Way) = ways.map { member(Element.Type.WAY, it.id, "") }
+private fun asOuters(vararg ways: Way) = ways.map { member(WAY, it.id, "outer") }
+private fun asInners(vararg ways: Way) = ways.map { member(WAY, it.id, "inner") }
+private fun asMembers(vararg ways: Way) = ways.map { member(WAY, it.id, "") }

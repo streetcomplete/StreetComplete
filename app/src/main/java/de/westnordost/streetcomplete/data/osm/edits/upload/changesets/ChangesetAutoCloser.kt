@@ -1,18 +1,14 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.content.Context
-import java.util.concurrent.TimeUnit
-
-import javax.inject.Inject
-
 import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy.REPLACE
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import java.util.concurrent.TimeUnit
 
-import androidx.work.ExistingWorkPolicy.REPLACE
-
-class ChangesetAutoCloser @Inject constructor(private val context: Context) {
+class ChangesetAutoCloser(private val context: Context) {
 
     fun enqueue(delayInMilliseconds: Long) {
         // changesets are closed delayed after X minutes of inactivity

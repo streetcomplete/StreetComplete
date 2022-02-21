@@ -1,22 +1,21 @@
 package de.westnordost.streetcomplete.view
 
 import android.content.Context
-import androidx.appcompat.R
 import android.text.Editable
 import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
+import androidx.appcompat.R
 import androidx.appcompat.widget.AppCompatEditText
-
-
 import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 
 /** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
  * ".") and capitalizes the first letter of each word that is longer than 3 letters.  */
 class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.editTextStyle)
-    : AppCompatEditText(context, attrs, defStyleAttr) {
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.editTextStyle
+) : AppCompatEditText(context, attrs, defStyleAttr) {
 
     var abbreviations: Abbreviations? = null
 
@@ -57,7 +56,7 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
             fixedReplace(s, wordStart, wordStart + lastWordBeforeCursor.length, replacement)
         } else if (lastWordBeforeCursor.length > 3) {
             val locale = abbrs.locale
-            val capital = lastWordBeforeCursor.substring(0, 1).toUpperCase(locale)
+            val capital = lastWordBeforeCursor.substring(0, 1).uppercase(locale)
             s.replace(wordStart, wordStart + 1, capital)
         }
     }

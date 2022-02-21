@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/dialog_horizontal_margin"
     android:orientation="vertical">
     <!--
@@ -12,9 +11,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_file_upload_inverted_48dp"
+        android:drawableStart="@drawable/ic_file_upload_48dp"
         android:drawablePadding="8dp"
-        app:drawableTint="@color/text"
         android:text="@string/dialog_tutorial_upload"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
 </LinearLayout>

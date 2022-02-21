@@ -5,16 +5,19 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
         android:name="de.westnordost.streetcomplete.map.QuestsMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_map"
+        />
 
     <RelativeLayout
         android:id="@+id/mapControls"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         tools:ignore="RtlHardcoded">
 
         <de.westnordost.streetcomplete.map.PointerPinView
@@ -25,7 +28,7 @@
             android:elevation="4dp"
             android:visibility="gone" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/answers_counter_fragment"
             android:name="de.westnordost.streetcomplete.controls.AnswersCounterFragment"
             android:layout_width="wrap_content"
@@ -35,7 +38,7 @@
             android:layout_alignParentLeft="true"
             />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/upload_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.UploadButtonFragment"
             android:layout_width="@dimen/map_button_size"
@@ -44,7 +47,7 @@
             android:layout_toLeftOf="@id/main_menu_button_fragment"
             />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_menu_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.MainMenuButtonFragment"
             android:layout_width="@dimen/map_button_size"
@@ -52,47 +55,25 @@
             tools:layout="@layout/fragment_main_menu_button"
             android:layout_alignParentRight="true" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/notification_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.NotificationButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            tools:layout="@layout/fragment_notification_button"
             android:layout_toLeftOf="@id/upload_button_fragment"
-            />
+            tools:layout="@layout/fragment_notification_button" />
 
         <!-- note the other compass in quest_street_side_puzzle -->
-        <RelativeLayout
+        <ImageView
             android:id="@+id/compassView"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            style="@style/RoundWhiteButton"
+            android:background="@drawable/round_white_button"
             android:layout_below="@id/main_menu_button_fragment"
             android:layout_alignParentRight="true"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/compassNorth"
-                android:layout_alignParentTop="true"
-                android:text="@string/compass_north_one_letter"
-                android:textColor="#000"
-                android:textSize="12dp"
-            />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/compassNeedleView"
-                android:src="@drawable/ic_compass_needle_black_24dp"
-                android:tint="#cc3333"
-                android:layout_below="@+id/compassNorth"
-                />
-
-        </RelativeLayout>
+            android:elevation="2dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_compass_needle_48dp"/>
 
         <LinearLayout
             android:id="@+id/rightSideContainer"
@@ -111,7 +92,7 @@
                 android:layout_height="@dimen/map_button_size"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_zoom_plus_black_24dp"
+                android:src="@drawable/ic_add_24dp"
                 android:contentDescription="@string/map_btn_zoom_in"/>
 
             <ImageButton
@@ -120,7 +101,7 @@
                 android:layout_height="@dimen/map_button_size"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_zoom_minus_black_24dp"
+                android:src="@drawable/ic_subtract_24dp"
                 android:contentDescription="@string/map_btn_zoom_out"/>
 
             <de.westnordost.streetcomplete.location.LocationStateButton
@@ -129,7 +110,7 @@
                 android:layout_height="@dimen/map_button_size"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_location_24dp"
+                android:src="@drawable/ic_location_state_24dp"
                 app:tint="@color/activated_tint"
                 android:contentDescription="@string/map_btn_gps_tracking"/>
 
@@ -146,7 +127,7 @@
             android:clipToPadding="false"
             tools:ignore="RtlHardcoded,RtlSymmetry">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/undo_button_fragment"
                 android:name="de.westnordost.streetcomplete.controls.UndoButtonFragment"
                 android:layout_width="@dimen/map_button_size"
@@ -156,7 +137,7 @@
 
         </LinearLayout>
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/quest_download_progress_fragment"
             android:name="de.westnordost.streetcomplete.controls.DownloadProgressFragment"
             android:layout_width="80dp"
@@ -174,14 +155,17 @@
 
     </RelativeLayout>
 
-    <FrameLayout
+    <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <RelativeLayout
         android:id="@+id/map_bottom_sheet_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false">
-    </FrameLayout>
+        android:clipChildren="false"
+        tools:ignore="RtlHardcoded">
+    </RelativeLayout>
 
-    <FrameLayout
+    <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <RelativeLayout
         android:id="@+id/edit_history_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

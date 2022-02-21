@@ -1,20 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-
-import java.util.ArrayList
-import java.util.Date
-
-import javax.inject.Inject
-
-import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
@@ -24,14 +13,13 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
-import de.westnordost.streetcomplete.ktx.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
 
 /** Stores OSM notes */
-class NoteDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class NoteDao(private val db: Database) {
     fun put(note: Note) {
         db.replace(NAME, note.toPairs())
     }
@@ -52,9 +40,9 @@ class NoteDao @Inject constructor(
                 it.position.latitude,
                 it.position.longitude,
                 it.status.name,
-                it.dateCreated.time,
-                it.dateClosed?.time,
-                serializer.toBytes(ArrayList(it.comments)),
+                it.timestampCreated,
+                it.timestampClosed,
+                Json.encodeToString(it.comments),
                 currentTimeMillis()
             ) }
         )
@@ -67,19 +55,29 @@ class NoteDao @Inject constructor(
         db.query(NAME,
             columns = arrayOf(LATITUDE, LONGITUDE),
             where = inBoundsSql(bbox),
-        ) { OsmLatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
+        ) { LatLon(it.getDouble(LATITUDE), it.getDouble(LONGITUDE)) }
 
     fun getAll(ids: Collection<Long>): List<Note> {
         if (ids.isEmpty()) return emptyList()
         return db.query(NAME, where = "$ID IN (${ids.joinToString(",")})") { it.toNote() }
     }
 
-    fun getAllIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, arrayOf(ID), "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        else return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
 
     fun deleteAll(ids: Collection<Long>): Int {
         if (ids.isEmpty()) return 0
         return db.delete(NAME, "$ID IN (${ids.joinToString(",")})")
+    }
+
+    fun clear() {
+        db.delete(NAME)
     }
 
     private fun Note.toPairs() = listOf(
@@ -87,24 +85,23 @@ class NoteDao @Inject constructor(
         LATITUDE to position.latitude,
         LONGITUDE to position.longitude,
         STATUS to status.name,
-        CREATED to dateCreated.time,
-        CLOSED to dateClosed?.time,
-        COMMENTS to serializer.toBytes(ArrayList(comments)),
+        CREATED to timestampCreated,
+        CLOSED to timestampClosed,
+        COMMENTS to Json.encodeToString(comments),
         LAST_SYNC to currentTimeMillis()
     )
 
-    private fun CursorPosition.toNote() = Note().also { n ->
-        n.id = getLong(ID)
-        n.position = OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
-        n.dateCreated = Date(getLong(CREATED))
-        n.dateClosed = getLongOrNull(CLOSED)?.let { Date(it) }
-        n.status = Note.Status.valueOf(getString(STATUS))
-        n.comments = serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
-    }
+    private fun CursorPosition.toNote() = Note(
+        LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+        getLong(ID),
+        getLong(CREATED),
+        getLongOrNull(CLOSED),
+        Note.Status.valueOf(getString(STATUS)),
+        Json.decodeFromString(getString(COMMENTS))
+    )
 
     private fun inBoundsSql(bbox: BoundingBox): String = """
-        ($LATITUDE BETWEEN ${bbox.minLatitude} AND ${bbox.maxLatitude}) AND
-        ($LONGITUDE BETWEEN ${bbox.minLongitude} AND ${bbox.maxLongitude})
+        ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+        ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
     """.trimIndent()
-
 }

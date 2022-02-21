@@ -1,17 +1,32 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.*
-import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.CONE
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.DOME
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.DOUBLE_SALTBOX
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.FLAT
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.GABLED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.GAMBREL
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.HALF_HIPPED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.HIPPED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.MANSARD
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.MANY
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.ONION
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.PYRAMIDAL
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.QUADRUPLE_SALTBOX
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.ROUND
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.ROUND_GABLED
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SALTBOX
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SKILLION
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddRoofShapeForm : AImageListQuestAnswerFragment<RoofShape, RoofShape>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }
+        AnswerItem(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }
     )
 
     override val items = listOf(

@@ -1,20 +1,25 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.noteEdit
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.*
+import org.mockito.Mockito.times
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoInteractions
 
 class NoteEditsUploaderTest {
 
@@ -62,7 +67,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).comment(1L, "abc")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
+        verify(noteEditsController).markSynced(edit, note)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -79,7 +84,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi).create(pos, "abc")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
+        verify(noteEditsController).markSynced(edit, note)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -90,14 +95,14 @@ class NoteEditsUploaderTest {
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(notesApi.comment(anyLong(), any())).thenThrow(OsmConflictException(403,"",""))
+        on(notesApi.comment(anyLong(), any())).thenThrow(ConflictException())
         on(notesApi.get(1L)).thenReturn(note)
 
         upload()
 
         verify(notesApi).comment(1L, "abc")
         verify(noteController).put(note)
-        verify(noteEditsController).syncFailed(edit)
+        verify(noteEditsController).markSyncFailed(edit)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onDiscarded("NOTE", pos)
     }
@@ -108,14 +113,14 @@ class NoteEditsUploaderTest {
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
-        on(notesApi.comment(anyLong(), any())).thenThrow(OsmNotFoundException(410,"",""))
+        on(notesApi.comment(anyLong(), any())).thenThrow(ConflictException())
         on(notesApi.get(1L)).thenReturn(null)
 
         upload()
 
         verify(notesApi).comment(1L, "abc")
         verify(noteController).delete(note.id)
-        verify(noteEditsController).syncFailed(edit)
+        verify(noteEditsController).markSyncFailed(edit)
         verifyNoInteractions(imageUploader)
         verify(listener)!!.onDiscarded("NOTE", pos)
     }
@@ -128,7 +133,7 @@ class NoteEditsUploaderTest {
 
         verify(notesApi, times(2)).comment(anyLong(), any())
         verify(noteController, times(2)).put(any())
-        verify(noteEditsController, times(2)).synced(any(), any())
+        verify(noteEditsController, times(2)).markSynced(any(), any())
         verify(listener, times(2))!!.onUploaded(any(), any())
     }
 
@@ -139,21 +144,21 @@ class NoteEditsUploaderTest {
             action = NoteEditAction.COMMENT,
             text = "test",
             pos = pos,
-            imagePaths = listOf("a","b","c")
+            imagePaths = listOf("a", "b", "c")
         )
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenReturn(note)
-        on(imageUploader.upload(any())).thenReturn(listOf("x","y","z"))
+        on(imageUploader.upload(any())).thenReturn(listOf("x", "y", "z"))
 
         upload()
 
         verify(notesApi).comment(1L, "test\n\nAttached photo(s):\nx\ny\nz")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
-        verify(noteEditsController).imagesActivated(1L)
-        verify(imageUploader).upload(listOf("a","b","c"))
+        verify(noteEditsController).markSynced(edit, note)
+        verify(noteEditsController).markImagesActivated(1L)
+        verify(imageUploader).upload(listOf("a", "b", "c"))
         verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -165,21 +170,21 @@ class NoteEditsUploaderTest {
             action = NoteEditAction.CREATE,
             text = "test",
             pos = pos,
-            imagePaths = listOf("a","b","c")
+            imagePaths = listOf("a", "b", "c")
         )
         val note = note(1)
 
         on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(notesApi.create(any(), any())).thenReturn(note)
-        on(imageUploader.upload(any())).thenReturn(listOf("x","y","z"))
+        on(imageUploader.upload(any())).thenReturn(listOf("x", "y", "z"))
 
         upload()
 
         verify(notesApi).create(pos, "test\n\nAttached photo(s):\nx\ny\nz")
         verify(noteController).put(note)
-        verify(noteEditsController).synced(edit, note)
-        verify(noteEditsController).imagesActivated(1L)
-        verify(imageUploader).upload(listOf("a","b","c"))
+        verify(noteEditsController).markSynced(edit, note)
+        verify(noteEditsController).markImagesActivated(1L)
+        verify(imageUploader).upload(listOf("a", "b", "c"))
         verify(imageUploader).activate(1L)
         verify(listener)!!.onUploaded("NOTE", pos)
     }
@@ -192,7 +197,7 @@ class NoteEditsUploaderTest {
         upload()
 
         verify(imageUploader).activate(3)
-        verify(noteEditsController).imagesActivated(1L)
+        verify(noteEditsController).markImagesActivated(1L)
     }
 
     private fun upload() = runBlocking {

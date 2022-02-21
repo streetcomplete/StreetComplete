@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:state_enabled="true">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="#1AFFFFFF">
+    <item android:id="@android:id/mask">
         <shape android:shape="oval">
-            <solid android:color="#F00"/>
+            <solid android:color="#000"/>
         </shape>
     </item>
-    <item>
-        <color android:color="#0fff"/>
-    </item>
-</selector>
+</ripple>

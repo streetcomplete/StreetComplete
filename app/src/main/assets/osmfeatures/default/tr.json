@@ -20,6 +20,9 @@
                 "category-path": {
                     "name": "Patikalar"
                 },
+                "category-playground": {
+                    "name": "Oyun Alanı Ekipmanı"
+                },
                 "category-rail": {
                     "name": "Raylar"
                 },
@@ -279,7 +282,9 @@
                 "beauty": {
                     "label": "Hizmetler",
                     "options": {
-                        "cosmetics": "Makyaj malzemeleri"
+                        "cosmetics": "Makyaj malzemeleri",
+                        "nails": "Tırnaklar",
+                        "tanning": "Bronzlaşma"
                     }
                 },
                 "bench": {
@@ -759,12 +764,6 @@
                 "duration": {
                     "label": "Süre",
                     "placeholder": "00:00"
-                },
-                "ele": {
-                    "label": "Yükseklik"
-                },
-                "ele_node": {
-                    "label": "Yükseklik"
                 },
                 "electrified": {
                     "label": "Elektrik Kaynağı",
@@ -1654,9 +1653,6 @@
                 "rcn_ref": {
                     "label": "Bisiklet Kodu"
                 },
-                "real_fire": {
-                    "label": "Gerçek Ateş"
-                },
                 "recycling_accepts": {
                     "label": "Kabul Ediyor"
                 },
@@ -1900,7 +1896,8 @@
                         "alley": "Geçit",
                         "drive-through": "Arabaya servis",
                         "driveway": "Arabayla uzaklaşmak",
-                        "emergency_access": "Acil Erişim"
+                        "emergency_access": "Acil Erişim",
+                        "parking_aisle": "Park Alanı"
                     }
                 },
                 "service/bicycle": {
@@ -1951,7 +1948,7 @@
                     "label": "Site Tipi"
                 },
                 "smoking": {
-                    "label": "Sigara İçme Durumu",
+                    "label": "Sigara İçilme Durumu",
                     "options": {
                         "dedicated": "Sigara İçenlere Özel Bölme (örneğin sigara odası)",
                         "isolated": "Fiziksel Olarak Ayrılmış Sigara İçme Alanı",
@@ -1988,6 +1985,7 @@
                 "source": {
                     "label": "Kaynak",
                     "options": {
+                        "aerial imagery": "Hava Fotoğrafları",
                         "gps": "GPS",
                         "local knowledge": "Yerel Bilgi",
                         "streetlevel imagery": "Sokak Seviyesi Fotoğraflar",
@@ -2427,8 +2425,10 @@
                     "label": "Bobin Yapılandırması",
                     "options": {
                         "delta": "Delta",
+                        "leblanc": "Üçgen bağlantı",
                         "open": "Açık",
                         "open-delta": "Geniş delta",
+                        "scott": "T bağlantı",
                         "star": "Demiryolunda üçgen bağlantı",
                         "zigzag": "Zikzak"
                     }
@@ -3307,12 +3307,6 @@
                 "amenity/vending_machine/newspapers": {
                     "name": "Gazete Satış Makinası",
                     "terms": "gazete satış makinası,gazete otomatı"
-                },
-                "amenity/vending_machine/parcel_pickup": {
-                    "name": "Paket Alma Dolabı"
-                },
-                "amenity/vending_machine/parcel_pickup_dropoff": {
-                    "name": "Paket Alma / Bırakma Dolabı"
                 },
                 "amenity/vending_machine/parking_tickets": {
                     "name": "Park Fişi Otomatı",
@@ -4217,20 +4211,11 @@
                 "highway/crossing/marked": {
                     "name": "İşaretli Yaya Geçidi"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "İşaretsiz Yaya Geçidi"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "İşaretsiz Yaya Geçidi (Kasisli)"
-                },
                 "highway/crossing/zebra": {
                     "name": "İşaretli Yaya Geçidi"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
                 },
                 "highway/cycleway": {
                     "name": "Bisiklet Yolu",
@@ -4277,23 +4262,14 @@
                 "highway/footway/marked": {
                     "name": "İşaretli Yaya Geçidi"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Kaldırım"
                 },
                 "highway/footway/unmarked": {
                     "name": "İşaretsiz Yaya Geçidi"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "İşaretsiz Yaya Geçidi (Kasisli)"
-                },
                 "highway/footway/zebra": {
                     "name": "İşaretli Yaya Geçidi"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "İşaretli Yaya Geçidi (Kasisli)"
                 },
                 "highway/give_way": {
                     "name": "Yol Ver İşareti",
@@ -4988,9 +4964,6 @@
                     "name": "Gemi Kızağı",
                     "terms": "gemi kızağı"
                 },
-                "leisure/slipway_point": {
-                    "name": "Kızak"
-                },
                 "leisure/sports_centre": {
                     "name": "Spor Merkezi",
                     "terms": "spor merkezi"
@@ -5461,10 +5434,7 @@
                     "terms": "sulak alan,sulak arazi"
                 },
                 "natural/wood": {
-                    "name": "Doğal Odun"
-                },
-                "network/type/node_network": {
-                    "name": "Eğlence ağı düğümü"
+                    "name": "Doğal Orman"
                 },
                 "noexit/yes": {
                     "name": "Çıkış Yok",
@@ -5496,9 +5466,6 @@
                 "office/association": {
                     "name": "Yardım Kuruluşu",
                     "terms": "yardım kuruluşu merkezi"
-                },
-                "office/bail_bond_agent": {
-                    "name": "Kefaletnameci"
                 },
                 "office/charity": {
                     "name": "Hayır Kurumu",
@@ -5748,14 +5715,23 @@
                 "playground/balancebeam": {
                     "name": "Denge Aleti Oyna"
                 },
+                "playground/basketrotator": {
+                    "name": "Halatlı Dönmedolap"
+                },
                 "playground/basketswing": {
                     "name": "Sepet Salıncak"
+                },
+                "playground/climbingframe": {
+                    "name": "Tırmanma Çerçevesi oyna"
                 },
                 "playground/cushion": {
                     "name": "Zıplayan Minder"
                 },
                 "playground/horizontal_bar": {
                     "name": "Barfiks Bar"
+                },
+                "playground/playhouse": {
+                    "name": "Ev oyna"
                 },
                 "playground/roundabout": {
                     "name": "Atlıkarınca"
@@ -5768,6 +5744,9 @@
                 },
                 "playground/slide": {
                     "name": "Kaydırak"
+                },
+                "playground/springy": {
+                    "name": "Zıp Zıp"
                 },
                 "playground/structure": {
                     "name": "Yapı"
@@ -5833,6 +5812,9 @@
                 },
                 "power/plant/source/nuclear": {
                     "name": "Nükleer Güç Santrali"
+                },
+                "power/plant/source/oil": {
+                    "name": "Petrol Yakıtlı Enerji Santrali"
                 },
                 "power/plant/source/solar": {
                     "name": "Güneş Paneli Çiftliği"
@@ -6622,6 +6604,9 @@
                 "shop/rental": {
                     "name": "Kiralık Dükkan"
                 },
+                "shop/repair": {
+                    "name": "Tamir Dükkanı"
+                },
                 "shop/scuba_diving": {
                     "name": "Tüple Dalış Mağazası",
                     "terms": "tüple dalış mağazası"
@@ -7007,34 +6992,12 @@
                     "name": "Sağa Dönüş Yasak",
                     "terms": "sağa dönüş yasak"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "Devam Etmek Yasak",
-                    "terms": "devam etmek yasak"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "U-dönüşü Yasak",
-                    "terms": "u-dönüşü yasak"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Sadece Sola Dönüş"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Sadece Sağa Dönüş"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Sadece Düz Gidiş"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Sadece U Dönüşü",
-                    "terms": "sadece u-dönüşü"
-                },
                 "type/route": {
                     "name": "Güzergah",
                     "terms": "güzergah,rota"
                 },
-                "type/route/bicycle": {
-                    "name": "Bisiklet Güzergahı",
-                    "terms": "bisiklet güzergahı,bisiklet rotası"
+                "type/route/aerialway": {
+                    "name": "Araç Güzergahı"
                 },
                 "type/route/bus": {
                     "name": "Otobüs Güzergahı",
@@ -7054,10 +7017,6 @@
                 "type/route/hiking": {
                     "name": "Yürüyüş Güzergahı",
                     "terms": "yürüyüş güzergahı,yürüyüş rotası"
-                },
-                "type/route/horse": {
-                    "name": "At Binme Güzergahı",
-                    "terms": "at binme güzergahı,at binme rotası"
                 },
                 "type/route/light_rail": {
                     "name": "Hafif Raylı Sistem Rotası"

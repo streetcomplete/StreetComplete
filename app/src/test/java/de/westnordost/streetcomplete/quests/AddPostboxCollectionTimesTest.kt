@@ -1,8 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
+import ch.poole.openinghoursparser.Rule
+import ch.poole.openinghoursparser.TimeSpan
+import ch.poole.openinghoursparser.WeekDay
+import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
-import de.westnordost.streetcomplete.quests.postbox_collection_times.*
+import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
+import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
+import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimes
+import de.westnordost.streetcomplete.quests.postbox_collection_times.NoCollectionTimesSign
 import org.junit.Test
 
 class AddPostboxCollectionTimesTest {
@@ -18,10 +24,25 @@ class AddPostboxCollectionTimesTest {
 
     @Test fun `apply collection times answer`() {
         questType.verifyAnswer(
-            CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(60)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
-            )),
+            CollectionTimes(OpeningHoursRuleList(listOf(
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.MO
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60
+                    })
+                },
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.TU
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60 * 2
+                    })
+                    isAdditive = true
+                },
+            ))),
             // here ; would be fine as well instead of ,
             // see https://github.com/streetcomplete/StreetComplete/pull/2604#issuecomment-783823068
             StringMapEntryAdd("collection_times", "Mo 01:00, Tu 02:00")
@@ -33,21 +54,62 @@ class AddPostboxCollectionTimesTest {
     // see https://github.com/streetcomplete/StreetComplete/pull/2604#issuecomment-783823068
     @Test fun `require comma where this matters`() {
         questType.verifyAnswer(
-            CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true, true, true)), mutableListOf(60)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
-            )),
+            CollectionTimes(OpeningHoursRuleList(listOf(
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.MO
+                        it.endDay = WeekDay.WE
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60
+                    })
+                },
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.TU
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60 * 2
+                    })
+                    isAdditive = true
+                },
+            ))),
             StringMapEntryAdd("collection_times", "Mo-We 01:00, Tu 02:00")
         )
     }
 
     @Test fun `require comma where this matters and conflict is between nonadjacent ranges`() {
         questType.verifyAnswer(
-            CollectionTimes(listOf(
-                WeekdaysTimes(Weekdays(booleanArrayOf(true, true, true)), mutableListOf(60)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(false, false, false, true, true, true, true)), mutableListOf(120)),
-                WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(180))
-            )),
+            CollectionTimes(OpeningHoursRuleList(listOf(
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.MO
+                        it.endDay = WeekDay.WE
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60
+                    })
+                },
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.TH
+                        it.endDay = WeekDay.SU
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60 * 2
+                    })
+                    isAdditive = true
+                },
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.MO
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60 * 3
+                    })
+                    isAdditive = true
+                },
+            ))),
             StringMapEntryAdd("collection_times", "Mo-We 01:00, Th-Su 02:00, Mo 03:00")
         )
     }

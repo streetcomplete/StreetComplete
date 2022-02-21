@@ -2,7 +2,7 @@
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.util.*
+import java.util.Locale
 
 /** Update the Android string resources (translations) for all the given language codes */
 open class UpdateAppTranslationsTask : AUpdateFromPOEditorTask() {

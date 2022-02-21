@@ -12,10 +12,11 @@ object DownloadedTilesTable {
 
     const val CREATE = """
         CREATE TABLE $NAME (
-            ${Columns.X} int NOT NULL, 
-            ${Columns.Y} int NOT NULL, 
-            ${Columns.TYPE} varchar(255) NOT NULL, 
-            ${Columns.DATE} int NOT NULL, 
+            ${Columns.X} int NOT NULL,
+            ${Columns.Y} int NOT NULL,
+            ${Columns.TYPE} varchar(255) NOT NULL,
+            ${Columns.DATE} int NOT NULL,
             CONSTRAINT primary_key PRIMARY KEY (${Columns.X}, ${Columns.Y}, ${Columns.TYPE})
-        );"""
+        );
+    """
 }

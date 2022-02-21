@@ -1,22 +1,19 @@
 package de.westnordost.streetcomplete.data.download
 
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 
 /** Download strategy if user is on wifi */
-class WifiAutoDownloadStrategy @Inject constructor(
-    visibleQuestsSource: VisibleQuestsSource,
+class WifiAutoDownloadStrategy(
+    mapDataController: MapDataController,
     downloadedTilesDao: DownloadedTilesDao
-) : AVariableRadiusStrategy(visibleQuestsSource, downloadedTilesDao) {
+) : AVariableRadiusStrategy(mapDataController, downloadedTilesDao) {
 
     /** Let's assume that if the user is on wifi, he is either at home, at work, in the hotel, at a
      * café,... in any case, somewhere that would act as a "base" from which he can go on an
      * excursion. Let's make sure he can, even if there is no or bad internet.
      */
 
-    override val maxDownloadAreaInKm2 = 12.0 // that's a radius of about 2 km
-    override val desiredQuestCountInVicinity = 1000
+    override val maxDownloadAreaInKm2 = 20.0 // that's a radius of about 2.5 km
+    override val desiredScoredMapDataCountInVicinity = 15000
 }

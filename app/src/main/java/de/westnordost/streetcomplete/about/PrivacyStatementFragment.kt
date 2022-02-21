@@ -3,24 +3,21 @@ package de.westnordost.streetcomplete.about
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.FragmentShowHtmlBinding
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.map.VectorTileProvider
-import org.sufficientlysecure.htmltextview.HtmlTextView
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows the privacy statement */
 class PrivacyStatementFragment : Fragment(R.layout.fragment_show_html) {
 
-    @Inject internal lateinit var vectorTileProvider: VectorTileProvider
+    private val vectorTileProvider: VectorTileProvider by inject()
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+    private val binding by viewBinding(FragmentShowHtmlBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val textView = view.findViewById<HtmlTextView>(R.id.text)
-        textView.setHtml(
+        binding.text.setHtml(
             getString(R.string.privacy_html) +
             getString(R.string.privacy_html_tileserver2, vectorTileProvider.title, vectorTileProvider.privacyStatementLink) +
             getString(R.string.privacy_html_statistics) +

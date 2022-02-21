@@ -1,8 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [KBZ, KBZ Bank, CB Bank, AYA Bank, AGD Bank, a, CB, MAB, AYA, AGD, KBZ BANK, UAB Bank, UAB, KBZ ATM, CB bank, CB Bank ATM, C B Bank, Aya Bank, AYA ATM, MAB Bank, KBZ bank, Ayeyarwaddy Bank, Aya Bank ATM, AYA bank, kbz, aa, MAB ATM, CB BANK, CB ATM, Aya, ATM, ယူနိုက်တက်အမရာဘဏ် UAB ATM, ကမ္ဘောဇဘဏ် KBZ Bank, kbz bank, atm, Myanma Apex Bank, MCB, 1]
+atmOperators: [KBZ, KBZ Bank, CB Bank, AGD Bank, AYA Bank, a, CB, MAB, AGD, AYA, C B Bank, UAB Bank, UAB, KBZ ATM, AYA ATM, CB Bank ATM, MAB Bank, Aya Bank ATM, Ayeyarwaddy Bank, MAB ATM, aa, CB ATM, ATM, ကမ္ဘောဇဘဏ် KBZ Bank, Myanma Apex Bank, 1, MCB, ယူနိုက်တက်အမရာဘဏ် UAB ATM]
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
+noParkingLineStyle: yellow-white on curb
+noStoppingLineStyle: red-white on curb
 officialLanguages: [my]
 orchardProduces: [coconut, rubber, areca_nut, chilli_pepper, sweet_pepper, tea, coffee, cashew_nut, guava, mango, mangosteen]
 popularReligions: [buddhist, christian, muslim, hindu]

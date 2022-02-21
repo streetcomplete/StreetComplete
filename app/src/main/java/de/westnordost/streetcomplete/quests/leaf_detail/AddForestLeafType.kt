@@ -1,27 +1,30 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.util.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     private val areaFilter by lazy { """
         ways, relations with (landuse = forest or natural = wood) and !leaf_type
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     private val wayFilter by lazy { """
         ways with natural = tree_row and !leaf_type
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
-    override val commitMessage = "Add leaf type"
+    override val changesetComment = "Add leaf type"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
+
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val forests = mapData
@@ -46,7 +49,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
 
     override fun createForm() = AddForestLeafTypeForm()
 
-    override fun applyAnswerTo(answer: ForestLeafType, changes: StringMapChangesBuilder) {
-        changes.add("leaf_type", answer.osmValue)
+    override fun applyAnswerTo(answer: ForestLeafType, tags: Tags, timestampEdited: Long) {
+        tags["leaf_type"] = answer.osmValue
     }
 }

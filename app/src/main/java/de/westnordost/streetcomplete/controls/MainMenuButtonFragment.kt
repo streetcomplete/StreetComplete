@@ -6,25 +6,24 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toast
-import kotlinx.android.synthetic.main.fragment_main_menu_button.*
-import kotlinx.android.synthetic.main.fragment_main_menu_button.view.*
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
-    @Inject internal lateinit var teamModeQuestFilter: TeamModeQuestFilter
-    @Inject internal lateinit var downloadController: DownloadController
+    private val teamModeQuestFilter: TeamModeQuestFilter by inject()
+    private val downloadController: DownloadController by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
@@ -32,20 +31,18 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val binding by viewBinding(FragmentMainMenuButtonBinding::bind)
+
     private val teamModeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
-        override fun onTeamModeChanged(enabled: Boolean) { lifecycleScope.launch { setTeamMode(enabled) } }
+        override fun onTeamModeChanged(enabled: Boolean) { viewLifecycleScope.launch { setTeamMode(enabled) } }
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.mainMenuButton.setOnClickListener { onClickMainMenu() }
+        binding.mainMenuButton.setOnClickListener { onClickMainMenu() }
     }
 
     override fun onStart() {
@@ -70,11 +67,11 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private fun setTeamMode(enabled: Boolean) {
         if (enabled) {
             context?.toast(R.string.team_mode_active)
-            teamModeColorCircle?.popIn()
-            teamModeColorCircle?.setIndexInTeam(teamModeQuestFilter.indexInTeam)
+            binding.teamModeColorCircle.popIn()
+            binding.teamModeColorCircle.setIndexInTeam(teamModeQuestFilter.indexInTeam)
         } else {
             context?.toast(R.string.team_mode_deactivated)
-            teamModeColorCircle?.popOut()
+            binding.teamModeColorCircle.popOut()
         }
     }
 

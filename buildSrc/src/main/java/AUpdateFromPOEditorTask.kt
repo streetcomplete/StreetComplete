@@ -5,7 +5,7 @@ import org.gradle.api.tasks.Input
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.*
+import java.util.Locale
 
 /** Base task class to pull translations and other info from POEditor crowd translation platform */
 abstract class AUpdateFromPOEditorTask : DefaultTask() {
@@ -53,7 +53,7 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
     private fun <T> URL.retryingQuotaConnection(setup: ((HttpURLConnection) -> Unit)? = null, block: (InputStream) -> T): T {
         val maxWait = 12
         var i = 0
-        while(i++ < maxWait) {
+        while (i++ < maxWait) {
             val connection = openConnection() as HttpURLConnection
             setup?.invoke(connection)
             if (connection.responseCode == 429) {

@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.matches
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class HasTagLikeTest {
@@ -16,12 +17,5 @@ class HasTagLikeTest {
         assertFalse(f.matches(mapOf("neme" to "no")))
         assertFalse(f.matches(mapOf("names" to "yess")))
         assertFalse(f.matches(mapOf()))
-    }
-
-    @Test fun `to string`() {
-        assertEquals(
-            "[~'^(.ame)$' ~ '^(y.s)$']",
-            HasTagLike(".ame","y.s").toOverpassQLString()
-        )
     }
 }

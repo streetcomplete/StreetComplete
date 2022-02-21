@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.view.dialogs
 
 import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.NumberPicker
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
-
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.DialogRangePickerBinding
 
 typealias RangePickedCallback = (startIndex: Int, endIndex: Int) -> Unit
 
@@ -23,12 +22,12 @@ class RangePickerDialog(
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.dialog_range_picker, null)
-        setView(view)
+        val binding = DialogRangePickerBinding.inflate(LayoutInflater.from(context))
+        setView(binding.root)
         setTitle(title)
 
-        val startPicker = view.findViewById<NumberPicker>(R.id.startPicker)
-        val endPicker = view.findViewById<NumberPicker>(R.id.endPicker)
+        val startPicker = binding.startPicker
+        val endPicker = binding.endPicker
 
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
             callback(startPicker.value, endPicker.value)

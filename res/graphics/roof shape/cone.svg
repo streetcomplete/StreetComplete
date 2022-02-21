@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="linearGradient4791" x1="-32.544" x2="-26.458" y1="211.01" y2="211.54" gradientTransform="matrix(5.178 0 0 5.178 212.69 -1064.9)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+   <stop stop-color="#ffcdcd" offset="0"/>
+   <stop stop-color="#e44848" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g stroke-linejoin="round" stroke-width="2">
+  <path d="m29.113 66.103v27.4l-21.92-21.92v-27.4" fill="#f2eeee" stroke="#b19a9a" stroke-linecap="square"/>
+  <path d="m29.113 66.103 58.91-19.18v27.4l-58.91 19.18v-27.4" fill="#e0d8d8" stroke="#b19a9a" stroke-linecap="square"/>
+  <path d="m7.1925 44.183 21.92 21.92 58.91-19.18-21.92-21.92z" fill="#e3dbdb" stroke="#b19a9a"/>
+  <path d="m19.523 44.183c2.74-4.11 26.03-30.14 26.03-30.14s27.4 17.81 32.88 23.29c7.347 6.8754-6.85 15.07-20.55 19.18-10.96 4.11-31.51 6.85-39.73-1.37-2.74-2.74-1.37-6.85 1.37-10.96z" fill="url(#linearGradient4791)" stroke="#b82e2e"/>
+  <path d="m18.153 55.143c-6.85-6.8501 10.96-17.81 19.18-20.55s32.88-5.4801 41.1 2.74" fill="none" stroke="#b82e2e" stroke-opacity=".50196"/>
+ </g>
+</svg>

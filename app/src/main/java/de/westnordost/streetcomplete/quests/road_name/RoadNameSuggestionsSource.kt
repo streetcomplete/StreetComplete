@@ -1,18 +1,16 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import javax.inject.Inject
-
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.meta.ALL_PATHS
 import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
 
-class RoadNameSuggestionsSource @Inject constructor(
+class RoadNameSuggestionsSource(
     private val mapDataSource: MapDataWithEditsSource
 ) {
 
@@ -34,7 +32,7 @@ class RoadNameSuggestionsSource @Inject constructor(
             val minDistanceToRoad = points.distanceTo(polyline)
             if (minDistanceToRoad > maxDistance) continue
 
-            val namesByLocale = road.tags?.toRoadNameByLanguage()?.toMutableMap() ?: continue
+            val namesByLocale = road.tags.toRoadNameByLanguage()?.toMutableMap() ?: continue
 
             // eliminate duplicates (same road, different segments, different distances)
             val prev = result[namesByLocale]
@@ -47,7 +45,7 @@ class RoadNameSuggestionsSource @Inject constructor(
     }
 
     private fun Way.isRoadWithName(): Boolean {
-        return tags != null && tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
+        return tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
     }
 
     companion object {
@@ -74,15 +72,15 @@ class RoadNameSuggestionsSource @Inject constructor(
  *  Tags that are not two- or three-letter ISO 639 language codes appended with an optional 4-letter
  *  ISO 15924 code, such as name:left, name:etymology, name:source etc., are ignored
  *  */
-internal fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
+internal fun Map<String, String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String, String>()
     val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")
     for ((key, value) in this) {
         val m = namePattern.matchEntire(key)
         if (m != null) {
             val languageTag = m.groupValues[1]
             result[languageTag] = value
-        } else if(key == "int_name") {
+        } else if (key == "int_name") {
             result["international"] = value
         }
     }

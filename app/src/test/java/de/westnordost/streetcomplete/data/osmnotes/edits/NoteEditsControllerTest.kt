@@ -1,12 +1,17 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.streetcomplete.testutils.*
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.noteEdit
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 
 class NoteEditsControllerTest {
 
@@ -33,7 +38,7 @@ class NoteEditsControllerTest {
 
     @Test fun syncFailed() {
         val edit = noteEdit(noteId = 1)
-        ctrl.syncFailed(edit)
+        ctrl.markSyncFailed(edit)
 
         verify(db).delete(1)
         verify(listener).onDeletedEdits(eq(listOf(edit)))
@@ -43,7 +48,7 @@ class NoteEditsControllerTest {
         val edit = noteEdit(id = 3, noteId = 1)
         val note = note(1)
 
-        ctrl.synced(edit, note)
+        ctrl.markSynced(edit, note)
 
         verify(db).markSynced(3)
         verify(db, never()).updateNoteId(anyLong(), anyLong())
@@ -54,7 +59,7 @@ class NoteEditsControllerTest {
         val edit = noteEdit(id = 3, noteId = -100)
         val note = note(123)
 
-        ctrl.synced(edit, note)
+        ctrl.markSynced(edit, note)
 
         verify(db).markSynced(3)
         verify(db).updateNoteId(-100L, 123L)

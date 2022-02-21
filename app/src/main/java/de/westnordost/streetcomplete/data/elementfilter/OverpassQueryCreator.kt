@@ -1,26 +1,29 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.*
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
-import java.util.*
+import de.westnordost.streetcomplete.data.elementfilter.filters.toOverpassString
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import java.util.EnumSet
 
 /** Create an overpass query from the given element filter expression */
 class OverpassQueryCreator(
     elementTypes: EnumSet<ElementsTypeFilter>,
-    private val expr: BooleanExpression<ElementFilter, Element>?)
-{
+    private val expr: BooleanExpression<ElementFilter, Element>?
+) {
     private val elementTypes = elementTypes.toOqlNames()
     private var setIdCounter: Int = 1
     private val dataSets: MutableMap<BooleanExpression<ElementFilter, Element>, Int> = mutableMapOf()
 
     fun create(): String {
-         if (elementTypes.size == 1) {
+        if (elementTypes.size == 1) {
             val elementType = elementTypes.first()
             if (expr == null) {
                 return "$elementType;\n"
             }
-             return expr.toOverpassString(elementType, null)
+            return expr.toOverpassString(elementType, null)
         } else {
             if (expr == null) {
                 return "(" + elementTypes.joinToString(" ") { "$it; " } + ");\n"
@@ -113,16 +116,16 @@ class OverpassQueryCreator(
             childrenResultSetIds.add(workingSetId)
         }
         // then union all direct children
-        val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it)+";" }
-        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
+        val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it) + ";" }
+        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         result.append("($unionChildren)$resultStmt;\n")
         return result.toString()
     }
 
     private fun AllTagFilters.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
-        val elementFilter = elementType + inputSetId?.let { getSetId(elementType,it) }.orEmpty()
-        val tagFilters = values.joinToString("") { it.toOverpassQLString() }
-        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
+        val elementFilter = elementType + inputSetId?.let { getSetId(elementType, it) }.orEmpty()
+        val tagFilters = values.joinToString("") { it.toOverpassString() }
+        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         return "$elementFilter$tagFilters$resultStmt;\n"
     }
 
@@ -143,7 +146,7 @@ class OverpassQueryCreator(
 
     private class AllTagFilters(val values: List<ElementFilter>) : BooleanExpression<ElementFilter, Element>() {
         constructor(value: ElementFilter) : this(listOf(value))
-        override fun matches(obj: Element?) = values.all { it.matches(obj) }
+        override fun matches(obj: Element) = values.all { it.matches(obj) }
         override fun toString() = values.joinToString(" and ")
     }
 }

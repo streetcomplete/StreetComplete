@@ -18,4 +18,3 @@ fun Collection<Item<String>>.sortedBy(names: Iterable<String>): List<Item<String
     }
     return result
 }
-

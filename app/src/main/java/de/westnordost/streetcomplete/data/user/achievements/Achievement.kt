@@ -15,7 +15,7 @@ data class Achievement(
 ) {
     fun getPointThreshold(level: Int): Int {
         var threshold = 0
-        for(i in 0 until level) {
+        for (i in 0 until level) {
             threshold += pointsNeededToAdvanceFunction(i)
         }
         return threshold
@@ -24,6 +24,6 @@ data class Achievement(
 
 sealed class AchievementCondition
 
-data class SolvedQuestsOfTypes(val questTypes: List<String>) : AchievementCondition()
+object SolvedQuestsOfTypes : AchievementCondition()
 object TotalSolvedQuests : AchievementCondition()
 object DaysActive : AchievementCondition()

@@ -2,26 +2,31 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.text.InputFilter
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.LengthUnit
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
+import de.westnordost.streetcomplete.ktx.intOrNull
 import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
+import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.FOOT_AND_INCH
-import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.METER
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
+        AnswerItem(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
     )
 
     private var meterInput: EditText? = null
@@ -31,23 +36,21 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private var meterInputSign: View? = null
     private var feetInputSign: View? = null
 
-    private val heightUnits get() = countryInfo.lengthUnits.map { it.toHeightMeasurementUnit() }
+    private val lengthUnits get() = countryInfo.lengthUnits
 
     override fun isFormComplete() = getHeightFromInput() != null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        setMaxHeightSignLayout(R.layout.quest_maxheight, heightUnits.first())
-        return view
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setMaxHeightSignLayout(R.layout.quest_maxheight, lengthUnits.first())
     }
 
-    private fun setMaxHeightSignLayout(resourceId: Int, unit: HeightMeasurementUnit) {
+    private fun setMaxHeightSignLayout(resourceId: Int, unit: LengthUnit) {
         val contentView = setContentView(resourceId)
 
         val splitWayHint = contentView.findViewById<TextView>(R.id.splitWayHint)
         splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
-        splitWayHint?.isGone = osmElement!!.type == Element.Type.NODE
+        splitWayHint?.isGone = osmElement!!.type == ElementType.NODE
 
         meterInput = contentView.findViewById(R.id.meterInput)
         feetInput = contentView.findViewById(R.id.feetInput)
@@ -62,12 +65,12 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
         heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
-        heightUnitSelect?.isGone = heightUnits.size == 1
-        heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, heightUnits)
+        heightUnitSelect?.isGone = lengthUnits.size == 1
+        heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, lengthUnits)
         heightUnitSelect?.setSelection(0)
         heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                switchLayout(heightUnitSelect?.selectedItem as HeightMeasurementUnit)
+                switchLayout(heightUnitSelect?.selectedItem as LengthUnit)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {}
@@ -77,15 +80,15 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
 
-            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
+            if (input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
         })
         meterInput?.allowOnlyNumbers()
         switchLayout(unit)
     }
 
-    private fun switchLayout(unit: HeightMeasurementUnit) {
-        val isMetric = unit == METER
-        val isImperial = unit == FOOT_AND_INCH
+    private fun switchLayout(unit: LengthUnit) {
+        val isMetric = unit == LengthUnit.METER
+        val isImperial = unit == LengthUnit.FOOT_AND_INCH
 
         meterInputSign?.isGone = !isMetric
         feetInputSign?.isGone = !isImperial
@@ -112,17 +115,17 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         applyAnswer(MaxHeight(getHeightFromInput()!!))
     }
 
-    private fun getHeightFromInput(): HeightMeasure? {
-        when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
-            METER -> {
-                return meterInput?.numberOrNull?.let { Meters(it) }
+    private fun getHeightFromInput(): Length? {
+        when (heightUnitSelect?.selectedItem as LengthUnit? ?: lengthUnits.first()) {
+            LengthUnit.METER -> {
+                return meterInput?.numberOrNull?.let { LengthInMeters(it) }
             }
-            FOOT_AND_INCH -> {
-                val feet = feetInput?.numberOrNull?.toInt()
-                val inches = inchInput?.numberOrNull?.toInt()
+            LengthUnit.FOOT_AND_INCH -> {
+                val feet = feetInput?.intOrNull
+                val inches = inchInput?.intOrNull
 
                 if (feet != null && inches != null) {
-                    return ImperialFeetAndInches(feet, inches)
+                    return LengthInFeetAndInches(feet, inches)
                 }
             }
         }
@@ -132,7 +135,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ -> applyAnswer(NoMaxHeightSign(true)) }
             .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }

@@ -9,46 +9,49 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.osmapi.user.Permission
+import de.westnordost.osmapi.user.PermissionsApi
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.OsmApiModule
-import de.westnordost.streetcomplete.data.PermissionsApi
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.osmConnection
+import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.settings.OAuthFragment
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows only a login button and a text that clarifies that login is necessary for publishing the
  *  answers. */
-class LoginFragment : Fragment(R.layout.fragment_login),
+class LoginFragment :
+    Fragment(R.layout.fragment_login),
     HasTitle,
     BackPressedListener,
     OAuthFragment.Listener {
 
-    @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
-    @Inject internal lateinit var userController: UserController
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userUpdater: UserUpdater by inject()
 
     override val title: String get() = getString(R.string.user_login)
+
+    private val binding by viewBinding(FragmentLoginBinding::bind)
 
     private val oAuthFragment: OAuthFragment? get() =
         childFragmentManagerOrNull?.findFragmentById(R.id.oauthFragmentContainer) as? OAuthFragment
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginButton.setOnClickListener { pushOAuthFragment() }
+        binding.loginButton.setOnClickListener { pushOAuthFragment() }
 
         val launchAuth = arguments?.getBoolean(ARG_LAUNCH_AUTH, false) ?: false
         if (launchAuth) {
@@ -59,17 +62,17 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onStart() {
         super.onStart()
 
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val unsyncedChanges = unsyncedChangesCountSource.getCount()
-            unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
-            unpublishedQuestsText.isGone = unsyncedChanges <= 0
+            binding.unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
+            binding.unpublishedQuestsText.isGone = unsyncedChanges <= 0
         }
     }
 
     override fun onBackPressed(): Boolean {
         val f = oAuthFragment
         if (f != null) {
-            if(f.onBackPressed()) return true
+            if (f.onBackPressed()) return true
             childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
             return true
         }
@@ -79,33 +82,37 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     /* ------------------------------- OAuthFragment.Listener ----------------------------------- */
 
     override fun onOAuthSuccess(consumer: OAuthConsumer) {
-        loginButton.visibility = View.INVISIBLE
-        loginProgress.visibility = View.VISIBLE
+        binding.loginButton.visibility = View.INVISIBLE
+        binding.loginProgress.visibility = View.VISIBLE
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             if (hasRequiredPermissions(consumer)) {
-                userController.logIn(consumer)
+                userLoginStatusController.logIn(consumer)
+                userUpdater.update()
             } else {
                 context?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
-                loginButton.visibility = View.VISIBLE
+                binding.loginButton.visibility = View.VISIBLE
             }
-            loginProgress.visibility = View.INVISIBLE
+            binding.loginProgress.visibility = View.INVISIBLE
         }
     }
 
     override fun onOAuthFailed(e: Exception?) {
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        userController.logOut()
+        userLoginStatusController.logOut()
     }
 
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
             try {
-                val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
+                /* we didn't save the new OAuthConsumer yet but we want to make an API call with it
+                   to check if the user granted all required permissions, this is why we need to
+                   create a new OsmConnection with the supplied consumer instead of using an
+                   injected one */
+                val permissionsApi = PermissionsApi(osmConnection(consumer))
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
-            }
-            catch (e: Exception) { false }
-            }
+            } catch (e: Exception) { false }
+        }
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -113,8 +120,8 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     private fun pushOAuthFragment() {
         childFragmentManager.commit {
             setCustomAnimations(
-                R.anim.enter_from_right, R.anim.exit_to_left,
-                R.anim.enter_from_left, R.anim.exit_to_right
+                R.anim.enter_from_end, R.anim.exit_to_start,
+                R.anim.enter_from_start, R.anim.exit_to_end
             )
             replace<OAuthFragment>(R.id.oauthFragmentContainer)
             addToBackStack("oauth")

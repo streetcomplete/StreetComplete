@@ -1,10 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.Database
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.INDEX
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.LAST_SYNC
@@ -16,16 +12,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TYP
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
-import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.Serializer
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import java.util.Date
 
 /** Stores OSM relations */
-class RelationDao @Inject constructor(
-    private val db: Database,
-    private val serializer: Serializer
-) {
+class RelationDao(private val db: Database) {
     fun put(relation: Relation) {
         putAll(listOf(relation))
     }
@@ -54,7 +47,7 @@ class RelationDao @Inject constructor(
                             index,
                             member.ref,
                             member.type.name,
-                            member.role.orEmpty()
+                            member.role
                         )
                     }
                 }
@@ -65,8 +58,8 @@ class RelationDao @Inject constructor(
                     arrayOf(
                         relation.id,
                         relation.version,
-                        relation.tags?.let { serializer.toBytes(HashMap<String,String>(it)) },
-                        relation.dateEdited.time,
+                        if (relation.tags.isNotEmpty()) Json.encodeToString(relation.tags) else null,
+                        relation.timestampEdited,
                         time
                     )
                 }
@@ -78,26 +71,28 @@ class RelationDao @Inject constructor(
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
 
-        val membersByRelationId = mutableMapOf<Long, MutableList<RelationMember>>()
-        db.query(NAME_MEMBERS, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
-            val members = membersByRelationId.getOrPut(c.getLong(ID)) { ArrayList() }
-            members.add(OsmRelationMember(
-                c.getLong(REF),
-                c.getString(ROLE),
-                Element.Type.valueOf(c.getString(TYPE))
-            ))
-        }
+        return db.transaction {
+            val membersByRelationId = mutableMapOf<Long, MutableList<RelationMember>>()
+            db.query(NAME_MEMBERS, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { cursor ->
+                val members = membersByRelationId.getOrPut(cursor.getLong(ID)) { ArrayList() }
+                members.add(
+                    RelationMember(
+                        ElementType.valueOf(cursor.getString(TYPE)),
+                        cursor.getLong(REF),
+                        cursor.getString(ROLE)
+                    )
+                )
+            }
 
-        return db.query(NAME, where = "$ID IN ($idsString)") { c ->
-            val id = c.getLong(ID)
-            OsmRelation(
-                id,
-                c.getInt(VERSION),
-                membersByRelationId.getValue(id),
-                c.getBlobOrNull(TAGS)?.let { serializer.toObject<HashMap<String, String>>(it) },
-                null,
-                Date(c.getLong(TIMESTAMP))
-            )
+            db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
+                Relation(
+                    cursor.getLong(ID),
+                    membersByRelationId.getValue(cursor.getLong(ID)),
+                    cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
+                    cursor.getInt(VERSION),
+                    cursor.getLong(TIMESTAMP)
+                )
+            }
         }
     }
 
@@ -110,24 +105,75 @@ class RelationDao @Inject constructor(
         }
     }
 
-    fun getAllForNode(nodeId: Long) : List<Relation> =
-        getAllForElement(Element.Type.NODE, nodeId)
+    fun clear() {
+        db.transaction {
+            db.delete(NAME_MEMBERS)
+            db.delete(NAME)
+        }
+    }
 
-    fun getAllForWay(wayId: Long) : List<Relation> =
-        getAllForElement(Element.Type.WAY, wayId)
+    fun getAllForNode(nodeId: Long): List<Relation> =
+        getAllForElement(ElementType.NODE, nodeId)
 
-    fun getAllForRelation(relationId: Long) : List<Relation> =
-        getAllForElement(Element.Type.RELATION, relationId)
+    fun getAllForWay(wayId: Long): List<Relation> =
+        getAllForElement(ElementType.WAY, wayId)
 
-    fun getIdsOlderThan(timestamp: Long): List<Long> =
-        db.query(NAME, columns = arrayOf(ID), where = "$LAST_SYNC < $timestamp") { it.getLong(ID) }
+    fun getAllForRelation(relationId: Long): List<Relation> =
+        getAllForElement(ElementType.RELATION, relationId)
 
-    private fun getAllForElement(elementType: Element.Type, elementId: Long): List<Relation> {
-        val ids = db.query(
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<Long> {
+        if (limit != null && limit <= 0) return emptyList()
+        return db.query(NAME,
+            columns = arrayOf(ID),
+            where = "$LAST_SYNC < $timestamp",
+            limit = limit?.toString()
+        ) { it.getLong(ID) }
+    }
+
+    fun getAllForElements(
+        nodeIds: Collection<Long> = emptyList(),
+        wayIds: Collection<Long> = emptyList(),
+        relationIds: Collection<Long> = emptyList()
+    ): List<Relation> =
+        getAll(getAllIdsForElements(nodeIds, wayIds, relationIds).toSet())
+
+    fun getAllIdsForElements(
+        nodeIds: Collection<Long> = emptyList(),
+        wayIds: Collection<Long> = emptyList(),
+        relationIds: Collection<Long> = emptyList()
+    ): List<Long> {
+        if (nodeIds.isEmpty() && wayIds.isEmpty() && relationIds.isEmpty()) return emptyList()
+
+        val where = ArrayList<String>()
+        if (nodeIds.isNotEmpty()) {
+            val nodeIdsStr = nodeIds.joinToString(",")
+            val elementTypeName = ElementType.NODE.name
+            where.add("($TYPE = '$elementTypeName' AND $REF IN ($nodeIdsStr))")
+        }
+        if (wayIds.isNotEmpty()) {
+            val wayIdsStr = wayIds.joinToString(",")
+            val elementTypeName = ElementType.WAY.name
+            where.add("($TYPE = '$elementTypeName' AND $REF IN ($wayIdsStr))")
+        }
+        if (relationIds.isNotEmpty()) {
+            val relationIdsStr = relationIds.joinToString(",")
+            val elementTypeName = ElementType.RELATION.name
+            where.add("($TYPE = '$elementTypeName' AND $REF IN ($relationIdsStr))")
+        }
+        return db.query(
             NAME_MEMBERS,
             columns = arrayOf(ID),
-            where = "$REF = $elementId AND $TYPE = ?",
-            args = arrayOf(elementType.name)) { it.getLong(ID) }.toSet()
-        return getAll(ids)
+            where = where.joinToString(" OR ")) { it.getLong(ID) }
+    }
+
+    private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
+        return db.transaction {
+            val ids = db.query(NAME_MEMBERS,
+                columns = arrayOf(ID),
+                where = "$TYPE = ? AND $REF = $elementId",
+                args = arrayOf(elementType.name)
+            ) { it.getLong(ID) }.toSet()
+            getAll(ids)
+        }
     }
 }

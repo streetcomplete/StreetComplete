@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.quests.clothing_bin_operator
 
 import de.westnordost.streetcomplete.testutils.node
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddClothingBinOperatorTest {
 
     private val questType = AddClothingBinOperator()
 
-    @Test fun `is not applicable to null tags`() {
-        assertFalse(questType.isApplicableTo(node(tags = null)))
+    @Test fun `is not applicable to empty tags`() {
+        assertFalse(questType.isApplicableTo(node()))
     }
 
     @Test fun `is applicable to clothing container`() {

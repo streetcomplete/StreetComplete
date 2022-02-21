@@ -22,7 +22,6 @@
       android:pathData="m39.99,120v-16h24v-16h24v-16h24"
       android:strokeAlpha="0.2"
       android:strokeWidth="8"
-      android:fillColor="#00000000"
       android:strokeColor="#000"/>
   <path
       android:pathData="m88,33c4,0 9,0 9,-5 0,-3 -2,-4 -5,-4s-6,1 -6,4h-6c0,-6 4,-10 12,-10s12,4 12,10c0,4 -2,6 -5.797,7.82 3.627,1.428 5.797,4.18 5.797,8.18 0,7 -4,10 -12,10s-12,-4 -12,-10h6c0,3 3,4 6,4s5,-1 5,-4c0,-5 -5,-5 -9,-5z"

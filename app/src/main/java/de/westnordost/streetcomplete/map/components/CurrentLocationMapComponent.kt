@@ -4,10 +4,11 @@ import android.content.Context
 import android.graphics.PointF
 import android.location.Location
 import com.mapzen.tangram.MapController
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.ktx.isApril1st
 import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
@@ -28,41 +29,41 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
     var isVisible: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
-        if (!value) hide() else show()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            if (!value) hide() else show()
+        }
 
     /** The location of the GPS location dot on the map. Null if none (yet) */
     var location: Location? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        updateLocation()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            updateLocation()
+        }
 
     /** The view rotation angle in degrees. Null if not set (yet) */
     var rotation: Double? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        updateDirection()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            updateDirection()
+        }
 
     /** Tell this component the current map zoom. Why does it need to know this at all? It doesn't,
      *  but it needs to know when it changed. There is no specific event for that. Whenever the
      *  zoom changed, the marker showing the accuracy must be updated because the accuracy's marker
      *  size is calculated programmatically using the current zoom. */
     var currentMapZoom: Float? = null
-    set(value) {
-        if (field == value) return
-        field = value
-        updateAccuracy()
-    }
+        set(value) {
+            if (field == value) return
+            field = value
+            updateAccuracy()
+        }
 
     init {
-        val dotImg = ctx.resources.getBitmapDrawable(R.drawable.location_dot)
+        val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
         val dotSize = PointF(
             dotImg.intrinsicWidth.toFloat().toDp(ctx),
             dotImg.intrinsicHeight.toFloat().toDp(ctx)
@@ -86,7 +87,8 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
                 flat: true,
                 collide: false,
                 interactive: true
-            }""".trimIndent())
+            }
+            """.trimIndent())
             it.setDrawable(dotImg)
             it.setDrawOrder(3)
         }
@@ -95,7 +97,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             it.setDrawable(directionImg)
             it.setDrawOrder(2)
         }
-        accuracyMarker =  ctrl.addMarker().also {
+        accuracyMarker = ctrl.addMarker().also {
             it.setDrawable(accuracyImg)
             it.setDrawOrder(1)
         }
@@ -115,14 +117,14 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
     /** Update the GPS position shown on the map */
     private fun updateLocation() {
         if (!isVisible) return
-        val pos = location?.let { OsmLatLon(it.latitude, it.longitude) } ?: return
+        val pos = location?.toLatLon() ?: return
 
         accuracyMarker.isVisible = true
-        accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
+        accuracyMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         locationMarker.isVisible = true
-        locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
+        locationMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
         directionMarker.isVisible = rotation != null
-        directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC)
+        directionMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
 
         updateAccuracy()
     }
@@ -141,7 +143,8 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             order: 2000,
             flat: true,
             collide: false
-        }""".trimIndent())
+        }
+        """)
     }
 
     /** Update the marker that shows the direction in which the smartphone is held */
@@ -160,7 +163,8 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
             collide: false,
             flat: true,
             angle: $rotation
-        }""".trimIndent())
+        }
+        """)
     }
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {

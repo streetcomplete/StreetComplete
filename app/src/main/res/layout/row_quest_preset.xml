@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    tools:ignore="RtlSymmetry">
+
+    <TextView
+        android:id="@+id/presetTitleText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:textSize="18sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        tools:text="@string/quest_presets_default_name"/>
+
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="12dp"
+        android:focusable="true"
+         />
+
+    <FrameLayout
+        android:id="@+id/selectionRadioButtonContainer"
+        android:layout_width="@dimen/table_icon_size"
+        android:layout_height="@dimen/table_icon_size"
+        android:layout_marginStart="32dp">
+
+        <RadioButton
+            android:id="@+id/selectionRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""/>
+
+    </FrameLayout>
+
+</LinearLayout>

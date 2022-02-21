@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import kotlinx.serialization.Serializable
+
 /** A diff that can be applied on a map of strings. Use StringMapChangesBuilder to conveniently build
  * it. A StringMapChanges is immutable.  */
-class StringMapChanges(changes: Collection<StringMapEntryChange>) {
-    val changes: List<StringMapEntryChange> = ArrayList(changes)
+@Serializable
+class StringMapChanges(val changes: Set<StringMapEntryChange>) {
+
+    constructor(changes: Collection<StringMapEntryChange>) : this(changes.toSet())
 
     fun isEmpty() = changes.isEmpty()
 

@@ -22,9 +22,10 @@ object NoteTable {
             ${Columns.CREATED} int NOT NULL,
             ${Columns.CLOSED} int,
             ${Columns.STATUS} varchar(255) NOT NULL,
-            ${Columns.COMMENTS} blob NOT NULL,
+            ${Columns.COMMENTS} text NOT NULL,
             ${Columns.LAST_SYNC} int NOT NULL
-        );"""
+        );
+    """
 
     const val SPATIAL_INDEX_CREATE = """
         CREATE INDEX osm_notes_spatial_index ON $NAME (

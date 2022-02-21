@@ -3,7 +3,7 @@ import com.beust.klaxon.Parser
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.util.*
+import java.util.Locale
 
 /** Update the metadata that contain the store descriptions for the app (for F-Droid) */
 open class UpdateStoreDescriptionsTask : AUpdateFromPOEditorTask() {

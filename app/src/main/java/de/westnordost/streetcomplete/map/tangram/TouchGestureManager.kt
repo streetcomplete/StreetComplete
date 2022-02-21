@@ -26,8 +26,7 @@ class TouchGestureManager(private val c: MapController) {
     fun setShoveResponder(responder: TouchInput.ShoveResponder?) {
         if (responder == null) {
             c.touchInput.setShoveResponder(defaultShoveResponder)
-        }
-        else {
+        } else {
             c.touchInput.setShoveResponder(object : TouchInput.ShoveResponder {
                 override fun onShoveBegin(): Boolean {
                     if (responder.onShoveBegin()) return false
@@ -49,8 +48,7 @@ class TouchGestureManager(private val c: MapController) {
     fun setScaleResponder(responder: TouchInput.ScaleResponder?) {
         if (responder == null) {
             c.touchInput.setScaleResponder(defaultScaleResponder)
-        }
-        else {
+        } else {
             c.touchInput.setScaleResponder(object : TouchInput.ScaleResponder {
                 override fun onScaleBegin(): Boolean {
                     if (responder.onScaleBegin()) return false
@@ -73,8 +71,7 @@ class TouchGestureManager(private val c: MapController) {
     fun setRotateResponder(responder: TouchInput.RotateResponder?) {
         if (responder == null) {
             c.touchInput.setRotateResponder(defaultRotateResponse)
-        }
-        else {
+        } else {
             c.touchInput.setRotateResponder(object : TouchInput.RotateResponder {
                 override fun onRotateBegin(): Boolean {
                     if (responder.onRotateBegin()) return false
@@ -97,15 +94,14 @@ class TouchGestureManager(private val c: MapController) {
     fun setPanResponder(responder: TouchInput.PanResponder?) {
         if (responder == null) {
             c.touchInput.setPanResponder(defaultPanResponder)
-        }
-        else {
+        } else {
             c.touchInput.setPanResponder(object : TouchInput.PanResponder {
                 override fun onPanBegin(): Boolean {
                     if (responder.onPanBegin()) return false
                     return defaultPanResponder.onPanBegin()
                 }
 
-                override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float ): Boolean {
+                override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float): Boolean {
                     if (responder.onPan(startX, startY, endX, endY)) return false
                     return defaultPanResponder.onPan(startX, startY, endX, endY)
                 }

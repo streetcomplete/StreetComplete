@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
-import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class AddTactilePavingCrosswalkTest {
@@ -25,7 +26,7 @@ class AddTactilePavingCrosswalkTest {
 
     @Test fun `not applicable to crossing with private road`() {
         val crossing = node(id = 1, tags = mapOf("highway" to "crossing"))
-        val privateRoad = way(nodes = listOf(1,2,3), tags = mapOf(
+        val privateRoad = way(nodes = listOf(1, 2, 3), tags = mapOf(
             "highway" to "residential",
             "access" to "private"
         ))

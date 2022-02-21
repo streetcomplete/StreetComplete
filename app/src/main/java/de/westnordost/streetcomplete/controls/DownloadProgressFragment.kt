@@ -3,34 +3,29 @@ package de.westnordost.streetcomplete.controls
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that takes care of showing the download progress */
 class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
 
-    @Inject internal lateinit var downloadProgressSource: DownloadProgressSource
+    private val downloadProgressSource: DownloadProgressSource by inject()
 
     private val progressView get() = view as IconsDownloadProgressView
 
     private val downloadProgressListener = object : DownloadProgressListener {
-        override fun onStarted() { lifecycleScope.launch { animateInProgressView() }}
-        override fun onFinished() { lifecycleScope.launch { animateOutProgressView() }}
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
+        override fun onStarted() { viewLifecycleScope.launch { animateInProgressView() } }
+        override fun onFinished() { viewLifecycleScope.launch { animateOutProgressView() } }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressView.setIcon(resources.getDrawable(R.drawable.ic_search_black_128dp))
+        progressView.setIcon(context?.getDrawable(R.drawable.ic_search_black_128dp)!!)
     }
 
     override fun onStart() {

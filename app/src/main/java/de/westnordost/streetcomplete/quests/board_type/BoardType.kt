@@ -9,4 +9,5 @@ enum class BoardType(val osmValue: String) {
     PUBLIC_TRANSPORT("public_transport"),
     NOTICE("notice"),
     MAP("map"),
+    SPORT("sport")
 }

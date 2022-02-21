@@ -2,7 +2,12 @@ package de.westnordost.streetcomplete.quests.lanes
 
 import android.animation.TimeAnimator
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.DashPathEffect
+import android.graphics.Matrix
+import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -14,13 +19,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.ktx.isApril1st
 import de.westnordost.streetcomplete.ktx.showTapHint
-import de.westnordost.streetcomplete.quests.lanes.LineStyle.*
-import kotlinx.android.synthetic.main.lanes_select_puzzle.view.*
+import de.westnordost.streetcomplete.quests.lanes.LineStyle.CONTINUOUS
+import de.westnordost.streetcomplete.quests.lanes.LineStyle.DASHES
+import de.westnordost.streetcomplete.quests.lanes.LineStyle.SHORT_DASHES
 import kotlin.math.max
 import kotlin.random.Random
-
 
 class LanesSelectPuzzle @JvmOverloads constructor(
     context: Context,
@@ -30,20 +37,21 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
     private val animator = TimeAnimator()
 
-    private val questionMark: Drawable = context.resources.getDrawable(R.drawable.ic_lanes_unknown)
+    private val binding: ViewLanesSelectPuzzleBinding
+    private val questionMark: Drawable = context.getDrawable(R.drawable.ic_street_side_unknown)!!
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
         set(value) {
             field = value
             if (value == null) {
-                leftSideClickArea.setOnClickListener(null)
-                rightSideClickArea.setOnClickListener(null)
-                leftSideClickArea.isClickable = false
-                rightSideClickArea.isClickable = false
+                binding.leftSideClickArea.setOnClickListener(null)
+                binding.rightSideClickArea.setOnClickListener(null)
+                binding.leftSideClickArea.isClickable = false
+                binding.rightSideClickArea.isClickable = false
             } else {
                 isClickable = false
-                leftSideClickArea.setOnClickListener { value.invoke(false) }
-                rightSideClickArea.setOnClickListener { value.invoke(true) }
+                binding.leftSideClickArea.setOnClickListener { value.invoke(false) }
+                binding.rightSideClickArea.setOnClickListener { value.invoke(true) }
             }
         }
 
@@ -54,56 +62,56 @@ class LanesSelectPuzzle @JvmOverloads constructor(
                 setOnClickListener(null)
                 isClickable = false
             } else {
-                leftSideClickArea.isClickable = false
-                rightSideClickArea.isClickable = false
+                binding.leftSideClickArea.isClickable = false
+                binding.rightSideClickArea.isClickable = false
                 setOnClickListener { value.invoke() }
             }
         }
 
     var isShowingLaneMarkings: Boolean = true
-    set(value) {
-        if (field != value) {
-            field = value
-            invalidate()
+        set(value) {
+            if (field != value) {
+                field = value
+                invalidate()
+            }
         }
-    }
     var laneCountLeft: Int = 0
-    private set
+        private set
 
     var laneCountRight: Int = 0
-    private set
+        private set
 
     var hasCenterLeftTurnLane: Boolean = false
 
     var isShowingBothSides: Boolean = true
-    set(value) {
-        if (field != value) {
-            field = value
-            updateLanes()
+        set(value) {
+            if (field != value) {
+                field = value
+                updateLanes()
+            }
         }
-    }
 
     var isForwardTraffic: Boolean = true
 
     var centerLineColor: Int
-    set(value) {
-        centerLinePaint.color = value
-        invalidate()
-    }
-    get() = centerLinePaint.color
-
-    var shoulderLineColor: Int
         set(value) {
-            shoulderLinePaint.color = value
+            centerLinePaint.color = value
             invalidate()
         }
-        get() = shoulderLinePaint.color
+        get() = centerLinePaint.color
 
-    var shoulderLineStyle: LineStyle = CONTINUOUS
-    set(value) {
-        field = value
-        invalidate()
-    }
+    var edgeLineColor: Int
+        set(value) {
+            edgeLinePaint.color = value
+            invalidate()
+        }
+        get() = edgeLinePaint.color
+
+    var edgeLineStyle: LineStyle = CONTINUOUS
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     private val roadPaint = Paint().also {
         it.color = Color.parseColor("#808080")
@@ -122,7 +130,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         it.isAntiAlias = true
     }
 
-    private val shoulderLinePaint = Paint().also {
+    private val edgeLinePaint = Paint().also {
         it.color = Color.WHITE
         it.style = Paint.Style.STROKE
         it.isAntiAlias = true
@@ -165,9 +173,10 @@ class LanesSelectPuzzle @JvmOverloads constructor(
     init {
         setWillNotDraw(false)
 
-        carBitmaps = CAR_RES_IDS.map { resources.getBitmapDrawable(it).bitmap }
+        val carResIds = if (isApril1st()) listOf(R.drawable.car_nyan) else CAR_RES_IDS
+        carBitmaps = carResIds.map { resources.getBitmapDrawable(it).bitmap }
 
-        LayoutInflater.from(context).inflate(R.layout.lanes_select_puzzle, this, true)
+        binding = ViewLanesSelectPuzzleBinding.inflate(LayoutInflater.from(context), this)
 
         animator.setTimeListener { _, _, deltaTime ->
             moveCars(deltaTime)
@@ -197,8 +206,8 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         updateCarsOnLanes(right, carsOnLanesRight, isForwardTraffic)
 
         if ((laneCountLeft <= 0 || laneCountRight <= 0) && !HAS_SHOWN_TAP_HINT) {
-            if (laneCountLeft <= 0) leftSideClickArea.showTapHint(300)
-            if (laneCountRight <= 0) rightSideClickArea.showTapHint(1200)
+            if (laneCountLeft <= 0) binding.leftSideClickArea.showTapHint(300)
+            if (laneCountRight <= 0) binding.rightSideClickArea.showTapHint(1200)
             HAS_SHOWN_TAP_HINT = true
         }
 
@@ -218,14 +227,14 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val rightLanesStart = rightLanesStart
         val zoom = if (isShowingBothSides && isShowingOneLaneUnmarked) 1.4f / laneWidth else 1f / laneWidth
 
-        val shoulderWidth = SHOULDER_WIDTH * laneWidth
+        val edgeWidth = SHOULDER_WIDTH * laneWidth
 
         val lineWidth = LANE_MARKING_WIDTH / zoom
 
         val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 6, lineWidth * 10), 0f)
 
-        shoulderLinePaint.strokeWidth = lineWidth
-        shoulderLinePaint.pathEffect = when(shoulderLineStyle) {
+        edgeLinePaint.strokeWidth = lineWidth
+        edgeLinePaint.pathEffect = when (edgeLineStyle) {
             CONTINUOUS -> null
             DASHES -> dashEffect
             SHORT_DASHES -> DashPathEffect(floatArrayOf(lineWidth * 4, lineWidth * 4), 0f)
@@ -255,16 +264,16 @@ class LanesSelectPuzzle @JvmOverloads constructor(
 
         // 1. markings for the shoulders
         if (laneCountLeft > 0 || isShowingOnlyRightSide) {
-            canvas.drawVerticalLine(leftLanesStart * laneWidth, shoulderLinePaint)
+            canvas.drawVerticalLine(leftLanesStart * laneWidth, edgeLinePaint)
         }
         if (laneCountRight > 0) {
-            canvas.drawVerticalLine(shoulderWidth + lanesSpace * laneWidth, shoulderLinePaint)
+            canvas.drawVerticalLine(edgeWidth + lanesSpace * laneWidth, edgeLinePaint)
         }
 
         // 2. lane markings
         if (isShowingLaneMarkings) {
             for (x in 1 until laneCountLeft) {
-                canvas.drawVerticalLine(shoulderWidth + x * laneWidth, laneSeparatorLinePaint)
+                canvas.drawVerticalLine(edgeWidth + x * laneWidth, laneSeparatorLinePaint)
             }
             for (x in 1 until laneCountRight) {
                 canvas.drawVerticalLine((rightLanesStart + x) * laneWidth, laneSeparatorLinePaint)
@@ -306,11 +315,11 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val laneWidth = laneWidth
         if (laneWidth == 0f) return
 
-        leftSideClickArea.isGone = isShowingOnlyRightSide
-        leftSideClickArea.updateLayoutParams {
+        binding.leftSideClickArea.isGone = isShowingOnlyRightSide
+        binding.leftSideClickArea.updateLayoutParams {
             width = (leftLanesEnd * laneWidth).toInt()
         }
-        rightSideClickArea.updateLayoutParams {
+        binding.rightSideClickArea.updateLayoutParams {
             width = w - (rightLanesStart * laneWidth).toInt()
         }
 
@@ -336,15 +345,15 @@ class LanesSelectPuzzle @JvmOverloads constructor(
            we need to go faster/slower */
         val ratio = 1f * w / h
         val zoom = max(3, lanesSpace)
-        val delta = ratio * deltaTime/1000f / zoom
+        val delta = ratio * deltaTime / 1000f / zoom
 
-        for(car in carsOnLanesLeft) {
+        for (car in carsOnLanesLeft) {
             car.position += delta * car.speed
             if (car.isOutOfBounds) {
                 car.reset(!isForwardTraffic, carBitmaps)
             }
         }
-        for(car in carsOnLanesRight) {
+        for (car in carsOnLanesRight) {
             car.position += delta * car.speed
             if (car.isOutOfBounds) {
                 if (isShowingBothSides && isShowingOneLaneUnmarked) {
@@ -374,6 +383,7 @@ private val CAR_RES_IDS = listOf(
     R.drawable.ic_car1b,
     R.drawable.ic_car2,
     R.drawable.ic_car2a,
+    R.drawable.ic_car2b,
     R.drawable.ic_car3,
     R.drawable.ic_car3a,
     R.drawable.ic_car4,

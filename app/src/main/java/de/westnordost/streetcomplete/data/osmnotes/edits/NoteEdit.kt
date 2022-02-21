@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 /** Contains all necessary information to create/comment on an OSM note. */
 data class NoteEdit(
@@ -33,7 +33,7 @@ data class NoteEdit(
 
     /** Whether the images attached still need activation. Already true if imagePaths is empty */
     val imagesNeedActivation: Boolean
-): Edit {
+) : Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)
 }

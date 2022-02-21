@@ -26,7 +26,7 @@
 
         <include
             android:id="@+id/feetInputSign"
-            layout="@layout/quest_maxheight_feet"/>
+            layout="@layout/quest_maxheight_feet" />
 
     </RelativeLayout>
 
@@ -39,6 +39,7 @@
         android:paddingStart="16dp"
         android:background="#0fff"
         android:visibility="gone"
-        tools:visibility="visible"/>
+        tools:visibility="visible"
+        tools:ignore="RtlSymmetry" />
 
 </RelativeLayout>

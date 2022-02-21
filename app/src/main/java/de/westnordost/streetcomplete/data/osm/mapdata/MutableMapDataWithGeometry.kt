@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -37,17 +36,17 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         putGeometry(element.type, element.id, geometry)
     }
 
-    fun remove(type: Element.Type, id: Long) {
-        when(type) {
-            Element.Type.NODE -> {
+    fun remove(type: ElementType, id: Long) {
+        when (type) {
+            ElementType.NODE -> {
                 nodesById.remove(id)
                 nodeGeometriesById.remove(id)
             }
-            Element.Type.WAY -> {
+            ElementType.WAY -> {
                 waysById.remove(id)
                 wayGeometriesById.remove(id)
             }
-            Element.Type.RELATION -> {
+            ElementType.RELATION -> {
                 relationsById.remove(id)
                 relationGeometriesById.remove(id)
             }
@@ -65,18 +64,18 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
 
     fun putElement(element: Element) {
         val id = element.id
-        when(element) {
+        when (element) {
             is Node -> nodesById[id] = element
-            is Way ->  waysById[id] = element
+            is Way -> waysById[id] = element
             is Relation -> relationsById[id] = element
         }
     }
 
-    fun putGeometry(type: Element.Type, id: Long, geometry: ElementGeometry?) {
-        when(type) {
-            Element.Type.NODE -> nodeGeometriesById[id] = geometry as? ElementPointGeometry
-            Element.Type.WAY -> wayGeometriesById[id] = geometry
-            Element.Type.RELATION -> relationGeometriesById[id] = geometry
+    fun putGeometry(type: ElementType, id: Long, geometry: ElementGeometry?) {
+        when (type) {
+            ElementType.NODE -> nodeGeometriesById[id] = geometry as? ElementPointGeometry
+            ElementType.WAY -> wayGeometriesById[id] = geometry
+            ElementType.RELATION -> relationGeometriesById[id] = geometry
         }
     }
 

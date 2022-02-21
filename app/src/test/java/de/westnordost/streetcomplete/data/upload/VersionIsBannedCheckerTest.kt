@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class VersionIsBannedCheckerTest {

@@ -2,17 +2,15 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
+import androidx.core.view.isGone
 import androidx.preference.PreferenceManager
-
-import java.util.ArrayList
-import java.util.LinkedList
-
+import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import kotlinx.android.synthetic.main.quest_generic_list.*
+import kotlin.collections.ArrayList
 
 /**
  * Abstract class for quests with a list of images and one or several to select.
@@ -23,14 +21,18 @@ import kotlinx.android.synthetic.main.quest_generic_list.*
  * T is the type of the answer object (also a simple model object) created by the quest
  * form and consumed by the quest type. In MVC, this would be the model.
  */
-abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AImageListQuestAnswerFragment<I, T> : AbstractQuestFormAnswerFragment<T>() {
 
-    override val contentLayoutResId = R.layout.quest_generic_list
+    final override val contentLayoutResId = R.layout.quest_generic_list
+    private val binding by contentViewBinding(QuestGenericListBinding::bind)
+
     override val defaultExpanded = false
+
+    protected open val descriptionResId: Int? = null
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
 
-    private lateinit var favs: LastPickedValuesStore<I>
+    private lateinit var favs: LastPickedValuesStore<DisplayItem<I>>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -38,26 +40,37 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     /** return true to move last picked items to the front. On by default. Only respected if the
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
-
+    /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
+
+    private lateinit var itemsByString: Map<String, DisplayItem<I>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = ImageSelectAdapter(maxSelectableItems)
+        itemsByString = items.associateBy { it.value.toString() }
     }
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.value.toString() },
+            deserialize = { itemsByString[it] }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        list.layoutManager = GridLayoutManager(activity, itemsPerRow)
-        list.isNestedScrollingEnabled = false
+        binding.descriptionLabel.isGone = descriptionResId == null
+        descriptionResId?.let { binding.descriptionLabel.setText(it) }
 
-        selectHintLabel.setText(if (maxSelectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
+        binding.list.layoutManager = GridLayoutManager(activity, itemsPerRow)
+        binding.list.isNestedScrollingEnabled = false
+
+        binding.selectHintLabel.setText(if (maxSelectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
 
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
@@ -69,21 +82,21 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
             }
         })
 
-        showMoreButton.visibility = View.GONE
-        
+        binding.showMoreButton.visibility = View.GONE
+
         imageSelector.items = moveFavouritesToFront(items)
         if (savedInstanceState != null) {
             val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!
             imageSelector.select(selectedIndices)
         }
-        list.adapter = imageSelector
+        binding.list.adapter = imageSelector
     }
 
     override fun onClickOk() {
         val values = imageSelector.selectedItems
         if (values.isNotEmpty()) {
-            favs.add(javaClass.simpleName, values)
-            onClickOk(values)
+            favs.add(values)
+            onClickOk(values.map { it.value!! })
         }
     }
 
@@ -98,12 +111,11 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        val result: LinkedList<DisplayItem<I>> = LinkedList(originalList)
-
-        if (result.size > itemsPerRow && moveFavoritesToFront) {
-            favs.moveLastPickedDisplayItemsToFront(javaClass.simpleName, result, originalList)
+        return if (originalList.size > itemsPerRow && moveFavoritesToFront) {
+            favs.get().filterNotNull().padWith(originalList).toList()
+        } else {
+            originalList
         }
-        return result
     }
 
     companion object {

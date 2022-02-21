@@ -1,28 +1,34 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import android.util.Log
-import de.westnordost.osmapi.map.*
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.edits.*
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
+import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.data.user.StatisticsUpdater
-import kotlinx.coroutines.*
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
-import javax.inject.Inject
-
-class ElementEditsUploader @Inject constructor(
+class ElementEditsUploader(
     private val elementEditsController: ElementEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
-    private val statisticsUpdater: StatisticsUpdater
+    private val statisticsController: StatisticsController
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -34,7 +40,7 @@ class ElementEditsUploader @Inject constructor(
             val edit = elementEditsController.getOldestUnsynced() ?: break
             val idProvider = elementEditsController.getIdProvider(edit.id)
             /* the sync of local change -> API and its response should not be cancellable because
-             * otherwise an inconsistency in the data would occur. F.e. no "star" for an uploaded
+             * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
             withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
         }
@@ -50,37 +56,36 @@ class ElementEditsUploader @Inject constructor(
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(questTypeName, edit.position)
 
-            elementEditsController.synced(edit, updates)
+            elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
 
             if (edit.action is IsRevertAction) {
-                statisticsUpdater.subtractOne(questTypeName, edit.position)
+                statisticsController.subtractOne(edit.questType, edit.position)
             } else {
-                statisticsUpdater.addOne(questTypeName, edit.position)
+                statisticsController.addOne(edit.questType, edit.position)
             }
-
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
             uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
 
-            elementEditsController.syncFailed(edit)
+            elementEditsController.markSyncFailed(edit)
 
             val mapData = fetchElementComplete(edit.elementType, edit.elementId)
             if (mapData != null) {
-                mapDataController.updateAll(ElementUpdates(updated = mapData.toList()))
+                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
             } else {
                 val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(ElementUpdates(deleted = listOf(elementKey)))
+                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
             }
         }
     }
 
-    private suspend fun fetchElementComplete(elementType: Element.Type, elementId: Long): MapData? =
+    private suspend fun fetchElementComplete(elementType: ElementType, elementId: Long): MapData? =
         withContext(Dispatchers.IO) {
             when (elementType) {
-                NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
-                WAY -> mapDataApi.getWayComplete(elementId)
-                RELATION -> mapDataApi.getRelationComplete(elementId)
+                ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
+                ElementType.WAY -> mapDataApi.getWayComplete(elementId)
+                ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
             }
         }
 

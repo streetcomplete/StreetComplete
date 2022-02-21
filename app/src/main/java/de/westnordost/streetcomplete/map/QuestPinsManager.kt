@@ -5,14 +5,29 @@ import android.graphics.RectF
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.map.components.Pin
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.tangram.KtMapController
-import de.westnordost.streetcomplete.util.*
-import kotlinx.coroutines.*
+import de.westnordost.streetcomplete.util.TilePos
+import de.westnordost.streetcomplete.util.TilesRect
+import de.westnordost.streetcomplete.util.enclosingTilesRect
+import de.westnordost.streetcomplete.util.minTileRect
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -20,11 +35,11 @@ import kotlinx.coroutines.*
 class QuestPinsManager(
     private val ctrl: KtMapController,
     private val pinsMapComponent: PinsMapComponent,
+    private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val questTypeOrderList: QuestTypeOrderList,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-): LifecycleObserver {
+) : LifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -36,14 +51,14 @@ class QuestPinsManager(
     // quest key -> [point, ...]
     private val quests: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
 
-    private val lifecycleScope: CoroutineScope
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    /** Switch visibility of quest pins layer */
+    /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value) show() else hide()
+            if (value) start() else stop()
         }
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
@@ -59,34 +74,33 @@ class QuestPinsManager(
         }
     }
 
-    private val questTypeOrderListener = object : QuestTypeOrderList.Listener {
-        override fun onUpdated() {
-            initializeQuestTypeOrders()
-            invalidate()
+    private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
+        override fun onQuestTypeOrderAdded(item: QuestType<*>, toAfter: QuestType<*>) {
+            reinitializeQuestTypeOrders()
+        }
+
+        override fun onQuestTypeOrdersChanged() {
+            reinitializeQuestTypeOrders()
         }
     }
 
-    init {
-        lifecycleScope = CoroutineScope(SupervisorJob())
-    }
-
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        hide()
-        lifecycleScope.cancel()
+        stop()
+        viewLifecycleScope.cancel()
     }
 
-    private fun show() {
+    private fun start() {
         initializeQuestTypeOrders()
         onNewScreenPosition()
         visibleQuestsSource.addListener(visibleQuestsListener)
-        questTypeOrderList.addListener(questTypeOrderListener)
+        questTypeOrderSource.addListener(questTypeOrderListener)
     }
 
-    private fun hide() {
+    private fun stop() {
         clear()
-        lifecycleScope.coroutineContext.cancelChildren()
+        viewLifecycleScope.coroutineContext.cancelChildren()
         visibleQuestsSource.removeListener(visibleQuestsListener)
-        questTypeOrderList.removeListener(questTypeOrderListener)
+        questTypeOrderSource.removeListener(questTypeOrderListener)
     }
 
     private fun invalidate() {
@@ -120,7 +134,7 @@ class QuestPinsManager(
         }
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
             var addedAny = false
             for (quest in quests) {
@@ -163,16 +177,19 @@ class QuestPinsManager(
     private fun updatePins() {
         if (isActive) {
             val pins = synchronized(quests) { quests.values.flatten() }
-            pinsMapComponent.showPins(pins)
+            pinsMapComponent.set(pins)
         }
     }
 
     private fun initializeQuestTypeOrders() {
         // this needs to be reinitialized when the quest order changes
-        val questTypes = questTypeRegistry.all.toMutableList()
-        questTypeOrderList.sort(questTypes)
-        questTypes.forEachIndexed { index, questType ->
-            questTypeOrders[questType] = index
+        val sortedQuestTypes = questTypeRegistry.toMutableList()
+        questTypeOrderSource.sort(sortedQuestTypes)
+        synchronized(questTypeOrders) {
+            questTypeOrders.clear()
+            sortedQuestTypes.forEachIndexed { index, questType ->
+                questTypeOrders[questType] = index
+            }
         }
     }
 
@@ -184,13 +201,18 @@ class QuestPinsManager(
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
-    private fun getQuestImportance(quest: Quest): Int {
+    private fun getQuestImportance(quest: Quest): Int = synchronized(questTypeOrders) {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* position is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
         val hopefullyUniqueValueForQuest = quest.position.hashCode() % freeValuesForEachQuest
         return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
+    }
+
+    private fun reinitializeQuestTypeOrders() {
+        initializeQuestTypeOrders()
+        invalidate()
     }
 
     companion object {
@@ -208,7 +230,7 @@ private const val MARKER_NOTE_ID = "note_id"
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 
-private fun QuestKey.toProperties(): Map<String, String> = when(this) {
+private fun QuestKey.toProperties(): Map<String, String> = when (this) {
     is OsmNoteQuestKey -> mapOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_NOTE_ID to noteId.toString()
@@ -221,12 +243,12 @@ private fun QuestKey.toProperties(): Map<String, String> = when(this) {
     )
 }
 
-private fun Map<String, String>.toQuestKey(): QuestKey? = when(get(MARKER_QUEST_GROUP)) {
+private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST_GROUP)) {
     QUEST_GROUP_OSM_NOTE ->
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
     QUEST_GROUP_OSM ->
         OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { Element.Type.valueOf(it) },
+            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         )

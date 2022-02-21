@@ -5,16 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.util.enclosingTilesRect
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controls downloading */
-@Singleton class DownloadController @Inject constructor(
+class DownloadController(
     private val context: Context
-): DownloadProgressSource {
+) : DownloadProgressSource {
 
     private var downloadServiceIsBound: Boolean = false
     private var downloadService: DownloadService.Interface? = null

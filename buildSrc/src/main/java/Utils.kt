@@ -1,8 +1,6 @@
-import java.util.*
+import java.util.Locale
 
-
-
-// Java (and thus also Android) uses some old iso (language) codes. F.e. id -> in etc.
+// Java (and thus also Android) uses some old iso (language) codes. E.g. id -> in etc.
 // so the localized files also need to use the old iso codes
 fun bcp47LanguageTagToJavaLanguageTag(bcp47: String): String {
     val locale = Locale.forLanguageTag(bcp47)

@@ -1,22 +1,20 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.Note
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class NoteEditsController @Inject constructor(
+class NoteEditsController(
     private val editsDB: NoteEditsDao
-): NoteEditsSource {
+) : NoteEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
     private val listeners: MutableList<NoteEditsSource.Listener> = CopyOnWriteArrayList()
 
-    @Synchronized fun add(
+    fun add(
         noteId: Long,
         action: NoteEditAction,
         position: LatLon,
@@ -34,7 +32,7 @@ import javax.inject.Singleton
             false,
             imagePaths.isNotEmpty()
         )
-        editsDB.add(edit)
+        synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)
     }
 
@@ -68,36 +66,44 @@ import javax.inject.Singleton
     fun getOldestNeedingImagesActivation(): NoteEdit? =
         editsDB.getOldestNeedingImagesActivation()
 
-    @Synchronized fun imagesActivated(id: Long): Boolean =
-        editsDB.markImagesActivated(id)
+    fun markImagesActivated(id: Long): Boolean =
+        synchronized(this) { editsDB.markImagesActivated(id) }
 
-    @Synchronized fun synced(edit: NoteEdit, note: Note) {
-        if (edit.noteId != note.id) {
-            editsDB.updateNoteId(edit.noteId, note.id)
+    fun markSynced(edit: NoteEdit, note: Note) {
+        val markSyncedSuccess: Boolean
+        synchronized(this) {
+            if (edit.noteId != note.id) {
+                editsDB.updateNoteId(edit.noteId, note.id)
+            }
+            markSyncedSuccess = editsDB.markSynced(edit.id)
         }
-        if (editsDB.markSynced(edit.id)) {
+
+        if (markSyncedSuccess) {
             onSyncedEdit(edit)
         }
     }
 
-    @Synchronized fun syncFailed(edit: NoteEdit) {
+    fun markSyncFailed(edit: NoteEdit): Boolean =
         delete(edit)
-    }
 
-    @Synchronized fun undo(edit: NoteEdit): Boolean {
-        return delete(edit)
-    }
+    fun undo(edit: NoteEdit): Boolean =
+        delete(edit)
 
-    @Synchronized fun deleteSyncedOlderThan(timestamp: Long): Int {
-        val edits = editsDB.getSyncedOlderThan(timestamp)
-        if (edits.isEmpty()) return 0
-        val result = editsDB.deleteAll(edits.map { it.id })
-        onDeletedEdits(edits)
-        return result
+    fun deleteSyncedOlderThan(timestamp: Long): Int {
+        val deletedCount: Int
+        val deleteEdits: List<NoteEdit>
+        synchronized(this) {
+            deleteEdits = editsDB.getSyncedOlderThan(timestamp)
+            if (deleteEdits.isEmpty()) return 0
+            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
+        }
+        onDeletedEdits(deleteEdits)
+        return deletedCount
     }
 
     private fun delete(edit: NoteEdit): Boolean {
-        if (editsDB.delete(edit.id)) {
+        val deleteSuccess = synchronized(this) { editsDB.delete(edit.id) }
+        if (deleteSuccess) {
             onDeletedEdits(listOf(edit))
             return false
         }

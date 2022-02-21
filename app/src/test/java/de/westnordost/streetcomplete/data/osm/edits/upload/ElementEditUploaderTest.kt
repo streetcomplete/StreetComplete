@@ -1,18 +1,17 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.data.MapDataApi
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
-import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.edit
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import org.junit.Before
-
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.doThrow
@@ -32,20 +31,20 @@ class ElementEditUploaderTest {
 
     @Test(expected = ConflictException::class)
     fun `throws deleted exception if node is no more`() {
-        on(mapDataApi.getNode(anyLong())).thenReturn(null)
-        uploader.upload(edit(elementType = Element.Type.NODE, elementId = 12), mock())
+        on(mapDataApi.getNode(12)).thenReturn(null)
+        uploader.upload(edit(element = node(12)), mock())
     }
 
     @Test(expected = ConflictException::class)
     fun `throws deleted exception if way is no more`() {
-        on(mapDataApi.getWay(anyLong())).thenReturn(null)
-        uploader.upload(edit(elementType = Element.Type.WAY, elementId = 12), mock())
+        on(mapDataApi.getWay(12)).thenReturn(null)
+        uploader.upload(edit(element = way(12)), mock())
     }
 
     @Test(expected = ConflictException::class)
     fun `throws deleted exception if relation is no more`() {
-        on(mapDataApi.getRelation(anyLong())).thenReturn(null)
-        uploader.upload(edit(elementType = Element.Type.RELATION, elementId = 12), mock())
+        on(mapDataApi.getRelation(12)).thenReturn(null)
+        uploader.upload(edit(element = rel(12)), mock())
     }
 
     @Test(expected = ConflictException::class)
@@ -54,11 +53,11 @@ class ElementEditUploaderTest {
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
-        on(mapDataApi.uploadChanges(anyLong(), any(), any()))
-            .thenThrow(OsmConflictException(1,"",""))
-            .thenThrow(OsmConflictException(1,"",""))
+        on(mapDataApi.uploadChanges(anyLong(), any()))
+            .thenThrow(ConflictException())
+            .thenThrow(ConflictException())
 
-        uploader.upload(edit(elementType = Element.Type.NODE, elementId = 1), mock())
+        uploader.upload(edit(element = node(1)), mock())
     }
 
     @Test fun `handles changeset conflict exception`() {
@@ -66,9 +65,9 @@ class ElementEditUploaderTest {
         on(mapDataApi.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
-        doThrow(OsmConflictException(1,"","")).doAnswer {  }
-            .on(mapDataApi).uploadChanges(anyLong(), any(), any())
+        doThrow(ConflictException()).doAnswer { MapDataUpdates() }
+            .on(mapDataApi).uploadChanges(anyLong(), any())
 
-        uploader.upload(edit(elementType = Element.Type.NODE, elementId = 1), mock())
+        uploader.upload(edit(element = node(1)), mock())
     }
 }

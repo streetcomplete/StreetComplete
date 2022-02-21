@@ -1,25 +1,27 @@
+import com.beust.klaxon.JsonArray
+import com.beust.klaxon.JsonObject
+import com.beust.klaxon.Parser
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.net.URL
-import com.beust.klaxon.Parser
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.JsonArray
 import java.io.StringWriter
+import java.net.URL
 
 /** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures library */
 open class UpdatePresetsTask : DefaultTask() {
     @get:Input var languageCodes: Collection<String>? = null
     @get:Input var targetDir: String? = null
+    @get:Input var version: String? = null
 
     @TaskAction fun run() {
         val targetDir = targetDir ?: return
         val exportLangs = languageCodes
+        val version = version ?: return
 
         // copy the presets.json 1:1
         val presetsFile = File("$targetDir/presets.json")
-        presetsFile.writeText(fetchPresets())
+        presetsFile.writeText(fetchPresets(version))
 
         // download each language
         for (localizationMetadata in fetchLocalizationMetadata()) {
@@ -30,16 +32,14 @@ open class UpdatePresetsTask : DefaultTask() {
             println(localizationMetadata.languageCode)
 
             val presetsLocalization = fetchPresetsLocalizations(localizationMetadata)
-            if (presetsLocalization != null) {
-                val javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
-                File("$targetDir/${javaLanguage}.json").writeText(presetsLocalization)
-            }
+            val javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
+            File("$targetDir/$javaLanguage.json").writeText(presetsLocalization)
         }
     }
 
     /** Fetch iD presets */
-    private fun fetchPresets(): String {
-        val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/main/dist/presets.json"
+    private fun fetchPresets(version: String): String {
+        val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/$version/dist/presets.json"
         return URL(presetsUrl).readText()
     }
 

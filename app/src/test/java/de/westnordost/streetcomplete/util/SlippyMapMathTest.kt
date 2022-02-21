@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.util
 
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.p
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SlippyMapMathTest {
@@ -11,10 +13,10 @@ class SlippyMapMathTest {
         val p = p(53.0, 9.0)
         val tile = p.enclosingTilePos(15)
         val bbox = tile.asBoundingBox(15)
-        assertTrue(bbox.minLatitude <= p.latitude)
-        assertTrue(bbox.maxLatitude >= p.latitude)
-        assertTrue(bbox.minLongitude <= p.longitude)
-        assertTrue(bbox.maxLongitude >= p.longitude)
+        assertTrue(bbox.min.latitude <= p.latitude)
+        assertTrue(bbox.max.latitude >= p.latitude)
+        assertTrue(bbox.min.longitude <= p.longitude)
+        assertTrue(bbox.max.longitude >= p.longitude)
         val r = bbox.enclosingTilesRect(15)
         val bbox2 = r.asBoundingBox(15)
         assertEquals(bbox, bbox2)
@@ -40,7 +42,7 @@ class SlippyMapMathTest {
     }
 
     @Test fun `minTileRect of list with one entry returns tiles rect of size 1`() {
-        assertEquals(TilesRect(1,1,1,1), listOf(TilePos(1,1)).minTileRect())
+        assertEquals(TilesRect(1, 1, 1, 1), listOf(TilePos(1, 1)).minTileRect())
     }
 
     @Test fun `minTileRect returns correct minimum tiles rect`() {

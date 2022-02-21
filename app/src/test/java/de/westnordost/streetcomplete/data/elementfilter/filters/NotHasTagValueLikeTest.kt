@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.matches
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class NotHasTagValueLikeTest {
@@ -19,23 +20,5 @@ class NotHasTagValueLikeTest {
         assertFalse(f.matches(mapOf("noname" to "yes")))
         assertTrue(f.matches(mapOf("noname" to "no")))
         assertTrue(f.matches(mapOf()))
-    }
-
-    @Test fun `groups values properly`() {
-        val f = NotHasTagValueLike("highway", "residential|unclassified")
-
-        assertEquals(
-            "[highway !~ '^(residential|unclassified)$']",
-            f.toOverpassQLString()
-        )
-    }
-
-    @Test fun `key not value to string`() {
-        val f = NotHasTagValueLike("highway", ".*")
-
-        assertEquals(
-            "[highway !~ '^(.*)$']",
-            f.toOverpassQLString()
-        )
     }
 }

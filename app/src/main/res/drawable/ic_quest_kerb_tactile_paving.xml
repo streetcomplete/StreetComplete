@@ -30,7 +30,7 @@
       android:strokeColor="#000"
       android:strokeLineCap="round"/>
   <path
-      android:fillColor="#FF000000"
+      android:fillColor="#000"
       android:pathData="m88.478,33.059a8.21,8.21 0,0 0,8.21 8.21,8.21 8.21,0 0,0 8.21,-8.21 8.21,8.21 0,0 0,-8.21 -8.21,8.21 8.21,0 0,0 -8.21,8.21"
       android:strokeWidth=".16881"
       android:fillAlpha="0.2"/>

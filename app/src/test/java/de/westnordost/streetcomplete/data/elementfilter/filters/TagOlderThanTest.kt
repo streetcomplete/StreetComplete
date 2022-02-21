@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
 import de.westnordost.streetcomplete.data.elementfilter.matches
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class TagOlderThanTest {
@@ -66,19 +67,5 @@ class TagOlderThanTest {
             "lastcheck:opening_hours" to newDate.toCheckDateString(),
             "check_date:opening_hours" to newDate.toCheckDateString()
         ), newDate))
-    }
-
-    @Test fun `to string`() {
-        val date = dateDaysAgo(100f).toCheckDateString()
-        assertEquals(
-            "(if: date(timestamp()) < date('$date') || " +
-            "date(t['opening_hours:check_date']) < date('$date') || " +
-            "date(t['check_date:opening_hours']) < date('$date') || " +
-            "date(t['opening_hours:lastcheck']) < date('$date') || " +
-            "date(t['lastcheck:opening_hours']) < date('$date') || " +
-            "date(t['opening_hours:last_checked']) < date('$date') || " +
-            "date(t['last_checked:opening_hours']) < date('$date'))",
-            c.toOverpassQLString()
-        )
     }
 }

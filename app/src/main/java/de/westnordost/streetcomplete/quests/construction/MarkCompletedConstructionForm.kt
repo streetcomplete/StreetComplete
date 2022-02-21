@@ -2,30 +2,29 @@ package de.westnordost.streetcomplete.quests.construction
 
 import android.app.DatePickerDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import java.util.*
+import de.westnordost.streetcomplete.ktx.toInstant
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
+import java.time.LocalDate
 
-class MarkCompletedConstructionForm : AYesNoQuestAnswerFragment<CompletedConstructionAnswer>() {
+class MarkCompletedConstructionForm : AbstractQuestAnswerFragment<CompletedConstructionAnswer>() {
+
+    override val buttonPanelAnswers = listOf(
+        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(StateAnswer(false)) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(StateAnswer(true)) }
+    )
+
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_construction_completed_at_known_date) { setFinishDate() }
+        AnswerItem(R.string.quest_construction_completed_at_known_date) { setFinishDate() }
     )
 
     private fun setFinishDate() {
-        val tomorrow = Calendar.getInstance()
-        tomorrow.add(Calendar.DAY_OF_MONTH, 1)
-        val year = tomorrow.get(Calendar.YEAR)
-        val month = tomorrow.get(Calendar.MONTH)
-        val day = tomorrow.get(Calendar.DAY_OF_MONTH)
-        val dpd = DatePickerDialog(requireContext(), { _, yearSelected, monthSelected, dayOfMonthSelected ->
-            applyAnswer(OpeningDateAnswer(GregorianCalendar(yearSelected, monthSelected, dayOfMonthSelected).time))
-        }, year, month, day)
+        val tomorrow = LocalDate.now().plusDays(1)
+        val dpd = DatePickerDialog(requireContext(), { _, year, month, day ->
+            applyAnswer(OpeningDateAnswer(LocalDate.of(year, month + 1, day)))
+        }, tomorrow.year, tomorrow.monthValue - 1, tomorrow.dayOfMonth)
         dpd.setTitle(resources.getString(R.string.quest_construction_completion_date_title))
-        dpd.datePicker.minDate = tomorrow.timeInMillis
+        dpd.datePicker.minDate = tomorrow.toInstant().toEpochMilli()
         dpd.show()
-    }
-
-    override fun onClick(answer: Boolean) {
-        applyAnswer(StateAnswer(answer))
     }
 }

@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.quests.parking_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 
 class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
@@ -14,15 +15,17 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
         and (!access or access = unknown)
     """
 
-    override val commitMessage = "Add type of bike parking access"
+    override val changesetComment = "Add type of bike parking access"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_access
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_parking_access_title
+    override val questTypeAchievements = listOf(BICYCLIST)
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_parking_access_title2
 
     override fun createForm() = AddParkingAccessForm()
 
-    override fun applyAnswerTo(answer: ParkingAccess, changes: StringMapChangesBuilder) {
-        changes.addOrModify("access", answer.osmValue)
+    override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, timestampEdited: Long) {
+        tags["access"] = answer.osmValue
     }
 }

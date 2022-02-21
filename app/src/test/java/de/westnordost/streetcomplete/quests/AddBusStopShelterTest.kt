@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class AddBusStopShelterTest {
 
@@ -15,7 +16,7 @@ class AddBusStopShelterTest {
     @Test fun `apply shelter yes answer`() {
         questType.verifyAnswer(
             BusStopShelterAnswer.SHELTER,
-            StringMapEntryAdd("shelter","yes")
+            StringMapEntryAdd("shelter", "yes")
         )
     }
 
@@ -23,14 +24,15 @@ class AddBusStopShelterTest {
         questType.verifyAnswer(
             mapOf("shelter" to "yes"),
             BusStopShelterAnswer.SHELTER,
-            StringMapEntryAdd("check_date:shelter", Date().toCheckDateString())
+            StringMapEntryModify("shelter", "yes", "yes"),
+            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
         )
     }
 
     @Test fun `apply shelter no answer`() {
         questType.verifyAnswer(
             BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryAdd("shelter","no")
+            StringMapEntryAdd("shelter", "no")
         )
     }
 
@@ -38,7 +40,8 @@ class AddBusStopShelterTest {
         questType.verifyAnswer(
             mapOf("shelter" to "no"),
             BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryAdd("check_date:shelter", Date().toCheckDateString())
+            StringMapEntryModify("shelter", "no", "no"),
+            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
         )
     }
 

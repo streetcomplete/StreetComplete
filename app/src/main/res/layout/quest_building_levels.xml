@@ -6,14 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="bottom">
 
-    <ImageView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="6dp"
         android:layout_toLeftOf="@+id/buildingImage"
         android:layout_alignBottom="@+id/buildingImage"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/building_levels_illustration_bg_left"
-        android:scaleType="fitEnd"
+        android:background="#82a04e"
         tools:ignore="RtlHardcoded"/>
 
     <ImageView
@@ -25,14 +24,14 @@
         android:layout_centerHorizontal="true"
         />
 
-    <ImageView
+    <View
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="6dp"
         android:layout_toRightOf="@+id/buildingImage"
         android:layout_alignBottom="@+id/buildingImage"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="0.5dp"
-        android:background="@drawable/building_levels_illustration_bg_right"
+        android:layout_marginBottom="55dp"
+        android:background="#82a04e"
         android:scaleType="fitEnd"
         tools:ignore="RtlHardcoded"/>
 
@@ -43,8 +42,8 @@
         android:layout_toLeftOf="@+id/buildingImage"
         android:layout_alignParentLeft="true"
         android:layout_alignBottom="@id/buildingImage"
-        android:layout_marginRight="-28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginRight="-32dp"
+        android:layout_marginBottom="8dp"
         tools:ignore="RtlHardcoded">
 
         <TextView
@@ -60,13 +59,12 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_above="@id/levelsInput"
-            android:layout_marginRight="4dp"
             tools:ignore="RtlHardcoded"/>
 
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textSize="20dp"
+            android:textSize="32dp"
             tools:text="24"
             android:ems="2"
             android:gravity="center_horizontal"
@@ -83,83 +81,58 @@
 
     <RelativeLayout
         android:id="@+id/containerRoofLevelsInput"
-        android:layout_toRightOf="@id/buildingImage"
-        android:layout_alignTop="@id/buildingImage"
-        android:layout_alignParentRight="true"
-        android:layout_above="@id/pickLastButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="-34dp"
+        android:layout_above="@id/lastPickedButtons"
+        android:layout_alignTop="@id/buildingImage"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="-42dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/buildingImage"
         android:gravity="top"
         tools:ignore="RtlHardcoded">
 
         <EditText
-            android:layout_height="wrap_content"
+            android:id="@+id/roofLevelsInput"
             android:layout_width="wrap_content"
-            android:textSize="20dp"
-            tools:text="2"
-            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:ems="2"
             android:gravity="center_horizontal"
-            android:id="@+id/roofLevelsInput"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLines="1"
             android:nextFocusUp="@+id/levelsInput"
-            android:imeOptions="actionDone"
-            tools:ignore="SpUsage" />
+            android:textSize="32dp"
+            tools:ignore="SpUsage"
+            tools:text="2" />
 
         <TextView
-            android:text="@string/quest_buildingLevels_roofLevelsLabel2"
-            android:labelFor="@+id/roofLevelsInput"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16dp"
-            app:autoSizeMinTextSize="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/roofLevelsInput"
             android:layout_alignParentBottom="true"
-            android:gravity="left"
-            android:layout_marginLeft="4dp"/>
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="12dp"
+            android:gravity="left|top"
+            android:labelFor="@+id/roofLevelsInput"
+            android:text="@string/quest_buildingLevels_roofLevelsLabel2"
+            app:autoSizeMaxTextSize="16dp"
+            app:autoSizeMinTextSize="12dp"
+            app:autoSizeTextType="uniform" />
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/pickLastButton"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/buildingImage"
-        style="@style/Widget.AppCompat.Button.Small"
-        tools:ignore="RtlHardcoded">
-
-        <ImageView
-            android:id="@+id/lastBuildingIllustrationIcon"
-            android:src="@drawable/ic_building_levels_illustration"
-            android:layout_toRightOf="@id/lastLevelsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="RtlHardcoded"/>
-
-        <TextView
-            android:id="@+id/lastLevelsLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:textSize="14sp"
-            tools:text="3"
-            tools:ignore="RtlHardcoded"/>
-
-        <TextView
-            android:id="@+id/lastRoofLevelsLabel"
-            android:layout_toRightOf="@id/lastBuildingIllustrationIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            tools:text="1"
-            tools:ignore="RtlHardcoded"/>
-
-    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lastPickedButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buildingImage"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="6"
+        tools:listitem="@layout/quest_building_levels_last_picked_button" />
 
 </RelativeLayout>

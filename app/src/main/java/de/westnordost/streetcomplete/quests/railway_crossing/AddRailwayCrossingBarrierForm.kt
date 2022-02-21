@@ -1,18 +1,21 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.*
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.CHICANE
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.DOUBLE_HALF
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.FULL
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.GATE
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.HALF
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.NO
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 class AddRailwayCrossingBarrierForm : AImageListQuestAnswerFragment<RailwayCrossingBarrier, RailwayCrossingBarrier>() {
 
-    override val items get() = listOf(
-        Item(NO, R.drawable.ic_railway_crossing_none, R.string.quest_railway_crossing_barrier_none2),
-        Item(HALF, if (countryInfo.isLeftHandTraffic) R.drawable.ic_railway_crossing_half_l else R.drawable.ic_railway_crossing_half),
-        Item(DOUBLE_HALF, R.drawable.ic_railway_crossing_double_half),
-        Item(FULL, if (countryInfo.isLeftHandTraffic) R.drawable.ic_railway_crossing_full_l else R.drawable.ic_railway_crossing_full)
-    )
+    override val items: List<DisplayItem<RailwayCrossingBarrier>> get() {
+        val isPedestrian = osmElement!!.tags["railway"] == "crossing"
+        val answers = if (isPedestrian) listOf(NO, CHICANE, GATE, FULL) else listOf(NO, HALF, DOUBLE_HALF, FULL)
+        return answers.toItems(countryInfo.isLeftHandTraffic)
+    }
 
     override val itemsPerRow = 4
 

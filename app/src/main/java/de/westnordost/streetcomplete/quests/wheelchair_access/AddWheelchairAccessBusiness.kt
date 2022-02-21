@@ -2,23 +2,31 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import java.util.concurrent.FutureTask
 
 class AddWheelchairAccessBusiness(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<WheelchairAccess>()
-{
+) : OsmFilterQuestType<WheelchairAccess>() {
     override val elementFilter = """
         nodes, ways, relations with
-        (
-         shop and shop !~ no|vacant
-         or amenity = parking and parking = multi-storey
-         or amenity = recycling and recycling_type = centre
-         or tourism = information and information = office
-         or """.trimIndent() +
+          (name or brand)
+          and access !~ no|private
+          and !wheelchair
+          and (
+            shop and shop !~ no|vacant
+            or amenity = parking and parking = multi-storey
+            or amenity = recycling and recycling_type = centre
+            or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+            or tourism = information and information = office
+            or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -34,6 +42,7 @@ class AddWheelchairAccessBusiness(
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",                                                                                     // work
 
                 // name & wheelchair only
                 "theatre",                             // culture
@@ -62,12 +71,12 @@ class AddWheelchairAccessBusiness(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
 
                 // name & wheelchair
-                "sports_centre", "stadium", "marina"
+                "sports_centre", "stadium"
             ),
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
-                "employment_agency", "diplomatic",
+                "employment_agency", "diplomatic", "coworking",
 
                 // name & wheelchair
                 "lawyer", "estate_agent", "political_party", "therapist"
@@ -79,15 +88,22 @@ class AddWheelchairAccessBusiness(
 
                 // name & wheelchair
                 "winery"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
-        "\n) and !wheelchair and (name or brand)"
+        "  \n)"
 
-    override val commitMessage = "Add wheelchair access"
+    override val changesetComment = "Add wheelchair access"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+
+    override val questTypeAchievements = listOf(WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) =
         if (hasFeatureName(tags))
@@ -100,10 +116,15 @@ class AddWheelchairAccessBusiness(
         return arrayOfNotNull(name, featureName.value)
     }
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes, ways, relations with " +
+            isKindOfShopExpression() + " or " + isKindOfShopExpression("disused")
+        )
+
     override fun createForm() = AddWheelchairAccessBusinessForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, changes: StringMapChangesBuilder) {
-        changes.add("wheelchair", answer.osmValue)
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
+        tags["wheelchair"] = answer.osmValue
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =

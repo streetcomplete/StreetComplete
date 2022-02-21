@@ -39,7 +39,8 @@
         android:id="@+id/dropDownArrowImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_right_white_96dp"
+        android:src="@drawable/ic_arrow_right_96dp"
+        app:tint="#fff"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         app:elevation="8dp"/>

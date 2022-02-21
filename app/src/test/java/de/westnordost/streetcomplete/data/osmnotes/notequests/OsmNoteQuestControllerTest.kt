@@ -1,12 +1,22 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.User
+import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.testutils.*
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.argThat
+import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.comment
+import de.westnordost.streetcomplete.testutils.eq
+import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.p
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -15,8 +25,8 @@ class OsmNoteQuestControllerTest {
 
     private lateinit var noteSource: NotesWithEditsSource
     private lateinit var hiddenDB: NoteQuestsHiddenDao
-    private lateinit var loginStatusSource: LoginStatusSource
-    private lateinit var userStore: UserStore
+    private lateinit var userDataSource: UserDataSource
+    private lateinit var userLoginStatusSource: UserLoginStatusSource
     private lateinit var notesPreferences: NotesPreferences
 
     private lateinit var ctrl: OsmNoteQuestController
@@ -24,13 +34,13 @@ class OsmNoteQuestControllerTest {
     private lateinit var hideListener: OsmNoteQuestController.HideOsmNoteQuestListener
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
-    private lateinit var userLoginStatusListener: UserLoginStatusListener
+    private lateinit var userLoginListener: UserLoginStatusSource.Listener
 
     @Before fun setUp() {
         noteSource = mock()
         hiddenDB = mock()
-        loginStatusSource = mock()
-        userStore = mock()
+        userDataSource = mock()
+        userLoginStatusSource = mock()
         notesPreferences = mock()
 
         listener = mock()
@@ -41,12 +51,12 @@ class OsmNoteQuestControllerTest {
             Unit
         }
 
-        on(loginStatusSource.addLoginStatusListener(any())).then { invocation ->
-            userLoginStatusListener = invocation.getArgument(0)
+        on(userLoginStatusSource.addListener(any())).then { invocation ->
+            userLoginListener = invocation.getArgument(0)
             Unit
         }
 
-        ctrl = OsmNoteQuestController(noteSource, hiddenDB, loginStatusSource, userStore, notesPreferences)
+        ctrl = OsmNoteQuestController(noteSource, hiddenDB, userDataSource, userLoginStatusSource, notesPreferences)
         ctrl.addListener(listener)
         ctrl.addHideQuestsListener(hideListener)
     }
@@ -85,8 +95,8 @@ class OsmNoteQuestControllerTest {
         )
     }
 
-    @Test  fun unhideAll() {
-        val hiddenNoteIds = listOf<Long>(1,2,3)
+    @Test fun unhideAll() {
+        val hiddenNoteIds = listOf<Long>(1, 2, 3)
         val hiddenNotes = listOf(
             note(1), note(2), note(3)
         )
@@ -116,7 +126,7 @@ class OsmNoteQuestControllerTest {
             NoteIdWithTimestamp(2, 500),
             NoteIdWithTimestamp(3, 600), // missing note
         ))
-        on(noteSource.getAll(eq(listOf(1L,2L,3L)))).thenReturn(listOf(note1, note2))
+        on(noteSource.getAll(eq(listOf(1L, 2L, 3L)))).thenReturn(listOf(note1, note2))
 
         assertEquals(
             listOf(
@@ -140,11 +150,22 @@ class OsmNoteQuestControllerTest {
 
     @Test fun `get note quest with comment from user returns null`() {
         on(noteSource.get(1)).thenReturn(note(comments = listOf(
-            comment(text = "test?", userId = 1)
+            comment(text = "test?", user = User(id = 100, "Blaubär")),
+            comment(text = "test", user = User(id = 1, "Blubbi"))
         )))
-        on(userStore.userId).thenReturn(1)
+        on(userDataSource.userId).thenReturn(1)
 
         assertNull(ctrl.get(1))
+    }
+
+    @Test fun `get note quest with comment from user that contains a survey required marker returns non-null`() {
+        on(noteSource.get(1)).thenReturn(note(comments = listOf(
+            comment(text = "test?", user = User(id = 100, "Blaubär")),
+            comment(text = "ok but #surveyme", user = User(id = 1, "Blubbi")),
+        )))
+        on(userDataSource.userId).thenReturn(1)
+
+        assertNotNull(ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns null`() {
@@ -159,34 +180,34 @@ class OsmNoteQuestControllerTest {
     @Test fun `get quest phrased as question returns non-null`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
-            position = p(1.0,1.0),
+            position = p(1.0, 1.0),
             comments = listOf(comment(text = "test?"))
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest with comment containing survey required marker returns non-null`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
-            position = p(1.0,1.0),
+            position = p(1.0, 1.0),
             comments = listOf(comment(text = "test #surveyme"))
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     @Test fun `get quest not phrased as question returns non-null by preference`() {
         on(noteSource.get(1)).thenReturn(note(
             1,
-            position = p(1.0,1.0),
+            position = p(1.0, 1.0),
             comments = listOf(comment(text = "test"))
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(false)
 
-        assertEquals(OsmNoteQuest(1, p(1.0,1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
     }
 
     // not doing all the tests for getAll again because it uses the same functions
@@ -208,8 +229,13 @@ class OsmNoteQuestControllerTest {
     }
 
     @Test fun `calls onInvalidated when logged in`() {
-        userLoginStatusListener.onLoggedIn()
+        userLoginListener.onLoggedIn()
 
+        verify(listener).onInvalidated()
+    }
+
+    @Test fun `calls onInvalidated when cleared notes`() {
+        noteUpdatesListener.onCleared()
         verify(listener).onInvalidated()
     }
 
@@ -220,7 +246,7 @@ class OsmNoteQuestControllerTest {
         // note 4 is not eligible -> delete it
         // note 5 is deleted
 
-        on(hiddenDB.getAllIds()).thenReturn(listOf(2,4))
+        on(hiddenDB.getAllIds()).thenReturn(listOf(2, 4))
 
         noteUpdatesListener.onUpdated(
             added = listOf(
@@ -238,7 +264,7 @@ class OsmNoteQuestControllerTest {
                     OsmNoteQuest(3, p()),
                 ))
             },
-            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(4,5)) }
+            deletedQuestIds = argThat { it.containsExactlyInAnyOrder(listOf(4, 5)) }
         )
     }
 }

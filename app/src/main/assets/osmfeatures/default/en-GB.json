@@ -83,6 +83,11 @@
                 "access_simple": {
                     "label": "Allowed Access"
                 },
+                "activity": {
+                    "options": {
+                        "horse": "Horse Riding"
+                    }
+                },
                 "addr/interpolation": {
                     "options": {
                         "all": "All",
@@ -662,7 +667,7 @@
                     }
                 },
                 "horse_scale": {
-                    "label": "Horseback Riding Difficulty",
+                    "label": "Horse Riding Difficulty",
                     "options": {
                         "common": "Easy: No problems or difficulties. (default)",
                         "critical": "Borderline: Passable only for experienced riders and horses. Major obstacles. Bridges should be examined carefully.",
@@ -1561,7 +1566,7 @@
                     "name": "Airport Terminal"
                 },
                 "allotments/plot": {
-                    "name": "Allotments Plot"
+                    "name": "Individual Allotment Plot"
                 },
                 "amenity": {
                     "name": "Amenity"
@@ -2002,6 +2007,12 @@
                 "barrier/kerb/lowered": {
                     "name": "Lowered Kerb"
                 },
+                "barrier/kerb/raised": {
+                    "name": "Raised Kerb"
+                },
+                "barrier/kerb/rolled": {
+                    "name": "Rolled Kerb"
+                },
                 "barrier/kissing_gate": {
                     "name": "Kissing Gate"
                 },
@@ -2198,7 +2209,8 @@
                     "name": "Clockmaker"
                 },
                 "craft/confectionery": {
-                    "name": "Candy Maker"
+                    "name": "Confectioner",
+                    "aliases": "Sweet Maker\nCandy Maker"
                 },
                 "craft/distillery": {
                     "name": "Distillery"
@@ -2410,14 +2422,8 @@
                 "highway/crossing/marked": {
                     "name": "Marked Crossing"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Marked Crossing (Raised)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Marked Crossing"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Marked Crossing (Raised)"
                 },
                 "highway/cycleway": {
                     "name": "Cycle Path"
@@ -2431,17 +2437,11 @@
                 "highway/footway/marked": {
                     "name": "Marked Crossing"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Marked Crossing (Raised)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Pavement"
                 },
                 "highway/footway/zebra": {
                     "name": "Marked Crossing"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Marked Crossing (Raised)"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"
@@ -2589,6 +2589,9 @@
                 },
                 "junction": {
                     "name": "Junction"
+                },
+                "landuse/allotments": {
+                    "name": "Allotment Garden"
                 },
                 "landuse/aquaculture": {
                     "name": "Aquaculture"
@@ -2786,7 +2789,7 @@
                     "name": "Hackerspace"
                 },
                 "leisure/horse_riding": {
-                    "name": "Horseback Riding Facility"
+                    "name": "Horse Riding Facility"
                 },
                 "leisure/ice_rink": {
                     "name": "Ice Rink"
@@ -2873,9 +2876,6 @@
                     "name": "Sauna"
                 },
                 "leisure/slipway": {
-                    "name": "Slipway"
-                },
-                "leisure/slipway_point": {
                     "name": "Slipway"
                 },
                 "leisure/sports_centre": {
@@ -3926,29 +3926,8 @@
                 "type/restriction/no_right_turn": {
                     "name": "No Right Turn"
                 },
-                "type/restriction/no_straight_on": {
-                    "name": "No Straight On"
-                },
-                "type/restriction/no_u_turn": {
-                    "name": "No U-turn"
-                },
-                "type/restriction/only_left_turn": {
-                    "name": "Only Left Turn"
-                },
-                "type/restriction/only_right_turn": {
-                    "name": "Only Right Turn"
-                },
-                "type/restriction/only_straight_on": {
-                    "name": "Only Straight On"
-                },
-                "type/restriction/only_u_turn": {
-                    "name": "Only U-turn"
-                },
                 "type/route": {
                     "name": "Route"
-                },
-                "type/route/bicycle": {
-                    "name": "Cycle Route"
                 },
                 "type/route/bus": {
                     "name": "Bus Route"
@@ -3961,9 +3940,6 @@
                 },
                 "type/route/hiking": {
                     "name": "Hiking Route"
-                },
-                "type/route/horse": {
-                    "name": "Riding Route"
                 },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.view.image_select
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,9 +13,11 @@ import de.westnordost.streetcomplete.R
 class ImageListPickerDialog<T>(
     context: Context,
     items: List<DisplayItem<T>>,
-    cellLayoutId: Int = R.layout.cell_labeled_image_select,
+    @LayoutRes cellLayoutId: Int = R.layout.cell_labeled_image_select,
     columns: Int = 2,
-    onSelection: (DisplayItem<T>) -> Unit) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+    @StringRes titleResId: Int = R.string.quest_select_hint,
+    onSelection: (DisplayItem<T>) -> Unit
+) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     init {
         val horizontalMargin = context.resources.getDimensionPixelOffset(R.dimen.dialog_horizontal_margin)
@@ -24,7 +28,7 @@ class ImageListPickerDialog<T>(
         recyclerView.layoutManager = GridLayoutManager(context, columns)
         recyclerView.setPadding(horizontalMargin, verticalMargin, horizontalMargin, verticalMargin)
 
-        setTitle(R.string.quest_select_hint)
+        setTitle(titleResId)
         setView(recyclerView)
 
         val adapter = ImageSelectAdapter<T>(1)

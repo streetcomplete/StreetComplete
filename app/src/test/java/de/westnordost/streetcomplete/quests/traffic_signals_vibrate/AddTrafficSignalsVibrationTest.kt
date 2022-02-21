@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
-import de.westnordost.osmapi.map.data.OsmNode
-import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import org.junit.Assert.*
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class AddTrafficSignalsVibrationTest {
@@ -11,7 +11,7 @@ class AddTrafficSignalsVibrationTest {
 
     @Test fun `applicable to crossing`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(tags = mapOf(
                 "highway" to "crossing",
                 "crossing" to "traffic_signals"
             ))
@@ -21,16 +21,15 @@ class AddTrafficSignalsVibrationTest {
 
     @Test fun `not applicable to crossing of cycleway without foot access`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            OsmNode(1L, 1, 0.0,0.0, mapOf(
+            node(1, tags = mapOf(
                 "highway" to "crossing",
                 "crossing" to "traffic_signals"
             )),
-            OsmWay(1L, 1, listOf(1,2,3), mapOf(
+            way(1, listOf(1, 2, 3), mapOf(
                 "highway" to "cycleway",
                 "foot" to "no"
             ))
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
-
 }

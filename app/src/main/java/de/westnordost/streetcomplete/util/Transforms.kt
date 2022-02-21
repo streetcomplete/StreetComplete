@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
 
-
 data class Transforms(
     val translationX: Float,
     val translationY: Float,
@@ -18,7 +17,7 @@ data class Transforms(
     constructor(view: View) : this(view.translationX, view.translationY, view.scaleX, view.scaleY, view.rotation, view.rotationX, view.rotationY)
 
     companion object {
-        val IDENTITY = Transforms(0f,0f, 1f, 1f, 0f, 0f, 0f)
+        val IDENTITY = Transforms(0f, 0f, 1f, 1f, 0f, 0f, 0f)
     }
 }
 
@@ -42,13 +41,13 @@ fun View.getTransformationsTo(other: View, commonParent: ViewGroup): Transforms 
 }
 
 val View.globalRotation: Float get() =
-    rotation + parents.sumByDouble { it.rotation.toDouble() }.toFloat()
+    rotation + parents.sumOf { it.rotation.toDouble() }.toFloat()
 
 val View.globalRotationX: Float get() =
-    rotationX + parents.sumByDouble { it.rotationX.toDouble() }.toFloat()
+    rotationX + parents.sumOf { it.rotationX.toDouble() }.toFloat()
 
 val View.globalRotationY: Float get() =
-    rotationY + parents.sumByDouble { it.rotationY.toDouble() }.toFloat()
+    rotationY + parents.sumOf { it.rotationY.toDouble() }.toFloat()
 
 private val View.parents: Iterable<ViewGroup> get() = object : Iterable<ViewGroup> {
     override fun iterator(): Iterator<ViewGroup> = iterator<ViewGroup> {

@@ -18,9 +18,11 @@ import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
-import java.util.*
+import kotlinx.serialization.Serializable
+import java.util.Locale
 
 /** Carries the data language tag + name in that language  */
+@Serializable
 data class LocalizedName(var languageTag: String, var name: String)
 
 class AddLocalizedNameAdapter(
@@ -135,10 +137,8 @@ class AddLocalizedNameAdapter(
     private fun getLanguageMenuItemTitle(languageTag: String): String {
         if (languageTag.isEmpty()) return context.getString(R.string.quest_streetName_menuItem_nolanguage)
         if (languageTag == "international") return context.getString(R.string.quest_streetName_menuItem_international)
-        val languageCode = languageTag.substringBefore('-')
         val isRomanization = languageTag.endsWith("Latn")
-        // if Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP was, could use Locale.forLanguageTag
-        val locale = Locale(languageCode)
+        val locale = Locale.forLanguageTag(languageTag)
 
         val displayLanguage = locale.displayLanguage
         val nativeDisplayLanguage = locale.getDisplayLanguage(locale)
@@ -158,12 +158,12 @@ class AddLocalizedNameAdapter(
             if (displayLanguage == nativeDisplayLanguage) {
                 String.format(
                     context.getString(R.string.quest_streetName_menuItem_language_with_script_simple),
-                    languageTag, displayLanguage, context.getString(R.string.quest_streetName_menuItem_romanized)
+                    languageTag, displayLanguage, locale.displayScript
                 )
             } else {
                 String.format(
                     context.getString(R.string.quest_streetName_menuItem_language_with_script_native),
-                    languageTag, nativeDisplayLanguage, displayLanguage, context.getString(R.string.quest_streetName_menuItem_romanized)
+                    languageTag, nativeDisplayLanguage, displayLanguage, locale.displayScript
                 )
             }
         }
@@ -173,9 +173,9 @@ class AddLocalizedNameAdapter(
      * [localizedNameSuggestionsMap]. The value of the selected key will be passed to the
      * [callback] */
     private fun showNameSuggestionsMenu(
-            view: View,
-            localizedNameSuggestionsMap: Map<String, Map<String, String>>,
-            callback: (Map<String, String>) -> Unit
+        view: View,
+        localizedNameSuggestionsMap: Map<String, Map<String, String>>,
+        callback: (Map<String, String>) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
@@ -192,19 +192,19 @@ class AddLocalizedNameAdapter(
     }
 
     private fun getLocalizedNameSuggestionsByLanguageTag(languageTag: String): Map<String, Map<String, String>> {
-        val localizedNameSuggestionsMap = mutableMapOf<String, Map<String,String>>()
+        val localizedNameSuggestionsMap = mutableMapOf<String, Map<String, String>>()
         if (localizedNameSuggestions != null) {
             for (localizedNameSuggestion in localizedNameSuggestions) {
                 val name = localizedNameSuggestion[languageTag] ?: continue
 
                 // "unspecified language" suggestions
                 if (languageTag.isEmpty()) {
-                    var defaultNameOccurances = 0
+                    var defaultNameOccurrences = 0
                     for (other in localizedNameSuggestion.values) {
-                        if (name == other) defaultNameOccurances++
+                        if (name == other) defaultNameOccurrences++
                     }
                     // name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
-                    if (defaultNameOccurances >= 2) continue
+                    if (defaultNameOccurrences >= 2) continue
                     // only for name=A, name:de=B, name:en=C,...
                 }
                 localizedNameSuggestionsMap[name] = localizedNameSuggestion
@@ -217,18 +217,18 @@ class AddLocalizedNameAdapter(
 
         private lateinit var localizedName: LocalizedName
 
-        private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
-        private val buttonLanguage : TextView = itemView.findViewById(R.id.languageButton)
-        private val buttonDelete : View = itemView.findViewById(R.id.deleteButton)
-        private val buttonNameSuggestions : View = itemView.findViewById(R.id.nameSuggestionsButton)
+        private val autoCorrectInput: AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
+        private val buttonLanguage: TextView = itemView.findViewById(R.id.languageButton)
+        private val buttonDelete: View = itemView.findViewById(R.id.deleteButton)
+        private val buttonNameSuggestions: View = itemView.findViewById(R.id.nameSuggestionsButton)
 
         init {
             autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
                     localizedName.name = name.trim()
-                    buttonNameSuggestions.isGone = name.isNotEmpty() ||
-                        getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
+                    buttonNameSuggestions.isGone = name.isNotEmpty()
+                        || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
                     for (listener in listeners) {
                         listener(localizedName)
                     }

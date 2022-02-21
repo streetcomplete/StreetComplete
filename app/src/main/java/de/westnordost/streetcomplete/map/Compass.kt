@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.map
 
-import android.hardware.*
+import android.hardware.GeomagneticField
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Location
 import android.os.Handler
 import android.os.HandlerThread
@@ -46,10 +50,9 @@ class Compass(
         sensorHandler = Handler(sensorThread.looper)
     }
 
-    private fun remapToDisplayRotation(inR: FloatArray): FloatArray {
+    private fun remapToDisplayRotation(r: FloatArray) {
         val h: Int
         val v: Int
-        val outR = FloatArray(9)
         when (display.rotation) {
             Surface.ROTATION_90 -> {
                 h = SensorManager.AXIS_Y
@@ -63,18 +66,20 @@ class Compass(
                 h = SensorManager.AXIS_MINUS_Y
                 v = SensorManager.AXIS_X
             }
-            Surface.ROTATION_0 -> return inR
-            else -> return inR
+            Surface.ROTATION_0 -> {
+                h = SensorManager.AXIS_X
+                v = SensorManager.AXIS_Y
+            }
+            else -> return
         }
-        SensorManager.remapCoordinateSystem(inR, h, v, outR)
-        return outR
+        SensorManager.remapCoordinateSystem(r, h, v, r)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
         accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
         magnetometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
 
-        dispatcherThread = Thread(Runnable { dispatchLoop() }, "Compass Dispatcher Thread")
+        dispatcherThread = Thread({ dispatchLoop() }, "Compass Dispatcher Thread")
         dispatcherThread?.start()
     }
 
@@ -93,27 +98,32 @@ class Compass(
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
 
     override fun onSensorChanged(event: SensorEvent) {
+
         if (event.sensor.type == Sensor.TYPE_MAGNETIC_FIELD) {
-            geomagnetic = event.values.clone()
+            geomagnetic = event.values.copyOf()
         } else if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
-            gravity = event.values.clone()
+            gravity = event.values.copyOf()
         }
         val grav = gravity ?: return
         val geomag = geomagnetic ?: return
 
-        var R = FloatArray(9)
+        val R = FloatArray(9)
         val I = FloatArray(9)
         val success = SensorManager.getRotationMatrix(R, I, grav, geomag)
         if (success) {
-            R = remapToDisplayRotation(R)
+            remapToDisplayRotation(R)
             val orientation = FloatArray(3)
             SensorManager.getOrientation(R, orientation)
-            val azimut = orientation[0] + declination
+            val azimuth = orientation[0] + declination
             val pitch = orientation[1]
             val roll = orientation[2]
-            rotation = azimut
+            rotation = azimuth
             tilt = pitch
         }
+        /* reset to null. We want to do the recalculation of rotation and tilt only if the
+           result from *both* sensors arrived each */
+        gravity = null
+        geomagnetic = null
     }
 
     private fun dispatchLoop() {
@@ -154,7 +164,7 @@ class Compass(
         declination = toRadians(geomagneticField.declination.toDouble()).toFloat()
     }
 
-    private fun smoothenAngle( newValue: Float, oldValue: Float, factor: Float): Float {
+    private fun smoothenAngle(newValue: Float, oldValue: Float, factor: Float): Float {
         var delta = newValue - oldValue
         while (delta > +PI) delta -= 2 * PI.toFloat()
         while (delta < -PI) delta += 2 * PI.toFloat()
@@ -167,4 +177,3 @@ class Compass(
         private const val MIN_DIFFERENCE = 0.001f
     }
 }
-

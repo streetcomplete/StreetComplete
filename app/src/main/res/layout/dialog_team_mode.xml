@@ -25,11 +25,11 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:labelFor="@id/teamSizeInput"
-            android:text="@string/team_mode_team_size_label"
+            android:text="@string/team_mode_team_size_label2"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog" />
 
         <EditText
@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dialog_horizontal_margin"
             android:ems="2"
+            android:layout_gravity="center"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="numberSigned"
@@ -61,7 +62,7 @@
         android:id="@+id/colorHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/team_mode_choose_color"
+        android:text="@string/team_mode_choose_color2"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:visibility="gone"
         tools:visibility="visible" />

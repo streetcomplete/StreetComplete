@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.QUEST_TYPE
@@ -10,10 +10,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Col
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.NAME
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Persists which osm quests should be hidden (because the user selected so) */
-class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
+class OsmQuestsHiddenDao(private val db: Database) {
 
     fun add(osmQuestKey: OsmQuestKey) {
         db.insert(NAME, osmQuestKey.toPairs())
@@ -26,9 +25,9 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
         db.queryOne(NAME,
             where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
             args = arrayOf(
-                osmQuestKey.elementType.name,
+                osmQuestKey.questTypeName,
                 osmQuestKey.elementId,
-                osmQuestKey.questTypeName
+                osmQuestKey.elementType.name,
             )
         ) { it.getLong(TIMESTAMP) }
 
@@ -36,9 +35,9 @@ class OsmQuestsHiddenDao @Inject constructor(private val db: Database) {
         db.delete(NAME,
             where = "$QUEST_TYPE = ? AND $ELEMENT_ID = ? AND $ELEMENT_TYPE = ?",
             args = arrayOf(
-                osmQuestKey.elementType.name,
+                osmQuestKey.questTypeName,
                 osmQuestKey.elementId,
-                osmQuestKey.questTypeName
+                osmQuestKey.elementType.name,
             )
         ) == 1
 
@@ -60,7 +59,7 @@ private fun OsmQuestKey.toPairs() = listOf(
 )
 
 private fun CursorPosition.toOsmQuestKey() = OsmQuestKey(
-    Element.Type.valueOf(getString(ELEMENT_TYPE)),
+    ElementType.valueOf(getString(ELEMENT_TYPE)),
     getLong(ELEMENT_ID),
     getString(QUEST_TYPE)
 )

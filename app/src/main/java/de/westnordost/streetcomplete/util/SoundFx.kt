@@ -2,23 +2,24 @@ package de.westnordost.streetcomplete.util
 
 import android.content.Context
 import android.media.AudioAttributes
-import android.media.AudioManager
 import android.media.SoundPool
-import android.os.Build
 import android.provider.Settings
 import android.util.SparseIntArray
 import androidx.annotation.RawRes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 
 /** Simple wrapper to enable just playing a sound effect from raw resources */
-@Singleton class SoundFx @Inject constructor(private val context: Context) {
-    private val soundPool: SoundPool
+class SoundFx(private val context: Context) {
+    private val soundPool = SoundPool.Builder()
+        .setMaxStreams(10)
+        .setAudioAttributes(AudioAttributes.Builder()
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .build())
+        .build()
 
     private val soundIds: SparseIntArray = SparseIntArray()
 
@@ -26,17 +27,7 @@ import kotlin.coroutines.resume
     private val loadCompleteContinuations = mutableMapOf<Int, Continuation<Int>>()
 
     init {
-        soundPool = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            SoundPool.Builder()
-                .setMaxStreams(10)
-                .setAudioAttributes(AudioAttributes.Builder()
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build())
-                .build()
-        } else {
-            SoundPool(10, AudioManager.STREAM_MUSIC, 0)
-        }
-        soundPool.setOnLoadCompleteListener { _, soundId, status ->
+        soundPool.setOnLoadCompleteListener { _, soundId, _ ->
             loadCompleteContinuations[soundId]?.resume(soundId)
         }
     }

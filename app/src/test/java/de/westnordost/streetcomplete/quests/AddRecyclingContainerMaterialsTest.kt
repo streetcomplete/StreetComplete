@@ -1,19 +1,23 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.testutils.p
-import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterials
 import de.westnordost.streetcomplete.quests.recycling_material.IsWasteContainer
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
-import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.CLOTHES
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PAPER
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SHOES
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterials
+import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.util.*
+import java.time.Instant
+import java.time.LocalDate
 
 class AddRecyclingContainerMaterialsTest {
 
@@ -48,7 +52,7 @@ class AddRecyclingContainerMaterialsTest {
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -60,44 +64,9 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), date = Date())
+            ), timestamp = Instant.now().toEpochMilli())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-    }
-
-    @Test fun `not applicable to container without recycling materials close to another container`() {
-        val pos1 = p(0.0,0.0)
-        val pos2 = pos1.translate(19.0, 45.0)
-
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1, pos = pos1, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            )),
-            node(id = 2, pos = pos2, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            ))
-        ))
-        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-    }
-
-    @Test fun `applicable to container without recycling materials not too close to another container`() {
-        val pos1 = p(0.0,0.0)
-        val pos2 = pos1.translate(21.0, 45.0)
-
-        val mapData = TestMapDataWithGeometry(listOf(
-            node(id = 1, pos = pos1, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container"
-            )),
-            node(id = 2, pos = pos2, tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "recycling:paper" to "yes"
-            ))
-        ))
-        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `apply normal answer`() {
@@ -220,7 +189,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(CLOTHES, PAPER)),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryModify("recycling:clothes", "yes", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -239,7 +208,7 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
-    @Test fun `apply answer removes previous check dates`() {
+    @Test fun `apply answer updates previous check dates`() {
         questType.verifyAnswer(
             mapOf(
                 "recycling:paper" to "no",
@@ -253,7 +222,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PAPER)),
             StringMapEntryModify("recycling:paper", "no", "yes"),
             StringMapEntryDelete("recycling:check_date", "2000-11-01"),
-            StringMapEntryDelete("check_date:recycling", "2000-11-02"),
+            StringMapEntryModify("check_date:recycling", "2000-11-02", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("recycling:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:recycling", "2000-11-04"),
             StringMapEntryDelete("recycling:last_checked", "2000-11-05"),
@@ -276,7 +245,7 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             mapOf("amenity" to "recycling", "recycling_type" to "container"),
             IsWasteContainer,
-            StringMapEntryModify("amenity","recycling","waste_disposal"),
+            StringMapEntryModify("amenity", "recycling", "waste_disposal"),
             StringMapEntryDelete("recycling_type", "container")
         )
     }
@@ -296,7 +265,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:another_thing" to "no"
             ),
             IsWasteContainer,
-            StringMapEntryModify("amenity","recycling","waste_disposal"),
+            StringMapEntryModify("amenity", "recycling", "waste_disposal"),
             StringMapEntryDelete("recycling_type", "container"),
             StringMapEntryDelete("check_date:recycling", "2000-11-11"),
             StringMapEntryDelete("recycling:check_date", "2000-11-11"),
@@ -309,4 +278,11 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
+    @Test fun `answer does not delete other =yes-keys`() {
+        questType.verifyAnswer(
+            mapOf("amenity" to "recycling", "access" to "yes"),
+            RecyclingMaterials(listOf(PAPER)),
+            StringMapEntryAdd("recycling:paper", "yes")
+        )
+    }
 }

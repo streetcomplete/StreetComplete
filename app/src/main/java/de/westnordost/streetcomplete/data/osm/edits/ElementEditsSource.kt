@@ -6,7 +6,7 @@ interface ElementEditsSource {
         fun onAddedEdit(edit: ElementEdit)
         fun onSyncedEdit(edit: ElementEdit)
         // may be several because deleting one element edit leads to the deletion of all edits that
-        // are based on that edit. F.e. splitting a way, then editing the newly created way segments
+        // are based on that edit. E.g. splitting a way, then editing the newly created way segments
         fun onDeletedEdits(edits: List<ElementEdit>)
     }
 

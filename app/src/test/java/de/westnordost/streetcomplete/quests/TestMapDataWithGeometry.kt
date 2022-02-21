@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.osmapi.map.MutableMapData
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.testutils.bbox
 
 class TestMapDataWithGeometry(elements: Iterable<Element>) : MutableMapData(), MapDataWithGeometry {
 
     init {
         addAll(elements)
-        handle(bbox())
+        boundingBox = bbox()
     }
 
     val nodeGeometriesById: MutableMap<Long, ElementPointGeometry?> = mutableMapOf()
@@ -21,4 +24,20 @@ class TestMapDataWithGeometry(elements: Iterable<Element>) : MutableMapData(), M
     override fun getNodeGeometry(id: Long): ElementPointGeometry? = nodeGeometriesById[id]
     override fun getWayGeometry(id: Long): ElementGeometry? = wayGeometriesById[id]
     override fun getRelationGeometry(id: Long): ElementGeometry? = relationGeometriesById[id]
+}
+
+fun createMapData(elements: Map<Element, ElementGeometry?>): TestMapDataWithGeometry {
+    val result = TestMapDataWithGeometry(elements.keys)
+    for ((element, geometry) in elements) {
+        when (element) {
+            is Node ->
+                result.nodeGeometriesById[element.id] = geometry as ElementPointGeometry
+            is Way ->
+                result.wayGeometriesById[element.id] = geometry
+            is Relation ->
+                result.relationGeometriesById[element.id] = geometry
+        }
+    }
+    result.boundingBox = bbox()
+    return result
 }

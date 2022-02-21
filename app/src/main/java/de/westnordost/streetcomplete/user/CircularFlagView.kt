@@ -2,15 +2,17 @@ package de.westnordost.streetcomplete.user
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Outline
+import android.graphics.Path
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.getYamlObject
-import java.util.*
+import de.westnordost.streetcomplete.ktx.getYamlStringMap
 import kotlin.math.min
 
 /** Show a flag of a country in a circle */
@@ -18,24 +20,22 @@ class CircularFlagView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-): View(context, attrs, defStyleAttr) {
+) : View(context, attrs, defStyleAttr) {
 
     private val clipPath = Path()
     private var drawable: Drawable? = null
     private var boundsOffset: Rect? = null
 
     var countryCode: String? = null
-    set(value) {
-        field = value
-        updateCountryCode(value)
-    }
+        set(value) {
+            field = value
+            updateCountryCode(value)
+        }
 
     init {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            outlineProvider = object : ViewOutlineProvider() {
-                override fun getOutline(view: View, outline: Outline) {
-                    outline.setOval(0,0,view.width,view.height)
-                }
+        outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                outline.setOval(0, 0, view.width, view.height)
             }
         }
     }
@@ -51,6 +51,7 @@ class CircularFlagView @JvmOverloads constructor(
             if (widthMode == MeasureSpec.EXACTLY) width else height
         } else min(width, height)
         setMeasuredDimension(size, size)
+        boundsOffset = null
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -76,7 +77,6 @@ class CircularFlagView @JvmOverloads constructor(
         canvas.clipPath(clipPath)
         d.setBounds(offset.left, offset.top, width - offset.right, height - offset.bottom)
         d.draw(canvas)
-
     }
 
     private fun updateCountryCode(countryCode: String?) {
@@ -84,7 +84,7 @@ class CircularFlagView @JvmOverloads constructor(
             drawable = null
         } else {
             val resId = getFlagResIdWithFallback(countryCode)
-            drawable = if (resId != 0) resources.getDrawable(resId) else null
+            drawable = if (resId != 0) context.getDrawable(resId) else null
         }
         invalidate()
     }
@@ -108,9 +108,9 @@ class CircularFlagView @JvmOverloads constructor(
     private fun getBoundsOffset(d: Drawable, align: FlagAlignment): Rect {
         val w = d.intrinsicWidth
         val h = d.intrinsicHeight
-        val scale = width.toFloat() / min(w,h)
+        val scale = width.toFloat() / min(w, h)
         val hOffset = -w * scale + width
-        return when(align) {
+        return when (align) {
             FlagAlignment.LEFT ->         Rect(0, 0, hOffset.toInt(), 0)
             FlagAlignment.CENTER_LEFT ->  Rect((1f * hOffset / 3f).toInt(), 0, (2f * hOffset / 3f).toInt(), 0)
             FlagAlignment.CENTER ->       Rect((hOffset / 2f).toInt(), 0, (hOffset / 2f).toInt(), 0)
@@ -130,7 +130,7 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     private fun getFlagResId(countryCode: String): Int {
-        val lowerCaseCountryCode = countryCode.toLowerCase(Locale.US).replace('-', '_')
+        val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
         return resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", context.packageName)
     }
 
@@ -150,8 +150,8 @@ class CircularFlagView @JvmOverloads constructor(
         }
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
-            resources.getYamlObject<HashMap<String, String>>(R.raw.flag_alignments).map {
-                it.key to FlagAlignment.valueOf(it.value.replace("-","_").toUpperCase(Locale.US))
+            resources.getYamlStringMap(R.raw.flag_alignments).map {
+                it.key to FlagAlignment.valueOf(it.value.replace("-", "_").uppercase())
             }.toMap()
     }
 

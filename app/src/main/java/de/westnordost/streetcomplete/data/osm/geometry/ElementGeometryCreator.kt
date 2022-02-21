@@ -1,16 +1,20 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.osmapi.map.MapData
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapData
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.isRingDefinedClockwise
-import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
-class ElementGeometryCreator @Inject constructor() {
+class ElementGeometryCreator() {
 
     /** Create an ElementGeometry from any element, using the given MapData to find the positions
      *  of the nodes.
@@ -23,7 +27,7 @@ class ElementGeometryCreator @Inject constructor() {
      *  @return an ElementGeometry or null if any necessary element to create the geometry is not
      *          in the given MapData */
     fun create(element: Element, mapData: MapData, allowIncomplete: Boolean = false): ElementGeometry? {
-        when(element) {
+        when (element) {
             is Node -> {
                 return create(element)
             }
@@ -134,18 +138,21 @@ class ElementGeometryCreator @Inject constructor() {
     }
 
     private fun getRelationMemberWaysNodePositions(
-        relation: Relation, wayGeometries: Map<Long, List<LatLon>>
+        relation: Relation,
+        wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
-            .filter { it.type == Element.Type.WAY }
+            .filter { it.type == ElementType.WAY }
             .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
     }
 
     private fun getRelationMemberWaysNodePositions(
-        relation: Relation, withRole: String, wayGeometries: Map<Long, List<LatLon>>
+        relation: Relation,
+        withRole: String,
+        wayGeometries: Map<Long, List<LatLon>>
     ): List<List<LatLon>> {
         return relation.members
-            .filter { it.type == Element.Type.WAY && it.role == withRole }
+            .filter { it.type == ElementType.WAY && it.role == withRole }
             .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
     }
 
@@ -242,7 +249,7 @@ private fun MapData.getNodePositions(way: Way): List<LatLon>? {
 }
 
 private fun MapData.getWaysNodePositions(relation: Relation, allowIncomplete: Boolean = false): Map<Long, List<LatLon>>? {
-    val wayMembers = relation.members.filter { it.type == Element.Type.WAY }
+    val wayMembers = relation.members.filter { it.type == ElementType.WAY }
     val result = mutableMapOf<Long, List<LatLon>>()
     for (wayMember in wayMembers) {
         val way = getWay(wayMember.ref)

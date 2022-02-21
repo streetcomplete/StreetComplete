@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
@@ -23,24 +22,25 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     )
 
     override val elementFilter = """
-        ways with (leisure=pitch or leisure=track)
-        and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})(${'$'}|;.*)"
-        and (access !~ private|no)
-        and indoor != yes and (!building or building = no)
-        and (
+        ways with leisure ~ pitch|track
+         and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})($|;.*)"
+         and (access !~ private|no)
+         and indoor != yes and (!building or building = no)
+         and (
           !surface
           or surface older today -12 years
           or (
-            surface ~ paved|unpaved
-            and !surface:note
-            and !note:surface
+           surface ~ paved|unpaved
+           and !surface:note
+           and !note:surface
           )
         )
     """
 
-    override val commitMessage = "Add pitch surfaces"
+    override val changesetComment = "Add pitch surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_pitch_surface
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.get("leisure") == "track")
@@ -48,21 +48,9 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         else
             R.string.quest_pitchSurface_title
 
-
-
     override fun createForm() = AddPitchSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value.osmValue)
-                changes.deleteIfExists("surface:note")
-            }
-            is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("surface", answer.value.osmValue)
-                changes.addOrModify("surface:note", answer.note)
-            }
-        }
-        changes.deleteIfExists("source:surface")
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
+        answer.applyTo(tags, "surface")
     }
 }

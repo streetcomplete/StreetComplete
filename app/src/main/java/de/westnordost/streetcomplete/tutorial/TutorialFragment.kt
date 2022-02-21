@@ -3,20 +3,20 @@ package de.westnordost.streetcomplete.tutorial
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.FragmentTutorialBinding
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import kotlinx.android.synthetic.main.fragment_tutorial.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -25,8 +25,10 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
     private var currentPage: Int = 0
 
+    private val binding by viewBinding(FragmentTutorialBinding::bind)
+
     interface Listener {
-        fun onFinishedTutorial()
+        fun onTutorialFinished()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -38,27 +40,9 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        view.respectSystemInsets(View::setPadding)
-
+        view.respectSystemInsets()
         updateIndicatorDots()
-
-        nextButton.setOnClickListener {
-            when(currentPage) {
-                0 -> {
-                    currentPage = 1
-                    step1Transition()
-                }
-                1 -> {
-                    currentPage = 2
-                    step2Transition()
-                }
-                MAX_PAGE_INDEX -> {
-                    nextButton.isEnabled = false
-                    listener?.onFinishedTutorial()
-                }
-            }
-        }
+        enableNextButton()
     }
 
     override fun onDestroy() {
@@ -66,26 +50,52 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 
-    private fun step1Transition() = lifecycleScope.launch {
+    private fun nextStep() {
+        disableNextButton()
+        when (currentPage) {
+            0 -> {
+                currentPage = 1
+                step1Transition()
+            }
+            1 -> {
+                currentPage = 2
+                step2Transition()
+            }
+            MAX_PAGE_INDEX -> {
+                listener?.onTutorialFinished()
+            }
+        }
+    }
+
+    private fun disableNextButton() {
+        binding.nextButton.setOnClickListener(null)
+        binding.nextButton.isClickable = false
+    }
+
+    private fun enableNextButton() {
+        binding.nextButton.isClickable = true
+        binding.nextButton.setOnClickListener { nextStep() }
+    }
+
+    private fun step1Transition() = viewLifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()
 
         // magnifier flies towards viewer and fades out
-        magnifierImageView.animate()
+        binding.magnifierImageView.animate()
             .setDuration(500)
             .setInterpolator(AccelerateInterpolator())
             .scaleX(6f).scaleY(6f)
             .alpha(0f)
             .start()
 
-
         // map zooms in and tilts
         val mapTranslate = (-50f).toPx(ctx)
         val mapRotate = 50f
         val mapScale = 1.5f
 
-        mapImageView.animate()
+        binding.mapImageView.animate()
             .setDuration(800)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .rotationX(mapRotate)
@@ -93,7 +103,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .translationY(mapTranslate)
             .start()
 
-        mapLightingImageView.animate()
+        binding.mapLightingImageView.animate()
             .setDuration(800)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .rotationX(mapRotate)
@@ -103,6 +113,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         // 1st text fade out
+        val tutorialStepIntro = binding.tutorialStepIntro
         tutorialStepIntro.animate()
             .setDuration(300)
             .alpha(0f)
@@ -113,8 +124,8 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(200)
 
         // flashing GPS button appears
-        tutorialGpsButton.state = LocationState.SEARCHING
-        tutorialGpsButton.animate()
+        binding.tutorialGpsButton.state = LocationState.SEARCHING
+        binding.tutorialGpsButton.animate()
             .alpha(1f)
             .setDuration(200)
             .start()
@@ -122,24 +133,23 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(400)
 
         // 2nd text fade in
-        tutorialStepSolvingQuests.translationY = (-100f).toDp(ctx)
-        tutorialStepSolvingQuests.animate()
-            .withStartAction { tutorialStepSolvingQuests.visibility = View.VISIBLE }
+        binding.tutorialStepSolvingQuests.translationY = (-100f).toDp(ctx)
+        binding.tutorialStepSolvingQuests.animate()
+            .withStartAction { binding.tutorialStepSolvingQuests.visibility = View.VISIBLE }
             .setDuration(300)
             .alpha(1f)
             .translationY(0f)
             .start()
 
-
-        delay(2400)
+        delay(1400)
 
         // ...and after a few seconds, stops flashing
-        tutorialGpsButton?.state = LocationState.UPDATING
+        binding.tutorialGpsButton.state = LocationState.UPDATING
 
         delay(800)
 
         // quest pins fall into place
-        listOf(questPin1, questPin2, questPin3).forEach { pin ->
+        listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
 
             delay(400)
 
@@ -151,15 +161,18 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 .alpha(1f)
                 .start()
         }
+
+        enableNextButton()
     }
 
-    private fun step2Transition() = lifecycleScope.launch {
+    private fun step2Transition() = viewLifecycleScope.launch {
         val ctx = requireContext()
 
         updateIndicatorDots()
-        nextButton.setText(R.string.letsgo)
+        binding.nextButton.setText(R.string.letsgo)
 
         // 2nd text fade out
+        val tutorialStepSolvingQuests = binding.tutorialStepSolvingQuests
         tutorialStepSolvingQuests.animate()
             .setDuration(300)
             .alpha(0f)
@@ -168,19 +181,19 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         // 3rd text fade in
-        tutorialStepStaySafe.translationY = (-100f).toDp(ctx)
+        binding.tutorialStepStaySafe.translationY = (-100f).toDp(ctx)
 
         delay(400)
 
-        tutorialStepStaySafe.animate()
-            .withStartAction { tutorialStepStaySafe.visibility = View.VISIBLE }
+        binding.tutorialStepStaySafe.animate()
+            .withStartAction { binding.tutorialStepStaySafe.visibility = View.VISIBLE }
             .setDuration(300)
             .alpha(1f)
             .translationY(0f)
             .start()
 
         // quest pins fade out
-        listOf(questPin1, questPin2, questPin3).forEach { pin ->
+        listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
             pin.animate()
                 .setInterpolator(AccelerateInterpolator())
                 .setDuration(300)
@@ -191,20 +204,20 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(1400)
         // checkmark fades in and animates
 
-        checkmarkView.animate()
+        binding.checkmarkView.animate()
             .setDuration(600)
             .alpha(1f)
             .start()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            (checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
-        }
+        (binding.checkmarkView.drawable as? AnimatedVectorDrawable)?.start()
+
+        enableNextButton()
     }
 
     private fun updateIndicatorDots() {
-        listOf(dot1,dot2,dot3).forEachIndexed { index, dot ->
+        listOf(binding.dot1, binding.dot2, binding.dot3).forEachIndexed { index, dot ->
             dot.setImageResource(
-                if(currentPage == index) R.drawable.indicator_dot_selected
+                if (currentPage == index) R.drawable.indicator_dot_selected
                 else R.drawable.indicator_dot_default
             )
         }

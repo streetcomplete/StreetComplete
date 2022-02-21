@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+ <path d="m75 19h-6l11 18v-11z" fill="#e1d9af"/>
+ <path d="m32-2e-8h16l19 64h-54z" fill="#d7d7d7"/>
+ <path d="m5 19h6l-11 18v-11z" fill="#e1d9af"/>
+ <path d="m16 19h6l-9 23h-9z" fill="#e1d9af"/>
+ <path d="m64 19h-6l9 23h9z" fill="#e1d9af"/>
+ <path d="m0 22h80v2h-80z" fill="#8c7570"/>
+ <path d="m0 35h80v3h-80z" fill="#8c7570"/>
+ <path d="m18 50v-10h29v10" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="2"/>
+ <path d="m18 46h29" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m14 63v-10l4-13v10" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="2"/>
+ <path d="m18 46-4 13" fill="none" stroke="#727272"/>
+ <path d="m38 40v6" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m27 40v6" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m36 63v-10h29v10" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="2"/>
+ <path d="m36 59h29" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m65 63v-10l-4-13v10" fill="none" stroke="#727272" stroke-linejoin="round" stroke-width="2"/>
+ <path d="m61 46 4 13" fill="none" stroke="#727272"/>
+ <path d="m56 53v6" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m45 53v6" fill="none" stroke="#727272" stroke-width="2"/>
+ <path d="m29 11.5v-5h14.5v5" fill="none" stroke="#727272" stroke-linejoin="round"/>
+ <path d="m29 9.5h14.5" fill="none" stroke="#727272"/>
+ <path d="m27 18v-5l2-6.5v5" fill="none" stroke="#727272" stroke-linejoin="round"/>
+ <path d="m29 9.5-2 6.5" fill="none" stroke="#727272" stroke-width=".5"/>
+ <path d="m39 6.5v3" fill="none" stroke="#727272"/>
+ <path d="m33.5 6.5v3" fill="none" stroke="#727272"/>
+ <path d="m38 18v-5h14.5v5" fill="none" stroke="#727272" stroke-linejoin="round"/>
+ <path d="m38 16h14.5" fill="none" stroke="#727272"/>
+ <path d="m52.5 18v-5l-2-6.5v5" fill="none" stroke="#727272" stroke-linejoin="round"/>
+ <path d="m50.5 9.5 2 6.5" fill="none" stroke="#727272" stroke-width=".5"/>
+ <path d="m48 13v3" fill="none" stroke="#727272"/>
+ <path d="m42.5 13v3" fill="none" stroke="#727272"/>
+</svg>

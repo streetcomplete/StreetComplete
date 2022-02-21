@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.ktx
 
 import android.database.Cursor
-import androidx.core.database.*
+import androidx.core.database.getBlobOrNull
+import androidx.core.database.getDoubleOrNull
+import androidx.core.database.getFloatOrNull
+import androidx.core.database.getIntOrNull
+import androidx.core.database.getLongOrNull
+import androidx.core.database.getShortOrNull
+import androidx.core.database.getStringOrNull
 
 fun Cursor.getLong(columnName: String): Long = getLong(getColumnIndexOrThrow(columnName))
 fun Cursor.getInt(columnName: String): Int = getInt(getColumnIndexOrThrow(columnName))
@@ -21,7 +27,7 @@ fun Cursor.getBlobOrNull(columnName: String): ByteArray? = getBlobOrNull(getColu
 
 inline fun <reified T> Cursor.get(columnName: String): T {
     val index = getColumnIndexOrThrow(columnName)
-    return when(T::class) {
+    return when (T::class) {
         Long::class -> getLong(index)
         Int::class -> getInt(index)
         Short::class -> getShort(index)

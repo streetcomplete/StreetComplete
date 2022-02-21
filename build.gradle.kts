@@ -1,11 +1,11 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        val kotlinVersion = "1.4.10"
-        classpath("com.android.tools.build:gradle:4.1.3")
+        val kotlinVersion = "1.6.10"
+        classpath("com.android.tools.build:gradle:7.0.4")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
 }
@@ -13,10 +13,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
-
 
 tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
     group = "streetcomplete"
@@ -51,20 +50,31 @@ tasks.register<SophoxCountValueByCountryTask>("updateChargingStationOperators") 
     minPercent = 0.1
 }
 
+tasks.register<GenerateQuestListTask>("generateQuestList") {
+    group = "streetcomplete"
+    targetFile = "$projectDir/quest-list.csv"
+    projectDirectory = projectDir
+    sourceDirectory = projectDir.resolve("app/src/main/java/de/westnordost/streetcomplete/")
+    iconsDirectory = projectDir.resolve("res/graphics/quest/")
+    noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
+}
+
 tasks.register("updateStreetCompleteData") {
     group = "streetcomplete"
     dependsOn(
         "updateStoreDescriptions",
-        //"updateChargingStationOperators",
-        //"updateClothesContainerOperators",
-        //"updateAtmOperators",
+        // "updateChargingStationOperators",
+        // "updateClothesContainerOperators",
+        // "updateAtmOperators",
+        "generateQuestList",
         "app:updatePresets",
         "app:updateNsiPresets",
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
-        "app:generateMetadataByCountry"
-        )
+        "app:generateMetadataByCountry",
+        "app:updateTranslatorCredits"
+    )
 }
 
 tasks.register<GitStatsTask>("gitStatsCode") {

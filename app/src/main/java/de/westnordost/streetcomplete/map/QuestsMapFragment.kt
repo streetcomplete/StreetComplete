@@ -3,9 +3,6 @@ package de.westnordost.streetcomplete.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
-import androidx.lifecycle.lifecycleScope
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -14,35 +11,41 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.map.components.ElementGeometryMapComponent
+import de.westnordost.streetcomplete.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.map.components.FocusGeometryMapComponent
+import de.westnordost.streetcomplete.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
-import de.westnordost.streetcomplete.map.components.PointMarkersMapComponent
+import de.westnordost.streetcomplete.map.components.SelectedPinsMapComponent
+import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Manages a map that shows the quest pins, quest geometry */
-class QuestsMapFragment : LocationAwareMapFragment() {
+class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-    @Inject internal lateinit var spriteSheet: TangramPinsSpriteSheet
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
-    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
-    @Inject internal lateinit var editHistorySource: EditHistorySource
-    @Inject internal lateinit var mapDataSource: MapDataWithEditsSource
+    private val spriteSheet: TangramPinsSpriteSheet by inject()
+    private val questTypeOrderSource: QuestTypeOrderSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
+    private val editHistorySource: EditHistorySource by inject()
+    private val mapDataSource: MapDataWithEditsSource by inject()
 
-    private var pointMarkersMapComponent: PointMarkersMapComponent? = null
+    private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
-    private var geometryMapComponent: ElementGeometryMapComponent? = null
+    private var selectedPinsMapComponent: SelectedPinsMapComponent? = null
+    private var geometryMapComponent: FocusGeometryMapComponent? = null
     private var questPinsManager: QuestPinsManager? = null
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
 
@@ -63,23 +66,20 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
     override suspend fun onMapReady() {
         val ctrl = controller ?: return
         ctrl.setPickRadius(1f)
-        pointMarkersMapComponent = PointMarkersMapComponent(ctrl)
-        pinsMapComponent = PinsMapComponent(requireContext(), ctrl)
-        geometryMapComponent = ElementGeometryMapComponent(ctrl)
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
+        pinsMapComponent = PinsMapComponent(ctrl)
+        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
+        geometryMapComponent = FocusGeometryMapComponent(ctrl)
 
-        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeRegistry, questTypeOrderList, resources, visibleQuestsSource)
-        lifecycle.addObserver(questPinsManager!!)
+        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isActive = pinMode == PinMode.QUESTS
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
-        lifecycle.addObserver(editHistoryPinsManager!!)
+        viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
 
         super.onMapReady()
@@ -101,7 +101,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* -------------------------------- Picking quest pins -------------------------------------- */
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
-        lifecycleScope.launch {
+        viewLifecycleScope.launch {
             val props = controller?.pickLabel(x, y)?.properties
 
             val questKey = props?.let { questPinsManager?.getQuestKey(it) }
@@ -114,7 +114,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
                 listener?.onClickedEdit(editKey)
                 return@launch
             }
-            val pickMarkerResult = controller?.pickMarker(x,y)
+            val pickMarkerResult = controller?.pickMarker(x, y)
             if (pickMarkerResult == null) {
                 onClickedMap(x, y)
             }
@@ -137,21 +137,19 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* --------------------------------- Focusing on edit --------------------------------------- */
 
     fun startFocusEdit(edit: Edit, offset: RectF) {
-        pinsMapComponent?.showSelectedPins(edit.icon, listOf(edit.position))
         geometryMapComponent?.beginFocusGeometry(ElementPointGeometry(edit.position), offset)
         geometryMapComponent?.showGeometry(edit.getGeometry())
+        selectedPinsMapComponent?.set(edit.icon, listOf(edit.position))
     }
 
     fun endFocusEdit() {
-        pinsMapComponent?.clearSelectedPins()
+        selectedPinsMapComponent?.clear()
         geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
         geometryMapComponent?.clearGeometry()
     }
 
-    private fun Edit.getGeometry(): ElementGeometry = when(this) {
-        /* TODO if edits also persisted the geometry of the element at the time the edit was
-        *   created, it could be shown here. */
-        is ElementEdit -> mapDataSource.getGeometry(elementType, elementId)
+    private fun Edit.getGeometry(): ElementGeometry = when (this) {
+        is ElementEdit -> originalGeometry
         is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
         else -> null
     } ?: ElementPointGeometry(position)
@@ -167,30 +165,49 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     fun startFocusQuest(quest: Quest, offset: RectF) {
         geometryMapComponent?.beginFocusGeometry(quest.geometry, offset)
         geometryMapComponent?.showGeometry(quest.geometry)
-        pinsMapComponent?.showSelectedPins(quest.type.icon, quest.markerLocations)
+        selectedPinsMapComponent?.set(quest.type.icon, quest.markerLocations)
+        // while quest is focused, we actually don't want to see all the other quest pins (since v38)
+        pinsMapComponent?.isVisible = false
     }
 
     /** Clear focus on current quest but do not return to normal view yet */
     fun clearFocusQuest() {
-        pinsMapComponent?.clearSelectedPins()
+        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
-        pointMarkersMapComponent?.clear()
+        geometryMarkersMapComponent?.clear()
     }
 
     fun endFocusQuest() {
+        pinsMapComponent?.isVisible = true
         clearFocusQuest()
-        geometryMapComponent?.endFocusGeometry()
+        viewLifecycleScope.launch {
+            /* small delay to wait for other animations when ending focus on quest to be done first
+               Most specifically, the map is being updated after a quest is solved, if the zoom
+               out animation already starts while the map is being updated, there can be a little
+               lag/jump which is not visually pleasing.
+             */
+            delay(150)
+            geometryMapComponent?.endFocusGeometry()
+        }
         centerCurrentPositionIfFollowing()
     }
 
-    /* -------------------------  Markers for current quest (split way) ------------------------- */
+    /* -------------------------------  Markers for current quest ------------------------------- */
 
-    fun putMarkerForCurrentQuest(pos: LatLon, @DrawableRes drawableResId: Int) {
-        pointMarkersMapComponent?.put(pos, drawableResId)
+    override fun putMarkerForCurrentQuest(
+        geometry: ElementGeometry,
+        @DrawableRes drawableResId: Int?,
+        title: String?
+    ) {
+        geometryMarkersMapComponent?.put(geometry, drawableResId, title)
     }
 
-    fun deleteMarkerForCurrentQuest(pos: LatLon) {
-        pointMarkersMapComponent?.delete(pos)
+    override fun deleteMarkerForCurrentQuest(geometry: ElementGeometry) {
+        geometryMarkersMapComponent?.delete(geometry)
+    }
+
+    override fun clearMarkersForCurrentQuest() {
+        geometryMarkersMapComponent?.clear()
     }
 
     /* --------------------- Switching between quests and edit history pins --------------------- */
@@ -199,8 +216,8 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         /* both managers use the same resource (PinsMapComponent), so the newly visible manager
            may only be activated after the old has been deactivated
          */
-        pointMarkersMapComponent?.clear()
-        pinsMapComponent?.clearSelectedPins()
+        geometryMarkersMapComponent?.clear()
+        selectedPinsMapComponent?.clear()
         geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
         geometryMapComponent?.clearGeometry()
 

@@ -1,20 +1,28 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.util.Log
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.enclosingTilesRect
-import kotlinx.coroutines.*
-import okhttp3.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.HttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import okhttp3.internal.Version
 import java.io.IOException
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 import kotlin.coroutines.resume
 
-class MapTilesDownloader @Inject constructor(
+class MapTilesDownloader(
     private val vectorTileProvider: VectorTileProvider,
     private val cacheConfig: MapTilesDownloadCacheConfig
 ) {
@@ -29,10 +37,14 @@ class MapTilesDownloader @Inject constructor(
         var cachedSize = 0
         val time = currentTimeMillis()
 
-        supervisorScope {
+        coroutineScope {
             for (tile in getDownloadTileSequence(bbox)) {
                 launch {
-                    val result = downloadTile(tile.zoom, tile.x, tile.y)
+                    val result = try {
+                        downloadTile(tile.zoom, tile.x, tile.y)
+                    } catch (e: Exception) {
+                        DownloadFailure
+                    }
                     ++tileCount
                     when (result) {
                         is DownloadFailure -> ++failureCount
@@ -61,7 +73,7 @@ class MapTilesDownloader @Inject constructor(
            identical in order for the cache to work */
         val url = vectorTileProvider.getTileUrl(zoom, x, y) + "&"
         val httpUrl = HttpUrl.parse(url)
-        check(httpUrl != null) { "Invalid URL: $url" }
+        require(httpUrl != null) { "Invalid URL: $url" }
 
         val builder = Request.Builder()
             .url(httpUrl)

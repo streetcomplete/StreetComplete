@@ -19,7 +19,7 @@ object WayTables {
         CREATE TABLE $NAME (
             ${Columns.ID} int PRIMARY KEY,
             ${Columns.VERSION} int NOT NULL,
-            ${Columns.TAGS} blob,
+            ${Columns.TAGS} text,
             ${Columns.TIMESTAMP} int NOT NULL,
             ${Columns.LAST_SYNC} int NOT NULL
         );
@@ -35,5 +35,9 @@ object WayTables {
 
     const val NODES_INDEX_CREATE = """
         CREATE INDEX osm_way_nodes_index ON $NAME_NODES (${Columns.ID});
+    """
+
+    const val WAYS_BY_NODE_ID_INDEX_CREATE = """
+        CREATE INDEX osm_way_by_node_id_index ON $NAME_NODES (${Columns.NODE_ID});
     """
 }

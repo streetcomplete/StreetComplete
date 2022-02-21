@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.map.tangram
 
 import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.MapController
 import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
-import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
@@ -56,18 +57,19 @@ class MarkerManager(private val c: MapController) {
         val marker = markers.remove(markerId) ?: return false
         val tangramMarkerId = marker.tangramMarker?.markerId
         if (tangramMarkerId != null) {
-            c.removeMarker(tangramMarkerId)
+            safe { c.removeMarker(tangramMarkerId) }
         }
         return true
     }
+
     fun removeAllMarkers() {
         markers.clear()
-        c.removeAllMarkers()
+        safe { c.removeAllMarkers() }
     }
 
     fun recreateMarkers() {
         for (marker in markers.values) {
-            marker.tangramMarker = c.addMarker()
+            safe { marker.tangramMarker = c.addMarker() }
         }
     }
 
@@ -99,7 +101,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
                     val ease = pointEaseType
                     if (duration != null && ease != null) {
                         value.setPointEased(it, duration, ease)
-                    }  else {
+                    } else {
                         value.setPoint(it)
                     }
                 }
@@ -199,3 +201,11 @@ class MarkerPickResult internal constructor(
     val marker: Marker,
     val coordinates: LatLon
 )
+
+private inline fun safe(block: () -> Unit) {
+    try {
+        block()
+    } catch (e: Throwable) {
+        Log.e("Tangram", "", e)
+    }
+}

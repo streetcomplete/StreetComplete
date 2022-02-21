@@ -1,3 +1,3 @@
 import:
-  - streetcomplete.yaml
-  - streetcomplete-satellite-style.yaml
+    - streetcomplete.yaml
+    - streetcomplete-satellite-style.yaml

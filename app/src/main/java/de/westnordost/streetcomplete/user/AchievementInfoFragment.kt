@@ -20,13 +20,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.HandlesOnBackPressed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
+import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.util.Transforms
+import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
-import kotlinx.android.synthetic.main.fragment_achievement_info.*
-
 
 /** Shows details for a certain level of one achievement as a fake-dialog.
  *  There are two modes:
@@ -42,8 +43,11 @@ import kotlinx.android.synthetic.main.fragment_achievement_info.*
  *  different root view than the rest of the UI. However, for the calculation to animate the icon
  *  from another view to the position in the "dialog", there must be a common root view.
  *  */
-class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
+class AchievementInfoFragment :
+    Fragment(R.layout.fragment_achievement_info),
     HandlesOnBackPressed {
+
+    private val binding by viewBinding(FragmentAchievementInfoBinding::bind)
 
     /** View from which the achievement icon is animated from (and back on dismissal)*/
     private var achievementIconBubble: View? = null
@@ -51,8 +55,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
     var isShowing: Boolean = false
         private set
 
-    // need to keep the animators here to be able to clear them on cancel
-    private val currentAnimators: MutableList<ViewPropertyAnimator> = mutableListOf()
+    private var animatorsPlayer: ViewPropertyAnimatorsPlayer? = null
     private var shineAnimation: TimeAnimator? = null
 
     private val layoutTransition: LayoutTransition = LayoutTransition()
@@ -66,10 +69,10 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialogAndBackgroundContainer.setOnClickListener { dismiss() }
+        binding.dialogAndBackgroundContainer.setOnClickListener { dismiss() }
         // in order to not show the scroll indicators
-        unlockedLinksList.isNestedScrollingEnabled = false
-        unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
+        binding.unlockedLinksList.isNestedScrollingEnabled = false
+        binding.unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
             override fun canScrollVertically() = false
         }
     }
@@ -85,7 +88,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
     override fun onDestroyView() {
         super.onDestroyView()
         achievementIconBubble = null
-        clearAnimators()
+        animatorsPlayer?.cancel()
         shineAnimation?.cancel()
         shineAnimation = null
     }
@@ -94,7 +97,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
 
     /** Show as details of a tapped view */
     fun show(achievement: Achievement, level: Int, achievementBubbleView: View): Boolean {
-        if (currentAnimators.isNotEmpty()) return false
+        if (animatorsPlayer != null) return false
         isShowing = true
         this.achievementIconBubble = achievementBubbleView
 
@@ -105,7 +108,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
 
     /** Show as new achievement achieved/unlocked */
     fun showNew(achievement: Achievement, level: Int): Boolean {
-        if (currentAnimators.isNotEmpty()) return false
+        if (animatorsPlayer != null) return false
         isShowing = true
 
         bind(achievement, level, true)
@@ -114,7 +117,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
     }
 
     fun dismiss(): Boolean {
-        if (currentAnimators.isNotEmpty()) return false
+        if (animatorsPlayer != null) return false
         isShowing = false
         animateOut(achievementIconBubble)
         return true
@@ -123,75 +126,69 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
     /* ----------------------------------- Animating in and out --------------------------------- */
 
     private fun bind(achievement: Achievement, level: Int, showLinks: Boolean) {
-        achievementIconView.icon = resources.getDrawable(achievement.icon)
-        achievementIconView.level = level
-        achievementTitleText.setText(achievement.title)
+        binding.achievementIconView.icon = context?.getDrawable(achievement.icon)
+        binding.achievementIconView.level = level
+        binding.achievementTitleText.setText(achievement.title)
 
-        achievementDescriptionText.isGone = achievement.description == null
+        binding.achievementDescriptionText.isGone = achievement.description == null
         if (achievement.description != null) {
             val arg = achievement.getPointThreshold(level)
-            achievementDescriptionText.text = resources.getString(achievement.description, arg)
+            binding.achievementDescriptionText.text = resources.getString(achievement.description, arg)
         } else {
-            achievementDescriptionText.text = ""
+            binding.achievementDescriptionText.text = ""
         }
 
         val unlockedLinks = achievement.unlockedLinks[level].orEmpty()
         val hasNoUnlockedLinks = unlockedLinks.isEmpty() || !showLinks
-        unlockedLinkTitleText.isGone = hasNoUnlockedLinks
-        unlockedLinksList.isGone = hasNoUnlockedLinks
+        binding.unlockedLinkTitleText.isGone = hasNoUnlockedLinks
+        binding.unlockedLinksList.isGone = hasNoUnlockedLinks
         if (hasNoUnlockedLinks) {
-            unlockedLinksList.adapter = null
+            binding.unlockedLinksList.adapter = null
         } else {
-            unlockedLinkTitleText.setText(
+            binding.unlockedLinkTitleText.setText(
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links
             )
-            unlockedLinksList.adapter = LinksAdapter(unlockedLinks, this::openUrl)
+            binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, this::openUrl)
         }
     }
 
     private fun animateIn() {
-        dialogAndBackgroundContainer.visibility = View.VISIBLE
+        binding.dialogAndBackgroundContainer.visibility = View.VISIBLE
 
         shineAnimation?.cancel()
         val anim = TimeAnimator()
         anim.setTimeListener { _, _, deltaTime ->
-            shineView1.rotation += deltaTime / 50f
-            shineView2.rotation -= deltaTime / 100f
+            binding.shineView1.rotation += deltaTime / 50f
+            binding.shineView2.rotation -= deltaTime / 100f
         }
         anim.start()
         shineAnimation = anim
 
-        clearAnimators()
-
-        currentAnimators.addAll(
-            createShineFadeInAnimations() +
-            createDialogPopInAnimations(DIALOG_APPEAR_DELAY_IN_MS) +
-            listOf(
-                createFadeInBackgroundAnimation(),
-                createAchievementIconPopInAnimation()
-            )
+        playAll(
+            *createShineFadeInAnimations().toTypedArray(),
+            *createDialogPopInAnimations(DIALOG_APPEAR_DELAY_IN_MS).toTypedArray(),
+            createFadeInBackgroundAnimation(),
+            createAchievementIconPopInAnimation()
         )
-        currentAnimators.forEach { it.start() }
     }
 
     private fun animateInFromView(questBubbleView: View) {
         questBubbleView.visibility = View.INVISIBLE
-        dialogAndBackgroundContainer.visibility = View.VISIBLE
+        binding.dialogAndBackgroundContainer.visibility = View.VISIBLE
 
-        shineView1.visibility = View.GONE
-        shineView2.visibility = View.GONE
+        binding.shineView1.visibility = View.GONE
+        binding.shineView2.visibility = View.GONE
 
-        currentAnimators.addAll(createDialogPopInAnimations() + listOf(
+        playAll(
+            *createDialogPopInAnimations().toTypedArray(),
             createFadeInBackgroundAnimation(),
             createAchievementIconFlingInAnimation(questBubbleView)
-        ))
-        currentAnimators.forEach { it.start() }
+        )
     }
 
     private fun animateOut(questBubbleView: View?) {
-
-        dialogContainer.layoutTransition = null
+        binding.dialogContainer.layoutTransition = null
 
         val iconAnimator = if (questBubbleView != null) {
             createAchievementIconFlingOutAnimation(questBubbleView)
@@ -199,40 +196,35 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
             createAchievementIconPopOutAnimation()
         }
 
-        currentAnimators.addAll(
-            createDialogPopOutAnimations() +
-            createShineFadeOutAnimations() +
-            listOf(
-                createFadeOutBackgroundAnimation(),
-                iconAnimator
-            )
+        playAll(
+            *createShineFadeOutAnimations().toTypedArray(),
+            *createDialogPopOutAnimations().toTypedArray(),
+            createFadeOutBackgroundAnimation(),
+            iconAnimator
         )
-        currentAnimators.forEach { it.start() }
     }
 
-    private fun createAchievementIconFlingInAnimation(sourceView: View): ViewPropertyAnimator {
-        sourceView.visibility = View.INVISIBLE
-        val root = sourceView.rootView as ViewGroup
-        achievementIconView.applyTransforms(Transforms.IDENTITY)
-        achievementIconView.alpha = 1f
-        return achievementIconView.animateFrom(sourceView, root)
-            .setDuration(ANIMATION_TIME_IN_MS)
-            .setInterpolator(OvershootInterpolator())
-    }
+    private fun createAchievementIconFlingInAnimation(sourceView: View): ViewPropertyAnimator =
+        binding.achievementIconView.let {
+            sourceView.visibility = View.INVISIBLE
+            it.applyTransforms(Transforms.IDENTITY)
+            it.alpha = 1f
+            it.animateFrom(sourceView, sourceView.rootView as ViewGroup)
+                .setDuration(ANIMATION_TIME_IN_MS)
+                .setInterpolator(OvershootInterpolator())
+        }
 
-    private fun createAchievementIconFlingOutAnimation(targetView: View): ViewPropertyAnimator {
-        val root = targetView.rootView as ViewGroup
-        return achievementIconView.animateTo(targetView, root)
+    private fun createAchievementIconFlingOutAnimation(targetView: View): ViewPropertyAnimator =
+        binding.achievementIconView.animateTo(targetView, targetView.rootView as ViewGroup)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .withEndAction {
                 targetView.visibility = View.VISIBLE
                 achievementIconBubble = null
             }
-    }
 
-    private fun createShineFadeInAnimations(): List<ViewPropertyAnimator> {
-        return listOf(shineView1, shineView2).map {
+    private fun createShineFadeInAnimations(): List<ViewPropertyAnimator> =
+        listOf(binding.shineView1, binding.shineView2).map {
             it.visibility = View.VISIBLE
             it.alpha = 0f
             it.animate()
@@ -240,10 +232,9 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
                 .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(DecelerateInterpolator())
         }
-    }
 
-    private fun createShineFadeOutAnimations(): List<ViewPropertyAnimator> {
-        return listOf(shineView1, shineView2).map {
+    private fun createShineFadeOutAnimations(): List<ViewPropertyAnimator> =
+        listOf(binding.shineView1, binding.shineView2).map {
             it.animate()
                 .alpha(0f)
                 .setDuration(ANIMATION_TIME_OUT_MS)
@@ -254,31 +245,30 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
                     it.visibility = View.GONE
                 }
         }
-    }
 
-    private fun createAchievementIconPopInAnimation(): ViewPropertyAnimator {
-        achievementIconView.alpha = 0f
-        achievementIconView.scaleX = 0f
-        achievementIconView.scaleY = 0f
-        achievementIconView.rotationY = -180f
-        return achievementIconView.animate()
-            .alpha(1f)
-            .scaleX(1f).scaleY(1f)
-            .rotationY(360f)
-            .setDuration(ANIMATION_TIME_NEW_ACHIEVEMENT_IN_MS)
-            .setInterpolator(DecelerateInterpolator())
-    }
+    private fun createAchievementIconPopInAnimation(): ViewPropertyAnimator =
+        binding.achievementIconView.let {
+            it.alpha = 0f
+            it.scaleX = 0f
+            it.scaleY = 0f
+            it.rotationY = -180f
+            it.animate()
+                .alpha(1f)
+                .scaleX(1f).scaleY(1f)
+                .rotationY(360f)
+                .setDuration(ANIMATION_TIME_NEW_ACHIEVEMENT_IN_MS)
+                .setInterpolator(DecelerateInterpolator())
+        }
 
-    private fun createAchievementIconPopOutAnimation(): ViewPropertyAnimator {
-        return achievementIconView.animate()
+    private fun createAchievementIconPopOutAnimation(): ViewPropertyAnimator =
+        binding.achievementIconView.animate()
             .alpha(0f)
             .scaleX(0.5f).scaleY(0.5f)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateInterpolator())
-    }
 
-    private fun createDialogPopInAnimations(startDelay: Long = 0): List<ViewPropertyAnimator> {
-        return listOf(dialogContentContainer, dialogBubbleBackground).map {
+    private fun createDialogPopInAnimations(startDelay: Long = 0): List<ViewPropertyAnimator> =
+        listOf(binding.dialogContentContainer, binding.dialogBubbleBackground).map {
             it.alpha = 0f
             it.scaleX = 0.5f
             it.scaleY = 0.5f
@@ -293,7 +283,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
                 .setStartDelay(startDelay)
                 .withStartAction {
                     if (startDelay > 0) {
-                        dialogContainer.layoutTransition = layoutTransition
+                        binding.dialogContainer.layoutTransition = layoutTransition
                         it.visibility = View.VISIBLE
                     }
                 }
@@ -302,10 +292,9 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
                 .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(OvershootInterpolator())
         }
-    }
 
-    private fun createDialogPopOutAnimations(): List<ViewPropertyAnimator> {
-        return listOf(dialogContentContainer, dialogBubbleBackground).map {
+    private fun createDialogPopOutAnimations(): List<ViewPropertyAnimator> =
+        listOf(binding.dialogContentContainer, binding.dialogBubbleBackground).map {
             it.animate()
                 .alpha(0f)
                 .setStartDelay(0)
@@ -314,38 +303,35 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info),
                 .setDuration(ANIMATION_TIME_OUT_MS)
                 .setInterpolator(AccelerateInterpolator())
         }
-    }
 
-    private fun createFadeInBackgroundAnimation(): ViewPropertyAnimator {
-        dialogBackground.alpha = 0f
-        return dialogBackground.animate()
-            .alpha(1f)
-            .setDuration(ANIMATION_TIME_IN_MS)
-            .setInterpolator(DecelerateInterpolator())
-            .withEndAction { currentAnimators.clear() }
-    }
+    private fun createFadeInBackgroundAnimation(): ViewPropertyAnimator =
+        binding.dialogBackground.let {
+            it.alpha = 0f
+            it.animate()
+                .alpha(1f)
+                .setDuration(ANIMATION_TIME_IN_MS)
+                .setInterpolator(DecelerateInterpolator())
+        }
 
-    private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator {
-        return dialogBackground.animate()
+    private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator =
+        binding.dialogBackground.animate()
             .alpha(0f)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateInterpolator())
             .withEndAction {
-                dialogAndBackgroundContainer.visibility = View.INVISIBLE
-                currentAnimators.clear()
+                binding.dialogAndBackgroundContainer.visibility = View.INVISIBLE
             }
-    }
-
-    private fun clearAnimators() {
-        for (anim in currentAnimators) {
-            anim.cancel()
-        }
-        currentAnimators.clear()
-    }
 
     private fun openUrl(url: String) {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         tryStartActivity(intent)
+    }
+
+    private fun playAll(vararg animators: ViewPropertyAnimator) {
+        animatorsPlayer = ViewPropertyAnimatorsPlayer(animators.toMutableList()).also {
+            it.onEnd = { animatorsPlayer = null }
+            it.start()
+        }
     }
 
     companion object {

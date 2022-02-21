@@ -1,154 +1,91 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
-import android.content.pm.PackageManager
+import android.content.ActivityNotFoundException
+import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.graphics.Bitmap
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXHEIGHT
+import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
+import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.util.ActivityForResultLauncher
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
-import kotlinx.android.synthetic.main.fragment_attach_photo.*
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.*
 
-class AttachPhotoFragment : Fragment() {
+class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
-    val imagePaths: List<String> get() = noteImageAdapter.list
-    private var photosListView : RecyclerView? = null
-    private var hintView : TextView? = null
-
-    private var currentImagePath: String? = null
+    private val binding by viewBinding(FragmentAttachPhotoBinding::bind)
+    private val takePhoto = ActivityForResultLauncher(this, ActivityResultContracts.TakePicture())
 
     private lateinit var noteImageAdapter: NoteImageAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_attach_photo, container, false)
+    val imagePaths: List<String> get() = noteImageAdapter.list
 
-        // see #1768: Android KitKat and below do not recognize letsencrypt certificates
-        val isPreLollipop = Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
-        val hasCamera = requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
-        if (isPreLollipop || !hasCamera) {
-            view.visibility = View.GONE
-        }
-        photosListView = view.findViewById(R.id.gridView)
-        hintView = view.findViewById(R.id.photosAreUsefulExplanation)
-        return view
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    private fun updateHintVisibility(){
-        val isImagePathsEmpty = imagePaths.isEmpty()
-        photosListView?.isGone = isImagePathsEmpty
-        hintView?.isGone = !isImagePathsEmpty
+        val paths = savedInstanceState?.getStringArrayList(PHOTO_PATHS) ?: ArrayList()
+        noteImageAdapter = NoteImageAdapter(paths, requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        takePhotoButton.setOnClickListener { takePhoto() }
+        view.isGone = !requireActivity().packageManager.hasSystemFeature(FEATURE_CAMERA_ANY)
 
-        val paths: ArrayList<String>
-        if (savedInstanceState != null) {
-            paths = savedInstanceState.getStringArrayList(PHOTO_PATHS)!!
-            currentImagePath = savedInstanceState.getString(CURRENT_PHOTO_PATH)
-        } else {
-            paths = ArrayList()
-            currentImagePath = null
-        }
-
-        noteImageAdapter = NoteImageAdapter(paths, requireContext())
-        gridView.layoutManager = LinearLayoutManager(
-            context,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        gridView.adapter = noteImageAdapter
+        binding.takePhotoButton.setOnClickListener { lifecycleScope.launch { takePhoto() } }
+        binding.photosList.adapter = noteImageAdapter
         noteImageAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { updateHintVisibility() })
+
         updateHintVisibility()
+    }
+
+    private fun updateHintVisibility() {
+        binding.photosList.isGone = imagePaths.isEmpty()
+        binding.photosAreUsefulExplanation.isGone = imagePaths.isNotEmpty()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putStringArrayList(PHOTO_PATHS, ArrayList(imagePaths))
-        outState.putString(CURRENT_PHOTO_PATH, currentImagePath)
     }
 
-    private fun takePhoto() {
-        val takePhotoIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        activity?.packageManager?.let { packageManager ->
-            if (takePhotoIntent.resolveActivity(packageManager) != null) {
-                try {
-                    val photoFile = createImageFile()
-                    val photoUri = if (Build.VERSION.SDK_INT > 21) {
-                        //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-                        FileProvider.getUriForFile(requireContext(),getString(R.string.fileprovider_authority),photoFile)
-                    } else {
-                        photoFile.toUri()
-                    }
-                    currentImagePath = photoFile.path
-                    takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-                    startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
-                } catch (e: IOException) {
-                    Log.e(TAG, "Unable to create file for photo", e)
-                    context?.toast(R.string.quest_leave_new_note_create_image_error)
-                } catch (e: IllegalArgumentException) {
-                    Log.e(TAG, "Unable to create file for photo", e)
-                    context?.toast(R.string.quest_leave_new_note_create_image_error)
-                }
+    private suspend fun takePhoto() {
+        var file: File? = null
+        try {
+            file = createImageFile()
+            val photoUri = FileProvider.getUriForFile(requireContext(), getString(R.string.fileprovider_authority), file)
+            val saved = takePhoto(photoUri)
+            if (!saved) {
+                deleteImageFile(file)
+                return
             }
-        }
-    }
+            rescaleImageFile(file)
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_TAKE_PHOTO) {
-            if (resultCode == RESULT_OK) {
-                try {
-                    val path = currentImagePath!!
-                    val bitmap = decodeScaledBitmapAndNormalize(path, ATTACH_PHOTO_MAXWIDTH, ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
-                    val out = FileOutputStream(path)
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, ATTACH_PHOTO_QUALITY, out)
-
-                    noteImageAdapter.list.add(path)
-                    noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
-                } catch (e: IOException) {
-                    Log.e(TAG, "Unable to rescale the photo", e)
-                    context?.toast(R.string.quest_leave_new_note_create_image_error)
-                    removeCurrentImage()
-                }
-
-            } else {
-                removeCurrentImage()
-            }
-            currentImagePath = null
-        }
-    }
-
-    private fun removeCurrentImage() {
-        currentImagePath?.let {
-            val photoFile = File(it)
-            if (photoFile.exists()) {
-                photoFile.delete()
+            noteImageAdapter.list.add(file.path)
+            noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
+        } catch (e: Exception) {
+            Log.e(TAG, "Unable to create photo", e)
+            file?.let { deleteImageFile(it) }
+            when (e) {
+                is ActivityNotFoundException -> context?.toast(R.string.no_camera_app)
+                else -> context?.toast(R.string.quest_leave_new_note_create_image_error)
             }
         }
     }
@@ -157,8 +94,18 @@ class AttachPhotoFragment : Fragment() {
         val directory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
         val file = File(directory, imageFileName)
-        if(!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
+        if (!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
         return file
+    }
+
+    private fun rescaleImageFile(file: File) {
+        val bitmap = decodeScaledBitmapAndNormalize(file.path, ATTACH_PHOTO_MAXWIDTH, ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
+        val out = FileOutputStream(file.path)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, ATTACH_PHOTO_QUALITY, out)
+    }
+
+    private fun deleteImageFile(file: File) {
+        if (file.exists()) file.delete()
     }
 
     fun deleteImages() {
@@ -166,11 +113,8 @@ class AttachPhotoFragment : Fragment() {
     }
 
     companion object {
-
         private const val TAG = "AttachPhotoFragment"
-        private const val REQUEST_TAKE_PHOTO = 1
 
         private const val PHOTO_PATHS = "photo_paths"
-        private const val CURRENT_PHOTO_PATH = "current_photo_path"
     }
 }

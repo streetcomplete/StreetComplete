@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -12,6 +12,8 @@
         <item name="colorOnSecondary">@color/on_secondary</item>
         <item name="colorAccent">@color/accent</item>
 
+        <item name="colorControlNormal">@color/text</item>
+
         <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
         <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
         <item name="titleTextAppearance">@style/TextAppearance.Title</item>
@@ -20,6 +22,8 @@
         <item name="windowNoTitle">true</item>
         <item name="dividerVertical">@drawable/button_bar_divider</item>
         <item name="dividerHorizontal">@drawable/button_bar_divider</item>
+
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
 
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
         <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
@@ -53,6 +57,13 @@
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Bubble</item>
         <item name="android:windowMinWidthMajor">50%</item>
         <item name="android:windowMinWidthMinor">75%</item>
+        <!-- There is a rare crash that suggests that both the listener for the positive button
+             and the listener for the cancel event is called. This may be due to a fat (or two)
+             fingers pressing both on "OK" and outside the dialog (=cancelling it).
+             Documentation is sparse, but it looks like with this setting, such multi-touch behavior
+             can be disabled for dialogs - which would be the behavior one (=the developer) would
+             expect. -->
+        <item name="android:splitMotionEvents">false</item>
     </style>
 
     <style name="Theme.Bubble.Dialog.Alert"/>
@@ -60,6 +71,10 @@
     <style name="Theme.CustomDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowBackground">@color/background_transparent</item>
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
+    </style>
+
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">?attr/colorControlNormal</item>
     </style>
 
 </resources>

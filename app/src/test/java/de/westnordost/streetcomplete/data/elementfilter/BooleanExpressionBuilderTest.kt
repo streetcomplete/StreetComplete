@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class BooleanExpressionBuilderTest {
     @Test fun leaf() { check("a") }
@@ -55,7 +54,6 @@ class BooleanExpressionBuilderTest {
 
     @Test fun flatten1() { check("((a*b)*c)*d*(e*f)", "a*b*c*d*e*f") }
     @Test fun flatten2() { check("(a+b*(c+d)+e)*f", "(a+b*(c+d)+e)*f") }
-
 
     @Test(expected = IllegalStateException::class)
     fun `closed too many brackets 1`() { TestBooleanExpressionParser.parse("a+b)") }

@@ -1,16 +1,77 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.ABANDONED
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.ALLOTMENT_HOUSE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.APARTMENTS
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.BOATHOUSE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.BRIDGE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.BUNGALOW
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.BUNKER
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.CARPORT
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.CATHEDRAL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.CHAPEL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.CHURCH
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.CIVIC
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.COLLEGE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.COMMERCIAL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.CONSTRUCTION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.DETACHED
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.DORMITORY
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM_AUXILIARY
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.FIRE_STATION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.GARAGE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.GARAGES
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.GOVERNMENT
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.GRANDSTAND
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.GREENHOUSE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HANGAR
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HISTORIC
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOSPITAL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOTEL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOUSE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOUSEBOAT
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.HUT
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.INDUSTRIAL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.KINDERGARTEN
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.KIOSK
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.MOSQUE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.OFFICE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.PAGODA
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.PARKING
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.RELIGIOUS
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.RESIDENTIAL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.RETAIL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.ROOF
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.RUINS
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SCHOOL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SEMI_DETACHED
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SERVICE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SHED
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SHRINE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SILO
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SPORTS_CENTRE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.STADIUM
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.STATIC_CARAVAN
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.STORAGE_TANK
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SYNAGOGUE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TEMPLE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TERRACE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TOILETS
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRAIN_STATION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSPORTATION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.UNIVERSITY
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.WAREHOUSE
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
 
 fun List<BuildingType>.toItems() = this.map { it.asItem() }
 
-fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
+fun BuildingType.asItem(): Item<BuildingType?> = when (this) {
     HOUSE -> Item(this, R.drawable.ic_building_house, R.string.quest_buildingType_house, R.string.quest_buildingType_house_description2)
     APARTMENTS -> Item(this, R.drawable.ic_building_apartments, R.string.quest_buildingType_apartments, R.string.quest_buildingType_apartments_description)
     DETACHED -> Item(this, R.drawable.ic_building_detached, R.string.quest_buildingType_detached, R.string.quest_buildingType_detached_description)
-    SEMI_DETACHED -> Item(this, R.drawable.ic_building_semi_detached, R.string.quest_buildingType_semi_detached, R.string.quest_buildingType_semi_detached_description)
+    SEMI_DETACHED -> Item(this, R.drawable.ic_building_semi_detached, R.string.quest_buildingType_semi_detached, R.string.quest_buildingType_semi_detached_description2)
     TERRACE -> Item(this, R.drawable.ic_building_terrace, R.string.quest_buildingType_terrace2, R.string.quest_buildingType_terrace_description)
     HOTEL -> Item(this, R.drawable.ic_building_hotel, R.string.quest_buildingType_hotel)
     DORMITORY -> Item(this, R.drawable.ic_building_dormitory, R.string.quest_buildingType_dormitory)
@@ -32,6 +93,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     SPORTS_CENTRE -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_sports_centre)
     HOSPITAL -> Item(this, R.drawable.ic_building_hospital, R.string.quest_buildingType_hospital)
     STADIUM -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_stadium)
+    GRANDSTAND -> Item(this, R.drawable.ic_sport_volleyball, R.string.quest_buildingType_grandstand)
     FIRE_STATION -> Item(this, R.drawable.ic_building_fire_truck, R.string.quest_buildingType_fire_station)
     TRAIN_STATION -> Item(this, R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station)
     TRANSPORTATION -> Item(this, R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation)
@@ -58,7 +120,10 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
     GREENHOUSE -> Item(this, R.drawable.ic_building_greenhouse, R.string.quest_buildingType_greenhouse)
 
     SHED -> Item(this, R.drawable.ic_building_shed, R.string.quest_buildingType_shed)
+    BOATHOUSE -> Item(this, R.drawable.ic_building_boathouse, R.string.quest_buildingType_boathouse)
+    ALLOTMENT_HOUSE -> Item(this, R.drawable.ic_building_allotment_house, R.string.quest_buildingType_allotment_house)
     ROOF -> Item(this, R.drawable.ic_building_roof, R.string.quest_buildingType_roof)
+    BRIDGE -> Item(this, R.drawable.ic_building_bridge, R.string.quest_buildingType_bridge)
     TOILETS -> Item(this, R.drawable.ic_building_toilets, R.string.quest_buildingType_toilets)
     SERVICE -> Item(this, R.drawable.ic_building_service, R.string.quest_buildingType_service, R.string.quest_buildingType_service_description)
     HANGAR -> Item(this, R.drawable.ic_building_hangar, R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description)
@@ -77,7 +142,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when(this) {
 
 fun Array<BuildingTypeCategory>.toItems() = this.map { it.asItem() }
 
-fun BuildingTypeCategory.asItem(): Item<BuildingType?> = when(this) {
+fun BuildingTypeCategory.asItem(): Item<BuildingType?> = when (this) {
     BuildingTypeCategory.RESIDENTIAL -> Item(this.type, R.drawable.ic_building_apartments,
         R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
         this.subTypes.toItems()

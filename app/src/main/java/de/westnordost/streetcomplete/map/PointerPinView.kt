@@ -6,7 +6,6 @@ import android.graphics.Canvas
 import android.graphics.Outline
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.View.MeasureSpec.getMode
@@ -16,8 +15,10 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.withRotation
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toPx
-import kotlin.math.*
-
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.min
+import kotlin.math.sin
 
 /** A view for the pointer pin that ought to be displayed at the edge of the screen.
  *  Can be rotated with the pinRotation field. As opposed to normal rotation, it ensures that the
@@ -28,7 +29,7 @@ class PointerPinView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private val pointerPin: Drawable = context.resources.getDrawable(R.drawable.quest_pin_pointer)
+    private val pointerPin: Drawable = context.getDrawable(R.drawable.quest_pin_pointer)!!
     private var pointerPinBitmap: Bitmap? = null
     private val antiAliasPaint: Paint = Paint().apply {
         isAntiAlias = true
@@ -41,9 +42,7 @@ class PointerPinView @JvmOverloads constructor(
         set(value) {
             field = value
             invalidate()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                invalidateOutline()
-            }
+            invalidateOutline()
         }
 
     var pinIconDrawable: Drawable? = null
@@ -53,7 +52,7 @@ class PointerPinView @JvmOverloads constructor(
         }
 
     fun setPinIconResource(resId: Int) {
-        pinIconDrawable = context.resources.getDrawable(resId)
+        pinIconDrawable = context.getDrawable(resId)
     }
 
     init {
@@ -63,23 +62,20 @@ class PointerPinView @JvmOverloads constructor(
             if (resId != 0)
                 setPinIconResource(resId)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            outlineProvider = object : ViewOutlineProvider() {
-                override fun getOutline(view: View, outline: Outline) {
-                    val size = min(width, height)
-                    val pinCircleSize = (size * (1 - PIN_CENTER_OFFSET_FRACTION*2)).toInt()
-                    val arrowOffset = size * PIN_CENTER_OFFSET_FRACTION
-                    val a = pinRotation.toDouble().normalizeAngle().toRadians()
-                    val x = (-sin(a) * arrowOffset).toInt()
-                    val y = (+cos(a) * arrowOffset).toInt()
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        outline.setOval(
-                            width/2 - pinCircleSize/2 + x,
-                            height/2 - pinCircleSize/2 + y,
-                            width/2 + pinCircleSize/2 + x,
-                            height/2 + pinCircleSize/2 + y)
-                    }
-                }
+        outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                val size = min(width, height)
+                val pinCircleSize = (size * (1 - PIN_CENTER_OFFSET_FRACTION * 2)).toInt()
+                val arrowOffset = size * PIN_CENTER_OFFSET_FRACTION
+                val a = pinRotation.toDouble().normalizeAngle().toRadians()
+                val x = (-sin(a) * arrowOffset).toInt()
+                val y = (+cos(a) * arrowOffset).toInt()
+                outline.setOval(
+                    width / 2 - pinCircleSize / 2 + x,
+                    height / 2 - pinCircleSize / 2 + y,
+                    width / 2 + pinCircleSize / 2 + x,
+                    height / 2 + pinCircleSize / 2 + y
+                )
             }
         }
     }
@@ -101,12 +97,16 @@ class PointerPinView @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         pointerPinBitmap?.recycle()
 
-        val size = min(width, height)
-        val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bmp)
-        pointerPin.setBounds(0,0, size, size)
-        pointerPin.draw(canvas)
-        pointerPinBitmap = bmp
+        if (w <= 0 || h <= 0) {
+            pointerPinBitmap = null
+        } else {
+            val size = min(width, height)
+            val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bmp)
+            pointerPin.setBounds(0, 0, size, size)
+            pointerPin.draw(canvas)
+            pointerPinBitmap = bmp
+        }
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -115,7 +115,7 @@ class PointerPinView @JvmOverloads constructor(
         val size = min(width, height)
         val r = pinRotation
 
-        c.withRotation(r, width/2f, height/2f) {
+        c.withRotation(r, width / 2f, height / 2f) {
             pointerPinBitmap?.let { canvas.drawBitmap(it, 0f, 0f, antiAliasPaint) }
         }
 
@@ -127,10 +127,11 @@ class PointerPinView @JvmOverloads constructor(
             val x = (-sin(a) * arrowOffset).toInt()
             val y = (+cos(a) * arrowOffset).toInt()
             icon.setBounds(
-                width/2 - iconSize/2 + x,
-                height/2 - iconSize/2 + y,
-                width/2 + iconSize/2 + x,
-                height/2 + iconSize/2 + y)
+                width / 2 - iconSize / 2 + x,
+                height / 2 - iconSize / 2 + y,
+                width / 2 + iconSize / 2 + x,
+                height / 2 + iconSize / 2 + y
+            )
             icon.draw(c)
         }
     }

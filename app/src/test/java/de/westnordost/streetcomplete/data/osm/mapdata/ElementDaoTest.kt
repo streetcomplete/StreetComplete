@@ -1,15 +1,19 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import org.junit.Before
-import org.junit.Test
-
-import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.rel
-
-import org.mockito.Mockito.*
+import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
+import org.mockito.Mockito.anyCollection
+import org.mockito.Mockito.verify
 
 class ElementDaoTest {
     private lateinit var nodeDao: NodeDao
@@ -31,12 +35,12 @@ class ElementDaoTest {
     }
 
     @Test fun getNode() {
-        dao.get(Element.Type.NODE, 1L)
+        dao.get(NODE, 1L)
         verify(nodeDao).get(1L)
     }
 
     @Test fun deleteNode() {
-        dao.delete(Element.Type.NODE, 1L)
+        dao.delete(NODE, 1L)
         verify(nodeDao).delete(1L)
     }
 
@@ -47,12 +51,12 @@ class ElementDaoTest {
     }
 
     @Test fun getWay() {
-        dao.get(Element.Type.WAY, 1L)
+        dao.get(WAY, 1L)
         verify(wayDao).get(1L)
     }
 
     @Test fun deleteWay() {
-        dao.delete(Element.Type.WAY, 1L)
+        dao.delete(WAY, 1L)
         verify(wayDao).delete(1L)
     }
 
@@ -63,12 +67,12 @@ class ElementDaoTest {
     }
 
     @Test fun getRelation() {
-        dao.get(Element.Type.RELATION, 1L)
+        dao.get(RELATION, 1L)
         verify(relationDao).get(1L)
     }
 
     @Test fun deleteRelation() {
-        dao.delete(Element.Type.RELATION, 1L)
+        dao.delete(RELATION, 1L)
         verify(relationDao).delete(1L)
     }
 
@@ -97,9 +101,9 @@ class ElementDaoTest {
 
     @Test fun deleteAllElements() {
         dao.deleteAll(listOf(
-            ElementKey(Element.Type.NODE,0),
-            ElementKey(Element.Type.WAY,0),
-            ElementKey(Element.Type.RELATION,0)
+            ElementKey(NODE, 0),
+            ElementKey(WAY, 0),
+            ElementKey(RELATION, 0)
         ))
 
         verify(nodeDao).deleteAll(listOf(0L))
@@ -107,15 +111,64 @@ class ElementDaoTest {
         verify(relationDao).deleteAll(listOf(0L))
     }
 
+    @Test fun clear() {
+        dao.clear()
+        verify(nodeDao).clear()
+        verify(wayDao).clear()
+        verify(relationDao).clear()
+    }
+
     @Test fun getAllElements() {
         dao.getAll(listOf(
-            ElementKey(Element.Type.NODE,0),
-            ElementKey(Element.Type.WAY,0),
-            ElementKey(Element.Type.RELATION,0)
+            ElementKey(NODE, 0),
+            ElementKey(WAY, 0),
+            ElementKey(RELATION, 0)
         ))
 
         verify(nodeDao).getAll(listOf(0L))
         verify(wayDao).getAll(listOf(0L))
         verify(relationDao).getAll(listOf(0L))
+    }
+
+    @Test fun getAllElementsByBbox() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val nodes = listOf(node(1), node(2), node(3))
+        val nodeIds = nodes.map { it.id }
+        val ways = listOf(way(1), way(2))
+        val wayIds = ways.map { it.id }
+        val relations = listOf(rel(1))
+
+        on(nodeDao.getAll(bbox)).thenReturn(nodes)
+        on(wayDao.getAllForNodes(eq(nodeIds))).thenReturn(ways)
+        on(relationDao.getAllForElements(
+            nodeIds = eq(nodeIds),
+            wayIds = eq(wayIds),
+            relationIds = eq(emptyList())
+        )).thenReturn(relations)
+        assertEquals(
+            nodes + ways + relations,
+            dao.getAll(bbox)
+        )
+    }
+
+    @Test fun getAllElementKeysByBbox() {
+        val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+        val nodeIds = listOf<Long>(1, 2, 3)
+        val wayIds = listOf<Long>(1, 2)
+        val relationIds = listOf<Long>(1)
+
+        on(nodeDao.getAllIds(bbox)).thenReturn(nodeIds)
+        on(wayDao.getAllIdsForNodes(eq(nodeIds))).thenReturn(wayIds)
+        on(relationDao.getAllIdsForElements(
+            nodeIds = eq(nodeIds),
+            wayIds = eq(wayIds),
+            relationIds = eq(emptyList())
+        )).thenReturn(relationIds)
+        assertEquals(
+            nodeIds.map { ElementKey(NODE, it) } +
+                wayIds.map { ElementKey(WAY, it) } +
+                relationIds.map { ElementKey(RELATION, it) },
+            dao.getAllKeys(bbox)
+        )
     }
 }

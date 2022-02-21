@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -30,17 +31,18 @@
                 android:text="@string/quest_maxspeed_answer_noSign_info_zone"
                 android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
                 android:layout_toStartOf="@+id/slowZoneImage"
-                />
+                tools:ignore="RtlSymmetry" />
 
-            <include
+            <FrameLayout
                 android:id="@+id/slowZoneImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                layout="@layout/quest_maxspeed_zone_sign"
+            >
+                <include
+                    layout="@layout/quest_maxspeed_zone_sign"
                 />
-
+            </FrameLayout>
         </RelativeLayout>
 
 

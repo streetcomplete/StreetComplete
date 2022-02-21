@@ -4,9 +4,10 @@ import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.*
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import org.junit.Test
-import java.util.*
+import java.time.LocalDate
 
 class AddCrossingTypeTest {
 
@@ -41,19 +42,19 @@ class AddCrossingTypeTest {
         questType.verifyAnswer(
             mapOf("crossing" to "zebra"),
             MARKED,
-            StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:crossing", LocalDate.now().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "marked"),
             MARKED,
-            StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:crossing", LocalDate.now().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "uncontrolled"),
             MARKED,
-            StringMapEntryAdd("check_date:crossing", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:crossing", LocalDate.now().toCheckDateString())
         )
 
         questType.verifyAnswer(

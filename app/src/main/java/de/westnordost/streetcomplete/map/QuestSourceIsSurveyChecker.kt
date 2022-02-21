@@ -3,47 +3,50 @@ package de.westnordost.streetcomplete.map
 import android.content.Context
 import android.location.Location
 import android.view.LayoutInflater
-import android.widget.CheckBox
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.databinding.QuestSourceDialogLayoutBinding
 import de.westnordost.streetcomplete.util.distanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 import kotlin.coroutines.resume
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
-class QuestSourceIsSurveyChecker @Inject constructor() {
+class QuestSourceIsSurveyChecker {
 
     suspend fun checkIsSurvey(
-        context: Context, geometry: ElementGeometry, locations: List<Location>
+        context: Context,
+        geometry: ElementGeometry,
+        locations: List<Location>
     ): Boolean {
         if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
             return true
         }
         return suspendCancellableCoroutine { cont ->
-            val inner = LayoutInflater.from(context).inflate(R.layout.quest_source_dialog_layout, null, false)
-            val checkBox = inner.findViewById<CheckBox>(R.id.checkBoxDontShowAgain)
-            checkBox.isGone = timesShown < 1
+            val dialogBinding = QuestSourceDialogLayoutBinding.inflate(LayoutInflater.from(context))
+            dialogBinding.checkBoxDontShowAgain.isGone = timesShown < 1
 
             AlertDialog.Builder(context)
                 .setTitle(R.string.quest_source_dialog_title)
-                .setView(inner)
+                .setView(dialogBinding.root)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
-                    dontShowAgain = checkBox.isChecked
-                    cont.resume(true)
+                    dontShowAgain = dialogBinding.checkBoxDontShowAgain.isChecked
+                    if (cont.isActive) cont.resume(true)
                 }
-                .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
-                .setOnCancelListener { cont.resume(false) }
+                .setNegativeButton(android.R.string.cancel) { _, _ ->
+                    if (cont.isActive) cont.resume(false)
+                }
+                .setOnCancelListener {
+                    if (cont.isActive) cont.resume(false)
+                }
                 .show()
         }
     }
@@ -54,7 +57,7 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
     ): Boolean = withContext(Dispatchers.Default) {
         // suspending because distanceToArcs is slow
         locations.any { location ->
-            val pos = OsmLatLon(location.latitude, location.longitude)
+            val pos = LatLon(location.latitude, location.longitude)
             val polylines: List<List<LatLon>> = when (geometry) {
                 is ElementPolylinesGeometry -> geometry.polylines
                 is ElementPolygonsGeometry -> geometry.polygons
@@ -84,7 +87,7 @@ class QuestSourceIsSurveyChecker @Inject constructor() {
           "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
         */
 
-        private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f //m
+        private const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
         // "static" values persisted per application start
         private var dontShowAgain = false

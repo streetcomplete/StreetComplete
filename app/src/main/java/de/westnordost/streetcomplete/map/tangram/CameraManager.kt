@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.map.tangram
 
-import android.animation.*
+import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.animation.TypeEvaluator
+import android.animation.ValueAnimator
 import android.content.ContentResolver
 import android.os.Handler
 import android.os.Looper
@@ -13,9 +17,8 @@ import androidx.annotation.UiThread
 import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.LatLons
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.ktx.runImmediate
 import kotlin.math.PI
 
 /**
@@ -40,17 +43,17 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     private val currentAnimations = mutableMapOf<String, Animator>()
     private val mainHandler = Handler(Looper.getMainLooper())
     private var lastAnimator: ValueAnimator? = null
-    set(value) {
-        if (field == value) return
-        mainHandler.post {
-            if (field == null) {
-                listener?.onAnimationsStarted()
-            } else if(value == null) {
-                listener?.onAnimationsEnded()
+        set(value) {
+            if (field == value) return
+            mainHandler.post {
+                if (field == null) {
+                    listener?.onAnimationsStarted()
+                } else if (value == null) {
+                    listener?.onAnimationsEnded()
+                }
             }
+            field = value
         }
-        field = value
-    }
     private var lastAnimatorEndTime: Long = 0
 
     private val _tangramCamera = com.mapzen.tangram.CameraPosition()
@@ -85,7 +88,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     @AnyThread fun cancelAllCameraAnimations() {
-        mainHandler.post {
+        mainHandler.runImmediate {
             synchronized(currentAnimations) {
                 for (animator in currentAnimations.values.toSet()) {
                     animator.cancel()
@@ -99,10 +102,10 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
 
     @AnyThread private fun cancelCameraAnimations(update: CameraUpdate) {
-        if(update.rotation != null) cancelAnimation("rotation")
-        if(update.tilt != null) cancelAnimation("tilt")
-        if(update.zoom != null) cancelAnimation("zoom")
-        if(update.position != null) cancelAnimation("position")
+        if (update.rotation != null) cancelAnimation("rotation")
+        if (update.tilt != null) cancelAnimation("tilt")
+        if (update.zoom != null) cancelAnimation("zoom")
+        if (update.position != null) cancelAnimation("position")
     }
 
     private fun applyCameraUpdate(update: CameraUpdate) {
@@ -122,8 +125,8 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         update.rotation?.let {
             val currentRotation = _tangramCamera.rotation
             var targetRotation = it
-            while (targetRotation - PI > currentRotation) targetRotation -= 2*PI.toFloat()
-            while (targetRotation + PI < currentRotation) targetRotation += 2*PI.toFloat()
+            while (targetRotation - PI > currentRotation) targetRotation -= 2 * PI.toFloat()
+            while (targetRotation + PI < currentRotation) targetRotation += 2 * PI.toFloat()
 
             propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, targetRotation))
             assignAnimation("rotation", animator)
@@ -159,7 +162,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             animator.addUpdateListener(this::animate)
             lastAnimatorEndTime = endTime
         }
-        mainHandler.post { animator.start() }
+        mainHandler.runImmediate { animator.start() }
     }
 
     private fun pullCameraPositionFromController() {
@@ -167,8 +170,20 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     private fun pushCameraPositionToController() {
-        LatLons.checkValidity(_tangramCamera.latitude, _tangramCamera.longitude)
-        c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
+        LatLon.checkValidity(_tangramCamera.latitude, _tangramCamera.longitude)
+        try {
+            c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
+        } catch (e: NullPointerException) {
+            // ignore
+            /* if tangram cleared some references already, we don't care. This solves the following
+               crash issue:
+               On destroy, all camera animations are cancelled. Cancelling a camera animation
+               however also calls onAnimationEnd once, which in turn updates the camera one last
+               time. Now, it is possible that tangram got the "on destroy"-call first and so already
+               cleared the reference to the map already when the "on destroy" of the camera manager
+               cancels all camera animations.
+             */
+        }
     }
 
     @UiThread private fun animate(animator: ValueAnimator) {
@@ -184,7 +199,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             animator = currentAnimations[key]
             animator?.let { unassignAnimation(it) }
         }
-        mainHandler.post { animator?.cancel() }
+        mainHandler.runImmediate { animator?.cancel() }
     }
 
     @AnyThread private fun unassignAnimation(animator: Animator) {
@@ -220,9 +235,10 @@ data class CameraPosition(
     val position: LatLon,
     val rotation: Float,
     val tilt: Float,
-    val zoom: Float) {
+    val zoom: Float
+) {
 
-    constructor(p: TangramCameraPosition) : this(OsmLatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
+    constructor(p: TangramCameraPosition) : this(LatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
 }
 
 private fun CameraUpdate.resolveDeltas(pos: TangramCameraPosition) {

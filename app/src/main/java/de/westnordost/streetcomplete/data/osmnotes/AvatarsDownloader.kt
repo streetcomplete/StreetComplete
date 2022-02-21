@@ -1,19 +1,17 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
-import de.westnordost.streetcomplete.data.UserApi
+import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File
 import java.io.IOException
 import java.net.URL
-import javax.inject.Inject
-import javax.inject.Named
 
 /** Downloads and stores the OSM avatars of users */
-class AvatarsDownloader @Inject constructor(
+class AvatarsDownloader(
     private val userApi: UserApi,
-    @Named("AvatarsCacheDirectory") private val cacheDir: File
+    private val cacheDir: File
 ) {
 
     fun download(userIds: Collection<Long>) {
@@ -24,13 +22,22 @@ class AvatarsDownloader @Inject constructor(
 
         val time = System.currentTimeMillis()
         for (userId in userIds) {
-            val avatarUrl = userApi.get(userId)?.profileImageUrl
+            val avatarUrl = getProfileImageUrl(userId)
             if (avatarUrl != null) {
                 download(userId, avatarUrl)
             }
         }
         val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
+    }
+
+    private fun getProfileImageUrl(userId: Long): String? {
+        return try {
+            userApi.get(userId)?.profileImageUrl
+        } catch (e: Exception) {
+            Log.w(TAG, "Unable to query info for user id $userId")
+            null
+        }
     }
 
     /** download avatar for the given user and a known avatar url */

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.util
 
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.forEachLine
 import kotlin.math.abs
 
@@ -22,8 +22,8 @@ fun ElementPolylinesGeometry.isNearAndAligned(
 ): Boolean {
     val bounds = getBounds().enlargedBy(maxDistance)
     return others.any { other ->
-        bounds.intersect(other.getBounds()) &&
-        polylines.any { polyline ->
+        bounds.intersect(other.getBounds())
+        && polylines.any { polyline ->
             other.polylines.any { otherPolyline ->
                 polyline.isWithinDistanceAndAngleOf(otherPolyline, maxDistance, maxAngle)
             }
@@ -47,10 +47,9 @@ private fun List<LatLon>.isWithinDistanceAndAngleOf(other: List<LatLon>, maxDist
     return false
 }
 
-
 fun ElementPolylinesGeometry.intersects(other: ElementPolylinesGeometry): Boolean =
-    getBounds().intersect(other.getBounds()) &&
-    polylines.any { polyline ->
+    getBounds().intersect(other.getBounds())
+    && polylines.any { polyline ->
         other.polylines.any { otherPolyline ->
             polyline.intersectsWith(otherPolyline)
         }

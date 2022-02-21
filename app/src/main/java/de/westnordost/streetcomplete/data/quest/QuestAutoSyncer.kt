@@ -1,36 +1,43 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.annotation.SuppressLint
-import android.content.*
-import android.location.LocationManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.download.*
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.DownloadProgressListener
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
+import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
+import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.user.LoginStatusSource
-import de.westnordost.streetcomplete.data.user.UserController
-import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
+import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.location.FineLocationManager
-import kotlinx.coroutines.*
-import javax.inject.Inject
-import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
 
 /** Automatically downloads new quests around the user's location and uploads quests.
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-@Singleton class QuestAutoSyncer @Inject constructor(
+class QuestAutoSyncer(
     private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
@@ -38,24 +45,23 @@ import javax.inject.Singleton
     private val context: Context,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
-    private val loginStatusSource: LoginStatusSource,
+    private val userLoginStatusSource: UserLoginStatusSource,
     private val prefs: SharedPreferences,
-    private val userController: UserController,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesDao: DownloadedTilesDao
 ) : LifecycleObserver {
+
+    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
 
     private var pos: LatLon? = null
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
 
-    private val lifecycleScope = CoroutineScope(SupervisorJob())
-
     // new location is known -> check if downloading makes sense now
-    private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
+    private val locationManager = FineLocationManager(context) { location ->
         if (location.accuracy <= 300) {
-            pos = OsmLatLon(location.latitude, location.longitude)
+            pos = location.toLatLon()
             triggerAutoDownload()
         }
     }
@@ -86,7 +92,7 @@ import javax.inject.Singleton
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusListener {
+    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {
             triggerAutoUpload()
         }
@@ -112,10 +118,10 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun onCreate() {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
-        loginStatusSource.addLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
@@ -136,9 +142,9 @@ import javax.inject.Singleton
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
-        loginStatusSource.removeLoginStatusListener(userLoginStatusListener)
+        userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
-        lifecycleScope.cancel()
+        coroutineScope.coroutineContext.cancelChildren()
     }
 
     @SuppressLint("MissingPermission")
@@ -152,14 +158,14 @@ import javax.inject.Singleton
 
     /* ------------------------------------------------------------------------------------------ */
 
-    fun triggerAutoDownload() {
+    private fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
         if (downloadController.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
-        lifecycleScope.launch {
+        coroutineScope.launch {
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {
@@ -174,17 +180,19 @@ import javax.inject.Singleton
         }
     }
 
-    fun triggerAutoUpload() {
+    private fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!userController.isLoggedIn) return
+        if (!userLoginStatusSource.isLoggedIn) return
 
-        try {
-            uploadController.upload()
-        } catch (e: IllegalStateException) {
-            // The Android 9 bug described here should not result in a hard crash of the app
-            // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
-            Log.e(TAG, "Cannot start upload service", e)
+        coroutineScope.launch {
+            try {
+                uploadController.upload()
+            } catch (e: IllegalStateException) {
+                // The Android 9 bug described here should not result in a hard crash of the app
+                // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
+                Log.e(TAG, "Cannot start upload service", e)
+            }
         }
     }
 
@@ -207,5 +215,4 @@ import javax.inject.Singleton
     companion object {
         private const val TAG = "QuestAutoSyncer"
     }
-
 }

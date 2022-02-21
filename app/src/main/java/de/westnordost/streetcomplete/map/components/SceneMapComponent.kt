@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.map.components
 
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.os.Build
 import com.mapzen.tangram.SceneUpdate
+import de.westnordost.streetcomplete.ktx.isApril1st
 import de.westnordost.streetcomplete.map.VectorTileProvider
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import kotlinx.coroutines.sync.Mutex
@@ -12,7 +12,7 @@ import java.util.Locale
 
 /** Takes care of loading the base map with the right parameters (localization, api key, night mode
  *  etc, custom scene updates, etc ...) */
-class SceneMapComponent (
+class SceneMapComponent(
     private val resources: Resources,
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider
@@ -23,10 +23,10 @@ class SceneMapComponent (
     private var loadedSceneUpdates: List<String>? = null
 
     var isAerialView: Boolean = false
-    set(value) {
-        field = value
-        aerialViewChanged = true
-    }
+        set(value) {
+            field = value
+            aerialViewChanged = true
+        }
     private var aerialViewChanged: Boolean = false
 
     private val mutex = Mutex()
@@ -49,9 +49,10 @@ class SceneMapComponent (
         val sceneFilePath = getSceneFilePath()
         val sceneUpdates = getAllSceneUpdates()
         val strSceneUpdates = sceneUpdates.map { it.toString() }
-        if (loadedSceneFilePath == sceneFilePath &&
-            loadedSceneUpdates == strSceneUpdates &&
-            !aerialViewChanged) return
+        if (loadedSceneFilePath == sceneFilePath
+            && loadedSceneUpdates == strSceneUpdates
+            && !aerialViewChanged
+        ) return
         ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
         loadedSceneFilePath = sceneFilePath
         loadedSceneUpdates = sceneUpdates.map { it.toString() }
@@ -61,22 +62,18 @@ class SceneMapComponent (
     private fun getAllSceneUpdates(): List<SceneUpdate> =
         getBaseSceneUpdates() + sceneUpdates.map { SceneUpdate(it.key, it.value) }
 
-    private fun getBaseSceneUpdates(): List<SceneUpdate> {
-        val updates = mutableListOf(
-            SceneUpdate("global.language", Locale.getDefault().language),
-            SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
-            SceneUpdate("global.api_key", vectorTileProvider.apiKey),
-        )
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            updates.add(SceneUpdate("global.language_script", Locale.getDefault().script))
-        }
-        return updates
-    }
+    private fun getBaseSceneUpdates(): List<SceneUpdate> = listOf(
+        SceneUpdate("global.language", Locale.getDefault().language),
+        SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
+        SceneUpdate("global.api_key", vectorTileProvider.apiKey),
+        SceneUpdate("global.language_script", Locale.getDefault().script)
+    )
 
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val scene = when {
+        val april1 = if (isApril1st()) "wonky-" else ""
+        val scene = april1 + when {
             isAerialView -> "scene-satellite.yaml"
             isNightMode -> "scene-dark.yaml"
             else -> "scene-light.yaml"

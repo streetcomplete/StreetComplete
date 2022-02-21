@@ -3,15 +3,36 @@ package de.westnordost.streetcomplete.data
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.*
+import android.database.sqlite.SQLiteDatabase.CONFLICT_ABORT
+import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
+import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
+import android.database.sqlite.SQLiteDatabase.CONFLICT_NONE
+import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
+import android.database.sqlite.SQLiteDatabase.CONFLICT_ROLLBACK
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteStatement
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.*
-import de.westnordost.streetcomplete.ktx.*
-import javax.inject.Inject
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.ABORT
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.FAIL
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.REPLACE
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
+import de.westnordost.streetcomplete.ktx.getBlob
+import de.westnordost.streetcomplete.ktx.getBlobOrNull
+import de.westnordost.streetcomplete.ktx.getDouble
+import de.westnordost.streetcomplete.ktx.getDoubleOrNull
+import de.westnordost.streetcomplete.ktx.getFloat
+import de.westnordost.streetcomplete.ktx.getFloatOrNull
+import de.westnordost.streetcomplete.ktx.getInt
+import de.westnordost.streetcomplete.ktx.getIntOrNull
+import de.westnordost.streetcomplete.ktx.getLong
+import de.westnordost.streetcomplete.ktx.getLongOrNull
+import de.westnordost.streetcomplete.ktx.getShort
+import de.westnordost.streetcomplete.ktx.getShortOrNull
+import de.westnordost.streetcomplete.ktx.getString
+import de.westnordost.streetcomplete.ktx.getStringOrNull
 
 @SuppressLint("Recycle")
-class AndroidDatabase @Inject constructor(private val dbHelper: SQLiteOpenHelper) : Database {
+class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     private val db get() = dbHelper.writableDatabase
 
     override fun exec(sql: String, args: Array<Any>?) {
@@ -86,7 +107,7 @@ class AndroidDatabase @Inject constructor(private val dbHelper: SQLiteOpenHelper
                 require(values.size == columnNames.size)
                 for ((i, value) in values.withIndex()) {
                     // Android SQLiteProgram.bind* indices are 1-based
-                    stmt.bind(i+1, value)
+                    stmt.bind(i + 1, value)
                 }
                 val rowId = stmt.executeInsert()
                 result.add(rowId)
@@ -112,7 +133,6 @@ class AndroidDatabase @Inject constructor(private val dbHelper: SQLiteOpenHelper
             conflictAlgorithm.toConstant()
         )
     }
-
 
     override fun delete(table: String, where: String?, args: Array<Any>?): Int {
         val strArgs = args?.primitivesArrayToStringArray()
@@ -145,14 +165,14 @@ private inline fun <T> Cursor.toSequence(crossinline transform: (CursorPosition)
     val c = AndroidCursorPosition(cursor)
     cursor.moveToFirst()
     val result = ArrayList<T>(cursor.count)
-    while(!cursor.isAfterLast) {
+    while (!cursor.isAfterLast) {
         result.add(transform(c))
         cursor.moveToNext()
     }
     return result
 }
 
-class AndroidCursorPosition(private val cursor: Cursor): CursorPosition {
+class AndroidCursorPosition(private val cursor: Cursor) : CursorPosition {
     override fun getShort(columnName: String): Short = cursor.getShort(columnName)
     override fun getInt(columnName: String): Int = cursor.getInt(columnName)
     override fun getLong(columnName: String): Long = cursor.getLong(columnName)
@@ -188,7 +208,7 @@ private fun Collection<Pair<String, Any?>>.toContentValues() = ContentValues(siz
     }
 }
 
-private fun ConflictAlgorithm?.toConstant() = when(this) {
+private fun ConflictAlgorithm?.toConstant() = when (this) {
     ROLLBACK -> CONFLICT_ROLLBACK
     ABORT -> CONFLICT_ABORT
     FAIL -> CONFLICT_FAIL
@@ -197,7 +217,7 @@ private fun ConflictAlgorithm?.toConstant() = when(this) {
     null -> CONFLICT_NONE
 }
 
-private fun ConflictAlgorithm?.toSQL() = when(this) {
+private fun ConflictAlgorithm?.toSQL() = when (this) {
     ROLLBACK -> " OR ROLLBACK "
     ABORT -> " OR ABORT "
     FAIL -> " OR FAIL "
@@ -207,7 +227,7 @@ private fun ConflictAlgorithm?.toSQL() = when(this) {
 }
 
 private fun SQLiteStatement.bind(i: Int, value: Any?) {
-    when(value) {
+    when (value) {
         null -> bindNull(i)
         is String -> bindString(i, value)
         is Double -> bindDouble(i, value)

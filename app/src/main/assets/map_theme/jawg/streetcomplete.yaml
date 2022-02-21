@@ -1,5 +1,9 @@
 global:
-    geometry_color: '#44D14000' # accent color + alpha
+    geometry_area_color: '#22D14000' # accent color + alpha
+    geometry_line_color: '#44D14000'
+    geometry_point_color: '#88D14000'
+    track_color: '#44536dfe'
+    old_track_color: '#22536dfe'
 
 textures:
     pins:
@@ -15,17 +19,17 @@ styles:
     pin-selection:
         base: points
         blend: overlay
-        blend_order: 3
+        blend_order: 4
     selected-pin-icons:
         base: points
         texture: pins
         blend: overlay
-        blend_order: 2
+        blend_order: 3
     pin-icons:
         base: points
         texture: pins
         blend: overlay
-        blend_order: 1
+        blend_order: 2
     pin-dots:
         base: points
         texture: pin_dot
@@ -39,6 +43,10 @@ styles:
         blend: overlay
     geometry-points:
         base: points
+        blend: overlay
+        blend_order: 2
+    track-lines:
+        base: lines
         blend: overlay
 
 layers:
@@ -87,11 +95,11 @@ layers:
     streetcomplete_geometry:
         data: { source: streetcomplete_geometry }
         line:
-            filter: { type: line }
+            filter: { type: [poly, line] }
             draw:
                 geometry-lines:
-                    color: global.geometry_color
-                    width: 16px
+                    color: global.geometry_line_color
+                    width: 9px
                     collide: false
                     order: 1000
                     cap: round
@@ -100,8 +108,7 @@ layers:
             filter: { type: poly }
             draw:
                 geometry-polygons:
-                    color: global.geometry_color
-                    width: 16px
+                    color: global.geometry_area_color
                     collide: false
                     order: 1000
                     cap: round
@@ -110,7 +117,49 @@ layers:
             filter: { type: point }
             draw:
                 geometry-points:
-                    color: global.geometry_color
-                    size: 32px
+                    color: global.geometry_point_color
+                    size: 24px
                     collide: false
+                    order: 1000
+    # streetcomplete_track and streetcomplete_track2 layers are exactly the same except the source.
+    #  It is not possible in tangram to define a layer for several sources.
+    streetcomplete_track:
+        data: { source: streetcomplete_track }
+        current:
+            filter: { old: [false] }
+            draw:
+                track-lines:
+                    color: global.track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
+        old:
+            filter: { old: [true] }
+            draw:
+                track-lines:
+                    color: global.old_track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
+    streetcomplete_track2:
+        data: { source: streetcomplete_track2 }
+        current:
+            filter: { old: [false] }
+            draw:
+                track-lines:
+                    color: global.track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
+        old:
+            filter: { old: [true] }
+            draw:
+                track-lines:
+                    color: global.old_track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
                     order: 1000

@@ -5,7 +5,6 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.support.listFilesOrdered
-
 import java.io.File
 import java.io.StringWriter
 

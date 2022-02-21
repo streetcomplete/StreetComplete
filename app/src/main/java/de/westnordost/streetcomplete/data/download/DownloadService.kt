@@ -1,15 +1,22 @@
 package de.westnordost.streetcomplete.data.download
 
+import android.app.ForegroundServiceStartNotAllowedException
+import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
+import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
+import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import de.westnordost.streetcomplete.util.TilesRect
-import kotlinx.coroutines.*
-import javax.inject.Inject
+import kotlinx.coroutines.CancellationException
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
  * the appropriate parameters.
@@ -25,9 +32,9 @@ import javax.inject.Inject
  * download job was started by the user
  */
 class DownloadService : CoroutineIntentService(TAG) {
-    @Inject internal lateinit var downloader: Downloader
+    private val downloader: Downloader by inject()
 
-    private lateinit var notificationController: DownloadNotificationController
+    private lateinit var notification: Notification
 
     // interface
     private val binder = Interface()
@@ -38,29 +45,20 @@ class DownloadService : CoroutineIntentService(TAG) {
     // state
     private var isPriorityDownload: Boolean = false
     private var isDownloading: Boolean = false
-    set(value) {
-        field = value
-        if (!value || !showNotification) notificationController.hide()
-        else notificationController.show()
-    }
+        set(value) {
+            field = value
+            updateShowNotification()
+        }
 
     private var showNotification = false
-    set(value) {
-        field = value
-        if (!value || !isDownloading) notificationController.hide()
-        else notificationController.show()
-    }
-
-    override val cancelPreviousWorkOnNewIntent: Boolean = true
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+        set(value) {
+            field = value
+            updateShowNotification()
+        }
 
     override fun onCreate() {
         super.onCreate()
-        notificationController = DownloadNotificationController(
-            this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
+        notification = createSyncNotification(this)
     }
 
     override fun onBind(intent: Intent): IBinder {
@@ -69,26 +67,25 @@ class DownloadService : CoroutineIntentService(TAG) {
 
     override suspend fun onHandleIntent(intent: Intent?) {
         if (intent == null) return
-        if (intent.getBooleanExtra(ARG_CANCEL, false)) {
-            cancel()
-            Log.i(TAG, "Download cancelled")
-            return
-        }
-        val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
-        isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
-
-        isDownloading = true
-
-        progressListener?.onStarted()
+        val tiles: TilesRect = Json.decodeFromString(intent.getStringExtra(ARG_TILES_RECT)!!)
 
         var error: Exception? = null
         try {
+            isPriorityDownload = intent.getBooleanExtra(ARG_IS_PRIORITY, false)
+            isDownloading = true
+
+            progressListener?.onStarted()
+
             downloader.download(tiles, isPriorityDownload)
         } catch (e: CancellationException) {
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
-            Log.e(TAG, "Unable to download", e)
-            error = e
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && e is ForegroundServiceStartNotAllowedException) {
+                // ok. Nevermind then.
+            } else {
+                Log.e(TAG, "Unable to download", e)
+                error = e
+            }
         } finally {
             // downloading flags must be set to false before invoking the callbacks
             isPriorityDownload = false
@@ -102,6 +99,11 @@ class DownloadService : CoroutineIntentService(TAG) {
         }
 
         progressListener?.onFinished()
+    }
+
+    private fun updateShowNotification() {
+        if (!showNotification || !isDownloading) stopForeground(true)
+        else startForeground(NOTIFICATIONS_ID_SYNC, notification)
     }
 
     /** Public interface to classes that are bound to this service  */
@@ -123,18 +125,13 @@ class DownloadService : CoroutineIntentService(TAG) {
         private const val TAG = "Download"
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_IS_PRIORITY = "isPriority"
-        const val ARG_CANCEL = "cancel"
 
-        fun createIntent(context: Context, tilesRect: TilesRect?, isPriority: Boolean): Intent {
+        fun createIntent(context: Context, tilesRect: TilesRect, isPriority: Boolean): Intent {
             val intent = Intent(context, DownloadService::class.java)
-            intent.putExtra(ARG_TILES_RECT, tilesRect)
+            intent.putExtra(ARG_TILES_RECT, Json.encodeToString(tilesRect))
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
-            return intent
-        }
-
-        fun createCancelIntent(context: Context): Intent {
-            val intent = Intent(context, DownloadService::class.java)
-            intent.putExtra(ARG_CANCEL, true)
+            // priority download should cancel any earlier download
+            intent.putExtra(ARG_PREVIOUS_CANCEL, isPriority)
             return intent
         }
     }

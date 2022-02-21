@@ -1,23 +1,23 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.util.Log
-import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.data.NotesApi
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.*
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
+import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import javax.inject.Inject
+import kotlinx.coroutines.withContext
 
-class NoteEditsUploader @Inject constructor(
+class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val notesApi: NotesApi,
@@ -26,7 +26,7 @@ class NoteEditsUploader @Inject constructor(
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
     private val mutex = Mutex()
-    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("ElementEditsUploader"))
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("NoteEditsUploader"))
 
     /** Uploads all edits to notes
      *
@@ -41,21 +41,21 @@ class NoteEditsUploader @Inject constructor(
     } }
 
     private suspend fun uploadMissedImageActivations() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             /* see uploadEdits */
             withContext(scope.coroutineContext) {
                 imageUploader.activate(edit.noteId)
-                noteEditsController.imagesActivated(edit.id)
+                noteEditsController.markImagesActivated(edit.id)
             }
         }
     }
 
     private suspend fun uploadEdits() {
-        while(true) {
+        while (true) {
             val edit = noteEditsController.getOldestUnsynced() ?: break
             /* the sync of local change -> API and its response should not be cancellable because
-             * otherwise an inconsistency in the data would occur. F.e. a note could be uploaded
+             * otherwise an inconsistency in the data would occur. E.g. a note could be uploaded
              * twice  */
             withContext(scope.coroutineContext) { uploadEdit(edit) }
         }
@@ -65,9 +65,9 @@ class NoteEditsUploader @Inject constructor(
         val text = edit.text.orEmpty() + uploadAndGetAttachedPhotosText(edit.imagePaths)
 
         try {
-            val note = when(edit.action) {
-                CREATE -> uploadCreateNote(edit.position, text)
-                COMMENT -> uploadCommentNote(edit.noteId, text)
+            val note = when (edit.action) {
+                CREATE -> notesApi.create(edit.position, text)
+                COMMENT -> notesApi.comment(edit.noteId, text)
             }
 
             Log.d(TAG,
@@ -76,15 +76,14 @@ class NoteEditsUploader @Inject constructor(
             )
             uploadedChangeListener?.onUploaded(NOTE, edit.position)
 
-            noteEditsController.synced(edit, note)
+            noteEditsController.markSynced(edit, note)
             noteController.put(note)
 
             if (edit.imagePaths.isNotEmpty()) {
                 imageUploader.activate(note.id)
-                noteEditsController.imagesActivated(note.id)
+                noteEditsController.markImagesActivated(note.id)
             }
             deleteImages(edit.imagePaths)
-
         } catch (e: ConflictException) {
             Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +
@@ -92,7 +91,7 @@ class NoteEditsUploader @Inject constructor(
             )
             uploadedChangeListener?.onDiscarded(NOTE, edit.position)
 
-            noteEditsController.syncFailed(edit)
+            noteEditsController.markSyncFailed(edit)
 
             // should update the note if there was a conflict, so it doesn't happen again
             val updatedNote = notesApi.get(edit.noteId)
@@ -101,18 +100,6 @@ class NoteEditsUploader @Inject constructor(
 
             deleteImages(edit.imagePaths)
         }
-    }
-
-    private fun uploadCreateNote(pos: LatLon, text: String): Note = notesApi.create(pos, text)
-
-    private fun uploadCommentNote(noteId: Long, text: String): Note = try {
-        notesApi.comment(noteId, text)
-    } catch (e: OsmNotFoundException) {
-        // someone else already closed the note -> our contribution is probably worthless
-        throw ConflictException(e.message, e)
-    } catch (e: OsmConflictException) {
-        // was closed by admin
-        throw ConflictException(e.message, e)
     }
 
     private fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {

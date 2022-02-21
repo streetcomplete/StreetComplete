@@ -6,11 +6,11 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
+import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import org.jbox2d.collision.AABB
 import org.jbox2d.common.Transform
 import org.jbox2d.dynamics.Body
-import kotlin.collections.HashMap
 
 /** Draws its contained views that are connected each with a physics body at the configured
  *  scale and location */
@@ -36,7 +36,8 @@ class PhysicsWorldView @JvmOverloads constructor(
             invalidate()
         }
 
-    private val bodies: MutableMap<View, Body> = HashMap()
+    private val bodies = mutableMapOf<View, Body>()
+    private val hasBeenSized = mutableSetOf<View>()
 
     // reused structs to avoid new object construction in loops
     private val identity = Transform()
@@ -48,11 +49,13 @@ class PhysicsWorldView @JvmOverloads constructor(
 
     fun addView(view: View, body: Body) {
         bodies[view] = body
+        view.isInvisible = true
         addView(view, WRAP_CONTENT, WRAP_CONTENT)
     }
 
     override fun removeView(view: View) {
         bodies.remove(view)
+        hasBeenSized.remove(view)
         super.removeView(view)
     }
 
@@ -83,6 +86,11 @@ class PhysicsWorldView @JvmOverloads constructor(
             view.y = -(centerInMeters.y - offsetInMetersY) * pixelsPerMeter - pixelHeight / 2f + height
 
             view.rotation = -body.angle * 180f / Math.PI.toFloat()
+
+            if (!hasBeenSized.contains(view))
+                hasBeenSized.add(view)
+            else
+                view.isInvisible = false
         }
     }
 
