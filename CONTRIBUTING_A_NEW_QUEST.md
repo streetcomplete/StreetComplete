@@ -495,3 +495,12 @@ Some quests should be enabled only in some countries or disabled in a specific c
 [`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
 [`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA and Canada
+
+## `defaultDisabledMessage`
+
+Some quests should be disabled by default, for example ones that may require going inside a shop. In such case setting `override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside` will have two effects:
+
+- quest will be disabled by default
+- on attempting to enable it user will get message asking are they sure. Exact message in this case would be `default_disabled_msg_go_inside` - but some quests use more specific ones.
+
+Note that quest may be both disabled by default and limited to some countries.
