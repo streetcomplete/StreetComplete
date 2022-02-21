@@ -102,7 +102,7 @@
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
-    <string name="about_title_repository">"Source Repository"</string>
+    <string name="about_title_repository">"Project Home"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_faq">"FAQ"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -869,7 +869,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
     <string name="about_description_donate_google_play2">"Thank you for considering to support this app!
-Unfortunately, due to a Google Play Store policy, no links leading to donations may be displayed in-app. In this context, this even includes linking to the source repository because it contains info on donating."</string>
+Unfortunately, due to a Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
 
     <string name="quest_recycling_materials_answer_waste">It’s for general waste</string>
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
