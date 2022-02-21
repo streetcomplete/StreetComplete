@@ -23,7 +23,7 @@ But this materials may help or be quicker than trying to fully explore on your o
   - setting up Android Studio will likely be more complex than writing the code
 - [basic ability to use git](https://git-scm.com/docs/user-manual) (but as mentioned, anything GitHub specific will be explained)
   - there is version control integration available in Android Studio
-    - From the Android Studio **VCS** menu, click **Enable Version Control** Integration ([see official docs](https://developer.android.com/studio/intro#version_control_basics)
+    - From the Android Studio **VCS** menu, click **Enable Version Control** Integration ([see official docs](https://developer.android.com/studio/intro#version_control_basics))
     - Go to File -> Settings -> Version control in Android Studio to optionally configure git integration
   - Using git from command line or terminal in Android Studio also works fine
 - GitHub [account](https://github.com/signup)
