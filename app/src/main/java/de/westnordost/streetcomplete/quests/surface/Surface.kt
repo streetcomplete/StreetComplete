@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.quests.surface.Surface.FINE_GRAVEL
 import de.westnordost.streetcomplete.quests.surface.Surface.GRASS
 import de.westnordost.streetcomplete.quests.surface.Surface.GRASS_PAVER
 import de.westnordost.streetcomplete.quests.surface.Surface.GRAVEL
-import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_AREA
+import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.METAL
-import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_AREA
+import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVING_STONES
 import de.westnordost.streetcomplete.quests.surface.Surface.PEBBLES
 import de.westnordost.streetcomplete.quests.surface.Surface.ROCK
@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.quests.surface.Surface.SAND
 import de.westnordost.streetcomplete.quests.surface.Surface.SETT
 import de.westnordost.streetcomplete.quests.surface.Surface.TARTAN
 import de.westnordost.streetcomplete.quests.surface.Surface.UNHEWN_COBBLESTONE
-import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_AREA
+import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.WOOD
 
 enum class Surface(val osmValue: String) {
