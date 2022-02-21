@@ -14,7 +14,7 @@ But this materials may help or be quicker than trying to fully explore on your o
 
 - programming ability - it is not a good task for someone who has never programmed anything.
   - Setup of environment takes a long time
-  - Editing even the simplest quest requires edits to at least two different files
+  - Editing even the simplest quest requires edits to at least three different files
   - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed. If you are unfamiliar with Kotlin reading about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful.
   - It is expected that someone trying this can search for a solution to a typical problem on encountering an error message
 - familiarity with StreetComplete as a user - it is highly recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory, but having a passing familiarity with how surveying with StreetComplete works is needed.
