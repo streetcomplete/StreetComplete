@@ -248,6 +248,7 @@ Actions may include (examples from various quests):
      - so can be used even if value will stay the same - possible for resurvey quests
      - survey date prefix is defined as [`const val SURVEY_MARK_KEY = "check_date"`](src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt)
   - always update survey tag if present already
+  - necessary if given quest includes resurvey of old elements that are already tagged
 
 
 ### Extras
