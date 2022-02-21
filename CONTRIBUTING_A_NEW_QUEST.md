@@ -377,7 +377,7 @@ This requires preparing space in the message for filling at runtime, and to add 
     }
 ```
 
-``getTitleArgs` will return either array with single element containing value of `ref` tag or an empty array. In either cases it will be passed to code displaying title at runtime.
+`getTitleArgs` will return either array with single element containing value of `ref` tag or an empty array. In either cases it will be passed to code displaying title at runtime.
 
 `arrayOfNotNull` is a minor helper function [defined in StreetComplete](app/src/main/java/de/westnordost/streetcomplete/ktx/Collections.kt). Note that when you open code in Android Studio or other IDE you can easily go to place where given function is defined.
 
