@@ -387,7 +387,7 @@ So `getTitle` function that returns identifier to text in [strings file](app/src
 
 
 * `quest_fireHydrant_diameter_ref_title` which represents `What diameter is specified on the sign for this fire hydrant? (reference number: %s)` (or translation). `%s` is a [placeholder](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) and will be replaced by text provided by `getTitleArgs`
-* In case of ref tag being not present `quest_fireHydrant_diameter_title` (`What diameter is specified on the sign for this fire hydrant?` will be used.
+* In case of ref tag being not present `quest_fireHydrant_diameter_title` (`What diameter is specified on the sign for this fire hydrant?`) will be used.
 
 This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code. See for example identifiers with texts in [Polish translation](app/src/main/res/values-pl/strings.xml).
 
