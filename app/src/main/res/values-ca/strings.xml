@@ -55,7 +55,7 @@
     <string name="no_location_permission_warning">"Cal la vostra ubicació per a cercar missions a prop vostre."</string>
     <string name="about_title_authors">"Crèdits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick i contribuïdors"</string>
-    <string name="about_title_repository">"Dipòsit font"</string>
+    <string name="about_title_repository">"Repositori font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
     <string name="about_title_report_error">"Informa d'un error"</string>
     <string name="about_title_feedback">"Feu un comentari"</string>
@@ -856,7 +856,7 @@ d'acompliment"</string>
     <string name="quest_openingHours_unspecified_range">"Sense especificar"</string>
     <string name="quest_cycleway_resurvey_title">"Aquesta és encara la situació del carril bici aquí?"</string>
     <string name="quest_wheelchairAccess_name_type_title">"Es pot accedir a %1$s (%2$s) amb cadira de rodes?"</string>
-    <string name="pref_title_resurvey_intervals">"Intervals de recuperació"</string>
+    <string name="pref_title_resurvey_intervals">"Intervals de reenquesta"</string>
     <string name="resurvey_intervals_less_often">"Demana-ho menys sovint"</string>
     <string name="resurvey_intervals_default">"Per defecte"</string>
     <string name="resurvey_intervals_more_often">"Demana-ho més sovint"</string>
@@ -1233,6 +1233,46 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_smoothness_description_good_paving_stones">"Superfície de pedres planes i compactes"</string>
     <string name="quest_smoothness_description_good_sett">"Llambordes molt ben alineades i de vores quasi imperceptibles per al vianant
 "</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_intermediate_paved">"De superfície més accidentada: grietes, roderes, sots, forats i demés danys"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Espais entre llambordes amb els que entropesar o peces en mal lloc i altres danys"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_intermediate_sett">"Llambordes planes o de forma regular, sense molta distància entre si"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"De gravetat fina, amb sots o forats"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_paved">"Separació important entre peces, forats, peces malbaratades o altres tipus de danys"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_paving_stones">"Pedres en mal lloc, deixant forats i fondalades, danyades"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_sett">"Lloses en mal estat o partides, massa separades o danyades"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Grava grossa, sots, roderes i altres forats que causen irregularitat en el terreny"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_paved">"Forats profunds, fondalades importants i altres aspectes potencialment perillosos per al trànsit causats per una superfície irregular"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_sett">"Gran separació entre llosa i llosa, peces que falten o estan trencades i que poden causar danys o ser perilloses"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Trencat o amb forats, peces que falten i altres problemes d'estabilitat greus"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Amb moltes pedres, erosió i sots que impedeixen o compliquen seriosament el pas"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_horrible">"Sols per a vehicles tot terreny"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_very_horrible">"Sols per a vehicles tot terreny especials"</string>
     <string name="quest_smoothness_description_impassable">"No apte per a cap vehicle, només passable a peu"</string>
     <string name="quest_smoothness_wrong_surface">"La superfície és diferent"</string>
     <string name="quest_smoothness_surface_value">"La superfície va ser etiquetada com:"</string>
@@ -1250,6 +1290,9 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_barrier_path_intersection">"Com creua aquest camí la barrera aquí?"</string>
     <string name="quest_barrier_road_intersection">"Com creua aquesta carretera la barrera aquí?"</string>
     <string name="quest_airConditioning_no_name_title">"%s té aire condicionat?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_airConditioning_name_type_title">"%1$s (%2$s) té aire condicionat?"</string>
     <string name="quest_openingHours_signed_no_name_title">"Hi ha un cartell amb els horaris d’apertura? (%s)"</string>
     <string name="quest_sidewalk_value_separate">"mostrat separat al map"</string>
     <string name="quest_shoulder_value_yes">"voral"</string>

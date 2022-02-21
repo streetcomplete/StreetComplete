@@ -1557,8 +1557,8 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
 
     <!-- this is confusing; "tap each side" means that you must do it for both sides, and next sentence then says "do the same for other side"? What additional "other side", as I just did EACH (i.e. both) of the sides? -->
     <!-- Fuzzy -->
-    <string name="quest_side_select_interface_explanation">"Dotaknite jednu stranu i odaberite situaciju na njoj.
-Učinite isto za drugu stranu ako postoji."</string>
+    <string name="quest_side_select_interface_explanation">"Dotaknite jednu stranu i odaberite odgovarajući odgovor.
+Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
 
     <!-- Fuzzy -->
     <string name="ar_measure">"Mjerenje"</string>
@@ -1570,4 +1570,6 @@ Učinite isto za drugu stranu ako postoji."</string>
     <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Širina ceste od rubnika do rubnika: ovo uključuje sve na površini ulice poput parkinga na ulici ili biciklističkih traka, ali isključuje sve izvan nje, poput biciklističkih staza ili parkinga pored ceste."</string>
     <string name="quest_sidewalk_answer_none">"Uopće nema nogostupa"</string>
+    <string name="about_description_donate_google_play">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju!
+Zbog pravila Google Trgovine Play, poveznice na donacije ne smiju biti prikazane u aplikaciji, ali sve informacije u vezi s ovim projektom, uključujući kako sponzorirati razvoj ove aplikacije, možete pronaći na njenoj internetskoj stranici:"</string>
 </resources>

@@ -1614,7 +1614,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_recycling_materials_title">"Čo sa tu dá recyklovať?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_materials_note">"Ak sa tu dajú é recyklovať aj iné veci, než ktoré môžete vybrať, uveďte ich prosím do poznámky."</string>
+    <string name="quest_recycling_materials_note">"Ak sa tu dajú recyklovať aj iné veci, než ktoré môžete vybrať, uveďte ich prosím do poznámky."</string>
     <string name="quest_recycling_type_batteries">"Batérie"</string>
 
     <!-- Fuzzy -->
@@ -1889,7 +1889,7 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
     <string name="link_myosmatic_description">"Jednoducho si vygenerujte tlačiteľné mapy miest, voliteľne aj so zoznamom ulíc"</string>
 
     <!-- Fuzzy -->
-    <string name="link_brouter_description">"Pravdepodobne najlepší navigačnéý engine pre cyklistov"</string>
+    <string name="link_brouter_description">"Pravdepodobne najlepší navigačný engine pre cyklistov"</string>
 
     <!-- Fuzzy -->
     <string name="link_show_me_the_way_description">"Pozrite sa, ako sa dejú úpravy OSM v reálnom čase"</string>
@@ -2290,7 +2290,7 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_barrier_type_wire_gate">"Odnímateľná drôtená časť"</string>
     <string name="quest_barrier_type_cattle_grid">"Mriežka blokujúca prechod hospodárskych zvierat"</string>
     <string name="quest_barrier_type_block">"Veľký nehybný predmet"</string>
-    <string name="quest_barrier_jersey_barrier">"Betónová zábrana"</string>
+    <string name="quest_barrier_jersey_barrier">"Prefabrikovaná betónová/plastová zábrana"</string>
     <string name="quest_barrier_type_log">"Záznam"</string>
     <string name="quest_barrier_type_kerb">"Obrubník"</string>
     <string name="quest_barrier_type_height_restrictor">"Výšková zábrana"</string>

@@ -1310,4 +1310,11 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Troppo buio"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Troppo movimento"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"La fotocamera è in uso da un'altra applicazione"</string>
+    <string name="quest_bicycle_parking_access_title2">"Chi può parcheggiare una bici qui? Il parcheggio può essere sia libero che a pagamento."</string>
+    <string name="quest_playground_access_title2">"Chi può usare questo parco giochi?"</string>
+    <string name="ar_measure">"Misura"</string>
+    <string name="default_disabled_msg_no_ar">"Hai bisogno di un metro per risolvere questa missione perchè la misura tramite fotocamera non è supportata da questo dispositivo."</string>
+    <string name="quest_cycleway_width_title">"Qual è la larghezza della ciclabile qui?"</string>
+    <string name="quest_road_width_title">"Qual è la larghezza della strada qui?"</string>
+    <string name="quest_sidewalk_answer_none">"Nessun marciapiede"</string>
 </resources>

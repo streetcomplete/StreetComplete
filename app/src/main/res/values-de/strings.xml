@@ -1249,18 +1249,20 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="ar_core_tracking_error_camera_unavailable">"Kamera wird von einer anderen App verwendet"</string>
 
     <!-- "Lenkerstange" ist ungebräuchlich. Die Dinger heißen üblicherweise (z. B. bei den großen Fahrradversendern) einfach "Lenker" - ich würde hier also "Lenkerhalter" schreiben. -->
-    <string name="quest_bicycle_parking_type_handlebarholder">"Lenkerstangenhalter"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Lenkerhalter"</string>
     <string name="quest_bicycle_parking_access_title2">"Wer darf ein Fahrrad hier parken? Das Parken kann kostenlos oder kostenpflichtig sein."</string>
     <string name="quest_playground_access_title2">"Wer darf diesen Spielplatz benutzen?"</string>
-    <string name="quest_fireHydrant_position_ref_title">"Wo befindet sich dieser Hydrant (Referenznummer: %s)"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Wo befindet sich dieser Hydrant? (Referenznummer: %s)"</string>
     <string name="quest_sidewalk_answer_none_title">"Auswählen, dass Bürgersteige fehlen"</string>
-    <string name="quest_side_select_interface_explanation">"Berühre jede Seite und wähle die jeweils passende Situation aus.
-Wiederhole dies bei Bedarf für die andere Seite."</string>
+    <string name="quest_side_select_interface_explanation">"Berühre eine Seite und wähle die jeweils passende Situation aus.
+Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="ar_measure">"Ausmessen"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Zu steiler Winkel, gehe ein wenig zurück"</string>
-    <string name="default_disabled_msg_no_ar">"Du benötigst ein Maßband um diese Aufgabe zu lösen, weil das Ausmessen mit Hilfe der Kamera auf diesem Gerät nicht unterstützt wird."</string>
+    <string name="default_disabled_msg_no_ar">"Du benötigst ein Maßband, um diese Aufgabe zu lösen, weil das Ausmessen mit Hilfe der Kamera auf diesem Gerät nicht unterstützt wird."</string>
     <string name="quest_cycleway_width_title">"Wie breit ist dieser Fahrradweg hier?"</string>
     <string name="quest_road_width_title">"Wie breit ist diese Straße hier?"</string>
     <string name="quest_road_width_explanation">"Die Fahrbahn von Bordstein zu Bordstein: Das beinhaltet alles auf der Straßenoberfläche, wie etwa Parkstreifen oder Radfahrstreifen, aber schließt alles jenseits davon, wie etwa Radwege oder Parkbuchten, aus."</string>
     <string name="quest_sidewalk_answer_none">"Gar kein Bürgersteig"</string>
+    <string name="about_description_donate_google_play">"Danke, dass du erwägst, diese App zu unterstützen!
+Aufgrund einer Richtlinie des Google Play Store können die Spendenlinks nicht in der App angezeigt werden. Du findest jedoch alle Infos zu diesem Projekt, einschließlich der Möglichkeit, die Entwicklung dieser App zu fördern, auf dessen Webseite:"</string>
 </resources>

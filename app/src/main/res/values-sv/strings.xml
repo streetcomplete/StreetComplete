@@ -1263,7 +1263,7 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Både ett husnummer och ett namn…"</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
     <string name="quest_shoulder_title">"Har den här vägen en vägren?"</string>
-    <string name="quest_fireHydrant_position_title">"Vad ligger denna brandpost?"</string>
+    <string name="quest_fireHydrant_position_title">"Var ligger denna brandpost?"</string>
     <string name="quest_fireHydrant_position_green">"I gräset eller jorden"</string>
     <string name="quest_fireHydrant_position_lane">"På vägen"</string>
     <string name="quest_fireHydrant_position_sidewalk">"På trottoaren"</string>
@@ -1341,4 +1341,20 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="ar_core_tracking_error_excessive_motion">"För mycket rörelse"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Otillräckligt antal synliga detaljer"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Kameran används av en annan app"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Hållare för styre"</string>
+    <string name="quest_bicycle_parking_access_title2">"Vem får parkera en cykel här? Oavsett om det är avgiftsbelagt eller ej."</string>
+    <string name="quest_playground_access_title2">"Vem får använda den här lekplatsen?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Var ligger denna brandpost? (referensnummer: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Väljer att trottoarer saknas"</string>
+    <string name="quest_side_select_interface_explanation">"Tryck på respektive sida och välj vad som gäller för den sidan.
+Gör detta för varje sida som finns."</string>
+    <string name="ar_measure">"Mätning"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"För brant vinkel, backa lite"</string>
+    <string name="default_disabled_msg_no_ar">"Du behöver ett måttband för att kunna slutföra detta uppdrag då din kamera inte stödjer avståndsmätning."</string>
+    <string name="quest_cycleway_width_title">"Hur bred är cykelvägen här?"</string>
+    <string name="quest_road_width_title">"Hur bred är denna vägen här?"</string>
+    <string name="quest_road_width_explanation">"Hela vägbredden från kant till kant: Detta inkluderar allt som utgör vägytan som parkering på gatan eller cykelfiler, men inte gång- och cykelbanor eller särskilt anordnad parkering vid sidan av vägen."</string>
+    <string name="quest_sidewalk_answer_none">"Ingen trottoar alls"</string>
+    <string name="about_description_donate_google_play">"Tack för att du överväger att stödja den här appen!
+På grund av reglerna för Google Play får inte donationslänkar visas i appen, men du hittar information om detta projekt, inklusive hur man donerar till appens fortsatta utveckling på hemsidan:"</string>
 </resources>

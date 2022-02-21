@@ -2138,8 +2138,28 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_sidewalk_value_separate">"wyświetlane osobno na mapie"</string>
     <string name="quest_shoulder_value_yes">"pas awaryjny"</string>
     <string name="quest_shoulder_value_no">"brak pobocza"</string>
+    <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
+    <string name="no_camera_permission_warning">"To uprawnienie jest niezbędne do mierzenia odległości aparatem."</string>
     <string name="ar_core_error_sdk_too_old">"Aplikacja jest zbyt stara, spróbuj zaktualizować."</string>
     <string name="ar_core_tracking_error_bad_state">"Coś poszło nie tak. Spróbuj rozpocząć mierzenie na nowo."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Zbyt ciemno tutaj"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Zbyt szybkie ruchy"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Tło jest zbyt jednolite"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Inny program używa teraz aparatu"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Uchwyt na kierownicę"</string>
+    <string name="quest_bicycle_parking_access_title2">"Kto może zaparkować tu rower? Parkowanie może być odpłatne."</string>
+    <string name="quest_playground_access_title2">"Kto może używać tego placu zabaw?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Gdzie znajduje się ten hydrant? (numer referencyjny: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Zaznacz, że brakuje chodników"</string>
+    <string name="quest_side_select_interface_explanation">"Dotknij każdej strony i wybierz sytuację dla tej strony.
+Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
+    <string name="ar_measure">"Zmierz"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Zbyt ostry kąt, odsuń się nieco"</string>
+    <string name="default_disabled_msg_no_ar">"To urządzenie nie wspiera pomiaru przy użyciu aparatu. Musisz wykorzystać metrówkę."</string>
+    <string name="quest_cycleway_width_title">"Jaka jest szerokość tej ścieżki rowerowej?"</string>
+    <string name="quest_road_width_title">"Jaka jest szerokość tej drogi?"</string>
+    <string name="quest_road_width_explanation">"Szerokość jezdni między krawędziami np. krawężnikami, liczona włącznie z pasami do parkowania i rowerowymi, za to bez oddzielonych ścieżek rowerowych, zatoczek parkingowych i chodników."</string>
+    <string name="quest_sidewalk_answer_none">"Nie ma chodnika"</string>
+    <string name="about_description_donate_google_play">"Dziękujemy za chęć wsparcia rozwoju Street Complete!
+Ze względu na zasady sklepu Google Play linki do wpłat nie mogą być wyświetlane wewnątrz programu. Na stronie głównej znajdują się wszystkie informacje dotyczące projektu, w tym instrukcja wsparcia finansowego:"</string>
 </resources>
