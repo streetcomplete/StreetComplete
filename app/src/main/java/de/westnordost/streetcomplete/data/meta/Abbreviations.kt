@@ -34,7 +34,7 @@ class Abbreviations(config: Map<String, String>, val locale: Locale) {
      */
     fun getExpansion(word: String, isFirstWord: Boolean, isLastWord: Boolean): String? {
         for ((regex, replacement) in abbreviations) {
-            if (regex.matches(word, isFirstWord, isLastWord)) continue
+            if (!regex.matches(word, isFirstWord, isLastWord)) continue
             val result = regex.replaceFirst(word, replacement)
             return result.firstLetterToUppercase()
         }
