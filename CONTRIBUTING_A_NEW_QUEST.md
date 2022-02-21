@@ -91,7 +91,7 @@ Full text search (ctrl+shift+f or grepping) remains useful and powerful.
 
 But "Find usages" (alt+F7) is also a very powerful way to find where given function/constant/property/etc is appearing, classified by usages.
 
-## Pull requests
+## Pull Requests
 
 One of the better ways to get around a codebase new to you is to look at recent accepted proposals to change code (pull requests).
 
