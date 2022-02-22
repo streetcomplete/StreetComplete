@@ -309,8 +309,10 @@ class QuestSelectionAdapter(
                 visibleQuestTypeController.setVisible(item.questType, item.visible)
             }
             if (b && item.questType.defaultDisabledMessage > 0) {
-                AlertDialog.Builder(compoundButton.context)
+                val dialog = AlertDialog.Builder(compoundButton.context)
+                dialog
                     .setTitle(R.string.enable_quest_confirmation_title)
+                    .setCancelable(false)
                     .setMessage(item.questType.defaultDisabledMessage)
                     .setPositiveButton(android.R.string.yes, null)
                     .setNegativeButton(android.R.string.no) { _, _ ->
