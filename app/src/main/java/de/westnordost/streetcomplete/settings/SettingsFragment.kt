@@ -107,6 +107,11 @@ class SettingsFragment :
             true
         }
 
+        findPreference<Preference>("debug.links")?.setOnPreferenceClickListener {
+            startActivity(Intent(context, ShowLinksActivity::class.java))
+            true
+        }
+
         findPreference<Preference>("debug.ar_measure_horizontal")?.setOnPreferenceClickListener {
             startActivity(MeasureActivity.createIntent(requireContext(), false))
             true
