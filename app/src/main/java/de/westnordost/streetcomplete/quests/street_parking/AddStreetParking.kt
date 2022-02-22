@@ -53,7 +53,7 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
        - roundabouts
        - on sections of the roadway marked with arrows (turn lanes)
 
-       There are some more rules which cannot be filtered due to the lack of tags for that that are
+       There are some more rules that cannot be filtered due to the lack of tags that are
        set on the road-way:
        - in front of important signs (STOP, saltires, yield etc)
        - at taxi stands, bus stops, ...
@@ -108,15 +108,15 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
             conditionRight?.let { tags["parking:condition:right"] = it }
         }
 
-        // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular> (aka "parking orientation")
-        val orientationRight = (answer.right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
-        val orientationLeft = (answer.left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+        // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular>
+        val positionRight = (answer.right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+        val positionLeft = (answer.left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
 
-        if (orientationLeft == orientationRight) {
-            if (orientationLeft != null) tags["parking:lane:both:$laneLeft"] = orientationLeft
+        if (laneLeft == laneRight && positionLeft == positionRight) {
+            if (positionLeft != null) tags["parking:lane:both:$laneLeft"] = positionLeft
         } else {
-            if (orientationLeft != null) tags["parking:lane:left:$laneLeft"] = orientationLeft
-            if (orientationRight != null) tags["parking:lane:right:$laneRight"] = orientationRight
+            if (positionLeft != null) tags["parking:lane:left:$laneLeft"] = positionLeft
+            if (positionRight != null) tags["parking:lane:right:$laneRight"] = positionRight
         }
     }
 }
