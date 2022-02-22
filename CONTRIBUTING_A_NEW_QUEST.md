@@ -64,7 +64,7 @@ Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement a quest that will have simple yes/no answer? Take [`AddIsDefibrillatorIndoor`](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting one of the images.
+Are you trying to implement a quest that will have simple yes/no answer? Take [`AddIsDefibrillatorIndoor`](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting one of presented images.
 
 Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
@@ -93,7 +93,7 @@ But "Find usages" (alt+F7) is also a very powerful way to find where given funct
 
 ## Pull Requests
 
-One of the better ways to get around a codebase new to you is to look at recent accepted proposals to change code (pull requests).
+One of the better ways to get around a codebase that is new to you is to look at recent accepted proposals to change the code (pull requests).
 
 This is also likely useful here.
 
@@ -243,10 +243,10 @@ Actions may include (examples from various quests):
 - `tags["indoor"] = answer.toYesNo()`
 - `tags.remove("amenity")` - remove key if it is present
 - `tags.updateWithCheckDate("lit", answer.toYesNo())`
-  - in case of changing value such change will be applied
+  - if the new value differs from existing tag value: new value will be applied
   - in case of value being the same: add survey date tag, it would be `check_date:lit=` in this case
      - so can be used even if value will stay the same - possible for resurvey quests
-     - survey date prefix is defined as [`const val SURVEY_MARK_KEY = "check_date"`](src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt)
+     - if the new value is the same as existing tag value: adds [survey date tag](app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L33) (`check_date:lit=` in this example)
   - always update survey tag if present already
   - necessary if given quest includes resurvey of old elements that are already tagged
 
