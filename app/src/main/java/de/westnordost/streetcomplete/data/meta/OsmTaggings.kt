@@ -108,7 +108,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *  Note: When this function is modified, please update and rerun this too:
  *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/Makefile
  *  */
-fun isKindOfShopExpression(prefix: String? = null): String {
+fun isShopExpressionFragment(prefix: String? = null): String {
     val p = if (prefix != null) "$prefix:" else ""
     return ("""
         ${p}shop and ${p}shop !~ no|vacant|mall
@@ -136,8 +136,17 @@ fun isKindOfShopExpression(prefix: String? = null): String {
     ).trimIndent()
 }
 
-val IS_SOME_KIND_OF_SHOP_EXPR =
-    ("nodes, ways, relations with " + isKindOfShopExpression()).toElementFilterExpression()
+/** Expression to see if an element is some kind of shop, disused or not */
+val IS_SHOP_OR_DISUSED_SHOP_EXPRESSION = """
+    nodes, ways, relations with
+      ${isShopExpressionFragment()}
+      or ${isShopExpressionFragment("disused")}
+      or shop = vacant
+""".toElementFilterExpression()
+
+/** Expression to see if an element is some kind active, non-vacant shop */
+val IS_SHOP_EXPRESSION =
+    "nodes, ways, relations with ${isShopExpressionFragment()}".toElementFilterExpression()
 
 /* roughly sorted by occurrence count */
 val IS_AREA_EXPR = """

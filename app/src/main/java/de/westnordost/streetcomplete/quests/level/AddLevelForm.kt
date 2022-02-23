@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.quests.level
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
 import de.westnordost.streetcomplete.ktx.getLevelsOrNull
 import de.westnordost.streetcomplete.ktx.getSelectableLevels
-import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toShortString
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.getPinIcon
@@ -53,7 +53,9 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         val bbox = elementGeometry.center.enclosingBoundingBox(50.0)
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
-        val shopsWithLevels = mapData.filter { it.tags["level"] != null && it.isSomeKindOfShop() }
+        val shopsWithLevels = mapData.filter {
+            it.tags["level"] != null && IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(it)
+        }
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
             mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }

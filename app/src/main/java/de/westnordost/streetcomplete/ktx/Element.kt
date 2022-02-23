@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.IS_AREA_EXPR
-import de.westnordost.streetcomplete.data.meta.IS_SOME_KIND_OF_SHOP_EXPR
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -43,8 +40,6 @@ fun Element.isArea(): Boolean {
         else -> false
     }
 }
-
-fun Element.isSomeKindOfShop(): Boolean = IS_SOME_KIND_OF_SHOP_EXPR.matches(this)
 
 /** get for which level(s) the element is defined, if any.
  *  repeat_on is interpreted the same way as level */
