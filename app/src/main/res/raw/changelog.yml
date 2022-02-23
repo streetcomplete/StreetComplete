@@ -10,7 +10,8 @@ v41.0-beta1: |
   <h3>Quest enhancements</h3>
   <ul>
   <li>Add "handlebar holders" as bicycle parking type option (#3061, #3724), by @sams96</li>
-  <li>Other small improvements (#3740, #3755), thanks @matkoniecz, @tiptoptom</li>
+  <li>Tapping on road in street name sometimes did not work (#3797)</li>
+  <li>Other small improvements (#3740, #3755, #3793, #3783), thanks @matkoniecz, @tiptoptom</li>
   </ul>
 
 v40.2: |
