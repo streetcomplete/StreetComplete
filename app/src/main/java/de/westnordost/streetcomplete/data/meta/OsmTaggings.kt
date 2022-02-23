@@ -154,7 +154,7 @@ val IS_AREA_EXPRESSION = """
       area = yes
       or area != no and (
         ${isAreaExpressionFragment()}
-        or disused:.* and (${isAreaExpressionFragment("disused")})
+        or ~"disused:.*" and (${isAreaExpressionFragment("disused")})
       )
 """.toElementFilterExpression()
 
