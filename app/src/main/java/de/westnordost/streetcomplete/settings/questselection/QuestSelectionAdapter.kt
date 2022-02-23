@@ -303,20 +303,24 @@ class QuestSelectionAdapter(
         }
 
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
+            if (!b || item.questType.defaultDisabledMessage == 0) {
+                applyChecked(b)
+            } else {
+                AlertDialog.Builder(compoundButton.context)
+                    .setTitle(R.string.enable_quest_confirmation_title)
+                    .setMessage(item.questType.defaultDisabledMessage)
+                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(b) }
+                    .setNegativeButton(android.R.string.cancel) { _, _ -> compoundButton.isChecked = false }
+                    .setOnCancelListener { compoundButton.isChecked = false }
+                    .show()
+            }
+        }
+
+        private fun applyChecked(b: Boolean) {
             item.visible = b
             updateSelectionStatus()
             viewLifecycleScope.launch(Dispatchers.IO) {
                 visibleQuestTypeController.setVisible(item.questType, item.visible)
-            }
-            if (b && item.questType.defaultDisabledMessage > 0) {
-                AlertDialog.Builder(compoundButton.context)
-                    .setTitle(R.string.enable_quest_confirmation_title)
-                    .setMessage(item.questType.defaultDisabledMessage)
-                    .setPositiveButton(android.R.string.yes, null)
-                    .setNegativeButton(android.R.string.no) { _, _ ->
-                        compoundButton.isChecked = false
-                    }
-                    .show()
             }
         }
     }
