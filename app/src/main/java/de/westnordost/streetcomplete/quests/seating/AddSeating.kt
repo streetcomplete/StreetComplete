@@ -7,11 +7,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddSeating : OsmFilterQuestType<Seating>() {
     override val elementFilter = """
         nodes, ways with amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
-        and !outdoor_seating
+        and takeaway != only
+        and (!outdoor_seating or !indoor_seating)
     """
     override val changesetComment = "Add seating info"
     override val defaultDisabledMessage = R.string.default_disabled_msg_summer_outdoor_seating
@@ -24,38 +26,16 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_seating_name_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
-            nodes, ways with
-            amenity = bar
-            or amenity = pub
-            or amenity = food_court
-            or amenity = ice_cream
-            or amenity = restaurant
-            or amenity = cafe
-            or amenity = fast_food
-        """)
+        getMapData().filter(elementFilter)
 
     override fun createForm() = AddSeatingForm()
 
     override fun applyAnswerTo(answer: Seating, tags: Tags, timestampEdited: Long) {
-        when (answer) {
-            Seating.NO -> {
-                tags["takeaway"] = "only"
-                tags["outdoor_seating"] = "no"
-                tags["indoor_seating"] = "no"
-            }
-            Seating.ONLY_OUTDOOR -> {
-                tags["outdoor_seating"] = "yes"
-                tags["indoor_seating"] = "no"
-            }
-            Seating.ONLY_INDOOR -> {
-                tags["outdoor_seating"] = "no"
-                tags["indoor_seating"] = "yes"
-            }
-            Seating.INDOOR_AND_OUTDOOR -> {
-                tags["outdoor_seating"] = "yes"
-                tags["indoor_seating"] = "yes"
-            }
+        if (answer == Seating.NO) {
+            tags["takeaway"] = "only"
         }
+
+        tags["outdoor_seating"] = answer.hasOutdoorSeating.toYesNo()
+        tags["indoor_seating"] = answer.hasIndoorSeating.toYesNo()
     }
 }
