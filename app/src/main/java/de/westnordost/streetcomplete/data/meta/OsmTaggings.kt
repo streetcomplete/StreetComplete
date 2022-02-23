@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.meta
 
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+
 /** Definitions/meanings of certain OSM taggings  */
 
 val ANYTHING_UNPAVED = setOf(
@@ -133,3 +135,35 @@ fun isKindOfShopExpression(prefix: String? = null): String {
         ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
     ).trimIndent()
 }
+
+val IS_SOME_KIND_OF_SHOP_EXPR =
+    ("nodes, ways, relations with " + isKindOfShopExpression()).toElementFilterExpression()
+
+/* roughly sorted by occurrence count */
+val IS_AREA_EXPR = """
+    ways with area = yes or area != no and (
+      building
+      or landuse
+      or natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
+      or amenity
+      or (leisure and leisure != track)
+      or shop
+      or man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
+      or boundary
+      or tourism
+      or building:part
+      or place
+      or power ~ compensator|converter|generator|plant|substation
+      or aeroway
+      or historic
+      or public_transport
+      or office
+      or (emergency and emergency !~ yes|no)
+      or railway ~ platform|station
+      or craft
+      or waterway ~ boatyard|dam|dock|riverbank|fuel
+      or cemetery ~ sector|grave
+      or (military and military != trench)
+      or aerialway = station
+    )
+""".toElementFilterExpression()
