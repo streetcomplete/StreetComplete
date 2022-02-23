@@ -56,6 +56,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick и сарадници"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Спремиште изворног кôда"</string>
     <string name="about_summary_repository">"на GitHub-у"</string>
     <string name="about_title_report_error">"Пријавите грешку"</string>
@@ -612,6 +614,8 @@
     <string name="quest_ferry_motor_vehicle_title">"Да ли ова линија трајекта превози моторна возила?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Напомена је много кориснија ако додате фотографију."</string>
     <string name="quest_postboxCollectionTimes_name_title">"У које време се купи пошта из овог %s поштанског сандучета?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Најбоље је да оставите напомену на вашем језику или на енглеском."</string>
     <string name="quest_leafType_title">"Да ли овде дрвеће има лишће или иглице? "</string>
     <string name="quest_leaf_type_needles">"Иглице"</string>
@@ -999,6 +1003,8 @@
     <string name="quest_pitchSurface_title_track">"Каква је подлога на овој спортској стази?"</string>
     <string name="quest_bicycle_parking_access_title">"Да ли се ограничава ко сме да паркира бицикл?"</string>
     <string name="quest_bicycle_parking_fee_title">"Да ли је потребно да платите како бисте паркирали бицикл?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"неиздвојена породична кућа"</string>
     <string name="quest_drinking_water_title">"Да ли је овде вода за пиће? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Вода је за пиће (постоји табла)"</string>

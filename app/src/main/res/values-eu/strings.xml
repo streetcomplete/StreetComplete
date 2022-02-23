@@ -2306,6 +2306,8 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_pitchSurface_title_track">"Zein da kirol eremu honetako gainazala?"</string>
     <string name="quest_bicycle_parking_access_title">"Hemen bizikleta bat nork aparka dezakeen mugatuta al dago?"</string>
     <string name="quest_bicycle_parking_fee_title">"Ordaindu behar al da bizikleta bat hemen aparkatzeko?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"bereizi gabeko familia bakarrarentzako etxea"</string>
     <string name="quest_drinking_water_title">"Hemengo ura edangarria al da? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Ur edangarria (seinaleztatua)"</string>

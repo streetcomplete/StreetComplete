@@ -1969,6 +1969,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_pitchSurface_title_track">"이 스포츠 트랙의 포장재는 무엇인가요?"</string>
     <string name="quest_bicycle_parking_access_title">"이곳에 자전거를 주차하는 데 제한이 있나요?"</string>
     <string name="quest_bicycle_parking_fee_title">"이곳에 자전거 주차 요금이 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"다른 건물과 붙어있는 단독주택"</string>
     <string name="quest_drinking_water_title">"여기 물은 마실 수 있나요? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"마실 수 있음(표지판 있음)"</string>

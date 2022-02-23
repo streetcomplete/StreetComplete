@@ -1328,6 +1328,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_ferry_motor_vehicle_title">"このフェリールートでは自動車を移動できますか？"</string>
     <string name="quest_leave_new_note_photos_are_useful">"写真を追加するとノートがより役に立ちます。"</string>
     <string name="quest_postboxCollectionTimes_name_title">"%s ポストの収集時刻は何時ですか?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"ノートは現地で話されている言語で書くのが最善ですが、そうでなければ英語で書いてください。"</string>
     <string name="quest_leafType_title">"ここの樹木の葉の種類は何ですか?"</string>
 
@@ -1520,6 +1522,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"有料の駐輪場ですか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"独立していない１世帯の住宅"</string>
     <string name="quest_drinking_water_title">"ここの水は飲用ですか? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"飲用 (水質検査を受けている)"</string>

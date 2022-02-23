@@ -12,7 +12,7 @@ mobileCountryCode: 505
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [en]
-orchardProduces: [grape, tomato, banana, apple, orange, pear, olive, peach, pineapple, almond, avocado, strawberry, lemon, lime, guava, mango, mangosteen, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, almond, olive, orange, avocado, apple, guava, mango, mangosteen, peach, banana, walnut, apricot, pear, tomato, plum, strawberry]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey]
 slowZoneLabelPosition: bottom

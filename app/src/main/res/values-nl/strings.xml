@@ -2323,6 +2323,8 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_pitchSurface_title_track">"Welk oppervlak heeft deze sportbaan?"</string>
     <string name="quest_bicycle_parking_access_title">"Is er een beperking wie hier een fiets mag parkeren?"</string>
     <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om een fiets te parkeren?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"niet-vrijstaande eengezinswoning"</string>
     <string name="quest_drinking_water_title">"Is het water hier drinkbaar? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Veilig om te drinken (aangegeven)"</string>
@@ -2546,8 +2548,8 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (laat een notitie achter)"</string>
     <string name="quest_smoothness_name_title">"Wat is hier de oppervlaktekwaliteit van %s?"</string>
     <string name="quest_smoothness_square_title">"Wat is de oppervlaktekwaliteit van dit plein?"</string>
-    <string name="quest_smoothness_path_title">"Wat is de oppervlaktekwaliteit van dit plad?"</string>
-    <string name="quest_smoothness_road_title">"Wat is de oppervlaktekwaliteit van dieze weg?"</string>
+    <string name="quest_smoothness_path_title">"Wat is de oppervlaktekwaliteit van dit pad?"</string>
+    <string name="quest_smoothness_road_title">"Wat is de oppervlaktekwaliteit van deze weg?"</string>
     <string name="quest_smoothness_title_excellent">"Glad en gelijkmatig"</string>
     <string name="quest_smoothness_title_good">"Voornamelijk gelijkmatig"</string>
     <string name="quest_smoothness_title_intermediate">"Een beethje hobbelig"</string>
@@ -2581,7 +2583,7 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_smoothness_obstacle">"Er is een obstakel"</string>
     <string name="quest_smoothness_obstacle_hint">"Geef een algemeen antwoord voor de gladheid. Enkele obstakels zoals stoepranden, verkeersdrempels of vee-roosters kunnen worden genegeerd. Herhaalde of onverwachte obstakels moeten meetellen voor het antwoord."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … geven aan voor welke voertuigen de ondergrond geschikt moet zijn. Waar het om gaat is het grote geheel in plaats van enkele schade."</string>
-    <string name="quest_shoulder_explanation">"Een berm is een duidelijk afgebakende noodstopstrook waar voertuigen veilig volledig naast de rijstrook kunnen stoppen, maar niet altijd (volledig) op verharde ondergrond."</string>
+    <string name="quest_shoulder_explanation">"Een vluchtstrook is een duidelijk afgebakende noodstopstrook waar voertuigen veilig volledig naast de rijstrook kunnen stoppen, maar niet altijd (volledig) op verharde ondergrond."</string>
     <string name="link_osmhydrant_description">"Zoek, voeg toe en bewerk brandweerkazernes en brandkranen"</string>
     <string name="achievement_lifesaver_title">"redder in nood"</string>
     <string name="achievement_lifesaver_solved_X">"Je hebt %d vragen opgelost die hulpdiensten en eerstehulpverleners helpen!"</string>
@@ -2597,4 +2599,20 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_barrier_road_intersection">"Hoe wordt deze weg versperd?"</string>
     <string name="quest_airConditioning_no_name_title">"Heeft deze plaats (%s) airconditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Heeft %1$s (%2$s) airconditioning?"</string>
+    <string name="quest_openingHours_signed_name_title">"Zijn de openingstijden aangegeven voor %s?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Zijn de openingstijden aangegeven voor %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Zijn de openingstijden voor de plek aangegeven? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"apart getoond op de kaart"</string>
+    <string name="quest_shoulder_value_yes">"vluchtstrook"</string>
+    <string name="quest_shoulder_value_no">"geen vluchtstrook"</string>
+    <string name="no_camera_permission_warning_title">"Camerarechten"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"De rechten zijn nodig om met augmented reality de afstand te meten."</string>
+    <string name="ar_core_error_sdk_too_old">"Deze app is te oud, probeer te updaten."</string>
+    <string name="ar_core_tracking_error_bad_state">"Iets ging mis. Probeer de meting te herstarten."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Te donker hier"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Te veel beweging"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Onvoldoende zichtbare elementen hier"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Camera wordt door een andere app gebruikt"</string>
 </resources>

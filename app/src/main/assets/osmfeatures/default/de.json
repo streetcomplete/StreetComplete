@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Erlaubter Zugang",
                     "options": {
+                        "customers": {
+                            "description": "Beschränkt auf Kunden am Zielort",
+                            "title": "Kunden"
+                        },
                         "designated": {
                             "description": "Zugang entsprechend lokaler Vorschriften oder Schildern erlaubt",
                             "title": "rechtsverbindlich vorgesehen / gewidmet"
@@ -1975,10 +1979,14 @@
                         "cans": "Metalldosen",
                         "cardboard": "Pappe",
                         "clothes": "Kleidung",
-                        "glass": "Glas",
-                        "glass_bottles": "Glasflaschen",
+                        "cooking_oil": "Speiseöl",
+                        "engine_oil": "Motoröl",
+                        "glass": "Jedes Glas (gehärtetes Glas, Fenster, Spiegel usw.)",
+                        "glass_bottles": "Glasflaschen und Gläser",
                         "green_waste": "Biomüll",
                         "paper": "Papier",
+                        "plastic": "Plastik",
+                        "plastic_bottles": "Plastikflaschen",
                         "plastic_packaging": "Plastikverpackungen",
                         "scrap_metal": "Metallschrott",
                         "shoes": "Schuhe"
@@ -2005,6 +2013,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "Gatenummer"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "Lochnummer",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "Lochnummer",
@@ -2203,6 +2215,21 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Kategorie"
+                },
+                "seamark/rescue_station/category": {
+                    "label": "Lebensrettende Ausrüstung",
+                    "options": {
+                        "aircraft": "Flugzeug",
+                        "first_aid": "Erste Hilfe",
+                        "hovercraft": "Luftkissenboot",
+                        "lifeboat": "Rettungsboot (an Land)",
+                        "lifeboat_on_mooring": "Rettungsboot (an einer Anlegestelle)",
+                        "radio": "Radio Station",
+                        "refuge_intertidal": "Gezeitenrefugium",
+                        "refuge_shipwrecked": "Schiffswrack-Zuflucht",
+                        "seaplane": "Wasserflugzeug",
+                        "tug": "Bergungsschlepper"
+                    }
                 },
                 "seamark/type": {
                     "label": "Schifffahrtszeichen",
@@ -3796,6 +3823,10 @@
                     "name": "Amphitheater",
                     "terms": "amphitheater"
                 },
+                "amenity/ticket_validator": {
+                    "name": "Entwerter",
+                    "terms": "fahrkartenentwerter,lochentwerter,fahrscheinentwerter"
+                },
                 "amenity/toilets": {
                     "name": "Toilette",
                     "terms": "bad,toilette,wc"
@@ -4364,7 +4395,7 @@
                     "terms": "gartenhaus,baracke"
                 },
                 "building/stable": {
-                    "name": "Stall",
+                    "name": "Pferdestall",
                     "terms": "stallungen,stallgebäude"
                 },
                 "building/stadium": {
@@ -4638,6 +4669,18 @@
                 "demolished/building": {
                     "name": "kürzlich abgerissenes Gebäude"
                 },
+                "disc_golf/basket": {
+                    "name": "Disc Golf Korb",
+                    "terms": "disk golf ziel,disk golf loch"
+                },
+                "disc_golf/hole": {
+                    "name": "Disc Golf Loch",
+                    "terms": "disk golf loch"
+                },
+                "disc_golf/tee": {
+                    "name": "Disc Golf Abschlagplatz",
+                    "terms": "abschlagbox,abschlagplatz"
+                },
                 "disused/amenity": {
                     "name": "nicht benutzte Einrichtung"
                 },
@@ -4732,9 +4775,9 @@
                     "name": "Löschwasserbecken",
                     "terms": "löschwasserbereitstellung,löschwasserreservoir,löschteich"
                 },
-                "emergency/water_reservoir covered": {
-                    "name": "Löschwassertank (unterirdisch)",
-                    "terms": "löschwasserhochbehälter,löschwasserbereitstellung"
+                "emergency/water_reservoir_covered": {
+                    "name": "Notfall-Wasserreservoir (unterirdisch)",
+                    "terms": "zisterne,reservoir,löschung,brandbekämpfung"
                 },
                 "emergency/water_tank": {
                     "name": "Löschwasser",
@@ -4922,6 +4965,9 @@
                 "highway/crossing/signals": {
                     "name": "Kreuzung mit Fußgängerampel",
                     "terms": "fußgängerampel,fußgängerüberweg (ampel),fahrradüberweg (ampel),zebrastreifen (ampel)"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "markierter / gekennzeichneter Übergang"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Nicht gekennzeichneter Übergang",
@@ -5693,6 +5739,10 @@
                     "name": "American-Football-Feld",
                     "terms": "american-football-platz,footballfeld"
                 },
+                "leisure/pitch/archery": {
+                    "name": "Bogenschießanlage",
+                    "terms": "pfeil und bogen,armbrust"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Australian-Football-Feld",
                     "terms": "australian football feld,australischer football feld"
@@ -5736,6 +5786,10 @@
                 "leisure/pitch/field_hockey": {
                     "name": "Hockeyfeld",
                     "terms": "hockeyfeld,hockeyplatz"
+                },
+                "leisure/pitch/four_square": {
+                    "name": "Four Square-Spielfeld",
+                    "terms": "four square-spielfeld,four square-feld,four square-platz"
                 },
                 "leisure/pitch/futsal": {
                     "name": "Futsalplatz",
@@ -6630,6 +6684,9 @@
                 "office/water_utility": {
                     "name": "Wasserversorgungsunternehmen",
                     "terms": "wasserversorgungsunternehmen,büro der wasserwerke,büro der stadtwerke"
+                },
+                "office/yes": {
+                    "name": "Büro (nicht spezifizierter Typ)"
                 },
                 "piste/downhill": {
                     "name": "Skipiste (Abfahrt)",
@@ -7918,6 +7975,9 @@
                 "shop/wine": {
                     "name": "Weinhandel",
                     "terms": "weinladen,weinhandlung,weinhaus,enothek,vinothek"
+                },
+                "shop/yes": {
+                    "name": "Geschäft (nicht spezifizierter Typ)"
                 },
                 "telecom": {
                     "name": "Telekommunikationsfirma"

@@ -68,6 +68,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick i współautorzy"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repozytorium kodu źródłowego"</string>
     <string name="about_summary_repository">"na GitHubie"</string>
     <string name="about_title_report_error">"Zgłoś błąd"</string>
@@ -2075,7 +2077,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
  Alternatywnie możesz zostawić notatkę (ze zdjęciem)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Zarówno numer domu, jak i nazwisko…"</string>
     <string name="quest_address_house_number_label">"Numer domu:"</string>
-    <string name="quest_shoulder_title">"Czy ta droga ma pobocze?"</string>
+    <string name="quest_shoulder_title">"Czy ta droga ma pas awaryjny?"</string>
     <string name="quest_fireHydrant_position_title">"Gdzie znajduje się ten hydrant?"</string>
     <string name="quest_fireHydrant_position_green">"W trawie lub ziemi"</string>
     <string name="quest_fireHydrant_position_lane">"Na jezdni"</string>
@@ -2097,7 +2099,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_title_impassable">"Nieprzejezdna"</string>
     <string name="quest_smoothness_description_excellent_paved">"Brak wybojów i szczelin"</string>
     <string name="quest_smoothness_description_excellent_paving_stones">"Prawie jednolite"</string>
-    <string name="quest_smoothness_description_good_paved">"Małe pęknięcia, szczeliny, ślady napraw lub lekko chropowata powierzchnia"</string>
+    <string name="quest_smoothness_description_good_paved">"Małe pęknięcia, szczeliny, ślady napraw lub lekko nierówna powierzchnia"</string>
     <string name="quest_smoothness_description_good_paving_stones">"Płytkie lub wąskie szczeliny"</string>
     <string name="quest_smoothness_description_good_sett">"Niezwykle płaskie kamienie, regularnie ułożone, bardzo płytkie lub wąskie szczeliny"</string>
     <string name="quest_smoothness_description_intermediate_paved">"Niezwykle nierówna powierzchnia, większe szczeliny, pęknięcia, płytkie koleiny, dziury lub inne uszkodzenia"</string>
@@ -2120,7 +2122,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_obstacle">"Jest tu przeszkoda"</string>
     <string name="quest_smoothness_obstacle_hint">"Proszę podać ogólną odpowiedź dotyczącą płynności.  Pojedyncze przeszkody, takie jak krawężniki, progi zwalniające lub kraty dla bydła, można zignorować.  Powtarzające się lub nieoczekiwane przeszkody powinny liczyć się do odpowiedzi."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … wskazują, dla jakich pojazdów nawierzchnia powinna być zdatna do użytku. Liczy się raczej całościowy obraz, a nie pojedyncze uszkodzenia."</string>
-    <string name="quest_shoulder_explanation">"Pobocze to wyraźnie wyznaczony pas awaryjny, który umożliwia pojazdom bezpieczne zatrzymanie się całkowicie obok pasa ruchu, choć nie zawsze (w całości) na utwardzonej nawierzchni."</string>
+    <string name="quest_shoulder_explanation">"Pas awaryjny to część drogi która umożliwia pojazdom bezpieczne zatrzymanie się całkowicie obok pasa ruchu, choć nie zawsze (w całości) na utwardzonej nawierzchni."</string>
     <string name="link_osmhydrant_description">"Wyszukuj, dodawaj i edytuj remizy strażackie i hydranty strażackie"</string>
     <string name="achievement_lifesaver_title">"Ratownik"</string>
     <string name="achievement_lifesaver_solved_X">"Rozwiązałeś %d zadań, które pomagają służbom ratowniczym!"</string>
@@ -2132,7 +2134,36 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_barrier_road_intersection">"W jaki sposób droga przekracza barierę tutaj?"</string>
     <string name="quest_airConditioning_no_name_title">"Czy to miejsce (%s) ma klimatyzacje?"</string>
     <string name="quest_airConditioning_name_type_title">"Czy %1$s (%2$s) ma klimatyzację?"</string>
+    <string name="quest_openingHours_signed_name_title">"Czy godziny otwarcia %s są podane?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Czy godziny otwarcia %1$s są podane? (%2$s)"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Czy godziny otwarcia tego miejsca są podane? (%s)"</string>
     <string name="quest_sidewalk_value_separate">"wyświetlane osobno na mapie"</string>
-    <string name="quest_shoulder_value_yes">"pobocze"</string>
+    <string name="quest_shoulder_value_yes">"pas awaryjny"</string>
     <string name="quest_shoulder_value_no">"brak pobocza"</string>
+    <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
+    <string name="no_camera_permission_warning">"To uprawnienie jest niezbędne do mierzenia odległości aparatem."</string>
+    <string name="ar_core_error_sdk_too_old">"Aplikacja jest zbyt stara, spróbuj zaktualizować."</string>
+    <string name="ar_core_tracking_error_bad_state">"Coś poszło nie tak. Spróbuj rozpocząć mierzenie na nowo."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Zbyt ciemno tutaj"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Zbyt szybkie ruchy"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Tło jest zbyt jednolite"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Inny program używa teraz aparatu"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Uchwyt na kierownicę"</string>
+    <string name="quest_bicycle_parking_access_title2">"Kto może zaparkować tu rower? Parkowanie może być odpłatne."</string>
+    <string name="quest_playground_access_title2">"Kto może używać tego placu zabaw?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Gdzie znajduje się ten hydrant? (numer referencyjny: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Zaznacz, że brakuje chodników"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_side_select_interface_explanation">"Dotknij każdej strony i wybierz sytuację dla tej strony.
+Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
+    <string name="ar_measure">"Zmierz"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Zbyt ostry kąt, odsuń się nieco"</string>
+    <string name="default_disabled_msg_no_ar">"To urządzenie nie wspiera pomiaru przy użyciu aparatu. Musisz wykorzystać metrówkę."</string>
+    <string name="quest_cycleway_width_title">"Jaka jest szerokość tej ścieżki rowerowej?"</string>
+    <string name="quest_road_width_title">"Jaka jest szerokość tej drogi?"</string>
+    <string name="quest_road_width_explanation">"Szerokość jezdni między krawędziami np. krawężnikami, liczona włącznie z pasami do parkowania i rowerowymi, za to bez oddzielonych ścieżek rowerowych, zatoczek parkingowych i chodników."</string>
+    <string name="quest_sidewalk_answer_none">"Nie ma chodnika"</string>
+    <string name="about_description_donate_google_play">"Dziękujemy za chęć wsparcia rozwoju Street Complete!
+Ze względu na zasady sklepu Google Play linki do wpłat nie mogą być wyświetlane wewnątrz programu. Na stronie głównej znajdują się wszystkie informacje dotyczące projektu, w tym instrukcja wsparcia finansowego:"</string>
 </resources>

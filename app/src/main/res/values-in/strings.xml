@@ -824,6 +824,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_ferry_motor_vehicle_title">"Apa rute feri ini mengantar kendaraan bermotor?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Menambah foto dapat menambah guna catatan."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Kapan waktu pengambilan kotak pos %s ini?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Sebaiknya tulis catatan dengan bahasa lokal atau inggris."</string>
     <string name="quest_leafType_title">"Pohon di sini berduri atau berdaun?"</string>
     <string name="quest_leaf_type_needles">"Duri"</string>

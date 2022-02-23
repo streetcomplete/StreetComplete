@@ -6,6 +6,6 @@ hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 604
 noParkingSignStyle: vienna
 officialLanguages: [ar, ber]
-orchardProduces: [tomato, olive, orange, apple, grape, banana, chilli_pepper, sweet_pepper, plum, strawberry, date, peach, almond, fig, apricot, avocado]
+orchardProduces: [olive, almond, fig, date, orange, apple, grape, plum, tomato, peach, apricot, banana, walnut, avocado, sisal]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

@@ -12,6 +12,6 @@ mobileCountryCode: 240
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [sv]
-orchardProduces: [apple, strawberry, tomato, pear, raspberry, plum, cherry, blueberry]
+orchardProduces: [strawberry, apple, raspberry, pear, grape, tomato, plum, blueberry, cherry]
 popularSports: [soccer, tennis, basketball, golf, boules, equestrian, ice_hockey]
 regularShoppingDays: 5

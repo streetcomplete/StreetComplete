@@ -9,5 +9,5 @@ mobileCountryCode: 645
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, bem, ny]
-orchardProduces: [tomato, coffee, orange, tea, banana, chilli_pepper, sweet_pepper, pepper]
+orchardProduces: [coffee, tomato, orange, tea, banana, pepper, chilli_pepper, sweet_pepper]
 popularSports: [soccer, tennis, cricket]

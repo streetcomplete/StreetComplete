@@ -2273,6 +2273,8 @@ szintek"</string>
     <string name="quest_pitchSurface_title_track">"Milyen a burkolata ennek a futópályának?"</string>
     <string name="quest_bicycle_parking_access_title">"Korlátozva van, hogy ki használhatja ezt a kerékpártárolót?"</string>
     <string name="quest_bicycle_parking_fee_title">"Fizetős ez a kerékpártároló?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"családi ház, mely egy sorház része"</string>
     <string name="quest_drinking_water_title">"Iható itt a víz? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Biztonságosan iható (jelzett)"</string>
@@ -2549,6 +2551,8 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_shoulder_value_yes">"leállósáv"</string>
     <string name="quest_shoulder_value_no">"nincs leállíósáv"</string>
     <string name="no_camera_permission_warning_title">"Kamera engedély"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Az engedély szükséges a kiterjesztett valósággal történő távolságméréshez."</string>
     <string name="ar_core_error_sdk_too_old">"Az alkalmazás túl régi, próbáld meg frissíteni."</string>
     <string name="ar_core_tracking_error_bad_state">"Valami hiba történt. Próbáld újraindítani a mérést."</string>

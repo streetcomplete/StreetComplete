@@ -67,6 +67,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick e colaboradores"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repositório do código-fonte"</string>
     <string name="about_summary_repository">"no GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
@@ -763,6 +765,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_ferry_motor_vehicle_title">"Esta rota de ferry transporta veículos a motor?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adicionar uma fotografia fará com que a sua nota seja muito mais útil."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Quais as horas de recolha deste marco de correio %s ?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"O ideal é deixar a nota no idioma local ou em inglês."</string>
     <string name="quest_leafType_title">"Esta árvore tem agulhas ou folhas?"</string>
     <string name="quest_leaf_type_needles">"Agulhas"</string>
@@ -1151,6 +1155,8 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <string name="quest_pitchSurface_title_track">"Qual é a superfície desta pista de atletismo?"</string>
     <string name="quest_bicycle_parking_access_title">"Só algumas pessoas podem estacionar uma bicicleta aqui?"</string>
     <string name="quest_bicycle_parking_fee_title">"Este estacionamento de bicicletas é pago?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"casa unifamiliar não independente"</string>
     <string name="quest_drinking_water_title">"A água é potável aqui? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Potável (sinalizado)"</string>

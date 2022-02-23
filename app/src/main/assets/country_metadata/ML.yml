@@ -4,6 +4,6 @@ mobileCountryCode: 610
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, bm]
-orchardProduces: [guava, mango, mangosteen, tomato, banana, cashew_nut, papaya, chilli_pepper, sweet_pepper, lemon, lime, orange, grapefruit, date, tea]
+orchardProduces: [guava, mango, mangosteen, cashew_nut, orange, tomato, banana, chilli_pepper, sweet_pepper, lemon, lime, papaya, grapefruit, tea, date]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

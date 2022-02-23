@@ -96,6 +96,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick y demás colaboradores"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
 
@@ -2021,6 +2023,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_pitchSurface_title_track">"¿Qué superficie tiene esta pista deportiva?"</string>
     <string name="quest_bicycle_parking_access_title">"¿Está restringido a ciertas personas el aparcar una bici aquí?"</string>
     <string name="quest_bicycle_parking_fee_title">"¿Hay que pagar para aparcar una bici aquí?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Vivienda unifamiliar no independiente"</string>
     <string name="quest_drinking_water_title">"¿Es potable el agua? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Potable (señalizado)"</string>

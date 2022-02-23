@@ -46,7 +46,7 @@ That is not very clear to me. Any further explanations? -->
     <string name="quest_openingHours_chooseMonthsTitle">"Sélectionner des mois"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Sélectionner des jours de la semaine"</string>
 
-    <!-- Fuzzy -->
+    <!-- C'est clair, je trouve. -->
     <string name="quest_openingHours_24_7_confirmation">"En d’autres termes, est-ce ouvert à toute heure, tous les jours ?"</string>
     <string name="quest_noteDiscussion_title">"Pouvez-vous contribuer à cette note ?"</string>
     <string name="quest_noteDiscussion_no">"Non, cacher"</string>
@@ -67,6 +67,8 @@ That is not very clear to me. Any further explanations? -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes autour de vous."</string>
     <string name="about_title_authors">"Auteurs"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick et contributeurs"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Code source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
@@ -714,6 +716,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_ferry_motor_vehicle_title">"Cette ligne de ferry transporte-t-elle des véhicules à moteur ?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"L’ajout d’une photo rendra la note beaucoup plus utile."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Quels sont les horaires de levée de cette boîte aux lettres %s ?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Il est préférable d’écrire la note dans la langue parlée localement ou en anglais."</string>
     <string name="quest_leafType_title">"Les arbres d’ici ont-ils des aiguilles ou des feuilles ?"</string>
 
@@ -1131,6 +1135,8 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_pitchSurface_title_track">"Quelle est la surface de ce terrain de sport ?"</string>
     <string name="quest_bicycle_parking_access_title">"Qui peut garer un vélo ici ?"</string>
     <string name="quest_bicycle_parking_fee_title">"Doit-on payer pour garer son vélo ici ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"maison familiale mitoyenne"</string>
     <string name="quest_drinking_water_title">"L’eau est-elle potable ici ? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Eau potable (panneau)"</string>
@@ -1396,6 +1402,7 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_smoothness_description_intermediate_paved">"Surface rugueuse avec des espaces larges, des fissures, des nids-de-poules ou autres dommages"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Pavés endommagés ou avec de larges espaces"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Pierres plates ou avec des arrêtes carrées, espaces étroits ou peu profonds"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Graviers fins, légères bosses et nids-de-poule"</string>
     <string name="quest_smoothness_description_bad_paved">"Grands trous, nids-de-poule, ornières, chaussée effondrée ou autre dégâts"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"Pierres déplacées, espaces larges ou endommagées"</string>
     <string name="quest_smoothness_description_bad_sett">"Pierres usées, irrégulières, avec des espaces larges ou endommagées"</string>
@@ -1425,6 +1432,7 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_fuelSelfService_title">"Les pompes sont-elles en libre-service dans cette station-essence ?"</string>
     <string name="quest_fuelSelfService_name_title">"Les pompes sont-elles en libre-service chez %s ?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Ce type de quête est désactivé par défaut car elles demandent beaucoup de temps, et il est souvent difficile d’y répondre correctement. Vous ne devriez activer ce type de quête que si vous êtes certain de vouloir rajouter ce type d’informations à la carte."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Gravier ou sable compacté, avec quelques irrégularités"</string>
     <string name="quest_barrier_path_intersection">"De quelle façon ce chemin croise t’il cette barrière ?"</string>
     <string name="quest_barrier_road_intersection">"De quelle façon cette route croise t’elle cette barrière ?"</string>
     <string name="quest_airConditioning_no_name_title">"Est-ce que ce lieu (%s) est climatisé ?"</string>
@@ -1436,6 +1444,8 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_shoulder_value_yes">"accotement"</string>
     <string name="quest_shoulder_value_no">"pas d’accotement"</string>
     <string name="no_camera_permission_warning_title">"Permission d’accès à la caméra"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"La permission est nécessaire pour mesurer les distances en réalité augmentée."</string>
     <string name="ar_core_error_sdk_too_old">"Cette application est trop ancienne, essayez de la mettre à jour."</string>
     <string name="ar_core_tracking_error_bad_state">"Quelque chose s’est mal passé. Essayez de redémarrer la mesure."</string>
@@ -1443,4 +1453,24 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Il y a trop de mouvement"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Pas assez de caractéristiques visuelles ici"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"La caméra est déjà utilisée par une autre application"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Support de guidon"</string>
+    <string name="quest_bicycle_parking_access_title2">"Qui est autorisé à stationner un vélo ici ? Le parking peut être gratuit ou payant."</string>
+    <string name="quest_playground_access_title2">"Qui est autorisé à utiliser cette aire de jeux ?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Où cette borne incendie est-elle située ? (numéro de référence : %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Sélectionner que les trottoirs sont manquants"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_side_select_interface_explanation">"Sélectionnez un côté et précisez sa situation. Faites la même chose pour l’autre côté, si présent."</string>
+    <string name="ar_measure">"Mesure"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Angle trop important, reculez un peu"</string>
+    <string name="default_disabled_msg_no_ar">"Vous aurez besoin d’un mètre mesureur pour résoudre cette quête, la mesure via la caméra n’est pas supporté sur cet appareil."</string>
+    <string name="quest_cycleway_width_title">"Quelle est la largeur de cette piste cyclable ici ?"</string>
+    <string name="quest_road_width_title">"Quelle est la largeur de cette route ici ?"</string>
+
+    <!-- Je n'ai pas vraiment su comment faire la distinction entre « on-street parking » et « parking beside » en français, à part en faisant une longue périphrase. J'ai donc mis ça, mais je crains que ça puisse manquer de clareté. -->
+    <!-- Fuzzy -->
+    <string name="quest_road_width_explanation">"La taille de la route de bord à bord : ceci inclut tout ce qui se trouve sur la surface de la rue comme les emplacements de stationnement et les bandes cyclables, mais exclut tout ce qui se trouve au delà, comme les pistes cyclables ou les places de parking."</string>
+    <string name="quest_sidewalk_answer_none">"Pas de trottoir du tout"</string>
+    <string name="about_description_donate_google_play">"Merci de vouloir donner pour supporter cette application !
+Malheureusement, les conditions d’utilisation du Google Play Store ne nous permettent pas d’afficher le lien de don dans l’application. Vous pouvez trouver toutes les informations sur ce projet, y compris les moyens de soutenir le développement de cette application, sur le site :"</string>
 </resources>

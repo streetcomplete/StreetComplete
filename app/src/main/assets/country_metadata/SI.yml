@@ -10,7 +10,7 @@ mobileCountryCode: 293
 noParkingLineStyle: yellow zig-zags
 noStoppingLineStyle: yellow
 officialLanguages: [sl]
-orchardProduces: [grape, apple, pear, tomato, walnut, cherry, peach, plum, hop, persimmon, strawberry, olive, chilli_pepper, sweet_pepper, apricot, kiwi]
+orchardProduces: [grape, apple, hop, olive, walnut, peach, tomato, pear, chilli_pepper, sweet_pepper, hazelnut, strawberry, apricot, blueberry, plum, raspberry]
 popularReligions: [christian, muslim]
 popularSports: [soccer, basketball, tennis, golf, boules, equestrian]
 slowZoneLabelPosition: top

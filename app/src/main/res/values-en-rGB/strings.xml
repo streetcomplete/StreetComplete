@@ -54,6 +54,8 @@
     <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -609,6 +611,8 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_ferry_motor_vehicle_title">"Does this ferry route transport motor vehicles?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adding a photo will make the note much more useful."</string>
     <string name="quest_postboxCollectionTimes_name_title">"What are the collection times of this %s postbox?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Best write the note in the locally spoken language or otherwise in English."</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
@@ -953,6 +957,8 @@ Note all the available options: some cases are not obvious, like a one way road 
     <!-- It's not what type of bikes e.g. tandem, unicycle, but who (customers, private etc) -->
     <string name="quest_bicycle_parking_access_title">"Is it restricted who may park a bike here?"</string>
     <string name="quest_bicycle_parking_fee_title">"Is there a fee to park bikes here?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"not detached house"</string>
     <string name="quest_drinking_water_title">"Is the water safe to drink here? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
@@ -1202,8 +1208,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">"Lifesaver"</string>
     <string name="achievement_lifesaver_solved_X">"You solved %d quests that help emergency services and first responders!"</string>
-    <string name="quest_fuelSelfService_title">"Can you pump gas yourself at this fuel station?"</string>
-    <string name="quest_fuelSelfService_name_title">"Can you pump gas yourself at %s?"</string>
+    <string name="quest_fuelSelfService_title">"Can you pump fuel yourself at this fuel station?"</string>
+    <string name="quest_fuelSelfService_name_title">"Can you pump fuel yourself at %s?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"This quest type is disabled by default because it is quite time-consuming and often difficult to make the right choice. You should only enable this quest type if you are really committed to add this kind of data."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Hard-packed, very little loose gravel or sand"</string>
     <string name="quest_barrier_path_intersection">"How does this path cross the barrier here?"</string>
@@ -1217,11 +1223,29 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_value_yes">"shoulder"</string>
     <string name="quest_shoulder_value_no">"no shoulder"</string>
     <string name="no_camera_permission_warning_title">"Camera permission"</string>
-    <string name="no_camera_permission_warning">"The permission is necessary to be able to measure distances with augmented reality."</string>
+    <string name="no_camera_permission_warning">"The permission is necessary to be able to measure distances with the camera."</string>
     <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
     <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Too dark here"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Too much movement"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Insufficient visual features here"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Camera is used by another app"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Handlebar holder"</string>
+    <string name="quest_bicycle_parking_access_title2">"Who is allowed to park a bicycle here? Parking may be free or paid."</string>
+    <string name="quest_playground_access_title2">"Who is allowed to use this playground?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Where is this fire hydrant located? (reference number: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Selecting that pavements are missing"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_side_select_interface_explanation">"Tap one side and select the matching answer.
+Do the same for the other side if present."</string>
+    <string name="ar_measure">"Measure"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Too steep angle, step away a bit"</string>
+    <string name="default_disabled_msg_no_ar">"You need a tape measure to solve this quest because measuring with the camera is not supported on this device."</string>
+    <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
+    <string name="quest_road_width_title">"What’s the width of this road here?"</string>
+    <string name="quest_road_width_explanation">"The carriageway width from kerb to kerb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the carriageway."</string>
+    <string name="quest_sidewalk_answer_none">"No pavement at all"</string>
+    <string name="about_description_donate_google_play">"Thank you for considering to support this app!
+Due to a Google Play Store policy, the donation links may not be displayed in-app, but you will find any information regarding this project, including how to sponsor this app’s development, in its home:"</string>
 </resources>

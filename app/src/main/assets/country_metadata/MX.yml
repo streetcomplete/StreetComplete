@@ -9,6 +9,6 @@ mobileCountryCode: 334
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-orchardProduces: [orange, tomato, chilli_pepper, sweet_pepper, lemon, lime, banana, guava, mango, mangosteen, avocado, coconut, papaya, pineapple, apple, strawberry, grapefruit, grape, peach]
+orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]
 popularSports: [soccer, basketball, baseball, tennis]
 workweekDays: 6

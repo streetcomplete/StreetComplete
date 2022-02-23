@@ -5,6 +5,6 @@ mobileCountryCode: 412
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fa, ps]
-orchardProduces: [grape, apple, apricot, peach, almond, plum, olive, pear, walnut, fig, orange, pistachio]
+orchardProduces: [grape, apple, almond, apricot, peach, walnut, plum, fig, pear, pistachio, olive, orange]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

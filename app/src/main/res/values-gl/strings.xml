@@ -56,6 +56,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick e os contribuíntes"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repositorio do código"</string>
     <string name="about_summary_repository">"no GitHub"</string>
     <string name="about_title_report_error">"Notificar erros"</string>
@@ -604,6 +606,8 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_ferry_motor_vehicle_title">"Esta liña de ferri pode transportar vehículos motorizados?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Engadir unha imaxe fará que a nota sexa moito máis útil."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Cales son as horas de recollida desta caixa do correo %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Mellor escribir a nota na lingua que se fala de xeito local ou senón en inglés."</string>
     <string name="quest_leafType_title">"As árbores aquí teñen follas anchas ou con forma de agulla?"</string>
     <string name="quest_leaf_type_needles">"Con forma de agulla"</string>
@@ -954,6 +958,8 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_pitchSurface_title_track">"Que superficie ten esta pista deportiva?"</string>
     <string name="quest_bicycle_parking_access_title">"Está restrinxido quen pode aparcar unha bicicleta aquí?"</string>
     <string name="quest_bicycle_parking_fee_title">"Tes que pagar para aparcar unha bicicleta aquí?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"vivenda unifamiliar non separada do resto de edificios"</string>
     <string name="quest_drinking_water_title">"A auga é potábel aquí? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Seguro para beber (comprobado)"</string>

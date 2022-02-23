@@ -62,6 +62,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Тобіас Цвік та інші"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Репозиторій проєкту"</string>
     <string name="about_summary_repository">"на GitHub"</string>
     <string name="about_title_report_error">"Повідомити про помилку"</string>
@@ -639,6 +641,8 @@
     <string name="quest_ferry_motor_vehicle_title">"Чи перевозить цей поромний маршрут автотранспорт?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Додавання фото може зробити нотатку білтш корисною"</string>
     <string name="quest_postboxCollectionTimes_name_title">"Коли збирають із цієї %s поштової скриньки"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Краще залишить нотатку місцевою мовою, інакше - англійською"</string>
 
     <!-- Імхо, дослівний переклад тут важко сприймається -->
@@ -1042,6 +1046,8 @@
     <string name="quest_pitchSurface_title_track">"Яке покриття має ця спортивна доріжка?"</string>
     <string name="quest_bicycle_parking_access_title">"Є обмеження, хто може паркувати велосипед?"</string>
     <string name="quest_bicycle_parking_fee_title">"Тут потрібно платити за паркування велосипеда?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Не окремий односімейний будинок"</string>
     <string name="quest_drinking_water_title">"Вода тут є питною? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Безпечно для пиття (вказівник) "</string>

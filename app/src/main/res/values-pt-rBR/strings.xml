@@ -2123,6 +2123,8 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_pitchSurface_title_track">"Qual superfície essa pista esportiva tem?"</string>
     <string name="quest_bicycle_parking_access_title">"É restrito quem pode estacionar uma bicicleta aqui?"</string>
     <string name="quest_bicycle_parking_fee_title">"Você tem que pagar para estacionar uma bicicleta aqui?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"casa unifamiliar não independente"</string>
     <string name="quest_drinking_water_title">"A água é potável aqui? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Seguro para beber (assinado)"</string>

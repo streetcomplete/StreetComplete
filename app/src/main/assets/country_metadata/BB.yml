@@ -5,5 +5,5 @@ mobileCountryCode: 342
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: [coconut, banana, avocado, chilli_pepper, sweet_pepper, tomato]
+orchardProduces: [coconut, banana, avocado, tomato, chilli_pepper, sweet_pepper]
 popularSports: [cricket]

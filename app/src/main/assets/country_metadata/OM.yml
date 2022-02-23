@@ -8,6 +8,6 @@ mobileCountryCode: 422
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon, lime, papaya]
+orchardProduces: [date, tomato, lemon, lime, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, papaya]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

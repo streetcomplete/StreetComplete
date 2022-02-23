@@ -53,6 +53,8 @@
     <string name="turn_on_location_request">"خدمة تحديد الموقع متعطلة، فتح الإعدادات لتشغيل تحديد موقعك الحالي؟"</string>
     <string name="no_location_permission_warning">"موقعك الحالي مطلوب للمسح بحثا عن أسئلة في منطقتك والمناطق المجاورة."</string>
     <string name="about_title_authors">"فريق العمل"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"مستودع المصدر"</string>
     <string name="about_summary_repository">"على GitHub"</string>
     <string name="about_title_report_error">"الإبلاغ عن خطأ"</string>
@@ -633,6 +635,8 @@
     <string name="quest_ferry_motor_vehicle_title">"هل هذه العَبارة تنقل السيارات؟"</string>
     <string name="quest_leave_new_note_photos_are_useful">"إضافة صورة سيجعل الملاحظة أكثر فائدة."</string>
     <string name="quest_postboxCollectionTimes_name_title">"ما هي أوقات التجميع لعلبة بريد %s هذه؟"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"من الأفضل كتابة الملاحظة باللغة المحلية أو بالإنجليزية إذا كنت لا تتحدث اللغة المحلية."</string>
     <string name="quest_leafType_title">"هل الأشجار هنا بها إِبرْ (شوك) أو أوراق؟"</string>
     <string name="quest_leaf_type_needles">"إِبرْ (شوك)"</string>
@@ -1020,6 +1024,8 @@
     <string name="quest_pitchSurface_title_track">"ما هو سطح هذا المجال الرياضي؟"</string>
     <string name="quest_bicycle_parking_access_title">"هل هناك حد لمن يمكنه ركن الدراجة هنا؟"</string>
     <string name="quest_bicycle_parking_fee_title">"هل عليك أن تدفع مقابل ركن دراجة هنا؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"منزل أسرة واحدة غير منفصل"</string>
     <string name="quest_drinking_water_title">"هل المياه صالحة للشرب هنا؟ (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"آمن للشرب (توقيع)"</string>

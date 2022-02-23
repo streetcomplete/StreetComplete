@@ -1956,6 +1956,8 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_pitchSurface_title_track">"Mikä pinnoite tällä urheiluradalla on?"</string>
     <string name="quest_bicycle_parking_access_title">"Onko täällä rajoitettu kuka saa pysäköidä pyöränsä täällä?"</string>
     <string name="quest_bicycle_parking_fee_title">"Maksaako pyörän pysäköiminen tässä?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Yhdistetty yhden perheen talo"</string>
     <string name="quest_drinking_water_title">"Onko vesi täällä juotavaa? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Turvallista (merkitty)"</string>
@@ -2228,6 +2230,8 @@ Vaihtoehtoisesti voit jättää muistiinpanon (kuvan kanssa)."</string>
     <string name="quest_shoulder_value_yes">"Piennar"</string>
     <string name="quest_shoulder_value_no">"Ei piennarta"</string>
     <string name="no_camera_permission_warning_title">"Oikeudet kameraan"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Oikeudet tarvitaan mitatakseen etäisyyksiä kameran avulla"</string>
     <string name="ar_core_error_sdk_too_old">"Sovellusversio on vanha, päivitä sovellus."</string>
     <string name="ar_core_tracking_error_bad_state">"Jokin meni pieleen. Kokeile käynnistää mittaus uudelleen."</string>

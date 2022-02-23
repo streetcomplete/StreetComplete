@@ -14,7 +14,7 @@ mobileCountryCode: 214
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [es]
-orchardProduces: [olive, grape, tomato, orange, peach, chilli_pepper, sweet_pepper, lemon, lime, apple, banana, strawberry, persimmon, pear, almond, plum, apricot]
+orchardProduces: [olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, chilli_pepper, sweet_pepper, pear, apricot, fig, avocado, plum]
 popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA

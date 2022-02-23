@@ -8,6 +8,6 @@ mobileCountryCode: 520
 noParkingLineStyle: yellow-white on curb
 noStoppingLineStyle: red-white on curb
 officialLanguages: [th]
-orchardProduces: [rubber, guava, mango, mangosteen, pineapple, banana, coconut, grapefruit, papaya, orange, tomato, lemon, lime, grape, tea, areca_nut, coffee, cashew_nut]
+orchardProduces: [rubber, guava, mango, mangosteen, coconut, pineapple, banana, coffee, areca_nut, tea, lemon, lime, grapefruit, cashew_nut, orange, tomato, grape, papaya]
 popularReligions: [buddhist, animist, muslim, chinese_folk, taoist]
 popularSports: [tennis, soccer, golf, basketball, badminton, sepak_takraw]

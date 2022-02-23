@@ -248,7 +248,7 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Dřevo"</string>
-    <string name="quest_sidewalk_title">"Je na této ulici chodník?"</string>
+    <string name="quest_sidewalk_title">"Je na této cestě chodník?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je tato silnice?"</string>
     <string name="quest_serviceType_title">"Jakého druhu je tato účelová komunikace?"</string>
     <string name="quest_oneway_title">"Je to jednosměrka?"</string>
@@ -2293,6 +2293,8 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_pitchSurface_title_track">"Jaký povrch má tato sportovní dráha?"</string>
     <string name="quest_bicycle_parking_access_title">"Je nějak omezeno, kdo zde může parkovat kolo?"</string>
     <string name="quest_bicycle_parking_fee_title">"Je zde potřeba platit za parkování kola?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"řadový dům pro jednu rodinu"</string>
     <string name="quest_drinking_water_title">"Je tento zdroj vody pitný? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Pitná voda (rozbor)"</string>
@@ -2588,10 +2590,31 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
     <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
     <string name="no_camera_permission_warning_title">"Oprávnění fotoaparátu"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Oprávnění je nutné, aby bylo možné měřit vzdálenosti pomocí rozšířené reality."</string>
     <string name="ar_core_error_sdk_too_old">"Tato aplikace je příliš stará, zkuste ji aktualizovat."</string>
     <string name="ar_core_tracking_error_bad_state">"Něco je špatně. Zkuste měření restartovat."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Je tu příliš velká tma"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Příliš mnoho pohybu"</string>
+
+    <!-- Zatím mě napadlo pouze:
+„Nejsou tu žádné specifické vizuální prvky“
+(Předpokládám, že se věta týká toho, že ve scéně není nic, podle čeho by se provedlo měření.) -->
+    <string name="ar_core_tracking_error_insufficient_features">"Nejsou tu žádné specifické vizuální prvky"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Fotoaparát je používán jinou aplikací"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Držák na řidítka"</string>
+    <string name="quest_bicycle_parking_access_title2">"Kdo zde může zaparkovat kolo? Parkování může být zdarma, nebo placené."</string>
+    <string name="quest_playground_access_title2">"Kdo může používat toto hřiště?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Kde je tento požární hydrant umístěn? (referenční číslo: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Chybí výběr těchto chodníků"</string>
+    <string name="ar_measure">"Měření"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Příliš velký úhel, trochu ustupte"</string>
+    <string name="default_disabled_msg_no_ar">"Pro vyřešení tohoto úkolu potřebujete svinovací metr, protože měření pomocí fotoaparátu není na tomto zařízení podporováno."</string>
+    <string name="quest_cycleway_width_title">"Jaká je zde šířka této cyklostezky?"</string>
+    <string name="quest_road_width_title">"Jaká je zde šířka této cesty?"</string>
+    <string name="quest_road_width_explanation">"Šířka cesty od obrubníku k obrubníku: Toto zahrnuje cokoliv na povrchu cesty jako jsou parkovací místa na cestě nebo pruhy pro cyklisty, ale vylučuje cokoli mimo cestu, jako jsou cyklostezky nebo parkování."</string>
+    <string name="quest_sidewalk_answer_none">"Není tu žádný chodník"</string>
+    <string name="about_description_donate_google_play">"Děkujeme, že zvažujete podporu této aplikace!
+Vzhledem k pravidlům v Google Play Store nelze v aplikacích zobrazit darovací odkazy, ale všechny informace o tomto projektu, včetně toho jak sponzorovat vývoj této aplikace, najdete na našich stránkách:"</string>
 </resources>

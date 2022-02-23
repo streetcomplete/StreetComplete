@@ -62,6 +62,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick และผู้มีส่วนร่วม"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"ที่เก็บโค้ดต้นฉบับ"</string>
     <string name="about_summary_repository">"บน GitHub"</string>
     <string name="about_title_report_error">"รายงานข้อผิดพลาด"</string>
@@ -628,6 +630,8 @@
     <string name="quest_ferry_motor_vehicle_title">"เรือข้ามฟากนี้ขนส่งยานยนต์หรือไม่?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"การเพิ่มรูปภาพจะทำให้หมายเหตุมีประโยชน์มากขึ้น"</string>
     <string name="quest_postboxCollectionTimes_name_title">"ตู้ไปรษณีย์นี้ %s เปิดตู้กี่โมง?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"ดีที่สุดถ้าคุณบันทึกหมายเหตุเป็นภาษาท้องถิ่น หรือไม่ก็ภาษาอังกฤษ"</string>
     <string name="quest_leafType_title">"ต้นไม้ที่นี่มีเข็มหรือใบ?"</string>
     <string name="quest_leaf_type_needles">"เข็ม"</string>
@@ -1022,6 +1026,8 @@
     <string name="quest_pitchSurface_title_track">"ลานวิ่งนี้มีไฟสว่างหรือไม่?"</string>
     <string name="quest_bicycle_parking_access_title">"จำกัดผู้จอดจักรยานไหม?"</string>
     <string name="quest_bicycle_parking_fee_title">"มีค่าบริการจอดจักรยานไหม?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"บ้านขนาดหนึ่งครอบครัวที่เชื่อมกัน"</string>
     <string name="quest_drinking_water_title">"น้ำดื่มที่นี่บริโภคได้ไหม? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"ปลอดภัยที่จะดื่ม (มีป้าย)"</string>

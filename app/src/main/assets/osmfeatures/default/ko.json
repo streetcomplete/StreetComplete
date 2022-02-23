@@ -117,6 +117,7 @@
                         "block_number": "번지",
                         "block_number!jp": "번지",
                         "city": "행정시·행정구·구역",
+                        "city!cn": "지급시/지구/맹",
                         "city!jp": "시/정/촌/도쿄 특별구",
                         "city!vn": "시/읍",
                         "conscriptionnumber": "123",
@@ -124,6 +125,7 @@
                         "county": "군",
                         "county!jp": "군",
                         "district": "구",
+                        "district!cn": "시할구/현/기",
                         "district!vn": "구/시사/현",
                         "floor": "층",
                         "hamlet": "반",
@@ -135,6 +137,7 @@
                         "place": "장소",
                         "postcode": "우편번호",
                         "province": "도",
+                        "province!cn": "성/직할시/자치구/특별행정구",
                         "province!jp": "도도부현",
                         "quarter": "지구",
                         "quarter!jp": "오아자/마치",
@@ -225,6 +228,9 @@
                 "attraction": {
                     "label": "종류"
                 },
+                "automated": {
+                    "label": "자동"
+                },
                 "baby_seat": {
                     "label": "유아석"
                 },
@@ -255,7 +261,9 @@
                 "beauty": {
                     "label": "서비스",
                     "options": {
-                        "cosmetics": "화장품"
+                        "cosmetics": "화장품",
+                        "nails": "네일",
+                        "tanning": "태닝"
                     }
                 },
                 "bench": {
@@ -298,6 +306,9 @@
                 },
                 "boundary": {
                     "label": "유형"
+                },
+                "branch_brand": {
+                    "label": "지점"
                 },
                 "brand": {
                     "label": "상표"
@@ -383,7 +394,10 @@
                 "castle_type": {
                     "label": "유형",
                     "options": {
-                        "kremlin": "크렘린"
+                        "castrum": "로마 요새",
+                        "kremlin": "크렘린",
+                        "palace": "궁전",
+                        "shiro": "일본식 성"
                     }
                 },
                 "changing_table": {
@@ -486,39 +500,49 @@
                 "cuisine": {
                     "label": "요리",
                     "options": {
-                        "american": "미국 음식",
-                        "asian": "아시아 음식",
+                        "american": "미국 요리",
+                        "asian": "아시아 요리",
                         "bubble_tea": "버블티",
                         "burger": "햄버거",
                         "cake": "케이크",
                         "chicken": "치킨",
-                        "chinese": "중국 음식",
+                        "chinese": "중국 요리",
                         "chocolate": "초콜릿",
                         "coffee_shop": "커피숍",
                         "dessert": "디저트",
                         "donut": "도넛",
-                        "french": "프랑스 음식",
-                        "german": "독일 음식",
-                        "greek": "그리스 음식",
+                        "french": "프랑스 요리",
+                        "german": "독일 요리",
+                        "greek": "그리스 요리",
                         "hot_dog": "핫도그",
                         "ice_cream": "아이스크림",
-                        "indian": "인도 음식",
-                        "italian": "이탈리아 음식",
-                        "japanese": "일본 음식",
+                        "indian": "인도 요리",
+                        "indonesian": "인도네시아 요리",
+                        "italian": "이탈리아 요리",
+                        "japanese": "일본 요리",
                         "juice": "주스",
                         "kebab": "케밥",
                         "korean": "한식",
-                        "mexican": "멕시코 음식",
+                        "lebanese": "레바논 요리",
+                        "malaysian": "말레이시아 요리",
+                        "mexican": "멕시코 요리",
                         "pankcake": "팬케이크",
                         "pasta": "파스타",
                         "pizza": "피자",
+                        "polish": "폴란드 요리",
+                        "portuguese": "포르투갈 요리",
                         "regional": "토속 음식",
+                        "russian": "러시아 요리",
                         "salad": "샐러드",
                         "sandwich": "샌드위치",
+                        "seafood": "해산물",
+                        "spanish": "스페인 요리",
+                        "steak_house": "스테이크하우스",
                         "sushi": "초밥",
-                        "thai": "태국 음식",
-                        "turkish": "터키 음식",
-                        "vietnamese": "베트남 음식"
+                        "taiwanese": "대만 요리",
+                        "thai": "태국 요리",
+                        "turkish": "터키 요리",
+                        "vietnamese": "베트남 요리"
                     }
                 },
                 "currency_multi": {
@@ -743,7 +767,15 @@
                     "placeholder": "보통"
                 },
                 "embassy": {
-                    "label": "유형"
+                    "label": "유형",
+                    "options": {
+                        "branch_embassy": "대사관 분관",
+                        "high_commission": "고등 판무관 사무소",
+                        "mission": "재외 공관",
+                        "nunciature": "성좌의 재외 공관",
+                        "residence": "대사 관저",
+                        "yes": "대사관"
+                    }
                 },
                 "emergency": {
                     "label": "긴급"
@@ -1472,8 +1504,6 @@
                         "batteries": "배터리",
                         "cans": "캔",
                         "clothes": "의류",
-                        "glass": "유리",
-                        "glass_bottles": "유리병",
                         "paper": "종이",
                         "scrap_metal": "고철",
                         "shoes": "신발"

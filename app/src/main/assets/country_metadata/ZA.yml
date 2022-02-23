@@ -11,5 +11,5 @@ noParkingSignStyle: sadc
 noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
-orchardProduces: [grape, orange, apple, tomato, pear, lemon, lime, banana, grapefruit, peach, pineapple, plum, guava, mango, mangosteen, avocado, apricot, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, orange, lemon, lime, apple, avocado, grapefruit, pear, pineapple, peach, chilli_pepper, sweet_pepper, tomato, plum, banana, guava, mango, mangosteen, apricot]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]

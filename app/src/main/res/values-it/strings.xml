@@ -58,6 +58,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick e contributori"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
@@ -634,6 +636,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_ferry_motor_vehicle_title">"Questa linea di traghetti trasporta veicoli a motore?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"L’aggiunta di una foto renderà la nota molto più utile."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Quali sono gli orari di raccolta della buca delle lettere %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Sarebbe meglio scrivere la nota nella lingua locale oppure in inglese."</string>
     <string name="quest_leafType_title">"Gli alberi hanno aghi o foglie?"</string>
     <string name="quest_leaf_type_needles">"Aghi"</string>
@@ -1027,6 +1031,8 @@ riconoscimento"</string>
     <string name="quest_pitchSurface_title_track">"Qual è la superficie di questa pista sportiva?"</string>
     <string name="quest_bicycle_parking_access_title">"Il parcheggio bici qui è riservato?"</string>
     <string name="quest_bicycle_parking_fee_title">"Si paga per parcheggiare la bici qua?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"casa unifamiliare non indipendente"</string>
     <string name="quest_drinking_water_title">"Qui l’acqua è potabile? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"È sicura da bere (è scritto così)"</string>
@@ -1302,10 +1308,19 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_shoulder_value_yes">"banchina"</string>
     <string name="quest_shoulder_value_no">"nessuna banchina"</string>
     <string name="no_camera_permission_warning_title">"Permessi della fotocamera"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"I permessi sono necessari per poter misurare le distanze con la realtà aumentata."</string>
     <string name="ar_core_error_sdk_too_old">"Questa app è di una versione troppo vecchia, prova ad aggiornarla."</string>
     <string name="ar_core_tracking_error_bad_state">"Qualcosa è andato storto. Prova a far ripartire la misurazione."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Troppo buio"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Troppo movimento"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"La fotocamera è in uso da un'altra applicazione"</string>
+    <string name="quest_bicycle_parking_access_title2">"Chi può parcheggiare una bici qui? Il parcheggio può essere sia libero che a pagamento."</string>
+    <string name="quest_playground_access_title2">"Chi può usare questo parco giochi?"</string>
+    <string name="ar_measure">"Misura"</string>
+    <string name="default_disabled_msg_no_ar">"Hai bisogno di un metro per risolvere questa missione perchè la misura tramite fotocamera non è supportata da questo dispositivo."</string>
+    <string name="quest_cycleway_width_title">"Qual è la larghezza della ciclabile qui?"</string>
+    <string name="quest_road_width_title">"Qual è la larghezza della strada qui?"</string>
+    <string name="quest_sidewalk_answer_none">"Nessun marciapiede"</string>
 </resources>

@@ -58,7 +58,7 @@
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick und Mitwirkende"</string>
-    <string name="about_title_repository">"Quellcode-Repository"</string>
+    <string name="about_title_repository">"Projektseite"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
     <string name="about_title_report_error">"Fehler melden"</string>
     <string name="about_title_feedback">"Feedback geben"</string>
@@ -972,7 +972,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_pitchSurface_title_track">"Welchen Bodenbelag hat diese Rennbahn?"</string>
     <string name="quest_bicycle_parking_access_title">"Gibt es Einschränkungen, wer hier ein Fahrrad parken darf?"</string>
     <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
-    <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus"</string>
+    <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus, z.B. einzelnes Reihenhaus"</string>
     <string name="quest_drinking_water_title">"Ist das Wasser hier trinkbar? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Trinkwasser (beschildert)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Trinkwasser (nicht beschildert)"</string>
@@ -1247,4 +1247,22 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="ar_core_tracking_error_excessive_motion">"Zu viel Bewegung"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Unzureichende visuelle Merkmale hier"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Kamera wird von einer anderen App verwendet"</string>
+
+    <!-- "Lenkerstange" ist ungebräuchlich. Die Dinger heißen üblicherweise (z. B. bei den großen Fahrradversendern) einfach "Lenker" - ich würde hier also "Lenkerhalter" schreiben. -->
+    <string name="quest_bicycle_parking_type_handlebarholder">"Lenkerhalter"</string>
+    <string name="quest_bicycle_parking_access_title2">"Wer darf ein Fahrrad hier parken? Das Parken kann kostenlos oder kostenpflichtig sein."</string>
+    <string name="quest_playground_access_title2">"Wer darf diesen Spielplatz benutzen?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Wo befindet sich dieser Hydrant? (Referenznummer: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Auswählen, dass Bürgersteige fehlen"</string>
+    <string name="quest_side_select_interface_explanation">"Berühre eine Seite und wähle die jeweils passende Situation aus.
+Wiederhole dies für die andere Seite, wenn sie existiert."</string>
+    <string name="ar_measure">"Ausmessen"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Zu steiler Winkel, gehe ein wenig zurück"</string>
+    <string name="default_disabled_msg_no_ar">"Du benötigst ein Maßband, um diese Aufgabe zu lösen, weil das Ausmessen mit Hilfe der Kamera auf diesem Gerät nicht unterstützt wird."</string>
+    <string name="quest_cycleway_width_title">"Wie breit ist dieser Fahrradweg hier?"</string>
+    <string name="quest_road_width_title">"Wie breit ist diese Straße hier?"</string>
+    <string name="quest_road_width_explanation">"Die Fahrbahn von Bordstein zu Bordstein: Das beinhaltet alles auf der Straßenoberfläche, wie etwa Parkstreifen oder Radfahrstreifen, aber schließt alles jenseits davon, wie etwa Radwege oder Parkbuchten, aus."</string>
+    <string name="quest_sidewalk_answer_none">"Gar kein Bürgersteig"</string>
+    <string name="about_description_donate_google_play">"Danke, dass du erwägst, diese App zu unterstützen!
+Aufgrund einer Richtlinie des Google Play Store können die Spendenlinks nicht in der App angezeigt werden. Du findest jedoch alle Infos zu diesem Projekt, einschließlich der Möglichkeit, die Entwicklung dieser App zu fördern, auf dessen Webseite:"</string>
 </resources>

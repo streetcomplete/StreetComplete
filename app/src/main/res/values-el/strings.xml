@@ -2132,6 +2132,8 @@
     <string name="quest_pitchSurface_title_track">"Τι επιφάνεια έχει αυτή η αθλητική πίστα; "</string>
     <string name="quest_bicycle_parking_access_title">"Είναι περιορισμένο ποιος μπορεί να σταθμεύσει ένα ποδήλατο εδώ;"</string>
     <string name="quest_bicycle_parking_fee_title">"Πρέπει να πληρώσετε για να σταθμεύσετε ένα ποδήλατο εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"μη ανεξάρτητη μονοκατοικία "</string>
     <string name="quest_drinking_water_title">"Είναι το νερό πόσιμο εδώ; (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Ασφαλές για κατανάλωση (επισημασμένο) "</string>
@@ -2407,4 +2409,14 @@
     <string name="quest_sidewalk_value_separate">"εμφανίζεται ξεχωριστά στον χάρτη"</string>
     <string name="quest_shoulder_value_yes">"ΛΕΑ"</string>
     <string name="quest_shoulder_value_no">"χωρίς ΛΕΑ"</string>
+    <string name="no_camera_permission_warning_title">"Άδεια κάμερας"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"Η άδεια είναι απαραίτητη για να μπορούμε να μετράμε αποστάσεις με επαυξημένη πραγματικότητα."</string>
+    <string name="ar_core_error_sdk_too_old">"Αυτή η εφαρμογή είναι πολύ παλιά, δοκιμάστε ενημέρωση."</string>
+    <string name="ar_core_tracking_error_bad_state">"Κάτι πήγε στραβά. Δοκιμάστε να επανεκκινήσετε τη μέτρηση."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Πολύ σκοτεινά εδώ"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Πάρα πολύ κίνηση"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Ανεπαρκή οπτικά χαρακτηριστικά εδώ"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Η κάμερα χρησιμοποιείται από άλλη εφαρμογή"</string>
 </resources>

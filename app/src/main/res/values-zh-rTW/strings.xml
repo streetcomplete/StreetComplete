@@ -2113,6 +2113,8 @@
     <string name="quest_pitchSurface_title_track">"這運動跑道表面材質是什麼？"</string>
     <string name="quest_bicycle_parking_access_title">"請問這裡有限制不能停腳踏車嗎？"</string>
     <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"無連接的單一家庭房屋"</string>
     <string name="quest_drinking_water_title">"這裡的水質是否可以飲用？(%s)"</string>
     <string name="quest_drinking_water_potable_signed">"可以飲用（已勾選）"</string>

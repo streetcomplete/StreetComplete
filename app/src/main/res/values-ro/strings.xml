@@ -156,6 +156,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick și contributorii"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Sursă repository"</string>
 
     <!-- Fuzzy -->
@@ -832,6 +834,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_ferry_motor_vehicle_title">"Această rută de feribot transportă autovehicule?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adăugarea unei fotografii va face nota mult mai utilă."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Care sunt orele de colectare a corespondenței pentru cutia poștală %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Cel mai bine scrieți nota în limba vorbită local sau în engleză."</string>
     <string name="quest_leafType_title">"Copacii de aici au ace sau frunze?"</string>
     <string name="quest_leaf_type_needles">"Ace"</string>
@@ -1227,6 +1231,8 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_pitchSurface_title_track">"Ce suprafață are această pistă sportivă?"</string>
     <string name="quest_bicycle_parking_access_title">"Este restricționat a parca o bicicletă aici?"</string>
     <string name="quest_bicycle_parking_fee_title">"Trebuie să plătești pentru a parca o bicicletă aici?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"casă unifamilială nedecomandată"</string>
     <string name="quest_drinking_water_title">"Este potabilă apa aici? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Sigur de băut (înscris)"</string>

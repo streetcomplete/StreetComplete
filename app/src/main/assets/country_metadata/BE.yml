@@ -10,7 +10,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 206
 noParkingLineStyle: dashed yellow
 officialLanguages: [nl, fr, de]
-orchardProduces: [pear, tomato, apple, strawberry, chilli_pepper, sweet_pepper, cherry, raspberry, grape, walnut, hop, plum]
+orchardProduces: [pear, apple, strawberry, tomato, grape, cherry, hop, raspberry, blueberry, walnut, chilli_pepper, sweet_pepper, plum, hazelnut]
 popularSports: [soccer, tennis, basketball, equestrian, boules]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE

@@ -5,5 +5,5 @@ hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
-orchardProduces: [tomato, apple, apricot, plum, pear, peach, grape, walnut, cherry, hazelnut, raspberry, strawberry, almond, chilli_pepper, sweet_pepper, pistachio]
+orchardProduces: [apple, tomato, apricot, hazelnut, grape, pear, peach, plum, walnut, cherry, raspberry, pistachio, almond, chilli_pepper, sweet_pepper, strawberry]
 popularReligions: [muslim]

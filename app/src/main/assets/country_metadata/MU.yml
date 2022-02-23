@@ -10,7 +10,7 @@ mobileCountryCode: 617
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, fr, mfe]
-orchardProduces: [tomato, pineapple, banana, chilli_pepper, sweet_pepper, coconut, tea, pistachio]
+orchardProduces: [tea, tomato, banana, pineapple, chilli_pepper, sweet_pepper, coconut]
 popularReligions: [hindu, christian, muslim]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONE

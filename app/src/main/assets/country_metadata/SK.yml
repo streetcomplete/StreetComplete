@@ -9,6 +9,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
-orchardProduces: [grape, apple, tomato, chilli_pepper, sweet_pepper, peach, strawberry, plum, pear, apricot, hop, cherry, raspberry, walnut, chestnut]
+orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZÓNA

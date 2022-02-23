@@ -4,5 +4,5 @@ mobileCountryCode: 654
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [ar, fr, swb, wni, zdj, wlc]
-orchardProduces: [coconut, banana, tomato, coffee, cacao, vanilla]
+orchardProduces: [coconut, banana, coffee, cacao, vanilla, tomato]
 popularReligions: [muslim]

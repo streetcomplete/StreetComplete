@@ -1843,6 +1843,8 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_pitchSurface_title_track">"Hva slags underlag har denne banen?"</string>
     <string name="quest_bicycle_parking_access_title">"Er det begrenset hvem som kan parkere sykkel her?"</string>
     <string name="quest_bicycle_parking_fee_title">"Må du betale for å parkere sykkel her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Enebolig"</string>
     <string name="quest_drinking_water_title">"Er vannet drikkelig her? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevann (merket)"</string>

@@ -6,5 +6,5 @@ mobileCountryCode: 702
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en, bzj]
-orchardProduces: [orange, banana, grapefruit, tomato, chilli_pepper, sweet_pepper, pineapple, papaya, coconut, cacao, coffee, guava, mango, mangosteen]
+orchardProduces: [orange, banana, grapefruit, coconut, cacao, pineapple, coffee, tomato, papaya, chilli_pepper, sweet_pepper, guava, mango, mangosteen]
 speedUnits: [miles per hour, kilometers per hour]

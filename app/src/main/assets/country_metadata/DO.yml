@@ -5,5 +5,5 @@ mobileCountryCode: 370
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-orchardProduces: [banana, papaya, avocado, coconut, pineapple, tomato, orange, cacao, chilli_pepper, sweet_pepper, lemon, lime, guava, mango, mangosteen, coffee, grapefruit, cashew_nut, rubber]
+orchardProduces: [cacao, coffee, coconut, avocado, banana, lemon, lime, orange, papaya, cashew_nut, pineapple, chilli_pepper, sweet_pepper, tomato, guava, mango, mangosteen, grapefruit, sisal]
 popularSports: [baseball, basketball, tennis]

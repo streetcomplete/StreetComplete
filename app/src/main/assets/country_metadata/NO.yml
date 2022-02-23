@@ -10,6 +10,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 242
 officialLanguages: [nb, nn, no]
-orchardProduces: [apple, tomato, strawberry, raspberry, plum, cherry, pear, blueberry]
+orchardProduces: [apple, strawberry, plum, raspberry, cherry, pear, tomato, blueberry]
 slowZoneLabelPosition: top
 slowZoneLabelText: Sone

@@ -57,6 +57,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s ቶቢያስ ዚዊክ እና አስተዋጽዖ አበርካቾች"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"ምንጭ ማከማቻ"</string>
     <string name="about_summary_repository">"በ GitHub ላይ"</string>
     <string name="about_title_report_error">"የሪፖርት ስህተት"</string>
@@ -623,6 +625,8 @@
     <string name="quest_ferry_motor_vehicle_title">"ይህ የጀልባ መንገድ የሞተር ተሽከርካሪዎችን ያጓጉዛል?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"ፎቶ ማከል ማስታወሻው የበለጠ ጠቃሚ ያደርገዋል።"</string>
     <string name="quest_postboxCollectionTimes_name_title">"የዚህ የ%s ፖስታ ሳጥን የመሰብሰብያ ሰዐቶች ምንድን ናቸው?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"ማስታወሻውን በአከባቢው በሚነገረው ቋንቋ ወይም በሌላ በእንግሊዝኛ ይፃፉ ፡፡"</string>
     <string name="quest_leafType_title">"እዚህ ያሉት ዛፎች መርፌዎች ወይም ቅጠሎች አሏቸው?"</string>
     <string name="quest_leaf_type_needles">"መርፌዎች"</string>
@@ -1021,6 +1025,8 @@
     <string name="quest_pitchSurface_title_track">"ይህ የስፖርት ትራክ ምን ገጽ አለው?"</string>
     <string name="quest_bicycle_parking_access_title">"ማን እዚህ ብስክሌት ሊያቆም ይችላል ወይስ የተከለከለ ነው?"</string>
     <string name="quest_bicycle_parking_fee_title">"እዚህ ብስክሌት ለማቆም መክፈል አለብዎት?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"ያልተነጠለ የአንድ ቤተሰብ ቤት"</string>
     <string name="quest_drinking_water_title">"ውሃው እዚህ የመጠጥ ነው? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"ለመጠጥ ደህንነቱ የተጠበቀ (የተፈረመ)"</string>
