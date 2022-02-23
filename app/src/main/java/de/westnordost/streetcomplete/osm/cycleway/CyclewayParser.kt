@@ -39,7 +39,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     val isAnyUnambiguousOppositeTagging = isOpposite || isUnambiguousOppositeSide
     val isOnewayNotForCyclists = isOneway && (tags["oneway:bicycle"] == "no" || isAnyUnambiguousOppositeTagging)
 
-    // opposite tagging implies a oneway. So tagging is not understand if tags seem to contradict each other
+    // opposite tagging implies a oneway. So tagging is not understood if tags seem to contradict each other
     val isAnyOppositeTagging = tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.any { it.startsWith("opposite") }
     if (!isOneway && isAnyOppositeTagging) return null
 
