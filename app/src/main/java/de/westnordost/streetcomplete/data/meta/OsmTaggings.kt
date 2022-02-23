@@ -148,31 +148,42 @@ val IS_SHOP_OR_DISUSED_SHOP_EXPRESSION = """
 val IS_SHOP_EXPRESSION =
     "nodes, ways, relations with ${isShopExpressionFragment()}".toElementFilterExpression()
 
-/* roughly sorted by occurrence count */
-val IS_AREA_EXPR = """
-    ways with area = yes or area != no and (
-      building
-      or landuse
-      or natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
-      or amenity
-      or (leisure and leisure != track)
-      or shop
-      or man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
-      or boundary
-      or tourism
-      or building:part
-      or place
-      or power ~ compensator|converter|generator|plant|substation
-      or aeroway
-      or historic
-      or public_transport
-      or office
-      or (emergency and emergency !~ yes|no)
-      or railway ~ platform|station
-      or craft
-      or waterway ~ boatyard|dam|dock|riverbank|fuel
-      or cemetery ~ sector|grave
-      or (military and military != trench)
-      or aerialway = station
-    )
+/** Expression to see if an element is an area. disused:X is an area too if X is an area. */
+val IS_AREA_EXPRESSION = """
+    ways with
+      area = yes
+      or area != no and (
+        ${isAreaExpressionFragment()}
+        or disused:.* and (${isAreaExpressionFragment("disused")})
+      )
 """.toElementFilterExpression()
+
+private fun isAreaExpressionFragment(prefix: String? = null): String {
+    val p = if (prefix != null) "$prefix:" else ""
+    /* roughly sorted by occurrence count */
+    return """
+        ${p}building
+        or ${p}landuse
+        or ${p}natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
+        or ${p}amenity
+        or (${p}leisure and ${p}leisure != track)
+        or ${p}shop
+        or ${p}man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
+        or ${p}boundary
+        or ${p}tourism
+        or ${p}building:part
+        or ${p}place
+        or ${p}power ~ compensator|converter|generator|plant|substation
+        or ${p}aeroway
+        or ${p}historic
+        or ${p}public_transport
+        or ${p}office
+        or (${p}emergency and ${p}emergency !~ yes|no)
+        or ${p}railway ~ platform|station
+        or ${p}craft
+        or ${p}waterway ~ boatyard|dam|dock|riverbank|fuel
+        or ${p}cemetery ~ sector|grave
+        or (${p}military and ${p}military != trench)
+        or ${p}aerialway = station
+    """.trimIndent()
+}

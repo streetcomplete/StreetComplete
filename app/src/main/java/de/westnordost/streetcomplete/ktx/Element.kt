@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.data.meta.IS_AREA_EXPR
+import de.westnordost.streetcomplete.data.meta.IS_AREA_EXPRESSION
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -35,7 +35,7 @@ val Element.geometryType: GeometryType get() =
 
 fun Element.isArea(): Boolean {
     return when (this) {
-        is Way -> isClosed && IS_AREA_EXPR.matches(this)
+        is Way -> isClosed && IS_AREA_EXPRESSION.matches(this)
         is Relation -> tags["type"] == "multipolygon"
         else -> false
     }
