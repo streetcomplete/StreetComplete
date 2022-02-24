@@ -26,7 +26,9 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_seating_name_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(elementFilter)
+        getMapData().filter("""
+            nodes, ways with amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
+        """)
 
     override fun createForm() = AddSeatingForm()
 
