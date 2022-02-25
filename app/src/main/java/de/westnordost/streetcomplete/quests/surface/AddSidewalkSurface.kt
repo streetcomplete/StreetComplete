@@ -21,31 +21,13 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             and area != yes
             and motorroad != yes
             and (
-                sidewalk = both or sidewalk = left or sidewalk = right or
+                sidewalk ~ both|left|right or
                 (sidewalk:left = yes and sidewalk:right ~ yes|no|separate) or
                 (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
             )
             and (
                 ${SIDEWALK_SURFACE_KEYS.joinToString(" and ") {"!$it"}}
-                or sidewalk:both:surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and sidewalk:both:surface older today -4 years
-                or sidewalk:left:surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and sidewalk:left:surface older today -4 years
-                or sidewalk:right:surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and sidewalk:right:surface older today -4 years
-                or ${SIDEWALK_SURFACE_KEYS.joinToString(" or ") {"$it older today -8 years"}}
-                or (
-                  sidewalk:both:surface ~ paved|unpaved|cobblestone
-                  and !sidewalk:both:surface:note
-                  and !note:sidewalk:both:surface
-                )
-                or (
-                  sidewalk:left:surface ~ paved|unpaved|cobblestone
-                  and !sidewalk:left:surface:note
-                  and !note:sidewalk:left:surface
-                )
-                or (
-                  sidewalk:right:surface ~ paved|unpaved|cobblestone
-                  and !sidewalk:right:surface:note
-                  and !note:sidewalk:right:surface
-                )
+                or sidewalk:surface older today -8 years
             )
     """
 
