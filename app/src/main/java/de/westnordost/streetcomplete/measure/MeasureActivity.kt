@@ -170,6 +170,18 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
                 if (hitResult != null) {
                     updateCursor(hitResult)
+                    setTrackingError(null)
+                } else {
+                    /* when no plane can be found at the cursor position and the camera angle is
+                       shallow enough, display a hint that user should cross street
+                     */
+                    val cursorDistanceFromCamera = cursorNode?.worldPosition?.let {
+                        Vector3.subtract(frame.camera.pose.position, it).length()
+                    } ?: 0f
+
+                    setTrackingError(
+                        if (cursorDistanceFromCamera > 3f) R.string.ar_core_tracking_error_no_plane_hit else null
+                    )
                 }
             }
         }
