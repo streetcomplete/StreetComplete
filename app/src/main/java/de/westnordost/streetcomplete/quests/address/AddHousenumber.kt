@@ -131,8 +131,10 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with (addr:housenumber or addr:housename) " +
-            "and !amenity and !craft and !leisure and !office and !shop and !tourism")
+        getMapData().filter("""nodes, ways, relations with
+            (addr:housenumber or addr:housename)
+            and !amenity and !craft and !leisure and !office and !shop and !tourism
+            """.toElementFilterExpression())
 
     override fun createForm() = AddHousenumberForm()
 
