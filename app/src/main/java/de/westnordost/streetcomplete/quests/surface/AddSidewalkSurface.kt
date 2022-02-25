@@ -22,6 +22,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             and motorroad != yes
             and (
                 sidewalk ~ both|left|right or
+                sidewalk:both = yes
                 (sidewalk:left = yes and sidewalk:right ~ yes|no|separate) or
                 (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
             )
