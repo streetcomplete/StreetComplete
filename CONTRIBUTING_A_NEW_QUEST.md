@@ -419,7 +419,7 @@ Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blo
 
 [Filtering in the element selection](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L20) ensures that every object will have either `name` or `brand` tag.
 
-Though description from iD presets is not guaranted.
+Though description from iD presets is not guaranteed.
 
 So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
 
