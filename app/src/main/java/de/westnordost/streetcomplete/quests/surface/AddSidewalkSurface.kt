@@ -86,11 +86,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         deleteSidewalkSurfaceAnswerIfExists(null, tags)
 
         // only set the check date if nothing was changed
-        for (side in arrayOf("both", "left", "right")) {
-            if ((!tags.hasChanges && tags.containsKey("sidewalk:$side:surface")) ||
-                    tags.hasCheckDateForKey("sidewalk:$side:surface")) {
-                tags.updateCheckDateForKey("sidewalk:$side:surface")
-            }
+        if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk:surface")) {
+            tags.updateCheckDateForKey("sidewalk:surface")
         }
     }
 
@@ -113,7 +110,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         val sidewalkKey = "sidewalk:" + side.value
         val sidewalkSurfaceKey = "$sidewalkKey:surface"
 
-        tags.updateWithCheckDate(sidewalkSurfaceKey, surface.value.osmValue)
+        tags[sidewalkSurfaceKey] = surface.value.osmValue
 
         // add/remove note - used to describe generic surfaces
         if (surface.note != null) {

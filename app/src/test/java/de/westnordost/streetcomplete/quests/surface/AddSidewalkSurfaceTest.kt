@@ -72,10 +72,10 @@ class AddSidewalkSurfaceTest {
 
     @Test fun `updates check_date`() {
         questType.verifyAnswer(
-            mapOf("sidewalk:both:surface" to "asphalt", "check_date:sidewalk:both:surface" to "2000-10-10"),
+            mapOf("sidewalk:both:surface" to "asphalt", "check_date:sidewalk:surface" to "2000-10-10"),
             SidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
             StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
-            StringMapEntryModify("check_date:sidewalk:both:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
         )
     }
 
