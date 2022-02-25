@@ -67,7 +67,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         }
         deleteSidewalkSurfaceAnswerIfExists(null, tags)
 
-        // only set the check date if nothing was changed
+        // only set the check date if nothing was changed or if check date was already set
         if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk:surface")) {
             tags.updateCheckDateForKey("sidewalk:surface")
         }
