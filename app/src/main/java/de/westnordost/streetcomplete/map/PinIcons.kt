@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.map
 
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.containsAnyKey
 
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
     when (map["amenity"]) {
@@ -58,6 +59,10 @@ import de.westnordost.streetcomplete.R
     }
     when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
+    }
+    if ((map.containsKey("addr:housenumber") or map.containsKey("addr:housename"))
+        and !map.containsAnyKey("amenity", "craft", "leisure", "office", "shop", "tourism")){
+        return R.drawable.ic_pin_housenumber
     }
     return null
 }
