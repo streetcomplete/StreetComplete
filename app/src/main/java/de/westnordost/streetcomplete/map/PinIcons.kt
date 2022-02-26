@@ -62,7 +62,7 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
     }
     if ((map.containsKey("addr:housenumber") || map.containsKey("addr:housename"))
         && !map.containsAnyKey("amenity", "craft", "leisure", "office", "shop", "tourism")){
-        return R.drawable.ic_pin_housenumber
+        return R.drawable.ic_none
     }
     return null
 }
