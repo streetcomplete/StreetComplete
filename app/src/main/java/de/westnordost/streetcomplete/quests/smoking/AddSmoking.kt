@@ -39,7 +39,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
             R.string.quest_smoking_no_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
+        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
         return arrayOfNotNull(name, featureName.value)
     }
 
@@ -53,5 +53,5 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     }
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        tags.containsKey("name") || tags.containsKey("brand")
+        tags.containsKey("name") || tags.containsKey("brand") || tags.containsKey("operator")
 }
