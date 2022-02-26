@@ -66,3 +66,14 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
     }
     return null
 }
+
+fun getTitle(map: Map<String, String>): String? {
+    return if (map["name"] != null || map["brand"] != null) {
+        map["name"] ?: map["brand"]
+    }
+    else if (map["addr:conscriptionnumber"] != null && map["streetnumber"] != null) {
+        map["addr:conscriptionnumber"] + "/" + map["streetnumber"]
+    } else {
+        map["addr:housenumber"] ?: map["addr:housename"]
+    }
+}
