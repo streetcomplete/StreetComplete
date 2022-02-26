@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.map
 
 import android.content.res.Resources
 import android.graphics.RectF
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -39,7 +38,7 @@ class QuestPinsManager(
     private val questTypeRegistry: QuestTypeRegistry,
     private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
-) : LifecycleObserver {
+) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -84,7 +83,7 @@ class QuestPinsManager(
         }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         stop()
         viewLifecycleScope.cancel()
     }

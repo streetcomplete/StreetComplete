@@ -9,9 +9,8 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -49,7 +48,7 @@ class QuestAutoSyncer(
     private val prefs: SharedPreferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesDao: DownloadedTilesDao
-) : LifecycleObserver {
+) : DefaultLifecycleObserver {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
 
@@ -118,14 +117,14 @@ class QuestAutoSyncer(
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun onCreate() {
+    override fun onCreate(owner: LifecycleOwner) {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
+    override fun onResume(owner: LifecycleOwner) {
         updateConnectionState()
         if (isConnected) {
             triggerAutoDownload()
@@ -134,12 +133,12 @@ class QuestAutoSyncer(
         context.registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
+    override fun onPause(owner: LifecycleOwner) {
         stopPositionTracking()
         context.unregisterReceiver(connectivityReceiver)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.removeListener(userLoginStatusListener)

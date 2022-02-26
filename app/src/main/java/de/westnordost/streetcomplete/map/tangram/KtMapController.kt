@@ -7,9 +7,8 @@ import android.graphics.PointF
 import android.graphics.RectF
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.mapzen.tangram.FeaturePickResult
 import com.mapzen.tangram.LabelPickResult
 import com.mapzen.tangram.MapChangeListener
@@ -57,7 +56,7 @@ import kotlin.math.pow
  *  </ul>
  *  */
 class KtMapController(private val c: MapController, contentResolver: ContentResolver) :
-    LifecycleObserver {
+    DefaultLifecycleObserver {
 
     private val cameraManager = CameraManager(c, contentResolver)
     private val markerManager = MarkerManager(c)
@@ -147,7 +146,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         })
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         viewLifecycleScope.cancel()
         cameraManager.cancelAllCameraAnimations()
     }

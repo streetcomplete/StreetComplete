@@ -10,9 +10,8 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.view.Display
 import android.view.Surface
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import java.lang.Math.toRadians
 import kotlin.math.PI
 import kotlin.math.abs
@@ -24,7 +23,7 @@ class Compass(
     private val sensorManager: SensorManager,
     private val display: Display,
     private val callback: (rotation: Float, tilt: Float) -> Unit
-) : SensorEventListener, LifecycleObserver {
+) : SensorEventListener, DefaultLifecycleObserver {
 
     private val accelerometer: Sensor?
     private val magnetometer: Sensor?
@@ -75,7 +74,7 @@ class Compass(
         SensorManager.remapCoordinateSystem(r, h, v, r)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
+    override fun onResume(owner: LifecycleOwner) {
         accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
         magnetometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
 
@@ -83,14 +82,14 @@ class Compass(
         dispatcherThread?.start()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
+    override fun onPause(owner: LifecycleOwner) {
         sensorManager.unregisterListener(this)
 
         dispatcherThread?.interrupt()
         dispatcherThread = null
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         sensorHandler.removeCallbacksAndMessages(null)
         sensorThread.quit()
     }

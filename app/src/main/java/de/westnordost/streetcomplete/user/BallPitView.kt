@@ -18,9 +18,8 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.core.content.getSystemService
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.databinding.ViewBallPitBinding
 import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
@@ -48,8 +47,7 @@ class BallPitView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr),
-    LifecycleObserver {
+) : FrameLayout(context, attrs, defStyleAttr), DefaultLifecycleObserver {
 
     private val binding = ViewBallPitBinding.inflate(LayoutInflater.from(context), this)
     private val sensorManager: SensorManager
@@ -100,18 +98,18 @@ class BallPitView @JvmOverloads constructor(
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
+    override fun onResume(owner: LifecycleOwner) {
         accelerometer?.let { sensorManager.registerListener(sensorEventListener, it, SensorManager.SENSOR_DELAY_GAME, mainHandler) }
         physicsController.resume()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
+    override fun onPause(owner: LifecycleOwner) {
         sensorManager.unregisterListener(sensorEventListener)
         mainHandler.removeCallbacksAndMessages(null)
         physicsController.pause()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         physicsController.destroy()
         viewLifecycleScope.cancel()
     }

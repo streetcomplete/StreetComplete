@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.map
 
 import android.content.res.Resources
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -33,7 +32,7 @@ class EditHistoryPinsManager(
     private val pinsMapComponent: PinsMapComponent,
     private val editHistorySource: EditHistorySource,
     private val resources: Resources
-) : LifecycleObserver {
+) : DefaultLifecycleObserver {
 
     /** Switch active-ness of edit history pins layer */
     var isActive: Boolean = false
@@ -52,7 +51,7 @@ class EditHistoryPinsManager(
         override fun onInvalidated() { updatePins() }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         stop()
         viewLifecycleScope.cancel()
     }

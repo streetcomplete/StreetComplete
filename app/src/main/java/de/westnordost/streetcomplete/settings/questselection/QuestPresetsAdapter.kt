@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -20,10 +19,12 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
+/** Adapter for the list in which the user can select which preset of quest selections he wants to
+ *  use. */
 class QuestPresetsAdapter(
     private val context: Context,
     private val questPresetsController: QuestPresetsController
-) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), LifecycleObserver {
+) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
 
@@ -46,8 +47,7 @@ class QuestPresetsAdapter(
         } }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onStart() {
+    override fun onStart(owner: LifecycleOwner) {
         presets = mutableListOf()
         presets.add(QuestPreset(0, context.getString(R.string.quest_presets_default_name)))
         presets.addAll(questPresetsController.getAll())
@@ -55,13 +55,11 @@ class QuestPresetsAdapter(
         questPresetsController.addListener(questPresetsListener)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun onStop() {
+    override fun onStop(owner: LifecycleOwner) {
         questPresetsController.removeListener(questPresetsListener)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         viewLifecycleScope.cancel()
     }
 
