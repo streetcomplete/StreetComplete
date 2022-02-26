@@ -62,7 +62,7 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
     }
     if (map.containsKey("addr:housenumber") || map.containsKey("addr:housename") ||
             map.containsKey("addr:conscriptionnumber") || map.containsKey("addr:streetnumber")
-        && !map.containsAnyKey("amenity", "craft", "leisure", "office", "shop", "tourism")){
+        && !map.containsAnyKey("amenity", "craft", "healthcare", "leisure", "office", "shop", "tourism")){
         return R.drawable.ic_none
     }
     return null
@@ -71,8 +71,7 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
 fun getTitle(map: Map<String, String>): String? {
     return if (map["name"] != null || map["brand"] != null) {
         map["name"] ?: map["brand"]
-    }
-    else if (map["addr:conscriptionnumber"] != null && map["streetnumber"] != null) {
+    } else if (map["addr:conscriptionnumber"] != null && map["streetnumber"] != null) {
         map["addr:conscriptionnumber"] + "/" + map["streetnumber"]
     } else {
         map["addr:housenumber"] ?: map["addr:housename"]
