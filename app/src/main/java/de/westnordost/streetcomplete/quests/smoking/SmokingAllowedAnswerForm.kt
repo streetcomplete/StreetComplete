@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.YES
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.OUTSIDE
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.NO
-import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.ISOLATED
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 
 class SmokingAllowedAnswerForm : AbstractQuestAnswerFragment<SmokingAllowed>() {
@@ -18,7 +17,6 @@ class SmokingAllowedAnswerForm : AbstractQuestAnswerFragment<SmokingAllowed>() {
     )
 
     override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_smoking_isolated) { applyAnswer(ISOLATED) },
         AnswerItem(R.string.quest_smoking_separated) { applyAnswer(SEPARATED) },
     )
 
