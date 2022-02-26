@@ -132,9 +132,14 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""nodes, ways, relations with
-            (addr:housenumber or addr:housename)
+            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !amenity and !craft and !leisure and !office and !shop and !tourism
             """.toElementFilterExpression())
+        // getMapData().filter { it.tags.keys.all {
+        //         key -> key.startsWith("addr:") ||
+        //         key.startsWith("source") ||
+        //         key == "building"
+        // } }
 
     override fun createForm() = AddHousenumberForm()
 
