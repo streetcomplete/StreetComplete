@@ -10,10 +10,18 @@ import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 
 class SmokingAllowedAnswerForm : AListQuestAnswerFragment<SmokingAllowed>() {
 
-    override val items = listOf(
-        TextItem(NO, R.string.quest_smoking_no),
-        TextItem(OUTSIDE, R.string.quest_smoking_outside),
-        TextItem(SEPARATED, R.string.quest_smoking_separated),
-        TextItem(YES, R.string.quest_smoking_yes),
-    )
+    val isAlreadyOutside = tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten"
+
+    override val items =
+        if (isAlreadyOutside) listOf(
+            TextItem(NO, R.string.quest_smoking_no),
+            TextItem(SEPARATED, R.string.quest_smoking_separated),
+            TextItem(YES, R.string.quest_smoking_yes),
+        )
+        else listOf(
+            TextItem(NO, R.string.quest_smoking_no),
+            TextItem(OUTSIDE, R.string.quest_smoking_outside),
+            TextItem(SEPARATED, R.string.quest_smoking_separated),
+            TextItem(YES, R.string.quest_smoking_yes),
+        )
 }
