@@ -17,9 +17,9 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     private fun elementFilterBasicFragment(prefix: String? = null): String {
         val p = if (prefix != null) "$prefix:" else ""
         return """
-              {p}amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
-              or {p}leisure ~ outdoor_seating
-              or ({p}amenity ~ fast_food|ice_cream or {p}shop ~ ice_cream|deli|bakery|coffee|tea|wine)
+              ${p}amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
+              or ${p}leisure ~ outdoor_seating
+              or (${p}amenity ~ fast_food|ice_cream or ${p}shop ~ ice_cream|deli|bakery|coffee|tea|wine)
         """.trimIndent()
     }
 
