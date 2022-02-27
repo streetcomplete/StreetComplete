@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.smoking
 
 import android.util.Log
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+//import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -62,7 +62,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
         val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
         return arrayOfNotNull(name, featureName.value)
     }
-
+/*
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
             nodes, ways with
@@ -72,7 +72,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
                 ${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION}
             )
         """)
-
+*/
     override fun createForm() = SmokingAllowedAnswerForm()
 
     override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
