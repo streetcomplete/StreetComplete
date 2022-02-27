@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 
 class SmokingAllowedAnswerForm : AListQuestAnswerFragment<SmokingAllowed>() {
 
-    override val items: List<TextItem> get() {
+    override val items: List<TextItem<T>> get() {
         val tags = osmElement!!.tags
         val isAlreadyOutside = tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten"
 
