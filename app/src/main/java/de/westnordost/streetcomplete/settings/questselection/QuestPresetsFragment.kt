@@ -15,6 +15,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
+/** Shows a screen in which the user can select which preset of quest selections he wants to
+ *  use. */
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
     private val questPresetsController: QuestPresetsController by inject()

@@ -6,9 +6,14 @@ import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.core.view.isVisible
 
-fun findClosestIntersection(v: ViewGroup, target: PointF): PointF? {
-    val w = v.width.toFloat()
-    val h = v.height.toFloat()
+/** Given an imaginary line drawn from the center of the given [viewGroup] and the [target], returns
+ *  the point where the line either intersects with the bounds of the [viewGroup] or the bounds of
+ *  any of its direct children, whichever is closer to the center. It returns null if there is no
+ *  intersection (i.e. the [target] is within the bounds of [viewGroup] and not within the bounds
+ *  of any of its direct children) */
+fun findClosestIntersection(viewGroup: ViewGroup, target: PointF): PointF? {
+    val w = viewGroup.width.toFloat()
+    val h = viewGroup.height.toFloat()
     val ox = w / 2
     val oy = h / 2
     val tx = target.x
@@ -30,7 +35,7 @@ fun findClosestIntersection(v: ViewGroup, target: PointF): PointF? {
     a = intersectionWithHorizontalSegment(ox, oy, tx, ty, 0f, h, w)
     if (a < minA) minA = a
 
-    for (child in v.children) {
+    for (child in viewGroup.children) {
         if (!isReallyVisible(child)) continue
         val t = child.top.toFloat()
         val b = child.bottom.toFloat()
