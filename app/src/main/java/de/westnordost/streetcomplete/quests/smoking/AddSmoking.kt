@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -59,8 +59,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
             (
                 ${elementFilterBasicFragment()} or
                 ${elementFilterBasicFragment("disused")} or
-                ${isKindOfShopExpression()} or
-                ${isKindOfShopExpression("disused")}
+                ${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION} or
             )
         """)
 
