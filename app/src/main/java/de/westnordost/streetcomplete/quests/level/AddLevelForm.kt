@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.ktx.getSelectableLevels
 import de.westnordost.streetcomplete.ktx.toShortString
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.getPinIcon
+import de.westnordost.streetcomplete.map.getTitle
 import de.westnordost.streetcomplete.osm.SingleLevel
 import de.westnordost.streetcomplete.osm.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -100,7 +101,7 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         for ((element, geometry) in shopElementsAndGeometry) {
             if (!element.getLevelsOrNull().levelsIntersect(levels)) continue
             val icon = getPinIcon(element.tags)
-            val title = element.tags["name"] ?: element.tags["brand"]
+            val title = getTitle(element.tags)
             showsGeometryMarkersListener?.putMarkerForCurrentQuest(geometry, icon, title)
         }
     }

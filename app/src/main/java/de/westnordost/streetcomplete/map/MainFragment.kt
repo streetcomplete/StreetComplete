@@ -895,7 +895,7 @@ class MainFragment :
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
-                val title = e.tags["name"] ?: e.tags["brand"]
+                val title = getTitle(e.tags)
                 putMarkerForCurrentQuest(geometry, icon, title)
             }
         }
