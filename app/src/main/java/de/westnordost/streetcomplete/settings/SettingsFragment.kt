@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.ktx.getYamlStringList
+import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.purge
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.measure.MeasureActivity
@@ -126,7 +126,7 @@ class SettingsFragment :
     }
 
     private fun buildLanguageSelector() {
-        val entryValues = resources.getYamlStringList(R.raw.languages).toMutableList()
+        val entryValues = resources.getYamlObject<MutableList<String>>(R.raw.languages)
         val entries = entryValues.map {
             val locale = Locale.forLanguageTag(it)
             val name = locale.displayName
