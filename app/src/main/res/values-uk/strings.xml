@@ -209,9 +209,15 @@
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Чи має зупинка %s навіс?"</string>
     <string name="quest_toiletsFee_title">"Цей туалет платний?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Чи має ця зупинка тактильне покриття?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Чи має цей перехід тактильне покриття?"</string>
     <string name="quest_source_dialog_title">"Ви точно перевірили це на місці?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Чи має зупинка %s тактильне покриття?"</string>
     <string name="quest_source_dialog_note">"Потрібно додавати лише ту інформацію, яку ви дізналися та дослідили самі."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Чи має ця велопарковка накриття (захищена від дощу)?"</string>
@@ -570,7 +576,6 @@
     <string name="quest_buildingType_sports_centre">"Спортивний центр"</string>
     <string name="quest_buildingType_toilets">"Туалети"</string>
     <string name="quest_maxspeed_sign_question">"Що вказує обмеження швидкості"</string>
-    <string name="quest_playground_access_title">"Чи є цей майданчик загальнодоступним?"</string>
     <string name="quest_segregated_title">"Як тут розміщені пішохідна та вело- доріжки?"</string>
     <string name="dialog_tutorial_upload">"Для публікації ваших змін вручну, використовуйте кнопку в панелі інструментів що виглядає так."</string>
     <string name="quest_segregated_separated">"Відокремлено одне від одного"</string>
@@ -664,7 +669,11 @@
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Яке тут покриття пішохідної доріжки?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Цей туалет %s доступний для людей на інвалідних візках?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Чи має трамвайна зупинка тактильне покриття?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"На трамвайній зупинці %s є тактильне покриття?"</string>
     <string name="quest_maxweight_title">"Яке тут обмеження ваги?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ця вага виглядає неправдоподібно. Ви впевнені у правильності?"</string>
@@ -1044,7 +1053,6 @@
     <string name="quest_surface_value_artificial_turf">"Штучна трава"</string>
     <string name="quest_surface_value_tartan">"Тартан (гумове покриття)"</string>
     <string name="quest_pitchSurface_title_track">"Яке покриття має ця спортивна доріжка?"</string>
-    <string name="quest_bicycle_parking_access_title">"Є обмеження, хто може паркувати велосипед?"</string>
     <string name="quest_bicycle_parking_fee_title">"Тут потрібно платити за паркування велосипеда?"</string>
 
     <!-- Fuzzy -->

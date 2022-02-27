@@ -1361,9 +1361,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_maxspeed_sign_question">"Akým spôsobom je určená maximálna rýchlosť?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Je toto ihrisko verejne dostupné?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Akým spôsobom je na tomto chodníku označený cyklopruh?"</string>
 
     <!-- Fuzzy -->
@@ -2233,7 +2230,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_surface_value_artificial_turf">"Umelý trávnik"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Aký povrch má táto športová trať?"</string>
-    <string name="quest_bicycle_parking_access_title">"Je obmedzené kto tu môže parkovať bickel?"</string>
     <string name="quest_bicycle_parking_fee_title">"Platí sa tu za parkovanie bicykla?"</string>
 
     <!-- Fuzzy -->
@@ -2509,4 +2505,23 @@ Taktiež môžete nechať poznámku (s fotkou)"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Príliš veľa pohybu"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Nedostatočné vizuálne prvky pre zachytenie"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Fotoaparát je používaný inou aplikáciou"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Držiak na riadidlá"</string>
+    <string name="quest_bicycle_parking_access_title2">"Kto tu môže zaparkovať bicykel? Parkovanie môže byť zadarmo / platené."</string>
+    <string name="quest_playground_access_title2">"Kto môže používať toto ihrisko?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Kde je tento požiarny hydrant umiestnený? (referenčné číslo: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Chýba výber týchto chodníkov"</string>
+    <string name="quest_side_select_interface_explanation">"Kliknite na jednu stranu a vyberte správnu odpoveď.
+To isté urobte pre druhú stranu, ak tu je."</string>
+    <string name="ar_measure">"Meranie"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Príliš veľký uhol, trochu odstúpte"</string>
+    <string name="default_disabled_msg_no_ar">"Pre vyriešenie tejto úlohy je potrebný meter, pretože meranie pomocou fotoaparátu nie je na tomto zariadení podporované."</string>
+    <string name="quest_cycleway_width_title">"Aká je tu šírka tejto cyklocesty?"</string>
+    <string name="quest_road_width_title">"Aká je tu šírka tejto cesty?"</string>
+    <string name="quest_road_width_explanation">"Šírka cesty od obrubníku k obrubníku: Toto zahrňuje čokoľvek na povrchu cesty, ako parkovacie miesto na ceste / pruhy pre cyklistov, ale vylučuje čokoľvek mimo cesty, ako cyklocesty / parkovanie."</string>
+    <string name="quest_sidewalk_answer_none">"Nie je tu žiadny chodník"</string>
+    <string name="about_description_donate_google_play2">"Ďakujeme, že zvažujete podporu tejto aplikácie!
+Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazené žiadne linky vedúce k podpore vývoja aplikácie. V tomto kontexte, nie je povolený ani odkaz na domovskú stránku."</string>
+    <string name="link_osmand_description">"Mobilná aplikácia pre online a offline prezeranie mapy a navigáciu"</string>
+    <string name="link_sunders_description">"Mapa kamier a sledovacích zariadení"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Držte sa bližšie k šípke, ale dávajte pozor na premávku!"</string>
 </resources>

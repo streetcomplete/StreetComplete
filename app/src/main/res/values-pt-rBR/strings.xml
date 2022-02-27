@@ -1444,9 +1444,6 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Esse parquinho é acessível publicamente?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Como estão alocados os caminhos de pedestre e ciclovia aqui?"</string>
 
     <!-- Fuzzy -->
@@ -2121,7 +2118,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Qual superfície essa pista esportiva tem?"</string>
-    <string name="quest_bicycle_parking_access_title">"É restrito quem pode estacionar uma bicicleta aqui?"</string>
     <string name="quest_bicycle_parking_fee_title">"Você tem que pagar para estacionar uma bicicleta aqui?"</string>
 
     <!-- Fuzzy -->
@@ -2319,9 +2315,13 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="street_parking_prohibited">"Proibido estacionar"</string>
     <string name="street_stopping_prohibited">"Proibido parar"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
+    <string name="quest_shoulder_title">"Esta via tem um acostamento?"</string>
     <string name="quest_fireHydrant_position_title">"Onde este hidrante está localizado?"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Na calçada"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sim (deixe uma nota)"</string>
+    <string name="quest_shoulder_explanation">"Um acostamento é uma faixa claramente demarcada para paradas de emergência permitindo aos veículos a parada completa com segurança lateralmente à faixa de tráfego, ainda que com superfície não pavimentada (por completo)"</string>
     <string name="quest_sidewalk_value_separate">"mostrado separadamente no mapa"</string>
+    <string name="quest_shoulder_value_yes">"acostamento"</string>
+    <string name="quest_shoulder_value_no">"sem acostamento"</string>
 </resources>

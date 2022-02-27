@@ -1180,9 +1180,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_maxspeed_sign_question">"¿Qué define el límite de velocidad?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"¿Esta zona de recreo es accesible al público?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"¿Cómo están dispuestos aquí el camino peatonal y el carril bici?"</string>
     <string name="dialog_tutorial_upload">"Para subir los cambios manualmente usa este botón en la barra de herramientas."</string>
 
@@ -2021,7 +2018,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_surface_value_artificial_turf">"Césped artificial"</string>
     <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_pitchSurface_title_track">"¿Qué superficie tiene esta pista deportiva?"</string>
-    <string name="quest_bicycle_parking_access_title">"¿Está restringido a ciertas personas el aparcar una bici aquí?"</string>
     <string name="quest_bicycle_parking_fee_title">"¿Hay que pagar para aparcar una bici aquí?"</string>
 
     <!-- Fuzzy -->

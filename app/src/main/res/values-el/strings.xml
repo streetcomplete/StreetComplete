@@ -1470,9 +1470,6 @@
     <string name="quest_maxspeed_sign_question">"Τι καθορίζει το όριο ταχύτητας;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Αυτή η παιδική χαρά είναι προσιτή στο κοινό;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Πώς είναι στρωμένος ο πεζόδρομος και ο ποδηλατόδρομος εδώ;"</string>
 
     <!-- Fuzzy -->
@@ -2130,7 +2127,6 @@
     <string name="quest_surface_value_artificial_turf">"Τεχνητός χλοοτάπητας"</string>
     <string name="quest_surface_value_tartan">"Ταρτάν"</string>
     <string name="quest_pitchSurface_title_track">"Τι επιφάνεια έχει αυτή η αθλητική πίστα; "</string>
-    <string name="quest_bicycle_parking_access_title">"Είναι περιορισμένο ποιος μπορεί να σταθμεύσει ένα ποδήλατο εδώ;"</string>
     <string name="quest_bicycle_parking_fee_title">"Πρέπει να πληρώσετε για να σταθμεύσετε ένα ποδήλατο εδώ;"</string>
 
     <!-- Fuzzy -->

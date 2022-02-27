@@ -192,9 +192,15 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="quest_sport_manySports_confirmation_title">"Heu seleccionat molts esports"</string>
     <string name="quest_busStopShelter_name_title">"La parada de bus %s té marquesina?"</string>
     <string name="quest_toiletsFee_title">"Cal pagar per l'ús dels serveis?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Aquesta parada d'autobús té paviment tàctil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Aquest pas de vianants té paviment tàctil en els dos costats?"</string>
     <string name="quest_source_dialog_title">"Esteu segur que heu comprovat això presencialment?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"La parada d'autobús %s té paviment tàctil?"</string>
     <string name="quest_source_dialog_note">"Només hauríeu d'entrar la informació recollida en expedició de camp"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Aquest pàrquing de bicis és cobert (protegit de la pluja)?"</string>
@@ -546,7 +552,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_sports_centre">"Centre d'esports"</string>
     <string name="quest_buildingType_toilets">"Lavabos"</string>
     <string name="quest_maxspeed_sign_question">"Què defineix el límit de velocitat?"</string>
-    <string name="quest_playground_access_title">"Aquest parc és d'accés públic?"</string>
     <string name="quest_segregated_title">"Com estan separats el carril bici i la vorera?"</string>
     <string name="dialog_tutorial_upload">"Per pujar els vostres canvis manualment, useu el botó a la barra d'eines que és així."</string>
     <string name="quest_segregated_separated">"Segregat l'un de l'altre"</string>
@@ -634,7 +639,11 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Quina és la superfície del camí de vianants aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Aquesta parada de tramvia té paviment tàctil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"La parada de tramvia %s té paviment tàctil?"</string>
     <string name="quest_maxweight_title">"Quin és el límit de pes aquí?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Aquest pes no sembla plausible. Segur que és correcte?"</string>
@@ -995,7 +1004,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <!-- Fuzzy -->
     <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_pitchSurface_title_track">"Quina superfície té aquesta pista d'esports?"</string>
-    <string name="quest_bicycle_parking_access_title">"Està restringit qui pot aparcar una bici aquí?"</string>
     <string name="quest_bicycle_parking_fee_title">"S'ha de pagar per aparcar una bicicleta aquí?"</string>
 
     <!-- Fuzzy -->

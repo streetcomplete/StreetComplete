@@ -1393,9 +1393,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_maxspeed_sign_question">"Mi határozza meg a sebességkorlátozást?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Nyilvánosan használható ez a játszótér?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Hogyan néz ki itt a gyalog- és a kerékpárút?"</string>
 
     <!-- Fuzzy -->
@@ -2271,7 +2268,6 @@ szintek"</string>
     <string name="quest_surface_value_artificial_turf">"Műfű"</string>
     <string name="quest_surface_value_tartan">"Rekortán"</string>
     <string name="quest_pitchSurface_title_track">"Milyen a burkolata ennek a futópályának?"</string>
-    <string name="quest_bicycle_parking_access_title">"Korlátozva van, hogy ki használhatja ezt a kerékpártárolót?"</string>
     <string name="quest_bicycle_parking_fee_title">"Fizetős ez a kerékpártároló?"</string>
 
     <!-- Fuzzy -->
@@ -2547,7 +2543,7 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_openingHours_signed_name_title">"A(z) %s nyitvatartása jelezve van?"</string>
     <string name="quest_openingHours_signed_name_type_title">"A(z) %1$s (%2$s) nyitvatartása jelezve van?"</string>
     <string name="quest_openingHours_signed_no_name_title">"A hely nyitvatartása jelezve van? (%s)"</string>
-    <string name="quest_sidewalk_value_separate">"megjelenítés külön a térképen"</string>
+    <string name="quest_sidewalk_value_separate">"a térképen külön szerepel"</string>
     <string name="quest_shoulder_value_yes">"leállósáv"</string>
     <string name="quest_shoulder_value_no">"nincs leállíósáv"</string>
     <string name="no_camera_permission_warning_title">"Kamera engedély"</string>
@@ -2560,4 +2556,5 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="ar_core_tracking_error_excessive_motion">"Túl sok mozgás"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Elégtelen vizuális jellemzők"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"A kamerát egy másik alkalmazás használja"</string>
+    <string name="link_osmand_description">"Telefonos app online és offline térpépböngészéshez és navigációhoz"</string>
 </resources>

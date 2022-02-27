@@ -199,9 +199,15 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_sport_manySports_confirmation_title">"Hai selezionato molti sport"</string>
     <string name="quest_busStopShelter_name_title">"La fermata dell'autobus %s ha una pensilina?"</string>
     <string name="quest_toiletsFee_title">"Questi servizi igienici sono a pagamento?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Questa fermata dell'autobus ha un pavimento tattile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Questo attraversamento pedonale ha un'indicazione tattile su entrambi i lati?"</string>
     <string name="quest_source_dialog_title">"Hai controllato questa cosa sul posto?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"La fermata dell'autobus %s ha un pavimento tattile?"</string>
     <string name="quest_source_dialog_note">"Andrebbero inserite solo informazioni verificate sul posto."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Questo parcheggio per biciclette è al coperto (protetto dalla pioggia)?"</string>
@@ -567,7 +573,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingType_sports_centre">"Centro sportivo"</string>
     <string name="quest_buildingType_toilets">"Servizi igienici"</string>
     <string name="quest_maxspeed_sign_question">"Cosa indica il limite di velocità?"</string>
-    <string name="quest_playground_access_title">"Il parco giochi è accessibile a tutti?"</string>
     <string name="quest_segregated_title">"Come sono disposte  le corsie pedonali e ciclabili?"</string>
     <string name="dialog_tutorial_upload">"Per caricare manualmente le tue modifiche, usa il pulsante simile a questo nella barra degli strumenti."</string>
     <string name="quest_segregated_separated">"Separati tra loro"</string>
@@ -656,7 +661,11 @@ Suddividere?"</string>
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Qual è la superficie di questo passaggio pedonale?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"I servizi igienici in %s sono accessibili con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Questa fermata del tram ha un pavimento tattile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"La fermata di tram %s ha il pavimento tattile?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra improbabile. Sei sicuro sia corretto?"</string>
@@ -1029,7 +1038,6 @@ riconoscimento"</string>
     <string name="quest_surface_value_artificial_turf">"Erba sintetica"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Qual è la superficie di questa pista sportiva?"</string>
-    <string name="quest_bicycle_parking_access_title">"Il parcheggio bici qui è riservato?"</string>
     <string name="quest_bicycle_parking_fee_title">"Si paga per parcheggiare la bici qua?"</string>
 
     <!-- Fuzzy -->
@@ -1315,12 +1323,24 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="ar_core_tracking_error_bad_state">"Qualcosa è andato storto. Prova a far ripartire la misurazione."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Troppo buio"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Troppo movimento"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Caratteristiche visive insufficienti in questa zona"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"La fotocamera è in uso da un'altra applicazione"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Supporto per il manubrio"</string>
     <string name="quest_bicycle_parking_access_title2">"Chi può parcheggiare una bici qui? Il parcheggio può essere sia libero che a pagamento."</string>
     <string name="quest_playground_access_title2">"Chi può usare questo parco giochi?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Dove si trova questo idrante? (numero di riferimento: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Segnalare la mancanza di un marciapiede"</string>
+    <string name="quest_side_select_interface_explanation">"Tocca su un lato e seleziona la risposta corretta.
+Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="ar_measure">"Misura"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Angolazione troppo inclinata, prova a fare qualche passo indietro"</string>
     <string name="default_disabled_msg_no_ar">"Hai bisogno di un metro per risolvere questa missione perchè la misura tramite fotocamera non è supportata da questo dispositivo."</string>
     <string name="quest_cycleway_width_title">"Qual è la larghezza della ciclabile qui?"</string>
     <string name="quest_road_width_title">"Qual è la larghezza della strada qui?"</string>
+    <string name="quest_road_width_explanation">"Larghezza della strada da un bordo del marciapiede all'altro: Sono inclusi tutti gli elementi presenti sulla carreggiata, come i parcheggi lungo la strada e le corsie ciclabili, sono invece esclusi tutti gli elementi al di fuori della carreggiata, come le piste ciclabili e i parcheggi fuori la carreggiata."</string>
     <string name="quest_sidewalk_answer_none">"Nessun marciapiede"</string>
+    <string name="about_description_donate_google_play2">"Grazie per aver pensato di supportare questa app!
+Sfortunatamente le policy del Google Play Store non permettono di avere link di donazioni interni alla app. In questo caso anche il link al nostro progetto non è permesso."</string>
+    <string name="link_osmand_description">"App per visualizzazione mappe e navigazione sia online che offline"</string>
+    <string name="link_sunders_description">"Una mappa che mostra le telecamere e i dispositivi di sorveglianza"</string>
 </resources>

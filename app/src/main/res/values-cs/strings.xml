@@ -1384,9 +1384,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_maxspeed_sign_question">"Jakým způsobem je maximální rychlost určena?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Je toto hřiště veřejně přístupné?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Jakým způsobem je na tomto chodníku začleněna cyklostezka?"</string>
 
     <!-- Fuzzy -->
@@ -2291,7 +2288,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_surface_value_artificial_turf">"Umělý trávník"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Jaký povrch má tato sportovní dráha?"</string>
-    <string name="quest_bicycle_parking_access_title">"Je nějak omezeno, kdo zde může parkovat kolo?"</string>
     <string name="quest_bicycle_parking_fee_title">"Je zde potřeba platit za parkování kola?"</string>
 
     <!-- Fuzzy -->
@@ -2615,6 +2611,9 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_road_width_title">"Jaká je zde šířka této cesty?"</string>
     <string name="quest_road_width_explanation">"Šířka cesty od obrubníku k obrubníku: Toto zahrnuje cokoliv na povrchu cesty jako jsou parkovací místa na cestě nebo pruhy pro cyklisty, ale vylučuje cokoli mimo cestu, jako jsou cyklostezky nebo parkování."</string>
     <string name="quest_sidewalk_answer_none">"Není tu žádný chodník"</string>
-    <string name="about_description_donate_google_play">"Děkujeme, že zvažujete podporu této aplikace!
-Vzhledem k pravidlům v Google Play Store nelze v aplikacích zobrazit darovací odkazy, ale všechny informace o tomto projektu, včetně toho jak sponzorovat vývoj této aplikace, najdete na našich stránkách:"</string>
+    <string name="about_description_donate_google_play2">"Děkujeme, že zvažujete podporu této aplikace!
+Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazovat žádné odkazy vedoucí k darům pro vývojáře.Proto není povolen ani odkaz na domovskou stránku našeho projektu."</string>
+    <string name="link_osmand_description">"Mobilní aplikace pro online a offline zobrazení map a navigaci"</string>
+    <string name="link_sunders_description">"Mapa kamer a sledovacích zařízení"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Držte se blíže k šipce, ale dávejte pozor na provoz!"</string>
 </resources>

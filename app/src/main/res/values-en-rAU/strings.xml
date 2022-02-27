@@ -10,7 +10,9 @@
     <string name="quest_address_unusualHousenumber_confirmation_description">"This street address looks very unusual."</string>
     <string name="quest_sport_australian_football">"Australian rules football"</string>
     <string name="quest_toiletsFee_title">"Do you have to pay to use this toilet?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crossing have tactile pavings on both sides?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_crosswalk">"Does this crossing have tactile paving on both sides?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
     <string name="quest_toiletAvailability_name_title">"Does %s have a toilet?"</string>
     <string name="quest_address_answer_house_name">"No street address number but a name…"</string>
@@ -34,8 +36,12 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no footpath on either side. In the case that there is a footpath after all but it is displayed as a separate way, please answer \"footpath\"."</string>
     <string name="label_housenumber">"street address number"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Is the toilet at %s wheelchair accessible?"</string>
-    <string name="quest_tactilePaving_title_tram">"Does this tram stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"Does the tram stop %s have tactile pavings?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_tram">"Does this tram stop have tactile paving?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_tram">"Does the tram stop %s have tactile paving?"</string>
     <string name="at_housenumber">"street address number %s:"</string>
     <string name="quest_openingHours_add_off_days">"Add closed days"</string>
     <string name="quest_openingHours_off_day">"Closed"</string>

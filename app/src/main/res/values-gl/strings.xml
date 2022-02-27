@@ -191,9 +191,15 @@ A información engadida inclúese de xeito directo no OpenStreetMap no teu nome 
     <string name="quest_sport_manySports_confirmation_title">"Escolliches moitos deportes"</string>
     <string name="quest_busStopShelter_name_title">"A paraxe do bus %s ten marquesiña?"</string>
     <string name="quest_toiletsFee_title">"Hai que pagar para usar este aseo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Esta paraxe do bus ten pavimento táctil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Este paso de peóns ten pavimento táctil nas dúas beiras?"</string>
     <string name="quest_source_dialog_title">"Comprobáchelo ti mesmo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"A paraxe do bus %s ten pavimento táctil?"</string>
     <string name="quest_source_dialog_note">"Só deberías engadir información que coñezas de primeira man."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"O aparcadoiro das bicicletas está cuberto (protexido da choiva)?"</string>
@@ -539,7 +545,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_sports_centre">"Complexo deportivo"</string>
     <string name="quest_buildingType_toilets">"Servizos"</string>
     <string name="quest_maxspeed_sign_question">"Que define o límite de velocidade?"</string>
-    <string name="quest_playground_access_title">"Esta zona de lecer é accesíbel ó público?"</string>
     <string name="quest_segregated_title">"De que xeito están dispostos aquí a senda peonil e maila senda ciclista?"</string>
     <string name="dialog_tutorial_upload">"Para subi-las mudanzas de xeito manual, emprega o botón na barra das ferramentas semellante a este."</string>
     <string name="quest_segregated_separated">"Separado un doutro"</string>
@@ -624,7 +629,11 @@ Queres dividila agora?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Estas son divisións dabondo. Sempre pode dividirse a vía aínda máis despois."</string>
     <string name="quest_footwayPartSurface_title">"Cal é a superficie da senda peonil aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"É o baño de %s accesíbel para cadeiras de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Esta paraxe do tranvía ten pavimento táctil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"A paraxe do tranvía %s ten pavimento táctil?"</string>
     <string name="quest_maxweight_title">"Cal é o límite de peso aquí?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso non parece estar ben. Estás na certeza de que é correcto?"</string>
@@ -956,7 +965,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_surface_value_artificial_turf">"Céspede artificial"</string>
     <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_pitchSurface_title_track">"Que superficie ten esta pista deportiva?"</string>
-    <string name="quest_bicycle_parking_access_title">"Está restrinxido quen pode aparcar unha bicicleta aquí?"</string>
     <string name="quest_bicycle_parking_fee_title">"Tes que pagar para aparcar unha bicicleta aquí?"</string>
 
     <!-- Fuzzy -->

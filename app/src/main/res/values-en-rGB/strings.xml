@@ -54,9 +54,7 @@
     <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_repository">"Source Repository"</string>
+    <string name="about_title_repository">"Project Home"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
     <string name="about_title_feedback">"Give Feedback"</string>
@@ -193,10 +191,16 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
     <string name="quest_busStopShelter_name_title">"Is there a shelter at the bus stop %s?"</string>
     <string name="quest_toiletsFee_title">"Do you have to pay to use this toilet?"</string>
-    <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this pedestrian crossing have tactile pavings on both sides?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile paving?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_crosswalk">"Does this pedestrian crossing have tactile paving on both sides?"</string>
     <string name="quest_source_dialog_title">"Are you sure you checked this on-site?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile pavings?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile paving?"</string>
     <string name="quest_source_dialog_note">"Only information that was found on a survey should be entered."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">"Don’t show again for this session"</string>
@@ -539,7 +543,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_sports_centre">"Sports centre"</string>
     <string name="quest_buildingType_toilets">"Toilets"</string>
     <string name="quest_maxspeed_sign_question">"What defines the speed limit?"</string>
-    <string name="quest_playground_access_title">"Is this playground publicly accessible?"</string>
     <string name="quest_segregated_title">"How is the footpath and bike path laid out here?"</string>
     <string name="dialog_tutorial_upload">"To upload your changes manually, use the button in the toolbar that looks like this."</string>
     <string name="quest_segregated_separated">"Segregated from one another"</string>
@@ -611,9 +614,7 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_ferry_motor_vehicle_title">"Does this ferry route transport motor vehicles?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adding a photo will make the note much more useful."</string>
     <string name="quest_postboxCollectionTimes_name_title">"What are the collection times of this %s postbox?"</string>
-
-    <!-- Fuzzy -->
-    <string name="create_new_note_hint">"Best write the note in the locally spoken language or otherwise in English."</string>
+    <string name="create_new_note_hint">"Ideally, write the note in the locally spoken language, or otherwise in English."</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
     <string name="quest_leaf_type_broadleaved">"Broadleaved"</string>
@@ -627,8 +628,12 @@ Split it now?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"There are quite a few splits. You can always further split up the way later."</string>
     <string name="quest_footwayPartSurface_title">"What’s the surface of the footpath here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Is the toilet at %s wheelchair accessible?"</string>
-    <string name="quest_tactilePaving_title_tram">"Does this tram stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"Does the tram stop %s have tactile pavings?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_tram">"Does this tram stop have tactile paving?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_tram">"Does the tram stop %s have tactile paving?"</string>
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"This weight looks implausible. Are you sure that it is correct?"</string>
     <string name="quest_maxweight_answer_other_sign">"Sign looks different…"</string>
@@ -952,14 +957,9 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_surface_value_clay">"Clay court"</string>
     <string name="quest_surface_value_artificial_turf">"Astroturf"</string>
     <string name="quest_surface_value_tartan">"Tartan Track"</string>
-    <string name="quest_pitchSurface_title_track">"What is the surface of this running track?"</string>
-
-    <!-- It's not what type of bikes e.g. tandem, unicycle, but who (customers, private etc) -->
-    <string name="quest_bicycle_parking_access_title">"Is it restricted who may park a bike here?"</string>
+    <string name="quest_pitchSurface_title_track">"What is the surface of this sports track?"</string>
     <string name="quest_bicycle_parking_fee_title">"Is there a fee to park bikes here?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_house_description2">"not detached house"</string>
+    <string name="quest_buildingType_house_description2">"not detached single-family home, e.g. a single row house"</string>
     <string name="quest_drinking_water_title">"Is the water safe to drink here? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
@@ -1235,8 +1235,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_playground_access_title2">"Who is allowed to use this playground?"</string>
     <string name="quest_fireHydrant_position_ref_title">"Where is this fire hydrant located? (reference number: %s)"</string>
     <string name="quest_sidewalk_answer_none_title">"Selecting that pavements are missing"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_side_select_interface_explanation">"Tap one side and select the matching answer.
 Do the same for the other side if present."</string>
     <string name="ar_measure">"Measure"</string>
@@ -1246,6 +1244,9 @@ Do the same for the other side if present."</string>
     <string name="quest_road_width_title">"What’s the width of this road here?"</string>
     <string name="quest_road_width_explanation">"The carriageway width from kerb to kerb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the carriageway."</string>
     <string name="quest_sidewalk_answer_none">"No pavement at all"</string>
-    <string name="about_description_donate_google_play">"Thank you for considering to support this app!
-Due to a Google Play Store policy, the donation links may not be displayed in-app, but you will find any information regarding this project, including how to sponsor this app’s development, in its home:"</string>
+    <string name="about_description_donate_google_play2">"Thank you for considering supporting this app!
+Unfortunately, due to a Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
+    <string name="link_osmand_description">"Mobile app for online and offline map viewing and navigation"</string>
+    <string name="link_sunders_description">"A map of cameras and surveillance equipment"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Keep closer to the arrow but watch out for traffic!"</string>
 </resources>

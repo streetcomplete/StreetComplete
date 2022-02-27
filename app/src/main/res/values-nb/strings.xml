@@ -1255,9 +1255,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_maxspeed_sign_question">"Hva definerer fartsgrensen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Er lekeplassen offentlig tilgjengelig?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Hvordan er gang- og sykkelveien organisert her?"</string>
 
     <!-- Fuzzy -->
@@ -1463,7 +1460,11 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Er toalettet på %s tilgjengelig med rullestol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Har trikkestoppet ledelinjer for blinde i asfalten?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Har trikkestoppet %s ledelinjer for blinde i asfalten?"</string>
     <string name="quest_maxweight_title">"Maksimal tillatt vekt?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Vekten virker usannsynlig. Er du sikker på at det er riktig?"</string>
@@ -1841,7 +1842,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgress"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Hva slags underlag har denne banen?"</string>
-    <string name="quest_bicycle_parking_access_title">"Er det begrenset hvem som kan parkere sykkel her?"</string>
     <string name="quest_bicycle_parking_fee_title">"Må du betale for å parkere sykkel her?"</string>
 
     <!-- Fuzzy -->

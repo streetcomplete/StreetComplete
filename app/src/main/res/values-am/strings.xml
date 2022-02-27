@@ -198,9 +198,15 @@
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"የአውቶቡስ ማቆሚያ %s መጠለያ አለው?"</string>
     <string name="quest_toiletsFee_title">"ይህንን የመጸዳጃ ክፍል ለመጠቀም መክፈል አለብዎት?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"ይህ የአውቶቡስ ማቆሚያ የሚነካ ንጣፍ አለው?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"ይህ የእግረኛ መሻገሪያ በሁለቱም በኩል ንጣፍ አለው?"</string>
     <string name="quest_source_dialog_title">"እርግጠኛ ነዎት ይህንን በቦታው ላይ እንዳረጋገጡት?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"የአውቶቡስ ማቆሚያ %s የሚነካ ንጣፍ አለው?"</string>
     <string name="quest_source_dialog_note">"በዳሰሳ ጥናት ላይ የተገኘ መረጃ ብቻ መግባት አለበት ፡፡"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"ይህ የብስክሌት መኪና ማቆሚያ (ከዝናብ የተጠበቀ) ነው?"</string>
@@ -554,7 +560,6 @@
     <string name="quest_buildingType_sports_centre">"የስፖርት ማዕከል"</string>
     <string name="quest_buildingType_toilets">"መጸዳጃ ቤቶች"</string>
     <string name="quest_maxspeed_sign_question">"የፍጥነት ገደቡን በምን ይገልጻል?"</string>
-    <string name="quest_playground_access_title">"ይህ የመጫወቻ ስፍራ በይፋ ተደራሽ ነው?"</string>
     <string name="quest_segregated_title">"የእግረኛ መንገድ እና ዑደት እንዴት እዚህ ተዘርግቷል?"</string>
     <string name="dialog_tutorial_upload">"ለውጦችዎን በእጅ ለመስቀል ፣ በሚመስል የመሳሪያ አሞሌ ውስጥ ያለውን አዝራር ይጠቀሙ።"</string>
     <string name="quest_segregated_separated">"አንዱ ከሌላው ተለያይቷል"</string>
@@ -645,7 +650,11 @@
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"እዚህ የእግረኛ መንገዱ ገጽ ምንድነው?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"መጸዳጃ ቤቱ በ%s ተሽከርካሪ ወንበር ላይ ተደራሽ ነው?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"ይህ የጎዳና ላይ መቆሚያ የሚነካ ንጣፍ አለው?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"የመንገድ ላይ መኪናው%s ን የሚነካ ንጣፍ አለው?"</string>
     <string name="quest_maxweight_title">"እዚህ የክብደት ወሰን ስንትነዉ?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"ይህ ክብደት የማይታሰብ ይመስላል። ትክክል መሆኑን እርግጠኛ ነዎት?"</string>
@@ -1023,7 +1032,6 @@
     <string name="quest_surface_value_artificial_turf">"ሰው ሰራሽ ድንበር"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"ይህ የስፖርት ትራክ ምን ገጽ አለው?"</string>
-    <string name="quest_bicycle_parking_access_title">"ማን እዚህ ብስክሌት ሊያቆም ይችላል ወይስ የተከለከለ ነው?"</string>
     <string name="quest_bicycle_parking_fee_title">"እዚህ ብስክሌት ለማቆም መክፈል አለብዎት?"</string>
 
     <!-- Fuzzy -->

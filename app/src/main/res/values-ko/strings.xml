@@ -1336,9 +1336,6 @@
     <string name="quest_maxspeed_sign_question">"속도 제한이 어떻게 정해져있나요?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"이 놀이터는 공용인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"여기에 인도와 자전거 도로가 어떻게 놓여 있나요?"</string>
 
     <!-- Fuzzy -->
@@ -1529,7 +1526,11 @@
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"이 보도의 포장재가 무엇인가요?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"%s의 화장실을 휠체어로 이용할 수 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"이 트램 정류장에 점자 타일이 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"트램 정류장 %s에 점자 타일이 있나요?"</string>
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마인가요?"</string>
 
@@ -1967,7 +1968,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_surface_value_artificial_turf">"인조잔디"</string>
     <string name="quest_surface_value_tartan">"타탄"</string>
     <string name="quest_pitchSurface_title_track">"이 스포츠 트랙의 포장재는 무엇인가요?"</string>
-    <string name="quest_bicycle_parking_access_title">"이곳에 자전거를 주차하는 데 제한이 있나요?"</string>
     <string name="quest_bicycle_parking_fee_title">"이곳에 자전거 주차 요금이 있나요?"</string>
 
     <!-- Fuzzy -->

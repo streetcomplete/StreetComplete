@@ -1463,9 +1463,6 @@
     <string name="quest_maxspeed_sign_question">"速度限制是由什麼介定的？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"這個遊樂設施對公衆開放嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"這裡的人行道和自行車道是如何編排的？"</string>
 
     <!-- Fuzzy -->
@@ -2111,7 +2108,6 @@
     <string name="quest_surface_value_artificial_turf">"人工草皮"</string>
     <string name="quest_surface_value_tartan">"PU表面"</string>
     <string name="quest_pitchSurface_title_track">"這運動跑道表面材質是什麼？"</string>
-    <string name="quest_bicycle_parking_access_title">"請問這裡有限制不能停腳踏車嗎？"</string>
     <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
 
     <!-- Fuzzy -->

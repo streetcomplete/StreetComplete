@@ -193,9 +193,15 @@
     <string name="quest_sport_manySports_confirmation_title">"لقد اخترت العديد من الألعاب الرياضية"</string>
     <string name="quest_busStopShelter_name_title">"هل موقف الحافلات %s هو موقف مظلّل؟"</string>
     <string name="quest_toiletsFee_title">"هل عليك أن تدفع مقابل استخدام هذا الحمام؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"هل يحتوي موقف الحافلات هذا على علامات بارزة في الأرض لضعاف البصر؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"هل معبر المشاة هذا يحتوي على علامات بارزة في الأرض لضعاف البصر على كلا الجانبين؟"</string>
     <string name="quest_source_dialog_title">"هل أنت متأكد من أنك تحققت من هذا في الموقع الفعلي؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"هل يحتوي موقف حافلات %s على علامات بارزة في الأرض لضعاف البصر؟"</string>
     <string name="quest_source_dialog_note">"يجب إدخال المعلومات التي تم الحصول عليها في الاستطلاع فقط."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"هل موقف الدراجات هذا مغطى (محمي من الشمس والمطر)؟"</string>
@@ -566,7 +572,6 @@
     <string name="quest_buildingType_sports_centre">"مركز الرياضة"</string>
     <string name="quest_buildingType_toilets">"مراحيض ودورات مياة"</string>
     <string name="quest_maxspeed_sign_question">"ما الذي يحدد السرعة القصوى؟"</string>
-    <string name="quest_playground_access_title">"هل هذا الملعب متاح للجمهور؟"</string>
     <string name="quest_segregated_title">"كيف يتم ترتيب مسارات المشاة والدراجات هنا؟"</string>
     <string name="dialog_tutorial_upload">"لإرسال التغييرات يدويًا، استخدم زر شريط الأدوات الذي يشبه هذا."</string>
     <string name="quest_segregated_separated">"منفصلة عن بعضها البعض"</string>
@@ -655,7 +660,11 @@
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"ما هو سطح طريق المشاة هذا؟"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"هل يمكن الوصول إلى دورة المياه الموجودة في %s بالكرسي المتحرك؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"هل تحتوي محطة الترام هذه على مسار الرصيف البارز للمكفوفين؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"هل يوجد في محطة الترام %s مسار رصيف بارز للمكفوفين؟"</string>
     <string name="quest_maxweight_title">"ما هو الوزن المحدد هنا؟"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"هذا الوزن يبدو بأنه غير واقعي. هل أنت متأكد من أنه صحيحة؟"</string>
@@ -1022,7 +1031,6 @@
     <string name="quest_surface_value_artificial_turf">"عشب صناعي"</string>
     <string name="quest_surface_value_tartan">"ترتان/كروهات"</string>
     <string name="quest_pitchSurface_title_track">"ما هو سطح هذا المجال الرياضي؟"</string>
-    <string name="quest_bicycle_parking_access_title">"هل هناك حد لمن يمكنه ركن الدراجة هنا؟"</string>
     <string name="quest_bicycle_parking_fee_title">"هل عليك أن تدفع مقابل ركن دراجة هنا؟"</string>
 
     <!-- Fuzzy -->

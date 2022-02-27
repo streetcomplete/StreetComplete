@@ -1445,9 +1445,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_maxspeed_sign_question">"Hvad definerer hastighedsgrænsen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Er der offentlig adgang til denne legeplads?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Hvordan er gangsti og cykelsti blevet anlagt her?"</string>
 
     <!-- Fuzzy -->
@@ -2108,7 +2105,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgræs"</string>
     <string name="quest_surface_value_tartan">"Skotskternet"</string>
     <string name="quest_pitchSurface_title_track">"Hvilken overflade har denne sportsbane?"</string>
-    <string name="quest_bicycle_parking_access_title">"Er det begrænset hvem der må parkere en cykel her?"</string>
     <string name="quest_bicycle_parking_fee_title">"Skal man betale for at parkere en cykel her?"</string>
 
     <!-- Fuzzy -->

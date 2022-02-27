@@ -486,6 +486,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"ഇത് നിങ്ങൾ നേരിട്ട് കണ്ട് ഉറപ്പ് വരുത്തിയത് ആണോ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"ബസ്സ്റ്റോപ്പുകളിൽ%s കൃത്യമായ വഴികളുണ്ടോ?"</string>
 
     <!-- Fuzzy -->
@@ -1447,9 +1449,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"എങ്ങനെയാണ് വേഗ പരിധി നിശ്ചയിക്കുന്നത്?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"ഈ കളിസ്ഥലം പൊതുജനത്തിന് ഉപയോഗിക്കാൻ കഴിയുമോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"ഇവിടെ എങ്ങനെയാണ്‌ നടപ്പാതയും സൈക്കിൾ‌പാതയും സ്ഥാപിച്ചിരിക്കുന്നത്?"</string>

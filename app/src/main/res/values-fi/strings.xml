@@ -1144,9 +1144,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_maxspeed_sign_question">"Mikä määrittää nopeusrajoituksen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Onko tämä leikkikenttä julkisesti käytössä?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Miten kevyenliikenteenväylä on jaettu jalankulkijoille ja pyöräilijöille?"</string>
     <string name="dialog_tutorial_upload">"Tallentaaksesi muutoksesi manuaalisesti, käytä viereistä nappia työkalurivillä."</string>
 
@@ -1351,7 +1348,11 @@ Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Onko tämän %s WC pyörätuolilla saavutettavissa?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Onko tällä raitiovaunupysäkillä kosketuspäällyste?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Onko raitiovaunupysäkillä %s kosketuspäällyste?"</string>
 
     <!-- Fuzzy -->
@@ -1954,7 +1955,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_surface_value_artificial_turf">"Tekonurmi"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Mikä pinnoite tällä urheiluradalla on?"</string>
-    <string name="quest_bicycle_parking_access_title">"Onko täällä rajoitettu kuka saa pysäköidä pyöränsä täällä?"</string>
     <string name="quest_bicycle_parking_fee_title">"Maksaako pyörän pysäköiminen tässä?"</string>
 
     <!-- Fuzzy -->

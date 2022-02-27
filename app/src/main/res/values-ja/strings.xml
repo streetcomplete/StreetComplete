@@ -1275,7 +1275,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_name_title2">"%s の速度制限は何ですか?"</string>
     <string name="quest_buildingType_sports_centre">"スポーツセンター"</string>
     <string name="quest_buildingType_toilets">"トイレ"</string>
-    <string name="quest_playground_access_title">"この遊び場は誰でも利用できますか?"</string>
     <string name="quest_segregated_title">"歩道と自転車道はどのように割り当てられていますか?"</string>
     <string name="dialog_tutorial_upload">"手動で変更をアップロードするには、ツールバーにあるこのボタンを使ってください。"</string>
     <string name="quest_segregated_separated">"分離されている"</string>
@@ -1347,7 +1346,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"この歩道の路面は何ですか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"この路面電車の駅には点字ブロックがありますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"路面電車の駅 %s には点字ブロックがありますか?"</string>
     <string name="quest_maxweight_title">"ここの重量制限はいくつですか？"</string>
     <string name="quest_maxweight_answer_other_sign">"違う標識です…"</string>
@@ -1518,7 +1521,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_surface_value_artificial_turf">"人工芝"</string>
     <string name="quest_surface_value_tartan">"全天候型"</string>
     <string name="quest_pitchSurface_title_track">"この競技トラックの表面は何ですか?"</string>
-    <string name="quest_bicycle_parking_access_title">"ここに自転車を止められる人は制限されていますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"有料の駐輪場ですか?"</string>

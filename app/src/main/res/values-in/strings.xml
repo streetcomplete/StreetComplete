@@ -285,9 +285,15 @@ Informasi yang dimasukkan lalu langsung ditambahkan ke OpenStreetMap atas namamu
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Apa perhentian bus %s memiliki tempat teduh?"</string>
     <string name="quest_toiletsFee_title">"Apakah kamar kecil ini bayar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Apakah perhentian bus ini memiliki ubin pemandu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Apakah penyeberangan ini mempunyai ubin pemandu di dua sisi?"</string>
     <string name="quest_source_dialog_title">"Kamu yakin sudah mengecek ini di tempat?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Apa perhentian bus %s ini mempunyai ubin pemandu?"</string>
     <string name="quest_source_dialog_note">"Hanya informasi yang ditemukan di survei yang boleh dimasukkan."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Apakah parkir sepeda ini teduh (dari hujan)?"</string>
@@ -745,7 +751,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_sports_centre">"Pusat olahraga"</string>
     <string name="quest_buildingType_toilets">"Toilet"</string>
     <string name="quest_maxspeed_sign_question">"Apa yang menandai batas kecepatan?"</string>
-    <string name="quest_playground_access_title">"Apakah tempat bermain ini terbuka untuk umum?"</string>
     <string name="quest_segregated_title">"Bagaimana trotoar dan jalan sepeda ditata di sini?"</string>
     <string name="dialog_tutorial_upload">"Untuk mengunggah perubahanmu scr manual, gunakan tombol di toolbar yang terlihat seperti ini."</string>
     <string name="quest_segregated_separated">"Terpisah dari yang lain"</string>
@@ -844,7 +849,11 @@ Pisah sekarang?"</string>
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Apa permukaan jalan kaki di sini?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Apa kamar kecil di %s ramah kursi roda?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Apa perhentian mobil ini memiliki ubin pemandu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Apa perhentian mobil %s memiliki ubin pemandu?"</string>
     <string name="quest_maxweight_title">"Apa batas berat di sini?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Berat ini terlihat tidak wajar. Apa kamu yakin?"</string>

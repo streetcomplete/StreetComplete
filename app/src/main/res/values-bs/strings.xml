@@ -204,9 +204,15 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Ima li autobusna stanica %s zaklon?"</string>
     <string name="quest_toiletsFee_title">"Plaća li se ovaj toalet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Ima li ova autobusna stanica trake vodilje za slijepe?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ima li ovaj pješački prelaz trake vodilje za slijepe na obje strane?"</string>
     <string name="quest_source_dialog_title">"Jeste li sigurni da ste to provjerili na licu mjesta?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Ima li autobusna stanica %s trake vodilje za slijepe?"</string>
     <string name="quest_source_dialog_note">"Treba unositi samo one podatke koji su pronađeni tijekom istraživanja."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je li ovo parkiralište za bicikle natkriveno (zaštićeno od kiše)?"</string>
@@ -561,7 +567,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_sports_centre">"Sportski centar"</string>
     <string name="quest_buildingType_toilets">"Toaleti"</string>
     <string name="quest_maxspeed_sign_question">"Čime je definirano ograničenje brzine?"</string>
-    <string name="quest_playground_access_title">"Je li ovo igralište javno dostupno?"</string>
     <string name="quest_segregated_title">"Kako su ovdje postavljene pješačka i biciklistička staza?"</string>
     <string name="dialog_tutorial_upload">"Da biste ručno poslali odgovore, upotrijebite gumb na alatnoj traci koji izgleda ovako."</string>
     <string name="quest_segregated_separated">"Razdvojeni jedni od drugih"</string>
@@ -655,7 +660,11 @@ Razdvojiti put sada?"</string>
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Kakva je ovdje površina trotoara?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Je li toalet u %s pristupačan za invalidska kolica?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Ima li ova tramvajska stanica trake vodilje za slijepe?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Ima li tramvajska stanica %s trake vodilje za slijepe?"</string>
     <string name="quest_maxweight_title">"Koje je ovdje ograničenje težine?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ta težina izgleda nerealna. Jeste li sigurni da je ispravna?"</string>
@@ -1029,7 +1038,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Kakvu površinu ima ova sportska staza?"</string>
-    <string name="quest_bicycle_parking_access_title">"Tko ovdje smije parkirati bicikl?"</string>
     <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
 
     <!-- Fuzzy -->

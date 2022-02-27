@@ -356,7 +356,11 @@ Girdiğiniz bilgiler başka bir düzenleyici kullanmak zorunda kalmaksızın ad�
 
     <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Bu tuvalet ücretli mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında kabartmalı/hisli kaldırımlar var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Bu yaya geçidinin her iki tarafında da kabartmalı/hisli kaldırımlar var mı?"</string>
     <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
 
@@ -1187,9 +1191,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_maxspeed_sign_question">"Hız sınırını ne belirliyor?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Bu oyun alanı halka açık mı?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Yaya yoluyla bisiklet yolu nasıl ayrılıyor?"</string>
 
     <!-- Fuzzy -->
@@ -1365,7 +1366,11 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Buradaki patikanın yüzeyi nedir?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"%s tuvalet tekerlekli sandalye erişimine uygun mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Bu tramvay durağında kabartmalı/hisli kaldırımlar var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Tramvay durağı %s dokunsal kaldırımlara sahip mi?"</string>
     <string name="quest_maxweight_title">"Buradaki ağırlık sınırı nedir?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Bu ağırlık mantıksız görünüyor. Doğru olduğundan emin misin?"</string>

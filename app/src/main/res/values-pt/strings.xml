@@ -224,9 +224,15 @@ A informação que submeter nesta aplicação é adicionada diretamente ao OpenS
 
     <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Esta casa de banho é de acesso pago?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Esta paragem de autocarro tem pavimento tátil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Esta passadeira tem pavimento tátil em ambas as extremidades?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"A paragem de autocarro %s tem pavimento tátil?"</string>
     <string name="quest_source_dialog_note">"Apenas deve adicionar informação que foi recolhida durante um levantamento no terreno."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Este estacionamento para bicicletas é coberto (protegido da chuva)?"</string>
@@ -684,7 +690,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Casa de banho"</string>
     <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
-    <string name="quest_playground_access_title">"Este parque infantil é de acesso público?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"Esta ciclovia e via pedonal são separadas?"</string>
@@ -785,7 +790,11 @@ Dividir agora?"</string>
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Qual o tipo de superfície desta via pedonal?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"A casa de banho em %s é acessível a cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"A paragem de elétrico tem pavimento tátil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"A paragem de elétrico %s tem pavimento tátil?"</string>
     <string name="quest_maxweight_title">"Qual o limite de peso aqui?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este limite de peso não é plausível. Tem a certeza que está correto?"</string>
@@ -1153,7 +1162,6 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Qual é a superfície desta pista de atletismo?"</string>
-    <string name="quest_bicycle_parking_access_title">"Só algumas pessoas podem estacionar uma bicicleta aqui?"</string>
     <string name="quest_bicycle_parking_fee_title">"Este estacionamento de bicicletas é pago?"</string>
 
     <!-- Fuzzy -->

@@ -203,9 +203,15 @@
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"ป้ายรถเมล์ %s มีหลังคาหรือไม่?"</string>
     <string name="quest_toiletsFee_title">"ห้องน้ำแห่งนี้คิดค่าบริการหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"ป้ายรถประจำทางที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"ทางข้ามที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดทั้งสองข้างหรือไม่?"</string>
     <string name="quest_source_dialog_title">"แน่ใจหรือเปล่าว่าคุณได้ตรวจสอบในสถานที่จริง?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"ป้ายรถประจำทาง %s มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
     <string name="quest_source_dialog_note">"ควรป้อนเฉพาะข้อมูลที่ถูกค้นพบในการสำรวจ"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"ที่จอดรถจักรยานนี้ครอบคลุม (ป้องกันฝน) หรือไม่?"</string>
@@ -559,7 +565,6 @@
     <string name="quest_buildingType_sports_centre">"ศูนย์กีฬา"</string>
     <string name="quest_buildingType_toilets">"ห้องน้ำ"</string>
     <string name="quest_maxspeed_sign_question">"ความเร็วจำกัดถูกกำหนดโดยอะไร?"</string>
-    <string name="quest_playground_access_title">"สนามเด็กเล่นนี้ สาธารณะเข้าถึงได้โหรือไม่?"</string>
     <string name="quest_segregated_title">"ที่นี่มีการวางทางเท้าและทางจักรยานไว้อย่างไรบ้าง?"</string>
     <string name="dialog_tutorial_upload">"ถ้าจะอัปโหลดการเปลี่ยนแปลงด้วยตนเอง ใช้ปุ่มในแถบเครื่องมือที่มีหน้าตาแบบนี้"</string>
     <string name="quest_segregated_separated">"แยกออกจากกัน"</string>
@@ -650,7 +655,11 @@
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"พื้นผิวของทางเท้าที่นี่คืออะไร?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"ห้องน้ำที่ %s เข้าถึงโดยรถเข็นได้หรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"ป้ายรถรางที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"ป้ายรถราง %s มีกระเบื้องปูพื้นนำทางคนตาบอดหรือไม่?"</string>
     <string name="quest_maxweight_title">"ที่นี่จำกัดน้ำหนักเท่าไหร่?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"ค่าน้ำหนักดูไม่น่าเป็นไปได้ คุณแน่ใจไหมว่าถูกต้อง?"</string>
@@ -1024,7 +1033,6 @@
     <string name="quest_surface_value_artificial_turf">"หญ้าเทียม"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"ลานวิ่งนี้มีไฟสว่างหรือไม่?"</string>
-    <string name="quest_bicycle_parking_access_title">"จำกัดผู้จอดจักรยานไหม?"</string>
     <string name="quest_bicycle_parking_fee_title">"มีค่าบริการจอดจักรยานไหม?"</string>
 
     <!-- Fuzzy -->

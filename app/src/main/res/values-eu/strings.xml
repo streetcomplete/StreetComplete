@@ -1464,9 +1464,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_maxspeed_sign_question">"Zerk definitzen du abiadura-muga?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Jolasleku hau irisgarria al da publikoari begira?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Nola dago oinezkoen eta ziklisten bidea antolatuta hemen?"</string>
 
     <!-- Fuzzy -->
@@ -2304,7 +2301,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_surface_value_artificial_turf">"Belar artifiziala"</string>
     <string name="quest_surface_value_tartan">"Tartana"</string>
     <string name="quest_pitchSurface_title_track">"Zein da kirol eremu honetako gainazala?"</string>
-    <string name="quest_bicycle_parking_access_title">"Hemen bizikleta bat nork aparka dezakeen mugatuta al dago?"</string>
     <string name="quest_bicycle_parking_fee_title">"Ordaindu behar al da bizikleta bat hemen aparkatzeko?"</string>
 
     <!-- Fuzzy -->

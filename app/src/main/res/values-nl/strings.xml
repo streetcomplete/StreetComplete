@@ -1442,9 +1442,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_maxspeed_sign_question">"Wat bepaalt de maximumsnelheid?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Is deze speeltuin vrij toegankelijk?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Hoe zijn het voetpad en het fietspad aangelegd?"</string>
 
     <!-- Fuzzy -->
@@ -2321,7 +2318,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat het g
     <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Welk oppervlak heeft deze sportbaan?"</string>
-    <string name="quest_bicycle_parking_access_title">"Is er een beperking wie hier een fiets mag parkeren?"</string>
     <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om een fiets te parkeren?"</string>
 
     <!-- Fuzzy -->
@@ -2615,4 +2611,8 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="ar_core_tracking_error_excessive_motion">"Te veel beweging"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Onvoldoende zichtbare elementen hier"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Camera wordt door een andere app gebruikt"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Stuurhouder"</string>
+    <string name="quest_bicycle_parking_access_title2">"Wie mag hier een fiets stallen? Parkeren kan gratis of betaald zijn."</string>
+    <string name="quest_playground_access_title2">"Wie mag deze speeltuin gebruiken?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Waar staat deze brandkraan? (referentienummer: %s) "</string>
 </resources>

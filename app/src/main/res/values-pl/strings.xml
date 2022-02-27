@@ -1027,9 +1027,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_maxspeed_sign_question">"Jaka jest tutaj prędkość?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Czy ten plac zabaw jest publicznie dostępny?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Jaki jest tutaj układ chodnika i drogi rowerowej?"</string>
 
     <!-- Fuzzy -->
@@ -1859,7 +1856,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="quest_surface_value_artificial_turf">"Sztuczna trawa"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Jaką nawierzchnię ma ta droga rekreacyjna?"</string>
-    <string name="quest_bicycle_parking_access_title">"Czy parkować rower mogą tutaj jedynie określone osoby?"</string>
     <string name="quest_bicycle_parking_fee_title">"Czy parkując tutaj rower, musisz uiścić opłatę?"</string>
 
     <!-- https://github.com/streetcomplete/StreetComplete/issues/2572 -->
@@ -2164,6 +2160,4 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_road_width_title">"Jaka jest szerokość tej drogi?"</string>
     <string name="quest_road_width_explanation">"Szerokość jezdni między krawędziami np. krawężnikami, liczona włącznie z pasami do parkowania i rowerowymi, za to bez oddzielonych ścieżek rowerowych, zatoczek parkingowych i chodników."</string>
     <string name="quest_sidewalk_answer_none">"Nie ma chodnika"</string>
-    <string name="about_description_donate_google_play">"Dziękujemy za chęć wsparcia rozwoju Street Complete!
-Ze względu na zasady sklepu Google Play linki do wpłat nie mogą być wyświetlane wewnątrz programu. Na stronie głównej znajdują się wszystkie informacje dotyczące projektu, w tym instrukcja wsparcia finansowego:"</string>
 </resources>

@@ -203,9 +203,15 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Ima li autobusna stanica %s zaklon?"</string>
     <string name="quest_toiletsFee_title">"Plaća li se ovaj toalet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Ima li ova autobusna stanica trake vodilje za slijepe?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ima li ovaj pješački prelaz trake vodilje za slijepe na obje strane?"</string>
     <string name="quest_source_dialog_title">"Jeste li sigurni da ste to provjerili na licu mjesta?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Ima li autobusna stanica %s trake vodilje za slijepe?"</string>
     <string name="quest_source_dialog_note">"Treba unositi samo one podatke koji su pronađeni tijekom istraživanja."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je li ovo parkiralište za bicikle natkriveno (zaštićeno od kiše)?"</string>
@@ -584,7 +590,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_sports_centre">"Sportski centar"</string>
     <string name="quest_buildingType_toilets">"Toaleti"</string>
     <string name="quest_maxspeed_sign_question">"Čime je definirano ograničenje brzine?"</string>
-    <string name="quest_playground_access_title">"Je li ovo igralište javno dostupno?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"Kako su ovdje postavljene pješačka i biciklistička staza?"</string>
@@ -689,7 +694,11 @@ Razdvojiti put sada?"</string>
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Kakvu površinu ima ovaj dio nogostupa?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Je li toalet u %s pristupačan za invalidska kolica?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Ima li ova tramvajska stanica trake vodilje za slijepe?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Ima li tramvajska stanica %s trake vodilje za slijepe?"</string>
     <string name="quest_maxweight_title">"Koje je ovdje ograničenje težine?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ta težina izgleda nerealna. Jeste li sigurni da je ispravna?"</string>
@@ -1075,7 +1084,6 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Kakvu površinu ima ova sportska staza?"</string>
-    <string name="quest_bicycle_parking_access_title">"Tko ovdje smije parkirati bicikl?"</string>
     <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
 
     <!-- Fuzzy -->
@@ -1576,6 +1584,11 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Širina ceste od rubnika do rubnika: ovo uključuje sve na površini ulice poput parkinga na ulici ili biciklističkih traka, ali isključuje sve izvan nje, poput biciklističkih staza ili parkinga pored ceste."</string>
     <string name="quest_sidewalk_answer_none">"Uopće nema nogostupa"</string>
-    <string name="about_description_donate_google_play">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju!
-Zbog pravila Google Trgovine Play, poveznice na donacije ne smiju biti prikazane u aplikaciji, ali sve informacije u vezi s ovim projektom, uključujući kako sponzorirati razvoj ove aplikacije, možete pronaći na njenoj internetskoj stranici:"</string>
+    <string name="about_description_donate_google_play2">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju!
+Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju biti prikazane u aplikaciji. U tom kontekstu, čak niti direktna poveznica na našu internetsku stranicu nije dopuštena ovdje."</string>
+
+    <!-- Fuzzy -->
+    <string name="link_osmand_description">"Mobilna aplikacija za navigaciju i pregled karte (online i offline)"</string>
+    <string name="link_sunders_description">"Karta nadzornih kamera"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Držite se bliže strelici, ali pripazite na promet!"</string>
 </resources>

@@ -193,9 +193,15 @@
     <string name="quest_sport_manySports_confirmation_title">"Одабрали сте много спортова"</string>
     <string name="quest_busStopShelter_name_title">"Да ли аутобуска станица %s има заклон?"</string>
     <string name="quest_toiletsFee_title">"Плаћа ли се овај тоалет?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Да ли ова аутобуска станица има траке водиље за слепе?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Да ли овај пешачки прелаз са обе стране има траке водиље за слепе?"</string>
     <string name="quest_source_dialog_title">"Да ли сте сигурни да сте ово проверили на лицу места?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Да ли аутобуска станица %s има траке водиље за слепе?"</string>
     <string name="quest_source_dialog_note">"Унесите само информације установљене приликом провере."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Да ли је овај паркинг за бицикле наткривен (заштићен од кише)?"</string>
@@ -545,7 +551,6 @@
     <string name="quest_buildingType_sports_centre">"Спортски центар"</string>
     <string name="quest_buildingType_toilets">"Тоалети"</string>
     <string name="quest_maxspeed_sign_question">"Шта одређује ограничење брзине?"</string>
-    <string name="quest_playground_access_title">"Да ли је ово игралиште јавно доступно?"</string>
     <string name="quest_segregated_title">"Како су овде постављене пешачка и бициклистичка стаза?"</string>
     <string name="dialog_tutorial_upload">"Да би ручно послали измене, користите дугме које изгледа овако."</string>
     <string name="quest_segregated_separated">"Одвојени једни од других"</string>
@@ -633,7 +638,11 @@
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Каква је овде површина тротоара?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Да ли је тоалет у %s доступан за инвалидска колица?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Да ли ова трамвајска станица има траке водиље за слепе?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Да ли трамвајска станица %s има траке водиље за слепе?"</string>
     <string name="quest_maxweight_title">"Које је овде ограничење тежине?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ова тежина изгледа нереално. Да ли сте сигурни да је исправна?"</string>
@@ -1001,7 +1010,6 @@
     <string name="quest_surface_value_artificial_turf">"Вештачка трава"</string>
     <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_pitchSurface_title_track">"Каква је подлога на овој спортској стази?"</string>
-    <string name="quest_bicycle_parking_access_title">"Да ли се ограничава ко сме да паркира бицикл?"</string>
     <string name="quest_bicycle_parking_fee_title">"Да ли је потребно да платите како бисте паркирали бицикл?"</string>
 
     <!-- Fuzzy -->

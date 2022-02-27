@@ -232,9 +232,15 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus %s a-t-il un abri ?"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il un revêtement podotactile ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il un revêtement podotactile des deux côtés ?"</string>
     <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifié cela sur place ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus %s a-t-il un revêtement podotactile ?"</string>
     <string name="quest_source_dialog_note">"Seules des informations relevées sur place devraient être saisies."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélos est-il couvert (protégé de la pluie) ?"</string>
@@ -639,7 +645,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_sports_centre">"Centre sportif"</string>
     <string name="quest_buildingType_toilets">"Toilettes"</string>
     <string name="quest_maxspeed_sign_question">"Qu’est-ce qui indique la limite de vitesse ?"</string>
-    <string name="quest_playground_access_title">"Cette aire de jeu est-elle accessible au public ?"</string>
     <string name="quest_segregated_title">"Comment sont aménagées les voies piétonnes et cyclables ici ?"</string>
     <string name="dialog_tutorial_upload">"Pour envoyer vos modifications manuellement, utilisez le bouton de la barre d’outils qui ressemble à ceci."</string>
     <string name="quest_segregated_separated">"Séparés l’un de l’autre"</string>
@@ -740,7 +745,11 @@ Découper maintenant ?"</string>
     <!-- Je pense que le terme "surface" est trop ambigu : je trouve que "revêtement" est mieux. -->
     <string name="quest_footwayPartSurface_title">"Quel est le revêtement du chemin piéton ici ?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Les toilettes de %s sont-elles accessibles en fauteuil roulant ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Cet arrêt de tramway a-t-il un revêtement podotactile ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"L’arrêt de tramway %s a-t-il un revêtement podotactile ?"</string>
     <string name="quest_maxweight_title">"Quelle est la limite de poids ici ?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ce poids semble invraisemblable. Êtes-vous sûr qu’il est correct ?"</string>
@@ -1133,7 +1142,6 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_surface_value_artificial_turf">"Gazon synthétique"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Quelle est la surface de ce terrain de sport ?"</string>
-    <string name="quest_bicycle_parking_access_title">"Qui peut garer un vélo ici ?"</string>
     <string name="quest_bicycle_parking_fee_title">"Doit-on payer pour garer son vélo ici ?"</string>
 
     <!-- Fuzzy -->
@@ -1471,6 +1479,6 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"La taille de la route de bord à bord : ceci inclut tout ce qui se trouve sur la surface de la rue comme les emplacements de stationnement et les bandes cyclables, mais exclut tout ce qui se trouve au delà, comme les pistes cyclables ou les places de parking."</string>
     <string name="quest_sidewalk_answer_none">"Pas de trottoir du tout"</string>
-    <string name="about_description_donate_google_play">"Merci de vouloir donner pour supporter cette application !
-Malheureusement, les conditions d’utilisation du Google Play Store ne nous permettent pas d’afficher le lien de don dans l’application. Vous pouvez trouver toutes les informations sur ce projet, y compris les moyens de soutenir le développement de cette application, sur le site :"</string>
+    <string name="link_osmand_description">"Application mobile pour la visualisation de carte et la navigation, hors ligne ou en ligne"</string>
+    <string name="link_sunders_description">"Une carte des caméras et équipements de surveillance"</string>
 </resources>

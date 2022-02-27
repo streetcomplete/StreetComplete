@@ -1416,9 +1416,6 @@
     <string name="quest_maxspeed_sign_question">"محدودیت سرعت چگونه مشخص شده است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"آیا این زمین بازی عمومی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"پیاده‌رو و خط دوچرخه چگونه در اینجا ساخته شده است؟"</string>
 
     <!-- Fuzzy -->
@@ -2284,7 +2281,6 @@
     <string name="quest_surface_value_artificial_turf">"چمن مصنوعی"</string>
     <string name="quest_surface_value_tartan">"شطرنجی"</string>
     <string name="quest_pitchSurface_title_track">"جنس سطح این میدان ورزشی چیست؟"</string>
-    <string name="quest_bicycle_parking_access_title">"آیا برای کسی که اینجا دوچرخه پارک می‌کند محدودیتی هست؟"</string>
     <string name="quest_bicycle_parking_fee_title">"برای پارک دوچرخه در اینجا باید هزینه پرداخت کرد؟"</string>
 
     <!-- Fuzzy -->
@@ -2598,6 +2594,4 @@
     <string name="quest_road_width_title">"پهنای این جاده اینجا چقدر است؟"</string>
     <string name="quest_road_width_explanation">"عرض جاده از حاشیه به حاشیه: این شامل هر چیزی در سطح خیابان مانند پارکینگ در خیابان یا خطوط دوچرخه است، اما هر چیزی فراتر از آن مانند مسیرهای دوچرخه‌سواری یا پارک در کنار جاده را حذف می‌کند."</string>
     <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
-    <string name="about_description_donate_google_play">"با تشکر از شما برای حمایت از این برنامه!
-به دلیل خط‌مشی فروشگاه Google Play، پیوندهای کمک مالی ممکن است در برنامه نمایش داده نشوند، اما اطلاعاتی در مورد این پروژه، از جمله نحوه حمایت مالی از توسعه این برنامه، در خانه آن پیدا خواهید کرد:"</string>
 </resources>

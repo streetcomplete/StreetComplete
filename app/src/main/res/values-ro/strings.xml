@@ -351,9 +351,15 @@ Informațiile pe care le introduceți sunt apoi adăugate direct în OpenStreetM
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Stația de autobuz %s are acoperiș?"</string>
     <string name="quest_toiletsFee_title">"Trebuie să plătești pentru a folosi această toaletă?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Această stație de autobuz are pavaje tactile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Are această trecere de pietoni pavaje tactile pe ambele părți?"</string>
     <string name="quest_source_dialog_title">"Sunteți sigur că ați verificat acest lucru in locație?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Stația de autobuz %s are pavaje tactile?"</string>
     <string name="quest_source_dialog_note">"Ar trebui introduse numai informațiile ce corespund datelor din locație."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Această parcare pentru biciclete este acoperită (protejată de ploaie)?"</string>
@@ -737,9 +743,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_maxspeed_sign_question">"Ce definește limita de viteză?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"Este acest loc de joacă accesibil public?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Cum sunt trotuarul și pista de biciclete aici?"</string>
     <string name="dialog_tutorial_upload">"Pentru a încărca modificările dvs. manual, utilizați butonul din bara de instrumente care arată astfel."</string>
 
@@ -854,7 +857,11 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Care este suprafața trotuarului aici?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"La %s ,toaleta este accesibilă scaunului fu rotile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Această stație de tramvai are pavaje tactile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Stația de tramvai %s are pavaje tactile?"</string>
     <string name="quest_maxweight_title">"Care este limita de greutate aici? "</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Această greutate pare neverosimilă. Ești sigur că este corect?"</string>
@@ -1229,7 +1236,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_surface_value_artificial_turf">"Gazon artificial"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Ce suprafață are această pistă sportivă?"</string>
-    <string name="quest_bicycle_parking_access_title">"Este restricționat a parca o bicicletă aici?"</string>
     <string name="quest_bicycle_parking_fee_title">"Trebuie să plătești pentru a parca o bicicletă aici?"</string>
 
     <!-- Fuzzy -->

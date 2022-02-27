@@ -303,13 +303,13 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_way_lit_road_title">"Is this stretch of road lit?"</string>
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
-    <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings on both sides?"</string>
+    <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile paving?"</string>
+    <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile paving?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
-    <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"Does the streetcar stop %s have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile paving?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Does the streetcar stop %s have tactile paving?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
     <string name="quest_sport_softball">Softball</string>
@@ -1223,6 +1223,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="ar_core_tracking_error_insufficient_features">Insufficient visual features here</string>
     <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
     <string name="ar_core_tracking_error_too_steep_angle">Too steep angle, step away a bit</string>
+    <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
 
     <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>

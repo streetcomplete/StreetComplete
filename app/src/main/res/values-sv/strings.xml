@@ -195,9 +195,15 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
     <string name="quest_busStopShelter_name_title">"Har hållplatsen %s en busskur?"</string>
     <string name="quest_toiletsFee_title">"Kostar det något att använda toaletten?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Har busshållplatsen taktil beläggning?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Har övergångsstället taktil beläggning?"</string>
     <string name="quest_source_dialog_title">"Har du kontrollerat detta på plats?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Har busshållplatsen %s taktil beläggning?"</string>
     <string name="quest_source_dialog_note">"Lägg bara in information som du har observerat på plats."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Är det tak över den här cykelparkeringen?"</string>
@@ -557,7 +563,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_sports_centre">"Idrottsanläggning"</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
     <string name="quest_maxspeed_sign_question">"Vad bestämmer hastighetsbegränsningen?"</string>
-    <string name="quest_playground_access_title">"Är den här lekplatsen tillgänglig för allmänheten?"</string>
     <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformad här?"</string>
     <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, använd knappen som ser ut så här."</string>
     <string name="quest_segregated_separated">"Separerade från varandra"</string>
@@ -646,7 +651,11 @@ Dela den nu?"</string>
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Vad har den här gångvägen för underlag?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Är toaletten på %s tillgänglig med rullstol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"Har den här spårvagnshållplatsen taktil markbeläggning?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"Har spårvagnshållplatsen %s taktil markbeläggning?"</string>
     <string name="quest_maxweight_title">"Vad är maxvikten här?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denna vikt ser osannolikt ut. Är du säker på att det är korrekt?"</string>
@@ -1029,7 +1038,6 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="quest_surface_value_artificial_turf">"Konstgräs"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_pitchSurface_title_track">"Vilket underlag har denna sportbana?"</string>
-    <string name="quest_bicycle_parking_access_title">"Är det begränsat vem som får parkera en cykel här?"</string>
     <string name="quest_bicycle_parking_fee_title">"Kostar det att parkera en cykel här?"</string>
 
     <!-- Fuzzy -->
@@ -1363,6 +1371,4 @@ Gör detta för varje sida som finns."</string>
     <string name="quest_road_width_title">"Hur bred är denna vägen här?"</string>
     <string name="quest_road_width_explanation">"Hela vägbredden från kant till kant: Detta inkluderar allt som utgör vägytan som parkering på gatan eller cykelfiler, men inte gång- och cykelbanor eller särskilt anordnad parkering vid sidan av vägen."</string>
     <string name="quest_sidewalk_answer_none">"Ingen trottoar alls"</string>
-    <string name="about_description_donate_google_play">"Tack för att du överväger att stödja den här appen!
-På grund av reglerna för Google Play får inte donationslänkar visas i appen, men du hittar information om detta projekt, inklusive hur man donerar till appens fortsatta utveckling på hemsidan:"</string>
 </resources>

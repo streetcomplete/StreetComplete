@@ -1422,9 +1422,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_maxspeed_sign_question">"速度限制是由什么决定的？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"该游乐设施对公众开放吗？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"这里的人行道与自行车道是如何排列的？"</string>
 
     <!-- Fuzzy -->
@@ -2136,7 +2133,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_surface_value_tartan">"花格布料"</string>
     <string name="quest_pitchSurface_title_track">"这运动跑道表面材质是什么？"</string>
-    <string name="quest_bicycle_parking_access_title">"这里有自行车停车的身份限制吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"在这里停放自行车需要付费吗？"</string>
