@@ -355,9 +355,9 @@ whether the postbox is still there in countries in which it is enabled */
 
     AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
 
-    AddAirConditioning(), // often visible from the outside, if not, visible/feelable inside
+    AddSmoking(), // often marked on the entrance, if not, visible/smellable inside
 
-    AddSmoking(), // often marked on the entrance, if not, visible/feelable inside
+    AddAirConditioning(), // often visible from the outside, if not, visible/feelable inside
 
     /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 
