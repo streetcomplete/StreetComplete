@@ -18,7 +18,7 @@ class SmokingAllowedAnswerForm : AListQuestAnswerFragment<SmokingAllowed>() {
 
         return listOfNotNull(
             TextItem(NO, R.string.quest_smoking_no),
-            if (isAlreadyOutdoor) null else TextItem(OUTSIDE, R.string.quest_smoking_outdoor),
+            if (isAlreadyOutdoor) null else TextItem(OUTDOOR, R.string.quest_smoking_outdoor),
             TextItem(SEPARATED, R.string.quest_smoking_separated),
             TextItem(YES, R.string.quest_smoking_yes),
         )
