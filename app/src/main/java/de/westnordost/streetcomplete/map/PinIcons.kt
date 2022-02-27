@@ -60,9 +60,8 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
     when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
     }
-    if (map.containsKey("addr:housenumber") || map.containsKey("addr:housename") ||
-            map.containsKey("addr:conscriptionnumber") || map.containsKey("addr:streetnumber")
-        && !map.containsAnyKey("amenity", "craft", "healthcare", "leisure", "office", "shop", "tourism")){
+    if (map.containsAnyKey("addr:housenumber", "addr:housename", "addr:conscriptionnumber", "addr:streetnumber")
+        && !map.containsAnyKey("amenity", "craft", "healthcare", "leisure", "office", "shop", "tourism")) {
         return R.drawable.ic_none
     }
     return null
