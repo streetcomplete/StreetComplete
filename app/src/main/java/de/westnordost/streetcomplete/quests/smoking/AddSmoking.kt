@@ -27,18 +27,20 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     /* note: outdoor_seating/indoor_seating extra clause ONLY applies to last group in
        elementFilterBasicFragment(), and not to the whole of it */
     override val elementFilter = """
-            nodes, ways, relations with
-            (
-                amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
-                or leisure ~ outdoor_seating
-                or (((amenity ~ fast_food|ice_cream) or (shop ~ ice_cream|deli|bakery|coffee|tea|wine))
-                and (
-                    (outdoor_seating and (outdoor_seating != no)) or
-                    (indoor_seating and (indoor_seating != no))
-                ))
-            )
-            and takeaway != only
-            and (!smoking or smoking older today -8 years)
+             nodes, ways with
+             (
+                 amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
+                 or leisure ~ outdoor_seating
+                 or (
+                     (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
+                     and (
+                         (outdoor_seating and outdoor_seating != no)
+                         or (indoor_seating and indoor_seating != no)
+                     )
+                 )
+             )
+             and takeaway != only
+             and (!smoking or smoking older today -8 years)
     """
 
     override val changesetComment = "Add smoking status"
@@ -56,14 +58,14 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
             R.string.quest_smoking_no_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        Log.d("SmokingQuest debug", "elementFilter is: #${elementFilter}")
+        Log.d("SmokingQuest debug", "elementFilter is: ${elementFilter}")
         val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
         return arrayOfNotNull(name, featureName.value)
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
-            nodes, ways, relations with
+            nodes, ways with
             (
                 ${elementFilterBasicFragment()} or
                 ${elementFilterBasicFragment("disused")} or
