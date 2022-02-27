@@ -22,7 +22,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     """
 
     override val elementFilter = elementFilterBasic + """
-	and (!smoking or smoking older today -8 years)
+        and (!smoking or smoking older today -8 years)
     """
 
     override val changesetComment = "Add smoking status"
