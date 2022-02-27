@@ -77,13 +77,12 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     }
 
     private fun sideSurfaceChanged(surface: SurfaceAnswer, side: Side, tags: Tags): Boolean {
-        val previousSideValue = tags["sidewalk:${side.value}:surface"]
+        val previousSideOsmValue = tags["sidewalk:${side.value}:surface"]
         val previousBothOsmValue = tags["sidewalk:both:surface"]
         val osmValue = surface.value.osmValue
 
-        return if (previousSideValue != null && previousSideValue != osmValue) {
-            true
-        } else previousBothOsmValue != null && previousBothOsmValue != osmValue
+        return previousSideOsmValue != null && previousSideOsmValue != osmValue
+            || previousBothOsmValue != null && previousBothOsmValue != osmValue
     }
 
     private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags)
