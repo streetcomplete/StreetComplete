@@ -12,7 +12,9 @@ class SmokingAllowedAnswerForm : AListQuestAnswerFragment<SmokingAllowed>() {
 
     override val items: List<TextItem<SmokingAllowed>> get() {
         val tags = osmElement!!.tags
-        val isAlwaysOutsideOnly = tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten"
+        val isAlwaysOutsideOnly =
+            tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten" ||
+            (tags["outdoor_seating"] == "yes" && tags["indoor_seating"] == "no")
 
         val result = if (isAlwaysOutsideOnly) listOf(
             TextItem(NO, R.string.quest_smoking_no),

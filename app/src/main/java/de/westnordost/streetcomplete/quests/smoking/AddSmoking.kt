@@ -16,9 +16,11 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     private val elementFilterBasic = """
         nodes, ways with
         (
-          amenity ~ bar|cafe|pub|biergarten|restaurant|nightclub|stripclub
+          amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
           or leisure ~ outdoor_seating
+          or amenity ~ fast_food|ice_cream and (outdoor_seating != no or indoor_seating != no)
         )
+        and takeaway != only
     """
 
     override val elementFilter = elementFilterBasic + """
