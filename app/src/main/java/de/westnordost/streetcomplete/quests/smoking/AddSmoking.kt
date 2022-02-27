@@ -59,7 +59,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
             (
                 ${elementFilterBasicFragment()} or
                 ${elementFilterBasicFragment("disused")} or
-                ${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION} or
+                ${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION}
             )
         """)
 
