@@ -28,7 +28,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override val elementFilter = """
             nodes, ways, relations with
             (
-                ${elementFilterBasicFragment()} and (outdoor_seating != no or indoor_seating != no)
+                ${elementFilterBasicFragment()} and (outdoor_seating and outdoor_seating != no or indoor_seating and indoor_seating != no)
             )
             and takeaway != only
             and (!smoking or smoking older today -8 years)
