@@ -27,10 +27,6 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
-    // override val otherAnswers get() = listOfNotNull(
-    //
-    // )
-
     private val currentSidewalks get() = createSidewalkSides(osmElement!!.tags)
 
     override val contentPadding = false
@@ -72,9 +68,8 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
     }
 
     private fun initStateFromTags() {
-        val sides = createSidewalkSides(osmElement!!.tags)
-        val left = sides?.left
-        val right = sides?.right
+        val left = currentSidewalks?.left
+        val right = currentSidewalks?.right
 
         if (left != null && right != null) {
             isDefiningBothSides = (left == Sidewalk.YES) && (right == Sidewalk.YES)
@@ -125,7 +120,7 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
 
     private fun showSurfaceSelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
-        val items = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_SURFACES).toItems()
+        val items = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
         ImageListPickerDialog(ctx, items, R.layout.cell_labeled_image_select, 2) {
             if (it.value!!.shouldBeDescribed) {
                 AlertDialog.Builder(requireContext())

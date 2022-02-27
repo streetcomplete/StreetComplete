@@ -63,8 +63,8 @@ class AddSidewalkSurfaceTest {
     @Test fun `apply generic surface on both sides`() {
         questType.verifyAnswer(
             SidewalkSurfaceAnswer(
-                SurfaceAnswer(Surface.PAVED, "note"),
-                SurfaceAnswer(Surface.PAVED, "note")),
+                SurfaceAnswer(Surface.PAVED_ROAD, "note"),
+                SurfaceAnswer(Surface.PAVED_ROAD, "note")),
             StringMapEntryAdd("sidewalk:both:surface", "paved"),
             StringMapEntryAdd("sidewalk:both:surface:note", "note")
         )
