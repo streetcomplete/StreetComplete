@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.map
 
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
