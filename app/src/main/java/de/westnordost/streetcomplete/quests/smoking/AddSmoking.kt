@@ -24,7 +24,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     }
 
     /* note: outdoor_seating/indoor_seating extra clause ONLY applies to last group in
-       elementFilterBasicFragment(), and not to whole of it */
+       elementFilterBasicFragment(), and not to the whole of it */
     override val elementFilter = """
             nodes, ways, relations with
             (
