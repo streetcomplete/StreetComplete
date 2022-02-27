@@ -1,4 +1,4 @@
-v41.0-beta1: |
+v41.0: |
   <h3>Measure with the camera (AR)</h3>
   <p>Measuring with AR is only supported <a href="https://developers.google.com/ar/devices#google_play_devices">on certain devices</a> and you need to have the Google Play Services on your phone. If AR is not available, the new quests are disabled by default because you'd need to use a tape measure instead. (#3709, #879)</p>
   <h3>New Quests</h3>
@@ -11,7 +11,7 @@ v41.0-beta1: |
   <ul>
   <li>Add "handlebar holders" as bicycle parking type option (#3061, #3724), by @sams96</li>
   <li>Tapping on road in street name sometimes did not work (#3797)</li>
-  <li>Other small improvements (#3740, #3755, #3793, #3783), thanks @matkoniecz, @tiptoptom</li>
+  <li>Other small improvements (#3740, #3755, #3793, #3783, #3814, #3811), thanks @matkoniecz, @tiptoptom, @peternewman, @arrival-spring</li>
   </ul>
 
 v40.2: |
