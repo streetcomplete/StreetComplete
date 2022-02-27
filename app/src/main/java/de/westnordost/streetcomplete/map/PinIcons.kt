@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.map
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
     when (map["amenity"]) {
@@ -60,19 +61,27 @@ import de.westnordost.streetcomplete.ktx.containsAnyKey
     when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
     }
-    if (map.containsAnyKey("addr:housenumber", "addr:housename", "addr:conscriptionnumber", "addr:streetnumber")
-        && !map.containsAnyKey("amenity", "craft", "healthcare", "leisure", "office", "shop", "tourism")) {
+    if (getHouseNumber(map) != null && getNameOrBrandOrOperatorOrRef(map) == null) {
         return R.drawable.ic_none
     }
     return null
 }
 
 fun getTitle(map: Map<String, String>): String? {
-    return if (map["name"] != null || map["brand"] != null) {
-        map["name"] ?: map["brand"]
-    } else if (map["addr:conscriptionnumber"] != null && map["streetnumber"] != null) {
-        map["addr:conscriptionnumber"] + "/" + map["streetnumber"]
-    } else {
-        map["addr:housenumber"] ?: map["addr:housename"]
+    return getNameOrBrandOrOperatorOrRef(map) ?: getHouseNumber(map)
+}
+
+private fun getHouseNumber(map: Map<String, String>): String? {
+    val houseName = map["addr:housename"]
+    val conscriptionNumber = map["addr:conscriptionnumber"]
+    val streetNumber = map["addr:streetnumber"]
+    val houseNumber = map["addr:housenumber"]
+
+    return when {
+        houseName != null -> houseName
+        conscriptionNumber != null && streetNumber != null -> "$conscriptionNumber / $streetNumber"
+        conscriptionNumber != null -> conscriptionNumber
+        houseNumber != null -> houseNumber
+        else -> null
     }
 }

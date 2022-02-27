@@ -133,7 +133,7 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-            and !name and !brand
+            and !name and !brand and !operator and !ref
             """.toElementFilterExpression())
 
     override fun createForm() = AddHousenumberForm()
