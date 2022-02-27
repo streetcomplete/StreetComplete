@@ -50,7 +50,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override fun createForm() = SmokingAllowedAnswerForm()
 
     override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
-	tags.updateWithCheckDate("smoking", answer.osmValue)
+        tags.updateWithCheckDate("smoking", answer.osmValue)
     }
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
