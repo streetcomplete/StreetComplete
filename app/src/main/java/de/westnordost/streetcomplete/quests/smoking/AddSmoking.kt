@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoking
 
+import android.util.Log
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
