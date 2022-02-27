@@ -27,7 +27,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
         val mapData = getMapData()
         // and also show the (power) lines themselves
         return mapData.filter("nodes with power = pole or man_made = utility_pole") +
-               mapData.filter("ways with power ~ line|minor_line or communication = line or telecom = line")
+            mapData.filter("ways with power ~ line|minor_line or communication = line or telecom = line")
     }
 
     // map data density is usually lower where there are power poles and more context is necessary

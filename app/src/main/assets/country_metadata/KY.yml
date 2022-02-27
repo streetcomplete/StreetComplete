@@ -3,5 +3,4 @@ atmOperators: [Cayman National]
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 officialLanguages: [en]
-orchardProduces: [banana, guava, mango, mangosteen, avocado, coconut, tomato]
 speedUnits: [miles per hour, kilometers per hour]

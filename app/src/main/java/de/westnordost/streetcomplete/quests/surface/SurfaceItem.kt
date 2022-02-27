@@ -13,9 +13,9 @@ import de.westnordost.streetcomplete.quests.surface.Surface.FINE_GRAVEL
 import de.westnordost.streetcomplete.quests.surface.Surface.GRASS
 import de.westnordost.streetcomplete.quests.surface.Surface.GRASS_PAVER
 import de.westnordost.streetcomplete.quests.surface.Surface.GRAVEL
-import de.westnordost.streetcomplete.quests.surface.Surface.GROUND
+import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.METAL
-import de.westnordost.streetcomplete.quests.surface.Surface.PAVED
+import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVING_STONES
 import de.westnordost.streetcomplete.quests.surface.Surface.PEBBLES
 import de.westnordost.streetcomplete.quests.surface.Surface.ROCK
@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.quests.surface.Surface.SAND
 import de.westnordost.streetcomplete.quests.surface.Surface.SETT
 import de.westnordost.streetcomplete.quests.surface.Surface.TARTAN
 import de.westnordost.streetcomplete.quests.surface.Surface.UNHEWN_COBBLESTONE
-import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED
+import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.WOOD
 import de.westnordost.streetcomplete.quests.surface.Surface.WOODCHIPS
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -53,7 +53,10 @@ fun Surface.asItem(): Item<Surface> = when (this) {
     CLAY -> Item(this, R.drawable.surface_tennis_clay, R.string.quest_surface_value_clay)
     ARTIFICIAL_TURF -> Item(this, R.drawable.surface_artificial_turf, R.string.quest_surface_value_artificial_turf)
     TARTAN -> Item(this, R.drawable.surface_tartan, R.string.quest_surface_value_tartan)
-    PAVED -> Item(this, R.drawable.path_surface_paved, R.string.quest_surface_value_paved)
-    UNPAVED -> Item(this, R.drawable.path_surface_unpaved, R.string.quest_surface_value_unpaved)
-    GROUND -> Item(this, R.drawable.surface_ground, R.string.quest_surface_value_ground)
+    PAVED_ROAD -> Item(this, R.drawable.path_surface_paved, R.string.quest_surface_value_paved)
+    UNPAVED_ROAD -> Item(this, R.drawable.path_surface_unpaved, R.string.quest_surface_value_unpaved)
+    GROUND_ROAD -> Item(this, R.drawable.surface_ground, R.string.quest_surface_value_ground)
+    Surface.PAVED_AREA -> Item(this, R.drawable.surface_paved_area, R.string.quest_surface_value_paved)
+    Surface.UNPAVED_AREA -> Item(this, R.drawable.surface_unpaved_area, R.string.quest_surface_value_unpaved)
+    Surface.GROUND_AREA -> Item(this, R.drawable.surface_ground_area, R.string.quest_surface_value_ground)
 }

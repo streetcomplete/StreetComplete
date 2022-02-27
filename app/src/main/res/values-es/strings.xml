@@ -96,6 +96,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick y demás colaboradores"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
 
@@ -1852,7 +1854,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_board_type_notice_board">"Es un tablón de anuncios"</string>
     <string name="quest_board_type_public_transport">"Transporte público"</string>
     <string name="quest_board_type_title">"¿Qué tipo de información proporciona este cartel o señal?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sí, se muestra por separado en el mapa"</string>
     <string name="quest_board_type_map">"Es un mapa"</string>
     <string name="quest_board_type_map_title">"¿Es sólo un mapa, sin nada más?"</string>
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular déjalo claro y afina tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista deja una nota."</string>
@@ -2016,12 +2017,14 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Marcando como que no hay carril bici"</string>
     <string name="quest_construction_completed_at_known_date">"Estará terminado en la fecha..."</string>
     <string name="quest_construction_completion_date_title">"¿Cuándo estará terminado?"</string>
-    <string name="quest_surface_value_clay">"arcilla"</string>
+    <string name="quest_surface_value_clay">"Arcillosa o con barro"</string>
     <string name="quest_surface_value_artificial_turf">"Césped artificial"</string>
     <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_pitchSurface_title_track">"¿Qué superficie tiene esta pista deportiva?"</string>
     <string name="quest_bicycle_parking_access_title">"¿Está restringido a ciertas personas el aparcar una bici aquí?"</string>
     <string name="quest_bicycle_parking_fee_title">"¿Hay que pagar para aparcar una bici aquí?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Vivienda unifamiliar no independiente"</string>
     <string name="quest_drinking_water_title">"¿Es potable el agua? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Potable (señalizado)"</string>
@@ -2271,6 +2274,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_smoothness_description_intermediate_paved">"De superficie más accidentada; grietas, roderas, baches, agujeros y demás daños"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Espacios entre adoquines con los que tropezar o piezas en mal sitio y otros daños"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Adoquines llanos o de forma regular, sin demasiada distancia entre sí"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"De gravilla fina, con pequeños baches o agujeros"</string>
     <string name="quest_smoothness_description_bad_paved">"Separación importante entre piezas, agujeros, piezas rotas u otro tipo de daño"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"Piedras en mal sitio, dejando agujeros y hondonadas, dañadas"</string>
     <string name="quest_smoothness_description_bad_sett">"Losas en mal estado o partidas, demasiado separadas o dañadas"</string>
@@ -2297,4 +2301,12 @@ También puedes dejar una nota (con foto)."</string>
     <string name="link_osmhydrant_description">"Busca, pon y edita parques de bomberos y bocas de incendio"</string>
     <string name="achievement_lifesaver_title">"Salvavidas"</string>
     <string name="achievement_lifesaver_solved_X">"¡Has completado %d tareas que mejoran la vida de los servicios de emergencia y primeros auxilios!"</string>
+    <string name="quest_fuelSelfService_title">"¿Esta gasolinera es de autoservicio?"</string>
+    <string name="quest_fuelSelfService_name_title">"¿La gasolinera «%s» es de autoservicio?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Completar este tipo de tarea lleva mucho rato y a veces cuesta elegir la opción correcta; actívala solo si tienes muchas ganas de rellenar este tipo de información."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Bien compactado, con poca gravilla suelta o arena"</string>
+    <string name="quest_barrier_path_intersection">"¿Qué tipo de cruce hay entre el camino y la barrera?"</string>
+    <string name="quest_barrier_road_intersection">"¿Qué tipo de cruce hay entre la vía y la barrera?"</string>
+    <string name="quest_airConditioning_no_name_title">"¿Este lugar (%s) tiene aire acondicionado?"</string>
+    <string name="quest_airConditioning_name_type_title">"¿%1$s (%2$s) tiene aire condicionado?"</string>
 </resources>

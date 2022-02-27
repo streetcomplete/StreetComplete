@@ -18,9 +18,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.NAME
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import javax.inject.Inject
 
-class NoteEditsDao @Inject constructor(private val db: Database) {
+class NoteEditsDao(private val db: Database) {
     fun add(edit: NoteEdit): Boolean =
         db.transaction {
             val rowId = db.insert(NAME, edit.toPairs())

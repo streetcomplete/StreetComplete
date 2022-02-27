@@ -19,7 +19,7 @@ abstract class ListAdapter<T>(list: List<T> = listOf()) :
 
     override fun getItemCount() = list.size
 
-    abstract class ViewHolder<U>(binding : ViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    abstract class ViewHolder<U>(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
         abstract fun onBind(with: U)
     }
 }

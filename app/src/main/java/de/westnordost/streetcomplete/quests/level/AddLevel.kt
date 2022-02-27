@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.level
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.meta.isShopExpressionFragment
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -27,15 +27,15 @@ class AddLevel : OsmElementQuestType<String> {
 
     private val thingsWithLevelFilter by lazy { """
         nodes, ways, relations with level
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
     *  outline */
     private val filter by lazy { """
         nodes with
-         (${isKindOfShopExpression()})
+         (${isShopExpressionFragment()})
          and !level and (name or brand)
-    """.toElementFilterExpression()}
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Add level to shops"
     override val wikiLink = "Key:level"

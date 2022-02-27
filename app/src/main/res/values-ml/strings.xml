@@ -1859,7 +1859,7 @@
     <string name="achievement_first_edit_title">"ആദ്യ പ്രശ്നം പരിഹരിച്ചു"</string>
     <string name="achievement_first_edit_description">"ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് കമ്മ്യൂണിറ്റിയിലേക്ക് സ്വാഗതം! നിങ്ങളുടെ പ്രൊഫൈൽ സ്ക്രീനിൽ, നിങ്ങൾ പരിഹരിച്ച ഓരോ തരം പ്രശ്നങ്ങളുടെയും കൂടുതൽ വിവരങ്ങൾ കാണാം."</string>
     <string name="achievement_surveyor_title">"സർവേയർ"</string>
-    <string name="achievement_surveyor_solved_X">"നിങ്ങൾ പ്രശ്നങ്ങൾ പരിഹരിച്ചു! ഒ‌എസ്‌എമ്മിലേക്കും മറ്റ് മാപ്പുമായി ബന്ധപ്പെട്ട ആപ്പുകളിലേക്കും പ്രോജക്‌റ്റുകളിലേക്കുമുള്ള ലിങ്കുകൾ അടങ്ങുന്ന കൂടുതൽ നേട്ടങ്ങൾ അൺലോക്ക് ചെയ്യുന്നത് തുടരുക"</string>
+    <string name="achievement_surveyor_solved_X">"നിങ്ങൾ %d പ്രശ്നങ്ങൾ പരിഹരിച്ചു! ഒ‌എസ്‌എമ്മിലേക്കും മറ്റ് മാപ്പുമായി ബന്ധപ്പെട്ട ആപ്പുകളിലേക്കും പ്രോജക്‌റ്റുകളിലേക്കുമുള്ള ലിങ്കുകൾ അടങ്ങുന്ന കൂടുതൽ നേട്ടങ്ങൾ അൺലോക്ക് ചെയ്യുന്നത് തുടരുക"</string>
     <string name="achievement_regular_title">"സ്ഥിരമായ"</string>
     <string name="achievement_regular_description">"ഈ അപ്ലിക്കേഷൻ ഉപയോഗിച്ച് OSM- യിലേക്ക് നിങ്ങൾ %D ദിവസങ്ങൾ സംഭാവന ചെയ്തു! സ്ഥിരമായി സംഭാവന ചെയ്യുന്നവരാണ് ഒ.എസ്.എമ്മിന്റെ നട്ടെല്ല്, നിങ്ങളുടെ സമർപ്പണത്തിന് നന്ദി! പതനം"</string>
     <string name="achievement_bicyclist_title">"സൈക്കിൾ യാത്രക്കാർ"</string>
@@ -1874,7 +1874,7 @@
     <string name="achievement_blind_title">"ആറാം ഇന്ദ്രിയം"</string>
     <string name="achievement_blind_solved_X">"നിങ്ങൾ കാഴ്ച വൈകല്യമുള്ളവർക്ക് താൽപ്പര്യമുള്ള %d പ്രശ്നങ്ങൾ പരിഹരിച്ചു."</string>
     <string name="achievement_pedestrian_title">"ഓട്ടക്കാരൻ"</string>
-    <string name="achievement_pedestrian_solved_X">"കാൽനടയായി ആളുകൾക്ക് താൽപ്പര്യമുള്ള% ക്വസ്റ്റുകൾ പരിഹരിച്ചു!"</string>
+    <string name="achievement_pedestrian_solved_X">"കാൽനടയായി ആളുകൾക്ക് താൽപ്പര്യമുള്ള %d ക്വസ്റ്റുകൾ പരിഹരിച്ചു!"</string>
     <string name="achievement_veg_title">"മൃഗങ്ങളോട് ദയ"</string>
     <string name="achievement_car_title">"റോഡിൽ"</string>
     <string name="unread_messages_message">"നിങ്ങളുടെ ഇൻബോക്സിൽ നിങ്ങൾ വായിക്കാത്ത %d സന്ദേശങ്ങൾ ഉണ്ട്"</string>
@@ -1909,7 +1909,6 @@
     <string name="quest_board_type_notice_board">"ഇത് ഒരു അറിയിപ്പ് ബോർഡാണ്"</string>
     <string name="quest_board_type_public_transport">"പൊതു ഗതാഗതം"</string>
     <string name="quest_board_type_title">"ഈ വിവര ബോർഡിലെ വിഷയം എന്താണ്?"</string>
-    <string name="quest_sidewalk_separately_mapped">"അതെ, മാപ്പിൽ വെവ്വേറെ പ്രദർശിപ്പിച്ചിട്ടുണ്ട്"</string>
     <string name="quest_board_type_map">"ഇത് ഒരു മാപ്പാണ്"</string>
     <string name="quest_board_type_map_title">"ഇത് ഒരു മാപ്പ് മാത്രമാണോ?"</string>
     <string name="quest_surface_detailed_answer_impossible">"ഒന്നിലധികം ഉപരിതലങ്ങൾ ..."</string>

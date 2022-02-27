@@ -33,7 +33,7 @@ data class NoteEdit(
 
     /** Whether the images attached still need activation. Already true if imagePaths is empty */
     val imagesNeedActivation: Boolean
-): Edit {
+) : Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)
 }

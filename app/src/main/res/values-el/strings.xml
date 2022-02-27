@@ -1956,7 +1956,6 @@
     <string name="quest_board_type_notice_board">"Είναι ένας πίνακας ανακοινώσεων"</string>
     <string name="quest_board_type_public_transport">"Δημόσια συγκοινωνία"</string>
     <string name="quest_board_type_title">"Ποιο είναι το θέμα αυτού του πίνακα πληροφοριών;"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ναι, εμφανίζεται ξεχωριστά στο χάρτη"</string>
     <string name="quest_board_type_map">"Είναι ένας χάρτης"</string>
     <string name="quest_board_type_map_title">"Είναι απλώς ένας χάρτης και μόνο ένας χάρτης;"</string>
     <string name="quest_board_type_map_description">"Εάν ο πίνακας αφορά ένα συγκεκριμένο θέμα, προσδιορίστε το, ανεξάρτητα από το εάν περιλαμβάνει επίσης έναν χάρτη. Για παράδειγμα, μια δημόσια συγκοινωνία μπορεί να έχει χάρτη διαδρομής λεωφορείου. Εάν το θέμα δεν περιλαμβάνεται στις διαθέσιμες απαντήσεις, σκεφτείτε το ενδεχόμενο να αφήσετε μια σημείωση."</string>
@@ -2133,6 +2132,8 @@
     <string name="quest_pitchSurface_title_track">"Τι επιφάνεια έχει αυτή η αθλητική πίστα; "</string>
     <string name="quest_bicycle_parking_access_title">"Είναι περιορισμένο ποιος μπορεί να σταθμεύσει ένα ποδήλατο εδώ;"</string>
     <string name="quest_bicycle_parking_fee_title">"Πρέπει να πληρώσετε για να σταθμεύσετε ένα ποδήλατο εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"μη ανεξάρτητη μονοκατοικία "</string>
     <string name="quest_drinking_water_title">"Είναι το νερό πόσιμο εδώ; (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Ασφαλές για κατανάλωση (επισημασμένο) "</string>
@@ -2402,4 +2403,20 @@
     <string name="quest_barrier_road_intersection">"Πώς διασχίζει αυτός ο δρόμος τις μπάρες εδώ;"</string>
     <string name="quest_airConditioning_no_name_title">"Αυτό το μέρος (%s) έχει κλιματισμό;"</string>
     <string name="quest_airConditioning_name_type_title">"Το %1$s (%2$s) έχει κλιματισμό;"</string>
+    <string name="quest_openingHours_signed_name_title">"Φαίνονται οι ώρες λειτουργίας για το %s;"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Φαίνονται οι ώρες λειτουργίας για το %1$s (%2$s);"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Φαίνονται οι ώρες λειτουργίας αυτού του χώρου; (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"εμφανίζεται ξεχωριστά στον χάρτη"</string>
+    <string name="quest_shoulder_value_yes">"ΛΕΑ"</string>
+    <string name="quest_shoulder_value_no">"χωρίς ΛΕΑ"</string>
+    <string name="no_camera_permission_warning_title">"Άδεια κάμερας"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"Η άδεια είναι απαραίτητη για να μπορούμε να μετράμε αποστάσεις με επαυξημένη πραγματικότητα."</string>
+    <string name="ar_core_error_sdk_too_old">"Αυτή η εφαρμογή είναι πολύ παλιά, δοκιμάστε ενημέρωση."</string>
+    <string name="ar_core_tracking_error_bad_state">"Κάτι πήγε στραβά. Δοκιμάστε να επανεκκινήσετε τη μέτρηση."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Πολύ σκοτεινά εδώ"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Πάρα πολύ κίνηση"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Ανεπαρκή οπτικά χαρακτηριστικά εδώ"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Η κάμερα χρησιμοποιείται από άλλη εφαρμογή"</string>
 </resources>

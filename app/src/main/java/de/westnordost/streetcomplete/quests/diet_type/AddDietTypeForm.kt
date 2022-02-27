@@ -52,7 +52,6 @@ class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailabilityAnswer>() {
         }
     }
 
-
     private fun confirmNoFood() {
         val ctx = context ?: return
         AlertDialog.Builder(ctx)

@@ -58,7 +58,7 @@
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um deine Position auf der Karte anzuzeigen und nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="about_title_authors">"Autoren"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick und Mitwirkende"</string>
-    <string name="about_title_repository">"Quellcode-Repository"</string>
+    <string name="about_title_repository">"Projektseite"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
     <string name="about_title_report_error">"Fehler melden"</string>
     <string name="about_title_feedback">"Feedback geben"</string>
@@ -318,7 +318,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Ist dieser Wegabschnitt beleuchtet?"</string>
+    <string name="quest_way_lit_title">"Ist dieser (Geh-)wegabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_named_title">"Ist %s hier beleuchtet?"</string>
     <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
@@ -459,7 +459,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="questList_disabled_in_country">"Niemals in %s gezeigt"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Hat dieser Rastplatz eine Toilette?"</string>
     <string name="quest_pathSurface_title_steps">"Welche Oberfläche haben diese Stufen?"</string>
-    <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Saumweg?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Reitweg?"</string>
     <string name="quest_pathSurface_title">"Welche Oberfläche hat dieser Weg?"</string>
     <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
     <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
@@ -830,7 +830,6 @@ Erfolge"</string>
     <string name="quest_board_type_notice_board">"Es ist eine Anschlagtafel"</string>
     <string name="quest_board_type_public_transport">"ÖPNV"</string>
     <string name="quest_board_type_title">"Worum geht es auf dieser Tafel?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, auf Karte separat abgebildet"</string>
     <string name="quest_board_type_map">"Es ist eine Karte"</string>
     <string name="quest_board_type_map_title">"Ist es einzig eine Karte?"</string>
     <string name="quest_board_type_map_description">"Wenn es auf der Tafel um ein bestimmtes Thema geht, bitte gib es an, egal ob da auch eine Karte mit dabei ist. Zum Beispiel mag eine Tafel zum öffentlichen Nahverkehr auch eine Verkehrsnetzkarte beinhalten. Wenn das Thema nicht bei den zur Verfügung stehenden Antworten dabei ist, hinterlasse bitte stattdessen eine Notiz."</string>
@@ -973,7 +972,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_pitchSurface_title_track">"Welchen Bodenbelag hat diese Rennbahn?"</string>
     <string name="quest_bicycle_parking_access_title">"Gibt es Einschränkungen, wer hier ein Fahrrad parken darf?"</string>
     <string name="quest_bicycle_parking_fee_title">"Fallen hier Parkgebühren für Fahrräder an?"</string>
-    <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus"</string>
+    <string name="quest_buildingType_house_description2">"nicht freistehendes Einfamilienhaus, z.B. einzelnes Reihenhaus"</string>
     <string name="quest_drinking_water_title">"Ist das Wasser hier trinkbar? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Trinkwasser (beschildert)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Trinkwasser (nicht beschildert)"</string>
@@ -998,7 +997,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
     <string name="synced">"Synchronisiert"</string>
     <string name="toast_undo_unavailable">"Diese Bearbeitung wurde bereits synchronisiert und kann nicht rückgängig gemacht werden"</string>
-    <string name="quest_cycleway_value_separate">"auf Karte separat abgebildet"</string>
+    <string name="quest_cycleway_value_separate">"separat auf Karte eingezeichnet"</string>
     <string name="created_note_action_title">"Notiz erstellt"</string>
     <string name="commented_note_action_title">"Notiz kommentiert"</string>
     <string name="hid_action_description">"Versteckt von dir"</string>
@@ -1178,10 +1177,10 @@ Alternativ kann auch eine Notiz (mit Foto) hinterlassen werden."</string>
     <string name="quest_fireHydrant_position_parking_lot">"In einem Parkplatz"</string>
     <string name="quest_fireHydrant_diameter_ref_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten? (Referenznummer: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (Notiz hinterlassen)"</string>
-    <string name="quest_smoothness_name_title">"Wie gut ist die Oberfläche von %s hier beschaffen?"</string>
-    <string name="quest_smoothness_square_title">"Wie gut ist die Oberfläche von diesem Platz beschaffen?"</string>
-    <string name="quest_smoothness_path_title">"Wie gut ist die Oberfläche von diesem Weg beschaffen?"</string>
-    <string name="quest_smoothness_road_title">"Wie gut ist die Oberfläche von dieser Straße beschaffen?"</string>
+    <string name="quest_smoothness_name_title">"Wie ist die Oberflächenbeschaffenheit von %s?"</string>
+    <string name="quest_smoothness_square_title">"Wie ist die Oberflächenbeschaffenheit dieses Platzes?"</string>
+    <string name="quest_smoothness_path_title">"Wie ist die Oberflächenbeschaffenheit dieses (Geh-)wegs?"</string>
+    <string name="quest_smoothness_road_title">"Wie ist die Oberflächenbeschaffenheit dieser Straße?"</string>
     <string name="quest_smoothness_title_excellent">"Eben"</string>
     <string name="quest_smoothness_title_good">"Größtenteils eben"</string>
     <string name="quest_smoothness_title_intermediate">"Ein wenig holprig"</string>
@@ -1234,4 +1233,36 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_barrier_road_intersection">"Wie kreuzt diese Straße die Barriere hier?"</string>
     <string name="quest_airConditioning_no_name_title">"Hat dieser Ort (%s) eine Klimaanlage?"</string>
     <string name="quest_airConditioning_name_type_title">"Hat %1$s (%2$s) eine Klimaanlage?"</string>
+    <string name="quest_openingHours_signed_name_title">"Sind die Öffnungszeiten für %s ausgeschildert?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Sind die Öffnungszeiten für %1$s (%2$s) ausgeschildert?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Sind die Öffnungszeiten dieses Ortes ausgeschildert? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"separat auf Karte eingezeichnet"</string>
+    <string name="quest_shoulder_value_yes">"Seitenstreifen"</string>
+    <string name="quest_shoulder_value_no">"Kein Seitenstreifen"</string>
+    <string name="no_camera_permission_warning_title">"Kamerazugriff"</string>
+    <string name="no_camera_permission_warning">"Die Kamera wird benötigt, um Abstände mit Hilfe von erweiterter Realität zu messen."</string>
+    <string name="ar_core_error_sdk_too_old">"Die App ist zu alt, versuche zu aktualisieren."</string>
+    <string name="ar_core_tracking_error_bad_state">"Etwas hat nicht geklappt. Versuche die Messung neu zu starten."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Zu dunkel hier"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Zu viel Bewegung"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Unzureichende visuelle Merkmale hier"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Kamera wird von einer anderen App verwendet"</string>
+
+    <!-- "Lenkerstange" ist ungebräuchlich. Die Dinger heißen üblicherweise (z. B. bei den großen Fahrradversendern) einfach "Lenker" - ich würde hier also "Lenkerhalter" schreiben. -->
+    <string name="quest_bicycle_parking_type_handlebarholder">"Lenkerhalter"</string>
+    <string name="quest_bicycle_parking_access_title2">"Wer darf ein Fahrrad hier parken? Das Parken kann kostenlos oder kostenpflichtig sein."</string>
+    <string name="quest_playground_access_title2">"Wer darf diesen Spielplatz benutzen?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Wo befindet sich dieser Hydrant? (Referenznummer: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Auswählen, dass Bürgersteige fehlen"</string>
+    <string name="quest_side_select_interface_explanation">"Berühre eine Seite und wähle die jeweils passende Situation aus.
+Wiederhole dies für die andere Seite, wenn sie existiert."</string>
+    <string name="ar_measure">"Ausmessen"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Zu steiler Winkel, gehe ein wenig zurück"</string>
+    <string name="default_disabled_msg_no_ar">"Du benötigst ein Maßband, um diese Aufgabe zu lösen, weil das Ausmessen mit Hilfe der Kamera auf diesem Gerät nicht unterstützt wird."</string>
+    <string name="quest_cycleway_width_title">"Wie breit ist dieser Fahrradweg hier?"</string>
+    <string name="quest_road_width_title">"Wie breit ist diese Straße hier?"</string>
+    <string name="quest_road_width_explanation">"Die Fahrbahn von Bordstein zu Bordstein: Das beinhaltet alles auf der Straßenoberfläche, wie etwa Parkstreifen oder Radfahrstreifen, aber schließt alles jenseits davon, wie etwa Radwege oder Parkbuchten, aus."</string>
+    <string name="quest_sidewalk_answer_none">"Gar kein Bürgersteig"</string>
+    <string name="about_description_donate_google_play">"Danke, dass du erwägst, diese App zu unterstützen!
+Aufgrund einer Richtlinie des Google Play Store können die Spendenlinks nicht in der App angezeigt werden. Du findest jedoch alle Infos zu diesem Projekt, einschließlich der Möglichkeit, die Entwicklung dieser App zu fördern, auf dessen Webseite:"</string>
 </resources>

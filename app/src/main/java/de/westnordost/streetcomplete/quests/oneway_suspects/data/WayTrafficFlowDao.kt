@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.IS_FORWARD
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.WAY_ID
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.NAME
-import javax.inject.Inject
 
-class WayTrafficFlowDao @Inject constructor(private val db: Database) {
+class WayTrafficFlowDao(private val db: Database) {
 
     fun put(wayId: Long, isForward: Boolean) {
         db.replace(NAME, listOf(

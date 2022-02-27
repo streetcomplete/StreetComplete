@@ -31,7 +31,7 @@ import java.lang.System.currentTimeMillis
  *  end, it is not considered compatible anymore
  *  */
 @Serializable
-data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): ElementEditAction {
+data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : ElementEditAction {
 
     override val newElementsCount get() = NewElementsCount(
         nodes = splits.count { it is SplitAtLinePosition },
@@ -56,9 +56,8 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): El
             throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
         }
 
-        if(updatedWay.isClosed && splits.size < 2)
+        if (updatedWay.isClosed && splits.size < 2)
             throw ConflictException("Must specify at least two split positions for a closed way")
-
 
         // step 0: convert list of SplitPolylineAtPosition to list of SplitWay
         val positions = updatedWay.nodeIds.map { nodeId -> completeWay.getNode(nodeId)!!.position }
@@ -71,7 +70,7 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>): El
         val splitAtIndices = mutableListOf<Int>()
         var insertedNodeCount = 0
         for (split in sortedSplits) {
-            when(split) {
+            when (split) {
                 is SplitWayAtIndex -> {
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
@@ -130,10 +129,9 @@ private fun getSplitWayAtIndices(
     removeTagsThatArePotentiallyWrongAfterSplit(tags)
 
     return nodesChunks.mapIndexed { index, nodes ->
-        if(index == indexOfChunkToKeep) {
+        if (index == indexOfChunkToKeep) {
             Way(originalWay.id, nodes, tags, originalWay.version, currentTimeMillis())
-        }
-        else {
+        } else {
             Way(idProvider.nextWayId(), nodes, tags, 0, currentTimeMillis())
         }
     }
@@ -144,7 +142,7 @@ private fun <E> List<E>.splitIntoChunks(indices: List<Int>): MutableList<Mutable
     val result = mutableListOf<MutableList<E>>()
     var lastIndex = 0
     for (index in indices) {
-        result.add(subList(lastIndex, index+1).toMutableList())
+        result.add(subList(lastIndex, index + 1).toMutableList())
         lastIndex = index
     }
     result.add(subList(lastIndex, size).toMutableList())
@@ -182,12 +180,12 @@ private fun getUpdatedRelations(
     originalWay: Way,
     newWays: List<Way>,
     mapDataRepository: MapDataRepository
-) : Collection<Relation> {
+): Collection<Relation> {
     val relations = mapDataRepository.getRelationsForWay(originalWay.id)
     val result = ArrayList<Relation>()
     for (relation in relations) {
         val updatedRelationMembers = ArrayList<RelationMember>()
-       relation.members.forEachIndexed { i, relationMember ->
+        relation.members.forEachIndexed { i, relationMember ->
             if (relationMember.type == ElementType.WAY && relationMember.ref == originalWay.id) {
                 updatedRelationMembers.addAll(
                     getRelationMemberReplacements(relation, i, originalWay, newWays, mapDataRepository)
@@ -269,7 +267,7 @@ private fun Way.isOrientedForwardInOrderedRelation(
         if (isBeforeWayInChain(wayBefore)) return false
     }
 
-    val wayIdAfter = relation.members.findNext(indexInRelation+1) { it.type == ElementType.WAY }?.ref
+    val wayIdAfter = relation.members.findNext(indexInRelation + 1) { it.type == ElementType.WAY }?.ref
     val wayAfter = wayIdAfter?.let { mapDataRepository.getWay(it) }
     if (wayAfter != null) {
         if (isBeforeWayInChain(wayAfter)) return true

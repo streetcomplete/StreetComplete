@@ -14,3 +14,5 @@ fun EditText.allowOnlyNumbers() {
 }
 
 val EditText.numberOrNull get() = text.toString().trim().replace(",", ".").toDoubleOrNull()
+
+val EditText.intOrNull get() = text.toString().trim().toIntOrNull()

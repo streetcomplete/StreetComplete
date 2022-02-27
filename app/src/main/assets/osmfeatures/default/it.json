@@ -4290,11 +4290,11 @@
                     "name": "Stazione barche di salvataggio"
                 },
                 "emergency/lifeguard": {
-                    "name": "Salvamento",
+                    "name": "Bagnino",
                     "terms": "bagnino,bagnini,salvataggio,salvamento,cpr,rianimazione,massaggio cardiaco,respirazione,soccorso,acqua,mare"
                 },
                 "emergency/mountain_rescue": {
-                    "name": "Soccorso Alpino"
+                    "name": "Soccorso alpino"
                 },
                 "emergency/no": {
                     "name": "Nessun accesso di emergenza"
@@ -4303,8 +4303,8 @@
                     "name": "Ufficiale agli accessi di emergenza"
                 },
                 "emergency/phone": {
-                    "name": "Telefono di Emergenza",
-                    "terms": "telefono di emergenza"
+                    "name": "Telefono di emergenza",
+                    "terms": "emergenza,sos,telefono"
                 },
                 "emergency/private": {
                     "name": "Accesso di emergenza privato"
@@ -4312,6 +4312,12 @@
                 "emergency/siren": {
                     "name": "Sirena",
                     "terms": "attacco aereo,stridente,alto,rumore,temporale,tornado,segnalazione,allerta"
+                },
+                "emergency/water_reservoir": {
+                    "name": "Riserva idrica d'emergenza"
+                },
+                "emergency/water_reservoir_covered": {
+                    "name": "Riserva idrica sotterranea d'emergenza"
                 },
                 "emergency/water_tank": {
                     "name": "Serbatoio d'emergenza per l'acqua",
@@ -4328,12 +4334,12 @@
                     "terms": "porta antincendio,antincendio,incendio,fuoco"
                 },
                 "entrance/emergency_ward_entrance": {
-                    "name": "Ingresso del Pronto Soccorso",
-                    "terms": "ingrasso delle stanze dedicate alle emergenze"
+                    "name": "Ingresso del pronto soccorso",
+                    "terms": "ingresso,entrata,pronto soccorso"
                 },
                 "entrance/main": {
-                    "name": "Ingresso Principale",
-                    "terms": "entrata principale di un edificio"
+                    "name": "Ingresso principale",
+                    "terms": "ingresso,entrata,porta"
                 },
                 "ford": {
                     "name": "Guado",
@@ -4351,7 +4357,7 @@
                     "terms": "cart,golf,percorso,cammino,terreno,stradina"
                 },
                 "golf/clubhouse": {
-                    "name": "Clubhouse del Golf",
+                    "name": "Clubhouse di golf",
                     "terms": "centro delle attività del golf club"
                 },
                 "golf/driving_range": {
@@ -4415,7 +4421,7 @@
                     "terms": "donatori,sangue,banca dl sangue,trasfusioni,plasmaferesi,piastrinoaferesi,donazione"
                 },
                 "healthcare/counselling": {
-                    "name": "Centro di Consulenza"
+                    "name": "Centro d'ascolto"
                 },
                 "healthcare/dentist/orthodontics": {
                     "name": "Ortodontista"
@@ -4456,6 +4462,9 @@
                     "name": "Centro riabilitativo",
                     "terms": "riabilitazione,terapia,terapista"
                 },
+                "healthcare/sample_collection": {
+                    "name": "Centro per la raccolta di campioni"
+                },
                 "healthcare/speech_therapist": {
                     "name": "Logopedista",
                     "terms": "voce,parola,linguaggio,comunicazione,terapista,terapia"
@@ -4489,23 +4498,15 @@
                     "name": "Strisce pedonali",
                     "terms": "attraversamento,pedonale,zebrato,zebra,strisce"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Attraversamento pedonale (rialzato)",
-                    "terms": "zebra,zebrato,strisce,attraversamento,pedoni,piano,tavolo,pedonale,dosso,velocità,lento"
+                "highway/crossing/signals": {
+                    "name": "Attraversamento pedonale con semaforo"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Attraversamento pedonale non segnalato",
                     "terms": "pedone,pedoni,pedonale,attraversamento,punto,senza strisce,informale"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Attraversamento pedonale non segnalato (sopraelevato)",
-                    "terms": "tavolo,tabella,tabellone,dosso,velocità,piano,lento,attraversamento,pedone,pedonale"
-                },
                 "highway/crossing/zebra": {
                     "name": "Strisce pedonali"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Strisce pedonali (rialzate)"
                 },
                 "highway/cycleway": {
                     "name": "Percorso ciclabile",
@@ -4560,27 +4561,19 @@
                     "name": "Strisce pedonali",
                     "terms": "strisce,pedonale,pedoni,attraversamento pedonale,zebra,segnalato,incrocio"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Strisce  pedonali (rialzate)",
-                    "terms": "incrocio,attraversamento,strisce,zebra,rialzato,scalino,limitatore,velocità,piano,lento,sicurezza"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Marciapiede",
                     "terms": "marciapiedi"
+                },
+                "highway/footway/signals": {
+                    "name": "Attraversamento pedonale semaforico"
                 },
                 "highway/footway/unmarked": {
                     "name": "Attraversamento pedonale non segnalato",
                     "terms": "attraversamento,pedonale,percorso,sentiero,incrocio,non sengnalato,pericoloso"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Attraversamento pedonale non segnalato (sopraelevato)",
-                    "terms": "tavolo,tabellone,tabella,dosso,velocità,lento,piano,pedone,pedonale,punto"
-                },
                 "highway/footway/zebra": {
                     "name": "Strisce pedonali"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Strisce pedonali (rialzate)"
                 },
                 "highway/give_way": {
                     "name": "Dare la precedenza",
@@ -4603,10 +4596,14 @@
                     "terms": "autostrada"
                 },
                 "highway/motorway_junction": {
-                    "name": "Uscita/Svincolo da o verso Autostrada",
+                    "name": "Uscita autostradale",
                     "terms": "uscita autostradale"
                 },
                 "highway/motorway_link": {
+                    "name": "Svincolo autostradale",
+                    "terms": "svincolo,rampa,uscita,autostrada,ingresso"
+                },
+                "highway/motorway_link-US-CA": {
                     "name": "Svincolo autostradale",
                     "terms": "svincolo,rampa,uscita,autostrada,ingresso"
                 },
@@ -4622,7 +4619,7 @@
                     "name": "Passerella di legno"
                 },
                 "highway/path/informal": {
-                    "name": "Percorso Informale"
+                    "name": "Percorso informale"
                 },
                 "highway/pedestrian_area": {
                     "name": "Area pedonale",
@@ -4634,20 +4631,24 @@
                 },
                 "highway/primary": {
                     "name": "Primaria",
-                    "terms": "primaria"
+                    "terms": "autostrada,strada primaria"
                 },
                 "highway/primary_link": {
                     "name": "Svincolo primario",
                     "terms": "svincolo,rampa,ingresso,uscita"
                 },
+                "highway/primary_link-US-CA": {
+                    "name": "Svincolo primario",
+                    "terms": "svincolo,rampa,ingresso,uscita"
+                },
                 "highway/raceway": {
-                    "name": "Circuito per gli Sport motoristici"
+                    "name": "Circuito per sport motoristici"
                 },
                 "highway/raceway/karting": {
-                    "name": "Circuito di Karting"
+                    "name": "Circuito di karting"
                 },
                 "highway/raceway/motocross": {
-                    "name": "Circuito di Motocross"
+                    "name": "Circuito di motocross"
                 },
                 "highway/residential": {
                     "name": "Strada residenziale",
@@ -4729,11 +4730,11 @@
                     "terms": "svincolo,rampa"
                 },
                 "highway/toll_gantry": {
-                    "name": "Strada a Pedaggio senza casello",
+                    "name": "Strada a pedaggio senza casello",
                     "terms": "strada con sistema di pedaggio senza barriere"
                 },
                 "highway/track": {
-                    "name": "Strada ad uso agricolo / forestale",
+                    "name": "Strada non mantenuta",
                     "terms": "strada sterrata,strada forestale,strada agricola,abbandonata,fuoristrada,4x4,quattro ruote motrici,quad,atv,jeep"
                 },
                 "highway/traffic_mirror": {
@@ -5042,7 +5043,8 @@
                     "terms": "vigna"
                 },
                 "landuse/winter_sports": {
-                    "name": "Area sport invernali"
+                    "name": "Area sport invernali",
+                    "terms": "piste da sci,sciistiche,montagna,sci,snow board,tavola"
                 },
                 "leisure": {
                     "name": "Tempo libero"

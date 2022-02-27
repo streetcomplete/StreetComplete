@@ -51,7 +51,7 @@ class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
 
     fun religionPosition(osmValue: String): Int {
         val position = countryInfo.popularReligions.indexOf(osmValue)
-        if(position < 0) {
+        if (position < 0) {
             // not present at all in config, so should be put at the end
             return Integer.MAX_VALUE
         }

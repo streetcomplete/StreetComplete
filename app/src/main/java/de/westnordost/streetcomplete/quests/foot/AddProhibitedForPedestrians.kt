@@ -51,7 +51,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override fun createForm() = AddProhibitedForPedestriansForm()
 
     override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> tags["foot"] = "no"
             NO -> tags["foot"] = "yes"

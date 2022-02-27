@@ -46,8 +46,7 @@ fun main() = runBlocking {
         connection.setRequestProperty("User-Agent", "StreetComplete opening hours test")
         connection.setRequestProperty("charset", StandardCharsets.UTF_8.name())
         connection.doOutput = true
-        connection.inputStream.bufferedReader().useLines { lines ->
-            runBlocking {
+        connection.inputStream.bufferedReader().useLines { lines -> runBlocking {
             for (line in lines) { launch {
                 total++
                 var oh = line
@@ -81,22 +80,22 @@ fun main() = runBlocking {
                         if (r.any { it.weeks != null }) {
                             containsWeeks++
                         }
-                        if(r.any { it.times == null && !it.isTwentyfourseven && it.modifier == null }) {
+                        if (r.any { it.times == null && !it.isTwentyfourseven && it.modifier == null }) {
                             noHours++
                         }
-                        if(r.any { rule -> rule.holidays?.any { !it.isSupported() } == true }) {
+                        if (r.any { rule -> rule.holidays?.any { !it.isSupported() } == true }) {
                             complicatedHolidays++
                         }
-                        if(r.any { rule -> rule.days?.any { !it.isSupported() } == true}) {
+                        if (r.any { rule -> rule.days?.any { !it.isSupported() } == true }) {
                             complicatedWeekdayRanges++
                         }
-                        if(r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
+                        if (r.any { rule -> rule.times?.any { it.startEvent != null || it.endEvent != null } == true }) {
                             timeEvents++
                         }
-                        if(r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null  } == true }) {
+                        if (r.any { rule -> rule.times?.any { !it.isSupportedOpeningHours() && it.startEvent == null && it.endEvent == null } == true }) {
                             complicatedTimes++
                         }
-                        if(r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true}) {
+                        if (r.any { rule -> rule.dates?.any { !it.isSupportedOpeningHours() } == true }) {
                             complicatedDates++
                         }
                         if (r.all { it.isSupportedOpeningHours() } && r.weekdaysCollideWithAnother()) {

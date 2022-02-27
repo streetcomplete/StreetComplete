@@ -20,10 +20,9 @@ import okhttp3.Response
 import okhttp3.internal.Version
 import java.io.IOException
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 import kotlin.coroutines.resume
 
-class MapTilesDownloader @Inject constructor(
+class MapTilesDownloader(
     private val vectorTileProvider: VectorTileProvider,
     private val cacheConfig: MapTilesDownloadCacheConfig
 ) {

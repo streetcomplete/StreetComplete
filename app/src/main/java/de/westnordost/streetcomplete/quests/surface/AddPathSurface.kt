@@ -19,7 +19,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         and (!indoor or indoor = no)
         and (
           !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
             surface ~ paved|unpaved|cobblestone
@@ -47,7 +47,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override fun createForm() = AddPathSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is SurfaceAnswer -> {
                 answer.applyTo(tags, "surface")
             }

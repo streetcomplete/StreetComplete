@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.lang.System.currentTimeMillis
 import java.time.LocalDate
-
 
 class AddOpeningHoursTest {
 
@@ -86,7 +86,6 @@ class AddOpeningHoursTest {
         )
     }
 
-
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(
             RegularOpeningHours(OpeningHoursRuleList(listOf(
@@ -95,8 +94,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 },
                 Rule().apply {
@@ -104,8 +103,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.TU
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*12
-                        it.end = 60*24
+                        it.start = 60 * 12
+                        it.end = 60 * 24
                     })
                 })
             )),
@@ -122,12 +121,12 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 })
             )),
-            StringMapEntryModify("opening_hours", "hohoho","Mo 10:00-12:00")
+            StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")
         )
     }
 
@@ -140,8 +139,8 @@ class AddOpeningHoursTest {
                         it.startDay = WeekDay.MO
                     })
                     times = listOf(TimeSpan().also {
-                        it.start = 60*10
-                        it.end = 60*12
+                        it.start = 60 * 10
+                        it.end = 60 * 12
                     })
                 })
             )),
@@ -160,6 +159,39 @@ class AddOpeningHoursTest {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
         )))
+    }
+
+    @Test fun `isApplicableTo returns false for known places with recently edited opening hours`() {
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis())
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for known places with old opening hours`() {
+        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns false for closed shops with old opening hours`() {
+        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for parks with old opening hours`() {
+        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns false for toilets without opening hours`() {
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("amenity" to "toilets"), timestamp = currentTimeMillis())
+        ))
     }
 
     @Test fun `isApplicableTo returns true if the opening hours cannot be parsed`() {

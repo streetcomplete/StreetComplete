@@ -33,7 +33,7 @@ class AddLevelTest {
             mall,
             thingWithLevel("1"),
             thingWithLevel("0"),
-            shopWithoutLevel(p(0.24,0.5)),
+            shopWithoutLevel(p(0.24, 0.5)),
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -43,19 +43,19 @@ class AddLevelTest {
             mall,
             thingWithLevel("1"),
             thingWithLevel("0"),
-            shopWithoutLevel(p(0.5,0.5)),
+            shopWithoutLevel(p(0.5, 0.5)),
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 }
 
-private val P1 = p(0.25,0.25)
-private val P2 = p(0.25,0.75)
-private val P3 = p(0.75,0.75)
-private val P4 = p(0.75,0.25)
-private val PC = p(0.5,0.5)
+private val P1 = p(0.25, 0.25)
+private val P2 = p(0.25, 0.75)
+private val P3 = p(0.75, 0.75)
+private val P4 = p(0.75, 0.25)
+private val PC = p(0.5, 0.5)
 
-private val NODES1 = listOf<Long>(1,2,3,4,1)
+private val NODES1 = listOf<Long>(1, 2, 3, 4, 1)
 
 private val POSITIONS1 = ElementPolygonsGeometry(listOf(listOf(P1, P2, P3, P4, P1)), PC)
 

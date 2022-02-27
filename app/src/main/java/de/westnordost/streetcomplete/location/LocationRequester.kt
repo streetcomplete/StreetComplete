@@ -110,6 +110,9 @@ class LocationRequester(private val activity: Activity, activityResultCaller: Ac
     private fun broadcastPermissionRequestResult(result: Boolean) {
         val intent = Intent(REQUEST_LOCATION_PERMISSION_RESULT)
         intent.putExtra(GRANTED, result)
+        /* A use of a broadcast is deliberate because it should mimic the behavior of Android system
+           calls such as that the connectivity changed. There are components all over the app that
+           want to know when location is available */
         LocalBroadcastManager.getInstance(activity).sendBroadcast(intent)
     }
 

@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Tillåten åtkomst",
                     "options": {
+                        "customers": {
+                            "description": "Begränsat till kunder på destinationen",
+                            "title": "Kunder"
+                        },
                         "designated": {
                             "description": "Åtkomst tillåten enligt skyltar eller specifika lokala lagar",
                             "title": "Föredragen"
@@ -627,6 +631,13 @@
                 "crossing/light": {
                     "label": "Trafikljus"
                 },
+                "crossing_raised": {
+                    "label": "Upphöjd",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nej"
+                    }
+                },
                 "cuisine": {
                     "label": "Typer av mat",
                     "options": {
@@ -951,7 +962,13 @@
                 "embassy": {
                     "label": "Typ",
                     "options": {
+                        "branch_embassy": "Filial till en ambassad",
                         "delegation": "Delegation",
+                        "high_commission": "högkommissarie ",
+                        "interests_section": "Intressesektionen",
+                        "mission": "Diplomatisk beskickning",
+                        "nunciature": "Diplomatisk beskickning för den heliga stolen",
+                        "residence": "Officiell bostad för en ambassadör",
                         "yes": "Ambassad"
                     }
                 },
@@ -1691,7 +1708,11 @@
                     "label": "Par",
                     "placeholder": "3, 4, 5..."
                 },
+                "parcel_dropoff": {
+                    "label": "Avlämning av paket"
+                },
                 "parcel_pickup": {
+                    "label": "Uthämtning paket",
                     "options": {
                         "no": "Nej",
                         "undefined": "Förväntas vara Ja",
@@ -1958,8 +1979,6 @@
                         "cans": "Burkar",
                         "cardboard": "Kartong",
                         "clothes": "Kläder",
-                        "glass": "Glas",
-                        "glass_bottles": "Glasflaskor",
                         "green_waste": "Trädgårdsavfall",
                         "paper": "Papper",
                         "plastic_packaging": "Plastförpackningar",
@@ -1988,6 +2007,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "Gatenummer"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "Hålnummer",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "Hålnummer",
@@ -2186,6 +2209,17 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Kategori"
+                },
+                "seamark/rescue_station/category": {
+                    "label": "Livräddningsutrustning",
+                    "options": {
+                        "aircraft": "Flygplan",
+                        "first_aid": "Första hjälpen",
+                        "hovercraft": "Svävfarkost",
+                        "lifeboat": "Livbåt (på land)",
+                        "lifeboat_on_mooring": "Livbåt (vid en förtöjning)",
+                        "radio": "Radiostation"
+                    }
                 },
                 "seamark/type": {
                     "label": "Sjömärke",
@@ -4872,31 +4906,19 @@
                     "name": "Markerad gångpassage",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Markerad gångpassage (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerat övergångsställe (upphöjt),markerad gångpassage (upphöjt),markerad gångpassage,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/crossing/signals": {
                     "name": "Korsning med trafikljus för fotgängare",
                     "terms": "trafikljus för fotgängare,trafiksignaler för fotgängare,övergångsställe (trafiksignal),cykelöverfart (trafiksignal)"
                 },
-                "highway/crossing/signals-raised": {
-                    "name": "Korsning med trafikljus för fotgängare (upphöjd)",
-                    "terms": "korsning med trafikljus för fotgängare (upphöjd),trafikljus för fotgängare,trafiksignaler för fotgängare,övergångsställe (trafikljus),cykelöverfart (trafikljus),gupp,farthinder,fartgupp,fartpuckel,upphöjd,puckel,hastighet,långsam"
+                "highway/crossing/uncontrolled": {
+                    "name": "Markerat övergångsställe"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Omarkerad övergång",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Omarkerad övergång (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerat övergångsställe (upphöjt),omarkerad övergång (upphöjt),omarkerad övergång,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/crossing/zebra": {
                     "name": "Markerat övergångsställe"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)"
                 },
                 "highway/cycleway": {
                     "name": "Cykelväg",
@@ -4952,10 +4974,6 @@
                     "name": "Markerat övergångsställe",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerat övergångsställe (upphöjt),markerad gångpassage (upphöjt),markerad gångpassage,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoar",
                     "terms": "trottoar,gångbana,gångväg"
@@ -4964,15 +4982,8 @@
                     "name": "Omarkerad övergång",
                     "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Omarkerad övergång (upphöjt)",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerat övergångsställe (upphöjt),omarkerad övergång (upphöjt),omarkerad övergång,fartgupp,gupp,puckel,fartpuckel,farthinder"
-                },
                 "highway/footway/zebra": {
                     "name": "Markerat övergångsställe"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Markerat övergångsställe (upphöjt)"
                 },
                 "highway/give_way": {
                     "name": "Väjningsplikt",

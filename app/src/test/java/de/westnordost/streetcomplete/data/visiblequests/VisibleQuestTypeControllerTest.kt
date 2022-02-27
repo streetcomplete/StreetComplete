@@ -43,7 +43,6 @@ class VisibleQuestTypeControllerTest {
 
         listener = mock()
         ctrl.addListener(listener)
-
     }
 
     @Test fun `default visibility`() {

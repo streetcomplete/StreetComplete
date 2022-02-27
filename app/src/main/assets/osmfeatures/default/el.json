@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Επιτρεπόμενη Πρόσβαση",
                     "options": {
+                        "customers": {
+                            "description": "Περιορίζεται σe πελάτες στον προορισμό",
+                            "title": "Πελάτες"
+                        },
                         "designated": {
                             "description": "Επιτρεπόμενη Πρόσβαση που έγκειται σε Σήμανση ή Τοπική Νομοθεσία",
                             "title": "Καθορισμένο"
@@ -83,6 +87,10 @@
                             "description": "Επιτρεπόμενη Πρόσβαση με Άδεια του Ιδιοκτήτη",
                             "title": "Ιδιωτική"
                         },
+                        "unknown": {
+                            "description": "Οι συνθήκες πρόσβασης είναι άγνωστοι ή ασαφείς",
+                            "title": "Άγνωστο"
+                        },
                         "yes": {
                             "description": "Νόμιμη Επιτρεπόμενη Πρόσβαση",
                             "title": "Επιτρέπεται"
@@ -109,9 +117,18 @@
                         "permissive": "Επιτρεπτή",
                         "permit": "Μόνο με Άδεια",
                         "private": "Ιδιωτικό",
+                        "unknown": "Άγνωστο",
                         "yes": "Δημόσιο"
                     },
                     "terms": "επιτρεπόμενη πρόσβαση,προσβατό,προσπελάσιμο,προσιτό"
+                },
+                "activity": {
+                    "options": {
+                        "bicycle": "Ποδηλασία",
+                        "hiking": "Πεζοπορία",
+                        "horse": "Ιππασία",
+                        "mtb": "Ποδηλασία Βουνού"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Είδος",
@@ -414,9 +431,20 @@
                     "placeholder": "50, 100, 200...",
                     "terms": "χωρητικότητα"
                 },
+                "capacity/caravans": {
+                    "label": "Χωρητικότητα (Τροχόσπιτων)"
+                },
                 "capacity/disabled_parking": {
                     "label": "Προσβάσιμοι Χώροι",
                     "placeholder": "1, 2, 3..."
+                },
+                "capacity/persons": {
+                    "label": "Χωρητικότητα (Ατόμων)",
+                    "placeholder": "50, 100, 200..."
+                },
+                "capacity/tents": {
+                    "label": "Χωρητικότητα (Σκηνές)",
+                    "placeholder": "10, 20, 50..."
                 },
                 "capacity_parking": {
                     "label": "Συνολικές θέσεις",
@@ -430,7 +458,16 @@
                     "label": "Εξαργύρωση"
                 },
                 "castle_type": {
-                    "label": "Τύπος"
+                    "label": "Τύπος",
+                    "options": {
+                        "castrum": "Ρωμαϊκό Φρούριο",
+                        "defensive": "Αμυντικό Κάστρο",
+                        "fortress": "Φρούριο",
+                        "kremlin": "Κρέμλινο",
+                        "manor": "Αρχοντικό",
+                        "palace": "Παλάτι",
+                        "stately": "Αρχοντικό Σπίτι"
+                    }
                 },
                 "changing_table": {
                     "label": "Χώρος Αλλαγής Πάνας"
@@ -521,6 +558,14 @@
                     "label": "Σκεπασμένο",
                     "terms": "καλυμμένο,προστατευμένο"
                 },
+                "covered_no": {
+                    "label": "Καλλυμένο",
+                    "options": {
+                        "no": "Όχι",
+                        "undefined": "Υποτίθεται να είναι Όχι",
+                        "yes": "Ναι"
+                    }
+                },
                 "craft": {
                     "label": "Τύπος"
                 },
@@ -538,8 +583,28 @@
                 "crossing": {
                     "label": "Είδος"
                 },
+                "crossing/barrier": {
+                    "label": "Βραχίωνας Εμποδίου",
+                    "options": {
+                        "double_half": "Διπλό Μισό",
+                        "full": "Πλήρες",
+                        "half": "Μισό",
+                        "no": "Όχι",
+                        "yes": "Ναι"
+                    }
+                },
                 "crossing/island": {
                     "label": "Ποδηλατοδρόμος, Ποδηλατολωρίδα"
+                },
+                "crossing/light": {
+                    "label": "Φώτα"
+                },
+                "crossing_raised": {
+                    "label": "Ανυψωμένο",
+                    "options": {
+                        "table": "Ναι",
+                        "undefined": "Οχι"
+                    }
                 },
                 "cuisine": {
                     "label": "Κουζίνες",
@@ -547,22 +612,42 @@
                         "american": "Αμερικανική",
                         "asian": "Ασιατική",
                         "burger": "Μπιφτέκι",
+                        "cake": "Κέϊκ",
                         "chicken": "Κοτόπουλο",
                         "chinese": "Κινεζική",
+                        "chocolate": "Σοκολάτα",
                         "coffee_shop": "Καφεπολείο",
+                        "dessert": "Επιδόρπιο",
+                        "donut": "Λουκουμάς",
+                        "fish": "Ψάρι",
                         "french": "Γαλλική",
                         "german": "Γερμανική",
                         "greek": "Ελληνική",
                         "ice_cream": "Παγωτό",
                         "indian": "Ινδική",
+                        "indonesian": "Ινδονησιακή",
                         "italian": "Ιταλική",
                         "japanese": "Ιαπωνική",
+                        "juice": "Χυμός",
                         "kebab": "Κεμπάμπ",
+                        "korean": "Κορεατική",
+                        "lebanese": "Λιβανέζικη",
+                        "malaysian": "Μαλαισιανή",
                         "mexican": "Μεξικανική",
+                        "pankcake": "Τηγανίτα",
+                        "pasta": "Ζυμαρικά",
                         "pizza": "Πίτσα",
+                        "polish": "Πολωνική",
+                        "portuguese": "Πορτογαλική",
                         "regional": "Τοπική",
+                        "russian": "Ρωσική",
+                        "salad": "Σαλάτα",
                         "sandwich": "Σάντουιτς",
+                        "seafood": "Θαλασινά",
+                        "spanish": "Ισπανική",
+                        "steak_house": "Μπριζολάδικο",
                         "sushi": "Σούσι",
+                        "taiwanese": "Ταϊβανέζικη",
                         "thai": "Ταιλανδέζικη",
                         "turkish": "Τουρκική",
                         "vietnamese": "Βιετναμέζικη"
@@ -708,6 +793,15 @@
                     "placeholder": "45, 90, 180, 270",
                     "terms": "κατεύθυνση"
                 },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "Κατεύθυνση",
+                    "options": {
+                        "east": "Κατευθυνόμενος ανατολικά",
+                        "north": "Κατευθυνόμενος βόρεια",
+                        "south": "Κατευθυνόμενος νότια",
+                        "west": "Κατευθυνόμενος δυτικά"
+                    }
+                },
                 "direction_clock": {
                     "label": "Κατεύθυνση",
                     "options": {
@@ -792,6 +886,12 @@
                     "placeholder": "00:00",
                     "terms": "διάρκεια,χρονική περίοδος"
                 },
+                "ele": {
+                    "label": "Υψόμετρο (Μέτρα)"
+                },
+                "ele_node": {
+                    "label": "Υψόμετρο (Μέτρα)"
+                },
                 "electrified": {
                     "label": "Ηλεκτροδότηση",
                     "options": {
@@ -813,7 +913,12 @@
                     "placeholder": "Προκαθορισμένο"
                 },
                 "embassy": {
-                    "label": "Τύπος"
+                    "label": "Τύπος",
+                    "options": {
+                        "delegation": "Αντιπροσωπεία",
+                        "mission": "Διπλωματική Αποστολή",
+                        "yes": "Πρεσβεία"
+                    }
                 },
                 "emergency": {
                     "label": "Επείγοντα"
@@ -885,8 +990,14 @@
                     "label": "Διορθώστε με",
                     "terms": "διόρθωσε με,έλεγξέ με"
                 },
+                "flag/name": {
+                    "label": "Όνομα Σημαίας"
+                },
                 "flag/type": {
                     "label": "Είδος Σημαίας"
+                },
+                "flag/wikidata": {
+                    "label": "Wikidata Σημαίας"
                 },
                 "floating": {
                     "label": "Πλωτός"
@@ -1249,7 +1360,7 @@
                     "options": {
                         "indoor": "Εσωτερικός Χώρος",
                         "outdoor": "Εξωτερικός Χώρος",
-                        "roof": "Ταράτσα"
+                        "roof": "Σκεπή"
                     }
                 },
                 "lock": {
@@ -1257,6 +1368,9 @@
                 },
                 "lockable": {
                     "label": "Κλείδωμα"
+                },
+                "locked": {
+                    "label": "Κλειδωμένο"
                 },
                 "man_made": {
                     "label": "Είδος"
@@ -1499,7 +1613,7 @@
                         "garage_boxes": "Τετράγωνο Παρκαρίσματος",
                         "lane": "Πλευρική Λωρίδα",
                         "multi-storey": "Πολυεπίπεδο",
-                        "rooftop": "Οροφή",
+                        "rooftop": "Ταράτσα",
                         "sheds": "Υπόστεγα",
                         "surface": "Υλικό Επίστρωσης",
                         "underground": "Υπόγειο"
@@ -3466,7 +3580,7 @@
                     "name": "Κτίριο Λιανεμπορίου"
                 },
                 "building/roof": {
-                    "name": "Στέγη"
+                    "name": "Διαμπερές Στέγασμα"
                 },
                 "building/ruins": {
                     "name": "Ερείπια Κτιρίου"
@@ -3635,7 +3749,7 @@
                     "name": "Συναρμολογητής"
                 },
                 "craft/roofer": {
-                    "name": "Στεγαστής"
+                    "name": "Τεχνίτης Στεγών"
                 },
                 "craft/saddler": {
                     "name": "Σαμαράς"
@@ -3887,20 +4001,11 @@
                 "highway/crossing/marked": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Διάβαση Πεζών (Υπερυψωμένη)"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Διασταύρωση χωρίς Διαγράμμιση"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Διασταύρωση χωρίς Διαγράμμιση (Υπερυψωμένη)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Διάβαση Πεζών / Ζέβρα (Υπερυψωμένη)"
                 },
                 "highway/cycleway": {
                     "name": "Ποδηλατόδρομος",
@@ -3932,7 +4037,7 @@
                     "name": "Χώρος Στάθμευσης Εκτάκτου Ανάγκης"
                 },
                 "highway/footway": {
-                    "name": "Δρομάκι Πεζών",
+                    "name": "Μονοπάτι Πεζοπορίας",
                     "terms": "μονοπάτι,διαδρομή πεζού,πεζοδρόμιο,πεζόδρομος,βόλτα"
                 },
                 "highway/footway/access_aisle": {
@@ -3947,23 +4052,14 @@
                 "highway/footway/marked": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Διάβαση Πεζών (Υπερυψωμένη)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Πεζοδρόμιο"
                 },
                 "highway/footway/unmarked": {
                     "name": "Μη Διαγραμμισμένη Διάβαση Πεζών"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Μη Διαγραμμισμένη Διάβαση Πεζών (Υπερυψωμένη)"
-                },
                 "highway/footway/zebra": {
                     "name": "Διάβαση Πεζών / Ζέβρα"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Διάβαση Πεζών (Υπερυψωμένη)"
                 },
                 "highway/give_way": {
                     "name": "Σήμανση Παραχώρησης Προτεραιότητας"
@@ -3991,14 +4087,14 @@
                     "name": "Πέρασμα"
                 },
                 "highway/path": {
-                    "name": "Δρομάκι χωρίς μηχανοκίνηση",
+                    "name": "Μονοπάτι",
                     "terms": "διαδρομή,μονοπάτι"
                 },
                 "highway/path/boardwalk": {
                     "name": "Θαλάσσιος Περίπατος"
                 },
                 "highway/path/informal": {
-                    "name": "Ανεπίσημη Διαδρομή"
+                    "name": "Ανεπίσημο Μονοπάτι"
                 },
                 "highway/pedestrian_area": {
                     "name": "Πεζοδρομημένη Περιοχή"
@@ -5288,22 +5384,28 @@
                     "terms": "γραμμή χαμηλότερης ισχύος ρεύματος,γραμμή παροσ΄χης ρεύματος χαμηλότερης ισχύος"
                 },
                 "power/plant": {
-                    "name": "Ηλεκτρικός Σταθμός"
+                    "name": "Ηλεκτροπαραγωγός Σταθμός"
                 },
                 "power/plant/source/coal": {
-                    "name": "Ηλεκτροπαραγωγικός Σταθμός Άνθρακα"
+                    "name": "Ηλεκτροπαραγωγός Σταθμός Λιγνίτη"
                 },
                 "power/plant/source/gas": {
-                    "name": "Ηλεκτροπαραγωγικός Σταθμός Άερίου"
+                    "name": "Ηλεκτροπαραγωγός Σταθμός Αερίου"
                 },
                 "power/plant/source/hydro": {
-                    "name": "Υδροηλεκτρικός Σταθμός"
+                    "name": "Υδροηλεκτρικός σταθμός"
                 },
                 "power/plant/source/nuclear": {
                     "name": "Πυρηνικός Ηλεκτροπαραγωγικός Σταθμός"
                 },
+                "power/plant/source/oil": {
+                    "name": "Ηλεκτροπαραγωγός Σταθμός Πετρελαίου"
+                },
                 "power/plant/source/solar": {
                     "name": "Ηλιακή Φάρμα"
+                },
+                "power/plant/source/waste": {
+                    "name": "Ηλεκτροπαραγωγός Σταθμός Αποβλήτων"
                 },
                 "power/plant/source/wind": {
                     "name": "Αιολική Φάρμα"
@@ -5396,7 +5498,7 @@
                     "name": "Σταθμός Υπόγειου Σιδηρόδρομου / Μετρό"
                 },
                 "public_transport/station_train": {
-                    "name": "Σιδηροδρομικός Σταθμός δίπλα στη διαδρομή"
+                    "name": "Σιδηροδρομικός Σταθμός"
                 },
                 "public_transport/station_train_halt": {
                     "name": "Σιδηροδρομικός Σταθμός ( Σε Παραγγελία Στάσης )"
@@ -5426,7 +5528,7 @@
                     "name": "Τοποθεσία Στάσης Υπόγειου Σιδηρόδρομου πάνω στις ράγες"
                 },
                 "public_transport/stop_position_train": {
-                    "name": "Τοποθεσία Στάσης Τρένου πάνω στη διαδρομή"
+                    "name": "Τοποθεσία Στάσης Τρένου"
                 },
                 "public_transport/stop_position_tram": {
                     "name": "Τοποθεσία Στάσης Τραμ πάνω στις ράγες"
@@ -5474,7 +5576,7 @@
                     "name": "Σιδηροτροχιές Στενού Εύρους"
                 },
                 "railway/platform": {
-                    "name": "Αποβάθρα Τρένου δίπλα στη διαδρομή"
+                    "name": "Αποβάθρα Τρένου"
                 },
                 "railway/preserved": {
                     "name": "Σιδηροτροχιές Μουσειακού Σιδηρόδρομου"
@@ -5492,7 +5594,7 @@
                     "name": "Σιδηροδρομικό Σήμα"
                 },
                 "railway/station": {
-                    "name": "Σταθμός Τρένου δίπλα στη διαδρομή"
+                    "name": "Σταθμός Τρένου"
                 },
                 "railway/subway": {
                     "name": "Σιδηροτροχιές Υπόγειου Σιδηρόδρομου"
@@ -5689,6 +5791,9 @@
                     "name": "Καφεκοπτείο",
                     "terms": "καφεκοπτείο"
                 },
+                "shop/collector": {
+                    "name": "Κατάστημα για Συλλέκτες"
+                },
                 "shop/computer": {
                     "name": "Κατάστημα Υπολογιστών",
                     "terms": "κατάστημα ηλεκτρονικών υπολογιστών"
@@ -5709,6 +5814,9 @@
                 },
                 "shop/country_store": {
                     "name": "Είδη Εξοχής"
+                },
+                "shop/craft": {
+                    "name": "Κατάστημα Τέχνης & Χειροτεχνίας"
                 },
                 "shop/curtain": {
                     "name": "Είδη Κουρτίνας"

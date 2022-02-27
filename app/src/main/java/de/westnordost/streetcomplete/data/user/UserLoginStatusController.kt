@@ -3,13 +3,11 @@ package de.westnordost.streetcomplete.data.user
 import de.westnordost.osmapi.OsmConnection
 import oauth.signpost.OAuthConsumer
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class UserLoginStatusController @Inject constructor(
+class UserLoginStatusController(
     private val oAuthStore: OAuthStore,
     private val osmConnection: OsmConnection,
-): UserLoginStatusSource {
+) : UserLoginStatusSource {
 
     private val listeners: MutableList<UserLoginStatusSource.Listener> = CopyOnWriteArrayList()
 

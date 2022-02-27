@@ -37,19 +37,17 @@ import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
-@Singleton class OsmQuestController @Inject internal constructor(
+class OsmQuestController internal constructor(
     private val db: OsmQuestDao,
     private val hiddenDB: OsmQuestsHiddenDao,
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
-): OsmQuestSource {
+) : OsmQuestSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -96,7 +94,7 @@ import javax.inject.Singleton
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
                 val seconds = (currentTimeMillis() - time) / 1000.0
-                Log.i(TAG,"Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
+                Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
                 updateQuests(quests, obsoleteQuestKeys)
@@ -176,7 +174,7 @@ import javax.inject.Singleton
         val quests = runBlocking { deferredQuests.awaitAll().flatten() }
 
         val seconds = (currentTimeMillis() - time) / 1000.0
-        Log.i(TAG,"Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
+        Log.i(TAG, "Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 
         return quests
     }
@@ -200,7 +198,7 @@ import javax.inject.Singleton
                     Log.d(TAG, "${questType::class.simpleName!!} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
                     val mapData = withContext(Dispatchers.IO) { lazyMapData }
                     appliesToElement = questType.getApplicableElements(mapData)
-                        .any{ it.id == element.id && it.type == element.type }
+                        .any { it.id == element.id && it.type == element.type }
                 }
                 if (!appliesToElement) return@async null
 
@@ -250,7 +248,7 @@ import javax.inject.Singleton
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
-        if (!countryBoundariesFuture.get().isInAny(pos, countries))  return false
+        if (!countryBoundariesFuture.get().isInAny(pos, countries)) return false
 
         return true
     }
@@ -427,7 +425,7 @@ private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
  *  evaluate are evaluated first. This is a performance improvement because the evaluation is done
  *  in parallel on as many threads as there are CPU cores. So if all threads are done except one,
  *  all have to wait for that one thread. So, better enqueue the expensive work at the beginning. */
-private val OsmElementQuestType<*>.chonkerIndex: Int get() = when(this) {
+private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
     is AddOpeningHours -> 0 // OpeningHoursParser, extensive filter
     is AddSuspectedOneway -> 0 // Download, IO TODO
     is CheckExistence -> 1 // FeatureDictionary, extensive filter

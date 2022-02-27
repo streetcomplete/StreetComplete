@@ -8,14 +8,12 @@ import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** This has nothing to do with Android notifications. Android reserves far too many keywords for
  *  itself, really.
  *  This class is to access user notifications, which are basically dialogs that pop up when
  *  clicking on the bell icon, such as "you have a new OSM message in your inbox" etc. */
-@Singleton class NotificationsSource @Inject constructor(
+class NotificationsSource(
     private val userDataController: UserDataController,
     private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
@@ -118,4 +116,3 @@ import javax.inject.Singleton
         }
     }
 }
-

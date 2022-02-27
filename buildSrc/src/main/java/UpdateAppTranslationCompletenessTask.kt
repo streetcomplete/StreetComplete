@@ -29,10 +29,10 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
                 targetFile.writeText("""
                     <?xml version="1.0" encoding="utf-8"?>
                     <resources>
-                      <integer name="translation_completeness">${completedPercentage}</integer>
+                      <integer name="translation_completeness">$completedPercentage</integer>
                     </resources>
 
-                    """.trimIndent())
+                """.trimIndent())
             }
         }
     }

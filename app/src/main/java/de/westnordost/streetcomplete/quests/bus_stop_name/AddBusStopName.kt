@@ -34,7 +34,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override fun createForm() = AddBusStopNameForm()
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is NoBusStopName -> {
                 tags["name:signed"] = "no"
             }

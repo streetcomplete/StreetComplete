@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.meta
 
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+
 /** Definitions/meanings of certain OSM taggings  */
 
 val ANYTHING_UNPAVED = setOf(
@@ -112,8 +114,8 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *  Note: When this function is modified, please update and rerun this too:
  *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/Makefile
  *  */
-fun isKindOfShopExpression(prefix: String? = null): String {
-    val p = if(prefix != null) "$prefix:" else ""
+fun isShopExpressionFragment(prefix: String? = null): String {
+    val p = if (prefix != null) "$prefix:" else ""
     return ("""
         ${p}shop and ${p}shop !~ no|vacant|mall
         or ${p}tourism = information and ${p}information = office
@@ -133,8 +135,61 @@ fun isKindOfShopExpression(prefix: String? = null): String {
             ),
             "craft" to arrayOf(
                 "shoemaker", "tailor", "photographer", "watchmaker", "optician",
-                "electronics_repair", "key_cutter",
+                "electronics_repair", "key_cutter", "dressmaker", "jeweller", "signmaker",
+                "clockmaker"
             )
         ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
-        ).trimIndent()
+    ).trimIndent()
+}
+
+/** Expression to see if an element is some kind of shop, disused or not */
+val IS_SHOP_OR_DISUSED_SHOP_EXPRESSION = """
+    nodes, ways, relations with
+      ${isShopExpressionFragment()}
+      or ${isShopExpressionFragment("disused")}
+      or shop = vacant
+""".toElementFilterExpression()
+
+/** Expression to see if an element is some kind active, non-vacant shop */
+val IS_SHOP_EXPRESSION =
+    "nodes, ways, relations with ${isShopExpressionFragment()}".toElementFilterExpression()
+
+/** Expression to see if an element is an area. disused:X is an area too if X is an area. */
+val IS_AREA_EXPRESSION = """
+    ways with
+      area = yes
+      or area != no and (
+        ${isAreaExpressionFragment()}
+        or ~"disused:.*" and (${isAreaExpressionFragment("disused")})
+      )
+""".toElementFilterExpression()
+
+private fun isAreaExpressionFragment(prefix: String? = null): String {
+    val p = if (prefix != null) "$prefix:" else ""
+    /* roughly sorted by occurrence count */
+    return """
+        ${p}building
+        or ${p}landuse
+        or ${p}natural ~ wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|water|wetland|glacier|beach|rock|sinkhole
+        or ${p}amenity
+        or (${p}leisure and ${p}leisure != track)
+        or ${p}shop
+        or ${p}man_made ~ beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|communications_tower|monitoring_station|street_cabinet|pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works
+        or ${p}boundary
+        or ${p}tourism
+        or ${p}building:part
+        or ${p}place
+        or ${p}power ~ compensator|converter|generator|plant|substation
+        or ${p}aeroway
+        or ${p}historic
+        or ${p}public_transport
+        or ${p}office
+        or (${p}emergency and ${p}emergency !~ yes|no)
+        or ${p}railway ~ platform|station
+        or ${p}craft
+        or ${p}waterway ~ boatyard|dam|dock|riverbank|fuel
+        or ${p}cemetery ~ sector|grave
+        or (${p}military and ${p}military != trench)
+        or ${p}aerialway = station
+    """.trimIndent()
 }

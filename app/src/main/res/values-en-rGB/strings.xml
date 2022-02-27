@@ -54,6 +54,8 @@
     <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -609,6 +611,8 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_ferry_motor_vehicle_title">"Does this ferry route transport motor vehicles?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adding a photo will make the note much more useful."</string>
     <string name="quest_postboxCollectionTimes_name_title">"What are the collection times of this %s postbox?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Best write the note in the locally spoken language or otherwise in English."</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
@@ -813,7 +817,6 @@ levels"</string>
     <string name="quest_board_type_notice_board">"It is a notice board"</string>
     <string name="quest_board_type_public_transport">"Public transport"</string>
     <string name="quest_board_type_title">"What is the topic of this information board?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Yes, displayed separately on map"</string>
     <string name="quest_board_type_map">"It is a map"</string>
     <string name="quest_board_type_map_title">"Is it just a map and only a map?"</string>
     <string name="quest_board_type_map_description">"If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead."</string>
@@ -954,6 +957,8 @@ Note all the available options: some cases are not obvious, like a one way road 
     <!-- It's not what type of bikes e.g. tandem, unicycle, but who (customers, private etc) -->
     <string name="quest_bicycle_parking_access_title">"Is it restricted who may park a bike here?"</string>
     <string name="quest_bicycle_parking_fee_title">"Is there a fee to park bikes here?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"not detached house"</string>
     <string name="quest_drinking_water_title">"Is the water safe to drink here? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
@@ -1161,4 +1166,86 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_fireHydrant_position_sidewalk">"On the pavement"</string>
     <string name="quest_fireHydrant_position_parking_lot">"In a parking spot"</string>
     <string name="quest_fireHydrant_diameter_ref_title">"What diameter is specified on the sign for this fire hydrant? (reference number: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Yes (leave note)"</string>
+    <string name="quest_smoothness_name_title">"What is the surface quality of %s here?"</string>
+    <string name="quest_smoothness_square_title">"What is the surface quality of this square?"</string>
+    <string name="quest_smoothness_path_title">"What is the surface quality of this path here?"</string>
+    <string name="quest_smoothness_road_title">"What is the surface quality of this road here?"</string>
+    <string name="quest_smoothness_title_excellent">"Smooth and even"</string>
+    <string name="quest_smoothness_title_good">"Mostly even"</string>
+    <string name="quest_smoothness_title_intermediate">"A little bumpy"</string>
+    <string name="quest_smoothness_title_bad">"Bumpy"</string>
+    <string name="quest_smoothness_title_very_bad">"Very bumpy"</string>
+    <string name="quest_smoothness_title_horrible">"Very bumpy and uneven"</string>
+    <string name="quest_smoothness_title_very_horrible">"Almost impassable"</string>
+    <string name="quest_smoothness_title_impassable">"Impassable"</string>
+    <string name="quest_smoothness_description_excellent_paved">"No bumps or cracks"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Almost seamless"</string>
+    <string name="quest_smoothness_description_good_paved">"Only small cracks, gaps, repairs or a little rough surface"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Shallow or narrow gaps"</string>
+    <string name="quest_smoothness_description_good_sett">"Unusually flat stones, regular pattern, very shallow or narrow gaps"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"Unusually rough surface, wider gaps, cracks, shallow ruts, potholes or other damage"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Wider gaps, possibly some displaced stones or other damage"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Flat stones or with square edges, shallow or narrow gaps"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Fine gravel, shallow bumps or potholes"</string>
+    <string name="quest_smoothness_description_bad_paved">"Big gaps, potholes, ruts, crumbled paving or other damage"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"Displaced stones, big gaps or other damage"</string>
+    <string name="quest_smoothness_description_bad_sett">"Weathered stone or irregular shapes, big gaps or damage"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Some bigger gravel, bumps, ruts or potholes"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Deep potholes, ruts or other dangerous damage"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Big gaps, displaced, missing or irregularly shaped stones or dangerous damage"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Missing and broken stones, gaps or other dangerous damage"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Some large stones, deep potholes, bumps, ruts, erosion or other dangerous damage"</string>
+    <string name="quest_smoothness_description_horrible">"Properly usable only by off-road vehicles or on foot"</string>
+    <string name="quest_smoothness_description_very_horrible">"Properly usable only by specialized off-road vehicles or on foot"</string>
+    <string name="quest_smoothness_description_impassable">"Unfit for any vehicle, only passable on foot"</string>
+    <string name="quest_smoothness_wrong_surface">"Surface is different"</string>
+    <string name="quest_smoothness_surface_value">"The surface was tagged as:"</string>
+    <string name="quest_smoothness_obstacle">"There is an obstacle"</string>
+    <string name="quest_smoothness_obstacle_hint">"Please provide a general answer for the smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single damages."</string>
+    <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that allows vehicles to stop safely completely beside the traffic lane, though not always (fully) on paved surface."</string>
+    <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
+    <string name="achievement_lifesaver_title">"Lifesaver"</string>
+    <string name="achievement_lifesaver_solved_X">"You solved %d quests that help emergency services and first responders!"</string>
+    <string name="quest_fuelSelfService_title">"Can you pump fuel yourself at this fuel station?"</string>
+    <string name="quest_fuelSelfService_name_title">"Can you pump fuel yourself at %s?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"This quest type is disabled by default because it is quite time-consuming and often difficult to make the right choice. You should only enable this quest type if you are really committed to add this kind of data."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Hard-packed, very little loose gravel or sand"</string>
+    <string name="quest_barrier_path_intersection">"How does this path cross the barrier here?"</string>
+    <string name="quest_barrier_road_intersection">"How does this road cross the barrier here?"</string>
+    <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
+    <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
+    <string name="quest_openingHours_signed_name_title">"Are the opening hours signed for %s?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Are the opening hours signed for %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Are the opening hours of this place signed? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"displayed separately on map"</string>
+    <string name="quest_shoulder_value_yes">"shoulder"</string>
+    <string name="quest_shoulder_value_no">"no shoulder"</string>
+    <string name="no_camera_permission_warning_title">"Camera permission"</string>
+    <string name="no_camera_permission_warning">"The permission is necessary to be able to measure distances with the camera."</string>
+    <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
+    <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Too dark here"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Too much movement"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Insufficient visual features here"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Camera is used by another app"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Handlebar holder"</string>
+    <string name="quest_bicycle_parking_access_title2">"Who is allowed to park a bicycle here? Parking may be free or paid."</string>
+    <string name="quest_playground_access_title2">"Who is allowed to use this playground?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Where is this fire hydrant located? (reference number: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Selecting that pavements are missing"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_side_select_interface_explanation">"Tap one side and select the matching answer.
+Do the same for the other side if present."</string>
+    <string name="ar_measure">"Measure"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Too steep angle, step away a bit"</string>
+    <string name="default_disabled_msg_no_ar">"You need a tape measure to solve this quest because measuring with the camera is not supported on this device."</string>
+    <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
+    <string name="quest_road_width_title">"What’s the width of this road here?"</string>
+    <string name="quest_road_width_explanation">"The carriageway width from kerb to kerb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the carriageway."</string>
+    <string name="quest_sidewalk_answer_none">"No pavement at all"</string>
+    <string name="about_description_donate_google_play">"Thank you for considering to support this app!
+Due to a Google Play Store policy, the donation links may not be displayed in-app, but you will find any information regarding this project, including how to sponsor this app’s development, in its home:"</string>
 </resources>

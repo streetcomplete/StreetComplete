@@ -40,9 +40,9 @@ class WayDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun putOverwritesAlsoNodeIds() {
-        dao.put(way(0, nodeIds = listOf(1,2,3)))
-        dao.put(way(0, nodeIds = listOf(5,3,1,132)))
-        assertEquals(listOf<Long>(5,3,1,132), dao.get(0)!!.nodeIds.toList())
+        dao.put(way(0, nodeIds = listOf(1, 2, 3)))
+        dao.put(way(0, nodeIds = listOf(5, 3, 1, 132)))
+        assertEquals(listOf<Long>(5, 3, 1, 132), dao.get(0)!!.nodeIds.toList())
     }
 
     @Test fun getNull() {
@@ -64,36 +64,40 @@ class WayDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAll() {
-        val e1 = way(1, nodeIds = listOf(1,2,3,12))
-        val e2 = way(2, nodeIds = listOf(5,1233,564))
-        val e3 = way(3, nodeIds = listOf(8,1654))
-        dao.putAll(listOf(e1,e2,e3))
+        val e1 = way(1, nodeIds = listOf(1, 2, 3, 12))
+        val e2 = way(2, nodeIds = listOf(5, 1233, 564))
+        val e3 = way(3, nodeIds = listOf(8, 1654))
+        dao.putAll(listOf(e1, e2, e3))
         assertEquals(
             listOf(e1, e2),
-            dao.getAll(listOf(1,2,4)).sortedBy { it.id }
+            dao.getAll(listOf(1, 2, 4)).sortedBy { it.id }
         )
         assertEquals(
-            listOf(e1,e2,e3),
-            dao.getAll(listOf(1,2,3)).sortedBy { it.id }
+            listOf(e1, e2, e3),
+            dao.getAll(listOf(1, 2, 3)).sortedBy { it.id }
         )
     }
 
     @Test fun deleteAll() {
         dao.putAll(listOf(way(1), way(2), way(3)))
-        assertEquals(2, dao.deleteAll(listOf(1,2,4)))
+        assertEquals(2, dao.deleteAll(listOf(1, 2, 4)))
         assertNotNull(dao.get(3))
         assertNull(dao.get(1))
         assertNull(dao.get(2))
     }
 
     @Test fun getAllForNode() {
-        val e1 = way(1, nodeIds = listOf(1,2,3))
-        val e2 = way(2, nodeIds = listOf(5,1233,1))
-        val e3 = way(3, nodeIds = listOf(8,1654))
-        dao.putAll(listOf(e1,e2,e3))
+        val e1 = way(1, nodeIds = listOf(1, 2, 3))
+        val e2 = way(2, nodeIds = listOf(5, 1233, 1))
+        val e3 = way(3, nodeIds = listOf(8, 1654))
+        dao.putAll(listOf(e1, e2, e3))
         assertEquals(
             listOf(e1, e2),
             dao.getAllForNode(1).sortedBy { it.id }
+        )
+        assertEquals(
+            listOf(e2, e3),
+            dao.getAllForNodes(listOf(5, 8)).sortedBy { it.id }
         )
     }
 
@@ -112,14 +116,14 @@ class WayDaoTest : ApplicationDbTestCase() {
     @Test fun clear() {
         dao.putAll(listOf(way(1L), way(2L), way(3L)))
         dao.clear()
-        assertTrue(dao.getAll(listOf(1L,2L,3L)).isEmpty())
+        assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
     }
 }
 
 private fun way(
     id: Long = 1L,
     version: Int = 1,
-    nodeIds: List<Long> = listOf(1,2,3),
-    tags: Map<String,String> = emptyMap(),
+    nodeIds: List<Long> = listOf(1, 2, 3),
+    tags: Map<String, String> = emptyMap(),
     timestamp: Long = 123L
 ) = Way(id, nodeIds, tags, version, timestamp)

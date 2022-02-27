@@ -12,7 +12,7 @@ import kotlin.math.tan
 
 /** X and Y position of a tile */
 @Serializable
-data class TilePos(val x: Int, val y:Int) {
+data class TilePos(val x: Int, val y: Int) {
     /** Returns this tile rect as a bounding box */
     fun asBoundingBox(zoom: Int): BoundingBox {
         return BoundingBox(
@@ -23,7 +23,7 @@ data class TilePos(val x: Int, val y:Int) {
         )
     }
 
-    fun toTilesRect() = TilesRect(x,y,x,y)
+    fun toTilesRect() = TilesRect(x, y, x, y)
 }
 
 /** Returns the minimum rectangle of tiles that encloses all the tiles */
@@ -88,11 +88,9 @@ fun BoundingBox.asBoundingBoxOfEnclosingTiles(zoom: Int): BoundingBox {
 fun BoundingBox.enclosingTilesRect(zoom: Int): TilesRect {
     return if (crosses180thMeridian) {
         splitAt180thMeridian().first().enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
-    }
-    else {
+    } else {
         enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
     }
-
 }
 
 private fun BoundingBox.enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom: Int): TilesRect {

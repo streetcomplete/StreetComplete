@@ -18,10 +18,10 @@ class SearchAdapter<T>(
     private val filter = SearchFilter()
 
     private var items: List<T> = emptyList()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun getCount(): Int = items.size
     override fun getItem(position: Int): T = items[position]

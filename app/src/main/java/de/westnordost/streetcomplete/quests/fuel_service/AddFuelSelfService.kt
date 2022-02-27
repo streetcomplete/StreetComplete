@@ -22,7 +22,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
 
     override val questTypeAchievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) : Int {
+    override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
         val hasBrand = tags.containsKey("brand")
         return when {

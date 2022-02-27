@@ -90,67 +90,67 @@ fun OpeningHoursRuleList.isSupportedCollectionTimes(): Boolean = rules.isSupport
 @JvmName("isSupportedRuleList")
 fun List<Rule>.isSupportedOpeningHours(): Boolean =
     // all rules must be supported
-    all { it.isSupportedOpeningHours() } &&
+    all { it.isSupportedOpeningHours() }
     // this kind of opening hours specification likely require fix
     // anyway, it is not representable directly by SC
-    (!weekdaysCollideWithAnother())
+    && !weekdaysCollideWithAnother()
 
 /** Returns true if the collection times are supported by StreetComplete
  * Returns false otherwise, in cases where it is not directly representable */
 @JvmName("isSupportedCollectionTimesRuleList")
 fun List<Rule>.isSupportedCollectionTimes(): Boolean =
     // all rules must be supported
-    all { it.isSupportedCollectionTimes() } &&
+    all { it.isSupportedCollectionTimes() }
         // this kind of collection times specification likely require fix
         // anyway, it is not representable directly by SC
-        (!weekdaysCollideWithAnother())
+        && !weekdaysCollideWithAnother()
 
 fun Rule.isSupportedOpeningHours(): Boolean =
-    !isEmpty &&
+    !isEmpty
     // 24/7 not supported
-    !isTwentyfourseven &&
+    && !isTwentyfourseven
     // comments not supported
-    comment == null &&
+    && comment == null
     // fallback rules are not supported
-    !isFallBack &&
+    && !isFallBack
     // "1995-1998 08:00-11:00" not supported
-    years == null &&
+    && years == null
     // "05-08 08:00-11:00" not supported
-    weeks == null &&
-    (
+    && weeks == null
+    && (
         // for normal rules, only "Mo-Fr" not supported. "open" modifier is ok as long as it does not have a comment
-        (modifier == null || modifier!!.isSimpleOpen()) && !times.isNullOrEmpty() ||
-        // "off"/"closed" only compatible without comment and no times
-        (modifier != null && times.isNullOrEmpty() && modifier!!.isSimpleOff())
-    ) &&
+        (modifier == null || modifier!!.isSimpleOpen()) && !times.isNullOrEmpty()
+            // "off"/"closed" only compatible without comment and no times
+            || (modifier != null && times.isNullOrEmpty() && modifier!!.isSimpleOff())
+        )
     // all sub-elements must be supported if specified
-    holidays?.all { it.isSupported() } ?: true &&
-    days?.all { it.isSupported() } ?: true &&
-    times?.all { it.isSupportedOpeningHours() } ?: true &&
-    dates?.all { it.isSupportedOpeningHours() } ?: true
+    && holidays?.all { it.isSupported() } ?: true
+    && days?.all { it.isSupported() } ?: true
+    && times?.all { it.isSupportedOpeningHours() } ?: true
+    && dates?.all { it.isSupportedOpeningHours() } ?: true
 
 fun Rule.isSupportedCollectionTimes(): Boolean =
-    !isEmpty &&
+    !isEmpty
     // 24/7 not supported
-    !isTwentyfourseven &&
+    && !isTwentyfourseven
     // comments not supported
-    comment == null &&
+    && comment == null
     // fallback rules are not supported
-    !isFallBack &&
+    && !isFallBack
     // "1995-1998 08:00-11:00" not supported
-    years == null &&
+    && years == null
     // "05-08 08:00-11:00" not supported
-    weeks == null &&
+    && weeks == null
     // modifiers are not supported
-    modifier == null &&
+    && modifier == null
     // all sub-elements must be supported if specified
-    holidays?.all { it.isSupported() } ?: true &&
-    days?.all { it.isSupported() } ?: true &&
+    && holidays?.all { it.isSupported() } ?: true
+    && days?.all { it.isSupported() } ?: true
     // times must be defined, and may not be ranges or something that implies ranges
-    !times.isNullOrEmpty() &&
-    times?.all { it.isSupportedCollectionTimes() } ?: true &&
+    && !times.isNullOrEmpty()
+    && times?.all { it.isSupportedCollectionTimes() } ?: true
     // months not supported
-    dates == null
+    && dates == null
 
 fun DateRange.isSupportedOpeningHours(): Boolean =
     startDate.isSupportedOpeningHours() && (endDate?.isSupportedOpeningHours() ?: true) && interval == 0
@@ -163,50 +163,49 @@ fun RuleModifier.isSimpleOff(): Boolean =
 
 fun DateWithOffset.isSupportedOpeningHours(): Boolean =
     // "Jan+" not supported
-    !isOpenEnded &&
+    !isOpenEnded
     // "Jan +Fr" not supported
-    nthWeekDay == null && weekDayOffset == null && nth == 0 &&
+    && nthWeekDay == null && weekDayOffset == null && nth == 0
     // "Jan +Fr + 3 days" not supported
-    dayOffset == 0 &&
+    && dayOffset == 0
     // "1995 Jan" not supported
-    year == YearRange.UNDEFINED_YEAR &&
+    && year == YearRange.UNDEFINED_YEAR
     // "Jan 5" not supported
-    day == DateWithOffset.UNDEFINED_MONTH_DAY &&
+    && day == DateWithOffset.UNDEFINED_MONTH_DAY
     // "easter" not supported
-    varDate == null &&
+    && varDate == null
     // month is required
-    month != null
+    && month != null
 
 fun Holiday.isSupported(): Boolean =
     // only PH is supported
-    type == Holiday.Type.PH &&
+    type == Holiday.Type.PH
     // "PH Mo" (public holidays on Monday) not supported
-    useAsWeekDay &&
+    && useAsWeekDay
     // "PH +5 days" not supported
-    offset == 0
+    && offset == 0
 
 fun WeekDayRange.isSupported(): Boolean =
-    nths == null && offset == 0 &&
+    nths == null && offset == 0
     // not sure how/if this can be null, just to be sure
-    startDay != null
+    && startDay != null
 
 fun TimeSpan.isSupportedOpeningHours(): Boolean =
     // "sunrise" etc not supported
-    startEvent == null && endEvent == null &&
-    interval == 0 &&
-    start != TimeSpan.UNDEFINED_TIME
+    startEvent == null && endEvent == null
+    && interval == 0
+    && start != TimeSpan.UNDEFINED_TIME
 
 fun TimeSpan.isSupportedCollectionTimes(): Boolean =
     // "sunrise" etc not supported
-    startEvent == null && endEvent == null &&
-    interval == 0 &&
-    start != TimeSpan.UNDEFINED_TIME &&
+    startEvent == null && endEvent == null
+    && interval == 0
+    && start != TimeSpan.UNDEFINED_TIME
     // only support time points
-    end == TimeSpan.UNDEFINED_TIME &&
-    !isOpenEnded
+    && end == TimeSpan.UNDEFINED_TIME
+    && !isOpenEnded
 
 /* ------------------------------ Collision/Intersection checking ------------------------------- */
-
 
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
@@ -216,7 +215,7 @@ fun List<Rule>.weekdaysCollideWithAnother(): Boolean {
     for (i in 0 until size) {
         val rule1 = get(i)
         var additive = true
-        for (j in i+1 until size) {
+        for (j in i + 1 until size) {
             val rule2 = get(j)
             // off/closed rules may collide because they overwrite their whole weekdays anyway
             // (because we do not support times for off-rules in StreetComplete)
@@ -242,7 +241,7 @@ private fun Rule.collidesWith(other: Rule): Boolean {
     if (dates1 != null) {
         val dates2 = other.dates
         if (dates2 != null) {
-            if (dates1.all { date1 -> dates2.none { date2 -> date2.intersectWith(date1) }})
+            if (dates1.all { date1 -> dates2.none { date2 -> date2.intersectWith(date1) } })
                 return false
         }
     }
@@ -270,7 +269,7 @@ private fun DateRange.intersectWith(other: DateRange): Boolean {
 
 @JvmName("intersectsWithWeekDayRange")
 private fun List<WeekDayRange>.intersectsWith(other: List<WeekDayRange>): Boolean =
-    any{ range1 -> other.any { range2 -> range1.intersectsWith(range2) } }
+    any { range1 -> other.any { range2 -> range1.intersectsWith(range2) } }
 
 private fun WeekDayRange.intersectsWith(other: WeekDayRange): Boolean {
     return toCircularSection().intersects(other.toCircularSection())
@@ -278,7 +277,7 @@ private fun WeekDayRange.intersectsWith(other: WeekDayRange): Boolean {
 
 @JvmName("intersectsWithHolidays")
 private fun List<Holiday>.intersectsWith(other: List<Holiday>): Boolean =
-    any{ holiday1 -> other.any { holiday2 -> holiday1.intersectsWith(holiday2) } }
+    any { holiday1 -> other.any { holiday2 -> holiday1.intersectsWith(holiday2) } }
 
 private fun Holiday.intersectsWith(other: Holiday): Boolean {
     require(isSupported())
@@ -290,7 +289,7 @@ private fun WeekDayRange.expandedToNextDay(): WeekDayRange = WeekDayRange().also
     it.startDay = startDay
     val end = if (endDay == null) startDay else endDay
     val values = WeekDay.values()
-    it.endDay = values[(end.ordinal+1) % values.size]
+    it.endDay = values[(end.ordinal + 1) % values.size]
 }
 
 private fun TimeSpan.expandsIntoNextDay(): Boolean =

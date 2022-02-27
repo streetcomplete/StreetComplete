@@ -5,6 +5,6 @@ mobileCountryCode: 418
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [date, tomato, grape, apple, chilli_pepper, sweet_pepper, apricot, olive, pear, lemon, lime, plum, fig, orange, walnut, peach, almond]
+orchardProduces: [date, orange, tomato, apple, grape, olive, apricot, chilli_pepper, sweet_pepper, lemon, lime, pear, plum, fig, walnut, peach, almond]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

@@ -5,5 +5,5 @@ mobileCountryCode: 618
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en]
-orchardProduces: [banana, rubber, pineapple, orange, cacao, coconut, tomato, coffee]
+orchardProduces: [cacao, rubber, banana, coffee, coconut, orange, pineapple, tomato]
 speedUnits: [miles per hour, kilometers per hour]

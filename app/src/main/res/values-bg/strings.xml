@@ -62,6 +62,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Тобиас Цвик и други"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Източник"</string>
     <string name="about_summary_repository">"в GitHub"</string>
     <string name="about_title_report_error">"Докладвай грешка"</string>
@@ -630,6 +632,8 @@
     <string name="quest_ferry_motor_vehicle_title">"Този ферибот превозва ли МПС?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Добавянето на снимка ще направи тази бележка много по-съдържателна."</string>
     <string name="quest_postboxCollectionTimes_name_title">"В колко часа се събират писмата от пощенската кутия %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Препоръчително е да напишете бележката на местния език или в краен случай на английски."</string>
     <string name="quest_leafType_title">"Тези дървета иглолистни ли са или широколистни?"</string>
     <string name="quest_leaf_type_needles">"Иглолистни"</string>
@@ -853,7 +857,6 @@
     <string name="quest_board_type_notice_board">"Табло за обяви"</string>
     <string name="quest_board_type_public_transport">"Обществен транспорт"</string>
     <string name="quest_board_type_title">"Каква е темата на това информационно табло?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Да, на картата е отделен път"</string>
     <string name="quest_board_type_map">"Това е карта"</string>
     <string name="quest_board_type_map_title">"Това е само карта и нищо друго?"</string>
     <string name="quest_board_type_map_description">"Ако табелата има определена тема, укажете я, независимо от това дали съдържа карта или не. Например, таблата за обществен транспорт могат да съдържат карта на автобусните линии. Ако темата не е в списъка, по-добре оставете бележка."</string>
@@ -1026,6 +1029,8 @@
     <string name="quest_pitchSurface_title_track">"Каква повърхност има тази спортна пътека?"</string>
     <string name="quest_bicycle_parking_access_title">"Паркингът за велосипеди има ли ограничения?"</string>
     <string name="quest_bicycle_parking_fee_title">"Плаща ли се паркингът за велосипеди?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Еднофамилна къща прилепена за друга"</string>
     <string name="quest_drinking_water_title">"Водата добра ли е за пиене? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Добра е за пиене (има табела)"</string>

@@ -1858,8 +1858,6 @@
                         "cans": "Plechovky",
                         "cardboard": "Karton",
                         "clothes": "Oblečení",
-                        "glass": "Sklo",
-                        "glass_bottles": "Skleněné lahve",
                         "green_waste": "Zelený odpad",
                         "paper": "Papír",
                         "plastic_packaging": "Plastové obaly",
@@ -4509,29 +4507,15 @@
                     "name": "Označený přechod",
                     "terms": "přechod,zebra,označený přechod,značený přechod,přechod pro chodce,chodci"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Označený přechod (zvýšený)",
-                    "terms": "zvýšený přechod pro chodce,vyvýšený přechod pro chodce,pěší přechod,přechod,místo pro přecházení,křížení,chodec,zebra,zpomalovací,zklidnění dopravy,vyvýšená plocha,zvýšená plocha pro přecházení"
-                },
                 "highway/crossing/signals": {
                     "name": "Přechod se semaforem pro chodce"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Přechod se semaforem pro chodce (zvýšený)"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Neoznačený přechod",
                     "terms": "neoznačený přechod,přechod,místo pro přecházení,přechod pro chodce,neoznačený přechod pro chodce,přechod přes ulici"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Neoznačený přechod (zvýšený)",
-                    "terms": "neoznačený přechod,zklidňování dopravy,zvýšený přechod,zpomalovací pás,vyvýšený pás,vyvýšený přechod,místo pro přecházení,přechod pro chodce,přechod přes ulici"
-                },
                 "highway/crossing/zebra": {
                     "name": "Označený přechod"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Označený přechod (zvýšený)"
                 },
                 "highway/cycleway": {
                     "name": "Cyklostezka",
@@ -4584,10 +4568,6 @@
                     "name": "Označený přechod pro chodce",
                     "terms": "označený,zebra,přechod,přechod pro chodce,chodec,chodci,značený přechod,křížení"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Označený přechod (zvýšený)",
-                    "terms": "zvýšený přechod pro chodce,vyvýšený přechod pro chodce,pěší přechod,přechod,místo pro přecházení,křížení,chodec,zebra,zpomalovací,zklidnění dopravy,vyvýšená plocha,zvýšená plocha pro přecházení"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Chodník podél vozovky",
                     "terms": "chodník,pěší cesta,pěší stezka,pro pěší,chodec,chodci,pro chodce,stezka pro chodce"
@@ -4596,15 +4576,8 @@
                     "name": "Neoznačený přechod",
                     "terms": "neoznačený přechod,přechod,místo pro přecházení,přechod pro chodce,neoznačený přechod pro chodce,přechod přes ulici"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Neoznačený přechod (zvýšený)",
-                    "terms": "neoznačený přechod,zklidňování dopravy,zvýšený přechod,zpomalovací pás,vyvýšený pás,vyvýšený přechod,místo pro přecházení,přechod pro chodce,přechod přes ulici"
-                },
                 "highway/footway/zebra": {
                     "name": "Označený přechod pro chodce"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Označený přechod (zvýšený)"
                 },
                 "highway/give_way": {
                     "name": "Značka Dej přednost",

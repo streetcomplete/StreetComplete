@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.HasTitle
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
@@ -33,36 +32,35 @@ import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.purge
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.measure.MeasureActivity
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 import java.util.Locale
-import javax.inject.Inject
 
 /** Shows the settings screen */
-class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
+class SettingsFragment :
+    PreferenceFragmentCompat(),
+    HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    @Inject internal lateinit var prefs: SharedPreferences
-    @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
-    @Inject internal lateinit var noteController: NoteController
-    @Inject internal lateinit var mapDataController: MapDataController
-    @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var resurveyIntervalsUpdater: ResurveyIntervalsUpdater
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-    @Inject internal lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
-    @Inject internal lateinit var questPresetsSource: QuestPresetsSource
+    private val prefs: SharedPreferences by inject()
+    private val downloadedTilesDao: DownloadedTilesDao by inject()
+    private val noteController: NoteController by inject()
+    private val mapDataController: MapDataController by inject()
+    private val questController: QuestController by inject()
+    private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
 
     interface Listener {
         fun onClickedQuestSelection()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override val title: String get() = getString(R.string.action_settings)
 
@@ -83,7 +81,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() }}
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             true
@@ -95,7 +93,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
                 .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
                     val hidden = questController.unhideAll()
                     context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                }}
+                } }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 
@@ -109,11 +107,26 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
             true
         }
 
+        findPreference<Preference>("debug.links")?.setOnPreferenceClickListener {
+            startActivity(Intent(context, ShowLinksActivity::class.java))
+            true
+        }
+
+        findPreference<Preference>("debug.ar_measure_horizontal")?.setOnPreferenceClickListener {
+            startActivity(MeasureActivity.createIntent(requireContext(), false))
+            true
+        }
+
+        findPreference<Preference>("debug.ar_measure_vertical")?.setOnPreferenceClickListener {
+            startActivity(MeasureActivity.createIntent(requireContext(), true))
+            true
+        }
+
         buildLanguageSelector()
     }
 
     private fun buildLanguageSelector() {
-        val entryValues = resources.getYamlObject<List<String>>(R.raw.languages).toMutableList()
+        val entryValues = resources.getYamlObject<MutableList<String>>(R.raw.languages)
         val entries = entryValues.map {
             val locale = Locale.forLanguageTag(it)
             val name = locale.displayName
@@ -148,7 +161,7 @@ class SettingsFragment : PreferenceFragmentCompat(), HasTitle,
 
     @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        when(key) {
+        when (key) {
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     AlertDialog.Builder(requireContext())

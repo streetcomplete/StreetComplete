@@ -18,7 +18,7 @@ import java.lang.System.currentTimeMillis
 object RevertDeletePoiNodeAction : ElementEditAction, IsRevertAction {
 
     /** No "new" elements are created, instead, an old one is being revived */
-    override val newElementsCount get() = NewElementsCount(0,0,0)
+    override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
         originalElement: Element,

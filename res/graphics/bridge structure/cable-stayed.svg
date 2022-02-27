@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 320 96" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
     <style type="text/css">
-		.cables{fill: none; stroke:#AA0000;stroke-width:4;}
-		.struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
-		.land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
-	</style>
+        .cables{fill: none; stroke:#AA0000;stroke-width:4;}
+        .struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
+        .land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
+    </style>
     <path class="land" d="m-3 52v48h92c-40 0-56-40-88-48h-4zm324 0c-32 8-48 48-88 48h92v-48h-4z"/>
     <path class="cables" d="m60 48 20-32 20 32m-60 0 40-36 40 36m-100 0 60-40 60 40m20 0-80-44-80 44m220 0 20-32 20 32m-60 0 40-36 40 36m-100 0 60-40 60 40m20 0-80-44-80 44"/>
-	<rect class="struct" x="236" y="4" width="8" height="96"/>
-	<rect class="struct" x="76" y="4" width="8" height="96"/>
-	<rect class="struct" x="-4" y="44" width="328" height="8"/>
+    <rect class="struct" x="236" y="4" width="8" height="96"/>
+    <rect class="struct" x="76" y="4" width="8" height="96"/>
+    <rect class="struct" x="-4" y="44" width="328" height="8"/>
 </svg>

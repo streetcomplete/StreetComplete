@@ -9,13 +9,11 @@ import androidx.annotation.RawRes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 
 /** Simple wrapper to enable just playing a sound effect from raw resources */
-@Singleton class SoundFx @Inject constructor(private val context: Context) {
+class SoundFx(private val context: Context) {
     private val soundPool = SoundPool.Builder()
         .setMaxStreams(10)
         .setAudioAttributes(AudioAttributes.Builder()

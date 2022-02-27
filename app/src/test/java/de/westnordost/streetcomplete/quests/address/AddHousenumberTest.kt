@@ -71,7 +71,7 @@ class AddHousenumberTest {
         ))
         val relationWithAddr = rel(
             members = listOf(member(ElementType.WAY, 1)),
-            tags =  mapOf("addr:housenumber" to "123")
+            tags = mapOf("addr:housenumber" to "123")
         )
 
         val mapData = createMapData(mapOf(
@@ -225,21 +225,21 @@ class AddHousenumberTest {
     }
 }
 
-private val P1 = p(0.25,0.25)
-private val P2 = p(0.25,0.75)
-private val P3 = p(0.75,0.75)
-private val P4 = p(0.75,0.25)
+private val P1 = p(0.25, 0.25)
+private val P2 = p(0.25, 0.75)
+private val P3 = p(0.75, 0.75)
+private val P4 = p(0.75, 0.25)
 
-private val P5 = p(0.1,0.1)
-private val P6 = p(0.1,0.9)
-private val P7 = p(0.9,0.9)
-private val P8 = p(0.9,0.1)
+private val P5 = p(0.1, 0.1)
+private val P6 = p(0.1, 0.9)
+private val P7 = p(0.9, 0.9)
+private val P8 = p(0.9, 0.1)
 
 private val PO = p(1.5, 1.5)
-private val PC = p(0.5,0.5)
+private val PC = p(0.5, 0.5)
 
-private val NODES1 = listOf<Long>(1,2,3,4,1)
-private val NODES2 = listOf<Long>(5,6,7,8,5)
+private val NODES1 = listOf<Long>(1, 2, 3, 4, 1)
+private val NODES2 = listOf<Long>(5, 6, 7, 8, 5)
 
 private val POSITIONS1 = ElementPolygonsGeometry(listOf(listOf(P1, P2, P3, P4, P1)), PC)
 private val POSITIONS2 = ElementPolygonsGeometry(listOf(listOf(P5, P6, P7, P8, P5)), PC)

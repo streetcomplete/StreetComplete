@@ -34,15 +34,15 @@ fun estimateRoadwayWidth(tags: Map<String, String>): Float? {
 
 /** Guess width of a roadway. Don't expect any precision from it! */
 fun guessRoadwayWidth(tags: Map<String, String>): Float {
-    val widthOfOneSide = when(tags["highway"]) {
+    val widthOfOneSide = when (tags["highway"]) {
         "motorway", "trunk" -> 2 * BROAD_LANE
         "motorway_link", "trunk_link" -> BROAD_LANE
-        "primary" -> BROAD_LANE
+        "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
         "secondary", "tertiary", "unclassified" -> LANE
         "service" -> 2.5f
         else -> LANE
     }
-    return widthOfOneSide * (if(isOneway(tags)) 1f else 2f)
+    return widthOfOneSide * (if (isOneway(tags)) 1f else 2f)
 }
 
 /** Estimated width of shoulders, if any. If there is no shoulder tagging, returns null. */
@@ -50,7 +50,7 @@ fun estimateShouldersWidth(tags: Map<String, String>): Float? {
     val shoulders = createShoulders(tags, false) ?: return null
     val shoulderWidth = tags["shoulder:width"]?.toFloatOrNull() ?: SHOULDER
     return (if (shoulders.left) shoulderWidth else 0f) +
-        (if(shoulders.right) shoulderWidth else 0f)
+        (if (shoulders.right) shoulderWidth else 0f)
 }
 
 /** Estimated width of the part of the carriageway that is usable by general traffic, i.e. without

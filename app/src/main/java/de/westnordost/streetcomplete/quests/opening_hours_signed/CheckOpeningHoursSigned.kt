@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.opening_hours_signed
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.meta.setCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
@@ -33,7 +33,10 @@ class CheckOpeningHoursSigned (
             or older today -1 years
           )
           and access !~ private|no
-          and (name or brand or noname = yes or name:signed = no or amenity = recycling)
+          and (
+            name or brand or noname = yes or name:signed = no
+            or amenity ~ recycling|toilets|bicycle_rental|charging_station or leisure=park or barrier
+          )
     """.toElementFilterExpression() }
 
     private val hasOldOpeningHoursCheckDateFilter: String get() =
@@ -73,11 +76,11 @@ class CheckOpeningHoursSigned (
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) : Boolean =
+    override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && hasName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

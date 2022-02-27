@@ -44,7 +44,7 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         } else if (row is OpeningWeekdaysRow) {
             val timeSpan = row.timeRange.toTimeSpan()
             val weekdays =
-                if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+                if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
                 else WeekDayRangesAndHolidays()
 
             // new weekdays -> new rule
@@ -100,7 +100,7 @@ fun List<CollectionTimesRow>.toOpeningHoursRules(): OpeningHoursRuleList {
     for (row in this) {
         val time = row.time
         val weekdays =
-            if(!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
+            if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
             else WeekDayRangesAndHolidays()
 
         // new weekdays -> new rule
@@ -129,7 +129,8 @@ private fun createRule(
     dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
     holidays: List<Holiday>?,
-    timeSpans: List<TimeSpan>) = Rule().also { r ->
+    timeSpans: List<TimeSpan>
+) = Rule().also { r ->
 
     require(timeSpans.isNotEmpty())
 
@@ -142,7 +143,8 @@ private fun createRule(
 private fun createOffRule(
     dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
-    holidays: List<Holiday>?) = Rule().also { r ->
+    holidays: List<Holiday>?
+) = Rule().also { r ->
 
     r.dates = dateRanges?.toMutableList()
     r.days = weekDayRanges?.toMutableList()
@@ -172,7 +174,7 @@ private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
 }
 
 private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
-    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT-1).getSize(this)
+    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT - 1).getSize(this)
     // if the range is very short (e.g. Mo-Tu), rather save it as Mo,Tu
     return if (size == 2) {
         listOf(

@@ -25,7 +25,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
     private val binding by contentViewBinding(QuestFeeHoursBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if(!isDefiningHours) listOf(
+        if (!isDefiningHours) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(HasNoFee) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(HasFee) }
         )
@@ -40,12 +40,12 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
     private var content: ViewGroup? = null
 
     private var isDefiningHours: Boolean = false
-    set(value) {
-        field = value
+        set(value) {
+            field = value
 
-        content?.isGone = !value
-        updateButtonPanel()
-    }
+            content?.isGone = !value
+            updateButtonPanel()
+        }
     private var isFeeOnlyAtHours: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
 
         openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
         openingHoursAdapter.rows = loadOpeningHoursData(savedInstanceState).toMutableList()
-        openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+        openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,7 +94,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<Fee>() {
 
     override fun onClickOk() {
         val times = openingHoursAdapter.createOpeningHours()
-        applyAnswer(if(isFeeOnlyAtHours) HasFeeAtHours(times) else HasFeeExceptAtHours(times))
+        applyAnswer(if (isFeeOnlyAtHours) HasFeeAtHours(times) else HasFeeExceptAtHours(times))
     }
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningHoursRow> =

@@ -108,13 +108,13 @@ private fun OnewayAnswer.toItem(context: Context, rotation: Float): DisplayItem<
     return Item2(this, DrawableImage(drawable), ResText(titleResId))
 }
 
-private val OnewayAnswer.titleResId: Int get() = when(this) {
+private val OnewayAnswer.titleResId: Int get() = when (this) {
     FORWARD -> R.string.quest_oneway2_dir
     BACKWARD -> R.string.quest_oneway2_dir
     NO_ONEWAY -> R.string.quest_oneway2_no_oneway
 }
 
-private val OnewayAnswer.iconResId: Int get() = when(this) {
+private val OnewayAnswer.iconResId: Int get() = when (this) {
     FORWARD -> R.drawable.ic_oneway_lane
     BACKWARD -> R.drawable.ic_oneway_lane_reverse
     NO_ONEWAY -> R.drawable.ic_oneway_lane_no

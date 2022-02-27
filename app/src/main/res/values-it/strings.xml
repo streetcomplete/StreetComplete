@@ -58,6 +58,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick e contributori"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
@@ -634,6 +636,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_ferry_motor_vehicle_title">"Questa linea di traghetti trasporta veicoli a motore?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"L’aggiunta di una foto renderà la nota molto più utile."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Quali sono gli orari di raccolta della buca delle lettere %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Sarebbe meglio scrivere la nota nella lingua locale oppure in inglese."</string>
     <string name="quest_leafType_title">"Gli alberi hanno aghi o foglie?"</string>
     <string name="quest_leaf_type_needles">"Aghi"</string>
@@ -863,7 +867,6 @@ riconoscimento"</string>
     <string name="quest_board_type_notice_board">"È una bacheca informazioni"</string>
     <string name="quest_board_type_public_transport">"Trasporto pubblico"</string>
     <string name="quest_board_type_title">"Qual è lo scopo di questa bacheca informazioni?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sì, mostrato separatamente sulla mappa"</string>
     <string name="quest_board_type_map">"È una mappa"</string>
     <string name="quest_board_type_map_title">"È solo ed esclusivamente una mappa?"</string>
     <string name="quest_board_type_map_description">"Se la bacheca è su un argomento particolare, specificalo, indipendentemente se include o meno una mappa. Per esempio una bacheca del trasporto pubblico può avere una mappa delle tratte. Se l'argomento non è tra le risposte disponibile, puoi lasciare una nota."</string>
@@ -1028,6 +1031,8 @@ riconoscimento"</string>
     <string name="quest_pitchSurface_title_track">"Qual è la superficie di questa pista sportiva?"</string>
     <string name="quest_bicycle_parking_access_title">"Il parcheggio bici qui è riservato?"</string>
     <string name="quest_bicycle_parking_fee_title">"Si paga per parcheggiare la bici qua?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"casa unifamiliare non indipendente"</string>
     <string name="quest_drinking_water_title">"Qui l’acqua è potabile? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"È sicura da bere (è scritto così)"</string>
@@ -1216,7 +1221,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="on_floor">"al piano %s:"</string>
     <string name="confirmation_discard_negative2">"No"</string>
     <string name="quest_street_parking_title">"Come possono parcheggiare la auto qua?"</string>
-    <string name="select_street_parking_orientation">"Seleziona l'orientamento verso la strada:"</string>
+    <string name="select_street_parking_orientation">"Seleziona l'orientamento rispetto alla strada:"</string>
     <string name="select_street_parking_position">"Seleziona la posizione:"</string>
     <string name="select_street_parking_no">"Sono presenti cartelli o strisce qua?"</string>
     <string name="street_parking_parallel">"Parallelo"</string>
@@ -1228,10 +1233,94 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="street_parking_street_side">"Accanto alla strada solo su spazi dedicati"</string>
     <string name="street_parking_painted_area_only">"Sulla strada solo su spazi dedicati"</string>
     <string name="street_parking_separate">"Parcheggio visualizzato separatamente sulla mappa"</string>
-    <string name="street_parking_prohibited">"No sosta"</string>
+    <string name="street_parking_no">"Divieto di parcheggio"</string>
+    <string name="street_parking_prohibited">"Sosta vietata"</string>
     <string name="street_stopping_prohibited">"No fermata"</string>
+    <string name="street_standing_prohibited">"Divieto di sosta"</string>
     <string name="street_parking_conditional_restrictions">"Limiti condizionali alla sosta o fermata"</string>
-    <string name="street_parking_no_other_reasons">"Indiccazione non presente / parcheggio non possibile"</string>
-    <string name="quest_address_house_number_label">"Numero civico"</string>
-    <string name="quest_shoulder_title">"Questa strada ha un bordo?"</string>
+    <string name="street_parking_no_other_reasons">"Indicazione non presente / parcheggio non possibile"</string>
+    <string name="street_parking_conditional_restrictions_hint">"Se è possibile parcheggiare o sostare qui, prima rispondi su come parcheggiano le persone che ne hanno il permesso. Le restrizioni che vengono applicate possono essere specificate dopo.
+
+Altrimenti puoi lasciare una nota (con una foto)."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Sia il numero civico che nome..."</string>
+    <string name="quest_address_house_number_label">"Numero civico:"</string>
+    <string name="quest_shoulder_title">"Questa strada ha una banchina?"</string>
+    <string name="quest_fireHydrant_position_title">"Dove si trova l'idrante?"</string>
+    <string name="quest_fireHydrant_position_green">"Sull'erba o sulla terra"</string>
+    <string name="quest_fireHydrant_position_lane">"Sulla strada"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Sul marciapiede"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"In un parcheggio"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Qual è il diametro indicato sulla targa dell'idrante? (Numero di riferimento: %s)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Si (lascia una nota)"</string>
+    <string name="quest_smoothness_name_title">"Qual è la qualità della superficie di %s qui?"</string>
+    <string name="quest_smoothness_square_title">"Qual è la qualità della superficie di questa piazza?"</string>
+    <string name="quest_smoothness_path_title">"Qual è la qualità della superficie di questa percorso in questo tratto?"</string>
+    <string name="quest_smoothness_road_title">"Qual è la qualità della superficie di questa strada in questo tratto?"</string>
+    <string name="quest_smoothness_title_excellent">"Liscio e uniforme"</string>
+    <string name="quest_smoothness_title_good">"Per lo più uniforme"</string>
+    <string name="quest_smoothness_title_intermediate">"Un po' irregolare"</string>
+    <string name="quest_smoothness_title_bad">"Irregolare"</string>
+    <string name="quest_smoothness_title_very_bad">"Molto irregolare"</string>
+    <string name="quest_smoothness_title_horrible">"Molto sconnesso e accidentato"</string>
+    <string name="quest_smoothness_title_very_horrible">"Per lo più impraticabile"</string>
+    <string name="quest_smoothness_title_impassable">"Impraticabile"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Nessun dosso o crepa"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"Quasi perfetta"</string>
+    <string name="quest_smoothness_description_good_paved">"Alcune piccole crepe, spazi, riparazioni o superficie sconnessa"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Spazi poco profondi o stretti"</string>
+    <string name="quest_smoothness_description_good_sett">"Generalmente pietre lisce, con disegno regolare, spazi molto poco profondi o stretti"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"Generalmente superficie ruvida, spazi larghi, crepe, buche o altri danni"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Spazi ampi, alcune pietre sconnesse o altri danni"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"Pietre piatte o con bordi squadrati, spazi poco profondi o stretti"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Ghiaia fine, piccoli dossi o buche"</string>
+    <string name="quest_smoothness_description_bad_paved">"Spazi ampi, buche, solchi, pavimentazione dissestata o altri danni"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"Pietre dissestate, spazi ampi o altri danni"</string>
+    <string name="quest_smoothness_description_bad_sett">"Vecchie pietre o di forme irregolari, spazi ampi o danni"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Ghiaia grossa, dossi, solchi o buche"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"Buche profonde, solchi o altri danni pericolosi"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"Spazi grandi, pietre di forma irregolare, mancanti o smosse o danni pericolosi"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"Pietre mancanti o rotte, spazi o altri danni pericolosi"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Pietre grandi, buche profonde, dossi, spaccature, erosioni o altri danni pericolosi"</string>
+    <string name="quest_smoothness_description_horrible">"Utilizzabile solo con veicoli fuori strada o a piedi"</string>
+    <string name="quest_smoothness_description_very_horrible">"Utilizzabile solo con veicoli fuori strada specializzati o a piedi"</string>
+    <string name="quest_smoothness_description_impassable">"Non fatta per i veicoli, usabile solo a piedi"</string>
+    <string name="quest_smoothness_wrong_surface">"La superficie è diversa"</string>
+    <string name="quest_smoothness_surface_value">"La superficie è stata indicata come:"</string>
+    <string name="quest_smoothness_obstacle">"È presente un ostacolo"</string>
+    <string name="quest_smoothness_obstacle_hint">"Per favore, fornisci una risposta per l'uniformità. Ostacoli singoli come cordoli, dossi o grate per il bestiame possono essere ignorati. Ostacoli ripetuti o inaspettati devono essere presi in considerazione nella risposta."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … segna per quale tipologia di veicoli la superficie è indicata. Da valutare nella sua interezza piuttosto che valutare le singole parti."</string>
+    <string name="quest_shoulder_explanation">"La banchina è una zona delimitata da una linea che permette ai veicoli di fermarsi in sicurezza al di fuori della carreggiata, può anche essere non completamente asfaltata."</string>
+    <string name="link_osmhydrant_description">"Cerca, aggiungi e modifica le caserme dei pompieri e gli idranti"</string>
+    <string name="achievement_lifesaver_title">"Salvagente"</string>
+    <string name="achievement_lifesaver_solved_X">"Hai risolto %d missioni per aiutare i servizi di emergenza e i primi soccorritori!"</string>
+    <string name="quest_fuelSelfService_title">"Puoi rifornirti autonomamente di carburante in questa autostazione?"</string>
+    <string name="quest_fuelSelfService_name_title">"Puoi rifornirti autonomamente di carburante da %s?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Questa missione è disabilitata in automatico perchè è molto lunga e spesso è difficile rispondere correttamente. Dovresti abilitarla solamente se sei davvero motivato ad aggiungere questo tipo di informazioni."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"Sabbia o ghiaia molto compatta"</string>
+    <string name="quest_barrier_path_intersection">"In che modo questo percorso attraversa la barriera?"</string>
+    <string name="quest_barrier_road_intersection">"In che modo questa strada attraversa la barriera?"</string>
+    <string name="quest_airConditioning_no_name_title">"Ha l'aria condizionata (%s)?"</string>
+    <string name="quest_airConditioning_name_type_title">"Ha l'aria condizionata %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_name_title">"Sono segnati gli orari di apertura di %s?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Sono segnati gli orari di apertura di %1$s (%2$s)?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Sono segnati gli orari di paertura di questo luogo? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"Visualizza separatamente sulla mappa"</string>
+    <string name="quest_shoulder_value_yes">"banchina"</string>
+    <string name="quest_shoulder_value_no">"nessuna banchina"</string>
+    <string name="no_camera_permission_warning_title">"Permessi della fotocamera"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"I permessi sono necessari per poter misurare le distanze con la realtà aumentata."</string>
+    <string name="ar_core_error_sdk_too_old">"Questa app è di una versione troppo vecchia, prova ad aggiornarla."</string>
+    <string name="ar_core_tracking_error_bad_state">"Qualcosa è andato storto. Prova a far ripartire la misurazione."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Troppo buio"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Troppo movimento"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"La fotocamera è in uso da un'altra applicazione"</string>
+    <string name="quest_bicycle_parking_access_title2">"Chi può parcheggiare una bici qui? Il parcheggio può essere sia libero che a pagamento."</string>
+    <string name="quest_playground_access_title2">"Chi può usare questo parco giochi?"</string>
+    <string name="ar_measure">"Misura"</string>
+    <string name="default_disabled_msg_no_ar">"Hai bisogno di un metro per risolvere questa missione perchè la misura tramite fotocamera non è supportata da questo dispositivo."</string>
+    <string name="quest_cycleway_width_title">"Qual è la larghezza della ciclabile qui?"</string>
+    <string name="quest_road_width_title">"Qual è la larghezza della strada qui?"</string>
+    <string name="quest_sidewalk_answer_none">"Nessun marciapiede"</string>
 </resources>

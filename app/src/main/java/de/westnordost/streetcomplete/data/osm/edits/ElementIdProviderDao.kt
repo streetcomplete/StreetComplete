@@ -7,10 +7,9 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable.Colum
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import javax.inject.Inject
 
 /** Assigns new element ids for ElementEditActions that create new elements */
-class ElementIdProviderDao @Inject constructor(private val db: Database) {
+class ElementIdProviderDao(private val db: Database) {
 
     fun assign(editId: Long, nodeCount: Int, wayCount: Int, relationCount: Int) {
         if (nodeCount == 0 && wayCount == 0 && relationCount == 0) return
@@ -28,7 +27,8 @@ class ElementIdProviderDao @Inject constructor(private val db: Database) {
     fun get(editId: Long) = ElementIdProvider(
         db.query(NAME, where = "$EDIT_ID = $editId") {
             ElementKey(ElementType.valueOf(it.getString(ELEMENT_TYPE)), -it.getLong(ID))
-        })
+        }
+    )
 
     fun delete(editId: Long): Int =
         db.delete(NAME, "$EDIT_ID = $editId")

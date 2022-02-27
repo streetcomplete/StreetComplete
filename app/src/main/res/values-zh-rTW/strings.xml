@@ -1939,7 +1939,6 @@
     <string name="quest_board_type_notice_board">"這是個公告欄"</string>
     <string name="quest_board_type_public_transport">"大眾運輸"</string>
     <string name="quest_board_type_title">"這個資訊板是什麼主題？"</string>
-    <string name="quest_sidewalk_separately_mapped">"是，在地圖上分開顯示"</string>
     <string name="quest_board_type_map">"這是地圖"</string>
     <string name="quest_board_type_map_title">"這是地圖而且就只是地圖？"</string>
     <string name="quest_board_type_map_description">"當此資訊看板是指特定主題的話請描述它，無論是否有包含地圖。例如大眾運輸的資訊看板也許會包含公車路線地圖。當包含解答的主題並沒被列出來，取而代之請考慮留下註記。"</string>
@@ -2114,6 +2113,8 @@
     <string name="quest_pitchSurface_title_track">"這運動跑道表面材質是什麼？"</string>
     <string name="quest_bicycle_parking_access_title">"請問這裡有限制不能停腳踏車嗎？"</string>
     <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"無連接的單一家庭房屋"</string>
     <string name="quest_drinking_water_title">"這裡的水質是否可以飲用？(%s)"</string>
     <string name="quest_drinking_water_potable_signed">"可以飲用（已勾選）"</string>

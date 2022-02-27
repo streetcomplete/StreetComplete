@@ -108,7 +108,7 @@ private fun StepsIncline.toItem(context: Context, rotation: Float): DisplayItem<
 
 private val StepsIncline.titleResId: Int get() = R.string.quest_steps_incline_up
 
-private val StepsIncline.iconResId: Int get() = when(this) {
+private val StepsIncline.iconResId: Int get() = when (this) {
     UP -> R.drawable.ic_steps_incline_up
     UP_REVERSED -> R.drawable.ic_steps_incline_up_reversed
 }

@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_C
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
 
-
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override val elementFilter = "nodes, ways, relations with amenity = recycling and !recycling_type"

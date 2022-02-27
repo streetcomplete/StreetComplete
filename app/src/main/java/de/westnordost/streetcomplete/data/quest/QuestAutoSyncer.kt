@@ -9,9 +9,8 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.core.content.getSystemService
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -32,14 +31,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Automatically downloads new quests around the user's location and uploads quests.
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-@Singleton class QuestAutoSyncer @Inject constructor(
+class QuestAutoSyncer(
     private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
@@ -51,7 +48,7 @@ import javax.inject.Singleton
     private val prefs: SharedPreferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesDao: DownloadedTilesDao
-) : LifecycleObserver {
+) : DefaultLifecycleObserver {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
 
@@ -120,14 +117,14 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun onCreate() {
+    override fun onCreate(owner: LifecycleOwner) {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
+    override fun onResume(owner: LifecycleOwner) {
         updateConnectionState()
         if (isConnected) {
             triggerAutoDownload()
@@ -136,12 +133,12 @@ import javax.inject.Singleton
         context.registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
+    override fun onPause(owner: LifecycleOwner) {
         stopPositionTracking()
         context.unregisterReceiver(connectivityReceiver)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         userLoginStatusSource.removeListener(userLoginStatusListener)
@@ -217,5 +214,4 @@ import javax.inject.Singleton
     companion object {
         private const val TAG = "QuestAutoSyncer"
     }
-
 }

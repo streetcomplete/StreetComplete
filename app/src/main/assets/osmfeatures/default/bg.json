@@ -5,6 +5,9 @@
                 "category-path": {
                     "name": "Пътеки"
                 },
+                "category-rail": {
+                    "name": "Железопътни обекти"
+                },
                 "category-road_major": {
                     "name": "Главни пътища"
                 },
@@ -1175,6 +1178,9 @@
                 "amenity/car_wash": {
                     "name": "Автомивка"
                 },
+                "amenity/childcare": {
+                    "name": "Детска ясла"
+                },
                 "amenity/cinema": {
                     "name": "Кино"
                 },
@@ -1201,6 +1207,9 @@
                 },
                 "amenity/grave_yard": {
                     "name": "Гробище"
+                },
+                "amenity/hospital": {
+                    "name": "Болница"
                 },
                 "amenity/kindergarten": {
                     "name": "Предучилищна / детска градина"
@@ -1232,11 +1241,23 @@
                 "amenity/parking_space/disabled": {
                     "name": "Паркомясто за инвалиди"
                 },
+                "amenity/pharmacy": {
+                    "name": "Аптека"
+                },
                 "amenity/place_of_worship": {
                     "name": "Религиозен храм"
                 },
                 "amenity/place_of_worship/buddhist": {
                     "name": "Будистки храм"
+                },
+                "amenity/place_of_worship/christian": {
+                    "name": "Християнска църква"
+                },
+                "amenity/place_of_worship/jewish": {
+                    "name": "Еврейска синагога"
+                },
+                "amenity/place_of_worship/muslim": {
+                    "name": "Джамия"
                 },
                 "amenity/police": {
                     "name": "Полиция"
@@ -1249,6 +1270,12 @@
                 },
                 "amenity/restaurant": {
                     "name": "Ресторант"
+                },
+                "amenity/school": {
+                    "name": "Училище"
+                },
+                "amenity/social_facility/food_bank": {
+                    "name": "Хранителна банка"
                 },
                 "amenity/taxi": {
                     "name": "Такси стоянка"
@@ -1267,6 +1294,9 @@
                 },
                 "amenity/townhall/city": {
                     "name": "Кметство"
+                },
+                "amenity/university": {
+                    "name": "Университет"
                 },
                 "amenity/vending_machine": {
                     "name": "Автомат за стоки"
@@ -1421,6 +1451,9 @@
                 "emergency/phone": {
                     "name": "Телефон за спешна помощ"
                 },
+                "entrance": {
+                    "name": "Вход / изход"
+                },
                 "highway/bridleway": {
                     "name": "Конска пътека"
                 },
@@ -1430,14 +1463,8 @@
                 "highway/crossing/marked": {
                     "name": "Пешеходна пътека \"Зебра\""
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Повдигната пешеходна пътека"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Немаркирана мешеходна пътека"
-                },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Немаркирана повдигната пешеходна пътека"
                 },
                 "highway/cycleway": {
                     "name": "Велоалея"
@@ -1447,9 +1474,6 @@
                 },
                 "highway/footway/marked": {
                     "name": "Пешеходна пътека \"Зебра\""
-                },
-                "highway/footway/marked-raised": {
-                    "name": "Повдигната пешеходна пътека \"Зебра\""
                 },
                 "highway/living_street": {
                     "name": "Улица в жилищна зона"
@@ -1520,6 +1544,9 @@
                 "highway/tertiary_link": {
                     "name": "Връзка с третокласен път"
                 },
+                "highway/track": {
+                    "name": "Земеделски път"
+                },
                 "highway/traffic_signals": {
                     "name": "Светофари"
                 },
@@ -1530,7 +1557,10 @@
                     "name": "Връзка със скоростен път"
                 },
                 "highway/turning_circle": {
-                    "name": "Място за обръщане"
+                    "name": "Обръщателен кръг"
+                },
+                "highway/turning_loop": {
+                    "name": "Обръщателен кръг с остров по средата"
                 },
                 "historic": {
                     "name": "Място с историческо значение"
@@ -1568,11 +1598,21 @@
                 "landuse/cemetery": {
                     "name": "Гробищен парк"
                 },
+                "landuse/farm": {
+                    "name": "Земеделска земя"
+                },
+                "landuse/farmland": {
+                    "name": "Земеделска земя",
+                    "terms": "поле"
+                },
                 "landuse/farmyard": {
                     "name": "Селскостопански двор"
                 },
                 "landuse/grass": {
                     "name": "Трева"
+                },
+                "landuse/industrial": {
+                    "name": "Индустриална зона"
                 },
                 "landuse/meadow": {
                     "name": "Пасище"
@@ -1722,6 +1762,9 @@
                 "natural/wetland": {
                     "name": "Блатиста зона"
                 },
+                "noexit/yes": {
+                    "name": "Път без изход"
+                },
                 "office": {
                     "name": "Офис"
                 },
@@ -1836,9 +1879,18 @@
                 "railway/disused": {
                     "name": "Закрита железопътна линия"
                 },
+                "railway/platform": {
+                    "name": "Перон"
+                },
+                "railway/rail": {
+                    "name": "ЖП линия"
+                },
                 "railway/signal": {
                     "name": "Светофор",
                     "terms": "железопътен сигнал"
+                },
+                "railway/station": {
+                    "name": "ЖП гара"
                 },
                 "railway/subway_entrance": {
                     "name": "Вход на метростанция"
@@ -1872,6 +1924,9 @@
                 },
                 "shop/bicycle": {
                     "name": "Магазин за велосипеди"
+                },
+                "shop/books": {
+                    "name": "Книжарница"
                 },
                 "shop/boutique": {
                     "name": "Бутик"

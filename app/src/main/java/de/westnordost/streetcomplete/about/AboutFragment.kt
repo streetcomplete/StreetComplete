@@ -116,13 +116,17 @@ class AboutFragment : PreferenceFragmentCompat() {
     private fun showDonateDialog() {
         val ctx = context ?: return
 
-        val dialogBinding = DialogDonateBinding.inflate(layoutInflater)
-        dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
-
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.about_title_donate)
-            .setView(dialogBinding.root)
-            .show()
+        if (!BuildConfig.IS_GOOGLE_PLAY) {
+            val dialogBinding = DialogDonateBinding.inflate(layoutInflater)
+            dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
+            AlertDialog.Builder(ctx)
+                .setView(dialogBinding.root)
+                .show()
+        } else {
+            AlertDialog.Builder(ctx)
+                .setMessage(R.string.about_description_donate_google_play2)
+                .show()
+        }
     }
 
     private inner class DonationPlatformAdapter(list: List<DonationPlatform>) :

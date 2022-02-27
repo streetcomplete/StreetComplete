@@ -102,7 +102,7 @@
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
-    <string name="about_title_repository">"Source Repository"</string>
+    <string name="about_title_repository">"Project Home"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_faq">"FAQ"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -296,7 +296,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
-	<string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
+    <string name="quest_toiletsFee_title">"Do you have to pay to use this restroom?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this restroom have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
     <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
@@ -304,13 +304,13 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_way_lit_road_title">"Is this stretch of road lit?"</string>
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
-    <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings on both sides?"</string>
+    <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile paving?"</string>
+    <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile paving?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
-    <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"Does the streetcar stop %s have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile paving?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Does the streetcar stop %s have tactile paving?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
     <string name="quest_sport_softball">Softball</string>
@@ -587,8 +587,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
-    <string name="quest_bicycle_parking_access_title">Is it restricted who may park a bike here?</string>
+    <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
     <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bike here?</string>
     <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
     <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
@@ -625,7 +626,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home, e.g. a single row house</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
     <string name="quest_buildingType_apartments">Apartment building</string>
     <string name="quest_buildingType_detached">Detached house</string>
@@ -712,7 +713,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_maxspeed_sign_question">What defines the speed limit?</string>
     <string name="notification_channel_sync">"Sync Data"</string>
-    <string name="quest_playground_access_title">Is this playground publicly accessible?</string>
+    <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
     <string name="quest_segregated_title">How are the footway and cycleway laid out here?</string>
     <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
@@ -787,7 +788,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_leaf_type_needles">Needles</string>
     <string name="quest_leaf_type_broadleaved">Broadleaved</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
-    <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
+    <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the cycleway here?</string>
     <string name="quest_footwayPartSurface_title">What’s the surface of the footway here?</string>
     <string name="quest_board_type_history">History</string>
@@ -868,6 +869,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
+    <string name="about_description_donate_google_play2">"Thank you for considering to support this app!
+Unfortunately, due to a Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
 
     <string name="quest_recycling_materials_answer_waste">It’s for general waste</string>
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
@@ -947,8 +950,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
     <string name="link_qwant_maps_description">A map with searchable places and directions</string>
     <string name="link_organic_maps_description">Maps app for travelers, hikers and cyclists that works offline</string>
+    <string name="link_osmand_description">Mobile app for online and offline map viewing and navigation</string>
     <string name="link_weeklyosm_description">The weekly news blog about what’s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
+    <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
     <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more info for each quest type you solved.</string>
@@ -1141,6 +1146,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
     <string name="quest_picnicTableCover_title">Is this picnic table covered (protected from rain)?</string>
     <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
+    <string name="quest_fireHydrant_position_ref_title">Where is this fire hydrant located? (reference number: %s)</string>
     <string name="quest_fireHydrant_position_green">In grass or dirt</string>
     <string name="quest_fireHydrant_position_lane">On the roadway</string>
     <string name="quest_fireHydrant_position_sidewalk">On the sidewalk</string>
@@ -1203,4 +1209,26 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
     <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
+
+    <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
+    <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
+    <string name="quest_side_select_interface_explanation">Tap one side and select the matching answer.\nDo the same for the other side if present.</string>
+
+    <string name="no_camera_permission_warning_title">Camera permission</string>
+    <string name="no_camera_permission_warning">The permission is necessary to be able to measure distances with the camera.</string>
+    <string name="ar_measure">Measure</string>
+    <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
+    <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
+    <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
+    <string name="ar_core_tracking_error_excessive_motion">Too much movement</string>
+    <string name="ar_core_tracking_error_insufficient_features">Insufficient visual features here</string>
+    <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
+    <string name="ar_core_tracking_error_too_steep_angle">Too steep angle, step away a bit</string>
+    <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
+    <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
+
+    <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
+    <string name="quest_road_width_title">"What’s the width of this road here?"</string>
+    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
+
 </resources>

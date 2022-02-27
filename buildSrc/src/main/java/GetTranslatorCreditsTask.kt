@@ -102,7 +102,6 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         }
     }
 
-
     /** returns a map of POEditor language name to number of characters translated, e.g.
      *  "Portuguese (BR)" -> 123
      *  "German" -> 12 */
@@ -142,13 +141,13 @@ data class User(
 /** Convert language tag to how the language is named in English POEditor UI
  *  e.g. en -> English, en-US -> English (US). */
 private fun tagToName(tag: String): String =
-    when(tag) {
+    when (tag) {
         "en-GB" -> "English (UK)"
         "en" -> "English (US)"
         else -> {
             val locale = Locale.forLanguageTag(tag)
-            val scriptName = if (locale.script != "") " ("+locale.getDisplayScript(Locale.ENGLISH)+")" else ""
-            val countryName = if (locale.country != "") " ("+locale.country+")" else ""
+            val scriptName = if (locale.script != "") " (" + locale.getDisplayScript(Locale.ENGLISH) + ")" else ""
+            val countryName = if (locale.country != "") " (" + locale.country + ")" else ""
             val langName = locale.getDisplayLanguage(Locale.ENGLISH)
             langName + countryName + scriptName
         }

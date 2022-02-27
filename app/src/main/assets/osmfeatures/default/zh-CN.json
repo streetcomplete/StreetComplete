@@ -147,7 +147,7 @@
                         "city!cn": "地级市/地区/自治州/盟",
                         "city!jp": "市/町/村/东京都区部",
                         "city!vn": "市/镇",
-                        "conscriptionnumber": "123号",
+                        "conscriptionnumber": "123",
                         "country": "国家",
                         "county": "郡",
                         "county!jp": "日本郡",
@@ -157,7 +157,7 @@
                         "floor": "楼层",
                         "hamlet": "小村庄",
                         "housename": "房屋名称",
-                        "housenumber": "123号",
+                        "housenumber": "123",
                         "housenumber!jp": "楼号/地段号",
                         "neighbourhood": "社区",
                         "neighbourhood!jp": "丁目/字/小字",
@@ -174,7 +174,7 @@
                         "subdistrict!vn": "行政区/社区/小镇",
                         "suburb": "地区",
                         "suburb!jp": "行政区",
-                        "unit": "单元"
+                        "unit": "户号"
                     },
                     "terms": "地址,方位,住址,居所,地点,住处"
                 },
@@ -360,7 +360,7 @@
                     "label": "类型"
                 },
                 "branch_brand": {
-                    "label": "支线",
+                    "label": "分店",
                     "terms": "分支,分店,分叉,分理处,分部,分支机构"
                 },
                 "brand": {
@@ -3845,7 +3845,7 @@
                     "name": "旋转秋千"
                 },
                 "attraction/train": {
-                    "name": "游览车",
+                    "name": "无轨游览列车停靠站",
                     "terms": "游览车,观光车,火车,列车,公路车,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
                 },
                 "attraction/water_slide": {
@@ -4661,29 +4661,15 @@
                     "name": "人行横道 (有标线)",
                     "terms": "人行横道,斑马线"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "人行横道 (有标线/抬升)",
-                    "terms": "人行横道,斑马线,抬升,减速台,减速带,减速"
-                },
                 "highway/crossing/signals": {
                     "name": "有人行道的信号灯路口"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "有人行道的信号灯路口（有抬升）"
                 },
                 "highway/crossing/unmarked": {
                     "name": "人行横道 (无标线)",
                     "terms": "人行横道"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "人行横道 (无标线/抬升)",
-                    "terms": "人行横道,抬升,减速台,减速带,减速"
-                },
                 "highway/crossing/zebra": {
                     "name": "人行横道 (有标线)"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "人行横道 (有标线/抬升)"
                 },
                 "highway/cycleway": {
                     "name": "自行车道",
@@ -4738,10 +4724,6 @@
                     "name": "人行横道 (有标线)",
                     "terms": "人行横道,斑马线"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "人行横道 (有标线/抬升)",
-                    "terms": "人行横道,斑马线,抬升,减速台,减速带,减速"
-                },
                 "highway/footway/sidewalk": {
                     "name": "人行道",
                     "terms": "人行道,人行通道,路缘,路边,路牙,盲道"
@@ -4750,15 +4732,8 @@
                     "name": "人行横道 (无标线)",
                     "terms": "人行横道"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "人行横道 (无标线/抬升)",
-                    "terms": "人行横道,抬升,减速台,减速带,减速"
-                },
                 "highway/footway/zebra": {
                     "name": "人行横道 (有标线)"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "人行横道 (有标线/抬升)"
                 },
                 "highway/give_way": {
                     "name": "让行标志",
@@ -5913,7 +5888,7 @@
                 },
                 "natural/fell": {
                     "name": "高原荒原",
-                    "terms": "高原荒原"
+                    "terms": "高原荒原,荒地,荒野"
                 },
                 "natural/geyser": {
                     "name": "自然喷泉"
@@ -5927,7 +5902,7 @@
                     "terms": "草原"
                 },
                 "natural/heath": {
-                    "name": "石楠荒原",
+                    "name": "欧石楠荒原",
                     "terms": "欧石楠,荒地,荒野,高沼地,灌丛"
                 },
                 "natural/hot_spring": {

@@ -62,6 +62,8 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Тобіас Цвік та інші"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Репозиторій проєкту"</string>
     <string name="about_summary_repository">"на GitHub"</string>
     <string name="about_title_report_error">"Повідомити про помилку"</string>
@@ -639,6 +641,8 @@
     <string name="quest_ferry_motor_vehicle_title">"Чи перевозить цей поромний маршрут автотранспорт?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Додавання фото може зробити нотатку білтш корисною"</string>
     <string name="quest_postboxCollectionTimes_name_title">"Коли збирають із цієї %s поштової скриньки"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Краще залишить нотатку місцевою мовою, інакше - англійською"</string>
 
     <!-- Імхо, дослівний переклад тут важко сприймається -->
@@ -869,7 +873,6 @@
     <string name="quest_board_type_notice_board">"Це дошка оголошень"</string>
     <string name="quest_board_type_public_transport">"Громадський транспорт"</string>
     <string name="quest_board_type_title">"Яка тема цієї інформаційної дошки?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Так, окремо показаний на мапі"</string>
     <string name="quest_board_type_map">"Це мапа"</string>
     <string name="quest_board_type_map_title">"Чи це просто мапа і лише мапа?"</string>
     <string name="quest_board_type_map_description">"Якщо дошка стосується певної теми, будь ласка, вкажіть її, незалежно від того, чи містить вона також мапу. Наприклад, дошка громадського транспорту може мати мапу автобусних маршрутів. Якщо тема не вказана серед доступних відповідей, залиште нотатку."</string>
@@ -1043,6 +1046,8 @@
     <string name="quest_pitchSurface_title_track">"Яке покриття має ця спортивна доріжка?"</string>
     <string name="quest_bicycle_parking_access_title">"Є обмеження, хто може паркувати велосипед?"</string>
     <string name="quest_bicycle_parking_fee_title">"Тут потрібно платити за паркування велосипеда?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Не окремий односімейний будинок"</string>
     <string name="quest_drinking_water_title">"Вода тут є питною? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Безпечно для пиття (вказівник) "</string>
@@ -1195,7 +1200,6 @@
     <string name="quest_generic_answer_is_actually_steps">"Ця частина є сходами"</string>
     <string name="quest_barrier_type_passage_conversion">"Чи час забору кореспонденції для цієї скриньки все ще правильний?"</string>
     <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
-    <string name="quest_traffic_calming_type_title">"Чи час забору кореспонденції для цієї %s скриньки все ще правильний?"</string>
     <string name="quest_traffic_calming_type_bump">"Не розпізнано. Спробуйте ввести тип місця, наприклад, “пекарня”. Або залиште нотатку."</string>
     <string name="quest_traffic_calming_type_hump">"Лежачий поліцейський (широкий)"</string>
     <string name="quest_traffic_calming_type_table">"Стіл (плаский верх)"</string>

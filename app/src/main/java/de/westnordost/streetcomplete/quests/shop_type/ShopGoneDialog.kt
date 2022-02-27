@@ -12,11 +12,11 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
 import de.westnordost.streetcomplete.ktx.toTypedArray
 
 class ShopGoneDialog(
@@ -24,7 +24,7 @@ class ShopGoneDialog(
     private val geometryType: GeometryType?,
     private val countryCode: String?,
     private val featureDictionary: FeatureDictionary,
-    private val onSelectedFeature: (Map<String,String>) -> Unit,
+    private val onSelectedFeature: (Map<String, String>) -> Unit,
     private val onLeaveNote: () -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
@@ -88,7 +88,7 @@ class ShopGoneDialog(
         }
     }
 
-    private fun selectRadioButton(radioButton : View) {
+    private fun selectRadioButton(radioButton: View) {
         selectedRadioButtonId = radioButton.id
         for (b in radioButtons) {
             b.isChecked = selectedRadioButtonId == b.id
@@ -97,10 +97,10 @@ class ShopGoneDialog(
 
     private fun getSelectedFeature(): Feature? {
         val input = binding.presetsEditText.text.toString()
-        return getFeatures(input).firstOrNull()?.takeIf { it.canonicalName == StringUtils.canonicalize(input) }
+        return getFeatures(input).firstOrNull { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
-    private fun getFeatures(startsWith: String) : List<Feature> {
+    private fun getFeatures(startsWith: String): List<Feature> {
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
         return featureDictionary
             .byTerm(startsWith.trim())
@@ -110,7 +110,7 @@ class ShopGoneDialog(
             .find()
             .filter { feature ->
                 val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-                fakeElement.isSomeKindOfShop()
+                IS_SHOP_EXPRESSION.matches(fakeElement)
             }
     }
 }

@@ -9,16 +9,15 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
 class UploadService : CoroutineIntentService(TAG) {
-    @Inject internal lateinit var uploader: Uploader
+    private val uploader: Uploader by inject()
 
     private lateinit var notification: Notification
 
@@ -52,7 +51,6 @@ class UploadService : CoroutineIntentService(TAG) {
     }
 
     init {
-        Injector.applicationComponent.inject(this)
         uploader.uploadedChangeListener = uploadedChangeRelay
     }
 
@@ -66,8 +64,6 @@ class UploadService : CoroutineIntentService(TAG) {
     }
 
     override suspend fun onHandleIntent(intent: Intent?) {
-
-
         try {
             isUploading = true
             progressListener?.onStarted()

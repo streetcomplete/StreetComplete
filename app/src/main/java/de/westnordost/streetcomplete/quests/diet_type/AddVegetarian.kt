@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
+import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -21,7 +21,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
         )
         and name and diet:vegan != only and (
           !diet:vegetarian
-          or diet:vegetarian != only and diet:vegetarian older today -2 years
+          or diet:vegetarian != only and diet:vegetarian older today -4 years
         )
     """
 
@@ -36,12 +36,12 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegetarian_name_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with " + isKindOfShopExpression())
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegetarian)
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, timestampEdited: Long) {
-        when(answer) {
+        when (answer) {
             is DietAvailability -> {
                 tags.updateWithCheckDate("diet:vegetarian", answer.osmValue)
                 if (answer.osmValue == "no") {

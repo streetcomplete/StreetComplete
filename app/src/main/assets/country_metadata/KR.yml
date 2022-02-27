@@ -6,6 +6,6 @@ centerLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
 mobileCountryCode: 450
 officialLanguages: [ko]
-orchardProduces: [apple, orange, apple, tomato, persimmon, peach, grape, chilli_pepper, sweet_pepper, pear, strawberry, pear, peach, plum, tomato, chilli_pepper, sweet_pepper]
+orchardProduces: [apple, chilli_pepper, sweet_pepper, apple, chestnut, chilli_pepper, sweet_pepper, peach, persimmon, orange, peach, pear, grape, pear, tomato, plum, strawberry]
 popularReligions: [christian, buddhist, animist]
 popularSports: [baseball, badminton, archery]

@@ -10,7 +10,6 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUnreadOsmMessageBinding
 import de.westnordost.streetcomplete.ktx.toPx
@@ -19,18 +18,14 @@ import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Fragment that shows a notification that the user has X unread messages in his OSM inbox */
 class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_message) {
 
-    @Inject lateinit var soundFx: SoundFx
+    private val soundFx: SoundFx by inject()
 
     private val binding by viewBinding(FragmentUnreadOsmMessageBinding::bind)
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

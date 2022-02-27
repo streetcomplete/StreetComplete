@@ -37,8 +37,8 @@ class VisibleQuestsSourceTest {
 
     private lateinit var listener: VisibleQuestsSource.Listener
 
-    private val bbox = bbox(0.0,0.0,1.0,1.0)
-    private val questTypes = listOf(TestQuestTypeA(),TestQuestTypeB(), TestQuestTypeC())
+    private val bbox = bbox(0.0, 0.0, 1.0, 1.0)
+    private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC())
     private val questTypeNames = questTypes.map { it::class.simpleName!! }
 
     @Before fun setUp() {
@@ -92,7 +92,6 @@ class VisibleQuestsSourceTest {
         on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(q1, q2))
         on(visibleQuestTypeSource.isVisible(t1)).thenReturn(false)
         on(visibleQuestTypeSource.isVisible(t2)).thenReturn(true)
-
 
         val quests = source.getAllVisible(bbox)
         assertEquals(q2, quests.single())

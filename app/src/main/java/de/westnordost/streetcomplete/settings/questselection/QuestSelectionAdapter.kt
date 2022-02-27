@@ -10,9 +10,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
@@ -45,16 +44,15 @@ import java.util.Collections
 import java.util.Locale
 import java.util.concurrent.FutureTask
 
-/** Adapter for the list that in which the user can enable and disable quests as well as re-order
- *  them */
-class QuestSelectionAdapter (
+/** Adapter for the list in which the user can enable and disable quests as well as re-order them */
+class QuestSelectionAdapter(
     private val context: Context,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
     private val questTypeRegistry: QuestTypeRegistry,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
-) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>(), LifecycleObserver {
+) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>(), DefaultLifecycleObserver {
 
     private val currentCountryCodes: List<String>
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
@@ -63,19 +61,19 @@ class QuestSelectionAdapter (
 
     /** all quest types */
     private var questTypes: MutableList<QuestVisibility> = mutableListOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
-    var filter: String = ""
-    set(value) {
-        val n = value.trim()
-        if (n != field) {
-            field = n
+        set(value) {
+            field = value
             notifyDataSetChanged()
         }
-    }
+
+    var filter: String = ""
+        set(value) {
+            val n = value.trim()
+            if (n != field) {
+                field = n
+                notifyDataSetChanged()
+            }
+        }
 
     /** if a filter is active, the filtered quest types, otherwise null */
     private val filteredQuestTypes: List<QuestVisibility>? get() {
@@ -139,22 +137,19 @@ class QuestSelectionAdapter (
         currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onStart() {
+    override fun onStart(owner: LifecycleOwner) {
         viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
 
         visibleQuestTypeController.addListener(visibleQuestsListener)
         questTypeOrderController.addListener(questTypeOrderListener)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun onStop() {
+    override fun onStop(owner: LifecycleOwner) {
         visibleQuestTypeController.removeListener(visibleQuestsListener)
         questTypeOrderController.removeListener(questTypeOrderListener)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
         // not calling .cancel because the adapter can be re-used with a new view
         viewLifecycleScope.coroutineContext.cancelChildren()
     }
@@ -253,7 +248,7 @@ class QuestSelectionAdapter (
         private val isEnabledInCurrentCountry: Boolean
             get() {
                 (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    return when(val countries = questType.enabledInCountries) {
+                    return when (val countries = questType.enabledInCountries) {
                         is AllCountries -> true
                         is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
                         is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
@@ -285,7 +280,7 @@ class QuestSelectionAdapter (
             binding.disabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                binding.disabledText.text =  binding.disabledText.resources.getString(
+                binding.disabledText.text = binding.disabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
             }
@@ -303,20 +298,24 @@ class QuestSelectionAdapter (
         }
 
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
+            if (!b || item.questType.defaultDisabledMessage == 0) {
+                applyChecked(b)
+            } else {
+                AlertDialog.Builder(compoundButton.context)
+                    .setTitle(R.string.enable_quest_confirmation_title)
+                    .setMessage(item.questType.defaultDisabledMessage)
+                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(b) }
+                    .setNegativeButton(android.R.string.cancel) { _, _ -> compoundButton.isChecked = false }
+                    .setOnCancelListener { compoundButton.isChecked = false }
+                    .show()
+            }
+        }
+
+        private fun applyChecked(b: Boolean) {
             item.visible = b
             updateSelectionStatus()
             viewLifecycleScope.launch(Dispatchers.IO) {
                 visibleQuestTypeController.setVisible(item.questType, item.visible)
-            }
-            if (b && item.questType.defaultDisabledMessage > 0) {
-                AlertDialog.Builder(compoundButton.context)
-                    .setTitle(R.string.enable_quest_confirmation_title)
-                    .setMessage(item.questType.defaultDisabledMessage)
-                    .setPositiveButton(android.R.string.yes, null)
-                    .setNegativeButton(android.R.string.no) { _, _ ->
-                        compoundButton.isChecked = false
-                    }
-                    .show()
             }
         }
     }

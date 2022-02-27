@@ -19,14 +19,13 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-
 class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if(isDisplayingPreviousCollectionTimes) listOf(
+        if (isDisplayingPreviousCollectionTimes) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) {
                 applyAnswer(CollectionTimes(osmElement!!.tags["collection_times"]!!.toOpeningHoursRules()!!))
@@ -57,7 +56,7 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
             initStateFromTags()
         }
 
-        collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+        collectionTimesAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
 
         binding.collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.collectionTimesList.adapter = collectionTimesAdapter
@@ -77,7 +76,7 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
             if (addTimeAvailable) popup.menu.add(Menu.NONE, 0, Menu.NONE, R.string.quest_openingHours_add_hours)
             popup.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quest_openingHours_add_weekdays)
             popup.setOnMenuItemClickListener { item ->
-                when(item.itemId) {
+                when (item.itemId) {
                     0 -> collectionTimesAdapter.addNewHours()
                     1 -> collectionTimesAdapter.addNewWeekdays()
                 }

@@ -26,7 +26,6 @@ import com.mapzen.tangram.TouchInput.TapResponder
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
@@ -52,12 +51,19 @@ import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.Version
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Manages a map that remembers its last location*/
-open class MapFragment : Fragment(),
-    TapResponder, DoubleTapResponder, LongPressResponder,
-    PanResponder, ScaleResponder, ShoveResponder, RotateResponder, SharedPreferences.OnSharedPreferenceChangeListener {
+open class MapFragment :
+    Fragment(),
+    TapResponder,
+    DoubleTapResponder,
+    LongPressResponder,
+    PanResponder,
+    ScaleResponder,
+    ShoveResponder,
+    RotateResponder,
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
@@ -69,27 +75,27 @@ open class MapFragment : Fragment(),
     private var previousCameraPosition: CameraPosition? = null
 
     var isMapInitialized: Boolean = false
-    private set
+        private set
 
     var show3DBuildings: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
+        set(value) {
+            if (field == value) return
+            field = value
 
-        val toggle = if (value) "true" else "false"
+            val toggle = if (value) "true" else "false"
 
-        viewLifecycleScope.launch {
-            sceneMapComponent?.putSceneUpdates(listOf(
-                "layers.buildings.draw.buildings-style.extrude" to toggle,
-                "layers.buildings.draw.buildings-outline-style.extrude" to toggle
-            ))
-            sceneMapComponent?.loadScene()
+            viewLifecycleScope.launch {
+                sceneMapComponent?.putSceneUpdates(listOf(
+                    "layers.buildings.draw.buildings-style.extrude" to toggle,
+                    "layers.buildings.draw.buildings-outline-style.extrude" to toggle
+                ))
+                sceneMapComponent?.loadScene()
+            }
         }
-    }
 
-    @Inject internal lateinit var vectorTileProvider: VectorTileProvider
-    @Inject internal lateinit var cacheConfig: MapTilesDownloadCacheConfig
-    @Inject internal lateinit var sharedPrefs: SharedPreferences
+    private val vectorTileProvider: VectorTileProvider by inject()
+    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
+    private val sharedPrefs: SharedPreferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -106,10 +112,6 @@ open class MapFragment : Fragment(),
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,7 +140,7 @@ open class MapFragment : Fragment(),
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.open_url)
             .setMessage(url)
-            .setPositiveButton(android.R.string.ok) { _,_ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 openUrl(url)
             }
             .setNegativeButton(android.R.string.cancel, null)
@@ -374,7 +376,8 @@ open class MapFragment : Fragment(),
     fun updateCameraPosition(
         duration: Long = 0,
         interpolator: Interpolator = defaultCameraInterpolator,
-        builder: CameraUpdate.() -> Unit) {
+        builder: CameraUpdate.() -> Unit
+    ) {
 
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
@@ -401,5 +404,4 @@ open class MapFragment : Fragment(),
         private const val PREF_LAT = "map_lat"
         private const val PREF_LON = "map_lon"
     }
-
 }

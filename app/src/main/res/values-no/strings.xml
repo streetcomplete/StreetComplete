@@ -1671,7 +1671,6 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_notice_board">"En oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_board_type_title">"Hva er temaet for oppslagstavla?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist adskilt på kartet"</string>
     <string name="quest_board_type_map">"Et kart"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
@@ -1844,6 +1843,8 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_pitchSurface_title_track">"Hva slags underlag har denne banen?"</string>
     <string name="quest_bicycle_parking_access_title">"Er det begrenset hvem som kan parkere sykkel her?"</string>
     <string name="quest_bicycle_parking_fee_title">"Må du betale for å parkere sykkel her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Enebolig"</string>
     <string name="quest_drinking_water_title">"Er vannet drikkelig her? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevann (merket)"</string>

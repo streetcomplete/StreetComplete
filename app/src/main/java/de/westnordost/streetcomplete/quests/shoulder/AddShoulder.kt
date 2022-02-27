@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 
-
 class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
     /* Trunks always, smaller roads only if they are either motorroads, bridges or tunnels or if
@@ -22,20 +21,16 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
      * */
     override val elementFilter = """
         ways with
-          (
-            highway = trunk
-            or (
-              highway ~ primary|secondary|tertiary|unclassified
-              and (
-                motorroad = yes
-                or tunnel ~ yes|building_passage|avalanche_protector
-                or bridge = yes
-                or sidewalk ~ no|none
-                or maxspeed > 50
-                or maxspeed ~ "([4-9][0-9]|1[0-9][0-9]) mph"
-                or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
-              )
-            )
+          highway ~ trunk|primary|secondary|tertiary|unclassified
+          and (
+            motorroad = yes
+            or tunnel ~ yes|building_passage|avalanche_protector
+            or bridge = yes
+            or sidewalk ~ no|none
+            or !maxspeed and highway = trunk
+            or maxspeed > 50
+            or maxspeed ~ "(3[5-9]|[4-9][0-9]|1[0-9][0-9]) mph"
+            or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
           )
           and lane_markings != no
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}

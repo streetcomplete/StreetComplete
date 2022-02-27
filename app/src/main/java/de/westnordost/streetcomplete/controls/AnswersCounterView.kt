@@ -35,7 +35,6 @@ class AnswersCounterView @JvmOverloads constructor(
             animateChange()
         }
         this.uploadedCount = uploadedCount
-
     }
 
     private fun animateChange() {

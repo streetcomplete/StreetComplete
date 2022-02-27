@@ -9,9 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.enlargedBy
-import javax.inject.Inject
 
-class RoadNameSuggestionsSource @Inject constructor(
+class RoadNameSuggestionsSource(
     private val mapDataSource: MapDataWithEditsSource
 ) {
 
@@ -19,7 +18,10 @@ class RoadNameSuggestionsSource @Inject constructor(
     fun getNames(points: List<LatLon>, maxDistance: Double): List<MutableMap<String, String>> {
         if (points.isEmpty()) return emptyList()
 
-        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance)
+        /* add 50m radius for bbox query because roads will only be included in the result that have
+           at least one node in the bounding box around the tap position. This is a problem for long
+           straight roads (#3797). This doesn't completely solve this issue but mitigates it */
+        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance + 50)
         val mapData = mapDataSource.getMapDataWithGeometry(bbox)
         val roadsWithNames = mapData.ways.filter { it.isRoadWithName() }
 
@@ -73,15 +75,15 @@ class RoadNameSuggestionsSource @Inject constructor(
  *  Tags that are not two- or three-letter ISO 639 language codes appended with an optional 4-letter
  *  ISO 15924 code, such as name:left, name:etymology, name:source etc., are ignored
  *  */
-internal fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
+internal fun Map<String, String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String, String>()
     val namePattern = Regex("name(?::([a-z]{2,3}(?:-[a-zA-Z]{4})?))?")
     for ((key, value) in this) {
         val m = namePattern.matchEntire(key)
         if (m != null) {
             val languageTag = m.groupValues[1]
             result[languageTag] = value
-        } else if(key == "int_name") {
+        } else if (key == "int_name") {
             result["international"] = value
         }
     }

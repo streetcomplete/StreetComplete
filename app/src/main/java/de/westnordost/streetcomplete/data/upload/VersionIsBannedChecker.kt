@@ -3,10 +3,9 @@ package de.westnordost.streetcomplete.data.upload
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
-import javax.inject.Inject
 
 /** Asks remote server if this version of the app is banned */
-class VersionIsBannedChecker @Inject constructor(private val url: String, private val userAgent: String) {
+class VersionIsBannedChecker(private val url: String, private val userAgent: String) {
 
     fun get(): BannedInfo {
         var connection: HttpURLConnection? = null
@@ -30,10 +29,10 @@ class VersionIsBannedChecker @Inject constructor(private val url: String, privat
     }
 }
 
-class VersionBannedException(val banReason: String?)
-    : RuntimeException("This version is banned from making any changes!")
+class VersionBannedException(val banReason: String?) :
+    RuntimeException("This version is banned from making any changes!")
 
 sealed class BannedInfo
 
-data class IsBanned(val reason: String?): BannedInfo()
+data class IsBanned(val reason: String?) : BannedInfo()
 object IsNotBanned : BannedInfo()

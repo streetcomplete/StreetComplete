@@ -7,13 +7,11 @@ import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File
 import java.io.IOException
 import java.net.URL
-import javax.inject.Inject
-import javax.inject.Named
 
 /** Downloads and stores the OSM avatars of users */
-class AvatarsDownloader @Inject constructor(
+class AvatarsDownloader(
     private val userApi: UserApi,
-    @Named("AvatarsCacheDirectory") private val cacheDir: File
+    private val cacheDir: File
 ) {
 
     fun download(userIds: Collection<Long>) {
@@ -36,7 +34,7 @@ class AvatarsDownloader @Inject constructor(
     private fun getProfileImageUrl(userId: Long): String? {
         return try {
             userApi.get(userId)?.profileImageUrl
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             Log.w(TAG, "Unable to query info for user id $userId")
             null
         }

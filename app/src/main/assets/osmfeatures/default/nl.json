@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Gebruik toegelaten voor",
                     "options": {
+                        "customers": {
+                            "description": "Beperkt tot de klanten op de bestemming",
+                            "title": "Klanten"
+                        },
                         "designated": {
                             "description": "Toegang toegestaan volgens bebording of specifieke, plaatselijke verordeningen",
                             "title": "Zoals aangegeven"
@@ -126,7 +130,8 @@
                         "hiking": "Wandelen",
                         "horse": "Paardrijden",
                         "mtb": "Mountainbiken"
-                    }
+                    },
+                    "terms": "activiteit"
                 },
                 "addr/interpolation": {
                     "label": "Type",
@@ -626,6 +631,13 @@
                 "crossing/light": {
                     "label": "Lampen"
                 },
+                "crossing_raised": {
+                    "label": "Verhoogd",
+                    "options": {
+                        "table": "Ja",
+                        "undefined": "Nee"
+                    }
+                },
                 "cuisine": {
                     "label": "Keukens",
                     "options": {
@@ -830,7 +842,8 @@
                         "north": "Noordwaarts",
                         "south": "Zuidwaarts",
                         "west": "Westwaarts"
-                    }
+                    },
+                    "terms": "richting,directie"
                 },
                 "direction_clock": {
                     "label": "Richting",
@@ -849,7 +862,8 @@
                         "backward": "Achterwaarts (tegen richting van de getekende lijn in)",
                         "both": "Beide / Alle",
                         "forward": "Voorwaarts (in richting van de getekende lijn)"
-                    }
+                    },
+                    "terms": "richting"
                 },
                 "direction_vertex_dual": {
                     "label": "Richting beïnvloed",
@@ -918,10 +932,12 @@
                     "terms": "duur"
                 },
                 "ele": {
-                    "label": "Hoogte (meter)"
+                    "label": "Hoogte (meter)",
+                    "terms": "hoogte,meters"
                 },
                 "ele_node": {
-                    "label": "Hoogte (meter)"
+                    "label": "Hoogte (meter)",
+                    "terms": "hoogte,meters"
                 },
                 "electrified": {
                     "label": "Bovenleiding",
@@ -1106,7 +1122,8 @@
                     "label": "Uitbarstingshoogte"
                 },
                 "gnis/feature_id-US": {
-                    "label": "GNIS object-ID"
+                    "label": "GNIS object-ID",
+                    "terms": "gnis"
                 },
                 "government": {
                     "label": "Type"
@@ -1361,7 +1378,8 @@
                         "mixed": "Gemengd",
                         "semi_deciduous": "Half-bladverliezend",
                         "semi_evergreen": "Half-groenblijvend"
-                    }
+                    },
+                    "terms": "boom,blad,cyclus"
                 },
                 "leaf_cycle_singular": {
                     "label": "Bladercyclus",
@@ -1379,7 +1397,8 @@
                         "leafless": "Bladloos",
                         "mixed": "Gemengd",
                         "needleleaved": "Naaldbomen"
-                    }
+                    },
+                    "terms": "boom,blad,type,vorm"
                 },
                 "leaf_type_singular": {
                     "label": "Bladsoort",
@@ -1696,7 +1715,7 @@
                     "label": "Pakket afhalen",
                     "options": {
                         "no": "Nee",
-                        "undefined": "Aangenomen van niet",
+                        "undefined": "Aangenomen van wel",
                         "yes": "Ja"
                     }
                 },
@@ -1958,8 +1977,6 @@
                         "cans": "Blikjes",
                         "cardboard": "Karton",
                         "clothes": "Kleding",
-                        "glass": "Glas",
-                        "glass_bottles": "Glazen flessen",
                         "green_waste": "Groenafval",
                         "paper": "Papier",
                         "plastic_packaging": "Plastic verpakkingsmateriaal",
@@ -1988,6 +2005,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "Poortnummer"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "Hole nummer",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "Hole-nummer",
@@ -2186,6 +2207,21 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Categorie"
+                },
+                "seamark/rescue_station/category": {
+                    "label": "Reddingsmiddelen",
+                    "options": {
+                        "aircraft": "Vliegtuig",
+                        "first_aid": "EHBO",
+                        "hovercraft": "Hovercraft",
+                        "lifeboat": "Reddingsboot (op land)",
+                        "lifeboat_on_mooring": "Reddingsboot (op ligplaats)",
+                        "radio": "Radiostation",
+                        "refuge_intertidal": "Toevluchtsoord in het getijdengebied",
+                        "refuge_shipwrecked": "Toevluchtsoord voor schipbreukelingen",
+                        "seaplane": "Watervliegtuig",
+                        "tug": "Bergingssleepboot"
+                    }
                 },
                 "seamark/type": {
                     "label": "Scheepvaartobject",
@@ -3335,8 +3371,8 @@
                     "name": "Wisselkantoor"
                 },
                 "amenity/mortuary": {
-                    "name": "Lijkenhuis",
-                    "terms": "mortuarium,begrafenis,ondernemer,lijk,dood"
+                    "name": "Mortuarium",
+                    "terms": "lijkenhuis,crematorium,begrafenis,ondernemer,lijk,dood"
                 },
                 "amenity/motorcycle_parking": {
                     "name": "Motorfietsparking",
@@ -3630,7 +3666,8 @@
                     "terms": "rookzone,kankerzone,rookpaviljoen"
                 },
                 "amenity/social_centre": {
-                    "name": "Buurthuis"
+                    "name": "Sociaal ontmoetingscentrum",
+                    "terms": "broederschapshuis,broederschap,studentenvereniging,beroepsvereniging,vakbondshuis,sociëteit"
                 },
                 "amenity/social_facility": {
                     "name": "Sociale Faciliteit",
@@ -3686,6 +3723,9 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfitheater",
                     "terms": "romeins theater"
+                },
+                "amenity/ticket_validator": {
+                    "name": "Stempelautomaat"
                 },
                 "amenity/toilets": {
                     "name": "Toiletten",
@@ -4059,7 +4099,8 @@
                     "terms": "pand,bouwwerk,bouwsel,constructie"
                 },
                 "building/apartments": {
-                    "name": "Appartementencomplex"
+                    "name": "Appartementencomplex",
+                    "terms": "flatgebouw,flats,appartementengebouw,wolkenkrabber,woongebouw,residentie,appartementen,flat"
                 },
                 "building/barn": {
                     "name": "Schuur",
@@ -4489,6 +4530,18 @@
                 "demolished/building": {
                     "name": "Recent afgebroken gebouw"
                 },
+                "disc_golf/basket": {
+                    "name": "Discgolf-basket",
+                    "terms": "basket,net,doel"
+                },
+                "disc_golf/hole": {
+                    "name": "Discgolf-hole",
+                    "terms": "hole"
+                },
+                "disc_golf/tee": {
+                    "name": "Discgolf-tee",
+                    "terms": "tee"
+                },
                 "disused/amenity": {
                     "name": "Ongebruikte voorziening"
                 },
@@ -4578,9 +4631,8 @@
                     "name": "Noodwaterreservoir",
                     "terms": "water,bluswater,brandweer,tank,blussen"
                 },
-                "emergency/water_reservoir covered": {
-                    "name": "Noodwaterreservoir (ondergronds)",
-                    "terms": "water,bluswater,brandweer,tank,blussen,vuur"
+                "emergency/water_reservoir_covered": {
+                    "name": "Noodwaterreservoir (ondergronds)"
                 },
                 "emergency/water_tank": {
                     "name": "Noodwatertank",
@@ -4756,30 +4808,19 @@
                 "highway/crossing/marked": {
                     "name": "Gemarkeerde Voetgangersoversteekplaats"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Voetgangersoversteekplaats (op drempel)"
-                },
                 "highway/crossing/signals": {
                     "name": "Kruispunt met signalen voor voetgangers",
                     "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
                 },
-                "highway/crossing/signals-raised": {
-                    "name": "Kruispunt met signalen voor voetgangers (verhoogd)",
-                    "terms": "verkeerslichten,zebra,oversteekplaats,drempel,verkeersremmer,zebrapad,verkeersdrempel,stoplicht"
+                "highway/crossing/uncontrolled": {
+                    "name": "Gemarkeerde voetgangersoversteekplaats"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Ongemarkeerde oversteekplaats",
                     "terms": "ongemarkeerde oversteekplaats"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Ongemarkeerde oversteekplaats (op drempel)",
-                    "terms": "ongmarkeerde oversteekplaats op plateau,ongmarkeerde oversteekplaats op drempel"
-                },
                 "highway/crossing/zebra": {
                     "name": "Zebrapad"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Zebrapad (op drempel)"
                 },
                 "highway/cycleway": {
                     "name": "Fietspad",
@@ -4826,25 +4867,19 @@
                 "highway/footway/marked": {
                     "name": "Gemarkeerde Voetgangersoversteekplaats"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Gemarkeerde Voetgangersoversteekplaats (op drempel)"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Stoep",
                     "terms": "voetpad,trottoir"
                 },
+                "highway/footway/signals": {
+                    "name": "Kruispunt met signalen voor voetgangers",
+                    "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
+                },
                 "highway/footway/unmarked": {
                     "name": "Ongemarkeerde Voetgangersoversteekplaats"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Ongemarkeerde Voetgangersoversteekplaats (op drempel)",
-                    "terms": "ongmarkeerde oversteekplaats op plateau,ongmarkeerde oversteekplaats op drempel"
-                },
                 "highway/footway/zebra": {
                     "name": "Zebrapad"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Zebrapad (op drempel)"
                 },
                 "highway/give_way": {
                     "name": "Voorrangsbord",
@@ -5063,7 +5098,7 @@
                 },
                 "historic/castle": {
                     "name": "Kasteel",
-                    "terms": "kasteel,burcht"
+                    "terms": "kasteel,burcht,havezate,landhuis,paleis,vesting,fort,kremlin,chateau,shiro,citadel"
                 },
                 "historic/castle/fortress": {
                     "name": "Historische fortificatie",
@@ -5308,7 +5343,8 @@
                     "terms": "huizen,residentieel,wonen,woonwijk"
                 },
                 "landuse/residential/apartments": {
-                    "name": "Appartementencomplex"
+                    "name": "Gebied met appartementencomplexen",
+                    "terms": "woonwijk,flats,hoogbouw,hoogbouwflats"
                 },
                 "landuse/retail": {
                     "name": "Handelsgebied",
@@ -5367,8 +5403,8 @@
                     "terms": "dansonderwijs,dansconservatorium,conservatorium"
                 },
                 "leisure/disc_golf_course": {
-                    "name": "Frisbeegolfparcours",
-                    "terms": "diskgolfparcours"
+                    "name": "Discgolfparcours",
+                    "terms": "disk golf,disk,frisbee,ultimate"
                 },
                 "leisure/dog_park": {
                     "name": "Hondenpark",
@@ -5505,6 +5541,10 @@
                     "name": "Americanfootball-veld",
                     "terms": "amerikaans voetbalveld,american football"
                 },
+                "leisure/pitch/archery": {
+                    "name": "Boogschietbaan",
+                    "terms": "handboog,kruisboog,pijl,boog,pijl en boog"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Australianfootballveld",
                     "terms": "footyveld,australian rules football,aussie rules,rugbyveld"
@@ -5544,6 +5584,14 @@
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Veldhockeyveld"
+                },
+                "leisure/pitch/four_square": {
+                    "name": "Foursquareveld"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Futsalveld",
+                    "terms": "futsal,zaalvoetbal,zaalvoetbalveld",
+                    "aliases": "Zaalvoetbalveld"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Hoefijzer kuil"

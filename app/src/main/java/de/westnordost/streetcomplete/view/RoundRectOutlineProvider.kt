@@ -19,6 +19,7 @@ class RoundRectOutlineProvider(
             0 + marginTop,
             view.width - marginRight,
             view.height - marginBottom,
-            radius)
+            radius
+        )
     }
 }

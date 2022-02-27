@@ -10,10 +10,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
 
 /** Initialize certain singleton classes used elsewhere throughout the app in the background */
-class Preloader @Inject constructor(
+class Preloader(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     private val featuresDictionaryFuture: FutureTask<FeatureDictionary>
 ) {

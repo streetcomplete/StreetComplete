@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -7,6 +8,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -39,8 +41,12 @@ import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.util.isNearAndAligned
+import java.util.concurrent.FutureTask
 
-class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(
+    private val countryInfos: CountryInfos,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+) : OsmElementQuestType<CyclewayAnswer> {
 
     override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
@@ -52,33 +58,33 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
     override val enabledInCountries = NoCountriesExcept(
-            // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
-            "NO", "SE", "FI", "IS", "DK",
-            "GB", "IE", "NL", "BE", "FR", "LU",
-            "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
-            "ES", "IT", "HR",
-            // East Asia
-            "JP", "KR", "TW",
-            // some of China (East Coast)
-            "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
-            "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
-            // Australia etc
-            "NZ", "AU",
-            // some of Canada
-            "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
-            // some of the US
-            // West Coast, East Coast, Center, South
-            "US-WA", "US-OR", "US-CA",
-            "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
-            "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
-            "US-AZ", "US-TX"
+        // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
+        "NO", "SE", "FI", "IS", "DK",
+        "GB", "IE", "NL", "BE", "FR", "LU",
+        "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
+        "ES", "IT", "HR",
+        // East Asia
+        "JP", "KR", "TW",
+        // some of China (East Coast)
+        "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
+        "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
+        // Australia etc
+        "NZ", "AU",
+        // some of Canada
+        "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
+        // some of the US
+        // West Coast, East Coast, Center, South
+        "US-WA", "US-OR", "US-CA",
+        "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
+        "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
+        "US-AZ", "US-TX"
     )
 
     override val isSplitWayEnabled = true
 
     override val questTypeAchievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) : Int =
+    override fun getTitle(tags: Map<String, String>): Int =
         if (createCyclewaySides(tags, false) != null)
             R.string.quest_cycleway_resurvey_title
         else
@@ -125,7 +131,11 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
             val countryCode = mapData.getWayGeometry(way.id)?.center?.let { p ->
-                countryInfos.get(p.longitude, p.latitude).countryCode
+                countryInfos.getByLocation(
+                    countryBoundariesFuture.get(),
+                    p.longitude,
+                    p.latitude,
+                ).countryCode
             }
             way.hasOldInvalidOrAmbiguousCyclewayTags(countryCode) == true
         }
@@ -135,7 +145,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
         (
-            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags) ) +
+            (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f)
         ) / 2f +
         4f // + generous buffer for possible grass verge
@@ -197,8 +207,7 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         LEFT("left"), RIGHT("right"), BOTH("both")
     }
 
-    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags)
-    {
+    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags) {
         val directionValue = when {
             dir > 0 -> "yes"
             dir < 0 -> "-1"

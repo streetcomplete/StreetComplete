@@ -15,9 +15,8 @@ import android.widget.RelativeLayout
 import androidx.core.graphics.withRotation
 import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
@@ -29,16 +28,25 @@ import de.westnordost.streetcomplete.quests.lanes.LineStyle.SHORT_DASHES
 import kotlin.math.max
 import kotlin.random.Random
 
-
+/**
+ *  Extravagant view that displays the number of lanes on the left side and the number of lanes on
+ *  the right side of the street, featuring
+ *
+ *  - many options to customize the rendering of the street (because streets have different markings
+ *    in different countries)
+ *  - displaying only one side (e.g. if it is a one-way street)
+ *  - animated cars that drive down the street, customizable whether they drive on the left or
+ *    right
+ */
 class LanesSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr), LifecycleObserver {
+) : RelativeLayout(context, attrs, defStyleAttr), DefaultLifecycleObserver {
 
     private val animator = TimeAnimator()
 
-    private val binding : ViewLanesSelectPuzzleBinding
+    private val binding: ViewLanesSelectPuzzleBinding
     private val questionMark: Drawable = context.getDrawable(R.drawable.ic_street_side_unknown)!!
 
     var onClickSideListener: ((isRight: Boolean) -> Unit)? = null
@@ -70,36 +78,36 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
 
     var isShowingLaneMarkings: Boolean = true
-    set(value) {
-        if (field != value) {
-            field = value
-            invalidate()
+        set(value) {
+            if (field != value) {
+                field = value
+                invalidate()
+            }
         }
-    }
     var laneCountLeft: Int = 0
-    private set
+        private set
 
     var laneCountRight: Int = 0
-    private set
+        private set
 
     var hasCenterLeftTurnLane: Boolean = false
 
     var isShowingBothSides: Boolean = true
-    set(value) {
-        if (field != value) {
-            field = value
-            updateLanes()
+        set(value) {
+            if (field != value) {
+                field = value
+                updateLanes()
+            }
         }
-    }
 
     var isForwardTraffic: Boolean = true
 
     var centerLineColor: Int
-    set(value) {
-        centerLinePaint.color = value
-        invalidate()
-    }
-    get() = centerLinePaint.color
+        set(value) {
+            centerLinePaint.color = value
+            invalidate()
+        }
+        get() = centerLinePaint.color
 
     var edgeLineColor: Int
         set(value) {
@@ -109,10 +117,10 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         get() = edgeLinePaint.color
 
     var edgeLineStyle: LineStyle = CONTINUOUS
-    set(value) {
-        field = value
-        invalidate()
-    }
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     private val roadPaint = Paint().also {
         it.color = Color.parseColor("#808080")
@@ -191,11 +199,11 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun resume() {
+    override fun onResume(owner: LifecycleOwner) {
         animator.start()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun pause() {
+    override fun onPause(owner: LifecycleOwner) {
         animator.end()
     }
 
@@ -235,7 +243,7 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         val dashEffect = DashPathEffect(floatArrayOf(lineWidth * 6, lineWidth * 10), 0f)
 
         edgeLinePaint.strokeWidth = lineWidth
-        edgeLinePaint.pathEffect = when(edgeLineStyle) {
+        edgeLinePaint.pathEffect = when (edgeLineStyle) {
             CONTINUOUS -> null
             DASHES -> dashEffect
             SHORT_DASHES -> DashPathEffect(floatArrayOf(lineWidth * 4, lineWidth * 4), 0f)
@@ -346,15 +354,15 @@ class LanesSelectPuzzle @JvmOverloads constructor(
            we need to go faster/slower */
         val ratio = 1f * w / h
         val zoom = max(3, lanesSpace)
-        val delta = ratio * deltaTime/1000f / zoom
+        val delta = ratio * deltaTime / 1000f / zoom
 
-        for(car in carsOnLanesLeft) {
+        for (car in carsOnLanesLeft) {
             car.position += delta * car.speed
             if (car.isOutOfBounds) {
                 car.reset(!isForwardTraffic, carBitmaps)
             }
         }
-        for(car in carsOnLanesRight) {
+        for (car in carsOnLanesRight) {
             car.position += delta * car.speed
             if (car.isOutOfBounds) {
                 if (isShowingBothSides && isShowingOneLaneUnmarked) {

@@ -1902,7 +1902,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_board_type_notice_board">"公告板"</string>
     <string name="quest_board_type_public_transport">"公共交通"</string>
     <string name="quest_board_type_title">"该信息板的主题是什么？"</string>
-    <string name="quest_sidewalk_separately_mapped">"是的，在地图上分别展示"</string>
     <string name="quest_board_type_map">"它是一张地图"</string>
     <string name="quest_board_type_map_title">"它是且仅是一张地图吗？"</string>
 
@@ -2397,6 +2396,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_dietType_explanation_halal">"清真制品必须按照特殊规则准备，并由清真认证机构对符合要求的产品进行标识。"</string>
     <string name="quest_picnicTableCover_title">"野餐桌有遮蔽吗（不受雨淋）？"</string>
     <string name="quest_generic_answer_is_actually_steps">"这部分是台阶"</string>
+    <string name="quest_barrier_type_passage_conversion">"改为墙/栅栏/等的通道。"</string>
     <string name="quest_barrier_type_gate_conversion">"改建成大门"</string>
 
     <!-- Fuzzy -->
@@ -2520,6 +2520,10 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_generic_hasFeature_yes_leave_note">"是(留言)"</string>
     <string name="quest_smoothness_name_title">"这里的 %s 的表面质量是什么"</string>
     <string name="quest_smoothness_square_title">"这个广场的表面积如何"</string>
+    <string name="quest_smoothness_path_title">"这条小道的表面质量如何？"</string>
+    <string name="quest_smoothness_road_title">"这条道路的表面质量如何？"</string>
+    <string name="quest_smoothness_title_excellent">"平坦而均匀"</string>
+    <string name="quest_smoothness_title_good">"多半平坦"</string>
     <string name="quest_smoothness_title_intermediate">"稍有颠簸"</string>
     <string name="quest_smoothness_title_bad">"颠簸"</string>
     <string name="quest_smoothness_title_very_bad">"很颠簸"</string>
@@ -2528,8 +2532,53 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_smoothness_title_impassable">"不能通行"</string>
     <string name="quest_smoothness_description_excellent_paved">"没有凸起或裂缝"</string>
     <string name="quest_smoothness_description_excellent_paving_stones">"几乎没有裂缝"</string>
+    <string name="quest_smoothness_description_good_paved">"只有些小的裂纹、缝隙、修补或有点粗糙的表面"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"缝隙较浅或很窄"</string>
+    <string name="quest_smoothness_description_good_sett">"异常平坦的石头，有规律的图案，非常浅或狭窄的缝隙"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"异常粗糙的表面、较宽的缝隙、裂缝、浅浅的车辙、坑洞或其他损伤"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"更大的缝隙，可能有一些移位的石头或其他损伤"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"平坦的石头或有方形的边缘，浅的或窄的间隙"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"细小的砾石，浅浅的颠簸或坑洼"</string>
+    <string name="quest_smoothness_description_bad_paved">"大的缝隙、坑洞、车辙、碎裂的铺面或其他损伤"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"有移位的石头、大缺口或存在其他损坏"</string>
     <string name="quest_smoothness_description_bad_sett">"有风化的石头或者不规则形状、大缝隙或其他损坏"</string>
     <string name="quest_smoothness_description_bad_compacted_gravel">"一些较大的砾石、凸起、车辙或坑洼"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"深坑、深车辙或其他危险损害"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"大缝隙、移位、缺失或不规则形状的石头或危险的损坏
+"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"有丢失和破碎的石头或开裂的缝隙和其他可能会带来危险的损坏"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"一些大石头、深坑、颠簸、车辙、侵蚀或其他危险损害"</string>
+    <string name="quest_smoothness_description_horrible">"仅可由越野车或步行妥善通过"</string>
+    <string name="quest_smoothness_description_very_horrible">"仅可由专业越野车或步行妥善通过"</string>
+    <string name="quest_smoothness_description_impassable">"不适用于任何车辆，只能步行通过"</string>
+    <string name="quest_smoothness_wrong_surface">"表面不一样"</string>
+    <string name="quest_smoothness_surface_value">"该表面被标记为："</string>
+    <string name="quest_smoothness_obstacle">"存在一个障碍"</string>
+    <string name="quest_smoothness_obstacle_hint">"请提供一个关于平顺度的通用答案。单一的障碍物，如路缘石、减速带或牲畜格栅，可以忽略不计。反复出现的或意想不到的障碍物应计入到回答中。"</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, ...表示该表面对哪些车辆可以使用。重要的是大局，而不是单一的损害。"</string>
+    <string name="quest_shoulder_explanation">"路肩是一个明确划定的紧急停车道，允许车辆完全停在车道旁边（外），尽管并不总是（完全）在铺装的表面上。"</string>
+    <string name="link_osmhydrant_description">"查询、添加并编辑消防站和消防栓"</string>
+    <string name="quest_fuelSelfService_title">"你能在这个加油站自助加油吗？"</string>
+    <string name="quest_fuelSelfService_name_title">"你能在 %s 自助加油吗？"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"这种任务类型在默认情况下是禁用的，因为它相当耗费时间，而且往往很难做出正确的选择。只有当你真的致力于添加这种数据时，你才应该启用这种任务类型。"</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"硬质铺料，很少有松散的砾石或沙子"</string>
+    <string name="quest_barrier_path_intersection">"这条小道是如何跨越这里的障碍的？"</string>
+    <string name="quest_barrier_road_intersection">"这条道路是如何跨越这里的障碍的？"</string>
+    <string name="quest_airConditioning_no_name_title">"这个地方（%s）有空调吗？"</string>
+    <string name="quest_airConditioning_name_type_title">"%1$s (%2$s) 有空调吗？"</string>
+    <string name="quest_openingHours_signed_name_title">"在 %s 是否有告示开放时间？"</string>
+    <string name="quest_openingHours_signed_name_type_title">"在 %1$s （%2$s） 是否有告示开放时间？"</string>
+    <string name="quest_sidewalk_value_separate">"在地图上分开显示"</string>
+    <string name="quest_shoulder_value_yes">"路肩"</string>
+    <string name="quest_shoulder_value_no">"没有路肩"</string>
+    <string name="no_camera_permission_warning_title">"相机许可"</string>
+
+    <!-- Fuzzy -->
+    <string name="no_camera_permission_warning">"为了能够用增强现实技术测量距离，该许可是必要的。"</string>
+    <string name="ar_core_error_sdk_too_old">"该应用过于老旧，请尝试升级。"</string>
+    <string name="ar_core_tracking_error_bad_state">"出了些问题。请尝试重新启动测量。"</string>
+    <string name="ar_core_tracking_error_insufficient_light">"这里太暗了"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"动作太大"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"这里没有足够的视觉特征"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"相机已被另一个应用程序占用"</string>
 </resources>

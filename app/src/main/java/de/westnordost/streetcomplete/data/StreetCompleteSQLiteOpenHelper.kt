@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTa
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryTable
+import de.westnordost.streetcomplete.data.osm.geometry.RelationGeometryTable
+import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
@@ -25,9 +26,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
-import javax.inject.Singleton
 
-@Singleton class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
+class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -41,10 +41,11 @@ import javax.inject.Singleton
         db.execSQL(NoteEditsTable.NOTE_ID_INDEX_CREATE)
 
         // OSM map data
-        db.execSQL(ElementGeometryTable.CREATE)
-        db.execSQL(ElementGeometryTable.SPATIAL_INDEX_CREATE)
+        db.execSQL(WayGeometryTable.CREATE)
+        db.execSQL(RelationGeometryTable.CREATE)
 
         db.execSQL(NodeTable.CREATE)
+        db.execSQL(NodeTable.SPATIAL_INDEX_CREATE)
 
         db.execSQL(WayTables.CREATE)
         db.execSQL(WayTables.NODES_CREATE)
@@ -121,10 +122,56 @@ import javax.inject.Singleton
             db.execSQL("DROP TABLE $oldName;")
         }
         if (oldVersion <= 3 && newVersion > 3) {
-           db.execSQL("DROP TABLE new_achievements")
+            db.execSQL("DROP TABLE new_achievements")
+        }
+        if (oldVersion <= 4 && newVersion > 4) {
+            db.execSQL(NodeTable.SPATIAL_INDEX_CREATE)
+            db.execSQL(WayGeometryTable.CREATE)
+            db.execSQL(RelationGeometryTable.CREATE)
+            val oldGeometryTableName = "elements_geometry"
+            val oldTypeName = "element_type"
+            val oldIdName = "element_id"
+            db.execSQL("""
+                INSERT INTO ${WayGeometryTable.NAME} (
+                    ${WayGeometryTable.Columns.ID},
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${WayGeometryTable.Columns.CENTER_LATITUDE},
+                    ${WayGeometryTable.Columns.CENTER_LONGITUDE}
+                ) SELECT
+                    $oldIdName,
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${WayGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${WayGeometryTable.Columns.CENTER_LATITUDE},
+                    ${WayGeometryTable.Columns.CENTER_LONGITUDE}
+                FROM
+                    $oldGeometryTableName
+                WHERE
+                    $oldTypeName = 'WAY';
+            """.trimIndent()
+            )
+            db.execSQL("""
+                INSERT INTO ${RelationGeometryTable.NAME} (
+                    ${RelationGeometryTable.Columns.ID},
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${RelationGeometryTable.Columns.CENTER_LATITUDE},
+                    ${RelationGeometryTable.Columns.CENTER_LONGITUDE}
+                ) SELECT
+                    $oldIdName,
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYLINES},
+                    ${RelationGeometryTable.Columns.GEOMETRY_POLYGONS},
+                    ${RelationGeometryTable.Columns.CENTER_LATITUDE},
+                    ${RelationGeometryTable.Columns.CENTER_LONGITUDE}
+                FROM
+                    $oldGeometryTableName
+                WHERE
+                    $oldTypeName = 'RELATION';
+            """.trimIndent()
+            )
+            db.execSQL("DROP TABLE $oldGeometryTableName;")
         }
     }
-
 }
 
-private const val DB_VERSION = 4
+private const val DB_VERSION = 5

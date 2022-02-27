@@ -14,7 +14,7 @@ interface Edit {
 
 sealed class EditKey
 
-data class ElementEditKey(val id: Long): EditKey()
-data class NoteEditKey(val id: Long): EditKey()
-data class OsmQuestHiddenKey(val osmQuestKey: OsmQuestKey): EditKey()
-data class OsmNoteQuestHiddenKey(val osmNoteQuestKey: OsmNoteQuestKey): EditKey()
+data class ElementEditKey(val id: Long) : EditKey()
+data class NoteEditKey(val id: Long) : EditKey()
+data class OsmQuestHiddenKey(val osmQuestKey: OsmQuestKey) : EditKey()
+data class OsmNoteQuestHiddenKey(val osmNoteQuestKey: OsmNoteQuestKey) : EditKey()

@@ -11,19 +11,19 @@ import java.util.EnumSet
 /** Create an overpass query from the given element filter expression */
 class OverpassQueryCreator(
     elementTypes: EnumSet<ElementsTypeFilter>,
-    private val expr: BooleanExpression<ElementFilter, Element>?)
-{
+    private val expr: BooleanExpression<ElementFilter, Element>?
+) {
     private val elementTypes = elementTypes.toOqlNames()
     private var setIdCounter: Int = 1
     private val dataSets: MutableMap<BooleanExpression<ElementFilter, Element>, Int> = mutableMapOf()
 
     fun create(): String {
-         if (elementTypes.size == 1) {
+        if (elementTypes.size == 1) {
             val elementType = elementTypes.first()
             if (expr == null) {
                 return "$elementType;\n"
             }
-             return expr.toOverpassString(elementType, null)
+            return expr.toOverpassString(elementType, null)
         } else {
             if (expr == null) {
                 return "(" + elementTypes.joinToString(" ") { "$it; " } + ");\n"
@@ -116,16 +116,16 @@ class OverpassQueryCreator(
             childrenResultSetIds.add(workingSetId)
         }
         // then union all direct children
-        val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it)+";" }
-        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
+        val unionChildren = childrenResultSetIds.joinToString(" ") { getSetId(elementType, it) + ";" }
+        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         result.append("($unionChildren)$resultStmt;\n")
         return result.toString()
     }
 
     private fun AllTagFilters.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
-        val elementFilter = elementType + inputSetId?.let { getSetId(elementType,it) }.orEmpty()
+        val elementFilter = elementType + inputSetId?.let { getSetId(elementType, it) }.orEmpty()
         val tagFilters = values.joinToString("") { it.toOverpassString() }
-        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
+        val resultStmt = resultSetId?.let { " -> " + getSetId(elementType, it) }.orEmpty()
         return "$elementFilter$tagFilters$resultStmt;\n"
     }
 

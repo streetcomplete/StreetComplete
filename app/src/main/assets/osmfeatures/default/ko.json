@@ -117,6 +117,7 @@
                         "block_number": "번지",
                         "block_number!jp": "번지",
                         "city": "행정시·행정구·구역",
+                        "city!cn": "지급시/지구/맹",
                         "city!jp": "시/정/촌/도쿄 특별구",
                         "city!vn": "시/읍",
                         "conscriptionnumber": "123",
@@ -124,6 +125,7 @@
                         "county": "군",
                         "county!jp": "군",
                         "district": "구",
+                        "district!cn": "시할구/현/기",
                         "district!vn": "구/시사/현",
                         "floor": "층",
                         "hamlet": "반",
@@ -135,6 +137,7 @@
                         "place": "장소",
                         "postcode": "우편번호",
                         "province": "도",
+                        "province!cn": "성/직할시/자치구/특별행정구",
                         "province!jp": "도도부현",
                         "quarter": "지구",
                         "quarter!jp": "오아자/마치",
@@ -225,6 +228,9 @@
                 "attraction": {
                     "label": "종류"
                 },
+                "automated": {
+                    "label": "자동"
+                },
                 "baby_seat": {
                     "label": "유아석"
                 },
@@ -255,7 +261,9 @@
                 "beauty": {
                     "label": "서비스",
                     "options": {
-                        "cosmetics": "화장품"
+                        "cosmetics": "화장품",
+                        "nails": "네일",
+                        "tanning": "태닝"
                     }
                 },
                 "bench": {
@@ -298,6 +306,9 @@
                 },
                 "boundary": {
                     "label": "유형"
+                },
+                "branch_brand": {
+                    "label": "지점"
                 },
                 "brand": {
                     "label": "상표"
@@ -381,7 +392,13 @@
                     "label": "입금"
                 },
                 "castle_type": {
-                    "label": "유형"
+                    "label": "유형",
+                    "options": {
+                        "castrum": "로마 요새",
+                        "kremlin": "크렘린",
+                        "palace": "궁전",
+                        "shiro": "일본식 성"
+                    }
                 },
                 "changing_table": {
                     "label": "기저귀 교환대"
@@ -483,28 +500,49 @@
                 "cuisine": {
                     "label": "요리",
                     "options": {
-                        "american": "미국 음식",
-                        "asian": "아시아 음식",
+                        "american": "미국 요리",
+                        "asian": "아시아 요리",
+                        "bubble_tea": "버블티",
                         "burger": "햄버거",
+                        "cake": "케이크",
                         "chicken": "치킨",
-                        "chinese": "중국 음식",
+                        "chinese": "중국 요리",
+                        "chocolate": "초콜릿",
                         "coffee_shop": "커피숍",
-                        "french": "프랑스 음식",
-                        "german": "독일 음식",
-                        "greek": "그리스 음식",
+                        "dessert": "디저트",
+                        "donut": "도넛",
+                        "french": "프랑스 요리",
+                        "german": "독일 요리",
+                        "greek": "그리스 요리",
+                        "hot_dog": "핫도그",
                         "ice_cream": "아이스크림",
-                        "indian": "인도 음식",
-                        "italian": "이탈리아 음식",
-                        "japanese": "일본 음식",
+                        "indian": "인도 요리",
+                        "indonesian": "인도네시아 요리",
+                        "italian": "이탈리아 요리",
+                        "japanese": "일본 요리",
+                        "juice": "주스",
                         "kebab": "케밥",
-                        "mexican": "멕시코 음식",
+                        "korean": "한식",
+                        "lebanese": "레바논 요리",
+                        "malaysian": "말레이시아 요리",
+                        "mexican": "멕시코 요리",
+                        "pankcake": "팬케이크",
+                        "pasta": "파스타",
                         "pizza": "피자",
+                        "polish": "폴란드 요리",
+                        "portuguese": "포르투갈 요리",
                         "regional": "토속 음식",
+                        "russian": "러시아 요리",
+                        "salad": "샐러드",
                         "sandwich": "샌드위치",
+                        "seafood": "해산물",
+                        "spanish": "스페인 요리",
+                        "steak_house": "스테이크하우스",
                         "sushi": "초밥",
-                        "thai": "태국 음식",
-                        "turkish": "터키 음식",
-                        "vietnamese": "베트남 음식"
+                        "taiwanese": "대만 요리",
+                        "thai": "태국 요리",
+                        "turkish": "터키 요리",
+                        "vietnamese": "베트남 요리"
                     }
                 },
                 "currency_multi": {
@@ -703,6 +741,12 @@
                     "label": "소요 시간",
                     "placeholder": "00:00"
                 },
+                "ele": {
+                    "label": "고도(미터)"
+                },
+                "ele_node": {
+                    "label": "고도(미터)"
+                },
                 "electrified": {
                     "label": "전력화",
                     "options": {
@@ -723,7 +767,15 @@
                     "placeholder": "보통"
                 },
                 "embassy": {
-                    "label": "유형"
+                    "label": "유형",
+                    "options": {
+                        "branch_embassy": "대사관 분관",
+                        "high_commission": "고등 판무관 사무소",
+                        "mission": "재외 공관",
+                        "nunciature": "성좌의 재외 공관",
+                        "residence": "대사 관저",
+                        "yes": "대사관"
+                    }
                 },
                 "emergency": {
                     "label": "긴급"
@@ -1447,7 +1499,15 @@
                     "label": "정격 용량"
                 },
                 "recycling_accepts": {
-                    "label": "종류"
+                    "label": "종류",
+                    "options": {
+                        "batteries": "배터리",
+                        "cans": "캔",
+                        "clothes": "의류",
+                        "paper": "종이",
+                        "scrap_metal": "고철",
+                        "shoes": "신발"
+                    }
                 },
                 "recycling_type": {
                     "label": "유형",
@@ -2101,7 +2161,11 @@
                     "placeholder": "https://example.com"
                 },
                 "wetland": {
-                    "label": "유형"
+                    "label": "유형",
+                    "options": {
+                        "mangrove": "맹그로브",
+                        "reedbed": "갈대밭"
+                    }
                 },
                 "wheelchair": {
                     "label": "휠체어 접근",
@@ -3345,6 +3409,9 @@
                     "name": "돈사",
                     "terms": "돼지우리"
                 },
+                "building/synagogue": {
+                    "name": "시너고그 건물"
+                },
                 "building/temple": {
                     "name": "사원 건물"
                 },
@@ -3787,20 +3854,11 @@
                 "highway/crossing/marked": {
                     "name": "횡단보도"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "고원식 횡단보도"
-                },
                 "highway/crossing/unmarked": {
                     "name": "표시되지 않은 횡단보도"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "표시되지 않은 고원식 횡단보도"
-                },
                 "highway/crossing/zebra": {
                     "name": "횡단보도"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "고원식 횡단보도"
                 },
                 "highway/cycleway": {
                     "name": "자전거 도로",
@@ -3829,9 +3887,6 @@
                 "highway/footway/marked": {
                     "name": "횡단보도"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "고원식 횡단보도"
-                },
                 "highway/footway/sidewalk": {
                     "name": "인도",
                     "terms": "보도,보행로"
@@ -3839,14 +3894,8 @@
                 "highway/footway/unmarked": {
                     "name": "표시되지 않은 횡단보도"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "표시되지 않은 고원식 횡단보도"
-                },
                 "highway/footway/zebra": {
                     "name": "횡단보도"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "고원식 횡단보도"
                 },
                 "highway/give_way": {
                     "name": "양보 표지판",
@@ -4270,6 +4319,9 @@
                     "name": "소매 지역",
                     "terms": "상업 지역"
                 },
+                "landuse/salt_pond": {
+                    "name": "염전"
+                },
                 "landuse/vineyard": {
                     "name": "포도밭",
                     "terms": "포도원,포도주,와인"
@@ -4462,6 +4514,9 @@
                 "leisure/pitch/field_hockey": {
                     "name": "필드 하키장"
                 },
+                "leisure/pitch/futsal": {
+                    "name": "풋살장"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "말굽 구덩이"
                 },
@@ -4475,6 +4530,9 @@
                 "leisure/pitch/rugby_union": {
                     "name": "사회인 럭비장 부지",
                     "terms": "사회인 럭비장 부지"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "사격장"
                 },
                 "leisure/pitch/shuffleboard": {
                     "name": "셔플보드 코트"
@@ -4527,6 +4585,9 @@
                 "leisure/sports_centre/climbing": {
                     "name": "인공 암벽장",
                     "terms": "클라이밍"
+                },
+                "leisure/sports_centre/shooting": {
+                    "name": "사격장 시설"
                 },
                 "leisure/sports_centre/swimming": {
                     "name": "수영장 시설",
@@ -4595,6 +4656,10 @@
                 },
                 "man_made/clearcut": {
                     "name": "개벌지"
+                },
+                "man_made/compass_rose": {
+                    "name": "컴퍼스 로즈",
+                    "terms": "나침도"
                 },
                 "man_made/courtyard": {
                     "name": "안뜰"
@@ -4947,6 +5012,12 @@
                     "name": "습지",
                     "terms": "늪,갈대밭,갯벌,간석지"
                 },
+                "natural/wetland/mangrove": {
+                    "name": "맹그로브"
+                },
+                "natural/wetland/reedbed": {
+                    "name": "갈대밭"
+                },
                 "natural/wood": {
                     "name": "자연림",
                     "terms": "숲"
@@ -5235,6 +5306,9 @@
                 "point": {
                     "name": "점",
                     "terms": "점"
+                },
+                "police/checkpoint": {
+                    "name": "경찰 검문소"
                 },
                 "polling_station": {
                     "name": "임시 투표소"

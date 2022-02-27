@@ -173,9 +173,9 @@ class AddLocalizedNameAdapter(
      * [localizedNameSuggestionsMap]. The value of the selected key will be passed to the
      * [callback] */
     private fun showNameSuggestionsMenu(
-            view: View,
-            localizedNameSuggestionsMap: Map<String, Map<String, String>>,
-            callback: (Map<String, String>) -> Unit
+        view: View,
+        localizedNameSuggestionsMap: Map<String, Map<String, String>>,
+        callback: (Map<String, String>) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
@@ -192,7 +192,7 @@ class AddLocalizedNameAdapter(
     }
 
     private fun getLocalizedNameSuggestionsByLanguageTag(languageTag: String): Map<String, Map<String, String>> {
-        val localizedNameSuggestionsMap = mutableMapOf<String, Map<String,String>>()
+        val localizedNameSuggestionsMap = mutableMapOf<String, Map<String, String>>()
         if (localizedNameSuggestions != null) {
             for (localizedNameSuggestion in localizedNameSuggestions) {
                 val name = localizedNameSuggestion[languageTag] ?: continue
@@ -217,18 +217,18 @@ class AddLocalizedNameAdapter(
 
         private lateinit var localizedName: LocalizedName
 
-        private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
-        private val buttonLanguage : TextView = itemView.findViewById(R.id.languageButton)
-        private val buttonDelete : View = itemView.findViewById(R.id.deleteButton)
-        private val buttonNameSuggestions : View = itemView.findViewById(R.id.nameSuggestionsButton)
+        private val autoCorrectInput: AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
+        private val buttonLanguage: TextView = itemView.findViewById(R.id.languageButton)
+        private val buttonDelete: View = itemView.findViewById(R.id.deleteButton)
+        private val buttonNameSuggestions: View = itemView.findViewById(R.id.nameSuggestionsButton)
 
         init {
             autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
                     localizedName.name = name.trim()
-                    buttonNameSuggestions.isGone = name.isNotEmpty() ||
-                        getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
+                    buttonNameSuggestions.isGone = name.isNotEmpty()
+                        || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
                     for (listener in listeners) {
                         listener(localizedName)
                     }

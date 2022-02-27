@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -16,12 +15,12 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Shows a list of the edit history */
 class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
 
-    @Inject internal lateinit var editHistorySource: EditHistorySource
+    private val editHistorySource: EditHistorySource by inject()
 
     interface Listener {
         /** Called when an edit has been selected and the undo-button appeared */
@@ -59,10 +58,6 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
                 }
             }
         }
-    }
-
-    init {
-        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

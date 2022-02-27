@@ -13,8 +13,8 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
         ways with highway = track
         and (
           !tracktype
-          or tracktype != grade1 and tracktype older today -4 years
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and tracktype older today -4 years
+          or tracktype != grade1 and tracktype older today -6 years
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and tracktype older today -6 years
           or tracktype older today -8 years
         )
         and (access !~ private|no or (foot and foot !~ private|no))

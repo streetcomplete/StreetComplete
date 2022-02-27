@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Accès autorisé",
                     "options": {
+                        "customers": {
+                            "description": "Accès restreint aux clients à l'arrivée",
+                            "title": "Clients"
+                        },
                         "designated": {
                             "description": "Accès autorisé selon la signalisation ou la réglementation locale ",
                             "title": "Prévu spécifiquement pour certains types de véhicules"
@@ -626,6 +630,13 @@
                 },
                 "crossing/light": {
                     "label": "Lumières"
+                },
+                "crossing_raised": {
+                    "label": "Relevé",
+                    "options": {
+                        "table": "Oui",
+                        "undefined": "Non"
+                    }
                 },
                 "cuisine": {
                     "label": "Cuisines",
@@ -1968,8 +1979,6 @@
                         "cans": "Canettes",
                         "cardboard": "Cartons",
                         "clothes": "Vêtements",
-                        "glass": "Verre",
-                        "glass_bottles": "Bouteilles en verre",
                         "green_waste": "Déchets verts",
                         "paper": "Papiers",
                         "plastic_packaging": "Emballages plastiques",
@@ -1998,6 +2007,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "Numéro de porte"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "Trou numéro",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "Numéro du trou",
@@ -2196,6 +2209,21 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Catégorie"
+                },
+                "seamark/rescue_station/category": {
+                    "label": "Type d'équipement de sauvetage",
+                    "options": {
+                        "aircraft": "Aviation",
+                        "first_aid": "Premier secours",
+                        "hovercraft": "Aéroglisseur",
+                        "lifeboat": "Canot de sauvetage au sol",
+                        "lifeboat_on_mooring": "Canot de sauvetage amarré",
+                        "radio": "Equipement radio",
+                        "refuge_intertidal": "Refuge en cas de marée haute",
+                        "refuge_shipwrecked": "Refuge pour naufragé",
+                        "seaplane": "Hydravion",
+                        "tug": "Remorqueur"
+                    }
                 },
                 "seamark/type": {
                     "label": "Balise maritime",
@@ -3785,6 +3813,10 @@
                     "name": "Amphithéâtre",
                     "terms": "plein air,extérieur,grecque,amphi"
                 },
+                "amenity/ticket_validator": {
+                    "name": "Composteur de billet",
+                    "terms": "composteur,machine,composter,compostage,billet,tiquet,titre,transport,train,métro,bus"
+                },
                 "amenity/toilets": {
                     "name": "Toilettes publiques",
                     "terms": "toilettes,wc"
@@ -4627,6 +4659,18 @@
                 "demolished/building": {
                     "name": "Bâtiment détruit récemment"
                 },
+                "disc_golf/basket": {
+                    "name": "Panier de disc golf",
+                    "terms": "panier,cible,trou,golf,disque,frisbee,frolf"
+                },
+                "disc_golf/hole": {
+                    "name": "Trou de disc golf",
+                    "terms": "trou,parcours,itinéraire,chemin,golf,disque,frisbee,frolf"
+                },
+                "disc_golf/tee": {
+                    "name": "Départ",
+                    "terms": "tee,départ,parcours,golf,disc,disque,frisbee,frolf"
+                },
                 "disused/amenity": {
                     "name": "Infrastructure désaffectée"
                 },
@@ -4721,9 +4765,9 @@
                     "name": "Réservoir d'eau pour pompiers",
                     "terms": "réservoir,réserve,bassin,eau,urgence,pompier,incendie,feu,éteindre"
                 },
-                "emergency/water_reservoir covered": {
-                    "name": "Réservoir d'eau souterrain pour pompiers",
-                    "terms": "réservoir,réserve,citerne,eau,urgence,pompier,incendie,feu,éteindre"
+                "emergency/water_reservoir_covered": {
+                    "name": "Réservoir d'eau pour les secours (enterré)",
+                    "terms": "réservoir,bassin,citerne,eau,secours,pompier,incendie,souterrain,enterré"
                 },
                 "emergency/water_tank": {
                     "name": "Réservoir d'eau de secours",
@@ -4908,31 +4952,19 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Passage piéton marqué (surélevé)",
-                    "terms": "zebra,marquage,passage piéton"
-                },
                 "highway/crossing/signals": {
                     "name": "Feux piétons",
                     "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons"
                 },
-                "highway/crossing/signals-raised": {
-                    "name": "Plateau surélevé avec feux piétons",
-                    "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons,plateau,surélevé,traversant,ralentisseur,coussin,dos d'âne"
+                "highway/crossing/uncontrolled": {
+                    "name": "Traversée sans feux"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Passage piéton non marqué",
                     "terms": "passage piéton non marqué"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Passage piéton non marqué (surélevé)",
-                    "terms": "passage piéton non marqué (surélevé)"
-                },
                 "highway/crossing/zebra": {
                     "name": "Passage piéton marqué"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Passage piéton marqué (surélevé)"
                 },
                 "highway/cycleway": {
                     "name": "Voie cyclable",
@@ -4988,27 +5020,20 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Passage piéton marqué (surélevé)",
-                    "terms": "zebra,marquage,passage piéton"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoir",
                     "terms": "trottoir"
+                },
+                "highway/footway/signals": {
+                    "name": "Passage piéton avec feux tricolores",
+                    "terms": "passage,traversée,piéton,feux,signalisation"
                 },
                 "highway/footway/unmarked": {
                     "name": "Passage piéton non marqué",
                     "terms": "passage piéton non marqué"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Passage piéton non marqué (surélevé)",
-                    "terms": "passage piéton non marqué (surélevé)"
-                },
                 "highway/footway/zebra": {
                     "name": "Passage piéton marqué"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Passage piéton marqué (surélevé)"
                 },
                 "highway/give_way": {
                     "name": "Cédez-le-passage",
@@ -5705,6 +5730,10 @@
                     "name": "Terrain de football américain",
                     "terms": "terrain de football américain"
                 },
+                "leisure/pitch/archery": {
+                    "name": "Terrain pour tir à l'arc",
+                    "terms": "terrain,sport,tir,arc"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Terrain de football australien",
                     "terms": "terrain de football australien,football australien"
@@ -5747,6 +5776,14 @@
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Terrain de hockey sur gazon"
+                },
+                "leisure/pitch/four_square": {
+                    "name": "Terrain de four square",
+                    "terms": "terrain,four,square,foursquare"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Terrain de football en salle",
+                    "terms": "terrain,foot,football,salle,futsal,ballon"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Fer à cheval (jeu)",

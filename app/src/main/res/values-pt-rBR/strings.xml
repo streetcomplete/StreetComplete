@@ -1947,7 +1947,6 @@ conquista"</string>
     <string name="quest_board_type_notice_board">"É um quadro de avisos"</string>
     <string name="quest_board_type_public_transport">"Transporte público"</string>
     <string name="quest_board_type_title">"Qual é o tópico deste painel de informações?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Sim, exibido separadamente no mapa"</string>
     <string name="quest_board_type_map">"É um mapa"</string>
     <string name="quest_board_type_map_title">"É apenas um mapa e apenas um mapa?"</string>
     <string name="quest_board_type_map_description">"Se o quadro for sobre um determinado tópico, especifique-o, independentemente de também incluir um mapa. Por exemplo, uma placa de transporte público pode ter um mapa de rotas de ônibus. Se o tópico não estiver listado entre as respostas disponíveis, considere deixar uma nota."</string>
@@ -2124,6 +2123,8 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_pitchSurface_title_track">"Qual superfície essa pista esportiva tem?"</string>
     <string name="quest_bicycle_parking_access_title">"É restrito quem pode estacionar uma bicicleta aqui?"</string>
     <string name="quest_bicycle_parking_fee_title">"Você tem que pagar para estacionar uma bicicleta aqui?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"casa unifamiliar não independente"</string>
     <string name="quest_drinking_water_title">"A água é potável aqui? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Seguro para beber (assinado)"</string>
@@ -2280,6 +2281,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_traffic_calming_type_choker">"Estrada estreita"</string>
     <string name="quest_traffic_calming_type_island">"Ilha"</string>
     <string name="quest_traffic_calming_type_chicane">"Curva(s) deliberada(s)"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"Sonorizador(es)"</string>
     <string name="quest_surface_value_concrete_plates">"Placas de concreto"</string>
     <string name="quest_surface_value_concrete_lanes">"Pistas de concreto"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual diâmetro está especificado no sinal para este hidrante?"</string>
@@ -2303,5 +2305,23 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_level_title">"Em que nível o número %s está localizado?"</string>
     <string name="pref_title_language_select">"Selecione o idioma"</string>
     <string name="language_default">"Padrão do sistema "</string>
+    <string name="confirmation_discard_negative2">"Não"</string>
+    <string name="quest_street_parking_title">"Como os carros estacionam aqui, se permitidos?"</string>
+    <string name="select_street_parking_position">"Selecione a posição:"</string>
+    <string name="street_parking_parallel">"Paralelo"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"Na estrada"</string>
+    <string name="street_parking_half_on_kerb">"Parcialmente na estrada"</string>
+    <string name="street_parking_on_kerb">"Adjacente a estrada"</string>
+    <string name="street_parking_separate">"Estacionamento mostrado separadamente no mapa"</string>
     <string name="street_parking_no">"Proibido estacionar"</string>
+    <string name="street_parking_prohibited">"Proibido estacionar"</string>
+    <string name="street_stopping_prohibited">"Proibido parar"</string>
+    <string name="quest_address_house_number_label">"Número da casa:"</string>
+    <string name="quest_fireHydrant_position_title">"Onde este hidrante está localizado?"</string>
+    <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Na calçada"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Sim (deixe uma nota)"</string>
+    <string name="quest_sidewalk_value_separate">"mostrado separadamente no mapa"</string>
 </resources>

@@ -69,5 +69,4 @@ class OpenQuestChangesetsManagerTest {
         ))
         verify(openChangesetsDB).put(any())
     }
-
 }

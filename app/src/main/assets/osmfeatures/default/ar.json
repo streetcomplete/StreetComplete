@@ -55,6 +55,10 @@
                 "access": {
                     "label": "وصول مسموح",
                     "options": {
+                        "customers": {
+                            "description": "مخصص فقط للعملاء المتوجهين إلى المكان",
+                            "title": "للعملاء - الزبائن"
+                        },
                         "designated": {
                             "description": "يسمح بالوصول حسب الارشادات او القوانين المحلية",
                             "title": "مخصص/محدد"
@@ -624,6 +628,13 @@
                 },
                 "crossing/light": {
                     "label": "إضاءات"
+                },
+                "crossing_raised": {
+                    "label": "مرتفع",
+                    "options": {
+                        "table": "نعم",
+                        "undefined": "لا"
+                    }
                 },
                 "cuisine": {
                     "label": "المأكولات",
@@ -1958,16 +1969,20 @@
                     "terms": "حريق حقيقي"
                 },
                 "recycling_accepts": {
-                    "label": "مقبول",
+                    "label": "المواد التي تقبلها المنشأة",
                     "options": {
                         "batteries": "بطاريات",
                         "cans": "علب",
                         "cardboard": "ورق مقوى",
                         "clothes": "ملابس",
-                        "glass": "زجاج",
-                        "glass_bottles": "قوارير زجاجية",
+                        "cooking_oil": "زيت طهي",
+                        "engine_oil": "زيت محركات",
+                        "glass": "أي زجاج (زجاج مقسّى/صلب ، نوافذ ، مرايا ، إلخ)",
+                        "glass_bottles": "الزجاجات والجرار",
                         "green_waste": "نفايات خضراء",
                         "paper": "ورق",
+                        "plastic": "بلاستيك",
+                        "plastic_bottles": "عبوات بلاستيكية",
                         "plastic_packaging": "بلاستيك التغليف",
                         "scrap_metal": "خردة المعادن (سكراب)",
                         "shoes": "أحذية"
@@ -1994,6 +2009,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "رقم البوابة"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "رقم الثقب",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "رقم الحفرة",
@@ -2192,6 +2211,21 @@
                 },
                 "seamark/mooring/category": {
                     "label": "التصنيف"
+                },
+                "seamark/rescue_station/category": {
+                    "label": "معدات إنقاذ الحياة",
+                    "options": {
+                        "aircraft": "الطائرات",
+                        "first_aid": "إسعافات أولية",
+                        "hovercraft": "الحوامات",
+                        "lifeboat": "قارب النجاة (على الأرض)",
+                        "lifeboat_on_mooring": "قارب النجاة (في مرسى)",
+                        "radio": "محطة إذاعية",
+                        "refuge_intertidal": "ملجأ المد والجزر",
+                        "refuge_shipwrecked": "ملجأ حطام السفينة",
+                        "seaplane": "طائرة مائية",
+                        "tug": "ساحبة الإنقاذ"
+                    }
                 },
                 "seamark/type": {
                     "label": "علامة بحرية",
@@ -3752,6 +3786,10 @@
                 "amenity/theatre/type/amphi": {
                     "name": "مسرح روماني"
                 },
+                "amenity/ticket_validator": {
+                    "name": "مدقق التذاكر",
+                    "terms": "مدقق التذاكر"
+                },
                 "amenity/toilets": {
                     "name": "دورات مياه",
                     "terms": "دورات مياه,مراحيض,حمامات"
@@ -4573,6 +4611,18 @@
                 "demolished/building": {
                     "name": "مبنى تم هدمه مؤخرًا"
                 },
+                "disc_golf/basket": {
+                    "name": "سلة أقراص الجولف",
+                    "terms": "سلة أقراص الجولف"
+                },
+                "disc_golf/hole": {
+                    "name": "ثقب أقراص الجولف",
+                    "terms": "ثقب أقراص الجولف"
+                },
+                "disc_golf/tee": {
+                    "name": "نقطة انطلاق قرص الجولف",
+                    "terms": "نقطة انطلاق قرص الجولف"
+                },
                 "disused/amenity": {
                     "name": "مرافق وأماكن عامة مهجورة"
                 },
@@ -4667,9 +4717,9 @@
                     "name": "خزان مياه الطوارئ",
                     "terms": "خزان مياه الطوارئ"
                 },
-                "emergency/water_reservoir covered": {
-                    "name": "خزان مياه الطوارئ (تحت الأرض)",
-                    "terms": "خزان مياه الطوارئ (تحت الأرض)"
+                "emergency/water_reservoir_covered": {
+                    "name": "خزان مياه للطوارئ (تحت الأرض)",
+                    "terms": "خزان مياه للطوارئ (تحت الأرض)"
                 },
                 "emergency/water_tank": {
                     "name": "خزان مياه الطوارئ",
@@ -4854,31 +4904,19 @@
                     "name": "معبر مشاة بعلامات مرورية",
                     "terms": "معبر مشاة بدون إشارة مرور,معبر مشاة غير متحكم به,معبر مشاة"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "معبر مشاة مرتفع عن الطريق بعلامات مرورية",
-                    "terms": "معبر مشاة على مطب بدون إشارة مرور,معبر مشاة مرتفع عن الطريق بدون إشارة مرور,معبر مشاة مرتفع عن الطريق"
-                },
                 "highway/crossing/signals": {
                     "name": "معبر مشاة بإشارات",
                     "terms": "معبر مشاة بإشارات"
                 },
-                "highway/crossing/signals-raised": {
-                    "name": "معبر مشاة بإشارة (مرفوع)",
-                    "terms": "معبر مشاة بإشارة (مرفوع)"
+                "highway/crossing/uncontrolled": {
+                    "name": "معبر مشاة بعلامات مرورية"
                 },
                 "highway/crossing/unmarked": {
                     "name": "معبر مشاة بدون علامات أو إشارة مرورية",
                     "terms": "معبر مشاة بدون علامات مرورية أو إشارة مرورية"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "معبر مشاة مرتفع عن الطريق بدون علامات مرورية",
-                    "terms": "معبر مشاة مرتفع عن الطريق بدون علامات مرورية أو إشارات مرورية,معبر مشاة مرتفع عن الطريق بدون علامات مرورية"
-                },
                 "highway/crossing/zebra": {
                     "name": "معبر مشاة بعلامات مرورية"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "معبر مشاة مرتفع عن الطريق بعلامات مرورية"
                 },
                 "highway/cycleway": {
                     "name": "مسار دراجات",
@@ -4934,27 +4972,20 @@
                     "name": "معبر مشاة بعلامات مرورية",
                     "terms": "معبر مشاة بعلامات مرورية"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "معبر مشاة مرتفع بعلامات مرورية",
-                    "terms": "معبر مشاة مرتفع بعلامات مرورية"
-                },
                 "highway/footway/sidewalk": {
                     "name": "رصيف مشاة",
                     "terms": "رصيف مشاة,رصيف المشاة,رصيف جانب الطريق للمشاة"
+                },
+                "highway/footway/signals": {
+                    "name": "معبر مشاة بإشارات",
+                    "terms": "معبر مشاة بإشارات"
                 },
                 "highway/footway/unmarked": {
                     "name": "معبر مشاة بدون علامات أو إشارة مرورية",
                     "terms": "معبر مشاة بدون علامات أو إشارة مرورية"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "معبر مشاة مرفوع بدون علامات أو إشارة مرورية",
-                    "terms": "معبر مشاة مرفوع بدون علامات أو إشارة مرورية"
-                },
                 "highway/footway/zebra": {
                     "name": "معبر مشاة بعلامات مرورية"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "معبر مشاة مرفوع بعلامات مرورية"
                 },
                 "highway/give_way": {
                     "name": "علامة \"أعط أفضلية المرور لمن هم في الطريق الآخر\"",
@@ -5644,6 +5675,10 @@
                     "name": "ملعب كرة قدم أمريكية",
                     "terms": "ملعب كرة قدم أمريكية"
                 },
+                "leisure/pitch/archery": {
+                    "name": "ميدان الرماية (بالأسهم)",
+                    "terms": "أسهم,نبل,رمي,تصويب,ميدان"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "ملعب كرة قدم استرالية",
                     "terms": "ملعب كرة قدم استرالية"
@@ -5687,6 +5722,14 @@
                 "leisure/pitch/field_hockey": {
                     "name": "مساحة ملعب الهوكى",
                     "terms": "مساحة ملعب الهوكى"
+                },
+                "leisure/pitch/four_square": {
+                    "name": "ساحة أربعة مربعات",
+                    "terms": "ساحة أربعة مربعات"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "كرة الصالات",
+                    "terms": "كرة الصالات"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "حفرة حدوة الحصان",
@@ -6570,6 +6613,9 @@
                 "office/water_utility": {
                     "name": "مكتب شركة مياه",
                     "terms": "شركة المياه"
+                },
+                "office/yes": {
+                    "name": "مكتب (نوع غير محدد)"
                 },
                 "piste/downhill": {
                     "name": "سباق التزلج على المنحدرات",
@@ -7847,6 +7893,9 @@
                 "shop/wine": {
                     "name": "متجر نبيذ"
                 },
+                "shop/yes": {
+                    "name": "متجر (نوع غير محدد)"
+                },
                 "telecom": {
                     "name": "عنصر اتصالات"
                 },
@@ -7919,8 +7968,8 @@
                     "terms": "موقف عربات كبيرة"
                 },
                 "tourism/chalet": {
-                    "name": "كوخ لقضاء العطلة",
-                    "terms": "كوخ لقضاء العطلة"
+                    "name": "منتجع - شاليه",
+                    "terms": "كوخ لقضاء العطلة,منتجع,شاليه,شالية"
                 },
                 "tourism/gallery": {
                     "name": "رواق الفنون",

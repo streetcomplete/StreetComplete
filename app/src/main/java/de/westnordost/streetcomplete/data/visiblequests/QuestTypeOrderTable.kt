@@ -14,7 +14,8 @@ object QuestTypeOrderTable {
             ${Columns.QUEST_PRESET_ID} INTEGER NOT NULL,
             ${Columns.BEFORE} TEXT NOT NULL,
             ${Columns.AFTER} TEXT NOT NULL
-        );"""
+        );
+    """
 
     const val INDEX_CREATE = "CREATE INDEX quest_order_idx ON $NAME (${Columns.QUEST_PRESET_ID});"
 }

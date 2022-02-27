@@ -1848,8 +1848,6 @@
                         "cans": "Latas",
                         "cardboard": "Papelão",
                         "clothes": "Roupas",
-                        "glass": "Vidros",
-                        "glass_bottles": "Garrafas de vidro",
                         "green_waste": "Lixo verde",
                         "paper": "Papel",
                         "plastic_packaging": "Embalagens de plástico",
@@ -4683,30 +4681,16 @@
                     "name": "Faixa de pedestres",
                     "terms": "faixa de pedestres"
                 },
-                "highway/crossing/marked-raised": {
-                    "name": "Faixa de pedestres elevada",
-                    "terms": "faixa de pedestres elevada,travessia de pedestres elevada"
-                },
                 "highway/crossing/signals": {
                     "name": "Faixa de pedestres com semáforos",
                     "terms": "pedestre,passagem,travessia,atravessar,cruzar,cruzamento,luzes,luminosos"
-                },
-                "highway/crossing/signals-raised": {
-                    "name": "Faixa de pedestres elevada com semáforo"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Travessia de pedestres não marcada",
                     "terms": "travessia de pedestres não marcada"
                 },
-                "highway/crossing/unmarked-raised": {
-                    "name": "Travessia de pedestres elevada não marcada",
-                    "terms": "travessia de pedestres elevada"
-                },
                 "highway/crossing/zebra": {
                     "name": "Faixa de pedestres"
-                },
-                "highway/crossing/zebra-raised": {
-                    "name": "Faixa de pedestres elevada"
                 },
                 "highway/cycleway": {
                     "name": "Ciclovia",
@@ -4762,10 +4746,6 @@
                     "name": "Faixa de pedestres",
                     "terms": "faixa de pedestres"
                 },
-                "highway/footway/marked-raised": {
-                    "name": "Faixa de pedestres elevada",
-                    "terms": "faixa de pedestres elevada"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Calçada",
                     "terms": "calçada,passeio"
@@ -4774,15 +4754,8 @@
                     "name": "Travessia de pedestres não marcada",
                     "terms": "travessia de pedestres não marcada"
                 },
-                "highway/footway/unmarked-raised": {
-                    "name": "Travessia de pedestres elevada sem marcação",
-                    "terms": "travessia de pedestres elevada"
-                },
                 "highway/footway/zebra": {
                     "name": "Faixa de pedestres"
-                },
-                "highway/footway/zebra-raised": {
-                    "name": "Faixa de pedestres elevada"
                 },
                 "highway/give_way": {
                     "name": "Sinalização “dê a preferência”",

@@ -1938,7 +1938,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_board_type_notice_board">"Det er en opslagstavle"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
     <string name="quest_board_type_title">"Hvilket emne handler infotavlen om?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist seperat på kortet"</string>
     <string name="quest_board_type_map">"Det er et kort"</string>
     <string name="quest_board_type_map_title">"Er det udelukkende et kort?"</string>
     <string name="quest_board_type_map_description">"Hvis den indeholder info om et bestemt emne, så angiv det venligst, uanset om der også er et kort. F.eks. et kort over offentlig transport kan også have en busrute angivet. Hvis emnet ikke er blandt de mulige svar må du meget gerne efterlade en note i stedet."</string>
@@ -2111,6 +2110,8 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_pitchSurface_title_track">"Hvilken overflade har denne sportsbane?"</string>
     <string name="quest_bicycle_parking_access_title">"Er det begrænset hvem der må parkere en cykel her?"</string>
     <string name="quest_bicycle_parking_fee_title">"Skal man betale for at parkere en cykel her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"Ikke-fritliggende enfamiliehjem"</string>
     <string name="quest_drinking_water_title">"Er vandet drikkevand her? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevand (skiltet)"</string>
@@ -2315,7 +2316,15 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_fireHydrant_position_lane">"På vejen"</string>
     <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
+    <string name="quest_fireHydrant_diameter_ref_title">"Hvilken diameter er angivet på denne brandhane? (reference nummer: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
+    <string name="quest_smoothness_title_excellent">"Jævn og lige"</string>
+    <string name="quest_smoothness_title_good">"Hovedsageligt jævn"</string>
+    <string name="quest_smoothness_title_intermediate">"Lidt ujævn"</string>
+    <string name="quest_smoothness_title_bad">"Ujævn"</string>
+    <string name="quest_smoothness_title_very_bad">"Meget ujævn"</string>
+    <string name="quest_smoothness_title_horrible">"Meget ujævn og skæv"</string>
+    <string name="quest_smoothness_description_impassable">"Uegnet for køretøjer, kan kun passeres til fods"</string>
     <string name="quest_smoothness_obstacle">"Der er en forhindring"</string>
     <string name="achievement_lifesaver_title">"Livredder"</string>
 </resources>

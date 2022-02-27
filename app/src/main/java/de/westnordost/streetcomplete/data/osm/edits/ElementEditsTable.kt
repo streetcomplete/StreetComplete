@@ -32,7 +32,8 @@ object ElementEditsTable {
             ${Columns.CREATED_TIMESTAMP} int NOT NULL,
             ${Columns.IS_SYNCED} int NOT NULL,
             ${Columns.ACTION} text
-        );"""
+        );
+    """
 
     const val ELEMENT_INDEX_CREATE = """
         CREATE INDEX osm_element_edits_index ON $NAME (

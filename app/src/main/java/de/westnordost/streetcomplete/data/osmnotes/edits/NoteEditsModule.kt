@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module object NoteEditsModule {
+val noteEditsModule = module {
+    factory { NoteEditsDao(get()) }
 
-    @Provides @Singleton fun noteEditsSource(
-        noteEditsController: NoteEditsController
-    ): NoteEditsSource = noteEditsController
+    single { NoteEditsUploader(get(), get(), get(), get()) }
+    single { NoteEditsController(get()) }
+    single<NoteEditsSource> { get<NoteEditsController>() }
+    single { NotesWithEditsSource(get(), get(), get()) }
 }
