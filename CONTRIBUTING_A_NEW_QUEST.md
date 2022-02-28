@@ -132,14 +132,14 @@ TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/os
 ### Element selection
 elementFilter property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
 
+```kotlin
+"""
+    nodes with
+     emergency = defibrillator
+     and access !~ private|no
+     and !indoor
+"""
 ```
-"""
-        nodes with
-         emergency = defibrillator
-         and access !~ private|no
-         and !indoor
-"""
-``` 
 
 This query will be limited to nodes (`nodes with`), which fulfill some requirements.
 
@@ -155,14 +155,14 @@ Some quests are asked not only when tag is missing but also when it is likely to
 
 Typical code is in [quest asking about motorcycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
 
-```
+```kotlin
     override val elementFilter = """
         nodes, ways with amenity = motorcycle_parking
          and access !~ private|no
          and (!capacity or capacity older today -4 years)
     """
-```  
-  
+```
+
 This quest will be triggered when:
 
  - on nodes and ways
@@ -228,11 +228,12 @@ But sometimes more complex ones are needed, see for example [AddBridgeStructure.
 
 With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
 ### applyAnswerTo
-```
+
+```kotlin
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["indoor"] = answer.toYesNo()
     }
-``` 
+```
 
 This code is responsible for modifying `tags` object (passed by reference).
 
@@ -254,7 +255,8 @@ Actions may include (examples from various quests):
 ### Extras
 
 Info listed above must be supplied by every quest. But there are also several optional fields. This specific quest has
-```
+
+```kotlin
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = defibrillator")
 ```
@@ -365,7 +367,7 @@ This requires preparing space in the message for filling at runtime, and to add 
 
 [AddFireHydrantDiameter](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/fire_hydrant_diameter/AddFireHydrantDiameter.kt) displays `ref` code of hydrant, if tagged.
 
-```
+```kotlin
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["ref"])
 
@@ -399,7 +401,7 @@ For example, in the case of shops it may be necessary to identify specific one a
 
 Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L104-L115) that will:
 
-```
+```kotlin
     override fun getTitle(tags: Map<String, String>) =
         if (hasFeatureName(tags))
             R.string.quest_wheelchairAccess_name_type_title
@@ -410,7 +412,7 @@ Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blo
         val name = tags["name"] ?: tags["brand"]
         return arrayOfNotNull(name, featureName.value)
     }
-``` 
+```
 
 - `getTitleArgs` tries to pass to the title
   - name of the object
