@@ -1209,7 +1209,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_smoking_no_name_title">"Is smoking allowed anywhere in this place (%s)?"</string>
     <string name="quest_smoking_name_type_title">"Is smoking allowed anywhere in %1$s (%2$s)?"</string>
     <string name="quest_smoking_no">No, smoking is forbidden</string>
-    <string name="quest_smoking_outdoor">Only allowed outdoors</string>
+    <string name="quest_smoking_outside">Only allowed outside</string>
     <string name="quest_smoking_separated">Allowed in some areas, but not in others</string>
     <string name="quest_smoking_yes">Yes, smoking is allowed everywhere</string>
 
