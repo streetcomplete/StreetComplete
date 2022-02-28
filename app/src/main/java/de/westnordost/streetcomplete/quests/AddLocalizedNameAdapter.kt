@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface
-import android.os.AsyncTask
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.Menu.NONE
@@ -12,12 +11,19 @@ import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import java.util.Locale
 
@@ -33,11 +39,13 @@ class AddLocalizedNameAdapter(
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
     private val addLanguageButton: View,
     private val rowLayoutResId: Int = R.layout.quest_localizedname_row
-) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>(), DefaultLifecycleObserver {
 
     var localizedNames: MutableList<LocalizedName>
         private set
     private val listeners = mutableListOf<(LocalizedName) -> Unit>()
+
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     init {
         localizedNames = initialLocalizedNames.toMutableList()
@@ -50,6 +58,10 @@ class AddLocalizedNameAdapter(
         }
 
         updateAddLanguageButtonVisibility()
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        viewLifecycleScope.cancel()
     }
 
     private fun getNotAddedLanguageTags(): List<String> {
@@ -279,16 +291,12 @@ class AddLocalizedNameAdapter(
 
             updateNameSuggestions()
 
-            // load abbreviations from file in separate thread
-            object : AsyncTask<Void, Void, Abbreviations>() {
-                override fun doInBackground(vararg params: Void): Abbreviations? {
-                    return abbreviationsByLocale?.get(Locale(localizedName.languageTag))
+            // load abbreviations from file in background
+            viewLifecycleScope.launch {
+                autoCorrectInput.abbreviations = withContext(Dispatchers.IO) {
+                    abbreviationsByLocale?.get(Locale(localizedName.languageTag))
                 }
-
-                override fun onPostExecute(abbreviations: Abbreviations?) {
-                    autoCorrectInput.abbreviations = abbreviations
-                }
-            }.execute()
+            }
         }
 
         private fun updateNameSuggestions() {
