@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -30,7 +28,6 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
     private lateinit var noteImageAdapter: NoteImageAdapter
 
     val imagePaths: List<String> get() = noteImageAdapter.list
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
