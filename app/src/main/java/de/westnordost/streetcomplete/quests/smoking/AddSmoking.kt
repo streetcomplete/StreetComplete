@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.smoking
 
 import android.util.Log
 import de.westnordost.streetcomplete.R
-//import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -15,30 +15,23 @@ import de.westnordost.streetcomplete.ktx.containsAny
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
-    private fun elementFilterBasicFragment(prefix: String? = null): String {
-        val p = if (prefix != null) "$prefix:" else ""
-        return """
-              ${p}amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
-              or ${p}leisure ~ outdoor_seating
-              or ((${p}amenity ~ fast_food|ice_cream) or (${p}shop ~ ice_cream|deli|bakery|coffee|tea|wine))
-        """.trimIndent()
-    }
+    private val elementFilterBasic = """
+        (
+            amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
+            or leisure ~ outdoor_seating
+            or (
+                (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
+                and (
+                    (outdoor_seating and outdoor_seating != no)
+                    or (indoor_seating and indoor_seating != no)
+                )
+            )
+        )
+    """
 
-    /* note: outdoor_seating/indoor_seating extra clause ONLY applies to last group in
-       elementFilterBasicFragment(), and not to the whole of it */
     override val elementFilter = """
-             nodes, ways with
-             (
-                 amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
-                 or leisure ~ outdoor_seating
-                 or (
-                     (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
-                     and (
-                         (outdoor_seating and outdoor_seating != no)
-                         or (indoor_seating and indoor_seating != no)
-                     )
-                 )
-             )
+             nodes, ways, relations with
+             ${elementFilterBasic}
              and takeaway != only
              and (!smoking or smoking older today -8 years)
     """
@@ -62,17 +55,10 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
         val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
         return arrayOfNotNull(name, featureName.value)
     }
-/*
+
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
-            nodes, ways with
-            (
-                ${elementFilterBasicFragment()} or
-                ${elementFilterBasicFragment("disused")} or
-                ${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION}
-            )
-        """)
-*/
+        getMapData().filter("${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION} or ${elementFilterBasic}")
+
     override fun createForm() = SmokingAllowedAnswerForm()
 
     override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
