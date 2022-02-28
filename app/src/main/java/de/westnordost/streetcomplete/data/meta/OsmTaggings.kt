@@ -120,6 +120,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
                 "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
                 "pharmacy",
                 "driving_school",
+                "stripclub",
             ),
             "leisure" to arrayOf(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
