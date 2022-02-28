@@ -46,9 +46,11 @@ If you are doing it for the first time, don't worry if there is an error to solv
 # Invent a new quest
 
 ## Own ideas
+
 To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](CONTRIBUTING.md#developing-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
 
 ## Existing proposals
+
 You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
 
 # Prepare repository for development
@@ -60,6 +62,7 @@ That is a good moment to create a branch and switch to it. It can be done with t
 # Learn from existing code
 
 ## Find a base
+
 Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
@@ -69,7 +72,6 @@ Are you trying to implement a quest that will have simple yes/no answer? Take [`
 Is it going to be asked for POIs and should be disabled by default? `AddWheelchairAccessBusiness` may be a good base.
 
 Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomplete/quests).
-
 
 ### Locating a quest
 
@@ -124,12 +126,13 @@ Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/
 Add your quest to the list so that it will be loaded by the app.
 
 ## Quest anatomy
-See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
+See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
 TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt) would be better? And extend documentation there?
 
 ### Element selection
+
 elementFilter property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
 
 ```kotlin
@@ -174,6 +177,7 @@ This quest will be triggered when:
   - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
 #### Hints
+
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
 In some cases it will be a good idea to [limit quests to certain countries](#enabledInCountries).
@@ -182,16 +186,18 @@ In some cases it will be a good idea to [limit quests to certain countries](#ena
 
 You can obtain more info about properties by placing the cursor in a property and pressing Ctrl+Q within Android Studio.
 
-
 #### changesetComment
+
 `override val changesetComment = "Add whether defibrillator is inside building"`
 message used as a changeset comment
 
 #### wikiLink
+
 `override val wikiLink = "Key:indoor"`
 points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
 #### icon
+
 `override val icon = R.drawable.ic_quest_defibrillator` 
 icon drawable, you can initially use any icon. 
 
@@ -200,11 +206,13 @@ Do not worry, submissions with placeholder icons are also welcomed! In many case
 More info about icon handling [will be given later](#adding-quest-icon).
 
 #### questTypeAchievements
+
 `override val questTypeAchievements = listOf(LIFESAVER)`
 
 In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
 #### getTitle
+
 `override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title`
 
 It is a message displayed to user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
@@ -225,8 +233,8 @@ But sometimes more complex ones are needed, see for example [AddBridgeStructure.
 
 `override fun createForm() = AddBridgeStructureForm()`
 
-
 With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
+
 ### applyAnswerTo
 
 ```kotlin
@@ -250,7 +258,6 @@ Actions may include (examples from various quests):
     - if the new value is the same as existing tag value: adds [survey date tag](app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L33) (`check_date:lit=` in this example)
   - always update survey tag if present already
   - necessary if given quest includes resurvey of old elements that are already tagged
-
 
 ### Extras
 
@@ -353,6 +360,7 @@ Unclear documents, including this one, are a bug. Feel free to either submit a [
 Note that not everything will be directly described. This document very intentionally doesn't include a step-by-step guide to installing Android Studio, [linking](CONTRIBUTING.md#development) to official docs instead.
 
 # More complexity
+
 What was described above is an attempt to cover all aspects of quest creation, without describing all the complexity.
 
 Below is some additional info.
@@ -388,13 +396,13 @@ This requires preparing space in the message for filling at runtime, and to add 
 
 So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either:
 
-
 * `quest_fireHydrant_diameter_ref_title` which represents `What diameter is specified on the sign for this fire hydrant? (reference number: %s)` (or translation). `%s` is a [placeholder](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) and will be replaced by text provided by `getTitleArgs`
 * In case of ref tag being not present `quest_fireHydrant_diameter_title` (`What diameter is specified on the sign for this fire hydrant?`) will be used.
 
 This is quite complex but allows translating application in various languages by decoupling exact text being displayed from the code. See for example identifiers with texts in [Polish translation](app/src/main/res/values-pl/strings.xml).
 
 ### Use feature name if present
+
 In some cases, the quest will mention the name of object (lets say "Knight") and type of feature (maybe restaurant? Or supermarket?).
 
 For example, in the case of shops it may be necessary to identify specific one among several.
@@ -429,6 +437,7 @@ So `getTitle` function that returns identifier to text in [strings file](app/src
 * In case of no feature name being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?` (`%s` is a single placeholder which will be replaced by text parameter)
 
 ### Kotlin
+
 Article about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful, especially if you are confused by `?:` [Elvis operator](https://kotlinlang.org/docs/null-safety.html#elvis-operator).
 
 ## Designing the form
@@ -458,6 +467,7 @@ In StreetComplete many images have unusual composition. Often it is necessary to
 Images should be free of visual debris, not misleading. Though it is fine to use an image not strictly matching what is depicted, as long as it is clear. For example, [a permanent pile of soil blocking road](https://wiki.openstreetmap.org/wiki/Tag:barrier%3Ddebris) is illustrated by a [temporary landslide](https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg). This is OK as images are illustrative.
 
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
+
 - [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
 - [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three quare images in each row)
 - [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three quare images in each row)
@@ -470,6 +480,7 @@ The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may 
 After adding a photo, remember to update [the credit file](app/src/main/res/authors.txt) (different to the one for icons).
 
 ## Custom filters
+
 It is possible to use far more complex filters when querying for eligible elements.
 
 Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`surface` is either of `earth`, `dirt`, `ground`"
@@ -485,7 +496,6 @@ It is possible to check for [age of elements](https://github.com/streetcomplete/
 It is possible to share and reuse [information about tagging schemes](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L18).
 
 (this info is gathered [here](/app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt))
-
 
 Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
