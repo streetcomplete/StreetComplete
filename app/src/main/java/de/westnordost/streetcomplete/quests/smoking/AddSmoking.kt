@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.smoking
 
 import android.util.Log
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.data.meta.isShopExpressionFragment
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -56,8 +56,16 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
         return arrayOfNotNull(name, featureName.value)
     }
 
+    /* note: copied from IS_SHOP_OR_DISUSED_SHOP_EXPRESSION as we seemingly can't extend it with extra strings */
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("${IS_SHOP_OR_DISUSED_SHOP_EXPRESSION} or ${elementFilterBasic}")
+        getMapData().filter("""
+            nodes, ways, relations with
+              ${isShopExpressionFragment()}
+              or ${isShopExpressionFragment("disused")}
+              or shop = vacant
+              or ${elementFilterBasic}
+        """)
+
 
     override fun createForm() = SmokingAllowedAnswerForm()
 
