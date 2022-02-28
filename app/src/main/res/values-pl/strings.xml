@@ -2137,6 +2137,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_shoulder_value_yes">"pas awaryjny"</string>
     <string name="quest_shoulder_value_no">"brak pobocza"</string>
     <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"To uprawnienie jest niezbędne do mierzenia odległości aparatem."</string>
     <string name="ar_core_error_sdk_too_old">"Aplikacja jest zbyt stara, spróbuj zaktualizować."</string>
     <string name="ar_core_tracking_error_bad_state">"Coś poszło nie tak. Spróbuj rozpocząć mierzenie na nowo."</string>

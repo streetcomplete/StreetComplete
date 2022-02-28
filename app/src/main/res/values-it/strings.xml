@@ -1343,4 +1343,5 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
 Sfortunatamente le policy del Google Play Store non permettono di avere link di donazioni interni alla app. In questo caso anche il link al nostro progetto non è permesso."</string>
     <string name="link_osmand_description">"App per visualizzazione mappe e navigazione sia online che offline"</string>
     <string name="link_sunders_description">"Una mappa che mostra le telecamere e i dispositivi di sorveglianza"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Avvicinati alla freccia ma attenzione al traffico!"</string>
 </resources>

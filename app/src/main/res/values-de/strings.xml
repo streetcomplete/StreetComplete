@@ -1238,7 +1238,7 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_shoulder_value_yes">"Seitenstreifen"</string>
     <string name="quest_shoulder_value_no">"Kein Seitenstreifen"</string>
     <string name="no_camera_permission_warning_title">"Kamerazugriff"</string>
-    <string name="no_camera_permission_warning">"Die Kamera wird benötigt, um Abstände mit Hilfe von erweiterter Realität zu messen."</string>
+    <string name="no_camera_permission_warning">"Die Kamera wird benötigt, um Fotos zu machen und Abstände mit Hilfe von erweiterter Realität zu messen."</string>
     <string name="ar_core_error_sdk_too_old">"Die App ist zu alt, versuche zu aktualisieren."</string>
     <string name="ar_core_tracking_error_bad_state">"Etwas hat nicht geklappt. Versuche die Messung neu zu starten."</string>
     <string name="ar_core_tracking_error_insufficient_light">"Zu dunkel hier"</string>

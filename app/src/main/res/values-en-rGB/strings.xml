@@ -1223,6 +1223,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_value_yes">"shoulder"</string>
     <string name="quest_shoulder_value_no">"no shoulder"</string>
     <string name="no_camera_permission_warning_title">"Camera permission"</string>
+
+    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"The permission is necessary to be able to measure distances with the camera."</string>
     <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
     <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>

@@ -1,3 +1,9 @@
+v41.1: |
+  <ul>
+  <li>Fix: ask for camera permission when attaching a photo to a note</li>
+  <li>Fix: app v41.0 didn't show on Google Play</li>
+  </ul>
+
 v41.0: |
   <h3>Measure with the camera (AR)</h3>
   <p>Measuring with AR is only supported <a href="https://developers.google.com/ar/devices#google_play_devices">on certain devices</a> and you need to have the Google Play Services on your phone. If AR is not available, the new quests are disabled by default because you'd need to use a tape measure instead. (#3709, #879)</p>
