@@ -198,8 +198,8 @@ points to the OSM Wiki page most relevant to the given quest, typically it is an
 
 #### icon
 
-`override val icon = R.drawable.ic_quest_defibrillator` 
-icon drawable, you can initially use any icon. 
+`override val icon = R.drawable.ic_quest_defibrillator`
+icon drawable, you can initially use any icon.
 
 Do not worry, submissions with placeholder icons are also welcomed! In many cases icon itself was not made by the PR author.
 
@@ -229,7 +229,7 @@ Form defines interface used by mappers.
 
 In this case, the simplest possible is used.
 
-But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt) 
+But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt)
 
 `override fun createForm() = AddBridgeStructureForm()`
 
@@ -431,7 +431,7 @@ Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blo
 
 Though description from iD presets is not guaranteed.
 
-So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either 
+So `getTitle` function that returns identifier to text in [strings file](app/src/main/res/values/strings.xml). It will be either
 
 * `quest_wheelchairAccess_name_type_title` which represents `Is %1$s (%2$s) wheelchair accessible?` (or translation). `%1$s` and `%2$s` [placeholders](https://developer.android.com/guide/topics/resources/string-resource.html#formatting-strings) will be replaced by text provided by `getTitleArgs`
 * In case of no feature name being available `quest_wheelchairAccess_name_title` will be used, with space for one parameter: `Is %s wheelchair accessible?` (`%s` is a single placeholder which will be replaced by text parameter)
@@ -448,7 +448,7 @@ As mentioned, the user interface must leave no space for misunderstandings, it m
 - Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Other answers..." menu. E.g. look at the [opening hours quest](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L40-L48).
 - Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
 - The information the user should fill in should be as atomic as possible. Users are impatient, i.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
-- "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo. 
+- "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
 
 Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
 
