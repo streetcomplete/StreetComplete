@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.NO
@@ -32,6 +34,16 @@ class AddSidewalkTest {
         val road = way(tags = mapOf(
             "highway" to "primary",
             "lit" to "yes"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road))
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertNull(questType.isApplicableTo(road))
+    }
+
+    @Test fun `applicable to road with incomplete sidewalk tagging`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "sidewalk:left" to "yes"
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -151,6 +163,21 @@ class AddSidewalkTest {
             SidewalkSides(left = SEPARATE, right = NO),
             StringMapEntryAdd("sidewalk:left", "separate"),
             StringMapEntryAdd("sidewalk:right", "no"),
+        )
+    }
+
+    @Test fun `replace incomplete sidewalk tagging`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk:left" to "yes"),
+            SidewalkSides(left = YES, right = NO),
+            StringMapEntryAdd("sidewalk", "left"),
+            StringMapEntryDelete("sidewalk:left", "yes")
+        )
+        questType.verifyAnswer(
+            mapOf("sidewalk:left" to "yes"),
+            SidewalkSides(left = YES, right = SEPARATE),
+            StringMapEntryModify("sidewalk:left", "yes", "yes"),
+            StringMapEntryAdd("sidewalk:right", "separate"),
         )
     }
 }

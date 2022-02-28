@@ -28,6 +28,9 @@ fun SidewalkSides.applyTo(tags: Tags) {
     val sidewalkValue = simpleOsmValue
     if (sidewalkValue != null) {
         tags["sidewalk"] = sidewalkValue
+        // In case of previous incomplete sidewalk tagging
+        tags.remove("sidewalk:left")
+        tags.remove("sidewalk:right")
     } else {
         tags["sidewalk:left"] = left.osmValue
         tags["sidewalk:right"] = right.osmValue
