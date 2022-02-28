@@ -74,7 +74,7 @@ inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T) -> R): 
 }
 
 inline fun <T> Iterable<T>.sumByFloat(selector: (T) -> Float): Float {
-    var sum: Float = 0f
+    var sum = 0f
     for (element in this) {
         sum += selector(element)
     }

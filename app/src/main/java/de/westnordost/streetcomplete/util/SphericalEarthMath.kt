@@ -1,3 +1,4 @@
+// we want to use the greek letters to stay close to the mathematical examples linked
 @file:Suppress("NonAsciiCharacters")
 
 package de.westnordost.streetcomplete.util

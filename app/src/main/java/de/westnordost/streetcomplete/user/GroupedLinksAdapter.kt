@@ -98,7 +98,7 @@ private val LinkCategory.title: Int get() = when (this) {
     LinkCategory.GOODIES -> R.string.link_category_goodies_title
 }
 
-private val LinkCategory.description: Int? get() = when (this) {
+private val LinkCategory.description: Int get() = when (this) {
     LinkCategory.INTRO -> R.string.link_category_intro_description
     LinkCategory.EDITORS -> R.string.link_category_editors_description
     LinkCategory.SHOWCASE -> R.string.link_category_showcase_description

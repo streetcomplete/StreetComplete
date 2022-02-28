@@ -5,12 +5,12 @@ import java.time.LocalDate
 import java.time.Month
 import java.time.ZoneId
 
-fun LocalDate.toInstant() =
+fun LocalDate.toInstant(): Instant =
     this.atStartOfDay(ZoneId.systemDefault()).toInstant()
 
-fun LocalDate.toEpochMilli() = this.toInstant().toEpochMilli()
+fun LocalDate.toEpochMilli(): Long = this.toInstant().toEpochMilli()
 
-fun Instant.toLocalDate() =
+fun Instant.toLocalDate(): LocalDate =
     this.atZone(ZoneId.systemDefault()).toLocalDate()
 
 fun isApril1st(): Boolean {

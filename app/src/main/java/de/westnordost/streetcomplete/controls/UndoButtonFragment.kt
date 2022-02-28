@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
-import de.westnordost.streetcomplete.edithistory.UndoDialog
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
@@ -76,11 +75,6 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     private fun showEditHistory() {
         listener?.onClickShowEditHistory()
-    }
-
-    private suspend fun confirmUndo() {
-        val edit = getMostRecentUndoable() ?: return
-        UndoDialog(requireContext(), edit).show()
     }
 
     private suspend fun updateUndoButtonVisibility() {

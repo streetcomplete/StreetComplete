@@ -9,7 +9,6 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
 import de.westnordost.streetcomplete.ktx.toPx
@@ -25,7 +24,6 @@ import org.koin.android.ext.android.inject
  *  a QuestTypeInfoFragment that shows the quest's details. */
 class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
     private val statisticsSource: StatisticsSource by inject()
-    private val questTypeRegistry: QuestTypeRegistry by inject()
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)

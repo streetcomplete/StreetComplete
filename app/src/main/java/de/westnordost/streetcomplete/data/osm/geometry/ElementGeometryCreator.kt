@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.util.isRingDefinedClockwise
 import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
-class ElementGeometryCreator() {
+class ElementGeometryCreator {
 
     /** Create an ElementGeometry from any element, using the given MapData to find the positions
      *  of the nodes.
