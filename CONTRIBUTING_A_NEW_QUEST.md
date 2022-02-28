@@ -35,7 +35,7 @@ But this materials may help or be quicker than trying to fully explore on your o
 - install necessary software ([Android Studio](https://developer.android.com/studio) and [git](https://git-scm.com/downloads))
 - create a GitHub [account](https://github.com/signup) if needed
 - visit [https://github.com/streetcomplete/StreetComplete](https://github.com/streetcomplete/StreetComplete) and press the "fork" button on the top right
-	+ this creates a copy of StreetComplete repository that you control and can prepare code there
+  - this creates a copy of StreetComplete repository that you control and can prepare code there
 - clone your fork of a StreetComplete repository
 - open StreetComplete in Android Studio
 - [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also [connect to a real device via USB](https://developer.android.com/studio/run/device), this can replace using the emulator)
@@ -165,13 +165,13 @@ Typical code is in [quest asking about motorcycle parking capacity](app/src/main
 
 This quest will be triggered when:
 
- - on nodes and ways
- - where `amenity = motorcycle_parking` tag is present
- - `access` tag does not have value `private` nor `no`
- -  and one of following is fullfilled:
-	- `capacity` tag is not present at all (`!capacity`)
-	-  element was not edited for a long time (base time is 4 years, but it can by influenced by user changing settings)
-	- `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
+- on nodes and ways
+- where `amenity = motorcycle_parking` tag is present
+- `access` tag does not have value `private` nor `no`
+- and one of following is fullfilled:
+  - `capacity` tag is not present at all (`!capacity`)
+  - element was not edited for a long time (base time is 4 years, but it can by influenced by user changing settings)
+  - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
 #### Hints
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
@@ -246,8 +246,8 @@ Actions may include (examples from various quests):
 - `tags.updateWithCheckDate("lit", answer.toYesNo())`
   - if the new value differs from existing tag value: new value will be applied
   - in case of value being the same: add survey date tag, it would be `check_date:lit=` in this case
-     - so can be used even if value will stay the same - possible for resurvey quests
-     - if the new value is the same as existing tag value: adds [survey date tag](app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L33) (`check_date:lit=` in this example)
+    - so can be used even if value will stay the same - possible for resurvey quests
+    - if the new value is the same as existing tag value: adds [survey date tag](app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L33) (`check_date:lit=` in this example)
   - always update survey tag if present already
   - necessary if given quest includes resurvey of old elements that are already tagged
 
@@ -458,10 +458,10 @@ In StreetComplete many images have unusual composition. Often it is necessary to
 Images should be free of visual debris, not misleading. Though it is fine to use an image not strictly matching what is depicted, as long as it is clear. For example, [a permanent pile of soil blocking road](https://wiki.openstreetmap.org/wiki/Tag:barrier%3Ddebris) is illustrated by a [temporary landslide](https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg). This is OK as images are illustrative.
 
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
-  - [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
-  - [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three quare images in each row)
-  - [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three quare images in each row)
-  - [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three quare images in each row)
+- [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
+- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three quare images in each row)
+- [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three quare images in each row)
+- [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three quare images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
