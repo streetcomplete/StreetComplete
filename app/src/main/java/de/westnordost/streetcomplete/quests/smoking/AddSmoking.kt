@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.smoking
 
-import android.util.Log
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.isShopExpressionFragment
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
@@ -51,7 +50,6 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
             R.string.quest_smoking_no_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        Log.d("SmokingQuest debug", "elementFilter is: ${elementFilter}")
         val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
         return arrayOfNotNull(name, featureName.value)
     }
