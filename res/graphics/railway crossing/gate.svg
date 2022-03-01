@@ -7,25 +7,25 @@
  <path d="m64 19h-6l9 23h9z" fill="#e1d9af"/>
  <path d="m0 22h80v2h-80z" fill="#8c7570"/>
  <path d="m0 35h80v3h-80z" fill="#8c7570"/>
- <rect x="44" y="47" width="21" height="12" ry="3" fill="none" stroke="#727272" stroke-linecap="round" stroke-width="2" style="paint-order:fill markers stroke"/>
+ <rect x="44" y="47" width="21" height="12" ry="3" fill="none" stroke="#727272" stroke-linecap="round" stroke-width="2"/>
  <rect x="68" y="46" width="4" height="16" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect x="65" y="50" width="3" height="2" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect x="65" y="54" width="3" height="2" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect x="50" y="48" width="2" height="10" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect x="57" y="48" width="2" height="10" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
- <rect transform="scale(-1,1)" x="-36" y="47" width="21" height="12" ry="3" fill="none" stroke="#727272" stroke-linecap="round" stroke-width="2" style="paint-order:fill markers stroke"/>
+ <rect transform="scale(-1,1)" x="-36" y="47" width="21" height="12" ry="3" fill="none" stroke="#727272" stroke-linecap="round" stroke-width="2"/>
  <rect transform="scale(-1,1)" x="-12" y="46" width="4" height="16" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect transform="scale(-1,1)" x="-15" y="50" width="3" height="2" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect transform="scale(-1,1)" x="-15" y="54" width="3" height="2" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect transform="scale(-1,1)" x="-30" y="48" width="2" height="10" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
  <rect transform="scale(-1,1)" x="-23" y="48" width="2" height="10" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2"/>
- <rect x="42" y="8.5" width="10.5" height="6" ry="1.5" fill="none" stroke="#727272" stroke-linecap="round" style="paint-order:fill markers stroke"/>
+ <rect x="42" y="8.5" width="10.5" height="6" ry="1.5" fill="none" stroke="#727272" stroke-linecap="round"/>
  <rect x="54" y="8" width="2" height="8" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
  <rect x="52.5" y="10" width="1.5" height="1" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
  <rect x="52.5" y="12" width="1.5" height="1" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
  <rect x="45" y="9" width="1" height="5" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
  <rect x="48.5" y="9" width="1" height="5" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
- <rect transform="scale(-1,1)" x="-38" y="8.5" width="10.5" height="6" ry="1.5" fill="none" stroke="#727272" stroke-linecap="round" style="paint-order:fill markers stroke"/>
+ <rect transform="scale(-1,1)" x="-38" y="8.5" width="10.5" height="6" ry="1.5" fill="none" stroke="#727272" stroke-linecap="round"/>
  <rect transform="scale(-1,1)" x="-26" y="8" width="2" height="8" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
  <rect transform="scale(-1,1)" x="-27.5" y="10" width="1.5" height="1" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
  <rect transform="scale(-1,1)" x="-27.5" y="12" width="1.5" height="1" fill="#727272" fill-rule="evenodd" stroke-linejoin="round" stroke-width=".6"/>
