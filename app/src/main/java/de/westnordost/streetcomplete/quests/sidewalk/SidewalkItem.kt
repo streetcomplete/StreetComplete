@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.StreetSideItem
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.NO
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.SEPARATE
-import de.westnordost.streetcomplete.quests.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
