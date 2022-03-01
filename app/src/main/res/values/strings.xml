@@ -1210,7 +1210,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_smoking_name_type_title">"Is smoking allowed anywhere in %1$s (%2$s)?"</string>
     <string name="quest_smoking_no">No, forbidden</string>
     <string name="quest_smoking_outside">Only outside</string>
-    <string name="quest_smoking_separated">Only in separated area</string>
+    <string name="quest_smoking_separated">Only in separated areas</string>
     <string name="quest_smoking_yes">Yes, everywhere</string>
 
     <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
