@@ -14,23 +14,19 @@ import de.westnordost.streetcomplete.ktx.containsAny
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
-    private val elementFilterBasic = """
-        (
-            amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
-            or leisure = outdoor_seating
-            or (
-                (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
-                and (
-                    (outdoor_seating and outdoor_seating != no)
-                    or (indoor_seating and indoor_seating != no)
-                )
-            )
-        )
-    """
-
     override val elementFilter = """
          nodes, ways, relations with
-         ${elementFilterBasic}
+         (
+             amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
+             or leisure = outdoor_seating
+             or (
+                 (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
+                 and (
+                     (outdoor_seating and outdoor_seating != no)
+                     or (indoor_seating and indoor_seating != no)
+                 )
+             )
+         )
          and takeaway != only
          and (!smoking or smoking older today -8 years)
     """
@@ -54,16 +50,8 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
         return arrayOfNotNull(name, featureName.value)
     }
 
-    /* note: copied from IS_SHOP_OR_DISUSED_SHOP_EXPRESSION as we seemingly can't extend it with extra strings */
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
-            nodes, ways, relations with
-              ${isShopExpressionFragment()}
-              or ${isShopExpressionFragment("disused")}
-              or shop = vacant
-              or ${elementFilterBasic}
-        """)
-
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = SmokingAllowedAnswerForm()
 
