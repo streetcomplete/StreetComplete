@@ -57,7 +57,9 @@ You can also look at [quest proposals waiting for implementation](https://github
 
 That is a good moment to create a branch and switch to it. It can be done with the following command:
 
-`git checkout -b short_branch_name_describing_planned_work`
+```bash
+git checkout -b short_branch_name_describing_planned_work
+```
 
 # Learn from existing code
 
@@ -79,7 +81,9 @@ Search across the code for part of a question or other text specific to this que
 
 You will find an XML file with an entry looking like this:
 
-`<string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>`
+```xml
+<string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>
+```
 
 The identifier `quest_placeName_title_name` is a string reference, used in the code to allow translations.
 
@@ -159,11 +163,11 @@ Some quests are asked not only when tag is missing but also when it is likely to
 Typical code is in [quest asking about motorcycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
 
 ```kotlin
-    override val elementFilter = """
-        nodes, ways with amenity = motorcycle_parking
-         and access !~ private|no
-         and (!capacity or capacity older today -4 years)
-    """
+override val elementFilter = """
+    nodes, ways with amenity = motorcycle_parking
+      and access !~ private|no
+      and (!capacity or capacity older today -4 years)
+"""
 ```
 
 This quest will be triggered when:
@@ -188,17 +192,26 @@ You can obtain more info about properties by placing the cursor in a property an
 
 #### changesetComment
 
-`override val changesetComment = "Add whether defibrillator is inside building"`
+```kotlin
+override val changesetComment = "Add whether defibrillator is inside building"
+```
+
 message used as a changeset comment
 
 #### wikiLink
 
-`override val wikiLink = "Key:indoor"`
+```kotlin
+override val wikiLink = "Key:indoor"
+```
+
 points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
 #### icon
 
-`override val icon = R.drawable.ic_quest_defibrillator`
+```kotlin
+override val icon = R.drawable.ic_quest_defibrillator
+```
+
 icon drawable, you can initially use any icon.
 
 Do not worry, submissions with placeholder icons are also welcomed! In many cases icon itself was not made by the PR author.
@@ -207,13 +220,17 @@ More info about icon handling [will be given later](#adding-quest-icon).
 
 #### questTypeAchievements
 
-`override val questTypeAchievements = listOf(LIFESAVER)`
+```kotlin
+override val questTypeAchievements = listOf(LIFESAVER)
+```
 
 In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
 #### getTitle
 
-`override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title`
+```kotlin
+override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title
+```
 
 It is a message displayed to user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
 
@@ -223,7 +240,9 @@ There are separate files with translated text, but do not worry about it - [tran
 
 #### Form
 
-`override fun createForm() = YesNoQuestAnswerFragment()`
+```kotlin
+override fun createForm() = YesNoQuestAnswerFragment()
+```
 
 Form defines interface used by mappers.
 
@@ -238,9 +257,9 @@ With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/s
 ### applyAnswerTo
 
 ```kotlin
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags["indoor"] = answer.toYesNo()
-    }
+override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    tags["indoor"] = answer.toYesNo()
+}
 ```
 
 This code is responsible for modifying `tags` object (passed by reference).
@@ -264,8 +283,8 @@ Actions may include (examples from various quests):
 Info listed above must be supplied by every quest. But there are also several optional fields. This specific quest has
 
 ```kotlin
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with emergency = defibrillator")
+override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+    getMapData().filter("nodes with emergency = defibrillator")
 ```
 
 which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/map/PinIcons.kt))
@@ -327,7 +346,11 @@ See "logcat" (bottom left area of the screen) to see stacktrace or logging messa
 
 ## Adding logs
 
-`Log.w("Unique string for easy grepping in logcat", "Message with whatever you need like #${someVariable.itsProperty}")`
+```kotlin
+import android.util.Log
+
+Log.w("Unique string for easy grepping in logcat", "Message with whatever you need like #${someVariable.itsProperty}")
+```
 
 # Open a pull request
 
@@ -376,16 +399,16 @@ This requires preparing space in the message for filling at runtime, and to add 
 [AddFireHydrantDiameter](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/fire_hydrant_diameter/AddFireHydrantDiameter.kt) displays `ref` code of hydrant, if tagged.
 
 ```kotlin
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["ref"])
+override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+    arrayOfNotNull(tags["ref"])
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasRef = tags.containsAnyKey("ref")
-        return when {
-            hasRef -> R.string.quest_fireHydrant_diameter_ref_title
-            else   -> R.string.quest_fireHydrant_diameter_title
-        }
+override fun getTitle(tags: Map<String, String>): Int {
+    val hasRef = tags.containsAnyKey("ref")
+    return when {
+        hasRef -> R.string.quest_fireHydrant_diameter_ref_title
+        else   -> R.string.quest_fireHydrant_diameter_title
     }
+}
 ```
 
 `getTitleArgs` will return either array with single element containing value of `ref` tag or an empty array. In either cases it will be passed to code displaying title at runtime.
@@ -410,16 +433,16 @@ For example, in the case of shops it may be necessary to identify specific one a
 Here is [some typical code](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt#L104-L115) that will:
 
 ```kotlin
-    override fun getTitle(tags: Map<String, String>) =
-        if (hasFeatureName(tags))
-            R.string.quest_wheelchairAccess_name_type_title
-        else
-            R.string.quest_wheelchairAccess_name_title
+override fun getTitle(tags: Map<String, String>) =
+    if (hasFeatureName(tags))
+        R.string.quest_wheelchairAccess_name_type_title
+    else
+        R.string.quest_wheelchairAccess_name_title
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        return arrayOfNotNull(name, featureName.value)
-    }
+override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+    val name = tags["name"] ?: tags["brand"]
+    return arrayOfNotNull(name, featureName.value)
+}
 ```
 
 - `getTitleArgs` tries to pass to the title
