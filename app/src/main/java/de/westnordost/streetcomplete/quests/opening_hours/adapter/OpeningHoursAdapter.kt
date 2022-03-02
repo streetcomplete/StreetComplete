@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesMonthRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesOffdayRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
@@ -30,10 +29,8 @@ data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) 
 @Serializable
 data class OffDaysRow(var weekdays: Weekdays) : OpeningHoursRow()
 
-class RegularOpeningHoursAdapter(
-    private val context: Context,
-    private val countryInfo: CountryInfo
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OpeningHoursAdapter(private val context: Context)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var rows: MutableList<OpeningHoursRow> = mutableListOf()
         set(value) {
@@ -46,6 +43,9 @@ class RegularOpeningHoursAdapter(
             field = value
             notifyDataSetChanged()
         }
+
+    var firstDayOfWorkweek: String = "Mo"
+    var regularShoppingDays: Int = 6
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -292,9 +292,9 @@ class RegularOpeningHoursAdapter(
 
     private fun getWeekdaysSuggestion(isFirst: Boolean): Weekdays {
         if (isFirst) {
-            val firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.firstDayOfWorkweek)
+            val firstWorkDayIdx = Weekdays.getWeekdayIndex(firstDayOfWorkweek)
             val result = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
-            for (i in 0 until countryInfo.regularShoppingDays) {
+            for (i in 0 until regularShoppingDays) {
                 result[(i + firstWorkDayIdx) % Weekdays.WEEKDAY_COUNT] = true
             }
             return Weekdays(result)
