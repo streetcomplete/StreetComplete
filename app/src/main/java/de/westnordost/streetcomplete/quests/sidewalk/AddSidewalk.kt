@@ -69,11 +69,11 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         }
 
         // Also include any roads with invalid (overloaded) or incomplete sidewalk tagging
-        val hasInvalidSidewalkTagging = eligibleRoads.filter { way ->
+        val roadsWithInvalidSidewalkTags = eligibleRoads.filter { way ->
             way.hasInvalidOrIncompleteSidewalkTags()
         }
 
-        return roadsWithMissingSidewalks + hasInvalidSidewalkTagging
+        return roadsWithMissingSidewalks + roadsWithInvalidSidewalkTags 
     }
 
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
