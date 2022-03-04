@@ -66,7 +66,8 @@ class OpeningHoursAdapter(private val context: Context)
             }
             is WeekdayViewHolder -> {
                 val prevRow = if (position > 0) rows[position - 1] as? OpeningWeekdaysRow else null
-                holder.update(row as OpeningWeekdaysRow, prevRow, isEnabled)
+                val nextRow = if (rows.lastIndex > position) rows[position + 1] as? OpeningWeekdaysRow else null
+                holder.update(row as OpeningWeekdaysRow, prevRow, nextRow, isEnabled)
             }
             is OffDaysViewHolder -> {
                 holder.update(row as OffDaysRow, isEnabled)
@@ -233,7 +234,7 @@ class OpeningHoursAdapter(private val context: Context)
             }
         }
 
-        fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
+        fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, nextRow: OpeningWeekdaysRow?, isEnabled: Boolean) {
             binding.weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
                 else if (row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
@@ -241,7 +242,7 @@ class OpeningHoursAdapter(private val context: Context)
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     row.weekdays = weekdays
-                    notifyItemChanged(adapterPosition)
+                    notifyItemRangeChanged(adapterPosition, if (nextRow != null) 2 else 1)
                 }
             }
 
