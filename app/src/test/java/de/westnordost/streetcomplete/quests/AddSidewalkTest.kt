@@ -51,13 +51,45 @@ class AddSidewalkTest {
         assertTrue(questType.isApplicableTo(road)!!)
     }
 
+    @Test fun `applicable to road with invalid sidewalk tagging`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "sidewalk" to "something"
+        ))
+        val footway = way(2, listOf(3, 4), mapOf(
+            "highway" to "footway"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road, footway))
+        val p1 = p(0.0, 0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(13.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(road)!!)
+    }
+
     @Test fun `applicable to road with overloaded sidewalk tagging`() {
         val road = way(tags = mapOf(
             "highway" to "residential",
             "sidewalk" to "left",
             "sidewalk:right" to "yes"
         ))
-        val mapData = TestMapDataWithGeometry(listOf(road))
+        val footway = way(2, listOf(3, 4), mapOf(
+            "highway" to "footway"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road, footway))
+        val p1 = p(0.0, 0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(13.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         assertTrue(questType.isApplicableTo(road)!!)
     }

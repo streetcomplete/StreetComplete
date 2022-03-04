@@ -37,14 +37,22 @@ private fun createSidewalksDefault(tags: Map<String, String>): LeftAndRightSidew
     "both" -> LeftAndRightSidewalk(left = YES, right = YES)
     "no", "none" -> LeftAndRightSidewalk(left = NO, right = NO)
     "separate" -> LeftAndRightSidewalk(left = SEPARATE, right = SEPARATE)
-    else -> null
+    null -> null
+    else -> LeftAndRightSidewalk(left = INVALID, right = INVALID)
 }
 
 private fun createSidewalksAlternative(tags: Map<String, String>): LeftAndRightSidewalk? {
+    if (tags["sidewalk:both"] != null &&
+        (tags["sidewalk:left"] != null || tags["sidewalk:right"] != null)) {
+        return LeftAndRightSidewalk(INVALID, INVALID)
+    }
     val sidewalkLeft = tags["sidewalk:both"] ?: tags["sidewalk:left"]
     val sidewalkRight = tags["sidewalk:both"] ?: tags["sidewalk:right"]
     return if (sidewalkLeft != null || sidewalkRight != null) {
-        LeftAndRightSidewalk(left = createSidewalkSide(sidewalkLeft), right = createSidewalkSide(sidewalkRight))
+        LeftAndRightSidewalk(
+            left = createSidewalkSide(sidewalkLeft),
+            right = createSidewalkSide(sidewalkRight)
+        )
     } else {
         null
     }
