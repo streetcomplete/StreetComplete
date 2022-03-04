@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleLi
 import de.westnordost.streetcomplete.quests.parking_fee.Maxstay.Unit.*
 
 sealed interface Maxstay {
-    enum class Unit { MINUTES, HOURS }
+    enum class Unit { MINUTES, HOURS, DAYS }
 }
 
 object NoMaxstay : Maxstay
@@ -19,6 +19,7 @@ fun MaxstayDuration.toOsmValue(): String =
     value.toShortString() + " " + when (unit) {
         MINUTES -> if (value != 1.0) "minutes" else "minute"
         HOURS -> if (value != 1.0) "hours" else "hour"
+        DAYS -> if (value != 1.0) "days" else "day"
     }
 
 fun Maxstay.applyTo(tags: Tags) {

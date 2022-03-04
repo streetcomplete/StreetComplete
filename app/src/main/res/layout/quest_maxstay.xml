@@ -10,7 +10,13 @@
         android:layout_height="wrap_content"
         style="@style/TextAppearance.Body"
         android:textSize="16sp"
-        android:text="@string/quest_fee_answer_yes_but"/>
+        android:text="@string/quest_fee_answer_no_but_maxstay"/>
+
+    <de.westnordost.streetcomplete.view.DurationInput
+        android:id="@+id/durationInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
     <de.westnordost.streetcomplete.view.TimeRestrictionSelectView
         android:id="@+id/timesView"
