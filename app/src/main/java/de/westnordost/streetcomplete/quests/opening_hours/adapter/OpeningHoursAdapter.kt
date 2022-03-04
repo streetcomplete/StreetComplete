@@ -44,7 +44,9 @@ class OpeningHoursAdapter(private val context: Context)
             notifyDataSetChanged()
         }
 
+    /** Set to change which weekdays are pre-checked in the weekday-select dialog */
     var firstDayOfWorkweek: String = "Mo"
+    /** Set to change which weekdays are pre-checked in the weekday-select dialog */
     var regularShoppingDays: Int = 6
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -237,8 +239,9 @@ class OpeningHoursAdapter(private val context: Context)
         fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, nextRow: OpeningWeekdaysRow?, isEnabled: Boolean) {
             binding.weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
-                else if (row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
+                else if (rowBefore != null && row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
                 else row.weekdays.toLocalizedString(context.resources)
+
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     row.weekdays = weekdays
