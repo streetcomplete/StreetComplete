@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.isCrossing
 
-class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
+class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingAnswer> {
 
     private val crossingFilter by lazy { """
         nodes with
@@ -61,7 +61,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<Boolean> {
 
     override fun createForm() = TactilePavingForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
+    override fun applyAnswerTo(answer: TactilePavingAnswer, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("tactile_paving", answer.osmValue)
     }
 }

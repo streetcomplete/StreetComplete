@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
 import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 
-class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
+class AddTactilePavingKerb : OsmElementQuestType<TactilePavingAnswer> {
 
     private val eligibleKerbsFilter by lazy { """
         nodes with
@@ -41,8 +41,8 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
         if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) false
         else null
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
+    override fun applyAnswerTo(answer: TactilePavingAnswer, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("tactile_paving", answer.osmValue)
         tags["barrier"] = "kerb"
     }
 }
