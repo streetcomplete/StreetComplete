@@ -14,12 +14,14 @@ val Sidewalk.iconResId get() = when (this) {
     YES -> R.drawable.ic_sidewalk_yes
     NO -> R.drawable.ic_sidewalk_no
     SEPARATE -> R.drawable.ic_sidewalk_separate
+    else -> 0
 }
 
 val Sidewalk.imageResId get() = when (this) {
     YES -> R.drawable.ic_sidewalk_illustration_yes
     NO -> R.drawable.ic_sidewalk_illustration_no
     SEPARATE -> R.drawable.ic_sidewalk_illustration_no
+    else -> 0
 }
 
 val Sidewalk.floatingIconResId get() = when (this) {
@@ -31,6 +33,7 @@ val Sidewalk.titleResId get() = when (this) {
     YES -> R.string.quest_sidewalk_value_yes
     NO -> R.string.quest_sidewalk_value_no
     SEPARATE -> R.string.quest_sidewalk_value_separate
+    else -> 0
 }
 
 fun Sidewalk.asStreetSideItem(): StreetSideDisplayItem<Sidewalk> =

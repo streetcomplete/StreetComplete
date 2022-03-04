@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddSidewalkTest {
@@ -47,7 +48,18 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road)!!)
+    }
+
+    @Test fun `applicable to road with overloaded sidewalk tagging`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "sidewalk" to "left",
+            "sidewalk:right" to "yes"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road))
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(road)!!)
     }
 
     @Test fun `not applicable to road with nearby footway`() {
