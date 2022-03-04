@@ -120,6 +120,7 @@ import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.quests.surface.AddSidewalkSurface
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
@@ -406,6 +407,7 @@ whether the postbox is still there in countries in which it is enabled */
     AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
     AddFootwayPartSurface(),
     AddCyclewayPartSurface(),
+    AddSidewalkSurface(),
     AddCyclewayWidth(arSupportChecker), // should be after cycleway segregation
 
     /* should best be after road surface because it excludes unpaved roads, also, need to search

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
