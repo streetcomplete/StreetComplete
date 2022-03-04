@@ -8,8 +8,8 @@ sealed class Fee
 
 object HasFee : Fee()
 object HasNoFee : Fee()
-data class HasFeeAtHours(val openingHours: OpeningHoursRuleList) : Fee()
-data class HasFeeExceptAtHours(val openingHours: OpeningHoursRuleList) : Fee()
+data class HasFeeAtHours(val hours: OpeningHoursRuleList) : Fee()
+data class HasFeeExceptAtHours(val hours: OpeningHoursRuleList) : Fee()
 
 fun Fee.applyTo(tags: Tags) {
     when (this) {
@@ -23,11 +23,11 @@ fun Fee.applyTo(tags: Tags) {
         }
         is HasFeeAtHours -> {
             tags.updateWithCheckDate("fee", "no")
-            tags["fee:conditional"] = "yes @ ($openingHours)"
+            tags["fee:conditional"] = "yes @ ($hours)"
         }
         is HasFeeExceptAtHours -> {
             tags.updateWithCheckDate("fee", "yes")
-            tags["fee:conditional"] = "no @ ($openingHours)"
+            tags["fee:conditional"] = "no @ ($hours)"
         }
     }
 }

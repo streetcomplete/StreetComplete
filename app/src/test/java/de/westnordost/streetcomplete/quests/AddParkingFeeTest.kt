@@ -10,10 +10,15 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.FeeAndMaxStay
 import de.westnordost.streetcomplete.quests.parking_fee.HasFee
 import de.westnordost.streetcomplete.quests.parking_fee.HasFeeAtHours
 import de.westnordost.streetcomplete.quests.parking_fee.HasFeeExceptAtHours
 import de.westnordost.streetcomplete.quests.parking_fee.HasNoFee
+import de.westnordost.streetcomplete.quests.parking_fee.Maxstay
+import de.westnordost.streetcomplete.quests.parking_fee.MaxstayAtHours
+import de.westnordost.streetcomplete.quests.parking_fee.MaxstayDuration
+import de.westnordost.streetcomplete.quests.parking_fee.MaxstayExceptAtHours
 import org.junit.Test
 import java.time.LocalDate
 
@@ -44,16 +49,16 @@ class AddParkingFeeTest {
     private val openingHoursString = "Mo 10:00-12:00; Tu 12:00-24:00"
 
     @Test fun `apply yes answer`() {
-        questType.verifyAnswer(HasFee, StringMapEntryAdd("fee", "yes"))
+        questType.verifyAnswer(FeeAndMaxStay(HasFee), StringMapEntryAdd("fee", "yes"))
     }
 
     @Test fun `apply no answer`() {
-        questType.verifyAnswer(HasNoFee, StringMapEntryAdd("fee", "no"))
+        questType.verifyAnswer(FeeAndMaxStay(HasNoFee), StringMapEntryAdd("fee", "no"))
     }
 
     @Test fun `apply only at hours answer`() {
         questType.verifyAnswer(
-            HasFeeAtHours(openingHours),
+            FeeAndMaxStay(HasFeeAtHours(openingHours)),
             StringMapEntryAdd("fee", "no"),
             StringMapEntryAdd("fee:conditional", "yes @ ($openingHoursString)")
         )
@@ -61,7 +66,7 @@ class AddParkingFeeTest {
 
     @Test fun `apply yes except at hours answer`() {
         questType.verifyAnswer(
-            HasFeeExceptAtHours(openingHours),
+            FeeAndMaxStay(HasFeeExceptAtHours(openingHours)),
             StringMapEntryAdd("fee", "yes"),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)")
         )
@@ -70,7 +75,7 @@ class AddParkingFeeTest {
     @Test fun `apply yes answer if before was conditional`() {
         questType.verifyAnswer(
             mapOf("fee:conditional" to "someval", "fee" to "no"),
-            HasFee,
+            FeeAndMaxStay(HasFee),
             StringMapEntryModify("fee", "no", "yes"),
             StringMapEntryDelete("fee:conditional", "someval")
         )
@@ -79,10 +84,58 @@ class AddParkingFeeTest {
     @Test fun `apply conditional answer if before was yes`() {
         questType.verifyAnswer(
             mapOf("fee" to "yes"),
-            HasFeeExceptAtHours(openingHours),
+            FeeAndMaxStay(HasFeeExceptAtHours(openingHours)),
             StringMapEntryModify("fee", "yes", "yes"),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)"),
             StringMapEntryAdd("check_date:fee", LocalDate.now().toCheckDateString())
+        )
+    }
+
+    @Test fun `apply no but maxstay answer`() {
+        questType.verifyAnswer(
+            FeeAndMaxStay(HasNoFee, MaxstayDuration(2.5, Maxstay.Unit.HOURS)),
+            StringMapEntryAdd("fee", "no"),
+            StringMapEntryAdd("maxstay", "2.5 hours")
+        )
+    }
+
+    @Test fun `apply no but maxstay at hours answer`() {
+        questType.verifyAnswer(
+            FeeAndMaxStay(HasNoFee, MaxstayAtHours(MaxstayDuration(30.0, Maxstay.Unit.MINUTES), openingHours)),
+            StringMapEntryAdd("fee", "no"),
+            StringMapEntryAdd("maxstay", "no"),
+            StringMapEntryAdd("maxstay:conditional", "30 minutes @ ($openingHoursString)"),
+        )
+    }
+
+    @Test fun `apply no but maxstay except at hours answer`() {
+        questType.verifyAnswer(
+            FeeAndMaxStay(HasNoFee, MaxstayExceptAtHours(MaxstayDuration(1.0, Maxstay.Unit.DAYS), openingHours)),
+            StringMapEntryAdd("fee", "no"),
+            StringMapEntryAdd("maxstay", "1 day"),
+            StringMapEntryAdd("maxstay:conditional", "no @ ($openingHoursString)"),
+        )
+    }
+
+    @Test fun `apply no but maxstay if before was fee yes`() {
+        questType.verifyAnswer(
+            mapOf("fee" to "yes", "maxstay" to "unlimited", "maxstay:conditional" to "3 hours @ (10:00-20:00)"),
+            FeeAndMaxStay(HasNoFee, MaxstayDuration(1.0, Maxstay.Unit.HOURS)),
+            StringMapEntryModify("fee", "yes", "no"),
+            StringMapEntryDelete("maxstay:conditional", "3 hours @ (10:00-20:00)"),
+            StringMapEntryModify("maxstay", "unlimited", "1 hour"),
+        )
+    }
+
+    @Test fun `apply no but maxstay if before it was the same`() {
+        questType.verifyAnswer(
+            mapOf("fee" to "no", "maxstay" to "no", "maxstay:conditional" to "1 hour @ ($openingHoursString)"),
+            FeeAndMaxStay(HasNoFee, MaxstayAtHours(MaxstayDuration(1.0, Maxstay.Unit.HOURS), openingHours)),
+            StringMapEntryModify("fee", "no", "no"),
+            StringMapEntryAdd("check_date:fee", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("maxstay:conditional", "1 hour @ ($openingHoursString)", "1 hour @ ($openingHoursString)"),
+            StringMapEntryModify("maxstay", "no", "no"),
+            StringMapEntryAdd("check_date:maxstay", LocalDate.now().toCheckDateString())
         )
     }
 }

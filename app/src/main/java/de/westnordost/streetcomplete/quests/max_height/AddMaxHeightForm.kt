@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
@@ -22,6 +21,7 @@ import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
@@ -68,12 +68,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         heightUnitSelect?.isGone = lengthUnits.size == 1
         heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, lengthUnits)
         heightUnitSelect?.setSelection(0)
-        heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                switchLayout(heightUnitSelect?.selectedItem as LengthUnit)
-            }
-
-            override fun onNothingSelected(parentView: AdapterView<*>) {}
+        heightUnitSelect?.onItemSelectedListener = OnAdapterItemSelectedListener {
+            switchLayout(heightUnitSelect?.selectedItem as LengthUnit)
         }
 
         inchInput?.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->

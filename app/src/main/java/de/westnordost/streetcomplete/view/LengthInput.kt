@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import androidx.core.view.isGone
@@ -34,12 +32,9 @@ class LengthInput @JvmOverloads constructor(
     var onInputChanged: (() -> Unit)? = null
 
     init {
-        binding.unitSelect.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                updateInputFieldsVisibility()
-                onInputChanged?.invoke()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        binding.unitSelect.onItemSelectedListener = OnAdapterItemSelectedListener {
+            updateInputFieldsVisibility()
+            onInputChanged?.invoke()
         }
 
         binding.feetInput.filters = arrayOf(acceptIntDigits(4))
