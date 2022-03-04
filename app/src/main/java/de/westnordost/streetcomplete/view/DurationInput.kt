@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.view.inputfilter.InputValidator
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntDigits
 
-/** Allows to input a duration, in hours or minutes */
+/** Allows to input a duration, in days, hours or minutes */
 class DurationInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
