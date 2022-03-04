@@ -79,10 +79,10 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAndMaxStay>() {
                 EXCEPT_AT_HOURS -> HasFeeExceptAtHours(hours)
             }
             applyAnswer(FeeAndMaxStay(fee))
-        } else if(binding is QuestMaxstayBinding) {
+        } else if (binding is QuestMaxstayBinding) {
             val duration = MaxstayDuration(
                 binding.durationInput.durationValue,
-                when(binding.durationInput.durationUnit) {
+                when (binding.durationInput.durationUnit) {
                     DurationUnit.MINUTES -> Maxstay.Unit.MINUTES
                     DurationUnit.HOURS -> Maxstay.Unit.HOURS
                     DurationUnit.DAYS -> Maxstay.Unit.DAYS
