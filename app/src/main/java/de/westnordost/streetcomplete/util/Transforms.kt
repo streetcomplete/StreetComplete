@@ -50,7 +50,7 @@ val View.globalRotationY: Float get() =
     rotationY + parents.sumOf { it.rotationY.toDouble() }.toFloat()
 
 private val View.parents: Iterable<ViewGroup> get() = object : Iterable<ViewGroup> {
-    override fun iterator(): Iterator<ViewGroup> = iterator<ViewGroup> {
+    override fun iterator() = iterator<ViewGroup> {
         var p = parent
         while (p != null && p is ViewGroup) {
             yield(p)

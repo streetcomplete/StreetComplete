@@ -47,7 +47,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
         inflater.inflate(R.layout.form_leave_note, bottomSheetBinding.content)
         return binding.root

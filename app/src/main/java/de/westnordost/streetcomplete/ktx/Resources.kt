@@ -7,13 +7,13 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
-import kotlinx.serialization.serializer
 
 inline fun <reified T> Resources.getYamlObject(@RawRes id: Int): T =
-    Yaml.default.decodeFromStream(Yaml.default.serializersModule.serializer(), openRawResource(id))
+    Yaml.default.decodeFromStream(openRawResource(id))
 
 /** shortcut for [getYamlObject] with included type information */
 fun Resources.getYamlStringMap(@RawRes id: Int): Map<String, String> = this.getYamlObject(id)

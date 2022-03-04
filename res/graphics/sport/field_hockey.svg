@@ -6,7 +6,7 @@
   <path d="m45.02 41.42s-2.8033 3.3934-5.0164 6.0491c3.6885 9.7376-5.9016 26.262-5.9016 26.262s15.639-20.656 10.918-32.311" fill="#83bf4f"/>
  </g>
  <g transform="matrix(1.4754 0 0 1.4754 -60.969 47.103)" stroke-width=".67778">
-  <circle cx="90.876" cy="17.699" r="12.41" fill="#df650c" style="paint-order:normal"/>
-  <circle cx="89.935" cy="16.244" r="8.8151" fill="#ec7a26" style="paint-order:normal"/>
+  <circle cx="90.876" cy="17.699" r="12.41" fill="#df650c"/>
+  <circle cx="89.935" cy="16.244" r="8.8151" fill="#ec7a26"/>
  </g>
 </svg>

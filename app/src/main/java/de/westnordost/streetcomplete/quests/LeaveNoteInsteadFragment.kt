@@ -49,7 +49,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
         inflater.inflate(R.layout.form_leave_note, binding.content)
         return binding.root

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
  <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#e9a76f" stroke-width=".2"/>
- <path d="m5.1211 66.746c-1.3636 1.645-1.189 3.6646 0.01758 5.2988 18.691 20.997 38.112 32.9 58.295 33.33 20.183 0.4305 40.183-10.729 59.723-33.375 1.0109-2.0766 1.0645-3.8307-0.0821-5.3164-18.991-23.675-38.576-36.705-58.88-36.945s-40.03 12.409-59.074 37.008z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill-opacity=".2" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+ <path d="m5.1211 66.746c-1.3636 1.645-1.189 3.6646 0.01758 5.2988 18.691 20.997 38.112 32.9 58.295 33.33 20.183 0.4305 40.183-10.729 59.723-33.375 1.0109-2.0766 1.0645-3.8307-0.0821-5.3164-18.991-23.675-38.576-36.705-58.88-36.945s-40.03 12.409-59.074 37.008z" fill-opacity=".2"/>
  <g transform="matrix(2 0 0 2 0 25.263)">
   <path d="m4 20c19.214-22.341 37.831-20.306 56 0-19.088 22.123-37.724 20.531-56 0z" fill="#fff" stroke="#888" stroke-linejoin="round" stroke-width="4"/>
   <circle cx="32" cy="18" r="14" fill="#6a85ab"/>

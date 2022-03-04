@@ -46,6 +46,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         )
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+        lifecycle.addObserver(adapter)
         namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         namesList.adapter = adapter
         namesList.isNestedScrollingEnabled = false

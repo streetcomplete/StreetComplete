@@ -106,13 +106,13 @@ class Compass(
         val grav = gravity ?: return
         val geomag = geomagnetic ?: return
 
-        val R = FloatArray(9)
-        val I = FloatArray(9)
-        val success = SensorManager.getRotationMatrix(R, I, grav, geomag)
+        val matrixR = FloatArray(9)
+        val matrixI = FloatArray(9)
+        val success = SensorManager.getRotationMatrix(matrixR, matrixI, grav, geomag)
         if (success) {
-            remapToDisplayRotation(R)
+            remapToDisplayRotation(matrixR)
             val orientation = FloatArray(3)
-            SensorManager.getOrientation(R, orientation)
+            SensorManager.getOrientation(matrixR, orientation)
             val azimuth = orientation[0] + declination
             val pitch = orientation[1]
             val roll = orientation[2]

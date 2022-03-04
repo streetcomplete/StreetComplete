@@ -42,7 +42,6 @@
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.MainActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>

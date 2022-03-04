@@ -35,8 +35,7 @@ private fun createSidewalksDefault(tags: Map<String, String>): LeftAndRightSidew
     "left" -> LeftAndRightSidewalk(left = YES, right = NO)
     "right" -> LeftAndRightSidewalk(left = NO, right = YES)
     "both" -> LeftAndRightSidewalk(left = YES, right = YES)
-    "no" -> LeftAndRightSidewalk(left = NO, right = NO)
-    "none" -> LeftAndRightSidewalk(left = NO, right = NO)
+    "no", "none" -> LeftAndRightSidewalk(left = NO, right = NO)
     "separate" -> LeftAndRightSidewalk(left = SEPARATE, right = SEPARATE)
     else -> null
 }
