@@ -26,7 +26,7 @@ fun createSidewalkSides(tags: Map<String, String>): LeftAndRightSidewalk? {
 
     // has valid sidewalk tagging of only one tagging style
     if (sidewalk != null) return sidewalk
-    if (altSidewalk != null)return altSidewalk
+    if (altSidewalk != null) return altSidewalk
 
     return null
 }
