@@ -51,7 +51,7 @@ To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file:
 
 ## Existing proposals
 
-You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22).
+You can also look at [quest proposals waiting for implementation](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+-label%3A%22blocked%22).
 
 # Prepare repository for development
 
