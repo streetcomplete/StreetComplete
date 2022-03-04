@@ -29,6 +29,7 @@ class AddRoadWidth(
         and !width
         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
         and (access !~ private|no or (foot and foot !~ private|no))
+        and placement != transition
     """
     override val changesetComment = "Determine road width"
     override val wikiLink = "Key:width"
