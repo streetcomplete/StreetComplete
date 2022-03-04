@@ -1214,6 +1214,12 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
     <string name="quest_airConditioning_no_name_title">"Does this place (%s) have air conditioning?"</string>
     <string name="quest_airConditioning_name_type_title">"Does %1$s (%2$s) have air conditioning?"</string>
+    <string name="quest_smoking_no_name_title">"Is smoking allowed anywhere in this place (%s)?"</string>
+    <string name="quest_smoking_name_type_title">"Is smoking allowed anywhere in %1$s (%2$s)?"</string>
+    <string name="quest_smoking_no">No, forbidden</string>
+    <string name="quest_smoking_outside">Only outside</string>
+    <string name="quest_smoking_separated">Only in separated areas</string>
+    <string name="quest_smoking_yes">Yes, everywhere</string>
 
     <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
     <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>

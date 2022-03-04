@@ -108,6 +108,7 @@ import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
+import de.westnordost.streetcomplete.quests.smoking.AddSmoking
 import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
 import de.westnordost.streetcomplete.quests.smoothness.AddRoadSmoothness
 import de.westnordost.streetcomplete.quests.sport.AddSport
@@ -361,6 +362,8 @@ whether the postbox is still there in countries in which it is enabled */
     AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
     AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+
+    AddSmoking(), // often marked on the entrance, if not, visible/smellable inside
 
     AddAirConditioning(), // often visible from the outside, if not, visible/feelable inside
 
