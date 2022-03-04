@@ -28,7 +28,7 @@ But this materials may help or be quicker than trying to fully explore on your o
   - Using git from command line or terminal in Android Studio also works fine
 - GitHub [account](https://github.com/signup)
 - around 15GB of free space on disk
-  - the initial setup will typically download half of the Internet while getting emulators and dependencies
+  - the initial setup will typically download half the Internet while getting emulators and dependencies
 
 # Dependencies - initial setup
 
