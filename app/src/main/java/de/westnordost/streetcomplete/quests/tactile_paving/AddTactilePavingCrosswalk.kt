@@ -59,7 +59,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingAnswer> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = TactilePavingForm()
+    override fun createForm() = TactilePavingCrosswalkForm()
 
     override fun applyAnswerTo(answer: TactilePavingAnswer, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.osmValue)

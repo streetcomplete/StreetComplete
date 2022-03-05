@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
 
-class AddTactilePavingBusStop : OsmFilterQuestType<TactilePavingAnswer>() {
+class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -44,7 +44,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<TactilePavingAnswer>() {
 
     override fun createForm() = TactilePavingForm()
 
-    override fun applyAnswerTo(answer: TactilePavingAnswer, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("tactile_paving", answer.osmValue)
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
     }
 }
