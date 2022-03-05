@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingAnswer.YES
-import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingAnswer.NO
-import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingAnswer.INCORRECT
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.YES
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.NO
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.INCORRECT
 
-class TactilePavingCrosswalkForm : AbstractQuestAnswerFragment<TactilePavingAnswer>() {
+class TactilePavingCrosswalkForm : AbstractQuestAnswerFragment<TactilePavingCrosswalkAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_tactile_paving
 
