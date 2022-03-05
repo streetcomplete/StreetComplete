@@ -1090,6 +1090,7 @@ Unfortunately, due to a Google Play Store policy, no links leading to donations 
     <string name="quest_bollard_type_foldable2">Foldable (with or without key)</string>
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
+    <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
     <string name="quest_camera_type_title">What type of surveillance camera is this?</string>
     <string name="quest_camera_type_dome">Dome</string>
     <string name="quest_camera_type_fixed">Fixed</string>

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
+import de.westnordost.streetcomplete.quests.bollard_type.BollardType.NOT_BOLLARD
 
 class AddBollardType : OsmElementQuestType<BollardType> {
 
@@ -53,6 +54,11 @@ class AddBollardType : OsmElementQuestType<BollardType> {
     override fun createForm() = AddBollardTypeForm()
 
     override fun applyAnswerTo(answer: BollardType, tags: Tags, timestampEdited: Long) {
-        tags["bollard"] = answer.osmValue
+        when (answer) {
+            NOT_BOLLARD -> {
+                tags["barrier"] = "yes"
+            }
+            else -> tags["bollard"] = answer.osmValue
+        }
     }
 }

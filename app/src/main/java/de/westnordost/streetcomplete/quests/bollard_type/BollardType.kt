@@ -6,4 +6,5 @@ enum class BollardType(val osmValue: String) {
     FOLDABLE("foldable"),
     FLEXIBLE("flexible"),
     FIXED("fixed"),
+    NOT_BOLLARD("not_bollard"),
 }

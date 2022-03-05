@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FLEXIBLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FOLDABLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.REMOVABLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.RISING
+import de.westnordost.streetcomplete.quests.bollard_type.BollardType.NOT_BOLLARD
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddBollardTypeForm : AImageListQuestAnswerFragment<BollardType, BollardType>() {
@@ -24,4 +25,8 @@ class AddBollardTypeForm : AImageListQuestAnswerFragment<BollardType, BollardTyp
     override fun onClickOk(selectedItems: List<BollardType>) {
         applyAnswer(selectedItems.single())
     }
+
+    override val otherAnswers get() = listOfNotNull(
+        AnswerItem(R.string.quest_bollard_type_not_bollard) { applyAnswer(NOT_BOLLARD) },
+    )
 }
