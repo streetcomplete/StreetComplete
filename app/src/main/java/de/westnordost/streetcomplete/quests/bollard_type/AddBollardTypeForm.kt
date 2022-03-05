@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bollard_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FIXED
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FLEXIBLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FOLDABLE
