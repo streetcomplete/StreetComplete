@@ -11,13 +11,9 @@ class TactilePavingCrosswalkForm : AbstractQuestAnswerFragment<TactilePavingAnsw
 
     override val contentLayoutResId = R.layout.quest_tactile_paving
 
-    override val otherAnswers get() = listOfNotNull(
-        createIncorrectAnswerItem()
+    override val otherAnswers get() = listOf(
+        AnswerItem(R.string.quest_tactilePaving_incorrect) { applyAnswer(INCORRECT) }
     )
-
-    private fun createIncorrectAnswerItem(): AnswerItem {
-        return AnswerItem(R.string.quest_tactilePaving_incorrect) { applyAnswer(INCORRECT) }
-    }
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
