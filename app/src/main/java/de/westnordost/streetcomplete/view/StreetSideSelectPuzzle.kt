@@ -218,6 +218,14 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.leftSideContainer.isClickable = true
     }
 
+    fun leftSideIsClickable() : Boolean {
+        return binding.leftSideContainer.isClickable
+    }
+
+    fun rightSideIsClickable() : Boolean {
+        return binding.rightSideContainer.isClickable
+    }
+
     private fun replace(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
         val width = if (onlyShowingOneSide) binding.rotateContainer.width else binding.rotateContainer.width / 2
         if (width == 0) return
