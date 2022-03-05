@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.NOT_CYCLE_BARRIER
 
 class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
 
@@ -22,6 +23,11 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
     override fun createForm() = AddBicycleBarrierTypeForm()
 
     override fun applyAnswerTo(answer: BicycleBarrierType, tags: Tags, timestampEdited: Long) {
-        tags["cycle_barrier"] = answer.osmValue
+        when (answer) {
+            NOT_CYCLE_BARRIER -> {
+                tags["barrier"] = "yes"
+            }
+            else -> tags["cycle_barrier"] = answer.osmValue
+        }
     }
 }

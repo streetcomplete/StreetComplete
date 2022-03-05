@@ -1162,6 +1162,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_barrier_bicycle_type_single">Passage between two barriers</string>
     <string name="quest_barrier_bicycle_type_double">Chicane - barrier on each side</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
     <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
