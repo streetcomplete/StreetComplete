@@ -34,6 +34,9 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_ramp_title
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("ways with highway = steps")
+
     override fun createForm() = AddStepsRampForm()
 
     override fun applyAnswerTo(answer: StepsRampAnswer, tags: Tags, timestampEdited: Long) {

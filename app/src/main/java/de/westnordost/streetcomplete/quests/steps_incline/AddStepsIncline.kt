@@ -26,6 +26,9 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("ways with highway = steps")
+
     override fun createForm() = AddStepsInclineForm()
 
     override fun applyAnswerTo(answer: StepsIncline, tags: Tags, timestampEdited: Long) {

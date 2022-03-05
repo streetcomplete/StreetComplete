@@ -26,6 +26,9 @@ class AddStepCount : OsmFilterQuestType<Int>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("ways with highway = steps")
+
     override fun createForm() = AddStepCountForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
