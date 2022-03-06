@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
+import de.westnordost.streetcomplete.data.meta.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
@@ -27,7 +28,7 @@ class AddRoadWidth(
         )
         and area != yes
         and !width
-        and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+        and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
         and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val changesetComment = "Determine road width"
