@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.Serializable
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import java.util.Locale
 
@@ -71,8 +72,12 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 
     private suspend fun readCodeContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_code).map(::withLinkToGithubAccount) +
-            getString(R.string.credits_and_more)
+        // because they are mentioned as "main contributors" already
+        val skipUsers = setOf("westnordost", "FloEdelmann", "matkoniecz")
+        resources.getYamlObject<List<Contributor>>(R.raw.credits_contributors)
+            .filter { it.githubUsername !in skipUsers && it.score >= 50 }
+            .sortedByDescending { it.score }
+            .map { it.toTextWithLink() } + getString(R.string.credits_and_more)
     }
 
     private suspend fun readArtContributors() = withContext(Dispatchers.IO) {
@@ -120,3 +125,27 @@ private fun withLinkToGithubAccount(contributor: String): String {
         "$name (<a href=\"https://github.com/$githubName\">$githubName</a>)"
     }
 }
+
+private val Contributor.score: Int get() =
+    linesOfCodeChanged + linesOfInterfaceMarkupChanged / 5 + assetFilesChanged * 15
+
+private fun Contributor.toTextWithLink(): String = when {
+    githubUsername != null && githubUsername != name -> {
+        "$name (<a href=\"https://github.com/$githubUsername\">$githubUsername</a>)"
+    }
+    githubUsername == name -> {
+        "<a href=\"https://github.com/$githubUsername\">$githubUsername</a>"
+    }
+    else -> {
+        name
+    }
+}
+
+@Serializable
+private data class Contributor(
+    val name: String,
+    val githubUsername: String? = null,
+    val linesOfCodeChanged: Int = 0,
+    val linesOfInterfaceMarkupChanged: Int = 0,
+    val assetFilesChanged: Int = 0
+)

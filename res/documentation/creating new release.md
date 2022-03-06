@@ -11,12 +11,17 @@ A new release is a good time to check if all dependencies are still up to date.
 
 ### Update translations, presets, metadata, credits, ...
 
-This is done by executing the `updateStreetCompleteData` gradle task. However, some subtasks need a one-time setup and `app:updateTranslatorCredits` even needs a setup every time it is run.
+This is done by executing the `updateStreetCompleteData` gradle task. However, first some subtasks need a setup before they are run.
 
-1. (one-time:) Get a POEditor API token and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`
-2. (every time:) [Login to POEditor](https://poeditor.com/projects/view?id=97843), press F12 to bring up the developer tools, reload the page and copy from the request cookies sent in displaying the page the `PHPSESSID` and the `login` cookie. Paste it into your `<user home>/.gradle/gradle.properties` as `POEditorCookie=<your login cookie>` and `POEditorPHPSESSID=<your PHPSESSID>` ![Firefox screenshot](get_poeditor_cookie.png)
-3. Execute the `updateStreetCompleteData` gradle task
-4. Translators often make the mistake to not correctly write the placeholders (`%s`, `%1$s`, `%2%d` etc.) in their translations. This can lead to a crash when the string is displayed. So, let Android Studio check this by running _Analyze -> Run inspection by name_ , type "Invalid format string". Correct any mistakes found directly in POEditor if possible (otherwise delete the offending string) and re-import the translations again (gradle task `app:updateTranslations`) until the inspections come out clean.
+For `app:updateTranslatorCredits`:
+- (one-time:) Get a POEditor API token and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`
+- (every time:) [Login to POEditor](https://poeditor.com/projects/view?id=97843), press F12 to bring up the developer tools, reload the page and copy from the request cookies sent in displaying the page the `PHPSESSID` and the `login` cookie. Paste it into your `<user home>/.gradle/gradle.properties` as `POEditorCookie=<your login cookie>` and `POEditorPHPSESSID=<your PHPSESSID>` ![Firefox screenshot](get_poeditor_cookie.png)
+
+For `updateContributorStatistics`:
+- (one-time:) [Create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) and put it in your `<user home>/.gradle/gradle.properties` as `GithubApiToken=<the api token>`
+
+After executing `updateStreetCompleteData`, let Android Studio check this by running _Analyze -> Run inspection by name_ , type "Invalid format string". Translators often make the mistake to not correctly write the placeholders (`%s`, `%1$s`, `%2%d` etc.) in their translations. This can lead to a crash when the string is displayed. 
+Correct any mistakes found by the inspection directly in POEditor if possible (otherwise delete the offending string) and re-import the translations again (gradle task `app:updateTranslations`) until the inspections come out clean.
 
 ### Prepare Release
 
