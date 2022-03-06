@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.lanes
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
+import de.westnordost.streetcomplete.data.meta.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
@@ -18,7 +19,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             )
           )
           and area != yes
-          and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+          and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
           and (!lanes or lanes = 0)
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no
