@@ -55,9 +55,7 @@ class AddBollardType : OsmElementQuestType<BollardType> {
 
     override fun applyAnswerTo(answer: BollardType, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            NOT_BOLLARD -> {
-                tags["barrier"] = "yes"
-            }
+            NOT_BOLLARD -> tags["barrier"] = "yes"
             else -> tags["bollard"] = answer.osmValue
         }
     }
