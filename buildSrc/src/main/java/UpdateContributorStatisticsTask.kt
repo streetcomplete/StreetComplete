@@ -10,7 +10,7 @@ import java.io.File
 import java.net.URL
 
 /** Counts the changes made by each author from the git log, merges multiple authors that are linked
- *  to the same github account and writes the result into a JSON  file. */
+ *  to the same github account and writes the result into a JSON file. */
 open class UpdateContributorStatisticsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input var skipCommits: Set<String> = setOf()
