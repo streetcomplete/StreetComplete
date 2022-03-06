@@ -2,11 +2,13 @@ package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DIAGONAL
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DOUBLE
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.SINGLE
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TILTED
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TRIPLE
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.NOT_CYCLE_BARRIER
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddBicycleBarrierTypeForm : AImageListQuestAnswerFragment<BicycleBarrierType, BicycleBarrierType>() {
@@ -26,4 +28,8 @@ class AddBicycleBarrierTypeForm : AImageListQuestAnswerFragment<BicycleBarrierTy
     override fun onClickOk(selectedItems: List<BicycleBarrierType>) {
         applyAnswer(selectedItems.single())
     }
+
+    override val otherAnswers get() = listOfNotNull(
+        AnswerItem(R.string.quest_barrier_bicycle_type_not_cycle_barrier) { applyAnswer(NOT_CYCLE_BARRIER) },
+    )
 }

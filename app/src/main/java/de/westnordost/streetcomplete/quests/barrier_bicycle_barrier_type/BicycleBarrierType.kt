@@ -6,4 +6,5 @@ enum class BicycleBarrierType(val osmValue: String) {
     TRIPLE("triple"),
     DIAGONAL("diagonal"),
     TILTED("tilted"),
+    NOT_CYCLE_BARRIER("not_cycle_barrier"),
 }
