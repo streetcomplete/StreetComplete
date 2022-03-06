@@ -73,7 +73,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     private suspend fun readCodeContributors() = withContext(Dispatchers.IO) {
         // because they are mentioned as "main contributors" already
-        val skipUsers = setOf("westnordost", "FloEdelmann", "matkoniecz")
+        val skipUsers = setOf("westnordost", "FloEdelmann", "matkoniecz", "ENT8R")
         resources.getYamlObject<List<Contributor>>(R.raw.credits_contributors)
             .filter { it.githubUsername !in skipUsers && it.score >= 50 }
             .sortedByDescending { it.score }
