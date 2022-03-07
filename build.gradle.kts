@@ -72,7 +72,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
         "7fb216b8360ee85d84b36ad3fb0b0ea0ebf9977d",  // mechanical linting
         "21aa1deabae7a563ba1475094f372590fb33d784",  // mechanical linting
     )
-    skipCommitRegex = Regex(".*(lint|linter).*", RegexOption.IGNORE_CASE)
+    skipCommitRegex = Regex(".*\\b(lint|linter)\\b.*", RegexOption.IGNORE_CASE)
     targetFile = "$projectDir/app/src/main/res/raw/credits_contributors.json"
     // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
