@@ -4,12 +4,12 @@ import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 
-sealed class Fee
+sealed interface Fee
 
-object HasFee : Fee()
-object HasNoFee : Fee()
-data class HasFeeAtHours(val hours: OpeningHoursRuleList) : Fee()
-data class HasFeeExceptAtHours(val hours: OpeningHoursRuleList) : Fee()
+object HasFee : Fee
+object HasNoFee : Fee
+data class HasFeeAtHours(val hours: OpeningHoursRuleList) : Fee
+data class HasFeeExceptAtHours(val hours: OpeningHoursRuleList) : Fee
 
 fun Fee.applyTo(tags: Tags) {
     when (this) {
