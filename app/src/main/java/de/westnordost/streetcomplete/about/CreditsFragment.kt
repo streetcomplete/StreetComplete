@@ -133,7 +133,7 @@ private fun Contributor.toTextWithLink(): String = when {
     githubUsername != null && githubUsername != name -> {
         "$name (<a href=\"https://github.com/$githubUsername\">$githubUsername</a>)"
     }
-    githubUsername == name -> {
+    githubUsername != null -> {
         "<a href=\"https://github.com/$githubUsername\">$githubUsername</a>"
     }
     else -> {
