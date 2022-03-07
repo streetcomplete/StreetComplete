@@ -1,7 +1,7 @@
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -147,10 +147,8 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     }
 
     private fun writeContributors(contributors: List<Contributor>) {
-        val jsonFormat = Json {
-            prettyPrint = true
-        }
-        val text = jsonFormat.encodeToString(ListSerializer(Contributor.serializer()), contributors)
+        val jsonFormat = Json { prettyPrint = true }
+        val text = jsonFormat.encodeToString(contributors)
         File(targetFile).writeText(text)
     }
 }
