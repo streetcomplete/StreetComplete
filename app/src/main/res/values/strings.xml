@@ -1161,7 +1161,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal to the path</string>
     <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>
-    <string name="quest_barrier_bicycle_type_single">Passage between two barriers</string>
+    <string name="quest_barrier_bicycle_type_single">Passage between barriers</string>
     <string name="quest_barrier_bicycle_type_double">Chicane - barrier on each side</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
