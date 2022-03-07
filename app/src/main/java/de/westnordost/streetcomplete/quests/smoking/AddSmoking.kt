@@ -61,5 +61,4 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.keys.containsAny(listOf("name", "brand"))
-
 }

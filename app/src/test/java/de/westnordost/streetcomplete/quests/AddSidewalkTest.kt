@@ -4,11 +4,11 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.translate

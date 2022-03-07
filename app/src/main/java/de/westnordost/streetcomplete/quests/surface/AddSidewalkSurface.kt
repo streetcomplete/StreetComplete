@@ -37,7 +37,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
-    override fun getTitle(tags: Map<String, String>) : Int =
+    override fun getTitle(tags: Map<String, String>): Int =
         R.string.quest_sidewalk_surface_title
 
     override fun createForm() = AddSidewalkSurfaceForm()
@@ -85,8 +85,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             || previousBothOsmValue != null && previousBothOsmValue != osmValue
     }
 
-    private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags)
-    {
+    private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags) {
         val sidewalkKey = "sidewalk:" + side.value
         val sidewalkSurfaceKey = "$sidewalkKey:surface"
 
@@ -120,5 +119,4 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         tags.remove(sidewalkSurfaceKey)
         tags.remove("$sidewalkSurfaceKey:note")
     }
-
 }

@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -41,12 +41,12 @@ class SidewalkParserKtTest {
             "sidewalk:right" to "yes",
             "sidewalk" to "something"
         ))
-        assertEquals(invalid,parse(
+        assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
             "sidewalk:right" to "yes",
             "sidewalk" to "both"
         ))
-        assertEquals(invalid,parse(
+        assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
             "sidewalk:right" to "no",
             "sidewalk:both" to "yes",

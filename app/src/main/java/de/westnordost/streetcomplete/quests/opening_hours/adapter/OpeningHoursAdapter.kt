@@ -29,8 +29,8 @@ data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) 
 @Serializable
 data class OffDaysRow(var weekdays: Weekdays) : OpeningHoursRow()
 
-class OpeningHoursAdapter(private val context: Context)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OpeningHoursAdapter(private val context: Context) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var rows: MutableList<OpeningHoursRow> = mutableListOf()
         set(value) {

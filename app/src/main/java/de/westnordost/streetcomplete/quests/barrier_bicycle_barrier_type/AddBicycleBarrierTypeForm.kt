@@ -5,10 +5,10 @@ import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DIAGONAL
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DOUBLE
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.NOT_CYCLE_BARRIER
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.SINGLE
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TILTED
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TRIPLE
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.NOT_CYCLE_BARRIER
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddBicycleBarrierTypeForm : AImageListQuestAnswerFragment<BicycleBarrierType, BicycleBarrierType>() {

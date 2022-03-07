@@ -25,7 +25,7 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
-val Sidewalk.osmValue: String get() = when(this) {
+val Sidewalk.osmValue: String get() = when (this) {
     YES -> "yes"
     NO -> "no"
     SEPARATE -> "separate"

@@ -31,7 +31,7 @@ fun createSidewalkSides(tags: Map<String, String>): LeftAndRightSidewalk? {
     return null
 }
 
-private fun createSidewalksDefault(tags: Map<String, String>): LeftAndRightSidewalk? = when(tags["sidewalk"]) {
+private fun createSidewalksDefault(tags: Map<String, String>): LeftAndRightSidewalk? = when (tags["sidewalk"]) {
     "left" -> LeftAndRightSidewalk(left = YES, right = NO)
     "right" -> LeftAndRightSidewalk(left = NO, right = YES)
     "both" -> LeftAndRightSidewalk(left = YES, right = YES)
@@ -58,7 +58,7 @@ private fun createSidewalksAlternative(tags: Map<String, String>): LeftAndRightS
     }
 }
 
-private fun createSidewalkSide(tag: String?): Sidewalk = when(tag) {
+private fun createSidewalkSide(tag: String?): Sidewalk = when (tag) {
     "yes" -> YES
     "no" -> NO
     "separate" -> SEPARATE

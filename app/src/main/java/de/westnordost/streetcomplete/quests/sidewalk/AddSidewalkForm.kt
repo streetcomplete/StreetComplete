@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
+import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
 

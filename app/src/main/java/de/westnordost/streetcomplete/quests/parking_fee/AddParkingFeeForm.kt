@@ -9,7 +9,10 @@ import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.*
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_AT_HOURS
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_YES_NO
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.MAX_STAY
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.valueOf
 import de.westnordost.streetcomplete.view.DurationUnit
 import de.westnordost.streetcomplete.view.TimeRestriction.AT_ANY_TIME
 import de.westnordost.streetcomplete.view.TimeRestriction.EXCEPT_AT_HOURS

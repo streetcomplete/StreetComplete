@@ -16,11 +16,11 @@ import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.util.isNearAndAligned
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 
 class AddSidewalk : OsmElementQuestType<SidewalkSides> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
@@ -73,7 +73,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
             way.hasInvalidOrIncompleteSidewalkTags()
         }
 
-        return roadsWithMissingSidewalks + roadsWithInvalidSidewalkTags 
+        return roadsWithMissingSidewalks + roadsWithInvalidSidewalkTags
     }
 
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
