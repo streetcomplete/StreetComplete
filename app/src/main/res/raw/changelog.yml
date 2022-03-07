@@ -8,7 +8,7 @@ v42.0: |
   <ul>
   <li>Parking fee: Add answer option for when there is no fee but a max parking duration (#3841, #981, #102)</li>
   <li>Sidewalk: Also ask when current tagging is incomplete or invalid (#3821), by @arrival-spring</li>
-  <li>Tactile paving on crossings: Add answer option that it's only one one side (#3844, #3813), by @arrival-spring</li>
+  <li>Tactile paving on crossings: Add answer option that it’s only one one side (#3844, #3813), by @arrival-spring</li>
   <li>Barrier details: Add answer option that leads to changing the type of barrier (#3846, #3563, #3845, #3817), by @mnalis</li>
   <li>Road width, number of lanes: Don't ask for sections that have explicitly been marked as "transitions" (#3835, #3842), by @mnalis</li>
   <li>Number of lanes: Also ask for trunks and motorways (#3849), by @matkoniecz</li>
