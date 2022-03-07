@@ -81,7 +81,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$", RegexOption.IGNORE_CASE)
     /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
        via gradle tasks */
-    interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.(xml)$")
+    interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
     githubApiToken = properties["GithubApiToken"] as String
 }
 
