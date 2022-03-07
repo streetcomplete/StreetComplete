@@ -78,7 +78,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
     /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated
        via gradle tasks */
-    assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$")
+    assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$", RegexOption.IGNORE_CASE)
     /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
        via gradle tasks */
     interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.(xml)$")
