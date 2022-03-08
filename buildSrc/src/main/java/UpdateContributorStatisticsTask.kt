@@ -40,8 +40,12 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
         val linesOfInterfaceMarkupChangedByCommit = mutableMapOf<String, Int>()
         val linesOfCodeChangedByCommit = mutableMapOf<String, Int>()
         val ignoredCommits = mutableSetOf<String>()
-        val command = "git log --pretty=\"name: %an%nhash: %H%nsubject: %s%ntimestamp: %at\" --numstat"
-        Runtime.getRuntime().exec(command).inputStream.bufferedReader().useLines { lines ->
+        ProcessBuilder(
+            "git",
+            "log",
+            "--pretty=name: %an%nhash: %H%nsubject: %s%ntimestamp: %at",
+            "--numstat",
+        ).start().inputStream.bufferedReader().useLines { lines ->
             var name = ""
             var hash = ""
             var subject = ""
