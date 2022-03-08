@@ -5,11 +5,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.measure.ArSupportChecker
-import de.westnordost.streetcomplete.osm.Length
 
 class AddCyclewayWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmFilterQuestType<Length>() {
+) : OsmFilterQuestType<WidthAnswer>() {
 
     /* All either exclusive cycleways or ways that are cycleway + footway (or bridleway) but
      *  segregated */
@@ -18,7 +17,7 @@ class AddCyclewayWidth(
           (
             highway = cycleway
             and foot !~ yes|designated
-            and (!width or width older today -8 years)
+            and (!width or source:width ~ ".*estimat.*")
           ) or (
             segregated = yes
             and (
@@ -26,7 +25,7 @@ class AddCyclewayWidth(
               or highway ~ path|footway and bicycle != no
               or highway = bridleway and bicycle ~ designated|yes
             )
-            and (!cycleway:width or cycleway:width older today -8 years)
+            and (!cycleway:width or source:cycleway:width ~ ".*estimat.*")
           )
         )
         and area != yes
@@ -45,13 +44,16 @@ class AddCyclewayWidth(
 
     override fun createForm() = AddWidthForm()
 
-    override fun applyAnswerTo(answer: Length, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, timestampEdited: Long) {
         val isExclusive = tags["highway"] == "cycleway" && tags["foot"] != "yes" && tags["foot"] != "designated"
 
-        if (isExclusive) {
-            tags["width"] = answer.toOsmValue()
+        val key = if (isExclusive) "width" else "cycleway:width"
+
+        tags[key] = answer.width.toOsmValue()
+        if (answer.isARMeasurement) {
+            tags["source:$key"] = "ARCore"
         } else {
-            tags["cycleway:width"] = answer.toOsmValue()
+            tags.remove("source:$key")
         }
     }
 }
