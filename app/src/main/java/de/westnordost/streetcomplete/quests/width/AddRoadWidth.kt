@@ -7,11 +7,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.measure.ArSupportChecker
-import de.westnordost.streetcomplete.osm.Length
 
 class AddRoadWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmFilterQuestType<Length>() {
+) : OsmFilterQuestType<WidthAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -27,7 +26,7 @@ class AddRoadWidth(
           or highway = service and service = alley
         )
         and area != yes
-        and !width
+        and (!width or source:width ~ ".*estimat.*")
         and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
         and (access !~ private|no or (foot and foot !~ private|no))
         and placement != transition
@@ -44,9 +43,16 @@ class AddRoadWidth(
 
     override fun createForm() = AddWidthForm()
 
-    override fun applyAnswerTo(answer: Length, tags: Tags, timestampEdited: Long) {
-        tags["width"] = answer.toOsmValue()
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, timestampEdited: Long) {
+        tags["width"] = answer.width.toOsmValue()
+
+        if (answer.isARMeasurement) {
+            tags["source:width"] = "ARCore"
+        } else {
+            tags.remove("source:width")
+        }
+
         // update width:carriageway if it is set
-        if (tags.containsKey("width:carriageway")) tags["width:carriageway"] = answer.toOsmValue()
+        if (tags.containsKey("width:carriageway")) tags["width:carriageway"] = answer.width.toOsmValue()
     }
 }
