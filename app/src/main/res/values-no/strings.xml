@@ -929,15 +929,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_fee_add_times">"Legg til tider"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Ja, men bare…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Ja, men ikke…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"på disse tidspunktene:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Hva heter dette busstoppet?"</string>
 
     <!-- Fuzzy -->
@@ -2052,6 +2043,8 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_bicycle_barrier_type_title">"Hvilken type sperring er dette?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal over veien"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Smal passasje, trangest øverst"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Passasje mellom to barrierer"</string>
     <string name="quest_barrier_bicycle_type_double">"Innsnevring på begge sider"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Innsnevring med mer enn to barrierer "</string>
@@ -2059,7 +2052,34 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="language_default">"Systemvalgt"</string>
     <string name="confirmation_discard_negative2">"Nei"</string>
     <string name="quest_street_parking_title">"På hvilken måte kan biler parkere her?"</string>
+    <string name="select_street_parking_no">"Skilt eller oppmerking her?"</string>
+    <string name="street_parking_parallel">"Parallell"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_on_street">"I veibanen"</string>
+    <string name="street_parking_half_on_kerb">"Delvis i veibanen"</string>
+    <string name="street_parking_painted_area_only">"I veibanen på oppmerkede plasser"</string>
+    <string name="street_parking_no">"Ingen parkering her / Ikke tillat"</string>
     <string name="street_parking_prohibited">"Ingen parkering her"</string>
     <string name="street_stopping_prohibited">"Ingen parkering"</string>
     <string name="street_standing_prohibited">"Ingen stans"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Både et husnummer og et navn…"</string>
+    <string name="quest_address_house_number_label">"Husnummer:"</string>
+    <string name="quest_smoothness_title_intermediate">"Litt humpete"</string>
+    <string name="quest_smoothness_title_bad">"Humpete"</string>
+    <string name="quest_smoothness_title_very_bad">"Veldig humpete"</string>
+    <string name="quest_smoothness_title_horrible">"Veldig humpete og ujevn"</string>
+    <string name="quest_smoothness_description_excellent_paved">"Ingen humper eller sprekker"</string>
+    <string name="quest_smoothness_description_good_paved">"Bare små sprekker, mellomrom, reparasjoner eller litt ujevn overflate"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"Grunne eller smale mellomrom"</string>
+    <string name="quest_smoothness_description_good_sett">"Uvanlig flate steiner, jevnt mønster, veldig grunne eller smale mellomrom"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"Store mellomrom, muligens noen feilplasserte steiner eller annen skade"</string>
+    <string name="achievement_lifesaver_title">"Livredder"</string>
+    <string name="ar_core_error_sdk_too_old">"Appen er utdatert, prøv å oppdatere."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"For mørkt her"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"For mye bevegelse"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Kamera er i bruk av en annen app"</string>
+    <string name="ar_measure">"Mål"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"For bratt vinkel, gå lenger unna"</string>
+    <string name="link_osmand_description">"Mobilapp for kart og navigasjon med og uten internettilgang"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Vær nærmere pilen, men følg med på trafikken!"</string>
 </resources>

@@ -456,9 +456,6 @@
     <!-- يعتمد على الوقت واليوم ... -->
     <string name="quest_fee_answer_hours">"حسب الوقت واليوم ..."</string>
     <string name="quest_fee_add_times">"أضف أوقات"</string>
-    <string name="quest_fee_only_at_hours">"نعم، لكن فقط..."</string>
-    <string name="quest_fee_not_at_hours">"نعم، لكن ليس..."</string>
-    <string name="quest_fee_hours_title">"في الأوقات التالية:"</string>
     <string name="quest_busStopName_title">"ما هو اسم محطة الحافلات هذه؟"</string>
     <string name="quest_tramStopName_title">"ما اسم محطة الترام هذه؟"</string>
     <string name="quest_housenumber_multiple_numbers">"يوجد العديد من أرقام المنازل"</string>

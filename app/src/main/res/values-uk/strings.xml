@@ -460,9 +460,6 @@
     <string name="quest_streetSurface_square_name_title">"Яке покриття тут має сквер %s?"</string>
     <string name="quest_fee_answer_hours">"Залежить від часу та дня…"</string>
     <string name="quest_fee_add_times">"Додати час"</string>
-    <string name="quest_fee_only_at_hours">"Так, але тільки…"</string>
-    <string name="quest_fee_not_at_hours">"Так, але не…"</string>
-    <string name="quest_fee_hours_title">"у наступний час:"</string>
     <string name="quest_busStopName_title">"Як називається ця автобусна зупинка?"</string>
     <string name="quest_tramStopName_title">"Як називається ця трамвайна зупинка?"</string>
     <string name="quest_housenumber_multiple_numbers">"Має декілька номерів дому"</string>
@@ -1235,6 +1232,8 @@
     <string name="quest_bicycle_barrier_type_title">"Який це тип велобар'єру?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Діагональ на шляху"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Вузький проїзд, менший у напрямку верха"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Проїзд між двома бар'єрами"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикана - бар'єр з кожної сторони"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикана - більше, ніж два бар'єри"</string>

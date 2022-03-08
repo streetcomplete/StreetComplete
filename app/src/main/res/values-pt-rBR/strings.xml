@@ -1115,15 +1115,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_fee_add_times">"Adicionar horários"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Sim, mas apenas…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Sim, exceto…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"nos seguintes horários:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Qual o nome desta parada de ônibus?"</string>
 
     <!-- Fuzzy -->
@@ -2297,6 +2288,8 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_bicycle_barrier_type_title">"Que tipo de barreira de bicicleta é essa?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal com o caminho"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passagem estreita, menor em direção ao topo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Passagem entre duas barreiras"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barreira de cada lado"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - mais de duas barreiras"</string>

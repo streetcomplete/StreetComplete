@@ -1095,15 +1095,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_fee_add_times">"增加时间"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"有收费，但只在..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"有收费，但有免费时段..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"在下列时间："</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"这座公交车站的站名是什么？"</string>
 
     <!-- Fuzzy -->
@@ -2440,6 +2431,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_bicycle_barrier_type_title">"这是什么类型的自行车护栏？"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"与小路成对角线"</string>
     <string name="quest_barrier_bicycle_type_tilted">"狭窄的通道，从底部朝顶部变小"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"屏障之间的通道"</string>
     <string name="quest_barrier_bicycle_type_double">"减速弯道 - 每边各一个障碍物"</string>
 

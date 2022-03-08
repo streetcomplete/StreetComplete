@@ -13,7 +13,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora le note non presentate come domande"</string>
     <string name="pref_title_map_cache">"Dimensioni della cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
-    <string name="map_attribution_osm">"© Contributori OpenStreetMap"</string>
+    <string name="map_attribution_osm">"© Contributori di OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altre risposte …"</string>
 
     <!-- Potrebbe essere più friendly "Non so dirlo"? -->
@@ -67,7 +67,7 @@
     <string name="about_title_license">"Licenza"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Sei offline"</string>
-    <string name="confirmation_authorize_now">"È necessaria l'autorizzazione per pubblicare le tue risposte su OSM con l tuo account. Vuoi farlo ora?"</string>
+    <string name="confirmation_authorize_now">"È necessaria l'autorizzazione per pubblicare le tue risposte su OSM con il tuo account. Vuoi farlo ora?"</string>
     <string name="not_authorized">"Non autorizzato"</string>
     <string name="version_banned_message">"Stai usando una versione di StreetComplete troppa vecchia. Ti prego di aggiornarla!"</string>
     <string name="no_gps_no_quests">"Per individuare le missioni da svolgere in zona è necessario abilitare la localizzazione"</string>
@@ -221,7 +221,7 @@ Se non ci sono cartelli lungo tutta la strada nel tratto evidenziato allora si a
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Le strade urbane hanno un limite di velocità inferiore da quelle rurali."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Area urbana"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fuori città"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Se trovi un cartello come questo all'incrocio con la strada principale allora non ne  troverai altri perchè  significa che il limite di quell'incrocio si applica all'intera zona."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Se trovi un cartello come questo all'incrocio con la strada principale allora non ne  troverai altri perché significa che il limite di quell'incrocio si applica all'intera zona."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
     <string name="quest_sport_ice_skating">"Pattinaggio su ghiaccio"</string>
@@ -459,9 +459,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_streetSurface_square_name_title">"Che tipo di pavimentazione ha la piazza %s?"</string>
     <string name="quest_fee_answer_hours">"Dipende da giorno e ora…"</string>
     <string name="quest_fee_add_times">"Aggiungi orari"</string>
-    <string name="quest_fee_only_at_hours">"Sì, ma solo…"</string>
-    <string name="quest_fee_not_at_hours">"Sì, ma non…"</string>
-    <string name="quest_fee_hours_title">"ai seguenti orari:"</string>
     <string name="quest_busStopName_title">"Qual è il nome di questa fermata dell'autobus?"</string>
     <string name="quest_tramStopName_title">"Come si chiama questa fermata del tram?"</string>
     <string name="quest_housenumber_multiple_numbers">"Ha più numeri civici"</string>
@@ -1218,6 +1215,8 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_bicycle_barrier_type_title">"Che tipo di barriera per biciclette è questa?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"In diagonale"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passaggio stretto, più piccolo in alto"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Passaggio tra due barriere"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barriere su ogni lato"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - più di due barriere"</string>
@@ -1259,7 +1258,7 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_fireHydrant_position_sidewalk">"Sul marciapiede"</string>
     <string name="quest_fireHydrant_position_parking_lot">"In un parcheggio"</string>
     <string name="quest_fireHydrant_diameter_ref_title">"Qual è il diametro indicato sulla targa dell'idrante? (Numero di riferimento: %s)"</string>
-    <string name="quest_generic_hasFeature_yes_leave_note">"Si (lascia una nota)"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Sì (lascia una nota)"</string>
     <string name="quest_smoothness_name_title">"Qual è la qualità della superficie di %s qui?"</string>
     <string name="quest_smoothness_square_title">"Qual è la qualità della superficie di questa piazza?"</string>
     <string name="quest_smoothness_path_title">"Qual è la qualità della superficie di questa percorso in questo tratto?"</string>
@@ -1303,7 +1302,7 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="achievement_lifesaver_solved_X">"Hai risolto %d missioni per aiutare i servizi di emergenza e i primi soccorritori!"</string>
     <string name="quest_fuelSelfService_title">"Puoi rifornirti autonomamente di carburante in questa autostazione?"</string>
     <string name="quest_fuelSelfService_name_title">"Puoi rifornirti autonomamente di carburante da %s?"</string>
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Questa missione è disabilitata in automatico perchè è molto lunga e spesso è difficile rispondere correttamente. Dovresti abilitarla solamente se sei davvero motivato ad aggiungere questo tipo di informazioni."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Questa missione è disabilitata in automatico perché è molto lunga e spesso è difficile rispondere correttamente. Dovresti abilitarla solamente se sei davvero motivato ad aggiungere questo tipo di informazioni."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Sabbia o ghiaia molto compatta"</string>
     <string name="quest_barrier_path_intersection">"In che modo questo percorso attraversa la barriera?"</string>
     <string name="quest_barrier_road_intersection">"In che modo questa strada attraversa la barriera?"</string>
@@ -1312,7 +1311,7 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_openingHours_signed_name_title">"Sono segnati gli orari di apertura di %s?"</string>
     <string name="quest_openingHours_signed_name_type_title">"Sono segnati gli orari di apertura di %1$s (%2$s)?"</string>
     <string name="quest_openingHours_signed_no_name_title">"Sono segnati gli orari di paertura di questo luogo? (%s)"</string>
-    <string name="quest_sidewalk_value_separate">"Visualizza separatamente sulla mappa"</string>
+    <string name="quest_sidewalk_value_separate">"mostrato separatamente sulla mappa"</string>
     <string name="quest_shoulder_value_yes">"banchina"</string>
     <string name="quest_shoulder_value_no">"nessuna banchina"</string>
     <string name="no_camera_permission_warning_title">"Permessi della fotocamera"</string>
@@ -1334,7 +1333,7 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
 Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="ar_measure">"Misura"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Angolazione troppo inclinata, prova a fare qualche passo indietro"</string>
-    <string name="default_disabled_msg_no_ar">"Hai bisogno di un metro per risolvere questa missione perchè la misura tramite fotocamera non è supportata da questo dispositivo."</string>
+    <string name="default_disabled_msg_no_ar">"Hai bisogno di un metro per risolvere questa missione perché la misura tramite fotocamera non è supportata da questo dispositivo."</string>
     <string name="quest_cycleway_width_title">"Qual è la larghezza della ciclabile qui?"</string>
     <string name="quest_road_width_title">"Qual è la larghezza della strada qui?"</string>
     <string name="quest_road_width_explanation">"Larghezza della strada da un bordo del marciapiede all'altro: Sono inclusi tutti gli elementi presenti sulla carreggiata, come i parcheggi lungo la strada e le corsie ciclabili, sono invece esclusi tutti gli elementi al di fuori della carreggiata, come le piste ciclabili e i parcheggi fuori la carreggiata."</string>

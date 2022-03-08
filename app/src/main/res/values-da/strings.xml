@@ -1116,15 +1116,6 @@ Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndt
     <string name="quest_fee_add_times">"Tilføj tider"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Ja, men kun..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Ja, men ikke..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"på følgende tider:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Hvad er navnet på busstoppestedet?"</string>
 
     <!-- Fuzzy -->
@@ -2279,6 +2270,8 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_bicycle_barrier_type_title">"Hvilken type af cykelchikane er dette?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal i forhold til stien"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Indsnævring af passagen, mindre mod toppen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Passage mellem to barrierer"</string>
     <string name="quest_barrier_bicycle_type_double">"Cykelchicane - med barriere på hver side"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Cykelchicane - mere end to barrierer"</string>

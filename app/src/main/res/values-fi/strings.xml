@@ -869,15 +869,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_fee_add_times">"Lisää ajat"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Kyllä, mutta ainoastaa.."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Kyllä, mutta ei.."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"Seuraavina aikoina:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Mikä on tämän linja-autopysäkin nimi?"</string>
     <string name="quest_tramStopName_title">"Mikä on tämän raitiovaunupysäkin nimi?"</string>
 
@@ -2134,6 +2125,8 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_bicycle_barrier_type_title">"Millainen polkupyörän este tämä on?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Vinottainen suhteessa polkuun"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Kapea käytävä, pienenee ylemmäs"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Kulku kahden esteen välistä"</string>
     <string name="quest_barrier_bicycle_type_double">"sikaani - este molemmilla puolilla"</string>
     <string name="quest_barrier_bicycle_type_multiple">"sikaani - yli kaksi estettä"</string>

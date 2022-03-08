@@ -1136,15 +1136,6 @@
     <string name="quest_fee_add_times">"增加時間"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"有收費，但只在..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"有收費，但有免費時段..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"在下列時間："</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"公車站牌的名稱是什麼？"</string>
 
     <!-- Fuzzy -->
@@ -2284,6 +2275,8 @@
     <string name="quest_bicycle_barrier_type_title">"這個是什麼類型的單車障礙？"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"對角線到路徑"</string>
     <string name="quest_barrier_bicycle_type_tilted">"窄通道，越到上面越小"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"兩個障礙物間的通道"</string>
     <string name="quest_barrier_bicycle_type_double">"雙急轉彎 - 每邊的障礙物"</string>
     <string name="quest_barrier_bicycle_type_multiple">"雙急轉彎 - 超過兩個障礙物"</string>

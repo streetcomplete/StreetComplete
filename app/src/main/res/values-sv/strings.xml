@@ -445,9 +445,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_streetSurface_square_name_title">"Vilket underlag har torget %s här?"</string>
     <string name="quest_fee_answer_hours">"Beror på tid och dag…"</string>
     <string name="quest_fee_add_times">"Lägg till klockslag"</string>
-    <string name="quest_fee_only_at_hours">"Ja, men enbart…"</string>
-    <string name="quest_fee_not_at_hours">"Ja, men inte…"</string>
-    <string name="quest_fee_hours_title">"följande klockslag:"</string>
     <string name="quest_busStopName_title">"Vad heter den här busshållplatsen?"</string>
     <string name="quest_tramStopName_title">"Vad heter den här spårvagnshållplatsen?"</string>
     <string name="quest_housenumber_multiple_numbers">"Den har flera husnummer"</string>
@@ -1242,6 +1239,8 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_bicycle_barrier_type_title">"Vad för slags cykelgrind är detta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonala grindar"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Inåtlutande grindar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Passage mellan två grindar"</string>
     <string name="quest_barrier_bicycle_type_double">"Labyrintfålla - en grind på varje sida"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Labyrintfålla - tre eller fler grindar"</string>
@@ -1371,4 +1370,9 @@ Gör detta för varje sida som finns."</string>
     <string name="quest_road_width_title">"Hur bred är denna vägen här?"</string>
     <string name="quest_road_width_explanation">"Hela vägbredden från kant till kant: Detta inkluderar allt som utgör vägytan som parkering på gatan eller cykelfiler, men inte gång- och cykelbanor eller särskilt anordnad parkering vid sidan av vägen."</string>
     <string name="quest_sidewalk_answer_none">"Ingen trottoar alls"</string>
+    <string name="about_description_donate_google_play2">"Tack för att du vill stödja den här appen!
+Tyvärr har Google Play Store beslutat att inga länkar till donationer får visas i appen, inte ens en länk till vår hemsida."</string>
+    <string name="link_osmand_description">"Mobilapp för kartor och navigation, både online och offline"</string>
+    <string name="link_sunders_description">"En karta med övervakningskameror och -utrustning"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Håll dig nära pilen men se upp för trafik!"</string>
 </resources>

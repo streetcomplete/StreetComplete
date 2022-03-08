@@ -1115,15 +1115,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_fee_add_times">"Voeg de tijden toe"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Ja, maar alleen...."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Ja, maar niet..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"op de volgende tijden:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Wat is de naam van deze bushalte?"</string>
 
     <!-- Fuzzy -->
@@ -2498,6 +2489,8 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_bicycle_barrier_type_title">"Welk soort fietssluis is dit?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonaal over het pad"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Smalle doorgang, nauwer naar boven toe."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Doorgang tussen twee hekken"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - doorgang tussen twee hekken"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - doorgang door meer dan 2 hekken"</string>
@@ -2615,4 +2608,13 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_bicycle_parking_access_title2">"Wie mag hier een fiets stallen? Parkeren kan gratis of betaald zijn."</string>
     <string name="quest_playground_access_title2">"Wie mag deze speeltuin gebruiken?"</string>
     <string name="quest_fireHydrant_position_ref_title">"Waar staat deze brandkraan? (referentienummer: %s) "</string>
+    <string name="quest_sidewalk_answer_none_title">"Keuze voor ontbrekende trottoirs"</string>
+    <string name="quest_side_select_interface_explanation">"Tik op een zijde en kies het bijpassende antwoord.
+Doe hetzelfde voor de andere zijde, als aanwezig."</string>
+    <string name="ar_measure">"Meet"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Te steile hoek, loop iets verder weg"</string>
+    <string name="default_disabled_msg_no_ar">"Je hebt een meetlint nodig om deze vraag te beantwoorden, omdat meten met de camera niet ondersteund is op dit apparaat."</string>
+    <string name="quest_cycleway_width_title">"Hoe breed is dit fietspad hier?"</string>
+    <string name="quest_road_width_title">"Hoe breed is deze weg hier?"</string>
+    <string name="quest_sidewalk_answer_none">"Helemaal geen trottoir"</string>
 </resources>

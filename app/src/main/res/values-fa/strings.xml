@@ -1089,15 +1089,6 @@
     <string name="quest_fee_add_times">"افزودن زمان"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"بله، ولی فقط ..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"بله، ولی نه ..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"در زمان دیگر"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"نام این ایستگاه اتوبوس چیست؟"</string>
 
     <!-- Fuzzy -->
@@ -2465,6 +2456,8 @@
     <string name="quest_bicycle_barrier_type_title">"محدودیت مسیر دوچرخه از چه نوعی است؟"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"عبور از یک مسیر خاص"</string>
     <string name="quest_barrier_bicycle_type_tilted">"گذرگاه باریک، رو به جلو تنگ شونده"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"عبور از بین دو مانع"</string>
     <string name="quest_barrier_bicycle_type_double">"مانع - مانع در هر طرف"</string>
     <string name="quest_barrier_bicycle_type_multiple">"مانع - بیش از دو مانع"</string>
@@ -2587,11 +2580,40 @@
     <!-- Fuzzy -->
     <string name="quest_side_select_interface_explanation">"روی هر طرف ضربه بزنید و وضعیت آن طرف را انتخاب کنید.
 در صورت وجود همین کار را برای طرف دیگر انجام دهید."</string>
-    <string name="ar_measure">"اندازه گیری"</string>
+    <string name="ar_measure">"اندازه‌گیری"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"زاویه خیلی تند، کمی فاصله بگیرید"</string>
-    <string name="default_disabled_msg_no_ar">"برای حل این چالش به یک متر نوار نیاز دارید زیرا اندازه‌گیری با دوربین در این دستگاه پشتیبانی نمی‌شود."</string>
-    <string name="quest_cycleway_width_title">"عرض این مسیر دوچرخه در اینجا چقدر است؟"</string>
-    <string name="quest_road_width_title">"پهنای این جاده اینجا چقدر است؟"</string>
-    <string name="quest_road_width_explanation">"عرض جاده از حاشیه به حاشیه: این شامل هر چیزی در سطح خیابان مانند پارکینگ در خیابان یا خطوط دوچرخه است، اما هر چیزی فراتر از آن مانند مسیرهای دوچرخه‌سواری یا پارک در کنار جاده را حذف می‌کند."</string>
+    <string name="default_disabled_msg_no_ar">"برای حل این چالش به یک متر نواری نیاز دارید زیرا اندازه‌گیری با دوربین در این دستگاه پشتیبانی نمی‌شود."</string>
+    <string name="quest_cycleway_width_title">"پهنای این مسیر دوچرخه‌سواری در اینجا چقدر است؟"</string>
+    <string name="quest_road_width_title">"پهنای این جاده در اینجا چقدر است؟"</string>
+    <string name="quest_road_width_explanation">"عرض جاده از حاشیه تا حاشیه: این شامل هر چیزی در سطح خیابان مانند جای پارک در خیابان یا خطوط دوچرخه‌سواری است، اما هر چیزی فراتر از آن مانند مسیرهای دوچرخه‌سواری یا پارک در کنار جاده را حذف می‌کند."</string>
     <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
+    <string name="about_description_donate_google_play2">"باتشکر از شما برای حمایت از این برنامه!
+متأسفانه، به دلیل خط‌مشی فروشگاه Google Play، هیچ پیوندی که منجر به کمک مالی شود ممکن است در برنامه نمایش داده نشود. در این زمینه، حتی لینک دادن به صفحه اصلی پروژه ما مجاز نیست."</string>
+    <string name="link_osmand_description">"اپلیکیشن موبایل برای مشاهده و پیمایش نقشه آنلاین و آفلاین"</string>
+    <string name="link_sunders_description">"نقشه دوربین‌ها و تجهیزات نظارتی"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"به پیکان نزدیک‌تر باشید، اما مراقب ترافیک باشید!"</string>
+    <string name="quest_sidewalk_surface_title">"جنس سطح این پیاده‌رو چیست؟"</string>
+    <string name="quest_tactilePaving_incorrect">"فقط در یک طرف"</string>
+    <string name="quest_fee_answer_yes_but">"بله، …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"نه، اما یک مدت زمان حداکثر وجود دارد…"</string>
+    <string name="unit_days">"روزها"</string>
+    <string name="unit_hours">"ساعت‌ها"</string>
+    <string name="unit_minutes">"دقیقه‌ها"</string>
+    <string name="at_any_time">"در هر زمانی"</string>
+    <string name="only_at_hours">"فقط در زمان‌های زیر:"</string>
+    <string name="except_at_hours">"به جز زمان‌های زیر:"</string>
+    <string name="quest_bollard_type_not_bollard">"نه یک ستون، بلکه یک مانع دیگر"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"نه یک مانع چرخان، بلکه یک مانع دیگر"</string>
+    <string name="quest_smoking_no_name_title">"آیا کشیدن سیگار در این مکان (%s) مجاز است؟"</string>
+    <string name="quest_smoking_name_type_title">"آیا کشیدن سیگار در %1$s (%2$s) مجاز است؟"</string>
+    <string name="quest_smoking_no">"نه، ممنوع"</string>
+    <string name="quest_smoking_outside">"فقط در بیرون"</string>
+    <string name="quest_smoking_separated">"فقط در مناطق جدا شده"</string>
+    <string name="quest_smoking_yes">"بله، در همه جا"</string>
+    <string name="quest_seating_name_title">"این مکان چه نوع صندلی دارد؟"</string>
+    <string name="quest_seating_takeaway">"فقط غذای آماده"</string>
+    <string name="quest_seating_indoor_only">"فقط صندلی‌های داخل ساختمان"</string>
+    <string name="quest_seating_outdoor_only">"فقط صندلی در فضای باز"</string>
+    <string name="quest_seating_indoor_and_outdoor">"هم در فضای داخلی و هم در فضای باز"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"این نوع جستجو به‌طور پیش‌فرض غیرفعال است، زیرا ممکن است برای تأیید صندلی در فضای باز، در بخش خاصی از سال بررسی شود."</string>
 </resources>

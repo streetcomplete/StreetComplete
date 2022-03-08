@@ -1134,15 +1134,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fee_add_times">"時間を追加"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"はい。しかし次のみ…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"はい。しかし次ではなく…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"次の時間に:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"このバス停の名前は何ですか?"</string>
 
     <!-- Fuzzy -->

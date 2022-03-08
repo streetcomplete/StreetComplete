@@ -1124,15 +1124,6 @@
     <string name="quest_fee_add_times">"സമയം ചേര്‍ക്കുക"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"അതെ, ഈ സമയങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"അല്ല, ഈ സമയങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"ഈ പറയുന്ന സമയങ്ങളിൽ:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"ഈ ബസ് സ്റ്റോപ്പിൻ്റെ പേര് എന്താണ്?"</string>
 
     <!-- Fuzzy -->

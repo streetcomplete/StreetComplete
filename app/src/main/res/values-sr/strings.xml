@@ -437,9 +437,6 @@
     <string name="quest_streetSurface_square_name_title">"Каква је површина трга %s овде?"</string>
     <string name="quest_fee_answer_hours">"Зависи од сата и дана…"</string>
     <string name="quest_fee_add_times">"Додај време"</string>
-    <string name="quest_fee_only_at_hours">"Да, али само…"</string>
-    <string name="quest_fee_not_at_hours">"Да, али не…"</string>
-    <string name="quest_fee_hours_title">"у ово време:"</string>
     <string name="quest_busStopName_title">"Како се зове ова аутобуска станица?"</string>
     <string name="quest_tramStopName_title">"Како се зове ова трамвајска станица?"</string>
     <string name="quest_housenumber_multiple_numbers">"Има више кућних бројева"</string>
@@ -1187,6 +1184,8 @@
     <string name="quest_bicycle_barrier_type_title">"Која је врста ове бициклистичке препреке?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Дијагонална у односу на стазу"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Уски пролаз који се сужава ка врху"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Пролаз између две препреке"</string>
     <string name="quest_barrier_bicycle_type_double">"Намерно скретање (шикана) – препрека са обе стране"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Намерно скретање (шикана) – више од две препреке"</string>

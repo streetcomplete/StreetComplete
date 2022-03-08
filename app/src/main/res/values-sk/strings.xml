@@ -1041,15 +1041,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_fee_add_times">"Pridať časy"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Áno, ale iba…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Áno, ale nie…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"v nasledovných časoch:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Ako sa volá táto autobusová zastávka?"</string>
 
     <!-- Fuzzy -->
@@ -1414,9 +1405,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Ďalej"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_title">"Aká je pevnosť povrchu tejto cesty?"</string>
+    <string name="quest_tracktype_title">"Aký pevný je povrch tejto cesty?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Pevný"</string>
@@ -2400,6 +2389,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_bicycle_barrier_type_title">"Aký je toto typ prekážky pre cyklistov?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonálne vzhľadom na chodník"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Zúžený prejazd, menší hore"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Priechod medzi dvoma prekážkami"</string>
     <string name="quest_barrier_bicycle_type_double">"Šikana - prekážka na každej strane"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana - viac ako dve prekážky"</string>

@@ -446,9 +446,6 @@
     <string name="quest_streetSurface_square_name_title">"%s አደባባዪ ምን ገጽ አለው?"</string>
     <string name="quest_fee_answer_hours">"በሰዓት እና በቀን ሚወሰን…"</string>
     <string name="quest_fee_add_times">"ጊዜዎችን ያክሉ"</string>
-    <string name="quest_fee_only_at_hours">"አዎ ፣ ግን ለ ..."</string>
-    <string name="quest_fee_not_at_hours">"አዎ ፣ ግን አይደለም…"</string>
-    <string name="quest_fee_hours_title">"በሚቀጥሉት ሰዐታት"</string>
     <string name="quest_busStopName_title">"የዚህ አውቶቡስ ማቆሚያ ስሙ ማን ነው?"</string>
     <string name="quest_tramStopName_title">"የዚህ የጎዳና መኪና ማቆሚያ ስም ማን ነው?"</string>
     <string name="quest_housenumber_multiple_numbers">"በርካታ የቤት ቁጥሮች አሉት"</string>

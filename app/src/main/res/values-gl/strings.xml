@@ -431,9 +431,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_streetSurface_square_name_title">"Que tipo de superficie ten a praza «%s»?"</string>
     <string name="quest_fee_answer_hours">"Depende do día e da hora…"</string>
     <string name="quest_fee_add_times">"Engadir horas"</string>
-    <string name="quest_fee_only_at_hours">"Si, pero só…"</string>
-    <string name="quest_fee_not_at_hours">"Si, menos…"</string>
-    <string name="quest_fee_hours_title">"a estas horas:"</string>
     <string name="quest_busStopName_title">"Cal é o nome desta paraxe do bus?"</string>
     <string name="quest_tramStopName_title">"Cal é o nome desta paraxe do tranvía?"</string>
     <string name="quest_housenumber_multiple_numbers">"Ten varios números"</string>

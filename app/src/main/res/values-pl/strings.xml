@@ -703,15 +703,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_fee_add_times">"Dodaj godziny"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Tak, ale tylko..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Tak, ale nie..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"w tych godzinach:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Jaka jest nazwa tego przystanku autobusowego?"</string>
 
     <!-- Fuzzy -->
@@ -2041,6 +2032,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_bicycle_barrier_type_title">"Jaki to rodzaj barierki rowerowej?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Ukośnie do ścieżki"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Wąskie przejście, węższe ku górze"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Przejście między dwoma barierami"</string>
     <string name="quest_barrier_bicycle_type_double">"Szykana - barierka z każdej strony"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Szykana - więcej niż dwie barierki"</string>

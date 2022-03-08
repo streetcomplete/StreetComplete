@@ -1133,15 +1133,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_fee_add_times">"Añader hores"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Sí, pero namái..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Sí, sacante..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"a estes hores:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"¿Cuálu ye'l nome d'esta parada d'autobús?"</string>
 
     <!-- Fuzzy -->

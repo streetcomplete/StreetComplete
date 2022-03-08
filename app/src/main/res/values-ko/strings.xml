@@ -1022,15 +1022,6 @@
     <string name="quest_fee_add_times">"시간 추가"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"예, 그러나 다음만 해당…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"예, 그러나 다음은 해당하지 않음…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"이 시간에만:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"이 버스 정류장의 이름은 무엇인가요?"</string>
 
     <!-- Fuzzy -->
@@ -2162,6 +2153,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_bicycle_barrier_type_title">"이 자전거 방벽은 어떻게 생겼나요?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"대각선 방향"</string>
     <string name="quest_barrier_bicycle_type_tilted">"좁은 통로, 위로 갈수록 좁아짐"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"두 방벽 사이의 통로"</string>
     <string name="quest_barrier_bicycle_type_double">"시케인 - 양쪽에 방벽이 있음"</string>
     <string name="quest_barrier_bicycle_type_multiple">"시케인 - 방벽이 세 개 이상 있음"</string>

@@ -1056,15 +1056,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_fee_add_times">"Přidat časy"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Ano, ale jen..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Ano, ale ne..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"v následujících časech:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Jaké je jméno této autobusové zastávky?"</string>
 
     <!-- Fuzzy -->
@@ -2474,6 +2465,8 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_bicycle_barrier_type_title">"Jaký je tohle druh překážky bránící cyklistům v průjezdu?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonální vzhledem k cestě"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Zúžený průjezd, menší nahoře"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Průjezd mezi dvěma přkážkami"</string>
     <string name="quest_barrier_bicycle_type_double">"Šikana – překážka na každé straně"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana – více než dvě překážky"</string>

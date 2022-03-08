@@ -452,9 +452,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_streetSurface_square_name_title">"Kakvu površinu trg %s ima ovdje?"</string>
     <string name="quest_fee_answer_hours">"Ovisi o satu i danu..."</string>
     <string name="quest_fee_add_times">"Dodaj vremena"</string>
-    <string name="quest_fee_only_at_hours">"Naplaćuje, ali samo..."</string>
-    <string name="quest_fee_not_at_hours">"Naplaćuje, ali ne..."</string>
-    <string name="quest_fee_hours_title">"u sljedeća vremena:"</string>
     <string name="quest_busStopName_title">"Kako se zove ova autobusna stanica?"</string>
     <string name="quest_tramStopName_title">"Kako se zove ova tramvajska stanica?"</string>
     <string name="quest_housenumber_multiple_numbers">"Ima više kućnih brojeva"</string>

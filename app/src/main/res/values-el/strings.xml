@@ -1142,15 +1142,6 @@
     <string name="quest_fee_add_times">"Προσθέστε ώρες"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Ναι, αλλά μόνο..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Ναι, αλλά όχι..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"στις ακόλουθες ώρες:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Ποιο είναι το όνομα αυτής της στάσης λεωφορείου;"</string>
 
     <!-- Fuzzy -->
@@ -2309,6 +2300,8 @@
     <string name="quest_bicycle_barrier_type_title">"Τι είδους μπάρα για ποδήλατα είναι αυτή;"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Κάθετα προς το μονοπάτι"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Στενό πέρασμα, μικρότερο προς τα πάνω"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Πέρασμα ανάμεσα σε δύο μπάρες"</string>
     <string name="quest_barrier_bicycle_type_double">"Σικέιν - μπάρες σε κάθε πλευρά"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Σικέιν - περισσότερες από δύο μπάρες"</string>

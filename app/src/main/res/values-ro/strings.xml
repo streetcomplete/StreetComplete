@@ -605,9 +605,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_streetSurface_square_name_title">"Ce timp de suprafață are piața %s aici?"</string>
     <string name="quest_fee_answer_hours">"Depinde de timp și zi ..."</string>
     <string name="quest_fee_add_times">"Adăugați orele"</string>
-    <string name="quest_fee_only_at_hours">"Da, dar numai ..."</string>
-    <string name="quest_fee_not_at_hours">"Da, dar nu ..."</string>
-    <string name="quest_fee_hours_title">"la următoarele ore:"</string>
     <string name="quest_busStopName_title">"Care este numele acestei stații de autobuz?"</string>
     <string name="quest_tramStopName_title">"Care este numele acestei stații de tramvai?"</string>
     <string name="quest_housenumber_multiple_numbers">"Are mai multe numere de imobil"</string>
@@ -1418,5 +1415,7 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_bicycle_barrier_type_title">"Ce tip de barieră pentru biciclete este aceasta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal pe sensul de mers"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Pasaj îngustat, mai mic în partea de sus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Trecere între două bariere"</string>
 </resources>

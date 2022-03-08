@@ -916,15 +916,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_fee_add_times">"Zaman ekle"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Evet, ama sadece…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Evet, ama hayır…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"aşağıdaki zamanlarda:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Bu otobüs durağının adı nedir?"</string>
 
     <!-- Fuzzy -->

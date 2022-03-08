@@ -1073,11 +1073,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Időpontok hozzáadása"</string>
-    <string name="quest_fee_only_at_hours">"Igen, de csak…"</string>
-    <string name="quest_fee_not_at_hours">"Igen, de nem…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"ezekben az időpontokban:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Mi a neve ennek a buszmegállónak?"</string>
@@ -2451,6 +2446,8 @@ megállóban?"</string>
     <string name="quest_bicycle_barrier_type_title">"Ez milyen típusú kerékpáros akadály?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Az ösvényre átlósan"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Keskeny átjáró, fölfelé keskenyedik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Átjáró két akadály között"</string>
     <string name="quest_barrier_bicycle_type_double">"S-kanyar mindkét oldalon akadállyal"</string>
     <string name="quest_barrier_bicycle_type_multiple">"S-kanyar legalább három akadállyal"</string>
@@ -2556,5 +2553,16 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="ar_core_tracking_error_excessive_motion">"Túl sok mozgás"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Elégtelen vizuális jellemzők"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"A kamerát egy másik alkalmazás használja"</string>
+    <string name="quest_bicycle_parking_access_title2">"Ki parkolhat a biciklijével? A parkolás lehet ingyenes vagy fizetős."</string>
+    <string name="quest_playground_access_title2">"Ki használhatja a játszóteret?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Hol van a tűzcsap? (azonosítószám: %s)"</string>
+    <string name="quest_sidewalk_answer_none_title">"Hiányzó gyalogjárda"</string>
+    <string name="quest_cycleway_width_title">"Mekkora a bicikliút szélessége?"</string>
+    <string name="quest_road_width_title">"Mekkora az út szélessége?"</string>
+    <string name="quest_road_width_explanation">"Az úttest szélessége a két járdaszegély között: Ebben benne van a parkolónak használt rész és a kerékpársáv, de nem tartalmazza az azon túli részeket, mint például a külön kerékpárutat vagy az úttest melletti parkolót."</string>
+    <string name="quest_sidewalk_answer_none">"Egyáltalán nincs járda"</string>
+    <string name="about_description_donate_google_play2">"Köszönjük, hogy támogatod ezt az alkalmazást!
+Sajnos a Google Play Áruház politikája miatt az alkalmazásban nem jeleníthetők meg adományozásra vezető linkek. Még a projekt honlapjára mutató hivatkozás sem megengedett."</string>
     <string name="link_osmand_description">"Telefonos app online és offline térpépböngészéshez és navigációhoz"</string>
+    <string name="link_sunders_description">"Megfigyelő kamerák térképe"</string>
 </resources>

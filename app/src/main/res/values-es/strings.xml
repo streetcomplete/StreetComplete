@@ -880,15 +880,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_fee_add_times">"Añadir horas"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Sí, pero solo…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Sí, menos…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"a estas horas:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"¿Cuál es el nombre de esta parada de autobús?"</string>
 
     <!-- Fuzzy -->
@@ -2210,6 +2201,8 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_bicycle_barrier_type_title">"¿Sabes qué tipo de obstáculo para el paso de bicis es?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Obstáculo diagonal en la vía"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Cruce estrecho, estrechándose por arriba"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Cruce entre dos obstáculos"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane; un bloque a cada lado"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane; de tres bloques o más"</string>

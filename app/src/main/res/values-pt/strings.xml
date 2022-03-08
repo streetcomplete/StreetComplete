@@ -544,9 +544,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_streetSurface_square_name_title">"Qual é o tipo de pavimento da praça %s?"</string>
     <string name="quest_fee_answer_hours">"Depende da hora e dia…"</string>
     <string name="quest_fee_add_times">"Adicionar horário"</string>
-    <string name="quest_fee_only_at_hours">"Sim, mas apenas..."</string>
-    <string name="quest_fee_not_at_hours">"Sim, exceto..."</string>
-    <string name="quest_fee_hours_title">"no seguinte horário:"</string>
     <string name="quest_busStopName_title">"Qual é o nome desta paragem de autocarro?"</string>
     <string name="quest_tramStopName_title">"Qual é o nome desta paragem de elétrico?"</string>
     <string name="quest_housenumber_multiple_numbers">"Tem vários números de porta"</string>

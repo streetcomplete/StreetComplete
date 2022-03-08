@@ -453,9 +453,6 @@
     <string name="quest_streetSurface_square_name_title">"Каква настилка има площад %s?"</string>
     <string name="quest_fee_answer_hours">"Зависи от деня и часа"</string>
     <string name="quest_fee_add_times">"Добавете времена"</string>
-    <string name="quest_fee_only_at_hours">"Да, но само..."</string>
-    <string name="quest_fee_not_at_hours">"Да, но не и..."</string>
-    <string name="quest_fee_hours_title">"в следните часове:"</string>
     <string name="quest_busStopName_title">"Какво е името на тази спирка?"</string>
     <string name="quest_tramStopName_title">"Какво е името на тази трамвайна спирка?"</string>
     <string name="quest_housenumber_multiple_numbers">"Има няколко номера"</string>
@@ -1246,6 +1243,8 @@
     <string name="quest_bicycle_barrier_type_title">"Какъв тип бариера за велосипеди е това?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Диагонална на пътя"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Стеснение на пътя (по посока на движението)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Преминаване през две бариери"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикан - бариери от двете страни"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикан - повече от 2 бариери"</string>
@@ -1255,4 +1254,12 @@
     <string name="pref_title_language_select">"Изберете език"</string>
     <string name="language_default">"По подразбиране от системата"</string>
     <string name="on_floor">"на етаж %s:"</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Тук е твърде тъмно"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Камерата се ползва от друго приложение"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Къде е разположен пожарния хидрант? (номер: %s)"</string>
+    <string name="default_disabled_msg_no_ar">"Трябва да използвате рулетка или друго средство, измерването с камерата не се поддържа от това устройство."</string>
+    <string name="quest_cycleway_width_title">"Каква е ширината на тази велосипедна алея?"</string>
+    <string name="quest_sidewalk_answer_none">"Изобщо няма тротоари"</string>
+    <string name="link_osmand_description">"Мобилно приложение за карти и навигация в онлайн и офлайн режим"</string>
+    <string name="link_sunders_description">"Карта на камерите и други наблюдаващи устройства"</string>
 </resources>

@@ -656,15 +656,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Добавьте время"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Да, но только если…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Да, кроме как…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"в такие часы:"</string>
     <string name="quest_busStopName_title">"Какое название у автобусной остановки?"</string>
 
     <!-- Fuzzy -->
@@ -1391,7 +1382,7 @@
     <string name="quest_steps_ramp_wheelchair">"Пандус для инвалидных колясок"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_atm_operator_title">"Как называется банк этого банкомата?"</string>
+    <string name="quest_atm_operator_title">"Какому банку принадлежит банкомат?"</string>
     <string name="quest_clothes_container_operator_title">"Куда идёт пожертвованная здесь одежда?"</string>
     <string name="quest_charging_station_operator_title">"Кто является оператором этой зарядной станции?"</string>
     <string name="link_indoorequal_description">"Откройте для себя карты торговых центров, вокзалов и т.п."</string>
@@ -1403,7 +1394,7 @@
     <string name="achievement_outdoors_solved_X">"Вы выполнили %d квестов, полезных для любителей активного отдыха!"</string>
     <string name="quest_pedestrian_crossing_island">"Есть ли у этого пешеходного перехода островок безопасности?"</string>
     <string name="quest_generic_answer_noSign">"Здесь нет знака"</string>
-    <string name="quest_steps_ramp_separate_wheelchair">"Отображается ли пандус для инвалидных калясок на карте как отдельная дорога?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Отображается ли пандус для инвалидных колясок на карте как отдельная дорога?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"отдельный"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"не отдельный"</string>
     <string name="pref_title_sync2">"Загружать ответы автоматически"</string>
@@ -1695,7 +1686,7 @@
     <string name="short_no_answer_on_button">"Нет"</string>
     <string name="restore_confirmation">"Восстановить"</string>
     <string name="restore_dialog_message">"Восстановить все скрытые вами вопросы?"</string>
-    <string name="quest_parking_access_title2">"Кому здесь назрешено парковаться? Парковка модет быть свободной или платной. "</string>
+    <string name="quest_parking_access_title2">"Кому здесь разрешено парковаться? Парковка может быть свободной или платной."</string>
     <string name="quest_access_yes">"Любой представитель широкой общественности"</string>
     <string name="quest_access_customers">"Любое лицо, посещающее определённое место (например, только клиенты)"</string>
     <string name="quest_access_private">"Только физическое лицо (лица) с разрешением"</string>
@@ -1707,6 +1698,8 @@
     <string name="quest_bicycle_barrier_type_title">"Что это за велосипедный барьер?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"По диагонали к дорожке"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Узкий проход, уменьшающийся к вершине"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Проход между двумя барьерами"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикана - барьер на каждой стороне"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикана - больше двух барьеров"</string>
@@ -1809,11 +1802,43 @@
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_solved_X">"Вы решили %d квестов помогающих службам спасения!"</string>
     <string name="quest_fuelSelfService_title">"Можете ли вы сами заправиться бензином на этой заправке?"</string>
+    <string name="quest_fuelSelfService_name_title">"Вы можете самостоятельно заливать топливо в %s?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Этот тип квеста по умолчанию отключен, потому что он занимает довольно много времени и часто сложно сделать правильный выбор. Вы можете включить этот тип квеста только в том случае, если вы действительно намерены добавить эти данные."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Плотно утрамбованный, очень мало рыхлого гравия или песка"</string>
     <string name="quest_barrier_path_intersection">"Как этот путь пересекает здесь барьер?"</string>
     <string name="quest_barrier_road_intersection">"Как эта дорога пересекает здесь барьер?"</string>
     <string name="quest_airConditioning_no_name_title">"Это место (%s) оснащено кондиционером?"</string>
+    <string name="quest_airConditioning_name_type_title">"В %1$s (%2$s) есть кондиционер?"</string>
+    <string name="quest_openingHours_signed_name_title">"Для %s отмечены часы работы?"</string>
+    <string name="quest_openingHours_signed_name_type_title">"Для %1$s (%2$s) отмечены часы работы?"</string>
+    <string name="quest_openingHours_signed_no_name_title">"Для этого места отмечены часы работы? (%s)"</string>
+    <string name="quest_sidewalk_value_separate">"показано отдельно на карте"</string>
+    <string name="quest_shoulder_value_yes">"обочина"</string>
+    <string name="quest_shoulder_value_no">"нет обочины"</string>
+    <string name="no_camera_permission_warning">"Разрешение нужно для того, чтобы делать картинки и для измерения дистанции с помощью камеры."</string>
     <string name="ar_core_error_sdk_too_old">"Это приложение устарело, попробуйте обновить."</string>
+    <string name="ar_core_tracking_error_bad_state">"Что-то пошло не так. Попробуйте перезапустить измерение."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"Слишком темно"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"Слишком много движений"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"Здесь мало визуальных функций"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Камера используется другим приложением"</string>
+    <string name="quest_bicycle_parking_access_title2">"Кто может парковать здесь свой велосипед? Парковка может быть платной или бесплатной."</string>
+    <string name="quest_playground_access_title2">"Кто может использовать эту игровую площадку?"</string>
+    <string name="quest_fireHydrant_position_ref_title">"Где находится этот пожарный гидрант? (№%s)"</string>
+    <string name="ar_measure">"Измерить"</string>
+    <string name="default_disabled_msg_no_ar">"Необходимо ручное измерение для того чтобы решить этот квест потому что измерение с помощью камеры не поддерживается на этом устройстве."</string>
+    <string name="quest_cycleway_width_title">"Какова ширина этой велосипедной дорожки?"</string>
+    <string name="quest_road_width_title">"Какова ширина этой дороги?"</string>
+    <string name="quest_sidewalk_answer_none">"Вообще нет дороги"</string>
+    <string name="about_description_donate_google_play2">"Спасибо за решение поддержать это приложение!
+К несчастью, из-за политики Google Play Store, мы не можем "</string>
+    <string name="link_osmand_description">"Мобильное приложение для онлайн и оффлайн просмотра карт и навигации
+"</string>
+    <string name="link_sunders_description">"Карта камер и "</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Будьте ближе к дороге, но следите за трафиком!
+"</string>
+    <string name="quest_fee_answer_yes_but">"Да, ..."</string>
+    <string name="unit_days">"дней"</string>
+    <string name="unit_hours">"часов"</string>
+    <string name="unit_minutes">"минут"</string>
 </resources>
