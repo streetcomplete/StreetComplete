@@ -214,6 +214,8 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             val reason = result.reason
             if (reason == ArNotAvailableReason.AR_CORE_SDK_TOO_OLD) {
                 toast(R.string.ar_core_error_sdk_too_old)
+            } else if (reason == ArNotAvailableReason.NO_CAMERA_PERMISSION) {
+                toast(R.string.no_camera_permission_toast)
             }
             // otherwise nothing we can do here...
             finish()
