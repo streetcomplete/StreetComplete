@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
-enum class BicycleBarrierType(val osmValue: String) {
+sealed interface BicycleBarrierTypeAnswer
+
+enum class BicycleBarrierType(val osmValue: String) : BicycleBarrierTypeAnswer {
     SINGLE("single"),
     DOUBLE("double"),
     TRIPLE("triple"),
     DIAGONAL("diagonal"),
     TILTED("tilted"),
-    NOT_CYCLE_BARRIER("not_cycle_barrier"),
 }
+
+object BarrierTypeIsNotBicycleBarrier : BicycleBarrierTypeAnswer
