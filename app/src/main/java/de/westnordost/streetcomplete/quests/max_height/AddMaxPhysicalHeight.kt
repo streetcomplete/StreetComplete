@@ -78,6 +78,5 @@ class AddMaxPhysicalHeight(
         } else {
             tags.remove("source:maxheight")
         }
-
     }
 }
