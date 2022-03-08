@@ -135,13 +135,17 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
         val result = mutableListOf<Contributor>()
         val contributorsByGithubUsername = contributors.groupBy { it.githubUsername }
         for ((githubUsername, contributor) in contributorsByGithubUsername) {
-            result.add(Contributor(
-                name = contributor.maxByOrNull { it.lastChangeTimestamp }!!.name,
-                githubUsername = githubUsername,
-                linesOfCodeChanged = contributor.sumOf { it.linesOfCodeChanged },
-                linesOfInterfaceMarkupChanged = contributor.sumOf { it.linesOfInterfaceMarkupChanged },
-                assetFilesChanged = contributor.sumOf { it.assetFilesChanged }
-            ))
+            if (githubUsername == null) {
+                result.addAll(contributor)
+            } else {
+                result.add(Contributor(
+                    name = contributor.maxByOrNull { it.lastChangeTimestamp }!!.name,
+                    githubUsername = githubUsername,
+                    linesOfCodeChanged = contributor.sumOf { it.linesOfCodeChanged },
+                    linesOfInterfaceMarkupChanged = contributor.sumOf { it.linesOfInterfaceMarkupChanged },
+                    assetFilesChanged = contributor.sumOf { it.assetFilesChanged }
+                ))
+            }
         }
         return result
     }
