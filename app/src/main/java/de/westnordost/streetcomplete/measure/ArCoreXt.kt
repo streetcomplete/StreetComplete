@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.measure
 import android.content.Context
 import com.google.ar.core.ArCoreApk
 import com.google.ar.core.Frame
-import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.core.Pose
 import com.google.ar.core.TrackingFailureReason
@@ -20,10 +19,6 @@ import de.westnordost.streetcomplete.R
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.atan2
-
-fun Frame.hitPlane(xPx: Float, yPx: Float): HitResult? =
-    hitTest(xPx, yPx)
-        .firstOrNull { (it.trackable as? Plane)?.isPoseInPolygon(it.hitPose) == true }
 
 fun Frame.hasFoundPlane(): Boolean =
     getUpdatedTrackables(Plane::class.java).any { it.trackingState == TRACKING }

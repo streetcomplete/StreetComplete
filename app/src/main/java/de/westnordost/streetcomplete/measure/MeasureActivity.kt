@@ -16,6 +16,7 @@ import androidx.core.view.isInvisible
 import androidx.lifecycle.lifecycleScope
 import com.google.ar.core.Config
 import com.google.ar.core.HitResult
+import com.google.ar.core.Plane
 import com.google.ar.core.Pose
 import com.google.ar.core.Session
 import com.google.ar.core.TrackingState.TRACKING
@@ -68,6 +69,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private var firstNode: AnchorNode? = null
     private var secondNode: Node? = null
     private var cursorNode: AnchorNode? = null
+    private var currentPlane: Plane? = null
 
     private var measureVertical: Boolean = false
     private var displayUnit: MeasureDisplayUnit = MeasureDisplayUnitMeter(2)
@@ -166,9 +168,17 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             } else {
                 val centerX = binding.arSceneViewContainer.width / 2f
                 val centerY = binding.arSceneViewContainer.height / 2f
-                val hitResult = frame.hitPlane(centerX, centerY)
+                val hitResults = frame.hitTest(centerX, centerY).filter {
+                    (it.trackable as? Plane)?.isPoseInPolygon(it.hitPose) == true
+                }
+                val hitResult = if (firstNode == null) {
+                    hitResults.firstOrNull()
+                } else {
+                    hitResults.find { it.trackable == currentPlane }
+                }
 
                 if (hitResult != null) {
+                    currentPlane = hitResult.trackable as Plane
                     updateCursor(hitResult)
                     setTrackingError(null)
                 } else {
@@ -312,6 +322,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         firstNode?.anchor?.detach()
         firstNode?.setParent(null)
         firstNode = null
+        currentPlane = null
         (secondNode as? AnchorNode)?.anchor?.detach()
         secondNode?.setParent(null)
         secondNode = null
