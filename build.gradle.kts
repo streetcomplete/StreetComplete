@@ -59,10 +59,37 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     noteQuestFile = sourceDirectory.resolve("data/osmnotes/notequests/OsmNoteQuestType.kt")
 }
 
+tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
+    group = "streetcomplete"
+    skipCommits = setOf(
+        "ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616", // some weird force-merge or something
+        "f3bc67328c3be989835e44eb33e769f49da479e1", // just a large re-import of orchard-produce images
+        "9c6d3e25216d06a2c5afa71086949e1e195de926", // mechanical linting
+        "1908fc930397c17739e60c8da67f968361f52e89", // mechanical linting
+        "74b6424d3310f62a5c0f7b0071ee81c2308db4f6", // mechanically optimized all graphics in the repo back then
+        "4282c1e812764a2bb46c17bbdb0fd98aee598e83", // deletion of adding too many files prior
+        "a64d57efc3d8d51c564365088772fdac528ab069",  // deletion of adding too many files prior
+        "7fb216b8360ee85d84b36ad3fb0b0ea0ebf9977d",  // mechanical linting
+        "21aa1deabae7a563ba1475094f372590fb33d784",  // mechanical linting
+    )
+    skipCommitRegex = Regex(".*\\b(lint|linter)\\b.*", RegexOption.IGNORE_CASE)
+    targetFile = "$projectDir/app/src/main/res/raw/credits_contributors.json"
+    // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
+    codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
+    /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated
+       via gradle tasks */
+    assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$", RegexOption.IGNORE_CASE)
+    /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
+       via gradle tasks */
+    interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
+    githubApiToken = properties["GithubApiToken"] as String
+}
+
 tasks.register("updateStreetCompleteData") {
     group = "streetcomplete"
     dependsOn(
         "updateStoreDescriptions",
+        "updateContributorStatistics",
         // "updateChargingStationOperators",
         // "updateClothesContainerOperators",
         // "updateAtmOperators",
