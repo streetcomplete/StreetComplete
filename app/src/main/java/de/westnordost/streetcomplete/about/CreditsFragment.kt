@@ -64,7 +64,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 
     private suspend fun readMainContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_main).map(::withLinkToGithubAccount)
+        resources.getYamlObject<List<Contributor>>(R.raw.credits_main).map { it.toTextWithLink() }
     }
 
     private suspend fun readProjectsContributors() = withContext(Dispatchers.IO) {
@@ -114,31 +114,13 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 }
 
-private fun withLinkToGithubAccount(contributor: String): String {
-    val regex = Regex("(.*?)\\s?(?:\\((.+)\\))?")
-    val match = regex.matchEntire(contributor)!!
-    val name = match.groupValues[1]
-    val githubName = match.groupValues[2]
-    return if (githubName.isEmpty()) {
-        "<a href=\"https://github.com/$name\">$name</a>"
-    } else {
-        "$name (<a href=\"https://github.com/$githubName\">$githubName</a>)"
-    }
-}
-
 private val Contributor.score: Int get() =
     linesOfCodeChanged + linesOfInterfaceMarkupChanged / 5 + assetFilesChanged * 15
 
-private fun Contributor.toTextWithLink(): String = when {
-    githubUsername != null && githubUsername != name -> {
-        "$name (<a href=\"https://github.com/$githubUsername\">$githubUsername</a>)"
-    }
-    githubUsername != null -> {
-        "<a href=\"https://github.com/$githubUsername\">$githubUsername</a>"
-    }
-    else -> {
-        name
-    }
+private fun Contributor.toTextWithLink(): String = when (githubUsername) {
+    null -> name
+    name -> "<a href=\"https://github.com/$githubUsername\">$githubUsername</a>"
+    else -> "$name (<a href=\"https://github.com/$githubUsername\">$githubUsername</a>)"
 }
 
 @Serializable
