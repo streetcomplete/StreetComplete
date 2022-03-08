@@ -140,7 +140,12 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
         val contributorsByGithubUsername = contributors.groupBy { it.githubUsername }
         for ((githubUsername, contributor) in contributorsByGithubUsername) {
             if (githubUsername == null) {
-                result.addAll(contributor)
+                result.addAll(contributor.map { Contributor(
+                    name = it.name,
+                    linesOfCodeChanged = it.linesOfCodeChanged,
+                    linesOfInterfaceMarkupChanged = it.linesOfInterfaceMarkupChanged,
+                    assetFilesChanged = it.assetFilesChanged
+                ) })
             } else {
                 result.add(Contributor(
                     name = contributor.maxByOrNull { it.lastChangeTimestamp }!!.name,

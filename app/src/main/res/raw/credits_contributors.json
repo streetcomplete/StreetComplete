@@ -2,14 +2,14 @@
     {
         "name": "Tobias Zwick",
         "githubUsername": "westnordost",
-        "linesOfCodeChanged": 347675,
+        "linesOfCodeChanged": 347956,
         "linesOfInterfaceMarkupChanged": 130362,
         "assetFilesChanged": 1637
     },
     {
         "name": "Flo Edelmann",
         "githubUsername": "FloEdelmann",
-        "linesOfCodeChanged": 15715,
+        "linesOfCodeChanged": 15760,
         "linesOfInterfaceMarkupChanged": 1645,
         "assetFilesChanged": 112
     },
@@ -30,7 +30,7 @@
     {
         "name": "Adrian Clay",
         "githubUsername": "adrianclay",
-        "linesOfCodeChanged": 3920
+        "linesOfCodeChanged": 3950
     },
     {
         "name": "Helium",
@@ -56,11 +56,6 @@
         "linesOfCodeChanged": 1639,
         "linesOfInterfaceMarkupChanged": 262,
         "assetFilesChanged": 48
-    },
-    {
-        "name": "Matija Nalis",
-        "linesOfCodeChanged": 1493,
-        "assetFilesChanged": 22
     },
     {
         "name": "Stephen Michel",
@@ -89,6 +84,15 @@
         "assetFilesChanged": 12
     },
     {
+        "name": "Krzysztof Krason",
+        "linesOfCodeChanged": 738,
+        "assetFilesChanged": 22
+    },
+    {
+        "name": "Matija Nalis",
+        "linesOfCodeChanged": 730
+    },
+    {
         "name": "Enno Hermann",
         "githubUsername": "eginhard",
         "linesOfCodeChanged": 524
@@ -114,7 +118,7 @@
     {
         "name": "theFeiter",
         "githubUsername": "thefeiter",
-        "linesOfCodeChanged": 342,
+        "linesOfCodeChanged": 344,
         "linesOfInterfaceMarkupChanged": 1956,
         "assetFilesChanged": 56
     },
@@ -248,6 +252,14 @@
         "linesOfCodeChanged": 13
     },
     {
+        "name": "klemens",
+        "linesOfCodeChanged": 8
+    },
+    {
+        "name": "ferdinand0101",
+        "linesOfCodeChanged": 7
+    },
+    {
         "name": "Aidan Pieper",
         "githubUsername": "Plastix",
         "linesOfCodeChanged": 7
@@ -269,6 +281,14 @@
         "assetFilesChanged": 4
     },
     {
+        "name": "cyclingcat",
+        "linesOfCodeChanged": 4
+    },
+    {
+        "name": "MegaArthur",
+        "linesOfCodeChanged": 4
+    },
+    {
         "name": "Dominik Danelski",
         "githubUsername": "Etua",
         "linesOfCodeChanged": 4
@@ -287,6 +307,10 @@
         "name": "Guillaume Rischard",
         "githubUsername": "grischard",
         "linesOfCodeChanged": 3
+    },
+    {
+        "name": "gileri",
+        "linesOfCodeChanged": 2
     },
     {
         "name": "Dmitry Gurovich",
