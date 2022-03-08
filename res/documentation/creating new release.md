@@ -11,7 +11,7 @@ A new release is a good time to check if all dependencies are still up to date.
 
 ### Update translations, presets, metadata, credits, ...
 
-This is done by executing the `updateStreetCompleteData` gradle task. However, first some subtasks need a setup before they are run.
+This is done by executing the `updateStreetCompleteData` gradle task. However, some subtasks need setting up first before they are run.
 
 For `app:updateTranslatorCredits`:
 - (one-time:) Get a POEditor API token and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`

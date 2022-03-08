@@ -30,10 +30,15 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewLifecycleScope.launch {
-            addContributorsTo(readMainContributors(), binding.mainCredits)
+            val mainContributors = readMainContributors()
+            val mainContributorUsernames = mainContributors.map { it.githubUsername }
+            val mainContributorLinks = mainContributors.map { it.toTextWithLink() }
+
+            binding.authorText.setHtml(mainContributorLinks.first())
+            addContributorsTo(mainContributorLinks.drop(1), binding.mainCredits)
             addContributorsTo(readProjectsContributors(), binding.projectsCredits)
             addContributorsTo(readArtContributors(), binding.artCredits)
-            addContributorsTo(readCodeContributors(), binding.codeCredits)
+            addContributorsTo(readCodeContributors(mainContributorUsernames), binding.codeCredits)
 
             val inflater = LayoutInflater.from(view.context)
             for ((language, translators) in readTranslators()) {
@@ -43,8 +48,6 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
                 binding.translationCredits.addView(itemBinding.root)
             }
         }
-
-        binding.authorText.setHtml("Tobias Zwick (<a href=\"https://github.com/westnordost\">westnordost</a>)")
 
         binding.contributorMore.setHtml(getString(R.string.credits_contributors))
     }
@@ -64,16 +67,14 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 
     private suspend fun readMainContributors() = withContext(Dispatchers.IO) {
-        resources.getYamlObject<List<String>>(R.raw.credits_main).map(::withLinkToGithubAccount)
+        resources.getYamlObject<List<Contributor>>(R.raw.credits_main)
     }
 
     private suspend fun readProjectsContributors() = withContext(Dispatchers.IO) {
         resources.getYamlObject<List<String>>(R.raw.credits_projects)
     }
 
-    private suspend fun readCodeContributors() = withContext(Dispatchers.IO) {
-        // because they are mentioned as "main contributors" already
-        val skipUsers = setOf("westnordost", "FloEdelmann", "matkoniecz", "ENT8R")
+    private suspend fun readCodeContributors(skipUsers: List<String?>) = withContext(Dispatchers.IO) {
         resources.getYamlObject<List<Contributor>>(R.raw.credits_contributors)
             .filter { it.githubUsername !in skipUsers && it.score >= 50 }
             .sortedByDescending { it.score }
@@ -114,31 +115,13 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     }
 }
 
-private fun withLinkToGithubAccount(contributor: String): String {
-    val regex = Regex("(.*?)\\s?(?:\\((.+)\\))?")
-    val match = regex.matchEntire(contributor)!!
-    val name = match.groupValues[1]
-    val githubName = match.groupValues[2]
-    return if (githubName.isEmpty()) {
-        "<a href=\"https://github.com/$name\">$name</a>"
-    } else {
-        "$name (<a href=\"https://github.com/$githubName\">$githubName</a>)"
-    }
-}
-
 private val Contributor.score: Int get() =
     linesOfCodeChanged + linesOfInterfaceMarkupChanged / 5 + assetFilesChanged * 15
 
-private fun Contributor.toTextWithLink(): String = when {
-    githubUsername != null && githubUsername != name -> {
-        "$name (<a href=\"https://github.com/$githubUsername\">$githubUsername</a>)"
-    }
-    githubUsername == name -> {
-        "<a href=\"https://github.com/$githubUsername\">$githubUsername</a>"
-    }
-    else -> {
-        name
-    }
+private fun Contributor.toTextWithLink(): String = when (githubUsername) {
+    null -> name
+    name -> "<a href=\"https://github.com/$githubUsername\">$githubUsername</a>"
+    else -> "$name (<a href=\"https://github.com/$githubUsername\">$githubUsername</a>)"
 }
 
 @Serializable
