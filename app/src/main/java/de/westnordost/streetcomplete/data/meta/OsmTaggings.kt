@@ -133,11 +133,11 @@ fun isShopExpressionFragment(prefix: String? = null): String {
         or """ +
         mapOf(
             "amenity" to arrayOf(
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "nightclub",
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court",
                 "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe",
                 "pharmacy",
                 "driving_school",
-                "stripclub",
+                "nightclub", "stripclub",
             ),
             "leisure" to arrayOf(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
