@@ -10,4 +10,4 @@ enum class BollardType(val osmValue: String) : BollardTypeAnswer {
     FIXED("fixed"),
 }
 
-object DifferentBarrierType : BollardTypeAnswer
+object BarrierTypeIsNotBollard : BollardTypeAnswer

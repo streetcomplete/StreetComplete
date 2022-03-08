@@ -27,6 +27,8 @@ class AddBollardTypeForm : AImageListQuestAnswerFragment<BollardType, BollardTyp
     }
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_bollard_type_not_bollard) { applyAnswer(DifferentBarrierType) },
+        AnswerItem(R.string.quest_bollard_type_not_bollard) {
+            applyAnswer(BarrierTypeIsNotBollard)
+        },
     )
 }

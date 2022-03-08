@@ -24,7 +24,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
     override fun applyAnswerTo(answer: BicycleBarrierTypeAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is BicycleBarrierType -> tags["cycle_barrier"] = answer.osmValue
-            DifferentBarrierType -> tags["barrier"] = "yes"
+            BarrierTypeIsNotBicycleBarrier -> tags["barrier"] = "yes"
         }
     }
 }
