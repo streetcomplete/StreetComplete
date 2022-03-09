@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.countryboundaries.intersects
-import de.westnordost.countryboundaries.isInAny
+import de.westnordost.streetcomplete.ktx.intersects
+import de.westnordost.streetcomplete.ktx.isInAny
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

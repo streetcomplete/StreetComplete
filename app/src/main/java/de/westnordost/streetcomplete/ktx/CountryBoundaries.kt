@@ -1,5 +1,6 @@
-package de.westnordost.countryboundaries
+package de.westnordost.streetcomplete.ktx
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.AllCountries
