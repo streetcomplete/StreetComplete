@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST

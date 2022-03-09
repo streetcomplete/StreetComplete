@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.quest
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
-import de.westnordost.streetcomplete.data.meta.removeCheckDates
+import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction

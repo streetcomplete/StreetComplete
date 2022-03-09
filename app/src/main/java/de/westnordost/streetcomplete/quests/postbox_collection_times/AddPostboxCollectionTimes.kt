@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.meta
+package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import java.time.DateTimeException
@@ -88,8 +88,7 @@ fun Tags.removeCheckDates() {
 }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given
- *  key should be checked again. */
-// not using date format because we want to be able to understand 2000-11 as well
+ *  key should be checked again. Accepted date formats: 2000-11-11 but also 2000-11 */
 private val OSM_CHECK_DATE_REGEX = Regex("([0-9]{4})-([0-9]{2})(?:-([0-9]{2}))?")
 
 const val SURVEY_MARK_KEY = "check_date"

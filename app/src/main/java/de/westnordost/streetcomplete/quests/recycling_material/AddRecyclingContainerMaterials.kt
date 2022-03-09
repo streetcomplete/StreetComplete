@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
-import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter

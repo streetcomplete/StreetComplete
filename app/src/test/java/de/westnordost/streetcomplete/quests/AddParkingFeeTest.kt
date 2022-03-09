@@ -4,7 +4,7 @@ import ch.poole.openinghoursparser.Rule
 import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify

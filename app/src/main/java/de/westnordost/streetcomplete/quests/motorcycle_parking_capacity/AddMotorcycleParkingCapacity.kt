@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.motorcycle_parking_capacity
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter

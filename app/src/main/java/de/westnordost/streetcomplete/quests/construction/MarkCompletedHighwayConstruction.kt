@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
-import de.westnordost.streetcomplete.data.meta.updateCheckDate
+import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
