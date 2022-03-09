@@ -5,9 +5,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey

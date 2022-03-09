@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.kerb
 
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData

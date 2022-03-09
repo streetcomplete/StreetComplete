@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.street_parking
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter

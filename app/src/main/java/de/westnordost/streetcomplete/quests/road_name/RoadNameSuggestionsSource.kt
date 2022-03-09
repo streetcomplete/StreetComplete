@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon

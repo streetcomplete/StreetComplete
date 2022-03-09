@@ -91,3 +91,5 @@ fun Tags.removeCheckDates() {
  *  key should be checked again. */
 // not using date format because we want to be able to understand 2000-11 as well
 private val OSM_CHECK_DATE_REGEX = Regex("([0-9]{4})-([0-9]{2})(?:-([0-9]{2}))?")
+
+const val SURVEY_MARK_KEY = "check_date"

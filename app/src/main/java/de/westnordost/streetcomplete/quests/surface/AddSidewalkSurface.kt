@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.SIDEWALK_SURFACE_KEYS
 import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
@@ -25,7 +24,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
                 (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
             )
             and (
-                ${SIDEWALK_SURFACE_KEYS.joinToString(" and ") {"!$it"}}
+                !sidewalk:both:surface and !sidewalk:left:surface and !sidewalk:right:surface
                 or sidewalk:surface older today -8 years
             )
     """
