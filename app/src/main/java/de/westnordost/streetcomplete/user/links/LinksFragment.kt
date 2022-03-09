@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.links
 
 import android.content.Intent
 import android.os.Bundle

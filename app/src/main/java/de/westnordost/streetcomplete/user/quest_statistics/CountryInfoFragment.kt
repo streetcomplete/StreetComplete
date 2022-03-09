@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.quest_statistics
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator

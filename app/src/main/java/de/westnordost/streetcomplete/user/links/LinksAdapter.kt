@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.links
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

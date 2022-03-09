@@ -11,6 +11,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.user.achievements.AchievementInfoFragment
+import de.westnordost.streetcomplete.user.achievements.AchievementsFragment
+import de.westnordost.streetcomplete.user.login.LoginFragment
+import de.westnordost.streetcomplete.user.quest_statistics.CountryInfoFragment
+import de.westnordost.streetcomplete.user.quest_statistics.QuestStatisticsFragment
+import de.westnordost.streetcomplete.user.quest_statistics.QuestTypeInfoFragment
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 

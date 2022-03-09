@@ -7,7 +7,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/achievement_info_fragment"
-        android:name="de.westnordost.streetcomplete.user.AchievementInfoFragment"
+        android:name="de.westnordost.streetcomplete.user.achievements.AchievementInfoFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone"/>

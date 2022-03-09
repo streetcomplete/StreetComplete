@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.settings
+package de.westnordost.streetcomplete.user.login
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap

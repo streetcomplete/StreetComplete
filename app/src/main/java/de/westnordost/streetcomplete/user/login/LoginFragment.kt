@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.login
 
 import android.os.Bundle
 import android.view.View
@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.settings.OAuthFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

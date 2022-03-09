@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.profile
 
 import android.content.Context
 import android.content.Intent

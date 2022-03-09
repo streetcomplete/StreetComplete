@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.achievements
 
 import android.animation.LayoutTransition
 import android.animation.LayoutTransition.APPEARING
@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
+import de.westnordost.streetcomplete.user.links.LinksAdapter
 import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer

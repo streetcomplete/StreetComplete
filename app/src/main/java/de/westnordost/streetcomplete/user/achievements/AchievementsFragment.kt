@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.user
+package de.westnordost.streetcomplete.user.achievements
 
 import android.os.Bundle
 import android.view.LayoutInflater
