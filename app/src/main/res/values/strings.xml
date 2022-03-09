@@ -1247,6 +1247,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
 
     <string name="quest_seating_name_title">What kind of seating does this place have?</string>
+    <string name="quest_seating_has_name_title">What kind of seating does %s have?</string>
     <string name="quest_seating_takeaway">Takeaway only</string>
     <string name="quest_seating_indoor_only">Indoor seating only</string>
     <string name="quest_seating_outdoor_only">Outdoor seating only</string>

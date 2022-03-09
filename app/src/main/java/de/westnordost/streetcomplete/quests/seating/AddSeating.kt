@@ -8,6 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.ktx.toYesNo
 
 class AddSeating : OsmFilterQuestType<Seating>() {
@@ -25,7 +27,16 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     override val isReplaceShopEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_seating_name_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (hasProperName(tags))
+            R.string.quest_seating_has_name_title
+        else
+            R.string.quest_seating_name_title
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+        val name = tags["name"] ?: tags["brand"]
+        return arrayOfNotNull(name)
+    }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
@@ -37,4 +48,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
         tags["outdoor_seating"] = answer.hasOutdoorSeating.toYesNo()
         tags["indoor_seating"] = answer.hasIndoorSeating.toYesNo()
     }
+
+    private fun hasProperName(tags: Map<String, String>): Boolean =
+        tags.keys.containsAny(listOf("name", "brand"))
 }
