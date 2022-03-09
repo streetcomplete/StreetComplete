@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
@@ -67,7 +68,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val maxWeightInput = maxWeightInput ?: return
 
         maxWeightInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-        maxWeightInput.allowOnlyNumbers()
+        maxWeightInput.filters = arrayOf(acceptDecimalDigits(6, 2))
         binding.inputSignContainer.setOnClickListener { focusMaxWeightInput() }
 
         val units = weightLimitUnits.map { it.displayString }
