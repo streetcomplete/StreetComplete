@@ -33,6 +33,8 @@ import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.purge
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.measure.MeasureActivity
+import de.westnordost.streetcomplete.settings.debug.ShowLinksActivity
+import de.westnordost.streetcomplete.settings.debug.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers

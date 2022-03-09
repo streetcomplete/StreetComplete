@@ -73,10 +73,10 @@
         <activity android:name=".FragmentContainerActivity" />
         <activity android:name=".about.AboutActivity" />
         <activity
-            android:name=".settings.ShowQuestFormsActivity"
+            android:name=".settings.debug.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode" />
         <activity
-            android:name=".settings.ShowLinksActivity"
+            android:name=".settings.debug.ShowLinksActivity"
             android:configChanges="orientation|screenSize|uiMode" />
         <activity
             android:name=".user.UserActivity"
