@@ -33,11 +33,6 @@ class AddSeating : OsmFilterQuestType<Seating>() {
         else
             R.string.quest_seating_name_title
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        return arrayOfNotNull(name)
-    }
-
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
