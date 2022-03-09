@@ -48,6 +48,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.coroutines.resume
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -69,7 +70,6 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private var firstNode: AnchorNode? = null
     private var secondNode: Node? = null
     private var cursorNode: AnchorNode? = null
-    private var currentPlane: Plane? = null
 
     private var measureVertical: Boolean = false
     private var displayUnit: MeasureDisplayUnit = MeasureDisplayUnitMeter(2)
@@ -171,14 +171,16 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
                 val hitResults = frame.hitTest(centerX, centerY).filter {
                     (it.trackable as? Plane)?.isPoseInPolygon(it.hitPose) == true
                 }
+                val firstNode = firstNode
                 val hitResult = if (firstNode == null) {
                     hitResults.firstOrNull()
                 } else {
-                    hitResults.find { it.trackable == currentPlane }
+                    /* after first node is placed on the plane, only accept hits with (other) planes
+                       that are more or less on the same height */
+                    hitResults.find { abs(it.hitPose.ty() - firstNode.worldPosition.y) < 0.1 }
                 }
 
                 if (hitResult != null) {
-                    currentPlane = hitResult.trackable as Plane
                     updateCursor(hitResult)
                     setTrackingError(null)
                 } else {
@@ -324,7 +326,6 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         firstNode?.anchor?.detach()
         firstNode?.setParent(null)
         firstNode = null
-        currentPlane = null
         (secondNode as? AnchorNode)?.anchor?.detach()
         secondNode?.setParent(null)
         secondNode = null
