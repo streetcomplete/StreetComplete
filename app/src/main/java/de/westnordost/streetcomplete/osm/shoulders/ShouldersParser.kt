@@ -1,6 +1,4 @@
-package de.westnordost.streetcomplete.osm
-
-data class Shoulders(val left: Boolean, val right: Boolean)
+package de.westnordost.streetcomplete.osm.shoulders
 
 /** Returns on which sides are shoulders. Returns null if there is no shoulders tagging at all */
 fun createShoulders(tags: Map<String, String>, isLeftHandTraffic: Boolean): Shoulders? {
