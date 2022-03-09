@@ -12,7 +12,7 @@ import com.mapzen.tangram.TouchInput
  *
  *  A responder set via this class will default to the built-in gesture handling behavior
  *  if the custom responder does return false (= not consume the event).
-
+ *
  *  See https://github.com/tangrams/tangram-es/issues/1960
  *  */
 class TouchGestureManager(private val c: MapController) {

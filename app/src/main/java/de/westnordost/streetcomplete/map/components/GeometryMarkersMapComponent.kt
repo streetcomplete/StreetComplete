@@ -15,7 +15,8 @@ import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 
-/** Manages putting some generic geometry markers with an optional drawable on the map */
+/** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
+ *  show the geometry of elements surrounding the selected quest */
 class GeometryMarkersMapComponent(private val resources: Resources, private val ctrl: KtMapController) {
 
     // markers: LatLon -> Marker Id
