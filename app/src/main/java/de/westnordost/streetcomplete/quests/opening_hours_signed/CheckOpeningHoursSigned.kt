@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours_signed
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
 import de.westnordost.streetcomplete.data.meta.setCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.toCheckDate
