@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.ktx.containsAny
 
 /** Whether the given position is in any of the given countries */
 fun CountryBoundaries.isInAny(pos: LatLon, countries: Countries) = when (countries) {

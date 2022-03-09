@@ -14,7 +14,7 @@ import android.view.ViewOutlineProvider
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.withRotation
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.min
@@ -88,7 +88,7 @@ class PointerPinView @JvmOverloads constructor(
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val desiredSize = DEFAULT_SIZE.toPx(context).toInt()
+        val desiredSize = context.dpToPx(DEFAULT_SIZE).toInt()
         val width = reconcileSize(desiredSize, widthMeasureSpec)
         val height = reconcileSize(desiredSize, heightMeasureSpec)
         setMeasuredDimension(width, height)
@@ -152,7 +152,7 @@ class PointerPinView @JvmOverloads constructor(
         // size of the icon part of the pin, depends on the pin drawable: using quest_pin_pointer
         private const val ICON_SIZE_FRACTION = 84f / 124f
         // intrinsic/default size
-        private const val DEFAULT_SIZE = 64f // in dp
+        private const val DEFAULT_SIZE = 64 // in dp
     }
 }
 

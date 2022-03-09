@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.CellAchievementBinding
 import de.westnordost.streetcomplete.databinding.FragmentAchievementsBinding
 import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
@@ -47,7 +47,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ctx = requireContext()
-        val minCellWidth = 144f.toPx(ctx)
+        val minCellWidth = ctx.dpToPx(144)
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
         viewLifecycleScope.launch {

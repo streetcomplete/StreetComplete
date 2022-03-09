@@ -67,7 +67,7 @@ import de.westnordost.streetcomplete.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.ktx.hideKeyboard
 import de.westnordost.streetcomplete.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.ktx.setMargins
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
@@ -942,7 +942,7 @@ class MainFragment :
         val offset = view?.getLocationInWindow() ?: return
         val startPos = mapFragment?.getPointOf(quest.position) ?: return
 
-        val size = 42f.toPx(ctx).toInt()
+        val size = ctx.dpToPx(42).toInt()
         startPos.x += offset.x - size / 2f
         startPos.y += offset.y - size * 1.5f
 

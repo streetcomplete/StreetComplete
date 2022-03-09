@@ -7,7 +7,7 @@ import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.isApril1st
-import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
@@ -65,14 +65,14 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
     init {
         val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
         val dotSize = PointF(
-            dotImg.intrinsicWidth.toFloat().toDp(ctx),
-            dotImg.intrinsicHeight.toFloat().toDp(ctx)
+            ctx.pxToDp(dotImg.intrinsicWidth),
+            ctx.pxToDp(dotImg.intrinsicHeight)
         )
 
         val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
         directionMarkerSize = PointF(
-            directionImg.intrinsicWidth.toFloat().toDp(ctx),
-            directionImg.intrinsicHeight.toFloat().toDp(ctx)
+            ctx.pxToDp(directionImg.intrinsicWidth),
+            ctx.pxToDp(directionImg.intrinsicHeight)
         )
 
         val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)

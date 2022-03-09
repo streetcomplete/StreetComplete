@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import de.westnordost.streetcomplete.databinding.ViewIconsDownloadProgressBinding
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.view.CircularMaskFrameLayout
 import java.util.LinkedList
 import java.util.Queue
@@ -68,7 +68,7 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     private fun createProgressView(icon: Drawable): IconProgressView {
         val v = IconProgressView(context)
         v.icon = icon
-        val size = ICON_SIZE.toPx(context).toInt()
+        val size = context.dpToPx(ICON_SIZE).toInt()
         val layoutParams = RelativeLayout.LayoutParams(size, size)
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
         v.layoutParams = layoutParams
@@ -76,7 +76,7 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     }
 
     private fun animateInIcon(view: IconProgressView) {
-        view.translationX = ICON_INITIAL_X_OFFSET.toPx(context)
+        view.translationX = context.dpToPx(ICON_INITIAL_X_OFFSET)
         view.alpha = ICON_INITIAL_ALPHA
         view.scaleX = ICON_INITIAL_SCALE
         view.scaleY = ICON_INITIAL_SCALE
@@ -91,7 +91,7 @@ class IconsDownloadProgressView @JvmOverloads constructor(
 
     private fun animateOutIcon(view: IconProgressView) {
         view.animate()
-            .translationX(-(ICON_INITIAL_X_OFFSET).toPx(context))
+            .translationX(context.dpToPx(-ICON_INITIAL_X_OFFSET))
             .alpha(ICON_INITIAL_ALPHA)
             .scaleX(ICON_INITIAL_SCALE)
             .scaleY(ICON_INITIAL_SCALE)
@@ -103,8 +103,8 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     companion object {
         const val ICON_INITIAL_SCALE = 0.4f
         const val ICON_INITIAL_ALPHA = 0.6f
-        const val ICON_INITIAL_X_OFFSET = 64f
+        const val ICON_INITIAL_X_OFFSET = 64
         const val ICON_IN_OUT_DURATION = 500L
-        const val ICON_SIZE = 64f
+        const val ICON_SIZE = 64
     }
 }

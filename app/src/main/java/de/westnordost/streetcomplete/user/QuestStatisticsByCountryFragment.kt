@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +46,7 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
         countryBubbleView.id = View.generateViewId()
         countryBubbleView.layoutParams = ViewGroup.LayoutParams(240, 240)
         countryBubbleView.countryCode = countryCode
-        countryBubbleView.elevation = 6f.toPx(ctx)
+        countryBubbleView.elevation = ctx.dpToPx(6)
         countryBubbleView.setOnClickListener { v ->
             listener?.onClickedCountryFlag(countryCode, solvedCount, rank, v)
         }

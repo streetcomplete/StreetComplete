@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPS
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.updateMargins
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
@@ -75,7 +75,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         view.respectSystemInsets {
             scrollViewChild.updatePadding(bottom = it.bottom)
             bottomSheetContainer.updateMargins(top = it.top, left = it.left, right = it.right)
-            floatingBottomView?.updateMargins(bottom = it.bottom + 8f.toPx(context).toInt())
+            floatingBottomView?.updateMargins(bottom = it.bottom + context.dpToPx(8).toInt())
 
             // expanding bottom sheet when keyboard is opened
             if (minBottomInset < it.bottom) expand()

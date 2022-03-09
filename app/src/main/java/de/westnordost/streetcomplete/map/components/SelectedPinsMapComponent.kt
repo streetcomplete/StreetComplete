@@ -9,7 +9,7 @@ import com.mapzen.tangram.geometry.Point
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
@@ -26,8 +26,8 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
     init {
         selectionDrawable = ctx.resources.getBitmapDrawable(R.drawable.pin_selection_ring)
         selectionDrawableSize = PointF(
-            selectionDrawable.intrinsicWidth.toFloat().toDp(ctx),
-            selectionDrawable.intrinsicHeight.toFloat().toDp(ctx)
+            ctx.pxToDp(selectionDrawable.intrinsicWidth),
+            ctx.pxToDp(selectionDrawable.intrinsicHeight)
         )
 
         selectedPinsLayer = ctrl.addDataLayer(SELECTED_PINS_LAYER)

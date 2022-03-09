@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.map.components.GeometryMarkersMapComponent
@@ -127,7 +127,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         val clickPos = controller?.screenPositionToLatLon(PointF(x, y)) ?: return
 
-        val fingerRadius = CLICK_AREA_SIZE_IN_DP.toFloat().toPx(context) / 2
+        val fingerRadius = context.dpToPx(CLICK_AREA_SIZE_IN_DP) / 2
         val fingerEdgeClickPos = controller?.screenPositionToLatLon(PointF(x + fingerRadius, y)) ?: return
         val fingerRadiusInMeters = clickPos.distanceTo(fingerEdgeClickPos)
 

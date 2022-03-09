@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
@@ -58,7 +58,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         val clickableContainer = FrameLayout(ctx)
         clickableContainer.layoutParams = ViewGroup.LayoutParams(256, 256)
         clickableContainer.foreground = requireContext().getDrawable(R.drawable.round_pressed)
-        clickableContainer.elevation = 6f.toPx(ctx)
+        clickableContainer.elevation = ctx.dpToPx(6)
         clickableContainer.outlineProvider = CircularOutlineProvider
         clickableContainer.addView(questView)
         clickableContainer.setOnClickListener { v ->

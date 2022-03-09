@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
 import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
@@ -42,7 +42,7 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
 
             binding.emptyText.visibility = View.GONE
 
-            val viewWidth = view.width.toFloat().toDp(ctx)
+            val viewWidth = ctx.pxToDp(view.width)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
             val links = withContext(Dispatchers.IO) { achievementsSource.getLinks() }
