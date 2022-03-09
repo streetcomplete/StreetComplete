@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.BaseActivity
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.databinding.FragmentShowLinksBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.user.GroupedLinksAdapter
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named

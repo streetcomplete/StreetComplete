@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
 import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.ktx.getYamlStringMap
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.coroutines.CoroutineScope

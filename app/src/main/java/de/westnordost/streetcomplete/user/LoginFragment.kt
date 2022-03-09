@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.settings.OAuthFragment
 import kotlinx.coroutines.Dispatchers

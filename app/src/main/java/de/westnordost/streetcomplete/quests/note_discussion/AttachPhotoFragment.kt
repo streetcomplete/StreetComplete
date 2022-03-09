@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
 import de.westnordost.streetcomplete.ktx.hasCameraPermission
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine

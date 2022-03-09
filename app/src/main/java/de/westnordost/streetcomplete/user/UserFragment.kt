@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUserBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.view.viewBinding
 
 /** Shows the viewpager with the user profile, user statistics, achievements and links */
 class UserFragment : Fragment(R.layout.fragment_user), HasTitle {

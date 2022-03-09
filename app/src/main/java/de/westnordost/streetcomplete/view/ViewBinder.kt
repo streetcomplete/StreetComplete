@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ktx
+package de.westnordost.streetcomplete.view
 
 import android.view.LayoutInflater
 import android.view.View
