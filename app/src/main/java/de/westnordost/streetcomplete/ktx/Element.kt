@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.data.meta.IS_AREA_EXPRESSION
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
 import de.westnordost.streetcomplete.osm.Level
 import de.westnordost.streetcomplete.osm.LevelRange
 import de.westnordost.streetcomplete.osm.SingleLevel
