@@ -61,7 +61,6 @@ import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
-import de.westnordost.streetcomplete.ktx.getLevelsOrNull
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.ktx.hideKeyboard
@@ -76,7 +75,8 @@ import de.westnordost.streetcomplete.location.LocationRequester
 import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.osm.levelsIntersect
+import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
+import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.CreateNoteFragment
 import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet
@@ -880,7 +880,7 @@ class MainFragment :
             return data
         }
 
-        val levels = element.getLevelsOrNull()
+        val levels = createLevelsOrNull(element.tags)
 
         viewLifecycleScope.launch {
             val elements = withContext(Dispatchers.IO) { questType.getHighlightedElements(element, ::getMapData) }
@@ -888,7 +888,7 @@ class MainFragment :
                 // don't highlight "this" element
                 if (element == e) continue
                 // include only elements with the same (=intersecting) level, if any
-                val eLevels = e.getLevelsOrNull()
+                val eLevels = createLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) continue

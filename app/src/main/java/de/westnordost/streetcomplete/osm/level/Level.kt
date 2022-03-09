@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.level
 
 sealed class Level
 data class SingleLevel(val level: Double) : Level()
@@ -18,24 +18,6 @@ data class LevelRange(val start: Double, val end: Double) : Level() {
         }
     }
 }
-
-private val levelRegex = Regex("([+-]?\\d+(?:\\.\\d+)?)(?:-([+-]?\\d+(?:\\.\\d+)?))?")
-
-fun String.toLevelOrNull(): Level? {
-    val matchResult = levelRegex.matchEntire(this) ?: return null
-    val level1 = matchResult.groupValues[1].toDoubleOrNull() ?: return null
-    val level2 = matchResult.groupValues[2].toDoubleOrNull()
-    return when {
-        level2 == null -> SingleLevel(level1)
-        level1 < level2 -> LevelRange(level1, level2)
-        else -> LevelRange(level2, level1)
-    }
-}
-
-/** Parse a level-string. A level-string could be any of the following format:
- *  1 or -1 or +1 or 0-5 or 0;1;-1 or -2;0-2 or even 1--1 */
-fun String.toLevelsOrNull(): List<Level>? =
-    split(';').mapNotNull { it.toLevelOrNull() }.takeIf { it.isNotEmpty() }
 
 fun Level.intersects(other: Level): Boolean = when (this) {
     is SingleLevel -> {

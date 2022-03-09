@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.meta
 
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-
 /** Definitions/meanings of certain OSM taggings  */
 
 val ANYTHING_UNPAVED = setOf(
