@@ -42,9 +42,10 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     "happy_hours", "diet:.*", "cuisine", "tasting", "breakfast", "lunch", "organic",
     "produced_on_site", "restaurant", "food", "pastry", "pastry_shop", "product", "produce",
     "chocolate", "fair_trade", "butcher", "reservation", "takeaway(:.*)?", "delivery(:.*)?",
-    "caterer", "real_fire", "flour_fortified",
+    "caterer", "real_fire", "flour_fortified", "highchair",
     // related to repair shops/crafts
     "service(:.*)?", "motorcycle:.*", "repair", ".*:repair", "electronics_repair(:.*)?",
+    "workshop",
     // shop=hairdresser, shop=clothes
     "unisex", "male", "female", "gender",
     // healthcare like optician
@@ -73,8 +74,8 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
  *
  *  It is possible to specify a prefix for the keys here, e.g. "disused", to find disused shops etc.
  *
- *  Note: When this function is modified, please update and rerun this too:
- *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/Makefile
+ *  Note: When this function is modified, please follow update instructions in:
+ *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/README.md
  *  */
 fun isShopExpressionFragment(prefix: String? = null): String {
     val p = if (prefix != null) "$prefix:" else ""
