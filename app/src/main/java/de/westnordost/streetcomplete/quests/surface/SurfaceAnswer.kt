@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 
 sealed interface SurfaceOrIsStepsAnswer
 object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer

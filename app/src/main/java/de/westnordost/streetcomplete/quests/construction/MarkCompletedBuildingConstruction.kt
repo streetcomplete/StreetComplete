@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.toCheckDateString
-import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 

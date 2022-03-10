@@ -11,12 +11,12 @@ import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentTutorialBinding
-import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.dpToPx
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

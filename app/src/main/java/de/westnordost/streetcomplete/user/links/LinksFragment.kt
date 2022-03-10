@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.databinding.FragmentLinksBinding
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
-import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

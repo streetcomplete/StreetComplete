@@ -23,12 +23,12 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.user.links.LinksAdapter
-import de.westnordost.streetcomplete.view.viewBinding
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
+import de.westnordost.streetcomplete.view.viewBinding
 
 /** Shows details for a certain level of one achievement as a fake-dialog.
  *  There are two modes:

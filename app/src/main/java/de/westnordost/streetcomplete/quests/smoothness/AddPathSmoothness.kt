@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
