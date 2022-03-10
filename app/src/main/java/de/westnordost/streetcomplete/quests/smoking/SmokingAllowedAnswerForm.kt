@@ -15,10 +15,11 @@ class SmokingAllowedAnswerForm : AListQuestAnswerFragment<SmokingAllowed>() {
         val isAlreadyOutdoor =
             tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten" ||
             (tags["outdoor_seating"] == "yes" && tags["indoor_seating"] == "no")
+        val noOutdoorSeating = tags["outdoor_seating"] == "no"
 
         return listOfNotNull(
             TextItem(NO, R.string.quest_smoking_no),
-            if (isAlreadyOutdoor) null else TextItem(OUTSIDE, R.string.quest_smoking_outside),
+            if (isAlreadyOutdoor || noOutdoorSeating) null else TextItem(OUTSIDE, R.string.quest_smoking_outside),
             TextItem(SEPARATED, R.string.quest_smoking_separated),
             TextItem(YES, R.string.quest_smoking_yes),
         )
