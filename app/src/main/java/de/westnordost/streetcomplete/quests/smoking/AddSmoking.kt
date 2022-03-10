@@ -28,6 +28,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
              )
          )
          and takeaway != only
+         and !(indoor_seating = no and outdoor_seating = no)
          and (!smoking or smoking older today -8 years)
     """
     override val changesetComment = "Add smoking status"
