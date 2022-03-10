@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.level
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -6,20 +6,20 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class LevelKtTest {
+class LevelParserKtTest {
 
     @Test fun `parses level`() {
-        assertEquals(SingleLevel(1.0), "1".toLevelOrNull())
-        assertEquals(SingleLevel(-1.0), "-1".toLevelOrNull())
-        assertEquals(SingleLevel(+1.0), "+1".toLevelOrNull())
-        assertEquals(SingleLevel(55.0), "55".toLevelOrNull())
-        assertEquals(SingleLevel(-0.5), "-0.5".toLevelOrNull())
-        assertEquals(SingleLevel(5.5), "5.5".toLevelOrNull())
-        assertNull("".toLevelOrNull())
-        assertNull("6+".toLevelOrNull())
-        assertEquals(LevelRange(0.0, 10.0), "+0-10".toLevelOrNull())
-        assertEquals(LevelRange(0.0, 10.0), "10-+0".toLevelOrNull())
-        assertEquals(LevelRange(-1.0, 1.0), "1--1".toLevelOrNull())
+        assertEquals(listOf(SingleLevel(1.0)), "1".toLevelsOrNull())
+        assertEquals(listOf(SingleLevel(-1.0)), "-1".toLevelsOrNull())
+        assertEquals(listOf(SingleLevel(+1.0)), "+1".toLevelsOrNull())
+        assertEquals(listOf(SingleLevel(55.0)), "55".toLevelsOrNull())
+        assertEquals(listOf(SingleLevel(-0.5)), "-0.5".toLevelsOrNull())
+        assertEquals(listOf(SingleLevel(5.5)), "5.5".toLevelsOrNull())
+        assertNull("".toLevelsOrNull())
+        assertNull("6+".toLevelsOrNull())
+        assertEquals(listOf(LevelRange(0.0, 10.0)), "+0-10".toLevelsOrNull())
+        assertEquals(listOf(LevelRange(0.0, 10.0)), "10-+0".toLevelsOrNull())
+        assertEquals(listOf(LevelRange(-1.0, 1.0)), "1--1".toLevelsOrNull())
     }
 
     @Test fun `parses levels`() {

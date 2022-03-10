@@ -1,9 +1,9 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.shoulders
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ShouldersKtTest {
+class ShouldersParserKtTest {
     @Test fun `shoulders with normal tagging`() {
         assertEquals(null, createShoulders(mapOf(), false))
 
