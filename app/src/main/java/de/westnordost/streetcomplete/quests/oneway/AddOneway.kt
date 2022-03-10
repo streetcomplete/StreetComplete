@@ -34,7 +34,6 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title

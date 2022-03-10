@@ -28,7 +28,6 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val icon = R.drawable.ic_quest_halal
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_halal_name_title

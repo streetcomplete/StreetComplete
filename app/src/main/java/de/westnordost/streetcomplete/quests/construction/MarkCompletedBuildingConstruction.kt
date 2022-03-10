@@ -17,7 +17,6 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
     override val changesetComment = "Determine whether construction is now completed"
     override val wikiLink = "Tag:building=construction"
     override val icon = R.drawable.ic_quest_building_construction
-
     override val questTypeAchievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_construction_building_title

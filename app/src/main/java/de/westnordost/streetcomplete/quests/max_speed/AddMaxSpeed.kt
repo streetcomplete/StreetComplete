@@ -28,11 +28,9 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
     override val icon = R.drawable.ic_quest_max_speed
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
-
     // see #813: US has different rules for each different state which need to be respected
     override val enabledInCountries = AllCountriesExcept("US")
     override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) =

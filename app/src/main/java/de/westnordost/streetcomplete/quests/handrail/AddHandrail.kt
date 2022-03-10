@@ -28,7 +28,6 @@ class AddHandrail : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:handrail"
     override val icon = R.drawable.ic_quest_steps_handrail
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_handrail_title

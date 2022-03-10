@@ -18,13 +18,12 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
     override val wikiLink = "Tag:amenity=post_box"
     override val icon = R.drawable.ic_quest_mail_ref
     override val isDeleteElementEnabled = true
-
+    override val questTypeAchievements = listOf(POSTMAN)
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
         "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
-    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])

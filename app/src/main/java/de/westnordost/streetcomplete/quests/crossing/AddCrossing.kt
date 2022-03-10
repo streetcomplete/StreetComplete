@@ -39,7 +39,6 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     override val changesetComment = "Add whether there is a crossing"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title

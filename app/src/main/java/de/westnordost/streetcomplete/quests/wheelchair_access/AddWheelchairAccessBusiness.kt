@@ -15,6 +15,7 @@ import java.util.concurrent.FutureTask
 class AddWheelchairAccessBusiness(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmFilterQuestType<WheelchairAccess>() {
+
     override val elementFilter = """
         nodes, ways, relations with
           (name or brand)
@@ -102,7 +103,6 @@ class AddWheelchairAccessBusiness(
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
-
     override val questTypeAchievements = listOf(WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) =

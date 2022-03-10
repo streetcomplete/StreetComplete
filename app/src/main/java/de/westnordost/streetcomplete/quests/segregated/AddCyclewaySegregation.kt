@@ -23,13 +23,10 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
         and !sidewalk
         and (!segregated or segregated older today -8 years)
     """
-
     override val changesetComment = "Add segregated status for combined footway with cycleway"
     override val wikiLink = "Key:segregated"
     override val icon = R.drawable.ic_quest_path_segregation
-
     override val questTypeAchievements = listOf(BICYCLIST, OUTDOORS)
-
     override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_segregated_title

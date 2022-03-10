@@ -28,7 +28,6 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
-
     override val questTypeAchievements = listOf(BLIND)
 
     override fun getTitle(tags: Map<String, String>): Int {

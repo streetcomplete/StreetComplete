@@ -14,7 +14,6 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
     override val changesetComment = "Add car wash type"
     override val wikiLink = "Tag:amenity=car_wash"
     override val icon = R.drawable.ic_quest_car_wash
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_carWashType_title

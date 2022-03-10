@@ -23,8 +23,9 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(OUTDOORS)
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val forests = mapData
@@ -44,8 +45,6 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
         if (!areaFilter.matches(element)) return false
         return null
     }
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title
 
     override fun createForm() = AddForestLeafTypeForm()
 

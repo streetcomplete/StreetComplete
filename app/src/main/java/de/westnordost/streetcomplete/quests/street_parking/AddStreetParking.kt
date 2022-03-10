@@ -45,7 +45,6 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
             or foot and foot !~ private|no
           )
     """
-
     /* On some roads, usually no-parking rules apply implicitly, so these are filtered out:
        - motorways, trunks (motorroads), pedestrian zones,
        - often priority roads (at least rural ones), roads where overtaking is forbidden

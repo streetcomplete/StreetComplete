@@ -31,7 +31,6 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
     override val changesetComment = "Add type of barrier for railway crossing"
     override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.ic_quest_railway
-
     override val questTypeAchievements = listOf(CAR, PEDESTRIAN, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2

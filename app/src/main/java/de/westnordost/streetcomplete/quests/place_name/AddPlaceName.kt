@@ -111,7 +111,6 @@ class AddPlaceName(
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
     override val isReplaceShopEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name

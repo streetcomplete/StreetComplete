@@ -19,7 +19,6 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_toilet_fee
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletsFee_title

@@ -28,7 +28,6 @@ class AddRoofShape(
     override val wikiLink = "Key:roof:shape"
     override val icon = R.drawable.ic_quest_roof_shape
     override val defaultDisabledMessage = R.string.default_disabled_msg_roofShape
-
     override val questTypeAchievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title

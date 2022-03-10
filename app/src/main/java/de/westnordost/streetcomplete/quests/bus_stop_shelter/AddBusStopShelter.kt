@@ -30,7 +30,6 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     override val changesetComment = "Add bus stop shelter"
     override val wikiLink = "Key:shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>): Int {

@@ -32,6 +32,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     override val wikiLink = "Key:collection_times"
     override val icon = R.drawable.ic_quest_mail
     override val isDeleteElementEnabled = true
+    override val questTypeAchievements = listOf(POSTMAN)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=postbox_collection_times/AddPostboxCollectionTimes.kt
     // sources:
@@ -53,7 +54,6 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
         arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags))

@@ -41,7 +41,6 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
     override val changesetComment = "Add crossing type"
     override val wikiLink = "Key:crossing"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_type_title

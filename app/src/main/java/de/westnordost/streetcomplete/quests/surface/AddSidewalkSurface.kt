@@ -28,7 +28,6 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
                 or sidewalk:surface older today -8 years
             )
     """
-
     override val changesetComment = "Add surface of sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk_surface

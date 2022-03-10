@@ -18,7 +18,6 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
     override val changesetComment = "Add wheelchair access to outside places"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
-
     override val questTypeAchievements = listOf(RARE, WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title

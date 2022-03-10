@@ -33,7 +33,6 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int {

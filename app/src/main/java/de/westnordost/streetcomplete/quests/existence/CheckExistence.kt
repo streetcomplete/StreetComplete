@@ -88,7 +88,6 @@ class CheckExistence(
     override val changesetComment = "Check if element still exists"
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
-
     override val questTypeAchievements = listOf(CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>): Int =

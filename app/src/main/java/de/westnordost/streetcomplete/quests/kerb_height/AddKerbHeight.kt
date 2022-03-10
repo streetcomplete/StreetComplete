@@ -26,7 +26,6 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
     override val changesetComment = "Add kerb height info"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.ic_quest_kerb_type
-
     override val questTypeAchievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_kerb_height_title

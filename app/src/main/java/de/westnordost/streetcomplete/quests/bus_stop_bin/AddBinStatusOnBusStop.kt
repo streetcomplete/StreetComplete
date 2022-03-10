@@ -26,7 +26,6 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add whether a bus stop has a bin"
     override val wikiLink = "Key:bin"
     override val icon = R.drawable.ic_quest_bin_public_transport
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>): Int {

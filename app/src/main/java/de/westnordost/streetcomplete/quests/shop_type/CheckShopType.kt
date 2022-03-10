@@ -31,7 +31,6 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override val changesetComment = "Check if vacant shop is still vacant"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_vacant_type_title

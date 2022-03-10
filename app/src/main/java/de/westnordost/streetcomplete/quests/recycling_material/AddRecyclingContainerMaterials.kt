@@ -31,8 +31,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { isApplicableTo(it) }
@@ -45,8 +46,6 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
             !element.hasAnyRecyclingMaterials()
             || recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
         )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 

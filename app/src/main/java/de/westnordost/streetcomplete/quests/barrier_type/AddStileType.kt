@@ -41,7 +41,6 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.ic_quest_cow
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title

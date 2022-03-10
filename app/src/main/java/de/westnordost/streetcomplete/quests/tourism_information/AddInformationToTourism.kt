@@ -14,7 +14,6 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
     override val wikiLink = "Tag:tourism=information"
     override val icon = R.drawable.ic_quest_information
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(RARE, CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>): Int =

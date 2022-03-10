@@ -40,7 +40,7 @@ class AddCyclewayWidth(
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
-    override fun getTitle(tags: Map<String, String>): Int = R.string.quest_cycleway_width_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_width_title
 
     override fun createForm() = AddWidthForm()
 

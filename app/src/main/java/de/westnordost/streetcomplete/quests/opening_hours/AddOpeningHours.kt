@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import java.util.concurrent.FutureTask
@@ -114,13 +113,10 @@ class AddOpeningHours(
         and opening_hours:signed != no
     """).toElementFilterExpression() }
 
-    private val nameTags = listOf("name", "brand")
-
     override val changesetComment = "Add opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override val isReplaceShopEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>): Int {
@@ -196,7 +192,7 @@ class AddOpeningHours(
     private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(nameTags)
+        tags.containsKey("name") || tags.containsKey("brand")
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()

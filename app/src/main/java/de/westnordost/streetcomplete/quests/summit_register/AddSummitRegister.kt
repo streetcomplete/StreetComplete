@@ -27,7 +27,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
     override val changesetComment = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.ic_quest_peak
-
+    override val questTypeAchievements = listOf(RARE, OUTDOORS)
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in
         // https://github.com/streetcomplete/StreetComplete/issues/561#issuecomment-325623974
@@ -38,8 +38,6 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         // Americas
         "US", "AR", "PE"
     )
-
-    override val questTypeAchievements = listOf(RARE, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_register_title
 

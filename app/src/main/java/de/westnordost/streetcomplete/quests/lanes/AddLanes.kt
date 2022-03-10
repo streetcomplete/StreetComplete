@@ -29,7 +29,6 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title

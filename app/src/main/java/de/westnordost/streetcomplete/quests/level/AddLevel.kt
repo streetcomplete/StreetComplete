@@ -45,7 +45,6 @@ class AddLevel : OsmElementQuestType<String> {
     *  the user cannot find the place on any level in the mall, delete the element completely. */
     override val isReplaceShopEnabled = false
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title

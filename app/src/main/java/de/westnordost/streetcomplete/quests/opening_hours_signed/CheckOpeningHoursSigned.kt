@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import java.time.Instant
 import java.time.LocalDateTime
@@ -43,8 +42,6 @@ class CheckOpeningHoursSigned (
         getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
             "$it < today -1 years"
         }
-
-    private val nameTags = listOf("name", "brand")
 
     override val changesetComment = "Check whether opening hours are signed"
     override val wikiLink = "Key:opening_hours:signed"
@@ -111,7 +108,7 @@ class CheckOpeningHoursSigned (
     private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(nameTags)
+        tags.containsKey("name") || tags.containsKey("brand")
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()

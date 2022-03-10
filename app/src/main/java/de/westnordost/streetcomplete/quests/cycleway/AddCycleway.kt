@@ -51,6 +51,8 @@ class AddCycleway(
     override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
+    override val isSplitWayEnabled = true
+    override val questTypeAchievements = listOf(BICYCLIST)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
@@ -80,11 +82,7 @@ class AddCycleway(
         "US-AZ", "US-TX"
     )
 
-    override val isSplitWayEnabled = true
-
-    override val questTypeAchievements = listOf(BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>): Int =
+    override fun getTitle(tags: Map<String, String>) =
         if (createCyclewaySides(tags, false) != null)
             R.string.quest_cycleway_resurvey_title
         else

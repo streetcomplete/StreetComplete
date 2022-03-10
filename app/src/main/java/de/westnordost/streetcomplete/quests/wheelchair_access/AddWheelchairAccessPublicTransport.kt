@@ -21,7 +21,6 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
     override val changesetComment = "Add wheelchair access to public transport platforms"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair
-
     override val questTypeAchievements = listOf(WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>): Int {

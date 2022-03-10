@@ -59,9 +59,7 @@ class AddAcceptsCash(
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
-
     override val enabledInCountries = NoCountriesExcept("SE")
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
