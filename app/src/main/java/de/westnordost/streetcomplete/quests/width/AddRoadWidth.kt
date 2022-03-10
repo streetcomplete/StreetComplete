@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
-import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.measure.ArSupportChecker
+import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 
 class AddRoadWidth(
     private val checkArSupport: ArSupportChecker
