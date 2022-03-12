@@ -2,3 +2,4 @@
 # 
 ES: s/n
 FR: \p{N}{1,4}\sbis
+VN: \p{L}?(?:\p{N}{1,4}(?:\s?(?:bis|ter|kép|\p{L}))?/)*\p{N}{1,4}(?:\s?(?:bis|ter|kép|\p{L})(?:\s(?:bis|ter|kép|\p{L}))?)?
