@@ -10,9 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewDurationBinding
 import de.westnordost.streetcomplete.ktx.numberOrNull
-import de.westnordost.streetcomplete.view.inputfilter.InputValidator
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
-import de.westnordost.streetcomplete.view.inputfilter.acceptIntDigits
 
 /** Allows to input a duration, in days, hours or minutes */
 class DurationInput @JvmOverloads constructor(
@@ -47,7 +45,6 @@ class DurationInput @JvmOverloads constructor(
         binding.input.filters = arrayOf(acceptDecimalDigits(3, 1))
         binding.input.addTextChangedListener { onInputChanged?.invoke() }
     }
-
 }
 
 enum class DurationUnit { MINUTES, HOURS, DAYS }

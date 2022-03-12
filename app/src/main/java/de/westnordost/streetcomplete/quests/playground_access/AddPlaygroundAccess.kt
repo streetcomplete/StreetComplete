@@ -11,7 +11,6 @@ class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>() {
     override val changesetComment = "Add playground access"
     override val wikiLink = "Tag:leisure=playground"
     override val icon = R.drawable.ic_quest_playground
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title2

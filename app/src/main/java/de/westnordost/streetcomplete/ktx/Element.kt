@@ -1,16 +1,12 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.data.meta.IS_AREA_EXPRESSION
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.osm.Level
-import de.westnordost.streetcomplete.osm.LevelRange
-import de.westnordost.streetcomplete.osm.SingleLevel
-import de.westnordost.streetcomplete.osm.toLevelsOrNull
+import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
 
 fun Element.copy(
     id: Long = this.id,
@@ -39,31 +35,4 @@ fun Element.isArea(): Boolean {
         is Relation -> tags["type"] == "multipolygon"
         else -> false
     }
-}
-
-/** get for which level(s) the element is defined, if any.
- *  repeat_on is interpreted the same way as level */
-fun Element.getLevelsOrNull(): List<Level>? {
-    val levels = tags["level"]?.toLevelsOrNull()
-    val repeatOns = tags["repeat_on"]?.toLevelsOrNull()
-    return if (levels == null) {
-        if (repeatOns == null) null else repeatOns
-    } else {
-        if (repeatOns == null) levels else levels + repeatOns
-    }
-}
-
-/** Return all levels of these elements, sorted ascending */
-fun Iterable<Element>.getSelectableLevels(): List<Double> {
-    val allLevels = mutableSetOf<Double>()
-    for (e in this) {
-        val levels = e.getLevelsOrNull() ?: continue
-        for (level in levels) {
-            when (level) {
-                is LevelRange -> allLevels.addAll(level.getSelectableLevels())
-                is SingleLevel -> allLevels.add(level.level)
-            }
-        }
-    }
-    return allLevels.sorted()
 }

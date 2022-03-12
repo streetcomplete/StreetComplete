@@ -19,12 +19,10 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         and access !~ private|no and indoor != yes
         and !drinking_water and !drinking_water:legal and amenity != drinking_water
     """
-
     override val changesetComment = "Add whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.ic_quest_drinking_water
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title

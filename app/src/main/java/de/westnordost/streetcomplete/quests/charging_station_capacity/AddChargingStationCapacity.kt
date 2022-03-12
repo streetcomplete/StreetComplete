@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.charging_station_capacity
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 
 class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
@@ -24,7 +24,6 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.ic_quest_car_charger_capacity
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int =

@@ -14,8 +14,11 @@ import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTL
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
     override val elementFilter = """
-        nodes with amenity = recycling and recycling_type = container
-         and recycling:glass = yes and !recycling:glass_bottles
+        nodes with
+          amenity = recycling
+          and recycling_type = container
+          and recycling:glass = yes
+          and !recycling:glass_bottles
     """
     override val changesetComment = "Determine whether any glass or just glass bottles can be recycled here"
     override val wikiLink = "Key:recycling"
@@ -23,7 +26,6 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     // see isUsuallyAnyGlassRecycleableInContainers.yml
     override val enabledInCountries = AllCountriesExcept("CZ")
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_glass_title

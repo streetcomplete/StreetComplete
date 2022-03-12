@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.notifications.Notification
 import de.westnordost.streetcomplete.data.notifications.OsmUnreadMessagesNotification
 import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintNotification
 import de.westnordost.streetcomplete.settings.SettingsActivity
-import de.westnordost.streetcomplete.user.AchievementInfoFragment
+import de.westnordost.streetcomplete.user.achievements.AchievementInfoFragment
 
 /** A fragment that contains any fragments that would show notifications.
  *  Usually, notifications are shown as dialogs, however there is currently one exception which

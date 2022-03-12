@@ -27,7 +27,6 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_barrier
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CAR, PEDESTRIAN, BLIND, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_type_title

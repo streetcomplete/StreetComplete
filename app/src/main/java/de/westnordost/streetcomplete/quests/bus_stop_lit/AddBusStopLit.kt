@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.bus_stop_lit
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddBusStopLit : OsmFilterQuestType<Boolean>() {
@@ -30,7 +30,6 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add whether a bus stop is lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_bus_stop_lit
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>): Int {

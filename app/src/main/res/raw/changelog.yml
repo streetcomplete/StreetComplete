@@ -1,3 +1,32 @@
+v42.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is smoking allowed anywhere in this place?</i> (#539, #3784), by @mnalis</li>
+  <li><i>What is the surface of the sidewalk here?</i> (#1593, #3735), by @arrival-spring</li>
+  <li><i>What kind of seating does this place have?</i> (#1176, #3758), by @fatal69100</li>
+  </ul>
+  <h3>Quest enhancements</h3>
+  <ul>
+  <li>Parking fee: Add answer option for when there is no fee but a max parking duration (#3841, #981, #102)</li>
+  <li>Sidewalk: Also ask when current tagging is incomplete or invalid (#3821), by @arrival-spring</li>
+  <li>Tactile paving on crossings: Add answer option that it’s only one one side (#3844, #3813), by @arrival-spring</li>
+  <li>Barrier details: Add answer option that leads to changing the type of barrier (#3846, #3563, #3845, #3817), by @mnalis</li>
+  <li>Oneway streets: Also ask for roads that are below or equal 4 meters wide</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Other minor enhancements and fixes (#3852)</li>
+  </ul>
+
+v41.2: |
+  <ul>
+  <li>Improved accuracy of measuring with AR (#3832)</li>
+  <li>Cycleway and road width, number of lanes: Don't ask for sections that have explicitly been marked as "transitions" (#3835, #3842), by @mnalis</li>
+  <li>Cycleway width: Fix the quest did not dissappear after solving in rare cases (#3843)</li>
+  <li>Number of lanes: Also ask for trunks and motorways (#3849), by @matkoniecz</li>
+  <li>Also tag whether a width/height has been recorded with AR</li>
+  </ul>
+
 v41.1: |
   <ul>
   <li>Fix: ask for camera permission when attaching a photo to a note</li>

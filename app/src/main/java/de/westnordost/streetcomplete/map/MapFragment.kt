@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.ktx.setMargins
 import de.westnordost.streetcomplete.ktx.tryStartActivity
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
@@ -45,6 +44,7 @@ import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.MapChangingListener
 import de.westnordost.streetcomplete.map.tangram.initMap
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl

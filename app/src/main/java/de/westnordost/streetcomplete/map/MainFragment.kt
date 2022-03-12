@@ -61,22 +61,21 @@ import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
-import de.westnordost.streetcomplete.ktx.getLevelsOrNull
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.ktx.hideKeyboard
 import de.westnordost.streetcomplete.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.ktx.setMargins
-import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequester
 import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.osm.levelsIntersect
+import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
+import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.CreateNoteFragment
 import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet
@@ -92,6 +91,7 @@ import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.initialBearingTo
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -880,7 +880,7 @@ class MainFragment :
             return data
         }
 
-        val levels = element.getLevelsOrNull()
+        val levels = createLevelsOrNull(element.tags)
 
         viewLifecycleScope.launch {
             val elements = withContext(Dispatchers.IO) { questType.getHighlightedElements(element, ::getMapData) }
@@ -888,7 +888,7 @@ class MainFragment :
                 // don't highlight "this" element
                 if (element == e) continue
                 // include only elements with the same (=intersecting) level, if any
-                val eLevels = e.getLevelsOrNull()
+                val eLevels = createLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) continue
@@ -942,7 +942,7 @@ class MainFragment :
         val offset = view?.getLocationInWindow() ?: return
         val startPos = mapFragment?.getPointOf(quest.position) ?: return
 
-        val size = 42f.toPx(ctx).toInt()
+        val size = ctx.dpToPx(42).toInt()
         startPos.x += offset.x - size / 2f
         startPos.y += offset.y - size * 1.5f
 

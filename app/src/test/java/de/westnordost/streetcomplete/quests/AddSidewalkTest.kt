@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddSidewalkTest {
@@ -36,6 +39,59 @@ class AddSidewalkTest {
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         assertNull(questType.isApplicableTo(road))
+    }
+
+    @Test fun `applicable to road with incomplete sidewalk tagging`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "sidewalk:left" to "yes"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road))
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(road)!!)
+    }
+
+    @Test fun `applicable to road with invalid sidewalk tagging`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "sidewalk" to "something"
+        ))
+        val footway = way(2, listOf(3, 4), mapOf(
+            "highway" to "footway"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road, footway))
+        val p1 = p(0.0, 0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(13.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(road)!!)
+    }
+
+    @Test fun `applicable to road with overloaded sidewalk tagging`() {
+        val road = way(tags = mapOf(
+            "highway" to "residential",
+            "sidewalk" to "left",
+            "sidewalk:right" to "yes"
+        ))
+        val footway = way(2, listOf(3, 4), mapOf(
+            "highway" to "footway"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(road, footway))
+        val p1 = p(0.0, 0.0)
+        val p2 = p1.translate(50.0, 45.0)
+        val p3 = p1.translate(13.0, 135.0)
+        val p4 = p3.translate(50.0, 45.0)
+
+        mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)
+        mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(road)!!)
     }
 
     @Test fun `not applicable to road with nearby footway`() {
@@ -151,6 +207,21 @@ class AddSidewalkTest {
             SidewalkSides(left = SEPARATE, right = NO),
             StringMapEntryAdd("sidewalk:left", "separate"),
             StringMapEntryAdd("sidewalk:right", "no"),
+        )
+    }
+
+    @Test fun `replace incomplete sidewalk tagging`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk:left" to "yes"),
+            SidewalkSides(left = YES, right = NO),
+            StringMapEntryAdd("sidewalk", "left"),
+            StringMapEntryDelete("sidewalk:left", "yes")
+        )
+        questType.verifyAnswer(
+            mapOf("sidewalk:left" to "yes"),
+            SidewalkSides(left = YES, right = SEPARATE),
+            StringMapEntryModify("sidewalk:left", "yes", "yes"),
+            StringMapEntryAdd("sidewalk:right", "separate"),
         )
     }
 }

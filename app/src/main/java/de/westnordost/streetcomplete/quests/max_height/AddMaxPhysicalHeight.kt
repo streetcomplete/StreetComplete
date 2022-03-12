@@ -2,25 +2,24 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.measure.ArSupportChecker
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 
 class AddMaxPhysicalHeight(
     private val checkArSupport: ArSupportChecker
-) : OsmElementQuestType<Length> {
+) : OsmElementQuestType<MaxPhysicalHeightAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with (
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
-        and maxheight = below_default
+        and (maxheight = below_default or source:maxheight ~ ".*estimat.*")
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
@@ -29,7 +28,7 @@ class AddMaxPhysicalHeight(
     private val wayFilter by lazy { """
         ways with
         highway ~ ${ALL_ROADS.joinToString("|")}
-        and maxheight = below_default
+        and (maxheight = below_default or source:maxheight ~ ".*estimat.*")
         and !maxheight:physical
         and access !~ private|no
         and vehicle !~ private|no
@@ -69,9 +68,15 @@ class AddMaxPhysicalHeight(
 
     override fun createForm() = AddHeightForm()
 
-    override fun applyAnswerTo(answer: Length, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, timestampEdited: Long) {
         // overwrite maxheight value but retain the info that there is no sign onto another tag
-        tags["maxheight"] = answer.toOsmValue()
+        tags["maxheight"] = answer.height.toOsmValue()
         tags["maxheight:signed"] = "no"
+
+        if (answer.isARMeasurement) {
+            tags["source:maxheight"] = "ARCore"
+        } else {
+            tags.remove("source:maxheight")
+        }
     }
 }

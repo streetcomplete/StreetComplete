@@ -15,7 +15,6 @@ class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_pedestrian
     override val hasMarkersAtEnds = true
-
     override val questTypeAchievements = listOf(RARE, PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>): Int =

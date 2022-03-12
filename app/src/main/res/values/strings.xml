@@ -307,6 +307,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile paving?"</string>
     <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile paving?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
+    <string name="quest_tactilePaving_incorrect">"Only on one side"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile paving?"</string>
@@ -1090,6 +1091,7 @@ Unfortunately, due to a Google Play Store policy, no links leading to donations 
     <string name="quest_bollard_type_foldable2">Foldable (with or without key)</string>
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixed (not removable)</string>
+    <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
     <string name="quest_camera_type_title">What type of surveillance camera is this?</string>
     <string name="quest_camera_type_dome">Dome</string>
     <string name="quest_camera_type_fixed">Fixed</string>
@@ -1159,9 +1161,10 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal to the path</string>
     <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>
-    <string name="quest_barrier_bicycle_type_single">Passage between two barriers</string>
+    <string name="quest_barrier_bicycle_type_single">Passage between barriers</string>
     <string name="quest_barrier_bicycle_type_double">Chicane - barrier on each side</string>
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
     <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
@@ -1227,6 +1230,7 @@ Alternatively, you can leave a note (with a photo)."</string>
 
     <string name="no_camera_permission_warning_title">Camera permission</string>
     <string name="no_camera_permission_warning">The permission is necessary to be able to take photos and to measure distances with the camera.</string>
+    <string name="no_camera_permission_toast">No camera permission</string>
     <string name="ar_measure">Measure</string>
     <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
     <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
@@ -1242,4 +1246,10 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_road_width_title">"What’s the width of this road here?"</string>
     <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
 
+    <string name="quest_seating_name_title">What kind of seating does this place have?</string>
+    <string name="quest_seating_takeaway">Takeaway only</string>
+    <string name="quest_seating_indoor_only">Indoor seating only</string>
+    <string name="quest_seating_outdoor_only">Outdoor seating only</string>
+    <string name="quest_seating_indoor_and_outdoor">Both indoor and outdoor seating</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because it may require checking during specific part of the year in order to verify outdoor seating."</string>
 </resources>

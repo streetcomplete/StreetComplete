@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentShowHtmlBinding
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.map.VectorTileProvider
+import de.westnordost.streetcomplete.view.viewBinding
 import org.koin.android.ext.android.inject
 
 /** Shows the privacy statement */

@@ -11,13 +11,6 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
 class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
-    override val changesetComment = "Add maximum allowed weight"
-    override val wikiLink = "Key:maxweight"
-    override val icon = R.drawable.ic_quest_max_weight
-    override val hasMarkersAtEnds = true
-
-    override val questTypeAchievements = listOf(CAR)
-
     override val elementFilter = """
         ways with
          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
@@ -34,6 +27,11 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
          and (access !~ private|no or (foot and foot !~ private|no))
          and area != yes
     """
+    override val changesetComment = "Add maximum allowed weight"
+    override val wikiLink = "Key:maxweight"
+    override val icon = R.drawable.ic_quest_max_weight
+    override val hasMarkersAtEnds = true
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_maxweight_title
 

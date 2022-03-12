@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -55,7 +55,7 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
         progressView.animate()
             .setStartDelay(0)
             .withStartAction(null)
-            .translationY(INITIAL_Y_OFFSET.toPx(requireContext()))
+            .translationY(requireContext().dpToPx(INITIAL_Y_OFFSET))
             .alpha(INITIAL_ALPHA)
             .scaleX(INITIAL_SCALE).scaleY(INITIAL_SCALE)
             .setDuration(IN_OUT_DURATION)
@@ -84,13 +84,13 @@ class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress) {
         progressView.scaleX = INITIAL_SCALE
         progressView.scaleY = INITIAL_SCALE
         progressView.alpha = INITIAL_ALPHA
-        progressView.translationY = INITIAL_Y_OFFSET.toPx(requireContext())
+        progressView.translationY = requireContext().dpToPx(INITIAL_Y_OFFSET)
     }
 
     companion object {
         const val INITIAL_SCALE = 0.1f
         const val INITIAL_ALPHA = 0.4f
-        const val INITIAL_Y_OFFSET = 140f
+        const val INITIAL_Y_OFFSET = 140
         const val IN_OUT_DURATION = 300L
     }
 }

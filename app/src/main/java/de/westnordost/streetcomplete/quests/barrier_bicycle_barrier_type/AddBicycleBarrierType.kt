@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 
-class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
+class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
 
     override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
     override val changesetComment = "Add specific cycle barrier type"
@@ -21,7 +21,10 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierType>() {
 
     override fun createForm() = AddBicycleBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BicycleBarrierType, tags: Tags, timestampEdited: Long) {
-        tags["cycle_barrier"] = answer.osmValue
+    override fun applyAnswerTo(answer: BicycleBarrierTypeAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
+            is BicycleBarrierType -> tags["cycle_barrier"] = answer.osmValue
+            BarrierTypeIsNotBicycleBarrier -> tags["barrier"] = "yes"
+        }
     }
 }

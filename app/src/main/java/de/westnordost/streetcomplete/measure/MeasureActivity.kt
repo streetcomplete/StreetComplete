@@ -16,6 +16,7 @@ import androidx.core.view.isInvisible
 import androidx.lifecycle.lifecycleScope
 import com.google.ar.core.Config
 import com.google.ar.core.HitResult
+import com.google.ar.core.Plane
 import com.google.ar.core.Pose
 import com.google.ar.core.Session
 import com.google.ar.core.TrackingState.TRACKING
@@ -47,6 +48,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.coroutines.resume
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -166,7 +168,17 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             } else {
                 val centerX = binding.arSceneViewContainer.width / 2f
                 val centerY = binding.arSceneViewContainer.height / 2f
-                val hitResult = frame.hitPlane(centerX, centerY)
+                val hitResults = frame.hitTest(centerX, centerY).filter {
+                    (it.trackable as? Plane)?.isPoseInPolygon(it.hitPose) == true
+                }
+                val firstNode = firstNode
+                val hitResult = if (firstNode == null) {
+                    hitResults.firstOrNull()
+                } else {
+                    /* after first node is placed on the plane, only accept hits with (other) planes
+                       that are more or less on the same height */
+                    hitResults.find { abs(it.hitPose.ty() - firstNode.worldPosition.y) < 0.1 }
+                }
 
                 if (hitResult != null) {
                     updateCursor(hitResult)
@@ -204,6 +216,8 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             val reason = result.reason
             if (reason == ArNotAvailableReason.AR_CORE_SDK_TOO_OLD) {
                 toast(R.string.ar_core_error_sdk_too_old)
+            } else if (reason == ArNotAvailableReason.NO_CAMERA_PERMISSION) {
+                toast(R.string.no_camera_permission_toast)
             }
             // otherwise nothing we can do here...
             finish()

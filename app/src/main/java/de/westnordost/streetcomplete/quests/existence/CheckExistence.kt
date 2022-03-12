@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests.existence
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
-import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -13,6 +11,8 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAnyKey
+import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 import java.util.concurrent.FutureTask
 
@@ -88,7 +88,6 @@ class CheckExistence(
     override val changesetComment = "Check if element still exists"
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
-
     override val questTypeAchievements = listOf(CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>): Int =

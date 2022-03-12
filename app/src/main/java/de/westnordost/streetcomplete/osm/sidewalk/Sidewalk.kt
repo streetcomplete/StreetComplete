@@ -7,10 +7,11 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 
-enum class Sidewalk(val osmValue: String) {
-    YES("yes"),
-    NO("no"),
-    SEPARATE("separate")
+enum class Sidewalk() {
+    YES,
+    NO,
+    SEPARATE,
+    INVALID
 }
 
 /** Value for the sidewalk=* key. Returns null for combinations that can't be expressed with the
@@ -24,12 +25,27 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
+val Sidewalk.osmValue: String get() = when (this) {
+    YES -> "yes"
+    NO -> "no"
+    SEPARATE -> "separate"
+    else -> {
+        throw IllegalStateException("Attempting to tag invalid sidewalk")
+    }
+}
+
 fun SidewalkSides.applyTo(tags: Tags) {
     val sidewalkValue = simpleOsmValue
     if (sidewalkValue != null) {
         tags["sidewalk"] = sidewalkValue
+        // In case of previous incomplete sidewalk tagging
+        tags.remove("sidewalk:left")
+        tags.remove("sidewalk:right")
+        tags.remove("sidewalk:both")
     } else {
         tags["sidewalk:left"] = left.osmValue
         tags["sidewalk:right"] = right.osmValue
+        // In case of previous incorrect sidewalk tagging
+        tags.remove("sidewalk:both")
     }
 }

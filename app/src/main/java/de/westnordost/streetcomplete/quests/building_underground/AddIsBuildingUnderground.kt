@@ -12,7 +12,6 @@ class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Determine whether building is fully underground"
     override val wikiLink = "Key:location"
     override val icon = R.drawable.ic_quest_building_underground
-
     override val questTypeAchievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>): Int =

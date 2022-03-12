@@ -5,11 +5,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.measure.ArSupportChecker
-import de.westnordost.streetcomplete.osm.Length
 
 class AddCyclewayWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmFilterQuestType<Length>() {
+) : OsmFilterQuestType<WidthAnswer>() {
 
     /* All either exclusive cycleways or ways that are cycleway + footway (or bridleway) but
      *  segregated */
@@ -18,14 +17,15 @@ class AddCyclewayWidth(
           (
             highway = cycleway
             and foot !~ yes|designated
-            and (!width or width older today -8 years)
+            and (!width or source:width ~ ".*estimat.*")
           ) or (
             segregated = yes
             and (
-              highway ~ cycleway|path|footway and bicycle != no
+              highway = cycleway and foot ~ yes|designated
+              or highway ~ path|footway and bicycle != no
               or highway = bridleway and bicycle ~ designated|yes
             )
-            and (!cycleway:width or cycleway:width older today -8 years)
+            and (!cycleway:width or source:cycleway:width ~ ".*estimat.*")
           )
         )
         and area != yes
@@ -40,17 +40,20 @@ class AddCyclewayWidth(
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
-    override fun getTitle(tags: Map<String, String>): Int = R.string.quest_cycleway_width_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_width_title
 
     override fun createForm() = AddWidthForm()
 
-    override fun applyAnswerTo(answer: Length, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, timestampEdited: Long) {
         val isExclusive = tags["highway"] == "cycleway" && tags["foot"] != "yes" && tags["foot"] != "designated"
 
-        if (isExclusive) {
-            tags["width"] = answer.toOsmValue()
+        val key = if (isExclusive) "width" else "cycleway:width"
+
+        tags[key] = answer.width.toOsmValue()
+        if (answer.isARMeasurement) {
+            tags["source:$key"] = "ARCore"
         } else {
-            tags["cycleway:width"] = answer.toOsmValue()
+            tags.remove("source:$key")
         }
     }
 }

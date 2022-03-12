@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -11,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
@@ -30,13 +30,11 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
          and takeaway != only
          and (!smoking or smoking older today -8 years)
     """
-
     override val changesetComment = "Add smoking status"
     override val wikiLink = "Key:smoking"
-    override val icon = R.drawable.ic_quest_smoke
+    override val icon = R.drawable.ic_quest_smoking
     override val isReplaceShopEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
@@ -61,5 +59,4 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.keys.containsAny(listOf("name", "brand"))
-
 }

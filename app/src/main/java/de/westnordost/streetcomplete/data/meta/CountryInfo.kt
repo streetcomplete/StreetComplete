@@ -22,7 +22,7 @@ enum class SpeedMeasurementUnit(private val displayString: String) {
 
 @Serializable
 enum class WeightMeasurementUnit(val displayString: String) {
-    @SerialName("ton") TON("TONS"),
+    @SerialName("ton") METRIC_TON("TONS"),
     @SerialName("short ton") SHORT_TON("TONS"),
     @SerialName("pound") POUND("POUNDS"),
 }

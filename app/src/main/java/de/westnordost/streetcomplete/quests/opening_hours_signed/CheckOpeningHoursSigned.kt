@@ -3,18 +3,17 @@ package de.westnordost.streetcomplete.quests.opening_hours_signed
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
-import de.westnordost.streetcomplete.data.meta.setCheckDateForKey
-import de.westnordost.streetcomplete.data.meta.toCheckDate
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.setCheckDateForKey
+import de.westnordost.streetcomplete.osm.toCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import java.time.Instant
 import java.time.LocalDateTime
@@ -43,8 +42,6 @@ class CheckOpeningHoursSigned (
         getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
             "$it < today -1 years"
         }
-
-    private val nameTags = listOf("name", "brand")
 
     override val changesetComment = "Check whether opening hours are signed"
     override val wikiLink = "Key:opening_hours:signed"
@@ -111,7 +108,7 @@ class CheckOpeningHoursSigned (
     private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(nameTags)
+        tags.containsKey("name") || tags.containsKey("brand")
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()

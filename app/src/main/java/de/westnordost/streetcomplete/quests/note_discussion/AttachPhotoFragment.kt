@@ -12,9 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
+import de.westnordost.streetcomplete.ktx.hasCameraPermission
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.lang.Exception
@@ -60,7 +61,11 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
     private suspend fun takePhoto() {
         try {
-            val filePath = launchTakePhoto(requireActivity()) ?: return
+            val filePath = launchTakePhoto(requireActivity())
+            if (filePath == null) {
+                if (activity?.hasCameraPermission == false) context?.toast(R.string.no_camera_permission_toast)
+                return
+            }
             noteImageAdapter.list.add(filePath)
             noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
         } catch (e: Exception) {

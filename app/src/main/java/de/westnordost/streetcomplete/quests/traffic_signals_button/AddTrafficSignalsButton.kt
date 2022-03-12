@@ -22,7 +22,6 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add whether traffic signals have a button for pedestrians"
     override val wikiLink = "Tag:highway=traffic_signals"
     override val icon = R.drawable.ic_quest_traffic_lights
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_button_title

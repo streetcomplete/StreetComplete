@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
 
@@ -34,7 +34,6 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
     override val changesetComment = "Add whether traffic signals have tactile indication that it's safe to cross"
     override val wikiLink = "Key:$VIBRATING_BUTTON"
     override val icon = R.drawable.ic_quest_blind_traffic_lights
-
     override val questTypeAchievements = listOf(BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_vibrate_title

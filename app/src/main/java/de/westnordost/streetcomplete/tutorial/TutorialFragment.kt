@@ -11,12 +11,12 @@ import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentTutorialBinding
-import de.westnordost.streetcomplete.ktx.toDp
-import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.ktx.dpToPx
+import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -91,7 +91,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         // map zooms in and tilts
-        val mapTranslate = (-50f).toPx(ctx)
+        val mapTranslate = ctx.dpToPx(-50)
         val mapRotate = 50f
         val mapScale = 1.5f
 
@@ -117,7 +117,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         tutorialStepIntro.animate()
             .setDuration(300)
             .alpha(0f)
-            .translationY(100f.toDp(ctx))
+            .translationY(ctx.pxToDp(100))
             .withEndAction { tutorialStepIntro.visibility = View.GONE }
             .start()
 
@@ -133,7 +133,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(400)
 
         // 2nd text fade in
-        binding.tutorialStepSolvingQuests.translationY = (-100f).toDp(ctx)
+        binding.tutorialStepSolvingQuests.translationY = ctx.pxToDp(-100)
         binding.tutorialStepSolvingQuests.animate()
             .withStartAction { binding.tutorialStepSolvingQuests.visibility = View.VISIBLE }
             .setDuration(300)
@@ -153,7 +153,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
             delay(400)
 
-            pin.translationY = (-200f).toDp(ctx)
+            pin.translationY = ctx.pxToDp(-200)
             pin.animate()
                 .setInterpolator(BounceInterpolator())
                 .setDuration(400)
@@ -176,12 +176,12 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         tutorialStepSolvingQuests.animate()
             .setDuration(300)
             .alpha(0f)
-            .translationY(100f.toDp(ctx))
+            .translationY(ctx.pxToDp(100))
             .withEndAction { tutorialStepSolvingQuests.visibility = View.GONE }
             .start()
 
         // 3rd text fade in
-        binding.tutorialStepStaySafe.translationY = (-100f).toDp(ctx)
+        binding.tutorialStepStaySafe.translationY = ctx.pxToDp(-100)
 
         delay(400)
 

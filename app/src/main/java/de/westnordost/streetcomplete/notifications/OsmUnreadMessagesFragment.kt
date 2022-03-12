@@ -12,11 +12,11 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUnreadOsmMessageBinding
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.tryStartActivity
-import de.westnordost.streetcomplete.ktx.viewBinding
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
+import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -68,7 +68,7 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         speechbubbleContentContainer.visibility = View.VISIBLE
         speechbubbleContentContainer.scaleX = 0.8f
         speechbubbleContentContainer.scaleY = 0.8f
-        speechbubbleContentContainer.translationY = 140f.toPx(ctx)
+        speechbubbleContentContainer.translationY = ctx.dpToPx(140)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.reset()
@@ -77,8 +77,8 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         binding.mailContainer.rotation = -40f
         binding.mailContainer.rotationY = -45f
         binding.mailContainer.alpha = 0.2f
-        binding.mailContainer.translationX = (-400f).toPx(ctx)
-        binding.mailContainer.translationY = (60f).toPx(ctx)
+        binding.mailContainer.translationX = ctx.dpToPx(-400)
+        binding.mailContainer.translationY = ctx.dpToPx(60)
         binding.mailContainer.animate().run {
             duration = 400
             startDelay = 200

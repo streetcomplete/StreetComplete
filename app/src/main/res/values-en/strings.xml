@@ -1229,5 +1229,4 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
     <string name="quest_road_width_title">"What’s the width of this road here?"</string>
     <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface like on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the roadway."</string>
-
 </resources>

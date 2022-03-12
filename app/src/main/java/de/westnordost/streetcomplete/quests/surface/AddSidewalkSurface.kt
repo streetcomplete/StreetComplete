@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.SIDEWALK_SURFACE_KEYS
-import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
-import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
@@ -25,11 +24,10 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
                 (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
             )
             and (
-                ${SIDEWALK_SURFACE_KEYS.joinToString(" and ") {"!$it"}}
+                !sidewalk:both:surface and !sidewalk:left:surface and !sidewalk:right:surface
                 or sidewalk:surface older today -8 years
             )
     """
-
     override val changesetComment = "Add surface of sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk_surface
@@ -37,7 +35,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
-    override fun getTitle(tags: Map<String, String>) : Int =
+    override fun getTitle(tags: Map<String, String>): Int =
         R.string.quest_sidewalk_surface_title
 
     override fun createForm() = AddSidewalkSurfaceForm()
@@ -85,8 +83,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             || previousBothOsmValue != null && previousBothOsmValue != osmValue
     }
 
-    private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags)
-    {
+    private fun applySidewalkSurfaceAnswerTo(surface: SurfaceAnswer, side: Side, tags: Tags) {
         val sidewalkKey = "sidewalk:" + side.value
         val sidewalkSurfaceKey = "$sidewalkKey:surface"
 
@@ -120,5 +117,4 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         tags.remove(sidewalkSurfaceKey)
         tags.remove("$sidewalkSurfaceKey:note")
     }
-
 }

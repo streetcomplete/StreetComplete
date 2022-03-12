@@ -6,4 +6,3 @@ data class SidewalkSurfaceAnswer(
 )
 
 data class SidewalkSurfaceSide(val surface: Surface)
-

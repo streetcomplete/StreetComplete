@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
@@ -45,7 +45,6 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>): Int {

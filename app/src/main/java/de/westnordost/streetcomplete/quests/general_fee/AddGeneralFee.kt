@@ -19,7 +19,6 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add fee info"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_fee
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_generalFee_title

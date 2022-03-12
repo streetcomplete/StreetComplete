@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.measure.ArSupportChecker
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 
 class AddRoadWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmFilterQuestType<Length>() {
+) : OsmFilterQuestType<WidthAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -26,8 +26,8 @@ class AddRoadWidth(
           or highway = service and service = alley
         )
         and area != yes
-        and !width
-        and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+        and (!width or source:width ~ ".*estimat.*")
+        and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
         and (access !~ private|no or (foot and foot !~ private|no))
         and placement != transition
     """
@@ -39,13 +39,20 @@ class AddRoadWidth(
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
-    override fun getTitle(tags: Map<String, String>): Int = R.string.quest_road_width_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_road_width_title
 
     override fun createForm() = AddWidthForm()
 
-    override fun applyAnswerTo(answer: Length, tags: Tags, timestampEdited: Long) {
-        tags["width"] = answer.toOsmValue()
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, timestampEdited: Long) {
+        tags["width"] = answer.width.toOsmValue()
+
+        if (answer.isARMeasurement) {
+            tags["source:width"] = "ARCore"
+        } else {
+            tags.remove("source:width")
+        }
+
         // update width:carriageway if it is set
-        if (tags.containsKey("width:carriageway")) tags["width:carriageway"] = answer.toOsmValue()
+        if (tags.containsKey("width:carriageway")) tags["width:carriageway"] = answer.width.toOsmValue()
     }
 }

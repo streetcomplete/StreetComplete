@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
-
 import org.junit.Test
 import java.time.LocalDate
 
@@ -103,7 +102,7 @@ class AddSidewalkSurfaceTest {
             mapOf("sidewalk:both:surface" to "asphalt", "sidewalk:both:smoothness" to "excellent"),
             SidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
             StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
-            StringMapEntryModify("sidewalk:both:surface", "asphalt","paving_stones")
+            StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
         )
     }
 
@@ -124,10 +123,10 @@ class AddSidewalkSurfaceTest {
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
-        assertTrue(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
+        assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 
     private fun assertIsNotApplicable(vararg pairs: Pair<String, String>) {
-        assertFalse(questType.isApplicableTo(way(nodes = listOf(1,2,3), tags = mapOf(*pairs))))
+        assertFalse(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 }

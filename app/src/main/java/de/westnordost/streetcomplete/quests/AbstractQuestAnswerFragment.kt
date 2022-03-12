@@ -21,7 +21,6 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -35,11 +34,12 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
-import de.westnordost.streetcomplete.ktx.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.ktx.geometryType
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.ktx.updateConfiguration
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
+import de.westnordost.streetcomplete.view.FragmentViewBindingPropertyDelegate
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

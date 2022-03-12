@@ -2,19 +2,19 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.data.meta.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.data.meta.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
-import de.westnordost.streetcomplete.data.meta.LAST_CHECK_DATE_KEYS
-import de.westnordost.streetcomplete.data.meta.isShopExpressionFragment
-import de.westnordost.streetcomplete.data.meta.removeCheckDates
-import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
+import de.westnordost.streetcomplete.osm.isShopExpressionFragment
+import de.westnordost.streetcomplete.osm.removeCheckDates
+import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
@@ -31,7 +31,6 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override val changesetComment = "Check if vacant shop is still vacant"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_vacant_type_title

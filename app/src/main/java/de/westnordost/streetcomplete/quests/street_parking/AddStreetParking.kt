@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.street_parking
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.toOsmConditionValue
@@ -45,7 +45,6 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
             or foot and foot !~ private|no
           )
     """
-
     /* On some roads, usually no-parking rules apply implicitly, so these are filtered out:
        - motorways, trunks (motorroads), pedestrian zones,
        - often priority roads (at least rural ones), roads where overtaking is forbidden

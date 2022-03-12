@@ -15,7 +15,6 @@ class AddFerryAccessMotorVehicle : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry
     override val hasMarkersAtEnds = true
-
     override val questTypeAchievements = listOf(RARE, CAR)
 
     override fun getTitle(tags: Map<String, String>): Int =
