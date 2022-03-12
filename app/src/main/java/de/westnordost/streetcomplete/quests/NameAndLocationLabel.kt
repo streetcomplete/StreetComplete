@@ -85,7 +85,7 @@ private fun Resources.getLevelLabel(tags: Map<String, String>): String? {
     if (level != null) {
         return getString(R.string.on_level, level)
     }
-    if (tags["tunnel"] == "yes" || tags["location"] == "underground") {
+    if (tags["tunnel"] == "yes" || tags["tunnel"] == "culvert" || tags["location"] == "underground") {
         return getString(R.string.underground)
     }
     return null
