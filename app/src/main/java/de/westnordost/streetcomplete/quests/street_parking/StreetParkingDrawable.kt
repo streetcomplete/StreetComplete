@@ -62,7 +62,7 @@ class StreetParkingDrawable(
             // drawing the street background
             if (backgroundResId != null) {
                 val background = context.getDrawable(backgroundResId)!!
-                val backgroundHeight = background.intrinsicHeight / background.intrinsicWidth * width
+                val backgroundHeight = (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
                 background.setBounds(0, 0, width, backgroundHeight)
                 background.draw(canvas)
             }
