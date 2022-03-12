@@ -27,7 +27,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val questTypeAchievements = listOf(RARE, WHEELCHAIR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_toiletsPart_title2
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 

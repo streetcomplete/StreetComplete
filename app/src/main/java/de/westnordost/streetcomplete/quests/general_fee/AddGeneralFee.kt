@@ -21,7 +21,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_fee
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_generalFee_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_generalFee_title2
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

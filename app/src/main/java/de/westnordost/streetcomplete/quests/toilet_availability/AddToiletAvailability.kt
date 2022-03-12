@@ -24,11 +24,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_toilets
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["highway"] == "rest_area" || tags["highway"] == "services")
-            R.string.quest_toiletAvailability_rest_area_title
-        else
-            R.string.quest_toiletAvailability_name_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletAvailability_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

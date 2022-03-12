@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -8,13 +7,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import java.util.concurrent.FutureTask
 
-class AddWheelchairAccessBusiness(
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -105,16 +100,7 @@ class AddWheelchairAccessBusiness(
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val questTypeAchievements = listOf(WHEELCHAIR)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (hasFeatureName(tags))
-            R.string.quest_wheelchairAccess_name_type_title
-        else
-            R.string.quest_wheelchairAccess_name_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        return arrayOfNotNull(name, featureName.value)
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
@@ -124,7 +110,4 @@ class AddWheelchairAccessBusiness(
     override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
         tags["wheelchair"] = answer.osmValue
     }
-
-    private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

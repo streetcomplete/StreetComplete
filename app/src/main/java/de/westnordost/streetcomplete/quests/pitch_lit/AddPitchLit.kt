@@ -25,11 +25,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_pitch_lantern
     override val questTypeAchievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["leisure"] == "track")
-            R.string.quest_pitchLit_title_track
-        else
-            R.string.quest_pitchLit_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

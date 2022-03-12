@@ -47,17 +47,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val type = tags["highway"]
-        val hasName = tags.containsKey("name")
-        val isRoad = LIT_NON_RESIDENTIAL_ROADS.contains(type) || LIT_RESIDENTIAL_ROADS.contains(type)
-
-        return when {
-            hasName -> R.string.quest_way_lit_named_title
-            isRoad  -> R.string.quest_way_lit_road_title
-            else    -> R.string.quest_way_lit_title
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title
 
     override fun createForm() = WayLitForm()
 

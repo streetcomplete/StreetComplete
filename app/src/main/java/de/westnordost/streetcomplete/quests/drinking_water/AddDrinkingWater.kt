@@ -25,10 +25,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
-        arrayOf(featureName.value.toString())
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""

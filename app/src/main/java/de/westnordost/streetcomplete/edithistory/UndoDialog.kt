@@ -11,7 +11,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -46,10 +45,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.koin.core.qualifier.named
 import org.sufficientlysecure.htmltextview.HtmlTextView
 import java.util.MissingFormatArgumentException
-import java.util.concurrent.FutureTask
 
 class UndoDialog(
     context: Context,
@@ -57,7 +54,6 @@ class UndoDialog(
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog), KoinComponent {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val featureDictionaryFutureTask: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val editHistoryController: EditHistoryController by inject()
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
@@ -129,7 +125,7 @@ class UndoDialog(
 
     private fun getQuestTitle(questType: QuestType<*>, element: Element?): CharSequence =
         try {
-            context.resources.getHtmlQuestTitle(questType, element, featureDictionaryFutureTask)
+            context.resources.getHtmlQuestTitle(questType, element)
         } catch (e: MissingFormatArgumentException) {
             /* The exception happens when the number of format strings in the quest title
              * differs from what can be "filled" by getHtmlQuestTitle. When does this happen?

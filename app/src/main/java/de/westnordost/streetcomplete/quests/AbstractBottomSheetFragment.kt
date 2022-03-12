@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
@@ -141,7 +142,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     }
 
     private fun updateCloseButtonVisibility() {
-        backButton?.isInvisible = (bottomSheet.top) > 0
+        backButton?.isGone = (bottomSheet.top) > 0
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {

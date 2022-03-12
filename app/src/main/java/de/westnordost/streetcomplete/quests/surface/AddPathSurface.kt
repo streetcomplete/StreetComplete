@@ -36,13 +36,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = when {
-        tags["area"] == "yes"          -> R.string.quest_streetSurface_square_title
-        tags["highway"] == "bridleway" -> R.string.quest_pathSurface_title_bridleway
-        tags["highway"] == "steps"     -> R.string.quest_pathSurface_title_steps
-        else                           -> R.string.quest_pathSurface_title
-        // rest is rather similar, can be called simply "path"
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
     override fun createForm() = AddPathSurfaceForm()
 

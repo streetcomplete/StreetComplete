@@ -4,8 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -22,25 +20,12 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
         and physically_present != no and naptan:BusStopType != HAR
         and (!bin or bin older today -4 years)
     """
-
     override val changesetComment = "Add whether a bus stop has a bin"
     override val wikiLink = "Key:bin"
     override val icon = R.drawable.ic_quest_bin_public_transport
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsAnyKey("name", "ref")
-        val isTram = tags["tram"] == "yes"
-        return when {
-            isTram && hasName ->    R.string.quest_busStopBin_tram_name_title
-            isTram ->               R.string.quest_busStopBin_tram_title
-            hasName ->              R.string.quest_busStopBin_name_title
-            else ->                 R.string.quest_busStopBin_title
-        }
-    }
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"] ?: tags["ref"])
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopBin_title2
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

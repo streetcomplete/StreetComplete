@@ -21,11 +21,7 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
     override val icon = R.drawable.ic_quest_religion
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsKey("name"))
-            R.string.quest_religion_for_place_of_worship_name_title
-        else
-            R.string.quest_religion_for_place_of_worship_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_religion_for_place_of_worship_title
 
     override fun createForm() = AddReligionForm()
 

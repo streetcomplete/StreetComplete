@@ -31,12 +31,11 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
-
     override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
+    override fun getTitleArgs(tags: Map<String, String>): Array<String> =
         arrayOfNotNull(tags["addr:streetnumber"] ?: tags["addr:housenumber"] ?: tags["addr:housename"])
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

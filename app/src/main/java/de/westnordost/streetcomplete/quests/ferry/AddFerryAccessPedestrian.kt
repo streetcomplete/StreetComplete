@@ -17,11 +17,7 @@ class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>() {
     override val hasMarkersAtEnds = true
     override val questTypeAchievements = listOf(RARE, PEDESTRIAN)
 
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsKey("name"))
-            R.string.quest_ferry_pedestrian_name_title
-        else
-            R.string.quest_ferry_pedestrian_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_pedestrian_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

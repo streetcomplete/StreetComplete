@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -37,16 +35,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (hasProperName(tags))
-            R.string.quest_smoking_name_type_title
-        else
-            R.string.quest_smoking_no_name_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        return arrayOfNotNull(name, featureName.value)
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_smoking_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
@@ -56,7 +45,4 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("smoking", answer.osmValue)
     }
-
-    private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(listOf("name", "brand"))
 }
