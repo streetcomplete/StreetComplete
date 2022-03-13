@@ -33,10 +33,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
     override val enabledInCountries = AllCountriesExcept("JP")
     override val questTypeAchievements = listOf(POSTMAN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
-
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> =
-        arrayOfNotNull(tags["addr:streetnumber"] ?: tags["addr:housenumber"] ?: tags["addr:housename"])
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mutableSetOf<Long>()

@@ -584,7 +584,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
 
-    <string name="quest_address_street_title">What street does (house) %s belong to?</string>
+    <string name="quest_address_street_title2">What street is this on?</string>
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_hint">Tap road on map</string>
