@@ -39,7 +39,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     override val changesetComment = "Add specific stile type"
     override val wikiLink = "Key:stile"
-    override val icon = R.drawable.ic_quest_cow
+    override val icon = R.drawable.ic_quest_no_cow
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(OUTDOORS)
 
