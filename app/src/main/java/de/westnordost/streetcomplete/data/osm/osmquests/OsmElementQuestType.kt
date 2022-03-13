@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 /** Quest type where each quest refers to an OSM element */
 interface OsmElementQuestType<T> : QuestType<T> {
