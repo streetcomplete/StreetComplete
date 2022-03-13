@@ -5,15 +5,13 @@ import android.content.res.Resources
 import androidx.test.platform.app.InstrumentationRegistry
 import de.westnordost.osmfeatures.AndroidFeatureDictionary
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.quests.getQuestTitle
+import de.westnordost.streetcomplete.quests.getNameAndLocationLabelString
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.Locale
 import java.util.concurrent.FutureTask
 
-class CheckExistenceTitleTest {
+class CheckExistenceLabelTest {
     private var featureDictionaryFuture: FutureTask<FeatureDictionary>
     private var englishResources: Resources
     private var questType: CheckExistence
@@ -32,62 +30,60 @@ class CheckExistenceTitleTest {
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2512
-    @Test fun issue2512() {
-        val newspaperVendingMachineWithName = getQuestTitle(mapOf(
+    @Test fun newspaperVendingMachineWithName() {
+        assertEquals("Bild (Newspaper Vending Machine)", getQuestLabel(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "name" to "Bild",
-        ))
-        assertEquals(newspaperVendingMachineWithName, "Is Bild (Newspaper Vending Machine) still here?")
+        )))
+    }
 
-        val newspaperVendingMachineWithBrand = getQuestTitle(mapOf(
+    // https://github.com/streetcomplete/StreetComplete/issues/2512
+    @Test fun newspaperVendingMachineWithBrand() {
+        assertEquals("Abendzeitung (Newspaper Vending Machine)", getQuestLabel(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "brand" to "Abendzeitung",
-        ))
-        assertEquals(newspaperVendingMachineWithBrand, "Is Abendzeitung (Newspaper Vending Machine) still here?")
+        )))
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2640
-    @Test fun issue2640() {
-        val postBox = getQuestTitle(mapOf(
+    @Test fun postBox() {
+        assertEquals("Deutsche Post (Mail Drop Box)", getQuestLabel(mapOf(
             "amenity" to "post_box",
             "brand" to "Deutsche Post",
             "operator" to "Deutsche Post AG",
             "ref" to "Hauptsmoorstr. 101, 96052 Bamberg",
-        ))
-        assertEquals(postBox, "Is Deutsche Post (Mail Drop Box) still here?")
+        )))
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2806
-    @Test fun issue2806() {
-        val namedBench = getQuestTitle(mapOf(
+    @Test fun namedBench() {
+        assertEquals("Sergey's Seat (Bench)", getQuestLabel(mapOf(
             "amenity" to "bench",
             "name" to "Sergey's Seat",
             "ref" to "600913",
             "brand" to "Google",
             "operator" to "Google RESTful",
-        ))
-        assertEquals(namedBench, "Is Sergey's Seat (Bench) still here?")
+        )))
+    }
 
-        val unnamedBench = getQuestTitle(mapOf(
+    // https://github.com/streetcomplete/StreetComplete/issues/2806
+    @Test fun unnamedBench() {
+        assertEquals("Bench", getQuestLabel(mapOf(
             "amenity" to "bench",
-        ))
-        assertEquals(unnamedBench, "Is this still here? (Bench)")
+        )))
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2840#issuecomment-831245075
-    @Test fun issue2840() {
-        val schoki = getQuestTitle(mapOf(
+    @Test fun schoki() {
+        assertEquals("Schoko Lädchen 3680 (Vending Machine)", getQuestLabel(mapOf(
             "amenity" to "vending_machine",
             "ref" to "3680",
             "operator" to "Schoko Lädchen",
-        ))
-        assertEquals(schoki, "Is Schoko Lädchen 3680 (Vending Machine) still here?")
+        )))
     }
 
-    private fun getQuestTitle(tags: Map<String, String>): String {
-        val element = Node(1, LatLon(0.0, 0.0), tags)
-        return englishResources.getQuestTitle(questType, element, featureDictionaryFuture)
-    }
+    private fun getQuestLabel(tags: Map<String, String>): String? =
+        englishResources.getNameAndLocationLabelString(tags, featureDictionaryFuture.get())?.toString()
 }

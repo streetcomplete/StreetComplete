@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.removeCheckDates
 
@@ -34,18 +33,12 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     override val isReplaceShopEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = when {
-        hasProperName(tags) -> R.string.quest_shop_type_title
-        else -> R.string.quest_shop_type_title_no_name
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_type_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = ShopTypeForm()
-
-    private fun hasProperName(tags: Map<String, String>): Boolean =
-        tags.keys.containsAny(listOf("name", "brand", "operator"))
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, timestampEdited: Long) {
         tags.removeCheckDates()

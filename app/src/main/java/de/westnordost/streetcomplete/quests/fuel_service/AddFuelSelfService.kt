@@ -20,17 +20,9 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:self_service"
     override val icon = R.drawable.ic_quest_fuel_self_service
     override val questTypeAchievements = listOf(CAR)
-
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        val hasBrand = tags.containsKey("brand")
-        return when {
-            hasName || hasBrand ->  R.string.quest_fuelSelfService_name_title
-            else ->                 R.string.quest_fuelSelfService_title
-        }
-    }
-
     override val enabledInCountries = NoCountriesExcept("IT", "UK")
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_fuelSelfService_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

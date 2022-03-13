@@ -8,8 +8,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.ktx.containsAnyKey
 
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
@@ -24,15 +22,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
         "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"] ?: tags["brand"] ?: tags["operator"])
-
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "operator"))
-            R.string.quest_postboxRef_name_title
-        else
-            R.string.quest_postboxRef_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxRef_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = post_box")

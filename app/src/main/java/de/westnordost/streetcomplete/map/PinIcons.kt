@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.map
 
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
+import de.westnordost.streetcomplete.quests.getNameLabel
 
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
     when (map["amenity"]) {
@@ -60,14 +60,14 @@ import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
     when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
     }
-    if (getHouseNumber(map) != null && getNameOrBrandOrOperatorOrRef(map) == null) {
+    if (getHouseNumber(map) != null && getNameLabel(map) == null) {
         return R.drawable.ic_none
     }
     return null
 }
 
 fun getTitle(map: Map<String, String>): String? {
-    return getNameOrBrandOrOperatorOrRef(map) ?: getHouseNumber(map)
+    return getNameLabel(map) ?: getHouseNumber(map)
 }
 
 private fun getHouseNumber(map: Map<String, String>): String? {

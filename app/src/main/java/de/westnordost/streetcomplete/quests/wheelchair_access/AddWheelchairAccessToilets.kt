@@ -21,14 +21,9 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(WHEELCHAIR)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags.containsKey("name"))
-            R.string.quest_wheelchairAccess_toilets_name_title
-        else
-            R.string.quest_wheelchairAccess_toilets_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 

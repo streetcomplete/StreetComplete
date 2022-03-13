@@ -28,11 +28,7 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
     override val isReplaceShopEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags.containsKey("name"))
-            R.string.quest_baby_changing_table_title
-        else
-            R.string.quest_baby_changing_table_toilets_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_baby_changing_table_title2
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

@@ -16,11 +16,7 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(RARE, CITIZEN, OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsKey("name"))
-            R.string.quest_tourism_information_name_title
-        else
-            R.string.quest_tourism_information_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_tourism_information_title
 
     override fun createForm() = AddInformationForm()
 

@@ -191,9 +191,9 @@ abstract class AbstractQuestAnswerFragment<T> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
+        binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement)
 
-        val levelLabelText = osmElement?.let { resources.getLocationLabelString(it.tags) }
+        val levelLabelText = osmElement?.let { resources.getNameAndLocationLabelString(it.tags, featureDictionary) }
         binding.titleHintLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
             binding.titleHintLabel.text = levelLabelText
@@ -306,7 +306,7 @@ abstract class AbstractQuestAnswerFragment<T> :
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
+        val questTitle = englishResources.getQuestTitle(questType, osmElement)
         listener?.onComposeNote(questKey, questTitle)
     }
 

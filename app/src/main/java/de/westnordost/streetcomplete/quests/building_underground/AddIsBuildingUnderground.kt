@@ -14,11 +14,7 @@ class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_building_underground
     override val questTypeAchievements = listOf(BUILDING)
 
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsKey("name"))
-            R.string.quest_building_underground_name_title
-        else
-            R.string.quest_building_underground_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_building_underground_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

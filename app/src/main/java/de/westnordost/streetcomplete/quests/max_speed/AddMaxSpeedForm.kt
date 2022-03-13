@@ -290,7 +290,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun askLit(onYes: () -> Unit, onNo: () -> Unit) {
         activity?.let {
             AlertDialog.Builder(it)
-                .setMessage(R.string.quest_way_lit_road_title)
+                .setMessage(R.string.quest_lit_title)
                 .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onYes() }
                 .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> onNo() }
                 .show()

@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -26,23 +25,11 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
 
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (hasFeatureName(tags))
-            R.string.quest_airConditioning_name_type_title
-        else
-            R.string.quest_airConditioning_no_name_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        return arrayOfNotNull(name, featureName.value)
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_airConditioning_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["air_conditioning"] = answer.toYesNo()
     }
-
-    private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        tags.containsKey("name") || tags.containsKey("brand")
 }

@@ -9,11 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.ktx.containsAnyKey
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.updateCheckDate
-import de.westnordost.streetcomplete.quests.getNameOrBrandOrOperatorOrRef
 import java.util.concurrent.FutureTask
 
 class CheckExistence(
@@ -90,15 +87,7 @@ class CheckExistence(
     override val icon = R.drawable.ic_quest_check
     override val questTypeAchievements = listOf(CITIZEN, OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (tags.containsAnyKey("name", "brand", "ref", "operator"))
-            R.string.quest_existence_name_title
-        else
-            R.string.quest_existence_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        return arrayOfNotNull(getNameOrBrandOrOperatorOrRef(tags), featureName.value)
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }

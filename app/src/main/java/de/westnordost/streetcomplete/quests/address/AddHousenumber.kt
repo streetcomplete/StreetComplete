@@ -24,7 +24,7 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
-
+    override val questTypeAchievements = listOf(POSTMAN)
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
@@ -35,8 +35,6 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
         "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
-
-    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
