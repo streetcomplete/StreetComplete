@@ -105,10 +105,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 
 
     <!-- Quest interface -->
-
-    <string name="label_location_name">%1$s: %2$s</string>
-    <string name="label_location_name_feature">%1$s: %2$s (%3$s)</string>
-    <string name="label_name_feature">%1$s (%2$s)</string>
     <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s</string>
     <string name="on_floor">on floor %s</string>
@@ -986,7 +982,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_noteDiscussion_closed2">"Closed by %1$s, %2$s"</string>
     <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_reopen2">"Reopened by %1$s, %2$s"</string>
-    <!-- first placeholder is the person, second placeholder is the date -->
+
     <string name="quest_noteDiscussion_hide2">"Hidden by %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
 
@@ -1344,14 +1340,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name %s?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
-    <!-- Placeholders: e.g. "it - Italian" -->
-    <string name="quest_streetName_menuItem_language_simple">%1$s – %2$s</string>
-    <!-- Placeholders: e.g. "es - Español  (Spanish)" -->
-    <string name="quest_streetName_menuItem_language_native">%1$s – %2$s (%3$s)</string>
-    <!-- Placeholders: e.g. "bg - Bulgarian, Cryllic" -->
-    <string name="quest_streetName_menuItem_language_with_script_simple">%1$s – %2$s, %3$s</string>
-    <!-- Placeholders: e.g. "bg - български (Bulgarian), Cryllic" -->
-    <string name="quest_streetName_menuItem_language_with_script_native">%1$s – %2$s (%3$s), %4$s</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
