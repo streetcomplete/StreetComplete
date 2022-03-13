@@ -786,6 +786,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_busStopRef_title2">"What’s the reference number of this stop?"</string>
 	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
 	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Does this stop have tactile paving?"</string>
