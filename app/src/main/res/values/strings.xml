@@ -106,13 +106,16 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 
     <!-- Quest interface -->
 
+    <string name="label_location_name">%1$s: %2$s</string>
+    <string name="label_location_name_feature">%1$s: %2$s (%3$s)</string>
+    <string name="label_name_feature">%1$s (%2$s)</string>
     <!-- caution: This is not the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">on level %s:</string>
-    <string name="on_floor">on floor %s:</string>
+    <string name="on_level">on level %s</string>
+    <string name="on_floor">on floor %s</string>
     <!-- as in: “Where is the metro station?” - “It is underground” -->
-    <string name="underground">underground:</string>
-    <string name="at_housename">house name %s:</string>
-    <string name="at_housenumber">house number %s:</string>
+    <string name="underground">underground</string>
+    <string name="at_housename">house name %s</string>
+    <string name="at_housenumber">house number %s</string>
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give any answer"</string>
 

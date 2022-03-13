@@ -12,29 +12,29 @@ import java.util.Locale
 
 fun Resources.getNameAndLocationLabelString(tags: Map<String, String>, featureDictionary: FeatureDictionary): Spanned? {
     val localeList = ConfigurationCompat.getLocales(configuration).toList()
-    val featureName = getFeatureName(tags, featureDictionary, localeList)
+    val feature = getFeatureName(tags, featureDictionary, localeList)
         ?.withNonBreakingSpaces()?.inItalics()
-    val nameLabel = getNameLabel(tags)?.withNonBreakingSpaces()?.inBold()
-    val levelLabel = getLevelLabel(tags)
-    val houseNumberLabel = getHouseNumberLabel(tags)
+    val name = getNameLabel(tags)?.withNonBreakingSpaces()?.inBold()
+    val level = getLevelLabel(tags)
 
-    val result = mutableListOf<String>()
-    if (levelLabel != null) {
-        result += levelLabel
-    }
     // only show housenumber if there is neither name nor level information
-    if (levelLabel == null && nameLabel == null && houseNumberLabel != null) {
-        result += houseNumberLabel
-    }
-    // if both name and feature name are available, put the feature name in parentheses
-    if (nameLabel != null) {
-        result += nameLabel
-        if (featureName != null) result += "($featureName)"
-    } else {
-        if (featureName != null) result += "$featureName"
-    }
+    val location = level ?: if (name == null) getHouseNumberLabel(tags) else null
 
-    return if (result.isEmpty()) null else result.joinToString(" ").parseAsHtml()
+    return if (location != null) {
+        if (name != null && feature != null) {
+            getString(R.string.label_location_name_feature, location, name, feature)
+        } else if (name != null || feature != null) {
+            getString(R.string.label_location_name, location, name ?: feature)
+        } else {
+            location
+        }
+    } else {
+        if (name != null && feature != null) {
+            getString(R.string.label_name_feature, name, feature)
+        } else {
+            name ?: feature
+        }
+    }?.parseAsHtml()
 }
 
 private fun getFeatureName(
