@@ -565,9 +565,9 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer “sidewalk”.</string>
 
     <string name="quest_address_title">"What is the house number of this building?"</string>
-        <string name="quest_address_house_number_label">House number:</string>
+    <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_answer_house_name">No house number but a name…</string>
-        <string name="quest_address_house_name_label">House name:</string>
+    <string name="quest_address_house_name_label">House name:</string>
     <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">house number</string>
     <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
@@ -576,7 +576,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
-        <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
+    <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
     <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma–separated house numbers or ranges.\nFor instance 1,3 or 2–6."</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
@@ -1326,7 +1326,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
     <string name="quest_streetName_answer_cantType">"Can’t type the characters on the sign"</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
-        <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
+    <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
 
 Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard, and Multiling O Keyboard."</string>
     <string name="quest_streetName_cantType_open_settings">Open settings</string>
