@@ -304,7 +304,7 @@ Unfortunately, due to a Google Play Store policy, no links leading to donations 
 
 
     <!-- Privacy screen -->
-    
+
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -360,7 +360,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
     <string name="quests_empty">You published no quest answers yet</string>
-    
+
     <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
@@ -529,7 +529,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <string name="action_deselect_all">Deselect all</string>
     <string name="pref_quests_deselect_all">Deselect all quests?</string>
-    
+
     <string name="action_manage_presets">Manage presets</string>
 
     <string name="action_reset">Reset</string>
@@ -562,18 +562,18 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer “sidewalk”.</string>
 
     <string name="quest_address_title">"What is the house number of this building?"</string>
-	    <string name="quest_address_house_number_label">House number:</string>
+        <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_answer_house_name">No house number but a name…</string>
-	    <string name="quest_address_house_name_label">House name:</string>
-	<!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
+        <string name="quest_address_house_name_label">House name:</string>
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">house number</string>
-	<!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_blocknumber">block number</string>
-	<!-- a unique house number within one place, only (still) used in Czechia, Slovakia https://de.wikipedia.org/wiki/Konskriptionsnummer -->
+    <!-- a unique house number within one place, only (still) used in Czechia, Slovakia https://de.wikipedia.org/wiki/Konskriptionsnummer -->
     <string name="quest_housenumber_conscription_number">Conscription number</string>
-	<!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
+    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
-	    <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
+        <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
     <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma–separated house numbers or ranges.\nFor instance 1,3 or 2–6."</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
@@ -774,21 +774,21 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"Is there a waste basket at this stop?"</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopLit_title2">"Is this stop lit?"</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"What’s the reference number of this stop?"</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
-	<!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Does this stop have tactile paving?"</string>
 
     <string name="quest_camera_type_title">What type of surveillance camera is this?</string>
@@ -948,7 +948,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_maxspeed_sign_question">What defines the speed limit?</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>
     <string name="quest_maxspeed_answer_zone2">"It’s within a (slow) zone"</string>
-	<string name="quest_maxspeed_answer_living_street">It is a living street</string>
+    <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_maxspeed_answer_noSign2">"No sign, defaults apply"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit…</string>
@@ -977,13 +977,13 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
-	<!-- first placeholder is the person, second placeholder is the date -->
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-	<!-- first placeholder is the person, second placeholder is the date -->
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_closed2">"Closed by %1$s, %2$s"</string>
-	<!-- first placeholder is the person, second placeholder is the date -->
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_reopen2">"Reopened by %1$s, %2$s"</string>
-	<!-- first placeholder is the person, second placeholder is the date -->
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_hide2">"Hidden by %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
 
@@ -1323,31 +1323,31 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
     <string name="quest_streetName_answer_cantType">"Can’t type the characters on the sign"</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
-	    <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
+        <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
 
 Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard, and Multiling O Keyboard."</string>
     <string name="quest_streetName_cantType_open_settings">Open settings</string>
     <string name="quest_streetName_cantType_open_store">Visit app store</string>
-	    <string name="quest_name_answer_noName">"It has no name…"</string>
+    <string name="quest_name_answer_noName">"It has no name…"</string>
     <string name="quest_streetName_answer_noName_question">"Why does it have no name?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"It is something like a driveway or parking aisle"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural or forest road"</string>
-	<string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
-	<string name="quest_streetName_answer_noName_noname">None of the above, it simply has no name</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
+    <string name="quest_streetName_answer_noName_noname">None of the above, it simply has no name</string>
     <string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name %s?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
-	<!-- Placeholders: e.g. "it - Italian" -->
+    <!-- Placeholders: e.g. "it - Italian" -->
     <string name="quest_streetName_menuItem_language_simple">%1$s – %2$s</string>
-	<!-- Placeholders: e.g. "es - Español  (Spanish)" -->
+    <!-- Placeholders: e.g. "es - Español  (Spanish)" -->
     <string name="quest_streetName_menuItem_language_native">%1$s – %2$s (%3$s)</string>
-	<!-- Placeholders: e.g. "bg - Bulgarian, Cryllic" -->
+    <!-- Placeholders: e.g. "bg - Bulgarian, Cryllic" -->
     <string name="quest_streetName_menuItem_language_with_script_simple">%1$s – %2$s, %3$s</string>
-	<!-- Placeholders: e.g. "bg - български (Bulgarian), Cryllic" -->
+    <!-- Placeholders: e.g. "bg - български (Bulgarian), Cryllic" -->
     <string name="quest_streetName_menuItem_language_with_script_native">%1$s – %2$s (%3$s), %4$s</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
