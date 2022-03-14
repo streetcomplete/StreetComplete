@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
 import de.westnordost.streetcomplete.ktx.forEachLine
-import de.westnordost.streetcomplete.util.normalizeDegrees
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.acos
@@ -82,14 +81,14 @@ fun LatLon.finalBearingTo(pos: LatLon): Double {
 
 /** Returns whether this point is right of the line spanned between start and the given bearing. */
 fun LatLon.isRightOf(lineStart: LatLon, bearing: Double): Boolean =
-    (lineStart.initialBearingTo(this) - bearing).normalizeDegrees(-180.0) > 0
+    normalizeDegrees(lineStart.initialBearingTo(this) - bearing, -180.0) > 0
 
 /** Returns whether this point is right of both the line spanned by p0 and p1 and the line
  *  spanned by p1 and p2 */
 fun LatLon.isRightOf(p0: LatLon, p1: LatLon, p2: LatLon): Boolean {
     val angle01 = p0.initialBearingTo(p1)
     val angle12 = p1.initialBearingTo(p2)
-    val turnsRight = (angle12 - angle01).normalizeDegrees(-180.0) > 0
+    val turnsRight = normalizeDegrees(angle12 - angle01, -180.0) > 0
     return if (turnsRight) {
         isRightOf(p0, angle01) && isRightOf(p1, angle12)
     } else {

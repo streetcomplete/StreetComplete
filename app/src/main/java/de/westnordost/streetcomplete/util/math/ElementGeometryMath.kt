@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.util.math
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.forEachLine
-import de.westnordost.streetcomplete.util.normalizeDegrees
 import kotlin.math.abs
 
 fun ElementPolylinesGeometry.getOrientationAtCenterLineInDegrees(): Float {
@@ -37,7 +36,7 @@ private fun List<LatLon>.isWithinDistanceAndAngleOf(other: List<LatLon>, maxDist
         other.forEachLine { otherFirst, otherSecond ->
             val bearing = first.initialBearingTo(second)
             val otherBearing = otherFirst.initialBearingTo(otherSecond)
-            val bearingDiff = abs((bearing - otherBearing).normalizeDegrees(-180.0))
+            val bearingDiff = abs(normalizeDegrees(bearing - otherBearing, -180.0))
             // two ways directly opposite each other should count as aligned
             val alignmentDiff = if (bearingDiff > 90) 180 - bearingDiff else bearingDiff
             val distance = first.distanceToArc(otherFirst, otherSecond)

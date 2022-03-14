@@ -1,27 +1,27 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.math
 
 import kotlin.math.PI
 
 /** returns a number between [startAt] - [startAt]+360 */
-fun Double.normalizeDegrees(startAt: Double = 0.0): Double {
-    var result = this % 360 // is now -360..360
+fun normalizeDegrees(value: Double, startAt: Double = 0.0): Double {
+    var result = value % 360 // is now -360..360
     result = (result + 360) % 360 // is now 0..360
     if (result > startAt + 360) result -= 360
     return result
 }
 
 /** returns a number between [startAt] - [startAt]+2PI */
-fun Double.normalizeRadians(startAt: Double = 0.0): Double {
+fun normalizeRadians(value: Double, startAt: Double = 0.0): Double {
     val pi2 = PI * 2
-    var result = this % pi2 // is now -2PI..2PI
+    var result = value % pi2 // is now -2PI..2PI
     result = (result + pi2) % pi2 // is now 0..2PI
     if (result > startAt + pi2) result -= pi2
     return result
 }
 
 /** returns a number between [startAt] - [startAt]+360 */
-fun Float.normalizeDegrees(startAt: Float = 0f): Float {
-    var result = this % 360 // is now -360..360
+fun normalizeDegrees(value: Float, startAt: Float = 0f): Float {
+    var result = value % 360 // is now -360..360
     result = (result + 360) % 360 // is now 0..360
     if (result > startAt + 360) result -= 360
     return result

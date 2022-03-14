@@ -39,7 +39,7 @@ import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.NO
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PARALLEL
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PERPENDICULAR
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.SEPARATE
-import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
@@ -226,7 +226,7 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
     }
 
     private fun isRoadDisplayedUpsideDown(): Boolean =
-        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

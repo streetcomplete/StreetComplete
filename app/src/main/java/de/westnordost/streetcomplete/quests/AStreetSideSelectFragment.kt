@@ -11,7 +11,7 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
-import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -194,7 +194,7 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
     }
 
     private fun isRoadDisplayedUpsideDown(): Boolean =
-        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

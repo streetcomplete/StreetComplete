@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 
 data class Transforms(
     val translationX: Float,
@@ -33,9 +34,9 @@ fun View.getTransformationsTo(other: View, commonParent: ViewGroup): Transforms 
     val scaleY = otherRect.height().toFloat() / rect.height().toFloat()
     val posX = otherRect.left - (1f - otherRect.width().toFloat() / rect.width().toFloat()) * pivotX
     val posY = otherRect.top - (1f - otherRect.height().toFloat() / rect.height().toFloat()) * pivotY
-    val rotation = (other.globalRotation - globalRotation).normalizeDegrees(-180f)
-    val rotationX = (other.globalRotationX - globalRotationX).normalizeDegrees(-180f)
-    val rotationY = (other.globalRotationY - globalRotationY).normalizeDegrees(-180f)
+    val rotation = normalizeDegrees(other.globalRotation - globalRotation, -180f)
+    val rotationX = normalizeDegrees(other.globalRotationX - globalRotationX, -180f)
+    val rotationY = normalizeDegrees(other.globalRotationY - globalRotationY, -180f)
 
     return Transforms(posX, posY, scaleX, scaleY, rotation, rotationX, rotationY)
 }

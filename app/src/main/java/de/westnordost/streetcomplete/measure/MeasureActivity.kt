@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ActivityMeasureBinding
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.createIntent
-import de.westnordost.streetcomplete.util.normalizeRadians
+import de.westnordost.streetcomplete.util.math.normalizeRadians
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.future.await
@@ -380,7 +380,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         val cameraToNodeDistanceOnPlane = sqrt((cameraPos.x - nodePos.x).pow(2) + (cameraPos.z - nodePos.z).pow(2))
         val cameraAngle = cameraPose.pitch
 
-        val normalizedCameraAngle = cameraAngle.toDouble().normalizeRadians(-PI)
+        val normalizedCameraAngle = normalizeRadians(cameraAngle.toDouble(), -PI)
         val pi2 = PI / 2
         if (normalizedCameraAngle < -pi2 * 2 / 3 || normalizedCameraAngle > +pi2 * 1 / 2) {
             setTrackingError(R.string.ar_core_tracking_error_too_steep_angle)
