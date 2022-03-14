@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewTimeRestrictionSelectBinding
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

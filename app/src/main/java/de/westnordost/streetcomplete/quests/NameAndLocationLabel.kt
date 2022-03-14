@@ -7,7 +7,7 @@ import androidx.core.os.ConfigurationCompat
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toList
+import de.westnordost.streetcomplete.util.ktx.toList
 import java.util.Locale
 
 fun Resources.getNameAndLocationLabelString(tags: Map<String, String>, featureDictionary: FeatureDictionary): Spanned? {

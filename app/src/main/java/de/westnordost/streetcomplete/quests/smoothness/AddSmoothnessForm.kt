@@ -12,8 +12,8 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.ktx.asImageSpan
-import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.asImageSpan
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.Surface

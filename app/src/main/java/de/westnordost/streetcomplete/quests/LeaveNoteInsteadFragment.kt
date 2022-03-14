@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

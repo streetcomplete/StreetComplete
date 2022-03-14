@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.core.graphics.withSave
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.isApril1st
+import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL

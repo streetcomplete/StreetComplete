@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
-import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.isInMultipolygon
+import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddLevel : OsmElementQuestType<String> {
 

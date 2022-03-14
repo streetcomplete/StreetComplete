@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.ktx.allExceptFirstAndLast
-import de.westnordost.streetcomplete.ktx.firstAndLast
+import de.westnordost.streetcomplete.util.ktx.allExceptFirstAndLast
+import de.westnordost.streetcomplete.util.ktx.firstAndLast
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS

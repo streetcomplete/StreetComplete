@@ -16,9 +16,9 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
-import de.westnordost.streetcomplete.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.ktx.hideKeyboard
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.viewBinding
 
 /** Bottom sheet fragment with which the user can create a new note, including moving the note */
 class CreateNoteFragment : AbstractCreateNoteFragment() {

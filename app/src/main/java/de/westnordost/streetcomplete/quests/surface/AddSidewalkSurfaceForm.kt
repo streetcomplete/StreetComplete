@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.sidewalk.imageResId
 import de.westnordost.streetcomplete.quests.sidewalk.titleResId
-import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -200,7 +200,7 @@ class AddSidewalkSurfaceForm : AbstractQuestFormAnswerFragment<SidewalkSurfaceAn
     }
 
     private fun isRoadDisplayedUpsideDown(): Boolean =
-        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

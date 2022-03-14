@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE

@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 
 abstract class ANameWithSuggestionsForm<T> : AbstractQuestFormAnswerFragment<T>() {
 

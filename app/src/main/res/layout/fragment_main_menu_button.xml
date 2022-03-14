@@ -22,7 +22,7 @@
 
     </FrameLayout>
 
-    <de.westnordost.streetcomplete.controls.TeamModeColorCircleView
+    <de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircleView
         android:id="@+id/teamModeColorCircle"
         android:layout_width="20dp"
         android:layout_height="20dp"

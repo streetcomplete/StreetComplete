@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {

@@ -6,7 +6,7 @@ import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
-import de.westnordost.streetcomplete.ktx.setPadding
+import de.westnordost.streetcomplete.util.ktx.setPadding
 
 /** Make the keyboard appear and disappear smoothly. Must be set on both
  *  setOnApplyWindowInsetsListener and setWindowInsetsAnimationCallback */

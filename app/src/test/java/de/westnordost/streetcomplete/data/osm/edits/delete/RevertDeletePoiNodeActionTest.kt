@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.delete
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.copy
+import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertEquals

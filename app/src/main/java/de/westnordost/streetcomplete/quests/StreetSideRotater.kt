@@ -5,8 +5,8 @@ import android.os.Looper
 import android.view.View
 import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.ktx.runImmediate
-import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.util.ktx.runImmediate
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.StreetRotateable
 
 class StreetSideRotater(

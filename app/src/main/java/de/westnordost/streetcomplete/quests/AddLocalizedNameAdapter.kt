@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.Menu.NONE
 import android.view.View
@@ -16,7 +15,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.util.DefaultTextWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -235,15 +234,13 @@ class AddLocalizedNameAdapter(
         private val buttonNameSuggestions: View = itemView.findViewById(R.id.nameSuggestionsButton)
 
         init {
-            autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
-                override fun afterTextChanged(s: Editable) {
-                    val name = s.toString()
-                    localizedName.name = name.trim()
-                    buttonNameSuggestions.isGone = name.isNotEmpty()
-                        || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
-                    for (listener in listeners) {
-                        listener(localizedName)
-                    }
+            autoCorrectInput.addTextChangedListener(TextChangedWatcher {
+                val name = autoCorrectInput.text.toString()
+                localizedName.name = name.trim()
+                buttonNameSuggestions.isGone = name.isNotEmpty()
+                    || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
+                for (listener in listeners) {
+                    listener(localizedName)
                 }
             })
 

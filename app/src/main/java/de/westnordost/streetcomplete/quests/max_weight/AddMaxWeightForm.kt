@@ -11,11 +11,11 @@ import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
-import de.westnordost.streetcomplete.ktx.numberOrNull
-import de.westnordost.streetcomplete.ktx.showKeyboard
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 

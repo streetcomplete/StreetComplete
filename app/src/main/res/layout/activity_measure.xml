@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <de.westnordost.streetcomplete.measure.HandMotionView
+    <de.westnordost.streetcomplete.screens.measure.HandMotionView
         android:id="@+id/handMotionView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -261,7 +261,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private fun isRoadDisplayedUpsideDown(): Boolean =
-        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

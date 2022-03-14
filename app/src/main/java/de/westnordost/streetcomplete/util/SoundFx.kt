@@ -39,7 +39,9 @@ class SoundFx(private val context: Context) {
     }
 
     suspend fun play(@RawRes resId: Int) = withContext(Dispatchers.IO) {
-        val isTouchSoundsEnabled = Settings.System.getInt(context.contentResolver, Settings.System.SOUND_EFFECTS_ENABLED, 1) != 0
+        val isTouchSoundsEnabled = Settings.System.getInt(context.contentResolver,
+            Settings.System.SOUND_EFFECTS_ENABLED,
+            1) != 0
         if (isTouchSoundsEnabled) {
             if (soundIds[resId] == 0) soundIds.put(resId, prepare(resId))
             soundPool.play(soundIds[resId], 1f, 1f, 1, 0, 1f)

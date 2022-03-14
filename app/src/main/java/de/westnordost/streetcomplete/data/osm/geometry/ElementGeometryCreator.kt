@@ -7,10 +7,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.util.centerPointOfPolygon
-import de.westnordost.streetcomplete.util.centerPointOfPolyline
-import de.westnordost.streetcomplete.util.isRingDefinedClockwise
+import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.centerPointOfPolygon
+import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
+import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */

@@ -13,11 +13,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.ktx.findNext
-import de.westnordost.streetcomplete.ktx.findPrevious
-import de.westnordost.streetcomplete.ktx.firstAndLast
-import de.westnordost.streetcomplete.ktx.indexOfMaxBy
+import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.findNext
+import de.westnordost.streetcomplete.util.ktx.findPrevious
+import de.westnordost.streetcomplete.util.ktx.firstAndLast
+import de.westnordost.streetcomplete.util.ktx.indexOfMaxBy
 import kotlinx.serialization.Serializable
 import java.lang.System.currentTimeMillis
 

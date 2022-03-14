@@ -14,10 +14,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.isCompletelyInside
-import de.westnordost.streetcomplete.util.isInMultipolygon
+import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.LatLonRaster
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 

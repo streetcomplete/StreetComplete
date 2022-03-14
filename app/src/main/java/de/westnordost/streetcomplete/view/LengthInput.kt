@@ -11,8 +11,8 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ViewLengthInputBinding
-import de.westnordost.streetcomplete.ktx.intOrNull
-import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters

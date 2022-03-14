@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.construction
 
 import android.app.DatePickerDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toInstant
+import de.westnordost.streetcomplete.util.ktx.toInstant
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import java.time.LocalDate

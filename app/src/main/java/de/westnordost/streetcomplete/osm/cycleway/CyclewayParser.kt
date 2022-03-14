@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE

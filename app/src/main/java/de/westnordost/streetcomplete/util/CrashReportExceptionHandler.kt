@@ -7,7 +7,8 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.sendEmail
+import de.westnordost.streetcomplete.util.ktx.toast
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -65,7 +66,7 @@ class CrashReportExceptionHandler(
             .setTitle(titleResourceId)
             .setMessage(R.string.crash_message)
             .setPositiveButton(R.string.crash_compose_email) { _, _ ->
-                sendEmail(activityCtx, mailReportTo, "Error Report", report)
+                activityCtx.sendEmail(mailReportTo, "Error Report", report)
             }
             .setNegativeButton(android.R.string.no) { _, _ ->
                 activityCtx.toast("\uD83D\uDE22")
