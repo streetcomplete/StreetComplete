@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 

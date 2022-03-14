@@ -26,4 +26,3 @@ private fun getTemplateArguments(questType: QuestType<*>, element: Element?): Ar
 
 private fun getQuestTitleResId(questType: QuestType<*>, element: Element?) =
     (questType as? OsmElementQuestType<*>)?.getTitle(element?.tags ?: emptyMap()) ?: questType.title
-
