@@ -6,10 +6,10 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import de.westnordost.streetcomplete.ktx.addedToFront
-import de.westnordost.streetcomplete.util.getSelectedLocale
-import de.westnordost.streetcomplete.util.getSystemLocales
-import de.westnordost.streetcomplete.util.setDefaultLocales
-import de.westnordost.streetcomplete.util.setLocales
+import de.westnordost.streetcomplete.util.android.getSelectedLocale
+import de.westnordost.streetcomplete.util.android.getSystemLocales
+import de.westnordost.streetcomplete.util.android.setDefaultLocales
+import de.westnordost.streetcomplete.util.android.setLocales
 import java.util.Locale
 
 open class BaseActivity : AppCompatActivity {

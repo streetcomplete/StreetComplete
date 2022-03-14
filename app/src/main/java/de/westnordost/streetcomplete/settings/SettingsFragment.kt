@@ -35,8 +35,8 @@ import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.measure.MeasureActivity
 import de.westnordost.streetcomplete.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.settings.debug.ShowQuestFormsActivity
-import de.westnordost.streetcomplete.util.getSelectedLocales
-import de.westnordost.streetcomplete.util.setDefaultLocales
+import de.westnordost.streetcomplete.util.android.getSelectedLocales
+import de.westnordost.streetcomplete.util.android.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

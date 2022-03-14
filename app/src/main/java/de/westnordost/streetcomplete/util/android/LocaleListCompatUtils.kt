@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.android
 
 import android.content.Context
 import android.content.res.Configuration

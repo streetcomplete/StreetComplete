@@ -39,9 +39,9 @@ import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.settings.settingsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.getSelectedLocale
-import de.westnordost.streetcomplete.util.getSystemLocales
-import de.westnordost.streetcomplete.util.setDefaultLocales
+import de.westnordost.streetcomplete.util.android.getSelectedLocale
+import de.westnordost.streetcomplete.util.android.getSystemLocales
+import de.westnordost.streetcomplete.util.android.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
