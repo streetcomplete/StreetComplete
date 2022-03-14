@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import de.westnordost.streetcomplete.util.distanceToArcs
+import de.westnordost.streetcomplete.util.math.distanceToArcs
 
 class AddSummitRegister : OsmElementQuestType<Boolean> {
 

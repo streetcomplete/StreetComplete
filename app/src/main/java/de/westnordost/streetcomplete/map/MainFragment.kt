@@ -85,11 +85,11 @@ import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.quests.SplitWayFragment
 import de.westnordost.streetcomplete.util.SoundFx
-import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.util.buildGeoUri
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.initialBearingTo
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.Dispatchers

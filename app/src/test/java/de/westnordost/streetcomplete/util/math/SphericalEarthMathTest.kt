@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.math
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.bbox

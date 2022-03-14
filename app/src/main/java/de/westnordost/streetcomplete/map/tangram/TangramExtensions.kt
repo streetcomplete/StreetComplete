@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.math.distanceTo
 
 fun ElementGeometry.toTangramGeometry(): List<Geometry> = when (this) {
     is ElementPolylinesGeometry -> {

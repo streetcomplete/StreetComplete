@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.QuestSourceDialogLayoutBinding
-import de.westnordost.streetcomplete.util.distanceToArcs
+import de.westnordost.streetcomplete.util.math.distanceToArcs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.ktx.pxToDp
 import de.westnordost.streetcomplete.ktx.toLatLon
 import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.Marker
-import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
+import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.pow

@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
-import de.westnordost.streetcomplete.util.intersect
+import de.westnordost.streetcomplete.util.math.intersect
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue

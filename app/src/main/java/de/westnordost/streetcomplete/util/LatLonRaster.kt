@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.util
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.max

@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.TextChangedWatcher
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

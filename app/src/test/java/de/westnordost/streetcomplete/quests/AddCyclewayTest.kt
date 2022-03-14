@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
-import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.util.math.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull

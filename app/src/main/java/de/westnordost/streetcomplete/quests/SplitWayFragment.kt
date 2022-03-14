@@ -33,9 +33,9 @@ import de.westnordost.streetcomplete.ktx.setMargins
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
-import de.westnordost.streetcomplete.util.alongTrackDistanceTo
-import de.westnordost.streetcomplete.util.crossTrackDistanceTo
-import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.math.alongTrackDistanceTo
+import de.westnordost.streetcomplete.util.math.crossTrackDistanceTo
+import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import de.westnordost.streetcomplete.view.viewBinding

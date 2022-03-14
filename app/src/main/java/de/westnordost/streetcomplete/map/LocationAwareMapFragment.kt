@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.map.tangram.screenBottomToCenterDistance
-import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.util.math.translate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.PI

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
-import de.westnordost.streetcomplete.util.translate
+import de.westnordost.streetcomplete.util.math.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue

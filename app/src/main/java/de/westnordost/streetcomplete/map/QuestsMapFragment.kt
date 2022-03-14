@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.math.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

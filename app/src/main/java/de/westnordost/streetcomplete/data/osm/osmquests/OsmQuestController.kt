@@ -23,9 +23,9 @@ import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.enlargedBy
+import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers

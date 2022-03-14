@@ -3,6 +3,12 @@ package de.westnordost.streetcomplete.util
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.util.math.centerLineOfPolyline
+import de.westnordost.streetcomplete.util.math.distanceToArc
+import de.westnordost.streetcomplete.util.math.enlargedBy
+import de.westnordost.streetcomplete.util.math.initialBearingTo
+import de.westnordost.streetcomplete.util.math.intersect
+import de.westnordost.streetcomplete.util.math.intersectsWith
 import kotlin.math.abs
 
 fun ElementPolylinesGeometry.getOrientationAtCenterLineInDegrees(): Float {

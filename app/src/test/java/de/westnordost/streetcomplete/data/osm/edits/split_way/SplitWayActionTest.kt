@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.testutils.waysAsMembers
-import de.westnordost.streetcomplete.util.createTranslated
+import de.westnordost.streetcomplete.util.math.createTranslated
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
