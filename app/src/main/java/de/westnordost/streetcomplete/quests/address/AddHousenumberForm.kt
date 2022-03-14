@@ -11,12 +11,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
-import de.westnordost.streetcomplete.ktx.showKeyboard
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {

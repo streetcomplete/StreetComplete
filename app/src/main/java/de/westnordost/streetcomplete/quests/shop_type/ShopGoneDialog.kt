@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.ktx.toTypedArray
+import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 
 class ShopGoneDialog(

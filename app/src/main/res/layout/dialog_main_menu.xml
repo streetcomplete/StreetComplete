@@ -43,7 +43,7 @@
             android:layout_gravity="fill_vertical"
             android:padding="16dp">
 
-            <de.westnordost.streetcomplete.controls.TeamModeColorCircleView
+            <de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircleView
                 android:id="@+id/teamModeColorCircle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

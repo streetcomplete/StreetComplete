@@ -6,7 +6,7 @@ package de.westnordost.streetcomplete.util.math
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
-import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.util.ktx.forEachLine
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.acos

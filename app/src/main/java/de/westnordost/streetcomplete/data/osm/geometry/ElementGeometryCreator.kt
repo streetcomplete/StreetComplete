@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise

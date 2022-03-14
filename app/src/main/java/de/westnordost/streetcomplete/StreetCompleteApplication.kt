@@ -31,17 +31,18 @@ import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
-import de.westnordost.streetcomplete.ktx.addedToFront
-import de.westnordost.streetcomplete.map.mapModule
-import de.westnordost.streetcomplete.measure.arModule
+import de.westnordost.streetcomplete.util.ktx.addedToFront
+import de.westnordost.streetcomplete.screens.main.map.mapModule
+import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
-import de.westnordost.streetcomplete.settings.settingsModule
-import de.westnordost.streetcomplete.util.android.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.android.getSelectedLocale
-import de.westnordost.streetcomplete.util.android.getSystemLocales
-import de.westnordost.streetcomplete.util.android.setDefaultLocales
+import de.westnordost.streetcomplete.screens.main.mainModule
+import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
+import de.westnordost.streetcomplete.screens.settings.settingsModule
+import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.getSelectedLocale
+import de.westnordost.streetcomplete.util.getSystemLocales
+import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -89,6 +90,7 @@ class StreetCompleteApplication : Application() {
                 elementGeometryModule,
                 mapDataModule,
                 mapModule,
+                mainModule,
                 maptilesModule,
                 metadataModule,
                 noteEditsModule,

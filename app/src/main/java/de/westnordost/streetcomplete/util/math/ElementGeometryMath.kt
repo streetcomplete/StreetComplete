@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.util.math
 
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.ktx.forEachLine
+import de.westnordost.streetcomplete.util.ktx.forEachLine
 import kotlin.math.abs
 
 fun ElementPolylinesGeometry.getOrientationAtCenterLineInDegrees(): Float {

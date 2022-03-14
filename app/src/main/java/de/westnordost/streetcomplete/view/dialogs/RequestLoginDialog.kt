@@ -6,7 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.user.UserActivity
+import de.westnordost.streetcomplete.screens.user.UserActivity
 
 /** Shows a dialog that asks the user to login */
 @SuppressLint("InflateParams")

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.equalsInOsm
+import de.westnordost.streetcomplete.util.ktx.equalsInOsm
 import de.westnordost.streetcomplete.util.math.measuredLength
 import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
 import kotlin.math.sign

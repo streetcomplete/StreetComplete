@@ -20,10 +20,10 @@ import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemsBinding
-import de.westnordost.streetcomplete.ktx.createBitmap
+import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider

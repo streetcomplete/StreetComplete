@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewDurationBinding
-import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
 /** Allows to input a duration, in days, hours or minutes */
