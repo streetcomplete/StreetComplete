@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.android
 
 import android.app.Activity
 import android.content.Context
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.util.sendEmail
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter

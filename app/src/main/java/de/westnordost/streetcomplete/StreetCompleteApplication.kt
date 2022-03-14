@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegm
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.settings.settingsModule
-import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.android.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.android.getSelectedLocale
 import de.westnordost.streetcomplete.util.android.getSystemLocales
 import de.westnordost.streetcomplete.util.android.setDefaultLocales

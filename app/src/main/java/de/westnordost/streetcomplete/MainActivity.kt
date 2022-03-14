@@ -49,7 +49,7 @@ import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUES
 import de.westnordost.streetcomplete.map.MainFragment
 import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment
 import de.westnordost.streetcomplete.tutorial.TutorialFragment
-import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.android.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
