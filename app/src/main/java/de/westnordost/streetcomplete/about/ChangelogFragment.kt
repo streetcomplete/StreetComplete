@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.ktx.getYamlStringMap
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel

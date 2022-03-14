@@ -28,7 +28,7 @@ import de.westnordost.streetcomplete.util.ViewPropertyAnimatorsPlayer
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 
 /** Shows details for a certain level of one achievement as a fake-dialog.
  *  There are two modes:

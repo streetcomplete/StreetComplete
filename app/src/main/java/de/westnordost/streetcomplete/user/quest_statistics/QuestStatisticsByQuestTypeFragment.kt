@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitB
 import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

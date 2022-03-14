@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
 import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.settings.genericQuestTitle
 import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 import org.koin.android.ext.android.inject
 
 /** activity only used in debug, to show all the different forms for the different quests. */

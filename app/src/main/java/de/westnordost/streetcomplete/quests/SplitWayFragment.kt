@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.util.math.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

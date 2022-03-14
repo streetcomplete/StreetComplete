@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.user.links.LinksFragment
 import de.westnordost.streetcomplete.user.profile.ProfileFragment
 import de.westnordost.streetcomplete.user.quest_statistics.QuestStatisticsFragment
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 
 /** Shows the viewpager with the user profile, user statistics, achievements and links */
 class UserFragment : Fragment(R.layout.fragment_user), HasTitle {

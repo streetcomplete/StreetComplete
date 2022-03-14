@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.map.tangram.KtMapController
 import de.westnordost.streetcomplete.map.tangram.MapChangingListener
 import de.westnordost.streetcomplete.map.tangram.initMap
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import de.westnordost.streetcomplete.view.viewBinding
+import de.westnordost.streetcomplete.util.android.viewBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl
