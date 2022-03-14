@@ -84,7 +84,7 @@ import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.quests.SplitWayFragment
-import de.westnordost.streetcomplete.util.SoundFx
+import de.westnordost.streetcomplete.util.android.SoundFx
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.util.buildGeoUri

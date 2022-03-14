@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.databinding.FragmentUnreadOsmMessageBinding
 import de.westnordost.streetcomplete.ktx.dpToPx
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.SoundFx
+import de.westnordost.streetcomplete.util.android.SoundFx
 import de.westnordost.streetcomplete.view.viewBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

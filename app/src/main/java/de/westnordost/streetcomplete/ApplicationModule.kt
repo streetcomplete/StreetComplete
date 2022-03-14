@@ -5,7 +5,7 @@ import android.content.res.AssetManager
 import android.content.res.Resources
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.util.android.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.SoundFx
+import de.westnordost.streetcomplete.util.android.SoundFx
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
