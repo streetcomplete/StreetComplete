@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.map.VectorTileProvider
-import de.westnordost.streetcomplete.util.enclosingTilesRect
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

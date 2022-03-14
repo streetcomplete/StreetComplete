@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon

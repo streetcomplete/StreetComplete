@@ -7,11 +7,11 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.util.TilesRect
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.enclosingTilePos
-import de.westnordost.streetcomplete.util.enclosingTilesRect
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.PI

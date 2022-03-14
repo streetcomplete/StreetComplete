@@ -86,7 +86,7 @@ import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.quests.SplitWayFragment
 import de.westnordost.streetcomplete.util.android.SoundFx
 import de.westnordost.streetcomplete.util.math.area
-import de.westnordost.streetcomplete.util.asBoundingBoxOfEnclosingTiles
+import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.initialBearingTo

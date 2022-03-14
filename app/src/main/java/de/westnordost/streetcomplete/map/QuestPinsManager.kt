@@ -16,10 +16,10 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.map.components.Pin
 import de.westnordost.streetcomplete.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.map.tangram.KtMapController
-import de.westnordost.streetcomplete.util.TilePos
-import de.westnordost.streetcomplete.util.TilesRect
-import de.westnordost.streetcomplete.util.enclosingTilesRect
-import de.westnordost.streetcomplete.util.minTileRect
+import de.westnordost.streetcomplete.data.download.tiles.TilePos
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
