@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ktx
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.CAMERA
+import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -16,6 +17,9 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
+import androidx.core.net.toUri
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.R
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
@@ -74,3 +78,20 @@ suspend fun Context.awaitReceiverCall(intentFilter: IntentFilter): Intent =
         registerReceiver(receiver, intentFilter)
         continuation.invokeOnCancellation { unregisterReceiver(receiver) }
     }
+
+fun Context.sendEmail(email: String, subject: String, text: String? = null) {
+    val intent = Intent(Intent.ACTION_SENDTO).apply {
+        data = "mailto:".toUri()
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+        putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " " + subject)
+        if (text != null) {
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+    }
+
+    try {
+        startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        toast(R.string.no_email_client)
+    }
+}
