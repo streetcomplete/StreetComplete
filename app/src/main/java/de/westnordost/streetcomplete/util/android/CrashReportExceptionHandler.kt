@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.sendEmail
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.util.sendEmail
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
