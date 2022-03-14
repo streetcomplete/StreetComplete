@@ -7,9 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
 import de.westnordost.streetcomplete.ktx.forEachLine
-import de.westnordost.streetcomplete.util.math.arcIntersection
-import de.westnordost.streetcomplete.util.math.toLatLon
-import de.westnordost.streetcomplete.util.math.toNormalOnSphere
 import de.westnordost.streetcomplete.util.normalizeDegrees
 import kotlin.math.PI
 import kotlin.math.abs

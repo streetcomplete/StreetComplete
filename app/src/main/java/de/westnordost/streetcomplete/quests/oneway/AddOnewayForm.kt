@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.valueOf
-import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText

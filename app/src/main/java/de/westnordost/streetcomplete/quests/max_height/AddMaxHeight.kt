@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.util.intersects
+import de.westnordost.streetcomplete.util.math.intersects
 
 class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
