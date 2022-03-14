@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.location
+package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -11,11 +11,11 @@ import android.view.View
 import androidx.annotation.Keep
 import androidx.appcompat.widget.AppCompatImageButton
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.location.LocationState.ALLOWED
-import de.westnordost.streetcomplete.location.LocationState.DENIED
-import de.westnordost.streetcomplete.location.LocationState.ENABLED
-import de.westnordost.streetcomplete.location.LocationState.SEARCHING
-import de.westnordost.streetcomplete.location.LocationState.UPDATING
+import de.westnordost.streetcomplete.controls.LocationState.ALLOWED
+import de.westnordost.streetcomplete.controls.LocationState.DENIED
+import de.westnordost.streetcomplete.controls.LocationState.ENABLED
+import de.westnordost.streetcomplete.controls.LocationState.SEARCHING
+import de.westnordost.streetcomplete.controls.LocationState.UPDATING
 
 /**
  * An image button which shows the current location state
@@ -134,6 +134,17 @@ class LocationStateButton @JvmOverloads constructor(
             }
         }
     }
+}
+
+enum class LocationState {
+    DENIED, // user declined to give this app access to location
+    ALLOWED, // user allowed this app to access location (but location disabled)
+    ENABLED, // location service is turned on (but no location request active)
+    SEARCHING, // requested location updates and waiting for first fix
+    UPDATING;
+
+    // receiving location updates
+    val isEnabled: Boolean get() = ordinal >= ENABLED.ordinal
 }
 
 private val LocationState.styleableAttributes: List<Int> get() =

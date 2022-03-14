@@ -104,7 +104,7 @@
                 android:src="@drawable/ic_subtract_24dp"
                 android:contentDescription="@string/map_btn_zoom_out"/>
 
-            <de.westnordost.streetcomplete.location.LocationStateButton
+            <de.westnordost.streetcomplete.controls.LocationStateButton
                 android:id="@+id/gpsTrackingButton"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"

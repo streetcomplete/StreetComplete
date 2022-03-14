@@ -72,7 +72,7 @@ import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequester
 import de.westnordost.streetcomplete.location.LocationRequester.Companion.REQUEST_LOCATION_PERMISSION_RESULT
-import de.westnordost.streetcomplete.location.LocationState
+import de.westnordost.streetcomplete.controls.LocationState
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
