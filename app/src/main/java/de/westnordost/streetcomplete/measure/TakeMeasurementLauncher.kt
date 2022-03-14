@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.measure.MeasureActivity.Companion.RESULT_ME
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
-import de.westnordost.streetcomplete.util.ActivityForResultLauncher
+import de.westnordost.streetcomplete.util.android.ActivityForResultLauncher
 
 /** Launches the MeasureActivity and returns its result */
 class TakeMeasurementLauncher(caller: ActivityResultCaller) {

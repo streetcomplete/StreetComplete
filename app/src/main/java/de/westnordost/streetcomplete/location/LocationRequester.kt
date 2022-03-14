@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitReceiverCall
 import de.westnordost.streetcomplete.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.ktx.isLocationEnabled
-import de.westnordost.streetcomplete.util.ActivityForResultLauncher
+import de.westnordost.streetcomplete.util.android.ActivityForResultLauncher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.suspendCancellableCoroutine

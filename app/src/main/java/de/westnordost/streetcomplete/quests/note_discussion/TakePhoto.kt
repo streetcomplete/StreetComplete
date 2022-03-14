@@ -12,7 +12,7 @@ import androidx.core.content.FileProvider
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.hasCameraPermission
-import de.westnordost.streetcomplete.util.ActivityForResultLauncher
+import de.westnordost.streetcomplete.util.android.ActivityForResultLauncher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import java.io.File
 import java.io.FileOutputStream

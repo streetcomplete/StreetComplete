@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.measure.ArNotAvailableReason.DEVICE_COMPATI
 import de.westnordost.streetcomplete.measure.ArNotAvailableReason.DEVICE_COMPATIBILITY_CHECK_TIMED_OUT
 import de.westnordost.streetcomplete.measure.ArNotAvailableReason.DEVICE_NOT_COMPATIBLE
 import de.westnordost.streetcomplete.measure.ArNotAvailableReason.NO_CAMERA_PERMISSION
-import de.westnordost.streetcomplete.util.ActivityForResultLauncher
+import de.westnordost.streetcomplete.util.android.ActivityForResultLauncher
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
