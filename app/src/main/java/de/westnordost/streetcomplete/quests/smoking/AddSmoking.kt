@@ -27,11 +27,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
          nodes, ways, relations with
          (
              amenity ~ bar|cafe|biergarten|restaurant|food_court
-             and (
-                 (!indoor_seating and !outdoor_seating)
-                 or (outdoor_seating and outdoor_seating != no)
-                 or (indoor_seating and indoor_seating != no)
-             )
+             and (indoor_seating != no or outdoor_seating != no)
              or leisure = outdoor_seating
              or amenity ~ nightclub|stripclub|pub
              or (
