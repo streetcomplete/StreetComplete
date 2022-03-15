@@ -7,7 +7,7 @@ This is a short and high-level overview what to find in which package
   - `elementfilter` - Parser and data model for the "Element filter expression" (Overpass-Wizard-like syntax used to filter OSM elements)
   - `maptiles` - Downloader and cache for (vector) map tiles of the background map
   - `meta` - Parsing and data model for country- or locale-specific metadata
-  - `notifications` - Control of notifications shown to the user
+  - `messages` - Control of messages shown to the user
   - `osm` - Management, download, persistence and upload of OSM map data: OSM map data itself, its geometry, quests generated from that and edits made on that data
   - `osmnotes` - Management, download, persistence and upload of OSM notes data: OSM notes data itself, quests generated from that, edits made on that data, attaching and upload of photos
   - `quest` - Management of quests, automatic upload behavior

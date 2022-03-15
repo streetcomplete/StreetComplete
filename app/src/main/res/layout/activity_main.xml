@@ -17,8 +17,8 @@
         android:layout_height="match_parent"/>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/notifications_container_fragment"
-        android:name="de.westnordost.streetcomplete.screens.main.notifications.NotificationsContainerFragment"
+        android:id="@+id/messages_container_fragment"
+        android:name="de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone"/>

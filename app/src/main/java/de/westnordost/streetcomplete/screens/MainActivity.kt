@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
-import de.westnordost.streetcomplete.data.notifications.Notification
+import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -46,8 +46,8 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.screens.main.MainFragment
-import de.westnordost.streetcomplete.screens.main.controls.NotificationButtonFragment
-import de.westnordost.streetcomplete.screens.main.notifications.NotificationsContainerFragment
+import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
+import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.location.LocationRequester
@@ -60,7 +60,7 @@ class MainActivity :
     BaseActivity(),
     MainFragment.Listener,
     TutorialFragment.Listener,
-    NotificationButtonFragment.Listener {
+    MessagesButtonFragment.Listener {
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val questAutoSyncer: QuestAutoSyncer by inject()
@@ -151,9 +151,9 @@ class MainActivity :
     }
 
     private fun forwardBackPressedToChildren(): Boolean {
-        val notificationsContainerFragment = notificationsContainerFragment
-        if (notificationsContainerFragment != null) {
-            if (notificationsContainerFragment.onBackPressed()) return true
+        val messagesContainerFragment = messagesContainerFragment
+        if (messagesContainerFragment != null) {
+            if (messagesContainerFragment.onBackPressed()) return true
         }
         val mainFragment = mainFragment
         if (mainFragment != null) {
@@ -195,9 +195,9 @@ class MainActivity :
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         findViewById<View>(R.id.main).requestLayout()
-        // recreate the NotificationsContainerFragment because it should load a new layout, see #2330
+        // recreate the MessagesContainerFragment because it should load a new layout, see #2330
         supportFragmentManager.commit {
-            replace(R.id.notifications_container_fragment, NotificationsContainerFragment())
+            replace(R.id.messages_container_fragment, MessagesContainerFragment())
         }
     }
 
@@ -277,14 +277,14 @@ class MainActivity :
         }
     }
 
-    /* --------------------------------- NotificationButtonFragment.Listener ---------------------------------- */
+    /* --------------------------------- MessagesButtonFragment.Listener ------------------------ */
 
-    override fun onClickShowNotification(notification: Notification) {
-        notificationsContainerFragment?.showNotification(notification)
+    override fun onClickShowMessage(message: Message) {
+        messagesContainerFragment?.showMessage(message)
     }
 
-    private val notificationsContainerFragment get() =
-        supportFragmentManager.findFragmentById(R.id.notifications_container_fragment) as? NotificationsContainerFragment
+    private val messagesContainerFragment get() =
+        supportFragmentManager.findFragmentById(R.id.messages_container_fragment) as? MessagesContainerFragment
 
     /* --------------------------------- MainFragment.Listener ---------------------------------- */
 

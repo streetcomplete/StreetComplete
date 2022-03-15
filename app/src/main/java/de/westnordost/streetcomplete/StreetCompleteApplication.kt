@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
-import de.westnordost.streetcomplete.data.notifications.notificationsModule
+import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.osm.created_elements.createdElementsModule
 import de.westnordost.streetcomplete.data.osm.edits.elementEditsModule
 import de.westnordost.streetcomplete.data.osm.geometry.elementGeometryModule
@@ -95,7 +95,7 @@ class StreetCompleteApplication : Application() {
                 metadataModule,
                 noteEditsModule,
                 notesModule,
-                notificationsModule,
+                messagesModule,
                 osmApiModule,
                 osmNoteQuestModule,
                 osmQuestModule,

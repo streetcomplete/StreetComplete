@@ -1,42 +1,42 @@
-package de.westnordost.streetcomplete.screens.main.notifications
+package de.westnordost.streetcomplete.screens.main.messages
 
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
-import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification
-import de.westnordost.streetcomplete.data.notifications.NewVersionNotification
-import de.westnordost.streetcomplete.data.notifications.Notification
-import de.westnordost.streetcomplete.data.notifications.OsmUnreadMessagesNotification
-import de.westnordost.streetcomplete.data.notifications.QuestSelectionHintNotification
+import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
+import de.westnordost.streetcomplete.data.messages.NewVersionMessage
+import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
+import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
 
-/** A fragment that contains any fragments that would show notifications.
- *  Usually, notifications are shown as dialogs, however there is currently one exception which
+/** A fragment that contains any fragments that would show messages.
+ *  Usually, messages are shown as dialogs, however there is currently one exception which
  *  makes this necessary as a fragment */
-class NotificationsContainerFragment :
-    Fragment(R.layout.fragment_notifications_container),
+class MessagesContainerFragment :
+    Fragment(R.layout.fragment_messages_container),
     HandlesOnBackPressed {
 
-    fun showNotification(notification: Notification) {
+    fun showMessage(message: Message) {
         val ctx = context ?: return
-        when (notification) {
-            is OsmUnreadMessagesNotification -> {
+        when (message) {
+            is OsmUnreadMessagesMessage -> {
                 OsmUnreadMessagesFragment
-                    .create(notification.unreadMessages)
+                    .create(message.unreadMessages)
                     .show(childFragmentManager, null)
             }
-            is NewVersionNotification -> {
-                WhatsNewDialog(ctx, notification.sinceVersion)
+            is NewVersionMessage -> {
+                WhatsNewDialog(ctx, message.sinceVersion)
                     .show()
             }
-            is NewAchievementNotification -> {
+            is NewAchievementMessage -> {
                 val f: Fragment = childFragmentManager.findFragmentById(R.id.achievement_info_fragment)!!
-                (f as AchievementInfoFragment).showNew(notification.achievement, notification.level)
+                (f as AchievementInfoFragment).showNew(message.achievement, message.level)
             }
-            is QuestSelectionHintNotification -> {
+            is QuestSelectionHintMessage -> {
                 AlertDialog.Builder(ctx)
                     .setTitle(R.string.quest_selection_hint_title)
                     .setMessage(R.string.quest_selection_hint_message)
