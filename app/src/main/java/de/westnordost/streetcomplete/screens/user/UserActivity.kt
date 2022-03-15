@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.login.LoginFragment

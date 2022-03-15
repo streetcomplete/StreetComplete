@@ -18,7 +18,6 @@ import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException
 import com.google.ar.core.exceptions.UnavailableException
 import com.google.ar.core.exceptions.UnavailableSdkTooOldException
 import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException
-import de.westnordost.streetcomplete.util.ktx.hasCameraPermission
 import de.westnordost.streetcomplete.screens.measure.ArNotAvailableReason.ANDROID_SDK_VERSION_TOO_OLD
 import de.westnordost.streetcomplete.screens.measure.ArNotAvailableReason.AR_CORE_APK_NOT_INSTALLED_OR_TOO_OLD
 import de.westnordost.streetcomplete.screens.measure.ArNotAvailableReason.AR_CORE_SDK_TOO_OLD
@@ -27,6 +26,7 @@ import de.westnordost.streetcomplete.screens.measure.ArNotAvailableReason.DEVICE
 import de.westnordost.streetcomplete.screens.measure.ArNotAvailableReason.DEVICE_NOT_COMPATIBLE
 import de.westnordost.streetcomplete.screens.measure.ArNotAvailableReason.NO_CAMERA_PERMISSION
 import de.westnordost.streetcomplete.util.ActivityForResultLauncher
+import de.westnordost.streetcomplete.util.ktx.hasCameraPermission
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine

@@ -10,9 +10,9 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.TAB_LABEL_VISIBILITY_LABELED
 import com.google.android.material.tabs.TabLayout.TAB_LABEL_VISIBILITY_UNLABELED
 import com.google.android.material.tabs.TabLayoutMediator
-import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUserBinding
+import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.links.LinksFragment
 import de.westnordost.streetcomplete.screens.user.profile.ProfileFragment

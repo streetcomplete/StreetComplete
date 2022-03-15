@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.databinding.FragmentShowLinksBinding
+import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.user.links.GroupedLinksAdapter
 import de.westnordost.streetcomplete.util.viewBinding
 import org.koin.android.ext.android.inject

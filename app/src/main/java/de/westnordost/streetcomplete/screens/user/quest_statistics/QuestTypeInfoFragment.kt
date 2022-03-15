@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.FragmentQuestTypeInfoDialogBinding
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
-import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlin.math.min
 import kotlin.math.pow
 

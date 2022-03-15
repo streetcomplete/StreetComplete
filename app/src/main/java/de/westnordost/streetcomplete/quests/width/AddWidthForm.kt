@@ -6,10 +6,10 @@ import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
-import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.screens.measure.TakeMeasurementLauncher
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.screens.measure.TakeMeasurementLauncher
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 

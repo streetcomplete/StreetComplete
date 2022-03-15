@@ -5,12 +5,12 @@ import android.graphics.PointF
 import android.location.Location
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
-import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
 import kotlin.math.PI
 import kotlin.math.cos

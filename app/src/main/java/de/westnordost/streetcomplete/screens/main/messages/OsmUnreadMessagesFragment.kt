@@ -12,10 +12,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentUnreadOsmMessageBinding
+import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

@@ -11,15 +11,15 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.util.ktx.intOrNull
-import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntRange
 

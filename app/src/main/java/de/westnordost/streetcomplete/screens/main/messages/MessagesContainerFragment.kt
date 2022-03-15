@@ -2,14 +2,14 @@ package de.westnordost.streetcomplete.screens.main.messages
 
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
+import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
 import de.westnordost.streetcomplete.data.messages.NewVersionMessage
-import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
+import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
+import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
 

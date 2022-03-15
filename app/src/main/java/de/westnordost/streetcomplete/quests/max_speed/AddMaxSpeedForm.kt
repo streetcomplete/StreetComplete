@@ -19,10 +19,6 @@ import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_P
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
-import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
-import de.westnordost.streetcomplete.util.ktx.intOrNull
-import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
-import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
@@ -31,6 +27,10 @@ import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NSL
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ZONE
+import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.TextChangedWatcher
 
 class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {

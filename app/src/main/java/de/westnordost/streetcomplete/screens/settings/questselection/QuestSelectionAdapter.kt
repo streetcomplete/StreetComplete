@@ -32,8 +32,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
-import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import de.westnordost.streetcomplete.util.ktx.containsAny
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

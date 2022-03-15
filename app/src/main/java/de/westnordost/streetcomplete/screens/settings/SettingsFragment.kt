@@ -17,7 +17,6 @@ import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
@@ -28,14 +27,15 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
-import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.getYamlObject
-import de.westnordost.streetcomplete.util.ktx.purge
-import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.measure.MeasureActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.util.getSelectedLocales
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.getYamlObject
+import de.westnordost.streetcomplete.util.ktx.purge
+import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

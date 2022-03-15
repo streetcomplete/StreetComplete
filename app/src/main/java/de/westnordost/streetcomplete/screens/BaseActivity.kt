@@ -5,9 +5,9 @@ import android.content.res.Configuration
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
+import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import de.westnordost.streetcomplete.util.setLocales
 import java.util.Locale

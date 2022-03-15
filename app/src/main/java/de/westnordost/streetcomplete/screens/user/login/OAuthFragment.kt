@@ -11,10 +11,10 @@ import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.screens.BackPressedListener
-import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
+import de.westnordost.streetcomplete.screens.BackPressedListener
+import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding

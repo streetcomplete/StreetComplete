@@ -8,11 +8,11 @@ import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.pxToDp
 
 /** Takes care of displaying "selected" pins */
 class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMapController) {

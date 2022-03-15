@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -25,9 +24,10 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentShowQuestFormsBinding
 import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
-import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.ListAdapter
 import org.koin.android.ext.android.inject
 
 /** activity only used in debug, to show all the different forms for the different quests. */

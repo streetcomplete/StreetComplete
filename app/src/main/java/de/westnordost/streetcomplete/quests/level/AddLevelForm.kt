@@ -7,10 +7,6 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
-import de.westnordost.streetcomplete.util.ktx.toShortString
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.screens.main.map.getPinIcon
-import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.level.SingleLevel
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
@@ -18,8 +14,12 @@ import de.westnordost.streetcomplete.osm.level.createSelectableLevels
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.view.TextChangedWatcher
+import de.westnordost.streetcomplete.screens.main.map.getPinIcon
+import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.util.ktx.toShortString
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -35,8 +35,8 @@ import com.google.ar.sceneform.rendering.ShapeFactory
 import com.google.ar.sceneform.rendering.ViewRenderable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ActivityMeasureBinding
-import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.screens.measure.MeasureActivity.Companion.createIntent
+import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.normalizeRadians
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

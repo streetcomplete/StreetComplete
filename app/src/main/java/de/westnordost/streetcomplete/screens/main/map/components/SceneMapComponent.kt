@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.mapzen.tangram.SceneUpdate
-import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.util.Locale

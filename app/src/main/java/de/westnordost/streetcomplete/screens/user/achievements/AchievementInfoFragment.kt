@@ -17,18 +17,18 @@ import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
-import de.westnordost.streetcomplete.util.ktx.tryStartActivity
+import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.user.links.LinksAdapter
+import de.westnordost.streetcomplete.util.ktx.tryStartActivity
+import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.Transforms
 import de.westnordost.streetcomplete.view.ViewPropertyAnimatorsPlayer
 import de.westnordost.streetcomplete.view.animateFrom
 import de.westnordost.streetcomplete.view.animateTo
 import de.westnordost.streetcomplete.view.applyTransforms
-import de.westnordost.streetcomplete.util.viewBinding
 
 /** Shows details for a certain level of one achievement as a fake-dialog.
  *  There are two modes:

@@ -11,11 +11,11 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ViewLengthInputBinding
-import de.westnordost.streetcomplete.util.ktx.intOrNull
-import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntRange

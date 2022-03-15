@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.screens.main
 
-import android.R
 import android.content.Context
 import android.location.Location
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -34,14 +34,14 @@ class QuestSourceIsSurveyChecker {
             dialogBinding.checkBoxDontShowAgain.isGone = timesShown < 1
 
             AlertDialog.Builder(context)
-                .setTitle(de.westnordost.streetcomplete.R.string.quest_source_dialog_title)
+                .setTitle(R.string.quest_source_dialog_title)
                 .setView(dialogBinding.root)
-                .setPositiveButton(de.westnordost.streetcomplete.R.string.quest_generic_confirmation_yes) { _, _ ->
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     ++timesShown
                     dontShowAgain = dialogBinding.checkBoxDontShowAgain.isChecked
                     if (cont.isActive) cont.resume(true)
                 }
-                .setNegativeButton(R.string.cancel) { _, _ ->
+                .setNegativeButton(android.R.string.cancel) { _, _ ->
                     if (cont.isActive) cont.resume(false)
                 }
                 .setOnCancelListener {
