@@ -9,16 +9,18 @@ import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.screens.measure.TakeMeasurementLauncher
+import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class AddHeightForm : AbstractQuestFormAnswerFragment<MaxPhysicalHeightAnswer>() {
+class AddMaxPhysicalHeightForm : AbstractQuestFormAnswerFragment<MaxPhysicalHeightAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_length
     private val binding by contentViewBinding(QuestLengthBinding::bind)
     private val takeMeasurement = TakeMeasurementLauncher(this)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
+    private lateinit var lengthInput: LengthInputViewController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +30,14 @@ class AddHeightForm : AbstractQuestFormAnswerFragment<MaxPhysicalHeightAnswer>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.lengthInput.maxFeetDigits = 2
-        binding.lengthInput.maxMeterDigitsBeforeDecimalPoint = 1
-        binding.lengthInput.selectableUnits = countryInfo.lengthUnits
-        binding.lengthInput.onInputChanged = {
+        lengthInput = binding.lengthInput.let {
+            LengthInputViewController(it.unitSelect, it.metersContainer, it.metersInput, it.feetInchesContainer, it.feetInput, it.inchesInput, R.layout.spinner_item_centered_large)
+        }
+        lengthInput.isCompactMode = true
+        lengthInput.maxFeetDigits = 2
+        lengthInput.maxMeterDigits = Pair(1, 2)
+        lengthInput.selectableUnits = countryInfo.lengthUnits
+        lengthInput.onInputChanged = {
             isARMeasurement = false
             checkIsFormComplete()
         }
@@ -40,17 +46,17 @@ class AddHeightForm : AbstractQuestFormAnswerFragment<MaxPhysicalHeightAnswer>()
     }
 
     private suspend fun takeMeasurement() {
-        val lengthUnit = binding.lengthInput.unit ?: return
+        val lengthUnit = lengthInput.unit ?: return
         val length = takeMeasurement(requireContext(), lengthUnit, true) ?: return
-        binding.lengthInput.length = length
+        lengthInput.length = length
         isARMeasurement = true
     }
 
-    override fun onClickOk() {
-        applyAnswer(MaxPhysicalHeightAnswer(binding.lengthInput.length!!, isARMeasurement))
-    }
+    override fun isFormComplete(): Boolean = lengthInput.length != null
 
-    override fun isFormComplete(): Boolean = binding.lengthInput.length != null
+    override fun onClickOk() {
+        applyAnswer(MaxPhysicalHeightAnswer(lengthInput.length!!, isARMeasurement))
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
