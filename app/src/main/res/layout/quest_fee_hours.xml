@@ -12,9 +12,10 @@
         android:textSize="16sp"
         android:text="@string/quest_fee_answer_yes_but"/>
 
-    <de.westnordost.streetcomplete.view.TimeRestrictionSelectView
-        android:id="@+id/timesView"
+    <include
+        android:id="@+id/timeRestrictionSelect"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        layout="@layout/view_time_restriction_select"/>
 
 </LinearLayout>

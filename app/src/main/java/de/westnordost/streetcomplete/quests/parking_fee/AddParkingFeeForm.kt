@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
-import android.os.Bundle
-import android.view.View
-import androidx.viewbinding.ViewBinding
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
@@ -12,15 +9,19 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_AT_HOURS
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_YES_NO
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.MAX_STAY
-import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.valueOf
-import de.westnordost.streetcomplete.view.DurationUnit
-import de.westnordost.streetcomplete.view.TimeRestriction.AT_ANY_TIME
-import de.westnordost.streetcomplete.view.TimeRestriction.EXCEPT_AT_HOURS
-import de.westnordost.streetcomplete.view.TimeRestriction.ONLY_AT_HOURS
+import de.westnordost.streetcomplete.view.controller.DurationInputViewController
+import de.westnordost.streetcomplete.view.controller.DurationUnit
+import de.westnordost.streetcomplete.view.controller.TimeRestriction.AT_ANY_TIME
+import de.westnordost.streetcomplete.view.controller.TimeRestriction.EXCEPT_AT_HOURS
+import de.westnordost.streetcomplete.view.controller.TimeRestriction.ONLY_AT_HOURS
+import de.westnordost.streetcomplete.view.controller.TimeRestrictionSelectViewController
 
 class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAndMaxStay>() {
 
-    private var binding: ViewBinding? = null
+    private var feeAtHoursSelect: TimeRestrictionSelectViewController? = null
+
+    private var maxstayDurationInput: DurationInputViewController? = null
+    private var maxstayAtHoursSelect: TimeRestrictionSelectViewController? = null
 
     override val buttonPanelAnswers get() =
         if (mode == FEE_YES_NO) listOf(
@@ -36,90 +37,103 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAndMaxStay>() {
 
     private var mode: Mode = FEE_YES_NO
         set(value) {
+            if (field == value) return
             field = value
-            binding = when (mode) {
-                FEE_YES_NO -> null
-                FEE_AT_HOURS -> QuestFeeHoursBinding.bind(setContentView(R.layout.quest_fee_hours))
-                MAX_STAY -> QuestMaxstayBinding.bind(setContentView(R.layout.quest_maxstay))
-            }
-            onContentViewBound()
+            updateContentView()
             updateButtonPanel()
         }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mode = savedInstanceState?.getString(MODE)?.let { valueOf(it) } ?: FEE_YES_NO
-        checkIsFormComplete()
+    private fun updateContentView() {
+        clearViewControllers()
+
+        if (mode == FEE_AT_HOURS) {
+            val binding = QuestFeeHoursBinding.bind(setContentView(R.layout.quest_fee_hours))
+
+            feeAtHoursSelect = TimeRestrictionSelectViewController(
+                binding.timeRestrictionSelect.selectAtHours,
+                binding.timeRestrictionSelect.openingHoursList,
+                binding.timeRestrictionSelect.addTimesButton
+            ).also {
+                it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
+                it.regularShoppingDays = countryInfo.regularShoppingDays
+                it.onInputChanged = { checkIsFormComplete() }
+                // user already answered that it depends on the time, so don't show the "at any time" option
+                it.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
+            }
+        } else if (mode == MAX_STAY) {
+            val binding = QuestMaxstayBinding.bind(setContentView(R.layout.quest_maxstay))
+
+            maxstayDurationInput = DurationInputViewController(
+                binding.durationInput.unitSelect,
+                binding.durationInput.input
+            ).also {
+                it.onInputChanged = { checkIsFormComplete() }
+            }
+            maxstayAtHoursSelect = TimeRestrictionSelectViewController(
+                binding.timeRestrictionSelect.selectAtHours,
+                binding.timeRestrictionSelect.openingHoursList,
+                binding.timeRestrictionSelect.addTimesButton
+            ).also {
+                it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
+                it.regularShoppingDays = countryInfo.regularShoppingDays
+                it.onInputChanged = { checkIsFormComplete() }
+            }
+        }
     }
 
-    private fun onContentViewBound() {
-        val binding = binding
-        if (binding is QuestFeeHoursBinding) {
-            binding.timesView.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
-            binding.timesView.regularShoppingDays = countryInfo.regularShoppingDays
-            binding.timesView.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
-            binding.timesView.onInputChanged = { checkIsFormComplete() }
-        } else if (binding is QuestMaxstayBinding) {
-            binding.timesView.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
-            binding.timesView.regularShoppingDays = countryInfo.regularShoppingDays
-            binding.timesView.onInputChanged = { checkIsFormComplete() }
-            binding.durationInput.onInputChanged = { checkIsFormComplete() }
-        }
+    private fun clearViewControllers() {
+        feeAtHoursSelect = null
+        maxstayAtHoursSelect = null
+        maxstayDurationInput = null
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        clearViewControllers()
     }
 
     override fun onClickOk() {
-        val binding = binding
-        if (binding is QuestFeeHoursBinding) {
-            val hours = binding.timesView.hours.toOpeningHoursRules()
-            val fee = when (binding.timesView.timeRestriction) {
-                AT_ANY_TIME -> HasFee
-                ONLY_AT_HOURS -> HasFeeAtHours(hours)
-                EXCEPT_AT_HOURS -> HasFeeExceptAtHours(hours)
-            }
-            applyAnswer(FeeAndMaxStay(fee))
-        } else if (binding is QuestMaxstayBinding) {
-            val duration = MaxstayDuration(
-                binding.durationInput.durationValue,
-                when (binding.durationInput.durationUnit) {
-                    DurationUnit.MINUTES -> Maxstay.Unit.MINUTES
-                    DurationUnit.HOURS -> Maxstay.Unit.HOURS
-                    DurationUnit.DAYS -> Maxstay.Unit.DAYS
+        when (mode) {
+            FEE_AT_HOURS -> {
+                val hours = feeAtHoursSelect!!.times.toOpeningHoursRules()
+                val fee = when (feeAtHoursSelect!!.timeRestriction) {
+                    AT_ANY_TIME -> HasFee
+                    ONLY_AT_HOURS -> HasFeeAtHours(hours)
+                    EXCEPT_AT_HOURS -> HasFeeExceptAtHours(hours)
                 }
-            )
-            val hours = binding.timesView.hours.toOpeningHoursRules()
-            val maxstay = when (binding.timesView.timeRestriction) {
-                AT_ANY_TIME -> duration
-                ONLY_AT_HOURS -> MaxstayAtHours(duration, hours)
-                EXCEPT_AT_HOURS -> MaxstayExceptAtHours(duration, hours)
+                applyAnswer(FeeAndMaxStay(fee))
             }
-            applyAnswer(FeeAndMaxStay(HasNoFee, maxstay))
+            MAX_STAY -> {
+                val duration = MaxstayDuration(
+                    maxstayDurationInput!!.durationValue,
+                    when (maxstayDurationInput!!.durationUnit) {
+                        DurationUnit.MINUTES -> Maxstay.Unit.MINUTES
+                        DurationUnit.HOURS -> Maxstay.Unit.HOURS
+                        DurationUnit.DAYS -> Maxstay.Unit.DAYS
+                    }
+                )
+                val hours = maxstayAtHoursSelect!!.times.toOpeningHoursRules()
+                val maxstay = when (maxstayAtHoursSelect!!.timeRestriction) {
+                    AT_ANY_TIME -> duration
+                    ONLY_AT_HOURS -> MaxstayAtHours(duration, hours)
+                    EXCEPT_AT_HOURS -> MaxstayExceptAtHours(duration, hours)
+                }
+                applyAnswer(FeeAndMaxStay(HasNoFee, maxstay))
+            }
+            else -> {}
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(MODE, mode.name)
-    }
-
-    override fun isRejectingClose() = when (val binding = binding) {
-        is QuestFeeHoursBinding -> binding.timesView.hours.isNotEmpty()
-        is QuestMaxstayBinding ->  binding.timesView.isComplete || binding.durationInput.durationValue > 0.0
+    override fun isRejectingClose() = when (mode) {
+        FEE_AT_HOURS -> feeAtHoursSelect!!.isComplete
+        MAX_STAY -> maxstayAtHoursSelect!!.isComplete || maxstayDurationInput!!.durationValue > 0.0
         else -> false
     }
 
-    override fun isFormComplete() = when (val binding = binding) {
-        is QuestFeeHoursBinding -> binding.timesView.hours.isNotEmpty()
-        is QuestMaxstayBinding -> binding.timesView.isComplete && binding.durationInput.durationValue > 0.0
+    override fun isFormComplete() = when (mode) {
+        FEE_AT_HOURS -> feeAtHoursSelect!!.isComplete
+        MAX_STAY -> maxstayAtHoursSelect!!.isComplete && maxstayDurationInput!!.durationValue > 0.0
         else -> false
-    }
-
-    companion object {
-        private const val MODE = "mode"
     }
 
     private enum class Mode { FEE_YES_NO, FEE_AT_HOURS, MAX_STAY }

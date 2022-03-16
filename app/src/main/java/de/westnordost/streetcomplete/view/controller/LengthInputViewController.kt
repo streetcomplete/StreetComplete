@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntRange
 
-/** Manages inputting a length in any of the units specified in [selectableUnits] */
+/** Manages inputting a length in any of the units specified in meters or feet+inch. */
 class LengthInputViewController(
     private val unitSelect: Spinner,
     private val metersContainer: ViewGroup,
