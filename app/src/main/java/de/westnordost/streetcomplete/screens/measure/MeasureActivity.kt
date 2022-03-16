@@ -163,8 +163,10 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         setTrackingError(frame.camera.trackingFailureReason.messageResId)
 
         if (frame.camera.trackingState == TRACKING) {
-            if (measureState == MeasureState.MEASURING && measureVertical) {
-                updateVerticalMeasuring(frame.camera.displayOrientedPose)
+            if (measureVertical) {
+                if (measureState == MeasureState.MEASURING){
+                    updateVerticalMeasuring(frame.camera.displayOrientedPose)
+                }
             } else {
                 val centerX = binding.arSceneViewContainer.width / 2f
                 val centerY = binding.arSceneViewContainer.height / 2f
