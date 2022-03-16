@@ -37,8 +37,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
             metersInput = view.findViewById(R.id.meterInput),
             feetInchesContainer = view.findViewById(R.id.feetInputSign),
             feetInput = view.findViewById(R.id.feetInput),
-            inchesInput = view.findViewById(R.id.inchInput),
-            R.layout.spinner_item_centered
+            inchesInput = view.findViewById(R.id.inchInput)
         )
         lengthInput.maxFeetDigits = 2
         lengthInput.maxMeterDigits = Pair(1, 2)

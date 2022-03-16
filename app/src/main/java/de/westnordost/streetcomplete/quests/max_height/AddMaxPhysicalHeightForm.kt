@@ -31,8 +31,9 @@ class AddMaxPhysicalHeightForm : AbstractQuestFormAnswerFragment<MaxPhysicalHeig
         super.onViewCreated(view, savedInstanceState)
 
         lengthInput = binding.lengthInput.let {
-            LengthInputViewController(it.unitSelect, it.metersContainer, it.metersInput, it.feetInchesContainer, it.feetInput, it.inchesInput, R.layout.spinner_item_centered_large)
+            LengthInputViewController(it.unitSelect, it.metersContainer, it.metersInput, it.feetInchesContainer, it.feetInput, it.inchesInput)
         }
+        lengthInput.unitSelectItemResId = R.layout.spinner_item_centered_large
         lengthInput.isCompactMode = true
         lengthInput.maxFeetDigits = 2
         lengthInput.maxMeterDigits = Pair(1, 2)

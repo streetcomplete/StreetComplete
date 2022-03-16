@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
@@ -26,27 +27,12 @@ class LengthInputViewController(
     private val metersInput: EditText,
     private val feetInchesContainer: ViewGroup,
     private val feetInput: EditText,
-    private val inchesInput: EditText,
-    @LayoutRes private val unitSelectItemResId: Int,
-    ) {
+    private val inchesInput: EditText
+) {
+
     var onInputChanged: (() -> Unit)? = null
 
-    init {
-        unitSelect.onItemSelectedListener = OnAdapterItemSelectedListener {
-            updateInputFieldsVisibility()
-            onInputChanged?.invoke()
-        }
-
-        feetInput.filters = arrayOf(acceptIntDigits(4))
-        inchesInput.filters = arrayOf(acceptIntRange(0 until 12))
-        metersInput.filters = arrayOf(acceptDecimalDigits(3, 2))
-
-        metersInput.addTextChangedListener { onInputChanged?.invoke() }
-        feetInput.addTextChangedListener { onInputChanged?.invoke() }
-        inchesInput.addTextChangedListener { onInputChanged?.invoke() }
-
-        updateInputFieldsVisibility()
-    }
+    @LayoutRes var unitSelectItemResId: Int = R.layout.spinner_item_centered
 
     /** if true, only hides the unit select spinner if the only selectable unit is foot+inch.
      *  Otherwise, the unit select spinner is hidden if there is only one selectable unit. */
@@ -71,7 +57,7 @@ class LengthInputViewController(
         }
 
     /** set/get which units can be selected from the dropdown */
-    var selectableUnits: List<LengthUnit> = emptyList()
+    var selectableUnits: List<LengthUnit> = LengthUnit.values().toList()
         set(value) {
             field = value
             unitSelect.isEnabled = value.size > 1
@@ -120,6 +106,23 @@ class LengthInputViewController(
                 null -> {}
             }
         }
+
+    init {
+        unitSelect.onItemSelectedListener = OnAdapterItemSelectedListener {
+            updateInputFieldsVisibility()
+            onInputChanged?.invoke()
+        }
+
+        feetInput.filters = arrayOf(acceptIntDigits(4))
+        inchesInput.filters = arrayOf(acceptIntRange(0 until 12))
+        metersInput.filters = arrayOf(acceptDecimalDigits(3, 2))
+
+        metersInput.addTextChangedListener { onInputChanged?.invoke() }
+        feetInput.addTextChangedListener { onInputChanged?.invoke() }
+        inchesInput.addTextChangedListener { onInputChanged?.invoke() }
+
+        updateInputFieldsVisibility()
+    }
 
     private fun updateUnitSelectVisibility() {
         unitSelect.isGone = selectableUnits.size == 1 && (!isCompactMode || selectableUnits.singleOrNull() == LengthUnit.FOOT_AND_INCH)
