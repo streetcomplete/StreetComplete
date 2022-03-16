@@ -297,9 +297,24 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             isOnewayNotForCyclists = isOnewayNotForCyclists
         )
 
-        applyAnswer(answer)
+        val wasOnewayNotForCyclists = isOneway && osmElement!!.tags["oneway:bicycle"] == "no"
+        if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
+            confirmNotOnewayForCyclists {
+                applyAnswer(answer)
+                saveLastSelection()
+            }
+        } else {
+            applyAnswer(answer)
+            saveLastSelection()
+        }
+    }
 
-        saveLastSelection()
+    private fun confirmNotOnewayForCyclists(callback: () -> Unit) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.quest_cycleway_confirmation_oneway_for_cyclists_too)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
     }
 
     private fun Cycleway.isSingleTrackOrLane() =
