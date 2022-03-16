@@ -283,17 +283,12 @@ class AddLocalizedNameAdapter(
                     buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
                     updateAddLanguageButtonVisibility()
                     updateNameSuggestions()
+                    updateAbbreviations()
                 }
             }
 
             updateNameSuggestions()
-
-            // load abbreviations from file in background
-            viewLifecycleScope.launch {
-                autoCorrectInput.abbreviations = withContext(Dispatchers.IO) {
-                    abbreviationsByLocale?.get(Locale(localizedName.languageTag))
-                }
-            }
+            updateAbbreviations()
         }
 
         private fun updateNameSuggestions() {
@@ -308,6 +303,15 @@ class AddLocalizedNameAdapter(
                     localizedNames = selection.toLocalizedNameList()
                     notifyDataSetChanged()
                     updateAddLanguageButtonVisibility()
+                }
+            }
+        }
+
+        private fun updateAbbreviations() {
+            // load abbreviations from file in background
+            viewLifecycleScope.launch {
+                autoCorrectInput.abbreviations = withContext(Dispatchers.IO) {
+                    abbreviationsByLocale?.get(Locale(localizedName.languageTag))
                 }
             }
         }
