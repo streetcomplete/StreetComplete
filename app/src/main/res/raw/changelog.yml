@@ -12,9 +12,13 @@ v42.0-beta1: |
   <li>Tactile paving on crossings: Add answer option that it’s only one one side (#3844, #3813), by @arrival-spring</li>
   <li>Barrier details: Add answer option that leads to changing the type of barrier (#3846, #3563, #3845, #3817), by @mnalis</li>
   <li>Oneway streets: Also ask for roads that are below or equal 4 meters wide</li>
+  <li>Cycleway: Warn user if he is about to remove that cyclists may use a oneway road in both directions (#3795)</li>
+  <li>Halal: Don't ask for vegan only places (#3883)</li>
+  <li>Fire hydrant position: Allow user to delete the hydrant if it doesn't exist on-site (#3871)</li>
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
+  <li>Quest titles are now shown in a more consistent manner: The name, type and location of the object it is asked for is always shown below the question (#3870)</li>
   <li>Other minor enhancements and fixes (#3852)</li>
   </ul>
 
