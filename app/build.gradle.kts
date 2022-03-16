@@ -203,9 +203,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220131"
+val nsiVersion = "v6.0.20220314"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.2.1"
+val presetsVersion = "v3.2.2"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"

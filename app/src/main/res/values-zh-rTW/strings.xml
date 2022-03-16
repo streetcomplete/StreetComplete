@@ -8,11 +8,9 @@
     <string name="oauth_communication_error">"無法連接到驗證伺服器"</string>
 
     <!-- Fuzzy -->
-    <string name="retry">"重試"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"驗證失敗：所有列出的請求都須許可"</string>
 
+    <!-- Settings screen -->
     <!-- Fuzzy -->
     <string name="pref_category_communication">"通訊"</string>
 
@@ -82,9 +80,6 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"無縮寫"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_name_title">"%s 的營業時間是？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"開放時間"</string>
 
     <!-- Fuzzy -->
@@ -129,6 +124,7 @@
     <!-- Fuzzy -->
     <string name="action_upload">"上傳回答"</string>
 
+    <!-- when the user left the answer form empty -->
     <!-- Fuzzy -->
     <string name="no_changes">"你留下空的表單"</string>
 
@@ -175,6 +171,7 @@
     <string name="about_title_license">"授權"</string>
     <string name="about_summary_license">"GNU 公用授權"</string>
 
+    <!-- Error messages and crash report -->
     <!-- Fuzzy -->
     <string name="offline">"你處於離線狀態"</string>
 
@@ -232,9 +229,11 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"此棟建築物的屋頂形狀是？"</string>
 
+    <!-- As in: "select ONE of the pictures below" -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"選擇一個："</string>
 
+    <!-- As in: "show more of those pictures to select an answer from -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"顯示更多…"</string>
 
@@ -242,6 +241,7 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"它有不同的形體"</string>
 
+    <!-- Elements on map view -->
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"縮近"</string>
 
@@ -332,9 +332,6 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_serviceType_title">"此條聯絡道路的種類是?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"這條是單行道嗎?"</string>
 
     <!-- Fuzzy -->
@@ -383,14 +380,12 @@
     <!-- Fuzzy -->
     <string name="upload_server_error">"上傳回答時出現連線問題，請稍後再試。"</string>
 
+    <!-- Generic strings used in various quests -->
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"有"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"沒有"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"這個站牌有遮蔭嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"這裡可以停幾量輛單車？"</string>
@@ -460,6 +455,7 @@
     <string name="quest_sport_netball">"籃網球"</string>
     <string name="quest_sport_rugby">"橄欖球"</string>
 
+    <!-- As in: "select any of the pictures below that fit" -->
     <!-- Fuzzy -->
     <string name="quest_select_hint">"選取："</string>
 
@@ -476,22 +472,13 @@
     <string name="quest_sport_manySports_confirmation_title">"你選取了多種運動"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"巴士站%s有沒有上蓋？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"使用這間廁所是否需要費用？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_bus">"這座公車站是否有盲人磚？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"這個人行穿越道是否有盲人指引？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"你確定你在現場探察確認？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"公車站 %s 是否有盲人磚？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"只有調查發現的資訊才需要輸入。"</string>
@@ -501,9 +488,6 @@
 
     <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"這次不再顯示"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"道路 %s 的鋪面為何？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"這個速限看來怪怪的。"</string>
@@ -545,9 +529,6 @@
     <string name="quest_sport_sepak_takraw">"藤球"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"%s 是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
 
     <!-- Fuzzy -->
@@ -555,30 +536,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_title">"這間客運站是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_title">"這個捷運站出口是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_title">"這座車站是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_title">"這個地方是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_name_title">"%s 客運站是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"%s 捷運出口是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_name_title">"%s 車站是否輪椅通行無阻？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_name_title">"%s  是否輪椅通行無阻？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
@@ -590,12 +547,6 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s 的簡稱縮寫是？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_toilets_title">"這個洗手間有設置嬰兒用尿布檯嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_title">"%s 有設置嬰兒用尿布檯嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"這是哪一種資源回收設施？"</string>
 
     <!-- Fuzzy -->
@@ -604,15 +555,6 @@
 
     <!-- Fuzzy -->
     <string name="underground_recycling_container">"地下式資源回收箱"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_a_field_empty">"你留了空白欄位"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"無法在標識上輸入字元"</string>
@@ -658,9 +600,11 @@
     <!-- Fuzzy -->
     <string name="credits_contributors_title">"程式碼貢獻者"</string>
 
+    <!-- Credits screen -->
     <!-- Fuzzy -->
     <string name="credits_author_title">"作者及維護者"</string>
 
+    <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
     <string name="credits_and_more">"以及更多…"</string>
 
@@ -802,15 +746,6 @@
     <string name="produce_sisal">"瓊麻"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"這段路徑有照明設施嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"%s 有照明設施嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_road_title">"這段道路有照明設施嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>
 
     <!-- Fuzzy -->
@@ -858,9 +793,7 @@
     <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"停車場"</string>
 
-    <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_name_title">"%s有洗手間嗎?"</string>
-
+    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"電線桿的材質是？"</string>
 
@@ -950,12 +883,6 @@
     <string name="undo_confirm_negative">"取消"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_vegetarian_name_title">"%s 的菜單上有素食料理嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_dietType_vegan_name_title">"%s 的菜單上有維根料理嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"只有"</string>
 
     <!-- Fuzzy -->
@@ -988,6 +915,7 @@
     <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"徵兵號碼"</string>
 
+    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"定位號碼 (選填)"</string>
 
@@ -1013,12 +941,6 @@
     <string name="quest_streetName_answer_noName_noname">"上述答案都不是，只是沒有名字"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_title">"這是無障礙廁所嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"「%s」是一個無障礙廁所嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"如果有無障礙廁所，則會看到無障礙指示牌。
 通常意味輪椅可以進入並使用該間廁所，但沒有手桿或是改良的洗手台。"</string>
 
@@ -1031,6 +953,7 @@
     <!-- Fuzzy -->
     <string name="create_new_note_description">"你可以留下註解，讓其他圖客知道這邊有問題。移動地圖來調整註解標注的位置："</string>
 
+    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"通常長得像這樣子："</string>
 
@@ -1044,9 +967,6 @@
     <string name="quest_bridge_structure_title">"這座橋樑的結構是？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"%s 提供那種網路連線呢？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
 
     <!-- Fuzzy -->
@@ -1057,12 +977,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_no">"不提供網路"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"路面電車站 %s 是否有遮蔭？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"這座路面電車站是否有遮蔭？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"長椅是否有靠背？"</string>
@@ -1121,34 +1035,13 @@
     <string name="quest_surface_value_unhewn_cobblestone">"不破的鵝卵石"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_pedestrian_title">"徒步區的名稱是什麼？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"廣場的舖面是什麼材質？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"廣場 %s 的舖面是什麼材質？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"視日期和時段而定…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_add_times">"增加時間"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"有收費，但只在..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"有收費，但有免費時段..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"在下列時間："</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopName_title">"公車站牌的名稱是什麼？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tramStopName_title">"街車站的名稱是什麼？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"這間有多個門牌號碼"</string>
@@ -1206,20 +1099,9 @@
     <string name="questList_disabled_in_country">"不顯示 %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_rest_area_title">"休息區是否有廁所？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_steps">"階梯表面是用什麼材質呢？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"馬道表面是用什麼材質呢？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"這條路徑表面是什麼材質呢？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"選擇最適當的選項："</string>
 
+    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"你確定無法留下更精確的描述嗎？"</string>
 
@@ -1451,9 +1333,6 @@
     <string name="quest_openingHours_no_sign">"沒有營業時間告示"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_name_title2">"%s 這裡的速限是多少？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"運動中心"</string>
 
     <!-- Fuzzy -->
@@ -1478,15 +1357,6 @@
     <string name="quest_maxheight_title">"這裡的高度限制多少？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_parking_entrance_title">"這個停車場的限高多少？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_height_restrictor_title">"這個限高裝置的高度限制是？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_tunnel_title">"這個隧道的高度限制是？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"該處並沒有標誌…"</string>
 
     <!-- Fuzzy -->
@@ -1494,8 +1364,11 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"這個高度聽起來不太合理。您確定這是正確的嗎？"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 
+    <!-- first placeholder is the person, second placeholder is the date -->
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"由 %1$s、%2$s 關閉"</string>
 
@@ -1531,9 +1404,6 @@
     <string name="quest_tracktype_grade5">"柔性路面"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_building_underground_name_title">"%s 完全位於地面以下嗎？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
 
     <!-- Fuzzy -->
@@ -1565,7 +1435,7 @@
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
     <!-- Fuzzy -->
-    <string name="on_level">"位於樓層 %s ："</string>
+    <string name="on_level">"位於樓層 %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->
@@ -1600,14 +1470,12 @@
     <string name="theme_system_default">"系統預設"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title_name">"這地方的名稱是什麼？(%s)"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"在其他 app 開啟地點"</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"沒有安裝其他地圖應用程式"</string>
 
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <!-- Fuzzy -->
     <string name="label_housenumber">"房屋門牌號碼"</string>
 
@@ -1616,18 +1484,16 @@
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"整個站牌都有遮蓋"</string>
-    <string name="quest_ferry_pedestrian_name_title">"%s 是運送旅客嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"這邊的輪船是行人可到達嗎？"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"%s 是運送機動車輛嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"這邊的輪船是能載運機動車輛嗎？ "</string>
 
+    <!-- Add note interface -->
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"如果能加上照片會讓註解更有用。"</string>
-    <string name="quest_postboxCollectionTimes_name_title">"這個 %s 郵筒的收信時間是？"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"最好用當地的語言撰寫註解，不然就請用英文。"</string>
@@ -1664,13 +1530,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"人行步道的鋪面材質是什麼？"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"在 %s 的廁所能通行輪椅嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"路面電車停靠站有特殊舖面嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"路面電車停靠站 %s 有特殊鋪面嗎"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"這裡的承重有上限嗎？"</string>
@@ -1683,22 +1542,15 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下有照片的註解，能夠讓其他圖客接手處理。"</string>
-    <string name="quest_generalFee_title">"進入 %s 需要支付費用嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_no_name_title">"這地方的開放時間是？(%s)"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"目前版本：%s"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxRef_title">"這個郵箱的編號是？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_name_title">"這個 %s 郵箱的編號是？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"看不到編號…"</string>
@@ -1773,12 +1625,10 @@
     <string name="about_title_donate">"捐獻"</string>
     <string name="about_summary_donate">"顯示您的贊助！ ❤️"</string>
     <string name="about_description_donate">"感謝您考慮支援此應用程式！ 要檢視目前的捐款和你的捐獻，在相關的平台上點擊："</string>
-    <string name="quest_religion_for_place_of_worship_name_title">"在 %s 所活動的宗教是？"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"掃描這裡取代"</string>
     <string name="confirmation_cancel_prev_download_cancel">"繼續目前的掃描"</string>
     <string name="quest_buildingType_garages_description">"分離空間給不同的房東/租客"</string>
     <string name="quest_tourism_information_title">"這是哪種觀光資訊？"</string>
-    <string name="quest_tourism_information_name_title">"%s 是哪種觀光資訊？"</string>
     <string name="quest_tourism_information_office">"旅遊服務中心"</string>
     <string name="quest_tourism_information_board">"資訊板"</string>
     <string name="quest_tourism_information_terminal">"資訊終端機"</string>
@@ -1788,7 +1638,6 @@
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"這是一般垃圾專用"</string>
     <string name="quest_recycling_materials_answer_waste_description">"所以，這是可以放置任何垃圾的容器嗎，像是打包後的家庭或商業垃圾？"</string>
-    <string name="quest_accepts_cash_title">"%s 接受現金支付嗎？"</string>
     <string name="user_profile">"我的檔案"</string>
     <string name="user_login">"登入"</string>
     <string name="user_logout">"登出"</string>
@@ -1797,6 +1646,8 @@
 
     <!-- Fuzzy -->
     <string name="letsgo">"讓我們開始吧！"</string>
+
+    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"歡迎來到開放街圖"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"自由的 wiki 世界地圖"</string>
     <string name="tutorial_intro">"StreetComplete讓貢獻開放街圖更為簡易。
@@ -1811,15 +1662,21 @@
 最終，記住要保持安全：小心您的周遭並且不要輸入私人產權。"</string>
     <string name="tutorial_happy_mapping">"祝繪製愉快！"</string>
     <string name="achievements_empty">"您尚未有任何的成就"</string>
+
+    <!-- Links screen -->
     <string name="links_empty">"您尚未有任何連結"</string>
     <string name="quests_empty">"您尚未發佈任何任務的解答"</string>
     <string name="unsynced_quests_description">"增加 %d 尚未發佈的更改。"</string>
     <string name="unsynced_quests_not_logged_in_description">"您尚未發佈 %d 項變更。您必須登入來上傳它們。"</string>
+
+    <!-- User screen -->
     <string name="user_quests_title">"解決的任務"</string>
     <string name="user_achievements_title">"成就"</string>
     <string name="user_links_title">"連結集合"</string>
     <string name="user_profile_title">"個人檔案"</string>
     <string name="user_statistics_quest_wiki_link">"文件"</string>
+
+    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"未解鎖的連結："</string>
     <string name="achievements_unlocked_links">"未解鎖的連結："</string>
     <string name="link_category_intro_title">"介紹"</string>
@@ -1897,8 +1754,12 @@
 
     <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"您解決了 %d 項改善放在街道上描述設施細節的任務！"</string>
+
+    <!-- Notifications -->
     <string name="unread_messages_message">"你在收件匣中有 %d 封未讀訊息"</string>
     <string name="unread_messages_button">"開啟收信匣"</string>
+
+    <!-- Main menu -->
     <string name="action_about2">"關於"</string>
     <string name="map_btn_menu">"選單"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;在你的檔案中被顯示的資料，是從你可用的OSM公開貢獻歷史，並儲存在我的伺服器。&lt;/p&gt;"</string>
@@ -1906,6 +1767,8 @@
     <string name="credits_art_contributors_title">"美術貢獻者"</string>
     <string name="credits_projects_contributors_title">"StreetComplete做成的專案"</string>
     <string name="credits_main_contributors_title">"主要的貢獻者"</string>
+
+    <!-- User statistics screen -->
     <string name="stats_are_syncing">"你的統計依然同步中。請晚點檢查這個畫面。"</string>
     <string name="user_statistics_country_rank">"在 %2$s: %1$d 的排名"</string>
     <string name="user_statistics_country_wiki_link">"繪製導航 %s"</string>
@@ -1915,9 +1778,6 @@
     <string name="user_profile_local_rank">"在 %s 的排名"</string>
     <string name="user_profile_days_active">"天有效"</string>
     <string name="user_profile_achievement_levels">"成就等級"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_title">"房屋門牌 %s 是依靠在哪條街道上？"</string>
     <string name="quest_address_street_no_named_streets">"它並沒有依靠在有名稱的街道上"</string>
     <string name="quest_address_street_place_name_label">"地點名稱："</string>
     <string name="quest_address_street_description">"點擊在地圖上的道路或是在下方輸入沒有縮寫的名稱："</string>
@@ -1935,6 +1795,8 @@
     <string name="quest_board_type_nature">"自然（多種議題）"</string>
     <string name="quest_board_type_notice_board">"這是個公告欄"</string>
     <string name="quest_board_type_public_transport">"大眾運輸"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_board_type_title">"這個資訊板是什麼主題？"</string>
     <string name="quest_board_type_map">"這是地圖"</string>
     <string name="quest_board_type_map_title">"這是地圖而且就只是地圖？"</string>
@@ -1946,43 +1808,22 @@
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"在此請簡述此表面的自然材質，例如：包含鵝卵石補丁的砂質鋪面。此字串長度僅限255個字元。"</string>
-    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
-    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"國際"</string>
     <string name="quest_buildingType_terrace2">"排屋"</string>
-    <string name="at_housename">"房屋名稱 %s："</string>
-    <string name="at_conscription_and_street_number">"徵兵號碼 %1$s, 定位號碼 %2$s:"</string>
 
     <!-- Fuzzy -->
-    <string name="at_conscription_number">"地號 %s:"</string>
-    <string name="at_housenumber">"房屋門牌號碼 %s:"</string>
-    <string name="quest_openingHours_name_type_title">"%1$s (%2$s) 的營業時間是？"</string>
-    <string name="quest_openingHours_resurvey_name_title">"%s 時營業時間仍然正確嗎？"</string>
-    <string name="quest_openingHours_resurvey_name_type_title">"%1$s 的營業時間 (%2$s) 仍然正確"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"營業時間 (%s) 仍然正確嗎？"</string>
+    <string name="at_housename">"房屋名稱 %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_housenumber">"房屋門牌號碼 %s"</string>
     <string name="quest_openingHours_add_off_days">"增加休息時間"</string>
     <string name="quest_openingHours_off_day">"休息時間"</string>
     <string name="quest_openingHours_unspecified_range">"並沒有特別時間"</string>
     <string name="quest_cycleway_resurvey_title">"這裡仍然是單車道情形嗎？"</string>
-    <string name="quest_wheelchairAccess_name_type_title">"%1$s (%2$s) 是否輪椅通行無阻？"</string>
     <string name="pref_title_resurvey_intervals">"重新探察的時間區間"</string>
     <string name="resurvey_intervals_less_often">"詢問更少資訊"</string>
     <string name="resurvey_intervals_default">"預設"</string>
     <string name="resurvey_intervals_more_often">"詢問更多資訊"</string>
-    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) 接受現金支付嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_name_title">"%s 街車站有椅子嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_title">"這個街車站有椅子嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_title">"這個公車站有椅子嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_name_title">"%s 公車站有椅子嗎？"</string>
-    <string name="quest_summit_register_title">"%s? 有登山登記處嗎？"</string>
     <string name="quest_is_defibrillator_inside_title">"這一個去顫器 (AED) 是在建築物裡嗎？"</string>
     <string name="about_title_translate">"幫忙翻譯這款 app"</string>
     <string name="about_description_translate">"%1$s 翻譯 %2$d%%"</string>
@@ -1998,8 +1839,6 @@
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"交通號誌是否有盲人的觸握指示，來讓人安全穿越？"</string>
     <string name="quest_traffic_signals_vibrate_description">"提示：常見有響聲按鈕，或是在交通號誌按鈕下方有旋轉錐。"</string>
-    <string name="quest_busStopRef_title">"這個公車站的編號是什麼？"</string>
-    <string name="quest_tramStopRef_title">"這個街車站的編號是什麼？"</string>
     <string name="quest_buildingType_bungalow_description2">"小型獨立屋 (夏日小屋、假日小屋、木屋…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"這個鐵路平交道用什麼阻隔物？"</string>
     <string name="quest_railway_crossing_barrier_none2">"沒有阻隔物"</string>
@@ -2035,6 +1874,8 @@
     <string name="quest_buildingType_abandoned_description">"未使用的建築，原先使用目的不明或不知道特定目的 "</string>
     <string name="quest_buildingType_ruins">"廢墟"</string>
     <string name="quest_buildingType_ruins_description">"廢棄，廢墟和身份不明的建築"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"同一時間在這一充電站有幾台車能同時充電？"</string>
     <string name="link_disaster_ninja_description">"人道救援圖客感興趣，呈現最近自然災害下更新的地圖。另外，也會顯示分析關於這一帶畫得多完善，或是地圖夠新等有趣的統計數據。"</string>
     <string name="quest_lanes_title">"這條路允行車輛通行的車道數多少？"</string>
@@ -2042,11 +1883,15 @@
     <string name="quest_lanes_answer_noLanes">"無標線車道"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"它有雙向左轉車道"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"正確嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"橋下淨空多少呢？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"如果不適用整條路，考慮回答\"%s\"。"</string>
     <string name="quest_tactile_paving_kerb_title">"路緣有盲人導盲舖面嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"路緣的高度多少？"</string>
     <string name="quest_kerb_height_flush">"與路面材質一樣高度"</string>
     <string name="quest_kerb_height_lowered">"比路面材質高一些"</string>
@@ -2073,8 +1918,6 @@
     <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"路外停車"</string>
     <string name="quest_parkingType_lane">"路邊停車"</string>
-    <string name="quest_existence_title">"還在這裡嗎？ (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s  (%2$s) 還在嗎？"</string>
     <string name="quest_tracktype_grade2a">"堅實的但沒有舖面"</string>
     <string name="quest_tracktype_grade3a">"大部分是堅實的"</string>
     <string name="quest_generic_answer_does_not_exist">"這並不存在…"</string>
@@ -2093,9 +1936,7 @@
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"這個商家已經不在，現在這邊是做什麼的？"</string>
     <string name="quest_lanes_answer_lanes_odd2">"每一側的車道數不同"</string>
-    <string name="quest_pitchSurface_title">"這個體育場的鋪面是什麼？"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"這類型任務預設是關閉的，因為在一些地方並沒有用，你可以要進入裡面才能回答這類型任務。"</string>
-    <string name="quest_dietType_kosher_name_title">"%s 有提供猶太教潔食產品嗎？"</string>
     <string name="quest_dietType_explanation_kosher">"猶太教潔食產品必須依猶太飲食教規嚴格準備，並附上猶太飲食教規認證機構標章確保其循從飲食教規。"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"完全沒有自行車道"</string>
 
@@ -2107,31 +1948,30 @@
     <string name="quest_surface_value_clay">"黏土"</string>
     <string name="quest_surface_value_artificial_turf">"人工草皮"</string>
     <string name="quest_surface_value_tartan">"PU表面"</string>
-    <string name="quest_pitchSurface_title_track">"這運動跑道表面材質是什麼？"</string>
     <string name="quest_bicycle_parking_fee_title">"請問這裡需要付費才能停腳踏車嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"無連接的單一家庭房屋"</string>
-    <string name="quest_drinking_water_title">"這裡的水質是否可以飲用？(%s)"</string>
     <string name="quest_drinking_water_potable_signed">"可以飲用（已勾選）"</string>
     <string name="quest_drinking_water_potable_unsigned">"可以飲用（未勾選）"</string>
     <string name="quest_drinking_water_not_potable_signed">"不能飲用（已勾選）"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"不能飲用（未勾選）"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_title">"這個郵筒的皇家徽章是什麼？"</string>
     <string name="quest_postboxRoyalCypher_type_none">"沒有看到皇家徽章"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"蘇格蘭皇冠"</string>
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"僅限飲料紙盒"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"僅限塑膠瓶罐與盒子"</string>
-    <string name="quest_charging_station_name_capacity_title">"這個充電站 (%s) 同一時間能為幾部車子充電？"</string>
     <string name="team_mode">"協作模式"</string>
+
+    <!-- Team mode -->
     <string name="team_mode_exit">"離開協作模式"</string>
     <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
     <string name="team_mode_team_size_hint">"協作模式適用於2～12位成員"</string>
     <string name="team_mode_active">"協作模式已啟用"</string>
     <string name="team_mode_deactivated">"協作模式已停用"</string>
-    <string name="quest_pitchLit_title">"這個運動場有照明嗎？"</string>
-    <string name="quest_pitchLit_title_track">"這個運動跑道有照明嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"行人穿越由交通號誌控制"</string>
@@ -2139,6 +1979,8 @@
     <string name="synced">"已經同步了"</string>
     <string name="toast_undo_unavailable">"這筆編輯已經同步，因此無法復原"</string>
     <string name="quest_cycleway_value_separate">"在地圖上顯示分離的"</string>
+
+    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"新增註解"</string>
     <string name="commented_note_action_title">"在註解留言"</string>
     <string name="hid_action_description">"你隱聝了"</string>
@@ -2152,8 +1994,6 @@
     <string name="delete_confirmation">"刪除"</string>
     <string name="delete_cache_dialog_message">"刪除所有已經下載的地圖資料，包括任務？
 資料將在 %1$s 天之後更新，未使用的資料會在 %2$s 天之後自動刪除。"</string>
-    <string name="quest_shop_type_title">"%s 是那種類型的商店？"</string>
-    <string name="quest_shop_type_title_no_name">"這是那種類型的商店？"</string>
     <string name="pref_background_type_select">"選擇背景種類"</string>
     <string name="background_type_map">"地圖"</string>
     <string name="background_type_aerial_esri">"空照圖 (Esri 提供)"</string>
@@ -2187,25 +2027,9 @@
     <!-- Fuzzy -->
     <string name="pref_title_quests2">"任務選擇與優先度"</string>
     <string name="pref_subtitle_quests">"%2$d 分之 %1$d 已經啟用"</string>
-    <string name="quest_busStopLit_tram_name_title">"%s 街車站有照明嗎？"</string>
-    <string name="quest_busStopLit_tram_title">"這個街車站有照明嗎？"</string>
-    <string name="quest_busStopLit_title">"這個站牌有照明嗎？"</string>
-    <string name="quest_busStopLit_name_title">"%s 站牌有照明嗎？"</string>
     <string name="no_location_permission_warning_title">"位置資訊授權"</string>
     <string name="quest_surface_value_woodchips">"Woodchips"</string>
     <string name="no_camera_app">"沒有可用相機 app"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_name_title">"街車站 %s 是否有垃圾筒？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_title">"這個街車站是否有垃圾筒？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_title">"這公車站是否有垃圾筒？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_name_title">"%s 公車站是否有垃圾筒？"</string>
     <string name="quest_bollard_type_title">"這是什麼類型的護柱？"</string>
     <string name="quest_bollard_type_rising">"升高"</string>
     <string name="quest_bollard_type_flexible">"靈活式"</string>
@@ -2226,6 +2050,8 @@
     <string name="quest_buildingType_boathouse">"船屋"</string>
     <string name="quest_buildingType_allotment_house">"建築外的社區花園"</string>
     <string name="quest_buildingType_grandstand">"看台"</string>
+
+    <!-- Quest selection screen -->
     <string name="action_search">"搜尋"</string>
     <string name="action_manage_presets">"管理預設組合"</string>
     <string name="team_mode_team_size_label2">"有多少人在畫地圖呢 ？請在每一個人的手機輸入相同的數字。"</string>
@@ -2239,20 +2065,25 @@
     <string name="no_search_results">"什麼都沒找到"</string>
     <string name="quest_selection_hint_title">"太多要做的事情？"</string>
     <string name="quest_selection_hint_message">"貢獻一己之力應該要很好玩的！如果你被任務的數字嚇到的話，你可以調整顯示什麼任務，以及優先順序。"</string>
+
+    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"新增預設組合"</string>
     <string name="quest_presets_preset_name">"預設組合名稱"</string>
     <string name="quest_presets_default_name">"預設"</string>
     <string name="quest_presets_selected">"選取"</string>
     <string name="quest_presets_delete_message">"刪除預設組合 “%s” 嗎？任務選取器與顯示順序將永遠消失。"</string>
     <string name="notification_syncing">"同步資料…"</string>
+
+    <!-- Android notifications -->
     <string name="notification_channel_sync">"同步資料"</string>
     <string name="quest_board_type_sport">"運動、健身"</string>
     <string name="quest_generic_hasFeature_optional">"選擇的"</string>
     <string name="quest_buildingType_bridge">"建築之間的橋樑 (天橋)"</string>
     <string name="quest_laundrySelfService_title2">"這間洗衣店是否有提供自助服務？"</string>
-    <string name="quest_dietType_halal_name_title">"%s 是否提供清真產品？"</string>
     <string name="quest_dietType_explanation_halal">"清真產品的準備需符合特別的規則，清真認證單位需要認證產品。"</string>
     <string name="quest_picnicTableCover_title">"這個野餐桌是否有遮蓋 (能夠擋雨)？"</string>
+
+    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"這部分是階梯"</string>
     <string name="quest_barrier_type_passage_conversion">"轉換成牆壁/圍欄/當中的通道。 "</string>
     <string name="quest_barrier_type_gate_conversion">"轉換成閘門"</string>
@@ -2279,19 +2110,20 @@
     <string name="quest_access_customers">"造訪特定地方的所有人 (例如只有顧客)"</string>
     <string name="quest_access_private">"只有被允許的個人"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"這個郵筒的收件時間是否仍正確？"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_name_title">"%s 郵筒的收件時間是否仍正確？"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"無法辨識。請試著輸入地點，像是「烘培坊」，不然的話留下註解。"</string>
     <string name="quest_bicycle_barrier_type_title">"這個是什麼類型的單車障礙？"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"對角線到路徑"</string>
     <string name="quest_barrier_bicycle_type_tilted">"窄通道，越到上面越小"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"兩個障礙物間的通道"</string>
     <string name="quest_barrier_bicycle_type_double">"雙急轉彎 - 每邊的障礙物"</string>
     <string name="quest_barrier_bicycle_type_multiple">"雙急轉彎 - 超過兩個障礙物"</string>
-    <string name="quest_level_title">"%s 是位在幾樓？"</string>
     <string name="pref_title_language_select">"選擇語言"</string>
     <string name="language_default">"系統預設"</string>
+
+    <!-- Fuzzy -->
     <string name="on_floor">"在樓層 %s："</string>
-    <string name="confirmation_discard_negative2">"無"</string>
     <string name="quest_street_parking_title">"車子如何在這裡停靠，如果可以的話？"</string>
     <string name="select_street_parking_orientation">"道路選擇朝向的方向："</string>
     <string name="select_street_parking_position">"選擇位置："</string>
