@@ -1,36 +1,30 @@
-package de.westnordost.streetcomplete.view
+package de.westnordost.streetcomplete.view.controller
 
-import android.content.Context
 import android.text.Editable
-import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.R
-import androidx.appcompat.widget.AppCompatEditText
+import android.widget.EditText
 import de.westnordost.streetcomplete.data.meta.Abbreviations
+import de.westnordost.streetcomplete.view.DefaultTextWatcher
 
-/** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
+/** Automatically expands abbreviations when finishing a word (via space, "-" or
  * ".") and capitalizes the first letter of each word that is longer than 3 letters.  */
-class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.editTextStyle
-) : AppCompatEditText(context, attrs, defStyleAttr) {
+class AutoCorrectAbbreviationsViewController(private val editText: EditText) {
 
     var abbreviations: Abbreviations? = null
 
     init {
-        imeOptions = EditorInfo.IME_ACTION_DONE or imeOptions
+        editText.imeOptions = EditorInfo.IME_ACTION_DONE or editText.imeOptions
 
-        inputType =
+        editText.inputType =
             EditorInfo.TYPE_CLASS_TEXT or
-            EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS or
-            EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES
+                EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS or
+                EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES
 
-        addTextChangedListener(AbbreviationAutoCorrecter())
+        editText.addTextChangedListener(AbbreviationAutoCorrecter())
 
-        setOnEditorActionListener { _, actionId, _ ->
+        editText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                text?.let { autoCorrectTextAt(it, length()) }
+                editText.text?.let { autoCorrectTextAt(it, editText.length()) }
             }
             false
         }
@@ -67,11 +61,11 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
         // eight letters of the edit text anymore.
         // This method re-sets the text completely, so the caret and text length are also set anew
 
-        val selEnd = selectionEnd
-        text = s.replace(replaceStart, replaceEnd, replaceWith)
+        val selEnd = editText.selectionEnd
+        editText.text = s.replace(replaceStart, replaceEnd, replaceWith)
         val replaceLength = replaceEnd - replaceStart
         val addedCharacters = replaceWith.length - replaceLength
-        setSelection(selEnd + addedCharacters)
+        editText.setSelection(selEnd + addedCharacters)
     }
 
     private inner class AbbreviationAutoCorrecter : DefaultTextWatcher() {
