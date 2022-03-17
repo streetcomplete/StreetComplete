@@ -101,6 +101,7 @@ import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import kotlin.math.PI
 import kotlin.math.abs
@@ -764,7 +765,7 @@ class MainFragment :
         // Check that the user has required permission to record a track
         val hasUploadPermission = prefs.getBoolean(Prefs.OSM_HAS_UPLOAD_TRACES_PERMISSION, false)
         if (!hasUploadPermission) {
-            RequestPermissionUpgradeDialog(requireContext()).show()
+            RequestPermissionUpgradeDialog(requireContext(), get()).show()
             return
         }
 

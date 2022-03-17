@@ -4,20 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
-import de.westnordost.streetcomplete.user.UserActivity
-import javax.inject.Inject
+import de.westnordost.streetcomplete.screens.user.UserActivity
 
 /** Shows a dialog that asks the user to login */
-class RequestPermissionUpgradeDialog(context: Context) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
-
-    @Inject
-    lateinit var userLoginStatusController: UserLoginStatusController
+class RequestPermissionUpgradeDialog(
+    context: Context,
+    private val userLoginStatusController: UserLoginStatusController,
+) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     init {
-        Injector.applicationComponent.inject(this)
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_permission_upgrade, null, false)
         setView(view)
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
