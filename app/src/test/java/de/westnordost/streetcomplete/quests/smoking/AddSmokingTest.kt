@@ -28,7 +28,7 @@ class AddSmokingTest {
     @Test fun `applicable to places offering also takeaways`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "restaurant",
-            "takeaway" to "only",
+            "takeaway" to "yes",
         ))))
     }
 
