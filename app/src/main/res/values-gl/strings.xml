@@ -1106,4 +1106,26 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_fireHydrant_confirmation_title">"Seguro? Algunhas veces o díametro está especificado na propia boca de incendios."</string>
     <string name="quest_diet_answer_no_food">"Non ofrece comida"</string>
     <string name="short_no_answer_on_button">"Non"</string>
+    <string name="restore_confirmation">"Restablecer"</string>
+    <string name="restore_dialog_message">"Restablecer tódas preguntas que agochaches?"</string>
+    <string name="quest_parking_access_title2">"Quen pode estacionar aquí? O estacionamento podería ser gratuíto ou de pagamento."</string>
+    <string name="quest_access_yes">"Calquera persoa de xeito público"</string>
+    <string name="quest_access_customers">"Calquera persoa que visita un lugar concreto (ex. só clientes)"</string>
+    <string name="quest_access_private">"Só a persoa(s) con autorización"</string>
+    <string name="quest_bicycle_barrier_type_title">"Que tipo de barreira para bicicletas é esta?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"Diagonal á ruta"</string>
+    <string name="quest_barrier_bicycle_type_single">"Pasaxe entre barreiras"</string>
+    <string name="pref_title_language_select">"Elexir idioma"</string>
+    <string name="language_default">"Por defecto no sistema"</string>
+    <string name="on_floor">"na planta %s"</string>
+    <string name="quest_street_parking_title">"De que xeito estacionan aquí os coches, se teñen permiso."</string>
+    <string name="select_street_parking_orientation">"Elixe orientación respecto da estrada:"</string>
+    <string name="select_street_parking_position">"Elixe posición:"</string>
+    <string name="quest_address_house_number_label">"Número da casa:"</string>
+    <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
+    <string name="quest_fireHydrant_position_green">"Na herba ou terra"</string>
+    <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Na beirarúa"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"No punto de estacionamento"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Si (deixar nota)"</string>
 </resources>

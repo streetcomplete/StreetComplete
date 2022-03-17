@@ -1270,4 +1270,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"What's the surface here?"</string>
     <string name="quest_toiletAvailability_title">"Are there any toilets here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this oneway street in both directions? In doubt, check if there is a sign at the end of the street."</string>
 </resources>

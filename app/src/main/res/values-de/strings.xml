@@ -75,7 +75,7 @@
     <string name="no_gps_no_quests">"Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an"</string>
     <string name="later">"Später"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Sie ist eine Verbindung zwischen zwei Straßen"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Etwas Anderes (Hinweis hinterlassen)"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Etwas anderes (Hinweis hinterlassen)"</string>
     <string name="about_title_privacy_statement">"Datenschutzerklärung"</string>
     <string name="about_summary_privacy_statement">"und Datennutzung"</string>
     <string name="quest_openingHours_public_holidays">"Feiertage"</string>
@@ -1124,7 +1124,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="street_parking_no_other_reasons">"Kein explizites Schild / Parken nicht möglich"</string>
     <string name="street_parking_conditional_restrictions_hint">"Wenn es überhaupt möglich ist, hier zu parken oder zu halten, beantworte zunächst, wie diejenigen, die es dürfen, hier parken. Welche Einschränkungen genau gelten, kann später angegeben werden.
 
-Alternativ kann auch einen Hinweis (mit Foto) hinterlassen werden."</string>
+Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Hausnummer und -name …"</string>
     <string name="quest_address_house_number_label">"Hausnummer:"</string>
     <string name="quest_shoulder_title">"Hat diese Straße einen Seitenstreifen?"</string>
@@ -1180,7 +1180,7 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
-    <string name="quest_fuelSelfService_title">"Kann man hier in Selbstbedienung tanken?"</string>
+    <string name="quest_fuelSelfService_title">"Kann man hier mit Selbstbedienung tanken?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er sehr zeitintensiv ist und es oft recht schwer ist, die richtige Wahl zu treffen. Du solltest diesen Aufgabentyp nur aktivieren, wenn es dir wichtig ist, speziell diese Daten beizutragen."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Festgetreten, sehr wenig loser Kies oder Sand"</string>
     <string name="quest_barrier_path_intersection">"Wie kreuzt dieser Weg die Barriere hier?"</string>
