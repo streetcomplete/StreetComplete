@@ -207,4 +207,14 @@ class AddSmokingTest {
         ))))
     }
 
+
+
+
+    @Test fun `outside answer sets correct answer`() {
+        questType.verifyAnswer(
+            SmokingAllowed.OUTSIDE,
+            StringMapEntryAdd("smoking", "outside"),
+        )
+    }
+
 }
