@@ -3,28 +3,26 @@ package de.westnordost.streetcomplete.data.upload
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import de.westnordost.streetcomplete.util.enclosingTilePos
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Named
 
-class Uploader @Inject constructor(
+class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
     private val elementEditsUploader: ElementEditsUploader,
     private val downloadedTilesDB: DownloadedTilesDao,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
-    @Named("SerializeSync") private val mutex: Mutex
+    private val mutex: Mutex
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 

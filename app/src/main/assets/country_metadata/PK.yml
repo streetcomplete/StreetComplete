@@ -5,7 +5,7 @@ mobileCountryCode: 410
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ur, en, pa]
-orchardProduces: [guava, mango, mangosteen, orange, tomato, apple, date, apricot, chilli_pepper, sweet_pepper, banana, lemon, lime, peach, grape, plum, almond, pear, walnut]
+orchardProduces: [guava, mango, mangosteen, orange, date, apple, tomato, chilli_pepper, sweet_pepper, banana, apricot, grape, peach, lemon, lime, almond, plum, walnut, papaya]
 popularReligions: [muslim, hindu, christian, animist]
 popularSports: [cricket, soccer, tennis, field_hockey]
 roofsAreUsuallyFlat: true

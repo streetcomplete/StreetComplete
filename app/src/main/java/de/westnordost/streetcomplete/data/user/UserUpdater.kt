@@ -10,10 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class UserUpdater @Inject constructor(
+class UserUpdater(
     private val userApi: UserApi,
     private val avatarsDownloader: AvatarsDownloader,
     private val statisticsDownloader: StatisticsDownloader,

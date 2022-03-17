@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddPitchSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
     override val items: List<Item<Surface>>
-        get() = (PITCH_SURFACES + GENERIC_SURFACES).toItems()
+        get() = PITCH_SURFACES.toItems()
 
     override val itemsPerRow = 3
 

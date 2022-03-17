@@ -7,9 +7,8 @@ import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTa
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import javax.inject.Inject
 
-class CreatedElementsDao @Inject constructor(private val db: Database) {
+class CreatedElementsDao(private val db: Database) {
 
     fun putAll(entries: Collection<ElementKey>) {
         if (entries.isEmpty()) return

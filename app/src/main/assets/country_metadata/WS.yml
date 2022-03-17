@@ -5,5 +5,6 @@ isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 549
 officialLanguages: [sm, en]
+orchardProduces: [coconut, banana, cacao, papaya, pineapple, guava, mango, mangosteen, avocado, coffee, pepper]
 popularSports: [cricket]
 speedUnits: [miles per hour, kilometers per hour]

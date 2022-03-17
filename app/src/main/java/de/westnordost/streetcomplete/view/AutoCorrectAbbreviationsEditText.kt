@@ -7,7 +7,6 @@ import android.view.inputmethod.EditorInfo
 import androidx.appcompat.R
 import androidx.appcompat.widget.AppCompatEditText
 import de.westnordost.streetcomplete.data.meta.Abbreviations
-import de.westnordost.streetcomplete.util.DefaultTextWatcher
 
 /** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
  * ".") and capitalizes the first letter of each word that is longer than 3 letters.  */

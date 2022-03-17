@@ -9,5 +9,5 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 244
 officialLanguages: [fi, sv]
-orchardProduces: [tomato, strawberry, apple, raspberry, chilli_pepper, sweet_pepper]
+orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]

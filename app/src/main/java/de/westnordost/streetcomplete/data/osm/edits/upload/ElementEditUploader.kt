@@ -7,9 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import javax.inject.Inject
 
-class ElementEditUploader @Inject constructor(
+class ElementEditUploader(
     private val changesetManager: OpenQuestChangesetsManager,
     private val mapDataApi: MapDataApi
 ) {

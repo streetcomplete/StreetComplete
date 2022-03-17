@@ -5,6 +5,6 @@ centerLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 420
 officialLanguages: [ar]
-orchardProduces: [date, tomato, grape]
+orchardProduces: [date, olive, tomato, grape, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

@@ -15,7 +15,6 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
     override val changesetComment = "Add parking type"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parkingType_title

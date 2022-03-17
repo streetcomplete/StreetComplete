@@ -8,6 +8,6 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: double yellow
 noStoppingSignStyle: vienna
 officialLanguages: [ms]
-orchardProduces: [rubber, coconut, pineapple, banana, tomato, guava, mango, mangosteen, papaya, pepper, cashew_nut, orange, grapefruit, tea, coffee, lemon, lime, chilli_pepper, sweet_pepper]
+orchardProduces: [rubber, coconut, banana, pineapple, pepper, cashew_nut, guava, mango, mangosteen, cacao, chilli_pepper, sweet_pepper, papaya, lemon, lime, tomato, tea, coffee, orange]
 popularReligions: [muslim, buddhist, christian, hindu, chinese_folk, taoist]
 popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]

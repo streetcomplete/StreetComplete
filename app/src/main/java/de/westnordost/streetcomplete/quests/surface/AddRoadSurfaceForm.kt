@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
     override val items: List<Item<Surface>>
-        get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_SURFACES).toItems()
+        get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
     override val itemsPerRow = 3
 

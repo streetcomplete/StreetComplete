@@ -5,5 +5,5 @@ mobileCountryCode: 736
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es, qu, ay]
-orchardProduces: [banana, orange, pineapple, chestnut, tomato, peach, lemon, lime, brazil_nut, grape, coffee, papaya, guava, mango, mangosteen, rubber, avocado, chilli_pepper, sweet_pepper]
+orchardProduces: [chestnut, coffee, orange, banana, cacao, peach, pineapple, tomato, lemon, lime, chilli_pepper, sweet_pepper, grape, papaya, avocado, guava, mango, mangosteen, apple]
 workweekDays: 6

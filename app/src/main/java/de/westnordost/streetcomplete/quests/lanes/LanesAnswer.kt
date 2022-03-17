@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.lanes
 
-sealed class LanesAnswer
+sealed interface LanesAnswer
 
-data class MarkedLanes(val count: Int) : LanesAnswer()
-object UnmarkedLanes : LanesAnswer()
-data class MarkedLanesSides(val forward: Int, val backward: Int, val centerLeftTurnLane: Boolean) : LanesAnswer()
+data class MarkedLanes(val count: Int) : LanesAnswer
+object UnmarkedLanes : LanesAnswer
+data class MarkedLanesSides(val forward: Int, val backward: Int, val centerLeftTurnLane: Boolean) : LanesAnswer
 
 val LanesAnswer.total: Int? get() = when (this) {
     is MarkedLanes -> count

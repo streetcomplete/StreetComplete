@@ -5,5 +5,5 @@
  <rect x="24" y="24" width="80" height="80" ry="11.082" fill="#fcfcfc" fill-rule="evenodd" stroke="#666" stroke-dashoffset="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
  <path d="m64 64-23.236-13.955" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
  <path d="M 91.838,46.045 64,64" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
- <path d="m72.03 64a8.0303 8.0146 0 0 1-8.0302 8.0146 8.0303 8.0146 0 0 1-8.0303-8.0146 8.0303 8.0146 0 0 1 8.0303-8.0146 8.0303 8.0146 0 0 1 8.0302 8.0146" fill="#444" style="paint-order:normal"/>
+ <path d="m72.03 64a8.0303 8.0146 0 0 1-8.0302 8.0146 8.0303 8.0146 0 0 1-8.0303-8.0146 8.0303 8.0146 0 0 1 8.0303-8.0146 8.0303 8.0146 0 0 1 8.0302 8.0146" fill="#444"/>
 </svg>

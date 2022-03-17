@@ -6,4 +6,4 @@ mobileCountryCode: 706
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-orchardProduces: [coconut, apple, coffee, guava, mango, mangosteen, tomato, lemon, lime, avocado, olive, chilli_pepper, sweet_pepper, papaya, orange, pineapple, agave, cashew_nut, tea]
+orchardProduces: [coffee, apple, olive, agave, guava, mango, mangosteen, coconut, orange, cashew_nut, lemon, lime, avocado, banana, cacao, tomato, tea, chilli_pepper, sweet_pepper]

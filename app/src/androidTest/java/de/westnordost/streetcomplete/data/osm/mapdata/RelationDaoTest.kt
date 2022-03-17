@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -134,6 +134,15 @@ class RelationDaoTest : ApplicationDbTestCase() {
         assertEquals(
             listOf(e3),
             dao.getAllForRelation(3).sortedBy { it.id }
+        )
+
+        assertEquals(
+            listOf(e1, e2, e3),
+            dao.getAllForElements(
+                nodeIds = listOf(0),
+                wayIds = listOf(1),
+                relationIds = listOf(3)
+            ).sortedBy { it.id }
         )
     }
 

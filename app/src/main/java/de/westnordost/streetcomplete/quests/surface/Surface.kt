@@ -12,9 +12,11 @@ import de.westnordost.streetcomplete.quests.surface.Surface.FINE_GRAVEL
 import de.westnordost.streetcomplete.quests.surface.Surface.GRASS
 import de.westnordost.streetcomplete.quests.surface.Surface.GRASS_PAVER
 import de.westnordost.streetcomplete.quests.surface.Surface.GRAVEL
-import de.westnordost.streetcomplete.quests.surface.Surface.GROUND
+import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_AREA
+import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.METAL
-import de.westnordost.streetcomplete.quests.surface.Surface.PAVED
+import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_AREA
+import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVING_STONES
 import de.westnordost.streetcomplete.quests.surface.Surface.PEBBLES
 import de.westnordost.streetcomplete.quests.surface.Surface.ROCK
@@ -22,7 +24,8 @@ import de.westnordost.streetcomplete.quests.surface.Surface.SAND
 import de.westnordost.streetcomplete.quests.surface.Surface.SETT
 import de.westnordost.streetcomplete.quests.surface.Surface.TARTAN
 import de.westnordost.streetcomplete.quests.surface.Surface.UNHEWN_COBBLESTONE
-import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED
+import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_AREA
+import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.WOOD
 
 enum class Surface(val osmValue: String) {
@@ -49,9 +52,12 @@ enum class Surface(val osmValue: String) {
     CLAY("clay"),
     ARTIFICIAL_TURF("artificial_turf"),
     TARTAN("tartan"),
-    PAVED("paved"),
-    UNPAVED("unpaved"),
-    GROUND("ground"),
+    PAVED_ROAD("paved"),
+    UNPAVED_ROAD("unpaved"),
+    GROUND_ROAD("ground"),
+    PAVED_AREA("paved"),
+    UNPAVED_AREA("unpaved"),
+    GROUND_AREA("ground"),
 }
 
 val PAVED_SURFACES = listOf(
@@ -74,11 +80,11 @@ val PITCH_SURFACES = listOf(
     FINE_GRAVEL, PAVING_STONES, COMPACTED,
     SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
     WOOD, METAL, GRAVEL, PEBBLES,
-    ROCK
+    ROCK, PAVED_AREA, UNPAVED_AREA, GROUND_AREA
 )
 
-val GENERIC_SURFACES = listOf(
-    PAVED, UNPAVED, GROUND
+val GENERIC_ROAD_SURFACES = listOf(
+    PAVED_ROAD, UNPAVED_ROAD, GROUND_ROAD
 )
 
-val Surface.shouldBeDescribed: Boolean get() = this == PAVED || this == UNPAVED
+val Surface.shouldBeDescribed: Boolean get() = this == PAVED_ROAD || this == UNPAVED_ROAD || this == PAVED_AREA || this == UNPAVED_AREA

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 128 256" xmlns="http://www.w3.org/2000/svg">
  <path d="m39 0v72l33-8v-64zm0 184v72h33v-64z" fill="#909090"/>
- <path d="m0 1.3767e-6h39v256h-39z" fill="#808080" stroke-width=".98742"/>
- <path d="m39 0v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 120v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fff" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+ <path d="m0 1.3767e-6h39v256h-39z" fill="#808080" />
+ <path d="m39 0v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 120v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2zm0 8v4h2v-4h-2z" fill="#fff" />
  <path d="m73 0v63l-33 8v113l33 8v64" fill="none" stroke="#666" stroke-width="2"/>
  <path d="m75 0v64l-33 8v111l33 8v65" fill="none" stroke="#999" stroke-width="2"/>
- <ellipse transform="scale(-1,1)" cx="-61.746" cy="108.2" rx="29.796" ry="24.345" fill="#5aaa55" stroke-width="5.1204" style="paint-order:stroke markers fill"/>
- <ellipse transform="scale(-1,1)" cx="-45.653" cy="129.5" rx="24.309" ry="24.345" fill="#57a352" stroke-width="5.1204" style="paint-order:stroke markers fill"/>
- <ellipse transform="scale(-1,1)" cx="-58.992" cy="149.52" rx="17.091" ry="13.964" fill="#5aaa55" stroke-width="2.937" style="paint-order:stroke markers fill"/>
- <ellipse transform="scale(-1,1)" cx="-78.157" cy="135.29" rx="24.321" ry="24.345" fill="#4f994b" stroke-width="5.1204" style="paint-order:stroke markers fill"/>
- <ellipse transform="scale(-1,1)" cx="-51.571" cy="128.96" rx="14.056" ry="14.071" fill="#5aaa55" stroke-width="2.9594" style="paint-order:stroke markers fill"/>
- <ellipse transform="scale(-1,1)" cx="-64.527" cy="114.01" rx="17.091" ry="15.706" fill="#539f4d" stroke-width="3.1148" style="paint-order:stroke markers fill"/>
+ <ellipse transform="scale(-1,1)" cx="-61.746" cy="108.2" rx="29.796" ry="24.345" fill="#5aaa55" />
+ <ellipse transform="scale(-1,1)" cx="-45.653" cy="129.5" rx="24.309" ry="24.345" fill="#57a352" />
+ <ellipse transform="scale(-1,1)" cx="-58.992" cy="149.52" rx="17.091" ry="13.964" fill="#5aaa55" />
+ <ellipse transform="scale(-1,1)" cx="-78.157" cy="135.29" rx="24.321" ry="24.345" fill="#4f994b" />
+ <ellipse transform="scale(-1,1)" cx="-51.571" cy="128.96" rx="14.056" ry="14.071" fill="#5aaa55" />
+ <ellipse transform="scale(-1,1)" cx="-64.527" cy="114.01" rx="17.091" ry="15.706" fill="#539f4d" />
 </svg>

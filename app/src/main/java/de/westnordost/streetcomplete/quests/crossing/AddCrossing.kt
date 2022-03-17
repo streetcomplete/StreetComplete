@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.isCrossing
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
@@ -39,7 +39,6 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
     override val changesetComment = "Add whether there is a crossing"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.ic_quest_pedestrian
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title
@@ -62,7 +61,7 @@ class AddCrossing : OsmElementQuestType<KerbHeight> {
         /* require all roads at a shared node to either have no sidewalk tagging or all of them to
          * have sidewalk tagging: If the sidewalk tagging changes at that point, it may be an
          * indicator that this is the transition point between separate sidewalk mapping and
-         * sidewalk mapping on road-way. F.e.:
+         * sidewalk mapping on road-way. E.g.:
          * https://www.openstreetmap.org/node/1839120490 */
         val anySidewalk = setOf("both", "left", "right")
 

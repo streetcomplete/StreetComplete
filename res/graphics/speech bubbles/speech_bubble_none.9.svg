@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="100%" version="1.1" viewBox="0 0 48 28" xmlns="http://www.w3.org/2000/svg">
- <g transform="translate(0 -1094.5)">
-  <path d="m12 1094.5c-7 0-12 5-12 12v4c0 7 5 12 12 12h24c7 0 12-5 12-12v-4c0-7-5-12-12-12z" fill="#fff" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width=".167" style="paint-order:fill markers stroke"/>
- </g>
+<svg version="1.1" viewBox="0 0 57.6 33.6" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="filter847" color-interpolation-filters="sRGB">
+   <feFlood flood-color="rgb(128,128,128)" result="flood"/>
+   <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+   <feGaussianBlur in="composite1" result="blur" stdDeviation="1"/>
+   <feOffset dx="0" dy="0.5" result="offset"/>
+   <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+  </filter>
+ </defs>
+ <path d="m16.8 2.8c-7 0-12 5-12 12v4c0 7 5 12 12 12h24c7 0 12-5 12-12v-4c0-7-5-12-12-12z" fill="#fff" filter="url(#filter847)" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width=".167"/>
 </svg>

@@ -3,14 +3,14 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
     override val items: List<Item<Surface>>
-        get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_SURFACES).toItems()
+        get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),

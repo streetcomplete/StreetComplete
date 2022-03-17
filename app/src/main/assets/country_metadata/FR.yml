@@ -11,7 +11,7 @@ mobileCountryCode: 208
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [fr]
-orchardProduces: [grape, apple, tomato, plum, peach, apricot, pear, kiwi, strawberry, orange, chilli_pepper, sweet_pepper, walnut, cherry, olive, hazelnut]
+orchardProduces: [grape, apple, walnut, olive, plum, apricot, peach, chestnut, banana, tomato, hazelnut, pear, cherry, kiwi, strawberry]
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE

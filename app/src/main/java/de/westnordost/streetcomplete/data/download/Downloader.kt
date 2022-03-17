@@ -4,28 +4,26 @@ import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.util.TilesRect
-import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.math.area
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
-import javax.inject.Named
 import kotlin.math.max
 
 /** Downloads all the things */
-class Downloader @Inject constructor(
+class Downloader(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesDb: DownloadedTilesDao,
-    @Named("SerializeSync") private val mutex: Mutex
+    private val mutex: Mutex
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)

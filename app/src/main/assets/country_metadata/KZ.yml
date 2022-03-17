@@ -5,5 +5,5 @@ hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 401
 officialLanguages: [kk, ru]
-orchardProduces: [tomato, chilli_pepper, sweet_pepper, apple, grape, apricot, pear, strawberry, plum, peach, walnut, cherry, almond]
+orchardProduces: [apple, tomato, grape, apricot, pear, plum, walnut, peach, strawberry, chilli_pepper, sweet_pepper, almond, cherry]
 popularReligions: [muslim]

@@ -9,15 +9,14 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
-import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import de.westnordost.streetcomplete.util.TilesRect
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 /** Downloads all quests and tiles in a given area asynchronously. To use, start the service with
  * the appropriate parameters.
@@ -33,7 +32,7 @@ import javax.inject.Inject
  * download job was started by the user
  */
 class DownloadService : CoroutineIntentService(TAG) {
-    @Inject internal lateinit var downloader: Downloader
+    private val downloader: Downloader by inject()
 
     private lateinit var notification: Notification
 
@@ -56,10 +55,6 @@ class DownloadService : CoroutineIntentService(TAG) {
             field = value
             updateShowNotification()
         }
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate() {
         super.onCreate()

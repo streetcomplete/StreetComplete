@@ -8,6 +8,6 @@ mobileCountryCode: 426
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [date, tomato, lemon, lime, banana, grape, chilli_pepper, sweet_pepper]
+orchardProduces: [date, lemon, lime, banana, tomato, grape, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

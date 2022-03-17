@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toCollectionTimesR
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

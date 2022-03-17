@@ -16,9 +16,9 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
-import de.westnordost.streetcomplete.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.ktx.hideKeyboard
-import de.westnordost.streetcomplete.ktx.viewBinding
+import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.viewBinding
 
 /** Bottom sheet fragment with which the user can create a new note, including moving the note */
 class CreateNoteFragment : AbstractCreateNoteFragment() {
@@ -47,7 +47,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
         inflater.inflate(R.layout.form_leave_note, bottomSheetBinding.content)
         return binding.root

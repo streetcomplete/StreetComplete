@@ -9,5 +9,5 @@ mobileCountryCode: 456
 noParkingLineStyle: yellow-white on curb
 noStoppingLineStyle: red-white on curb
 officialLanguages: [km]
-orchardProduces: [banana, coconut, guava, mango, mangosteen, orange, pineapple, rubber, chilli_pepper, sweet_pepper, grapefruit, lemon, lime, pepper, coffee]
+orchardProduces: [rubber, banana, chilli_pepper, sweet_pepper, coconut, orange, guava, mango, mangosteen, pineapple, coffee, pepper, grapefruit, lemon, lime]
 popularReligions: [buddhist, muslim]

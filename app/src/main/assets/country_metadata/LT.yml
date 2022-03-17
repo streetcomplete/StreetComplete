@@ -12,4 +12,4 @@ mobileCountryCode: 246
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
-orchardProduces: [apple, tomato, strawberry, pear, raspberry, cherry, plum, blueberry]
+orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]

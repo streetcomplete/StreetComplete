@@ -4,4 +4,4 @@ mobileCountryCode: 620
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [en, ak, ee]
-orchardProduces: [cacao, orange, pineapple, coconut, tomato, chilli_pepper, sweet_pepper, guava, mango, mangosteen, banana, cashew_nut, lemon, lime, kola_nut, rubber, avocado, papaya, pepper]
+orchardProduces: [cacao, cashew_nut, kola_nut, coconut, rubber, tomato, orange, chilli_pepper, sweet_pepper, pineapple, banana, guava, mango, mangosteen, lemon, lime, pepper, avocado, papaya]

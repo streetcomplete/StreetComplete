@@ -9,6 +9,6 @@ hasLivingStreet: false
 hasSlowZone: true
 mobileCountryCode: 222
 officialLanguages: [it]
-orchardProduces: [grape, tomato, olive, apple, orange, peach, pear, kiwi, lemon, lime, chilli_pepper, sweet_pepper, apricot, plum, strawberry, hazelnut, almond]
+orchardProduces: [olive, grape, tomato, hazelnut, peach, apple, almond, chestnut, orange, cherry, pear, kiwi, lemon, lime, apricot, plum]
 slowZoneLabelPosition: top
 slowZoneLabelText: zona

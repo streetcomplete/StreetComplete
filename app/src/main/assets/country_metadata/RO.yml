@@ -9,7 +9,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 226
 officialLanguages: [ro]
-orchardProduces: [grape, tomato, plum, apple, chilli_pepper, sweet_pepper, cherry, pear, walnut, apricot, strawberry, peach, cranberry, hazelnut, blueberry, hop]
+orchardProduces: [grape, plum, apple, tomato, chilli_pepper, sweet_pepper, strawberry, pear, cherry, apricot, walnut, peach, hazelnut, blueberry, hop, raspberry]
 popularSports: [soccer, tennis, basketball, handball]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA

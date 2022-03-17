@@ -5,12 +5,11 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.util.ktx.format
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Deletes old unused data in the background */
-class Cleaner @Inject constructor(
+class Cleaner(
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry

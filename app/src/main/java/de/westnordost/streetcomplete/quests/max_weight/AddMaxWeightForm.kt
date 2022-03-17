@@ -9,14 +9,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
-import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
-import de.westnordost.streetcomplete.ktx.numberOrNull
-import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
@@ -33,7 +34,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private val maxWeightInput: EditText? get() = binding.inputSignContainer.findViewById(R.id.maxWeightInput)
     private val weightUnitSelect: Spinner? get() = binding.inputSignContainer.findViewById(R.id.weightUnitSelect)
 
-    private val weightLimitUnits get() = countryInfo.weightLimitUnits.map { it.toWeightMeasurementUnit() }
+    private val weightLimitUnits get() = countryInfo.weightLimitUnits
 
     override fun isFormComplete() = getWeightFromInput() != null
 
@@ -66,10 +67,10 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val maxWeightInput = maxWeightInput ?: return
 
         maxWeightInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-        maxWeightInput.allowOnlyNumbers()
+        maxWeightInput.filters = arrayOf(acceptDecimalDigits(6, 2))
         binding.inputSignContainer.setOnClickListener { focusMaxWeightInput() }
 
-        val units = weightLimitUnits.map { it.toDisplayString() }
+        val units = weightLimitUnits.map { it.displayString }
         weightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, units)
         weightUnitSelect?.setSelection(0)
     }
@@ -127,9 +128,9 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val input = maxWeightInput?.numberOrNull ?: return null
         val unit = weightLimitUnits[weightUnitSelect?.selectedItemPosition ?: 0]
         return when (unit) {
-            WeightMeasurementUnit.SHORT_TON -> ShortTons(input)
-            WeightMeasurementUnit.POUND     -> ImperialPounds(input.toInt())
-            WeightMeasurementUnit.TON       -> MetricTons(input)
+            WeightMeasurementUnit.SHORT_TON  -> ShortTons(input)
+            WeightMeasurementUnit.POUND      -> ImperialPounds(input.toInt())
+            WeightMeasurementUnit.METRIC_TON -> MetricTons(input)
         }
     }
 

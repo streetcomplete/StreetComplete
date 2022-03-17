@@ -5,10 +5,8 @@ import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.Prefs
 import oauth.signpost.OAuthConsumer
 import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton class UserLoginStatusController @Inject constructor(
+class UserLoginStatusController(
     private val oAuthStore: OAuthStore,
     private val osmConnection: OsmConnection,
     private val prefs: SharedPreferences,

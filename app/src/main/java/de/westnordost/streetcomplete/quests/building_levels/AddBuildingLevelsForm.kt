@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.mostCommonWithin
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
 
@@ -31,7 +31,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 5, historyCount = 30, first = 1)
+            .mostCommonWithin(target = 5, historyCount = 15, first = 1)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }

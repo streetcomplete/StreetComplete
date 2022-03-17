@@ -4,15 +4,15 @@
  <g transform="rotate(15 95.703 48.155)">
   <path d="m37.615 69.9-8.4853-8.4853-9.9069 9.9069c1.3197 3.8246 3.6614 6.9744 8.4853 8.4853z" fill="#333" stroke="#333" stroke-linejoin="round" stroke-width="4"/>
   <path d="m78.627 37.373-14.142-14.142-36.77 36.77c3.2045 5.8434 6.7023 11.467 14.142 14.142z" fill="#66666f" stroke="#666" stroke-linejoin="round" stroke-width="4"/>
-  <circle transform="rotate(-45)" cx="2.859" cy="82.134" r="10" fill="#666" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+  <circle transform="rotate(-45)" cx="2.859" cy="82.134" r="10" fill="#666"/>
   <path d="m10.745 65.657 52.528-52.392c9.5206 2.551 8.98 10.978 12.888 15.119l-37.132 37.273c-7.3263-1.7577-19.49 2.7398-28.284 0z" fill="#ccc" stroke="#999" stroke-linejoin="round" stroke-width="4"/>
-  <circle cx="60.03" cy="55.927" r="4.5625" fill="#444" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+  <circle cx="60.03" cy="55.927" r="4.5625" fill="#444"/>
  </g>
- <rect x="88" y="52" width="8" height="24" fill="#666" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+ <rect x="88" y="52" width="8" height="24" fill="#666"/>
  <g>
-  <path d="m93.584 61.703-2.7461 0.34376-26.545 3.3223 4.9824 6.5742c-7.411 4.249-14.494 6.1251-21.465 6.0547-6.9076-0.0698-13.896-2.0727-21.102-6.1524l4.9258-6.6484-29.33-3.3457 1.1016 2.541 10.639 24.545 5.4844-7.4004c9.0926 5.3722 18.529 8.3636 28.16 8.4609 9.7238 0.0982 19.43-2.7805 28.875-8.4395l5.5762 7.3555z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#46a" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <path d="m93.584 61.703-2.7461 0.34376-26.545 3.3223 4.9824 6.5742c-7.411 4.249-14.494 6.1251-21.465 6.0547-6.9076-0.0698-13.896-2.0727-21.102-6.1524l4.9258-6.6484-29.33-3.3457 1.1016 2.541 10.639 24.545 5.4844-7.4004c9.0926 5.3722 18.529 8.3636 28.16 8.4609 9.7238 0.0982 19.43-2.7805 28.875-8.4395l5.5762 7.3555z" fill="#46a" />
  </g>
  <g>
-  <path d="m86.793 66.852-1.375 0.17188-13.271 1.6602 3.4805 4.5918c-9.4355 6.3506-18.692 9.3153-27.861 9.2227-9.1286-0.09223-18.237-3.2209-27.383-9.2637l3.4336-4.6348-14.664-1.6738 0.55078 1.2695 5.3184 12.273 3.5742-4.8242c9.5685 6.3471 19.297 9.7541 29.139 9.8535 9.8848 0.09987 19.815-3.147 29.707-9.8301l3.6289 4.7891z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fff" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <path d="m86.793 66.852-1.375 0.17188-13.271 1.6602 3.4805 4.5918c-9.4355 6.3506-18.692 9.3153-27.861 9.2227-9.1286-0.09223-18.237-3.2209-27.383-9.2637l3.4336-4.6348-14.664-1.6738 0.55078 1.2695 5.3184 12.273 3.5742-4.8242c9.5685 6.3471 19.297 9.7541 29.139 9.8535 9.8848 0.09987 19.815-3.147 29.707-9.8301l3.6289 4.7891z" fill="#fff"/>
  </g>
 </svg>

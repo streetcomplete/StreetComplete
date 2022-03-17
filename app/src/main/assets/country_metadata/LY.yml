@@ -3,6 +3,6 @@ atmOperators: [طريق الشجرة, مصرف الجمهورية, AMAN Bank, م
 firstDayOfWorkweek: Su
 mobileCountryCode: 606
 officialLanguages: [ar]
-orchardProduces: [tomato, olive, date, plum, almond, grape, chilli_pepper, sweet_pepper, apricot, lemon, lime, apple, peach, fig, orange, pear]
+orchardProduces: [olive, almond, date, tomato, plum, grape, orange, apricot, fig, lemon, lime, chilli_pepper, sweet_pepper, peach, apple, pear]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

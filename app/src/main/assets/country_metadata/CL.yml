@@ -6,4 +6,4 @@ mobileCountryCode: 730
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-orchardProduces: [grape, apple, tomato, peach, pear, plum, kiwi, lemon, lime, avocado, orange, olive, cranberry, walnut, cherry, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, walnut, cherry, apple, avocado, hazelnut, olive, cranberry, plum, peach, tomato, almond, kiwi, pear, lemon, lime]

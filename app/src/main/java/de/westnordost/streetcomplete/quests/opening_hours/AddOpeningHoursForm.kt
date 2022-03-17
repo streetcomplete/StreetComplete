@@ -15,10 +15,10 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -47,14 +47,16 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         }
     )
 
-    private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
+    private lateinit var openingHoursAdapter: OpeningHoursAdapter
 
     private var isDisplayingPreviousOpeningHours: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
+        openingHoursAdapter = OpeningHoursAdapter(requireContext())
+        openingHoursAdapter.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
+        openingHoursAdapter.regularShoppingDays = countryInfo.regularShoppingDays
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

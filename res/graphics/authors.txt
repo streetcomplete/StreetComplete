@@ -31,7 +31,7 @@ achievements graphics/
                                 https://openclipart.org/detail/312402/simple-daikon (License: CC0 1.0)
                                 https://openclipart.org/detail/229813/aubergine (License: CC0 1.0)
                                 https://openclipart.org/detail/280304/fruit-icons-1-package (License: CC0 1.0)
-	wheelchair                  Judith Gastell, License: CC-BY-SA 4.0
+    wheelchair                  Judith Gastell, License: CC-BY-SA 4.0
 
 app icon/
     appicon_fancy.svg           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
@@ -44,7 +44,7 @@ app icon/
 bridge structure graphics/
     arch.svg                    Jay Turner, License: CC0 1.0
     beam.svg                    Jay Turner, License: CC0 1.0
-    cable-stayed.svg  	        Jay Turner, License: CC0 1.0
+    cable-stayed.svg            Jay Turner, License: CC0 1.0
     floating.svg                Tobias Zwick, License: CC0 1.0
     humpback.svg                Tobias Zwick, License: CC0 1.0
     simple-suspension.svg       Tobias Zwick, License: CC0 1.0
@@ -173,11 +173,11 @@ max weight graphics/
     truck.svg
 
 parking lane graphics/
-	car1.svg
-	car2.svg
-	car3.svg
-	car4.svg
-	car5.svg
+    car1.svg
+    car2.svg
+    car3.svg
+    car4.svg
+    car5.svg
 
 police type graphics/
     carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
@@ -224,7 +224,7 @@ quest icons/
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
     cash.svg
     christian.svg
-	cow.svg                          modified from EmojiOne 2: U+1F404
+    cow.svg                          modified from EmojiOne 2: U+1F404
     defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
     drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
     ferry.svg                        modified from Twemoji: U+26F4

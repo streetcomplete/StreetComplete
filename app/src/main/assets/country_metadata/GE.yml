@@ -6,5 +6,5 @@ hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 282
 officialLanguages: [ka]
-orchardProduces: [grape, tomato, apple, peach, hazelnut, pear, plum, chilli_pepper, sweet_pepper, walnut, cherry, tea, strawberry, lemon, lime, orange, apricot]
+orchardProduces: [grape, apple, orange, hazelnut, peach, walnut, tomato, plum, tea, pear, apricot, cherry, almond, chilli_pepper, sweet_pepper, lemon, lime]
 popularSports: [rugby]

@@ -10,7 +10,7 @@ mobileCountryCode: 228
 noParkingLineStyle: dashed yellow with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [de, fr, it, rm]
-orchardProduces: [apple, grape, tomato, pear, strawberry, apricot, cherry, plum, raspberry, walnut, chilli_pepper, sweet_pepper, kiwi, blueberry, peach, chestnut]
+orchardProduces: [grape, apple, walnut, pear, apricot, cherry, strawberry, plum, raspberry, tomato, blueberry, hop, chilli_pepper, sweet_pepper, kiwi, peach]
 popularSports: [soccer, tennis, basketball, shooting, equestrian]
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE

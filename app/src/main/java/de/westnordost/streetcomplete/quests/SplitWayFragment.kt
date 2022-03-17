@@ -15,7 +15,6 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
@@ -27,24 +26,24 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
-import de.westnordost.streetcomplete.ktx.forEachLine
-import de.westnordost.streetcomplete.ktx.popIn
-import de.westnordost.streetcomplete.ktx.popOut
-import de.westnordost.streetcomplete.ktx.setMargins
-import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.ktx.viewBinding
-import de.westnordost.streetcomplete.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.SoundFx
-import de.westnordost.streetcomplete.util.alongTrackDistanceTo
-import de.westnordost.streetcomplete.util.crossTrackDistanceTo
-import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.ktx.forEachLine
+import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.popOut
+import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.alongTrackDistanceTo
+import de.westnordost.streetcomplete.util.math.crossTrackDistanceTo
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
@@ -57,7 +56,7 @@ class SplitWayFragment :
 
     private val binding by viewBinding(FragmentSplitWayBinding::bind)
 
-    @Inject internal lateinit var soundFx: SoundFx
+    private val soundFx: SoundFx by inject()
 
     override val questKey: QuestKey get() = osmQuestKey
 
@@ -76,10 +75,6 @@ class SplitWayFragment :
 
     private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
         parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

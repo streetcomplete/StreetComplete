@@ -4,7 +4,7 @@ atmOperators: [بانک ملی, بانک ملت, بانک صادرات, بانک
 firstDayOfWorkweek: Sa
 mobileCountryCode: 432
 officialLanguages: [fa]
-orchardProduces: [tomato, apple, grape, orange, date, peach, pistachio, lemon, lime, walnut, kiwi, plum, apricot, cherry, banana, pear]
+orchardProduces: [pistachio, date, grape, tomato, apple, almond, apricot, walnut, olive, peach, lemon, lime, cherry, hazelnut, orange, fig]
 popularReligions: [muslim, bahai]
 roofsAreUsuallyFlat: true
 workweekDays: 6

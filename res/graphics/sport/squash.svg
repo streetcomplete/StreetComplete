@@ -27,10 +27,10 @@
  </g>
  <g transform="matrix(1.4044 0 0 1.4044 7.6699 -5.0777)" stroke-width=".55621">
   <g transform="matrix(.7548 0 0 .7548 13.811 10.695)" stroke-width=".7369">
-   <circle cx="12.491" cy="11.983" r="11" fill="#333" style="paint-order:stroke fill markers"/>
-   <circle cx="11.581" cy="10.951" r="8.1954" fill="#555" style="paint-order:stroke fill markers"/>
+   <circle cx="12.491" cy="11.983" r="11" fill="#333"/>
+   <circle cx="11.581" cy="10.951" r="8.1954" fill="#555"/>
   </g>
-  <circle cx="19.723" cy="18.007" r="1.1274" fill="#f0f000" style="paint-order:stroke fill markers"/>
-  <circle cx="22.452" cy="19.847" r="1.1274" fill="#f0f000" style="paint-order:stroke fill markers"/>
+  <circle cx="19.723" cy="18.007" r="1.1274" fill="#f0f000"/>
+  <circle cx="22.452" cy="19.847" r="1.1274" fill="#f0f000"/>
  </g>
 </svg>

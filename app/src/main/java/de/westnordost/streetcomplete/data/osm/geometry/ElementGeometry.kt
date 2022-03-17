@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 
 class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
 

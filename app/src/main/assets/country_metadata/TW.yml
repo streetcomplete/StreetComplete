@@ -9,6 +9,6 @@ noParkingLineStyle: red
 noParkingSignStyle: taiwan
 noStoppingSignStyle: vienna
 officialLanguages: [zh]
-orchardProduces: [pineapple, banana, guava, mango, mangosteen, orange, tomato, pear, papaya, areca_nut, grape, grapefruit, persimmon, lemon, lime, chilli_pepper, sweet_pepper, peach, apricot]
+orchardProduces: [areca_nut, guava, mango, mangosteen, banana, tea, pineapple, pear, persimmon, orange, grapefruit, tomato, apricot, papaya, lemon, lime, grape, chilli_pepper, sweet_pepper]
 popularReligions: [chinese_folk, taoist, buddhist, christian]
 popularSports: [basketball, tennis, volleyball, baseball]

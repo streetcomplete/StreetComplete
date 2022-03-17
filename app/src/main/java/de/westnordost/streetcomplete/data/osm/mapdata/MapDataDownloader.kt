@@ -3,16 +3,15 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.util.enlargedBy
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Takes care of downloading all note and osm quests */
-class MapDataDownloader @Inject constructor(
+class MapDataDownloader(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
 ) {

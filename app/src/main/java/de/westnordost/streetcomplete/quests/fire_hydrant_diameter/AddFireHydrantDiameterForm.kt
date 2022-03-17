@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 
 class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
 

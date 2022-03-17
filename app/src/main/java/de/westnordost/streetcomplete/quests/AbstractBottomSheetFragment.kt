@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
+import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
@@ -16,9 +16,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPS
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.updateMargins
-import de.westnordost.streetcomplete.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.updateMargins
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.SlidingRelativeLayout
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -75,7 +75,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         view.respectSystemInsets {
             scrollViewChild.updatePadding(bottom = it.bottom)
             bottomSheetContainer.updateMargins(top = it.top, left = it.left, right = it.right)
-            floatingBottomView?.updateMargins(bottom = it.bottom + 8f.toPx(context).toInt())
+            floatingBottomView?.updateMargins(bottom = it.bottom + context.dpToPx(8).toInt())
 
             // expanding bottom sheet when keyboard is opened
             if (minBottomInset < it.bottom) expand()
@@ -141,7 +141,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     }
 
     private fun updateCloseButtonVisibility() {
-        backButton?.isInvisible = (bottomSheet.top) > 0
+        backButton?.isGone = (bottomSheet.top) > 0
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {

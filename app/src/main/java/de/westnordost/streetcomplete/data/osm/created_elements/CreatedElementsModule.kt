@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.created_elements
 
-import dagger.Module
-import dagger.Provides
+import org.koin.dsl.module
 
-@Module
-object CreatedElementsModule {
-    @Provides fun createdElementsSource(
-        createdElementsController: CreatedElementsController
-    ): CreatedElementsSource = createdElementsController
+val createdElementsModule = module {
+    factory { CreatedElementsDao(get()) }
+
+    single<CreatedElementsSource> { get<CreatedElementsController>() }
+    single { CreatedElementsController(get()) }
 }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.estimatedWidth
+import de.westnordost.streetcomplete.osm.shoulders.createShoulders
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOffRoad
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOnRoad
@@ -37,7 +38,7 @@ fun guessRoadwayWidth(tags: Map<String, String>): Float {
     val widthOfOneSide = when (tags["highway"]) {
         "motorway", "trunk" -> 2 * BROAD_LANE
         "motorway_link", "trunk_link" -> BROAD_LANE
-        "primary" -> BROAD_LANE
+        "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
         "secondary", "tertiary", "unclassified" -> LANE
         "service" -> 2.5f
         else -> LANE

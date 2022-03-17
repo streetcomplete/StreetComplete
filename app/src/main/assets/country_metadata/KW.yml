@@ -6,6 +6,6 @@ mobileCountryCode: 419
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [tomato, date, chilli_pepper, sweet_pepper, strawberry, orange, lemon, lime, grape, olive]
+orchardProduces: [date, tomato, chilli_pepper, sweet_pepper, olive, strawberry, grape, lemon, lime, orange]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

@@ -7,6 +7,6 @@ hasSlowZone: true
 livingStreetSignStyle: russia
 mobileCountryCode: 283
 officialLanguages: [hy]
-orchardProduces: [tomato, grape, apple, apricot, peach, plum, pear, cherry, walnut, fig, hazelnut]
+orchardProduces: [grape, apricot, apple, peach, tomato, pear, plum, walnut, cherry, fig, hazelnut]
 slowZoneLabelPosition: top
 slowZoneLabelText: ԹՈՏՒ

@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.countryboundaries.intersects
-import de.westnordost.countryboundaries.isInAny
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -16,16 +14,18 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.enlargedBy
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.intersects
+import de.westnordost.streetcomplete.util.ktx.isInAny
+import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -37,12 +37,10 @@ import kotlinx.coroutines.withContext
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
-@Singleton class OsmQuestController @Inject internal constructor(
+class OsmQuestController internal constructor(
     private val db: OsmQuestDao,
     private val hiddenDB: OsmQuestsHiddenDao,
     private val mapDataSource: MapDataWithEditsSource,

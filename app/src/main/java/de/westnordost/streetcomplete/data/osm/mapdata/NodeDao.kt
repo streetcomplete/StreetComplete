@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LAST_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.LATITUDE
@@ -13,10 +16,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.lang.System.currentTimeMillis
-import javax.inject.Inject
 
 /** Stores OSM nodes */
-class NodeDao @Inject constructor(private val db: Database) {
+class NodeDao(private val db: Database) {
     fun put(node: Node) {
         putAll(listOf(node))
     }
@@ -51,15 +53,7 @@ class NodeDao @Inject constructor(private val db: Database) {
     fun getAll(ids: Collection<Long>): List<Node> {
         if (ids.isEmpty()) return emptyList()
         val idsString = ids.joinToString(",")
-        return db.query(NAME, where = "$ID IN ($idsString)") { cursor ->
-            Node(
-                cursor.getLong(ID),
-                LatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-                cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
-                cursor.getInt(VERSION),
-                cursor.getLong(TIMESTAMP),
-            )
-        }
+        return db.query(NAME, where = "$ID IN ($idsString)") { it.toNode() }
     }
 
     fun deleteAll(ids: Collection<Long>): Int {
@@ -80,4 +74,38 @@ class NodeDao @Inject constructor(private val db: Database) {
             limit = limit?.toString()
         ) { it.getLong(ID) }
     }
+
+    fun getAllIds(bbox: BoundingBox): List<Long> =
+        db.query(NAME, where = inBoundsSql(bbox), columns = arrayOf(ID)) { it.getLong(ID) }
+
+    fun getAllAsGeometryEntries(ids: Collection<Long>): List<ElementGeometryEntry> {
+        if (ids.isEmpty()) return emptyList()
+        val idsString = ids.joinToString(",")
+        return db.query(NAME,
+            where = "$ID IN ($idsString)",
+            columns = arrayOf(ID, LATITUDE, LONGITUDE)
+        ) { it.toElementGeometryEntry() }
+    }
+
+    fun getAll(bbox: BoundingBox): List<Node> =
+        db.query(NAME, where = inBoundsSql(bbox)) { it.toNode() }
 }
+
+private fun CursorPosition.toNode() = Node(
+    getLong(ID),
+    LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
+    getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
+    getInt(VERSION),
+    getLong(TIMESTAMP),
+)
+
+private fun CursorPosition.toElementGeometryEntry() = ElementGeometryEntry(
+    ElementType.NODE,
+    getLong(ID),
+    ElementPointGeometry(LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)))
+)
+
+private fun inBoundsSql(bbox: BoundingBox): String = """
+    ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
+    ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})
+""".trimIndent()

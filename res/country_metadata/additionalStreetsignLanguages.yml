@@ -14,11 +14,11 @@ CN-SH: [en, international]
 CN-BJ: [en, international] # https://commons.wikimedia.org/wiki/File:Beijing_(November_2016)_-_087.jpg, https://commons.wikimedia.org/wiki/File:Beijing_(November_2016)_-_494.jpg
 EG: [en] # https://commons.wikimedia.org/wiki/Category:Street_signs_in_Egypt
 EE: [ru]
-# can be removed if osmBoundaries is extended to differenciate between Catalunia, Valencia, Basque,...
+# can be removed if osmBoundaries is extended to differentiate between Catalunia, Valencia, Basque,...
 ES: [ca, eu, gl, ast]
 # unclear where exactly in France this is also spoken. When it is clear -> osmBoundaries could be extended
 FR: [oc, ca, br]
-# can be removed if osmBoundaries is extended to differenciate between Scotland, Wales,...
+# can be removed if osmBoundaries is extended to differentiate between Scotland, Wales,...
 GB: [cy, gd]
 GE: [en]
 GR: [international] # https://www.google.de/maps/@37.989912,23.7274585,3a,15y,224.83h,86.89t/data=!3m6!1e1!3m4!1sGCleq5TEDRIyvL-5_dZBbQ!2e0!7i13312!8i6656

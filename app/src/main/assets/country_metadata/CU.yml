@@ -5,5 +5,5 @@ mobileCountryCode: 368
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [es]
-orchardProduces: [tomato, guava, mango, mangosteen, banana, papaya, chilli_pepper, sweet_pepper, coconut, pineapple, grapefruit, grape, orange, lemon, lime, coffee, agave, avocado, cacao]
+orchardProduces: [guava, mango, mangosteen, banana, tomato, coffee, papaya, agave, coconut, chilli_pepper, sweet_pepper, pineapple, grapefruit, orange, cacao, grape, sisal, lemon, lime]
 popularSports: [baseball, basketball]

@@ -10,5 +10,5 @@ mobileCountryCode: 257
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [be, ru]
-orchardProduces: [apple, tomato, strawberry, pear, cherry, grape, walnut, plum, hazelnut, cranberry]
+orchardProduces: [apple, strawberry, grape, plum, tomato, pear, walnut, hazelnut, cherry, cranberry]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

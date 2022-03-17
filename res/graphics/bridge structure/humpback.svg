@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 320 96" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
     <style type="text/css">
-		.cables{fill: none; stroke:#AA0000;stroke-width:4;}
-		.support{fill:#E44848;stroke:#AA0000;stroke-width:2;}
-		.struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
-		.land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
-	</style>
-    
-	<path class="support" d="m20.285 82.591c-1.3296-32.811 61.046-53.383 67.874-1.7321l15.84-0.21985c21.522-60.233 95.45-59.541 112.76 0.60953l15.115-0.24075c9.6176-49.773 69.483-31.348 70.498-1.6726l18.626-27.335c-107.92-29.331-215.64-30.836-319.08 0.036201z"/>
+        .cables{fill: none; stroke:#AA0000;stroke-width:4;}
+        .support{fill:#E44848;stroke:#AA0000;stroke-width:2;}
+        .struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
+        .land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
+    </style>
+
+    <path class="support" d="m20.285 82.591c-1.3296-32.811 61.046-53.383 67.874-1.7321l15.84-0.21985c21.522-60.233 95.45-59.541 112.76 0.60953l15.115-0.24075c9.6176-49.773 69.483-31.348 70.498-1.6726l18.626-27.335c-107.92-29.331-215.64-30.836-319.08 0.036201z"/>
     <path class="land" d="m-3 52v48h92c-40 0-56-40-88-48h-4zm324 0c-32 8-48 48-88 48h92v-48h-4z"/>
     <rect class="struct" x="216" y="36" width="16" height="64"/>
     <rect class="struct" x="88" y="36" width="16" height="64"/>

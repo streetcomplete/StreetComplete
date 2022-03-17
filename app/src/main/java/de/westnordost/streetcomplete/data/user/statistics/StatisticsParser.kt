@@ -3,12 +3,10 @@ package de.westnordost.streetcomplete.data.user.statistics
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import org.json.JSONObject
 import java.time.OffsetDateTime
-import javax.inject.Inject
-import javax.inject.Named
 
-class StatisticsParser @Inject constructor(
+class StatisticsParser(
     private val questTypeRegistry: QuestTypeRegistry,
-    @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
+    private val questAliases: List<Pair<String, String>>
 ) {
     fun parse(json: String): Statistics {
         val obj = JSONObject(json)

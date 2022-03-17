@@ -6,6 +6,6 @@ hasAdvisorySpeedLimitSign: true
 hasSlowZone: true
 mobileCountryCode: 460
 officialLanguages: [zh]
-orchardProduces: [tomato, apple, orange, chilli_pepper, sweet_pepper, pear, peach, grape, banana, plum, guava, mango, mangosteen, grapefruit, persimmon, strawberry, tea, lemon, lime]
+orchardProduces: [tea, orange, apple, plum, tomato, persimmon, pear, peach, grape, rubber, banana, chestnut, walnut, kiwi, guava, mango, mangosteen]
 popularReligions: [chinese_folk, taoist, buddhist, christian, muslim]
 popularSports: [basketball, soccer, badminton]

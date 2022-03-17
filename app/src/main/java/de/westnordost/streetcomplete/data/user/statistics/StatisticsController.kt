@@ -4,22 +4,20 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.core.content.edit
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.countryboundaries.getIds
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import de.westnordost.streetcomplete.ktx.toLocalDate
+import de.westnordost.streetcomplete.util.ktx.getIds
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import java.time.Instant
 import java.time.LocalDate
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Manages statistics of solved quests - by quest type and by country */
-@Singleton class StatisticsController @Inject constructor(
+class StatisticsController(
     private val questTypeStatisticsDao: QuestTypeStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,

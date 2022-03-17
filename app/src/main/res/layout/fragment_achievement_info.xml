@@ -72,7 +72,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/speech_bubble_none"/>
 
-        <de.westnordost.streetcomplete.user.AchievementIconView
+        <de.westnordost.streetcomplete.screens.user.achievements.AchievementIconView
             android:id="@+id/achievementIconView"
             android:layout_width="@dimen/achievement_icon_size"
             android:layout_height="@dimen/achievement_icon_size"

@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.bbox
@@ -15,6 +14,7 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -79,8 +79,8 @@ class MapDataControllerTest {
             ElementKey(NODE, 2L),
         )
         val elements = listOf(node(1), node(2))
-        on(geometryDB.getAllEntries(bbox)).thenReturn(geomEntries)
-        on(elementDB.getAll(eq(elementKeys))).thenReturn(elements)
+        on(elementDB.getAll(bbox)).thenReturn(elements)
+        on(geometryDB.getAllEntries(elementKeys)).thenReturn(geomEntries)
 
         val mapData = controller.getMapDataWithGeometry(bbox)
         assertTrue(mapData.nodes.containsExactlyInAnyOrder(elements))
@@ -168,8 +168,8 @@ class MapDataControllerTest {
         mapData.nodeGeometriesById[1] = geomEntries[0].geometry as ElementPointGeometry
         mapData.nodeGeometriesById[2] = geomEntries[1].geometry as ElementPointGeometry
 
-        on(geometryDB.getAllKeys(bbox)).thenReturn(emptyList())
-        on(geometryDB.getAllEntries(bbox)).thenReturn(emptyList())
+        on(elementDB.getAllKeys(bbox)).thenReturn(emptyList())
+        on(geometryDB.getAllEntries(emptyList())).thenReturn(emptyList())
         on(geometryCreator.create(any(), any(), anyBoolean())).thenReturn(pGeom())
 
         val listener = mock<MapDataController.Listener>()

@@ -29,7 +29,7 @@
   <path d="m15.17 44.169 1.5561-1.5552 5.7259 5.7291-1.5561 1.5552z" fill="#4d4f59" stroke-width=".5244"/>
  </g>
  <g transform="matrix(.78685 0 0 .78685 24.822 17.64)" stroke-width=".99276">
-  <circle cx="12.491" cy="11.983" r="11" fill="#2e6ae2" style="paint-order:stroke fill markers"/>
-  <circle cx="11.581" cy="10.951" r="8.1954" fill="#5578e7" style="paint-order:stroke fill markers"/>
+  <circle cx="12.491" cy="11.983" r="11" fill="#2e6ae2"/>
+  <circle cx="11.581" cy="10.951" r="8.1954" fill="#5578e7"/>
  </g>
 </svg>

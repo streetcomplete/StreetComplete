@@ -6,5 +6,5 @@ isLeftHandTraffic: true
 mobileCountryCode: 278
 noStoppingLineStyle: double yellow
 officialLanguages: [mt, en]
-orchardProduces: [tomato, grape, strawberry, lemon, lime, peach, orange, fig, olive, apricot, pear, apple, grapefruit]
+orchardProduces: [grape]
 roofsAreUsuallyFlat: true

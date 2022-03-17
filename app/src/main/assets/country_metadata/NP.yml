@@ -8,6 +8,6 @@ noParkingLineStyle: yellow
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ne]
-orchardProduces: [guava, mango, mangosteen, banana, orange, chilli_pepper, sweet_pepper, lemon, lime, pear, apple, tea, areca_nut, papaya, pineapple, peach, plum, walnut, nutmeg]
+orchardProduces: [guava, mango, mangosteen, tea, banana, orange, nutmeg, chilli_pepper, sweet_pepper, lemon, lime, apple, pear, coffee, areca_nut, walnut, peach, plum, papaya]
 popularReligions: [hindu, buddhist]
 workweekDays: 6
