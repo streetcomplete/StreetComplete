@@ -100,8 +100,7 @@ open class LocationAwareMapFragment : MapFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         displayedLocation = savedInstanceState?.getParcelable(DISPLAYED_LOCATION)
-        val nullTerminatedTracks =
-            savedInstanceState?.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
+        val nullTerminatedTracks = savedInstanceState?.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
         if (nullTerminatedTracks != null) {
             tracks = nullTerminatedTracks.unflattenNullTerminated()
         }
@@ -202,8 +201,7 @@ open class LocationAwareMapFragment : MapFragment() {
                        behind user */
                     val distance = controller?.screenBottomToCenterDistance()
                     if (distance != null) {
-                        centerPosition =
-                            centerPosition.translate(distance * 0.4, bearing.toDouble())
+                        centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }
                 }
                 tilt = PI.toFloat() / 6f

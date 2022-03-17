@@ -761,7 +761,6 @@ class MainFragment :
     }
 
     private fun onClickCreateTrack() {
-
         // Check that the user has required permission to record a track
         val hasUploadPermission = prefs.getBoolean(Prefs.OSM_HAS_UPLOAD_TRACES_PERMISSION, false)
         if (!hasUploadPermission) {

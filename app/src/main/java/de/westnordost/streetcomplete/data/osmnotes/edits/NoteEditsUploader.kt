@@ -36,14 +36,12 @@ class NoteEditsUploader(
      *  Drops any edits where the upload failed because of a conflict but keeps any notes where
      *  the upload failed because attached photos could not be uploaded (so it can try again
      *  later). */
-    suspend fun upload() = mutex.withLock {
-        withContext(Dispatchers.IO) {
-            // first look if any images have not been activated yet
-            uploadMissedImageActivations()
-            // then do the usual stuff
-            uploadEdits()
-        }
-    }
+    suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
+        // first look if any images have not been activated yet
+        uploadMissedImageActivations()
+        // then do the usual stuff
+        uploadEdits()
+    } }
 
     private suspend fun uploadMissedImageActivations() {
         while (true) {
@@ -67,7 +65,6 @@ class NoteEditsUploader(
     }
 
     private fun uploadEdit(edit: NoteEdit) {
-
         // try to upload the image and tracks if we have them
         val imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
         val tracksText = uploadAndGetAttachedTracksText(edit.tracks, edit.text)
@@ -80,10 +77,9 @@ class NoteEditsUploader(
                 COMMENT -> notesApi.comment(edit.noteId, text)
             }
 
-            Log.d(
-                TAG,
+            Log.d(TAG,
                 "Uploaded a ${edit.action.name} to ${note.id}" +
-                    " at ${edit.position.latitude}, ${edit.position.longitude}"
+                " at ${edit.position.latitude}, ${edit.position.longitude}"
             )
             uploadedChangeListener?.onUploaded(NOTE, edit.position)
 
@@ -96,10 +92,9 @@ class NoteEditsUploader(
             }
             deleteImages(edit.imagePaths)
         } catch (e: ConflictException) {
-            Log.d(
-                TAG,
+            Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +
-                    " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
+                " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"
             )
             uploadedChangeListener?.onDiscarded(NOTE, edit.position)
 

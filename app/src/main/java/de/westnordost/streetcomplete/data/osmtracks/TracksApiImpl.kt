@@ -20,7 +20,6 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
     private val api: GpsTracesApi = GpsTracesApi(osm)
 
     override fun create(trackpoints: List<Trackpoint>, noteText: String?): Track = wrapExceptions {
-
         // Filename is just the start of the track
         // https://stackoverflow.com/a/49862573/7718197
         val name = DateTimeFormatter
