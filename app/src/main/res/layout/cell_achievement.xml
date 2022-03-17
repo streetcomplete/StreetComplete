@@ -9,7 +9,7 @@
     android:padding="6dp"
     android:clipToPadding="false">
 
-    <de.westnordost.streetcomplete.user.AchievementIconView
+    <de.westnordost.streetcomplete.screens.user.achievements.AchievementIconView
         android:id="@+id/achievementIconView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -7,6 +7,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 216
 officialLanguages: [hu]
-orchardProduces: [apple, grape, tomato, chilli_pepper, sweet_pepper, plum, peach, pear, apricot, cherry, walnut, strawberry, raspberry, chestnut, almond, hazelnut]
+orchardProduces: [grape, apple, cherry, plum, walnut, apricot, peach, pear, tomato, chilli_pepper, sweet_pepper, strawberry, hazelnut, raspberry, almond, chestnut]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZÓNA

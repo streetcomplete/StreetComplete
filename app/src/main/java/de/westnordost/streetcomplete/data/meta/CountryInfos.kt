@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.meta
 
 import android.content.res.AssetManager
 import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.countryboundaries.CountryBoundaries
 import java.io.File
 import java.io.SequenceInputStream
@@ -39,7 +40,7 @@ class CountryInfos(private val assetManager: AssetManager) {
             val countryCode = countryCodeIso3166.split("-").first()
             val stream = SequenceInputStream("countryCode: $countryCode\n".byteInputStream(), inputStream)
 
-            return Yaml.default.decodeFromStream(IncompleteCountryInfo.serializer(), stream)
+            return Yaml.default.decodeFromStream(stream)
         }
     }
 

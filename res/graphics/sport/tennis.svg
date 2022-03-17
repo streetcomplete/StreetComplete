@@ -36,8 +36,8 @@
    </g>
   </g>
   <g transform="matrix(1.4896 0 0 1.4896 5.5796 5.8795)">
-   <circle cx="12.491" cy="11.983" r="11" fill="#d7e22e" style="paint-order:stroke fill markers"/>
-   <circle cx="11.581" cy="10.951" r="8.1954" fill="#dee755" style="paint-order:stroke fill markers"/>
+   <circle cx="12.491" cy="11.983" r="11" fill="#d7e22e"/>
+   <circle cx="11.581" cy="10.951" r="8.1954" fill="#dee755"/>
    <path d="m1.5049 11.58c5.0837 0.28887 11.151 5.8203 11.212 11.369" fill="none" stroke="#fff" stroke-width="2.014"/>
    <path d="m23.465 11.341c-5.0883 0.19159-11.65-4.7433-12.233-10.262" fill="none" stroke="#fff" stroke-width="2.014"/>
   </g>

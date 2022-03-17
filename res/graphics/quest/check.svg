@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
  <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#9bbe55" stroke-width=".2"/>
- <path d="m101.34 26.645c-4.5792 2.2896-8.9968 5.4938-13.164 9.3555h-56.174v64h64v-54.516c3.6362-3.5673 7.2879-6.3969 10.705-8.1055z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill-opacity=".2" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+ <path d="m101.34 26.645c-4.5792 2.2896-8.9968 5.4938-13.164 9.3555h-56.174v64h64v-54.516c3.6362-3.5673 7.2879-6.3969 10.705-8.1055z" fill-opacity=".2"/>
  <rect x="36" y="36" width="56" height="56" fill="#fff" stroke="#666" stroke-width="8"/>
  <path d="m44 60s14 6.678 23.333 15.556c7.2593-20.035 22.148-40.296 36.667-47.556" fill="none" stroke="#3150ab" stroke-width="12"/>
 </svg>

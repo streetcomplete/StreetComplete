@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4100
-        versionName = "41.0-beta1"
+        versionCode = 4200
+        versionName = "42.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -182,7 +182,7 @@ dependencies {
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.charleskorn.kaml:kaml:0.40.0")
+    implementation("com.charleskorn.kaml:kaml:0.42.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
@@ -203,9 +203,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220131"
+val nsiVersion = "v6.0.20220314"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.2.1"
+val presetsVersion = "v3.2.2"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
@@ -237,6 +237,12 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     version = nsiVersion
     targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
 }
+
+// tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
+//     group = "streetcomplete"
+//     version = nsiVersion
+//     targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
+// }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"

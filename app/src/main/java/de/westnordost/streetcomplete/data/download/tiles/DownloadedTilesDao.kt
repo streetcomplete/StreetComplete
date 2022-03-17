@@ -6,8 +6,6 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Co
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Columns.X
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Columns.Y
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.NAME
-import de.westnordost.streetcomplete.util.TilePos
-import de.westnordost.streetcomplete.util.TilesRect
 import java.lang.System.currentTimeMillis
 
 /** Keeps info in which areas things have been downloaded already in a tile grid */

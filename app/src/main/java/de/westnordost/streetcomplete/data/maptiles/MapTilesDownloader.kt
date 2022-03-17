@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.data.maptiles
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.map.VectorTileProvider
-import de.westnordost.streetcomplete.util.enclosingTilesRect
+import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
+import de.westnordost.streetcomplete.util.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

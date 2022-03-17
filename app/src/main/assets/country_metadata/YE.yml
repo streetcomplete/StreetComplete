@@ -3,6 +3,6 @@ atmOperators: [كاك بنك, YCB, صراف آلي - بنك اليمن الدو�
 firstDayOfWorkweek: Su
 mobileCountryCode: 421
 officialLanguages: [ar]
-orchardProduces: [guava, mango, mangosteen, grape, banana, orange, tomato, date, peach, lemon, lime, papaya, coffee, apple, chilli_pepper, sweet_pepper, fig, apricot, pear]
+orchardProduces: [coffee, guava, mango, mangosteen, date, grape, banana, tomato, almond, chilli_pepper, sweet_pepper, peach, lemon, lime, apple, papaya, orange, apricot, fig]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true

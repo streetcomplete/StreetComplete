@@ -5,6 +5,6 @@ mobileCountryCode: 374
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: [coconut, banana, lemon, lime, orange, tomato, pineapple, grapefruit, chilli_pepper, sweet_pepper, papaya, guava, mango, mangosteen, avocado, nutmeg, cacao, coffee]
+orchardProduces: [cacao, coffee, coconut, orange, banana, nutmeg, lemon, lime, chilli_pepper, sweet_pepper, pineapple, grapefruit, tomato, guava, mango, mangosteen, avocado, papaya]
 popularReligions: [christian, hindu]
 popularSports: [cricket]

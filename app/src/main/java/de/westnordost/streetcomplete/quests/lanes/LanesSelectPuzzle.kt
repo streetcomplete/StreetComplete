@@ -15,25 +15,34 @@ import android.widget.RelativeLayout
 import androidx.core.graphics.withRotation
 import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.isApril1st
-import de.westnordost.streetcomplete.ktx.showTapHint
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.CONTINUOUS
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.DASHES
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.SHORT_DASHES
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.ktx.showTapHint
 import kotlin.math.max
 import kotlin.random.Random
 
+/**
+ *  Extravagant view that displays the number of lanes on the left side and the number of lanes on
+ *  the right side of the street, featuring
+ *
+ *  - many options to customize the rendering of the street (because streets have different markings
+ *    in different countries)
+ *  - displaying only one side (e.g. if it is a one-way street)
+ *  - animated cars that drive down the street, customizable whether they drive on the left or
+ *    right
+ */
 class LanesSelectPuzzle @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr), LifecycleObserver {
+) : RelativeLayout(context, attrs, defStyleAttr), DefaultLifecycleObserver {
 
     private val animator = TimeAnimator()
 
@@ -190,11 +199,11 @@ class LanesSelectPuzzle @JvmOverloads constructor(
         }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun resume() {
+    override fun onResume(owner: LifecycleOwner) {
         animator.start()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun pause() {
+    override fun onPause(owner: LifecycleOwner) {
         animator.end()
     }
 

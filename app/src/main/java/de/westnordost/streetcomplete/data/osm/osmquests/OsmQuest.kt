@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.util.measuredLength
-import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
+import de.westnordost.streetcomplete.util.math.measuredLength
+import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
 
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(

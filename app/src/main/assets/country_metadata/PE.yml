@@ -7,4 +7,4 @@ mobileCountryCode: 716
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es, qu, ay]
-orchardProduces: [grape, pineapple, avocado, orange, guava, mango, mangosteen, coffee, banana, lemon, lime, tomato, papaya, apple, chilli_pepper, sweet_pepper, cacao, olive, peach]
+orchardProduces: [coffee, cacao, banana, avocado, grape, guava, mango, mangosteen, lemon, lime, olive, orange, pineapple, blueberry, papaya, brazil_nut, apple, chilli_pepper, sweet_pepper]

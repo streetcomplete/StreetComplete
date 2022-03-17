@@ -7,7 +7,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericRadioListBinding
-import de.westnordost.streetcomplete.ktx.setMargins
 
 abstract class AListQuestAnswerFragment<T> : AbstractQuestFormAnswerFragment<T>() {
 

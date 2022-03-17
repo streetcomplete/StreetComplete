@@ -17,8 +17,7 @@ class AddOnewayTest {
     @Test fun `applies to slim road`() {
         val mapData = TestMapDataWithGeometry(noDeadEndWays(mapOf(
             "highway" to "residential",
-            "width" to "4",
-            "lanes" to "1"
+            "width" to "4"
         )))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }

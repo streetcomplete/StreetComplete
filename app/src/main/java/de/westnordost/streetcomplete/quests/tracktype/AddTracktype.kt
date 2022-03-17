@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
@@ -20,12 +20,10 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
         and (access !~ private|no or (foot and foot !~ private|no))
     """
     /* ~paved tracks are less likely to change the surface type */
-
     override val changesetComment = "Add tracktype"
     override val wikiLink = "Key:tracktype"
     override val icon = R.drawable.ic_quest_tractor
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tracktype_title

@@ -26,8 +26,8 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLi
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
-import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.osm.toCheckDate
 import java.text.ParseException
 import java.util.EnumSet
 import kotlin.math.min

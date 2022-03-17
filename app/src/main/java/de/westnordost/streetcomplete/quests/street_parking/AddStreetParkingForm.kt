@@ -10,12 +10,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
-import de.westnordost.streetcomplete.ktx.noParkingLineStyleResId
-import de.westnordost.streetcomplete.ktx.noParkingSignDrawableResId
-import de.westnordost.streetcomplete.ktx.noStandingLineStyleResId
-import de.westnordost.streetcomplete.ktx.noStandingSignDrawableResId
-import de.westnordost.streetcomplete.ktx.noStoppingLineStyleResId
-import de.westnordost.streetcomplete.ktx.noStoppingSignDrawableResId
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
@@ -39,7 +33,13 @@ import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.NO
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PARALLEL
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PERPENDICULAR
 import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.SEPARATE
-import de.westnordost.streetcomplete.util.normalizeDegrees
+import de.westnordost.streetcomplete.util.ktx.noParkingLineStyleResId
+import de.westnordost.streetcomplete.util.ktx.noParkingSignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.noStandingLineStyleResId
+import de.westnordost.streetcomplete.util.ktx.noStandingSignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.noStoppingLineStyleResId
+import de.westnordost.streetcomplete.util.ktx.noStoppingSignDrawableResId
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
@@ -226,7 +226,7 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
     }
 
     private fun isRoadDisplayedUpsideDown(): Boolean =
-        binding.puzzleView.streetRotation.normalizeDegrees(-180f).absoluteValue > 90f
+        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
 
     /* --------------------------------------- apply answer ------------------------------------- */
 

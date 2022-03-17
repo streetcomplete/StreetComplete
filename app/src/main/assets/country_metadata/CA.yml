@@ -9,6 +9,6 @@ mobileCountryCode: 302
 noParkingSignStyle: mutcd
 noStoppingSignStyle: canada
 officialLanguages: [en, fr]
-orchardProduces: [tomato, apple, blueberry, cranberry, grape, chilli_pepper, sweet_pepper, strawberry, peach, cherry, raspberry, pear, plum, apricot, kiwi]
+orchardProduces: [blueberry, apple, grape, cranberry, tomato, strawberry, peach, chilli_pepper, sweet_pepper, cherry, raspberry, pear, plum, apricot, kiwi]
 popularReligions: [christian, muslim, jewish, hindu, sikh]
 popularSports: [baseball, soccer, tennis, basketball, canadian_football, american_football, ice_hockey, curling]

@@ -18,7 +18,6 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
     override val wikiLink = "Key:recycling_type"
     override val icon = R.drawable.ic_quest_recycling
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_type_title

@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="@id/mapImageView"
             app:layout_constraintBottom_toBottomOf="@id/mapImageView"/>
 
-        <de.westnordost.streetcomplete.location.LocationStateButton
+        <de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
             android:id="@+id/tutorialGpsButton"
             android:layout_width="64dp"
             android:layout_height="64dp"

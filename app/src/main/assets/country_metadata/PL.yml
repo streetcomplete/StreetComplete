@@ -9,6 +9,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 260
 officialLanguages: [pl]
-orchardProduces: [apple, tomato, strawberry, raspberry, cherry, plum, pear, blueberry, peach, walnut, hazelnut, hop, apricot, chestnut]
+orchardProduces: [apple, strawberry, cherry, raspberry, plum, tomato, blueberry, pear, hazelnut, chilli_pepper, sweet_pepper, walnut, hop, peach, apricot, grape]
 popularSports: [soccer, athletics, volleyball, basketball, handball, tennis]
 regularShoppingDays: 5

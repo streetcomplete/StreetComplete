@@ -7,5 +7,5 @@ mobileCountryCode: 639
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, sw]
-orchardProduces: [banana, guava, mango, mangosteen, tea, tomato, pineapple, avocado, papaya, coconut, coffee, orange, cashew_nut, sisal, lemon, lime, grapefruit, pear]
+orchardProduces: [tea, coffee, coconut, banana, guava, mango, mangosteen, tomato, sisal, cashew_nut, avocado, pineapple, papaya, orange, lemon, lime, chilli_pepper, sweet_pepper, date]
 popularSports: [golf, soccer, tennis, basketball, cricket]

@@ -6,4 +6,4 @@ mobileCountryCode: 712
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-orchardProduces: [pineapple, banana, orange, coffee, papaya, tomato, guava, mango, mangosteen, lemon, lime, grapefruit, coconut, avocado, strawberry, pepper, chilli_pepper, sweet_pepper, cacao]
+orchardProduces: [coffee, banana, pineapple, orange, cacao, guava, mango, mangosteen, avocado, grapefruit, lemon, lime, coconut, tomato, papaya, pepper, chilli_pepper, sweet_pepper, strawberry]

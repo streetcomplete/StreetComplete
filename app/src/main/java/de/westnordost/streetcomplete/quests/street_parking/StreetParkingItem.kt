@@ -3,12 +3,6 @@ package de.westnordost.streetcomplete.quests.street_parking
 import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.ktx.noParkingLineStyleResId
-import de.westnordost.streetcomplete.ktx.noParkingSignDrawableResId
-import de.westnordost.streetcomplete.ktx.noStandingLineStyleResId
-import de.westnordost.streetcomplete.ktx.noStandingSignDrawableResId
-import de.westnordost.streetcomplete.ktx.noStoppingLineStyleResId
-import de.westnordost.streetcomplete.ktx.noStoppingSignDrawableResId
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
@@ -24,6 +18,12 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
+import de.westnordost.streetcomplete.util.ktx.noParkingLineStyleResId
+import de.westnordost.streetcomplete.util.ktx.noParkingSignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.noStandingLineStyleResId
+import de.westnordost.streetcomplete.util.ktx.noStandingSignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.noStoppingLineStyleResId
+import de.westnordost.streetcomplete.util.ktx.noStoppingSignDrawableResId
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage

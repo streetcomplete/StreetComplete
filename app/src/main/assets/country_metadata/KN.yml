@@ -4,5 +4,5 @@ isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 356
 officialLanguages: [en]
-orchardProduces: [coconut, tomato, chilli_pepper, sweet_pepper, pineapple]
+orchardProduces: [coconut, tomato, chilli_pepper, sweet_pepper]
 speedUnits: [miles per hour, kilometers per hour]

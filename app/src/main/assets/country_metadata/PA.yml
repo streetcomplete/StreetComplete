@@ -5,5 +5,5 @@ mobileCountryCode: 714
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-orchardProduces: [banana, pineapple, orange, tomato, coconut, avocado, papaya, guava, mango, mangosteen, coffee, chilli_pepper, sweet_pepper, cacao]
+orchardProduces: [coffee, cacao, banana, orange, coconut, pineapple, avocado, guava, mango, mangosteen, tomato, papaya, chilli_pepper, sweet_pepper]
 popularSports: [soccer, basketball, baseball, tennis]

@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
 
 /** Quest type where each quest refers to an OSM element */
 interface OsmElementQuestType<T> : QuestType<T> {
@@ -50,8 +49,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int
 
-    fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"] ?: tags["brand"])
+    fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
 
     /** return all elements within the given map data that are applicable to this quest type. */
     fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element>

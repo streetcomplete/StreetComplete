@@ -15,8 +15,8 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.showTapHint
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.showTapHint
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -201,6 +201,21 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         val params = RelativeLayout.LayoutParams(0, 0)
         params.addRule(RelativeLayout.CENTER_HORIZONTAL)
         binding.strut.layoutParams = params
+    }
+
+    fun onlyLeftSideClickable() {
+        binding.leftSideContainer.isClickable = true
+        binding.rightSideContainer.isClickable = false
+    }
+
+    fun onlyRightSideClickable() {
+        binding.rightSideContainer.isClickable = true
+        binding.leftSideContainer.isClickable = false
+    }
+
+    fun bothSidesClickable() {
+        binding.rightSideContainer.isClickable = true
+        binding.leftSideContainer.isClickable = true
     }
 
     private fun replace(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {

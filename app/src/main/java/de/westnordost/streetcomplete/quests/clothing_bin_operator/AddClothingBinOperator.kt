@@ -24,8 +24,9 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
     override val wikiLink = "Tag:amenity=recycling"
     override val icon = R.drawable.ic_quest_recycling_clothes
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CITIZEN)
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_clothes_container_operator_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { filter.matches(it) && it.tags.hasNoOtherRecyclingTags() }
@@ -40,8 +41,6 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
             && key != "recycling:clothes"
             && value == "yes"
         }
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_clothes_container_operator_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = recycling")

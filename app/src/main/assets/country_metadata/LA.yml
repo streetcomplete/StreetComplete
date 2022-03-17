@@ -7,5 +7,5 @@ mobileCountryCode: 457
 noParkingLineStyle: yellow-white on curb
 noStoppingLineStyle: red-white on curb
 officialLanguages: [lo]
-orchardProduces: [banana, coffee, pineapple, orange, chilli_pepper, sweet_pepper, tea, grapefruit, lemon, lime, guava, mango, mangosteen, nutmeg]
+orchardProduces: [coffee, banana, chilli_pepper, sweet_pepper, nutmeg, tea, pineapple, orange, papaya, grapefruit, lemon, lime, guava, mango, mangosteen]
 popularReligions: [buddhist]

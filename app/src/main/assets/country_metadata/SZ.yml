@@ -7,4 +7,4 @@ isLeftHandTraffic: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 653
 officialLanguages: [ss, en]
-orchardProduces: [grapefruit, orange, pineapple, banana, tomato, plum, almond, avocado, date, guava, mango, mangosteen]
+orchardProduces: [grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, guava, mango, mangosteen, date]

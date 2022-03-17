@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import androidx.core.view.isGone
@@ -13,11 +11,11 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.databinding.ViewLengthInputBinding
-import de.westnordost.streetcomplete.ktx.intOrNull
-import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntDigits
 import de.westnordost.streetcomplete.view.inputfilter.acceptIntRange
@@ -34,12 +32,9 @@ class LengthInput @JvmOverloads constructor(
     var onInputChanged: (() -> Unit)? = null
 
     init {
-        binding.unitSelect.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                updateInputFieldsVisibility()
-                onInputChanged?.invoke()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        binding.unitSelect.onItemSelectedListener = OnAdapterItemSelectedListener {
+            updateInputFieldsVisibility()
+            onInputChanged?.invoke()
         }
 
         binding.feetInput.filters = arrayOf(acceptIntDigits(4))

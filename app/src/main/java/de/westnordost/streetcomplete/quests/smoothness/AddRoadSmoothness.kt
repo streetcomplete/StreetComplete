@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
@@ -32,18 +31,9 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val questTypeAchievements = listOf(CAR, BICYCLIST)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        val isSquare = tags["area"] == "yes"
-        return when {
-            hasName ->     R.string.quest_smoothness_name_title
-            isSquare ->    R.string.quest_smoothness_square_title
-            else ->        R.string.quest_smoothness_road_title
-        }
-    }
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"])
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags["area"] == "yes") R.string.quest_smoothness_square_title
+        else                       R.string.quest_smoothness_road_title
 
     override fun createForm() = AddSmoothnessForm()
 

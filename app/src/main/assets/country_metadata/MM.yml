@@ -6,7 +6,7 @@ mobileCountryCode: 414
 noParkingLineStyle: yellow-white on curb
 noStoppingLineStyle: red-white on curb
 officialLanguages: [my]
-orchardProduces: [coconut, rubber, areca_nut, chilli_pepper, sweet_pepper, tea, coffee, cashew_nut, guava, mango, mangosteen]
+orchardProduces: [rubber, chilli_pepper, sweet_pepper, tea, areca_nut, coconut, coffee, cashew_nut, guava, mango, mangosteen]
 popularReligions: [buddhist, christian, muslim, hindu]
 popularSports: [soccer, tennis, sepak_takraw]
 speedUnits: [kilometers per hour, miles per hour]

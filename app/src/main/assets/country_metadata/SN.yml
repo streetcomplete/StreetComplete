@@ -2,5 +2,5 @@
 atmOperators: [SGBS, orange, Ecobank, CBEAO]
 mobileCountryCode: 608
 officialLanguages: [fr, wo, ff]
-orchardProduces: [guava, mango, mangosteen, tomato, orange, banana, cashew_nut, chilli_pepper, sweet_pepper, coconut]
+orchardProduces: [cashew_nut, guava, mango, mangosteen, orange, tomato, banana, coconut, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]

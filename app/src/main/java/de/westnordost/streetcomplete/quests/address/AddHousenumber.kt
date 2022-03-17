@@ -9,21 +9,22 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.isCompletelyInside
-import de.westnordost.streetcomplete.util.isInMultipolygon
+import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.LatLonRaster
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
-
+    override val questTypeAchievements = listOf(POSTMAN)
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
@@ -34,8 +35,6 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
         "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
-
-    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
@@ -128,6 +127,12 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""nodes, ways, relations with
+            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+            and !name and !brand and !operator and !ref
+            """.toElementFilterExpression())
 
     override fun createForm() = AddHousenumberForm()
 

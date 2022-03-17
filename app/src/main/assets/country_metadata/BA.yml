@@ -7,6 +7,6 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 218
 officialLanguages: [bs, hr, sr]
-orchardProduces: [plum, apple, tomato, grape, chilli_pepper, sweet_pepper, raspberry, pear, strawberry, peach, cherry, walnut, chestnut, apricot, avocado, fig]
+orchardProduces: [plum, apple, pear, grape, tomato, chilli_pepper, sweet_pepper, raspberry, walnut, cherry, peach, chestnut, strawberry, apricot, fig, olive]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА ZONA

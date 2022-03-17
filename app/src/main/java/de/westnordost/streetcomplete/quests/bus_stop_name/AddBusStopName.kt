@@ -22,14 +22,9 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override val changesetComment = "Determine bus/tram stop names"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["tram"] == "yes")
-            R.string.quest_tramStopName_title
-        else
-            R.string.quest_busStopName_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopName_title2
 
     override fun createForm() = AddBusStopNameForm()
 

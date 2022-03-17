@@ -12,7 +12,7 @@ mobileCountryCode: 440
 noParkingLineStyle: dashed yellow on curb
 noStoppingLineStyle: yellow on curb
 officialLanguages: [ja]
-orchardProduces: [apple, tomato, pear, persimmon, grape, strawberry, chilli_pepper, sweet_pepper, peach, apricot, tea, kiwi, plum, cherry, chestnut, fig]
+orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomato, peach, strawberry, cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
 popularReligions: [shinto, buddhist, animist]
 popularSports: [tennis, baseball]
 slowZoneLabelPosition: bottom

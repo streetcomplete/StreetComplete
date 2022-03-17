@@ -9,7 +9,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 262
 officialLanguages: [de]
-orchardProduces: [grape, apple, strawberry, tomato, hop, plum, pear, walnut, cherry, blueberry, chilli_pepper, sweet_pepper, raspberry, peach, apricot]
+orchardProduces: [grape, apple, hop, strawberry, plum, blueberry, pear, cherry, raspberry, tomato, walnut, apricot, peach, chilli_pepper, sweet_pepper]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian]
 regularShoppingDays: 5

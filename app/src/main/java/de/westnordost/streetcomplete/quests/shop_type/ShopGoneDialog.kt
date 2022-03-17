@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
-import de.westnordost.streetcomplete.ktx.toTypedArray
+import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.util.ktx.toTypedArray
 
 class ShopGoneDialog(
     context: Context,
@@ -97,7 +97,7 @@ class ShopGoneDialog(
 
     private fun getSelectedFeature(): Feature? {
         val input = binding.presetsEditText.text.toString()
-        return getFeatures(input).first { it.canonicalName == StringUtils.canonicalize(input) }
+        return getFeatures(input).firstOrNull { it.canonicalName == StringUtils.canonicalize(input) }
     }
 
     private fun getFeatures(startsWith: String): List<Feature> {
@@ -110,7 +110,7 @@ class ShopGoneDialog(
             .find()
             .filter { feature ->
                 val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-                fakeElement.isSomeKindOfShop()
+                IS_SHOP_EXPRESSION.matches(fakeElement)
             }
     }
 }

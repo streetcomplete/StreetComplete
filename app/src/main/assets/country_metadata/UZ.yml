@@ -3,5 +3,5 @@ atmOperators: [Hamkorbank, Kapitalbank, Asia Alliance Bank, UZCARD;HUMO, Kapital
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 434
 officialLanguages: [uz, ru]
-orchardProduces: [tomato, grape, apple, apricot, peach, cherry, plum, pear, persimmon, walnut, almond, strawberry, chilli_pepper, sweet_pepper, fig, hazelnut]
+orchardProduces: [grape, apple, tomato, apricot, peach, plum, cherry, pear, walnut, persimmon, chilli_pepper, sweet_pepper, almond, hazelnut, pistachio, strawberry]
 popularReligions: [muslim]

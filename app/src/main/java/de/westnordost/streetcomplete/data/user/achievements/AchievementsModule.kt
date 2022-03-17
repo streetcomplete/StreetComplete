@@ -179,6 +179,14 @@ private val links = listOf(
         R.string.link_organic_maps_description
     ),
     Link(
+        "osmand",
+        "https://osmand.net/",
+        "OsmAnd",
+        LinkCategory.MAPS,
+        R.drawable.ic_link_osmand,
+        R.string.link_osmand_description
+    ),
+    Link(
         "cyclosm",
         "https://www.cyclosm.org",
         "CyclOSM",
@@ -249,6 +257,14 @@ private val links = listOf(
         LinkCategory.MAPS,
         R.drawable.ic_link_osmhydrant,
         R.string.link_osmhydrant_description
+    ),
+    Link(
+        "sunders",
+        "https://sunders.uber.space/",
+        "Surveillance under Surveillance",
+        LinkCategory.MAPS,
+        R.drawable.ic_link_sunders,
+        R.string.link_sunders_description
     ),
 
     /* -------------------------------------- Showcase ---------------------------------------*/
@@ -578,7 +594,9 @@ private val achievements = listOf(
             1 to links("openstreetbrowser"),
             2 to links("qwant_maps"),
             3 to links("organic_maps"),
-            4 to links("indoorequal")
+            4 to links("indoorequal"),
+            5 to links("osmand"),
+            6 to links("sunders"),
         )
     ),
 

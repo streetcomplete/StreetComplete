@@ -14,6 +14,6 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
-orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry, chestnut, walnut, almond, plum]
+orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ

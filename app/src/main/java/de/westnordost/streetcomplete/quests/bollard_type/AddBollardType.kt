@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
 
-class AddBollardType : OsmElementQuestType<BollardType> {
+class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
 
     private val bollardNodeFilter by lazy { """
         nodes with
@@ -28,7 +28,6 @@ class AddBollardType : OsmElementQuestType<BollardType> {
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.ic_quest_no_cars
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(CAR, LIFESAVER)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bollard_type_title
@@ -52,7 +51,10 @@ class AddBollardType : OsmElementQuestType<BollardType> {
 
     override fun createForm() = AddBollardTypeForm()
 
-    override fun applyAnswerTo(answer: BollardType, tags: Tags, timestampEdited: Long) {
-        tags["bollard"] = answer.osmValue
+    override fun applyAnswerTo(answer: BollardTypeAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
+            is BollardType -> tags["bollard"] = answer.osmValue
+            BarrierTypeIsNotBollard -> tags["barrier"] = "yes"
+        }
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
- <rect x="28" y="52" width="72" height="60" fill="#95685e" style="paint-order:stroke markers fill"/>
- <path d="m64 28-48 20 1e-5 64h12v-60h72v60h12l-1e-5 -64z" fill="#deb486" stroke-width="0" style="paint-order:stroke markers fill"/>
+ <rect x="28" y="52" width="72" height="60" fill="#95685e"/>
+ <path d="m64 28-48 20 1e-5 64h12v-60h72v60h12l-1e-5 -64z" fill="#deb486" stroke-width="0"/>
  <path d="m8 48 56-24 56 24" fill="none" stroke="#c84747" stroke-width="12"/>
- <rect x="28" y="52" width="72" height="12" ry=".00010429" fill-opacity=".2" style="paint-order:stroke markers fill"/>
+ <rect x="28" y="52" width="72" height="12" ry=".00010429" fill-opacity=".2"/>
  <path d="m64 70.343c19.597-0.44332 13.763-0.94915 18.667 18.667h-37.333c5.5631-20.547-1.0452-18.667 18.667-18.667z" fill="#bbddf5" fill-rule="evenodd" stroke="#7091ab" stroke-width="4.6667"/>
  <path d="m36 86.677c0 18.667 18.667 23.333 28 23.333s28-4.6667 27.999-23.333c-9.3328-7e-4 -18.666-4.6674-27.999-9.334-9.3333 4.6667-18.667 9.3333-28 9.3333z" fill="#cac7c7" stroke-width="1.167"/>
  <path d="m0 96v32l128 1e-5v-32c-10.015-1.9691-23.912-1.179-33.849 0.39845-10.142 1.6102-21.613 2.1684-29.667 0-17.977-4.8401-22.904 1.9424-29.667 0-17.768-6.0252-15.17-0.43023-34.817-0.39846z" fill="#529add" stroke-width=".2"/>

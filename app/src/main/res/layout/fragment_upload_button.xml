@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<de.westnordost.streetcomplete.controls.UploadButton
+<de.westnordost.streetcomplete.screens.main.controls.UploadButton
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/uploadButton"
     android:layout_width="@dimen/map_button_size"

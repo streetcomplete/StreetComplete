@@ -11,7 +11,7 @@ mobileCountryCode: 250
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: dashed yellow
 officialLanguages: [ru]
-orchardProduces: [tomato, apple, grape, cherry, strawberry, raspberry, plum, pear, apricot, peach, blueberry, tea, hop, orange]
+orchardProduces: [apple, tomato, grape, plum, strawberry, raspberry, apricot, cherry, pear, peach, blueberry, tea, hop, orange]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
 slowZoneLabelPosition: top
 slowZoneLabelText: ЗОНА

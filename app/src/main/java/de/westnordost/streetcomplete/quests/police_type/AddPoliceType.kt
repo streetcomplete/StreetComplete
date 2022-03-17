@@ -8,16 +8,11 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 
 class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
-    override val elementFilter = """
-        nodes, ways with
-          amenity = police
-          and !operator
-    """
+    override val elementFilter = "nodes, ways with amenity = police and !operator"
     override val changesetComment = "Add police type"
     override val wikiLink = "Tag:amenity=police"
     override val icon = R.drawable.ic_quest_police
     override val enabledInCountries = NoCountriesExcept("IT")
-
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_policeType_title

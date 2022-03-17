@@ -4,5 +4,5 @@ hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 mobileCountryCode: 400
 officialLanguages: [az]
-orchardProduces: [tomato, apple, persimmon, grape, chilli_pepper, sweet_pepper, pear, hazelnut, plum, apricot, peach, cherry, raspberry, walnut, fig, lemon, lime]
+orchardProduces: [hazelnut, apple, tomato, grape, persimmon, pear, peach, plum, chilli_pepper, sweet_pepper, walnut, olive, apricot, raspberry, cherry, fig]
 popularReligions: [muslim]

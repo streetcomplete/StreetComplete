@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <de.westnordost.streetcomplete.measure.HandMotionView
+    <de.westnordost.streetcomplete.screens.measure.HandMotionView
         android:id="@+id/handMotionView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,7 +54,7 @@
 
         <TextView
             android:id="@+id/trackingErrorTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -62,7 +62,8 @@
             android:layout_margin="64dp"
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
-            tools:text="Not enough visible features"
+            android:gravity="center"
+            tools:text="@string/ar_core_tracking_error_no_plane_hit"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textColor="#fff"
             android:background="@drawable/ar_tracking_error_background"

@@ -7,18 +7,19 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
-import de.westnordost.streetcomplete.ktx.getLevelsOrNull
-import de.westnordost.streetcomplete.ktx.getSelectableLevels
-import de.westnordost.streetcomplete.ktx.isSomeKindOfShop
-import de.westnordost.streetcomplete.ktx.toShortString
-import de.westnordost.streetcomplete.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.map.getPinIcon
-import de.westnordost.streetcomplete.osm.SingleLevel
-import de.westnordost.streetcomplete.osm.levelsIntersect
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.level.SingleLevel
+import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
+import de.westnordost.streetcomplete.osm.level.createSelectableLevels
+import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.screens.main.map.getPinIcon
+import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.util.ktx.toShortString
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.view.TextChangedWatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -53,7 +54,9 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         val bbox = elementGeometry.center.enclosingBoundingBox(50.0)
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
-        val shopsWithLevels = mapData.filter { it.tags["level"] != null && it.isSomeKindOfShop() }
+        val shopsWithLevels = mapData.filter {
+            it.tags["level"] != null && IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(it)
+        }
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
             mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
@@ -62,7 +65,7 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
             updateMarkers(selectedLevel)
         }
 
-        val selectableLevels = shopsWithLevels.getSelectableLevels()
+        val selectableLevels = createSelectableLevels(shopsWithLevels.map { it.tags })
         binding.plusMinusContainer.addButton.setOnClickListener {
             val level = selectedLevel
             selectedLevel = if (level != null) {
@@ -96,9 +99,9 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
         if (level == null) return
         val levels = listOf(SingleLevel(level))
         for ((element, geometry) in shopElementsAndGeometry) {
-            if (!element.getLevelsOrNull().levelsIntersect(levels)) continue
+            if (!createLevelsOrNull(element.tags).levelsIntersect(levels)) continue
             val icon = getPinIcon(element.tags)
-            val title = element.tags["name"] ?: element.tags["brand"]
+            val title = getTitle(element.tags)
             showsGeometryMarkersListener?.putMarkerForCurrentQuest(geometry, icon, title)
         }
     }

@@ -5,4 +5,4 @@ mobileCountryCode: 740
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es, qu]
-orchardProduces: [banana, cacao, pineapple, orange, guava, mango, mangosteen, tomato, papaya, lemon, lime, rubber, avocado, coconut, plum, chilli_pepper, sweet_pepper, apple, pear]
+orchardProduces: [cacao, banana, coffee, orange, guava, mango, mangosteen, rubber, lemon, lime, avocado, pineapple, papaya, agave, pear, coconut, chilli_pepper, sweet_pepper, pepper]

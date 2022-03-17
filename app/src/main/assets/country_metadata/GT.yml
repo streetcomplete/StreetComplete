@@ -5,4 +5,4 @@ mobileCountryCode: 704
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es, myn]
-orchardProduces: [banana, pineapple, rubber, tomato, coffee, orange, lemon, lime, avocado, guava, mango, mangosteen, papaya, chilli_pepper, sweet_pepper, peach, nutmeg, apple, coconut]
+orchardProduces: [coffee, rubber, banana, nutmeg, avocado, pineapple, guava, mango, mangosteen, tomato, apple, lemon, lime, orange, cacao, papaya, peach, coconut]

@@ -14,14 +14,12 @@ class AddStepCount : OsmFilterQuestType<Int>() {
          and (!conveying or conveying = no)
          and !step_count
     """
-
     override val changesetComment = "Add step count"
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.ic_quest_steps_count
     // because the user needs to start counting at the start of the steps
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
-
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title

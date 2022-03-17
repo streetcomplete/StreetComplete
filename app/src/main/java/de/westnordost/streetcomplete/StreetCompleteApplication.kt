@@ -14,8 +14,8 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
+import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
-import de.westnordost.streetcomplete.data.notifications.notificationsModule
 import de.westnordost.streetcomplete.data.osm.created_elements.createdElementsModule
 import de.westnordost.streetcomplete.data.osm.edits.elementEditsModule
 import de.westnordost.streetcomplete.data.osm.geometry.elementGeometryModule
@@ -31,16 +31,17 @@ import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
-import de.westnordost.streetcomplete.ktx.addedToFront
-import de.westnordost.streetcomplete.map.mapModule
-import de.westnordost.streetcomplete.measure.arModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
-import de.westnordost.streetcomplete.settings.ResurveyIntervalsUpdater
-import de.westnordost.streetcomplete.settings.settingsModule
+import de.westnordost.streetcomplete.screens.main.mainModule
+import de.westnordost.streetcomplete.screens.main.map.mapModule
+import de.westnordost.streetcomplete.screens.measure.arModule
+import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
+import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
+import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -89,11 +90,12 @@ class StreetCompleteApplication : Application() {
                 elementGeometryModule,
                 mapDataModule,
                 mapModule,
+                mainModule,
                 maptilesModule,
                 metadataModule,
                 noteEditsModule,
                 notesModule,
-                notificationsModule,
+                messagesModule,
                 osmApiModule,
                 osmNoteQuestModule,
                 osmQuestModule,

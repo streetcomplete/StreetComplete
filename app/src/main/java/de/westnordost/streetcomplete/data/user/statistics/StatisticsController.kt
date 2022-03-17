@@ -4,13 +4,13 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.core.content.edit
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.countryboundaries.getIds
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import de.westnordost.streetcomplete.ktx.toLocalDate
+import de.westnordost.streetcomplete.util.ktx.getIds
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import java.time.Instant
 import java.time.LocalDate
 import java.util.concurrent.CopyOnWriteArrayList

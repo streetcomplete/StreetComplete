@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
 
@@ -28,18 +28,12 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
     override val icon = R.drawable.ic_quest_max_speed
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
-
     // see #813: US has different rules for each different state which need to be respected
     override val enabledInCountries = AllCountriesExcept("US")
     override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
-
     override val questTypeAchievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags.containsKey("name"))
-            R.string.quest_maxspeed_name_title2
-        else
-            R.string.quest_maxspeed_title_short2
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxspeed_title_short2
 
     override fun createForm() = AddMaxSpeedForm()
 

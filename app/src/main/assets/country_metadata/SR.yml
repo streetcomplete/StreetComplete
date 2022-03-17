@@ -7,5 +7,5 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [nl]
-orchardProduces: [banana, coconut, orange, grapefruit, guava, mango, mangosteen, tomato, pineapple, cherry, papaya, lemon, lime, coffee, cacao]
+orchardProduces: [banana, orange, coconut, coffee, pineapple, guava, mango, mangosteen, cacao, grapefruit, tomato, papaya, cherry, lemon, lime]
 popularReligions: [christian, hindu, muslim]

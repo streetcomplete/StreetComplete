@@ -5,6 +5,6 @@ mobileCountryCode: 603
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar, ber, fr]
-orchardProduces: [tomato, date, olive, orange, grape, apple, apricot, pear, peach, fig, plum, lemon, lime, almond, chilli_pepper, sweet_pepper, cherry]
+orchardProduces: [olive, date, grape, fig, almond, apple, apricot, tomato, chilli_pepper, sweet_pepper, pear, peach, orange, plum, lemon, lime, cherry]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
