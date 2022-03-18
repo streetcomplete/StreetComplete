@@ -124,12 +124,20 @@ class AddSmokingTest {
         ))))
     }
 
-
-
     /* we assume that seating is present if not indicated for cafe and similar */
     @Test fun `applicable to cafe without indicated seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",
+        ))))
+
+        assertTrue(questType.isApplicableTo(node(tags = mapOf(
+            "amenity" to "cafe",
+            "indoor_seating" to "no",
+        ))))
+
+        assertTrue(questType.isApplicableTo(node(tags = mapOf(
+            "amenity" to "cafe",
+            "outdoor_seating" to "no",
         ))))
     }
 
@@ -141,61 +149,35 @@ class AddSmokingTest {
         ))))
     }
 
-    @Test fun `applicable to cafe with indoor seating`() {
+    @Test fun `applicable to cafe with any indicated seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",
             "indoor_seating" to "bar_table",
         ))))
-    }
 
-    @Test fun `applicable to cafe with only indoor seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",
             "indoor_seating" to "yes",
             "outdoor_seating" to "no",
         ))))
-    }
 
-    @Test fun `applicable to cafe without indoor seating`() {
-        assertTrue(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "cafe",
-            "indoor_seating" to "no",
-        ))))
-    }
-
-    @Test fun `applicable to cafe with outdoor seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",
             "outdoor_seating" to "terrace",
         ))))
-    }
 
-    @Test fun `applicable to cafe with only outdoor seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",
             "indoor_seating" to "no",
             "outdoor_seating" to "yes",
         ))))
-    }
 
-    @Test fun `applicable to cafe without outdoor seating`() {
-        assertTrue(questType.isApplicableTo(node(tags = mapOf(
-            "amenity" to "cafe",
-            "outdoor_seating" to "no",
-        ))))
-    }
-
-
-    @Test fun `applicable to cafe with both seatings`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",
             "indoor_seating" to "bar_table",
             "outdoor_seating" to "patio",
         ))))
     }
-
-
-
 
     @Test fun `outside answer sets correct answer`() {
         questType.verifyAnswer(
