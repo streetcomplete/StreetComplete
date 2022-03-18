@@ -59,6 +59,16 @@ class AddSmokingTest {
         assertFalse(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
         ))))
+
+        assertFalse(questType.isApplicableTo(node(tags = mapOf(
+            "shop" to "bakery",
+            "indoor_seating" to "no",
+        ))))
+
+        assertFalse(questType.isApplicableTo(node(tags = mapOf(
+            "shop" to "bakery",
+            "outdoor_seating" to "no",
+        ))))
     }
 
     @Test fun `not applicable to bakery without any seating`() {
@@ -69,52 +79,29 @@ class AddSmokingTest {
         ))))
     }
 
-    @Test fun `applicable to bakery with indoor seating`() {
+    @Test fun `applicable to bakery with any indicated seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
             "indoor_seating" to "bar_table",
         ))))
-    }
 
-    @Test fun `applicable to bakery with only indoor seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
             "indoor_seating" to "yes",
             "outdoor_seating" to "no",
         ))))
-    }
 
-    @Test fun `not applicable to bakery without indoor seating`() {
-        assertFalse(questType.isApplicableTo(node(tags = mapOf(
-            "shop" to "bakery",
-            "indoor_seating" to "no",
-        ))))
-    }
-
-    @Test fun `applicable to bakery with outdoor seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
             "outdoor_seating" to "terrace",
         ))))
-    }
 
-    @Test fun `applicable to bakery with only outdoor seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
             "indoor_seating" to "no",
             "outdoor_seating" to "yes",
         ))))
-    }
 
-    @Test fun `not applicable to bakery without outdoor seating`() {
-        assertFalse(questType.isApplicableTo(node(tags = mapOf(
-            "shop" to "bakery",
-            "outdoor_seating" to "no",
-        ))))
-    }
-
-
-    @Test fun `applicable to bakery with both seatings`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
             "indoor_seating" to "bar_table",
