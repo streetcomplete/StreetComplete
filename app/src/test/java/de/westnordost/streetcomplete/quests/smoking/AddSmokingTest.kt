@@ -50,7 +50,7 @@ class AddSmokingTest {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "food_court",
             "smoking" to "yes",
-            "smoking:date" to "2014-10-10"
+            "check_date:smoking" to "2014-10-10"
         ))))
     }
 
