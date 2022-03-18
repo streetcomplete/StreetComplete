@@ -46,11 +46,11 @@ class AddSmokingTest {
         ))))
     }
 
-    @Test fun `applicable to old places tagged with smoking-date`() {
+    @Test fun `applicable to old places tagged with old date`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "food_court",
             "smoking" to "yes",
-            "check_date:smoking" to "2014-10-10"
+            "check_date" to "2014-10-10"
         ))))
     }
 
