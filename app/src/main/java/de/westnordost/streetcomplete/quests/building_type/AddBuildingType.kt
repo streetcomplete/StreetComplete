@@ -22,6 +22,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
          and !amenity
          and !leisure
          and !aeroway
+         and !railway
          and !description
          and location != underground
          and abandoned != yes

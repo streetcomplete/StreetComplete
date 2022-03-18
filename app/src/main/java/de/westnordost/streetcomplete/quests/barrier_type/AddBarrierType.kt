@@ -22,6 +22,8 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
          and !attraction
          and !amenity
          and !leisure
+         and !aeroway
+         and !railway
     """
     override val changesetComment = "Add specific barrier type on a point"
     override val wikiLink = "Key:barrier"
