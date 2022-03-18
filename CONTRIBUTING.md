@@ -64,7 +64,7 @@ The full list of dependencies and other StreetComplete-related projects is liste
 
 ### Suggesting new quests
 
-Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
+Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md).
 
 If you can code, see also how to [develop your own quest](#developing-new-quests).
 
@@ -94,7 +94,7 @@ However, we strongly suggest you [**open an issue** discussing the quest](#sugge
 
 In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
 
-Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
+Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md) of StreetComplete! It also has tips for implementing a quest.
 
 ### Code style
 
