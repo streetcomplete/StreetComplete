@@ -49,8 +49,6 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int
 
-    fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
-
     /** return all elements within the given map data that are applicable to this quest type. */
     fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element>
 
