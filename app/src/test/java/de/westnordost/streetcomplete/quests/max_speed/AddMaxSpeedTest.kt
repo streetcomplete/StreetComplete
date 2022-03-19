@@ -1,15 +1,8 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
-import de.westnordost.streetcomplete.quests.max_speed.AdvisorySpeedSign
-import de.westnordost.streetcomplete.quests.max_speed.ImplicitMaxSpeed
-import de.westnordost.streetcomplete.quests.max_speed.IsLivingStreet
-import de.westnordost.streetcomplete.quests.max_speed.Kmh
-import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign
-import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedZone
-import de.westnordost.streetcomplete.quests.max_speed.Mph
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddMaxSpeedTest {

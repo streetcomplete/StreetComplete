@@ -1,9 +1,7 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
-import de.westnordost.streetcomplete.quests.postbox_ref.NoRefVisible
-import de.westnordost.streetcomplete.quests.postbox_ref.Ref
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddPostboxRefTest {

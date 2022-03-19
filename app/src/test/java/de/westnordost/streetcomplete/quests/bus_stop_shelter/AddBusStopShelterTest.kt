@@ -1,11 +1,10 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.bus_stop_shelter
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.toCheckDateString
-import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
-import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import java.time.LocalDate
 

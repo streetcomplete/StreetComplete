@@ -1,13 +1,7 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
-import de.westnordost.streetcomplete.quests.max_weight.ImperialPounds
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeight
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign
-import de.westnordost.streetcomplete.quests.max_weight.MetricTons
-import de.westnordost.streetcomplete.quests.max_weight.NoMaxWeightSign
-import de.westnordost.streetcomplete.quests.max_weight.ShortTons
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddMaxWeightTest {

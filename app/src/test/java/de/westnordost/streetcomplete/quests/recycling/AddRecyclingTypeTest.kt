@@ -1,8 +1,7 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.recycling
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
-import de.westnordost.streetcomplete.quests.recycling.RecyclingType
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddRecyclingTypeTest {

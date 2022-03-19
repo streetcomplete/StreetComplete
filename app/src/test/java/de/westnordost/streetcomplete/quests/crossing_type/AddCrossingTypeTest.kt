@@ -1,11 +1,11 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.crossing_type
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.toCheckDateString
-import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import java.time.LocalDate
 

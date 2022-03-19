@@ -1,12 +1,11 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
-import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
-import de.westnordost.streetcomplete.quests.max_height.MaxHeight
-import de.westnordost.streetcomplete.quests.max_height.NoMaxHeightSign
+import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way

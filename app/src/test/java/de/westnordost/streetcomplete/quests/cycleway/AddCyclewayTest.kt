@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -22,9 +22,8 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.toCheckDateString
-import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import de.westnordost.streetcomplete.quests.cycleway.CyclewayAnswer
-import de.westnordost.streetcomplete.quests.cycleway.CyclewaySide
+import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p

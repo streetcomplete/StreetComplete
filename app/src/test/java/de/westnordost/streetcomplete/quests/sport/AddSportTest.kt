@@ -1,12 +1,12 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.sport
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.sport.Sport.FIELD_HOCKEY
 import de.westnordost.streetcomplete.quests.sport.Sport.HANDBALL
 import de.westnordost.streetcomplete.quests.sport.Sport.ICE_SKATING
 import de.westnordost.streetcomplete.quests.sport.Sport.SOCCER
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
 class AddSportTest {

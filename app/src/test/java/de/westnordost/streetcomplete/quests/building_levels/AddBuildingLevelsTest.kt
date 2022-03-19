@@ -1,8 +1,8 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
-import de.westnordost.streetcomplete.quests.building_levels.BuildingLevelsAnswer
+import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert
 import org.junit.Test

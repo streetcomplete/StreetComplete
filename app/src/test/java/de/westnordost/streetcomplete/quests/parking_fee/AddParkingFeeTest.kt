@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.quests.parking_fee
 
 import ch.poole.openinghoursparser.Rule
 import ch.poole.openinghoursparser.TimeSpan
@@ -9,16 +9,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.toCheckDateString
-import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
-import de.westnordost.streetcomplete.quests.parking_fee.FeeAndMaxStay
-import de.westnordost.streetcomplete.quests.parking_fee.HasFee
-import de.westnordost.streetcomplete.quests.parking_fee.HasFeeAtHours
-import de.westnordost.streetcomplete.quests.parking_fee.HasFeeExceptAtHours
-import de.westnordost.streetcomplete.quests.parking_fee.HasNoFee
-import de.westnordost.streetcomplete.quests.parking_fee.Maxstay
-import de.westnordost.streetcomplete.quests.parking_fee.MaxstayAtHours
-import de.westnordost.streetcomplete.quests.parking_fee.MaxstayDuration
-import de.westnordost.streetcomplete.quests.parking_fee.MaxstayExceptAtHours
+import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import java.time.LocalDate
 
