@@ -164,7 +164,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         if (frame.camera.trackingState == TRACKING) {
             if (measureVertical) {
-                if (measureState == MeasureState.MEASURING){
+                if (measureState == MeasureState.MEASURING) {
                     updateVerticalMeasuring(frame.camera.displayOrientedPose)
                 }
             } else {
