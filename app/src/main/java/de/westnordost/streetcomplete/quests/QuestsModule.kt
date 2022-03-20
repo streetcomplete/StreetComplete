@@ -268,8 +268,8 @@ fun questTypeRegistry(
     AddCrossingType(),
     AddTactilePavingCrosswalk(),
     AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
-    AddTrafficSignalsVibration(),
     AddTrafficSignalsButton(),
+    AddTrafficSignalsVibration(),
 
     /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
     AddInformationToTourism(), // OSM Carto
