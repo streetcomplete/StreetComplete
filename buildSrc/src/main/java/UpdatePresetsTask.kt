@@ -40,7 +40,7 @@ open class UpdatePresetsTask : DefaultTask() {
         // coded "no" in iD presets, but "nb" is expected by Android.
         // https://github.com/streetcomplete/StreetComplete/issues/3890
         val bokmalFile = File("$targetDir/no.json")
-        bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite=true);
+        bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
     }
 
     /** Fetch iD presets */
