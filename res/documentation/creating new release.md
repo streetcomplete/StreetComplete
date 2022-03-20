@@ -17,6 +17,8 @@ For `app:updateTranslatorCredits`:
 - (one-time:) [Get a POEditor API token](https://poeditor.com/account/api) and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`
 - (every time:) [Login to POEditor](https://poeditor.com/projects/view?id=97843), press F12 to bring up the developer tools, reload the page and copy from the request cookies sent in displaying the page the `login` and the `PHPSESSID` cookie. Paste it into your `<user home>/.gradle/gradle.properties` as `POEditorCookie=<your login cookie>` and `POEditorPHPSESSID=<your PHPSESSID>` ![Firefox screenshot](get_poeditor_cookie.png)
 
+For `app:updateTranslations`: one-time setyp of POEditor API token as described above.
+
 For `updateContributorStatistics`:
 - (one-time:) [Create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) (no permissions required) and put it in your `<user home>/.gradle/gradle.properties` as `GithubApiToken=<the api token>`
 
