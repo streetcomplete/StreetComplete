@@ -14,7 +14,7 @@ A new release is a good time to check if all dependencies are still up to date.
 This is done by executing the `updateStreetCompleteData` gradle task. However, some subtasks need setting up first before they are run.
 
 For `app:updateTranslatorCredits`:
-- (one-time:) Get a POEditor API token and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`
+- (one-time:) [Get a POEditor API token](https://poeditor.com/account/api) and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`
 - (every time:) [Login to POEditor](https://poeditor.com/projects/view?id=97843), press F12 to bring up the developer tools, reload the page and copy from the request cookies sent in displaying the page the `PHPSESSID` and the `login` cookie. Paste it into your `<user home>/.gradle/gradle.properties` as `POEditorCookie=<your login cookie>` and `POEditorPHPSESSID=<your PHPSESSID>` ![Firefox screenshot](get_poeditor_cookie.png)
 
 For `updateContributorStatistics`:
