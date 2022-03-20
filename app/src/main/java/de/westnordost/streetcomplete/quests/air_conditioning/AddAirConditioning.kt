@@ -12,7 +12,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways, relations with
         (
-          amenity ~ restaurant|bar|library
+          amenity ~ restaurant|bar|pub|cafe|library
           or tourism ~ apartment|hotel
         )
         and !air_conditioning
@@ -26,6 +26,9 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_airConditioning_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
