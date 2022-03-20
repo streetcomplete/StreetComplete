@@ -108,6 +108,11 @@ See ["Efficiently working together"](https://github.com/streetcomplete/StreetCom
 
 If you are making your first issue or pull request then you can definitely skip reading it.
 
+Materials in [`res/documentation`](res/documentation) also may be useful, it includes
+
+* [Checklist for creating a release](res/documentation/creating%20new%20release.md)
+* [Presentation discussing data model allowing offline editing, undo, splitting ways and resolving edit conflicts](res/documentation/how-it-handles%20edits.odp)
+
 ## StreetComplete-related projects
 
 ### Dependencies
