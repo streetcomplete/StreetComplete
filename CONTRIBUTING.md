@@ -26,7 +26,7 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 After joining, the [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
 
-Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged as they do not help the project.
+Before each [release](res/documentation/creating%20new%20release.md), translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged as they do not help the project.
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
