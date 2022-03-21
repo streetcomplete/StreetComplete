@@ -72,7 +72,7 @@ fun getNameLabel(tags: Map<String, String>): String? {
         ?: name
         ?: brand
         ?: if (localRef != null && operator != null) "$operator ($localRef)" else null
-        ?: if (ref != null && operator != null) "$operator $ref" else null
+        ?: if (ref != null && operator != null) "$operator [$ref]" else null
         ?: operator
         ?: localRef
         ?: ref
