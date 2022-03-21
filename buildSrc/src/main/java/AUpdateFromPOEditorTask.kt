@@ -70,7 +70,7 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
 }
 
 fun Locale.transformPOEditorLanguageTag() = when (toLanguageTag()) {
-    "sr-Cyrl" -> Locale("sr") // Serbian is referred to as Serbian (Cryllic) in POEditor
+    "sr-Cyrl" -> Locale("sr") // Serbian is referred to as Serbian (Cyrillic) in POEditor
     "zh-CN" -> Locale("zh") // Chinese is referred to as Chinese (China) in POEditor
     else -> this
 }
