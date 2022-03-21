@@ -853,10 +853,10 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_dietType_kosher_name_title2">Are kosher products offered here?</string>
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
 
-    <string name="quest_dietType_vegan_title2">Any vegan items on the menu here?</string>
+    <string name="quest_dietType_vegan_title2">Are there vegan items on the menu here?</string>
     <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, honey …).</string>
 
-    <string name="quest_dietType_vegetarian_title2">Any vegetarian items on the menu here?</string>
+    <string name="quest_dietType_vegetarian_title2">Are there vegetarian items on the menu here?</string>
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
     <string name="quest_dietType_explanation">Only answer “yes” if the place provides a comparable choice of eating options for this diet</string>
     <string name="quest_diet_answer_no_food">It has no food</string>
