@@ -847,7 +847,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <string name="quest_cycleway_width_title">"What’s the width of this cycleway here?"</string>
 
-    <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
+    <string name="quest_dietType_halal_name_title2">Are Halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
 
     <string name="quest_dietType_kosher_name_title2">Are kosher products offered here?</string>
