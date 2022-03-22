@@ -7,3 +7,6 @@ val EditText.numberOrNull: Double? get() =
 
 val EditText.intOrNull: Int? get() =
     text.toString().trim().toIntOrNull()
+
+val EditText.nonBlankTextOrNull: String? get() =
+    text.toString().trim().ifBlank { null }
