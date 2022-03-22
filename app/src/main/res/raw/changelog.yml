@@ -22,7 +22,10 @@ v42.0-beta1: |
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
-  <li>Other minor enhancements and fixes (#3852)</li>
+  <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
+  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
+  <li>Fix rare crashes (#3888)</li>
+  <li>Other minor enhancements and fixes (#3852, #3893, #3895, ...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
   </ul>
 
 v41.2: |
