@@ -26,8 +26,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override val elementFilter = """
          nodes, ways, relations with
          (
-             amenity ~ bar|cafe|biergarten|restaurant|food_court
-             and (indoor_seating != no or outdoor_seating != no)
+             amenity ~ bar|cafe|biergarten|restaurant|food_court and (indoor_seating != no or outdoor_seating != no)
              or leisure = outdoor_seating
              or amenity ~ nightclub|stripclub|pub
              or (
