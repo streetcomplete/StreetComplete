@@ -12,7 +12,7 @@
             <stroke
                 android:color="@color/traffic_black"
                 android:width="4dp"/>
-            <corners android:radius="8dp" />
+            <corners android:radius="5dp" />
         </shape>
     </item>
 </layer-list>

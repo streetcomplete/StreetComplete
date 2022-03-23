@@ -9,7 +9,6 @@
 
     <include layout="@layout/quest_housename"/>
 
-
     <include layout="@layout/quest_housenumber"/>
 
 </LinearLayout>
