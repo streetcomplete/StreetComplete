@@ -68,3 +68,9 @@ abstract class AUpdateFromPOEditorTask : DefaultTask() {
         throw Exception("POEditor API continues to report http status code 429")
     }
 }
+
+fun Locale.transformPOEditorLanguageTag() = when (toLanguageTag()) {
+    "sr-Cyrl" -> Locale("sr") // Serbian is referred to as Serbian (Cyrillic) in POEditor
+    "zh-CN" -> Locale("zh") // Chinese is referred to as Chinese (China) in POEditor
+    else -> this
+}

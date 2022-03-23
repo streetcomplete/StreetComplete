@@ -161,7 +161,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:4.0")
+    implementation("de.westnordost:osmfeatures-android:4.1")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
@@ -195,7 +195,7 @@ dependencies {
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
-/** Localizations that should be pulled from POEditor etc. */
+/** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el", "en", "en-AU", "en-GB", "es", "eu",
     "fa", "fi", "fr", "gl", "hr", "hu", "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn",

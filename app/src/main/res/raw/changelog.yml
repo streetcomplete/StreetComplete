@@ -1,4 +1,8 @@
 v42.0-beta1: |
+  <h3>General Enhancements</h3>
+  <ul>
+  <li>Quest titles are now shorter and shown in a more consistent manner (#3870, #3903), thanks @FloEdelmann, @peternewman</li>
+  </ul>
   <h3>New Quests</h3>
   <ul>
   <li><i>Is smoking allowed anywhere in this place?</i> (#539, #3784), by @mnalis</li>
@@ -7,19 +11,21 @@ v42.0-beta1: |
   </ul>
   <h3>Quest enhancements</h3>
   <ul>
-  <li>Parking fee: Add answer option for when there is no fee but a max parking duration (#3841, #981, #102)</li>
+  <li>Parking fee: Add answer option for when there is just a max parking duration (#3841, #981, #102)</li>
   <li>Sidewalk: Also ask when current tagging is incomplete or invalid (#3821), by @arrival-spring</li>
   <li>Tactile paving on crossings: Add answer option that it’s only one one side (#3844, #3813), by @arrival-spring</li>
   <li>Barrier details: Add answer option that leads to changing the type of barrier (#3846, #3563, #3845, #3817), by @mnalis</li>
   <li>Oneway streets: Also ask for roads that are below or equal 4 meters wide</li>
-  <li>Cycleway: Warn user when he is about to remove that cyclists may use a oneway road in both directions (#3795)</li>
+  <li>Cycleway: Warn before removing that cyclists may use a oneway road in both directions (#3795)</li>
   <li>Halal: Don't ask for vegan only places (#3883), by @peternewman</li>
-  <li>Fire hydrant position: Allow user to delete the hydrant if it doesn't exist on-site (#3871)</li>
+  <li>Fire hydrant position: Allow deletion of hydrant if it doesn't exist (#3871)</li>
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
-  <li>Quest titles are now shown in a more consistent manner: The name, type and location of the object it is asked for is always shown below the question (#3870)</li>
-  <li>Other minor enhancements and fixes (#3852)</li>
+  <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
+  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
+  <li>Fix rare crashes (#3888)</li>
+  <li>Other minor enhancements and fixes (#3852, #3893, #3895, ...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
   </ul>
 
 v41.2: |

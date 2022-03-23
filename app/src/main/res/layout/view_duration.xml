@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:parentTag="android.widget.FrameLayout">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:ems="3"
+        android:textSize="@dimen/large_input"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        tools:text="30"
+        />
 
-        <EditText
-            android:id="@+id/input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="3"
-            android:textSize="@dimen/large_input"
-            android:gravity="center"
-            android:inputType="numberDecimal"
-            tools:text="30"
-            />
+    <Spinner
+        android:id="@+id/unitSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/large_input"
+        android:gravity="end"/>
 
-        <Spinner
-            android:id="@+id/unitSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/large_input"
-            android:gravity="end"/>
-
-    </LinearLayout>
-
-</merge>
+</LinearLayout>

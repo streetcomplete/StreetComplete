@@ -61,7 +61,7 @@ class AddMaxPhysicalHeight(
     override fun isApplicableTo(element: Element): Boolean =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
-    override fun createForm() = AddHeightForm()
+    override fun createForm() = AddMaxPhysicalHeightForm()
 
     override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, timestampEdited: Long) {
         // overwrite maxheight value but retain the info that there is no sign onto another tag

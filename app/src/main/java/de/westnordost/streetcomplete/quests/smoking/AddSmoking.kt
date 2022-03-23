@@ -11,12 +11,22 @@ import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
-
+    /*
+     - some places are eligible as we assume they probably have seating (unless
+       they are explicitely marked as having no seating at all):
+       (like bar, cafe, restaurant...)
+     - some places are eligible as their definition includes seating even if they
+       don't have any other explicit tags (like outdoor_seating)
+     - some places are eligible even if they don't have any seating (like nightclub)
+     - some places are eligible only if they are explicitely marked to have seating
+       as otherwise we assume they don't provide seating (like bakery, wine shop...)
+    */
     override val elementFilter = """
          nodes, ways, relations with
          (
-             amenity ~ bar|cafe|pub|biergarten|restaurant|food_court|nightclub|stripclub
+             amenity ~ bar|cafe|biergarten|restaurant|food_court and (indoor_seating != no or outdoor_seating != no)
              or leisure = outdoor_seating
+             or amenity ~ nightclub|stripclub|pub
              or (
                  (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
                  and (

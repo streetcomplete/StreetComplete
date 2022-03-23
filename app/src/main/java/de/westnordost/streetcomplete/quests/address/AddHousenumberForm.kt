@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
@@ -69,13 +70,6 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
             }
         }
     }
-
-    override fun isFormComplete() = when (interfaceMode) {
-        InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
-        InterfaceMode.HOUSENAME -> createAnswer() != null
-        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonEmptyInput != null && houseNumberInput?.nonEmptyInput != null
-    }
-
     /* ------------------------------------- Other answers -------------------------------------- */
 
     private fun switchToHouseName() {
@@ -250,6 +244,13 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         )
     }
 
+
+    override fun isFormComplete() = when (interfaceMode) {
+        InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
+        InterfaceMode.HOUSENAME -> createAnswer() != null
+        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonBlankTextOrNull != null && houseNumberInput?.nonBlankTextOrNull != null
+    }
+
     private fun confirmHousenumber(isUnusual: Boolean, onConfirmed: () -> Unit) {
         if (isUnusual) {
             AlertDialog.Builder(requireContext())
@@ -264,21 +265,21 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     override fun isRejectingClose(): Boolean {
-        val houseName = houseNameInput?.nonEmptyInput
-        val houseNumber = houseNumberInput?.nonEmptyInput
-        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
-        val streetNumber = streetNumberInput?.nonEmptyInput
-        val blockNumber = blockNumberInput?.nonEmptyInput
+        val houseName = houseNameInput?.nonBlankTextOrNull
+        val houseNumber = houseNumberInput?.nonBlankTextOrNull
+        val conscriptionNumber = conscriptionNumberInput?.nonBlankTextOrNull
+        val streetNumber = streetNumberInput?.nonBlankTextOrNull
+        val blockNumber = blockNumberInput?.nonBlankTextOrNull
 
         return listOf(houseName, houseNumber, conscriptionNumber, streetNumber, blockNumber).any { it != null }
     }
 
     private fun createAnswer(): HousenumberAnswer? {
-        val houseName = houseNameInput?.nonEmptyInput
-        val houseNumber = houseNumberInput?.nonEmptyInput
-        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
-        val streetNumber = streetNumberInput?.nonEmptyInput
-        val blockNumber = blockNumberInput?.nonEmptyInput
+        val houseName = houseNameInput?.nonBlankTextOrNull
+        val houseNumber = houseNumberInput?.nonBlankTextOrNull
+        val conscriptionNumber = conscriptionNumberInput?.nonBlankTextOrNull
+        val streetNumber = streetNumberInput?.nonBlankTextOrNull
+        val blockNumber = blockNumberInput?.nonBlankTextOrNull
 
         return when {
             houseName != null && houseNumber != null   -> HouseNameAndHouseNumber(houseName, houseNumber)
@@ -288,11 +289,6 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
             houseNumber != null                        -> HouseNumber(houseNumber)
             else                                       -> null
         }
-    }
-
-    private val EditText.nonEmptyInput: String? get() {
-        val input = text.toString().trim()
-        return if (input.isNotEmpty()) input else null
     }
 
     companion object {

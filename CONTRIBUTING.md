@@ -26,7 +26,7 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 After joining, the [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
 
-Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged as they do not help the project.
+Before each [release](res/documentation/creating%20new%20release.md), translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged as they do not help the project.
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
@@ -64,7 +64,7 @@ The full list of dependencies and other StreetComplete-related projects is liste
 
 ### Suggesting new quests
 
-Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
+Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md).
 
 If you can code, see also how to [develop your own quest](#developing-new-quests).
 
@@ -94,7 +94,7 @@ However, we strongly suggest you [**open an issue** discussing the quest](#sugge
 
 In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
 
-Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
+Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md) of StreetComplete! It also has tips for implementing a quest.
 
 ### Code style
 
@@ -107,6 +107,11 @@ It is recommended to install the [Ktlint (unofficial)](https://plugins.jetbrains
 See ["Efficiently working together"](https://github.com/streetcomplete/StreetComplete/discussions/3450) which is addressed to people highly active in this project.
 
 If you are making your first issue or pull request then you can definitely skip reading it.
+
+Materials in [`res/documentation`](res/documentation) also may be useful, it includes
+
+* [Checklist for creating a release](res/documentation/creating%20new%20release.md)
+* [Presentation discussing data model allowing offline editing, undo, splitting ways and resolving edit conflicts](res/documentation/how-it-handles%20edits.odp)
 
 ## StreetComplete-related projects
 
