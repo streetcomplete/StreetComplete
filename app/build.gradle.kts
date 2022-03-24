@@ -105,9 +105,15 @@ repositories {
 }
 
 configurations {
-    // it's already included in Android
     all {
+        // it's already included in Android
         exclude(group = "net.sf.kxml", module = "kxml2")
+
+        resolutionStrategy.dependencySubstitution {
+            substitute(module("org.snakeyaml:snakeyaml-engine:2.3"))
+                .using(module("org.bitbucket.snakeyaml:snakeyaml-engine:8209bb9484"))
+                .because("https://github.com/streetcomplete/StreetComplete/issues/3889")
+        }
     }
 }
 
