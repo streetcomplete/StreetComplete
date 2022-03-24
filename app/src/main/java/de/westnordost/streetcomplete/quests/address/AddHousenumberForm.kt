@@ -281,18 +281,18 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         return HouseNumberAndHouseName(addressNumber, houseName)
     }
 
+    private val InterfaceMode.layout get() = when (this) {
+        InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+        InterfaceMode.HOUSENAME -> R.layout.quest_housename
+        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
+    }
+
     companion object {
         private var lastBlockNumber: String? = null
         private var lastHouseNumber: String? = null
 
         private const val INTERFACE_MODE = "interface_mode"
     }
-}
-
-private val AddHousenumberForm.InterfaceMode.layout get() = when (this) {
-    AddHousenumberForm.InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
-    AddHousenumberForm.InterfaceMode.HOUSENAME -> R.layout.quest_housename
-    AddHousenumberForm.InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
 }
 
 private val AddressNumber.houseNumber: String? get() = when (this) {
