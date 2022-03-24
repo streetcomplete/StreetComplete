@@ -20,7 +20,7 @@ v42.0: |
   <li>Halal: Don't ask for vegan only places (#3883), by @peternewman</li>
   <li>Fire hydrant position: Allow deletion of hydrant if it doesn't exist (#3871)</li>
   <li>Smoking: Only show answer options that are plausible for the given amenity (#3856, #3865), by @mnalis</li>
-  <li>Housenumbers: More convenient now to input housename + housenumber and fixed various small issues (#3904, 3907)</li>
+  <li>Housenumbers: More convenient now to input housename + housenumber and fixed various small issues (#3904, #3907)</li>
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
