@@ -14,6 +14,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        // TODO remove when dependency to org.bitbucket.snakeyaml:snakeyaml-engine:8209bb9484 is no longer needed
         maven { url = java.net.URI("https://jitpack.io") }
     }
 }
