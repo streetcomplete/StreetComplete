@@ -1,4 +1,4 @@
-v42.0-beta1: |
+v42.0: |
   <h3>General Enhancements</h3>
   <ul>
   <li>Quest titles are now shorter and shown in a more consistent manner (#3870, #3903), thanks @FloEdelmann, @peternewman</li>
@@ -19,22 +19,24 @@ v42.0-beta1: |
   <li>Cycleway: Warn before removing that cyclists may use a oneway road in both directions (#3795)</li>
   <li>Halal: Don't ask for vegan only places (#3883), by @peternewman</li>
   <li>Fire hydrant position: Allow deletion of hydrant if it doesn't exist (#3871)</li>
+  <li>Smoking: Only show answer options that are plausible for the given amenity (#3856, #3865), by @mnalis</li>
+  <li>Housenumbers: More convenient now to input housename + housenumber and fixed various small issues (#3904, 3907)</li>
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
+  <li>Fix crash issues on Android 5 (#3889, #3914), thanks @FloEdelmann</li>
   <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
   <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
   <li>Fix rare crashes (#3888)</li>
-  <li>Other minor enhancements and fixes (#3852, #3893, #3895, ...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
+  <li>Other minor enhancements and fixes (#3852, #3893, #3895, #3867, #3911...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
   </ul>
 
 v41.2: |
   <ul>
-  <li>Improved accuracy of measuring with AR (#3832)</li>
+  <li>Improved accuracy of measuring with AR (#3832) but also tag that it has been measured with AR</li>
   <li>Cycleway and road width, number of lanes: Don't ask for sections that have explicitly been marked as "transitions" (#3835, #3842), by @mnalis</li>
   <li>Cycleway width: Fix the quest did not dissappear after solving in rare cases (#3843)</li>
   <li>Number of lanes: Also ask for trunks and motorways (#3849), by @matkoniecz</li>
-  <li>Also tag whether a width/height has been recorded with AR</li>
   </ul>
 
 v41.1: |

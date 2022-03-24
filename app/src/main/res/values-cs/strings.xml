@@ -2444,6 +2444,8 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="quest_smoking_separated">"Jen v oddělených prostorech"</string>
     <string name="quest_smoking_yes">"Ano, všude"</string>
     <string name="quest_seating_name_title">"Jaký druh sezení toto místo má?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Jen s sebou"</string>
     <string name="quest_seating_indoor_only">"Sezení jen uvnitř"</string>
     <string name="quest_seating_outdoor_only">"Sezení jen venku"</string>

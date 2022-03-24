@@ -1273,6 +1273,8 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="quest_smoking_separated">"Bara i separat utrymme"</string>
     <string name="quest_smoking_yes">"Ja, överallt"</string>
     <string name="quest_seating_name_title">"Vad för sittplatser erbjuder det här stället?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Bara avhämtning"</string>
     <string name="quest_seating_indoor_only">"Bara sittplatser inne"</string>
     <string name="quest_seating_outdoor_only">"Bara sittplatser ute"</string>

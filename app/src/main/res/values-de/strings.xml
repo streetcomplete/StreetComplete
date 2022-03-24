@@ -1236,11 +1236,11 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_smoking_outside">"Nur draußen"</string>
     <string name="quest_smoking_separated">"Nur in abgetrennten Bereichen"</string>
     <string name="quest_smoking_yes">"Ja, überall"</string>
-    <string name="quest_seating_name_title">"Welche Sitzmöglichkeiten gibt es an diesem Ort?"</string>
-    <string name="quest_seating_takeaway">"Nur zum Mitnehmen"</string>
-    <string name="quest_seating_indoor_only">"Nur Sitzmöglichkeiten innen"</string>
-    <string name="quest_seating_outdoor_only">"Nur Sitzmöglichkeiten im Freien"</string>
-    <string name="quest_seating_indoor_and_outdoor">"Sitzmöglichkeiten innen und im Freien"</string>
+    <string name="quest_seating_name_title">"Wo kann man hier sitzen?"</string>
+    <string name="quest_seating_takeaway">"Keine Sitzmöglichkeiten (nur zum Mitnehmen)"</string>
+    <string name="quest_seating_indoor_only">"Nur drinnen"</string>
+    <string name="quest_seating_outdoor_only">"Nur draußen"</string>
+    <string name="quest_seating_indoor_and_outdoor">"Drinnen und draußen"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil möglicherweise nur in bestimmten Zeiten des Jahres überprüft werden kann, ob Sitzplätze im Freien existieren."</string>
     <string name="no_camera_permission_toast">"Keine Kamera-Berechtigung"</string>
 

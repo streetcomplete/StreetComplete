@@ -1,1 +1,1 @@
-OpenStreetMap 측량 앱
+OpenStreetMap 조사 앱

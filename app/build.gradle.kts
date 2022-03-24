@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4200
-        versionName = "42.0-beta1"
+        versionCode = 4201
+        versionName = "42.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -198,7 +198,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.26.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.29.0")
+    implementation("com.google.ar:core:1.30.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
@@ -210,7 +210,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220314"
+val nsiVersion = "v6.0.20220321"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.2"
 

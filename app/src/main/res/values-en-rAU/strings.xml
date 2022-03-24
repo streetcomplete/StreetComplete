@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="action_settings">"ترتیب"</string>
+    <string name="oauth_communication_error">"مختاری سرور تک رسائی ممکن نہیں"</string>
+    <string name="oauth_failed_permissions">"مختاری ناکام:تمام درج شدہ اجازتیں فراہم کرنا لازمی ہے"</string>
+
+    <!-- Settings screen -->
+    <string name="pref_category_communication">"رابطہ"</string>
+    <string name="pref_category_display">"مظاہرہ"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"تمام نوٹس دکھائیے"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"وہ نوٹس بھی دکھائے جا رہے ہیں جو سوالیہ جملے نہیں"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"وہ نوٹس جو سوالیہ جملے نہیں وہ نظر انداز کئے جارہے ہیں"</string>
+    <string name="pref_title_map_cache">"کیشے کی نقشہ کشی کیجئے"</string>
+    <string name="map_btn_gps_tracking">"میرے پیچھے آئیے"</string>
+    <string name="map_attribution_osm">"اوپن اسٹریٹ میپ میں حصہ لینے والے"</string>
+    <string name="quest_generic_otherAnswers">"مزید جوابات"</string>
+    <string name="quest_generic_answer_notApplicable">"کچھ کہا نہیں جا سکتا"</string>
+    <string name="quest_generic_confirmation_title">"کیا آپ کو یقین ہے"</string>
+    <string name="quest_generic_confirmation_yes">"جی ہاں، مجھے یقین ہے"</string>
+    <string name="quest_generic_confirmation_no">"میں جانچ کرونگی"</string>
+    <string name="quest_leave_new_note_title">"کیا آپ کوئی تحریر اس کے بدلے دینا چاہیں گے"</string>
+    <string name="quest_leave_new_note_description">"آپ ایک عام تحریر اس جگہ چھوڑ دیں جس پر دیگر میپرز اپنی رائے کا اظہار کریں اور اسے حل کر سکیں یا پھر "</string>
     <string name="confirmation_authorize_now">"You need to authorise with your OSM user account to publish your answers. Authorise now?"</string>
     <string name="not_authorized">"Not authorised"</string>
     <string name="quest_surface_value_paved">"Sealed (generic)"</string>

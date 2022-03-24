@@ -863,23 +863,17 @@ levels"</string>
     <string name="quest_buildingType_abandoned_description">"unused building whose original function or purpose is unknown"</string>
     <string name="quest_buildingType_ruins">"Ruins"</string>
     <string name="quest_buildingType_ruins_description">"derelict, ruined and unidentifiable building"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_charging_station_capacity_title">"How many cars can be charged at this charging station at the same time?"</string>
+    <string name="quest_charging_station_capacity_title">"How many cars can be charged here at the same time?"</string>
     <string name="link_disaster_ninja_description">"Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyse how well-mapped and up-to-date places are."</string>
     <string name="quest_lanes_title">"How many lanes for cars does this road have?"</string>
     <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Is this correct?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_below_bridge_title">"What is the height limit below the bridge?"</string>
+    <string name="quest_maxheight_below_bridge_title">"What’s the height limit below the bridge?"</string>
     <string name="quest_maxheight_split_way_hint">"If it doesn’t apply for the whole way, consider answering “%s”."</string>
     <string name="quest_tactile_paving_kerb_title">"Is there tactile paving on this kerb here?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_kerb_height_title">"What is the height of this kerb?"</string>
+    <string name="quest_kerb_height_title">"What’s the height of this kerb?"</string>
     <string name="quest_kerb_height_flush">"Same level as road surface"</string>
     <string name="quest_kerb_height_lowered">"A bit higher than road surface"</string>
     <string name="quest_kerb_height_raised">"High kerb"</string>
@@ -925,9 +919,7 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Non-potable water (with a sign)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Non-potable water (no sign)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRoyalCypher_title">"What is the royal cypher on this postbox?"</string>
+    <string name="quest_postboxRoyalCypher_title">"What’s the royal cypher on this postbox?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"No royal cypher is visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
     <string name="quest_buildingType_fire_station">"Fire station"</string>
@@ -1215,6 +1207,8 @@ Unfortunately, due to a Google Play Store policy, no links leading to donations 
     <string name="quest_smoking_separated">"Only in separated areas"</string>
     <string name="quest_smoking_yes">"Yes, everywhere"</string>
     <string name="quest_seating_name_title">"What kind of seating does this place have?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Takeaway only"</string>
     <string name="quest_seating_indoor_only">"Indoor seating only"</string>
     <string name="quest_seating_outdoor_only">"Outdoor seating only"</string>
@@ -1270,5 +1264,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"What's the surface here?"</string>
     <string name="quest_toiletAvailability_title">"Are there any toilets here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
-    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this oneway street in both directions? In doubt, check if there is a sign at the end of the street."</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this oneway street in both directions? If in doubt, check if there is a sign at the end of the street."</string>
 </resources>
