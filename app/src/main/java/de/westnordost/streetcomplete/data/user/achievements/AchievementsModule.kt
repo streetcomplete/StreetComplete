@@ -390,7 +390,15 @@ private val links = listOf(
         LinkCategory.GOODIES,
         R.drawable.ic_link_figuregrounder,
         R.string.link_figuregrounder_description
-    )
+    ),
+    Link(
+        "backofyourhand",
+        "https://backofyourhand.com/",
+        "Back Of Your Hand",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_backofyourhand,
+        R.string.link_backofyourhand_description
+    ),
 )
 
 private val linksById = links.associateBy { it.id }
@@ -428,7 +436,9 @@ private val achievements = listOf(
 
             8 to links("osm-haiku"),
 
-            10 to links("umap")
+            10 to links("umap"),
+
+            12 to links("backofyourhand")
         )
     ),
 
