@@ -151,6 +151,14 @@ private val links = listOf(
         R.drawable.ic_link_josm,
         R.string.link_josm_description
     ),
+    Link(
+        "notesreview",
+        "https://ent8r.github.io/NotesReview/",
+        "NotesReview",
+        LinkCategory.EDITORS,
+        R.drawable.ic_link_notesreview,
+        R.string.link_notesreview_description
+    ),
 
     /* ---------------------------------------- Maps -----------------------------------------*/
 
@@ -469,7 +477,9 @@ private val achievements = listOf(
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
             6 to links("disaster.ninja"),
-            7 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
+            7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
+
+            9 to links("notesreview"),
         )
     ),
 

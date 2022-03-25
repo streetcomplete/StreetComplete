@@ -426,7 +426,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
-
+    <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained therein on the map with iD or JOSM</string>
 
     <!-- Achievement screen -->
 
