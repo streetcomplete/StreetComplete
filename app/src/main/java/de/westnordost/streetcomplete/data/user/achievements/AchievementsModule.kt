@@ -333,6 +333,14 @@ private val links = listOf(
         R.drawable.ic_link_graphhopper,
         R.string.link_graphhopper_description
     ),
+    Link(
+        "valhalla",
+        "https://valhalla.openstreetmap.de/",
+        "Valhalla",
+        LinkCategory.SHOWCASE,
+        R.drawable.ic_link_valhalla,
+        R.string.link_valhalla_description
+    ),
 
     /* -------------------------------------- Goodies ----------------------------------------*/
     Link(
@@ -490,6 +498,7 @@ private val achievements = listOf(
             5 to links("osrm"), // routing engines are not that interesting for end users
             6 to links("openrouteservice"),
             7 to links("graphhopper"),
+            8 to links("valhalla"),
             12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
         )
     ),
