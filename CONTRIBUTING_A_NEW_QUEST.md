@@ -280,7 +280,9 @@ In this case it would set `indoor` tag to have either `yes` or `no` answer, depe
 Actions may include (examples from various quests):
 
 - `tags["indoor"] = answer.toYesNo()`
-- `tags.remove("amenity")` - remove key if it is present
+  - set `indoor` tag to have either `yes` or `no` answer, based on provided data
+- `tags.remove("amenity")`
+  - remove key if it is present
 - `tags.updateWithCheckDate("lit", answer.toYesNo())`
   - if the new value differs from existing tag value: new value will be applied
   - in case of value being the same: add survey date tag, it would be `check_date:lit=` in this case
