@@ -1312,6 +1312,8 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_smoking_separated">"Samo u posebno odvojenim prostorima"</string>
     <string name="quest_smoking_yes">"Da, svugdje"</string>
     <string name="quest_seating_name_title">"Gdje se može sjediti na ovoj lokaciji?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Nigdje (samo hrana za ponijeti)"</string>
     <string name="quest_seating_indoor_only">"Samo u zatvorenom prostoru"</string>
     <string name="quest_seating_outdoor_only">"Samo sjedenje na otvorenom"</string>

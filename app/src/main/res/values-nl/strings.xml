@@ -2453,6 +2453,8 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_smoking_separated">"Alleen in gescheiden gebieden"</string>
     <string name="quest_smoking_yes">"Ja, overal"</string>
     <string name="quest_seating_name_title">"Wat voor zitplaatsen heeft deze plek?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Alleen afhaalmaaltijden"</string>
     <string name="quest_seating_indoor_only">"Alleen zitplaatsen binnen"</string>
     <string name="quest_seating_outdoor_only">"Alleen zitplaatsen buiten"</string>

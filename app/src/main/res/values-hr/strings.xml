@@ -998,7 +998,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_address_street_hint">"Dotaknite cestu na karti"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_marked">"Označen (zebrom)"</string>
+    <string name="quest_crossing_type_marked">"Samo označen (zebrom)"</string>
     <string name="quest_parkingType_street_side">"Parkiralište tik uz cestu"</string>
     <string name="quest_parkingType_lane">"Parkiralište na cesti"</string>
 
@@ -1613,4 +1613,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Koja je ovdje površina?"</string>
     <string name="quest_toiletAvailability_title">"Postoji li ovdje toalet?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Je li toalet ovdje pristupačan za invalidska kolica?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Jeste li sigurni da biciklisti ne smiju koristiti ovu jednosmjernu ulicu u oba smjera? Ukoliko nite sigurni, provjerite postoji li znak na kraju ulice."</string>
 </resources>

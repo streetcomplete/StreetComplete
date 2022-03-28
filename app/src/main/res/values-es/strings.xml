@@ -1508,6 +1508,8 @@ También puedes dejar una nota (con foto)."</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Otra aplicación está utilizando la cámara"</string>
     <string name="quest_bicycle_parking_type_handlebarholder">"Soporte manillar"</string>
     <string name="quest_bicycle_parking_access_title2">"¿Quién puede aparcar una bicicleta aquí? Puede ser gratis o no."</string>
+    <string name="quest_playground_access_title2">"¿Quién puede usar este parque infantil?"</string>
+    <string name="quest_sidewalk_answer_none_title">"Seleccionando que faltan aceras"</string>
     <string name="quest_side_select_interface_explanation">"Toque un lado y seleccione la respuesta correspondiente. Haga lo mismo para el otro lado si está presente."</string>
 
     <!-- AR Measure screen -->
@@ -1517,6 +1519,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_cycleway_width_title">"¿Cuál es el ancho de esta ciclovía aquí?"</string>
     <string name="quest_road_width_title">"¿Cuál es el ancho de este camino aquí?"</string>
     <string name="quest_road_width_explanation">"El ancho de la calzada de bordillo a bordillo: Esto incluye cualquier cosa en la superficie de la calle, como estacionamiento en la calle o carriles para bicicletas, pero excluye cualquier cosa más allá, como carriles para bicicletas o estacionamiento al lado de la calzada."</string>
+    <string name="quest_sidewalk_answer_none">"No hay ninguna acera"</string>
     <string name="about_description_donate_google_play2">"¡Gracias por considerar apoyar esta aplicación! Lamentablemente, debido a la política de Google Play Store, no se mostrarán en la aplicación enlaces que conduzcan a donaciones. En este contexto, ni siquiera se permite vincular a la web de nuestro proyecto."</string>
     <string name="link_osmand_description">"Aplicación móvil para visualización y navegación de mapas en línea y fuera de línea"</string>
     <string name="link_sunders_description">"Mapa de cámaras y equipos de vigilancia"</string>
@@ -1532,11 +1535,14 @@ También puedes dejar una nota (con foto)."</string>
     <string name="only_at_hours">"solo en los siguientes horarios:"</string>
     <string name="except_at_hours">"excepto en los siguientes horarios:"</string>
     <string name="quest_bollard_type_not_bollard">"No es un bolardo, sino alguna otra barrera"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"No es una barrera para bicicleta, sino alguna otra barrera"</string>
     <string name="quest_smoking_no">"no, prohibido"</string>
     <string name="quest_smoking_outside">"Solo en el exterior"</string>
     <string name="quest_smoking_separated">"Solo en áreas separadas"</string>
     <string name="quest_smoking_yes">"Si, en todas partes"</string>
     <string name="quest_seating_name_title">"¿Qué tipo de asientos tiene este lugar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Solo para llevar"</string>
     <string name="quest_seating_indoor_only">"Solo asientos en el interior"</string>
     <string name="quest_seating_outdoor_only">"Solo asientos en el exterior"</string>
@@ -1582,12 +1588,15 @@ sorted alphabetically by title -->
     <string name="quest_level_title2">"¿En qué nivel se encuentra este lugar?"</string>
     <string name="quest_lit_title">"¿Está iluminado aquí?"</string>
     <string name="quest_openingHours_title">"¿Cuáles son los horarios de apertura aquí?"</string>
+    <string name="quest_openingHours_signed_title">"¿Hay letrero con las horas de apertura aquí?"</string>
     <string name="quest_openingHours_resurvey_title">"¿Siguen siendo correctos estos horarios de apertura?"</string>
     <string name="quest_placeName_title">"¿Cómo se llama este lugar?"</string>
     <string name="quest_shop_type_title2">"¿Qué tipo de tienda es esta?"</string>
     <string name="quest_smoking_title2">"¿Está permitido fumar aquí?"</string>
     <string name="quest_smoothness_title">"¿Cómo calificarías esta superficie?"</string>
+    <string name="quest_summit_register_title2">"¿Hay un registro de la cumbre aquí?"</string>
     <string name="quest_surface_title">"¿Cuál es la superficie aquí?"</string>
     <string name="quest_toiletAvailability_title">"¿Hay algún servicio/baño aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"¿El servicio/baño de este lugar es accesible para sillas de ruedas?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"¿Estás seguro de que los ciclistas no pueden usar esta calle de sentido único en ambas direcciones? En caso de duda, compruebe si hay un cartel al final de la calle."</string>
 </resources>

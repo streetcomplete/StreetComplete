@@ -10,12 +10,13 @@
         android:id="@+id/houseAndBlockNumberContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_traffic_blue_corners"
+        android:background="@drawable/background_rectangular_sign_blue"
         android:padding="8dp"
         android:showDividers="middle|beginning|end"
         android:orientation="horizontal"
         android:layoutDirection="ltr"
         android:gravity="center"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/houseAndBlockNumberLabel"
         app:layout_constraintRight_toLeftOf="@+id/plusMinusContainer"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,7 +24,7 @@
 
         <me.grantland.widget.AutofitLayout
             android:id="@+id/blockNumberInputContainer"
-            android:layout_width="64dp"
+            android:layout_width="56dp"
             android:layout_height="wrap_content">
 
             <EditText
@@ -46,7 +47,7 @@
 
         <me.grantland.widget.AutofitLayout
             android:id="@+id/houseNumberInputContainer"
-            android:layout_width="64dp"
+            android:layout_width="56dp"
             android:layout_height="wrap_content">
 
             <EditText

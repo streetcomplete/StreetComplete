@@ -15,6 +15,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.lifecycle.lifecycleScope
 import com.google.ar.core.Config
+import com.google.ar.core.Frame
 import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.core.Pose
@@ -164,40 +165,46 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         if (frame.camera.trackingState == TRACKING) {
             if (measureVertical) {
-                if (measureState == MeasureState.MEASURING) {
+                if (measureState == MeasureState.READY) {
+                    hitPlaneAndUpdateCursor(frame)
+                } else if (measureState == MeasureState.MEASURING) {
                     updateVerticalMeasuring(frame.camera.displayOrientedPose)
                 }
             } else {
-                val centerX = binding.arSceneViewContainer.width / 2f
-                val centerY = binding.arSceneViewContainer.height / 2f
-                val hitResults = frame.hitTest(centerX, centerY).filter {
-                    (it.trackable as? Plane)?.isPoseInPolygon(it.hitPose) == true
-                }
-                val firstNode = firstNode
-                val hitResult = if (firstNode == null) {
-                    hitResults.firstOrNull()
-                } else {
-                    /* after first node is placed on the plane, only accept hits with (other) planes
-                       that are more or less on the same height */
-                    hitResults.find { abs(it.hitPose.ty() - firstNode.worldPosition.y) < 0.1 }
-                }
-
-                if (hitResult != null) {
-                    updateCursor(hitResult)
-                    setTrackingError(null)
-                } else {
-                    /* when no plane can be found at the cursor position and the camera angle is
-                       shallow enough, display a hint that user should cross street
-                     */
-                    val cursorDistanceFromCamera = cursorNode?.worldPosition?.let {
-                        Vector3.subtract(frame.camera.pose.position, it).length()
-                    } ?: 0f
-
-                    setTrackingError(
-                        if (cursorDistanceFromCamera > 3f) R.string.ar_core_tracking_error_no_plane_hit else null
-                    )
-                }
+                hitPlaneAndUpdateCursor(frame)
             }
+        }
+    }
+
+    private fun hitPlaneAndUpdateCursor(frame: Frame) {
+        val centerX = binding.arSceneViewContainer.width / 2f
+        val centerY = binding.arSceneViewContainer.height / 2f
+        val hitResults = frame.hitTest(centerX, centerY).filter {
+            (it.trackable as? Plane)?.isPoseInPolygon(it.hitPose) == true
+        }
+        val firstNode = firstNode
+        val hitResult = if (firstNode == null) {
+            hitResults.firstOrNull()
+        } else {
+            /* after first node is placed on the plane, only accept hits with (other) planes
+               that are more or less on the same height */
+            hitResults.find { abs(it.hitPose.ty() - firstNode.worldPosition.y) < 0.1 }
+        }
+
+        if (hitResult != null) {
+            updateCursor(hitResult)
+            setTrackingError(null)
+        } else {
+            /* when no plane can be found at the cursor position and the camera angle is
+               shallow enough, display a hint that user should cross street
+             */
+            val cursorDistanceFromCamera = cursorNode?.worldPosition?.let {
+                Vector3.subtract(frame.camera.pose.position, it).length()
+            } ?: 0f
+
+            setTrackingError(
+                if (cursorDistanceFromCamera > 3f) R.string.ar_core_tracking_error_no_plane_hit else null
+            )
         }
     }
 

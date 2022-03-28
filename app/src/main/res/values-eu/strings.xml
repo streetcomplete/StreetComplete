@@ -2421,6 +2421,8 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_smoking_separated">"Eremu bereizietan bakarrik"</string>
     <string name="quest_smoking_yes">"Bai, nonahi"</string>
     <string name="quest_seating_name_title">"Nolako eserleku ditu leku honek?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Eramatea bakarrik"</string>
     <string name="quest_seating_indoor_only">"Barruko eserlekuak soilik"</string>
     <string name="quest_seating_outdoor_only">"Kanpoko eserlekuak soilik"</string>

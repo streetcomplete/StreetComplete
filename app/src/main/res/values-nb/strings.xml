@@ -102,8 +102,6 @@
     <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"Forminsk"</string>
     <string name="map_btn_zoom_in">"Forstørr"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -111,7 +109,7 @@ Merk først at du med denne appen gir faktiske, direkte bidrag til OpenStreetMap
 Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen.
 &lt;/p&gt;
 &lt;p&gt;
-Det er ikke mulig å redigere OpenStreetMap anonymt, så alle endringene dine blir gjort med OSM-brukerkontoen din. Fordi StreetComplete bør brukes kun når du er på stedet, dette medfører at tidspunktet, innholdet og implisitt stedet du var på blir synlig for alle på OpenStreetMap.org-nettstedet, og blir knyttet til brukerkontoen din.
+Det er ikke mulig å redigere OpenStreetMap anonymt. Alle endringene dine (med tidspunkt og sted) blir gjort med OSM-brukerkontoen din og er synlig for alle på openstreetmap.org. Fordi StreetComplete kun bør brukes når du er på stedet, vil dette avsløre hvor og når du har brukt appen.
 &lt;/p&gt;
 
 &lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;
@@ -419,7 +417,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="produce_bananas">"Banan"</string>
 
     <!-- Fuzzy -->
-    <string name="produce_blueberries">"Blåbør"</string>
+    <string name="produce_blueberries">"Blåbær"</string>
 
     <!-- Fuzzy -->
     <string name="produce_cacao">"Kakao"</string>
@@ -1198,7 +1196,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbudt å gå på denne veien her?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Denne veien er merket med at det ikke er noe fortau på noen av sidene. Dersom det er et fortau, men dette er vist som en adskilt vei, skal du likevel velge “fortau”."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Denne veien er definert uten fortau på noen av sidene. Dersom det er et fortau, men dette er vist som en adskilt vei, skal du likevel velge «fortau»."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Hva slags bygning er dette?"</string>
@@ -1240,7 +1238,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
 
     <!-- Add note interface -->
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_photos_are_useful">"Legg ved et bilde. Det sier mer enn tusen ord."</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Ved å legge til et bilde kan du få sagt mer enn tusen ord."</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Skriv merknaden på det lokale språket eller på engelsk."</string>
@@ -1260,9 +1258,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Hvordan er overflaten på sykkelstien her?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Varierer langs veien…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Hvis det endrer seg langs veien er første steg å dele opp strekningen der endringene skjer slik at oppdraget kan besvares for hvert veistrekk. Vil du dele opp nå?"</string>
+    <string name="quest_split_way_description">"Hvis det endrer seg langs veien er første steg å dele opp strekningen der endringene skjer. Deretter kan oppdraget besvares for hvert veistrekk.
+Vil du dele opp nå?"</string>
     <string name="quest_split_way_tutorial">"Trykk på veien for å splitte den der svarene avviker. Prøv å være så presis som mulig (Du kan forstørre området som vanlig)."</string>
     <string name="quest_split_way_too_imprecise">"Forstørr ytterligere"</string>
 
@@ -1335,16 +1332,14 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"det frie dugnadskartet"</string>
-    <string name="tutorial_intro">"StreetComplete gjør det enkelt å bidra til OpenStreetMap. Appen ser automatisk etter ting i nærheten som ikke er registrert på kartet, som sykkelanlegg, åpningstider og mye annet..."</string>
+    <string name="tutorial_intro">"StreetComplete gjør det enkelt å bidra til OpenStreetMap.
+Appen ser automatisk etter ting i nærheten som ikke er registrert på kartet: sykkelfelt, husnumre, åpningstider og mye annet…"</string>
     <string name="tutorial_solving_quests">"Dette blir vist på kartet som oppdrag til deg.
 
 Du kan løse noen oppdrag med en gang, for senere og logge inn og sende inn informasjonen du registerer."</string>
+    <string name="tutorial_stay_safe">"Hvis du er usikker kan du alltid svare «Vanskelig å si…» og legge igjen en merknad.
 
-    <!-- Fuzzy -->
-    <string name="tutorial_stay_safe">"Hvis du er usikker kan du alltid svare «Vanskelig å si...» og legge igjen
-en merknad som andre kan løse.
-
-Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene dine og gå aldri inn på privat eiendom."</string>
+Sist, men ikke minst, ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene dine, og gå aldri inn på privat eiendom."</string>
     <string name="tutorial_happy_mapping">"Kos deg med kartlegging!"</string>
     <string name="achievements_empty">"Du har ingen bragder enda"</string>
 
@@ -1382,7 +1377,7 @@ Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene di
     <string name="link_mapy_tactile_description">"Taktile kart i ulike skalaer - for brukere med synshemning"</string>
     <string name="link_josm_description">"Funksjonsrikt kartredigeringsprogram for vanlige datamaskiner. Dette er et kraftig verktøy for brukere som bidrar mye."</string>
     <string name="link_vespucci_description">"Avansert kartredigering for Android"</string>
-    <string name="link_ideditor_description">"Enkel kartredigering for nettlesere. Krever ingen installasjon. Tilpasset datamaskiner og vanlige nettbrett."</string>
+    <string name="link_ideditor_description">"Enkel OSM-kartredigering for nettlesere. Tilpasset datamaskiner og vanlige nettbrett"</string>
     <string name="link_umap_description">"Lag kjapt kart med egne data for framvisning på nettstedet ditt"</string>
     <string name="link_opnvkarte_description">"Offentlige transportruter og holdeplasser"</string>
     <string name="link_pic4review_description">"Bidra til OSM ved å se på bilder fra byen din"</string>
@@ -1390,13 +1385,13 @@ Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene di
     <!-- Fuzzy -->
     <string name="link_wiki_description">"Wikien er et godt utgangspunkt for alt relatert til OpenStreetMap"</string>
     <string name="link_learnosm_description">"Uerfaren med OpenStreetMap? Her er en innføring"</string>
-    <string name="link_neis_one_description">"En stor samling med statistikk over OpenStreetMap-bidragsytere, som hvor og hvordan du bidro, hvem andre som har kartlagt rundt deg, samt topplister."</string>
+    <string name="link_neis_one_description">"En stor samling med statistikk over OpenStreetMap-bidragsytere, som hvor og hvordan du bidro, hvem andre som har kartlagt rundt deg, samt topplister"</string>
     <string name="link_welcome_mat_description">"Generell informasjon om OpenStreetMap og hvordan å samarbeide med OSM som en organisasjon"</string>
     <string name="link_mapillary_description">"En tjeneste og app for deling av gatebilder tatt av fellesskapet, og gir spesifikk tillatelse til å bruke bildene til kartlegging av OSM"</string>
     <string name="link_openstreetcam_description">"En tjeneste og app for deling av gatebilder tatt av fellesskapet, og gir spesifikk tillatelse til å bruke bildene til kartlegging av OSM"</string>
     <string name="link_openrouteservice_wheelchair_description">"Detaljer veibeskrivelse og navigasjon for rullestolbrukere"</string>
     <string name="link_nominatim_description">"Geokoderen for OSM-data, brukes av mange andre tjenester"</string>
-    <string name="link_city_roads_description">"Gjengi alle veier i en by for å printe på T-skjorter, kopper..."</string>
+    <string name="link_city_roads_description">"Stilisert tegning av alle veier i en by, for å printe på t-skjorter, kopper…"</string>
     <string name="link_myosmatic_description">"Generer printbare bykart via noen få steg, med valgfri stedsoversikt"</string>
     <string name="link_brouter_description">"Sannsynligvis den beste navigasjonsmotoren for syklister"</string>
     <string name="link_show_me_the_way_description">"Se OSM-endringer skje i sanntid"</string>
@@ -1413,7 +1408,7 @@ Sist, husk å ta vare på din egen sikkerhet: Vær oppmerksom på omgivelsene di
     <string name="achievement_first_edit_title">"Første løste oppdrag"</string>
     <string name="achievement_first_edit_description">"Velkommen til OpenStreetMap-felleskapet! På profilsiden kan du lese mer om de ulike oppdragstypene du har løst."</string>
     <string name="achievement_surveyor_title">"Landmåler"</string>
-    <string name="achievement_surveyor_solved_X">"Du har løst %d oppdrag! Fortsett slik for å låse opp flere bragder som inneholder lenker til OSM og andre kartrelaterte apper og prosjekter."</string>
+    <string name="achievement_surveyor_solved_X">"Du har løst %d oppdrag! Fortsett slik for å låse opp flere bragder som inneholder lenker til OSM og andre kartrelaterte apper og prosjekter!"</string>
     <string name="achievement_regular_title">"Stamgjest"</string>
     <string name="achievement_regular_description">"Du har bidrat i %d dager til OSM med appen! Regelmessige bidragsytere utgjør ryggraden til OSM, så takk for at du er så engasjert! ❤"</string>
     <string name="achievement_bicyclist_title">"Syklist"</string>
@@ -1429,9 +1424,9 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
     <string name="achievement_blind_title">"Sjette sans"</string>
     <string name="achievement_blind_solved_X">"Du har løst %d oppdrag som er nyttige for synshemmede."</string>
     <string name="achievement_pedestrian_title">"Løper"</string>
-    <string name="achievement_pedestrian_solved_X">"Du har løst %d oppdrag som er nyttige for fotgjengere."</string>
+    <string name="achievement_pedestrian_solved_X">"Du har løst %d oppdrag som er nyttige for fotgjengere!"</string>
     <string name="achievement_veg_title">"Dyrevenn"</string>
-    <string name="achievement_veg_solved_X">"Du har løst %d oppdrag som er interessante for de som ikke spiser kjøtt."</string>
+    <string name="achievement_veg_solved_X">"Du har løst %d oppdrag som er interessante for de som ikke spiser kjøtt!"</string>
     <string name="achievement_car_title">"På veien"</string>
 
     <!-- Fuzzy -->
@@ -1462,14 +1457,14 @@ plassering"</string>
 %s"</string>
     <string name="user_profile_days_active">"Dager
 aktiv"</string>
-    <string name="user_profile_achievement_levels">"Prestasjonsnivåer"</string>
+    <string name="user_profile_achievement_levels">"Prestasjons-
+nivåer"</string>
     <string name="quest_address_street_no_named_streets">"Det hører ikke til en navngitt gate"</string>
     <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
-    <string name="quest_address_street_description">"Trykk på gaten på kartet eller legg det til uten
-forkortelser i feltet nedenfor:"</string>
+    <string name="quest_address_street_description">"Trykk på veien på kartet eller legg det til uten forkortelser i feltet nedenfor:"</string>
     <string name="quest_recycling_type_cooking_oil">"Matolje"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
-    <string name="link_photon_description">"En uavhengig utvidelse til Nominatim. Støtter omtrentlige søk og kontinuerlig visning av søkeresultater."</string>
+    <string name="link_photon_description">"En uavhengig utvidelse til Nominatim, som støtter omtrentlige søk og kontinuerlig visning av søkeresultater"</string>
     <string name="link_graphhopper_description">"En fleksibel ruteplanlegger"</string>
     <string name="link_qwant_maps_description">"Er kart med søknader steder og ruter"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;For å vise kartet blir kart­fliser hentet fra %1$s. Se &lt;a href=\"%2$s\"&gt;personvern­erklæringen deres&lt;/a&gt; for mer informasjon.&lt;/p&gt;"</string>
@@ -1488,12 +1483,10 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
     <string name="quest_surface_detailed_answer_impossible">"Flere overflater…"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umulig å spesifisere overflaten? Husk alternativet “Varierer…” som kan dele opp veien der overflaten endres. Vennligst bruk “Vanskelig å si…” hvis strekningen har samme overflate, men den ikke finnes blant alternativene."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umulig å spesifisere overflaten? Husk alternativet «Varierer...» som kan dele opp anlegget der overflaten endres. Vennligst bruk «Vanskelig å si...» hvis strekningen har samme overflate, men den ikke finnes blant alternativene."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_description">"Vennligst gi en kort beskrivelse av overflaten her, for eksempel: «Sand med områder med brostein». Teksten er begrenset til 255 tegn."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Vennligst gi en kort beskrivelse av overflaten her, for eksempel “sandete med områder med brostein”. Teksten er begrenset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_international">"internasjonal"</string>
     <string name="quest_buildingType_terrace2">"Rekkehus"</string>
 
@@ -1536,7 +1529,7 @@ forkortelser i feltet nedenfor:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Hva er navnet på banken til denne minibanken?"</string>
-    <string name="quest_clothes_container_operator_title">"Hvilken organisasjon tar i mot donasjoner via denne kles-containeren."</string>
+    <string name="quest_clothes_container_operator_title">"Hvilken organisasjon tar i mot donasjoner via denne kles-containeren?"</string>
     <string name="quest_charging_station_operator_title">"Hvilket selskap opererer denne ladestasjonen?"</string>
     <string name="link_indoorequal_description">"Oppdag innendørskart av kjøpesentere, jernbanestasjoner, osv."</string>
     <string name="achievement_rare_title">"Skattejakt"</string>
@@ -1585,10 +1578,10 @@ forkortelser i feltet nedenfor:"</string>
     <string name="quest_kerb_height_lowered_ramp">"Rampe til fortauskant"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_description2">"Skriv inn antall oppmerkede kjørefelt (i begge regninger) som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med. Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn antall oppmerkede kjørefelt som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med. Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
+    <string name="quest_lanes_answer_lanes_description2">"Skriv inn antall oppmerkede kjørefelt (i begge regninger) som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med.
+Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn antall oppmerkede kjørefelt som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med.
+Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Høye lastebiler kan kjøre gjennom"</string>
 
@@ -1620,12 +1613,12 @@ forkortelser i feltet nedenfor:"</string>
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Denne butikken er tom. Hva er her nå?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Antall felt varierer for hver side"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen er deaktivert som standard, fordi den ikke er nyttig i noen områder og du må nok gå inn for å kunne svaret oppdraget. "</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen er deaktivert som standard, fordi den ikke er nyttig i noen områder og du vanligvis må gå inn på stedet for å kunne svare."</string>
     <string name="quest_dietType_explanation_kosher">"Koscherprodukt må lages etter bestemte religiøse regler, og det fins egne sertifiseringsinstanser som godkjenner produktene."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen sykkelvei"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanlig på en side av illustrasjonen, velg riktig alternativ og gjenta det samme for den andre siden.
 
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanlig på en side av illustrasjonen, velg riktig alternativ og gjenta det samme for den andre siden. Legg merke til at det er mange tilgjengelige alternativer her. Noen tilfeller er ikke åpenbare, for eksempel en enveiskjørt vei som likevel tillater sykling i begge retninger."</string>
+Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare, som for eksempel en enveiskjørt vei som tillater sykling i begge retninger."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Velg at det ikke finnes noen sykkelvei"</string>
     <string name="quest_construction_completed_at_known_date">"Dato for ferdigstillelse…"</string>
     <string name="quest_construction_completion_date_title">"Når blir det ferdig?"</string>
@@ -1653,7 +1646,7 @@ forkortelser i feltet nedenfor:"</string>
     <!-- Team mode -->
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
-    <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer"</string>
+    <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer."</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
 
@@ -1737,9 +1730,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etasjer over kjeller har denne bygningsdelen?"</string>
     <string name="quest_crossing_title">"Er det kantstein hvor dette anlegget møter veien? Hvilken type?"</string>
     <string name="pref_subtitle_quests_preset_name">"Standardvalg: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformene er ofte vanskelig å se fra gaten.  Denne oppdragstypen er også kanske tidskrevende, i aller fleste tilfeller er det enklere og mer effektiv å kartlegge denne hjemme med flyfoto."</string>
+    <string name="default_disabled_msg_roofShape">"Denne oppdragstypen blir normalt ikke vist fordi takformene er ofte vanskelig å se fra gaten. Denne oppdragstypen er også ganske tidskrevende, og som regel enklere og mer effektivt å kartlegge hjemmefra ved å bruke flyfoto."</string>
     <string name="quest_religion_animist">"Animisme"</string>
     <string name="quest_construction_steps_title">"Er trappene ferdigbygget?"</string>
 
@@ -1827,7 +1818,7 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_access_customers">"Besøk til et sted (f.eks. kunder)"</string>
     <string name="quest_access_private">"Privat eller med tillatelse"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Er hentetidene for denne postkassa fortsatt korrekte?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Ukjent type forretning. Prøv for eksempel \"bakery\" (bruk engelsk), eller lag en merknad."</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"Ukjent type forretning. Skriv på engelsk, for eksempel ”bakery”. Eller lag en merknad."</string>
     <string name="quest_bicycle_barrier_type_title">"Hvilken type sperring er dette?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal over veien"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Smal passasje, trangest øverst"</string>
@@ -1966,6 +1957,8 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="quest_smoking_separated">"Kun i separate områder"</string>
     <string name="quest_smoking_yes">"Ja, overalt"</string>
     <string name="quest_seating_name_title">"Hva slags sitteplasser har dette stedet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Kun takeaway"</string>
     <string name="quest_seating_indoor_only">"Sitteplasser bare innendørs"</string>
     <string name="quest_seating_outdoor_only">"Sitteplasser bare utendørs"</string>
@@ -2023,4 +2016,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Hva slags overflate er det her?"</string>
     <string name="quest_toiletAvailability_title">"Er det et toalett her?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Er dette toalettet tilgjengelig med rullestol?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Er du sikker på at syklister ikke har lov til å sykle begge veier på denne enveiskjørte veien? Sjekk om det er et skilt i enden av veien hvis du er i tvil."</string>
 </resources>

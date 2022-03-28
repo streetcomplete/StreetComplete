@@ -1337,6 +1337,8 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <!-- Fuzzy -->
     <string name="quest_smoking_separated">"Només en àrees específiques"</string>
     <string name="quest_smoking_yes">"Si, a qualsevol lloc"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Només per emportar"</string>
     <string name="quest_seating_indoor_only">"Només seients interiors"</string>
     <string name="quest_seating_outdoor_only">"Només seients exteriors"</string>

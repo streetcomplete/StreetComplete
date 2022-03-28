@@ -2411,6 +2411,8 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_smoking_separated">"Csak elkülönített helyen"</string>
     <string name="quest_smoking_yes">"Igen, mindenhol"</string>
     <string name="quest_seating_name_title">"Milyen ülőhelyekkel rendelkezik ez a hely?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Csak elvitel"</string>
     <string name="quest_seating_indoor_only">"Csak beltéri ülőhelyek"</string>
     <string name="quest_seating_outdoor_only">"Csak kültéri ülőhelyek"</string>
@@ -2466,4 +2468,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Milyen itt a burkolat?"</string>
     <string name="quest_toiletAvailability_title">"Van-e itt wc?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"A wc kerekesszékkel is használható?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Biztos, hogy a kerékpárosok nem használhatják ezt az egyirányú utcát mindkét irányban? Kétség esetén nézd meg, hogy van-e tábla az utca végén."</string>
 </resources>
