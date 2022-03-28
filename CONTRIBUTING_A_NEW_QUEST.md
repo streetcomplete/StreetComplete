@@ -148,11 +148,16 @@ elementFilter property defines nodes, ways and relations which will be selected 
 """
 ```
 
-This query will be limited to nodes (`nodes with`), which fulfill some requirements.
+This query will be limited to object which fulfill some requirements.
 
-- `emergency = defibrillator` tag must be present
-- `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific `optionA|optionB` is treated like `^optionA|optionB$` [regexp](https://en.wikipedia.org/wiki/Regular_expression))
-- `indoor` key must not be present at all, to show only ones where this tag is still missing
+- `nodes with`
+  - nodes only, ways and relations are not eligible
+- `emergency = defibrillator`
+  - this tag must be present
+- `and access !~ private|no`
+  - and `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific `optionA|optionB` is treated like `^optionA|optionB$` [regexp](https://en.wikipedia.org/wiki/Regular_expression))
+- `and !indoor`
+  - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
 It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request more thorough documentation here.
 
@@ -172,13 +177,17 @@ override val elementFilter = """
 
 This quest will be triggered when:
 
-- on nodes and ways
-- where `amenity = motorcycle_parking` tag is present
-- `access` tag does not have value `private` nor `no`
-- and one of following is fullfilled:
-  - `capacity` tag is not present at all (`!capacity`)
-  - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
-  - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
+- `nodes, ways with`
+  - on nodes or ways (relations not eligible)
+- `amenity = motorcycle_parking`
+  - where `amenity = motorcycle_parking` tag is present
+- `and access !~ private|no`
+  - and `access` tag does not have value `private` nor `no`
+- `and (!capacity or capacity older today -4 years)`
+  - and one of following is fullfilled:
+    - `capacity` tag is not present at all (`!capacity`)
+    - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
+    - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
 #### Hints
 
