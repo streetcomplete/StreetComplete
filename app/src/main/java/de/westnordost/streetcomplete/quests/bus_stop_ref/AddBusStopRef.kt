@@ -15,7 +15,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
           or
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !ref and noref != yes and ref:signed != no
+        and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val enabledInCountries = NoCountriesExcept("US", "CA", "JE")
     override val changesetComment = "Determine bus/tram stop ref"
