@@ -155,7 +155,9 @@ This query will be limited to object which fulfill some requirements.
 - `emergency = defibrillator`
   - this tag must be present
 - `and access !~ private|no`
-  - and `access` tag must not have values `private` or `no` to skip ones where mapper will be unable to survey (`!~ private|no` - to be more specific `optionA|optionB` is treated like `^optionA|optionB$` [regexp](https://en.wikipedia.org/wiki/Regular_expression))
+  - and `access` tag must not have values `private` or `no`
+  - `!~ private|no` is transformed into `^optionA|optionB$` [regexp](https://en.wikipedia.org/wiki/Regular_expression)
+  - This is included to skip object where mapper will likely has no access to survey
 - `and !indoor`
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
