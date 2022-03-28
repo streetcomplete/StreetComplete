@@ -117,7 +117,7 @@ Some quests are entirely defined in a single file, some have additional answer c
 
 # Adjust the copy
 
-After the quest is copied it is necessary to adjust it a bit.
+After the quest is copied it is necessary to adjust it a bit so it is not a duplicate anymore.
 
 Change its class name and the file name to the new one.
 
