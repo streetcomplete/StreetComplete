@@ -157,7 +157,7 @@ This query will be limited to object which fulfill some requirements.
 - `and access !~ private|no`
   - and `access` tag must not have values `private` or `no`
   - `!~ private|no` is transformed into `^optionA|optionB$` [regexp](https://en.wikipedia.org/wiki/Regular_expression)
-  - This is included to skip object where mapper will likely has no access to survey
+  - this filter excludes objects where mapper will likely has no access necessary for survey
 - `and !indoor`
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
