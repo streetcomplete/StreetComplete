@@ -77,15 +77,15 @@ Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomple
 
 ### Locating a quest
 
-Search across the code for part of a question or other text specific to this quest. For example "What is the name of this place".
+Search across the code for part of a question or other text specific to this quest. For example "the name of this place?".
 
-You will find an XML file with an entry looking like this:
+You will find an [XML file](app/src/main/res/values/strings.xml) with an entry looking like this:
 
 ```xml
-<string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>
+    <string name="quest_placeName_title">"What’s the name of this place?"</string>
 ```
 
-The identifier `quest_placeName_title_name` is a string reference, used in the code to allow translations.
+The identifier `quest_placeName_title` is a string reference, used in the code to allow translations.
 
 Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
 
