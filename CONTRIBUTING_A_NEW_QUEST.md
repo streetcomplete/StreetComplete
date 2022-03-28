@@ -376,6 +376,8 @@ After the PR is finished it will be merged before the beta release of the next v
 
 After full release it will reach the entire StreetComplete audience who now will be able to more easily contribute to OpenStreetMap. Thanks in advance for that!
 
+Once your code is merged into StreetComplete you will be credited at [repository statistics](https://github.com/streetcomplete/StreetComplete/graphs/contributors).
+
 # Bad documentation is a bug
 
 Unclear documents, including this one, are a bug. Feel free to either submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a fix or [open an issue](https://github.com/streetcomplete/StreetComplete/issues/new) describing your confusion.
