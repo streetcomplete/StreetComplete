@@ -107,6 +107,8 @@ Search for this identifier in `*.kt` files, it should appear in the quest file (
 
 This method can often be used to locate relevant code.
 
+Search can be brought up with [Ctrl+Shift+f](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html).
+
 ## Pull Requests
 
 One of the better ways to get around a codebase that is new to you is to look at recent accepted proposals to change the code (pull requests).
