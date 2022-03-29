@@ -207,6 +207,10 @@ This quest will be triggered when:
     - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
     - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
+###### Prototyping
+
+[Overpass Turbo](http://overpass-turbo.eu/) has own syntax but it is very useful tool for prototyping filters. It is very useful to verify own assumptions how things are tagged. Especially in more complex cases.
+
 #### Hints
 
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
