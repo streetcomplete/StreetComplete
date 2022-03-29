@@ -23,7 +23,7 @@ But this materials may help or be quicker than trying to fully explore on your o
   - setting up Android Studio will likely be more complex than writing the code
 - [basic ability to use git](https://git-scm.com/docs/user-manual) (but as mentioned, anything GitHub specific will be explained)
   - there is version control integration available in Android Studio
-    - From the Android Studio **VCS** menu, click **Enable Version Control** Integration ([see official docs](https://developer.android.com/studio/intro#version_control_basics))
+    - From the Android Studio **VCS** menu, click **Enable Version Control Integration** ([see official docs](https://developer.android.com/studio/intro#version_control_basics))
     - Go to File -> Settings -> Version control in Android Studio to optionally configure git integration
   - Using git from command line or terminal in Android Studio also works fine
 - GitHub [account](https://github.com/signup)
@@ -37,6 +37,8 @@ But this materials may help or be quicker than trying to fully explore on your o
 - visit [https://github.com/streetcomplete/StreetComplete](https://github.com/streetcomplete/StreetComplete) and press the "fork" button on the top right
   - this creates a copy of StreetComplete repository that you control and can prepare code there
 - clone your fork of a StreetComplete repository
+  - in Android Studio it can be achieved without command line ( File -> New -> Project from Version Control... )
+  - see [Github Documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) how repository can be cloned and where its URL can be found
 - open StreetComplete in Android Studio
 - [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also [connect to a real device via USB](https://developer.android.com/studio/run/device), this can replace using the emulator)
 - run StreetComplete in the emulator (to verify that everything was setup as required)
@@ -55,15 +57,27 @@ You can also look at [quest proposals waiting for implementation](https://github
 
 # Prepare repository for development
 
-That is a good moment to create a branch and switch to it. It can be done with the following command:
+That is a good moment to create a branch and switch to it. 
+
+It can be done using Android Studio GUI (Git -> New branch...), or in CLI with the following command:
 
 ```bash
 git checkout -b short_branch_name_describing_planned_work
 ```
 
+In general, [Intellij documentation](https://www.jetbrains.com/help/idea/using-git-integration.html) about git integration is applicable to Android Studio (which is rebranded Intellij with minor modifications).
+
 # Learn from existing code
 
 ## Find a base
+
+### Hints for looking around code
+
+Full text search (<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd> or [grepping](https://github.com/BurntSushi/ripgrep#ripgrep-rg)) remains useful and powerful.
+
+But "Find usages" (<kbd>alt</kbd>+<kbd>F7</kbd>) is also a very powerful way to find where given function/constant/property/etc is appearing, classified by usages.
+
+### Base on existing
 
 Base the new quest on one that exists already.
 
@@ -74,6 +88,8 @@ Are you trying to implement a quest that will have simple yes/no answer? Take [`
 Is it going to be asked for POIs and should be disabled by default? [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
 
 Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomplete/quests).
+
+Implementing quest by duplicating and modifiying existing one is the recommended method.
 
 ### Locating a quest
 
@@ -91,12 +107,6 @@ Search for this identifier in `*.kt` files, it should appear in the quest file (
 
 This method can often be used to locate relevant code.
 
-### Hints for looking around code
-
-Full text search (<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd> or [grepping](https://github.com/BurntSushi/ripgrep#ripgrep-rg)) remains useful and powerful.
-
-But "Find usages" (<kbd>alt</kbd>+<kbd>F7</kbd>) is also a very powerful way to find where given function/constant/property/etc is appearing, classified by usages.
-
 ## Pull Requests
 
 One of the better ways to get around a codebase that is new to you is to look at recent accepted proposals to change the code (pull requests).
@@ -111,11 +121,15 @@ This can be also used to locate relevant code, especially helpful if some change
 
 # Copying
 
-Copy the relevant quest folder. Some contain multiple quests, in such case copy only what you need.
+Duplicate the relevant quest folder from [`app/src/main/java/de/westnordost/streetcomplete/quests`](app/src/main/java/de/westnordost/streetcomplete/quests). Some contain multiple quests, in such case delete unnecessary files.
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
 # Adjust the copy
+
+TODO: rename using refactor?
+TODO: rename using file rename?
+TODO: check for side efects
 
 After the quest is copied it is necessary to adjust it a bit so it is not a duplicate anymore.
 
@@ -128,6 +142,8 @@ In copied code change package info (things like `package de.westnordost.streetco
 Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L172-L195) but do not worry too much, it can be tweaked later.
 
 Add your quest to the list so that it will be loaded by the app.
+
+As this point you can run the app in emulator - everything should work and one of quests will appear twice.
 
 ## Quest anatomy
 
