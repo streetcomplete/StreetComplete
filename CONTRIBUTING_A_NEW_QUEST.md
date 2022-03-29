@@ -145,15 +145,17 @@ Add your quest to the list so that it will be loaded by the app.
 
 As this point you can run the app in emulator - everything should work and one of quests will appear twice.
 
-## Quest anatomy
+# Modify the template
+
+At this point prepared template can be modified to achieve the intended effect.
 
 See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
 TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt) would be better? And extend documentation there?
 
-### Element selection
+## Element selection
 
-elementFilter property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
+`elementFilter` property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
 
 ```kotlin
 """
@@ -179,7 +181,7 @@ This query will be limited to object which fulfill some requirements.
 
 It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request more thorough documentation here.
 
-###### Resurvey
+### Resurvey
 
 Some quests are asked not only when tag is missing but also when it is likely to be outdated.
 
@@ -207,21 +209,19 @@ This quest will be triggered when:
     - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
     - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
-###### Prototyping
+### Prototyping
 
 [Overpass Turbo](http://overpass-turbo.eu/) has own syntax but it is very useful tool for prototyping filters. It is very useful to verify own assumptions how things are tagged. Especially in more complex cases.
 
-#### Hints
+## Hints
 
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
 In some cases it will be a good idea to [limit quests to certain countries](#enabledInCountries).
 
-### Properties
-
 You can obtain more info about properties by placing the cursor in a property and pressing Ctrl+Q within Android Studio.
 
-#### changesetComment
+## changesetComment
 
 ```kotlin
 override val changesetComment = "Add whether defibrillator is inside building"
@@ -229,7 +229,7 @@ override val changesetComment = "Add whether defibrillator is inside building"
 
 message used as a changeset comment
 
-#### wikiLink
+## wikiLink
 
 ```kotlin
 override val wikiLink = "Key:indoor"
@@ -237,7 +237,7 @@ override val wikiLink = "Key:indoor"
 
 points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
-#### icon
+## icon
 
 ```kotlin
 override val icon = R.drawable.ic_quest_defibrillator
@@ -249,7 +249,7 @@ Do not worry, submissions with placeholder icons are also welcomed! In many case
 
 More info about icon handling [will be given later](#adding-quest-icon).
 
-#### questTypeAchievements
+## questTypeAchievements
 
 ```kotlin
 override val questTypeAchievements = listOf(LIFESAVER)
@@ -257,7 +257,7 @@ override val questTypeAchievements = listOf(LIFESAVER)
 
 In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
 
-#### getTitle
+## getTitle
 
 ```kotlin
 override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title
@@ -269,7 +269,7 @@ Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/val
 
 There are separate files with translated text, but do not worry about it - [translations are handled separately](CONTRIBUTING.md#translating-the-app).
 
-#### Form
+## Form
 
 ```kotlin
 override fun createForm() = YesNoQuestAnswerFragment()
@@ -285,7 +285,7 @@ But sometimes more complex ones are needed, see for example [AddBridgeStructure.
 
 With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
 
-### applyAnswerTo
+## applyAnswerTo
 
 ```kotlin
 override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
@@ -311,9 +311,9 @@ Actions may include (examples from various quests):
   - always update survey tag if present already
   - necessary if given quest includes resurvey of old elements that are already tagged
 
-### Extras
+## Extras
 
-Info listed above must be supplied by every quest. But there are also several optional fields. This specific quest has
+Info listed so far must be supplied by every quest. But there are also several optional fields. This specific quest has
 
 ```kotlin
 override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
@@ -324,7 +324,7 @@ which causes nearby `emergency = defibrillator` nodes to be shown (icons used ar
 
 See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
-### Adding quest icon
+# Adding quest icon
 <!-- note that this section name is linked from section discussing val icon, in case of changing section name change also that link -->
 It is OK to submit a quest without own icon, using any icon as a placeholder.
 
