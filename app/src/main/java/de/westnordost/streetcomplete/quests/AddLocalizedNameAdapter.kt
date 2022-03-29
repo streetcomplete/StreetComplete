@@ -11,12 +11,12 @@ import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -238,7 +238,7 @@ class AddLocalizedNameAdapter(
         private val autoCorrectAbbreviations = AutoCorrectAbbreviationsViewController(input)
 
         init {
-            input.addTextChangedListener(TextChangedWatcher {
+            input.doAfterTextChanged {
                 val name = input.text.toString()
                 localizedName.name = name.trim()
                 buttonNameSuggestions.isGone = name.isNotEmpty()
@@ -246,7 +246,7 @@ class AddLocalizedNameAdapter(
                 for (listener in listeners) {
                     listener(localizedName)
                 }
-            })
+            }
 
             buttonDelete.setOnClickListener {
                 // clearing focus is very necessary, otherwise crash
