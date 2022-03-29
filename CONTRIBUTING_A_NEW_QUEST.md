@@ -73,7 +73,7 @@ In general, [Intellij documentation](https://www.jetbrains.com/help/idea/using-g
 
 ### Hints for looking around code
 
-Full text search (<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd> or [grepping](https://github.com/BurntSushi/ripgrep#ripgrep-rg)) remains useful and powerful.
+Full text search ([<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd>](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html) or [grepping](https://github.com/BurntSushi/ripgrep#ripgrep-rg)) remains useful and powerful.
 
 But "Find usages" (<kbd>alt</kbd>+<kbd>F7</kbd>) is also a very powerful way to find where given function/constant/property/etc is appearing, classified by usages.
 
@@ -106,8 +106,6 @@ The identifier `quest_placeName_title` is a string reference, used in the code t
 Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/main/java/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
 
 This method can often be used to locate relevant code.
-
-Search can be brought up with [Ctrl+Shift+f](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html).
 
 ## Pull Requests
 
