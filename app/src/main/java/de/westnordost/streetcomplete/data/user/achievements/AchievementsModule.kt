@@ -415,6 +415,14 @@ private val links = listOf(
         R.drawable.ic_link_backofyourhand,
         R.string.link_backofyourhand_description
     ),
+    Link(
+        "thenandnow",
+        "https://mvexel.github.io/thenandnow/",
+        "OSM Then and Now",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_thenandnow,
+        R.string.link_thenandnow_description
+    ),
 )
 
 private val linksById = links.associateBy { it.id }
@@ -478,7 +486,7 @@ private val achievements = listOf(
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
             6 to links("disaster.ninja"),
             7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
-
+            8 to links("thenandnow"),
             9 to links("notesreview"),
         )
     ),
