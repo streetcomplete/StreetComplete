@@ -113,6 +113,7 @@ import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
 import de.westnordost.streetcomplete.quests.smoothness.AddRoadSmoothness
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
+import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
@@ -289,6 +290,7 @@ whether the postbox is still there in countries in which it is enabled */
     AddBarrierOnPath(),
     AddBarrierOnRoad(),
     AddStileType(),
+    AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
     AddBicycleBarrierType(),
 
     AddBollardType(), // useful for first responders

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 128 128"
+   id="svg903"
+   sodipodi:docname="steps.svg"
+   inkscape:version="1.1.2 (1:1.1+202202050950+0a00cf5339)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs907" />
+  <sodipodi:namedview
+     id="namedview905"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="6.8203125"
+     inkscape:cx="64"
+     inkscape:cy="64"
+     inkscape:window-width="1920"
+     inkscape:window-height="1140"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg903" />
+  <path
+     d="M 128,64.000001 C 128,99.346001 99.345996,128 63.999996,128 28.654,128 4e-6,99.346001 4e-6,64.000001 4e-6,28.653997 28.654,-3e-6 63.999996,-3e-6 99.345996,-3e-6 128,28.653997 128,64.000001"
+     fill="#b9a065"
+     stroke-width="0.2"
+     id="path2" />
+  <path
+     d="m39.99 120v-16h24v-16h24v-16h24"
+     fill="none"
+     stroke="#000"
+     stroke-opacity=".2"
+     stroke-width="8"
+     id="path891" />
+  <path
+     d="m43.272 55.529c-0.06774-7.5731 5.492-11.485 13.801-14.828 5.9555 5.0904 11.023 15.172 18.915 3.3011m-25.983 44c6.4947-12.989 2.9962-20.279 7.0675-29.883 10.305 7.7914 17.174-0.71763 14.915 17.882m-14.915-35.3c-1.4273 5.4122-0.35231 12.663 0.65671 18.075"
+     fill="none"
+     stroke="#000"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-opacity=".2"
+     stroke-width="8"
+     id="path893" />
+  <path
+     d="m68.699 25.265a8.5476 8.5476 0 0 1-8.5476 8.5476 8.5476 8.5476 0 0 1-8.5476-8.5476 8.5476 8.5476 0 0 1 8.5476-8.5476 8.5476 8.5476 0 0 1 8.5476 8.5476"
+     fill-opacity=".2"
+     stroke-opacity=".2"
+     stroke-width="6.5885"
+     id="path895" />
+  <path
+     d="m39.99 116v-16h24v-16h24v-16h24"
+     fill="none"
+     stroke="#fff"
+     stroke-width="8"
+     id="path897" />
+  <path
+     d="m68.699 21.265a8.5476 8.5476 0 0 1-8.5476 8.5476 8.5476 8.5476 0 0 1-8.5476-8.5476 8.5476 8.5476 0 0 1 8.5476-8.5476 8.5476 8.5476 0 0 1 8.5476 8.5476"
+     fill="#fff"
+     stroke-width=".17576"
+     id="path899" />
+  <path
+     d="m43.284 51.527c-0.06774-7.5731 5.492-11.485 13.801-14.828 5.9555 5.0904 11.023 15.172 18.915 3.3011m-25.983 44c6.4947-12.989 2.9962-20.279 7.0675-29.883 10.305 7.7914 17.174-0.71763 14.915 17.882m-14.915-35.3c-1.4273 5.4122-0.35231 12.663 0.65671 18.075"
+     fill="none"
+     stroke="#fff"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="8"
+     id="path901" />
+</svg>
