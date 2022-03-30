@@ -125,6 +125,12 @@ Duplicate the relevant quest folder from [`app/src/main/java/de/westnordost/stre
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
+For example, lets imagine that new quest will ask whether [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoor or outdoor. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
+
+So, as the first step: lets copy [`app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/`.
+
+This is commit XXXXXXXXXXXXXXXXXXX TODO XXXXXXXXXXXXXXXXX in the demonstration repository.
+
 # Adjust the copy
 
 TODO: rename using refactor?
