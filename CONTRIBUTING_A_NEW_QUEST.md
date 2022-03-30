@@ -133,7 +133,7 @@ For example, lets imagine that new quest will ask whether [AED](https://wiki.ope
 
 So, as the first step: lets copy [`app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/`.
 
-This is commit XXXXXXXXXXXXXXXXXXX TODO XXXXXXXXXXXXXXXXX in the demonstration repository.
+This is done in [this commit](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7d9ad571f521055a4c5a0006743762fd16e4c9d6) in the demonstration repository.
 
 # Adjust the copy
 
@@ -145,6 +145,8 @@ In copied code change package info (things like `package de.westnordost.streetco
 
 When commiting changes be careful to not change already existing quest - only new code (using built-in refactoring rename will affect also `QuestsModule.kt` entry for an existing quest).
 
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/9c65d00c7d096c3fee61650e1465a43b7e7f5712) in the example repository.
+
 # Add the quest to the list of active ones
 
 Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L172-L195) but do not worry too much, it can be tweaked later.
@@ -152,6 +154,8 @@ Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/
 Add your quest to the list so that it will be loaded by the app.
 
 As this point you can run the app in emulator - everything should work and one of quests will appear twice.
+
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/b4f01eeb752f92fd6927fbb9a943ea19a4799eec) in the example repository.
 
 # Modify the template
 
@@ -188,6 +192,9 @@ This query will be limited to object which fulfill some requirements.
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
 It is specified as a string, in syntax specific to StreetComplete. You can look around some quests to see how it works. If you are trying to implement a new quest and you got stuck here, [open a new issue](https://github.com/streetcomplete/StreetComplete/issues) to request more thorough documentation here.
+
+
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
 
 ### Resurvey
 
@@ -237,6 +244,8 @@ override val changesetComment = "Add whether defibrillator is inside building"
 
 message used as a changeset comment
 
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/0db8827133b07ce32c3c1287604198efeabc7bf6) in the example repository.
+
 ## wikiLink
 
 ```kotlin
@@ -244,6 +253,8 @@ override val wikiLink = "Key:indoor"
 ```
 
 points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
+
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/13ec6b97b52413cf09f3b71311b877b746d29576) in the example repository.
 
 ## icon
 
@@ -257,6 +268,8 @@ Do not worry, submissions with placeholder icons are also welcomed! In many case
 
 More info about icon handling [will be given later](#adding-quest-icon).
 
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7cecce384a5baf365119fd3453d600a87f87fadb) in the example repository.
+
 ## questTypeAchievements
 
 ```kotlin
@@ -264,6 +277,8 @@ override val questTypeAchievements = listOf(LIFESAVER)
 ```
 
 In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/f043440b43ad84d321c7aae4fd03095c34af8eb4) in the example repository.
 
 ## getTitle
 
@@ -276,6 +291,8 @@ It is a message displayed to user, code here passes a [reference](https://develo
 Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
 
 There are separate files with translated text, but do not worry about it - [translations are handled separately](CONTRIBUTING.md#translating-the-app).
+
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/5fe2b8149b25ac375a09a45ad949dc804d687825) in the example repository.
 
 ## Form
 
@@ -319,6 +336,8 @@ Actions may include (examples from various quests):
   - always update survey tag if present already
   - necessary if given quest includes resurvey of old elements that are already tagged
 
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/04aa86351a9b3634a7a0e034e47936b2c4e17f9b) in the example repository.
+
 ## Extras
 
 Info listed so far must be supplied by every quest. But there are also several optional fields. This specific quest has
@@ -331,6 +350,8 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
 which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/map/PinIcons.kt))
 
 See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+
+See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/1d648e56562d16a5dc3588ca7de8558f97d5919a) in the example repository.
 
 # Adding quest icon
 <!-- note that this section name is linked from section discussing val icon, in case of changing section name change also that link -->
