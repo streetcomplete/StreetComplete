@@ -196,34 +196,6 @@ It is specified as a string, in syntax specific to StreetComplete. You can look 
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
 
-### Resurvey
-
-Some quests are asked not only when tag is missing but also when it is likely to be outdated.
-
-Typical code is in [quest asking about motorcycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
-
-```kotlin
-override val elementFilter = """
-    nodes, ways with amenity = motorcycle_parking
-      and access !~ private|no
-      and (!capacity or capacity older today -4 years)
-"""
-```
-
-This quest will be triggered when:
-
-- `nodes, ways with`
-  - on nodes or ways (relations not eligible)
-- `amenity = motorcycle_parking`
-  - where `amenity = motorcycle_parking` tag is present
-- `and access !~ private|no`
-  - and `access` tag does not have value `private` nor `no`
-- `and (!capacity or capacity older today -4 years)`
-  - and one of following is fullfilled:
-    - `capacity` tag is not present at all (`!capacity`)
-    - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
-    - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
-
 ### Prototyping
 
 [Overpass Turbo](http://overpass-turbo.eu/) has own syntax but it is very useful tool for prototyping filters. It is very useful to verify own assumptions how things are tagged. Especially in more complex cases.
@@ -496,6 +468,34 @@ Each of these folders should hold the same image resized to a different resoluti
 The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may be useful, but you can also do this manually with Gimp or similar software.
 
 After adding a photo, remember to update [the credit file](app/src/main/res/authors.txt) (different to the one for icons).
+
+## Resurvey
+
+Some quests are asked not only when tag is missing but also when it is likely to be outdated. To achieve this `elementFilter` needs to query not only elements missing some tags.
+
+Typical code is in [quest asking about motorcycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
+
+```kotlin
+override val elementFilter = """
+    nodes, ways with amenity = motorcycle_parking
+      and access !~ private|no
+      and (!capacity or capacity older today -4 years)
+"""
+```
+
+This quest will be triggered when:
+
+- `nodes, ways with`
+  - on nodes or ways (relations not eligible)
+- `amenity = motorcycle_parking`
+  - where `amenity = motorcycle_parking` tag is present
+- `and access !~ private|no`
+  - and `access` tag does not have value `private` nor `no`
+- `and (!capacity or capacity older today -4 years)`
+  - and one of following is fullfilled:
+    - `capacity` tag is not present at all (`!capacity`)
+    - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
+    - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)
 
 ## Custom filters
 
