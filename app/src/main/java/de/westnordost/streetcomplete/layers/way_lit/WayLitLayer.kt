@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.layers.way_lit
 
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.layers.Color
 import de.westnordost.streetcomplete.layers.Layer
 import de.westnordost.streetcomplete.layers.LineStyle
 import de.westnordost.streetcomplete.layers.way_lit.LitStatus.*
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 
 class WayLitLayer : Layer {
 
@@ -23,7 +23,7 @@ class WayLitLayer : Layer {
 // TODO "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
 // TODO not show private things if unspecified -> simply modify colors -> needs standard colors
 
-val LitStatus.lineStyle: LineStyle get() = when(this) {
+val LitStatus.lineStyle: LineStyle get() = when (this) {
     YES -> LineStyle("#ccff33")
     NIGHT_AND_DAY -> LineStyle("#33ff33")
     AUTOMATIC -> LineStyle("#ccff33")
@@ -33,7 +33,7 @@ val LitStatus.lineStyle: LineStyle get() = when(this) {
 }
 
 /** Returns the lit status as an enum */
-fun createLit(element: Element): LitStatus = when(element.tags["lit"]) {
+fun createLit(element: Element): LitStatus = when (element.tags["lit"]) {
     "yes", "lit", "sunset-sunrise", "dusk-dawn" -> YES
     "no", "unlit" -> NO
     "automatic" -> AUTOMATIC
