@@ -163,8 +163,6 @@ At this point prepared template can be modified to achieve the intended effect.
 
 See for example [simple yes/no quest asking whether AED is indoor or outdoor](app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
-TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt) would be better? And extend documentation there?
-
 ## Element selection
 
 `elementFilter` property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
