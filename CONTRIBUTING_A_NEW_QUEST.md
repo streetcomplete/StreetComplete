@@ -107,6 +107,10 @@ Search for this identifier in `*.kt` files, it should appear in the quest file (
 
 This method can often be used to locate relevant code.
 
+### Other people
+
+The issue proposing a quest may also contain hint which quests are similar. If you are unsure what would be a good base - you can ask in issue discussion to confirm what you found or ask for help in finding a good base for a given issue.
+
 ## Pull Requests
 
 One of the better ways to get around a codebase that is new to you is to look at recent accepted proposals to change the code (pull requests).
