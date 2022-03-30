@@ -512,3 +512,9 @@ Some quests should be disabled by default, for example ones that may require goi
 - on attempting to enable it user will get message asking are they sure. Exact message in this case would be `default_disabled_msg_go_inside` - but some quests use more specific ones.
 
 Note that quest may be both disabled by default and limited to some countries.
+
+## `isDeleteElementEnabled`
+
+This will decode whether user should have access to direct deletion of elements. Note that ways and relations cannot be deleted by SC users.
+
+For nodes within ways, node will remain and tags will be removed.
