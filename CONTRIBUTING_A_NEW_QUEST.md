@@ -353,6 +353,8 @@ See [also other optional properties](app/src/main/java/de/westnordost/streetcomp
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/1d648e56562d16a5dc3588ca7de8558f97d5919a) in the example repository.
 
+Note that for this quest one extra property present in the original quest used as a template [was removed](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8)
+
 # Adding quest icon
 <!-- note that this section name is linked from section discussing val icon, in case of changing section name change also that link -->
 It is OK to submit a quest without own icon, using any icon as a placeholder.
