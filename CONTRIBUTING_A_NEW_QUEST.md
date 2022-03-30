@@ -137,15 +137,13 @@ This is commit XXXXXXXXXXXXXXXXXXX TODO XXXXXXXXXXXXXXXXX in the demonstration r
 
 # Adjust the copy
 
-TODO: rename using refactor?
-TODO: rename using file rename?
-TODO: check for side efects
-
 After the quest is copied it is necessary to adjust it a bit so it is not a duplicate anymore.
 
 Change its class name and the file name to the new one.
 
 In copied code change package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
+
+When commiting changes be careful to not change already existing quest - only new code (using built-in refactoring rename will affect also `QuestsModule.kt` entry for an existing quest).
 
 # Add the quest to the list of active ones
 
