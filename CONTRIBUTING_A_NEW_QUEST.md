@@ -13,7 +13,6 @@ But this materials may help or be quicker than trying to fully explore on your o
 # Required
 
 - programming ability - it is not a good task for someone who has never programmed anything.
-  - Setup of environment takes a long time
   - Editing even the simplest quest requires edits to at least three different files
   - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed. If you are unfamiliar with Kotlin reading about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful.
   - It is expected that someone trying this can search for a solution to a typical problem on encountering an error message
