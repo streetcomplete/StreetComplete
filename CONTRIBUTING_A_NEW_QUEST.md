@@ -166,12 +166,12 @@ TODO: maybe linking [app/src/main/java/de/westnordost/streetcomplete/data/osm/os
 `elementFilter` property defines nodes, ways and relations which will be selected for a given quest. It is an element selection used by OsmFilterQuestType.
 
 ```kotlin
-"""
-    nodes with
-     emergency = defibrillator
-     and access !~ private|no
-     and !indoor
-"""
+    override val elementFilter = """
+        nodes with
+         emergency = defibrillator
+         and access !~ private|no
+         and !indoor
+    """
 ```
 
 This query will be limited to object which fulfill some requirements.
