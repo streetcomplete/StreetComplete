@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -17,7 +18,6 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
@@ -133,12 +133,10 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         // must be after initKeyboardButton because it re-sets the onFocusListener
         showHouseNumberHint()
 
-        val onChanged = TextChangedWatcher { checkIsFormComplete() }
-        houseNumberInput?.addTextChangedListener(onChanged)
-        houseNameInput?.addTextChangedListener(onChanged)
-        conscriptionNumberInput?.addTextChangedListener(onChanged)
-        streetNumberInput?.addTextChangedListener(onChanged)
-        blockNumberInput?.addTextChangedListener(onChanged)
+        listOfNotNull(
+            houseNumberInput, houseNameInput, conscriptionNumberInput,
+            streetNumberInput, blockNumberInput
+        ).forEach { it.doAfterTextChanged { checkIsFormComplete() } }
 
         checkIsFormComplete()
     }
@@ -160,11 +158,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         houseNumberInputTextColors = input.textColors
         input.setTextColor(input.hintTextColors)
         input.setText(prev)
-        input.addTextChangedListener(TextChangedWatcher {
+        input.doAfterTextChanged {
             val colors = houseNumberInputTextColors
             if (colors != null) input.setTextColor(colors)
             houseNumberInputTextColors = null
-        })
+        }
         input.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             updateKeyboardButtonVisibility()
             if (hasFocus) input.showKeyboard()

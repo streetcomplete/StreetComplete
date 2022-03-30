@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.level
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -19,7 +20,6 @@ import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.view.TextChangedWatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,7 +45,7 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.levelInput.addTextChangedListener(TextChangedWatcher { onSelectedLevel() })
+        binding.levelInput.doAfterTextChanged { onSelectedLevel() }
 
         viewLifecycleScope.launch { initializeButtons() }
     }

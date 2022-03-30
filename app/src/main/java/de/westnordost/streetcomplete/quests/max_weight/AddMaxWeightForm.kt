@@ -8,6 +8,7 @@ import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import de.westnordost.streetcomplete.view.TextChangedWatcher
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
@@ -66,7 +66,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun initMaxWeightInput() {
         val maxWeightInput = maxWeightInput ?: return
 
-        maxWeightInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        maxWeightInput.doAfterTextChanged { checkIsFormComplete() }
         maxWeightInput.filters = arrayOf(acceptDecimalDigits(6, 2))
         binding.inputSignContainer.setOnClickListener { focusMaxWeightInput() }
 
