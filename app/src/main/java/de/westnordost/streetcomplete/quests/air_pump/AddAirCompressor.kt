@@ -27,7 +27,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_air_pump_compressor_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with compressed_air or amenity = compressed_air or service:bicycle:pump")
+        getMapData().filter("nodes, ways with compressed_air or amenity = compressed_air or service:bicycle:pump")
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
