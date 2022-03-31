@@ -19,6 +19,9 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
          and !compressed_air
          and !service:bicycle:pump
     """
+    /* if service:bicycle:pump is undefined, nothing has been said about its existence;
+     * see https://wiki.openstreetmap.org/wiki/Tag:shop=bicycle#Additional_keys */
+
     override val changesetComment = "Add whether air compressor is available"
     override val wikiLink = "Key:compressed_air"
     override val icon = R.drawable.ic_quest_air_pump
