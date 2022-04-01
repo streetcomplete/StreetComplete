@@ -234,7 +234,6 @@ class AddLocalizedNameAdapter(
         private val buttonDelete: View = itemView.findViewById(R.id.deleteButton)
         private val buttonNameSuggestions: View = itemView.findViewById(R.id.nameSuggestionsButton)
 
-
         private val autoCorrectAbbreviations = AutoCorrectAbbreviationsViewController(input)
 
         init {
