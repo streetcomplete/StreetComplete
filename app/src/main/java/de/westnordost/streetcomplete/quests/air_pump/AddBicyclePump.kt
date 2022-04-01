@@ -20,6 +20,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
             !compressed_air and !service:bicycle:pump
             or service:bicycle:pump older today -6 years
         )
+        and access !~ private|no
     """
     override val changesetComment = "Add whether bicycle pump is available"
     override val wikiLink = "Key:service:bicycle:pump"
