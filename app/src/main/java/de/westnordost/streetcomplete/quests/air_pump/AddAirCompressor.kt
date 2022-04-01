@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddAirCompressor : OsmFilterQuestType<Boolean>() {
 
