@@ -40,6 +40,7 @@
                 android:minHeight="68dp"
                 android:textSize="@dimen/large_input"
                 android:textColorHint="#2fff"
+                android:padding="12dp"
                 android:imeOptions="actionNext"
                 tools:text="1234"
                 android:digits="0123456789.,- /"
@@ -70,6 +71,7 @@
                 android:textSize="@dimen/large_input"
                 android:imeOptions="actionDone"
                 android:textColorHint="#2fff"
+                android:padding="12dp"
                 tools:text="12"
                 android:digits="0123456789.,- /"
                 style="@style/HousenumberEditText" />
