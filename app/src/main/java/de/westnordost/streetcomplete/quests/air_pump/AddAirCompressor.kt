@@ -16,8 +16,10 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
          amenity = fuel
-         and !compressed_air
-         and !service:bicycle:pump
+         and (
+             !compressed_air and !service:bicycle:pump
+             or compressed_air older today -6 years
+         )
     """
     /* if service:bicycle:pump is undefined, nothing has been said about its existence;
      * see https://wiki.openstreetmap.org/wiki/Tag:shop=bicycle#Additional_keys */
@@ -40,6 +42,6 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags["compressed_air"] = answer.toYesNo()
+        tags.updateWithCheckDate("compressed_air", answer.toYesNo())
     }
 }

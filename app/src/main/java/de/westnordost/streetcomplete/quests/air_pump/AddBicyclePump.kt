@@ -14,9 +14,11 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-         amenity = bicycle_repair_station or shop = bicycle
-         and !compressed_air
-         and !service:bicycle:pump
+        amenity = bicycle_repair_station or shop = bicycle
+        and (
+            !compressed_air and !service:bicycle:pump
+            or service:bicycle:pump older today -6 years
+        )
     """
     override val changesetComment = "Add whether bicycle pump is available"
     override val wikiLink = "Key:service:bicycle:pump"
@@ -36,6 +38,6 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags["service:bicycle:pump"] = answer.toYesNo()
+        tags.updateWithCheckDate("service:bicycle:pump", answer.toYesNo())
     }
 }
