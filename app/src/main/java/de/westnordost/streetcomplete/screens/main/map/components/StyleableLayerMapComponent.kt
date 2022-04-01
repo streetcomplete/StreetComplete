@@ -3,15 +3,15 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.layers.AreaStyle
-import de.westnordost.streetcomplete.layers.LineStyle
 import de.westnordost.streetcomplete.layers.PointStyle
+import de.westnordost.streetcomplete.layers.PolygonStyle
+import de.westnordost.streetcomplete.layers.PolylineStyle
 import de.westnordost.streetcomplete.layers.Style
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
 
 /** Takes care of displaying styled map data */
-class StyleableMapDataLayerComponent(ctrl: KtMapController) {
+class StyleableLayerMapComponent(ctrl: KtMapController) {
 
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 
@@ -27,16 +27,17 @@ class StyleableMapDataLayerComponent(ctrl: KtMapController) {
             props["element_id"] = feature.element.id.toString()
             props["element_type"] = feature.element.type.name
             when (feature.style) {
-                is AreaStyle -> {
+                is PolygonStyle -> {
                     getHeight(feature.element.tags)?.let { props["height"] = it.toString() }
                     props["color"] = feature.style.color
                     props["strokeColor"] = feature.style.strokeColor ?: feature.style.color
                     feature.style.label?.let { props["text"] = it }
                 }
-                is LineStyle -> {
+                is PolylineStyle -> {
                     props["width"] = getLineWidth(feature.element.tags).toString()
-                    props["color"] = feature.style.color
-                    feature.style.side?.let { props["side"] = it.name.lowercase() }
+                    feature.style.stroke?.color?.let { props["color"] = it }
+                    feature.style.strokeLeft?.color?.let { props["colorLeft"] = it }
+                    feature.style.strokeRight?.color?.let { props["colorRight"] = it }
                     feature.style.label?.let { props["text"] = it }
                 }
                 is PointStyle -> {

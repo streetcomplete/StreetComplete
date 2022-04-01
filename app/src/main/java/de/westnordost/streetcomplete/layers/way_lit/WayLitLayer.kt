@@ -4,7 +4,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.layers.Color
 import de.westnordost.streetcomplete.layers.Layer
-import de.westnordost.streetcomplete.layers.LineStyle
+import de.westnordost.streetcomplete.layers.PolylineStyle
+import de.westnordost.streetcomplete.layers.StrokeStyle
 import de.westnordost.streetcomplete.layers.way_lit.LitStatus.*
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -17,31 +18,18 @@ class WayLitLayer : Layer {
 
     override fun isDisplayed(element: Element) = filter.matches(element)
 
-    override fun getStyle(element: Element) = createLit(element).lineStyle
+    override fun getStyle(element: Element) =
+        PolylineStyle(StrokeStyle(createLitStatus(element).color))
 }
 
-// TODO "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
-// TODO not show private things if unspecified -> simply modify colors -> needs standard colors
+// TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
+// TODO LAYERS not show private things if unspecified -> simply modify colors -> needs standard colors
 
-val LitStatus.lineStyle: LineStyle get() = when (this) {
-    YES -> LineStyle("#ccff33")
-    NIGHT_AND_DAY -> LineStyle("#33ff33")
-    AUTOMATIC -> LineStyle("#ccff33")
-    NO -> LineStyle("#111111")
-    UNSPECIFIED -> LineStyle(Color.UNSPECIFIED)
-    UNSUPPORTED -> LineStyle(Color.UNSUPPORTED)
-}
-
-/** Returns the lit status as an enum */
-fun createLit(element: Element): LitStatus = when (element.tags["lit"]) {
-    "yes", "lit", "sunset-sunrise", "dusk-dawn" -> YES
-    "no", "unlit" -> NO
-    "automatic" -> AUTOMATIC
-    "24/7" -> NIGHT_AND_DAY
-    null -> when {
-        element.tags["indoor"] == "yes" -> YES
-        else -> UNSPECIFIED
-    }
-    // above tags cover 99.8% of tagged values (2022-02)
-    else -> UNSUPPORTED
+private val LitStatus.color: String get() = when (this) {
+    YES ->           "#ccff33"
+    NIGHT_AND_DAY -> "#33ff33"
+    AUTOMATIC ->     "#ccff33"
+    NO ->            "#111111"
+    UNSPECIFIED ->   Color.UNSPECIFIED
+    UNSUPPORTED ->   Color.UNSUPPORTED
 }

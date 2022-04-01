@@ -74,7 +74,8 @@ class EditHistoryPinsManager(
         viewLifecycleScope.launch {
             if (this@EditHistoryPinsManager.isActive) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
-                pinsMapComponent.set(createEditPins(edits))
+                val pins = createEditPins(edits)
+                pinsMapComponent.set(pins)
             }
         }
     }

@@ -40,7 +40,7 @@ class QuestPinsManager(
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
-    // last displayed rect of (zoom 14) tiles
+    // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
     // quests in current view: key -> [pin, ...]
     private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
@@ -103,6 +103,12 @@ class QuestPinsManager(
         onNewScreenPosition()
     }
 
+    private fun clear() {
+        synchronized(questsInView) { questsInView.clear() }
+        lastDisplayedRect = null
+        pinsMapComponent.clear()
+    }
+
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
         properties.toQuestKey()
 
@@ -116,11 +122,11 @@ class QuestPinsManager(
         if (tilesRect.size > 16) return
         if (lastDisplayedRect?.contains(tilesRect) != true) {
             lastDisplayedRect = tilesRect
-            updateQuestsInRect(tilesRect)
+            onNewTilesRect(tilesRect)
         }
     }
 
-    private fun updateQuestsInRect(tilesRect: TilesRect) {
+    private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
         viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
@@ -132,17 +138,9 @@ class QuestPinsManager(
         }
     }
 
-    private fun clear() {
-        synchronized(questsInView) { questsInView.clear() }
-        lastDisplayedRect = null
-        pinsMapComponent.clear()
-    }
-
     private fun updatePins() {
-        if (isActive) {
-            val pins = synchronized(questsInView) { questsInView.values.flatten() }
-            pinsMapComponent.set(pins)
-        }
+        val pins = synchronized(questsInView) { questsInView.values.flatten() }
+        pinsMapComponent.set(pins)
     }
 
     private fun initializeQuestTypeOrders() {

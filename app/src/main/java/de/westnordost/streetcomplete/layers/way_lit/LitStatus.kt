@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.layers.way_lit
 
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+
 enum class LitStatus {
     YES,
     NO,
@@ -7,4 +9,18 @@ enum class LitStatus {
     NIGHT_AND_DAY,
     UNSPECIFIED,
     UNSUPPORTED
+}
+
+/** Returns the lit status as an enum */
+fun createLitStatus(element: Element): LitStatus = when (element.tags["lit"]) {
+    "yes", "lit", "sunset-sunrise", "dusk-dawn" -> LitStatus.YES
+    "no", "unlit" -> LitStatus.NO
+    "automatic" -> LitStatus.AUTOMATIC
+    "24/7" -> LitStatus.NIGHT_AND_DAY
+    null -> when {
+        element.tags["indoor"] == "yes" -> LitStatus.YES
+        else -> LitStatus.UNSPECIFIED
+    }
+    // above tags cover 99.8% of tagged values (2022-02)
+    else -> LitStatus.UNSUPPORTED
 }
