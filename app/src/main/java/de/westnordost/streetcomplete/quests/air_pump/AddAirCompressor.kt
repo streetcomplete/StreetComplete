@@ -15,13 +15,13 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 class AddAirCompressor : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
-         amenity = fuel
-         and (
-             !compressed_air and !service:bicycle:pump
-             or compressed_air older today -6 years
-         )
-        and access !~ private|no
+       nodes, ways with
+       amenity = fuel
+       and (
+           !compressed_air and !service:bicycle:pump
+           or compressed_air older today -6 years
+       )
+       and access !~ private|no
     """
     /* if service:bicycle:pump is undefined, nothing has been said about its existence;
      * see https://wiki.openstreetmap.org/wiki/Tag:shop=bicycle#Additional_keys */
