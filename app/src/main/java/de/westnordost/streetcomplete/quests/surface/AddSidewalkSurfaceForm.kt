@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
+import de.westnordost.streetcomplete.quests.LastSelection
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.StreetSideItem
 import de.westnordost.streetcomplete.quests.StreetSideItem2
@@ -27,10 +28,6 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         }
 
     private val currentSidewalks get() = createSidewalkSides(osmElement!!.tags)
-
-    private var isDefiningBothSides: Boolean = false
-    private var isLeftSideNotDefined: Boolean = false
-    private var isRightSideNotDefined: Boolean = false
 
     override fun initStateFromTags() {
         val left = currentSidewalks?.left
@@ -75,7 +72,45 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         }
     }
 
-    override fun onClickOk(leftSide: SurfaceAnswer, rightSide: SurfaceAnswer) {
+    override fun onClickOk(leftSide: SurfaceAnswer?, rightSide: SurfaceAnswer?) {
         applyAnswer(SidewalkSurfaceAnswer(leftSide, rightSide))
+    }
+
+    override fun serializeAnswer(answer: LastSelection<SurfaceAnswer>): String {
+        return "${answer.left.value.value}#${answer.left.value.note}#${answer.right.value.value}#${answer.right.value.note}"
+    }
+
+    override fun deserializeAnswer(str: String): LastSelection<SurfaceAnswer> {
+        val arr = str.split('#')
+
+        val leftSurface = Surface.values().find { it.toString() == arr[0] }!!
+        val leftNote = if (arr[1] == "null") {
+            null
+        } else {
+            arr[1]
+        }
+        val leftStreetSideItem = StreetSideItem(
+            SurfaceAnswer(leftSurface, leftNote),
+            R.drawable.ic_sidewalk_illustration_yes,
+            leftSurface.asItem().titleId,
+            leftSurface.asItem().drawableId!!,
+            leftSurface.asItem().drawableId
+        )
+
+        val rightSurface = Surface.values().find { it.toString() == arr[2] }!!
+        val rightNote = if (arr[3] == "null") {
+            null
+        } else {
+            arr[3]
+        }
+        val rightStreetSideItem = StreetSideItem(
+            SurfaceAnswer(rightSurface, rightNote),
+            R.drawable.ic_sidewalk_illustration_yes,
+            rightSurface.asItem().titleId,
+            rightSurface.asItem().drawableId!!,
+            rightSurface.asItem().drawableId
+        )
+
+        return LastSelection(leftStreetSideItem, rightStreetSideItem)
     }
 }

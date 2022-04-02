@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
+import de.westnordost.streetcomplete.quests.LastSelection
 import de.westnordost.streetcomplete.quests.StreetSideItem
 
 class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
@@ -29,7 +30,19 @@ class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
         view.findViewById<TextView>(R.id.descriptionLabel).setText(R.string.quest_shoulder_explanation)
     }
 
-    override fun onClickOk(leftSide: Boolean, rightSide: Boolean) {
-        applyAnswer(ShoulderSides(leftSide, rightSide))
+    override fun onClickOk(leftSide: Boolean?, rightSide: Boolean?) {
+        applyAnswer(ShoulderSides(leftSide!!, rightSide!!))
+    }
+
+    override fun serializeAnswer(answer: LastSelection<Boolean>): String {
+        return "${answer.left.value}#${answer.right.value}"
+    }
+
+    override fun deserializeAnswer(str: String): LastSelection<Boolean> {
+        val arr = str.split('#')
+        return LastSelection(
+            items.find { it.value.toString() == arr[0] }!!,
+            items.find { it.value.toString() == arr[1] }!!
+        )
     }
 }

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
@@ -36,6 +35,10 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
 
     private var streetSideRotater: StreetSideRotater? = null
 
+    open var isDefiningBothSides: Boolean = false
+    open var isLeftSideNotDefined: Boolean = false
+    open var isRightSideNotDefined: Boolean = false
+
     private var left: StreetSideDisplayItem<I>? = null
     private var right: StreetSideDisplayItem<I>? = null
 
@@ -54,16 +57,8 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
         favs = LastPickedValuesStore(
             PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
             key = javaClass.simpleName,
-            serialize = { it.left.value.toString() + "#" + it.right.value.toString() },
-            deserialize = { str ->
-                val arr = str.split('#')
-                Log.i("StreetSideFragment", "Previous value ${arr[0]}")
-                Log.i("StreetSideFragment", "Previous value ${arr[1]}")
-                LastSelection(
-                    items.find { it.value.toString() == arr[0] }!!,
-                    items.find { it.value.toString() == arr[1] }!!
-                )
-            }
+            serialize = { serializeAnswer(it) },
+            deserialize = { str -> deserializeAnswer(str) },
         )
     }
 
@@ -185,14 +180,12 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
 
     private fun updateLastAnswerButtonVisibility() {
         binding.lastAnswerButton.root.isGone =
-            lastSelection == null || left != null || right != null
+            lastSelection == null || !isDefiningBothSides || isLeftSideNotDefined || isRightSideNotDefined
     }
 
     private fun saveLastSelection() {
         val left = left
         val right = right
-        Log.i("StreetSideFragment", "Left: ${left?.value.toString()}")
-        Log.i("StreetSideFragment", "Right: ${right?.value.toString()}")
         if (left != null && right != null) {
             favs.add(
                 if (isRoadDisplayedUpsideDown())
@@ -217,16 +210,28 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
     private fun isRoadDisplayedUpsideDown(): Boolean =
         normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
 
+    abstract fun serializeAnswer(answer: LastSelection<I>): String
+
+    abstract fun deserializeAnswer(str: String): LastSelection<I>
+
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
-        onClickOk(left!!.value, right!!.value)
+        when {
+            isDefiningBothSides -> { onClickOk(left!!.value, right!!.value) }
+            isLeftSideNotDefined -> { onClickOk(null, right!!.value) }
+            isRightSideNotDefined -> { onClickOk(left!!.value, null) }
+            else -> { throw IllegalStateException("Clicking OK with both sides null") }
+        }
         saveLastSelection()
     }
 
-    abstract fun onClickOk(leftSide: I, rightSide: I)
+    abstract fun onClickOk(leftSide: I?, rightSide: I?)
 
-    override fun isFormComplete() = left != null && right != null
+    override fun isFormComplete() = (
+        if (isDefiningBothSides) left != null && right != null
+        else                     left != null || right != null
+    )
 
     override fun isRejectingClose() = left != null || right != null
 
@@ -238,7 +243,7 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
     }
 }
 
-private data class LastSelection<T>(
+data class LastSelection<T>(
     val left: StreetSideDisplayItem<T>,
     val right: StreetSideDisplayItem<T>
 )

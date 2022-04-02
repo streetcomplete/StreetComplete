@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.LastSelection
 
 class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
 
@@ -27,7 +28,19 @@ class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
         }
     }
 
-    override fun onClickOk(leftSide: Sidewalk, rightSide: Sidewalk) {
-        applyAnswer(SidewalkSides(leftSide, rightSide))
+    override fun onClickOk(leftSide: Sidewalk?, rightSide: Sidewalk?) {
+        applyAnswer(SidewalkSides(leftSide!!, rightSide!!))
+    }
+
+    override fun serializeAnswer(answer: LastSelection<Sidewalk>): String {
+        return "${answer.left.value}#${answer.right.value}"
+    }
+
+    override fun deserializeAnswer(str: String): LastSelection<Sidewalk> {
+        val arr = str.split('#')
+        return LastSelection(
+            items.find { it.value.toString() == arr[0] }!!,
+            items.find { it.value.toString() == arr[1] }!!
+        )
     }
 }
