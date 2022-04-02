@@ -4,7 +4,7 @@
 
      The strings are sorted into categories so to
      - avoid merge conflicts (people tend to append strings at the end of the file)
-     - better overview over the strings, better context for translators (strins are presented in
+     - better overview over the strings, better context for translators (strings are presented in
        POEditor in the same order as in this file)
      -->
 <resources xmlns:tools="http://schemas.android.com/tools">
