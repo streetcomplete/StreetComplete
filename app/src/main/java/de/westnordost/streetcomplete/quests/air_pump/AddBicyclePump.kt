@@ -38,9 +38,10 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
             nodes, ways with
-            compressed_air
-            or service:bicycle:pump
-            or amenity ~ compressed_air|fuel|bicycle_repair_station
+            compressed_air = yes
+            or service:bicycle:pump = yes
+            or amenity ~ compressed_air|bicycle_repair_station
+            or shop = bicycle
         """)
 
     override fun createForm() = YesNoQuestAnswerFragment()
