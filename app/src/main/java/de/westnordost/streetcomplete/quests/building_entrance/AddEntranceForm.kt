@@ -8,12 +8,13 @@ import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnsw
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SECONDARY
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SERVICE
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SHOP
+import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.GENERIC
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 class AddEntranceForm : AImageListQuestAnswerFragment<EntranceAnswer, EntranceAnswer>() {
 
     override val items: List<DisplayItem<EntranceAnswer>> = listOf(MAIN, SECONDARY, SERVICE,
-        GARAGE, EMERGENCY_EXIT, EXIT, SHOP, DeadEnd).toItems()
+        GARAGE, EMERGENCY_EXIT, EXIT, SHOP, GENERIC, DeadEnd).toItems()
 
     override val itemsPerRow = 3
 

@@ -14,5 +14,6 @@ fun EntranceAnswer.asItem(): Item<EntranceAnswer> = when (this) {
     EntranceExistsAnswer.GARAGE -> Item(this, R.drawable.ic_railway_crossing_chicane, R.string.quest_building_entrance_garage)
     EntranceExistsAnswer.EXIT -> Item(this, R.drawable.ic_railway_crossing_chicane, R.string.quest_building_entrance_exit)
     EntranceExistsAnswer.EMERGENCY_EXIT -> Item(this, R.drawable.ic_railway_crossing_chicane, R.string.quest_building_entrance_emergency_exit)
-    EntranceExistsAnswer.SHOP-> Item(this, R.drawable.ic_railway_crossing_chicane, R.string.quest_building_entrance_shop)
+    EntranceExistsAnswer.SHOP -> Item(this, R.drawable.ic_railway_crossing_chicane, R.string.quest_building_entrance_shop)
+    EntranceExistsAnswer.YES -> Item(this, R.drawable.ic_railway_crossing_chicane, R.string.quest_building_entrance_yes)
 }

@@ -1277,6 +1277,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_building_entrance_shop">Shop, not main entrance</string>
     <string name="quest_building_entrance_emergency_exit">Emergency exit</string>
     <string name="quest_building_entrace_title">What kind of building entrance is it?</string>
+    <string name="quest_building_entrance_yes">Unspecific entrance</string>
 
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
