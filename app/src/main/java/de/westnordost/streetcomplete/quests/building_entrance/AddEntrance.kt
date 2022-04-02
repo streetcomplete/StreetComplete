@@ -22,7 +22,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     // TODO - accept also roads?
     private val incomingWaysFilter by lazy { """
         ways with
-          highway ~ path|footway and area != yes
+          highway ~ path|footway and area != yes and access !~ private|no
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
