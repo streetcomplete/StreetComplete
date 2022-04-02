@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
-import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.isInMultipolygon
+import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddLevel : OsmElementQuestType<String> {
 
@@ -47,7 +47,7 @@ class AddLevel : OsmElementQuestType<String> {
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // get geometry of all malls in the area

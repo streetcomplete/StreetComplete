@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.util.isNearAndAligned
+import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
 class AddSidewalk : OsmElementQuestType<SidewalkSides> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """

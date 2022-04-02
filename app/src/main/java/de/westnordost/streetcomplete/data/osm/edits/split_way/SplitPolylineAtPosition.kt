@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.measuredLength
-import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
+import de.westnordost.streetcomplete.util.math.measuredLength
+import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
 import kotlinx.serialization.Serializable
 
 /** Contains information about at which position to split a way. */

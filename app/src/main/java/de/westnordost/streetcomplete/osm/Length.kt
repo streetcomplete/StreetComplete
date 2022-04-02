@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.streetcomplete.ktx.toShortString
+import de.westnordost.streetcomplete.util.ktx.toShortString
 
 sealed interface Length {
     fun toMeters(): Double

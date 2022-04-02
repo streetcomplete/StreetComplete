@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
-import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
 
@@ -30,16 +30,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val questTypeAchievements = listOf(BLIND)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        val isTram = tags["tram"] == "yes"
-        return when {
-            isTram && hasName ->    R.string.quest_tactilePaving_title_name_tram
-            isTram ->               R.string.quest_tactilePaving_title_tram
-            hasName ->              R.string.quest_tactilePaving_title_name_bus
-            else ->                 R.string.quest_tactilePaving_title_bus
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopTactilePaving_title
 
     override fun createForm() = TactilePavingForm()
 

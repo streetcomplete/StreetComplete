@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.ktx.toShortString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.parking_fee.Maxstay.Unit.DAYS
 import de.westnordost.streetcomplete.quests.parking_fee.Maxstay.Unit.HOURS
 import de.westnordost.streetcomplete.quests.parking_fee.Maxstay.Unit.MINUTES
+import de.westnordost.streetcomplete.util.ktx.toShortString
 
 sealed interface Maxstay {
     enum class Unit { MINUTES, HOURS, DAYS }

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.UP
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.UP_REVERSED
 import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.valueOf
-import de.westnordost.streetcomplete.util.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText

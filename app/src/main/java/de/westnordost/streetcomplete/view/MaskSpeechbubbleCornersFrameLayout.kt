@@ -6,7 +6,7 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import de.westnordost.streetcomplete.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 /** Mask the speech_bubble_none.9.png */
 class MaskSpeechbubbleCornersFrameLayout @JvmOverloads constructor(

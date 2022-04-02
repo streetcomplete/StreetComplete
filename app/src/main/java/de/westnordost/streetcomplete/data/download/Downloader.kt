@@ -4,12 +4,12 @@ import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
+import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
-import de.westnordost.streetcomplete.ktx.format
-import de.westnordost.streetcomplete.util.TilesRect
-import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.math.area
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex

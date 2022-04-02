@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.bike_parking_capacity
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBikeParkingCapacityBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
@@ -16,7 +16,7 @@ class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.capacityInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.capacityInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun isFormComplete() = capacity > 0

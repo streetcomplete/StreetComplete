@@ -6,7 +6,7 @@ about: Suggest a new question to ask the user
 
 <!-- 
 Please read the guidelines for new quest suggestions before posting one: 
-https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete
+https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md
 -->
 
 ### General
@@ -15,7 +15,7 @@ Question asked: **Is there an example tag on item XY?**
 
 <!-- If the answer is not obvious, please add a short explanation below each item. -->
 ### Checklist
-Checklist for quest suggestions (see [guidelines](https://github.com/streetcomplete/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete)):
+Checklist for quest suggestions (see [guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md)):
 - [ ] 🚧 To be added tag is established and has a useful purpose
 - [ ] 🤔 Any answer the user can give must have an equivalent tagging (Quest should not reappear to other users when solved by one)
 - [ ] 🐿️ Easily answerable by everyone from the outside but a survey is necessary

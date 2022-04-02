@@ -2,8 +2,9 @@
 <resources>
     <string name="action_settings">"Configuració"</string>
     <string name="oauth_communication_error">"No es pot accedir al servidor d'autoritzacions"</string>
-    <string name="retry">"Reintenta"</string>
     <string name="oauth_failed_permissions">"L'autorització ha fallat: cal concedir tots els permisos llistats"</string>
+
+    <!-- Settings screen -->
     <string name="pref_category_communication">"Comunicació"</string>
     <string name="pref_category_display">"Mostra"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -24,12 +25,13 @@
     <string name="quest_leave_new_note_description">"Podeu deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre o alternativament amaga la missió només per a tu"</string>
     <string name="quest_leave_new_note_yes">"D'acord"</string>
     <string name="quest_leave_new_note_no">"No, només amaga-la"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_title">"Quin nom té aquesta via?"</string>
     <string name="quest_streetName_description">"com està escrita en el senyal del carrer, les abreviatures s'amplien:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"De vegades, el senyal només es troba en un extrem del carrer. També, tingueu present que potser no hi ha senyals addicionals per a costats de carrer que pertanyen a altres carrers més grans. Habitualment, qualsevol carrer amb cases té un nom."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si el nom es pot escriure sense cap abreviatures, aleshores s'hauria d'expandir. Moltes abreviatures comunes s'expandeixen automàticament mentre escriviu, però potser no totes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sense abreviatures"</string>
-    <string name="quest_openingHours_name_title">"Quin és l'horari d'obertura de %s?"</string>
     <string name="quest_openingHours_start_time">"hora d'obertura"</string>
     <string name="quest_openingHours_end_time">"hora de tancament"</string>
     <string name="quest_openingHours_add_months">"Afegeix mesos"</string>
@@ -45,6 +47,8 @@
     <string name="confirmation_discard_positive">"Descarta"</string>
     <string name="action_download">"Cerca missions aquí"</string>
     <string name="action_upload">"Puja respostes"</string>
+
+    <!-- when the user left the answer form empty -->
     <string name="no_changes">"No heu indicat cap resposta"</string>
     <string name="close">"tanca"</string>
     <string name="download_error">"S'ha produït un error en cercar missions"</string>
@@ -63,6 +67,8 @@
     <string name="about_title_feedback">"Feu un comentari"</string>
     <string name="about_title_license">"Llicència"</string>
     <string name="about_summary_license">"Llicència pública general GNU"</string>
+
+    <!-- Error messages and crash report -->
     <string name="offline">"Sou fora de línia"</string>
     <string name="confirmation_authorize_now">"Cal que doneu autorització amb el vostre compte d'usuari OSM per a poder publicar qualsevol de les respostes. Voleu autoritzar-lo ara?"</string>
     <string name="not_authorized">"Sense autoritzar"</string>
@@ -82,11 +88,17 @@
     <string name="quest_openingHours_comment_title">"Descriu l'horari d'obertura"</string>
     <string name="quest_openingHours_comment_description">"Sigues concís, idealment usa el mateix redactat del cartell. P. e. «amb cita prèvia». L'absència de cartell no implica necessàriament que no hi hagi horari d'obertura habitual."</string>
     <string name="quest_roofShape_title">"Quina forma bàsica té la teulada d'aquest edifici?"</string>
+
+    <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Selecciona'n una:"</string>
+
+    <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Mostra'n més…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Té diferents formes"</string>
+
+    <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"Allunya't"</string>
     <string name="map_btn_zoom_in">"Apropa't"</string>
 
@@ -132,8 +144,9 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_surface_value_wood">"Fusta"</string>
     <string name="quest_sidewalk_title">"Aquest carrer té vorera?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
-    <string name="quest_serviceType_title">"Quin tipus de via de servei és?"</string>
     <string name="quest_oneway_title">"És una via de sentit únic?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_title">"Quin número de portal té aquest edifici?"</string>
     <string name="store_listing_short_description">"Aplicació de cartògraf de camp per a l'OpenStreetMap"</string>
     <string name="store_listing_full_description">"Ajudeu a millorar l'OpenStreetMap amb StreetComplete!
@@ -152,9 +165,10 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="pref_title_keep_screen_on">"Conserva la pantalla activa"</string>
     <string name="download_server_error">"S'ha produït un error de connexió en escanejar missions. Torneu-ho a intentar."</string>
     <string name="upload_server_error">"S'ha produït un error en pujar les respostes. Torneu-ho a intentar."</string>
+
+    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Sí"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
-    <string name="quest_busStopShelter_title">"Aquesta parada té marquesina?"</string>
     <string name="quest_bikeParkingCapacity_title">"Quantes bicis es poden aparcar aquí?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Aquest número de carrer sembla estrany."</string>
     <string name="quest_sport_title">"Per a quin esport és aquest camp o pista?"</string>
@@ -185,27 +199,21 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="quest_sport_ice_hockey">"Hoquei gel"</string>
     <string name="quest_sport_netball">"Netbol"</string>
     <string name="quest_sport_rugby">"Rugbi"</string>
+
+    <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_select_hint">"Trieu:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Aquest camp de joc està dissenyat específicament per a aquests esports (hi ha presents les línies de joc i equipaments) o té un ús general per a qualsevol tipus de joc?"</string>
     <string name="quest_manySports_confirmation_specific">"Per a aquests en concret"</string>
     <string name="quest_manySports_confirmation_generic">"Ús general"</string>
     <string name="quest_sport_manySports_confirmation_title">"Heu seleccionat molts esports"</string>
-    <string name="quest_busStopShelter_name_title">"La parada de bus %s té marquesina?"</string>
     <string name="quest_toiletsFee_title">"Cal pagar per l'ús dels serveis?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_bus">"Aquesta parada d'autobús té paviment tàctil?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Aquest pas de vianants té paviment tàctil en els dos costats?"</string>
     <string name="quest_source_dialog_title">"Esteu segur que heu comprovat això presencialment?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"La parada d'autobús %s té paviment tàctil?"</string>
     <string name="quest_source_dialog_note">"Només hauríeu d'entrar la informació recollida en expedició de camp"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Aquest pàrquing de bicis és cobert (protegit de la pluja)?"</string>
     <string name="dialog_session_dont_show_again">"No ho mostris més durant aquesta sessió"</string>
-    <string name="quest_streetSurface_name_title">"Quin tipus de superfície té la carretera %s aquí?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Aquest límit no sembla versemblant."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Esteu segur que no hi ha indicat cap límit?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
@@ -221,18 +229,9 @@ Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'ap
     <string name="quest_sport_paddle_tennis">"Pàdel"</string>
     <string name="quest_sport_gaelic_games">"Jocs gaèlics"</string>
     <string name="quest_sport_sepak_takraw">"Voleibol de puntada de peu"</string>
-    <string name="quest_wheelchairAccess_name_title">"Es pot accedir a %s amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_limited">"Parcialment"</string>
     <string name="quest_bikeParkingCapacity_hint">"Tingueu en compte que la majoria dels aparcaments normals es poden utilitzar des dels dos costats per aparcar una bicicleta per banda."</string>
     <string name="quest_sport_roller_skating">"Patinatge sobre rodes"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Aquesta estació de bus és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Es pot accedir en cadira de rodes a aquesta entrada de metro?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"Es pot accedir en cadira de rodes a aquesta estació de tren?"</string>
-    <string name="quest_wheelchairAccess_location_title">"Es pot accedir en cadira de rodes a aquesta ubicació?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"L'estació de bus %s és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrada de metro %s és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"L'estació de tren %s és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"La ubicació %s és accessible amb cadira de rodes?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialment significa que no hi ha més d'un esglaó per accedir al negoci i que la major part d'estances interiors són accessibles amb cadira de rodes."</string>
@@ -240,15 +239,10 @@ Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'ap
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialment significa que no hi ha més d'un esglaó per accedir-hi."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura amb el nom %s?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Aquest vàter té un canviador per a nens?"</string>
-    <string name="quest_baby_changing_table_title">"%s té canviador per a nens?"</string>
     <string name="quest_recycling_type_title">"Quin tipus d’instal·lació de reciclatge és aquesta?"</string>
     <string name="recycling_centre">"Centre"</string>
     <string name="overground_recycling_container">"Contenidor"</string>
     <string name="underground_recycling_container">"Contenidor soterrat"</string>
-    <string name="quest_generic_error_a_field_empty">"Heu deixat un camp en blanc"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"No es poden escriure els caràcters del senyal"</string>
     <string name="quest_streetName_cantType_title">"Hi falta la configuració del teclat?"</string>
     <string name="quest_streetName_cantType_open_settings">"Obre la configuració"</string>
@@ -265,10 +259,16 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="credits_contributors">"Vegeu la &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;llista completa de contribuïdors a GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduccions"</string>
     <string name="credits_contributors_title">"Contribuïdors al codi"</string>
+
+    <!-- Credits screen -->
     <string name="credits_author_title">"Autor i mantenidor"</string>
+
+    <!-- As in "Person A, Person B, Person C and more..." -->
     <string name="credits_and_more">"i més..."</string>
     <string name="quest_maxspeed_answer_living_street">"És una via residencial"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Per tant, hi ha un senyal com aquest?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Què hi cultiven, aquí?"</string>
     <string name="produce_grapes">"Raïm"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -318,9 +318,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="produce_vanilla">"Vainilla"</string>
     <string name="produce_walnuts">"Nous"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Està il·luminat aquest tram de via?"</string>
-    <string name="quest_way_lit_named_title">"La via %s té il·luminació aquí?"</string>
-    <string name="quest_way_lit_road_title">"Està il·luminat aquest tram de carretera?"</string>
     <string name="quest_way_lit_automatic">"Utilitza detector de moviment"</string>
     <string name="quest_way_lit_24_7">"Està il·luminat de nit i de dia"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"No pot escanejar aquí. Proveu d'ampliar més o d'inclinar menys el mapa."</string>
@@ -339,8 +336,8 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_parkingType_surface">"Aparcament en superfície"</string>
     <string name="quest_parkingType_underground">"Aparcament subterrani"</string>
     <string name="quest_parkingType_multiStorage">"Aparcament en un garatge"</string>
-    <string name="quest_toiletAvailability_name_title">"%s té un lavabo?"</string>
 
+    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Quin és el material d'aquest pal elèctric?"</string>
     <string name="quest_powerPolesMaterial_wood">"Fusta"</string>
@@ -372,8 +369,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="action_reset">"Restableix"</string>
     <string name="undo_confirm_positive">"Desfés"</string>
     <string name="undo_confirm_negative">"Cancel·la"</string>
-    <string name="quest_dietType_vegetarian_name_title">"%s té plats vegetarians a la carta?"</string>
-    <string name="quest_dietType_vegan_name_title">"%s té plats vegans a la carta?"</string>
     <string name="quest_hasFeature_only">"Únicament"</string>
     <string name="quest_dietType_explanation_vegan">"Els plats vegans no contenen cap producte animal (carn, peix, làctics, ous, mel…)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Els plats vegetarians no contenen ni carn ni peix."</string>
@@ -385,6 +380,8 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="enable_quest_confirmation_title">"Voleu habilitar aquest tipus de missions?"</string>
     <string name="default_disabled_msg_go_inside">"Aquest tipus de missions està desactivat de manera predeterminada, ja que probablement haureu d'entrar dins del lloc per poder respondre una pregunta d'aquest tipus."</string>
     <string name="quest_housenumber_conscription_number">"Número de circumscripció"</string>
+
+    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">"Número d'orientació (opcional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"També hi ha carril bici a l'altre costat…"</string>
     <string name="quest_openingHours_emptyAnswer">"Cal que descriviu què hi ha al cartell. Si no hi ha cap cartell, hauríeu de demanar l'horari d'obertura en l'interior."</string>
@@ -393,24 +390,23 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_streetName_answer_noProperStreet_service2">"És una mena de via d'entrada o d'aparcament"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"És una via per a ús agrícola o forestal"</string>
     <string name="quest_streetName_answer_noName_noname">"Cap de les anteriors, simplement, no té nom"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Aquest lavabo és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"El lavabo %s és accessibles amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Pot ser que un senyal de cadira de rodes com aquest sigui visible si el lavabo és accessible.
 Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos, però no hi ha barana o un rentamans adaptat."</string>
     <string name="map_btn_create_note">"Crea una nota nova"</string>
     <string name="create_new_note_unprecise">"Apropeu-vos més per a crear una nota"</string>
     <string name="create_new_note_description">"Podeu deixar una nota per fer saber als altres contribuïdors que aquí hi ha un problema. Ajusteu la posició de la nota movent el mapa:"</string>
+
+    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <string name="quest_generic_looks_like_this">"Habitualment s'assembla a això:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Hi ha cap carril bici aquí? De quin tipus?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"Quin estructura té aquest pont?"</string>
-    <string name="quest_internet_access_name_title">"Quin tipus de connexió a Internet ofereix %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Cable (LAN)"</string>
     <string name="quest_internet_access_terminal">"Ordinador amb accés a Internet"</string>
     <string name="quest_internet_access_no">"Sense connexió"</string>
-    <string name="quest_busStopShelter_tram_name_title">"La parada de tramvia %s té marquesina?"</string>
-    <string name="quest_busStopShelter_tram_title">"Aquesta parada de tramvia té marquesina?"</string>
     <string name="quest_bench_backrest_title">"Aquest banc té respatller?"</string>
     <string name="quest_bench_answer_picnic_table">"És una taula de pícnic"</string>
     <string name="quest_religion_for_place_of_worship_title">"Quina religió es practica en aquest lloc?"</string>
@@ -431,16 +427,9 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_parking_fee_title">"Cal pagar per aparcar aquí?"</string>
     <string name="quest_cycleway_value_lane_soft">"carril bici (línies discontínues)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Empedrat irregular"</string>
-    <string name="quest_streetName_pedestrian_title">"Quin és el nom d'aquest carrer de vianants?"</string>
     <string name="quest_streetSurface_square_title">"Quin tipus de superfície té aquesta plaça?"</string>
-    <string name="quest_streetSurface_square_name_title">"Quin tipus de superfície té la plaça %s aquí?"</string>
     <string name="quest_fee_answer_hours">"Depèn de l'hora i el dia…"</string>
     <string name="quest_fee_add_times">"Afegeix-hi horari"</string>
-    <string name="quest_fee_only_at_hours">"Sí, però només..."</string>
-    <string name="quest_fee_not_at_hours">"Sí, però no..."</string>
-    <string name="quest_fee_hours_title">"en l'horari següent:"</string>
-    <string name="quest_busStopName_title">"Quin nom té aquesta parada de bus?"</string>
-    <string name="quest_tramStopName_title">"Quin nom té aquesta parada de tramvia?"</string>
     <string name="quest_housenumber_multiple_numbers">"Té diversos números de portal"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Podeu introduir els números de portal separats per comes o rangs.\nPer exemple 1,3 o 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Estand (aguanta el quadre de la bici)"</string>
@@ -461,11 +450,9 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_construction_generic_title">"Aquesta via està finalitzada?"</string>
     <string name="quest_construction_building_title">"Aquest edifici està finalitzat?"</string>
     <string name="questList_disabled_in_country">"Mai es mostra a %s"</string>
-    <string name="quest_toiletAvailability_rest_area_title">"Aquesta àrea de descans té lavabo?"</string>
-    <string name="quest_pathSurface_title_steps">"Quina superfície tenen aquests graons aquí?"</string>
-    <string name="quest_pathSurface_title_bridleway">"Quina superfície té aquesta via eqüestre aquí?"</string>
-    <string name="quest_pathSurface_title">"Quina superfície té aquest camí aquí?"</string>
     <string name="quest_select_hint_most_specific">"Indiqueu-ne el més específic que hi encaixi:"</string>
+
+    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">"Esteu segur que no podeu determinar-ho de forma més concreta?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Per a algunes missions, es baixen dades addicionals de tercers. En concret, les missions de «sentit únic» consulten una API, també allotjada a westnordost.de, sobre possibles candidats per a sentit únic. &lt;/ P&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (deixeu una nota)"</string>
@@ -541,6 +528,8 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_address_answer_no_housenumber">"No té número de casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L'edifici s'ha etiquetat com a:"</string>
     <string name="quest_buildingType_shrine">"Santuari"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"Quin és el límit de velocitat en aquest carrer?"</string>
     <string name="quest_maxspeed_answer_sign">"Un senyal"</string>
 
@@ -548,7 +537,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_maxspeed_answer_zone2">"És en una zona de velocitat reduïda"</string>
     <string name="quest_maxspeed_answer_noSign2">"No hi ha senyals, s'apliquen els valors per defecte"</string>
     <string name="quest_openingHours_no_sign">"No hi ha cartell amb horaris"</string>
-    <string name="quest_maxspeed_name_title2">"Quin és el límit de velocitat per a %s aquí?"</string>
     <string name="quest_buildingType_sports_centre">"Centre d'esports"</string>
     <string name="quest_buildingType_toilets">"Lavabos"</string>
     <string name="quest_maxspeed_sign_question">"Què defineix el límit de velocitat?"</string>
@@ -556,14 +544,17 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="dialog_tutorial_upload">"Per pujar els vostres canvis manualment, useu el botó a la barra d'eines que és així."</string>
     <string name="quest_segregated_separated">"Segregat l'un de l'altre"</string>
     <string name="quest_segregated_mixed">"Ciclistes i vianants ocupen el mateix espai"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Quin és el límit d'alçada aquí?"</string>
-    <string name="quest_maxheight_parking_entrance_title">"Quin és el límit d'alçada d'aquesta entrada a l'aparcament?"</string>
-    <string name="quest_maxheight_height_restrictor_title">"Quin és el límit d'alçada d'aquest restrictor?"</string>
-    <string name="quest_maxheight_tunnel_title">"Quin és el límit d'alçada d'aquest túnel?"</string>
     <string name="quest_maxheight_answer_noSign">"No hi ha senyal…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Hi ha espai suficient fins i tot per als tràilers més alts (4.5 metres / 15 peus) per passar-hi?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Aquesta alçada sembla increible. Estàs segur que és correcta?"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_closed2">"Tancat per %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Reobert per %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Ocult per %1$s, %2$s"</string>
@@ -571,11 +562,12 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="action_deselect_all">"Desselecciona-ho tot"</string>
     <string name="quest_buildingType_retail_description">"incloent-hi els edificis de restaurants, cafès, botigues grans..."</string>
     <string name="quest_openingHours_timeSelect_next">"Següent"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"Quina fermesa té la superfície d'aquesta pista?"</string>
     <string name="quest_tracktype_grade1">"Sòlida"</string>
     <string name="quest_tracktype_grade4">"Principalment tova"</string>
     <string name="quest_tracktype_grade5">"Tova"</string>
-    <string name="quest_building_underground_name_title">"%s és completament subterrani?"</string>
     <string name="quest_building_underground_title">"Aquest edifici és completament subterrani?"</string>
 
     <!-- Fuzzy -->
@@ -592,10 +584,12 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">"en el nivell %s:"</string>
+    <!-- Fuzzy -->
+    <string name="on_level">"en el nivell %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <string name="underground">"subterrani:"</string>
+    <!-- Fuzzy -->
+    <string name="underground">"subterrani"</string>
     <string name="quest_sidewalk_value_yes">"amb vorera"</string>
     <string name="quest_sidewalk_value_no">"sense vorera"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Els vianants tenen prohibit caminar per aquesta via en aquest punt?"</string>
@@ -608,18 +602,18 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="theme_light">"Clar"</string>
     <string name="theme_dark">"Fosc"</string>
     <string name="theme_system_default">"Predeterminat del sistema"</string>
-    <string name="quest_placeName_title_name">"Quin nom té aquest lloc? (%s)"</string>
     <string name="action_open_location">"Obre la ubicació en una altra aplicació"</string>
     <string name="map_application_missing">"No hi ha cap altra aplicació de mapes instal·lada"</string>
+
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"número de casa"</string>
     <string name="label_blocknumber">"número de bloc"</string>
     <string name="quest_busStopShelter_covered">"Cobreix tota la parada"</string>
-    <string name="quest_ferry_pedestrian_name_title">"%s transporta vianants?"</string>
     <string name="quest_ferry_pedestrian_title">"Aquesta ruta de ferri transporta vianants?"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"%s transporta vehicles a motor?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Aquest ferri transporta vehicles a motor?"</string>
+
+    <!-- Add note interface -->
     <string name="quest_leave_new_note_photos_are_useful">"Afegir una foto farà la nota molt més útil."</string>
-    <string name="quest_postboxCollectionTimes_name_title">"Quin és l'horari de recollida d'aquesta bústia %s?"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Millor que escriviu la nota en la llengua local o en anglès."</string>
@@ -638,23 +632,17 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Quina és la superfície del camí de vianants aquí?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"Aquesta parada de tramvia té paviment tàctil?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"La parada de tramvia %s té paviment tàctil?"</string>
     <string name="quest_maxweight_title">"Quin és el límit de pes aquí?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Aquest pes no sembla plausible. Segur que és correcte?"</string>
     <string name="quest_maxweight_answer_other_sign">"El senyal sembla diferent..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
-    <string name="quest_generalFee_title">"Cal pagar per a entrar a %s?"</string>
     <string name="quest_handrail_title">"Aquestes escales tenen barana?"</string>
-    <string name="quest_openingHours_no_name_title">"Quin és l'horari d'obertura d'aquest lloc? (%s)"</string>
     <string name="about_summary_current_version">"Versió actual: %s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxRef_title">"Quin és el número de referència d'aquesta bústia?"</string>
-    <string name="quest_postboxRef_name_title">"Quin és el número de referència d'aquesta bústia %s?"</string>
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible..."</string>
     <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat."</string>
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
@@ -685,12 +673,10 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="about_title_donate">"Feu un donatiu"</string>
     <string name="about_summary_donate">"Mostreu el vostre agraïment! ❤️"</string>
     <string name="about_description_donate">"Gràcies per considerar de donar suport a aquesta aplicació! Per a veure els donatius actuals i fer-ne un vós mateix, feu un toc a la plataforma corresponent:"</string>
-    <string name="quest_religion_for_place_of_worship_name_title">"Quina religió es practica a %s?"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Alternativament, escaneja aquí"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Continua amb l'escaneig actual"</string>
     <string name="quest_buildingType_garages_description">"Espais separats per a diferents propietaris o usuaris"</string>
     <string name="quest_tourism_information_title">"Quin tipus d'informació turística és?"</string>
-    <string name="quest_tourism_information_name_title">"Quin tipus d'informació turística és %s?"</string>
     <string name="quest_tourism_information_office">"Oficina d'informació turística"</string>
     <string name="quest_tourism_information_board">"Tauler informatiu"</string>
     <string name="quest_tourism_information_terminal">"Terminal informatiu"</string>
@@ -698,13 +684,14 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_tourism_information_guidepost">"Senyal d'indicació"</string>
     <string name="quest_recycling_materials_answer_waste">"És per a brossa en general"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Aleshores, aquest contenidor és per a qualsevol brossa, com ara residus domèstics o brossa comercial?"</string>
-    <string name="quest_accepts_cash_title">"%s accepta pagaments en metàl·lic?"</string>
     <string name="user_profile">"El meu perfil"</string>
     <string name="user_login">"Inicia sessió"</string>
     <string name="user_logout">"Tanca la sessió"</string>
     <string name="osm_profile">"Perfil OSM"</string>
     <string name="next">"Endavant"</string>
     <string name="letsgo">"Som-hi!"</string>
+
+    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Us donem la benvinguda a l'OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"el mapa mundial wiki"</string>
     <string name="tutorial_intro">"StreetComplete fa que sigui fàcil contribuir a OpenStreetMap. Cerca automàticament detalls que manquen a prop teu: carrils bici, números de carrer, hores d'obertura i molt més."</string>
@@ -718,15 +705,21 @@ Les pots resoldre tot seguit i més tard iniciar la sessió per a publicar els c
 Finalment, ves amb compte: para atenció al que t'envolta i no entris en propietats privades."</string>
     <string name="tutorial_happy_mapping">"Bon mapeig!"</string>
     <string name="achievements_empty">"Encara no tens cap assoliment"</string>
+
+    <!-- Links screen -->
     <string name="links_empty">"Encara no teniu cap enllaç"</string>
     <string name="quests_empty">"Encara no heu publicat cap resposta"</string>
     <string name="unsynced_quests_description">"i %d de canvis no publicats."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tens %d canvis no publicats. Has d'iniciar la sessió per a pujar-los."</string>
+
+    <!-- User screen -->
     <string name="user_quests_title">"Proves resoltes"</string>
     <string name="user_achievements_title">"Assoliments"</string>
     <string name="user_links_title">"Col·lecció d'enllaços"</string>
     <string name="user_profile_title">"Perfil"</string>
     <string name="user_statistics_quest_wiki_link">"Documentació"</string>
+
+    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"Enllaç desbloquejat:"</string>
     <string name="achievements_unlocked_links">"Enllaços desbloquejats:"</string>
     <string name="link_category_intro_title">"Introducció"</string>
@@ -801,8 +794,12 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
 
     <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Has resolt %d missions que milloren els detalls de les infraestructures viàries, posant els carrers a OpenStreetMap!"</string>
+
+    <!-- Notifications -->
     <string name="unread_messages_message">"Teniu %d missatges per llegir en la vostra bústia"</string>
     <string name="unread_messages_button">"Obre la bústia"</string>
+
+    <!-- Main menu -->
     <string name="action_about2">"Quant a"</string>
     <string name="map_btn_menu">"Menú"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Les dades que es mostren al vostre perfil s'agreguen des de l'historial de contribucions disponible al públic a OpenStreetMap i després s'allotjen al meu servidor.&lt;/p&gt;"</string>
@@ -810,6 +807,8 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="credits_art_contributors_title">"Contribuïdors artístics"</string>
     <string name="credits_projects_contributors_title">"Projectes fets per a StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contribuïdors principals"</string>
+
+    <!-- User statistics screen -->
     <string name="stats_are_syncing">"Les vostres estadístiques encara s'estan sincronitzant. Comproveu aquesta pantalla més tard."</string>
     <string name="user_statistics_country_rank">"Rang a %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapejant Portal %s"</string>
@@ -821,9 +820,6 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="user_profile_days_active">"Dies actiu"</string>
     <string name="user_profile_achievement_levels">"Nivells
 d'acompliment"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_title">"A quin carrer pertany el número %s (de la casa)?"</string>
     <string name="quest_address_street_no_named_streets">"No pertany a cap carrer que tingui nom"</string>
     <string name="quest_address_street_place_name_label">"Nom del lloc:"</string>
     <string name="quest_address_street_description">"Toqueu el camí al qual pertany al mapa o introduïu-lo sense abreviatures en el camp següent:"</string>
@@ -841,6 +837,8 @@ d'acompliment"</string>
     <string name="quest_board_type_nature">"Natura (diversos temes)"</string>
     <string name="quest_board_type_notice_board">"És un taulell d'anuncis"</string>
     <string name="quest_board_type_public_transport">"Transport públic"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_board_type_title">"Quin és el tema d'aquest plafó informatiu?"</string>
     <string name="quest_board_type_map">"És un mapa"</string>
     <string name="quest_board_type_map_title">"És un mapa i només un mapa?"</string>
@@ -852,33 +850,22 @@ d'acompliment"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Especifiqueu breument la naturalesa de la superfície aquí, per exemple, \"sorrenca amb pedaços de còdol\". La longitud del text està limitada a 255 caràcters."</string>
-    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
-    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Files de cases"</string>
-    <string name="at_housename">"Nom de la casa %s:"</string>
-    <string name="at_conscription_and_street_number">"Número de circumscripció %1$s, nombre d'orientació %2$s:"</string>
-    <string name="at_conscription_number">"número de circumscripció %s:"</string>
-    <string name="at_housenumber">"número de casa %s:"</string>
-    <string name="quest_openingHours_name_type_title">"Quin és l'horari d'obertura de %1$s (%2$s)?"</string>
-    <string name="quest_openingHours_resurvey_name_title">"Aquests horaris d'obertura de %s encara són correctes?"</string>
-    <string name="quest_openingHours_resurvey_name_type_title">"Aquests horaris d'obertura de %1$s (%2$s) encara són correctes?"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"Aquests horaris d'obertura encara són correctes (%s)?"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_housename">"Nom de la casa %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_housenumber">"número de casa %s"</string>
     <string name="quest_openingHours_add_off_days">"Afegeix els dies de descans"</string>
     <string name="quest_openingHours_off_day">"Dia de descans"</string>
     <string name="quest_openingHours_unspecified_range">"Sense especificar"</string>
     <string name="quest_cycleway_resurvey_title">"Aquesta és encara la situació del carril bici aquí?"</string>
-    <string name="quest_wheelchairAccess_name_type_title">"Es pot accedir a %1$s (%2$s) amb cadira de rodes?"</string>
     <string name="pref_title_resurvey_intervals">"Intervals de reenquesta"</string>
     <string name="resurvey_intervals_less_often">"Demana-ho menys sovint"</string>
     <string name="resurvey_intervals_default">"Per defecte"</string>
     <string name="resurvey_intervals_more_often">"Demana-ho més sovint"</string>
-    <string name="quest_accepts_cash_type_title">"%1$s (%2$s) accepta pagaments en metàl·lic?"</string>
-    <string name="quest_busStopBench_tram_name_title">"La parada de tramvia %s té un banc?"</string>
-    <string name="quest_busStopBench_tram_title">"Aquesta parada de tramvia té un banc?"</string>
-    <string name="quest_busStopBench_title">"Aquesta parada de bus té un banc?"</string>
-    <string name="quest_busStopBench_name_title">"La parada de bus %s té un banc?"</string>
-    <string name="quest_summit_register_title">"Hi ha un llibre de cim a %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Hi ha un desfibril·lador (DEA) dins l'edifici?"</string>
     <string name="about_title_translate">"Ajudeu a traduir aquesta aplicació"</string>
     <string name="about_description_translate">"%1$s està traduït al %2$d%%"</string>
@@ -894,8 +881,6 @@ d'acompliment"</string>
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Aquests semàfors tenen un indicador tàctil per persones cegues que indica quan es pot creuar?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Pista: sovint això és un botó vibrant o un con que rota sota la caixa del botó del semàfor."</string>
-    <string name="quest_busStopRef_title">"Quina és la referència d'aquesta parada de bus?"</string>
-    <string name="quest_tramStopRef_title">"Quin és el número de referència d'aquesta parada de tramvia?"</string>
     <string name="quest_buildingType_bungalow_description2">"casa aïllada petita (cabana, borda, refugi...)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Quin tipus de barreres hi ha en aquest pas a nivell?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Sense barreres"</string>
@@ -931,6 +916,8 @@ d'acompliment"</string>
     <string name="quest_buildingType_abandoned_description">"edifici no utilitzat amb un propòsit o funció original desconegut"</string>
     <string name="quest_buildingType_ruins">"Runes"</string>
     <string name="quest_buildingType_ruins_description">"edifici abandonat, ruïnós i no identificable"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"Quants cotxes es poden carregar en aquesta estació de forma simultània?"</string>
     <string name="link_disaster_ninja_description">"Mapa que mostra desastres naturals recents, interessant per als cartògrafs humanitaris. A més, mostra moltes estadístiques interessants per analitzar com de ben mapejats i actualitzats són els llocs."</string>
     <string name="quest_lanes_title">"Quants carrils per cotxes té aquesta carretera?"</string>
@@ -938,9 +925,13 @@ d'acompliment"</string>
     <string name="quest_lanes_answer_noLanes">"Sense carrils marcats"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Té un carril de gir esquerre de doble sentit"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"És això correcte?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"Quin és el límit d'alçària sota el pont?"</string>
     <string name="quest_maxheight_split_way_hint">"Si no s'aplica a tota la via, considereu respondre \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Hi ha paviment tàctil en aquesta vorera aquí?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"Quina alçada té aquesta vorera?"</string>
     <string name="quest_kerb_height_flush">"El mateix nivell que la superfície de la via"</string>
     <string name="quest_kerb_height_lowered">"Una mica més alta que la superfície de la via"</string>
@@ -967,8 +958,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Aparcament en bateria"</string>
     <string name="quest_parkingType_lane">"Aparcament en fila"</string>
-    <string name="quest_existence_title">"Encara és aquí? (%s)"</string>
-    <string name="quest_existence_name_title">"%1$s (%2$s) encara és aquí?"</string>
     <string name="quest_tracktype_grade2a">"Sòlid però sense pavimentar"</string>
     <string name="quest_tracktype_grade3a">"Majoritàriament sòlid"</string>
     <string name="quest_generic_answer_does_not_exist">"No existeix..."</string>
@@ -987,9 +976,7 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Aquesta botiga ha estat vacant. Què hi ha aquí ara?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"El nombre de carrils difereix a cada costat"</string>
-    <string name="quest_pitchSurface_title">"Quina superfície té aquest camp d'esports?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Aquest tipus de missió està desactivada per defecte perquè no és útil en algunes regions i probablement haureu d'entrar al lloc per poder respondre a una cerca d'aquest tipus."</string>
-    <string name="quest_dietType_kosher_name_title">"%s ofereix productes kosher?"</string>
     <string name="quest_dietType_explanation_kosher">"Els productes de Kosher han d'estar preparats d'acord amb normes especials, i les agències de certificació de kaixrut han de marcar els productes de conformitat."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Sense carril bici"</string>
 
@@ -1003,12 +990,10 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_tartan">"Tartán"</string>
-    <string name="quest_pitchSurface_title_track">"Quina superfície té aquesta pista d'esports?"</string>
     <string name="quest_bicycle_parking_fee_title">"S'ha de pagar per aparcar una bicicleta aquí?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"llar monofamília no desconectada"</string>
-    <string name="quest_drinking_water_title">"És potable l'aigua aquí? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"És segur beure (senyalat)"</string>
     <string name="quest_drinking_water_potable_unsigned">"És segur beure (sense senyalar)"</string>
     <string name="quest_drinking_water_not_potable_signed">"No és segur beure (senyalat)"</string>
@@ -1023,15 +1008,14 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_buildingType_fire_station">"Parc de bombers"</string>
     <string name="quest_recycling_type_beverage_cartons">"Només cartons de beguda"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Només ampolles i cartons plàstics"</string>
-    <string name="quest_charging_station_name_capacity_title">"Quants cotxes es poden carregar simultàniament en aquesta estació de recàrrega (%s)?"</string>
     <string name="team_mode">"Mode d'equip"</string>
+
+    <!-- Team mode -->
     <string name="team_mode_exit">"Sortir del mode d'equip"</string>
     <string name="team_mode_description">"Quan mapegeu la mateixa àrea en un grup, podeu entrar en el mode equip per dividir les cerques entre tots els membres de l'equip."</string>
     <string name="team_mode_team_size_hint">"El mode equip funciona per a grups de 2 a 12 persones."</string>
     <string name="team_mode_active">"El mode d'equip està activat"</string>
     <string name="team_mode_deactivated">"S'ha desactivat el mode d'equip"</string>
-    <string name="quest_pitchLit_title">"Està il·luminat aquest camp esportiu?"</string>
-    <string name="quest_pitchLit_title_track">"Està il·luminada aquesta pista esportiva?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Encreuament controlat per semàfor"</string>
@@ -1039,6 +1023,8 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="synced">"Sincronitzat"</string>
     <string name="toast_undo_unavailable">"Aquesta edició ja està sincronitzada i no es pot desfer"</string>
     <string name="quest_cycleway_value_separate">"es mostra separadament al mapa"</string>
+
+    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"S'ha creat una nota"</string>
     <string name="commented_note_action_title">"S'ha comentat una nota"</string>
     <string name="hid_action_description">"L'has amagat"</string>
@@ -1052,8 +1038,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="delete_confirmation">"Esborra"</string>
     <string name="delete_cache_dialog_message">"Voleu suprimir totes les dades del mapa baixats, incloses les cerques?
 Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'eliminen després de %2$s dies automàticament."</string>
-    <string name="quest_shop_type_title">"Quin tipus de botiga és %s?"</string>
-    <string name="quest_shop_type_title_no_name">"Quin tipus de botiga és aquesta?"</string>
     <string name="pref_background_type_select">"Selecciona el tipus d'imatge de fons"</string>
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aèries (d'Esri)"</string>
@@ -1092,17 +1076,9 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="pref_title_quests2">"Consulta la selecció i l'ordre de visualització"</string>
     <string name="pref_subtitle_quests">"
 %1$d de %2$d habilitats"</string>
-    <string name="quest_busStopLit_tram_name_title">"La parada de tramvia %s està il·luminada?"</string>
-    <string name="quest_busStopLit_tram_title">"Aquesta parada de tramvia està il·luminada?"</string>
-    <string name="quest_busStopLit_title">"Aquesta parada de bus està il·luminada?"</string>
-    <string name="quest_busStopLit_name_title">"La parada de bus %s està il·luminada?"</string>
     <string name="no_location_permission_warning_title">"Permís d'ubicació"</string>
     <string name="quest_surface_value_woodchips">"Estelles de fusta"</string>
     <string name="no_camera_app">"No s'ha trobat cap aplicació de càmera"</string>
-    <string name="quest_busStopBin_tram_name_title">"Hi ha una paperera a la parada de tramvia %s?"</string>
-    <string name="quest_busStopBin_tram_title">"Hi ha una paperera a aquesta parada de tramvia?"</string>
-    <string name="quest_busStopBin_title">"Hi ha una paperera a aquesta parada de bus?"</string>
-    <string name="quest_busStopBin_name_title">"Hi ha una paperera a la parada de bus %s?"</string>
     <string name="quest_bollard_type_title">"Quin tipus de piló és?"</string>
     <string name="quest_bollard_type_rising">"Retràctil"</string>
     <string name="quest_bollard_type_flexible">"Flexible"</string>
@@ -1123,6 +1099,8 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_buildingType_boathouse">"Garatge de vaixells"</string>
     <string name="quest_buildingType_allotment_house">"Barraca de l'hort"</string>
     <string name="quest_buildingType_grandstand">"Tribuna"</string>
+
+    <!-- Quest selection screen -->
     <string name="action_search">"Cerca"</string>
     <string name="action_manage_presets">"Gestiona els valors predefinits"</string>
 
@@ -1138,6 +1116,8 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="no_search_results">"No s'ha trobat res"</string>
     <string name="quest_selection_hint_title">"Massa feina?"</string>
     <string name="quest_selection_hint_message">"Contribuir hauria de ser principalment divertit! Si esteu aclaparats pel nombre de missions, sempre podeu ajustar quines missions es mostren i en quin ordre a la configuració."</string>
+
+    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Afegeix un predefinit"</string>
     <string name="quest_presets_preset_name">"Nom del predefinit"</string>
     <string name="quest_presets_default_name">"Per defecte"</string>
@@ -1146,20 +1126,23 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Voleu suprimir el predefinit \"%s\"? La selecció i l'ordre de les missions es perdran irrevocablement."</string>
     <string name="notification_syncing">"S'estan sincronitzant les dades..."</string>
+
+    <!-- Android notifications -->
     <string name="notification_channel_sync">"Sincronització de les dades"</string>
     <string name="quest_board_type_sport">"Esport, exercicis"</string>
     <string name="quest_generic_hasFeature_optional">"Opcionalment"</string>
     <string name="quest_buildingType_bridge">"Pont entre edificis (penjant)"</string>
     <string name="quest_laundrySelfService_title2">"Aquesta bugaderia és d'autoservei?"</string>
-    <string name="quest_dietType_halal_name_title">"%s ofereix productes halal?"</string>
     <string name="quest_dietType_explanation_halal">"Els productes Halal han d'estar preparats seguint unes regles especials, amb el certificat Halal de les agències de certificació corresponent."</string>
     <string name="quest_picnicTableCover_title">"Està aquesta taula de picnic coberta (protegida de la plutja)? "</string>
+
+    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"Aquesta part són escales"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertit en un pas en una paret/tanca/etc."</string>
     <string name="quest_barrier_type_gate_conversion">"S'ha convertit a una porta"</string>
     <string name="quest_traffic_calming_type_title">"Quin tipus de pacificador de transit és?"</string>
-    <string name="quest_traffic_calming_type_bump">"Bump (més curt)"</string>
-    <string name="quest_traffic_calming_type_hump">"Hump (més llarg)"</string>
+    <string name="quest_traffic_calming_type_bump">"Ressalt (més curt)"</string>
+    <string name="quest_traffic_calming_type_hump">"Ressalt (més ample)"</string>
     <string name="quest_traffic_calming_type_table">"Tauler (part superior plana)"</string>
     <string name="quest_traffic_calming_type_cushion">"Coixí (no afecta a vehícles amples)"</string>
     <string name="quest_traffic_calming_type_choker">"Carretera estreta"</string>
@@ -1180,21 +1163,22 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_access_customers">"Qualsevol persona visitat un lloc en específic (ex. només clients)"</string>
     <string name="quest_access_private">"Només les persones autoritzades"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Encara són correctes els temps d'arreplega d'aquesta bústia?"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Els horaris de recollida d'aquesta bústia %s encara són correctes?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"No reconegut. Proveu d'introduir el tipus de lloc, per exemple \"forn\". En cas contrari, considereu deixar una nota."</string>
-    <string name="quest_bicycle_barrier_type_title">"Quin tipus de barrera de bicicleta és aquesta?"</string>
+    <string name="quest_bicycle_barrier_type_title">"Quin tipus de barrera per a bicicleta és aquesta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal al camí"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Pas estret, més petit a la part superior"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Passatge entre dues barreres"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barrera en cada costat
 "</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - més de dues barreres
 "</string>
-    <string name="quest_level_title">"A quin nivell es troba %s?"</string>
     <string name="pref_title_language_select">"Trieu una llengua"</string>
     <string name="language_default">"Predeterminat del sistema"</string>
+
+    <!-- Fuzzy -->
     <string name="on_floor">"al pis %s:"</string>
-    <string name="confirmation_discard_negative2">"No"</string>
     <string name="quest_street_parking_title">"Com poden estacionar aquí els cotxes, si és que ho poden fer?"</string>
     <string name="select_street_parking_orientation">"Seleccioneu l'orientació cap a la carretera:"</string>
     <string name="select_street_parking_position">"Selecciona posició:"</string>
@@ -1225,13 +1209,12 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_fireHydrant_position_lane">"A la carretera"</string>
     <string name="quest_fireHydrant_position_sidewalk">"A la vorera"</string>
     <string name="quest_fireHydrant_position_parking_lot">"En un aparcament"</string>
-    <string name="quest_fireHydrant_diameter_ref_title">"Quin diàmetre s'especifica al senyal per a aquest hidrant? (nombre de referència: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sí (deixa una nota)"</string>
-    <string name="quest_smoothness_name_title">"Quina és la qualitat de la superfície de %s ací?
-"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"Quina és la qualitat de la superfície en aquesta plaça?"</string>
-    <string name="quest_smoothness_path_title">"Quina és la qualitat de la superfície en aquest camí?
-"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_road_title">"Quina és la qualitat de la superfície en aquesta via?"</string>
     <string name="quest_smoothness_title_excellent">"Superfície plana i fàcil de creuar"</string>
     <string name="quest_smoothness_title_good">"Més o menys transitable"</string>
@@ -1297,17 +1280,13 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="link_osmhydrant_description">"Cerca, afegeix i edita estacions de bombers i hidrants"</string>
     <string name="achievement_lifesaver_title">"Salvavides"</string>
     <string name="achievement_lifesaver_solved_X">"Has resolt %d missions que ajuden als serveis d'emergència!"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"A aquesta benzinera pots repostar tu mateix?"</string>
-    <string name="quest_fuelSelfService_name_title">"A %s pots repostar tu mateix?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Aquesta missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Molt compactat, poca grava o sorra solta"</string>
     <string name="quest_barrier_path_intersection">"Com creua aquest camí la barrera aquí?"</string>
     <string name="quest_barrier_road_intersection">"Com creua aquesta carretera la barrera aquí?"</string>
-    <string name="quest_airConditioning_no_name_title">"%s té aire condicionat?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_airConditioning_name_type_title">"%1$s (%2$s) té aire condicionat?"</string>
-    <string name="quest_openingHours_signed_no_name_title">"Hi ha un cartell amb els horaris d’apertura? (%s)"</string>
     <string name="quest_sidewalk_value_separate">"mostrat separat al map"</string>
     <string name="quest_shoulder_value_yes">"voral"</string>
     <string name="quest_shoulder_value_no">"no hi ha voral"</string>
@@ -1321,10 +1300,97 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="ar_core_tracking_error_excessive_motion">"Massa moviment"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Característiques visuals insuficients"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"La càmera està sent usada per una altra app"</string>
-    <string name="quest_fireHydrant_position_ref_title">"On està localitzat l’hidrandt? (Nombre de referència: %s)"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Suport de manillar"</string>
+    <string name="quest_bicycle_parking_access_title2">"Qui pot aparcar la bicicleta aquí? L'aparcament pot ser gratuït o pagat."</string>
+    <string name="quest_playground_access_title2">"Qui pot utilitzar aquest parc?"</string>
+
+    <!-- AR Measure screen -->
     <string name="ar_measure">"Mesura"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Massa inclinat, aparteu-vos una mica"</string>
     <string name="default_disabled_msg_no_ar">"Necesites una cinta mètrica per a resoldre aquesta missió perqué aquest dispositiu no suporta mesurar amb la càmera."</string>
     <string name="quest_cycleway_width_title">"Quina és l’amplada del carril bici ací?"</string>
     <string name="quest_road_width_title">"Quina és l’amplada de la via ací?"</string>
     <string name="quest_sidewalk_answer_none">"No hi ha vorera"</string>
+    <string name="about_description_donate_google_play2">"Gràcies per considerar donar suport a aquesta aplicació!
+Malauradament, a causa d'una política de Google Play Store, no es poden mostrar enllaços a l'aplicació que condueixin a donacions. En aquest context, ni tan sols es permet la vinculació amb el nostre projecte."</string>
+    <string name="link_osmand_description">"Aplicació mòbil per a navegació i visualització del mapa en línia i fora de línia"</string>
+    <string name="link_sunders_description">"Un mapa de càmeres i equipament de vigilància"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Mantén més pròxim a la fletxa, però vigila amb el trànsit!"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sidewalk_surface_title">"Quina és la superfície d'aquest pas de vianants?"</string>
+    <string name="quest_tactilePaving_incorrect">"Només a un costat"</string>
+    <string name="quest_fee_answer_yes_but">"Si, ..."</string>
+    <string name="quest_fee_answer_no_but_maxstay">"No, però hi ha una duració màxima..."</string>
+    <string name="unit_days">"dies"</string>
+    <string name="unit_hours">"hores"</string>
+    <string name="unit_minutes">"minuts"</string>
+    <string name="at_any_time">"A qualsevol moment"</string>
+    <string name="only_at_hours">"només en els moments següents:"</string>
+    <string name="except_at_hours">"excepte en els següents moments:"</string>
+    <string name="quest_bollard_type_not_bollard">"No és un piló, però és alguna altra barrera"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"No és una barrera per a bicicletes, però és alguna altra barrera"</string>
+    <string name="quest_smoking_no">"No, prohibit"</string>
+    <string name="quest_smoking_outside">"Només a l'exterior"</string>
+
+    <!-- The "separeted areas" means specific areas for smoking or are just that you can smoke somewhere separate? -->
+    <!-- Fuzzy -->
+    <string name="quest_smoking_separated">"Només en àrees específiques"</string>
+    <string name="quest_smoking_yes">"Si, a qualsevol lloc"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_seating_takeaway">"Només per emportar"</string>
+    <string name="quest_seating_indoor_only">"Només seients interiors"</string>
+    <string name="quest_seating_outdoor_only">"Només seients exteriors"</string>
+    <string name="quest_seating_indoor_and_outdoor">"Els dos, interior i exterior"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"Aquesta missió està desactivat per defecte perquè pot requerir la comprovació durant una part específica de l'any per tal de verificar els seients a l'aire lliure."</string>
+    <string name="no_camera_permission_toast">"No hi ha permís per a la càmera"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cash_title2">"Ací s'accepta pagaments en metàl·lic?"</string>
+    <string name="quest_address_street_title2">"A quin carrer està això?"</string>
+    <string name="quest_airConditioning_title">"Aquest lloc té aire condicionat?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBench_title2">"Hi ha un banc a aquesta parada?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBin_title2">"Hi ha una paperera en aquesta parada?
+"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopLit_title2">"Aquesta parada està il·luminada?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopName_title2">"Com es diu aquesta parada?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"Quin és el número de referència d'aquesta parada?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"Hi ha un refugi a aquesta parada?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"Aquesta parada té paviment tàctil?"</string>
+    <string name="quest_dietType_halal_name_title2">"Ací s'ofereixen productes halal?"</string>
+    <string name="quest_dietType_kosher_name_title2">"Ací s'ofereixen productes kosher aquí?"</string>
+    <string name="quest_dietType_vegan_title2">"Ací tenen opcions veganes al menú?"</string>
+    <string name="quest_dietType_vegetarian_title2">"Ací tenen opcions vegetarianes al menú?"</string>
+    <string name="quest_drinking_water_title2">"Ací l'aigua és potable?"</string>
+    <string name="quest_existence_title2">"Encara continua ací?"</string>
+    <string name="quest_generalFee_title2">"Has de pagar per poder entrar ací?"</string>
+    <string name="quest_internet_access_title">"Quin tipus de connexió a internet ofereix aquest lloc?"</string>
+    <string name="quest_level_title2">"A quin nivell es troba aquest lloc?"</string>
+    <string name="quest_lit_title">"Està il·luminat ací?"</string>
+    <string name="quest_openingHours_title">"Quin és l'horari d'obertura?"</string>
+    <string name="quest_openingHours_signed_title">"Hi ha un cartell amb els horaris d'obertura?"</string>
+    <string name="quest_openingHours_resurvey_title">"Continuen sent aquests els horaris d'obertura?"</string>
+    <string name="quest_placeName_title">"Quin és el nom d'aquest lloc?"</string>
+    <string name="quest_shop_type_title2">"Quin tipus de tenda és aquesta?"</string>
+    <string name="quest_smoking_title2">"Està permés fumar ací?"</string>
+    <string name="quest_summit_register_title2">"Hi ha un llibre de cima ací?"</string>
+    <string name="quest_surface_title">"Quina és la superfície ací?"</string>
+    <string name="quest_toiletAvailability_title">"Ací hi ha bany?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"El bany d'ací és accessible per a cadires de rodes?"</string>
 </resources>

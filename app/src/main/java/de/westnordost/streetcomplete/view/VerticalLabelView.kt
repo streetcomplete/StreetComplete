@@ -9,7 +9,7 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import kotlin.math.min
 
 /** A very basic text view whose text is displayed vertically. No line break is possible */

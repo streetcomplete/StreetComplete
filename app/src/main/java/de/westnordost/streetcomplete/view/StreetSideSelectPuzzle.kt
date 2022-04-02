@@ -15,8 +15,8 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.showTapHint
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.showTapHint
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos

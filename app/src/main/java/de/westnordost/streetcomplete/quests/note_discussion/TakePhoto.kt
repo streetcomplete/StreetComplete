@@ -11,9 +11,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.hasCameraPermission
 import de.westnordost.streetcomplete.util.ActivityForResultLauncher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
+import de.westnordost.streetcomplete.util.ktx.hasCameraPermission
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException

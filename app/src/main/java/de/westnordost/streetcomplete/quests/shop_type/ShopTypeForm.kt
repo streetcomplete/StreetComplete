@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
 import androidx.core.os.ConfigurationCompat
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.ktx.geometryType
-import de.westnordost.streetcomplete.ktx.toTypedArray
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.toTypedArray
 
 class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
 
@@ -38,7 +38,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         binding.presetsEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) selectRadioButton(binding.replaceRadioButton)
         }
-        binding.presetsEditText.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.presetsEditText.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun onClickOk() {

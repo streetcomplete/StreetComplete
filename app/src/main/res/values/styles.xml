@@ -70,18 +70,18 @@
         <item name="android:inputType">number</item>
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
-        <item name="android:minHeight">86dp</item>
-        <item name="android:background">@drawable/background_housenumber_frame</item>
+        <item name="android:minHeight">80dp</item>
+        <item name="android:background">@drawable/background_rectangular_sign_blue</item>
     </style>
 
     <style name="BlocknumberEditText">
         <item name="android:textColor">#fff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">40dp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/large_input</item>
         <item name="android:inputType">number</item>
-        <item name="android:padding">4dp</item>
+        <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
+        <item name="android:minHeight">52dp</item>
         <item name="android:background">@null</item>
     </style>
 

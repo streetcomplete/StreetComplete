@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
@@ -21,6 +20,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.util.ktx.containsAny
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 

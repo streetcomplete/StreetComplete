@@ -13,16 +13,13 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.core.view.isGone
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
-import de.westnordost.streetcomplete.ktx.advisorySpeedLimitSignLayoutResId
-import de.westnordost.streetcomplete.ktx.intOrNull
-import de.westnordost.streetcomplete.ktx.livingStreetSignDrawableResId
-import de.westnordost.streetcomplete.ktx.showKeyboard
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
@@ -31,7 +28,10 @@ import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NO_SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.NSL
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.SIGN
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ZONE
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
+import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
 class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
@@ -104,7 +104,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedType?.layoutResId?.let { layoutInflater.inflate(it, binding.rightSideContainer, true) }
 
         speedInput = binding.rightSideContainer.findViewById(R.id.maxSpeedInput)
-        speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        speedInput?.doAfterTextChanged { checkIsFormComplete() }
 
         speedUnitSelect = binding.rightSideContainer.findViewById(R.id.speedUnitSelect)
         speedUnitSelect?.isGone = speedUnits.size == 1
@@ -290,7 +290,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private fun askLit(onYes: () -> Unit, onNo: () -> Unit) {
         activity?.let {
             AlertDialog.Builder(it)
-                .setMessage(R.string.quest_way_lit_road_title)
+                .setMessage(R.string.quest_lit_title)
                 .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onYes() }
                 .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> onNo() }
                 .show()

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.mostCommonWithin
-import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
 
@@ -53,13 +53,9 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val onTextChangedListener = TextChangedWatcher {
-            checkIsFormComplete()
-        }
-
         binding.levelsInput.requestFocus()
-        binding.levelsInput.addTextChangedListener(onTextChangedListener)
-        binding.roofLevelsInput.addTextChangedListener(onTextChangedListener)
+        binding.levelsInput.doAfterTextChanged { checkIsFormComplete() }
+        binding.roofLevelsInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
     }

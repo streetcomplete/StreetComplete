@@ -8,6 +8,7 @@ import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,10 +21,9 @@ import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemsBinding
-import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
@@ -56,7 +56,7 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.noteInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
 
         otherAnswersButton?.visibility = View.GONE
 

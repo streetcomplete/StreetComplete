@@ -87,7 +87,7 @@
             android:key="quests.restore.hidden"
             android:title="@string/pref_title_quests_restore_hidden" />
 
-        <de.westnordost.streetcomplete.settings.NumberPickerPreference
+        <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="map.tilecache"
             android:title="@string/pref_title_map_cache"
             android:summary="@string/pref_tilecache_size_summary"

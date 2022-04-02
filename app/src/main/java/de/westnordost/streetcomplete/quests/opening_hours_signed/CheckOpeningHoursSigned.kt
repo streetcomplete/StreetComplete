@@ -49,26 +49,7 @@ class CheckOpeningHoursSigned (
     override val isReplaceShopEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasProperName = hasProperName(tags)
-        val hasFeatureName = hasFeatureName(tags)
-        return  when {
-            !hasProperName  -> R.string.quest_openingHours_signed_no_name_title
-            !hasFeatureName -> R.string.quest_openingHours_signed_name_title
-            else            -> R.string.quest_openingHours_signed_name_type_title
-        }
-    }
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"]
-        val hasProperName = name != null
-        val hasFeatureName = hasFeatureName(tags)
-        return when {
-            !hasProperName  -> arrayOf(featureName.value.toString())
-            !hasFeatureName -> arrayOf(name!!)
-            else            -> arrayOf(name!!, featureName.value.toString())
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_openingHours_signed_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }

@@ -18,6 +18,7 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
           amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
           or shop ~ butcher|supermarket|ice_cream|convenience
         )
+        and diet:vegan != only
         and name and (
           !diet:halal
           or diet:halal != only and diet:halal older today -4 years
@@ -30,7 +31,7 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_halal_name_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_halal_name_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)

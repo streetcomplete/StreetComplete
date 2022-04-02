@@ -5,9 +5,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.ktx.toYesNo
 import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
 

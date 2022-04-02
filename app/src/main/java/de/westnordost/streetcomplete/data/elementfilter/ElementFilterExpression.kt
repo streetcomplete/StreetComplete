@@ -22,8 +22,43 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import java.util.EnumSet
 
-/** Represents a parse result of a string in filter syntax, i.e.
- *  "ways with (highway = residential or highway = tertiary) and !name"  */
+/** Represents the parse result of a string in filter syntax, e.g.
+ *
+ *  `ways with (highway = residential or highway = tertiary) and !name`
+ *
+ *  [matches] of an [ElementFilterExpression] parsed from the above string returns true for any
+ *  residential or tertiary roads that have no name tagged.
+ *
+ *  ### Cheatsheet for element filter syntax:
+ *  | expression                     | [matches] returns `true` if element…                                          |
+ *  | :----------------------------- | :---------------------------------------------------------------------------- |
+ *  | `shop`                         | has a tag with key `shop`                                                     |
+ *  | `!shop`                        | doesn't have a tag with key `shop`                                            |
+ *  | `shop = car`                   | has a tag with key `shop` whose value is `car`                                |
+ *  | `shop != car`                  | doesn't have a tag with key `shop` whose value is `car`                       |
+ *  | `~shop|craft`                  | has a tag whose key matches the regex `shop|craft`                            |
+ *  | `!~shop|craft`                 | doesn't have a tag whose key matches the regex `shop|craft`                   |
+ *  | `shop ~ car|boat`              | has a tag whose key is `shop` and whose value matches the regex `car|boat`    |
+ *  | `shop !~ car|boat`             | doesn't have a tag whose key is `shop` and value matches the regex `car|boat` |
+ *  | `~shop|craft ~ car|boat`       | has a tag whose key matches `shop|craft` and value `car|boat` (both regexes)  |
+ *  | `foo < 2.5`                    | has a tag with key `foo` whose value is a number and smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
+ *  | `foo < 2012-10-01`             | same as above but value is a date older than Oct 1st 2012                     |
+ *  | `foo < today -1.5 years`       | same as above but value is a date older than 1.5 years<br/>In place of `years`, `months`, `weeks` or `days` work |
+ *  | `shop newer today -99 days`    | has a tag with key `shop` which has been modified in the last 99 days.<br/>Absolute dates work too. |
+ *  | `shop older today -1 months`   | has a tag with key `shop` which hasn't been changed for more than a month.<br/>Absolute dates work too. |
+ *  | `shop and name`                | has both a tag with key `shop` and one with key `name`                        |
+ *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
+ *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
+ *
+ *  ### Equivalent expressions
+ *  | expression                     | equivalent expression                                    |
+ *  | :----------------------------- | :------------------------------------------------------- |
+ *  | `shop and shop = boat`         | `shop = boat`                                            |
+ *  | `!shop or shop != boat`        | `shop != boat`                                           |
+ *  | `shop = car or shop = boat`    | `shop ~ car|boat`                                        |
+ *  | `craft or shop and name`       | `craft or (shop and name)` (`and` has higher precedence) |
+ *  | `!(amenity and craft)`         | **<error>** (negation of expression not supported)       |
+ *  */
 class ElementFilterExpression(
     private val elementsTypes: EnumSet<ElementsTypeFilter>,
     private val elementExprRoot: BooleanExpression<ElementFilter, Element>?

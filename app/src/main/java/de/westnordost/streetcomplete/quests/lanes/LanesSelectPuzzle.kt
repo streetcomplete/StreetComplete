@@ -19,12 +19,12 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewLanesSelectPuzzleBinding
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.isApril1st
-import de.westnordost.streetcomplete.ktx.showTapHint
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.CONTINUOUS
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.DASHES
 import de.westnordost.streetcomplete.quests.lanes.LineStyle.SHORT_DASHES
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.ktx.showTapHint
 import kotlin.math.max
 import kotlin.random.Random
 

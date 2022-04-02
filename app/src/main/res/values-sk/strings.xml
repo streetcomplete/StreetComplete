@@ -2,8 +2,9 @@
 <resources>
     <string name="action_settings">"Nastavenia"</string>
     <string name="oauth_communication_error">"Autorizačný server nie je dostupný"</string>
-    <string name="retry">"Znova"</string>
     <string name="oauth_failed_permissions">"Autorizácia zlyhala: Všetky oprávnenia v zozname musia byť udelené"</string>
+
+    <!-- Settings screen -->
     <string name="pref_category_communication">"Komunikácia"</string>
     <string name="pref_category_display">"Zobrazenie"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -23,12 +24,11 @@
     <string name="quest_leave_new_note_description">"Môžete na tomto mieste nechať verejnú poznámku, ktorú môžu ostatní mapovači komentovať a snáď aj vyriešiť, alebo si môžete túto úlohu skryť"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Nie, iba schovať"</string>
-    <string name="quest_streetName_title">"Aký je názov tejto cesty?"</string>
+    <string name="quest_streetName_title">"Aký je názov tejto ulice?"</string>
     <string name="quest_streetName_description">"ako je napísané na značke, skratky rozpísané:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Ceduľa s názvom ulice niekedy môžu byť iba na jednom konci ulice. Pamätajte, že bočné ulice patriace k väčšej ulici nemusia mať ceduľu s menom. Ulice s domami sú obvykle pomenované."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ak je možné napísať názov bez skratky, tak by mal byť rozpísany. Veľa bežných skratiek bude rozpísaných počas písania, ale asi nie všetky."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Neobsahuje skratku"</string>
-    <string name="quest_openingHours_name_title">"Aké má %s otváracie hodiny?"</string>
     <string name="quest_openingHours_start_time">"čas otvorenia"</string>
     <string name="quest_openingHours_end_time">"čas zatvorenia"</string>
     <string name="quest_openingHours_add_months">"Pridať mesiace"</string>
@@ -44,115 +44,58 @@
     <string name="confirmation_discard_positive">"Zahodiť"</string>
     <string name="action_download">"Hľadať úlohy tu"</string>
     <string name="action_upload">"Nahrať odpovede"</string>
+
+    <!-- when the user left the answer form empty -->
     <string name="no_changes">"Nevyplnili ste formulár"</string>
     <string name="close">"zatvoriť"</string>
     <string name="download_error">"Pri vyhľadávní úloh došlo k chybe"</string>
     <string name="upload_error">"Pri nahrávaní odpovedí nastala chyba"</string>
     <string name="download_area_too_big">"Prosím, ešte priblížte"</string>
     <string name="confirmation_cancel_prev_download_title">"Zastaviť aktuálne vyhľadávanie a hľadať radšej tu?"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Lokalizácia je vypnutá. Otvoriť nastavenia teraz?"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Vaša poloha je potrebná pre vyhľadávanie úloh vo vašom okolí."</string>
-
-    <!-- Fuzzy -->
+    <string name="no_location_permission_warning">"Povolenie je potrebné pre zobrazenie vašej polohy na mape a pre vyhľadávanie úloh vo vašom okolí."</string>
     <string name="about_title_authors">"Autori"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick a prispievatelia"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_repository">"Zdrojový repozitár"</string>
-
-    <!-- Fuzzy -->
+    <string name="about_title_repository">"Domov projektu"</string>
     <string name="about_summary_repository">"na GitHub-e"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_report_error">"Nahlásiť chybu"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"Poslať spätnú väzbu"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"Licencia"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
 
-    <!-- Fuzzy -->
+    <!-- Error messages and crash report -->
     <string name="offline">"Ste offline"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Aby sa aplikovali vaše odpovede, je treba autorizovať sa OSM účtom. Autorizovať teraz?"</string>
-
-    <!-- Fuzzy -->
     <string name="not_authorized">"Neautorizované"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"Táto verzia StreetComplete je príliš stará. Prosím aktualizujte aplikáciu!"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_gps_no_quests">"Zapnite lokalizáciu, ak chcete hľadať úlohy okolo vás"</string>
-
-    <!-- Fuzzy -->
+    <string name="no_gps_no_quests">"Ak chcete hľadať úlohy vo vašom okolí automaticky, zapnite lokalizáciu"</string>
     <string name="later">"Neskôr"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noProperStreet_link">"iba spája dve cesty"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_streetName_answer_noProperStreet_link">"Iba spája dve cesty"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Niečo iné (nechať poznámku)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Vyhlásenie o ochrane súkromia"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_summary_privacy_statement">"a použitie dát"</string>
-
-    <!-- Fuzzy -->
+    <string name="about_summary_privacy_statement">"a používania dát"</string>
     <string name="quest_openingHours_public_holidays">"Sviatky"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"Št. sv."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"Do odchodu posledného návštevníka"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"Otvorené 24/7"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Líši sa podľa mesiaca…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nemá pravidelné otváracie hodiny…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Popíšte otváracie hodiny"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Buďte struční, v ideálnom prípade použite slová z označenia otváracej doby. Napr. \"Otvorené po rezervácii\". Chýbajúce označenie nemusí znamenať, že tu nie je pravidelná otváracia doba."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Aký je základný tvar strechy tejto budovy?"</string>
 
-    <!-- Fuzzy -->
+    <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Vyberte jeden:"</string>
 
-    <!-- Fuzzy -->
+    <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Zobraziť viac…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Má viacero rôznych tvarov"</string>
 
-    <!-- Fuzzy -->
+    <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"Oddialiť"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Priblížiť"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Á, niekto kto sa zaujíma o súkromie, paráda! Myslím, že máme pre Vás iba dobre správy:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Priame príspevky&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -165,380 +108,136 @@ OpenStreetMap nie je možné upravovať anonyne, preto sa všetky zmeny, ktoré 
 
 &lt;b&gt;Poloha&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Vaša poloha sa používa iba pre automatické vyhľadávanie \"úloh\" vo Vašej blízkosti. Bez obáv, aplikácia si necháva Vašu polohu iba pre seba.
+Vaša poloha sa používa iba pre automatické vyhľadávanie úloh vo Vašej blízkosti a pre stiahnutie mapy okolia. Bez obáv, aplikácia si necháva Vašu polohu iba pre seba.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Použitie dát&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou.&lt;br/&gt;
 Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového súboru&lt;/a&gt; na mojom serveri či jej nebolo zakázané nahrávanie zmien. Toto je preventívne opatrenie zabraňujúce verziám aplikácie, v ktorých sa našli kritické chyby, aby poškodili OSM dáta.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"Zapnuté"</string>
-
-    <!-- Fuzzy -->
-    <string name="autosync_only_on_wifi">"Iba na Wifi"</string>
-
-    <!-- Fuzzy -->
+    <string name="autosync_only_on_wifi">"Iba cez Wifi"</string>
     <string name="autosync_off">"Vypnuté"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"Aký povrch má tento kus cesty?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Spevnená (bližšie neurčené)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"Nespevnená (bližšie neurčené)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Zemina (bližšie neurčené)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"Zhutnený povrch"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Betón"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Zemina"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"Jemný štrk"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"Tráva"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Zatrávňovacia dlažba"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Štrk"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Dlažba"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"Okruhliaky"</string>
     <string name="quest_surface_value_sand">"Piesok"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Dlažobné kocky"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Drevo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Je pri ceste chodník?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je táto ulica?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_serviceType_title">"Aký druh servisnej cesty je toto?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Je toto jednosmerka?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"Aké je číslo domu tejto budovy?"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"Aplikácia pre OpenStreetMap prieskumníkov"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"Pomôžte zlepšiť OpenStreetMap pomocou StreetComplete!
 
 Táto aplikácia nájde neúplné a rozšíriteľné údaje vo vašom okolí a zobrazí ich na mape ako značky. Každý z nich je riešiteľný odpovedaním na jednoduchú otázku a doplniť tak informácie na mieste.
 
 Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene bez potreby použitia iného editora."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Nemá názov…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Naozaj bez názvu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Áno, bez názvu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Pridať otváracie hodiny"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"Mohli byste, prosím, zaslať vývojárovi hlásenie o chybe?"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_title">"Ó nie, StreetComplete naposledy spadla!"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_compose_email">"Napísať email"</string>
-
-    <!-- Fuzzy -->
     <string name="no_email_client">"Nemáte nainštalovaného emailového klienta."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"Nevypínať obrazovku"</string>
-
-    <!-- Fuzzy -->
     <string name="download_server_error">"Chyba spojenia pri hľadaní úloh. Skúste znova neskôr."</string>
-
-    <!-- Fuzzy -->
     <string name="upload_server_error">"Chyba spojenia pri nahrávaní odpovedí. Skúste znova neskôr."</string>
 
-    <!-- Fuzzy -->
+    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Áno"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Nie"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"Má táto autobusová zastávka prístrešok?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Koľko bicyklov tu môže parkovať?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"Toto číslo domu vyzerá veľmi nezvyčajne."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_title">"Aký šport sa tu hrá?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"Žiaden špecifický šport"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"Futbal"</string>
     <string name="quest_sport_tennis">"Tenis"</string>
     <string name="quest_sport_baseball">"Bejzbal"</string>
     <string name="quest_sport_basketball">"Basketbal"</string>
     <string name="quest_sport_golf">"Golf"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"Jazdenie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"Atletika"</string>
     <string name="quest_sport_volleyball">"Volejbal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"Plážový volejbal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"Americký futbal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"Skejtbord"</string>
     <string name="quest_sport_bowls">"Bowls"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_boules">"Guľové športy"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"Streľba"</string>
     <string name="quest_sport_cricket">"Kriket"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"Stolný tenis"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"Gymnastika"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_archery">"Lukostreľba"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"Austrálsky futbal"</string>
     <string name="quest_sport_badminton">"Badminton"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Kanadský futbal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Pozemný hokej"</string>
     <string name="quest_sport_handball">"Hádzaná"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Ľadový hokej"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
 
-    <!-- Fuzzy -->
+    <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_select_hint">"Vyberte:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"Je toto ihrisko určené výhradne pre tieto športy (je tu označenie a vybavenie), alebo je to univerzálne ihrisko pre rôzne druhy hier?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"Výhradne tieto"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"Všeobecné použitie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Vybrali ste viacero športov"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"Má autobusová zastávka %s prístrešok?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Požadujú na tejto toalete poplatok?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_bus">"Má táto autobusová zastávka hmatovú dlažbu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Má tento prechod hmatovú dlažbu na oboch stranách?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Naozaj ste to overili na mieste?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka %s hmatovú dlažbu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Mali by byť pridávané iba informácie získané behom prieskumu."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkovisko pre bicykle kryté (chránené pred dažďom)?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Nezobrazovať znova pre túto reláciu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Aký povrch má v tomto mieste cesta %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto obmedzenie rýchlosti vyzerá nepravdepodobne."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Naozaj tu nie je značka obmedzujúca rýchlosť?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"Pozreli ste sa na oba konce ulice? Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej časti, platí rýchlosť podľa zákona."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Áno, bez značky"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Cesty v obciach (mestá a husto obývané oblasti) majú iné obmedzenia rýchlosti ako cesty mimo obcí."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"V meste"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Mimo mesta"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"Ak je na križovatke s hlavnou ulicou takáto značka, nenájdete v zóne ďalšie samostatné značky, pretože uvedené obmedzenie rýchlosti na značke sa vzťahuje na celú zónu."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Raketbal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Korčuľovanie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"Pádlový tenis"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"Galské hry"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"Má %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"Čiastočne"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"Nezabudnite, že pri väčšine bežných stojanov sa dajú na parkovanie bicyklov použiť obe strany."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Kolieskové korčuľovanie"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_title">"Má táto autobusová zastávka bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Má tento vstup do metra bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_title">"Má táto železničná stanica bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_title">"Má toto miesto bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Má autobusová zastávka %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Má vstup do metra %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Má železničná stanica %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_name_title">"Má miesto %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"Čiastočne znamená, že pri vchode nie je viac ako jeden schod a väčšina izieb vo vnútri je bezbariérová."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Čiastočne znamená, že tu nie je viac ako jeden schod brániaci prístupu."</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_limited_description_business">"Čiastočne znamená, že pri vchode nie je väčší schod ako výška členku a väčšina izieb vo vnútri je bezbariérová."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Čiastočne znamená, že tu nie je väčší schod ako výška členku brániaci prístupu."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názve %s skratka?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_toilets_title">"Má táto toaleta prebaľovací stolík?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_title">"Má %s prebaľovací stolík?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"Aký je toto typ recyklačného zariadenia?"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"Zberný dvor"</string>
     <string name="overground_recycling_container">"Kontajner"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"Podzemný kontajner"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_a_field_empty">"Nevyplnili ste políčko"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Nemôžem napísať znak na značke"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Chýba na klávesnici znaky?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"Otvoriť nastavenia"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Otvoriť obchod"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Ak používate prednastavenú klávesnicu, je možné, že stačí ak v nastaveniach povolíte rozloženie klávesnice pre jazyk, ktorý potrebujete.
 
 Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi populárne klávesnice, ktoré podporujú mnoho jazykov patria Google Gboard, SwiftKey Keyboard a Multiling O Keyboard."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(nešpecifikové)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_type_title">"Aký je tento hydrant?"</string>
+    <string name="quest_fireHydrant_type_title">"Aký je typ tohto hydrantu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Stĺpový"</string>
@@ -561,9 +260,11 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="credits_contributors_title">"Prispievatelia kódu"</string>
 
+    <!-- Credits screen -->
     <!-- Fuzzy -->
     <string name="credits_author_title">"Autor a udržiavateľ"</string>
 
+    <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
     <string name="credits_and_more">"a ďalší…"</string>
 
@@ -705,15 +406,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"Je tento úsek cesty osvetlený?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"Je tu %s osvetlená?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_road_title">"Je tento úsek cesty osvetlený?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"Používa detekciu pohybu"</string>
 
     <!-- Fuzzy -->
@@ -761,9 +453,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Parkovisko"</string>
 
-    <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_name_title">"Má %s toaletu?"</string>
-
+    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Z akého materiálu je tento elektrický stĺp?"</string>
 
@@ -853,12 +543,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="undo_confirm_negative">"Zrušiť"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_vegetarian_name_title">"Má %s v ponuke vegetárianske jedlá?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_dietType_vegan_name_title">"Má %s v ponuke vegánske jedlá?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Iba"</string>
 
     <!-- Fuzzy -->
@@ -891,6 +575,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Súpisné číslo"</string>
 
+    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"Orientačné číslo (voliteľné)"</string>
 
@@ -916,12 +601,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_streetName_answer_noName_noname">"Žiadne z uvedených, jednoducho nemá názov"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_title">"Sú tieto toalety bezbariérové?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"Je toaleta %s bezbariérová?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Ak sú toalety bezbariérové, malo by byť vidno značku podobnú tejto.
     Čiastočne znamená, že sa do toalety dá vojsť na vozíku a použiť ju, ale nemá držiaky alebo upravené umývadlo."</string>
 
@@ -934,6 +613,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Na tomto mieste môžete zanechať poznámku pre ostatných používateľov a upozorniť ich tak na problém. Pozíciu poznámky upravíte posunutím mapy:"</string>
 
+    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Zvyčajne vyzerá takto:"</string>
 
@@ -947,9 +627,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_bridge_structure_title">"Akú konštrukciu má tento most?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"Aký typ pripojenia k internetu %s poskytuje?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
 
     <!-- Fuzzy -->
@@ -960,12 +637,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Bez pripojenia"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"Má električková zastávka %s prístrešok?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"Má táto zastávka električky prístrešok?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"Má táto lavička operadlo?"</string>
@@ -1026,34 +697,13 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_surface_value_unhewn_cobblestone">"Neotesané dlažobné kocky"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_pedestrian_title">"Ako sa volá táto pešia zóna?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Aký povrch má toto námestie?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Aký povrch má námestie %s na tomto mieste?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Závisí od času a dňa…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Pridať časy"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Áno, ale iba…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Áno, ale nie…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"v nasledovných časoch:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopName_title">"Ako sa volá táto autobusová zastávka?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tramStopName_title">"Ako sa volá táto zastávka električky?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Má viacero domových čísel"</string>
@@ -1110,14 +760,9 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="questList_disabled_in_country">"Nezobrazuje sa v %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_rest_area_title">"Sú na tomto odpočívadle toalety?"</string>
-    <string name="quest_pathSurface_title_steps">"Aký povrch majú tieto schody na tomto mieste?"</string>
-    <string name="quest_pathSurface_title_bridleway">"Aký je povrch tejto cesty pre kone na tomto mieste?"</string>
-    <string name="quest_pathSurface_title">"Aký povrch má tento chodník na tomto mieste?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Vyberte čo najpresnejšiu možnosť, ktorá vyhovuje:"</string>
 
+    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Ste si istý, že sa to nedá určiť presnejšie?"</string>
 
@@ -1349,9 +994,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_openingHours_no_sign">"Žiadne označenie otváracích hodím"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_name_title2">"Aké je rýchlostné obmedzenie pre %s na tomto mieste?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Športové centrum"</string>
 
     <!-- Fuzzy -->
@@ -1376,15 +1018,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_maxheight_title">"Aký je tu výškový limit?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_parking_entrance_title">"Aký je výškový limit vjazdu na parkovisko?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_height_restrictor_title">"Aký je výškový limit tohto obmedzovača výšky?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_tunnel_title">"Aký je výškový limit tohto tunela?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Nie je tam žiadna značka…"</string>
 
     <!-- Fuzzy -->
@@ -1392,8 +1025,11 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Táto výška vyzerá nepravdepodobne. Ste si istý, že je správna?"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 
+    <!-- first placeholder is the person, second placeholder is the date -->
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"Zatvoril(a) %1$s, %2$s"</string>
 
@@ -1416,7 +1052,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_openingHours_timeSelect_next">"Ďalej"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_title">"Aká je pevnosť povrchu tejto cesty?"</string>
+    <string name="quest_tracktype_title">"Aký pevný je povrch tejto cesty?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Pevný"</string>
@@ -1426,9 +1062,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Mäkký"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_building_underground_name_title">"Je %s úplne pod zemou?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Je táto buda úplne pod zemou?"</string>
@@ -1462,11 +1095,11 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
     <!-- Fuzzy -->
-    <string name="on_level">"na poschodí %s:"</string>
+    <string name="on_level">"na poschodí %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->
-    <string name="underground">"v podzemí:"</string>
+    <string name="underground">"v podzemí"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"chodník"</string>
@@ -1497,14 +1130,12 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="theme_system_default">"Predvolený vzhľad systému"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_placeName_title_name">"Ako sa volá toto miesto? (%s)"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"Otvoriť polohu v inej aplikácii"</string>
 
     <!-- Fuzzy -->
     <string name="map_application_missing">"Nemáte nainštalovanú žiadnu inú mapovou aplikáciu"</string>
 
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <!-- Fuzzy -->
     <string name="label_housenumber">"súpisné číslo"</string>
 
@@ -1515,22 +1146,14 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_busStopShelter_covered">"Celá zastávka je zastrešená"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ferry_pedestrian_name_title">"Preváža %s chodcov?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"Preváža chodcov?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_ferry_motor_vehicle_name_title">"Preváža %s motorové vozidlá?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Preváža motorové vozidlá?"</string>
 
+    <!-- Add note interface -->
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"Pridaním fotografie urobíte poznámku oveľa užitočnejšiu."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxCollectionTimes_name_title">"Kedy sa táto %s poštová schránka vyberá?"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Najlepšie je napísať poznámku v jazyku, ktorým sa tu hovorí, alebo inak v angličtine."</string>
@@ -1567,13 +1190,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Aký je povrch tohto chodníka?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"Sú záchody v %s dostupné pre vozičkárov?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_tram">"Má táto električková zastávka dlažbu pre nevidiacich?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_tram">"Má električková zastávka %s dlažbu pre nevidiacich?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Aké je tu obmedzenia hmotnosti?"</string>
@@ -1586,20 +1202,13 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_maxweight_unsupported_sign_request_photo">"Chcete tu nechať poznámku? Poznámka s fotografiou umožní ďalším mapujúcim, aby ju vyriešili."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generalFee_title">"Je tu poplatok pre vstup do %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Majú tieto schody zábradlie?"</string>
-    <string name="quest_openingHours_no_name_title">"Aké otváracie hodiny má toto miesto? (%s)"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"Aktuálna verzia: %s"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxRef_title">"Aké je referenčné číslo tejto poštovej schránky?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_name_title">"Aké je referenčné číslo tejto poštovej schránky %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nie je tu žiadne referenčné číslo…"</string>
@@ -1674,9 +1283,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="about_description_donate">"Ďakujem Vám, že ste uvážili podporu tejto aplikácie! Pre zobrazenie aktuálnych darov a pre poslanie Vášho daru, kliknite na jednu z nasledujúcich platforiem:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_name_title">"Aké náboženstvo sa praktizuje v %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"Vyhľadať úlohy radšej tu"</string>
 
     <!-- Fuzzy -->
@@ -1687,9 +1293,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_title">"Aký je toto druh turistických informácií?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tourism_information_name_title">"Aký druh turistických informácií je %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"Informačné centrum"</string>
@@ -1713,9 +1316,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_recycling_materials_answer_waste_description">"Takže je toto kontajner pre akýkoľvek odpad, napr.  zabalený domáci alebo komerčný odpad?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accepts_cash_title">"Akceptuje %s platby v hotovosti?"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile">"Môj profil"</string>
 
     <!-- Fuzzy -->
@@ -1733,6 +1333,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="letsgo">"Poďme na to!"</string>
 
+    <!-- Tutorial screen -->
     <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm">"Vitajte v OpenStreetMap"</string>
 
@@ -1758,6 +1359,7 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
     <!-- Fuzzy -->
     <string name="achievements_empty">"Zatiaľ ste nedosiahli na žiadny úspech"</string>
 
+    <!-- Links screen -->
     <!-- Fuzzy -->
     <string name="links_empty">"Zatiaľ nemáte žiadne odkazy"</string>
 
@@ -1770,6 +1372,7 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
     <!-- Fuzzy -->
     <string name="unsynced_quests_not_logged_in_description">"Máte %d zatiaľ nepublikovaných zmien. Musíte sa prihlásiť, aby ste ich mohli nahrať."</string>
 
+    <!-- User screen -->
     <!-- Fuzzy -->
     <string name="user_quests_title">"Vyriešené úlohy"</string>
 
@@ -1785,6 +1388,7 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
     <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"Dokumentácia"</string>
 
+    <!-- Achievement screen -->
     <!-- Fuzzy -->
     <string name="achievements_unlocked_link">"Odomknutý odkaz:"</string>
 
@@ -1983,12 +1587,14 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Vyriešili ste %d úloh, ktoré vylepšujú informácie o infraštruktúre ulíc."</string>
 
+    <!-- Notifications -->
     <!-- Fuzzy -->
     <string name="unread_messages_message">"Máte %d neprečítané prichádzajúce správy"</string>
 
     <!-- Fuzzy -->
     <string name="unread_messages_button">"Otvoriť prichádzajúce správy"</string>
 
+    <!-- Main menu -->
     <!-- Fuzzy -->
     <string name="action_about2">"O aplikácii"</string>
 
@@ -2010,6 +1616,7 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="credits_main_contributors_title">"Hlavní prispievatelia"</string>
 
+    <!-- User statistics screen -->
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Vaše štatistiky sa stále synchronizujú. Vráťte sa sem neskôr."</string>
 
@@ -2036,9 +1643,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspechy"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_title">"Ku ktorej ulici patrí (dom) číslo %s?"</string>
     <string name="quest_address_street_no_named_streets">"Nepatrí k žiadnej pomenovanej ulici"</string>
     <string name="quest_address_street_place_name_label">"Názov miesta:"</string>
     <string name="quest_address_street_description">"Kliknite na mape na ulicu ku ktorej patrí, alebo ju zadajte bez skratiek do poľa nižšie:"</string>
@@ -2057,6 +1661,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_board_type_nature">"O prírode (viac tém)"</string>
     <string name="quest_board_type_notice_board">"Je to miestna nástenka"</string>
     <string name="quest_board_type_public_transport">"Verejná doprava"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_board_type_title">"Aké informácie sú na tejto informačnej tabuli?"</string>
     <string name="quest_board_type_map">"Je na nej mapa"</string>
     <string name="quest_board_type_map_title">"Je na nej len a len mapa?"</string>
@@ -2068,43 +1674,22 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Prosím, v krátkosti špecifikujte tunajší povrch, napr. „Piesočný sa záplatami dlažobných kociek“. Maximálna dĺžka textu je 255 znakov."</string>
-    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
-    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"medzinárodný"</string>
     <string name="quest_buildingType_terrace2">"Radové domy"</string>
-    <string name="at_housename">"Názov budovy %s:"</string>
-    <string name="at_conscription_and_street_number">"Súpisné číslo %1$s, orientačné číslo %2$s:"</string>
 
     <!-- Fuzzy -->
-    <string name="at_conscription_number">"Súpisné číslo %s:"</string>
-    <string name="at_housenumber">"súpisné číslo %s:"</string>
-    <string name="quest_openingHours_name_type_title">"Aké má %1$s (%2$s) otváracie hodiny?"</string>
-    <string name="quest_openingHours_resurvey_name_title">"Je táto otváracia doba pre %s stále platná?"</string>
-    <string name="quest_openingHours_resurvey_name_type_title">"Je táto otváracia doba pre %1$s (%2$s) stále platná?"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"Je táto otváracia doba stále platná (%s)?"</string>
+    <string name="at_housename">"Názov budovy %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_housenumber">"súpisné číslo %s"</string>
     <string name="quest_openingHours_add_off_days">"Pridať dni, kedy je zatvorené"</string>
     <string name="quest_openingHours_off_day">"Zatvorené"</string>
     <string name="quest_openingHours_unspecified_range">"Neurčené"</string>
     <string name="quest_cycleway_resurvey_title">"Je to tu stále aktuálna situácia cyklotrasy?"</string>
-    <string name="quest_wheelchairAccess_name_type_title">"Má %1$s (%2$s) bezbariérový prístup?"</string>
     <string name="pref_title_resurvey_intervals">"Intervaly pre overovanie"</string>
     <string name="resurvey_intervals_less_often">"Pýtať sa menej často"</string>
     <string name="resurvey_intervals_default">"Predvolené"</string>
     <string name="resurvey_intervals_more_often">"Pýtať sa častejšie"</string>
-    <string name="quest_accepts_cash_type_title">"Prijíma %1$s (%2$s) platby v hotovosti?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_name_title">"Má električková zastávka %s lavičku?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_title">"Má táto električková zastávka lavičku?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_title">"Má táto autobusová zastávka lavičku?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_name_title">"Má autobusová zastávka %s lavičku?"</string>
-    <string name="quest_summit_register_title">"Je na %s vrcholová kniha?"</string>
     <string name="quest_is_defibrillator_inside_title">"Je tento defibrilátor (AED) vo vnútri budovy?"</string>
     <string name="about_title_translate">"Pomôžte preložiť túto aplikáciu"</string>
     <string name="about_description_translate">"%1$s je preložené %2$d%%"</string>
@@ -2120,8 +1705,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Majú tieto semafory hmatovú indikáciu pre nevidiacich, aby vedeli, kedy je bezpečné prejsť?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tip: Často to môže byť vibrujúce tlačidlo alebo rotujúci kužeľ na spodnej strane škatuľky s ovládacím tlačidlom."</string>
-    <string name="quest_busStopRef_title">"Aké je referenčné číslo tejto autobusovej zastávky?"</string>
-    <string name="quest_tramStopRef_title">"Aké je referenčné číslo tejto električkovej zastávky?"</string>
     <string name="quest_buildingType_bungalow_description2">"malý samostatne stojaci dom (prázdninový alebo rekreačná chata, chatka ...)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Aké rampy sa používajú na tomto železničnom priecestí?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Žiadne rampy"</string>
@@ -2159,6 +1742,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_buildingType_abandoned_description">"nevyužívaná budova, ktorej pôvodná funkcia alebo účel nie je známy"</string>
     <string name="quest_buildingType_ruins">"Ruina"</string>
     <string name="quest_buildingType_ruins_description">"opustená, zničená a neidentifikovateľná budova"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"Koľko vozidiel môže byť na tejto dobíjacej stanici naraz dobíjaných?"</string>
     <string name="link_disaster_ninja_description">"Mapa, ktorá zobrazuje aktuálne prírodné katastrofy, zaujímavá pre humanitárnych maperov. Ďalej sú tu zaujímavé štatistiky, podľa ktorých je možné analyzovať, ako sú miesta dobre zmapovaná a aktuálne."</string>
     <string name="quest_lanes_title">"Koľko jazdných pruhov pre autá má táto cesta?"</string>
@@ -2166,11 +1751,15 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_lanes_answer_noLanes">"Bez vyznačených pruhov"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Má obojsmerný pruh pre odbočenie vľavo"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Je to správne?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"Aké je výškové obmedzenie pod mostom?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Ak to neplatí pre celú cestu, zvážte odpoveď „%s“."</string>
     <string name="quest_tactile_paving_kerb_title">"Je na tomto obrubníku hmatová dlažba?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"Aká je výška tohto obrubníku?"</string>
     <string name="quest_kerb_height_flush">"Na rovnakej úrovni s povrchom cesty"</string>
     <string name="quest_kerb_height_lowered">"Trochu vyššie ako povrch cesty"</string>
@@ -2195,8 +1784,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkuje sa priamo vedľa cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje sa na ceste"</string>
-    <string name="quest_existence_title">"Je to tu stále? (%s)"</string>
-    <string name="quest_existence_name_title">"Je tu stále %1$s (%2$s)?"</string>
     <string name="quest_tracktype_grade2a">"Viac-menej pevný"</string>
     <string name="quest_tracktype_grade3a">"Skôr pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Neexistuje to..."</string>
@@ -2215,9 +1802,7 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Tento obchod bol prázdny. Čo tu je teraz?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Počet pruhov je na každej strane iný"</string>
-    <string name="quest_pitchSurface_title">"Aký povrch má toto športovisko?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Tento typ úloh je v predvolenom nastavení zakázaný, pretože v niektorých regiónoch nemá použitie, a pretože pravdepodobne budete musieť na miesto vstúpiť, aby ste na otázku mohli odpovedať."</string>
-    <string name="quest_dietType_kosher_name_title">"Ponúka %s kóšer produkty?"</string>
     <string name="quest_dietType_explanation_kosher">"Kóšer produkty sa musia pripravovať podľa osobitných pravidiel s označením kašrut od certifikačnej agentúry."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nie je tu žiadna cyklotrasa"</string>
 
@@ -2229,31 +1814,30 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umelý trávnik"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
-    <string name="quest_pitchSurface_title_track">"Aký povrch má táto športová trať?"</string>
     <string name="quest_bicycle_parking_fee_title">"Platí sa tu za parkovanie bicykla?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"samostatne stojaci rodinný dom"</string>
-    <string name="quest_drinking_water_title">"Je táto voda pitná? (%s)"</string>
     <string name="quest_drinking_water_potable_signed">"Pitná voda (značená)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Pitná voda (neznačená)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nepitná voda (značená)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Nepitná voda (neznačená)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_title">"Je na tejto poštovej schránke kráľovský znak?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nie je vidno žiadno kráľovský monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Škótska koruna"</string>
     <string name="quest_buildingType_fire_station">"Hasičská stanica"</string>
     <string name="quest_recycling_type_beverage_cartons">"Iba kartóny od nápojov"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Iba plastové fľaše a kartóny"</string>
-    <string name="quest_charging_station_name_capacity_title">"Koľko automobilov je možné nabíjať na tejto nabíjacej stanici (%s) súčasne?"</string>
     <string name="team_mode">"Tímový režim"</string>
+
+    <!-- Team mode -->
     <string name="team_mode_exit">"Ukončiť tímový režim"</string>
     <string name="team_mode_description">"Keď mapujete v skupine jednu oblasť, požite tímový režim a rozdeľte si úlohy."</string>
     <string name="team_mode_team_size_hint">"Tímový režim je pre 2 až 12 ľudí."</string>
     <string name="team_mode_active">"Tímový režim je aktívny"</string>
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
-    <string name="quest_pitchLit_title">"Je toto ihrisko osvetlené?"</string>
-    <string name="quest_pitchLit_title_track">"Je táto športová dráha osvetlená?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Prejazd riadený semaformi"</string>
@@ -2261,6 +1845,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="synced">"Synchronizované"</string>
     <string name="toast_undo_unavailable">"Táto úprava je už synchronizovaná a nedá sa vrátiť späť"</string>
     <string name="quest_cycleway_value_separate">"zobrazené samostatne na mape"</string>
+
+    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"Vytvorená poznámka"</string>
     <string name="commented_note_action_title">"Komentovaná poznámka"</string>
     <string name="hid_action_description">"Skryl si to"</string>
@@ -2274,8 +1860,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="delete_confirmation">"Zmazať"</string>
     <string name="delete_cache_dialog_message">"Chcete odstrániť všetky stiahnuté údaje mapy vrátane úloh?
 Údaje sa obnovia po %1$s dňoch a nepoužité údaje sa automaticky odstránia po %2$s dňoch."</string>
-    <string name="quest_shop_type_title">"Aký typ obchodu je %s?"</string>
-    <string name="quest_shop_type_title_no_name">"Čo je to za typ obchodu?"</string>
     <string name="pref_background_type_select">"Vyberte typ pozadia"</string>
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aerial (od Esri)"</string>
@@ -2307,17 +1891,9 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_buildingType_semi_detached_description2">"priľahlé rodinné dom(y)"</string>
     <string name="pref_title_quests2">"Výber úlohy a poradie zobrazenia"</string>
     <string name="pref_subtitle_quests">"Povolené %1$d z %2$d"</string>
-    <string name="quest_busStopLit_tram_name_title">"Je zastávka električky %s osvetlená?"</string>
-    <string name="quest_busStopLit_tram_title">"Je táto električková zástavka osvetlená?"</string>
-    <string name="quest_busStopLit_title">"Je táto autobusová zastávka osvetlená?"</string>
-    <string name="quest_busStopLit_name_title">"Je autobusová zastávka %s osvetlená?"</string>
     <string name="no_location_permission_warning_title">"Povolenie pre polohu"</string>
     <string name="quest_surface_value_woodchips">"Štiepka"</string>
     <string name="no_camera_app">"Nie je k dispozícii žiadna aplikácia pre fotoaparát"</string>
-    <string name="quest_busStopBin_tram_name_title">"Nachádza sa na zastávke električky %s odpadkový kôš?"</string>
-    <string name="quest_busStopBin_tram_title">"Nachádza sa na tejto zastávke električky odpadkový kôš?"</string>
-    <string name="quest_busStopBin_title">"Nachádza sa na tejto autobusovej zastávke odpadkový kôš?"</string>
-    <string name="quest_busStopBin_name_title">"Nachádza sa na zastávke %s kôš na odpad?"</string>
     <string name="quest_bollard_type_title">"Čo je to za stĺpik?"</string>
     <string name="quest_bollard_type_rising">"Stúpajúci"</string>
     <string name="quest_bollard_type_flexible">"Flexibilný"</string>
@@ -2338,6 +1914,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_buildingType_boathouse">"Lodenica"</string>
     <string name="quest_buildingType_allotment_house">"Prístavba záhradného pozemku"</string>
     <string name="quest_buildingType_grandstand">"Tribúna"</string>
+
+    <!-- Quest selection screen -->
     <string name="action_search">"Hľadať"</string>
     <string name="action_manage_presets">"Spravovať predvoľby"</string>
 
@@ -2353,6 +1931,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="no_search_results">"Nič nebolo nájdené"</string>
     <string name="quest_selection_hint_title">"Príliš veľa práce?"</string>
     <string name="quest_selection_hint_message">"Prispievanie by malo byť predovšetkým zábavné! Ak ste zahltení počtom úloh, v nastaveniach môžete vždy doladiť, ktoré úlohy sa vám zobrazujú a v akom poradí."</string>
+
+    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Pridať predvoľbu"</string>
     <string name="quest_presets_preset_name">"Prednastavený názov"</string>
     <string name="quest_presets_default_name">"Predvolené"</string>
@@ -2361,14 +1941,17 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Chcete odstrániť predvoľbu „%s“? Výber úlohy a poradie pre ňu budú nenávratne stratené."</string>
     <string name="notification_syncing">"Synchronizácia údajov…"</string>
+
+    <!-- Android notifications -->
     <string name="notification_channel_sync">"Synchronizovať dáta"</string>
     <string name="quest_board_type_sport">"Šport, cvičenie"</string>
     <string name="quest_generic_hasFeature_optional">"Voliteľne"</string>
     <string name="quest_buildingType_bridge">"Most medzi budovami"</string>
     <string name="quest_laundrySelfService_title2">"Poskytuje táto práčovňa samoobsluhu?"</string>
-    <string name="quest_dietType_halal_name_title">"Ponúka %s Halal produkty?"</string>
     <string name="quest_dietType_explanation_halal">"Halal výrobky sa musia pripravovať podľa zvláštnych pravidiel. Špeciálne agentúry dávajú certifikáty tým Halal produktom, ktoré sú v súlade s týmito pravidlami."</string>
     <string name="quest_picnicTableCover_title">"Je tento stôl na piknik krytý (chránený pred dažďom)?"</string>
+
+    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"Toto sú schody"</string>
     <string name="quest_barrier_type_passage_conversion">"Premenené na priechod v stene/plote/a pod."</string>
     <string name="quest_barrier_type_gate_conversion">"Premenené na bránu"</string>
@@ -2395,19 +1978,20 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_access_customers">"Ktokoľvek navštevujúci dané miesto (napr. iba pre zákazníkov)"</string>
     <string name="quest_access_private">"Iba osoby s povolením"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Sú časy vybratia tejto poštovej schránky správne?"</string>
-    <string name="quest_postboxCollectionTimes_resurvey_name_title">"Sú časy vyberania tejto %s poštovej schránky stále správne?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Nerozpoznané. Skúste zadať typ miesta, napríklad “pekáreň”. V opačnom prípade zvážte nechať poznámku."</string>
     <string name="quest_bicycle_barrier_type_title">"Aký je toto typ prekážky pre cyklistov?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonálne vzhľadom na chodník"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Zúžený prejazd, menší hore"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Priechod medzi dvoma prekážkami"</string>
     <string name="quest_barrier_bicycle_type_double">"Šikana - prekážka na každej strane"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana - viac ako dve prekážky"</string>
-    <string name="quest_level_title">"Na ktorom poschodí sa nachádza %s?"</string>
     <string name="pref_title_language_select">"Vyberte si jazyk"</string>
     <string name="language_default">"Jazyk systému"</string>
+
+    <!-- Fuzzy -->
     <string name="on_floor">"na poschodí %s:"</string>
-    <string name="confirmation_discard_negative2">"Nie"</string>
     <string name="quest_street_parking_title">"Ako tu môžu parkovať autá, pokiaľ je to možné?"</string>
     <string name="select_street_parking_orientation">"Vyberte orientáciu vzhľadom na cestu:"</string>
     <string name="select_street_parking_position">"Vyberte pozíciu:"</string>
@@ -2438,11 +2022,12 @@ Taktiež môžete nechať poznámku (s fotkou)"</string>
     <string name="quest_fireHydrant_position_lane">"Na ceste"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Na chodníku"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Na parkovacom mieste"</string>
-    <string name="quest_fireHydrant_diameter_ref_title">"Aký je špecifikovaný priemer na označení tohto hydrantu? (referenčné číslo: %s)"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Áno (nechajte poznámku)"</string>
-    <string name="quest_smoothness_name_title">"Aká je tu kvalita povrchu %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"Aká je kvalita povrchu tohto námestia?"</string>
-    <string name="quest_smoothness_path_title">"Aká je kvalita povrchu tohto chodníka?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_road_title">"Aká je kvalita povrchu tejto cesty?"</string>
     <string name="quest_smoothness_title_excellent">"Hladký a rovný"</string>
     <string name="quest_smoothness_title_good">"Viacmenej rovný"</string>
@@ -2481,17 +2066,13 @@ Taktiež môžete nechať poznámku (s fotkou)"</string>
     <string name="link_osmhydrant_description">"Vyhľadávajte, pridávajte a upravujte hasičské stanice a požiarne hydranty"</string>
     <string name="achievement_lifesaver_title">"Záchranár"</string>
     <string name="achievement_lifesaver_solved_X">"Vyriešili ste %d úloh, ktoré pomôžu záchranárom!"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"Môžete si na tejto čerpacej stanici natankovať sami?"</string>
-    <string name="quest_fuelSelfService_name_title">"Môžete si natankovať sami na %s?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Tento typ úlohy je predvolene zakázaný, keďže jeho riešenie môže byť časovo náročné a často obtiažne. Tento typ úlohy by ste mali povoliť iba v prípade, že ste naozaj odhodlaný pridať tento druh údajov."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Tvrdý, veľmi málo voľného štrku / piesku"</string>
     <string name="quest_barrier_path_intersection">"Ako tento chodník križuje túto prekážku?"</string>
     <string name="quest_barrier_road_intersection">"Ako táto cesta križuje túto prekážku?"</string>
-    <string name="quest_airConditioning_no_name_title">"Má toto miesto (%s) klimatizáciu?"</string>
-    <string name="quest_airConditioning_name_type_title">"Má %1$s (%2$s) klimatizáciu?"</string>
-    <string name="quest_openingHours_signed_name_title">"Sú tieto otváracie hodiny uvedené pre %s?"</string>
-    <string name="quest_openingHours_signed_name_type_title">"Sú tieto otváracie hodiny uvedené pre %1$s (%2$s)?"</string>
-    <string name="quest_openingHours_signed_no_name_title">"Je otváracia doba tohto miesta uvedená na viditeľnom mieste? (%s)"</string>
     <string name="quest_sidewalk_value_separate">"zobrazený samostatne na mape"</string>
     <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
     <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
@@ -2508,10 +2089,11 @@ Taktiež môžete nechať poznámku (s fotkou)"</string>
     <string name="quest_bicycle_parking_type_handlebarholder">"Držiak na riadidlá"</string>
     <string name="quest_bicycle_parking_access_title2">"Kto tu môže zaparkovať bicykel? Parkovanie môže byť zadarmo / platené."</string>
     <string name="quest_playground_access_title2">"Kto môže používať toto ihrisko?"</string>
-    <string name="quest_fireHydrant_position_ref_title">"Kde je tento požiarny hydrant umiestnený? (referenčné číslo: %s)"</string>
     <string name="quest_sidewalk_answer_none_title">"Chýba výber týchto chodníkov"</string>
     <string name="quest_side_select_interface_explanation">"Kliknite na jednu stranu a vyberte správnu odpoveď.
 To isté urobte pre druhú stranu, ak tu je."</string>
+
+    <!-- AR Measure screen -->
     <string name="ar_measure">"Meranie"</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Príliš veľký uhol, trochu odstúpte"</string>
     <string name="default_disabled_msg_no_ar">"Pre vyriešenie tejto úlohy je potrebný meter, pretože meranie pomocou fotoaparátu nie je na tomto zariadení podporované."</string>
@@ -2524,4 +2106,78 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="link_osmand_description">"Mobilná aplikácia pre online a offline prezeranie mapy a navigáciu"</string>
     <string name="link_sunders_description">"Mapa kamier a sledovacích zariadení"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držte sa bližšie k šípke, ale dávajte pozor na premávku!"</string>
+    <string name="quest_sidewalk_surface_title">"Aký je tu povrch chodníka?"</string>
+    <string name="quest_tactilePaving_incorrect">"Iba na jednej strane"</string>
+    <string name="quest_fee_answer_yes_but">"Áno, ..."</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Nie, ale je tu maximálna doba státia..."</string>
+    <string name="unit_days">"dni"</string>
+    <string name="unit_hours">"hodiny"</string>
+    <string name="unit_minutes">"minúty"</string>
+    <string name="at_any_time">"kedykoľvek"</string>
+    <string name="only_at_hours">"len v týchto časoch:"</string>
+    <string name="except_at_hours">"mimo týchto časov:"</string>
+    <string name="quest_bollard_type_not_bollard">"Nie stĺpik, ale nejaká iná prekážka"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Nie cyklistická prekážka, ale nejaká iná"</string>
+    <string name="quest_smoking_no">"Nie, zakázané"</string>
+    <string name="quest_smoking_outside">"Iba vonku"</string>
+    <string name="quest_smoking_separated">"Len v oddelených priestoroch"</string>
+    <string name="quest_smoking_yes">"Áno, kdekoľvek"</string>
+    <string name="quest_seating_name_title">"Aké typ sedenia má toto miesto?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_seating_takeaway">"Iba na vyzdvihnutie"</string>
+    <string name="quest_seating_indoor_only">"Sedenie iba vnútri"</string>
+    <string name="quest_seating_outdoor_only">"Sedenie iba vonku"</string>
+    <string name="quest_seating_indoor_and_outdoor">"Sedenie vnútri aj vonku"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"Tento typ úlohy je v predvolenom nastavení zakázaný, pretože môže vyžadovať kontrolu počas určitej časti roka, aby sa overilo sedenie vonku."</string>
+    <string name="no_camera_permission_toast">"Žiadne povolenie pre fotoaparát"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cash_title2">"Prijímajú tu platby v hotovosti?"</string>
+    <string name="quest_address_street_title2">"Na ktorej ulici je toto?"</string>
+    <string name="quest_airConditioning_title">"Je tu klimatizácia?"</string>
+    <string name="quest_baby_changing_table_title2">"Je tu prebaľovací pult?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBench_title2">"Je na tejto zastávke lavička?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBin_title2">"Je na tejto zastávke odpadkový kôš?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopLit_title2">"Je táto zastávka osvetlená?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopName_title2">"Aký je názov tejto zastávky?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"Aké je referenčné číslo tejto zastávky?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"Má táto zastávka prístrešok?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"Má táto zastávka hmatovú dlažbu?"</string>
+    <string name="quest_dietType_halal_name_title2">"Ponúkajú sa tu halal produkty?"</string>
+    <string name="quest_dietType_kosher_name_title2">"Ponúkajú sa tu kóšer produkty?"</string>
+    <string name="quest_dietType_vegan_title2">"Sú v ponuke vegánske položky?"</string>
+    <string name="quest_dietType_vegetarian_title2">"Sú v ponuke vegetariánske položky?"</string>
+    <string name="quest_drinking_water_title2">"Je tu pitná voda?"</string>
+    <string name="quest_existence_title2">"Stále to tu je?"</string>
+    <string name="quest_generalFee_title2">"Za vstup sem musíte zaplatiť?"</string>
+    <string name="quest_internet_access_title">"Aký druh internetového pripojenia ponúka toto miesto?"</string>
+    <string name="quest_level_title2">"Na ktorom poschodí sa toto miesto nachádza?"</string>
+    <string name="quest_lit_title">"Svieti sa tu?"</string>
+    <string name="quest_openingHours_title">"Aké sú tu otváracie hodiny?"</string>
+    <string name="quest_openingHours_signed_title">"Sú tu napísané otváracie hodiny?"</string>
+    <string name="quest_openingHours_resurvey_title">"Sú tieto otváracie hodiny správne?"</string>
+    <string name="quest_placeName_title">"Ako sa volá toto miesto?"</string>
+    <string name="quest_shop_type_title2">"O aký typ obchodu ide?"</string>
+    <string name="quest_smoking_title2">"Je tu povolené fajčiť?"</string>
+    <string name="quest_smoothness_title">"Aká je tu kvalita povrchu?"</string>
+    <string name="quest_summit_register_title2">"Je tu vrcholová kniha?"</string>
+    <string name="quest_surface_title">"Aký je tu povrch?"</string>
+    <string name="quest_toiletAvailability_title">"Je tu nejaká toaleta?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Je toaleta na tomto mieste bezbariérová?"</string>
 </resources>

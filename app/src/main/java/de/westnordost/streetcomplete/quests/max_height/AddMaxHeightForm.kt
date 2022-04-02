@@ -2,91 +2,50 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.ktx.intOrNull
-import de.westnordost.streetcomplete.ktx.numberOrNull
-import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
-import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
-import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
-import de.westnordost.streetcomplete.view.inputfilter.acceptIntRange
+import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
+
+    private lateinit var lengthInput: LengthInputViewController
+
+    override val contentLayoutResId get() = when (countryInfo.countryCode) {
+        "AU", "NZ", "US", "CA" -> R.layout.quest_maxheight_mutcd
+        else -> R.layout.quest_maxheight
+    }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
     )
 
-    private var meterInput: EditText? = null
-    private var feetInput: EditText? = null
-    private var inchInput: EditText? = null
-    private var heightUnitSelect: Spinner? = null
-    private var meterInputSign: View? = null
-    private var feetInputSign: View? = null
-
-    private val lengthUnits get() = countryInfo.lengthUnits
-
-    override fun isFormComplete() = getHeightFromInput() != null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setMaxHeightSignLayout(R.layout.quest_maxheight, lengthUnits.first())
-    }
 
-    private fun setMaxHeightSignLayout(resourceId: Int, unit: LengthUnit) {
-        val contentView = setContentView(resourceId)
-
-        val splitWayHint = contentView.findViewById<TextView>(R.id.splitWayHint)
+        val splitWayHint = view.findViewById<TextView>(R.id.splitWayHint)
         splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
         splitWayHint?.isGone = osmElement!!.type == ElementType.NODE
 
-        meterInput = contentView.findViewById(R.id.meterInput)
-        feetInput = contentView.findViewById(R.id.feetInput)
-        inchInput = contentView.findViewById(R.id.inchInput)
-
-        val onTextChangedListener = TextChangedWatcher { checkIsFormComplete() }
-        meterInput?.addTextChangedListener(onTextChangedListener)
-        feetInput?.addTextChangedListener(onTextChangedListener)
-        inchInput?.addTextChangedListener(onTextChangedListener)
-
-        meterInputSign = contentView.findViewById(R.id.meterInputSign)
-        feetInputSign = contentView.findViewById(R.id.feetInputSign)
-
-        heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
-        heightUnitSelect?.isGone = lengthUnits.size == 1
-        heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, lengthUnits)
-        heightUnitSelect?.setSelection(0)
-        heightUnitSelect?.onItemSelectedListener = OnAdapterItemSelectedListener {
-            switchLayout(heightUnitSelect?.selectedItem as LengthUnit)
-        }
-
-        inchInput?.filters = arrayOf(acceptIntRange(0..12))
-        meterInput?.filters = arrayOf(acceptDecimalDigits(2, 2))
-        switchLayout(unit)
+        lengthInput = LengthInputViewController(
+            unitSelect = view.findViewById(R.id.heightUnitSelect),
+            metersContainer = view.findViewById(R.id.meterInputSign),
+            metersInput = view.findViewById(R.id.meterInput),
+            feetInchesContainer = view.findViewById(R.id.feetInputSign),
+            feetInput = view.findViewById(R.id.feetInput),
+            inchesInput = view.findViewById(R.id.inchInput)
+        )
+        lengthInput.maxFeetDigits = 2
+        lengthInput.maxMeterDigits = Pair(1, 2)
+        lengthInput.selectableUnits = countryInfo.lengthUnits
+        lengthInput.onInputChanged = { checkIsFormComplete() }
     }
 
-    private fun switchLayout(unit: LengthUnit) {
-        val isMetric = unit == LengthUnit.METER
-        val isImperial = unit == LengthUnit.FOOT_AND_INCH
-
-        meterInputSign?.isGone = !isMetric
-        feetInputSign?.isGone = !isImperial
-
-        if (isMetric) meterInput?.requestFocus()
-        if (isImperial) feetInput?.requestFocus()
-    }
+    override fun isFormComplete() = lengthInput.length != null
 
     override fun onClickOk() {
         if (userSelectedUnrealisticHeight()) {
@@ -97,30 +56,12 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     }
 
     private fun userSelectedUnrealisticHeight(): Boolean {
-        val height = getHeightFromInput() ?: return false
-        val m = height.toMeters()
-        return m > 6 || m < 1.9
+        val m = lengthInput.length?.toMeters() ?: return false
+        return m > 6 || m < 1.8
     }
 
     private fun applyMaxHeightFormAnswer() {
-        applyAnswer(MaxHeight(getHeightFromInput()!!))
-    }
-
-    private fun getHeightFromInput(): Length? {
-        when (heightUnitSelect?.selectedItem as LengthUnit? ?: lengthUnits.first()) {
-            LengthUnit.METER -> {
-                return meterInput?.numberOrNull?.let { LengthInMeters(it) }
-            }
-            LengthUnit.FOOT_AND_INCH -> {
-                val feet = feetInput?.intOrNull
-                val inches = inchInput?.intOrNull
-
-                if (feet != null && inches != null) {
-                    return LengthInFeetAndInches(feet, inches)
-                }
-            }
-        }
-        return null
+        applyAnswer(MaxHeight(lengthInput.length!!))
     }
 
     private fun confirmNoSign() {

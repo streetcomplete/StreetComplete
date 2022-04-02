@@ -31,7 +31,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_internet_access_name_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_internet_access_title
 
     override fun createForm() = AddInternetAccessForm()
 

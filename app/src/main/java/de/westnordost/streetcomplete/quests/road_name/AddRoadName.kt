@@ -32,11 +32,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(CAR, PEDESTRIAN, POSTMAN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["highway"] == "pedestrian")
-            R.string.quest_streetName_pedestrian_title
-        else
-            R.string.quest_streetName_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_streetName_title
 
     override fun createForm() = AddRoadNameForm()
 

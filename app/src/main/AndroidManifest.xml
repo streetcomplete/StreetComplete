@@ -32,7 +32,7 @@
     </queries>
 
     <application
-        android:name=".StreetCompleteApplication"
+        android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -41,7 +41,7 @@
         <meta-data android:name="com.google.ar.core" android:value="optional" />
         <activity
             android:windowSoftInputMode="adjustResize"
-            android:name="de.westnordost.streetcomplete.MainActivity"
+            android:name="de.westnordost.streetcomplete.screens.MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>
@@ -56,9 +56,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name="de.westnordost.streetcomplete.screens.settings.SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="de.westnordost.streetcomplete.screens.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
@@ -66,27 +66,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".measure.MeasureActivity"
+            android:name="de.westnordost.streetcomplete.screens.measure.MeasureActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".FragmentContainerActivity" />
-        <activity android:name=".about.AboutActivity" />
+        <activity android:name="de.westnordost.streetcomplete.screens.FragmentContainerActivity" />
+        <activity android:name="de.westnordost.streetcomplete.screens.about.AboutActivity" />
         <activity
-            android:name=".settings.debug.ShowQuestFormsActivity"
+            android:name="de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode" />
         <activity
-            android:name=".settings.debug.ShowLinksActivity"
+            android:name="de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity"
             android:configChanges="orientation|screenSize|uiMode" />
         <activity
-            android:name=".user.UserActivity"
+            android:name="de.westnordost.streetcomplete.screens.user.UserActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <service
-            android:name=".data.download.DownloadService"
+            android:name="de.westnordost.streetcomplete.data.download.DownloadService"
             android:foregroundServiceType="dataSync" />
         <service
-            android:name=".data.upload.UploadService"
+            android:name="de.westnordost.streetcomplete.data.upload.UploadService"
             android:foregroundServiceType="dataSync" />
         <provider
             android:name="androidx.core.content.FileProvider"

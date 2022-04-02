@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
-import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 abstract class ANameWithSuggestionsForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
@@ -26,7 +26,7 @@ abstract class ANameWithSuggestionsForm<T> : AbstractQuestFormAnswerFragment<T>(
             ))
         }
 
-        binding.nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun isFormComplete() = name.isNotEmpty()

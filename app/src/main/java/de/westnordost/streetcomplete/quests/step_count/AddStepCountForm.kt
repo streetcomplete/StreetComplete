@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.step_count
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
 
@@ -16,7 +16,7 @@ class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.countInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.countInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun isFormComplete() = count > 0

@@ -23,7 +23,6 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
     override val wikiLink = "Key:board_type"
     override val icon = R.drawable.ic_quest_board_type
     override val isDeleteElementEnabled = true
-
     override val questTypeAchievements = listOf(RARE, CITIZEN, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_type_title

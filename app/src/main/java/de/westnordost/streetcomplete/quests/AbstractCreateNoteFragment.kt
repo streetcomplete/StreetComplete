@@ -4,14 +4,14 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.popIn
-import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.popOut
 
 /** Abstract base class for a bottom sheet that lets the user create a note */
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
@@ -35,7 +35,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
             childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
         }
 
-        noteInput.addTextChangedListener(TextChangedWatcher { updateOkButtonEnablement() })
+        noteInput.doAfterTextChanged { updateOkButtonEnablement() }
         okButton.setOnClickListener { onClickOk() }
 
         updateOkButtonEnablement()

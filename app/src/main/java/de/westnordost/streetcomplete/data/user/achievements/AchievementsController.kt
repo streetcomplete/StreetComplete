@@ -32,7 +32,7 @@ class AchievementsController(
 
         override fun onUpdatedAll() {
             // when syncing statistics from server, any granted achievements should be
-            // granted silently (without notification) because no user action was involved
+            // granted silently (without message) because no user action was involved
             updateAllAchievementsSilently()
             updateAchievementLinks()
         }
@@ -111,7 +111,7 @@ class AchievementsController(
                 for (level in (currentLevel + 1)..achievedLevel) {
                     achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
 
-                    // one notification for each achievement level
+                    // one message for each achievement level
                     if (!silent && !statisticsSource.isSynchronizing) {
                         listeners.forEach { it.onAchievementUnlocked(achievement, level) }
                     }

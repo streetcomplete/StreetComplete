@@ -35,7 +35,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val questTypeAchievements = listOf(VEG, CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegan_name_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegan_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)

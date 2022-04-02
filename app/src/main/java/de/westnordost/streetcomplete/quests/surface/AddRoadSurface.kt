@@ -35,16 +35,9 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        val isSquare = tags["area"] == "yes"
-        return when {
-            hasName && isSquare ->  R.string.quest_streetSurface_square_name_title
-            hasName ->              R.string.quest_streetSurface_name_title
-            isSquare ->             R.string.quest_streetSurface_square_title
-            else ->                 R.string.quest_streetSurface_title
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags["area"] == "yes") R.string.quest_streetSurface_square_title
+        else                       R.string.quest_streetSurface_title
 
     override fun createForm() = AddRoadSurfaceForm()
 

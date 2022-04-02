@@ -19,7 +19,6 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override val wikiLink = "Tag:highway=construction"
     override val icon = R.drawable.ic_quest_road_construction
     override val hasMarkersAtEnds = true
-
     override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int {
@@ -27,7 +26,10 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
         val isCycleway = tags["construction"] == "cycleway"
         val isFootway = tags["construction"] == "footway"
         val isSteps = tags["construction"] == "steps"
-
+        /* Alternative could be "Is this construction finished?" and just display the feature name
+        *  (e.g. "cycleway under construction") of the element above, but there are no iD presets
+        *  for "highway=construction + construction=*" so such road would just be named
+        *  "Road closed". Hence, keeping this (for now). */
         return when {
             isRoad -> R.string.quest_construction_road_title
             isCycleway -> R.string.quest_construction_cycleway_title
