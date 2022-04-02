@@ -35,8 +35,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
         getMapData().filter("""
             nodes, ways with
             compressed_air
-            or service:bicycle:pump
-            or amenity ~ compressed_air|fuel|bicycle_repair_station
+            or amenity ~ compressed_air|fuel
         """)
 
     override fun createForm() = YesNoQuestAnswerFragment()
