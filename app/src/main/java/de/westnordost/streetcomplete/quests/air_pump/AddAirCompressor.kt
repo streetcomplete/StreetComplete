@@ -18,7 +18,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
        nodes, ways with
        amenity = fuel
        and (
-           !compressed_air and !service:bicycle:pump
+           !compressed_air
            or compressed_air older today -6 years
        )
        and access !~ private|no
@@ -34,7 +34,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
             nodes, ways with
-            compressed_air
+            compressed_air = yes
             or amenity ~ compressed_air|fuel
         """)
 
