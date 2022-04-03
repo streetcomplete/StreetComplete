@@ -66,7 +66,7 @@ open class UpdatePresetsTask : DefaultTask() {
             if (name.endsWith(".min.json")) return@mapNotNull null
 
             val filename = name.subSequence(0, name.indexOf(".")).toString()
-            val locale = Locale.forLanguageTag(filename.replace('@','-'))
+            val locale = Locale.forLanguageTag(filename.replace('@', '-'))
             LocalizationMetadata(locale, it["download_url"] as String)
         }
     }

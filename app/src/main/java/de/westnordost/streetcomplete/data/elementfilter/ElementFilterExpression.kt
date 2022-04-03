@@ -29,7 +29,7 @@ import java.util.EnumSet
  *  [matches] of an [ElementFilterExpression] parsed from the above string returns true for any
  *  residential or tertiary roads that have no name tagged.
  *
- *  Cheatsheet for element filter syntax:
+ *  ### Cheatsheet for element filter syntax:
  *  | expression                     | [matches] returns `true` if element…                                          |
  *  | :----------------------------- | :---------------------------------------------------------------------------- |
  *  | `shop`                         | has a tag with key `shop`                                                     |
@@ -50,9 +50,11 @@ import java.util.EnumSet
  *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
  *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
  *
+ *  ### Equivalent expressions
  *  | expression                     | equivalent expression                                    |
  *  | :----------------------------- | :------------------------------------------------------- |
  *  | `shop and shop = boat`         | `shop = boat`                                            |
+ *  | `!shop or shop != boat`        | `shop != boat`                                           |
  *  | `shop = car or shop = boat`    | `shop ~ car|boat`                                        |
  *  | `craft or shop and name`       | `craft or (shop and name)` (`and` has higher precedence) |
  *  | `!(amenity and craft)`         | **<error>** (negation of expression not supported)       |

@@ -49,7 +49,7 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
-    /** Advance cursor by x and return the string that inbetween the two positions.
+    /** Advance cursor by x and return the string that between the two positions.
      * If cursor+x is beyond the end of the string, the method will just return the string until
      * the end of the string
      *

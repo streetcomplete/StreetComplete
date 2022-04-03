@@ -34,7 +34,7 @@ v41.2: |
   <ul>
   <li>Improved accuracy of measuring with AR (#3832) but also tag that it has been measured with AR</li>
   <li>Cycleway and road width, number of lanes: Don't ask for sections that have explicitly been marked as "transitions" (#3835, #3842), by @mnalis</li>
-  <li>Cycleway width: Fix the quest did not dissappear after solving in rare cases (#3843)</li>
+  <li>Cycleway width: Fix the quest did not disappear after solving in rare cases (#3843)</li>
   <li>Number of lanes: Also ask for trunks and motorways (#3849), by @matkoniecz</li>
   </ul>
 
