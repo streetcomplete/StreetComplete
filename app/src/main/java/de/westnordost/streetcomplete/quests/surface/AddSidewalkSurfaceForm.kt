@@ -7,25 +7,30 @@ import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
 import de.westnordost.streetcomplete.quests.LastSelection
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
-import de.westnordost.streetcomplete.quests.StreetSideItem
 import de.westnordost.streetcomplete.quests.StreetSideItem2
 import de.westnordost.streetcomplete.quests.sidewalk.imageResId
 import de.westnordost.streetcomplete.quests.sidewalk.titleResId
+import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 
 class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, SidewalkSurfaceAnswer>() {
 
-    override val items =
-        (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).map {
-            StreetSideItem(
+    override val items: List<StreetSideDisplayItem<SurfaceAnswer>>
+        get() = getDisplayItems()
+
+    private fun getDisplayItems(): List<StreetSideDisplayItem<SurfaceAnswer>> {
+        return (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).map {
+            StreetSideItem2(
                 SurfaceAnswer(it),
-                R.drawable.ic_sidewalk_illustration_yes,
-                it.asItem().titleId,
-                it.asItem().drawableId!!,
-                it.asItem().drawableId
+                ResImage(R.drawable.ic_sidewalk_illustration_yes),
+                it.asItem().titleId?.let { it1 -> ResText(it1) },
+                ResImage(it.asItem().drawableId!!),
+                DrawableImage(RotatedCircleDrawable(resources.getDrawable(it.asItem().drawableId!!)))
             )
         }
+    }
 
     private val currentSidewalks get() = createSidewalkSides(osmElement!!.tags)
 
@@ -89,12 +94,12 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         } else {
             arr[1]
         }
-        val leftStreetSideItem = StreetSideItem(
+        val leftStreetSideItem = StreetSideItem2(
             SurfaceAnswer(leftSurface, leftNote),
-            R.drawable.ic_sidewalk_illustration_yes,
-            leftSurface.asItem().titleId,
-            leftSurface.asItem().drawableId!!,
-            leftSurface.asItem().drawableId
+            ResImage(R.drawable.ic_sidewalk_illustration_yes),
+            leftSurface.asItem().titleId?.let { ResText(it) },
+            ResImage(leftSurface.asItem().drawableId!!),
+            DrawableImage(RotatedCircleDrawable(resources.getDrawable(leftSurface.asItem().drawableId!!)))
         )
 
         val rightSurface = Surface.values().find { it.toString() == arr[2] }!!
@@ -103,12 +108,12 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         } else {
             arr[3]
         }
-        val rightStreetSideItem = StreetSideItem(
+        val rightStreetSideItem = StreetSideItem2(
             SurfaceAnswer(rightSurface, rightNote),
-            R.drawable.ic_sidewalk_illustration_yes,
-            rightSurface.asItem().titleId,
-            rightSurface.asItem().drawableId!!,
-            rightSurface.asItem().drawableId
+            ResImage(R.drawable.ic_sidewalk_illustration_yes),
+            rightSurface.asItem().titleId?.let { ResText(it) },
+            ResImage(rightSurface.asItem().drawableId!!),
+            DrawableImage(RotatedCircleDrawable(resources.getDrawable(rightSurface.asItem().drawableId!!)))
         )
 
         return LastSelection(leftStreetSideItem, rightStreetSideItem)

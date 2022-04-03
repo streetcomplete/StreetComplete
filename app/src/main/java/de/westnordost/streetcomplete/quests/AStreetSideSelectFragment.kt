@@ -35,7 +35,7 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
 
     private var streetSideRotater: StreetSideRotater? = null
 
-    open var isDefiningBothSides: Boolean = false
+    open var isDefiningBothSides: Boolean = true
     open var isLeftSideNotDefined: Boolean = false
     open var isRightSideNotDefined: Boolean = false
 
