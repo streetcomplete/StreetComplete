@@ -21,7 +21,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
      */
     override val elementFilter = """
         nodes, ways with
-        amenity = bicycle_repair_station or shop = bicycle
+        (amenity = bicycle_repair_station or shop = bicycle)
         and (
             !compressed_air and !service:bicycle:pump
             or service:bicycle:pump older today -6 years
