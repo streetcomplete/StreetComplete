@@ -1,10 +1,12 @@
 # Whether signs for alternate-side-parking (bi-weekly - first/last half of month) exist
 #
-# sources:
+# Sources:
 # - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
 # - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
 # - mapillary
 #
+# See the files in https://github.com/streetcomplete/StreetComplete/tree/master/res/graphics/street%20parking/bi-weekly%20no%20parking%20sign
+# for a generalized visualization of each. (those are (c) Tobias Zwick, Licence: CC-BY-SA 4.0)
 default: false
 BE: true # https://nl.wikipedia.org/wiki/Beurtelings_parkeren
 ES: true # https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_of_Spain

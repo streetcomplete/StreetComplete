@@ -1,7 +1,8 @@
-# the style of the road markings that separates the traffic flow
-# 
-# unless stated otherwise, the lines are continuous
-# 
+# Style of the road markings that separates the traffic flow, i.e. the center line.
+#
+# Usually, on two-laned roads (one for each direction), the center line is dashed unless it is in a
+# no passing (=no overtaking) zone. Otherwise it is a continuous line.
+#
 # source - Mapillary
 default: white
 AE: yellow

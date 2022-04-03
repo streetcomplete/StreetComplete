@@ -1,7 +1,15 @@
+# Style of the road markings that indicate that it is prohibited to stand here. No default - if
+# not specified, there do not exist dedicated lane markings for "no standing".
+#
+# unless stated otherwise, the lines are continuous, usually at a small
+# distance to the curb and either ending in a short line to the curb
+# like this └────┘ or like this ├────┤ (no differentiation is made in this list)
+# to indicate the start/end.
+#
 # style of no-standing line
 SG: yellow zig-zags # https://mothership.sg/2019/03/waiting-double-yellow-lines-singapore/
-# "White on curb" is actually a passenger loading zone, which requires a more detailed 
+# "White on curb" is actually a passenger loading zone, which requires a more detailed
 # tagging (parking:condition:reason=passenger_loading_zone). Mappers in California prefer that
 # this option is not displayed at all as long as there is not explicit support to project that,
-# i.e. this would go into a file named passengerLoadingZoneLineStyle.yml 
+# i.e. this would go into a file named passengerLoadingZoneLineStyle.yml
 # US-CA: white on curb # https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/parking/

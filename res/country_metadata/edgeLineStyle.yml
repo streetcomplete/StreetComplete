@@ -1,6 +1,9 @@
-# the style of the road markings that separate the carriageway from the shoulder
-# 
-# unless stated otherwise, the lines are continuous
+# Style of the road markings that separate the carriageway from the shoulder. Usually, such edge
+# lines can be found on rural roads, whether there is a real shoulder or not. Within urban areas,
+# lines at the edge of the road surface sometimes have other meanings (like e.g. a parking
+# restriction).
+#
+# Unless stated otherwise, the lines are continuous.
 #
 # source - Mapillary
 default: white

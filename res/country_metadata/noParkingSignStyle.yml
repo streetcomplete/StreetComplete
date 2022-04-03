@@ -1,6 +1,14 @@
-# style of no-parking sign
-# 
-# styles:
+# Style of "no parking" sign.
+#
+# Sources:
+# - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
+# - https://commons.wikimedia.org/wiki/Parking_sign
+# - https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
+#
+# other sources given below
+#
+# Styles:
 # - vienna             - 🚫 on blue background
 # - vienna variant     - a black P behind a 🚫 on white background
 # - mutcd              - a black P behind a 🚫 on white background
@@ -10,14 +18,11 @@
 # - sadc               - a black P in front of a mirrored 🚫 on white background
 # - australia          - a black P behind a mirrored 🚫 on white background
 # - taiwan             - a black 停 in front of a 🚫 on white background
-#  
-# sources:
-# - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
-# - https://commons.wikimedia.org/wiki/Parking_sign
-# - https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
-# - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
 #
-# other sources given below
+# In reality, each sign in each country looks slightly different, hence this is just a grouping by
+# general style.
+# See the files in https://github.com/streetcomplete/StreetComplete/tree/master/res/graphics/street%20parking/no%20parking%20sign
+# for a generalized visualization of each. (those are (c) Tobias Zwick, Licence: CC-BY-SA 4.0)
 default: vienna
 AF: vienna # https://www.mapillary.com/app/?pKey=3959438737485800
 AG: vienna # https://www.mapillary.com/app/?pKey=3688458264615108

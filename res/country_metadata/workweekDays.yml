@@ -1,5 +1,7 @@
-# the number of days in a workweek
-# 
+# The number of days in a workweek.
+# Combine this info with firstDayOfWorkweek.yml to find the range of weekdays in a workweek, e.g.
+# MO-FR.
+#
 # Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 2021-11-25)
 default: 5
 BO: 6

@@ -1,4 +1,5 @@
-# the first day in a workweek (not necessarily the first day of the week in a calendar)
+# First day in a workweek (not necessarily the first day of the week in a calendar). I.e. the
+# day before is a resting day.
 #
 # Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 2021-11-25)
 default: Mo

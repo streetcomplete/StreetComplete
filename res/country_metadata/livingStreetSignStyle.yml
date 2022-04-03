@@ -1,18 +1,24 @@
-# style of living street (aka home zone) sign
+# Style of living street (aka home zone) sign. There is no default. See hasLivingStreet.yml whether
+# there exists the concept of a living street at all in a country.
 #
-# most signs show the same motive: A dad and son playing ball in the foreground, 
-# a detached house and a car in the background. All in white on blue.
-# 
-# sources:
+# Sources:
 # - same as hasLivingStreet
 #
-# styles:
+# Most signs show the same motive: A dad and son playing ball in the foreground,
+# a detached house and a car in the background.
+#
+# Styles:
 # - vienna     - white on blue, white border, wide/landscape
 # - sadc       - same as vienna, only in portrait orientation and with red border
 # - russia     - same as vienna, only in portrait orientation
 # - france     - white on blue, white border, square, also shows a cylist
 # - australia  - black "Shared zone" with speed limit sign on white rectangular narrow/portrait with black border
 # - mexico     - same as vienna, but black on yellow
+#
+# In reality, each sign in each country looks slightly different, hence this is just a grouping by
+# general style.
+# See the files in https://github.com/streetcomplete/StreetComplete/tree/master/res/graphics/living%20street
+# for a generalized visualization of each. (those are (c) Tobias Zwick, Licence: CC-BY-SA 4.0)
 AL: vienna
 AM: russia
 AO: sadc
@@ -20,8 +26,8 @@ AT: vienna
 AU: australia # https://en.wikipedia.org/wiki/Shared_Zone
 BA: vienna
 BE: vienna
-BG: vienna 
-BW: vienna 
+BG: vienna
+BW: vienna
 BY: russia
 CH: vienna # https://de.wikipedia.org/wiki/Begegnungszone
 CZ: vienna

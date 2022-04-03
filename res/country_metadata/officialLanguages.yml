@@ -1,12 +1,23 @@
 # list of languages spoken and written by country
-# 
-# ordered by:
-# 1. statewide official (used by government)
-# 2. spoken trade languages / lingua franca(s) if the official language does not do the job
-# 3. spoken national majority languages in mother tongue by importance 
-# 4. languages spoken by a clear minority only if it spoken by the majority in their region and enjoys some official recognition (i.e. language used on signs) there
-# 
-# a good source (which doesn't make a distinction between spoken natively and spoken in general though which this list tries to make, so additional research is necessary): http://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html
+#
+# Ordered by:
+#
+# 1. Statewide official (used by government) language(s)
+#
+# 2. Spoken trade languages / lingua franca(s) if the official language(s) do not do the job.
+#    This is often the case in Africa where the official language is e.g. French but the majority
+#    of the (rural) population doesn't speak it.
+#
+# 3. Spoken national majority languages in mother tongue by importance,
+#    such as Catalan, Galician, Asturian etc. in Spain.
+#
+# 4. languages spoken by a clear minority are only included if it spoken by the majority in their
+#    region and enjoys some official recognition (i.e. language used on signs) there
+#
+# Sources:
+# - a good source (which doesn't make a distinction between spoken natively and spoken in general
+#   though which this list tries to make, so additional research is necessary) is
+#   http://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html
 default: [en]
 AD: [ca]
 AE: [ar]

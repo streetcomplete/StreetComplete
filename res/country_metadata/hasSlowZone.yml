@@ -1,6 +1,8 @@
-# Whether the concept of a slow zone (aka 30 km/h zone) is known
+# Whether the concept of a slow zone (aka 30 km/h zone) is known in this country. In a slow zone, no
+# repeater signs for the low speed limit are necessary. Instead, there'll be a sign that marks the
+# end of such a slow zone. Additional restrictions may apply depending on the legislation.
 #
-# see https://en.wikipedia.org/wiki/30_km/h_zone and extend
+# see https://en.wikipedia.org/wiki/30_km/h_zone
 default: false
 # European countries, except Sweden and Bulgaria
 AD: true

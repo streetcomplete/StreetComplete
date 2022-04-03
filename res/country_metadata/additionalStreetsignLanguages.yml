@@ -1,6 +1,10 @@
-# A mapping of additional languages that one can expect to find on a street sign that are not official languages.
-# "Latn" stands for romanization of the name in another script, see ISO 15924
-# 
+# Mapping of additional languages that one can expect to find on a street sign that are not
+# official languages (see officialLanguages.yml for that).
+#
+# OpenStreetMap communities in different countries use different tags to denote an "international"
+# name: Some use "name:en", some use e.g. "name:ko-Latn, (romanization of Korean, see ISO 15924) and
+# some use "int_name" (international name).
+#
 # Sources:
 # - https://wiki.openstreetmap.org/wiki/Multilingual_names
 # - https://commons.wikimedia.org/wiki/Category:Street_signs_by_country

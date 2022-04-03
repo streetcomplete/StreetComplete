@@ -1,7 +1,7 @@
-# The position of the label text seen on a slow zone (i.e. 30km-zone) sign
-# 
+# The position of the label text seen on a slow zone (aka 30km/h-zone) sign. No default. If not
+# specified, there is no label text on the sign.
+#
 # research notes in https://github.com/streetcomplete/StreetComplete/pull/3359
-
 AM: top
 AT: bottom
 AU: bottom

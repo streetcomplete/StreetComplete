@@ -1,5 +1,8 @@
-# religions that should be shown first before the order defined in the form.
-# no total order required. Just mention the religions that should show within the first few entries
+# Popular religions by countries sorted by number of followers.
+#
+# This file is insofar incomplete that the list given for each country is not exclusive. It is
+# intended in the way that whatever is specified in the list is shown first before other religions
+# shown in the UI.
 default: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 AE: [muslim]
 AF: [muslim]

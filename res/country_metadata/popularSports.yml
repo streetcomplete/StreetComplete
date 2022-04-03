@@ -1,5 +1,8 @@
-# sports that should be shown first before the order defined in the form.
-# no total order required. Just mention the sports that should show within the first few entries
+# Popular sports by countries.
+#
+# This file is insofar incomplete that the list given for each country is not exclusive. It is
+# intended in the way that whatever is specified in the list is shown first before other sports
+# shown in the UI.
 default: []
 AE: [tennis, golf]
 AR: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]

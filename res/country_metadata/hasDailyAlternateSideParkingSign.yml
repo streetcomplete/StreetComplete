@@ -1,10 +1,12 @@
 # Whether signs for alternate-side-parking (even or odd days) exist
-# 
+#
 # sources:
 # - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
 # - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
 # - mapillary
-# 
+#
+# See the files in https://github.com/streetcomplete/StreetComplete/tree/master/res/graphics/street%20parking/alternate%20side%20parking%20sign
+# for a generalized visualization of each. (those are (c) Tobias Zwick, Licence: CC-BY-SA 4.0)
 default: false
 AL: true # no source but other ex-Jugoslawia states have it
 AM: true # https://en.wikipedia.org/wiki/Road_signs_in_Armenia

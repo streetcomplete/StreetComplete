@@ -1,24 +1,28 @@
-# style of no-stopping sign
+# Style of "no stopping" sign.
 #
-# styles:
+# Sources:
+# - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
+# - https://commons.wikimedia.org/wiki/Parking_sign
+# - https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
+# - mapillary
+# other sources given below
+#
+# Styles:
 # - vienna       - a ⭕ crossed on blue background
 # - mutcd        - a ⭕ crossed on white background
 # - mutcd latin  - a black E behind a ⭕ crossed on white background
 # - mutcd text   - rectangular with text "NO STOPPING"
 # - sadc         - a black S in front of a mirrored 🚫 on white background
 # - australia    - a black S behind a mirrored 🚫 on white background
-# - colombia     - a black P behind a ⭕ crossed on white background 
+# - colombia     - a black P behind a ⭕ crossed on white background
 # - canada       - a black 🛑 (stop sign) behind a 🚫 on white background
 # - israel       - 🚫 on blue background with a white ╲ on top
-#  
-# sources:
-# - subpages of https://en.wikipedia.org/wiki/Template:Traffic_signs and linked sources
-# - https://commons.wikimedia.org/wiki/Parking_sign
-# - https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
-# - https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_by_country
-# - mapillary
 #
-# other sources given below
+# In reality, each sign in each country looks slightly different, hence this is just a grouping by
+# general style.
+# See the files in https://github.com/streetcomplete/StreetComplete/tree/master/res/graphics/street%20parking/no%20stopping%20sign
+# for a generalized visualization of each. (those are (c) Tobias Zwick, Licence: CC-BY-SA 4.0)
 default: vienna
 AF: vienna # https://www.mapillary.com/app/?pKey=3959438737485800
 AG: vienna
