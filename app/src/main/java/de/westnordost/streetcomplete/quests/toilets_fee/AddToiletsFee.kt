@@ -14,6 +14,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
           amenity = toilets
           and access !~ private|customers
           and !fee
+          and (!seasonal or seasonal = no)
     """
     override val changesetComment = "Add toilets fee"
     override val wikiLink = "Key:fee"

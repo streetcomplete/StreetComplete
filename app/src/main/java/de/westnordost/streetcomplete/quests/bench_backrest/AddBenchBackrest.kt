@@ -20,6 +20,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
           and (!area or area = no)
           and !backrest
           and !bench:type
+          and (!seasonal or seasonal = no)
     """
     override val changesetComment = "Add backrest information to benches"
     override val wikiLink = "Tag:amenity=bench"
