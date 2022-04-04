@@ -194,6 +194,7 @@ quest icons/
     beach.svg                        parts taken from beach_volleyball.svg by Adrien Pavie
     beer.svg                         modified from Twemoji: U+1F37A
     bench_poi.svg
+    bench_material.svg               modified from bench_poi.svg by Matija Nalis
     bench_public_transport.svg
     bicycle.svg
     bicycle_parking.svg

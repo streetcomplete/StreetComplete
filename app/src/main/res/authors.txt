@@ -31,6 +31,13 @@ barrier_bicycle_barrier_dou... CC-BY-SA-4.0      Im Fokus https://commons.wikime
 barrier_bicycle_barrier_tri... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier1.jpg
 barrier_bicycle_barrier_til... CC-BY-SA 2.0      M J Roscoe https://wiki.openstreetmap.org/wiki/File:Cycle_barrier_squeeze_image.jpg
 
+bench_concrete.jpg             CC-BY-SA 4.0      AgainErick https://commons.wikimedia.org/wiki/File:Street_bench_-_Diergaarde_Blijdorp_-_Rotterdam_-_Concrete.jpg
+bench_metal.jpg                CC-BY-SA 2.5      Finne Boonen https://commons.wikimedia.org/wiki/File:Botanique_bank.jpg
+bench_plastic.jpg              CC-BY-SA 3.0      Lionel Allorge https://commons.wikimedia.org/wiki/File:Aire_de_jeux_%C3%A0_Les_Moli%C3%A8res_le_9_ao%C3%BBt_2016_-_12.jpg
+bench_wood.jpg                 CC-BY-SA 2.0      Ronald Saunders https://commons.wikimedia.org/wiki/File:Flickr_-_ronsaunders47_-_POND_VIEW_BENCH._BIRCHWOOD_.WARRINGTON..jpg
+bench_brick.jpg                CC-BY-SA 2.0      niiicedave https://wordpress.org/openverse/image/990a1a66-9332-456c-a0c5-0a7b6d7fff4f/
+bench_stone.jpg                CC-BY-SA 3.0      Andrew Butko https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B8%D0%B2%D0%B0%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D0%B4%D0%B2%D0%BE%D1%80%D0%B5%D1%86_053.jpg
+
 bicycle_parking_type_buildi... CC-BY-SA 3.0      Visitor7 https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      Rept0n1x https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
 bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      Tabl-trai https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG

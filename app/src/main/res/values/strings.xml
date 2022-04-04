@@ -689,6 +689,14 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
 
+    <string name="quest_benchMaterial_title">What’s this made of?</string>
+    <string name="quest_benchMaterial_wood">Wood</string>
+    <string name="quest_benchMaterial_metal">Metal</string>
+    <string name="quest_benchMaterial_plastic">Plastic</string>
+    <string name="quest_benchMaterial_concrete">Concrete</string>
+    <string name="quest_benchMaterial_stone">Stone</string>
+    <string name="quest_benchMaterial_brick">Bricks</string>
+
     <string name="quest_bicycle_barrier_type_title">What type of bicycle barrier is this?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal to the path</string>
     <string name="quest_barrier_bicycle_type_tilted">Narrow passage, smaller toward top</string>

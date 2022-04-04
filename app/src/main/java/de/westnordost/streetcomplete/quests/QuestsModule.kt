@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
+import de.westnordost.streetcomplete.quests.bench_material.AddBenchMaterial
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
@@ -255,6 +256,7 @@ fun questTypeRegistry(
     AddReligionToWaysideShrine(),
 
     AddPowerPolesMaterial(),
+    AddBenchMaterial(),
 
     AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
 
