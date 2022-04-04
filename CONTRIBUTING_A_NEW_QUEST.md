@@ -456,9 +456,9 @@ Images should be free of visual debris, not misleading. Though it is fine to use
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
 
 - [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
-- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three quare images in each row)
-- [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three quare images in each row)
-- [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three quare images in each row)
+- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
+- [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three square images in each row)
+- [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three square images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
