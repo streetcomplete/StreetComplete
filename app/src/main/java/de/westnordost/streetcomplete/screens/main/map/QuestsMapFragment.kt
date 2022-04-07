@@ -74,7 +74,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         set(value) {
             if (field == value) return
             field = value
-            updateLayer()
+            styleableLayerManager?.layer = layer
         }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
@@ -241,12 +241,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override fun clearMarkersForCurrentQuest() {
         geometryMarkersMapComponent?.clear()
-    }
-
-    /* ------------------------------------- Map data layer  ------------------------------------ */
-
-    private fun updateLayer() {
-        styleableLayerManager?.layer = layer
     }
 
     /* --------------------- Switching between quests and edit history pins --------------------- */

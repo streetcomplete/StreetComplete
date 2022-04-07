@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
+import de.westnordost.streetcomplete.layers.Layer
+import de.westnordost.streetcomplete.layers.way_lit.WayLitLayer
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -27,6 +29,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
+        fun onSelectedLayer(layer: Layer?)
     }
 
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -76,7 +79,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     }
 
     private fun onSwitchToLayersMode() {
-        TODO()
+        listener?.onSelectedLayer(WayLitLayer()) // TODO have an actual selection
     }
 
     private fun setTeamMode(enabled: Boolean) {

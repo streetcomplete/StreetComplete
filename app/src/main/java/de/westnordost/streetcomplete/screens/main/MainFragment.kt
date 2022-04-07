@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
+import de.westnordost.streetcomplete.layers.Layer
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -358,7 +359,8 @@ class MainFragment :
     }
 
     override fun onClickedElement(elementKey: ElementKey) {
-        TODO()
+        context?.toast("Clicked on ${elementKey.type}#${elementKey.id}")
+        // TODO implement
     }
 
     //endregion
@@ -391,6 +393,10 @@ class MainFragment :
         }
 
         return enclosingBBox
+    }
+
+    override fun onSelectedLayer(layer: Layer?) {
+        mapFragment?.layer = layer
     }
 
     /* ------------------------------ UndoButtonFragment.Listener ------------------------------- */

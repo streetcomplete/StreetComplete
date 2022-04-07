@@ -96,7 +96,6 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
     }
 }
 
-
 private const val ELEMENT_TYPE = "element_type"
 private const val ELEMENT_ID = "element_id"
 
