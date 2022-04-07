@@ -45,9 +45,11 @@ class StyleableLayerManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    private val isPrivateFilter by lazy {
-        "access ~ private|no and (!foot or foot ~ private|no)".toElementFilterExpression()
-    }
+    private val isPrivateFilter by lazy { """
+        nodes, ways, relations with
+        access ~ private|no
+        and (!foot or foot ~ private|no)
+    """.toElementFilterExpression() }
 
     /** The layer to display */
     var layer: Layer? = null
