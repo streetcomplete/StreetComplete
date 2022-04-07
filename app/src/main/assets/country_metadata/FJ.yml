@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [ANZ, BSP, Westpac, BSP ATM]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 542
 officialLanguages: [en, fj, hif]
-orchardProduces: [coconut, pepper, pineapple, banana, papaya, tomato, orange, guava, mango, mangosteen, chilli_pepper, sweet_pepper, coffee, cacao]
 popularReligions: [christian, hindu]
+atmOperators: [ANZ, BSP, Westpac, BSP ATM]
+orchardProduces: [coconut, pepper, pineapple, banana, papaya, tomato, orange, guava, mango, mangosteen, chilli_pepper, sweet_pepper, coffee, cacao]

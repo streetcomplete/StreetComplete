@@ -1,6 +1,0 @@
-# Whether the concept of a center left turn lane (aka "two-way left turn lane" (TWLT)) is known
-#
-# See https://en.wikipedia.org/wiki/Reversible_lane#Turn_lanes_and_flush_medians
-default: false
-CA: true
-US: true

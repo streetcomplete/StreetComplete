@@ -8,6 +8,7 @@ import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +27,6 @@ import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
-import de.westnordost.streetcomplete.view.TextChangedWatcher
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
@@ -56,7 +56,7 @@ class NoteDiscussionForm : AbstractQuestFormAnswerFragment<NoteAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.noteInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
 
         otherAnswersButton?.visibility = View.GONE
 

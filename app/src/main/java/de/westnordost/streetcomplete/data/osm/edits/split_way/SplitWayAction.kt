@@ -120,7 +120,7 @@ private fun getSplitWayAtIndices(
         nodesChunks.first().addAll(0, lastChunk)
     }
 
-    /* Instead of deleting the old way and replacing it with the new splitted chunks, one of the
+    /* Instead of deleting the old way and replacing it with the new split chunks, one of the
        chunks should use the id of the old way, so that it inherits the OSM history of the previous
        way. The chunk with the most nodes is selected for this.
        This is the same behavior as JOSM and Vespucci. */

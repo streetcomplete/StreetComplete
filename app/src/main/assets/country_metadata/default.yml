@@ -16,7 +16,6 @@ lengthUnits: [meter]
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: []
 popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
 regularShoppingDays: 6
@@ -24,3 +23,4 @@ roofsAreUsuallyFlat: false
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5
+orchardProduces: []

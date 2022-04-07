@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
-
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -13,7 +9,6 @@ import org.junit.Test
 
 class AddSmokingTest {
     private val questType = AddSmoking()
-
 
     @Test fun `not applicable to empty tags`() {
         assertFalse(questType.isApplicableTo(node()))
@@ -185,5 +180,4 @@ class AddSmokingTest {
             StringMapEntryAdd("smoking", "outside"),
         )
     }
-
 }

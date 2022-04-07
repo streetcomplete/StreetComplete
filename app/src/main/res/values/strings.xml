@@ -4,7 +4,7 @@
 
      The strings are sorted into categories so to
      - avoid merge conflicts (people tend to append strings at the end of the file)
-     - better overview over the strings, better context for translators (strins are presented in
+     - better overview over the strings, better context for translators (strings are presented in
        POEditor in the same order as in this file)
      -->
 <resources xmlns:tools="http://schemas.android.com/tools">
@@ -412,6 +412,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
     <string name="link_osrm_description">The fastest routing engine around</string>
     <string name="link_graphhopper_description">A flexible routing engine</string>
+    <string name="link_valhalla_description">Routing engine with a very small memory footprint, multi-modal routing, isochrones and more.</string>
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
@@ -424,7 +425,9 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
     <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
-
+    <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
+    <string name="link_thenandnow_description">Explore how OSM looked like in the early days compared to how it looks now!</string>
+    <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained therein on the map with iD or JOSM</string>
 
     <!-- Achievement screen -->
 
@@ -596,7 +599,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_stile_type_title">What type of stile is this?</string>
     <string name="quest_barrier_path_intersection">How does this path cross the barrier here?</string>
     <string name="quest_barrier_road_intersection">How does this road cross the barrier here?</string>
-    <string name="quest_barrier_type_gate">Gate</string>
+    <string name="quest_barrier_type_gate_any_size">"Gate, any size"</string>
     <string name="quest_barrier_type_lift_gate">Boom barrier</string>
     <string name="quest_barrier_type_bollard">Bollard(s)</string>
     <string name="quest_barrier_type_chain">Chain</string>

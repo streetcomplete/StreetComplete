@@ -26,7 +26,7 @@ v42.0: |
   <li>Fix crash issues on Android 5 (#3889, #3914), thanks @FloEdelmann</li>
   <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
   <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
-  <li>Fix rare crashes (#3888)</li>
+  <li>Fix rare crashes (#3888), thanks @tapetis</li>
   <li>Other minor enhancements and fixes (#3852, #3893, #3895, #3867...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
   </ul>
 
@@ -34,7 +34,7 @@ v41.2: |
   <ul>
   <li>Improved accuracy of measuring with AR (#3832) but also tag that it has been measured with AR</li>
   <li>Cycleway and road width, number of lanes: Don't ask for sections that have explicitly been marked as "transitions" (#3835, #3842), by @mnalis</li>
-  <li>Cycleway width: Fix the quest did not dissappear after solving in rare cases (#3843)</li>
+  <li>Cycleway width: Fix the quest did not disappear after solving in rare cases (#3843)</li>
   <li>Number of lanes: Also ask for trunks and motorways (#3849), by @matkoniecz</li>
   </ul>
 
