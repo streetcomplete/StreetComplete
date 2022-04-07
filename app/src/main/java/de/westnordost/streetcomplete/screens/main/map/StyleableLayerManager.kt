@@ -161,11 +161,7 @@ class StyleableLayerManager(
             is PointStyle -> style
             is PolygonStyle -> {
                 val color = overrideColor(style.color, element)
-                val strokeColor = style.strokeColor?.let { overrideColor(it, element) }
-                if (color !== style.color || strokeColor !== style.strokeColor) {
-                    style.copy(color = color, strokeColor = strokeColor)
-                } else
-                    style
+                if (color !== style.color) style.copy(color = color) else style
             }
             is PolylineStyle -> {
                 val strokeLeft = style.strokeLeft?.let { overrideStroke(it, element) }

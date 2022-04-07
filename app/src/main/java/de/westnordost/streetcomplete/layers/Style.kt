@@ -16,8 +16,6 @@ data class PolylineStyle(
 data class PolygonStyle(
     /** argb value as hex value, e.g. "#66ff00" */
     val color: String,
-    /** argb value as hex value, e.g. "#66ff00" */
-    val strokeColor: String?,
     /** label to show in the center of the area */
     val label: String?,
     // TODO LAYERS (maybe enable the possibility to add icons later)

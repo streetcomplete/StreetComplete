@@ -23,7 +23,6 @@ class WayLitLayer : Layer {
 }
 
 // TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
-// TODO LAYERS not show private things if unspecified -> simply modify colors -> needs standard colors
 
 private val LitStatus.color: String get() = when (this) {
     YES ->           "#ccff33"

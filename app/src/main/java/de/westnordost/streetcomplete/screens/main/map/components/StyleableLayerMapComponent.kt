@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.graphics.Color
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -9,11 +10,15 @@ import de.westnordost.streetcomplete.layers.PolylineStyle
 import de.westnordost.streetcomplete.layers.Style
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.util.ktx.darken
+import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 /** Takes care of displaying styled map data */
 class StyleableLayerMapComponent(ctrl: KtMapController) {
 
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
+
+    private val darkenedColors = HashMap<String, String>()
 
     /** Shows/hides the map data */
     var isVisible: Boolean
@@ -30,7 +35,7 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
                 is PolygonStyle -> {
                     getHeight(feature.element.tags)?.let { props["height"] = it.toString() }
                     props["color"] = feature.style.color
-                    props["strokeColor"] = feature.style.strokeColor ?: feature.style.color
+                    props["strokeColor"] = getDarkenedColor(feature.style.color)
                     feature.style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
@@ -68,6 +73,10 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
         if (buildingLevels != null) return buildingLevels + (roofLevels ?: 0f)
         return null
     }
+
+    // no need to parse, modify and write to string darkening the same colors for every single element
+    private fun getDarkenedColor(color: String): String =
+        darkenedColors.getOrPut(color) { toARGBString(darken(Color.parseColor(color), 0.67f)) }
 
     /** Clear map data */
     fun clear() {
