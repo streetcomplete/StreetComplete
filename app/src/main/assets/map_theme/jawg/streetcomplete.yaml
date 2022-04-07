@@ -169,6 +169,7 @@ layers:
             filter: { type: [line], color: true }
             draw:
                 geometry-lines:
+                    interactive: true
                     color: function() { return feature.color; }
                     width: function() { return feature.width; }
                     order: 1000
@@ -178,6 +179,7 @@ layers:
             filter: { type: [line], colorLeft: true }
             draw:
                 geometry-lines:
+                    interactive: true
                     color: function() { return feature.colorLeft; }
                     width: 2m
                     offset: function() { return -feature.width / 2.0 - 1; }
@@ -188,6 +190,7 @@ layers:
             filter: { type: [line], colorRight: true }
             draw:
                 geometry-lines:
+                    interactive: true
                     color: function() { return feature.colorRight; }
                     width: 2m
                     offset: function() { return +feature.width / 2.0 + 1; }
@@ -198,6 +201,7 @@ layers:
             filter: { type: [poly] }
             draw:
                 geometry-polygons:
+                    interactive: true
                     color: function() { return feature.color; }
                     order: 1000
                     extrude: function() { return feature.height; }
@@ -212,6 +216,7 @@ layers:
             filter: { text: true }
             draw:
                 text:
+                    interactive: true
                     text_source: text
                     priority: 30
                     buffer: 4px

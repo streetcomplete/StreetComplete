@@ -105,6 +105,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
+        styleableLayerManager?.onNewScreenPosition()
     }
 
     /* ------------------------------------- Map setup ------------------------------------------ */
@@ -119,10 +120,10 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
-            val props = controller?.pickLabel(x, y)?.properties
 
             when (pinMode) {
                 PinMode.QUESTS -> {
+                    val props = controller?.pickLabel(x, y)?.properties
                     val questKey = props?.let { questPinsManager?.getQuestKey(it) }
                     if (questKey != null) {
                         listener?.onClickedQuest(questKey)
@@ -130,6 +131,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                     }
                 }
                 PinMode.EDITS -> {
+                    val props = controller?.pickLabel(x, y)?.properties
                     val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
                     if (editKey != null) {
                         listener?.onClickedEdit(editKey)
@@ -140,6 +142,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             }
 
             if (layer != null) {
+                val props = controller?.pickFeature(x, y)?.properties
                 val elementKey = props?.let { styleableLayerMapComponent?.getElementKey(it) }
                 if (elementKey != null) {
                     listener?.onClickedElement(elementKey)

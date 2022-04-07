@@ -54,7 +54,6 @@ class StyleableLayerManager(
     /** The layer to display */
     var layer: Layer? = null
         set(value) {
-            field = value
             if (field == value) return
             field = value
             if (value != null) start() else stop()
