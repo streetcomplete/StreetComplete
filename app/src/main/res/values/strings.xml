@@ -23,6 +23,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 
     <string name="action_about2">"About"</string>
     <string name="action_settings">"Settings"</string>
+    <string name="action_layers">"Switch to Layer Mode"</string>
     <string name="user_profile">My Profile</string>
     <string name="team_mode">Team Mode</string>
 

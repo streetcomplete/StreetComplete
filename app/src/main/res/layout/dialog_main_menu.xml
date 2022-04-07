@@ -67,6 +67,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/layersButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_vertical"
+            android:padding="16dp"
+            android:text="@string/action_layers"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            app:drawableTopCompat="@drawable/ic_experimental_48dp" />
+
+        <TextView
             android:id="@+id/settingsButton"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="144dp"

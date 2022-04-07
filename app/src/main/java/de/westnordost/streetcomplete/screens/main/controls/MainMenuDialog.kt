@@ -19,6 +19,7 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
+    onSwitchToLayersMode: () -> Unit,
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val binding = DialogMainMenuBinding.inflate(LayoutInflater.from(context))
@@ -48,6 +49,11 @@ class MainMenuDialog(
         }
         binding.downloadButton.setOnClickListener {
             onClickDownload()
+            dismiss()
+        }
+
+        binding.layersButton.setOnClickListener {
+            onSwitchToLayersMode()
             dismiss()
         }
 

@@ -64,6 +64,21 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     /* ------------------------------------------------------------------------------------------ */
 
+    internal fun onClickMainMenu() {
+        MainMenuDialog(
+            requireContext(),
+            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
+            this::onClickDownload,
+            teamModeQuestFilter::enableTeamMode,
+            teamModeQuestFilter::disableTeamMode,
+            this::onSwitchToLayersMode,
+        ).show()
+    }
+
+    private fun onSwitchToLayersMode() {
+        TODO()
+    }
+
     private fun setTeamMode(enabled: Boolean) {
         if (enabled) {
             context?.toast(R.string.team_mode_active)
@@ -73,16 +88,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
             context?.toast(R.string.team_mode_deactivated)
             binding.teamModeColorCircle.popOut()
         }
-    }
-
-    internal fun onClickMainMenu() {
-        MainMenuDialog(
-            requireContext(),
-            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
-            this::onClickDownload,
-            teamModeQuestFilter::enableTeamMode,
-            teamModeQuestFilter::disableTeamMode
-        ).show()
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */
