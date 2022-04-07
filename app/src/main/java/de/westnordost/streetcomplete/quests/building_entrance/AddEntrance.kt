@@ -19,7 +19,6 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
         ways, relations with building and building!=no and building!=service and building != shed
     """.toElementFilterExpression() }
 
-    // TODO - accept also roads?
     private val incomingWaysFilter by lazy { """
         ways with
           highway ~ path|footway and area != yes and access !~ private|no
