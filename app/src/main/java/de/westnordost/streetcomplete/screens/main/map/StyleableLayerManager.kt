@@ -5,12 +5,19 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.layers.Color
 import de.westnordost.streetcomplete.layers.Layer
+import de.westnordost.streetcomplete.layers.PointStyle
+import de.westnordost.streetcomplete.layers.PolygonStyle
+import de.westnordost.streetcomplete.layers.PolylineStyle
+import de.westnordost.streetcomplete.layers.StrokeStyle
+import de.westnordost.streetcomplete.layers.Style
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableLayerMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -37,6 +44,10 @@ class StyleableLayerManager(
     private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+
+    private val isPrivateFilter by lazy {
+        "access ~ private|no and (!foot or foot ~ private|no)".toElementFilterExpression()
+    }
 
     /** The layer to display */
     var layer: Layer? = null
@@ -141,8 +152,44 @@ class StyleableLayerManager(
     private fun createStyledElement(layer: Layer, mapData: MapDataWithGeometry, element: Element): StyledElement? {
         if (!layer.isDisplayed(element)) return null
         val geometry = mapData.getGeometry(element.type, element.id) ?: return null
-        val style = layer.getStyle(element)
+        val style = overrideStyle(layer.getStyle(element), element)
         return StyledElement(element, geometry, style)
+    }
+
+    private fun overrideStyle(style: Style, element: Element): Style {
+        return when (style) {
+            is PointStyle -> style
+            is PolygonStyle -> {
+                val color = overrideColor(style.color, element)
+                val strokeColor = style.strokeColor?.let { overrideColor(it, element) }
+                if (color !== style.color || strokeColor !== style.strokeColor) {
+                    style.copy(color = color, strokeColor = strokeColor)
+                } else
+                    style
+            }
+            is PolylineStyle -> {
+                val strokeLeft = style.strokeLeft?.let { overrideStroke(it, element) }
+                val strokeRight = style.strokeRight?.let { overrideStroke(it, element) }
+                val stroke = style.stroke?.let { overrideStroke(it, element) }
+                if (strokeLeft !== style.strokeLeft || strokeRight !== style.strokeRight || stroke !== style.stroke) {
+                    style.copy(stroke = stroke, strokeLeft = strokeLeft, strokeRight = strokeRight)
+                } else {
+                    style
+                }
+            }
+        }
+    }
+
+    private fun overrideStroke(stroke: StrokeStyle, element: Element): StrokeStyle {
+        val color = overrideColor(stroke.color, element)
+        return if (color !== stroke.color) stroke.copy(color = color) else stroke
+    }
+
+    private fun overrideColor(color: String, element: Element): String {
+        if ((color == Color.UNSPECIFIED || color == Color.UNSUPPORTED) && isPrivateFilter.matches(element)) {
+            return Color.UNSPECIFIED_NO_MATTER
+        }
+        return color
     }
 
     companion object {
