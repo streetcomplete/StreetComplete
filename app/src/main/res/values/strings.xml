@@ -1440,6 +1440,12 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
 
+    <string name="quest_entrance_reference">What is the code of this entrance and/or range of apartments reached from it?</string>
+    <string name="quest_entrance_reference_nothing_signed">No sign with code or flat range</string>
+    <string name="quest_entrance_reference_reference_label">Code of entrance:</string>
+    <string name="quest_entrance_reference_flat_range_label">Flat range:</string>
+    <string name="quest_entrance_reference_flat_range_to">to</string>
+
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
     <string name="quest_traffic_calming_type_hump">Hump (longer)</string>

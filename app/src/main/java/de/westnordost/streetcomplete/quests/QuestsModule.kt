@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBin
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
+import de.westnordost.streetcomplete.quests.crossing.AddEntranceReference
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
@@ -356,6 +357,7 @@ whether the postbox is still there in countries in which it is enabled */
     AddOneway(),
     AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
 
+    AddEntranceReference(),
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
     // ferry: usually visible from looking at the boat, but not always...
