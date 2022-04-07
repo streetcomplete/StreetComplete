@@ -16,11 +16,11 @@ import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnsw
 class AddEntranceForm : AListQuestAnswerFragment<EntranceAnswer>() {
     override val items: List<TextItem<EntranceAnswer>> = listOf(
         TextItem(MAIN, R.string.quest_building_entrance_main),
-        TextItem(SECONDARY, R.string.quest_building_entrance_main),
+        TextItem(SECONDARY, R.string.quest_building_entrance_secondary),
         TextItem(SERVICE, R.string.quest_building_entrance_service),
-        TextItem(GARAGE, R.string.quest_building_entrance_garage),
         TextItem(EXIT, R.string.quest_building_entrance_exit),
         TextItem(EMERGENCY_EXIT, R.string.quest_building_entrance_emergency_exit),
+        TextItem(GARAGE, R.string.quest_building_entrance_garage),
         TextItem(SHOP, R.string.quest_building_entrance_shop),
         TextItem(GENERIC, R.string.quest_building_entrance_yes),
         TextItem(DeadEnd, R.string.quest_building_entrance_dead_end),
