@@ -4,6 +4,8 @@ import android.graphics.Color
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.layers.PointStyle
 import de.westnordost.streetcomplete.layers.PolygonStyle
 import de.westnordost.streetcomplete.layers.PolylineStyle
@@ -29,8 +31,8 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
     fun set(features: Collection<StyledElement>) {
         layer.setFeatures(features.flatMap { feature ->
             val props = HashMap<String, String>()
-            props["element_id"] = feature.element.id.toString()
-            props["element_type"] = feature.element.type.name
+            props[ELEMENT_ID] = feature.element.id.toString()
+            props[ELEMENT_TYPE] = feature.element.type.name
             when (feature.style) {
                 is PolygonStyle -> {
                     getHeight(feature.element.tags)?.let { props["height"] = it.toString() }
@@ -83,10 +85,20 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
         layer.clear()
     }
 
+    fun getElementKey(properties: Map<String, String>): ElementKey? {
+        val type = properties[ELEMENT_TYPE]?.let { ElementType.valueOf(it) } ?: return null
+        val id = properties[ELEMENT_ID]?.toLong() ?: return null
+        return ElementKey(type, id)
+    }
+
     companion object {
         private const val MAP_DATA_LAYER = "streetcomplete_map_data"
     }
 }
+
+
+private const val ELEMENT_TYPE = "element_type"
+private const val ELEMENT_ID = "element_id"
 
 data class StyledElement(
     val element: Element,

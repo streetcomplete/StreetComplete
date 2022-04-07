@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -18,11 +19,13 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.layers.Layer
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.StyleableLayerMapComponent
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -48,10 +51,13 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var geometryMapComponent: FocusGeometryMapComponent? = null
     private var questPinsManager: QuestPinsManager? = null
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
+    private var styleableLayerMapComponent: StyleableLayerMapComponent? = null
+    private var styleableLayerManager: StyleableLayerManager? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
         fun onClickedEdit(editKey: EditKey)
+        fun onClickedElement(elementKey: ElementKey)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -62,6 +68,13 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             if (field == value) return
             field = value
             updatePinMode()
+        }
+
+    var layer: Layer? = null
+        set(value) {
+            if (field == value) return
+            field = value
+            updateLayer()
         }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
@@ -81,6 +94,10 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
+
+        styleableLayerMapComponent = StyleableLayerMapComponent(ctrl)
+        styleableLayerManager = StyleableLayerManager(ctrl, styleableLayerMapComponent!!, mapDataSource)
+        viewLifecycleOwner.lifecycle.addObserver(styleableLayerManager!!)
 
         super.onMapReady()
     }
@@ -104,16 +121,32 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleScope.launch {
             val props = controller?.pickLabel(x, y)?.properties
 
-            val questKey = props?.let { questPinsManager?.getQuestKey(it) }
-            if (questKey != null) {
-                listener?.onClickedQuest(questKey)
-                return@launch
+            when (pinMode) {
+                PinMode.QUESTS -> {
+                    val questKey = props?.let { questPinsManager?.getQuestKey(it) }
+                    if (questKey != null) {
+                        listener?.onClickedQuest(questKey)
+                        return@launch
+                    }
+                }
+                PinMode.EDITS -> {
+                    val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
+                    if (editKey != null) {
+                        listener?.onClickedEdit(editKey)
+                        return@launch
+                    }
+                }
+                PinMode.NONE -> {}
             }
-            val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
-            if (editKey != null) {
-                listener?.onClickedEdit(editKey)
-                return@launch
+
+            if (layer != null) {
+                val elementKey = props?.let { styleableLayerMapComponent?.getElementKey(it) }
+                if (elementKey != null) {
+                    listener?.onClickedElement(elementKey)
+                    return@launch
+                }
             }
+
             val pickMarkerResult = controller?.pickMarker(x, y)
             if (pickMarkerResult == null) {
                 onClickedMap(x, y)
@@ -208,6 +241,12 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override fun clearMarkersForCurrentQuest() {
         geometryMarkersMapComponent?.clear()
+    }
+
+    /* ------------------------------------- Map data layer  ------------------------------------ */
+
+    private fun updateLayer() {
+        styleableLayerManager?.layer = layer
     }
 
     /* --------------------- Switching between quests and edit history pins --------------------- */

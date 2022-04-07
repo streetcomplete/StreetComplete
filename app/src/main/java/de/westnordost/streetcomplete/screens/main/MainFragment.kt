@@ -46,6 +46,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -354,6 +355,10 @@ class MainFragment :
         } else if (editHistoryFragment != null) {
             closeEditHistorySidebar()
         }
+    }
+
+    override fun onClickedElement(elementKey: ElementKey) {
+        TODO()
     }
 
     //endregion
