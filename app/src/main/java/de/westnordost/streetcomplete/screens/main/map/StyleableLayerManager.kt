@@ -178,7 +178,7 @@ class StyleableLayerManager(
 
     private fun overrideColor(color: String, element: Element): String {
         if ((color == Color.UNSPECIFIED || color == Color.UNSUPPORTED) && isPrivateFilter.matches(element)) {
-            return Color.UNSPECIFIED_NO_MATTER
+            return Color.INVISIBLE
         }
         return color
     }
