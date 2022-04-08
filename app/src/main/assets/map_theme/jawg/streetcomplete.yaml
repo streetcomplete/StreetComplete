@@ -201,7 +201,7 @@ layers:
                 geometry-lines-left:
                     interactive: true
                     color: function() { return feature.colorLeft; }
-                    width: function() { return feature.width * 2.0; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
                     order: 802
                     join: round
         line-right:
@@ -210,7 +210,7 @@ layers:
                 geometry-lines-right:
                     interactive: true
                     color: function() { return feature.colorRight; }
-                    width: function() { return feature.width * 2.0; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
                     order: 802
                     join: round
         area:

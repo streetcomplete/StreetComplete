@@ -26,7 +26,7 @@ private val LitStatus?.color: String get() = when (this) {
     LitStatus.YES ->           "#ccff00"
     LitStatus.NIGHT_AND_DAY -> "#33ff00"
     LitStatus.AUTOMATIC ->     "#00aaff"
-    LitStatus.NO ->            "#333333"
+    LitStatus.NO ->            "#555555"
     LitStatus.UNSUPPORTED ->   Color.UNSUPPORTED
     null ->                    Color.UNSPECIFIED
 }

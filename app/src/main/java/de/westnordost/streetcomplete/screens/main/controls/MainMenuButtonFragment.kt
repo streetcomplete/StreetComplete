@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
 import de.westnordost.streetcomplete.layers.Layer
+import de.westnordost.streetcomplete.layers.sidewalk.SidewalkLayer
 import de.westnordost.streetcomplete.layers.way_lit.WayLitLayer
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -79,7 +80,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     }
 
     private fun onSwitchToLayersMode() {
-        listener?.onSelectedLayer(WayLitLayer()) // TODO have an actual selection
+        listener?.onSelectedLayer(SidewalkLayer()) // TODO have an actual selection
     }
 
     private fun setTeamMode(enabled: Boolean) {
