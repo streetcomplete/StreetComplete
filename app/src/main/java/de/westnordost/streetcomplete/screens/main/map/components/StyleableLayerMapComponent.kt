@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.res.Resources
 import android.graphics.Color
 import com.mapzen.tangram.MapData
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -16,7 +18,7 @@ import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 /** Takes care of displaying styled map data */
-class StyleableLayerMapComponent(ctrl: KtMapController) {
+class StyleableLayerMapComponent(private val resources: Resources, ctrl: KtMapController) {
 
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 
@@ -29,33 +31,38 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
 
     /** Show given map data with each the given style */
     fun set(features: Collection<StyledElement>) {
-        layer.setFeatures(features.flatMap { feature ->
+        layer.setFeatures(features.flatMap { (element, geometry, style) ->
             val props = HashMap<String, String>()
-            props[ELEMENT_ID] = feature.element.id.toString()
-            props[ELEMENT_TYPE] = feature.element.type.name
-            when (feature.style) {
+            props[ELEMENT_ID] = element.id.toString()
+            props[ELEMENT_TYPE] = element.type.name
+            when (style) {
                 is PolygonStyle -> {
-                    getHeight(feature.element.tags)?.let { props["height"] = it.toString() }
-                    props["color"] = feature.style.color
-                    props["strokeColor"] = getDarkenedColor(feature.style.color)
-                    feature.style.label?.let { props["text"] = it }
+                    getHeight(element.tags)?.let { props["height"] = it.toString() }
+                    props["color"] = style.color
+                    props["strokeColor"] = getDarkenedColor(style.color)
+                    style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
-                    props["width"] = getLineWidth(feature.element.tags).toString()
-                    feature.style.color?.let {
-                        props["color"] = it
-                        props["strokeColor"] = getDarkenedColor(it)
+                    props["width"] = getLineWidth(element.tags).toString()
+                    style.colorLeft?.let { props["colorLeft"] = it }
+                    style.colorRight?.let { props["colorRight"] = it }
+                    if (style.color != null) {
+                        props["color"] = style.color
+                        props["strokeColor"] = getDarkenedColor(style.color)
+                    } else if (style.colorLeft != null || style.colorRight != null) {
+                        // must have a color for the center if left or right is defined because
+                        // there are really ugly overlaps in tangram otherwise
+                        props["color"] = resources.getString(R.string.road_color)
+                        props["strokeColor"] = resources.getString(R.string.road_outline_color)
                     }
-                    feature.style.colorLeft?.let { props["colorLeft"] = it }
-                    feature.style.colorRight?.let { props["colorRight"] = it }
-                    feature.style.label?.let { props["text"] = it }
+                    style.label?.let { props["text"] = it }
                 }
                 is PointStyle -> {
-                    feature.style.label?.let { props["text"] = it }
+                    style.label?.let { props["text"] = it }
                 }
             }
 
-            feature.geometry.toTangramGeometry(props)
+            geometry.toTangramGeometry(props)
         })
     }
 

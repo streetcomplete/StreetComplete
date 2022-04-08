@@ -95,7 +95,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
 
-        styleableLayerMapComponent = StyleableLayerMapComponent(ctrl)
+        styleableLayerMapComponent = StyleableLayerMapComponent(resources, ctrl)
         styleableLayerManager = StyleableLayerManager(ctrl, styleableLayerMapComponent!!, mapDataSource)
         viewLifecycleOwner.lifecycle.addObserver(styleableLayerManager!!)
 
