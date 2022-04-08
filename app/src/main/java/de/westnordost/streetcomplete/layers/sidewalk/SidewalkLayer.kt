@@ -35,6 +35,6 @@ private fun expectSidewalkTagging(tags: Map<String, String>): Boolean =
 private val Sidewalk?.color get() = when (this) {
     Sidewalk.YES           -> "#33cc00" // same color as the arrow in the illustrations
     Sidewalk.NO            -> "#555555"
-    Sidewalk.SEPARATE      -> "#00aaff"
+    Sidewalk.SEPARATE      -> "#00aaff" // TODO LAYERS for some reason with transparency will not render. This is an issue because separately mapped sidewalk may be behind it
     Sidewalk.INVALID, null -> Color.UNSPECIFIED
 }
