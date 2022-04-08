@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.layers
 sealed interface Style
 
 data class PolylineStyle(
-    /** (center) line style. null if no center line should be drawn */
-    val stroke: StrokeStyle?,
-    /** left line style. null if no left line should be drawn */
-    val strokeLeft: StrokeStyle? = null,
-    /** right line style. null if no right line should be drawn */
-    val strokeRight: StrokeStyle? = null,
+    /** argb (center) line color. null if no center line should be drawn */
+    val color: String?,
+    /** argb left line color. null if no left line should be drawn */
+    val colorLeft: String? = null,
+    /** argb right line color. null if no right line should be drawn */
+    val colorRight: String? = null,
     /** label to show on the line (centered) */
     val label: String? = null,
 ) : Style
@@ -25,9 +25,3 @@ data class PointStyle(
     /** label to show on the point */
     val label: String?
 ) : Style
-
-data class StrokeStyle(
-    /** argb value as hex value, e.g. "#66ff00" */
-    val color: String,
-    // TODO LAYERS (maybe enable dashed/dotted lines later)
-)

@@ -42,12 +42,12 @@ class StyleableLayerMapComponent(ctrl: KtMapController) {
                 }
                 is PolylineStyle -> {
                     props["width"] = getLineWidth(feature.element.tags).toString()
-                    feature.style.stroke?.color?.let {
+                    feature.style.color?.let {
                         props["color"] = it
                         props["strokeColor"] = getDarkenedColor(it)
                     }
-                    feature.style.strokeLeft?.color?.let { props["colorLeft"] = it }
-                    feature.style.strokeRight?.color?.let { props["colorRight"] = it }
+                    feature.style.colorLeft?.let { props["colorLeft"] = it }
+                    feature.style.colorRight?.let { props["colorRight"] = it }
                     feature.style.label?.let { props["text"] = it }
                 }
                 is PointStyle -> {

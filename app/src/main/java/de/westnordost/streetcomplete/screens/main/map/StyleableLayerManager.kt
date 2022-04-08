@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.layers.Layer
 import de.westnordost.streetcomplete.layers.PointStyle
 import de.westnordost.streetcomplete.layers.PolygonStyle
 import de.westnordost.streetcomplete.layers.PolylineStyle
-import de.westnordost.streetcomplete.layers.StrokeStyle
 import de.westnordost.streetcomplete.layers.Style
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableLayerMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
@@ -162,24 +161,19 @@ class StyleableLayerManager(
             is PointStyle -> style
             is PolygonStyle -> {
                 val color = overrideColor(style.color, element)
-                if (color !== style.color) style.copy(color = color) else style
+                if (color !== style.color) style.copy(color) else style
             }
             is PolylineStyle -> {
-                val strokeLeft = style.strokeLeft?.let { overrideStroke(it, element) }
-                val strokeRight = style.strokeRight?.let { overrideStroke(it, element) }
-                val stroke = style.stroke?.let { overrideStroke(it, element) }
-                if (strokeLeft !== style.strokeLeft || strokeRight !== style.strokeRight || stroke !== style.stroke) {
-                    style.copy(stroke = stroke, strokeLeft = strokeLeft, strokeRight = strokeRight)
+                val colorLeft = style.colorLeft?.let { overrideColor(it, element) }
+                val colorRight = style.colorRight?.let { overrideColor(it, element) }
+                val color = style.color?.let { overrideColor(it, element) }
+                if (colorLeft !== style.colorLeft || colorRight !== style.colorRight || color !== style.color) {
+                    style.copy(color, colorLeft, colorRight)
                 } else {
                     style
                 }
             }
         }
-    }
-
-    private fun overrideStroke(stroke: StrokeStyle, element: Element): StrokeStyle {
-        val color = overrideColor(stroke.color, element)
-        return if (color !== stroke.color) stroke.copy(color = color) else stroke
     }
 
     private fun overrideColor(color: String, element: Element): String {
