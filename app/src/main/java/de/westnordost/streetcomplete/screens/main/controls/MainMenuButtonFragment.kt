@@ -80,7 +80,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     }
 
     private fun onSwitchToLayersMode() {
-        listener?.onSelectedLayer(SidewalkLayer()) // TODO have an actual selection
+        listener?.onSelectedLayer(SidewalkLayer()) // TODO LAYERS have an actual selection
     }
 
     private fun setTeamMode(enabled: Boolean) {

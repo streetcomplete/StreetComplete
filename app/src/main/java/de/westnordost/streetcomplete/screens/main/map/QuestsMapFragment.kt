@@ -70,6 +70,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             updatePinMode()
         }
 
+    // TODO LAYERS should probably be persisted, i.e. not reset when exiting the screen
     var layer: Layer? = null
         set(value) {
             if (field == value) return

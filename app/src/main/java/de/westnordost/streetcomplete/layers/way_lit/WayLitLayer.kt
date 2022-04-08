@@ -20,8 +20,6 @@ class WayLitLayer : Layer {
         PolylineStyle(createLitStatus(element).color)
 }
 
-// TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
-
 private val LitStatus?.color: String get() = when (this) {
     LitStatus.YES ->           "#ccff00"
     LitStatus.NIGHT_AND_DAY -> "#33ff00"

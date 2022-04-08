@@ -156,6 +156,9 @@ class StyleableLayerManager(
         return StyledElement(element, geometry, style)
     }
 
+    // TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
+
+    // TODO LAYERS may be cleaner after all to move this override-stuff to each layer; decide after introducing re-coloring based on tag age
     private fun overrideStyle(style: Style, element: Element): Style {
         return when (style) {
             is PointStyle -> style
