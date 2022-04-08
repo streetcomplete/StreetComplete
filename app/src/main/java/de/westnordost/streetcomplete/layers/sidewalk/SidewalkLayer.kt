@@ -23,7 +23,7 @@ class SidewalkLayer : Layer {
 
         return PolylineStyle(
             color = null,
-            colorLeft = sidewalkSides?.left?.color,
+            colorLeft = sidewalkSides?.left.color,
             colorRight = sidewalkSides?.right.color
         )
     }
