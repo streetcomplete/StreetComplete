@@ -11,7 +11,7 @@ fun darken(color: Int, by: Float): Int {
 }
 
 fun toARGBString(color: Int): String =
-    "#" + Color.alpha(color).toString(16) +
-        Color.red(color).toString(16) +
-        Color.green(color).toString(16) +
-        Color.blue(color).toString(16)
+    "#" + Color.alpha(color).toString(16).padStart(2, '0') +
+        Color.red(color).toString(16).padStart(2, '0') +
+        Color.green(color).toString(16).padStart(2, '0') +
+        Color.blue(color).toString(16).padStart(2, '0')
