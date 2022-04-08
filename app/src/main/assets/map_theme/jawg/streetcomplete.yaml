@@ -37,13 +37,13 @@ styles:
         blend_order: 1
     geometry-lines:
         base: lines
-        blend: overlay
+        blend: translucent
     geometry-polygons:
         base: polygons
-        blend: overlay
+        blend: translucent
     geometry-points:
         base: points
-        blend: overlay
+        blend: translucent
         blend_order: 2
     track-lines:
         base: lines
@@ -133,7 +133,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
         old:
             filter: { old: [true] }
             draw:
@@ -142,7 +142,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
     streetcomplete_track2:
         data: { source: streetcomplete_track2 }
         current:
@@ -153,7 +153,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
         old:
             filter: { old: [true] }
             draw:
@@ -162,7 +162,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
     streetcomplete_map_data:
         data: { source: streetcomplete_map_data }
         line:
@@ -172,9 +172,13 @@ layers:
                     interactive: true
                     color: function() { return feature.color; }
                     width: function() { return feature.width; }
-                    order: 1000
+                    order: 801
                     cap: round
                     join: round
+                    outline:
+                        color: function() { return feature.strokeColor; }
+                        width: 1m
+                        order: 800
         line-left:
             filter: { type: [line], colorLeft: true }
             draw:
@@ -183,7 +187,7 @@ layers:
                     color: function() { return feature.colorLeft; }
                     width: 2m
                     offset: function() { return -feature.width / 2.0 - 1; }
-                    order: 1000
+                    order: 801
                     cap: round
                     join: round
         line-right:
@@ -194,7 +198,7 @@ layers:
                     color: function() { return feature.colorRight; }
                     width: 2m
                     offset: function() { return +feature.width / 2.0 + 1; }
-                    order: 1000
+                    order: 801
                     cap: round
                     join: round
         area:
@@ -203,11 +207,11 @@ layers:
                 geometry-polygons:
                     interactive: true
                     color: function() { return feature.color; }
-                    order: 1000
+                    order: 800
                     extrude: function() { return feature.height; }
                 geometry-lines:
                     color: function() { return feature.strokeColor; }
-                    order: 1000
+                    order: 801
                     extrude: function() { return feature.height; }
                     width: 1m
                     cap: round
