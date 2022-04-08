@@ -25,10 +25,10 @@ class WayLitLayer : Layer {
 // TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
 
 private val LitStatus.color: String get() = when (this) {
-    YES ->           "#ccff33"
-    NIGHT_AND_DAY -> "#33ff33"
-    AUTOMATIC ->     "#ccff33"
-    NO ->            "#111111"
+    YES ->           "#ccff00"
+    NIGHT_AND_DAY -> "#33ff00"
+    AUTOMATIC ->     "#00aaff"
+    NO ->            "#333333"
     UNSPECIFIED ->   Color.UNSPECIFIED
     UNSUPPORTED ->   Color.UNSUPPORTED
 }
