@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 
-enum class Sidewalk() {
+enum class Sidewalk {
     YES,
     NO,
     SEPARATE,
@@ -16,7 +16,7 @@ enum class Sidewalk() {
 
 /** Value for the sidewalk=* key. Returns null for combinations that can't be expressed with the
  *  sidewalk=* key. */
-val SidewalkSides.simpleOsmValue: String? get() = when {
+private val SidewalkSides.simpleOsmValue: String? get() = when {
     left == YES && right == YES -> "both"
     left == YES && right == NO ->  "left"
     left == NO && right == YES ->  "right"
@@ -25,7 +25,7 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
-val Sidewalk.osmValue: String get() = when (this) {
+private val Sidewalk.osmValue: String get() = when (this) {
     YES -> "yes"
     NO -> "no"
     SEPARATE -> "separate"
