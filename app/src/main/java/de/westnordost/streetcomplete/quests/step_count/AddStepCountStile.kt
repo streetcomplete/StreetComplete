@@ -44,7 +44,7 @@ class AddStepCountStile : OsmElementQuestType<Int> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_stile_title
 
-    override fun createForm() = AddStepCountForm()
+    override fun createForm() = AddStepCountStileForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
         tags["step_count"] = answer.toString()
