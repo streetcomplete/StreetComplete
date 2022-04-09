@@ -324,6 +324,7 @@ whether the postbox is still there in countries in which it is enabled */
     SpecifyShopType(),
     CheckShopType(),
     AddOpeningHours(featureDictionaryFuture),
+    AddSeating(), // easily visible from outside, but only seasonally
 
     AddAtmOperator(),
 
@@ -389,7 +390,6 @@ whether the postbox is still there in countries in which it is enabled */
     AddKosher(),
     AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, Organic Maps
     AddInternetAccess(), // used by OsmAnd
-    AddSeating(),
 
     AddFuelSelfService(),
 
