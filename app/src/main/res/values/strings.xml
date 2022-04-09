@@ -520,6 +520,10 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">Ask more often</string>
 
+    <string name="pref_title_navigation_orientation">Navigation mode: orientation</string>
+    <string name="navigation_orientation_movement_direction">by movement direction</string>
+    <string name="navigation_orientation_compass_direction">by compass direction</string>
+
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
 

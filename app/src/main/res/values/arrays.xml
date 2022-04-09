@@ -24,6 +24,16 @@
         <item>MORE_OFTEN</item>
     </string-array>
 
+    <string-array name="pref_entries_navigation_orientation">
+        <item>@string/navigation_orientation_movement_direction</item>
+        <item>@string/navigation_orientation_compass_direction</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_navigation_orientation" translatable="false">
+        <item>MOVEMENT_DIRECTION</item>
+        <item>COMPASS_DIRECTION</item>
+    </string-array>
+
     <string-array name="pref_entries_theme_select" translatable="false">
         <item>@string/theme_automatic</item>
         <item>@string/theme_light</item>

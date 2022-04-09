@@ -35,6 +35,15 @@
             android:entryValues="@array/pref_entryvalues_resurvey_intervals"
             android:persistent="true" />
 
+        <ListPreference
+            android:key="orientation.select"
+            android:title="@string/pref_title_navigation_orientation"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="MOVEMENT_DIRECTION"
+            android:entries="@array/pref_entries_navigation_orientation"
+            android:entryValues="@array/pref_entryvalues_navigation_orientation"
+            android:persistent="true" />
+
         <SwitchPreference
             android:key="display.nonQuestionNotes"
             android:title="@string/pref_title_show_notes_not_phrased_as_questions"
