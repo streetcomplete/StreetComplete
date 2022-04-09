@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.step_count
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
@@ -16,6 +17,13 @@ class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val resId = arguments?.getInt(ARG_DESCRIPTION) ?: 0
+        if (resId > 0) {
+            binding.descriptionLabel.setText(resId)
+        } else {
+            binding.descriptionLabel.visibility = View.GONE
+        }
+
         binding.countInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
@@ -23,5 +31,15 @@ class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onClickOk() {
         applyAnswer(count)
+    }
+
+    companion object {
+        private const val ARG_DESCRIPTION = "description"
+
+        fun create(descriptionResId: Int): AddStepCountForm {
+            val form = AddStepCountForm()
+            form.arguments = bundleOf(ARG_DESCRIPTION to descriptionResId)
+            return form
+        }
     }
 }

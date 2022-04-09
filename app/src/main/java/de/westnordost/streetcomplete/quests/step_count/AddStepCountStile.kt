@@ -5,17 +5,17 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddStepCountStile : OsmElementQuestType<Int> {
 
     private val stileNodeFilter by lazy { """
-        nodes with barrier=stile
-         and stile ~ stepover|ladder
-         and access !~ private|no
-         and !step_count
+        nodes with
+          barrier = stile
+          and stile ~ stepover|ladder
+          and access !~ private|no
+          and !step_count
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
@@ -42,9 +42,9 @@ class AddStepCountStile : OsmElementQuestType<Int> {
     override val icon = R.drawable.ic_quest_steps_count_brown
     override val questTypeAchievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_stile_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 
-    override fun createForm() = AddStepCountStileForm()
+    override fun createForm() = AddStepCountForm.create(R.string.quest_step_count_stile_hint)
 
     override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
         tags["step_count"] = answer.toString()
