@@ -1455,5 +1455,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
+    <string name="quest_step_count_stile_title">How many steps are at the side of this stile?</string>
+    <string name="quest_step_count_stile_hint">Just the number of steps to reach the top. If step count differs on each side, give higher number.</string>
+
 
 </resources>
