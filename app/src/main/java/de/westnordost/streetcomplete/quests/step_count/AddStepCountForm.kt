@@ -7,13 +7,14 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.util.ktx.intOrNull
 
 class AddStepCountForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override val contentLayoutResId = R.layout.quest_step_count
     private val binding by contentViewBinding(QuestStepCountBinding::bind)
 
-    private val count get() = binding.countInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+    private val count get() = binding.countInput.intOrNull ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

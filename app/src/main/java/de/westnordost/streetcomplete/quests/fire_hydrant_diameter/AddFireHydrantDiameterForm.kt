@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
+import de.westnordost.streetcomplete.util.ktx.intOrNull
 
 class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
 
@@ -20,7 +21,7 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
 
-    private val diameterValue get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+    private val diameterValue get() = binding.diameterInput.intOrNull ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
