@@ -10,25 +10,6 @@ Reading the text below is not necessary to create a new quest. Duplicating exist
 
 But this materials may help or be quicker than trying to fully explore on your own how things work.
 
-# Required
-
-- programming ability - it is not a good task for someone who has never programmed anything.
-  - Editing even the simplest quest requires edits to at least three different files
-  - Kotlin familiarity is not required, but the ability to adjust to a new syntax is needed. If you are unfamiliar with Kotlin reading about [null safety related syntax](https://kotlinlang.org/docs/null-safety.html) is likely to be very useful.
-  - It is expected that someone trying this can search for a solution to a typical problem on encountering an error message
-- familiarity with StreetComplete as a user - it is highly recommended to be familiar with how StreetComplete works. Making hundreds of edits is not mandatory, but having a passing familiarity with how surveying with StreetComplete works is needed.
-- time - Android Studio setup is sadly complicated
-  - Multiple hours are typical, though mostly spent on waiting for various downloads
-  - setting up Android Studio will likely be more complex than writing the code
-- [basic ability to use git](https://git-scm.com/docs/user-manual) (but as mentioned, anything GitHub specific will be explained)
-  - there is version control integration available in Android Studio
-    - From the Android Studio **VCS** menu, click **Enable Version Control Integration** ([see official docs](https://developer.android.com/studio/intro#version_control_basics))
-    - Go to File -> Settings -> Version control in Android Studio to optionally configure git integration
-  - Using git from command line or terminal in Android Studio also works fine
-- GitHub [account](https://github.com/signup)
-- around 15GB of free space on disk
-  - the initial setup will typically download half the Internet while getting emulators and dependencies
-
 # Dependencies - initial setup
 
 - install necessary software ([Android Studio](https://developer.android.com/studio) and [git](https://git-scm.com/downloads))
@@ -316,7 +297,7 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
     getMapData().filter("nodes with emergency = defibrillator")
 ```
 
-which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/map/PinIcons.kt))
+which causes nearby `emergency = defibrillator` nodes to be shown (icons used are defined in [PinIcons.kt](app/src/main/java/de/westnordost/streetcomplete/screens/main/map/PinIcons.kt))
 
 See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
@@ -456,9 +437,9 @@ Images should be free of visual debris, not misleading. Though it is fine to use
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
 
 - [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
-- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
-- [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three square images in each row)
-- [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three square images in each row)
+- [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three quare images in each row)
+- [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three quare images in each row)
+- [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three quare images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
