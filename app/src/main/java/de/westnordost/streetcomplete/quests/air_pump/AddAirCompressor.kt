@@ -26,7 +26,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
 
     override val changesetComment = "Add whether air compressor is available"
     override val wikiLink = "Key:compressed_air"
-    override val icon = R.drawable.ic_quest_bicycle_pump
+    override val icon = R.drawable.ic_quest_car_air_compressor
     override val questTypeAchievements = listOf(CAR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_air_pump_compressor_title
