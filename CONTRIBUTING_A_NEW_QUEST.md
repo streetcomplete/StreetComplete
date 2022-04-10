@@ -301,7 +301,7 @@ Actions may include (examples from various quests):
   - if the new value differs from existing tag value: new value will be applied
   - in case of value being the same: add survey date tag, it would be `check_date:lit=` in this case
     - so can be used even if value will stay the same - possible for resurvey quests
-    - if the new value is the same as existing tag value: adds [survey date tag](app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L33) (`check_date:lit=` in this example)
+    - if the new value is the same as existing tag value: adds survey date tag (`check_date:lit=` in this example)
   - always update survey tag if present already
   - necessary if given quest includes resurvey of old elements that are already tagged
 
