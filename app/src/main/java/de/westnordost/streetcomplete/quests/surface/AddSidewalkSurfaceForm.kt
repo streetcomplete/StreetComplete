@@ -17,20 +17,18 @@ import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 
 class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, SidewalkSurfaceAnswer>() {
 
-    override val items: List<StreetSideDisplayItem<SurfaceAnswer>>
-        get() = getDisplayItems()
-
-    private fun getDisplayItems(): List<StreetSideDisplayItem<SurfaceAnswer>> {
-        return (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).map {
-            StreetSideItem2(
-                SurfaceAnswer(it),
-                ResImage(R.drawable.ic_sidewalk_illustration_yes),
-                it.asItem().titleId?.let { it1 -> ResText(it1) },
-                ResImage(it.asItem().drawableId!!),
-                DrawableImage(RotatedCircleDrawable(resources.getDrawable(it.asItem().drawableId!!)))
-            )
+    override val items: List<StreetSideDisplayItem<SurfaceAnswer>> get() =
+        (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
+            .toItems()
+            .map {
+                StreetSideItem2(
+                    SurfaceAnswer(it.value!!),
+                    ResImage(R.drawable.ic_sidewalk_illustration_yes),
+                    ResText(it.titleId!!),
+                    ResImage(it.drawableId!!),
+                    DrawableImage(RotatedCircleDrawable(resources.getDrawable(it.drawableId)))
+                )
         }
-    }
 
     private val currentSidewalks get() = createSidewalkSides(osmElement!!.tags)
 
