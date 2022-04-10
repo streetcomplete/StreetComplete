@@ -184,27 +184,21 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
     }
 
     private fun saveLastSelection() {
-        val left = left
-        val right = right
-        if (left != null && right != null) {
-            favs.add(
-                if (isRoadDisplayedUpsideDown())
-                    LastSelection(right, left)
-                else
-                    LastSelection(left, right)
-            )
+        val isUpsideDown = isRoadDisplayedUpsideDown()
+        val l = if (isUpsideDown) right else left
+        val r = if (isUpsideDown) left else right
+        if (l != null && r != null) {
+            favs.add(LastSelection(l, r))
         }
     }
 
     private fun applyLastSelection() {
         val lastSelection = lastSelection ?: return
-        if (isRoadDisplayedUpsideDown()) {
-            onSelectedSide(lastSelection.right, false)
-            onSelectedSide(lastSelection.left, true)
-        } else {
-            onSelectedSide(lastSelection.left, false)
-            onSelectedSide(lastSelection.right, true)
-        }
+        val isUpsideDown = isRoadDisplayedUpsideDown()
+        val l = if (isUpsideDown) lastSelection.right else lastSelection.left
+        val r = if (isUpsideDown) lastSelection.left else lastSelection.right
+        onSelectedSide(l, false)
+        onSelectedSide(r, true)
     }
 
     private fun isRoadDisplayedUpsideDown(): Boolean =
