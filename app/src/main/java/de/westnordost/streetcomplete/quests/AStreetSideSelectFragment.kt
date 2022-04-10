@@ -125,12 +125,8 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
 
     private fun showTapHint() {
         if ((left == null || right == null) && !HAS_SHOWN_TAP_HINT) {
-            if (left == null && binding.puzzleView.leftSideIsClickable()) {
-                binding.puzzleView.showLeftSideTapHint()
-            }
-            if (right == null && binding.puzzleView.rightSideIsClickable()) {
-                binding.puzzleView.showRightSideTapHint()
-            }
+            if (left == null) binding.puzzleView.showLeftSideTapHint()
+            if (right == null) binding.puzzleView.showRightSideTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
     }

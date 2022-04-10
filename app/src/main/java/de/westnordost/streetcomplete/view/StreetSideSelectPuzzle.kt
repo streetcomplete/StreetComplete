@@ -171,11 +171,15 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     }
 
     fun showLeftSideTapHint() {
-        binding.leftSideContainer.showTapHint(300)
+        if (binding.leftSideContainer.isClickable) {
+            binding.leftSideContainer.showTapHint(300)
+        }
     }
 
     fun showRightSideTapHint() {
-        binding.rightSideContainer.showTapHint(1200)
+        if (binding.rightSideContainer.isClickable) {
+            binding.rightSideContainer.showTapHint(1200)
+        }
     }
 
     fun showOnlyRightSide() {
@@ -216,14 +220,6 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     fun bothSidesClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = true
-    }
-
-    fun leftSideIsClickable() : Boolean {
-        return binding.leftSideContainer.isClickable
-    }
-
-    fun rightSideIsClickable() : Boolean {
-        return binding.rightSideContainer.isClickable
     }
 
     private fun replace(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
