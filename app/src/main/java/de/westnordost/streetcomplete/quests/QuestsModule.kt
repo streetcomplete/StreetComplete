@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
+import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
+import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
@@ -244,6 +246,10 @@ fun questTypeRegistry(
     AddPowerPolesMaterial(),
 
     AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
+
+    // air pump
+    AddAirCompressor(),
+    AddBicyclePump(),
 
     // motorcycle parking
     AddMotorcycleParkingCover(),
