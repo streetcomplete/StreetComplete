@@ -6,7 +6,7 @@ object DeadEnd : EntranceAnswer
 
 enum class EntranceExistsAnswer(val osmValue: String) : EntranceAnswer {
     MAIN("main"),
-    SECONDARY("secondary"),
+    STAIRCASE("staircase"),
     SERVICE("service"),
     GARAGE("garage"),
     EMERGENCY_EXIT("emergency"),

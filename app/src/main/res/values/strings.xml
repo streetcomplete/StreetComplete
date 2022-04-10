@@ -1270,7 +1270,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_building_entrace_title">What kind of building entrance is this?</string>
     <string name="quest_building_entrance_main">Main (building may have multiple main entrances)</string>
-    <string name="quest_building_entrance_secondary">Secondary (not service entrance, not exit)</string>
+    <string name="quest_building_entrance_staircase">Staircase</string>
     <string name="quest_building_entrance_service">Service</string>
     <string name="quest_building_entrance_exit">Exit only</string>
     <string name="quest_building_entrance_emergency_exit">Emergency exit only</string>
