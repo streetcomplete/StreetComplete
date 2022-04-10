@@ -10,7 +10,9 @@ import de.westnordost.streetcomplete.Prefs.NavigationOrientation.valueOf
 /** This class is just to access the user's preference about which navigation orioentation to use */
 class NavigationOrientationUpdater(private val prefs: SharedPreferences) {
     /** Whether to use CompassDirection or MovementDirection for rotating screen if we're in isNavigationMode */
-    var isCompassDirection: Boolean = false
+    companion object {
+        var isCompassDirection: Boolean = false
+    }
 
     fun update() {
         val navDirection = navigationOrientation
