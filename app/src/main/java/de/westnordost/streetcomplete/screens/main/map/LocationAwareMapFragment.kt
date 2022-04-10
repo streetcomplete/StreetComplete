@@ -6,6 +6,7 @@ import android.content.Context
 import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.screenBottomToCenterDistance
+import de.westnordost.streetcomplete.screens.settings.NavigationOrientationUpdater
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
@@ -156,7 +158,9 @@ open class LocationAwareMapFragment : MapFragment() {
 
         updateCameraPosition(600) {
             if (isNavigationMode) {
-                val bearing = getTrackBearing(tracks.last())
+                val isCompassDirection = NavigationOrientationUpdater.isCompassDirection
+                val bearing = if (isCompassDirection) locationMapComponent?.rotation else getTrackBearing(tracks.last())
+                Log.d("centerCurrentPosition", "isCompassDirection = ${isCompassDirection}, bearing=${bearing}")
                 if (bearing != null) {
                     rotation = -(bearing * PI / 180.0).toFloat()
                     /* move center position down a bit, so there is more space in front of than
