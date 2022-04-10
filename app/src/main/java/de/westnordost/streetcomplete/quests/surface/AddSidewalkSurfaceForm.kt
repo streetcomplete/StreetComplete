@@ -87,11 +87,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         val arr = str.split('#')
 
         val leftSurface = Surface.values().find { it.toString() == arr[0] }!!
-        val leftNote = if (arr[1] == "null") {
-            null
-        } else {
-            arr[1]
-        }
+        val leftNote = if (arr[1] == "null") null else arr[1]
         val leftStreetSideItem = StreetSideItem2(
             SurfaceAnswer(leftSurface, leftNote),
             ResImage(R.drawable.ic_sidewalk_illustration_yes),
@@ -101,11 +97,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         )
 
         val rightSurface = Surface.values().find { it.toString() == arr[2] }!!
-        val rightNote = if (arr[3] == "null") {
-            null
-        } else {
-            arr[3]
-        }
+        val rightNote = if (arr[3] == "null") null else arr[3]
         val rightStreetSideItem = StreetSideItem2(
             SurfaceAnswer(rightSurface, rightNote),
             ResImage(R.drawable.ic_sidewalk_illustration_yes),
