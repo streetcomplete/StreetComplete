@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4200
-        versionName = "42.0-beta1"
+        versionCode = 4201
+        versionName = "42.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -105,9 +105,16 @@ repositories {
 }
 
 configurations {
-    // it's already included in Android
     all {
+        // it's already included in Android
         exclude(group = "net.sf.kxml", module = "kxml2")
+
+        // TODO remove substitution when `kaml` dependency uses newer version of `org.snakeyaml:snakeyaml-engine`
+        resolutionStrategy.dependencySubstitution {
+            substitute(module("org.snakeyaml:snakeyaml-engine:2.3"))
+                .using(module("org.bitbucket.snakeyaml:snakeyaml-engine:8209bb9484"))
+                .because("https://github.com/streetcomplete/StreetComplete/issues/3889")
+        }
     }
 }
 
@@ -123,12 +130,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
-    testImplementation("org.assertj:assertj-core:2.8.0")
+    testImplementation("org.assertj:assertj-core:3.22.0")
 
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:2.8.0")
+    androidTestImplementation("org.assertj:assertj-core:3.22.0")
 
     // dependency injection
     implementation("io.insert-koin:koin-android-compat:$koinVersion")
@@ -161,7 +168,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:4.0")
+    implementation("de.westnordost:osmfeatures-android:4.1")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
@@ -192,11 +199,11 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.26.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.29.0")
+    implementation("com.google.ar:core:1.30.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
-/** Localizations that should be pulled from POEditor etc. */
+/** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el", "en", "en-AU", "en-GB", "es", "eu",
     "fa", "fi", "fr", "gl", "hr", "hu", "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn",
@@ -204,7 +211,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220314"
+val nsiVersion = "v6.0.20220321"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.2"
 

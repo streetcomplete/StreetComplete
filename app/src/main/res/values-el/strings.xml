@@ -2263,6 +2263,8 @@
     <string name="quest_smoking_separated">"Μόνο σε χωριστούς χώρους"</string>
     <string name="quest_smoking_yes">"Ναι, παντού"</string>
     <string name="quest_seating_name_title">"Τι είδους καθίσματα έχει αυτό το μέρος;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Μόνο σε πακέτο"</string>
     <string name="quest_seating_indoor_only">"Καθίσματα μόνο σε εσωτερικό χώρο"</string>
     <string name="quest_seating_outdoor_only">"Καθίσματα μόνο σε εξωτερικό χώρο"</string>
@@ -2318,4 +2320,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Ποια είναι η επιφάνεια εδώ;"</string>
     <string name="quest_toiletAvailability_title">"Υπάρχει τουαλέτα εδώ;"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Είναι η τουαλέτα εδώ προσβάσιμη με αναπηρικό καροτσάκι;"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Είστε βέβαιοι ότι οι ποδηλάτες δεν επιτρέπεται να χρησιμοποιούν αυτόν τον μονόδρομο και προς τις δύο κατευθύνσεις; Σε περίπτωση αμφιβολίας, ελέγξτε εάν υπάρχει πινακίδα στις άκρες του δρόμου."</string>
 </resources>

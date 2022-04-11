@@ -26,6 +26,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
         ways with
           highway and access ~ private|no
           or railway ~ tram|abandoned|disused
+          or railway and embedded = yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add type of barrier for railway crossing"

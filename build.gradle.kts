@@ -14,6 +14,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        // TODO remove when dependency to org.bitbucket.snakeyaml:snakeyaml-engine:8209bb9484 is no longer needed
+        maven { url = java.net.URI("https://jitpack.io") }
     }
 }
 
@@ -72,6 +74,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
         "7fb216b8360ee85d84b36ad3fb0b0ea0ebf9977d",  // mechanical linting
         "21aa1deabae7a563ba1475094f372590fb33d784",  // mechanical linting
         "fef6877852d6a19a7b85e6f3ed3b09ea7c6538ec",  // mostly just moving a lot of packages around
+        "7a7d725154eb38d53936d154fc8011355679a8ae",  // just moving packages around
     )
     val skipWords = listOf("lint", "linter", "reorder imports", "organize imports")
     skipCommitRegex = Regex(".*\\b(${skipWords.joinToString("|")})\\b.*", RegexOption.IGNORE_CASE)

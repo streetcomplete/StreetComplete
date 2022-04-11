@@ -4,7 +4,7 @@
 
      The strings are sorted into categories so to
      - avoid merge conflicts (people tend to append strings at the end of the file)
-     - better overview over the strings, better context for translators (strins are presented in
+     - better overview over the strings, better context for translators (strings are presented in
        POEditor in the same order as in this file)
      -->
 <resources xmlns:tools="http://schemas.android.com/tools">
@@ -1187,7 +1187,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="default_disabled_msg_roofShape">This quest type is disabled by default because the roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
 
     <string name="quest_seating_name_title">What kind of seating does this place have?</string>
-    <string name="quest_seating_takeaway">Takeaway only</string>
+    <string name="quest_seating_takeaway">No seating (takeaway only)</string>
     <string name="quest_seating_indoor_only">Indoor seating only</string>
     <string name="quest_seating_outdoor_only">Outdoor seating only</string>
     <string name="quest_seating_indoor_and_outdoor">Both indoor and outdoor seating</string>

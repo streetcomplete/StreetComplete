@@ -15,7 +15,8 @@ import kotlin.math.min
 import kotlin.math.roundToLong
 
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
- *  of the element a selected quest refers to */
+ *  of the element a selected quest refers to. Also zooms to the element in question so that it is
+ *  contained in the screen area */
 class FocusGeometryMapComponent(private val ctrl: KtMapController) {
 
     private val geometryLayer: MapData = ctrl.addDataLayer(GEOMETRY_LAYER)

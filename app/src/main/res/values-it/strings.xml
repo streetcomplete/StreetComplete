@@ -1342,6 +1342,8 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_smoking_separated">"Solo in aree dedicate"</string>
     <string name="quest_smoking_yes">"Sì, ovunque"</string>
     <string name="quest_seating_name_title">"Che tipo di sedute ha questo luogo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Solo asporto"</string>
     <string name="quest_seating_indoor_only">"Solo all'interno"</string>
     <string name="quest_seating_outdoor_only">"Solo all'esterno"</string>
@@ -1397,4 +1399,6 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Com'è la superficie qui?"</string>
     <string name="quest_toiletAvailability_title">"C'è un bagno qui?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Il bagno di questo posto è accessibile alle sedie a rotelle?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sei sicuro che i ciclisti non possono circolare in questa strada a senso unico in entrambe le direzioni? Se hai dubbi, controlla se c'è la segnaletica.
+"</string>
 </resources>

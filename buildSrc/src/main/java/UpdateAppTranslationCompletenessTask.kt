@@ -1,6 +1,7 @@
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
+import java.util.Locale
 
 /** Update a resources file that specifies the current translation completeness for every language */
 open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
@@ -11,14 +12,16 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
         val targetFiles = targetFiles ?: return
 
         val localizationStatus = fetchLocalizations {
-            LocalizationStatus(it.string("code")!!, it.int("percentage")!!)
+            LocalizationStatus(
+                Locale.forLanguageTag(it.string("code")!!).transformPOEditorLanguageTag(),
+                it.int("percentage")!!
+            )
         }
         for (status in localizationStatus) {
-            val languageCode = status.languageCode
+            val locale = status.locale
             val completedPercentage = status.completedPercentage
 
-            val javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(languageCode)
-            val androidResCodes = javaLanguageTagToAndroidResCodes(javaLanguageTag)
+            val androidResCodes = locale.toAndroidResCodes()
 
             // create a metadata file that describes how complete the translation is
             for (androidResCode in androidResCodes) {
@@ -38,4 +41,4 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
     }
 }
 
-private data class LocalizationStatus(val languageCode: String, val completedPercentage: Int)
+private data class LocalizationStatus(val locale: Locale, val completedPercentage: Int)

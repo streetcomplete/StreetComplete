@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"設定"</string>
-    <string name="oauth_communication_error">"認証サーバーにアクセスできません"</string>
+    <string name="oauth_communication_error">"認証サーバーに到達できない
+"</string>
 
     <!-- Fuzzy -->
-    <string name="oauth_failed_permissions">"承認に失敗しました: リストのアクセス許可をすべて付与する必要があります"</string>
+    <string name="oauth_failed_permissions">"認証に失敗しました。表示されたすべての権限を付与する必要があります
+"</string>
 
     <!-- Settings screen -->
     <!-- Fuzzy -->
-    <string name="pref_category_communication">"通信"</string>
+    <string name="pref_category_communication">"コミュニケーション"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_category_display">"表示"</string>
+    <string name="pref_category_display">"ディスプレイ"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_tilecache_size_message">"メガバイト単位の容量で、マップタイルをキャッシュするために外部ストレージを予約します"</string>
+    <string name="pref_tilecache_size_message">"マップタイルをキャッシュするために外部ストレージに確保した容量（メガバイト）。
+"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_show_notes_not_phrased_as_questions">"すべてのメモを表示"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"すべてのノートを表示する
+"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"質問として表現されていないメモも表示します"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問として表現されていないメモを無視します"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"また、質問として表現されていないメモを表示
+"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問形式でないメモを無視する
+"</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_map_cache">"マップキャッシュサイズ"</string>

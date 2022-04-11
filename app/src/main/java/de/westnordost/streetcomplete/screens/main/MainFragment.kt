@@ -78,6 +78,7 @@ import de.westnordost.streetcomplete.screens.main.map.QuestsMapFragment
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -212,6 +213,7 @@ class MainFragment :
         binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
+        binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateMapQuestOffsets()
     }
@@ -709,6 +711,10 @@ class MainFragment :
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
     }
 
+    fun starInfoMenu() {
+        val intent = Intent(requireContext(), UserActivity::class.java)
+        startActivity(intent)
+    }
     /* -------------------------------------- Context Menu -------------------------------------- */
 
     private fun showMapContextMenu(position: LatLon) {

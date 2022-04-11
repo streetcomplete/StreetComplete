@@ -428,7 +428,7 @@
     <string name="quest_sport_manySports_confirmation_title">"شما ورزش‌های زیادی را انتخاب کرده‌اید"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletsFee_title">"آیا این سرویس‌بهداشتی غیررایگان است؟"</string>
+    <string name="quest_toiletsFee_title">"آیا استفاده این سرویس‌بهداشتی پولی است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"آیا این پیاده‌رو دارای سنگفرش آجدار ویژه نابینایان است؟"</string>
@@ -2388,7 +2388,7 @@
     <string name="ar_core_tracking_error_insufficient_features">"امکانات بصری کافی در اینجا وجود ندارد"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"برنامهٔ دیگری از دوربین استفاده می‌کند"</string>
     <string name="quest_bicycle_parking_type_handlebarholder">"نگهدارنده دسته"</string>
-    <string name="quest_bicycle_parking_access_title2">"چه کسی اجازه دارد دوچرخه را در اینجا پارک کند؟ پارکینگ ممکن است رایگان یا پولی باشد."</string>
+    <string name="quest_bicycle_parking_access_title2">"چه کسی اجازه دارد اینجا دوچرخه پارک کند؟ پارکینگ ممکن است رایگان یا پولی باشد."</string>
     <string name="quest_playground_access_title2">"چه کسانی مجاز به استفاده از این زمین بازی هستند؟"</string>
     <string name="quest_sidewalk_answer_none_title">"انتخاب‌کردن اینکه پیاده روها وجود ندارد"</string>
 
@@ -2428,6 +2428,8 @@
     <string name="quest_smoking_separated">"فقط در مناطق جدا شده"</string>
     <string name="quest_smoking_yes">"بله، در همه جا"</string>
     <string name="quest_seating_name_title">"این مکان چه نوع صندلی دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"فقط غذای آماده"</string>
     <string name="quest_seating_indoor_only">"فقط صندلی‌های داخل ساختمان"</string>
     <string name="quest_seating_outdoor_only">"فقط صندلی در فضای باز"</string>
@@ -2483,4 +2485,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"سطح اینجا چیست؟"</string>
     <string name="quest_toiletAvailability_title">"آیا در اینجا سرویس‌بهداشتی وجود دارد؟"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"آیا سرویس‌بهداشتی در این مکان با ویلچر قابل دسترسی است؟"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"آیا مطمئن هستید که دوچرخه‌سواران مجاز به استفاده از این خیابان یک طرفه در هر دو جهت نیستند؟ بررسی کنید که آیا در انتهای خیابان تابلویی وجود دارد یا خیر."</string>
 </resources>

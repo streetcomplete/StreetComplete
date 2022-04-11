@@ -2257,6 +2257,8 @@ Infelizmente, devido a uma política da Google Play Store, nenhum link que leve 
     <string name="quest_smoking_separated">"Apenas em áreas separadas"</string>
     <string name="quest_smoking_yes">"Sim, em qualquer lugar"</string>
     <string name="quest_seating_name_title">"Que tipo de assentos tem este lugar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Apenas para viagem"</string>
     <string name="quest_seating_indoor_only">"Apenas assentos internos"</string>
     <string name="quest_seating_outdoor_only">"Apenas assentos externos"</string>

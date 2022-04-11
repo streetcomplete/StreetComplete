@@ -270,6 +270,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         val rightSide = rightSide
 
         // a cycleway that goes into opposite direction of a oneway street needs special tagging
+        // as oneway:bicycle=* tag will differ from oneway=*
+        // there is no need to tag cases where oneway:bicycle=* would merely repeat oneway=*
         var leftSideDir = 0
         var rightSideDir = 0
         var isOnewayNotForCyclists = false

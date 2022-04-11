@@ -27,13 +27,9 @@ class VisibleQuestTypeController(
     /** in-memory cache of visible quests */
     private var _visibleQuests: MutableMap<String, Boolean>? = null
     private val visibleQuests: MutableMap<String, Boolean>
-        get() {
+        get() = synchronized(this) {
             if (_visibleQuests == null) {
-                synchronized(this) {
-                    if (_visibleQuests == null) {
-                        _visibleQuests = visibleQuestTypeDao.getAll(questPresetsSource.selectedId)
-                    }
-                }
+                _visibleQuests = visibleQuestTypeDao.getAll(questPresetsSource.selectedId)
             }
             return _visibleQuests!!
         }

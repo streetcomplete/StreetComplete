@@ -138,28 +138,40 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is NoHouseNumber -> tags["nohousenumber"] = "yes"
-            is HouseNumber   -> tags["addr:housenumber"] = answer.number
-            is HouseName     -> tags["addr:housename"] = answer.name
-            is ConscriptionNumber -> {
-                tags["addr:conscriptionnumber"] = answer.number
-                if (answer.streetNumber != null) {
-                    tags["addr:streetnumber"] = answer.streetNumber
-                    tags["addr:housenumber"] = answer.streetNumber
-                } else {
-                    tags["addr:housenumber"] = answer.number
+            is HouseNumberAndHouseName -> {
+                val name = answer.name
+                val number = answer.number
+
+                when (number) {
+                    is ConscriptionNumber -> {
+                        tags["addr:conscriptionnumber"] = number.conscriptionNumber
+                        if (number.streetNumber != null) {
+                            tags["addr:streetnumber"] = number.streetNumber
+                            tags["addr:housenumber"] = number.streetNumber
+                        } else {
+                            tags["addr:housenumber"] = number.conscriptionNumber
+                        }
+                    }
+                    is HouseAndBlockNumber -> {
+                        tags["addr:housenumber"] = number.houseNumber
+                        tags["addr:block_number"] = number.blockNumber
+                    }
+                    is HouseNumber -> {
+                        tags["addr:housenumber"] = number.houseNumber
+                    }
+                    null -> {}
                 }
-            }
-            is HouseAndBlockNumber -> {
-                tags["addr:housenumber"] = answer.houseNumber
-                tags["addr:block_number"] = answer.blockNumber
+
+                if (name != null) {
+                    tags["addr:housename"] = name
+                }
+
+                if (name == null && number == null) {
+                    tags["nohousenumber"] = "yes"
+                }
             }
             WrongBuildingType -> {
                 tags["building"] = "yes"
-            }
-            is HouseNameAndHouseNumber -> {
-                tags["addr:housenumber"] = answer.number
-                tags["addr:housename"] = answer.name
             }
         }
     }

@@ -63,13 +63,18 @@ private fun getFeatureName(
 fun getNameLabel(tags: Map<String, String>): String? {
     val name = tags["name"]
     val brand = tags["brand"]
+    val localRef = tags["local_ref"]
     val ref = tags["ref"]
     val operator = tags["operator"]
 
-    return name
+    // Favour local ref over ref as it's likely to be more local/visible, e.g. bus stop point versus text code
+    return if (name != null && localRef != null) "$name ($localRef)" else null
+        ?: name
         ?: brand
-        ?: if (ref != null && operator != null) "$operator $ref" else null
+        ?: if (localRef != null && operator != null) "$operator ($localRef)" else null
+        ?: if (ref != null && operator != null) "$operator [$ref]" else null
         ?: operator
+        ?: localRef
         ?: ref
 }
 

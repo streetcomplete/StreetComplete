@@ -2123,6 +2123,8 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_smoking_separated">"Len v oddelených priestoroch"</string>
     <string name="quest_smoking_yes">"Áno, kdekoľvek"</string>
     <string name="quest_seating_name_title">"Aké typ sedenia má toto miesto?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Iba na vyzdvihnutie"</string>
     <string name="quest_seating_indoor_only">"Sedenie iba vnútri"</string>
     <string name="quest_seating_outdoor_only">"Sedenie iba vonku"</string>

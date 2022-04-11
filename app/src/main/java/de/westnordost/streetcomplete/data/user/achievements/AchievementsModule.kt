@@ -151,6 +151,14 @@ private val links = listOf(
         R.drawable.ic_link_josm,
         R.string.link_josm_description
     ),
+    Link(
+        "notesreview",
+        "https://ent8r.github.io/NotesReview/",
+        "NotesReview",
+        LinkCategory.EDITORS,
+        R.drawable.ic_link_notesreview,
+        R.string.link_notesreview_description
+    ),
 
     /* ---------------------------------------- Maps -----------------------------------------*/
 
@@ -333,6 +341,14 @@ private val links = listOf(
         R.drawable.ic_link_graphhopper,
         R.string.link_graphhopper_description
     ),
+    Link(
+        "valhalla",
+        "https://valhalla.openstreetmap.de/",
+        "Valhalla",
+        LinkCategory.SHOWCASE,
+        R.drawable.ic_link_valhalla,
+        R.string.link_valhalla_description
+    ),
 
     /* -------------------------------------- Goodies ----------------------------------------*/
     Link(
@@ -390,7 +406,23 @@ private val links = listOf(
         LinkCategory.GOODIES,
         R.drawable.ic_link_figuregrounder,
         R.string.link_figuregrounder_description
-    )
+    ),
+    Link(
+        "backofyourhand",
+        "https://backofyourhand.com/",
+        "Back Of Your Hand",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_backofyourhand,
+        R.string.link_backofyourhand_description
+    ),
+    Link(
+        "thenandnow",
+        "https://mvexel.github.io/thenandnow/",
+        "OSM Then and Now",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_thenandnow,
+        R.string.link_thenandnow_description
+    ),
 )
 
 private val linksById = links.associateBy { it.id }
@@ -428,7 +460,9 @@ private val achievements = listOf(
 
             8 to links("osm-haiku"),
 
-            10 to links("umap")
+            10 to links("umap"),
+
+            12 to links("backofyourhand")
         )
     ),
 
@@ -451,7 +485,9 @@ private val achievements = listOf(
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
             6 to links("disaster.ninja"),
-            7 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
+            7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
+            8 to links("thenandnow"),
+            9 to links("notesreview"),
         )
     ),
 
@@ -480,6 +516,7 @@ private val achievements = listOf(
             5 to links("osrm"), // routing engines are not that interesting for end users
             6 to links("openrouteservice"),
             7 to links("graphhopper"),
+            8 to links("valhalla"),
             12 to links("kartaview", "mapillary") // useful to OSM, but not directly OSM and interesting only to extreme enthusiasts
         )
     ),
