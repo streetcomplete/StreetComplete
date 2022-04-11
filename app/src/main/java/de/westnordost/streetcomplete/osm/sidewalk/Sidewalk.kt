@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 
-enum class Sidewalk() {
+enum class Sidewalk {
     YES,
     NO,
     SEPARATE,

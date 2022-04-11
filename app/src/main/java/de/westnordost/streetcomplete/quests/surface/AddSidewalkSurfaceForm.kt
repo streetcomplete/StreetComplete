@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
-import de.westnordost.streetcomplete.quests.LastSelection
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.StreetSideItem2
 import de.westnordost.streetcomplete.quests.sidewalk.imageResId
@@ -15,26 +15,36 @@ import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 
-class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, SidewalkSurfaceAnswer>() {
+class AddSidewalkSurfaceForm : AStreetSideSelectFragment<Surface, SidewalkSurfaceAnswer>() {
 
-    override val items: List<StreetSideDisplayItem<SurfaceAnswer>> get() =
-        (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
-            .toItems()
-            .map {
-                StreetSideItem2(
-                    SurfaceAnswer(it.value!!),
-                    ResImage(R.drawable.ic_sidewalk_illustration_yes),
-                    ResText(it.titleId!!),
-                    ResImage(it.drawableId!!),
-                    DrawableImage(RotatedCircleDrawable(resources.getDrawable(it.drawableId)))
-                )
+    override val items: List<Surface> get() =
+        PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES
+
+    private var leftNote: String? = null
+    private var rightNote: String? = null
+
+    override fun getDisplayItem(value: Surface): StreetSideDisplayItem<Surface> {
+        val it = value.asItem()
+        return StreetSideItem2(
+            value,
+            ResImage(R.drawable.ic_sidewalk_illustration_yes),
+            ResText(it.titleId!!),
+            ResImage(it.drawableId!!),
+            DrawableImage(RotatedCircleDrawable(resources.getDrawable(it.drawableId)))
+        )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) {
+            onLoadInstanceState(savedInstanceState)
         }
-
-    private val currentSidewalks get() = createSidewalkSides(osmElement!!.tags)
+    }
 
     override fun initStateFromTags() {
-        val left = currentSidewalks?.left
-        val right = currentSidewalks?.right
+        val sides = createSidewalkSides(osmElement!!.tags)
+        val left = sides?.left
+        val right = sides?.right
 
         if (left != null && right != null) {
             isDefiningBothSides = (left == Sidewalk.YES) && (right == Sidewalk.YES)
@@ -53,59 +63,57 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
         }
     }
 
-    override fun sideFollowUpQuestion(selection: StreetSideDisplayItem<SurfaceAnswer>, isRight: Boolean) {
-        val surface = selection.value.value
-        if (surface.shouldBeDescribed) {
+    /** only save previous selection if both sides were filled and if none needs an additional
+     *  description (because that description is not shown in the preview - in fact, nowhere, in the
+     *  UI) */
+    override fun shouldSaveSelection(left: Surface?, right: Surface?): Boolean =
+        left != null && right != null && !left.shouldBeDescribed && !right.shouldBeDescribed
+
+    override fun onSelectedSide(selection: Surface, isRight: Boolean) {
+        if (selection.shouldBeDescribed) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        onSelectedSide(StreetSideItem2(
-                            SurfaceAnswer(surface, description),
-                            selection.image,
-                            selection.title,
-                            selection.icon,
-                            selection.floatingIcon), isRight)
+                        setNote(description, isRight)
+                        replaceSide(selection, isRight)
                     }.show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
         } else {
-            onSelectedSide(selection, isRight)
+            setNote(null, isRight)
+            replaceSide(selection, isRight)
         }
     }
 
-    override fun onClickOk(leftSide: SurfaceAnswer?, rightSide: SurfaceAnswer?) {
-        applyAnswer(SidewalkSurfaceAnswer(leftSide, rightSide))
+    private fun setNote(note: String?, isRight: Boolean) {
+        if (isRight) rightNote = note
+        else leftNote = note
     }
 
-    override fun serializeAnswer(answer: LastSelection<SurfaceAnswer>): String {
-        return "${answer.left.value.value}#${answer.left.value.note}#${answer.right.value.value}#${answer.right.value.note}"
+    override fun onClickOk(leftSide: Surface?, rightSide: Surface?) {
+        applyAnswer(SidewalkSurfaceAnswer(
+            leftSide?.let { SurfaceAnswer(it, leftNote) },
+            rightSide?.let { SurfaceAnswer(it, rightNote) }
+        ))
     }
 
-    override fun deserializeAnswer(str: String): LastSelection<SurfaceAnswer> {
-        val arr = str.split('#')
+    /* ------------------------------------- instance state ------------------------------------- */
 
-        val leftSurface = Surface.values().find { it.toString() == arr[0] }!!
-        val leftNote = if (arr[1] == "null") null else arr[1]
-        val leftStreetSideItem = StreetSideItem2(
-            SurfaceAnswer(leftSurface, leftNote),
-            ResImage(R.drawable.ic_sidewalk_illustration_yes),
-            leftSurface.asItem().titleId?.let { ResText(it) },
-            ResImage(leftSurface.asItem().drawableId!!),
-            DrawableImage(RotatedCircleDrawable(resources.getDrawable(leftSurface.asItem().drawableId!!)))
-        )
+    private fun onLoadInstanceState(savedInstanceState: Bundle) {
+        leftNote = savedInstanceState.getString(LEFT_NOTE, null)
+        rightNote = savedInstanceState.getString(RIGHT_NOTE, null)
+    }
 
-        val rightSurface = Surface.values().find { it.toString() == arr[2] }!!
-        val rightNote = if (arr[3] == "null") null else arr[3]
-        val rightStreetSideItem = StreetSideItem2(
-            SurfaceAnswer(rightSurface, rightNote),
-            ResImage(R.drawable.ic_sidewalk_illustration_yes),
-            rightSurface.asItem().titleId?.let { ResText(it) },
-            ResImage(rightSurface.asItem().drawableId!!),
-            DrawableImage(RotatedCircleDrawable(resources.getDrawable(rightSurface.asItem().drawableId!!)))
-        )
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(LEFT_NOTE, leftNote)
+        outState.putString(RIGHT_NOTE, rightNote)
+    }
 
-        return LastSelection(leftStreetSideItem, rightStreetSideItem)
+    companion object {
+        private const val LEFT_NOTE = "left_note"
+        private const val RIGHT_NOTE = "right_note"
     }
 }
