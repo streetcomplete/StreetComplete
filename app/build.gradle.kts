@@ -130,12 +130,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
-    testImplementation("org.assertj:assertj-core:2.8.0")
+    testImplementation("org.assertj:assertj-core:3.22.0")
 
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:2.8.0")
+    androidTestImplementation("org.assertj:assertj-core:3.22.0")
 
     // dependency injection
     implementation("io.insert-koin:koin-android-compat:$koinVersion")
