@@ -43,12 +43,12 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<SurfaceAnswer, Sidewalk
             if (right == Sidewalk.NO || right == Sidewalk.SEPARATE) {
                 puzzleView?.setRightSideText(ResText(right.titleResId))
                 puzzleView?.setRightSideImage(ResImage(right.imageResId))
-                puzzleView?.onlyLeftSideClickable()
+                puzzleView?.setOnlyLeftSideClickable()
             }
             if (left == Sidewalk.NO || left == Sidewalk.SEPARATE) {
                 puzzleView?.setLeftSideText(ResText(left.titleResId))
                 puzzleView?.setLeftSideImage(ResImage(left.imageResId))
-                puzzleView?.onlyRightSideClickable()
+                puzzleView?.setOnlyRightSideClickable()
             }
         }
     }

@@ -207,17 +207,17 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.strut.layoutParams = params
     }
 
-    fun onlyLeftSideClickable() {
+    fun setOnlyLeftSideClickable() {
         binding.leftSideContainer.isClickable = true
         binding.rightSideContainer.isClickable = false
     }
 
-    fun onlyRightSideClickable() {
+    fun setOnlyRightSideClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = false
     }
 
-    fun bothSidesClickable() {
+    fun setBothSidesClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = true
     }
