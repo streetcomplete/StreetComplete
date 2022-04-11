@@ -48,8 +48,6 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<Surface, SidewalkSurfac
 
         if (left != null && right != null) {
             isDefiningBothSides = (left == Sidewalk.YES) && (right == Sidewalk.YES)
-            isRightSideNotDefined = (right == Sidewalk.NO) || (right == Sidewalk.SEPARATE)
-            isLeftSideNotDefined = (left == Sidewalk.NO) || (left == Sidewalk.SEPARATE)
             if (right == Sidewalk.NO || right == Sidewalk.SEPARATE) {
                 puzzleView?.setRightSideText(ResText(right.titleResId))
                 puzzleView?.setRightSideImage(ResImage(right.imageResId))

@@ -35,9 +35,7 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
 
     private var streetSideRotater: StreetSideRotater? = null
 
-    open var isDefiningBothSides: Boolean = true
-    open var isLeftSideNotDefined: Boolean = false
-    open var isRightSideNotDefined: Boolean = false
+    protected var isDefiningBothSides: Boolean = true
 
     private var left: I? = null
     private var right: I? = null
@@ -177,8 +175,7 @@ abstract class AStreetSideSelectFragment<I, T> : AbstractQuestFormAnswerFragment
     }
 
     private fun updateLastAnswerButtonVisibility() {
-        binding.lastAnswerButton.root.isGone =
-            lastSelection == null || !isDefiningBothSides || isLeftSideNotDefined || isRightSideNotDefined
+        binding.lastAnswerButton.root.isGone = lastSelection == null || !isDefiningBothSides
     }
 
     private fun saveLastSelection() {
