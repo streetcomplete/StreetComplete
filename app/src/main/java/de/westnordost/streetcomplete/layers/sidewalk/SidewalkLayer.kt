@@ -18,8 +18,9 @@ class SidewalkLayer : Layer {
 
     override fun getStyle(element: Element): PolylineStyle {
         val sidewalkSides = createSidewalkSides(element.tags)
-        if (sidewalkSides == null && !expectSidewalkTagging(element.tags))
+        if (sidewalkSides == null && sidewalkTaggingNotExpected(element.tags)) {
             return PolylineStyle(null)
+        }
 
         return PolylineStyle(
             color = null,
@@ -29,8 +30,8 @@ class SidewalkLayer : Layer {
     }
 }
 
-private fun expectSidewalkTagging(tags: Map<String, String>): Boolean =
-    tags["highway"] != "living_street" && tags["highway"] != "pedestrian"
+private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
+    tags["highway"] == "living_street" || tags["highway"] == "pedestrian"
 
 private val Sidewalk?.color get() = when (this) {
     Sidewalk.YES           -> "#33cc00" // same color as the arrow in the illustrations
