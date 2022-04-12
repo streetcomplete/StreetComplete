@@ -171,11 +171,15 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     }
 
     fun showLeftSideTapHint() {
-        binding.leftSideContainer.showTapHint(300)
+        if (binding.leftSideContainer.isClickable) {
+            binding.leftSideContainer.showTapHint(300)
+        }
     }
 
     fun showRightSideTapHint() {
-        binding.rightSideContainer.showTapHint(1200)
+        if (binding.rightSideContainer.isClickable) {
+            binding.rightSideContainer.showTapHint(1200)
+        }
     }
 
     fun showOnlyRightSide() {
@@ -203,17 +207,17 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.strut.layoutParams = params
     }
 
-    fun onlyLeftSideClickable() {
+    fun setOnlyLeftSideClickable() {
         binding.leftSideContainer.isClickable = true
         binding.rightSideContainer.isClickable = false
     }
 
-    fun onlyRightSideClickable() {
+    fun setOnlyRightSideClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = false
     }
 
-    fun bothSidesClickable() {
+    fun setBothSidesClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = true
     }
