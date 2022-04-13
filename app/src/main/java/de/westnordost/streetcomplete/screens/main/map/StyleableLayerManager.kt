@@ -121,10 +121,8 @@ class StyleableLayerManager(
         val layer = layer ?: return
         synchronized(mapDataInView) {
             mapDataInView.clear()
-            mapData.forEach { element ->
-                val styledElement = createStyledElement(layer, mapData, element)
+            createStyledElementsByKey(layer, mapData).forEach { (key, styledElement) ->
                 if (styledElement != null) {
-                    val key = ElementKey(element.type, element.id)
                     mapDataInView[key] = styledElement
                 }
             }
@@ -135,26 +133,21 @@ class StyleableLayerManager(
     private fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         val layer = layer ?: return
         synchronized(mapDataInView) {
-            updated.forEach { element ->
-                val styledElement = createStyledElement(layer, updated, element)
-                val key = ElementKey(element.type, element.id)
-                if (styledElement != null) {
-                    mapDataInView[key] = styledElement
-                } else {
-                    mapDataInView.remove(key)
-                }
+            createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
+                if (styledElement != null) mapDataInView[key] = styledElement
+                else                       mapDataInView.remove(key)
             }
             deleted.forEach { mapDataInView.remove(it) }
             mapComponent.set(mapDataInView.values)
         }
     }
 
-    private fun createStyledElement(layer: Layer, mapData: MapDataWithGeometry, element: Element): StyledElement? {
-        if (!layer.isDisplayed(element)) return null
-        val geometry = mapData.getGeometry(element.type, element.id) ?: return null
-        val style = overrideStyle(layer.getStyle(element), element)
-        return StyledElement(element, geometry, style)
-    }
+    private fun createStyledElementsByKey(layer: Layer, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
+        layer.getStyledElements(mapData).map { (element, style) ->
+            val key = ElementKey(element.type, element.id)
+            val geometry = mapData.getGeometry(element.type, element.id)
+            key to geometry?.let { StyledElement(element, geometry, overrideStyle(style, element)) }
+        }
 
     // TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
 
