@@ -69,11 +69,23 @@ class TagOlderThanTest {
         ), newDate))
     }
 
-    @Test fun `does not match old element with tag only as a prefix`() {
-        assertFalse(c.matches(mapOf("opening_hours:signed" to "tag"), oldDate))
-    }
-
     @Test fun `does not match new element with tag only as a prefix`() {
         assertFalse(c.matches(mapOf("opening_hours:signed" to "tag"), newDate))
+    }
+
+    @Test fun `matches any element which is old`() {
+        assertTrue(c.matches(mapOf("foo" to "bar"), oldDate))
+    }
+
+    @Test fun `does not match any element which is new`() {
+        assertFalse(c.matches(mapOf("foo" to "bar"), newDate))
+    }
+    
+    @Test fun `matches element with no tags which is old`() {
+        assertTrue(c.matches(mapOf(), oldDate))
+    }
+
+    @Test fun `does not match element with no tags which is new`() {
+        assertFalse(c.matches(mapOf(), newDate))
     }
 }
