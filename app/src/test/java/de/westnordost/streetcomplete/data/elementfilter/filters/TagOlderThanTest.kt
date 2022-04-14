@@ -80,7 +80,7 @@ class TagOlderThanTest {
     @Test fun `does not match any element which is new`() {
         assertFalse(c.matches(mapOf("foo" to "bar"), newDate))
     }
-    
+
     @Test fun `matches element with no tags which is old`() {
         assertTrue(c.matches(mapOf(), oldDate))
     }
