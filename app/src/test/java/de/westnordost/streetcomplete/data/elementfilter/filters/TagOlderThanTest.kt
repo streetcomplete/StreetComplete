@@ -68,4 +68,12 @@ class TagOlderThanTest {
             "check_date:opening_hours" to newDate.toCheckDateString()
         ), newDate))
     }
+
+    @Test fun `does not match old element with tag only as a prefix`() {
+        assertFalse(c.matches(mapOf("opening_hours:signed" to "tag"), oldDate))
+    }
+
+    @Test fun `does not match new element with tag only as a prefix`() {
+        assertFalse(c.matches(mapOf("opening_hours:signed" to "tag"), newDate))
+    }
 }
