@@ -73,19 +73,13 @@ class TagOlderThanTest {
         assertFalse(c.matches(mapOf("opening_hours:signed" to "tag"), newDate))
     }
 
-    @Test fun `matches any element which is old`() {
+    @Test fun `matches any old element without relevant tags`() {
         assertTrue(c.matches(mapOf("foo" to "bar"), oldDate))
-    }
-
-    @Test fun `does not match any element which is new`() {
-        assertFalse(c.matches(mapOf("foo" to "bar"), newDate))
-    }
-
-    @Test fun `matches element with no tags which is old`() {
         assertTrue(c.matches(mapOf(), oldDate))
     }
 
-    @Test fun `does not match element with no tags which is new`() {
+    @Test fun `does not match any new element without relevant tags`() {
+        assertFalse(c.matches(mapOf("foo" to "bar"), newDate))
         assertFalse(c.matches(mapOf(), newDate))
     }
 }
