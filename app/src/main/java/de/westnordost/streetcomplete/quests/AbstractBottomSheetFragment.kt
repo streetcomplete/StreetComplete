@@ -26,7 +26,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.min
 
-/** Abstract base class for expandable and closeable bottom sheets
+/** Abstract base class for expandable and closeable bottom sheets. In detail, it does manage the
+ *  behavior of the...
+ *
+ *  - bottom sheet
+ *  - title view that acts like a button to expand/retract the bottom sheet
+ *  - close/back button that is only shown when the bottom sheet is fully expanded
  * */
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
 
@@ -39,7 +44,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     /** Content view of the bottom sheet */
     protected abstract val bottomSheetContent: View?
 
-    /** View that floats at the bottom on top of any retracted/expaned bottom sheet */
+    /** View that floats at the bottom on top of any retracted/expanded bottom sheet */
     protected abstract val floatingBottomView: View?
     /** View that is only shown when the bottom sheet is expanded and acts like a back-button */
     protected abstract val backButton: View?

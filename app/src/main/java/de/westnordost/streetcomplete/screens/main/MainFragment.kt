@@ -109,14 +109,25 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.random.Random
 
-/** Contains the quests map and the controls for it.
+/** This fragment controls the main view.
  *
- *  This fragment controls the main view. It does itself not contain that much logic, but it is the
- *  place where all the logic when interacting with the map / bottom sheets / sidebars etc. comes
- *  together, hence it implements all the listeners to communicate with its child fragments.
+ *  The logical sub components of this main view are all outsourced into individual child fragments
+ *  with which this fragment communicates with.
+ *
+ *  The child fragments do not communicate with each other but only with their parent (this class)
+ *  and the parent then controls its children. Hence, all the logic when interacting with the
+ *  map / bottom sheets / sidebars / buttons etc. passes through this class and this is why this
+ *  class implements all the listeners of its child fragments.
+ *
+ *  This class does not contain so much logic itself, it delegates most of it to its children.
+ *  Still, as this is by far the largest in terms of lines of code. For easier reading, in
+ *  IntelliJ, you can collapse sections of this class that start with "//region" using the little
+ *  [-] icon next to it.
+ *
  *  */
 class MainFragment :
     Fragment(R.layout.fragment_main),
+    // listeners to child fragments:
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
     QuestsMapFragment.Listener,
@@ -124,10 +135,12 @@ class MainFragment :
     SplitWayFragment.Listener,
     LeaveNoteInsteadFragment.Listener,
     CreateNoteFragment.Listener,
-    VisibleQuestsSource.Listener,
+    EditHistoryFragment.Listener,
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
-    EditHistoryFragment.Listener,
+    // listeners to changes to data:
+    VisibleQuestsSource.Listener,
+    // rest
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
 
