@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
+import de.westnordost.streetcomplete.layers.IsShowingElement
 import de.westnordost.streetcomplete.layers.Layer
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
@@ -140,6 +141,7 @@ class MainFragment :
     UndoButtonFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
+    MapDataWithEditsSource.Listener,
     // rest
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
@@ -244,6 +246,7 @@ class MainFragment :
     override fun onStart() {
         super.onStart()
         visibleQuestsSource.addListener(this)
+        mapDataWithEditsSource.addListener(this)
         requireContext().registerReceiver(
             locationAvailabilityReceiver,
             IntentFilter(LocationManager.MODE_CHANGED_ACTION)
@@ -277,6 +280,7 @@ class MainFragment :
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
         wasNavigationMode = mapFragment?.isNavigationMode ?: false
         visibleQuestsSource.removeListener(this)
+        mapDataWithEditsSource.removeListener(this)
         requireContext().unregisterReceiver(locationAvailabilityReceiver)
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(requestLocationPermissionResultReceiver)
         locationManager.removeUpdates()
@@ -575,27 +579,55 @@ class MainFragment :
 
     @AnyThread
     override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        viewLifecycleScope.launch {
-            val f = bottomSheetFragment
-            if (f !is IsShowingQuestDetails) return@launch
-
-            // open quest does not exist anymore!
-            if (removed.contains(f.questKey)) {
-                closeBottomSheet()
-            }
+        val f = bottomSheetFragment
+        // open quest has been deleted
+        if (f is IsShowingQuestDetails && f.questKey in removed) {
+            viewLifecycleScope.launch { closeBottomSheet() }
         }
     }
 
     @AnyThread
     override fun onVisibleQuestsInvalidated() {
-        viewLifecycleScope.launch {
-            val f = bottomSheetFragment
-            if (f !is IsShowingQuestDetails) return@launch
-
-            val openQuest = withContext(Dispatchers.IO) { questController.get(f.questKey) }
-            if (openQuest == null) {
-                closeBottomSheet()
+        val f = bottomSheetFragment
+        if (f is IsShowingQuestDetails) {
+            viewLifecycleScope.launch {
+                val openQuest = withContext(Dispatchers.IO) { questController.get(f.questKey) }
+                // open quest does not exist anymore after visible quest invalidation
+                if (openQuest == null) closeBottomSheet()
             }
+        }
+    }
+
+    /* ---------------------------- MapDataWithEditsSource.Listener ----------------------------- */
+
+    @AnyThread
+    override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+        val f = bottomSheetFragment
+        // open element has been deleted
+        if (f is IsShowingElement && f.elementKey in deleted) {
+            viewLifecycleScope.launch { closeBottomSheet() }
+        }
+    }
+
+    @AnyThread
+    override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+        val f = bottomSheetFragment
+        if (f is IsShowingElement) {
+            viewLifecycleScope.launch {
+                val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(f.elementKey.type, f.elementKey.id) }
+                // open element does not exist anymore after download
+                if (openElement == null) {
+                    closeBottomSheet()
+                }
+            }
+        }
+    }
+
+    @AnyThread
+    override fun onCleared() {
+        val f = bottomSheetFragment
+        if (f is IsShowingElement) {
+            viewLifecycleScope.launch { closeBottomSheet() }
         }
     }
 
