@@ -376,8 +376,12 @@ class MainFragment :
     }
 
     override fun onClickedElement(elementKey: ElementKey) {
-        context?.toast("Clicked on ${elementKey.type}#${elementKey.id}")
-        // TODO LAYERS implement
+        val f = bottomSheetFragment
+        if (f is IsCloseableBottomSheet) f.onClickClose {
+            viewLifecycleScope.launch { showElementDetails(elementKey) }
+        } else {
+            viewLifecycleScope.launch { showElementDetails(elementKey) }
+        }
     }
 
     //endregion
@@ -916,6 +920,25 @@ class MainFragment :
         mapFragment?.isFollowingPosition = wasFollowingPosition
         mapFragment?.isNavigationMode = wasNavigationMode
     }
+
+    //endregion
+
+    //region Element bottom sheet
+
+    private suspend fun showElementDetails(elementKey: ElementKey) {
+        val mapFragment = mapFragment ?: return
+        if (isElementCurrentlyDisplayed(elementKey)) return
+
+        // TODO LAYERS implement
+        context?.toast("Clicked on ${elementKey.type}#${elementKey.id}")
+    }
+
+    private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean =
+        (bottomSheetFragment as? IsShowingElement)?.elementKey == elementKey
+
+    //endregion
+
+    //region Quest details bottom sheet
 
     private suspend fun showQuestDetails(questKey: QuestKey) {
         val quest = questController.get(questKey)
