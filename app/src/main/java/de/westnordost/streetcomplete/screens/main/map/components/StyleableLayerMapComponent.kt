@@ -82,7 +82,7 @@ class StyleableLayerMapComponent(private val resources: Resources, ctrl: KtMapCo
         if (height != null) return height
         val buildingLevels = tags["building:levels"]?.toFloatOrNull()
         val roofLevels = tags["roof:levels"]?.toFloatOrNull()
-        if (buildingLevels != null) return buildingLevels + (roofLevels ?: 0f)
+        if (buildingLevels != null) return 3f * (buildingLevels + (roofLevels ?: 0f))
         return null
     }
 
