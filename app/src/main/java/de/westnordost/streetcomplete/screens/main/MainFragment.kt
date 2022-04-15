@@ -224,7 +224,7 @@ class MainFragment :
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
 
-        updateMapQuestOffsets()
+        updateOffsetWithOpenBottomSheet()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -234,7 +234,7 @@ class MainFragment :
            should not rotate around its proper center but around the center
            of the part of the map that is not occluded by the bottom sheet */
         val previousOffset = mapOffsetWithOpenBottomSheet
-        updateMapQuestOffsets()
+        updateOffsetWithOpenBottomSheet()
         if (bottomSheetFragment != null) {
             mapFragment.adjustToOffsets(previousOffset, mapOffsetWithOpenBottomSheet)
         }
@@ -282,7 +282,7 @@ class MainFragment :
         locationManager.removeUpdates()
     }
 
-    private fun updateMapQuestOffsets() {
+    private fun updateOffsetWithOpenBottomSheet() {
         mapOffsetWithOpenBottomSheet = Rect(
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
             0,
