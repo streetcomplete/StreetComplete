@@ -55,7 +55,7 @@ styles:
         shaders:
             blocks:
                 color: |
-                    color.a = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    color.a = color.a * smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
     geometry-lines-left:
         base: lines
         blend: inlay
@@ -63,7 +63,7 @@ styles:
         shaders:
             blocks:
                 color: |
-                    color.a = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    color.a = color.a * smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
 
 layers:
     streetcomplete_selected_pins:
