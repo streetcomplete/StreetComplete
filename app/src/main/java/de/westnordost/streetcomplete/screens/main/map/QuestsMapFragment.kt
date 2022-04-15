@@ -144,6 +144,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
             if (layer != null) {
                 val props = controller?.pickFeature(x, y)?.properties
+                    ?: controller?.pickLabel(x, y)?.properties
                 val elementKey = props?.let { styleableLayerMapComponent?.getElementKey(it) }
                 if (elementKey != null) {
                     listener?.onClickedElement(elementKey)
