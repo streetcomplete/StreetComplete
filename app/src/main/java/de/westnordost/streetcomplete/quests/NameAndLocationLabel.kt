@@ -10,27 +10,27 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.toList
 import java.util.Locale
 
-fun Resources.getNameAndLocationLabelString(tags: Map<String, String>, featureDictionary: FeatureDictionary): Spanned? {
-    val localeList = ConfigurationCompat.getLocales(configuration).toList()
+fun getNameAndLocationLabelString(tags: Map<String, String>, resources: Resources, featureDictionary: FeatureDictionary): Spanned? {
+    val localeList = ConfigurationCompat.getLocales(resources.configuration).toList()
     val feature = getFeatureName(tags, featureDictionary, localeList)
         ?.withNonBreakingSpaces()?.inItalics()
     val name = getNameLabel(tags)?.withNonBreakingSpaces()?.inBold()
-    val level = getLevelLabel(tags)
+    val level = getLevelLabel(tags, resources)
 
     // only show housenumber if there is neither name nor level information
-    val location = level ?: if (name == null) getHouseNumberLabel(tags) else null
+    val location = level ?: if (name == null) getHouseNumberLabel(tags, resources) else null
 
     return if (location != null) {
         if (name != null && feature != null) {
-            getString(R.string.label_location_name_feature, location, name, feature)
+            resources.getString(R.string.label_location_name_feature, location, name, feature)
         } else if (name != null || feature != null) {
-            getString(R.string.label_location_name, location, name ?: feature)
+            resources.getString(R.string.label_location_name, location, name ?: feature)
         } else {
             location
         }
     } else {
         if (name != null && feature != null) {
-            getString(R.string.label_name_feature, name, feature)
+            resources.getString(R.string.label_name_feature, name, feature)
         } else {
             name ?: feature
         }
@@ -78,39 +78,39 @@ fun getNameLabel(tags: Map<String, String>): String? {
         ?: ref
 }
 
-private fun Resources.getLevelLabel(tags: Map<String, String>): String? {
+fun getLevelLabel(tags: Map<String, String>, resources: Resources): String? {
     /* distinguish between "floor" and "level":
        E.g. addr:floor may be "M" while level is "2". The "2" is in this case purely technical and
        can not be seen on any sign. */
     val floor = tags["addr:floor"] ?: tags["level:ref"]
     if (floor != null) {
-        return getString(R.string.on_floor, floor)
+        return resources.getString(R.string.on_floor, floor)
     }
     val level = tags["level"]
     if (level != null) {
-        return getString(R.string.on_level, level)
+        return resources.getString(R.string.on_level, level)
     }
     if (tags["tunnel"] == "yes" || tags["tunnel"] == "culvert" || tags["location"] == "underground") {
-        return getString(R.string.underground)
+        return resources.getString(R.string.underground)
     }
     return null
 }
 
-private fun Resources.getHouseNumberLabel(tags: Map<String, String>): String? {
+fun getHouseNumberLabel(tags: Map<String, String>, resources: Resources): String? {
     val houseName = tags["addr:housename"]
     val conscriptionNumber = tags["addr:conscriptionnumber"]
     val streetNumber = tags["addr:streetnumber"]
     val houseNumber = tags["addr:housenumber"]
 
     if (houseName != null) {
-        return getString(R.string.at_housename, houseName.inItalics())
+        return resources.getString(R.string.at_housename, houseName.inItalics())
     }
     if (conscriptionNumber != null) {
         val number = if (streetNumber != null) "$conscriptionNumber/$streetNumber" else conscriptionNumber
-        return getString(R.string.at_housenumber, number)
+        return resources.getString(R.string.at_housenumber, number)
     }
     if (houseNumber != null) {
-        return getString(R.string.at_housenumber, houseNumber)
+        return resources.getString(R.string.at_housenumber, houseNumber)
     }
     return null
 }

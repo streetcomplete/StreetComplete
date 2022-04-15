@@ -85,5 +85,5 @@ class CheckExistenceLabelTest {
     }
 
     private fun getQuestLabel(tags: Map<String, String>): String? =
-        englishResources.getNameAndLocationLabelString(tags, featureDictionaryFuture.get())?.toString()
+        getNameAndLocationLabelString(tags, englishResources, featureDictionaryFuture.get())?.toString()
 }

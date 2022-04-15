@@ -193,7 +193,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement)
 
-        val levelLabelText = osmElement?.let { resources.getNameAndLocationLabelString(it.tags, featureDictionary) }
+        val levelLabelText = osmElement?.let { getNameAndLocationLabelString(it.tags, resources, featureDictionary) }
         binding.titleHintLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
             binding.titleHintLabel.text = levelLabelText
