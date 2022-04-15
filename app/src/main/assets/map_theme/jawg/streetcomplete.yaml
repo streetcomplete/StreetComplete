@@ -234,8 +234,7 @@ layers:
                 text:
                     interactive: true
                     text_source: text
-                    priority: 30
-                    buffer: 4px
+                    priority: 10
                     font:
                         family: global.text_font_family
                         fill: global.text_fill_color
