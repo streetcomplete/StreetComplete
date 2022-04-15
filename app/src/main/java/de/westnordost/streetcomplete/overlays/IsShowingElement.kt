@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.layers
+package de.westnordost.streetcomplete.overlays
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 

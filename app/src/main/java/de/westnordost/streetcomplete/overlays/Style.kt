@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.layers
+package de.westnordost.streetcomplete.overlays
 
 sealed interface Style
 

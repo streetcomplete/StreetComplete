@@ -1,15 +1,15 @@
-package de.westnordost.streetcomplete.layers.sidewalk
+package de.westnordost.streetcomplete.overlays.sidewalk
 
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.layers.Color
-import de.westnordost.streetcomplete.layers.Layer
-import de.westnordost.streetcomplete.layers.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Color
+import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 
-class SidewalkLayer : Layer {
+class SidewalkOverlay : Overlay {
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""

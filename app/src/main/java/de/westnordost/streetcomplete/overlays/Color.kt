@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.layers
+package de.westnordost.streetcomplete.overlays
 
 /** Default and common colors for layers */
 object Color {

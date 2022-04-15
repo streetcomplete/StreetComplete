@@ -19,13 +19,13 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
-import de.westnordost.streetcomplete.layers.Layer
+import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
-import de.westnordost.streetcomplete.screens.main.map.components.StyleableLayerMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -51,8 +51,8 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var geometryMapComponent: FocusGeometryMapComponent? = null
     private var questPinsManager: QuestPinsManager? = null
     private var editHistoryPinsManager: EditHistoryPinsManager? = null
-    private var styleableLayerMapComponent: StyleableLayerMapComponent? = null
-    private var styleableLayerManager: StyleableLayerManager? = null
+    private var styleableOverlayMapComponent: StyleableOverlayMapComponent? = null
+    private var styleableOverlayManager: StyleableOverlayManager? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
@@ -71,11 +71,11 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         }
 
     // TODO LAYERS should probably be persisted, i.e. not reset when exiting the screen
-    var layer: Layer? = null
+    var overlay: Overlay? = null
         set(value) {
             if (field == value) return
             field = value
-            styleableLayerManager?.layer = layer
+            styleableOverlayManager?.overlay = overlay
         }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
@@ -96,9 +96,9 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
 
-        styleableLayerMapComponent = StyleableLayerMapComponent(resources, ctrl)
-        styleableLayerManager = StyleableLayerManager(ctrl, styleableLayerMapComponent!!, mapDataSource)
-        viewLifecycleOwner.lifecycle.addObserver(styleableLayerManager!!)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
+        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource)
+        viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         super.onMapReady()
     }
@@ -106,7 +106,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
-        styleableLayerManager?.onNewScreenPosition()
+        styleableOverlayManager?.onNewScreenPosition()
     }
 
     /* ------------------------------------- Map setup ------------------------------------------ */
@@ -142,10 +142,10 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PinMode.NONE -> {}
             }
 
-            if (layer != null) {
+            if (overlay != null) {
                 val props = controller?.pickFeature(x, y)?.properties
                     ?: controller?.pickLabel(x, y)?.properties
-                val elementKey = props?.let { styleableLayerMapComponent?.getElementKey(it) }
+                val elementKey = props?.let { styleableOverlayMapComponent?.getElementKey(it) }
                 if (elementKey != null) {
                     listener?.onClickedElement(elementKey)
                     return@launch

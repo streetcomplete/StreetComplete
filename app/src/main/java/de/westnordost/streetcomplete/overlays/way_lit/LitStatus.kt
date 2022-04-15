@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.layers.way_lit
+package de.westnordost.streetcomplete.overlays.way_lit
 
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 

@@ -1,14 +1,14 @@
-package de.westnordost.streetcomplete.layers.way_lit
+package de.westnordost.streetcomplete.overlays.way_lit
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.layers.Color
-import de.westnordost.streetcomplete.layers.Layer
-import de.westnordost.streetcomplete.layers.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Color
+import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 
-class WayLitLayer : Layer {
+class WayLitOverlay : Overlay {
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData

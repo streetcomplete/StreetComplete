@@ -8,17 +8,17 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.layers.PointStyle
-import de.westnordost.streetcomplete.layers.PolygonStyle
-import de.westnordost.streetcomplete.layers.PolylineStyle
-import de.westnordost.streetcomplete.layers.Style
+import de.westnordost.streetcomplete.overlays.PointStyle
+import de.westnordost.streetcomplete.overlays.PolygonStyle
+import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 /** Takes care of displaying styled map data */
-class StyleableLayerMapComponent(private val resources: Resources, ctrl: KtMapController) {
+class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController) {
 
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 

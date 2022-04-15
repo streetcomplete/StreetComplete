@@ -11,13 +11,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.layers.Color
-import de.westnordost.streetcomplete.layers.Layer
-import de.westnordost.streetcomplete.layers.PointStyle
-import de.westnordost.streetcomplete.layers.PolygonStyle
-import de.westnordost.streetcomplete.layers.PolylineStyle
-import de.westnordost.streetcomplete.layers.Style
-import de.westnordost.streetcomplete.screens.main.map.components.StyleableLayerMapComponent
+import de.westnordost.streetcomplete.overlays.Color
+import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PointStyle
+import de.westnordost.streetcomplete.overlays.PolygonStyle
+import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import kotlinx.coroutines.CoroutineScope
@@ -31,9 +31,9 @@ import kotlinx.coroutines.withContext
 /** Manages the layer of styled map data in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the map
  *  data for the bbox surrounding the area from database and holds it in memory. */
-class StyleableLayerManager(
+class StyleableOverlayManager(
     private val ctrl: KtMapController,
-    private val mapComponent: StyleableLayerMapComponent,
+    private val mapComponent: StyleableOverlayMapComponent,
     private val mapDataSource: MapDataWithEditsSource
 ) : DefaultLifecycleObserver {
 
@@ -51,7 +51,7 @@ class StyleableLayerManager(
     """.toElementFilterExpression() }
 
     /** The layer to display */
-    var layer: Layer? = null
+    var overlay: Overlay? = null
         set(value) {
             if (field == value) return
             field = value
@@ -96,7 +96,7 @@ class StyleableLayerManager(
     }
 
     fun onNewScreenPosition() {
-        if (layer == null) return
+        if (overlay == null) return
         val zoom = ctrl.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
         val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
@@ -118,7 +118,7 @@ class StyleableLayerManager(
     }
 
     private fun setStyledElements(mapData: MapDataWithGeometry) {
-        val layer = layer ?: return
+        val layer = overlay ?: return
         synchronized(mapDataInView) {
             mapDataInView.clear()
             createStyledElementsByKey(layer, mapData).forEach { (key, styledElement) ->
@@ -131,7 +131,7 @@ class StyleableLayerManager(
     }
 
     private fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val layer = layer ?: return
+        val layer = overlay ?: return
         synchronized(mapDataInView) {
             createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
                 if (styledElement != null) mapDataInView[key] = styledElement
@@ -142,8 +142,8 @@ class StyleableLayerManager(
         }
     }
 
-    private fun createStyledElementsByKey(layer: Layer, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
-        layer.getStyledElements(mapData).map { (element, style) ->
+    private fun createStyledElementsByKey(overlay: Overlay, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
+        overlay.getStyledElements(mapData).map { (element, style) ->
             val key = ElementKey(element.type, element.id)
             val geometry = mapData.getGeometry(element.type, element.id)
             key to geometry?.let { StyledElement(element, geometry, overrideStyle(style, element)) }
