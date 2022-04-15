@@ -835,7 +835,7 @@ class MainFragment :
 
     //endregion
 
-    //region Bottom Sheet - Controlling and managing the bottom sheet contents
+    //region Bottom Sheet - Controlling the bottom sheet and its interaction with the map
 
     @UiThread
     private fun closeBottomSheet() {
@@ -845,6 +845,44 @@ class MainFragment :
                 FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         unfreezeMap()
+
+        mapFragment?.endFocusQuest()
+        mapFragment?.show3DBuildings = true
+        mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
+    }
+
+    private fun showInBottomSheet(f: Fragment) {
+        val appearAnim = if (bottomSheetFragment == null) R.animator.quest_answer_form_appear else 0
+        val disappearAnim = R.animator.quest_answer_form_disappear
+        childFragmentManager.commit(true) {
+            setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
+            replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
+            addToBackStack(BOTTOM_SHEET)
+        }
+    }
+
+    /** Make the map not follow the user's location anymore temporarily */
+    private fun freezeMap() {
+        val mapFragment = mapFragment ?: return
+
+        wasFollowingPosition = mapFragment.isFollowingPosition
+        wasNavigationMode = mapFragment.isNavigationMode
+        mapFragment.isFollowingPosition = false
+        mapFragment.isNavigationMode = false
+    }
+
+    private fun resetFreezeMap() {
+        val mapFragment = mapFragment ?: return
+
+        mapFragment.clearFocusQuest()
+        mapFragment.show3DBuildings = true
+        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
+    }
+
+    /** Make the map follow the user's location again (if it was following before) */
+    private fun unfreezeMap() {
+        mapFragment?.isFollowingPosition = wasFollowingPosition
+        mapFragment?.isNavigationMode = wasNavigationMode
     }
 
     private suspend fun showQuestDetails(questKey: QuestKey) {
@@ -894,16 +932,6 @@ class MainFragment :
         }
     }
 
-    private fun showInBottomSheet(f: Fragment) {
-        val appearAnim = if (bottomSheetFragment == null) R.animator.quest_answer_form_appear else 0
-        val disappearAnim = R.animator.quest_answer_form_disappear
-        childFragmentManager.commit(true) {
-            setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
-            replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
-            addToBackStack(BOTTOM_SHEET)
-        }
-    }
-
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
         val questType = quest.osmElementQuestType
         val bbox = quest.geometry.center.enclosingBoundingBox(questType.highlightedElementsRadius)
@@ -942,33 +970,6 @@ class MainFragment :
     private fun isQuestDetailsCurrentlyDisplayedFor(questKey: QuestKey): Boolean {
         val f = bottomSheetFragment
         return f is IsShowingQuestDetails && f.questKey == questKey
-    }
-
-    private fun freezeMap() {
-        val mapFragment = mapFragment ?: return
-
-        wasFollowingPosition = mapFragment.isFollowingPosition
-        wasNavigationMode = mapFragment.isNavigationMode
-        mapFragment.isFollowingPosition = false
-        mapFragment.isNavigationMode = false
-    }
-
-    private fun resetFreezeMap() {
-        val mapFragment = mapFragment ?: return
-
-        mapFragment.clearFocusQuest()
-        mapFragment.show3DBuildings = true
-        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
-    }
-
-    private fun unfreezeMap() {
-        val mapFragment = mapFragment ?: return
-
-        mapFragment.isFollowingPosition = wasFollowingPosition
-        mapFragment.isNavigationMode = wasNavigationMode
-        mapFragment.endFocusQuest()
-        mapFragment.show3DBuildings = true
-        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
     //endregion
