@@ -27,7 +27,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
     override val changesetComment = "Add whether cards are accepted"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:payment"
-    override val icon = R.drawable.ic_quest_drinking_water // TODO FIX
+    override val icon = R.drawable.ic_quest_card
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
