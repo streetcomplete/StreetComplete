@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
@@ -38,7 +39,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
     override fun createForm() = AddAcceptsCardsForm()
 
     override fun applyAnswerTo(answer: CardAcceptance, tags: Tags, timestampEdited: Long) {
-        tags["payment:debit_cards"] = answer.debit
-        tags["payment:credit_cards"] = answer.credit
+        tags["payment:debit_cards"] = answer.debit.toYesNo()
+        tags["payment:credit_cards"] = answer.credit.toYesNo()
     }
 }

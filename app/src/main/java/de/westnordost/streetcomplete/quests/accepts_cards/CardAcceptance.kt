@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.accepts_cards
 
-enum class CardAcceptance(val debit: String, val credit: String) {
-    DEBIT_AND_CREDIT("yes", "yes"),
-    CREDIT_CARDS_ONLY("no", "yes"),
-    DEBIT_CARDS_ONLY("yes", "no"),
-    NEITHER_DEBIT_NOR_CREDIT("no", "no"),
+enum class CardAcceptance(val debit: Boolean, val credit: Boolean) {
+    DEBIT_AND_CREDIT(true, true),
+    CREDIT_CARDS_ONLY(false, true),
+    DEBIT_CARDS_ONLY(true, false),
+    NEITHER_DEBIT_NOR_CREDIT(false, false),
 }
