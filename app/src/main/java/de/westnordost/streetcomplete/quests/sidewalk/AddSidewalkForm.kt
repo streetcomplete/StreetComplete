@@ -12,7 +12,9 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
 
-    override val items = arrayOf(YES, NO, SEPARATE).map { it.asStreetSideItem() }
+    override val items = listOf(YES, NO, SEPARATE)
+
+    override fun getDisplayItem(value: Sidewalk) = value.asStreetSideItem()
 
     override val otherAnswers: List<AnswerItem> = listOf(
         AnswerItem(R.string.quest_sidewalk_answer_none) { noSidewalksHereHint() }
@@ -27,7 +29,7 @@ class AddSidewalkForm : AStreetSideSelectFragment<Sidewalk, SidewalkSides>() {
         }
     }
 
-    override fun onClickOk(leftSide: Sidewalk, rightSide: Sidewalk) {
-        applyAnswer(SidewalkSides(leftSide, rightSide))
+    override fun onClickOk(leftSide: Sidewalk?, rightSide: Sidewalk?) {
+        applyAnswer(SidewalkSides(leftSide!!, rightSide!!))
     }
 }
