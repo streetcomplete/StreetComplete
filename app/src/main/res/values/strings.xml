@@ -558,6 +558,12 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
 
+    <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
+    <string name="quest_accepts_cards_debit_and_credit">Both</string>
+    <string name="quest_accepts_cards_credit_only">Only credit cards</string>
+    <string name="quest_accepts_cards_dedit_only">Only debit cards</string>
+    <string name="quest_accepts_cards_unavailable">Neither debit nor credit cards</string>
+
     <string name="quest_accepts_cash_title2">"Is cash payment accepted here?"</string>
 
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
