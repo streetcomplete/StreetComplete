@@ -14,10 +14,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
         nodes with (
-          amenity=restaurant
-          or amenity=fast_food
-          or amenity=cafe
-          or amenity=ice_cream
+          amenity ~ restaurant|fast_food|cafe|ice_cream
           or (shop and shop !~ no|vacant|mall)
         )
         and !payment:credit_cards and !payment:debit_cards
