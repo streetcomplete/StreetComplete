@@ -1,3 +1,23 @@
 # .git-blame-ignore-revs
+# some weird force-merge or something
+ae7a244dd60ccfc91cf2dc01bf9e60c8d6a81616
+# just a large re-import of orchard-produce images
+f3bc67328c3be989835e44eb33e769f49da479e1
 # mechanical linting
 9c6d3e25216d06a2c5afa71086949e1e195de926
+# mechanical linting
+1908fc930397c17739e60c8da67f968361f52e89
+# mechanically optimized all graphics in the repo back then
+74b6424d3310f62a5c0f7b0071ee81c2308db4f6
+# deletion of adding too many files prior
+4282c1e812764a2bb46c17bbdb0fd98aee598e83
+# deletion of adding too many files prior
+a64d57efc3d8d51c564365088772fdac528ab069
+# mechanical linting
+7fb216b8360ee85d84b36ad3fb0b0ea0ebf9977d
+# mechanical linting
+21aa1deabae7a563ba1475094f372590fb33d784
+# mostly just moving a lot of packages around
+fef6877852d6a19a7b85e6f3ed3b09ea7c6538ec
+# just moving packages around
+7a7d725154eb38d53936d154fc8011355679a8ae
