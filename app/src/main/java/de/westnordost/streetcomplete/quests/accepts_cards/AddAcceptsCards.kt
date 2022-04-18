@@ -25,7 +25,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_card
-    override val isDeleteElementEnabled = true
+    override val isReplaceShopEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cards
