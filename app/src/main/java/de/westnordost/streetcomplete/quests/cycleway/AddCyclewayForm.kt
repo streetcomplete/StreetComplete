@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
 import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -299,7 +300,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             isOnewayNotForCyclists = isOnewayNotForCyclists
         )
 
-        val wasOnewayNotForCyclists = isOneway && osmElement!!.tags["oneway:bicycle"] == "no"
+        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(osmElement!!.tags, isLeftHandTraffic)
         if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
             confirmNotOnewayForCyclists {
                 applyAnswer(answer)
