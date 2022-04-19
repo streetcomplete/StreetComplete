@@ -35,7 +35,7 @@
     <string name="quest_leave_new_note_title">"Efterlad note i stedet?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Du kan efterlade en offentlig note på denne lokation som andre kortlæggere kan kommentere på og forhåbentligt besvare eller alternativt kan du skjule spørgsmålet (skjules kun for dig selv)"</string>
+    <string name="quest_leave_new_note_description">"Du kan efterlade en offentlig note på denne lokation, som andre kortlæggere kan kommentere på og forhåbentligt besvare, eller alternativt kan du skjule spørgsmålet (skjules kun for dig selv)"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
 
     <!-- Fuzzy -->

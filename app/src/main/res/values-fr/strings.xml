@@ -1382,7 +1382,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Le paiement en liquide est-il accepté ici ?"</string>
-    <string name="quest_address_street_title2">"Quelle rue est-ce?"</string>
+    <string name="quest_address_street_title2">"Quelle rue est-ce ?"</string>
     <string name="quest_airConditioning_title">"Ce lieu est-il climatisé ?"</string>
     <string name="quest_baby_changing_table_title2">"Ce lieu dispose-t-il d’une table à langer ?"</string>
 
@@ -1415,7 +1415,7 @@ sorted alphabetically by title -->
     <string name="quest_generalFee_title2">"Doit-on payer pour rentrer ici ?"</string>
     <string name="quest_internet_access_title">"Quel type de connexion internet est proposée ici ?"</string>
     <string name="quest_level_title2">"À quel niveau se trouve cet endroit ?"</string>
-    <string name="quest_lit_title">"Est-ce éclairé?"</string>
+    <string name="quest_lit_title">"Est-ce éclairé ?"</string>
     <string name="quest_openingHours_title">"Quels sont les horaires d’ouverture à cet endroit ?"</string>
     <string name="quest_openingHours_signed_title">"Les heures d’ouverture sont-elles signalées ici ?"</string>
     <string name="quest_openingHours_resurvey_title">"Les horaires d’ouverture sont-ils toujours corrects ?"</string>
@@ -1424,7 +1424,7 @@ sorted alphabetically by title -->
     <string name="quest_smoking_title2">"Peut-on fumer à cet endroit ?"</string>
     <string name="quest_smoothness_title">"Quelle est la qualité de la surface ?"</string>
     <string name="quest_summit_register_title2">"Y’a-t’il un registre d’ascenscion de sommet de montagne ?"</string>
-    <string name="quest_surface_title">"Quelle est le matériau qui compose la surface?"</string>
+    <string name="quest_surface_title">"Quel est le matériau qui compose la surface ?"</string>
     <string name="quest_toiletAvailability_title">"Y a-t-il des toilettes à cet endroit ?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Les toilettes de ce lieu sont-elles accessibles aux fauteuils roulants ?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Êtes-vous certain que les cyclistes ne sont pas autorisés à utiliser cette rue à sens unique dans le deux sens ? En cas de doute, vérifiez qu’un panneau ne se trouve pas en bout de rue."</string>

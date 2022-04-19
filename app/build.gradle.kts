@@ -204,13 +204,14 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el", "en", "en-AU", "en-GB", "es", "eu",
-    "fa", "fi", "fr", "gl", "hr", "hu", "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn",
-    "pl", "pt", "pt-BR", "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
+    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
+    "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220321"
+val nsiVersion = "v6.0.20220418"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.2"
 

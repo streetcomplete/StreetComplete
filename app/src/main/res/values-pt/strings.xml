@@ -29,7 +29,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_title">"Qual é o nome desta estrada?"</string>
-    <string name="quest_streetName_description">"escrever tal qual a placa da rua. As abreviaturas são expandidas automaticamente:"</string>
+    <string name="quest_streetName_description">"como está escrito na sinalização, abreviações são expandidas:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes o sinal com o nome da rua está apenas disponível numa das extremidades. Além disso, em ruas compridas pode não existir sinalética em todos os cruzamentos. Normalmente qualquer rua com casas possui nome."</string>
 
     <!-- Fuzzy -->

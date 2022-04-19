@@ -2017,4 +2017,19 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Er det et toalett her?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Er dette toalettet tilgjengelig med rullestol?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Er du sikker på at syklister ikke har lov til å sykle begge veier på denne enveiskjørte veien? Sjekk om det er et skilt i enden av veien hvis du er i tvil."</string>
+    <string name="link_backofyourhand_description">"Hvor godt kjenner du nabolaget ditt? Test dine kunnskaper ved å lokalisere veiene."</string>
+    <string name="link_thenandnow_description">"Se hvordan OSM så ut i starten, sammenlignet med hvordan det ser ut nå!"</string>
+    <string name="link_notesreview_description">"Enkelt se, filtrere og kommentere merknader laget av deg selv og andre. Mange merknader kan løses ved å legge inn den oppgitte informasjonen i kartet med iD eller JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Kan man betale med kreditt- eller debetkort her?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Begge"</string>
+    <string name="quest_accepts_cards_credit_only">"Kun kredittkort"</string>
+    <string name="quest_accepts_cards_dedit_only">"Kun debetkort"</string>
+    <string name="quest_accepts_cards_unavailable">"Verken debet- eller kredittkort"</string>
+    <string name="quest_barrier_type_gate_any_size">"Port, alle størrelser"</string>
+    <string name="quest_air_pump_bicycle_title">"Er det en fungerende sykkelpumpe allment tilgjengelig her?"</string>
+    <string name="quest_air_pump_compressor_title">"Er det en luftkompressor tilgjenglig her?"</string>
+    <string name="quest_step_count_stile_hint">"Antall trinn for å nå toppen. Hvis det er ulikt antall trinn på hver side, oppgi det høyeste antallet."</string>
 </resources>

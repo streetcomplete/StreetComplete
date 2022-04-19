@@ -2501,4 +2501,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Jaký je tu povrch?"</string>
     <string name="quest_toiletAvailability_title">"Jsou tu nějaké toalety?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Jsou toalety na tomto místě přístupné na vozíku?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Jste si jistí, že cyklisté nemohou používat tuto jednosměrku v obou směrech? Pokud váháte, zkontrolujte jestli je na konci této ulice značka."</string>
 </resources>
