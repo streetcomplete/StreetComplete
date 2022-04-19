@@ -15,7 +15,7 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
          and (!opening_date or opening_date < today)
          and older today -2 weeks
     """
-    override val changesetComment = "Determine whether construction is now completed"
+    override val changesetComment = "Determine whether road construction is now completed"
     override val wikiLink = "Tag:highway=construction"
     override val icon = R.drawable.ic_quest_road_construction
     override val hasMarkersAtEnds = true

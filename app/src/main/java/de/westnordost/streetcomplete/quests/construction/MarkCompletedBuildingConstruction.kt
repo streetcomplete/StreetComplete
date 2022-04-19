@@ -14,7 +14,7 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
          and (!opening_date or opening_date < today)
          and older today -6 months
     """
-    override val changesetComment = "Determine whether construction is now completed"
+    override val changesetComment = "Determine whether building construction is now completed"
     override val wikiLink = "Tag:building=construction"
     override val icon = R.drawable.ic_quest_building_construction
     override val questTypeAchievements = listOf(BUILDING)
