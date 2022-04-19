@@ -9,7 +9,12 @@ v43.0-beta1: |
   <h3>Other Enhancements</h3>
   <ul>
   <li>Do not ask questions about objects tagged as seasonal (#3943)</li>
-  <li>Various minor enhancements and fixes (#3931, #3933, #3717, #3951, #3698, #3795...), thanks @mnalis, @CJ-Malone, @matkoniecz</li>
+  <li>Various minor enhancements and fixes (#3931, #3933, #3717, #3951, #3698, #3795, #3972...), thanks @mnalis, @CJ-Malone, @matkoniecz</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Armenian, by Alexander and Anteneh Belayneh</li>
+  <li>Added Esperanto, by Jolesh, Jan, Martin Constantino-Bodin, Hendursaga, Robin van der Vliet, Fabio and more</li>
   </ul>
 
 v42.0: |
