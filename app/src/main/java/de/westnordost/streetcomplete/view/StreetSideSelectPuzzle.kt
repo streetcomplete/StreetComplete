@@ -240,12 +240,12 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     private fun scaleToWidth(drawable: BitmapDrawable, width: Int, flip180Degrees: Boolean): BitmapDrawable {
         val m = Matrix()
-        val scale = width.toFloat() / drawable.intrinsicWidth
+        val scale = width.toFloat() / drawable.bitmap.width
         m.postScale(scale, scale)
         if (flip180Degrees) m.postRotate(180f)
         val bitmap = Bitmap.createBitmap(
             drawable.bitmap, 0, 0,
-            drawable.intrinsicWidth, drawable.intrinsicHeight, m, true
+            drawable.bitmap.width, drawable.bitmap.height, m, true
         )
         return BitmapDrawable(resources, bitmap)
     }
