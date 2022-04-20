@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discussions
+    url: https://github.com/streetcomplete/StreetComplete/discussions
+    about: For discussions about the usage of StreetComplete, asking questions or talking about visions.
+  - name: Translations
+    url: https://poeditor.com/join/project/IE4GC127Ki
+    about: For contributing and discussing translations of StreetComplete
