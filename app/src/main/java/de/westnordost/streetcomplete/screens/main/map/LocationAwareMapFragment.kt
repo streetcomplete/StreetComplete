@@ -196,7 +196,10 @@ open class LocationAwareMapFragment : MapFragment() {
     }
 
     private fun updateLocationAvailability(isAvailable: Boolean) {
-        if (!isAvailable) locationMapComponent?.location = null
+        if (!isAvailable) {
+            displayedLocation = null
+            locationMapComponent?.location = null
+        }
     }
 
     private fun onLocationChanged(location: Location) {
