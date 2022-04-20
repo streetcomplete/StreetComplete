@@ -1467,5 +1467,9 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
 
+    <!-- Overlays -->
+
+    <string name="overlay_lit">Street lighting</string>
+    <string name="overlay_sidewalk">Sidewalks</string>
 
 </resources>

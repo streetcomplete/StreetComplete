@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.overlays.sidewalk
 
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 
 class SidewalkOverlay : Overlay {
+
+    override val title: Int = R.string.overlay_sidewalk
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""

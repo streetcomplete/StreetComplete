@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
-import de.westnordost.streetcomplete.osm.ALL_PATHS
-import de.westnordost.streetcomplete.osm.ALL_ROADS
 
 class WayLitOverlay : Overlay {
+
+    override val title: Int = R.string.overlay_lit
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
