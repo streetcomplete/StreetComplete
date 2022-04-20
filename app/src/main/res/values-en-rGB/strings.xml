@@ -913,7 +913,7 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_surface_value_clay">"Clay court"</string>
     <string name="quest_surface_value_artificial_turf">"Astroturf"</string>
     <string name="quest_surface_value_tartan">"Tartan Track"</string>
-    <string name="quest_bicycle_parking_fee_title">"Is there a fee to park bikes here?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Do you have to pay to park a bike here?"</string>
     <string name="quest_buildingType_house_description2">"not detached single-family home, e.g. a single row house"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
@@ -1207,9 +1207,7 @@ Unfortunately, due to a Google Play Store policy, no links leading to donations 
     <string name="quest_smoking_separated">"Only in separated areas"</string>
     <string name="quest_smoking_yes">"Yes, everywhere"</string>
     <string name="quest_seating_name_title">"What kind of seating does this place have?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_seating_takeaway">"Takeaway only"</string>
+    <string name="quest_seating_takeaway">"No seating (takeaway only)"</string>
     <string name="quest_seating_indoor_only">"Indoor seating only"</string>
     <string name="quest_seating_outdoor_only">"Outdoor seating only"</string>
     <string name="quest_seating_indoor_and_outdoor">"Both indoor and outdoor seating"</string>
@@ -1233,10 +1231,10 @@ sorted alphabetically by title -->
     <string name="quest_busStopLit_title2">"Is this stop lit?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopName_title2">"What's the name of this stop?"</string>
+    <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopRef_title2">"What's the reference number of this stop?"</string>
+    <string name="quest_busStopRef_title2">"What’s the reference number of this stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
@@ -1256,12 +1254,12 @@ sorted alphabetically by title -->
     <string name="quest_openingHours_title">"What are the opening hours here?"</string>
     <string name="quest_openingHours_signed_title">"Are the opening hours here signed?"</string>
     <string name="quest_openingHours_resurvey_title">"Are these opening hours still correct?"</string>
-    <string name="quest_placeName_title">"What's the name of this place?"</string>
+    <string name="quest_placeName_title">"What’s the name of this place?"</string>
     <string name="quest_shop_type_title2">"What type of shop is this?"</string>
     <string name="quest_smoking_title2">"Is smoking allowed here?"</string>
-    <string name="quest_smoothness_title">"What's the surface quality here?"</string>
+    <string name="quest_smoothness_title">"What’s the surface quality here?"</string>
     <string name="quest_summit_register_title2">"Is there a summit register here?"</string>
-    <string name="quest_surface_title">"What's the surface here?"</string>
+    <string name="quest_surface_title">"What’s the surface here?"</string>
     <string name="quest_toiletAvailability_title">"Are there any toilets here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this oneway street in both directions? If in doubt, check if there is a sign at the end of the street."</string>

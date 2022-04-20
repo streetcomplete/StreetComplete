@@ -712,14 +712,14 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_touch_mapper_description">"Einfach Blindenleitsystem-Karten für Adressen erstellen"</string>
     <string name="link_mapy_tactile_description">"Blindenleitsystem-Karten für sehbehinderte Menschen"</string>
     <string name="link_josm_description">"Vollwertiger Desktop-OSM-Editor. Das Werkzeug der Wahl für Stammnutzer."</string>
-    <string name="link_vespucci_description">"Erweiterter OSM-Editor für Android"</string>
+    <string name="link_vespucci_description">"Android OSM-Editor für Fortgeschrittene"</string>
     <string name="link_ideditor_description">"Einfacher OSM-Editor für Webbrowser. Optimiert für Desktop oder große Tablets"</string>
     <string name="link_umap_description">"Erstelle Karten nach Maß und füge sie in eigene Seiten ein"</string>
     <string name="link_opnvkarte_description">"Eine Karte für ÖPNV-Routen und -Stopps"</string>
-    <string name="link_pic4review_description">"Durch Ansehen von Bildern deiner Stadt zu OSM beitragen"</string>
+    <string name="link_pic4review_description">"Trage durch Ansehen von Bildern deiner Stadt zu OSM bei"</string>
     <string name="link_wiki_description">"Das Wiki ist dein Startpunkt für alles Relevante zu OpenStreetMap"</string>
     <string name="link_learnosm_description">"Neu bei OpenStreetMap? Hier ist eine Einführung"</string>
-    <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Beitragende, z. B. wo und wie Änderungen gemacht wurden, über Editoren in der Nähe und Bestenlisten"</string>
+    <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Beitragende, zum Beispiel wo und wie Du beigetragen hast, wer sonst noch so in der Nähe beiträgt sowie Bestenlisten"</string>
     <string name="link_welcome_mat_description">"Grundsätzliche Informationen über OpenStreetMap und die Zusammenarbeit mit der Organisation dahinter"</string>
     <string name="link_mapillary_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
     <string name="link_openstreetcam_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
@@ -735,7 +735,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_openinframap_description">"Spezialkarte zu Kraftwerken, Telekommunikation und fossiler Energie"</string>
     <string name="link_openorienteeringmap_description">"Ausdruckbare Karten für Orientierungsläufe"</string>
     <string name="link_openstreetbrowser_description">"OpenStreetMap-Kartenmerkmale erkunden"</string>
-    <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der OpenStreetMap-Welt"</string>
+    <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der Welt von OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Figur-Grund-Diagrammposter einer Stadt oder Umgebung erstellen"</string>
     <string name="achievement_first_edit_title">"Erste Aufgabe gelöst"</string>
     <string name="achievement_first_edit_description">"Willkomen in der OpenStreetMap-Community! Im Profilbereich kannst du mehr zu deinen gelösten Aufgaben einsehen."</string>
@@ -804,7 +804,7 @@ Erfolge"</string>
     <string name="quest_recycling_type_engine_oil">"Motoröl"</string>
     <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
     <string name="link_graphhopper_description">"Eine flexible Routing-Engine"</string>
-    <string name="link_qwant_maps_description">"Eine Karte mit suchbaren POIs und Routenplaner"</string>
+    <string name="link_qwant_maps_description">"Eine Karte mit Suchfunktion und Routenplaner"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Um die Karte anzuzeigen, werden Vektordaten von %1$s heruntergeladen. Siehe deren &lt;a href=\"%2$s\"&gt;Datenschutzbestimmungen&lt;/a&gt; für weitere Informationen ein.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsoren"</string>
     <string name="quest_board_type_history">"Geschichte"</string>
@@ -825,7 +825,7 @@ Erfolge"</string>
     <string name="quest_buildingType_terrace2">"Reihenhäuser"</string>
     <string name="at_housename">"Hausname %s"</string>
     <string name="at_housenumber">"Hausnummer %s"</string>
-    <string name="quest_openingHours_add_off_days">"Neuer Ruhetag"</string>
+    <string name="quest_openingHours_add_off_days">"Ruhetag hinzufügen"</string>
     <string name="quest_openingHours_off_day">"Ruhetag"</string>
     <string name="quest_openingHours_unspecified_range">"Nicht angegeben"</string>
     <string name="quest_cycleway_resurvey_title">"Sind die Radwege immer noch so?"</string>
@@ -861,7 +861,7 @@ Erfolge"</string>
     <string name="quest_atm_operator_title">"Zu welcher Bank gehört dieser Geldautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Wer sammelt Altkleider mit diesem Container?"</string>
     <string name="quest_charging_station_operator_title">"Wer ist der Betreiber dieser Ladestation?"</string>
-    <string name="link_indoorequal_description">"Entdecke Karten für den Innenbereich von Einkaufszentren, Bahnhöfe usw."</string>
+    <string name="link_indoorequal_description">"Entdecke Karten für den Innenbereich von Einkaufszentren, Bahnhöfen usw."</string>
     <string name="achievement_rare_title">"Schatzsuche"</string>
     <string name="achievement_rare_solved_X">"Du hast %d sehr seltene Aufgaben gefunden und gelöst, gratuliere!"</string>
     <string name="achievement_citizen_title">"Bürger"</string>
@@ -1293,4 +1293,20 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Hat dieser Ort eine Toilette?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Ist die Toilette an diesem Ort zugänglich für Rollstuhlfahrer?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sicher, dass es Radfahrern nicht erlaubt ist, die Einbahnstraße in beide Richtungen zu nutzen? Im Zweifel schaue lieber am Ende der Straße nach einem Schild."</string>
+    <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
+    <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
+    <string name="link_thenandnow_description">"Erkunde, wie OSM in früher einmal im Vergleich zu heute aussah!"</string>
+    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Werden hier Kredit- oder Debitkarten akzeptiert?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Beides"</string>
+    <string name="quest_accepts_cards_credit_only">"Nur Kreditkarten"</string>
+    <string name="quest_accepts_cards_dedit_only">"Nur Debitkarten"</string>
+    <string name="quest_accepts_cards_unavailable">"Weder Kredit- noch Debitkarten"</string>
+    <string name="quest_barrier_type_gate_any_size">"Tor (jede Größe)"</string>
+    <string name="quest_air_pump_bicycle_title">"Gibt es hier eine funktionierende und für alle nutzbare Fahrradpumpe?"</string>
+    <string name="quest_air_pump_compressor_title">"Gibt es hier Pressluft?"</string>
+    <string name="quest_step_count_stile_hint">"Nur die Anzahl der Stufen, um nach oben zu kommen. Wenn die Anzahl sich je Seite unterscheidet, nimm die höhere Zahl."</string>
 </resources>

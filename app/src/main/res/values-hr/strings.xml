@@ -825,11 +825,11 @@ Ti podaci su bitni ne samo poštarima već i svakom navigacijskom sustavu."</str
     <string name="achievement_building_solved_X">"Riješili ste %d zadataka vezanih uz zgrade.
 Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utvrdi njen tip."</string>
     <string name="achievement_blind_title">"Šesto čulo"</string>
-    <string name="achievement_blind_solved_X">"Riješili ste %d zadataka koji su zanimljivi slijepim i slabovidnim osobama."</string>
+    <string name="achievement_blind_solved_X">"Riješili ste %d zadataka koji su korisni slijepim i slabovidnim osobama."</string>
     <string name="achievement_pedestrian_title">"Trkač"</string>
     <string name="achievement_pedestrian_solved_X">"Riješili ste %d zadataka korisnih za pješake!"</string>
     <string name="achievement_veg_title">"Ljubazni prema životinjama"</string>
-    <string name="achievement_veg_solved_X">"Riješili ste %d zadataka koji su zanimljivi ljudima koji žive na prehrani bez mesa!"</string>
+    <string name="achievement_veg_solved_X">"Riješili ste %d zadataka koji su interesantni ljudima koji žive na prehrani bez mesa!"</string>
     <string name="achievement_car_title">"Na cesti"</string>
 
     <!-- Fuzzy -->

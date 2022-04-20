@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_SHARED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
 import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.util.ktx.containsAny
 
@@ -35,9 +36,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
 
     // any unambiguous opposite tagging implies oneway:bicycle = no
     val isOpposite = tags["cycleway"]?.startsWith("opposite") == true
-    val isUnambiguousOppositeSide = tags[if (isReverseSideRight) "cycleway:right" else "cycleway:left"]?.startsWith("opposite") == true
-    val isAnyUnambiguousOppositeTagging = isOpposite || isUnambiguousOppositeSide
-    val isOnewayNotForCyclists = isOneway && (tags["oneway:bicycle"] == "no" || isAnyUnambiguousOppositeTagging)
+    val isOnewayButNotForCyclists = isOneway && isNotOnewayForCyclists(tags, isLeftHandTraffic)
 
     // opposite tagging implies a oneway. So tagging is not understood if tags seem to contradict each other
     val isAnyOppositeTagging = tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.any { it.startsWith("opposite") }
@@ -81,7 +80,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
 
     /* if there is no cycleway in a direction but it is a oneway in the other direction but not
        for cyclists, we have a special selection for that */
-    if (isOnewayNotForCyclists) {
+    if (isOnewayButNotForCyclists) {
         if ((left == NONE || left == null) && !isReverseSideRight) left = NONE_NO_ONEWAY
         if ((right == NONE || right == null) && isReverseSideRight) right = NONE_NO_ONEWAY
     }

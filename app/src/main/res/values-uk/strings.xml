@@ -1168,6 +1168,7 @@
     <string name="quest_generic_answer_is_actually_steps">"Ця частина є сходами"</string>
     <string name="quest_barrier_type_passage_conversion">"Чи час забору кореспонденції для цієї скриньки все ще правильний?"</string>
     <string name="quest_barrier_type_gate_conversion">"Змінено на ворота"</string>
+    <string name="quest_traffic_calming_type_title">"Який тип у цієї дорожньої нерівності?"</string>
     <string name="quest_traffic_calming_type_bump">"Не розпізнано. Спробуйте ввести тип місця, наприклад, “пекарня”. Або залиште нотатку."</string>
     <string name="quest_traffic_calming_type_hump">"Лежачий поліцейський (широкий)"</string>
     <string name="quest_traffic_calming_type_table">"Стіл (плаский верх)"</string>
@@ -1204,8 +1205,23 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"на поверсі %s:"</string>
+    <string name="quest_street_parking_title">"Як тут можна припаркувати машину?"</string>
+    <string name="select_street_parking_orientation">"Оберіть орієнтацію відносно дороги:"</string>
     <string name="select_street_parking_position">"Вибрати місце"</string>
+    <string name="street_parking_parallel">"Паралельно"</string>
+    <string name="street_parking_diagonal">"По діагоналі"</string>
+    <string name="street_parking_perpendicular">"Перпендикулярно"</string>
+    <string name="street_parking_on_street">"На дорозі"</string>
+    <string name="street_parking_half_on_kerb">"Частково на дорозі"</string>
+    <string name="street_parking_on_kerb">"Прилягає до проїзної частини"</string>
+    <string name="street_parking_street_side">"Прилягає до проїзної частини тільки у спеціально відведених місцях"</string>
+    <string name="street_parking_painted_area_only">"На проїзній частини тільки у спеціально відведених місцях"</string>
+    <string name="street_parking_no">"Немає парковки / Заборонено"</string>
+    <string name="street_parking_prohibited">"Немає парковки"</string>
+    <string name="quest_address_house_number_label">"Номер будинку:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"Яка якість покриття цієї площі?"</string>
+    <string name="achievement_lifesaver_title">"Рятувальник"</string>
+    <string name="achievement_lifesaver_solved_X">"Ти розвʼязав %d завдань для допомоги рятувальним службам та екстреної допомоги!"</string>
 </resources>

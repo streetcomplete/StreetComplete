@@ -238,281 +238,110 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
 Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi populárne klávesnice, ktoré podporujú mnoho jazykov patria Google Gboard, SwiftKey Keyboard a Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(nešpecifikové)"</string>
     <string name="quest_fireHydrant_type_title">"Aký je typ tohto hydrantu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Stĺpový"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Podzemný"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Stena"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Nádrž"</string>
-
-    <!-- Fuzzy -->
-    <string name="credits_contributors">"Prečítajte si &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;úplný zoznam na GitHube&lt;/a&gt;."</string>
-
-    <!-- Fuzzy -->
+    <string name="credits_contributors">"Pozrite si &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;úplný zoznam na GitHube&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Preklady"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors_title">"Prispievatelia kódu"</string>
 
     <!-- Credits screen -->
-    <!-- Fuzzy -->
     <string name="credits_author_title">"Autor a udržiavateľ"</string>
 
     <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"a ďalší…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Je to obytná zóna"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Takže je tam značka ako táto?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Čo sa tu pestuje?"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapes">"Hrozno"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"Agáve"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_almonds">"Mandle"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apples">"Jablká"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apricots">"Marhule"</string>
     <string name="produce_avocados">"Avokáda"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_bananas">"Banány"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_blueberries">"Čučoriedky"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"Kakao"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"Kešu orechy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cherries">"Čerešne"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chestnuts">"Gaštany"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coconuts">"Kokosy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coffee">"Káva"</string>
     <string name="produce_cranberries">"Brusnice"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_dates">"Ďatle"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"Figy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapefruits">"Grepy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"Guajavy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"Lieskové orechy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hops">"Chmeľ"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kiwi"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Kolové orechy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_lemons">"Citróny"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_limes">"Limetky"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangos">"Mango"</string>
     <string name="produce_mate">"Maté"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"Muškátový orech"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"Olejové palmy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_olives">"Olivy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oranges">"Pomaranče"</string>
     <string name="produce_papayas">"Papáje"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_peaches">"Broskyne"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pears">"Hrušky"</string>
     <string name="produce_chili">"Čili"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"Kaki"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pineapples">"Ananásy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pepper">"Čierne korenie"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pistachios">"Pistácie"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_plums">"Slivky"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_raspberries">"Maliny"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_rubber">"Guma"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_strawberries">"Jahody"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tea">"Čaj"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_vanilla">"Vanilka"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_walnuts">"Vlašské orechy"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"Používa detekciu pohybu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_24_7">"Osvetlené deň a noc"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Nie je tu možné vyhľadať úlohy. Skúste ešte priblížiť mapu alebo ju menej nakloniť."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Akého typu je tento prechod?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
-
-    <!-- Fuzzy -->
     <string name="action_undo">"Späť"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostány"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tomatoes">"Paradajky"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"Arekové orechy"</string>
-
-    <!-- Fuzzy -->
-    <string name="produce_sweet_peppers">"Paprika"</string>
-
-    <!-- Fuzzy -->
+    <string name="produce_sweet_peppers">"Papriky"</string>
     <string name="produce_brazil_nuts">"Para orechy"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"Tungovníky"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"Aký typ parkoviska je toto?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"Normálny"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Podzemná garáž"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Parkovisko"</string>
 
     <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Z akého materiálu je tento elektrický stĺp?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"Drevo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"Oceľ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Betón"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Iba odporúčaná rýchlosť…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name">"Nemá číslo domu, ale má názov…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Názov budovy:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"poschodí v streche"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"normálne poschodia (bez strechy)"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_multipleLevels">"závisí od časti budovy"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_buildingLevels_answer_multipleLevels">"Závisí od časti budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom prípade zadajte hodnoty pre najvyššiu časť budovy."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sú vozovky fyzicky oddelené (napr. bariérou)? Obmedzenie rýchlosti môže byť v každom prípade iné."</string>
     <string name="about_category_feedback">"Spätná väzba"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"Pridať fotku"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"Chcete zmazať tento obrázok?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"cyklochodník"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"cyklopruh"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"žiadne"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"pruh vyslovene zdieľaný s ostatnými druhmi dopravy"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"na pruhu pre autobusy"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"vyslovene zdieľaný chodník"</string>
 
     <!-- Fuzzy -->
@@ -584,8 +413,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"Je potrebné aby ste opísali čo je na označení otváracích hodín. Ak tam nie je označenie, mali by ste sa opýtať vo vnútri."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"žiadne, ale cyklisti môžu využívať cestu v oboch smeroch"</string>
 
     <!-- Fuzzy -->
@@ -1010,8 +837,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_segregated_separated">"Oddelené od seba"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"Cyklisti a chodci zdieľajú spoločný priestor"</string>
 
     <!-- Fuzzy -->
@@ -1422,8 +1247,6 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
 
     <!-- Fuzzy -->
     <string name="link_category_goodies_description">"Zaujímavé funkcie súvisiace s mapou, ktoré môžete skúsiť"</string>
-
-    <!-- Fuzzy -->
     <string name="link_cyclosm_description">"Mapa pre cyklistov"</string>
 
     <!-- Fuzzy -->
@@ -1488,8 +1311,6 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
 
     <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Jednoducho si vygenerujte tlačiteľné mapy miest, voliteľne aj so zoznamom ulíc"</string>
-
-    <!-- Fuzzy -->
     <string name="link_brouter_description">"Pravdepodobne najlepší navigačný engine pre cyklistov"</string>
 
     <!-- Fuzzy -->
@@ -1539,8 +1360,6 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
 
     <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"Cyklista"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_solved_X">"Vyriešili ste %d úloh, ktoré pomôžu cyklistom!"</string>
 
     <!-- Fuzzy -->
@@ -1805,9 +1624,9 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="default_disabled_msg_go_inside_regional_warning">"Tento typ úloh je v predvolenom nastavení zakázaný, pretože v niektorých regiónoch nemá použitie, a pretože pravdepodobne budete musieť na miesto vstúpiť, aby ste na otázku mohli odpovedať."</string>
     <string name="quest_dietType_explanation_kosher">"Kóšer produkty sa musia pripravovať podľa osobitných pravidiel s označením kašrut od certifikačnej agentúry."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nie je tu žiadna cyklotrasa"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ako obvykle, ťuknite na jednu stranu ilustrácie, vyberte správnu odpoveď a urobte to isté na druhej strane.
 
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ako obvykle ťuknite na jednu stranu ilustrácie, vyberte správnu odpoveď a urobte to isté na druhej strane. Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejmé: napr. jednosmerná cesta, na ktorej môžu cyklisti jazdiť v oboch smeroch!"</string>
+Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejmé: napríklad jednosmerná cesta, na ktorej môžu cyklisti jazdiť v oboch smeroch!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vyberáte, že tu nie je žiadna cyklotrasa"</string>
     <string name="quest_construction_completed_at_known_date">"Stavba bude dokončená..."</string>
     <string name="quest_construction_completion_date_title">"Kedy to bude stavba dokončená?"</string>
@@ -2180,4 +1999,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Aký je tu povrch?"</string>
     <string name="quest_toiletAvailability_title">"Je tu nejaká toaleta?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Je toaleta na tomto mieste bezbariérová?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ste si istý, že môžu cyklisti používať túto jednosmernú cestu v oboch smeroch? Ak ste si nie ste istý, skontrolujte, či je na konci tejto ulice značka."</string>
 </resources>

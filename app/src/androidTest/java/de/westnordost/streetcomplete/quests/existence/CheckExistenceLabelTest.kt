@@ -77,7 +77,7 @@ class CheckExistenceLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2840#issuecomment-831245075
     @Test fun schoki() {
-        assertEquals("Schoko Lädchen 3680 (Vending Machine)", getQuestLabel(mapOf(
+        assertEquals("Schoko Lädchen [3680] (Vending Machine)", getQuestLabel(mapOf(
             "amenity" to "vending_machine",
             "ref" to "3680",
             "operator" to "Schoko Lädchen",

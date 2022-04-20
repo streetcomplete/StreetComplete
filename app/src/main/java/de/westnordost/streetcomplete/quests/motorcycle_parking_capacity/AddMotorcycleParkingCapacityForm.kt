@@ -6,13 +6,14 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMotorcycleParkingCapacityBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.util.ktx.intOrNull
 
 class AddMotorcycleParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override val contentLayoutResId = R.layout.quest_motorcycle_parking_capacity
     private val binding by contentViewBinding(QuestMotorcycleParkingCapacityBinding::bind)
 
-    private val capacity get() = binding.capacityInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+    private val capacity get() = binding.capacityInput.intOrNull ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

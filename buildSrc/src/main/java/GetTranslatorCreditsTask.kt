@@ -12,6 +12,7 @@ import java.net.URL
 import java.net.URLEncoder
 import java.time.LocalDate
 import java.util.Locale
+import java.util.TreeMap
 
 open class GetTranslatorCreditsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
@@ -31,7 +32,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
     @TaskAction
     fun run() {
         // map of language tag -> translator name -> translation count
-        val resultMap: MutableMap<String, MutableMap<String, Int>> = mutableMapOf()
+        val resultMap = mutableMapOf<String, MutableMap<String, Int>>()
 
         // POEditor displays language names. What we need however are language tags
         val tagsByName = languageCodes.associateBy { tagToName(it) }
@@ -55,6 +56,15 @@ open class GetTranslatorCreditsTask : DefaultTask() {
                 }
             }
         }
+        // 2½ sort contributors by contributions
+        val sortedResultMap = TreeMap<String, LinkedHashMap<String, Int>>()
+        resultMap.forEach { (languageTag, contributorsMap) ->
+            val sortedContributorMap = LinkedHashMap<String, Int>(contributorsMap.size)
+            contributorsMap.entries.sortedByDescending { it.value }.forEach { (key, value) ->
+                sortedContributorMap[key] = value
+            }
+            sortedResultMap[languageTag] = sortedContributorMap
+        }
 
         // 3. write the result map to file
         val fileWriter = FileWriter(targetFile, false)
@@ -64,7 +74,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
             writeConfig.setEscapeUnicode(false)
         }
         val writer = YamlWriter(fileWriter, config)
-        writer.write(resultMap)
+        writer.write(sortedResultMap)
         writer.close()
         fileWriter.close()
     }

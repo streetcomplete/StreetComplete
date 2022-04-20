@@ -57,6 +57,7 @@
     <string name="turn_on_location_request">"خدمة تحديد الموقع متعطلة، فتح الإعدادات لتشغيل تحديد موقعك الحالي؟"</string>
     <string name="no_location_permission_warning">"موقعك الحالي مطلوب للمسح بحثا عن أسئلة في منطقتك والمناطق المجاورة."</string>
     <string name="about_title_authors">"فريق العمل"</string>
+    <string name="about_summary_authors">"© %s توبيز زويك والمساهمين الآخرين"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"مستودع المصدر"</string>
@@ -1150,4 +1151,17 @@
     <!-- Android notifications -->
     <string name="notification_channel_sync">"قُم بمزامنة البيانات"</string>
     <string name="quest_board_type_sport">"رياضة، تمارين"</string>
+    <string name="quest_generic_hasFeature_optional">"اختياري"</string>
+    <string name="quest_laundrySelfService_title2">","</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cash_title2">"هل الدفع نقدا مسموح هنا?"</string>
+    <string name="quest_airConditioning_title">"هل هذا المكان مُكيف?"</string>
+    <string name="quest_existence_title2">"هل هذا المكان ما زال متاحا?"</string>
+    <string name="quest_openingHours_title">"ماهي ساعات العمل هنا?"</string>
+    <string name="quest_openingHours_signed_title">"هل يوجد لوحة تعرض ساعات العمل هنا?"</string>
+    <string name="quest_openingHours_resurvey_title">"هل ساعات العمل المذكورة ما زالت صحيحة?"</string>
+    <string name="quest_placeName_title">"ماهو اسم هذا المكان ?"</string>
+    <string name="quest_smoking_title2">"هل التدخين مسموح هنا ?"</string>
 </resources>

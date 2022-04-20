@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
 import de.westnordost.streetcomplete.osm.isForwardOneway
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -270,6 +271,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         val rightSide = rightSide
 
         // a cycleway that goes into opposite direction of a oneway street needs special tagging
+        // as oneway:bicycle=* tag will differ from oneway=*
+        // there is no need to tag cases where oneway:bicycle=* would merely repeat oneway=*
         var leftSideDir = 0
         var rightSideDir = 0
         var isOnewayNotForCyclists = false
@@ -297,7 +300,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             isOnewayNotForCyclists = isOnewayNotForCyclists
         )
 
-        val wasOnewayNotForCyclists = isOneway && osmElement!!.tags["oneway:bicycle"] == "no"
+        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(osmElement!!.tags, isLeftHandTraffic)
         if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
             confirmNotOnewayForCyclists {
                 applyAnswer(answer)

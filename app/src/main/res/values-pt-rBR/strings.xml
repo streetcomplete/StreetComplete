@@ -2314,4 +2314,5 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Qual a superfície aqui?"</string>
     <string name="quest_toiletAvailability_title">"Há algum banheiro aqui?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"O banheiro neste local é acessível para cadeirantes?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Você tem certeza de que os ciclistas não estão autorizados a usar esta via de mão única em ambas as direções? Na dúvida, verifique se há placa no final da rua"</string>
 </resources>

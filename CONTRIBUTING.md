@@ -79,7 +79,7 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 
 If you would like to help and are able to contribute code, you are most welcome.
 
-There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas on how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested you **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
+There are many reasonable feature requests and ideas for new question types in the issue tracker which you can use. If you have own ideas on how to improve this app and want to make sure that the pull request will be merged, it is strongly suggested you **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
 
 Note that StreetComplete also uses [some dependencies](#issues-with-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
@@ -133,7 +133,7 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 * [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
-* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/data/meta/OsmTaggings.kt#L35)
+* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Shop.kt#L6)
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 

@@ -559,6 +559,12 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
 
+    <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
+    <string name="quest_accepts_cards_debit_and_credit">Both</string>
+    <string name="quest_accepts_cards_credit_only">Only credit cards</string>
+    <string name="quest_accepts_cards_dedit_only">Only debit cards</string>
+    <string name="quest_accepts_cards_unavailable">Neither debit nor credit cards</string>
+
     <string name="quest_accepts_cash_title2">"Is cash payment accepted here?"</string>
 
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
@@ -654,6 +660,9 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
+
+    <string name="quest_air_pump_bicycle_title">Is there a working bicycle pump available for everyone here?</string>
+    <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
     <string name="quest_board_type_title">What’s the topic of this information board?</string>
     <string name="quest_board_type_history">History</string>
@@ -1313,6 +1322,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_steps_incline_up">This way up</string>
 
     <string name="quest_step_count_title">How many steps are here?</string>
+    <string name="quest_step_count_stile_hint">Just the number of steps to reach the top. If step count differs on each side, give higher number.</string>
 
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
     <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
@@ -1456,5 +1466,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
+
 
 </resources>
