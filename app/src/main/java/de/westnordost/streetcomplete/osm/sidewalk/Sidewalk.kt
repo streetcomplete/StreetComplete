@@ -47,5 +47,6 @@ fun SidewalkSides.applyTo(tags: Tags) {
         tags["sidewalk:right"] = right.osmValue
         // In case of previous incorrect sidewalk tagging
         tags.remove("sidewalk:both")
+        tags.remove("sidewalk")
     }
 }
