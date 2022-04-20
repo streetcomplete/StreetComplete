@@ -96,6 +96,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             ),
             "office" to arrayOf(
                 "insurance", "travel_agent", "tax_advisor", "estate_agent", "political_party",
+                "lawyer", "telecommunication", "it", "accountant"
             ),
             "craft" to arrayOf(
                 "shoemaker", "tailor", "photographer", "watchmaker", "optician",
