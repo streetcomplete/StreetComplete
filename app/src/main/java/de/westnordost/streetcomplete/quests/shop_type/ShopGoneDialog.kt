@@ -26,7 +26,7 @@ class ShopGoneDialog(
     private val featureDictionary: FeatureDictionary,
     private val onSelectedFeature: (Map<String, String>) -> Unit,
     private val onLeaveNote: () -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     private val binding: ViewShopTypeBinding
 

@@ -28,7 +28,7 @@ class TimeRangePickerDialog(
     timeRange: TimeRange?,
     is24HourView: Boolean,
     private val callback: (TimeRange) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     private val startPicker: TimePicker
     private val endPicker: TimePicker

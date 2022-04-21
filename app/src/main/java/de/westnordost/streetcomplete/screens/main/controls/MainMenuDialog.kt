@@ -19,7 +19,7 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
     init {
         val binding = DialogMainMenuBinding.inflate(LayoutInflater.from(context))
 
