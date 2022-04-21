@@ -69,9 +69,6 @@ class AddOpeningHours(
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
 
-                // name & opening hours
-                "horse_riding"
-
                 // not sports_centre, dance etc because these are often sports clubs which have no
                 // walk-in opening hours but training times
             ),
