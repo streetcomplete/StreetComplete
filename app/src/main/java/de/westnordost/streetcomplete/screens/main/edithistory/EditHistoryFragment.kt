@@ -75,8 +75,8 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
                 adapter.select(first)
             }
             binding.editHistoryList.adapter = adapter
+            editHistorySource.addListener(editHistoryListener)
         }
-        editHistorySource.addListener(editHistoryListener)
     }
 
     override fun onDestroyView() {
