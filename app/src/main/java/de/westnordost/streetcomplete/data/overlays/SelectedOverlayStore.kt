@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.overlay
+package de.westnordost.streetcomplete.data.overlays
 
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs

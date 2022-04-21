@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.overlay
+package de.westnordost.streetcomplete.data.overlays
 
 import de.westnordost.streetcomplete.overlays.Overlay
 
