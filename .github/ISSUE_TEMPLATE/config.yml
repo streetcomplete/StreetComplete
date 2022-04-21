@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/streetcomplete/StreetComplete/discussions
     about: For discussions about the usage of StreetComplete, asking questions or talking about ideas which are not yet actionable.
   - name: Translations
-    url: https://poeditor.com/join/project/IE4GC127Ki
+    url: https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#translating-the-app
     about: For contributing and discussing translations of StreetComplete
