@@ -418,10 +418,6 @@ class MainFragment :
         return enclosingBBox
     }
 
-    override fun onSelectedOverlay(overlay: Overlay?) {
-        mapFragment?.overlay = overlay
-    }
-
     /* ------------------------------ UndoButtonFragment.Listener ------------------------------- */
 
     override fun onClickShowEditHistory() {

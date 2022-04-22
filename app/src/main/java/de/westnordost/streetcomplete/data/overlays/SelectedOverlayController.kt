@@ -14,8 +14,10 @@ class SelectedOverlayController(
     set(value) {
         if (value != null && value in overlayRegistry) {
             selectedOverlayStore.set(value::class.simpleName!!)
-            listeners.forEach { it.onSelectedOverlayChanged() }
+        } else {
+            selectedOverlayStore.set(null)
         }
+        listeners.forEach { it.onSelectedOverlayChanged() }
     }
     get() = selectedOverlayStore.get()?.let { overlayRegistry.getByName(it) }
 

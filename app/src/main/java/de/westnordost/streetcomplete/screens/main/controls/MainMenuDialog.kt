@@ -19,7 +19,7 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-    onSwitchToOverlayMode: () -> Unit,
+    onClickOverlays: () -> Unit,
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val binding = DialogMainMenuBinding.inflate(LayoutInflater.from(context))
@@ -52,8 +52,8 @@ class MainMenuDialog(
             dismiss()
         }
 
-        binding.layersButton.setOnClickListener {
-            onSwitchToOverlayMode()
+        binding.overlaysButton.setOnClickListener {
+            onClickOverlays()
             dismiss()
         }
 

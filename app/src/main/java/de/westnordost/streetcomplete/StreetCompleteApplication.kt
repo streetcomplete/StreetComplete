@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.osmApiModule
 import de.westnordost.streetcomplete.data.osmnotes.edits.noteEditsModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.osmNoteQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.notesModule
+import de.westnordost.streetcomplete.data.overlays.overlayModule
 import de.westnordost.streetcomplete.data.quest.questModule
 import de.westnordost.streetcomplete.data.upload.uploadModule
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
@@ -109,7 +110,8 @@ class StreetCompleteApplication : Application() {
                 uploadModule,
                 userModule,
                 arModule,
-                overlaysModule
+                overlaysModule,
+                overlayModule
             )
         }
 

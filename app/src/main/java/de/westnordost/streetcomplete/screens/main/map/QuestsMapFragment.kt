@@ -14,12 +14,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
@@ -44,6 +44,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
+    private val selectedOverlaySource: SelectedOverlaySource by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -70,14 +71,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             updatePinMode()
         }
 
-    // TODO LAYERS should probably be persisted, i.e. not reset when exiting the screen
-    var overlay: Overlay? = null
-        set(value) {
-            if (field == value) return
-            field = value
-            styleableOverlayManager?.overlay = overlay
-        }
-
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override suspend fun onMapReady() {
@@ -97,7 +90,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
-        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource)
+        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         super.onMapReady()
@@ -142,7 +135,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PinMode.NONE -> {}
             }
 
-            if (overlay != null) {
+            if (selectedOverlaySource.selectedOverlay != null) {
                 val props = controller?.pickFeature(x, y)?.properties
                     ?: controller?.pickLabel(x, y)?.properties
                 val elementKey = props?.let { styleableOverlayMapComponent?.getElementKey(it) }

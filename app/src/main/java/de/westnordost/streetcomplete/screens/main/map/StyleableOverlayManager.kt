@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -34,7 +35,8 @@ import kotlinx.coroutines.withContext
 class StyleableOverlayManager(
     private val ctrl: KtMapController,
     private val mapComponent: StyleableOverlayMapComponent,
-    private val mapDataSource: MapDataWithEditsSource
+    private val mapDataSource: MapDataWithEditsSource,
+    private val selectedOverlaySource: SelectedOverlaySource
 ) : DefaultLifecycleObserver {
 
     // last displayed rect of (zoom 16) tiles
@@ -50,13 +52,18 @@ class StyleableOverlayManager(
         and (!foot or foot ~ private|no)
     """.toElementFilterExpression() }
 
-    /** The layer to display */
-    var overlay: Overlay? = null
-        set(value) {
-            if (field == value) return
-            field = value
-            if (value != null) start() else stop()
+    private var overlay: Overlay? = null
+    set(value) {
+        if (field == value) return
+        field = value
+        if (value != null) show() else hide()
+    }
+
+    private val overlayListener = object : SelectedOverlaySource.Listener {
+        override fun onSelectedOverlayChanged() {
+            overlay = selectedOverlaySource.selectedOverlay
         }
+    }
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
@@ -73,17 +80,29 @@ class StyleableOverlayManager(
         }
     }
 
+    override fun onStart(owner: LifecycleOwner) {
+        super.onStart(owner)
+        overlay = selectedOverlaySource.selectedOverlay
+        selectedOverlaySource.addListener(overlayListener)
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
+        selectedOverlaySource.removeListener(overlayListener)
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
-        stop()
+        hide()
         viewLifecycleScope.cancel()
     }
 
-    private fun start() {
+    private fun show() {
+        clear()
         onNewScreenPosition()
         mapDataSource.addListener(mapDataListener)
     }
 
-    private fun stop() {
+    private fun hide() {
         clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
         mapDataSource.removeListener(mapDataListener)
