@@ -44,8 +44,7 @@ class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 }
 
 /** A dialog that shows the changelog */
-class WhatsNewDialog(context: Context, sinceVersion: String) :
-    AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(context) {
 
     private val scope = CoroutineScope(Dispatchers.Main)
 

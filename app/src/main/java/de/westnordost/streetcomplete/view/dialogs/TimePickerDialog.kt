@@ -17,7 +17,7 @@ class TimePickerDialog(
     initialMinute: Int,
     is24HourView: Boolean,
     private val callback: (hourOfDay: Int, minute: Int) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     private val timePicker: TimePicker = TimePicker(context)
 

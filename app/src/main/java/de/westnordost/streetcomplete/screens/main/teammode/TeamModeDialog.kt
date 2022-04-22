@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircleVi
 class TeamModeDialog(
     context: Context,
     onEnableTeamMode: (Int, Int) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     private var selectedTeamSize: Int? = null
     private var selectedIndexInTeam: Int? = null

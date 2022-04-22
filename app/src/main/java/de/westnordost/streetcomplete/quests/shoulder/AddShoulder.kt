@@ -39,6 +39,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
           and cycleway:left !~ lane|opposite_lane
           and cycleway:right !~ lane|opposite_lane
           and cycleway:both !~ lane|opposite_lane
+          and !verge
           and !shoulder
           and !shoulder:left and !shoulder:right and !shoulder:both
           and (access !~ private|no or (foot and foot !~ private|no))
