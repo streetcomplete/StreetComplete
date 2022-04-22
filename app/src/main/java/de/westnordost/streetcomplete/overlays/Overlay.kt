@@ -9,5 +9,8 @@ interface Overlay {
 
     /** title string resource id */
     val title: Int
+
+    /** icon drawable resource id */
+    val icon: Int
 }
 

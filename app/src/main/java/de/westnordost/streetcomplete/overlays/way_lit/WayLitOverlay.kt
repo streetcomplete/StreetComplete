@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 
 class WayLitOverlay : Overlay {
 
-    override val title: Int = R.string.overlay_lit
+    override val title = R.string.overlay_lit
+    override val icon = R.drawable.ic_quest_lantern
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData

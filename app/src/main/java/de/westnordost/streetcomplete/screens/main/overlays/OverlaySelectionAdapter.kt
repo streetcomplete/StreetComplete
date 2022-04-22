@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.RowOverlaySelectionBinding
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 /** Adapter for the list in which the user can select which overlay he wants to use */
 class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.ViewHolder>() {
@@ -42,7 +43,12 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
         RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(with: Overlay?) {
+            val ctx = binding.root.context
             binding.radioButton.setText(with?.title ?: R.string.overlay_none)
+            val icon = with?.icon?.let { ctx.getDrawable(it) }
+            icon?.setBounds(0, 0, ctx.dpToPx(32).toInt(), ctx.dpToPx(32).toInt())
+            binding.radioButton.setCompoundDrawables(icon, null, null, null)
+            binding.radioButton.compoundDrawablePadding = ctx.dpToPx(4).toInt()
             binding.radioButton.setOnCheckedChangeListener(null)
             binding.radioButton.isChecked = with == selectedOverlay
             binding.radioButton.setOnCheckedChangeListener { _, isChecked ->

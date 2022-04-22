@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 
 class SidewalkOverlay : Overlay {
 
-    override val title: Int = R.string.overlay_sidewalk
+    override val title = R.string.overlay_sidewalk
+    override val icon = R.drawable.ic_quest_sidewalk
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""
