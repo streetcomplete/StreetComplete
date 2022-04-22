@@ -17,6 +17,9 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.view.image_select.Item
 
+fun Cycleway.asItemInSelectionDialog() =
+    Item(this, getDialogIconResId(false), getTitleResId())
+
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
     Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
 

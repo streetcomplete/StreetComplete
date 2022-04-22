@@ -182,7 +182,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
         val ctx = context ?: return
-        val items = getCyclewayItems(isRight).map { it.asItem(isLeftHandTraffic) }
+        val items = getCyclewayItems(isRight).map { it.asItemInSelectionDialog() }
         ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) {
             onSelectedSide(it.value!!, isRight)
         }.show()
