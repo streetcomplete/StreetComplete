@@ -3,10 +3,7 @@ package de.westnordost.streetcomplete.quests.cycleway
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.ColorFilter
-import android.graphics.Path
-import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import androidx.core.graphics.toRectF
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
@@ -36,7 +33,7 @@ fun Cycleway.asDialogSelectionItem(context: Context, isLeftHandTraffic: Boolean)
 
 fun Cycleway.getDialogSelectionIcon(context: Context, isLeftHandTraffic: Boolean): Image {
     val id = getDialogIconResId(isLeftHandTraffic)
-    return if(isLeftHandTraffic) {
+    return if (isLeftHandTraffic) {
         DrawableImage(LeftHandSideTransform(context.getDrawable(id)!!))
     } else {
         ResImage(id)
