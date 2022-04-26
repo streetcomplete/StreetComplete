@@ -787,8 +787,7 @@ class MainFragment :
 
     private fun closeEditHistorySidebar() {
         if (editHistoryFragment != null) {
-            childFragmentManager.popBackStack(EDIT_HISTORY,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
