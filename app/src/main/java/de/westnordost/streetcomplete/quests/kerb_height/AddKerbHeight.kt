@@ -41,6 +41,10 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun applyAnswerTo(answer: KerbHeight, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("kerb", answer.osmValue)
-        tags["barrier"] = "kerb"
+        if (answer.osmValue == "no") {
+            tags.remove("barrier")
+        } else {
+            tags["barrier"] = "kerb"
+        }
     }
 }
