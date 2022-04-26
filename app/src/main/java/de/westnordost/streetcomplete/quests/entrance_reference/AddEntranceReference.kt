@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
 import de.westnordost.streetcomplete.quests.entrance_reference.AddEntranceReferenceForm
@@ -28,7 +29,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_power // TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     override val questTypeAchievements = listOf(CITIZEN, BLIND)
-
+    override val enabledInCountries = NoCountriesExcept("BG", "PL", "RU")
     override fun getTitle(tags: Map<String, String>) = R.string.quest_entrance_reference
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
