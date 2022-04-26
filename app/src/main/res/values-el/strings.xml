@@ -40,7 +40,7 @@
     <string name="map_attribution_osm">"Συνεισφέροντες στο © OpenStreetMap"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_otherAnswers">"Άλλες απαντήσεις..."</string>
+    <string name="quest_generic_otherAnswers">"Άλλες απαντήσεις…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Δεν μπορώ να πω…"</string>
@@ -235,7 +235,7 @@
 
     <!-- As in: "show more of those pictures to select an answer from -->
     <!-- Fuzzy -->
-    <string name="quest_roofShape_show_more">"Δείξε περισσότερα..."</string>
+    <string name="quest_roofShape_show_more">"Δείξε περισσότερα…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
@@ -606,7 +606,7 @@
 
     <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
-    <string name="credits_and_more">"και άλλα άτομα..."</string>
+    <string name="credits_and_more">"και άλλα άτομα…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Είναι δρόμος ήπιας κυκλοφορίας"</string>
@@ -886,7 +886,7 @@
     <string name="quest_hasFeature_only">"Μόνο"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Τα αυστηρά χορτοφαγικά γεύματα δεν περιέχουν ζωικά προϊόντα (χωρίς κρέας, ψάρι, πουλερικά, γαλακτοκομικά προϊόντα, αυγά, ...)."</string>
+    <string name="quest_dietType_explanation_vegan">"Τα αυστηρά χορτοφαγικά γεύματα δεν περιέχουν ζωικά προϊόντα (χωρίς κρέας, ψάρι, πουλερικά, γαλακτοκομικά προϊόντα, αυγά, …)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Τα χορτοφαγικά γεύματα δεν περιέχουν κρέας, ψάρι ή πουλερικά."</string>
@@ -1047,7 +1047,7 @@
     <string name="quest_housenumber_multiple_numbers">"Έχει πολλαπλούς αριθμούς κατοικιών"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_multiple_numbers_description">"Μπορείτε απλά να εισάγετε κόμμα που διαχωρίζει τους αριθμούς των σπιτιών ή παύλες. Για παράδειγμα 1,3 ή 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Μπορείτε απλά να εισάγετε κόμμα που διαχωρίζει τους αριθμούς των σπιτιών ή παύλες. Για παράδειγμα 1,3 ή 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Στάση (για σκελετό ποδηλάτου)"</string>
@@ -1175,7 +1175,7 @@
     <string name="quest_buildingType_industrial">"βιομηχανικό κτίριο"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"π.χ. ένα εργοστάσιο, συνεργείο, γκαράζ επισκευής αυτοκινήτων, ..."</string>
+    <string name="quest_buildingType_industrial_description">"π.χ. ένα εργοστάσιο, συνεργείο, γκαράζ επισκευής αυτοκινήτων, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Κτίριο γραφείων"</string>
@@ -1384,7 +1384,7 @@
     <string name="action_deselect_all">"Αποεπιλογή όλων"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"συμπεριλαμβανομένων κτιρίων για εστιατόρια, καφέ, ..."</string>
+    <string name="quest_buildingType_retail_description">"συμπεριλαμβανομένων κτιρίων για εστιατόρια, καφέ, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Επόμενο"</string>
@@ -1510,7 +1510,7 @@
     <string name="quest_cyclewayPartSurface_title">"Ποια είναι η επιφάνεια του ποδηλατόδρομου εδώ;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"Διαφορές κατά μήκος του δρόμου..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Διαφορές κατά μήκος του δρόμου…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Αν υπάρχουν διαφορές κατά μήκος της διαδρομής, το πρώτο βήμα είναι να την χωρίσουμε. Μετά από αυτό, η αναζήτηση μπορεί να απαντηθεί ξεχωριστά για κάθε διαχωρισμένο τμήμα. Διαχωρισμός τώρα;"</string>
@@ -1534,7 +1534,7 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"Αυτό το βάρος φαίνεται παράλογο. Είστε βέβαιος ότι είναι σωστό;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_other_sign">"Το σήμα φαίνεται διαφορετικό..."</string>
+    <string name="quest_maxweight_answer_other_sign">"Το σήμα φαίνεται διαφορετικό…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"Θα θέλατε να αφήσετε μια σημείωση; Μια σημείωση με μια φωτογραφία θα επιτρέψει σε άλλους χαρτογράφους να το φροντίσουν."</string>
@@ -1549,7 +1549,7 @@
     <string name="quest_postboxRef_title">"Ποιος είναι ο αριθμός αναφοράς αυτού του γραμματοκιβώτιου;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ref_answer_noRef">"Δεν εμφανίζεται αριθμός αναφοράς..."</string>
+    <string name="quest_ref_answer_noRef">"Δεν εμφανίζεται αριθμός αναφοράς…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση της ακίδας."</string>
 
     <!-- Fuzzy -->
@@ -1836,7 +1836,7 @@
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
     <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
-    <string name="quest_buildingType_bungalow_description2">"μικρή μονοκατοικία (καλοκαιρινή κατοικία, εξοχικό, σπιτάκι ...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"μικρή μονοκατοικία (καλοκαιρινή κατοικία, εξοχικό, σπιτάκι …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Ποια εμπόδια χρησιμοποιούνται σε αυτήν τη σιδηροδρομική διάβαση;"</string>
     <string name="quest_railway_crossing_barrier_none2">"Χωρίς εμπόδια"</string>
     <string name="quest_steps_ramp_title">"Αυτά τα σκαλιά έχουν ράμπα; Τι είδους?"</string>
@@ -1929,7 +1929,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Είναι κενό"</string>
-    <string name="quest_shop_gone_replaced_answer">"Ένα..."</string>
+    <string name="quest_shop_gone_replaced_answer">"Ένα…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Πληκτρολογήστε το είδος της τοποθεσίας εδώ"</string>
 
     <!-- Fuzzy -->

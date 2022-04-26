@@ -1356,8 +1356,8 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <!-- Fuzzy -->
     <string name="quest_sidewalk_surface_title">"Quelle est la surface de ce trottoir ici ?"</string>
     <string name="quest_tactilePaving_incorrect">"Seulement d’un côté"</string>
-    <string name="quest_fee_answer_yes_but">"Oui, ..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Non, mais il y a une durée maximale..."</string>
+    <string name="quest_fee_answer_yes_but">"Oui, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Non, mais il y a une durée maximale…"</string>
     <string name="unit_days">"jours"</string>
     <string name="unit_hours">"heures"</string>
     <string name="unit_minutes">"minutes"</string>

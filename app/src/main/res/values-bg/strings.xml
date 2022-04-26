@@ -161,7 +161,7 @@
 Това приложение намира непълни данни в OSM около вашето местоположение и ги показва върху картата като маркери. Отговаряйки на няколко елементарни въпроса на всеки маркер, попълвате липсващата информация на сайта на OSM.
 
 Информацията, която въвеждате, се добавя директно към OpenStreetMap от ваше име, без да е необходимо да използвате друг редактор."</string>
-    <string name="quest_name_answer_noName">"Няма име..."</string>
+    <string name="quest_name_answer_noName">"Няма име…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Наистина ли няма име?"</string>
     <string name="quest_name_noName_confirmation_positive">"Не, няма"</string>
     <string name="quest_openingHours_add_times">"Добавете работно време"</string>
@@ -274,7 +274,7 @@
     <string name="credits_author_title">"Автор на проекта"</string>
 
     <!-- As in "Person A, Person B, Person C and more..." -->
-    <string name="credits_and_more">"и още..."</string>
+    <string name="credits_and_more">"и още…"</string>
     <string name="quest_maxspeed_answer_living_street">"В жилищна зона - до 20 км/ч за BG"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"И има знак като този?"</string>
 
@@ -353,7 +353,7 @@
     <string name="quest_powerPolesMaterial_wood">"Дърво"</string>
     <string name="quest_powerPolesMaterial_metal">"Стомана"</string>
     <string name="quest_powerPolesMaterial_concrete">"Бетон"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Само препоръчително ограничение на скоростта..."</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Само препоръчително ограничение на скоростта…"</string>
     <string name="quest_address_answer_house_name">"Няма номер, но има име"</string>
     <string name="quest_address_house_name_label">"Име на къща:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Етажи на покрива"</string>
@@ -380,7 +380,7 @@
     <string name="undo_confirm_positive">"Отмяна"</string>
     <string name="undo_confirm_negative">"Прекрати"</string>
     <string name="quest_hasFeature_only">"Само"</string>
-    <string name="quest_dietType_explanation_vegan">"Веган менюто не съдържа животински продукти (без месо, риба, пиле, млечни продукти, яйца, мед...)"</string>
+    <string name="quest_dietType_explanation_vegan">"Веган менюто не съдържа животински продукти (без месо, риба, пиле, млечни продукти, яйца, мед…"</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетарианското меню не съдържа месо или риба."</string>
     <string name="quest_dietType_explanation">"Отговорете с \"Да\" само ако мястото предлага подходящо меню за тази диета."</string>
     <string name="quest_carWashType_title">"Какъв вид автомивка е това?"</string>
@@ -393,7 +393,7 @@
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">"Номер"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Също и велоалея от другата страна..."</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Също и велоалея от другата страна…"</string>
     <string name="quest_openingHours_emptyAnswer">"Трябва да опишете какво има на табелата. Ако няма поставено работно време, ще се наложи да попитате персонала."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"няма, но велосипедистите могат да ползват пътя и в двете посоки"</string>
     <string name="quest_streetName_answer_noName_question">"Защо няма име?"</string>
@@ -440,7 +440,7 @@
     <string name="quest_fee_answer_hours">"Зависи от деня и часа"</string>
     <string name="quest_fee_add_times">"Добавете времена"</string>
     <string name="quest_housenumber_multiple_numbers">"Има няколко номера"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Можете да зададете няколко номера разделени със запетая или началния и крайния разделени с тире. Например 1,3 или 2-6"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Можете да зададете няколко номера разделени със запетая или началния и крайния разделени с тире. Например 1,3 или 2–6"</string>
     <string name="quest_bicycle_parking_type_stand">"Висок (заключва се рамката)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Ниска скоба (за едното колело)"</string>
     <string name="quest_bicycle_parking_type_shed">"Навес"</string>
@@ -485,7 +485,7 @@
     <string name="quest_buildingType_commercial">"Търговска сграда"</string>
     <string name="quest_buildingType_commercial_generic_description">"сграда за търговска дейност"</string>
     <string name="quest_buildingType_industrial">"Индустриална сграда"</string>
-    <string name="quest_buildingType_industrial_description">"завод, работилница, сервиз..."</string>
+    <string name="quest_buildingType_industrial_description">"завод, работилница, сервиз…"</string>
     <string name="quest_buildingType_office">"Офиси"</string>
     <string name="quest_buildingType_retail">"Магазини"</string>
     <string name="quest_buildingType_warehouse">"Склад"</string>
@@ -532,7 +532,7 @@
     <string name="quest_buildingType_hangar">"Хангар"</string>
     <string name="quest_buildingType_hangar_description">"склад за самолети, хеликоптери и други"</string>
     <string name="quest_buildingType_bunker">"Бункер"</string>
-    <string name="quest_address_answer_no_housenumber">"Няма номер на къща..."</string>
+    <string name="quest_address_answer_no_housenumber">"Няма номер на къща…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Сградата е била отбелязана като:"</string>
     <string name="quest_buildingType_shrine">"Храм"</string>
 
@@ -554,7 +554,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Какво е ограничението за височина тук?"</string>
-    <string name="quest_maxheight_answer_noSign">"Тук няма знак..."</string>
+    <string name="quest_maxheight_answer_noSign">"Тук няма знак…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Има ли достатъчно височина за да могат да преминават високи камиони или автобуси (поне 4.5 м)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Тази височина изглежда нереална. Сигурни ли сте, че е вярна?"</string>
 
@@ -569,7 +569,7 @@
     <string name="action_deselect_all">"Нищо да не е избрано"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"включително сгради за ресторанти, кафенета..."</string>
+    <string name="quest_buildingType_retail_description">"включително сгради за ресторанти, кафенета…"</string>
     <string name="quest_openingHours_timeSelect_next">"Следващ"</string>
 
     <!-- Fuzzy -->
@@ -633,7 +633,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Каква повърхност има тази велоалея?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Различна е по дължината на пътя..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Различна е по дължината на пътя…"</string>
     <string name="quest_split_way_description">"Ако се различава по дължината на пътя, първо разделете пътя. След това ще можете да отговорите за всяка част поотделно. Ще го разделите ли сега?"</string>
     <string name="quest_split_way_tutorial">"Докоснете пътя в точката(-ите) където отговорите се различават. Опитайте се да бъдете максимално точни. Можете да увеличите мащаба."</string>
     <string name="quest_split_way_too_imprecise">"Моля, увеличете още"</string>
@@ -645,14 +645,14 @@
     <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Какво е ограничението за тегло тук?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ограничението изглежда нереално. Сигурни ли сте?"</string>
-    <string name="quest_maxweight_answer_other_sign">"Знакът изглежда различно..."</string>
+    <string name="quest_maxweight_answer_other_sign">"Знакът изглежда различно…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ще оставите ли бележка? Бележка със снимка ще помогне на други картографи да се погрижат за това."</string>
     <string name="quest_handrail_title">"Тези стъпала имат ли перила?"</string>
     <string name="about_summary_current_version">"Текуща версия: %s"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxRef_title">"Какъв номер има тази пощенска кутия?"</string>
-    <string name="quest_ref_answer_noRef">"Не се вижда номер..."</string>
+    <string name="quest_ref_answer_noRef">"Не се вижда номер…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Пътят на картинката е завъртян по същия начин по който е на картата."</string>
     <string name="quest_recycling_materials_title">"Какво може да се изхвърля тук?"</string>
     <string name="quest_recycling_materials_note">"Ако и други неща се приемат за рециклиране, моля оставете бележка."</string>
@@ -672,7 +672,7 @@
     <string name="quest_recycling_type_scrap_metal">"Метал за скрап"</string>
     <string name="quest_recycling_type_any_glass">"Всякакво стъкло"</string>
     <string name="quest_recycling_glass_title">"Само за стъклени буркани и бутилки ли е, или може да се оставя всякакъв вид стъкло?"</string>
-    <string name="quest_determineRecyclingGlass_description_any_glass">"Примери за стъклени отпадъци, които не се приемат: закалено стъкло, прозоречни стъкла, ел.крушки, огледала..."</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Примери за стъклени отпадъци, които не се приемат: закалено стъкло, прозоречни стъкла, ел.крушки, огледала…"</string>
     <string name="about_title_changelog">"История на версиите"</string>
 
     <!-- Fuzzy -->
@@ -707,7 +707,7 @@
     <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Добре дошли в OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"безплатната уики световна карта"</string>
-    <string name="tutorial_intro">"StreetComplete ви улеснява да подобрявате OpenStreetMap. Приложението автоматично търси липсващи данни около вас: велоалеи, адреси, работно време на обекти и много други..."</string>
+    <string name="tutorial_intro">"StreetComplete ви улеснява да подобрявате OpenStreetMap. Приложението автоматично търси липсващи данни около вас: велоалеи, адреси, работно време на обекти и много други…"</string>
     <string name="tutorial_solving_quests">"Липсващите данни ще се появят на вашата карта като задачи."</string>
 
     <!-- Fuzzy -->
@@ -858,7 +858,7 @@
     <string name="quest_board_type_map">"Това е карта"</string>
     <string name="quest_board_type_map_title">"Това е само карта и нищо друго?"</string>
     <string name="quest_board_type_map_description">"Ако табелата има определена тема, укажете я, независимо от това дали съдържа карта или не. Например, таблата за обществен транспорт могат да съдържат карта на автобусните линии. Ако темата не е в списъка, по-добре оставете бележка."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Различни повърхности..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Различни повърхности…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Сигурни ли сте, че е невъзможно да се определи повърхността? Отговорът \"Различна по протежението\" ви дава възможност да разделите пътя, там където повърхността се променя. Използвайте \"Не мога да отговоря\", ако повърхността е еднородна, но не фигурира като отговор тук."</string>
@@ -896,7 +896,7 @@
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Тези светофари имат ли индикация за слепи хора?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Такава индикация е възможно да бъде вибриращ бутон или въртящ се конус под кутията на бутона."</string>
-    <string name="quest_buildingType_bungalow_description2">"малка отделна къща (вила, барака...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"малка отделна къща (вила, барака…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Какви бариери има на този релсов прелез?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Няма бариери"</string>
     <string name="quest_steps_ramp_title">"По тези стъпала има ли рампа и каква?"</string>
@@ -975,7 +975,7 @@
     <string name="quest_parkingType_lane">"Паркиране на пътя"</string>
     <string name="quest_tracktype_grade2a">"Солиден, но без покритие"</string>
     <string name="quest_tracktype_grade3a">"Повечето е солиден"</string>
-    <string name="quest_generic_answer_does_not_exist">"Не съществува..."</string>
+    <string name="quest_generic_answer_does_not_exist">"Не съществува…"</string>
     <string name="osm_element_gone_description">"Сигурни ли сте, че не съществува, дори и някъде наблизо? Ако не сте сигурни, по-добре оставете бележка."</string>
     <string name="osm_element_gone_confirmation">"Не съществува"</string>
     <string name="leave_note">"Оставете бележка"</string>
@@ -987,7 +987,7 @@
     <string name="quest_shop_gone_vacant_answer">"Празно е"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer">"Сега е..."</string>
+    <string name="quest_shop_gone_replaced_answer">"Сега е…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Какъв вид място е това"</string>
 
     <!-- Fuzzy -->
@@ -1000,7 +1000,7 @@
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Докоснете от едната страна на картинката, изберете подходящия отговор, а след това направете същото и за другата страна. Обърнете внимание на всички възможни отговори. Например по еднопосочните улици биха могли да се движат велосипедисти двупосочно."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Избор - няма велоалея"</string>
-    <string name="quest_construction_completed_at_known_date">"Ще бъде завършено на..."</string>
+    <string name="quest_construction_completed_at_known_date">"Ще бъде завършено на…"</string>
     <string name="quest_construction_completion_date_title">"Кога ще бъде готово?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Изкуствена трева"</string>
@@ -1234,7 +1234,7 @@
     <string name="street_parking_conditional_restrictions_hint">"Ако е възможно спирането или паркирането тук, първият въпрос е относно начина на паркиране, след това е въпросът относно ограниченията.
 
 Разбира се, можете да оставите бележка придружена със снимка."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Номер на къща и име на къща..."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Номер на къща и име на къща…"</string>
     <string name="quest_address_house_number_label">"Номер на къща:"</string>
     <string name="quest_shoulder_title">"Този път има ли аварийна лента?"</string>
     <string name="quest_fireHydrant_position_title">"Къде се намира този пожарен кран?"</string>
@@ -1322,8 +1322,8 @@
     <string name="ar_core_tracking_error_no_plane_hit">"Приближете се към стрелката, но се оглеждайте за трафика!"</string>
     <string name="quest_sidewalk_surface_title">"Каква е повърхността на тротоара тук?"</string>
     <string name="quest_tactilePaving_incorrect">"Само от едната страна"</string>
-    <string name="quest_fee_answer_yes_but">"Да, ..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Не, но има ограничение по време..."</string>
+    <string name="quest_fee_answer_yes_but">"Да, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Не, но има ограничение по време…"</string>
     <string name="unit_days">"дни"</string>
     <string name="unit_hours">"часа"</string>
     <string name="unit_minutes">"минути"</string>

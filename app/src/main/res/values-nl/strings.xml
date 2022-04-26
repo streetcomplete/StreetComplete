@@ -27,7 +27,7 @@
     <string name="pref_title_map_cache">"Maximaal cachegeheugen"</string>
     <string name="map_btn_gps_tracking">"Volg mij"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-auteurs"</string>
-    <string name="quest_generic_otherAnswers">"Andere antwoorden..."</string>
+    <string name="quest_generic_otherAnswers">"Andere antwoorden…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Weet ik niet…"</string>
@@ -585,7 +585,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
 
     <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
-    <string name="credits_and_more">"en verder..."</string>
+    <string name="credits_and_more">"en verder…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Dit is een woonerf"</string>
@@ -865,7 +865,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_hasFeature_only">"Alleen"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Veganistische gerechten bevatten geen dierlijke producten (geen vlees, vis, melkproducten, eieren, ....)."</string>
+    <string name="quest_dietType_explanation_vegan">"Veganistische gerechten bevatten geen dierlijke producten (geen vlees, vis, melkproducten, eieren, …)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Vegetarische gerechten bevatten geen vlees, vis en gevogelte"</string>
@@ -920,7 +920,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heeft gewoon geen naam"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoelpictogram zoals dit kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk betekent dat een rolstoelgebruiker naar binnen kan en het toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een leuning, verlaagde wastafel, ...)"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoelpictogram zoals dit kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk betekent dat een rolstoelgebruiker naar binnen kan en het toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een leuning, verlaagde wastafel, …)"</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_create_note">"Maak een nieuwe notitie"</string>
@@ -1028,7 +1028,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Je kan huisnummers invoeren gescheiden door komma's of met een bereik.
-Bijvoorbeeld 1,3 of 2-6."</string>
+Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Voorwielvriendelijk fietsenrek"</string>
@@ -1156,7 +1156,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_buildingType_industrial">"Industrieel gebouw"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"bv. een fabriek, werkplaats, autogarage, ..."</string>
+    <string name="quest_buildingType_industrial_description">"bv. een fabriek, werkplaats, autogarage, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Kantoorgebouw"</string>
@@ -1365,7 +1365,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="action_deselect_all">"Deselecteer alles"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"Inclusief gebouwen van restaurants, cafés, ..."</string>
+    <string name="quest_buildingType_retail_description">"Inclusief gebouwen van restaurants, cafés, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Volgende"</string>
@@ -1515,7 +1515,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Dit gewicht lijkt onwaarschijnlijk, weet je zeker dat dit correct is?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_other_sign">"Borden geven iets anders aan..."</string>
+    <string name="quest_maxweight_answer_other_sign">"Borden geven iets anders aan…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"Wil je een notitie maken? Met een notitie en een foto kunnen andere mappers dit oppakken."</string>
@@ -1675,7 +1675,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_intro">"StreetComplete maakt het makkelijk om bij te dragen aan OpenStreetMap.
-Het zoekt automatisch naar ontbrekende details in je omgeving: fietspaden, huisnummers, openingstijden en veel meer..."</string>
+Het zoekt automatisch naar ontbrekende details in je omgeving: fietspaden, huisnummers, openingstijden en veel meer…"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Als er ontbrekende details gevonden zijn, verschijnen ze op je kaart als vragen.
@@ -1818,7 +1818,7 @@ Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en 
     <string name="link_nominatim_description">"De geocoder voor OSM-gegevens, gebruikt door veel andere diensten"</string>
 
     <!-- Fuzzy -->
-    <string name="link_city_roads_description">"Geef alle wegen van een stad weer, om af te drukken op t-shirts, mokken, ..."</string>
+    <string name="link_city_roads_description">"Geef alle wegen van een stad weer, om af te drukken op t-shirts, mokken, …"</string>
 
     <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Maak afdrukbare stadskaarten in een paar eenvoudige stappen, optioneel met een stratengids."</string>
@@ -2025,7 +2025,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Hebben deze stoplichten een voelbare indicatie voor blinden voor wanneer ze veilig over kunnen steken?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Vaak is dit een trillende knop of ronddraaiende kegel aan de onderkant van de stoplichtknop."</string>
-    <string name="quest_buildingType_bungalow_description2">"klein vrijstaand huis (zomerhuisje, vakantiehuisje, hut ...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"klein vrijstaand huis (zomerhuisje, vakantiehuisje, hut …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Welke slagbomen worden bij deze spoorwegovergang gebruikt?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Geen slagbomen"</string>
     <string name="quest_steps_ramp_title">"Heeft deze trap een helling? Welke soort?"</string>
@@ -2108,7 +2108,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_parkingType_lane">"Parkeren op de weg"</string>
     <string name="quest_tracktype_grade2a">"Hard maar niet bestraat"</string>
     <string name="quest_tracktype_grade3a">"Voornamelijk hard"</string>
-    <string name="quest_generic_answer_does_not_exist">"Het bestaat niet..."</string>
+    <string name="quest_generic_answer_does_not_exist">"Het bestaat niet…"</string>
     <string name="osm_element_gone_description">"Weet je zeker dat het niet bestaat, zelfs niet op een iets andere plaats? Als je niet zeker bent kun je beter een notitie achterlaten."</string>
     <string name="osm_element_gone_confirmation">"Het bestaat niet"</string>
     <string name="leave_note">"Laat een notitie achter"</string>
@@ -2118,7 +2118,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Het staat leeg"</string>
-    <string name="quest_shop_gone_replaced_answer">"Een..."</string>
+    <string name="quest_shop_gone_replaced_answer">"Een…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Voer de soort winkel hier in"</string>
 
     <!-- Fuzzy -->
@@ -2131,7 +2131,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant. Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecteer dat er geen fietspad is"</string>
-    <string name="quest_construction_completed_at_known_date">"Dit zal gereed zijn op de datum..."</string>
+    <string name="quest_construction_completed_at_known_date">"Dit zal gereed zijn op de datum…"</string>
     <string name="quest_construction_completion_date_title">"Wanneer zal dit gereed zijn?"</string>
     <string name="quest_surface_value_clay">"Gravel"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
@@ -2263,7 +2263,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Voorinstelling \"%s\" verwijderen? De vraagkeuze en -volgorde zal voorgoed verloren gaan."</string>
-    <string name="notification_syncing">"Gegevens synchronizeren..."</string>
+    <string name="notification_syncing">"Gegevens synchronizeren…"</string>
 
     <!-- Android notifications -->
     <string name="notification_channel_sync">"Synchronizeer gegevens"</string>
@@ -2439,8 +2439,8 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="ar_core_tracking_error_no_plane_hit">"Ga dichter naar de pijl maar pas op voor het verkeer!"</string>
     <string name="quest_sidewalk_surface_title">"Wat is het oppervlak van het trottoir hier?"</string>
     <string name="quest_tactilePaving_incorrect">"Alleen aan één kant"</string>
-    <string name="quest_fee_answer_yes_but">"Ja,..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Nee, maar er is een maximale duur..."</string>
+    <string name="quest_fee_answer_yes_but">"Ja, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Nee, maar er is een maximale duur…"</string>
     <string name="unit_days">"dagen"</string>
     <string name="unit_hours">"uren"</string>
     <string name="unit_minutes">"minuten"</string>

@@ -15,7 +15,7 @@
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
     <string name="map_attribution_osm">"© مشارکت‌کنندگان در اوپن‌استریت‌مپ"</string>
-    <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها..."</string>
+    <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها…"</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"مطمئنید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
@@ -181,7 +181,7 @@
 
     <!-- As in: "show more of those pictures to select an answer from -->
     <!-- Fuzzy -->
-    <string name="quest_roofShape_show_more">"نمایش بیشتر..."</string>
+    <string name="quest_roofShape_show_more">"نمایش بیشتر…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
@@ -551,7 +551,7 @@
 
     <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
-    <string name="credits_and_more">"و بیشتر..."</string>
+    <string name="credits_and_more">"و بیشتر…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"این یک خیابان محل سکونت است"</string>
@@ -831,7 +831,7 @@
     <string name="quest_hasFeature_only">"فقط"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"در وعدهٔ غذایی گیاه‌خواری مطلق (vegan) محصولات حیوانی  وجود ندارد (بدون گوشت، طیور، ماهی، محصولات لبنی، تخم‌مرغ، عسل و...)."</string>
+    <string name="quest_dietType_explanation_vegan">"در وعدهٔ غذایی گیاه‌خواری مطلق (vegan) محصولات حیوانی  وجود ندارد (بدون گوشت، طیور، ماهی، محصولات لبنی، تخم‌مرغ، عسل و…)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"در وعدهٔ غذایی گیاه‌خواری (vegetarian) گوشت، ماهی یا طیور وجود ندارد."</string>
@@ -1460,7 +1460,7 @@
     <string name="quest_cyclewayPartSurface_title">"سطح مسیر دوچرخه‌سواری از چه جنسی است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"تناقض در طول مسیر..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"تناقض در طول مسیر…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"اگر در طول راه فرق می‌کند، اولین گام تفکیک راه است. پس از آن می‌توان برای هر قسمت تفکیک شده به طور جداگانه پاسخ جُستار را ارائه نمود.  اکنون تفکیک می‌کنید؟"</string>
@@ -1484,7 +1484,7 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"این وزن غیرممکن به نظر می‌رسد. آیا مطمئن هستید که صحیح است؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_other_sign">"با علائم تفاوت دارد ..."</string>
+    <string name="quest_maxweight_answer_other_sign">"با علائم تفاوت دارد …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"آیا می‌خواهید یک یادداشت بگذارید؟ یک یادداشت با یک عکس نقشه‌کش‌های دیگر را مجاب به نگهداری اطلاعات می‌کند."</string>
@@ -1499,7 +1499,7 @@
     <string name="quest_postboxRef_title">"شماره این صندوق پستی چیست؟"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ref_answer_noRef">"بدون شماره پستی قابل مشاهده است ..."</string>
+    <string name="quest_ref_answer_noRef">"بدون شماره پستی قابل مشاهده است …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"جاده در تصویر حول موقعیت سنجاق همانند روی نقشه چرخانده شده است."</string>
@@ -1643,7 +1643,7 @@
 
     <!-- Fuzzy -->
     <string name="tutorial_intro">"برنامه StreetComplete مشارکت در اوپن‌استریت‌مپ را آسان می‌کند.
-به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، شماره خانه، ساعات کار و بسیاری موارد دیگر..."</string>
+به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، شماره خانه، ساعات کار و بسیاری موارد دیگر…"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"جزئیاتی که از قلم افتاده‌اند به محض پیدایش به عنوان جُستار در نقشه شما ظاهر می‌شود.
@@ -1786,7 +1786,7 @@
     <string name="link_nominatim_description">"کد جغرافیایی داده‌های OSM که توسط بسیاری از سامانه‌های دیگر استفاده می‌شود"</string>
 
     <!-- Fuzzy -->
-    <string name="link_city_roads_description">"ارائه همه جاده‌های یک شهر برای چاپ روی تیشرت، لیوان و..."</string>
+    <string name="link_city_roads_description">"ارائه همه جاده‌های یک شهر برای چاپ روی تیشرت، لیوان و…"</string>
 
     <!-- Fuzzy -->
     <string name="link_myosmatic_description">"نقشه‌های قابل چاپ شهری را در چند گام ساده، به صورت انتخابی با فهرست راهنمای خیابانی ایجاد کنید"</string>
@@ -1944,7 +1944,7 @@
     <string name="quest_board_type_map">"این یک نقشه است."</string>
     <string name="quest_board_type_map_title">"آیا این فقط یک نقشه است و تمام؟"</string>
     <string name="quest_board_type_map_description">"اگر تابلو در مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل‌ونقل عمومی می‌تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ‌های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید."</string>
-    <string name="quest_surface_detailed_answer_impossible">"چندین سطح ..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"چندین سطح …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"آیا مطمئن هستید که تعیین جنس سطوح ناممکن است؟ گزینه \"اختلاف جنس سطوح در طول مسیر\" را مدنظر قرار دهید، تا بتوانید با جدا کردن مسیر اختلاف جنس سطح را مشخص کنید. لطفاً اگر جنس یکسان وجود دارد از پاسخ  \"نمی توان بیان کرد\" استفاده کنید اما به عنوان یک پاسخ در دسترس نیست."</string>
@@ -1982,7 +1982,7 @@
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"آیا این چراغ‌های راهنمایی برای افراد نابینا مجهز به دکمه لمسی برای عبور ایمن است؟"</string>
     <string name="quest_traffic_signals_vibrate_description">"نکته: اغلب این دکمه یک دکمه ارتعاشی یا یک مخروط چرخان در زیر بخش دکمه چراغ راهنمایی است."</string>
-    <string name="quest_buildingType_bungalow_description2">"خانه غیرمتصل کوچک (خانه تابستانی، کلبه تعطیلات، کابین ...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"خانه غیرمتصل کوچک (خانه تابستانی، کلبه تعطیلات، کابین …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"از چه موانعی در این گذرگاه راه‌آهن استفاده می‌شود؟"</string>
     <string name="quest_railway_crossing_barrier_none2">"بدون موانع"</string>
     <string name="quest_steps_ramp_title">"آیا اینجا سطح شیب‌دار دارد؟ از چه نوعی؟"</string>
@@ -2065,7 +2065,7 @@
     <string name="quest_parkingType_lane">"پارکینگ بخشی از مسیراست"</string>
     <string name="quest_tracktype_grade2a">"سخت اما روسازی‌نشده"</string>
     <string name="quest_tracktype_grade3a">"اغلب سخت"</string>
-    <string name="quest_generic_answer_does_not_exist">"وجود ندارد..."</string>
+    <string name="quest_generic_answer_does_not_exist">"وجود ندارد…"</string>
     <string name="osm_element_gone_description">"اطمینان دارید که وجود ندارد؟ شاید فقط موقعیت آن اندکی متفاوت باشد. اگر تردید دارید، بهتر است به جای این کار، یادداشتی بگذارید."</string>
     <string name="osm_element_gone_confirmation">"وجود ندارد"</string>
     <string name="leave_note">"درج یادداشت"</string>
@@ -2075,7 +2075,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"خالی است"</string>
-    <string name="quest_shop_gone_replaced_answer">"یک..."</string>
+    <string name="quest_shop_gone_replaced_answer">"یک…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"نوع مکان اینجا را وارد کنید"</string>
 
     <!-- Fuzzy -->
@@ -2089,7 +2089,7 @@
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"طبق معمول، روی یک سمت تصویر ضربه بزنید، یک پاسخ مناسب را انتخاب نمایید و همین روش را برای سمت دیگر انجام دهید.
 به همه گزینه‌های موجود توجه داشته باشید: بعضی موارد واضح نیستند، مانند جاده یک طرفه ای که دوچرخه‌سواران می‌توانند در هر دو جهت حرکت کنند!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"انتخاب اینکه، هیچ مسیر دوچرخه‌ای وجود ندارد"</string>
-    <string name="quest_construction_completed_at_known_date">"تمام می‌شود در تاریخ ..."</string>
+    <string name="quest_construction_completed_at_known_date">"تمام می‌شود در تاریخ …"</string>
     <string name="quest_construction_completion_date_title">"چه زمانی کامل خواهد شد؟"</string>
     <string name="quest_surface_value_clay">"خاکی"</string>
     <string name="quest_surface_value_artificial_turf">"چمن مصنوعی"</string>
@@ -2298,7 +2298,7 @@
     <string name="street_parking_conditional_restrictions_hint">"اگر امکان توقف یا پارک در اینجا وجود دارد، ابتدا پاسخ دهید که چگونه در جاهای مجاز، پارک انجام می‌شود. این که دقیقا چه محدودیت‌هایی می‌تواند اعمال شود بعدا مشخص خواهد شد.
 
 همچنین می‌توانید یک یادداشت (با عکس) بگذارید."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"شماره پلاک و نام خانه..."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"شماره پلاک و نام خانه…"</string>
     <string name="quest_address_house_number_label">"شماره پلاک خانه:"</string>
     <string name="quest_shoulder_title">"آیا این جاده شانه دارد؟"</string>
     <string name="quest_fireHydrant_position_title">"این شیر آتش‌نشانی در کجا قرار دارد؟"</string>
@@ -2351,7 +2351,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"لطفا یک پاسخ کلی برای میزان همواری ارائه دهید. موانع منفرد مانند حاشیه، سرعت گیر یا شبکه گاوی شکل را می‌توان نادیده گرفت. موانع مکرر یا غیرمنتظره باید در پاسخ به حساب بیایند."</string>
-    <string name="quest_smoothness_hint">"🚲، 🚗، 🚙، ... مشخص کنید سطح برای کدام وسایل نقلیه باید مناسب باشد. آنچه اهمیت دارد، تصویر بزرگ است تا آسیب‌های منفرد."</string>
+    <string name="quest_smoothness_hint">"🚲، 🚗، 🚙، … مشخص کنید سطح برای کدام وسایل نقلیه باید مناسب باشد. آنچه اهمیت دارد، تصویر بزرگ است تا آسیب‌های منفرد."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"شانه یک خط توقف اضطراری است که مرزبندی واضحی دارد و به وسایل نقلیه اجازه می‌دهد تا به‌طور ایمن در کنار خط تردد کاملاً توقف کنند، البته همیشه (به طور کامل) روی سطح روسازی‌شده قرار ندارد."</string>

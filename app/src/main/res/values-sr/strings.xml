@@ -582,7 +582,7 @@
     <string name="quest_leaf_type_broadleaved">"Лишће"</string>
     <string name="quest_leaf_type_mixed">"Обоје"</string>
     <string name="quest_cyclewayPartSurface_title">"Каква је овде површина бициклистичке стазе?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Различита у деловима..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Различита у деловима…"</string>
     <string name="quest_split_way_description">"Уколико се разликује дуж пута, прво морате да га поделите. Након тога, можете одговорити на задатак за сваки део посебно. Желите ли одмах да поделите пут?"</string>
     <string name="quest_split_way_tutorial">"Додирните пут да га раздвојите на местима где се одговор разликује. Покушајте бити што прецизнији, можете и увеличати карту."</string>
     <string name="quest_split_way_too_imprecise">"Молимо да још увеличате карту"</string>
@@ -814,7 +814,7 @@
     <string name="quest_traffic_signals_sound_title">"Да ли овде постоје звучни сигнали за слепе особе?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Да ли ови семафори имају траке водиље за слепе када је безбедно прећи улицу?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Савет: Често је то вибрирајуће дугме или ротирајући конус на дну кућишта дугмета на семафору."</string>
-    <string name="quest_buildingType_bungalow_description2">"мала самостојећа кућа (летњиковац, викендица, колиба...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"мала самостојећа кућа (летњиковац, викендица, колиба…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Које препреке се користе на овом железничком прелазу?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Без препрека"</string>
     <string name="quest_steps_ramp_title">"Да ли ове степенице имају рампу? Које врсте?"</string>
@@ -875,7 +875,7 @@
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>
     <string name="quest_tracktype_grade2a">"Чврсто, али неасфалтирано"</string>
     <string name="quest_tracktype_grade3a">"Углавном чврсто"</string>
-    <string name="quest_generic_answer_does_not_exist">"Не постоји..."</string>
+    <string name="quest_generic_answer_does_not_exist">"Не постоји…"</string>
     <string name="osm_element_gone_description">"Да ли сте сигурни да не достаје, чак ни на нешто удаљенијој локацији? Уколико нисте сигурни, боље оставите напомену."</string>
     <string name="osm_element_gone_confirmation">"Не постоји"</string>
     <string name="leave_note">"Оставите напомену"</string>
@@ -1082,7 +1082,7 @@
     <string name="street_parking_conditional_restrictions_hint">"Ако је овде уопште могуће паркирање или заустављање, прво одговорите како се паркирају они којима је дозвољено. Можете накнадно навести која се тачно ограничења примењују.
 
 Или, можете оставити белешку (са фотографијом)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Има и кућни број и назив..."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Има и кућни број и назив…"</string>
     <string name="quest_address_house_number_label">"Кућни број:"</string>
     <string name="quest_shoulder_title">"Да ли овај пут има зауставну траку?"</string>
     <string name="quest_fireHydrant_position_title">"Где се овај хидрант налази?"</string>

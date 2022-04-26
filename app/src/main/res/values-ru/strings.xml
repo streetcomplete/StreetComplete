@@ -1749,7 +1749,7 @@
 "</string>
     <string name="quest_sidewalk_surface_title">"Какое покрытие у этого тротуара?"</string>
     <string name="quest_tactilePaving_incorrect">"Только на одной стороне"</string>
-    <string name="quest_fee_answer_yes_but">"Да, ..."</string>
+    <string name="quest_fee_answer_yes_but">"Да, …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"нет, но есть максимальная продолжительность стоянки"</string>
     <string name="unit_days">"дней"</string>
     <string name="unit_hours">"часов"</string>
