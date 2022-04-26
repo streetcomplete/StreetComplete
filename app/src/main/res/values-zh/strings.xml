@@ -2039,9 +2039,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_barrier_type_title">"这是什么种类的障碍物？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_barrier_type_gate">"闸门"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_lift_gate">"栅栏"</string>
 
     <!-- Fuzzy -->
@@ -2407,6 +2404,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_smoothness_obstacle">"存在一个障碍"</string>
     <string name="quest_smoothness_obstacle_hint">"请提供一个关于平顺度的通用答案。单一的障碍物，如路缘石、减速带或牲畜格栅，可以忽略不计。反复出现的或意想不到的障碍物应计入到回答中。"</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, ...表示该表面对哪些车辆可以使用。重要的是大局，而不是单一的损害。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"路肩是一个明确划定的紧急停车道，允许车辆完全停在车道旁边（外），尽管并不总是（完全）在铺装的表面上。"</string>
     <string name="link_osmhydrant_description">"查询、添加并编辑消防站和消防栓"</string>
 
@@ -2587,4 +2586,20 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"这个地方的洗手间可以让轮椅进入吗？"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"你确定骑行者不允许双向使用这条单行道吗？如果拿不准，请检查街道尽头是否有标志。"</string>
+    <string name="link_valhalla_description">"路线规划引擎具有非常小的内存占用，多模式路线规划，等值线及更多功能。"</string>
+    <string name="link_backofyourhand_description">"你对你的地区有多了解？通过定位街道来测试你的知识。"</string>
+    <string name="link_thenandnow_description">"探索OSM在早期的样子并将及其与现在的模样相比较!"</string>
+    <string name="link_notesreview_description">"方便地查看、过滤和评论由你和其他人创建的笔记。许多笔记可以通过将其中的信息放在地图上用iD或JOSM来解决。"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"这里接受信用卡或借记卡吗？"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"都可以"</string>
+    <string name="quest_accepts_cards_credit_only">"仅限信用卡"</string>
+    <string name="quest_accepts_cards_dedit_only">"仅限借记卡"</string>
+    <string name="quest_accepts_cards_unavailable">"借记卡和信用卡都不行"</string>
+    <string name="quest_barrier_type_gate_any_size">"门，任何大小"</string>
+    <string name="quest_air_pump_bicycle_title">"这里有一个能用的自行车打气筒供任何人使用吗？"</string>
+    <string name="quest_air_pump_compressor_title">"这里有空气压缩机可用吗？"</string>
+    <string name="quest_step_count_stile_hint">"只是到达顶部的步数。如果两边的步数不一样，就填更高的步数。"</string>
 </resources>

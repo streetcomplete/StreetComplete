@@ -1234,7 +1234,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="background_type_map">"Hartă"</string>
     <string name="background_type_aerial_esri">"Aerian (oferit de Esri)"</string>
     <string name="quest_barrier_type_title">"Ce tip de barieră este aceasta?"</string>
-    <string name="quest_barrier_type_gate">"Poartă"</string>
     <string name="quest_barrier_type_lift_gate">"Barieră manuală"</string>
     <string name="quest_barrier_type_bollard">"Barieră(e)"</string>
     <string name="quest_barrier_type_chain">"Lanț"</string>

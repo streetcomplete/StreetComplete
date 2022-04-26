@@ -1040,7 +1040,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aèries (d'Esri)"</string>
     <string name="quest_barrier_type_title">"Quin tipus de barrera és?"</string>
-    <string name="quest_barrier_type_gate">"Porta"</string>
     <string name="quest_barrier_type_lift_gate">"Barrera"</string>
     <string name="quest_barrier_type_bollard">"Pilons"</string>
     <string name="quest_barrier_type_chain">"Cadena"</string>
@@ -1274,6 +1273,8 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_smoothness_obstacle">"Hi ha un obstacle"</string>
     <string name="quest_smoothness_obstacle_hint">"Per favor, proporciona una resposta general per a la suavitat de la superfície. Obstacles com vorades, reductors de velocitat, graelles per al bestiar es poden ignorar. Obstacles repetits o inesperats són els que haurien de contar per a la resposta."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indica quin vehicle pot utilitzar bé la superfície. El que importa és el panorama general en lloc de danys individuals."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Un voral és una zona de parada d'emergència clarament demarcat que permet que els vehicles s'aturin de forma segura completament al costat de la carretera, encara que no sempre en una superfície totalment pavimentada."</string>
     <string name="link_osmhydrant_description">"Cerca, afegeix i edita estacions de bombers i hidrants"</string>
     <string name="achievement_lifesaver_title">"Salvavides"</string>

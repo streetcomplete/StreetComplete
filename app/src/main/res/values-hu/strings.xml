@@ -2149,7 +2149,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="background_type_map">"Térkép"</string>
     <string name="background_type_aerial_esri">"Légi felvétel (Esri)"</string>
     <string name="quest_barrier_type_title">"Ez milyen típusú akadály?"</string>
-    <string name="quest_barrier_type_gate">"Kapu"</string>
     <string name="quest_barrier_type_lift_gate">"Sorompó"</string>
     <string name="quest_barrier_type_bollard">"Cövek(ek)"</string>
     <string name="quest_barrier_type_chain">"Lánc"</string>
@@ -2350,6 +2349,8 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_smoothness_obstacle">"Van rajta akadály"</string>
     <string name="quest_smoothness_obstacle_hint">"Kérjük, általánosan határozd meg a simaságot. Az egyedi akadályok (pl járdaszegélyek, fekvőrendőr vagy szarvasmarha-rács) figyelmen kívül hagyhatók. Az ismétlődő vagy váratlan akadályokat viszont bele kell számítani a válaszba."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, ... add meg, hogy mely járművekkel lehet használni a felszínt. Az összkép számít, nem az egyedi sérülések."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"A leállósáv egy világosan elhatárolt vészhelyzeti megállósáv, amelyen a járművek biztonságos megállhatnak a forgalmi sáv mellett, igaz, nem mindig (teljesen) burkolt felületen."</string>
     <string name="link_osmhydrant_description">"Tűzoltóságok és tűzcsapok keresése, hozzáadása és szerkesztése"</string>
     <string name="achievement_lifesaver_title">"Életmentő"</string>

@@ -1069,7 +1069,6 @@
     <string name="background_type_map">"خريطة"</string>
     <string name="background_type_aerial_esri">"جوي (بواسطة Esri)"</string>
     <string name="quest_barrier_type_title">"ما نوع هذا الحاجز؟"</string>
-    <string name="quest_barrier_type_gate">"بوابة"</string>
     <string name="quest_barrier_type_lift_gate">"حاجز عمودي يرتفع وينخفض"</string>
     <string name="quest_barrier_type_bollard">"العمود (الأعمدة)"</string>
     <string name="quest_barrier_type_chain">"سلسلة"</string>

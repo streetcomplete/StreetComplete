@@ -1168,7 +1168,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aérea (por Esri)"</string>
     <string name="quest_barrier_type_title">"Que tipo de barreira é esta?"</string>
-    <string name="quest_barrier_type_gate">"Portão"</string>
     <string name="quest_barrier_type_lift_gate">"Cancela elevatória"</string>
     <string name="quest_barrier_type_bollard">"Pilarete(s)"</string>
     <string name="quest_barrier_type_chain">"Corrente"</string>

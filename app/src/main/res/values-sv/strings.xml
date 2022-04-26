@@ -1008,7 +1008,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="background_type_map">"Karta"</string>
     <string name="background_type_aerial_esri">"Flygfoto (från Esri)"</string>
     <string name="quest_barrier_type_title">"Vad för slags hinder är detta?"</string>
-    <string name="quest_barrier_type_gate">"Grind"</string>
     <string name="quest_barrier_type_lift_gate">"Vägbom (som lyfts)"</string>
     <string name="quest_barrier_type_bollard">"Pollare"</string>
 
@@ -1106,7 +1105,7 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_picnicTableCover_title">"Har det här picknickbordet ett regnskydd?"</string>
 
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
-    <string name="quest_generic_answer_is_actually_steps">"Den del är en trappa"</string>
+    <string name="quest_generic_answer_is_actually_steps">"Denna del är en trappa"</string>
     <string name="quest_barrier_type_passage_conversion">"Omvandlad till öppning i stängsel/mur/osv."</string>
     <string name="quest_barrier_type_gate_conversion">"Omvandlad till grind"</string>
     <string name="quest_traffic_calming_type_title">"Vad är detta för slags farthinder?"</string>
@@ -1216,6 +1215,8 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_smoothness_obstacle">"Det finns ett hinder"</string>
     <string name="quest_smoothness_obstacle_hint">"Ange ett generellt svar för jämnheten. Enskilda hinder som trottoarkanter, farthinder eller färistar kan ignoreras. Upprepade hinder ska tas med."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … ange vilka fordon som utan problem kan köra på denna beläggning. Det viktiga är vägen som helt, inte enskilda skador."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"En vägren är den del av vägen som inte utgör själva körbanan och som kan användas i nödsituationer, av långsamtgående fordon, cyklister, m.m. Den är oftast belagd, men kan vara av grus eller gräs."</string>
     <string name="link_osmhydrant_description">"Hitta, lägg till och redigera brandstationer och brandposter"</string>
     <string name="achievement_lifesaver_title">"Livräddare"</string>
@@ -1331,4 +1332,20 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Finns det toaletter här?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Är toaletten här rullstolsanpassad?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Är du säker på att cyklister inte får köra i båda riktningarna den här enkelriktade vägen? Dubbelkolla gärna om det finns en skylt i slutet av gatan."</string>
+    <string name="link_valhalla_description">"Ruttmotor med väldigt liten minneanvändning, multimodala vägbeskrivningar, isokroner, med mera."</string>
+    <string name="link_backofyourhand_description">"Hur väl känner du till ditt område? Testa din kunskap genom att hitta gator."</string>
+    <string name="link_thenandnow_description">"Utforska hur OSM såg ut i början jämfört med nu!"</string>
+    <string name="link_notesreview_description">"Se, filtrera eller kommentera på ett bekvämt sätt på anteckningar som du eller andra har skapat. Många anteckningar kan lösas genom att med iD eller JOSM kartlägga det som beskrivs"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Kan man betala med bank- eller kreditkort här?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Båda"</string>
+    <string name="quest_accepts_cards_credit_only">"Bara kreditkort"</string>
+    <string name="quest_accepts_cards_dedit_only">"Bara bankkort"</string>
+    <string name="quest_accepts_cards_unavailable">"Varken bank- eller kreditkort"</string>
+    <string name="quest_barrier_type_gate_any_size">"Grind, valfri storlek"</string>
+    <string name="quest_air_pump_bicycle_title">"Finns det en fungerande cykelpump för alla att använda här?"</string>
+    <string name="quest_air_pump_compressor_title">"Finns det tryckluft (en kompressor) tillgängligt här?"</string>
+    <string name="quest_step_count_stile_hint">"Bara antalet steg som krävs för att nå toppen. Om det är olika antal på vardera sida, ange det högsta."</string>
 </resources>

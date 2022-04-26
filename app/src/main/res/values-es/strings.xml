@@ -1277,7 +1277,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aéreo (por Esri)"</string>
     <string name="quest_barrier_type_title">"¿Qué tipo de barrera es?"</string>
-    <string name="quest_barrier_type_gate">"Puerta"</string>
     <string name="quest_barrier_type_lift_gate">"Barrera levadiza"</string>
     <string name="quest_barrier_type_bollard">"Bolardo(s)"</string>
     <string name="quest_barrier_type_chain">"Cadena"</string>
@@ -1484,6 +1483,8 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_smoothness_obstacle">"Hay un obstáculo"</string>
     <string name="quest_smoothness_obstacle_hint">"Si puedes responde teniendo en cuenta el estado general del trazado. No pasa nada si hay algún guardaganado, banda de frenado o bordillo por el camino. Aunque si ves muchos obstáculos seguro que resta puntos."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indican el tipo de vehículo que puede transitar por la vía, en líneas generales, más allá de problemas puntuales que lo impidan."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Un arcén es una sección al borde de la vía claramente demarcada para que los vehículos puedan hacer paradas de emergencia seguras, aunque a veces no esté pavimentado del todo."</string>
     <string name="link_osmhydrant_description">"Busca, pon y edita parques de bomberos y bocas de incendio"</string>
     <string name="achievement_lifesaver_title">"Salvavidas"</string>

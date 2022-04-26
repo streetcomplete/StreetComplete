@@ -1057,7 +1057,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="background_type_map">"Karta"</string>
     <string name="background_type_aerial_esri">"Zračna snimka (Esri)"</string>
     <string name="quest_barrier_type_title">"Kakva je ovo barijera?"</string>
-    <string name="quest_barrier_type_gate">"Vrata"</string>
     <string name="quest_barrier_type_lift_gate">"Brklja"</string>
     <string name="quest_barrier_type_bollard">"Stupić(i)"</string>
     <string name="quest_barrier_type_chain">"Lanac"</string>
@@ -1251,6 +1250,8 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <string name="quest_smoothness_obstacle">"Postoji prepreka"</string>
     <string name="quest_smoothness_obstacle_hint">"Molimo navedite prosječnu glatkoću. Pojedinačne prepreke kao što su rubnici, uspornici ili rešetke za stoku mogu se zanemariti. Ali ponovljene ili neočekivane prepreke trebale bi uticati na odgovor."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … pokazuju za koju vrstu vozila bi površina trebala biti adekvatna za korištenje. Obratite pažnju na širu sliku, a ne na pojedinačna oštećenja."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Zaustavna traka je jasno razgraničena traka za zaustavljanje vozila u nuždi koja omogućava da se vozila sigurno uspostave van prometne trake, iako nije uvijek na (potpuno) asfaltiranoj površini."</string>
     <string name="link_osmhydrant_description">"Pretražite, dodajte i uredite vatrogasne stanice i vatrogasne hidrante"</string>
     <string name="achievement_lifesaver_title">"Spasilac"</string>

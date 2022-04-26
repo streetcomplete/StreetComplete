@@ -1118,7 +1118,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="background_type_map">"Mapo"</string>
     <string name="background_type_aerial_esri">"Aerial (de Esri)"</string>
     <string name="quest_barrier_type_title">"Kia barilo estas ĉi tio?"</string>
-    <string name="quest_barrier_type_gate">"Pordego"</string>
     <string name="quest_barrier_type_bollard">"Bolardo(j)"</string>
     <string name="quest_barrier_type_chain">"Ĉeno"</string>
     <string name="quest_barrier_type_rope">"Ŝnuro"</string>

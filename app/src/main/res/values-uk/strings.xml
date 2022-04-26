@@ -1072,7 +1072,6 @@
     <string name="background_type_map">"Карта"</string>
     <string name="background_type_aerial_esri">"Аеро (від Esri)"</string>
     <string name="quest_barrier_type_title">"Який це тип перешкоди?"</string>
-    <string name="quest_barrier_type_gate">"Ворота"</string>
     <string name="quest_barrier_type_lift_gate">"Шлагбаум"</string>
     <string name="quest_barrier_type_bollard">"Стовпчик"</string>
     <string name="quest_barrier_type_chain">"Ланцюг"</string>

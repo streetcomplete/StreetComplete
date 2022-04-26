@@ -1683,7 +1683,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aerial (od Esri)"</string>
     <string name="quest_barrier_type_title">"Čo je to za bariéru?"</string>
-    <string name="quest_barrier_type_gate">"Brána"</string>
     <string name="quest_barrier_type_lift_gate">"Závora"</string>
     <string name="quest_barrier_type_bollard">"Stĺpik(y)"</string>
     <string name="quest_barrier_type_chain">"Reťaz"</string>
@@ -1881,6 +1880,8 @@ Taktiež môžete nechať poznámku (s fotkou)"</string>
     <string name="quest_smoothness_obstacle">"Je tu prekážka"</string>
     <string name="quest_smoothness_obstacle_hint">"Uveďte prosím všeobecný odpoveď pre prejazdnosť. Samotné prekážky, ako obrubníky, spomaľovacie prahy,  alebo mreže pre dobytok môžete ignorovať. Opakované, alebo neočakávané prekážky by ale mali byť do odpovede zahrnuté."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indikuje, pre ktoré vozidlá je povrch vhodný. Dôležitejší je celkový stav ako jednotlivé poškodenia."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Odstavovací pruh je jasne ohraničený pruh pre núdzové zastavenie, ktorý umožňuje vozidlám bezpečne zastaviť úplne vedľa jazdného pruhu, pričom povrch nemusí byť vždy (plne) spevnený."</string>
     <string name="link_osmhydrant_description">"Vyhľadávajte, pridávajte a upravujte hasičské stanice a požiarne hydranty"</string>
     <string name="achievement_lifesaver_title">"Záchranár"</string>

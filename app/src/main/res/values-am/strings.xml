@@ -1052,7 +1052,6 @@
     <string name="background_type_map">"ካርታ"</string>
     <string name="background_type_aerial_esri">"አየር ላይ (በኤስሪ)"</string>
     <string name="quest_barrier_type_title">"ይህ ምን ዓይነት መሰናክል ነው?"</string>
-    <string name="quest_barrier_type_gate">"በር"</string>
     <string name="quest_barrier_type_lift_gate">"ድምፅ መሰናክል"</string>
     <string name="quest_barrier_type_bollard">"ቦላርድ (ዎች)"</string>
     <string name="quest_barrier_type_chain">"ሰንሰለት"</string>

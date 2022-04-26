@@ -1594,7 +1594,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Zdjęcia lotnicze/satelitarne (Esri)"</string>
     <string name="quest_barrier_type_title">"Jaki rodzaj bariery jest w tym punkcie?"</string>
-    <string name="quest_barrier_type_gate">"Brama"</string>
     <string name="quest_barrier_type_lift_gate">"Szlaban podnoszony"</string>
     <string name="quest_barrier_type_bollard">"Słupek/słupki"</string>
     <string name="quest_barrier_type_chain">"Łańcuch"</string>
@@ -1797,6 +1796,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_obstacle">"Jest tu przeszkoda"</string>
     <string name="quest_smoothness_obstacle_hint">"Proszę podać ogólną odpowiedź dotyczącą płynności.  Pojedyncze przeszkody, takie jak krawężniki, progi zwalniające lub kraty dla bydła, można zignorować.  Powtarzające się lub nieoczekiwane przeszkody powinny liczyć się do odpowiedzi."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … wskazują, dla jakich pojazdów nawierzchnia powinna być zdatna do użytku. Liczy się raczej całościowy obraz, a nie pojedyncze uszkodzenia."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Pas awaryjny to część drogi która umożliwia pojazdom bezpieczne zatrzymanie się całkowicie obok pasa ruchu, choć nie zawsze (w całości) na utwardzonej nawierzchni."</string>
     <string name="link_osmhydrant_description">"Wyszukuj, dodawaj i edytuj remizy strażackie i hydranty strażackie"</string>
     <string name="achievement_lifesaver_title">"Ratownik"</string>
@@ -1926,4 +1927,19 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Czy na pewno rowerzyści nie mogą korzystać z tej drogi jednokierunkowej w obu kierunkach? W razie wątpliwości sprawdź znak na końcu ulicy."</string>
+    <string name="link_backofyourhand_description">"Jak dobrze znasz swoją okolicę? Sprawdź swoją wiedzę, lokalizując ulice."</string>
+    <string name="link_thenandnow_description">"Zobacz, jak OSM wyglądał na początku w porównaniu do tego, jak wygląda teraz!"</string>
+    <string name="link_notesreview_description">"Wygodnie przeglądaj, filtruj i komentuj notatki stworzone przez Ciebie i innych. Wiele notatek można rozwiązać umieszczając informacje w nich zawarte na mapie za pomocą iD lub JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Czy akceptowane są tutaj karty kredytowe lub debetowe?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Obie"</string>
+    <string name="quest_accepts_cards_credit_only">"Tylko karty kredytowe"</string>
+    <string name="quest_accepts_cards_dedit_only">"Tylko karty debetowe"</string>
+    <string name="quest_accepts_cards_unavailable">"Ani karty debetowe, ani kredytowe"</string>
+    <string name="quest_barrier_type_gate_any_size">"Brama, dowolny rozmiar"</string>
+    <string name="quest_air_pump_bicycle_title">"Czy jest tu działająca pompka rowerowa dostępna dla każdego?"</string>
+    <string name="quest_air_pump_compressor_title">"Czy jest tutaj dostępny kompresor?"</string>
+    <string name="quest_step_count_stile_hint">"Tylko liczba kroków, aby dotrzeć na szczyt. Jeśli liczba kroków różni się z każdej strony, podaj wyższą liczbę."</string>
 </resources>

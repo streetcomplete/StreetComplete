@@ -2049,7 +2049,6 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="team_mode_exit">"Palikti komandinį režimą"</string>
     <string name="delete_confirmation">"Ištrinti"</string>
     <string name="background_type_map">"Žemėlapis"</string>
-    <string name="quest_barrier_type_gate">"Vartai"</string>
     <string name="quest_barrier_type_chain">"Grandinė"</string>
     <string name="quest_barrier_type_rope">"Virvė"</string>
     <string name="about_title_faq">"DUK"</string>

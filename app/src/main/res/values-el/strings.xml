@@ -1997,7 +1997,6 @@
     <string name="background_type_map">"Χάρτης"</string>
     <string name="background_type_aerial_esri">"Εναέρια (από το Esri)"</string>
     <string name="quest_barrier_type_title">"Τι είδους μπάρες είναι αυτές;"</string>
-    <string name="quest_barrier_type_gate">"Πύλη"</string>
     <string name="quest_barrier_type_lift_gate">"Μπάρα ελέγχου κυκλοφορίας"</string>
     <string name="quest_barrier_type_bollard">"Κολωνάκι(α)"</string>
     <string name="quest_barrier_type_chain">"Αλυσίδα"</string>
@@ -2200,6 +2199,8 @@
     <string name="quest_smoothness_obstacle">"Υπάρχει ένα εμπόδιο"</string>
     <string name="quest_smoothness_obstacle_hint">"Δώστε μια γενική απάντηση για την ομαλότητα. Μεμονωμένα εμπόδια όπως τα κράσπεδα, σαμαράκια ή σχάρες βοοειδών μπορούν να αγνοηθούν. Επαναλαμβανόμενα ή απροσδόκητα εμπόδια θα πρέπει να υπολογίζονται στην απάντηση."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … υποδείξτε για ποια οχήματα η επιφάνεια πρέπει να είναι εντάξει για χρήση. Αυτό που έχει σημασία είναι η μεγάλη εικόνα και όχι οι μεμονωμένες ζημιές."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Η ΛΕΑ είναι μια σαφής οριοθετημένη λωρίδα στάσης έκτακτης ανάγκης που επιτρέπει στα οχήματα να σταματούν με ασφάλεια δίπλα στη λωρίδα κυκλοφορίας, αν και όχι πάντα (πλήρως) σε ασφαλτόστρωτη επιφάνεια."</string>
     <string name="link_osmhydrant_description">"Αναζητήστε, προσθέστε και επεξεργαστείτε πυροσβεστικούς σταθμούς και κρουνούς"</string>
     <string name="achievement_lifesaver_title">"Διασώστης"</string>
@@ -2321,4 +2322,20 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Υπάρχει τουαλέτα εδώ;"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Είναι η τουαλέτα εδώ προσβάσιμη με αναπηρικό καροτσάκι;"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Είστε βέβαιοι ότι οι ποδηλάτες δεν επιτρέπεται να χρησιμοποιούν αυτόν τον μονόδρομο και προς τις δύο κατευθύνσεις; Σε περίπτωση αμφιβολίας, ελέγξτε εάν υπάρχει πινακίδα στις άκρες του δρόμου."</string>
+    <string name="link_valhalla_description">"Μηχανή δρομολόγησης με πολύ μικρό αποτύπωμα μνήμης, πολυτροπική δρομολόγηση, ισόχρονες και άλλα."</string>
+    <string name="link_backofyourhand_description">"Πόσο καλά γνωρίζετε την περιοχή σας; Δοκιμάστε τις γνώσεις σας εντοπίζοντας δρόμους."</string>
+    <string name="link_thenandnow_description">"Εξερευνήστε πώς έμοιαζε το OSM τις πρώτες μέρες σε σύγκριση με το πώς φαίνεται τώρα!"</string>
+    <string name="link_notesreview_description">"Δείτε, φιλτράρετε και σχολιάστε εύκολα στις σημειώσεις που έχετε δημιουργήσει εσείς και άλλοι. Πολλές σημειώσεις μπορούν να λυθούν βάζοντας τις πληροφορίες που περιέχουν μέσα στον χάρτη με το iD ή το JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Πιστωτικές ή χρεωστικές κάρτες γίνονται δεκτές εδώ;"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Και οι δύο"</string>
+    <string name="quest_accepts_cards_credit_only">"Μόνο πιστωτικές κάρτες"</string>
+    <string name="quest_accepts_cards_dedit_only">"Μόνο χρεωστικές κάρτες"</string>
+    <string name="quest_accepts_cards_unavailable">"Ούτε χρεωστικές ούτε πιστωτικές κάρτες"</string>
+    <string name="quest_barrier_type_gate_any_size">"Πύλη, οποιοδήποτε μέγεθος"</string>
+    <string name="quest_air_pump_bicycle_title">"Υπάρχει διαθέσιμη αντλία ποδηλάτου για όλους εδώ;"</string>
+    <string name="quest_air_pump_compressor_title">"Υπάρχει διαθέσιμος αεροσυμπιεστής εδώ;"</string>
+    <string name="quest_step_count_stile_hint">"Μόνο ο αριθμός των βημάτων για να φτάσετε στην κορυφή. Εάν ο αριθμός βημάτων διαφέρει σε κάθε πλευρά, δώστε μεγαλύτερο αριθμό."</string>
 </resources>

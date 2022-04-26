@@ -2186,7 +2186,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="background_type_map">"Kaart"</string>
     <string name="background_type_aerial_esri">"Luchtfoto (van Esri)"</string>
     <string name="quest_barrier_type_title">"Welke soort barrière is dit?"</string>
-    <string name="quest_barrier_type_gate">"Poort"</string>
     <string name="quest_barrier_type_lift_gate">"Slagboom"</string>
     <string name="quest_barrier_type_bollard">"Paaltje(s)"</string>
     <string name="quest_barrier_type_chain">"Ketting"</string>
@@ -2388,6 +2387,8 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_smoothness_obstacle">"Er is een obstakel"</string>
     <string name="quest_smoothness_obstacle_hint">"Geef een algemeen antwoord voor de gladheid. Enkele obstakels zoals stoepranden, verkeersdrempels of vee-roosters kunnen worden genegeerd. Herhaalde of onverwachte obstakels moeten meetellen voor het antwoord."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … geven aan voor welke voertuigen de ondergrond geschikt moet zijn. Waar het om gaat is het grote geheel in plaats van enkele schade."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Een vluchtstrook is een duidelijk afgebakende noodstopstrook waar voertuigen veilig volledig naast de rijstrook kunnen stoppen, maar niet altijd (volledig) op verharde ondergrond."</string>
     <string name="link_osmhydrant_description">"Zoek, voeg toe en bewerk brandweerkazernes en brandkranen"</string>
     <string name="achievement_lifesaver_title">"redder in nood"</string>
@@ -2513,4 +2514,22 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Is hier een toilet?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is het toilet op deze plek rolstoeltoegankelijk?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ben je er zeker van dat fietsers op deze eenrichtingsweg niet in beide richtingen mogen fietsen? Misschien staat er een verkeersbord aan het eind van de straat."</string>
+    <string name="link_valhalla_description">"Router met een zeer beperkt geheugengebruik, multimodaal routen, isochronen en meer."</string>
+    <string name="link_backofyourhand_description">"Hoe goed ken je je omgeving? Test je kennis door straten te zoeken."</string>
+    <string name="link_thenandnow_description">"Ontdek hoe het uitzicht van OSM doorheen de jaren geëvolueerd is!"</string>
+
+    <!-- Fuzzy -->
+    <string name="link_notesreview_description">"Bekijk, filter en reageer eenvoudig op opmerkingen van jou en anderen. Veel opmerkingen kunnen worden opgelost door hun informatie via iD of JOSM op de kaart te zetten"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Kan je hier met debet- of kredietkaarten betalen?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Beide"</string>
+    <string name="quest_accepts_cards_credit_only">"Enkel kredietkaarten"</string>
+    <string name="quest_accepts_cards_dedit_only">"Enkel debetkaarten"</string>
+    <string name="quest_accepts_cards_unavailable">"Geen debet- noch kreditkaarten"</string>
+    <string name="quest_barrier_type_gate_any_size">"Poort, elke grootte"</string>
+    <string name="quest_air_pump_bicycle_title">"Bevindt zich hier een werkende fietspomp die door iedereen gebruikt kan worden?"</string>
+    <string name="quest_air_pump_compressor_title">"Bevindt zich hier een "</string>
+    <string name="quest_step_count_stile_hint">"Enkel het aantal treden tot de top. Als het aantal treden verschilt tussen beide kanten, geef dan het grootste getal."</string>
 </resources>

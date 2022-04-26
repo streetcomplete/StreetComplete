@@ -907,7 +907,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
     <string name="quest_address_street_hint">"Tippe auf die Straße"</string>
     <string name="quest_crossing_type_marked">"Mit Markierungen"</string>
-    <string name="quest_parkingType_street_side">"Parkbuchten"</string>
+    <string name="quest_parkingType_street_side">"Parkbuchten am Straßenrand"</string>
     <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
@@ -979,7 +979,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="background_type_map">"Karte"</string>
     <string name="background_type_aerial_esri">"Luftbild (Esri)"</string>
     <string name="quest_barrier_type_title">"Was für eine Barriere ist das?"</string>
-    <string name="quest_barrier_type_gate">"Tor"</string>
     <string name="quest_barrier_type_lift_gate">"Schranke"</string>
     <string name="quest_barrier_type_bollard">"Poller / Pfosten"</string>
     <string name="quest_barrier_type_chain">"Kette"</string>
@@ -1111,7 +1110,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="street_parking_on_street">"Auf der Straße"</string>
     <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
-    <string name="street_parking_street_side">"Nur in Parkbuchten"</string>
+    <string name="street_parking_street_side">"Nur in Parkbuchten am Straßenrand"</string>
     <string name="street_parking_painted_area_only">"Nur in dafür vorgesehenen Plätzen auf der Straße"</string>
     <string name="street_parking_separate">"Parkplätze sind separat auf Karte eingezeichnet"</string>
     <string name="street_parking_no">"Kein Parken hier / Nicht erlaubt"</string>
@@ -1176,7 +1175,9 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_smoothness_obstacle">"Da ist ein Hindernis"</string>
     <string name="quest_smoothness_obstacle_hint">"Bitte gib eine allgemeine Antwort für die Glätte der Oberfläche. Einzelne Hindernisse wie Bordsteinkanten, Schwellen zur Geschwindigkeitsbegrenzung oder Weideroste können ignoriert werden. Mehrfache oder unerwartete Hindernisse sollten in die Antwort miteinbezogen werden."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … zeigen an, für welche Fahrzeuge die Oberfläche okay sein sollte. Was zählt, ist das Gesamtbild, nicht vereinzelte Schäden."</string>
-    <string name="quest_shoulder_explanation">"Ein Seitenstreifen ist eine deutlich markierte Standspur, die Fahrzeugen sicheres Anhalten komplett neben der Fahrspur erlaubt, allerdings nicht immer (komplett) auf befestigtem Untergrund."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shoulder_explanation">"Ein Seitenstreifen ist eine deutlich markierte Standspur, die Fahrzeugen sicheres Anhalten komplett neben der Fahrspur ermöglicht - auf ebenem und festem aber nicht unbedingt (komplett) auf befestigtem Untergrund."</string>
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
@@ -1295,18 +1296,20 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sicher, dass es Radfahrern nicht erlaubt ist, die Einbahnstraße in beide Richtungen zu nutzen? Im Zweifel schaue lieber am Ende der Straße nach einem Schild."</string>
     <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
     <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
-    <string name="link_thenandnow_description">"Erkunde, wie OSM in früher einmal im Vergleich zu heute aussah!"</string>
+    <string name="link_thenandnow_description">"Erkunde, wie OSM früher einmal im Vergleich zu heute aussah!"</string>
     <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Werden hier Kredit- oder Debitkarten akzeptiert?"</string>
-    <string name="quest_accepts_cards_debit_and_credit">"Beides"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Beide"</string>
     <string name="quest_accepts_cards_credit_only">"Nur Kreditkarten"</string>
     <string name="quest_accepts_cards_dedit_only">"Nur Debitkarten"</string>
     <string name="quest_accepts_cards_unavailable">"Weder Kredit- noch Debitkarten"</string>
     <string name="quest_barrier_type_gate_any_size">"Tor (jede Größe)"</string>
     <string name="quest_air_pump_bicycle_title">"Gibt es hier eine funktionierende und für alle nutzbare Fahrradpumpe?"</string>
-    <string name="quest_air_pump_compressor_title">"Gibt es hier Pressluft?"</string>
+
+    <!-- "Pressluft" habe ich noch nie gehört, ist "Druckluft" vielleicht besser? Evtl. auch "Gibt es hier einen Druckluft-Kompressor"? -->
+    <string name="quest_air_pump_compressor_title">"Gibt es hier Druckluft zum Aufpumpen von Reifen?"</string>
     <string name="quest_step_count_stile_hint">"Nur die Anzahl der Stufen, um nach oben zu kommen. Wenn die Anzahl sich je Seite unterscheidet, nimm die höhere Zahl."</string>
 </resources>

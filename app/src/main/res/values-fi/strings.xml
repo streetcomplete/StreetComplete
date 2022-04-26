@@ -1845,7 +1845,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="background_type_map">"Kartta"</string>
     <string name="background_type_aerial_esri">"Ilmakuva (Esti)"</string>
     <string name="quest_barrier_type_title">"Minkä tyylinen este tämä on?"</string>
-    <string name="quest_barrier_type_gate">"Portti"</string>
     <string name="quest_barrier_type_lift_gate">"Puomieste"</string>
     <string name="quest_barrier_type_bollard">"Tolpat"</string>
     <string name="quest_barrier_type_chain">"Ketju"</string>
@@ -2045,6 +2044,8 @@ Vaihtoehtoisesti voit jättää muistiinpanon (kuvan kanssa)."</string>
     <string name="quest_smoothness_obstacle">"On olemassa este"</string>
     <string name="quest_smoothness_obstacle_hint">"Anna yleinen vastaus sileydestä. Yksittäiset esteet, kuten reunakivet, nopeusstotasteet tai karjaritilät, voidaan jättää huomiotta. Toistuvat tai odottamattomat esteet tulee ottaa huomioon vastauksessa."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … ilmoittaa, mille ajoneuvoille pinnan tulisi olla käyttökelpoinen. Tärkeämpää on iso kuva yksittäisten vahinkojen sijaan."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"Piennar on selkeästi rajattu hätäpysähdyskaista, jonka avulla ajoneuvot voivat pysähtyä turvallisesti kokonaan liikennekaistan viereen, joskaan ei aina (täysin) päällystetylle pinnalle."</string>
     <string name="link_osmhydrant_description">"Etsi, lisää ja muokkaa paloasemia ja palopostia"</string>
     <string name="achievement_lifesaver_title">"Hengenpelastaja"</string>

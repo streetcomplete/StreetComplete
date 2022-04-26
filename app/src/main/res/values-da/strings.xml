@@ -1986,7 +1986,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="background_type_map">"Kortbaggrund"</string>
     <string name="background_type_aerial_esri">"Luftfoto (af Esri)"</string>
     <string name="quest_barrier_type_title">"Hvilken type barriere er dette?"</string>
-    <string name="quest_barrier_type_gate">"Låge"</string>
     <string name="quest_barrier_type_lift_gate">"Bomport"</string>
     <string name="quest_barrier_type_bollard">"Pullert(er)"</string>
     <string name="quest_barrier_type_chain">"Kæde"</string>

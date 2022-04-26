@@ -1379,7 +1379,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="background_type_map">"지도"</string>
     <string name="background_type_aerial_esri">"위성사진 (Esri 제공)"</string>
     <string name="quest_barrier_type_title">"어떤 형태의 장벽인가요?"</string>
-    <string name="quest_barrier_type_gate">"문"</string>
     <string name="quest_barrier_type_lift_gate">"차단기"</string>
     <string name="quest_barrier_type_bollard">"볼라드"</string>
     <string name="quest_barrier_type_chain">"체인"</string>
@@ -1593,6 +1592,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_smoothness_obstacle">"장애물이 있음"</string>
     <string name="quest_smoothness_obstacle_hint">"부드러움에 대한 일반적인 답변을 해 주세요. 연석, 과속 방지턱 또는 가축 통행 방지 시설물과 같은 단일 장애물은 무시할 수 있습니다. 반복되거나 예상치 못한 장애물은 답에 포함되어야 합니다."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … 이 노면을 이용해도 괜찮을 교통수단을 선택해주세요. 한두개의 손상보다 전체적인 상태에 유의하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"갓길은 주행 차로 옆에 차량이 안전하게 멈출 수 있도록 명확하게 구분된 비상 정지 차선이며, 항상 (완전히) 포장되어 있지는 않습니다."</string>
     <string name="link_osmhydrant_description">"소방서 및 소화전 조회, 추가 및 편집"</string>
     <string name="achievement_lifesaver_title">"생명의 은인"</string>
