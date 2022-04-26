@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.cycleway
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.ColorFilter
 import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
@@ -20,6 +19,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.DrawableWrapper
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -47,29 +47,9 @@ fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
         else -> getIconResId(isLeftHandTraffic)
     }
 
-class LeftHandSideTransform(val drawable: Drawable) : Drawable() {
-
-    override fun getIntrinsicWidth(): Int = drawable.intrinsicWidth
-    override fun getIntrinsicHeight(): Int = drawable.intrinsicHeight
-
-    override fun setAlpha(alpha: Int) { drawable.alpha = alpha }
-    override fun getAlpha(): Int = drawable.alpha
-
-    override fun setColorFilter(colorFilter: ColorFilter?) { drawable.colorFilter = colorFilter }
-    override fun getColorFilter() = drawable.colorFilter
-
-    override fun getOpacity(): Int = drawable.opacity
-
-    var rotation: Float = 0f
-        set(value) {
-            field = value
-            invalidateSelf()
-        }
-
+class LeftHandSideTransform(drawable: Drawable) : DrawableWrapper(drawable) {
     override fun draw(canvas: Canvas) {
-        val width = bounds.width()
-        val height = bounds.height()
-        canvas.scale(-1f, -1f, width / 2f, height / 2f)
+        canvas.scale(-1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
         drawable.bounds = bounds
         drawable.draw(canvas)
     }
