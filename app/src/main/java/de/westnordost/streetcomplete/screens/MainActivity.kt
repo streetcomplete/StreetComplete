@@ -1,13 +1,9 @@
 package de.westnordost.streetcomplete.screens
 
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Point
-import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -23,7 +19,6 @@ import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -50,6 +45,7 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
@@ -70,21 +66,11 @@ class MainActivity :
     private val prefs: SharedPreferences by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val userUpdater: UserUpdater by inject()
+    private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
 
     private val requestLocation = LocationRequester(this, this)
 
     private var mainFragment: MainFragment? = null
-
-    private val locationAvailabilityReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            updateLocationAvailability()
-        }
-    }
-    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            updateLocationAvailability()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,21 +115,13 @@ class MainActivity :
 
     public override fun onStart() {
         super.onStart()
-
-        registerReceiver(
-            locationAvailabilityReceiver,
-            IntentFilter(LocationManager.MODE_CHANGED_ACTION)
-        )
-        LocalBroadcastManager.getInstance(this).registerReceiver(
-            requestLocationPermissionResultReceiver,
-            IntentFilter(LocationRequester.REQUEST_LOCATION_PERMISSION_RESULT)
-        )
-
         downloadController.showNotification = false
         uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
-        updateLocationAvailability()
+
+        locationAvailabilityReceiver.addListener(::updateLocationAvailability)
+        updateLocationAvailability(hasLocationPermission && isLocationEnabled)
     }
 
     override fun onBackPressed() {
@@ -184,12 +162,11 @@ class MainActivity :
 
     public override fun onStop() {
         super.onStop()
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(requestLocationPermissionResultReceiver)
-        unregisterReceiver(locationAvailabilityReceiver)
         downloadController.showNotification = true
         uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
+        locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -326,8 +303,8 @@ class MainActivity :
 
     /* ------------------------------------ Location listener ----------------------------------- */
 
-    private fun updateLocationAvailability() {
-        if (hasLocationPermission && isLocationEnabled) {
+    private fun updateLocationAvailability(isAvailable: Boolean) {
+        if (isAvailable) {
             questAutoSyncer.startPositionTracking()
         } else {
             questAutoSyncer.stopPositionTracking()
