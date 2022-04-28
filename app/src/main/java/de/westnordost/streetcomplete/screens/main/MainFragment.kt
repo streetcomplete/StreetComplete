@@ -36,9 +36,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -47,6 +50,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestController
@@ -54,10 +59,9 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
-import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
+import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.CreateNoteFragment
 import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet
@@ -149,6 +153,7 @@ class MainFragment :
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
+    private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
 
@@ -157,8 +162,8 @@ class MainFragment :
 
     private val binding by viewBinding(FragmentMainBinding::bind)
 
-    private var wasFollowingPosition = true
-    private var wasNavigationMode = false
+    private var wasFollowingPosition: Boolean? = null
+    private var wasNavigationMode: Boolean? = null
 
     private var locationWhenOpenedQuest: Location? = null
 
@@ -258,8 +263,8 @@ class MainFragment :
 
     override fun onStop() {
         super.onStop()
-        wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
-        wasNavigationMode = mapFragment?.isNavigationMode ?: false
+        wasFollowingPosition = mapFragment?.isFollowingPosition
+        wasNavigationMode = mapFragment?.isNavigationMode
         visibleQuestsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         mapDataWithEditsSource.removeListener(this)
@@ -334,10 +339,11 @@ class MainFragment :
     override fun onClickedQuest(questKey: QuestKey) {
         if (isQuestDetailsCurrentlyDisplayedFor(questKey)) return
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose {
+        if (f is IsCloseableBottomSheet) {
+            f.onClickClose { viewLifecycleScope.launch { showQuestDetails(questKey) } }
+        } else {
             viewLifecycleScope.launch { showQuestDetails(questKey) }
         }
-        else viewLifecycleScope.launch { showQuestDetails(questKey) }
     }
 
     override fun onClickedEdit(editKey: EditKey) {
@@ -357,8 +363,8 @@ class MainFragment :
 
     override fun onClickedElement(elementKey: ElementKey) {
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose {
-            viewLifecycleScope.launch { showElementDetails(elementKey) }
+        if (f is IsCloseableBottomSheet) {
+            f.onClickClose { viewLifecycleScope.launch { showElementDetails(elementKey) } }
         } else {
             viewLifecycleScope.launch { showElementDetails(elementKey) }
         }
@@ -419,19 +425,13 @@ class MainFragment :
     }
 
     override fun onComposeNote(questKey: QuestKey, questTitle: String) {
+        freezeMap()
         showInBottomSheet(LeaveNoteInsteadFragment.create(questKey, questTitle))
     }
 
     override fun onSplitWay(osmQuestKey: OsmQuestKey) {
         viewLifecycleScope.launch {
-            val quest = questController.get(osmQuestKey)!!
-            val element = questController.getOsmElement(quest as OsmQuest)
-            val geometry = quest.geometry
-            if (element is Way && geometry is ElementPolylinesGeometry) {
-                mapFragment?.pinMode = QuestsMapFragment.PinMode.NONE
-                mapFragment?.highlightElement(geometry)
-                showInBottomSheet(SplitWayFragment.create(osmQuestKey, element, geometry))
-            }
+            showSplitWay(osmQuestKey)
         }
     }
 
@@ -496,20 +496,20 @@ class MainFragment :
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    override fun putMarkerForCurrentFocus(
+    override fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
     ) {
-        mapFragment?.putMarkerForCurrentFocus(geometry, drawableResId, title)
+        mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title)
     }
 
-    override fun deleteMarkerForCurrentFocus(geometry: ElementGeometry) {
-        mapFragment?.deleteMarkerForCurrentFocus(geometry)
+    override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
+        mapFragment?.deleteMarkerForCurrentHighlighting(geometry)
     }
 
-    override fun clearMarkersForCurrentFocus() {
-        mapFragment?.clearMarkersForCurrentFocus()
+    override fun clearMarkersForCurrentHighlighting() {
+        mapFragment?.clearMarkersForCurrentHighlighting()
     }
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
@@ -616,11 +616,19 @@ class MainFragment :
     //region Edit History - Callbacks from the Edit History Sidebar
 
     override fun onSelectedEdit(edit: Edit) {
-        mapFragment?.startFocusEdit(edit, mapOffsetWithOpenBottomSheet)
+        val geometry = edit.getGeometry()
+        mapFragment?.highlightGeometry(geometry)
+        mapFragment?.highlightPins(edit.icon, listOf(edit.position))
     }
 
+    private fun Edit.getGeometry(): ElementGeometry = when (this) {
+        is ElementEdit -> originalGeometry
+        is OsmQuestHidden -> mapDataWithEditsSource.getGeometry(elementType, elementId)
+        else -> null
+    } ?: ElementPointGeometry(position)
+
     override fun onDeletedSelectedEdit() {
-        mapFragment?.endFocusEdit()
+        mapFragment?.clearHighlighting()
     }
 
     override fun onEditHistoryIsEmpty() {
@@ -646,7 +654,7 @@ class MainFragment :
         binding.gpsTrackingButton.state = LocationStateButton.State.SEARCHING
         mapFragment!!.startPositionTracking()
 
-        setIsFollowingPosition(wasFollowingPosition)
+        setIsFollowingPosition(wasFollowingPosition ?: true)
         locationManager.getCurrentLocation()
     }
 
@@ -852,21 +860,27 @@ class MainFragment :
 
     //region Bottom Sheet - Controlling the bottom sheet and its interaction with the map
 
+    /** Close bottom sheet, clear associated highlighting on the map and return to the previous
+     *  view (e.g. if it was zoomed in before to focus on an element) */
     @UiThread
     private fun closeBottomSheet() {
         activity?.currentFocus?.hideKeyboard()
         if (bottomSheetFragment != null) {
-            childFragmentManager.popBackStack(BOTTOM_SHEET,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            childFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
+        clearHighlighting()
         unfreezeMap()
-
-        mapFragment?.endFocusQuest()
-        mapFragment?.show3DBuildings = true
-        mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
+        mapFragment?.endFocus()
     }
 
+    /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
+     *  played and the highlighting of the previous bottom sheet is cleared. */
     private fun showInBottomSheet(f: Fragment) {
+        activity?.currentFocus?.hideKeyboard()
+        freezeMap()
+        if (bottomSheetFragment != null) {
+            clearHighlighting()
+        }
         val appearAnim = if (bottomSheetFragment == null) R.animator.quest_answer_form_appear else 0
         val disappearAnim = R.animator.quest_answer_form_disappear
         childFragmentManager.commit(true) {
@@ -879,45 +893,60 @@ class MainFragment :
     /** Make the map not follow the user's location anymore temporarily */
     private fun freezeMap() {
         val mapFragment = mapFragment ?: return
-
-        wasFollowingPosition = mapFragment.isFollowingPosition
-        wasNavigationMode = mapFragment.isNavigationMode
+        if (wasFollowingPosition == null) wasFollowingPosition = mapFragment.isFollowingPosition
+        if (wasNavigationMode == null) wasNavigationMode = mapFragment.isNavigationMode
         mapFragment.isFollowingPosition = false
         mapFragment.isNavigationMode = false
     }
 
-    private fun resetFreezeMap() {
-        val mapFragment = mapFragment ?: return
-
-        mapFragment.clearFocusQuest()
-        mapFragment.show3DBuildings = true
-        mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
-    }
-
     /** Make the map follow the user's location again (if it was following before) */
     private fun unfreezeMap() {
-        mapFragment?.isFollowingPosition = wasFollowingPosition
-        mapFragment?.isNavigationMode = wasNavigationMode
+        wasFollowingPosition?.let { mapFragment?.isFollowingPosition = it }
+        wasNavigationMode?.let { mapFragment?.isNavigationMode = it }
+        wasFollowingPosition = null
+        wasNavigationMode = null
+    }
+
+    private fun clearHighlighting() {
+        mapFragment?.clearHighlighting()
+        mapFragment?.show3DBuildings = true
+        mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
     //endregion
 
-    //region Element bottom sheet
+    //region Bottom sheets
+
+    private suspend fun showSplitWay(osmQuestKey: OsmQuestKey) {
+        val quest = questController.get(osmQuestKey) ?: return
+        val element = questController.getOsmElement(quest as OsmQuest)
+        val geometry = quest.geometry
+        val mapFragment = mapFragment ?: return
+        if (element !is Way || geometry !is ElementPolylinesGeometry) return
+
+        mapFragment.hideNonHighlightedPins()
+        mapFragment.highlightGeometry(geometry)
+        val f = SplitWayFragment.create(osmQuestKey, element, geometry)
+        showInBottomSheet(f)
+    }
 
     private suspend fun showElementDetails(elementKey: ElementKey) {
-        val mapFragment = mapFragment ?: return
         if (isElementCurrentlyDisplayed(elementKey)) return
+        val overlay = selectedOverlaySource.selectedOverlay ?: return
+        val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
+        val mapFragment = mapFragment ?: return
 
-        // TODO LAYERS implement
-        context?.toast("Clicked on ${elementKey.type}#${elementKey.id}")
+        locationWhenOpenedQuest = mapFragment.displayedLocation
+        mapFragment.highlightGeometry(geometry)
+        mapFragment.hideNonHighlightedPins()
+
+        val element = mapDataWithEditsSource.get(elementKey.type, elementKey.id) ?: return
+        val f = overlay.createForm(element) ?: return
+        showInBottomSheet(f)
     }
 
     private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean =
         (bottomSheetFragment as? IsShowingElement)?.elementKey == elementKey
-
-    //endregion
-
-    //region Quest details bottom sheet
 
     private suspend fun showQuestDetails(questKey: QuestKey) {
         val quest = questController.get(questKey)
@@ -930,26 +959,14 @@ class MainFragment :
     private suspend fun showQuestDetails(quest: Quest) {
         val mapFragment = mapFragment ?: return
         if (isQuestDetailsCurrentlyDisplayedFor(quest.key)) return
-        if (bottomSheetFragment != null) {
-            activity?.currentFocus?.hideKeyboard()
-            if (bottomSheetFragment != null) {
-                childFragmentManager.popBackStack(BOTTOM_SHEET,
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE)
-            }
-            resetFreezeMap()
-            mapFragment.startFocusQuest(quest, mapOffsetWithOpenBottomSheet)
-        } else {
-            mapFragment.startFocusQuest(quest, mapOffsetWithOpenBottomSheet)
-            freezeMap()
-            locationWhenOpenedQuest = mapFragment.displayedLocation
-        }
+        locationWhenOpenedQuest = mapFragment.displayedLocation
+        mapFragment.startFocus(quest.geometry, mapOffsetWithOpenBottomSheet)
+        mapFragment.highlightGeometry(quest.geometry)
+        mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
+        mapFragment.hideNonHighlightedPins()
 
         val f = quest.type.createForm()
-        val element = if (quest is OsmQuest) {
-            questController.getOsmElement(quest) ?: return
-        } else {
-            null
-        }
+        val element = (quest as? OsmQuest)?.let { questController.getOsmElement(it) }
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
@@ -996,7 +1013,7 @@ class MainFragment :
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
                 val title = getTitle(e.tags)
-                putMarkerForCurrentFocus(geometry, icon, title)
+                putMarkerForCurrentHighlighting(geometry, icon, title)
             }
         }
     }

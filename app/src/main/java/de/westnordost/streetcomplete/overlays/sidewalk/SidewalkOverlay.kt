@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays.sidewalk
 
+import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -39,6 +40,10 @@ class SidewalkOverlay : Overlay {
             colorLeft = sidewalkSides?.left.color,
             colorRight = sidewalkSides?.right.color
         )
+    }
+
+    override fun createForm(element: Element): Fragment? {
+        TODO("Not yet implemented")
     }
 }
 

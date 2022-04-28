@@ -3,19 +3,13 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
-import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.edithistory.icon
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
-import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
@@ -35,7 +29,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
-/** Manages a map that shows the quest pins, quest geometry */
+/** Manages a map that shows the quest pins, quest geometry, ... */
 class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     private val spriteSheet: TangramPinsSpriteSheet by inject()
@@ -165,52 +159,15 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         listener?.onClickedMapAt(clickPos, fingerRadiusInMeters)
     }
 
-    /* --------------------------------- Focusing on edit --------------------------------------- */
+    /* --------------------------- Focusing on edit/quest/element ------------------------------- */
 
-    fun startFocusEdit(edit: Edit, offset: RectF) {
-        geometryMapComponent?.beginFocusGeometry(ElementPointGeometry(edit.position), offset)
-        geometryMapComponent?.showGeometry(edit.getGeometry())
-        selectedPinsMapComponent?.set(edit.icon, listOf(edit.position))
+    /** Focus the view on the given geometry */
+    fun startFocus(geometry: ElementGeometry, offset: RectF) {
+        geometryMapComponent?.beginFocusGeometry(geometry, offset)
     }
 
-    fun endFocusEdit() {
-        selectedPinsMapComponent?.clear()
-        geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
-        geometryMapComponent?.clearGeometry()
-    }
-
-    private fun Edit.getGeometry(): ElementGeometry = when (this) {
-        is ElementEdit -> originalGeometry
-        is OsmQuestHidden -> mapDataSource.getGeometry(elementType, elementId)
-        else -> null
-    } ?: ElementPointGeometry(position)
-
-    /* -------------------------------- Highlighting element ------------------------------------ */
-
-    fun highlightElement(geometry: ElementGeometry) {
-        geometryMapComponent?.showGeometry(geometry)
-    }
-
-    /* --------------------------------- Focusing on quest -------------------------------------- */
-
-    fun startFocusQuest(quest: Quest, offset: RectF) {
-        geometryMapComponent?.beginFocusGeometry(quest.geometry, offset)
-        geometryMapComponent?.showGeometry(quest.geometry)
-        selectedPinsMapComponent?.set(quest.type.icon, quest.markerLocations)
-        // while quest is focused, we actually don't want to see all the other quest pins (since v38)
-        pinsMapComponent?.isVisible = false
-    }
-
-    /** Clear focus on current quest but do not return to normal view yet */
-    fun clearFocusQuest() {
-        selectedPinsMapComponent?.clear()
-        geometryMapComponent?.clearGeometry()
-        geometryMarkersMapComponent?.clear()
-    }
-
-    fun endFocusQuest() {
-        pinsMapComponent?.isVisible = true
-        clearFocusQuest()
+    /** return to the position before focussing */
+    fun endFocus() {
         viewLifecycleScope.launch {
             /* small delay to wait for other animations when ending focus on quest to be done first
                Most specifically, the map is being updated after a quest is solved, if the zoom
@@ -223,9 +180,29 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         centerCurrentPositionIfFollowing()
     }
 
-    /* -------------------------------  Markers for current quest ------------------------------- */
+    fun highlightPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
+        selectedPinsMapComponent?.set(iconResId, pinPositions)
+    }
 
-    override fun putMarkerForCurrentFocus(
+    fun hideNonHighlightedPins() {
+        pinsMapComponent?.isVisible = false
+    }
+
+    fun highlightGeometry(geometry: ElementGeometry) {
+        geometryMapComponent?.showGeometry(geometry)
+    }
+
+    /** Clear all highlighting */
+    fun clearHighlighting() {
+        pinsMapComponent?.isVisible = true
+        selectedPinsMapComponent?.clear()
+        geometryMapComponent?.clearGeometry()
+        geometryMarkersMapComponent?.clear()
+    }
+
+    /* ----------------------------  Markers for current highlighting --------------------------- */
+
+    override fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
@@ -233,11 +210,11 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.put(geometry, drawableResId, title)
     }
 
-    override fun deleteMarkerForCurrentFocus(geometry: ElementGeometry) {
+    override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)
     }
 
-    override fun clearMarkersForCurrentFocus() {
+    override fun clearMarkersForCurrentHighlighting() {
         geometryMarkersMapComponent?.clear()
     }
 
@@ -247,11 +224,6 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         /* both managers use the same resource (PinsMapComponent), so the newly visible manager
            may only be activated after the old has been deactivated
          */
-        geometryMarkersMapComponent?.clear()
-        selectedPinsMapComponent?.clear()
-        geometryMapComponent?.endFocusGeometry(returnToPreviousPosition = false)
-        geometryMapComponent?.clearGeometry()
-
         when (pinMode) {
             PinMode.QUESTS -> {
                 editHistoryPinsManager?.isActive = false

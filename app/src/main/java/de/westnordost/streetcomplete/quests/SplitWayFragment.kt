@@ -152,7 +152,7 @@ class SplitWayFragment :
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
             viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
-            showsGeometryMarkersListener?.deleteMarkerForCurrentFocus(
+            showsGeometryMarkersListener?.deleteMarkerForCurrentHighlighting(
                 ElementPointGeometry(item.second)
             )
         }
@@ -179,7 +179,7 @@ class SplitWayFragment :
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            showsGeometryMarkersListener?.putMarkerForCurrentFocus(
+            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                 ElementPointGeometry(splitPosition),
                 R.drawable.crosshair_marker,
                 null
