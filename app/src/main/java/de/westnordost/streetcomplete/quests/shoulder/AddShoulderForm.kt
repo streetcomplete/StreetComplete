@@ -26,7 +26,7 @@ class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.descriptionLabel).setText(R.string.quest_shoulder_explanation)
+        view.findViewById<TextView>(R.id.descriptionLabel).setText(R.string.quest_shoulder_explanation2)
     }
 
     override fun onClickOk(leftSide: Boolean?, rightSide: Boolean?) {
