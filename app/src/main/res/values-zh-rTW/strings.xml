@@ -886,7 +886,7 @@
     <string name="quest_hasFeature_only">"只有"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"維根料理不含動物產品 (沒有肉類、奶類產品，沒有蛋...)。"</string>
+    <string name="quest_dietType_explanation_vegan">"維根料理不含動物產品 (沒有肉類、奶類產品，沒有蛋…)。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"素食料理不含肉類、魚類、家禽。"</string>
@@ -1048,7 +1048,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"你可以輸入用逗號分隔的門牌號碼，或是輸入門牌範圍。
-例如 1,3，或是 2-6"</string>
+例如 1,3，或是 2–6"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"腳踏車架"</string>
@@ -1176,7 +1176,7 @@
     <string name="quest_buildingType_industrial">"產業建築"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"例如，一家工廠、工作坊、汽車修護車庫，..."</string>
+    <string name="quest_buildingType_industrial_description">"例如，一家工廠、工作坊、汽車修護車庫，…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"辦公建築"</string>
@@ -1514,7 +1514,7 @@
     <string name="quest_cyclewayPartSurface_title">"自行車道的鋪面材質？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"整條路不大一樣..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"整條路不大一樣…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"如果沿路都不同的話，第一步是先分割路徑"</string>
@@ -1556,7 +1556,7 @@
     <string name="quest_ref_answer_noRef">"看不到編號…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"插圖中的道路與大頭針位置處的地圖相同方式旋轉..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"插圖中的道路與大頭針位置處的地圖相同方式旋轉…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"這裡能拿過去那些回收物品？"</string>
@@ -1651,7 +1651,7 @@
     <string name="tutorial_welcome_to_osm">"歡迎來到開放街圖"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"自由的 wiki 世界地圖"</string>
     <string name="tutorial_intro">"StreetComplete讓貢獻開放街圖更為簡易。
-它會自動找到附近遺失的細節：自行車道、房屋門牌和營業時間等更多..."</string>
+它會自動找到附近遺失的細節：自行車道、房屋門牌和營業時間等更多…"</string>
     <string name="tutorial_solving_quests">"當找到後，遺失的細節將會以任務的形式出現在你的地圖上。
 
 你可以立刻開始解決它並在稍後登入之後發佈您的解答。"</string>
@@ -1943,7 +1943,7 @@
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"如同往常，在插圖一側按壓，選擇適當的答案，然後在另一側做一樣的事情。注意所有可用的選項：有些例子並不明顯，像是單行道但允許單車騎士雙向通行！"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"當無自行車道選擇此項"</string>
-    <string name="quest_construction_completed_at_known_date">"預計在......"</string>
+    <string name="quest_construction_completed_at_known_date">"預計在…"</string>
     <string name="quest_construction_completion_date_title">"預計什麼時候竣工呢？"</string>
     <string name="quest_surface_value_clay">"黏土"</string>
     <string name="quest_surface_value_artificial_turf">"人工草皮"</string>
@@ -1998,7 +1998,6 @@
     <string name="background_type_map">"地圖"</string>
     <string name="background_type_aerial_esri">"空照圖 (Esri 提供)"</string>
     <string name="quest_barrier_type_title">"這是什麼樣種類的障礙物？"</string>
-    <string name="quest_barrier_type_gate">"閘門"</string>
     <string name="quest_barrier_type_lift_gate">"柵欄"</string>
     <string name="quest_barrier_type_bollard">"立柱"</string>
     <string name="quest_barrier_type_chain">"鏈索"</string>
@@ -2148,4 +2147,44 @@
     <string name="street_parking_conditional_restrictions_hint">"如果這邊可以停車或暫停，第一個答案應該回答停在這裡如何允許，再來講特定的限制條件。
 
 或者，你可以留註解 (拍照片)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"同時是門牌號碼與名稱…"</string>
+    <string name="quest_address_house_number_label">"門牌號碼："</string>
+    <string name="quest_shoulder_title">"這條道路有路肩嗎？"</string>
+    <string name="quest_fireHydrant_position_title">"消防栓的位置在那裡呢？"</string>
+    <string name="quest_fireHydrant_position_green">"在草地或是泥土地"</string>
+    <string name="quest_fireHydrant_position_lane">"在道路上"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"在人行道"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"在停車場空間"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"是 (留下註解)"</string>
+    <string name="quest_smoothness_square_title">"這個廣場的表面狀況如何？"</string>
+    <string name="quest_smoothness_road_title">"這條道路的表面狀況如何？"</string>
+    <string name="quest_smoothness_title_excellent">"光滑均勻"</string>
+    <string name="quest_smoothness_title_good">"大部分均勻"</string>
+    <string name="quest_smoothness_title_intermediate">"有點顛簸"</string>
+    <string name="quest_smoothness_title_bad">"顛簸"</string>
+    <string name="quest_smoothness_title_very_bad">"相當顛簸"</string>
+    <string name="quest_smoothness_title_horrible">"相當真簸而且不均勻"</string>
+    <string name="quest_smoothness_title_very_horrible">"幾乎無法通行"</string>
+    <string name="quest_smoothness_title_impassable">"無法通行"</string>
+    <string name="quest_smoothness_description_excellent_paved">"沒有顛簸或裂縫"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"幾乎完美平坦"</string>
+    <string name="quest_smoothness_description_good_paved">"只有小裂縫、間距，小修補或一點粗粗的表面"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"淺或窄的間距"</string>
+    <string name="quest_smoothness_description_good_sett">"不尋常的平坦石頭、規律的紋路，很淺或窄的間距"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"不尋常的粗表面，寬一點的間距，淺車轍、坑洞或其他損壞"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"寬一點的間距，可能有分散的石頭或其他損壞"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"平坦石頭或方形邊緣，淺或窄的間隔"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"細礫石、淺凹凸或坑洞"</string>
+    <string name="quest_smoothness_description_bad_paved">"大間隔、坑洞、車轍、碎裂的鋪路狀況或其他損壞"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"分散的石頭、大間距或其他損壞"</string>
+    <string name="quest_shoulder_value_yes">"有路肩"</string>
+    <string name="quest_shoulder_value_no">"無路肩"</string>
+    <string name="no_camera_permission_warning_title">"相機權限"</string>
+    <string name="no_camera_permission_warning">"這權限是為了能拍照，用鏡頭來測量距離"</string>
+    <string name="ar_core_error_sdk_too_old">"這個 app 太舊了，請試著更新。"</string>
+    <string name="ar_core_tracking_error_bad_state">"發生問題了，請試著重新測量。"</string>
+    <string name="ar_core_tracking_error_insufficient_light">"這裡太暗了"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"太多晃動了"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"這裡沒有足夠的視覺圖徵"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"其他 app 已經使用鏡頭了"</string>
 </resources>

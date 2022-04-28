@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogMainMenuBinding
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeDialog

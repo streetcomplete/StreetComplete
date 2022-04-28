@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 353071
-  linesOfInterfaceMarkupChanged: 132236
-  assetFilesChanged: 1658
+  linesOfCodeChanged: 353504
+  linesOfInterfaceMarkupChanged: 132467
+  assetFilesChanged: 1669
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 16028
@@ -10,7 +10,7 @@
   assetFilesChanged: 112
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 12015
+  linesOfCodeChanged: 12093
   linesOfInterfaceMarkupChanged: 2759
   assetFilesChanged: 462
 - name: "ENT8R"
@@ -53,7 +53,7 @@
   linesOfInterfaceMarkupChanged: 98
 - name: "David Dean"
   githubUsername: "dbdean"
-  linesOfCodeChanged: 943
+  linesOfCodeChanged: 950
   linesOfInterfaceMarkupChanged: 117
 - name: "Mark Tully"
   githubUsername: "Teester"
@@ -209,6 +209,9 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "riQQ"
+  githubUsername: "riQQ"
+  linesOfCodeChanged: 2
 - name: "gileri"
   linesOfCodeChanged: 2
 - name: "Dmitry Gurovich"
@@ -219,9 +222,6 @@
   linesOfCodeChanged: 2
 - name: "UKChris-osm"
   githubUsername: "UKChris-osm"
-  linesOfCodeChanged: 2
-- name: "riQQ"
-  githubUsername: "riQQ"
   linesOfCodeChanged: 2
 - name: "Christian Paul"
   githubUsername: "jaller94"

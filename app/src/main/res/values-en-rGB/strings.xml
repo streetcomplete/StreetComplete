@@ -957,7 +957,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="background_type_map">"Map"</string>
     <string name="background_type_aerial_esri">"Aerial (by Esri)"</string>
     <string name="quest_barrier_type_title">"What type of barrier is this?"</string>
-    <string name="quest_barrier_type_gate">"Gate"</string>
 
     <!-- Heard this called lift gate and arm gate before, but never boom barrier! -->
     <!-- Fuzzy -->
@@ -1150,6 +1149,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_smoothness_obstacle">"There is an obstacle"</string>
     <string name="quest_smoothness_obstacle_hint">"Please provide a general answer for the smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single damages."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that allows vehicles to stop safely completely beside the traffic lane, though not always (fully) on paved surface."</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">"Lifesaver"</string>

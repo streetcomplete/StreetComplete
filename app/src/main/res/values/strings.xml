@@ -1220,7 +1220,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_replaced_answer_error2">"Not recognized. Try entering the type of place, for example “bakery”. Otherwise, consider leaving a note."</string>
 
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
-    <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that is wide enough to allow any vehicle to stop safely completely beside the traffic lane, not necessarily (fully) on paved surface."</string>
+    <string name="quest_shoulder_explanation2">"A shoulder is a clearly demarcated emergency stopping lane. The area designated as a shoulder is not necessarily paved over its entire width and not necessarily wide enough for a car to stop completely off the traffic lane."</string>
     <string name="quest_shoulder_value_yes">shoulder</string>
     <string name="quest_shoulder_value_no">no shoulder</string>
 

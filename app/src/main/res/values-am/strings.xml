@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_settings">"ማስተካከያ
-"</string>
+    <string name="action_settings">"ማስተካከያ"</string>
     <string name="oauth_communication_error">"የፈቃጅ ሰጪዉን  መድረስ አልተቻለም"</string>
     <string name="oauth_failed_permissions">"ፍቃድ አልተገኘም-ሁሉም የተዘረዘሩ ፈቃዶች መሰጠት አለባቸው"</string>
 
@@ -433,7 +432,7 @@
     <string name="quest_fee_answer_hours">"በሰዓት እና በቀን ሚወሰን…"</string>
     <string name="quest_fee_add_times">"ጊዜዎችን ያክሉ"</string>
     <string name="quest_housenumber_multiple_numbers">"በርካታ የቤት ቁጥሮች አሉት"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"በኮማ የተለዩ የቤት ቁጥሮችን ወይም ክልሎችን በቀላሉ ማስገባት ይችላሉ ፡፡ \ n ለምሳሌ 1,3 ወይም 2-6 ፡፡"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"በኮማ የተለዩ የቤት ቁጥሮችን ወይም ክልሎችን በቀላሉ ማስገባት ይችላሉ ፡፡ \ n ለምሳሌ 1,3 ወይም 2–6 ፡፡"</string>
     <string name="quest_bicycle_parking_type_stand">"ቁም (የብስክሌት ፍሬም ይደግፋል)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"ተሽከርካሪ ወንበዴ (ጎማውን ብቻ ይደግፋል)"</string>
     <string name="quest_bicycle_parking_type_shed">"ቤት"</string>
@@ -1052,7 +1051,6 @@
     <string name="background_type_map">"ካርታ"</string>
     <string name="background_type_aerial_esri">"አየር ላይ (በኤስሪ)"</string>
     <string name="quest_barrier_type_title">"ይህ ምን ዓይነት መሰናክል ነው?"</string>
-    <string name="quest_barrier_type_gate">"በር"</string>
     <string name="quest_barrier_type_lift_gate">"ድምፅ መሰናክል"</string>
     <string name="quest_barrier_type_bollard">"ቦላርድ (ዎች)"</string>
     <string name="quest_barrier_type_chain">"ሰንሰለት"</string>

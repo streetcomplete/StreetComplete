@@ -75,3 +75,13 @@ private val String?.asLineStyleResId: Int? get() = when (this) {
     "yellow-white on curb"   -> R.drawable.ic_street_marking_yellow_white_dashes_on_curb
     else -> null
 }
+
+val CountryInfo.shoulderLineStyleResId: Int? get() = when (edgeLineStyle) {
+    "white" -> R.drawable.ic_shoulder_white_line
+    "yellow" -> R.drawable.ic_shoulder_yellow_line
+    "short white dashes" -> R.drawable.ic_shoulder_short_white_dashes
+    "white dashes" -> R.drawable.ic_shoulder_white_dashes
+    "short yellow dashes" -> R.drawable.ic_shoulder_short_yellow_dashes
+    "two yellow lines" -> R.drawable.ic_shoulder_two_yellow_lines
+    else -> null
+}

@@ -13,17 +13,23 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.screenBottomToCenterDistance
+import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
+import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
+import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.math.translate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import kotlin.math.PI
 
 /** Manages a map that shows the device's GPS location and orientation as markers on the map with
  *  the option to let the screen follow the location and rotation */
 open class LocationAwareMapFragment : MapFragment() {
+
+    private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
@@ -94,8 +100,15 @@ open class LocationAwareMapFragment : MapFragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        locationAvailabilityReceiver.addListener(::updateLocationAvailability)
+        updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
+    }
+
     override fun onStop() {
         super.onStop()
+        locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         saveMapState()
         stopPositionTracking()
     }
@@ -180,6 +193,13 @@ open class LocationAwareMapFragment : MapFragment() {
 
     fun centerCurrentPositionIfFollowing() {
         if (shouldCenterCurrentPosition()) centerCurrentPosition()
+    }
+
+    private fun updateLocationAvailability(isAvailable: Boolean) {
+        if (!isAvailable) {
+            displayedLocation = null
+            locationMapComponent?.location = null
+        }
     }
 
     private fun onLocationChanged(location: Location) {

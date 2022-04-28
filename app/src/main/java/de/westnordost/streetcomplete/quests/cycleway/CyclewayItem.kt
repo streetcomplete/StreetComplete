@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
@@ -15,10 +18,27 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.DrawableWrapper
+import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.image_select.Item2
 
 fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
-    Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
+    Item2(this, ResImage(getDialogIconResId(isLeftHandTraffic)), ResText(getTitleResId()))
+
+fun Cycleway.asDialogSelectionItem(context: Context, isLeftHandTraffic: Boolean) =
+    Item2(this, getDialogSelectionIcon(context, isLeftHandTraffic), ResText(getTitleResId()))
+
+fun Cycleway.getDialogSelectionIcon(context: Context, isLeftHandTraffic: Boolean): Image {
+    val id = getDialogIconResId(isLeftHandTraffic)
+    return if (isLeftHandTraffic) {
+        DrawableImage(LeftHandSideTransform(context.getDrawable(id)!!))
+    } else {
+        ResImage(id)
+    }
+}
 
 fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
     when (this) {
@@ -26,6 +46,14 @@ fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
         SEPARATE -> R.drawable.ic_cycleway_separate
         else -> getIconResId(isLeftHandTraffic)
     }
+
+class LeftHandSideTransform(drawable: Drawable) : DrawableWrapper(drawable) {
+    override fun draw(canvas: Canvas) {
+        canvas.scale(-1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
+        drawable.bounds = bounds
+        drawable.draw(canvas)
+    }
+}
 
 fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
