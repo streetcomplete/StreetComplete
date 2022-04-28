@@ -225,7 +225,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     /* -------------------------------  Markers for current quest ------------------------------- */
 
-    override fun putMarkerForCurrentQuest(
+    override fun putMarkerForCurrentFocus(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
@@ -233,11 +233,11 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.put(geometry, drawableResId, title)
     }
 
-    override fun deleteMarkerForCurrentQuest(geometry: ElementGeometry) {
+    override fun deleteMarkerForCurrentFocus(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)
     }
 
-    override fun clearMarkersForCurrentQuest() {
+    override fun clearMarkersForCurrentFocus() {
         geometryMarkersMapComponent?.clear()
     }
 

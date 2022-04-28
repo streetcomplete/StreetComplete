@@ -496,20 +496,20 @@ class MainFragment :
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    override fun putMarkerForCurrentQuest(
+    override fun putMarkerForCurrentFocus(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
     ) {
-        mapFragment?.putMarkerForCurrentQuest(geometry, drawableResId, title)
+        mapFragment?.putMarkerForCurrentFocus(geometry, drawableResId, title)
     }
 
-    override fun deleteMarkerForCurrentQuest(geometry: ElementGeometry) {
-        mapFragment?.deleteMarkerForCurrentQuest(geometry)
+    override fun deleteMarkerForCurrentFocus(geometry: ElementGeometry) {
+        mapFragment?.deleteMarkerForCurrentFocus(geometry)
     }
 
-    override fun clearMarkersForCurrentQuest() {
-        mapFragment?.clearMarkersForCurrentQuest()
+    override fun clearMarkersForCurrentFocus() {
+        mapFragment?.clearMarkersForCurrentFocus()
     }
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
@@ -996,7 +996,7 @@ class MainFragment :
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
                 val title = getTitle(e.tags)
-                putMarkerForCurrentQuest(geometry, icon, title)
+                putMarkerForCurrentFocus(geometry, icon, title)
             }
         }
     }

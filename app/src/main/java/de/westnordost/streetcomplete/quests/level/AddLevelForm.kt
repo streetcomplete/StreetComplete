@@ -95,14 +95,14 @@ class AddLevelForm : AbstractQuestFormAnswerFragment<String>() {
     }
 
     private fun updateMarkers(level: Double?) {
-        showsGeometryMarkersListener?.clearMarkersForCurrentQuest()
+        showsGeometryMarkersListener?.clearMarkersForCurrentFocus()
         if (level == null) return
         val levels = listOf(SingleLevel(level))
         for ((element, geometry) in shopElementsAndGeometry) {
             if (!createLevelsOrNull(element.tags).levelsIntersect(levels)) continue
             val icon = getPinIcon(element.tags)
             val title = getTitle(element.tags)
-            showsGeometryMarkersListener?.putMarkerForCurrentQuest(geometry, icon, title)
+            showsGeometryMarkersListener?.putMarkerForCurrentFocus(geometry, icon, title)
         }
     }
 

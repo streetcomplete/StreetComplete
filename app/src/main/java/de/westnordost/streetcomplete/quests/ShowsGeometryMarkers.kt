@@ -4,12 +4,12 @@ import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 
 interface ShowsGeometryMarkers {
-    fun putMarkerForCurrentQuest(
+    fun putMarkerForCurrentFocus(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
     )
-    fun deleteMarkerForCurrentQuest(geometry: ElementGeometry)
+    fun deleteMarkerForCurrentFocus(geometry: ElementGeometry)
 
-    fun clearMarkersForCurrentQuest()
+    fun clearMarkersForCurrentFocus()
 }
