@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.StreetSideItem
+import de.westnordost.streetcomplete.util.ktx.shoulderLineStyleResId
 
 class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
 
@@ -16,17 +17,11 @@ class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
         if (value) {
             StreetSideItem(
                 value,
-                R.drawable.ic_shoulder_illustration_yes,
-                R.string.quest_shoulder_value_yes,
-                R.drawable.ic_shoulder_yes
+                countryInfo.shoulderLineStyleResId ?: R.drawable.ic_shoulder_white_line,
+                R.string.quest_shoulder_value_yes
             )
         } else {
-            StreetSideItem(
-                value,
-                R.drawable.ic_shoulder_illustration_no,
-                R.string.quest_shoulder_value_no,
-                R.drawable.ic_shoulder_no
-            )
+            StreetSideItem(value, R.drawable.ic_shoulder_no, R.string.quest_shoulder_value_no)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
