@@ -77,7 +77,7 @@ import de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
-import de.westnordost.streetcomplete.screens.main.map.QuestsMapFragment
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
@@ -133,7 +133,7 @@ class MainFragment :
     // listeners to child fragments:
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
-    QuestsMapFragment.Listener,
+    MainMapFragment.Listener,
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener,
     LeaveNoteInsteadFragment.Listener,
@@ -169,7 +169,7 @@ class MainFragment :
 
     private var windowInsets: Insets? = null
 
-    internal var mapFragment: QuestsMapFragment? = null
+    internal var mapFragment: MainMapFragment? = null
     internal var mainMenuButtonFragment: MainMenuButtonFragment? = null
 
     private val bottomSheetFragment: Fragment? get() =
@@ -199,7 +199,7 @@ class MainFragment :
 
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
             when (fragment) {
-                is QuestsMapFragment -> mapFragment = fragment
+                is MainMapFragment -> mapFragment = fragment
                 is MainMenuButtonFragment -> mainMenuButtonFragment = fragment
             }
         }
@@ -846,14 +846,14 @@ class MainFragment :
             replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
             addToBackStack(EDIT_HISTORY)
         }
-        mapFragment?.pinMode = QuestsMapFragment.PinMode.EDITS
+        mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
     }
 
     private fun closeEditHistorySidebar() {
         if (editHistoryFragment != null) {
             childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
-        mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
+        mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
     }
 
     //endregion
@@ -910,7 +910,7 @@ class MainFragment :
     private fun clearHighlighting() {
         mapFragment?.clearHighlighting()
         mapFragment?.show3DBuildings = true
-        mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
+        mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
     }
 
     //endregion

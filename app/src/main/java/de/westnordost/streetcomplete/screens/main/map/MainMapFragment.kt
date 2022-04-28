@@ -29,8 +29,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
-/** Manages a map that shows the quest pins, quest geometry, ... */
-class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
+/** This is the map shown in the main view. It manages a map that shows the quest pins, quest
+ *  geometry, overlays... */
+class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     private val spriteSheet: TangramPinsSpriteSheet by inject()
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
