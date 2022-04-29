@@ -617,6 +617,7 @@ class MainFragment :
 
     override fun onSelectedEdit(edit: Edit) {
         val geometry = edit.getGeometry()
+        mapFragment?.startFocus(geometry, mapOffsetWithOpenBottomSheet)
         mapFragment?.highlightGeometry(geometry)
         mapFragment?.highlightPins(edit.icon, listOf(edit.position))
     }
@@ -628,6 +629,7 @@ class MainFragment :
     } ?: ElementPointGeometry(position)
 
     override fun onDeletedSelectedEdit() {
+        mapFragment?.endFocus()
         mapFragment?.clearHighlighting()
     }
 
@@ -853,6 +855,7 @@ class MainFragment :
         if (editHistoryFragment != null) {
             childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
+        clearHighlighting()
         mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
     }
 
@@ -910,7 +913,6 @@ class MainFragment :
     private fun clearHighlighting() {
         mapFragment?.clearHighlighting()
         mapFragment?.show3DBuildings = true
-        mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
     }
 
     //endregion
