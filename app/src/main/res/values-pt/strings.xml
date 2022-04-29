@@ -29,7 +29,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_title">"Qual é o nome desta estrada?"</string>
-    <string name="quest_streetName_description">"escrever tal qual a placa da rua. As abreviaturas são expandidas automaticamente:"</string>
+    <string name="quest_streetName_description">"como está escrito na sinalização, abreviações são expandidas:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes o sinal com o nome da rua está apenas disponível numa das extremidades. Além disso, em ruas compridas pode não existir sinalética em todos os cruzamentos. Normalmente qualquer rua com casas possui nome."</string>
 
     <!-- Fuzzy -->
@@ -433,7 +433,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_hasFeature_only">"Apenas (exclusivamente)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"As refeições veganas não contêm qualquer tipo de produto animal ( não possuem: carne, leite ou ovos...)"</string>
+    <string name="quest_dietType_explanation_vegan">"As refeições veganas não contêm qualquer tipo de produto animal ( não possuem: carne, leite ou ovos…)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"As refeições vegetarianas não contêm carne."</string>
@@ -516,7 +516,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_housenumber_multiple_numbers">"Tem vários números de porta"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_multiple_numbers_description">"Pode simplesmente utilizar a vírgula ou traços para indicar vários números de porta ou o mínimo e máximo.\nExemplo: 1,3 ou 2-6"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Pode simplesmente utilizar a vírgula ou traços para indicar vários números de porta ou o mínimo e máximo.\nExemplo: 1,3 ou 2–6"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Suporte de quadro da bicicleta"</string>
@@ -1083,7 +1083,7 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_marked">"Passadeira com marcas (pintadas...)"</string>
+    <string name="quest_crossing_type_marked">"Passadeira com marcas (pintadas…)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Estacionamento perto da estrada"</string>
@@ -1113,7 +1113,7 @@ Se alguma faixa de rodagem for reservada para autocarros, deixe uma nota."</stri
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Como normalmente, toque num lado da ilustração, selecione uma resposta adequada e faça o mesmo para o outro lado. Veja todas as opções disponíveis: alguns casos não são óbvios, como uma estrada de sentido único que permite ciclistas em ambas as direções!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecionando que não há ciclovia"</string>
-    <string name="quest_construction_completed_at_known_date">"Será concluído em..."</string>
+    <string name="quest_construction_completed_at_known_date">"Será concluído em…"</string>
     <string name="quest_construction_completion_date_title">"Quando vai estar completo?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
@@ -1168,7 +1168,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aérea (por Esri)"</string>
     <string name="quest_barrier_type_title">"Que tipo de barreira é esta?"</string>
-    <string name="quest_barrier_type_gate">"Portão"</string>
     <string name="quest_barrier_type_lift_gate">"Cancela elevatória"</string>
     <string name="quest_barrier_type_bollard">"Pilarete(s)"</string>
     <string name="quest_barrier_type_chain">"Corrente"</string>

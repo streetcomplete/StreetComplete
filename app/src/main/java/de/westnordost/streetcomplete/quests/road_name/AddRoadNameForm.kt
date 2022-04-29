@@ -50,7 +50,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
-        for ((languageTag, name) in adapter.localizedNames) {
+        for ((languageTag, name) in adapter?.localizedNames.orEmpty()) {
             val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale.forLanguageTag(languageTag)
             val abbr = abbrByLocale.get(locale)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true

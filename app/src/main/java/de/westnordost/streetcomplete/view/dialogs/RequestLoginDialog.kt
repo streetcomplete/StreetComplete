@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.screens.user.UserActivity
 
 /** Shows a dialog that asks the user to login */
 @SuppressLint("InflateParams")
-class RequestLoginDialog(context: Context) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+class RequestLoginDialog(context: Context) : AlertDialog(context) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_authorize_now, null, false)
         setView(view)

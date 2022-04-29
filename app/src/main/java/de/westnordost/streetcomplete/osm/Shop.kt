@@ -9,7 +9,7 @@ val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED = listOf(
     // popular shop=* / craft=* subkeys
     "marketplace", "household", "swimming_pool", "telecommunication", "laundry", "golf", "sports",
     "ice_cream", "scooter", "music", "retail", "yes", "ticket", "health", "newsagent", "lighting",
-    "truck", "car_repair", "video", "fuel", "farm", "car", "ski", "sculptor", "hearing_aids",
+    "truck", "car_repair", "car_parts", "video", "fuel", "farm", "car", "ski", "sculptor", "hearing_aids",
     "surf", "photo", "boat", "gas", "kitchen", "anime", "builder", "hairdresser", "security",
     "bakery", "bakehouse", "fishing", "doors", "kiosk", "market", "bathroom", "lamps", "vacant",
     "insurance", "caravan", "gift", "bicycle", "insulation", "communication", "mall", "model",
@@ -96,6 +96,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             ),
             "office" to arrayOf(
                 "insurance", "travel_agent", "tax_advisor", "estate_agent", "political_party",
+                "lawyer", "telecommunication", "it", "accountant"
             ),
             "craft" to arrayOf(
                 "shoemaker", "tailor", "photographer", "watchmaker", "optician",

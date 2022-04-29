@@ -51,7 +51,7 @@ import java.util.MissingFormatArgumentException
 class UndoDialog(
     context: Context,
     private val edit: Edit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog), KoinComponent {
+) : AlertDialog(context), KoinComponent {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val editHistoryController: EditHistoryController by inject()

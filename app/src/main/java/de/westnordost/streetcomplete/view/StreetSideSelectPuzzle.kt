@@ -171,11 +171,15 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     }
 
     fun showLeftSideTapHint() {
-        binding.leftSideContainer.showTapHint(300)
+        if (binding.leftSideContainer.isClickable) {
+            binding.leftSideContainer.showTapHint(300)
+        }
     }
 
     fun showRightSideTapHint() {
-        binding.rightSideContainer.showTapHint(1200)
+        if (binding.rightSideContainer.isClickable) {
+            binding.rightSideContainer.showTapHint(1200)
+        }
     }
 
     fun showOnlyRightSide() {
@@ -203,17 +207,17 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         binding.strut.layoutParams = params
     }
 
-    fun onlyLeftSideClickable() {
+    fun setOnlyLeftSideClickable() {
         binding.leftSideContainer.isClickable = true
         binding.rightSideContainer.isClickable = false
     }
 
-    fun onlyRightSideClickable() {
+    fun setOnlyRightSideClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = false
     }
 
-    fun bothSidesClickable() {
+    fun setBothSidesClickable() {
         binding.rightSideContainer.isClickable = true
         binding.leftSideContainer.isClickable = true
     }
@@ -236,12 +240,12 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     private fun scaleToWidth(drawable: BitmapDrawable, width: Int, flip180Degrees: Boolean): BitmapDrawable {
         val m = Matrix()
-        val scale = width.toFloat() / drawable.intrinsicWidth
+        val scale = width.toFloat() / drawable.bitmap.width
         m.postScale(scale, scale)
         if (flip180Degrees) m.postRotate(180f)
         val bitmap = Bitmap.createBitmap(
             drawable.bitmap, 0, 0,
-            drawable.intrinsicWidth, drawable.intrinsicHeight, m, true
+            drawable.bitmap.width, drawable.bitmap.height, m, true
         )
         return BitmapDrawable(resources, bitmap)
     }

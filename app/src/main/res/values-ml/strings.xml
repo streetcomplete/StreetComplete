@@ -804,7 +804,7 @@
     <string name="quest_maxspeed_answer_advisory_speed_limit">"ഇത് നിർദേശ വേഗപരിധി മാത്രം"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"വീട്ട് നമ്പർ ഇല്ല പക്ഷേ പേര് ഉണ്ട്..."</string>
+    <string name="quest_address_answer_house_name">"വീട്ട് നമ്പർ ഇല്ല പക്ഷേ പേര് ഉണ്ട…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"വീട്ടുപേര്:"</string>
@@ -880,7 +880,7 @@
     <string name="quest_hasFeature_only">"മാത്രം"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"പൂർണ്ണ സസ്യാഹാരം മാത്രം ഒരു മാംസാഹാരവും അടങ്ങില്ല ( ഇറച്ചി, മീൻ, കോഴി ഇറച്ചി, പാൽ ഉൽപന്നങ്ങൾ, മുട്ട , ...)."</string>
+    <string name="quest_dietType_explanation_vegan">"പൂർണ്ണ സസ്യാഹാരം മാത്രം ഒരു മാംസാഹാരവും അടങ്ങില്ല ( ഇറച്ചി, മീൻ, കോഴി ഇറച്ചി, പാൽ ഉൽപന്നങ്ങൾ, മുട്ട , …)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"ഇറച്ചി, മീൻ, കോഴി ഇറച്ചി എന്നിവ ഇല്ലാത്ത സസ്യാഹാരം "</string>
@@ -1032,7 +1032,7 @@
     <string name="quest_streetSurface_square_title">"ഈ ചത്വരത്തിൻ്റെ പ്രതലം എന്താണ്?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_answer_hours">"അത് ദിവസത്തെയും സമയത്തെയും സംബന്ധിച്ചായിരിക്കും..."</string>
+    <string name="quest_fee_answer_hours">"അത് ദിവസത്തെയും സമയത്തെയും സംബന്ധിച്ചായിരിക്ക…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_add_times">"സമയം ചേര്‍ക്കുക"</string>
@@ -1041,7 +1041,7 @@
     <string name="quest_housenumber_multiple_numbers">"ഇവിടെ ഒന്നിൽ കൂടുതൽ വീട്ട് നമ്പർ ഉണ്ട്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_multiple_numbers_description">"നിങ്ങൾക്ക് ലളിതമായി അല്പ വിരാമമോ-തുടർക്കുറിയോ ഉപയോഗിച്ച് വീട്ട് നമ്പറുകളുടെ ശ്രേണി അടയാളപ്പെടുത്താം. ഉദാഹരണം 1,2 അല്ലെങ്കിൽ 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"നിങ്ങൾക്ക് ലളിതമായി അല്പ വിരാമമോ-തുടർക്കുറിയോ ഉപയോഗിച്ച് വീട്ട് നമ്പറുകളുടെ ശ്രേണി അടയാളപ്പെടുത്താം. ഉദാഹരണം 1,2 അല്ലെങ്കിൽ 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"സൈക്കിൾ പാർക്ക് ചെയ്യാനുള്ള കേന്ദ്രം"</string>
@@ -1303,7 +1303,7 @@
     <string name="quest_buildingType_bunker">"വിറകുസംഭരണപ്പെട്ടി"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_no_housenumber">"ഈ വീടിന് നമ്പർ ഇല്ല..."</string>
+    <string name="quest_address_answer_no_housenumber">"ഈ വീടിന് നമ്പർ ഇല്ല…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"ഈ കെട്ടിടം tag ചെയ്തിരിക്കുന്നത്:"</string>
@@ -1646,7 +1646,7 @@
     <string name="tutorial_welcome_to_osm">"ഓപ്പൺസ്ട്രീറ്റ്മാപ്പിലേക്ക് സ്വാഗതം"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"സൌജന്യ വിക്കി വേൾഡ് മാപ്പ്"</string>
     <string name="tutorial_intro">"StreetComplete വഴി Opentreetmap- ലേക്ക് സംഭാവന ചെയ്യുന്നത് എളുപ്പമാക്കുന്നു.
-നിങ്ങളുടെ പരിസരത്ത് ഇനി ചേർക്കാനുള്ള വിവരങ്ങൾ ഇത് കണ്ടെത്തുന്നു. ഉദാ: സൈക്കിൾ പാതകൾ, വീട്ടു നമ്പറുകൾ, കട തുറക്കുന്ന സമയം, കൂടുതൽ ..."</string>
+നിങ്ങളുടെ പരിസരത്ത് ഇനി ചേർക്കാനുള്ള വിവരങ്ങൾ ഇത് കണ്ടെത്തുന്നു. ഉദാ: സൈക്കിൾ പാതകൾ, വീട്ടു നമ്പറുകൾ, കട തുറക്കുന്ന സമയം, കൂടുതൽ …"</string>
     <string name="tutorial_solving_quests">"കണ്ടെത്തിക്കഴിഞ്ഞാൽ, കാണാതായ വിശദാംശങ്ങൾ നിങ്ങളുടെ മാപ്പിൽ ക്വസ്റ്റുകളായി ദൃശ്യമാകും.
 
 നിങ്ങൾക്ക് അവ ശരിയായി പരിഹരിക്കാനും നിങ്ങളുടെ ഉത്തരങ്ങൾ Openstreetmap-ലേക്ക് പ്രസിദ്ധീകരിക്കാനും കഴിയും."</string>
@@ -1773,7 +1773,7 @@
     <string name="quest_board_type_title">"ഈ വിവര ബോർഡിലെ വിഷയം എന്താണ്?"</string>
     <string name="quest_board_type_map">"ഇത് ഒരു മാപ്പാണ്"</string>
     <string name="quest_board_type_map_title">"ഇത് ഒരു മാപ്പ് മാത്രമാണോ?"</string>
-    <string name="quest_surface_detailed_answer_impossible">"ഒന്നിലധികം ഉപരിതലങ്ങൾ ..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"ഒന്നിലധികം ഉപരിതലങ്ങൾ …"</string>
     <string name="quest_surface_detailed_answer_impossible_description">"ദയവായി ഇവിടെ ഹ്രസ്വമായി ഉപരിതലത്തിന്റെ സ്വഭാവം വ്യക്തമാക്കുക, ഉദാഹരണത്തിന് \"കോബ്ലെസ്റ്റോണിന്റെ പാടുകളുള്ള മണൽ വഴി \". കുറിപ്പിന്റെ ദൈർഘ്യം 255 അക്ഷരങ്ങളായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു."</string>
     <string name="quest_streetName_menuItem_international">"അന്താരാഷ്ട്രം"</string>
     <string name="quest_buildingType_terrace2">"ഒരേ ചുമരുള്ള വീടുകൾ"</string>
@@ -1804,7 +1804,7 @@
     <string name="quest_traffic_signals_sound_title">"ഇവിടെ അന്ധരായവർക്ക് വേണ്ടി ശബ്ദ സന്ദേശങ്ങൾ നൽകുന്നുണ്ടോ?\""</string>
     <string name="quest_traffic_signals_vibrate_title">"അന്ധതയുള്ളവർക്ക് സുരക്ഷിതമായി ക്രോസ് ചെയ്യാൻ വേണ്ടി ഈ ട്രാഫിക് ലൈറ്റുകളിൽ സ്പർശിക്കാൻ സാധിക്കുന്ന തരത്തിലുള്ള സൂചനകളുണ്ടോ?"</string>
     <string name="quest_traffic_signals_vibrate_description">"സൂചന: ഇത് ഒന്നുകിൽ ട്രാഫിക് ലൈറ്റിന്റെ ബട്ടൺ കേസിന്റെ അടിഭാഗത്തുള്ള കമ്പനം ചെയ്യുന്ന ബട്ടണോ അല്ലെങ്കിൽ തിരിയുന്ന കോണോ ആണ്."</string>
-    <string name="quest_buildingType_bungalow_description2">"ചെറു വീട് (വേനൽക്കാല വീട്, അവധിക്കാല കോട്ട, ക്യാബിൻ ...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"ചെറു വീട് (വേനൽക്കാല വീട്, അവധിക്കാല കോട്ട, ക്യാബിൻ …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"ഈ റെയിൽവേ ക്രോസിംഗിൽ എന്ത് തരം തടസ്സങ്ങൾ ഉപയോഗിക്കുന്നു?"</string>
     <string name="quest_railway_crossing_barrier_none2">"തടസ്സങ്ങളൊന്നുമില്ല"</string>
     <string name="quest_steps_ramp_title">"ഈ പടികൾക്ക് ഒരു കൈപ്പിടി ഉണ്ടോ? എന്ത് തരം?"</string>
@@ -1858,7 +1858,7 @@
     <string name="quest_crossing_type_marked">"അടയാളപ്പെടുത്തി"</string>
     <string name="quest_parkingType_street_side">"വഴിയിൽ നിന്ന് അല്പം മാറിയുള്ള പാർക്കിങ്"</string>
     <string name="quest_tracktype_grade3a">"കൂടുതലും ദൃഢമായത്"</string>
-    <string name="quest_generic_answer_does_not_exist">"അത് നിലവിലില്ല ..."</string>
+    <string name="quest_generic_answer_does_not_exist">"അത് നിലവിലില്ല …"</string>
     <string name="osm_element_gone_description">"അത് നിലവിലില്ലെന്ന് നിങ്ങൾക്ക് ഉറപ്പുണ്ടോ, അല്പം മാറി വേറെ സ്ഥലത്തുപോലും ഇല്ലേ? സംശയമുണ്ടെങ്കിൽ, പകരം ഒരു കുറിപ്പ് നല്കാം."</string>
     <string name="osm_element_gone_confirmation">"അത് നിലവിലില്ല"</string>
     <string name="leave_note">"കുറിപ്പ് നല്കുക"</string>

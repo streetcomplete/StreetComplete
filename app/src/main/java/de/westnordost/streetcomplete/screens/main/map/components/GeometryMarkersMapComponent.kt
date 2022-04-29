@@ -43,7 +43,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             if (drawableResId != null) {
                 val drawable = getBitmapDrawable(drawableResId)
                 marker.setDrawable(drawable)
-                iconSize = (drawable.intrinsicWidth / resources.displayMetrics.density).toInt()
+                iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
                 color = "white"
             } else {
                 iconSize = pointSize

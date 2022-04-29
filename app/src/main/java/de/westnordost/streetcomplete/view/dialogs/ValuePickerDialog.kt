@@ -21,7 +21,7 @@ class ValuePickerDialog<T>(
     title: CharSequence? = null,
     @LayoutRes layoutResId: Int = R.layout.dialog_number_picker,
     private val callback: (value: T) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     init {
         val view = LayoutInflater.from(context).inflate(layoutResId, null)
