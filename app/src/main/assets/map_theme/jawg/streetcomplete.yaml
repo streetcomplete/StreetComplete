@@ -37,13 +37,13 @@ styles:
         blend_order: 1
     geometry-lines:
         base: lines
-        blend: translucent
+        blend: overlay
     geometry-polygons:
         base: polygons
-        blend: translucent
+        blend: overlay
     geometry-points:
         base: points
-        blend: translucent
+        blend: overlay
         blend_order: 2
     track-lines:
         base: lines
