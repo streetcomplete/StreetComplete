@@ -468,7 +468,7 @@ This quest will be triggered when:
 - `amenity = motorcycle_parking`
   - where `amenity = motorcycle_parking` tag is present
 - `and access !~ private|no`
-  - and `access` tag does not have value `private` nor `no`
+  - and `access` tag does neither have value `private` nor `no`
 - `and (!capacity or capacity older today -4 years)`
   - and one of following is fullfilled:
     - `capacity` tag is not present at all (`!capacity`)
