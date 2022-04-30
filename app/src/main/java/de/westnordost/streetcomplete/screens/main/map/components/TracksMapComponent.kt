@@ -59,7 +59,7 @@ class TracksMapComponent(ctrl: KtMapController) {
     private fun putAllTracksInOldLayer() {
         index = max(0, tracks.last().trackpoints.lastIndex)
         layer1.clear()
-        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(it.isRecording, it.isRecording) })
+        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(true, it.isRecording) })
     }
 
     fun clear() {
