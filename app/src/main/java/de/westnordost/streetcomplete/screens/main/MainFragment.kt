@@ -26,6 +26,7 @@ import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -269,6 +270,7 @@ class MainFragment :
     override fun onMapInitialized() {
         binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
+        binding.stopTracksButton.isVisible = mapFragment?.tracksRecording ?: false
         updateLocationPointerPin()
         listener?.onMapInitialized()
     }
@@ -634,7 +636,7 @@ class MainFragment :
 
     private fun onClickTracksStop() {
         // hide the track information
-        binding.stopTracksButton.visibility = View.GONE
+        binding.stopTracksButton.isVisible = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
@@ -755,7 +757,7 @@ class MainFragment :
         // Else we are good to start recording!
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
-        binding.stopTracksButton.visibility = View.VISIBLE
+        binding.stopTracksButton.isVisible = true
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

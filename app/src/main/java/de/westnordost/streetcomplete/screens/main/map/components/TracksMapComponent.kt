@@ -44,16 +44,22 @@ class TracksMapComponent(ctrl: KtMapController) {
         putAllTracksInOldLayer()
     }
 
-    /** Set all the tracks (when re-initializing) */
-    fun setTracks(tracks: List<List<Location>>) {
-        this.tracks = tracks.map { track -> Track(track.map { it.toLngLat() }.toMutableList(), false) }.toMutableList()
+    /** Set all the tracks (when re-initializing), if recording the last track is the only recording */
+    fun setTracks(tracks: List<List<Location>>, isRecording: Boolean) {
+        this.tracks = tracks.mapIndexed { it, track ->
+            var recording = false
+            if (isRecording && it == tracks.size - 1) {
+                recording = true
+            }
+            Track(track.map { it.toLngLat() }.toMutableList(), recording)
+        }.toMutableList()
         putAllTracksInOldLayer()
     }
 
     private fun putAllTracksInOldLayer() {
         index = max(0, tracks.last().trackpoints.lastIndex)
         layer1.clear()
-        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(true, it.isRecording) })
+        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(it.isRecording, it.isRecording) })
     }
 
     fun clear() {

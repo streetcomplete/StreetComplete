@@ -105,10 +105,22 @@ open class LocationAwareMapFragment : MapFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        displayedLocation = savedInstanceState?.getParcelable(DISPLAYED_LOCATION)
-        val nullTerminatedTracks = savedInstanceState?.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
-        if (nullTerminatedTracks != null) {
-            tracks = nullTerminatedTracks.unflattenNullTerminated()
+        // Restore value of members from saved state
+        if (savedInstanceState != null) {
+            with(savedInstanceState) {
+                displayedLocation = getParcelable(DISPLAYED_LOCATION)
+                tracksRecording = getBoolean(TRACKS_IS_RECORDING)
+                // It seems that the last list element will be an empty one normally
+                // If it is an empty one we can just remove it so we can keep on recording
+                val nullTerminatedTracks =
+                    getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
+                if (nullTerminatedTracks != null) {
+                    tracks = nullTerminatedTracks.unflattenNullTerminated()
+                    if (tracksRecording && tracks.last().isEmpty()) {
+                        tracks.removeLastOrNull()
+                    }
+                }
+            }
         }
     }
 
@@ -137,7 +149,7 @@ open class LocationAwareMapFragment : MapFragment() {
         locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(ctrl)
-        tracksMapComponent?.setTracks(tracks)
+        tracksMapComponent?.setTracks(tracks, tracksRecording)
 
         centerCurrentPositionIfFollowing()
     }
@@ -174,6 +186,7 @@ open class LocationAwareMapFragment : MapFragment() {
     @SuppressLint("MissingPermission")
     fun startPositionTrackRecording() {
         tracksRecording = true
+        _tracksRecorded.clear()
         tracks.add(ArrayList())
         locationMapComponent?.isVisible = true
         locationManager.requestUpdates(500, 1f)
@@ -299,6 +312,7 @@ open class LocationAwareMapFragment : MapFragment() {
         super.onSaveInstanceState(outState)
         outState.putParcelable(DISPLAYED_LOCATION, displayedLocation)
         outState.putParcelableArrayList(TRACKS, tracks.flattenToNullTerminated())
+        outState.putBoolean(TRACKS_IS_RECORDING, tracksRecording)
     }
 
     companion object {
@@ -307,6 +321,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
         private const val DISPLAYED_LOCATION = "displayed_location"
         private const val TRACKS = "tracks"
+        private const val TRACKS_IS_RECORDING = "tracks_is_recording"
 
         private const val MIN_TRACK_ACCURACY = 20f
         private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000 // 1 minute
