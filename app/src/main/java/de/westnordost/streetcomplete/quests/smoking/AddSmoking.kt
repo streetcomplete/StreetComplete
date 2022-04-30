@@ -24,12 +24,16 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override val elementFilter = """
          nodes, ways, relations with
          (
-             leisure = outdoor_seating
+             amenity ~ bar|cafe|biergarten|restaurant|food_court and (indoor_seating != no or outdoor_seating != no)
+             or leisure = outdoor_seating
              or amenity ~ nightclub|stripclub|pub
              or (
-                 amenity ~ bar|cafe|biergarten|restaurant|food_court|fast_food|ice_cream
-                 or shop ~ ice_cream|deli|bakery|coffee|tea|wine
-             ) and (indoor_seating != no or outdoor_seating != no)
+                 (amenity ~ fast_food|ice_cream or shop ~ ice_cream|deli|bakery|coffee|tea|wine)
+                 and (
+                     (outdoor_seating and outdoor_seating != no)
+                     or (indoor_seating and indoor_seating != no)
+                 )
+             )
          )
          and takeaway != only
          and (!smoking or smoking older today -8 years)
