@@ -313,7 +313,7 @@ But it would be even better to include also icon.
 
 Note that there are some graphics which haven't been used yet, created for proposed or expected quests; maybe you don't even need to create an icon!
 
-A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics. See [the attribution file](res/graphics/authors.txt) for what was used so far.
+A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what was used so far.
 
 Keep similar style to existing ones and app in general. Once the quest icon is ready:
 
