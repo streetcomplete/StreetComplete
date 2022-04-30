@@ -424,7 +424,7 @@ Considerations about the edge cases to consider, how the design could look like 
 
 Some quests will require photos for their interface.
 
-Photos must be available on open license - so not every photo found on the Internet is usable. You can either take your own photo or find an existing freely licensed photo.
+Photos must be available on open license - so not every photo found on the Internet is usable. You can either take your own photo or find an existing freely licensed photo. Licenses acceptable for photos are public domain, CC-0, CC-BY and CC-BY-SA licenses.
 
 Good places to find freely licensed images are [Geograph](https://www.geograph.org.uk/) and [Wikimedia Commons](https://commons.wikimedia.org/).
 
