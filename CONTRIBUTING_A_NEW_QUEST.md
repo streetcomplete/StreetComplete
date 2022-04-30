@@ -317,7 +317,7 @@ A new icon can reuse the content of [other quest icons](res/graphics/quest), it 
 
 Keep similar style to existing ones and app in general. Once the quest icon is ready:
 
-- save as "Plain SVG" or clean SVG file from unnecessary cruft in another way, like using [svgo](https://github.com/svg/svgo)
+- when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
 - Open Android Studio
