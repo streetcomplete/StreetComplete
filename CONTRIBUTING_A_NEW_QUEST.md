@@ -387,7 +387,7 @@ After opening a pull request it will be reviewed and you will be likely asked to
 
 Changes typically include improving code style, tweaking phrasing and quest settings.
 
-You are also welcome to help with reviewing other PRs - different people have different strengths, there are active reviewers who help with code style, there are some native speakers of English, some with deep knowledge of OSM tagging schemes or deep knowledge of how StreetComplete works.
+When you know more about the code, style and quest guidelines and general architecture of StreetComplete, you are also welcome to help with reviewing other PRs - different people have different strengths, there are active reviewers who help with code style, there are some native speakers of English, some with deep knowledge of OSM tagging schemes or deep knowledge of how StreetComplete works.
 
 In case that pull requests appears to be ready, it will be marked as approved and wait for merge.
 
