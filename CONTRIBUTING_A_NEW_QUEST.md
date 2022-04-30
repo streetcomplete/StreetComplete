@@ -53,8 +53,13 @@ In general, [Intellij documentation](https://www.jetbrains.com/help/idea/using-g
 
 ### Hints for looking around code
 
-Full text search ([<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd>](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html) or [grepping](https://github.com/BurntSushi/ripgrep#ripgrep-rg)) remains useful and powerful.
+Full text search ([<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>f</kbd>](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-file.html) is always useful.
 
+Use <kbd>Ctrl</kbd>+<kbd>N</kbd> to go to a certain class. <kbd>Ctrl</kbd>+ mouseclick on a function, class, etc. leads to where it is defined.
+
+Use <kbd>Ctrl</kbd>+<kbd>Q</kbd> (but not on MacOS 😉) after having marked a class, symbol or function to display the documentation for it.
+
+With <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> you can find and explore **any** action you can do in Android Studio (try it by typing for example "go to").
 But "Find usages" (<kbd>alt</kbd>+<kbd>F7</kbd>) is also a very powerful way to find where given function/constant/property/etc is appearing, classified by usages.
 
 ### Base on existing
