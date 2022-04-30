@@ -445,7 +445,7 @@ Each of these folders should hold the same image resized to a different resoluti
 
 The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may be useful, but you can also do this manually with Gimp or similar software.
 
-After adding a photo, remember to update [the credit file](app/src/main/res/authors.txt) (different to the one for icons).
+After adding a photo, remember to update [the credits file](app/src/main/res/authors.txt) (different to the one for icons).
 
 ## Resurvey
 
