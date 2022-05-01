@@ -46,13 +46,13 @@ open class LocationAwareMapFragment : MapFragment() {
     private var tracks: MutableList<ArrayList<Location>>
 
     /** If we are actively recording track history */
-    var tracksRecording = false
+    var isRecordingTracks = false
         private set
 
     /** The GPS trackpoints the user has recorded */
-    private var _tracksRecorded: ArrayList<Trackpoint>
+    private var _recordedTracks: ArrayList<Trackpoint>
 
-    val tracksRecorded: List<Trackpoint> get() = _tracksRecorded
+    val recordedTracks: List<Trackpoint> get() = _recordedTracks
 
     /** Whether the view should automatically center on the GPS location */
     var isFollowingPosition = true
@@ -89,7 +89,7 @@ open class LocationAwareMapFragment : MapFragment() {
     init {
         tracks = ArrayList()
         tracks.add(ArrayList())
-        _tracksRecorded = ArrayList()
+        _recordedTracks = ArrayList()
     }
 
     override fun onAttach(context: Context) {
@@ -109,7 +109,7 @@ open class LocationAwareMapFragment : MapFragment() {
         if (savedInstanceState != null) {
             with(savedInstanceState) {
                 displayedLocation = getParcelable(DISPLAYED_LOCATION)
-                tracksRecording = getBoolean(TRACKS_IS_RECORDING)
+                isRecordingTracks = getBoolean(TRACKS_IS_RECORDING)
                 // It seems that the last list element will be an empty one normally
                 // If it is an empty one we can just remove it so we can keep on recording
                 val nullTerminatedTracks =
@@ -117,7 +117,7 @@ open class LocationAwareMapFragment : MapFragment() {
                 if (nullTerminatedTracks != null) {
                     tracks = nullTerminatedTracks.unflattenNullTerminated()
                     // unflattenNullTerminated creates an empty list item at the end
-                    if (tracksRecording) {
+                    if (isRecordingTracks) {
                         tracks.removeLastOrNull()
                     }
                 }
@@ -150,7 +150,7 @@ open class LocationAwareMapFragment : MapFragment() {
         locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(ctrl)
-        tracksMapComponent?.setTracks(tracks, tracksRecording)
+        tracksMapComponent?.setTracks(tracks, isRecordingTracks)
 
         centerCurrentPositionIfFollowing()
     }
@@ -186,8 +186,8 @@ open class LocationAwareMapFragment : MapFragment() {
 
     @SuppressLint("MissingPermission")
     fun startPositionTrackRecording() {
-        tracksRecording = true
-        _tracksRecorded.clear()
+        isRecordingTracks = true
+        _recordedTracks.clear()
         tracks.add(ArrayList())
         locationMapComponent?.isVisible = true
         locationManager.requestUpdates(500, 1f)
@@ -195,10 +195,10 @@ open class LocationAwareMapFragment : MapFragment() {
     }
 
     fun stopPositionTrackRecording() {
-        tracksRecording = false
-        _tracksRecorded.clear()
+        isRecordingTracks = false
+        _recordedTracks.clear()
         tracks.last().forEach {
-            _tracksRecorded.add(
+            _recordedTracks.add(
                 Trackpoint(
                     LatLon(it.latitude, it.longitude),
                     it.time, // in milliseconds
@@ -269,7 +269,7 @@ open class LocationAwareMapFragment : MapFragment() {
         val lastLocation = tracks.last().lastOrNull()
 
         // create new track if last position too old
-        if (lastLocation != null && !tracksRecording) {
+        if (lastLocation != null && !isRecordingTracks) {
             if ((displayedLocation?.time ?: 0) - lastLocation.time > MAX_TIME_BETWEEN_LOCATIONS) {
                 tracks.add(ArrayList())
                 tracksMapComponent?.startNewTrack(false)
@@ -313,7 +313,7 @@ open class LocationAwareMapFragment : MapFragment() {
         super.onSaveInstanceState(outState)
         outState.putParcelable(DISPLAYED_LOCATION, displayedLocation)
         outState.putParcelableArrayList(TRACKS, tracks.flattenToNullTerminated())
-        outState.putBoolean(TRACKS_IS_RECORDING, tracksRecording)
+        outState.putBoolean(TRACKS_IS_RECORDING, isRecordingTracks)
     }
 
     companion object {

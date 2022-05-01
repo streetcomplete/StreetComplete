@@ -270,7 +270,7 @@ class MainFragment :
     override fun onMapInitialized() {
         binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
-        binding.stopTracksButton.isVisible = mapFragment?.tracksRecording ?: false
+        binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
         listener?.onMapInitialized()
     }
@@ -524,7 +524,7 @@ class MainFragment :
         closeBottomSheet()
 
         viewLifecycleScope.launch {
-            questController.createNote(note, imagePaths, position, mapFragment.tracksRecorded)
+            questController.createNote(note, imagePaths, position, mapFragment.recordedTracks)
         }
 
         listener?.onCreatedNote(screenPosition)
