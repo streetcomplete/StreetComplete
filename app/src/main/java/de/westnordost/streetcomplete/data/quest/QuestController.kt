@@ -67,10 +67,10 @@ class QuestController(
         text: String,
         imagePaths: List<String>,
         position: LatLon,
-        tracks: List<Trackpoint>,
+        track: List<Trackpoint>,
     ) = withContext(Dispatchers.IO) {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
-        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, tracks)
+        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, track)
     }
 
     /** Split a way for the given OSM Quest.

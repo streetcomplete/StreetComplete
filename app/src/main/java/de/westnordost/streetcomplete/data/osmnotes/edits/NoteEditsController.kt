@@ -21,7 +21,7 @@ class NoteEditsController(
         position: LatLon,
         text: String? = null,
         imagePaths: List<String> = emptyList(),
-        tracks: List<Trackpoint> = emptyList(),
+        track: List<Trackpoint> = emptyList(),
     ) {
         val edit = NoteEdit(
             0,
@@ -33,7 +33,7 @@ class NoteEditsController(
             currentTimeMillis(),
             false,
             imagePaths.isNotEmpty(),
-            tracks,
+            track,
         )
         synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)

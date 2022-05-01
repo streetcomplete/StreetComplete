@@ -172,7 +172,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             db.execSQL("DROP TABLE $oldGeometryTableName;")
         }
         if (oldVersion <= 5 && newVersion > 5) {
-            db.execSQL("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACKS} text DEFAULT '[]' NOT NULL")
+            db.execSQL("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
         }
     }
 }

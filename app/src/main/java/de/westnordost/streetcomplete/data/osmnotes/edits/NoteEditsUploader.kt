@@ -65,10 +65,10 @@ class NoteEditsUploader(
     }
 
     private fun uploadEdit(edit: NoteEdit) {
-        // try to upload the image and tracks if we have them
+        // try to upload the image and track if we have them
         val imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
-        val tracksText = uploadAndGetAttachedTracksText(edit.tracks, edit.text)
-        val text = edit.text.orEmpty() + imageText + tracksText
+        val trackText = uploadAndGetAttachedTrackText(edit.track, edit.text)
+        val text = edit.text.orEmpty() + imageText + trackText
 
         // done, try to upload the note to OSM
         try {
@@ -119,7 +119,7 @@ class NoteEditsUploader(
         return ""
     }
 
-    private fun uploadAndGetAttachedTracksText(
+    private fun uploadAndGetAttachedTrackText(
         trackpoints: List<Trackpoint>,
         noteText: String?
     ): String {

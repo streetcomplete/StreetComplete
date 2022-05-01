@@ -35,8 +35,8 @@ data class NoteEdit(
     /** whether the images attached still need activation. Already true if imagePaths is empty */
     val imagesNeedActivation: Boolean,
 
-    /** attached GPS location tracks */
-    val tracks: List<Trackpoint>,
+    /** attached GPS location history */
+    val track: List<Trackpoint>,
 ) : Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)
