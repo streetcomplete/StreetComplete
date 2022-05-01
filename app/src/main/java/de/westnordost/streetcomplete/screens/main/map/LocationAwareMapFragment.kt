@@ -117,7 +117,7 @@ open class LocationAwareMapFragment : MapFragment() {
                 if (nullTerminatedTracks != null) {
                     tracks = nullTerminatedTracks.unflattenNullTerminated()
                     // unflattenNullTerminated creates an empty list item at the end
-                    if (tracksRecording && tracks.last().isEmpty()) {
+                    if (tracksRecording) {
                         tracks.removeLastOrNull()
                     }
                 }
