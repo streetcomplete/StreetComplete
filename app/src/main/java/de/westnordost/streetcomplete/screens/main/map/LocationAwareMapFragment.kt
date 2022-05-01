@@ -116,6 +116,7 @@ open class LocationAwareMapFragment : MapFragment() {
                     getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
                 if (nullTerminatedTracks != null) {
                     tracks = nullTerminatedTracks.unflattenNullTerminated()
+                    // unflattenNullTerminated creates an empty list item at the end
                     if (tracksRecording && tracks.last().isEmpty()) {
                         tracks.removeLastOrNull()
                     }
@@ -197,12 +198,12 @@ open class LocationAwareMapFragment : MapFragment() {
         tracksRecording = false
         _tracksRecorded.clear()
         tracks.last().forEach {
-            // Emulator has zero altitude:
-            // https://stackoverflow.com/q/65325665/7718197
-            // Time here is in milliseconds
             _tracksRecorded.add(
                 Trackpoint(
-                    LatLon(it.latitude, it.longitude), it.time, it.accuracy, it.altitude.toFloat()
+                    LatLon(it.latitude, it.longitude),
+                    it.time, // in milliseconds
+                    it.accuracy,
+                    it.altitude.toFloat() // always zero in emulator: https://stackoverflow.com/q/65325665
                 )
             )
         }
