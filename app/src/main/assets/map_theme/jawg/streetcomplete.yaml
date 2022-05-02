@@ -48,7 +48,6 @@ styles:
     track-lines:
         base: lines
         blend: overlay
-
     map_data-lines:
         base: lines
         blend: translucent
