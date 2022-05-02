@@ -110,13 +110,12 @@ open class LocationAwareMapFragment : MapFragment() {
             with(savedInstanceState) {
                 displayedLocation = getParcelable(DISPLAYED_LOCATION)
                 isRecordingTracks = getBoolean(TRACKS_IS_RECORDING)
-                // It seems that the last list element will be an empty one normally
-                // If it is an empty one we can just remove it so we can keep on recording
                 val nullTerminatedTracks =
                     getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
                 if (nullTerminatedTracks != null) {
                     tracks = nullTerminatedTracks.unflattenNullTerminated()
-                    // unflattenNullTerminated creates an empty list item at the end
+                    // unflattenNullTerminated creates an empty list item (i.e. a new track) at the end.
+                    // This is fine if the track is not being recorded.
                     if (isRecordingTracks) {
                         tracks.removeLastOrNull()
                     }
