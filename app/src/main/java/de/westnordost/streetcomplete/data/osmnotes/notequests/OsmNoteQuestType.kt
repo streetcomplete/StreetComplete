@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 object OsmNoteQuestType : QuestType<NoteAnswer> {
     override val icon = R.drawable.ic_quest_notes
     override val title = R.string.quest_noteDiscussion_title
-
+    override val wikiLink = "Notes"
     override val achievements = emptyList<EditTypeAchievement>()
 
     override fun createForm() = NoteDiscussionForm()
