@@ -15,7 +15,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
         nodes, ways with
          amenity = bicycle_rental
          and access !~ private|no
-         and bicycle_rental ~ docking_station|dropoff_point
+         and bicycle_rental = docking_station
          and (!capacity or capacity older today -6 years)
     """
 
