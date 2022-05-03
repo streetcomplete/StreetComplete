@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
+import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCapacity
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
@@ -316,12 +317,13 @@ fun questTypeRegistry(
 
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
-    // bike parking: would be higher up if not for bike parking capacity which is usually not solvable when moving past
+    // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
     AddBikeParkingCover(), // used by OsmAnd in the object description
     AddBikeParkingType(), // used by OsmAnd
     AddBikeParkingAccess(),
     AddBikeParkingFee(),
     AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
+    AddBikeRentalCapacity(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     AddHousenumber(),
