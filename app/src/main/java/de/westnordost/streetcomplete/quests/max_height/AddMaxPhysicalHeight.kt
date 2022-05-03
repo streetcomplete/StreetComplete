@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
@@ -38,7 +38,7 @@ class AddMaxPhysicalHeight(
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height_measure
     override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(QuestTypeAchievement.CAR)
+    override val achievements = listOf(EditTypeAchievement.CAR)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 

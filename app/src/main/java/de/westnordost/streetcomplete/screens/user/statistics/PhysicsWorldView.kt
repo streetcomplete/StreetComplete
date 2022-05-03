@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user.quest_statistics
+package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.content.Context
 import android.graphics.Canvas

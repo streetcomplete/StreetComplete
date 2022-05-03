@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-enum class QuestTypeAchievement(val id: String) {
+enum class EditTypeAchievement(val id: String) {
     RARE("rare"),
     CAR("car"),
     VEG("veg"),
@@ -29,16 +29,16 @@ enum class QuestTypeAchievement(val id: String) {
 val achievementsModule = module {
     factory(named("Achievements")) { achievements }
     factory(named("Links")) { links }
-    factory(named("QuestAliases")) { questAliases }
+    factory(named("TypeAliases")) { typeAliases }
     factory { UserAchievementsDao(get()) }
     factory { UserLinksDao(get()) }
 
     single<AchievementsSource> { get<AchievementsController>() }
-    single { AchievementsController(get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
+    single { AchievementsController(get(), get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
 }
 
-// list of quest synonyms (this alternate name is mentioned to aid searching for this code)
-private val questAliases = listOf(
+// list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
+private val typeAliases = listOf(
     "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
@@ -434,7 +434,7 @@ private val achievements = listOf(
         R.drawable.ic_achievement_first_edit,
         R.string.achievement_first_edit_title,
         R.string.achievement_first_edit_description,
-        TotalSolvedQuests,
+        TotalEditCount,
         { 1 },
         mapOf(),
         1
@@ -445,7 +445,7 @@ private val achievements = listOf(
         R.drawable.ic_achievement_surveyor,
         R.string.achievement_surveyor_title,
         R.string.achievement_surveyor_solved_X,
-        TotalSolvedQuests,
+        TotalEditCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -492,22 +492,22 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.RARE.id,
+        EditTypeAchievement.RARE.id,
         R.drawable.ic_achievement_rare,
         R.string.achievement_rare_title,
         R.string.achievement_rare_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 3, 9, 18, 30, 45, 63, ...
         { lvl -> (lvl + 1) * 3 },
         mapOf()
     ),
 
     Achievement(
-        QuestTypeAchievement.CAR.id,
+        EditTypeAchievement.CAR.id,
         R.drawable.ic_achievement_car,
         R.string.achievement_car_title,
         R.string.achievement_car_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -522,11 +522,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.VEG.id,
+        EditTypeAchievement.VEG.id,
         R.drawable.ic_achievement_veg,
         R.string.achievement_veg_title,
         R.string.achievement_veg_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -535,11 +535,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.PEDESTRIAN.id,
+        EditTypeAchievement.PEDESTRIAN.id,
         R.drawable.ic_achievement_pedestrian,
         R.string.achievement_pedestrian_title,
         R.string.achievement_pedestrian_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -548,11 +548,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.BUILDING.id,
+        EditTypeAchievement.BUILDING.id,
         R.drawable.ic_achievement_building,
         R.string.achievement_building_title,
         R.string.achievement_building_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -562,11 +562,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.POSTMAN.id,
+        EditTypeAchievement.POSTMAN.id,
         R.drawable.ic_achievement_postman,
         R.string.achievement_postman_title,
         R.string.achievement_postman_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -578,11 +578,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.BLIND.id,
+        EditTypeAchievement.BLIND.id,
         R.drawable.ic_achievement_blind,
         R.string.achievement_blind_title,
         R.string.achievement_blind_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -592,11 +592,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.WHEELCHAIR.id,
+        EditTypeAchievement.WHEELCHAIR.id,
         R.drawable.ic_achievement_wheelchair,
         R.string.achievement_wheelchair_title,
         R.string.achievement_wheelchair_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -606,11 +606,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.BICYCLIST.id,
+        EditTypeAchievement.BICYCLIST.id,
         R.drawable.ic_achievement_bicyclist,
         R.string.achievement_bicyclist_title,
         R.string.achievement_bicyclist_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -620,11 +620,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.CITIZEN.id,
+        EditTypeAchievement.CITIZEN.id,
         R.drawable.ic_achievement_citizen,
         R.string.achievement_citizen_title,
         R.string.achievement_citizen_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -638,11 +638,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.OUTDOORS.id,
+        EditTypeAchievement.OUTDOORS.id,
         R.drawable.ic_achievement_outdoors,
         R.string.achievement_outdoors_title,
         R.string.achievement_outdoors_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
@@ -651,11 +651,11 @@ private val achievements = listOf(
     ),
 
     Achievement(
-        QuestTypeAchievement.LIFESAVER.id,
+        EditTypeAchievement.LIFESAVER.id,
         R.drawable.ic_achievement_lifesaver,
         R.string.achievement_lifesaver_title,
         R.string.achievement_lifesaver_solved_X,
-        SolvedQuestsOfTypes,
+        EditsOfTypeCount,
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(

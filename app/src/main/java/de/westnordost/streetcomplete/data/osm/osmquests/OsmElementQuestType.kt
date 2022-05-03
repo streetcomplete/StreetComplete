@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -14,15 +15,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
  *  Quest types that do not require complex filters that depend on the geometry of surrounding
  *  elements subclass [OsmFilterQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType]
  *  */
-interface OsmElementQuestType<T> : QuestType<T> {
-
-    /** The changeset comment to be used for this quest type when uploading to the OSM API. It
-     *  should briefly explain what is being changed (in English). */
-    val changesetComment: String
-
-    /** The OpenStreetMap wiki page with the documentation for the tag or feature that is being
-     *  edited by this quest type */
-    val wikiLink: String?
+interface OsmElementQuestType<T> : QuestType<T>, ElementEditType {
 
     /** In which countries the quest should be shown. By default, in all countries.
      *

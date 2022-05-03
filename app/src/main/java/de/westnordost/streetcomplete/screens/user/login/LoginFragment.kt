@@ -63,8 +63,8 @@ class LoginFragment :
 
         viewLifecycleScope.launch {
             val unsyncedChanges = unsyncedChangesCountSource.getCount()
-            binding.unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
-            binding.unpublishedQuestsText.isGone = unsyncedChanges <= 0
+            binding.unpublishedEditCountText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
+            binding.unpublishedEditCountText.isGone = unsyncedChanges <= 0
         }
     }
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user.quest_statistics
+package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
@@ -46,7 +46,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
     /* ---------------------------------------- Interface --------------------------------------- */
 
-    fun show(countryCode: String, questCount: Int, rank: Int?, countryFlagBubbleView: View) {
+    fun show(countryCode: String, count: Int, rank: Int?, countryFlagBubbleView: View) {
         if (!show(countryFlagBubbleView)) return
         circularRevealAnimator?.cancel()
         val revealAnim = createCircularRevealAnimator()
@@ -79,14 +79,14 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
         val countryLocale = Locale("", countryCode)
 
-        binding.solvedQuestsText.text = ""
-        val scale = (0.4 + min(questCount / 100.0, 1.0) * 0.6).toFloat()
+        binding.editCountText.text = ""
+        val scale = (0.4 + min(count / 100.0, 1.0) * 0.6).toFloat()
         binding.solvedQuestsContainer.visibility = View.INVISIBLE
         binding.solvedQuestsContainer.scaleX = scale
         binding.solvedQuestsContainer.scaleY = scale
         binding.solvedQuestsContainer.setOnClickListener { counterAnimation?.end() }
 
-        val shouldShowRank = rank != null && rank < 500 && questCount > 50
+        val shouldShowRank = rank != null && rank < 500 && count > 50
         binding.countryRankTextView.isGone = !shouldShowRank
         if (shouldShowRank) {
             binding.countryRankTextView.text = resources.getString(
@@ -100,11 +100,11 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         }
 
         counterAnimation?.cancel()
-        val anim = ValueAnimator.ofInt(0, questCount)
+        val anim = ValueAnimator.ofInt(0, count)
 
         anim.doOnStart { binding.solvedQuestsContainer.visibility = View.VISIBLE }
-        anim.duration = 300 + (questCount * 500.0).pow(0.6).toLong()
-        anim.addUpdateListener { binding.solvedQuestsText.text = it.animatedValue.toString() }
+        anim.duration = 300 + (count * 500.0).pow(0.6).toLong()
+        anim.addUpdateListener { binding.editCountText.text = it.animatedValue.toString() }
         anim.interpolator = DecelerateInterpolator()
         anim.startDelay = ANIMATION_TIME_IN_MS
         anim.start()

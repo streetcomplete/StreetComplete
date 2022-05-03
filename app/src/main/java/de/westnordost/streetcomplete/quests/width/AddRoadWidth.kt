@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.width
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
@@ -35,7 +35,7 @@ class AddRoadWidth(
     override val wikiLink = "Key:width"
     override val icon = R.drawable.ic_quest_street_width
     override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(QuestTypeAchievement.CAR)
+    override val achievements = listOf(EditTypeAchievement.CAR)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 

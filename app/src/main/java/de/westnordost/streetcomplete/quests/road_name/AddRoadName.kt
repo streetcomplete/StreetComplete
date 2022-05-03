@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.quests.LocalizedName
 
 class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
@@ -30,7 +30,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(CAR, PEDESTRIAN, POSTMAN)
+    override val achievements = listOf(CAR, PEDESTRIAN, POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_streetName_title
 

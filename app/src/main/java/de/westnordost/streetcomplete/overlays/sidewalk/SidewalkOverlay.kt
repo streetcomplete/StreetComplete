@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.overlays.Color
@@ -15,6 +16,9 @@ class SidewalkOverlay : Overlay {
 
     override val title = R.string.overlay_sidewalk
     override val icon = R.drawable.ic_quest_sidewalk
+    override val changesetComment = "Add whether there are sidewalks"
+    override val wikiLink: String = "Key:sidewalk"
+    override val achievements = listOf(PEDESTRIAN)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""

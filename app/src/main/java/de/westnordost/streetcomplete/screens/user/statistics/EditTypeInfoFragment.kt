@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user.quest_statistics
+package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.animation.ValueAnimator
 import android.content.Intent
@@ -9,9 +9,8 @@ import androidx.core.animation.doOnStart
 import androidx.core.net.toUri
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.databinding.FragmentQuestTypeInfoDialogBinding
+import de.westnordost.streetcomplete.data.osm.edits.EditType
+import de.westnordost.streetcomplete.databinding.FragmentEditTypeInfoDialogBinding
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
@@ -19,9 +18,9 @@ import kotlin.math.min
 import kotlin.math.pow
 
 /** Shows the details for a certain quest type as a fake-dialog. */
-class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_quest_type_info_dialog) {
+class EditTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_edit_type_info_dialog) {
 
-    private val binding by viewBinding(FragmentQuestTypeInfoDialogBinding::bind)
+    private val binding by viewBinding(FragmentEditTypeInfoDialogBinding::bind)
 
     override val dialogAndBackgroundContainer get() = binding.dialogAndBackgroundContainer
     override val dialogBackground get() = binding.dialogBackground
@@ -47,29 +46,30 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
 
     /* ---------------------------------------- Interface --------------------------------------- */
 
-    fun show(questType: QuestType<*>, questCount: Int, questBubbleView: View) {
+    fun show(editType: EditType, count: Int, questBubbleView: View) {
         if (!show(questBubbleView)) return
-        binding.titleView.setImageResource(questType.icon)
-        binding.questTitleText.text = resources.getString(questType.title, *Array(10) { "…" })
-        binding.solvedQuestsText.text = ""
-        val scale = (0.4 + min(questCount / 100.0, 1.0) * 0.6).toFloat()
-        binding.solvedQuestsContainer.visibility = View.INVISIBLE
-        binding.solvedQuestsContainer.scaleX = scale
-        binding.solvedQuestsContainer.scaleY = scale
-        binding.solvedQuestsContainer.setOnClickListener { counterAnimation?.end() }
-        binding.wikiLinkButton.isInvisible = questType !is OsmElementQuestType || questType.wikiLink == null
-        if (questType is OsmElementQuestType && questType.wikiLink != null) {
+        binding.titleView.setImageResource(editType.icon)
+        binding.titleText.text = resources.getString(editType.title, *Array(10) { "…" })
+        binding.editCountText.text = ""
+        val scale = (0.4 + min(count / 100.0, 1.0) * 0.6).toFloat()
+        binding.editCountContainer.visibility = View.INVISIBLE
+        binding.editCountContainer.scaleX = scale
+        binding.editCountContainer.scaleY = scale
+        binding.editCountContainer.setOnClickListener { counterAnimation?.end() }
+        val wikiLink = editType.wikiLink
+        binding.wikiLinkButton.isInvisible = wikiLink == null
+        if (wikiLink != null) {
             binding.wikiLinkButton.setOnClickListener {
-                openUrl("https://wiki.openstreetmap.org/wiki/${questType.wikiLink}")
+                openUrl("https://wiki.openstreetmap.org/wiki/$wikiLink")
             }
         }
 
         counterAnimation?.cancel()
-        val anim = ValueAnimator.ofInt(0, questCount)
+        val anim = ValueAnimator.ofInt(0, count)
 
-        anim.doOnStart { binding.solvedQuestsContainer.visibility = View.VISIBLE }
-        anim.duration = 300 + (questCount * 500.0).pow(0.6).toLong()
-        anim.addUpdateListener { binding.solvedQuestsText.text = it.animatedValue.toString() }
+        anim.doOnStart { binding.editCountContainer.visibility = View.VISIBLE }
+        anim.duration = 300 + (count * 500.0).pow(0.6).toLong()
+        anim.addUpdateListener { binding.editCountText.text = it.animatedValue.toString() }
         anim.interpolator = DecelerateInterpolator()
         anim.startDelay = ANIMATION_TIME_IN_MS
         anim.start()

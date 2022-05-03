@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.ferry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -15,7 +15,7 @@ class AddFerryAccessPedestrian : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry_pedestrian
     override val hasMarkersAtEnds = true
-    override val questTypeAchievements = listOf(RARE, PEDESTRIAN)
+    override val achievements = listOf(RARE, PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_pedestrian_title
 

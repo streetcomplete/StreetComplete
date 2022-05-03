@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user.quest_statistics
+package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.os.Bundle
 import android.view.View
@@ -8,9 +8,11 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.edits.EditType
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBallPitBinding
+import de.westnordost.streetcomplete.databinding.FragmentStatisticsBallPitBinding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
@@ -22,15 +24,17 @@ import org.koin.android.ext.android.inject
 
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
-class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_statistics_ball_pit) {
+class StatisticsByEditTypeFragment : Fragment(R.layout.fragment_statistics_ball_pit) {
     private val statisticsSource: StatisticsSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val overlayRegistry: OverlayRegistry by inject()
 
     interface Listener {
-        fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
+        fun onClickedQuestType(editType: EditType, solvedCount: Int, questBubbleView: View)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val binding by viewBinding(FragmentQuestStatisticsBallPitBinding::bind)
+    private val binding by viewBinding(FragmentStatisticsBallPitBinding::bind)
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
@@ -40,20 +44,22 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         lifecycle.addObserver(binding.ballPitView)
 
         viewLifecycleScope.launch {
-            val statistics = withContext(Dispatchers.IO) { statisticsSource.getQuestStatistics() }
-            binding.ballPitView.setViews(statistics.map { statistic ->
-                createQuestTypeBubbleView(statistic.questType, statistic.solvedCount) to statistic.solvedCount
+            val statistics = withContext(Dispatchers.IO) { statisticsSource.getEditTypeStatistics() }
+            binding.ballPitView.setViews(statistics.mapNotNull { statistic ->
+                val editType = questTypeRegistry.getByName(statistic.type)
+                    ?: overlayRegistry.getByName(statistic.type) ?: return@mapNotNull null
+                createEditTypeBubbleView(editType, statistic.count) to statistic.count
             })
         }
     }
 
-    private fun createQuestTypeBubbleView(questType: QuestType<*>, solvedCount: Int): View {
+    private fun createEditTypeBubbleView(editType: EditType, solvedCount: Int): View {
         val ctx = requireContext()
         val questView = ImageView(ctx)
         questView.id = View.generateViewId()
         questView.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         questView.scaleType = ImageView.ScaleType.FIT_XY
-        questView.setImageResource(questType.icon)
+        questView.setImageResource(editType.icon)
 
         val clickableContainer = FrameLayout(ctx)
         clickableContainer.layoutParams = ViewGroup.LayoutParams(256, 256)
@@ -62,7 +68,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         clickableContainer.outlineProvider = CircularOutlineProvider
         clickableContainer.addView(questView)
         clickableContainer.setOnClickListener { v ->
-            listener?.onClickedQuestType(questType, solvedCount, v)
+            listener?.onClickedQuestType(editType, solvedCount, v)
         }
 
         return clickableContainer

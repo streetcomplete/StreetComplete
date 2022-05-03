@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user.quest_statistics
+package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.os.Bundle
 import android.view.View
@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.databinding.FragmentQuestStatisticsBinding
+import de.westnordost.streetcomplete.databinding.FragmentEditStatisticsBinding
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
@@ -17,37 +17,37 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
-/** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
- *  a QuestTypeInfoFragment that shows the quest's details. */
-class QuestStatisticsFragment :
-    Fragment(R.layout.fragment_quest_statistics),
-    QuestStatisticsByQuestTypeFragment.Listener,
-    QuestStatisticsByCountryFragment.Listener {
+/** Shows the user's edits of each type in some kind of ball pit. Clicking on each opens
+ *  a EditTypeInfoFragment that shows the quest's details. */
+class EditStatisticsFragment :
+    Fragment(R.layout.fragment_edit_statistics),
+    StatisticsByEditTypeFragment.Listener,
+    StatisticsByCountryFragment.Listener {
     private val statisticsSource: StatisticsSource by inject()
 
     interface Listener {
-        fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
-        fun onClickedCountryFlag(country: String, solvedCount: Int, rank: Int?, countryBubbleView: View)
+        fun onClickedEditType(editType: EditType, editCount: Int, questBubbleView: View)
+        fun onClickedCountryFlag(country: String, editCount: Int, rank: Int?, countryBubbleView: View)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val binding by viewBinding(FragmentQuestStatisticsBinding::bind)
+    private val binding by viewBinding(FragmentEditStatisticsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleScope.launch {
-            binding.emptyText.isGone = withContext(Dispatchers.IO) { statisticsSource.getSolvedCount() != 0 }
+            binding.emptyText.isGone = withContext(Dispatchers.IO) { statisticsSource.getEditCount() != 0 }
         }
 
-        binding.byQuestTypeButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
+        binding.byEditTypeButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
         binding.byCountryButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
 
         binding.selectorButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
-                    R.id.byQuestTypeButton -> replaceFragment(QuestStatisticsByQuestTypeFragment())
-                    R.id.byCountryButton -> replaceFragment(QuestStatisticsByCountryFragment())
+                    R.id.byEditTypeButton -> replaceFragment(StatisticsByEditTypeFragment())
+                    R.id.byCountryButton -> replaceFragment(StatisticsByCountryFragment())
                 }
             }
         }
@@ -70,8 +70,8 @@ class QuestStatisticsFragment :
         }
     }
 
-    override fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View) {
-        listener?.onClickedQuestType(questType, solvedCount, questBubbleView)
+    override fun onClickedQuestType(editType: EditType, solvedCount: Int, questBubbleView: View) {
+        listener?.onClickedEditType(editType, solvedCount, questBubbleView)
     }
 
     override fun onClickedCountryFlag(countryCode: String, solvedCount: Int, rank: Int?, countryBubbleView: View) {

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.Color
@@ -15,6 +16,9 @@ class WayLitOverlay : Overlay {
 
     override val title = R.string.overlay_lit
     override val icon = R.drawable.ic_quest_lantern
+    override val changesetComment = "Add whether way is lit"
+    override val wikiLink: String = "Key:lit"
+    override val achievements = listOf(PEDESTRIAN)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData

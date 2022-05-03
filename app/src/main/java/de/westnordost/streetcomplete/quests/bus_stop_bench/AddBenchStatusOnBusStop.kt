@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_bench
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.util.ktx.toYesNo
@@ -23,7 +23,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add whether a bus stop has a bench"
     override val wikiLink = "Key:bench"
     override val icon = R.drawable.ic_quest_bench_public_transport
-    override val questTypeAchievements = listOf(PEDESTRIAN)
+    override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopBench_title2
 

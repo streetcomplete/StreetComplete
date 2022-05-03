@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 /** A quest type appears as a pin with an icon on the map and when opened, the quest type's
@@ -10,13 +10,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
  *  type can contribute to unlocking new achievement levels of certain types.
  *
  *  Most QuestType inherit from [OsmElementQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType] */
-interface QuestType<T> {
-
-    /** the icon resource id used to display this quest type on the map */
-    val icon: Int
-
-    /** the string resource id used to display the quest's question */
-    val title: Int
+interface QuestType<T> : EditType {
 
     /** the string resource id that explains why this quest is disabled by default or zero if it is
      *  not disabled by default.
@@ -31,7 +25,4 @@ interface QuestType<T> {
 
     /** The quest type can clean it's metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}
-
-    /** towards which achievements ssolving a quest of this type should count */
-    val questTypeAchievements: List<QuestTypeAchievement>
 }

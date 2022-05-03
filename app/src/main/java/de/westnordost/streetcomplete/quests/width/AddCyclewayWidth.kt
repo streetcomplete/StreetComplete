@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.width
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddCyclewayWidth(
@@ -36,7 +36,7 @@ class AddCyclewayWidth(
     override val wikiLink = "Key:width"
     override val icon = R.drawable.ic_quest_bicycleway_width
     override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(BICYCLIST)
+    override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 

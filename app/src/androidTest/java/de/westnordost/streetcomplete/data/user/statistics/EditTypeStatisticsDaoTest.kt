@@ -5,11 +5,11 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class QuestTypeStatisticsDaoTest : ApplicationDbTestCase() {
-    private lateinit var daoType: QuestTypeStatisticsDao
+class EditTypeStatisticsDaoTest : ApplicationDbTestCase() {
+    private lateinit var daoType: EditTypeStatisticsDao
 
     @Before fun createDao() {
-        daoType = QuestTypeStatisticsDao(database)
+        daoType = EditTypeStatisticsDao(database)
     }
 
     @Test fun getZero() {

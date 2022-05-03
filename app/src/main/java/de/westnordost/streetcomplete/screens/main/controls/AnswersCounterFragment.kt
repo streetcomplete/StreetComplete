@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
@@ -33,11 +32,11 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
         override fun onDecreased() { viewLifecycleScope.launch { updateCount(true) } }
     }
 
-    private val questStatisticsListener = object : StatisticsSource.Listener {
-        override fun onAddedOne(questType: QuestType<*>) {
+    private val statisticsListener = object : StatisticsSource.Listener {
+        override fun onAddedOne(type: String) {
             viewLifecycleScope.launch { addCount(+1, true) }
         }
-        override fun onSubtractedOne(questType: QuestType<*>) {
+        override fun onSubtractedOne(type: String) {
             viewLifecycleScope.launch { addCount(-1, true) }
         }
         override fun onUpdatedAll() {
@@ -63,13 +62,13 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
             uploadProgressSource.addUploadProgressListener(uploadProgressListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
         }
-        statisticsSource.addListener(questStatisticsListener)
+        statisticsSource.addListener(statisticsListener)
     }
 
     override fun onStop() {
         super.onStop()
         uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
-        statisticsSource.removeListener(questStatisticsListener)
+        statisticsSource.removeListener(statisticsListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
     }
 
@@ -83,7 +82,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     private suspend fun updateCount(animated: Boolean) {
         /* if autosync is on, show the uploaded count + the to-be-uploaded count (but only those
            uploadables that will be part of the statistics, so no note stuff) */
-        val amount = statisticsSource.getSolvedCount() + if (isAutosync) unsyncedChangesCountSource.getSolvedCount() else 0
+        val amount = statisticsSource.getEditCount() + if (isAutosync) unsyncedChangesCountSource.getSolvedCount() else 0
         answersCounterView.setUploadedCount(amount, animated)
     }
 

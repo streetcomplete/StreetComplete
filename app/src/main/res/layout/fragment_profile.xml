@@ -81,7 +81,7 @@
                             android:src="@drawable/ic_star_48dp" />
 
                         <TextView
-                            android:id="@+id/solvedQuestsText"
+                            android:id="@+id/editCountText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -94,7 +94,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/unpublishedQuestsText"
+                        android:id="@+id/unpublishedEditCountText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/solvedQuestsContainer"

@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 
 class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
 
@@ -18,7 +18,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
     override val changesetComment = "Add power poles material type"
     override val wikiLink = "Tag:power=pole"
     override val icon = R.drawable.ic_quest_power
-    override val questTypeAchievements = listOf(BUILDING)
+    override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_powerPolesMaterial_title
 

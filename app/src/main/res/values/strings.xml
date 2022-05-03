@@ -332,7 +332,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <!-- User screen -->
 
-    <string name="user_quests_title">Solved Quests</string>
+    <string name="user_quests_title">Edits</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
     <string name="user_profile_title">Profile</string>
@@ -359,14 +359,14 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <!-- User statistics screen -->
 
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
-    <string name="quests_empty">You published no quest answers yet</string>
+    <string name="quests_empty">You published no edits yet</string>
 
     <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
 
     <string name="user_statistics_filter_by_country">by country</string>
-    <string name="user_statistics_filter_by_quest_type">by quest type</string>
+    <string name="user_statistics_filter_by_quest_type">by type</string>
 
 
     <!-- Links screen -->
