@@ -322,8 +322,8 @@ fun questTypeRegistry(
     AddBikeParkingType(), // used by OsmAnd
     AddBikeParkingAccess(),
     AddBikeParkingFee(),
+    AddBikeRentalCapacity(), // less ambiguous than bike parking
     AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
-    AddBikeRentalCapacity(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     AddHousenumber(),
