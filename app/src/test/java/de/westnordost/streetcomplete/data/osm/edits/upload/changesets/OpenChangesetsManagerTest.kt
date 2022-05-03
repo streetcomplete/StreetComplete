@@ -15,13 +15,13 @@ import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 import java.util.Locale
 
-class OpenQuestChangesetsManagerTest {
+class OpenChangesetsManagerTest {
 
     private lateinit var questType: OsmElementQuestType<*>
     private lateinit var mapDataApi: MapDataApi
     private lateinit var openChangesetsDB: OpenChangesetsDao
     private lateinit var changesetAutoCloser: ChangesetAutoCloser
-    private lateinit var manager: OpenQuestChangesetsManager
+    private lateinit var manager: OpenChangesetsManager
     private lateinit var lastEditTimeStore: LastEditTimeStore
 
     @Before fun setUp() {
@@ -30,7 +30,7 @@ class OpenQuestChangesetsManagerTest {
         openChangesetsDB = mock()
         changesetAutoCloser = mock()
         lastEditTimeStore = mock()
-        manager = OpenQuestChangesetsManager(mapDataApi, openChangesetsDB, changesetAutoCloser, lastEditTimeStore)
+        manager = OpenChangesetsManager(mapDataApi, openChangesetsDB, changesetAutoCloser, lastEditTimeStore)
     }
 
     @Test fun `create new changeset if none exists`() {
@@ -65,7 +65,7 @@ class OpenQuestChangesetsManagerTest {
             "created_by" to ApplicationConstants.USER_AGENT,
             "comment" to "test me",
             "locale" to "es-AR",
-            "StreetComplete:quest_type" to questType::class.simpleName!!
+            "StreetComplete:quest_type" to questType.name
         ))
         verify(openChangesetsDB).put(any())
     }

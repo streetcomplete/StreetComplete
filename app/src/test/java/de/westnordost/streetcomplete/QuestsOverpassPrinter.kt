@@ -11,7 +11,7 @@ fun main() {
 
     for (questType in registry) {
         if (questType is OsmElementQuestType) {
-            println("### " + questType::class.simpleName!!)
+            println("### " + questType.name)
             if (questType is OsmFilterQuestType) {
                 val query = "[bbox:{{bbox}}];\n" + questType.filter.toOverpassQLString() + "\n out meta geom;"
                 println("```\n$query\n```")

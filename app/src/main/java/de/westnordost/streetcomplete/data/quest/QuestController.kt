@@ -102,7 +102,7 @@ class QuestController(
     ): Boolean = withContext(Dispatchers.IO) {
         val e = getOsmElement(q) ?: return@withContext false
 
-        Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
+        Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.name}")
 
         elementEditsController.add(
             q.osmElementQuestType,
@@ -126,7 +126,7 @@ class QuestController(
         val e = getOsmElement(q) ?: return@withContext false
 
         val changes = createReplaceShopChanges(e.tags, tags)
-        Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
+        Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type.name} with $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,
@@ -211,7 +211,7 @@ class QuestController(
             "OsmQuest ${q.key} has been answered by the user but there are no changes!"
         }
 
-        Log.d(TAG, "Solved a ${q.type::class.simpleName!!} quest: $changes")
+        Log.d(TAG, "Solved a ${q.type.name} quest: $changes")
 
         elementEditsController.add(
             q.osmElementQuestType,

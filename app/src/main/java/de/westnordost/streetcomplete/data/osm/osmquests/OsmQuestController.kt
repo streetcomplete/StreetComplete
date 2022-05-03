@@ -83,8 +83,7 @@ class OsmQuestController internal constructor(
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
-                val questTypeName = quest.type::class.simpleName!!
-                Log.d(TAG, "Created $questTypeName for ${quest.elementType.name}#${quest.elementId}")
+                Log.d(TAG, "Created ${quest.type.name} for ${quest.elementType.name}#${quest.elementId}")
             }
 
             val obsoleteQuestKeys: List<OsmQuestKey>
@@ -150,7 +149,7 @@ class OsmQuestController internal constructor(
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
-                val questTypeName = questType::class.simpleName!!
+                val questTypeName = questType.name
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
@@ -195,7 +194,7 @@ class OsmQuestController internal constructor(
 
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
-                    Log.d(TAG, "${questType::class.simpleName!!} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
+                    Log.d(TAG, "${questType.name} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
                     val mapData = withContext(Dispatchers.IO) { lazyMapData }
                     appliesToElement = questType.getApplicableElements(mapData)
                         .any { it.id == element.id && it.type == element.type }

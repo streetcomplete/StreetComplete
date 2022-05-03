@@ -32,7 +32,6 @@ class StatisticsParserTest {
             "questTypes": {
                 "TestQuestTypeA": "11",
                 "TestQuestTypeB": "4",
-                "UnknownQuestType": "111",
                 "TestQuestTypeCAlias": "45",
             },
             "countries": {

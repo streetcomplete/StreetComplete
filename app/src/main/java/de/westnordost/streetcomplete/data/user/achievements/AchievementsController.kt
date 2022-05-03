@@ -160,12 +160,12 @@ class AchievementsController(
     }
 
     private fun isContributingToAchievement(editType: String, achievementId: String): Boolean =
-        questTypeRegistry.getByName(editType)?.achievements?.anyHasId(achievementId)
-        ?: overlayRegistry.getByName(editType)?.achievements?.anyHasId(achievementId)
-        ?: false
+        (questTypeRegistry.getByName(editType) ?: overlayRegistry.getByName(editType))
+            ?.achievements?.anyHasId(achievementId) == true
 
     private fun getEditTypesContributingToAchievement(achievementId: String): List<String> =
-        questTypeRegistry.filter { it.achievements.anyHasId(achievementId) }.map { it::class.simpleName!! }
+        questTypeRegistry.filter { it.achievements.anyHasId(achievementId) }.map { it.name } +
+        overlayRegistry.filter { it.achievements.anyHasId(achievementId) }.map { it.name }
 }
 
 private fun List<EditTypeAchievement>.anyHasId(achievementId: String) = any { it.id == achievementId }

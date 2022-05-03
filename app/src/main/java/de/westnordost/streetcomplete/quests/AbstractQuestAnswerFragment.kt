@@ -416,7 +416,7 @@ abstract class AbstractQuestAnswerFragment<T> :
             ARG_QUEST_KEY to Json.encodeToString(quest.key),
             ARG_ELEMENT to element?.let { Json.encodeToString(element) },
             ARG_GEOMETRY to Json.encodeToString(quest.geometry),
-            ARG_QUESTTYPE to quest.type::class.simpleName!!,
+            ARG_QUESTTYPE to quest.type.name,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt
         )

@@ -3,32 +3,32 @@ package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import java.util.Locale
 
-/** Manages the creation and reusage of quest-related changesets */
-class OpenQuestChangesetsManager(
+/** Manages the creation and reusage of changesets */
+class OpenChangesetsManager(
     private val mapDataApi: MapDataApi,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
 ) {
-    fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long = synchronized(this) {
-        val openChangeset = openChangesetsDB.get(questType.name, source)
+    fun getOrCreateChangeset(type: ElementEditType, source: String): Long = synchronized(this) {
+        val openChangeset = openChangesetsDB.get(type.name, source)
         return if (openChangeset?.changesetId != null) {
             openChangeset.changesetId
         } else {
-            createChangeset(questType, source)
+            createChangeset(type, source)
         }
     }
 
-    fun createChangeset(questType: OsmElementQuestType<*>, source: String): Long = synchronized(this) {
-        val changesetId = mapDataApi.openChangeset(createChangesetTags(questType, source))
-        openChangesetsDB.put(OpenChangeset(questType.name, source, changesetId))
+    fun createChangeset(type: ElementEditType, source: String): Long = synchronized(this) {
+        val changesetId = mapDataApi.openChangeset(createChangesetTags(type, source))
+        openChangesetsDB.put(OpenChangeset(type.name, source, changesetId))
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
         Log.i(TAG, "Created changeset #$changesetId")
         return changesetId
@@ -50,12 +50,12 @@ class OpenQuestChangesetsManager(
         }
     }
 
-    private fun createChangesetTags(questType: OsmElementQuestType<*>, source: String) =
+    private fun createChangesetTags(type: ElementEditType, source: String) =
         mapOf(
-            "comment" to questType.changesetComment,
+            "comment" to type.changesetComment,
             "created_by" to USER_AGENT,
             "locale" to Locale.getDefault().toLanguageTag(),
-            QUESTTYPE_TAG_KEY to questType.name,
+            QUESTTYPE_TAG_KEY to type.name,
             "source" to source
         )
 

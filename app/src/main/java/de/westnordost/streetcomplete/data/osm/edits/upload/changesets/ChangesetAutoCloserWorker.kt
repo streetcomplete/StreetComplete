@@ -7,14 +7,14 @@ import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 
 class ChangesetAutoCloserWorker(
-    private val openQuestChangesetsManager: OpenQuestChangesetsManager,
+    private val openChangesetsManager: OpenChangesetsManager,
     context: Context,
     workerParams: WorkerParameters
 ) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
         try {
-            openQuestChangesetsManager.closeOldChangesets()
+            openChangesetsManager.closeOldChangesets()
         } catch (e: ConnectionException) {
             // wasn't able to connect to the server (i.e. connection timeout). Oh well, then,
             // never mind. Could also retry later with Result.retry() but the OSM API closes open

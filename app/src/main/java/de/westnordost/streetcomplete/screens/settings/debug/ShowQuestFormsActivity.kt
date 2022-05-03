@@ -115,7 +115,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
         // val elementGeometry = ElementPointGeometry(firstPos)
 
         val quest = object : Quest {
-            override val key = OsmQuestKey(element.type, element.id, questType::class.simpleName!!)
+            override val key = OsmQuestKey(element.type, element.id, questType.name)
             override val position = firstPos
             override val markerLocations = listOf(firstPos)
             override val geometry = elementGeometry

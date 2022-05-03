@@ -76,4 +76,3 @@ class VisibleQuestTypeController(
     }
 }
 
-private val QuestType<*>.name get() = this::class.simpleName!!

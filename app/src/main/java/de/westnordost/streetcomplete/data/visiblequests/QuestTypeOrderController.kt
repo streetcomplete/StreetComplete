@@ -57,5 +57,3 @@ class QuestTypeOrderController(
         listeners.forEach { it.onQuestTypeOrdersChanged() }
     }
 }
-
-private val QuestType<*>.name get() = this::class.simpleName!!

@@ -76,10 +76,10 @@ class AchievementsControllerTest {
 
         createAchievementsController()
         statisticsListener.onAddedOne("QuestOne")
-        statisticsListener.onAddedOne("OverlayOne")
-
         verify(userAchievementsDao).put("allQuests", 1)
         verify(listener).onAchievementUnlocked(achievement, 1)
+
+        statisticsListener.onAddedOne("OverlayOne")
         verify(userAchievementsDao).put("allQuests", 2)
         verify(listener).onAchievementUnlocked(achievement, 2)
     }
@@ -90,11 +90,12 @@ class AchievementsControllerTest {
         allAchievements = listOf(achievement)
 
         createAchievementsController()
-        statisticsListener.onAddedOne("QuestTwo")
-        statisticsListener.onAddedOne("OverlayOne")
 
+        statisticsListener.onAddedOne("QuestTwo")
         verify(userAchievementsDao).put("mixedAchievement", 1)
         verify(listener).onAchievementUnlocked(achievement, 1)
+
+        statisticsListener.onAddedOne("OverlayOne")
         verify(userAchievementsDao).put("mixedAchievement", 2)
         verify(listener).onAchievementUnlocked(achievement, 2)
     }
@@ -259,6 +260,7 @@ private fun editTypeAchievements(achievementIds: List<String>): List<EditTypeAch
 private object QuestOne : QuestType<Int> {
     override val icon = 0
     override val title = 0
+    override val wikiLink: String? = null
     override fun createForm(): AbstractQuestAnswerFragment<Int> = mock()
     override val achievements = editTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
 }
@@ -266,6 +268,7 @@ private object QuestOne : QuestType<Int> {
 private object QuestTwo : QuestType<Int> {
     override val icon = 0
     override val title = 0
+    override val wikiLink: String? = null
     override fun createForm(): AbstractQuestAnswerFragment<Int> = mock()
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }
@@ -273,6 +276,7 @@ private object QuestTwo : QuestType<Int> {
 private object OverlayOne : Overlay {
     override val icon = 0
     override val title = 0
+    override val wikiLink: String? = null
     override val changesetComment = ""
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
     override fun createForm(element: Element): Fragment? = null

@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -22,13 +21,13 @@ class ElementEditsController(
 
     /** Add new unsynced edit to the to-be-uploaded queue */
     fun add(
-        questType: OsmElementQuestType<*>,
+        type: ElementEditType,
         element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction
     ) {
-        add(ElementEdit(0, questType, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
+        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
     }
 
     fun get(id: Long): ElementEdit? =
@@ -99,7 +98,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(edit.questType, edit.originalElement, edit.originalGeometry, edit.source, action.createReverted())
+            add(edit.type, edit.originalElement, edit.originalGeometry, edit.source, action.createReverted())
         }
         // not uploaded yet
         else {

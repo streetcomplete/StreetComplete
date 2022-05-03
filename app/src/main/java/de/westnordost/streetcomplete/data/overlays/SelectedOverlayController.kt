@@ -13,7 +13,7 @@ class SelectedOverlayController(
     override var selectedOverlay: Overlay?
     set(value) {
         if (value != null && value in overlayRegistry) {
-            selectedOverlayStore.set(value::class.simpleName!!)
+            selectedOverlayStore.set(value.name)
         } else {
             selectedOverlayStore.set(null)
         }

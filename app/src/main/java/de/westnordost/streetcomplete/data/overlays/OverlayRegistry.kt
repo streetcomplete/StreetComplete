@@ -13,7 +13,7 @@ class OverlayRegistry(private val overlays: List<Overlay>) : List<Overlay> by ov
     init {
         val map = mutableMapOf<String, Overlay>()
         for (overlay in this) {
-            val overlayName = overlay::class.simpleName!!
+            val overlayName = overlay.name
             require(!map.containsKey(overlayName)) {
                 "An overlay name must be unique! \"$overlayName\" is defined twice!"
             }

@@ -75,7 +75,7 @@ class VisibleQuestsSource(
     fun getAllVisible(bbox: BoundingBox): List<Quest> {
         val visibleQuestTypeNames = questTypeRegistry
             .filter { visibleQuestTypeSource.isVisible(it) }
-            .map { it::class.simpleName!! }
+            .map { it.name }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)

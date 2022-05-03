@@ -121,7 +121,7 @@ private fun Edit.toProperties(): Map<String, String> = when (this) {
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_OSM_QUEST,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
-        MARKER_QUEST_TYPE to questType::class.simpleName!!
+        MARKER_QUEST_TYPE to questType.name
     )
     else -> throw IllegalArgumentException()
 }

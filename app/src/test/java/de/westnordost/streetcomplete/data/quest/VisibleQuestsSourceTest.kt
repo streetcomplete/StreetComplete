@@ -39,7 +39,7 @@ class VisibleQuestsSourceTest {
 
     private val bbox = bbox(0.0, 0.0, 1.0, 1.0)
     private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC())
-    private val questTypeNames = questTypes.map { it::class.simpleName!! }
+    private val questTypeNames = questTypes.map { it.name }
 
     @Before fun setUp() {
         osmNoteQuestSource = mock()
