@@ -21,7 +21,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
 
     override val changesetComment = "Add bicycle rental capacities"
     override val wikiLink = "Tag:amenity=bicycle_rental"
-    override val icon = R.drawable.ic_quest_bicycle_rental
+    override val icon = R.drawable.ic_quest_bicycle_rental_capacity
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(BICYCLIST)
 
