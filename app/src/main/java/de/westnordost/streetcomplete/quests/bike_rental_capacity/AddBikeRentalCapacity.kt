@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacityForm
 
 class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
 
@@ -30,7 +31,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity ~ bicycle_parking|bicycle_rental")
 
-    override fun createForm() = AddBikeRentalCapacityForm()
+    override fun createForm() = AddBikeParkingCapacityForm(showClarificationText = false)
 
     override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("capacity", answer.toString())
