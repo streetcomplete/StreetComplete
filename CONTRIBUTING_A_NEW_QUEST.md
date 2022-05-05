@@ -486,7 +486,6 @@ Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`s
 
 `access !~ private|no` will be evaluated to "`access` is neither `private` nor `no`"
 
-Simple lists are [evaluated as sets](https://github.com/streetcomplete/StreetComplete/blob/2e812b9a3b5288983309a7edde6e8f9db05ad3f2/app/src/test/java/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88) - and for example `surface ~ earth|dirt|ground` will not match `surface=earther` tag. Basically, `surface ~ earth|dirt|ground` is treated as `surface ~ ^earth|dirt|ground$`
 
 But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/test/java/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
 
