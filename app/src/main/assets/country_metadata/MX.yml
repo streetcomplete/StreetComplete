@@ -4,6 +4,7 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: mexico
 mobileCountryCode: 334
+noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]

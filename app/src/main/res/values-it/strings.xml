@@ -1392,4 +1392,18 @@ sorted alphabetically by title -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Il bagno di questo posto è accessibile alle sedie a rotelle?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sei sicuro che i ciclisti non possono circolare in questa strada a senso unico in entrambe le direzioni? Se hai dubbi, controlla se c'è la segnaletica.
 "</string>
+    <string name="link_backofyourhand_description">"Quanto conosci la tua area ? Metti alla prova individuando le strade"</string>
+    <string name="link_thenandnow_description">"Esplora come OSM si presentava all'inizio confrontato a come è oggi!"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Quì accettano carte di credito o debito ?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Entrambi"</string>
+    <string name="quest_accepts_cards_credit_only">"Solo carte di credito"</string>
+    <string name="quest_accepts_cards_dedit_only">"Solo carte di debito"</string>
+    <string name="quest_accepts_cards_unavailable">"Ne carte di debito o credito"</string>
+    <string name="quest_barrier_type_gate_any_size">"Porta, ogni dimensione"</string>
+    <string name="quest_air_pump_bicycle_title">"C'è qui una pompa per bicicletta funzionante disponibile a tutti?"</string>
+    <string name="quest_air_pump_compressor_title">"C'è qui un compressore d'aria disponibile?"</string>
+    <string name="quest_step_count_stile_hint">"Solo il numero di gradini per raggiungere la cima. Se i gradini differiscono per lato, fornire il numero maggiore."</string>
 </resources>

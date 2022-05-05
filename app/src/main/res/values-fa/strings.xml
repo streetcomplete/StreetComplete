@@ -1798,7 +1798,7 @@
     <string name="link_show_me_the_way_description">"مشاهده ویرایش‌های OSM به صورت لحظه‌ای"</string>
 
     <!-- Fuzzy -->
-    <string name="link_osrm_description">"سریع ترین سامانه مسیریابی اطراف"</string>
+    <string name="link_osrm_description">"سریع‌ترین سامانه مسیریابی اطراف"</string>
 
     <!-- Fuzzy -->
     <string name="link_openrouteservice_description">"مسیریابی انواع وسایل نقلیه و پیاده به صورت دلخواه ارائه می‌شود. همچنین بطور لحظه‌ای زمان رسیدن به مقصد نیز قابل مشاهده است (نمایش زمان دستیابی از نقطه شروع)"</string>
@@ -1810,7 +1810,7 @@
     <string name="link_openinframap_description">"نقشه‌ای که زیرساخت‌های برق، مخابرات، گاز و نفت را نشان می‌دهد"</string>
 
     <!-- Fuzzy -->
-    <string name="link_openorienteeringmap_description">"برای ورزش جهت‌یابی نقشه‌های چاپ‌کردنی بسازید"</string>
+    <string name="link_openorienteeringmap_description">"برای ورزش جهت‌یابی، نقشه‌های چاپ‌کردنی بسازید"</string>
 
     <!-- Fuzzy -->
     <string name="link_openstreetbrowser_description">"یک نقشه برای جستجوی عوارض نقشه OSM برحسب دسته‌بندی"</string>
@@ -1969,7 +1969,7 @@
     <string name="resurvey_intervals_more_often">"بیشتر اوقات بپرسید"</string>
     <string name="quest_is_defibrillator_inside_title">"آیا داخل ساختمان دستگاه شوک الکتریکی موجود است؟"</string>
     <string name="about_title_translate">"به ترجمه این برنامه کمک کنید"</string>
-    <string name="about_description_translate">"%1$s ترجمه شده %2$d%%"</string>
+    <string name="about_description_translate">"%1$s %2$d%% ترجمه شده است"</string>
     <string name="quest_oneway2_title">"آیا این خیابان یک طرفه است؟ به کدام سو؟"</string>
     <string name="quest_oneway2_dir">"یک طرفه در این مسیر"</string>
     <string name="quest_oneway2_no_oneway">"یک طرفه نیست"</string>
@@ -2121,14 +2121,14 @@
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"کنترل عبور و مرور با چراغ‌های راهنمایی"</string>
-    <string name="undo_confirm_title2">"ویرایش زیر را واگرد کنید؟"</string>
+    <string name="undo_confirm_title2">"ویرایش زیر را واگرد می‌کنید؟"</string>
     <string name="synced">"همگام سازی شده"</string>
     <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
     <string name="quest_cycleway_value_separate">"جداگانه روی نقشه نمایش داده می‌شود"</string>
 
     <!-- Edit history sidebar -->
     <string name="created_note_action_title">"یادداشت ایجاد شد"</string>
-    <string name="commented_note_action_title">"یادداشت نظر داده شده"</string>
+    <string name="commented_note_action_title">"نظر به یادداشت"</string>
     <string name="hid_action_description">"شما آن را پنهان کردید"</string>
     <string name="split_way_action_description">"راه را تقسیم کردید"</string>
     <string name="deleted_poi_action_description">"شما آن را حذف کردید"</string>
@@ -2189,7 +2189,7 @@
     <string name="quest_buildingLevels_title2">"این ساختمان چند طبقه از روی سطح زمین دارد؟"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"این بخش از ساختمان چند طبقه روی زمین دارد؟"</string>
     <string name="quest_crossing_title">"آیا در جایی که این مسیر به این جاده می‌رسد جداولی وجود دارد؟ از چه نوعی؟"</string>
-    <string name="pref_subtitle_quests_preset_name">"پیشفرض: %s"</string>
+    <string name="pref_subtitle_quests_preset_name">"پیش‌تنظیم: %s"</string>
     <string name="default_disabled_msg_roofShape">"این نوع جُستار به طور پیشفرض غیرفعال است زیرا شکل سقف، معمولاً از خیابان به راحتی قابل مشاهده نیست. این نوع جُستار نیز بسیار وقت‌گیر است. در بیشتر موارد ترسیم آن از تصاویر هوایی در خانه آسان‌تر و کارآمدتر است."</string>
     <string name="quest_religion_animist">"متحرک"</string>
     <string name="quest_construction_steps_title">"آیا این مراحل تکمیل شده است؟"</string>
@@ -2200,7 +2200,7 @@
 
     <!-- Quest selection screen -->
     <string name="action_search">"جُستجو"</string>
-    <string name="action_manage_presets">"مدیریت پیشفرض‌ها"</string>
+    <string name="action_manage_presets">"مدیریت پیش‌تنظیم‌ها"</string>
 
     <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"چند نفر در حال نقشه‌کشی هستند؟ شماره یکسانی را در تلفن همه وارد کنید."</string>
@@ -2216,13 +2216,13 @@
     <string name="quest_selection_hint_message">"مشارکت در درجه اول باید سرگرم کننده باشد! اگر از تعداد جُستارها غافلگیر شده‌اید، همیشه می‌توانید در تنظیمات مشخص کنید که کدام جُستارها و به چه ترتیب برای شما نمایش داده شوند."</string>
 
     <!-- Managing quest presets screen -->
-    <string name="quest_presets_preset_add">"افزودن پیشفرض"</string>
-    <string name="quest_presets_preset_name">"نام پیشفرض"</string>
+    <string name="quest_presets_preset_add">"افزودن پیش‌تنظیم"</string>
+    <string name="quest_presets_preset_name">"نام پیش‌تنظیم"</string>
     <string name="quest_presets_default_name">"پیشفرض"</string>
     <string name="quest_presets_selected">"انتخابی"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_presets_delete_message">"\"%s\" پیشفرض حذف شود؟ انتخاب جُستار و سفارش برای آن به طور برگشت ناپذیری از بین می‌رود."</string>
+    <string name="quest_presets_delete_message">"پیش‌تنظیم \"%s\" حذف شود؟ انتخاب و ترتیب جُستارهای آن به طور برگشت ناپذیری از بین می‌رود."</string>
     <string name="notification_syncing">"همگام سازی داده‌ها…"</string>
 
     <!-- Android notifications -->
@@ -2239,15 +2239,15 @@
     <string name="quest_generic_answer_is_actually_steps">"این‌ها مراحل هستند"</string>
     <string name="quest_barrier_type_passage_conversion">"تبدیل به گذرگاه بر روی دیوار/حصار/غیره."</string>
     <string name="quest_barrier_type_gate_conversion">"تبدیل به دروازه"</string>
-    <string name="quest_traffic_calming_type_title">"این چه نوع سرعتگیری است؟"</string>
-    <string name="quest_traffic_calming_type_bump">"برآمدگی (کوتاه)"</string>
-    <string name="quest_traffic_calming_type_hump">"قوز (بلند)"</string>
-    <string name="quest_traffic_calming_type_table">"تخت (برآمدگی صفحه‌ای)"</string>
+    <string name="quest_traffic_calming_type_title">"این چه نوع آرام‌ساز تردد است؟"</string>
+    <string name="quest_traffic_calming_type_bump">"سرعتگیر (کوتاه‌تر)"</string>
+    <string name="quest_traffic_calming_type_hump">"سرعتکاه (پهن‌تر)"</string>
+    <string name="quest_traffic_calming_type_table">"تخت (بالا مسطح)"</string>
     <string name="quest_traffic_calming_type_cushion">"بالشتک (برای وسایل نقلیه عریض ناهموار نیست)"</string>
-    <string name="quest_traffic_calming_type_choker">"جاده باریک"</string>
+    <string name="quest_traffic_calming_type_choker">"جاده باریک‌شده"</string>
     <string name="quest_traffic_calming_type_island">"جزیره"</string>
-    <string name="quest_traffic_calming_type_chicane">"پیچ (های) مصنوعی"</string>
-    <string name="quest_traffic_calming_type_rumble_strip">"نوار (های) صوتی"</string>
+    <string name="quest_traffic_calming_type_chicane">"پیچ(های) عامدانه"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"نوار(های) لرزاننده"</string>
     <string name="quest_surface_value_concrete_plates">"صفحات بتنی"</string>
     <string name="quest_surface_value_concrete_lanes">"خطوط بتنی"</string>
     <string name="quest_fireHydrant_diameter_title">"چه قطری روی تابلوی این شیر آتش‌نشانی مشخص شده است؟"</string>

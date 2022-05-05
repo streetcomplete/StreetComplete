@@ -42,6 +42,8 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
-        tags["barrier"] = "kerb"
+        if (tags["kerb"] != "no") {
+            tags["barrier"] = "kerb"
+        }
     }
 }

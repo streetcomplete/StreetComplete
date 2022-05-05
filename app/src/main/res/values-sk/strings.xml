@@ -303,9 +303,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="produce_walnuts">"Vlašské orechy"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="quest_way_lit_automatic">"Používa detekciu pohybu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Osvetlené deň a noc"</string>
+    <string name="quest_way_lit_24_7">"Osvetlené nepretržite"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nie je tu možné vyhľadať úlohy. Skúste ešte priblížiť mapu alebo ju menej nakloniť."</string>
     <string name="quest_crossing_type_title">"Akého typu je tento prechod?"</string>
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
@@ -343,59 +341,23 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_cycleway_value_shared">"pruh vyslovene zdieľaný s ostatnými druhmi dopravy"</string>
     <string name="quest_cycleway_value_bus_lane">"na pruhu pre autobusy"</string>
     <string name="quest_cycleway_value_sidewalk">"vyslovene zdieľaný chodník"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_create_image_error">"Nedá sa vytvoriť fotka"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_leave_new_note_create_image_error">"Nepodarilo sa vytvoriť fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruhy, oba smery"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_track_dual">"cyklochodník, oboma smermi"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_cycleway_value_track_dual">"Cyklochodník s oddelenými smermi jazdy"</string>
     <string name="pref_category_advanced">"Pokročilé"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Povolené"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_type">"Druh úlohy"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"Obnoviť"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Späť"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"Zrušiť"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Iba"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Vegánske jedlá neobsahujú produkty zo zvierat (žiadne mäso, žiadne mliečne produkty, žiadne vajíčka, …)."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Vegetariánske jedlá neobsahujú mäso."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_dietType_explanation">"Odpovedzte \"áno\", iba ak miesto poskytuje porovnateľný výber jedál pre túto diétu"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_dietType_explanation">"Odpovedzte „Áno“, iba ak miesto poskytuje porovnateľný výber jedál pre túto diétu - ignoruje predkrmy a pod."</string>
     <string name="quest_carWashType_title">"Aký je toto druh autoumyvárky?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"Automatická"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"Samoobsluha"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"Zamestnanci umývajú auto"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"Povoliť tento typ úlohy?"</string>
 
     <!-- Fuzzy -->
@@ -1348,9 +1310,7 @@ A nakoniec, nezabudnite na bezpečnosť - všímajte si vášho okolia a nevstup
 
     <!-- Fuzzy -->
     <string name="achievement_surveyor_title">"Topograf"</string>
-
-    <!-- Fuzzy -->
-    <string name="achievement_surveyor_solved_X">"Vyriešili ste %d úloh! Pokračujte ďalej, aby ste odomkli ďalšie úspechy, ktoré obsahujú odkazy na OSM a ďalšie máp sa týkajúcich aplikácií a projektov!"</string>
+    <string name="achievement_surveyor_solved_X">"Vyriešili ste %d úloh! Pokračujte ďalej, aby ste odomkli ďalšie úspechy, ktoré obsahujú odkazy na OSM a ďalšie mapy v aplikáciach a projektoch!"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_regular_title">"Pravidelný prispievateľ"</string>
@@ -2001,4 +1961,20 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Je tu nejaká toaleta?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Je toaleta na tomto mieste bezbariérová?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ste si istý, že môžu cyklisti používať túto jednosmernú cestu v oboch smeroch? Ak ste si nie ste istý, skontrolujte, či je na konci tejto ulice značka."</string>
+    <string name="link_valhalla_description">"Navigačný engine s veľmi malou pamäťovou náročnosťou, navigáciou s využitím viacero dopravných prostriedkov, časovou mapou, …"</string>
+    <string name="link_backofyourhand_description">"Ako dobre poznáte svoje okolie? Otestujte si svoje znalosti lokalizácie ulíc."</string>
+    <string name="link_thenandnow_description">"Porovnajte, ako OSM vyzerala v prvých dňoch prevádzky a ako vyzerá teraz!"</string>
+    <string name="link_notesreview_description">"Pozerajte, filtrujte a píšte komentáre k poznámkam, ktoré ste vytvorili vy, alebo iný používatelia. Mnoho poznámok sa dá vyriešiť tak, že ich informácie zadáte do mapy v iD alebo JOSMu"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Prijímajú tu kreditné alebo debetné karty?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Obe"</string>
+    <string name="quest_accepts_cards_credit_only">"Iba kreditné karty"</string>
+    <string name="quest_accepts_cards_dedit_only">"Iba debetné karty"</string>
+    <string name="quest_accepts_cards_unavailable">"Ani kreditné, ani debetné karty"</string>
+    <string name="quest_barrier_type_gate_any_size">"Brána, akákoľvek veľkosť"</string>
+    <string name="quest_air_pump_bicycle_title">"Ju tu verejne dostupná pumpa na bicykel?"</string>
+    <string name="quest_air_pump_compressor_title">"Je tu k dispozícií kompresor?"</string>
+    <string name="quest_step_count_stile_hint">"Počet schodov k dosiahnutiu vrcholu. Ak je počet schodov na každej strane iný, uveďte vyššie číslo."</string>
 </resources>

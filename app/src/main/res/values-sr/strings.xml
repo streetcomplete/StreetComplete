@@ -1241,4 +1241,20 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Да ли овде има тоалета?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Да ли је овај тоалет доступан инвалидским колицима?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Да ли сте сигурни да бициклисти не смеју да користе ову једносмерну улицу у оба смера? Ако нисте сигурни, проверите да ли има саобраћајног знака на крају улице."</string>
+    <string name="link_valhalla_description">"Механизам за рутирање са алоцираном малом меморијом, алтернативним маршрутама, изохроне и др."</string>
+    <string name="link_backofyourhand_description">"Колико добро познајете свој крај? Тестирајте се проналажењем улица."</string>
+    <string name="link_thenandnow_description">"Истражите како је OSM изгледао на почетку у поређењу са данашњим подацима!"</string>
+    <string name="link_notesreview_description">"Згодан начин приказа, филтрирање и коментарисање напомена које сте направили ви и други. Многе напомене могу бити решене додавањем информација на карти путем iD или JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Да ли се може плаћати платним картицама?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"И кредитним и дебитним"</string>
+    <string name="quest_accepts_cards_credit_only">"Само кредитним"</string>
+    <string name="quest_accepts_cards_dedit_only">"Само дебитним"</string>
+    <string name="quest_accepts_cards_unavailable">"Ни кредитним ни дебитним"</string>
+    <string name="quest_barrier_type_gate_any_size">"Капија, није важна висина"</string>
+    <string name="quest_air_pump_bicycle_title">"Да ли је пумпа за гуме исправна и да ли је доступна свима?"</string>
+    <string name="quest_air_pump_compressor_title">"Да ли овде постоји компресор за ваздух?"</string>
+    <string name="quest_step_count_stile_hint">"Број степеника да бисте стигли до врха. Уколико се број разликује у сваком од смерова, унесите већи."</string>
 </resources>

@@ -1,3 +1,14 @@
+v43.1: |
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>Correct hint text for shoulder quest: Shoulders that are not wide enough for a car are still considered shoulders as long as they are designated (i.e. marked) as such</li>
+  <li>Various minor enhancements and fixes (#3994...), thanks @peternewman</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Latvian, by @Mazurs</li>
+  </ul>
+
 v43.0: |
   <h3>New Quests</h3>
   <ul>
