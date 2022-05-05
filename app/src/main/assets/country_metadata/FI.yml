@@ -5,6 +5,7 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 244
+noEntrySignStyle: yellow
 officialLanguages: [fi, sv]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 atmOperators: [Otto, Suomen Automatia Oy, Nosto, Otto., Automatia Pankkiautomaatit Oy, Osuuspankki, TalletusOtto, OttoPlus, Nordea, Nokas CMS Oy, Automatia, bittiraha.fi, OP, atm, Aktia, Ottopiste, Otto-automaatti]

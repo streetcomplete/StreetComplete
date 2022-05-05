@@ -3,6 +3,7 @@ centerLineStyle: yellow
 edgeLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 639
+noEntrySignStyle: arrow
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, sw]

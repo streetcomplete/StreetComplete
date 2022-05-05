@@ -7,6 +7,7 @@ hasNoStandingSign: true
 hasSlowZone: false
 lengthUnits: [foot and inch]
 mobileCountryCode: 310
+noEntrySignStyle: do not enter
 noParkingSignStyle: mutcd text
 noStandingSignStyle: mutcd text standing
 noStoppingSignStyle: mutcd text
