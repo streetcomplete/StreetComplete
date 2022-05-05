@@ -7,8 +7,6 @@
     <!-- Settings screen -->
     <string name="pref_category_communication">"Հաղորդակցություն"</string>
     <string name="pref_category_display">"Պատկեր"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_summary">"%d ՄԲ"</string>
 
     <!-- Fuzzy -->

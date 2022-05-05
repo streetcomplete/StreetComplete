@@ -1235,7 +1235,7 @@
     <string name="quest_recycling_type_cooking_oil">"Растительное масло"</string>
     <string name="quest_recycling_type_engine_oil">"Моторное масло"</string>
     <string name="link_photon_description">"Автономное расширение для Nominatim с нечётким поиском и функцией поиска по мере ввода"</string>
-    <string name="link_graphhopper_description">"Гибкий механизм построения маршрута"</string>
+    <string name="link_graphhopper_description">"Маршрутизатор с множеством настроек"</string>
     <string name="link_qwant_maps_description">"Карта с доступными для поиска местами и направлениями"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из %1$s. Ознакомьтесь с &lt;a href=\"%2$s\"&gt;политикой конфиденциальности&lt;/a&gt; для получения дополнительной информации.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
@@ -1744,7 +1744,7 @@
 К несчастью, из-за политики Google Play Store, мы не можем "</string>
     <string name="link_osmand_description">"Мобильное приложение для онлайн и оффлайн просмотра карт и навигации
 "</string>
-    <string name="link_sunders_description">"Карта камер и "</string>
+    <string name="link_sunders_description">"Карта камер и видеоконтроля"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Будьте ближе к дороге, но следите за трафиком!
 "</string>
     <string name="quest_sidewalk_surface_title">"Какое покрытие у этого тротуара?"</string>
@@ -1820,4 +1820,20 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Есть ли в этом месте туалеты?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Доступен ли туалет в этом месте для инвалидных колясок?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Вы уверены, что велосипедистам нельзя ездить по этой улице с односторонним движением в обоих направлениях?  Если сомневаетесь, проверьте, есть ли знак в конце улицы."</string>
+    <string name="link_valhalla_description">"Маршрутизатор с очень низким потреблением памяти, изохронами и пр."</string>
+    <string name="link_backofyourhand_description">"Насколько хорошо вы знаете свой район? Проверьте свои знания, определяя улицы."</string>
+    <string name="link_thenandnow_description">"Узнайте, как OSM выглядел в первые дни, по сравнению с тем, как он выглядит сейчас!"</string>
+    <string name="link_notesreview_description">"Удобный просмотр, фильтрация и комментирование замечаний созданных вами и другими. Многие замечания могут быть устранены в iD или JOSM благодаря информации, содержащейся в них"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Здесь принимают кредитные или дебетовые карты?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Принимают оба типа"</string>
+    <string name="quest_accepts_cards_credit_only">"Только кредитные"</string>
+    <string name="quest_accepts_cards_dedit_only">"Только дебетовые"</string>
+    <string name="quest_accepts_cards_unavailable">"Ни кредитные, ни дебетовые"</string>
+    <string name="quest_barrier_type_gate_any_size">"Ворота, любой размер"</string>
+    <string name="quest_air_pump_bicycle_title">"Здесь есть доступный всем рабочий велосипедный насос?"</string>
+    <string name="quest_air_pump_compressor_title">"Здесь есть воздушный компрессор?"</string>
+    <string name="quest_step_count_stile_hint">"Количество ступеней до вершины. Если количество различается с разных сторон, укажите большее число."</string>
 </resources>
