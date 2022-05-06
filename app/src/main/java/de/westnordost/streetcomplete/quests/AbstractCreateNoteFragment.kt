@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -26,10 +24,6 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            BottomSheetBehavior.from(bottomSheet).state = BottomSheetBehavior.STATE_EXPANDED
-        }
 
         if (savedInstanceState == null) {
             childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
