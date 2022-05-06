@@ -149,7 +149,6 @@ class MainFragment :
     ShowsGeometryMarkers {
 
     private val questController: QuestController by inject()
-    private val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
@@ -469,7 +468,7 @@ class MainFragment :
         val ctx = context ?: return
 
         val checkLocations = listOfNotNull(mapFragment?.displayedLocation, locationWhenOpenedQuest)
-        if (isSurveyChecker.checkIsSurvey(ctx, quest.geometry, checkLocations)) {
+        if (checkIsSurvey(ctx, quest.geometry, checkLocations)) {
             closeBottomSheet()
             onIsSurvey(quest)
         } else {
