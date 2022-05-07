@@ -35,8 +35,17 @@
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_answers_counter"
             android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <LinearLayout
+            android:id="@+id/otherQuestsLayout"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/answers_counter_fragment"
             android:layout_alignParentLeft="true"
-            />
+            android:elevation="2dp"
+            android:padding="14dp"
+            android:orientation="vertical" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/upload_button_fragment"

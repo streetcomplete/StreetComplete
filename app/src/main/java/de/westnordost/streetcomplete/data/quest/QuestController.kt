@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
@@ -256,6 +257,10 @@ class QuestController(
             is OsmNoteQuestKey -> osmNoteQuestController.get(questKey.noteId)
             is OsmQuestKey -> osmQuestController.get(questKey)
         }
+    }
+
+    suspend fun getOtherQuestsForSameElement(quest: OsmQuest): List<OsmQuest> = withContext(Dispatchers.IO) {
+        osmQuestController.getOtherQuestsForSameElement(quest)
     }
 
     companion object {

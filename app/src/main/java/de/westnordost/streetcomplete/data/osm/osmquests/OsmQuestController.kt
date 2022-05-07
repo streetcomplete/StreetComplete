@@ -415,6 +415,17 @@ class OsmQuestController internal constructor(
         hideListeners.forEach { it.onUnhidAll() }
     }
 
+    fun getOtherQuestsForSameElement(quest: OsmQuest): List<OsmQuest> {
+        // getAllInBBox is ~2-3 times faster than getAllForElements
+        val questsEntries = db.getAllInBBox(BoundingBox(quest.position, quest.position))
+        return questsEntries.mapNotNull {
+            if (it.elementId != quest.elementId || it.elementType != quest.elementType)
+                null
+            else
+                createOsmQuest(it, quest.geometry)
+        }
+    }
+
     companion object {
         private const val TAG = "OsmQuestController"
     }

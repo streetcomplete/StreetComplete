@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.graphics.Color
 import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
@@ -15,6 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
@@ -810,6 +813,7 @@ class MainFragment :
         if (bottomSheetFragment != null) {
             childFragmentManager.popBackStack(BOTTOM_SHEET,
                 FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            binding.otherQuestsLayout.removeAllViews()
         }
         unfreezeMap()
     }
@@ -857,6 +861,26 @@ class MainFragment :
         showInBottomSheet(f)
 
         if (quest is OsmQuest) {
+            viewLifecycleScope.launch { // do concurrently with showing highlighted quests
+                val q = questController.getOtherQuestsForSameElement(quest)
+                q.forEach { osmQuest ->
+                    if (osmQuest == quest) return@forEach // ignore current quest
+                    if (osmQuest.type.dotColor != "no") return@forEach // ignore poi quests
+                    // ignore disabled quests? or not? what about hidden?
+                    val questView = ImageButton(context)
+                    questView.setImageResource(osmQuest.osmElementQuestType.icon)
+                    questView.setBackgroundColor(Color.TRANSPARENT)
+                    questView.scaleType = ImageView.ScaleType.FIT_CENTER
+                    questView.adjustViewBounds = true
+                    questView.setOnClickListener {
+                        binding.otherQuestsLayout.removeAllViews()
+                        viewLifecycleScope.launch { showQuestDetails(osmQuest) }
+                    }
+                    binding.otherQuestsLayout.addView(questView)
+
+                }
+            }
+
             showHighlightedElements(quest, element!!)
         }
     }
