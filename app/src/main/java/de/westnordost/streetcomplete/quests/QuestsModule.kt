@@ -319,8 +319,8 @@ fun questTypeRegistry(
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
     AddBikeParkingCover(), // used by OsmAnd in the object description
+    AddBikeRentalType(), // generally less overlap of possible types/fewer choices/simpler to answer
     AddBikeParkingType(), // used by OsmAnd
-    AddBikeRentalType(),
     AddBikeParkingAccess(),
     AddBikeParkingFee(),
     AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
