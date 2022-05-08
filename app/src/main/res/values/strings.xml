@@ -661,7 +661,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_bicycle_rental_type_docking_station">Docking station (locks bikes)</string>
     <string name="quest_bicycle_rental_type_dropoff_point">Designated spot (bikes locked individually)</string>
     <string name="quest_bicycle_rental_type_key_dispensing_machine">Key dispensing machine</string>
-    <string name="quest_bicycle_rental_type_bicycle_shop">Human-operated shop</string>
+    <string name="quest_bicycle_rental_type_bicycle_shop">Human-operated bicycle rental</string>
     <string name="quest_bicycle_rental_type_bicycle_shop_confirmation">Is bike rental this shop’s main business?
 If not, please leave a note instead.</string>
 
