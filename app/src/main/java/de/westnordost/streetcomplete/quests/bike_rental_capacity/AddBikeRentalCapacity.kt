@@ -29,7 +29,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_rental_capacity_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity ~ bicycle_parking|bicycle_rental")
+        getMapData().filter("nodes, ways with amenity ~ bicycle_rental")
 
     override fun createForm() = AddBikeParkingCapacityForm.create(showClarificationText = false)
 
