@@ -53,6 +53,13 @@
     <string name="quest_surface_value_paved_tracktype_grade1_is_correct">This way is paved</string>
     <string name="quest_cuisine_title">What cuisine does this place have?</string>
     <string name="quest_cuisine_add_more">Add another cuisine</string>
+    <string name="quest_service_building_operator_title">"Who is the operator for this service building?"</string>
+    <string name="quest_service_building_type_title">"What kind of service building is this%s?"</string>
+    <string name="quest_service_building_type_substation">"Substation"</string>
+    <string name="quest_service_building_type_pressure">"Gas pressure regulation"</string>
+    <string name="quest_service_building_type_well">"Water well"</string>
+    <string name="quest_service_building_type_reservoir">"Reservoir"</string>
+    <string name="quest_service_building_type_pump">"Pumping station"</string>
 
     <!-- Store description -->
 

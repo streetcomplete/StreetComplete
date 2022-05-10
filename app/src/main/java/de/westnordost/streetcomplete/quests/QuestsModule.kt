@@ -111,6 +111,8 @@ import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
+import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingOperator
+import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingType
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
@@ -451,4 +453,6 @@ fun questTypeRegistry(
     AddContactWebsite(prefs),
     RemoveWrongSurface(), // from https://github.com/matkoniecz/Zazolc/commit/c74eac081d41e07bfbaf0a5fb1ce51dca822b495
     AddCuisine(),
+    AddServiceBuildingType(),
+    AddServiceBuildingOperator(),
 ))
