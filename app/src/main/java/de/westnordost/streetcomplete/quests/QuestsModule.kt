@@ -44,6 +44,8 @@ import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargin
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
+import de.westnordost.streetcomplete.quests.contact.AddContactPhone
+import de.westnordost.streetcomplete.quests.contact.AddContactWebsite
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
@@ -441,4 +443,8 @@ fun questTypeRegistry(
 
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     AddWayLit(),
+
+    // quests added in modified version
+    AddContactPhone(prefs),
+    AddContactWebsite(prefs),
 ))

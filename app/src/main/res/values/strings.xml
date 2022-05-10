@@ -45,6 +45,9 @@
     <string name="quest_settings_level_title">Show this quest for:</string>
     <string name="quest_settings_level_default">Shops &amp; similar in Malls (default)</string>
     <string name="quest_settings_level_more">Doctors and many more nodes inside multi-level buildings</string>
+    <string name="quest_contact_phone">What is the phone number of this place?</string>
+    <string name="quest_contact_website">What is the website of this place?</string>
+    <string name="quest_settings_contact">Set elements eligible for this quest</string>
 
     <!-- Store description -->
 
