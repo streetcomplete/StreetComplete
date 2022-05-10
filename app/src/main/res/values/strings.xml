@@ -9,6 +9,11 @@
      -->
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Modifications -->
+    <string name="pref_category_mods">"Modifications"</string>
+    <string name="pref_volume_zoom_title">"Volume button zoom"</string>
+    <string name="pref_volume_zoom_summary">"Zoom using volume buttons"</string>
+
     <!-- Store description -->
 
     <string name="store_listing_short_description" tools:ignore="UnusedResources">"OpenStreetMap surveyor app"</string>

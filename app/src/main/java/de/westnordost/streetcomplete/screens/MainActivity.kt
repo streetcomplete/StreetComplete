@@ -148,6 +148,18 @@ class MainActivity :
             }
             return true
         }
+        if (event.keyCode == KeyEvent.KEYCODE_VOLUME_UP && mainFragment != null && prefs.getBoolean(Prefs.VOLUME_ZOOM, false)) {
+            if (event.action == KeyEvent.ACTION_UP) {
+                mainFragment.onClickZoomIn()
+            }
+            return true
+        }
+        if (event.keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && mainFragment != null && prefs.getBoolean(Prefs.VOLUME_ZOOM, false)) {
+            if (event.action == KeyEvent.ACTION_UP) {
+                mainFragment.onClickZoomOut()
+            }
+            return true
+        }
         return super.dispatchKeyEvent(event)
     }
 

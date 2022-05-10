@@ -104,6 +104,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="mods"
+        android:title="@string/pref_category_mods">
+
+        <SwitchPreference
+            android:key="volume_button_zoom"
+            android:title="@string/pref_volume_zoom_title"
+            android:summary="@string/pref_volume_zoom_summary"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="debug"
         android:title="Debug">
 
