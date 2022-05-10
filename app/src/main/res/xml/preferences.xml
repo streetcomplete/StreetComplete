@@ -113,6 +113,12 @@
             android:summary="@string/pref_volume_zoom_summary"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="3d_buildings"
+            android:title="@string/pref_3d_buildings_title"
+            android:defaultValue="true"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

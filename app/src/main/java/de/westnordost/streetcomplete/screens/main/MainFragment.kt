@@ -266,6 +266,7 @@ class MainFragment :
         binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         updateLocationPointerPin()
+        mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
         listener?.onMapInitialized()
     }
 
@@ -916,7 +917,7 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
 
         mapFragment.clearFocusQuest()
-        mapFragment.show3DBuildings = true
+        mapFragment.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
         mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
@@ -926,7 +927,7 @@ class MainFragment :
         mapFragment.isFollowingPosition = wasFollowingPosition
         mapFragment.isNavigationMode = wasNavigationMode
         mapFragment.endFocusQuest()
-        mapFragment.show3DBuildings = true
+        mapFragment.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
         mapFragment.pinMode = QuestsMapFragment.PinMode.QUESTS
     }
 
