@@ -1,4 +1,3 @@
 import:
-  - streetcomplete.yaml
-  - streetcomplete-dark-constrast-style.yaml
-
+    - streetcomplete.yaml
+    - streetcomplete-dark-contrast-style.yaml
