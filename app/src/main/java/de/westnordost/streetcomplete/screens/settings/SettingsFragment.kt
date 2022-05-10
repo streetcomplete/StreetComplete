@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
@@ -58,6 +59,7 @@ class SettingsFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
+    private val visibleQuestTypeController: VisibleQuestTypeController by inject()
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -183,6 +185,9 @@ class SettingsFragment :
             }
             Prefs.RESURVEY_INTERVALS -> {
                 resurveyIntervalsUpdater.update()
+            }
+            Prefs.QUEST_GEOMETRIES -> {
+                visibleQuestTypeController.clear()
             }
         }
     }

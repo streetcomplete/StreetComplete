@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import android.content.SharedPreferences
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
@@ -41,6 +42,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
+    private val prefs: SharedPreferences by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -74,7 +76,7 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
         geometryMapComponent = FocusGeometryMapComponent(ctrl)
 
-        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource, prefs)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isActive = pinMode == PinMode.QUESTS
 

@@ -4,6 +4,7 @@ global:
     geometry_point_color: '#88D14000'
     track_color: '#44536dfe'
     old_track_color: '#22536dfe'
+    quest_geometry_color: '#330092D1' # complementary to accent, a bit more transparent
 
 textures:
     pins:
@@ -163,3 +164,29 @@ layers:
                     collide: false
                     join: round
                     order: 1000
+    streetcomplete_quests_geometry:
+        data: { source: streetcomplete_quests_geometry }
+        line:
+            filter:
+                type: line
+                $zoom: { min: 16 }
+            draw:
+                geometry-lines:
+                    color: global.quest_geometry_color
+                    width: 9px
+                    collide: false
+                    order: 1000
+                    cap: round
+                    join: round
+        poly:
+            filter:
+                type: poly
+                $zoom: { min: 19 }
+            draw:
+                geometry-polygons:
+                    color: global.quest_geometry_color
+                    width: 9px
+                    collide: false
+                    order: 1000
+                    cap: round
+                    join: round

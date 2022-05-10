@@ -14,6 +14,8 @@
     <string name="pref_volume_zoom_title">"Volume button zoom"</string>
     <string name="pref_volume_zoom_summary">"Zoom using volume buttons"</string>
     <string name="pref_3d_buildings_title">"Show 3D buildings"</string>
+    <string name="pref_quest_geometries_title">"Display quest geometries"</string>
+    <string name="pref_quest_geometries_summary">"Highlight ways and areas that have quests"</string>
 
     <!-- Store description -->
 

@@ -1,13 +1,16 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.download.tiles.minTileRect
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -37,7 +40,8 @@ class QuestPinsManager(
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val resources: Resources,
-    private val visibleQuestsSource: VisibleQuestsSource
+    private val visibleQuestsSource: VisibleQuestsSource,
+    private val prefs: SharedPreferences,
 ) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
@@ -196,7 +200,12 @@ class QuestPinsManager(
         val iconName = resources.getResourceEntryName(quest.type.icon)
         val props = quest.key.toProperties()
         val importance = getQuestImportance(quest)
-        return quest.markerLocations.map { Pin(it, iconName, props, importance) }
+        val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) &&
+            quest.geometry !is ElementPointGeometry)
+            quest.geometry
+        else
+            null
+        return quest.markerLocations.map { Pin(it, iconName, props, importance, geometry) }
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */
