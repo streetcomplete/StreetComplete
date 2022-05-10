@@ -127,6 +127,13 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="auto_download"
+            android:title="@string/pref_auto_download_title"
+            android:summary="@string/pref_auto_download_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

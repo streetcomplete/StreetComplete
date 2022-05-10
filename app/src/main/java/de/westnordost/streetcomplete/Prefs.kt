@@ -46,6 +46,7 @@ object Prefs {
     const val VOLUME_ZOOM = "volume_button_zoom"
     const val SHOW_3D_BUILDINGS = "3d_buildings"
     const val QUEST_GEOMETRIES = "quest_geometries"
+    const val AUTO_DOWNLOAD = "auto_download"
 
     enum class Autosync {
         ON, WIFI, OFF

@@ -160,6 +160,7 @@ class QuestAutoSyncer(
     private fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
+        if (!prefs.getBoolean(Prefs.AUTO_DOWNLOAD, true)) return
         if (downloadController.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")

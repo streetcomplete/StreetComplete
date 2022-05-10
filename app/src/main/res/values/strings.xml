@@ -20,6 +20,8 @@
     <string name="delete_confirmation_tiles">Map tiles</string>
     <string name="delete_confirmation_data">OSM &amp; quest data</string>
     <string name="delete_confirmation_both">Both</string>
+    <string name="pref_auto_download_title">"Auto download"</string>
+    <string name="pref_auto_download_summary">"Download nearby quests automatically"</string>
 
     <!-- Store description -->
 
