@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
@@ -267,6 +268,12 @@ class QuestSelectionAdapter(
             binding.visibilityCheckBox.isChecked = item.visible
             binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
             binding.visibilityCheckBox.setOnCheckedChangeListener(this)
+            binding.questSettings.visibility = if (item.questType.hasQuestSettings) View.VISIBLE else View.GONE
+            binding.questSettings.setOnClickListener {
+                val settings = item.questType.getQuestSettingsDialog(it.context)
+                settings?.show()
+            }
+            binding.questSettings.setImageResource(R.drawable.ic_settings_48dp) // for some reason it's not displayed when it's just in the xml
 
             binding.dragHandle.isInvisible = !item.isInteractionEnabled
             binding.dragHandle.setOnTouchListener { v, event ->

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -20,9 +23,11 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.quests.numberSelectionDialog
+import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
-class AddSidewalk : OsmElementQuestType<SidewalkSides> {
+class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<SidewalkSides> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
         ways with highway ~ path|footway|cycleway|construction
     """.toElementFilterExpression() }
@@ -82,7 +87,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
             (estimateParkingOffRoadWidth(tags) ?: 0f) +
             (estimateCycleTrackWidth(tags) ?: 0f)
         ) / 2f +
-        4f // + generous buffer for possible grass verge
+        prefs.getInt(PREF_SIDEWALK_DISTANCE, 4).toFloat() // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -113,6 +118,8 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
               and access !~ private|no
         """.toElementFilterExpression() }
 
+    }
+
         // streets that do not have sidewalk tagging yet
         /* the filter additionally filters out ways that are unlikely to have sidewalks:
          *
@@ -125,7 +132,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         * */
         private val untaggedRoadsFilter by lazy { """
             ways with
-              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+              highway ~ ${prefs.getString(PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
               and (
                 !maxspeed
@@ -147,7 +154,6 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
               and cycleway:right != separate
               and cycleway:both != separate
         """.toElementFilterExpression() }
-    }
 
     private fun Element.hasInvalidOrIncompleteSidewalkTags(): Boolean {
         val sides = createSidewalkSides(tags)
@@ -155,7 +161,36 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         if (sides.any { it == INVALID }) return true
         return false
     }
+
+    override val hasQuestSettings = true
+
+    // min distance selection or element selection
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        AlertDialog.Builder(context)
+            .setTitle(R.string.quest_settings_sidewalk_what)
+            .setPositiveButton(R.string.quest_settings_sidewalk_distance_button) { _,_ ->
+                numberSelectionDialog(context,
+                    prefs,
+                    PREF_SIDEWALK_DISTANCE,
+                    4,
+                    R.string.quest_settings_sidewalk_distance_message).show()
+            }
+            .setNegativeButton(R.string.quest_settings_sidewalk_highways_button) { _, _ ->
+                singleTypeElementSelectionDialog(context,
+                    prefs,
+                    PREF_SIDEWALK_HIGHWAY_SELECTION,
+                    ROADS_WITH_SIDEWALK.joinToString("|"),
+                    R.string.quest_settings_eligible_highways).show()
+            }
+            .create()
 }
 
 private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk) -> Boolean): Boolean =
     left?.let(block) == true || right?.let(block) == true
+
+private val ROADS_WITH_SIDEWALK = arrayOf(
+    "trunk","trunk_link","primary","primary_link","secondary","secondary_link",
+    "tertiary","tertiary_link","unclassified","residential")
+
+private const val PREF_SIDEWALK_HIGHWAY_SELECTION = "quest_sidewalk_highway_selection"
+private const val PREF_SIDEWALK_DISTANCE = "quest_sidewalk_distance"

@@ -33,6 +33,18 @@
     <string name="copy_profile_title">Copy from another profile?</string>
     <string name="copy_profile_new">Don\'t copy</string>
     <string name="resurvey_intervals_even_less_often">Ask even less often</string>
+    <string name="quest_settings_eligible_highways">Set highways eligible for this quest, comma separated</string>
+    <string name="quest_settings_sidewalk_what">What to set?</string>
+    <string name="quest_settings_sidewalk_distance_message">Set minimum distance from separate paths, if lower the quest will not be shown</string>
+    <string name="quest_settings_sidewalk_distance_button">Distance</string>
+    <string name="quest_settings_sidewalk_highways_button">Element selection</string>
+    <string name="quest_settings_reset">Reset</string>
+    <string name="quest_settings_max_roof_levels">Maximum building levels for the quest to be shown</string>
+    <string name="quest_settings_building_levels_message">Set building types eligible for this quest, comma separated</string>
+    <string name="quest_settings_max_steps_length">Maximum length of steps in meters for the quest to be shown</string>
+    <string name="quest_settings_level_title">Show this quest for:</string>
+    <string name="quest_settings_level_default">Shops &amp; similar in Malls (default)</string>
+    <string name="quest_settings_level_more">Doctors and many more nodes inside multi-level buildings</string>
 
     <!-- Store description -->
 

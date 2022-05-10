@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
+import android.app.AlertDialog
+import android.content.Context
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
@@ -34,4 +36,8 @@ interface QuestType<T> {
 
     /** towards which achievements ssolving a quest of this type should count */
     val questTypeAchievements: List<QuestTypeAchievement>
+
+    fun getQuestSettingsDialog(context: Context): AlertDialog? = null
+    val hasQuestSettings: Boolean get() = false
+
 }

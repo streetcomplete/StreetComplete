@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.level
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -12,7 +15,9 @@ import de.westnordost.streetcomplete.osm.isShopExpressionFragment
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddLevel : OsmElementQuestType<String> {
+class AddLevel(
+    private val prefs: SharedPreferences
+) : OsmElementQuestType<String> {
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
@@ -23,21 +28,46 @@ class AddLevel : OsmElementQuestType<String> {
          or railway = station
          or amenity = bus_station
          or public_transport = station
+         ${if (prefs.getBoolean(PREF_MORE_LEVELS, false)) "or (building and building:levels != 1)" else ""}
     """.toElementFilterExpression() }
 
-    private val thingsWithLevelFilter by lazy { """
+    private val thingsWithLevelOrDoctorsFilter by lazy { """
         nodes, ways, relations with level
+        ${if (prefs.getBoolean(PREF_MORE_LEVELS, false)) """
+        and (
+          amenity ~ doctors|dentist
+          or healthcare ~ psychotherapist|physiotherapist
+        ) """
+        else ""}
     """.toElementFilterExpression() }
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
     *  outline */
-    private val filter by lazy { """
+    private val filter get() = if (prefs.getBoolean(PREF_MORE_LEVELS, false))
+        shopsAndMoreFilter
+    else
+        shopFilter
+
+    private val shopsAndMoreFilter by lazy { """
+        nodes with
+         (
+           (shop and shop !~ no|vacant|mall)
+           or craft
+           or amenity
+           or leisure
+           or office
+           or tourism
+         )
+         and !level
+    """.toElementFilterExpression()}
+
+    private val shopFilter by lazy { """
         nodes with
          (${isShopExpressionFragment()})
          and !level and (name or brand)
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add level to shops"
+    override val changesetComment = "Add level to elements"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level
     /* disabled because in a mall with multiple levels, if there are nodes with no level defined,
@@ -50,15 +80,34 @@ class AddLevel : OsmElementQuestType<String> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        // get geometry of all malls in the area
+        // get all shops that have no level tagged
+        val shopsWithoutLevel = mapData
+            .filter { filter.matches(it)}
+            .toMutableList()
+        if (shopsWithoutLevel.isEmpty()) return emptyList()
+
+        val result = mutableListOf<Element>()
+        if (prefs.getBoolean(PREF_MORE_LEVELS, false)) {
+            // add doctors, independent of the building they're in
+            // and remove them from shops without level
+            shopsWithoutLevel.removeAll {
+                if (it.isDoctor()) {
+                    result.add(it)
+                    true
+                } else
+                    false
+            }
+        }
+
+        // get geometry of all malls (or buildings) in the area
         val mallGeometries = mapData
             .filter { mallFilter.matches(it) }
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
-        if (mallGeometries.isEmpty()) return emptyList()
+        if (mallGeometries.isEmpty()) return result
 
-        // get all shops that have level tagged
-        val thingsWithLevel = mapData.filter { thingsWithLevelFilter.matches(it) }
-        if (thingsWithLevel.isEmpty()) return emptyList()
+        // get all shops that have level tagged or are doctors
+        val thingsWithLevel = mapData.filter { thingsWithLevelOrDoctorsFilter.matches(it) }
+        if (thingsWithLevel.isEmpty()) return result
 
         // with this, find malls that contain shops that have different levels tagged
         val multiLevelMallGeometries = mallGeometries.filter { mallGeometry ->
@@ -78,15 +127,7 @@ class AddLevel : OsmElementQuestType<String> {
             }
             return@filter false
         }
-        if (multiLevelMallGeometries.isEmpty()) return emptyList()
-
-        // now, return all shops that have no level tagged and are inside those multi-level malls
-        val shopsWithoutLevel = mapData
-            .filter { filter.matches(it) }
-            .toMutableList()
-        if (shopsWithoutLevel.isEmpty()) return emptyList()
-
-        val result = mutableListOf<Element>()
+        if (multiLevelMallGeometries.isEmpty()) return result
 
         for (mallGeometry in multiLevelMallGeometries) {
             val it = shopsWithoutLevel.iterator()
@@ -105,14 +146,32 @@ class AddLevel : OsmElementQuestType<String> {
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element)) return false
+        // doctors are frequently at non-ground level
+        if (element.isDoctor() && prefs.getBoolean(PREF_MORE_LEVELS, false) && !element.tags.containsKey("level")) return true
         // for shops with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall
         return null
     }
+
+    private fun Element.isDoctor() = tags["amenity"] == "doctors" || tags["amenity"] == "dentist" || tags["healthcare"] in listOf("psychotherapist", "physiotherapist")
 
     override fun createForm() = AddLevelForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
         tags["level"] = answer
     }
+
+    override val hasQuestSettings = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog {
+        return AlertDialog.Builder(context)
+            .setTitle(R.string.quest_settings_level_title)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setItems(R.array.pref_quest_settings_levels) { _, i ->
+                prefs.edit().putBoolean(PREF_MORE_LEVELS, i == 1).apply()
+            }
+            .create()
+    }
 }
+
+private const val PREF_MORE_LEVELS = "prefs_more_levels"

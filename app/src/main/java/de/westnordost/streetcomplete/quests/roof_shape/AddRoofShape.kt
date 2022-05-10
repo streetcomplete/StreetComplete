@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -10,11 +13,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.quests.numberSelectionDialog
 import java.util.concurrent.FutureTask
 
 class AddRoofShape(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val prefs: SharedPreferences,
 ) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
@@ -39,7 +44,8 @@ class AddRoofShape(
             filter.matches(element) && (
                 element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f
                 || roofsAreUsuallyFlatAt(element, mapData) == false
-            )
+            ) && (element.tags["building:levels"]?.toIntOrNull() ?: 0) +
+                (element.tags["roof:levels"]?.toIntOrNull() ?: 0) <= prefs.getInt(PREF_ROOF_SHAPE_MAX_LEVELS, 99)
         }
 
     override fun isApplicableTo(element: Element): Boolean? {
@@ -63,4 +69,13 @@ class AddRoofShape(
     override fun applyAnswerTo(answer: RoofShape, tags: Tags, timestampEdited: Long) {
         tags["roof:shape"] = answer.osmValue
     }
+
+    override val hasQuestSettings = true
+
+    override fun getQuestSettingsDialog(context: Context) = numberSelectionDialog(
+        context, prefs, PREF_ROOF_SHAPE_MAX_LEVELS, 99, R.string.quest_settings_max_roof_levels
+    )
+
 }
+
+private const val PREF_ROOF_SHAPE_MAX_LEVELS = "quest_roof_shape_max_levels"

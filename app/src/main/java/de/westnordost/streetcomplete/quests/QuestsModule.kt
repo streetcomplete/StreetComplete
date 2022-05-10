@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -161,6 +162,7 @@ val questsModule = module {
         get(),
         get(named("CountryBoundariesFuture")),
         get(),
+        get(),
     ) }
 }
 
@@ -170,7 +172,8 @@ fun questTypeRegistry(
     featureDictionaryFuture: FutureTask<FeatureDictionary>,
     countryInfos: CountryInfos,
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    arSupportChecker: ArSupportChecker
+    arSupportChecker: ArSupportChecker,
+    prefs: SharedPreferences,
 ) = QuestTypeRegistry(listOf<QuestType<*>>(
 
     /* The quest types are primarily sorted by how easy they can be solved:
@@ -372,7 +375,7 @@ fun questTypeRegistry(
 
     AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
-    AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+    AddLevel(prefs), // requires to search for the place on several levels (or at least find a mall map)
 
     AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
@@ -406,7 +409,7 @@ fun questTypeRegistry(
     /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
     // roads
-    AddSidewalk(), // for any pedestrian routers, needs minimal thinking
+    AddSidewalk(prefs), // for any pedestrian routers, needs minimal thinking
     AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
@@ -431,10 +434,10 @@ fun questTypeRegistry(
 
     // buildings
     AddBuildingType(),
-    AddBuildingLevels(),
-    AddRoofShape(countryInfos, countryBoundariesFuture),
+    AddBuildingLevels(prefs),
+    AddRoofShape(countryInfos, countryBoundariesFuture, prefs),
 
-    AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
+    AddStepCount(prefs), // can only be gathered when walking along this way, also needs the most effort and least useful
 
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     AddWayLit(),

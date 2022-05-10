@@ -49,4 +49,9 @@
         <item>MAP</item>
         <item>AERIAL</item>
     </string-array>
+
+    <string-array name="pref_quest_settings_levels" translatable="false">
+        <item>@string/quest_settings_level_default</item>
+        <item>@string/quest_settings_level_more</item>
+    </string-array>
 </resources>
