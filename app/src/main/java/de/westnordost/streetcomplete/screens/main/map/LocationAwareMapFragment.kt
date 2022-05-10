@@ -3,12 +3,14 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
@@ -30,6 +32,7 @@ import kotlin.math.PI
 open class LocationAwareMapFragment : MapFragment() {
 
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
+    private val prefs: SharedPreferences by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
@@ -140,7 +143,9 @@ open class LocationAwareMapFragment : MapFragment() {
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
         locationMapComponent?.isVisible = true
-        locationManager.requestUpdates(2000, 1f)
+        val minGpsTime = prefs.getInt(Prefs.GPS_INTERVAL, 2).coerceAtLeast(0) * 1000L
+        val minNetworkTime = prefs.getInt(Prefs.NETWORK_INTERVAL, 2).coerceAtLeast(0) * 1000L
+        locationManager.requestUpdates(minGpsTime, minNetworkTime, 1f)
     }
 
     fun stopPositionTracking() {

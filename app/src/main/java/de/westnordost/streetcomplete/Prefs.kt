@@ -47,6 +47,8 @@ object Prefs {
     const val SHOW_3D_BUILDINGS = "3d_buildings"
     const val QUEST_GEOMETRIES = "quest_geometries"
     const val AUTO_DOWNLOAD = "auto_download"
+    const val GPS_INTERVAL = "gps_interval"
+    const val NETWORK_INTERVAL = "network_interval"
 
     enum class Autosync {
         ON, WIFI, OFF
