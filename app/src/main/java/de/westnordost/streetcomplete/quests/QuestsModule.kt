@@ -110,6 +110,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
+import de.westnordost.streetcomplete.quests.seating.AddOutdoorSeatingType
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
@@ -459,4 +460,5 @@ fun questTypeRegistry(
     AddHealthcareSpeciality(),
     AddServiceBuildingType(),
     AddServiceBuildingOperator(),
+    AddOutdoorSeatingType(),
 ))
