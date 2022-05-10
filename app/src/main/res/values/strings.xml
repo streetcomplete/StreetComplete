@@ -60,6 +60,8 @@
     <string name="quest_service_building_type_well">"Water well"</string>
     <string name="quest_service_building_type_reservoir">"Reservoir"</string>
     <string name="quest_service_building_type_pump">"Pumping station"</string>
+    <string name="quest_healthcare_speciality_title">What healthcare speciailties does this place have? Use suggested OSM tags!</string>
+    <string name="quest_healthcare_speciality_add_more">Add another speciality</string>
 
     <!-- Store description -->
 
