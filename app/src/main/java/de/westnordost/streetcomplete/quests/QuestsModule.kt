@@ -49,6 +49,7 @@ import de.westnordost.streetcomplete.quests.contact.AddContactWebsite
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
+import de.westnordost.streetcomplete.quests.cuisine.AddCuisine
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.defibrillator.AddIsDefibrillatorIndoor
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
@@ -449,4 +450,5 @@ fun questTypeRegistry(
     AddContactPhone(prefs),
     AddContactWebsite(prefs),
     RemoveWrongSurface(), // from https://github.com/matkoniecz/Zazolc/commit/c74eac081d41e07bfbaf0a5fb1ce51dca822b495
+    AddCuisine(),
 ))

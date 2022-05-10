@@ -51,6 +51,8 @@
     <string name="quest_wrong_surface_title">Which info about the surface is correct?</string>
     <string name="quest_surface_value_unpaved_tracktype_grade1_is_wrong">This way is not paved</string>
     <string name="quest_surface_value_paved_tracktype_grade1_is_correct">This way is paved</string>
+    <string name="quest_cuisine_title">What cuisine does this place have?</string>
+    <string name="quest_cuisine_add_more">Add another cuisine</string>
 
     <!-- Store description -->
 
