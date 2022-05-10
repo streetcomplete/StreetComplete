@@ -35,7 +35,7 @@ interface QuestType<T> {
     fun deleteMetadataOlderThan(timestamp: Long) {}
 
     /** towards which achievements ssolving a quest of this type should count */
-    val questTypeAchievements: List<QuestTypeAchievement>
+    val questTypeAchievements: List<QuestTypeAchievement> get() = listOf()
 
     fun getQuestSettingsDialog(context: Context): AlertDialog? = null
     val hasQuestSettings: Boolean get() = false
