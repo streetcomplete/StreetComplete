@@ -4,7 +4,9 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
-    private val selectedQuestPresetStore: SelectedQuestPresetStore
+    private val selectedQuestPresetStore: SelectedQuestPresetStore,
+    private val questTypeOrderDao: QuestTypeOrderDao,
+    private val visibleQuestTypeDao: VisibleQuestTypeDao,
 ) : QuestPresetsSource {
 
     private val listeners = CopyOnWriteArrayList<QuestPresetsSource.Listener>()
@@ -22,6 +24,16 @@ class QuestPresetsController(
     fun add(presetName: String): Long {
         val presetId = questPresetsDao.add(presetName)
         onAddedQuestPreset(presetId, presetName)
+        return presetId
+    }
+
+    fun add(presetName: String, copyFromId: Long): Long {
+        val presetId = questPresetsDao.add(presetName)
+        onAddedQuestPreset(presetId, presetName)
+        val order = questTypeOrderDao.getAll(copyFromId)
+        order.forEach { questTypeOrderDao.put(presetId, it) }
+        val visibilities = visibleQuestTypeDao.getAll(copyFromId)
+        visibilities.forEach { visibleQuestTypeDao.put(presetId, it.key, it.value) }
         return presetId
     }
 

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.DialogInputTextBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestPresetsBinding
@@ -30,10 +31,31 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
         val adapter = QuestPresetsAdapter(requireContext(), questPresetsController)
         lifecycle.addObserver(adapter)
         binding.questPresetsList.adapter = adapter
-        binding.addPresetButton.setOnClickListener { onClickAddPreset() }
+        binding.addPresetButton.setOnClickListener { showProfileSelector() }
     }
 
-    private fun onClickAddPreset() {
+    private fun showProfileSelector() {
+        val c = context ?: return
+        val presets = mutableListOf<QuestPreset>()
+        presets.add(QuestPreset(0, c.getString(R.string.quest_presets_default_name)))
+        presets.addAll(questPresetsController.getAll())
+        var dialog: AlertDialog? = null
+        val array = presets.map { it.name }.toTypedArray()
+        val builder = AlertDialog.Builder(c)
+            .setTitle(R.string.copy_profile_title)
+            .setSingleChoiceItems(array, -1) { _, i ->
+                dialog?.dismiss()
+                onClickAddPreset(presets[i].id)
+            }
+            .setNegativeButton(R.string.copy_profile_new) { _, _ ->
+                dialog?.dismiss()
+                onClickAddPreset()
+            }
+        dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun onClickAddPreset(copyFrom: Long? = null) {
         val ctx = context ?: return
 
         val dialogBinding = DialogInputTextBinding.inflate(layoutInflater)
@@ -45,7 +67,8 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val name = dialogBinding.editText.text.toString().trim()
                 viewLifecycleScope.launch(Dispatchers.IO) {
-                    questPresetsController.add(name)
+                    if (copyFrom == null) questPresetsController.add(name)
+                    else questPresetsController.add(name, copyFrom)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
