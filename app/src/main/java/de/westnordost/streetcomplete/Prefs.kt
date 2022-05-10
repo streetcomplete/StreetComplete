@@ -53,6 +53,8 @@ object Prefs {
     const val MANUAL_DOWNLOAD_OVERRIDE_CACHE = "manual_download_override_cache"
     const val SHOW_ALL_QUESTS = "show_all_quests"
     const val QUICK_SETTINGS = "quick_settings"
+    const val ALLOWED_LEVEL = "allowed_level"
+    const val ALLOWED_LEVEL_TAGS = "allowed_level_tags"
 
     enum class Autosync {
         ON, WIFI, OFF

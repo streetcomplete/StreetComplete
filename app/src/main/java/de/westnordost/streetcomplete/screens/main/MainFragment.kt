@@ -56,6 +56,7 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -142,6 +143,7 @@ class MainFragment :
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
+    private val levelFilter: LevelFilter by inject()
 
     private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
