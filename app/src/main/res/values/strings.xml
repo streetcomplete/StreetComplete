@@ -23,7 +23,10 @@
     <string name="pref_auto_download_title">"Auto download"</string>
     <string name="pref_gps_interval_title">"GPS location update interval"</string>
     <string name="pref_network_interval_title">"Network location update interval"</string>
-    <string name="pref_interval_message">"Update interval in seconds."</string>
+    <string name="pref_interval_message">"Update interval in seconds"</string>
+    <string name="pref_hide_notes_title">"Hide notes by users"</string>
+    <string name="pref_hide_notes_hint">"Use comma to separate user names or IDs"</string>
+    <string name="pref_hide_notes_message">"Enter user names or IDs to ignore"</string>
 
     <!-- Store description -->
 

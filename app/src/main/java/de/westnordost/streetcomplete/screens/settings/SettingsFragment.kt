@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.InputType
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
@@ -127,6 +130,29 @@ class SettingsFragment :
 
         findPreference<Preference>("debug.ar_measure_vertical")?.setOnPreferenceClickListener {
             startActivity(MeasureActivity.createIntent(requireContext(), true))
+            true
+        }
+
+        findPreference<Preference>("hide_notes_by")?.setOnPreferenceClickListener {
+            val text = EditText(context)
+            text.setText(prefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet())?.joinToString(","))
+            text.setHint(R.string.pref_hide_notes_hint)
+            text.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
+
+            val layout = LinearLayout(context)
+            layout.setPadding(30,10,30,10)
+            layout.addView(text)
+
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.pref_hide_notes_message)
+                .setView(layout)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    val content = text.text.split(",").map { it.trim().lowercase() }.toSet()
+                    prefs.edit().putStringSet(Prefs.HIDE_NOTES_BY_USERS, content).apply()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+
             true
         }
 

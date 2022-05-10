@@ -91,7 +91,7 @@ class OsmNoteQuestController(
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds))
+        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds, notesPreferences))
             OsmNoteQuest(note.id, note.position)
         else null
 
@@ -195,10 +195,17 @@ class OsmNoteQuestController(
 private fun Note.shouldShowAsQuest(
     userId: Long,
     showOnlyNotesPhrasedAsQuestions: Boolean,
-    blockedNoteIds: Set<Long>
+    blockedNoteIds: Set<Long>,
+    notesPreferences: NotesPreferences,
 ): Boolean {
     // don't show notes hidden by user
     if (id in blockedNoteIds) return false
+
+    // don't show notes created by specific users
+    comments.firstOrNull()?.let {
+        if (notesPreferences.blockedIds.contains(it.user?.id)) return false
+        if (notesPreferences.blockedNames.contains(it.user?.displayName?.lowercase())) return false
+    }
 
     /* don't show notes where user replied last unless he wrote a survey required marker */
     if (comments.last().isReplyFromUser(userId)

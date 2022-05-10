@@ -160,6 +160,10 @@
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel" />
 
+        <Preference
+            android:key="hide_notes_by"
+            android:title="@string/pref_hide_notes_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
