@@ -31,7 +31,8 @@
     <string name="pref_hide_notes_message">"Enter user names or IDs to ignore"</string>
     <string name="theme_dark_contrast">Dark (increased contrast)</string>
     <string name="copy_profile_title">Copy from another profile?</string>
-    <string name="copy_profile_new">Don't copy</string>
+    <string name="copy_profile_new">Don\'t copy</string>
+    <string name="resurvey_intervals_even_less_often">Ask even less often</string>
 
     <!-- Store description -->
 

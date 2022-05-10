@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.settings
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.DEFAULT
+import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.EVEN_LESS_OFTEN
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.LESS_OFTEN
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.MORE_OFTEN
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.valueOf
@@ -16,6 +17,7 @@ class ResurveyIntervalsUpdater(private val prefs: SharedPreferences) {
     }
 
     private val multiplier: Float get() = when (intervalsPreference) {
+        EVEN_LESS_OFTEN -> 4.0f
         LESS_OFTEN -> 2.0f
         DEFAULT -> 1.0f
         MORE_OFTEN -> 0.5f
