@@ -137,6 +137,7 @@
         <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="gps_interval"
             android:title="@string/pref_gps_interval_title"
+            android:summary="@string/pref_interval_summary"
             android:defaultValue="2"
             android:persistent="true"
             app:minValue="0"
@@ -150,6 +151,7 @@
         <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="network_interval"
             android:title="@string/pref_network_interval_title"
+            android:summary="@string/pref_interval_summary"
             android:defaultValue="2"
             android:persistent="true"
             app:minValue="0"

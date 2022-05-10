@@ -24,6 +24,7 @@
     <string name="pref_auto_download_summary">"Automatically download quests and map of the nearby area"</string>
     <string name="pref_gps_interval_title">"GPS location update interval"</string>
     <string name="pref_network_interval_title">"Network location update interval"</string>
+    <string name="pref_interval_summary">"%d seconds"</string>
     <string name="pref_interval_message">"Update interval in seconds"</string>
     <string name="pref_hide_notes_title">"Hide notes by users"</string>
     <string name="pref_hide_notes_hint">"Use comma to separate user names or IDs"</string>
