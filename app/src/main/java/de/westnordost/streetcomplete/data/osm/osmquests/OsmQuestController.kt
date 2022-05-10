@@ -314,6 +314,10 @@ class OsmQuestController internal constructor(
         onUpdated(deletedKeys = listOf(key))
     }
 
+    fun tempHide(key: OsmQuestKey) {
+        onUpdated(deletedKeys = listOf(key))
+    }
+
     fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
         synchronized(this) {

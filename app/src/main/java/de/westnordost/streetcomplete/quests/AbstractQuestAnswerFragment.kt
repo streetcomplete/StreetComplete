@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.updateConfiguration
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -143,6 +144,8 @@ abstract class AbstractQuestAnswerFragment<T> :
         /** Called when the user chose to skip the quest */
         fun onSkippedQuest(questKey: QuestKey)
 
+        fun onTempSkippedQuest(questKey: QuestKey)
+
         /** Called when the node shall be deleted */
         fun onDeletePoiNode(osmQuestKey: OsmQuestKey)
 
@@ -202,6 +205,13 @@ abstract class AbstractQuestAnswerFragment<T> :
         // no content? -> hide the content container
         if (binding.content.childCount == 0) {
             binding.content.visibility = View.GONE
+        }
+
+        binding.hideButton.popIn()
+        binding.hideButton.setOnClickListener { tempSkipQuest() }
+        binding.hideButton.setOnLongClickListener {
+            skipQuest()
+            true
         }
     }
 
@@ -327,6 +337,10 @@ abstract class AbstractQuestAnswerFragment<T> :
 
     protected fun skipQuest() {
         listener?.onSkippedQuest(questKey)
+    }
+
+    private fun tempSkipQuest() {
+        listener?.onTempSkippedQuest(questKey)
     }
 
     protected fun replaceShopElement() {

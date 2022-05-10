@@ -238,6 +238,13 @@ class QuestController(
         }
     }
 
+    suspend fun tempHide(questKey: QuestKey) = withContext(Dispatchers.IO) {
+        when (questKey) {
+            is OsmNoteQuestKey -> osmNoteQuestController.tempHide(questKey.noteId)
+            is OsmQuestKey -> osmQuestController.tempHide(questKey)
+        }
+    }
+
     /** Unhide all previously hidden quests */
     suspend fun unhideAll(): Int = withContext(Dispatchers.IO) {
         osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()

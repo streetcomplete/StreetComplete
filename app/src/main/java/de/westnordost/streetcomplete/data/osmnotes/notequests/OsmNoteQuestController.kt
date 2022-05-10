@@ -108,6 +108,10 @@ class OsmNoteQuestController(
         onUpdated(deletedQuestIds = listOf(questId))
     }
 
+    fun tempHide(questId: Long) {
+        onUpdated(deletedQuestIds = listOf(questId))
+    }
+
     /** Un-hides a specific hidden quest by user interaction */
     fun unhide(questId: Long): Boolean {
         val hidden = getHidden(questId)
