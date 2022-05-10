@@ -4,6 +4,7 @@
         <item>@string/theme_automatic</item>
         <item>@string/theme_light</item>
         <item>@string/theme_dark</item>
+        <item>@string/theme_dark_contrast</item>
         <item>@string/theme_system_default</item>
     </string-array>
 
@@ -11,6 +12,7 @@
         <item>AUTO</item>
         <item>LIGHT</item>
         <item>DARK</item>
+        <item>DARK_CONTRAST</item>
         <item>SYSTEM</item>
     </string-array>
 </resources>

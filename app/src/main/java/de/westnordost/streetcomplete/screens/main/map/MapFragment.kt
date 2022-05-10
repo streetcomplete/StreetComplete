@@ -205,7 +205,7 @@ open class MapFragment :
         lifecycle.addObserver(ctrl)
         registerResponders(ctrl)
 
-        sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider)
+        sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider, sharedPrefs)
         sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
 
         onBeforeLoadScene()
