@@ -118,6 +118,7 @@ private fun Location.isBetterThan(previous: Location?): Boolean {
         isMoreAccurate -> true
         isNewer && !isLessAccurate -> true
         isNewer && !isMuchLessAccurate && isFromSameProvider -> true
+        isNewer && !isMuchLessAccurate && this.provider == GPS_PROVIDER -> true
         else -> false
     }
 }
