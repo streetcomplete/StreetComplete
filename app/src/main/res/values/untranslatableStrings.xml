@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Street­Complete</string>
+    <string name="app_name" translatable="false">Street­Complete modified</string>
 
     <string name="label_location_name">%1$s: %2$s</string>
     <string name="label_location_name_feature">%1$s: %2$s (%3$s)</string>
