@@ -79,14 +79,18 @@ class SettingsFragment :
 
         findPreference<Preference>("delete_cache")?.setOnPreferenceClickListener {
             val dialogBinding = DialogDeleteCacheBinding.inflate(layoutInflater)
-            dialogBinding.descriptionText.text = resources.getString(R.string.delete_cache_dialog_message,
+            dialogBinding.descriptionText.text = resources.getString(R.string.delete_cache_dialog_message2,
                 (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1),
                 (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1)
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> lifecycleScope.launch { deleteCache() } }
-                .setNegativeButton(android.R.string.cancel, null)
+                .setNeutralButton(R.string.delete_confirmation_both) { _, _ -> lifecycleScope.launch {
+                    deleteTiles()
+                    deleteCache()}
+                }
+                .setPositiveButton(R.string.delete_confirmation_tiles) { _, _ -> lifecycleScope.launch { deleteTiles() }}
+                .setNegativeButton(R.string.delete_confirmation_data) { _, _ -> lifecycleScope.launch { deleteCache() }}
                 .show()
             true
         }
@@ -204,10 +208,13 @@ class SettingsFragment :
     }
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
-        context?.externalCacheDir?.purge()
         downloadedTilesDao.removeAll()
         mapDataController.clear()
         noteController.clear()
+    }
+
+    private suspend fun deleteTiles() = withContext(Dispatchers.IO) {
+        context?.externalCacheDir?.purge()
     }
 
     private fun getQuestPreferenceSummary(): String {

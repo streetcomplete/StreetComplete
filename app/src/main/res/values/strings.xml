@@ -16,6 +16,10 @@
     <string name="pref_3d_buildings_title">"Show 3D buildings"</string>
     <string name="pref_quest_geometries_title">"Display quest geometries"</string>
     <string name="pref_quest_geometries_summary">"Highlight ways and areas that have quests"</string>
+    <string name="delete_cache_dialog_message2">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.\nChoose which to remove.</string>
+    <string name="delete_confirmation_tiles">Map tiles</string>
+    <string name="delete_confirmation_data">OSM &amp; quest data</string>
+    <string name="delete_confirmation_both">Both</string>
 
     <!-- Store description -->
 
