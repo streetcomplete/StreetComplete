@@ -39,7 +39,7 @@ class AddContactWebsite(private val prefs: SharedPreferences) : OsmFilterQuestTy
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, PREF_WEBSITE_ELEMENTS, R.string.quest_settings_contact)
+        fullElementSelectionDialog(context, prefs, PREF_WEBSITE_ELEMENTS, R.string.quest_settings_contact, PLACES_FOR_CONTACT_QUESTS)
 
 }
 

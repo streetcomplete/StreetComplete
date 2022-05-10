@@ -59,7 +59,7 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
     return dialog
 }
 
-fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int): AlertDialog {
+fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String? = null): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
     textInput.addTextChangedListener {
@@ -77,7 +77,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
         }
     }
 
-    dialog = dialog(context, messageId, prefs.getString(pref, "") ?: "", textInput)
+    dialog = dialog(context, messageId, prefs.getString(pref, defaultValue ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
         }
