@@ -180,6 +180,12 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="quick_settings"
+            android:title="@string/pref_show_quick_settings_title"
+            android:defaultValue="false"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

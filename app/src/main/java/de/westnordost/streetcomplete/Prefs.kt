@@ -52,6 +52,7 @@ object Prefs {
     const val HIDE_NOTES_BY_USERS = "hide_notes_by_users"
     const val MANUAL_DOWNLOAD_OVERRIDE_CACHE = "manual_download_override_cache"
     const val SHOW_ALL_QUESTS = "show_all_quests"
+    const val QUICK_SETTINGS = "quick_settings"
 
     enum class Autosync {
         ON, WIFI, OFF

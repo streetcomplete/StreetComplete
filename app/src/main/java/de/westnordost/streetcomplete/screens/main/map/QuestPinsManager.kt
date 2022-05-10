@@ -51,6 +51,9 @@ class QuestPinsManager(
     // last displayed rect of (zoom 14) tiles
     private var lastDisplayedRect: TilesRect? = null
 
+    var reversedOrder = false
+    private set
+
     // quest key -> [point, ...]
     private val quests: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
 
@@ -184,9 +187,14 @@ class QuestPinsManager(
         }
     }
 
+    fun reverseQuestOrder() {
+        reversedOrder = !reversedOrder
+        reinitializeQuestTypeOrders()
+    }
+
     private fun initializeQuestTypeOrders() {
         // this needs to be reinitialized when the quest order changes
-        val sortedQuestTypes = questTypeRegistry.toMutableList()
+        val sortedQuestTypes = if (reversedOrder) questTypeRegistry.asReversed().toMutableList() else questTypeRegistry.toMutableList()
         questTypeOrderSource.sort(sortedQuestTypes)
         synchronized(questTypeOrders) {
             questTypeOrders.clear()

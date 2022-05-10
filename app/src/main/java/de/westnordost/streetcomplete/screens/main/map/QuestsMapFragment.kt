@@ -194,6 +194,12 @@ class QuestsMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         centerCurrentPositionIfFollowing()
     }
 
+    fun reverseQuests() {
+        questPinsManager?.reverseQuestOrder()
+    }
+
+    fun isOrderReversed() = questPinsManager?.reversedOrder
+
     /* -------------------------------  Markers for current quest ------------------------------- */
 
     override fun putMarkerForCurrentQuest(

@@ -12,6 +12,7 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
@@ -22,6 +23,7 @@ import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
@@ -54,6 +56,8 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
@@ -137,6 +141,7 @@ class MainFragment :
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
+    private val questPresetsController: QuestPresetsController by inject()
 
     private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
@@ -199,6 +204,11 @@ class MainFragment :
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
+        binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
+            View.GONE
+        else
+            View.VISIBLE
+        binding.quickSettingsButton.setOnClickListener { onClickQuickSettings() }
 
         updateMapQuestOffsets()
     }
@@ -627,6 +637,50 @@ class MainFragment :
 
     fun onClickMainMenu() {
         mainMenuButtonFragment?.onClickMainMenu()
+    }
+
+    private fun onClickQuickSettings() {
+        val popupMenu = PopupMenu(requireContext(), binding.quickSettingsButton)
+        popupMenu.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quick_switch_profile)
+        popupMenu.menu.add(Menu.NONE, 2, Menu.NONE, R.string.level_filter)
+        popupMenu.menu.add(Menu.NONE, 3, Menu.NONE,
+            if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
+        // aerial background currently crashing, thus disabled
+//        val aerial = prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != "MAP"
+//        popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, "Switch to ${if (aerial) "map" else "aerial"} background")
+        popupMenu.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                1 -> showProfileSelector()
+                2 -> this.context?.let { levelFilter.showLevelFilterDialog(it) }
+                3 -> { viewLifecycleScope.launch { mapFragment?.reverseQuests() } }
+//                4 -> prefs.edit { putString(Prefs.THEME_BACKGROUND, if (aerial) "MAP" else "AERIAL") }
+            }
+            true
+        }
+        popupMenu.show()
+    }
+
+    private fun showProfileSelector() {
+        val c = context ?: return
+        val presets = mutableListOf<QuestPreset>()
+        presets.add(QuestPreset(0, c.getString(R.string.quest_presets_default_name)))
+        presets.addAll(questPresetsController.getAll())
+        var selected = -1
+        (presets).forEachIndexed { index, questPreset ->
+            if (questPreset.id == questPresetsController.selectedId)
+                selected = index
+        }
+        var dialog: AlertDialog? = null
+        val array = presets.map { it.name }.toTypedArray()
+        val builder = AlertDialog.Builder(c)
+            .setTitle("Choose profile")
+            .setSingleChoiceItems(array, selected) { _, i ->
+                questPresetsController.selectedId = presets[i].id
+                dialog?.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+        dialog = builder.create()
+        dialog.show()
     }
 
     fun onClickZoomOut() {

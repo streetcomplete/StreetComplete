@@ -136,6 +136,14 @@
             android:clipToPadding="false"
             tools:ignore="RtlHardcoded,RtlSymmetry">
 
+            <ImageButton
+                android:id="@+id/quickSettingsButton"
+                android:layout_width="@dimen/map_button_size"
+                android:layout_height="@dimen/map_button_size"
+                android:scaleType="center"
+                style="@style/RoundWhiteButton"
+                android:src="@drawable/ic_settings_48dp"/>
+
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/undo_button_fragment"
                 android:name="de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment"
