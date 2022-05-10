@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nameInput"
     android:textSize="32sp"
-    android:completionThreshold="3"
+    android:completionThreshold="1"
     tools:text="Sparkasse Mittelholstein"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
