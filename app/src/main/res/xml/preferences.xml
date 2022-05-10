@@ -166,6 +166,13 @@
             android:key="hide_notes_by"
             android:title="@string/pref_hide_notes_title" />
 
+        <SwitchPreference
+            android:key="manual_download_override_cache"
+            android:title="@string/pref_manual_download_cache_title"
+            android:summary="@string/pref_manual_download_cache_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -4,11 +4,13 @@ import android.app.ForegroundServiceStartNotAllowedException
 import android.app.Notification
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
@@ -33,6 +35,7 @@ import org.koin.android.ext.android.inject
  */
 class DownloadService : CoroutineIntentService(TAG) {
     private val downloader: Downloader by inject()
+    private val prefs: SharedPreferences by inject()
 
     private lateinit var notification: Notification
 
@@ -76,7 +79,7 @@ class DownloadService : CoroutineIntentService(TAG) {
 
             progressListener?.onStarted()
 
-            downloader.download(tiles, isPriorityDownload)
+            downloader.download(tiles, prefs.getBoolean(Prefs.MANUAL_DOWNLOAD_OVERRIDE_CACHE, true))
         } catch (e: CancellationException) {
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {

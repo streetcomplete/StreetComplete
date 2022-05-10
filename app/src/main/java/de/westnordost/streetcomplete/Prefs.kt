@@ -50,6 +50,7 @@ object Prefs {
     const val GPS_INTERVAL = "gps_interval"
     const val NETWORK_INTERVAL = "network_interval"
     const val HIDE_NOTES_BY_USERS = "hide_notes_by_users"
+    const val MANUAL_DOWNLOAD_OVERRIDE_CACHE = "manual_download_override_cache"
 
     enum class Autosync {
         ON, WIFI, OFF
