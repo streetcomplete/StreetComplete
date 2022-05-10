@@ -167,10 +167,17 @@
             android:title="@string/pref_hide_notes_title" />
 
         <SwitchPreference
+            android:key="show_all_quests"
+            android:title="@string/pref_show_all_quests_title"
+            android:summary="@string/pref_show_all_quests_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <SwitchPreference
             android:key="manual_download_override_cache"
             android:title="@string/pref_manual_download_cache_title"
             android:summary="@string/pref_manual_download_cache_summary"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:persistent="true" />
 
     </PreferenceCategory>

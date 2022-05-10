@@ -75,8 +75,10 @@
     <string name="quest_seating_beach">At a beach</string>
     <string name="quest_outdoor_seating_name_title">What kind of outdoor seating does this place have?</string>
     <string name="hide_button">Hide</string>
-    <string name="pref_manual_download_cache_title">Always re-download data on manual download</string>
+    <string name="pref_manual_download_cache_title">Always re-download data</string>
     <string name="pref_manual_download_cache_summary">When disabled, data will not be re-downloaded until it is older than 12 hours</string>
+    <string name="pref_show_all_quests_title">Show all quests for same element</string>
+    <string name="pref_show_all_quests_summary">Shows all quest for this element when quest form is open (even hidden and disabled)</string>
 
     <!-- Store description -->
 
