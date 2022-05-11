@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable
 
 class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
@@ -91,6 +92,13 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
         // quest specific tables
         db.execSQL(WayTrafficFlowTable.CREATE)
+    }
+
+    init {
+        // create osmose table if not existing
+        // this is to avoid actual db upgrade to keep compatibility with upstream
+        writableDatabase.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)
+        writableDatabase.execSQL(OsmoseTable.CREATE_ELEMENT_INDEX_IF_NOT_EXISTS)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

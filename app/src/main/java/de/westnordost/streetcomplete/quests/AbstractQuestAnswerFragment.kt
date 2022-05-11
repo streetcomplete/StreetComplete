@@ -395,7 +395,7 @@ abstract class AbstractQuestAnswerFragment<T> :
         listener?.onSkippedQuest(questKey)
     }
 
-    private fun tempSkipQuest() {
+    protected fun tempSkipQuest() {
         listener?.onTempSkippedQuest(questKey)
     }
 

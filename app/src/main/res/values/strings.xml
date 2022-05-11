@@ -151,6 +151,13 @@
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>
     <string name="quest_tree_error">"Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note."</string>
     <string name="quest_tree_disabled_msg">This quest is disabled by default because it\'s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with translation by adding \'trees.csv\' to \`Android/data/de.westnordost.streetcomplete.modified/files\`, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
+    <string name="quest_osmose_title">Osmose quest: %s</string>
+    <string name="quest_osmose_false_positive">Report false positive</string>
+    <string name="quest_osmose_modify_tag">Modify tag</string>
+    <string name="quest_osmose_message">These quests are from Osmose service and indicate potential problems with OSM data. The message is displayed with the quest, and for some issues a tag can be edited. But often there is nothing that can be done except viewing tags, writing a note and reporting the problem as false positive.</string>
+    <string name="quest_external_osmose_not_found">Entry for this element has been removed since creation of this quest</string>
+    <string name="quest_osmose_message_for_element">Message for this element (item type %1$s): %2$s</string>
+    <string name="quest_osmose_set_value">Set new value for tag</string>
 
     <!-- Store description -->
 

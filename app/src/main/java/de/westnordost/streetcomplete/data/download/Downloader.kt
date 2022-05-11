@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.math.area
+import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
@@ -23,7 +24,8 @@ class Downloader(
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesDb: DownloadedTilesDao,
-    private val mutex: Mutex
+    private val mutex: Mutex,
+    private val osmoseDao: OsmoseDao,
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
         val bbox = tiles.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
@@ -44,6 +46,7 @@ class Downloader(
                 launch { notesDownloader.download(bbox) }
                 launch { mapDataDownloader.download(bbox) }
                 launch { mapTilesDownloader.download(bbox) }
+                launch { osmoseDao.download(bbox) } // download and put in table
             }
         }
         putDownloadedAlready(tiles)

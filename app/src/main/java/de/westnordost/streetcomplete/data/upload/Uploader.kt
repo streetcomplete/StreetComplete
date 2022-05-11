@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -23,7 +24,8 @@ class Uploader(
     private val downloadedTilesDB: DownloadedTilesDao,
     private val userLoginStatusSource: UserLoginStatusSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
-    private val mutex: Mutex
+    private val mutex: Mutex,
+    private val osmoseDao: OsmoseDao,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -63,6 +65,7 @@ class Uploader(
                 // uploaders can run concurrently
                 launch { noteEditsUploader.upload() }
                 launch { elementEditsUploader.upload(context) }
+                launch { osmoseDao.reportChanges() }
             }
         }
 

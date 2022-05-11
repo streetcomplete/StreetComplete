@@ -87,6 +87,8 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowD
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
+import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
+import de.westnordost.streetcomplete.quests.osmose.OsmoseQuest
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
@@ -174,6 +176,7 @@ import java.util.concurrent.FutureTask
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
     factory { WayTrafficFlowDao(get()) }
+    single { OsmoseDao(get(), get(), get()) }
 
     single { questTypeRegistry(
         get(),
@@ -181,6 +184,7 @@ val questsModule = module {
         get(named("FeatureDictionaryFuture")),
         get(),
         get(named("CountryBoundariesFuture")),
+        get(),
         get(),
         get(),
     ) }
@@ -194,6 +198,7 @@ fun questTypeRegistry(
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
     prefs: SharedPreferences,
+    osmoseDao: OsmoseDao,
 ) = QuestTypeRegistry(listOf<QuestType<*>>(
 
     /* The quest types are primarily sorted by how easy they can be solved:
@@ -484,4 +489,5 @@ fun questTypeRegistry(
     ShowVacant(),
     ShowCamera(),
     ShowFixme(prefs),
+    OsmoseQuest(osmoseDao, prefs),
 ))
