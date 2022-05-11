@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import android.content.Context
+import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
@@ -40,12 +42,14 @@ import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.quests.numberSelectionDialog
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 import java.util.concurrent.FutureTask
 
 class AddCycleway(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val prefs: SharedPreferences,
 ) : OsmElementQuestType<CyclewayAnswer> {
 
     override val changesetComment = "Add whether there are cycleways"
@@ -146,7 +150,7 @@ class AddCycleway(
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f)
         ) / 2f +
-        4f // + generous buffer for possible grass verge
+        prefs.getInt(PREF_CYCLEWAY_DISTANCE, 4).toFloat() // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -302,6 +306,11 @@ class AddCycleway(
         tags.remove("sidewalk$sideVal:bicycle")
     }
 
+    override val hasQuestSettings = true
+
+    override fun getQuestSettingsDialog(context: Context) =
+        numberSelectionDialog(context, prefs, PREF_CYCLEWAY_DISTANCE, 4, R.string.quest_settings_sidewalk_distance_message)
+
     companion object {
 
         /* Excluded is
@@ -393,3 +402,5 @@ class AddCycleway(
 
 private fun LeftAndRightCycleway.any(block: (cycleway: Cycleway) -> Boolean): Boolean =
     left?.let(block) == true || right?.let(block) == true
+
+private const val PREF_CYCLEWAY_DISTANCE = "quest_cycleway_distance"
