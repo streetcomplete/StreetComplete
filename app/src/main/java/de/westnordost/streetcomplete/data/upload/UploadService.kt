@@ -68,7 +68,7 @@ class UploadService : CoroutineIntentService(TAG) {
             isUploading = true
             progressListener?.onStarted()
 
-            uploader.upload()
+            uploader.upload(applicationContext)
         } catch (e: Exception) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && e is ForegroundServiceStartNotAllowedException) {
                 // ok. Nevermind then.

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
+import android.content.Context
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
@@ -44,7 +45,7 @@ class Uploader(
         elementEditsUploader.uploadedChangeListener = uploadedChangeRelay
     }
 
-    suspend fun upload() {
+    suspend fun upload(context: Context) {
         val banned = withContext(Dispatchers.IO) { bannedInfo }
         if (banned is IsBanned) {
             throw VersionBannedException(banned.reason)
@@ -61,7 +62,7 @@ class Uploader(
             coroutineScope {
                 // uploaders can run concurrently
                 launch { noteEditsUploader.upload() }
-                launch { elementEditsUploader.upload() }
+                launch { elementEditsUploader.upload(context) }
             }
         }
 
