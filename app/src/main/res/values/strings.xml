@@ -88,6 +88,9 @@
     <string name="level_filter_message">Enter level value, or filter using &gt; and &lt;</string>
     <string name="level_filter_hint">Leave empty to show not tagged</string>
     <string name="level_filter_enable">Enable level filter</string>
+    <string name="quest_smoothness_square_title2">What’s the surface quality of this %s square?</string>
+    <string name="quest_smoothness_road_title2">What’s the surface quality of this %s road here?</string>
+    <string name="quest_smoothness_title2">What’s the surface quality here (%s)?</string>
 
     <!-- Store description -->
 
