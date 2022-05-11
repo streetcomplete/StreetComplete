@@ -99,6 +99,7 @@
     <string name="advanced_resurvey_hint_keys">Separate multiple keys using comma</string>
     <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
     <string name="quest_way_private">It’s private</string>
+    <string name="quest_buildingType_answer_demolished">It’s demolished (traces visible)</string>
 
     <!-- Store description -->
 

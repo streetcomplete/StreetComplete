@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.CIVIC
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.COLLEGE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.COMMERCIAL
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.CONSTRUCTION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.DEMOLISHED
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.DETACHED
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.DORMITORY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM
@@ -138,6 +139,7 @@ fun BuildingType.asItem(): Item<BuildingType?> = when (this) {
     RELIGIOUS -> BuildingTypeCategory.RELIGIOUS.asItem()
 
     CONSTRUCTION -> Item(null) // This does not need details, as it's part of "Other answers"
+    DEMOLISHED -> Item(null) // This does not need details, as it's part of "Other answers"
 }
 
 fun Array<BuildingTypeCategory>.toItems() = this.map { it.asItem() }

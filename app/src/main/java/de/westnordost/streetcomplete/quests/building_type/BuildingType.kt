@@ -129,7 +129,8 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     CIVIC           ("building", "civic"),
     RELIGIOUS       ("building", "religious"),
 
-    CONSTRUCTION    ("building", "construction");
+    CONSTRUCTION    ("building", "construction"),
+    DEMOLISHED      ("demolished:building", "yes");
 
     companion object {
         fun getByTag(key: String, value: String): BuildingType? {
