@@ -210,7 +210,7 @@ class QuestPinsManager(
         val color = quest.type.dotColor
         val importance = getQuestImportance(quest)
         val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false)
-                && quest.geometry !is ElementPointGeometry && color != "no")
+                && quest.geometry !is ElementPointGeometry && color == "no")
             quest.geometry
         else
             null
