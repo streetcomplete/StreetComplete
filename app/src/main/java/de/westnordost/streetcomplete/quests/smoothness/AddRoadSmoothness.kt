@@ -53,6 +53,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
                 tags.removeCheckDatesForKey("smoothness")
             }
             is IsActuallyStepsAnswer -> throw IllegalStateException()
+            is IsPrivateAnswer -> tags["access"] = "private"
         }
     }
 }

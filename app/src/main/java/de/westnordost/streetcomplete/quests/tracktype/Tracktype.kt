@@ -6,4 +6,5 @@ enum class Tracktype(val osmValue: String) {
     GRADE3("grade3"),
     GRADE4("grade4"),
     GRADE5("grade5"),
+    PRIVATE("private"),
 }

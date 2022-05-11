@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 
-class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
+class AddRoadSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -41,7 +41,10 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun createForm() = AddRoadSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        answer.applyTo(tags, "surface")
+    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
+        if (answer is SurfaceAnswer)
+            answer.applyTo(tags, "surface")
+        else if (answer is IsPrivateAnswer)
+            tags["access"] = "private"
     }
 }

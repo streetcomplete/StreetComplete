@@ -57,6 +57,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
                 tags.remove("smoothness:date")
                 tags.removeCheckDatesForKey("smoothness")
             }
+            is IsPrivateAnswer -> tags["access"] = "private"
         }
     }
 }

@@ -98,6 +98,7 @@
     <string name="advanced_resurvey_message_date">Instead of using resurvey intervals, resurvey above keys if check date older than:</string>
     <string name="advanced_resurvey_hint_keys">Separate multiple keys using comma</string>
     <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
+    <string name="quest_way_private">It’s private</string>
 
     <!-- Store description -->
 

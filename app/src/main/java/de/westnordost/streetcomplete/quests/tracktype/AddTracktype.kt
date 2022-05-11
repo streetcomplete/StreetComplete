@@ -31,6 +31,9 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
     override fun createForm() = AddTracktypeForm()
 
     override fun applyAnswerTo(answer: Tracktype, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("tracktype", answer.osmValue)
+        if (answer.osmValue == "private")
+            tags["access"] = "private"
+        else
+            tags.updateWithCheckDate("tracktype", answer.osmValue)
     }
 }

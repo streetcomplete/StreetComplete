@@ -3,11 +3,16 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
+class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
     override val items: List<Item<Surface>>
         get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_way_private) { applyAnswer(IsPrivateAnswer) }
+    )
 
     override val itemsPerRow = 3
 
