@@ -106,6 +106,8 @@
     <string name="pref_show_gpx_button_title">Show GPX note button</string>
     <string name="pref_show_gpx_button_summary">Notes are stored to Android/data/de.westnordost.streetcomplete.modified/files/notes.gpx</string>
     <string name="pref_swap_gpx_note_button">Swap OSM and GPX note buttons</string>
+    <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
+    <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
 
     <!-- Store description -->
 

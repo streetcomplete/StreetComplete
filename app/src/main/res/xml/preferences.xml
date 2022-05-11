@@ -204,6 +204,13 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="hide_keyboard_for_note"
+            android:title="@string/pref_hide_keyboard_title"
+            android:summary="@string/pref_hide_keyboard_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
