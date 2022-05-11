@@ -46,6 +46,10 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
         } else if (answer.osmKey == "demolished:building") {
             tags.remove("building")
             tags[answer.osmKey] = answer.osmValue
+        } else if (answer.osmValue == "transformer_tower") {
+            tags["building"] = answer.osmValue
+            tags["power"] = "substation"
+            tags["substation"] = "minor_distribution"
         } else if (answer.osmKey != "building") {
             tags[answer.osmKey] = answer.osmValue
             if (answer == BuildingType.ABANDONED) {

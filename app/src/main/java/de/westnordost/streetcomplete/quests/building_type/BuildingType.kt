@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_type
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.ABANDONED
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.ALLOTMENT_HOUSE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.APARTMENTS
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.BARN
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.BOATHOUSE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.BRIDGE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.BUNGALOW
@@ -12,7 +13,9 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.CATHEDRAL
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.CHAPEL
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.CHURCH
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.COLLEGE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.COWSHED
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.DETACHED
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.DIGESTER
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.DORMITORY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM_AUXILIARY
@@ -36,7 +39,9 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.MOSQUE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.OFFICE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.PAGODA
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.PARKING
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.PRESBYTERY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.RETAIL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.RIDING_HALL
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.ROOF
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.RUINS
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.SCHOOL
@@ -46,14 +51,18 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.SHED
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.SHRINE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.SILO
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.SPORTS_CENTRE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.SPORTS_HALL
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.STABLE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.STADIUM
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.STATIC_CARAVAN
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.STORAGE_TANK
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.STY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.SYNAGOGUE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TEMPLE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TERRACE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TOILETS
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRAIN_STATION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSFORMER_TOWER
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSPORTATION
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.UNIVERSITY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.WAREHOUSE
@@ -99,6 +108,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     PAGODA          ("building", "pagoda"),
     SYNAGOGUE       ("building", "synagogue"),
     SHRINE          ("building", "shrine"),
+    PRESBYTERY      ("building", "presbytery"),
 
     CARPORT         ("building", "carport"),
     GARAGE          ("building", "garage"),
@@ -109,6 +119,10 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     FARM_AUXILIARY  ("building", "farm_auxiliary"),
     SILO            ("man_made", "silo"),
     GREENHOUSE      ("building", "greenhouse"),
+    BARN            ("building", "barn"),
+    COWSHED         ("building", "cowshed"),
+    STABLE          ("building", "stable"),
+    STY             ("building", "sty"),
 
     SHED            ("building", "shed"),
     ALLOTMENT_HOUSE ("building", "allotment_house"),
@@ -116,9 +130,13 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     BRIDGE          ("building", "bridge"),
     TOILETS         ("building", "toilets"),
     SERVICE         ("building", "service"),
+    TRANSFORMER_TOWER ("building", "transformer_tower"),
     HANGAR          ("building", "hangar"),
     BUNKER          ("building", "bunker"),
     BOATHOUSE       ("building", "boathouse"),
+    RIDING_HALL     ("building", "riding_hall"),
+    SPORTS_HALL     ("building", "sports_hall"),
+    DIGESTER        ("building", "digester"),
 
     HISTORIC        ("historic", "yes"),
     ABANDONED       ("abandoned", "yes"),
@@ -147,24 +165,24 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
         STATIC_CARAVAN, DORMITORY
     )),
     COMMERCIAL(BuildingType.COMMERCIAL, listOf(
-        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK, BUNGALOW, BRIDGE
+        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK, BUNGALOW, BRIDGE, DIGESTER
     )),
     CIVIC(BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
-        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION, OFFICE, GRANDSTAND
+        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION, OFFICE, GRANDSTAND, SPORTS_HALL,
     )),
     RELIGIOUS(BuildingType.RELIGIOUS, listOf(
-        CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
+        CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE, PRESBYTERY
     )),
     FOR_CARS(null, listOf(
         GARAGE, GARAGES, CARPORT, PARKING
     )),
     FOR_FARMS(null, listOf(
-        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED, ALLOTMENT_HOUSE
+        FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED, ALLOTMENT_HOUSE, BARN, COWSHED, STABLE, STY
     )),
     OTHER(null, listOf(
-        SHED, ROOF, BRIDGE, ALLOTMENT_HOUSE, SERVICE, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, BOATHOUSE,
-        ABANDONED, RUINS
+        SHED, ROOF, BRIDGE, ALLOTMENT_HOUSE, SERVICE, TRANSFORMER_TOWER, HUT, TOILETS, HANGAR, BUNKER, HISTORIC, BOATHOUSE,
+        ABANDONED, RUINS, RIDING_HALL,
     )),
 }
 
