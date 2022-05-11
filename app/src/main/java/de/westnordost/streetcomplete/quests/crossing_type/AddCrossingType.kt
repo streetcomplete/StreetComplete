@@ -77,5 +77,7 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
                 tags["crossing:island"] = "yes"
             }
         }
+        if (answer.raised)
+            tags["traffic_calming"] = "table"
     }
 }

@@ -145,6 +145,9 @@
     <string name="quest_recycling_excrement_bag_dispenser">It has an excrement bag dispenser</string>
     <string name="pref_offset_fix_title">Remove quest marker offsets</string>
     <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
+    <string name="quest_crossing_type_marked_raised">Raised with markings</string>
+    <string name="quest_crossing_type_unmarked_raised">Raised without road markings</string>
+    <string name="quest_crossing_type_zebra">Zebra</string>
 
     <!-- Store description -->
 
