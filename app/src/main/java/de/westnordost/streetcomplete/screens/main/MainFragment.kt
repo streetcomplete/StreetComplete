@@ -208,9 +208,9 @@ class MainFragment :
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
         binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
-            View.GONE
-        else
             View.VISIBLE
+        else
+            View.GONE
         binding.quickSettingsButton.setOnClickListener { onClickQuickSettings() }
 
         updateMapQuestOffsets()
