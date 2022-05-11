@@ -143,6 +143,8 @@
     <string name="quest_settings_fixme_title">Select fixme values to ignore</string>
     <string name="quest_traffic_stuff_raised">It’s a raised crossing</string>
     <string name="quest_recycling_excrement_bag_dispenser">It has an excrement bag dispenser</string>
+    <string name="pref_offset_fix_title">Remove quest marker offsets</string>
+    <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
 
     <!-- Store description -->
 

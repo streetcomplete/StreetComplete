@@ -77,12 +77,13 @@ class SceneMapComponent(
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
         val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
         val isHighContrastNightMode = theme == Prefs.Theme.DARK_CONTRAST
-        val april1 = if (isApril1st() && !isHighContrastNightMode) "wonky-" else ""
+        val offsetFix = if (prefs.getBoolean(Prefs.OFFSET_FIX, false)) "-offset-fix" else ""
+        val april1 = if (isApril1st() && !isHighContrastNightMode && offsetFix.isNotEmpty()) "wonky-" else ""
         val scene = april1 + when {
-            isAerialView -> "scene-satellite.yaml"
-            isHighContrastNightMode -> "scene-dark-contrast.yaml"
-            isNightMode -> "scene-dark.yaml"
-            else -> "scene-light.yaml"
+            isAerialView -> "scene-satellite$offsetFix.yaml"
+            isHighContrastNightMode -> "scene-dark-contrast$offsetFix.yaml"
+            isNightMode -> "scene-dark$offsetFix.yaml"
+            else -> "scene-light$offsetFix.yaml"
         }
         return "${vectorTileProvider.sceneFilePath}/$scene"
     }
