@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
@@ -8,16 +9,20 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
+import org.koin.android.ext.android.inject
 
 /** Abstract base class for a bottom sheet that lets the user create a note */
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     protected abstract val noteInput: EditText
     protected abstract val okButton: View
+    protected abstract val gpxButton: View
+    protected val prefs: SharedPreferences by inject()
 
     private val attachPhotoFragment: AttachPhotoFragment?
         get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment?
@@ -36,13 +41,14 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         }
 
         noteInput.doAfterTextChanged { updateOkButtonEnablement() }
-        okButton.setOnClickListener { onClickOk() }
+        okButton.setOnClickListener { onClickOk(false) }
+        gpxButton.setOnClickListener { onClickOk(true) }
 
         updateOkButtonEnablement()
     }
 
-    private fun onClickOk() {
-        onComposedNote(noteText, attachPhotoFragment?.imagePaths.orEmpty())
+    private fun onClickOk(isGpxNote: Boolean) {
+        onComposedNote(noteText, attachPhotoFragment?.imagePaths.orEmpty(), isGpxNote)
     }
 
     override fun onDiscard() {
@@ -55,10 +61,14 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     private fun updateOkButtonEnablement() {
         if (noteText.isNotEmpty()) {
             okButton.popIn()
+            if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
+                gpxButton.popIn()
         } else {
             okButton.popOut()
+            if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
+                gpxButton.popOut()
         }
     }
 
-    protected abstract fun onComposedNote(text: String, imagePaths: List<String>)
+    protected abstract fun onComposedNote(text: String, imagePaths: List<String>, isGpxNote: Boolean)
 }

@@ -106,6 +106,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import java.io.File
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -519,13 +520,15 @@ class MainFragment :
 
     /* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
 
-    override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>) {
+    override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>, isGpxNote: Boolean) {
         // the quest is deleted from DB on creating a note, so need to fetch quest before
         viewLifecycleScope.launch {
             val quest = questController.get(questKey)
             if (quest != null) {
                 closeBottomSheet()
-                if (questController.createNote(questKey, questTitle, note, imagePaths)) {
+                if (isGpxNote)
+                    onCreatedGpxNote("$questTitle: $note", imagePaths, quest.position)
+                else if (questController.createNote(questKey, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
                 }
             }
@@ -534,7 +537,7 @@ class MainFragment :
 
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
-    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point) {
+    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, isGpxNote: Boolean) {
         val mapFragment = mapFragment ?: return
         val mapView = mapFragment.view ?: return
         if (!mapFragment.isMapInitialized) return
@@ -550,10 +553,40 @@ class MainFragment :
          */
         closeBottomSheet()
 
-        viewLifecycleScope.launch { questController.createNote(note, imagePaths, position) }
+        if (isGpxNote)
+            onCreatedGpxNote(note, imagePaths, position)
+        else
+            viewLifecycleScope.launch { questController.createNote(note, imagePaths, position) }
 
         listener?.onCreatedNote(screenPosition)
         showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
+    }
+
+    private fun onCreatedGpxNote(note: String, imagePaths: List<String>, position: LatLon) {
+        val path = context?.getExternalFilesDir(null) ?: return
+        path.mkdirs()
+        val fileName = "notes.gpx"
+        val gpxFile = File(path,fileName)
+        if (gpxFile.createNewFile()) // if this file did not exist
+            gpxFile.writeText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<gpx \n" +
+                " xmlns=\"http://www.topografix.com/GPX/1/1\" \n" +
+                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \n" +
+                " xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
+                "</gpx>", Charsets.UTF_8)
+        // now delete the last 6 characters, which is <\gpx>
+        val oldText = gpxFile.readText(Charsets.UTF_8).dropLast(6)
+        // save image file names (this is not nice, but better than not keeping any reference to them
+        val imageText = if (imagePaths.isEmpty()) "" else
+            "\n images used: ${imagePaths.joinToString(", ")}"
+        gpxFile.writeText(oldText +" <wpt lon=\"" + position.longitude + "\" lat=\"" + position.latitude + "\">\n" +
+            "  <name>" + (note + imageText).replace("&","&amp;")
+            .replace("<","&lt;")
+            .replace(">","&gt;")
+            .replace("\"","&quot;")
+            .replace("'","&apos;") + "</name>\n" +
+            " </wpt>\n" +
+            "</gpx>", Charsets.UTF_8)
     }
 
     //endregion

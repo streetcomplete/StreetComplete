@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
@@ -28,14 +29,21 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
     override val bottomSheetContent get() = binding.speechbubbleContentContainer
     override val floatingBottomView get() = binding.okButton
     override val backButton get() = binding.closeButton
-    override val okButton get() = binding.okButton
+    override val gpxButton get() = if (prefs.getBoolean(Prefs.SWAP_GPX_NOTE_BUTTONS, false) && prefs.getBoolean(Prefs.GPX_BUTTON, false))
+            binding.okButton
+        else
+            binding.hideButton
+    override val okButton get() = if (prefs.getBoolean(Prefs.SWAP_GPX_NOTE_BUTTONS, false) && prefs.getBoolean(Prefs.GPX_BUTTON, false))
+            binding.hideButton
+        else
+            binding.okButton
 
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 
     override val noteInput get() = contentBinding.noteInput
 
     interface Listener {
-        fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>)
+        fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>, isGpxNote: Boolean)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -60,6 +68,10 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         binding.buttonPanel.isGone = true
         contentBinding.descriptionLabel.isGone = true
         binding.titleLabel.text = getString(R.string.map_btn_create_note)
+        if (prefs.getBoolean(Prefs.GPX_BUTTON, false)) {
+            gpxButton.text = "GPX"
+            okButton.text = "OSM"
+        }
     }
 
     override fun onDestroyView() {
@@ -67,8 +79,8 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
         _binding = null
     }
 
-    override fun onComposedNote(text: String, imagePaths: List<String>) {
-        listener?.onCreatedNoteInstead(questKey, questTitle, text, imagePaths)
+    override fun onComposedNote(text: String, imagePaths: List<String>, isGpxNote: Boolean) {
+        listener?.onCreatedNoteInstead(questKey, questTitle, text, imagePaths, isGpxNote)
     }
 
     companion object {

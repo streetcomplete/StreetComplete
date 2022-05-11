@@ -191,6 +191,19 @@
             android:title="@string/pref_advanced_resurvey_title"
             android:summary="@string/pref_advanced_resurvey_summary" />
 
+        <SwitchPreference
+            android:key="gpx_button"
+            android:title="@string/pref_show_gpx_button_title"
+            android:summary="@string/pref_show_gpx_button_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:key="swap_gpx_note_buttons"
+            android:title="@string/pref_swap_gpx_note_button"
+            android:defaultValue="false"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

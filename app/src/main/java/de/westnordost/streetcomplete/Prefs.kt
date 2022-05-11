@@ -57,6 +57,8 @@ object Prefs {
     const val ALLOWED_LEVEL_TAGS = "allowed_level_tags"
     const val RESURVEY_KEYS = "resurvey_keys"
     const val RESURVEY_DATE = "resurvey_date"
+    const val GPX_BUTTON = "gpx_button"
+    const val SWAP_GPX_NOTE_BUTTONS = "swap_gpx_note_buttons"
 
     enum class Autosync {
         ON, WIFI, OFF

@@ -13,6 +13,7 @@ import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.core.view.isGone
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
@@ -35,7 +36,14 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val bottomSheetContent get() = bottomSheetBinding.speechbubbleContentContainer
     override val floatingBottomView get() = bottomSheetBinding.okButton
     override val backButton get() = bottomSheetBinding.closeButton
-    override val okButton get() = bottomSheetBinding.okButton
+    override val gpxButton get() = if (prefs.getBoolean(Prefs.SWAP_GPX_NOTE_BUTTONS, false) && prefs.getBoolean(Prefs.GPX_BUTTON, false))
+            bottomSheetBinding.okButton
+        else
+            bottomSheetBinding.hideButton
+    override val okButton get() = if (prefs.getBoolean(Prefs.SWAP_GPX_NOTE_BUTTONS, false) && prefs.getBoolean(Prefs.GPX_BUTTON, false))
+            bottomSheetBinding.hideButton
+        else
+            bottomSheetBinding.okButton
 
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 
@@ -43,7 +51,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     interface Listener {
         /** Called when the user wants to leave a note which is not related to a quest  */
-        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point)
+        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, isGpxNote: Boolean)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -64,6 +72,10 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         bottomSheetBinding.titleLabel.text = getString(R.string.map_btn_create_note)
         contentBinding.descriptionLabel.text = getString(R.string.create_new_note_description)
+        if (prefs.getBoolean(Prefs.GPX_BUTTON, false)) {
+            gpxButton.text = "GPX"
+            okButton.text = "OSM"
+        }
     }
 
     override fun onDestroyView() {
@@ -103,10 +115,10 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
     }
 
-    override fun onComposedNote(text: String, imagePaths: List<String>) {
+    override fun onComposedNote(text: String, imagePaths: List<String>, isGpxNote: Boolean) {
         /* pressing once on "OK" should first only close the keyboard, so that the user can review
            the position of the note he placed */
-        if (contentBinding.noteInput.hideKeyboard() == true) return
+//        if (contentBinding.noteInput.hideKeyboard() == true) return
 
         val screenPos = binding.markerCreateLayout.createNoteMarker.getLocationInWindow()
         screenPos.offset(
@@ -116,6 +128,6 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
-        listener?.onCreatedNote(text, imagePaths, screenPos)
+        listener?.onCreatedNote(text, imagePaths, screenPos, isGpxNote)
     }
 }
