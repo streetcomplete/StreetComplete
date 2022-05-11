@@ -157,6 +157,30 @@ class QuestController(
         return tags.create()
     }
 
+    suspend fun changeTags(q: OsmQuest, newTags: Map<String, String>, source: String): Boolean =
+    withContext(Dispatchers.IO) {
+        val e = getOsmElement(q) ?: return@withContext false
+        val tags = StringMapChangesBuilder(e.tags)
+
+        for (key in e.tags.keys) {
+            if (!newTags.containsKey(key))
+                tags.remove(key)
+        }
+
+        for ((key, value) in newTags) {
+            if (tags[key] == value) continue
+            tags[key] = value
+        }
+
+        val changes = tags.create()
+
+        Log.d(TAG, "Changed tags of ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
+
+        elementEditsController.add(q.osmElementQuestType, e, q.geometry, source, UpdateElementTagsAction(changes))
+
+        return@withContext true
+    }
+
     /** Apply the user's answer to the given quest.
      * @return true if successful
      */

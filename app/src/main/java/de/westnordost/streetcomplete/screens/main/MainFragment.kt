@@ -457,6 +457,16 @@ class MainFragment :
         }
     }
 
+    override fun onChangedTags(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
+        viewLifecycleScope.launch {
+            solveQuest(osmQuestKey) { quest ->
+                if (questController.changeTags(quest as OsmQuest, tags, "survey")) {
+                    onQuestSolved(quest, "survey")
+                }
+            }
+        }
+    }
+
     private suspend fun solveQuest(questKey: QuestKey, onIsSurvey: suspend (quest: Quest) -> Unit) {
         val f = (bottomSheetFragment as? IsLockable)
         f?.locked = true

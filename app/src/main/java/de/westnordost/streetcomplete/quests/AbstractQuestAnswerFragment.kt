@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.AnyThread
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
+import androidx.core.widget.addTextChangedListener
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -151,6 +154,9 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         /** Called when a new feature has been selected for an element (a shop of some kind) */
         fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>)
+
+        /** Called when tags have been changed manually by the user */
+        fun onChangedTags(osmQuestKey: OsmQuestKey, tags: Map<String, String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -227,6 +233,9 @@ abstract class AbstractQuestAnswerFragment<T> :
         val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
+        val showTags = AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags() }
+        answers.add(showTags)
+
         createSplitWayAnswer()?.let { answers.add(it) }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
 
@@ -285,6 +294,53 @@ abstract class AbstractQuestAnswerFragment<T> :
         popup.setOnMenuItemClickListener { item ->
             answers[item.itemId].action()
             true
+        }
+    }
+
+    private fun onClickEditTags() {
+        val tags = osmElement?.tags ?: return
+        context?.let { c ->
+
+            var dialog: AlertDialog? = null
+            val editField = EditText(c)
+            editField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS// or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            editField.setText(tags.map { "${it.key}=${it.value}" }.joinToString("\n"))
+            editField.addTextChangedListener { text ->
+                var enabled = true
+                val keys = mutableSetOf<String>()
+                val tagsNew = mutableMapOf<String, String>()
+                text.toString().split("\n").forEach {
+                    if (it.isBlank()) return@forEach // allow empty lines
+                    if (!it.contains("=") // no key-value separator
+                        || it.substringBefore("=").isBlank() // no key
+                        || it.substringAfter("=").isBlank() // no value
+                        || !keys.add(it.substringBefore("="))) { // key already exists
+                        enabled = false
+                        return@forEach
+                    }
+                    tagsNew[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+                }
+                if (tags.entries.containsAll(tagsNew.entries) && tagsNew.entries.containsAll(tags.entries))
+                    enabled = false // tags not changed
+                dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
+            }
+
+            dialog = AlertDialog.Builder(c)
+                .setTitle(R.string.quest_edit_tags_title)
+                .setView(editField)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.quest_edit_tags_save) { _,_ ->
+                    // validity of tags already checked, and tags have changed
+                    val tagsNew = mutableMapOf<String, String>()
+                    editField.text.toString().split("\n").forEach {
+                        if (it.isBlank()) return@forEach
+                        tagsNew[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+                    }
+                    listener?.onChangedTags(questKey as OsmQuestKey, tagsNew)
+                }
+                .create()
+            dialog.show()
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
         }
     }
 

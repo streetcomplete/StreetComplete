@@ -166,4 +166,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractQuestAnswerFragment.Liste
     override fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
         popQuestForm("Replacing shop element")
     }
+    override fun onChangedTags(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
+        popQuestForm("Changing tags")
+    }
 }
