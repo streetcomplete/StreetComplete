@@ -110,13 +110,13 @@ fun Cycleway.getTitleResId(): Int = when (this) {
 }
 
 val DISPLAYED_CYCLEWAY_ITEMS: List<Cycleway> = listOf(
-    NONE,
     TRACK,
     EXCLUSIVE_LANE,
     ADVISORY_LANE,
     UNSPECIFIED_LANE,
     SUGGESTION_LANE,
     SEPARATE,
+    NONE,
     PICTOGRAMS,
     BUSWAY,
     SIDEWALK_EXPLICIT,
