@@ -71,7 +71,7 @@ import de.westnordost.streetcomplete.quests.getNameLabel
 }
 
 fun getTitle(map: Map<String, String>): String? {
-    return getNameLabel(map) ?: getHouseNumber(map)
+    return getNameLabel(map) ?: getHouseNumber(map) ?: getTreeGenus(map)
 }
 
 private fun getHouseNumber(map: Map<String, String>): String? {
@@ -87,4 +87,15 @@ private fun getHouseNumber(map: Map<String, String>): String? {
         houseNumber != null -> houseNumber
         else -> null
     }
+}
+
+fun getTreeGenus(map: Map<String, String>): String? {
+    if (map["natural"] != "tree") return null
+    map["species"]?.let { return it }
+    map["genus"]?.let { return it }
+    map.keys.forEach {
+        if (it.startsWith("genus:") || it.startsWith("species:"))
+            return map[it]
+    }
+    return null
 }

@@ -250,3 +250,5 @@ tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/
 vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
 vibrating_button_i... (MCC234) CC0               CJ Malone
 vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)
+
+ic_quest_tree.xml              Public Domain     https://commons.wikimedia.org/wiki/File:Broccoli-tree.svg (Dvortygirl
