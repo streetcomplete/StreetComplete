@@ -6,11 +6,11 @@ import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.download.tiles.minTileRect
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -207,13 +207,14 @@ class QuestPinsManager(
     private fun createQuestPins(quest: Quest): List<Pin> {
         val iconName = resources.getResourceEntryName(quest.type.icon)
         val props = quest.key.toProperties()
+        val color = quest.type.dotColor
         val importance = getQuestImportance(quest)
-        val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) &&
-            quest.geometry !is ElementPointGeometry)
+        val geometry = if (prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false)
+                && quest.geometry !is ElementPointGeometry && color != "no")
             quest.geometry
         else
             null
-        return quest.markerLocations.map { Pin(it, iconName, props, importance, geometry) }
+        return quest.markerLocations.map { Pin(it, iconName, props, importance, geometry, color) }
     }
 
     /** returns values from 0 to 100000, the higher the number, the more important */

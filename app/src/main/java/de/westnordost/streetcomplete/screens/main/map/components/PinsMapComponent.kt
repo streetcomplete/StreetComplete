@@ -28,7 +28,8 @@ class PinsMapComponent(ctrl: KtMapController) {
             Point(pin.position.toLngLat(), mapOf(
                 "type" to "point",
                 "kind" to pin.iconName,
-                "importance" to pin.importance.toString()
+                "importance" to pin.importance.toString(),
+                "poi_color" to pin.color
             ) + pin.properties)
         })
         val questGeometries = pins.mapNotNull { it.geometry?.toTangramGeometry() }.flatten()
@@ -53,4 +54,5 @@ data class Pin(
     val properties: Map<String, String> = emptyMap(),
     val importance: Int = 0,
     val geometry: ElementGeometry? = null,
+    val color: String = "no",
 )

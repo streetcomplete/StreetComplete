@@ -119,6 +119,16 @@ import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingT
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
+import de.westnordost.streetcomplete.quests.show_poi.ShowSeating
+import de.westnordost.streetcomplete.quests.show_poi.ShowBicycleStuff
+import de.westnordost.streetcomplete.quests.show_poi.ShowBusiness
+import de.westnordost.streetcomplete.quests.show_poi.ShowCamera
+import de.westnordost.streetcomplete.quests.show_poi.ShowFixme
+import de.westnordost.streetcomplete.quests.show_poi.ShowMachine
+import de.westnordost.streetcomplete.quests.show_poi.ShowOther
+import de.westnordost.streetcomplete.quests.show_poi.ShowRecycling
+import de.westnordost.streetcomplete.quests.show_poi.ShowTrafficStuff
+import de.westnordost.streetcomplete.quests.show_poi.ShowVacant
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.smoking.AddSmoking
 import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
@@ -461,4 +471,15 @@ fun questTypeRegistry(
     AddServiceBuildingType(),
     AddServiceBuildingOperator(),
     AddOutdoorSeatingType(),
+    // POI quests
+    ShowBicycleStuff(),
+    ShowSeating(),
+    ShowBusiness(),
+    ShowOther(),
+    ShowTrafficStuff(),
+    ShowRecycling(),
+    ShowMachine(),
+    ShowVacant(),
+    ShowCamera(),
+    ShowFixme(prefs),
 ))

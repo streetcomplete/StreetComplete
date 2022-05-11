@@ -40,4 +40,5 @@ interface QuestType<T> {
     fun getQuestSettingsDialog(context: Context): AlertDialog? = null
     val hasQuestSettings: Boolean get() = false
 
+    val dotColor: String get() = "no"
 }

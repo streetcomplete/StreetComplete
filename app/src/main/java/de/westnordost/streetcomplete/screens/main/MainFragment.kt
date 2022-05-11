@@ -965,7 +965,7 @@ class MainFragment :
                     val q = questController.getOtherQuestsForSameElement(quest)
                     q.forEach { osmQuest ->
                         if (osmQuest == quest) return@forEach // ignore current quest
-//                        if (osmQuest.type.dotColor != "no") return@forEach // ignore poi quests
+                        if (osmQuest.type.dotColor != "no") return@forEach // ignore poi quests
                         // ignore disabled quests? or not? what about hidden?
                         val questView = ImageButton(context)
                         questView.setImageResource(osmQuest.osmElementQuestType.icon)

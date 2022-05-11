@@ -53,6 +53,7 @@ styles:
 layers:
     streetcomplete_selected_pins:
         data: { source: streetcomplete_selected_pins }
+        filter: { poi_color: no }
         draw:
             selected-pin-icons:
                 size: 66px
@@ -63,7 +64,7 @@ layers:
     streetcomplete_pins:
         data: { source: streetcomplete_pins }
         pins:
-            filter: { $zoom: { min: 14 } }
+            filter: { $zoom: { min: 14 }, poi_color: no }
             draw:
                 pin-icons:
                     interactive: true
@@ -74,8 +75,19 @@ layers:
                     sprite: function() { return feature.kind }
                     sprite_default: quest
                     offset: [-8px, -33px]
+        poi_dots:
+            filter: { $zoom: { min: 18 }, not: { poi_color: no } }
+            draw:
+                pin-dots:
+                    interactive: true
+                    priority: 1
+                    order: 0
+                    size: 24px
+                    color: function() { return feature.poi_color }
+                    collide: false
+                    offset: [-1.5px, -12px]
         dots_no_collide:
-            filter: { $zoom: { min: 16 } }
+            filter: { $zoom: { min: 16 }, poi_color: no }
             draw:
                 pin-dots:
                     priority: 1
@@ -84,7 +96,7 @@ layers:
                     collide: false
                     offset: [-1.5px, -12px]
         dots:
-            filter: { $zoom: { min: 13, max: 15.999 } }
+            filter: { $zoom: { min: 13, max: 15.999 }, poi_color: no }
             draw:
                 pin-dots:
                     priority: 1
