@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagAge
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import java.time.DateTimeException
 import java.time.LocalDate
@@ -46,7 +47,7 @@ fun Tags.updateWithCheckDate(key: String, value: String) {
     *  before v32.0 was to delete the check date. However, this destroys data that was
     *  previously collected by another surveyor - we don't want to destroy other people's data
     *  */
-    if (previousValue == value || hasCheckDateForKey(key)) {
+    if (previousValue == value || hasCheckDateForKey(key) || CompareTagAge.resurveyKeys.contains(key)) {
         updateCheckDateForKey(key)
     }
 }

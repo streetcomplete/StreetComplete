@@ -55,6 +55,8 @@ object Prefs {
     const val QUICK_SETTINGS = "quick_settings"
     const val ALLOWED_LEVEL = "allowed_level"
     const val ALLOWED_LEVEL_TAGS = "allowed_level_tags"
+    const val RESURVEY_KEYS = "resurvey_keys"
+    const val RESURVEY_DATE = "resurvey_date"
 
     enum class Autosync {
         ON, WIFI, OFF

@@ -122,7 +122,11 @@ abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter) 
 
 class TagOlderThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dateFilter) {
     override fun toString() = "$key older $dateFilter"
-    override fun compareTo(tagValue: LocalDate) = tagValue < dateFilter.date
+    override fun compareTo(tagValue: LocalDate) =
+        if (resurveyDate != null && resurveyKeys.contains(key))
+            tagValue < resurveyDate
+        else
+            tagValue < dateFilter.date
 }
 class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dateFilter) {
     override fun toString() = "$key newer $dateFilter"
@@ -133,9 +137,21 @@ abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : Elem
     abstract fun compareTo(tagValue: LocalDate): Boolean
     override fun matches(obj: Element): Boolean {
         if (compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())) return true
-        return getLastCheckDateKeys(key)
-            .mapNotNull { obj.tags[it]?.toCheckDate() }
-            .any { compareTo(it) }
+        return if (resurveyKeys.contains(key)) {
+            // if we have a tag in the resurvey list, interpret missing check date as match
+            val l = getLastCheckDateKeys(key)
+                .mapNotNull { obj.tags[it]?.toCheckDate() }.toList()
+            if (l.isEmpty()) true
+            else l.any { compareTo(it) }
+        } else
+            getLastCheckDateKeys(key)
+                .mapNotNull { obj.tags[it]?.toCheckDate() }
+                .any { compareTo(it) }
+    }
+
+    companion object {
+        var resurveyKeys = listOf<String>()
+        var resurveyDate: LocalDate? = null
     }
 }
 

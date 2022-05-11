@@ -91,6 +91,13 @@
     <string name="quest_smoothness_square_title2">What’s the surface quality of this %s square?</string>
     <string name="quest_smoothness_road_title2">What’s the surface quality of this %s road here?</string>
     <string name="quest_smoothness_title2">What’s the surface quality here (%s)?</string>
+    <string name="pref_advanced_resurvey_title">Advanced resurvey</string>
+    <string name="pref_advanced_resurvey_summary">Force resurvey for selected tags</string>
+    <string name="advanced_resurvey_title">Set resurvey date and keys</string>
+    <string name="advanced_resurvey_message_keys">Always resurvey these keys if there is no check date key (check date will always be added on answering related quests)</string>
+    <string name="advanced_resurvey_message_date">Instead of using resurvey intervals, resurvey above keys if check date older than:</string>
+    <string name="advanced_resurvey_hint_keys">Separate multiple keys using comma</string>
+    <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
 
     <!-- Store description -->
 

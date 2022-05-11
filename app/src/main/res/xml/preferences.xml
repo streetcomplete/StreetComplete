@@ -186,6 +186,11 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <Preference
+            android:key="advanced_resurvey"
+            android:title="@string/pref_advanced_resurvey_title"
+            android:summary="@string/pref_advanced_resurvey_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
