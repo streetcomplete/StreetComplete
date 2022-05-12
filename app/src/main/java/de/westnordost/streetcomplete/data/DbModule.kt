@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data
 
-import android.database.sqlite.SQLiteOpenHelper
+import io.requery.android.database.sqlite.SQLiteOpenHelper
 import de.westnordost.streetcomplete.ApplicationConstants
 import org.koin.dsl.module
 
