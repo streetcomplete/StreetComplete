@@ -32,7 +32,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalType>() {
 
     override fun applyAnswerTo(answer: BikeRentalType, tags: Tags, timestampEdited: Long) {
         tags["bicycle_rental"] = answer.osmValue
-        if (answer == BikeRentalType.SHOP) {
+        if (answer == BikeRentalType.HUMAN) {
             tags["shop"] = "rental"
         }
     }
