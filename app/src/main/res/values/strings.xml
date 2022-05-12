@@ -158,6 +158,11 @@
     <string name="quest_external_osmose_not_found">Entry for this element has been removed since creation of this quest</string>
     <string name="quest_osmose_message_for_element">Message for this element (item type %1$s): %2$s</string>
     <string name="quest_osmose_set_value">Set new value for tag</string>
+    <string name="quest_osmose_settings">Set Osmose item types (numbers) to hide, comma separated</string>
+    <string name="quest_external_title">External quest: %s</string>
+    <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, add \'external.csv\' to \`Android/data/de.westnordost.streetcomplete.h3/files\`, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
+    <string name="quest_external_remove">Remove from list</string>
+    <string name="quest_external_message_for_element">Message for this element: %s</string>
 
     <!-- Store description -->
 
