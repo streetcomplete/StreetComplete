@@ -163,6 +163,9 @@
     <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, add \'external.csv\' to \`Android/data/de.westnordost.streetcomplete.h3/files\`, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
     <string name="quest_external_remove">Remove from list</string>
     <string name="quest_external_message_for_element">Message for this element: %s</string>
+    <string name="quest_generic_surface_message">Allow generic surface answers without requiring a note?</string>
+    <string name="quest_generic_surface_yes">Allow without note</string>
+    <string name="quest_generic_surface_no">Only with note</string>
 
     <!-- Store description -->
 

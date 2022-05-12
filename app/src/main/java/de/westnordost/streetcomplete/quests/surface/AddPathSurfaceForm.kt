@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
+class AddPathSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
     override val items: List<Item<Surface>>
         get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -21,7 +21,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsSte
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if (value.shouldBeDescribed) {
+        if (!allowGeneric && value.shouldBeDescribed) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
@@ -9,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 
-class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
+class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -22,7 +25,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
-            surface ~ paved|unpaved|cobblestone
+            surface ~ ${if (prefs.getBoolean(ALLOW_GENERIC_PATH, false)) "" else "paved|unpaved|"}cobblestone
             and !surface:note
             and !note:surface
           )
@@ -38,7 +41,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
-    override fun createForm() = AddPathSurfaceForm()
+    override fun createForm() = AddPathSurfaceForm(prefs.getBoolean(ALLOW_GENERIC_PATH, false))
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
@@ -53,4 +56,21 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
             }
         }
     }
+
+    override val hasQuestSettings = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog? {
+        return AlertDialog.Builder(context)
+            .setMessage(R.string.quest_generic_surface_message)
+            .setNeutralButton(android.R.string.cancel, null)
+            .setPositiveButton(R.string.quest_generic_surface_yes) { _,_ ->
+                prefs.edit().putBoolean(ALLOW_GENERIC_PATH, true).apply()
+            }
+            .setNegativeButton(R.string.quest_generic_surface_no) { _,_ ->
+                prefs.edit().putBoolean(ALLOW_GENERIC_PATH, false).apply()
+            }
+            .create()
+    }
 }
+
+private const val ALLOW_GENERIC_PATH = "allow_generic_path"
