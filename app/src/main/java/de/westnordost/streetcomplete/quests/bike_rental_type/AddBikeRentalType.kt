@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 
-class AddBikeRentalType : OsmFilterQuestType<BikeRentalType>() {
+class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -30,10 +30,19 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalType>() {
 
     override fun createForm() = AddBikeRentalTypeForm()
 
-    override fun applyAnswerTo(answer: BikeRentalType, tags: Tags, timestampEdited: Long) {
-        tags["bicycle_rental"] = answer.osmValue
-        if (answer == BikeRentalType.HUMAN) {
-            tags["shop"] = "rental"
+    override fun applyAnswerTo(answer: BikeRentalTypeAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
+            is BikeRentalType -> {
+                tags["bicycle_rental"] = answer.osmValue
+                if (answer == BikeRentalType.HUMAN) {
+                    tags["shop"] = "rental"
+                }
+            }
+            is BikeShopWithRental -> {
+                tags.remove("amenity")
+                tags["shop"] = "bicycle"
+                tags["service:bicycle:rental"] = "yes"
+            }
         }
     }
 }
