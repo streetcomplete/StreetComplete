@@ -442,7 +442,7 @@ fun questTypeRegistry(
 
     // roads
     AddSidewalk(prefs), // for any pedestrian routers, needs minimal thinking
-    AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
+    AddRoadSurface(prefs), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     AddCycleway(countryInfos, countryBoundariesFuture, prefs), // for any cyclist routers (and cyclist maps)
     AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
@@ -453,7 +453,7 @@ fun questTypeRegistry(
     AddPathSmoothness(),
 
     // footways
-    AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
+    AddPathSurface(prefs), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
     AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
     AddFootwayPartSurface(),
     AddCyclewayPartSurface(),
