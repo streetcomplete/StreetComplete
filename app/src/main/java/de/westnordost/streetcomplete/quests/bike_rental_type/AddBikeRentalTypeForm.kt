@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalType.DOCKING_STATION
 import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalType.DROPOFF_POINT
-import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalType.KEY_DISPENSING_MACHINE
 import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalType.SHOP
 import de.westnordost.streetcomplete.view.image_select.Item
 
@@ -14,7 +13,6 @@ class AddBikeRentalTypeForm : AImageListQuestAnswerFragment<BikeRentalType, Bike
     override val items = listOf(
         Item(DOCKING_STATION, R.drawable.bicycle_rental_docking_station, R.string.quest_bicycle_rental_type_docking_station),
         Item(DROPOFF_POINT, R.drawable.bicycle_rental_dropoff_point, R.string.quest_bicycle_rental_type_dropoff_point),
-        Item(KEY_DISPENSING_MACHINE, R.drawable.bicycle_rental_key_dispensing_machine, R.string.quest_bicycle_rental_type_key_dispensing_machine),
         Item(SHOP, R.drawable.bicycle_rental_shop, R.string.quest_bicycle_rental_type_bicycle_shop),
     )
 
