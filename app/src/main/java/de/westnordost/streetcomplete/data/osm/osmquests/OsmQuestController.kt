@@ -47,7 +47,7 @@ class OsmQuestController internal constructor(
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
-) : OsmQuestSource {
+) : OsmQuestSource, HideOsmQuestController {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -305,7 +305,7 @@ class OsmQuestController internal constructor(
         hiddenDB.getAllIds().toSet()
 
     /** Mark the quest as hidden by user interaction */
-    fun hide(key: OsmQuestKey) {
+    override fun hide(key: OsmQuestKey) {
         synchronized(this) { hiddenDB.add(key) }
 
         val hidden = getHidden(key)

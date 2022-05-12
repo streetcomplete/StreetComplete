@@ -8,7 +8,7 @@ import android.widget.RadioGroup
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericRadioListBinding
 
-abstract class AListQuestAnswerFragment<T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AListQuestAnswerForm<T> : AbstractOsmQuestAnswerForm<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_radio_list
     private val binding by contentViewBinding(QuestGenericRadioListBinding::bind)

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
@@ -29,7 +29,7 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossingWithTrafficSignals() }.asSequence()
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestAnswerForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["button_operated"] = answer.toYesNo()

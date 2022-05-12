@@ -13,15 +13,24 @@ import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.core.view.isGone
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.viewBinding
+import org.koin.android.ext.android.inject
 
 /** Bottom sheet fragment with which the user can create a new note, including moving the note */
 class CreateNoteFragment : AbstractCreateNoteFragment() {
+
+    private val noteEditsController: NoteEditsController by inject()
 
     private var _binding: FragmentCreateNoteBinding? = null
     private val binding: FragmentCreateNoteBinding get() = _binding!!
@@ -42,8 +51,9 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val noteInput get() = contentBinding.noteInput
 
     interface Listener {
-        /** Called when the user wants to leave a note which is not related to a quest  */
-        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point)
+        fun getMapPositionAt(screenPos: Point): LatLon?
+
+        fun onCreatedNote(questKey: OsmQuestKey?, position: LatLon)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -113,9 +123,14 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
             binding.markerCreateLayout.createNoteMarker.width / 2,
             binding.markerCreateLayout.createNoteMarker.height / 2
         )
+        val position = listener?.getMapPositionAt(screenPos) ?: return
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
-        listener?.onCreatedNote(text, imagePaths, screenPos)
+        // TODO
+        val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
+        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths)
+
+        listener?.onCreatedNote(null, position)
     }
 }

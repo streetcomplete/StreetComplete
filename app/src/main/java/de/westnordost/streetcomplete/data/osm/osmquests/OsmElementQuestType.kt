@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
  *  Quest types that do not require complex filters that depend on the geometry of surrounding
  *  elements subclass [OsmFilterQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType]
  *  */
-interface OsmElementQuestType<T> : QuestType<T>, ElementEditType {
+interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
     /** In which countries the quest should be shown. By default, in all countries.
      *
@@ -107,10 +108,7 @@ interface OsmElementQuestType<T> : QuestType<T>, ElementEditType {
      * The element is not directly modified, instead, a map of [tags] is built */
     fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
 
-    @Suppress("UNCHECKED_CAST")
-    fun applyAnswerToUnsafe(answer: Any, tags: Tags, timestampEdited: Long) {
-        applyAnswerTo(answer as T, tags, timestampEdited)
-    }
+    override fun createForm(): AbstractOsmQuestAnswerForm<T>
 }
 
 typealias Tags = StringMapChangesBuilder

@@ -62,7 +62,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     }
 
     private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
             viewLifecycleScope.launch { updateTitle() }
         }
         override fun onQuestTypeVisibilitiesChanged() {

@@ -5,12 +5,12 @@ package de.westnordost.streetcomplete.data.quest
  * Could theoretically be done with Reflection, but that doesn't really work on Android
  */
 
-class QuestTypeRegistry(private val quests: List<QuestType<*>>) : List<QuestType<*>> by quests {
+class QuestTypeRegistry(private val quests: List<QuestType>) : List<QuestType> by quests {
 
-    private val typeMap: Map<String, QuestType<*>>
+    private val typeMap: Map<String, QuestType>
 
     init {
-        val map = mutableMapOf<String, QuestType<*>>()
+        val map = mutableMapOf<String, QuestType>()
         for (questType in this) {
             val questTypeName = questType.name
             require(!map.containsKey(questTypeName)) {
@@ -21,7 +21,7 @@ class QuestTypeRegistry(private val quests: List<QuestType<*>>) : List<QuestType
         typeMap = map
     }
 
-    fun getByName(typeName: String): QuestType<*>? {
+    fun getByName(typeName: String): QuestType? {
         return typeMap[typeName]
     }
 }

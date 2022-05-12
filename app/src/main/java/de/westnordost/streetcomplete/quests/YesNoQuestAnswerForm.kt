@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.R
 
-class YesNoQuestAnswerFragment : AbstractQuestAnswerFragment<Boolean>() {
+class YesNoQuestAnswerForm : AbstractOsmQuestAnswerForm<Boolean>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },

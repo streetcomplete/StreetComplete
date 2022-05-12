@@ -21,8 +21,9 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -53,7 +54,8 @@ class SettingsFragment :
     private val downloadedTilesDao: DownloadedTilesDao by inject()
     private val noteController: NoteController by inject()
     private val mapDataController: MapDataController by inject()
-    private val questController: QuestController by inject()
+    private val osmQuestController: OsmQuestController by inject()
+    private val osmNoteQuestController: OsmNoteQuestController by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
@@ -93,7 +95,7 @@ class SettingsFragment :
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.restore_dialog_message)
                 .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
-                    val hidden = questController.unhideAll()
+                    val hidden = unhideQuests()
                     context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
                 } }
                 .setNegativeButton(android.R.string.cancel, null)
@@ -203,6 +205,10 @@ class SettingsFragment :
         downloadedTilesDao.removeAll()
         mapDataController.clear()
         noteController.clear()
+    }
+
+    private suspend fun unhideQuests() = withContext(Dispatchers.IO) {
+        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
     }
 
     private fun getQuestPreferenceSummary(): String {

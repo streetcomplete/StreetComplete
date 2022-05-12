@@ -6,13 +6,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 
-class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
+class AddFireHydrantDiameterForm : AbstractOsmQuestAnswerForm<FireHydrantDiameterAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }

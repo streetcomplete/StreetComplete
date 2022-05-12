@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.segregated
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddCyclewaySegregationForm : AImageListQuestAnswerFragment<Boolean, Boolean>() {
+class AddCyclewaySegregationForm : AImageListQuestAnswerForm<Boolean, Boolean>() {
 
     override val items get() = listOf(
         Item(true, if (countryInfo.isLeftHandTraffic) R.drawable.ic_path_segregated_l else R.drawable.ic_path_segregated, R.string.quest_segregated_separated),

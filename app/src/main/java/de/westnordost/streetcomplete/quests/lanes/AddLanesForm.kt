@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED
@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
+class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
 
     private var selectedLanesType: LanesType? = null
     private var leftSide: Int = 0
@@ -44,10 +44,10 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
 
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    private val isOneway get() = isOneway(osmElement!!.tags)
+    private val isOneway get() = isOneway(element.tags)
 
-    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
-    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
+    private val isForwardOneway get() = isForwardOneway(element.tags)
+    private val isReversedOneway get() = isReversedOneway(element.tags)
 
     override val otherAnswers: List<AnswerItem> get() {
         val answers = mutableListOf<AnswerItem>()
@@ -205,7 +205,7 @@ class AddLanesForm : AbstractQuestFormAnswerFragment<LanesAnswer>() {
         streetSideRotater = StreetSideRotater(
             streetLanesPuzzleBinding.puzzleViewRotateContainer,
             streetLanesPuzzleBinding.littleCompass.root,
-            elementGeometry as ElementPolylinesGeometry
+            geometry as ElementPolylinesGeometry
         )
         streetSideRotater?.onMapOrientation(lastRotation, lastTilt)
 

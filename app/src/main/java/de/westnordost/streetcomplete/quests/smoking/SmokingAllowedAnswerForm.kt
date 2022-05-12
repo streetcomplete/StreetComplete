@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestAnswerForm
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.NO
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.OUTSIDE
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.YES
 
-class SmokingAllowedAnswerForm : AListQuestAnswerFragment<SmokingAllowed>() {
+class SmokingAllowedAnswerForm : AListQuestAnswerForm<SmokingAllowed>() {
 
     override val items: List<TextItem<SmokingAllowed>> get() {
-        val tags = osmElement!!.tags
+        val tags = element.tags
         val isAlreadyOutdoor =
             tags["leisure"] == "outdoor_seating" || tags["amenity"] == "biergarten" ||
             (tags["outdoor_seating"] == "yes" && tags["indoor_seating"] == "no")

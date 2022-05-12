@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
+class AddPathSurfaceForm : AImageListQuestAnswerForm<Surface, SurfaceOrIsStepsAnswer>() {
     override val items: List<Item<Surface>>
         get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
@@ -36,7 +36,7 @@ class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsSte
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
-        val way = osmElement as? Way ?: return null
+        val way = element as? Way ?: return null
         if (way.isArea() || way.tags["highway"] == "steps") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {

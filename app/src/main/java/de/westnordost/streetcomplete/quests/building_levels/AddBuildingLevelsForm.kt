@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.mostCommonWithin
 
-class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
+class AddBuildingLevelsForm : AbstractOsmQuestAnswerForm<BuildingLevelsAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_building_levels
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)

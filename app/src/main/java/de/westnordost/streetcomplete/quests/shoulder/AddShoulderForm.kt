@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
+import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.StreetSideItem
 import de.westnordost.streetcomplete.util.ktx.shoulderLineStyleResId
 
-class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
+class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
 
     override val items = listOf(false, true)
 

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.quests.AStreetSideSelectFragment
+import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
 import de.westnordost.streetcomplete.quests.StreetSideItem2
 import de.westnordost.streetcomplete.quests.sidewalk.imageResId
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 
-class AddSidewalkSurfaceForm : AStreetSideSelectFragment<Surface, SidewalkSurfaceAnswer>() {
+class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAnswer>() {
 
     override val items: List<Surface> get() =
         PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES
@@ -42,7 +42,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectFragment<Surface, SidewalkSurfac
     }
 
     override fun initStateFromTags() {
-        val sides = createSidewalkSides(osmElement!!.tags)
+        val sides = createSidewalkSides(element.tags)
         val left = sides?.left
         val right = sides?.right
 

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
+import android.location.Location
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -12,20 +13,26 @@ import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
+import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.forEachLine
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -39,37 +46,46 @@ import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import kotlin.coroutines.resume
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
 class SplitWayFragment :
-    Fragment(R.layout.fragment_split_way),
-    IsCloseableBottomSheet,
-    IsShowingQuestDetails {
+    Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsShowingQuestDetails {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
     private val binding by viewBinding(FragmentSplitWayBinding::bind)
 
+    private val elementEditsController: ElementEditsController by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
     private val soundFx: SoundFx by inject()
 
     override val questKey: QuestKey get() = osmQuestKey
 
     private lateinit var osmQuestKey: OsmQuestKey
     private lateinit var way: Way
-    private lateinit var positions: List<LatLon>
+    private lateinit var questType: OsmElementQuestType<*>
+    private lateinit var geometry: ElementPolylinesGeometry
     private var clickPos: PointF? = null
 
     private val hasChanges get() = splits.isNotEmpty()
     private val isFormComplete get() = splits.size >= if (way.isClosed) 2 else 1
 
     interface Listener {
-        fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>)
+        /** The GPS position at which the user is displayed at */
+        val displayedMapLocation: Location?
+
+        /** Called after the given way has been split in the frame of the given quest type */
+        fun onSplittedWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -81,8 +97,8 @@ class SplitWayFragment :
         val args = requireArguments()
         osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
         way = Json.decodeFromString(args.getString(ARG_WAY)!!)
-        val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
-        positions = elementGeometry.polylines.single()
+        questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as OsmElementQuestType<*>
+        geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -125,26 +141,35 @@ class SplitWayFragment :
     }
 
     private fun onClickOk() {
-        if (splits.size > 2) {
-            confirmManySplits { onSplittedWayConfirmed() }
-        } else {
-            onSplittedWayConfirmed()
-        }
+        viewLifecycleScope.launch { splitWay() }
     }
 
-    private fun onSplittedWayConfirmed() {
-        listener?.onSplittedWay(osmQuestKey, splits.map { it.first })
+    private suspend fun splitWay() {
+        binding.glassPane.isGone = false
+        if (splits.size <= 2 || confirmManySplits()) {
+            val location = listOfNotNull(listener?.displayedMapLocation)
+            if (checkIsSurvey(requireContext(), geometry, location)) {
+                val action = SplitWayAction(ArrayList(splits.map { it.first }))
+                withContext(Dispatchers.IO) {
+                    elementEditsController.add(questType, way, geometry, "survey", action)
+                }
+                listener?.onSplittedWay(questType, way, geometry)
+                return
+            }
+        }
+        binding.glassPane.isGone = true
     }
 
-    private fun confirmManySplits(callback: () -> (Unit)) {
-        context?.let {
-            AlertDialog.Builder(it)
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setMessage(R.string.quest_split_way_many_splits_confirmation_description)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
-        }
+    private suspend fun confirmManySplits(): Boolean = suspendCancellableCoroutine { cont ->
+        val dlg = AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_split_way_many_splits_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> cont.resume(true) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no) { _, _ -> cont.resume(false) }
+            .setOnCancelListener { cont.resume(false) }
+            .create()
+        cont.invokeOnCancellation { dlg.cancel() }
+        dlg.show()
     }
 
     private fun onClickUndo() {
@@ -217,6 +242,7 @@ class SplitWayFragment :
     private fun createSplitsAtNodes(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtPoint> {
         // ignore first and last node (cannot be split at the very start or end)
         val result = mutableSetOf<SplitAtPoint>()
+        val positions = geometry.polylines.single()
         for (pos in positions.subList(1, positions.size - 1)) {
             val nodeDistance = clickPosition.distanceTo(pos)
             if (clickAreaSizeInMeters > nodeDistance) {
@@ -228,7 +254,7 @@ class SplitWayFragment :
 
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
-        positions.forEachLine { first, second ->
+        geometry.polylines.single().forEachLine { first, second ->
             val crossTrackDistance = abs(clickPosition.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)
@@ -268,14 +294,16 @@ class SplitWayFragment :
 
         private const val ARG_OSM_QUEST_KEY = "osmQuestKey"
         private const val ARG_WAY = "way"
-        private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
+        private const val ARG_GEOMETRY = "geometry"
+        private const val ARG_QUESTTYPE = "quest_type"
 
-        fun create(osmQuestKey: OsmQuestKey, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
+        fun create(osmElementQuestType: OsmElementQuestType<*>, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
-                ARG_OSM_QUEST_KEY to Json.encodeToString(osmQuestKey),
+                ARG_OSM_QUEST_KEY to Json.encodeToString(OsmQuestKey(way.type, way.id, osmElementQuestType.name)),
                 ARG_WAY to Json.encodeToString(way),
-                ARG_ELEMENT_GEOMETRY to Json.encodeToString(elementGeometry)
+                ARG_GEOMETRY to Json.encodeToString(elementGeometry),
+                ARG_QUESTTYPE to osmElementQuestType.name
             )
             return f
         }

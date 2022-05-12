@@ -64,9 +64,9 @@ class EditTypeStatisticsDaoTest : ApplicationDbTestCase() {
         daoType.addOne(ONE)
         daoType.addOne(ONE)
         daoType.addOne(TWO)
-        assertEquals(mapOf(
-            ONE to 2,
-            TWO to 1
+        assertEquals(listOf(
+            EditTypeStatistics(ONE, 2),
+            EditTypeStatistics(TWO, 1)
         ), daoType.getAll())
     }
 }

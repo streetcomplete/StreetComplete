@@ -6,7 +6,7 @@ import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
-class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer>() {
+class AddSuspectedOnewayForm : AbstractOsmQuestAnswerForm<SuspectedOnewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
@@ -39,7 +39,7 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
         binding.puzzleView.showOnlyRightSide()
 
         viewLifecycleScope.launch {
-            val isForward = withContext(Dispatchers.IO) { db.isForward(osmElement!!.id)!! }
+            val isForward = withContext(Dispatchers.IO) { db.isForward(element.id)!! }
 
             binding.puzzleView.setRightSideImage(ResImage(
                 if (isForward) R.drawable.ic_oneway_lane
@@ -50,13 +50,13 @@ class AddSuspectedOnewayForm : AbstractQuestAnswerFragment<SuspectedOnewayAnswer
         streetSideRotater = StreetSideRotater(
             binding.puzzleView,
             binding.littleCompass.root,
-            elementGeometry as ElementPolylinesGeometry
+            geometry as ElementPolylinesGeometry
         )
     }
 
     private fun applyAnswer(answer: Boolean) {
         // the quest needs the way ID of the element to find out the direction of the oneway
-        applyAnswer(SuspectedOnewayAnswer(answer, osmElement!!.id))
+        applyAnswer(SuspectedOnewayAnswer(answer, element.id))
     }
 
     @AnyThread

@@ -7,7 +7,7 @@ import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
 import kotlin.math.PI
 
-class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
+class AddOnewayForm : AbstractOsmQuestAnswerForm<OnewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     private val binding by contentViewBinding(QuestStreetSidePuzzleBinding::bind)
@@ -42,7 +42,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
 
         savedInstanceState?.getString(SELECTION)?.let { selection = valueOf(it) }
 
-        wayRotation = (elementGeometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
+        wayRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +64,7 @@ class AddOnewayForm : AbstractQuestFormAnswerFragment<OnewayAnswer>() {
         streetSideRotater = StreetSideRotater(
             binding.puzzleView,
             binding.littleCompass.root,
-            elementGeometry as ElementPolylinesGeometry
+            geometry as ElementPolylinesGeometry
         )
     }
 

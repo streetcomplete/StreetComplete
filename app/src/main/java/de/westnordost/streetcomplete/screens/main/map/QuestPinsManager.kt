@@ -39,7 +39,7 @@ class QuestPinsManager(
 ) : DefaultLifecycleObserver {
 
     // draw order in which the quest types should be rendered on the map
-    private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
+    private val questTypeOrders: MutableMap<QuestType, Int> = mutableMapOf()
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
     // quests in current view: key -> [pin, ...]
@@ -70,7 +70,7 @@ class QuestPinsManager(
     }
 
     private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
-        override fun onQuestTypeOrderAdded(item: QuestType<*>, toAfter: QuestType<*>) {
+        override fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType) {
             reinitializeQuestTypeOrders()
         }
 

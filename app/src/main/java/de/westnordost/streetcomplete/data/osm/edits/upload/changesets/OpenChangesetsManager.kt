@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import java.util.Locale
 
@@ -65,5 +64,3 @@ class OpenChangesetsManager(
 }
 
 private const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 1000L * 60 * 20 // 20min
-
-private val QuestType<*>.name get() = javaClass.simpleName

@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPitchSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
+class AddPitchSurfaceForm : AImageListQuestAnswerForm<Surface, SurfaceAnswer>() {
     override val items: List<Item<Surface>>
         get() = PITCH_SURFACES.toItems()
 

@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.util.math.normalizeDegrees
@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import kotlin.math.absoluteValue
 
-class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
+class AddCyclewayForm : AbstractOsmQuestAnswerForm<CyclewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
@@ -38,7 +38,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         else emptyList()
 
     override val otherAnswers: List<AnswerItem> get() {
-        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout" && osmElement!!.tags["junction"] != "circular"
+        val isNoRoundabout = element.tags["junction"] != "roundabout" && element.tags["junction"] != "circular"
         val result = mutableListOf<AnswerItem>()
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
@@ -78,10 +78,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
      * one-way is on the right side of the way */
     private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
-    private val isOneway get() = isOneway(osmElement!!.tags)
+    private val isOneway get() = isOneway(element.tags)
 
-    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
-    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
+    private val isForwardOneway get() = isForwardOneway(element.tags)
+    private val isReversedOneway get() = isReversedOneway(element.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
@@ -100,7 +100,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         streetSideRotater = StreetSideRotater(
             binding.puzzleView,
             binding.littleCompass.root,
-            elementGeometry as ElementPolylinesGeometry
+            geometry as ElementPolylinesGeometry
         )
 
         if (!isDefiningBothSides) {
@@ -124,14 +124,14 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     private fun initStateFromTags() {
         val countryCode = countryInfo.countryCode
-        val sides = createCyclewaySides(osmElement!!.tags, isLeftHandTraffic)
+        val sides = createCyclewaySides(element.tags, isLeftHandTraffic)
         val left = sides?.left?.takeIf { it.isAvailableAsSelection(countryCode) }
         val right = sides?.right?.takeIf { it.isAvailableAsSelection(countryCode) }
         val bothSidesWereDefinedBefore = sides?.left != null && sides.right != null
 
         leftSide = left
         rightSide = right
-        isDefiningBothSides = bothSidesWereDefinedBefore || !likelyNoBicycleContraflow.matches(osmElement!!)
+        isDefiningBothSides = bothSidesWereDefinedBefore || !likelyNoBicycleContraflow.matches(element)
 
         // only show as re-survey (yes/no button) if the previous tagging was complete
         setAsResurvey(isFormComplete())
@@ -300,7 +300,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             isOnewayNotForCyclists = isOnewayNotForCyclists
         )
 
-        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(osmElement!!.tags, isLeftHandTraffic)
+        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(element.tags, isLeftHandTraffic)
         if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
             confirmNotOnewayForCyclists {
                 applyAnswer(answer)

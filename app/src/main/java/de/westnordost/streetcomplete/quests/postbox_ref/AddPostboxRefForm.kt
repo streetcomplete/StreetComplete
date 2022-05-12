@@ -6,10 +6,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
+class AddPostboxRefForm : AbstractOsmQuestAnswerForm<PostboxRefAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_ref
     private val binding by contentViewBinding(QuestRefBinding::bind)

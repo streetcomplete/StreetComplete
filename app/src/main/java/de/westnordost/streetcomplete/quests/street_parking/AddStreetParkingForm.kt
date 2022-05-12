@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.CONDITIONAL_RESTRICTIONS
 import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.IMPLICIT
@@ -50,7 +50,7 @@ import de.westnordost.streetcomplete.view.image_select.Item2
 import de.westnordost.streetcomplete.view.setImage
 import kotlin.math.absoluteValue
 
-class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetParking>() {
+class AddStreetParkingForm : AbstractOsmQuestAnswerForm<LeftAndRightStreetParking>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
@@ -68,8 +68,8 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
     private val isLeftSideUpsideDown get() =
         !isReversedOneway && (isForwardOneway || isLeftHandTraffic)
 
-    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
-    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
+    private val isForwardOneway get() = isForwardOneway(element.tags)
+    private val isReversedOneway get() = isReversedOneway(element.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
@@ -82,7 +82,7 @@ class AddStreetParkingForm : AbstractQuestFormAnswerFragment<LeftAndRightStreetP
         streetSideRotater = StreetSideRotater(
             binding.puzzleView,
             binding.littleCompass.root,
-            elementGeometry as ElementPolylinesGeometry
+            geometry as ElementPolylinesGeometry
         )
 
         val defaultLeftImg = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)

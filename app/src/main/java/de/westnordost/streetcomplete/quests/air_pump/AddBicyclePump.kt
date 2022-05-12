@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBicyclePump : OsmFilterQuestType<Boolean>() {
@@ -44,7 +44,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
             or shop = bicycle
         """)
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestAnswerForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("service:bicycle:pump", answer.toYesNo())

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
 import de.westnordost.streetcomplete.quests.orchard_produce.OrchardProduce.AGAVE
 import de.westnordost.streetcomplete.quests.orchard_produce.OrchardProduce.ALMOND
 import de.westnordost.streetcomplete.quests.orchard_produce.OrchardProduce.APPLE
@@ -58,7 +58,7 @@ import de.westnordost.streetcomplete.quests.orchard_produce.OrchardProduce.VANIL
 import de.westnordost.streetcomplete.quests.orchard_produce.OrchardProduce.WALNUT
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddOrchardProduceForm : AImageListQuestAnswerFragment<OrchardProduce, List<OrchardProduce>>() {
+class AddOrchardProduceForm : AImageListQuestAnswerForm<OrchardProduce, List<OrchardProduce>>() {
 
     private val produces = listOf(
         // ordered alphabetically here for overview. Produces are filtered and sorted by what is
