@@ -154,7 +154,7 @@
                         "housenumber!jp": "Budova číslo/Miesto čislo",
                         "neighbourhood": "Susedstvo",
                         "neighbourhood!jp": "Chōme/Aza/Koaza",
-                        "place": "Obec",
+                        "place": "Miesto s názvom",
                         "postcode": "PSČ",
                         "province": "Provincia",
                         "province!cn": "Provincia/Obec/Administratívna oblasť",
@@ -671,8 +671,8 @@
                     "label": "Opis umiestnenia"
                 },
                 "delivery": {
-                    "label": "Zásobovnie",
-                    "terms": "zásovobanie,dovoz,zasobovanie"
+                    "label": "Roznáška",
+                    "terms": "zásovobanie,dovoz,zasobovanie,roznaska,rozvoz,roznos"
                 },
                 "denomination": {
                     "label": "Vierovyznanie",
@@ -2771,7 +2771,8 @@
                     "name": "Veterný rukáv"
                 },
                 "allotments/plot": {
-                    "name": "Komunitná záhrada"
+                    "name": "Záhrada v záhradkárskej osade",
+                    "terms": "zahrada v zahradkarskej osade,záhon,zahon,záhrada,zahrada,pozemok"
                 },
                 "amenity": {
                     "name": "Občianska vybavenosť"
@@ -2928,7 +2929,7 @@
                 },
                 "amenity/community_centre": {
                     "name": "Komunitné centrum",
-                    "terms": "komunitne centrum,centrum voľného času,centrum volneho casu,cvc,cvč,krúžky,kruzky,vzdelavanie,vzdelávanie,výchova,vychova"
+                    "terms": "komunitne centrum,centrum voľného času,centrum volneho casu,cvc,cvč,krúžky,kruzky,vzdelavanie,vzdelávanie,výchova,vychova,kultúrny dom,kulturny dom,dom kultúry,dom kultury"
                 },
                 "amenity/community_centre/lgbtq": {
                     "name": "LGBTQ+ komunitné centrum"
@@ -3382,7 +3383,8 @@
                     "name": "Piknikový prístrešok"
                 },
                 "amenity/shelter/public_transport": {
-                    "name": "Prístrešok hromadnej prepravy"
+                    "name": "Prístrešok hromadnej prepravy",
+                    "terms": "pristresok hromadnej dopravy,zastávka,zastavka,autobusová zastávka,autobusova zastavka"
                 },
                 "amenity/shower": {
                     "name": "Verejné sprchy",
@@ -3644,8 +3646,8 @@
                     "terms": "bariera,plot,zátarasa,zatarasa,blokada,blokáda,múr,mur,brána,brana,stena,rampa,prekážka,prekazka"
                 },
                 "barrier/block": {
-                    "name": "Betónový blok",
-                    "terms": "betonovy blok,beton,zatarasa,kvetináč,kvetinac"
+                    "name": "Blok (betónový/prírodný)",
+                    "terms": "betónový blok,betonovy blok,beton,zatarasa,kvetináč,kvetinac,kameň,kamen,kváder,kvader,balvan"
                 },
                 "barrier/bollard": {
                     "name": "Stĺpik",
@@ -4265,6 +4267,10 @@
                 "emergency/water_reservoir": {
                     "name": "Protipožiarna nádrž"
                 },
+                "emergency/water_reservoir_covered": {
+                    "name": "Protipožiarna nádrž (podzemná)",
+                    "terms": "protipoziarna nadrz (podzemna),kryta nadrz"
+                },
                 "emergency/water_tank": {
                     "name": "Núdzový zásobník vody"
                 },
@@ -4525,13 +4531,15 @@
                     "terms": "privadzac na cestu 1. triedy,privadzac,privádzač,zjazd,vyjazd,výjazd,nájazd,najazd,pripojovací pruh,pripojovaci pruh"
                 },
                 "highway/raceway": {
-                    "name": "Motokorosová pretekárska dráha"
+                    "name": "Závodná dráha (motorová)",
+                    "terms": "zavodna draha,závodný okruh,zavodny okruh,závodná trať,zavodna trat,pretekárska dráha,pretekarska draha,pretekársky okruh,pretekarsky okruh"
                 },
                 "highway/raceway/karting": {
                     "name": "Motokárová dráha"
                 },
                 "highway/raceway/motocross": {
-                    "name": "Motokorosová pretekárska dráha"
+                    "name": "Motokrosová pretekárska dráha",
+                    "terms": "motokrosova pretekarska draha,motokrosová dráha,motokrosová trať,motokrosova trat"
                 },
                 "highway/residential": {
                     "name": "Obytná ulica",
@@ -4882,7 +4890,7 @@
                     "name": "Náboženský areál"
                 },
                 "landuse/reservoir": {
-                    "name": "Nádrž"
+                    "name": "Priehradná nádrž"
                 },
                 "landuse/residential": {
                     "name": "Rezidenčná zóna",
@@ -5057,7 +5065,8 @@
                     "terms": "piknikovy stol"
                 },
                 "leisure/picnic_table/chess": {
-                    "name": "Šachový stôl"
+                    "name": "Šachový stôl",
+                    "terms": "sachovy stol,šachovnica,sachovnica"
                 },
                 "leisure/pitch": {
                     "name": "Športový kurt",
@@ -5090,7 +5099,8 @@
                     "name": "Ihrisko pre bowls"
                 },
                 "leisure/pitch/chess": {
-                    "name": "Obrovská šachovnica"
+                    "name": "Šachové ihrisko",
+                    "terms": "sachove ihrisko,šachovnica,sachovnica,nadrozmerné šachy,nadrozmerne sachy,šachy,sachy"
                 },
                 "leisure/pitch/cricket": {
                     "name": "Kriketové ihrisko"
@@ -5343,7 +5353,8 @@
                     "name": "Obelisk"
                 },
                 "man_made/observatory": {
-                    "name": "Hvezdáreň"
+                    "name": "Hvezdáreň",
+                    "terms": "hvezdaren,observatórium,observatorium"
                 },
                 "man_made/petroleum_well": {
                     "name": "Ropný vrt",
@@ -5371,7 +5382,8 @@
                     "terms": "precerpavacia stanica"
                 },
                 "man_made/reservoir_covered": {
-                    "name": "Krytá nádrž"
+                    "name": "Krytá nádrž",
+                    "terms": "kryta nadrz,podzemná nádrž,podzemna nadrz"
                 },
                 "man_made/silo": {
                     "name": "Silo",
@@ -5421,7 +5433,8 @@
                     "name": "Minaret"
                 },
                 "man_made/tower/observation": {
-                    "name": "Vyhliadkova veža"
+                    "name": "Rozhľadňa",
+                    "terms": "rozhladna,vyhliadková veža,vyhliadkova veza"
                 },
                 "man_made/tower/pagoda": {
                     "name": "Pagoda"
@@ -5564,8 +5577,8 @@
                     "terms": "sut,sutina,kameň,kamen"
                 },
                 "natural/scrub": {
-                    "name": "Kosodrevina",
-                    "terms": "borovica,pásmo kosodreviny,pasmo kosodreviny"
+                    "name": "Kroviny",
+                    "terms": "krovie,kríky,kriky,krovisko,húština,hustina,húštie,hustie,kosodrevina,pásmo kosodreviny,pasmo kosodreviny"
                 },
                 "natural/shingle": {
                     "name": "Okruhliaky",
@@ -5617,8 +5630,8 @@
                     "terms": "rybnik,nádrž,nadrz,štrkovisko,strkovisko,tajch"
                 },
                 "natural/water/reservoir": {
-                    "name": "Nádrž",
-                    "terms": "nadrz,priehrada"
+                    "name": "Priehradná nádrž",
+                    "terms": "nádrž,nadrz,vodná nádrž,vodna nadrz,priehrada,priehradna nadrz"
                 },
                 "natural/water/river": {
                     "name": "Plocha rieky"

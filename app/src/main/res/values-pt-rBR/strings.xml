@@ -2195,9 +2195,6 @@ Alternativamente, você pode deixar uma nota (com uma foto)."</string>
     <string name="quest_smoothness_obstacle">"Há um obstáculo"</string>
     <string name="quest_smoothness_obstacle_hint">"Por favor, forneça uma resposta geral para a suavidade. Obstáculos únicos como meio-fio, lombadas ou grades de gado podem ser ignorados. Obstáculos repetidos ou inesperados devem contar para a resposta."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indicam para quais veículos a superfície deve ser usada. O que importa é o quadro geral, em vez de danos únicos."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Um acostamento é uma faixa claramente demarcada para paradas de emergência permitindo aos veículos a parada completa com segurança lateralmente à faixa de tráfego, ainda que com superfície não pavimentada (por completo)"</string>
     <string name="link_osmhydrant_description">"Pesquise, adicione e edite quartéis de bombeiros e hidrantes"</string>
     <string name="achievement_lifesaver_title">"Salva-vidas"</string>
     <string name="achievement_lifesaver_solved_X">"Você resolveu %d missões que ajudam os serviços de emergência e socorristas!"</string>
@@ -2332,4 +2329,5 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"Existe uma bomba de bicicleta disponível para todos aqui?"</string>
     <string name="quest_air_pump_compressor_title">"Existe um compressor de ar disponível aqui?"</string>
     <string name="quest_step_count_stile_hint">"Apenas o número de passos para chegar ao topo. Se a contagem de passos for diferente em cada lado, dê um número maior."</string>
+    <string name="quest_shoulder_explanation2">"Um acostamento é uma faixa de parada de emergência claramente demarcada. A área designada como acostamento não é necessariamente pavimentada em toda a sua largura e não é necessariamente larga o suficiente para que um carro pare completamente fora da faixa de tráfego."</string>
 </resources>

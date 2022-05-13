@@ -1268,9 +1268,6 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_smoothness_obstacle">"È presente un ostacolo"</string>
     <string name="quest_smoothness_obstacle_hint">"Per favore, fornisci una risposta per l'uniformità. Ostacoli singoli come cordoli, dossi o grate per il bestiame possono essere ignorati. Ostacoli ripetuti o inaspettati devono essere presi in considerazione nella risposta."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … segna per quale tipologia di veicoli la superficie è indicata. Da valutare nella sua interezza piuttosto che valutare le singole parti."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"La banchina è una zona delimitata da una linea che permette ai veicoli di fermarsi in sicurezza al di fuori della carreggiata, può anche essere non completamente asfaltata."</string>
     <string name="link_osmhydrant_description">"Cerca, aggiungi e modifica le caserme dei pompieri e gli idranti"</string>
     <string name="achievement_lifesaver_title">"Salvagente"</string>
     <string name="achievement_lifesaver_solved_X">"Hai risolto %d missioni per aiutare i servizi di emergenza e i primi soccorritori!"</string>

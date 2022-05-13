@@ -1135,7 +1135,6 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
     <string name="quest_smoothness_obstacle">"Tur ir šķērslis"</string>
     <string name="quest_smoothness_obstacle_hint">"Lūdzu, dodiet vispārīgu atbildi par gludumu. Var ignorēt atsevišķus šķēršļus, piemēram ietves, guļošos policistus un lopu režģus. Atbildot var ņemt vērā atkārtotus vai negaidītus šķēršļus."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … norādiet, kuriem transporta līdzekļiem šī virsma ir atbilstoša. Svarīgākās ir lielās līnijas, nevis atsevišķi bojājumi."</string>
-    <string name="quest_shoulder_explanation">"Nomale ir skaidri apzīmēta ārkārtas apstāšanās josla, kas ir pietiekami plata, lai ļautu jebkuram transportlīdzeklim droši apstāties blakus satiksmes joslai uz vienmērīgas un stingras, bet ne obligāti (pilnībā) asfaltētas virsmas."</string>
     <string name="link_osmhydrant_description">"Uzmeklēt un rediģēt ugunsdzēsības hidrantus"</string>
     <string name="achievement_lifesaver_title">"Dzīvības glābējs"</string>
     <string name="achievement_lifesaver_solved_X">"Jūs atrisinājāt %d uzdevumus, kas palīdz operatīvajiem servisiem un glābējiem"</string>

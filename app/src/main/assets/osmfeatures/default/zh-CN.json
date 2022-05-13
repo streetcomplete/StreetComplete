@@ -159,7 +159,7 @@
                         "housename": "房屋名称",
                         "housenumber": "123",
                         "housenumber!jp": "楼号/地段号",
-                        "neighbourhood": "社区",
+                        "neighbourhood": "街坊",
                         "neighbourhood!jp": "丁目/字/小字",
                         "place": "地方",
                         "postcode": "邮政编码",
@@ -172,7 +172,7 @@
                         "street": "路",
                         "subdistrict": "街道",
                         "subdistrict!vn": "行政区/社区/小镇",
-                        "suburb": "地区",
+                        "suburb": "城市片区",
                         "suburb!jp": "行政区",
                         "unit": "户号"
                     },
@@ -1925,7 +1925,10 @@
                     "terms": "真实火焰,真实火苗,真实火花,真实火"
                 },
                 "recycling_accepts": {
-                    "label": "接受"
+                    "label": "接受",
+                    "options": {
+                        "scrap_metal": "废金属"
+                    }
                 },
                 "recycling_type": {
                     "label": "类型",
@@ -2610,6 +2613,17 @@
                     },
                     "terms": "使用类型,利用类型"
                 },
+                "usage_waterway": {
+                    "label": "使用类型",
+                    "options": {
+                        "headrace": "水电站引水",
+                        "irrigation": "灌溉",
+                        "spillway": "溢洪",
+                        "tailrace": "水电站尾水",
+                        "transmission": "输水",
+                        "transportation": "航运"
+                    }
+                },
                 "utility": {
                     "label": "Utility"
                 },
@@ -2716,7 +2730,19 @@
                     "terms": "网站,网址,链接,网页,uri,url"
                 },
                 "wetland": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "bog": "酸性泥炭沼泽",
+                        "fen": "碱性泥炭沼泽",
+                        "mangrove": "红树林",
+                        "marsh": "草本沼泽",
+                        "reedbed": "芦苇荡",
+                        "saltmarsh": "海岸盐沼",
+                        "string_bog": "线状酸沼",
+                        "swamp": "木本沼泽",
+                        "tidalflat": "潮滩",
+                        "wet_meadow": "湿草甸"
+                    }
                 },
                 "wheelchair": {
                     "label": "轮椅通道",
@@ -3193,8 +3219,8 @@
                     "name": "闲置物品交换屋"
                 },
                 "amenity/grave_yard": {
-                    "name": "坟场",
-                    "terms": "墓地,坟地"
+                    "name": "教堂墓地",
+                    "terms": "教堂墓地,教堂庭院,墓地,坟地"
                 },
                 "amenity/grit_bin": {
                     "name": "砂箱",
@@ -3335,7 +3361,7 @@
                     "terms": "礼拜场所,宗教礼拜处"
                 },
                 "amenity/place_of_worship/buddhist": {
-                    "name": "佛教寺庙",
+                    "name": "佛寺殿堂",
                     "terms": "寺庙,佛堂,和尚寺,尼姑庵,佛教,宗教,庙宇,礼拜,寺观,寺院,佛寺,梵刹,禅林,净院"
                 },
                 "amenity/place_of_worship/christian": {
@@ -3374,7 +3400,7 @@
                     "terms": "锡克教,印度,神教,宗教,寺庙,庙宇,崇奉,礼拜,信仰,膜拜,尊崇,神寺,拜殿"
                 },
                 "amenity/place_of_worship/taoist": {
-                    "name": "道教宫观",
+                    "name": "道观殿堂",
                     "terms": "道教,宗教,寺庙,庙宇,奉崇,礼拜,拜殿,神寺,尊崇,信仰,膜拜,宫观,法事,院,殿,祠,堂,坛,馆,庵,阁,洞,府,修道院,僧侣,道家,黄老,老氏,玄门,道门"
                 },
                 "amenity/planetarium": {
@@ -3400,8 +3426,8 @@
                     "terms": "邮局,邮政局"
                 },
                 "amenity/prep_school": {
-                    "name": "补习班",
-                    "aliases": "培训班\n辅导班"
+                    "name": "辅导学校",
+                    "terms": "补习班,培训班,辅导班"
                 },
                 "amenity/prison": {
                     "name": "监狱/看守所",
@@ -4760,11 +4786,11 @@
                     "terms": "高速公路交界处/出口,入口/出口,出入口"
                 },
                 "highway/motorway_link": {
-                    "name": "高速公路连接路",
+                    "name": "高速公路匝道",
                     "terms": "高速公路连接路,连接路,匝道,高速,道路,路,公路,快速路,干道,马路"
                 },
                 "highway/motorway_link-US-CA": {
-                    "name": "高速公路连接路",
+                    "name": "高速公路匝道",
                     "terms": "高速公路连接路,连接路,匝道,高速,道路,路,公路,快速路,干道,马路"
                 },
                 "highway/passing_place": {
@@ -4803,8 +4829,8 @@
                     "terms": "主要道路连接路,连接路,匝道,道路,路,公路,大道,高架路,干道,快速路,马路"
                 },
                 "highway/raceway": {
-                    "name": "赛车场",
-                    "terms": "赛车场"
+                    "name": "赛车道",
+                    "terms": "赛车道,赛车,赛道"
                 },
                 "highway/raceway/karting": {
                     "name": "卡丁车赛道"
@@ -4838,8 +4864,8 @@
                     "terms": "次要道路连接路,连接路,匝道,道路,路,公路,大道,高架路,马路"
                 },
                 "highway/service": {
-                    "name": "辅助道路",
-                    "terms": "辅助道路,小路,服务性道路,路,街道,道路,马路"
+                    "name": "服务道路",
+                    "terms": "服务道路,小路,服务性道路,路,街道,道路,马路"
                 },
                 "highway/service/alley": {
                     "name": "窄路/巷",
@@ -4897,7 +4923,7 @@
                     "terms": "自由流,自由流收费站,自由流公路收费站,收费门架,收费龙门架,全自动收费站"
                 },
                 "highway/track": {
-                    "name": "乏维护辙路",
+                    "name": "农林辙路",
                     "terms": "车径,小路,土路,泥路,山路,马道,马路,消防道路,农场道路,牧场道路,路,道路,4x4,4wd,四驱,吉普"
                 },
                 "highway/traffic_mirror": {
@@ -5084,7 +5110,7 @@
                     "terms": "农田,农场,耕地"
                 },
                 "landuse/farmyard": {
-                    "name": "农庄",
+                    "name": "农家庭院",
                     "terms": "农庄,农家,农家庭院"
                 },
                 "landuse/flowerbed": {
@@ -5119,8 +5145,8 @@
                     "terms": "工业区"
                 },
                 "landuse/industrial/scrap_yard": {
-                    "name": "废料场",
-                    "terms": "废料场"
+                    "name": "废车场",
+                    "terms": "废车场,废料场"
                 },
                 "landuse/industrial/slaughterhouse": {
                     "name": "屠宰场",
@@ -5196,7 +5222,7 @@
                 },
                 "landuse/residential": {
                     "name": "居民区",
-                    "terms": "住宅小区"
+                    "terms": "住宅区,小区,居住区"
                 },
                 "landuse/residential/apartments": {
                     "name": "公寓区",
@@ -5594,7 +5620,7 @@
                     "terms": "风玫瑰图"
                 },
                 "man_made/courtyard": {
-                    "name": "院子"
+                    "name": "庭院"
                 },
                 "man_made/crane": {
                     "name": "起重机",
@@ -5828,8 +5854,8 @@
                     "terms": "风泵,风车,风力泵"
                 },
                 "man_made/works": {
-                    "name": "工厂",
-                    "terms": "工厂,加工,制造"
+                    "name": "生产设施",
+                    "terms": "工厂,加工,制造,生产线"
                 },
                 "marker": {
                     "name": "标记物"
@@ -7837,8 +7863,8 @@
                     "terms": "干船坞,湿船坞,干坞,湿坞"
                 },
                 "waterway/drain": {
-                    "name": "渠",
-                    "terms": "下水道"
+                    "name": "排水渠",
+                    "terms": "排水,渠,沟"
                 },
                 "waterway/fish_pass": {
                     "name": "鱼道"

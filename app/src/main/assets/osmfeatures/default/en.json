@@ -745,6 +745,9 @@
                         "no": "None"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Deposit"
+                },
                 "depth": {
                     "label": "Depth (Meters)"
                 },
@@ -3774,6 +3777,10 @@
                     "name": "Toy Library",
                     "terms": "game,toy"
                 },
+                "amenity/trolley_bay": {
+                    "name": "Cart Corral",
+                    "terms": "carriage return,cart return,shopping cart,trolley bay"
+                },
                 "amenity/university": {
                     "name": "University Grounds",
                     "terms": "college,graduate school,phd program,master's degree program"
@@ -4753,8 +4760,8 @@
                     "terms": "busway,bus track"
                 },
                 "highway/construction": {
-                    "name": "Closed Road",
-                    "terms": "closure,construction,road closed,road work,roadwork"
+                    "name": "Road Under Construction",
+                    "terms": "closed road,closure,construction,road closed,road work,roadwork"
                 },
                 "highway/corridor": {
                     "name": "Indoor Corridor",
@@ -5833,6 +5840,10 @@
                 "man_made/mast/communication/television": {
                     "name": "Television Broadcast Mast",
                     "terms": "antenna,broadcast tower,communication mast,communication tower,guyed tower,television mast,television tower,transmission mast,transmission tower,tv mast,tv tower"
+                },
+                "man_made/mast/lighting": {
+                    "name": "Lighting Mast",
+                    "terms": "flood light,lighting,stadium lights,stadium lighting,headlight"
                 },
                 "man_made/mineshaft": {
                     "name": "Mineshaft",

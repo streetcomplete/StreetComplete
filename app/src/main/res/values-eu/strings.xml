@@ -2362,9 +2362,6 @@ Bestela, ohar bat utz dezakezu (argazki batekin)."</string>
     <string name="quest_smoothness_obstacle_hint">"Eman erantzun orokor bat leuntasunari dagokionez. Oztopo bakarrak, hala nola, ibilguak, abiadura-babesak edo ganadu-sareak alde batera utzi daitezke. Errepikaturiko edo ustekabeko oztopoek erantzuna lortzeko balio izan behar dute."</string>
     <string name="quest_smoothness_hint">"
 🚲, 🚗, 🚙, … adierazi zein ibilgailutarako den egokia azalera hau. Garrantzitsua ikuspegi orokorra zehaztasunak baino."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Bidebazter argi eta garbi mugatuta, larrialdietarako geldialdietarako, ibilgailuak trafiko-erreiaren ondoan guztiz seguru gelditzea ahalbidetzen duena, nahiz eta ez beti (guztiz) zolatutako gainazalean."</string>
     <string name="link_osmhydrant_description">"Bilatu, gehitu eta editatu suhiltzaileen parkeak eta suhiltzaileen ur-
 harguneak"</string>
     <string name="achievement_lifesaver_title">"Salbagailua"</string>

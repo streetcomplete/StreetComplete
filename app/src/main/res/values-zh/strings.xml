@@ -888,19 +888,19 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_openingHours_emptyAnswer">"需要描述标志上写了什么。如果没有标志，就应当尝试进入场所，主动询问营业时间。"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_none_but_no_oneway">"没有，但两个方向的道路都可以骑自行车。"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"没有，但骑自行车的人可以双向使用道路"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"这条路为什么没有名称？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noProperStreet_service2">"看起来像是车道或是停车道"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"看起来像是私人车道或是停车场通道（服务道路）"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noProperStreet_track2">"这是一条农业或林区道路"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"这是一条农业或林区道路（车辙路）"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noName_noname">"上述答案都不是，它只是没有名字"</string>
+    <string name="quest_streetName_answer_noName_noname">"上述答案都不是，它只是没有名字（无名路）"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"如果有无障碍卫生间，则应当会看到像这样的无障碍指示牌。
@@ -1791,9 +1791,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_is_defibrillator_inside_title">"心脏除颤器（AED）位于建筑物内部吗？"</string>
     <string name="about_title_translate">"帮助翻译本应用"</string>
     <string name="about_description_translate">"%1$s 已翻译 %2$d%%"</string>
-    <string name="quest_oneway2_title">"这是单项路吗？沿什么方向？"</string>
-    <string name="quest_oneway2_dir">"这个方向的单项路"</string>
-    <string name="quest_oneway2_no_oneway">"不是单向路"</string>
+    <string name="quest_oneway2_title">"这是条单行道吗？沿什么方向？"</string>
+    <string name="quest_oneway2_dir">"这个方向的单行道"</string>
+    <string name="quest_oneway2_no_oneway">"不是单行道"</string>
     <string name="quest_maxweight_select_sign">"选择标识"</string>
     <string name="quest_steps_incline_title">"这段阶梯的朝向是？"</string>
 
@@ -2404,9 +2404,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_smoothness_obstacle">"存在一个障碍"</string>
     <string name="quest_smoothness_obstacle_hint">"请提供一个关于平顺度的通用答案。单一的障碍物，如路缘石、减速带或牲畜格栅，可以忽略不计。反复出现的或意想不到的障碍物应计入到回答中。"</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … 表示该表面对哪些车辆可以使用。重要的是大局，而不是单一的损害。"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"路肩是一个明确划定的紧急停车道，允许车辆完全停在车道旁边（外），尽管并不总是（完全）在铺装的表面上。"</string>
     <string name="link_osmhydrant_description">"查询、添加并编辑消防站和消防栓"</string>
 
     <!-- Fuzzy -->
@@ -2602,4 +2599,7 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"这里有一个能用的自行车打气筒供任何人使用吗？"</string>
     <string name="quest_air_pump_compressor_title">"这里有空气压缩机可用吗？"</string>
     <string name="quest_step_count_stile_hint">"只是到达顶部的步数。如果两边的步数不一样，就填更高的步数。"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shoulder_explanation2">"路肩是一个明确划定的紧急停车道。被指定为路肩的区域不一定在整个宽度上铺设，也不一定宽到足以让汽车完全停在交通车道之外。"</string>
 </resources>

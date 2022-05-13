@@ -1452,9 +1452,6 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … pokazuju za koju vrstu vozila bi površina trebala biti adekvatna za korištenje. Obratite pažnju na širu sliku, a ne na pojedinačna oštećenja."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Zaustavna traka je jasno razgraničena traka za zaustavljanje vozila u nuždi koja omogućuje da se vozila sigurno zaustave van prometne trake, iako ne uvijek na (potpuno) asfaltiranoj površini."</string>
     <string name="link_osmhydrant_description">"Pretražite, dodajte i uredite vatrogasne stanice i vatrogasne hidrante"</string>
     <string name="achievement_lifesaver_title">"Spasilac"</string>
     <string name="achievement_lifesaver_solved_X">"Riješili ste %d zadataka koji pomažu hitnim službama!"</string>

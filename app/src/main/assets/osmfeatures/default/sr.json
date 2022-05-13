@@ -83,6 +83,9 @@
                             "description": "Дозвољен приступ само уз појединачну дозволу власника",
                             "title": "Приватан"
                         },
+                        "unknown": {
+                            "description": "Услови приступа су непознати или нејасни."
+                        },
                         "yes": {
                             "description": "Дозвољен приступ законом; право пута",
                             "title": "Дозвољен"
@@ -347,6 +350,9 @@
                 "building": {
                     "label": "Зграда"
                 },
+                "building/flats": {
+                    "label": "Јединице"
+                },
                 "building/levels": {
                     "label": "Спратови",
                     "placeholder": "2, 4, 6...",
@@ -397,6 +403,9 @@
                     "label": "Приступачних места",
                     "placeholder": "1, 2, 3..."
                 },
+                "capacity/persons": {
+                    "label": "Капацитет особа"
+                },
                 "capacity_parking": {
                     "label": "Укупно места",
                     "placeholder": "10, 20, 30..."
@@ -405,7 +414,10 @@
                     "label": "Новчана уплата"
                 },
                 "castle_type": {
-                    "label": "Врста"
+                    "label": "Врста",
+                    "options": {
+                        "fortress": "Тврђава"
+                    }
                 },
                 "changing_table": {
                     "label": "Сто за промену пелена"
@@ -629,7 +641,10 @@
                     "placeholder": "5 мм, 10 цм, 15 инч…"
                 },
                 "diet_multi": {
-                    "label": "Врсте исхране"
+                    "label": "Врсте исхране",
+                    "options": {
+                        "vegetarian": "Вегетаријанско"
+                    }
                 },
                 "diplomatic": {
                     "label": "Врста"
@@ -646,6 +661,12 @@
                     "options": {
                         "anticlockwise": "Супротно смеру казаљке",
                         "clockwise": "У смеру казаљке"
+                    }
+                },
+                "direction_vertex": {
+                    "options": {
+                        "backward": "Уназад",
+                        "forward": "Унапред"
                     }
                 },
                 "direction_vertex_dual": {
@@ -711,7 +732,11 @@
                     "placeholder": "Подразумевано"
                 },
                 "embassy": {
-                    "label": "Врста"
+                    "label": "Врста",
+                    "options": {
+                        "residence": "Званично пребивалиште амбасадора",
+                        "yes": "Амбасада"
+                    }
                 },
                 "emergency": {
                     "label": "Хитан случај"
@@ -848,8 +873,14 @@
                 "healthcare/speciality": {
                     "label": "Специјалитети"
                 },
+                "heating": {
+                    "label": "Грејање"
+                },
                 "height": {
                     "label": "Висина (у метрима)"
+                },
+                "height_building": {
+                    "label": "Висина зграде (у метрима)"
                 },
                 "highway": {
                     "label": "Врста"
@@ -1249,6 +1280,9 @@
                         "surface": "Подлога",
                         "underground": "Подземни"
                     }
+                },
+                "parking/orientation": {
+                    "label": "Оријентација"
                 },
                 "parking_space": {
                     "label": "Врста"
@@ -3305,6 +3339,9 @@
                 },
                 "landuse/construction": {
                     "name": "Градилиште"
+                },
+                "landuse/farm": {
+                    "name": "Пољопривредно земљиште"
                 },
                 "landuse/farmyard": {
                     "name": "Сеоско двориште"

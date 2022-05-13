@@ -4707,15 +4707,15 @@
                     "terms": "mini,rondo,małe,skrzyżowanie"
                 },
                 "highway/motorway": {
-                    "name": "Autostrada",
-                    "terms": "autostrada"
+                    "name": "Droga autostradowa",
+                    "terms": "droga autostradowa"
                 },
                 "highway/motorway_junction": {
-                    "name": "Węzeł autostradowy",
-                    "terms": "węzeł autostradowy,wjazd na autostradę,zjazd z autostrady,autostrada"
+                    "name": "Węzeł dróg autostradowych",
+                    "terms": "węzeł dróg autostradowych,wjazd na drogę autostradową,zjazd z drogi autostradowej,droga autostrada"
                 },
                 "highway/motorway_link": {
-                    "name": "Autostrada – wjazd/zjazd",
+                    "name": "Droga autostradowa – wjazd/zjazd",
                     "terms": "rampa,wjazd,wyjazd,zjazd"
                 },
                 "highway/passing_place": {
@@ -6360,7 +6360,7 @@
                     "terms": "piaskownica,piasek,plac zabaw"
                 },
                 "playground/seesaw": {
-                    "name": "Huśtawka",
+                    "name": "Huśtawka belkowa",
                     "terms": "huśtawka"
                 },
                 "playground/slide": {
@@ -6376,7 +6376,7 @@
                     "terms": "zestaw zabawowy,budowla"
                 },
                 "playground/swing": {
-                    "name": "Huśtawka",
+                    "name": "Huśtawka podwieszona",
                     "terms": "huśtawka"
                 },
                 "playground/zipwire": {
