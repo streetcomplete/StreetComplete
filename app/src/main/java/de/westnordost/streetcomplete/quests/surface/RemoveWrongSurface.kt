@@ -15,7 +15,7 @@ class RemoveWrongSurface : OsmFilterQuestType<WrongSurfaceAnswer>() {
 
     override val changesetComment = "Remove wrong surface info"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_tractor
+    override val icon = R.drawable.ic_quest_tractor_surface
     override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wrong_surface_title

@@ -17,7 +17,7 @@ class AddServiceBuildingType : OsmFilterQuestType<String>() {
     """
     override val changesetComment = "Add service building type"
     override val wikiLink = "Tag:building=service"
-    override val icon = R.drawable.ic_quest_power
+    override val icon = R.drawable.ic_quest_service_building
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_service_building_type_title
 
