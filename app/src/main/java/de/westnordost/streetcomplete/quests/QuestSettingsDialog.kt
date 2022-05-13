@@ -92,6 +92,7 @@ private fun dialog(context: Context, messageId: Int, initialValue: String, input
     input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
     input.setPaddingRelative(30,10,30,10)
     input.setText(initialValue)
+    input.maxLines = 12
     return AlertDialog.Builder(context)
         .setMessage(messageId)
         .setView(input)
