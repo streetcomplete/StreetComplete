@@ -216,6 +216,15 @@ class MainFragment :
         updateMapQuestOffsets()
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
+            View.VISIBLE
+        else
+            View.GONE
+        mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         val mapFragment = this.mapFragment ?: return
