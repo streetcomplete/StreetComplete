@@ -26,6 +26,18 @@
         <item>MORE_OFTEN</item>
     </string-array>
 
+    <string-array name="pref_entries_day_night">
+        <item>@string/day_night_ignore</item>
+        <item>@string/day_night_priority</item>
+        <item>@string/day_night_visibility</item>
+    </string-array>
+
+    <string-array name="pref_entriyvalues_day_night" translatable="false">
+        <item>IGNORE</item>
+        <item>PRIORITY</item>
+        <item>VISIBILITY</item>
+    </string-array>
+
     <string-array name="pref_entries_theme_select" translatable="false">
         <item>@string/theme_automatic</item>
         <item>@string/theme_light</item>

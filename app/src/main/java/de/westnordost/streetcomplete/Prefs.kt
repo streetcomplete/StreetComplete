@@ -61,6 +61,7 @@ object Prefs {
     const val SWAP_GPX_NOTE_BUTTONS = "swap_gpx_note_buttons"
     const val HIDE_KEYBOAD_FOR_NOTE = "hide_keyboard_for_note"
     const val OFFSET_FIX = "offset_fix"
+    const val DAY_NIGHT_BEHAVIOR = "day_night_behavior"
 
     enum class Autosync {
         ON, WIFI, OFF
@@ -76,5 +77,11 @@ object Prefs {
 
     enum class ResurveyIntervals {
         EVEN_LESS_OFTEN, LESS_OFTEN, DEFAULT, MORE_OFTEN
+    }
+
+    enum class DayNightBehavior {
+        IGNORE,
+        PRIORITY,
+        VISIBILITY
     }
 }

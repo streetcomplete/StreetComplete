@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -65,6 +66,7 @@ class SettingsFragment :
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
+    private val dayNightQuestFilter: DayNightQuestFilter by inject()
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -257,6 +259,10 @@ class SettingsFragment :
                 resurveyIntervalsUpdater.update()
             }
             Prefs.QUEST_GEOMETRIES -> {
+                visibleQuestTypeController.clear()
+            }
+            Prefs.DAY_NIGHT_BEHAVIOR -> {
+                dayNightQuestFilter.reload()
                 visibleQuestTypeController.clear()
             }
         }

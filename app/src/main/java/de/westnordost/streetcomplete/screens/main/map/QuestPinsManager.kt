@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.util.isDay
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -195,6 +197,18 @@ class QuestPinsManager(
     private fun initializeQuestTypeOrders() {
         // this needs to be reinitialized when the quest order changes
         val sortedQuestTypes = if (reversedOrder) questTypeRegistry.asReversed().toMutableList() else questTypeRegistry.toMutableList()
+        // move specific quest types to front if set by preference
+        val moveToFront = if (Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")!!) == Prefs.DayNightBehavior.PRIORITY)
+            if (isDay(ctrl.cameraPosition.position))
+                sortedQuestTypes.filter { it.dayNightCycle == DayNightCycle.ONLY_DAY }
+            else
+                sortedQuestTypes.filter { it.dayNightCycle == DayNightCycle.ONLY_NIGHT }
+        else
+            emptyList()
+        moveToFront.asReversed().forEach {
+            sortedQuestTypes.remove(it)
+            sortedQuestTypes.add(0, it)
+        }
         questTypeOrderSource.sort(sortedQuestTypes)
         synchronized(questTypeOrders) {
             questTypeOrders.clear()

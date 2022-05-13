@@ -166,6 +166,10 @@
     <string name="quest_generic_surface_message">Allow generic surface answers without requiring a note? (Please restart the app after changing this setting)</string>
     <string name="quest_generic_surface_yes">Allow without note</string>
     <string name="quest_generic_surface_no">Only with note (default)</string>
+    <string name="pref_day_night_title">Daytime quest filter</string>
+    <string name="day_night_ignore">Ignore</string>
+    <string name="day_night_priority">Increase priority of certain quests</string>
+    <string name="day_night_visibility">Don’t show certain quests</string>
 
     <!-- Store description -->
 

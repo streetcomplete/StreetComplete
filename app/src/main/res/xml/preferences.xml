@@ -218,6 +218,15 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <ListPreference
+            android:key="day_night_behavior"
+            android:title="@string/pref_day_night_title"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="IGNORE"
+            android:entries="@array/pref_entries_day_night"
+            android:entryValues="@array/pref_entriyvalues_day_night"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
