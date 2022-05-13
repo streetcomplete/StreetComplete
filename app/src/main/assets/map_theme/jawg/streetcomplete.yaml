@@ -62,7 +62,7 @@ layers:
     streetcomplete_pins:
         data: { source: streetcomplete_pins }
         pins:
-            filter: { $zoom: { min: 14 } }
+            filter: { $zoom: { min: 15 } }
             draw:
                 pin-icons:
                     interactive: true
