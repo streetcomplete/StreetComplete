@@ -1005,7 +1005,7 @@
                 },
                 "fax": {
                     "label": "Telekopiilo",
-                    "placeholder": "+672 123456789",
+                    "placeholder": "+881 123456789",
                     "terms": "telefakso,fakso"
                 },
                 "fee": {
@@ -1770,7 +1770,7 @@
                 },
                 "phone": {
                     "label": "Telefono",
-                    "placeholder": "+672 123456789",
+                    "placeholder": "+881 123456789",
                     "terms": "telefonnumero,numero telefona"
                 },
                 "piste/difficulty": {
@@ -1979,8 +1979,14 @@
                         "cans": "Ladskatoloj / trinkaĵskatoloj",
                         "cardboard": "Kartonoj",
                         "clothes": "Vestaĵoj",
+                        "cooking_oil": "Manĝ-oleo",
+                        "engine_oil": "Motor-oleo",
+                        "glass": "Vitro (ĉiuspeca: hardita vitro, fenestroj, speguloj, ktp.)",
+                        "glass_bottles": "Vitraj ujoj (boteloj, konserv-vazoj)",
                         "green_waste": "Bioruboj",
                         "paper": "Papero",
+                        "plastic": "Plasto",
+                        "plastic_bottles": "Plastaj boteloj",
                         "plastic_packaging": "Plastaj pakumoj",
                         "scrap_metal": "Ferrubo",
                         "shoes": "Ŝuoj"
@@ -2995,7 +3001,7 @@
                     "terms": "dromo,aerodromo,flugkampo,surteriĝejo,aŭtokurejo,autokurejo,auxtokurejo"
                 },
                 "aeroway/gate": {
-                    "name": "Aerodroma enirejo",
+                    "name": "Kluzo aerodromo-aviadilo",
                     "terms": "aerodroma kluzo,aerodroma pordego"
                 },
                 "aeroway/hangar": {
@@ -6549,7 +6555,7 @@
                 },
                 "office/employment_agency": {
                     "name": "Dungoficejo",
-                    "terms": "dungado,labora agentejo,senlaborula oficejo,dungejo"
+                    "terms": "dungado,labora agentejo,senlaborula oficejo,dungejo,laborserĉado"
                 },
                 "office/energy_supplier": {
                     "name": "Oficejo de elektr-provizanto",
@@ -6675,6 +6681,9 @@
                 "office/water_utility": {
                     "name": "Oficejo de akv-provizanta firmao",
                     "terms": "akvoprovizo,akvokondukto"
+                },
+                "office/yes": {
+                    "name": "Oficejo (nekonata speco)"
                 },
                 "piste/downhill": {
                     "name": "Skivojo alpa (malsuprenira)",
@@ -7963,6 +7972,9 @@
                 "shop/wine": {
                     "name": "Vina vendejo",
                     "terms": "vinvendejo,vinovendejo,vindejo,alkoholaĵoj"
+                },
+                "shop/yes": {
+                    "name": "Vendejo (nekonata speco)"
                 },
                 "telecom": {
                     "name": "Telekomunikada objekto"

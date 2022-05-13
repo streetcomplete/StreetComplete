@@ -1897,9 +1897,6 @@ Alternativt, lag en merknad (med bilde)."</string>
     <string name="quest_smoothness_obstacle">"Det er en hindring"</string>
     <string name="quest_smoothness_obstacle_hint">"Gi et generelt svar på hvor jevn overflaten er. Enkelte ujevnheter som fortauskanter, fartsdumper eller ferister kan ignoreres. Gjentatte eller uventede ujevnheter bør vurderes med i svaret."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … velg hva slags kjøretøy som bør være greie å bruke på denne overflaten. Det store bildet er viktigere enn enkelte skader."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"En veiskulder er et tydelig adskilt felt hvor kjøretøy trygt kan stoppe utenfor de trafikkerte kjørefeltene, men ikke nødvendigvis (bare) på belagt underlag."</string>
     <string name="link_osmhydrant_description">"Finn, legg til og endre brannstasjoner og brannhydranter"</string>
     <string name="achievement_lifesaver_title">"Livredder"</string>
     <string name="achievement_lifesaver_solved_X">"Du har løst %d oppdrag som hjelper nødetater og førstehjelpere!"</string>

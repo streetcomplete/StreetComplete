@@ -406,7 +406,10 @@
                 "castle_type": {
                     "label": "Tyyppi",
                     "options": {
-                        "manor": "Kartano"
+                        "fortress": "linnoitus",
+                        "kremlin": "kreml",
+                        "manor": "kartano",
+                        "palace": "palatsi"
                     }
                 },
                 "changing_table": {
@@ -1438,8 +1441,8 @@
                         "rooftop": "katolla",
                         "sheds": "metallikatos",
                         "street_side": "kadunvarsi",
-                        "surface": "Pysäköintikenttä",
-                        "underground": "Pysäköintiluola"
+                        "surface": "kaduntasoinen pysäköintialue",
+                        "underground": "pysäköintiluola"
                     }
                 },
                 "parking/orientation": {
@@ -2061,7 +2064,7 @@
                     "label": "Päällyste",
                     "options": {
                         "artificial_turf": "tekonurmi",
-                        "asphalt": "asvaltti",
+                        "asphalt": "asfaltti",
                         "concrete": "betoni",
                         "dirt": "multa",
                         "grass": "ruoho",
@@ -2343,7 +2346,10 @@
                     "placeholder": "https://www.esimerkki.fi/"
                 },
                 "wetland": {
-                    "label": "Tyyppi"
+                    "label": "Tyyppi",
+                    "options": {
+                        "swamp": "suo"
+                    }
                 },
                 "wheelchair": {
                     "label": "Esteettömyys",
@@ -5010,6 +5016,9 @@
                 "natural/wetland": {
                     "name": "Kosteikko",
                     "terms": "suo,tulvametsä,soistuma"
+                },
+                "natural/wetland/swamp": {
+                    "name": "Suo"
                 },
                 "natural/wood": {
                     "name": "Luonnonvarainen metsä"

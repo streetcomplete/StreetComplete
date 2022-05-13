@@ -22,7 +22,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer noter der ikke er formuleret som spørgsmål"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_map_cache">"Størrelse på cache for kort"</string>
+    <string name="pref_title_map_cache">"Størrelse på cache-hukommelse for kort"</string>
     <string name="map_btn_gps_tracking">"Følg mig"</string>
     <string name="map_attribution_osm">"© OpenStreetMap bidragsydere"</string>
     <string name="quest_generic_otherAnswers">"Andre svar"</string>
@@ -300,12 +300,12 @@ Før ændringer indsendes tjekker appen dog en &lt;a href=\"https://www.westnord
     <string name="quest_address_title">"Hvilket husnummer er der på denne bygning?"</string>
 
     <!-- Fuzzy -->
-    <string name="store_listing_short_description">"OpenStreetMap inspektionsapp"</string>
+    <string name="store_listing_short_description">"OpenStreetMap inspektions-app"</string>
 
     <!-- Fuzzy -->
     <string name="store_listing_full_description">"Hjælp med at forbedre OpenStreetMap med StreetComplete!
 
-Denne app finder ukomplette data der kan udvides i dit nærområde og viser det på et kort som markører. Hver af disse opgaver kan løses ved at svare på et simpelt spørgsmål for at få bedre data på OSM hjemmesiden.
+Denne app finder ukomplette data der kan udvides i dit nærområde og viser det på et kort som markører. Hver af disse er opgaver, som kan løses ved at svare på et simpelt spørgsmål, hvorved data på OSM forbedres.
 
 Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, uden du behøver at bruge et andet redigeringsværktøj."</string>
 
@@ -895,8 +895,8 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_streetName_answer_noName_noname">"Ingen af de ovenstående, den har bare ikke et navn"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Et kørestolstegn som dette kan være synligt hvis toilettet er kørestolsvenligt.
-Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndtag, gelænder eller højdejusterbar håndvask."</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Et kørestolstegn som dette kan være synligt, hvis toilettet er kørestolsvenligt.
+Delvist betyder, at kørestolsbrugeren kan bruge toilettet, men at der mangler håndtag, gelænder eller højdejusterbar håndvask."</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_create_note">"Opret ny note"</string>
@@ -1708,13 +1708,11 @@ Denne data er essentiel ikke bare for postbuddet men også for ethvert navigatio
     <string name="achievement_blind_solved_X">"Du har løst %d opgaver der er interessante for synshandicappede."</string>
     <string name="achievement_pedestrian_title">"Løber"</string>
     <string name="achievement_pedestrian_solved_X">"Du har løst %d opgaver der er interessante for folk til fods."</string>
-    <string name="achievement_veg_title">"God mod dyr"</string>
+    <string name="achievement_veg_title">"Dyreven"</string>
     <string name="achievement_veg_solved_X">"Du har løst %d opgaver der er interessante for folk der lever på en diæt uden kød!
 "</string>
-    <string name="achievement_car_title">"På vejen"</string>
-
-    <!-- Fuzzy -->
-    <string name="achievement_car_solved_X">"Du har løst %d opgaver der forbedrer vejinfrastrukturen ved at sætte gaden i OpenStreetMap!"</string>
+    <string name="achievement_car_title">"Godt på vej"</string>
+    <string name="achievement_car_solved_X">"Du har løst %d opgaver der forbedrer vejinfrastrukturens detaljeringsgrad ved at sætte fokus på \"street\" i OpenStreetMap!"</string>
 
     <!-- Notifications -->
     <string name="unread_messages_message">"Du har %d ulæste beskeder i din indbakke"</string>
@@ -1794,7 +1792,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_oneway2_dir">"Ensrettet i denne retning"</string>
     <string name="quest_oneway2_no_oneway">"Ikke ensrettet"</string>
     <string name="quest_maxweight_select_sign">"Vælg skilt"</string>
-    <string name="quest_steps_incline_title">"Hvilken retning er op af disse trapper?"</string>
+    <string name="quest_steps_incline_title">"Hvilken retning er opad for disse trin?"</string>
     <string name="quest_steps_incline_up">"Denne vej op"</string>
     <string name="quest_step_count_title">"Hvor mange trin her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er der lydsignaler for blinde her?"</string>
@@ -1851,7 +1849,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_maxheight_below_bridge_title">"Hvad er højdebegrænsningen under broen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_split_way_hint">"Hvis dette ikke vedrører hele vejen så overvej at svare  \"%s\"."</string>
+    <string name="quest_maxheight_split_way_hint">"Hvis dette ikke vedrører hele vejen så overvej at svare \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Er der taktil markering på kantstenen her?"</string>
 
     <!-- Fuzzy -->
@@ -1952,7 +1950,7 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, fx ensrettet vej der 
     <string name="added_tag_action_title">"Tilføjede %s"</string>
     <string name="removed_tag_action_title">"Fjernede %s"</string>
     <string name="changed_tag_action_title">"Opdaterede til %s"</string>
-    <string name="pref_title_delete_cache">"Slet cache"</string>
+    <string name="pref_title_delete_cache">"Slet cache-hukommelse"</string>
     <string name="pref_title_delete_cache_summary">"Hvis du tror, ​​at nogle data er forældede"</string>
     <string name="delete_confirmation">"Slet"</string>
     <string name="delete_cache_dialog_message">"Slet alle downloadede kortdata, inkl. opgaver? 
@@ -1966,14 +1964,14 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_barrier_type_chain">"Kæde"</string>
     <string name="quest_barrier_type_rope">"Reb"</string>
     <string name="quest_barrier_type_wire_gate">"Flytbar trådhegnssektion"</string>
-    <string name="quest_barrier_type_cattle_grid">"Gitter som blokerer husdyr fra at gå over"</string>
+    <string name="quest_barrier_type_cattle_grid">"Rist der forhindrer husdyr i at gå over"</string>
     <string name="quest_barrier_type_block">"Stor immobil genstand"</string>
     <string name="quest_barrier_jersey_barrier">"Betonklods"</string>
     <string name="quest_barrier_type_log">"Stamme"</string>
     <string name="quest_barrier_type_kerb">"Kantsten"</string>
     <string name="quest_barrier_type_height_restrictor">"Højdebarriere"</string>
-    <string name="quest_barrier_full_height_turnstile">"Vendekors i fuld højde"</string>
-    <string name="quest_barrier_type_turnstile">"Vendekors"</string>
+    <string name="quest_barrier_full_height_turnstile">"Drejekors i fuld højde"</string>
+    <string name="quest_barrier_type_turnstile">"Drejekors"</string>
     <string name="quest_barrier_type_passage">"Passage gennem mur/hegn/osv."</string>
     <string name="quest_barrier_type_debris_pile">"Bunke af affald"</string>
     <string name="quest_barrier_type_stile_squeezer">"Stente (gennem mur)"</string>
@@ -2003,7 +2001,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="about_title_faq">"Ofte stillede spørgsmål"</string>
     <string name="quest_buildingLevels_title2">"Hvor mange etager, over jorden, har denne bygning?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Hvor mange etager, over jorden, har denne del af bygningen?"</string>
-    <string name="quest_crossing_title">"Er der en kantsten hvor disse veje møder hinanden? Hvilken slags?"</string>
+    <string name="quest_crossing_title">"Er der en kantsten, hvor disse veje møder hinanden? Hvilken slags?"</string>
     <string name="pref_subtitle_quests_preset_name">"Forudindstilling: %s"</string>
     <string name="default_disabled_msg_roofShape">"Denne opgavetype er slået fra som standard, da formen på bygningers tage kan være svære at se fra gadeplan. Opgavetypen er også meget tidskrævende; ofte er det nemmere og mere effektivt at kortlægge dette udfra luftfotos derhjemme."</string>
     <string name="quest_religion_animist">"Animisme"</string>
@@ -2071,7 +2069,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="restore_dialog_message">"Gendan alle opgaver du har skjult?"</string>
     <string name="quest_parking_access_title2">"Hvem må parkere her? Parkering kan være gratis eller mod betaling."</string>
     <string name="quest_access_yes">"Alle fra offentligheden"</string>
-    <string name="quest_access_customers">"Kun personbesøg til bestemt sted (fx kunder)"</string>
+    <string name="quest_access_customers">"Enhver person, der besøger et bestemt sted (f.eks. kun kunder)"</string>
     <string name="quest_access_private">"Kun person(er) med tilladelse"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Er tømningstider på denne postkasse stadigvæk korrekte?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Ej genkendt. Prøv at indtaste typen af sted, fx \"bageri\". Ellers overvej at efterlade en note."</string>
@@ -2152,9 +2150,8 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_smoothness_wrong_surface">"Overflade er anderledes"</string>
     <string name="quest_smoothness_surface_value">"Overfladen var markeret som:"</string>
     <string name="quest_smoothness_obstacle">"Der er en forhindring"</string>
-    <string name="quest_smoothness_obstacle_hint">"Giv venligst et generelt svar på glatheden. Der kan ses bort fra enkelte forhindringer som kantsten, fartbump eller kvægriste. Gentagne eller uventede forhindringer skal medregnes i svaret."</string>
+    <string name="quest_smoothness_obstacle_hint">"Giv venligst et generelt svar på glatheden. Der kan ses bort fra enkelte forhindringer som kantsten, fartbump eller færiste. Gentagne eller uventede forhindringer skal medregnes i svaret."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … angiv, hvilke køretøjer der bør kunne bruges på overfladen. Det vigtige er det generelle billede og ikke enkelte skader."</string>
-    <string name="quest_shoulder_explanation">"Et nødspor er en klart afmærket vejbane til nødstop, der er bred nok til, at ethvert køretøj kan standse sikkert helt ved siden af kørebanen på et jævnt og fast, men ikke nødvendigvis (helt) asfalteret underlag."</string>
     <string name="link_osmhydrant_description">"Find, tilføj og rediger brandstationer og brandhaner"</string>
     <string name="achievement_lifesaver_title">"Livredder"</string>
     <string name="achievement_lifesaver_solved_X">"Du har løst %d opgaver, der hjælper redningstjenester og førstehjælpere!"</string>
@@ -2164,8 +2161,8 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_barrier_path_intersection">"Hvordan krydser denne sti barrieren her?"</string>
     <string name="quest_barrier_road_intersection">"Hvordan krydser denne vej barrieren her?"</string>
     <string name="quest_sidewalk_value_separate">"vises separat på kortet"</string>
-    <string name="quest_shoulder_value_yes">"rabat"</string>
-    <string name="quest_shoulder_value_no">"ingen rabat"</string>
+    <string name="quest_shoulder_value_yes">"nødspor"</string>
+    <string name="quest_shoulder_value_no">"intet nødspor"</string>
     <string name="no_camera_permission_warning_title">"kameratilladelse"</string>
     <string name="no_camera_permission_warning">"Tilladelsen er nødvendig for at kunne tage billeder og måle afstande med kameraet."</string>
     <string name="ar_core_error_sdk_too_old">"Denne app er for gammel. Prøv at opdatere."</string>
@@ -2283,4 +2280,5 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"Er der en fungerende cykelpumpe til rådighed for alle her?"</string>
     <string name="quest_air_pump_compressor_title">"Er der en luftkompressor til rådighed her?"</string>
     <string name="quest_step_count_stile_hint">"Kun antallet af trin for at nå toppen. Hvis antallet af trin er forskelligt på hver side, angives det højeste tal."</string>
+    <string name="quest_shoulder_explanation2">"Et nødspor er en klart markeret bane til nødstop. Det område, der er udlagt som nødspor, er ikke nødvendigvis asfalteret i hele bredden og er ikke nødvendigvis bredt nok til, at en bil kan standse der helt uden for kørebanen."</string>
 </resources>

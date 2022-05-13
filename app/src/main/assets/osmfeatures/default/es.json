@@ -4187,7 +4187,7 @@
                 },
                 "barrier/turnstile": {
                     "name": "Torniquete",
-                    "terms": "puerta deflectora"
+                    "terms": "puerta deflectora,molinete"
                 },
                 "barrier/wall": {
                     "name": "Muro",
@@ -5596,8 +5596,8 @@
                     "terms": "disco golf,disco de golf,frisbee golf,frolf,ultimate"
                 },
                 "leisure/dog_park": {
-                    "name": "Parque canino",
-                    "terms": "perro,can,parque de perros"
+                    "name": "Parque para perros",
+                    "terms": "perro,can,canil,canino,parque de perros,parque canino"
                 },
                 "leisure/escape_game": {
                     "name": "Sala de escape",
@@ -5621,7 +5621,7 @@
                 },
                 "leisure/fitness_station": {
                     "name": "Estación de gimnasia al aire libre",
-                    "terms": "salud,gimnasio,entrenamiento,ejercicio,abierto,al aire libre,aeróbico"
+                    "terms": "salud,gimnasio,entrenamiento,ejercicio,abierto,al aire libre,aeróbico,parque de calistenia,calistenia,estación de fitness,estación de calistenia,gimnasio al aire libre"
                 },
                 "leisure/fitness_station/balance_beam": {
                     "name": "Barra de equilibrio para ejercicios",

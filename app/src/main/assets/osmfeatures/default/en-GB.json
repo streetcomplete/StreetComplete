@@ -1758,7 +1758,7 @@
                     "name": "Car Park"
                 },
                 "amenity/parking/multi-storey": {
-                    "name": "Multistory Car Park"
+                    "name": "Multistorey Car Park"
                 },
                 "amenity/parking_space": {
                     "name": "Parking Space"
@@ -3454,7 +3454,8 @@
                     "name": "Shop"
                 },
                 "shop/alcohol": {
-                    "name": "Off licence (Alcohol shop)"
+                    "name": "Off licence (Alcohol shop)",
+                    "terms": "alcohol,beer,booze,wine,off licence,off license"
                 },
                 "shop/antiques": {
                     "name": "Antiques Shop"

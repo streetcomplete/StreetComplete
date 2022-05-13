@@ -1,8 +1,11 @@
 v43.1: |
-  <h3>Other Enhancements and Fixes</h3>
+  <h3>Enhancements and Fixes</h3>
   <ul>
   <li>Correct hint text for shoulder quest: Shoulders that are not wide enough for a car are still considered shoulders as long as they are designated (i.e. marked) as such</li>
-  <li>Various minor enhancements and fixes (#3994...), thanks @peternewman</li>
+  <li>Cycleways: For oneways, make it clearer what the selection options imply for cyclists (#3984)</li>
+  <li>Don't ask about tactile buttons on traffic lights in Russia (#4021)</li>
+  <li>Various minor enhancements and fixes (#3994, #4020...), thanks @peternewman</li>
+  <li>Fix new languages (Armenian, Esperanto) are now displayed as options in the language selection screen</li>
   </ul>
   <h3>New Translations</h3>
   <ul>

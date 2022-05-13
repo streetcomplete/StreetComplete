@@ -1796,9 +1796,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_obstacle">"Jest tu przeszkoda"</string>
     <string name="quest_smoothness_obstacle_hint">"Proszę podać ogólną odpowiedź dotyczącą płynności.  Pojedyncze przeszkody, takie jak krawężniki, progi zwalniające lub kraty dla bydła, można zignorować.  Powtarzające się lub nieoczekiwane przeszkody powinny liczyć się do odpowiedzi."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … wskazują, dla jakich pojazdów nawierzchnia powinna być zdatna do użytku. Liczy się raczej całościowy obraz, a nie pojedyncze uszkodzenia."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Pas awaryjny to część drogi która umożliwia pojazdom bezpieczne zatrzymanie się całkowicie obok pasa ruchu, choć nie zawsze (w całości) na utwardzonej nawierzchni."</string>
     <string name="link_osmhydrant_description">"Wyszukuj, dodawaj i edytuj remizy strażackie i hydranty strażackie"</string>
     <string name="achievement_lifesaver_title">"Ratownik"</string>
     <string name="achievement_lifesaver_solved_X">"Rozwiązałeś %d zadań, które pomagają służbom ratowniczym!"</string>

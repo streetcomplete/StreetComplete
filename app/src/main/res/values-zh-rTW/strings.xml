@@ -2191,7 +2191,6 @@
     <string name="quest_smoothness_obstacle">"這裡有障礙"</string>
     <string name="quest_smoothness_obstacle_hint">"請提供平滑度的一般答案。可以忽略路邊石、減速帶或牛欄等單一障礙物。 重複或其他類型的障礙應計入答案。"</string>
     <string name="quest_smoothness_hint">"🚲、🚗、🚙 … 表示路面材質適合何種車輛。請注意整體適合的車種而非單一的障礙。"</string>
-    <string name="quest_shoulder_explanation">"路肩是用來在緊急時候，能有足夠寬度來讓任何車輛安全暫停在交通道路線旁，通常是平穩、紮實但未必是(完全)有鋪面。"</string>
     <string name="link_osmhydrant_description">"查詢，新增與編輯消防隊與消防栓"</string>
     <string name="achievement_lifesaver_title">"救生員"</string>
     <string name="achievement_lifesaver_solved_X">"你解決 %d 任何幫助救護服務與第一線人員！"</string>

@@ -1150,9 +1150,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_smoothness_title_good">"Bastante nivelada"</string>
     <string name="quest_smoothness_title_very_horrible">"Case intransitable"</string>
     <string name="quest_smoothness_title_impassable">"Non transitable"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Unha beiravía é un carril para paradas de emerxencia, claramente demarcado, que permite aos vehículos deterse de forma segura á marxe dos carrís de circulación, aínda que non ten por que estar (totalmente) na superficie pavimentada."</string>
     <string name="link_osmhydrant_description">"Buscar, engadir e editar estacións de bombeiros e bocas de incendio."</string>
     <string name="achievement_lifesaver_title">"Salvavidas"</string>
     <string name="achievement_lifesaver_solved_X">"Resolviches %d tarefas que axudan aos servizos de emerxencias e aos primeiros auxilios!"</string>

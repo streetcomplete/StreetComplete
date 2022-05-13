@@ -1433,14 +1433,29 @@
                         "carports": "Carporte",
                         "garage_boxes": "Garagebokse",
                         "lane": "Vejsidespor",
+                        "layby": "Mindre rasteplads",
                         "multi-storey": "Multiniveau",
+                        "rooftop": "Tag",
                         "sheds": "Læskure",
+                        "street_side": "Kantsten",
                         "surface": "Overflade",
                         "underground": "Underjordisk"
                     }
                 },
+                "parking/orientation": {
+                    "label": "Orientering",
+                    "options": {
+                        "diagonal": "På skråt med vejen",
+                        "parallel": "Parallelt med vejen",
+                        "perpendicular": "Vinkelret på vejen"
+                    }
+                },
                 "parking_entrance": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "multi-storey": "Multiniveau",
+                        "underground": "Underjordisk"
+                    }
                 },
                 "parking_space": {
                     "label": "Type"
@@ -1732,7 +1747,10 @@
                     "label": "Selvbetjening"
                 },
                 "service": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "parking_aisle": "Vej mellem parkeringspladser"
+                    }
                 },
                 "service/bicycle": {
                     "label": "Faciliteter"
@@ -2555,8 +2573,13 @@
                     "name": "Pendlerparkering",
                     "terms": "pendler,parkering,samkørsel,offentlig transport,park'n'ride,parknride"
                 },
+                "amenity/parking/street-side": {
+                    "name": "Kantstensparkering",
+                    "terms": "kantsten,parkering,bil,vejside"
+                },
                 "amenity/parking/underground": {
-                    "name": "Underjordisk parkering"
+                    "name": "Underjordisk parkering",
+                    "terms": "kælder,parkeringskælder,p-kælder"
                 },
                 "amenity/parking_entrance": {
                     "name": "Ind/udgang til parkeringsgarage",
@@ -2565,6 +2588,10 @@
                 "amenity/parking_space": {
                     "name": "Parkeringsbås",
                     "terms": "parkeringsbås"
+                },
+                "amenity/parking_space/disabled": {
+                    "name": "Handikapparkering",
+                    "terms": "handicap,rullestol,tilgængelig"
                 },
                 "amenity/photo_booth": {
                     "name": "Pasfotoautomat",
