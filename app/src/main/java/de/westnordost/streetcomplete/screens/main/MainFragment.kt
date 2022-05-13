@@ -222,7 +222,8 @@ class MainFragment :
             View.VISIBLE
         else
             View.GONE
-        mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
+        if (mapFragment?.isMapInitialized == true)
+            mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
