@@ -20,6 +20,17 @@ val CountryInfo.livingStreetSignDrawableResId: Int? get() = when (livingStreetSi
     else        -> null
 }
 
+val CountryInfo.noEntrySignDrawableResId: Int get() = when (noEntrySignStyle) {
+    "default"           -> R.drawable.ic_no_entry_sign_default
+    "yellow"            -> R.drawable.ic_no_entry_sign_yellow
+    "arrow"             -> R.drawable.ic_no_entry_sign_arrow
+    "do not enter"      -> R.drawable.ic_no_entry_sign_do_not_enter
+    "no entry"          -> R.drawable.ic_no_entry_sign_no_entry
+    "no entre"          -> R.drawable.ic_no_entry_sign_no_entre
+    "no entry on white" -> R.drawable.ic_no_entry_sign_no_entry_on_white
+    else                -> R.drawable.ic_no_entry_sign_default
+}
+
 val CountryInfo.noStandingSignDrawableResId: Int? get() = when (noStandingSignStyle) {
     "mutcd text standing" -> R.drawable.ic_no_standing_mutcd_text
     "mutcd text waiting"  -> R.drawable.ic_no_waiting_mutcd_text
