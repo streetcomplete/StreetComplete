@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
@@ -29,7 +30,7 @@ class AddRoofShapeTest {
         futureTask.run()
 
         countryInfos = mock()
-        questType = AddRoofShape(countryInfos, futureTask)
+        questType = AddRoofShape(countryInfos, futureTask, mockPrefs())
     }
 
     @Test fun `not applicable to roofs with shapes already set`() {

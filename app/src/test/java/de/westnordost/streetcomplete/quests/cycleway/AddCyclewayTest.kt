@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
@@ -56,7 +57,7 @@ class AddCyclewayTest {
         countryInfos = mock()
         on(countryInfos.getByLocation(countryBoundaries, anyDouble(), anyDouble())).thenReturn(countryInfo)
 
-        questType = AddCycleway(countryInfos, futureTask)
+        questType = AddCycleway(countryInfos, futureTask, mockPrefs())
     }
 
     @Test fun `applicable to road with missing cycleway`() {

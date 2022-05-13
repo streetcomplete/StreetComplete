@@ -43,7 +43,7 @@ class MapDataControllerTest {
         elementDB = mock()
         geometryCreator = mock()
         createdElementsController = mock()
-        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController)
+        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController, mock())
     }
 
     @Test fun get() {

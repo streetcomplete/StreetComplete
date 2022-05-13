@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
@@ -20,7 +21,7 @@ import org.junit.Test
 
 class AddSidewalkTest {
 
-    private val questType = AddSidewalk()
+    private val questType = AddSidewalk(mockPrefs())
 
     @Test fun `not applicable to road with sidewalk`() {
         val road = way(tags = mapOf(

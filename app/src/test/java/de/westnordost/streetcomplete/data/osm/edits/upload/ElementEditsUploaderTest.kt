@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -46,12 +47,12 @@ class ElementEditsUploaderTest {
 
         listener = mock()
 
-        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, statisticsController)
+        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, mock())
         uploader.uploadedChangeListener = listener
     }
 
     @Test fun `cancel upload works`() = runBlocking {
-        val job = launch { uploader.upload() }
+        val job = launch { uploader.upload(mock()) }
         job.cancelAndJoin()
         verifyNoInteractions(elementEditsController, mapDataController, singleUploader, statisticsController)
     }
@@ -65,14 +66,12 @@ class ElementEditsUploaderTest {
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
         on(singleUploader.upload(any(), any())).thenReturn(updates)
 
-        uploader.upload()
+        uploader.upload(mock())
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onUploaded(any(), any())
         verify(elementEditsController).markSynced(edit, updates)
         verify(mapDataController).updateAll(updates)
-
-        verify(statisticsController).addOne(any(), any())
     }
 
     @Test fun `upload catches conflict exception`() = runBlocking {
@@ -85,7 +84,7 @@ class ElementEditsUploaderTest {
         on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(updatedNode)
 
-        uploader.upload()
+        uploader.upload(mock())
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())
@@ -107,7 +106,7 @@ class ElementEditsUploaderTest {
         on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(null)
 
-        uploader.upload()
+        uploader.upload(mock())
 
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onDiscarded(any(), any())

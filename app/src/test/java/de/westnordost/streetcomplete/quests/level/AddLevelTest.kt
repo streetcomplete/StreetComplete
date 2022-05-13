@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.createMapData
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
@@ -11,7 +12,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class AddLevelTest {
-    private val questType = AddLevel()
+    private val questType = AddLevel(mockPrefs())
 
     @Test fun `does not create quest for shop`() {
         val mapData = createMapData(mapOf(shopWithoutLevel()))

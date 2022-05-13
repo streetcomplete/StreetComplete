@@ -20,7 +20,7 @@ class QuestPresetControllerTest {
     @Before fun setUp() {
         questPresetsDao = mock()
         selectedQuestPresetStore = mock()
-        ctrl = QuestPresetsController(questPresetsDao, selectedQuestPresetStore)
+        ctrl = QuestPresetsController(questPresetsDao, selectedQuestPresetStore, mock(), mock())
 
         listener = mock()
         ctrl.addListener(listener)
