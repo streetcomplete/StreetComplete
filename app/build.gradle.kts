@@ -199,10 +199,11 @@ dependencies {
 
     // faster sqlite library (additional capapilities like R*-tree or json1 not used)
     // performance comparison: https://github.com/streetcomplete/StreetComplete/issues/3609#issuecomment-1031177576
-    // sunset-sunrise parser for lit quests
-    implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
     implementation("com.github.requery:sqlite-android:3.36.0")
     implementation("androidx.sqlite:sqlite:2.1.0")
+
+    // sunset-sunrise parser for lit quests
+    implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 
     // measuring distance with AR
     implementation("com.google.ar:core:1.30.0")

@@ -89,8 +89,8 @@ class VisibleQuestsSource(
     }
 
     private fun isVisible(quest: Quest): Boolean =
-        visibleQuestTypeSource.isVisible(quest.type) && teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
-      
+        visibleQuestTypeSource.isVisible(quest.type) && teamModeQuestFilter.isVisible(quest)
+            && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
