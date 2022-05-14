@@ -170,6 +170,11 @@
     <string name="day_night_ignore">Ignore</string>
     <string name="day_night_priority">Increase priority of certain quests</string>
     <string name="day_night_visibility">Don’t show certain quests</string>
+    <string name="tutorial_info_fork_title">Warning</string>
+    <string name="tutorial_info_fork_message">This modified version of StreetComplete gives you more control, but also more responsibility.\n
+This especially applies for the possibility to modify tags arbitrarily, but also if you modify element selection, which is possible for some quests.\n
+By default, this version is configured to behave very similar to normal StreetComplete.\n\n
+This version lets you access your user statistics, but any quests solved using this version will not be counted in the statistics.</string>
 
     <!-- Store description -->
 

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
@@ -60,6 +61,17 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             1 -> {
                 currentPage = 2
                 step2Transition()
+            }
+            2 -> {
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.tutorial_info_fork_title)
+                    .setMessage(R.string.tutorial_info_fork_message)
+                    .setCancelable(false)
+                    .setPositiveButton(android.R.string.ok) { _,_ ->
+                        currentPage = 3
+                        enableNextButton()
+                    }
+                    .show()
             }
             MAX_PAGE_INDEX -> {
                 listener?.onTutorialFinished()
@@ -224,6 +236,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     }
 
     companion object {
-        private const val MAX_PAGE_INDEX = 2
+        private const val MAX_PAGE_INDEX = 3
     }
 }
