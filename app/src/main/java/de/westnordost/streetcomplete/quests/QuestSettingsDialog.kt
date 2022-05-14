@@ -25,9 +25,11 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
+            showRestartToast(context)
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
+            showRestartToast(context)
         }
         .create()
     return dialog
@@ -50,10 +52,12 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
         .setPositiveButton(android.R.string.ok) { _,_ ->
             numberInput.text.toString().toIntOrNull()?.let {
                 prefs.edit().putInt(pref, it).apply()
+                showRestartToast(context)
             }
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
+            showRestartToast(context)
         }
         .create()
     return dialog
@@ -80,12 +84,18 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
+            showRestartToast(context)
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
+            showRestartToast(context)
         }
         .create()
     return dialog
+}
+
+fun showRestartToast(context: Context) {
+    Toast.makeText(context, R.string.quest_settings_restart, Toast.LENGTH_LONG).show()
 }
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {

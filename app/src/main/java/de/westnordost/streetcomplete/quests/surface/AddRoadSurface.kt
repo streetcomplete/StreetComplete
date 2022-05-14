@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.quests.showRestartToast
 
 class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
@@ -59,9 +60,11 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
             .setNeutralButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.quest_generic_surface_yes) { _,_ ->
                 prefs.edit().putBoolean(ALLOW_GENERIC_ROAD, true).apply()
+                showRestartToast(context)
             }
             .setNegativeButton(R.string.quest_generic_surface_no) { _,_ ->
                 prefs.edit().putBoolean(ALLOW_GENERIC_ROAD, false).apply()
+                showRestartToast(context)
             }
             .create()
     }

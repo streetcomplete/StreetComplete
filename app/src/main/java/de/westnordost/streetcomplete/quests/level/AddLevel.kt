@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
+import de.westnordost.streetcomplete.quests.showRestartToast
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -169,6 +170,7 @@ class AddLevel(
             .setNegativeButton(android.R.string.cancel, null)
             .setItems(R.array.pref_quest_settings_levels) { _, i ->
                 prefs.edit().putBoolean(PREF_MORE_LEVELS, i == 1).apply()
+                showRestartToast(context)
             }
             .create()
     }
