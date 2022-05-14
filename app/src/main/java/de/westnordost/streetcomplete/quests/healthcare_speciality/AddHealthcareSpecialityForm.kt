@@ -49,7 +49,9 @@ class AddHealthcareSpecialityForm : AbstractQuestFormAnswerFragment<String>() {
             applyAnswer((specialities + listOf(speciality)).joinToString(";"))
     }
 
-    override fun isFormComplete() = (speciality.isNotEmpty() || specialities.isNotEmpty()) && !speciality.contains(";")
+    override fun isFormComplete() = (speciality.isNotEmpty() || specialities.isNotEmpty())
+        && (speciality.isEmpty() || suggestions.contains(speciality))
+        && specialities.all { suggestions.contains(it) }
 
     companion object {
         val suggestions = (healthcareSpecialityFromWiki.split("\n").mapNotNull {
