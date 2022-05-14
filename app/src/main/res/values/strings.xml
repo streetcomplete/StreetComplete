@@ -51,7 +51,7 @@
     <string name="quest_wrong_surface_title">Which info about the surface is correct?</string>
     <string name="quest_surface_value_unpaved_tracktype_grade1_is_wrong">This way is not paved</string>
     <string name="quest_surface_value_paved_tracktype_grade1_is_correct">This way is paved</string>
-    <string name="quest_cuisine_title">What cuisine does this place have?</string>
+    <string name="quest_cuisine_title">What cuisine does this place have? Use suggested OSM tags!</string>
     <string name="quest_cuisine_add_more">Add another cuisine</string>
     <string name="quest_service_building_operator_title">"Who is the operator for this service building?"</string>
     <string name="quest_service_building_type_title">"What kind of service building is this%s?"</string>
@@ -62,6 +62,7 @@
     <string name="quest_service_building_type_pump">"Pumping station"</string>
     <string name="quest_healthcare_speciality_title">What healthcare specialities does this place have? Use suggested OSM tags!</string>
     <string name="quest_healthcare_speciality_add_more">Add another speciality</string>
+    <string name="quest_healthcare_speciality_disabled_message">This quest requires knowledge about the healthcare:speciality tags. Without this knowledge, the quest can be very difficult to answer.</string>
     <string name="quest_seating_parklet">Next to the curb, or where parking used to be</string>
     <string name="quest_seating_pedestrian_zone">In a pedestrian zone</string>
     <string name="quest_seating_street">In a street area</string>

@@ -14,6 +14,7 @@ class AddHealthcareSpeciality : OsmFilterQuestType<String>() {
     override val changesetComment = "Add healthcare specialities"
     override val wikiLink = "Key:healthcare:speciality"
     override val icon = R.drawable.ic_quest_healthcare_speciality
+    override val defaultDisabledMessage = R.string.quest_healthcare_speciality_disabled_message
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_healthcare_speciality_title
 
