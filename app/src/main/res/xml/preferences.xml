@@ -177,7 +177,7 @@
             android:key="manual_download_override_cache"
             android:title="@string/pref_manual_download_cache_title"
             android:summary="@string/pref_manual_download_cache_summary"
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:persistent="true" />
 
         <SwitchPreference
