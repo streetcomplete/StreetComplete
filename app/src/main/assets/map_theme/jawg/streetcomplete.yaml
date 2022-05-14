@@ -53,7 +53,6 @@ styles:
 layers:
     streetcomplete_selected_pins:
         data: { source: streetcomplete_selected_pins }
-        filter: { poi_color: no }
         draw:
             selected-pin-icons:
                 size: 66px
