@@ -307,8 +307,8 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-With this app, you are contributing directly to OpenStreetMap.&lt;br/&gt;
-StreetComplete communicates directly with OpenStreetMap's servers with no middle man or third party services.
+First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
 Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.
