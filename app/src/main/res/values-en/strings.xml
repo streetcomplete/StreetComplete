@@ -1276,7 +1276,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>
     <string name="quest_smoothness_obstacle_hint">Please provide an answer for the overall smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
-    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single hazards.</string>
+    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
 
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
