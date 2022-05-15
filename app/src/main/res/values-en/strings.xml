@@ -208,7 +208,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">"Contributing should primarily be fun!
 
-If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed and in what order in settings.</string>
+If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
 
 
     <!-- Team mode -->
