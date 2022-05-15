@@ -3,6 +3,7 @@ global:
     geometry_line_color: '#44D14000'
     geometry_point_color: '#88D14000'
     track_color: '#44536dfe'
+    track_color_record: '#44fe1616'
     old_track_color: '#22536dfe'
 
 textures:
@@ -126,7 +127,7 @@ layers:
     streetcomplete_track:
         data: { source: streetcomplete_track }
         current:
-            filter: { old: [false] }
+            filter: { old: [false], record: [false] }
             draw:
                 track-lines:
                     color: global.track_color
@@ -134,8 +135,17 @@ layers:
                     collide: false
                     join: round
                     order: 1000
+        record:
+            filter: { record: [true] }
+            draw:
+                track-lines:
+                    color: global.track_color_record
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
         old:
-            filter: { old: [true] }
+            filter: { old: [true], record: [false] }
             draw:
                 track-lines:
                     color: global.old_track_color
@@ -146,7 +156,7 @@ layers:
     streetcomplete_track2:
         data: { source: streetcomplete_track2 }
         current:
-            filter: { old: [false] }
+            filter: { old: [false], record: [false] }
             draw:
                 track-lines:
                     color: global.track_color
@@ -154,8 +164,17 @@ layers:
                     collide: false
                     join: round
                     order: 1000
+        record:
+            filter: { record: [true] }
+            draw:
+                track-lines:
+                    color: global.track_color_record
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 1000
         old:
-            filter: { old: [true] }
+            filter: { old: [true], record: [false] }
             draw:
                 track-lines:
                     color: global.old_track_color

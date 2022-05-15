@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
-import android.util.Log
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
@@ -25,29 +24,20 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
     val sideVal = if (side != null) ":$side" else ""
 
     val parkingValue = tags["parking:lane$sideVal"]
-        ?: return when (tags["parking:condition$sideVal"]) {
-            // new style tagging of parking restrictions, without parking:lane:*=no
-            "no_parking" -> StreetParkingProhibited
-            "no_standing" -> StreetStandingProhibited
-            "no_stopping" -> StreetStoppingProhibited
-            "no" -> NoStreetParking
-            else -> null
-        }
 
     when (parkingValue) {
         // old style tagging
         "no_parking" -> return StreetParkingProhibited
         "no_standing" -> return StreetStandingProhibited
         "no_stopping" -> return StreetStoppingProhibited
-        "no" -> {
-            return when (tags["parking:condition$sideVal"]) {
-                // new style tagging
-                "no_parking" -> StreetParkingProhibited
-                "no_standing" -> StreetStandingProhibited
-                "no_stopping" -> StreetStoppingProhibited
-                null, "no" -> NoStreetParking
-                else -> null
-            }
+        null, "no" -> return when (tags["parking:condition$sideVal"]) {
+            // new style tagging
+            "no_parking" -> StreetParkingProhibited
+            "no_standing" -> StreetStandingProhibited
+            "no_stopping" -> StreetStoppingProhibited
+            "no" -> NoStreetParking
+            null -> if (parkingValue == "no") NoStreetParking else null
+            else -> null
         }
         "yes" -> return IncompleteStreetParking
         "separate" -> return StreetParkingSeparate
