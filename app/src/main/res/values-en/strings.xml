@@ -942,7 +942,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_leaf_type_broadleaved">Leaves</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
 
-    <string name="quest_level_title2">On which floor is this place located?</string>
+    <string name="quest_level_title2">On which level number is this place located?</string>
 
     <string name="quest_lit_title">"Is it lit here?"</string>
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
