@@ -60,6 +60,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
     <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
 
+    <string name="map_btn_create_track">Create new track recording</string>
+    <string name="map_btn_stop_track">"Stop Recording Track"</string>
+
 
     <!-- Android notifications -->
 
@@ -228,6 +231,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to publish your answers. Authorize now?"</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
+    <string name="confirmation_permission_upgrade">"You need to authorize this app to publish track recordings on OpenStreetMap. This requires to log in again. Proceed?"</string>
     <string name="later">"Later"</string>
     <string name="not_authorized">"Not authorized"</string>
 
@@ -511,7 +515,6 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="pref_subtitle_quests_preset_name">Preset: %s</string>
-
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 

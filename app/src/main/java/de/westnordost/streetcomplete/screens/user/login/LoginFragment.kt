@@ -137,7 +137,9 @@ class LoginFragment :
         private val REQUIRED_OSM_PERMISSIONS = listOf(
             Permission.READ_PREFERENCES_AND_USER_DETAILS,
             Permission.MODIFY_MAP,
-            Permission.WRITE_NOTES
+            Permission.WRITE_NOTES,
+            Permission.READ_GPS_TRACES,
+            Permission.WRITE_GPS_TRACES,
         )
 
         private const val ARG_LAUNCH_AUTH = "launch_auth"
