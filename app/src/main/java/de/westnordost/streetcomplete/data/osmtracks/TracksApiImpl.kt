@@ -27,7 +27,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
             .withZone(ZoneOffset.UTC)
             .format(Instant.ofEpochSecond(trackpoints[0].time)) + ".gpx"
         val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
-        val description = noteText.orEmpty().ifBlank { "Uploaded via ${ApplicationConstants.USER_AGENT}" }
+        val description = noteText ?: "Uploaded via ${ApplicationConstants.USER_AGENT}"
         val tags = listOf(ApplicationConstants.NAME.lowercase())
 
         // Generate history of trackpoints
