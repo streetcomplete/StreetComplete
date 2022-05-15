@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.EMERGENCY_EXIT
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.EXIT
-import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.GARAGE
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.MAIN
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.STAIRCASE
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SERVICE
