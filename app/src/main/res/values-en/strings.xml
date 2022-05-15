@@ -150,7 +150,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
     <string name="tutorial_welcome_to_osm_subtitle">the free wiki world map</string>
     <string name="tutorial_intro">StreetComplete makes it easy to contribute to OpenStreetMap.\nIt automatically looks for missing details in your vicinity: bicycle lanes, house numbers, opening hours and much more…</string>
-    <string name="tutorial_solving_quests">Missing details will appear on your map as quests.\n\nYou can start solving them right away and login later to publish your answers.</string>
+    <string name="tutorial_solving_quests">Once found, the missing details will appear on your map as quests.\n\nYou can start solving them right away and login later to publish your answers.</string>
     <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply “Can’t Say” and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don’t enter private property.</string>
     <string name="tutorial_happy_mapping">Happy Mapping!</string>
     <string name="next">Next</string>
