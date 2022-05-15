@@ -22,7 +22,7 @@ class MapTilesDownloadCacheConfig(context: Context) {
     *  map tiles when panning the map, even without (or with bad) internet connection */
     val tangramCacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)
-        .maxStale(DELETE_OLD_DATA_AFTER.toInt(), TimeUnit.SECONDS)
+        .maxStale(10 * 365, TimeUnit.DAYS) // ten years
         .build()
 
     val cache: Cache?
