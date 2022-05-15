@@ -107,18 +107,15 @@ open class LocationAwareMapFragment : MapFragment() {
         super.onCreate(savedInstanceState)
         // Restore value of members from saved state
         if (savedInstanceState != null) {
-            with(savedInstanceState) {
-                displayedLocation = getParcelable(DISPLAYED_LOCATION)
-                isRecordingTracks = getBoolean(TRACKS_IS_RECORDING)
-                val nullTerminatedTracks =
-                    getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
-                if (nullTerminatedTracks != null) {
-                    tracks = nullTerminatedTracks.unflattenNullTerminated()
-                    // unflattenNullTerminated creates an empty list item (i.e. a new track) at the end.
-                    // This is fine if the track is not being recorded.
-                    if (isRecordingTracks) {
-                        tracks.removeLastOrNull()
-                    }
+            displayedLocation = savedInstanceState.getParcelable(DISPLAYED_LOCATION)
+            isRecordingTracks = savedInstanceState.getBoolean(TRACKS_IS_RECORDING)
+            val nullTerminatedTracks = savedInstanceState.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
+            if (nullTerminatedTracks != null) {
+                tracks = nullTerminatedTracks.unflattenNullTerminated()
+                // unflattenNullTerminated creates an empty list item (i.e. a new track) at the end.
+                // This is fine if the track is not being recorded.
+                if (isRecordingTracks) {
+                    tracks.removeLastOrNull()
                 }
             }
         }
