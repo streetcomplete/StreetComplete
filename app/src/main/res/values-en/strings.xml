@@ -904,7 +904,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?</string>
 
-    <string name="quest_fuelSelfService_title">Can you pump your own gas here?</string>
+    <string name="quest_fuelSelfService_title">Does this gas station have self-service?</string>
 
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
 
