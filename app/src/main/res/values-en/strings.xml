@@ -122,7 +122,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
 
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
     <string name="quest_leave_new_note_description">"You can leave a public note for other mappers to resolve at this location, or hide this quest"</string>
-    <string name="quest_leave_new_note_yes">"Leave a note"</string>
+    <string name="quest_leave_new_note_yes">"Leave note"</string>
     <string name="quest_leave_new_note_no">"Hide this quest"</string>
 
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
@@ -132,7 +132,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="quest_generic_answer_does_not_exist">It does not exist…</string>
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you're not sure, leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
-    <string name="leave_note">Leave a note</string>
+    <string name="leave_note">Leave note</string>
 
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
     <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each part separately.\nSplit it now?</string>
