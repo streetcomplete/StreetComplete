@@ -191,7 +191,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
 
     <string name="ar_measure">Measure</string>
     <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
-    <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measurement.</string>
+    <string name="ar_core_tracking_error_bad_state">Something went wrong. Try restarting the measuring.</string>
     <string name="ar_core_tracking_error_insufficient_light">Too dark here</string>
     <string name="ar_core_tracking_error_excessive_motion">Too much movement</string>
     <string name="ar_core_tracking_error_insufficient_features">Insufficient visual features here</string>
