@@ -14,7 +14,7 @@
     <string name="store_listing_short_description" tools:ignore="UnusedResources">"OpenStreetMap surveyor app"</string>
     <string name="store_listing_full_description" tools:ignore="UnusedResources">"Help improve OpenStreetMap with StreetComplete!
 
-This app finds missing map data in your vicinity and displays them on a map as quests. Each quest is solvable by answering a simple question to update the map.
+This app finds missing map data in your vicinity and displays it on a map as quests. Each quest is solvable by visiting the location on-site and answering a simple question to update the map.
 
 The info you enter is directly added to the OpenStreetMap in your name, without the need to use another editor."</string>
 
