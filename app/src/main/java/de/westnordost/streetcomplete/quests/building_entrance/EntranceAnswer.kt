@@ -8,7 +8,6 @@ enum class EntranceExistsAnswer(val osmValue: String) : EntranceAnswer {
     MAIN("main"),
     STAIRCASE("staircase"),
     SERVICE("service"),
-    GARAGE("garage"),
     EMERGENCY_EXIT("emergency"),
     EXIT("exit"),
     SHOP("shop"),

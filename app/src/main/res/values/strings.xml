@@ -1279,13 +1279,12 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single damages.</string>
 
     <string name="quest_building_entrace_title">What kind of building entrance is this?</string>
-    <string name="quest_building_entrance_main">Main (building may have multiple main entrances)</string>
-    <string name="quest_building_entrance_staircase">Staircase</string>
-    <string name="quest_building_entrance_service">Service</string>
+    <string name="quest_building_entrance_main">Main entrance on a public building</string>
+    <string name="quest_building_entrance_staircase">Staircase entrance (e.g. of apartment building)</string>
+    <string name="quest_building_entrance_service">Service entrance</string>
     <string name="quest_building_entrance_exit">Exit only</string>
     <string name="quest_building_entrance_emergency_exit">Emergency exit only</string>
-    <string name="quest_building_entrance_garage">Garage</string>
-    <string name="quest_building_entrance_shop">Shop (storefront entrance), not a main building entrance</string>
+    <string name="quest_building_entrance_shop">Shop entrance (storefront entrance), not a main building entrance</string>
     <string name="quest_building_entrance_yes">Other entrance type</string>
     <string name="quest_building_entrance_dead_end">Dead end, no entrance</string>
 

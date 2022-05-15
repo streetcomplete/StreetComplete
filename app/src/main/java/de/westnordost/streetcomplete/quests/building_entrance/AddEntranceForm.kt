@@ -20,7 +20,6 @@ class AddEntranceForm : AListQuestAnswerFragment<EntranceAnswer>() {
         TextItem(SERVICE, R.string.quest_building_entrance_service),
         TextItem(EXIT, R.string.quest_building_entrance_exit),
         TextItem(EMERGENCY_EXIT, R.string.quest_building_entrance_emergency_exit),
-        TextItem(GARAGE, R.string.quest_building_entrance_garage),
         TextItem(SHOP, R.string.quest_building_entrance_shop),
         TextItem(GENERIC, R.string.quest_building_entrance_yes),
         TextItem(DeadEnd, R.string.quest_building_entrance_dead_end),
