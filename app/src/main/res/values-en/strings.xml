@@ -658,7 +658,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that many stands can be used park one bike on each side."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that many stands can be used to park one bike on each side."</string>
 
     <string name="quest_air_pump_bicycle_title">Is there a working bicycle pump available here?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
