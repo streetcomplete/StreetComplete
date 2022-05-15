@@ -1304,9 +1304,6 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_smoothness_obstacle">"Il y a un obstacle"</string>
     <string name="quest_smoothness_obstacle_hint">"Veuillez donner une réponse générale pour l’homogénéité de la surface. Les obstacles ponctuels, comme les dos d’âne ou les ralentisseurs peuvent être ignorés. Les obstacles répétés ou inattendus doivent être pris en compte dans la réponse."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indique pour quel véhicule la surface est adaptée. Cela concerne l’état global, et non pas les dommages unitaires éventuels."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Une bande d’arrêt d’urgence est une voie clairement délimitée permettant à un véhicule de s’arrêter en parallèle du traffic, sans (nécessairement) être une chaussée bien définie."</string>
     <string name="link_osmhydrant_description">"Chercher, ajouter et éditer des casernes de pompiers et des poteaux incendie"</string>
     <string name="achievement_lifesaver_title">"Sauveteur"</string>
     <string name="achievement_lifesaver_solved_X">"Vous avez résolu %d quêtes aidant les services d’urgence et de premier secours !"</string>
@@ -1445,4 +1442,5 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"Est-ce qu’une pompe à vélo fonctionnelle est disponible pour tout le monde ici ?"</string>
     <string name="quest_air_pump_compressor_title">"Est-ce qu’un compresseur à air est disponible ici ?"</string>
     <string name="quest_step_count_stile_hint">"Seulement le nombre de marches pour atteindre le sommet. Si le nombre de marches diffère entre les côtés, donnez le plus grand nombre."</string>
+    <string name="quest_shoulder_explanation2">"Un accotement est une bande d’arrêt d’urgence clairement délimitée. La zone d’accotement n’est ni nécessairement pavée sur toute sa surface ni forcément suffisamment large pour qu’une voiture puisse s’arrêter complètement à l’écart du traffic."</string>
 </resources>

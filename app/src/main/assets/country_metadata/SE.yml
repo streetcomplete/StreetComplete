@@ -6,6 +6,7 @@ hasLivingStreet: true
 hasSlowZone: false
 livingStreetSignStyle: vienna
 mobileCountryCode: 240
+noEntrySignStyle: yellow
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [sv]

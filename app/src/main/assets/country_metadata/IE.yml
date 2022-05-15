@@ -4,6 +4,7 @@ edgeLineStyle: short yellow dashes
 hasAdvisorySpeedLimitSign: false
 isLeftHandTraffic: true
 mobileCountryCode: 272
+noEntrySignStyle: default
 noParkingLineStyle: double yellow
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd

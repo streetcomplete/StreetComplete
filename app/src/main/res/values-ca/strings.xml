@@ -218,7 +218,7 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Esteu segur que no hi ha indicat cap límit?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
 Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'apliquen els límits de velocitat predeterminats."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap senyal."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap cartell."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les vies urbanes tenen límits de velocitat diferents que els vies rurals."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dins el nucli urbà"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora del nucli urbà"</string>
@@ -898,7 +898,7 @@ d'acompliment"</string>
     <string name="achievement_outdoors_title">"Aire lliure"</string>
     <string name="achievement_outdoors_solved_X">"Heu resolt %d missions que són útils per les persones que surten a l'aire lliure!"</string>
     <string name="quest_pedestrian_crossing_island">"Aquest pas de vianants té una illeta?"</string>
-    <string name="quest_generic_answer_noSign">"No hi ha cap senyal"</string>
+    <string name="quest_generic_answer_noSign">"No hi ha cap cartell"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"La rampa per cadires de rodes es mostra com a via separada al mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"no separada"</string>
@@ -1273,9 +1273,6 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <string name="quest_smoothness_obstacle">"Hi ha un obstacle"</string>
     <string name="quest_smoothness_obstacle_hint">"Per favor, proporciona una resposta general per a la suavitat de la superfície. Obstacles com vorades, reductors de velocitat, graelles per al bestiar es poden ignorar. Obstacles repetits o inesperats són els que haurien de contar per a la resposta."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indica quin vehicle pot utilitzar bé la superfície. El que importa és el panorama general en lloc de danys individuals."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Un voral és una zona de parada d'emergència clarament demarcat que permet que els vehicles s'aturin de forma segura completament al costat de la carretera, encara que no sempre en una superfície totalment pavimentada."</string>
     <string name="link_osmhydrant_description">"Cerca, afegeix i edita estacions de bombers i hidrants"</string>
     <string name="achievement_lifesaver_title">"Salvavides"</string>
     <string name="achievement_lifesaver_solved_X">"Has resolt %d missions que ajuden als serveis d'emergència!"</string>
@@ -1400,4 +1397,15 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Ací hi ha bany?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"El bany d'ací és accessible per a cadires de rodes?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Estàs segur que els ciclistes no poden utilitzar els dos sentits d'aquest carrer unidireccional? En cas de dubte, mira si hi ha algun senyal al final del carrer."</string>
+    <string name="link_thenandnow_description">"Exploreu com semblava OSM en els primers dies en comparació amb com es veu ara!"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Ací s'accepten targetes de crèdit o dèbit?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Ambdós"</string>
+    <string name="quest_accepts_cards_credit_only">"Només targetes de crèdit"</string>
+    <string name="quest_accepts_cards_dedit_only">"Només targetes de dèbit"</string>
+    <string name="quest_accepts_cards_unavailable">"Cap de les dues"</string>
+    <string name="quest_barrier_type_gate_any_size">"Porta, qualsevol mida"</string>
+    <string name="quest_air_pump_compressor_title">"Ací hi ha un compressor d'aire?"</string>
 </resources>

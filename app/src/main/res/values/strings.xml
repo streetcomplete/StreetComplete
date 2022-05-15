@@ -657,7 +657,14 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
 
+
     <string name="quest_bicycle_rental_capacity_title">How many rental bike spaces are here?</string>
+
+    <string name="quest_bicycle_rental_type_title">What type of bicycle rental is this?</string>
+    <string name="quest_bicycle_rental_type_docking_station">Docking station which locks bikes</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">Designated spot (bikes locked individually)</string>
+    <string name="quest_bicycle_rental_type_human">Human-operated bike rental</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">Bike store that also rents bikes</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
@@ -851,6 +858,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
+    <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No cycleway at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>

@@ -380,7 +380,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"keinen, aber Radfahrer dürfen in beiden Richtungen auf der Fahrbahn fahren"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Radfahrer dürfen in beide Richtungen fahren"</string>
     <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß so etwas wie eine Zufahrt"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
@@ -424,7 +424,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit …"</string>
     <string name="quest_fee_add_times">"Zeiten hinzufügen"</string>
     <string name="quest_housenumber_multiple_numbers">"Hat mehrere Hausnummern"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben. Zum Beispiel 1,3 oder 2–6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben.\nZum Beispiel 1,3 oder 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Bügel"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Felgenkiller"</string>
     <string name="quest_bicycle_parking_type_shed">"Schuppen"</string>
@@ -844,7 +844,7 @@ Erfolge"</string>
     <string name="quest_maxweight_select_sign">"Wähle das Schild"</string>
     <string name="quest_steps_incline_title">"Welche Richtung führt auf dieser Treppe nach oben?"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
-    <string name="quest_step_count_title">"Wie viele Stufen hat diese Treppe?"</string>
+    <string name="quest_step_count_title">"Wie viele Stufen gibt es hier?"</string>
     <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Bedarfsampel-Kastens."</string>
@@ -1175,9 +1175,6 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_smoothness_obstacle">"Da ist ein Hindernis"</string>
     <string name="quest_smoothness_obstacle_hint">"Bitte gib eine allgemeine Antwort für die Glätte der Oberfläche. Einzelne Hindernisse wie Bordsteinkanten, Schwellen zur Geschwindigkeitsbegrenzung oder Weideroste können ignoriert werden. Mehrfache oder unerwartete Hindernisse sollten in die Antwort miteinbezogen werden."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … zeigen an, für welche Fahrzeuge die Oberfläche okay sein sollte. Was zählt, ist das Gesamtbild, nicht vereinzelte Schäden."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Ein Seitenstreifen ist eine deutlich markierte Standspur, die Fahrzeugen sicheres Anhalten komplett neben der Fahrspur ermöglicht - auf ebenem und festem aber nicht unbedingt (komplett) auf befestigtem Untergrund."</string>
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
@@ -1311,5 +1308,7 @@ sorted alphabetically by title -->
 
     <!-- "Pressluft" habe ich noch nie gehört, ist "Druckluft" vielleicht besser? Evtl. auch "Gibt es hier einen Druckluft-Kompressor"? -->
     <string name="quest_air_pump_compressor_title">"Gibt es hier Druckluft zum Aufpumpen von Reifen?"</string>
-    <string name="quest_step_count_stile_hint">"Nur die Anzahl der Stufen, um nach oben zu kommen. Wenn die Anzahl sich je Seite unterscheidet, nimm die höhere Zahl."</string>
+    <string name="quest_step_count_stile_hint">"Nur die Anzahl der Stufen, um nach oben zu kommen. Wenn sich die Anzahl je nach Seite unterscheidet, nimm die höhere Zahl."</string>
+    <string name="quest_shoulder_explanation2">"Ein Seitenstreifen ist ein klar abgegrenzter Nothaltebereich. Die als Seitenstreifen ausgewiesene Fläche ist nicht unbedingt über die gesamte Breite befestigt und nicht unbedingt breit genug, damit ein Auto vollständig abseits der Fahrbahn anhalten kann."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"kein, Radfahren in diese Richtung nicht erlaubt"</string>
 </resources>

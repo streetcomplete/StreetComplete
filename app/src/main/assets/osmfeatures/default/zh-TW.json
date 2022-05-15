@@ -364,8 +364,8 @@
                     "label": "種類"
                 },
                 "branch_brand": {
-                    "label": "分支",
-                    "terms": "分支,分店,分支機構"
+                    "label": "分店",
+                    "terms": "分支,分店,分支機構,分行"
                 },
                 "brand": {
                     "label": "品牌",
@@ -1426,7 +1426,7 @@
                     "label": "類型"
                 },
                 "line_attachment": {
-                    "label": "線附件"
+                    "label": "線纜固著"
                 },
                 "line_management": {
                     "label": "線路管理",
@@ -2481,7 +2481,7 @@
                     "label": "路面鋪設",
                     "options": {
                         "artificial_turf": "人造草皮",
-                        "asphalt": "柏油",
+                        "asphalt": "瀝青",
                         "compacted": "壓實",
                         "concrete": "混凝土",
                         "dirt": "土質",
@@ -2727,7 +2727,7 @@
                         "irrigation": "灌溉",
                         "spillway": "溢洪道",
                         "tailrace": "尾水道",
-                        "transmission": "傳輸",
+                        "transmission": "輸水",
                         "transportation": "運輸"
                     }
                 },
@@ -2793,15 +2793,15 @@
                     }
                 },
                 "voltage": {
-                    "label": "伏特"
+                    "label": "電壓"
                 },
                 "voltage/primary": {
-                    "label": "主要電壓",
-                    "terms": "主要電壓"
+                    "label": "一次電壓",
+                    "terms": "一次電壓"
                 },
                 "voltage/secondary": {
-                    "label": "次要電壓",
-                    "terms": "次要電壓"
+                    "label": "二次電壓",
+                    "terms": "二次電壓"
                 },
                 "voltage/tertiary": {
                     "label": "三次電壓",
@@ -2846,15 +2846,15 @@
                 "wetland": {
                     "label": "種類",
                     "options": {
-                        "bog": "沼澤",
-                        "fen": "沼池",
+                        "bog": "酸沼",
+                        "fen": "堿沼",
                         "mangrove": "紅樹林",
-                        "marsh": "沼澤地",
+                        "marsh": "草澤",
                         "reedbed": "蘆葦床",
-                        "saltmarsh": "岸邊鹹水沼澤地",
-                        "string_bog": "弦沼澤",
-                        "swamp": "樹沼",
-                        "tidalflat": "灘塗",
+                        "saltmarsh": "海岸鹽沼",
+                        "string_bog": "線狀酸沼",
+                        "swamp": "林澤",
+                        "tidalflat": "潮灘",
                         "wet_meadow": "濕草甸"
                     }
                 },
@@ -3511,7 +3511,7 @@
                     "terms": "廟,教堂,寺廟,清真寺,禮拜堂,寺,聚會所,教會"
                 },
                 "amenity/place_of_worship/buddhist": {
-                    "name": "佛寺",
+                    "name": "佛寺殿堂",
                     "terms": "寺,廟,閣,寶殿"
                 },
                 "amenity/place_of_worship/christian": {
@@ -5434,8 +5434,8 @@
                     "terms": "工業區"
                 },
                 "landuse/industrial/scrap_yard": {
-                    "name": "廢料場",
-                    "terms": "廢料儲存地"
+                    "name": "廢車場",
+                    "terms": "廢車場"
                 },
                 "landuse/industrial/slaughterhouse": {
                     "name": "屠宰場",
@@ -6298,8 +6298,8 @@
                     "terms": "草地"
                 },
                 "natural/heath": {
-                    "name": "矮灌木叢",
-                    "terms": "矮灌木叢"
+                    "name": "歐石楠灌叢",
+                    "terms": "歐石楠灌叢"
                 },
                 "natural/hot_spring": {
                     "name": "溫泉",
@@ -8347,8 +8347,8 @@
                     "terms": "濕塢 / 乾塢"
                 },
                 "waterway/drain": {
-                    "name": "渠",
-                    "terms": "灌溉水圳"
+                    "name": "排水渠",
+                    "terms": "排水,渠,水圳"
                 },
                 "waterway/fish_pass": {
                     "name": "魚道",

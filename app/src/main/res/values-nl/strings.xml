@@ -2387,9 +2387,6 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_smoothness_obstacle">"Er is een obstakel"</string>
     <string name="quest_smoothness_obstacle_hint">"Geef een algemeen antwoord voor de gladheid. Enkele obstakels zoals stoepranden, verkeersdrempels of vee-roosters kunnen worden genegeerd. Herhaalde of onverwachte obstakels moeten meetellen voor het antwoord."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … geven aan voor welke voertuigen de ondergrond geschikt moet zijn. Waar het om gaat is het grote geheel in plaats van enkele schade."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Een vluchtstrook is een duidelijk afgebakende noodstopstrook waar voertuigen veilig volledig naast de rijstrook kunnen stoppen, maar niet altijd (volledig) op verharde ondergrond."</string>
     <string name="link_osmhydrant_description">"Zoek, voeg toe en bewerk brandweerkazernes en brandkranen"</string>
     <string name="achievement_lifesaver_title">"redder in nood"</string>
     <string name="achievement_lifesaver_solved_X">"Je hebt %d vragen opgelost die hulpdiensten en eerstehulpverleners helpen!"</string>
@@ -2532,4 +2529,7 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"Bevindt zich hier een werkende fietspomp die door iedereen gebruikt kan worden?"</string>
     <string name="quest_air_pump_compressor_title">"Bevindt zich hier een "</string>
     <string name="quest_step_count_stile_hint">"Enkel het aantal treden tot de top. Als het aantal treden verschilt tussen beide kanten, geef dan het grootste getal."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_shoulder_explanation2">"Een berm is een duidelijk afgebakende noodstopstrook. Het als berm aangewezen gebied is niet noodzakelijkerwijs over de gehele breedte verhard en niet noodzakelijk breed genoeg om een auto volledig van de rijbaan te laten stoppen."</string>
 </resources>

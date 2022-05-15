@@ -1215,9 +1215,6 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_smoothness_obstacle">"Det finns ett hinder"</string>
     <string name="quest_smoothness_obstacle_hint">"Ange ett generellt svar för jämnheten. Enskilda hinder som trottoarkanter, farthinder eller färistar kan ignoreras. Upprepade hinder ska tas med."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … ange vilka fordon som utan problem kan köra på denna beläggning. Det viktiga är vägen som helt, inte enskilda skador."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"En vägren är den del av vägen som inte utgör själva körbanan och som kan användas i nödsituationer, av långsamtgående fordon, cyklister, m.m. Den är oftast belagd, men kan vara av grus eller gräs."</string>
     <string name="link_osmhydrant_description">"Hitta, lägg till och redigera brandstationer och brandposter"</string>
     <string name="achievement_lifesaver_title">"Livräddare"</string>
     <string name="achievement_lifesaver_solved_X">"Du löste %d uppdrag som hjälper räddningstjänsten och utryckningspersonal!"</string>
@@ -1348,4 +1345,5 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"Finns det en fungerande cykelpump för alla att använda här?"</string>
     <string name="quest_air_pump_compressor_title">"Finns det tryckluft (en kompressor) tillgängligt här?"</string>
     <string name="quest_step_count_stile_hint">"Bara antalet steg som krävs för att nå toppen. Om det är olika antal på vardera sida, ange det högsta."</string>
+    <string name="quest_shoulder_explanation2">"En vägren är den del av vägen som inte utgör själva körbanan och som kan användas i nödsituation, av långsamtgående fordon, cyklister, m.m. Den är oftast belagd, men behöver inte vara det. Både smala och breda vägrenar förekommer."</string>
 </resources>

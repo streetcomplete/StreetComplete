@@ -233,13 +233,13 @@
                     "label": "Tipo"
                 },
                 "animal_boarding": {
-                    "label": "Para animais"
+                    "label": "Animais"
                 },
                 "animal_breeding": {
-                    "label": "Para animais"
+                    "label": "Animais"
                 },
                 "animal_shelter": {
-                    "label": "Para animais"
+                    "label": "Animais"
                 },
                 "architect": {
                     "label": "Arquiteto",
@@ -1966,6 +1966,8 @@
                         "cans": "Latas",
                         "cardboard": "Cartão",
                         "clothes": "Roupas",
+                        "cooking_oil": "Óleo alimentar",
+                        "engine_oil": "Óleo de motores",
                         "glass": "Vidro",
                         "glass_bottles": "Recipientes de vidro",
                         "green_waste": "Resíduos vegetais",
@@ -7561,7 +7563,7 @@
                     "terms": "interior,decoração,interiores"
                 },
                 "shop/jewelry": {
-                    "name": "Ouriversaria",
+                    "name": "Ourivesaria",
                     "terms": "joalharia,joalheria,jóias,joias,bijuteria,joalheiro,joalheira"
                 },
                 "shop/kiosk": {
@@ -7836,7 +7838,7 @@
                     "terms": "vacuum cleaner,aspirador,aspiradores,aspirar"
                 },
                 "shop/variety_store": {
-                    "name": "Loja dos chineses",
+                    "name": "Loja de variedades",
                     "terms": "loja dos 300,loja dos trezentos,bijuterias,adereços,quinquilharia"
                 },
                 "shop/video": {

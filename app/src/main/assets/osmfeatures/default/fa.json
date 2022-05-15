@@ -164,7 +164,7 @@
                     }
                 },
                 "admin_level": {
-                    "label": "سطح مدیر\nAdmin Level"
+                    "label": "سطح حکومتی (Admin Level)"
                 },
                 "aerialway": {
                     "label": "نوع"
@@ -386,6 +386,16 @@
                     "label": "کابل ها",
                     "placeholder": "۱, ۲, ۳..."
                 },
+                "cai_scale-IT": {
+                    "options": {
+                        "E": "E: برای کوهنوردان",
+                        "EAI": "EAI: پیاده‌روی در شرایط برفی",
+                        "EE": "EE: برای کوهنوردان متخصص",
+                        "EEA": "EEA: برای کوهنوردان متخصص با تجهیزات",
+                        "T": "T: گردشگری"
+                    },
+                    "placeholder": "T, E, EE, …"
+                },
                 "camera/direction": {
                     "label": "جهت (درجه راستگرد)",
                     "placeholder": "۴۵، ۹۰، ۱۸۰، ۲۷۰"
@@ -406,17 +416,20 @@
                     "placeholder": "۵۰, ۱۰۰, ۲۰۰..."
                 },
                 "capacity/caravans": {
-                    "label": "ظرفیت (کاروان)"
+                    "label": "ظرفیت (کاروان)",
+                    "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
                     "label": "فضای قابل دسترسی",
                     "placeholder": "۱, ۲, ۳..."
                 },
                 "capacity/persons": {
-                    "label": "ظرفیت (نفر)"
+                    "label": "ظرفیت (نفر)",
+                    "placeholder": "50, 100, 200..."
                 },
                 "capacity/tents": {
-                    "label": "ظرفیت (چادر)"
+                    "label": "ظرفیت (چادر)",
+                    "placeholder": "10, 20, 50..."
                 },
                 "capacity_parking": {
                     "label": "کل فضا",
@@ -430,7 +443,17 @@
                     "label": "واریز وجه"
                 },
                 "castle_type": {
-                    "label": "نوع"
+                    "label": "نوع",
+                    "options": {
+                        "castrum": "قلعه رومی",
+                        "defensive": "قلعه دفاعی",
+                        "fortress": "قلعه",
+                        "kremlin": "کاخ کرملین",
+                        "manor": "خانه اربابی (قرون وسطی)",
+                        "palace": "قصر",
+                        "shiro": "شیرو_قلعه‌ی ژاپنی",
+                        "stately": "خانه باشکوه"
+                    }
                 },
                 "changing_table": {
                     "label": "میز تعویض پوشک"
@@ -517,6 +540,7 @@
                     "label": "سرپوشیده"
                 },
                 "covered_no": {
+                    "label": "سرپوشیده",
                     "options": {
                         "no": "خیر",
                         "undefined": "خیر فرض شده",
@@ -543,6 +567,7 @@
                 "crossing/barrier": {
                     "label": "بازوی مانع",
                     "options": {
+                        "double_half": "دو نیمه",
                         "full": "کامل",
                         "half": "نیمه",
                         "no": "خیر",
@@ -570,6 +595,7 @@
                     "options": {
                         "american": "آمریکایی",
                         "asian": "آسیایی",
+                        "bubble_tea": "چای حبابی / حباب‌دار",
                         "burger": "همبرگر",
                         "cake": "کیک",
                         "chicken": "مرغ، جوجه",
@@ -578,6 +604,7 @@
                         "coffee_shop": "کافی شاپ",
                         "dessert": "دسر",
                         "donut": "دونات",
+                        "fish": "ماهی",
                         "french": "فرانسوی",
                         "german": "آلمانی",
                         "greek": "یونانی",
@@ -597,12 +624,14 @@
                         "pasta": "پاستا",
                         "pizza": "پیتزا",
                         "polish": "لهستانی",
+                        "portuguese": "پرتغالی",
                         "regional": "محلی ، منطقه‌ای",
                         "russian": "روسی",
                         "salad": "سالاد",
                         "sandwich": "ساندویچ",
                         "seafood": "دریایی",
                         "spanish": "اسپانیایی",
+                        "steak_house": "استیک‌هاوس / رستورانی مخصوص استیک و گوشت دنده",
                         "sushi": "سوشی",
                         "taiwanese": "تایوانی",
                         "thai": "تایلندی",
@@ -748,6 +777,15 @@
                     "label": "جهت (خلاف عقربه های ساعت)",
                     "placeholder": "۴۵, ۹۰, ۱۸۰, ۲۷۰"
                 },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "مسیر / جهت",
+                    "options": {
+                        "east": "به شرق / رو به مشرق",
+                        "north": "به شمال / به سمت شمال",
+                        "south": "به جنوب / به سمت جنوب",
+                        "west": "به غرب / به سمت غرب"
+                    }
+                },
                 "direction_clock": {
                     "label": "جهت",
                     "options": {
@@ -828,6 +866,12 @@
                     "label": "مدت زمان",
                     "placeholder": "۰۰:۰۰"
                 },
+                "ele": {
+                    "label": "ارتفاع (متر)"
+                },
+                "ele_node": {
+                    "label": "ارتفاع (متر)"
+                },
                 "electrified": {
                     "label": "برق رسانی",
                     "options": {
@@ -847,7 +891,17 @@
                     "placeholder": "پیش فرض"
                 },
                 "embassy": {
-                    "label": "نوع"
+                    "label": "نوع",
+                    "options": {
+                        "branch_embassy": "شعبه یک سفارت",
+                        "delegation": "نمایندگی",
+                        "high_commission": "کمیسیون عالی",
+                        "interests_section": "قسمت علایق",
+                        "mission": "مأموریت دیپلماتیک",
+                        "nunciature": "مأموریت دیپلماتیک مقر مقدس",
+                        "residence": "اقامتگاه رسمی یک سفیر",
+                        "yes": "سفارت خانه"
+                    }
                 },
                 "emergency": {
                     "label": "اورژانس"
@@ -872,6 +926,9 @@
                 },
                 "expected_rwn_route_relations": {
                     "label": "گره‌های پیاده‌روی متوالی"
+                },
+                "expressway-US": {
+                    "label": "بزرگراه"
                 },
                 "faces": {
                     "label": "نماها"
@@ -912,6 +969,9 @@
                 },
                 "fixme": {
                     "label": "مرا درست کن"
+                },
+                "flag/name": {
+                    "label": "نام پرچم"
                 },
                 "flag/type": {
                     "label": "نوع پرچم"
@@ -977,6 +1037,9 @@
                 },
                 "geyser/height": {
                     "label": "ارتفاع فوران"
+                },
+                "gnis/feature_id-US": {
+                    "label": "شناسه عارضه GNIS (سامانه اطلاعات نام‌های جغرافیایی)"
                 },
                 "government": {
                     "label": "نوع"
@@ -1508,8 +1571,13 @@
                     "label": "برابری",
                     "placeholder": "۳, ۴, ۵..."
                 },
+                "parcel_dropoff": {
+                    "label": "تحویل بسته"
+                },
                 "parcel_pickup": {
+                    "label": "تحویل بسته",
                     "options": {
+                        "no": "خیر",
                         "undefined": "بله فرض شده",
                         "yes": "بله"
                     }
@@ -1523,15 +1591,22 @@
                         "carports": "سایبان پارکینگ",
                         "garage_boxes": "اتاقک‌های گاراژ",
                         "lane": "خط عبوری کنار جاده",
+                        "layby": "مشارکت / غیرفعال",
                         "multi-storey": "چند طبقه",
                         "rooftop": "پشت بام",
                         "sheds": "پارکینگ آلونکی",
+                        "street_side": "کنار-خیابان",
                         "surface": "سطح",
                         "underground": "زیرزمینی"
                     }
                 },
                 "parking/orientation": {
-                    "label": "جهت"
+                    "label": "جهت",
+                    "options": {
+                        "diagonal": "مورب نسبت به خیابان",
+                        "parallel": "موازی با خیابان",
+                        "perpendicular": "خیابان را در یک زاویه مستقیم قطع می‌کند"
+                    }
                 },
                 "parking_entrance": {
                     "label": "نوع",
@@ -1747,8 +1822,28 @@
                 "rcn_ref": {
                     "label": "کد دوچرخه‌سواری"
                 },
+                "real_fire-GB-IE": {
+                    "label": "آتش واقعی"
+                },
                 "recycling_accepts": {
-                    "label": "قبول"
+                    "label": "قبول",
+                    "options": {
+                        "batteries": "باتری‌ها",
+                        "cans": "قوطی‌ها",
+                        "cardboard": "مقوا",
+                        "clothes": "لباس‌ها",
+                        "cooking_oil": "روغن آشپزی",
+                        "engine_oil": "روغن موتور",
+                        "glass": "هر نوع شیشه (شیشه سکوریت، پنجره، آینه و غیره)",
+                        "glass_bottles": "بطری‌ها و ظروف شیشه‌ای",
+                        "green_waste": "زباله سبز / زباله قابل بازیافت",
+                        "paper": "کاغذ",
+                        "plastic": "پلاستیک",
+                        "plastic_bottles": "بطری‌های پلاستیکی",
+                        "plastic_packaging": "بسته‌بندی پلاستیکی",
+                        "scrap_metal": "آهن قراضه",
+                        "shoes": "کفش‌ها"
+                    }
                 },
                 "recycling_type": {
                     "label": "نوع",
@@ -1769,6 +1864,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "شماره ورودی"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "شماره سوراخ",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "شماره سوراخ",
@@ -4487,6 +4586,9 @@
                 "healthcare/rehabilitation": {
                     "name": "توانبخشی"
                 },
+                "healthcare/sample_collection": {
+                    "name": "تسهیلات جمع‌آوری نمونه"
+                },
                 "healthcare/speech_therapist": {
                     "name": "گفتار درمان"
                 },
@@ -5091,7 +5193,8 @@
                 },
                 "leisure/beach_resort": {
                     "name": "تفرجگاه ساحلی",
-                    "terms": "هتل ساحلی ، مجتمع تفریحی ساحلی"
+                    "terms": "مجموعه تفریحی ساحلی,تفرجگاه ساحلی",
+                    "aliases": "مجموعه گردشگری ساحلی"
                 },
                 "leisure/bird_hide": {
                     "name": "مکان تماشای پرندگان",
@@ -5352,8 +5455,9 @@
                     "name": "زمین بازی داخل سالن"
                 },
                 "leisure/resort": {
-                    "name": "مجتمع تفریحی",
-                    "terms": "مکان پررفت‌آمد,اماکن پر رفت آمد,مکان‌های مطرح"
+                    "name": "تفرجگاه",
+                    "terms": "تفرجگاه,مجموعه تفریحی,مجموعه گردشگری,منطقه تفریحی,منطقه گردشگری,مرکز تفریحی,تعطیلات,اسکی",
+                    "aliases": "مجموعه تفریحی\nمجموعه گردشگری\nمنطقه تفریحی\nمنطقه گردشگری"
                 },
                 "leisure/sauna": {
                     "name": "سونا"
@@ -5790,9 +5894,9 @@
                     "name": "شن"
                 },
                 "natural/scree": {
-                    "name": "قلوه سنگ‌های پای کوه",
+                    "name": "واریزه",
                     "terms": "سنگ های سست، تالوس، توده قلوه سنگ، سنگ تیز، سنگ سقوط کرده از کوه، سنگ ریزه های کوه پایه، پایین کوه، پای کوه، تکه سنگ های شکسته، سنگ مخروطی، صخره، ریزش سنگ، شانه دره، صخره های کوهستانی، صخره های آتشفشانی",
-                    "aliases": "سنگ ریزه"
+                    "aliases": "شن اسکی\nخرده سنگ\nسنگریزه\nقلوه سنگ"
                 },
                 "natural/scrub": {
                     "name": "بوته‌زار و درختچه‌زار",
@@ -6136,7 +6240,8 @@
                     "name": "صفحه خورشیدی"
                 },
                 "power/generator/method/photovoltaic/location/roof": {
-                    "name": "صفحه خورشیدی سقفی"
+                    "name": "صفحه خورشیدی سقفی",
+                    "terms": "نیروی خورشیدی خانگی، ماژول فتوولتائیک روی پشت بام، ماژول pv"
                 },
                 "power/generator/source/hydro": {
                     "name": "توربین آبی",

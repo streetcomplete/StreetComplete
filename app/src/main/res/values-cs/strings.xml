@@ -2378,9 +2378,6 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_smoothness_obstacle">"Je tu překážka"</string>
     <string name="quest_smoothness_obstacle_hint">"Uveďte prosím obecnou odpověď pro průjezdnost. Samostatné překážky, jako jsou obrubníky, zpomalovací hrboly nebo mříže pro dobytek můžete ignorovat. Opakující se nebo neočekávané překážky by měly být do odpovědi zahrnuty."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙… indikuje, pro jaká vozidla je povrch vhodný. Důležitější, než jednotlivá poškození, je celkový stav povrchu."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation">"Odstavný pruh je zřetelně ohraničený pruh pro nouzové zastavení, který umožňuje vozidlům bezpečně zastavit úplně vedle jízdního pruhu. Nemusí vždy být (úplně) na zpevněném povrchu."</string>
     <string name="link_osmhydrant_description">"Vyhledávejte, přidávejte a upravujte hasičské stanice a požární hydranty"</string>
     <string name="achievement_lifesaver_title">"Záchranář"</string>
     <string name="achievement_lifesaver_solved_X">"Vyřešili jste %d úkolů, které pomůžou záchranářům!"</string>
@@ -2519,4 +2516,5 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_title">"Je zde pro všechny k dispozici fungující pumpa na kolo?"</string>
     <string name="quest_air_pump_compressor_title">"Je tu k dispozici kompresor?"</string>
     <string name="quest_step_count_stile_hint">"Počet schodů k dosažení vrcholu. Pokud je počet schodů na každé straně jiný, uveďte vyšší číslo."</string>
+    <string name="quest_shoulder_explanation2">"Odstavný pruh je jasně vymezený pruh pro nouzové zastavení. Oblast označená jako odstavný pruh nemusí být zpevněná v celé své šířce a nemusí být ani dost široká na to, aby auto zastavilo úplně mimo jízdní pruh."</string>
 </resources>

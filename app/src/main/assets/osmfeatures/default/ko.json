@@ -1504,7 +1504,11 @@
                         "batteries": "배터리",
                         "cans": "캔",
                         "clothes": "의류",
+                        "engine_oil": "엔진 오일",
+                        "glass_bottles": "유리병",
                         "paper": "종이",
+                        "plastic": "플라스틱",
+                        "plastic_bottles": "플라스틱 병",
                         "scrap_metal": "고철",
                         "shoes": "신발"
                     }
@@ -1528,6 +1532,10 @@
                 },
                 "ref_aeroway_gate": {
                     "label": "탑승구 번호"
+                },
+                "ref_disc_golf_hole": {
+                    "label": "홀 번호",
+                    "placeholder": "1-18"
                 },
                 "ref_golf_hole": {
                     "label": "홀 번호",
@@ -2491,6 +2499,9 @@
                     "name": "의원",
                     "terms": "병원,내과,외과,소아청소년과,산부인과,정신건강의학과"
                 },
+                "amenity/doctors/gynaecology": {
+                    "name": "산부인과 의원"
+                },
                 "amenity/dojo": {
                     "name": "도장 / 무술 학원",
                     "terms": "도장 / 무술 학원"
@@ -2663,6 +2674,9 @@
                 },
                 "amenity/parking/multi-storey": {
                     "name": "입체 주차장"
+                },
+                "amenity/parking/street-side": {
+                    "name": "노변 주차장"
                 },
                 "amenity/parking/underground": {
                     "name": "지하 주차장"
@@ -3634,6 +3648,12 @@
                 "demolished/building": {
                     "name": "최근 철거된 건물"
                 },
+                "disc_golf/hole": {
+                    "name": "디스크 골프 홀"
+                },
+                "disc_golf/tee": {
+                    "name": "디스크 골프 티"
+                },
                 "disused/railway": {
                     "name": "폐선된 철도 지물"
                 },
@@ -3826,6 +3846,9 @@
                 },
                 "healthcare/rehabilitation": {
                     "name": "재활 시설"
+                },
+                "healthcare/sample_collection": {
+                    "name": "검체 채취 시설"
                 },
                 "healthcare/speech_therapist": {
                     "name": "언어치료사"
@@ -4818,6 +4841,9 @@
                 },
                 "man_made/tunnel": {
                     "name": "터널 구역"
+                },
+                "man_made/video_wall": {
+                    "name": "디지털 화면"
                 },
                 "man_made/wastewater_plant": {
                     "name": "하수 처리장",

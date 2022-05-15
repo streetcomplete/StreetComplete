@@ -21,7 +21,7 @@
                     "name": "Paden"
                 },
                 "category-playground": {
-                    "name": "Speeltuinuitrusting "
+                    "name": "Speeltuinuitrusting"
                 },
                 "category-rail": {
                     "name": "Rails"
@@ -626,7 +626,7 @@
                     "label": "Bel"
                 },
                 "crossing/island": {
-                    "label": "Toevluchtsoord"
+                    "label": "Vluchtheuvel"
                 },
                 "crossing/light": {
                     "label": "Lampen"
@@ -953,7 +953,7 @@
                 "email": {
                     "label": "E-mail",
                     "placeholder": "voorbeeld@example.com",
-                    "terms": "mail,e-mail,e-mailadres"
+                    "terms": "e-mailadres,mailadres,mail,e-post,netpost,elektronische brief,elektronische post"
                 },
                 "embankment": {
                     "label": "Type",
@@ -1977,8 +1977,14 @@
                         "cans": "Blikjes",
                         "cardboard": "Karton",
                         "clothes": "Kleding",
+                        "cooking_oil": "Bakolie",
+                        "engine_oil": "Motorolie",
+                        "glass": "Glas (gehard glas, ruiten, spiegels, enz.)",
+                        "glass_bottles": "Glazen flessen en potten",
                         "green_waste": "Groenafval",
                         "paper": "Papier",
+                        "plastic": "Plastic",
+                        "plastic_bottles": "Plastic flessen",
                         "plastic_packaging": "Plastic verpakkingsmateriaal",
                         "scrap_metal": "Oud ijzer\nSchroot",
                         "shoes": "Schoenen"
@@ -2398,7 +2404,8 @@
                     }
                 },
                 "stars": {
-                    "label": "Aantal sterren"
+                    "label": "Aantal sterren",
+                    "terms": "sterren"
                 },
                 "start_date": {
                     "label": "Bouwjaar",
@@ -2505,7 +2512,8 @@
                     "terms": "laatste,vorige,controle,survey"
                 },
                 "survey_point/datum_aligned": {
-                    "label": "Uitgelijnd op de lokale geodetische datum"
+                    "label": "Uitgelijnd op de lokale geodetische datum",
+                    "terms": "gealigneerd met het locaal geodetisch datum"
                 },
                 "survey_point/purpose": {
                     "label": "Doel",
@@ -2568,14 +2576,15 @@
                     "label": "Medium"
                 },
                 "tidal": {
-                    "label": "Getijden"
+                    "label": "Getijden",
+                    "terms": "getijde,eb,vloed"
                 },
                 "to": {
                     "label": "Naar"
                 },
                 "toilets": {
                     "label": "Toiletten",
-                    "terms": "wc,wc's,sanitaire,urinoir,w.c.,plee"
+                    "terms": "watercloset,wc,w.c.,sanitaire,urinoir,plee"
                 },
                 "toilets/disposal": {
                     "label": "Afvoer",
@@ -2663,7 +2672,8 @@
                         "intermediate": "Gemiddeld: weinig wegwijzers, paden meestal zichtbaar",
                         "no": "Geen: geen paden, perfecte oriëntatie vaardigheden vereist"
                     },
-                    "placeholder": "Uitmuntend, Goed, Slecht …"
+                    "placeholder": "Uitmuntend, Goed, Slecht …",
+                    "terms": "zichtbaarheid pad"
                 },
                 "transformer": {
                     "label": "Type",
@@ -2703,7 +2713,8 @@
                         "military": "Militair",
                         "test": "Test",
                         "tourism": "Toerisme"
-                    }
+                    },
+                    "terms": "gebruikstype"
                 },
                 "usage_waterway": {
                     "label": "Gebruik",
@@ -2758,7 +2769,8 @@
                         "area": "Meer dan 20 meter",
                         "house": "Minder dan 5 meter",
                         "street": "5 tot 20 meter"
-                    }
+                    },
+                    "terms": "zichtbaarheid"
                 },
                 "volcano/status": {
                     "label": "Vulkaanstatus",
@@ -2812,7 +2824,8 @@
                 },
                 "water_tank/volume": {
                     "label": "Volume (liter)",
-                    "placeholder": "10000, 20000, 30000, …"
+                    "placeholder": "10000, 20000, 30000, …",
+                    "terms": "volume (liter)"
                 },
                 "water_volume": {
                     "label": "Watervoorraad (m³)",
@@ -3063,7 +3076,7 @@
                 },
                 "amenity/bicycle_parking": {
                     "name": "Fietsenstalling",
-                    "terms": "fietsenrek,fietsenparking"
+                    "terms": "fietsenrek,fietsrek,fietsenparking,fietsenkelder"
                 },
                 "amenity/bicycle_parking/building": {
                     "name": "Overdekte fietsenstalling",
@@ -3073,7 +3086,8 @@
                     "name": "Fietskluisjes"
                 },
                 "amenity/bicycle_parking/shed": {
-                    "name": "Fietshok"
+                    "name": "Fietshok",
+                    "terms": "fietsenhok"
                 },
                 "amenity/bicycle_rental": {
                     "name": "Fietsverhuur",
@@ -3650,8 +3664,8 @@
                     "name": "Halfopen hut"
                 },
                 "amenity/shelter/picnic_shelter": {
-                    "name": "Picnicpaviljoen",
-                    "terms": "paviljoentje,picnic-hutje,kiosk"
+                    "name": "Picknickpaviljoen",
+                    "terms": "picknickhut,kiosk"
                 },
                 "amenity/shelter/public_transport": {
                     "name": "Schuilhuisje voor openbaar vervoer",
@@ -4001,7 +4015,7 @@
                 },
                 "barrier/gate": {
                     "name": "Poort",
-                    "terms": "hekken,poort"
+                    "terms": "klaphek"
                 },
                 "barrier/guard_rail": {
                     "name": "Vangrail",
@@ -5071,11 +5085,11 @@
                 },
                 "highway/turning_circle": {
                     "name": "Keerplein",
-                    "terms": "keerlus zonder eiland,draaicirkel,pijpekop,pijpenkop,einde van de straat,cul-de-sac"
+                    "terms": "keerlus zonder eiland,draaicirkel,pijpekop,pijpenkop,einde van een doodlopende straat,cul-de-sac"
                 },
                 "highway/turning_loop": {
                     "name": "Keerlus (met eiland)",
-                    "terms": "keerplein,draaicirkel,pijpekop,pijpenkop,einde van de straat,cul-de-sac"
+                    "terms": "keerplein,draaicirkel,pijpekop,pijpenkop,einde van een doodlopende straat,cul-de-sac"
                 },
                 "highway/unclassified": {
                     "name": "Kleine openbare weg",
@@ -6381,6 +6395,9 @@
                     "name": "Kantoor van watermaatschappij",
                     "terms": "watermaatschappij*,waterleidingsmaatschappij*"
                 },
+                "office/yes": {
+                    "name": "Kantoor (ongespecificeerd)"
+                },
                 "piste/downhill": {
                     "name": "Ski afdaling"
                 },
@@ -6471,8 +6488,8 @@
                     "name": "Speeltuinuitrusting"
                 },
                 "playground/balancebeam": {
-                    "name": "Evenwichtsbalk speeltuig",
-                    "terms": "evenwichtsbalk"
+                    "name": "Evenwichtsbalk als speeltuig",
+                    "terms": "balk,balanceerbalk"
                 },
                 "playground/basketrotator": {
                     "name": "Manddraaimolentje",
@@ -6508,7 +6525,7 @@
                 },
                 "playground/seesaw": {
                     "name": "Wip",
-                    "terms": "wip"
+                    "terms": "wipplank,wipwap"
                 },
                 "playground/slide": {
                     "name": "Glijbaan",
@@ -6516,11 +6533,11 @@
                 },
                 "playground/springy": {
                     "name": "Veerwip",
-                    "terms": "wip"
+                    "terms": "wip,wipkip,veertoestel,veerelement"
                 },
                 "playground/structure": {
                     "name": "Speeltuig",
-                    "terms": "speelconstructie"
+                    "terms": "speeltoestel,speelconstructie"
                 },
                 "playground/swing": {
                     "name": "Schommel",
@@ -7033,7 +7050,7 @@
                 },
                 "shop/bicycle": {
                     "name": "Fietswinkel",
-                    "terms": "fietsenwinkel"
+                    "terms": "fietsenwinkel,fietsenzaak,fietsverkoop"
                 },
                 "shop/boat": {
                     "name": "Bootwinkel",
@@ -7605,7 +7622,7 @@
                 },
                 "shop/tyres": {
                     "name": "Bandenwinkel",
-                    "terms": "bandenwinkel"
+                    "terms": "autoband"
                 },
                 "shop/vacant": {
                     "name": "Leegstaande winkel"
@@ -7657,6 +7674,9 @@
                 "shop/wine": {
                     "name": "Wijnhandel",
                     "terms": "wijnwinkel,wijnproeverij,wijnzaak,wijnerij"
+                },
+                "shop/yes": {
+                    "name": "Winkel (ongespecificeerd)"
                 },
                 "telecom": {
                     "name": "Telecom-object"
@@ -7801,8 +7821,8 @@
                     "terms": "historisch museum"
                 },
                 "tourism/picnic_site": {
-                    "name": "Picknickplek",
-                    "terms": "park"
+                    "name": "Picknickplaats",
+                    "terms": "picknickplek,park"
                 },
                 "tourism/theme_park": {
                     "name": "Themapark",

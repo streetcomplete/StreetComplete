@@ -849,6 +849,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
+    <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No cycleway at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
@@ -1219,7 +1220,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_replaced_answer_error2">"Not recognized. Try entering the type of place, for example “bakery”. Otherwise, consider leaving a note."</string>
 
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
-    <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that is wide enough to allow any vehicle to stop safely completely beside the traffic lane, on even and firm but not necessarily (fully) on paved surface."</string>
+    <string name="quest_shoulder_explanation2">"A shoulder is a clearly demarcated emergency stopping lane. The area designated as a shoulder is not necessarily paved over its entire width and not necessarily wide enough for a car to stop completely off the traffic lane."</string>
     <string name="quest_shoulder_value_yes">shoulder</string>
     <string name="quest_shoulder_value_no">no shoulder</string>
 

@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParking
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
 import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCapacity
+import de.westnordost.streetcomplete.quests.bike_rental_type.AddBikeRentalType
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
@@ -319,6 +320,7 @@ fun questTypeRegistry(
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
     AddBikeParkingCover(), // used by OsmAnd in the object description
+    AddBikeRentalType(), // generally less overlap of possible types/fewer choices/simpler to answer
     AddBikeParkingType(), // used by OsmAnd
     AddBikeParkingAccess(),
     AddBikeParkingFee(),
