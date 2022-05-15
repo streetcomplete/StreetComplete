@@ -95,12 +95,10 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
-import de.westnordost.streetcomplete.view.dialogs.RequestPermissionUpgradeDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import kotlin.math.PI
 import kotlin.math.abs
@@ -747,14 +745,6 @@ class MainFragment :
     }
 
     private fun onClickCreateTrack() {
-        // Check that the user has required permission to record a track
-        val hasUploadPermission = prefs.getBoolean(Prefs.OSM_HAS_UPLOAD_TRACES_PERMISSION, false)
-        if (!hasUploadPermission) {
-            RequestPermissionUpgradeDialog(requireContext(), get()).show()
-            return
-        }
-
-        // Else we are good to start recording!
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
         binding.stopTracksButton.isVisible = true

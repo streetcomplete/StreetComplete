@@ -231,7 +231,6 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to publish your answers. Authorize now?"</string>
     <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
-    <string name="confirmation_permission_upgrade">"You need to authorize this app to publish track recordings on OpenStreetMap. This requires to log in again. Proceed?"</string>
     <string name="later">"Later"</string>
     <string name="not_authorized">"Not authorized"</string>
 
