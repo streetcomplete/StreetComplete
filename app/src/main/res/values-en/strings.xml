@@ -935,7 +935,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
 
-    <string name="quest_laundrySelfService_title2">Is this a self-service laundromat?</string>
+    <string name="quest_laundrySelfService_title2">Does this laundry provide self-service?</string>
 
     <string name="quest_leafType_title">Do the trees here have needles or leaves?</string>
     <string name="quest_leaf_type_needles">Needles</string>
