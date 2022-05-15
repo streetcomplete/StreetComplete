@@ -1130,7 +1130,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_postboxRef_title">What’s the number of this mailbox?</string>
     <string name="quest_ref_answer_noRef">"No number visible…"</string>
 
-    <string name="quest_postboxRoyalCypher_title">What’s the royal cypher (monogram) on this mailbox?</string>
+    <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>
     <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
 
