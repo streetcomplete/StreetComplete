@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 
 /**
  * Creates GPS / GPX trackpoint histories
- * All interactions with this class require an OsmConnection with a logged in user.
  */
 interface TracksApi {
 
