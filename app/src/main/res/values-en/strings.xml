@@ -140,7 +140,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
 
-    <string name="quest_source_dialog_title">Are you sure you personally observed this?</string>
+    <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
